@@ -10747,6 +10747,663 @@ func (s *CreateMeetingRoomGroupResponse) SetBody(v *CreateMeetingRoomGroupRespon
 	return s
 }
 
+type CreateMessageHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// example:
+	//
+	// 123456
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s CreateMessageHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMessageHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMessageHeaders) SetCommonHeaders(v map[string]*string) *CreateMessageHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CreateMessageHeaders) SetAccountId(v string) *CreateMessageHeaders {
+	s.AccountId = &v
+	return s
+}
+
+type CreateMessageRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// assistantId1
+	AssistantId *string `json:"assistantId,omitempty" xml:"assistantId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 你好！
+	Content []*CreateMessageRequestContent `json:"content,omitempty" xml:"content,omitempty" type:"Repeated"`
+	// example:
+	//
+	// {}
+	Metadata map[string]interface{} `json:"metadata,omitempty" xml:"metadata,omitempty"`
+	// example:
+	//
+	// assistantId
+	OriginalAssistantId *string `json:"originalAssistantId,omitempty" xml:"originalAssistantId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// user
+	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// threadId123
+	ThreadId *string `json:"threadId,omitempty" xml:"threadId,omitempty"`
+}
+
+func (s CreateMessageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMessageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMessageRequest) SetAssistantId(v string) *CreateMessageRequest {
+	s.AssistantId = &v
+	return s
+}
+
+func (s *CreateMessageRequest) SetContent(v []*CreateMessageRequestContent) *CreateMessageRequest {
+	s.Content = v
+	return s
+}
+
+func (s *CreateMessageRequest) SetMetadata(v map[string]interface{}) *CreateMessageRequest {
+	s.Metadata = v
+	return s
+}
+
+func (s *CreateMessageRequest) SetOriginalAssistantId(v string) *CreateMessageRequest {
+	s.OriginalAssistantId = &v
+	return s
+}
+
+func (s *CreateMessageRequest) SetRole(v string) *CreateMessageRequest {
+	s.Role = &v
+	return s
+}
+
+func (s *CreateMessageRequest) SetThreadId(v string) *CreateMessageRequest {
+	s.ThreadId = &v
+	return s
+}
+
+type CreateMessageRequestContent struct {
+	CardCallback *CreateMessageRequestContentCardCallback `json:"cardCallback,omitempty" xml:"cardCallback,omitempty" type:"Struct"`
+	DingCard     *CreateMessageRequestContentDingCard     `json:"dingCard,omitempty" xml:"dingCard,omitempty" type:"Struct"`
+	ImageUrl     *CreateMessageRequestContentImageUrl     `json:"imageUrl,omitempty" xml:"imageUrl,omitempty" type:"Struct"`
+	Markdown     *CreateMessageRequestContentMarkdown     `json:"markdown,omitempty" xml:"markdown,omitempty" type:"Struct"`
+	Text         *CreateMessageRequestContentText         `json:"text,omitempty" xml:"text,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// text
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s CreateMessageRequestContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMessageRequestContent) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMessageRequestContent) SetCardCallback(v *CreateMessageRequestContentCardCallback) *CreateMessageRequestContent {
+	s.CardCallback = v
+	return s
+}
+
+func (s *CreateMessageRequestContent) SetDingCard(v *CreateMessageRequestContentDingCard) *CreateMessageRequestContent {
+	s.DingCard = v
+	return s
+}
+
+func (s *CreateMessageRequestContent) SetImageUrl(v *CreateMessageRequestContentImageUrl) *CreateMessageRequestContent {
+	s.ImageUrl = v
+	return s
+}
+
+func (s *CreateMessageRequestContent) SetMarkdown(v *CreateMessageRequestContentMarkdown) *CreateMessageRequestContent {
+	s.Markdown = v
+	return s
+}
+
+func (s *CreateMessageRequestContent) SetText(v *CreateMessageRequestContentText) *CreateMessageRequestContent {
+	s.Text = v
+	return s
+}
+
+func (s *CreateMessageRequestContent) SetType(v string) *CreateMessageRequestContent {
+	s.Type = &v
+	return s
+}
+
+type CreateMessageRequestContentCardCallback struct {
+	// example:
+	//
+	// {}
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// example:
+	//
+	// templateId123
+	TemplateId *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
+	// example:
+	//
+	// 012345
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+}
+
+func (s CreateMessageRequestContentCardCallback) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMessageRequestContentCardCallback) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMessageRequestContentCardCallback) SetContent(v string) *CreateMessageRequestContentCardCallback {
+	s.Content = &v
+	return s
+}
+
+func (s *CreateMessageRequestContentCardCallback) SetTemplateId(v string) *CreateMessageRequestContentCardCallback {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *CreateMessageRequestContentCardCallback) SetUserId(v string) *CreateMessageRequestContentCardCallback {
+	s.UserId = &v
+	return s
+}
+
+type CreateMessageRequestContentDingCard struct {
+	// example:
+	//
+	// 卡片描述
+	CardDesc *string `json:"cardDesc,omitempty" xml:"cardDesc,omitempty"`
+	// example:
+	//
+	// {}
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// basic_card_schema
+	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
+	// example:
+	//
+	// true
+	Finished *bool `json:"finished,omitempty" xml:"finished,omitempty"`
+	// example:
+	//
+	// templateId123
+	TemplateId *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
+}
+
+func (s CreateMessageRequestContentDingCard) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMessageRequestContentDingCard) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMessageRequestContentDingCard) SetCardDesc(v string) *CreateMessageRequestContentDingCard {
+	s.CardDesc = &v
+	return s
+}
+
+func (s *CreateMessageRequestContentDingCard) SetContent(v string) *CreateMessageRequestContentDingCard {
+	s.Content = &v
+	return s
+}
+
+func (s *CreateMessageRequestContentDingCard) SetContentType(v string) *CreateMessageRequestContentDingCard {
+	s.ContentType = &v
+	return s
+}
+
+func (s *CreateMessageRequestContentDingCard) SetFinished(v bool) *CreateMessageRequestContentDingCard {
+	s.Finished = &v
+	return s
+}
+
+func (s *CreateMessageRequestContentDingCard) SetTemplateId(v string) *CreateMessageRequestContentDingCard {
+	s.TemplateId = &v
+	return s
+}
+
+type CreateMessageRequestContentImageUrl struct {
+	// example:
+	//
+	// auto
+	Detail    *string `json:"detail,omitempty" xml:"detail,omitempty"`
+	ImageDesc *string `json:"imageDesc,omitempty" xml:"imageDesc,omitempty"`
+	// example:
+	//
+	// https://img.alicdn.com/1234.png
+	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s CreateMessageRequestContentImageUrl) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMessageRequestContentImageUrl) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMessageRequestContentImageUrl) SetDetail(v string) *CreateMessageRequestContentImageUrl {
+	s.Detail = &v
+	return s
+}
+
+func (s *CreateMessageRequestContentImageUrl) SetImageDesc(v string) *CreateMessageRequestContentImageUrl {
+	s.ImageDesc = &v
+	return s
+}
+
+func (s *CreateMessageRequestContentImageUrl) SetUrl(v string) *CreateMessageRequestContentImageUrl {
+	s.Url = &v
+	return s
+}
+
+type CreateMessageRequestContentMarkdown struct {
+	// example:
+	//
+	// 1. markdown内容
+	//
+	// 2. markdown内容
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s CreateMessageRequestContentMarkdown) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMessageRequestContentMarkdown) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMessageRequestContentMarkdown) SetValue(v string) *CreateMessageRequestContentMarkdown {
+	s.Value = &v
+	return s
+}
+
+type CreateMessageRequestContentText struct {
+	// example:
+	//
+	// 你好！
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s CreateMessageRequestContentText) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMessageRequestContentText) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMessageRequestContentText) SetValue(v string) *CreateMessageRequestContentText {
+	s.Value = &v
+	return s
+}
+
+type CreateMessageResponseBody struct {
+	// example:
+	//
+	// {}
+	Content []*CreateMessageResponseBodyContent `json:"content,omitempty" xml:"content,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1642448000000
+	CreateAt *int64 `json:"createAt,omitempty" xml:"createAt,omitempty"`
+	// example:
+	//
+	// messageId123
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// {}
+	Metadata map[string]interface{} `json:"metadata,omitempty" xml:"metadata,omitempty"`
+	// example:
+	//
+	// thread.message
+	Object *string `json:"object,omitempty" xml:"object,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// user
+	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+	// example:
+	//
+	// threadId123
+	ThreadId *string `json:"threadId,omitempty" xml:"threadId,omitempty"`
+}
+
+func (s CreateMessageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMessageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMessageResponseBody) SetContent(v []*CreateMessageResponseBodyContent) *CreateMessageResponseBody {
+	s.Content = v
+	return s
+}
+
+func (s *CreateMessageResponseBody) SetCreateAt(v int64) *CreateMessageResponseBody {
+	s.CreateAt = &v
+	return s
+}
+
+func (s *CreateMessageResponseBody) SetId(v string) *CreateMessageResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateMessageResponseBody) SetMetadata(v map[string]interface{}) *CreateMessageResponseBody {
+	s.Metadata = v
+	return s
+}
+
+func (s *CreateMessageResponseBody) SetObject(v string) *CreateMessageResponseBody {
+	s.Object = &v
+	return s
+}
+
+func (s *CreateMessageResponseBody) SetRequestId(v string) *CreateMessageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateMessageResponseBody) SetRole(v string) *CreateMessageResponseBody {
+	s.Role = &v
+	return s
+}
+
+func (s *CreateMessageResponseBody) SetThreadId(v string) *CreateMessageResponseBody {
+	s.ThreadId = &v
+	return s
+}
+
+type CreateMessageResponseBodyContent struct {
+	CardCallback *CreateMessageResponseBodyContentCardCallback `json:"cardCallback,omitempty" xml:"cardCallback,omitempty" type:"Struct"`
+	DingCard     *CreateMessageResponseBodyContentDingCard     `json:"dingCard,omitempty" xml:"dingCard,omitempty" type:"Struct"`
+	ImageUrl     *CreateMessageResponseBodyContentImageUrl     `json:"imageUrl,omitempty" xml:"imageUrl,omitempty" type:"Struct"`
+	Markdown     *CreateMessageResponseBodyContentMarkdown     `json:"markdown,omitempty" xml:"markdown,omitempty" type:"Struct"`
+	Text         *CreateMessageResponseBodyContentText         `json:"text,omitempty" xml:"text,omitempty" type:"Struct"`
+	// example:
+	//
+	// text
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s CreateMessageResponseBodyContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMessageResponseBodyContent) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMessageResponseBodyContent) SetCardCallback(v *CreateMessageResponseBodyContentCardCallback) *CreateMessageResponseBodyContent {
+	s.CardCallback = v
+	return s
+}
+
+func (s *CreateMessageResponseBodyContent) SetDingCard(v *CreateMessageResponseBodyContentDingCard) *CreateMessageResponseBodyContent {
+	s.DingCard = v
+	return s
+}
+
+func (s *CreateMessageResponseBodyContent) SetImageUrl(v *CreateMessageResponseBodyContentImageUrl) *CreateMessageResponseBodyContent {
+	s.ImageUrl = v
+	return s
+}
+
+func (s *CreateMessageResponseBodyContent) SetMarkdown(v *CreateMessageResponseBodyContentMarkdown) *CreateMessageResponseBodyContent {
+	s.Markdown = v
+	return s
+}
+
+func (s *CreateMessageResponseBodyContent) SetText(v *CreateMessageResponseBodyContentText) *CreateMessageResponseBodyContent {
+	s.Text = v
+	return s
+}
+
+func (s *CreateMessageResponseBodyContent) SetType(v string) *CreateMessageResponseBodyContent {
+	s.Type = &v
+	return s
+}
+
+type CreateMessageResponseBodyContentCardCallback struct {
+	// example:
+	//
+	// {}
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// example:
+	//
+	// templateId123
+	TemplateId *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
+	// example:
+	//
+	// 012345
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+}
+
+func (s CreateMessageResponseBodyContentCardCallback) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMessageResponseBodyContentCardCallback) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMessageResponseBodyContentCardCallback) SetContent(v string) *CreateMessageResponseBodyContentCardCallback {
+	s.Content = &v
+	return s
+}
+
+func (s *CreateMessageResponseBodyContentCardCallback) SetTemplateId(v string) *CreateMessageResponseBodyContentCardCallback {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *CreateMessageResponseBodyContentCardCallback) SetUserId(v string) *CreateMessageResponseBodyContentCardCallback {
+	s.UserId = &v
+	return s
+}
+
+type CreateMessageResponseBodyContentDingCard struct {
+	// example:
+	//
+	// 卡片描述
+	CardDesc *string `json:"cardDesc,omitempty" xml:"cardDesc,omitempty"`
+	// example:
+	//
+	// {}
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// example:
+	//
+	// basic_card_schema
+	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
+	// example:
+	//
+	// true
+	Finished *bool `json:"finished,omitempty" xml:"finished,omitempty"`
+	// example:
+	//
+	// templateId123
+	TemplateId *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
+}
+
+func (s CreateMessageResponseBodyContentDingCard) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMessageResponseBodyContentDingCard) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMessageResponseBodyContentDingCard) SetCardDesc(v string) *CreateMessageResponseBodyContentDingCard {
+	s.CardDesc = &v
+	return s
+}
+
+func (s *CreateMessageResponseBodyContentDingCard) SetContent(v string) *CreateMessageResponseBodyContentDingCard {
+	s.Content = &v
+	return s
+}
+
+func (s *CreateMessageResponseBodyContentDingCard) SetContentType(v string) *CreateMessageResponseBodyContentDingCard {
+	s.ContentType = &v
+	return s
+}
+
+func (s *CreateMessageResponseBodyContentDingCard) SetFinished(v bool) *CreateMessageResponseBodyContentDingCard {
+	s.Finished = &v
+	return s
+}
+
+func (s *CreateMessageResponseBodyContentDingCard) SetTemplateId(v string) *CreateMessageResponseBodyContentDingCard {
+	s.TemplateId = &v
+	return s
+}
+
+type CreateMessageResponseBodyContentImageUrl struct {
+	// example:
+	//
+	// auto
+	Detail    *string `json:"detail,omitempty" xml:"detail,omitempty"`
+	ImageDesc *string `json:"imageDesc,omitempty" xml:"imageDesc,omitempty"`
+	// example:
+	//
+	// https://img.alicdn.com/1234.png
+	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s CreateMessageResponseBodyContentImageUrl) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMessageResponseBodyContentImageUrl) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMessageResponseBodyContentImageUrl) SetDetail(v string) *CreateMessageResponseBodyContentImageUrl {
+	s.Detail = &v
+	return s
+}
+
+func (s *CreateMessageResponseBodyContentImageUrl) SetImageDesc(v string) *CreateMessageResponseBodyContentImageUrl {
+	s.ImageDesc = &v
+	return s
+}
+
+func (s *CreateMessageResponseBodyContentImageUrl) SetUrl(v string) *CreateMessageResponseBodyContentImageUrl {
+	s.Url = &v
+	return s
+}
+
+type CreateMessageResponseBodyContentMarkdown struct {
+	// example:
+	//
+	// 1. markdown内容
+	//
+	// 2. markdown内容
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s CreateMessageResponseBodyContentMarkdown) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMessageResponseBodyContentMarkdown) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMessageResponseBodyContentMarkdown) SetValue(v string) *CreateMessageResponseBodyContentMarkdown {
+	s.Value = &v
+	return s
+}
+
+type CreateMessageResponseBodyContentText struct {
+	// example:
+	//
+	// 你好！
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s CreateMessageResponseBodyContentText) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMessageResponseBodyContentText) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMessageResponseBodyContentText) SetValue(v string) *CreateMessageResponseBodyContentText {
+	s.Value = &v
+	return s
+}
+
+type CreateMessageResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateMessageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateMessageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMessageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMessageResponse) SetHeaders(v map[string]*string) *CreateMessageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateMessageResponse) SetStatusCode(v int32) *CreateMessageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateMessageResponse) SetBody(v *CreateMessageResponseBody) *CreateMessageResponse {
+	s.Body = v
+	return s
+}
+
 type CreateOrUpdateFormDataHeaders struct {
 	CommonHeaders  map[string]*string                           `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	AccountContext *CreateOrUpdateFormDataHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
@@ -12003,6 +12660,738 @@ func (s *CreateReportResponse) SetStatusCode(v int32) *CreateReportResponse {
 }
 
 func (s *CreateReportResponse) SetBody(v *CreateReportResponseBody) *CreateReportResponse {
+	s.Body = v
+	return s
+}
+
+type CreateRunHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// example:
+	//
+	// 123456
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s CreateRunHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRunHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRunHeaders) SetCommonHeaders(v map[string]*string) *CreateRunHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CreateRunHeaders) SetAccountId(v string) *CreateRunHeaders {
+	s.AccountId = &v
+	return s
+}
+
+type CreateRunRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// assistantId1
+	AssistantId *string `json:"assistantId,omitempty" xml:"assistantId,omitempty"`
+	// example:
+	//
+	// 你是一个聪明的小助理
+	Instructions *string `json:"instructions,omitempty" xml:"instructions,omitempty"`
+	// example:
+	//
+	// {}
+	Metadata map[string]interface{} `json:"metadata,omitempty" xml:"metadata,omitempty"`
+	// example:
+	//
+	// assistantId
+	OriginalAssistantId *string `json:"originalAssistantId,omitempty" xml:"originalAssistantId,omitempty"`
+	// example:
+	//
+	// false
+	Stream *bool `json:"stream,omitempty" xml:"stream,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// threadId123
+	ThreadId *string `json:"threadId,omitempty" xml:"threadId,omitempty"`
+}
+
+func (s CreateRunRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRunRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRunRequest) SetAssistantId(v string) *CreateRunRequest {
+	s.AssistantId = &v
+	return s
+}
+
+func (s *CreateRunRequest) SetInstructions(v string) *CreateRunRequest {
+	s.Instructions = &v
+	return s
+}
+
+func (s *CreateRunRequest) SetMetadata(v map[string]interface{}) *CreateRunRequest {
+	s.Metadata = v
+	return s
+}
+
+func (s *CreateRunRequest) SetOriginalAssistantId(v string) *CreateRunRequest {
+	s.OriginalAssistantId = &v
+	return s
+}
+
+func (s *CreateRunRequest) SetStream(v bool) *CreateRunRequest {
+	s.Stream = &v
+	return s
+}
+
+func (s *CreateRunRequest) SetThreadId(v string) *CreateRunRequest {
+	s.ThreadId = &v
+	return s
+}
+
+type CreateRunResponseBody struct {
+	// example:
+	//
+	// 1642448000000
+	CancelledAt *int64 `json:"cancelledAt,omitempty" xml:"cancelledAt,omitempty"`
+	// example:
+	//
+	// 1642448000000
+	CompletedAt *int64 `json:"completedAt,omitempty" xml:"completedAt,omitempty"`
+	// example:
+	//
+	// {}
+	Content *CreateRunResponseBodyContent `json:"content,omitempty" xml:"content,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1642448000000
+	CreateAt *int64 `json:"createAt,omitempty" xml:"createAt,omitempty"`
+	// example:
+	//
+	// {}
+	Delta *CreateRunResponseBodyDelta `json:"delta,omitempty" xml:"delta,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1642448000000
+	ExpiresAt *int64 `json:"expiresAt,omitempty" xml:"expiresAt,omitempty"`
+	// example:
+	//
+	// 1642448000000
+	FailedAt *int64 `json:"failedAt,omitempty" xml:"failedAt,omitempty"`
+	// example:
+	//
+	// runId123
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// errorMsg
+	LastErrorMsg *string `json:"lastErrorMsg,omitempty" xml:"lastErrorMsg,omitempty"`
+	// example:
+	//
+	// {}
+	Metadata map[string]interface{} `json:"metadata,omitempty" xml:"metadata,omitempty"`
+	// example:
+	//
+	// thread.run
+	Object *string `json:"object,omitempty" xml:"object,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 1642448000000
+	StartedAt *int64 `json:"startedAt,omitempty" xml:"startedAt,omitempty"`
+	// example:
+	//
+	// running
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// threadId123
+	ThreadId *string `json:"threadId,omitempty" xml:"threadId,omitempty"`
+}
+
+func (s CreateRunResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRunResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRunResponseBody) SetCancelledAt(v int64) *CreateRunResponseBody {
+	s.CancelledAt = &v
+	return s
+}
+
+func (s *CreateRunResponseBody) SetCompletedAt(v int64) *CreateRunResponseBody {
+	s.CompletedAt = &v
+	return s
+}
+
+func (s *CreateRunResponseBody) SetContent(v *CreateRunResponseBodyContent) *CreateRunResponseBody {
+	s.Content = v
+	return s
+}
+
+func (s *CreateRunResponseBody) SetCreateAt(v int64) *CreateRunResponseBody {
+	s.CreateAt = &v
+	return s
+}
+
+func (s *CreateRunResponseBody) SetDelta(v *CreateRunResponseBodyDelta) *CreateRunResponseBody {
+	s.Delta = v
+	return s
+}
+
+func (s *CreateRunResponseBody) SetExpiresAt(v int64) *CreateRunResponseBody {
+	s.ExpiresAt = &v
+	return s
+}
+
+func (s *CreateRunResponseBody) SetFailedAt(v int64) *CreateRunResponseBody {
+	s.FailedAt = &v
+	return s
+}
+
+func (s *CreateRunResponseBody) SetId(v string) *CreateRunResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateRunResponseBody) SetLastErrorMsg(v string) *CreateRunResponseBody {
+	s.LastErrorMsg = &v
+	return s
+}
+
+func (s *CreateRunResponseBody) SetMetadata(v map[string]interface{}) *CreateRunResponseBody {
+	s.Metadata = v
+	return s
+}
+
+func (s *CreateRunResponseBody) SetObject(v string) *CreateRunResponseBody {
+	s.Object = &v
+	return s
+}
+
+func (s *CreateRunResponseBody) SetRequestId(v string) *CreateRunResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateRunResponseBody) SetStartedAt(v int64) *CreateRunResponseBody {
+	s.StartedAt = &v
+	return s
+}
+
+func (s *CreateRunResponseBody) SetStatus(v string) *CreateRunResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *CreateRunResponseBody) SetThreadId(v string) *CreateRunResponseBody {
+	s.ThreadId = &v
+	return s
+}
+
+type CreateRunResponseBodyContent struct {
+	CardCallback *CreateRunResponseBodyContentCardCallback `json:"cardCallback,omitempty" xml:"cardCallback,omitempty" type:"Struct"`
+	DingCard     *CreateRunResponseBodyContentDingCard     `json:"dingCard,omitempty" xml:"dingCard,omitempty" type:"Struct"`
+	ImageUrl     *CreateRunResponseBodyContentImageUrl     `json:"imageUrl,omitempty" xml:"imageUrl,omitempty" type:"Struct"`
+	Markdown     *CreateRunResponseBodyContentMarkdown     `json:"markdown,omitempty" xml:"markdown,omitempty" type:"Struct"`
+	Text         *CreateRunResponseBodyContentText         `json:"text,omitempty" xml:"text,omitempty" type:"Struct"`
+	// example:
+	//
+	// text
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s CreateRunResponseBodyContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRunResponseBodyContent) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRunResponseBodyContent) SetCardCallback(v *CreateRunResponseBodyContentCardCallback) *CreateRunResponseBodyContent {
+	s.CardCallback = v
+	return s
+}
+
+func (s *CreateRunResponseBodyContent) SetDingCard(v *CreateRunResponseBodyContentDingCard) *CreateRunResponseBodyContent {
+	s.DingCard = v
+	return s
+}
+
+func (s *CreateRunResponseBodyContent) SetImageUrl(v *CreateRunResponseBodyContentImageUrl) *CreateRunResponseBodyContent {
+	s.ImageUrl = v
+	return s
+}
+
+func (s *CreateRunResponseBodyContent) SetMarkdown(v *CreateRunResponseBodyContentMarkdown) *CreateRunResponseBodyContent {
+	s.Markdown = v
+	return s
+}
+
+func (s *CreateRunResponseBodyContent) SetText(v *CreateRunResponseBodyContentText) *CreateRunResponseBodyContent {
+	s.Text = v
+	return s
+}
+
+func (s *CreateRunResponseBodyContent) SetType(v string) *CreateRunResponseBodyContent {
+	s.Type = &v
+	return s
+}
+
+type CreateRunResponseBodyContentCardCallback struct {
+	// example:
+	//
+	// {}
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// example:
+	//
+	// templateId123
+	TemplateId *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
+	// example:
+	//
+	// 012345
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+}
+
+func (s CreateRunResponseBodyContentCardCallback) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRunResponseBodyContentCardCallback) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRunResponseBodyContentCardCallback) SetContent(v string) *CreateRunResponseBodyContentCardCallback {
+	s.Content = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyContentCardCallback) SetTemplateId(v string) *CreateRunResponseBodyContentCardCallback {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyContentCardCallback) SetUserId(v string) *CreateRunResponseBodyContentCardCallback {
+	s.UserId = &v
+	return s
+}
+
+type CreateRunResponseBodyContentDingCard struct {
+	// example:
+	//
+	// 卡片描述
+	CardDesc *string `json:"cardDesc,omitempty" xml:"cardDesc,omitempty"`
+	// example:
+	//
+	// {}
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// example:
+	//
+	// basic_card_schema
+	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
+	// example:
+	//
+	// true
+	Finished *bool `json:"finished,omitempty" xml:"finished,omitempty"`
+	// example:
+	//
+	// templateId123
+	TemplateId *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
+}
+
+func (s CreateRunResponseBodyContentDingCard) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRunResponseBodyContentDingCard) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRunResponseBodyContentDingCard) SetCardDesc(v string) *CreateRunResponseBodyContentDingCard {
+	s.CardDesc = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyContentDingCard) SetContent(v string) *CreateRunResponseBodyContentDingCard {
+	s.Content = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyContentDingCard) SetContentType(v string) *CreateRunResponseBodyContentDingCard {
+	s.ContentType = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyContentDingCard) SetFinished(v bool) *CreateRunResponseBodyContentDingCard {
+	s.Finished = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyContentDingCard) SetTemplateId(v string) *CreateRunResponseBodyContentDingCard {
+	s.TemplateId = &v
+	return s
+}
+
+type CreateRunResponseBodyContentImageUrl struct {
+	// example:
+	//
+	// auto
+	Detail    *string `json:"detail,omitempty" xml:"detail,omitempty"`
+	ImageDesc *string `json:"imageDesc,omitempty" xml:"imageDesc,omitempty"`
+	// example:
+	//
+	// https://img.alicdn.com/1234.png
+	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s CreateRunResponseBodyContentImageUrl) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRunResponseBodyContentImageUrl) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRunResponseBodyContentImageUrl) SetDetail(v string) *CreateRunResponseBodyContentImageUrl {
+	s.Detail = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyContentImageUrl) SetImageDesc(v string) *CreateRunResponseBodyContentImageUrl {
+	s.ImageDesc = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyContentImageUrl) SetUrl(v string) *CreateRunResponseBodyContentImageUrl {
+	s.Url = &v
+	return s
+}
+
+type CreateRunResponseBodyContentMarkdown struct {
+	// example:
+	//
+	// 1. markdown内容
+	//
+	// 2. markdown内容
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s CreateRunResponseBodyContentMarkdown) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRunResponseBodyContentMarkdown) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRunResponseBodyContentMarkdown) SetValue(v string) *CreateRunResponseBodyContentMarkdown {
+	s.Value = &v
+	return s
+}
+
+type CreateRunResponseBodyContentText struct {
+	// example:
+	//
+	// 你好！
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s CreateRunResponseBodyContentText) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRunResponseBodyContentText) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRunResponseBodyContentText) SetValue(v string) *CreateRunResponseBodyContentText {
+	s.Value = &v
+	return s
+}
+
+type CreateRunResponseBodyDelta struct {
+	// example:
+	//
+	// {}
+	Content *CreateRunResponseBodyDeltaContent `json:"content,omitempty" xml:"content,omitempty" type:"Struct"`
+}
+
+func (s CreateRunResponseBodyDelta) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRunResponseBodyDelta) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRunResponseBodyDelta) SetContent(v *CreateRunResponseBodyDeltaContent) *CreateRunResponseBodyDelta {
+	s.Content = v
+	return s
+}
+
+type CreateRunResponseBodyDeltaContent struct {
+	CardCallback *CreateRunResponseBodyDeltaContentCardCallback `json:"cardCallback,omitempty" xml:"cardCallback,omitempty" type:"Struct"`
+	DingCard     *CreateRunResponseBodyDeltaContentDingCard     `json:"dingCard,omitempty" xml:"dingCard,omitempty" type:"Struct"`
+	ImageUrl     *CreateRunResponseBodyDeltaContentImageUrl     `json:"imageUrl,omitempty" xml:"imageUrl,omitempty" type:"Struct"`
+	Markdown     *CreateRunResponseBodyDeltaContentMarkdown     `json:"markdown,omitempty" xml:"markdown,omitempty" type:"Struct"`
+	Text         *CreateRunResponseBodyDeltaContentText         `json:"text,omitempty" xml:"text,omitempty" type:"Struct"`
+	// example:
+	//
+	// text
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s CreateRunResponseBodyDeltaContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRunResponseBodyDeltaContent) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRunResponseBodyDeltaContent) SetCardCallback(v *CreateRunResponseBodyDeltaContentCardCallback) *CreateRunResponseBodyDeltaContent {
+	s.CardCallback = v
+	return s
+}
+
+func (s *CreateRunResponseBodyDeltaContent) SetDingCard(v *CreateRunResponseBodyDeltaContentDingCard) *CreateRunResponseBodyDeltaContent {
+	s.DingCard = v
+	return s
+}
+
+func (s *CreateRunResponseBodyDeltaContent) SetImageUrl(v *CreateRunResponseBodyDeltaContentImageUrl) *CreateRunResponseBodyDeltaContent {
+	s.ImageUrl = v
+	return s
+}
+
+func (s *CreateRunResponseBodyDeltaContent) SetMarkdown(v *CreateRunResponseBodyDeltaContentMarkdown) *CreateRunResponseBodyDeltaContent {
+	s.Markdown = v
+	return s
+}
+
+func (s *CreateRunResponseBodyDeltaContent) SetText(v *CreateRunResponseBodyDeltaContentText) *CreateRunResponseBodyDeltaContent {
+	s.Text = v
+	return s
+}
+
+func (s *CreateRunResponseBodyDeltaContent) SetType(v string) *CreateRunResponseBodyDeltaContent {
+	s.Type = &v
+	return s
+}
+
+type CreateRunResponseBodyDeltaContentCardCallback struct {
+	// example:
+	//
+	// {}
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// example:
+	//
+	// templateId123
+	TemplateId *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
+	// example:
+	//
+	// 012345
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+}
+
+func (s CreateRunResponseBodyDeltaContentCardCallback) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRunResponseBodyDeltaContentCardCallback) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRunResponseBodyDeltaContentCardCallback) SetContent(v string) *CreateRunResponseBodyDeltaContentCardCallback {
+	s.Content = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyDeltaContentCardCallback) SetTemplateId(v string) *CreateRunResponseBodyDeltaContentCardCallback {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyDeltaContentCardCallback) SetUserId(v string) *CreateRunResponseBodyDeltaContentCardCallback {
+	s.UserId = &v
+	return s
+}
+
+type CreateRunResponseBodyDeltaContentDingCard struct {
+	// example:
+	//
+	// 卡片描述
+	CardDesc *string `json:"cardDesc,omitempty" xml:"cardDesc,omitempty"`
+	// example:
+	//
+	// {}
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// example:
+	//
+	// basic_card_schema
+	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
+	// example:
+	//
+	// true
+	Finished *bool `json:"finished,omitempty" xml:"finished,omitempty"`
+	// example:
+	//
+	// templateId123
+	TemplateId *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
+}
+
+func (s CreateRunResponseBodyDeltaContentDingCard) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRunResponseBodyDeltaContentDingCard) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRunResponseBodyDeltaContentDingCard) SetCardDesc(v string) *CreateRunResponseBodyDeltaContentDingCard {
+	s.CardDesc = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyDeltaContentDingCard) SetContent(v string) *CreateRunResponseBodyDeltaContentDingCard {
+	s.Content = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyDeltaContentDingCard) SetContentType(v string) *CreateRunResponseBodyDeltaContentDingCard {
+	s.ContentType = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyDeltaContentDingCard) SetFinished(v bool) *CreateRunResponseBodyDeltaContentDingCard {
+	s.Finished = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyDeltaContentDingCard) SetTemplateId(v string) *CreateRunResponseBodyDeltaContentDingCard {
+	s.TemplateId = &v
+	return s
+}
+
+type CreateRunResponseBodyDeltaContentImageUrl struct {
+	// example:
+	//
+	// auto
+	Detail    *string `json:"detail,omitempty" xml:"detail,omitempty"`
+	ImageDesc *string `json:"imageDesc,omitempty" xml:"imageDesc,omitempty"`
+	// example:
+	//
+	// https://img.alicdn.com/1234.png
+	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s CreateRunResponseBodyDeltaContentImageUrl) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRunResponseBodyDeltaContentImageUrl) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRunResponseBodyDeltaContentImageUrl) SetDetail(v string) *CreateRunResponseBodyDeltaContentImageUrl {
+	s.Detail = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyDeltaContentImageUrl) SetImageDesc(v string) *CreateRunResponseBodyDeltaContentImageUrl {
+	s.ImageDesc = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyDeltaContentImageUrl) SetUrl(v string) *CreateRunResponseBodyDeltaContentImageUrl {
+	s.Url = &v
+	return s
+}
+
+type CreateRunResponseBodyDeltaContentMarkdown struct {
+	// example:
+	//
+	// 1. markdown内容
+	//
+	// 2. markdown内容
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s CreateRunResponseBodyDeltaContentMarkdown) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRunResponseBodyDeltaContentMarkdown) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRunResponseBodyDeltaContentMarkdown) SetValue(v string) *CreateRunResponseBodyDeltaContentMarkdown {
+	s.Value = &v
+	return s
+}
+
+type CreateRunResponseBodyDeltaContentText struct {
+	// example:
+	//
+	// 你好！
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s CreateRunResponseBodyDeltaContentText) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRunResponseBodyDeltaContentText) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRunResponseBodyDeltaContentText) SetValue(v string) *CreateRunResponseBodyDeltaContentText {
+	s.Value = &v
+	return s
+}
+
+type CreateRunResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateRunResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateRunResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRunResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRunResponse) SetHeaders(v map[string]*string) *CreateRunResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateRunResponse) SetStatusCode(v int32) *CreateRunResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateRunResponse) SetBody(v *CreateRunResponseBody) *CreateRunResponse {
 	s.Body = v
 	return s
 }
@@ -13919,6 +15308,157 @@ func (s *CreateSubscribedCalendarResponse) SetStatusCode(v int32) *CreateSubscri
 }
 
 func (s *CreateSubscribedCalendarResponse) SetBody(v *CreateSubscribedCalendarResponseBody) *CreateSubscribedCalendarResponse {
+	s.Body = v
+	return s
+}
+
+type CreateThreadHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// example:
+	//
+	// 123456
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s CreateThreadHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateThreadHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CreateThreadHeaders) SetCommonHeaders(v map[string]*string) *CreateThreadHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CreateThreadHeaders) SetAccountId(v string) *CreateThreadHeaders {
+	s.AccountId = &v
+	return s
+}
+
+type CreateThreadRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// assistantId1
+	AssistantId *string `json:"assistantId,omitempty" xml:"assistantId,omitempty"`
+	// example:
+	//
+	// {}
+	Metadata map[string]interface{} `json:"metadata,omitempty" xml:"metadata,omitempty"`
+	// example:
+	//
+	// assistantId
+	OriginalAssistantId *string `json:"originalAssistantId,omitempty" xml:"originalAssistantId,omitempty"`
+}
+
+func (s CreateThreadRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateThreadRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateThreadRequest) SetAssistantId(v string) *CreateThreadRequest {
+	s.AssistantId = &v
+	return s
+}
+
+func (s *CreateThreadRequest) SetMetadata(v map[string]interface{}) *CreateThreadRequest {
+	s.Metadata = v
+	return s
+}
+
+func (s *CreateThreadRequest) SetOriginalAssistantId(v string) *CreateThreadRequest {
+	s.OriginalAssistantId = &v
+	return s
+}
+
+type CreateThreadResponseBody struct {
+	// example:
+	//
+	// 1642448000000
+	CreateAt *int64 `json:"createAt,omitempty" xml:"createAt,omitempty"`
+	// example:
+	//
+	// threadId123
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// {}
+	Metadata map[string]interface{} `json:"metadata,omitempty" xml:"metadata,omitempty"`
+	// example:
+	//
+	// thread
+	Object *string `json:"object,omitempty" xml:"object,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s CreateThreadResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateThreadResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateThreadResponseBody) SetCreateAt(v int64) *CreateThreadResponseBody {
+	s.CreateAt = &v
+	return s
+}
+
+func (s *CreateThreadResponseBody) SetId(v string) *CreateThreadResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateThreadResponseBody) SetMetadata(v map[string]interface{}) *CreateThreadResponseBody {
+	s.Metadata = v
+	return s
+}
+
+func (s *CreateThreadResponseBody) SetObject(v string) *CreateThreadResponseBody {
+	s.Object = &v
+	return s
+}
+
+func (s *CreateThreadResponseBody) SetRequestId(v string) *CreateThreadResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateThreadResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateThreadResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateThreadResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateThreadResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateThreadResponse) SetHeaders(v map[string]*string) *CreateThreadResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateThreadResponse) SetStatusCode(v int32) *CreateThreadResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateThreadResponse) SetBody(v *CreateThreadResponseBody) *CreateThreadResponse {
 	s.Body = v
 	return s
 }
@@ -48448,6 +49988,472 @@ func (s *ListFormRemarksResponse) SetBody(v *ListFormRemarksResponseBody) *ListF
 	return s
 }
 
+type ListMessageHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// example:
+	//
+	// 123456
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s ListMessageHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMessageHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListMessageHeaders) SetCommonHeaders(v map[string]*string) *ListMessageHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListMessageHeaders) SetAccountId(v string) *ListMessageHeaders {
+	s.AccountId = &v
+	return s
+}
+
+type ListMessageRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// assistantId1
+	AssistantId *string `json:"assistantId,omitempty" xml:"assistantId,omitempty"`
+	// example:
+	//
+	// 20
+	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
+	// example:
+	//
+	// desc
+	Order *string `json:"order,omitempty" xml:"order,omitempty"`
+	// example:
+	//
+	// assistantId
+	OriginalAssistantid *string `json:"originalAssistantid,omitempty" xml:"originalAssistantid,omitempty"`
+	// example:
+	//
+	// runId123
+	RunId *string `json:"runId,omitempty" xml:"runId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// threadId123
+	ThreadId *string `json:"threadId,omitempty" xml:"threadId,omitempty"`
+}
+
+func (s ListMessageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMessageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListMessageRequest) SetAssistantId(v string) *ListMessageRequest {
+	s.AssistantId = &v
+	return s
+}
+
+func (s *ListMessageRequest) SetLimit(v int32) *ListMessageRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *ListMessageRequest) SetOrder(v string) *ListMessageRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *ListMessageRequest) SetOriginalAssistantid(v string) *ListMessageRequest {
+	s.OriginalAssistantid = &v
+	return s
+}
+
+func (s *ListMessageRequest) SetRunId(v string) *ListMessageRequest {
+	s.RunId = &v
+	return s
+}
+
+func (s *ListMessageRequest) SetThreadId(v string) *ListMessageRequest {
+	s.ThreadId = &v
+	return s
+}
+
+type ListMessageResponseBody struct {
+	// example:
+	//
+	// []
+	Data []*ListMessageResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// list
+	Object *string `json:"object,omitempty" xml:"object,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s ListMessageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMessageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListMessageResponseBody) SetData(v []*ListMessageResponseBodyData) *ListMessageResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListMessageResponseBody) SetObject(v string) *ListMessageResponseBody {
+	s.Object = &v
+	return s
+}
+
+func (s *ListMessageResponseBody) SetRequestId(v string) *ListMessageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListMessageResponseBodyData struct {
+	// example:
+	//
+	// []
+	Content []*ListMessageResponseBodyDataContent `json:"content,omitempty" xml:"content,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1642448000000
+	CreateAt *int64 `json:"createAt,omitempty" xml:"createAt,omitempty"`
+	// example:
+	//
+	// messageId123
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// {}
+	Metadata map[string]interface{} `json:"metadata,omitempty" xml:"metadata,omitempty"`
+	// example:
+	//
+	// thread.message
+	Object *string `json:"object,omitempty" xml:"object,omitempty"`
+	// example:
+	//
+	// user
+	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+	// example:
+	//
+	// runId123
+	RunId *string `json:"runId,omitempty" xml:"runId,omitempty"`
+	// example:
+	//
+	// threadId123
+	ThreadId *string `json:"threadId,omitempty" xml:"threadId,omitempty"`
+}
+
+func (s ListMessageResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMessageResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListMessageResponseBodyData) SetContent(v []*ListMessageResponseBodyDataContent) *ListMessageResponseBodyData {
+	s.Content = v
+	return s
+}
+
+func (s *ListMessageResponseBodyData) SetCreateAt(v int64) *ListMessageResponseBodyData {
+	s.CreateAt = &v
+	return s
+}
+
+func (s *ListMessageResponseBodyData) SetId(v string) *ListMessageResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *ListMessageResponseBodyData) SetMetadata(v map[string]interface{}) *ListMessageResponseBodyData {
+	s.Metadata = v
+	return s
+}
+
+func (s *ListMessageResponseBodyData) SetObject(v string) *ListMessageResponseBodyData {
+	s.Object = &v
+	return s
+}
+
+func (s *ListMessageResponseBodyData) SetRole(v string) *ListMessageResponseBodyData {
+	s.Role = &v
+	return s
+}
+
+func (s *ListMessageResponseBodyData) SetRunId(v string) *ListMessageResponseBodyData {
+	s.RunId = &v
+	return s
+}
+
+func (s *ListMessageResponseBodyData) SetThreadId(v string) *ListMessageResponseBodyData {
+	s.ThreadId = &v
+	return s
+}
+
+type ListMessageResponseBodyDataContent struct {
+	CardCallback *ListMessageResponseBodyDataContentCardCallback `json:"cardCallback,omitempty" xml:"cardCallback,omitempty" type:"Struct"`
+	DingCard     *ListMessageResponseBodyDataContentDingCard     `json:"dingCard,omitempty" xml:"dingCard,omitempty" type:"Struct"`
+	ImageUrl     *ListMessageResponseBodyDataContentImageUrl     `json:"imageUrl,omitempty" xml:"imageUrl,omitempty" type:"Struct"`
+	Markdown     *ListMessageResponseBodyDataContentMarkdown     `json:"markdown,omitempty" xml:"markdown,omitempty" type:"Struct"`
+	Text         *ListMessageResponseBodyDataContentText         `json:"text,omitempty" xml:"text,omitempty" type:"Struct"`
+	// example:
+	//
+	// text
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s ListMessageResponseBodyDataContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMessageResponseBodyDataContent) GoString() string {
+	return s.String()
+}
+
+func (s *ListMessageResponseBodyDataContent) SetCardCallback(v *ListMessageResponseBodyDataContentCardCallback) *ListMessageResponseBodyDataContent {
+	s.CardCallback = v
+	return s
+}
+
+func (s *ListMessageResponseBodyDataContent) SetDingCard(v *ListMessageResponseBodyDataContentDingCard) *ListMessageResponseBodyDataContent {
+	s.DingCard = v
+	return s
+}
+
+func (s *ListMessageResponseBodyDataContent) SetImageUrl(v *ListMessageResponseBodyDataContentImageUrl) *ListMessageResponseBodyDataContent {
+	s.ImageUrl = v
+	return s
+}
+
+func (s *ListMessageResponseBodyDataContent) SetMarkdown(v *ListMessageResponseBodyDataContentMarkdown) *ListMessageResponseBodyDataContent {
+	s.Markdown = v
+	return s
+}
+
+func (s *ListMessageResponseBodyDataContent) SetText(v *ListMessageResponseBodyDataContentText) *ListMessageResponseBodyDataContent {
+	s.Text = v
+	return s
+}
+
+func (s *ListMessageResponseBodyDataContent) SetType(v string) *ListMessageResponseBodyDataContent {
+	s.Type = &v
+	return s
+}
+
+type ListMessageResponseBodyDataContentCardCallback struct {
+	// example:
+	//
+	// {}
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// example:
+	//
+	// templateId123
+	TemplateId *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
+	// example:
+	//
+	// 012345
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+}
+
+func (s ListMessageResponseBodyDataContentCardCallback) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMessageResponseBodyDataContentCardCallback) GoString() string {
+	return s.String()
+}
+
+func (s *ListMessageResponseBodyDataContentCardCallback) SetContent(v string) *ListMessageResponseBodyDataContentCardCallback {
+	s.Content = &v
+	return s
+}
+
+func (s *ListMessageResponseBodyDataContentCardCallback) SetTemplateId(v string) *ListMessageResponseBodyDataContentCardCallback {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *ListMessageResponseBodyDataContentCardCallback) SetUserId(v string) *ListMessageResponseBodyDataContentCardCallback {
+	s.UserId = &v
+	return s
+}
+
+type ListMessageResponseBodyDataContentDingCard struct {
+	// example:
+	//
+	// 卡片描述
+	CardDesc *string `json:"cardDesc,omitempty" xml:"cardDesc,omitempty"`
+	// example:
+	//
+	// {}
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// example:
+	//
+	// basic_card_schema
+	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
+	// example:
+	//
+	// true
+	Finished *bool `json:"finished,omitempty" xml:"finished,omitempty"`
+	// example:
+	//
+	// templateId123
+	TemplateId *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
+}
+
+func (s ListMessageResponseBodyDataContentDingCard) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMessageResponseBodyDataContentDingCard) GoString() string {
+	return s.String()
+}
+
+func (s *ListMessageResponseBodyDataContentDingCard) SetCardDesc(v string) *ListMessageResponseBodyDataContentDingCard {
+	s.CardDesc = &v
+	return s
+}
+
+func (s *ListMessageResponseBodyDataContentDingCard) SetContent(v string) *ListMessageResponseBodyDataContentDingCard {
+	s.Content = &v
+	return s
+}
+
+func (s *ListMessageResponseBodyDataContentDingCard) SetContentType(v string) *ListMessageResponseBodyDataContentDingCard {
+	s.ContentType = &v
+	return s
+}
+
+func (s *ListMessageResponseBodyDataContentDingCard) SetFinished(v bool) *ListMessageResponseBodyDataContentDingCard {
+	s.Finished = &v
+	return s
+}
+
+func (s *ListMessageResponseBodyDataContentDingCard) SetTemplateId(v string) *ListMessageResponseBodyDataContentDingCard {
+	s.TemplateId = &v
+	return s
+}
+
+type ListMessageResponseBodyDataContentImageUrl struct {
+	// example:
+	//
+	// auto
+	Detail    *string `json:"detail,omitempty" xml:"detail,omitempty"`
+	ImageDesc *string `json:"imageDesc,omitempty" xml:"imageDesc,omitempty"`
+	// example:
+	//
+	// https://img.alicdn.com/1234.png
+	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s ListMessageResponseBodyDataContentImageUrl) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMessageResponseBodyDataContentImageUrl) GoString() string {
+	return s.String()
+}
+
+func (s *ListMessageResponseBodyDataContentImageUrl) SetDetail(v string) *ListMessageResponseBodyDataContentImageUrl {
+	s.Detail = &v
+	return s
+}
+
+func (s *ListMessageResponseBodyDataContentImageUrl) SetImageDesc(v string) *ListMessageResponseBodyDataContentImageUrl {
+	s.ImageDesc = &v
+	return s
+}
+
+func (s *ListMessageResponseBodyDataContentImageUrl) SetUrl(v string) *ListMessageResponseBodyDataContentImageUrl {
+	s.Url = &v
+	return s
+}
+
+type ListMessageResponseBodyDataContentMarkdown struct {
+	// example:
+	//
+	// 1. markdown内容
+	//
+	// 2. markdown内容
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s ListMessageResponseBodyDataContentMarkdown) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMessageResponseBodyDataContentMarkdown) GoString() string {
+	return s.String()
+}
+
+func (s *ListMessageResponseBodyDataContentMarkdown) SetValue(v string) *ListMessageResponseBodyDataContentMarkdown {
+	s.Value = &v
+	return s
+}
+
+type ListMessageResponseBodyDataContentText struct {
+	// example:
+	//
+	// 你好！
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s ListMessageResponseBodyDataContentText) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMessageResponseBodyDataContentText) GoString() string {
+	return s.String()
+}
+
+func (s *ListMessageResponseBodyDataContentText) SetValue(v string) *ListMessageResponseBodyDataContentText {
+	s.Value = &v
+	return s
+}
+
+type ListMessageResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListMessageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListMessageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMessageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListMessageResponse) SetHeaders(v map[string]*string) *ListMessageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListMessageResponse) SetStatusCode(v int32) *ListMessageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListMessageResponse) SetBody(v *ListMessageResponseBody) *ListMessageResponse {
+	s.Body = v
+	return s
+}
+
 type ListMultiDimTableRecordsHeaders struct {
 	CommonHeaders  map[string]*string                             `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	AccountContext *ListMultiDimTableRecordsHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
@@ -63870,6 +65876,240 @@ func (s *RespondEventResponse) SetStatusCode(v int32) *RespondEventResponse {
 }
 
 func (s *RespondEventResponse) SetBody(v *RespondEventResponseBody) *RespondEventResponse {
+	s.Body = v
+	return s
+}
+
+type RetrieveRunHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// example:
+	//
+	// 123456
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s RetrieveRunHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RetrieveRunHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *RetrieveRunHeaders) SetCommonHeaders(v map[string]*string) *RetrieveRunHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *RetrieveRunHeaders) SetAccountId(v string) *RetrieveRunHeaders {
+	s.AccountId = &v
+	return s
+}
+
+type RetrieveRunRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// assistantId1
+	AssistantId *string `json:"assistantId,omitempty" xml:"assistantId,omitempty"`
+	// example:
+	//
+	// assistantId
+	OriginalAssistantId *string `json:"originalAssistantId,omitempty" xml:"originalAssistantId,omitempty"`
+	// example:
+	//
+	// runId123
+	RunId *string `json:"runId,omitempty" xml:"runId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// threadId123
+	ThreadId *string `json:"threadId,omitempty" xml:"threadId,omitempty"`
+}
+
+func (s RetrieveRunRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RetrieveRunRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RetrieveRunRequest) SetAssistantId(v string) *RetrieveRunRequest {
+	s.AssistantId = &v
+	return s
+}
+
+func (s *RetrieveRunRequest) SetOriginalAssistantId(v string) *RetrieveRunRequest {
+	s.OriginalAssistantId = &v
+	return s
+}
+
+func (s *RetrieveRunRequest) SetRunId(v string) *RetrieveRunRequest {
+	s.RunId = &v
+	return s
+}
+
+func (s *RetrieveRunRequest) SetThreadId(v string) *RetrieveRunRequest {
+	s.ThreadId = &v
+	return s
+}
+
+type RetrieveRunResponseBody struct {
+	// example:
+	//
+	// 1642448000000
+	CancelledAt *int64 `json:"cancelledAt,omitempty" xml:"cancelledAt,omitempty"`
+	// example:
+	//
+	// 1642448000000
+	CompletedAt *int64 `json:"completedAt,omitempty" xml:"completedAt,omitempty"`
+	// example:
+	//
+	// 1642448000000
+	CreateAt *int64 `json:"createAt,omitempty" xml:"createAt,omitempty"`
+	// example:
+	//
+	// 1642448000000
+	ExpiresAt *int64 `json:"expiresAt,omitempty" xml:"expiresAt,omitempty"`
+	// example:
+	//
+	// 1642448000000
+	FailedAt *int64 `json:"failedAt,omitempty" xml:"failedAt,omitempty"`
+	// example:
+	//
+	// runId123
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// errorMsg
+	LastErrorMsg *string `json:"lastErrorMsg,omitempty" xml:"lastErrorMsg,omitempty"`
+	// example:
+	//
+	// {}
+	Metadata map[string]interface{} `json:"metadata,omitempty" xml:"metadata,omitempty"`
+	// example:
+	//
+	// thread.run
+	Object *string `json:"object,omitempty" xml:"object,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 1642448000000
+	StartedAt *int64 `json:"startedAt,omitempty" xml:"startedAt,omitempty"`
+	// example:
+	//
+	// running
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// threadId123
+	ThreadId *string `json:"threadId,omitempty" xml:"threadId,omitempty"`
+}
+
+func (s RetrieveRunResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RetrieveRunResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RetrieveRunResponseBody) SetCancelledAt(v int64) *RetrieveRunResponseBody {
+	s.CancelledAt = &v
+	return s
+}
+
+func (s *RetrieveRunResponseBody) SetCompletedAt(v int64) *RetrieveRunResponseBody {
+	s.CompletedAt = &v
+	return s
+}
+
+func (s *RetrieveRunResponseBody) SetCreateAt(v int64) *RetrieveRunResponseBody {
+	s.CreateAt = &v
+	return s
+}
+
+func (s *RetrieveRunResponseBody) SetExpiresAt(v int64) *RetrieveRunResponseBody {
+	s.ExpiresAt = &v
+	return s
+}
+
+func (s *RetrieveRunResponseBody) SetFailedAt(v int64) *RetrieveRunResponseBody {
+	s.FailedAt = &v
+	return s
+}
+
+func (s *RetrieveRunResponseBody) SetId(v string) *RetrieveRunResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *RetrieveRunResponseBody) SetLastErrorMsg(v string) *RetrieveRunResponseBody {
+	s.LastErrorMsg = &v
+	return s
+}
+
+func (s *RetrieveRunResponseBody) SetMetadata(v map[string]interface{}) *RetrieveRunResponseBody {
+	s.Metadata = v
+	return s
+}
+
+func (s *RetrieveRunResponseBody) SetObject(v string) *RetrieveRunResponseBody {
+	s.Object = &v
+	return s
+}
+
+func (s *RetrieveRunResponseBody) SetRequestId(v string) *RetrieveRunResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RetrieveRunResponseBody) SetStartedAt(v int64) *RetrieveRunResponseBody {
+	s.StartedAt = &v
+	return s
+}
+
+func (s *RetrieveRunResponseBody) SetStatus(v string) *RetrieveRunResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *RetrieveRunResponseBody) SetThreadId(v string) *RetrieveRunResponseBody {
+	s.ThreadId = &v
+	return s
+}
+
+type RetrieveRunResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RetrieveRunResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RetrieveRunResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RetrieveRunResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RetrieveRunResponse) SetHeaders(v map[string]*string) *RetrieveRunResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RetrieveRunResponse) SetStatusCode(v int32) *RetrieveRunResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RetrieveRunResponse) SetBody(v *RetrieveRunResponseBody) *RetrieveRunResponse {
 	s.Body = v
 	return s
 }
@@ -80841,6 +83081,110 @@ func (client *Client) CreateMeetingRoomGroup(request *CreateMeetingRoomGroupRequ
 
 // Summary:
 //
+// 创建消息
+//
+// @param request - CreateMessageRequest
+//
+// @param headers - CreateMessageHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMessageResponse
+func (client *Client) CreateMessageWithOptions(request *CreateMessageRequest, headers *CreateMessageHeaders, runtime *util.RuntimeOptions) (_result *CreateMessageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AssistantId)) {
+		body["assistantId"] = request.AssistantId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		body["content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Metadata)) {
+		body["metadata"] = request.Metadata
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OriginalAssistantId)) {
+		body["originalAssistantId"] = request.OriginalAssistantId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Role)) {
+		body["role"] = request.Role
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThreadId)) {
+		body["threadId"] = request.ThreadId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountId)) {
+		realHeaders["accountId"] = util.ToJSONString(headers.AccountId)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateMessage"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/ai/v1/assistant/createMessage"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateMessageResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateMessageResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 创建消息
+//
+// @param request - CreateMessageRequest
+//
+// @return CreateMessageResponse
+func (client *Client) CreateMessage(request *CreateMessageRequest) (_result *CreateMessageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &CreateMessageHeaders{}
+	_result = &CreateMessageResponse{}
+	_body, _err := client.CreateMessageWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 新增或更新表单实例
 //
 // @param request - CreateOrUpdateFormDataRequest
@@ -81338,6 +83682,110 @@ func (client *Client) CreateReport(request *CreateReportRequest) (_result *Creat
 	headers := &CreateReportHeaders{}
 	_result = &CreateReportResponse{}
 	_body, _err := client.CreateReportWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建运行
+//
+// @param request - CreateRunRequest
+//
+// @param headers - CreateRunHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRunResponse
+func (client *Client) CreateRunWithOptions(request *CreateRunRequest, headers *CreateRunHeaders, runtime *util.RuntimeOptions) (_result *CreateRunResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AssistantId)) {
+		body["assistantId"] = request.AssistantId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Instructions)) {
+		body["instructions"] = request.Instructions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Metadata)) {
+		body["metadata"] = request.Metadata
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OriginalAssistantId)) {
+		body["originalAssistantId"] = request.OriginalAssistantId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Stream)) {
+		body["stream"] = request.Stream
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThreadId)) {
+		body["threadId"] = request.ThreadId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountId)) {
+		realHeaders["accountId"] = util.ToJSONString(headers.AccountId)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateRun"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/ai/v1/assistant/createRun"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateRunResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateRunResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 创建运行
+//
+// @param request - CreateRunRequest
+//
+// @return CreateRunResponse
+func (client *Client) CreateRun(request *CreateRunRequest) (_result *CreateRunResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &CreateRunHeaders{}
+	_result = &CreateRunResponse{}
+	_body, _err := client.CreateRunWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -82076,6 +84524,98 @@ func (client *Client) CreateSubscribedCalendar(request *CreateSubscribedCalendar
 	headers := &CreateSubscribedCalendarHeaders{}
 	_result = &CreateSubscribedCalendarResponse{}
 	_body, _err := client.CreateSubscribedCalendarWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建线程
+//
+// @param request - CreateThreadRequest
+//
+// @param headers - CreateThreadHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateThreadResponse
+func (client *Client) CreateThreadWithOptions(request *CreateThreadRequest, headers *CreateThreadHeaders, runtime *util.RuntimeOptions) (_result *CreateThreadResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AssistantId)) {
+		body["assistantId"] = request.AssistantId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Metadata)) {
+		body["metadata"] = request.Metadata
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OriginalAssistantId)) {
+		body["originalAssistantId"] = request.OriginalAssistantId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountId)) {
+		realHeaders["accountId"] = util.ToJSONString(headers.AccountId)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateThread"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/ai/v1/assistant/createThread"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateThreadResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateThreadResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 创建线程
+//
+// @param request - CreateThreadRequest
+//
+// @return CreateThreadResponse
+func (client *Client) CreateThread(request *CreateThreadRequest) (_result *CreateThreadResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &CreateThreadHeaders{}
+	_result = &CreateThreadResponse{}
+	_body, _err := client.CreateThreadWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -92865,6 +95405,110 @@ func (client *Client) ListFormRemarks(request *ListFormRemarksRequest) (_result 
 
 // Summary:
 //
+// 查询消息
+//
+// @param request - ListMessageRequest
+//
+// @param headers - ListMessageHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMessageResponse
+func (client *Client) ListMessageWithOptions(request *ListMessageRequest, headers *ListMessageHeaders, runtime *util.RuntimeOptions) (_result *ListMessageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AssistantId)) {
+		body["assistantId"] = request.AssistantId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		body["limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		body["order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OriginalAssistantid)) {
+		body["originalAssistantid"] = request.OriginalAssistantid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RunId)) {
+		body["runId"] = request.RunId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThreadId)) {
+		body["threadId"] = request.ThreadId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountId)) {
+		realHeaders["accountId"] = util.ToJSONString(headers.AccountId)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListMessage"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/ai/v1/assistant/listMessage"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListMessageResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListMessageResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询消息
+//
+// @param request - ListMessageRequest
+//
+// @return ListMessageResponse
+func (client *Client) ListMessage(request *ListMessageRequest) (_result *ListMessageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ListMessageHeaders{}
+	_result = &ListMessageResponse{}
+	_body, _err := client.ListMessageWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 列出多行记录
 //
 // @param tmpReq - ListMultiDimTableRecordsRequest
@@ -97300,6 +99944,102 @@ func (client *Client) RespondEvent(request *RespondEventRequest) (_result *Respo
 	headers := &RespondEventHeaders{}
 	_result = &RespondEventResponse{}
 	_body, _err := client.RespondEventWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询运行
+//
+// @param request - RetrieveRunRequest
+//
+// @param headers - RetrieveRunHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RetrieveRunResponse
+func (client *Client) RetrieveRunWithOptions(request *RetrieveRunRequest, headers *RetrieveRunHeaders, runtime *util.RuntimeOptions) (_result *RetrieveRunResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AssistantId)) {
+		body["assistantId"] = request.AssistantId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OriginalAssistantId)) {
+		body["originalAssistantId"] = request.OriginalAssistantId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RunId)) {
+		body["runId"] = request.RunId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThreadId)) {
+		body["threadId"] = request.ThreadId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountId)) {
+		realHeaders["accountId"] = util.ToJSONString(headers.AccountId)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RetrieveRun"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/ai/v1/assistant/retrieveRun"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RetrieveRunResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RetrieveRunResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询运行
+//
+// @param request - RetrieveRunRequest
+//
+// @return RetrieveRunResponse
+func (client *Client) RetrieveRun(request *RetrieveRunRequest) (_result *RetrieveRunResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &RetrieveRunHeaders{}
+	_result = &RetrieveRunResponse{}
+	_body, _err := client.RetrieveRunWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
