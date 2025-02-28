@@ -184,6 +184,7 @@ type WafRuleConfig struct {
 	Name            *string                         `json:"Name,omitempty" xml:"Name,omitempty"`
 	Notes           *string                         `json:"Notes,omitempty" xml:"Notes,omitempty"`
 	RateLimit       *WafRuleConfigRateLimit         `json:"RateLimit,omitempty" xml:"RateLimit,omitempty" type:"Struct"`
+	SecurityLevel   *WafRuleConfigSecurityLevel     `json:"SecurityLevel,omitempty" xml:"SecurityLevel,omitempty" type:"Struct"`
 	Sigchl          []*string                       `json:"Sigchl,omitempty" xml:"Sigchl,omitempty" type:"Repeated"`
 	Status          *string                         `json:"Status,omitempty" xml:"Status,omitempty"`
 	Timer           *WafTimer                       `json:"Timer,omitempty" xml:"Timer,omitempty"`
@@ -256,6 +257,11 @@ func (s *WafRuleConfig) SetNotes(v string) *WafRuleConfig {
 
 func (s *WafRuleConfig) SetRateLimit(v *WafRuleConfigRateLimit) *WafRuleConfig {
 	s.RateLimit = v
+	return s
+}
+
+func (s *WafRuleConfig) SetSecurityLevel(v *WafRuleConfigSecurityLevel) *WafRuleConfig {
+	s.SecurityLevel = v
 	return s
 }
 
@@ -647,6 +653,23 @@ func (s *WafRuleConfigRateLimitThresholdResponseStatus) SetCount(v int32) *WafRu
 
 func (s *WafRuleConfigRateLimitThresholdResponseStatus) SetRatio(v int32) *WafRuleConfigRateLimitThresholdResponseStatus {
 	s.Ratio = &v
+	return s
+}
+
+type WafRuleConfigSecurityLevel struct {
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s WafRuleConfigSecurityLevel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WafRuleConfigSecurityLevel) GoString() string {
+	return s.String()
+}
+
+func (s *WafRuleConfigSecurityLevel) SetValue(v string) *WafRuleConfigSecurityLevel {
+	s.Value = &v
 	return s
 }
 
@@ -9749,6 +9772,7 @@ type CreateOriginRuleRequest struct {
 	//
 	// 4433
 	OriginHttpsPort *string `json:"OriginHttpsPort,omitempty" xml:"OriginHttpsPort,omitempty"`
+	OriginMtls      *string `json:"OriginMtls,omitempty" xml:"OriginMtls,omitempty"`
 	// Protocol used for the origin request. Possible values:
 	//
 	// - http: Use HTTP protocol for origin requests.
@@ -9766,7 +9790,8 @@ type CreateOriginRuleRequest struct {
 	// example:
 	//
 	// origin.example.com
-	OriginSni *string `json:"OriginSni,omitempty" xml:"OriginSni,omitempty"`
+	OriginSni    *string `json:"OriginSni,omitempty" xml:"OriginSni,omitempty"`
+	OriginVerify *string `json:"OriginVerify,omitempty" xml:"OriginVerify,omitempty"`
 	// Use range chunking for downloading files from the origin. Possible values:
 	//
 	// - on: Enable
@@ -9845,6 +9870,11 @@ func (s *CreateOriginRuleRequest) SetOriginHttpsPort(v string) *CreateOriginRule
 	return s
 }
 
+func (s *CreateOriginRuleRequest) SetOriginMtls(v string) *CreateOriginRuleRequest {
+	s.OriginMtls = &v
+	return s
+}
+
 func (s *CreateOriginRuleRequest) SetOriginScheme(v string) *CreateOriginRuleRequest {
 	s.OriginScheme = &v
 	return s
@@ -9852,6 +9882,11 @@ func (s *CreateOriginRuleRequest) SetOriginScheme(v string) *CreateOriginRuleReq
 
 func (s *CreateOriginRuleRequest) SetOriginSni(v string) *CreateOriginRuleRequest {
 	s.OriginSni = &v
+	return s
+}
+
+func (s *CreateOriginRuleRequest) SetOriginVerify(v string) *CreateOriginRuleRequest {
+	s.OriginVerify = &v
 	return s
 }
 
@@ -13305,7 +13340,7 @@ type CreateSiteDeliveryTaskResponseBody struct {
 	// example:
 	//
 	// 123456****
-	SiteId *string `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 	// The name of the delivery task.
 	//
 	// example:
@@ -13332,7 +13367,7 @@ func (s *CreateSiteDeliveryTaskResponseBody) SetRequestId(v string) *CreateSiteD
 	return s
 }
 
-func (s *CreateSiteDeliveryTaskResponseBody) SetSiteId(v string) *CreateSiteDeliveryTaskResponseBody {
+func (s *CreateSiteDeliveryTaskResponseBody) SetSiteId(v int64) *CreateSiteDeliveryTaskResponseBody {
 	s.SiteId = &v
 	return s
 }
@@ -15534,7 +15569,7 @@ func (s *DeactivateVersionManagementResponse) SetBody(v *DeactivateVersionManage
 }
 
 type DeleteCacheRuleRequest struct {
-	// ConfigId of the configuration, which can be obtained by calling the [ListCacheRules](~~ListCacheRules~~) interface.
+	// ConfigId of the configuration, which can be obtained by calling the [ListCacheRules](https://help.aliyun.com/document_detail/2866985.html) interface.
 	//
 	// This parameter is required.
 	//
@@ -17108,7 +17143,7 @@ func (s *DeleteListResponse) SetBody(v *DeleteListResponseBody) *DeleteListRespo
 }
 
 type DeleteLoadBalancerRequest struct {
-	// The ID of the load balancer, used to uniquely identify the load balancer to be queried. This ID is returned directly upon creation of the load balancer and can also be obtained through the [ListLoadBalancers](~~ListLoadBalancers~~) interface for querying all load balancers under a site.
+	// The ID of the load balancer, used to uniquely identify the load balancer to be queried. This ID is returned directly upon creation of the load balancer and can also be obtained through the [ListLoadBalancers](https://help.aliyun.com/document_detail/2868897.html) interface for querying all load balancers under a site.
 	//
 	// This parameter is required.
 	//
@@ -17196,7 +17231,7 @@ func (s *DeleteLoadBalancerResponse) SetBody(v *DeleteLoadBalancerResponseBody) 
 }
 
 type DeleteNetworkOptimizationRequest struct {
-	// ConfigId of the configuration, which can be obtained by calling the [ListNetworkOptimizations](~~ListNetworkOptimizations~~) interface.
+	// ConfigId of the configuration, which can be obtained by calling the ListNetworkOptimizations.
 	//
 	// This parameter is required.
 	//
@@ -17284,7 +17319,7 @@ func (s *DeleteNetworkOptimizationResponse) SetBody(v *DeleteNetworkOptimization
 }
 
 type DeleteOriginPoolRequest struct {
-	// The ID of the origin address pool, which can be obtained by calling the [ListOriginPools](~~ListOriginPools~~) API.
+	// The ID of the origin address pool, which can be obtained by calling the [ListOriginPools](https://help.aliyun.com/document_detail/2863947.html) API.
 	//
 	// This parameter is required.
 	//
@@ -17447,7 +17482,7 @@ func (s *DeleteOriginProtectionResponse) SetBody(v *DeleteOriginProtectionRespon
 }
 
 type DeleteOriginRuleRequest struct {
-	// ConfigId of the configuration, which can be obtained by calling the [ListOriginRules](~~ListOriginRules~~) interface.
+	// ConfigId of the configuration, which can be obtained by calling the [ListOriginRules](https://help.aliyun.com/document_detail/2866989.html) interface.
 	//
 	// This parameter is required.
 	//
@@ -21204,6 +21239,8 @@ func (s *DescribePurgeTasksResponse) SetBody(v *DescribePurgeTasksResponseBody) 
 }
 
 type DescribeRatePlanInstanceStatusRequest struct {
+	// Instance ID, obtained from the [ListUserRatePlanInstances](~~ListUserRatePlanInstances~~) API.
+	//
 	// example:
 	//
 	// xcdn-91fknmb80f0g***
@@ -21224,15 +21261,33 @@ func (s *DescribeRatePlanInstanceStatusRequest) SetInstanceId(v string) *Describ
 }
 
 type DescribeRatePlanInstanceStatusResponseBody struct {
+	// Instance ID.
+	//
 	// example:
 	//
 	// xcdn-91fknmb80f0g***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Instance status, with possible values:
+	//
+	// - running: Running
+	//
+	// - renewing: Renewing
+	//
+	// - upgrading: Upgrading
+	//
+	// - releasePrepaidService: Prepaid service released due to expiration
+	//
+	// - creating: Creating
+	//
+	// - downgrading: Downgrading
+	//
+	// - ceasePrepaidService: Prepaid service ceased upon expiration
+	//
 	// example:
 	//
 	// running
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	// Id of the request
+	// Request ID.
 	//
 	// example:
 	//
@@ -27976,7 +28031,7 @@ func (s *GetListResponse) SetBody(v *GetListResponseBody) *GetListResponse {
 }
 
 type GetLoadBalancerRequest struct {
-	// The ID of the load balancer, used to uniquely identify the load balancer to be queried. This ID is returned directly when the load balancer is created, or it can be obtained through the [ListLoadBalancers](~~ListLoadBalancers~~) interface for querying all load balancers under a site.
+	// The ID of the load balancer, used to uniquely identify the load balancer to be queried. This ID is returned directly when the load balancer is created, or it can be obtained through the [ListLoadBalancers](https://help.aliyun.com/document_detail/2868897.html) interface for querying all load balancers under a site.
 	//
 	// This parameter is required.
 	//
@@ -28830,7 +28885,7 @@ func (s *GetManagedTransformResponse) SetBody(v *GetManagedTransformResponseBody
 }
 
 type GetNetworkOptimizationRequest struct {
-	// ConfigId of the configuration, which can be obtained by calling the [ListNetworkOptimizations](~~ListNetworkOptimizations~~) interface.
+	// ConfigId of the configuration, which can be obtained by calling the ListNetworkOptimizations.
 	//
 	// This parameter is required.
 	//
@@ -29950,6 +30005,7 @@ type GetOriginRuleResponseBody struct {
 	//
 	// 4433
 	OriginHttpsPort *string `json:"OriginHttpsPort,omitempty" xml:"OriginHttpsPort,omitempty"`
+	OriginMtls      *string `json:"OriginMtls,omitempty" xml:"OriginMtls,omitempty"`
 	// Protocol used for the origin request. Value range:
 	//
 	// - http: Use HTTP protocol for origin.
@@ -29967,7 +30023,8 @@ type GetOriginRuleResponseBody struct {
 	// example:
 	//
 	// origin.example.com
-	OriginSni *string `json:"OriginSni,omitempty" xml:"OriginSni,omitempty"`
+	OriginSni    *string `json:"OriginSni,omitempty" xml:"OriginSni,omitempty"`
+	OriginVerify *string `json:"OriginVerify,omitempty" xml:"OriginVerify,omitempty"`
 	// Use range chunking method for origin download. Value range:
 	//
 	// - on: Enable.
@@ -30060,6 +30117,11 @@ func (s *GetOriginRuleResponseBody) SetOriginHttpsPort(v string) *GetOriginRuleR
 	return s
 }
 
+func (s *GetOriginRuleResponseBody) SetOriginMtls(v string) *GetOriginRuleResponseBody {
+	s.OriginMtls = &v
+	return s
+}
+
 func (s *GetOriginRuleResponseBody) SetOriginScheme(v string) *GetOriginRuleResponseBody {
 	s.OriginScheme = &v
 	return s
@@ -30067,6 +30129,11 @@ func (s *GetOriginRuleResponseBody) SetOriginScheme(v string) *GetOriginRuleResp
 
 func (s *GetOriginRuleResponseBody) SetOriginSni(v string) *GetOriginRuleResponseBody {
 	s.OriginSni = &v
+	return s
+}
+
+func (s *GetOriginRuleResponseBody) SetOriginVerify(v string) *GetOriginRuleResponseBody {
+	s.OriginVerify = &v
 	return s
 }
 
@@ -34377,6 +34444,7 @@ func (s *GetWafFilterResponseBodyFilter) SetType(v string) *GetWafFilterResponse
 }
 
 type GetWafFilterResponseBodyFilterFields struct {
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	// The field for matched objects in the system.
 	//
 	// example:
@@ -34390,7 +34458,8 @@ type GetWafFilterResponseBodyFilterFields struct {
 	// Header
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
 	// The logical conditions.
-	Logics []*GetWafFilterResponseBodyFilterFieldsLogics `json:"Logics,omitempty" xml:"Logics,omitempty" type:"Repeated"`
+	Logics  []*GetWafFilterResponseBodyFilterFieldsLogics `json:"Logics,omitempty" xml:"Logics,omitempty" type:"Repeated"`
+	MinPlan *string                                       `json:"MinPlan,omitempty" xml:"MinPlan,omitempty"`
 	// The selector, which defines how to select a matched object.
 	Selector *GetWafFilterResponseBodyFilterFieldsSelector `json:"Selector,omitempty" xml:"Selector,omitempty" type:"Struct"`
 	// Indicates whether the matched object contains a subfield.
@@ -34415,6 +34484,11 @@ func (s GetWafFilterResponseBodyFilterFields) GoString() string {
 	return s.String()
 }
 
+func (s *GetWafFilterResponseBodyFilterFields) SetEnable(v bool) *GetWafFilterResponseBodyFilterFields {
+	s.Enable = &v
+	return s
+}
+
 func (s *GetWafFilterResponseBodyFilterFields) SetKey(v string) *GetWafFilterResponseBodyFilterFields {
 	s.Key = &v
 	return s
@@ -34427,6 +34501,11 @@ func (s *GetWafFilterResponseBodyFilterFields) SetLabel(v string) *GetWafFilterR
 
 func (s *GetWafFilterResponseBodyFilterFields) SetLogics(v []*GetWafFilterResponseBodyFilterFieldsLogics) *GetWafFilterResponseBodyFilterFields {
 	s.Logics = v
+	return s
+}
+
+func (s *GetWafFilterResponseBodyFilterFields) SetMinPlan(v string) *GetWafFilterResponseBodyFilterFields {
+	s.MinPlan = &v
 	return s
 }
 
@@ -34452,6 +34531,7 @@ type GetWafFilterResponseBodyFilterFieldsLogics struct {
 	//
 	// 1
 	Attributes *int32 `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
+	Enable     *bool  `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	// The type of the value input box. Valid values:
 	//
 	// 	- select:single
@@ -34465,7 +34545,8 @@ type GetWafFilterResponseBodyFilterFieldsLogics struct {
 	// example:
 	//
 	// input:single
-	Kind *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
+	Kind    *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
+	MinPlan *string `json:"MinPlan,omitempty" xml:"MinPlan,omitempty"`
 	// Indicates whether the match result is inverted.
 	Negative *bool `json:"Negative,omitempty" xml:"Negative,omitempty"`
 	// The displayed matching characters.
@@ -34517,8 +34598,18 @@ func (s *GetWafFilterResponseBodyFilterFieldsLogics) SetAttributes(v int32) *Get
 	return s
 }
 
+func (s *GetWafFilterResponseBodyFilterFieldsLogics) SetEnable(v bool) *GetWafFilterResponseBodyFilterFieldsLogics {
+	s.Enable = &v
+	return s
+}
+
 func (s *GetWafFilterResponseBodyFilterFieldsLogics) SetKind(v string) *GetWafFilterResponseBodyFilterFieldsLogics {
 	s.Kind = &v
+	return s
+}
+
+func (s *GetWafFilterResponseBodyFilterFieldsLogics) SetMinPlan(v string) *GetWafFilterResponseBodyFilterFieldsLogics {
+	s.MinPlan = &v
 	return s
 }
 
@@ -42411,7 +42502,7 @@ func (s *ListListsResponse) SetBody(v *ListListsResponseBody) *ListListsResponse
 }
 
 type ListLoadBalancerOriginStatusRequest struct {
-	// Load balancer ID. When querying multiple load balancers, separate the IDs with commas. A maximum of 100 load balancer IDs can be passed at once. Load balancer IDs can be obtained by calling the [ListLoadBalancers](~~ListLoadBalancers~~) interface.
+	// Load balancer ID. When querying multiple load balancers, separate the IDs with commas. A maximum of 100 load balancer IDs can be passed at once. Load balancer IDs can be obtained by calling the [ListLoadBalancers](https://help.aliyun.com/document_detail/2868897.html) interface.
 	//
 	// This parameter is required.
 	//
@@ -45000,6 +45091,7 @@ type ListOriginRulesResponseBodyConfigs struct {
 	//
 	// 4433
 	OriginHttpsPort *string `json:"OriginHttpsPort,omitempty" xml:"OriginHttpsPort,omitempty"`
+	OriginMtls      *string `json:"OriginMtls,omitempty" xml:"OriginMtls,omitempty"`
 	// Protocol used for the origin request. Value range:
 	//
 	// - http: Use HTTP protocol for origin requests.
@@ -45017,7 +45109,8 @@ type ListOriginRulesResponseBodyConfigs struct {
 	// example:
 	//
 	// origin.example.com
-	OriginSni *string `json:"OriginSni,omitempty" xml:"OriginSni,omitempty"`
+	OriginSni    *string `json:"OriginSni,omitempty" xml:"OriginSni,omitempty"`
+	OriginVerify *string `json:"OriginVerify,omitempty" xml:"OriginVerify,omitempty"`
 	// Use range slicing to download files from the origin. The value range is:
 	//
 	// - on: enabled
@@ -45104,6 +45197,11 @@ func (s *ListOriginRulesResponseBodyConfigs) SetOriginHttpsPort(v string) *ListO
 	return s
 }
 
+func (s *ListOriginRulesResponseBodyConfigs) SetOriginMtls(v string) *ListOriginRulesResponseBodyConfigs {
+	s.OriginMtls = &v
+	return s
+}
+
 func (s *ListOriginRulesResponseBodyConfigs) SetOriginScheme(v string) *ListOriginRulesResponseBodyConfigs {
 	s.OriginScheme = &v
 	return s
@@ -45111,6 +45209,11 @@ func (s *ListOriginRulesResponseBodyConfigs) SetOriginScheme(v string) *ListOrig
 
 func (s *ListOriginRulesResponseBodyConfigs) SetOriginSni(v string) *ListOriginRulesResponseBodyConfigs {
 	s.OriginSni = &v
+	return s
+}
+
+func (s *ListOriginRulesResponseBodyConfigs) SetOriginVerify(v string) *ListOriginRulesResponseBodyConfigs {
+	s.OriginVerify = &v
 	return s
 }
 
@@ -57355,7 +57458,7 @@ type UpdateLoadBalancerRequest struct {
 	//
 	// 96228666776****
 	FallbackPool *int64 `json:"FallbackPool,omitempty" xml:"FallbackPool,omitempty"`
-	// Load balancer ID, which can be obtained by calling the [ListLoadBalancers](~~ListLoadBalancers~~) interface.
+	// Load balancer ID, which can be obtained by calling the [ListLoadBalancers](https://help.aliyun.com/document_detail/2868897.html) interface.
 	//
 	// This parameter is required.
 	//
@@ -57974,7 +58077,7 @@ type UpdateLoadBalancerShrinkRequest struct {
 	//
 	// 96228666776****
 	FallbackPool *int64 `json:"FallbackPool,omitempty" xml:"FallbackPool,omitempty"`
-	// Load balancer ID, which can be obtained by calling the [ListLoadBalancers](~~ListLoadBalancers~~) interface.
+	// Load balancer ID, which can be obtained by calling the [ListLoadBalancers](https://help.aliyun.com/document_detail/2868897.html) interface.
 	//
 	// This parameter is required.
 	//
@@ -58510,7 +58613,7 @@ type UpdateOriginPoolRequest struct {
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The ID of the origin pool, which can be obtained by calling the [ListOriginPools](~~ListOriginPools~~) interface.
+	// The ID of the origin pool, which can be obtained by calling the [ListOriginPools](https://help.aliyun.com/document_detail/2863947.html) interface.
 	//
 	// This parameter is required.
 	//
@@ -58745,7 +58848,7 @@ type UpdateOriginPoolShrinkRequest struct {
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The ID of the origin pool, which can be obtained by calling the [ListOriginPools](~~ListOriginPools~~) interface.
+	// The ID of the origin pool, which can be obtained by calling the [ListOriginPools](https://help.aliyun.com/document_detail/2863947.html) interface.
 	//
 	// This parameter is required.
 	//
@@ -59055,6 +59158,7 @@ type UpdateOriginRuleRequest struct {
 	//
 	// 4433
 	OriginHttpsPort *string `json:"OriginHttpsPort,omitempty" xml:"OriginHttpsPort,omitempty"`
+	OriginMtls      *string `json:"OriginMtls,omitempty" xml:"OriginMtls,omitempty"`
 	// Protocol used for the origin request. Possible values:
 	//
 	// - http: Use HTTP protocol for origin requests.
@@ -59072,7 +59176,8 @@ type UpdateOriginRuleRequest struct {
 	// example:
 	//
 	// origin.example.com
-	OriginSni *string `json:"OriginSni,omitempty" xml:"OriginSni,omitempty"`
+	OriginSni    *string `json:"OriginSni,omitempty" xml:"OriginSni,omitempty"`
+	OriginVerify *string `json:"OriginVerify,omitempty" xml:"OriginVerify,omitempty"`
 	// Use range chunked transfer to download files from the origin. Possible values:
 	//
 	// - on: Enable.
@@ -59150,6 +59255,11 @@ func (s *UpdateOriginRuleRequest) SetOriginHttpsPort(v string) *UpdateOriginRule
 	return s
 }
 
+func (s *UpdateOriginRuleRequest) SetOriginMtls(v string) *UpdateOriginRuleRequest {
+	s.OriginMtls = &v
+	return s
+}
+
 func (s *UpdateOriginRuleRequest) SetOriginScheme(v string) *UpdateOriginRuleRequest {
 	s.OriginScheme = &v
 	return s
@@ -59157,6 +59267,11 @@ func (s *UpdateOriginRuleRequest) SetOriginScheme(v string) *UpdateOriginRuleReq
 
 func (s *UpdateOriginRuleRequest) SetOriginSni(v string) *UpdateOriginRuleRequest {
 	s.OriginSni = &v
+	return s
+}
+
+func (s *UpdateOriginRuleRequest) SetOriginVerify(v string) *UpdateOriginRuleRequest {
+	s.OriginVerify = &v
 	return s
 }
 
@@ -59368,6 +59483,11 @@ func (s *UpdatePageResponse) SetBody(v *UpdatePageResponseBody) *UpdatePageRespo
 }
 
 type UpdateRatePlanSpecRequest struct {
+	// Specifies whether to enable auto payment.
+	//
+	// example:
+	//
+	// true
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	// example:
 	//
@@ -59377,6 +59497,12 @@ type UpdateRatePlanSpecRequest struct {
 	//
 	// xcdn-91fknmb80f0g
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The specification update type. Valid values:
+	//
+	// 	- DOWNGRADE
+	//
+	// 	- UPGRADE
+	//
 	// example:
 	//
 	// UPGRADE
@@ -67074,12 +67200,20 @@ func (client *Client) CreateOriginRuleWithOptions(request *CreateOriginRuleReque
 		query["OriginHttpsPort"] = request.OriginHttpsPort
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.OriginMtls)) {
+		query["OriginMtls"] = request.OriginMtls
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OriginScheme)) {
 		query["OriginScheme"] = request.OriginScheme
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OriginSni)) {
 		query["OriginSni"] = request.OriginSni
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OriginVerify)) {
+		query["OriginVerify"] = request.OriginVerify
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Range)) {
@@ -72572,7 +72706,11 @@ func (client *Client) DescribePurgeTasks(request *DescribePurgeTasksRequest) (_r
 
 // Summary:
 //
-// 查询套餐实例状态
+// Query Package Instance Status
+//
+// Description:
+//
+// You can only query the status of a package instance after purchasing and creating it.
 //
 // @param request - DescribeRatePlanInstanceStatusRequest
 //
@@ -72625,7 +72763,11 @@ func (client *Client) DescribeRatePlanInstanceStatusWithOptions(request *Describ
 
 // Summary:
 //
-// 查询套餐实例状态
+// Query Package Instance Status
+//
+// Description:
+//
+// You can only query the status of a package instance after purchasing and creating it.
 //
 // @param request - DescribeRatePlanInstanceStatusRequest
 //
@@ -84589,12 +84731,20 @@ func (client *Client) UpdateOriginRuleWithOptions(request *UpdateOriginRuleReque
 		query["OriginHttpsPort"] = request.OriginHttpsPort
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.OriginMtls)) {
+		query["OriginMtls"] = request.OriginMtls
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OriginScheme)) {
 		query["OriginScheme"] = request.OriginScheme
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OriginSni)) {
 		query["OriginSni"] = request.OriginSni
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OriginVerify)) {
+		query["OriginVerify"] = request.OriginVerify
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Range)) {
