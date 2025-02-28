@@ -7651,6 +7651,8 @@ func (s *CreateTriggerResponse) SetBody(v *CreateTriggerResponseBody) *CreateTri
 }
 
 type DeleteAlertContactRequest struct {
+	// The list of alert contact IDs.
+	//
 	// This parameter is required.
 	ContactIds []*int64 `json:"contact_ids,omitempty" xml:"contact_ids,omitempty" type:"Repeated"`
 }
@@ -7669,6 +7671,8 @@ func (s *DeleteAlertContactRequest) SetContactIds(v []*int64) *DeleteAlertContac
 }
 
 type DeleteAlertContactShrinkRequest struct {
+	// The list of alert contact IDs.
+	//
 	// This parameter is required.
 	ContactIdsShrink *string `json:"contact_ids,omitempty" xml:"contact_ids,omitempty"`
 }
@@ -7733,8 +7737,27 @@ func (s *DeleteAlertContactResponseBody) SetResult(v []*DeleteAlertContactRespon
 }
 
 type DeleteAlertContactResponseBodyResult struct {
-	Status    *bool   `json:"status,omitempty" xml:"status,omitempty"`
-	Msg       *string `json:"msg,omitempty" xml:"msg,omitempty"`
+	// The deletion status.
+	//
+	// 	- true: The alert contact was deleted.
+	//
+	// 	- false: The alert contact failed to be deleted.
+	//
+	// example:
+	//
+	// true
+	Status *bool `json:"status,omitempty" xml:"status,omitempty"`
+	// The error message returned if the call fails.
+	//
+	// example:
+	//
+	// Delete contact resource failed.
+	Msg *string `json:"msg,omitempty" xml:"msg,omitempty"`
+	// An alert contact ID.
+	//
+	// example:
+	//
+	// 12345
 	ContactId *string `json:"contact_id,omitempty" xml:"contact_id,omitempty"`
 }
 
@@ -7762,6 +7785,8 @@ func (s *DeleteAlertContactResponseBodyResult) SetContactId(v string) *DeleteAle
 }
 
 type DeleteAlertContactGroupRequest struct {
+	// The list of alert contact group IDs.
+	//
 	// This parameter is required.
 	ContactGroupIds []*int64 `json:"contact_group_ids,omitempty" xml:"contact_group_ids,omitempty" type:"Repeated"`
 }
@@ -7780,6 +7805,8 @@ func (s *DeleteAlertContactGroupRequest) SetContactGroupIds(v []*int64) *DeleteA
 }
 
 type DeleteAlertContactGroupShrinkRequest struct {
+	// The list of alert contact group IDs.
+	//
 	// This parameter is required.
 	ContactGroupIdsShrink *string `json:"contact_group_ids,omitempty" xml:"contact_group_ids,omitempty"`
 }
@@ -7827,8 +7854,27 @@ func (s *DeleteAlertContactGroupResponse) SetBody(v []*DeleteAlertContactGroupRe
 }
 
 type DeleteAlertContactGroupResponseBody struct {
-	Status         *bool   `json:"status,omitempty" xml:"status,omitempty"`
-	Msg            *string `json:"msg,omitempty" xml:"msg,omitempty"`
+	// The deletion status.
+	//
+	// 	- true: The alert contact group was deleted.
+	//
+	// 	- false: The alert contact group failed to be deleted.
+	//
+	// example:
+	//
+	// true
+	Status *bool `json:"status,omitempty" xml:"status,omitempty"`
+	// The error message returned if the call fails.
+	//
+	// example:
+	//
+	// Delete contact group resource failed.
+	Msg *string `json:"msg,omitempty" xml:"msg,omitempty"`
+	// The alert contact group ID.
+	//
+	// example:
+	//
+	// 12345
 	ContactGroupId *string `json:"contact_group_id,omitempty" xml:"contact_group_id,omitempty"`
 }
 
@@ -14425,6 +14471,10 @@ func (s *DescribeClusterNodesResponse) SetBody(v *DescribeClusterNodesResponseBo
 
 type DescribeClusterResourcesRequest struct {
 	// Specifies whether to query the resources created by cluster components.
+	//
+	// example:
+	//
+	// false
 	WithAddonResources *bool `json:"with_addon_resources,omitempty" xml:"with_addon_resources,omitempty"`
 }
 
@@ -14539,7 +14589,7 @@ type DescribeClusterResourcesResponseBody struct {
 	AssociatedObject *DescribeClusterResourcesResponseBodyAssociatedObject `json:"associated_object,omitempty" xml:"associated_object,omitempty" type:"Struct"`
 	// The deletion behavior of the resource when the cluster is deleted.
 	DeleteBehavior *DescribeClusterResourcesResponseBodyDeleteBehavior `json:"delete_behavior,omitempty" xml:"delete_behavior,omitempty" type:"Struct"`
-	// The resource creator. Valid values:
+	// The type of the resource creator. Valid values:
 	//
 	// 	- user: The resource is created by the user.
 	//
@@ -24748,8 +24798,10 @@ type ModifyClusterRequest struct {
 	//
 	// rg-acfmyvw3wjm****
 	ResourceGroupId *string `json:"resource_group_id,omitempty" xml:"resource_group_id,omitempty"`
+	SecurityGroupId *string `json:"security_group_id,omitempty" xml:"security_group_id,omitempty"`
 	// The storage configurations of system events.
 	SystemEventsLogging *ModifyClusterRequestSystemEventsLogging `json:"system_events_logging,omitempty" xml:"system_events_logging,omitempty" type:"Struct"`
+	Timezone            *string                                  `json:"timezone,omitempty" xml:"timezone,omitempty"`
 	// The vSwitches of the control plane. This parameter can be used to change the vSwitches of the control plane in an ACK managed cluster. Take note of the following items:
 	//
 	// 	- This parameter overwrites the existing configuration. You must specify all vSwitches of the control plane.
@@ -24840,8 +24892,18 @@ func (s *ModifyClusterRequest) SetResourceGroupId(v string) *ModifyClusterReques
 	return s
 }
 
+func (s *ModifyClusterRequest) SetSecurityGroupId(v string) *ModifyClusterRequest {
+	s.SecurityGroupId = &v
+	return s
+}
+
 func (s *ModifyClusterRequest) SetSystemEventsLogging(v *ModifyClusterRequestSystemEventsLogging) *ModifyClusterRequest {
 	s.SystemEventsLogging = v
+	return s
+}
+
+func (s *ModifyClusterRequest) SetTimezone(v string) *ModifyClusterRequest {
+	s.Timezone = &v
 	return s
 }
 
@@ -38706,8 +38768,16 @@ func (client *Client) ModifyClusterWithOptions(ClusterId *string, request *Modif
 		body["resource_group_id"] = request.ResourceGroupId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
+		body["security_group_id"] = request.SecurityGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SystemEventsLogging)) {
 		body["system_events_logging"] = request.SystemEventsLogging
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Timezone)) {
+		body["timezone"] = request.Timezone
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VswitchIds)) {
