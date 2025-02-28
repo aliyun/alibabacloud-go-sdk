@@ -658,6 +658,298 @@ func (s *CreateConsumerGroupResponse) SetBody(v *CreateConsumerGroupResponseBody
 	return s
 }
 
+type CreateDisasterRecoveryPlanRequest struct {
+	AutoSyncCheckpoint *bool                                         `json:"autoSyncCheckpoint,omitempty" xml:"autoSyncCheckpoint,omitempty"`
+	Instances          []*CreateDisasterRecoveryPlanRequestInstances `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
+	PlanDesc           *string                                       `json:"planDesc,omitempty" xml:"planDesc,omitempty"`
+	PlanName           *string                                       `json:"planName,omitempty" xml:"planName,omitempty"`
+	// example:
+	//
+	// ACTIVE_ACTIVE
+	PlanType              *string `json:"planType,omitempty" xml:"planType,omitempty"`
+	SyncCheckpointEnabled *bool   `json:"syncCheckpointEnabled,omitempty" xml:"syncCheckpointEnabled,omitempty"`
+}
+
+func (s CreateDisasterRecoveryPlanRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDisasterRecoveryPlanRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDisasterRecoveryPlanRequest) SetAutoSyncCheckpoint(v bool) *CreateDisasterRecoveryPlanRequest {
+	s.AutoSyncCheckpoint = &v
+	return s
+}
+
+func (s *CreateDisasterRecoveryPlanRequest) SetInstances(v []*CreateDisasterRecoveryPlanRequestInstances) *CreateDisasterRecoveryPlanRequest {
+	s.Instances = v
+	return s
+}
+
+func (s *CreateDisasterRecoveryPlanRequest) SetPlanDesc(v string) *CreateDisasterRecoveryPlanRequest {
+	s.PlanDesc = &v
+	return s
+}
+
+func (s *CreateDisasterRecoveryPlanRequest) SetPlanName(v string) *CreateDisasterRecoveryPlanRequest {
+	s.PlanName = &v
+	return s
+}
+
+func (s *CreateDisasterRecoveryPlanRequest) SetPlanType(v string) *CreateDisasterRecoveryPlanRequest {
+	s.PlanType = &v
+	return s
+}
+
+func (s *CreateDisasterRecoveryPlanRequest) SetSyncCheckpointEnabled(v bool) *CreateDisasterRecoveryPlanRequest {
+	s.SyncCheckpointEnabled = &v
+	return s
+}
+
+type CreateDisasterRecoveryPlanRequestInstances struct {
+	// example:
+	//
+	// ACL_AUTH
+	AuthType    *string `json:"authType,omitempty" xml:"authType,omitempty"`
+	EndpointUrl *string `json:"endpointUrl,omitempty" xml:"endpointUrl,omitempty"`
+	// example:
+	//
+	// rmq-cn-******
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// example:
+	//
+	// PASSIVE
+	InstanceRole *string `json:"instanceRole,omitempty" xml:"instanceRole,omitempty"`
+	// example:
+	//
+	// ALIYUN_ROCKETMQ
+	InstanceType    *string                                                    `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	MessageProperty *CreateDisasterRecoveryPlanRequestInstancesMessageProperty `json:"messageProperty,omitempty" xml:"messageProperty,omitempty" type:"Struct"`
+	// example:
+	//
+	// TCP_INTERNET
+	NetworkType *string `json:"networkType,omitempty" xml:"networkType,omitempty"`
+	Password    *string `json:"password,omitempty" xml:"password,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// example:
+	//
+	// sg-bp17hpmgz9******
+	SecurityGroupId *string `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
+	Username        *string `json:"username,omitempty" xml:"username,omitempty"`
+	// example:
+	//
+	// vsw-uf6gwtbn6etadpv******
+	VSwitchId *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
+	// example:
+	//
+	// vpc-wz9qt50xhtj9krb******
+	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+}
+
+func (s CreateDisasterRecoveryPlanRequestInstances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDisasterRecoveryPlanRequestInstances) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDisasterRecoveryPlanRequestInstances) SetAuthType(v string) *CreateDisasterRecoveryPlanRequestInstances {
+	s.AuthType = &v
+	return s
+}
+
+func (s *CreateDisasterRecoveryPlanRequestInstances) SetEndpointUrl(v string) *CreateDisasterRecoveryPlanRequestInstances {
+	s.EndpointUrl = &v
+	return s
+}
+
+func (s *CreateDisasterRecoveryPlanRequestInstances) SetInstanceId(v string) *CreateDisasterRecoveryPlanRequestInstances {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateDisasterRecoveryPlanRequestInstances) SetInstanceRole(v string) *CreateDisasterRecoveryPlanRequestInstances {
+	s.InstanceRole = &v
+	return s
+}
+
+func (s *CreateDisasterRecoveryPlanRequestInstances) SetInstanceType(v string) *CreateDisasterRecoveryPlanRequestInstances {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *CreateDisasterRecoveryPlanRequestInstances) SetMessageProperty(v *CreateDisasterRecoveryPlanRequestInstancesMessageProperty) *CreateDisasterRecoveryPlanRequestInstances {
+	s.MessageProperty = v
+	return s
+}
+
+func (s *CreateDisasterRecoveryPlanRequestInstances) SetNetworkType(v string) *CreateDisasterRecoveryPlanRequestInstances {
+	s.NetworkType = &v
+	return s
+}
+
+func (s *CreateDisasterRecoveryPlanRequestInstances) SetPassword(v string) *CreateDisasterRecoveryPlanRequestInstances {
+	s.Password = &v
+	return s
+}
+
+func (s *CreateDisasterRecoveryPlanRequestInstances) SetRegionId(v string) *CreateDisasterRecoveryPlanRequestInstances {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateDisasterRecoveryPlanRequestInstances) SetSecurityGroupId(v string) *CreateDisasterRecoveryPlanRequestInstances {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *CreateDisasterRecoveryPlanRequestInstances) SetUsername(v string) *CreateDisasterRecoveryPlanRequestInstances {
+	s.Username = &v
+	return s
+}
+
+func (s *CreateDisasterRecoveryPlanRequestInstances) SetVSwitchId(v string) *CreateDisasterRecoveryPlanRequestInstances {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *CreateDisasterRecoveryPlanRequestInstances) SetVpcId(v string) *CreateDisasterRecoveryPlanRequestInstances {
+	s.VpcId = &v
+	return s
+}
+
+type CreateDisasterRecoveryPlanRequestInstancesMessageProperty struct {
+	// example:
+	//
+	// aaa
+	PropertyKey *string `json:"propertyKey,omitempty" xml:"propertyKey,omitempty"`
+	// example:
+	//
+	// bbb
+	PropertyValue *string `json:"propertyValue,omitempty" xml:"propertyValue,omitempty"`
+}
+
+func (s CreateDisasterRecoveryPlanRequestInstancesMessageProperty) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDisasterRecoveryPlanRequestInstancesMessageProperty) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDisasterRecoveryPlanRequestInstancesMessageProperty) SetPropertyKey(v string) *CreateDisasterRecoveryPlanRequestInstancesMessageProperty {
+	s.PropertyKey = &v
+	return s
+}
+
+func (s *CreateDisasterRecoveryPlanRequestInstancesMessageProperty) SetPropertyValue(v string) *CreateDisasterRecoveryPlanRequestInstancesMessageProperty {
+	s.PropertyValue = &v
+	return s
+}
+
+type CreateDisasterRecoveryPlanResponseBody struct {
+	AccessDeniedDetail *string `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
+	Code               *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 1234
+	Data           *int64  `json:"data,omitempty" xml:"data,omitempty"`
+	DynamicCode    *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	HttpStatusCode *int32  `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	Message        *string `json:"message,omitempty" xml:"message,omitempty"`
+	RequestId      *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success        *bool   `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s CreateDisasterRecoveryPlanResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDisasterRecoveryPlanResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDisasterRecoveryPlanResponseBody) SetAccessDeniedDetail(v string) *CreateDisasterRecoveryPlanResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *CreateDisasterRecoveryPlanResponseBody) SetCode(v string) *CreateDisasterRecoveryPlanResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateDisasterRecoveryPlanResponseBody) SetData(v int64) *CreateDisasterRecoveryPlanResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateDisasterRecoveryPlanResponseBody) SetDynamicCode(v string) *CreateDisasterRecoveryPlanResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *CreateDisasterRecoveryPlanResponseBody) SetDynamicMessage(v string) *CreateDisasterRecoveryPlanResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *CreateDisasterRecoveryPlanResponseBody) SetHttpStatusCode(v int32) *CreateDisasterRecoveryPlanResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CreateDisasterRecoveryPlanResponseBody) SetMessage(v string) *CreateDisasterRecoveryPlanResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateDisasterRecoveryPlanResponseBody) SetRequestId(v string) *CreateDisasterRecoveryPlanResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateDisasterRecoveryPlanResponseBody) SetSuccess(v bool) *CreateDisasterRecoveryPlanResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateDisasterRecoveryPlanResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDisasterRecoveryPlanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateDisasterRecoveryPlanResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDisasterRecoveryPlanResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDisasterRecoveryPlanResponse) SetHeaders(v map[string]*string) *CreateDisasterRecoveryPlanResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDisasterRecoveryPlanResponse) SetStatusCode(v int32) *CreateDisasterRecoveryPlanResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDisasterRecoveryPlanResponse) SetBody(v *CreateDisasterRecoveryPlanResponseBody) *CreateDisasterRecoveryPlanResponse {
+	s.Body = v
+	return s
+}
+
 type CreateInstanceRequest struct {
 	// Specifies whether to enable auto-renewal for the instance. This parameter takes effect only if you set paymentType to Subscription. Valid values:
 	//
@@ -2417,6 +2709,100 @@ func (s *DeleteConsumerGroupSubscriptionResponse) SetStatusCode(v int32) *Delete
 }
 
 func (s *DeleteConsumerGroupSubscriptionResponse) SetBody(v *DeleteConsumerGroupSubscriptionResponseBody) *DeleteConsumerGroupSubscriptionResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteDisasterRecoveryItemResponseBody struct {
+	AccessDeniedDetail *string `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
+	Code               *string `json:"code,omitempty" xml:"code,omitempty"`
+	Data               *bool   `json:"data,omitempty" xml:"data,omitempty"`
+	DynamicCode        *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	DynamicMessage     *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	HttpStatusCode     *int32  `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	Message            *string `json:"message,omitempty" xml:"message,omitempty"`
+	RequestId          *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success            *bool   `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s DeleteDisasterRecoveryItemResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDisasterRecoveryItemResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDisasterRecoveryItemResponseBody) SetAccessDeniedDetail(v string) *DeleteDisasterRecoveryItemResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *DeleteDisasterRecoveryItemResponseBody) SetCode(v string) *DeleteDisasterRecoveryItemResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteDisasterRecoveryItemResponseBody) SetData(v bool) *DeleteDisasterRecoveryItemResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteDisasterRecoveryItemResponseBody) SetDynamicCode(v string) *DeleteDisasterRecoveryItemResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *DeleteDisasterRecoveryItemResponseBody) SetDynamicMessage(v string) *DeleteDisasterRecoveryItemResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *DeleteDisasterRecoveryItemResponseBody) SetHttpStatusCode(v int32) *DeleteDisasterRecoveryItemResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DeleteDisasterRecoveryItemResponseBody) SetMessage(v string) *DeleteDisasterRecoveryItemResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteDisasterRecoveryItemResponseBody) SetRequestId(v string) *DeleteDisasterRecoveryItemResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteDisasterRecoveryItemResponseBody) SetSuccess(v bool) *DeleteDisasterRecoveryItemResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteDisasterRecoveryItemResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteDisasterRecoveryItemResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteDisasterRecoveryItemResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDisasterRecoveryItemResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDisasterRecoveryItemResponse) SetHeaders(v map[string]*string) *DeleteDisasterRecoveryItemResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDisasterRecoveryItemResponse) SetStatusCode(v int32) *DeleteDisasterRecoveryItemResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteDisasterRecoveryItemResponse) SetBody(v *DeleteDisasterRecoveryItemResponseBody) *DeleteDisasterRecoveryItemResponse {
 	s.Body = v
 	return s
 }
@@ -4451,6 +4837,489 @@ func (s *GetConsumerStackResponse) SetStatusCode(v int32) *GetConsumerStackRespo
 }
 
 func (s *GetConsumerStackResponse) SetBody(v *GetConsumerStackResponseBody) *GetConsumerStackResponse {
+	s.Body = v
+	return s
+}
+
+type GetDisasterRecoveryItemResponseBody struct {
+	AccessDeniedDetail *string                                  `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
+	Code               *string                                  `json:"code,omitempty" xml:"code,omitempty"`
+	Data               *GetDisasterRecoveryItemResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	DynamicCode        *string                                  `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	DynamicMessage     *string                                  `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	HttpStatusCode     *int32                                   `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	Message            *string                                  `json:"message,omitempty" xml:"message,omitempty"`
+	RequestId          *string                                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success            *bool                                    `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetDisasterRecoveryItemResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDisasterRecoveryItemResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDisasterRecoveryItemResponseBody) SetAccessDeniedDetail(v string) *GetDisasterRecoveryItemResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *GetDisasterRecoveryItemResponseBody) SetCode(v string) *GetDisasterRecoveryItemResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetDisasterRecoveryItemResponseBody) SetData(v *GetDisasterRecoveryItemResponseBodyData) *GetDisasterRecoveryItemResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetDisasterRecoveryItemResponseBody) SetDynamicCode(v string) *GetDisasterRecoveryItemResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *GetDisasterRecoveryItemResponseBody) SetDynamicMessage(v string) *GetDisasterRecoveryItemResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *GetDisasterRecoveryItemResponseBody) SetHttpStatusCode(v int32) *GetDisasterRecoveryItemResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetDisasterRecoveryItemResponseBody) SetMessage(v string) *GetDisasterRecoveryItemResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetDisasterRecoveryItemResponseBody) SetRequestId(v string) *GetDisasterRecoveryItemResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDisasterRecoveryItemResponseBody) SetSuccess(v bool) *GetDisasterRecoveryItemResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetDisasterRecoveryItemResponseBodyData struct {
+	CreateTime *string                                          `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	ExtInfo    map[string]*string                               `json:"extInfo,omitempty" xml:"extInfo,omitempty"`
+	ItemId     *int64                                           `json:"itemId,omitempty" xml:"itemId,omitempty"`
+	ItemStatus *string                                          `json:"itemStatus,omitempty" xml:"itemStatus,omitempty"`
+	PlanId     *int64                                           `json:"planId,omitempty" xml:"planId,omitempty"`
+	Topics     []*GetDisasterRecoveryItemResponseBodyDataTopics `json:"topics,omitempty" xml:"topics,omitempty" type:"Repeated"`
+	UpdateTime *string                                          `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+}
+
+func (s GetDisasterRecoveryItemResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDisasterRecoveryItemResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetDisasterRecoveryItemResponseBodyData) SetCreateTime(v string) *GetDisasterRecoveryItemResponseBodyData {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetDisasterRecoveryItemResponseBodyData) SetExtInfo(v map[string]*string) *GetDisasterRecoveryItemResponseBodyData {
+	s.ExtInfo = v
+	return s
+}
+
+func (s *GetDisasterRecoveryItemResponseBodyData) SetItemId(v int64) *GetDisasterRecoveryItemResponseBodyData {
+	s.ItemId = &v
+	return s
+}
+
+func (s *GetDisasterRecoveryItemResponseBodyData) SetItemStatus(v string) *GetDisasterRecoveryItemResponseBodyData {
+	s.ItemStatus = &v
+	return s
+}
+
+func (s *GetDisasterRecoveryItemResponseBodyData) SetPlanId(v int64) *GetDisasterRecoveryItemResponseBodyData {
+	s.PlanId = &v
+	return s
+}
+
+func (s *GetDisasterRecoveryItemResponseBodyData) SetTopics(v []*GetDisasterRecoveryItemResponseBodyDataTopics) *GetDisasterRecoveryItemResponseBodyData {
+	s.Topics = v
+	return s
+}
+
+func (s *GetDisasterRecoveryItemResponseBodyData) SetUpdateTime(v string) *GetDisasterRecoveryItemResponseBodyData {
+	s.UpdateTime = &v
+	return s
+}
+
+type GetDisasterRecoveryItemResponseBodyDataTopics struct {
+	ConsumerGroupId   *string `json:"consumerGroupId,omitempty" xml:"consumerGroupId,omitempty"`
+	DeliveryOrderType *string `json:"deliveryOrderType,omitempty" xml:"deliveryOrderType,omitempty"`
+	InstanceId        *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	InstanceType      *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	// regionId
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId  *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	TopicName *string `json:"topicName,omitempty" xml:"topicName,omitempty"`
+}
+
+func (s GetDisasterRecoveryItemResponseBodyDataTopics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDisasterRecoveryItemResponseBodyDataTopics) GoString() string {
+	return s.String()
+}
+
+func (s *GetDisasterRecoveryItemResponseBodyDataTopics) SetConsumerGroupId(v string) *GetDisasterRecoveryItemResponseBodyDataTopics {
+	s.ConsumerGroupId = &v
+	return s
+}
+
+func (s *GetDisasterRecoveryItemResponseBodyDataTopics) SetDeliveryOrderType(v string) *GetDisasterRecoveryItemResponseBodyDataTopics {
+	s.DeliveryOrderType = &v
+	return s
+}
+
+func (s *GetDisasterRecoveryItemResponseBodyDataTopics) SetInstanceId(v string) *GetDisasterRecoveryItemResponseBodyDataTopics {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetDisasterRecoveryItemResponseBodyDataTopics) SetInstanceType(v string) *GetDisasterRecoveryItemResponseBodyDataTopics {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *GetDisasterRecoveryItemResponseBodyDataTopics) SetRegionId(v string) *GetDisasterRecoveryItemResponseBodyDataTopics {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetDisasterRecoveryItemResponseBodyDataTopics) SetTopicName(v string) *GetDisasterRecoveryItemResponseBodyDataTopics {
+	s.TopicName = &v
+	return s
+}
+
+type GetDisasterRecoveryItemResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDisasterRecoveryItemResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetDisasterRecoveryItemResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDisasterRecoveryItemResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDisasterRecoveryItemResponse) SetHeaders(v map[string]*string) *GetDisasterRecoveryItemResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDisasterRecoveryItemResponse) SetStatusCode(v int32) *GetDisasterRecoveryItemResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDisasterRecoveryItemResponse) SetBody(v *GetDisasterRecoveryItemResponseBody) *GetDisasterRecoveryItemResponse {
+	s.Body = v
+	return s
+}
+
+type GetDisasterRecoveryPlanResponseBody struct {
+	AccessDeniedDetail *string                                  `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
+	Code               *string                                  `json:"code,omitempty" xml:"code,omitempty"`
+	Data               *GetDisasterRecoveryPlanResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	DynamicCode        *string                                  `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	DynamicMessage     *string                                  `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	HttpStatusCode     *int32                                   `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	Message            *string                                  `json:"message,omitempty" xml:"message,omitempty"`
+	RequestId          *string                                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success            *bool                                    `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetDisasterRecoveryPlanResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDisasterRecoveryPlanResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDisasterRecoveryPlanResponseBody) SetAccessDeniedDetail(v string) *GetDisasterRecoveryPlanResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *GetDisasterRecoveryPlanResponseBody) SetCode(v string) *GetDisasterRecoveryPlanResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetDisasterRecoveryPlanResponseBody) SetData(v *GetDisasterRecoveryPlanResponseBodyData) *GetDisasterRecoveryPlanResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetDisasterRecoveryPlanResponseBody) SetDynamicCode(v string) *GetDisasterRecoveryPlanResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *GetDisasterRecoveryPlanResponseBody) SetDynamicMessage(v string) *GetDisasterRecoveryPlanResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *GetDisasterRecoveryPlanResponseBody) SetHttpStatusCode(v int32) *GetDisasterRecoveryPlanResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetDisasterRecoveryPlanResponseBody) SetMessage(v string) *GetDisasterRecoveryPlanResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetDisasterRecoveryPlanResponseBody) SetRequestId(v string) *GetDisasterRecoveryPlanResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDisasterRecoveryPlanResponseBody) SetSuccess(v bool) *GetDisasterRecoveryPlanResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetDisasterRecoveryPlanResponseBodyData struct {
+	AutoSyncCheckpoint    *bool                                               `json:"autoSyncCheckpoint,omitempty" xml:"autoSyncCheckpoint,omitempty"`
+	CreateTime            *string                                             `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	ExtInfo               map[string]*string                                  `json:"extInfo,omitempty" xml:"extInfo,omitempty"`
+	Instances             []*GetDisasterRecoveryPlanResponseBodyDataInstances `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
+	PlanDesc              *string                                             `json:"planDesc,omitempty" xml:"planDesc,omitempty"`
+	PlanId                *int64                                              `json:"planId,omitempty" xml:"planId,omitempty"`
+	PlanName              *string                                             `json:"planName,omitempty" xml:"planName,omitempty"`
+	PlanStatus            *string                                             `json:"planStatus,omitempty" xml:"planStatus,omitempty"`
+	PlanType              *string                                             `json:"planType,omitempty" xml:"planType,omitempty"`
+	SyncCheckpointEnabled *bool                                               `json:"syncCheckpointEnabled,omitempty" xml:"syncCheckpointEnabled,omitempty"`
+	UpdateTime            *string                                             `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+}
+
+func (s GetDisasterRecoveryPlanResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDisasterRecoveryPlanResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetDisasterRecoveryPlanResponseBodyData) SetAutoSyncCheckpoint(v bool) *GetDisasterRecoveryPlanResponseBodyData {
+	s.AutoSyncCheckpoint = &v
+	return s
+}
+
+func (s *GetDisasterRecoveryPlanResponseBodyData) SetCreateTime(v string) *GetDisasterRecoveryPlanResponseBodyData {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetDisasterRecoveryPlanResponseBodyData) SetExtInfo(v map[string]*string) *GetDisasterRecoveryPlanResponseBodyData {
+	s.ExtInfo = v
+	return s
+}
+
+func (s *GetDisasterRecoveryPlanResponseBodyData) SetInstances(v []*GetDisasterRecoveryPlanResponseBodyDataInstances) *GetDisasterRecoveryPlanResponseBodyData {
+	s.Instances = v
+	return s
+}
+
+func (s *GetDisasterRecoveryPlanResponseBodyData) SetPlanDesc(v string) *GetDisasterRecoveryPlanResponseBodyData {
+	s.PlanDesc = &v
+	return s
+}
+
+func (s *GetDisasterRecoveryPlanResponseBodyData) SetPlanId(v int64) *GetDisasterRecoveryPlanResponseBodyData {
+	s.PlanId = &v
+	return s
+}
+
+func (s *GetDisasterRecoveryPlanResponseBodyData) SetPlanName(v string) *GetDisasterRecoveryPlanResponseBodyData {
+	s.PlanName = &v
+	return s
+}
+
+func (s *GetDisasterRecoveryPlanResponseBodyData) SetPlanStatus(v string) *GetDisasterRecoveryPlanResponseBodyData {
+	s.PlanStatus = &v
+	return s
+}
+
+func (s *GetDisasterRecoveryPlanResponseBodyData) SetPlanType(v string) *GetDisasterRecoveryPlanResponseBodyData {
+	s.PlanType = &v
+	return s
+}
+
+func (s *GetDisasterRecoveryPlanResponseBodyData) SetSyncCheckpointEnabled(v bool) *GetDisasterRecoveryPlanResponseBodyData {
+	s.SyncCheckpointEnabled = &v
+	return s
+}
+
+func (s *GetDisasterRecoveryPlanResponseBodyData) SetUpdateTime(v string) *GetDisasterRecoveryPlanResponseBodyData {
+	s.UpdateTime = &v
+	return s
+}
+
+type GetDisasterRecoveryPlanResponseBodyDataInstances struct {
+	AuthType        *string                                                          `json:"authType,omitempty" xml:"authType,omitempty"`
+	EndpointUrl     *string                                                          `json:"endpointUrl,omitempty" xml:"endpointUrl,omitempty"`
+	InstanceId      *string                                                          `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	InstanceRole    *string                                                          `json:"instanceRole,omitempty" xml:"instanceRole,omitempty"`
+	InstanceType    *string                                                          `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	MessageProperty *GetDisasterRecoveryPlanResponseBodyDataInstancesMessageProperty `json:"messageProperty,omitempty" xml:"messageProperty,omitempty" type:"Struct"`
+	NetworkType     *string                                                          `json:"networkType,omitempty" xml:"networkType,omitempty"`
+	Password        *string                                                          `json:"password,omitempty" xml:"password,omitempty"`
+	RegionId        *string                                                          `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	SecurityGroupId *string                                                          `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
+	Username        *string                                                          `json:"username,omitempty" xml:"username,omitempty"`
+	VSwitchId       *string                                                          `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
+	// VPC ID
+	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+}
+
+func (s GetDisasterRecoveryPlanResponseBodyDataInstances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDisasterRecoveryPlanResponseBodyDataInstances) GoString() string {
+	return s.String()
+}
+
+func (s *GetDisasterRecoveryPlanResponseBodyDataInstances) SetAuthType(v string) *GetDisasterRecoveryPlanResponseBodyDataInstances {
+	s.AuthType = &v
+	return s
+}
+
+func (s *GetDisasterRecoveryPlanResponseBodyDataInstances) SetEndpointUrl(v string) *GetDisasterRecoveryPlanResponseBodyDataInstances {
+	s.EndpointUrl = &v
+	return s
+}
+
+func (s *GetDisasterRecoveryPlanResponseBodyDataInstances) SetInstanceId(v string) *GetDisasterRecoveryPlanResponseBodyDataInstances {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetDisasterRecoveryPlanResponseBodyDataInstances) SetInstanceRole(v string) *GetDisasterRecoveryPlanResponseBodyDataInstances {
+	s.InstanceRole = &v
+	return s
+}
+
+func (s *GetDisasterRecoveryPlanResponseBodyDataInstances) SetInstanceType(v string) *GetDisasterRecoveryPlanResponseBodyDataInstances {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *GetDisasterRecoveryPlanResponseBodyDataInstances) SetMessageProperty(v *GetDisasterRecoveryPlanResponseBodyDataInstancesMessageProperty) *GetDisasterRecoveryPlanResponseBodyDataInstances {
+	s.MessageProperty = v
+	return s
+}
+
+func (s *GetDisasterRecoveryPlanResponseBodyDataInstances) SetNetworkType(v string) *GetDisasterRecoveryPlanResponseBodyDataInstances {
+	s.NetworkType = &v
+	return s
+}
+
+func (s *GetDisasterRecoveryPlanResponseBodyDataInstances) SetPassword(v string) *GetDisasterRecoveryPlanResponseBodyDataInstances {
+	s.Password = &v
+	return s
+}
+
+func (s *GetDisasterRecoveryPlanResponseBodyDataInstances) SetRegionId(v string) *GetDisasterRecoveryPlanResponseBodyDataInstances {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetDisasterRecoveryPlanResponseBodyDataInstances) SetSecurityGroupId(v string) *GetDisasterRecoveryPlanResponseBodyDataInstances {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *GetDisasterRecoveryPlanResponseBodyDataInstances) SetUsername(v string) *GetDisasterRecoveryPlanResponseBodyDataInstances {
+	s.Username = &v
+	return s
+}
+
+func (s *GetDisasterRecoveryPlanResponseBodyDataInstances) SetVSwitchId(v string) *GetDisasterRecoveryPlanResponseBodyDataInstances {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *GetDisasterRecoveryPlanResponseBodyDataInstances) SetVpcId(v string) *GetDisasterRecoveryPlanResponseBodyDataInstances {
+	s.VpcId = &v
+	return s
+}
+
+type GetDisasterRecoveryPlanResponseBodyDataInstancesMessageProperty struct {
+	PropertyKey   *string `json:"propertyKey,omitempty" xml:"propertyKey,omitempty"`
+	PropertyValue *string `json:"propertyValue,omitempty" xml:"propertyValue,omitempty"`
+}
+
+func (s GetDisasterRecoveryPlanResponseBodyDataInstancesMessageProperty) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDisasterRecoveryPlanResponseBodyDataInstancesMessageProperty) GoString() string {
+	return s.String()
+}
+
+func (s *GetDisasterRecoveryPlanResponseBodyDataInstancesMessageProperty) SetPropertyKey(v string) *GetDisasterRecoveryPlanResponseBodyDataInstancesMessageProperty {
+	s.PropertyKey = &v
+	return s
+}
+
+func (s *GetDisasterRecoveryPlanResponseBodyDataInstancesMessageProperty) SetPropertyValue(v string) *GetDisasterRecoveryPlanResponseBodyDataInstancesMessageProperty {
+	s.PropertyValue = &v
+	return s
+}
+
+type GetDisasterRecoveryPlanResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDisasterRecoveryPlanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetDisasterRecoveryPlanResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDisasterRecoveryPlanResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDisasterRecoveryPlanResponse) SetHeaders(v map[string]*string) *GetDisasterRecoveryPlanResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDisasterRecoveryPlanResponse) SetStatusCode(v int32) *GetDisasterRecoveryPlanResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDisasterRecoveryPlanResponse) SetBody(v *GetDisasterRecoveryPlanResponseBody) *GetDisasterRecoveryPlanResponse {
 	s.Body = v
 	return s
 }
@@ -8033,6 +8902,23 @@ func (s *ListConsumerConnectionsResponse) SetBody(v *ListConsumerConnectionsResp
 	return s
 }
 
+type ListConsumerGroupSubscriptionsRequest struct {
+	TopicName *string `json:"topicName,omitempty" xml:"topicName,omitempty"`
+}
+
+func (s ListConsumerGroupSubscriptionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConsumerGroupSubscriptionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListConsumerGroupSubscriptionsRequest) SetTopicName(v string) *ListConsumerGroupSubscriptionsRequest {
+	s.TopicName = &v
+	return s
+}
+
 type ListConsumerGroupSubscriptionsResponseBody struct {
 	// The error code.
 	//
@@ -8611,6 +9497,1096 @@ func (s *ListConsumerGroupsResponse) SetStatusCode(v int32) *ListConsumerGroupsR
 }
 
 func (s *ListConsumerGroupsResponse) SetBody(v *ListConsumerGroupsResponseBody) *ListConsumerGroupsResponse {
+	s.Body = v
+	return s
+}
+
+type ListDisasterRecoveryCheckpointsRequest struct {
+	// example:
+	//
+	// topic_test
+	Filter *string `json:"filter,omitempty" xml:"filter,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rmq-cn-7e22ody****
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+}
+
+func (s ListDisasterRecoveryCheckpointsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDisasterRecoveryCheckpointsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDisasterRecoveryCheckpointsRequest) SetFilter(v string) *ListDisasterRecoveryCheckpointsRequest {
+	s.Filter = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryCheckpointsRequest) SetInstanceId(v string) *ListDisasterRecoveryCheckpointsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryCheckpointsRequest) SetPageNumber(v int32) *ListDisasterRecoveryCheckpointsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryCheckpointsRequest) SetPageSize(v int32) *ListDisasterRecoveryCheckpointsRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListDisasterRecoveryCheckpointsResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string                                          `json:"code,omitempty" xml:"code,omitempty"`
+	Data *ListDisasterRecoveryCheckpointsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// InstanceId
+	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// example:
+	//
+	// instanceId
+	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// The instance cannot be found.
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// AF9A8B10-C426-530F-A0DD-96320B39****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ListDisasterRecoveryCheckpointsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDisasterRecoveryCheckpointsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDisasterRecoveryCheckpointsResponseBody) SetCode(v string) *ListDisasterRecoveryCheckpointsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryCheckpointsResponseBody) SetData(v *ListDisasterRecoveryCheckpointsResponseBodyData) *ListDisasterRecoveryCheckpointsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListDisasterRecoveryCheckpointsResponseBody) SetDynamicCode(v string) *ListDisasterRecoveryCheckpointsResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryCheckpointsResponseBody) SetDynamicMessage(v string) *ListDisasterRecoveryCheckpointsResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryCheckpointsResponseBody) SetHttpStatusCode(v int32) *ListDisasterRecoveryCheckpointsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryCheckpointsResponseBody) SetMessage(v string) *ListDisasterRecoveryCheckpointsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryCheckpointsResponseBody) SetRequestId(v string) *ListDisasterRecoveryCheckpointsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryCheckpointsResponseBody) SetSuccess(v bool) *ListDisasterRecoveryCheckpointsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListDisasterRecoveryCheckpointsResponseBodyData struct {
+	List []*ListDisasterRecoveryCheckpointsResponseBodyDataList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// 1
+	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+}
+
+func (s ListDisasterRecoveryCheckpointsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDisasterRecoveryCheckpointsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListDisasterRecoveryCheckpointsResponseBodyData) SetList(v []*ListDisasterRecoveryCheckpointsResponseBodyDataList) *ListDisasterRecoveryCheckpointsResponseBodyData {
+	s.List = v
+	return s
+}
+
+func (s *ListDisasterRecoveryCheckpointsResponseBodyData) SetPageNumber(v int64) *ListDisasterRecoveryCheckpointsResponseBodyData {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryCheckpointsResponseBodyData) SetPageSize(v int64) *ListDisasterRecoveryCheckpointsResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryCheckpointsResponseBodyData) SetTotalCount(v int64) *ListDisasterRecoveryCheckpointsResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
+type ListDisasterRecoveryCheckpointsResponseBodyDataList struct {
+	// example:
+	//
+	// 10000000xx
+	CheckpointId *int64 `json:"checkpointId,omitempty" xml:"checkpointId,omitempty"`
+	// example:
+	//
+	// 10000000xx
+	ItemId *int64 `json:"itemId,omitempty" xml:"itemId,omitempty"`
+	// example:
+	//
+	// 1740724080343
+	LastSyncTime *int64 `json:"lastSyncTime,omitempty" xml:"lastSyncTime,omitempty"`
+	// example:
+	//
+	// 13000000xx
+	PlanId         *int64                                                             `json:"planId,omitempty" xml:"planId,omitempty"`
+	SourceProgress *ListDisasterRecoveryCheckpointsResponseBodyDataListSourceProgress `json:"sourceProgress,omitempty" xml:"sourceProgress,omitempty" type:"Struct"`
+	TargetProgress *ListDisasterRecoveryCheckpointsResponseBodyDataListTargetProgress `json:"targetProgress,omitempty" xml:"targetProgress,omitempty" type:"Struct"`
+}
+
+func (s ListDisasterRecoveryCheckpointsResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDisasterRecoveryCheckpointsResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *ListDisasterRecoveryCheckpointsResponseBodyDataList) SetCheckpointId(v int64) *ListDisasterRecoveryCheckpointsResponseBodyDataList {
+	s.CheckpointId = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryCheckpointsResponseBodyDataList) SetItemId(v int64) *ListDisasterRecoveryCheckpointsResponseBodyDataList {
+	s.ItemId = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryCheckpointsResponseBodyDataList) SetLastSyncTime(v int64) *ListDisasterRecoveryCheckpointsResponseBodyDataList {
+	s.LastSyncTime = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryCheckpointsResponseBodyDataList) SetPlanId(v int64) *ListDisasterRecoveryCheckpointsResponseBodyDataList {
+	s.PlanId = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryCheckpointsResponseBodyDataList) SetSourceProgress(v *ListDisasterRecoveryCheckpointsResponseBodyDataListSourceProgress) *ListDisasterRecoveryCheckpointsResponseBodyDataList {
+	s.SourceProgress = v
+	return s
+}
+
+func (s *ListDisasterRecoveryCheckpointsResponseBodyDataList) SetTargetProgress(v *ListDisasterRecoveryCheckpointsResponseBodyDataListTargetProgress) *ListDisasterRecoveryCheckpointsResponseBodyDataList {
+	s.TargetProgress = v
+	return s
+}
+
+type ListDisasterRecoveryCheckpointsResponseBodyDataListSourceProgress struct {
+	// example:
+	//
+	// GID_TEST
+	ConsumerGroupId *string `json:"consumerGroupId,omitempty" xml:"consumerGroupId,omitempty"`
+	// example:
+	//
+	// rmq-cn-3mp3vblzxxx
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// example:
+	//
+	// ALIYUN_ROCKETMQ
+	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	// example:
+	//
+	// 1740724080343
+	LastFetchTime *int64                                                                         `json:"lastFetchTime,omitempty" xml:"lastFetchTime,omitempty"`
+	ProgressData  *ListDisasterRecoveryCheckpointsResponseBodyDataListSourceProgressProgressData `json:"progressData,omitempty" xml:"progressData,omitempty" type:"Struct"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// example:
+	//
+	// TOPIC_TEST
+	TopicName *string `json:"topicName,omitempty" xml:"topicName,omitempty"`
+}
+
+func (s ListDisasterRecoveryCheckpointsResponseBodyDataListSourceProgress) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDisasterRecoveryCheckpointsResponseBodyDataListSourceProgress) GoString() string {
+	return s.String()
+}
+
+func (s *ListDisasterRecoveryCheckpointsResponseBodyDataListSourceProgress) SetConsumerGroupId(v string) *ListDisasterRecoveryCheckpointsResponseBodyDataListSourceProgress {
+	s.ConsumerGroupId = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryCheckpointsResponseBodyDataListSourceProgress) SetInstanceId(v string) *ListDisasterRecoveryCheckpointsResponseBodyDataListSourceProgress {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryCheckpointsResponseBodyDataListSourceProgress) SetInstanceType(v string) *ListDisasterRecoveryCheckpointsResponseBodyDataListSourceProgress {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryCheckpointsResponseBodyDataListSourceProgress) SetLastFetchTime(v int64) *ListDisasterRecoveryCheckpointsResponseBodyDataListSourceProgress {
+	s.LastFetchTime = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryCheckpointsResponseBodyDataListSourceProgress) SetProgressData(v *ListDisasterRecoveryCheckpointsResponseBodyDataListSourceProgressProgressData) *ListDisasterRecoveryCheckpointsResponseBodyDataListSourceProgress {
+	s.ProgressData = v
+	return s
+}
+
+func (s *ListDisasterRecoveryCheckpointsResponseBodyDataListSourceProgress) SetRegionId(v string) *ListDisasterRecoveryCheckpointsResponseBodyDataListSourceProgress {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryCheckpointsResponseBodyDataListSourceProgress) SetTopicName(v string) *ListDisasterRecoveryCheckpointsResponseBodyDataListSourceProgress {
+	s.TopicName = &v
+	return s
+}
+
+type ListDisasterRecoveryCheckpointsResponseBodyDataListSourceProgressProgressData struct {
+	// example:
+	//
+	// 1740724080343
+	ConsumeTimestamp *int64 `json:"consumeTimestamp,omitempty" xml:"consumeTimestamp,omitempty"`
+}
+
+func (s ListDisasterRecoveryCheckpointsResponseBodyDataListSourceProgressProgressData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDisasterRecoveryCheckpointsResponseBodyDataListSourceProgressProgressData) GoString() string {
+	return s.String()
+}
+
+func (s *ListDisasterRecoveryCheckpointsResponseBodyDataListSourceProgressProgressData) SetConsumeTimestamp(v int64) *ListDisasterRecoveryCheckpointsResponseBodyDataListSourceProgressProgressData {
+	s.ConsumeTimestamp = &v
+	return s
+}
+
+type ListDisasterRecoveryCheckpointsResponseBodyDataListTargetProgress struct {
+	// example:
+	//
+	// GID_TEST
+	ConsumerGroupId *string `json:"consumerGroupId,omitempty" xml:"consumerGroupId,omitempty"`
+	// example:
+	//
+	// rmq-cn-nwy3i065xxx
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// example:
+	//
+	// ALIYUN_ROCKETMQ
+	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	// example:
+	//
+	// 1740724080343
+	LastFetchTime *int64                                                                         `json:"lastFetchTime,omitempty" xml:"lastFetchTime,omitempty"`
+	ProgressData  *ListDisasterRecoveryCheckpointsResponseBodyDataListTargetProgressProgressData `json:"progressData,omitempty" xml:"progressData,omitempty" type:"Struct"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// example:
+	//
+	// TOPIC_TEST
+	TopicName *string `json:"topicName,omitempty" xml:"topicName,omitempty"`
+}
+
+func (s ListDisasterRecoveryCheckpointsResponseBodyDataListTargetProgress) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDisasterRecoveryCheckpointsResponseBodyDataListTargetProgress) GoString() string {
+	return s.String()
+}
+
+func (s *ListDisasterRecoveryCheckpointsResponseBodyDataListTargetProgress) SetConsumerGroupId(v string) *ListDisasterRecoveryCheckpointsResponseBodyDataListTargetProgress {
+	s.ConsumerGroupId = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryCheckpointsResponseBodyDataListTargetProgress) SetInstanceId(v string) *ListDisasterRecoveryCheckpointsResponseBodyDataListTargetProgress {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryCheckpointsResponseBodyDataListTargetProgress) SetInstanceType(v string) *ListDisasterRecoveryCheckpointsResponseBodyDataListTargetProgress {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryCheckpointsResponseBodyDataListTargetProgress) SetLastFetchTime(v int64) *ListDisasterRecoveryCheckpointsResponseBodyDataListTargetProgress {
+	s.LastFetchTime = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryCheckpointsResponseBodyDataListTargetProgress) SetProgressData(v *ListDisasterRecoveryCheckpointsResponseBodyDataListTargetProgressProgressData) *ListDisasterRecoveryCheckpointsResponseBodyDataListTargetProgress {
+	s.ProgressData = v
+	return s
+}
+
+func (s *ListDisasterRecoveryCheckpointsResponseBodyDataListTargetProgress) SetRegionId(v string) *ListDisasterRecoveryCheckpointsResponseBodyDataListTargetProgress {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryCheckpointsResponseBodyDataListTargetProgress) SetTopicName(v string) *ListDisasterRecoveryCheckpointsResponseBodyDataListTargetProgress {
+	s.TopicName = &v
+	return s
+}
+
+type ListDisasterRecoveryCheckpointsResponseBodyDataListTargetProgressProgressData struct {
+	// example:
+	//
+	// 1740724080343
+	ConsumeTimestamp *int64 `json:"consumeTimestamp,omitempty" xml:"consumeTimestamp,omitempty"`
+}
+
+func (s ListDisasterRecoveryCheckpointsResponseBodyDataListTargetProgressProgressData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDisasterRecoveryCheckpointsResponseBodyDataListTargetProgressProgressData) GoString() string {
+	return s.String()
+}
+
+func (s *ListDisasterRecoveryCheckpointsResponseBodyDataListTargetProgressProgressData) SetConsumeTimestamp(v int64) *ListDisasterRecoveryCheckpointsResponseBodyDataListTargetProgressProgressData {
+	s.ConsumeTimestamp = &v
+	return s
+}
+
+type ListDisasterRecoveryCheckpointsResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDisasterRecoveryCheckpointsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListDisasterRecoveryCheckpointsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDisasterRecoveryCheckpointsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDisasterRecoveryCheckpointsResponse) SetHeaders(v map[string]*string) *ListDisasterRecoveryCheckpointsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDisasterRecoveryCheckpointsResponse) SetStatusCode(v int32) *ListDisasterRecoveryCheckpointsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryCheckpointsResponse) SetBody(v *ListDisasterRecoveryCheckpointsResponseBody) *ListDisasterRecoveryCheckpointsResponse {
+	s.Body = v
+	return s
+}
+
+type ListDisasterRecoveryItemsRequest struct {
+	// example:
+	//
+	// topic_test
+	Filter *string `json:"filter,omitempty" xml:"filter,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+}
+
+func (s ListDisasterRecoveryItemsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDisasterRecoveryItemsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDisasterRecoveryItemsRequest) SetFilter(v string) *ListDisasterRecoveryItemsRequest {
+	s.Filter = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryItemsRequest) SetPageNumber(v int32) *ListDisasterRecoveryItemsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryItemsRequest) SetPageSize(v int32) *ListDisasterRecoveryItemsRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListDisasterRecoveryItemsResponseBody struct {
+	AccessDeniedDetail *string                                    `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
+	Code               *string                                    `json:"code,omitempty" xml:"code,omitempty"`
+	Data               *ListDisasterRecoveryItemsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	DynamicCode        *string                                    `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	DynamicMessage     *string                                    `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	HttpStatusCode     *int32                                     `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	Message            *string                                    `json:"message,omitempty" xml:"message,omitempty"`
+	RequestId          *string                                    `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success            *bool                                      `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ListDisasterRecoveryItemsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDisasterRecoveryItemsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDisasterRecoveryItemsResponseBody) SetAccessDeniedDetail(v string) *ListDisasterRecoveryItemsResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryItemsResponseBody) SetCode(v string) *ListDisasterRecoveryItemsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryItemsResponseBody) SetData(v *ListDisasterRecoveryItemsResponseBodyData) *ListDisasterRecoveryItemsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListDisasterRecoveryItemsResponseBody) SetDynamicCode(v string) *ListDisasterRecoveryItemsResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryItemsResponseBody) SetDynamicMessage(v string) *ListDisasterRecoveryItemsResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryItemsResponseBody) SetHttpStatusCode(v int32) *ListDisasterRecoveryItemsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryItemsResponseBody) SetMessage(v string) *ListDisasterRecoveryItemsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryItemsResponseBody) SetRequestId(v string) *ListDisasterRecoveryItemsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryItemsResponseBody) SetSuccess(v bool) *ListDisasterRecoveryItemsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListDisasterRecoveryItemsResponseBodyData struct {
+	List       []*ListDisasterRecoveryItemsResponseBodyDataList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
+	PageNumber *int64                                           `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize   *int64                                           `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	ScrollId   *string                                          `json:"scrollId,omitempty" xml:"scrollId,omitempty"`
+	TotalCount *int64                                           `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+}
+
+func (s ListDisasterRecoveryItemsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDisasterRecoveryItemsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListDisasterRecoveryItemsResponseBodyData) SetList(v []*ListDisasterRecoveryItemsResponseBodyDataList) *ListDisasterRecoveryItemsResponseBodyData {
+	s.List = v
+	return s
+}
+
+func (s *ListDisasterRecoveryItemsResponseBodyData) SetPageNumber(v int64) *ListDisasterRecoveryItemsResponseBodyData {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryItemsResponseBodyData) SetPageSize(v int64) *ListDisasterRecoveryItemsResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryItemsResponseBodyData) SetScrollId(v string) *ListDisasterRecoveryItemsResponseBodyData {
+	s.ScrollId = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryItemsResponseBodyData) SetTotalCount(v int64) *ListDisasterRecoveryItemsResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
+type ListDisasterRecoveryItemsResponseBodyDataList struct {
+	CreateTime *string                                                `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	ExtInfo    map[string]*string                                     `json:"extInfo,omitempty" xml:"extInfo,omitempty"`
+	ItemId     *int64                                                 `json:"itemId,omitempty" xml:"itemId,omitempty"`
+	ItemStatus *string                                                `json:"itemStatus,omitempty" xml:"itemStatus,omitempty"`
+	PlanId     *int64                                                 `json:"planId,omitempty" xml:"planId,omitempty"`
+	Topics     []*ListDisasterRecoveryItemsResponseBodyDataListTopics `json:"topics,omitempty" xml:"topics,omitempty" type:"Repeated"`
+	UpdateTime *string                                                `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+}
+
+func (s ListDisasterRecoveryItemsResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDisasterRecoveryItemsResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *ListDisasterRecoveryItemsResponseBodyDataList) SetCreateTime(v string) *ListDisasterRecoveryItemsResponseBodyDataList {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryItemsResponseBodyDataList) SetExtInfo(v map[string]*string) *ListDisasterRecoveryItemsResponseBodyDataList {
+	s.ExtInfo = v
+	return s
+}
+
+func (s *ListDisasterRecoveryItemsResponseBodyDataList) SetItemId(v int64) *ListDisasterRecoveryItemsResponseBodyDataList {
+	s.ItemId = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryItemsResponseBodyDataList) SetItemStatus(v string) *ListDisasterRecoveryItemsResponseBodyDataList {
+	s.ItemStatus = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryItemsResponseBodyDataList) SetPlanId(v int64) *ListDisasterRecoveryItemsResponseBodyDataList {
+	s.PlanId = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryItemsResponseBodyDataList) SetTopics(v []*ListDisasterRecoveryItemsResponseBodyDataListTopics) *ListDisasterRecoveryItemsResponseBodyDataList {
+	s.Topics = v
+	return s
+}
+
+func (s *ListDisasterRecoveryItemsResponseBodyDataList) SetUpdateTime(v string) *ListDisasterRecoveryItemsResponseBodyDataList {
+	s.UpdateTime = &v
+	return s
+}
+
+type ListDisasterRecoveryItemsResponseBodyDataListTopics struct {
+	// example:
+	//
+	// group-test
+	ConsumerGroupId   *string `json:"consumerGroupId,omitempty" xml:"consumerGroupId,omitempty"`
+	DeliveryOrderType *string `json:"deliveryOrderType,omitempty" xml:"deliveryOrderType,omitempty"`
+	// example:
+	//
+	// rmq-cn-kh43w0olz0c
+	InstanceId   *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	// regionId
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// example:
+	//
+	// topic-test
+	TopicName *string `json:"topicName,omitempty" xml:"topicName,omitempty"`
+}
+
+func (s ListDisasterRecoveryItemsResponseBodyDataListTopics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDisasterRecoveryItemsResponseBodyDataListTopics) GoString() string {
+	return s.String()
+}
+
+func (s *ListDisasterRecoveryItemsResponseBodyDataListTopics) SetConsumerGroupId(v string) *ListDisasterRecoveryItemsResponseBodyDataListTopics {
+	s.ConsumerGroupId = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryItemsResponseBodyDataListTopics) SetDeliveryOrderType(v string) *ListDisasterRecoveryItemsResponseBodyDataListTopics {
+	s.DeliveryOrderType = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryItemsResponseBodyDataListTopics) SetInstanceId(v string) *ListDisasterRecoveryItemsResponseBodyDataListTopics {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryItemsResponseBodyDataListTopics) SetInstanceType(v string) *ListDisasterRecoveryItemsResponseBodyDataListTopics {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryItemsResponseBodyDataListTopics) SetRegionId(v string) *ListDisasterRecoveryItemsResponseBodyDataListTopics {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryItemsResponseBodyDataListTopics) SetTopicName(v string) *ListDisasterRecoveryItemsResponseBodyDataListTopics {
+	s.TopicName = &v
+	return s
+}
+
+type ListDisasterRecoveryItemsResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDisasterRecoveryItemsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListDisasterRecoveryItemsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDisasterRecoveryItemsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDisasterRecoveryItemsResponse) SetHeaders(v map[string]*string) *ListDisasterRecoveryItemsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDisasterRecoveryItemsResponse) SetStatusCode(v int32) *ListDisasterRecoveryItemsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryItemsResponse) SetBody(v *ListDisasterRecoveryItemsResponseBody) *ListDisasterRecoveryItemsResponse {
+	s.Body = v
+	return s
+}
+
+type ListDisasterRecoveryPlansRequest struct {
+	Filter *string `json:"filter,omitempty" xml:"filter,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+}
+
+func (s ListDisasterRecoveryPlansRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDisasterRecoveryPlansRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDisasterRecoveryPlansRequest) SetFilter(v string) *ListDisasterRecoveryPlansRequest {
+	s.Filter = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryPlansRequest) SetPageNumber(v int32) *ListDisasterRecoveryPlansRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryPlansRequest) SetPageSize(v int32) *ListDisasterRecoveryPlansRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListDisasterRecoveryPlansResponseBody struct {
+	AccessDeniedDetail *string                                    `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
+	Code               *string                                    `json:"code,omitempty" xml:"code,omitempty"`
+	Data               *ListDisasterRecoveryPlansResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	DynamicCode        *string                                    `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	DynamicMessage     *string                                    `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	HttpStatusCode     *int32                                     `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	Message            *string                                    `json:"message,omitempty" xml:"message,omitempty"`
+	RequestId          *string                                    `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success            *bool                                      `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ListDisasterRecoveryPlansResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDisasterRecoveryPlansResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDisasterRecoveryPlansResponseBody) SetAccessDeniedDetail(v string) *ListDisasterRecoveryPlansResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryPlansResponseBody) SetCode(v string) *ListDisasterRecoveryPlansResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryPlansResponseBody) SetData(v *ListDisasterRecoveryPlansResponseBodyData) *ListDisasterRecoveryPlansResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListDisasterRecoveryPlansResponseBody) SetDynamicCode(v string) *ListDisasterRecoveryPlansResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryPlansResponseBody) SetDynamicMessage(v string) *ListDisasterRecoveryPlansResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryPlansResponseBody) SetHttpStatusCode(v int32) *ListDisasterRecoveryPlansResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryPlansResponseBody) SetMessage(v string) *ListDisasterRecoveryPlansResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryPlansResponseBody) SetRequestId(v string) *ListDisasterRecoveryPlansResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryPlansResponseBody) SetSuccess(v bool) *ListDisasterRecoveryPlansResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListDisasterRecoveryPlansResponseBodyData struct {
+	List       []*ListDisasterRecoveryPlansResponseBodyDataList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
+	PageNumber *int64                                           `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize   *int64                                           `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	ScrollId   *string                                          `json:"scrollId,omitempty" xml:"scrollId,omitempty"`
+	TotalCount *int64                                           `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+}
+
+func (s ListDisasterRecoveryPlansResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDisasterRecoveryPlansResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListDisasterRecoveryPlansResponseBodyData) SetList(v []*ListDisasterRecoveryPlansResponseBodyDataList) *ListDisasterRecoveryPlansResponseBodyData {
+	s.List = v
+	return s
+}
+
+func (s *ListDisasterRecoveryPlansResponseBodyData) SetPageNumber(v int64) *ListDisasterRecoveryPlansResponseBodyData {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryPlansResponseBodyData) SetPageSize(v int64) *ListDisasterRecoveryPlansResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryPlansResponseBodyData) SetScrollId(v string) *ListDisasterRecoveryPlansResponseBodyData {
+	s.ScrollId = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryPlansResponseBodyData) SetTotalCount(v int64) *ListDisasterRecoveryPlansResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
+type ListDisasterRecoveryPlansResponseBodyDataList struct {
+	AutoSyncCheckpoint    *bool                                                     `json:"autoSyncCheckpoint,omitempty" xml:"autoSyncCheckpoint,omitempty"`
+	CreateTime            *string                                                   `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	ExtInfo               map[string]*string                                        `json:"extInfo,omitempty" xml:"extInfo,omitempty"`
+	Instances             []*ListDisasterRecoveryPlansResponseBodyDataListInstances `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
+	PlanDesc              *string                                                   `json:"planDesc,omitempty" xml:"planDesc,omitempty"`
+	PlanId                *int64                                                    `json:"planId,omitempty" xml:"planId,omitempty"`
+	PlanName              *string                                                   `json:"planName,omitempty" xml:"planName,omitempty"`
+	PlanStatus            *string                                                   `json:"planStatus,omitempty" xml:"planStatus,omitempty"`
+	PlanType              *string                                                   `json:"planType,omitempty" xml:"planType,omitempty"`
+	SyncCheckpointEnabled *bool                                                     `json:"syncCheckpointEnabled,omitempty" xml:"syncCheckpointEnabled,omitempty"`
+	UpdateTime            *string                                                   `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+}
+
+func (s ListDisasterRecoveryPlansResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDisasterRecoveryPlansResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *ListDisasterRecoveryPlansResponseBodyDataList) SetAutoSyncCheckpoint(v bool) *ListDisasterRecoveryPlansResponseBodyDataList {
+	s.AutoSyncCheckpoint = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryPlansResponseBodyDataList) SetCreateTime(v string) *ListDisasterRecoveryPlansResponseBodyDataList {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryPlansResponseBodyDataList) SetExtInfo(v map[string]*string) *ListDisasterRecoveryPlansResponseBodyDataList {
+	s.ExtInfo = v
+	return s
+}
+
+func (s *ListDisasterRecoveryPlansResponseBodyDataList) SetInstances(v []*ListDisasterRecoveryPlansResponseBodyDataListInstances) *ListDisasterRecoveryPlansResponseBodyDataList {
+	s.Instances = v
+	return s
+}
+
+func (s *ListDisasterRecoveryPlansResponseBodyDataList) SetPlanDesc(v string) *ListDisasterRecoveryPlansResponseBodyDataList {
+	s.PlanDesc = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryPlansResponseBodyDataList) SetPlanId(v int64) *ListDisasterRecoveryPlansResponseBodyDataList {
+	s.PlanId = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryPlansResponseBodyDataList) SetPlanName(v string) *ListDisasterRecoveryPlansResponseBodyDataList {
+	s.PlanName = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryPlansResponseBodyDataList) SetPlanStatus(v string) *ListDisasterRecoveryPlansResponseBodyDataList {
+	s.PlanStatus = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryPlansResponseBodyDataList) SetPlanType(v string) *ListDisasterRecoveryPlansResponseBodyDataList {
+	s.PlanType = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryPlansResponseBodyDataList) SetSyncCheckpointEnabled(v bool) *ListDisasterRecoveryPlansResponseBodyDataList {
+	s.SyncCheckpointEnabled = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryPlansResponseBodyDataList) SetUpdateTime(v string) *ListDisasterRecoveryPlansResponseBodyDataList {
+	s.UpdateTime = &v
+	return s
+}
+
+type ListDisasterRecoveryPlansResponseBodyDataListInstances struct {
+	AuthType        *string                                                                `json:"authType,omitempty" xml:"authType,omitempty"`
+	EndpointUrl     *string                                                                `json:"endpointUrl,omitempty" xml:"endpointUrl,omitempty"`
+	InstanceId      *string                                                                `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	InstanceRole    *string                                                                `json:"instanceRole,omitempty" xml:"instanceRole,omitempty"`
+	InstanceType    *string                                                                `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	MessageProperty *ListDisasterRecoveryPlansResponseBodyDataListInstancesMessageProperty `json:"messageProperty,omitempty" xml:"messageProperty,omitempty" type:"Struct"`
+	NetworkType     *string                                                                `json:"networkType,omitempty" xml:"networkType,omitempty"`
+	Password        *string                                                                `json:"password,omitempty" xml:"password,omitempty"`
+	RegionId        *string                                                                `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	SecurityGroupId *string                                                                `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
+	Username        *string                                                                `json:"username,omitempty" xml:"username,omitempty"`
+	VSwitchId       *string                                                                `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
+	// VPC ID
+	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+}
+
+func (s ListDisasterRecoveryPlansResponseBodyDataListInstances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDisasterRecoveryPlansResponseBodyDataListInstances) GoString() string {
+	return s.String()
+}
+
+func (s *ListDisasterRecoveryPlansResponseBodyDataListInstances) SetAuthType(v string) *ListDisasterRecoveryPlansResponseBodyDataListInstances {
+	s.AuthType = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryPlansResponseBodyDataListInstances) SetEndpointUrl(v string) *ListDisasterRecoveryPlansResponseBodyDataListInstances {
+	s.EndpointUrl = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryPlansResponseBodyDataListInstances) SetInstanceId(v string) *ListDisasterRecoveryPlansResponseBodyDataListInstances {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryPlansResponseBodyDataListInstances) SetInstanceRole(v string) *ListDisasterRecoveryPlansResponseBodyDataListInstances {
+	s.InstanceRole = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryPlansResponseBodyDataListInstances) SetInstanceType(v string) *ListDisasterRecoveryPlansResponseBodyDataListInstances {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryPlansResponseBodyDataListInstances) SetMessageProperty(v *ListDisasterRecoveryPlansResponseBodyDataListInstancesMessageProperty) *ListDisasterRecoveryPlansResponseBodyDataListInstances {
+	s.MessageProperty = v
+	return s
+}
+
+func (s *ListDisasterRecoveryPlansResponseBodyDataListInstances) SetNetworkType(v string) *ListDisasterRecoveryPlansResponseBodyDataListInstances {
+	s.NetworkType = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryPlansResponseBodyDataListInstances) SetPassword(v string) *ListDisasterRecoveryPlansResponseBodyDataListInstances {
+	s.Password = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryPlansResponseBodyDataListInstances) SetRegionId(v string) *ListDisasterRecoveryPlansResponseBodyDataListInstances {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryPlansResponseBodyDataListInstances) SetSecurityGroupId(v string) *ListDisasterRecoveryPlansResponseBodyDataListInstances {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryPlansResponseBodyDataListInstances) SetUsername(v string) *ListDisasterRecoveryPlansResponseBodyDataListInstances {
+	s.Username = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryPlansResponseBodyDataListInstances) SetVSwitchId(v string) *ListDisasterRecoveryPlansResponseBodyDataListInstances {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryPlansResponseBodyDataListInstances) SetVpcId(v string) *ListDisasterRecoveryPlansResponseBodyDataListInstances {
+	s.VpcId = &v
+	return s
+}
+
+type ListDisasterRecoveryPlansResponseBodyDataListInstancesMessageProperty struct {
+	PropertyKey   *string `json:"propertyKey,omitempty" xml:"propertyKey,omitempty"`
+	PropertyValue *string `json:"propertyValue,omitempty" xml:"propertyValue,omitempty"`
+}
+
+func (s ListDisasterRecoveryPlansResponseBodyDataListInstancesMessageProperty) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDisasterRecoveryPlansResponseBodyDataListInstancesMessageProperty) GoString() string {
+	return s.String()
+}
+
+func (s *ListDisasterRecoveryPlansResponseBodyDataListInstancesMessageProperty) SetPropertyKey(v string) *ListDisasterRecoveryPlansResponseBodyDataListInstancesMessageProperty {
+	s.PropertyKey = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryPlansResponseBodyDataListInstancesMessageProperty) SetPropertyValue(v string) *ListDisasterRecoveryPlansResponseBodyDataListInstancesMessageProperty {
+	s.PropertyValue = &v
+	return s
+}
+
+type ListDisasterRecoveryPlansResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDisasterRecoveryPlansResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListDisasterRecoveryPlansResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDisasterRecoveryPlansResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDisasterRecoveryPlansResponse) SetHeaders(v map[string]*string) *ListDisasterRecoveryPlansResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDisasterRecoveryPlansResponse) SetStatusCode(v int32) *ListDisasterRecoveryPlansResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDisasterRecoveryPlansResponse) SetBody(v *ListDisasterRecoveryPlansResponseBody) *ListDisasterRecoveryPlansResponse {
 	s.Body = v
 	return s
 }
@@ -12862,6 +14838,118 @@ func (s *StopDisasterRecoveryItemResponse) SetBody(v *StopDisasterRecoveryItemRe
 	return s
 }
 
+type SyncDisasterRecoveryCheckpointResponseBody struct {
+	// example:
+	//
+	// Topic.NotFound
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// true
+	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// InstanceId
+	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// example:
+	//
+	// instanceId
+	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	// example:
+	//
+	// 400
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// Parameter instanceId is mandatory for this action .
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// 7358418D-83BD-507A-8079-611C63E05674
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s SyncDisasterRecoveryCheckpointResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SyncDisasterRecoveryCheckpointResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SyncDisasterRecoveryCheckpointResponseBody) SetCode(v string) *SyncDisasterRecoveryCheckpointResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SyncDisasterRecoveryCheckpointResponseBody) SetData(v bool) *SyncDisasterRecoveryCheckpointResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *SyncDisasterRecoveryCheckpointResponseBody) SetDynamicCode(v string) *SyncDisasterRecoveryCheckpointResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *SyncDisasterRecoveryCheckpointResponseBody) SetDynamicMessage(v string) *SyncDisasterRecoveryCheckpointResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *SyncDisasterRecoveryCheckpointResponseBody) SetHttpStatusCode(v int32) *SyncDisasterRecoveryCheckpointResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *SyncDisasterRecoveryCheckpointResponseBody) SetMessage(v string) *SyncDisasterRecoveryCheckpointResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SyncDisasterRecoveryCheckpointResponseBody) SetRequestId(v string) *SyncDisasterRecoveryCheckpointResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SyncDisasterRecoveryCheckpointResponseBody) SetSuccess(v bool) *SyncDisasterRecoveryCheckpointResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SyncDisasterRecoveryCheckpointResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SyncDisasterRecoveryCheckpointResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SyncDisasterRecoveryCheckpointResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SyncDisasterRecoveryCheckpointResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SyncDisasterRecoveryCheckpointResponse) SetHeaders(v map[string]*string) *SyncDisasterRecoveryCheckpointResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SyncDisasterRecoveryCheckpointResponse) SetStatusCode(v int32) *SyncDisasterRecoveryCheckpointResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SyncDisasterRecoveryCheckpointResponse) SetBody(v *SyncDisasterRecoveryCheckpointResponseBody) *SyncDisasterRecoveryCheckpointResponse {
+	s.Body = v
+	return s
+}
+
 type TagResourcesRequest struct {
 	// The region ID.
 	//
@@ -13491,6 +15579,488 @@ func (s *UpdateConsumerGroupResponse) SetStatusCode(v int32) *UpdateConsumerGrou
 }
 
 func (s *UpdateConsumerGroupResponse) SetBody(v *UpdateConsumerGroupResponseBody) *UpdateConsumerGroupResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateDisasterRecoveryItemRequest struct {
+	Topics []*UpdateDisasterRecoveryItemRequestTopics `json:"topics,omitempty" xml:"topics,omitempty" type:"Repeated"`
+}
+
+func (s UpdateDisasterRecoveryItemRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDisasterRecoveryItemRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDisasterRecoveryItemRequest) SetTopics(v []*UpdateDisasterRecoveryItemRequestTopics) *UpdateDisasterRecoveryItemRequest {
+	s.Topics = v
+	return s
+}
+
+type UpdateDisasterRecoveryItemRequestTopics struct {
+	// example:
+	//
+	// GID_xxx
+	ConsumerGroupId *string `json:"consumerGroupId,omitempty" xml:"consumerGroupId,omitempty"`
+	// example:
+	//
+	// Concurrently
+	DeliveryOrderType *string `json:"deliveryOrderType,omitempty" xml:"deliveryOrderType,omitempty"`
+	// example:
+	//
+	// rmq-cn-em93y94xxx
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// example:
+	//
+	// ALIYUN_ROCKETMQ
+	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// example:
+	//
+	// Topic_xxx
+	TopicName *string `json:"topicName,omitempty" xml:"topicName,omitempty"`
+}
+
+func (s UpdateDisasterRecoveryItemRequestTopics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDisasterRecoveryItemRequestTopics) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDisasterRecoveryItemRequestTopics) SetConsumerGroupId(v string) *UpdateDisasterRecoveryItemRequestTopics {
+	s.ConsumerGroupId = &v
+	return s
+}
+
+func (s *UpdateDisasterRecoveryItemRequestTopics) SetDeliveryOrderType(v string) *UpdateDisasterRecoveryItemRequestTopics {
+	s.DeliveryOrderType = &v
+	return s
+}
+
+func (s *UpdateDisasterRecoveryItemRequestTopics) SetInstanceId(v string) *UpdateDisasterRecoveryItemRequestTopics {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateDisasterRecoveryItemRequestTopics) SetInstanceType(v string) *UpdateDisasterRecoveryItemRequestTopics {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *UpdateDisasterRecoveryItemRequestTopics) SetRegionId(v string) *UpdateDisasterRecoveryItemRequestTopics {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateDisasterRecoveryItemRequestTopics) SetTopicName(v string) *UpdateDisasterRecoveryItemRequestTopics {
+	s.TopicName = &v
+	return s
+}
+
+type UpdateDisasterRecoveryItemResponseBody struct {
+	// example:
+	//
+	// Topic.NotFound
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// true
+	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// InstanceId
+	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// example:
+	//
+	// instanceId
+	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// The instance cannot be found.
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 0C32BED2-FA9F-50AD-9DA7-8B70E26C9D0D
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s UpdateDisasterRecoveryItemResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDisasterRecoveryItemResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDisasterRecoveryItemResponseBody) SetCode(v string) *UpdateDisasterRecoveryItemResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateDisasterRecoveryItemResponseBody) SetData(v bool) *UpdateDisasterRecoveryItemResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *UpdateDisasterRecoveryItemResponseBody) SetDynamicCode(v string) *UpdateDisasterRecoveryItemResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *UpdateDisasterRecoveryItemResponseBody) SetDynamicMessage(v string) *UpdateDisasterRecoveryItemResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *UpdateDisasterRecoveryItemResponseBody) SetHttpStatusCode(v int32) *UpdateDisasterRecoveryItemResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *UpdateDisasterRecoveryItemResponseBody) SetMessage(v string) *UpdateDisasterRecoveryItemResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateDisasterRecoveryItemResponseBody) SetRequestId(v string) *UpdateDisasterRecoveryItemResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateDisasterRecoveryItemResponseBody) SetSuccess(v bool) *UpdateDisasterRecoveryItemResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateDisasterRecoveryItemResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateDisasterRecoveryItemResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateDisasterRecoveryItemResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDisasterRecoveryItemResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDisasterRecoveryItemResponse) SetHeaders(v map[string]*string) *UpdateDisasterRecoveryItemResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateDisasterRecoveryItemResponse) SetStatusCode(v int32) *UpdateDisasterRecoveryItemResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateDisasterRecoveryItemResponse) SetBody(v *UpdateDisasterRecoveryItemResponseBody) *UpdateDisasterRecoveryItemResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateDisasterRecoveryPlanRequest struct {
+	AutoSyncCheckpoint *bool                                         `json:"autoSyncCheckpoint,omitempty" xml:"autoSyncCheckpoint,omitempty"`
+	Instances          []*UpdateDisasterRecoveryPlanRequestInstances `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
+	PlanDesc           *string                                       `json:"planDesc,omitempty" xml:"planDesc,omitempty"`
+	PlanName           *string                                       `json:"planName,omitempty" xml:"planName,omitempty"`
+	// example:
+	//
+	// ACTIVE_PASSIVE
+	PlanType              *string `json:"planType,omitempty" xml:"planType,omitempty"`
+	SyncCheckpointEnabled *bool   `json:"syncCheckpointEnabled,omitempty" xml:"syncCheckpointEnabled,omitempty"`
+}
+
+func (s UpdateDisasterRecoveryPlanRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDisasterRecoveryPlanRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDisasterRecoveryPlanRequest) SetAutoSyncCheckpoint(v bool) *UpdateDisasterRecoveryPlanRequest {
+	s.AutoSyncCheckpoint = &v
+	return s
+}
+
+func (s *UpdateDisasterRecoveryPlanRequest) SetInstances(v []*UpdateDisasterRecoveryPlanRequestInstances) *UpdateDisasterRecoveryPlanRequest {
+	s.Instances = v
+	return s
+}
+
+func (s *UpdateDisasterRecoveryPlanRequest) SetPlanDesc(v string) *UpdateDisasterRecoveryPlanRequest {
+	s.PlanDesc = &v
+	return s
+}
+
+func (s *UpdateDisasterRecoveryPlanRequest) SetPlanName(v string) *UpdateDisasterRecoveryPlanRequest {
+	s.PlanName = &v
+	return s
+}
+
+func (s *UpdateDisasterRecoveryPlanRequest) SetPlanType(v string) *UpdateDisasterRecoveryPlanRequest {
+	s.PlanType = &v
+	return s
+}
+
+func (s *UpdateDisasterRecoveryPlanRequest) SetSyncCheckpointEnabled(v bool) *UpdateDisasterRecoveryPlanRequest {
+	s.SyncCheckpointEnabled = &v
+	return s
+}
+
+type UpdateDisasterRecoveryPlanRequestInstances struct {
+	// example:
+	//
+	// NO_AUTH
+	AuthType    *string `json:"authType,omitempty" xml:"authType,omitempty"`
+	EndpointUrl *string `json:"endpointUrl,omitempty" xml:"endpointUrl,omitempty"`
+	InstanceId  *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// example:
+	//
+	// ACTIVE
+	InstanceRole *string `json:"instanceRole,omitempty" xml:"instanceRole,omitempty"`
+	// example:
+	//
+	// ALIYUN_ROCKETMQ
+	InstanceType    *string                                                    `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	MessageProperty *UpdateDisasterRecoveryPlanRequestInstancesMessageProperty `json:"messageProperty,omitempty" xml:"messageProperty,omitempty" type:"Struct"`
+	// example:
+	//
+	// TCP_INTERNET
+	NetworkType *string `json:"networkType,omitempty" xml:"networkType,omitempty"`
+	Password    *string `json:"password,omitempty" xml:"password,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// example:
+	//
+	// sg-bp17hpmgz9******
+	SecurityGroupId *string `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
+	Username        *string `json:"username,omitempty" xml:"username,omitempty"`
+	// example:
+	//
+	// vsw-uf6gwtbn6etadpv******
+	VSwitchId *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
+	// example:
+	//
+	// vpc-wz9qt50xhtj9krb******
+	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+}
+
+func (s UpdateDisasterRecoveryPlanRequestInstances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDisasterRecoveryPlanRequestInstances) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDisasterRecoveryPlanRequestInstances) SetAuthType(v string) *UpdateDisasterRecoveryPlanRequestInstances {
+	s.AuthType = &v
+	return s
+}
+
+func (s *UpdateDisasterRecoveryPlanRequestInstances) SetEndpointUrl(v string) *UpdateDisasterRecoveryPlanRequestInstances {
+	s.EndpointUrl = &v
+	return s
+}
+
+func (s *UpdateDisasterRecoveryPlanRequestInstances) SetInstanceId(v string) *UpdateDisasterRecoveryPlanRequestInstances {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateDisasterRecoveryPlanRequestInstances) SetInstanceRole(v string) *UpdateDisasterRecoveryPlanRequestInstances {
+	s.InstanceRole = &v
+	return s
+}
+
+func (s *UpdateDisasterRecoveryPlanRequestInstances) SetInstanceType(v string) *UpdateDisasterRecoveryPlanRequestInstances {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *UpdateDisasterRecoveryPlanRequestInstances) SetMessageProperty(v *UpdateDisasterRecoveryPlanRequestInstancesMessageProperty) *UpdateDisasterRecoveryPlanRequestInstances {
+	s.MessageProperty = v
+	return s
+}
+
+func (s *UpdateDisasterRecoveryPlanRequestInstances) SetNetworkType(v string) *UpdateDisasterRecoveryPlanRequestInstances {
+	s.NetworkType = &v
+	return s
+}
+
+func (s *UpdateDisasterRecoveryPlanRequestInstances) SetPassword(v string) *UpdateDisasterRecoveryPlanRequestInstances {
+	s.Password = &v
+	return s
+}
+
+func (s *UpdateDisasterRecoveryPlanRequestInstances) SetRegionId(v string) *UpdateDisasterRecoveryPlanRequestInstances {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateDisasterRecoveryPlanRequestInstances) SetSecurityGroupId(v string) *UpdateDisasterRecoveryPlanRequestInstances {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *UpdateDisasterRecoveryPlanRequestInstances) SetUsername(v string) *UpdateDisasterRecoveryPlanRequestInstances {
+	s.Username = &v
+	return s
+}
+
+func (s *UpdateDisasterRecoveryPlanRequestInstances) SetVSwitchId(v string) *UpdateDisasterRecoveryPlanRequestInstances {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *UpdateDisasterRecoveryPlanRequestInstances) SetVpcId(v string) *UpdateDisasterRecoveryPlanRequestInstances {
+	s.VpcId = &v
+	return s
+}
+
+type UpdateDisasterRecoveryPlanRequestInstancesMessageProperty struct {
+	// example:
+	//
+	// aaa
+	PropertyKey *string `json:"propertyKey,omitempty" xml:"propertyKey,omitempty"`
+	// example:
+	//
+	// bbb
+	PropertyValue *string `json:"propertyValue,omitempty" xml:"propertyValue,omitempty"`
+}
+
+func (s UpdateDisasterRecoveryPlanRequestInstancesMessageProperty) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDisasterRecoveryPlanRequestInstancesMessageProperty) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDisasterRecoveryPlanRequestInstancesMessageProperty) SetPropertyKey(v string) *UpdateDisasterRecoveryPlanRequestInstancesMessageProperty {
+	s.PropertyKey = &v
+	return s
+}
+
+func (s *UpdateDisasterRecoveryPlanRequestInstancesMessageProperty) SetPropertyValue(v string) *UpdateDisasterRecoveryPlanRequestInstancesMessageProperty {
+	s.PropertyValue = &v
+	return s
+}
+
+type UpdateDisasterRecoveryPlanResponseBody struct {
+	AccessDeniedDetail *string `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
+	Code               *string `json:"code,omitempty" xml:"code,omitempty"`
+	Data               *bool   `json:"data,omitempty" xml:"data,omitempty"`
+	DynamicCode        *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	DynamicMessage     *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	HttpStatusCode     *int32  `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	Message            *string `json:"message,omitempty" xml:"message,omitempty"`
+	RequestId          *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success            *bool   `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s UpdateDisasterRecoveryPlanResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDisasterRecoveryPlanResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDisasterRecoveryPlanResponseBody) SetAccessDeniedDetail(v string) *UpdateDisasterRecoveryPlanResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *UpdateDisasterRecoveryPlanResponseBody) SetCode(v string) *UpdateDisasterRecoveryPlanResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateDisasterRecoveryPlanResponseBody) SetData(v bool) *UpdateDisasterRecoveryPlanResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *UpdateDisasterRecoveryPlanResponseBody) SetDynamicCode(v string) *UpdateDisasterRecoveryPlanResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *UpdateDisasterRecoveryPlanResponseBody) SetDynamicMessage(v string) *UpdateDisasterRecoveryPlanResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *UpdateDisasterRecoveryPlanResponseBody) SetHttpStatusCode(v int32) *UpdateDisasterRecoveryPlanResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *UpdateDisasterRecoveryPlanResponseBody) SetMessage(v string) *UpdateDisasterRecoveryPlanResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateDisasterRecoveryPlanResponseBody) SetRequestId(v string) *UpdateDisasterRecoveryPlanResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateDisasterRecoveryPlanResponseBody) SetSuccess(v bool) *UpdateDisasterRecoveryPlanResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateDisasterRecoveryPlanResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateDisasterRecoveryPlanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateDisasterRecoveryPlanResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDisasterRecoveryPlanResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDisasterRecoveryPlanResponse) SetHeaders(v map[string]*string) *UpdateDisasterRecoveryPlanResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateDisasterRecoveryPlanResponse) SetStatusCode(v int32) *UpdateDisasterRecoveryPlanResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateDisasterRecoveryPlanResponse) SetBody(v *UpdateDisasterRecoveryPlanResponseBody) *UpdateDisasterRecoveryPlanResponse {
 	s.Body = v
 	return s
 }
@@ -15037,6 +17607,101 @@ func (client *Client) CreateConsumerGroup(instanceId *string, consumerGroupId *s
 
 // Summary:
 //
+// 创建容灾计划
+//
+// @param request - CreateDisasterRecoveryPlanRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDisasterRecoveryPlanResponse
+func (client *Client) CreateDisasterRecoveryPlanWithOptions(request *CreateDisasterRecoveryPlanRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateDisasterRecoveryPlanResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoSyncCheckpoint)) {
+		body["autoSyncCheckpoint"] = request.AutoSyncCheckpoint
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Instances)) {
+		body["instances"] = request.Instances
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PlanDesc)) {
+		body["planDesc"] = request.PlanDesc
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PlanName)) {
+		body["planName"] = request.PlanName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PlanType)) {
+		body["planType"] = request.PlanType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SyncCheckpointEnabled)) {
+		body["syncCheckpointEnabled"] = request.SyncCheckpointEnabled
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDisasterRecoveryPlan"),
+		Version:     tea.String("2022-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/disaster_recovery"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateDisasterRecoveryPlanResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateDisasterRecoveryPlanResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 创建容灾计划
+//
+// @param request - CreateDisasterRecoveryPlanRequest
+//
+// @return CreateDisasterRecoveryPlanResponse
+func (client *Client) CreateDisasterRecoveryPlan(request *CreateDisasterRecoveryPlanRequest) (_result *CreateDisasterRecoveryPlanResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateDisasterRecoveryPlanResponse{}
+	_body, _err := client.CreateDisasterRecoveryPlanWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates an ApsaraMQ for RocketMQ 5.x instance.
 //
 // Description:
@@ -15657,6 +18322,67 @@ func (client *Client) DeleteConsumerGroupSubscription(instanceId *string, consum
 	headers := make(map[string]*string)
 	_result = &DeleteConsumerGroupSubscriptionResponse{}
 	_body, _err := client.DeleteConsumerGroupSubscriptionWithOptions(instanceId, consumerGroupId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除容灾计划条目
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDisasterRecoveryItemResponse
+func (client *Client) DeleteDisasterRecoveryItemWithOptions(planId *string, itemId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteDisasterRecoveryItemResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDisasterRecoveryItem"),
+		Version:     tea.String("2022-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/disaster_recovery/" + tea.StringValue(openapiutil.GetEncodeParam(planId)) + "/items/" + tea.StringValue(openapiutil.GetEncodeParam(itemId))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteDisasterRecoveryItemResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteDisasterRecoveryItemResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 删除容灾计划条目
+//
+// @return DeleteDisasterRecoveryItemResponse
+func (client *Client) DeleteDisasterRecoveryItem(planId *string, itemId *string) (_result *DeleteDisasterRecoveryItemResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteDisasterRecoveryItemResponse{}
+	_body, _err := client.DeleteDisasterRecoveryItemWithOptions(planId, itemId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16378,6 +19104,128 @@ func (client *Client) GetConsumerStack(instanceId *string, consumerGroupId *stri
 
 // Summary:
 //
+// 查询容灾计划条目详情
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDisasterRecoveryItemResponse
+func (client *Client) GetDisasterRecoveryItemWithOptions(planId *string, itemId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetDisasterRecoveryItemResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDisasterRecoveryItem"),
+		Version:     tea.String("2022-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/disaster_recovery/" + tea.StringValue(openapiutil.GetEncodeParam(planId)) + "/items/" + tea.StringValue(openapiutil.GetEncodeParam(itemId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetDisasterRecoveryItemResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetDisasterRecoveryItemResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询容灾计划条目详情
+//
+// @return GetDisasterRecoveryItemResponse
+func (client *Client) GetDisasterRecoveryItem(planId *string, itemId *string) (_result *GetDisasterRecoveryItemResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetDisasterRecoveryItemResponse{}
+	_body, _err := client.GetDisasterRecoveryItemWithOptions(planId, itemId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询容灾计划详情
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDisasterRecoveryPlanResponse
+func (client *Client) GetDisasterRecoveryPlanWithOptions(planId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetDisasterRecoveryPlanResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDisasterRecoveryPlan"),
+		Version:     tea.String("2022-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/disaster_recovery/" + tea.StringValue(openapiutil.GetEncodeParam(planId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetDisasterRecoveryPlanResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetDisasterRecoveryPlanResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询容灾计划详情
+//
+// @return GetDisasterRecoveryPlanResponse
+func (client *Client) GetDisasterRecoveryPlan(planId *string) (_result *GetDisasterRecoveryPlanResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetDisasterRecoveryPlanResponse{}
+	_body, _err := client.GetDisasterRecoveryPlanWithOptions(planId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the detailed information about an instance.
 //
 // Description:
@@ -16989,14 +19837,26 @@ func (client *Client) ListConsumerConnections(instanceId *string, consumerGroupI
 //
 // Queries the subscriptions of a specific consumer group.
 //
+// @param request - ListConsumerGroupSubscriptionsRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListConsumerGroupSubscriptionsResponse
-func (client *Client) ListConsumerGroupSubscriptionsWithOptions(instanceId *string, consumerGroupId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListConsumerGroupSubscriptionsResponse, _err error) {
+func (client *Client) ListConsumerGroupSubscriptionsWithOptions(instanceId *string, consumerGroupId *string, request *ListConsumerGroupSubscriptionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListConsumerGroupSubscriptionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TopicName)) {
+		query["topicName"] = request.TopicName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListConsumerGroupSubscriptions"),
@@ -17033,12 +19893,14 @@ func (client *Client) ListConsumerGroupSubscriptionsWithOptions(instanceId *stri
 //
 // Queries the subscriptions of a specific consumer group.
 //
+// @param request - ListConsumerGroupSubscriptionsRequest
+//
 // @return ListConsumerGroupSubscriptionsResponse
-func (client *Client) ListConsumerGroupSubscriptions(instanceId *string, consumerGroupId *string) (_result *ListConsumerGroupSubscriptionsResponse, _err error) {
+func (client *Client) ListConsumerGroupSubscriptions(instanceId *string, consumerGroupId *string, request *ListConsumerGroupSubscriptionsRequest) (_result *ListConsumerGroupSubscriptionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &ListConsumerGroupSubscriptionsResponse{}
-	_body, _err := client.ListConsumerGroupSubscriptionsWithOptions(instanceId, consumerGroupId, headers, runtime)
+	_body, _err := client.ListConsumerGroupSubscriptionsWithOptions(instanceId, consumerGroupId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17130,6 +19992,259 @@ func (client *Client) ListConsumerGroups(instanceId *string, request *ListConsum
 	headers := make(map[string]*string)
 	_result = &ListConsumerGroupsResponse{}
 	_body, _err := client.ListConsumerGroupsWithOptions(instanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询容灾计划消费进度信息
+//
+// @param request - ListDisasterRecoveryCheckpointsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDisasterRecoveryCheckpointsResponse
+func (client *Client) ListDisasterRecoveryCheckpointsWithOptions(planId *string, itemId *string, request *ListDisasterRecoveryCheckpointsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListDisasterRecoveryCheckpointsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Filter)) {
+		query["filter"] = request.Filter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["instanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDisasterRecoveryCheckpoints"),
+		Version:     tea.String("2022-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/disaster_recovery/" + tea.StringValue(openapiutil.GetEncodeParam(planId)) + "/items/" + tea.StringValue(openapiutil.GetEncodeParam(itemId)) + "/checkpoints"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListDisasterRecoveryCheckpointsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListDisasterRecoveryCheckpointsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询容灾计划消费进度信息
+//
+// @param request - ListDisasterRecoveryCheckpointsRequest
+//
+// @return ListDisasterRecoveryCheckpointsResponse
+func (client *Client) ListDisasterRecoveryCheckpoints(planId *string, itemId *string, request *ListDisasterRecoveryCheckpointsRequest) (_result *ListDisasterRecoveryCheckpointsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListDisasterRecoveryCheckpointsResponse{}
+	_body, _err := client.ListDisasterRecoveryCheckpointsWithOptions(planId, itemId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询容灾计划条目列表
+//
+// @param request - ListDisasterRecoveryItemsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDisasterRecoveryItemsResponse
+func (client *Client) ListDisasterRecoveryItemsWithOptions(planId *string, request *ListDisasterRecoveryItemsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListDisasterRecoveryItemsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Filter)) {
+		query["filter"] = request.Filter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDisasterRecoveryItems"),
+		Version:     tea.String("2022-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/disaster_recovery/" + tea.StringValue(openapiutil.GetEncodeParam(planId)) + "/items"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListDisasterRecoveryItemsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListDisasterRecoveryItemsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询容灾计划条目列表
+//
+// @param request - ListDisasterRecoveryItemsRequest
+//
+// @return ListDisasterRecoveryItemsResponse
+func (client *Client) ListDisasterRecoveryItems(planId *string, request *ListDisasterRecoveryItemsRequest) (_result *ListDisasterRecoveryItemsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListDisasterRecoveryItemsResponse{}
+	_body, _err := client.ListDisasterRecoveryItemsWithOptions(planId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询容灾计划列表
+//
+// @param request - ListDisasterRecoveryPlansRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDisasterRecoveryPlansResponse
+func (client *Client) ListDisasterRecoveryPlansWithOptions(request *ListDisasterRecoveryPlansRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListDisasterRecoveryPlansResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Filter)) {
+		query["filter"] = request.Filter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDisasterRecoveryPlans"),
+		Version:     tea.String("2022-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/disaster_recovery"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListDisasterRecoveryPlansResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListDisasterRecoveryPlansResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询容灾计划列表
+//
+// @param request - ListDisasterRecoveryPlansRequest
+//
+// @return ListDisasterRecoveryPlansResponse
+func (client *Client) ListDisasterRecoveryPlans(request *ListDisasterRecoveryPlansRequest) (_result *ListDisasterRecoveryPlansResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListDisasterRecoveryPlansResponse{}
+	_body, _err := client.ListDisasterRecoveryPlansWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18297,6 +21412,67 @@ func (client *Client) StopDisasterRecoveryItem(planId *string, itemId *string) (
 
 // Summary:
 //
+// 同步容灾计划消费进度
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SyncDisasterRecoveryCheckpointResponse
+func (client *Client) SyncDisasterRecoveryCheckpointWithOptions(planId *string, itemId *string, checkpointId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SyncDisasterRecoveryCheckpointResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SyncDisasterRecoveryCheckpoint"),
+		Version:     tea.String("2022-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/disaster_recovery/" + tea.StringValue(openapiutil.GetEncodeParam(planId)) + "/items/" + tea.StringValue(openapiutil.GetEncodeParam(itemId)) + "/checkpoints/" + tea.StringValue(openapiutil.GetEncodeParam(checkpointId))),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SyncDisasterRecoveryCheckpointResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SyncDisasterRecoveryCheckpointResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 同步容灾计划消费进度
+//
+// @return SyncDisasterRecoveryCheckpointResponse
+func (client *Client) SyncDisasterRecoveryCheckpoint(planId *string, itemId *string, checkpointId *string) (_result *SyncDisasterRecoveryCheckpointResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SyncDisasterRecoveryCheckpointResponse{}
+	_body, _err := client.SyncDisasterRecoveryCheckpointWithOptions(planId, itemId, checkpointId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates resource tags.
 //
 // @param request - TagResourcesRequest
@@ -18561,6 +21737,176 @@ func (client *Client) UpdateConsumerGroup(instanceId *string, consumerGroupId *s
 	headers := make(map[string]*string)
 	_result = &UpdateConsumerGroupResponse{}
 	_body, _err := client.UpdateConsumerGroupWithOptions(instanceId, consumerGroupId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改容灾计划条目
+//
+// @param request - UpdateDisasterRecoveryItemRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDisasterRecoveryItemResponse
+func (client *Client) UpdateDisasterRecoveryItemWithOptions(planId *string, itemId *string, request *UpdateDisasterRecoveryItemRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateDisasterRecoveryItemResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Topics)) {
+		body["topics"] = request.Topics
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateDisasterRecoveryItem"),
+		Version:     tea.String("2022-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/disaster_recovery/" + tea.StringValue(openapiutil.GetEncodeParam(planId)) + "/items/" + tea.StringValue(openapiutil.GetEncodeParam(itemId))),
+		Method:      tea.String("PATCH"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateDisasterRecoveryItemResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateDisasterRecoveryItemResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 修改容灾计划条目
+//
+// @param request - UpdateDisasterRecoveryItemRequest
+//
+// @return UpdateDisasterRecoveryItemResponse
+func (client *Client) UpdateDisasterRecoveryItem(planId *string, itemId *string, request *UpdateDisasterRecoveryItemRequest) (_result *UpdateDisasterRecoveryItemResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateDisasterRecoveryItemResponse{}
+	_body, _err := client.UpdateDisasterRecoveryItemWithOptions(planId, itemId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新容灾计划
+//
+// @param request - UpdateDisasterRecoveryPlanRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDisasterRecoveryPlanResponse
+func (client *Client) UpdateDisasterRecoveryPlanWithOptions(planId *string, request *UpdateDisasterRecoveryPlanRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateDisasterRecoveryPlanResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoSyncCheckpoint)) {
+		body["autoSyncCheckpoint"] = request.AutoSyncCheckpoint
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Instances)) {
+		body["instances"] = request.Instances
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PlanDesc)) {
+		body["planDesc"] = request.PlanDesc
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PlanName)) {
+		body["planName"] = request.PlanName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PlanType)) {
+		body["planType"] = request.PlanType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SyncCheckpointEnabled)) {
+		body["syncCheckpointEnabled"] = request.SyncCheckpointEnabled
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateDisasterRecoveryPlan"),
+		Version:     tea.String("2022-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/disaster_recovery/" + tea.StringValue(openapiutil.GetEncodeParam(planId))),
+		Method:      tea.String("PATCH"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateDisasterRecoveryPlanResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateDisasterRecoveryPlanResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 更新容灾计划
+//
+// @param request - UpdateDisasterRecoveryPlanRequest
+//
+// @return UpdateDisasterRecoveryPlanResponse
+func (client *Client) UpdateDisasterRecoveryPlan(planId *string, request *UpdateDisasterRecoveryPlanRequest) (_result *UpdateDisasterRecoveryPlanResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateDisasterRecoveryPlanResponse{}
+	_body, _err := client.UpdateDisasterRecoveryPlanWithOptions(planId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}

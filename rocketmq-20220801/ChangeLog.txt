@@ -1,6 +1,16 @@
-2025-02-19 Version: v2.0.0
+2025-02-28 Version: v1.7.0
+- Support API CreateDisasterRecoveryPlan.
+- Support API DeleteDisasterRecoveryItem.
+- Support API GetDisasterRecoveryItem.
+- Support API GetDisasterRecoveryPlan.
 - Support API GetInstanceAcl.
 - Support API GetInstanceIpWhitelist.
+- Support API ListDisasterRecoveryCheckpoints.
+- Support API ListDisasterRecoveryItems.
+- Support API ListDisasterRecoveryPlans.
+- Support API SyncDisasterRecoveryCheckpoint.
+- Support API UpdateDisasterRecoveryItem.
+- Support API UpdateDisasterRecoveryPlan.
 - Update API AddDisasterRecoveryItem: update param body.
 - Update API CreateInstance: update param body.
 - Update API CreateInstanceAcl: update param body.
@@ -11,6 +21,7 @@
 - Update API GetConsumerGroupLag: add param topicName.
 - Update API GetInstanceAccount: update response param.
 - Update API GetTrace: update response param.
+- Update API ListConsumerGroupSubscriptions: add param topicName.
 - Update API ListInstanceAccount: update param pageNumber.
 - Update API ListInstanceAccount: update param pageSize.
 - Update API ListInstanceAcl: update param pageNumber.
