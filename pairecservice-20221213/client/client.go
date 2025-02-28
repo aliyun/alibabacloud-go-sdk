@@ -9,6 +9,46 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type TrafficControlTaskTrafficInfoTargetTrafficsDataValue struct {
+	Traffic    *float64 `json:"Traffic,omitempty" xml:"Traffic,omitempty"`
+	RecordTime *int64   `json:"RecordTime,omitempty" xml:"RecordTime,omitempty"`
+}
+
+func (s TrafficControlTaskTrafficInfoTargetTrafficsDataValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TrafficControlTaskTrafficInfoTargetTrafficsDataValue) GoString() string {
+	return s.String()
+}
+
+func (s *TrafficControlTaskTrafficInfoTargetTrafficsDataValue) SetTraffic(v float64) *TrafficControlTaskTrafficInfoTargetTrafficsDataValue {
+	s.Traffic = &v
+	return s
+}
+
+func (s *TrafficControlTaskTrafficInfoTargetTrafficsDataValue) SetRecordTime(v int64) *TrafficControlTaskTrafficInfoTargetTrafficsDataValue {
+	s.RecordTime = &v
+	return s
+}
+
+type TrafficControlTaskTrafficInfoTaskTrafficsValue struct {
+	Traffic *float64 `json:"Traffic,omitempty" xml:"Traffic,omitempty"`
+}
+
+func (s TrafficControlTaskTrafficInfoTaskTrafficsValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TrafficControlTaskTrafficInfoTaskTrafficsValue) GoString() string {
+	return s.String()
+}
+
+func (s *TrafficControlTaskTrafficInfoTaskTrafficsValue) SetTraffic(v float64) *TrafficControlTaskTrafficInfoTaskTrafficsValue {
+	s.Traffic = &v
+	return s
+}
+
 type ExperimentReportValue struct {
 	// example:
 	//
@@ -398,11 +438,102 @@ func (s *CheckInstanceResourcesResponse) SetBody(v *CheckInstanceResourcesRespon
 	return s
 }
 
+type CheckTrafficControlTaskExpressionRequest struct {
+	// This parameter is required.
+	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	// This parameter is required.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	TableMetaId *string `json:"TableMetaId,omitempty" xml:"TableMetaId,omitempty"`
+}
+
+func (s CheckTrafficControlTaskExpressionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckTrafficControlTaskExpressionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CheckTrafficControlTaskExpressionRequest) SetExpression(v string) *CheckTrafficControlTaskExpressionRequest {
+	s.Expression = &v
+	return s
+}
+
+func (s *CheckTrafficControlTaskExpressionRequest) SetInstanceId(v string) *CheckTrafficControlTaskExpressionRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CheckTrafficControlTaskExpressionRequest) SetTableMetaId(v string) *CheckTrafficControlTaskExpressionRequest {
+	s.TableMetaId = &v
+	return s
+}
+
+type CheckTrafficControlTaskExpressionResponseBody struct {
+	IsValie   *bool   `json:"IsValie,omitempty" xml:"IsValie,omitempty"`
+	Reason    *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CheckTrafficControlTaskExpressionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckTrafficControlTaskExpressionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CheckTrafficControlTaskExpressionResponseBody) SetIsValie(v bool) *CheckTrafficControlTaskExpressionResponseBody {
+	s.IsValie = &v
+	return s
+}
+
+func (s *CheckTrafficControlTaskExpressionResponseBody) SetReason(v string) *CheckTrafficControlTaskExpressionResponseBody {
+	s.Reason = &v
+	return s
+}
+
+func (s *CheckTrafficControlTaskExpressionResponseBody) SetRequestId(v string) *CheckTrafficControlTaskExpressionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CheckTrafficControlTaskExpressionResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CheckTrafficControlTaskExpressionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CheckTrafficControlTaskExpressionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckTrafficControlTaskExpressionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CheckTrafficControlTaskExpressionResponse) SetHeaders(v map[string]*string) *CheckTrafficControlTaskExpressionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CheckTrafficControlTaskExpressionResponse) SetStatusCode(v int32) *CheckTrafficControlTaskExpressionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CheckTrafficControlTaskExpressionResponse) SetBody(v *CheckTrafficControlTaskExpressionResponseBody) *CheckTrafficControlTaskExpressionResponse {
+	s.Body = v
+	return s
+}
+
 type CloneEngineConfigRequest struct {
 	// example:
 	//
 	// {}
 	ConfigValue *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// example:
 	//
 	// Pre
@@ -423,6 +554,11 @@ func (s CloneEngineConfigRequest) GoString() string {
 
 func (s *CloneEngineConfigRequest) SetConfigValue(v string) *CloneEngineConfigRequest {
 	s.ConfigValue = &v
+	return s
+}
+
+func (s *CloneEngineConfigRequest) SetDescription(v string) *CloneEngineConfigRequest {
+	s.Description = &v
 	return s
 }
 
@@ -1508,6 +1644,7 @@ type CreateEngineConfigRequest struct {
 	//
 	// {}
 	ConfigValue *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// example:
 	//
 	// Pre
@@ -1532,6 +1669,11 @@ func (s CreateEngineConfigRequest) GoString() string {
 
 func (s *CreateEngineConfigRequest) SetConfigValue(v string) *CreateEngineConfigRequest {
 	s.ConfigValue = &v
+	return s
+}
+
+func (s *CreateEngineConfigRequest) SetDescription(v string) *CreateEngineConfigRequest {
+	s.Description = &v
 	return s
 }
 
@@ -2097,7 +2239,13 @@ type CreateFeatureConsistencyCheckJobConfigRequest struct {
 	// example:
 	//
 	// true
-	CompareFeature *bool `json:"CompareFeature,omitempty" xml:"CompareFeature,omitempty"`
+	CompareFeature   *bool   `json:"CompareFeature,omitempty" xml:"CompareFeature,omitempty"`
+	DatasetId        *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	DatasetMountPath *string `json:"DatasetMountPath,omitempty" xml:"DatasetMountPath,omitempty"`
+	DatasetName      *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	DatasetType      *string `json:"DatasetType,omitempty" xml:"DatasetType,omitempty"`
+	DatasetUri       *string `json:"DatasetUri,omitempty" xml:"DatasetUri,omitempty"`
+	DefaultRoute     *string `json:"DefaultRoute,omitempty" xml:"DefaultRoute,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -2179,7 +2327,10 @@ type CreateFeatureConsistencyCheckJobConfigRequest struct {
 	// example:
 	//
 	// reso-********
-	OssResourceId *string `json:"OssResourceId,omitempty" xml:"OssResourceId,omitempty"`
+	OssResourceId       *string `json:"OssResourceId,omitempty" xml:"OssResourceId,omitempty"`
+	PredictWorkerCount  *int32  `json:"PredictWorkerCount,omitempty" xml:"PredictWorkerCount,omitempty"`
+	PredictWorkerCpu    *int32  `json:"PredictWorkerCpu,omitempty" xml:"PredictWorkerCpu,omitempty"`
+	PredictWorkerMemory *int32  `json:"PredictWorkerMemory,omitempty" xml:"PredictWorkerMemory,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -2191,13 +2342,15 @@ type CreateFeatureConsistencyCheckJobConfigRequest struct {
 	// example:
 	//
 	// 3
-	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	SceneId         *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 4
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	SwitchId  *string `json:"SwitchId,omitempty" xml:"SwitchId,omitempty"`
 	// This parameter is required.
 	UseFeatureStore *bool `json:"UseFeatureStore,omitempty" xml:"UseFeatureStore,omitempty"`
 	// example:
@@ -2216,10 +2369,12 @@ type CreateFeatureConsistencyCheckJobConfigRequest struct {
 	//
 	// yyyymmdd
 	UserTablePartitionFieldFormat *string `json:"UserTablePartitionFieldFormat,omitempty" xml:"UserTablePartitionFieldFormat,omitempty"`
+	VpcId                         *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// example:
 	//
 	// work_flow_1
 	WorkflowName *string `json:"WorkflowName,omitempty" xml:"WorkflowName,omitempty"`
+	WorkspaceId  *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s CreateFeatureConsistencyCheckJobConfigRequest) String() string {
@@ -2232,6 +2387,36 @@ func (s CreateFeatureConsistencyCheckJobConfigRequest) GoString() string {
 
 func (s *CreateFeatureConsistencyCheckJobConfigRequest) SetCompareFeature(v bool) *CreateFeatureConsistencyCheckJobConfigRequest {
 	s.CompareFeature = &v
+	return s
+}
+
+func (s *CreateFeatureConsistencyCheckJobConfigRequest) SetDatasetId(v string) *CreateFeatureConsistencyCheckJobConfigRequest {
+	s.DatasetId = &v
+	return s
+}
+
+func (s *CreateFeatureConsistencyCheckJobConfigRequest) SetDatasetMountPath(v string) *CreateFeatureConsistencyCheckJobConfigRequest {
+	s.DatasetMountPath = &v
+	return s
+}
+
+func (s *CreateFeatureConsistencyCheckJobConfigRequest) SetDatasetName(v string) *CreateFeatureConsistencyCheckJobConfigRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *CreateFeatureConsistencyCheckJobConfigRequest) SetDatasetType(v string) *CreateFeatureConsistencyCheckJobConfigRequest {
+	s.DatasetType = &v
+	return s
+}
+
+func (s *CreateFeatureConsistencyCheckJobConfigRequest) SetDatasetUri(v string) *CreateFeatureConsistencyCheckJobConfigRequest {
+	s.DatasetUri = &v
+	return s
+}
+
+func (s *CreateFeatureConsistencyCheckJobConfigRequest) SetDefaultRoute(v string) *CreateFeatureConsistencyCheckJobConfigRequest {
+	s.DefaultRoute = &v
 	return s
 }
 
@@ -2345,6 +2530,21 @@ func (s *CreateFeatureConsistencyCheckJobConfigRequest) SetOssResourceId(v strin
 	return s
 }
 
+func (s *CreateFeatureConsistencyCheckJobConfigRequest) SetPredictWorkerCount(v int32) *CreateFeatureConsistencyCheckJobConfigRequest {
+	s.PredictWorkerCount = &v
+	return s
+}
+
+func (s *CreateFeatureConsistencyCheckJobConfigRequest) SetPredictWorkerCpu(v int32) *CreateFeatureConsistencyCheckJobConfigRequest {
+	s.PredictWorkerCpu = &v
+	return s
+}
+
+func (s *CreateFeatureConsistencyCheckJobConfigRequest) SetPredictWorkerMemory(v int32) *CreateFeatureConsistencyCheckJobConfigRequest {
+	s.PredictWorkerMemory = &v
+	return s
+}
+
 func (s *CreateFeatureConsistencyCheckJobConfigRequest) SetSampleRate(v float64) *CreateFeatureConsistencyCheckJobConfigRequest {
 	s.SampleRate = &v
 	return s
@@ -2355,8 +2555,18 @@ func (s *CreateFeatureConsistencyCheckJobConfigRequest) SetSceneId(v string) *Cr
 	return s
 }
 
+func (s *CreateFeatureConsistencyCheckJobConfigRequest) SetSecurityGroupId(v string) *CreateFeatureConsistencyCheckJobConfigRequest {
+	s.SecurityGroupId = &v
+	return s
+}
+
 func (s *CreateFeatureConsistencyCheckJobConfigRequest) SetServiceId(v string) *CreateFeatureConsistencyCheckJobConfigRequest {
 	s.ServiceId = &v
+	return s
+}
+
+func (s *CreateFeatureConsistencyCheckJobConfigRequest) SetSwitchId(v string) *CreateFeatureConsistencyCheckJobConfigRequest {
+	s.SwitchId = &v
 	return s
 }
 
@@ -2385,8 +2595,18 @@ func (s *CreateFeatureConsistencyCheckJobConfigRequest) SetUserTablePartitionFie
 	return s
 }
 
+func (s *CreateFeatureConsistencyCheckJobConfigRequest) SetVpcId(v string) *CreateFeatureConsistencyCheckJobConfigRequest {
+	s.VpcId = &v
+	return s
+}
+
 func (s *CreateFeatureConsistencyCheckJobConfigRequest) SetWorkflowName(v string) *CreateFeatureConsistencyCheckJobConfigRequest {
 	s.WorkflowName = &v
+	return s
+}
+
+func (s *CreateFeatureConsistencyCheckJobConfigRequest) SetWorkspaceId(v string) *CreateFeatureConsistencyCheckJobConfigRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -3894,11 +4114,15 @@ type CreateTrafficControlTaskRequest struct {
 	// example:
 	//
 	// task-1
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PreExperimentIds  *string `json:"PreExperimentIds,omitempty" xml:"PreExperimentIds,omitempty"`
+	ProdExperimentIds *string `json:"ProdExperimentIds,omitempty" xml:"ProdExperimentIds,omitempty"`
 	// example:
 	//
 	// 1
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// This parameter is required.
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	// example:
 	//
 	// 2024-03-25
@@ -4007,8 +4231,23 @@ func (s *CreateTrafficControlTaskRequest) SetName(v string) *CreateTrafficContro
 	return s
 }
 
+func (s *CreateTrafficControlTaskRequest) SetPreExperimentIds(v string) *CreateTrafficControlTaskRequest {
+	s.PreExperimentIds = &v
+	return s
+}
+
+func (s *CreateTrafficControlTaskRequest) SetProdExperimentIds(v string) *CreateTrafficControlTaskRequest {
+	s.ProdExperimentIds = &v
+	return s
+}
+
 func (s *CreateTrafficControlTaskRequest) SetSceneId(v string) *CreateTrafficControlTaskRequest {
 	s.SceneId = &v
+	return s
+}
+
+func (s *CreateTrafficControlTaskRequest) SetServiceId(v string) *CreateTrafficControlTaskRequest {
+	s.ServiceId = &v
 	return s
 }
 
@@ -5523,6 +5762,8 @@ func (s *DeleteTrafficControlTaskResponse) SetBody(v *DeleteTrafficControlTaskRe
 }
 
 type GenerateTrafficControlTaskCodeRequest struct {
+	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	// This parameter is required.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -5534,14 +5775,20 @@ func (s GenerateTrafficControlTaskCodeRequest) GoString() string {
 	return s.String()
 }
 
+func (s *GenerateTrafficControlTaskCodeRequest) SetEnvironment(v string) *GenerateTrafficControlTaskCodeRequest {
+	s.Environment = &v
+	return s
+}
+
 func (s *GenerateTrafficControlTaskCodeRequest) SetInstanceId(v string) *GenerateTrafficControlTaskCodeRequest {
 	s.InstanceId = &v
 	return s
 }
 
 type GenerateTrafficControlTaskCodeResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Code          *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	PreNeedConfig *bool   `json:"PreNeedConfig,omitempty" xml:"PreNeedConfig,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GenerateTrafficControlTaskCodeResponseBody) String() string {
@@ -5554,6 +5801,11 @@ func (s GenerateTrafficControlTaskCodeResponseBody) GoString() string {
 
 func (s *GenerateTrafficControlTaskCodeResponseBody) SetCode(v string) *GenerateTrafficControlTaskCodeResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *GenerateTrafficControlTaskCodeResponseBody) SetPreNeedConfig(v bool) *GenerateTrafficControlTaskCodeResponseBody {
+	s.PreNeedConfig = &v
 	return s
 }
 
@@ -6150,6 +6402,7 @@ type GetEngineConfigResponseBody struct {
 	//
 	// {}
 	ConfigValue *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// example:
 	//
 	// Pre
@@ -6190,6 +6443,11 @@ func (s GetEngineConfigResponseBody) GoString() string {
 
 func (s *GetEngineConfigResponseBody) SetConfigValue(v string) *GetEngineConfigResponseBody {
 	s.ConfigValue = &v
+	return s
+}
+
+func (s *GetEngineConfigResponseBody) SetDescription(v string) *GetEngineConfigResponseBody {
+	s.Description = &v
 	return s
 }
 
@@ -6864,7 +7122,13 @@ type GetFeatureConsistencyCheckJobConfigResponseBody struct {
 	// example:
 	//
 	// true
-	CompareFeature *bool `json:"CompareFeature,omitempty" xml:"CompareFeature,omitempty"`
+	CompareFeature   *bool   `json:"CompareFeature,omitempty" xml:"CompareFeature,omitempty"`
+	DatasetId        *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	DatasetMountPath *string `json:"DatasetMountPath,omitempty" xml:"DatasetMountPath,omitempty"`
+	DatasetName      *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	DatasetType      *string `json:"DatasetType,omitempty" xml:"DatasetType,omitempty"`
+	DatasetUri       *string `json:"DatasetUri,omitempty" xml:"DatasetUri,omitempty"`
+	DefaultRoute     *string `json:"DefaultRoute,omitempty" xml:"DefaultRoute,omitempty"`
 	// example:
 	//
 	// eas_service_1
@@ -6958,7 +7222,10 @@ type GetFeatureConsistencyCheckJobConfigResponseBody struct {
 	// example:
 	//
 	// reso-********
-	OssResourceId *string `json:"OssResourceId,omitempty" xml:"OssResourceId,omitempty"`
+	OssResourceId       *string `json:"OssResourceId,omitempty" xml:"OssResourceId,omitempty"`
+	PredictWorkerCount  *int32  `json:"PredictWorkerCount,omitempty" xml:"PredictWorkerCount,omitempty"`
+	PredictWorkerCpu    *int32  `json:"PredictWorkerCpu,omitempty" xml:"PredictWorkerCpu,omitempty"`
+	PredictWorkerMemory *int32  `json:"PredictWorkerMemory,omitempty" xml:"PredictWorkerMemory,omitempty"`
 	// example:
 	//
 	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77
@@ -6974,7 +7241,8 @@ type GetFeatureConsistencyCheckJobConfigResponseBody struct {
 	// example:
 	//
 	// scene1
-	SceneName *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
+	SceneName       *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	// example:
 	//
 	// 4
@@ -6987,6 +7255,7 @@ type GetFeatureConsistencyCheckJobConfigResponseBody struct {
 	//
 	// Editable
 	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	SwitchId        *string `json:"SwitchId,omitempty" xml:"SwitchId,omitempty"`
 	UseFeatureStore *bool   `json:"UseFeatureStore,omitempty" xml:"UseFeatureStore,omitempty"`
 	// example:
 	//
@@ -7004,10 +7273,12 @@ type GetFeatureConsistencyCheckJobConfigResponseBody struct {
 	//
 	// yyyymmdd
 	UserTablePartitionFieldFormat *string `json:"UserTablePartitionFieldFormat,omitempty" xml:"UserTablePartitionFieldFormat,omitempty"`
+	VpcId                         *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// example:
 	//
 	// work_flow_1
 	WorkflowName *string `json:"WorkflowName,omitempty" xml:"WorkflowName,omitempty"`
+	WorkspaceId  *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s GetFeatureConsistencyCheckJobConfigResponseBody) String() string {
@@ -7020,6 +7291,36 @@ func (s GetFeatureConsistencyCheckJobConfigResponseBody) GoString() string {
 
 func (s *GetFeatureConsistencyCheckJobConfigResponseBody) SetCompareFeature(v bool) *GetFeatureConsistencyCheckJobConfigResponseBody {
 	s.CompareFeature = &v
+	return s
+}
+
+func (s *GetFeatureConsistencyCheckJobConfigResponseBody) SetDatasetId(v string) *GetFeatureConsistencyCheckJobConfigResponseBody {
+	s.DatasetId = &v
+	return s
+}
+
+func (s *GetFeatureConsistencyCheckJobConfigResponseBody) SetDatasetMountPath(v string) *GetFeatureConsistencyCheckJobConfigResponseBody {
+	s.DatasetMountPath = &v
+	return s
+}
+
+func (s *GetFeatureConsistencyCheckJobConfigResponseBody) SetDatasetName(v string) *GetFeatureConsistencyCheckJobConfigResponseBody {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *GetFeatureConsistencyCheckJobConfigResponseBody) SetDatasetType(v string) *GetFeatureConsistencyCheckJobConfigResponseBody {
+	s.DatasetType = &v
+	return s
+}
+
+func (s *GetFeatureConsistencyCheckJobConfigResponseBody) SetDatasetUri(v string) *GetFeatureConsistencyCheckJobConfigResponseBody {
+	s.DatasetUri = &v
+	return s
+}
+
+func (s *GetFeatureConsistencyCheckJobConfigResponseBody) SetDefaultRoute(v string) *GetFeatureConsistencyCheckJobConfigResponseBody {
+	s.DefaultRoute = &v
 	return s
 }
 
@@ -7163,6 +7464,21 @@ func (s *GetFeatureConsistencyCheckJobConfigResponseBody) SetOssResourceId(v str
 	return s
 }
 
+func (s *GetFeatureConsistencyCheckJobConfigResponseBody) SetPredictWorkerCount(v int32) *GetFeatureConsistencyCheckJobConfigResponseBody {
+	s.PredictWorkerCount = &v
+	return s
+}
+
+func (s *GetFeatureConsistencyCheckJobConfigResponseBody) SetPredictWorkerCpu(v int32) *GetFeatureConsistencyCheckJobConfigResponseBody {
+	s.PredictWorkerCpu = &v
+	return s
+}
+
+func (s *GetFeatureConsistencyCheckJobConfigResponseBody) SetPredictWorkerMemory(v int32) *GetFeatureConsistencyCheckJobConfigResponseBody {
+	s.PredictWorkerMemory = &v
+	return s
+}
+
 func (s *GetFeatureConsistencyCheckJobConfigResponseBody) SetRequestId(v string) *GetFeatureConsistencyCheckJobConfigResponseBody {
 	s.RequestId = &v
 	return s
@@ -7183,6 +7499,11 @@ func (s *GetFeatureConsistencyCheckJobConfigResponseBody) SetSceneName(v string)
 	return s
 }
 
+func (s *GetFeatureConsistencyCheckJobConfigResponseBody) SetSecurityGroupId(v string) *GetFeatureConsistencyCheckJobConfigResponseBody {
+	s.SecurityGroupId = &v
+	return s
+}
+
 func (s *GetFeatureConsistencyCheckJobConfigResponseBody) SetServiceId(v string) *GetFeatureConsistencyCheckJobConfigResponseBody {
 	s.ServiceId = &v
 	return s
@@ -7195,6 +7516,11 @@ func (s *GetFeatureConsistencyCheckJobConfigResponseBody) SetServiceName(v strin
 
 func (s *GetFeatureConsistencyCheckJobConfigResponseBody) SetStatus(v string) *GetFeatureConsistencyCheckJobConfigResponseBody {
 	s.Status = &v
+	return s
+}
+
+func (s *GetFeatureConsistencyCheckJobConfigResponseBody) SetSwitchId(v string) *GetFeatureConsistencyCheckJobConfigResponseBody {
+	s.SwitchId = &v
 	return s
 }
 
@@ -7223,8 +7549,18 @@ func (s *GetFeatureConsistencyCheckJobConfigResponseBody) SetUserTablePartitionF
 	return s
 }
 
+func (s *GetFeatureConsistencyCheckJobConfigResponseBody) SetVpcId(v string) *GetFeatureConsistencyCheckJobConfigResponseBody {
+	s.VpcId = &v
+	return s
+}
+
 func (s *GetFeatureConsistencyCheckJobConfigResponseBody) SetWorkflowName(v string) *GetFeatureConsistencyCheckJobConfigResponseBody {
 	s.WorkflowName = &v
+	return s
+}
+
+func (s *GetFeatureConsistencyCheckJobConfigResponseBody) SetWorkspaceId(v string) *GetFeatureConsistencyCheckJobConfigResponseBody {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -8959,11 +9295,14 @@ type GetTrafficControlTaskResponseBody struct {
 	ItemConditionType              *string                                                   `json:"ItemConditionType,omitempty" xml:"ItemConditionType,omitempty"`
 	ItemTableMetaId                *string                                                   `json:"ItemTableMetaId,omitempty" xml:"ItemTableMetaId,omitempty"`
 	Name                           *string                                                   `json:"Name,omitempty" xml:"Name,omitempty"`
+	PreExperimentIds               *string                                                   `json:"PreExperimentIds,omitempty" xml:"PreExperimentIds,omitempty"`
 	PrepubStatus                   *string                                                   `json:"PrepubStatus,omitempty" xml:"PrepubStatus,omitempty"`
+	ProdExperimentIds              *string                                                   `json:"ProdExperimentIds,omitempty" xml:"ProdExperimentIds,omitempty"`
 	ProductStatus                  *string                                                   `json:"ProductStatus,omitempty" xml:"ProductStatus,omitempty"`
 	RequestId                      *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SceneId                        *string                                                   `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 	SceneName                      *string                                                   `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
+	ServiceId                      *string                                                   `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	StartTime                      *string                                                   `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	StatisBehaviorConditionArray   *string                                                   `json:"StatisBehaviorConditionArray,omitempty" xml:"StatisBehaviorConditionArray,omitempty"`
 	StatisBehaviorConditionExpress *string                                                   `json:"StatisBehaviorConditionExpress,omitempty" xml:"StatisBehaviorConditionExpress,omitempty"`
@@ -9059,8 +9398,18 @@ func (s *GetTrafficControlTaskResponseBody) SetName(v string) *GetTrafficControl
 	return s
 }
 
+func (s *GetTrafficControlTaskResponseBody) SetPreExperimentIds(v string) *GetTrafficControlTaskResponseBody {
+	s.PreExperimentIds = &v
+	return s
+}
+
 func (s *GetTrafficControlTaskResponseBody) SetPrepubStatus(v string) *GetTrafficControlTaskResponseBody {
 	s.PrepubStatus = &v
+	return s
+}
+
+func (s *GetTrafficControlTaskResponseBody) SetProdExperimentIds(v string) *GetTrafficControlTaskResponseBody {
+	s.ProdExperimentIds = &v
 	return s
 }
 
@@ -9081,6 +9430,11 @@ func (s *GetTrafficControlTaskResponseBody) SetSceneId(v string) *GetTrafficCont
 
 func (s *GetTrafficControlTaskResponseBody) SetSceneName(v string) *GetTrafficControlTaskResponseBody {
 	s.SceneName = &v
+	return s
+}
+
+func (s *GetTrafficControlTaskResponseBody) SetServiceId(v string) *GetTrafficControlTaskResponseBody {
+	s.ServiceId = &v
 	return s
 }
 
@@ -9353,7 +9707,7 @@ func (s *GetTrafficControlTaskTrafficResponseBody) SetTrafficControlTaskTrafficI
 
 type GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfo struct {
 	TargetTraffics []*GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfoTargetTraffics `json:"TargetTraffics,omitempty" xml:"TargetTraffics,omitempty" type:"Repeated"`
-	TaskTraffics   map[string]interface{}                                                                 `json:"TaskTraffics,omitempty" xml:"TaskTraffics,omitempty"`
+	TaskTraffics   map[string]*TrafficControlTaskTrafficInfoTaskTrafficsValue                             `json:"TaskTraffics,omitempty" xml:"TaskTraffics,omitempty"`
 }
 
 func (s GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfo) String() string {
@@ -9369,14 +9723,14 @@ func (s *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfo) 
 	return s
 }
 
-func (s *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfo) SetTaskTraffics(v map[string]interface{}) *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfo {
+func (s *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfo) SetTaskTraffics(v map[string]*TrafficControlTaskTrafficInfoTaskTrafficsValue) *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfo {
 	s.TaskTraffics = v
 	return s
 }
 
 type GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfoTargetTraffics struct {
-	Data                   []map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	TrafficContorlTargetId *string                  `json:"TrafficContorlTargetId,omitempty" xml:"TrafficContorlTargetId,omitempty"`
+	Data                   map[string]*TrafficControlTaskTrafficInfoTargetTrafficsDataValue `json:"Data,omitempty" xml:"Data,omitempty"`
+	TrafficContorlTargetId *string                                                          `json:"TrafficContorlTargetId,omitempty" xml:"TrafficContorlTargetId,omitempty"`
 }
 
 func (s GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfoTargetTraffics) String() string {
@@ -9387,7 +9741,7 @@ func (s GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfoTar
 	return s.String()
 }
 
-func (s *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfoTargetTraffics) SetData(v []map[string]interface{}) *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfoTargetTraffics {
+func (s *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfoTargetTraffics) SetData(v map[string]*TrafficControlTaskTrafficInfoTargetTrafficsDataValue) *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfoTargetTraffics {
 	s.Data = v
 	return s
 }
@@ -10511,6 +10865,7 @@ type ListEngineConfigsResponseBodyEngineConfigs struct {
 	//
 	// {}
 	ConfigValue *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// example:
 	//
 	// 2
@@ -10555,6 +10910,11 @@ func (s ListEngineConfigsResponseBodyEngineConfigs) GoString() string {
 
 func (s *ListEngineConfigsResponseBodyEngineConfigs) SetConfigValue(v string) *ListEngineConfigsResponseBodyEngineConfigs {
 	s.ConfigValue = &v
+	return s
+}
+
+func (s *ListEngineConfigsResponseBodyEngineConfigs) SetDescription(v string) *ListEngineConfigsResponseBodyEngineConfigs {
+	s.Description = &v
 	return s
 }
 
@@ -11309,7 +11669,13 @@ type ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckCon
 	// example:
 	//
 	// true
-	CompareFeature *bool `json:"CompareFeature,omitempty" xml:"CompareFeature,omitempty"`
+	CompareFeature   *bool   `json:"CompareFeature,omitempty" xml:"CompareFeature,omitempty"`
+	DatasetId        *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	DatasetMountPath *string `json:"DatasetMountPath,omitempty" xml:"DatasetMountPath,omitempty"`
+	DatasetName      *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	DatasetType      *string `json:"DatasetType,omitempty" xml:"DatasetType,omitempty"`
+	DatasetUri       *string `json:"DatasetUri,omitempty" xml:"DatasetUri,omitempty"`
+	DefaultRoute     *string `json:"DefaultRoute,omitempty" xml:"DefaultRoute,omitempty"`
 	// example:
 	//
 	// eas_service_1
@@ -11407,7 +11773,10 @@ type ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckCon
 	// example:
 	//
 	// reso-********
-	OssResourceId *string `json:"OssResourceId,omitempty" xml:"OssResourceId,omitempty"`
+	OssResourceId       *string `json:"OssResourceId,omitempty" xml:"OssResourceId,omitempty"`
+	PredictWorkerCount  *int32  `json:"PredictWorkerCount,omitempty" xml:"PredictWorkerCount,omitempty"`
+	PredictWorkerCpu    *int32  `json:"PredictWorkerCpu,omitempty" xml:"PredictWorkerCpu,omitempty"`
+	PredictWorkerMemory *int32  `json:"PredictWorkerMemory,omitempty" xml:"PredictWorkerMemory,omitempty"`
 	// example:
 	//
 	// 0.89
@@ -11419,7 +11788,8 @@ type ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckCon
 	// example:
 	//
 	// scene1
-	SceneName *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
+	SceneName       *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	// example:
 	//
 	// 4
@@ -11432,6 +11802,7 @@ type ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckCon
 	//
 	// Editable
 	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	SwitchId        *string `json:"SwitchId,omitempty" xml:"SwitchId,omitempty"`
 	UseFeatureStore *string `json:"UseFeatureStore,omitempty" xml:"UseFeatureStore,omitempty"`
 	// example:
 	//
@@ -11449,10 +11820,12 @@ type ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckCon
 	//
 	// yyyymmdd
 	UserTablePartitionFieldFormat *string `json:"UserTablePartitionFieldFormat,omitempty" xml:"UserTablePartitionFieldFormat,omitempty"`
+	VpcId                         *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// example:
 	//
 	// work_flow_1
 	WorkflowName *string `json:"WorkflowName,omitempty" xml:"WorkflowName,omitempty"`
+	WorkspaceId  *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckConfigs) String() string {
@@ -11465,6 +11838,36 @@ func (s ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheck
 
 func (s *ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckConfigs) SetCompareFeature(v bool) *ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckConfigs {
 	s.CompareFeature = &v
+	return s
+}
+
+func (s *ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckConfigs) SetDatasetId(v string) *ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckConfigs {
+	s.DatasetId = &v
+	return s
+}
+
+func (s *ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckConfigs) SetDatasetMountPath(v string) *ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckConfigs {
+	s.DatasetMountPath = &v
+	return s
+}
+
+func (s *ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckConfigs) SetDatasetName(v string) *ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckConfigs {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckConfigs) SetDatasetType(v string) *ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckConfigs {
+	s.DatasetType = &v
+	return s
+}
+
+func (s *ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckConfigs) SetDatasetUri(v string) *ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckConfigs {
+	s.DatasetUri = &v
+	return s
+}
+
+func (s *ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckConfigs) SetDefaultRoute(v string) *ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckConfigs {
+	s.DefaultRoute = &v
 	return s
 }
 
@@ -11613,6 +12016,21 @@ func (s *ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyChec
 	return s
 }
 
+func (s *ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckConfigs) SetPredictWorkerCount(v int32) *ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckConfigs {
+	s.PredictWorkerCount = &v
+	return s
+}
+
+func (s *ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckConfigs) SetPredictWorkerCpu(v int32) *ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckConfigs {
+	s.PredictWorkerCpu = &v
+	return s
+}
+
+func (s *ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckConfigs) SetPredictWorkerMemory(v int32) *ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckConfigs {
+	s.PredictWorkerMemory = &v
+	return s
+}
+
 func (s *ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckConfigs) SetSampleRate(v string) *ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckConfigs {
 	s.SampleRate = &v
 	return s
@@ -11628,6 +12046,11 @@ func (s *ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyChec
 	return s
 }
 
+func (s *ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckConfigs) SetSecurityGroupId(v string) *ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckConfigs {
+	s.SecurityGroupId = &v
+	return s
+}
+
 func (s *ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckConfigs) SetServiceId(v string) *ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckConfigs {
 	s.ServiceId = &v
 	return s
@@ -11640,6 +12063,11 @@ func (s *ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyChec
 
 func (s *ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckConfigs) SetStatus(v string) *ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckConfigs {
 	s.Status = &v
+	return s
+}
+
+func (s *ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckConfigs) SetSwitchId(v string) *ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckConfigs {
+	s.SwitchId = &v
 	return s
 }
 
@@ -11668,8 +12096,18 @@ func (s *ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyChec
 	return s
 }
 
+func (s *ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckConfigs) SetVpcId(v string) *ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckConfigs {
+	s.VpcId = &v
+	return s
+}
+
 func (s *ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckConfigs) SetWorkflowName(v string) *ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckConfigs {
 	s.WorkflowName = &v
+	return s
+}
+
+func (s *ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckConfigs) SetWorkspaceId(v string) *ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckConfigs {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -14398,12 +14836,12 @@ func (s *ListTrafficControlTargetTrafficHistoryResponseBody) SetTrafficControlTa
 }
 
 type ListTrafficControlTargetTrafficHistoryResponseBodyTrafficControlTaskTrafficHistories struct {
-	ExperimentId                   *string `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
-	ItemId                         *string `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
-	RecordTime                     *string `json:"RecordTime,omitempty" xml:"RecordTime,omitempty"`
-	TrafficControlTargetAimTraffic *string `json:"TrafficControlTargetAimTraffic,omitempty" xml:"TrafficControlTargetAimTraffic,omitempty"`
-	TrafficControlTargetTraffic    *string `json:"TrafficControlTargetTraffic,omitempty" xml:"TrafficControlTargetTraffic,omitempty"`
-	TrafficControlTaskTraffic      *string `json:"TrafficControlTaskTraffic,omitempty" xml:"TrafficControlTaskTraffic,omitempty"`
+	ExperimentId                   *string  `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
+	ItemId                         *string  `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	RecordTime                     *string  `json:"RecordTime,omitempty" xml:"RecordTime,omitempty"`
+	TrafficControlTargetAimTraffic *float64 `json:"TrafficControlTargetAimTraffic,omitempty" xml:"TrafficControlTargetAimTraffic,omitempty"`
+	TrafficControlTargetTraffic    *float64 `json:"TrafficControlTargetTraffic,omitempty" xml:"TrafficControlTargetTraffic,omitempty"`
+	TrafficControlTaskTraffic      *float64 `json:"TrafficControlTaskTraffic,omitempty" xml:"TrafficControlTaskTraffic,omitempty"`
 }
 
 func (s ListTrafficControlTargetTrafficHistoryResponseBodyTrafficControlTaskTrafficHistories) String() string {
@@ -14429,17 +14867,17 @@ func (s *ListTrafficControlTargetTrafficHistoryResponseBodyTrafficControlTaskTra
 	return s
 }
 
-func (s *ListTrafficControlTargetTrafficHistoryResponseBodyTrafficControlTaskTrafficHistories) SetTrafficControlTargetAimTraffic(v string) *ListTrafficControlTargetTrafficHistoryResponseBodyTrafficControlTaskTrafficHistories {
+func (s *ListTrafficControlTargetTrafficHistoryResponseBodyTrafficControlTaskTrafficHistories) SetTrafficControlTargetAimTraffic(v float64) *ListTrafficControlTargetTrafficHistoryResponseBodyTrafficControlTaskTrafficHistories {
 	s.TrafficControlTargetAimTraffic = &v
 	return s
 }
 
-func (s *ListTrafficControlTargetTrafficHistoryResponseBodyTrafficControlTaskTrafficHistories) SetTrafficControlTargetTraffic(v string) *ListTrafficControlTargetTrafficHistoryResponseBodyTrafficControlTaskTrafficHistories {
+func (s *ListTrafficControlTargetTrafficHistoryResponseBodyTrafficControlTaskTrafficHistories) SetTrafficControlTargetTraffic(v float64) *ListTrafficControlTargetTrafficHistoryResponseBodyTrafficControlTaskTrafficHistories {
 	s.TrafficControlTargetTraffic = &v
 	return s
 }
 
-func (s *ListTrafficControlTargetTrafficHistoryResponseBodyTrafficControlTaskTrafficHistories) SetTrafficControlTaskTraffic(v string) *ListTrafficControlTargetTrafficHistoryResponseBodyTrafficControlTaskTrafficHistories {
+func (s *ListTrafficControlTargetTrafficHistoryResponseBodyTrafficControlTaskTrafficHistories) SetTrafficControlTaskTraffic(v float64) *ListTrafficControlTargetTrafficHistoryResponseBodyTrafficControlTaskTrafficHistories {
 	s.TrafficControlTaskTraffic = &v
 	return s
 }
@@ -14607,10 +15045,13 @@ type ListTrafficControlTasksResponseBodyTrafficControlTasks struct {
 	ItemConditionType              *string                                                                        `json:"ItemConditionType,omitempty" xml:"ItemConditionType,omitempty"`
 	ItemTableMetaId                *string                                                                        `json:"ItemTableMetaId,omitempty" xml:"ItemTableMetaId,omitempty"`
 	Name                           *string                                                                        `json:"Name,omitempty" xml:"Name,omitempty"`
+	PreExperimentIds               *string                                                                        `json:"PreExperimentIds,omitempty" xml:"PreExperimentIds,omitempty"`
 	PrepubStatus                   *string                                                                        `json:"PrepubStatus,omitempty" xml:"PrepubStatus,omitempty"`
+	ProdExperimentIds              *string                                                                        `json:"ProdExperimentIds,omitempty" xml:"ProdExperimentIds,omitempty"`
 	ProductStatus                  *string                                                                        `json:"ProductStatus,omitempty" xml:"ProductStatus,omitempty"`
 	SceneId                        *string                                                                        `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 	SceneName                      *string                                                                        `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
+	ServiceId                      *string                                                                        `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	StartTime                      *string                                                                        `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	StatisBahaviorConditionExpress *string                                                                        `json:"StatisBahaviorConditionExpress,omitempty" xml:"StatisBahaviorConditionExpress,omitempty"`
 	StatisBehaviorConditionArray   *string                                                                        `json:"StatisBehaviorConditionArray,omitempty" xml:"StatisBehaviorConditionArray,omitempty"`
@@ -14706,8 +15147,18 @@ func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) SetName(v strin
 	return s
 }
 
+func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) SetPreExperimentIds(v string) *ListTrafficControlTasksResponseBodyTrafficControlTasks {
+	s.PreExperimentIds = &v
+	return s
+}
+
 func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) SetPrepubStatus(v string) *ListTrafficControlTasksResponseBodyTrafficControlTasks {
 	s.PrepubStatus = &v
+	return s
+}
+
+func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) SetProdExperimentIds(v string) *ListTrafficControlTasksResponseBodyTrafficControlTasks {
+	s.ProdExperimentIds = &v
 	return s
 }
 
@@ -14723,6 +15174,11 @@ func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) SetSceneId(v st
 
 func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) SetSceneName(v string) *ListTrafficControlTasksResponseBodyTrafficControlTasks {
 	s.SceneName = &v
+	return s
+}
+
+func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) SetServiceId(v string) *ListTrafficControlTasksResponseBodyTrafficControlTasks {
+	s.ServiceId = &v
 	return s
 }
 
@@ -15629,6 +16085,182 @@ func (s *PushResourceRuleResponse) SetStatusCode(v int32) *PushResourceRuleRespo
 }
 
 func (s *PushResourceRuleResponse) SetBody(v *PushResourceRuleResponseBody) *PushResourceRuleResponse {
+	s.Body = v
+	return s
+}
+
+type QueryTrafficControlTargetItemReportDetailRequest struct {
+	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
+	// This parameter is required.
+	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	// This parameter is required.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s QueryTrafficControlTargetItemReportDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryTrafficControlTargetItemReportDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTrafficControlTargetItemReportDetailRequest) SetDate(v string) *QueryTrafficControlTargetItemReportDetailRequest {
+	s.Date = &v
+	return s
+}
+
+func (s *QueryTrafficControlTargetItemReportDetailRequest) SetEnvironment(v string) *QueryTrafficControlTargetItemReportDetailRequest {
+	s.Environment = &v
+	return s
+}
+
+func (s *QueryTrafficControlTargetItemReportDetailRequest) SetInstanceId(v string) *QueryTrafficControlTargetItemReportDetailRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type QueryTrafficControlTargetItemReportDetailResponseBody struct {
+	RequestId                            *string                                                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TrafficControlTargetItemReportDetail *QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetItemReportDetail `json:"TrafficControlTargetItemReportDetail,omitempty" xml:"TrafficControlTargetItemReportDetail,omitempty" type:"Struct"`
+}
+
+func (s QueryTrafficControlTargetItemReportDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryTrafficControlTargetItemReportDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTrafficControlTargetItemReportDetailResponseBody) SetRequestId(v string) *QueryTrafficControlTargetItemReportDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryTrafficControlTargetItemReportDetailResponseBody) SetTrafficControlTargetItemReportDetail(v *QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetItemReportDetail) *QueryTrafficControlTargetItemReportDetailResponseBody {
+	s.TrafficControlTargetItemReportDetail = v
+	return s
+}
+
+type QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetItemReportDetail struct {
+	ItemControlTailReportDetails []*QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetItemReportDetailItemControlTailReportDetails `json:"ItemControlTailReportDetails,omitempty" xml:"ItemControlTailReportDetails,omitempty" type:"Repeated"`
+	ItemControlTopReportDetails  []*QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetItemReportDetailItemControlTopReportDetails  `json:"ItemControlTopReportDetails,omitempty" xml:"ItemControlTopReportDetails,omitempty" type:"Repeated"`
+}
+
+func (s QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetItemReportDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetItemReportDetail) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetItemReportDetail) SetItemControlTailReportDetails(v []*QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetItemReportDetailItemControlTailReportDetails) *QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetItemReportDetail {
+	s.ItemControlTailReportDetails = v
+	return s
+}
+
+func (s *QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetItemReportDetail) SetItemControlTopReportDetails(v []*QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetItemReportDetailItemControlTopReportDetails) *QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetItemReportDetail {
+	s.ItemControlTopReportDetails = v
+	return s
+}
+
+type QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetItemReportDetailItemControlTailReportDetails struct {
+	Features       map[string]interface{} `json:"Features,omitempty" xml:"Features,omitempty"`
+	ItemId         *string                `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	TargetProgress *string                `json:"TargetProgress,omitempty" xml:"TargetProgress,omitempty"`
+	TargetTraffic  *int64                 `json:"TargetTraffic,omitempty" xml:"TargetTraffic,omitempty"`
+}
+
+func (s QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetItemReportDetailItemControlTailReportDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetItemReportDetailItemControlTailReportDetails) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetItemReportDetailItemControlTailReportDetails) SetFeatures(v map[string]interface{}) *QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetItemReportDetailItemControlTailReportDetails {
+	s.Features = v
+	return s
+}
+
+func (s *QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetItemReportDetailItemControlTailReportDetails) SetItemId(v string) *QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetItemReportDetailItemControlTailReportDetails {
+	s.ItemId = &v
+	return s
+}
+
+func (s *QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetItemReportDetailItemControlTailReportDetails) SetTargetProgress(v string) *QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetItemReportDetailItemControlTailReportDetails {
+	s.TargetProgress = &v
+	return s
+}
+
+func (s *QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetItemReportDetailItemControlTailReportDetails) SetTargetTraffic(v int64) *QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetItemReportDetailItemControlTailReportDetails {
+	s.TargetTraffic = &v
+	return s
+}
+
+type QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetItemReportDetailItemControlTopReportDetails struct {
+	Features       map[string]interface{} `json:"Features,omitempty" xml:"Features,omitempty"`
+	ItemId         *string                `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	TargetProgress *string                `json:"TargetProgress,omitempty" xml:"TargetProgress,omitempty"`
+	TargetTraffic  *int64                 `json:"TargetTraffic,omitempty" xml:"TargetTraffic,omitempty"`
+}
+
+func (s QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetItemReportDetailItemControlTopReportDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetItemReportDetailItemControlTopReportDetails) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetItemReportDetailItemControlTopReportDetails) SetFeatures(v map[string]interface{}) *QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetItemReportDetailItemControlTopReportDetails {
+	s.Features = v
+	return s
+}
+
+func (s *QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetItemReportDetailItemControlTopReportDetails) SetItemId(v string) *QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetItemReportDetailItemControlTopReportDetails {
+	s.ItemId = &v
+	return s
+}
+
+func (s *QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetItemReportDetailItemControlTopReportDetails) SetTargetProgress(v string) *QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetItemReportDetailItemControlTopReportDetails {
+	s.TargetProgress = &v
+	return s
+}
+
+func (s *QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetItemReportDetailItemControlTopReportDetails) SetTargetTraffic(v int64) *QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetItemReportDetailItemControlTopReportDetails {
+	s.TargetTraffic = &v
+	return s
+}
+
+type QueryTrafficControlTargetItemReportDetailResponse struct {
+	Headers    map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryTrafficControlTargetItemReportDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryTrafficControlTargetItemReportDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryTrafficControlTargetItemReportDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTrafficControlTargetItemReportDetailResponse) SetHeaders(v map[string]*string) *QueryTrafficControlTargetItemReportDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryTrafficControlTargetItemReportDetailResponse) SetStatusCode(v int32) *QueryTrafficControlTargetItemReportDetailResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryTrafficControlTargetItemReportDetailResponse) SetBody(v *QueryTrafficControlTargetItemReportDetailResponseBody) *QueryTrafficControlTargetItemReportDetailResponse {
 	s.Body = v
 	return s
 }
@@ -16887,6 +17519,7 @@ type UpdateEngineConfigRequest struct {
 	//
 	// }
 	ConfigValue *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// example:
 	//
 	// Pre
@@ -16911,6 +17544,11 @@ func (s UpdateEngineConfigRequest) GoString() string {
 
 func (s *UpdateEngineConfigRequest) SetConfigValue(v string) *UpdateEngineConfigRequest {
 	s.ConfigValue = &v
+	return s
+}
+
+func (s *UpdateEngineConfigRequest) SetDescription(v string) *UpdateEngineConfigRequest {
+	s.Description = &v
 	return s
 }
 
@@ -17325,7 +17963,13 @@ type UpdateFeatureConsistencyCheckJobConfigRequest struct {
 	// example:
 	//
 	// true
-	CompareFeature *bool `json:"CompareFeature,omitempty" xml:"CompareFeature,omitempty"`
+	CompareFeature   *bool   `json:"CompareFeature,omitempty" xml:"CompareFeature,omitempty"`
+	DatasetId        *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	DatasetMountPath *string `json:"DatasetMountPath,omitempty" xml:"DatasetMountPath,omitempty"`
+	DatasetName      *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	DatasetType      *string `json:"DatasetType,omitempty" xml:"DatasetType,omitempty"`
+	DatasetUri       *string `json:"DatasetUri,omitempty" xml:"DatasetUri,omitempty"`
+	DefaultRoute     *string `json:"DefaultRoute,omitempty" xml:"DefaultRoute,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -17416,7 +18060,10 @@ type UpdateFeatureConsistencyCheckJobConfigRequest struct {
 	// example:
 	//
 	// reso-********
-	OssResourceId *string `json:"OssResourceId,omitempty" xml:"OssResourceId,omitempty"`
+	OssResourceId       *string `json:"OssResourceId,omitempty" xml:"OssResourceId,omitempty"`
+	PredictWorkerCount  *int32  `json:"PredictWorkerCount,omitempty" xml:"PredictWorkerCount,omitempty"`
+	PredictWorkerCpu    *int32  `json:"PredictWorkerCpu,omitempty" xml:"PredictWorkerCpu,omitempty"`
+	PredictWorkerMemory *int32  `json:"PredictWorkerMemory,omitempty" xml:"PredictWorkerMemory,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -17428,11 +18075,13 @@ type UpdateFeatureConsistencyCheckJobConfigRequest struct {
 	// example:
 	//
 	// 3
-	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	SceneId         *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	// example:
 	//
 	// 4
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	SwitchId  *string `json:"SwitchId,omitempty" xml:"SwitchId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -17457,10 +18106,12 @@ type UpdateFeatureConsistencyCheckJobConfigRequest struct {
 	//
 	// yyyymmdd
 	UserTablePartitionFieldFormat *string `json:"UserTablePartitionFieldFormat,omitempty" xml:"UserTablePartitionFieldFormat,omitempty"`
+	VpcId                         *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// example:
 	//
 	// work_flow_1
 	WorkflowName *string `json:"WorkflowName,omitempty" xml:"WorkflowName,omitempty"`
+	WorkspaceId  *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s UpdateFeatureConsistencyCheckJobConfigRequest) String() string {
@@ -17473,6 +18124,36 @@ func (s UpdateFeatureConsistencyCheckJobConfigRequest) GoString() string {
 
 func (s *UpdateFeatureConsistencyCheckJobConfigRequest) SetCompareFeature(v bool) *UpdateFeatureConsistencyCheckJobConfigRequest {
 	s.CompareFeature = &v
+	return s
+}
+
+func (s *UpdateFeatureConsistencyCheckJobConfigRequest) SetDatasetId(v string) *UpdateFeatureConsistencyCheckJobConfigRequest {
+	s.DatasetId = &v
+	return s
+}
+
+func (s *UpdateFeatureConsistencyCheckJobConfigRequest) SetDatasetMountPath(v string) *UpdateFeatureConsistencyCheckJobConfigRequest {
+	s.DatasetMountPath = &v
+	return s
+}
+
+func (s *UpdateFeatureConsistencyCheckJobConfigRequest) SetDatasetName(v string) *UpdateFeatureConsistencyCheckJobConfigRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *UpdateFeatureConsistencyCheckJobConfigRequest) SetDatasetType(v string) *UpdateFeatureConsistencyCheckJobConfigRequest {
+	s.DatasetType = &v
+	return s
+}
+
+func (s *UpdateFeatureConsistencyCheckJobConfigRequest) SetDatasetUri(v string) *UpdateFeatureConsistencyCheckJobConfigRequest {
+	s.DatasetUri = &v
+	return s
+}
+
+func (s *UpdateFeatureConsistencyCheckJobConfigRequest) SetDefaultRoute(v string) *UpdateFeatureConsistencyCheckJobConfigRequest {
+	s.DefaultRoute = &v
 	return s
 }
 
@@ -17591,6 +18272,21 @@ func (s *UpdateFeatureConsistencyCheckJobConfigRequest) SetOssResourceId(v strin
 	return s
 }
 
+func (s *UpdateFeatureConsistencyCheckJobConfigRequest) SetPredictWorkerCount(v int32) *UpdateFeatureConsistencyCheckJobConfigRequest {
+	s.PredictWorkerCount = &v
+	return s
+}
+
+func (s *UpdateFeatureConsistencyCheckJobConfigRequest) SetPredictWorkerCpu(v int32) *UpdateFeatureConsistencyCheckJobConfigRequest {
+	s.PredictWorkerCpu = &v
+	return s
+}
+
+func (s *UpdateFeatureConsistencyCheckJobConfigRequest) SetPredictWorkerMemory(v int32) *UpdateFeatureConsistencyCheckJobConfigRequest {
+	s.PredictWorkerMemory = &v
+	return s
+}
+
 func (s *UpdateFeatureConsistencyCheckJobConfigRequest) SetSampleRate(v float64) *UpdateFeatureConsistencyCheckJobConfigRequest {
 	s.SampleRate = &v
 	return s
@@ -17601,8 +18297,18 @@ func (s *UpdateFeatureConsistencyCheckJobConfigRequest) SetSceneId(v string) *Up
 	return s
 }
 
+func (s *UpdateFeatureConsistencyCheckJobConfigRequest) SetSecurityGroupId(v string) *UpdateFeatureConsistencyCheckJobConfigRequest {
+	s.SecurityGroupId = &v
+	return s
+}
+
 func (s *UpdateFeatureConsistencyCheckJobConfigRequest) SetServiceId(v string) *UpdateFeatureConsistencyCheckJobConfigRequest {
 	s.ServiceId = &v
+	return s
+}
+
+func (s *UpdateFeatureConsistencyCheckJobConfigRequest) SetSwitchId(v string) *UpdateFeatureConsistencyCheckJobConfigRequest {
+	s.SwitchId = &v
 	return s
 }
 
@@ -17626,8 +18332,18 @@ func (s *UpdateFeatureConsistencyCheckJobConfigRequest) SetUserTablePartitionFie
 	return s
 }
 
+func (s *UpdateFeatureConsistencyCheckJobConfigRequest) SetVpcId(v string) *UpdateFeatureConsistencyCheckJobConfigRequest {
+	s.VpcId = &v
+	return s
+}
+
 func (s *UpdateFeatureConsistencyCheckJobConfigRequest) SetWorkflowName(v string) *UpdateFeatureConsistencyCheckJobConfigRequest {
 	s.WorkflowName = &v
+	return s
+}
+
+func (s *UpdateFeatureConsistencyCheckJobConfigRequest) SetWorkspaceId(v string) *UpdateFeatureConsistencyCheckJobConfigRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -18774,7 +19490,10 @@ type UpdateTrafficControlTaskRequest struct {
 	ItemConditionType              *string                                                 `json:"ItemConditionType,omitempty" xml:"ItemConditionType,omitempty"`
 	ItemTableMetaId                *string                                                 `json:"ItemTableMetaId,omitempty" xml:"ItemTableMetaId,omitempty"`
 	Name                           *string                                                 `json:"Name,omitempty" xml:"Name,omitempty"`
+	PreExperimentIds               *string                                                 `json:"PreExperimentIds,omitempty" xml:"PreExperimentIds,omitempty"`
+	ProdExperimentIds              *string                                                 `json:"ProdExperimentIds,omitempty" xml:"ProdExperimentIds,omitempty"`
 	SceneId                        *string                                                 `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	ServiceId                      *string                                                 `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	StartTime                      *string                                                 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	StatisBaeaviorConditionArray   *string                                                 `json:"StatisBaeaviorConditionArray,omitempty" xml:"StatisBaeaviorConditionArray,omitempty"`
 	StatisBehaviorConditionExpress *string                                                 `json:"StatisBehaviorConditionExpress,omitempty" xml:"StatisBehaviorConditionExpress,omitempty"`
@@ -18859,8 +19578,23 @@ func (s *UpdateTrafficControlTaskRequest) SetName(v string) *UpdateTrafficContro
 	return s
 }
 
+func (s *UpdateTrafficControlTaskRequest) SetPreExperimentIds(v string) *UpdateTrafficControlTaskRequest {
+	s.PreExperimentIds = &v
+	return s
+}
+
+func (s *UpdateTrafficControlTaskRequest) SetProdExperimentIds(v string) *UpdateTrafficControlTaskRequest {
+	s.ProdExperimentIds = &v
+	return s
+}
+
 func (s *UpdateTrafficControlTaskRequest) SetSceneId(v string) *UpdateTrafficControlTaskRequest {
 	s.SceneId = &v
+	return s
+}
+
+func (s *UpdateTrafficControlTaskRequest) SetServiceId(v string) *UpdateTrafficControlTaskRequest {
+	s.ServiceId = &v
 	return s
 }
 
@@ -19359,13 +20093,24 @@ func (client *Client) ApplyEngineConfigWithOptions(EngineConfigId *string, reque
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ApplyEngineConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ApplyEngineConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ApplyEngineConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -19459,13 +20204,24 @@ func (client *Client) BackflowFeatureConsistencyCheckJobDataWithOptions(request 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &BackflowFeatureConsistencyCheckJobDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &BackflowFeatureConsistencyCheckJobDataResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &BackflowFeatureConsistencyCheckJobDataResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -19527,13 +20283,24 @@ func (client *Client) CheckInstanceResourcesWithOptions(InstanceId *string, requ
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CheckInstanceResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CheckInstanceResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CheckInstanceResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -19548,6 +20315,89 @@ func (client *Client) CheckInstanceResources(InstanceId *string, request *CheckI
 	headers := make(map[string]*string)
 	_result = &CheckInstanceResourcesResponse{}
 	_body, _err := client.CheckInstanceResourcesWithOptions(InstanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 校验流量调控任务中的表达式
+//
+// @param request - CheckTrafficControlTaskExpressionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckTrafficControlTaskExpressionResponse
+func (client *Client) CheckTrafficControlTaskExpressionWithOptions(request *CheckTrafficControlTaskExpressionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CheckTrafficControlTaskExpressionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Expression)) {
+		query["Expression"] = request.Expression
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableMetaId)) {
+		query["TableMetaId"] = request.TableMetaId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CheckTrafficControlTaskExpression"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/trafficcontroltasks/action/checkexpression"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CheckTrafficControlTaskExpressionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CheckTrafficControlTaskExpressionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 校验流量调控任务中的表达式
+//
+// @param request - CheckTrafficControlTaskExpressionRequest
+//
+// @return CheckTrafficControlTaskExpressionResponse
+func (client *Client) CheckTrafficControlTaskExpression(request *CheckTrafficControlTaskExpressionRequest) (_result *CheckTrafficControlTaskExpressionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CheckTrafficControlTaskExpressionResponse{}
+	_body, _err := client.CheckTrafficControlTaskExpressionWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19576,6 +20426,10 @@ func (client *Client) CloneEngineConfigWithOptions(EngineConfigId *string, reque
 		body["ConfigValue"] = request.ConfigValue
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Environment)) {
 		body["Environment"] = request.Environment
 	}
@@ -19599,13 +20453,24 @@ func (client *Client) CloneEngineConfigWithOptions(EngineConfigId *string, reque
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CloneEngineConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CloneEngineConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CloneEngineConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -19663,13 +20528,24 @@ func (client *Client) CloneExperimentWithOptions(ExperimentId *string, request *
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CloneExperimentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CloneExperimentResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CloneExperimentResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -19735,13 +20611,24 @@ func (client *Client) CloneExperimentGroupWithOptions(ExperimentGroupId *string,
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CloneExperimentGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CloneExperimentGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CloneExperimentGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -19799,13 +20686,24 @@ func (client *Client) CloneFeatureConsistencyCheckJobConfigWithOptions(SourceFea
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CloneFeatureConsistencyCheckJobConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CloneFeatureConsistencyCheckJobConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CloneFeatureConsistencyCheckJobConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -19871,13 +20769,24 @@ func (client *Client) CloneLaboratoryWithOptions(LaboratoryId *string, request *
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CloneLaboratoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CloneLaboratoryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CloneLaboratoryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -19935,13 +20844,24 @@ func (client *Client) CloneTrafficControlTaskWithOptions(TrafficControlTaskId *s
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CloneTrafficControlTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CloneTrafficControlTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CloneTrafficControlTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -20047,13 +20967,24 @@ func (client *Client) CreateABMetricWithOptions(request *CreateABMetricRequest, 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateABMetricResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateABMetricResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateABMetricResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -20131,13 +21062,24 @@ func (client *Client) CreateABMetricGroupWithOptions(request *CreateABMetricGrou
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateABMetricGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateABMetricGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateABMetricGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -20207,13 +21149,24 @@ func (client *Client) CreateCalculationJobsWithOptions(request *CreateCalculatio
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateCalculationJobsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateCalculationJobsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateCalculationJobsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -20291,13 +21244,24 @@ func (client *Client) CreateCrowdWithOptions(request *CreateCrowdRequest, header
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateCrowdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateCrowdResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateCrowdResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -20340,6 +21304,10 @@ func (client *Client) CreateEngineConfigWithOptions(request *CreateEngineConfigR
 		body["ConfigValue"] = request.ConfigValue
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Environment)) {
 		body["Environment"] = request.Environment
 	}
@@ -20367,13 +21335,24 @@ func (client *Client) CreateEngineConfigWithOptions(request *CreateEngineConfigR
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateEngineConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateEngineConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateEngineConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -20463,13 +21442,24 @@ func (client *Client) CreateExperimentWithOptions(request *CreateExperimentReque
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateExperimentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateExperimentResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateExperimentResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -20583,13 +21573,24 @@ func (client *Client) CreateExperimentGroupWithOptions(request *CreateExperiment
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateExperimentGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateExperimentGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateExperimentGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -20659,13 +21660,24 @@ func (client *Client) CreateFeatureConsistencyCheckJobWithOptions(request *Creat
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateFeatureConsistencyCheckJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateFeatureConsistencyCheckJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateFeatureConsistencyCheckJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -20706,6 +21718,30 @@ func (client *Client) CreateFeatureConsistencyCheckJobConfigWithOptions(request 
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CompareFeature)) {
 		body["CompareFeature"] = request.CompareFeature
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasetId)) {
+		body["DatasetId"] = request.DatasetId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasetMountPath)) {
+		body["DatasetMountPath"] = request.DatasetMountPath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
+		body["DatasetName"] = request.DatasetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasetType)) {
+		body["DatasetType"] = request.DatasetType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasetUri)) {
+		body["DatasetUri"] = request.DatasetUri
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DefaultRoute)) {
+		body["DefaultRoute"] = request.DefaultRoute
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EasServiceName)) {
@@ -20796,6 +21832,18 @@ func (client *Client) CreateFeatureConsistencyCheckJobConfigWithOptions(request 
 		body["OssResourceId"] = request.OssResourceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.PredictWorkerCount)) {
+		body["PredictWorkerCount"] = request.PredictWorkerCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PredictWorkerCpu)) {
+		body["PredictWorkerCpu"] = request.PredictWorkerCpu
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PredictWorkerMemory)) {
+		body["PredictWorkerMemory"] = request.PredictWorkerMemory
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SampleRate)) {
 		body["SampleRate"] = request.SampleRate
 	}
@@ -20804,8 +21852,16 @@ func (client *Client) CreateFeatureConsistencyCheckJobConfigWithOptions(request 
 		body["SceneId"] = request.SceneId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
+		body["SecurityGroupId"] = request.SecurityGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
 		body["ServiceId"] = request.ServiceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SwitchId)) {
+		body["SwitchId"] = request.SwitchId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UseFeatureStore)) {
@@ -20828,8 +21884,16 @@ func (client *Client) CreateFeatureConsistencyCheckJobConfigWithOptions(request 
 		body["UserTablePartitionFieldFormat"] = request.UserTablePartitionFieldFormat
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		body["VpcId"] = request.VpcId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.WorkflowName)) {
 		body["WorkflowName"] = request.WorkflowName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -20847,13 +21911,24 @@ func (client *Client) CreateFeatureConsistencyCheckJobConfigWithOptions(request 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateFeatureConsistencyCheckJobConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateFeatureConsistencyCheckJobConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateFeatureConsistencyCheckJobConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -20923,13 +21998,24 @@ func (client *Client) CreateInstanceResourceWithOptions(InstanceId *string, requ
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateInstanceResourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateInstanceResourceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateInstanceResourceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -21031,13 +22117,24 @@ func (client *Client) CreateLaboratoryWithOptions(request *CreateLaboratoryReque
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateLaboratoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateLaboratoryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateLaboratoryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -21107,13 +22204,24 @@ func (client *Client) CreateLayerWithOptions(request *CreateLayerRequest, header
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateLayerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateLayerResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateLayerResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -21187,13 +22295,24 @@ func (client *Client) CreateParamWithOptions(request *CreateParamRequest, header
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateParamResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateParamResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateParamResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -21279,13 +22398,24 @@ func (client *Client) CreateResourceRuleWithOptions(request *CreateResourceRuleR
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateResourceRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateResourceRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateResourceRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -21363,13 +22493,24 @@ func (client *Client) CreateResourceRuleItemWithOptions(ResourceRuleId *string, 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateResourceRuleItemResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateResourceRuleItemResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateResourceRuleItemResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -21439,13 +22580,24 @@ func (client *Client) CreateSceneWithOptions(request *CreateSceneRequest, header
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateSceneResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateSceneResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateSceneResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -21511,13 +22663,24 @@ func (client *Client) CreateSubCrowdWithOptions(CrowdId *string, request *Create
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateSubCrowdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateSubCrowdResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateSubCrowdResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -21599,13 +22762,24 @@ func (client *Client) CreateTableMetaWithOptions(request *CreateTableMetaRequest
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateTableMetaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateTableMetaResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateTableMetaResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -21715,13 +22889,24 @@ func (client *Client) CreateTrafficControlTargetWithOptions(request *CreateTraff
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateTrafficControlTargetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateTrafficControlTargetResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateTrafficControlTargetResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -21812,8 +22997,20 @@ func (client *Client) CreateTrafficControlTaskWithOptions(request *CreateTraffic
 		body["Name"] = request.Name
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.PreExperimentIds)) {
+		body["PreExperimentIds"] = request.PreExperimentIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProdExperimentIds)) {
+		body["ProdExperimentIds"] = request.ProdExperimentIds
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
 		body["SceneId"] = request.SceneId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		body["ServiceId"] = request.ServiceId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
@@ -21867,13 +23064,24 @@ func (client *Client) CreateTrafficControlTaskWithOptions(request *CreateTraffic
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateTrafficControlTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateTrafficControlTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateTrafficControlTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -21945,13 +23153,24 @@ func (client *Client) DebugResourceRuleWithOptions(ResourceRuleId *string, tmpRe
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DebugResourceRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DebugResourceRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DebugResourceRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -22009,13 +23228,24 @@ func (client *Client) DeleteABMetricWithOptions(ABMetricId *string, request *Del
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteABMetricResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteABMetricResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteABMetricResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -22073,13 +23303,24 @@ func (client *Client) DeleteABMetricGroupWithOptions(ABMetricGroupId *string, re
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteABMetricGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteABMetricGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteABMetricGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -22137,13 +23378,24 @@ func (client *Client) DeleteCrowdWithOptions(CrowdId *string, request *DeleteCro
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteCrowdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteCrowdResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteCrowdResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -22201,13 +23453,24 @@ func (client *Client) DeleteEngineConfigWithOptions(EngineConfigId *string, requ
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteEngineConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteEngineConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteEngineConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -22265,13 +23528,24 @@ func (client *Client) DeleteExperimentWithOptions(ExperimentId *string, request 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteExperimentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteExperimentResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteExperimentResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -22329,13 +23603,24 @@ func (client *Client) DeleteExperimentGroupWithOptions(ExperimentGroupId *string
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteExperimentGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteExperimentGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteExperimentGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -22381,13 +23666,24 @@ func (client *Client) DeleteInstanceResourceWithOptions(InstanceId *string, Reso
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteInstanceResourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteInstanceResourceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteInstanceResourceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -22443,13 +23739,24 @@ func (client *Client) DeleteLaboratoryWithOptions(LaboratoryId *string, request 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteLaboratoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteLaboratoryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteLaboratoryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -22507,13 +23814,24 @@ func (client *Client) DeleteLayerWithOptions(LayerId *string, request *DeleteLay
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteLayerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteLayerResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteLayerResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -22571,13 +23889,24 @@ func (client *Client) DeleteParamWithOptions(ParamId *string, request *DeletePar
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteParamResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteParamResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteParamResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -22635,13 +23964,24 @@ func (client *Client) DeleteResourceRuleWithOptions(ResourceRuleId *string, requ
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteResourceRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteResourceRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteResourceRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -22699,13 +24039,24 @@ func (client *Client) DeleteResourceRuleItemWithOptions(ResourceRuleId *string, 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteResourceRuleItemResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteResourceRuleItemResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteResourceRuleItemResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -22763,13 +24114,24 @@ func (client *Client) DeleteSceneWithOptions(SceneId *string, request *DeleteSce
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteSceneResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteSceneResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteSceneResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -22827,13 +24189,24 @@ func (client *Client) DeleteSubCrowdWithOptions(CrowdId *string, SubCrowdId *str
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteSubCrowdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteSubCrowdResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteSubCrowdResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -22891,13 +24264,24 @@ func (client *Client) DeleteTableMetaWithOptions(TableMetaId *string, request *D
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteTableMetaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteTableMetaResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteTableMetaResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -22955,13 +24339,24 @@ func (client *Client) DeleteTrafficControlTargetWithOptions(TrafficControlTarget
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteTrafficControlTargetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteTrafficControlTargetResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteTrafficControlTargetResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -23019,13 +24414,24 @@ func (client *Client) DeleteTrafficControlTaskWithOptions(TrafficControlTaskId *
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteTrafficControlTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteTrafficControlTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteTrafficControlTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -23064,6 +24470,10 @@ func (client *Client) GenerateTrafficControlTaskCodeWithOptions(TrafficControlTa
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Environment)) {
+		body["Environment"] = request.Environment
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		body["InstanceId"] = request.InstanceId
 	}
@@ -23083,13 +24493,24 @@ func (client *Client) GenerateTrafficControlTaskCodeWithOptions(TrafficControlTa
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GenerateTrafficControlTaskCodeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GenerateTrafficControlTaskCodeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GenerateTrafficControlTaskCodeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -23147,13 +24568,24 @@ func (client *Client) GenerateTrafficControlTaskConfigWithOptions(TrafficControl
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GenerateTrafficControlTaskConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GenerateTrafficControlTaskConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GenerateTrafficControlTaskConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -23211,13 +24643,24 @@ func (client *Client) GetABMetricWithOptions(ABMetricId *string, request *GetABM
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetABMetricResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetABMetricResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetABMetricResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -23275,13 +24718,24 @@ func (client *Client) GetABMetricGroupWithOptions(ABMetricGroupId *string, reque
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetABMetricGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetABMetricGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetABMetricGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -23339,13 +24793,24 @@ func (client *Client) GetCalculationJobWithOptions(CalculationJobId *string, req
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetCalculationJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetCalculationJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetCalculationJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -23403,13 +24868,24 @@ func (client *Client) GetEngineConfigWithOptions(EngineConfigId *string, request
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetEngineConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetEngineConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetEngineConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -23467,13 +24943,24 @@ func (client *Client) GetExperimentWithOptions(ExperimentId *string, request *Ge
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetExperimentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetExperimentResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetExperimentResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -23531,13 +25018,24 @@ func (client *Client) GetExperimentGroupWithOptions(ExperimentGroupId *string, r
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetExperimentGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetExperimentGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetExperimentGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -23595,13 +25093,24 @@ func (client *Client) GetFeatureConsistencyCheckJobWithOptions(FeatureConsistenc
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetFeatureConsistencyCheckJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetFeatureConsistencyCheckJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetFeatureConsistencyCheckJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -23659,13 +25168,24 @@ func (client *Client) GetFeatureConsistencyCheckJobConfigWithOptions(FeatureCons
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetFeatureConsistencyCheckJobConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetFeatureConsistencyCheckJobConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetFeatureConsistencyCheckJobConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -23711,13 +25231,24 @@ func (client *Client) GetInstanceWithOptions(InstanceId *string, headers map[str
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -23761,13 +25292,24 @@ func (client *Client) GetInstanceResourceWithOptions(InstanceId *string, Resourc
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetInstanceResourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetInstanceResourceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetInstanceResourceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -23811,13 +25353,24 @@ func (client *Client) GetInstanceResourceTableWithOptions(InstanceId *string, Re
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetInstanceResourceTableResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetInstanceResourceTableResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetInstanceResourceTableResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -23873,13 +25426,24 @@ func (client *Client) GetLaboratoryWithOptions(LaboratoryId *string, request *Ge
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetLaboratoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetLaboratoryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetLaboratoryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -23937,13 +25501,24 @@ func (client *Client) GetLayerWithOptions(LayerId *string, request *GetLayerRequ
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetLayerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetLayerResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetLayerResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -24001,13 +25576,24 @@ func (client *Client) GetResourceRuleWithOptions(ResourceRuleId *string, request
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetResourceRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetResourceRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetResourceRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -24065,13 +25651,24 @@ func (client *Client) GetSceneWithOptions(SceneId *string, request *GetSceneRequ
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetSceneResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetSceneResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetSceneResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -24129,13 +25726,24 @@ func (client *Client) GetSubCrowdWithOptions(CrowdId *string, SubCrowdId *string
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetSubCrowdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetSubCrowdResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetSubCrowdResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -24193,13 +25801,24 @@ func (client *Client) GetTableMetaWithOptions(TableMetaId *string, request *GetT
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetTableMetaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetTableMetaResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetTableMetaResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -24257,13 +25876,24 @@ func (client *Client) GetTrafficControlTargetWithOptions(TrafficControlTargetId 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetTrafficControlTargetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetTrafficControlTargetResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetTrafficControlTargetResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -24337,13 +25967,24 @@ func (client *Client) GetTrafficControlTaskWithOptions(TrafficControlTaskId *str
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetTrafficControlTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetTrafficControlTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetTrafficControlTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -24405,13 +26046,24 @@ func (client *Client) GetTrafficControlTaskTrafficWithOptions(TrafficControlTask
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetTrafficControlTaskTrafficResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetTrafficControlTaskTrafficResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetTrafficControlTaskTrafficResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -24493,13 +26145,24 @@ func (client *Client) ListABMetricGroupsWithOptions(request *ListABMetricGroupsR
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListABMetricGroupsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListABMetricGroupsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListABMetricGroupsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -24585,13 +26248,24 @@ func (client *Client) ListABMetricsWithOptions(request *ListABMetricsRequest, he
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListABMetricsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListABMetricsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListABMetricsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -24665,13 +26339,24 @@ func (client *Client) ListCalculationJobsWithOptions(request *ListCalculationJob
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListCalculationJobsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListCalculationJobsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListCalculationJobsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -24729,13 +26414,24 @@ func (client *Client) ListCrowdUsersWithOptions(CrowdId *string, request *ListCr
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListCrowdUsersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListCrowdUsersResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListCrowdUsersResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -24793,13 +26489,24 @@ func (client *Client) ListCrowdsWithOptions(request *ListCrowdsRequest, headers 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListCrowdsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListCrowdsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListCrowdsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -24881,13 +26588,24 @@ func (client *Client) ListEngineConfigsWithOptions(request *ListEngineConfigsReq
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListEngineConfigsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListEngineConfigsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListEngineConfigsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -24965,13 +26683,24 @@ func (client *Client) ListExperimentGroupsWithOptions(request *ListExperimentGro
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListExperimentGroupsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListExperimentGroupsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListExperimentGroupsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -25041,13 +26770,24 @@ func (client *Client) ListExperimentsWithOptions(request *ListExperimentsRequest
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListExperimentsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListExperimentsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListExperimentsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -25121,13 +26861,24 @@ func (client *Client) ListFeatureConsistencyCheckJobConfigsWithOptions(request *
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListFeatureConsistencyCheckJobConfigsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListFeatureConsistencyCheckJobConfigsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListFeatureConsistencyCheckJobConfigsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -25197,13 +26948,24 @@ func (client *Client) ListFeatureConsistencyCheckJobFeatureReportsWithOptions(Fe
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListFeatureConsistencyCheckJobFeatureReportsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListFeatureConsistencyCheckJobFeatureReportsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListFeatureConsistencyCheckJobFeatureReportsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -25271,13 +27033,24 @@ func (client *Client) ListFeatureConsistencyCheckJobScoreReportsWithOptions(Feat
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListFeatureConsistencyCheckJobScoreReportsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListFeatureConsistencyCheckJobScoreReportsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListFeatureConsistencyCheckJobScoreReportsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -25355,13 +27128,24 @@ func (client *Client) ListFeatureConsistencyCheckJobsWithOptions(request *ListFe
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListFeatureConsistencyCheckJobsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListFeatureConsistencyCheckJobsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListFeatureConsistencyCheckJobsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -25427,13 +27211,24 @@ func (client *Client) ListInstanceResourcesWithOptions(InstanceId *string, reque
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListInstanceResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListInstanceResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListInstanceResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -25511,13 +27306,24 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, he
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -25587,13 +27393,24 @@ func (client *Client) ListLaboratoriesWithOptions(request *ListLaboratoriesReque
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListLaboratoriesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListLaboratoriesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListLaboratoriesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -25655,13 +27472,24 @@ func (client *Client) ListLayersWithOptions(request *ListLayersRequest, headers 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListLayersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListLayersResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListLayersResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -25739,13 +27567,24 @@ func (client *Client) ListParamsWithOptions(request *ListParamsRequest, headers 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListParamsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListParamsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListParamsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -25831,13 +27670,24 @@ func (client *Client) ListResourceRulesWithOptions(request *ListResourceRulesReq
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListResourceRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListResourceRulesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListResourceRulesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -25899,13 +27749,24 @@ func (client *Client) ListScenesWithOptions(request *ListScenesRequest, headers 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListScenesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListScenesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListScenesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -25963,13 +27824,24 @@ func (client *Client) ListSubCrowdsWithOptions(CrowdId *string, request *ListSub
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListSubCrowdsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListSubCrowdsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListSubCrowdsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -26047,13 +27919,24 @@ func (client *Client) ListTableMetasWithOptions(request *ListTableMetasRequest, 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListTableMetasResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListTableMetasResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListTableMetasResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -26139,13 +28022,24 @@ func (client *Client) ListTrafficControlTargetTrafficHistoryWithOptions(TrafficC
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListTrafficControlTargetTrafficHistoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListTrafficControlTargetTrafficHistoryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListTrafficControlTargetTrafficHistoryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -26251,13 +28145,24 @@ func (client *Client) ListTrafficControlTasksWithOptions(request *ListTrafficCon
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListTrafficControlTasksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListTrafficControlTasksResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListTrafficControlTasksResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -26315,13 +28220,24 @@ func (client *Client) OfflineExperimentWithOptions(ExperimentId *string, request
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &OfflineExperimentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &OfflineExperimentResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &OfflineExperimentResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -26379,13 +28295,24 @@ func (client *Client) OfflineExperimentGroupWithOptions(ExperimentGroupId *strin
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &OfflineExperimentGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &OfflineExperimentGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &OfflineExperimentGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -26443,13 +28370,24 @@ func (client *Client) OfflineLaboratoryWithOptions(LaboratoryId *string, request
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &OfflineLaboratoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &OfflineLaboratoryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &OfflineLaboratoryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -26507,13 +28445,24 @@ func (client *Client) OnlineExperimentWithOptions(ExperimentId *string, request 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &OnlineExperimentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &OnlineExperimentResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &OnlineExperimentResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -26571,13 +28520,24 @@ func (client *Client) OnlineExperimentGroupWithOptions(ExperimentGroupId *string
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &OnlineExperimentGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &OnlineExperimentGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &OnlineExperimentGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -26635,13 +28595,24 @@ func (client *Client) OnlineLaboratoryWithOptions(LaboratoryId *string, request 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &OnlineLaboratoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &OnlineLaboratoryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &OnlineLaboratoryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -26699,13 +28670,24 @@ func (client *Client) PushAllExperimentWithOptions(ExperimentId *string, request
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &PushAllExperimentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &PushAllExperimentResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &PushAllExperimentResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -26773,13 +28755,24 @@ func (client *Client) PushResourceRuleWithOptions(ResourceRuleId *string, tmpReq
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &PushResourceRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &PushResourceRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &PushResourceRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -26794,6 +28787,89 @@ func (client *Client) PushResourceRule(ResourceRuleId *string, request *PushReso
 	headers := make(map[string]*string)
 	_result = &PushResourceRuleResponse{}
 	_body, _err := client.PushResourceRuleWithOptions(ResourceRuleId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询流量调控目标的单品调控报表详情。
+//
+// @param request - QueryTrafficControlTargetItemReportDetailRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryTrafficControlTargetItemReportDetailResponse
+func (client *Client) QueryTrafficControlTargetItemReportDetailWithOptions(TrafficControlTargetId *string, request *QueryTrafficControlTargetItemReportDetailRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryTrafficControlTargetItemReportDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Date)) {
+		query["Date"] = request.Date
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Environment)) {
+		query["Environment"] = request.Environment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryTrafficControlTargetItemReportDetail"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/trafficcontroltargets/" + tea.StringValue(openapiutil.GetEncodeParam(TrafficControlTargetId)) + "/itemcontrolreportdetail"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &QueryTrafficControlTargetItemReportDetailResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &QueryTrafficControlTargetItemReportDetailResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询流量调控目标的单品调控报表详情。
+//
+// @param request - QueryTrafficControlTargetItemReportDetailRequest
+//
+// @return QueryTrafficControlTargetItemReportDetailResponse
+func (client *Client) QueryTrafficControlTargetItemReportDetail(TrafficControlTargetId *string, request *QueryTrafficControlTargetItemReportDetailRequest) (_result *QueryTrafficControlTargetItemReportDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &QueryTrafficControlTargetItemReportDetailResponse{}
+	_body, _err := client.QueryTrafficControlTargetItemReportDetailWithOptions(TrafficControlTargetId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26841,13 +28917,24 @@ func (client *Client) ReleaseTrafficControlTaskWithOptions(TrafficControlTaskId 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ReleaseTrafficControlTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ReleaseTrafficControlTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ReleaseTrafficControlTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -26941,13 +29028,24 @@ func (client *Client) ReportABMetricGroupWithOptions(ABMetricGroupId *string, re
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ReportABMetricGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ReportABMetricGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ReportABMetricGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -27021,13 +29119,24 @@ func (client *Client) SplitTrafficControlTargetWithOptions(TrafficControlTargetI
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SplitTrafficControlTargetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SplitTrafficControlTargetResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SplitTrafficControlTargetResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -27085,13 +29194,24 @@ func (client *Client) StartTrafficControlTargetWithOptions(TrafficControlTargetI
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StartTrafficControlTargetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StartTrafficControlTargetResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StartTrafficControlTargetResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -27153,13 +29273,24 @@ func (client *Client) StartTrafficControlTaskWithOptions(TrafficControlTaskId *s
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StartTrafficControlTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StartTrafficControlTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StartTrafficControlTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -27217,13 +29348,24 @@ func (client *Client) StopTrafficControlTargetWithOptions(TrafficControlTargetId
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StopTrafficControlTargetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StopTrafficControlTargetResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StopTrafficControlTargetResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -27291,13 +29433,24 @@ func (client *Client) StopTrafficControlTaskWithOptions(TrafficControlTaskId *st
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StopTrafficControlTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StopTrafficControlTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StopTrafficControlTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -27391,13 +29544,24 @@ func (client *Client) SyncFeatureConsistencyCheckJobReplayLogWithOptions(request
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SyncFeatureConsistencyCheckJobReplayLogResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SyncFeatureConsistencyCheckJobReplayLogResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SyncFeatureConsistencyCheckJobReplayLogResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -27455,13 +29619,24 @@ func (client *Client) TerminateFeatureConsistencyCheckJobWithOptions(FeatureCons
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &TerminateFeatureConsistencyCheckJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &TerminateFeatureConsistencyCheckJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &TerminateFeatureConsistencyCheckJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -27567,13 +29742,24 @@ func (client *Client) UpdateABMetricWithOptions(ABMetricId *string, request *Upd
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateABMetricResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateABMetricResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateABMetricResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -27651,13 +29837,24 @@ func (client *Client) UpdateABMetricGroupWithOptions(ABMetricGroupId *string, re
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateABMetricGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateABMetricGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateABMetricGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -27723,13 +29920,24 @@ func (client *Client) UpdateCrowdWithOptions(CrowdId *string, request *UpdateCro
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateCrowdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateCrowdResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateCrowdResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -27772,6 +29980,10 @@ func (client *Client) UpdateEngineConfigWithOptions(EngineConfigId *string, requ
 		body["ConfigValue"] = request.ConfigValue
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Environment)) {
 		body["Environment"] = request.Environment
 	}
@@ -27799,13 +30011,24 @@ func (client *Client) UpdateEngineConfigWithOptions(EngineConfigId *string, requ
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateEngineConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateEngineConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateEngineConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -27891,13 +30114,24 @@ func (client *Client) UpdateExperimentWithOptions(ExperimentId *string, request 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateExperimentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateExperimentResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateExperimentResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -28011,13 +30245,24 @@ func (client *Client) UpdateExperimentGroupWithOptions(ExperimentGroupId *string
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateExperimentGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateExperimentGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateExperimentGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -28058,6 +30303,30 @@ func (client *Client) UpdateFeatureConsistencyCheckJobConfigWithOptions(FeatureC
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CompareFeature)) {
 		body["CompareFeature"] = request.CompareFeature
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasetId)) {
+		body["DatasetId"] = request.DatasetId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasetMountPath)) {
+		body["DatasetMountPath"] = request.DatasetMountPath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
+		body["DatasetName"] = request.DatasetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasetType)) {
+		body["DatasetType"] = request.DatasetType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasetUri)) {
+		body["DatasetUri"] = request.DatasetUri
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DefaultRoute)) {
+		body["DefaultRoute"] = request.DefaultRoute
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EasServiceName)) {
@@ -28152,6 +30421,18 @@ func (client *Client) UpdateFeatureConsistencyCheckJobConfigWithOptions(FeatureC
 		body["OssResourceId"] = request.OssResourceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.PredictWorkerCount)) {
+		body["PredictWorkerCount"] = request.PredictWorkerCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PredictWorkerCpu)) {
+		body["PredictWorkerCpu"] = request.PredictWorkerCpu
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PredictWorkerMemory)) {
+		body["PredictWorkerMemory"] = request.PredictWorkerMemory
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SampleRate)) {
 		body["SampleRate"] = request.SampleRate
 	}
@@ -28160,8 +30441,16 @@ func (client *Client) UpdateFeatureConsistencyCheckJobConfigWithOptions(FeatureC
 		body["SceneId"] = request.SceneId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
+		body["SecurityGroupId"] = request.SecurityGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
 		body["ServiceId"] = request.ServiceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SwitchId)) {
+		body["SwitchId"] = request.SwitchId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UserIdField)) {
@@ -28180,8 +30469,16 @@ func (client *Client) UpdateFeatureConsistencyCheckJobConfigWithOptions(FeatureC
 		body["UserTablePartitionFieldFormat"] = request.UserTablePartitionFieldFormat
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		body["VpcId"] = request.VpcId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.WorkflowName)) {
 		body["WorkflowName"] = request.WorkflowName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -28199,13 +30496,24 @@ func (client *Client) UpdateFeatureConsistencyCheckJobConfigWithOptions(FeatureC
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateFeatureConsistencyCheckJobConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateFeatureConsistencyCheckJobConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateFeatureConsistencyCheckJobConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -28267,13 +30575,24 @@ func (client *Client) UpdateInstanceResourceWithOptions(InstanceId *string, Reso
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateInstanceResourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateInstanceResourceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateInstanceResourceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -28371,13 +30690,24 @@ func (client *Client) UpdateLaboratoryWithOptions(LaboratoryId *string, request 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateLaboratoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateLaboratoryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateLaboratoryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -28443,13 +30773,24 @@ func (client *Client) UpdateLayerWithOptions(LayerId *string, request *UpdateLay
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateLayerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateLayerResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateLayerResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -28511,13 +30852,24 @@ func (client *Client) UpdateParamWithOptions(ParamId *string, request *UpdatePar
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateParamResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateParamResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateParamResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -28599,13 +30951,24 @@ func (client *Client) UpdateResourceRuleWithOptions(ResourceRuleId *string, requ
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateResourceRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateResourceRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateResourceRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -28683,13 +31046,24 @@ func (client *Client) UpdateResourceRuleItemWithOptions(ResourceRuleId *string, 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateResourceRuleItemResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateResourceRuleItemResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateResourceRuleItemResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -28759,13 +31133,24 @@ func (client *Client) UpdateSceneWithOptions(SceneId *string, request *UpdateSce
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateSceneResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateSceneResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateSceneResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -28847,13 +31232,24 @@ func (client *Client) UpdateTableMetaWithOptions(TableMetaId *string, request *U
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateTableMetaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateTableMetaResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateTableMetaResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -28965,13 +31361,24 @@ func (client *Client) UpdateTrafficControlTargetWithOptions(TrafficControlTarget
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateTrafficControlTargetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateTrafficControlTargetResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateTrafficControlTargetResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -29062,8 +31469,20 @@ func (client *Client) UpdateTrafficControlTaskWithOptions(TrafficControlTaskId *
 		body["Name"] = request.Name
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.PreExperimentIds)) {
+		body["PreExperimentIds"] = request.PreExperimentIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProdExperimentIds)) {
+		body["ProdExperimentIds"] = request.ProdExperimentIds
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
 		body["SceneId"] = request.SceneId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		body["ServiceId"] = request.ServiceId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
@@ -29117,13 +31536,24 @@ func (client *Client) UpdateTrafficControlTaskWithOptions(TrafficControlTaskId *
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateTrafficControlTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateTrafficControlTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateTrafficControlTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -29195,13 +31625,24 @@ func (client *Client) UpdateTrafficControlTaskTrafficWithOptions(TrafficControlT
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateTrafficControlTaskTrafficResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateTrafficControlTaskTrafficResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateTrafficControlTaskTrafficResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -29269,13 +31710,24 @@ func (client *Client) UploadRecommendationDataWithOptions(request *UploadRecomme
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UploadRecommendationDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UploadRecommendationDataResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UploadRecommendationDataResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
