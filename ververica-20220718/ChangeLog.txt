@@ -1,3 +1,8 @@
+2025-02-28 Version: v1.7.0
+- Support API GetJobDiagnosis.
+- Support API UpdateVariable.
+
+
 2025-02-20 Version: v1.6.3
 - Update API GetJob: update response param.
 - Update API ListJobs: update response param.

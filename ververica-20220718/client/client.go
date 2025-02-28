@@ -10015,6 +10015,134 @@ func (s *GetJobResponse) SetBody(v *GetJobResponseBody) *GetJobResponse {
 	return s
 }
 
+type GetJobDiagnosisHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s GetJobDiagnosisHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetJobDiagnosisHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobDiagnosisHeaders) SetCommonHeaders(v map[string]*string) *GetJobDiagnosisHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetJobDiagnosisHeaders) SetWorkspace(v string) *GetJobDiagnosisHeaders {
+	s.Workspace = &v
+	return s
+}
+
+type GetJobDiagnosisResponseBody struct {
+	// example:
+	//
+	// “”
+	AccessDeniedDetail *string       `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
+	Data               *JobDiagnosis `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetJobDiagnosisResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetJobDiagnosisResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobDiagnosisResponseBody) SetAccessDeniedDetail(v string) *GetJobDiagnosisResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *GetJobDiagnosisResponseBody) SetData(v *JobDiagnosis) *GetJobDiagnosisResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetJobDiagnosisResponseBody) SetErrorCode(v string) *GetJobDiagnosisResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetJobDiagnosisResponseBody) SetErrorMessage(v string) *GetJobDiagnosisResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetJobDiagnosisResponseBody) SetHttpCode(v int32) *GetJobDiagnosisResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *GetJobDiagnosisResponseBody) SetRequestId(v string) *GetJobDiagnosisResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetJobDiagnosisResponseBody) SetSuccess(v bool) *GetJobDiagnosisResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetJobDiagnosisResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetJobDiagnosisResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetJobDiagnosisResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetJobDiagnosisResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobDiagnosisResponse) SetHeaders(v map[string]*string) *GetJobDiagnosisResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetJobDiagnosisResponse) SetStatusCode(v int32) *GetJobDiagnosisResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetJobDiagnosisResponse) SetBody(v *GetJobDiagnosisResponseBody) *GetJobDiagnosisResponse {
+	s.Body = v
+	return s
+}
+
 type GetLatestJobStartLogHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// The workspace ID.
@@ -15923,6 +16051,152 @@ func (s *UpdateUdfArtifactResponse) SetBody(v *UpdateUdfArtifactResponseBody) *U
 	return s
 }
 
+type UpdateVariableHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s UpdateVariableHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateVariableHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateVariableHeaders) SetCommonHeaders(v map[string]*string) *UpdateVariableHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *UpdateVariableHeaders) SetWorkspace(v string) *UpdateVariableHeaders {
+	s.Workspace = &v
+	return s
+}
+
+type UpdateVariableRequest struct {
+	// This parameter is required.
+	Body *Variable `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateVariableRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateVariableRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateVariableRequest) SetBody(v *Variable) *UpdateVariableRequest {
+	s.Body = v
+	return s
+}
+
+type UpdateVariableResponseBody struct {
+	// example:
+	//
+	// “”
+	AccessDeniedDetail *string   `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
+	Data               *Variable `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// 1EF03B0C-F44F-47AD-BB48-D002D0F7B8C9
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s UpdateVariableResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateVariableResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateVariableResponseBody) SetAccessDeniedDetail(v string) *UpdateVariableResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *UpdateVariableResponseBody) SetData(v *Variable) *UpdateVariableResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UpdateVariableResponseBody) SetErrorCode(v string) *UpdateVariableResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateVariableResponseBody) SetErrorMessage(v string) *UpdateVariableResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdateVariableResponseBody) SetHttpCode(v int32) *UpdateVariableResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *UpdateVariableResponseBody) SetRequestId(v string) *UpdateVariableResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateVariableResponseBody) SetSuccess(v bool) *UpdateVariableResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateVariableResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateVariableResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateVariableResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateVariableResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateVariableResponse) SetHeaders(v map[string]*string) *UpdateVariableResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateVariableResponse) SetStatusCode(v int32) *UpdateVariableResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateVariableResponse) SetBody(v *UpdateVariableResponseBody) *UpdateVariableResponse {
+	s.Body = v
+	return s
+}
+
 type ValidateSqlStatementHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// The workspace ID.
@@ -19196,6 +19470,76 @@ func (client *Client) GetJob(namespace *string, jobId *string) (_result *GetJobR
 
 // Summary:
 //
+// 获取作业诊断信息
+//
+// @param headers - GetJobDiagnosisHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetJobDiagnosisResponse
+func (client *Client) GetJobDiagnosisWithOptions(namespace *string, deploymentId *string, jobId *string, headers *GetJobDiagnosisHeaders, runtime *util.RuntimeOptions) (_result *GetJobDiagnosisResponse, _err error) {
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Workspace)) {
+		realHeaders["workspace"] = util.ToJSONString(headers.Workspace)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetJobDiagnosis"),
+		Version:     tea.String("2022-07-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/namespaces/" + tea.StringValue(openapiutil.GetEncodeParam(namespace)) + "/deployments/" + tea.StringValue(openapiutil.GetEncodeParam(deploymentId)) + "/jobs/" + tea.StringValue(openapiutil.GetEncodeParam(jobId)) + "/job-diagnoses/lite"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetJobDiagnosisResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetJobDiagnosisResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取作业诊断信息
+//
+// @return GetJobDiagnosisResponse
+func (client *Client) GetJobDiagnosis(namespace *string, deploymentId *string, jobId *string) (_result *GetJobDiagnosisResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetJobDiagnosisHeaders{}
+	_result = &GetJobDiagnosisResponse{}
+	_body, _err := client.GetJobDiagnosisWithOptions(namespace, deploymentId, jobId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Obtains the latest startup logs of a job.
 //
 // @param headers - GetLatestJobStartLogHeaders
@@ -22190,6 +22534,85 @@ func (client *Client) UpdateUdfArtifact(namespace *string, udfArtifactName *stri
 	headers := &UpdateUdfArtifactHeaders{}
 	_result = &UpdateUdfArtifactResponse{}
 	_body, _err := client.UpdateUdfArtifactWithOptions(namespace, udfArtifactName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新秘钥
+//
+// @param request - UpdateVariableRequest
+//
+// @param headers - UpdateVariableHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateVariableResponse
+func (client *Client) UpdateVariableWithOptions(namespace *string, name *string, request *UpdateVariableRequest, headers *UpdateVariableHeaders, runtime *util.RuntimeOptions) (_result *UpdateVariableResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Workspace)) {
+		realHeaders["workspace"] = util.ToJSONString(headers.Workspace)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateVariable"),
+		Version:     tea.String("2022-07-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/namespaces/" + tea.StringValue(openapiutil.GetEncodeParam(namespace)) + "/variables/" + tea.StringValue(openapiutil.GetEncodeParam(name))),
+		Method:      tea.String("PATCH"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateVariableResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateVariableResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 更新秘钥
+//
+// @param request - UpdateVariableRequest
+//
+// @return UpdateVariableResponse
+func (client *Client) UpdateVariable(namespace *string, name *string, request *UpdateVariableRequest) (_result *UpdateVariableResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &UpdateVariableHeaders{}
+	_result = &UpdateVariableResponse{}
+	_body, _err := client.UpdateVariableWithOptions(namespace, name, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
