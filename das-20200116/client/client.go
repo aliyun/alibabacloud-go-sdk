@@ -7679,7 +7679,7 @@ type DescribeHotBigKeysRequest struct {
 	//
 	// None
 	ConsoleContext *string `json:"ConsoleContext,omitempty" xml:"ConsoleContext,omitempty"`
-	// The ID of the ApsaraDB for Redis instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/60933.html) operation to query the ID.
+	// The ID of the ApsaraDB for Redis instance.
 	//
 	// This parameter is required.
 	//
@@ -7687,7 +7687,7 @@ type DescribeHotBigKeysRequest struct {
 	//
 	// r-bp18ff4a195d****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the data shard on the ApsaraDB for Redis instance. You can call the [DescribeRoleZoneInfo](https://help.aliyun.com/document_detail/190794.html) operation to query the ID.
+	// The ID of the data shard on the ApsaraDB for Redis instance.
 	//
 	// example:
 	//
@@ -8038,7 +8038,7 @@ func (s *DescribeHotBigKeysResponse) SetBody(v *DescribeHotBigKeysResponseBody) 
 }
 
 type DescribeHotKeysRequest struct {
-	// The ID of the ApsaraDB for Redis instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/60933.html) operation to query the instance ID.
+	// The ID of the ApsaraDB for Redis instance.
 	//
 	// This parameter is required.
 	//
@@ -8046,7 +8046,7 @@ type DescribeHotKeysRequest struct {
 	//
 	// r-bp18ff4a195d****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the data shard on the ApsaraDB for Redis instance. You can call the [DescribeRoleZoneInfo](https://help.aliyun.com/document_detail/190794.html) operation to query the data shard ID.
+	// The ID of the data shard on the ApsaraDB for Redis instance.
 	//
 	// example:
 	//
@@ -12982,7 +12982,7 @@ type DescribeTopBigKeysRequest struct {
 	//
 	// 1596177993001
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the ApsaraDB for Redis instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/60933.html) operation to query the ID.
+	// The ID of the ApsaraDB for Redis instance.
 	//
 	// This parameter is required.
 	//
@@ -12990,7 +12990,7 @@ type DescribeTopBigKeysRequest struct {
 	//
 	// r-bp18ff4a195d****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the data shard on the ApsaraDB for Redis instance. You can call the [DescribeRoleZoneInfo](https://help.aliyun.com/document_detail/190794.html) operation to query the ID.
+	// The ID of the data shard on the ApsaraDB for Redis instance.
 	//
 	// example:
 	//
@@ -13242,7 +13242,7 @@ type DescribeTopHotKeysRequest struct {
 	//
 	// 1596177993001
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the ApsaraDB for Redis instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/60933.html) operation to query the ID.
+	// The ID of the ApsaraDB for Redis instance.
 	//
 	// This parameter is required.
 	//
@@ -13250,7 +13250,7 @@ type DescribeTopHotKeysRequest struct {
 	//
 	// r-bp18ff4a195d****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the data shard on the ApsaraDB for Redis instance. You can call the [DescribeRoleZoneInfo](https://help.aliyun.com/document_detail/190794.html) operation to query the ID.
+	// The ID of the data shard on the ApsaraDB for Redis instance.
 	//
 	// example:
 	//
@@ -36190,7 +36190,8 @@ type ModifySqlLogConfigRequest struct {
 	// example:
 	//
 	// true
-	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Enable      *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	EnableAudit *bool `json:"EnableAudit,omitempty" xml:"EnableAudit,omitempty"`
 	// A reserved parameter.
 	Filters []*ModifySqlLogConfigRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
 	// The number of days for which the SQL Explorer and Audit data is stored in hot storage. Valid values: 1 to 7.
@@ -36249,6 +36250,11 @@ func (s ModifySqlLogConfigRequest) GoString() string {
 
 func (s *ModifySqlLogConfigRequest) SetEnable(v bool) *ModifySqlLogConfigRequest {
 	s.Enable = &v
+	return s
+}
+
+func (s *ModifySqlLogConfigRequest) SetEnableAudit(v bool) *ModifySqlLogConfigRequest {
+	s.EnableAudit = &v
 	return s
 }
 
@@ -40763,8 +40769,6 @@ func (client *Client) DescribeDiagnosticReportList(request *DescribeDiagnosticRe
 //
 //     	- The ApsaraDB for Redis instance is updated to the latest minor version.
 //
-// >  For information about how to query and update the minor version of an instance, see [ModifyInstanceMinorVersion](https://help.aliyun.com/document_detail/129381.html) and [DescribeEngineVersion](https://help.aliyun.com/document_detail/95268.html).
-//
 // @param request - DescribeHotBigKeysRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -40842,8 +40846,6 @@ func (client *Client) DescribeHotBigKeysWithOptions(request *DescribeHotBigKeysR
 //
 //     	- The ApsaraDB for Redis instance is updated to the latest minor version.
 //
-// >  For information about how to query and update the minor version of an instance, see [ModifyInstanceMinorVersion](https://help.aliyun.com/document_detail/129381.html) and [DescribeEngineVersion](https://help.aliyun.com/document_detail/95268.html).
-//
 // @param request - DescribeHotBigKeysRequest
 //
 // @return DescribeHotBigKeysResponse
@@ -40877,8 +40879,6 @@ func (client *Client) DescribeHotBigKeys(request *DescribeHotBigKeysRequest) (_r
 //     	- The ApsaraDB for Redis instance is a Community Edition instance that uses a major version of 4.0 or later or a performance-enhanced instance of the Enhanced Edition (Tair).
 //
 //     	- The ApsaraDB for Redis instance is updated to the latest minor version.
-//
-// >  For more information about how to query and update the minor version of an instance, see [ModifyInstanceMinorVersion](https://help.aliyun.com/document_detail/129381.html) and [DescribeEngineVersion](https://help.aliyun.com/document_detail/95268.html).
 //
 // @param request - DescribeHotKeysRequest
 //
@@ -40952,8 +40952,6 @@ func (client *Client) DescribeHotKeysWithOptions(request *DescribeHotKeysRequest
 //     	- The ApsaraDB for Redis instance is a Community Edition instance that uses a major version of 4.0 or later or a performance-enhanced instance of the Enhanced Edition (Tair).
 //
 //     	- The ApsaraDB for Redis instance is updated to the latest minor version.
-//
-// >  For more information about how to query and update the minor version of an instance, see [ModifyInstanceMinorVersion](https://help.aliyun.com/document_detail/129381.html) and [DescribeEngineVersion](https://help.aliyun.com/document_detail/95268.html).
 //
 // @param request - DescribeHotKeysRequest
 //
@@ -41779,8 +41777,6 @@ func (client *Client) DescribeSqlLogTasks(request *DescribeSqlLogTasksRequest) (
 //
 //     	- The ApsaraDB for Redis instance is updated to the latest minor version.
 //
-// >  For information about how to query and update the minor version of an instance, see [ModifyInstanceMinorVersion](https://help.aliyun.com/document_detail/129381.html) and [DescribeEngineVersion](https://help.aliyun.com/document_detail/95268.html).
-//
 // @param request - DescribeTopBigKeysRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -41866,8 +41862,6 @@ func (client *Client) DescribeTopBigKeysWithOptions(request *DescribeTopBigKeysR
 //
 //     	- The ApsaraDB for Redis instance is updated to the latest minor version.
 //
-// >  For information about how to query and update the minor version of an instance, see [ModifyInstanceMinorVersion](https://help.aliyun.com/document_detail/129381.html) and [DescribeEngineVersion](https://help.aliyun.com/document_detail/95268.html).
-//
 // @param request - DescribeTopBigKeysRequest
 //
 // @return DescribeTopBigKeysResponse
@@ -41901,8 +41895,6 @@ func (client *Client) DescribeTopBigKeys(request *DescribeTopBigKeysRequest) (_r
 //     	- The instance is a Community Edition instance that uses a major version of 4.0 or later or a performance-enhanced instance of the Enhanced Edition (Tair).
 //
 //     	- The ApsaraDB for Redis instance is updated to the latest minor version.
-//
-// >  For information about how to query and update the minor version of an instance, see [DescribeEngineVersion](https://help.aliyun.com/document_detail/95268.html) and [ModifyInstanceMinorVersion](https://help.aliyun.com/document_detail/129381.html).
 //
 // @param request - DescribeTopHotKeysRequest
 //
@@ -41988,8 +41980,6 @@ func (client *Client) DescribeTopHotKeysWithOptions(request *DescribeTopHotKeysR
 //     	- The instance is a Community Edition instance that uses a major version of 4.0 or later or a performance-enhanced instance of the Enhanced Edition (Tair).
 //
 //     	- The ApsaraDB for Redis instance is updated to the latest minor version.
-//
-// >  For information about how to query and update the minor version of an instance, see [DescribeEngineVersion](https://help.aliyun.com/document_detail/95268.html) and [ModifyInstanceMinorVersion](https://help.aliyun.com/document_detail/129381.html).
 //
 // @param request - DescribeTopHotKeysRequest
 //
@@ -48467,6 +48457,10 @@ func (client *Client) ModifySqlLogConfigWithOptions(request *ModifySqlLogConfigR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EnableAudit)) {
+		query["EnableAudit"] = request.EnableAudit
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Filters)) {
 		query["Filters"] = request.Filters
 	}
