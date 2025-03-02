@@ -1585,7 +1585,12 @@ type CreateBackupPlanRequest struct {
 	//
 	// {"dataSourceId": "ds-123456789", "path": "/changelist"}
 	ChangeListPath *string `json:"ChangeListPath,omitempty" xml:"ChangeListPath,omitempty"`
-	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The ID of the client group that executes the data synchronization plan. This parameter is required only for data synchronization.
+	//
+	// example:
+	//
+	// cl-***************
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// This parameter is required when **SourceType*	- is set to **NAS**. It represents the creation time of the file system, in UNIX timestamp, in seconds.
 	//
 	// example:
@@ -1613,8 +1618,13 @@ type CreateBackupPlanRequest struct {
 	// example:
 	//
 	// 15897534xxxx4625
-	CrossAccountUserId *int64  `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
-	DataSourceId       *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	CrossAccountUserId *int64 `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
+	// The ID of the data source. This parameter is required only for data synchronization.
+	//
+	// example:
+	//
+	// ds-****************
+	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
 	// Destination data source details. (Required only for synchronization)
 	//
 	// example:
@@ -1705,7 +1715,7 @@ type CreateBackupPlanRequest struct {
 	//
 	// {"UseVSS":false}
 	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
-	// Table store instance details.
+	// The details about the Tablestore instance.
 	OtsDetail *OtsDetail `json:"OtsDetail,omitempty" xml:"OtsDetail,omitempty"`
 	// Backup paths.
 	Path []*string `json:"Path,omitempty" xml:"Path,omitempty" type:"Repeated"`
@@ -1743,17 +1753,19 @@ type CreateBackupPlanRequest struct {
 	//
 	// I|1602673264|P1D
 	Schedule *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
-	// Data source type, with the following options:
+	// The type of the data source. Valid values:
 	//
-	// - **ECS_FILE**: Backs up ECS files
+	// 	- **ECS_FILE**: Elastic Compute Service (ECS) files
 	//
-	// - **OSS**: Backs up Alibaba Cloud OSS
+	// 	- **OSS**: Object Storage Service (OSS) buckets
 	//
-	// - **NAS**: Backs up Alibaba Cloud NAS
+	// 	- **NAS**: File Storage NAS (NAS) file systems
 	//
-	// - **OTS**: Backs up Alibaba Cloud OTS
+	// 	- **OTS**: Tablestore instances
 	//
-	// - **UDM_ECS**: Backs up the entire ECS instance
+	// 	- **UDM_ECS**: ECS instances
+	//
+	// 	- **SYNC**: data synchronization
 	//
 	// This parameter is required.
 	//
@@ -2079,7 +2091,12 @@ type CreateBackupPlanShrinkRequest struct {
 	//
 	// {"dataSourceId": "ds-123456789", "path": "/changelist"}
 	ChangeListPath *string `json:"ChangeListPath,omitempty" xml:"ChangeListPath,omitempty"`
-	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The ID of the client group that executes the data synchronization plan. This parameter is required only for data synchronization.
+	//
+	// example:
+	//
+	// cl-***************
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// This parameter is required when **SourceType*	- is set to **NAS**. It represents the creation time of the file system, in UNIX timestamp, in seconds.
 	//
 	// example:
@@ -2107,8 +2124,13 @@ type CreateBackupPlanShrinkRequest struct {
 	// example:
 	//
 	// 15897534xxxx4625
-	CrossAccountUserId *int64  `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
-	DataSourceId       *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	CrossAccountUserId *int64 `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
+	// The ID of the data source. This parameter is required only for data synchronization.
+	//
+	// example:
+	//
+	// ds-****************
+	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
 	// Destination data source details. (Required only for synchronization)
 	//
 	// example:
@@ -2199,7 +2221,7 @@ type CreateBackupPlanShrinkRequest struct {
 	//
 	// {"UseVSS":false}
 	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
-	// Table store instance details.
+	// The details about the Tablestore instance.
 	OtsDetailShrink *string `json:"OtsDetail,omitempty" xml:"OtsDetail,omitempty"`
 	// Backup paths.
 	Path []*string `json:"Path,omitempty" xml:"Path,omitempty" type:"Repeated"`
@@ -2237,17 +2259,19 @@ type CreateBackupPlanShrinkRequest struct {
 	//
 	// I|1602673264|P1D
 	Schedule *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
-	// Data source type, with the following options:
+	// The type of the data source. Valid values:
 	//
-	// - **ECS_FILE**: Backs up ECS files
+	// 	- **ECS_FILE**: Elastic Compute Service (ECS) files
 	//
-	// - **OSS**: Backs up Alibaba Cloud OSS
+	// 	- **OSS**: Object Storage Service (OSS) buckets
 	//
-	// - **NAS**: Backs up Alibaba Cloud NAS
+	// 	- **NAS**: File Storage NAS (NAS) file systems
 	//
-	// - **OTS**: Backs up Alibaba Cloud OTS
+	// 	- **OTS**: Tablestore instances
 	//
-	// - **UDM_ECS**: Backs up the entire ECS instance
+	// 	- **UDM_ECS**: ECS instances
+	//
+	// 	- **SYNC**: data synchronization
 	//
 	// This parameter is required.
 	//
@@ -6140,7 +6164,7 @@ type CreateVaultRequest struct {
 	//
 	// cn-shanghai
 	VaultRegionId *string `json:"VaultRegionId,omitempty" xml:"VaultRegionId,omitempty"`
-	// The storage class of the backup vault. Valid value: **STANDARD**, which indicates standard storage.
+	// The storage type of the backup vault. Valid value: **STANDARD**, which indicates standard storage.
 	//
 	// example:
 	//
@@ -6155,8 +6179,13 @@ type CreateVaultRequest struct {
 	// example:
 	//
 	// STANDARD
-	VaultType   *string `json:"VaultType,omitempty" xml:"VaultType,omitempty"`
-	WormEnabled *bool   `json:"WormEnabled,omitempty" xml:"WormEnabled,omitempty"`
+	VaultType *string `json:"VaultType,omitempty" xml:"VaultType,omitempty"`
+	// Whether to enable the vault worm feature. Once the worm feature is enabled, the vault and all its backup data cannot be deleted before they automatically expire. After enabling the worm feature, it is not supported to disable it. The worm feature is only effective for standard and archive backup vault.
+	//
+	// example:
+	//
+	// false
+	WormEnabled *bool `json:"WormEnabled,omitempty" xml:"WormEnabled,omitempty"`
 }
 
 func (s CreateVaultRequest) String() string {
@@ -9568,8 +9597,9 @@ type DescribeBackupJobs2ResponseBodyBackupJobsBackupJob struct {
 	// example:
 	//
 	// 10000
-	Progress *int32                                                    `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	Report   *DescribeBackupJobs2ResponseBodyBackupJobsBackupJobReport `json:"Report,omitempty" xml:"Report,omitempty" type:"Struct"`
+	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// Task Report
+	Report *DescribeBackupJobs2ResponseBodyBackupJobsBackupJobReport `json:"Report,omitempty" xml:"Report,omitempty" type:"Struct"`
 	// The type of the data source. Valid values:
 	//
 	// 	- **ECS_FILE**: ECS files
@@ -9927,6 +9957,38 @@ type DescribeBackupJobs2ResponseBodyBackupJobsBackupJobDetail struct {
 	// true
 	DoCopy *bool `json:"DoCopy,omitempty" xml:"DoCopy,omitempty"`
 	// The ecs instance infos.
+	//
+	// example:
+	//
+	// {
+	//
+	//   "i-xxxxxxxx": {
+	//
+	//     "hostName": "test",
+	//
+	//     "instanceName": "test",
+	//
+	//     "instanceType": "ecs.c7.xlarge",
+	//
+	//     "osType": "linux",
+	//
+	//     "diskIds": [
+	//
+	//       "d-xxxxxxxx01",
+	//
+	//       "d-xxxxxxxx02"
+	//
+	//     ],
+	//
+	//     "osNameEn": "Rocky Linux 8.8 64 bit",
+	//
+	//     "osName": "Rocky Linux 8.8 64位",
+	//
+	//     "platform": "Rocky Linux"
+	//
+	//   }
+	//
+	// }
 	InstanceInfos map[string]interface{} `json:"InstanceInfos,omitempty" xml:"InstanceInfos,omitempty"`
 	// The ID of the backup snapshot.
 	//
@@ -10064,11 +10126,36 @@ func (s *DescribeBackupJobs2ResponseBodyBackupJobsBackupJobPaths) SetPath(v []*s
 }
 
 type DescribeBackupJobs2ResponseBodyBackupJobsBackupJobReport struct {
-	FailedFiles      *string `json:"FailedFiles,omitempty" xml:"FailedFiles,omitempty"`
+	// List of failed files
+	//
+	// example:
+	//
+	// /temp/report/158975xxxxxx4625/r-0001hfxxxxxymsspjjtl/job-0001hfxxxxxymsspjjtl_failed.zip
+	FailedFiles *string `json:"FailedFiles,omitempty" xml:"FailedFiles,omitempty"`
+	// Report generation status.
+	//
+	// example:
+	//
+	// COMPLETE
 	ReportTaskStatus *string `json:"ReportTaskStatus,omitempty" xml:"ReportTaskStatus,omitempty"`
-	SkippedFiles     *string `json:"SkippedFiles,omitempty" xml:"SkippedFiles,omitempty"`
-	SuccessFiles     *string `json:"SuccessFiles,omitempty" xml:"SuccessFiles,omitempty"`
-	TotalFiles       *string `json:"TotalFiles,omitempty" xml:"TotalFiles,omitempty"`
+	// List of skipped files
+	//
+	// example:
+	//
+	// /temp/report/158975xxxxxx4625/r-0001hfxxxxxymsspjjtl/job-0001hfxxxxxymsspjjtl_skipped.zip
+	SkippedFiles *string `json:"SkippedFiles,omitempty" xml:"SkippedFiles,omitempty"`
+	// List of successful files.
+	//
+	// example:
+	//
+	// /temp/report/158975xxxxxx4625/r-0001hfxxxxxymsspjjtl/job-0001hfxxxxxymsspjjtl_success.zip
+	SuccessFiles *string `json:"SuccessFiles,omitempty" xml:"SuccessFiles,omitempty"`
+	// List of all files. (This field is not returned for data synchronization)
+	//
+	// example:
+	//
+	// /temp/report/158975xxxxxx4625/job-0001hfxxxxxymsspjjtl/job-0001hfxxxxxymsspjjtl_total.csv
+	TotalFiles *string `json:"TotalFiles,omitempty" xml:"TotalFiles,omitempty"`
 }
 
 func (s DescribeBackupJobs2ResponseBodyBackupJobsBackupJobReport) String() string {
@@ -18723,8 +18810,14 @@ type DescribeUdmSnapshotsResponseBodySnapshots struct {
 	//
 	// 1000
 	BytesTotal *int64 `json:"BytesTotal,omitempty" xml:"BytesTotal,omitempty"`
+	// Indicates whether the disk backup point can be deleted. This parameter is valid only if the value of SourceType is UDM_ECS_DISK.
+	//
 	// if can be null:
 	// true
+	//
+	// example:
+	//
+	// false
 	CanBeDeleted *bool `json:"CanBeDeleted,omitempty" xml:"CanBeDeleted,omitempty"`
 	// The time when the backup snapshot was completed. The value is a UNIX timestamp. Unit: seconds.
 	//
@@ -19518,7 +19611,8 @@ type DescribeVaultsRequest struct {
 	// example:
 	//
 	// v-*********************
-	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+	VaultId   *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+	VaultName *string `json:"VaultName,omitempty" xml:"VaultName,omitempty"`
 	// The region ID to which the backup vault belongs.
 	//
 	// example:
@@ -19572,6 +19666,11 @@ func (s *DescribeVaultsRequest) SetTag(v []*DescribeVaultsRequestTag) *DescribeV
 
 func (s *DescribeVaultsRequest) SetVaultId(v string) *DescribeVaultsRequest {
 	s.VaultId = &v
+	return s
+}
+
+func (s *DescribeVaultsRequest) SetVaultName(v string) *DescribeVaultsRequest {
+	s.VaultName = &v
 	return s
 }
 
@@ -27190,8 +27289,13 @@ type UpdateVaultRequest struct {
 	// example:
 	//
 	// vaultname
-	VaultName   *string `json:"VaultName,omitempty" xml:"VaultName,omitempty"`
-	WormEnabled *bool   `json:"WormEnabled,omitempty" xml:"WormEnabled,omitempty"`
+	VaultName *string `json:"VaultName,omitempty" xml:"VaultName,omitempty"`
+	// Whether to enable the vault worm feature. Once the worm feature is enabled, the vault and all its backup data cannot be deleted before they automatically expire. After enabling the worm feature, it is not supported to disable it. The worm feature is only effective for standard and archive backup vault.
+	//
+	// example:
+	//
+	// true
+	WormEnabled *bool `json:"WormEnabled,omitempty" xml:"WormEnabled,omitempty"`
 }
 
 func (s UpdateVaultRequest) String() string {
@@ -33028,6 +33132,10 @@ func (client *Client) DescribeVaultsWithOptions(request *DescribeVaultsRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.VaultId)) {
 		query["VaultId"] = request.VaultId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VaultName)) {
+		query["VaultName"] = request.VaultName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VaultRegionId)) {
