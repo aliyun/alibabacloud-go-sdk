@@ -9,6 +9,512 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type DescribeNumberHLRRequest struct {
+	// example:
+	//
+	// 示例值示例值
+	AuthCode *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
+	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// 示例值示例值示例值
+	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DescribeNumberHLRRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNumberHLRRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNumberHLRRequest) SetAuthCode(v string) *DescribeNumberHLRRequest {
+	s.AuthCode = &v
+	return s
+}
+
+func (s *DescribeNumberHLRRequest) SetOwnerId(v int64) *DescribeNumberHLRRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeNumberHLRRequest) SetPhoneNumber(v string) *DescribeNumberHLRRequest {
+	s.PhoneNumber = &v
+	return s
+}
+
+func (s *DescribeNumberHLRRequest) SetResourceOwnerAccount(v string) *DescribeNumberHLRRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeNumberHLRRequest) SetResourceOwnerId(v int64) *DescribeNumberHLRRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DescribeNumberHLRResponseBody struct {
+	// example:
+	//
+	// None
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *DescribeNumberHLRResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1C3B8084-3A7D-570B-BC84-BF945A9CF65E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeNumberHLRResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNumberHLRResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNumberHLRResponseBody) SetAccessDeniedDetail(v string) *DescribeNumberHLRResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *DescribeNumberHLRResponseBody) SetCode(v string) *DescribeNumberHLRResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeNumberHLRResponseBody) SetData(v *DescribeNumberHLRResponseBodyData) *DescribeNumberHLRResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeNumberHLRResponseBody) SetMessage(v string) *DescribeNumberHLRResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeNumberHLRResponseBody) SetRequestId(v string) *DescribeNumberHLRResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeNumberHLRResponseBodyData struct {
+	// example:
+	//
+	// 示例值示例值
+	Blocked *string                                `json:"Blocked,omitempty" xml:"Blocked,omitempty"`
+	Call    *DescribeNumberHLRResponseBodyDataCall `json:"Call,omitempty" xml:"Call,omitempty" type:"Struct"`
+	// example:
+	//
+	// 示例值示例值示例值
+	Carrier *string `json:"Carrier,omitempty" xml:"Carrier,omitempty"`
+	// example:
+	//
+	// 示例值示例值
+	City *string `json:"City,omitempty" xml:"City,omitempty"`
+	// example:
+	//
+	// 示例值示例值
+	CountryIso3 *string                                `json:"CountryIso3,omitempty" xml:"CountryIso3,omitempty"`
+	Live        *DescribeNumberHLRResponseBodyDataLive `json:"Live,omitempty" xml:"Live,omitempty" type:"Struct"`
+	// example:
+	//
+	// 示例值示例值
+	PhoneType *string                               `json:"PhoneType,omitempty" xml:"PhoneType,omitempty"`
+	Sms       *DescribeNumberHLRResponseBodyDataSms `json:"Sms,omitempty" xml:"Sms,omitempty" type:"Struct"`
+}
+
+func (s DescribeNumberHLRResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNumberHLRResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNumberHLRResponseBodyData) SetBlocked(v string) *DescribeNumberHLRResponseBodyData {
+	s.Blocked = &v
+	return s
+}
+
+func (s *DescribeNumberHLRResponseBodyData) SetCall(v *DescribeNumberHLRResponseBodyDataCall) *DescribeNumberHLRResponseBodyData {
+	s.Call = v
+	return s
+}
+
+func (s *DescribeNumberHLRResponseBodyData) SetCarrier(v string) *DescribeNumberHLRResponseBodyData {
+	s.Carrier = &v
+	return s
+}
+
+func (s *DescribeNumberHLRResponseBodyData) SetCity(v string) *DescribeNumberHLRResponseBodyData {
+	s.City = &v
+	return s
+}
+
+func (s *DescribeNumberHLRResponseBodyData) SetCountryIso3(v string) *DescribeNumberHLRResponseBodyData {
+	s.CountryIso3 = &v
+	return s
+}
+
+func (s *DescribeNumberHLRResponseBodyData) SetLive(v *DescribeNumberHLRResponseBodyDataLive) *DescribeNumberHLRResponseBodyData {
+	s.Live = v
+	return s
+}
+
+func (s *DescribeNumberHLRResponseBodyData) SetPhoneType(v string) *DescribeNumberHLRResponseBodyData {
+	s.PhoneType = &v
+	return s
+}
+
+func (s *DescribeNumberHLRResponseBodyData) SetSms(v *DescribeNumberHLRResponseBodyDataSms) *DescribeNumberHLRResponseBodyData {
+	s.Sms = v
+	return s
+}
+
+type DescribeNumberHLRResponseBodyDataCall struct {
+	// call
+	//
+	// example:
+	//
+	// 示例值
+	CleansedCode *string `json:"CleansedCode,omitempty" xml:"CleansedCode,omitempty"`
+	// example:
+	//
+	// 22
+	MaxLength *int64 `json:"MaxLength,omitempty" xml:"MaxLength,omitempty"`
+	// example:
+	//
+	// 21
+	MinLength *int64 `json:"MinLength,omitempty" xml:"MinLength,omitempty"`
+}
+
+func (s DescribeNumberHLRResponseBodyDataCall) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNumberHLRResponseBodyDataCall) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNumberHLRResponseBodyDataCall) SetCleansedCode(v string) *DescribeNumberHLRResponseBodyDataCall {
+	s.CleansedCode = &v
+	return s
+}
+
+func (s *DescribeNumberHLRResponseBodyDataCall) SetMaxLength(v int64) *DescribeNumberHLRResponseBodyDataCall {
+	s.MaxLength = &v
+	return s
+}
+
+func (s *DescribeNumberHLRResponseBodyDataCall) SetMinLength(v int64) *DescribeNumberHLRResponseBodyDataCall {
+	s.MinLength = &v
+	return s
+}
+
+type DescribeNumberHLRResponseBodyDataLive struct {
+	// example:
+	//
+	// 示例值
+	DeviceStatus *string `json:"DeviceStatus,omitempty" xml:"DeviceStatus,omitempty"`
+	// example:
+	//
+	// 示例值示例值
+	Roaming *string `json:"Roaming,omitempty" xml:"Roaming,omitempty"`
+	// example:
+	//
+	// 示例值
+	RoamingCountry *string `json:"RoamingCountry,omitempty" xml:"RoamingCountry,omitempty"`
+	// example:
+	//
+	// 示例值
+	SubscriberStatus *string `json:"SubscriberStatus,omitempty" xml:"SubscriberStatus,omitempty"`
+}
+
+func (s DescribeNumberHLRResponseBodyDataLive) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNumberHLRResponseBodyDataLive) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNumberHLRResponseBodyDataLive) SetDeviceStatus(v string) *DescribeNumberHLRResponseBodyDataLive {
+	s.DeviceStatus = &v
+	return s
+}
+
+func (s *DescribeNumberHLRResponseBodyDataLive) SetRoaming(v string) *DescribeNumberHLRResponseBodyDataLive {
+	s.Roaming = &v
+	return s
+}
+
+func (s *DescribeNumberHLRResponseBodyDataLive) SetRoamingCountry(v string) *DescribeNumberHLRResponseBodyDataLive {
+	s.RoamingCountry = &v
+	return s
+}
+
+func (s *DescribeNumberHLRResponseBodyDataLive) SetSubscriberStatus(v string) *DescribeNumberHLRResponseBodyDataLive {
+	s.SubscriberStatus = &v
+	return s
+}
+
+type DescribeNumberHLRResponseBodyDataSms struct {
+	// sms
+	//
+	// example:
+	//
+	// 58
+	CleansedCode *int64 `json:"CleansedCode,omitempty" xml:"CleansedCode,omitempty"`
+	// example:
+	//
+	// 59
+	MaxLength *int64 `json:"MaxLength,omitempty" xml:"MaxLength,omitempty"`
+	// example:
+	//
+	// 2
+	MinLength *int64 `json:"MinLength,omitempty" xml:"MinLength,omitempty"`
+}
+
+func (s DescribeNumberHLRResponseBodyDataSms) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNumberHLRResponseBodyDataSms) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNumberHLRResponseBodyDataSms) SetCleansedCode(v int64) *DescribeNumberHLRResponseBodyDataSms {
+	s.CleansedCode = &v
+	return s
+}
+
+func (s *DescribeNumberHLRResponseBodyDataSms) SetMaxLength(v int64) *DescribeNumberHLRResponseBodyDataSms {
+	s.MaxLength = &v
+	return s
+}
+
+func (s *DescribeNumberHLRResponseBodyDataSms) SetMinLength(v int64) *DescribeNumberHLRResponseBodyDataSms {
+	s.MinLength = &v
+	return s
+}
+
+type DescribeNumberHLRResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeNumberHLRResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeNumberHLRResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNumberHLRResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNumberHLRResponse) SetHeaders(v map[string]*string) *DescribeNumberHLRResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeNumberHLRResponse) SetStatusCode(v int32) *DescribeNumberHLRResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeNumberHLRResponse) SetBody(v *DescribeNumberHLRResponseBody) *DescribeNumberHLRResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeNumberMccMncRequest struct {
+	// example:
+	//
+	// 示例值
+	AuthCode *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
+	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// 86123434345
+	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DescribeNumberMccMncRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNumberMccMncRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNumberMccMncRequest) SetAuthCode(v string) *DescribeNumberMccMncRequest {
+	s.AuthCode = &v
+	return s
+}
+
+func (s *DescribeNumberMccMncRequest) SetOwnerId(v int64) *DescribeNumberMccMncRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeNumberMccMncRequest) SetPhoneNumber(v string) *DescribeNumberMccMncRequest {
+	s.PhoneNumber = &v
+	return s
+}
+
+func (s *DescribeNumberMccMncRequest) SetResourceOwnerAccount(v string) *DescribeNumberMccMncRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeNumberMccMncRequest) SetResourceOwnerId(v int64) *DescribeNumberMccMncRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DescribeNumberMccMncResponseBody struct {
+	// example:
+	//
+	// -
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *DescribeNumberMccMncResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// CC3BB6D2-2FDF-4321-9DCE-B38165CE4C47
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeNumberMccMncResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNumberMccMncResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNumberMccMncResponseBody) SetAccessDeniedDetail(v string) *DescribeNumberMccMncResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *DescribeNumberMccMncResponseBody) SetCode(v string) *DescribeNumberMccMncResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeNumberMccMncResponseBody) SetData(v *DescribeNumberMccMncResponseBodyData) *DescribeNumberMccMncResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeNumberMccMncResponseBody) SetMessage(v string) *DescribeNumberMccMncResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeNumberMccMncResponseBody) SetRequestId(v string) *DescribeNumberMccMncResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeNumberMccMncResponseBodyData struct {
+	// example:
+	//
+	// 示例值示例值
+	CountryIso3 *string `json:"CountryIso3,omitempty" xml:"CountryIso3,omitempty"`
+	// example:
+	//
+	// 示例值示例值
+	Mcc *string `json:"Mcc,omitempty" xml:"Mcc,omitempty"`
+	// example:
+	//
+	// 示例值示例值
+	Mnc *string `json:"Mnc,omitempty" xml:"Mnc,omitempty"`
+	// example:
+	//
+	// true
+	Ported *bool `json:"Ported,omitempty" xml:"Ported,omitempty"`
+}
+
+func (s DescribeNumberMccMncResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNumberMccMncResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNumberMccMncResponseBodyData) SetCountryIso3(v string) *DescribeNumberMccMncResponseBodyData {
+	s.CountryIso3 = &v
+	return s
+}
+
+func (s *DescribeNumberMccMncResponseBodyData) SetMcc(v string) *DescribeNumberMccMncResponseBodyData {
+	s.Mcc = &v
+	return s
+}
+
+func (s *DescribeNumberMccMncResponseBodyData) SetMnc(v string) *DescribeNumberMccMncResponseBodyData {
+	s.Mnc = &v
+	return s
+}
+
+func (s *DescribeNumberMccMncResponseBodyData) SetPorted(v bool) *DescribeNumberMccMncResponseBodyData {
+	s.Ported = &v
+	return s
+}
+
+type DescribeNumberMccMncResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeNumberMccMncResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeNumberMccMncResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNumberMccMncResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNumberMccMncResponse) SetHeaders(v map[string]*string) *DescribeNumberMccMncResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeNumberMccMncResponse) SetStatusCode(v int32) *DescribeNumberMccMncResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeNumberMccMncResponse) SetBody(v *DescribeNumberMccMncResponseBody) *DescribeNumberMccMncResponse {
+	s.Body = v
+	return s
+}
+
 type GetPhoneNumberIdentificationResultRequest struct {
 	// The authorization code.
 	//
@@ -462,6 +968,180 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// HLR服务
+//
+// @param request - DescribeNumberHLRRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeNumberHLRResponse
+func (client *Client) DescribeNumberHLRWithOptions(request *DescribeNumberHLRRequest, runtime *util.RuntimeOptions) (_result *DescribeNumberHLRResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthCode)) {
+		query["AuthCode"] = request.AuthCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNumber)) {
+		query["PhoneNumber"] = request.PhoneNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeNumberHLR"),
+		Version:     tea.String("2023-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeNumberHLRResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeNumberHLRResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// HLR服务
+//
+// @param request - DescribeNumberHLRRequest
+//
+// @return DescribeNumberHLRResponse
+func (client *Client) DescribeNumberHLR(request *DescribeNumberHLRRequest) (_result *DescribeNumberHLRResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeNumberHLRResponse{}
+	_body, _err := client.DescribeNumberHLRWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 号码百科国际站号码归属服务
+//
+// @param request - DescribeNumberMccMncRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeNumberMccMncResponse
+func (client *Client) DescribeNumberMccMncWithOptions(request *DescribeNumberMccMncRequest, runtime *util.RuntimeOptions) (_result *DescribeNumberMccMncResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthCode)) {
+		query["AuthCode"] = request.AuthCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNumber)) {
+		query["PhoneNumber"] = request.PhoneNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeNumberMccMnc"),
+		Version:     tea.String("2023-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeNumberMccMncResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeNumberMccMncResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 号码百科国际站号码归属服务
+//
+// @param request - DescribeNumberMccMncRequest
+//
+// @return DescribeNumberMccMncResponse
+func (client *Client) DescribeNumberMccMnc(request *DescribeNumberMccMncRequest) (_result *DescribeNumberMccMncResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeNumberMccMncResponse{}
+	_body, _err := client.DescribeNumberMccMncWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
