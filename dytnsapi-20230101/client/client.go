@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -14,17 +11,47 @@ import (
 
 type GetPhoneNumberIdentificationResultRequest struct {
 	// The authorization code.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// K***9i7CIe
 	AuthCode *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
 	// The external ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 149b03d2-a749-4e6e-8f5b-34******5815
 	OutId   *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The phone number of the subscriber. The phone number to be verified must be in the Mobile Station International Subscriber Directory Number (MSISDN) format.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 628211****113
 	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The session ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 8636b75e2fcb40c53ffecc2b5947115c.149b03d2a7494e6e8f5b34c915245815.707c7f0d93f4409db0761aa5da94ce01.1686******041
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 	// The session payload.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// uQne0vsuNywXVvI4VP5taHsgDNsd3BwcbmrhjXi58WbxBGFW+e8ufMEi9j89YonphV6NZ1PIeKvboHtU1nsSjZMTcoFPfkjqaORIHdSlPb6vmIzqOnJMsP1KPQ8K1JLXSaAKsB2lQ5A9HCkX2HzDEwje14HYQsnPd/Ka2YWgXuL0N8GE9oYi25d4DdlU0XR52YjSj8GMLSgbW7yNxEPvUCOQG83FZfQqmIWG2+0C/fQ3gdG9WI7AeeHZo4IRKGtQnpjKGtZZl8VoLPNIswDqZeeyjCyZlKUXKrAt4Co9c4I4q8G1jZm53COQJ+DuTiWH7w+tois3WJwFV/HmdlAKt8SqpiVrEv47VQ9V+8FYsdKz3A3CRyBVgNj6wYKKbwaI9BdQoOkbYzzA8CfAKO5w1oYVD2nOcYS/AffbPbE31PJj7SdVvKghwPL56OVdjS9Hd0iW0SMBWD0F1iRNCUNHL3ffHcFjJLdhTrMt8VHSRn0nOlvO1ZaWqMQ0yE0q*************************kXTpoQLo0+0h+CEcf90hTg8XdMhj9B0A3SOINceLlmoZb3czvYl00+CC0075DjOX41YtnuAUfaNYPgLIZkjYyq+JopBQFAkxPUbJHC0oCzB9dQahUthWY38OPBs=
 	SessionPayload *string `json:"SessionPayload,omitempty" xml:"SessionPayload,omitempty"`
 }
 
@@ -79,16 +106,31 @@ func (s *GetPhoneNumberIdentificationResultRequest) SetSessionPayload(v string) 
 type GetPhoneNumberIdentificationResultResponseBody struct {
 	// The return code. Valid values:
 	//
-	// *   OK: The request is successful.
-	// *   NoIdentificationResult: No verification result is available or the verification failed.
-	// *   SessionNotValid: The session is invalid or expired.
-	// *   MobileNumberIllegal: The format of the phone number is invalid.
+	// 	- OK: The request is successful.
+	//
+	// 	- NoIdentificationResult: No verification result is available or the verification failed.
+	//
+	// 	- SessionNotValid: The session is invalid or expired.
+	//
+	// 	- MobileNumberIllegal: The format of the phone number is invalid.
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *GetPhoneNumberIdentificationResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The description of the return code.
+	//
+	// example:
+	//
+	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 68A40250-50CD-034C-B728-0BD******177
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -122,6 +164,10 @@ func (s *GetPhoneNumberIdentificationResultResponseBody) SetRequestId(v string) 
 
 type GetPhoneNumberIdentificationResultResponseBodyData struct {
 	// Indicates whether the phone number passed the verification.
+	//
+	// example:
+	//
+	// true
 	IsIdentified *string `json:"IsIdentified,omitempty" xml:"IsIdentified,omitempty"`
 }
 
@@ -169,15 +215,41 @@ func (s *GetPhoneNumberIdentificationResultResponse) SetBody(v *GetPhoneNumberId
 
 type GetPhoneNumberIdentificationUrlRequest struct {
 	// The authorization code.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// K***9i7CIe
 	AuthCode *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
-	// The IP address of the subscriber\"s phone.
+	// The IP address of the subscriber\\"s phone.
+	//
+	// example:
+	//
+	// 114.124.***.13
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	// The external ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 149b03d2-a749-4e6e-8f5b-34******5815
 	OutId   *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The phone number of the subscriber. The phone number is in the Mobile Station International Subscriber Directory Number (MSISDN) format.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 628211****113
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	// Specifies whether to remember the phone number.
+	//
+	// example:
+	//
+	// true
 	RememberPhoneNumber  *bool   `json:"RememberPhoneNumber,omitempty" xml:"RememberPhoneNumber,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -234,15 +306,29 @@ func (s *GetPhoneNumberIdentificationUrlRequest) SetResourceOwnerId(v int64) *Ge
 type GetPhoneNumberIdentificationUrlResponseBody struct {
 	// The return code. Valid values:
 	//
-	// *   **OK**: The request is successful.
-	// *   **IdentificationNotAvailable**: The verification system does not support the phone number that corresponds to the IP address.
-	// *   **MobileNumberIllegal**: The format of the phone number is invalid.
+	// 	- **OK**: The request is successful.
+	//
+	// 	- **IdentificationNotAvailable**: The verification system does not support the phone number that corresponds to the IP address.
+	//
+	// 	- **MobileNumberIllegal**: The format of the phone number is invalid.
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *GetPhoneNumberIdentificationUrlResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The description of the return code.
+	//
+	// example:
+	//
+	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 68A40250-50CD-034C-B728-0BD******177
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -276,8 +362,16 @@ func (s *GetPhoneNumberIdentificationUrlResponseBody) SetRequestId(v string) *Ge
 
 type GetPhoneNumberIdentificationUrlResponseBodyData struct {
 	// The verification URL.
+	//
+	// example:
+	//
+	// https://global-ip-auth.dycpaas.com/global/biz/ip_auth/start?ipa_s_c_c=IPF0000000000000******&ipa_s_i=8636b75e2fcb40c53ffecc2b59******
 	IdentificationUrl *string `json:"IdentificationUrl,omitempty" xml:"IdentificationUrl,omitempty"`
 	// The session ID.
+	//
+	// example:
+	//
+	// 8636b75e2fcb40c53ffecc2b5947115c.149b03d2a7494e6e8f5b34c915245815.707c7f0d93f4409db0761aa5da94ce01.1686******041
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 }
 
@@ -375,6 +469,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the verification result of your phone number.
+//
+// @param request - GetPhoneNumberIdentificationResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPhoneNumberIdentificationResultResponse
 func (client *Client) GetPhoneNumberIdentificationResultWithOptions(request *GetPhoneNumberIdentificationResultRequest, runtime *util.RuntimeOptions) (_result *GetPhoneNumberIdentificationResultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -427,15 +530,33 @@ func (client *Client) GetPhoneNumberIdentificationResultWithOptions(request *Get
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetPhoneNumberIdentificationResultResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetPhoneNumberIdentificationResultResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetPhoneNumberIdentificationResultResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Obtains the verification result of your phone number.
+//
+// @param request - GetPhoneNumberIdentificationResultRequest
+//
+// @return GetPhoneNumberIdentificationResultResponse
 func (client *Client) GetPhoneNumberIdentificationResult(request *GetPhoneNumberIdentificationResultRequest) (_result *GetPhoneNumberIdentificationResultResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetPhoneNumberIdentificationResultResponse{}
@@ -447,6 +568,15 @@ func (client *Client) GetPhoneNumberIdentificationResult(request *GetPhoneNumber
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the verification URL of your phone number.
+//
+// @param request - GetPhoneNumberIdentificationUrlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPhoneNumberIdentificationUrlResponse
 func (client *Client) GetPhoneNumberIdentificationUrlWithOptions(request *GetPhoneNumberIdentificationUrlRequest, runtime *util.RuntimeOptions) (_result *GetPhoneNumberIdentificationUrlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -499,15 +629,33 @@ func (client *Client) GetPhoneNumberIdentificationUrlWithOptions(request *GetPho
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetPhoneNumberIdentificationUrlResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetPhoneNumberIdentificationUrlResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetPhoneNumberIdentificationUrlResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Obtains the verification URL of your phone number.
+//
+// @param request - GetPhoneNumberIdentificationUrlRequest
+//
+// @return GetPhoneNumberIdentificationUrlResponse
 func (client *Client) GetPhoneNumberIdentificationUrl(request *GetPhoneNumberIdentificationUrlRequest) (_result *GetPhoneNumberIdentificationUrlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetPhoneNumberIdentificationUrlResponse{}
