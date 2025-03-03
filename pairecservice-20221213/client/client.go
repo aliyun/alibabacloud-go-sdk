@@ -198,7 +198,8 @@ type BackflowFeatureConsistencyCheckJobDataRequest struct {
 	// example:
 	//
 	// [\\"{\\\\\\"dbmtl_probs_is_valid_play\\\\\\":0.00032182207107543945,\\\\\\"dbmtl_y_play_time\\\\\\":0.0043269748210906982}\\"]
-	Scores *string `json:"Scores,omitempty" xml:"Scores,omitempty"`
+	Scores      *string `json:"Scores,omitempty" xml:"Scores,omitempty"`
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -257,6 +258,11 @@ func (s *BackflowFeatureConsistencyCheckJobDataRequest) SetSceneName(v string) *
 
 func (s *BackflowFeatureConsistencyCheckJobDataRequest) SetScores(v string) *BackflowFeatureConsistencyCheckJobDataRequest {
 	s.Scores = &v
+	return s
+}
+
+func (s *BackflowFeatureConsistencyCheckJobDataRequest) SetServiceName(v string) *BackflowFeatureConsistencyCheckJobDataRequest {
+	s.ServiceName = &v
 	return s
 }
 
@@ -20183,6 +20189,10 @@ func (client *Client) BackflowFeatureConsistencyCheckJobDataWithOptions(request 
 
 	if !tea.BoolValue(util.IsUnset(request.Scores)) {
 		body["Scores"] = request.Scores
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceName)) {
+		body["ServiceName"] = request.ServiceName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UserFeatures)) {
