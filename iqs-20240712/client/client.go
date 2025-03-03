@@ -756,10 +756,6 @@ type DrivingDirectionResponseBody struct {
 	//
 	// ECB2144C-E277-5434-80E6-12D26678D364
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// True
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s DrivingDirectionResponseBody) String() string {
@@ -777,11 +773,6 @@ func (s *DrivingDirectionResponseBody) SetData(v []*DrivingDirectionResponseBody
 
 func (s *DrivingDirectionResponseBody) SetRequestId(v string) *DrivingDirectionResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *DrivingDirectionResponseBody) SetSuccess(v bool) *DrivingDirectionResponseBody {
-	s.Success = &v
 	return s
 }
 
