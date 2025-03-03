@@ -1,0 +1,3803 @@
+// This file is auto-generated, don't edit it. Thanks.
+package client
+
+import (
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
+	openapiutil "github.com/alibabacloud-go/openapi-util/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
+	"github.com/alibabacloud-go/tea/tea"
+)
+
+type CancelFundAccountLowAvailableAmountAlarmRequest struct {
+	// example:
+	//
+	// 123321123
+	FundAccountId *int64 `json:"FundAccountId,omitempty" xml:"FundAccountId,omitempty"`
+}
+
+func (s CancelFundAccountLowAvailableAmountAlarmRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelFundAccountLowAvailableAmountAlarmRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CancelFundAccountLowAvailableAmountAlarmRequest) SetFundAccountId(v int64) *CancelFundAccountLowAvailableAmountAlarmRequest {
+	s.FundAccountId = &v
+	return s
+}
+
+type CancelFundAccountLowAvailableAmountAlarmResponseBody struct {
+	// example:
+	//
+	// true
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// {}
+	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// example:
+	//
+	// DFC1F7F9-3BA9-BA4D-2F2E653
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CancelFundAccountLowAvailableAmountAlarmResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelFundAccountLowAvailableAmountAlarmResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CancelFundAccountLowAvailableAmountAlarmResponseBody) SetData(v bool) *CancelFundAccountLowAvailableAmountAlarmResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CancelFundAccountLowAvailableAmountAlarmResponseBody) SetMetadata(v interface{}) *CancelFundAccountLowAvailableAmountAlarmResponseBody {
+	s.Metadata = v
+	return s
+}
+
+func (s *CancelFundAccountLowAvailableAmountAlarmResponseBody) SetRequestId(v string) *CancelFundAccountLowAvailableAmountAlarmResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CancelFundAccountLowAvailableAmountAlarmResponse struct {
+	Headers    map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CancelFundAccountLowAvailableAmountAlarmResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CancelFundAccountLowAvailableAmountAlarmResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelFundAccountLowAvailableAmountAlarmResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CancelFundAccountLowAvailableAmountAlarmResponse) SetHeaders(v map[string]*string) *CancelFundAccountLowAvailableAmountAlarmResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CancelFundAccountLowAvailableAmountAlarmResponse) SetStatusCode(v int32) *CancelFundAccountLowAvailableAmountAlarmResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CancelFundAccountLowAvailableAmountAlarmResponse) SetBody(v *CancelFundAccountLowAvailableAmountAlarmResponseBody) *CancelFundAccountLowAvailableAmountAlarmResponse {
+	s.Body = v
+	return s
+}
+
+type CreateFundAccountTransferRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 100
+	Amount *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CNY
+	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cash
+	FinanceType *string `json:"FinanceType,omitempty" xml:"FinanceType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123212323
+	FromFundAccountId *int64 `json:"FromFundAccountId,omitempty" xml:"FromFundAccountId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 转账的备注
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 11112231
+	ToFundAccountId *int64 `json:"ToFundAccountId,omitempty" xml:"ToFundAccountId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// grant
+	TransferType *string `json:"TransferType,omitempty" xml:"TransferType,omitempty"`
+}
+
+func (s CreateFundAccountTransferRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFundAccountTransferRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFundAccountTransferRequest) SetAmount(v string) *CreateFundAccountTransferRequest {
+	s.Amount = &v
+	return s
+}
+
+func (s *CreateFundAccountTransferRequest) SetCurrency(v string) *CreateFundAccountTransferRequest {
+	s.Currency = &v
+	return s
+}
+
+func (s *CreateFundAccountTransferRequest) SetFinanceType(v string) *CreateFundAccountTransferRequest {
+	s.FinanceType = &v
+	return s
+}
+
+func (s *CreateFundAccountTransferRequest) SetFromFundAccountId(v int64) *CreateFundAccountTransferRequest {
+	s.FromFundAccountId = &v
+	return s
+}
+
+func (s *CreateFundAccountTransferRequest) SetRemark(v string) *CreateFundAccountTransferRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *CreateFundAccountTransferRequest) SetToFundAccountId(v int64) *CreateFundAccountTransferRequest {
+	s.ToFundAccountId = &v
+	return s
+}
+
+func (s *CreateFundAccountTransferRequest) SetTransferType(v string) *CreateFundAccountTransferRequest {
+	s.TransferType = &v
+	return s
+}
+
+type CreateFundAccountTransferResponseBody struct {
+	// example:
+	//
+	// {}
+	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// example:
+	//
+	// 1BB79-5B23-3EA-BB4F-352F93E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateFundAccountTransferResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFundAccountTransferResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFundAccountTransferResponseBody) SetMetadata(v interface{}) *CreateFundAccountTransferResponseBody {
+	s.Metadata = v
+	return s
+}
+
+func (s *CreateFundAccountTransferResponseBody) SetRequestId(v string) *CreateFundAccountTransferResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateFundAccountTransferResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateFundAccountTransferResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateFundAccountTransferResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFundAccountTransferResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFundAccountTransferResponse) SetHeaders(v map[string]*string) *CreateFundAccountTransferResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateFundAccountTransferResponse) SetStatusCode(v int32) *CreateFundAccountTransferResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateFundAccountTransferResponse) SetBody(v *CreateFundAccountTransferResponseBody) *CreateFundAccountTransferResponse {
+	s.Body = v
+	return s
+}
+
+type GetFundAccountAvailableAmountRequest struct {
+	// example:
+	//
+	// 12332112
+	FundAccountId *string `json:"FundAccountId,omitempty" xml:"FundAccountId,omitempty"`
+}
+
+func (s GetFundAccountAvailableAmountRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFundAccountAvailableAmountRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetFundAccountAvailableAmountRequest) SetFundAccountId(v string) *GetFundAccountAvailableAmountRequest {
+	s.FundAccountId = &v
+	return s
+}
+
+type GetFundAccountAvailableAmountResponseBody struct {
+	// example:
+	//
+	// 100
+	AvailableAmount *string `json:"AvailableAmount,omitempty" xml:"AvailableAmount,omitempty"`
+	// example:
+	//
+	// 50
+	AvailableCreditAmount *string `json:"AvailableCreditAmount,omitempty" xml:"AvailableCreditAmount,omitempty"`
+	// example:
+	//
+	// 0
+	BankAcceptanceAmount *string `json:"BankAcceptanceAmount,omitempty" xml:"BankAcceptanceAmount,omitempty"`
+	// example:
+	//
+	// 50
+	CashAmount *string `json:"CashAmount,omitempty" xml:"CashAmount,omitempty"`
+	// example:
+	//
+	// 100
+	CreditAmount *string `json:"CreditAmount,omitempty" xml:"CreditAmount,omitempty"`
+	// example:
+	//
+	// 0
+	CreditRefundAmount *string `json:"CreditRefundAmount,omitempty" xml:"CreditRefundAmount,omitempty"`
+	CreditUser         *bool   `json:"CreditUser,omitempty" xml:"CreditUser,omitempty"`
+	// example:
+	//
+	// CNY
+	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// example:
+	//
+	// 20
+	CurrentMonthUnclearedAmount *string                                                      `json:"CurrentMonthUnclearedAmount,omitempty" xml:"CurrentMonthUnclearedAmount,omitempty"`
+	ExtendLedgerList            []*GetFundAccountAvailableAmountResponseBodyExtendLedgerList `json:"ExtendLedgerList,omitempty" xml:"ExtendLedgerList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 12332112
+	FundAccountId *string `json:"FundAccountId,omitempty" xml:"FundAccountId,omitempty"`
+	// example:
+	//
+	// 1344312434
+	FundAccountOwnerAccountId *string `json:"FundAccountOwnerAccountId,omitempty" xml:"FundAccountOwnerAccountId,omitempty"`
+	// example:
+	//
+	// valid
+	FundAccountStatus *string `json:"FundAccountStatus,omitempty" xml:"FundAccountStatus,omitempty"`
+	// example:
+	//
+	// REDIRECT_USER
+	FundAccountType *string `json:"FundAccountType,omitempty" xml:"FundAccountType,omitempty"`
+	// example:
+	//
+	// 30
+	HistoryMonthUnclearedAmount *string `json:"HistoryMonthUnclearedAmount,omitempty" xml:"HistoryMonthUnclearedAmount,omitempty"`
+	// example:
+	//
+	// {}
+	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// example:
+	//
+	// 0
+	NegativeBillAmount     *string                                                            `json:"NegativeBillAmount,omitempty" xml:"NegativeBillAmount,omitempty"`
+	OriginalCashAmountList []*GetFundAccountAvailableAmountResponseBodyOriginalCashAmountList `json:"OriginalCashAmountList,omitempty" xml:"OriginalCashAmountList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 20
+	QuotaAmount *string `json:"QuotaAmount,omitempty" xml:"QuotaAmount,omitempty"`
+	// example:
+	//
+	// 10
+	QuotaConsumedAmount *string `json:"QuotaConsumedAmount,omitempty" xml:"QuotaConsumedAmount,omitempty"`
+	// example:
+	//
+	// F96A2D13-7509-5DF9-A60E-E7E3A3CB68E8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 50
+	UnclearedAmount *string `json:"UnclearedAmount,omitempty" xml:"UnclearedAmount,omitempty"`
+}
+
+func (s GetFundAccountAvailableAmountResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFundAccountAvailableAmountResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetFundAccountAvailableAmountResponseBody) SetAvailableAmount(v string) *GetFundAccountAvailableAmountResponseBody {
+	s.AvailableAmount = &v
+	return s
+}
+
+func (s *GetFundAccountAvailableAmountResponseBody) SetAvailableCreditAmount(v string) *GetFundAccountAvailableAmountResponseBody {
+	s.AvailableCreditAmount = &v
+	return s
+}
+
+func (s *GetFundAccountAvailableAmountResponseBody) SetBankAcceptanceAmount(v string) *GetFundAccountAvailableAmountResponseBody {
+	s.BankAcceptanceAmount = &v
+	return s
+}
+
+func (s *GetFundAccountAvailableAmountResponseBody) SetCashAmount(v string) *GetFundAccountAvailableAmountResponseBody {
+	s.CashAmount = &v
+	return s
+}
+
+func (s *GetFundAccountAvailableAmountResponseBody) SetCreditAmount(v string) *GetFundAccountAvailableAmountResponseBody {
+	s.CreditAmount = &v
+	return s
+}
+
+func (s *GetFundAccountAvailableAmountResponseBody) SetCreditRefundAmount(v string) *GetFundAccountAvailableAmountResponseBody {
+	s.CreditRefundAmount = &v
+	return s
+}
+
+func (s *GetFundAccountAvailableAmountResponseBody) SetCreditUser(v bool) *GetFundAccountAvailableAmountResponseBody {
+	s.CreditUser = &v
+	return s
+}
+
+func (s *GetFundAccountAvailableAmountResponseBody) SetCurrency(v string) *GetFundAccountAvailableAmountResponseBody {
+	s.Currency = &v
+	return s
+}
+
+func (s *GetFundAccountAvailableAmountResponseBody) SetCurrentMonthUnclearedAmount(v string) *GetFundAccountAvailableAmountResponseBody {
+	s.CurrentMonthUnclearedAmount = &v
+	return s
+}
+
+func (s *GetFundAccountAvailableAmountResponseBody) SetExtendLedgerList(v []*GetFundAccountAvailableAmountResponseBodyExtendLedgerList) *GetFundAccountAvailableAmountResponseBody {
+	s.ExtendLedgerList = v
+	return s
+}
+
+func (s *GetFundAccountAvailableAmountResponseBody) SetFundAccountId(v string) *GetFundAccountAvailableAmountResponseBody {
+	s.FundAccountId = &v
+	return s
+}
+
+func (s *GetFundAccountAvailableAmountResponseBody) SetFundAccountOwnerAccountId(v string) *GetFundAccountAvailableAmountResponseBody {
+	s.FundAccountOwnerAccountId = &v
+	return s
+}
+
+func (s *GetFundAccountAvailableAmountResponseBody) SetFundAccountStatus(v string) *GetFundAccountAvailableAmountResponseBody {
+	s.FundAccountStatus = &v
+	return s
+}
+
+func (s *GetFundAccountAvailableAmountResponseBody) SetFundAccountType(v string) *GetFundAccountAvailableAmountResponseBody {
+	s.FundAccountType = &v
+	return s
+}
+
+func (s *GetFundAccountAvailableAmountResponseBody) SetHistoryMonthUnclearedAmount(v string) *GetFundAccountAvailableAmountResponseBody {
+	s.HistoryMonthUnclearedAmount = &v
+	return s
+}
+
+func (s *GetFundAccountAvailableAmountResponseBody) SetMetadata(v interface{}) *GetFundAccountAvailableAmountResponseBody {
+	s.Metadata = v
+	return s
+}
+
+func (s *GetFundAccountAvailableAmountResponseBody) SetNegativeBillAmount(v string) *GetFundAccountAvailableAmountResponseBody {
+	s.NegativeBillAmount = &v
+	return s
+}
+
+func (s *GetFundAccountAvailableAmountResponseBody) SetOriginalCashAmountList(v []*GetFundAccountAvailableAmountResponseBodyOriginalCashAmountList) *GetFundAccountAvailableAmountResponseBody {
+	s.OriginalCashAmountList = v
+	return s
+}
+
+func (s *GetFundAccountAvailableAmountResponseBody) SetQuotaAmount(v string) *GetFundAccountAvailableAmountResponseBody {
+	s.QuotaAmount = &v
+	return s
+}
+
+func (s *GetFundAccountAvailableAmountResponseBody) SetQuotaConsumedAmount(v string) *GetFundAccountAvailableAmountResponseBody {
+	s.QuotaConsumedAmount = &v
+	return s
+}
+
+func (s *GetFundAccountAvailableAmountResponseBody) SetRequestId(v string) *GetFundAccountAvailableAmountResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetFundAccountAvailableAmountResponseBody) SetUnclearedAmount(v string) *GetFundAccountAvailableAmountResponseBody {
+	s.UnclearedAmount = &v
+	return s
+}
+
+type GetFundAccountAvailableAmountResponseBodyExtendLedgerList struct {
+	// example:
+	//
+	// CNY
+	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// example:
+	//
+	// 应付对冲账本
+	LedgerName *string `json:"LedgerName,omitempty" xml:"LedgerName,omitempty"`
+	// example:
+	//
+	// 50
+	OriginalAmount *string `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
+}
+
+func (s GetFundAccountAvailableAmountResponseBodyExtendLedgerList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFundAccountAvailableAmountResponseBodyExtendLedgerList) GoString() string {
+	return s.String()
+}
+
+func (s *GetFundAccountAvailableAmountResponseBodyExtendLedgerList) SetCurrency(v string) *GetFundAccountAvailableAmountResponseBodyExtendLedgerList {
+	s.Currency = &v
+	return s
+}
+
+func (s *GetFundAccountAvailableAmountResponseBodyExtendLedgerList) SetLedgerName(v string) *GetFundAccountAvailableAmountResponseBodyExtendLedgerList {
+	s.LedgerName = &v
+	return s
+}
+
+func (s *GetFundAccountAvailableAmountResponseBodyExtendLedgerList) SetOriginalAmount(v string) *GetFundAccountAvailableAmountResponseBodyExtendLedgerList {
+	s.OriginalAmount = &v
+	return s
+}
+
+type GetFundAccountAvailableAmountResponseBodyOriginalCashAmountList struct {
+	// example:
+	//
+	// 10
+	Amount *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// example:
+	//
+	// USD
+	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+}
+
+func (s GetFundAccountAvailableAmountResponseBodyOriginalCashAmountList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFundAccountAvailableAmountResponseBodyOriginalCashAmountList) GoString() string {
+	return s.String()
+}
+
+func (s *GetFundAccountAvailableAmountResponseBodyOriginalCashAmountList) SetAmount(v string) *GetFundAccountAvailableAmountResponseBodyOriginalCashAmountList {
+	s.Amount = &v
+	return s
+}
+
+func (s *GetFundAccountAvailableAmountResponseBodyOriginalCashAmountList) SetCurrency(v string) *GetFundAccountAvailableAmountResponseBodyOriginalCashAmountList {
+	s.Currency = &v
+	return s
+}
+
+type GetFundAccountAvailableAmountResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetFundAccountAvailableAmountResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetFundAccountAvailableAmountResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFundAccountAvailableAmountResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetFundAccountAvailableAmountResponse) SetHeaders(v map[string]*string) *GetFundAccountAvailableAmountResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetFundAccountAvailableAmountResponse) SetStatusCode(v int32) *GetFundAccountAvailableAmountResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetFundAccountAvailableAmountResponse) SetBody(v *GetFundAccountAvailableAmountResponseBody) *GetFundAccountAvailableAmountResponse {
+	s.Body = v
+	return s
+}
+
+type GetFundAccountCanAllocateCreditAmountRequest struct {
+	// example:
+	//
+	// 1233231
+	FundAccountId *int64 `json:"FundAccountId,omitempty" xml:"FundAccountId,omitempty"`
+}
+
+func (s GetFundAccountCanAllocateCreditAmountRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFundAccountCanAllocateCreditAmountRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetFundAccountCanAllocateCreditAmountRequest) SetFundAccountId(v int64) *GetFundAccountCanAllocateCreditAmountRequest {
+	s.FundAccountId = &v
+	return s
+}
+
+type GetFundAccountCanAllocateCreditAmountResponseBody struct {
+	// example:
+	//
+	// 2032123221
+	Ecid *string `json:"Ecid,omitempty" xml:"Ecid,omitempty"`
+	// example:
+	//
+	// 300
+	EcidAllocatedCreditAmount *string `json:"EcidAllocatedCreditAmount,omitempty" xml:"EcidAllocatedCreditAmount,omitempty"`
+	// example:
+	//
+	// 1000
+	EcidCreditAmount *string `json:"EcidCreditAmount,omitempty" xml:"EcidCreditAmount,omitempty"`
+	// example:
+	//
+	// 202321232
+	FundAccountEcid *string `json:"FundAccountEcid,omitempty" xml:"FundAccountEcid,omitempty"`
+	// example:
+	//
+	// 12332112
+	FundAccountId *int64 `json:"FundAccountId,omitempty" xml:"FundAccountId,omitempty"`
+	// example:
+	//
+	// 云某的名称
+	FundAccountName *string `json:"FundAccountName,omitempty" xml:"FundAccountName,omitempty"`
+	// example:
+	//
+	// 123433121
+	FundAccountOwnerAccountId *int64 `json:"FundAccountOwnerAccountId,omitempty" xml:"FundAccountOwnerAccountId,omitempty"`
+	// example:
+	//
+	// 1500
+	MaxCanAllocateCreditAmount *string `json:"MaxCanAllocateCreditAmount,omitempty" xml:"MaxCanAllocateCreditAmount,omitempty"`
+	// example:
+	//
+	// {}
+	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// example:
+	//
+	// 200
+	MinCanAllocateCreditAmount *string `json:"MinCanAllocateCreditAmount,omitempty" xml:"MinCanAllocateCreditAmount,omitempty"`
+	// example:
+	//
+	// 2684210001
+	Nbid *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+	// example:
+	//
+	// CC706AAC-75A6-55B5-9AB7-7D171C6C7655
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 26842
+	Site *string `json:"Site,omitempty" xml:"Site,omitempty"`
+}
+
+func (s GetFundAccountCanAllocateCreditAmountResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFundAccountCanAllocateCreditAmountResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetFundAccountCanAllocateCreditAmountResponseBody) SetEcid(v string) *GetFundAccountCanAllocateCreditAmountResponseBody {
+	s.Ecid = &v
+	return s
+}
+
+func (s *GetFundAccountCanAllocateCreditAmountResponseBody) SetEcidAllocatedCreditAmount(v string) *GetFundAccountCanAllocateCreditAmountResponseBody {
+	s.EcidAllocatedCreditAmount = &v
+	return s
+}
+
+func (s *GetFundAccountCanAllocateCreditAmountResponseBody) SetEcidCreditAmount(v string) *GetFundAccountCanAllocateCreditAmountResponseBody {
+	s.EcidCreditAmount = &v
+	return s
+}
+
+func (s *GetFundAccountCanAllocateCreditAmountResponseBody) SetFundAccountEcid(v string) *GetFundAccountCanAllocateCreditAmountResponseBody {
+	s.FundAccountEcid = &v
+	return s
+}
+
+func (s *GetFundAccountCanAllocateCreditAmountResponseBody) SetFundAccountId(v int64) *GetFundAccountCanAllocateCreditAmountResponseBody {
+	s.FundAccountId = &v
+	return s
+}
+
+func (s *GetFundAccountCanAllocateCreditAmountResponseBody) SetFundAccountName(v string) *GetFundAccountCanAllocateCreditAmountResponseBody {
+	s.FundAccountName = &v
+	return s
+}
+
+func (s *GetFundAccountCanAllocateCreditAmountResponseBody) SetFundAccountOwnerAccountId(v int64) *GetFundAccountCanAllocateCreditAmountResponseBody {
+	s.FundAccountOwnerAccountId = &v
+	return s
+}
+
+func (s *GetFundAccountCanAllocateCreditAmountResponseBody) SetMaxCanAllocateCreditAmount(v string) *GetFundAccountCanAllocateCreditAmountResponseBody {
+	s.MaxCanAllocateCreditAmount = &v
+	return s
+}
+
+func (s *GetFundAccountCanAllocateCreditAmountResponseBody) SetMetadata(v interface{}) *GetFundAccountCanAllocateCreditAmountResponseBody {
+	s.Metadata = v
+	return s
+}
+
+func (s *GetFundAccountCanAllocateCreditAmountResponseBody) SetMinCanAllocateCreditAmount(v string) *GetFundAccountCanAllocateCreditAmountResponseBody {
+	s.MinCanAllocateCreditAmount = &v
+	return s
+}
+
+func (s *GetFundAccountCanAllocateCreditAmountResponseBody) SetNbid(v string) *GetFundAccountCanAllocateCreditAmountResponseBody {
+	s.Nbid = &v
+	return s
+}
+
+func (s *GetFundAccountCanAllocateCreditAmountResponseBody) SetRequestId(v string) *GetFundAccountCanAllocateCreditAmountResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetFundAccountCanAllocateCreditAmountResponseBody) SetSite(v string) *GetFundAccountCanAllocateCreditAmountResponseBody {
+	s.Site = &v
+	return s
+}
+
+type GetFundAccountCanAllocateCreditAmountResponse struct {
+	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetFundAccountCanAllocateCreditAmountResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetFundAccountCanAllocateCreditAmountResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFundAccountCanAllocateCreditAmountResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetFundAccountCanAllocateCreditAmountResponse) SetHeaders(v map[string]*string) *GetFundAccountCanAllocateCreditAmountResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetFundAccountCanAllocateCreditAmountResponse) SetStatusCode(v int32) *GetFundAccountCanAllocateCreditAmountResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetFundAccountCanAllocateCreditAmountResponse) SetBody(v *GetFundAccountCanAllocateCreditAmountResponseBody) *GetFundAccountCanAllocateCreditAmountResponse {
+	s.Body = v
+	return s
+}
+
+type GetFundAccountCanRecycleAmountRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CNY
+	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// example:
+	//
+	// 122321223
+	RecycleFromFundAccountId *string `json:"RecycleFromFundAccountId,omitempty" xml:"RecycleFromFundAccountId,omitempty"`
+}
+
+func (s GetFundAccountCanRecycleAmountRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFundAccountCanRecycleAmountRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetFundAccountCanRecycleAmountRequest) SetCurrency(v string) *GetFundAccountCanRecycleAmountRequest {
+	s.Currency = &v
+	return s
+}
+
+func (s *GetFundAccountCanRecycleAmountRequest) SetRecycleFromFundAccountId(v string) *GetFundAccountCanRecycleAmountRequest {
+	s.RecycleFromFundAccountId = &v
+	return s
+}
+
+type GetFundAccountCanRecycleAmountResponseBody struct {
+	// example:
+	//
+	// 300
+	AvailableAmount *string `json:"AvailableAmount,omitempty" xml:"AvailableAmount,omitempty"`
+	// example:
+	//
+	// CNY
+	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// example:
+	//
+	// {}
+	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// example:
+	//
+	// 1232122132
+	RecycleFromFundAccountId *string                                                               `json:"RecycleFromFundAccountId,omitempty" xml:"RecycleFromFundAccountId,omitempty"`
+	RecycleToFundAccountList []*GetFundAccountCanRecycleAmountResponseBodyRecycleToFundAccountList `json:"RecycleToFundAccountList,omitempty" xml:"RecycleToFundAccountList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 6000EE23-274B-4E07-A697-FF2E999520A4
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 200
+	TransferAmount *string `json:"TransferAmount,omitempty" xml:"TransferAmount,omitempty"`
+}
+
+func (s GetFundAccountCanRecycleAmountResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFundAccountCanRecycleAmountResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetFundAccountCanRecycleAmountResponseBody) SetAvailableAmount(v string) *GetFundAccountCanRecycleAmountResponseBody {
+	s.AvailableAmount = &v
+	return s
+}
+
+func (s *GetFundAccountCanRecycleAmountResponseBody) SetCurrency(v string) *GetFundAccountCanRecycleAmountResponseBody {
+	s.Currency = &v
+	return s
+}
+
+func (s *GetFundAccountCanRecycleAmountResponseBody) SetMetadata(v interface{}) *GetFundAccountCanRecycleAmountResponseBody {
+	s.Metadata = v
+	return s
+}
+
+func (s *GetFundAccountCanRecycleAmountResponseBody) SetRecycleFromFundAccountId(v string) *GetFundAccountCanRecycleAmountResponseBody {
+	s.RecycleFromFundAccountId = &v
+	return s
+}
+
+func (s *GetFundAccountCanRecycleAmountResponseBody) SetRecycleToFundAccountList(v []*GetFundAccountCanRecycleAmountResponseBodyRecycleToFundAccountList) *GetFundAccountCanRecycleAmountResponseBody {
+	s.RecycleToFundAccountList = v
+	return s
+}
+
+func (s *GetFundAccountCanRecycleAmountResponseBody) SetRequestId(v string) *GetFundAccountCanRecycleAmountResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetFundAccountCanRecycleAmountResponseBody) SetTransferAmount(v string) *GetFundAccountCanRecycleAmountResponseBody {
+	s.TransferAmount = &v
+	return s
+}
+
+type GetFundAccountCanRecycleAmountResponseBodyRecycleToFundAccountList struct {
+	// example:
+	//
+	// 122323121
+	FundAccountId *string `json:"FundAccountId,omitempty" xml:"FundAccountId,omitempty"`
+	// example:
+	//
+	// 云某的账户
+	FundAccountName *string `json:"FundAccountName,omitempty" xml:"FundAccountName,omitempty"`
+	// example:
+	//
+	// 183221321
+	FundAccountOwnerAccountId *string `json:"FundAccountOwnerAccountId,omitempty" xml:"FundAccountOwnerAccountId,omitempty"`
+	// example:
+	//
+	// 120
+	MaxRecyclableAmount *string `json:"MaxRecyclableAmount,omitempty" xml:"MaxRecyclableAmount,omitempty"`
+	// example:
+	//
+	// 120
+	OriginalTransferRemainAmount *string `json:"OriginalTransferRemainAmount,omitempty" xml:"OriginalTransferRemainAmount,omitempty"`
+}
+
+func (s GetFundAccountCanRecycleAmountResponseBodyRecycleToFundAccountList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFundAccountCanRecycleAmountResponseBodyRecycleToFundAccountList) GoString() string {
+	return s.String()
+}
+
+func (s *GetFundAccountCanRecycleAmountResponseBodyRecycleToFundAccountList) SetFundAccountId(v string) *GetFundAccountCanRecycleAmountResponseBodyRecycleToFundAccountList {
+	s.FundAccountId = &v
+	return s
+}
+
+func (s *GetFundAccountCanRecycleAmountResponseBodyRecycleToFundAccountList) SetFundAccountName(v string) *GetFundAccountCanRecycleAmountResponseBodyRecycleToFundAccountList {
+	s.FundAccountName = &v
+	return s
+}
+
+func (s *GetFundAccountCanRecycleAmountResponseBodyRecycleToFundAccountList) SetFundAccountOwnerAccountId(v string) *GetFundAccountCanRecycleAmountResponseBodyRecycleToFundAccountList {
+	s.FundAccountOwnerAccountId = &v
+	return s
+}
+
+func (s *GetFundAccountCanRecycleAmountResponseBodyRecycleToFundAccountList) SetMaxRecyclableAmount(v string) *GetFundAccountCanRecycleAmountResponseBodyRecycleToFundAccountList {
+	s.MaxRecyclableAmount = &v
+	return s
+}
+
+func (s *GetFundAccountCanRecycleAmountResponseBodyRecycleToFundAccountList) SetOriginalTransferRemainAmount(v string) *GetFundAccountCanRecycleAmountResponseBodyRecycleToFundAccountList {
+	s.OriginalTransferRemainAmount = &v
+	return s
+}
+
+type GetFundAccountCanRecycleAmountResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetFundAccountCanRecycleAmountResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetFundAccountCanRecycleAmountResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFundAccountCanRecycleAmountResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetFundAccountCanRecycleAmountResponse) SetHeaders(v map[string]*string) *GetFundAccountCanRecycleAmountResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetFundAccountCanRecycleAmountResponse) SetStatusCode(v int32) *GetFundAccountCanRecycleAmountResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetFundAccountCanRecycleAmountResponse) SetBody(v *GetFundAccountCanRecycleAmountResponseBody) *GetFundAccountCanRecycleAmountResponse {
+	s.Body = v
+	return s
+}
+
+type GetFundAccountCanTransferAmountRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CNY
+	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// example:
+	//
+	// 123212
+	FundAccountId *string `json:"FundAccountId,omitempty" xml:"FundAccountId,omitempty"`
+}
+
+func (s GetFundAccountCanTransferAmountRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFundAccountCanTransferAmountRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetFundAccountCanTransferAmountRequest) SetCurrency(v string) *GetFundAccountCanTransferAmountRequest {
+	s.Currency = &v
+	return s
+}
+
+func (s *GetFundAccountCanTransferAmountRequest) SetFundAccountId(v string) *GetFundAccountCanTransferAmountRequest {
+	s.FundAccountId = &v
+	return s
+}
+
+type GetFundAccountCanTransferAmountResponseBody struct {
+	// example:
+	//
+	// 100
+	AvailableAmount *string `json:"AvailableAmount,omitempty" xml:"AvailableAmount,omitempty"`
+	// example:
+	//
+	// 500
+	CashAmount *string `json:"CashAmount,omitempty" xml:"CashAmount,omitempty"`
+	// example:
+	//
+	// CNY
+	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// example:
+	//
+	// 2032121324
+	FundAccountEcid *string `json:"FundAccountEcid,omitempty" xml:"FundAccountEcid,omitempty"`
+	// example:
+	//
+	// 12332112
+	FundAccountId *int64 `json:"FundAccountId,omitempty" xml:"FundAccountId,omitempty"`
+	// example:
+	//
+	// 云某的账户
+	FundAccountName *string `json:"FundAccountName,omitempty" xml:"FundAccountName,omitempty"`
+	// example:
+	//
+	// 154738212323
+	FundAccountOwnerAccountId *int64 `json:"FundAccountOwnerAccountId,omitempty" xml:"FundAccountOwnerAccountId,omitempty"`
+	// example:
+	//
+	// 100
+	MaxTransferableAmount *string `json:"MaxTransferableAmount,omitempty" xml:"MaxTransferableAmount,omitempty"`
+	// example:
+	//
+	// {}
+	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// example:
+	//
+	// 2684210001
+	Nbid *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+	// example:
+	//
+	// 6000EE23-274B-4E07-A697-FF2E999520A4
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 26842
+	Site *string `json:"Site,omitempty" xml:"Site,omitempty"`
+	// example:
+	//
+	// 100
+	TransferAmount *string `json:"TransferAmount,omitempty" xml:"TransferAmount,omitempty"`
+}
+
+func (s GetFundAccountCanTransferAmountResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFundAccountCanTransferAmountResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetFundAccountCanTransferAmountResponseBody) SetAvailableAmount(v string) *GetFundAccountCanTransferAmountResponseBody {
+	s.AvailableAmount = &v
+	return s
+}
+
+func (s *GetFundAccountCanTransferAmountResponseBody) SetCashAmount(v string) *GetFundAccountCanTransferAmountResponseBody {
+	s.CashAmount = &v
+	return s
+}
+
+func (s *GetFundAccountCanTransferAmountResponseBody) SetCurrency(v string) *GetFundAccountCanTransferAmountResponseBody {
+	s.Currency = &v
+	return s
+}
+
+func (s *GetFundAccountCanTransferAmountResponseBody) SetFundAccountEcid(v string) *GetFundAccountCanTransferAmountResponseBody {
+	s.FundAccountEcid = &v
+	return s
+}
+
+func (s *GetFundAccountCanTransferAmountResponseBody) SetFundAccountId(v int64) *GetFundAccountCanTransferAmountResponseBody {
+	s.FundAccountId = &v
+	return s
+}
+
+func (s *GetFundAccountCanTransferAmountResponseBody) SetFundAccountName(v string) *GetFundAccountCanTransferAmountResponseBody {
+	s.FundAccountName = &v
+	return s
+}
+
+func (s *GetFundAccountCanTransferAmountResponseBody) SetFundAccountOwnerAccountId(v int64) *GetFundAccountCanTransferAmountResponseBody {
+	s.FundAccountOwnerAccountId = &v
+	return s
+}
+
+func (s *GetFundAccountCanTransferAmountResponseBody) SetMaxTransferableAmount(v string) *GetFundAccountCanTransferAmountResponseBody {
+	s.MaxTransferableAmount = &v
+	return s
+}
+
+func (s *GetFundAccountCanTransferAmountResponseBody) SetMetadata(v interface{}) *GetFundAccountCanTransferAmountResponseBody {
+	s.Metadata = v
+	return s
+}
+
+func (s *GetFundAccountCanTransferAmountResponseBody) SetNbid(v string) *GetFundAccountCanTransferAmountResponseBody {
+	s.Nbid = &v
+	return s
+}
+
+func (s *GetFundAccountCanTransferAmountResponseBody) SetRequestId(v string) *GetFundAccountCanTransferAmountResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetFundAccountCanTransferAmountResponseBody) SetSite(v string) *GetFundAccountCanTransferAmountResponseBody {
+	s.Site = &v
+	return s
+}
+
+func (s *GetFundAccountCanTransferAmountResponseBody) SetTransferAmount(v string) *GetFundAccountCanTransferAmountResponseBody {
+	s.TransferAmount = &v
+	return s
+}
+
+type GetFundAccountCanTransferAmountResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetFundAccountCanTransferAmountResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetFundAccountCanTransferAmountResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFundAccountCanTransferAmountResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetFundAccountCanTransferAmountResponse) SetHeaders(v map[string]*string) *GetFundAccountCanTransferAmountResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetFundAccountCanTransferAmountResponse) SetStatusCode(v int32) *GetFundAccountCanTransferAmountResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetFundAccountCanTransferAmountResponse) SetBody(v *GetFundAccountCanTransferAmountResponseBody) *GetFundAccountCanTransferAmountResponse {
+	s.Body = v
+	return s
+}
+
+type GetFundAccountCanWithdrawAmountRequest struct {
+	// example:
+	//
+	// 123212232
+	FundAccountId *int64 `json:"FundAccountId,omitempty" xml:"FundAccountId,omitempty"`
+}
+
+func (s GetFundAccountCanWithdrawAmountRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFundAccountCanWithdrawAmountRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetFundAccountCanWithdrawAmountRequest) SetFundAccountId(v int64) *GetFundAccountCanWithdrawAmountRequest {
+	s.FundAccountId = &v
+	return s
+}
+
+type GetFundAccountCanWithdrawAmountResponseBody struct {
+	// example:
+	//
+	// 400
+	CanOriginalWithdrawAmount *string `json:"CanOriginalWithdrawAmount,omitempty" xml:"CanOriginalWithdrawAmount,omitempty"`
+	// example:
+	//
+	// 500
+	CanWithdrawAmount *string `json:"CanWithdrawAmount,omitempty" xml:"CanWithdrawAmount,omitempty"`
+	// example:
+	//
+	// 100
+	CannotOriginalWithdrawAmount *string `json:"CannotOriginalWithdrawAmount,omitempty" xml:"CannotOriginalWithdrawAmount,omitempty"`
+	// example:
+	//
+	// 1000
+	CashAmount *string `json:"CashAmount,omitempty" xml:"CashAmount,omitempty"`
+	// example:
+	//
+	// 100
+	CreditMemoAmount *string `json:"CreditMemoAmount,omitempty" xml:"CreditMemoAmount,omitempty"`
+	// example:
+	//
+	// 200
+	CurrentMonthUnclearedAmount *string `json:"CurrentMonthUnclearedAmount,omitempty" xml:"CurrentMonthUnclearedAmount,omitempty"`
+	// example:
+	//
+	// 100
+	HistoryMonthUnclearedAmount *string `json:"HistoryMonthUnclearedAmount,omitempty" xml:"HistoryMonthUnclearedAmount,omitempty"`
+	// example:
+	//
+	// {}
+	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// example:
+	//
+	// 100
+	PayAsYouGoReversedAmount *string `json:"PayAsYouGoReversedAmount,omitempty" xml:"PayAsYouGoReversedAmount,omitempty"`
+	// example:
+	//
+	// DF58589C-A06C-4224-8615-7797E6474FA3
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 0
+	TransferAmount *string `json:"TransferAmount,omitempty" xml:"TransferAmount,omitempty"`
+}
+
+func (s GetFundAccountCanWithdrawAmountResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFundAccountCanWithdrawAmountResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetFundAccountCanWithdrawAmountResponseBody) SetCanOriginalWithdrawAmount(v string) *GetFundAccountCanWithdrawAmountResponseBody {
+	s.CanOriginalWithdrawAmount = &v
+	return s
+}
+
+func (s *GetFundAccountCanWithdrawAmountResponseBody) SetCanWithdrawAmount(v string) *GetFundAccountCanWithdrawAmountResponseBody {
+	s.CanWithdrawAmount = &v
+	return s
+}
+
+func (s *GetFundAccountCanWithdrawAmountResponseBody) SetCannotOriginalWithdrawAmount(v string) *GetFundAccountCanWithdrawAmountResponseBody {
+	s.CannotOriginalWithdrawAmount = &v
+	return s
+}
+
+func (s *GetFundAccountCanWithdrawAmountResponseBody) SetCashAmount(v string) *GetFundAccountCanWithdrawAmountResponseBody {
+	s.CashAmount = &v
+	return s
+}
+
+func (s *GetFundAccountCanWithdrawAmountResponseBody) SetCreditMemoAmount(v string) *GetFundAccountCanWithdrawAmountResponseBody {
+	s.CreditMemoAmount = &v
+	return s
+}
+
+func (s *GetFundAccountCanWithdrawAmountResponseBody) SetCurrentMonthUnclearedAmount(v string) *GetFundAccountCanWithdrawAmountResponseBody {
+	s.CurrentMonthUnclearedAmount = &v
+	return s
+}
+
+func (s *GetFundAccountCanWithdrawAmountResponseBody) SetHistoryMonthUnclearedAmount(v string) *GetFundAccountCanWithdrawAmountResponseBody {
+	s.HistoryMonthUnclearedAmount = &v
+	return s
+}
+
+func (s *GetFundAccountCanWithdrawAmountResponseBody) SetMetadata(v interface{}) *GetFundAccountCanWithdrawAmountResponseBody {
+	s.Metadata = v
+	return s
+}
+
+func (s *GetFundAccountCanWithdrawAmountResponseBody) SetPayAsYouGoReversedAmount(v string) *GetFundAccountCanWithdrawAmountResponseBody {
+	s.PayAsYouGoReversedAmount = &v
+	return s
+}
+
+func (s *GetFundAccountCanWithdrawAmountResponseBody) SetRequestId(v string) *GetFundAccountCanWithdrawAmountResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetFundAccountCanWithdrawAmountResponseBody) SetTransferAmount(v string) *GetFundAccountCanWithdrawAmountResponseBody {
+	s.TransferAmount = &v
+	return s
+}
+
+type GetFundAccountCanWithdrawAmountResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetFundAccountCanWithdrawAmountResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetFundAccountCanWithdrawAmountResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFundAccountCanWithdrawAmountResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetFundAccountCanWithdrawAmountResponse) SetHeaders(v map[string]*string) *GetFundAccountCanWithdrawAmountResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetFundAccountCanWithdrawAmountResponse) SetStatusCode(v int32) *GetFundAccountCanWithdrawAmountResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetFundAccountCanWithdrawAmountResponse) SetBody(v *GetFundAccountCanWithdrawAmountResponseBody) *GetFundAccountCanWithdrawAmountResponse {
+	s.Body = v
+	return s
+}
+
+type GetFundAccountLowAvailableAmountAlarmRequest struct {
+	// example:
+	//
+	// 12332112
+	FundAccountId *int64 `json:"FundAccountId,omitempty" xml:"FundAccountId,omitempty"`
+}
+
+func (s GetFundAccountLowAvailableAmountAlarmRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFundAccountLowAvailableAmountAlarmRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetFundAccountLowAvailableAmountAlarmRequest) SetFundAccountId(v int64) *GetFundAccountLowAvailableAmountAlarmRequest {
+	s.FundAccountId = &v
+	return s
+}
+
+type GetFundAccountLowAvailableAmountAlarmResponseBody struct {
+	AlarmEnabled *bool `json:"AlarmEnabled,omitempty" xml:"AlarmEnabled,omitempty"`
+	// example:
+	//
+	// {}
+	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// example:
+	//
+	// 6000EE23-274B-4E07-A697-FF2E999520A4
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 100
+	ThresholdAmount *string `json:"ThresholdAmount,omitempty" xml:"ThresholdAmount,omitempty"`
+}
+
+func (s GetFundAccountLowAvailableAmountAlarmResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFundAccountLowAvailableAmountAlarmResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetFundAccountLowAvailableAmountAlarmResponseBody) SetAlarmEnabled(v bool) *GetFundAccountLowAvailableAmountAlarmResponseBody {
+	s.AlarmEnabled = &v
+	return s
+}
+
+func (s *GetFundAccountLowAvailableAmountAlarmResponseBody) SetMetadata(v interface{}) *GetFundAccountLowAvailableAmountAlarmResponseBody {
+	s.Metadata = v
+	return s
+}
+
+func (s *GetFundAccountLowAvailableAmountAlarmResponseBody) SetRequestId(v string) *GetFundAccountLowAvailableAmountAlarmResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetFundAccountLowAvailableAmountAlarmResponseBody) SetThresholdAmount(v string) *GetFundAccountLowAvailableAmountAlarmResponseBody {
+	s.ThresholdAmount = &v
+	return s
+}
+
+type GetFundAccountLowAvailableAmountAlarmResponse struct {
+	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetFundAccountLowAvailableAmountAlarmResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetFundAccountLowAvailableAmountAlarmResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFundAccountLowAvailableAmountAlarmResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetFundAccountLowAvailableAmountAlarmResponse) SetHeaders(v map[string]*string) *GetFundAccountLowAvailableAmountAlarmResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetFundAccountLowAvailableAmountAlarmResponse) SetStatusCode(v int32) *GetFundAccountLowAvailableAmountAlarmResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetFundAccountLowAvailableAmountAlarmResponse) SetBody(v *GetFundAccountLowAvailableAmountAlarmResponseBody) *GetFundAccountLowAvailableAmountAlarmResponse {
+	s.Body = v
+	return s
+}
+
+type GetFundAccountTransactionDetailsRequest struct {
+	// example:
+	//
+	// 2023212312321
+	BillNumber *string `json:"BillNumber,omitempty" xml:"BillNumber,omitempty"`
+	// example:
+	//
+	// 20250312334312322
+	ChannelTransactionNumber *string `json:"ChannelTransactionNumber,omitempty" xml:"ChannelTransactionNumber,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// example:
+	//
+	// 1735664561000
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 123221232
+	FundAccountId *int64 `json:"FundAccountId,omitempty" xml:"FundAccountId,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1735664461000
+	StartTime              *int64    `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TransactionChannelList []*string `json:"TransactionChannelList,omitempty" xml:"TransactionChannelList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// IN
+	TransactionDirection *string `json:"TransactionDirection,omitempty" xml:"TransactionDirection,omitempty"`
+	// example:
+	//
+	// 543231231
+	TransactionNumber *int64 `json:"TransactionNumber,omitempty" xml:"TransactionNumber,omitempty"`
+	// example:
+	//
+	// CHARGE
+	TransactionType     *string   `json:"TransactionType,omitempty" xml:"TransactionType,omitempty"`
+	TransactionTypeList []*string `json:"TransactionTypeList,omitempty" xml:"TransactionTypeList,omitempty" type:"Repeated"`
+}
+
+func (s GetFundAccountTransactionDetailsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFundAccountTransactionDetailsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetFundAccountTransactionDetailsRequest) SetBillNumber(v string) *GetFundAccountTransactionDetailsRequest {
+	s.BillNumber = &v
+	return s
+}
+
+func (s *GetFundAccountTransactionDetailsRequest) SetChannelTransactionNumber(v string) *GetFundAccountTransactionDetailsRequest {
+	s.ChannelTransactionNumber = &v
+	return s
+}
+
+func (s *GetFundAccountTransactionDetailsRequest) SetCurrentPage(v int32) *GetFundAccountTransactionDetailsRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *GetFundAccountTransactionDetailsRequest) SetEndTime(v int64) *GetFundAccountTransactionDetailsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetFundAccountTransactionDetailsRequest) SetFundAccountId(v int64) *GetFundAccountTransactionDetailsRequest {
+	s.FundAccountId = &v
+	return s
+}
+
+func (s *GetFundAccountTransactionDetailsRequest) SetPageSize(v int32) *GetFundAccountTransactionDetailsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetFundAccountTransactionDetailsRequest) SetStartTime(v int64) *GetFundAccountTransactionDetailsRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetFundAccountTransactionDetailsRequest) SetTransactionChannelList(v []*string) *GetFundAccountTransactionDetailsRequest {
+	s.TransactionChannelList = v
+	return s
+}
+
+func (s *GetFundAccountTransactionDetailsRequest) SetTransactionDirection(v string) *GetFundAccountTransactionDetailsRequest {
+	s.TransactionDirection = &v
+	return s
+}
+
+func (s *GetFundAccountTransactionDetailsRequest) SetTransactionNumber(v int64) *GetFundAccountTransactionDetailsRequest {
+	s.TransactionNumber = &v
+	return s
+}
+
+func (s *GetFundAccountTransactionDetailsRequest) SetTransactionType(v string) *GetFundAccountTransactionDetailsRequest {
+	s.TransactionType = &v
+	return s
+}
+
+func (s *GetFundAccountTransactionDetailsRequest) SetTransactionTypeList(v []*string) *GetFundAccountTransactionDetailsRequest {
+	s.TransactionTypeList = v
+	return s
+}
+
+type GetFundAccountTransactionDetailsShrinkRequest struct {
+	// example:
+	//
+	// 2023212312321
+	BillNumber *string `json:"BillNumber,omitempty" xml:"BillNumber,omitempty"`
+	// example:
+	//
+	// 20250312334312322
+	ChannelTransactionNumber *string `json:"ChannelTransactionNumber,omitempty" xml:"ChannelTransactionNumber,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// example:
+	//
+	// 1735664561000
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 123221232
+	FundAccountId *int64 `json:"FundAccountId,omitempty" xml:"FundAccountId,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1735664461000
+	StartTime                    *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TransactionChannelListShrink *string `json:"TransactionChannelList,omitempty" xml:"TransactionChannelList,omitempty"`
+	// example:
+	//
+	// IN
+	TransactionDirection *string `json:"TransactionDirection,omitempty" xml:"TransactionDirection,omitempty"`
+	// example:
+	//
+	// 543231231
+	TransactionNumber *int64 `json:"TransactionNumber,omitempty" xml:"TransactionNumber,omitempty"`
+	// example:
+	//
+	// CHARGE
+	TransactionType           *string `json:"TransactionType,omitempty" xml:"TransactionType,omitempty"`
+	TransactionTypeListShrink *string `json:"TransactionTypeList,omitempty" xml:"TransactionTypeList,omitempty"`
+}
+
+func (s GetFundAccountTransactionDetailsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFundAccountTransactionDetailsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetFundAccountTransactionDetailsShrinkRequest) SetBillNumber(v string) *GetFundAccountTransactionDetailsShrinkRequest {
+	s.BillNumber = &v
+	return s
+}
+
+func (s *GetFundAccountTransactionDetailsShrinkRequest) SetChannelTransactionNumber(v string) *GetFundAccountTransactionDetailsShrinkRequest {
+	s.ChannelTransactionNumber = &v
+	return s
+}
+
+func (s *GetFundAccountTransactionDetailsShrinkRequest) SetCurrentPage(v int32) *GetFundAccountTransactionDetailsShrinkRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *GetFundAccountTransactionDetailsShrinkRequest) SetEndTime(v int64) *GetFundAccountTransactionDetailsShrinkRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetFundAccountTransactionDetailsShrinkRequest) SetFundAccountId(v int64) *GetFundAccountTransactionDetailsShrinkRequest {
+	s.FundAccountId = &v
+	return s
+}
+
+func (s *GetFundAccountTransactionDetailsShrinkRequest) SetPageSize(v int32) *GetFundAccountTransactionDetailsShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetFundAccountTransactionDetailsShrinkRequest) SetStartTime(v int64) *GetFundAccountTransactionDetailsShrinkRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetFundAccountTransactionDetailsShrinkRequest) SetTransactionChannelListShrink(v string) *GetFundAccountTransactionDetailsShrinkRequest {
+	s.TransactionChannelListShrink = &v
+	return s
+}
+
+func (s *GetFundAccountTransactionDetailsShrinkRequest) SetTransactionDirection(v string) *GetFundAccountTransactionDetailsShrinkRequest {
+	s.TransactionDirection = &v
+	return s
+}
+
+func (s *GetFundAccountTransactionDetailsShrinkRequest) SetTransactionNumber(v int64) *GetFundAccountTransactionDetailsShrinkRequest {
+	s.TransactionNumber = &v
+	return s
+}
+
+func (s *GetFundAccountTransactionDetailsShrinkRequest) SetTransactionType(v string) *GetFundAccountTransactionDetailsShrinkRequest {
+	s.TransactionType = &v
+	return s
+}
+
+func (s *GetFundAccountTransactionDetailsShrinkRequest) SetTransactionTypeListShrink(v string) *GetFundAccountTransactionDetailsShrinkRequest {
+	s.TransactionTypeListShrink = &v
+	return s
+}
+
+type GetFundAccountTransactionDetailsResponseBody struct {
+	// example:
+	//
+	// 1
+	CurrentPage *int32                                              `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Data        []*GetFundAccountTransactionDetailsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// {}
+	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// D6E068C3-25BC-455A-85FE-45F0B22ECB1F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 30
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s GetFundAccountTransactionDetailsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFundAccountTransactionDetailsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetFundAccountTransactionDetailsResponseBody) SetCurrentPage(v int32) *GetFundAccountTransactionDetailsResponseBody {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *GetFundAccountTransactionDetailsResponseBody) SetData(v []*GetFundAccountTransactionDetailsResponseBodyData) *GetFundAccountTransactionDetailsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetFundAccountTransactionDetailsResponseBody) SetMetadata(v interface{}) *GetFundAccountTransactionDetailsResponseBody {
+	s.Metadata = v
+	return s
+}
+
+func (s *GetFundAccountTransactionDetailsResponseBody) SetPageSize(v int32) *GetFundAccountTransactionDetailsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetFundAccountTransactionDetailsResponseBody) SetRequestId(v string) *GetFundAccountTransactionDetailsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetFundAccountTransactionDetailsResponseBody) SetTotalCount(v int32) *GetFundAccountTransactionDetailsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type GetFundAccountTransactionDetailsResponseBodyData struct {
+	// example:
+	//
+	// 5
+	Balance *string `json:"Balance,omitempty" xml:"Balance,omitempty"`
+	// example:
+	//
+	// 2323203243
+	BillNumber *string `json:"BillNumber,omitempty" xml:"BillNumber,omitempty"`
+	// example:
+	//
+	// 20244389232
+	ChannelTransactionNumber *string `json:"ChannelTransactionNumber,omitempty" xml:"ChannelTransactionNumber,omitempty"`
+	// example:
+	//
+	// USD
+	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// example:
+	//
+	// 23473943
+	FundAccountEcid *string `json:"FundAccountEcid,omitempty" xml:"FundAccountEcid,omitempty"`
+	// example:
+	//
+	// 1232121
+	FundAccountId *int64 `json:"FundAccountId,omitempty" xml:"FundAccountId,omitempty"`
+	// example:
+	//
+	// 云某的名称
+	FundAccountName *string `json:"FundAccountName,omitempty" xml:"FundAccountName,omitempty"`
+	// example:
+	//
+	// 32343231
+	FundAccountOwnerAccountId *int64 `json:"FundAccountOwnerAccountId,omitempty" xml:"FundAccountOwnerAccountId,omitempty"`
+	// example:
+	//
+	// ACCT_BOOK
+	FundType *string `json:"FundType,omitempty" xml:"FundType,omitempty"`
+	// example:
+	//
+	// 2684210001
+	Nbid *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+	// example:
+	//
+	// 订单备注
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// example:
+	//
+	// 26842
+	Site *string `json:"Site,omitempty" xml:"Site,omitempty"`
+	// example:
+	//
+	// 186****3975
+	TransactionAccount *string `json:"TransactionAccount,omitempty" xml:"TransactionAccount,omitempty"`
+	// example:
+	//
+	// 10
+	TransactionAmount *string `json:"TransactionAmount,omitempty" xml:"TransactionAmount,omitempty"`
+	// example:
+	//
+	// ALIPAY
+	TransactionChannel *string `json:"TransactionChannel,omitempty" xml:"TransactionChannel,omitempty"`
+	// example:
+	//
+	// IN
+	TransactionDirection *string `json:"TransactionDirection,omitempty" xml:"TransactionDirection,omitempty"`
+	// example:
+	//
+	// 5423121
+	TransactionNumber *int64 `json:"TransactionNumber,omitempty" xml:"TransactionNumber,omitempty"`
+	// example:
+	//
+	// 2024-12-01 12:00:00
+	TransactionTime *string `json:"TransactionTime,omitempty" xml:"TransactionTime,omitempty"`
+	// example:
+	//
+	// CHARGE
+	TransactionType *string `json:"TransactionType,omitempty" xml:"TransactionType,omitempty"`
+}
+
+func (s GetFundAccountTransactionDetailsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFundAccountTransactionDetailsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetFundAccountTransactionDetailsResponseBodyData) SetBalance(v string) *GetFundAccountTransactionDetailsResponseBodyData {
+	s.Balance = &v
+	return s
+}
+
+func (s *GetFundAccountTransactionDetailsResponseBodyData) SetBillNumber(v string) *GetFundAccountTransactionDetailsResponseBodyData {
+	s.BillNumber = &v
+	return s
+}
+
+func (s *GetFundAccountTransactionDetailsResponseBodyData) SetChannelTransactionNumber(v string) *GetFundAccountTransactionDetailsResponseBodyData {
+	s.ChannelTransactionNumber = &v
+	return s
+}
+
+func (s *GetFundAccountTransactionDetailsResponseBodyData) SetCurrency(v string) *GetFundAccountTransactionDetailsResponseBodyData {
+	s.Currency = &v
+	return s
+}
+
+func (s *GetFundAccountTransactionDetailsResponseBodyData) SetFundAccountEcid(v string) *GetFundAccountTransactionDetailsResponseBodyData {
+	s.FundAccountEcid = &v
+	return s
+}
+
+func (s *GetFundAccountTransactionDetailsResponseBodyData) SetFundAccountId(v int64) *GetFundAccountTransactionDetailsResponseBodyData {
+	s.FundAccountId = &v
+	return s
+}
+
+func (s *GetFundAccountTransactionDetailsResponseBodyData) SetFundAccountName(v string) *GetFundAccountTransactionDetailsResponseBodyData {
+	s.FundAccountName = &v
+	return s
+}
+
+func (s *GetFundAccountTransactionDetailsResponseBodyData) SetFundAccountOwnerAccountId(v int64) *GetFundAccountTransactionDetailsResponseBodyData {
+	s.FundAccountOwnerAccountId = &v
+	return s
+}
+
+func (s *GetFundAccountTransactionDetailsResponseBodyData) SetFundType(v string) *GetFundAccountTransactionDetailsResponseBodyData {
+	s.FundType = &v
+	return s
+}
+
+func (s *GetFundAccountTransactionDetailsResponseBodyData) SetNbid(v string) *GetFundAccountTransactionDetailsResponseBodyData {
+	s.Nbid = &v
+	return s
+}
+
+func (s *GetFundAccountTransactionDetailsResponseBodyData) SetRemark(v string) *GetFundAccountTransactionDetailsResponseBodyData {
+	s.Remark = &v
+	return s
+}
+
+func (s *GetFundAccountTransactionDetailsResponseBodyData) SetSite(v string) *GetFundAccountTransactionDetailsResponseBodyData {
+	s.Site = &v
+	return s
+}
+
+func (s *GetFundAccountTransactionDetailsResponseBodyData) SetTransactionAccount(v string) *GetFundAccountTransactionDetailsResponseBodyData {
+	s.TransactionAccount = &v
+	return s
+}
+
+func (s *GetFundAccountTransactionDetailsResponseBodyData) SetTransactionAmount(v string) *GetFundAccountTransactionDetailsResponseBodyData {
+	s.TransactionAmount = &v
+	return s
+}
+
+func (s *GetFundAccountTransactionDetailsResponseBodyData) SetTransactionChannel(v string) *GetFundAccountTransactionDetailsResponseBodyData {
+	s.TransactionChannel = &v
+	return s
+}
+
+func (s *GetFundAccountTransactionDetailsResponseBodyData) SetTransactionDirection(v string) *GetFundAccountTransactionDetailsResponseBodyData {
+	s.TransactionDirection = &v
+	return s
+}
+
+func (s *GetFundAccountTransactionDetailsResponseBodyData) SetTransactionNumber(v int64) *GetFundAccountTransactionDetailsResponseBodyData {
+	s.TransactionNumber = &v
+	return s
+}
+
+func (s *GetFundAccountTransactionDetailsResponseBodyData) SetTransactionTime(v string) *GetFundAccountTransactionDetailsResponseBodyData {
+	s.TransactionTime = &v
+	return s
+}
+
+func (s *GetFundAccountTransactionDetailsResponseBodyData) SetTransactionType(v string) *GetFundAccountTransactionDetailsResponseBodyData {
+	s.TransactionType = &v
+	return s
+}
+
+type GetFundAccountTransactionDetailsResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetFundAccountTransactionDetailsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetFundAccountTransactionDetailsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFundAccountTransactionDetailsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetFundAccountTransactionDetailsResponse) SetHeaders(v map[string]*string) *GetFundAccountTransactionDetailsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetFundAccountTransactionDetailsResponse) SetStatusCode(v int32) *GetFundAccountTransactionDetailsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetFundAccountTransactionDetailsResponse) SetBody(v *GetFundAccountTransactionDetailsResponseBody) *GetFundAccountTransactionDetailsResponse {
+	s.Body = v
+	return s
+}
+
+type ListFundAccountRequest struct {
+	// example:
+	//
+	// 2084210001
+	Nbid            *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+	QueryOnlyInUse  *bool   `json:"QueryOnlyInUse,omitempty" xml:"QueryOnlyInUse,omitempty"`
+	QueryOnlyManage *bool   `json:"QueryOnlyManage,omitempty" xml:"QueryOnlyManage,omitempty"`
+}
+
+func (s ListFundAccountRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFundAccountRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListFundAccountRequest) SetNbid(v string) *ListFundAccountRequest {
+	s.Nbid = &v
+	return s
+}
+
+func (s *ListFundAccountRequest) SetQueryOnlyInUse(v bool) *ListFundAccountRequest {
+	s.QueryOnlyInUse = &v
+	return s
+}
+
+func (s *ListFundAccountRequest) SetQueryOnlyManage(v bool) *ListFundAccountRequest {
+	s.QueryOnlyManage = &v
+	return s
+}
+
+type ListFundAccountResponseBody struct {
+	Data []*ListFundAccountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// {}
+	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// example:
+	//
+	// 6000EE23-274B-4E07-A697-FF2E999520A4
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListFundAccountResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFundAccountResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListFundAccountResponseBody) SetData(v []*ListFundAccountResponseBodyData) *ListFundAccountResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListFundAccountResponseBody) SetMetadata(v interface{}) *ListFundAccountResponseBody {
+	s.Metadata = v
+	return s
+}
+
+func (s *ListFundAccountResponseBody) SetRequestId(v string) *ListFundAccountResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListFundAccountResponseBodyData struct {
+	// example:
+	//
+	// 2024-12-30 12:00:00
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// example:
+	//
+	// 1232121
+	FundAccountAdminAccountId *string `json:"FundAccountAdminAccountId,omitempty" xml:"FundAccountAdminAccountId,omitempty"`
+	// example:
+	//
+	// 云某的账户
+	FundAccountAdminAccountName *string `json:"FundAccountAdminAccountName,omitempty" xml:"FundAccountAdminAccountName,omitempty"`
+	// example:
+	//
+	// 1022231
+	FundAccountId *string `json:"FundAccountId,omitempty" xml:"FundAccountId,omitempty"`
+	// example:
+	//
+	// 云某的账户
+	FundAccountName *string `json:"FundAccountName,omitempty" xml:"FundAccountName,omitempty"`
+	// example:
+	//
+	// 132123211
+	FundAccountOwnerAccountId *string `json:"FundAccountOwnerAccountId,omitempty" xml:"FundAccountOwnerAccountId,omitempty"`
+	// example:
+	//
+	// VALID
+	FundAccountStatus *string `json:"FundAccountStatus,omitempty" xml:"FundAccountStatus,omitempty"`
+	// example:
+	//
+	// DIRECT_USER
+	FundAccountType *string `json:"FundAccountType,omitempty" xml:"FundAccountType,omitempty"`
+	// example:
+	//
+	// 2684210001
+	Nbid        *string   `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+	Permissions []*string `json:"Permissions,omitempty" xml:"Permissions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 26842
+	Site *string `json:"Site,omitempty" xml:"Site,omitempty"`
+}
+
+func (s ListFundAccountResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFundAccountResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListFundAccountResponseBodyData) SetCreateDate(v string) *ListFundAccountResponseBodyData {
+	s.CreateDate = &v
+	return s
+}
+
+func (s *ListFundAccountResponseBodyData) SetFundAccountAdminAccountId(v string) *ListFundAccountResponseBodyData {
+	s.FundAccountAdminAccountId = &v
+	return s
+}
+
+func (s *ListFundAccountResponseBodyData) SetFundAccountAdminAccountName(v string) *ListFundAccountResponseBodyData {
+	s.FundAccountAdminAccountName = &v
+	return s
+}
+
+func (s *ListFundAccountResponseBodyData) SetFundAccountId(v string) *ListFundAccountResponseBodyData {
+	s.FundAccountId = &v
+	return s
+}
+
+func (s *ListFundAccountResponseBodyData) SetFundAccountName(v string) *ListFundAccountResponseBodyData {
+	s.FundAccountName = &v
+	return s
+}
+
+func (s *ListFundAccountResponseBodyData) SetFundAccountOwnerAccountId(v string) *ListFundAccountResponseBodyData {
+	s.FundAccountOwnerAccountId = &v
+	return s
+}
+
+func (s *ListFundAccountResponseBodyData) SetFundAccountStatus(v string) *ListFundAccountResponseBodyData {
+	s.FundAccountStatus = &v
+	return s
+}
+
+func (s *ListFundAccountResponseBodyData) SetFundAccountType(v string) *ListFundAccountResponseBodyData {
+	s.FundAccountType = &v
+	return s
+}
+
+func (s *ListFundAccountResponseBodyData) SetNbid(v string) *ListFundAccountResponseBodyData {
+	s.Nbid = &v
+	return s
+}
+
+func (s *ListFundAccountResponseBodyData) SetPermissions(v []*string) *ListFundAccountResponseBodyData {
+	s.Permissions = v
+	return s
+}
+
+func (s *ListFundAccountResponseBodyData) SetSite(v string) *ListFundAccountResponseBodyData {
+	s.Site = &v
+	return s
+}
+
+type ListFundAccountResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListFundAccountResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListFundAccountResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFundAccountResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListFundAccountResponse) SetHeaders(v map[string]*string) *ListFundAccountResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListFundAccountResponse) SetStatusCode(v int32) *ListFundAccountResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListFundAccountResponse) SetBody(v *ListFundAccountResponseBody) *ListFundAccountResponse {
+	s.Body = v
+	return s
+}
+
+type ListFundAccountPayRelationRequest struct {
+	// example:
+	//
+	// 1
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12323123
+	FundAccountId *string `json:"FundAccountId,omitempty" xml:"FundAccountId,omitempty"`
+	// example:
+	//
+	// 2684201000001
+	Nbid *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// valid
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListFundAccountPayRelationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFundAccountPayRelationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListFundAccountPayRelationRequest) SetCurrentPage(v int32) *ListFundAccountPayRelationRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListFundAccountPayRelationRequest) SetFundAccountId(v string) *ListFundAccountPayRelationRequest {
+	s.FundAccountId = &v
+	return s
+}
+
+func (s *ListFundAccountPayRelationRequest) SetNbid(v string) *ListFundAccountPayRelationRequest {
+	s.Nbid = &v
+	return s
+}
+
+func (s *ListFundAccountPayRelationRequest) SetPageSize(v int32) *ListFundAccountPayRelationRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListFundAccountPayRelationRequest) SetStatus(v string) *ListFundAccountPayRelationRequest {
+	s.Status = &v
+	return s
+}
+
+type ListFundAccountPayRelationResponseBody struct {
+	// example:
+	//
+	// 1
+	CurrentPage *int32                                        `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Data        []*ListFundAccountPayRelationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// {}
+	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 79EE7556-0CFD-44EB-9CD6-B3B526E3A85F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 50
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListFundAccountPayRelationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFundAccountPayRelationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListFundAccountPayRelationResponseBody) SetCurrentPage(v int32) *ListFundAccountPayRelationResponseBody {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListFundAccountPayRelationResponseBody) SetData(v []*ListFundAccountPayRelationResponseBodyData) *ListFundAccountPayRelationResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListFundAccountPayRelationResponseBody) SetMetadata(v interface{}) *ListFundAccountPayRelationResponseBody {
+	s.Metadata = v
+	return s
+}
+
+func (s *ListFundAccountPayRelationResponseBody) SetPageSize(v int32) *ListFundAccountPayRelationResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListFundAccountPayRelationResponseBody) SetRequestId(v string) *ListFundAccountPayRelationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListFundAccountPayRelationResponseBody) SetTotalCount(v int32) *ListFundAccountPayRelationResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListFundAccountPayRelationResponseBodyData struct {
+	// example:
+	//
+	// 32812132121
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// example:
+	//
+	// 云某的名称
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// example:
+	//
+	// 213231232
+	Ecid *string `json:"Ecid,omitempty" xml:"Ecid,omitempty"`
+	// example:
+	//
+	// 2024-12-01 12:00:10
+	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
+	// example:
+	//
+	// 123231213
+	FundAccountId *string `json:"FundAccountId,omitempty" xml:"FundAccountId,omitempty"`
+	// example:
+	//
+	// 312328912
+	FundAccountOwnerAccountId *string `json:"FundAccountOwnerAccountId,omitempty" xml:"FundAccountOwnerAccountId,omitempty"`
+	// example:
+	//
+	// 2025-01-01 12:12:12
+	IneffectiveTime *string `json:"IneffectiveTime,omitempty" xml:"IneffectiveTime,omitempty"`
+	// example:
+	//
+	// 2684210001
+	Nbid *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+	// example:
+	//
+	// 云某的名称
+	OperatorName *string `json:"OperatorName,omitempty" xml:"OperatorName,omitempty"`
+	// example:
+	//
+	// 1232343423
+	OperatorNo *string `json:"OperatorNo,omitempty" xml:"OperatorNo,omitempty"`
+	// example:
+	//
+	// aliyun_pk
+	OperatorType *string `json:"OperatorType,omitempty" xml:"OperatorType,omitempty"`
+	// example:
+	//
+	// PAYMENT
+	RelationType *string `json:"RelationType,omitempty" xml:"RelationType,omitempty"`
+	// example:
+	//
+	// 26842
+	Site *string `json:"Site,omitempty" xml:"Site,omitempty"`
+	// example:
+	//
+	// valid
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListFundAccountPayRelationResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFundAccountPayRelationResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListFundAccountPayRelationResponseBodyData) SetAccountId(v string) *ListFundAccountPayRelationResponseBodyData {
+	s.AccountId = &v
+	return s
+}
+
+func (s *ListFundAccountPayRelationResponseBodyData) SetAccountName(v string) *ListFundAccountPayRelationResponseBodyData {
+	s.AccountName = &v
+	return s
+}
+
+func (s *ListFundAccountPayRelationResponseBodyData) SetEcid(v string) *ListFundAccountPayRelationResponseBodyData {
+	s.Ecid = &v
+	return s
+}
+
+func (s *ListFundAccountPayRelationResponseBodyData) SetEffectiveTime(v string) *ListFundAccountPayRelationResponseBodyData {
+	s.EffectiveTime = &v
+	return s
+}
+
+func (s *ListFundAccountPayRelationResponseBodyData) SetFundAccountId(v string) *ListFundAccountPayRelationResponseBodyData {
+	s.FundAccountId = &v
+	return s
+}
+
+func (s *ListFundAccountPayRelationResponseBodyData) SetFundAccountOwnerAccountId(v string) *ListFundAccountPayRelationResponseBodyData {
+	s.FundAccountOwnerAccountId = &v
+	return s
+}
+
+func (s *ListFundAccountPayRelationResponseBodyData) SetIneffectiveTime(v string) *ListFundAccountPayRelationResponseBodyData {
+	s.IneffectiveTime = &v
+	return s
+}
+
+func (s *ListFundAccountPayRelationResponseBodyData) SetNbid(v string) *ListFundAccountPayRelationResponseBodyData {
+	s.Nbid = &v
+	return s
+}
+
+func (s *ListFundAccountPayRelationResponseBodyData) SetOperatorName(v string) *ListFundAccountPayRelationResponseBodyData {
+	s.OperatorName = &v
+	return s
+}
+
+func (s *ListFundAccountPayRelationResponseBodyData) SetOperatorNo(v string) *ListFundAccountPayRelationResponseBodyData {
+	s.OperatorNo = &v
+	return s
+}
+
+func (s *ListFundAccountPayRelationResponseBodyData) SetOperatorType(v string) *ListFundAccountPayRelationResponseBodyData {
+	s.OperatorType = &v
+	return s
+}
+
+func (s *ListFundAccountPayRelationResponseBodyData) SetRelationType(v string) *ListFundAccountPayRelationResponseBodyData {
+	s.RelationType = &v
+	return s
+}
+
+func (s *ListFundAccountPayRelationResponseBodyData) SetSite(v string) *ListFundAccountPayRelationResponseBodyData {
+	s.Site = &v
+	return s
+}
+
+func (s *ListFundAccountPayRelationResponseBodyData) SetStatus(v string) *ListFundAccountPayRelationResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type ListFundAccountPayRelationResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListFundAccountPayRelationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListFundAccountPayRelationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFundAccountPayRelationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListFundAccountPayRelationResponse) SetHeaders(v map[string]*string) *ListFundAccountPayRelationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListFundAccountPayRelationResponse) SetStatusCode(v int32) *ListFundAccountPayRelationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListFundAccountPayRelationResponse) SetBody(v *ListFundAccountPayRelationResponseBody) *ListFundAccountPayRelationResponse {
+	s.Body = v
+	return s
+}
+
+type SetFundAccountCreditAmountRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 500
+	CreditAmount *string `json:"CreditAmount,omitempty" xml:"CreditAmount,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CNY
+	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// example:
+	//
+	// 1232312
+	FundAccountId *int64 `json:"FundAccountId,omitempty" xml:"FundAccountId,omitempty"`
+}
+
+func (s SetFundAccountCreditAmountRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetFundAccountCreditAmountRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetFundAccountCreditAmountRequest) SetCreditAmount(v string) *SetFundAccountCreditAmountRequest {
+	s.CreditAmount = &v
+	return s
+}
+
+func (s *SetFundAccountCreditAmountRequest) SetCurrency(v string) *SetFundAccountCreditAmountRequest {
+	s.Currency = &v
+	return s
+}
+
+func (s *SetFundAccountCreditAmountRequest) SetFundAccountId(v int64) *SetFundAccountCreditAmountRequest {
+	s.FundAccountId = &v
+	return s
+}
+
+type SetFundAccountCreditAmountResponseBody struct {
+	// example:
+	//
+	// {}
+	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// example:
+	//
+	// 79EE7556-0CFD-44EB-9CD6-B3B526E3A85F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SetFundAccountCreditAmountResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetFundAccountCreditAmountResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetFundAccountCreditAmountResponseBody) SetMetadata(v interface{}) *SetFundAccountCreditAmountResponseBody {
+	s.Metadata = v
+	return s
+}
+
+func (s *SetFundAccountCreditAmountResponseBody) SetRequestId(v string) *SetFundAccountCreditAmountResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SetFundAccountCreditAmountResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetFundAccountCreditAmountResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SetFundAccountCreditAmountResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetFundAccountCreditAmountResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetFundAccountCreditAmountResponse) SetHeaders(v map[string]*string) *SetFundAccountCreditAmountResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetFundAccountCreditAmountResponse) SetStatusCode(v int32) *SetFundAccountCreditAmountResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SetFundAccountCreditAmountResponse) SetBody(v *SetFundAccountCreditAmountResponseBody) *SetFundAccountCreditAmountResponse {
+	s.Body = v
+	return s
+}
+
+type SetSavingPlanUserDeductRuleRequest struct {
+	EcIdAccountIds  []*SetSavingPlanUserDeductRuleRequestEcIdAccountIds  `json:"EcIdAccountIds,omitempty" xml:"EcIdAccountIds,omitempty" type:"Repeated"`
+	Nbid            *string                                              `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+	SpnInstanceCode *string                                              `json:"SpnInstanceCode,omitempty" xml:"SpnInstanceCode,omitempty"`
+	UserDeductRules []*SetSavingPlanUserDeductRuleRequestUserDeductRules `json:"UserDeductRules,omitempty" xml:"UserDeductRules,omitempty" type:"Repeated"`
+}
+
+func (s SetSavingPlanUserDeductRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetSavingPlanUserDeductRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetSavingPlanUserDeductRuleRequest) SetEcIdAccountIds(v []*SetSavingPlanUserDeductRuleRequestEcIdAccountIds) *SetSavingPlanUserDeductRuleRequest {
+	s.EcIdAccountIds = v
+	return s
+}
+
+func (s *SetSavingPlanUserDeductRuleRequest) SetNbid(v string) *SetSavingPlanUserDeductRuleRequest {
+	s.Nbid = &v
+	return s
+}
+
+func (s *SetSavingPlanUserDeductRuleRequest) SetSpnInstanceCode(v string) *SetSavingPlanUserDeductRuleRequest {
+	s.SpnInstanceCode = &v
+	return s
+}
+
+func (s *SetSavingPlanUserDeductRuleRequest) SetUserDeductRules(v []*SetSavingPlanUserDeductRuleRequestUserDeductRules) *SetSavingPlanUserDeductRuleRequest {
+	s.UserDeductRules = v
+	return s
+}
+
+type SetSavingPlanUserDeductRuleRequestEcIdAccountIds struct {
+	AccountIds []*int64 `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
+	EcId       *string  `json:"EcId,omitempty" xml:"EcId,omitempty"`
+}
+
+func (s SetSavingPlanUserDeductRuleRequestEcIdAccountIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetSavingPlanUserDeductRuleRequestEcIdAccountIds) GoString() string {
+	return s.String()
+}
+
+func (s *SetSavingPlanUserDeductRuleRequestEcIdAccountIds) SetAccountIds(v []*int64) *SetSavingPlanUserDeductRuleRequestEcIdAccountIds {
+	s.AccountIds = v
+	return s
+}
+
+func (s *SetSavingPlanUserDeductRuleRequestEcIdAccountIds) SetEcId(v string) *SetSavingPlanUserDeductRuleRequestEcIdAccountIds {
+	s.EcId = &v
+	return s
+}
+
+type SetSavingPlanUserDeductRuleRequestUserDeductRules struct {
+	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	ModuleCode    *string `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
+	SkipDeduct    *bool   `json:"SkipDeduct,omitempty" xml:"SkipDeduct,omitempty"`
+}
+
+func (s SetSavingPlanUserDeductRuleRequestUserDeductRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetSavingPlanUserDeductRuleRequestUserDeductRules) GoString() string {
+	return s.String()
+}
+
+func (s *SetSavingPlanUserDeductRuleRequestUserDeductRules) SetCommodityCode(v string) *SetSavingPlanUserDeductRuleRequestUserDeductRules {
+	s.CommodityCode = &v
+	return s
+}
+
+func (s *SetSavingPlanUserDeductRuleRequestUserDeductRules) SetModuleCode(v string) *SetSavingPlanUserDeductRuleRequestUserDeductRules {
+	s.ModuleCode = &v
+	return s
+}
+
+func (s *SetSavingPlanUserDeductRuleRequestUserDeductRules) SetSkipDeduct(v bool) *SetSavingPlanUserDeductRuleRequestUserDeductRules {
+	s.SkipDeduct = &v
+	return s
+}
+
+type SetSavingPlanUserDeductRuleShrinkRequest struct {
+	EcIdAccountIdsShrink  *string `json:"EcIdAccountIds,omitempty" xml:"EcIdAccountIds,omitempty"`
+	Nbid                  *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+	SpnInstanceCode       *string `json:"SpnInstanceCode,omitempty" xml:"SpnInstanceCode,omitempty"`
+	UserDeductRulesShrink *string `json:"UserDeductRules,omitempty" xml:"UserDeductRules,omitempty"`
+}
+
+func (s SetSavingPlanUserDeductRuleShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetSavingPlanUserDeductRuleShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetSavingPlanUserDeductRuleShrinkRequest) SetEcIdAccountIdsShrink(v string) *SetSavingPlanUserDeductRuleShrinkRequest {
+	s.EcIdAccountIdsShrink = &v
+	return s
+}
+
+func (s *SetSavingPlanUserDeductRuleShrinkRequest) SetNbid(v string) *SetSavingPlanUserDeductRuleShrinkRequest {
+	s.Nbid = &v
+	return s
+}
+
+func (s *SetSavingPlanUserDeductRuleShrinkRequest) SetSpnInstanceCode(v string) *SetSavingPlanUserDeductRuleShrinkRequest {
+	s.SpnInstanceCode = &v
+	return s
+}
+
+func (s *SetSavingPlanUserDeductRuleShrinkRequest) SetUserDeductRulesShrink(v string) *SetSavingPlanUserDeductRuleShrinkRequest {
+	s.UserDeductRulesShrink = &v
+	return s
+}
+
+type SetSavingPlanUserDeductRuleResponseBody struct {
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SetSavingPlanUserDeductRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetSavingPlanUserDeductRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetSavingPlanUserDeductRuleResponseBody) SetData(v bool) *SetSavingPlanUserDeductRuleResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *SetSavingPlanUserDeductRuleResponseBody) SetRequestId(v string) *SetSavingPlanUserDeductRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SetSavingPlanUserDeductRuleResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetSavingPlanUserDeductRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SetSavingPlanUserDeductRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetSavingPlanUserDeductRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetSavingPlanUserDeductRuleResponse) SetHeaders(v map[string]*string) *SetSavingPlanUserDeductRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetSavingPlanUserDeductRuleResponse) SetStatusCode(v int32) *SetSavingPlanUserDeductRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SetSavingPlanUserDeductRuleResponse) SetBody(v *SetSavingPlanUserDeductRuleResponseBody) *SetSavingPlanUserDeductRuleResponse {
+	s.Body = v
+	return s
+}
+
+type Client struct {
+	openapi.Client
+}
+
+func NewClient(config *openapi.Config) (*Client, error) {
+	client := new(Client)
+	err := client.Init(config)
+	return client, err
+}
+
+func (client *Client) Init(config *openapi.Config) (_err error) {
+	_err = client.Client.Init(config)
+	if _err != nil {
+		return _err
+	}
+	client.EndpointRule = tea.String("regional")
+	client.EndpointMap = map[string]*string{
+		"cn-hangzhou":                 tea.String("business.aliyuncs.com"),
+		"cn-shanghai":                 tea.String("business.aliyuncs.com"),
+		"ap-southeast-1":              tea.String("business.ap-southeast-1.aliyuncs.com"),
+		"ap-northeast-1":              tea.String("business.ap-southeast-1.aliyuncs.com"),
+		"ap-northeast-2":              tea.String("business.ap-southeast-1.aliyuncs.com"),
+		"ap-northeast-2-pop":          tea.String("business.ap-southeast-1.aliyuncs.com"),
+		"ap-south-1":                  tea.String("business.ap-southeast-1.aliyuncs.com"),
+		"ap-southeast-2":              tea.String("business.ap-southeast-1.aliyuncs.com"),
+		"ap-southeast-3":              tea.String("business.ap-southeast-1.aliyuncs.com"),
+		"ap-southeast-5":              tea.String("business.ap-southeast-1.aliyuncs.com"),
+		"cn-beijing":                  tea.String("business.aliyuncs.com"),
+		"cn-beijing-finance-1":        tea.String("business.aliyuncs.com"),
+		"cn-beijing-finance-pop":      tea.String("business.aliyuncs.com"),
+		"cn-beijing-gov-1":            tea.String("business.aliyuncs.com"),
+		"cn-beijing-nu16-b01":         tea.String("business.aliyuncs.com"),
+		"cn-chengdu":                  tea.String("business.aliyuncs.com"),
+		"cn-edge-1":                   tea.String("business.aliyuncs.com"),
+		"cn-fujian":                   tea.String("business.aliyuncs.com"),
+		"cn-haidian-cm12-c01":         tea.String("business.aliyuncs.com"),
+		"cn-hangzhou-bj-b01":          tea.String("business.aliyuncs.com"),
+		"cn-hangzhou-finance":         tea.String("business.aliyuncs.com"),
+		"cn-hangzhou-internal-prod-1": tea.String("business.aliyuncs.com"),
+		"cn-hangzhou-internal-test-1": tea.String("business.aliyuncs.com"),
+		"cn-hangzhou-internal-test-2": tea.String("business.aliyuncs.com"),
+		"cn-hangzhou-internal-test-3": tea.String("business.aliyuncs.com"),
+		"cn-hangzhou-test-306":        tea.String("business.aliyuncs.com"),
+		"cn-hongkong":                 tea.String("business.aliyuncs.com"),
+		"cn-hongkong-finance-pop":     tea.String("business.aliyuncs.com"),
+		"cn-huhehaote":                tea.String("business.aliyuncs.com"),
+		"cn-huhehaote-nebula-1":       tea.String("business.aliyuncs.com"),
+		"cn-north-2-gov-1":            tea.String("business.aliyuncs.com"),
+		"cn-qingdao":                  tea.String("business.aliyuncs.com"),
+		"cn-qingdao-nebula":           tea.String("business.aliyuncs.com"),
+		"cn-shanghai-et15-b01":        tea.String("business.aliyuncs.com"),
+		"cn-shanghai-et2-b01":         tea.String("business.aliyuncs.com"),
+		"cn-shanghai-finance-1":       tea.String("business.aliyuncs.com"),
+		"cn-shanghai-inner":           tea.String("business.aliyuncs.com"),
+		"cn-shanghai-internal-test-1": tea.String("business.aliyuncs.com"),
+		"cn-shenzhen":                 tea.String("business.aliyuncs.com"),
+		"cn-shenzhen-finance-1":       tea.String("business.aliyuncs.com"),
+		"cn-shenzhen-inner":           tea.String("business.aliyuncs.com"),
+		"cn-shenzhen-st4-d01":         tea.String("business.aliyuncs.com"),
+		"cn-shenzhen-su18-b01":        tea.String("business.aliyuncs.com"),
+		"cn-wuhan":                    tea.String("business.aliyuncs.com"),
+		"cn-wulanchabu":               tea.String("business.aliyuncs.com"),
+		"cn-yushanfang":               tea.String("business.aliyuncs.com"),
+		"cn-zhangbei":                 tea.String("business.aliyuncs.com"),
+		"cn-zhangbei-na61-b01":        tea.String("business.aliyuncs.com"),
+		"cn-zhangjiakou":              tea.String("business.aliyuncs.com"),
+		"cn-zhangjiakou-na62-a01":     tea.String("business.aliyuncs.com"),
+		"cn-zhengzhou-nebula-1":       tea.String("business.aliyuncs.com"),
+		"eu-central-1":                tea.String("business.ap-southeast-1.aliyuncs.com"),
+		"eu-west-1":                   tea.String("business.ap-southeast-1.aliyuncs.com"),
+		"eu-west-1-oxs":               tea.String("business.ap-southeast-1.aliyuncs.com"),
+		"me-east-1":                   tea.String("business.ap-southeast-1.aliyuncs.com"),
+		"rus-west-1-pop":              tea.String("business.ap-southeast-1.aliyuncs.com"),
+		"us-east-1":                   tea.String("business.ap-southeast-1.aliyuncs.com"),
+		"us-west-1":                   tea.String("business.ap-southeast-1.aliyuncs.com"),
+	}
+	_err = client.CheckConfig(config)
+	if _err != nil {
+		return _err
+	}
+	client.Endpoint, _err = client.GetEndpoint(tea.String("bssopenapi"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
+	if _err != nil {
+		return _err
+	}
+
+	return nil
+}
+
+func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
+	if !tea.BoolValue(util.Empty(endpoint)) {
+		_result = endpoint
+		return _result, _err
+	}
+
+	if !tea.BoolValue(util.IsUnset(endpointMap)) && !tea.BoolValue(util.Empty(endpointMap[tea.StringValue(regionId)])) {
+		_result = endpointMap[tea.StringValue(regionId)]
+		return _result, _err
+	}
+
+	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 取消资金账户低额预警
+//
+// @param request - CancelFundAccountLowAvailableAmountAlarmRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelFundAccountLowAvailableAmountAlarmResponse
+func (client *Client) CancelFundAccountLowAvailableAmountAlarmWithOptions(request *CancelFundAccountLowAvailableAmountAlarmRequest, runtime *util.RuntimeOptions) (_result *CancelFundAccountLowAvailableAmountAlarmResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FundAccountId)) {
+		body["FundAccountId"] = request.FundAccountId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelFundAccountLowAvailableAmountAlarm"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CancelFundAccountLowAvailableAmountAlarmResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CancelFundAccountLowAvailableAmountAlarmResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 取消资金账户低额预警
+//
+// @param request - CancelFundAccountLowAvailableAmountAlarmRequest
+//
+// @return CancelFundAccountLowAvailableAmountAlarmResponse
+func (client *Client) CancelFundAccountLowAvailableAmountAlarm(request *CancelFundAccountLowAvailableAmountAlarmRequest) (_result *CancelFundAccountLowAvailableAmountAlarmResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CancelFundAccountLowAvailableAmountAlarmResponse{}
+	_body, _err := client.CancelFundAccountLowAvailableAmountAlarmWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建资金账户划拨/回收
+//
+// @param request - CreateFundAccountTransferRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateFundAccountTransferResponse
+func (client *Client) CreateFundAccountTransferWithOptions(request *CreateFundAccountTransferRequest, runtime *util.RuntimeOptions) (_result *CreateFundAccountTransferResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Amount)) {
+		body["Amount"] = request.Amount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Currency)) {
+		body["Currency"] = request.Currency
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FinanceType)) {
+		body["FinanceType"] = request.FinanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FromFundAccountId)) {
+		body["FromFundAccountId"] = request.FromFundAccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		body["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ToFundAccountId)) {
+		body["ToFundAccountId"] = request.ToFundAccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransferType)) {
+		body["TransferType"] = request.TransferType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateFundAccountTransfer"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateFundAccountTransferResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateFundAccountTransferResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 创建资金账户划拨/回收
+//
+// @param request - CreateFundAccountTransferRequest
+//
+// @return CreateFundAccountTransferResponse
+func (client *Client) CreateFundAccountTransfer(request *CreateFundAccountTransferRequest) (_result *CreateFundAccountTransferResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateFundAccountTransferResponse{}
+	_body, _err := client.CreateFundAccountTransferWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询资金账户可用金
+//
+// @param request - GetFundAccountAvailableAmountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetFundAccountAvailableAmountResponse
+func (client *Client) GetFundAccountAvailableAmountWithOptions(request *GetFundAccountAvailableAmountRequest, runtime *util.RuntimeOptions) (_result *GetFundAccountAvailableAmountResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FundAccountId)) {
+		body["FundAccountId"] = request.FundAccountId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetFundAccountAvailableAmount"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetFundAccountAvailableAmountResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetFundAccountAvailableAmountResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询资金账户可用金
+//
+// @param request - GetFundAccountAvailableAmountRequest
+//
+// @return GetFundAccountAvailableAmountResponse
+func (client *Client) GetFundAccountAvailableAmount(request *GetFundAccountAvailableAmountRequest) (_result *GetFundAccountAvailableAmountResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetFundAccountAvailableAmountResponse{}
+	_body, _err := client.GetFundAccountAvailableAmountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询资金账户可分配信控额度
+//
+// @param request - GetFundAccountCanAllocateCreditAmountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetFundAccountCanAllocateCreditAmountResponse
+func (client *Client) GetFundAccountCanAllocateCreditAmountWithOptions(request *GetFundAccountCanAllocateCreditAmountRequest, runtime *util.RuntimeOptions) (_result *GetFundAccountCanAllocateCreditAmountResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FundAccountId)) {
+		body["FundAccountId"] = request.FundAccountId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetFundAccountCanAllocateCreditAmount"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetFundAccountCanAllocateCreditAmountResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetFundAccountCanAllocateCreditAmountResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询资金账户可分配信控额度
+//
+// @param request - GetFundAccountCanAllocateCreditAmountRequest
+//
+// @return GetFundAccountCanAllocateCreditAmountResponse
+func (client *Client) GetFundAccountCanAllocateCreditAmount(request *GetFundAccountCanAllocateCreditAmountRequest) (_result *GetFundAccountCanAllocateCreditAmountResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetFundAccountCanAllocateCreditAmountResponse{}
+	_body, _err := client.GetFundAccountCanAllocateCreditAmountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询资金账户可回收金额
+//
+// @param request - GetFundAccountCanRecycleAmountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetFundAccountCanRecycleAmountResponse
+func (client *Client) GetFundAccountCanRecycleAmountWithOptions(request *GetFundAccountCanRecycleAmountRequest, runtime *util.RuntimeOptions) (_result *GetFundAccountCanRecycleAmountResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Currency)) {
+		body["Currency"] = request.Currency
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecycleFromFundAccountId)) {
+		body["RecycleFromFundAccountId"] = request.RecycleFromFundAccountId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetFundAccountCanRecycleAmount"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetFundAccountCanRecycleAmountResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetFundAccountCanRecycleAmountResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询资金账户可回收金额
+//
+// @param request - GetFundAccountCanRecycleAmountRequest
+//
+// @return GetFundAccountCanRecycleAmountResponse
+func (client *Client) GetFundAccountCanRecycleAmount(request *GetFundAccountCanRecycleAmountRequest) (_result *GetFundAccountCanRecycleAmountResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetFundAccountCanRecycleAmountResponse{}
+	_body, _err := client.GetFundAccountCanRecycleAmountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询资金账户的可转出金额
+//
+// @param request - GetFundAccountCanTransferAmountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetFundAccountCanTransferAmountResponse
+func (client *Client) GetFundAccountCanTransferAmountWithOptions(request *GetFundAccountCanTransferAmountRequest, runtime *util.RuntimeOptions) (_result *GetFundAccountCanTransferAmountResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Currency)) {
+		body["Currency"] = request.Currency
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FundAccountId)) {
+		body["FundAccountId"] = request.FundAccountId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetFundAccountCanTransferAmount"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetFundAccountCanTransferAmountResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetFundAccountCanTransferAmountResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询资金账户的可转出金额
+//
+// @param request - GetFundAccountCanTransferAmountRequest
+//
+// @return GetFundAccountCanTransferAmountResponse
+func (client *Client) GetFundAccountCanTransferAmount(request *GetFundAccountCanTransferAmountRequest) (_result *GetFundAccountCanTransferAmountResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetFundAccountCanTransferAmountResponse{}
+	_body, _err := client.GetFundAccountCanTransferAmountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询资金账户可提现金额
+//
+// @param request - GetFundAccountCanWithdrawAmountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetFundAccountCanWithdrawAmountResponse
+func (client *Client) GetFundAccountCanWithdrawAmountWithOptions(request *GetFundAccountCanWithdrawAmountRequest, runtime *util.RuntimeOptions) (_result *GetFundAccountCanWithdrawAmountResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FundAccountId)) {
+		body["FundAccountId"] = request.FundAccountId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetFundAccountCanWithdrawAmount"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetFundAccountCanWithdrawAmountResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetFundAccountCanWithdrawAmountResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询资金账户可提现金额
+//
+// @param request - GetFundAccountCanWithdrawAmountRequest
+//
+// @return GetFundAccountCanWithdrawAmountResponse
+func (client *Client) GetFundAccountCanWithdrawAmount(request *GetFundAccountCanWithdrawAmountRequest) (_result *GetFundAccountCanWithdrawAmountResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetFundAccountCanWithdrawAmountResponse{}
+	_body, _err := client.GetFundAccountCanWithdrawAmountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询资金账户低额预警
+//
+// @param request - GetFundAccountLowAvailableAmountAlarmRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetFundAccountLowAvailableAmountAlarmResponse
+func (client *Client) GetFundAccountLowAvailableAmountAlarmWithOptions(request *GetFundAccountLowAvailableAmountAlarmRequest, runtime *util.RuntimeOptions) (_result *GetFundAccountLowAvailableAmountAlarmResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FundAccountId)) {
+		body["FundAccountId"] = request.FundAccountId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetFundAccountLowAvailableAmountAlarm"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetFundAccountLowAvailableAmountAlarmResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetFundAccountLowAvailableAmountAlarmResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询资金账户低额预警
+//
+// @param request - GetFundAccountLowAvailableAmountAlarmRequest
+//
+// @return GetFundAccountLowAvailableAmountAlarmResponse
+func (client *Client) GetFundAccountLowAvailableAmountAlarm(request *GetFundAccountLowAvailableAmountAlarmRequest) (_result *GetFundAccountLowAvailableAmountAlarmResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetFundAccountLowAvailableAmountAlarmResponse{}
+	_body, _err := client.GetFundAccountLowAvailableAmountAlarmWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询资金账户收支明细
+//
+// @param tmpReq - GetFundAccountTransactionDetailsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetFundAccountTransactionDetailsResponse
+func (client *Client) GetFundAccountTransactionDetailsWithOptions(tmpReq *GetFundAccountTransactionDetailsRequest, runtime *util.RuntimeOptions) (_result *GetFundAccountTransactionDetailsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GetFundAccountTransactionDetailsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.TransactionChannelList)) {
+		request.TransactionChannelListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TransactionChannelList, tea.String("TransactionChannelList"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TransactionTypeList)) {
+		request.TransactionTypeListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TransactionTypeList, tea.String("TransactionTypeList"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BillNumber)) {
+		body["BillNumber"] = request.BillNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelTransactionNumber)) {
+		body["ChannelTransactionNumber"] = request.ChannelTransactionNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FundAccountId)) {
+		body["FundAccountId"] = request.FundAccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		body["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransactionChannelListShrink)) {
+		body["TransactionChannelList"] = request.TransactionChannelListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransactionDirection)) {
+		body["TransactionDirection"] = request.TransactionDirection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransactionNumber)) {
+		body["TransactionNumber"] = request.TransactionNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransactionType)) {
+		body["TransactionType"] = request.TransactionType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransactionTypeListShrink)) {
+		body["TransactionTypeList"] = request.TransactionTypeListShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetFundAccountTransactionDetails"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetFundAccountTransactionDetailsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetFundAccountTransactionDetailsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询资金账户收支明细
+//
+// @param request - GetFundAccountTransactionDetailsRequest
+//
+// @return GetFundAccountTransactionDetailsResponse
+func (client *Client) GetFundAccountTransactionDetails(request *GetFundAccountTransactionDetailsRequest) (_result *GetFundAccountTransactionDetailsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetFundAccountTransactionDetailsResponse{}
+	_body, _err := client.GetFundAccountTransactionDetailsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询资金账户列表
+//
+// @param request - ListFundAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListFundAccountResponse
+func (client *Client) ListFundAccountWithOptions(request *ListFundAccountRequest, runtime *util.RuntimeOptions) (_result *ListFundAccountResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Nbid)) {
+		query["Nbid"] = request.Nbid
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.QueryOnlyInUse)) {
+		body["QueryOnlyInUse"] = request.QueryOnlyInUse
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryOnlyManage)) {
+		body["QueryOnlyManage"] = request.QueryOnlyManage
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListFundAccount"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListFundAccountResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListFundAccountResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询资金账户列表
+//
+// @param request - ListFundAccountRequest
+//
+// @return ListFundAccountResponse
+func (client *Client) ListFundAccount(request *ListFundAccountRequest) (_result *ListFundAccountResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListFundAccountResponse{}
+	_body, _err := client.ListFundAccountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询资金账户的付款关系
+//
+// @param request - ListFundAccountPayRelationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListFundAccountPayRelationResponse
+func (client *Client) ListFundAccountPayRelationWithOptions(request *ListFundAccountPayRelationRequest, runtime *util.RuntimeOptions) (_result *ListFundAccountPayRelationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Nbid)) {
+		query["Nbid"] = request.Nbid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FundAccountId)) {
+		body["FundAccountId"] = request.FundAccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		body["Status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListFundAccountPayRelation"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListFundAccountPayRelationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListFundAccountPayRelationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询资金账户的付款关系
+//
+// @param request - ListFundAccountPayRelationRequest
+//
+// @return ListFundAccountPayRelationResponse
+func (client *Client) ListFundAccountPayRelation(request *ListFundAccountPayRelationRequest) (_result *ListFundAccountPayRelationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListFundAccountPayRelationResponse{}
+	_body, _err := client.ListFundAccountPayRelationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 设置资金账户的信控限额
+//
+// @param request - SetFundAccountCreditAmountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetFundAccountCreditAmountResponse
+func (client *Client) SetFundAccountCreditAmountWithOptions(request *SetFundAccountCreditAmountRequest, runtime *util.RuntimeOptions) (_result *SetFundAccountCreditAmountResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CreditAmount)) {
+		body["CreditAmount"] = request.CreditAmount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Currency)) {
+		body["Currency"] = request.Currency
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FundAccountId)) {
+		body["FundAccountId"] = request.FundAccountId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetFundAccountCreditAmount"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetFundAccountCreditAmountResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetFundAccountCreditAmountResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 设置资金账户的信控限额
+//
+// @param request - SetFundAccountCreditAmountRequest
+//
+// @return SetFundAccountCreditAmountResponse
+func (client *Client) SetFundAccountCreditAmount(request *SetFundAccountCreditAmountRequest) (_result *SetFundAccountCreditAmountResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetFundAccountCreditAmountResponse{}
+	_body, _err := client.SetFundAccountCreditAmountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 设置节省计划用户级抵扣规则
+//
+// @param tmpReq - SetSavingPlanUserDeductRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetSavingPlanUserDeductRuleResponse
+func (client *Client) SetSavingPlanUserDeductRuleWithOptions(tmpReq *SetSavingPlanUserDeductRuleRequest, runtime *util.RuntimeOptions) (_result *SetSavingPlanUserDeductRuleResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SetSavingPlanUserDeductRuleShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.EcIdAccountIds)) {
+		request.EcIdAccountIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EcIdAccountIds, tea.String("EcIdAccountIds"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserDeductRules)) {
+		request.UserDeductRulesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserDeductRules, tea.String("UserDeductRules"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EcIdAccountIdsShrink)) {
+		query["EcIdAccountIds"] = request.EcIdAccountIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Nbid)) {
+		query["Nbid"] = request.Nbid
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SpnInstanceCode)) {
+		body["SpnInstanceCode"] = request.SpnInstanceCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserDeductRulesShrink)) {
+		body["UserDeductRules"] = request.UserDeductRulesShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetSavingPlanUserDeductRule"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetSavingPlanUserDeductRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetSavingPlanUserDeductRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 设置节省计划用户级抵扣规则
+//
+// @param request - SetSavingPlanUserDeductRuleRequest
+//
+// @return SetSavingPlanUserDeductRuleResponse
+func (client *Client) SetSavingPlanUserDeductRule(request *SetSavingPlanUserDeductRuleRequest) (_result *SetSavingPlanUserDeductRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetSavingPlanUserDeductRuleResponse{}
+	_body, _err := client.SetSavingPlanUserDeductRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
