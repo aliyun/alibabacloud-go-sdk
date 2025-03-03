@@ -585,10 +585,11 @@ type CreateTaskRequestParametersTranscription struct {
 	// example:
 	//
 	// false
-	DiarizationEnabled *bool   `json:"DiarizationEnabled,omitempty" xml:"DiarizationEnabled,omitempty"`
-	Model              *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	OutputLevel        *int32  `json:"OutputLevel,omitempty" xml:"OutputLevel,omitempty"`
-	PhraseId           *string `json:"PhraseId,omitempty" xml:"PhraseId,omitempty"`
+	DiarizationEnabled         *bool   `json:"DiarizationEnabled,omitempty" xml:"DiarizationEnabled,omitempty"`
+	Model                      *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	OutputLevel                *int32  `json:"OutputLevel,omitempty" xml:"OutputLevel,omitempty"`
+	PhraseId                   *string `json:"PhraseId,omitempty" xml:"PhraseId,omitempty"`
+	RealtimeDiarizationEnabled *bool   `json:"RealtimeDiarizationEnabled,omitempty" xml:"RealtimeDiarizationEnabled,omitempty"`
 }
 
 func (s CreateTaskRequestParametersTranscription) String() string {
@@ -631,6 +632,11 @@ func (s *CreateTaskRequestParametersTranscription) SetOutputLevel(v int32) *Crea
 
 func (s *CreateTaskRequestParametersTranscription) SetPhraseId(v string) *CreateTaskRequestParametersTranscription {
 	s.PhraseId = &v
+	return s
+}
+
+func (s *CreateTaskRequestParametersTranscription) SetRealtimeDiarizationEnabled(v bool) *CreateTaskRequestParametersTranscription {
+	s.RealtimeDiarizationEnabled = &v
 	return s
 }
 
