@@ -205,6 +205,104 @@ func (s *ChangeResourceGroupResponse) SetBody(v *ChangeResourceGroupResponseBody
 	return s
 }
 
+type CloseSessionRequest struct {
+	// example:
+	//
+	// i207023871669364793713
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// 03f53c719015a9ad4f4f55d66cac2dac161b18e8065ca75a3220b89de389c980
+	SessionToken *string `json:"SessionToken,omitempty" xml:"SessionToken,omitempty"`
+}
+
+func (s CloseSessionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CloseSessionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CloseSessionRequest) SetSessionId(v string) *CloseSessionRequest {
+	s.SessionId = &v
+	return s
+}
+
+func (s *CloseSessionRequest) SetSessionToken(v string) *CloseSessionRequest {
+	s.SessionToken = &v
+	return s
+}
+
+type CloseSessionResponseBody struct {
+	// example:
+	//
+	// 07AA3A1F-321E-50D8-B834-88C411331C94
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// i206495551737511455528
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// ClosingActive
+	//
+	// example:
+	//
+	// Inactive
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+}
+
+func (s CloseSessionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CloseSessionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CloseSessionResponseBody) SetRequestId(v string) *CloseSessionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CloseSessionResponseBody) SetSessionId(v string) *CloseSessionResponseBody {
+	s.SessionId = &v
+	return s
+}
+
+func (s *CloseSessionResponseBody) SetState(v string) *CloseSessionResponseBody {
+	s.State = &v
+	return s
+}
+
+type CloseSessionResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CloseSessionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CloseSessionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CloseSessionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CloseSessionResponse) SetHeaders(v map[string]*string) *CloseSessionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CloseSessionResponse) SetStatusCode(v int32) *CloseSessionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CloseSessionResponse) SetBody(v *CloseSessionResponseBody) *CloseSessionResponse {
+	s.Body = v
+	return s
+}
+
 type CreateClusterRequest struct {
 	// Cluster description
 	//
@@ -1589,6 +1687,680 @@ func (s *CreateDiagnosticTaskResponse) SetBody(v *CreateDiagnosticTaskResponseBo
 	return s
 }
 
+type CreateNetTestTaskRequest struct {
+	// example:
+	//
+	// i119982311660892626523
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// Eflo-YJ-Test-Cluster
+	ClusterName *string                            `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	CommTest    *CreateNetTestTaskRequestCommTest  `json:"CommTest,omitempty" xml:"CommTest,omitempty" type:"Struct"`
+	DelayTest   *CreateNetTestTaskRequestDelayTest `json:"DelayTest,omitempty" xml:"DelayTest,omitempty" type:"Struct"`
+	// example:
+	//
+	// DelayTest
+	NetTestType *string `json:"NetTestType,omitempty" xml:"NetTestType,omitempty"`
+	// example:
+	//
+	// 2
+	NetworkMode *string `json:"NetworkMode,omitempty" xml:"NetworkMode,omitempty"`
+	// example:
+	//
+	// 23604
+	Port        *string                              `json:"Port,omitempty" xml:"Port,omitempty"`
+	TrafficTest *CreateNetTestTaskRequestTrafficTest `json:"TrafficTest,omitempty" xml:"TrafficTest,omitempty" type:"Struct"`
+}
+
+func (s CreateNetTestTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateNetTestTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateNetTestTaskRequest) SetClusterId(v string) *CreateNetTestTaskRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *CreateNetTestTaskRequest) SetClusterName(v string) *CreateNetTestTaskRequest {
+	s.ClusterName = &v
+	return s
+}
+
+func (s *CreateNetTestTaskRequest) SetCommTest(v *CreateNetTestTaskRequestCommTest) *CreateNetTestTaskRequest {
+	s.CommTest = v
+	return s
+}
+
+func (s *CreateNetTestTaskRequest) SetDelayTest(v *CreateNetTestTaskRequestDelayTest) *CreateNetTestTaskRequest {
+	s.DelayTest = v
+	return s
+}
+
+func (s *CreateNetTestTaskRequest) SetNetTestType(v string) *CreateNetTestTaskRequest {
+	s.NetTestType = &v
+	return s
+}
+
+func (s *CreateNetTestTaskRequest) SetNetworkMode(v string) *CreateNetTestTaskRequest {
+	s.NetworkMode = &v
+	return s
+}
+
+func (s *CreateNetTestTaskRequest) SetPort(v string) *CreateNetTestTaskRequest {
+	s.Port = &v
+	return s
+}
+
+func (s *CreateNetTestTaskRequest) SetTrafficTest(v *CreateNetTestTaskRequestTrafficTest) *CreateNetTestTaskRequest {
+	s.TrafficTest = v
+	return s
+}
+
+type CreateNetTestTaskRequestCommTest struct {
+	// example:
+	//
+	// 1
+	GPUNum *int64                                   `json:"GPUNum,omitempty" xml:"GPUNum,omitempty"`
+	Hosts  []*CreateNetTestTaskRequestCommTestHosts `json:"Hosts,omitempty" xml:"Hosts,omitempty" type:"Repeated"`
+	// example:
+	//
+	// intention_v4
+	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// example:
+	//
+	// ACCL
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateNetTestTaskRequestCommTest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateNetTestTaskRequestCommTest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateNetTestTaskRequestCommTest) SetGPUNum(v int64) *CreateNetTestTaskRequestCommTest {
+	s.GPUNum = &v
+	return s
+}
+
+func (s *CreateNetTestTaskRequestCommTest) SetHosts(v []*CreateNetTestTaskRequestCommTestHosts) *CreateNetTestTaskRequestCommTest {
+	s.Hosts = v
+	return s
+}
+
+func (s *CreateNetTestTaskRequestCommTest) SetModel(v string) *CreateNetTestTaskRequestCommTest {
+	s.Model = &v
+	return s
+}
+
+func (s *CreateNetTestTaskRequestCommTest) SetType(v string) *CreateNetTestTaskRequestCommTest {
+	s.Type = &v
+	return s
+}
+
+type CreateNetTestTaskRequestCommTestHosts struct {
+	// example:
+	//
+	// 169.253.253.15
+	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
+	// example:
+	//
+	// e01-tw-bqisacl3z6l
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// example:
+	//
+	// i111670831721110797708
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// VBw
+	ServerName *string `json:"ServerName,omitempty" xml:"ServerName,omitempty"`
+}
+
+func (s CreateNetTestTaskRequestCommTestHosts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateNetTestTaskRequestCommTestHosts) GoString() string {
+	return s.String()
+}
+
+func (s *CreateNetTestTaskRequestCommTestHosts) SetIP(v string) *CreateNetTestTaskRequestCommTestHosts {
+	s.IP = &v
+	return s
+}
+
+func (s *CreateNetTestTaskRequestCommTestHosts) SetNodeId(v string) *CreateNetTestTaskRequestCommTestHosts {
+	s.NodeId = &v
+	return s
+}
+
+func (s *CreateNetTestTaskRequestCommTestHosts) SetResourceId(v string) *CreateNetTestTaskRequestCommTestHosts {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *CreateNetTestTaskRequestCommTestHosts) SetServerName(v string) *CreateNetTestTaskRequestCommTestHosts {
+	s.ServerName = &v
+	return s
+}
+
+type CreateNetTestTaskRequestDelayTest struct {
+	Hosts []*CreateNetTestTaskRequestDelayTestHosts `json:"Hosts,omitempty" xml:"Hosts,omitempty" type:"Repeated"`
+}
+
+func (s CreateNetTestTaskRequestDelayTest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateNetTestTaskRequestDelayTest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateNetTestTaskRequestDelayTest) SetHosts(v []*CreateNetTestTaskRequestDelayTestHosts) *CreateNetTestTaskRequestDelayTest {
+	s.Hosts = v
+	return s
+}
+
+type CreateNetTestTaskRequestDelayTestHosts struct {
+	// example:
+	//
+	// bond1
+	Bond *string `json:"Bond,omitempty" xml:"Bond,omitempty"`
+	// example:
+	//
+	// 125.210.225.48
+	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
+	// example:
+	//
+	// e01-cn-fou43an0a05
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// example:
+	//
+	// e01-cn-bcd3u1aee06
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// NQU
+	ServerName *string `json:"ServerName,omitempty" xml:"ServerName,omitempty"`
+}
+
+func (s CreateNetTestTaskRequestDelayTestHosts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateNetTestTaskRequestDelayTestHosts) GoString() string {
+	return s.String()
+}
+
+func (s *CreateNetTestTaskRequestDelayTestHosts) SetBond(v string) *CreateNetTestTaskRequestDelayTestHosts {
+	s.Bond = &v
+	return s
+}
+
+func (s *CreateNetTestTaskRequestDelayTestHosts) SetIP(v string) *CreateNetTestTaskRequestDelayTestHosts {
+	s.IP = &v
+	return s
+}
+
+func (s *CreateNetTestTaskRequestDelayTestHosts) SetNodeId(v string) *CreateNetTestTaskRequestDelayTestHosts {
+	s.NodeId = &v
+	return s
+}
+
+func (s *CreateNetTestTaskRequestDelayTestHosts) SetResourceId(v string) *CreateNetTestTaskRequestDelayTestHosts {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *CreateNetTestTaskRequestDelayTestHosts) SetServerName(v string) *CreateNetTestTaskRequestDelayTestHosts {
+	s.ServerName = &v
+	return s
+}
+
+type CreateNetTestTaskRequestTrafficTest struct {
+	Clients []*CreateNetTestTaskRequestTrafficTestClients `json:"Clients,omitempty" xml:"Clients,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// example:
+	//
+	// False
+	GDR *bool `json:"GDR,omitempty" xml:"GDR,omitempty"`
+	// example:
+	//
+	// TCP
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// example:
+	//
+	// 1
+	QP      *int64                                        `json:"QP,omitempty" xml:"QP,omitempty"`
+	Servers []*CreateNetTestTaskRequestTrafficTestServers `json:"Servers,omitempty" xml:"Servers,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Fullmesh
+	TrafficModel *string `json:"TrafficModel,omitempty" xml:"TrafficModel,omitempty"`
+}
+
+func (s CreateNetTestTaskRequestTrafficTest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateNetTestTaskRequestTrafficTest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateNetTestTaskRequestTrafficTest) SetClients(v []*CreateNetTestTaskRequestTrafficTestClients) *CreateNetTestTaskRequestTrafficTest {
+	s.Clients = v
+	return s
+}
+
+func (s *CreateNetTestTaskRequestTrafficTest) SetDuration(v int64) *CreateNetTestTaskRequestTrafficTest {
+	s.Duration = &v
+	return s
+}
+
+func (s *CreateNetTestTaskRequestTrafficTest) SetGDR(v bool) *CreateNetTestTaskRequestTrafficTest {
+	s.GDR = &v
+	return s
+}
+
+func (s *CreateNetTestTaskRequestTrafficTest) SetProtocol(v string) *CreateNetTestTaskRequestTrafficTest {
+	s.Protocol = &v
+	return s
+}
+
+func (s *CreateNetTestTaskRequestTrafficTest) SetQP(v int64) *CreateNetTestTaskRequestTrafficTest {
+	s.QP = &v
+	return s
+}
+
+func (s *CreateNetTestTaskRequestTrafficTest) SetServers(v []*CreateNetTestTaskRequestTrafficTestServers) *CreateNetTestTaskRequestTrafficTest {
+	s.Servers = v
+	return s
+}
+
+func (s *CreateNetTestTaskRequestTrafficTest) SetTrafficModel(v string) *CreateNetTestTaskRequestTrafficTest {
+	s.TrafficModel = &v
+	return s
+}
+
+type CreateNetTestTaskRequestTrafficTestClients struct {
+	// example:
+	//
+	// bond1
+	Bond *string `json:"Bond,omitempty" xml:"Bond,omitempty"`
+	// example:
+	//
+	// 192.168.1.1
+	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
+	// example:
+	//
+	// e01-tw-w5elqg7pw18
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// example:
+	//
+	// e01-cn-20s41p6cx01
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// xMv
+	ServerName *string `json:"ServerName,omitempty" xml:"ServerName,omitempty"`
+}
+
+func (s CreateNetTestTaskRequestTrafficTestClients) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateNetTestTaskRequestTrafficTestClients) GoString() string {
+	return s.String()
+}
+
+func (s *CreateNetTestTaskRequestTrafficTestClients) SetBond(v string) *CreateNetTestTaskRequestTrafficTestClients {
+	s.Bond = &v
+	return s
+}
+
+func (s *CreateNetTestTaskRequestTrafficTestClients) SetIP(v string) *CreateNetTestTaskRequestTrafficTestClients {
+	s.IP = &v
+	return s
+}
+
+func (s *CreateNetTestTaskRequestTrafficTestClients) SetNodeId(v string) *CreateNetTestTaskRequestTrafficTestClients {
+	s.NodeId = &v
+	return s
+}
+
+func (s *CreateNetTestTaskRequestTrafficTestClients) SetResourceId(v string) *CreateNetTestTaskRequestTrafficTestClients {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *CreateNetTestTaskRequestTrafficTestClients) SetServerName(v string) *CreateNetTestTaskRequestTrafficTestClients {
+	s.ServerName = &v
+	return s
+}
+
+type CreateNetTestTaskRequestTrafficTestServers struct {
+	// example:
+	//
+	// bond1
+	Bond *string `json:"Bond,omitempty" xml:"Bond,omitempty"`
+	// example:
+	//
+	// 47.121.110.190
+	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
+	// example:
+	//
+	// e01-tw-bqisacl3z6l
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// example:
+	//
+	// e01-cn-wwo3etaqu0b
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// xMv
+	ServerName *string `json:"ServerName,omitempty" xml:"ServerName,omitempty"`
+}
+
+func (s CreateNetTestTaskRequestTrafficTestServers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateNetTestTaskRequestTrafficTestServers) GoString() string {
+	return s.String()
+}
+
+func (s *CreateNetTestTaskRequestTrafficTestServers) SetBond(v string) *CreateNetTestTaskRequestTrafficTestServers {
+	s.Bond = &v
+	return s
+}
+
+func (s *CreateNetTestTaskRequestTrafficTestServers) SetIP(v string) *CreateNetTestTaskRequestTrafficTestServers {
+	s.IP = &v
+	return s
+}
+
+func (s *CreateNetTestTaskRequestTrafficTestServers) SetNodeId(v string) *CreateNetTestTaskRequestTrafficTestServers {
+	s.NodeId = &v
+	return s
+}
+
+func (s *CreateNetTestTaskRequestTrafficTestServers) SetResourceId(v string) *CreateNetTestTaskRequestTrafficTestServers {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *CreateNetTestTaskRequestTrafficTestServers) SetServerName(v string) *CreateNetTestTaskRequestTrafficTestServers {
+	s.ServerName = &v
+	return s
+}
+
+type CreateNetTestTaskShrinkRequest struct {
+	// example:
+	//
+	// i119982311660892626523
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// Eflo-YJ-Test-Cluster
+	ClusterName     *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	CommTestShrink  *string `json:"CommTest,omitempty" xml:"CommTest,omitempty"`
+	DelayTestShrink *string `json:"DelayTest,omitempty" xml:"DelayTest,omitempty"`
+	// example:
+	//
+	// DelayTest
+	NetTestType *string `json:"NetTestType,omitempty" xml:"NetTestType,omitempty"`
+	// example:
+	//
+	// 2
+	NetworkMode *string `json:"NetworkMode,omitempty" xml:"NetworkMode,omitempty"`
+	// example:
+	//
+	// 23604
+	Port              *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	TrafficTestShrink *string `json:"TrafficTest,omitempty" xml:"TrafficTest,omitempty"`
+}
+
+func (s CreateNetTestTaskShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateNetTestTaskShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateNetTestTaskShrinkRequest) SetClusterId(v string) *CreateNetTestTaskShrinkRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *CreateNetTestTaskShrinkRequest) SetClusterName(v string) *CreateNetTestTaskShrinkRequest {
+	s.ClusterName = &v
+	return s
+}
+
+func (s *CreateNetTestTaskShrinkRequest) SetCommTestShrink(v string) *CreateNetTestTaskShrinkRequest {
+	s.CommTestShrink = &v
+	return s
+}
+
+func (s *CreateNetTestTaskShrinkRequest) SetDelayTestShrink(v string) *CreateNetTestTaskShrinkRequest {
+	s.DelayTestShrink = &v
+	return s
+}
+
+func (s *CreateNetTestTaskShrinkRequest) SetNetTestType(v string) *CreateNetTestTaskShrinkRequest {
+	s.NetTestType = &v
+	return s
+}
+
+func (s *CreateNetTestTaskShrinkRequest) SetNetworkMode(v string) *CreateNetTestTaskShrinkRequest {
+	s.NetworkMode = &v
+	return s
+}
+
+func (s *CreateNetTestTaskShrinkRequest) SetPort(v string) *CreateNetTestTaskShrinkRequest {
+	s.Port = &v
+	return s
+}
+
+func (s *CreateNetTestTaskShrinkRequest) SetTrafficTestShrink(v string) *CreateNetTestTaskShrinkRequest {
+	s.TrafficTestShrink = &v
+	return s
+}
+
+type CreateNetTestTaskResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE*****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// dr-uf6i0tv2refv8wz*****
+	TestId *string `json:"TestId,omitempty" xml:"TestId,omitempty"`
+}
+
+func (s CreateNetTestTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateNetTestTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateNetTestTaskResponseBody) SetRequestId(v string) *CreateNetTestTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateNetTestTaskResponseBody) SetTestId(v string) *CreateNetTestTaskResponseBody {
+	s.TestId = &v
+	return s
+}
+
+type CreateNetTestTaskResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateNetTestTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateNetTestTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateNetTestTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateNetTestTaskResponse) SetHeaders(v map[string]*string) *CreateNetTestTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateNetTestTaskResponse) SetStatusCode(v int32) *CreateNetTestTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateNetTestTaskResponse) SetBody(v *CreateNetTestTaskResponseBody) *CreateNetTestTaskResponse {
+	s.Body = v
+	return s
+}
+
+type CreateSessionRequest struct {
+	// example:
+	//
+	// e01-cn-kvw44e6dn04
+	NodeId      *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	SessionType *string `json:"SessionType,omitempty" xml:"SessionType,omitempty"`
+	// example:
+	//
+	// 1669340937156
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s CreateSessionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSessionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSessionRequest) SetNodeId(v string) *CreateSessionRequest {
+	s.NodeId = &v
+	return s
+}
+
+func (s *CreateSessionRequest) SetSessionType(v string) *CreateSessionRequest {
+	s.SessionType = &v
+	return s
+}
+
+func (s *CreateSessionRequest) SetStartTime(v string) *CreateSessionRequest {
+	s.StartTime = &v
+	return s
+}
+
+type CreateSessionResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 887FA855-89F4-5DB3-B305-C5879EC480E6
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 2A59143F1
+	ServerSn *string `json:"ServerSn,omitempty" xml:"ServerSn,omitempty"`
+	// example:
+	//
+	// i207023871669364793713
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// 03f53c719015a9ad4f4f55d66cac2dac161b18e8065ca75a3220b89de389c980
+	SessionToken *string `json:"SessionToken,omitempty" xml:"SessionToken,omitempty"`
+	// example:
+	//
+	// ws://x.x.x.x:xx/calypso_web_console
+	WssEndpoint *string `json:"WssEndpoint,omitempty" xml:"WssEndpoint,omitempty"`
+}
+
+func (s CreateSessionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSessionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSessionResponseBody) SetRequestId(v string) *CreateSessionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateSessionResponseBody) SetServerSn(v string) *CreateSessionResponseBody {
+	s.ServerSn = &v
+	return s
+}
+
+func (s *CreateSessionResponseBody) SetSessionId(v string) *CreateSessionResponseBody {
+	s.SessionId = &v
+	return s
+}
+
+func (s *CreateSessionResponseBody) SetSessionToken(v string) *CreateSessionResponseBody {
+	s.SessionToken = &v
+	return s
+}
+
+func (s *CreateSessionResponseBody) SetWssEndpoint(v string) *CreateSessionResponseBody {
+	s.WssEndpoint = &v
+	return s
+}
+
+type CreateSessionResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateSessionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateSessionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSessionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSessionResponse) SetHeaders(v map[string]*string) *CreateSessionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateSessionResponse) SetStatusCode(v int32) *CreateSessionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateSessionResponse) SetBody(v *CreateSessionResponseBody) *CreateSessionResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteClusterRequest struct {
 	// Cluster ID
 	//
@@ -2661,6 +3433,482 @@ func (s *DescribeInvocationsResponse) SetStatusCode(v int32) *DescribeInvocation
 }
 
 func (s *DescribeInvocationsResponse) SetBody(v *DescribeInvocationsResponseBody) *DescribeInvocationsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeNetTestResultRequest struct {
+	// example:
+	//
+	// dr-uf6i0tv2refv8wz*****
+	TestId *string `json:"TestId,omitempty" xml:"TestId,omitempty"`
+}
+
+func (s DescribeNetTestResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNetTestResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetTestResultRequest) SetTestId(v string) *DescribeNetTestResultRequest {
+	s.TestId = &v
+	return s
+}
+
+type DescribeNetTestResultResponseBody struct {
+	// example:
+	//
+	// i119982311660892626523
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// Standard_Cluster
+	ClusterName *string                                    `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	CommTest    *DescribeNetTestResultResponseBodyCommTest `json:"CommTest,omitempty" xml:"CommTest,omitempty" type:"Struct"`
+	// example:
+	//
+	// 2024-10-15T10:25:42+08:00
+	CreationTime *string                                     `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	DelayTest    *DescribeNetTestResultResponseBodyDelayTest `json:"DelayTest,omitempty" xml:"DelayTest,omitempty" type:"Struct"`
+	// example:
+	//
+	// 2024-10-16T02:04Z
+	FinishedTime *string `json:"FinishedTime,omitempty" xml:"FinishedTime,omitempty"`
+	// example:
+	//
+	// DelayTest
+	NetTestType *string `json:"NetTestType,omitempty" xml:"NetTestType,omitempty"`
+	// example:
+	//
+	// 23604
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// example:
+	//
+	// 8F065DDD-6996-5973-9691-9EC57BD0072E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// {}
+	ResultDetial *string `json:"ResultDetial,omitempty" xml:"ResultDetial,omitempty"`
+	// example:
+	//
+	// Failed
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// af35ce53-7c35-4277-834a-fbf49c316a96
+	TestId      *string                                       `json:"TestId,omitempty" xml:"TestId,omitempty"`
+	TrafficTest *DescribeNetTestResultResponseBodyTrafficTest `json:"TrafficTest,omitempty" xml:"TrafficTest,omitempty" type:"Struct"`
+}
+
+func (s DescribeNetTestResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNetTestResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetTestResultResponseBody) SetClusterId(v string) *DescribeNetTestResultResponseBody {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeNetTestResultResponseBody) SetClusterName(v string) *DescribeNetTestResultResponseBody {
+	s.ClusterName = &v
+	return s
+}
+
+func (s *DescribeNetTestResultResponseBody) SetCommTest(v *DescribeNetTestResultResponseBodyCommTest) *DescribeNetTestResultResponseBody {
+	s.CommTest = v
+	return s
+}
+
+func (s *DescribeNetTestResultResponseBody) SetCreationTime(v string) *DescribeNetTestResultResponseBody {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *DescribeNetTestResultResponseBody) SetDelayTest(v *DescribeNetTestResultResponseBodyDelayTest) *DescribeNetTestResultResponseBody {
+	s.DelayTest = v
+	return s
+}
+
+func (s *DescribeNetTestResultResponseBody) SetFinishedTime(v string) *DescribeNetTestResultResponseBody {
+	s.FinishedTime = &v
+	return s
+}
+
+func (s *DescribeNetTestResultResponseBody) SetNetTestType(v string) *DescribeNetTestResultResponseBody {
+	s.NetTestType = &v
+	return s
+}
+
+func (s *DescribeNetTestResultResponseBody) SetPort(v string) *DescribeNetTestResultResponseBody {
+	s.Port = &v
+	return s
+}
+
+func (s *DescribeNetTestResultResponseBody) SetRequestId(v string) *DescribeNetTestResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeNetTestResultResponseBody) SetResultDetial(v string) *DescribeNetTestResultResponseBody {
+	s.ResultDetial = &v
+	return s
+}
+
+func (s *DescribeNetTestResultResponseBody) SetStatus(v string) *DescribeNetTestResultResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeNetTestResultResponseBody) SetTestId(v string) *DescribeNetTestResultResponseBody {
+	s.TestId = &v
+	return s
+}
+
+func (s *DescribeNetTestResultResponseBody) SetTrafficTest(v *DescribeNetTestResultResponseBodyTrafficTest) *DescribeNetTestResultResponseBody {
+	s.TrafficTest = v
+	return s
+}
+
+type DescribeNetTestResultResponseBodyCommTest struct {
+	// example:
+	//
+	// 1
+	GPUNum *string                                           `json:"GPUNum,omitempty" xml:"GPUNum,omitempty"`
+	Hosts  []*DescribeNetTestResultResponseBodyCommTestHosts `json:"Hosts,omitempty" xml:"Hosts,omitempty" type:"Repeated"`
+	// example:
+	//
+	// intention_v4
+	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// example:
+	//
+	// ACCL
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeNetTestResultResponseBodyCommTest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNetTestResultResponseBodyCommTest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetTestResultResponseBodyCommTest) SetGPUNum(v string) *DescribeNetTestResultResponseBodyCommTest {
+	s.GPUNum = &v
+	return s
+}
+
+func (s *DescribeNetTestResultResponseBodyCommTest) SetHosts(v []*DescribeNetTestResultResponseBodyCommTestHosts) *DescribeNetTestResultResponseBodyCommTest {
+	s.Hosts = v
+	return s
+}
+
+func (s *DescribeNetTestResultResponseBodyCommTest) SetModel(v string) *DescribeNetTestResultResponseBodyCommTest {
+	s.Model = &v
+	return s
+}
+
+func (s *DescribeNetTestResultResponseBodyCommTest) SetType(v string) *DescribeNetTestResultResponseBodyCommTest {
+	s.Type = &v
+	return s
+}
+
+type DescribeNetTestResultResponseBodyCommTestHosts struct {
+	// example:
+	//
+	// 169.253.253.15
+	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
+	// example:
+	//
+	// i111670831721110797708
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// VBw
+	ServerName *string `json:"ServerName,omitempty" xml:"ServerName,omitempty"`
+}
+
+func (s DescribeNetTestResultResponseBodyCommTestHosts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNetTestResultResponseBodyCommTestHosts) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetTestResultResponseBodyCommTestHosts) SetIP(v string) *DescribeNetTestResultResponseBodyCommTestHosts {
+	s.IP = &v
+	return s
+}
+
+func (s *DescribeNetTestResultResponseBodyCommTestHosts) SetResourceId(v string) *DescribeNetTestResultResponseBodyCommTestHosts {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *DescribeNetTestResultResponseBodyCommTestHosts) SetServerName(v string) *DescribeNetTestResultResponseBodyCommTestHosts {
+	s.ServerName = &v
+	return s
+}
+
+type DescribeNetTestResultResponseBodyDelayTest struct {
+	Hosts []*DescribeNetTestResultResponseBodyDelayTestHosts `json:"Hosts,omitempty" xml:"Hosts,omitempty" type:"Repeated"`
+}
+
+func (s DescribeNetTestResultResponseBodyDelayTest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNetTestResultResponseBodyDelayTest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetTestResultResponseBodyDelayTest) SetHosts(v []*DescribeNetTestResultResponseBodyDelayTestHosts) *DescribeNetTestResultResponseBodyDelayTest {
+	s.Hosts = v
+	return s
+}
+
+type DescribeNetTestResultResponseBodyDelayTestHosts struct {
+	// example:
+	//
+	// bond1
+	Bond *string `json:"Bond,omitempty" xml:"Bond,omitempty"`
+	// example:
+	//
+	// 125.210.225.48
+	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
+	// example:
+	//
+	// e01-cn-bcd3u1aee06
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// NQU
+	ServerName *string `json:"ServerName,omitempty" xml:"ServerName,omitempty"`
+}
+
+func (s DescribeNetTestResultResponseBodyDelayTestHosts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNetTestResultResponseBodyDelayTestHosts) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetTestResultResponseBodyDelayTestHosts) SetBond(v string) *DescribeNetTestResultResponseBodyDelayTestHosts {
+	s.Bond = &v
+	return s
+}
+
+func (s *DescribeNetTestResultResponseBodyDelayTestHosts) SetIP(v string) *DescribeNetTestResultResponseBodyDelayTestHosts {
+	s.IP = &v
+	return s
+}
+
+func (s *DescribeNetTestResultResponseBodyDelayTestHosts) SetResourceId(v string) *DescribeNetTestResultResponseBodyDelayTestHosts {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *DescribeNetTestResultResponseBodyDelayTestHosts) SetServerName(v string) *DescribeNetTestResultResponseBodyDelayTestHosts {
+	s.ServerName = &v
+	return s
+}
+
+type DescribeNetTestResultResponseBodyTrafficTest struct {
+	Clients []*DescribeNetTestResultResponseBodyTrafficTestClients `json:"Clients,omitempty" xml:"Clients,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// example:
+	//
+	// False
+	GDR *string `json:"GDR,omitempty" xml:"GDR,omitempty"`
+	// example:
+	//
+	// TCP
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// example:
+	//
+	// 1
+	QP      *int64                                                 `json:"QP,omitempty" xml:"QP,omitempty"`
+	Servers []*DescribeNetTestResultResponseBodyTrafficTestServers `json:"Servers,omitempty" xml:"Servers,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Fullmesh
+	TrafficModel *string `json:"TrafficModel,omitempty" xml:"TrafficModel,omitempty"`
+}
+
+func (s DescribeNetTestResultResponseBodyTrafficTest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNetTestResultResponseBodyTrafficTest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetTestResultResponseBodyTrafficTest) SetClients(v []*DescribeNetTestResultResponseBodyTrafficTestClients) *DescribeNetTestResultResponseBodyTrafficTest {
+	s.Clients = v
+	return s
+}
+
+func (s *DescribeNetTestResultResponseBodyTrafficTest) SetDuration(v int64) *DescribeNetTestResultResponseBodyTrafficTest {
+	s.Duration = &v
+	return s
+}
+
+func (s *DescribeNetTestResultResponseBodyTrafficTest) SetGDR(v string) *DescribeNetTestResultResponseBodyTrafficTest {
+	s.GDR = &v
+	return s
+}
+
+func (s *DescribeNetTestResultResponseBodyTrafficTest) SetProtocol(v string) *DescribeNetTestResultResponseBodyTrafficTest {
+	s.Protocol = &v
+	return s
+}
+
+func (s *DescribeNetTestResultResponseBodyTrafficTest) SetQP(v int64) *DescribeNetTestResultResponseBodyTrafficTest {
+	s.QP = &v
+	return s
+}
+
+func (s *DescribeNetTestResultResponseBodyTrafficTest) SetServers(v []*DescribeNetTestResultResponseBodyTrafficTestServers) *DescribeNetTestResultResponseBodyTrafficTest {
+	s.Servers = v
+	return s
+}
+
+func (s *DescribeNetTestResultResponseBodyTrafficTest) SetTrafficModel(v string) *DescribeNetTestResultResponseBodyTrafficTest {
+	s.TrafficModel = &v
+	return s
+}
+
+type DescribeNetTestResultResponseBodyTrafficTestClients struct {
+	// example:
+	//
+	// bond1
+	Bond *string `json:"Bond,omitempty" xml:"Bond,omitempty"`
+	// example:
+	//
+	// 192.168.1.1
+	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
+	// example:
+	//
+	// e01-cn-20s41p6cx01
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// xMv
+	ServerName *string `json:"ServerName,omitempty" xml:"ServerName,omitempty"`
+}
+
+func (s DescribeNetTestResultResponseBodyTrafficTestClients) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNetTestResultResponseBodyTrafficTestClients) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetTestResultResponseBodyTrafficTestClients) SetBond(v string) *DescribeNetTestResultResponseBodyTrafficTestClients {
+	s.Bond = &v
+	return s
+}
+
+func (s *DescribeNetTestResultResponseBodyTrafficTestClients) SetIP(v string) *DescribeNetTestResultResponseBodyTrafficTestClients {
+	s.IP = &v
+	return s
+}
+
+func (s *DescribeNetTestResultResponseBodyTrafficTestClients) SetResourceId(v string) *DescribeNetTestResultResponseBodyTrafficTestClients {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *DescribeNetTestResultResponseBodyTrafficTestClients) SetServerName(v string) *DescribeNetTestResultResponseBodyTrafficTestClients {
+	s.ServerName = &v
+	return s
+}
+
+type DescribeNetTestResultResponseBodyTrafficTestServers struct {
+	// example:
+	//
+	// bond1
+	Bond *string `json:"Bond,omitempty" xml:"Bond,omitempty"`
+	// example:
+	//
+	// 47.121.110.190
+	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
+	// example:
+	//
+	// e01-cn-wwo3etaqu0b
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// xMv
+	ServerName *string `json:"ServerName,omitempty" xml:"ServerName,omitempty"`
+}
+
+func (s DescribeNetTestResultResponseBodyTrafficTestServers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNetTestResultResponseBodyTrafficTestServers) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetTestResultResponseBodyTrafficTestServers) SetBond(v string) *DescribeNetTestResultResponseBodyTrafficTestServers {
+	s.Bond = &v
+	return s
+}
+
+func (s *DescribeNetTestResultResponseBodyTrafficTestServers) SetIP(v string) *DescribeNetTestResultResponseBodyTrafficTestServers {
+	s.IP = &v
+	return s
+}
+
+func (s *DescribeNetTestResultResponseBodyTrafficTestServers) SetResourceId(v string) *DescribeNetTestResultResponseBodyTrafficTestServers {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *DescribeNetTestResultResponseBodyTrafficTestServers) SetServerName(v string) *DescribeNetTestResultResponseBodyTrafficTestServers {
+	s.ServerName = &v
+	return s
+}
+
+type DescribeNetTestResultResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeNetTestResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeNetTestResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNetTestResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetTestResultResponse) SetHeaders(v map[string]*string) *DescribeNetTestResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeNetTestResultResponse) SetStatusCode(v int32) *DescribeNetTestResultResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeNetTestResultResponse) SetBody(v *DescribeNetTestResultResponseBody) *DescribeNetTestResultResponse {
 	s.Body = v
 	return s
 }
@@ -5214,6 +6462,226 @@ func (s *ListClustersResponse) SetBody(v *ListClustersResponseBody) *ListCluster
 	return s
 }
 
+type ListDiagnosticResultsRequest struct {
+	// example:
+	//
+	// NetDiag
+	DiagType *string `json:"DiagType,omitempty" xml:"DiagType,omitempty"`
+	// example:
+	//
+	// 20
+	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// a3f2224a5ec7224116c4f5246120abe4
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// rg-acfmywpvugkh7kq
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+}
+
+func (s ListDiagnosticResultsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDiagnosticResultsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDiagnosticResultsRequest) SetDiagType(v string) *ListDiagnosticResultsRequest {
+	s.DiagType = &v
+	return s
+}
+
+func (s *ListDiagnosticResultsRequest) SetMaxResults(v int64) *ListDiagnosticResultsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListDiagnosticResultsRequest) SetNextToken(v string) *ListDiagnosticResultsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListDiagnosticResultsRequest) SetResourceGroupId(v string) *ListDiagnosticResultsRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+type ListDiagnosticResultsResponseBody struct {
+	DiagnosticResults []*ListDiagnosticResultsResponseBodyDiagnosticResults `json:"DiagnosticResults,omitempty" xml:"DiagnosticResults,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 20
+	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// a3f2224a5ec7224116c4f5246120abe4
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// AC4F0004-7BCE-52E0-891B-CAC7D64E3368
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListDiagnosticResultsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDiagnosticResultsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDiagnosticResultsResponseBody) SetDiagnosticResults(v []*ListDiagnosticResultsResponseBodyDiagnosticResults) *ListDiagnosticResultsResponseBody {
+	s.DiagnosticResults = v
+	return s
+}
+
+func (s *ListDiagnosticResultsResponseBody) SetMaxResults(v int64) *ListDiagnosticResultsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListDiagnosticResultsResponseBody) SetNextToken(v string) *ListDiagnosticResultsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListDiagnosticResultsResponseBody) SetRequestId(v string) *ListDiagnosticResultsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListDiagnosticResultsResponseBodyDiagnosticResults struct {
+	// example:
+	//
+	// i118578141694745246055
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// pjlab-lingjun
+	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// example:
+	//
+	// 2024-01-15T02:01:12Z
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	DiagContent  *string `json:"DiagContent,omitempty" xml:"DiagContent,omitempty"`
+	// example:
+	//
+	// 123
+	DiagId *string `json:"DiagId,omitempty" xml:"DiagId,omitempty"`
+	// example:
+	//
+	// Success
+	DiagResult *string `json:"DiagResult,omitempty" xml:"DiagResult,omitempty"`
+	// example:
+	//
+	// 2024-10-16T02:04Z
+	FinishedTime *string `json:"FinishedTime,omitempty" xml:"FinishedTime,omitempty"`
+	// example:
+	//
+	// e01-cn-bl03ofg6206
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// proxy-rps.mos.csvw.com
+	ServerName *string `json:"ServerName,omitempty" xml:"ServerName,omitempty"`
+	// example:
+	//
+	// succeed
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListDiagnosticResultsResponseBodyDiagnosticResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDiagnosticResultsResponseBodyDiagnosticResults) GoString() string {
+	return s.String()
+}
+
+func (s *ListDiagnosticResultsResponseBodyDiagnosticResults) SetClusterId(v string) *ListDiagnosticResultsResponseBodyDiagnosticResults {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *ListDiagnosticResultsResponseBodyDiagnosticResults) SetClusterName(v string) *ListDiagnosticResultsResponseBodyDiagnosticResults {
+	s.ClusterName = &v
+	return s
+}
+
+func (s *ListDiagnosticResultsResponseBodyDiagnosticResults) SetCreationTime(v string) *ListDiagnosticResultsResponseBodyDiagnosticResults {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *ListDiagnosticResultsResponseBodyDiagnosticResults) SetDiagContent(v string) *ListDiagnosticResultsResponseBodyDiagnosticResults {
+	s.DiagContent = &v
+	return s
+}
+
+func (s *ListDiagnosticResultsResponseBodyDiagnosticResults) SetDiagId(v string) *ListDiagnosticResultsResponseBodyDiagnosticResults {
+	s.DiagId = &v
+	return s
+}
+
+func (s *ListDiagnosticResultsResponseBodyDiagnosticResults) SetDiagResult(v string) *ListDiagnosticResultsResponseBodyDiagnosticResults {
+	s.DiagResult = &v
+	return s
+}
+
+func (s *ListDiagnosticResultsResponseBodyDiagnosticResults) SetFinishedTime(v string) *ListDiagnosticResultsResponseBodyDiagnosticResults {
+	s.FinishedTime = &v
+	return s
+}
+
+func (s *ListDiagnosticResultsResponseBodyDiagnosticResults) SetResourceId(v string) *ListDiagnosticResultsResponseBodyDiagnosticResults {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ListDiagnosticResultsResponseBodyDiagnosticResults) SetServerName(v string) *ListDiagnosticResultsResponseBodyDiagnosticResults {
+	s.ServerName = &v
+	return s
+}
+
+func (s *ListDiagnosticResultsResponseBodyDiagnosticResults) SetStatus(v string) *ListDiagnosticResultsResponseBodyDiagnosticResults {
+	s.Status = &v
+	return s
+}
+
+type ListDiagnosticResultsResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDiagnosticResultsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListDiagnosticResultsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDiagnosticResultsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDiagnosticResultsResponse) SetHeaders(v map[string]*string) *ListDiagnosticResultsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDiagnosticResultsResponse) SetStatusCode(v int32) *ListDiagnosticResultsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDiagnosticResultsResponse) SetBody(v *ListDiagnosticResultsResponseBody) *ListDiagnosticResultsResponse {
+	s.Body = v
+	return s
+}
+
 type ListFreeNodesRequest struct {
 	// Cluster number
 	//
@@ -5448,6 +6916,443 @@ func (s *ListFreeNodesResponse) SetBody(v *ListFreeNodesResponseBody) *ListFreeN
 	return s
 }
 
+type ListImagesRequest struct {
+	// Architecture
+	//
+	// example:
+	//
+	// x86_64
+	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
+	// Image version
+	//
+	// example:
+	//
+	// 7.9
+	ImageVersion *string `json:"ImageVersion,omitempty" xml:"ImageVersion,omitempty"`
+	// Platform
+	//
+	// example:
+	//
+	// ALinux3
+	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+}
+
+func (s ListImagesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListImagesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListImagesRequest) SetArchitecture(v string) *ListImagesRequest {
+	s.Architecture = &v
+	return s
+}
+
+func (s *ListImagesRequest) SetImageVersion(v string) *ListImagesRequest {
+	s.ImageVersion = &v
+	return s
+}
+
+func (s *ListImagesRequest) SetPlatform(v string) *ListImagesRequest {
+	s.Platform = &v
+	return s
+}
+
+type ListImagesResponseBody struct {
+	// Image details
+	Images []*ListImagesResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	// NextToken for the next page, include this value when requesting the next page
+	//
+	// example:
+	//
+	// 3a6b93229825ac667104463b56790c91
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 0FC4A1C7-421C-5EAB-9361-4C0338EFA287
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListImagesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListImagesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListImagesResponseBody) SetImages(v []*ListImagesResponseBodyImages) *ListImagesResponseBody {
+	s.Images = v
+	return s
+}
+
+func (s *ListImagesResponseBody) SetNextToken(v string) *ListImagesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListImagesResponseBody) SetRequestId(v string) *ListImagesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListImagesResponseBodyImages struct {
+	// Architecture
+	//
+	// example:
+	//
+	// x86_64
+	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
+	// Description
+	//
+	// example:
+	//
+	// alibaba cloud linux 3 full for H800
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Image ID
+	//
+	// example:
+	//
+	// i190951671671438639388
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// Image name
+	//
+	// example:
+	//
+	// CentOS_7.9_x86_64_FULL_20221110
+	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	// Image version
+	//
+	// example:
+	//
+	// 7.9
+	ImageVersion *string `json:"ImageVersion,omitempty" xml:"ImageVersion,omitempty"`
+	// node count
+	//
+	// example:
+	//
+	// 20
+	NodeCount *int64 `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
+	// Platform
+	//
+	// example:
+	//
+	// ALinux3
+	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	// File MD5
+	//
+	// example:
+	//
+	// 40741292480fc6d778138adcf8c
+	ReleaseFileMd5 *string `json:"ReleaseFileMd5,omitempty" xml:"ReleaseFileMd5,omitempty"`
+	// Image size
+	//
+	// example:
+	//
+	// 5.8G
+	ReleaseFileSize *int64 `json:"ReleaseFileSize,omitempty" xml:"ReleaseFileSize,omitempty"`
+	// image type
+	//
+	// example:
+	//
+	// Public
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListImagesResponseBodyImages) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListImagesResponseBodyImages) GoString() string {
+	return s.String()
+}
+
+func (s *ListImagesResponseBodyImages) SetArchitecture(v string) *ListImagesResponseBodyImages {
+	s.Architecture = &v
+	return s
+}
+
+func (s *ListImagesResponseBodyImages) SetDescription(v string) *ListImagesResponseBodyImages {
+	s.Description = &v
+	return s
+}
+
+func (s *ListImagesResponseBodyImages) SetImageId(v string) *ListImagesResponseBodyImages {
+	s.ImageId = &v
+	return s
+}
+
+func (s *ListImagesResponseBodyImages) SetImageName(v string) *ListImagesResponseBodyImages {
+	s.ImageName = &v
+	return s
+}
+
+func (s *ListImagesResponseBodyImages) SetImageVersion(v string) *ListImagesResponseBodyImages {
+	s.ImageVersion = &v
+	return s
+}
+
+func (s *ListImagesResponseBodyImages) SetNodeCount(v int64) *ListImagesResponseBodyImages {
+	s.NodeCount = &v
+	return s
+}
+
+func (s *ListImagesResponseBodyImages) SetPlatform(v string) *ListImagesResponseBodyImages {
+	s.Platform = &v
+	return s
+}
+
+func (s *ListImagesResponseBodyImages) SetReleaseFileMd5(v string) *ListImagesResponseBodyImages {
+	s.ReleaseFileMd5 = &v
+	return s
+}
+
+func (s *ListImagesResponseBodyImages) SetReleaseFileSize(v int64) *ListImagesResponseBodyImages {
+	s.ReleaseFileSize = &v
+	return s
+}
+
+func (s *ListImagesResponseBodyImages) SetType(v string) *ListImagesResponseBodyImages {
+	s.Type = &v
+	return s
+}
+
+type ListImagesResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListImagesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListImagesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListImagesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListImagesResponse) SetHeaders(v map[string]*string) *ListImagesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListImagesResponse) SetStatusCode(v int32) *ListImagesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListImagesResponse) SetBody(v *ListImagesResponseBody) *ListImagesResponse {
+	s.Body = v
+	return s
+}
+
+type ListMachineNetworkInfoRequest struct {
+	MachineHpnInfo []*ListMachineNetworkInfoRequestMachineHpnInfo `json:"MachineHpnInfo,omitempty" xml:"MachineHpnInfo,omitempty" type:"Repeated"`
+}
+
+func (s ListMachineNetworkInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMachineNetworkInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListMachineNetworkInfoRequest) SetMachineHpnInfo(v []*ListMachineNetworkInfoRequestMachineHpnInfo) *ListMachineNetworkInfoRequest {
+	s.MachineHpnInfo = v
+	return s
+}
+
+type ListMachineNetworkInfoRequestMachineHpnInfo struct {
+	// example:
+	//
+	// C1
+	HpnZone *string `json:"HpnZone,omitempty" xml:"HpnZone,omitempty"`
+	// example:
+	//
+	// efg2.C48cNHmcn
+	MachineType *string `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
+	// example:
+	//
+	// cn-heyuan
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListMachineNetworkInfoRequestMachineHpnInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMachineNetworkInfoRequestMachineHpnInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListMachineNetworkInfoRequestMachineHpnInfo) SetHpnZone(v string) *ListMachineNetworkInfoRequestMachineHpnInfo {
+	s.HpnZone = &v
+	return s
+}
+
+func (s *ListMachineNetworkInfoRequestMachineHpnInfo) SetMachineType(v string) *ListMachineNetworkInfoRequestMachineHpnInfo {
+	s.MachineType = &v
+	return s
+}
+
+func (s *ListMachineNetworkInfoRequestMachineHpnInfo) SetRegionId(v string) *ListMachineNetworkInfoRequestMachineHpnInfo {
+	s.RegionId = &v
+	return s
+}
+
+type ListMachineNetworkInfoShrinkRequest struct {
+	MachineHpnInfoShrink *string `json:"MachineHpnInfo,omitempty" xml:"MachineHpnInfo,omitempty"`
+}
+
+func (s ListMachineNetworkInfoShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMachineNetworkInfoShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListMachineNetworkInfoShrinkRequest) SetMachineHpnInfoShrink(v string) *ListMachineNetworkInfoShrinkRequest {
+	s.MachineHpnInfoShrink = &v
+	return s
+}
+
+type ListMachineNetworkInfoResponseBody struct {
+	MachineNetworkInfo []*ListMachineNetworkInfoResponseBodyMachineNetworkInfo `json:"MachineNetworkInfo,omitempty" xml:"MachineNetworkInfo,omitempty" type:"Repeated"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 4FD06DF0-9167-5C6F-A145-F30CA4A15D54
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListMachineNetworkInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMachineNetworkInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListMachineNetworkInfoResponseBody) SetMachineNetworkInfo(v []*ListMachineNetworkInfoResponseBodyMachineNetworkInfo) *ListMachineNetworkInfoResponseBody {
+	s.MachineNetworkInfo = v
+	return s
+}
+
+func (s *ListMachineNetworkInfoResponseBody) SetRequestId(v string) *ListMachineNetworkInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListMachineNetworkInfoResponseBodyMachineNetworkInfo struct {
+	// example:
+	//
+	// vpc/acl
+	ClusterNet *string `json:"ClusterNet,omitempty" xml:"ClusterNet,omitempty"`
+	// example:
+	//
+	// true
+	EnableJumboFrame *bool `json:"EnableJumboFrame,omitempty" xml:"EnableJumboFrame,omitempty"`
+	// example:
+	//
+	// B1
+	HpnZone *string `json:"HpnZone,omitempty" xml:"HpnZone,omitempty"`
+	// example:
+	//
+	// true
+	IsDpuMode *bool `json:"IsDpuMode,omitempty" xml:"IsDpuMode,omitempty"`
+	// example:
+	//
+	// efg1.nvga8n
+	MachineType *string `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
+	// example:
+	//
+	// XX-7.0
+	NetArch *string `json:"NetArch,omitempty" xml:"NetArch,omitempty"`
+	// example:
+	//
+	// cn-heyuan
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListMachineNetworkInfoResponseBodyMachineNetworkInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMachineNetworkInfoResponseBodyMachineNetworkInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListMachineNetworkInfoResponseBodyMachineNetworkInfo) SetClusterNet(v string) *ListMachineNetworkInfoResponseBodyMachineNetworkInfo {
+	s.ClusterNet = &v
+	return s
+}
+
+func (s *ListMachineNetworkInfoResponseBodyMachineNetworkInfo) SetEnableJumboFrame(v bool) *ListMachineNetworkInfoResponseBodyMachineNetworkInfo {
+	s.EnableJumboFrame = &v
+	return s
+}
+
+func (s *ListMachineNetworkInfoResponseBodyMachineNetworkInfo) SetHpnZone(v string) *ListMachineNetworkInfoResponseBodyMachineNetworkInfo {
+	s.HpnZone = &v
+	return s
+}
+
+func (s *ListMachineNetworkInfoResponseBodyMachineNetworkInfo) SetIsDpuMode(v bool) *ListMachineNetworkInfoResponseBodyMachineNetworkInfo {
+	s.IsDpuMode = &v
+	return s
+}
+
+func (s *ListMachineNetworkInfoResponseBodyMachineNetworkInfo) SetMachineType(v string) *ListMachineNetworkInfoResponseBodyMachineNetworkInfo {
+	s.MachineType = &v
+	return s
+}
+
+func (s *ListMachineNetworkInfoResponseBodyMachineNetworkInfo) SetNetArch(v string) *ListMachineNetworkInfoResponseBodyMachineNetworkInfo {
+	s.NetArch = &v
+	return s
+}
+
+func (s *ListMachineNetworkInfoResponseBodyMachineNetworkInfo) SetRegionId(v string) *ListMachineNetworkInfoResponseBodyMachineNetworkInfo {
+	s.RegionId = &v
+	return s
+}
+
+type ListMachineNetworkInfoResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListMachineNetworkInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListMachineNetworkInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMachineNetworkInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListMachineNetworkInfoResponse) SetHeaders(v map[string]*string) *ListMachineNetworkInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListMachineNetworkInfoResponse) SetStatusCode(v int32) *ListMachineNetworkInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListMachineNetworkInfoResponse) SetBody(v *ListMachineNetworkInfoResponseBody) *ListMachineNetworkInfoResponse {
+	s.Body = v
+	return s
+}
+
 type ListMachineTypesRequest struct {
 	// Machine name
 	//
@@ -5656,6 +7561,546 @@ func (s *ListMachineTypesResponse) SetStatusCode(v int32) *ListMachineTypesRespo
 }
 
 func (s *ListMachineTypesResponse) SetBody(v *ListMachineTypesResponseBody) *ListMachineTypesResponse {
+	s.Body = v
+	return s
+}
+
+type ListNetTestResultsRequest struct {
+	// example:
+	//
+	// 20
+	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// DelayTest
+	NetTestType *string `json:"NetTestType,omitempty" xml:"NetTestType,omitempty"`
+	// example:
+	//
+	// 3a6b93229825ac667104463b56790c91
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// rg-acfmxno4vh5muoq
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+}
+
+func (s ListNetTestResultsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNetTestResultsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListNetTestResultsRequest) SetMaxResults(v int64) *ListNetTestResultsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListNetTestResultsRequest) SetNetTestType(v string) *ListNetTestResultsRequest {
+	s.NetTestType = &v
+	return s
+}
+
+func (s *ListNetTestResultsRequest) SetNextToken(v string) *ListNetTestResultsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListNetTestResultsRequest) SetResourceGroupId(v string) *ListNetTestResultsRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+type ListNetTestResultsResponseBody struct {
+	// example:
+	//
+	// 20
+	MaxResults     *int64                                          `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NetTestResults []*ListNetTestResultsResponseBodyNetTestResults `json:"NetTestResults,omitempty" xml:"NetTestResults,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 3a6b93229825ac667104463b56790c91
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 3C683243-7915-57FB-9570-A2932C1C0F78
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListNetTestResultsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNetTestResultsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListNetTestResultsResponseBody) SetMaxResults(v int64) *ListNetTestResultsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListNetTestResultsResponseBody) SetNetTestResults(v []*ListNetTestResultsResponseBodyNetTestResults) *ListNetTestResultsResponseBody {
+	s.NetTestResults = v
+	return s
+}
+
+func (s *ListNetTestResultsResponseBody) SetNextToken(v string) *ListNetTestResultsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListNetTestResultsResponseBody) SetRequestId(v string) *ListNetTestResultsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListNetTestResultsResponseBodyNetTestResults struct {
+	// example:
+	//
+	// i110667211718265012218
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// test
+	ClusterName *string                                               `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	CommTest    *ListNetTestResultsResponseBodyNetTestResultsCommTest `json:"CommTest,omitempty" xml:"CommTest,omitempty" type:"Struct"`
+	// example:
+	//
+	// 2024-01-19T02:18:12Z
+	CreationTime *string                                                `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	DelayTest    *ListNetTestResultsResponseBodyNetTestResultsDelayTest `json:"DelayTest,omitempty" xml:"DelayTest,omitempty" type:"Struct"`
+	// example:
+	//
+	// 2024-10-30T02:07Z
+	FinishedTime *string `json:"FinishedTime,omitempty" xml:"FinishedTime,omitempty"`
+	// example:
+	//
+	// NetDiag
+	NetTestType *string `json:"NetTestType,omitempty" xml:"NetTestType,omitempty"`
+	// example:
+	//
+	// 01
+	NetworkMode *string `json:"NetworkMode,omitempty" xml:"NetworkMode,omitempty"`
+	// example:
+	//
+	// 80
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// example:
+	//
+	// InProgress
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// String	i-uf6i0tv2refv8wz*****
+	TestId      *string                                                  `json:"TestId,omitempty" xml:"TestId,omitempty"`
+	TrafficTest *ListNetTestResultsResponseBodyNetTestResultsTrafficTest `json:"TrafficTest,omitempty" xml:"TrafficTest,omitempty" type:"Struct"`
+}
+
+func (s ListNetTestResultsResponseBodyNetTestResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNetTestResultsResponseBodyNetTestResults) GoString() string {
+	return s.String()
+}
+
+func (s *ListNetTestResultsResponseBodyNetTestResults) SetClusterId(v string) *ListNetTestResultsResponseBodyNetTestResults {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *ListNetTestResultsResponseBodyNetTestResults) SetClusterName(v string) *ListNetTestResultsResponseBodyNetTestResults {
+	s.ClusterName = &v
+	return s
+}
+
+func (s *ListNetTestResultsResponseBodyNetTestResults) SetCommTest(v *ListNetTestResultsResponseBodyNetTestResultsCommTest) *ListNetTestResultsResponseBodyNetTestResults {
+	s.CommTest = v
+	return s
+}
+
+func (s *ListNetTestResultsResponseBodyNetTestResults) SetCreationTime(v string) *ListNetTestResultsResponseBodyNetTestResults {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *ListNetTestResultsResponseBodyNetTestResults) SetDelayTest(v *ListNetTestResultsResponseBodyNetTestResultsDelayTest) *ListNetTestResultsResponseBodyNetTestResults {
+	s.DelayTest = v
+	return s
+}
+
+func (s *ListNetTestResultsResponseBodyNetTestResults) SetFinishedTime(v string) *ListNetTestResultsResponseBodyNetTestResults {
+	s.FinishedTime = &v
+	return s
+}
+
+func (s *ListNetTestResultsResponseBodyNetTestResults) SetNetTestType(v string) *ListNetTestResultsResponseBodyNetTestResults {
+	s.NetTestType = &v
+	return s
+}
+
+func (s *ListNetTestResultsResponseBodyNetTestResults) SetNetworkMode(v string) *ListNetTestResultsResponseBodyNetTestResults {
+	s.NetworkMode = &v
+	return s
+}
+
+func (s *ListNetTestResultsResponseBodyNetTestResults) SetPort(v string) *ListNetTestResultsResponseBodyNetTestResults {
+	s.Port = &v
+	return s
+}
+
+func (s *ListNetTestResultsResponseBodyNetTestResults) SetStatus(v string) *ListNetTestResultsResponseBodyNetTestResults {
+	s.Status = &v
+	return s
+}
+
+func (s *ListNetTestResultsResponseBodyNetTestResults) SetTestId(v string) *ListNetTestResultsResponseBodyNetTestResults {
+	s.TestId = &v
+	return s
+}
+
+func (s *ListNetTestResultsResponseBodyNetTestResults) SetTrafficTest(v *ListNetTestResultsResponseBodyNetTestResultsTrafficTest) *ListNetTestResultsResponseBodyNetTestResults {
+	s.TrafficTest = v
+	return s
+}
+
+type ListNetTestResultsResponseBodyNetTestResultsCommTest struct {
+	// example:
+	//
+	// 4
+	GPUNum *string                                                      `json:"GPUNum,omitempty" xml:"GPUNum,omitempty"`
+	Hosts  []*ListNetTestResultsResponseBodyNetTestResultsCommTestHosts `json:"Hosts,omitempty" xml:"Hosts,omitempty" type:"Repeated"`
+	// example:
+	//
+	// AllToAll
+	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// example:
+	//
+	// ACCL
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListNetTestResultsResponseBodyNetTestResultsCommTest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNetTestResultsResponseBodyNetTestResultsCommTest) GoString() string {
+	return s.String()
+}
+
+func (s *ListNetTestResultsResponseBodyNetTestResultsCommTest) SetGPUNum(v string) *ListNetTestResultsResponseBodyNetTestResultsCommTest {
+	s.GPUNum = &v
+	return s
+}
+
+func (s *ListNetTestResultsResponseBodyNetTestResultsCommTest) SetHosts(v []*ListNetTestResultsResponseBodyNetTestResultsCommTestHosts) *ListNetTestResultsResponseBodyNetTestResultsCommTest {
+	s.Hosts = v
+	return s
+}
+
+func (s *ListNetTestResultsResponseBodyNetTestResultsCommTest) SetModel(v string) *ListNetTestResultsResponseBodyNetTestResultsCommTest {
+	s.Model = &v
+	return s
+}
+
+func (s *ListNetTestResultsResponseBodyNetTestResultsCommTest) SetType(v string) *ListNetTestResultsResponseBodyNetTestResultsCommTest {
+	s.Type = &v
+	return s
+}
+
+type ListNetTestResultsResponseBodyNetTestResultsCommTestHosts struct {
+	// example:
+	//
+	// 10.51.16.21
+	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
+	// example:
+	//
+	// e01-cn-wwo3eteze19
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// www.xinjiaoyu.com
+	ServerName *string `json:"ServerName,omitempty" xml:"ServerName,omitempty"`
+}
+
+func (s ListNetTestResultsResponseBodyNetTestResultsCommTestHosts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNetTestResultsResponseBodyNetTestResultsCommTestHosts) GoString() string {
+	return s.String()
+}
+
+func (s *ListNetTestResultsResponseBodyNetTestResultsCommTestHosts) SetIP(v string) *ListNetTestResultsResponseBodyNetTestResultsCommTestHosts {
+	s.IP = &v
+	return s
+}
+
+func (s *ListNetTestResultsResponseBodyNetTestResultsCommTestHosts) SetResourceId(v string) *ListNetTestResultsResponseBodyNetTestResultsCommTestHosts {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ListNetTestResultsResponseBodyNetTestResultsCommTestHosts) SetServerName(v string) *ListNetTestResultsResponseBodyNetTestResultsCommTestHosts {
+	s.ServerName = &v
+	return s
+}
+
+type ListNetTestResultsResponseBodyNetTestResultsDelayTest struct {
+	Hosts []*ListNetTestResultsResponseBodyNetTestResultsDelayTestHosts `json:"Hosts,omitempty" xml:"Hosts,omitempty" type:"Repeated"`
+}
+
+func (s ListNetTestResultsResponseBodyNetTestResultsDelayTest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNetTestResultsResponseBodyNetTestResultsDelayTest) GoString() string {
+	return s.String()
+}
+
+func (s *ListNetTestResultsResponseBodyNetTestResultsDelayTest) SetHosts(v []*ListNetTestResultsResponseBodyNetTestResultsDelayTestHosts) *ListNetTestResultsResponseBodyNetTestResultsDelayTest {
+	s.Hosts = v
+	return s
+}
+
+type ListNetTestResultsResponseBodyNetTestResultsDelayTestHosts struct {
+	// example:
+	//
+	// bond1
+	Bond *string `json:"Bond,omitempty" xml:"Bond,omitempty"`
+	// example:
+	//
+	// pgm-bp174z988a27wre71o.pg.rds.aliyuncs.com
+	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
+	// example:
+	//
+	// e01-cn-wwo3eteze19
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// WrF
+	ServerName *string `json:"ServerName,omitempty" xml:"ServerName,omitempty"`
+}
+
+func (s ListNetTestResultsResponseBodyNetTestResultsDelayTestHosts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNetTestResultsResponseBodyNetTestResultsDelayTestHosts) GoString() string {
+	return s.String()
+}
+
+func (s *ListNetTestResultsResponseBodyNetTestResultsDelayTestHosts) SetBond(v string) *ListNetTestResultsResponseBodyNetTestResultsDelayTestHosts {
+	s.Bond = &v
+	return s
+}
+
+func (s *ListNetTestResultsResponseBodyNetTestResultsDelayTestHosts) SetIP(v string) *ListNetTestResultsResponseBodyNetTestResultsDelayTestHosts {
+	s.IP = &v
+	return s
+}
+
+func (s *ListNetTestResultsResponseBodyNetTestResultsDelayTestHosts) SetResourceId(v string) *ListNetTestResultsResponseBodyNetTestResultsDelayTestHosts {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ListNetTestResultsResponseBodyNetTestResultsDelayTestHosts) SetServerName(v string) *ListNetTestResultsResponseBodyNetTestResultsDelayTestHosts {
+	s.ServerName = &v
+	return s
+}
+
+type ListNetTestResultsResponseBodyNetTestResultsTrafficTest struct {
+	Clients []*ListNetTestResultsResponseBodyNetTestResultsTrafficTestClients `json:"Clients,omitempty" xml:"Clients,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// example:
+	//
+	// True
+	GDR *string `json:"GDR,omitempty" xml:"GDR,omitempty"`
+	// example:
+	//
+	// TCP
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// example:
+	//
+	// RDMA
+	QP      *int64                                                            `json:"QP,omitempty" xml:"QP,omitempty"`
+	Servers []*ListNetTestResultsResponseBodyNetTestResultsTrafficTestServers `json:"Servers,omitempty" xml:"Servers,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Fullmesh
+	TrafficModel *string `json:"TrafficModel,omitempty" xml:"TrafficModel,omitempty"`
+}
+
+func (s ListNetTestResultsResponseBodyNetTestResultsTrafficTest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNetTestResultsResponseBodyNetTestResultsTrafficTest) GoString() string {
+	return s.String()
+}
+
+func (s *ListNetTestResultsResponseBodyNetTestResultsTrafficTest) SetClients(v []*ListNetTestResultsResponseBodyNetTestResultsTrafficTestClients) *ListNetTestResultsResponseBodyNetTestResultsTrafficTest {
+	s.Clients = v
+	return s
+}
+
+func (s *ListNetTestResultsResponseBodyNetTestResultsTrafficTest) SetDuration(v int64) *ListNetTestResultsResponseBodyNetTestResultsTrafficTest {
+	s.Duration = &v
+	return s
+}
+
+func (s *ListNetTestResultsResponseBodyNetTestResultsTrafficTest) SetGDR(v string) *ListNetTestResultsResponseBodyNetTestResultsTrafficTest {
+	s.GDR = &v
+	return s
+}
+
+func (s *ListNetTestResultsResponseBodyNetTestResultsTrafficTest) SetProtocol(v string) *ListNetTestResultsResponseBodyNetTestResultsTrafficTest {
+	s.Protocol = &v
+	return s
+}
+
+func (s *ListNetTestResultsResponseBodyNetTestResultsTrafficTest) SetQP(v int64) *ListNetTestResultsResponseBodyNetTestResultsTrafficTest {
+	s.QP = &v
+	return s
+}
+
+func (s *ListNetTestResultsResponseBodyNetTestResultsTrafficTest) SetServers(v []*ListNetTestResultsResponseBodyNetTestResultsTrafficTestServers) *ListNetTestResultsResponseBodyNetTestResultsTrafficTest {
+	s.Servers = v
+	return s
+}
+
+func (s *ListNetTestResultsResponseBodyNetTestResultsTrafficTest) SetTrafficModel(v string) *ListNetTestResultsResponseBodyNetTestResultsTrafficTest {
+	s.TrafficModel = &v
+	return s
+}
+
+type ListNetTestResultsResponseBodyNetTestResultsTrafficTestClients struct {
+	// example:
+	//
+	// bond1
+	Bond *string `json:"Bond,omitempty" xml:"Bond,omitempty"`
+	// example:
+	//
+	// 74.73.100.1
+	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
+	// example:
+	//
+	// e01-cn-20p36bqet39
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// prod-gf-cn.juequling.com
+	ServerName *string `json:"ServerName,omitempty" xml:"ServerName,omitempty"`
+}
+
+func (s ListNetTestResultsResponseBodyNetTestResultsTrafficTestClients) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNetTestResultsResponseBodyNetTestResultsTrafficTestClients) GoString() string {
+	return s.String()
+}
+
+func (s *ListNetTestResultsResponseBodyNetTestResultsTrafficTestClients) SetBond(v string) *ListNetTestResultsResponseBodyNetTestResultsTrafficTestClients {
+	s.Bond = &v
+	return s
+}
+
+func (s *ListNetTestResultsResponseBodyNetTestResultsTrafficTestClients) SetIP(v string) *ListNetTestResultsResponseBodyNetTestResultsTrafficTestClients {
+	s.IP = &v
+	return s
+}
+
+func (s *ListNetTestResultsResponseBodyNetTestResultsTrafficTestClients) SetResourceId(v string) *ListNetTestResultsResponseBodyNetTestResultsTrafficTestClients {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ListNetTestResultsResponseBodyNetTestResultsTrafficTestClients) SetServerName(v string) *ListNetTestResultsResponseBodyNetTestResultsTrafficTestClients {
+	s.ServerName = &v
+	return s
+}
+
+type ListNetTestResultsResponseBodyNetTestResultsTrafficTestServers struct {
+	// example:
+	//
+	// bond1
+	Bond *string `json:"Bond,omitempty" xml:"Bond,omitempty"`
+	// example:
+	//
+	// 10.1.168.183
+	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
+	// example:
+	//
+	// e01-cn-wwo3eteze19
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// prod-gf-cn.juequling.com
+	ServerName *string `json:"ServerName,omitempty" xml:"ServerName,omitempty"`
+}
+
+func (s ListNetTestResultsResponseBodyNetTestResultsTrafficTestServers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNetTestResultsResponseBodyNetTestResultsTrafficTestServers) GoString() string {
+	return s.String()
+}
+
+func (s *ListNetTestResultsResponseBodyNetTestResultsTrafficTestServers) SetBond(v string) *ListNetTestResultsResponseBodyNetTestResultsTrafficTestServers {
+	s.Bond = &v
+	return s
+}
+
+func (s *ListNetTestResultsResponseBodyNetTestResultsTrafficTestServers) SetIP(v string) *ListNetTestResultsResponseBodyNetTestResultsTrafficTestServers {
+	s.IP = &v
+	return s
+}
+
+func (s *ListNetTestResultsResponseBodyNetTestResultsTrafficTestServers) SetResourceId(v string) *ListNetTestResultsResponseBodyNetTestResultsTrafficTestServers {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ListNetTestResultsResponseBodyNetTestResultsTrafficTestServers) SetServerName(v string) *ListNetTestResultsResponseBodyNetTestResultsTrafficTestServers {
+	s.ServerName = &v
+	return s
+}
+
+type ListNetTestResultsResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListNetTestResultsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListNetTestResultsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNetTestResultsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListNetTestResultsResponse) SetHeaders(v map[string]*string) *ListNetTestResultsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListNetTestResultsResponse) SetStatusCode(v int32) *ListNetTestResultsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListNetTestResultsResponse) SetBody(v *ListNetTestResultsResponseBody) *ListNetTestResultsResponse {
 	s.Body = v
 	return s
 }
@@ -6167,6 +8612,101 @@ func (s *ListTagResourcesResponse) SetStatusCode(v int32) *ListTagResourcesRespo
 }
 
 func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *ListTagResourcesResponse {
+	s.Body = v
+	return s
+}
+
+type ListUserClusterTypesResponseBody struct {
+	ClusterTypes []*ListUserClusterTypesResponseBodyClusterTypes `json:"ClusterTypes,omitempty" xml:"ClusterTypes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 3a6b93229825ac667104463b56790c91
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 4FD06DF0-9167-5C6F-A145-F30CA4A15D54
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListUserClusterTypesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserClusterTypesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserClusterTypesResponseBody) SetClusterTypes(v []*ListUserClusterTypesResponseBodyClusterTypes) *ListUserClusterTypesResponseBody {
+	s.ClusterTypes = v
+	return s
+}
+
+func (s *ListUserClusterTypesResponseBody) SetNextToken(v string) *ListUserClusterTypesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListUserClusterTypesResponseBody) SetRequestId(v string) *ListUserClusterTypesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListUserClusterTypesResponseBodyClusterTypes struct {
+	// example:
+	//
+	// Public
+	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
+	// example:
+	//
+	// AckEdgePro
+	TypeName *string `json:"TypeName,omitempty" xml:"TypeName,omitempty"`
+}
+
+func (s ListUserClusterTypesResponseBodyClusterTypes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserClusterTypesResponseBodyClusterTypes) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserClusterTypesResponseBodyClusterTypes) SetAccessType(v string) *ListUserClusterTypesResponseBodyClusterTypes {
+	s.AccessType = &v
+	return s
+}
+
+func (s *ListUserClusterTypesResponseBodyClusterTypes) SetTypeName(v string) *ListUserClusterTypesResponseBodyClusterTypes {
+	s.TypeName = &v
+	return s
+}
+
+type ListUserClusterTypesResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListUserClusterTypesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListUserClusterTypesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserClusterTypesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserClusterTypesResponse) SetHeaders(v map[string]*string) *ListUserClusterTypesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListUserClusterTypesResponse) SetStatusCode(v int32) *ListUserClusterTypesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListUserClusterTypesResponse) SetBody(v *ListUserClusterTypesResponseBody) *ListUserClusterTypesResponse {
 	s.Body = v
 	return s
 }
@@ -7813,11 +10353,14 @@ func (s *StopInvocationResponse) SetBody(v *StopInvocationResponseBody) *StopInv
 }
 
 type StopNodesRequest struct {
+	// Whether to allow skipping failed node tasks, default value is False.
+	//
 	// example:
 	//
 	// False
-	IgnoreFailedNodeTasks *bool     `json:"IgnoreFailedNodeTasks,omitempty" xml:"IgnoreFailedNodeTasks,omitempty"`
-	Nodes                 []*string `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	IgnoreFailedNodeTasks *bool `json:"IgnoreFailedNodeTasks,omitempty" xml:"IgnoreFailedNodeTasks,omitempty"`
+	// List of nodes.
+	Nodes []*string `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
 }
 
 func (s StopNodesRequest) String() string {
@@ -7839,11 +10382,14 @@ func (s *StopNodesRequest) SetNodes(v []*string) *StopNodesRequest {
 }
 
 type StopNodesShrinkRequest struct {
+	// Whether to allow skipping failed node tasks, default value is False.
+	//
 	// example:
 	//
 	// False
-	IgnoreFailedNodeTasks *bool   `json:"IgnoreFailedNodeTasks,omitempty" xml:"IgnoreFailedNodeTasks,omitempty"`
-	NodesShrink           *string `json:"Nodes,omitempty" xml:"Nodes,omitempty"`
+	IgnoreFailedNodeTasks *bool `json:"IgnoreFailedNodeTasks,omitempty" xml:"IgnoreFailedNodeTasks,omitempty"`
+	// List of nodes.
+	NodesShrink *string `json:"Nodes,omitempty" xml:"Nodes,omitempty"`
 }
 
 func (s StopNodesShrinkRequest) String() string {
@@ -7865,10 +10411,14 @@ func (s *StopNodesShrinkRequest) SetNodesShrink(v string) *StopNodesShrinkReques
 }
 
 type StopNodesResponseBody struct {
+	// Request ID
+	//
 	// example:
 	//
 	// 4FD06DF0-9167-5C6F-A145-F30CA4A15D54
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Task ID
+	//
 	// example:
 	//
 	// i155847351716171893489
@@ -8385,6 +10935,81 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 
 // Summary:
 //
+// 断开连接
+//
+// @param request - CloseSessionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloseSessionResponse
+func (client *Client) CloseSessionWithOptions(request *CloseSessionRequest, runtime *util.RuntimeOptions) (_result *CloseSessionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		body["SessionId"] = request.SessionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionToken)) {
+		body["SessionToken"] = request.SessionToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CloseSession"),
+		Version:     tea.String("2022-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CloseSessionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CloseSessionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 断开连接
+//
+// @param request - CloseSessionRequest
+//
+// @return CloseSessionResponse
+func (client *Client) CloseSession(request *CloseSessionRequest) (_result *CloseSessionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CloseSessionResponse{}
+	_body, _err := client.CloseSessionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Create a large-scale computing cluster
 //
 // @param tmpReq - CreateClusterRequest
@@ -8613,6 +11238,198 @@ func (client *Client) CreateDiagnosticTask(request *CreateDiagnosticTaskRequest)
 
 // Summary:
 //
+// 创建网络测试任务
+//
+// @param tmpReq - CreateNetTestTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateNetTestTaskResponse
+func (client *Client) CreateNetTestTaskWithOptions(tmpReq *CreateNetTestTaskRequest, runtime *util.RuntimeOptions) (_result *CreateNetTestTaskResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateNetTestTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.CommTest)) {
+		request.CommTestShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CommTest, tea.String("CommTest"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.DelayTest)) {
+		request.DelayTestShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DelayTest, tea.String("DelayTest"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TrafficTest)) {
+		request.TrafficTestShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TrafficTest, tea.String("TrafficTest"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		body["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterName)) {
+		body["ClusterName"] = request.ClusterName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CommTestShrink)) {
+		body["CommTest"] = request.CommTestShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DelayTestShrink)) {
+		body["DelayTest"] = request.DelayTestShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetTestType)) {
+		body["NetTestType"] = request.NetTestType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkMode)) {
+		body["NetworkMode"] = request.NetworkMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Port)) {
+		body["Port"] = request.Port
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrafficTestShrink)) {
+		body["TrafficTest"] = request.TrafficTestShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateNetTestTask"),
+		Version:     tea.String("2022-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateNetTestTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateNetTestTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 创建网络测试任务
+//
+// @param request - CreateNetTestTaskRequest
+//
+// @return CreateNetTestTaskResponse
+func (client *Client) CreateNetTestTask(request *CreateNetTestTaskRequest) (_result *CreateNetTestTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateNetTestTaskResponse{}
+	_body, _err := client.CreateNetTestTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建Web Terminal会话
+//
+// @param request - CreateSessionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSessionResponse
+func (client *Client) CreateSessionWithOptions(request *CreateSessionRequest, runtime *util.RuntimeOptions) (_result *CreateSessionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		body["NodeId"] = request.NodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionType)) {
+		body["SessionType"] = request.SessionType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		body["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateSession"),
+		Version:     tea.String("2022-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateSessionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateSessionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 创建Web Terminal会话
+//
+// @param request - CreateSessionRequest
+//
+// @return CreateSessionResponse
+func (client *Client) CreateSession(request *CreateSessionRequest) (_result *CreateSessionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateSessionResponse{}
+	_body, _err := client.CreateSessionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Delete cluster instance
 //
 // @param request - DeleteClusterRequest
@@ -8829,6 +11646,77 @@ func (client *Client) DescribeInvocations(request *DescribeInvocationsRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInvocationsResponse{}
 	_body, _err := client.DescribeInvocationsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询网络测试结果
+//
+// @param request - DescribeNetTestResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeNetTestResultResponse
+func (client *Client) DescribeNetTestResultWithOptions(request *DescribeNetTestResultRequest, runtime *util.RuntimeOptions) (_result *DescribeNetTestResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TestId)) {
+		body["TestId"] = request.TestId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeNetTestResult"),
+		Version:     tea.String("2022-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeNetTestResultResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeNetTestResultResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询网络测试结果
+//
+// @param request - DescribeNetTestResultRequest
+//
+// @return DescribeNetTestResultResponse
+func (client *Client) DescribeNetTestResult(request *DescribeNetTestResultRequest) (_result *DescribeNetTestResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeNetTestResultResponse{}
+	_body, _err := client.DescribeNetTestResultWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9464,6 +12352,89 @@ func (client *Client) ListClusters(request *ListClustersRequest) (_result *ListC
 
 // Summary:
 //
+// 诊断任务列表
+//
+// @param request - ListDiagnosticResultsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDiagnosticResultsResponse
+func (client *Client) ListDiagnosticResultsWithOptions(request *ListDiagnosticResultsRequest, runtime *util.RuntimeOptions) (_result *ListDiagnosticResultsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DiagType)) {
+		body["DiagType"] = request.DiagType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		body["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDiagnosticResults"),
+		Version:     tea.String("2022-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListDiagnosticResultsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListDiagnosticResultsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 诊断任务列表
+//
+// @param request - ListDiagnosticResultsRequest
+//
+// @return ListDiagnosticResultsResponse
+func (client *Client) ListDiagnosticResults(request *ListDiagnosticResultsRequest) (_result *ListDiagnosticResultsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDiagnosticResultsResponse{}
+	_body, _err := client.ListDiagnosticResultsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // List of Available Physical Machines
 //
 // @param request - ListFreeNodesRequest
@@ -9551,6 +12522,162 @@ func (client *Client) ListFreeNodes(request *ListFreeNodesRequest) (_result *Lis
 
 // Summary:
 //
+// Query the list of images available to the user
+//
+// @param request - ListImagesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListImagesResponse
+func (client *Client) ListImagesWithOptions(request *ListImagesRequest, runtime *util.RuntimeOptions) (_result *ListImagesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Architecture)) {
+		body["Architecture"] = request.Architecture
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageVersion)) {
+		body["ImageVersion"] = request.ImageVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Platform)) {
+		body["Platform"] = request.Platform
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListImages"),
+		Version:     tea.String("2022-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListImagesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListImagesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Query the list of images available to the user
+//
+// @param request - ListImagesRequest
+//
+// @return ListImagesResponse
+func (client *Client) ListImages(request *ListImagesRequest) (_result *ListImagesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListImagesResponse{}
+	_body, _err := client.ListImagesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 使用HPNZone和机型查询机型网络配置
+//
+// @param tmpReq - ListMachineNetworkInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMachineNetworkInfoResponse
+func (client *Client) ListMachineNetworkInfoWithOptions(tmpReq *ListMachineNetworkInfoRequest, runtime *util.RuntimeOptions) (_result *ListMachineNetworkInfoResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListMachineNetworkInfoShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.MachineHpnInfo)) {
+		request.MachineHpnInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MachineHpnInfo, tea.String("MachineHpnInfo"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MachineHpnInfoShrink)) {
+		body["MachineHpnInfo"] = request.MachineHpnInfoShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListMachineNetworkInfo"),
+		Version:     tea.String("2022-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListMachineNetworkInfoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListMachineNetworkInfoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 使用HPNZone和机型查询机型网络配置
+//
+// @param request - ListMachineNetworkInfoRequest
+//
+// @return ListMachineNetworkInfoResponse
+func (client *Client) ListMachineNetworkInfo(request *ListMachineNetworkInfoRequest) (_result *ListMachineNetworkInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListMachineNetworkInfoResponse{}
+	_body, _err := client.ListMachineNetworkInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Query the list of machine types available to the user
 //
 // @param request - ListMachineTypesRequest
@@ -9613,6 +12740,89 @@ func (client *Client) ListMachineTypes(request *ListMachineTypesRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &ListMachineTypesResponse{}
 	_body, _err := client.ListMachineTypesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 网络测试列表
+//
+// @param request - ListNetTestResultsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListNetTestResultsResponse
+func (client *Client) ListNetTestResultsWithOptions(request *ListNetTestResultsRequest, runtime *util.RuntimeOptions) (_result *ListNetTestResultsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetTestType)) {
+		body["NetTestType"] = request.NetTestType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		body["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListNetTestResults"),
+		Version:     tea.String("2022-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListNetTestResultsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListNetTestResultsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 网络测试列表
+//
+// @param request - ListNetTestResultsRequest
+//
+// @return ListNetTestResultsResponse
+func (client *Client) ListNetTestResults(request *ListNetTestResultsRequest) (_result *ListNetTestResultsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListNetTestResultsResponse{}
+	_body, _err := client.ListNetTestResultsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9783,6 +12993,64 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTagResourcesResponse{}
 	_body, _err := client.ListTagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询用户可以使用的集群类型
+//
+// @param request - ListUserClusterTypesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUserClusterTypesResponse
+func (client *Client) ListUserClusterTypesWithOptions(runtime *util.RuntimeOptions) (_result *ListUserClusterTypesResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("ListUserClusterTypes"),
+		Version:     tea.String("2022-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListUserClusterTypesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListUserClusterTypesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询用户可以使用的集群类型
+//
+// @return ListUserClusterTypesResponse
+func (client *Client) ListUserClusterTypes() (_result *ListUserClusterTypesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListUserClusterTypesResponse{}
+	_body, _err := client.ListUserClusterTypesWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10390,7 +13658,7 @@ func (client *Client) StopInvocation(request *StopInvocationRequest) (_result *S
 
 // Summary:
 //
-// 关机节点
+// Shut down the nodes
 //
 // @param tmpReq - StopNodesRequest
 //
@@ -10453,7 +13721,7 @@ func (client *Client) StopNodesWithOptions(tmpReq *StopNodesRequest, runtime *ut
 
 // Summary:
 //
-// 关机节点
+// Shut down the nodes
 //
 // @param request - StopNodesRequest
 //
