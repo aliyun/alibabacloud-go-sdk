@@ -10,7 +10,7 @@
 ## 安装
 你可以使用 `go mod` 来管理你的依赖，
 ```sh
-  go get github.com/alibabacloud-go/aiworkspace-20210204/v3
+  go get github.com/alibabacloud-go/aiworkspace-20210204/v4
 ```
 
 ## 问题
