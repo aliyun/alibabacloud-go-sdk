@@ -9,6 +9,185 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type NoticeInstanceUserRequest struct {
+	// example:
+	//
+	// 5000000264872
+	InstanceId  *int64  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NoticeParam *string `json:"NoticeParam,omitempty" xml:"NoticeParam,omitempty"`
+	// example:
+	//
+	// 1
+	NoticeType *int64 `json:"NoticeType,omitempty" xml:"NoticeType,omitempty"`
+}
+
+func (s NoticeInstanceUserRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s NoticeInstanceUserRequest) GoString() string {
+	return s.String()
+}
+
+func (s *NoticeInstanceUserRequest) SetInstanceId(v int64) *NoticeInstanceUserRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *NoticeInstanceUserRequest) SetNoticeParam(v string) *NoticeInstanceUserRequest {
+	s.NoticeParam = &v
+	return s
+}
+
+func (s *NoticeInstanceUserRequest) SetNoticeType(v int64) *NoticeInstanceUserRequest {
+	s.NoticeType = &v
+	return s
+}
+
+type NoticeInstanceUserResponseBody struct {
+	AccessDeniedDetail *NoticeInstanceUserResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// Instance 5723f7ee-952d-411f-94f4-b942a550d9b8 does not exist.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// A6A33748-D573-593C-A3BC-593E33D68311
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s NoticeInstanceUserResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s NoticeInstanceUserResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *NoticeInstanceUserResponseBody) SetAccessDeniedDetail(v *NoticeInstanceUserResponseBodyAccessDeniedDetail) *NoticeInstanceUserResponseBody {
+	s.AccessDeniedDetail = v
+	return s
+}
+
+func (s *NoticeInstanceUserResponseBody) SetCode(v string) *NoticeInstanceUserResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *NoticeInstanceUserResponseBody) SetMessage(v string) *NoticeInstanceUserResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *NoticeInstanceUserResponseBody) SetRequestId(v string) *NoticeInstanceUserResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *NoticeInstanceUserResponseBody) SetResult(v bool) *NoticeInstanceUserResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *NoticeInstanceUserResponseBody) SetSuccess(v bool) *NoticeInstanceUserResponseBody {
+	s.Success = &v
+	return s
+}
+
+type NoticeInstanceUserResponseBodyAccessDeniedDetail struct {
+	AuthAction               *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
+	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
+	AuthPrincipalOwnerId     *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
+	AuthPrincipalType        *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
+	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
+	NoPermissionType         *string `json:"NoPermissionType,omitempty" xml:"NoPermissionType,omitempty"`
+	PolicyType               *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+}
+
+func (s NoticeInstanceUserResponseBodyAccessDeniedDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s NoticeInstanceUserResponseBodyAccessDeniedDetail) GoString() string {
+	return s.String()
+}
+
+func (s *NoticeInstanceUserResponseBodyAccessDeniedDetail) SetAuthAction(v string) *NoticeInstanceUserResponseBodyAccessDeniedDetail {
+	s.AuthAction = &v
+	return s
+}
+
+func (s *NoticeInstanceUserResponseBodyAccessDeniedDetail) SetAuthPrincipalDisplayName(v string) *NoticeInstanceUserResponseBodyAccessDeniedDetail {
+	s.AuthPrincipalDisplayName = &v
+	return s
+}
+
+func (s *NoticeInstanceUserResponseBodyAccessDeniedDetail) SetAuthPrincipalOwnerId(v string) *NoticeInstanceUserResponseBodyAccessDeniedDetail {
+	s.AuthPrincipalOwnerId = &v
+	return s
+}
+
+func (s *NoticeInstanceUserResponseBodyAccessDeniedDetail) SetAuthPrincipalType(v string) *NoticeInstanceUserResponseBodyAccessDeniedDetail {
+	s.AuthPrincipalType = &v
+	return s
+}
+
+func (s *NoticeInstanceUserResponseBodyAccessDeniedDetail) SetEncodedDiagnosticMessage(v string) *NoticeInstanceUserResponseBodyAccessDeniedDetail {
+	s.EncodedDiagnosticMessage = &v
+	return s
+}
+
+func (s *NoticeInstanceUserResponseBodyAccessDeniedDetail) SetNoPermissionType(v string) *NoticeInstanceUserResponseBodyAccessDeniedDetail {
+	s.NoPermissionType = &v
+	return s
+}
+
+func (s *NoticeInstanceUserResponseBodyAccessDeniedDetail) SetPolicyType(v string) *NoticeInstanceUserResponseBodyAccessDeniedDetail {
+	s.PolicyType = &v
+	return s
+}
+
+type NoticeInstanceUserResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *NoticeInstanceUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s NoticeInstanceUserResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s NoticeInstanceUserResponse) GoString() string {
+	return s.String()
+}
+
+func (s *NoticeInstanceUserResponse) SetHeaders(v map[string]*string) *NoticeInstanceUserResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *NoticeInstanceUserResponse) SetStatusCode(v int32) *NoticeInstanceUserResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *NoticeInstanceUserResponse) SetBody(v *NoticeInstanceUserResponseBody) *NoticeInstanceUserResponse {
+	s.Body = v
+	return s
+}
+
 type PushMeteringDataRequest struct {
 	// example:
 	//
@@ -234,6 +413,85 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// isv推送实例消息给用户
+//
+// @param request - NoticeInstanceUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return NoticeInstanceUserResponse
+func (client *Client) NoticeInstanceUserWithOptions(request *NoticeInstanceUserRequest, runtime *util.RuntimeOptions) (_result *NoticeInstanceUserResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NoticeParam)) {
+		body["NoticeParam"] = request.NoticeParam
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NoticeType)) {
+		body["NoticeType"] = request.NoticeType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("NoticeInstanceUser"),
+		Version:     tea.String("2022-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &NoticeInstanceUserResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &NoticeInstanceUserResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// isv推送实例消息给用户
+//
+// @param request - NoticeInstanceUserRequest
+//
+// @return NoticeInstanceUserResponse
+func (client *Client) NoticeInstanceUser(request *NoticeInstanceUserRequest) (_result *NoticeInstanceUserResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &NoticeInstanceUserResponse{}
+	_body, _err := client.NoticeInstanceUserWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
