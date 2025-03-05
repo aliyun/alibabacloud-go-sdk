@@ -120,6 +120,141 @@ func (s *AddIpamPoolCidrResponse) SetBody(v *AddIpamPoolCidrResponseBody) *AddIp
 	return s
 }
 
+type AssociateIpamResourceDiscoveryRequest struct {
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-426655440000
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ipam-ccxbnsbhew0d6t****
+	IpamId *string `json:"IpamId,omitempty" xml:"IpamId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ipam-res-disco-jt5f2af2u6nk2z321****
+	IpamResourceDiscoveryId *string `json:"IpamResourceDiscoveryId,omitempty" xml:"IpamResourceDiscoveryId,omitempty"`
+	OwnerAccount            *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                 *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s AssociateIpamResourceDiscoveryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssociateIpamResourceDiscoveryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AssociateIpamResourceDiscoveryRequest) SetClientToken(v string) *AssociateIpamResourceDiscoveryRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *AssociateIpamResourceDiscoveryRequest) SetDryRun(v bool) *AssociateIpamResourceDiscoveryRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *AssociateIpamResourceDiscoveryRequest) SetIpamId(v string) *AssociateIpamResourceDiscoveryRequest {
+	s.IpamId = &v
+	return s
+}
+
+func (s *AssociateIpamResourceDiscoveryRequest) SetIpamResourceDiscoveryId(v string) *AssociateIpamResourceDiscoveryRequest {
+	s.IpamResourceDiscoveryId = &v
+	return s
+}
+
+func (s *AssociateIpamResourceDiscoveryRequest) SetOwnerAccount(v string) *AssociateIpamResourceDiscoveryRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *AssociateIpamResourceDiscoveryRequest) SetOwnerId(v int64) *AssociateIpamResourceDiscoveryRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *AssociateIpamResourceDiscoveryRequest) SetRegionId(v string) *AssociateIpamResourceDiscoveryRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *AssociateIpamResourceDiscoveryRequest) SetResourceOwnerAccount(v string) *AssociateIpamResourceDiscoveryRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *AssociateIpamResourceDiscoveryRequest) SetResourceOwnerId(v int64) *AssociateIpamResourceDiscoveryRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type AssociateIpamResourceDiscoveryResponseBody struct {
+	// example:
+	//
+	// E897D16A-50EB-543F-B002-C5A26AB818FF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AssociateIpamResourceDiscoveryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssociateIpamResourceDiscoveryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AssociateIpamResourceDiscoveryResponseBody) SetRequestId(v string) *AssociateIpamResourceDiscoveryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AssociateIpamResourceDiscoveryResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AssociateIpamResourceDiscoveryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AssociateIpamResourceDiscoveryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssociateIpamResourceDiscoveryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AssociateIpamResourceDiscoveryResponse) SetHeaders(v map[string]*string) *AssociateIpamResourceDiscoveryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AssociateIpamResourceDiscoveryResponse) SetStatusCode(v int32) *AssociateIpamResourceDiscoveryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AssociateIpamResourceDiscoveryResponse) SetBody(v *AssociateIpamResourceDiscoveryResponseBody) *AssociateIpamResourceDiscoveryResponse {
+	s.Body = v
+	return s
+}
+
 type ChangeResourceGroupRequest struct {
 	// This parameter is required.
 	//
@@ -872,6 +1007,197 @@ func (s *CreateIpamPoolAllocationResponse) SetBody(v *CreateIpamPoolAllocationRe
 	return s
 }
 
+type CreateIpamResourceDiscoveryRequest struct {
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-426655440000
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// example:
+	//
+	// description
+	IpamResourceDiscoveryDescription *string `json:"IpamResourceDiscoveryDescription,omitempty" xml:"IpamResourceDiscoveryDescription,omitempty"`
+	// example:
+	//
+	// name
+	IpamResourceDiscoveryName *string `json:"IpamResourceDiscoveryName,omitempty" xml:"IpamResourceDiscoveryName,omitempty"`
+	// This parameter is required.
+	OperatingRegionList []*string `json:"OperatingRegionList,omitempty" xml:"OperatingRegionList,omitempty" type:"Repeated"`
+	OwnerAccount        *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId             *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-aek2sermdd6****
+	ResourceGroupId      *string                                  `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string                                  `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64                                   `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Tag                  []*CreateIpamResourceDiscoveryRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s CreateIpamResourceDiscoveryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIpamResourceDiscoveryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIpamResourceDiscoveryRequest) SetClientToken(v string) *CreateIpamResourceDiscoveryRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateIpamResourceDiscoveryRequest) SetDryRun(v bool) *CreateIpamResourceDiscoveryRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *CreateIpamResourceDiscoveryRequest) SetIpamResourceDiscoveryDescription(v string) *CreateIpamResourceDiscoveryRequest {
+	s.IpamResourceDiscoveryDescription = &v
+	return s
+}
+
+func (s *CreateIpamResourceDiscoveryRequest) SetIpamResourceDiscoveryName(v string) *CreateIpamResourceDiscoveryRequest {
+	s.IpamResourceDiscoveryName = &v
+	return s
+}
+
+func (s *CreateIpamResourceDiscoveryRequest) SetOperatingRegionList(v []*string) *CreateIpamResourceDiscoveryRequest {
+	s.OperatingRegionList = v
+	return s
+}
+
+func (s *CreateIpamResourceDiscoveryRequest) SetOwnerAccount(v string) *CreateIpamResourceDiscoveryRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *CreateIpamResourceDiscoveryRequest) SetOwnerId(v int64) *CreateIpamResourceDiscoveryRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateIpamResourceDiscoveryRequest) SetRegionId(v string) *CreateIpamResourceDiscoveryRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateIpamResourceDiscoveryRequest) SetResourceGroupId(v string) *CreateIpamResourceDiscoveryRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateIpamResourceDiscoveryRequest) SetResourceOwnerAccount(v string) *CreateIpamResourceDiscoveryRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreateIpamResourceDiscoveryRequest) SetResourceOwnerId(v int64) *CreateIpamResourceDiscoveryRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreateIpamResourceDiscoveryRequest) SetTag(v []*CreateIpamResourceDiscoveryRequestTag) *CreateIpamResourceDiscoveryRequest {
+	s.Tag = v
+	return s
+}
+
+type CreateIpamResourceDiscoveryRequestTag struct {
+	// example:
+	//
+	// FinanceDept
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// FinanceJoshua
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateIpamResourceDiscoveryRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIpamResourceDiscoveryRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIpamResourceDiscoveryRequestTag) SetKey(v string) *CreateIpamResourceDiscoveryRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateIpamResourceDiscoveryRequestTag) SetValue(v string) *CreateIpamResourceDiscoveryRequestTag {
+	s.Value = &v
+	return s
+}
+
+type CreateIpamResourceDiscoveryResponseBody struct {
+	// example:
+	//
+	// ipam-res-disco-jt5f2af2u6nk2z321****
+	IpamResourceDiscoveryId *string `json:"IpamResourceDiscoveryId,omitempty" xml:"IpamResourceDiscoveryId,omitempty"`
+	// example:
+	//
+	// BB2C39DE-CEB8-595A-981A-F2EFCBE7324E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateIpamResourceDiscoveryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIpamResourceDiscoveryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIpamResourceDiscoveryResponseBody) SetIpamResourceDiscoveryId(v string) *CreateIpamResourceDiscoveryResponseBody {
+	s.IpamResourceDiscoveryId = &v
+	return s
+}
+
+func (s *CreateIpamResourceDiscoveryResponseBody) SetRequestId(v string) *CreateIpamResourceDiscoveryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateIpamResourceDiscoveryResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateIpamResourceDiscoveryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateIpamResourceDiscoveryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIpamResourceDiscoveryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIpamResourceDiscoveryResponse) SetHeaders(v map[string]*string) *CreateIpamResourceDiscoveryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateIpamResourceDiscoveryResponse) SetStatusCode(v int32) *CreateIpamResourceDiscoveryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateIpamResourceDiscoveryResponse) SetBody(v *CreateIpamResourceDiscoveryResponseBody) *CreateIpamResourceDiscoveryResponse {
+	s.Body = v
+	return s
+}
+
 type CreateIpamScopeRequest struct {
 	// example:
 	//
@@ -1526,6 +1852,130 @@ func (s *DeleteIpamPoolCidrResponse) SetBody(v *DeleteIpamPoolCidrResponseBody) 
 	return s
 }
 
+type DeleteIpamResourceDiscoveryRequest struct {
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-426655440000
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ipam-res-disco-jt5f2af2u6nk2z321****
+	IpamResourceDiscoveryId *string `json:"IpamResourceDiscoveryId,omitempty" xml:"IpamResourceDiscoveryId,omitempty"`
+	OwnerAccount            *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                 *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DeleteIpamResourceDiscoveryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteIpamResourceDiscoveryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteIpamResourceDiscoveryRequest) SetClientToken(v string) *DeleteIpamResourceDiscoveryRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DeleteIpamResourceDiscoveryRequest) SetDryRun(v bool) *DeleteIpamResourceDiscoveryRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *DeleteIpamResourceDiscoveryRequest) SetIpamResourceDiscoveryId(v string) *DeleteIpamResourceDiscoveryRequest {
+	s.IpamResourceDiscoveryId = &v
+	return s
+}
+
+func (s *DeleteIpamResourceDiscoveryRequest) SetOwnerAccount(v string) *DeleteIpamResourceDiscoveryRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DeleteIpamResourceDiscoveryRequest) SetOwnerId(v int64) *DeleteIpamResourceDiscoveryRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteIpamResourceDiscoveryRequest) SetRegionId(v string) *DeleteIpamResourceDiscoveryRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteIpamResourceDiscoveryRequest) SetResourceOwnerAccount(v string) *DeleteIpamResourceDiscoveryRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DeleteIpamResourceDiscoveryRequest) SetResourceOwnerId(v int64) *DeleteIpamResourceDiscoveryRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DeleteIpamResourceDiscoveryResponseBody struct {
+	// example:
+	//
+	// 9F8315CB-560E-5F1E-B069-6E44B440CAF8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteIpamResourceDiscoveryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteIpamResourceDiscoveryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteIpamResourceDiscoveryResponseBody) SetRequestId(v string) *DeleteIpamResourceDiscoveryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteIpamResourceDiscoveryResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteIpamResourceDiscoveryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteIpamResourceDiscoveryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteIpamResourceDiscoveryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteIpamResourceDiscoveryResponse) SetHeaders(v map[string]*string) *DeleteIpamResourceDiscoveryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteIpamResourceDiscoveryResponse) SetStatusCode(v int32) *DeleteIpamResourceDiscoveryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteIpamResourceDiscoveryResponse) SetBody(v *DeleteIpamResourceDiscoveryResponseBody) *DeleteIpamResourceDiscoveryResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteIpamScopeRequest struct {
 	// example:
 	//
@@ -1646,6 +2096,141 @@ func (s *DeleteIpamScopeResponse) SetStatusCode(v int32) *DeleteIpamScopeRespons
 }
 
 func (s *DeleteIpamScopeResponse) SetBody(v *DeleteIpamScopeResponseBody) *DeleteIpamScopeResponse {
+	s.Body = v
+	return s
+}
+
+type DissociateIpamResourceDiscoveryRequest struct {
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-426655440000
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ipam-ccxbnsbhew0d6t****
+	IpamId *string `json:"IpamId,omitempty" xml:"IpamId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ipam-res-disco-jt5f2af2u6nk2z321****
+	IpamResourceDiscoveryId *string `json:"IpamResourceDiscoveryId,omitempty" xml:"IpamResourceDiscoveryId,omitempty"`
+	OwnerAccount            *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                 *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DissociateIpamResourceDiscoveryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DissociateIpamResourceDiscoveryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DissociateIpamResourceDiscoveryRequest) SetClientToken(v string) *DissociateIpamResourceDiscoveryRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DissociateIpamResourceDiscoveryRequest) SetDryRun(v bool) *DissociateIpamResourceDiscoveryRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *DissociateIpamResourceDiscoveryRequest) SetIpamId(v string) *DissociateIpamResourceDiscoveryRequest {
+	s.IpamId = &v
+	return s
+}
+
+func (s *DissociateIpamResourceDiscoveryRequest) SetIpamResourceDiscoveryId(v string) *DissociateIpamResourceDiscoveryRequest {
+	s.IpamResourceDiscoveryId = &v
+	return s
+}
+
+func (s *DissociateIpamResourceDiscoveryRequest) SetOwnerAccount(v string) *DissociateIpamResourceDiscoveryRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DissociateIpamResourceDiscoveryRequest) SetOwnerId(v int64) *DissociateIpamResourceDiscoveryRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DissociateIpamResourceDiscoveryRequest) SetRegionId(v string) *DissociateIpamResourceDiscoveryRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DissociateIpamResourceDiscoveryRequest) SetResourceOwnerAccount(v string) *DissociateIpamResourceDiscoveryRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DissociateIpamResourceDiscoveryRequest) SetResourceOwnerId(v int64) *DissociateIpamResourceDiscoveryRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DissociateIpamResourceDiscoveryResponseBody struct {
+	// example:
+	//
+	// 86137597-443F-5B66-B9B6-8514E0C50B8F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DissociateIpamResourceDiscoveryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DissociateIpamResourceDiscoveryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DissociateIpamResourceDiscoveryResponseBody) SetRequestId(v string) *DissociateIpamResourceDiscoveryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DissociateIpamResourceDiscoveryResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DissociateIpamResourceDiscoveryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DissociateIpamResourceDiscoveryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DissociateIpamResourceDiscoveryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DissociateIpamResourceDiscoveryResponse) SetHeaders(v map[string]*string) *DissociateIpamResourceDiscoveryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DissociateIpamResourceDiscoveryResponse) SetStatusCode(v int32) *DissociateIpamResourceDiscoveryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DissociateIpamResourceDiscoveryResponse) SetBody(v *DissociateIpamResourceDiscoveryResponseBody) *DissociateIpamResourceDiscoveryResponse {
 	s.Body = v
 	return s
 }
@@ -1845,6 +2430,124 @@ func (s *GetIpamPoolAllocationResponse) SetStatusCode(v int32) *GetIpamPoolAlloc
 }
 
 func (s *GetIpamPoolAllocationResponse) SetBody(v *GetIpamPoolAllocationResponseBody) *GetIpamPoolAllocationResponse {
+	s.Body = v
+	return s
+}
+
+type GetIpamPoolNextAvailableCidrRequest struct {
+	// example:
+	//
+	// 172.68.0.0/26
+	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	// example:
+	//
+	// 26
+	CidrMask *int32 `json:"CidrMask,omitempty" xml:"CidrMask,omitempty"`
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-426655440000
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ipam-pool-6rcq3tobayc20t****
+	IpamPoolId *string `json:"IpamPoolId,omitempty" xml:"IpamPoolId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetIpamPoolNextAvailableCidrRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIpamPoolNextAvailableCidrRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetIpamPoolNextAvailableCidrRequest) SetCidrBlock(v string) *GetIpamPoolNextAvailableCidrRequest {
+	s.CidrBlock = &v
+	return s
+}
+
+func (s *GetIpamPoolNextAvailableCidrRequest) SetCidrMask(v int32) *GetIpamPoolNextAvailableCidrRequest {
+	s.CidrMask = &v
+	return s
+}
+
+func (s *GetIpamPoolNextAvailableCidrRequest) SetClientToken(v string) *GetIpamPoolNextAvailableCidrRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *GetIpamPoolNextAvailableCidrRequest) SetIpamPoolId(v string) *GetIpamPoolNextAvailableCidrRequest {
+	s.IpamPoolId = &v
+	return s
+}
+
+func (s *GetIpamPoolNextAvailableCidrRequest) SetRegionId(v string) *GetIpamPoolNextAvailableCidrRequest {
+	s.RegionId = &v
+	return s
+}
+
+type GetIpamPoolNextAvailableCidrResponseBody struct {
+	// example:
+	//
+	// 172.68.0.0/26
+	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	// example:
+	//
+	// 29FC6758-9B7C-5CC7-8CBF-4DD846FE7D82
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetIpamPoolNextAvailableCidrResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIpamPoolNextAvailableCidrResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetIpamPoolNextAvailableCidrResponseBody) SetCidrBlock(v string) *GetIpamPoolNextAvailableCidrResponseBody {
+	s.CidrBlock = &v
+	return s
+}
+
+func (s *GetIpamPoolNextAvailableCidrResponseBody) SetRequestId(v string) *GetIpamPoolNextAvailableCidrResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetIpamPoolNextAvailableCidrResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetIpamPoolNextAvailableCidrResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetIpamPoolNextAvailableCidrResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIpamPoolNextAvailableCidrResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetIpamPoolNextAvailableCidrResponse) SetHeaders(v map[string]*string) *GetIpamPoolNextAvailableCidrResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetIpamPoolNextAvailableCidrResponse) SetStatusCode(v int32) *GetIpamPoolNextAvailableCidrResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetIpamPoolNextAvailableCidrResponse) SetBody(v *GetIpamPoolNextAvailableCidrResponseBody) *GetIpamPoolNextAvailableCidrResponse {
 	s.Body = v
 	return s
 }
@@ -3559,6 +4262,7 @@ type ListIpamResourceDiscoveriesRequest struct {
 	//
 	// test
 	IpamResourceDiscoveryName *string `json:"IpamResourceDiscoveryName,omitempty" xml:"IpamResourceDiscoveryName,omitempty"`
+	IsShared                  *bool   `json:"IsShared,omitempty" xml:"IsShared,omitempty"`
 	// example:
 	//
 	// 10
@@ -3603,6 +4307,11 @@ func (s *ListIpamResourceDiscoveriesRequest) SetIpamResourceDiscoveryIds(v []*st
 
 func (s *ListIpamResourceDiscoveriesRequest) SetIpamResourceDiscoveryName(v string) *ListIpamResourceDiscoveriesRequest {
 	s.IpamResourceDiscoveryName = &v
+	return s
+}
+
+func (s *ListIpamResourceDiscoveriesRequest) SetIsShared(v bool) *ListIpamResourceDiscoveriesRequest {
+	s.IsShared = &v
 	return s
 }
 
@@ -3781,6 +4490,7 @@ type ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveries struct {
 	//
 	// rg-aek2sermdd6****
 	ResourceGroupId *string                                                               `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ShareType       *string                                                               `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
 	Tags            []*ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveriesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -3838,6 +4548,11 @@ func (s *ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveries) SetRegi
 
 func (s *ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveries) SetResourceGroupId(v string) *ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveries {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveries) SetShareType(v string) *ListIpamResourceDiscoveriesResponseBodyIpamResourceDiscoveries {
+	s.ShareType = &v
 	return s
 }
 
@@ -3905,6 +4620,244 @@ func (s *ListIpamResourceDiscoveriesResponse) SetStatusCode(v int32) *ListIpamRe
 }
 
 func (s *ListIpamResourceDiscoveriesResponse) SetBody(v *ListIpamResourceDiscoveriesResponseBody) *ListIpamResourceDiscoveriesResponse {
+	s.Body = v
+	return s
+}
+
+type ListIpamResourceDiscoveryAssociationsRequest struct {
+	// example:
+	//
+	// ipam-ccxbnsbhew0d6t****
+	IpamId *string `json:"IpamId,omitempty" xml:"IpamId,omitempty"`
+	// example:
+	//
+	// ipam-res-disco-jt5f2af2u6nk2z321****
+	IpamResourceDiscoveryId *string `json:"IpamResourceDiscoveryId,omitempty" xml:"IpamResourceDiscoveryId,omitempty"`
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// FFmyTO70tTpLG6I3FmYAXGKPd****
+	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s ListIpamResourceDiscoveryAssociationsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIpamResourceDiscoveryAssociationsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListIpamResourceDiscoveryAssociationsRequest) SetIpamId(v string) *ListIpamResourceDiscoveryAssociationsRequest {
+	s.IpamId = &v
+	return s
+}
+
+func (s *ListIpamResourceDiscoveryAssociationsRequest) SetIpamResourceDiscoveryId(v string) *ListIpamResourceDiscoveryAssociationsRequest {
+	s.IpamResourceDiscoveryId = &v
+	return s
+}
+
+func (s *ListIpamResourceDiscoveryAssociationsRequest) SetMaxResults(v int32) *ListIpamResourceDiscoveryAssociationsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListIpamResourceDiscoveryAssociationsRequest) SetNextToken(v string) *ListIpamResourceDiscoveryAssociationsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListIpamResourceDiscoveryAssociationsRequest) SetOwnerAccount(v string) *ListIpamResourceDiscoveryAssociationsRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ListIpamResourceDiscoveryAssociationsRequest) SetOwnerId(v int64) *ListIpamResourceDiscoveryAssociationsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListIpamResourceDiscoveryAssociationsRequest) SetRegionId(v string) *ListIpamResourceDiscoveryAssociationsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListIpamResourceDiscoveryAssociationsRequest) SetResourceOwnerAccount(v string) *ListIpamResourceDiscoveryAssociationsRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ListIpamResourceDiscoveryAssociationsRequest) SetResourceOwnerId(v int64) *ListIpamResourceDiscoveryAssociationsRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type ListIpamResourceDiscoveryAssociationsResponseBody struct {
+	// example:
+	//
+	// 10
+	Count                             *int32                                                                                `json:"Count,omitempty" xml:"Count,omitempty"`
+	IpamResourceDiscoveryAssociations []*ListIpamResourceDiscoveryAssociationsResponseBodyIpamResourceDiscoveryAssociations `json:"IpamResourceDiscoveryAssociations,omitempty" xml:"IpamResourceDiscoveryAssociations,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// FFmyTO70tTpLG6I3FmYAXGKPd****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// F28A239E-F88D-500E-ADE7-FA5E8CA3A170
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 20
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListIpamResourceDiscoveryAssociationsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIpamResourceDiscoveryAssociationsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListIpamResourceDiscoveryAssociationsResponseBody) SetCount(v int32) *ListIpamResourceDiscoveryAssociationsResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *ListIpamResourceDiscoveryAssociationsResponseBody) SetIpamResourceDiscoveryAssociations(v []*ListIpamResourceDiscoveryAssociationsResponseBodyIpamResourceDiscoveryAssociations) *ListIpamResourceDiscoveryAssociationsResponseBody {
+	s.IpamResourceDiscoveryAssociations = v
+	return s
+}
+
+func (s *ListIpamResourceDiscoveryAssociationsResponseBody) SetMaxResults(v int32) *ListIpamResourceDiscoveryAssociationsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListIpamResourceDiscoveryAssociationsResponseBody) SetNextToken(v string) *ListIpamResourceDiscoveryAssociationsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListIpamResourceDiscoveryAssociationsResponseBody) SetRequestId(v string) *ListIpamResourceDiscoveryAssociationsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListIpamResourceDiscoveryAssociationsResponseBody) SetTotalCount(v int64) *ListIpamResourceDiscoveryAssociationsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListIpamResourceDiscoveryAssociationsResponseBodyIpamResourceDiscoveryAssociations struct {
+	// example:
+	//
+	// ipam-ccxbnsbhew0d6t****
+	IpamId *string `json:"IpamId,omitempty" xml:"IpamId,omitempty"`
+	// example:
+	//
+	// ipam-res-disco-jt5f2af2u6nk2z321****
+	IpamResourceDiscoveryId *string `json:"IpamResourceDiscoveryId,omitempty" xml:"IpamResourceDiscoveryId,omitempty"`
+	// example:
+	//
+	// 1210123456******
+	IpamResourceDiscoveryOwnerId *string `json:"IpamResourceDiscoveryOwnerId,omitempty" xml:"IpamResourceDiscoveryOwnerId,omitempty"`
+	// example:
+	//
+	// Created
+	IpamResourceDiscoveryStatus *string `json:"IpamResourceDiscoveryStatus,omitempty" xml:"IpamResourceDiscoveryStatus,omitempty"`
+	// example:
+	//
+	// custom
+	IpamResourceDiscoveryType *string `json:"IpamResourceDiscoveryType,omitempty" xml:"IpamResourceDiscoveryType,omitempty"`
+	// example:
+	//
+	// Created
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListIpamResourceDiscoveryAssociationsResponseBodyIpamResourceDiscoveryAssociations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIpamResourceDiscoveryAssociationsResponseBodyIpamResourceDiscoveryAssociations) GoString() string {
+	return s.String()
+}
+
+func (s *ListIpamResourceDiscoveryAssociationsResponseBodyIpamResourceDiscoveryAssociations) SetIpamId(v string) *ListIpamResourceDiscoveryAssociationsResponseBodyIpamResourceDiscoveryAssociations {
+	s.IpamId = &v
+	return s
+}
+
+func (s *ListIpamResourceDiscoveryAssociationsResponseBodyIpamResourceDiscoveryAssociations) SetIpamResourceDiscoveryId(v string) *ListIpamResourceDiscoveryAssociationsResponseBodyIpamResourceDiscoveryAssociations {
+	s.IpamResourceDiscoveryId = &v
+	return s
+}
+
+func (s *ListIpamResourceDiscoveryAssociationsResponseBodyIpamResourceDiscoveryAssociations) SetIpamResourceDiscoveryOwnerId(v string) *ListIpamResourceDiscoveryAssociationsResponseBodyIpamResourceDiscoveryAssociations {
+	s.IpamResourceDiscoveryOwnerId = &v
+	return s
+}
+
+func (s *ListIpamResourceDiscoveryAssociationsResponseBodyIpamResourceDiscoveryAssociations) SetIpamResourceDiscoveryStatus(v string) *ListIpamResourceDiscoveryAssociationsResponseBodyIpamResourceDiscoveryAssociations {
+	s.IpamResourceDiscoveryStatus = &v
+	return s
+}
+
+func (s *ListIpamResourceDiscoveryAssociationsResponseBodyIpamResourceDiscoveryAssociations) SetIpamResourceDiscoveryType(v string) *ListIpamResourceDiscoveryAssociationsResponseBodyIpamResourceDiscoveryAssociations {
+	s.IpamResourceDiscoveryType = &v
+	return s
+}
+
+func (s *ListIpamResourceDiscoveryAssociationsResponseBodyIpamResourceDiscoveryAssociations) SetStatus(v string) *ListIpamResourceDiscoveryAssociationsResponseBodyIpamResourceDiscoveryAssociations {
+	s.Status = &v
+	return s
+}
+
+type ListIpamResourceDiscoveryAssociationsResponse struct {
+	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListIpamResourceDiscoveryAssociationsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListIpamResourceDiscoveryAssociationsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIpamResourceDiscoveryAssociationsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListIpamResourceDiscoveryAssociationsResponse) SetHeaders(v map[string]*string) *ListIpamResourceDiscoveryAssociationsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListIpamResourceDiscoveryAssociationsResponse) SetStatusCode(v int32) *ListIpamResourceDiscoveryAssociationsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListIpamResourceDiscoveryAssociationsResponse) SetBody(v *ListIpamResourceDiscoveryAssociationsResponseBody) *ListIpamResourceDiscoveryAssociationsResponse {
 	s.Body = v
 	return s
 }
@@ -4290,34 +5243,52 @@ func (s *ListIpamScopesResponse) SetBody(v *ListIpamScopesResponseBody) *ListIpa
 }
 
 type ListIpamsRequest struct {
+	// The IDs of IPAMs. Valid values of N: 1 to 100. A maximum of 100 IPAMs can be queried at a time.
 	IpamIds []*string `json:"IpamIds,omitempty" xml:"IpamIds,omitempty" type:"Repeated"`
+	// The name of the IPAM.
+	//
+	// It must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+	//
 	// example:
 	//
 	// test
 	IpamName *string `json:"IpamName,omitempty" xml:"IpamName,omitempty"`
+	// The number of entries per page. Valid values: **1*	- to **100**. Default value: **10**.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	//
+	// 	- You do not need to specify this parameter for the first request.
+	//
+	// 	- You must specify the token that is obtained from the previous query as the value of NextToken.
+	//
 	// example:
 	//
 	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region where the IPAM pool is hosted. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID of the IPAM.
+	//
 	// example:
 	//
 	// rg-aek2sermdd6****
-	ResourceGroupId      *string                 `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerAccount *string                 `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Tags                 []*ListIpamsRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The tag information.
+	Tags []*ListIpamsRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListIpamsRequest) String() string {
@@ -4384,10 +5355,18 @@ func (s *ListIpamsRequest) SetTags(v []*ListIpamsRequestTags) *ListIpamsRequest 
 }
 
 type ListIpamsRequestTags struct {
+	// The tag key. You can specify at most 20 tag keys. The tag key cannot be an empty string.
+	//
+	// The tag key can be up to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The tag key must start with a letter but cannot start with `aliyun` or `acs:`. The tag key cannot contain `http://` or `https://`.
+	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value. You can specify at most 20 tag values. The tag value can be an empty string.
+	//
+	// The tag value can be up to 128 characters in length. It must start with a letter and can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	//
 	// example:
 	//
 	// FinanceJoshua
@@ -4413,20 +5392,36 @@ func (s *ListIpamsRequestTags) SetValue(v string) *ListIpamsRequestTags {
 }
 
 type ListIpamsResponseBody struct {
-	Count *int64                        `json:"Count,omitempty" xml:"Count,omitempty"`
+	// example:
+	//
+	// 10
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The IPAMs.
 	Ipams []*ListIpamsResponseBodyIpams `json:"Ipams,omitempty" xml:"Ipams,omitempty" type:"Repeated"`
+	// The number of entries per page. Valid values: 1 to 100. Default value: 10.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	//
+	// 	- If **NextToken*	- is empty, no next page exists.
+	//
+	// 	- If a value of **NextToken*	- is returned, the value indicates the token that is used for the next query.
+	//
 	// example:
 	//
 	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 23CA0A0B-B0F5-5495-B355-7D9A9203A46B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of entries.
+	//
 	// example:
 	//
 	// 10
@@ -4472,55 +5467,96 @@ func (s *ListIpamsResponseBody) SetTotalCount(v int64) *ListIpamsResponseBody {
 }
 
 type ListIpamsResponseBodyIpams struct {
+	// The time when the IPAM was created.
+	//
 	// example:
 	//
 	// 2022-07-01T02:05:23Z
-	CreateTime                            *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// ipam-res-disco-assoc-jt5fac8twugdbbgip****
 	DefaultResourceDiscoveryAssociationId *string `json:"DefaultResourceDiscoveryAssociationId,omitempty" xml:"DefaultResourceDiscoveryAssociationId,omitempty"`
-	DefaultResourceDiscoveryId            *string `json:"DefaultResourceDiscoveryId,omitempty" xml:"DefaultResourceDiscoveryId,omitempty"`
+	// example:
+	//
+	// ipam-res-disco-jt5f2af2u6nk2z321****
+	DefaultResourceDiscoveryId *string `json:"DefaultResourceDiscoveryId,omitempty" xml:"DefaultResourceDiscoveryId,omitempty"`
+	// The description of the IPAM.
+	//
 	// example:
 	//
 	// test description
 	IpamDescription *string `json:"IpamDescription,omitempty" xml:"IpamDescription,omitempty"`
+	// The ID of the IPAM.
+	//
 	// example:
 	//
 	// ipam-ccxbnsbhew0d6t****
 	IpamId *string `json:"IpamId,omitempty" xml:"IpamId,omitempty"`
+	// The name of the IPAM.
+	//
 	// example:
 	//
 	// test
 	IpamName *string `json:"IpamName,omitempty" xml:"IpamName,omitempty"`
+	// The status of the IPAM. Valid values:
+	//
+	// 	- **Creating**
+	//
+	// 	- **Created**
+	//
+	// 	- **Deleting**
+	//
+	// 	- **Deleted**
+	//
 	// example:
 	//
 	// Created
-	IpamStatus          *string   `json:"IpamStatus,omitempty" xml:"IpamStatus,omitempty"`
+	IpamStatus *string `json:"IpamStatus,omitempty" xml:"IpamStatus,omitempty"`
+	// The effective regions of the IPAM.
 	OperatingRegionList []*string `json:"OperatingRegionList,omitempty" xml:"OperatingRegionList,omitempty" type:"Repeated"`
+	// The Alibaba Cloud account that owns the IPAM.
+	//
 	// example:
 	//
 	// 1210123456******
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The default private scope created by the system after the IPAM is created.
+	//
 	// example:
 	//
 	// ipam-scope-okoerbco6unqfr****
 	PrivateDefaultScopeId *string `json:"PrivateDefaultScopeId,omitempty" xml:"PrivateDefaultScopeId,omitempty"`
+	// The default public scope created by the system after the IPAM is created.
+	//
 	// example:
 	//
 	// ipam-scope-ovb76p1g1m19dr****
 	PublicDefaultScopeId *string `json:"PublicDefaultScopeId,omitempty" xml:"PublicDefaultScopeId,omitempty"`
+	// The region ID of the IPAM.
+	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId                          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceDiscoveryAssociationCount *int32  `json:"ResourceDiscoveryAssociationCount,omitempty" xml:"ResourceDiscoveryAssociationCount,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 1
+	ResourceDiscoveryAssociationCount *int32 `json:"ResourceDiscoveryAssociationCount,omitempty" xml:"ResourceDiscoveryAssociationCount,omitempty"`
+	// The resource group ID of the IPAM.
+	//
 	// example:
 	//
 	// rg-aek2dbprgpt****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The number of IPAM scopes. Value: **2 to 5**.
+	//
 	// example:
 	//
 	// 2
-	ScopeCount *int32                            `json:"ScopeCount,omitempty" xml:"ScopeCount,omitempty"`
-	Tags       []*ListIpamsResponseBodyIpamsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	ScopeCount *int32 `json:"ScopeCount,omitempty" xml:"ScopeCount,omitempty"`
+	// The tag list.
+	Tags []*ListIpamsResponseBodyIpamsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListIpamsResponseBodyIpams) String() string {
@@ -4612,10 +5648,14 @@ func (s *ListIpamsResponseBodyIpams) SetTags(v []*ListIpamsResponseBodyIpamsTags
 }
 
 type ListIpamsResponseBodyIpamsTags struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// FinanceJoshua
@@ -5751,6 +6791,160 @@ func (s *UpdateIpamPoolAllocationResponse) SetBody(v *UpdateIpamPoolAllocationRe
 	return s
 }
 
+type UpdateIpamResourceDiscoveryRequest struct {
+	AddOperatingRegion []*string `json:"AddOperatingRegion,omitempty" xml:"AddOperatingRegion,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-426655440000
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// example:
+	//
+	// test description
+	IpamResourceDiscoveryDescription *string `json:"IpamResourceDiscoveryDescription,omitempty" xml:"IpamResourceDiscoveryDescription,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ipam-res-disco-jt5f2af2u6nk2z321****
+	IpamResourceDiscoveryId *string `json:"IpamResourceDiscoveryId,omitempty" xml:"IpamResourceDiscoveryId,omitempty"`
+	// example:
+	//
+	// test
+	IpamResourceDiscoveryName *string `json:"IpamResourceDiscoveryName,omitempty" xml:"IpamResourceDiscoveryName,omitempty"`
+	OwnerAccount              *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId              *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RemoveOperatingRegion []*string `json:"RemoveOperatingRegion,omitempty" xml:"RemoveOperatingRegion,omitempty" type:"Repeated"`
+	ResourceOwnerAccount  *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId       *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s UpdateIpamResourceDiscoveryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIpamResourceDiscoveryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIpamResourceDiscoveryRequest) SetAddOperatingRegion(v []*string) *UpdateIpamResourceDiscoveryRequest {
+	s.AddOperatingRegion = v
+	return s
+}
+
+func (s *UpdateIpamResourceDiscoveryRequest) SetClientToken(v string) *UpdateIpamResourceDiscoveryRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateIpamResourceDiscoveryRequest) SetDryRun(v bool) *UpdateIpamResourceDiscoveryRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *UpdateIpamResourceDiscoveryRequest) SetIpamResourceDiscoveryDescription(v string) *UpdateIpamResourceDiscoveryRequest {
+	s.IpamResourceDiscoveryDescription = &v
+	return s
+}
+
+func (s *UpdateIpamResourceDiscoveryRequest) SetIpamResourceDiscoveryId(v string) *UpdateIpamResourceDiscoveryRequest {
+	s.IpamResourceDiscoveryId = &v
+	return s
+}
+
+func (s *UpdateIpamResourceDiscoveryRequest) SetIpamResourceDiscoveryName(v string) *UpdateIpamResourceDiscoveryRequest {
+	s.IpamResourceDiscoveryName = &v
+	return s
+}
+
+func (s *UpdateIpamResourceDiscoveryRequest) SetOwnerAccount(v string) *UpdateIpamResourceDiscoveryRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *UpdateIpamResourceDiscoveryRequest) SetOwnerId(v int64) *UpdateIpamResourceDiscoveryRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *UpdateIpamResourceDiscoveryRequest) SetRegionId(v string) *UpdateIpamResourceDiscoveryRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateIpamResourceDiscoveryRequest) SetRemoveOperatingRegion(v []*string) *UpdateIpamResourceDiscoveryRequest {
+	s.RemoveOperatingRegion = v
+	return s
+}
+
+func (s *UpdateIpamResourceDiscoveryRequest) SetResourceOwnerAccount(v string) *UpdateIpamResourceDiscoveryRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *UpdateIpamResourceDiscoveryRequest) SetResourceOwnerId(v int64) *UpdateIpamResourceDiscoveryRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type UpdateIpamResourceDiscoveryResponseBody struct {
+	// example:
+	//
+	// BB2C39DE-CEB8-595A-981A-F2EFCBE7324E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateIpamResourceDiscoveryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIpamResourceDiscoveryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIpamResourceDiscoveryResponseBody) SetRequestId(v string) *UpdateIpamResourceDiscoveryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateIpamResourceDiscoveryResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateIpamResourceDiscoveryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateIpamResourceDiscoveryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIpamResourceDiscoveryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIpamResourceDiscoveryResponse) SetHeaders(v map[string]*string) *UpdateIpamResourceDiscoveryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateIpamResourceDiscoveryResponse) SetStatusCode(v int32) *UpdateIpamResourceDiscoveryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateIpamResourceDiscoveryResponse) SetBody(v *UpdateIpamResourceDiscoveryResponseBody) *UpdateIpamResourceDiscoveryResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateIpamScopeRequest struct {
 	// example:
 	//
@@ -6012,6 +7206,109 @@ func (client *Client) AddIpamPoolCidr(request *AddIpamPoolCidrRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &AddIpamPoolCidrResponse{}
 	_body, _err := client.AddIpamPoolCidrWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 关联资源发现和IPAM实例。
+//
+// @param request - AssociateIpamResourceDiscoveryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AssociateIpamResourceDiscoveryResponse
+func (client *Client) AssociateIpamResourceDiscoveryWithOptions(request *AssociateIpamResourceDiscoveryRequest, runtime *util.RuntimeOptions) (_result *AssociateIpamResourceDiscoveryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpamId)) {
+		query["IpamId"] = request.IpamId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpamResourceDiscoveryId)) {
+		query["IpamResourceDiscoveryId"] = request.IpamResourceDiscoveryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AssociateIpamResourceDiscovery"),
+		Version:     tea.String("2023-02-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AssociateIpamResourceDiscoveryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AssociateIpamResourceDiscoveryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 关联资源发现和IPAM实例。
+//
+// @param request - AssociateIpamResourceDiscoveryRequest
+//
+// @return AssociateIpamResourceDiscoveryResponse
+func (client *Client) AssociateIpamResourceDiscovery(request *AssociateIpamResourceDiscoveryRequest) (_result *AssociateIpamResourceDiscoveryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AssociateIpamResourceDiscoveryResponse{}
+	_body, _err := client.AssociateIpamResourceDiscoveryWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6444,6 +7741,121 @@ func (client *Client) CreateIpamPoolAllocation(request *CreateIpamPoolAllocation
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateIpamPoolAllocationResponse{}
 	_body, _err := client.CreateIpamPoolAllocationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建自定义类型资源发现。
+//
+// @param request - CreateIpamResourceDiscoveryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateIpamResourceDiscoveryResponse
+func (client *Client) CreateIpamResourceDiscoveryWithOptions(request *CreateIpamResourceDiscoveryRequest, runtime *util.RuntimeOptions) (_result *CreateIpamResourceDiscoveryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpamResourceDiscoveryDescription)) {
+		query["IpamResourceDiscoveryDescription"] = request.IpamResourceDiscoveryDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpamResourceDiscoveryName)) {
+		query["IpamResourceDiscoveryName"] = request.IpamResourceDiscoveryName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperatingRegionList)) {
+		query["OperatingRegionList"] = request.OperatingRegionList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateIpamResourceDiscovery"),
+		Version:     tea.String("2023-02-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateIpamResourceDiscoveryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateIpamResourceDiscoveryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 创建自定义类型资源发现。
+//
+// @param request - CreateIpamResourceDiscoveryRequest
+//
+// @return CreateIpamResourceDiscoveryResponse
+func (client *Client) CreateIpamResourceDiscovery(request *CreateIpamResourceDiscoveryRequest) (_result *CreateIpamResourceDiscoveryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateIpamResourceDiscoveryResponse{}
+	_body, _err := client.CreateIpamResourceDiscoveryWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6898,6 +8310,105 @@ func (client *Client) DeleteIpamPoolCidr(request *DeleteIpamPoolCidrRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除自定义类型的资源发现。
+//
+// @param request - DeleteIpamResourceDiscoveryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteIpamResourceDiscoveryResponse
+func (client *Client) DeleteIpamResourceDiscoveryWithOptions(request *DeleteIpamResourceDiscoveryRequest, runtime *util.RuntimeOptions) (_result *DeleteIpamResourceDiscoveryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpamResourceDiscoveryId)) {
+		query["IpamResourceDiscoveryId"] = request.IpamResourceDiscoveryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteIpamResourceDiscovery"),
+		Version:     tea.String("2023-02-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteIpamResourceDiscoveryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteIpamResourceDiscoveryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 删除自定义类型的资源发现。
+//
+// @param request - DeleteIpamResourceDiscoveryRequest
+//
+// @return DeleteIpamResourceDiscoveryResponse
+func (client *Client) DeleteIpamResourceDiscovery(request *DeleteIpamResourceDiscoveryRequest) (_result *DeleteIpamResourceDiscoveryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteIpamResourceDiscoveryResponse{}
+	_body, _err := client.DeleteIpamResourceDiscoveryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // @param request - DeleteIpamScopeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6991,6 +8502,109 @@ func (client *Client) DeleteIpamScope(request *DeleteIpamScopeRequest) (_result 
 
 // Summary:
 //
+// 解关联资源发现和IPAM实例。
+//
+// @param request - DissociateIpamResourceDiscoveryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DissociateIpamResourceDiscoveryResponse
+func (client *Client) DissociateIpamResourceDiscoveryWithOptions(request *DissociateIpamResourceDiscoveryRequest, runtime *util.RuntimeOptions) (_result *DissociateIpamResourceDiscoveryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpamId)) {
+		query["IpamId"] = request.IpamId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpamResourceDiscoveryId)) {
+		query["IpamResourceDiscoveryId"] = request.IpamResourceDiscoveryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DissociateIpamResourceDiscovery"),
+		Version:     tea.String("2023-02-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DissociateIpamResourceDiscoveryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DissociateIpamResourceDiscoveryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 解关联资源发现和IPAM实例。
+//
+// @param request - DissociateIpamResourceDiscoveryRequest
+//
+// @return DissociateIpamResourceDiscoveryResponse
+func (client *Client) DissociateIpamResourceDiscovery(request *DissociateIpamResourceDiscoveryRequest) (_result *DissociateIpamResourceDiscoveryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DissociateIpamResourceDiscoveryResponse{}
+	_body, _err := client.DissociateIpamResourceDiscoveryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询指定IPAM地址池CIDR分配的信息
 //
 // @param request - GetIpamPoolAllocationRequest
@@ -7049,6 +8663,73 @@ func (client *Client) GetIpamPoolAllocation(request *GetIpamPoolAllocationReques
 	runtime := &util.RuntimeOptions{}
 	_result = &GetIpamPoolAllocationResponse{}
 	_body, _err := client.GetIpamPoolAllocationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取地址池可用CIDR。
+//
+// @param request - GetIpamPoolNextAvailableCidrRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetIpamPoolNextAvailableCidrResponse
+func (client *Client) GetIpamPoolNextAvailableCidrWithOptions(request *GetIpamPoolNextAvailableCidrRequest, runtime *util.RuntimeOptions) (_result *GetIpamPoolNextAvailableCidrResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetIpamPoolNextAvailableCidr"),
+		Version:     tea.String("2023-02-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetIpamPoolNextAvailableCidrResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetIpamPoolNextAvailableCidrResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取地址池可用CIDR。
+//
+// @param request - GetIpamPoolNextAvailableCidrRequest
+//
+// @return GetIpamPoolNextAvailableCidrResponse
+func (client *Client) GetIpamPoolNextAvailableCidr(request *GetIpamPoolNextAvailableCidrRequest) (_result *GetIpamPoolNextAvailableCidrResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetIpamPoolNextAvailableCidrResponse{}
+	_body, _err := client.GetIpamPoolNextAvailableCidrWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7633,6 +9314,10 @@ func (client *Client) ListIpamResourceDiscoveriesWithOptions(request *ListIpamRe
 		query["IpamResourceDiscoveryName"] = request.IpamResourceDiscoveryName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.IsShared)) {
+		query["IsShared"] = request.IsShared
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
 		query["MaxResults"] = request.MaxResults
 	}
@@ -7718,6 +9403,109 @@ func (client *Client) ListIpamResourceDiscoveries(request *ListIpamResourceDisco
 	runtime := &util.RuntimeOptions{}
 	_result = &ListIpamResourceDiscoveriesResponse{}
 	_body, _err := client.ListIpamResourceDiscoveriesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看资源发现和IPAM的关联关系。
+//
+// @param request - ListIpamResourceDiscoveryAssociationsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListIpamResourceDiscoveryAssociationsResponse
+func (client *Client) ListIpamResourceDiscoveryAssociationsWithOptions(request *ListIpamResourceDiscoveryAssociationsRequest, runtime *util.RuntimeOptions) (_result *ListIpamResourceDiscoveryAssociationsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IpamId)) {
+		query["IpamId"] = request.IpamId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpamResourceDiscoveryId)) {
+		query["IpamResourceDiscoveryId"] = request.IpamResourceDiscoveryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListIpamResourceDiscoveryAssociations"),
+		Version:     tea.String("2023-02-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListIpamResourceDiscoveryAssociationsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListIpamResourceDiscoveryAssociationsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查看资源发现和IPAM的关联关系。
+//
+// @param request - ListIpamResourceDiscoveryAssociationsRequest
+//
+// @return ListIpamResourceDiscoveryAssociationsResponse
+func (client *Client) ListIpamResourceDiscoveryAssociations(request *ListIpamResourceDiscoveryAssociationsRequest) (_result *ListIpamResourceDiscoveryAssociationsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListIpamResourceDiscoveryAssociationsResponse{}
+	_body, _err := client.ListIpamResourceDiscoveryAssociationsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7838,7 +9626,7 @@ func (client *Client) ListIpamScopes(request *ListIpamScopesRequest) (_result *L
 
 // Summary:
 //
-// 查询ipam
+// Queries IP Address Managers (IPAMs).
 //
 // @param request - ListIpamsRequest
 //
@@ -7931,7 +9719,7 @@ func (client *Client) ListIpamsWithOptions(request *ListIpamsRequest, runtime *u
 
 // Summary:
 //
-// 查询ipam
+// Queries IP Address Managers (IPAMs).
 //
 // @param request - ListIpamsRequest
 //
@@ -8665,6 +10453,121 @@ func (client *Client) UpdateIpamPoolAllocation(request *UpdateIpamPoolAllocation
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateIpamPoolAllocationResponse{}
 	_body, _err := client.UpdateIpamPoolAllocationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新自定义类型资源发现。
+//
+// @param request - UpdateIpamResourceDiscoveryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateIpamResourceDiscoveryResponse
+func (client *Client) UpdateIpamResourceDiscoveryWithOptions(request *UpdateIpamResourceDiscoveryRequest, runtime *util.RuntimeOptions) (_result *UpdateIpamResourceDiscoveryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AddOperatingRegion)) {
+		query["AddOperatingRegion"] = request.AddOperatingRegion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpamResourceDiscoveryDescription)) {
+		query["IpamResourceDiscoveryDescription"] = request.IpamResourceDiscoveryDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpamResourceDiscoveryId)) {
+		query["IpamResourceDiscoveryId"] = request.IpamResourceDiscoveryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpamResourceDiscoveryName)) {
+		query["IpamResourceDiscoveryName"] = request.IpamResourceDiscoveryName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RemoveOperatingRegion)) {
+		query["RemoveOperatingRegion"] = request.RemoveOperatingRegion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateIpamResourceDiscovery"),
+		Version:     tea.String("2023-02-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateIpamResourceDiscoveryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateIpamResourceDiscoveryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 更新自定义类型资源发现。
+//
+// @param request - UpdateIpamResourceDiscoveryRequest
+//
+// @return UpdateIpamResourceDiscoveryResponse
+func (client *Client) UpdateIpamResourceDiscovery(request *UpdateIpamResourceDiscoveryRequest) (_result *UpdateIpamResourceDiscoveryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateIpamResourceDiscoveryResponse{}
+	_body, _err := client.UpdateIpamResourceDiscoveryWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
