@@ -11880,6 +11880,249 @@ func (s *ListArtifactsResponse) SetBody(v *ListArtifactsResponseBody) *ListArtif
 	return s
 }
 
+type ListResellersRequest struct {
+	// The filters.
+	Filter []*ListResellersRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	//
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	//
+	// example:
+	//
+	// AAAAAWVmrOoWHbw/80lX0TWxe/s=
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListResellersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListResellersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListResellersRequest) SetFilter(v []*ListResellersRequestFilter) *ListResellersRequest {
+	s.Filter = v
+	return s
+}
+
+func (s *ListResellersRequest) SetMaxResults(v int32) *ListResellersRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListResellersRequest) SetNextToken(v string) *ListResellersRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListResellersRequest) SetRegionId(v string) *ListResellersRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListResellersRequestFilter struct {
+	// The parameter name of the filter. You can specify one or more parameter names to query services. Valid values:
+	//
+	// 	- ResellerUid: the uid of the distributor.
+	//
+	// 	- Name: the name of the distributor.
+	//
+	// example:
+	//
+	// Name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Filter value array.
+	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
+}
+
+func (s ListResellersRequestFilter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListResellersRequestFilter) GoString() string {
+	return s.String()
+}
+
+func (s *ListResellersRequestFilter) SetName(v string) *ListResellersRequestFilter {
+	s.Name = &v
+	return s
+}
+
+func (s *ListResellersRequestFilter) SetValue(v []*string) *ListResellersRequestFilter {
+	s.Value = v
+	return s
+}
+
+type ListResellersResponseBody struct {
+	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	//
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// A pagination token.
+	//
+	// example:
+	//
+	// AAAAAW8kZY+u1sYOaYf5JmgmDQQ=
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// A361BA9E-xxxx-xxxx-xxxx-C26E5180456E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// distributor informations
+	SupplierInformation []*ListResellersResponseBodySupplierInformation `json:"SupplierInformation,omitempty" xml:"SupplierInformation,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 4
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListResellersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListResellersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListResellersResponseBody) SetMaxResults(v int32) *ListResellersResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListResellersResponseBody) SetNextToken(v string) *ListResellersResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListResellersResponseBody) SetRequestId(v string) *ListResellersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListResellersResponseBody) SetSupplierInformation(v []*ListResellersResponseBodySupplierInformation) *ListResellersResponseBody {
+	s.SupplierInformation = v
+	return s
+}
+
+func (s *ListResellersResponseBody) SetTotalCount(v int32) *ListResellersResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListResellersResponseBodySupplierInformation struct {
+	// The description of distributor.
+	//
+	// example:
+	//
+	// It is a XXXX  company
+	SupplierDesc *string `json:"SupplierDesc,omitempty" xml:"SupplierDesc,omitempty"`
+	// The Logo of distributor
+	//
+	// example:
+	//
+	// https://service-info-public.oss-cn-hangzhou.aliyuncs.com/31978070/service-image/d5c3b585-ff6b-4e4e-8885-xxxx.png
+	SupplierLogo *string `json:"SupplierLogo,omitempty" xml:"SupplierLogo,omitempty"`
+	// The name of the distributor
+	//
+	// example:
+	//
+	// Distributor A
+	SupplierName *string `json:"SupplierName,omitempty" xml:"SupplierName,omitempty"`
+	// The Alibaba Cloud account ID of the distributor.
+	//
+	// example:
+	//
+	// 152xxxxxxxxxxx
+	SupplierUid *int64 `json:"SupplierUid,omitempty" xml:"SupplierUid,omitempty"`
+	// The URL of the distributor.
+	//
+	// example:
+	//
+	// http://www.aliyun.com
+	SupplierUrl *string `json:"SupplierUrl,omitempty" xml:"SupplierUrl,omitempty"`
+}
+
+func (s ListResellersResponseBodySupplierInformation) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListResellersResponseBodySupplierInformation) GoString() string {
+	return s.String()
+}
+
+func (s *ListResellersResponseBodySupplierInformation) SetSupplierDesc(v string) *ListResellersResponseBodySupplierInformation {
+	s.SupplierDesc = &v
+	return s
+}
+
+func (s *ListResellersResponseBodySupplierInformation) SetSupplierLogo(v string) *ListResellersResponseBodySupplierInformation {
+	s.SupplierLogo = &v
+	return s
+}
+
+func (s *ListResellersResponseBodySupplierInformation) SetSupplierName(v string) *ListResellersResponseBodySupplierInformation {
+	s.SupplierName = &v
+	return s
+}
+
+func (s *ListResellersResponseBodySupplierInformation) SetSupplierUid(v int64) *ListResellersResponseBodySupplierInformation {
+	s.SupplierUid = &v
+	return s
+}
+
+func (s *ListResellersResponseBodySupplierInformation) SetSupplierUrl(v string) *ListResellersResponseBodySupplierInformation {
+	s.SupplierUrl = &v
+	return s
+}
+
+type ListResellersResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListResellersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListResellersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListResellersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListResellersResponse) SetHeaders(v map[string]*string) *ListResellersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListResellersResponse) SetStatusCode(v int32) *ListResellersResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListResellersResponse) SetBody(v *ListResellersResponseBody) *ListResellersResponse {
+	s.Body = v
+	return s
+}
+
 type ListServiceInstanceDeployDetailsRequest struct {
 	// The time zone.
 	//
@@ -12745,8 +12988,6 @@ type ListServiceInstanceResourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The Alibaba Cloud Resource Name (ARN) of a resource.
-	ResourceARN []*string `json:"ResourceARN,omitempty" xml:"ResourceARN,omitempty" type:"Repeated"`
 	// The ID of the service instance.
 	//
 	// This parameter is required.
@@ -12790,11 +13031,6 @@ func (s *ListServiceInstanceResourcesRequest) SetNextToken(v string) *ListServic
 
 func (s *ListServiceInstanceResourcesRequest) SetRegionId(v string) *ListServiceInstanceResourcesRequest {
 	s.RegionId = &v
-	return s
-}
-
-func (s *ListServiceInstanceResourcesRequest) SetResourceARN(v []*string) *ListServiceInstanceResourcesRequest {
-	s.ResourceARN = v
 	return s
 }
 
@@ -25876,6 +26112,89 @@ func (client *Client) ListArtifacts(request *ListArtifactsRequest) (_result *Lis
 
 // Summary:
 //
+// Paginated query of distributor information list
+//
+// @param request - ListResellersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListResellersResponse
+func (client *Client) ListResellersWithOptions(request *ListResellersRequest, runtime *util.RuntimeOptions) (_result *ListResellersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Filter)) {
+		query["Filter"] = request.Filter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListResellers"),
+		Version:     tea.String("2021-05-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListResellersResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListResellersResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Paginated query of distributor information list
+//
+// @param request - ListResellersRequest
+//
+// @return ListResellersResponse
+func (client *Client) ListResellers(request *ListResellersRequest) (_result *ListResellersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListResellersResponse{}
+	_body, _err := client.ListResellersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询服务实例部署详情
 //
 // @param request - ListServiceInstanceDeployDetailsRequest
@@ -26105,10 +26424,6 @@ func (client *Client) ListServiceInstanceResourcesWithOptions(request *ListServi
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceARN)) {
-		query["ResourceARN"] = request.ResourceARN
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ServiceInstanceId)) {

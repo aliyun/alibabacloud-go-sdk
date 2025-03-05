@@ -1,3 +1,8 @@
+2025-03-05 Version: v7.0.0
+- Support API ListResellers.
+- Update API ListServiceInstanceResources: delete param ResourceARN.
+
+
 2025-02-28 Version: v6.4.0
 - Support API CreateServiceTestCase.
 - Support API CreateServiceTestTask.

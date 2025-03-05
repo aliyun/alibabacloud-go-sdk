@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/computenestsupplier-20210521/v6
+module github.com/alibabacloud-go/computenestsupplier-20210521/v7
 
 go 1.14
 
