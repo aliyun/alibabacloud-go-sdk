@@ -1708,7 +1708,8 @@ type CreateHealthCheckTemplateRequest struct {
 	// example:
 	//
 	// 4
-	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	HealthyThreshold *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	ResourceGroupId  *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The tags.
 	Tag []*CreateHealthCheckTemplateRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status is changed from **success*	- to **fail**.
@@ -1793,6 +1794,11 @@ func (s *CreateHealthCheckTemplateRequest) SetHealthCheckTimeout(v int32) *Creat
 
 func (s *CreateHealthCheckTemplateRequest) SetHealthyThreshold(v int32) *CreateHealthCheckTemplateRequest {
 	s.HealthyThreshold = &v
+	return s
+}
+
+func (s *CreateHealthCheckTemplateRequest) SetResourceGroupId(v string) *CreateHealthCheckTemplateRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -2141,11 +2147,11 @@ func (s *CreateListenerRequest) SetXForwardedForConfig(v *CreateListenerRequestX
 type CreateListenerRequestCaCertificates struct {
 	// The ID of the CA certificate.
 	//
-	// >  This parameter is required if you set **CaEnabled*	- to **true**.
+	// >  This parameter is required if **CaEnabled*	- is set to **true**.
 	//
 	// example:
 	//
-	// 12315790212_166f8204689_1714763408_70998****
+	// 123157*******
 	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
 }
 
@@ -2163,13 +2169,11 @@ func (s *CreateListenerRequestCaCertificates) SetCertificateId(v string) *Create
 }
 
 type CreateListenerRequestCertificates struct {
-	// The ID of the certificate. Only server certificates are supported. You can specify at most 20 certificates IDs.
-	//
-	// >  This parameter is required when you set **ListenerProtocol*	- to **HTTPS*	- or **QUIC**.
+	// The ID of the certificate. Only server certificates are supported. You can specify up to 20 certificate IDs.
 	//
 	// example:
 	//
-	// 12315790212_166f8204689_1714763408_70998****
+	// 103705*******
 	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
 }
 
@@ -2191,9 +2195,9 @@ type CreateListenerRequestDefaultActions struct {
 	//
 	// This parameter is required.
 	ForwardGroupConfig *CreateListenerRequestDefaultActionsForwardGroupConfig `json:"ForwardGroupConfig,omitempty" xml:"ForwardGroupConfig,omitempty" type:"Struct"`
-	// The action. You can specify only one type. Valid value example:
+	// The action type. You can specify only one action type. Valid value:
 	//
-	// **ForwardGroup**: forwards requests to multiple server groups.
+	// **ForwardGroup**: forwards requests to multiple Server groups.
 	//
 	// This parameter is required.
 	//
@@ -2248,7 +2252,7 @@ type CreateListenerRequestDefaultActionsForwardGroupConfigServerGroupTuples stru
 	//
 	// example:
 	//
-	// rsp-cige6j****
+	// sgp-8ilqs4axp6******
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
 }
 
@@ -2266,19 +2270,19 @@ func (s *CreateListenerRequestDefaultActionsForwardGroupConfigServerGroupTuples)
 }
 
 type CreateListenerRequestQuicConfig struct {
-	// The ID of the QUIC listener that you want to associate with the ALB instance. This parameter is required if you set **QuicUpgradeEnabled*	- to **true**.
+	// The ID of the QUIC listener that you want to associate with the HTTPS listener. Only HTTPS listeners support this parameter. This parameter is required when **QuicUpgradeEnabled*	- is set to **true**.
 	//
-	// >  The original listener and the QUIC listener must belong to the same ALB instance.
+	// >  The HTTPS listener and the QUIC listener must be added to the same ALB instance. Make sure that the QUIC listener is not associated with any other listeners.
 	//
 	// example:
 	//
-	// lsr-bp1bpn0kn908w4nbw****
+	// lsn-o4u54y73wq7b******
 	QuicListenerId *string `json:"QuicListenerId,omitempty" xml:"QuicListenerId,omitempty"`
 	// Specifies whether to enable QUIC upgrade. Valid values:
 	//
-	// 	- **true**:
+	// 	- **true**: enables QUIC upgrade.
 	//
-	// 	- **false*	- (default)
+	// 	- **false*	- (default): disables QUIC upgrade.
 	//
 	// >  Only HTTPS listeners support this parameter.
 	//
@@ -2340,11 +2344,11 @@ func (s *CreateListenerRequestTag) SetValue(v string) *CreateListenerRequestTag 
 }
 
 type CreateListenerRequestXForwardedForConfig struct {
-	// The name of the custom header. This parameter takes effect only when you set **XForwardedForClientCertClientVerifyEnabled*	- to **true**.
+	// The name of the custom header. This parameter takes effect only when **XForwardedForClientCertClientVerifyEnabled*	- is set to **true**.
 	//
-	// The name must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-), and underscores (_).
+	// The name must be 1 to 40 characters in length, and can contain lowercase letters, hyphens (-), underscores (_), and digits.
 	//
-	// > Only HTTPS listeners support this parameter.
+	// >  Only HTTPS listeners support this parameter.
 	//
 	// example:
 	//
@@ -2352,9 +2356,9 @@ type CreateListenerRequestXForwardedForConfig struct {
 	XForwardedForClientCertClientVerifyAlias *string `json:"XForwardedForClientCertClientVerifyAlias,omitempty" xml:"XForwardedForClientCertClientVerifyAlias,omitempty"`
 	// Specifies whether to use the `X-Forwarded-Clientcert-clientverify` header to retrieve the verification result of the client certificate. Valid values:
 	//
-	// 	- **true**
+	// 	- **true**: uses the X-Forwarded-Clientcert-clientverify header.
 	//
-	// 	- **false*	- (default)
+	// 	- **false*	- (default): does not use the X-Forwarded-Clientcert-clientverify header.
 	//
 	// >  Only HTTPS listeners support this parameter.
 	//
@@ -2364,7 +2368,7 @@ type CreateListenerRequestXForwardedForConfig struct {
 	XForwardedForClientCertClientVerifyEnabled *bool `json:"XForwardedForClientCertClientVerifyEnabled,omitempty" xml:"XForwardedForClientCertClientVerifyEnabled,omitempty"`
 	// The name of the custom header. This parameter takes effect only when **XForwardedForClientCertFingerprintEnabled*	- is set to **true**.
 	//
-	// The name must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-), and underscores (_).
+	// The name must be 1 to 40 characters in length, and can contain lowercase letters, hyphens (-), underscores (_), and digits.
 	//
 	// >  Only HTTPS listeners support this parameter.
 	//
@@ -2374,9 +2378,9 @@ type CreateListenerRequestXForwardedForConfig struct {
 	XForwardedForClientCertFingerprintAlias *string `json:"XForwardedForClientCertFingerprintAlias,omitempty" xml:"XForwardedForClientCertFingerprintAlias,omitempty"`
 	// Specifies whether to use the `X-Forwarded-Clientcert-fingerprint` header to retrieve the fingerprint of the client certificate. Valid values:
 	//
-	// 	- **true**
+	// 	- **true**: uses the X-Forwarded-Clientcert-fingerprint header.
 	//
-	// 	- **false*	- (default)
+	// 	- **false*	- (default): does not use the X-Forwarded-Clientcert-fingerprint header.
 	//
 	// >  Only HTTPS listeners support this parameter.
 	//
@@ -2386,7 +2390,7 @@ type CreateListenerRequestXForwardedForConfig struct {
 	XForwardedForClientCertFingerprintEnabled *bool `json:"XForwardedForClientCertFingerprintEnabled,omitempty" xml:"XForwardedForClientCertFingerprintEnabled,omitempty"`
 	// The name of the custom header. This parameter takes effect only when **XForwardedForClientCertIssuerDNEnabled*	- is set to **true**.
 	//
-	// The name must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-), and underscores (_).
+	// The name must be 1 to 40 characters in length, and can contain lowercase letters, hyphens (-), underscores (_), and digits.
 	//
 	// >  Only HTTPS listeners support this parameter.
 	//
@@ -2396,9 +2400,9 @@ type CreateListenerRequestXForwardedForConfig struct {
 	XForwardedForClientCertIssuerDNAlias *string `json:"XForwardedForClientCertIssuerDNAlias,omitempty" xml:"XForwardedForClientCertIssuerDNAlias,omitempty"`
 	// Specifies whether to use the `X-Forwarded-Clientcert-issuerdn` header to retrieve information about the authority that issues the client certificate. Valid values:
 	//
-	// 	- **true**
+	// 	- **true**: uses the X-Forwarded-Clientcert-issuerdn header.
 	//
-	// 	- **false*	- (default)
+	// 	- **false*	- (default): does not use the X-Forwarded-Clientcert-issuerdn header.
 	//
 	// >  Only HTTPS listeners support this parameter.
 	//
@@ -2408,7 +2412,7 @@ type CreateListenerRequestXForwardedForConfig struct {
 	XForwardedForClientCertIssuerDNEnabled *bool `json:"XForwardedForClientCertIssuerDNEnabled,omitempty" xml:"XForwardedForClientCertIssuerDNEnabled,omitempty"`
 	// The name of the custom header. This parameter takes effect only when **XForwardedForClientCertSubjectDNEnabled*	- is set to **true**.
 	//
-	// The name must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-), and underscores (_).
+	// The name must be 1 to 40 characters in length, and can contain lowercase letters, hyphens (-), underscores (_), and digits.
 	//
 	// >  Only HTTPS listeners support this parameter.
 	//
@@ -2418,9 +2422,9 @@ type CreateListenerRequestXForwardedForConfig struct {
 	XForwardedForClientCertSubjectDNAlias *string `json:"XForwardedForClientCertSubjectDNAlias,omitempty" xml:"XForwardedForClientCertSubjectDNAlias,omitempty"`
 	// Specifies whether to use the `X-Forwarded-Clientcert-subjectdn` header to retrieve information about the owner of the client certificate. Valid values:
 	//
-	// 	- **true**
+	// 	- **true**: uses the X-Forwarded-Clientcert-subjectdn header.
 	//
-	// 	- **false*	- (default)
+	// 	- **false*	- (default): does not use the X-Forwarded-Clientcert-subjectdn header.
 	//
 	// >  Only HTTPS listeners support this parameter.
 	//
@@ -2428,7 +2432,7 @@ type CreateListenerRequestXForwardedForConfig struct {
 	//
 	// true
 	XForwardedForClientCertSubjectDNEnabled *bool `json:"XForwardedForClientCertSubjectDNEnabled,omitempty" xml:"XForwardedForClientCertSubjectDNEnabled,omitempty"`
-	// Specifies whether to allow the ALB instance to retrieve client IP addresses from the X-Forwarded-For header. Valid values:
+	// Specifies whether to allow the ALB instance to retrieve client IP addresses from the `X-Forwarded-For` header. Valid values:
 	//
 	// 	- **true**
 	//
@@ -2442,7 +2446,7 @@ type CreateListenerRequestXForwardedForConfig struct {
 	XForwardedForClientSourceIpsEnabled *bool `json:"XForwardedForClientSourceIpsEnabled,omitempty" xml:"XForwardedForClientSourceIpsEnabled,omitempty"`
 	// The trusted proxy IP address.
 	//
-	// ALB instances traverse the IP addresses in the `X-Forwarded-For` header from the rightmost IP address to the leftmost IP address. The first IP address that is not on the trusted IP address list is considered the client IP address. Requests from the client IP address are throttled.
+	// ALB traverses `X-Forwarded-For` backwards and selects the first IP address that is not in the trusted IP list as the originating IP address of the client, which will be throttled if source IP address throttling is enabled.
 	//
 	// example:
 	//
@@ -2450,9 +2454,9 @@ type CreateListenerRequestXForwardedForConfig struct {
 	XForwardedForClientSourceIpsTrusted *string `json:"XForwardedForClientSourceIpsTrusted,omitempty" xml:"XForwardedForClientSourceIpsTrusted,omitempty"`
 	// Specifies whether to use the `X-Forwarded-Client-srcport` header to retrieve the client port. Valid values:
 	//
-	// 	- **true**
+	// 	- **true**: uses the X-Forwarded-Client-srcport header.
 	//
-	// 	- **false*	- (default)
+	// 	- **false*	- (default): does not use the X-Forwarded-Client-srcport header.
 	//
 	// >  HTTP and HTTPS listeners support this parameter.
 	//
@@ -2471,14 +2475,40 @@ type CreateListenerRequestXForwardedForConfig struct {
 	// example:
 	//
 	// true
-	XForwardedForEnabled        *bool   `json:"XForwardedForEnabled,omitempty" xml:"XForwardedForEnabled,omitempty"`
-	XForwardedForHostEnabled    *bool   `json:"XForwardedForHostEnabled,omitempty" xml:"XForwardedForHostEnabled,omitempty"`
-	XForwardedForProcessingMode *string `json:"XForwardedForProcessingMode,omitempty" xml:"XForwardedForProcessingMode,omitempty"`
-	// Specifies whether to use the `X-Forwarded-Proto` header to retrieve the listener protocol. Valid values:
+	XForwardedForEnabled *bool `json:"XForwardedForEnabled,omitempty" xml:"XForwardedForEnabled,omitempty"`
+	// Specifies whether to use the `X-Forwarded-Host` header to retrieve the client domain name. Valid values:
 	//
 	// 	- **true**
 	//
 	// 	- **false*	- (default)
+	//
+	// >  This parameter is available for HTTP, HTTPS, and QUIC listeners.
+	//
+	// example:
+	//
+	// false
+	XForwardedForHostEnabled *bool `json:"XForwardedForHostEnabled,omitempty" xml:"XForwardedForHostEnabled,omitempty"`
+	// Specifies how the `X-Forwarded-For` header is processed. This parameter takes effect only when **XForwardedForEnabled*	- is set to **true**. Valid values:
+	//
+	// 	- **append*	- (default)
+	//
+	// 	- **remove**
+	//
+	// > 	- If this parameter is set to **append**, ALB appends the IP address of the last hop to the existing `X-Forwarded-For` header in the request before the request is sent to backend servers.
+	//
+	// > 	- If this parameter is set to **remove**, ALB removes the `X-Forwarded-For` header in the request before the request is sent to backend servers, no matter whether the request carries the `X-Forwarded-For` header.
+	//
+	// > 	- This parameter is only available for HTTP and HTTPS listeners.
+	//
+	// example:
+	//
+	// append
+	XForwardedForProcessingMode *string `json:"XForwardedForProcessingMode,omitempty" xml:"XForwardedForProcessingMode,omitempty"`
+	// Specifies whether to use the `X-Forwarded-Proto` header to retrieve the listener protocol of the ALB instance. Valid values:
+	//
+	// 	- **true**: uses the X-Forwarded-Proto header.
+	//
+	// 	- **false*	- (default): does not use the X-Forwarded-Proto header.
 	//
 	// >  HTTP, HTTPS, and QUIC listeners support this parameter.
 	//
@@ -2488,9 +2518,9 @@ type CreateListenerRequestXForwardedForConfig struct {
 	XForwardedForProtoEnabled *bool `json:"XForwardedForProtoEnabled,omitempty" xml:"XForwardedForProtoEnabled,omitempty"`
 	// Specifies whether to use the `SLB-ID` header to retrieve the ID of the ALB instance. Valid values:
 	//
-	// 	- **true**
+	// 	- **true**: uses the SLB-ID header.
 	//
-	// 	- **false*	- (default)
+	// 	- **false*	- (default): does not use the SLB-ID header.
 	//
 	// >  HTTP, HTTPS, and QUIC listeners support this parameter.
 	//
@@ -2500,9 +2530,9 @@ type CreateListenerRequestXForwardedForConfig struct {
 	XForwardedForSLBIdEnabled *bool `json:"XForwardedForSLBIdEnabled,omitempty" xml:"XForwardedForSLBIdEnabled,omitempty"`
 	// Specifies whether to use the `X-Forwarded-Port` header to retrieve the listener port of the ALB instance. Valid values:
 	//
-	// 	- **true**
+	// 	- **true**: uses the X-Forwarded-Port header.
 	//
-	// 	- **false*	- (default)
+	// 	- **false*	- (default): does not use the X-Forwarded-Port header.
 	//
 	// >  HTTP, HTTPS, and QUIC listeners support this parameter.
 	//
@@ -2612,17 +2642,17 @@ type CreateListenerResponseBody struct {
 	//
 	// 72dcd26b-f12d-4c27-b3af-18f6aed5****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The listener ID.
+	// The ID of the listener.
 	//
 	// example:
 	//
-	// lsr-bp1bpn0kn908w4nbw****
+	// lsn-o4u54y73wq7b******
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
-	// CEF72CEB-54B6-4AE8-B225-F876FF7BA984
+	// CEF72CEB-54B6-4AE8-B225-F876*******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5639,13 +5669,11 @@ type CreateServerGroupRequest struct {
 	//
 	// 	- **false**
 	//
-	// >
+	// > 	- Basic ALB instances do not support server groups that have cross-zone load balancing disabled. Only Standard and WAF-enabled ALB instances support server groups that have cross-zone load balancing.
 	//
-	// 	- Basic ALB instances do not support server groups that have cross-zone load balancing disabled. Only Standard and WAF-enabled ALB instances support server groups that have cross-zone load balancing.
+	// > 	- Cross-zone load balancing can be disabled for server groups of the server and IP type, but not for server groups of the Function Compute type.
 	//
-	// 	- Cross-zone load balancing can be disabled for server groups of the server and IP type, but not for server groups of the Function Compute type.
-	//
-	// 	- When cross-zone load balancing is disabled, session persistence cannot be enabled.
+	// > 	- When cross-zone load balancing is disabled, session persistence cannot be enabled.
 	//
 	// example:
 	//
@@ -5665,7 +5693,12 @@ type CreateServerGroupRequest struct {
 	//
 	// This parameter is required.
 	HealthCheckConfig *CreateServerGroupRequestHealthCheckConfig `json:"HealthCheckConfig,omitempty" xml:"HealthCheckConfig,omitempty" type:"Struct"`
-	Ipv6Enabled       *bool                                      `json:"Ipv6Enabled,omitempty" xml:"Ipv6Enabled,omitempty"`
+	// Specifies whether to enable Ipv6.
+	//
+	// example:
+	//
+	// false
+	Ipv6Enabled *bool `json:"Ipv6Enabled,omitempty" xml:"Ipv6Enabled,omitempty"`
 	// The backend protocol. Valid values:
 	//
 	// 	- **HTTP**: allows you to associate an HTTPS, HTTP, or QUIC listener with the server group. This is the default value.
@@ -5900,11 +5933,11 @@ func (s *CreateServerGroupRequestConnectionDrainConfig) SetConnectionDrainTimeou
 }
 
 type CreateServerGroupRequestHealthCheckConfig struct {
-	// The HTTP status codes that indicate healthy backend servers.
+	// The HTTP status code that indicates healthy backend servers.
 	HealthCheckCodes []*string `json:"HealthCheckCodes,omitempty" xml:"HealthCheckCodes,omitempty" type:"Repeated"`
 	// The backend port that is used for health checks.
 	//
-	// Valid values: **0*	- to **65535**.
+	// Valid values: **0*	- to **65535**
 	//
 	// The default value is **0**, which specifies that the port of a backend server is used for health checks.
 	//
@@ -5936,7 +5969,7 @@ type CreateServerGroupRequestHealthCheckConfig struct {
 	//
 	//     	- The domain name can contain lowercase letters, digits, hyphens (-), and periods (.).
 	//
-	//     	- The domain name can contain at least one period (.) but cannot start or end with a period (.).
+	//     	- The domain name must contain at least one period (.) but cannot start or end with a period (.).
 	//
 	//     	- The rightmost domain label of the domain name can contain only letters, and cannot contain digits or hyphens (-).
 	//
@@ -5956,9 +5989,9 @@ type CreateServerGroupRequestHealthCheckConfig struct {
 	//
 	// HTTP1.1
 	HealthCheckHttpVersion *string `json:"HealthCheckHttpVersion,omitempty" xml:"HealthCheckHttpVersion,omitempty"`
-	// The interval at which health checks are performed. Unit: seconds.
+	// The interval at which health checks are performed. Unit: seconds
 	//
-	// Valid values: **1*	- to **50**.
+	// Valid values: **1*	- to **50**
 	//
 	// Default value: **2**.
 	//
@@ -5980,7 +6013,7 @@ type CreateServerGroupRequestHealthCheckConfig struct {
 	//
 	// HEAD
 	HealthCheckMethod *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
-	// The path that is used for health checks.
+	// The URL that is used for health checks.
 	//
 	// The URL must be 1 to 80 characters in length, and can contain letters, digits, and the following special characters: `- / . % ? # & =`. It can also contain the following extended characters: `_ ; ~ ! ( ) 	- [ ] @ $ ^ : \\" , +`. The URL must start with a forward slash (/).
 	//
@@ -6004,11 +6037,11 @@ type CreateServerGroupRequestHealthCheckConfig struct {
 	//
 	// HTTP
 	HealthCheckProtocol *string `json:"HealthCheckProtocol,omitempty" xml:"HealthCheckProtocol,omitempty"`
-	// The timeout period of a health check response. If a backend server does not respond within the specified timeout period, the backend server is declared unhealthy. Unit: seconds.
+	// The timeout period of a health check response. If a backend server does not respond within the specified timeout period, the backend server is declared unhealthy. Unit: seconds
 	//
-	// Valid values: **1*	- to **300**.
+	// Valid values: **1*	- to **300**
 	//
-	// Default value: **5**.
+	// Default value: **5**
 	//
 	// example:
 	//
@@ -6016,7 +6049,7 @@ type CreateServerGroupRequestHealthCheckConfig struct {
 	HealthCheckTimeout *int32 `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
 	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health check status of the backend server changes from **fail*	- to **success**.
 	//
-	// Valid values: **2*	- to **10**.
+	// Valid values: **2*	- to **10**
 	//
 	// Default value: **3**.
 	//
@@ -6026,9 +6059,9 @@ type CreateServerGroupRequestHealthCheckConfig struct {
 	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
 	// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health check status of the backend server changes from **success*	- to **fail**.
 	//
-	// Valid values: **2*	- to **10**.
+	// Valid values: **2*	- to **10**
 	//
-	// Default value: **3**.
+	// Default value: **3**
 	//
 	// example:
 	//
@@ -6156,11 +6189,11 @@ type CreateServerGroupRequestStickySessionConfig struct {
 	//
 	// B490B5EBF6F3CD402E515D22BCDA****
 	Cookie *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
-	// The maximum amount of time to wait before the session cookie expires. Unit: seconds.
+	// The maximum amount of time to wait before the session cookie expires. Unit: seconds
 	//
-	// Valid values: **1*	- to **86400**.
+	// Valid values: **1*	- to **86400**
 	//
-	// Default value: **1000**.
+	// Default value: **1000**
 	//
 	// >  This parameter takes effect only when **StickySessionEnabled*	- is set to **true*	- and **StickySessionType*	- is set to **Insert**.
 	//
@@ -6182,9 +6215,9 @@ type CreateServerGroupRequestStickySessionConfig struct {
 	StickySessionEnabled *bool `json:"StickySessionEnabled,omitempty" xml:"StickySessionEnabled,omitempty"`
 	// The method that is used to handle cookies. Valid values:
 	//
-	// 	- **Insert*	- (default value): inserts a cookie. The first time a client accesses SLB, SLB inserts the SERVERID cookie into the HTTP or HTTPS response packet. Subsequent requests from the client that carry this cookie are forwarded to the same backend server as the first request.
+	// 	- **Insert*	- (default value): inserts a cookie. The first time a client accesses ALB, ALB inserts the SERVERID cookie into the HTTP or HTTPS response packet. Subsequent requests from the client that carry this cookie are forwarded to the same backend server as the first request.
 	//
-	// 	- **Server**: rewrites a cookie. SLB rewrites the custom cookies in requests from a client. Subsequent requests from the client that carry the new cookie are forwarded to the same backend server as the first request.
+	// 	- **Server**: rewrites a cookie. ALB rewrites the custom cookies in requests from a client. Subsequent requests from the client that carry the new cookie are forwarded to the same backend server as the first request.
 	//
 	// >  This parameter takes effect when the **StickySessionEnabled*	- parameter is set to **true**.
 	//
@@ -8540,15 +8573,17 @@ func (s *EnableLoadBalancerAccessLogRequest) SetLogStore(v string) *EnableLoadBa
 }
 
 type EnableLoadBalancerAccessLogResponseBody struct {
+	// The ID of the asynchronous job.
+	//
 	// example:
 	//
-	// ff7713ca-5818-4120-85e3-0bf9e27e9103
+	// ff7713ca-5818-4120-85e3-0bf9fr******
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The request ID.
 	//
 	// example:
 	//
-	// 593B0448-D13E-4C56-AC0D-FDF0FDE0E9A3
+	// 593B0448-D13E-4C56-AC0D-FDF0FD******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8851,7 +8886,8 @@ type GetHealthCheckTemplateAttributeResponseBody struct {
 	// example:
 	//
 	// DB1AFC33-DAE8-528E-AA4D-4A6AABE71945
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The tags.
 	Tags []*GetHealthCheckTemplateAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status is changed from **success*	- to **fail**.
@@ -8934,6 +8970,11 @@ func (s *GetHealthCheckTemplateAttributeResponseBody) SetHealthyThreshold(v int3
 
 func (s *GetHealthCheckTemplateAttributeResponseBody) SetRequestId(v string) *GetHealthCheckTemplateAttributeResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *GetHealthCheckTemplateAttributeResponseBody) SetResourceGroupId(v string) *GetHealthCheckTemplateAttributeResponseBody {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -9772,17 +9813,47 @@ type GetListenerAttributeResponseBodyXForwardedForConfig struct {
 	XForwardedForClientSrcPortEnabled *bool `json:"XForwardedForClientSrcPortEnabled,omitempty" xml:"XForwardedForClientSrcPortEnabled,omitempty"`
 	// Indicates whether the `X-Forwarded-For` header is used to retrieve the client IP address. Valid values:
 	//
-	// 	- **true**
+	// 	- **true*	- (default)
 	//
 	// 	- **false**
 	//
-	// > This parameter is available only when you create an HTTP or HTTPS listener.
+	// > 	- If this parameter is set to **true**, the default value of the **XForwardedForProcessingMode*	- parameter is **append**. You can change it to **remove**.
+	//
+	// > 	- If this parameter is set to **false**, the `X-Forwarded-For` header in the request is not modified in any way before the request is sent to backend servers.
+	//
+	// > 	- This parameter is only available for HTTP and HTTPS listeners.
 	//
 	// example:
 	//
 	// true
-	XForwardedForEnabled        *bool   `json:"XForwardedForEnabled,omitempty" xml:"XForwardedForEnabled,omitempty"`
-	XForwardedForHostEnabled    *bool   `json:"XForwardedForHostEnabled,omitempty" xml:"XForwardedForHostEnabled,omitempty"`
+	XForwardedForEnabled *bool `json:"XForwardedForEnabled,omitempty" xml:"XForwardedForEnabled,omitempty"`
+	// Specifies whether to use the `X-Forwarded-Host` header to retrieve the client domain name. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false*	- (default)
+	//
+	// >  This parameter is available for HTTP, HTTPS, and QUIC listeners.
+	//
+	// example:
+	//
+	// false
+	XForwardedForHostEnabled *bool `json:"XForwardedForHostEnabled,omitempty" xml:"XForwardedForHostEnabled,omitempty"`
+	// Specifies how the `X-Forwarded-For` header is processed. This parameter takes effect only when **XForwardedForEnabled*	- is set to **true**. Valid values:
+	//
+	// 	- **append*	- (default)
+	//
+	// 	- **remove**
+	//
+	// > 	- If this parameter is set to **append**, ALB appends the IP address of the last hop to the existing `X-Forwarded-For` header in the request before the request is sent to backend servers.
+	//
+	// > 	- If this parameter is set to **remove**, ALB removes the `X-Forwarded-For` header in the request before the request is sent to backend servers, no matter whether the request carries the `X-Forwarded-For` header.
+	//
+	// > 	- This parameter is only available for HTTP and HTTPS listeners.
+	//
+	// example:
+	//
+	// append
 	XForwardedForProcessingMode *string `json:"XForwardedForProcessingMode,omitempty" xml:"XForwardedForProcessingMode,omitempty"`
 	// Indicates whether the `X-Forwarded-Proto` header is used to retrieve the listening protocol. Valid values:
 	//
@@ -12636,7 +12707,8 @@ type ListHealthCheckTemplatesRequest struct {
 	// example:
 	//
 	// FFmyTO70tTpLG6I3FmYAXGKPd****
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	NextToken       *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The tags.
 	Tag []*ListHealthCheckTemplatesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
@@ -12666,6 +12738,11 @@ func (s *ListHealthCheckTemplatesRequest) SetMaxResults(v int32) *ListHealthChec
 
 func (s *ListHealthCheckTemplatesRequest) SetNextToken(v string) *ListHealthCheckTemplatesRequest {
 	s.NextToken = &v
+	return s
+}
+
+func (s *ListHealthCheckTemplatesRequest) SetResourceGroupId(v string) *ListHealthCheckTemplatesRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -12885,7 +12962,8 @@ type ListHealthCheckTemplatesResponseBodyHealthCheckTemplates struct {
 	// example:
 	//
 	// 4
-	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	HealthyThreshold *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	ResourceGroupId  *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The tags.
 	Tags []*ListHealthCheckTemplatesResponseBodyHealthCheckTemplatesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from **success*	- to **fail**.
@@ -12965,6 +13043,11 @@ func (s *ListHealthCheckTemplatesResponseBodyHealthCheckTemplates) SetHealthChec
 
 func (s *ListHealthCheckTemplatesResponseBodyHealthCheckTemplates) SetHealthyThreshold(v int32) *ListHealthCheckTemplatesResponseBodyHealthCheckTemplates {
 	s.HealthyThreshold = &v
+	return s
+}
+
+func (s *ListHealthCheckTemplatesResponseBodyHealthCheckTemplates) SetResourceGroupId(v string) *ListHealthCheckTemplatesResponseBodyHealthCheckTemplates {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -13988,17 +14071,47 @@ type ListListenersResponseBodyListenersXForwardedForConfig struct {
 	XForwardedForClientSrcPortEnabled *bool `json:"XForwardedForClientSrcPortEnabled,omitempty" xml:"XForwardedForClientSrcPortEnabled,omitempty"`
 	// Specifies whether to use the `X-Forwarded-For` header to retrieve client IP addresses. Valid values:
 	//
-	// 	- **true**
+	// 	- **true*	- (default)
 	//
 	// 	- **false**
 	//
-	// >  This parameter is returned only for HTTP and HTTPS listeners.
+	// > 	- If this parameter is set to **true**, the default value of the **XForwardedForProcessingMode*	- parameter is **append**. You can change it to **remove**.
+	//
+	// > 	- If this parameter is set to **false**, the `X-Forwarded-For` header in the request is not modified in any way before the request is sent to backend servers.
+	//
+	// > 	- Both HTTP and HTTPS listeners support this parameter.
 	//
 	// example:
 	//
 	// true
-	XForwardedForEnabled        *bool   `json:"XForwardedForEnabled,omitempty" xml:"XForwardedForEnabled,omitempty"`
-	XForwardedForHostEnabled    *bool   `json:"XForwardedForHostEnabled,omitempty" xml:"XForwardedForHostEnabled,omitempty"`
+	XForwardedForEnabled *bool `json:"XForwardedForEnabled,omitempty" xml:"XForwardedForEnabled,omitempty"`
+	// Specifies whether to use the `X-Forwarded-Host` header to retrieve client domain names. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false*	- (default)
+	//
+	// >  HTTP, HTTPS, and QUIC listeners all support this parameter.
+	//
+	// example:
+	//
+	// false
+	XForwardedForHostEnabled *bool `json:"XForwardedForHostEnabled,omitempty" xml:"XForwardedForHostEnabled,omitempty"`
+	// Specifies how the `X-Forwarded-For` header is processed. This parameter takes effect only when **XForwardedForEnabled*	- is set to **true**. Valid values:
+	//
+	// 	- **append*	- (default)
+	//
+	// 	- **remove**
+	//
+	// > 	- If this parameter is set to **append**, ALB appends the IP address of the last hop to the existing `X-Forwarded-For` header in the request before the request is sent to backend servers.
+	//
+	// > 	- If this parameter is set to **remove**, ALB removes the `X-Forwarded-For` header in the request before the request is sent to backend servers, no matter whether the request carries the `X-Forwarded-For` header.
+	//
+	// > 	- Both HTTP and HTTPS listeners support this parameter.
+	//
+	// example:
+	//
+	// append
 	XForwardedForProcessingMode *string `json:"XForwardedForProcessingMode,omitempty" xml:"XForwardedForProcessingMode,omitempty"`
 	// Indicates whether the `X-Forwarded-Proto` header is used to retrieve the listener protocol. Valid values:
 	//
@@ -15506,6 +15619,10 @@ func (s *ListRulesResponseBodyRulesRuleActionsForwardGroupConfig) SetServerGroup
 
 type ListRulesResponseBodyRulesRuleActionsForwardGroupConfigServerGroupStickySession struct {
 	// If the value of N in ServerGroupTuple.N is larger than 1, you can enable or disable session persistence for server groups.
+	//
+	// example:
+	//
+	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	// If Enabled is set to True, you can specify a session persistence timeout period.
 	//
@@ -21464,11 +21581,11 @@ func (s *UpdateListenerAttributeRequestQuicConfig) SetQuicUpgradeEnabled(v bool)
 }
 
 type UpdateListenerAttributeRequestXForwardedForConfig struct {
-	// The name of the custom header. The header takes effect only when you set **XForwardedForClientCertClientVerifyEnabled*	- to **true**.
+	// The name of the custom header. The header takes effect only when you set **XForwardedForClientCertClientVerifyEnabled **to **true**.
 	//
-	// The name must be 1 to 40 characters in length. The name can contain lowercase letters, digits, hyphens (-), and underscores (-).
+	// The name must be 1 to 40 characters in length. It can contain lowercase letters, digits, hyphens (-), and underscores (_).
 	//
-	// >  Only HTTPS listeners support this parameter.
+	// >  This parameter is only available for HTTPS listeners.
 	//
 	// example:
 	//
@@ -21480,7 +21597,7 @@ type UpdateListenerAttributeRequestXForwardedForConfig struct {
 	//
 	// 	- **false**
 	//
-	// >  Only HTTPS listeners support this parameter.
+	// >  This parameter is only available for HTTPS listeners.
 	//
 	// example:
 	//
@@ -21488,9 +21605,9 @@ type UpdateListenerAttributeRequestXForwardedForConfig struct {
 	XForwardedForClientCertClientVerifyEnabled *bool `json:"XForwardedForClientCertClientVerifyEnabled,omitempty" xml:"XForwardedForClientCertClientVerifyEnabled,omitempty"`
 	// The name of the custom header. The header takes effect only when you set **XForwardedForClientCertFingerprintEnabled*	- to **true**.
 	//
-	// The name must be 1 to 40 characters in length. The name can contain lowercase letters, digits, hyphens (-), and underscores (-).
+	// The name must be 1 to 40 characters in length. It can contain lowercase letters, digits, hyphens (-), and underscores (_).
 	//
-	// >  Only HTTPS listeners support this parameter.
+	// >  This parameter is only available for HTTPS listeners.
 	//
 	// example:
 	//
@@ -21502,7 +21619,7 @@ type UpdateListenerAttributeRequestXForwardedForConfig struct {
 	//
 	// 	- **false**
 	//
-	// >  Only HTTPS listeners support this parameter.
+	// >  This parameter is only available for HTTPS listeners.
 	//
 	// example:
 	//
@@ -21510,9 +21627,9 @@ type UpdateListenerAttributeRequestXForwardedForConfig struct {
 	XForwardedForClientCertFingerprintEnabled *bool `json:"XForwardedForClientCertFingerprintEnabled,omitempty" xml:"XForwardedForClientCertFingerprintEnabled,omitempty"`
 	// The name of the custom header. The header takes effect only when you set **XForwardedForClientCertIssuerDNEnabled*	- to **true**.
 	//
-	// The name must be 1 to 40 characters in length. The name can contain lowercase letters, digits, hyphens (-), and underscores (-).
+	// The name must be 1 to 40 characters in length. It can contain lowercase letters, digits, hyphens (-), and underscores (_).
 	//
-	// >  Only HTTPS listeners support this parameter.
+	// >  This parameter is only available for HTTPS listeners.
 	//
 	// example:
 	//
@@ -21524,17 +21641,17 @@ type UpdateListenerAttributeRequestXForwardedForConfig struct {
 	//
 	// 	- **false**
 	//
-	// >  Only HTTPS listeners support this parameter.
+	// >  This parameter is only available for HTTPS listeners.
 	//
 	// example:
 	//
 	// false
 	XForwardedForClientCertIssuerDNEnabled *bool `json:"XForwardedForClientCertIssuerDNEnabled,omitempty" xml:"XForwardedForClientCertIssuerDNEnabled,omitempty"`
-	// The name of the custom header. This parameter is valid only if the **XForwardedForClientCertSubjectDNEnabled*	- parameter is set to true.****
+	// The name of the custom header. This parameter is valid only if the **XForwardedForClientCertSubjectDNEnabled*	- parameter is set to **true**.
 	//
-	// The name must be 1 to 40 characters in length, The name can contain lowercase letters, digits, hyphens (-), and underscores (-).
+	// The name must be 1 to 40 characters in length. It can contain lowercase letters, digits, hyphens (-), and underscores (_).
 	//
-	// >  Only HTTPS listeners support this parameter.
+	// >  This parameter is only available for HTTPS listeners.
 	//
 	// example:
 	//
@@ -21546,7 +21663,7 @@ type UpdateListenerAttributeRequestXForwardedForConfig struct {
 	//
 	// 	- **false**
 	//
-	// >  Only HTTPS listeners support this parameter.
+	// >  This parameter is only available for HTTPS listeners.
 	//
 	// example:
 	//
@@ -21558,7 +21675,7 @@ type UpdateListenerAttributeRequestXForwardedForConfig struct {
 	//
 	// 	- **false**
 	//
-	// >  HTTP and HTTPS listeners support this parameter.
+	// >  This parameter is only available for HTTP and HTTPS listeners.
 	//
 	// example:
 	//
@@ -21572,31 +21689,61 @@ type UpdateListenerAttributeRequestXForwardedForConfig struct {
 	//
 	// 10.1.1.0/24
 	XForwardedForClientSourceIpsTrusted *string `json:"XForwardedForClientSourceIpsTrusted,omitempty" xml:"XForwardedForClientSourceIpsTrusted,omitempty"`
-	// Specifies whether to use the `XForwardedFor_ClientSrcPort` header to retrieve the client port. Valid values:
+	// Specifies whether to use the `X-Forwarded-Client-srcport` header to retrieve the client port. Valid values:
 	//
 	// 	- **true**
 	//
 	// 	- **false**
 	//
-	// >  HTTP and HTTPS listeners support this parameter.
+	// >  This parameter is only available for HTTP and HTTPS listeners.
 	//
 	// example:
 	//
 	// false
 	XForwardedForClientSrcPortEnabled *bool `json:"XForwardedForClientSrcPortEnabled,omitempty" xml:"XForwardedForClientSrcPortEnabled,omitempty"`
-	// Specifies whether to use the `X-Forwarded-For` header to retrieve client IP addresses. Valid values:
+	// Specifies whether to use the `X-Forwarded-For` header to retrieve the client IP address. Valid values:
 	//
-	// 	- **true**
+	// 	- **true*	- (default)
 	//
 	// 	- **false**
 	//
-	// >  HTTP and HTTPS listeners support this parameter.
+	// > 	- If this parameter is set to **true**, the default value of the **XForwardedForProcessingMode*	- parameter is **append**. You can change it to **remove**.
+	//
+	// > 	- If this parameter is set to **false**, the `X-Forwarded-For` header in the request is not modified in any way before the request is sent to backend servers.
+	//
+	// > 	- This parameter is only available for HTTP and HTTPS listeners.
 	//
 	// example:
 	//
 	// true
-	XForwardedForEnabled        *bool   `json:"XForwardedForEnabled,omitempty" xml:"XForwardedForEnabled,omitempty"`
-	XForwardedForHostEnabled    *bool   `json:"XForwardedForHostEnabled,omitempty" xml:"XForwardedForHostEnabled,omitempty"`
+	XForwardedForEnabled *bool `json:"XForwardedForEnabled,omitempty" xml:"XForwardedForEnabled,omitempty"`
+	// Specifies whether to use the `X-Forwarded-Host` header to retrieve the client domain name. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false*	- (default)
+	//
+	// >  This parameter is available for HTTP, HTTPS, and QUIC listeners.
+	//
+	// example:
+	//
+	// false
+	XForwardedForHostEnabled *bool `json:"XForwardedForHostEnabled,omitempty" xml:"XForwardedForHostEnabled,omitempty"`
+	// Specifies how the `X-Forwarded-For` header is processed. This parameter takes effect only when **XForwardedForEnabled*	- is set to **true**. Valid values:
+	//
+	// 	- **append*	- (default)
+	//
+	// 	- **remove**
+	//
+	// > 	- If this parameter is set to **append**, ALB appends the IP address of the last hop to the existing `X-Forwarded-For` header in the request before the request is sent to backend servers.
+	//
+	// > 	- If this parameter is set to **remove**, ALB removes the `X-Forwarded-For` header in the request before the request is sent to backend servers, no matter whether the request carries the `X-Forwarded-For` header.
+	//
+	// > 	- This parameter is only available for HTTP and HTTPS listeners.
+	//
+	// example:
+	//
+	// append
 	XForwardedForProcessingMode *string `json:"XForwardedForProcessingMode,omitempty" xml:"XForwardedForProcessingMode,omitempty"`
 	// Specifies whether to use the `X-Forwarded-Proto` header to retrieve the listener protocol. Valid values:
 	//
@@ -21604,7 +21751,7 @@ type UpdateListenerAttributeRequestXForwardedForConfig struct {
 	//
 	// 	- **false**
 	//
-	// >  HTTP, HTTPS, and QUIC listeners support this parameter.
+	// >  This parameter is available for HTTP, HTTPS, and QUIC listeners.
 	//
 	// example:
 	//
@@ -21616,7 +21763,7 @@ type UpdateListenerAttributeRequestXForwardedForConfig struct {
 	//
 	// 	- **false**
 	//
-	// >  HTTP, HTTPS, and QUIC listeners support this parameter.
+	// >  This parameter is available for HTTP, HTTPS, and QUIC listeners.
 	//
 	// example:
 	//
@@ -21628,7 +21775,7 @@ type UpdateListenerAttributeRequestXForwardedForConfig struct {
 	//
 	// 	- **false**
 	//
-	// >  HTTP, HTTPS, and QUIC listeners support this parameter.
+	// >  This parameter is available for HTTP, HTTPS, and QUIC listeners.
 	//
 	// example:
 	//
@@ -24960,11 +25107,9 @@ type UpdateServerGroupAttributeRequest struct {
 	//
 	// After connection draining is enabled, SLB remains data transmission for a period of time after a backend server is removed or declared unhealthy.
 	//
-	// >
+	// > 	- Basic SLB instances do not support connection draining. Standard and WAF-enabled SLB instances support connection draining.
 	//
-	// 	- Basic SLB instances do not support connection draining. Standard and WAF-enabled SLB instances support connection draining.
-	//
-	// 	- Server groups of the server and IP types support connection draining. Server groups of the Function Compute type do not support connection draining.
+	// > 	- Server groups of the server and IP types support connection draining. Server groups of the Function Compute type do not support connection draining.
 	ConnectionDrainConfig *UpdateServerGroupAttributeRequestConnectionDrainConfig `json:"ConnectionDrainConfig,omitempty" xml:"ConnectionDrainConfig,omitempty" type:"Struct"`
 	// Indicates whether cross-zone load balancing is enabled for the server group. Valid values:
 	//
@@ -24972,13 +25117,11 @@ type UpdateServerGroupAttributeRequest struct {
 	//
 	// 	- **false**
 	//
-	// >
+	// > 	- Basic ALB instances do not support server groups that have cross-zone load balancing disabled. Only Standard and WAF-enabled ALB instances support server groups that have cross-zone load balancing.
 	//
-	// 	- Basic ALB instances do not support server groups that have cross-zone load balancing disabled. Only Standard and WAF-enabled ALB instances support server groups that have cross-zone load balancing.
+	// >	- Cross-zone load balancing can be disabled for server groups of the server and IP type, but not for server groups of the Function Compute type.
 	//
-	// 	- Cross-zone load balancing can be disabled for server groups of the server and IP type, but not for server groups of the Function Compute type.
-	//
-	// 	- When cross-zone load balancing is disabled, session persistence cannot be enabled.
+	// >	- When cross-zone load balancing is disabled, session persistence cannot be enabled.
 	//
 	// example:
 	//
@@ -25045,6 +25188,10 @@ type UpdateServerGroupAttributeRequest struct {
 	// The configurations of consistent hashing based on URLs.
 	UchConfig *UpdateServerGroupAttributeRequestUchConfig `json:"UchConfig,omitempty" xml:"UchConfig,omitempty" type:"Struct"`
 	// Specifies whether to enable persistent TCP connections.
+	//
+	// example:
+	//
+	// true
 	UpstreamKeepaliveEnabled *bool `json:"UpstreamKeepaliveEnabled,omitempty" xml:"UpstreamKeepaliveEnabled,omitempty"`
 }
 
@@ -26837,6 +26984,10 @@ func (client *Client) CreateHealthCheckTemplateWithOptions(request *CreateHealth
 
 	if !tea.BoolValue(util.IsUnset(request.HealthyThreshold)) {
 		query["HealthyThreshold"] = request.HealthyThreshold
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Tag)) {
@@ -30298,6 +30449,10 @@ func (client *Client) ListHealthCheckTemplatesWithOptions(request *ListHealthChe
 
 	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
 		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Tag)) {
