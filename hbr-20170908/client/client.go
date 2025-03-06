@@ -4537,7 +4537,9 @@ type CreatePolicyV2RequestRules struct {
 	//
 	// cn-shanghai
 	ReplicationRegionId *string `json:"ReplicationRegionId,omitempty" xml:"ReplicationRegionId,omitempty"`
-	// This parameter is required only if the **RuleType*	- parameter is set to **TRANSITION*	- or **REPLICATION**.
+	// This parameter is required only if the **RuleType*	- parameter is set to **BACKUP**, **TRANSITION*	- or **REPLICATION**.
+	//
+	// 	- If the **RuleType*	- parameter is set to **BACKUP**, this parameter specifies the retention period of the backup data. The priority is lower than the Retention field of the rule with RuleType=TRANSITION. Minimum value: 1. Maximum value: 364635. Unit: days.
 	//
 	// 	- If the **RuleType*	- parameter is set to **TRANSITION**, this parameter specifies the retention period of the backup data. Minimum value: 1. Maximum value: 364635. Unit: days.
 	//
@@ -4556,6 +4558,8 @@ type CreatePolicyV2RequestRules struct {
 	// 	- **TRANSITION**: lifecycle rule
 	//
 	// 	- **REPLICATION**: replication rule
+	//
+	// 	- **TAG**: tag rule
 	//
 	// This parameter is required.
 	//
@@ -4651,15 +4655,15 @@ type CreatePolicyV2RequestRulesDataSourceFilters struct {
 	DataSourceIds []*string `json:"DataSourceIds,omitempty" xml:"DataSourceIds,omitempty" type:"Repeated"`
 	// The type of the data source. Valid value:
 	//
-	// 	- **UDM_ECS**: Elastic Compute Service (ECS) instance This type of data source is supported only if the **RuleType*	- parameter is set to **UDM_ECS_ONLY**.
+	// 	- **UDM_ECS**: Elastic Compute Service (ECS) instance This type of data source is supported only if the **PolicyType*	- parameter is set to **UDM_ECS_ONLY**.
 	//
-	// 	- **OSS**: Object Storage Service (OSS) bucket This type of data source is supported only if the **RuleType*	- parameter is set to **STANDARD**.
+	// 	- **OSS**: Object Storage Service (OSS) bucket This type of data source is supported only if the **PolicyType*	- parameter is set to **STANDARD**.
 	//
-	// 	- **NAS**: File Storage NAS (NAS) file system This type of data source is supported only if the **RuleType*	- parameter is set to **STANDARD**.
+	// 	- **NAS**: File Storage NAS (NAS) file system This type of data source is supported only if the **PolicyType*	- parameter is set to **STANDARD**.
 	//
-	// 	- **ECS_FILE**: ECS file This type of data source is supported only if the **RuleType*	- parameter is set to **STANDARD**.
+	// 	- **ECS_FILE**: ECS file This type of data source is supported only if the **PolicyType*	- parameter is set to **STANDARD**.
 	//
-	// 	- **OTS**: Tablestore instance This type of data source is supported only if the **RuleType*	- parameter is set to **STANDARD**.
+	// 	- **OTS**: Tablestore instance This type of data source is supported only if the **PolicyType*	- parameter is set to **STANDARD**.
 	//
 	// example:
 	//
@@ -6164,7 +6168,15 @@ type CreateVaultRequest struct {
 	//
 	// cn-shanghai
 	VaultRegionId *string `json:"VaultRegionId,omitempty" xml:"VaultRegionId,omitempty"`
-	// The storage type of the backup vault. Valid value: **STANDARD**, which indicates standard storage.
+	// The storage type of the backup vault. Valid value:
+	//
+	// - **STANDARD**: standard storage.
+	//
+	// - **ARCHIVE**: deprected.
+	//
+	// - **COLD_ARCHIVE**: deprected.
+	//
+	// - **IA**: deprected.
 	//
 	// example:
 	//
@@ -11575,7 +11587,8 @@ type DescribeClientsResponseBodyClientsClient struct {
 	// example:
 	//
 	// 1554347313
-	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	CreatedTime   *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	HeartBeatTime *int64 `json:"HeartBeatTime,omitempty" xml:"HeartBeatTime,omitempty"`
 	// The instance ID.
 	//
 	// example:
@@ -11704,6 +11717,11 @@ func (s *DescribeClientsResponseBodyClientsClient) SetClusterId(v string) *Descr
 
 func (s *DescribeClientsResponseBodyClientsClient) SetCreatedTime(v int64) *DescribeClientsResponseBodyClientsClient {
 	s.CreatedTime = &v
+	return s
+}
+
+func (s *DescribeClientsResponseBodyClientsClient) SetHeartBeatTime(v int64) *DescribeClientsResponseBodyClientsClient {
+	s.HeartBeatTime = &v
 	return s
 }
 
@@ -26912,6 +26930,12 @@ type UpdatePolicyV2RequestRules struct {
 	Schedule *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
 	// This parameter is required only if the **RuleType*	- parameter is set to **TAG**. This parameter specifies the resource tag filter rule.
 	TagFilters []*UpdatePolicyV2RequestRulesTagFilters `json:"TagFilters,omitempty" xml:"TagFilters,omitempty" type:"Repeated"`
+	// This parameter is required only if the RuleType parameter is set to BACKUP. The ID of the backup vault.
+	//
+	// example:
+	//
+	// v-0001************aseg
+	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
 func (s UpdatePolicyV2RequestRules) String() string {
@@ -26984,6 +27008,11 @@ func (s *UpdatePolicyV2RequestRules) SetSchedule(v string) *UpdatePolicyV2Reques
 
 func (s *UpdatePolicyV2RequestRules) SetTagFilters(v []*UpdatePolicyV2RequestRulesTagFilters) *UpdatePolicyV2RequestRules {
 	s.TagFilters = v
+	return s
+}
+
+func (s *UpdatePolicyV2RequestRules) SetVaultId(v string) *UpdatePolicyV2RequestRules {
+	s.VaultId = &v
 	return s
 }
 
