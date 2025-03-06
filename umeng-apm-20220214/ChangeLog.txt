@@ -1,3 +1,8 @@
+2025-03-06 Version: v1.3.0
+- Support API GetErrorMinuteStatTrend.
+- Support API GetNetworkMinuteTrend.
+
+
 2025-03-06 Version: v1.2.2
 - Generated golang 2022-02-14 for umeng-apm.
 

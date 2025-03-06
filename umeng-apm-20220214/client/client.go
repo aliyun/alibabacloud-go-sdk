@@ -183,6 +183,161 @@ func (s *DeleteSymRecordsResponse) SetBody(v *DeleteSymRecordsResponseBody) *Del
 	return s
 }
 
+type GetErrorMinuteStatTrendRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5fb6001a73749c24fd9cb356
+	DataSourceId *string `json:"dataSourceId,omitempty" xml:"dataSourceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2024-09-27 09:07
+	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Type *int32 `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s GetErrorMinuteStatTrendRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetErrorMinuteStatTrendRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetErrorMinuteStatTrendRequest) SetDataSourceId(v string) *GetErrorMinuteStatTrendRequest {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *GetErrorMinuteStatTrendRequest) SetStartTime(v string) *GetErrorMinuteStatTrendRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetErrorMinuteStatTrendRequest) SetType(v int32) *GetErrorMinuteStatTrendRequest {
+	s.Type = &v
+	return s
+}
+
+type GetErrorMinuteStatTrendResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *int64                                     `json:"code,omitempty" xml:"code,omitempty"`
+	Data []*GetErrorMinuteStatTrendResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// succeed in handling request
+	Msg *string `json:"msg,omitempty" xml:"msg,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetErrorMinuteStatTrendResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetErrorMinuteStatTrendResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetErrorMinuteStatTrendResponseBody) SetCode(v int64) *GetErrorMinuteStatTrendResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetErrorMinuteStatTrendResponseBody) SetData(v []*GetErrorMinuteStatTrendResponseBodyData) *GetErrorMinuteStatTrendResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetErrorMinuteStatTrendResponseBody) SetMsg(v string) *GetErrorMinuteStatTrendResponseBody {
+	s.Msg = &v
+	return s
+}
+
+func (s *GetErrorMinuteStatTrendResponseBody) SetSuccess(v bool) *GetErrorMinuteStatTrendResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetErrorMinuteStatTrendResponseBodyData struct {
+	// example:
+	//
+	// 120
+	ErrorCount *int64 `json:"errorCount,omitempty" xml:"errorCount,omitempty"`
+	// example:
+	//
+	// 1200
+	LaunchCount *int64 `json:"launchCount,omitempty" xml:"launchCount,omitempty"`
+	// example:
+	//
+	// 2023-05-20 13:01
+	TimePoint *string `json:"timePoint,omitempty" xml:"timePoint,omitempty"`
+}
+
+func (s GetErrorMinuteStatTrendResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetErrorMinuteStatTrendResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetErrorMinuteStatTrendResponseBodyData) SetErrorCount(v int64) *GetErrorMinuteStatTrendResponseBodyData {
+	s.ErrorCount = &v
+	return s
+}
+
+func (s *GetErrorMinuteStatTrendResponseBodyData) SetLaunchCount(v int64) *GetErrorMinuteStatTrendResponseBodyData {
+	s.LaunchCount = &v
+	return s
+}
+
+func (s *GetErrorMinuteStatTrendResponseBodyData) SetTimePoint(v string) *GetErrorMinuteStatTrendResponseBodyData {
+	s.TimePoint = &v
+	return s
+}
+
+type GetErrorMinuteStatTrendResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetErrorMinuteStatTrendResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetErrorMinuteStatTrendResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetErrorMinuteStatTrendResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetErrorMinuteStatTrendResponse) SetHeaders(v map[string]*string) *GetErrorMinuteStatTrendResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetErrorMinuteStatTrendResponse) SetStatusCode(v int32) *GetErrorMinuteStatTrendResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetErrorMinuteStatTrendResponse) SetBody(v *GetErrorMinuteStatTrendResponseBody) *GetErrorMinuteStatTrendResponse {
+	s.Body = v
+	return s
+}
+
 type GetH5PageTrendRequest struct {
 	// example:
 	//
@@ -929,6 +1084,150 @@ func (s *GetNativePageTrendResponse) SetStatusCode(v int32) *GetNativePageTrendR
 }
 
 func (s *GetNativePageTrendResponse) SetBody(v *GetNativePageTrendResponseBody) *GetNativePageTrendResponse {
+	s.Body = v
+	return s
+}
+
+type GetNetworkMinuteTrendRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5fb6001a73749c24fd9cb356
+	DataSourceId *string `json:"dataSourceId,omitempty" xml:"dataSourceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2024-09-27 09:07
+	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+}
+
+func (s GetNetworkMinuteTrendRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetNetworkMinuteTrendRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetNetworkMinuteTrendRequest) SetDataSourceId(v string) *GetNetworkMinuteTrendRequest {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *GetNetworkMinuteTrendRequest) SetStartTime(v string) *GetNetworkMinuteTrendRequest {
+	s.StartTime = &v
+	return s
+}
+
+type GetNetworkMinuteTrendResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *int64                                   `json:"code,omitempty" xml:"code,omitempty"`
+	Data []*GetNetworkMinuteTrendResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// succeed in handling request
+	Msg *string `json:"msg,omitempty" xml:"msg,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetNetworkMinuteTrendResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetNetworkMinuteTrendResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetNetworkMinuteTrendResponseBody) SetCode(v int64) *GetNetworkMinuteTrendResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetNetworkMinuteTrendResponseBody) SetData(v []*GetNetworkMinuteTrendResponseBodyData) *GetNetworkMinuteTrendResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetNetworkMinuteTrendResponseBody) SetMsg(v string) *GetNetworkMinuteTrendResponseBody {
+	s.Msg = &v
+	return s
+}
+
+func (s *GetNetworkMinuteTrendResponseBody) SetSuccess(v bool) *GetNetworkMinuteTrendResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetNetworkMinuteTrendResponseBodyData struct {
+	// example:
+	//
+	// 120
+	ErrorCount *int64 `json:"errorCount,omitempty" xml:"errorCount,omitempty"`
+	// example:
+	//
+	// 1200
+	RequestCount *int64 `json:"requestCount,omitempty" xml:"requestCount,omitempty"`
+	// example:
+	//
+	// 2023-05-20 09:08
+	TimePoint *string `json:"timePoint,omitempty" xml:"timePoint,omitempty"`
+}
+
+func (s GetNetworkMinuteTrendResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetNetworkMinuteTrendResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetNetworkMinuteTrendResponseBodyData) SetErrorCount(v int64) *GetNetworkMinuteTrendResponseBodyData {
+	s.ErrorCount = &v
+	return s
+}
+
+func (s *GetNetworkMinuteTrendResponseBodyData) SetRequestCount(v int64) *GetNetworkMinuteTrendResponseBodyData {
+	s.RequestCount = &v
+	return s
+}
+
+func (s *GetNetworkMinuteTrendResponseBodyData) SetTimePoint(v string) *GetNetworkMinuteTrendResponseBodyData {
+	s.TimePoint = &v
+	return s
+}
+
+type GetNetworkMinuteTrendResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetNetworkMinuteTrendResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetNetworkMinuteTrendResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetNetworkMinuteTrendResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetNetworkMinuteTrendResponse) SetHeaders(v map[string]*string) *GetNetworkMinuteTrendResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetNetworkMinuteTrendResponse) SetStatusCode(v int32) *GetNetworkMinuteTrendResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetNetworkMinuteTrendResponse) SetBody(v *GetNetworkMinuteTrendResponseBody) *GetNetworkMinuteTrendResponse {
 	s.Body = v
 	return s
 }
@@ -2184,6 +2483,89 @@ func (client *Client) DeleteSymRecords(request *DeleteSymRecordsRequest) (_resul
 
 // Summary:
 //
+// 获取分钟粒度稳定性统计数据
+//
+// @param request - GetErrorMinuteStatTrendRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetErrorMinuteStatTrendResponse
+func (client *Client) GetErrorMinuteStatTrendWithOptions(request *GetErrorMinuteStatTrendRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetErrorMinuteStatTrendResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataSourceId)) {
+		query["dataSourceId"] = request.DataSourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["startTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetErrorMinuteStatTrend"),
+		Version:     tea.String("2022-02-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/stat/GetErrorMinuteStatTrend"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetErrorMinuteStatTrendResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetErrorMinuteStatTrendResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取分钟粒度稳定性统计数据
+//
+// @param request - GetErrorMinuteStatTrendRequest
+//
+// @return GetErrorMinuteStatTrendResponse
+func (client *Client) GetErrorMinuteStatTrend(request *GetErrorMinuteStatTrendRequest) (_result *GetErrorMinuteStatTrendResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetErrorMinuteStatTrendResponse{}
+	_body, _err := client.GetErrorMinuteStatTrendWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取H5页面性能统计数据
 //
 // @param request - GetH5PageTrendRequest
@@ -2448,6 +2830,85 @@ func (client *Client) GetNativePageTrend(request *GetNativePageTrendRequest) (_r
 	headers := make(map[string]*string)
 	_result = &GetNativePageTrendResponse{}
 	_body, _err := client.GetNativePageTrendWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取分钟粒度网络统计数据
+//
+// @param request - GetNetworkMinuteTrendRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetNetworkMinuteTrendResponse
+func (client *Client) GetNetworkMinuteTrendWithOptions(request *GetNetworkMinuteTrendRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetNetworkMinuteTrendResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataSourceId)) {
+		query["dataSourceId"] = request.DataSourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["startTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetNetworkMinuteTrend"),
+		Version:     tea.String("2022-02-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/stat/getNetworkMinuteTrend"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetNetworkMinuteTrendResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetNetworkMinuteTrendResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取分钟粒度网络统计数据
+//
+// @param request - GetNetworkMinuteTrendRequest
+//
+// @return GetNetworkMinuteTrendResponse
+func (client *Client) GetNetworkMinuteTrend(request *GetNetworkMinuteTrendRequest) (_result *GetNetworkMinuteTrendResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetNetworkMinuteTrendResponse{}
+	_body, _err := client.GetNetworkMinuteTrendWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
