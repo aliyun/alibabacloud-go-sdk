@@ -9,6 +9,227 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type ConvertHybridInstanceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sc_flinkserverless_public_cn-7e22ae5sess
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shenzhen
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// This parameter is required.
+	ResourceSpec *ConvertHybridInstanceRequestResourceSpec `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
+}
+
+func (s ConvertHybridInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConvertHybridInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ConvertHybridInstanceRequest) SetInstanceId(v string) *ConvertHybridInstanceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ConvertHybridInstanceRequest) SetRegion(v string) *ConvertHybridInstanceRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *ConvertHybridInstanceRequest) SetResourceSpec(v *ConvertHybridInstanceRequestResourceSpec) *ConvertHybridInstanceRequest {
+	s.ResourceSpec = v
+	return s
+}
+
+type ConvertHybridInstanceRequestResourceSpec struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 40GB
+	MemoryGB *int32 `json:"MemoryGB,omitempty" xml:"MemoryGB,omitempty"`
+}
+
+func (s ConvertHybridInstanceRequestResourceSpec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConvertHybridInstanceRequestResourceSpec) GoString() string {
+	return s.String()
+}
+
+func (s *ConvertHybridInstanceRequestResourceSpec) SetCpu(v int32) *ConvertHybridInstanceRequestResourceSpec {
+	s.Cpu = &v
+	return s
+}
+
+func (s *ConvertHybridInstanceRequestResourceSpec) SetMemoryGB(v int32) *ConvertHybridInstanceRequestResourceSpec {
+	s.MemoryGB = &v
+	return s
+}
+
+type ConvertHybridInstanceShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sc_flinkserverless_public_cn-7e22ae5sess
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shenzhen
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// This parameter is required.
+	ResourceSpecShrink *string `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty"`
+}
+
+func (s ConvertHybridInstanceShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConvertHybridInstanceShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ConvertHybridInstanceShrinkRequest) SetInstanceId(v string) *ConvertHybridInstanceShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ConvertHybridInstanceShrinkRequest) SetRegion(v string) *ConvertHybridInstanceShrinkRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *ConvertHybridInstanceShrinkRequest) SetResourceSpecShrink(v string) *ConvertHybridInstanceShrinkRequest {
+	s.ResourceSpecShrink = &v
+	return s
+}
+
+type ConvertHybridInstanceResponseBody struct {
+	// example:
+	//
+	// 000000
+	ErrCode   *string                                     `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	OrderInfo *ConvertHybridInstanceResponseBodyOrderInfo `json:"OrderInfo,omitempty" xml:"OrderInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// 67F33190-946B-1105-B6A1-E2DF0426DD51
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ConvertHybridInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConvertHybridInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ConvertHybridInstanceResponseBody) SetErrCode(v string) *ConvertHybridInstanceResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *ConvertHybridInstanceResponseBody) SetOrderInfo(v *ConvertHybridInstanceResponseBodyOrderInfo) *ConvertHybridInstanceResponseBody {
+	s.OrderInfo = v
+	return s
+}
+
+func (s *ConvertHybridInstanceResponseBody) SetRequestId(v string) *ConvertHybridInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ConvertHybridInstanceResponseBody) SetSuccess(v bool) *ConvertHybridInstanceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ConvertHybridInstanceResponseBodyOrderInfo struct {
+	ElasticInstanceId *string `json:"ElasticInstanceId,omitempty" xml:"ElasticInstanceId,omitempty"`
+	// example:
+	//
+	// f-cn-zvp2q0zik06
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 210406354694567
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+}
+
+func (s ConvertHybridInstanceResponseBodyOrderInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConvertHybridInstanceResponseBodyOrderInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ConvertHybridInstanceResponseBodyOrderInfo) SetElasticInstanceId(v string) *ConvertHybridInstanceResponseBodyOrderInfo {
+	s.ElasticInstanceId = &v
+	return s
+}
+
+func (s *ConvertHybridInstanceResponseBodyOrderInfo) SetInstanceId(v string) *ConvertHybridInstanceResponseBodyOrderInfo {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ConvertHybridInstanceResponseBodyOrderInfo) SetOrderId(v int64) *ConvertHybridInstanceResponseBodyOrderInfo {
+	s.OrderId = &v
+	return s
+}
+
+type ConvertHybridInstanceResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ConvertHybridInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ConvertHybridInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConvertHybridInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ConvertHybridInstanceResponse) SetHeaders(v map[string]*string) *ConvertHybridInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ConvertHybridInstanceResponse) SetStatusCode(v int32) *ConvertHybridInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ConvertHybridInstanceResponse) SetBody(v *ConvertHybridInstanceResponseBody) *ConvertHybridInstanceResponse {
+	s.Body = v
+	return s
+}
+
 type ConvertInstanceRequest struct {
 	// This parameter is required.
 	//
@@ -280,6 +501,106 @@ func (s *ConvertInstanceResponse) SetStatusCode(v int32) *ConvertInstanceRespons
 }
 
 func (s *ConvertInstanceResponse) SetBody(v *ConvertInstanceResponseBody) *ConvertInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type ConvertPrepayInstanceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// f-cn-wwo36qj4g06
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+}
+
+func (s ConvertPrepayInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConvertPrepayInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ConvertPrepayInstanceRequest) SetInstanceId(v string) *ConvertPrepayInstanceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ConvertPrepayInstanceRequest) SetRegion(v string) *ConvertPrepayInstanceRequest {
+	s.Region = &v
+	return s
+}
+
+type ConvertPrepayInstanceResponseBody struct {
+	// example:
+	//
+	// 210406354690749
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 67F33190-946B-1105-B6A1-E2DF0426DD51
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ConvertPrepayInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConvertPrepayInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ConvertPrepayInstanceResponseBody) SetOrderId(v int64) *ConvertPrepayInstanceResponseBody {
+	s.OrderId = &v
+	return s
+}
+
+func (s *ConvertPrepayInstanceResponseBody) SetRequestId(v string) *ConvertPrepayInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ConvertPrepayInstanceResponseBody) SetSuccess(v bool) *ConvertPrepayInstanceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ConvertPrepayInstanceResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ConvertPrepayInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ConvertPrepayInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConvertPrepayInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ConvertPrepayInstanceResponse) SetHeaders(v map[string]*string) *ConvertPrepayInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ConvertPrepayInstanceResponse) SetStatusCode(v int32) *ConvertPrepayInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ConvertPrepayInstanceResponse) SetBody(v *ConvertPrepayInstanceResponseBody) *ConvertPrepayInstanceResponse {
 	s.Body = v
 	return s
 }
@@ -3463,6 +3784,579 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 	return s
 }
 
+type ModifyElasticResourceSpecRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sc_flinkserverless_public_cn-7e22ae5sess
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// This parameter is required.
+	ResourceSpec *ModifyElasticResourceSpecRequestResourceSpec `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
+}
+
+func (s ModifyElasticResourceSpecRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyElasticResourceSpecRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyElasticResourceSpecRequest) SetInstanceId(v string) *ModifyElasticResourceSpecRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyElasticResourceSpecRequest) SetRegion(v string) *ModifyElasticResourceSpecRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *ModifyElasticResourceSpecRequest) SetResourceSpec(v *ModifyElasticResourceSpecRequestResourceSpec) *ModifyElasticResourceSpecRequest {
+	s.ResourceSpec = v
+	return s
+}
+
+type ModifyElasticResourceSpecRequestResourceSpec struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 40
+	MemoryGB *int32 `json:"MemoryGB,omitempty" xml:"MemoryGB,omitempty"`
+}
+
+func (s ModifyElasticResourceSpecRequestResourceSpec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyElasticResourceSpecRequestResourceSpec) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyElasticResourceSpecRequestResourceSpec) SetCpu(v int32) *ModifyElasticResourceSpecRequestResourceSpec {
+	s.Cpu = &v
+	return s
+}
+
+func (s *ModifyElasticResourceSpecRequestResourceSpec) SetMemoryGB(v int32) *ModifyElasticResourceSpecRequestResourceSpec {
+	s.MemoryGB = &v
+	return s
+}
+
+type ModifyElasticResourceSpecShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sc_flinkserverless_public_cn-7e22ae5sess
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// This parameter is required.
+	ResourceSpecShrink *string `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty"`
+}
+
+func (s ModifyElasticResourceSpecShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyElasticResourceSpecShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyElasticResourceSpecShrinkRequest) SetInstanceId(v string) *ModifyElasticResourceSpecShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyElasticResourceSpecShrinkRequest) SetRegion(v string) *ModifyElasticResourceSpecShrinkRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *ModifyElasticResourceSpecShrinkRequest) SetResourceSpecShrink(v string) *ModifyElasticResourceSpecShrinkRequest {
+	s.ResourceSpecShrink = &v
+	return s
+}
+
+type ModifyElasticResourceSpecResponseBody struct {
+	// example:
+	//
+	// 211473228320700
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// B21DC47E-8928-199A-9F32-36D45E4693B4
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ModifyElasticResourceSpecResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyElasticResourceSpecResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyElasticResourceSpecResponseBody) SetOrderId(v int64) *ModifyElasticResourceSpecResponseBody {
+	s.OrderId = &v
+	return s
+}
+
+func (s *ModifyElasticResourceSpecResponseBody) SetRequestId(v string) *ModifyElasticResourceSpecResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyElasticResourceSpecResponseBody) SetSuccess(v bool) *ModifyElasticResourceSpecResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ModifyElasticResourceSpecResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyElasticResourceSpecResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyElasticResourceSpecResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyElasticResourceSpecResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyElasticResourceSpecResponse) SetHeaders(v map[string]*string) *ModifyElasticResourceSpecResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyElasticResourceSpecResponse) SetStatusCode(v int32) *ModifyElasticResourceSpecResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyElasticResourceSpecResponse) SetBody(v *ModifyElasticResourceSpecResponseBody) *ModifyElasticResourceSpecResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyInstanceVswitchRequest struct {
+	HaVSwitchIds []*string `json:"HaVSwitchIds,omitempty" xml:"HaVSwitchIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sc_flinkserverless_public_cn-7e22ae****
+	InstanceId *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+}
+
+func (s ModifyInstanceVswitchRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstanceVswitchRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstanceVswitchRequest) SetHaVSwitchIds(v []*string) *ModifyInstanceVswitchRequest {
+	s.HaVSwitchIds = v
+	return s
+}
+
+func (s *ModifyInstanceVswitchRequest) SetInstanceId(v string) *ModifyInstanceVswitchRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyInstanceVswitchRequest) SetVSwitchIds(v []*string) *ModifyInstanceVswitchRequest {
+	s.VSwitchIds = v
+	return s
+}
+
+type ModifyInstanceVswitchShrinkRequest struct {
+	HaVSwitchIdsShrink *string `json:"HaVSwitchIds,omitempty" xml:"HaVSwitchIds,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sc_flinkserverless_public_cn-7e22ae****
+	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	VSwitchIdsShrink *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
+}
+
+func (s ModifyInstanceVswitchShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstanceVswitchShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstanceVswitchShrinkRequest) SetHaVSwitchIdsShrink(v string) *ModifyInstanceVswitchShrinkRequest {
+	s.HaVSwitchIdsShrink = &v
+	return s
+}
+
+func (s *ModifyInstanceVswitchShrinkRequest) SetInstanceId(v string) *ModifyInstanceVswitchShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyInstanceVswitchShrinkRequest) SetVSwitchIdsShrink(v string) *ModifyInstanceVswitchShrinkRequest {
+	s.VSwitchIdsShrink = &v
+	return s
+}
+
+type ModifyInstanceVswitchResponseBody struct {
+	// example:
+	//
+	// 67F33190-946B-1105-B6A1-E2DF0426****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// F2C5B6A8-DD04-51F5-AAD5-BA2FE6FD****
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ModifyInstanceVswitchResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstanceVswitchResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstanceVswitchResponseBody) SetRequestId(v string) *ModifyInstanceVswitchResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyInstanceVswitchResponseBody) SetResult(v string) *ModifyInstanceVswitchResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *ModifyInstanceVswitchResponseBody) SetSuccess(v bool) *ModifyInstanceVswitchResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ModifyInstanceVswitchResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyInstanceVswitchResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyInstanceVswitchResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstanceVswitchResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstanceVswitchResponse) SetHeaders(v map[string]*string) *ModifyInstanceVswitchResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyInstanceVswitchResponse) SetStatusCode(v int32) *ModifyInstanceVswitchResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyInstanceVswitchResponse) SetBody(v *ModifyInstanceVswitchResponseBody) *ModifyInstanceVswitchResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyNamespaceSpecV2Request struct {
+	ElasticResourceSpec    *ModifyNamespaceSpecV2RequestElasticResourceSpec    `json:"ElasticResourceSpec,omitempty" xml:"ElasticResourceSpec,omitempty" type:"Struct"`
+	GuaranteedResourceSpec *ModifyNamespaceSpecV2RequestGuaranteedResourceSpec `json:"GuaranteedResourceSpec,omitempty" xml:"GuaranteedResourceSpec,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// false
+	Ha *bool `json:"Ha,omitempty" xml:"Ha,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// f-cn-wwo36qj4g06
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// di-593439443804417
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+}
+
+func (s ModifyNamespaceSpecV2Request) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyNamespaceSpecV2Request) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyNamespaceSpecV2Request) SetElasticResourceSpec(v *ModifyNamespaceSpecV2RequestElasticResourceSpec) *ModifyNamespaceSpecV2Request {
+	s.ElasticResourceSpec = v
+	return s
+}
+
+func (s *ModifyNamespaceSpecV2Request) SetGuaranteedResourceSpec(v *ModifyNamespaceSpecV2RequestGuaranteedResourceSpec) *ModifyNamespaceSpecV2Request {
+	s.GuaranteedResourceSpec = v
+	return s
+}
+
+func (s *ModifyNamespaceSpecV2Request) SetHa(v bool) *ModifyNamespaceSpecV2Request {
+	s.Ha = &v
+	return s
+}
+
+func (s *ModifyNamespaceSpecV2Request) SetInstanceId(v string) *ModifyNamespaceSpecV2Request {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyNamespaceSpecV2Request) SetNamespace(v string) *ModifyNamespaceSpecV2Request {
+	s.Namespace = &v
+	return s
+}
+
+func (s *ModifyNamespaceSpecV2Request) SetRegion(v string) *ModifyNamespaceSpecV2Request {
+	s.Region = &v
+	return s
+}
+
+type ModifyNamespaceSpecV2RequestElasticResourceSpec struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 6
+	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 52
+	MemoryGB *int32 `json:"MemoryGB,omitempty" xml:"MemoryGB,omitempty"`
+}
+
+func (s ModifyNamespaceSpecV2RequestElasticResourceSpec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyNamespaceSpecV2RequestElasticResourceSpec) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyNamespaceSpecV2RequestElasticResourceSpec) SetCpu(v int32) *ModifyNamespaceSpecV2RequestElasticResourceSpec {
+	s.Cpu = &v
+	return s
+}
+
+func (s *ModifyNamespaceSpecV2RequestElasticResourceSpec) SetMemoryGB(v int32) *ModifyNamespaceSpecV2RequestElasticResourceSpec {
+	s.MemoryGB = &v
+	return s
+}
+
+type ModifyNamespaceSpecV2RequestGuaranteedResourceSpec struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 40
+	MemoryGB *int32 `json:"MemoryGB,omitempty" xml:"MemoryGB,omitempty"`
+}
+
+func (s ModifyNamespaceSpecV2RequestGuaranteedResourceSpec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyNamespaceSpecV2RequestGuaranteedResourceSpec) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyNamespaceSpecV2RequestGuaranteedResourceSpec) SetCpu(v int32) *ModifyNamespaceSpecV2RequestGuaranteedResourceSpec {
+	s.Cpu = &v
+	return s
+}
+
+func (s *ModifyNamespaceSpecV2RequestGuaranteedResourceSpec) SetMemoryGB(v int32) *ModifyNamespaceSpecV2RequestGuaranteedResourceSpec {
+	s.MemoryGB = &v
+	return s
+}
+
+type ModifyNamespaceSpecV2ShrinkRequest struct {
+	ElasticResourceSpecShrink    *string `json:"ElasticResourceSpec,omitempty" xml:"ElasticResourceSpec,omitempty"`
+	GuaranteedResourceSpecShrink *string `json:"GuaranteedResourceSpec,omitempty" xml:"GuaranteedResourceSpec,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// false
+	Ha *bool `json:"Ha,omitempty" xml:"Ha,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// f-cn-wwo36qj4g06
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// di-593439443804417
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+}
+
+func (s ModifyNamespaceSpecV2ShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyNamespaceSpecV2ShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyNamespaceSpecV2ShrinkRequest) SetElasticResourceSpecShrink(v string) *ModifyNamespaceSpecV2ShrinkRequest {
+	s.ElasticResourceSpecShrink = &v
+	return s
+}
+
+func (s *ModifyNamespaceSpecV2ShrinkRequest) SetGuaranteedResourceSpecShrink(v string) *ModifyNamespaceSpecV2ShrinkRequest {
+	s.GuaranteedResourceSpecShrink = &v
+	return s
+}
+
+func (s *ModifyNamespaceSpecV2ShrinkRequest) SetHa(v bool) *ModifyNamespaceSpecV2ShrinkRequest {
+	s.Ha = &v
+	return s
+}
+
+func (s *ModifyNamespaceSpecV2ShrinkRequest) SetInstanceId(v string) *ModifyNamespaceSpecV2ShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyNamespaceSpecV2ShrinkRequest) SetNamespace(v string) *ModifyNamespaceSpecV2ShrinkRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *ModifyNamespaceSpecV2ShrinkRequest) SetRegion(v string) *ModifyNamespaceSpecV2ShrinkRequest {
+	s.Region = &v
+	return s
+}
+
+type ModifyNamespaceSpecV2ResponseBody struct {
+	// example:
+	//
+	// 23A9C718-DDAB-1696-B025-18FBC830F7C5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ModifyNamespaceSpecV2ResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyNamespaceSpecV2ResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyNamespaceSpecV2ResponseBody) SetRequestId(v string) *ModifyNamespaceSpecV2ResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyNamespaceSpecV2ResponseBody) SetSuccess(v bool) *ModifyNamespaceSpecV2ResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ModifyNamespaceSpecV2Response struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyNamespaceSpecV2ResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyNamespaceSpecV2Response) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyNamespaceSpecV2Response) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyNamespaceSpecV2Response) SetHeaders(v map[string]*string) *ModifyNamespaceSpecV2Response {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyNamespaceSpecV2Response) SetStatusCode(v int32) *ModifyNamespaceSpecV2Response {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyNamespaceSpecV2Response) SetBody(v *ModifyNamespaceSpecV2ResponseBody) *ModifyNamespaceSpecV2Response {
+	s.Body = v
+	return s
+}
+
 type ModifyPrepayInstanceSpecRequest struct {
 	// if can be null:
 	// true
@@ -4415,6 +5309,354 @@ func (s *QueryConvertInstancePriceResponse) SetStatusCode(v int32) *QueryConvert
 }
 
 func (s *QueryConvertInstancePriceResponse) SetBody(v *QueryConvertInstancePriceResponseBody) *QueryConvertInstancePriceResponse {
+	s.Body = v
+	return s
+}
+
+type QueryConvertPrepayInstancePriceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// f-cn-wwo36qj4g06
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+}
+
+func (s QueryConvertPrepayInstancePriceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryConvertPrepayInstancePriceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryConvertPrepayInstancePriceRequest) SetInstanceId(v string) *QueryConvertPrepayInstancePriceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *QueryConvertPrepayInstancePriceRequest) SetRegion(v string) *QueryConvertPrepayInstancePriceRequest {
+	s.Region = &v
+	return s
+}
+
+type QueryConvertPrepayInstancePriceResponseBody struct {
+	PriceInfo *QueryConvertPrepayInstancePriceResponseBodyPriceInfo `json:"PriceInfo,omitempty" xml:"PriceInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// 67F33190-946B-1105-B6A1-E2DF0426DD51
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryConvertPrepayInstancePriceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryConvertPrepayInstancePriceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryConvertPrepayInstancePriceResponseBody) SetPriceInfo(v *QueryConvertPrepayInstancePriceResponseBodyPriceInfo) *QueryConvertPrepayInstancePriceResponseBody {
+	s.PriceInfo = v
+	return s
+}
+
+func (s *QueryConvertPrepayInstancePriceResponseBody) SetRequestId(v string) *QueryConvertPrepayInstancePriceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryConvertPrepayInstancePriceResponseBody) SetSuccess(v bool) *QueryConvertPrepayInstancePriceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryConvertPrepayInstancePriceResponseBodyPriceInfo struct {
+	// example:
+	//
+	// ORDER.INST_HAS_UNPAID_ORDER
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// CNY
+	Currency       *string                                                             `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	DepreciateInfo *QueryConvertPrepayInstancePriceResponseBodyPriceInfoDepreciateInfo `json:"DepreciateInfo,omitempty" xml:"DepreciateInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// 655.2
+	DiscountAmount *float32 `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
+	// example:
+	//
+	// true
+	IsContractActivity *bool `json:"IsContractActivity,omitempty" xml:"IsContractActivity,omitempty"`
+	// example:
+	//
+	// 存在未支付订单，请先支付或取消原有订单
+	Message            *string                                                                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	OptionalPromotions []*QueryConvertPrepayInstancePriceResponseBodyPriceInfoOptionalPromotions `json:"OptionalPromotions,omitempty" xml:"OptionalPromotions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 4368
+	OriginalAmount *float32                                                     `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
+	Rules          []*QueryConvertPrepayInstancePriceResponseBodyPriceInfoRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 21321
+	StandDiscountPrice *string `json:"StandDiscountPrice,omitempty" xml:"StandDiscountPrice,omitempty"`
+	// example:
+	//
+	// 32432
+	StandPrice *string `json:"StandPrice,omitempty" xml:"StandPrice,omitempty"`
+	// example:
+	//
+	// 3712.8
+	TradeAmount *float32 `json:"TradeAmount,omitempty" xml:"TradeAmount,omitempty"`
+}
+
+func (s QueryConvertPrepayInstancePriceResponseBodyPriceInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryConvertPrepayInstancePriceResponseBodyPriceInfo) GoString() string {
+	return s.String()
+}
+
+func (s *QueryConvertPrepayInstancePriceResponseBodyPriceInfo) SetCode(v string) *QueryConvertPrepayInstancePriceResponseBodyPriceInfo {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryConvertPrepayInstancePriceResponseBodyPriceInfo) SetCurrency(v string) *QueryConvertPrepayInstancePriceResponseBodyPriceInfo {
+	s.Currency = &v
+	return s
+}
+
+func (s *QueryConvertPrepayInstancePriceResponseBodyPriceInfo) SetDepreciateInfo(v *QueryConvertPrepayInstancePriceResponseBodyPriceInfoDepreciateInfo) *QueryConvertPrepayInstancePriceResponseBodyPriceInfo {
+	s.DepreciateInfo = v
+	return s
+}
+
+func (s *QueryConvertPrepayInstancePriceResponseBodyPriceInfo) SetDiscountAmount(v float32) *QueryConvertPrepayInstancePriceResponseBodyPriceInfo {
+	s.DiscountAmount = &v
+	return s
+}
+
+func (s *QueryConvertPrepayInstancePriceResponseBodyPriceInfo) SetIsContractActivity(v bool) *QueryConvertPrepayInstancePriceResponseBodyPriceInfo {
+	s.IsContractActivity = &v
+	return s
+}
+
+func (s *QueryConvertPrepayInstancePriceResponseBodyPriceInfo) SetMessage(v string) *QueryConvertPrepayInstancePriceResponseBodyPriceInfo {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryConvertPrepayInstancePriceResponseBodyPriceInfo) SetOptionalPromotions(v []*QueryConvertPrepayInstancePriceResponseBodyPriceInfoOptionalPromotions) *QueryConvertPrepayInstancePriceResponseBodyPriceInfo {
+	s.OptionalPromotions = v
+	return s
+}
+
+func (s *QueryConvertPrepayInstancePriceResponseBodyPriceInfo) SetOriginalAmount(v float32) *QueryConvertPrepayInstancePriceResponseBodyPriceInfo {
+	s.OriginalAmount = &v
+	return s
+}
+
+func (s *QueryConvertPrepayInstancePriceResponseBodyPriceInfo) SetRules(v []*QueryConvertPrepayInstancePriceResponseBodyPriceInfoRules) *QueryConvertPrepayInstancePriceResponseBodyPriceInfo {
+	s.Rules = v
+	return s
+}
+
+func (s *QueryConvertPrepayInstancePriceResponseBodyPriceInfo) SetStandDiscountPrice(v string) *QueryConvertPrepayInstancePriceResponseBodyPriceInfo {
+	s.StandDiscountPrice = &v
+	return s
+}
+
+func (s *QueryConvertPrepayInstancePriceResponseBodyPriceInfo) SetStandPrice(v string) *QueryConvertPrepayInstancePriceResponseBodyPriceInfo {
+	s.StandPrice = &v
+	return s
+}
+
+func (s *QueryConvertPrepayInstancePriceResponseBodyPriceInfo) SetTradeAmount(v float32) *QueryConvertPrepayInstancePriceResponseBodyPriceInfo {
+	s.TradeAmount = &v
+	return s
+}
+
+type QueryConvertPrepayInstancePriceResponseBodyPriceInfoDepreciateInfo struct {
+	// example:
+	//
+	// 20%
+	CheapRate *string `json:"CheapRate,omitempty" xml:"CheapRate,omitempty"`
+	// example:
+	//
+	// 8000
+	CheapStandAmount *string `json:"CheapStandAmount,omitempty" xml:"CheapStandAmount,omitempty"`
+	// example:
+	//
+	// true
+	IsShow *bool `json:"IsShow,omitempty" xml:"IsShow,omitempty"`
+	// example:
+	//
+	// 4000
+	MonthPrice *string `json:"MonthPrice,omitempty" xml:"MonthPrice,omitempty"`
+	// example:
+	//
+	// 10000
+	OriginalStandAmount *string `json:"OriginalStandAmount,omitempty" xml:"OriginalStandAmount,omitempty"`
+	// example:
+	//
+	// 2023-03-31T16:00:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s QueryConvertPrepayInstancePriceResponseBodyPriceInfoDepreciateInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryConvertPrepayInstancePriceResponseBodyPriceInfoDepreciateInfo) GoString() string {
+	return s.String()
+}
+
+func (s *QueryConvertPrepayInstancePriceResponseBodyPriceInfoDepreciateInfo) SetCheapRate(v string) *QueryConvertPrepayInstancePriceResponseBodyPriceInfoDepreciateInfo {
+	s.CheapRate = &v
+	return s
+}
+
+func (s *QueryConvertPrepayInstancePriceResponseBodyPriceInfoDepreciateInfo) SetCheapStandAmount(v string) *QueryConvertPrepayInstancePriceResponseBodyPriceInfoDepreciateInfo {
+	s.CheapStandAmount = &v
+	return s
+}
+
+func (s *QueryConvertPrepayInstancePriceResponseBodyPriceInfoDepreciateInfo) SetIsShow(v bool) *QueryConvertPrepayInstancePriceResponseBodyPriceInfoDepreciateInfo {
+	s.IsShow = &v
+	return s
+}
+
+func (s *QueryConvertPrepayInstancePriceResponseBodyPriceInfoDepreciateInfo) SetMonthPrice(v string) *QueryConvertPrepayInstancePriceResponseBodyPriceInfoDepreciateInfo {
+	s.MonthPrice = &v
+	return s
+}
+
+func (s *QueryConvertPrepayInstancePriceResponseBodyPriceInfoDepreciateInfo) SetOriginalStandAmount(v string) *QueryConvertPrepayInstancePriceResponseBodyPriceInfoDepreciateInfo {
+	s.OriginalStandAmount = &v
+	return s
+}
+
+func (s *QueryConvertPrepayInstancePriceResponseBodyPriceInfoDepreciateInfo) SetStartTime(v string) *QueryConvertPrepayInstancePriceResponseBodyPriceInfoDepreciateInfo {
+	s.StartTime = &v
+	return s
+}
+
+type QueryConvertPrepayInstancePriceResponseBodyPriceInfoOptionalPromotions struct {
+	// example:
+	//
+	// ￥1,391.5 优惠券 (有效期至 03/23/2022)
+	PromotionDesc *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
+	// example:
+	//
+	// ￥1,391.5 优惠券
+	PromotionName *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
+	// example:
+	//
+	// 500011220010099
+	PromotionOptionNo *string `json:"PromotionOptionNo,omitempty" xml:"PromotionOptionNo,omitempty"`
+	// example:
+	//
+	// true
+	Selected *bool `json:"Selected,omitempty" xml:"Selected,omitempty"`
+}
+
+func (s QueryConvertPrepayInstancePriceResponseBodyPriceInfoOptionalPromotions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryConvertPrepayInstancePriceResponseBodyPriceInfoOptionalPromotions) GoString() string {
+	return s.String()
+}
+
+func (s *QueryConvertPrepayInstancePriceResponseBodyPriceInfoOptionalPromotions) SetPromotionDesc(v string) *QueryConvertPrepayInstancePriceResponseBodyPriceInfoOptionalPromotions {
+	s.PromotionDesc = &v
+	return s
+}
+
+func (s *QueryConvertPrepayInstancePriceResponseBodyPriceInfoOptionalPromotions) SetPromotionName(v string) *QueryConvertPrepayInstancePriceResponseBodyPriceInfoOptionalPromotions {
+	s.PromotionName = &v
+	return s
+}
+
+func (s *QueryConvertPrepayInstancePriceResponseBodyPriceInfoOptionalPromotions) SetPromotionOptionNo(v string) *QueryConvertPrepayInstancePriceResponseBodyPriceInfoOptionalPromotions {
+	s.PromotionOptionNo = &v
+	return s
+}
+
+func (s *QueryConvertPrepayInstancePriceResponseBodyPriceInfoOptionalPromotions) SetSelected(v bool) *QueryConvertPrepayInstancePriceResponseBodyPriceInfoOptionalPromotions {
+	s.Selected = &v
+	return s
+}
+
+type QueryConvertPrepayInstancePriceResponseBodyPriceInfoRules struct {
+	// example:
+	//
+	// 买满1年，立享官网价格8.5折优惠。
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 587
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+}
+
+func (s QueryConvertPrepayInstancePriceResponseBodyPriceInfoRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryConvertPrepayInstancePriceResponseBodyPriceInfoRules) GoString() string {
+	return s.String()
+}
+
+func (s *QueryConvertPrepayInstancePriceResponseBodyPriceInfoRules) SetDescription(v string) *QueryConvertPrepayInstancePriceResponseBodyPriceInfoRules {
+	s.Description = &v
+	return s
+}
+
+func (s *QueryConvertPrepayInstancePriceResponseBodyPriceInfoRules) SetRuleId(v int64) *QueryConvertPrepayInstancePriceResponseBodyPriceInfoRules {
+	s.RuleId = &v
+	return s
+}
+
+type QueryConvertPrepayInstancePriceResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryConvertPrepayInstancePriceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryConvertPrepayInstancePriceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryConvertPrepayInstancePriceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryConvertPrepayInstancePriceResponse) SetHeaders(v map[string]*string) *QueryConvertPrepayInstancePriceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryConvertPrepayInstancePriceResponse) SetStatusCode(v int32) *QueryConvertPrepayInstancePriceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryConvertPrepayInstancePriceResponse) SetBody(v *QueryConvertPrepayInstancePriceResponseBody) *QueryConvertPrepayInstancePriceResponse {
 	s.Body = v
 	return s
 }
@@ -6380,6 +7622,91 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
+// 开通弹性计算
+//
+// @param tmpReq - ConvertHybridInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConvertHybridInstanceResponse
+func (client *Client) ConvertHybridInstanceWithOptions(tmpReq *ConvertHybridInstanceRequest, runtime *util.RuntimeOptions) (_result *ConvertHybridInstanceResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ConvertHybridInstanceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ResourceSpec)) {
+		request.ResourceSpecShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResourceSpec, tea.String("ResourceSpec"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceSpecShrink)) {
+		query["ResourceSpec"] = request.ResourceSpecShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ConvertHybridInstance"),
+		Version:     tea.String("2021-10-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ConvertHybridInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ConvertHybridInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 开通弹性计算
+//
+// @param request - ConvertHybridInstanceRequest
+//
+// @return ConvertHybridInstanceResponse
+func (client *Client) ConvertHybridInstance(request *ConvertHybridInstanceRequest) (_result *ConvertHybridInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ConvertHybridInstanceResponse{}
+	_body, _err := client.ConvertHybridInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 按量付费转包年包月
 //
 // @param tmpReq - ConvertInstanceRequest
@@ -6468,6 +7795,81 @@ func (client *Client) ConvertInstance(request *ConvertInstanceRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &ConvertInstanceResponse{}
 	_body, _err := client.ConvertInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 包年包月转按量付费
+//
+// @param request - ConvertPrepayInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConvertPrepayInstanceResponse
+func (client *Client) ConvertPrepayInstanceWithOptions(request *ConvertPrepayInstanceRequest, runtime *util.RuntimeOptions) (_result *ConvertPrepayInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		body["Region"] = request.Region
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ConvertPrepayInstance"),
+		Version:     tea.String("2021-10-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ConvertPrepayInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ConvertPrepayInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 包年包月转按量付费
+//
+// @param request - ConvertPrepayInstanceRequest
+//
+// @return ConvertPrepayInstanceResponse
+func (client *Client) ConvertPrepayInstance(request *ConvertPrepayInstanceRequest) (_result *ConvertPrepayInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ConvertPrepayInstanceResponse{}
+	_body, _err := client.ConvertPrepayInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7253,6 +8655,283 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 对按量弹性实例修改resource quota
+//
+// @param tmpReq - ModifyElasticResourceSpecRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyElasticResourceSpecResponse
+func (client *Client) ModifyElasticResourceSpecWithOptions(tmpReq *ModifyElasticResourceSpecRequest, runtime *util.RuntimeOptions) (_result *ModifyElasticResourceSpecResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ModifyElasticResourceSpecShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ResourceSpec)) {
+		request.ResourceSpecShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResourceSpec, tea.String("ResourceSpec"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		body["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceSpecShrink)) {
+		body["ResourceSpec"] = request.ResourceSpecShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyElasticResourceSpec"),
+		Version:     tea.String("2021-10-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyElasticResourceSpecResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyElasticResourceSpecResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 对按量弹性实例修改resource quota
+//
+// @param request - ModifyElasticResourceSpecRequest
+//
+// @return ModifyElasticResourceSpecResponse
+func (client *Client) ModifyElasticResourceSpec(request *ModifyElasticResourceSpecRequest) (_result *ModifyElasticResourceSpecResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyElasticResourceSpecResponse{}
+	_body, _err := client.ModifyElasticResourceSpecWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改集群交换机
+//
+// @param tmpReq - ModifyInstanceVswitchRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyInstanceVswitchResponse
+func (client *Client) ModifyInstanceVswitchWithOptions(tmpReq *ModifyInstanceVswitchRequest, runtime *util.RuntimeOptions) (_result *ModifyInstanceVswitchResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ModifyInstanceVswitchShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.HaVSwitchIds)) {
+		request.HaVSwitchIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.HaVSwitchIds, tea.String("HaVSwitchIds"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.VSwitchIds)) {
+		request.VSwitchIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.VSwitchIds, tea.String("VSwitchIds"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HaVSwitchIdsShrink)) {
+		body["HaVSwitchIds"] = request.HaVSwitchIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitchIdsShrink)) {
+		body["VSwitchIds"] = request.VSwitchIdsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyInstanceVswitch"),
+		Version:     tea.String("2021-10-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyInstanceVswitchResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyInstanceVswitchResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 修改集群交换机
+//
+// @param request - ModifyInstanceVswitchRequest
+//
+// @return ModifyInstanceVswitchResponse
+func (client *Client) ModifyInstanceVswitch(request *ModifyInstanceVswitchRequest) (_result *ModifyInstanceVswitchResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyInstanceVswitchResponse{}
+	_body, _err := client.ModifyInstanceVswitchWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改namespace资源，包含按量和包年包月、混合计费
+//
+// @param tmpReq - ModifyNamespaceSpecV2Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyNamespaceSpecV2Response
+func (client *Client) ModifyNamespaceSpecV2WithOptions(tmpReq *ModifyNamespaceSpecV2Request, runtime *util.RuntimeOptions) (_result *ModifyNamespaceSpecV2Response, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ModifyNamespaceSpecV2ShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ElasticResourceSpec)) {
+		request.ElasticResourceSpecShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ElasticResourceSpec, tea.String("ElasticResourceSpec"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.GuaranteedResourceSpec)) {
+		request.GuaranteedResourceSpecShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.GuaranteedResourceSpec, tea.String("GuaranteedResourceSpec"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Ha)) {
+		query["Ha"] = request.Ha
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ElasticResourceSpecShrink)) {
+		body["ElasticResourceSpec"] = request.ElasticResourceSpecShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GuaranteedResourceSpecShrink)) {
+		body["GuaranteedResourceSpec"] = request.GuaranteedResourceSpecShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		body["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		body["Region"] = request.Region
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyNamespaceSpecV2"),
+		Version:     tea.String("2021-10-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyNamespaceSpecV2Response{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyNamespaceSpecV2Response{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 修改namespace资源，包含按量和包年包月、混合计费
+//
+// @param request - ModifyNamespaceSpecV2Request
+//
+// @return ModifyNamespaceSpecV2Response
+func (client *Client) ModifyNamespaceSpecV2(request *ModifyNamespaceSpecV2Request) (_result *ModifyNamespaceSpecV2Response, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyNamespaceSpecV2Response{}
+	_body, _err := client.ModifyNamespaceSpecV2WithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // Deprecated: OpenAPI ModifyPrepayInstanceSpec is deprecated, please use foasconsole::2021-10-28::ModifyInstanceSpec instead.
 //
 // Summary:
@@ -7553,6 +9232,81 @@ func (client *Client) QueryConvertInstancePrice(request *QueryConvertInstancePri
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryConvertInstancePriceResponse{}
 	_body, _err := client.QueryConvertInstancePriceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 包年包月转按量付费询价
+//
+// @param request - QueryConvertPrepayInstancePriceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryConvertPrepayInstancePriceResponse
+func (client *Client) QueryConvertPrepayInstancePriceWithOptions(request *QueryConvertPrepayInstancePriceRequest, runtime *util.RuntimeOptions) (_result *QueryConvertPrepayInstancePriceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		body["Region"] = request.Region
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryConvertPrepayInstancePrice"),
+		Version:     tea.String("2021-10-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &QueryConvertPrepayInstancePriceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &QueryConvertPrepayInstancePriceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 包年包月转按量付费询价
+//
+// @param request - QueryConvertPrepayInstancePriceRequest
+//
+// @return QueryConvertPrepayInstancePriceResponse
+func (client *Client) QueryConvertPrepayInstancePrice(request *QueryConvertPrepayInstancePriceRequest) (_result *QueryConvertPrepayInstancePriceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryConvertPrepayInstancePriceResponse{}
+	_body, _err := client.QueryConvertPrepayInstancePriceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
