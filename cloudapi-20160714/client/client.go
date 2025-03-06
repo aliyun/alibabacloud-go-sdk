@@ -738,6 +738,119 @@ func (s *AttachApiProductResponse) SetBody(v *AttachApiProductResponseBody) *Att
 	return s
 }
 
+type AttachGroupPluginRequest struct {
+	// The ID of the API group.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 08ae4aa0f95e4321849ee57f4e0b3077
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the plug-in to be bound.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 05df2b52a3644a3a8b1935ab8ab59e9d
+	PluginId      *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The environment in which the API is requested. Valid values:
+	//
+	// 	- **RELEASE**: the production environment
+	//
+	// 	- **PRE**: the pre-release environment
+	//
+	// 	- **TEST**: the test environment
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// RELEASE
+	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+}
+
+func (s AttachGroupPluginRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachGroupPluginRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AttachGroupPluginRequest) SetGroupId(v string) *AttachGroupPluginRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *AttachGroupPluginRequest) SetPluginId(v string) *AttachGroupPluginRequest {
+	s.PluginId = &v
+	return s
+}
+
+func (s *AttachGroupPluginRequest) SetSecurityToken(v string) *AttachGroupPluginRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *AttachGroupPluginRequest) SetStageName(v string) *AttachGroupPluginRequest {
+	s.StageName = &v
+	return s
+}
+
+type AttachGroupPluginResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// D6E46F10-F26C-4AA0-BB69-FE2743D9AE62
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AttachGroupPluginResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachGroupPluginResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AttachGroupPluginResponseBody) SetRequestId(v string) *AttachGroupPluginResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AttachGroupPluginResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AttachGroupPluginResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AttachGroupPluginResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachGroupPluginResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AttachGroupPluginResponse) SetHeaders(v map[string]*string) *AttachGroupPluginResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AttachGroupPluginResponse) SetStatusCode(v int32) *AttachGroupPluginResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AttachGroupPluginResponse) SetBody(v *AttachGroupPluginResponseBody) *AttachGroupPluginResponse {
+	s.Body = v
+	return s
+}
+
 type AttachPluginRequest struct {
 	// The number of the API to be bound.
 	//
@@ -32205,6 +32318,293 @@ func (s *DescribePluginApisResponse) SetBody(v *DescribePluginApisResponseBody) 
 	return s
 }
 
+type DescribePluginGroupsRequest struct {
+	// API group description
+	//
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// API group ID
+	//
+	// example:
+	//
+	// 8cc2a3cbe3394524b6e71be5db9b02a3
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// API group name
+	//
+	// example:
+	//
+	// crm_custom_service
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// Pagination parameter: current page number
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Pagination parameter: number of items per page
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// API Gateway plugin ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1f3bde29b43d4d53989248327ff737f2
+	PluginId      *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s DescribePluginGroupsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePluginGroupsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePluginGroupsRequest) SetDescription(v string) *DescribePluginGroupsRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribePluginGroupsRequest) SetGroupId(v string) *DescribePluginGroupsRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *DescribePluginGroupsRequest) SetGroupName(v string) *DescribePluginGroupsRequest {
+	s.GroupName = &v
+	return s
+}
+
+func (s *DescribePluginGroupsRequest) SetPageNumber(v int32) *DescribePluginGroupsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribePluginGroupsRequest) SetPageSize(v int32) *DescribePluginGroupsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribePluginGroupsRequest) SetPluginId(v string) *DescribePluginGroupsRequest {
+	s.PluginId = &v
+	return s
+}
+
+func (s *DescribePluginGroupsRequest) SetSecurityToken(v string) *DescribePluginGroupsRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type DescribePluginGroupsResponseBody struct {
+	// Collection of group information
+	GroupSummarys *DescribePluginGroupsResponseBodyGroupSummarys `json:"GroupSummarys,omitempty" xml:"GroupSummarys,omitempty" type:"Struct"`
+	// Pagination parameter: current page number
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Pagination parameter: number of items per page, default value 10
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Request ID
+	//
+	// example:
+	//
+	// 765BC99E-F583-5A80-9A42-42AC125C2CDC
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total number of returned results
+	//
+	// example:
+	//
+	// 20
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribePluginGroupsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePluginGroupsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePluginGroupsResponseBody) SetGroupSummarys(v *DescribePluginGroupsResponseBodyGroupSummarys) *DescribePluginGroupsResponseBody {
+	s.GroupSummarys = v
+	return s
+}
+
+func (s *DescribePluginGroupsResponseBody) SetPageNumber(v int32) *DescribePluginGroupsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribePluginGroupsResponseBody) SetPageSize(v int32) *DescribePluginGroupsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribePluginGroupsResponseBody) SetRequestId(v string) *DescribePluginGroupsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribePluginGroupsResponseBody) SetTotalCount(v int32) *DescribePluginGroupsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribePluginGroupsResponseBodyGroupSummarys struct {
+	GroupPluginSummary []*DescribePluginGroupsResponseBodyGroupSummarysGroupPluginSummary `json:"GroupPluginSummary,omitempty" xml:"GroupPluginSummary,omitempty" type:"Repeated"`
+}
+
+func (s DescribePluginGroupsResponseBodyGroupSummarys) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePluginGroupsResponseBodyGroupSummarys) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePluginGroupsResponseBodyGroupSummarys) SetGroupPluginSummary(v []*DescribePluginGroupsResponseBodyGroupSummarysGroupPluginSummary) *DescribePluginGroupsResponseBodyGroupSummarys {
+	s.GroupPluginSummary = v
+	return s
+}
+
+type DescribePluginGroupsResponseBodyGroupSummarysGroupPluginSummary struct {
+	// API root path
+	//
+	// example:
+	//
+	// /rpew
+	BasePath *string `json:"BasePath,omitempty" xml:"BasePath,omitempty"`
+	// Description
+	//
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// API group ID
+	//
+	// example:
+	//
+	// 4ed31575e2de43de8c51eb1217a1f56b
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// API group name
+	//
+	// example:
+	//
+	// ECP_API
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// Region ID where the API group is located
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Stage name Alias
+	//
+	// example:
+	//
+	// DEV
+	StageAlias *string `json:"StageAlias,omitempty" xml:"StageAlias,omitempty"`
+	// Environment name, possible values:
+	//
+	// - **RELEASE**: Production
+	//
+	// - **PRE**: Pre-release
+	//
+	// - **TEST**: Testing
+	//
+	// example:
+	//
+	// RELEASE
+	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+}
+
+func (s DescribePluginGroupsResponseBodyGroupSummarysGroupPluginSummary) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePluginGroupsResponseBodyGroupSummarysGroupPluginSummary) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePluginGroupsResponseBodyGroupSummarysGroupPluginSummary) SetBasePath(v string) *DescribePluginGroupsResponseBodyGroupSummarysGroupPluginSummary {
+	s.BasePath = &v
+	return s
+}
+
+func (s *DescribePluginGroupsResponseBodyGroupSummarysGroupPluginSummary) SetDescription(v string) *DescribePluginGroupsResponseBodyGroupSummarysGroupPluginSummary {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribePluginGroupsResponseBodyGroupSummarysGroupPluginSummary) SetGroupId(v string) *DescribePluginGroupsResponseBodyGroupSummarysGroupPluginSummary {
+	s.GroupId = &v
+	return s
+}
+
+func (s *DescribePluginGroupsResponseBodyGroupSummarysGroupPluginSummary) SetGroupName(v string) *DescribePluginGroupsResponseBodyGroupSummarysGroupPluginSummary {
+	s.GroupName = &v
+	return s
+}
+
+func (s *DescribePluginGroupsResponseBodyGroupSummarysGroupPluginSummary) SetRegionId(v string) *DescribePluginGroupsResponseBodyGroupSummarysGroupPluginSummary {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribePluginGroupsResponseBodyGroupSummarysGroupPluginSummary) SetStageAlias(v string) *DescribePluginGroupsResponseBodyGroupSummarysGroupPluginSummary {
+	s.StageAlias = &v
+	return s
+}
+
+func (s *DescribePluginGroupsResponseBodyGroupSummarysGroupPluginSummary) SetStageName(v string) *DescribePluginGroupsResponseBodyGroupSummarysGroupPluginSummary {
+	s.StageName = &v
+	return s
+}
+
+type DescribePluginGroupsResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribePluginGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribePluginGroupsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePluginGroupsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePluginGroupsResponse) SetHeaders(v map[string]*string) *DescribePluginGroupsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribePluginGroupsResponse) SetStatusCode(v int32) *DescribePluginGroupsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribePluginGroupsResponse) SetBody(v *DescribePluginGroupsResponseBody) *DescribePluginGroupsResponse {
+	s.Body = v
+	return s
+}
+
 type DescribePluginSchemasRequest struct {
 	// example:
 	//
@@ -33216,6 +33616,284 @@ func (s *DescribePluginsByApiResponse) SetStatusCode(v int32) *DescribePluginsBy
 }
 
 func (s *DescribePluginsByApiResponse) SetBody(v *DescribePluginsByApiResponseBody) *DescribePluginsByApiResponse {
+	s.Body = v
+	return s
+}
+
+type DescribePluginsByGroupRequest struct {
+	// Group ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 08ae4aa0f95e4321849ee57f4e0b3077
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// Pagination parameter: current page number
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Pagination parameter: number of items per page.
+	//
+	// example:
+	//
+	// 10
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// Specifies the environment of the API to operate on.
+	//
+	// - **RELEASE**: Production
+	//
+	// - **PRE**: Pre-release
+	//
+	// - **TEST**: Test
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// RELEASE
+	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+}
+
+func (s DescribePluginsByGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePluginsByGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePluginsByGroupRequest) SetGroupId(v string) *DescribePluginsByGroupRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *DescribePluginsByGroupRequest) SetPageNumber(v int32) *DescribePluginsByGroupRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribePluginsByGroupRequest) SetPageSize(v int32) *DescribePluginsByGroupRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribePluginsByGroupRequest) SetSecurityToken(v string) *DescribePluginsByGroupRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *DescribePluginsByGroupRequest) SetStageName(v string) *DescribePluginsByGroupRequest {
+	s.StageName = &v
+	return s
+}
+
+type DescribePluginsByGroupResponseBody struct {
+	// Pagination parameter: current page number
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Pagination parameter: number of items per page.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Returns information about the plugins
+	Plugins *DescribePluginsByGroupResponseBodyPlugins `json:"Plugins,omitempty" xml:"Plugins,omitempty" type:"Struct"`
+	// Request ID
+	//
+	// example:
+	//
+	// 5F5574BA-F22B-563D-841E-C817964F517F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total number of results returned
+	//
+	// example:
+	//
+	// 32
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribePluginsByGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePluginsByGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePluginsByGroupResponseBody) SetPageNumber(v int32) *DescribePluginsByGroupResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribePluginsByGroupResponseBody) SetPageSize(v int32) *DescribePluginsByGroupResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribePluginsByGroupResponseBody) SetPlugins(v *DescribePluginsByGroupResponseBodyPlugins) *DescribePluginsByGroupResponseBody {
+	s.Plugins = v
+	return s
+}
+
+func (s *DescribePluginsByGroupResponseBody) SetRequestId(v string) *DescribePluginsByGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribePluginsByGroupResponseBody) SetTotalCount(v int32) *DescribePluginsByGroupResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribePluginsByGroupResponseBodyPlugins struct {
+	PluginAttribute []*DescribePluginsByGroupResponseBodyPluginsPluginAttribute `json:"PluginAttribute,omitempty" xml:"PluginAttribute,omitempty" type:"Repeated"`
+}
+
+func (s DescribePluginsByGroupResponseBodyPlugins) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePluginsByGroupResponseBodyPlugins) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePluginsByGroupResponseBodyPlugins) SetPluginAttribute(v []*DescribePluginsByGroupResponseBodyPluginsPluginAttribute) *DescribePluginsByGroupResponseBodyPlugins {
+	s.PluginAttribute = v
+	return s
+}
+
+type DescribePluginsByGroupResponseBodyPluginsPluginAttribute struct {
+	// Creation time, in GMT
+	//
+	// example:
+	//
+	// 2024-12-20T02:05:57Z
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// Plugin description
+	//
+	// example:
+	//
+	// traffic controll
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Last modified time, in GMT
+	//
+	// example:
+	//
+	// 2022-03-15T02:30:18Z
+	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// Plugin definition statement
+	//
+	// example:
+	//
+	// {\\"unit\\":\\"MINUTE\\",\\"apiDefault\\":20}
+	PluginData *string `json:"PluginData,omitempty" xml:"PluginData,omitempty"`
+	// Plugin ID
+	//
+	// example:
+	//
+	// 5e204eeb4aa94c919a49f471ad3fc716
+	PluginId *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
+	// Plugin name
+	//
+	// example:
+	//
+	// firstPlugin
+	PluginName *string `json:"PluginName,omitempty" xml:"PluginName,omitempty"`
+	// Plugin type
+	//
+	// example:
+	//
+	// trafficControl
+	PluginType *string `json:"PluginType,omitempty" xml:"PluginType,omitempty"`
+	// 插件所在Region
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribePluginsByGroupResponseBodyPluginsPluginAttribute) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePluginsByGroupResponseBodyPluginsPluginAttribute) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePluginsByGroupResponseBodyPluginsPluginAttribute) SetCreatedTime(v string) *DescribePluginsByGroupResponseBodyPluginsPluginAttribute {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *DescribePluginsByGroupResponseBodyPluginsPluginAttribute) SetDescription(v string) *DescribePluginsByGroupResponseBodyPluginsPluginAttribute {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribePluginsByGroupResponseBodyPluginsPluginAttribute) SetModifiedTime(v string) *DescribePluginsByGroupResponseBodyPluginsPluginAttribute {
+	s.ModifiedTime = &v
+	return s
+}
+
+func (s *DescribePluginsByGroupResponseBodyPluginsPluginAttribute) SetPluginData(v string) *DescribePluginsByGroupResponseBodyPluginsPluginAttribute {
+	s.PluginData = &v
+	return s
+}
+
+func (s *DescribePluginsByGroupResponseBodyPluginsPluginAttribute) SetPluginId(v string) *DescribePluginsByGroupResponseBodyPluginsPluginAttribute {
+	s.PluginId = &v
+	return s
+}
+
+func (s *DescribePluginsByGroupResponseBodyPluginsPluginAttribute) SetPluginName(v string) *DescribePluginsByGroupResponseBodyPluginsPluginAttribute {
+	s.PluginName = &v
+	return s
+}
+
+func (s *DescribePluginsByGroupResponseBodyPluginsPluginAttribute) SetPluginType(v string) *DescribePluginsByGroupResponseBodyPluginsPluginAttribute {
+	s.PluginType = &v
+	return s
+}
+
+func (s *DescribePluginsByGroupResponseBodyPluginsPluginAttribute) SetRegionId(v string) *DescribePluginsByGroupResponseBodyPluginsPluginAttribute {
+	s.RegionId = &v
+	return s
+}
+
+type DescribePluginsByGroupResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribePluginsByGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribePluginsByGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePluginsByGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePluginsByGroupResponse) SetHeaders(v map[string]*string) *DescribePluginsByGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribePluginsByGroupResponse) SetStatusCode(v int32) *DescribePluginsByGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribePluginsByGroupResponse) SetBody(v *DescribePluginsByGroupResponseBody) *DescribePluginsByGroupResponse {
 	s.Body = v
 	return s
 }
@@ -36594,6 +37272,119 @@ func (s *DetachApiProductResponse) SetStatusCode(v int32) *DetachApiProductRespo
 }
 
 func (s *DetachApiProductResponse) SetBody(v *DetachApiProductResponseBody) *DetachApiProductResponse {
+	s.Body = v
+	return s
+}
+
+type DetachGroupPluginRequest struct {
+	// API group ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0009db9c828549768a200320714b8930
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// API Gateway plugin ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a96926e82f994915a8da40a119374537
+	PluginId      *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// Specify the environment of the API to operate on.
+	//
+	// - **RELEASE**: Production
+	//
+	// - **PRE**: Pre-release
+	//
+	// - **TEST**: Test
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// RELEASE
+	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+}
+
+func (s DetachGroupPluginRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachGroupPluginRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetachGroupPluginRequest) SetGroupId(v string) *DetachGroupPluginRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *DetachGroupPluginRequest) SetPluginId(v string) *DetachGroupPluginRequest {
+	s.PluginId = &v
+	return s
+}
+
+func (s *DetachGroupPluginRequest) SetSecurityToken(v string) *DetachGroupPluginRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *DetachGroupPluginRequest) SetStageName(v string) *DetachGroupPluginRequest {
+	s.StageName = &v
+	return s
+}
+
+type DetachGroupPluginResponseBody struct {
+	// Request ID
+	//
+	// example:
+	//
+	// 3707E6FA-749C-5352-B72A-ABE95D9DEA49
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DetachGroupPluginResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachGroupPluginResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DetachGroupPluginResponseBody) SetRequestId(v string) *DetachGroupPluginResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DetachGroupPluginResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DetachGroupPluginResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DetachGroupPluginResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachGroupPluginResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DetachGroupPluginResponse) SetHeaders(v map[string]*string) *DetachGroupPluginResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DetachGroupPluginResponse) SetStatusCode(v int32) *DetachGroupPluginResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DetachGroupPluginResponse) SetBody(v *DetachGroupPluginResponseBody) *DetachGroupPluginResponse {
 	s.Body = v
 	return s
 }
@@ -49553,6 +50344,89 @@ func (client *Client) AttachApiProduct(request *AttachApiProductRequest) (_resul
 
 // Summary:
 //
+// Attach plugin to API group.
+//
+// @param request - AttachGroupPluginRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AttachGroupPluginResponse
+func (client *Client) AttachGroupPluginWithOptions(request *AttachGroupPluginRequest, runtime *util.RuntimeOptions) (_result *AttachGroupPluginResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PluginId)) {
+		query["PluginId"] = request.PluginId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StageName)) {
+		query["StageName"] = request.StageName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AttachGroupPlugin"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AttachGroupPluginResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AttachGroupPluginResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Attach plugin to API group.
+//
+// @param request - AttachGroupPluginRequest
+//
+// @return AttachGroupPluginResponse
+func (client *Client) AttachGroupPlugin(request *AttachGroupPluginRequest) (_result *AttachGroupPluginResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AttachGroupPluginResponse{}
+	_body, _err := client.AttachGroupPluginWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Binds a plug-in to an API.
 //
 // Description:
@@ -60369,6 +61243,101 @@ func (client *Client) DescribePluginApis(request *DescribePluginApisRequest) (_r
 
 // Summary:
 //
+// Query the list of groups bound to a plugin based on the plugin ID
+//
+// @param request - DescribePluginGroupsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePluginGroupsResponse
+func (client *Client) DescribePluginGroupsWithOptions(request *DescribePluginGroupsRequest, runtime *util.RuntimeOptions) (_result *DescribePluginGroupsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PluginId)) {
+		query["PluginId"] = request.PluginId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribePluginGroups"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribePluginGroupsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribePluginGroupsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Query the list of groups bound to a plugin based on the plugin ID
+//
+// @param request - DescribePluginGroupsRequest
+//
+// @return DescribePluginGroupsResponse
+func (client *Client) DescribePluginGroups(request *DescribePluginGroupsRequest) (_result *DescribePluginGroupsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribePluginGroupsResponse{}
+	_body, _err := client.DescribePluginGroupsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询插件列表
 //
 // @param request - DescribePluginSchemasRequest
@@ -60732,6 +61701,93 @@ func (client *Client) DescribePluginsByApi(request *DescribePluginsByApiRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePluginsByApiResponse{}
 	_body, _err := client.DescribePluginsByApiWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Query Plugins Bound to API Group
+//
+// @param request - DescribePluginsByGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePluginsByGroupResponse
+func (client *Client) DescribePluginsByGroupWithOptions(request *DescribePluginsByGroupRequest, runtime *util.RuntimeOptions) (_result *DescribePluginsByGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StageName)) {
+		query["StageName"] = request.StageName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribePluginsByGroup"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribePluginsByGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribePluginsByGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Query Plugins Bound to API Group
+//
+// @param request - DescribePluginsByGroupRequest
+//
+// @return DescribePluginsByGroupResponse
+func (client *Client) DescribePluginsByGroup(request *DescribePluginsByGroupRequest) (_result *DescribePluginsByGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribePluginsByGroupResponse{}
+	_body, _err := client.DescribePluginsByGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -62033,6 +63089,89 @@ func (client *Client) DetachApiProduct(request *DetachApiProductRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &DetachApiProductResponse{}
 	_body, _err := client.DetachApiProductWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Unbind group plugin
+//
+// @param request - DetachGroupPluginRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DetachGroupPluginResponse
+func (client *Client) DetachGroupPluginWithOptions(request *DetachGroupPluginRequest, runtime *util.RuntimeOptions) (_result *DetachGroupPluginResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PluginId)) {
+		query["PluginId"] = request.PluginId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StageName)) {
+		query["StageName"] = request.StageName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DetachGroupPlugin"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DetachGroupPluginResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DetachGroupPluginResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Unbind group plugin
+//
+// @param request - DetachGroupPluginRequest
+//
+// @return DetachGroupPluginResponse
+func (client *Client) DetachGroupPlugin(request *DetachGroupPluginRequest) (_result *DetachGroupPluginResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DetachGroupPluginResponse{}
+	_body, _err := client.DetachGroupPluginWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
