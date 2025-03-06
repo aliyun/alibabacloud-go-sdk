@@ -2280,7 +2280,8 @@ type DescribeEaisResponseBodyInstancesInstance struct {
 	// example:
 	//
 	// http://121.41.**.24:8888
-	JupyterUrl *string `json:"JupyterUrl,omitempty" xml:"JupyterUrl,omitempty"`
+	JupyterUrl  *string `json:"JupyterUrl,omitempty" xml:"JupyterUrl,omitempty"`
+	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
 	// example:
 	//
 	// cn-shenzhen
@@ -2361,6 +2362,11 @@ func (s *DescribeEaisResponseBodyInstancesInstance) SetInstanceType(v string) *D
 
 func (s *DescribeEaisResponseBodyInstancesInstance) SetJupyterUrl(v string) *DescribeEaisResponseBodyInstancesInstance {
 	s.JupyterUrl = &v
+	return s
+}
+
+func (s *DescribeEaisResponseBodyInstancesInstance) SetPaymentType(v string) *DescribeEaisResponseBodyInstancesInstance {
+	s.PaymentType = &v
 	return s
 }
 
