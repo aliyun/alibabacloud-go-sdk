@@ -3454,6 +3454,7 @@ type CreateDocumentCollectionRequest struct {
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Dimension    *int32  `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
 	// The vectorization algorithm.
 	//
 	// >  Supported algorithms:
@@ -3625,6 +3626,11 @@ func (s *CreateDocumentCollectionRequest) SetCollection(v string) *CreateDocumen
 
 func (s *CreateDocumentCollectionRequest) SetDBInstanceId(v string) *CreateDocumentCollectionRequest {
 	s.DBInstanceId = &v
+	return s
+}
+
+func (s *CreateDocumentCollectionRequest) SetDimension(v int32) *CreateDocumentCollectionRequest {
+	s.Dimension = &v
 	return s
 }
 
@@ -48906,6 +48912,10 @@ func (client *Client) CreateDocumentCollectionWithOptions(request *CreateDocumen
 
 	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
 		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Dimension)) {
+		query["Dimension"] = request.Dimension
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EmbeddingModel)) {
