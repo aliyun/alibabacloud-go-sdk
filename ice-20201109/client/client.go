@@ -164,12 +164,15 @@ type AIAgentTemplateConfigAvatarChat3D struct {
 	EnableVoiceInterrupt     *bool                                          `json:"EnableVoiceInterrupt,omitempty" xml:"EnableVoiceInterrupt,omitempty"`
 	GracefulShutdown         *bool                                          `json:"GracefulShutdown,omitempty" xml:"GracefulShutdown,omitempty"`
 	Greeting                 *string                                        `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
+	InterruptWords           []*string                                      `json:"InterruptWords,omitempty" xml:"InterruptWords,omitempty" type:"Repeated"`
 	LlmHistory               []*AIAgentTemplateConfigAvatarChat3DLlmHistory `json:"LlmHistory,omitempty" xml:"LlmHistory,omitempty" type:"Repeated"`
 	LlmHistoryLimit          *int32                                         `json:"LlmHistoryLimit,omitempty" xml:"LlmHistoryLimit,omitempty"`
+	LlmSystemPrompt          *string                                        `json:"LlmSystemPrompt,omitempty" xml:"LlmSystemPrompt,omitempty"`
 	MaxIdleTime              *int32                                         `json:"MaxIdleTime,omitempty" xml:"MaxIdleTime,omitempty"`
 	UseVoiceprint            *bool                                          `json:"UseVoiceprint,omitempty" xml:"UseVoiceprint,omitempty"`
 	UserOfflineTimeout       *int32                                         `json:"UserOfflineTimeout,omitempty" xml:"UserOfflineTimeout,omitempty"`
 	UserOnlineTimeout        *int32                                         `json:"UserOnlineTimeout,omitempty" xml:"UserOnlineTimeout,omitempty"`
+	VadLevel                 *int32                                         `json:"VadLevel,omitempty" xml:"VadLevel,omitempty"`
 	VoiceId                  *string                                        `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
 	VoiceIdList              []*string                                      `json:"VoiceIdList,omitempty" xml:"VoiceIdList,omitempty" type:"Repeated"`
 	VoiceprintId             *string                                        `json:"VoiceprintId,omitempty" xml:"VoiceprintId,omitempty"`
@@ -231,6 +234,11 @@ func (s *AIAgentTemplateConfigAvatarChat3D) SetGreeting(v string) *AIAgentTempla
 	return s
 }
 
+func (s *AIAgentTemplateConfigAvatarChat3D) SetInterruptWords(v []*string) *AIAgentTemplateConfigAvatarChat3D {
+	s.InterruptWords = v
+	return s
+}
+
 func (s *AIAgentTemplateConfigAvatarChat3D) SetLlmHistory(v []*AIAgentTemplateConfigAvatarChat3DLlmHistory) *AIAgentTemplateConfigAvatarChat3D {
 	s.LlmHistory = v
 	return s
@@ -238,6 +246,11 @@ func (s *AIAgentTemplateConfigAvatarChat3D) SetLlmHistory(v []*AIAgentTemplateCo
 
 func (s *AIAgentTemplateConfigAvatarChat3D) SetLlmHistoryLimit(v int32) *AIAgentTemplateConfigAvatarChat3D {
 	s.LlmHistoryLimit = &v
+	return s
+}
+
+func (s *AIAgentTemplateConfigAvatarChat3D) SetLlmSystemPrompt(v string) *AIAgentTemplateConfigAvatarChat3D {
+	s.LlmSystemPrompt = &v
 	return s
 }
 
@@ -258,6 +271,11 @@ func (s *AIAgentTemplateConfigAvatarChat3D) SetUserOfflineTimeout(v int32) *AIAg
 
 func (s *AIAgentTemplateConfigAvatarChat3D) SetUserOnlineTimeout(v int32) *AIAgentTemplateConfigAvatarChat3D {
 	s.UserOnlineTimeout = &v
+	return s
+}
+
+func (s *AIAgentTemplateConfigAvatarChat3D) SetVadLevel(v int32) *AIAgentTemplateConfigAvatarChat3D {
+	s.VadLevel = &v
 	return s
 }
 
@@ -323,12 +341,15 @@ type AIAgentTemplateConfigVisionChat struct {
 	EnableVoiceInterrupt     *bool                                        `json:"EnableVoiceInterrupt,omitempty" xml:"EnableVoiceInterrupt,omitempty"`
 	GracefulShutdown         *bool                                        `json:"GracefulShutdown,omitempty" xml:"GracefulShutdown,omitempty"`
 	Greeting                 *string                                      `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
+	InterruptWords           []*string                                    `json:"InterruptWords,omitempty" xml:"InterruptWords,omitempty" type:"Repeated"`
 	LlmHistory               []*AIAgentTemplateConfigVisionChatLlmHistory `json:"LlmHistory,omitempty" xml:"LlmHistory,omitempty" type:"Repeated"`
 	LlmHistoryLimit          *int32                                       `json:"LlmHistoryLimit,omitempty" xml:"LlmHistoryLimit,omitempty"`
+	LlmSystemPrompt          *string                                      `json:"LlmSystemPrompt,omitempty" xml:"LlmSystemPrompt,omitempty"`
 	MaxIdleTime              *int32                                       `json:"MaxIdleTime,omitempty" xml:"MaxIdleTime,omitempty"`
 	UseVoiceprint            *bool                                        `json:"UseVoiceprint,omitempty" xml:"UseVoiceprint,omitempty"`
 	UserOfflineTimeout       *int32                                       `json:"UserOfflineTimeout,omitempty" xml:"UserOfflineTimeout,omitempty"`
 	UserOnlineTimeout        *int32                                       `json:"UserOnlineTimeout,omitempty" xml:"UserOnlineTimeout,omitempty"`
+	VadLevel                 *int32                                       `json:"VadLevel,omitempty" xml:"VadLevel,omitempty"`
 	VoiceId                  *string                                      `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
 	VoiceIdList              []*string                                    `json:"VoiceIdList,omitempty" xml:"VoiceIdList,omitempty" type:"Repeated"`
 	VoiceprintId             *string                                      `json:"VoiceprintId,omitempty" xml:"VoiceprintId,omitempty"`
@@ -385,6 +406,11 @@ func (s *AIAgentTemplateConfigVisionChat) SetGreeting(v string) *AIAgentTemplate
 	return s
 }
 
+func (s *AIAgentTemplateConfigVisionChat) SetInterruptWords(v []*string) *AIAgentTemplateConfigVisionChat {
+	s.InterruptWords = v
+	return s
+}
+
 func (s *AIAgentTemplateConfigVisionChat) SetLlmHistory(v []*AIAgentTemplateConfigVisionChatLlmHistory) *AIAgentTemplateConfigVisionChat {
 	s.LlmHistory = v
 	return s
@@ -392,6 +418,11 @@ func (s *AIAgentTemplateConfigVisionChat) SetLlmHistory(v []*AIAgentTemplateConf
 
 func (s *AIAgentTemplateConfigVisionChat) SetLlmHistoryLimit(v int32) *AIAgentTemplateConfigVisionChat {
 	s.LlmHistoryLimit = &v
+	return s
+}
+
+func (s *AIAgentTemplateConfigVisionChat) SetLlmSystemPrompt(v string) *AIAgentTemplateConfigVisionChat {
+	s.LlmSystemPrompt = &v
 	return s
 }
 
@@ -412,6 +443,11 @@ func (s *AIAgentTemplateConfigVisionChat) SetUserOfflineTimeout(v int32) *AIAgen
 
 func (s *AIAgentTemplateConfigVisionChat) SetUserOnlineTimeout(v int32) *AIAgentTemplateConfigVisionChat {
 	s.UserOnlineTimeout = &v
+	return s
+}
+
+func (s *AIAgentTemplateConfigVisionChat) SetVadLevel(v int32) *AIAgentTemplateConfigVisionChat {
+	s.VadLevel = &v
 	return s
 }
 
@@ -479,12 +515,15 @@ type AIAgentTemplateConfigVoiceChat struct {
 	EnableVoiceInterrupt     *bool                                       `json:"EnableVoiceInterrupt,omitempty" xml:"EnableVoiceInterrupt,omitempty"`
 	GracefulShutdown         *bool                                       `json:"GracefulShutdown,omitempty" xml:"GracefulShutdown,omitempty"`
 	Greeting                 *string                                     `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
+	InterruptWords           []*string                                   `json:"InterruptWords,omitempty" xml:"InterruptWords,omitempty" type:"Repeated"`
 	LlmHistory               []*AIAgentTemplateConfigVoiceChatLlmHistory `json:"LlmHistory,omitempty" xml:"LlmHistory,omitempty" type:"Repeated"`
 	LlmHistoryLimit          *int32                                      `json:"LlmHistoryLimit,omitempty" xml:"LlmHistoryLimit,omitempty"`
+	LlmSystemPrompt          *string                                     `json:"LlmSystemPrompt,omitempty" xml:"LlmSystemPrompt,omitempty"`
 	MaxIdleTime              *int32                                      `json:"MaxIdleTime,omitempty" xml:"MaxIdleTime,omitempty"`
 	UseVoiceprint            *bool                                       `json:"UseVoiceprint,omitempty" xml:"UseVoiceprint,omitempty"`
 	UserOfflineTimeout       *int32                                      `json:"UserOfflineTimeout,omitempty" xml:"UserOfflineTimeout,omitempty"`
 	UserOnlineTimeout        *int32                                      `json:"UserOnlineTimeout,omitempty" xml:"UserOnlineTimeout,omitempty"`
+	VadLevel                 *int32                                      `json:"VadLevel,omitempty" xml:"VadLevel,omitempty"`
 	VoiceId                  *string                                     `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
 	VoiceIdList              []*string                                   `json:"VoiceIdList,omitempty" xml:"VoiceIdList,omitempty" type:"Repeated"`
 	VoiceprintId             *string                                     `json:"VoiceprintId,omitempty" xml:"VoiceprintId,omitempty"`
@@ -551,6 +590,11 @@ func (s *AIAgentTemplateConfigVoiceChat) SetGreeting(v string) *AIAgentTemplateC
 	return s
 }
 
+func (s *AIAgentTemplateConfigVoiceChat) SetInterruptWords(v []*string) *AIAgentTemplateConfigVoiceChat {
+	s.InterruptWords = v
+	return s
+}
+
 func (s *AIAgentTemplateConfigVoiceChat) SetLlmHistory(v []*AIAgentTemplateConfigVoiceChatLlmHistory) *AIAgentTemplateConfigVoiceChat {
 	s.LlmHistory = v
 	return s
@@ -558,6 +602,11 @@ func (s *AIAgentTemplateConfigVoiceChat) SetLlmHistory(v []*AIAgentTemplateConfi
 
 func (s *AIAgentTemplateConfigVoiceChat) SetLlmHistoryLimit(v int32) *AIAgentTemplateConfigVoiceChat {
 	s.LlmHistoryLimit = &v
+	return s
+}
+
+func (s *AIAgentTemplateConfigVoiceChat) SetLlmSystemPrompt(v string) *AIAgentTemplateConfigVoiceChat {
+	s.LlmSystemPrompt = &v
 	return s
 }
 
@@ -578,6 +627,11 @@ func (s *AIAgentTemplateConfigVoiceChat) SetUserOfflineTimeout(v int32) *AIAgent
 
 func (s *AIAgentTemplateConfigVoiceChat) SetUserOnlineTimeout(v int32) *AIAgentTemplateConfigVoiceChat {
 	s.UserOnlineTimeout = &v
+	return s
+}
+
+func (s *AIAgentTemplateConfigVoiceChat) SetVadLevel(v int32) *AIAgentTemplateConfigVoiceChat {
+	s.VadLevel = &v
 	return s
 }
 
@@ -2685,13 +2739,19 @@ func (s *VodPackagingGroup) SetGroupName(v string) *VodPackagingGroup {
 }
 
 type AddAdInsertionRequest struct {
-	// 内容URL前缀
+	// Specifies whether to enable ad marker passthrough. Default value: OFF.
+	//
+	// Valid values:
+	//
+	// 	- OFF: Disable.
+	//
+	// 	- ON: Enable.
 	//
 	// example:
 	//
 	// ON
 	AdMarkerPassthrough *string `json:"AdMarkerPassthrough,omitempty" xml:"AdMarkerPassthrough,omitempty"`
-	// 广告策略服务器URL
+	// The request URL of the ad decision server (ADS). HTTP and HTTPS are supported. The maximum length is 2,048 characters.
 	//
 	// This parameter is required.
 	//
@@ -2699,29 +2759,31 @@ type AddAdInsertionRequest struct {
 	//
 	// http://ads.com/ad1?param1=[palyer_params.p1]
 	AdsUrl *string `json:"AdsUrl,omitempty" xml:"AdsUrl,omitempty"`
-	// 广告分片的CDN前缀
+	// The CDN prefix for ad segments. HTTP and HTTPS are supported. The maximum length is 512 characters.
 	//
 	// example:
 	//
 	// http://cdn.com/
 	CdnAdSegmentUrlPrefix *string `json:"CdnAdSegmentUrlPrefix,omitempty" xml:"CdnAdSegmentUrlPrefix,omitempty"`
-	// 视频内容分片的CDN前缀
+	// The CDN prefix for content segments. HTTP and HTTPS are supported. The maximum length is 512 characters.
 	//
 	// example:
 	//
 	// http://cdn.com/
 	CdnContentSegmentUrlPrefix *string `json:"CdnContentSegmentUrlPrefix,omitempty" xml:"CdnContentSegmentUrlPrefix,omitempty"`
+	// The idempotency key that is used to avoid repeated submission. The value can be up to 200 characters in length.
+	//
 	// example:
 	//
 	// ****0311a423d11a5f7dee713535****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 动态配置别名
+	// A JSON string that specifies the player parameter variables and aliases. You can add up to 20 player_params.{name} entries. The name field can be up to 150 characters in length. Each player parameter can include up to 50 key-value pairs. A key can be up to 150 characters long, and a value can be up to 500 characters. Example: { "player_params.{name}": { "{key}": "{value}" } }
 	//
 	// example:
 	//
 	// { "player_params.p1": { "1": "abc" } }
 	ConfigAliases *string `json:"ConfigAliases,omitempty" xml:"ConfigAliases,omitempty"`
-	// 内容URL前缀
+	// The URL prefix for the source content. HTTP and HTTPS are supported. The maximum length is 512 characters.
 	//
 	// This parameter is required.
 	//
@@ -2729,7 +2791,7 @@ type AddAdInsertionRequest struct {
 	//
 	// https://source.com/
 	ContentUrlPrefix *string `json:"ContentUrlPrefix,omitempty" xml:"ContentUrlPrefix,omitempty"`
-	// 代表资源一级ID的资源属性字段
+	// The name of the configuration. The name must be unique and can be up to 128 characters in length. Letters, digits, underscores (_), and hyphens (-) are supported.
 	//
 	// This parameter is required.
 	//
@@ -2737,13 +2799,13 @@ type AddAdInsertionRequest struct {
 	//
 	// my_ad
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 个性化配置阈值
+	// Specifies the maximum duration of underfilled time allowed in an ad break. Unit: seconds. Default value: 8 seconds.
 	//
 	// example:
 	//
 	// 5
 	PersonalizationThreshold *int32 `json:"PersonalizationThreshold,omitempty" xml:"PersonalizationThreshold,omitempty"`
-	// slate广告URL
+	// The HTTP or HTTPS URL of the slate ad. Only MP4 format is supported. The maximum length is 2,048 characters.
 	//
 	// example:
 	//
@@ -2810,7 +2872,10 @@ func (s *AddAdInsertionRequest) SetSlateAdUrl(v string) *AddAdInsertionRequest {
 }
 
 type AddAdInsertionResponseBody struct {
+	// The ad insertion configuration.
 	Config *AddAdInsertionResponseBodyConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// ******3B-0E1A-586A-AC29-742247******
@@ -2836,59 +2901,59 @@ func (s *AddAdInsertionResponseBody) SetRequestId(v string) *AddAdInsertionRespo
 }
 
 type AddAdInsertionResponseBodyConfig struct {
-	// 广告标记透传
+	// Indicates whether ad marker passthrough is enabled.
 	//
 	// example:
 	//
 	// ON
 	AdMarkerPassthrough *string `json:"AdMarkerPassthrough,omitempty" xml:"AdMarkerPassthrough,omitempty"`
-	// 广告策略服务器URL
+	// The request URL of ADS.
 	//
 	// example:
 	//
 	// http://ads.com/ad1?param1=[palyer_params.p1]
 	AdsUrl *string `json:"AdsUrl,omitempty" xml:"AdsUrl,omitempty"`
-	// CDN配置
+	// The CDN configurations.
 	CdnConfig *AddAdInsertionResponseBodyConfigCdnConfig `json:"CdnConfig,omitempty" xml:"CdnConfig,omitempty" type:"Struct"`
-	// 动态配置别名
+	// The player parameter variables and aliases.
 	//
 	// example:
 	//
 	// { "player_params.p1": { "1": "abc" } }
 	ConfigAliases *string `json:"ConfigAliases,omitempty" xml:"ConfigAliases,omitempty"`
-	// 内容URL前缀
+	// The URL prefix for the source content.
 	//
 	// example:
 	//
 	// https://source.com/
 	ContentUrlPrefix *string `json:"ContentUrlPrefix,omitempty" xml:"ContentUrlPrefix,omitempty"`
-	// 创建时间
+	// The time when the configuration was created.
 	//
 	// example:
 	//
 	// 2024-06-13T08:26:09Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 修改时间
+	// The time when the configuration was last modified.
 	//
 	// example:
 	//
 	// 2024-06-13T08:26:09Z
 	LastModified *string `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
-	// 清单播放端点配置
+	// The playback endpoint configuration.
 	ManifestEndpointConfig *AddAdInsertionResponseBodyConfigManifestEndpointConfig `json:"ManifestEndpointConfig,omitempty" xml:"ManifestEndpointConfig,omitempty" type:"Struct"`
-	// 广告插入配置名称
+	// The name of the ad insertion configuration.
 	//
 	// example:
 	//
 	// my_ad
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 个性化配置阈值
+	// The personalization threshold.
 	//
 	// example:
 	//
 	// 5
 	PersonalizationThreshold *int32 `json:"PersonalizationThreshold,omitempty" xml:"PersonalizationThreshold,omitempty"`
-	// slate广告URL
+	// The URL of the slate ad.
 	//
 	// example:
 	//
@@ -2960,13 +3025,13 @@ func (s *AddAdInsertionResponseBodyConfig) SetSlateAdUrl(v string) *AddAdInserti
 }
 
 type AddAdInsertionResponseBodyConfigCdnConfig struct {
-	// 广告分片的CDN前缀
+	// The CDN prefix for ad segments.
 	//
 	// example:
 	//
 	// http://cdn.com/
 	AdSegmentUrlPrefix *string `json:"AdSegmentUrlPrefix,omitempty" xml:"AdSegmentUrlPrefix,omitempty"`
-	// 视频内容分片的CDN前缀
+	// The CDN prefix for content segments.
 	//
 	// example:
 	//
@@ -2993,7 +3058,7 @@ func (s *AddAdInsertionResponseBodyConfigCdnConfig) SetContentSegmentUrlPrefix(v
 }
 
 type AddAdInsertionResponseBodyConfigManifestEndpointConfig struct {
-	// HLS清单播放端点前缀
+	// The prefix of the playback endpoint for HLS manifests.
 	HlsPrefix *string `json:"HlsPrefix,omitempty" xml:"HlsPrefix,omitempty"`
 }
 
@@ -3891,13 +3956,13 @@ func (s *AddFavoritePublicMediaResponse) SetBody(v *AddFavoritePublicMediaRespon
 }
 
 type AddMediaConnectFlowInputRequest struct {
-	// IP whitelist, in CIDR format, separated by commas if multiple IP ranges are specified
+	// The IP address whitelist in CIDR format. Separate multiple CIDR blocks with commas (,).
 	//
 	// example:
 	//
 	// 19.168.1.1/32,18.168.1.1/16
 	Cidrs *string `json:"Cidrs,omitempty" xml:"Cidrs,omitempty"`
-	// Flow instance ID
+	// The flow ID.
 	//
 	// This parameter is required.
 	//
@@ -3905,13 +3970,13 @@ type AddMediaConnectFlowInputRequest struct {
 	//
 	// 34900dc6-90ec-4968-af3c-fcd87f231a5f
 	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	// Input URL, required when the input type is RTMP-PULL/SRT-Listener
+	// The source URL. This parameter is required when the source type is RTMP-PULL or SRT-Listener.
 	//
 	// example:
 	//
 	// rtmp://pull.test.alivecdn.com/live/alitest
 	InputFromUrl *string `json:"InputFromUrl,omitempty" xml:"InputFromUrl,omitempty"`
-	// Input name
+	// The source name.
 	//
 	// This parameter is required.
 	//
@@ -3919,7 +3984,19 @@ type AddMediaConnectFlowInputRequest struct {
 	//
 	// AliTestInput
 	InputName *string `json:"InputName,omitempty" xml:"InputName,omitempty"`
-	// Input type
+	// The source type.
+	//
+	// Valid values:
+	//
+	// 	- RTMP-PUSH
+	//
+	// 	- SRT-Caller
+	//
+	// 	- RTMP-PULL
+	//
+	// 	- SRT-Listener
+	//
+	// 	- Flow
 	//
 	// This parameter is required.
 	//
@@ -3927,37 +4004,47 @@ type AddMediaConnectFlowInputRequest struct {
 	//
 	// RTMP-PUSH
 	InputProtocol *string `json:"InputProtocol,omitempty" xml:"InputProtocol,omitempty"`
-	// Input bitrate, in bps
+	// The maximum bitrate. Unit: bit/s.
 	//
 	// example:
 	//
 	// 2000000
 	MaxBitrate *int32 `json:"MaxBitrate,omitempty" xml:"MaxBitrate,omitempty"`
-	// Paired Flow ID, required when the input type is Flow
+	// The ID of the source flow. This parameter is required when the source type is Flow.
 	//
 	// example:
 	//
 	// 805fbdd0-575e-4146-b35d-ec7f63937b20
 	PairFlowId *string `json:"PairFlowId,omitempty" xml:"PairFlowId,omitempty"`
-	// Output name of the paired Flow, required when the input type is Flow
+	// The output of the source flow. This parameter is required when the source type is Flow.
 	//
 	// example:
 	//
 	// AliTestOutput
 	PairOutputName *string `json:"PairOutputName,omitempty" xml:"PairOutputName,omitempty"`
-	// SRT latency, required when the input type is SRT-Listener/SRT-Caller
+	// The latency for the SRT stream. This parameter is required the source type is SRT-Listener or SRT-Caller.
 	//
 	// example:
 	//
 	// 1000
 	SrtLatency *int32 `json:"SrtLatency,omitempty" xml:"SrtLatency,omitempty"`
-	// SRT encryption key, required when the input type is SRT-Listener/SRT-Caller
+	// The SRT key. This parameter is required when the source type is SRT-Listener or SRT-Caller.
 	//
 	// example:
 	//
 	// BETTERG08S01
 	SrtPassphrase *string `json:"SrtPassphrase,omitempty" xml:"SrtPassphrase,omitempty"`
-	// SRT encryption length, required when the input type is SRT-Listener/SRT-Caller
+	// The encryption key length. This parameter is required when the source type is SRT-Listener or SRT-Caller.
+	//
+	// Valid values:
+	//
+	// 	- 0
+	//
+	// 	- 16
+	//
+	// 	- 24
+	//
+	// 	- 32
 	//
 	// example:
 	//
@@ -4029,21 +4116,21 @@ func (s *AddMediaConnectFlowInputRequest) SetSrtPbkeyLen(v string) *AddMediaConn
 }
 
 type AddMediaConnectFlowInputResponseBody struct {
-	// Response body
+	// The response body.
 	Content *AddMediaConnectFlowInputResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	// Description of the API call
+	// The call description.
 	//
 	// example:
 	//
 	// OK
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 请求ID
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 11357BE8-4C54-58EA-890A-5AB646EDE4B2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Returned error code, 0 indicates success
+	// The returned error code. A value of 0 indicates the call is successful.
 	//
 	// example:
 	//
@@ -4080,7 +4167,7 @@ func (s *AddMediaConnectFlowInputResponseBody) SetRetCode(v int32) *AddMediaConn
 }
 
 type AddMediaConnectFlowInputResponseBodyContent struct {
-	// Input URL
+	// The source URL.
 	//
 	// example:
 	//
@@ -4131,13 +4218,13 @@ func (s *AddMediaConnectFlowInputResponse) SetBody(v *AddMediaConnectFlowInputRe
 }
 
 type AddMediaConnectFlowOutputRequest struct {
-	// IP whitelist, in CIDR format, separated by commas if multiple IP segments are provided
+	// The IP address whitelist in CIDR format. Separate multiple CIDR blocks with commas (,).
 	//
 	// example:
 	//
 	// 83.17.231.31/32
 	Cidrs *string `json:"Cidrs,omitempty" xml:"Cidrs,omitempty"`
-	// Flow instance ID
+	// The flow ID.
 	//
 	// This parameter is required.
 	//
@@ -4145,7 +4232,7 @@ type AddMediaConnectFlowOutputRequest struct {
 	//
 	// 34900dc6-90ec-4968-af3c-fcd87f231a5f
 	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	// Output name
+	// The output name.
 	//
 	// This parameter is required.
 	//
@@ -4153,7 +4240,19 @@ type AddMediaConnectFlowOutputRequest struct {
 	//
 	// AliTestOutput
 	OutputName *string `json:"OutputName,omitempty" xml:"OutputName,omitempty"`
-	// Output protocol
+	// The output type.
+	//
+	// Valid values:
+	//
+	// 	- RTMP-PUSH
+	//
+	// 	- SRT-Caller
+	//
+	// 	- RTMP-PULL
+	//
+	// 	- SRT-Listener
+	//
+	// 	- Flow
 	//
 	// This parameter is required.
 	//
@@ -4161,43 +4260,43 @@ type AddMediaConnectFlowOutputRequest struct {
 	//
 	// RTMP-PULL
 	OutputProtocol *string `json:"OutputProtocol,omitempty" xml:"OutputProtocol,omitempty"`
-	// Output address, required when the output type is RTMP-PUSH/SRT-Caller mode
+	// The output URL. This parameter is required when OutputProtocol is set to RTMP-PUSH or SRT-Caller.
 	//
 	// example:
 	//
 	// rtmp://push.test.alivecdn.com/live/alitest
 	OutputToUrl *string `json:"OutputToUrl,omitempty" xml:"OutputToUrl,omitempty"`
-	// Paired Flow instance ID, required when the output type is Flow
+	// The ID of the destination flow. This parameter is required when OutputProtocol is set to Flow.
 	//
 	// example:
 	//
 	// 8666ec062190f00e263012666319a5be
 	PairFlowId *string `json:"PairFlowId,omitempty" xml:"PairFlowId,omitempty"`
-	// Input name of the paired Flow, required when the output type is Flow
+	// The source name of the destination flow. This parameter is required when OutputProtocol is set to Flow.
 	//
 	// example:
 	//
 	// AliTestInput
 	PairInputName *string `json:"PairInputName,omitempty" xml:"PairInputName,omitempty"`
-	// Maximum number of players
+	// The maximum number of viewers.
 	//
 	// example:
 	//
 	// 5
 	PlayerLimit *int32 `json:"PlayerLimit,omitempty" xml:"PlayerLimit,omitempty"`
-	// SRT latency, required only when the input type is SRT-Listener/SRT-Caller
+	// The latency for the SRT stream. This parameter is required when the source type is SRT-Listener or SRT-Caller.
 	//
 	// example:
 	//
 	// 1000
 	SrtLatency *int32 `json:"SrtLatency,omitempty" xml:"SrtLatency,omitempty"`
-	// SRT passphrase, required only when the input type is SRT-Listener/SRT-Caller
+	// The SRT key. This parameter is required when the source type is SRT-Listener or SRT-Caller.
 	//
 	// example:
 	//
 	// BETTERG08S01
 	SrtPassphrase *string `json:"SrtPassphrase,omitempty" xml:"SrtPassphrase,omitempty"`
-	// SRT encryption length, required only when the input type is SRT-Listener/SRT-Caller
+	// The encryption key length. This parameter is required when the source type is SRT-Listener or SRT-Caller.
 	//
 	// example:
 	//
@@ -4269,21 +4368,21 @@ func (s *AddMediaConnectFlowOutputRequest) SetSrtPbkeyLen(v string) *AddMediaCon
 }
 
 type AddMediaConnectFlowOutputResponseBody struct {
-	// Response body
+	// The response body.
 	Content *AddMediaConnectFlowOutputResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	// Description of the API call
+	// The call description.
 	//
 	// example:
 	//
 	// ok
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 请求ID
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 11AA9E73-FBA0-58DC-97BA-D606D847BCB6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Returned error code, 0 indicates success
+	// The returned error code. A value of 0 indicates that the call is successful.
 	//
 	// example:
 	//
@@ -4320,7 +4419,7 @@ func (s *AddMediaConnectFlowOutputResponseBody) SetRetCode(v int32) *AddMediaCon
 }
 
 type AddMediaConnectFlowOutputResponseBodyContent struct {
-	// Output address
+	// The output URL.
 	//
 	// example:
 	//
@@ -4958,7 +5057,10 @@ func (s *AlterSearchIndexResponse) SetBody(v *AlterSearchIndexResponseBody) *Alt
 }
 
 type BatchCreateVodPackagingAssetRequest struct {
+	// The assets that you want to ingest.
 	Assets []*BatchCreateVodPackagingAssetRequestAssets `json:"Assets,omitempty" xml:"Assets,omitempty" type:"Repeated"`
+	// The name of the packaging group.
+	//
 	// example:
 	//
 	// vod_hls
@@ -4984,15 +5086,20 @@ func (s *BatchCreateVodPackagingAssetRequest) SetGroupName(v string) *BatchCreat
 }
 
 type BatchCreateVodPackagingAssetRequestAssets struct {
+	// The name of the asset. The name must be unique and can be up to 128 characters in length. Letters, digits, underscores (_), and hyphens (-) are supported.
+	//
 	// example:
 	//
 	// 30min_movie
 	AssetName *string `json:"AssetName,omitempty" xml:"AssetName,omitempty"`
+	// The content ID in the digital rights management (DRM) system. The maximum length is 256 characters. Letters, digits, underscores (_), and hyphens (-) are supported.
+	//
 	// example:
 	//
 	// movie
-	ContentId *string                                         `json:"ContentId,omitempty" xml:"ContentId,omitempty"`
-	Input     *BatchCreateVodPackagingAssetRequestAssetsInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	ContentId *string `json:"ContentId,omitempty" xml:"ContentId,omitempty"`
+	// The asset input configurations.
+	Input *BatchCreateVodPackagingAssetRequestAssetsInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
 }
 
 func (s BatchCreateVodPackagingAssetRequestAssets) String() string {
@@ -5019,7 +5126,10 @@ func (s *BatchCreateVodPackagingAssetRequestAssets) SetInput(v *BatchCreateVodPa
 }
 
 type BatchCreateVodPackagingAssetRequestAssetsInput struct {
+	// The URL of the media file. You can only specify a M3U8 file stored in Object Storage Service (OSS).
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The input type. Only OSS is supported.
+	//
 	// example:
 	//
 	// OSS
@@ -5045,7 +5155,10 @@ func (s *BatchCreateVodPackagingAssetRequestAssetsInput) SetType(v string) *Batc
 }
 
 type BatchCreateVodPackagingAssetShrinkRequest struct {
+	// The assets that you want to ingest.
 	AssetsShrink *string `json:"Assets,omitempty" xml:"Assets,omitempty"`
+	// The name of the packaging group.
+	//
 	// example:
 	//
 	// vod_hls
@@ -5071,14 +5184,19 @@ func (s *BatchCreateVodPackagingAssetShrinkRequest) SetGroupName(v string) *Batc
 }
 
 type BatchCreateVodPackagingAssetResponseBody struct {
+	// The name of the packaging group.
+	//
 	// example:
 	//
 	// vod_hls
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// ******3B-0E1A-586A-AC29-742247******
-	RequestId  *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The results of asset ingestion.
 	ResultList []*BatchCreateVodPackagingAssetResponseBodyResultList `json:"ResultList,omitempty" xml:"ResultList,omitempty" type:"Repeated"`
 }
 
@@ -5106,11 +5224,16 @@ func (s *BatchCreateVodPackagingAssetResponseBody) SetResultList(v []*BatchCreat
 }
 
 type BatchCreateVodPackagingAssetResponseBodyResultList struct {
+	// The information about the ingested asset.
 	Asset *VodPackagingAsset `json:"Asset,omitempty" xml:"Asset,omitempty"`
+	// The error code for failed ingestion.
+	//
 	// example:
 	//
 	// InvalidParameter.PackagingAssetAlreadyExists
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message for failed ingestion.
+	//
 	// example:
 	//
 	// The specified packagingAsset "inputMovie" already exists
@@ -6135,34 +6258,48 @@ func (s *CreateAvatarTrainingJobResponse) SetBody(v *CreateAvatarTrainingJobResp
 }
 
 type CreateChannelRequest struct {
+	// Specifies whether to enable access control.
+	//
 	// example:
 	//
 	// false
 	AccessPolicy *bool `json:"AccessPolicy,omitempty" xml:"AccessPolicy,omitempty"`
+	// The token for accessing the channel.
+	//
 	// example:
 	//
 	// xxxxx
 	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	// The name of the channel.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// MyChannel
 	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+	// The tier of the channel. Valid values: basic and standard.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// basic
 	ChannelTier *string `json:"ChannelTier,omitempty" xml:"ChannelTier,omitempty"`
+	// The source location of the filler slate.
+	//
 	// example:
 	//
 	// MySourceLocation
 	FillerSourceLocationName *string `json:"FillerSourceLocationName,omitempty" xml:"FillerSourceLocationName,omitempty"`
+	// The name of the filler slate.
+	//
 	// example:
 	//
 	// FillerSource
 	FillerSourceName *string `json:"FillerSourceName,omitempty" xml:"FillerSourceName,omitempty"`
+	// The channel output configurations.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -6185,6 +6322,8 @@ type CreateChannelRequest struct {
 	//
 	// }]
 	OutPutConfigList *string `json:"OutPutConfigList,omitempty" xml:"OutPutConfigList,omitempty"`
+	// The playback mode. Valid values: loop and linear.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -6242,7 +6381,10 @@ func (s *CreateChannelRequest) SetPlaybackMode(v string) *CreateChannelRequest {
 }
 
 type CreateChannelResponseBody struct {
+	// The channel information.
 	Channel *ChannelAssemblyChannel `json:"Channel,omitempty" xml:"Channel,omitempty"`
+	// **Request ID**
+	//
 	// example:
 	//
 	// xxx-xxxx-xxxxx-xxxx
@@ -7415,11 +7557,7 @@ func (s *CreateEditingProjectResponse) SetBody(v *CreateEditingProjectResponseBo
 }
 
 type CreateLivePackageChannelRequest struct {
-	// 频道名称，字符必须为大小写英文字母或-、_。
-	//
-	// 1 ~ 200个字符。
-	//
-	// 格式：[A-Za-z0-9_-]+
+	// The channel name. It can contain letters, digits, hyphens (-), and underscores (_). The name must be 1 to 200 characters in length. Format: [A-Za-z0-9_-]+
 	//
 	// This parameter is required.
 	//
@@ -7427,10 +7565,15 @@ type CreateLivePackageChannelRequest struct {
 	//
 	// channel-1
 	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// example:
+	//
+	// ****12e8864746a0a398****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 频道描述，最大1000个字符
+	// The channel description. It can be up to 1,000 characters in length.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 频道组名称
+	// The channel group name. It can contain letters, digits, hyphens (-), and underscores (_). The name must be 1 to 200 characters in length. Format: [A-Za-z0-9_-]+
 	//
 	// This parameter is required.
 	//
@@ -7438,7 +7581,7 @@ type CreateLivePackageChannelRequest struct {
 	//
 	// channel-group-1
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// 输入协议，目前仅支持HLS
+	// The ingest protocol. Only HLS is supported.
 	//
 	// This parameter is required.
 	//
@@ -7446,11 +7589,15 @@ type CreateLivePackageChannelRequest struct {
 	//
 	// HLS
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// 输入流m3u8切片个数，2～100
+	// The number of M3U8 segments. Valid values: 2 to 100.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 3
 	SegmentCount *int32 `json:"SegmentCount,omitempty" xml:"SegmentCount,omitempty"`
-	// 输入流切片时长，1～30
+	// The segment duration. Valid values: 1 to 30.
 	//
 	// This parameter is required.
 	//
@@ -7504,8 +7651,14 @@ func (s *CreateLivePackageChannelRequest) SetSegmentDuration(v int32) *CreateLiv
 }
 
 type CreateLivePackageChannelResponseBody struct {
+	// The information about the live package channel.
 	LivePackageChannel *CreateLivePackageChannelResponseBodyLivePackageChannel `json:"LivePackageChannel,omitempty" xml:"LivePackageChannel,omitempty" type:"Struct"`
-	RequestId          *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// ******3B-0E1A-586A-AC29-742247******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateLivePackageChannelResponseBody) String() string {
@@ -7527,50 +7680,47 @@ func (s *CreateLivePackageChannelResponseBody) SetRequestId(v string) *CreateLiv
 }
 
 type CreateLivePackageChannelResponseBodyLivePackageChannel struct {
-	// 频道名称，字符必须为大小写英文字母或-、_。
-	//
-	// 1 ~ 200个字符。
-	//
-	// 格式：[A-Za-z0-9_-]+
+	// The channel name.
 	//
 	// example:
 	//
 	// example-channel
 	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
-	// 代表创建时间的资源属性字段
+	// The time when the channel was created. It is in the yyyy-MM-ddTHH:mm:ssZ format and displayed in UTC.
 	//
 	// example:
 	//
 	// 2023-04-01T12:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 频道描述，最大1000个字符
+	// The channel description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 频道组名称
+	// The channel group name.
 	//
 	// example:
 	//
 	// channel-group-1
-	GroupName       *string                                                                  `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The ingest endpoints.
 	IngestEndpoints []*CreateLivePackageChannelResponseBodyLivePackageChannelIngestEndpoints `json:"IngestEndpoints,omitempty" xml:"IngestEndpoints,omitempty" type:"Repeated"`
-	// 最后修改时间
+	// The time when the channel was last modified. It is in the yyyy-MM-ddTHH:mm:ssZ format and displayed in UTC.
 	//
 	// example:
 	//
 	// 2023-04-01T12:00:00Z
 	LastModified *string `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
-	// 输入协议，目前仅支持HLS
+	// The ingest protocol. Only HLS is supported.
 	//
 	// example:
 	//
 	// HLS
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// 输入流m3u8切片个数，2～100
+	// The number of M3U8 segments.
 	//
 	// example:
 	//
 	// 3
 	SegmentCount *int32 `json:"SegmentCount,omitempty" xml:"SegmentCount,omitempty"`
-	// 输入流切片时长，1～30
+	// The segment duration.
 	//
 	// example:
 	//
@@ -7632,18 +7782,26 @@ func (s *CreateLivePackageChannelResponseBodyLivePackageChannel) SetSegmentDurat
 }
 
 type CreateLivePackageChannelResponseBodyLivePackageChannelIngestEndpoints struct {
+	// The ingest endpoint ID.
+	//
 	// example:
 	//
 	// ingest1
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The password.
+	//
 	// example:
 	//
 	// 2F9e******b569c8
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The ingest endpoint URL.
+	//
 	// example:
 	//
 	// http://xxx-1.packagepush-abcxxx.ap-southeast-1.aliyuncsiceintl.com/v1/group01/1/ch01/manifest
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// The username.
+	//
 	// example:
 	//
 	// us12******das
@@ -7708,9 +7866,15 @@ func (s *CreateLivePackageChannelResponse) SetBody(v *CreateLivePackageChannelRe
 }
 
 type CreateLivePackageChannelGroupRequest struct {
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// example:
+	//
+	// ****12e8864746a0a398****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The channel group description. It can be up to 1,000 characters in length.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 代表资源一级ID的资源属性字段
+	// The channel group name. It can contain letters, digits, hyphens (-), and underscores (_). The name must be 1 to 200 characters in length. Format: [A-Za-z0-9_-]+
 	//
 	// This parameter is required.
 	//
@@ -7744,7 +7908,10 @@ func (s *CreateLivePackageChannelGroupRequest) SetGroupName(v string) *CreateLiv
 }
 
 type CreateLivePackageChannelGroupResponseBody struct {
+	// The information about the channel group.
 	LivePackageChannelGroup *CreateLivePackageChannelGroupResponseBodyLivePackageChannelGroup `json:"LivePackageChannelGroup,omitempty" xml:"LivePackageChannelGroup,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426614174000
@@ -7770,27 +7937,27 @@ func (s *CreateLivePackageChannelGroupResponseBody) SetRequestId(v string) *Crea
 }
 
 type CreateLivePackageChannelGroupResponseBodyLivePackageChannelGroup struct {
-	// 创建时间
+	// The time when the channel group was created. It is in the yyyy-MM-ddTHH:mm:ssZ format and displayed in UTC.
 	//
 	// example:
 	//
 	// 2023-04-01T12:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 描述
+	// The channel group description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 频道组名称
+	// The channel group name.
 	//
 	// example:
 	//
 	// example-group
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// 修改时间
+	// The time when the channel group was last modified. It is in the yyyy-MM-ddTHH:mm:ssZ format and displayed in UTC.
 	//
 	// example:
 	//
 	// 2023-04-01T12:00:00Z
 	LastModified *string `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
-	// 源站域名
+	// The origin domain.
 	//
 	// example:
 	//
@@ -7861,17 +8028,13 @@ func (s *CreateLivePackageChannelGroupResponse) SetBody(v *CreateLivePackageChan
 }
 
 type CreateLivePackageOriginEndpointRequest struct {
-	// 回源授权码，与IpWhitelist必选其一
+	// The authorization code. It can be up to 200 characters in length. You must configure AuthorizationCode, IpWhitelist, or both. Format: [A-Za-z0-9-_.]+
 	//
 	// example:
 	//
 	// AbcDef123
 	AuthorizationCode *string `json:"AuthorizationCode,omitempty" xml:"AuthorizationCode,omitempty"`
-	// 频道名称。
-	//
-	// 1 ~ 200个字符。
-	//
-	// 正则匹配输入：[A-Za-z0-9_-]+
+	// The channel name.
 	//
 	// This parameter is required.
 	//
@@ -7879,14 +8042,15 @@ type CreateLivePackageOriginEndpointRequest struct {
 	//
 	// channel-1
 	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// example:
+	//
+	// ****0311a423d11a5f7dee713535****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 端点描述，最大1000个字符
+	// The endpoint description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 端点名称，要求在单个频道中唯一。
-	//
-	// 1 ~ 200个字符。
-	//
-	// 正则匹配输入：[A-Za-z0-9_-]+
+	// The origin endpoint name. It can contain letters, digits, hyphens (-), and underscores (_). The name must be 1 to 200 characters in length. Format: [A-Za-z0-9_-]+
 	//
 	// This parameter is required.
 	//
@@ -7894,11 +8058,7 @@ type CreateLivePackageOriginEndpointRequest struct {
 	//
 	// endpoint-1
 	EndpointName *string `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
-	// 频道组名称。
-	//
-	// 1 ~ 200个字符。
-	//
-	// 正则匹配输入：[A-Za-z0-9_-]+
+	// The channel group name.
 	//
 	// This parameter is required.
 	//
@@ -7906,29 +8066,25 @@ type CreateLivePackageOriginEndpointRequest struct {
 	//
 	// channel-group-1
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// IP黑名单，支持无类别域间路由（CIDR），逗号分隔
+	// The IP address blacklist. It supports subnet masks. 0.0.0.0/0 is not allowed. It can be up to 1,000 characters in length. Separate multiple IP addresses with commas (,).
 	//
 	// example:
 	//
 	// 103.21.222.1/32,192.168.100.0/24
 	IpBlacklist *string `json:"IpBlacklist,omitempty" xml:"IpBlacklist,omitempty"`
-	// IP白名单，支持无类别域间路由（CIDR），逗号分隔，与AuthorizationCode必选其一
+	// The IP address whitelist. It supports subnet masks. 0.0.0.0/0 is not allowed. It can be up to 1,000 characters in length. Separate multiple IP addresses with commas (,). You must configure AuthorizationCode, IpWhitelist, or both.
 	//
 	// example:
 	//
 	// 192.168.1.0/24,10.0.0.1/24
 	IpWhitelist *string `json:"IpWhitelist,omitempty" xml:"IpWhitelist,omitempty"`
-	// 播放列表名，缺省为manifest。
-	//
-	// 1 ~ 100个字符。
-	//
-	// 正则匹配输入：[A-Za-z0-9_]+
+	// The playlist name. Default value: manifest.
 	//
 	// example:
 	//
 	// manifest
 	ManifestName *string `json:"ManifestName,omitempty" xml:"ManifestName,omitempty"`
-	// 端点分发协议，暂只支持HLS
+	// The distribution protocol.
 	//
 	// This parameter is required.
 	//
@@ -7936,7 +8092,7 @@ type CreateLivePackageOriginEndpointRequest struct {
 	//
 	// HLS
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// 时移天数，最大30天，0表示不支持时移
+	// The number of days that time-shifted content is available. Maximum value: 30. Default value: 0, which indicates that time shifting is not supported.
 	//
 	// example:
 	//
@@ -8008,8 +8164,14 @@ func (s *CreateLivePackageOriginEndpointRequest) SetTimeshiftVision(v int32) *Cr
 }
 
 type CreateLivePackageOriginEndpointResponseBody struct {
+	// The information about the origin endpoint.
 	LivePackageOriginEndpoint *CreateLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint `json:"LivePackageOriginEndpoint,omitempty" xml:"LivePackageOriginEndpoint,omitempty" type:"Struct"`
-	RequestId                 *string                                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// ******11-DB8D-4A9A-875B-275798******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateLivePackageOriginEndpointResponseBody) String() string {
@@ -8031,75 +8193,75 @@ func (s *CreateLivePackageOriginEndpointResponseBody) SetRequestId(v string) *Cr
 }
 
 type CreateLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint struct {
-	// 回源授权码，与IpWhitelist必选其一
+	// The authorization code.
 	//
 	// example:
 	//
 	// Abcded123
 	AuthorizationCode *string `json:"AuthorizationCode,omitempty" xml:"AuthorizationCode,omitempty"`
-	// 频道名称
+	// The channel name.
 	//
 	// example:
 	//
 	// channel-1
 	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
-	// 创建时间
+	// The time when the endpoint was created.
 	//
 	// example:
 	//
 	// 2023-04-01T12:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 端点描述
+	// The endpoint description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 端点名称
+	// The endpoint name.
 	//
 	// example:
 	//
 	// endpoint-1
 	EndpointName *string `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
-	// 源站端点回源播放地址
+	// The endpoint URL.
 	//
 	// example:
 	//
 	// https://xxx.packagepull-abcxxx.ap-southeast-1.aliyuncsiceintl.com/v1/group01/1/ch01/manifest
 	EndpointUrl *string `json:"EndpointUrl,omitempty" xml:"EndpointUrl,omitempty"`
-	// 频道组名称
+	// The channel group name.
 	//
 	// example:
 	//
 	// channel-group-1
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// IP黑名单，支持无类别域间路由（CIDR），逗号分隔
+	// The IP address blacklist.
 	//
 	// example:
 	//
 	// 103.21.222.1/32,192.168.100.0/24
 	IpBlacklist *string `json:"IpBlacklist,omitempty" xml:"IpBlacklist,omitempty"`
-	// IP白名单，支持无类别域间路由（CIDR），逗号分隔，与AuthorizationCode必选其一
+	// The IP address whitelist.
 	//
 	// example:
 	//
 	// 192.168.1.0/24,10.0.0.1/24
 	IpWhitelist *string `json:"IpWhitelist,omitempty" xml:"IpWhitelist,omitempty"`
-	// 最后修改时间
+	// The time when the endpoint was last modified.
 	//
 	// example:
 	//
 	// 2023-04-01T12:00:00Z
 	LastModified *string `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
-	// 播放列表名
+	// The playlist name.
 	//
 	// example:
 	//
 	// manifest
 	ManifestName *string `json:"ManifestName,omitempty" xml:"ManifestName,omitempty"`
-	// 端点分发协议，暂只支持HLS
+	// The protocol. Only HLS is supported.
 	//
 	// example:
 	//
 	// HLS
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// 时移天数，最大30天，0表示不支持时移
+	// The number of days that time-shifted content is available. Maximum value: 30.
 	//
 	// example:
 	//
@@ -8926,7 +9088,7 @@ func (s *CreateLiveTranscodeTemplateResponse) SetBody(v *CreateLiveTranscodeTemp
 }
 
 type CreateMediaConnectFlowRequest struct {
-	// Flow instance name
+	// The flow name.
 	//
 	// This parameter is required.
 	//
@@ -8934,7 +9096,7 @@ type CreateMediaConnectFlowRequest struct {
 	//
 	// AliTestFlow
 	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
-	// Region to which the Flow instance belongs
+	// The region in which the flow resides.
 	//
 	// This parameter is required.
 	//
@@ -8963,21 +9125,21 @@ func (s *CreateMediaConnectFlowRequest) SetFlowRegion(v string) *CreateMediaConn
 }
 
 type CreateMediaConnectFlowResponseBody struct {
-	// Response body
+	// The response body.
 	Content *CreateMediaConnectFlowResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	// Description information returned by the interface
+	// The returned message.
 	//
 	// example:
 	//
 	// OK
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Request ID
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 86D92F9D-65E8-58A2-85D1-9DEEECC172E8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Returned error code, 0 indicates success
+	// The returned error code. A value of 0 indicates the call is successful.
 	//
 	// example:
 	//
@@ -9014,7 +9176,7 @@ func (s *CreateMediaConnectFlowResponseBody) SetRetCode(v int32) *CreateMediaCon
 }
 
 type CreateMediaConnectFlowResponseBodyContent struct {
-	// Flow instance ID
+	// The flow ID.
 	//
 	// example:
 	//
@@ -9060,6 +9222,1303 @@ func (s *CreateMediaConnectFlowResponse) SetStatusCode(v int32) *CreateMediaConn
 }
 
 func (s *CreateMediaConnectFlowResponse) SetBody(v *CreateMediaConnectFlowResponseBody) *CreateMediaConnectFlowResponse {
+	s.Body = v
+	return s
+}
+
+type CreateMediaLiveChannelRequest struct {
+	// The audio settings.
+	AudioSettings []*CreateMediaLiveChannelRequestAudioSettings `json:"AudioSettings,omitempty" xml:"AudioSettings,omitempty" type:"Repeated"`
+	// The associated inputs.
+	//
+	// This parameter is required.
+	InputAttachments []*CreateMediaLiveChannelRequestInputAttachments `json:"InputAttachments,omitempty" xml:"InputAttachments,omitempty" type:"Repeated"`
+	// The name of the channel. Letters, digits, hyphens (-), and underscores (_) are supported. It can be up to 64 characters in length.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// mych
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The output groups.
+	//
+	// This parameter is required.
+	OutputGroups []*CreateMediaLiveChannelRequestOutputGroups `json:"OutputGroups,omitempty" xml:"OutputGroups,omitempty" type:"Repeated"`
+	// The video settings.
+	VideoSettings []*CreateMediaLiveChannelRequestVideoSettings `json:"VideoSettings,omitempty" xml:"VideoSettings,omitempty" type:"Repeated"`
+}
+
+func (s CreateMediaLiveChannelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMediaLiveChannelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMediaLiveChannelRequest) SetAudioSettings(v []*CreateMediaLiveChannelRequestAudioSettings) *CreateMediaLiveChannelRequest {
+	s.AudioSettings = v
+	return s
+}
+
+func (s *CreateMediaLiveChannelRequest) SetInputAttachments(v []*CreateMediaLiveChannelRequestInputAttachments) *CreateMediaLiveChannelRequest {
+	s.InputAttachments = v
+	return s
+}
+
+func (s *CreateMediaLiveChannelRequest) SetName(v string) *CreateMediaLiveChannelRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateMediaLiveChannelRequest) SetOutputGroups(v []*CreateMediaLiveChannelRequestOutputGroups) *CreateMediaLiveChannelRequest {
+	s.OutputGroups = v
+	return s
+}
+
+func (s *CreateMediaLiveChannelRequest) SetVideoSettings(v []*CreateMediaLiveChannelRequestVideoSettings) *CreateMediaLiveChannelRequest {
+	s.VideoSettings = v
+	return s
+}
+
+type CreateMediaLiveChannelRequestAudioSettings struct {
+	// The audio codec. If it is not specified, the source specification is used. Valid values: aac and libfdk_aac.
+	//
+	// example:
+	//
+	// libfdk_aac
+	AudioCodec *string `json:"AudioCodec,omitempty" xml:"AudioCodec,omitempty"`
+	// The audio encoding settings.
+	AudioCodecSetting *CreateMediaLiveChannelRequestAudioSettingsAudioCodecSetting `json:"AudioCodecSetting,omitempty" xml:"AudioCodecSetting,omitempty" type:"Struct"`
+	// The name of the audio selector.
+	//
+	// example:
+	//
+	// a1
+	AudioSelectorName *string `json:"AudioSelectorName,omitempty" xml:"AudioSelectorName,omitempty"`
+	// Enter a three-letter ISO 639-2 language code. If the audio track selected by the audio selector has a language code, the language code specified in the audio selector is used. If the selected audio track does not have a language code, or if the audio selector cannot find a track that matches its criteria, this language code is used.
+	//
+	// example:
+	//
+	// eng
+	LanguageCode *string `json:"LanguageCode,omitempty" xml:"LanguageCode,omitempty"`
+	// The tag that identifies the language of the RTMP input. It can be referenced by the output. The maximum length is 32 characters. Supported characters:
+	//
+	// 	- Unicode letters
+	//
+	// 	- Digits (0-9)
+	//
+	// 	- Underscore (_)
+	//
+	// 	- Hyphen (-)
+	//
+	// 	- Space (a space cannot be at the beginning or end)
+	//
+	// example:
+	//
+	// English
+	LanguageName *string `json:"LanguageName,omitempty" xml:"LanguageName,omitempty"`
+	// The name of the audio settings. Letters, digits, hyphens (-), and underscores (_) are supported. It can be up to 64 characters in length.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// audio1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s CreateMediaLiveChannelRequestAudioSettings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMediaLiveChannelRequestAudioSettings) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMediaLiveChannelRequestAudioSettings) SetAudioCodec(v string) *CreateMediaLiveChannelRequestAudioSettings {
+	s.AudioCodec = &v
+	return s
+}
+
+func (s *CreateMediaLiveChannelRequestAudioSettings) SetAudioCodecSetting(v *CreateMediaLiveChannelRequestAudioSettingsAudioCodecSetting) *CreateMediaLiveChannelRequestAudioSettings {
+	s.AudioCodecSetting = v
+	return s
+}
+
+func (s *CreateMediaLiveChannelRequestAudioSettings) SetAudioSelectorName(v string) *CreateMediaLiveChannelRequestAudioSettings {
+	s.AudioSelectorName = &v
+	return s
+}
+
+func (s *CreateMediaLiveChannelRequestAudioSettings) SetLanguageCode(v string) *CreateMediaLiveChannelRequestAudioSettings {
+	s.LanguageCode = &v
+	return s
+}
+
+func (s *CreateMediaLiveChannelRequestAudioSettings) SetLanguageName(v string) *CreateMediaLiveChannelRequestAudioSettings {
+	s.LanguageName = &v
+	return s
+}
+
+func (s *CreateMediaLiveChannelRequestAudioSettings) SetName(v string) *CreateMediaLiveChannelRequestAudioSettings {
+	s.Name = &v
+	return s
+}
+
+type CreateMediaLiveChannelRequestAudioSettingsAudioCodecSetting struct {
+	// The audio bitrate. Unit: bit/s. Valid values: 8000 to 1000000. The value must be divisible by 1000.
+	//
+	// example:
+	//
+	// 200000
+	Bitrate *int32 `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The audio codec profile. When AudioCodec is set to aac, AAC-LOW and AAC-MAIN are supported. When AudioCodec is set to libfdk_aac, AAC-LOW, AAC-HE, and AAC-HEV2 are supported.
+	//
+	// example:
+	//
+	// AAC-LOW
+	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	// The audio sample rate. Unit: Hz. Valid values: 22050, 32000, 44100, 48000, and 96000.
+	//
+	// example:
+	//
+	// 44100
+	SampleRate *int32 `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
+}
+
+func (s CreateMediaLiveChannelRequestAudioSettingsAudioCodecSetting) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMediaLiveChannelRequestAudioSettingsAudioCodecSetting) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMediaLiveChannelRequestAudioSettingsAudioCodecSetting) SetBitrate(v int32) *CreateMediaLiveChannelRequestAudioSettingsAudioCodecSetting {
+	s.Bitrate = &v
+	return s
+}
+
+func (s *CreateMediaLiveChannelRequestAudioSettingsAudioCodecSetting) SetProfile(v string) *CreateMediaLiveChannelRequestAudioSettingsAudioCodecSetting {
+	s.Profile = &v
+	return s
+}
+
+func (s *CreateMediaLiveChannelRequestAudioSettingsAudioCodecSetting) SetSampleRate(v int32) *CreateMediaLiveChannelRequestAudioSettingsAudioCodecSetting {
+	s.SampleRate = &v
+	return s
+}
+
+type CreateMediaLiveChannelRequestInputAttachments struct {
+	// The audio selectors.
+	AudioSelectors []*CreateMediaLiveChannelRequestInputAttachmentsAudioSelectors `json:"AudioSelectors,omitempty" xml:"AudioSelectors,omitempty" type:"Repeated"`
+	// The ID of the associated input.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// myinput
+	InputId *string `json:"InputId,omitempty" xml:"InputId,omitempty"`
+	// The tag that identifies the language of the RTMP input. It can be referenced by the output. The maximum length is 32 characters. Supported characters:
+	//
+	// 	- Unicode letters
+	//
+	// 	- Digits (0-9)
+	//
+	// 	- Underscore (_)
+	//
+	// 	- Hyphen (-)
+	//
+	// 	- Space (a space cannot be at the beginning or end)
+	//
+	// example:
+	//
+	// English
+	LanguageName *string `json:"LanguageName,omitempty" xml:"LanguageName,omitempty"`
+}
+
+func (s CreateMediaLiveChannelRequestInputAttachments) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMediaLiveChannelRequestInputAttachments) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMediaLiveChannelRequestInputAttachments) SetAudioSelectors(v []*CreateMediaLiveChannelRequestInputAttachmentsAudioSelectors) *CreateMediaLiveChannelRequestInputAttachments {
+	s.AudioSelectors = v
+	return s
+}
+
+func (s *CreateMediaLiveChannelRequestInputAttachments) SetInputId(v string) *CreateMediaLiveChannelRequestInputAttachments {
+	s.InputId = &v
+	return s
+}
+
+func (s *CreateMediaLiveChannelRequestInputAttachments) SetLanguageName(v string) *CreateMediaLiveChannelRequestInputAttachments {
+	s.LanguageName = &v
+	return s
+}
+
+type CreateMediaLiveChannelRequestInputAttachmentsAudioSelectors struct {
+	// The audio language selection.
+	AudioLanguageSelection *CreateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioLanguageSelection `json:"AudioLanguageSelection,omitempty" xml:"AudioLanguageSelection,omitempty" type:"Struct"`
+	// The audio PID selection.
+	AudioPidSelection *CreateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioPidSelection `json:"AudioPidSelection,omitempty" xml:"AudioPidSelection,omitempty" type:"Struct"`
+	// The audio track selection.
+	AudioTrackSelection []*CreateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioTrackSelection `json:"AudioTrackSelection,omitempty" xml:"AudioTrackSelection,omitempty" type:"Repeated"`
+	// The name of the audio selector. Letters, digits, hyphens (-), and underscores (_) are supported. It can be up to 64 characters in length.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// myselector
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s CreateMediaLiveChannelRequestInputAttachmentsAudioSelectors) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMediaLiveChannelRequestInputAttachmentsAudioSelectors) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMediaLiveChannelRequestInputAttachmentsAudioSelectors) SetAudioLanguageSelection(v *CreateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioLanguageSelection) *CreateMediaLiveChannelRequestInputAttachmentsAudioSelectors {
+	s.AudioLanguageSelection = v
+	return s
+}
+
+func (s *CreateMediaLiveChannelRequestInputAttachmentsAudioSelectors) SetAudioPidSelection(v *CreateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioPidSelection) *CreateMediaLiveChannelRequestInputAttachmentsAudioSelectors {
+	s.AudioPidSelection = v
+	return s
+}
+
+func (s *CreateMediaLiveChannelRequestInputAttachmentsAudioSelectors) SetAudioTrackSelection(v []*CreateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioTrackSelection) *CreateMediaLiveChannelRequestInputAttachmentsAudioSelectors {
+	s.AudioTrackSelection = v
+	return s
+}
+
+func (s *CreateMediaLiveChannelRequestInputAttachmentsAudioSelectors) SetName(v string) *CreateMediaLiveChannelRequestInputAttachmentsAudioSelectors {
+	s.Name = &v
+	return s
+}
+
+type CreateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioLanguageSelection struct {
+	// Enter a three-letter ISO 639-2 language code from within an audio source.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eng
+	LanguageCode *string `json:"LanguageCode,omitempty" xml:"LanguageCode,omitempty"`
+}
+
+func (s CreateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioLanguageSelection) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioLanguageSelection) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioLanguageSelection) SetLanguageCode(v string) *CreateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioLanguageSelection {
+	s.LanguageCode = &v
+	return s
+}
+
+type CreateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioPidSelection struct {
+	// Enter a specific PID from within a source.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
+	Pid *int64 `json:"Pid,omitempty" xml:"Pid,omitempty"`
+}
+
+func (s CreateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioPidSelection) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioPidSelection) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioPidSelection) SetPid(v int64) *CreateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioPidSelection {
+	s.Pid = &v
+	return s
+}
+
+type CreateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioTrackSelection struct {
+	// Specify one or more audio tracks from within a source using Track ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	TrackId *int64 `json:"TrackId,omitempty" xml:"TrackId,omitempty"`
+}
+
+func (s CreateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioTrackSelection) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioTrackSelection) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioTrackSelection) SetTrackId(v int64) *CreateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioTrackSelection {
+	s.TrackId = &v
+	return s
+}
+
+type CreateMediaLiveChannelRequestOutputGroups struct {
+	// The MediaPackage destination.
+	MediaPackageGroupSetting *CreateMediaLiveChannelRequestOutputGroupsMediaPackageGroupSetting `json:"MediaPackageGroupSetting,omitempty" xml:"MediaPackageGroupSetting,omitempty" type:"Struct"`
+	// The name of the output group. Letters, digits, hyphens (-), and underscores (_) are supported. It can be up to 64 characters in length.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// group1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The outputs in the output group.
+	//
+	// This parameter is required.
+	Outputs []*CreateMediaLiveChannelRequestOutputGroupsOutputs `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Repeated"`
+	// The output group type. Only MediaPackage is supported.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MediaPackage
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateMediaLiveChannelRequestOutputGroups) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMediaLiveChannelRequestOutputGroups) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMediaLiveChannelRequestOutputGroups) SetMediaPackageGroupSetting(v *CreateMediaLiveChannelRequestOutputGroupsMediaPackageGroupSetting) *CreateMediaLiveChannelRequestOutputGroups {
+	s.MediaPackageGroupSetting = v
+	return s
+}
+
+func (s *CreateMediaLiveChannelRequestOutputGroups) SetName(v string) *CreateMediaLiveChannelRequestOutputGroups {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateMediaLiveChannelRequestOutputGroups) SetOutputs(v []*CreateMediaLiveChannelRequestOutputGroupsOutputs) *CreateMediaLiveChannelRequestOutputGroups {
+	s.Outputs = v
+	return s
+}
+
+func (s *CreateMediaLiveChannelRequestOutputGroups) SetType(v string) *CreateMediaLiveChannelRequestOutputGroups {
+	s.Type = &v
+	return s
+}
+
+type CreateMediaLiveChannelRequestOutputGroupsMediaPackageGroupSetting struct {
+	// ChannelName in MediaPackage.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// myPackageChannel
+	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+	// GroupName in MediaPackage.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// myPackageGroup
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+}
+
+func (s CreateMediaLiveChannelRequestOutputGroupsMediaPackageGroupSetting) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMediaLiveChannelRequestOutputGroupsMediaPackageGroupSetting) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMediaLiveChannelRequestOutputGroupsMediaPackageGroupSetting) SetChannelName(v string) *CreateMediaLiveChannelRequestOutputGroupsMediaPackageGroupSetting {
+	s.ChannelName = &v
+	return s
+}
+
+func (s *CreateMediaLiveChannelRequestOutputGroupsMediaPackageGroupSetting) SetGroupName(v string) *CreateMediaLiveChannelRequestOutputGroupsMediaPackageGroupSetting {
+	s.GroupName = &v
+	return s
+}
+
+type CreateMediaLiveChannelRequestOutputGroupsOutputs struct {
+	// The referenced AudioSettings.
+	AudioSettingNames []*string `json:"AudioSettingNames,omitempty" xml:"AudioSettingNames,omitempty" type:"Repeated"`
+	// The settings of the output delivered to MediaPackage.
+	MediaPackageOutputSetting *CreateMediaLiveChannelRequestOutputGroupsOutputsMediaPackageOutputSetting `json:"MediaPackageOutputSetting,omitempty" xml:"MediaPackageOutputSetting,omitempty" type:"Struct"`
+	// The media type of the output. Valid values:
+	//
+	// 	- 0: Audio and Video.
+	//
+	// 	- 1: Audio. If you set the value to 1, you cannot reference VideoSettings.
+	//
+	// 	- 2: Video. If you set the value to 2, you cannot reference AudioSettings.
+	//
+	// example:
+	//
+	// 0
+	MediaType *int32 `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// The name of the output. Letters, digits, hyphens (-), and underscores (_) are supported. It can be up to 64 characters in length.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// output1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the referenced VideoSettings.
+	//
+	// example:
+	//
+	// myVideo1
+	VideoSettingName *string `json:"VideoSettingName,omitempty" xml:"VideoSettingName,omitempty"`
+}
+
+func (s CreateMediaLiveChannelRequestOutputGroupsOutputs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMediaLiveChannelRequestOutputGroupsOutputs) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMediaLiveChannelRequestOutputGroupsOutputs) SetAudioSettingNames(v []*string) *CreateMediaLiveChannelRequestOutputGroupsOutputs {
+	s.AudioSettingNames = v
+	return s
+}
+
+func (s *CreateMediaLiveChannelRequestOutputGroupsOutputs) SetMediaPackageOutputSetting(v *CreateMediaLiveChannelRequestOutputGroupsOutputsMediaPackageOutputSetting) *CreateMediaLiveChannelRequestOutputGroupsOutputs {
+	s.MediaPackageOutputSetting = v
+	return s
+}
+
+func (s *CreateMediaLiveChannelRequestOutputGroupsOutputs) SetMediaType(v int32) *CreateMediaLiveChannelRequestOutputGroupsOutputs {
+	s.MediaType = &v
+	return s
+}
+
+func (s *CreateMediaLiveChannelRequestOutputGroupsOutputs) SetName(v string) *CreateMediaLiveChannelRequestOutputGroupsOutputs {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateMediaLiveChannelRequestOutputGroupsOutputs) SetVideoSettingName(v string) *CreateMediaLiveChannelRequestOutputGroupsOutputs {
+	s.VideoSettingName = &v
+	return s
+}
+
+type CreateMediaLiveChannelRequestOutputGroupsOutputsMediaPackageOutputSetting struct {
+	// The manifest audio group ID. To associate several audio tracks into one group, assign the same audio group ID. Viewers can select a track as needed. Letters, digits, hyphens (-), and underscores (_) are supported. It can be up to 40 characters in length.
+	//
+	// example:
+	//
+	// audiogroup
+	AudioGroupId *string `json:"AudioGroupId,omitempty" xml:"AudioGroupId,omitempty"`
+	// The manifest name modifier. The child manifests include this modifier in their M3U8 file names. Letters, digits, hyphens (-), and underscores (_) are supported. The maximum length is 40 characters.
+	//
+	// example:
+	//
+	// 480p
+	NameModifier *string `json:"NameModifier,omitempty" xml:"NameModifier,omitempty"`
+}
+
+func (s CreateMediaLiveChannelRequestOutputGroupsOutputsMediaPackageOutputSetting) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMediaLiveChannelRequestOutputGroupsOutputsMediaPackageOutputSetting) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMediaLiveChannelRequestOutputGroupsOutputsMediaPackageOutputSetting) SetAudioGroupId(v string) *CreateMediaLiveChannelRequestOutputGroupsOutputsMediaPackageOutputSetting {
+	s.AudioGroupId = &v
+	return s
+}
+
+func (s *CreateMediaLiveChannelRequestOutputGroupsOutputsMediaPackageOutputSetting) SetNameModifier(v string) *CreateMediaLiveChannelRequestOutputGroupsOutputsMediaPackageOutputSetting {
+	s.NameModifier = &v
+	return s
+}
+
+type CreateMediaLiveChannelRequestVideoSettings struct {
+	// The height of the output. Valid values: 0 to 2000. If you set it to 0 or leave it empty, the height automatically adapts to the specified width to maintain the original aspect ratio.
+	//
+	// example:
+	//
+	// 720
+	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The name of the video settings. Letters, digits, hyphens (-), and underscores (_) are supported. It can be up to 64 characters in length.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// video1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The video codec. Valid values: H264 and H265.
+	//
+	// example:
+	//
+	// H264
+	VideoCodec *string `json:"VideoCodec,omitempty" xml:"VideoCodec,omitempty"`
+	// The video encoding settings.
+	VideoCodecSetting *CreateMediaLiveChannelRequestVideoSettingsVideoCodecSetting `json:"VideoCodecSetting,omitempty" xml:"VideoCodecSetting,omitempty" type:"Struct"`
+	// The width of the output. Valid values: 0 to 2000. If you set it to 0 or leave it empty, the width automatically adapts to the specified height to maintain the original aspect ratio.
+	//
+	// example:
+	//
+	// 1280
+	Width *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s CreateMediaLiveChannelRequestVideoSettings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMediaLiveChannelRequestVideoSettings) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMediaLiveChannelRequestVideoSettings) SetHeight(v int32) *CreateMediaLiveChannelRequestVideoSettings {
+	s.Height = &v
+	return s
+}
+
+func (s *CreateMediaLiveChannelRequestVideoSettings) SetName(v string) *CreateMediaLiveChannelRequestVideoSettings {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateMediaLiveChannelRequestVideoSettings) SetVideoCodec(v string) *CreateMediaLiveChannelRequestVideoSettings {
+	s.VideoCodec = &v
+	return s
+}
+
+func (s *CreateMediaLiveChannelRequestVideoSettings) SetVideoCodecSetting(v *CreateMediaLiveChannelRequestVideoSettingsVideoCodecSetting) *CreateMediaLiveChannelRequestVideoSettings {
+	s.VideoCodecSetting = v
+	return s
+}
+
+func (s *CreateMediaLiveChannelRequestVideoSettings) SetWidth(v int32) *CreateMediaLiveChannelRequestVideoSettings {
+	s.Width = &v
+	return s
+}
+
+type CreateMediaLiveChannelRequestVideoSettingsVideoCodecSetting struct {
+	// The video encoding settings.
+	CodecDetail *CreateMediaLiveChannelRequestVideoSettingsVideoCodecSettingCodecDetail `json:"CodecDetail,omitempty" xml:"CodecDetail,omitempty" type:"Struct"`
+	// The frame rate. If it is not specified, the source specification is used.
+	Framerate *CreateMediaLiveChannelRequestVideoSettingsVideoCodecSettingFramerate `json:"Framerate,omitempty" xml:"Framerate,omitempty" type:"Struct"`
+	// The GOP setting. If it is not specified, the source specification is used.
+	Gop *CreateMediaLiveChannelRequestVideoSettingsVideoCodecSettingGop `json:"Gop,omitempty" xml:"Gop,omitempty" type:"Struct"`
+	// The video encoding rate. If it is not specified, the source specification is used.
+	Rate *CreateMediaLiveChannelRequestVideoSettingsVideoCodecSettingRate `json:"Rate,omitempty" xml:"Rate,omitempty" type:"Struct"`
+}
+
+func (s CreateMediaLiveChannelRequestVideoSettingsVideoCodecSetting) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMediaLiveChannelRequestVideoSettingsVideoCodecSetting) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMediaLiveChannelRequestVideoSettingsVideoCodecSetting) SetCodecDetail(v *CreateMediaLiveChannelRequestVideoSettingsVideoCodecSettingCodecDetail) *CreateMediaLiveChannelRequestVideoSettingsVideoCodecSetting {
+	s.CodecDetail = v
+	return s
+}
+
+func (s *CreateMediaLiveChannelRequestVideoSettingsVideoCodecSetting) SetFramerate(v *CreateMediaLiveChannelRequestVideoSettingsVideoCodecSettingFramerate) *CreateMediaLiveChannelRequestVideoSettingsVideoCodecSetting {
+	s.Framerate = v
+	return s
+}
+
+func (s *CreateMediaLiveChannelRequestVideoSettingsVideoCodecSetting) SetGop(v *CreateMediaLiveChannelRequestVideoSettingsVideoCodecSettingGop) *CreateMediaLiveChannelRequestVideoSettingsVideoCodecSetting {
+	s.Gop = v
+	return s
+}
+
+func (s *CreateMediaLiveChannelRequestVideoSettingsVideoCodecSetting) SetRate(v *CreateMediaLiveChannelRequestVideoSettingsVideoCodecSettingRate) *CreateMediaLiveChannelRequestVideoSettingsVideoCodecSetting {
+	s.Rate = v
+	return s
+}
+
+type CreateMediaLiveChannelRequestVideoSettingsVideoCodecSettingCodecDetail struct {
+	// The video encoding level. It is not supported yet.
+	//
+	// example:
+	//
+	// H264_LEVEL_AUTO
+	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The H.264 profile. Valid values: BASELINE, HIGH, and MAIN. Default value: MAIN. The parameter takes effect only when the codec is H.264.
+	//
+	// example:
+	//
+	// MAIN
+	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+}
+
+func (s CreateMediaLiveChannelRequestVideoSettingsVideoCodecSettingCodecDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMediaLiveChannelRequestVideoSettingsVideoCodecSettingCodecDetail) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMediaLiveChannelRequestVideoSettingsVideoCodecSettingCodecDetail) SetLevel(v string) *CreateMediaLiveChannelRequestVideoSettingsVideoCodecSettingCodecDetail {
+	s.Level = &v
+	return s
+}
+
+func (s *CreateMediaLiveChannelRequestVideoSettingsVideoCodecSettingCodecDetail) SetProfile(v string) *CreateMediaLiveChannelRequestVideoSettingsVideoCodecSettingCodecDetail {
+	s.Profile = &v
+	return s
+}
+
+type CreateMediaLiveChannelRequestVideoSettingsVideoCodecSettingFramerate struct {
+	// The frame rate mode. Valid values: SPECIFIED (fixed frame rate) and FROM_SOURCE (use source specification).
+	//
+	// example:
+	//
+	// SPECIFIED
+	FramerateControl *string `json:"FramerateControl,omitempty" xml:"FramerateControl,omitempty"`
+	// The denominator of the fixed frame rate. The parameter is required when FramerateControl is set to SPECIFIED. Valid values: 1 to 60. The numerator must be divisible by the denominator.
+	//
+	// example:
+	//
+	// 1
+	FramerateDenominator *int32 `json:"FramerateDenominator,omitempty" xml:"FramerateDenominator,omitempty"`
+	// The numerator of the fixed frame rate. The parameter is required when FramerateControl is set to SPECIFIED. Valid values: 1 to 60. The numerator must be divisible by the denominator.
+	//
+	// example:
+	//
+	// 25
+	FramerateNumerator *int32 `json:"FramerateNumerator,omitempty" xml:"FramerateNumerator,omitempty"`
+}
+
+func (s CreateMediaLiveChannelRequestVideoSettingsVideoCodecSettingFramerate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMediaLiveChannelRequestVideoSettingsVideoCodecSettingFramerate) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMediaLiveChannelRequestVideoSettingsVideoCodecSettingFramerate) SetFramerateControl(v string) *CreateMediaLiveChannelRequestVideoSettingsVideoCodecSettingFramerate {
+	s.FramerateControl = &v
+	return s
+}
+
+func (s *CreateMediaLiveChannelRequestVideoSettingsVideoCodecSettingFramerate) SetFramerateDenominator(v int32) *CreateMediaLiveChannelRequestVideoSettingsVideoCodecSettingFramerate {
+	s.FramerateDenominator = &v
+	return s
+}
+
+func (s *CreateMediaLiveChannelRequestVideoSettingsVideoCodecSettingFramerate) SetFramerateNumerator(v int32) *CreateMediaLiveChannelRequestVideoSettingsVideoCodecSettingFramerate {
+	s.FramerateNumerator = &v
+	return s
+}
+
+type CreateMediaLiveChannelRequestVideoSettingsVideoCodecSettingGop struct {
+	// The number of B frames. Valid values: 1 to 3.
+	//
+	// example:
+	//
+	// 3
+	BframesNum *int32 `json:"BframesNum,omitempty" xml:"BframesNum,omitempty"`
+	// The GOP size. When GopSizeUnits is set to SECONDS, the value range is from 1 to 20. When GopSizeUnits is set to FRAMES, the value range is from 1 to 3000.
+	//
+	// example:
+	//
+	// 90
+	GopSize *int32 `json:"GopSize,omitempty" xml:"GopSize,omitempty"`
+	// The GOP size unit. Valid values: FRAMES and SECONDS.
+	//
+	// example:
+	//
+	// FRAMES
+	GopSizeUnits *string `json:"GopSizeUnits,omitempty" xml:"GopSizeUnits,omitempty"`
+}
+
+func (s CreateMediaLiveChannelRequestVideoSettingsVideoCodecSettingGop) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMediaLiveChannelRequestVideoSettingsVideoCodecSettingGop) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMediaLiveChannelRequestVideoSettingsVideoCodecSettingGop) SetBframesNum(v int32) *CreateMediaLiveChannelRequestVideoSettingsVideoCodecSettingGop {
+	s.BframesNum = &v
+	return s
+}
+
+func (s *CreateMediaLiveChannelRequestVideoSettingsVideoCodecSettingGop) SetGopSize(v int32) *CreateMediaLiveChannelRequestVideoSettingsVideoCodecSettingGop {
+	s.GopSize = &v
+	return s
+}
+
+func (s *CreateMediaLiveChannelRequestVideoSettingsVideoCodecSettingGop) SetGopSizeUnits(v string) *CreateMediaLiveChannelRequestVideoSettingsVideoCodecSettingGop {
+	s.GopSizeUnits = &v
+	return s
+}
+
+type CreateMediaLiveChannelRequestVideoSettingsVideoCodecSettingRate struct {
+	// The video bitrate. Unit: bit/s. If you set it to 0 or leave it empty, the source specification is used. Valid values: 50000 to 6000000. The value must be divisible by 1000.
+	//
+	// example:
+	//
+	// 2500000
+	Bitrate *int32 `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The video buffer size. Unit: bit/s. Valid values: 100000 to 6000000. The value must be divisible by 1000.
+	//
+	// example:
+	//
+	// 6000000
+	BufferSize *int32 `json:"BufferSize,omitempty" xml:"BufferSize,omitempty"`
+	// The maximum bitrate. Unit: bit/s. Valid values: 100000 to 6000000. The value must be divisible by 1000.
+	//
+	// example:
+	//
+	// 6000000
+	MaxBitrate *int32 `json:"MaxBitrate,omitempty" xml:"MaxBitrate,omitempty"`
+	// The bitrate control mode. Valid values: CBR, ABR, and VBR.
+	//
+	// example:
+	//
+	// ABR
+	RateControlMode *string `json:"RateControlMode,omitempty" xml:"RateControlMode,omitempty"`
+}
+
+func (s CreateMediaLiveChannelRequestVideoSettingsVideoCodecSettingRate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMediaLiveChannelRequestVideoSettingsVideoCodecSettingRate) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMediaLiveChannelRequestVideoSettingsVideoCodecSettingRate) SetBitrate(v int32) *CreateMediaLiveChannelRequestVideoSettingsVideoCodecSettingRate {
+	s.Bitrate = &v
+	return s
+}
+
+func (s *CreateMediaLiveChannelRequestVideoSettingsVideoCodecSettingRate) SetBufferSize(v int32) *CreateMediaLiveChannelRequestVideoSettingsVideoCodecSettingRate {
+	s.BufferSize = &v
+	return s
+}
+
+func (s *CreateMediaLiveChannelRequestVideoSettingsVideoCodecSettingRate) SetMaxBitrate(v int32) *CreateMediaLiveChannelRequestVideoSettingsVideoCodecSettingRate {
+	s.MaxBitrate = &v
+	return s
+}
+
+func (s *CreateMediaLiveChannelRequestVideoSettingsVideoCodecSettingRate) SetRateControlMode(v string) *CreateMediaLiveChannelRequestVideoSettingsVideoCodecSettingRate {
+	s.RateControlMode = &v
+	return s
+}
+
+type CreateMediaLiveChannelShrinkRequest struct {
+	// The audio settings.
+	AudioSettingsShrink *string `json:"AudioSettings,omitempty" xml:"AudioSettings,omitempty"`
+	// The associated inputs.
+	//
+	// This parameter is required.
+	InputAttachmentsShrink *string `json:"InputAttachments,omitempty" xml:"InputAttachments,omitempty"`
+	// The name of the channel. Letters, digits, hyphens (-), and underscores (_) are supported. It can be up to 64 characters in length.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// mych
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The output groups.
+	//
+	// This parameter is required.
+	OutputGroupsShrink *string `json:"OutputGroups,omitempty" xml:"OutputGroups,omitempty"`
+	// The video settings.
+	VideoSettingsShrink *string `json:"VideoSettings,omitempty" xml:"VideoSettings,omitempty"`
+}
+
+func (s CreateMediaLiveChannelShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMediaLiveChannelShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMediaLiveChannelShrinkRequest) SetAudioSettingsShrink(v string) *CreateMediaLiveChannelShrinkRequest {
+	s.AudioSettingsShrink = &v
+	return s
+}
+
+func (s *CreateMediaLiveChannelShrinkRequest) SetInputAttachmentsShrink(v string) *CreateMediaLiveChannelShrinkRequest {
+	s.InputAttachmentsShrink = &v
+	return s
+}
+
+func (s *CreateMediaLiveChannelShrinkRequest) SetName(v string) *CreateMediaLiveChannelShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateMediaLiveChannelShrinkRequest) SetOutputGroupsShrink(v string) *CreateMediaLiveChannelShrinkRequest {
+	s.OutputGroupsShrink = &v
+	return s
+}
+
+func (s *CreateMediaLiveChannelShrinkRequest) SetVideoSettingsShrink(v string) *CreateMediaLiveChannelShrinkRequest {
+	s.VideoSettingsShrink = &v
+	return s
+}
+
+type CreateMediaLiveChannelResponseBody struct {
+	// The ID of the channel.
+	//
+	// example:
+	//
+	// SEGK5KA6KYKAWQQH
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// ******11-DB8D-4A9A-875B-275798******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateMediaLiveChannelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMediaLiveChannelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMediaLiveChannelResponseBody) SetChannelId(v string) *CreateMediaLiveChannelResponseBody {
+	s.ChannelId = &v
+	return s
+}
+
+func (s *CreateMediaLiveChannelResponseBody) SetRequestId(v string) *CreateMediaLiveChannelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateMediaLiveChannelResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateMediaLiveChannelResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateMediaLiveChannelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMediaLiveChannelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMediaLiveChannelResponse) SetHeaders(v map[string]*string) *CreateMediaLiveChannelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateMediaLiveChannelResponse) SetStatusCode(v int32) *CreateMediaLiveChannelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateMediaLiveChannelResponse) SetBody(v *CreateMediaLiveChannelResponseBody) *CreateMediaLiveChannelResponse {
+	s.Body = v
+	return s
+}
+
+type CreateMediaLiveInputRequest struct {
+	// The input settings. An input can have up to two sources: primary and backup sources.
+	//
+	// This parameter is required.
+	InputSettings []*CreateMediaLiveInputRequestInputSettings `json:"InputSettings,omitempty" xml:"InputSettings,omitempty" type:"Repeated"`
+	// The name of the input. Letters, digits, hyphens (-), and underscores (_) are supported. It can be up to 64 characters in length.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// myinput
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The IDs of the security groups to be associated with the input. This parameter is required for PUSH inputs.
+	//
+	// example:
+	//
+	// ["G6G4X5T4SZYPSTT5"]
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
+	// The input type. Valid values: RTMP_PUSH, RTMP_PULL, SRT_PUSH, and SRT_PULL.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// RTMP_PUSH
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateMediaLiveInputRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMediaLiveInputRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMediaLiveInputRequest) SetInputSettings(v []*CreateMediaLiveInputRequestInputSettings) *CreateMediaLiveInputRequest {
+	s.InputSettings = v
+	return s
+}
+
+func (s *CreateMediaLiveInputRequest) SetName(v string) *CreateMediaLiveInputRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateMediaLiveInputRequest) SetSecurityGroupIds(v []*string) *CreateMediaLiveInputRequest {
+	s.SecurityGroupIds = v
+	return s
+}
+
+func (s *CreateMediaLiveInputRequest) SetType(v string) *CreateMediaLiveInputRequest {
+	s.Type = &v
+	return s
+}
+
+type CreateMediaLiveInputRequestInputSettings struct {
+	FlowId         *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	FlowOutputName *string `json:"FlowOutputName,omitempty" xml:"FlowOutputName,omitempty"`
+	// The source URL where the stream is pulled from. This parameter is required for PULL inputs.
+	//
+	// example:
+	//
+	// rtmp://domain/app/stream
+	SourceUrl *string `json:"SourceUrl,omitempty" xml:"SourceUrl,omitempty"`
+	// The name of the pushed stream. This parameter is required for PUSH inputs. It can be up to 255 characters in length.
+	//
+	// example:
+	//
+	// mystream
+	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
+}
+
+func (s CreateMediaLiveInputRequestInputSettings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMediaLiveInputRequestInputSettings) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMediaLiveInputRequestInputSettings) SetFlowId(v string) *CreateMediaLiveInputRequestInputSettings {
+	s.FlowId = &v
+	return s
+}
+
+func (s *CreateMediaLiveInputRequestInputSettings) SetFlowOutputName(v string) *CreateMediaLiveInputRequestInputSettings {
+	s.FlowOutputName = &v
+	return s
+}
+
+func (s *CreateMediaLiveInputRequestInputSettings) SetSourceUrl(v string) *CreateMediaLiveInputRequestInputSettings {
+	s.SourceUrl = &v
+	return s
+}
+
+func (s *CreateMediaLiveInputRequestInputSettings) SetStreamName(v string) *CreateMediaLiveInputRequestInputSettings {
+	s.StreamName = &v
+	return s
+}
+
+type CreateMediaLiveInputShrinkRequest struct {
+	// The input settings. An input can have up to two sources: primary and backup sources.
+	//
+	// This parameter is required.
+	InputSettingsShrink *string `json:"InputSettings,omitempty" xml:"InputSettings,omitempty"`
+	// The name of the input. Letters, digits, hyphens (-), and underscores (_) are supported. It can be up to 64 characters in length.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// myinput
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The IDs of the security groups to be associated with the input. This parameter is required for PUSH inputs.
+	//
+	// example:
+	//
+	// ["G6G4X5T4SZYPSTT5"]
+	SecurityGroupIdsShrink *string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty"`
+	// The input type. Valid values: RTMP_PUSH, RTMP_PULL, SRT_PUSH, and SRT_PULL.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// RTMP_PUSH
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateMediaLiveInputShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMediaLiveInputShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMediaLiveInputShrinkRequest) SetInputSettingsShrink(v string) *CreateMediaLiveInputShrinkRequest {
+	s.InputSettingsShrink = &v
+	return s
+}
+
+func (s *CreateMediaLiveInputShrinkRequest) SetName(v string) *CreateMediaLiveInputShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateMediaLiveInputShrinkRequest) SetSecurityGroupIdsShrink(v string) *CreateMediaLiveInputShrinkRequest {
+	s.SecurityGroupIdsShrink = &v
+	return s
+}
+
+func (s *CreateMediaLiveInputShrinkRequest) SetType(v string) *CreateMediaLiveInputShrinkRequest {
+	s.Type = &v
+	return s
+}
+
+type CreateMediaLiveInputResponseBody struct {
+	// The ID of the input.
+	//
+	// example:
+	//
+	// SEGK5KA6KYKAWQQH
+	InputId *string `json:"InputId,omitempty" xml:"InputId,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// ******11-DB8D-4A9A-875B-275798******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateMediaLiveInputResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMediaLiveInputResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMediaLiveInputResponseBody) SetInputId(v string) *CreateMediaLiveInputResponseBody {
+	s.InputId = &v
+	return s
+}
+
+func (s *CreateMediaLiveInputResponseBody) SetRequestId(v string) *CreateMediaLiveInputResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateMediaLiveInputResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateMediaLiveInputResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateMediaLiveInputResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMediaLiveInputResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMediaLiveInputResponse) SetHeaders(v map[string]*string) *CreateMediaLiveInputResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateMediaLiveInputResponse) SetStatusCode(v int32) *CreateMediaLiveInputResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateMediaLiveInputResponse) SetBody(v *CreateMediaLiveInputResponseBody) *CreateMediaLiveInputResponse {
+	s.Body = v
+	return s
+}
+
+type CreateMediaLiveInputSecurityGroupRequest struct {
+	// The name of the security group. Letters, digits, hyphens (-), and underscores (_) are supported. The maximum length is 64 characters.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// mysg
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The security group rules.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ["10.1.1.0/24", "11.11.11.11/0"]
+	WhitelistRules []*string `json:"WhitelistRules,omitempty" xml:"WhitelistRules,omitempty" type:"Repeated"`
+}
+
+func (s CreateMediaLiveInputSecurityGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMediaLiveInputSecurityGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMediaLiveInputSecurityGroupRequest) SetName(v string) *CreateMediaLiveInputSecurityGroupRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateMediaLiveInputSecurityGroupRequest) SetWhitelistRules(v []*string) *CreateMediaLiveInputSecurityGroupRequest {
+	s.WhitelistRules = v
+	return s
+}
+
+type CreateMediaLiveInputSecurityGroupShrinkRequest struct {
+	// The name of the security group. Letters, digits, hyphens (-), and underscores (_) are supported. The maximum length is 64 characters.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// mysg
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The security group rules.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ["10.1.1.0/24", "11.11.11.11/0"]
+	WhitelistRulesShrink *string `json:"WhitelistRules,omitempty" xml:"WhitelistRules,omitempty"`
+}
+
+func (s CreateMediaLiveInputSecurityGroupShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMediaLiveInputSecurityGroupShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMediaLiveInputSecurityGroupShrinkRequest) SetName(v string) *CreateMediaLiveInputSecurityGroupShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateMediaLiveInputSecurityGroupShrinkRequest) SetWhitelistRulesShrink(v string) *CreateMediaLiveInputSecurityGroupShrinkRequest {
+	s.WhitelistRulesShrink = &v
+	return s
+}
+
+type CreateMediaLiveInputSecurityGroupResponseBody struct {
+	// The ID of the request.
+	//
+	// example:
+	//
+	// ******11-DB8D-4A9A-875B-275798******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the security group.
+	//
+	// example:
+	//
+	// SEGK5KA6KYKAWQQH
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+}
+
+func (s CreateMediaLiveInputSecurityGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMediaLiveInputSecurityGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMediaLiveInputSecurityGroupResponseBody) SetRequestId(v string) *CreateMediaLiveInputSecurityGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateMediaLiveInputSecurityGroupResponseBody) SetSecurityGroupId(v string) *CreateMediaLiveInputSecurityGroupResponseBody {
+	s.SecurityGroupId = &v
+	return s
+}
+
+type CreateMediaLiveInputSecurityGroupResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateMediaLiveInputSecurityGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateMediaLiveInputSecurityGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMediaLiveInputSecurityGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMediaLiveInputSecurityGroupResponse) SetHeaders(v map[string]*string) *CreateMediaLiveInputSecurityGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateMediaLiveInputSecurityGroupResponse) SetStatusCode(v int32) *CreateMediaLiveInputSecurityGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateMediaLiveInputSecurityGroupResponse) SetBody(v *CreateMediaLiveInputSecurityGroupResponseBody) *CreateMediaLiveInputSecurityGroupResponse {
 	s.Body = v
 	return s
 }
@@ -9279,44 +10738,60 @@ func (s *CreatePipelineResponse) SetBody(v *CreatePipelineResponseBody) *CreateP
 }
 
 type CreateProgramRequest struct {
+	// The information about ad breaks.
+	//
 	// example:
 	//
 	// [{"MessageType":"SPLICE_INSERT","OffsetMillis":1000,"SourceLocationName":"MySourceLocation","SourceName":"MyAdSource","SpliceInsertSettings":{"AvailNumber":0,"AvailExpected":0,"SpliceEventID":1,"UniqueProgramID":0}}]
 	AdBreaks *string `json:"AdBreaks,omitempty" xml:"AdBreaks,omitempty"`
+	// The name of the channel.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// MyChannel
 	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+	// Extracts a clip from the source.
+	//
 	// example:
 	//
 	// {StartOffsetMillis: 213123, EndOffsetMillis: 213134}
 	ClipRange *string `json:"ClipRange,omitempty" xml:"ClipRange,omitempty"`
+	// The name of the program.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// program1
 	ProgramName *string `json:"ProgramName,omitempty" xml:"ProgramName,omitempty"`
+	// The source location.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// MySourceLcation
 	SourceLocationName *string `json:"SourceLocationName,omitempty" xml:"SourceLocationName,omitempty"`
+	// The name of the source.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// MySource
 	SourceName *string `json:"SourceName,omitempty" xml:"SourceName,omitempty"`
+	// The source type of the program.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// vodSource
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The program transition method.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -9374,7 +10849,10 @@ func (s *CreateProgramRequest) SetTransition(v string) *CreateProgramRequest {
 }
 
 type CreateProgramResponseBody struct {
+	// The information about the program.
 	Program *ChannelAssemblyProgram `json:"Program,omitempty" xml:"Program,omitempty"`
+	// **Request ID**
+	//
 	// example:
 	//
 	// xxx-xxxx-xxxxx-xxxx
@@ -9667,6 +11145,8 @@ func (s *CreateSearchLibResponse) SetBody(v *CreateSearchLibResponseBody) *Creat
 }
 
 type CreateSourceRequest struct {
+	// The source configurations.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -9681,18 +11161,24 @@ type CreateSourceRequest struct {
 	//
 	// }]”
 	HttpPackageConfigurations *string `json:"HttpPackageConfigurations,omitempty" xml:"HttpPackageConfigurations,omitempty"`
+	// The name of the source location.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// MySourceLocation
 	SourceLocationName *string `json:"SourceLocationName,omitempty" xml:"SourceLocationName,omitempty"`
+	// The name of the source.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// MyVodSource
 	SourceName *string `json:"SourceName,omitempty" xml:"SourceName,omitempty"`
+	// The source type. Valid values: vodSource and liveSource.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -9730,11 +11216,14 @@ func (s *CreateSourceRequest) SetSourceType(v string) *CreateSourceRequest {
 }
 
 type CreateSourceResponseBody struct {
+	// **Request ID**
+	//
 	// example:
 	//
 	// xxx-xxxx-xxxxx-xxxx
-	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Source    *ChannelAssemblySource `json:"Source,omitempty" xml:"Source,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The source information.
+	Source *ChannelAssemblySource `json:"Source,omitempty" xml:"Source,omitempty"`
 }
 
 func (s CreateSourceResponseBody) String() string {
@@ -9785,20 +11274,28 @@ func (s *CreateSourceResponse) SetBody(v *CreateSourceResponseBody) *CreateSourc
 }
 
 type CreateSourceLocationRequest struct {
+	// The protocol and hostname of the source location.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// http://xxx.com
 	BaseUrl *string `json:"BaseUrl,omitempty" xml:"BaseUrl,omitempty"`
+	// Specifies whether to use an independent domain name to access the segments.
+	//
 	// example:
 	//
 	// true
 	EnableSegmentDelivery *bool `json:"EnableSegmentDelivery,omitempty" xml:"EnableSegmentDelivery,omitempty"`
+	// The domain name used to access the segments.
+	//
 	// example:
 	//
 	// http://xxxxx.com
 	SegmentDeliveryUrl *string `json:"SegmentDeliveryUrl,omitempty" xml:"SegmentDeliveryUrl,omitempty"`
+	// The name of the source location.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -9836,10 +11333,13 @@ func (s *CreateSourceLocationRequest) SetSourceLocationName(v string) *CreateSou
 }
 
 type CreateSourceLocationResponseBody struct {
+	// **Request ID**
+	//
 	// example:
 	//
 	// xxx-xxxx-xxxxx-xxxx
-	RequestId      *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The source location information.
 	SourceLocation *ChannelAssemblySourceLocation `json:"SourceLocation,omitempty" xml:"SourceLocation,omitempty"`
 }
 
@@ -10336,23 +11836,32 @@ func (s *CreateUploadStreamResponse) SetBody(v *CreateUploadStreamResponseBody) 
 }
 
 type CreateVodPackagingAssetRequest struct {
+	// The name of the asset. The name must be unique and can be up to 128 characters in length. Letters, digits, underscores (_), and hyphens (-) are supported.
+	//
 	// example:
 	//
 	// hls_3s
 	AssetName *string `json:"AssetName,omitempty" xml:"AssetName,omitempty"`
+	// The content ID in the digital rights management (DRM) system. The maximum length is 256 characters. Letters, digits, underscores (_), and hyphens (-) are supported.
+	//
 	// example:
 	//
 	// movie
 	ContentId *string `json:"ContentId,omitempty" xml:"ContentId,omitempty"`
+	// The asset description.
+	//
 	// example:
 	//
 	// HLS 3 second packaging
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the packaging group.
+	//
 	// example:
 	//
 	// vod_hls
-	GroupName *string                              `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	Input     *CreateVodPackagingAssetRequestInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The asset input configurations.
+	Input *CreateVodPackagingAssetRequestInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
 }
 
 func (s CreateVodPackagingAssetRequest) String() string {
@@ -10389,7 +11898,10 @@ func (s *CreateVodPackagingAssetRequest) SetInput(v *CreateVodPackagingAssetRequ
 }
 
 type CreateVodPackagingAssetRequestInput struct {
+	// The URL of the media file. Only M3U8 files stored in OSS are supported.
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The input type. Only Object Storage Service (OSS) is supported.
+	//
 	// example:
 	//
 	// OSS
@@ -10415,22 +11927,31 @@ func (s *CreateVodPackagingAssetRequestInput) SetType(v string) *CreateVodPackag
 }
 
 type CreateVodPackagingAssetShrinkRequest struct {
+	// The name of the asset. The name must be unique and can be up to 128 characters in length. Letters, digits, underscores (_), and hyphens (-) are supported.
+	//
 	// example:
 	//
 	// hls_3s
 	AssetName *string `json:"AssetName,omitempty" xml:"AssetName,omitempty"`
+	// The content ID in the digital rights management (DRM) system. The maximum length is 256 characters. Letters, digits, underscores (_), and hyphens (-) are supported.
+	//
 	// example:
 	//
 	// movie
 	ContentId *string `json:"ContentId,omitempty" xml:"ContentId,omitempty"`
+	// The asset description.
+	//
 	// example:
 	//
 	// HLS 3 second packaging
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the packaging group.
+	//
 	// example:
 	//
 	// vod_hls
-	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The asset input configurations.
 	InputShrink *string `json:"Input,omitempty" xml:"Input,omitempty"`
 }
 
@@ -10468,7 +11989,10 @@ func (s *CreateVodPackagingAssetShrinkRequest) SetInputShrink(v string) *CreateV
 }
 
 type CreateVodPackagingAssetResponseBody struct {
+	// The information about the asset.
 	Asset *VodPackagingAsset `json:"Asset,omitempty" xml:"Asset,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 25818875-5F78-4A13-BEF6-D7393642CA58
@@ -10523,19 +12047,34 @@ func (s *CreateVodPackagingAssetResponse) SetBody(v *CreateVodPackagingAssetResp
 }
 
 type CreateVodPackagingConfigurationRequest struct {
+	// The name of the packaging configuration. The name must be unique in an account and can be up to 128 characters in length. Letters, digits, underscores (_), and hyphens (-) are supported.
+	//
 	// example:
 	//
 	// hls_3s
 	ConfigurationName *string `json:"ConfigurationName,omitempty" xml:"ConfigurationName,omitempty"`
+	// The description of the packaging configuration.
+	//
 	// example:
 	//
 	// HLS 3s vod packaging
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the packaging group. The name can be up to 128 characters in length. Letters, digits, underscores (_), and hyphens (-) are supported.
+	//
 	// example:
 	//
 	// vod_hls
-	GroupName     *string                                              `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The packaging configuration.
 	PackageConfig *CreateVodPackagingConfigurationRequestPackageConfig `json:"PackageConfig,omitempty" xml:"PackageConfig,omitempty" type:"Struct"`
+	// The package type.
+	//
+	// 	- HLS: packages content into TS segments for delivery over the HLS protocol.
+	//
+	// 	- HLS_CMAF: packages content into CMAF segments for delivery over the HLS protocol.
+	//
+	// 	- DASH: packages content for delivery over the DASH protocol.
+	//
 	// example:
 	//
 	// HLS
@@ -10576,17 +12115,24 @@ func (s *CreateVodPackagingConfigurationRequest) SetProtocol(v string) *CreateVo
 }
 
 type CreateVodPackagingConfigurationRequestPackageConfig struct {
+	// The settings of digital rights management (DRM) encryption.
+	//
 	// if can be null:
 	// true
 	DrmProvider *CreateVodPackagingConfigurationRequestPackageConfigDrmProvider `json:"DrmProvider,omitempty" xml:"DrmProvider,omitempty" type:"Struct"`
+	// The manifest name. The name can be up to 128 characters in length. Letters, digits, underscores (_), and hyphens (-) are supported.
+	//
 	// example:
 	//
 	// index
 	ManifestName *string `json:"ManifestName,omitempty" xml:"ManifestName,omitempty"`
+	// The duration of each segment in a packaged stream. Unit: seconds. MediaPackage rounds segments to the nearest multiple of the input segment duration. Valid values: 1 to 30.
+	//
 	// example:
 	//
 	// 6
-	SegmentDuration *int64                                                              `json:"SegmentDuration,omitempty" xml:"SegmentDuration,omitempty"`
+	SegmentDuration *int64 `json:"SegmentDuration,omitempty" xml:"SegmentDuration,omitempty"`
+	// The settings of stream selection.
 	StreamSelection *CreateVodPackagingConfigurationRequestPackageConfigStreamSelection `json:"StreamSelection,omitempty" xml:"StreamSelection,omitempty" type:"Struct"`
 }
 
@@ -10619,16 +12165,40 @@ func (s *CreateVodPackagingConfigurationRequestPackageConfig) SetStreamSelection
 }
 
 type CreateVodPackagingConfigurationRequestPackageConfigDrmProvider struct {
+	// The encryption method. Valid values:
+	//
+	// 	- AES_128: Advanced Encryption Standard (AES) with 128-bit key length.
+	//
+	// 	- SAMPLE_AES: an encryption method that encrypts individual media samples.
+	//
 	// example:
 	//
 	// AES_128
 	EncryptionMethod *string `json:"EncryptionMethod,omitempty" xml:"EncryptionMethod,omitempty"`
+	// A 128-bit, 16-byte hex value represented by a 32-character string that is used with the key for encrypting data blocks. If you leave this parameter empty, MediaPackage creates a constant initialization vector (IV). If it is specified, the value is passed to the DRM service.
+	//
 	// example:
 	//
 	// 00001111222233334444555566667777
-	IV        *string   `json:"IV,omitempty" xml:"IV,omitempty"`
+	IV *string `json:"IV,omitempty" xml:"IV,omitempty"`
+	// The ID of the DRM system. The maximum number of system IDs allowed is determined by the protocol type. Limits:
+	//
+	// 	- DASH: 2
+	//
+	// 	- HLS: 1
+	//
+	// 	- HLS_CMAF: 2
+	//
+	// Apple FairPlay, Google Widevine, and Microsoft PlayReady are supported. Their system IDs are as follows:
+	//
+	// 	- Apple FairPlay: 94ce86fb-07ff-4f43-adb8-93d2fa968ca2
+	//
+	// 	- Google Widevine: edef8ba9-79d6-4ace-a3c8-27dcd51d21e
+	//
+	// 	- Microsoft PlayReady: 9a04f079-9840-4286-ab92-e65be0885f95
 	SystemIds []*string `json:"SystemIds,omitempty" xml:"SystemIds,omitempty" type:"Repeated"`
-	Url       *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	// The URL of the DRM key provider.
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s CreateVodPackagingConfigurationRequestPackageConfigDrmProvider) String() string {
@@ -10660,14 +12230,26 @@ func (s *CreateVodPackagingConfigurationRequestPackageConfigDrmProvider) SetUrl(
 }
 
 type CreateVodPackagingConfigurationRequestPackageConfigStreamSelection struct {
+	// The maximum bitrate of the video stream. Unit: bit/s.
+	//
 	// example:
 	//
 	// 1000000000
 	MaxVideoBitsPerSecond *int64 `json:"MaxVideoBitsPerSecond,omitempty" xml:"MaxVideoBitsPerSecond,omitempty"`
+	// The minimum bitrate of the video stream. Unit: bit/s.
+	//
 	// example:
 	//
 	// 100000
 	MinVideoBitsPerSecond *int64 `json:"MinVideoBitsPerSecond,omitempty" xml:"MinVideoBitsPerSecond,omitempty"`
+	// The order of manifest files in the master playlist. Valid values:
+	//
+	// 	- ORIGINAL: sorts the manifest files in the same order as the source.
+	//
+	// 	- VIDEO_BITRATE_ASCENDING: sorts the manifest files in ascending order of bitrates, from lowest to highest.
+	//
+	// 	- VIDEO_BITRATE_DESCENDING: sorts the manifest files in descending order of bitrates, from highest to lowest.
+	//
 	// example:
 	//
 	// ORIGINAL
@@ -10698,19 +12280,34 @@ func (s *CreateVodPackagingConfigurationRequestPackageConfigStreamSelection) Set
 }
 
 type CreateVodPackagingConfigurationShrinkRequest struct {
+	// The name of the packaging configuration. The name must be unique in an account and can be up to 128 characters in length. Letters, digits, underscores (_), and hyphens (-) are supported.
+	//
 	// example:
 	//
 	// hls_3s
 	ConfigurationName *string `json:"ConfigurationName,omitempty" xml:"ConfigurationName,omitempty"`
+	// The description of the packaging configuration.
+	//
 	// example:
 	//
 	// HLS 3s vod packaging
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the packaging group. The name can be up to 128 characters in length. Letters, digits, underscores (_), and hyphens (-) are supported.
+	//
 	// example:
 	//
 	// vod_hls
-	GroupName           *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The packaging configuration.
 	PackageConfigShrink *string `json:"PackageConfig,omitempty" xml:"PackageConfig,omitempty"`
+	// The package type.
+	//
+	// 	- HLS: packages content into TS segments for delivery over the HLS protocol.
+	//
+	// 	- HLS_CMAF: packages content into CMAF segments for delivery over the HLS protocol.
+	//
+	// 	- DASH: packages content for delivery over the DASH protocol.
+	//
 	// example:
 	//
 	// HLS
@@ -10751,7 +12348,10 @@ func (s *CreateVodPackagingConfigurationShrinkRequest) SetProtocol(v string) *Cr
 }
 
 type CreateVodPackagingConfigurationResponseBody struct {
+	// The packaging configuration.
 	PackagingConfiguration *VodPackagingConfiguration `json:"PackagingConfiguration,omitempty" xml:"PackagingConfiguration,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
@@ -10806,10 +12406,14 @@ func (s *CreateVodPackagingConfigurationResponse) SetBody(v *CreateVodPackagingC
 }
 
 type CreateVodPackagingGroupRequest struct {
+	// The packaging group description.
+	//
 	// example:
 	//
 	// vod hls packaging
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the packaging group. The name must be unique in an account and can be up to 128 characters in length. Letters, digits, underscores (_), and hyphens (-) are supported.
+	//
 	// example:
 	//
 	// vod_hls
@@ -10835,7 +12439,10 @@ func (s *CreateVodPackagingGroupRequest) SetGroupName(v string) *CreateVodPackag
 }
 
 type CreateVodPackagingGroupResponseBody struct {
+	// The packaging group information.
 	PackagingGroup *VodPackagingGroup `json:"PackagingGroup,omitempty" xml:"PackagingGroup,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
@@ -11087,7 +12694,7 @@ func (s *DeleteAIAgentDialogueResponse) SetBody(v *DeleteAIAgentDialogueResponse
 }
 
 type DeleteAdInsertionRequest struct {
-	// 代表资源一级ID的资源属性字段
+	// The name of the configuration that you want to delete.
 	//
 	// This parameter is required.
 	//
@@ -11111,6 +12718,8 @@ func (s *DeleteAdInsertionRequest) SetName(v string) *DeleteAdInsertionRequest {
 }
 
 type DeleteAdInsertionResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
@@ -11360,6 +12969,8 @@ func (s *DeleteCategoryResponse) SetBody(v *DeleteCategoryResponseBody) *DeleteC
 }
 
 type DeleteChannelRequest struct {
+	// The name of the channel.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -11382,10 +12993,18 @@ func (s *DeleteChannelRequest) SetChannelName(v string) *DeleteChannelRequest {
 }
 
 type DeleteChannelResponseBody struct {
+	// **Request ID**
+	//
 	// example:
 	//
 	// xxx-xxxx-xxxxx-xxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -12011,7 +13630,7 @@ func (s *DeleteEditingProjectsResponse) SetBody(v *DeleteEditingProjectsResponse
 }
 
 type DeleteLivePackageChannelRequest struct {
-	// 频道名称
+	// The channel name.
 	//
 	// This parameter is required.
 	//
@@ -12019,7 +13638,7 @@ type DeleteLivePackageChannelRequest struct {
 	//
 	// channel-1
 	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
-	// 频道组名称
+	// The channel group name.
 	//
 	// This parameter is required.
 	//
@@ -12048,6 +13667,11 @@ func (s *DeleteLivePackageChannelRequest) SetGroupName(v string) *DeleteLivePack
 }
 
 type DeleteLivePackageChannelResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 20B3A1B6-4BD2-5DE6-BCBC-098C9B4F4E91
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12094,9 +13718,13 @@ func (s *DeleteLivePackageChannelResponse) SetBody(v *DeleteLivePackageChannelRe
 }
 
 type DeleteLivePackageChannelGroupRequest struct {
-	// 代表资源一级ID的资源属性字段
+	// The channel group name.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// group1
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 }
 
@@ -12114,7 +13742,11 @@ func (s *DeleteLivePackageChannelGroupRequest) SetGroupName(v string) *DeleteLiv
 }
 
 type DeleteLivePackageChannelGroupResponseBody struct {
-	// 代表资源一级ID的资源属性字段
+	// The request ID.
+	//
+	// example:
+	//
+	// 5D87B753-0250-5D9D-B248-D40C3271F864
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12161,7 +13793,7 @@ func (s *DeleteLivePackageChannelGroupResponse) SetBody(v *DeleteLivePackageChan
 }
 
 type DeleteLivePackageOriginEndpointRequest struct {
-	// 频道名称
+	// The channel name.
 	//
 	// This parameter is required.
 	//
@@ -12169,7 +13801,7 @@ type DeleteLivePackageOriginEndpointRequest struct {
 	//
 	// channel-1
 	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
-	// 端点名称
+	// The endpoint name.
 	//
 	// This parameter is required.
 	//
@@ -12177,7 +13809,7 @@ type DeleteLivePackageOriginEndpointRequest struct {
 	//
 	// endpoint-1
 	EndpointName *string `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
-	// 频道组名称
+	// The channel group name.
 	//
 	// This parameter is required.
 	//
@@ -12211,6 +13843,11 @@ func (s *DeleteLivePackageOriginEndpointRequest) SetGroupName(v string) *DeleteL
 }
 
 type DeleteLivePackageOriginEndpointResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 5D87B753-0250-5D9D-B248-D40C3271F864
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12886,7 +14523,7 @@ func (s *DeleteLiveTranscodeTemplateResponse) SetBody(v *DeleteLiveTranscodeTemp
 }
 
 type DeleteMediaConnectFlowRequest struct {
-	// Flow instance ID
+	// The flow ID.
 	//
 	// This parameter is required.
 	//
@@ -12910,25 +14547,25 @@ func (s *DeleteMediaConnectFlowRequest) SetFlowId(v string) *DeleteMediaConnectF
 }
 
 type DeleteMediaConnectFlowResponseBody struct {
-	// Response body
+	// The response body.
 	//
 	// example:
 	//
 	// ""
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// Description of the API call
+	// The call description.
 	//
 	// example:
 	//
 	// OK
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Request ID
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 5AEC17BD-D80B-5F78-BE1B-F07DFA0C8622
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Returned error code, where `0` indicates success
+	// The returned error code. A value of `0` indicates the call is successful.
 	//
 	// example:
 	//
@@ -12994,7 +14631,7 @@ func (s *DeleteMediaConnectFlowResponse) SetBody(v *DeleteMediaConnectFlowRespon
 }
 
 type DeleteMediaConnectFlowInputRequest struct {
-	// Flow instance ID
+	// The flow ID.
 	//
 	// This parameter is required.
 	//
@@ -13018,25 +14655,25 @@ func (s *DeleteMediaConnectFlowInputRequest) SetFlowId(v string) *DeleteMediaCon
 }
 
 type DeleteMediaConnectFlowInputResponseBody struct {
-	// Response body
+	// The response body.
 	//
 	// example:
 	//
 	// ""
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// Description of the API call
+	// The call description.
 	//
 	// example:
 	//
 	// OK
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 请求ID
+	// The ID of the request.
 	//
 	// example:
 	//
 	// C0C02296-113C-5838-8FE9-8F3A32998DDC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Returned error code, 0 indicates success
+	// The returned error code. A value of 0 indicates the call is successful.
 	//
 	// example:
 	//
@@ -13102,7 +14739,7 @@ func (s *DeleteMediaConnectFlowInputResponse) SetBody(v *DeleteMediaConnectFlowI
 }
 
 type DeleteMediaConnectFlowOutputRequest struct {
-	// Flow instance ID
+	// The flow ID.
 	//
 	// This parameter is required.
 	//
@@ -13110,7 +14747,7 @@ type DeleteMediaConnectFlowOutputRequest struct {
 	//
 	// 34900dc6-90ec-4968-af3c-fcd87f231a5f
 	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	// Output name
+	// The name of the output that you want to delete.
 	//
 	// This parameter is required.
 	//
@@ -13139,25 +14776,25 @@ func (s *DeleteMediaConnectFlowOutputRequest) SetOutputName(v string) *DeleteMed
 }
 
 type DeleteMediaConnectFlowOutputResponseBody struct {
-	// Response body
+	// The response body.
 	//
 	// example:
 	//
 	// ""
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// Description of the API call
+	// The call description.
 	//
 	// example:
 	//
 	// OK
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Request ID
+	// The ID of the request.
 	//
 	// example:
 	//
 	// DF73E08E-F807-50F5-A2BD-B76391EAE8FF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Returned error code, 0 indicates success
+	// The returned error code. A value of 0 indicates the call is successful.
 	//
 	// example:
 	//
@@ -13473,6 +15110,231 @@ func (s *DeleteMediaInfosResponse) SetBody(v *DeleteMediaInfosResponseBody) *Del
 	return s
 }
 
+type DeleteMediaLiveChannelRequest struct {
+	// The ID of the channel.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SEGK5KA6KYKAWQQH
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+}
+
+func (s DeleteMediaLiveChannelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMediaLiveChannelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMediaLiveChannelRequest) SetChannelId(v string) *DeleteMediaLiveChannelRequest {
+	s.ChannelId = &v
+	return s
+}
+
+type DeleteMediaLiveChannelResponseBody struct {
+	// The ID of the request.
+	//
+	// example:
+	//
+	// ******11-DB8D-4A9A-875B-275798******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteMediaLiveChannelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMediaLiveChannelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMediaLiveChannelResponseBody) SetRequestId(v string) *DeleteMediaLiveChannelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteMediaLiveChannelResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteMediaLiveChannelResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteMediaLiveChannelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMediaLiveChannelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMediaLiveChannelResponse) SetHeaders(v map[string]*string) *DeleteMediaLiveChannelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteMediaLiveChannelResponse) SetStatusCode(v int32) *DeleteMediaLiveChannelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteMediaLiveChannelResponse) SetBody(v *DeleteMediaLiveChannelResponseBody) *DeleteMediaLiveChannelResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteMediaLiveInputRequest struct {
+	// The ID of the input.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SEGK5KA6KYKAWQQH
+	InputId *string `json:"InputId,omitempty" xml:"InputId,omitempty"`
+}
+
+func (s DeleteMediaLiveInputRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMediaLiveInputRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMediaLiveInputRequest) SetInputId(v string) *DeleteMediaLiveInputRequest {
+	s.InputId = &v
+	return s
+}
+
+type DeleteMediaLiveInputResponseBody struct {
+	// The ID of the request.
+	//
+	// example:
+	//
+	// ******11-DB8D-4A9A-875B-275798******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteMediaLiveInputResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMediaLiveInputResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMediaLiveInputResponseBody) SetRequestId(v string) *DeleteMediaLiveInputResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteMediaLiveInputResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteMediaLiveInputResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteMediaLiveInputResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMediaLiveInputResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMediaLiveInputResponse) SetHeaders(v map[string]*string) *DeleteMediaLiveInputResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteMediaLiveInputResponse) SetStatusCode(v int32) *DeleteMediaLiveInputResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteMediaLiveInputResponse) SetBody(v *DeleteMediaLiveInputResponseBody) *DeleteMediaLiveInputResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteMediaLiveInputSecurityGroupRequest struct {
+	// The ID of the security group.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SEGK5KA6KYKAWQQH
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+}
+
+func (s DeleteMediaLiveInputSecurityGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMediaLiveInputSecurityGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMediaLiveInputSecurityGroupRequest) SetSecurityGroupId(v string) *DeleteMediaLiveInputSecurityGroupRequest {
+	s.SecurityGroupId = &v
+	return s
+}
+
+type DeleteMediaLiveInputSecurityGroupResponseBody struct {
+	// The ID of the request.
+	//
+	// example:
+	//
+	// ******11-DB8D-4A9A-875B-275798******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteMediaLiveInputSecurityGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMediaLiveInputSecurityGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMediaLiveInputSecurityGroupResponseBody) SetRequestId(v string) *DeleteMediaLiveInputSecurityGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteMediaLiveInputSecurityGroupResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteMediaLiveInputSecurityGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteMediaLiveInputSecurityGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMediaLiveInputSecurityGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMediaLiveInputSecurityGroupResponse) SetHeaders(v map[string]*string) *DeleteMediaLiveInputSecurityGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteMediaLiveInputSecurityGroupResponse) SetStatusCode(v int32) *DeleteMediaLiveInputSecurityGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteMediaLiveInputSecurityGroupResponse) SetBody(v *DeleteMediaLiveInputSecurityGroupResponseBody) *DeleteMediaLiveInputSecurityGroupResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteMediaMarksRequest struct {
 	// The ID of the media asset.
 	//
@@ -13781,12 +15643,16 @@ func (s *DeletePlayInfoResponse) SetBody(v *DeletePlayInfoResponseBody) *DeleteP
 }
 
 type DeleteProgramRequest struct {
+	// The name of the channel.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// MyChannel
 	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+	// The name of the program.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -13814,10 +15680,14 @@ func (s *DeleteProgramRequest) SetProgramName(v string) *DeleteProgramRequest {
 }
 
 type DeleteProgramResponseBody struct {
+	// **Request ID**
+	//
 	// example:
 	//
 	// xxx-xxxx-xxxxx-xxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -13945,22 +15815,30 @@ func (s *DeleteSmartJobResponse) SetBody(v *DeleteSmartJobResponseBody) *DeleteS
 }
 
 type DeleteSourceRequest struct {
+	// Specifies whether to use delete markers.
+	//
 	// example:
 	//
 	// true
 	SoftDelete *bool `json:"SoftDelete,omitempty" xml:"SoftDelete,omitempty"`
+	// The name of the source location.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// MySourceLocation
 	SourceLocationName *string `json:"SourceLocationName,omitempty" xml:"SourceLocationName,omitempty"`
+	// The name of the source.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// MyVodSource
 	SourceName *string `json:"SourceName,omitempty" xml:"SourceName,omitempty"`
+	// The source type. Valid values: vodSource and liveSource.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -13998,10 +15876,18 @@ func (s *DeleteSourceRequest) SetSourceType(v string) *DeleteSourceRequest {
 }
 
 type DeleteSourceResponseBody struct {
+	// **Request ID**
+	//
 	// example:
 	//
 	// xxx-xxxx-xxxxx-xxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -14056,10 +15942,14 @@ func (s *DeleteSourceResponse) SetBody(v *DeleteSourceResponseBody) *DeleteSourc
 }
 
 type DeleteSourceLocationRequest struct {
+	// Specifies whether to use delete markers.
+	//
 	// example:
 	//
 	// true
 	SoftDelete *bool `json:"SoftDelete,omitempty" xml:"SoftDelete,omitempty"`
+	// The name of the source location.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -14087,10 +15977,18 @@ func (s *DeleteSourceLocationRequest) SetSourceLocationName(v string) *DeleteSou
 }
 
 type DeleteSourceLocationResponseBody struct {
+	// **Request ID**
+	//
 	// example:
 	//
 	// xxx-xxxx-xxxxx-xxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid value:
+	//
+	// 	- true: The request succeeded.
+	//
+	// 	- false: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -14218,6 +16116,8 @@ func (s *DeleteTemplateResponse) SetBody(v *DeleteTemplateResponseBody) *DeleteT
 }
 
 type DeleteVodPackagingAssetRequest struct {
+	// The name of the VOD packaging asset.
+	//
 	// example:
 	//
 	// 30min_movie
@@ -14238,6 +16138,8 @@ func (s *DeleteVodPackagingAssetRequest) SetAssetName(v string) *DeleteVodPackag
 }
 
 type DeleteVodPackagingAssetResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
@@ -14287,6 +16189,8 @@ func (s *DeleteVodPackagingAssetResponse) SetBody(v *DeleteVodPackagingAssetResp
 }
 
 type DeleteVodPackagingConfigurationRequest struct {
+	// The name of the packaging configuration.
+	//
 	// example:
 	//
 	// hls_3s
@@ -14307,6 +16211,8 @@ func (s *DeleteVodPackagingConfigurationRequest) SetConfigurationName(v string) 
 }
 
 type DeleteVodPackagingConfigurationResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
@@ -14356,6 +16262,8 @@ func (s *DeleteVodPackagingConfigurationResponse) SetBody(v *DeleteVodPackagingC
 }
 
 type DeleteVodPackagingGroupRequest struct {
+	// The name of the packaging group.
+	//
 	// example:
 	//
 	// vod_hls
@@ -14376,6 +16284,8 @@ func (s *DeleteVodPackagingGroupRequest) SetGroupName(v string) *DeleteVodPackag
 }
 
 type DeleteVodPackagingGroupResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 13cbb83e-043c-4728-ac35-*****
@@ -14425,6 +16335,8 @@ func (s *DeleteVodPackagingGroupResponse) SetBody(v *DeleteVodPackagingGroupResp
 }
 
 type DescribeAIAgentInstanceRequest struct {
+	// The ID of the AI agent that you want to query.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -14447,7 +16359,10 @@ func (s *DescribeAIAgentInstanceRequest) SetInstanceId(v string) *DescribeAIAgen
 }
 
 type DescribeAIAgentInstanceResponseBody struct {
+	// The information about the AI agent.
 	Instance *DescribeAIAgentInstanceResponseBodyInstance `json:"Instance,omitempty" xml:"Instance,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 7B117AF5-2A16-412C-B127-FA6175ED1AD0
@@ -14473,23 +16388,33 @@ func (s *DescribeAIAgentInstanceResponseBody) SetRequestId(v string) *DescribeAI
 }
 
 type DescribeAIAgentInstanceResponseBodyInstance struct {
+	// The URL of the call log file.
+	//
 	// example:
 	//
 	// https://example.com/call_logs/12345
 	CallLogUrl *string `json:"CallLogUrl,omitempty" xml:"CallLogUrl,omitempty"`
+	// The runtime configurations of the AI agent.
+	//
 	// example:
 	//
 	// {"VoiceChat":{"AgentUserId":"voice_agent_001","ChannelId":"voice_channel_001","AuthToken":"your_voice_chat_auth_token"}}
 	RuntimeConfig *AIAgentRuntimeConfig `json:"RuntimeConfig,omitempty" xml:"RuntimeConfig,omitempty"`
 	SessionId     *string               `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The state of the AI agent. Valid values: Finished and Executing.
+	//
 	// example:
 	//
 	// Finished
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The template configurations of the AI agent.
+	//
 	// example:
 	//
 	// {"VoiceChat": {"AppId": "your_voice_chat_app_id"}}
 	TemplateConfig *AIAgentTemplateConfig `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
+	// The custom information.
+	//
 	// example:
 	//
 	// {"Email":"johndoe@example.com","Preferences":{"Language":"en"}}
@@ -15447,6 +17372,14 @@ type DescribeNotifyConfigResponseBody struct {
 	//
 	// true
 	EnableNotify *bool `json:"EnableNotify,omitempty" xml:"EnableNotify,omitempty"`
+	// The event types. If this parameter is empty, all event types are selected.
+	//
+	// 	- agent_start: The agent is started.
+	//
+	// 	- agent_stop: The agent is stopped.
+	//
+	// 	- error: An error occurred.
+	//
 	// example:
 	//
 	// agent_start,agent_stop,error
@@ -16345,19 +18278,33 @@ func (s *DropSearchLibResponse) SetBody(v *DropSearchLibResponseBody) *DropSearc
 }
 
 type GenerateAIAgentCallRequest struct {
+	// The ID of the AI agent.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 39f8e0bc005e4f309379701645f4****
-	AIAgentId *string `json:"AIAgentId,omitempty" xml:"AIAgentId,omitempty"`
+	AIAgentId      *string                                   `json:"AIAgentId,omitempty" xml:"AIAgentId,omitempty"`
+	ChatSyncConfig *GenerateAIAgentCallRequestChatSyncConfig `json:"ChatSyncConfig,omitempty" xml:"ChatSyncConfig,omitempty" type:"Struct"`
+	// The time when the token expires. Unit: seconds. Default value: 3600. Valid values: 0 to 604800.
+	//
 	// example:
 	//
 	// 3600
-	Expire         *int64                 `json:"Expire,omitempty" xml:"Expire,omitempty"`
-	SessionId      *string                `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	Expire *int64 `json:"Expire,omitempty" xml:"Expire,omitempty"`
+	// example:
+	//
+	// fw1gr0bc005e4f309379701645f4****
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The template configurations of the AI agent. The specified configurations are merged with the template configurations that are specified in the console. If you do not specify this parameter, the system uses the default configurations for an AI agent created in the console.
 	TemplateConfig *AIAgentTemplateConfig `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
-	UserData       *string                `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// example:
+	//
+	// {"Email":"johndoe@example.com","Preferences":{"Language":"en"}}
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// The username of the AI agent in the channel. If you do not specify this parameter, the system automatically generates a username. The value can be up to 64 characters in length.
+	//
 	// example:
 	//
 	// 877ae632caae49b1afc81c2e8194ffb4
@@ -16374,6 +18321,11 @@ func (s GenerateAIAgentCallRequest) GoString() string {
 
 func (s *GenerateAIAgentCallRequest) SetAIAgentId(v string) *GenerateAIAgentCallRequest {
 	s.AIAgentId = &v
+	return s
+}
+
+func (s *GenerateAIAgentCallRequest) SetChatSyncConfig(v *GenerateAIAgentCallRequestChatSyncConfig) *GenerateAIAgentCallRequest {
+	s.ChatSyncConfig = v
 	return s
 }
 
@@ -16402,20 +18354,63 @@ func (s *GenerateAIAgentCallRequest) SetUserId(v string) *GenerateAIAgentCallReq
 	return s
 }
 
+type GenerateAIAgentCallRequestChatSyncConfig struct {
+	// example:
+	//
+	// ******005e4f309379701645f4****
+	IMAIAgentId *string `json:"IMAIAgentId,omitempty" xml:"IMAIAgentId,omitempty"`
+	// example:
+	//
+	// 4167626d312034b2b1c3b7f2f3e41884
+	ReceiverId *string `json:"ReceiverId,omitempty" xml:"ReceiverId,omitempty"`
+}
+
+func (s GenerateAIAgentCallRequestChatSyncConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateAIAgentCallRequestChatSyncConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateAIAgentCallRequestChatSyncConfig) SetIMAIAgentId(v string) *GenerateAIAgentCallRequestChatSyncConfig {
+	s.IMAIAgentId = &v
+	return s
+}
+
+func (s *GenerateAIAgentCallRequestChatSyncConfig) SetReceiverId(v string) *GenerateAIAgentCallRequestChatSyncConfig {
+	s.ReceiverId = &v
+	return s
+}
+
 type GenerateAIAgentCallShrinkRequest struct {
+	// The ID of the AI agent.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 39f8e0bc005e4f309379701645f4****
-	AIAgentId *string `json:"AIAgentId,omitempty" xml:"AIAgentId,omitempty"`
+	AIAgentId            *string `json:"AIAgentId,omitempty" xml:"AIAgentId,omitempty"`
+	ChatSyncConfigShrink *string `json:"ChatSyncConfig,omitempty" xml:"ChatSyncConfig,omitempty"`
+	// The time when the token expires. Unit: seconds. Default value: 3600. Valid values: 0 to 604800.
+	//
 	// example:
 	//
 	// 3600
-	Expire               *int64  `json:"Expire,omitempty" xml:"Expire,omitempty"`
-	SessionId            *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	Expire *int64 `json:"Expire,omitempty" xml:"Expire,omitempty"`
+	// example:
+	//
+	// fw1gr0bc005e4f309379701645f4****
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The template configurations of the AI agent. The specified configurations are merged with the template configurations that are specified in the console. If you do not specify this parameter, the system uses the default configurations for an AI agent created in the console.
 	TemplateConfigShrink *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
-	UserData             *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// example:
+	//
+	// {"Email":"johndoe@example.com","Preferences":{"Language":"en"}}
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// The username of the AI agent in the channel. If you do not specify this parameter, the system automatically generates a username. The value can be up to 64 characters in length.
+	//
 	// example:
 	//
 	// 877ae632caae49b1afc81c2e8194ffb4
@@ -16432,6 +18427,11 @@ func (s GenerateAIAgentCallShrinkRequest) GoString() string {
 
 func (s *GenerateAIAgentCallShrinkRequest) SetAIAgentId(v string) *GenerateAIAgentCallShrinkRequest {
 	s.AIAgentId = &v
+	return s
+}
+
+func (s *GenerateAIAgentCallShrinkRequest) SetChatSyncConfigShrink(v string) *GenerateAIAgentCallShrinkRequest {
+	s.ChatSyncConfigShrink = &v
 	return s
 }
 
@@ -16461,26 +18461,38 @@ func (s *GenerateAIAgentCallShrinkRequest) SetUserId(v string) *GenerateAIAgentC
 }
 
 type GenerateAIAgentCallResponseBody struct {
+	// The username of the AI agent in the Alibaba Real-Time Communication (ARTC) channel.
+	//
 	// example:
 	//
 	// 877ae632caae49b1afc81c2e8194ffb4
 	AIAgentUserId *string `json:"AIAgentUserId,omitempty" xml:"AIAgentUserId,omitempty"`
+	// The ARTC channel ID.
+	//
 	// example:
 	//
 	// 70f22d5784194938a7e387052f2b3208
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The ID of the AI agent.
+	//
 	// example:
 	//
 	// 39f8e0bc005e4f309379701645f4****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 7B117AF5-2A16-412C-B127-FA6175ED1AD0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ARTC token of the client.
+	//
 	// example:
 	//
 	// eyJhcHBpZCI6ICIxMjM0MTIzNxxxxx
 	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// The username in the ARTC channel.
+	//
 	// example:
 	//
 	// user123
@@ -16820,7 +18832,7 @@ func (s *GenerateMessageChatTokenResponse) SetBody(v *GenerateMessageChatTokenRe
 }
 
 type GetAdInsertionRequest struct {
-	// 代表资源一级ID的资源属性字段
+	// The name of the ad insertion configuration that you want to query.
 	//
 	// This parameter is required.
 	//
@@ -16844,7 +18856,10 @@ func (s *GetAdInsertionRequest) SetName(v string) *GetAdInsertionRequest {
 }
 
 type GetAdInsertionResponseBody struct {
+	// The ad insertion configuration.
 	Config *GetAdInsertionResponseBodyConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// ******3B-0E1A-586A-AC29-742247******
@@ -16870,21 +18885,21 @@ func (s *GetAdInsertionResponseBody) SetRequestId(v string) *GetAdInsertionRespo
 }
 
 type GetAdInsertionResponseBodyConfig struct {
-	// 广告标记透传
+	// Indicates whether ad marker passthrough is enabled.
 	//
 	// example:
 	//
 	// ON
 	AdMarkerPassthrough *string `json:"AdMarkerPassthrough,omitempty" xml:"AdMarkerPassthrough,omitempty"`
-	// 广告策略服务器URL
+	// The URL of the ad decision server (ADS).
 	//
 	// example:
 	//
 	// http://ads.com/ad1?param1=[palyer_params.p1]
 	AdsUrl *string `json:"AdsUrl,omitempty" xml:"AdsUrl,omitempty"`
-	// CDN配置
+	// The CDN configurations.
 	CdnConfig *GetAdInsertionResponseBodyConfigCdnConfig `json:"CdnConfig,omitempty" xml:"CdnConfig,omitempty" type:"Struct"`
-	// 动态配置别名
+	// The aliases for dynamic variable replacement.
 	//
 	// example:
 	//
@@ -16898,39 +18913,39 @@ type GetAdInsertionResponseBodyConfig struct {
 	//
 	// }
 	ConfigAliases *string `json:"ConfigAliases,omitempty" xml:"ConfigAliases,omitempty"`
-	// 内容URL前缀
+	// The prefix of the source URL.
 	//
 	// example:
 	//
 	// https://source.com/
 	ContentUrlPrefix *string `json:"ContentUrlPrefix,omitempty" xml:"ContentUrlPrefix,omitempty"`
-	// 创建时间
+	// The time when the configuration was created.
 	//
 	// example:
 	//
 	// 2024-06-13T08:26:09Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 修改时间
+	// The time when the configuration was last modified.
 	//
 	// example:
 	//
 	// 2024-06-13T08:26:09Z
 	LastModified *string `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
-	// 清单播放端点配置
+	// The playback endpoint prefix for accessing manifests.
 	ManifestEndpointConfig *GetAdInsertionResponseBodyConfigManifestEndpointConfig `json:"ManifestEndpointConfig,omitempty" xml:"ManifestEndpointConfig,omitempty" type:"Struct"`
-	// 广告插入配置名称
+	// The name of the configuration.
 	//
 	// example:
 	//
 	// my_ad
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 个性化配置阈值
+	// The personalization threshold.
 	//
 	// example:
 	//
 	// 5
 	PersonalizationThreshold *int32 `json:"PersonalizationThreshold,omitempty" xml:"PersonalizationThreshold,omitempty"`
-	// slate广告URL
+	// The URL of the slate ad.
 	//
 	// example:
 	//
@@ -17002,13 +19017,13 @@ func (s *GetAdInsertionResponseBodyConfig) SetSlateAdUrl(v string) *GetAdInserti
 }
 
 type GetAdInsertionResponseBodyConfigCdnConfig struct {
-	// 广告分片的CDN前缀
+	// The CDN prefix for accessing ad segments.
 	//
 	// example:
 	//
 	// http://cdn.com/
 	AdSegmentUrlPrefix *string `json:"AdSegmentUrlPrefix,omitempty" xml:"AdSegmentUrlPrefix,omitempty"`
-	// 视频内容分片的CDN前缀
+	// The CDN prefix for accessing content segments.
 	//
 	// example:
 	//
@@ -17035,7 +19050,7 @@ func (s *GetAdInsertionResponseBodyConfigCdnConfig) SetContentSegmentUrlPrefix(v
 }
 
 type GetAdInsertionResponseBodyConfigManifestEndpointConfig struct {
-	// HLS清单播放端点前缀
+	// The playback endpoint prefix for accessing HLS manifests.
 	HlsPrefix *string `json:"HlsPrefix,omitempty" xml:"HlsPrefix,omitempty"`
 }
 
@@ -18234,6 +20249,8 @@ func (s *GetCategoriesResponse) SetBody(v *GetCategoriesResponseBody) *GetCatego
 }
 
 type GetChannelRequest struct {
+	// The name of the channel.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -18256,7 +20273,10 @@ func (s *GetChannelRequest) SetChannelName(v string) *GetChannelRequest {
 }
 
 type GetChannelResponseBody struct {
+	// The channel information.
 	Channel *ChannelAssemblyChannel `json:"Channel,omitempty" xml:"Channel,omitempty"`
+	// **Request ID**
+	//
 	// example:
 	//
 	// xxx-xxxx-xxxxx-xxxx
@@ -21418,7 +23438,7 @@ func (s *GetLiveEditingJobResponse) SetBody(v *GetLiveEditingJobResponseBody) *G
 }
 
 type GetLivePackageChannelRequest struct {
-	// 频道名称
+	// The channel name.
 	//
 	// This parameter is required.
 	//
@@ -21426,7 +23446,7 @@ type GetLivePackageChannelRequest struct {
 	//
 	// channel-1
 	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
-	// 频道组名称
+	// The channel group name.
 	//
 	// This parameter is required.
 	//
@@ -21455,7 +23475,10 @@ func (s *GetLivePackageChannelRequest) SetGroupName(v string) *GetLivePackageCha
 }
 
 type GetLivePackageChannelResponseBody struct {
+	// Details of the live package channel.
 	LivePackageChannel *GetLivePackageChannelResponseBodyLivePackageChannel `json:"LivePackageChannel,omitempty" xml:"LivePackageChannel,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// RequestId-12345678
@@ -21481,50 +23504,47 @@ func (s *GetLivePackageChannelResponseBody) SetRequestId(v string) *GetLivePacka
 }
 
 type GetLivePackageChannelResponseBodyLivePackageChannel struct {
-	// 频道名称，字符必须为大小写英文字母或-、_。
-	//
-	// 1 ~ 200个字符。
-	//
-	// 格式：[A-Za-z0-9_-]+
+	// The channel name.
 	//
 	// example:
 	//
 	// ch4
 	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
-	// 代表创建时间的资源属性字段
+	// The time when the channel was created.
 	//
 	// example:
 	//
 	// 2023-04-01T12:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 频道描述，最大1000个字符
+	// The channel description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 频道组名称
+	// The channel group name.
 	//
 	// example:
 	//
 	// channel-group-1
-	GroupName       *string                                                               `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The ingest endpoints.
 	IngestEndpoints []*GetLivePackageChannelResponseBodyLivePackageChannelIngestEndpoints `json:"IngestEndpoints,omitempty" xml:"IngestEndpoints,omitempty" type:"Repeated"`
-	// 最后修改时间
+	// The time when the endpoint was last modified.
 	//
 	// example:
 	//
 	// 2023-04-01T12:00:00Z
 	LastModified *string `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
-	// 输入协议，目前仅支持HLS
+	// The ingest protocol. Only HLS is supported.
 	//
 	// example:
 	//
 	// HLS
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// 输入流m3u8切片个数，2～100
+	// The number of M3U8 segments.
 	//
 	// example:
 	//
 	// 3
 	SegmentCount *int32 `json:"SegmentCount,omitempty" xml:"SegmentCount,omitempty"`
-	// 输入流切片时长，1～30
+	// The segment duration.
 	//
 	// example:
 	//
@@ -21586,18 +23606,26 @@ func (s *GetLivePackageChannelResponseBodyLivePackageChannel) SetSegmentDuration
 }
 
 type GetLivePackageChannelResponseBodyLivePackageChannelIngestEndpoints struct {
+	// The ingest endpoint ID.
+	//
 	// example:
 	//
 	// ingest1
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The password.
+	//
 	// example:
 	//
 	// 2F9e******b569c8
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The ingest endpoint URL.
+	//
 	// example:
 	//
 	// http://xxx-1.packagepush-abcxxx.ap-southeast-1.aliyuncsiceintl.com/v1/group01/1/ch01/manifest
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// The username.
+	//
 	// example:
 	//
 	// us12******das
@@ -21662,7 +23690,7 @@ func (s *GetLivePackageChannelResponse) SetBody(v *GetLivePackageChannelResponse
 }
 
 type GetLivePackageChannelGroupRequest struct {
-	// 频道组名称
+	// The channel group name.
 	//
 	// This parameter is required.
 	//
@@ -21686,7 +23714,10 @@ func (s *GetLivePackageChannelGroupRequest) SetGroupName(v string) *GetLivePacka
 }
 
 type GetLivePackageChannelGroupResponseBody struct {
+	// Details of the channel group.
 	LivePackageChannelGroup *GetLivePackageChannelGroupResponseBodyLivePackageChannelGroup `json:"LivePackageChannelGroup,omitempty" xml:"LivePackageChannelGroup,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// req-abcdefg123456
@@ -21712,27 +23743,31 @@ func (s *GetLivePackageChannelGroupResponseBody) SetRequestId(v string) *GetLive
 }
 
 type GetLivePackageChannelGroupResponseBodyLivePackageChannelGroup struct {
-	// 创建时间
+	// The time when the channel group was created. It is in the yyyy-MM-ddTHH:mm:ssZ format and displayed in UTC.
 	//
 	// example:
 	//
 	// 2023-04-01T12:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 描述
+	// The channel group description.
+	//
+	// example:
+	//
+	// Updated description of the channel group.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 频道组名称
+	// The channel group name.
 	//
 	// example:
 	//
 	// channel-group-1
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// 修改时间
+	// The time when the channel group was last modified. It is in the yyyy-MM-ddTHH:mm:ssZ format and displayed in UTC.
 	//
 	// example:
 	//
 	// 2023-04-01T12:00:00Z
 	LastModified *string `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
-	// 源站域名
+	// The origin domain.
 	//
 	// example:
 	//
@@ -21803,7 +23838,7 @@ func (s *GetLivePackageChannelGroupResponse) SetBody(v *GetLivePackageChannelGro
 }
 
 type GetLivePackageOriginEndpointRequest struct {
-	// 频道名称
+	// The channel name.
 	//
 	// This parameter is required.
 	//
@@ -21811,7 +23846,7 @@ type GetLivePackageOriginEndpointRequest struct {
 	//
 	// channel-1
 	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
-	// 端点名称
+	// The endpoint name.
 	//
 	// This parameter is required.
 	//
@@ -21819,7 +23854,7 @@ type GetLivePackageOriginEndpointRequest struct {
 	//
 	// endpoint-1
 	EndpointName *string `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
-	// 频道组名称
+	// The channel group name.
 	//
 	// This parameter is required.
 	//
@@ -21853,7 +23888,10 @@ func (s *GetLivePackageOriginEndpointRequest) SetGroupName(v string) *GetLivePac
 }
 
 type GetLivePackageOriginEndpointResponseBody struct {
+	// The information about the origin endpoints.
 	LivePackageOriginEndpoint *GetLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint `json:"LivePackageOriginEndpoint,omitempty" xml:"LivePackageOriginEndpoint,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// requestIdExample123
@@ -21879,75 +23917,75 @@ func (s *GetLivePackageOriginEndpointResponseBody) SetRequestId(v string) *GetLi
 }
 
 type GetLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint struct {
-	// 回源授权码，与IpWhitelist必选其一
+	// The authorization code.
 	//
 	// example:
 	//
 	// Abc123Def456
 	AuthorizationCode *string `json:"AuthorizationCode,omitempty" xml:"AuthorizationCode,omitempty"`
-	// 频道名称
+	// The channel name.
 	//
 	// example:
 	//
 	// channel-1
 	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
-	// 创建时间
+	// The time when the endpoint was created.
 	//
 	// example:
 	//
 	// 2023-04-01T12:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 端点描述
+	// The endpoint description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 端点名称
+	// The endpoint name.
 	//
 	// example:
 	//
 	// endpoint-1
 	EndpointName *string `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
-	// 源站端点回源播放地址
+	// The endpoint URL.
 	//
 	// example:
 	//
 	// https://xxx.packagepull-abcxxx.ap-southeast-1.aliyuncsiceintl.com/v1/group01/1/ch01/manifest
 	EndpointUrl *string `json:"EndpointUrl,omitempty" xml:"EndpointUrl,omitempty"`
-	// 频道组名称
+	// The channel group name.
 	//
 	// example:
 	//
 	// channel-group-1
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// IP黑名单，支持无类别域间路由（CIDR），逗号分隔
+	// The IP address blacklist.
 	//
 	// example:
 	//
 	// 10.21.222.1/32
 	IpBlacklist *string `json:"IpBlacklist,omitempty" xml:"IpBlacklist,omitempty"`
-	// IP白名单，支持无类别域间路由（CIDR），逗号分隔，与AuthorizationCode必选其一
+	// The IP address whitelist.
 	//
 	// example:
 	//
 	// 192.168.1.0/24,10.0.0.1/24
 	IpWhitelist *string `json:"IpWhitelist,omitempty" xml:"IpWhitelist,omitempty"`
-	// 最后修改时间
+	// The time when the endpoint was last modified.
 	//
 	// example:
 	//
 	// 2023-04-01T12:00:00Z
 	LastModified *string `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
-	// 播放列表名
+	// The playlist name.
 	//
 	// example:
 	//
 	// manifest
 	ManifestName *string `json:"ManifestName,omitempty" xml:"ManifestName,omitempty"`
-	// 端点分发协议，暂只支持HLS
+	// The distribution protocol.
 	//
 	// example:
 	//
 	// HLS
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// 时移天数，最大30天，0表示不支持时移
+	// The number of days that time-shifted content is available.
 	//
 	// example:
 	//
@@ -23648,7 +25686,7 @@ func (s *GetLiveTranscodeTemplateResponse) SetBody(v *GetLiveTranscodeTemplateRe
 }
 
 type GetMediaConnectFlowRequest struct {
-	// Flow instance ID
+	// The flow ID.
 	//
 	// This parameter is required.
 	//
@@ -23672,21 +25710,21 @@ func (s *GetMediaConnectFlowRequest) SetFlowId(v string) *GetMediaConnectFlowReq
 }
 
 type GetMediaConnectFlowResponseBody struct {
-	// Response body
+	// The response body.
 	Content *GetMediaConnectFlowResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	// Interface call description information
+	// The call description.
 	//
 	// example:
 	//
 	// OK
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 请求ID
+	// The ID of the request.
 	//
 	// example:
 	//
 	// FB503AEF-118E-1516-89E2-7B227EA1AC20
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return status code, 0 indicates success
+	// The returned code. A value of 0 indicates the call is successful.
 	//
 	// example:
 	//
@@ -23723,31 +25761,31 @@ func (s *GetMediaConnectFlowResponseBody) SetRetcode(v int32) *GetMediaConnectFl
 }
 
 type GetMediaConnectFlowResponseBodyContent struct {
-	// Flow creation time
+	// The time when the flow was created.
 	//
 	// example:
 	//
 	// 2024-07-18T01:29:24Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Flow instance ID
+	// The flow ID.
 	//
 	// example:
 	//
 	// 34900dc6-90ec-4968-af3c-fcd87f231a5f
 	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	// Flow instance name
+	// The flow name.
 	//
 	// example:
 	//
 	// AliTestFlow
 	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
-	// Flow status
+	// The state of the flow.
 	//
 	// example:
 	//
 	// online
 	FlowStatus *string `json:"FlowStatus,omitempty" xml:"FlowStatus,omitempty"`
-	// Flow start time
+	// The time when the flow is started.
 	//
 	// example:
 	//
@@ -23818,7 +25856,7 @@ func (s *GetMediaConnectFlowResponse) SetBody(v *GetMediaConnectFlowResponseBody
 }
 
 type GetMediaConnectFlowInputRequest struct {
-	// Flow instance ID
+	// The flow ID.
 	//
 	// This parameter is required.
 	//
@@ -23842,21 +25880,21 @@ func (s *GetMediaConnectFlowInputRequest) SetFlowId(v string) *GetMediaConnectFl
 }
 
 type GetMediaConnectFlowInputResponseBody struct {
-	// Response body
+	// The response body.
 	Content *GetMediaConnectFlowInputResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	// Interface call description
+	// The call description.
 	//
 	// example:
 	//
 	// OK
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 请求ID
+	// The ID of the request.
 	//
 	// example:
 	//
 	// D4C231DF-103A-55FF-8D09-E699552457DE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Returned error code, 0 indicates success
+	// The returned error code. A value of 0 indicates the call is successful.
 	//
 	// example:
 	//
@@ -23893,67 +25931,89 @@ func (s *GetMediaConnectFlowInputResponseBody) SetRetCode(v int32) *GetMediaConn
 }
 
 type GetMediaConnectFlowInputResponseBodyContent struct {
-	// IP whitelist, in CIDR format, multiple IP segments separated by commas
+	// The IP address whitelist in CIDR format. CIDR blocks are separated with commas (,).
 	//
 	// example:
 	//
 	// 10.211.0.0/17
 	Cidrs *string `json:"Cidrs,omitempty" xml:"Cidrs,omitempty"`
-	// Flow creation time
+	// The time when the flow was created.
 	//
 	// example:
 	//
 	// 2024-07-18T01:29:24Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Input name
+	// The source name.
 	//
 	// example:
 	//
 	// AliTestInput
 	InputName *string `json:"InputName,omitempty" xml:"InputName,omitempty"`
-	// Input type
+	// The source type.
+	//
+	// Valid values:
+	//
+	// 	- RTMP-PUSH
+	//
+	// 	- SRT-Caller
+	//
+	// 	- RTMP-PULL
+	//
+	// 	- SRT-Listener
+	//
+	// 	- Flow
 	//
 	// example:
 	//
 	// RTMP-PUSH
 	InputProtocol *string `json:"InputProtocol,omitempty" xml:"InputProtocol,omitempty"`
-	// Input URL
+	// The source URL.
 	//
 	// example:
 	//
 	// rtmp://1.2.3.4:1935/live/AliTestInput_8666ec062190f00e263012666319a5be
 	InputUrl *string `json:"InputUrl,omitempty" xml:"InputUrl,omitempty"`
-	// Input bitrate, in bps
+	// The maximum bitrate. Unit: bit/s.
 	//
 	// example:
 	//
 	// 2000000
 	MaxBitrate *int32 `json:"MaxBitrate,omitempty" xml:"MaxBitrate,omitempty"`
-	// Peer Flow instance ID, required when the output type is Flow
+	// The ID of the source flow. This parameter is returned when the source type is Flow.
 	//
 	// example:
 	//
 	// 05c3adf4-aa0e-421d-a991-48ceae3e642e
 	PairFlowId *string `json:"PairFlowId,omitempty" xml:"PairFlowId,omitempty"`
-	// Peer Flow output name, required only when the input type is Flow
+	// The output of the source flow. This parameter is returned when the source type is Flow.
 	//
 	// example:
 	//
 	// AliTestOutput
 	PairOutputName *string `json:"PairOutputName,omitempty" xml:"PairOutputName,omitempty"`
-	// SRT latency, in ms, required only when the input type is SRT-Listener/SRT-Caller
+	// The latency for the SRT stream. Unit: milliseconds. This parameter is returned when the source type is SRT-Listener or SRT-Caller.
 	//
 	// example:
 	//
 	// 1000
 	SrtLatency *int32 `json:"SrtLatency,omitempty" xml:"SrtLatency,omitempty"`
-	// SRT encryption key, required only when the input type is SRT-Listener/SRT-Caller
+	// The SRT key. This parameter is returned when the source type is SRT-Listener or SRT-Caller.
 	//
 	// example:
 	//
 	// FICUBPX4Q77DYHRF
 	SrtPassphrase *string `json:"SrtPassphrase,omitempty" xml:"SrtPassphrase,omitempty"`
-	// SRT encryption length, required only when the input type is SRT-Listener/SRT-Caller
+	// The encryption key length. This parameter is returned when the source type is SRT-Listener or SRT-Caller.
+	//
+	// Valid values:
+	//
+	// 	- 0
+	//
+	// 	- 16
+	//
+	// 	- 24
+	//
+	// 	- 32
 	//
 	// example:
 	//
@@ -24054,7 +26114,7 @@ func (s *GetMediaConnectFlowInputResponse) SetBody(v *GetMediaConnectFlowInputRe
 }
 
 type GetMediaConnectFlowOutputRequest struct {
-	// Flow instance ID
+	// The flow ID.
 	//
 	// This parameter is required.
 	//
@@ -24062,7 +26122,7 @@ type GetMediaConnectFlowOutputRequest struct {
 	//
 	// 0381f478-7d53-4076-9d5f-27680a6f73e7
 	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	// Output name
+	// The name of the output that you want to query.
 	//
 	// This parameter is required.
 	//
@@ -24091,21 +26151,21 @@ func (s *GetMediaConnectFlowOutputRequest) SetOutputName(v string) *GetMediaConn
 }
 
 type GetMediaConnectFlowOutputResponseBody struct {
-	// Response body
+	// The response body.
 	Content *GetMediaConnectFlowOutputResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	// API call description
+	// The call description.
 	//
 	// example:
 	//
 	// OK
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Request ID
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 0DB23DCE-0D69-598B-AA7C-7268D55E2F89
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Returned error code, 0 indicates success
+	// The returned error code. A value of 0 indicates the call is successful.
 	//
 	// example:
 	//
@@ -24142,67 +26202,89 @@ func (s *GetMediaConnectFlowOutputResponseBody) SetRetCode(v int32) *GetMediaCon
 }
 
 type GetMediaConnectFlowOutputResponseBodyContent struct {
-	// IP whitelist in CIDR format, multiple IP segments separated by commas
+	// The IP address whitelist in CIDR format. CIDR blocks are separated with commas (,).
 	//
 	// example:
 	//
 	// 10.211.0.0/17
 	Cidrs *string `json:"Cidrs,omitempty" xml:"Cidrs,omitempty"`
-	// Flow creation time
+	// The time when the flow was created.
 	//
 	// example:
 	//
 	// 2024-07-18T01:29:24Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Output name
+	// The output name.
 	//
 	// example:
 	//
 	// AliTestInput
 	OutputName *string `json:"OutputName,omitempty" xml:"OutputName,omitempty"`
-	// Output protocol
+	// The output type.
+	//
+	// Valid values:
+	//
+	// 	- RTMP-PUSH
+	//
+	// 	- SRT-Caller
+	//
+	// 	- RTMP-PULL
+	//
+	// 	- SRT-Listener
+	//
+	// 	- Flow
 	//
 	// example:
 	//
 	// SRT-PULL
 	OutputProtocol *string `json:"OutputProtocol,omitempty" xml:"OutputProtocol,omitempty"`
-	// Output URL
+	// The output URL.
 	//
 	// example:
 	//
 	// srt://1.2.3.4:1025
 	OutputUrl *string `json:"OutputUrl,omitempty" xml:"OutputUrl,omitempty"`
-	// Peer Flow instance ID, required when the output type is Flow
+	// The ID of the destination flow. This parameter is returned when the output type is Flow.
 	//
 	// example:
 	//
 	// 805fbdd0-575e-4146-b35d-ec7f63937b20
 	PairFlowId *string `json:"PairFlowId,omitempty" xml:"PairFlowId,omitempty"`
-	// Peer Flow\\"s input name, required when the output type is Flow
+	// The source name of the destination flow. This parameter is returned when the output type is Flow.
 	//
 	// example:
 	//
 	// AliTestInput
 	PairInputName *string `json:"PairInputName,omitempty" xml:"PairInputName,omitempty"`
-	// Player limit
+	// The maximum number of viewers.
 	//
 	// example:
 	//
 	// 5
 	PlayerLimit *int32 `json:"PlayerLimit,omitempty" xml:"PlayerLimit,omitempty"`
-	// SRT latency, in milliseconds, required only when the input type is SRT-Listener/SRT-Caller
+	// The latency for the SRT stream. Unit: milliseconds. This parameter is returned when the source type is SRT-Listener or SRT-Caller.
 	//
 	// example:
 	//
 	// 1000
 	SrtLatency *int32 `json:"SrtLatency,omitempty" xml:"SrtLatency,omitempty"`
-	// SRT encryption key, required only when the input type is SRT-Listener/SRT-Caller
+	// The SRT key. This parameter is returned when the source type is SRT-Listener or SRT-Caller.
 	//
 	// example:
 	//
 	// FICUBPX4Q77DYHRF
 	SrtPassphrase *string `json:"SrtPassphrase,omitempty" xml:"SrtPassphrase,omitempty"`
-	// SRT encryption length, required only when the input type is SRT-Listener/SRT-Caller
+	// The encryption key length. This parameter is returned when the source type is SRT-Listener or SRT-Caller.
+	//
+	// Valid values:
+	//
+	// 	- 0
+	//
+	// 	- 16
+	//
+	// 	- 24
+	//
+	// 	- 32
 	//
 	// example:
 	//
@@ -24303,6 +26385,8 @@ func (s *GetMediaConnectFlowOutputResponse) SetBody(v *GetMediaConnectFlowOutput
 }
 
 type GetMediaConvertJobRequest struct {
+	// The ID of the transcoding task.
+	//
 	// example:
 	//
 	// ****d80e4e4044975745c14b****
@@ -24323,8 +26407,13 @@ func (s *GetMediaConvertJobRequest) SetJobId(v string) *GetMediaConvertJobReques
 }
 
 type GetMediaConvertJobResponseBody struct {
+	// The transcoding task.
 	Job *GetMediaConvertJobResponseBodyJob `json:"Job,omitempty" xml:"Job,omitempty" type:"Struct"`
-	// Id of the request
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 4BAEA8E8-1C16-5CD3-AC50-CCBA81A53402
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -24347,17 +26436,70 @@ func (s *GetMediaConvertJobResponseBody) SetRequestId(v string) *GetMediaConvert
 }
 
 type GetMediaConvertJobResponseBodyJob struct {
-	ClientToken        *string                                  `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Code               *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Config             *GetMediaConvertJobResponseBodyJobConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
-	JobId              *string                                  `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Message            *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
-	OutputDetails      []*MediaConvertOutputDetail              `json:"OutputDetails,omitempty" xml:"OutputDetails,omitempty" type:"Repeated"`
-	OutputGroupDetails []*MediaConvertOutputGroupDetail         `json:"OutputGroupDetails,omitempty" xml:"OutputGroupDetails,omitempty" type:"Repeated"`
-	PipelineId         *string                                  `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	RequestId          *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	State              *string                                  `json:"State,omitempty" xml:"State,omitempty"`
-	UserData           *string                                  `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// The idempotency key of the request for creating the transcoding task.
+	//
+	// example:
+	//
+	// 780018cb-55ba-466d-8acc-946c0c319a0e
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The error code returned when the transcoding task failed.
+	//
+	// example:
+	//
+	// InvalidParameter.ResourceContentBad
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The configurations of the transcoding task.
+	Config *GetMediaConvertJobResponseBodyJobConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
+	// The ID of the transcoding task, which is a 32-bit string.
+	//
+	// example:
+	//
+	// ******4579b5e748b99a27f6d6******
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The error message returned when the transcoding task failed.
+	//
+	// example:
+	//
+	// The resource operated InputFile is bad
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The details of the transcoded outputs, each corresponding to an output configuration.
+	OutputDetails []*MediaConvertOutputDetail `json:"OutputDetails,omitempty" xml:"OutputDetails,omitempty" type:"Repeated"`
+	// The details of the output groups, each corresponding to an output group configuration.
+	OutputGroupDetails []*MediaConvertOutputGroupDetail `json:"OutputGroupDetails,omitempty" xml:"OutputGroupDetails,omitempty" type:"Repeated"`
+	// The ID of the queue.
+	//
+	// example:
+	//
+	// 83500cb2a3b94fabb0956e38d64bd16d
+	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	// The ID of the request for creating the transcoding task.
+	//
+	// example:
+	//
+	// ******11-DB8D-4A9A-875B-275798******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the transcoding task. Valid values:
+	//
+	// 	- Inited: The task is initialized.
+	//
+	// 	- Running
+	//
+	// 	- Success
+	//
+	// 	- Failed
+	//
+	// 	- Cancelled
+	//
+	// example:
+	//
+	// Success
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The user data.
+	//
+	// example:
+	//
+	// {"videoId":"ddd333"}
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s GetMediaConvertJobResponseBodyJob) String() string {
@@ -24424,9 +26566,12 @@ func (s *GetMediaConvertJobResponseBodyJob) SetUserData(v string) *GetMediaConve
 }
 
 type GetMediaConvertJobResponseBodyJobConfig struct {
-	Inputs       []*MediaConvertInput       `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Repeated"`
+	// The inputs of the transcoding task.
+	Inputs []*MediaConvertInput `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Repeated"`
+	// The output group configurations.
 	OutputGroups []*MediaConvertOutputGroup `json:"OutputGroups,omitempty" xml:"OutputGroups,omitempty" type:"Repeated"`
-	Outputs      []*MediaConvertOutput      `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Repeated"`
+	// The output configurations.
+	Outputs []*MediaConvertOutput `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Repeated"`
 }
 
 func (s GetMediaConvertJobResponseBodyJobConfig) String() string {
@@ -26798,6 +28943,1304 @@ func (s *GetMediaInfoJobResponse) SetBody(v *GetMediaInfoJobResponseBody) *GetMe
 	return s
 }
 
+type GetMediaLiveChannelRequest struct {
+	// The ID of the channel.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SEGK5KA6KYKAWQQH
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+}
+
+func (s GetMediaLiveChannelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMediaLiveChannelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetMediaLiveChannelRequest) SetChannelId(v string) *GetMediaLiveChannelRequest {
+	s.ChannelId = &v
+	return s
+}
+
+type GetMediaLiveChannelResponseBody struct {
+	// The channel information.
+	Channel *GetMediaLiveChannelResponseBodyChannel `json:"Channel,omitempty" xml:"Channel,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// ******11-DB8D-4A9A-875B-275798******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetMediaLiveChannelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMediaLiveChannelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetMediaLiveChannelResponseBody) SetChannel(v *GetMediaLiveChannelResponseBodyChannel) *GetMediaLiveChannelResponseBody {
+	s.Channel = v
+	return s
+}
+
+func (s *GetMediaLiveChannelResponseBody) SetRequestId(v string) *GetMediaLiveChannelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetMediaLiveChannelResponseBodyChannel struct {
+	// The audio settings.
+	AudioSettings []*GetMediaLiveChannelResponseBodyChannelAudioSettings `json:"AudioSettings,omitempty" xml:"AudioSettings,omitempty" type:"Repeated"`
+	// The ID of the channel.
+	//
+	// example:
+	//
+	// SEGK5KA6KYKAWQQH
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The time when the channel was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2024-12-03T06:56:42Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The inputs associated with the channel.
+	InputAttachments []*GetMediaLiveChannelResponseBodyChannelInputAttachments `json:"InputAttachments,omitempty" xml:"InputAttachments,omitempty" type:"Repeated"`
+	// The time when the channel was last started. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. If the channel has never been started since it was created, an empty string is returned.
+	//
+	// example:
+	//
+	// 2024-12-03T06:56:42Z
+	LastStartTime *string `json:"LastStartTime,omitempty" xml:"LastStartTime,omitempty"`
+	// The time when the channel was last stopped. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. If the channel has never stopped since it was created, an empty string is returned.
+	//
+	// example:
+	//
+	// 2024-12-03T06:56:42Z
+	LastStopTime *string `json:"LastStopTime,omitempty" xml:"LastStopTime,omitempty"`
+	// The channel name.
+	//
+	// example:
+	//
+	// mych
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The output groups.
+	OutputGroups []*GetMediaLiveChannelResponseBodyChannelOutputGroups `json:"OutputGroups,omitempty" xml:"OutputGroups,omitempty" type:"Repeated"`
+	// The state of the channel. Valid values: IDLE, STARTING, RUNNING, RECOVERING, and STOPPING.
+	//
+	// example:
+	//
+	// IDLE
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The video settings.
+	VideoSettings []*GetMediaLiveChannelResponseBodyChannelVideoSettings `json:"VideoSettings,omitempty" xml:"VideoSettings,omitempty" type:"Repeated"`
+}
+
+func (s GetMediaLiveChannelResponseBodyChannel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMediaLiveChannelResponseBodyChannel) GoString() string {
+	return s.String()
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannel) SetAudioSettings(v []*GetMediaLiveChannelResponseBodyChannelAudioSettings) *GetMediaLiveChannelResponseBodyChannel {
+	s.AudioSettings = v
+	return s
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannel) SetChannelId(v string) *GetMediaLiveChannelResponseBodyChannel {
+	s.ChannelId = &v
+	return s
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannel) SetCreateTime(v string) *GetMediaLiveChannelResponseBodyChannel {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannel) SetInputAttachments(v []*GetMediaLiveChannelResponseBodyChannelInputAttachments) *GetMediaLiveChannelResponseBodyChannel {
+	s.InputAttachments = v
+	return s
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannel) SetLastStartTime(v string) *GetMediaLiveChannelResponseBodyChannel {
+	s.LastStartTime = &v
+	return s
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannel) SetLastStopTime(v string) *GetMediaLiveChannelResponseBodyChannel {
+	s.LastStopTime = &v
+	return s
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannel) SetName(v string) *GetMediaLiveChannelResponseBodyChannel {
+	s.Name = &v
+	return s
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannel) SetOutputGroups(v []*GetMediaLiveChannelResponseBodyChannelOutputGroups) *GetMediaLiveChannelResponseBodyChannel {
+	s.OutputGroups = v
+	return s
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannel) SetState(v string) *GetMediaLiveChannelResponseBodyChannel {
+	s.State = &v
+	return s
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannel) SetVideoSettings(v []*GetMediaLiveChannelResponseBodyChannelVideoSettings) *GetMediaLiveChannelResponseBodyChannel {
+	s.VideoSettings = v
+	return s
+}
+
+type GetMediaLiveChannelResponseBodyChannelAudioSettings struct {
+	// The audio codec.
+	//
+	// example:
+	//
+	// aac
+	AudioCodec *string `json:"AudioCodec,omitempty" xml:"AudioCodec,omitempty"`
+	// The audio encoding settings.
+	AudioCodecSetting *GetMediaLiveChannelResponseBodyChannelAudioSettingsAudioCodecSetting `json:"AudioCodecSetting,omitempty" xml:"AudioCodecSetting,omitempty" type:"Struct"`
+	// The name of the audio selector.
+	//
+	// example:
+	//
+	// myselector
+	AudioSelectorName *string `json:"AudioSelectorName,omitempty" xml:"AudioSelectorName,omitempty"`
+	// A three-letter ISO 639-2 language code.
+	//
+	// example:
+	//
+	// eng
+	LanguageCode *string `json:"LanguageCode,omitempty" xml:"LanguageCode,omitempty"`
+	// The name of the language.
+	//
+	// example:
+	//
+	// English
+	LanguageName *string `json:"LanguageName,omitempty" xml:"LanguageName,omitempty"`
+	// The name of the audio settings.
+	//
+	// example:
+	//
+	// zhuanfengzhuang
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s GetMediaLiveChannelResponseBodyChannelAudioSettings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMediaLiveChannelResponseBodyChannelAudioSettings) GoString() string {
+	return s.String()
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannelAudioSettings) SetAudioCodec(v string) *GetMediaLiveChannelResponseBodyChannelAudioSettings {
+	s.AudioCodec = &v
+	return s
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannelAudioSettings) SetAudioCodecSetting(v *GetMediaLiveChannelResponseBodyChannelAudioSettingsAudioCodecSetting) *GetMediaLiveChannelResponseBodyChannelAudioSettings {
+	s.AudioCodecSetting = v
+	return s
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannelAudioSettings) SetAudioSelectorName(v string) *GetMediaLiveChannelResponseBodyChannelAudioSettings {
+	s.AudioSelectorName = &v
+	return s
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannelAudioSettings) SetLanguageCode(v string) *GetMediaLiveChannelResponseBodyChannelAudioSettings {
+	s.LanguageCode = &v
+	return s
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannelAudioSettings) SetLanguageName(v string) *GetMediaLiveChannelResponseBodyChannelAudioSettings {
+	s.LanguageName = &v
+	return s
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannelAudioSettings) SetName(v string) *GetMediaLiveChannelResponseBodyChannelAudioSettings {
+	s.Name = &v
+	return s
+}
+
+type GetMediaLiveChannelResponseBodyChannelAudioSettingsAudioCodecSetting struct {
+	// The audio bitrate. Unit: bit/s.
+	//
+	// example:
+	//
+	// 200000
+	Bitrate *int32 `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The audio codec profile.
+	//
+	// example:
+	//
+	// AAC-LOW
+	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	// The audio sample rate. Unit: Hz.
+	//
+	// example:
+	//
+	// 44100
+	SampleRate *int32 `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
+}
+
+func (s GetMediaLiveChannelResponseBodyChannelAudioSettingsAudioCodecSetting) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMediaLiveChannelResponseBodyChannelAudioSettingsAudioCodecSetting) GoString() string {
+	return s.String()
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannelAudioSettingsAudioCodecSetting) SetBitrate(v int32) *GetMediaLiveChannelResponseBodyChannelAudioSettingsAudioCodecSetting {
+	s.Bitrate = &v
+	return s
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannelAudioSettingsAudioCodecSetting) SetProfile(v string) *GetMediaLiveChannelResponseBodyChannelAudioSettingsAudioCodecSetting {
+	s.Profile = &v
+	return s
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannelAudioSettingsAudioCodecSetting) SetSampleRate(v int32) *GetMediaLiveChannelResponseBodyChannelAudioSettingsAudioCodecSetting {
+	s.SampleRate = &v
+	return s
+}
+
+type GetMediaLiveChannelResponseBodyChannelInputAttachments struct {
+	// The audio selectors.
+	AudioSelectors []*GetMediaLiveChannelResponseBodyChannelInputAttachmentsAudioSelectors `json:"AudioSelectors,omitempty" xml:"AudioSelectors,omitempty" type:"Repeated"`
+	// The ID of the associated input.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SEGK5KA6KYKAWQQH
+	InputId *string `json:"InputId,omitempty" xml:"InputId,omitempty"`
+	// The name of the input.
+	//
+	// example:
+	//
+	// myinput
+	InputName *string `json:"InputName,omitempty" xml:"InputName,omitempty"`
+	// The language name.
+	//
+	// example:
+	//
+	// eng
+	LanguageName *string `json:"LanguageName,omitempty" xml:"LanguageName,omitempty"`
+}
+
+func (s GetMediaLiveChannelResponseBodyChannelInputAttachments) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMediaLiveChannelResponseBodyChannelInputAttachments) GoString() string {
+	return s.String()
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannelInputAttachments) SetAudioSelectors(v []*GetMediaLiveChannelResponseBodyChannelInputAttachmentsAudioSelectors) *GetMediaLiveChannelResponseBodyChannelInputAttachments {
+	s.AudioSelectors = v
+	return s
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannelInputAttachments) SetInputId(v string) *GetMediaLiveChannelResponseBodyChannelInputAttachments {
+	s.InputId = &v
+	return s
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannelInputAttachments) SetInputName(v string) *GetMediaLiveChannelResponseBodyChannelInputAttachments {
+	s.InputName = &v
+	return s
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannelInputAttachments) SetLanguageName(v string) *GetMediaLiveChannelResponseBodyChannelInputAttachments {
+	s.LanguageName = &v
+	return s
+}
+
+type GetMediaLiveChannelResponseBodyChannelInputAttachmentsAudioSelectors struct {
+	// The audio language selection.
+	AudioLanguageSelection *GetMediaLiveChannelResponseBodyChannelInputAttachmentsAudioSelectorsAudioLanguageSelection `json:"AudioLanguageSelection,omitempty" xml:"AudioLanguageSelection,omitempty" type:"Struct"`
+	// The audio PID selection.
+	AudioPidSelection *GetMediaLiveChannelResponseBodyChannelInputAttachmentsAudioSelectorsAudioPidSelection `json:"AudioPidSelection,omitempty" xml:"AudioPidSelection,omitempty" type:"Struct"`
+	// The audio track selection.
+	AudioTrackSelection []*GetMediaLiveChannelResponseBodyChannelInputAttachmentsAudioSelectorsAudioTrackSelection `json:"AudioTrackSelection,omitempty" xml:"AudioTrackSelection,omitempty" type:"Repeated"`
+	// The name of the audio selector.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// myselector
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s GetMediaLiveChannelResponseBodyChannelInputAttachmentsAudioSelectors) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMediaLiveChannelResponseBodyChannelInputAttachmentsAudioSelectors) GoString() string {
+	return s.String()
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannelInputAttachmentsAudioSelectors) SetAudioLanguageSelection(v *GetMediaLiveChannelResponseBodyChannelInputAttachmentsAudioSelectorsAudioLanguageSelection) *GetMediaLiveChannelResponseBodyChannelInputAttachmentsAudioSelectors {
+	s.AudioLanguageSelection = v
+	return s
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannelInputAttachmentsAudioSelectors) SetAudioPidSelection(v *GetMediaLiveChannelResponseBodyChannelInputAttachmentsAudioSelectorsAudioPidSelection) *GetMediaLiveChannelResponseBodyChannelInputAttachmentsAudioSelectors {
+	s.AudioPidSelection = v
+	return s
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannelInputAttachmentsAudioSelectors) SetAudioTrackSelection(v []*GetMediaLiveChannelResponseBodyChannelInputAttachmentsAudioSelectorsAudioTrackSelection) *GetMediaLiveChannelResponseBodyChannelInputAttachmentsAudioSelectors {
+	s.AudioTrackSelection = v
+	return s
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannelInputAttachmentsAudioSelectors) SetName(v string) *GetMediaLiveChannelResponseBodyChannelInputAttachmentsAudioSelectors {
+	s.Name = &v
+	return s
+}
+
+type GetMediaLiveChannelResponseBodyChannelInputAttachmentsAudioSelectorsAudioLanguageSelection struct {
+	// A three-letter ISO 639-2 language code from within an audio source.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eng
+	LanguageCode *string `json:"LanguageCode,omitempty" xml:"LanguageCode,omitempty"`
+}
+
+func (s GetMediaLiveChannelResponseBodyChannelInputAttachmentsAudioSelectorsAudioLanguageSelection) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMediaLiveChannelResponseBodyChannelInputAttachmentsAudioSelectorsAudioLanguageSelection) GoString() string {
+	return s.String()
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannelInputAttachmentsAudioSelectorsAudioLanguageSelection) SetLanguageCode(v string) *GetMediaLiveChannelResponseBodyChannelInputAttachmentsAudioSelectorsAudioLanguageSelection {
+	s.LanguageCode = &v
+	return s
+}
+
+type GetMediaLiveChannelResponseBodyChannelInputAttachmentsAudioSelectorsAudioPidSelection struct {
+	// A PID from within a source.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
+	Pid *int64 `json:"Pid,omitempty" xml:"Pid,omitempty"`
+}
+
+func (s GetMediaLiveChannelResponseBodyChannelInputAttachmentsAudioSelectorsAudioPidSelection) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMediaLiveChannelResponseBodyChannelInputAttachmentsAudioSelectorsAudioPidSelection) GoString() string {
+	return s.String()
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannelInputAttachmentsAudioSelectorsAudioPidSelection) SetPid(v int64) *GetMediaLiveChannelResponseBodyChannelInputAttachmentsAudioSelectorsAudioPidSelection {
+	s.Pid = &v
+	return s
+}
+
+type GetMediaLiveChannelResponseBodyChannelInputAttachmentsAudioSelectorsAudioTrackSelection struct {
+	// The track ID from within a source.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	TrackId *int64 `json:"TrackId,omitempty" xml:"TrackId,omitempty"`
+}
+
+func (s GetMediaLiveChannelResponseBodyChannelInputAttachmentsAudioSelectorsAudioTrackSelection) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMediaLiveChannelResponseBodyChannelInputAttachmentsAudioSelectorsAudioTrackSelection) GoString() string {
+	return s.String()
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannelInputAttachmentsAudioSelectorsAudioTrackSelection) SetTrackId(v int64) *GetMediaLiveChannelResponseBodyChannelInputAttachmentsAudioSelectorsAudioTrackSelection {
+	s.TrackId = &v
+	return s
+}
+
+type GetMediaLiveChannelResponseBodyChannelOutputGroups struct {
+	// The MediaPackage destination.
+	MediaPackageGroupSetting *GetMediaLiveChannelResponseBodyChannelOutputGroupsMediaPackageGroupSetting `json:"MediaPackageGroupSetting,omitempty" xml:"MediaPackageGroupSetting,omitempty" type:"Struct"`
+	// The URL for monitoring the output group. The parameter is returned only when the output gourp type is MediaPackage.
+	//
+	// example:
+	//
+	// rtmp://xxx
+	MonitorUrl *string `json:"MonitorUrl,omitempty" xml:"MonitorUrl,omitempty"`
+	// The name of the output group.
+	//
+	// example:
+	//
+	// group1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The outputs in the output group.
+	Outputs []*GetMediaLiveChannelResponseBodyChannelOutputGroupsOutputs `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Repeated"`
+	// The output group type.
+	//
+	// example:
+	//
+	// MediaPackage
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetMediaLiveChannelResponseBodyChannelOutputGroups) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMediaLiveChannelResponseBodyChannelOutputGroups) GoString() string {
+	return s.String()
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannelOutputGroups) SetMediaPackageGroupSetting(v *GetMediaLiveChannelResponseBodyChannelOutputGroupsMediaPackageGroupSetting) *GetMediaLiveChannelResponseBodyChannelOutputGroups {
+	s.MediaPackageGroupSetting = v
+	return s
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannelOutputGroups) SetMonitorUrl(v string) *GetMediaLiveChannelResponseBodyChannelOutputGroups {
+	s.MonitorUrl = &v
+	return s
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannelOutputGroups) SetName(v string) *GetMediaLiveChannelResponseBodyChannelOutputGroups {
+	s.Name = &v
+	return s
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannelOutputGroups) SetOutputs(v []*GetMediaLiveChannelResponseBodyChannelOutputGroupsOutputs) *GetMediaLiveChannelResponseBodyChannelOutputGroups {
+	s.Outputs = v
+	return s
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannelOutputGroups) SetType(v string) *GetMediaLiveChannelResponseBodyChannelOutputGroups {
+	s.Type = &v
+	return s
+}
+
+type GetMediaLiveChannelResponseBodyChannelOutputGroupsMediaPackageGroupSetting struct {
+	// ChannelName in MediaPackage.
+	//
+	// example:
+	//
+	// myPackageChannel
+	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+	// GroupName in MediaPackage.
+	//
+	// example:
+	//
+	// myPackageGroup
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+}
+
+func (s GetMediaLiveChannelResponseBodyChannelOutputGroupsMediaPackageGroupSetting) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMediaLiveChannelResponseBodyChannelOutputGroupsMediaPackageGroupSetting) GoString() string {
+	return s.String()
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannelOutputGroupsMediaPackageGroupSetting) SetChannelName(v string) *GetMediaLiveChannelResponseBodyChannelOutputGroupsMediaPackageGroupSetting {
+	s.ChannelName = &v
+	return s
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannelOutputGroupsMediaPackageGroupSetting) SetGroupName(v string) *GetMediaLiveChannelResponseBodyChannelOutputGroupsMediaPackageGroupSetting {
+	s.GroupName = &v
+	return s
+}
+
+type GetMediaLiveChannelResponseBodyChannelOutputGroupsOutputs struct {
+	// The referenced AudioSettings.
+	AudioSettingNames []*string `json:"AudioSettingNames,omitempty" xml:"AudioSettingNames,omitempty" type:"Repeated"`
+	// The settings of the output delivered to MediaPackage.
+	MediaPackageOutputSetting *GetMediaLiveChannelResponseBodyChannelOutputGroupsOutputsMediaPackageOutputSetting `json:"MediaPackageOutputSetting,omitempty" xml:"MediaPackageOutputSetting,omitempty" type:"Struct"`
+	// The media type of the output.
+	//
+	// example:
+	//
+	// 0
+	MediaType *int32 `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// The name of the output.
+	//
+	// example:
+	//
+	// output1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the referenced VideoSettings.
+	//
+	// example:
+	//
+	// myVideo1
+	VideoSettingName *string `json:"VideoSettingName,omitempty" xml:"VideoSettingName,omitempty"`
+}
+
+func (s GetMediaLiveChannelResponseBodyChannelOutputGroupsOutputs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMediaLiveChannelResponseBodyChannelOutputGroupsOutputs) GoString() string {
+	return s.String()
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannelOutputGroupsOutputs) SetAudioSettingNames(v []*string) *GetMediaLiveChannelResponseBodyChannelOutputGroupsOutputs {
+	s.AudioSettingNames = v
+	return s
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannelOutputGroupsOutputs) SetMediaPackageOutputSetting(v *GetMediaLiveChannelResponseBodyChannelOutputGroupsOutputsMediaPackageOutputSetting) *GetMediaLiveChannelResponseBodyChannelOutputGroupsOutputs {
+	s.MediaPackageOutputSetting = v
+	return s
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannelOutputGroupsOutputs) SetMediaType(v int32) *GetMediaLiveChannelResponseBodyChannelOutputGroupsOutputs {
+	s.MediaType = &v
+	return s
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannelOutputGroupsOutputs) SetName(v string) *GetMediaLiveChannelResponseBodyChannelOutputGroupsOutputs {
+	s.Name = &v
+	return s
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannelOutputGroupsOutputs) SetVideoSettingName(v string) *GetMediaLiveChannelResponseBodyChannelOutputGroupsOutputs {
+	s.VideoSettingName = &v
+	return s
+}
+
+type GetMediaLiveChannelResponseBodyChannelOutputGroupsOutputsMediaPackageOutputSetting struct {
+	// The manifest audio group ID.
+	//
+	// example:
+	//
+	// audiogroup
+	AudioGroupId *string `json:"AudioGroupId,omitempty" xml:"AudioGroupId,omitempty"`
+	// The manifest name modifier. The child manifests include this modifier in their M3U8 file names.
+	//
+	// example:
+	//
+	// 480p
+	NameModifier *string `json:"NameModifier,omitempty" xml:"NameModifier,omitempty"`
+}
+
+func (s GetMediaLiveChannelResponseBodyChannelOutputGroupsOutputsMediaPackageOutputSetting) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMediaLiveChannelResponseBodyChannelOutputGroupsOutputsMediaPackageOutputSetting) GoString() string {
+	return s.String()
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannelOutputGroupsOutputsMediaPackageOutputSetting) SetAudioGroupId(v string) *GetMediaLiveChannelResponseBodyChannelOutputGroupsOutputsMediaPackageOutputSetting {
+	s.AudioGroupId = &v
+	return s
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannelOutputGroupsOutputsMediaPackageOutputSetting) SetNameModifier(v string) *GetMediaLiveChannelResponseBodyChannelOutputGroupsOutputsMediaPackageOutputSetting {
+	s.NameModifier = &v
+	return s
+}
+
+type GetMediaLiveChannelResponseBodyChannelVideoSettings struct {
+	// The height of the video in pixels.
+	//
+	// example:
+	//
+	// 720
+	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The name of the video settings.
+	//
+	// example:
+	//
+	// video1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The video codec.
+	//
+	// example:
+	//
+	// H264
+	VideoCodec *string `json:"VideoCodec,omitempty" xml:"VideoCodec,omitempty"`
+	// The video encoding settings.
+	VideoCodecSetting *GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSetting `json:"VideoCodecSetting,omitempty" xml:"VideoCodecSetting,omitempty" type:"Struct"`
+	// The width of the video in pixels.
+	//
+	// example:
+	//
+	// 1280
+	Width *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s GetMediaLiveChannelResponseBodyChannelVideoSettings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMediaLiveChannelResponseBodyChannelVideoSettings) GoString() string {
+	return s.String()
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannelVideoSettings) SetHeight(v int32) *GetMediaLiveChannelResponseBodyChannelVideoSettings {
+	s.Height = &v
+	return s
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannelVideoSettings) SetName(v string) *GetMediaLiveChannelResponseBodyChannelVideoSettings {
+	s.Name = &v
+	return s
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannelVideoSettings) SetVideoCodec(v string) *GetMediaLiveChannelResponseBodyChannelVideoSettings {
+	s.VideoCodec = &v
+	return s
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannelVideoSettings) SetVideoCodecSetting(v *GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSetting) *GetMediaLiveChannelResponseBodyChannelVideoSettings {
+	s.VideoCodecSetting = v
+	return s
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannelVideoSettings) SetWidth(v int32) *GetMediaLiveChannelResponseBodyChannelVideoSettings {
+	s.Width = &v
+	return s
+}
+
+type GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSetting struct {
+	// The video encoding settings.
+	CodecDetail *GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSettingCodecDetail `json:"CodecDetail,omitempty" xml:"CodecDetail,omitempty" type:"Struct"`
+	// The frame rate.
+	Framerate *GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSettingFramerate `json:"Framerate,omitempty" xml:"Framerate,omitempty" type:"Struct"`
+	// The GOP setting.
+	Gop *GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSettingGop `json:"Gop,omitempty" xml:"Gop,omitempty" type:"Struct"`
+	// The video encoding rate.
+	Rate *GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSettingRate `json:"Rate,omitempty" xml:"Rate,omitempty" type:"Struct"`
+}
+
+func (s GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSetting) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSetting) GoString() string {
+	return s.String()
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSetting) SetCodecDetail(v *GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSettingCodecDetail) *GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSetting {
+	s.CodecDetail = v
+	return s
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSetting) SetFramerate(v *GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSettingFramerate) *GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSetting {
+	s.Framerate = v
+	return s
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSetting) SetGop(v *GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSettingGop) *GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSetting {
+	s.Gop = v
+	return s
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSetting) SetRate(v *GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSettingRate) *GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSetting {
+	s.Rate = v
+	return s
+}
+
+type GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSettingCodecDetail struct {
+	// The video encoding level. It is not supported yet.
+	//
+	// example:
+	//
+	// H264_LEVEL_AUTO
+	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The H.264 profile.
+	//
+	// example:
+	//
+	// MAIN
+	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+}
+
+func (s GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSettingCodecDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSettingCodecDetail) GoString() string {
+	return s.String()
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSettingCodecDetail) SetLevel(v string) *GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSettingCodecDetail {
+	s.Level = &v
+	return s
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSettingCodecDetail) SetProfile(v string) *GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSettingCodecDetail {
+	s.Profile = &v
+	return s
+}
+
+type GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSettingFramerate struct {
+	// The frame rate mode.
+	//
+	// example:
+	//
+	// SPECIFIED
+	FramerateControl *string `json:"FramerateControl,omitempty" xml:"FramerateControl,omitempty"`
+	// The denominator of the fixed frame rate.
+	//
+	// example:
+	//
+	// 1
+	FramerateDenominator *int32 `json:"FramerateDenominator,omitempty" xml:"FramerateDenominator,omitempty"`
+	// The numerator of the fixed frame rate.
+	//
+	// example:
+	//
+	// 25
+	FramerateNumerator *int32 `json:"FramerateNumerator,omitempty" xml:"FramerateNumerator,omitempty"`
+}
+
+func (s GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSettingFramerate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSettingFramerate) GoString() string {
+	return s.String()
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSettingFramerate) SetFramerateControl(v string) *GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSettingFramerate {
+	s.FramerateControl = &v
+	return s
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSettingFramerate) SetFramerateDenominator(v int32) *GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSettingFramerate {
+	s.FramerateDenominator = &v
+	return s
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSettingFramerate) SetFramerateNumerator(v int32) *GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSettingFramerate {
+	s.FramerateNumerator = &v
+	return s
+}
+
+type GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSettingGop struct {
+	// The number of B frames.
+	//
+	// example:
+	//
+	// 3
+	BframesNum *int32 `json:"BframesNum,omitempty" xml:"BframesNum,omitempty"`
+	// The GOP size.
+	//
+	// example:
+	//
+	// 90
+	GopSize *int32 `json:"GopSize,omitempty" xml:"GopSize,omitempty"`
+	// The GOP size unit.
+	//
+	// example:
+	//
+	// FRAMES
+	GopSizeUnits *string `json:"GopSizeUnits,omitempty" xml:"GopSizeUnits,omitempty"`
+}
+
+func (s GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSettingGop) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSettingGop) GoString() string {
+	return s.String()
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSettingGop) SetBframesNum(v int32) *GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSettingGop {
+	s.BframesNum = &v
+	return s
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSettingGop) SetGopSize(v int32) *GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSettingGop {
+	s.GopSize = &v
+	return s
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSettingGop) SetGopSizeUnits(v string) *GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSettingGop {
+	s.GopSizeUnits = &v
+	return s
+}
+
+type GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSettingRate struct {
+	// The video bitrate. Unit: bit/s.
+	//
+	// example:
+	//
+	// 2500000
+	Bitrate *int32 `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The video buffer size. Unit: bit/s.
+	//
+	// example:
+	//
+	// 6000000
+	BufferSize *int32 `json:"BufferSize,omitempty" xml:"BufferSize,omitempty"`
+	// The maximum bitrate. Unit: bit/s.
+	//
+	// example:
+	//
+	// 6000000
+	MaxBitrate *int32 `json:"MaxBitrate,omitempty" xml:"MaxBitrate,omitempty"`
+	// The bitrate control mode.
+	//
+	// example:
+	//
+	// ABR
+	RateControlMode *string `json:"RateControlMode,omitempty" xml:"RateControlMode,omitempty"`
+}
+
+func (s GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSettingRate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSettingRate) GoString() string {
+	return s.String()
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSettingRate) SetBitrate(v int32) *GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSettingRate {
+	s.Bitrate = &v
+	return s
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSettingRate) SetBufferSize(v int32) *GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSettingRate {
+	s.BufferSize = &v
+	return s
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSettingRate) SetMaxBitrate(v int32) *GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSettingRate {
+	s.MaxBitrate = &v
+	return s
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSettingRate) SetRateControlMode(v string) *GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSettingRate {
+	s.RateControlMode = &v
+	return s
+}
+
+type GetMediaLiveChannelResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetMediaLiveChannelResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetMediaLiveChannelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMediaLiveChannelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetMediaLiveChannelResponse) SetHeaders(v map[string]*string) *GetMediaLiveChannelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetMediaLiveChannelResponse) SetStatusCode(v int32) *GetMediaLiveChannelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetMediaLiveChannelResponse) SetBody(v *GetMediaLiveChannelResponseBody) *GetMediaLiveChannelResponse {
+	s.Body = v
+	return s
+}
+
+type GetMediaLiveInputRequest struct {
+	// The ID of the input.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SEGK5KA6KYKAWQQH
+	InputId *string `json:"InputId,omitempty" xml:"InputId,omitempty"`
+}
+
+func (s GetMediaLiveInputRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMediaLiveInputRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetMediaLiveInputRequest) SetInputId(v string) *GetMediaLiveInputRequest {
+	s.InputId = &v
+	return s
+}
+
+type GetMediaLiveInputResponseBody struct {
+	// The input information.
+	Input *GetMediaLiveInputResponseBodyInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// ******11-DB8D-4A9A-875B-275798******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetMediaLiveInputResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMediaLiveInputResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetMediaLiveInputResponseBody) SetInput(v *GetMediaLiveInputResponseBodyInput) *GetMediaLiveInputResponseBody {
+	s.Input = v
+	return s
+}
+
+func (s *GetMediaLiveInputResponseBody) SetRequestId(v string) *GetMediaLiveInputResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetMediaLiveInputResponseBodyInput struct {
+	// The IDs of the channels associated with the input.
+	ChannelIds []*string `json:"ChannelIds,omitempty" xml:"ChannelIds,omitempty" type:"Repeated"`
+	// The time when the input was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2024-12-03T06:56:42Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the input.
+	//
+	// example:
+	//
+	// SEGK5KA6KYKAWQQH
+	InputId *string `json:"InputId,omitempty" xml:"InputId,omitempty"`
+	// The input configurations.
+	InputInfos []*GetMediaLiveInputResponseBodyInputInputInfos `json:"InputInfos,omitempty" xml:"InputInfos,omitempty" type:"Repeated"`
+	// The name of the input.
+	//
+	// example:
+	//
+	// myinput
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The IDs of the security groups associated with the input.
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
+	// The input type.
+	//
+	// example:
+	//
+	// RTMP_PUSH
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetMediaLiveInputResponseBodyInput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMediaLiveInputResponseBodyInput) GoString() string {
+	return s.String()
+}
+
+func (s *GetMediaLiveInputResponseBodyInput) SetChannelIds(v []*string) *GetMediaLiveInputResponseBodyInput {
+	s.ChannelIds = v
+	return s
+}
+
+func (s *GetMediaLiveInputResponseBodyInput) SetCreateTime(v string) *GetMediaLiveInputResponseBodyInput {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetMediaLiveInputResponseBodyInput) SetInputId(v string) *GetMediaLiveInputResponseBodyInput {
+	s.InputId = &v
+	return s
+}
+
+func (s *GetMediaLiveInputResponseBodyInput) SetInputInfos(v []*GetMediaLiveInputResponseBodyInputInputInfos) *GetMediaLiveInputResponseBodyInput {
+	s.InputInfos = v
+	return s
+}
+
+func (s *GetMediaLiveInputResponseBodyInput) SetName(v string) *GetMediaLiveInputResponseBodyInput {
+	s.Name = &v
+	return s
+}
+
+func (s *GetMediaLiveInputResponseBodyInput) SetSecurityGroupIds(v []*string) *GetMediaLiveInputResponseBodyInput {
+	s.SecurityGroupIds = v
+	return s
+}
+
+func (s *GetMediaLiveInputResponseBodyInput) SetType(v string) *GetMediaLiveInputResponseBodyInput {
+	s.Type = &v
+	return s
+}
+
+type GetMediaLiveInputResponseBodyInputInputInfos struct {
+	// The endpoint that the stream is pushed to. This parameter is returned for PUSH inputs.
+	//
+	// example:
+	//
+	// rtmp://domain/app/stream
+	DestHost       *string `json:"DestHost,omitempty" xml:"DestHost,omitempty"`
+	FlowId         *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	FlowOutputName *string `json:"FlowOutputName,omitempty" xml:"FlowOutputName,omitempty"`
+	// The URL for input monitoring.
+	//
+	// example:
+	//
+	// rtmp://domain/app/stream_for_monitor
+	MonitorUrl *string `json:"MonitorUrl,omitempty" xml:"MonitorUrl,omitempty"`
+	// The source URL where the stream is pulled from. This parameter is returned for PULL inputs.
+	//
+	// example:
+	//
+	// rtmp://domain/app/stream
+	SourceUrl *string `json:"SourceUrl,omitempty" xml:"SourceUrl,omitempty"`
+	// The name of the pushed stream. This parameter is returned for PUSH inputs.
+	//
+	// example:
+	//
+	// mystream
+	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
+}
+
+func (s GetMediaLiveInputResponseBodyInputInputInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMediaLiveInputResponseBodyInputInputInfos) GoString() string {
+	return s.String()
+}
+
+func (s *GetMediaLiveInputResponseBodyInputInputInfos) SetDestHost(v string) *GetMediaLiveInputResponseBodyInputInputInfos {
+	s.DestHost = &v
+	return s
+}
+
+func (s *GetMediaLiveInputResponseBodyInputInputInfos) SetFlowId(v string) *GetMediaLiveInputResponseBodyInputInputInfos {
+	s.FlowId = &v
+	return s
+}
+
+func (s *GetMediaLiveInputResponseBodyInputInputInfos) SetFlowOutputName(v string) *GetMediaLiveInputResponseBodyInputInputInfos {
+	s.FlowOutputName = &v
+	return s
+}
+
+func (s *GetMediaLiveInputResponseBodyInputInputInfos) SetMonitorUrl(v string) *GetMediaLiveInputResponseBodyInputInputInfos {
+	s.MonitorUrl = &v
+	return s
+}
+
+func (s *GetMediaLiveInputResponseBodyInputInputInfos) SetSourceUrl(v string) *GetMediaLiveInputResponseBodyInputInputInfos {
+	s.SourceUrl = &v
+	return s
+}
+
+func (s *GetMediaLiveInputResponseBodyInputInputInfos) SetStreamName(v string) *GetMediaLiveInputResponseBodyInputInputInfos {
+	s.StreamName = &v
+	return s
+}
+
+type GetMediaLiveInputResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetMediaLiveInputResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetMediaLiveInputResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMediaLiveInputResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetMediaLiveInputResponse) SetHeaders(v map[string]*string) *GetMediaLiveInputResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetMediaLiveInputResponse) SetStatusCode(v int32) *GetMediaLiveInputResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetMediaLiveInputResponse) SetBody(v *GetMediaLiveInputResponseBody) *GetMediaLiveInputResponse {
+	s.Body = v
+	return s
+}
+
+type GetMediaLiveInputSecurityGroupRequest struct {
+	// The ID of the security group.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SEGK5KA6KYKAWQQH
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+}
+
+func (s GetMediaLiveInputSecurityGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMediaLiveInputSecurityGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetMediaLiveInputSecurityGroupRequest) SetSecurityGroupId(v string) *GetMediaLiveInputSecurityGroupRequest {
+	s.SecurityGroupId = &v
+	return s
+}
+
+type GetMediaLiveInputSecurityGroupResponseBody struct {
+	// The ID of the request.
+	//
+	// example:
+	//
+	// ****63E8B7C7-4812-46AD-0FA56029AC86****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The security group information.
+	SecurityGroup *GetMediaLiveInputSecurityGroupResponseBodySecurityGroup `json:"SecurityGroup,omitempty" xml:"SecurityGroup,omitempty" type:"Struct"`
+}
+
+func (s GetMediaLiveInputSecurityGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMediaLiveInputSecurityGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetMediaLiveInputSecurityGroupResponseBody) SetRequestId(v string) *GetMediaLiveInputSecurityGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetMediaLiveInputSecurityGroupResponseBody) SetSecurityGroup(v *GetMediaLiveInputSecurityGroupResponseBodySecurityGroup) *GetMediaLiveInputSecurityGroupResponseBody {
+	s.SecurityGroup = v
+	return s
+}
+
+type GetMediaLiveInputSecurityGroupResponseBodySecurityGroup struct {
+	// The time when the security group was created. It follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2024-06-13T08:31:56Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The IDs of the inputs associated with the security group.
+	InputIds []*string `json:"InputIds,omitempty" xml:"InputIds,omitempty" type:"Repeated"`
+	// The name of the security group.
+	//
+	// example:
+	//
+	// mysg
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the security group.
+	//
+	// example:
+	//
+	// SEGK5KA6KYKAWQQH
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The security group rules.
+	WhitelistRules []*string `json:"WhitelistRules,omitempty" xml:"WhitelistRules,omitempty" type:"Repeated"`
+}
+
+func (s GetMediaLiveInputSecurityGroupResponseBodySecurityGroup) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMediaLiveInputSecurityGroupResponseBodySecurityGroup) GoString() string {
+	return s.String()
+}
+
+func (s *GetMediaLiveInputSecurityGroupResponseBodySecurityGroup) SetCreateTime(v string) *GetMediaLiveInputSecurityGroupResponseBodySecurityGroup {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetMediaLiveInputSecurityGroupResponseBodySecurityGroup) SetInputIds(v []*string) *GetMediaLiveInputSecurityGroupResponseBodySecurityGroup {
+	s.InputIds = v
+	return s
+}
+
+func (s *GetMediaLiveInputSecurityGroupResponseBodySecurityGroup) SetName(v string) *GetMediaLiveInputSecurityGroupResponseBodySecurityGroup {
+	s.Name = &v
+	return s
+}
+
+func (s *GetMediaLiveInputSecurityGroupResponseBodySecurityGroup) SetSecurityGroupId(v string) *GetMediaLiveInputSecurityGroupResponseBodySecurityGroup {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *GetMediaLiveInputSecurityGroupResponseBodySecurityGroup) SetWhitelistRules(v []*string) *GetMediaLiveInputSecurityGroupResponseBodySecurityGroup {
+	s.WhitelistRules = v
+	return s
+}
+
+type GetMediaLiveInputSecurityGroupResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetMediaLiveInputSecurityGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetMediaLiveInputSecurityGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMediaLiveInputSecurityGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetMediaLiveInputSecurityGroupResponse) SetHeaders(v map[string]*string) *GetMediaLiveInputSecurityGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetMediaLiveInputSecurityGroupResponse) SetStatusCode(v int32) *GetMediaLiveInputSecurityGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetMediaLiveInputSecurityGroupResponse) SetBody(v *GetMediaLiveInputSecurityGroupResponseBody) *GetMediaLiveInputSecurityGroupResponse {
+	s.Body = v
+	return s
+}
+
 type GetMediaMarksRequest struct {
 	// The ID of the media asset.
 	//
@@ -28326,12 +31769,16 @@ func (s *GetPlayInfoResponse) SetBody(v *GetPlayInfoResponseBody) *GetPlayInfoRe
 }
 
 type GetProgramRequest struct {
+	// The name of the channel.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// MyChannel
 	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+	// The name of the program.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -28359,7 +31806,10 @@ func (s *GetProgramRequest) SetProgramName(v string) *GetProgramRequest {
 }
 
 type GetProgramResponseBody struct {
+	// The information about the program.
 	Program *ChannelAssemblyProgram `json:"Program,omitempty" xml:"Program,omitempty"`
+	// **Request ID**
+	//
 	// example:
 	//
 	// xxx-xxxx-xxxxx-xxxx
@@ -30515,18 +33965,24 @@ func (s *GetSnapshotUrlsResponse) SetBody(v *GetSnapshotUrlsResponseBody) *GetSn
 }
 
 type GetSourceRequest struct {
+	// The source location.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// MySourceLocation
 	SourceLocationName *string `json:"SourceLocationName,omitempty" xml:"SourceLocationName,omitempty"`
+	// The name of the source.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// MyVodSource
 	SourceName *string `json:"SourceName,omitempty" xml:"SourceName,omitempty"`
+	// The source type. Valid values: vodSource and liveSource.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -30559,11 +34015,14 @@ func (s *GetSourceRequest) SetSourceType(v string) *GetSourceRequest {
 }
 
 type GetSourceResponseBody struct {
+	// **Request ID**
+	//
 	// example:
 	//
 	// xxx-xxxx-xxxxx-xxxx
-	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Source    *ChannelAssemblySource `json:"Source,omitempty" xml:"Source,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The source information.
+	Source *ChannelAssemblySource `json:"Source,omitempty" xml:"Source,omitempty"`
 }
 
 func (s GetSourceResponseBody) String() string {
@@ -30614,6 +34073,8 @@ func (s *GetSourceResponse) SetBody(v *GetSourceResponseBody) *GetSourceResponse
 }
 
 type GetSourceLocationRequest struct {
+	// The name of the source location.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -30636,10 +34097,13 @@ func (s *GetSourceLocationRequest) SetSourceLocationName(v string) *GetSourceLoc
 }
 
 type GetSourceLocationResponseBody struct {
+	// **Request ID**
+	//
 	// example:
 	//
 	// xxx-xxxx-xxxxx-xxxx
-	RequestId      *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The source location information.
 	SourceLocation *ChannelAssemblySourceLocation `json:"SourceLocation,omitempty" xml:"SourceLocation,omitempty"`
 }
 
@@ -36230,6 +39694,8 @@ func (s *GetVideoListResponse) SetBody(v *GetVideoListResponseBody) *GetVideoLis
 }
 
 type GetVodPackagingAssetRequest struct {
+	// The name of the VOD packaging asset.
+	//
 	// example:
 	//
 	// 30min_movie
@@ -36250,7 +39716,10 @@ func (s *GetVodPackagingAssetRequest) SetAssetName(v string) *GetVodPackagingAss
 }
 
 type GetVodPackagingAssetResponseBody struct {
+	// The information about the asset.
 	Asset *GetVodPackagingAssetResponseBodyAsset `json:"Asset,omitempty" xml:"Asset,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 0622C702-41BE-467E-AF2E-883D4517962E
@@ -36276,24 +39745,34 @@ func (s *GetVodPackagingAssetResponseBody) SetRequestId(v string) *GetVodPackagi
 }
 
 type GetVodPackagingAssetResponseBodyAsset struct {
+	// The name of the asset.
+	//
 	// example:
 	//
 	// 30min_movie
 	AssetName *string `json:"AssetName,omitempty" xml:"AssetName,omitempty"`
+	// The content ID in the DRM system. The maximum length is 256 characters. Letters, digits, underscores (_), and hyphens (-) are supported.
+	//
 	// example:
 	//
 	// movie
 	ContentId *string `json:"ContentId,omitempty" xml:"ContentId,omitempty"`
+	// The time when the asset was created. It follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2024-11-21T06:45:32Z
-	CreateTime      *string                                                 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The egress endpoints, each corresponding to a packaging configuration.
 	EgressEndpoints []*GetVodPackagingAssetResponseBodyAssetEgressEndpoints `json:"EgressEndpoints,omitempty" xml:"EgressEndpoints,omitempty" type:"Repeated"`
+	// The name of the packaging group.
+	//
 	// example:
 	//
 	// vod_hls
-	GroupName *string                                     `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	Input     *GetVodPackagingAssetResponseBodyAssetInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The asset input configurations.
+	Input *GetVodPackagingAssetResponseBodyAssetInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
 }
 
 func (s GetVodPackagingAssetResponseBodyAsset) String() string {
@@ -36335,15 +39814,26 @@ func (s *GetVodPackagingAssetResponseBodyAsset) SetInput(v *GetVodPackagingAsset
 }
 
 type GetVodPackagingAssetResponseBodyAssetEgressEndpoints struct {
+	// The name of the packaging configuration.
+	//
 	// example:
 	//
 	// hls_3s
 	ConfigurationName *string `json:"ConfigurationName,omitempty" xml:"ConfigurationName,omitempty"`
+	// The asset status. Valid values:
+	//
+	// 	- Queuing: The asset is waiting for packaging.
+	//
+	// 	- Playable: The asset is packaged and playable.
+	//
+	// 	- Failed: The asset fails to be packaged.
+	//
 	// example:
 	//
 	// Playable
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Url    *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// The playback URL. If the asset fails to be packaged, no playback URL is returned.
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s GetVodPackagingAssetResponseBodyAssetEgressEndpoints) String() string {
@@ -36370,7 +39860,10 @@ func (s *GetVodPackagingAssetResponseBodyAssetEgressEndpoints) SetUrl(v string) 
 }
 
 type GetVodPackagingAssetResponseBodyAssetInput struct {
+	// The URL of the media file. Only M3U8 files stored in OSS are supported.
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The input type. Only Object Storage Service (OSS) is supported.
+	//
 	// example:
 	//
 	// OSS
@@ -36425,6 +39918,8 @@ func (s *GetVodPackagingAssetResponse) SetBody(v *GetVodPackagingAssetResponseBo
 }
 
 type GetVodPackagingConfigurationRequest struct {
+	// The name of the packaging configuration.
+	//
 	// example:
 	//
 	// hls_3s
@@ -36445,7 +39940,10 @@ func (s *GetVodPackagingConfigurationRequest) SetConfigurationName(v string) *Ge
 }
 
 type GetVodPackagingConfigurationResponseBody struct {
+	// The information about the packaging configuration.
 	PackagingConfiguration *VodPackagingConfiguration `json:"PackagingConfiguration,omitempty" xml:"PackagingConfiguration,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
@@ -36500,6 +39998,8 @@ func (s *GetVodPackagingConfigurationResponse) SetBody(v *GetVodPackagingConfigu
 }
 
 type GetVodPackagingGroupRequest struct {
+	// The name of the packaging group. The name must be unique and can be up to 128 characters in length. Letters, digits, underscores (_), and hyphens (-) are supported.
+	//
 	// example:
 	//
 	// vod_hls
@@ -36520,7 +40020,10 @@ func (s *GetVodPackagingGroupRequest) SetGroupName(v string) *GetVodPackagingGro
 }
 
 type GetVodPackagingGroupResponseBody struct {
+	// The information about the packaging group.
 	PackagingGroup *VodPackagingGroup `json:"PackagingGroup,omitempty" xml:"PackagingGroup,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// ****36-3C1E-4417-BDB2-1E034F****
@@ -37123,16 +40626,19 @@ type ListAIAgentDialoguesResponseBodyDialogues struct {
 	// example:
 	//
 	// user
-	Producer *string `json:"Producer,omitempty" xml:"Producer,omitempty"`
+	Producer      *string `json:"Producer,omitempty" xml:"Producer,omitempty"`
+	ReasoningText *string `json:"ReasoningText,omitempty" xml:"ReasoningText,omitempty"`
 	// example:
 	//
 	// f27f9b9be28642a88e18****
 	RoundId *string `json:"RoundId,omitempty" xml:"RoundId,omitempty"`
+	Source  *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	Text    *string `json:"Text,omitempty" xml:"Text,omitempty"`
 	// example:
 	//
 	// 1734511087000
-	Time *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
+	Time *int64  `json:"Time,omitempty" xml:"Time,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListAIAgentDialoguesResponseBodyDialogues) String() string {
@@ -37153,8 +40659,18 @@ func (s *ListAIAgentDialoguesResponseBodyDialogues) SetProducer(v string) *ListA
 	return s
 }
 
+func (s *ListAIAgentDialoguesResponseBodyDialogues) SetReasoningText(v string) *ListAIAgentDialoguesResponseBodyDialogues {
+	s.ReasoningText = &v
+	return s
+}
+
 func (s *ListAIAgentDialoguesResponseBodyDialogues) SetRoundId(v string) *ListAIAgentDialoguesResponseBodyDialogues {
 	s.RoundId = &v
+	return s
+}
+
+func (s *ListAIAgentDialoguesResponseBodyDialogues) SetSource(v string) *ListAIAgentDialoguesResponseBodyDialogues {
+	s.Source = &v
 	return s
 }
 
@@ -37165,6 +40681,11 @@ func (s *ListAIAgentDialoguesResponseBodyDialogues) SetText(v string) *ListAIAge
 
 func (s *ListAIAgentDialoguesResponseBodyDialogues) SetTime(v int64) *ListAIAgentDialoguesResponseBodyDialogues {
 	s.Time = &v
+	return s
+}
+
+func (s *ListAIAgentDialoguesResponseBodyDialogues) SetType(v string) *ListAIAgentDialoguesResponseBodyDialogues {
+	s.Type = &v
 	return s
 }
 
@@ -37198,24 +40719,34 @@ func (s *ListAIAgentDialoguesResponse) SetBody(v *ListAIAgentDialoguesResponseBo
 }
 
 type ListAIAgentInstanceRequest struct {
+	// The ID of the AI agent.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 39f8e0bc005e4f309379701645f4***
 	AIAgentId *string `json:"AIAgentId,omitempty" xml:"AIAgentId,omitempty"`
+	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. This parameter does not have a default value.
+	//
 	// example:
 	//
 	// 2023-01-02T00:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The page number. Default value: 1. Valid values: 1 to 100.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 10. Valid values: 0 to 100.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. This parameter does not have a default value.
+	//
 	// example:
 	//
 	// 2023-01-01T00:00:00Z
@@ -37256,7 +40787,10 @@ func (s *ListAIAgentInstanceRequest) SetStartTime(v string) *ListAIAgentInstance
 }
 
 type ListAIAgentInstanceResponseBody struct {
+	// The list of the AI agents.
 	Instances []*ListAIAgentInstanceResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 7B117AF5-2A16-412C-B127-FA6175ED1AD0
@@ -37282,22 +40816,36 @@ func (s *ListAIAgentInstanceResponseBody) SetRequestId(v string) *ListAIAgentIns
 }
 
 type ListAIAgentInstanceResponseBodyInstances struct {
+	// The URL of the call log file for the AI agent. The structure of the file is CallLog in the JSON format.
+	//
 	// example:
 	//
 	// https://example.com/call_logs/12345.json
 	CallLogUrl *string `json:"CallLogUrl,omitempty" xml:"CallLogUrl,omitempty"`
+	// The runtime configurations of the AI agent.
+	//
 	// example:
 	//
 	// {"VoiceChat":{"AgentUserId":"voice_agent_001","ChannelId":"voice_channel_001","AuthToken":"your_voice_chat_auth_token"}}
 	RuntimeConfig *AIAgentRuntimeConfig `json:"RuntimeConfig,omitempty" xml:"RuntimeConfig,omitempty"`
+	// The state of the instance. Valid values:
+	//
+	// 	- Executing
+	//
+	// 	- Finished
+	//
 	// example:
 	//
 	// Finished
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The template configurations of the AI agent.
+	//
 	// example:
 	//
 	// {"VoiceChat": {"VoiceId": "zhixiaoxia"}}
 	TemplateConfig *AIAgentTemplateConfig `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
+	// The custom information.
+	//
 	// example:
 	//
 	// {"Email":"johndoe@example.com","Preferences":{"Language":"en"}}
@@ -37367,37 +40915,37 @@ func (s *ListAIAgentInstanceResponse) SetBody(v *ListAIAgentInstanceResponseBody
 }
 
 type ListAdInsertionsRequest struct {
-	// 按广告名称查询，支持模糊匹配
+	// The configuration name. Fuzzy match is supported.
 	//
 	// example:
 	//
 	// ad
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// 获取后续数据的最大记录数，使用此方式获取数据时分页参数将无效
+	// The maximum number of entries to retrieve in a subsequent request. If this parameter is used, the pagination parameters become invalid. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 获取后续数据的Token，使用此方式获取数据时分页参数将无效
+	// The token that is used in the next request to retrieve a new page of results. If this parameter is used, the pagination parameters become invalid.
 	//
 	// example:
 	//
 	// ******8EqYpQbZ6Eh7+Zz8DxVYoQ*****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 分页参数，页码
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// 分页参数，页宽
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 分页参数，排序方式，asc:按创建时间升序，desc:按创建时间降序
+	// The sorting order of the configurations by creation time. asc: ascending. desc: descending.
 	//
 	// example:
 	//
@@ -37444,44 +40992,45 @@ func (s *ListAdInsertionsRequest) SetSortBy(v string) *ListAdInsertionsRequest {
 }
 
 type ListAdInsertionsResponseBody struct {
+	// Array
 	Configs []*ListAdInsertionsResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
-	// 获取后续数据的最大记录数，使用此方式获取数据时分页参数将无效
+	// The maximum number of entries to retrieve in a subsequent request. If this parameter is used, the pagination parameters become invalid.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 获取后续数据的Token，使用此方式获取数据时分页参数将无效
+	// The token that is used in the next request to retrieve a new page of results. If this parameter is used, the pagination parameters become invalid.
 	//
 	// example:
 	//
 	// ******8EqYpQbZ6Eh7+Zz8DxVYoQ*****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 分页参数，页码
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// 分页参数，页宽
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 分页参数，排序方式，asc:按创建时间升序，desc:按创建时间降序
+	// The sorting order of the configurations by creation time. asc: ascending. desc: descending.
 	//
 	// example:
 	//
 	// asc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// 总记录数
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -37538,21 +41087,21 @@ func (s *ListAdInsertionsResponseBody) SetTotalCount(v int64) *ListAdInsertionsR
 }
 
 type ListAdInsertionsResponseBodyConfigs struct {
-	// 广告标记透传
+	// Indicates whether ad marker passthrough is enabled.
 	//
 	// example:
 	//
 	// ON
 	AdMarkerPassthrough *string `json:"AdMarkerPassthrough,omitempty" xml:"AdMarkerPassthrough,omitempty"`
-	// 广告策略服务器URL
+	// The request URL of the ad decision server (ADS).
 	//
 	// example:
 	//
 	// http://ads.com/ad1?param1=[palyer_params.p1]
 	AdsUrl *string `json:"AdsUrl,omitempty" xml:"AdsUrl,omitempty"`
-	// CDN配置
+	// The CDN configurations.
 	CdnConfig *ListAdInsertionsResponseBodyConfigsCdnConfig `json:"CdnConfig,omitempty" xml:"CdnConfig,omitempty" type:"Struct"`
-	// 动态配置别名
+	// The player parameter variables and aliases.
 	//
 	// example:
 	//
@@ -37566,39 +41115,39 @@ type ListAdInsertionsResponseBodyConfigs struct {
 	//
 	// }
 	ConfigAliases *string `json:"ConfigAliases,omitempty" xml:"ConfigAliases,omitempty"`
-	// 内容URL前缀
+	// The URL prefix for the source content.
 	//
 	// example:
 	//
 	// https://source.com/
 	ContentUrlPrefix *string `json:"ContentUrlPrefix,omitempty" xml:"ContentUrlPrefix,omitempty"`
-	// 创建时间
+	// The time when the configuration was created.
 	//
 	// example:
 	//
 	// 2024-06-13T08:26:09Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 修改时间
+	// The time when the configuration was last modified.
 	//
 	// example:
 	//
 	// 2024-06-13T08:26:09Z
 	LastModified *string `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
-	// 清单播放端点配置
+	// The playback endpoint configuration.
 	ManifestEndpointConfig *ListAdInsertionsResponseBodyConfigsManifestEndpointConfig `json:"ManifestEndpointConfig,omitempty" xml:"ManifestEndpointConfig,omitempty" type:"Struct"`
-	// 广告插入配置名称
+	// The name of the ad insertion configuration.
 	//
 	// example:
 	//
 	// my_ad
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 个性化配置阈值
+	// The personalization threshold that defines the maximum duration of underfilled time allowed in an ad break.
 	//
 	// example:
 	//
 	// 5
 	PersonalizationThreshold *int32 `json:"PersonalizationThreshold,omitempty" xml:"PersonalizationThreshold,omitempty"`
-	// slate广告URL
+	// The URL of the slate ad.
 	//
 	// example:
 	//
@@ -37670,13 +41219,13 @@ func (s *ListAdInsertionsResponseBodyConfigs) SetSlateAdUrl(v string) *ListAdIns
 }
 
 type ListAdInsertionsResponseBodyConfigsCdnConfig struct {
-	// 广告分片的CDN前缀
+	// The CDN prefix for ad segments.
 	//
 	// example:
 	//
 	// http://cdn.com/
 	AdSegmentUrlPrefix *string `json:"AdSegmentUrlPrefix,omitempty" xml:"AdSegmentUrlPrefix,omitempty"`
-	// 视频内容分片的CDN前缀
+	// The CDN prefix for content segments.
 	//
 	// example:
 	//
@@ -37703,7 +41252,7 @@ func (s *ListAdInsertionsResponseBodyConfigsCdnConfig) SetContentSegmentUrlPrefi
 }
 
 type ListAdInsertionsResponseBodyConfigsManifestEndpointConfig struct {
-	// HLS清单播放端点前缀
+	// The prefix of the playback endpoint for HLS manifests.
 	HlsPrefix *string `json:"HlsPrefix,omitempty" xml:"HlsPrefix,omitempty"`
 }
 
@@ -37750,33 +41299,48 @@ func (s *ListAdInsertionsResponse) SetBody(v *ListAdInsertionsResponseBody) *Lis
 }
 
 type ListAlertsRequest struct {
+	// The alert type.
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The end of the time range to query.
+	//
 	// example:
 	//
 	// 2024-11-22T16:10:45Z
 	GmtEnd *string `json:"GmtEnd,omitempty" xml:"GmtEnd,omitempty"`
+	// The beginning of the time range to query.
+	//
 	// example:
 	//
 	// 2024-11-21T16:10:45Z
 	GmtStart *string `json:"GmtStart,omitempty" xml:"GmtStart,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ARN of the source or program.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// acs:ims:mediaweaver:<regionId>:<userId>:vodSource/mySourceLocation/MySource
 	ResourceArn *string `json:"ResourceArn,omitempty" xml:"ResourceArn,omitempty"`
+	// The sorting order. By default, the query results are sorted by creation time in descending order. Valid values: asc and desc.
+	//
 	// example:
 	//
 	// asc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The sorting order by modification time. Valid values: asc and desc.
+	//
 	// example:
 	//
 	// asc
@@ -37832,19 +41396,28 @@ func (s *ListAlertsRequest) SetSortByModifiedTime(v string) *ListAlertsRequest {
 }
 
 type ListAlertsResponseBody struct {
+	// The alerts.
 	Alerts []*ListAlertsResponseBodyAlerts `json:"Alerts,omitempty" xml:"Alerts,omitempty" type:"Repeated"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Default value: 10. Valid values: 1 to 100.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// **Request ID**
+	//
 	// example:
 	//
 	// xxx-xxxx-xxxxx-xxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 100
@@ -37885,27 +41458,40 @@ func (s *ListAlertsResponseBody) SetTotalCount(v int32) *ListAlertsResponseBody 
 }
 
 type ListAlertsResponseBodyAlerts struct {
+	// The alert type.
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The error code.
+	//
 	// example:
 	//
 	// ScheduleError
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The time when the alert was received in UTC.
+	//
 	// example:
 	//
 	// 2024-07-16T10:03Z
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the alert was modified in UTC.
+	//
 	// example:
 	//
 	// 2024-07-16T10:03Z
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// xxxxx
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ARN of the related resource.
+	//
 	// example:
 	//
 	// acs:ims:mediaweaver:<regionId>:<userId>:vodSource/mySourceLocation/MySource
 	RelatedResourceArns *string `json:"RelatedResourceArns,omitempty" xml:"RelatedResourceArns,omitempty"`
+	// The ARN of the resource.
+	//
 	// example:
 	//
 	// acs:ims:mediaweaver:<regionId>:<userId>:vodSource/mySourceLocation/MySource
@@ -39054,29 +42640,42 @@ func (s *ListBatchMediaProducingJobsResponse) SetBody(v *ListBatchMediaProducing
 }
 
 type ListChannelAlertsRequest struct {
+	// The alert type.
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The end of the time range to query.
+	//
 	// example:
 	//
 	// 2024-11-21T16:10:45Z
 	GmtEnd *string `json:"GmtEnd,omitempty" xml:"GmtEnd,omitempty"`
+	// The beginning of the time range to query.
+	//
 	// example:
 	//
 	// 2024-11-21T16:10:45Z
 	GmtStart *string `json:"GmtStart,omitempty" xml:"GmtStart,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ARN of the channel.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// acs:ims:mediaweaver:<regionId>:<userId>:channel/myChannel
 	ResourceArn *string `json:"ResourceArn,omitempty" xml:"ResourceArn,omitempty"`
+	// The sorting order by modification time. Valid values: asc and desc.
+	//
 	// example:
 	//
 	// desc
@@ -39127,19 +42726,28 @@ func (s *ListChannelAlertsRequest) SetSortByModifiedTime(v string) *ListChannelA
 }
 
 type ListChannelAlertsResponseBody struct {
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
-	PageSize      *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The alerts.
 	ProgramAlerts []*ListChannelAlertsResponseBodyProgramAlerts `json:"ProgramAlerts,omitempty" xml:"ProgramAlerts,omitempty" type:"Repeated"`
+	// **Request ID**
+	//
 	// example:
 	//
 	// xxx-xxxx-xxxxx-xxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of alerts returned.
+	//
 	// example:
 	//
 	// 4
@@ -39180,19 +42788,28 @@ func (s *ListChannelAlertsResponseBody) SetTotalCount(v int32) *ListChannelAlert
 }
 
 type ListChannelAlertsResponseBodyProgramAlerts struct {
+	// The ARN of the program.
+	//
 	// example:
 	//
 	// acs:ims:mediaweaver:<regionId>:<userId>:program/myChannel/MyProgram
-	Arn      *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	// The alert type.
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The number of alerts.
+	//
 	// example:
 	//
 	// 4
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The time when the alert was last modified in UTC.
+	//
 	// example:
 	//
 	// 2024-07-16T10:03Z
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The name of the program.
+	//
 	// example:
 	//
 	// program_name
@@ -39262,34 +42879,50 @@ func (s *ListChannelAlertsResponse) SetBody(v *ListChannelAlertsResponseBody) *L
 }
 
 type ListChannelsRequest struct {
+	// The name of the channel.
+	//
 	// example:
 	//
 	// MyChannel
 	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+	// The tier of the channel. Valid values: basic and standard.
+	//
 	// example:
 	//
 	// basic
 	ChannelTier *string `json:"ChannelTier,omitempty" xml:"ChannelTier,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Valid values: 1 to 100. Default value: 10.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The playback mode. Valid values: loop and linear.
+	//
 	// example:
 	//
 	// loop
 	PlaybackMode *string `json:"PlaybackMode,omitempty" xml:"PlaybackMode,omitempty"`
+	// The sorting order by creation time. Valid values: asc and desc.
+	//
 	// example:
 	//
 	// asc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The sorting order by modification time. Valid values: asc and desc.
+	//
 	// example:
 	//
 	// desc
 	SortByModifiedTime *string `json:"SortByModifiedTime,omitempty" xml:"SortByModifiedTime,omitempty"`
+	// The channel status. A value of 0 specifies stopped. A value of 1 specifies started.
+	//
 	// example:
 	//
 	// 0
@@ -39345,19 +42978,28 @@ func (s *ListChannelsRequest) SetState(v int32) *ListChannelsRequest {
 }
 
 type ListChannelsResponseBody struct {
+	// The channels.
 	ChannelList []*ChannelAssemblyChannel `json:"ChannelList,omitempty" xml:"ChannelList,omitempty" type:"Repeated"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Valid values: 1 to 100. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// **Request ID**
+	//
 	// example:
 	//
 	// xxx-xxxx-xxxxx-xxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of channels returned.
+	//
 	// example:
 	//
 	// 180
@@ -41593,20 +45235,26 @@ func (s *ListEditingProjectsResponse) SetBody(v *ListEditingProjectsResponseBody
 }
 
 type ListLivePackageChannelGroupsRequest struct {
-	// 描述
+	// The channel group name or description. Fuzzy match is supported.
 	//
 	// example:
 	//
 	// channel-group
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The page number. Pages start from page 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Valid values: 1 to 100. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The sort order by creation time. Default value: desc.
+	//
 	// example:
 	//
 	// desc
@@ -41642,20 +45290,34 @@ func (s *ListLivePackageChannelGroupsRequest) SetSortBy(v string) *ListLivePacka
 }
 
 type ListLivePackageChannelGroupsResponseBody struct {
+	// The channel groups returned.
 	LivePackageChannelGroups []*ListLivePackageChannelGroupsResponseBodyLivePackageChannelGroups `json:"LivePackageChannelGroups,omitempty" xml:"LivePackageChannelGroups,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
-	PageSize  *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 5D87B753-0250-5D9D-B248-D40C3271F864
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The sort order.
+	//
 	// example:
 	//
 	// desc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 100
@@ -41701,27 +45363,27 @@ func (s *ListLivePackageChannelGroupsResponseBody) SetTotalCount(v int64) *ListL
 }
 
 type ListLivePackageChannelGroupsResponseBodyLivePackageChannelGroups struct {
-	// 创建时间
+	// The time when the channel group was created. It is in the `yyyy-MM-ddTHH:mm:ssZ` format and displayed in UTC.
 	//
 	// example:
 	//
 	// 2023-04-01T12:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 描述
+	// The channel group description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 代表资源一级ID的资源属性字段
+	// The channel group name.
 	//
 	// example:
 	//
 	// testChannelGroup
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// 修改时间
+	// The time when the channel group was last modified. It is in the `yyyy-MM-ddTHH:mm:ssZ` format and displayed in UTC.
 	//
 	// example:
 	//
 	// 2023-04-02T12:00:00Z
 	LastModified *string `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
-	// 源站域名
+	// The origin domain.
 	//
 	// example:
 	//
@@ -41792,26 +45454,40 @@ func (s *ListLivePackageChannelGroupsResponse) SetBody(v *ListLivePackageChannel
 }
 
 type ListLivePackageChannelsRequest struct {
+	// The channel group name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// channel-group-1
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// 列表操作私有参数
+	// The channel name or description. Fuzzy match is supported.
 	//
 	// example:
 	//
 	// group-1
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The sort order by creation time. Default value: desc.
+	//
+	// Valid values:
+	//
+	// 	- asc
+	//
+	// 	- desc
+	//
 	// example:
 	//
 	// desc
@@ -41852,20 +45528,30 @@ func (s *ListLivePackageChannelsRequest) SetSortBy(v string) *ListLivePackageCha
 }
 
 type ListLivePackageChannelsResponseBody struct {
+	// The live package channels.
 	LivePackageChannels []*ListLivePackageChannelsResponseBodyLivePackageChannels `json:"LivePackageChannels,omitempty" xml:"LivePackageChannels,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Valid values: 1 to 100. Default value: 10.
+	//
 	// example:
 	//
 	// 10
-	PageSize  *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The sort order. Valid values: asc and desc (default).
+	//
 	// example:
 	//
 	// asc/desc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 15
@@ -41911,50 +45597,47 @@ func (s *ListLivePackageChannelsResponseBody) SetTotalCount(v int64) *ListLivePa
 }
 
 type ListLivePackageChannelsResponseBodyLivePackageChannels struct {
-	// 频道名称，字符必须为大小写英文字母或-、_。
-	//
-	// 1 ~ 200个字符。
-	//
-	// 格式：[A-Za-z0-9_-]+
+	// The channel name.
 	//
 	// example:
 	//
 	// ch3
 	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
-	// 代表创建时间的资源属性字段
+	// The time when the channel was created.
 	//
 	// example:
 	//
 	// 2023-04-01T12:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 频道描述，最大1000个字符
+	// The channel description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 频道组名称
+	// The channel group name.
 	//
 	// example:
 	//
 	// channel-group-1
-	GroupName       *string                                                                  `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The ingest endpoints.
 	IngestEndpoints []*ListLivePackageChannelsResponseBodyLivePackageChannelsIngestEndpoints `json:"IngestEndpoints,omitempty" xml:"IngestEndpoints,omitempty" type:"Repeated"`
-	// 最后修改时间
+	// The time when the channel was last modified.
 	//
 	// example:
 	//
 	// 2023-04-01T12:00:00Z
 	LastModified *string `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
-	// 输入协议，目前仅支持HLS
+	// The ingest protocol. Only HLS is supported.
 	//
 	// example:
 	//
 	// HLS
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// 输入流m3u8切片个数，2～100
+	// The number of M3U8 segments.
 	//
 	// example:
 	//
 	// 3
 	SegmentCount *int32 `json:"SegmentCount,omitempty" xml:"SegmentCount,omitempty"`
-	// 输入流切片时长，1～30
+	// The segment duration.
 	//
 	// example:
 	//
@@ -42016,18 +45699,26 @@ func (s *ListLivePackageChannelsResponseBodyLivePackageChannels) SetSegmentDurat
 }
 
 type ListLivePackageChannelsResponseBodyLivePackageChannelsIngestEndpoints struct {
+	// The ingest endpoint ID.
+	//
 	// example:
 	//
 	// ingest1
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The password.
+	//
 	// example:
 	//
 	// 2F9e9******18b569c8
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The ingest endpoint URL.
+	//
 	// example:
 	//
 	// http://xxx-1.packagepush-abcxxx.ap-southeast-1.aliyuncsiceintl.com/v1/group01/1/ch01/manifest
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// The username.
+	//
 	// example:
 	//
 	// us12******das
@@ -42092,30 +45783,42 @@ func (s *ListLivePackageChannelsResponse) SetBody(v *ListLivePackageChannelsResp
 }
 
 type ListLivePackageOriginEndpointsRequest struct {
+	// The channel name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// channel-1
 	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+	// The channel group name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// channel-group-1
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The endpoint name or description. Fuzzy match is supported.
+	//
 	// example:
 	//
 	// endpoint-
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The sort order by creation time. Valid values: asc and desc (default).
+	//
 	// example:
 	//
 	// desc
@@ -42161,23 +45864,34 @@ func (s *ListLivePackageOriginEndpointsRequest) SetSortBy(v string) *ListLivePac
 }
 
 type ListLivePackageOriginEndpointsResponseBody struct {
+	// The origin endpoints returned.
 	LivePackageOriginEndpoints []*ListLivePackageOriginEndpointsResponseBodyLivePackageOriginEndpoints `json:"LivePackageOriginEndpoints,omitempty" xml:"LivePackageOriginEndpoints,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// b9f90a7ac8904db28dc18e0c2a72c75d
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The sort order. Valid values: `asc` and `desc` (default).
+	//
 	// example:
 	//
 	// desc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 10
@@ -42223,75 +45937,75 @@ func (s *ListLivePackageOriginEndpointsResponseBody) SetTotalCount(v int64) *Lis
 }
 
 type ListLivePackageOriginEndpointsResponseBodyLivePackageOriginEndpoints struct {
-	// 回源授权码，与IpWhitelist必选其一
+	// The authorization code.
 	//
 	// example:
 	//
 	// Abc123Def456
 	AuthorizationCode *string `json:"AuthorizationCode,omitempty" xml:"AuthorizationCode,omitempty"`
-	// 频道名称
+	// The channel name.
 	//
 	// example:
 	//
 	// channel-1
 	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
-	// 创建时间
+	// The time when the endpoint was created.
 	//
 	// example:
 	//
 	// 2023-04-01T12:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 端点描述
+	// The endpoint description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 端点名称
+	// The endpoint name.
 	//
 	// example:
 	//
 	// endpoint-1
 	EndpointName *string `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
-	// 源站端点回源播放地址
+	// The endpoint URL.
 	//
 	// example:
 	//
 	// https://xxx.packagepull-abcxxx.ap-southeast-1.aliyuncsiceintl.com/v1/group01/1/ch01/manifest.m3u8
 	EndpointUrl *string `json:"EndpointUrl,omitempty" xml:"EndpointUrl,omitempty"`
-	// 频道组名称
+	// The channel group name.
 	//
 	// example:
 	//
 	// channel-group-1
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// IP黑名单，支持无类别域间路由（CIDR），逗号分隔
+	// The IP address blacklist.
 	//
 	// example:
 	//
 	// 10.21.222.1/32,192.168.100.0/24
 	IpBlacklist *string `json:"IpBlacklist,omitempty" xml:"IpBlacklist,omitempty"`
-	// IP白名单，支持无类别域间路由（CIDR），逗号分隔，与AuthorizationCode必选其一
+	// The IP address whitelist.
 	//
 	// example:
 	//
 	// 192.168.1.0/24,10.0.0.1/24
 	IpWhitelist *string `json:"IpWhitelist,omitempty" xml:"IpWhitelist,omitempty"`
-	// 最后修改时间
+	// The time when the endpoint was last modified.
 	//
 	// example:
 	//
 	// 2023-04-01T12:00:00Z
 	LastModified *string `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
-	// 播放列表名
+	// The playlist name.
 	//
 	// example:
 	//
 	// manifest
 	ManifestName *string `json:"ManifestName,omitempty" xml:"ManifestName,omitempty"`
-	// 端点分发协议，暂只支持HLS
+	// The distribution protocol.
 	//
 	// example:
 	//
 	// HLS
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// 时移天数，最大30天，0表示不支持时移
+	// The number of days that time-shifted content is available.
 	//
 	// example:
 	//
@@ -46834,6 +50548,1555 @@ func (s *ListMediaInfoJobsResponse) SetBody(v *ListMediaInfoJobsResponseBody) *L
 	return s
 }
 
+type ListMediaLiveChannelsRequest struct {
+	// The keyword of the query. You can perform a fuzzy search on channel ID or name.
+	//
+	// example:
+	//
+	// 123
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The number of entries per page. Valid values: 1 to 100. Default value:
+	//
+	// 	- If you do not specify this parameter or if you set a value smaller than 10, the default value is 10.
+	//
+	// 	- If you set a value greater than 100, the default value is 100.
+	//
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	//
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a4883
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The number of entries to be skipped in the query. If the number of entries you attempt to skip exceeds the number of entries that meet the condition, an empty list is returned.
+	//
+	// example:
+	//
+	// 20
+	Skip *int32 `json:"Skip,omitempty" xml:"Skip,omitempty"`
+	// The sorting order of the channels by creation time. Default value: asc. Valid values: desc and asc. asc indicates the ascending order, and desc indicates the descending order.
+	//
+	// example:
+	//
+	// desc
+	SortOrder *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
+	// The state of channels you want to query. You can separate multiple states with commas (,) in a JSON array.
+	//
+	// example:
+	//
+	// ["IDLE","RUNNING"]
+	States *string `json:"States,omitempty" xml:"States,omitempty"`
+}
+
+func (s ListMediaLiveChannelsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMediaLiveChannelsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListMediaLiveChannelsRequest) SetKeyword(v string) *ListMediaLiveChannelsRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *ListMediaLiveChannelsRequest) SetMaxResults(v int32) *ListMediaLiveChannelsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListMediaLiveChannelsRequest) SetNextToken(v string) *ListMediaLiveChannelsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListMediaLiveChannelsRequest) SetSkip(v int32) *ListMediaLiveChannelsRequest {
+	s.Skip = &v
+	return s
+}
+
+func (s *ListMediaLiveChannelsRequest) SetSortOrder(v string) *ListMediaLiveChannelsRequest {
+	s.SortOrder = &v
+	return s
+}
+
+func (s *ListMediaLiveChannelsRequest) SetStates(v string) *ListMediaLiveChannelsRequest {
+	s.States = &v
+	return s
+}
+
+type ListMediaLiveChannelsResponseBody struct {
+	// The channels.
+	Channels []*ListMediaLiveChannelsResponseBodyChannels `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Repeated"`
+	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a4883
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// ******11-DB8D-4A9A-875B-275798******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 100
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListMediaLiveChannelsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMediaLiveChannelsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListMediaLiveChannelsResponseBody) SetChannels(v []*ListMediaLiveChannelsResponseBodyChannels) *ListMediaLiveChannelsResponseBody {
+	s.Channels = v
+	return s
+}
+
+func (s *ListMediaLiveChannelsResponseBody) SetMaxResults(v int32) *ListMediaLiveChannelsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListMediaLiveChannelsResponseBody) SetNextToken(v string) *ListMediaLiveChannelsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListMediaLiveChannelsResponseBody) SetRequestId(v string) *ListMediaLiveChannelsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListMediaLiveChannelsResponseBody) SetTotalCount(v int32) *ListMediaLiveChannelsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListMediaLiveChannelsResponseBodyChannels struct {
+	// The audio settings.
+	AudioSettings []*ListMediaLiveChannelsResponseBodyChannelsAudioSettings `json:"AudioSettings,omitempty" xml:"AudioSettings,omitempty" type:"Repeated"`
+	// The ID of the channel.
+	//
+	// example:
+	//
+	// SEGK5KA6KYKAWQQH
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The time when the channel was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2024-12-03T06:56:42Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The inputs associated with the channel.
+	InputAttachments []*ListMediaLiveChannelsResponseBodyChannelsInputAttachments `json:"InputAttachments,omitempty" xml:"InputAttachments,omitempty" type:"Repeated"`
+	// The time when the channel was last started. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. If the channel has never been started since it was created, an empty string is returned.
+	//
+	// example:
+	//
+	// 2024-12-03T06:56:42Z
+	LastStartTime *string `json:"LastStartTime,omitempty" xml:"LastStartTime,omitempty"`
+	// The time when the channel was last stopped. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. If the channel has never stopped since it was created, an empty string is returned.
+	//
+	// example:
+	//
+	// 2024-12-03T06:56:42Z
+	LastStopTime *string `json:"LastStopTime,omitempty" xml:"LastStopTime,omitempty"`
+	// The name of the channel.
+	//
+	// example:
+	//
+	// mych
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The output groups.
+	OutputGroups []*ListMediaLiveChannelsResponseBodyChannelsOutputGroups `json:"OutputGroups,omitempty" xml:"OutputGroups,omitempty" type:"Repeated"`
+	// The state of the channel. Valid values: IDLE, STARTING, RUNNING, RECOVERING, and STOPPING.
+	//
+	// example:
+	//
+	// IDLE
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The video settings.
+	VideoSettings []*ListMediaLiveChannelsResponseBodyChannelsVideoSettings `json:"VideoSettings,omitempty" xml:"VideoSettings,omitempty" type:"Repeated"`
+}
+
+func (s ListMediaLiveChannelsResponseBodyChannels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMediaLiveChannelsResponseBodyChannels) GoString() string {
+	return s.String()
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannels) SetAudioSettings(v []*ListMediaLiveChannelsResponseBodyChannelsAudioSettings) *ListMediaLiveChannelsResponseBodyChannels {
+	s.AudioSettings = v
+	return s
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannels) SetChannelId(v string) *ListMediaLiveChannelsResponseBodyChannels {
+	s.ChannelId = &v
+	return s
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannels) SetCreateTime(v string) *ListMediaLiveChannelsResponseBodyChannels {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannels) SetInputAttachments(v []*ListMediaLiveChannelsResponseBodyChannelsInputAttachments) *ListMediaLiveChannelsResponseBodyChannels {
+	s.InputAttachments = v
+	return s
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannels) SetLastStartTime(v string) *ListMediaLiveChannelsResponseBodyChannels {
+	s.LastStartTime = &v
+	return s
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannels) SetLastStopTime(v string) *ListMediaLiveChannelsResponseBodyChannels {
+	s.LastStopTime = &v
+	return s
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannels) SetName(v string) *ListMediaLiveChannelsResponseBodyChannels {
+	s.Name = &v
+	return s
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannels) SetOutputGroups(v []*ListMediaLiveChannelsResponseBodyChannelsOutputGroups) *ListMediaLiveChannelsResponseBodyChannels {
+	s.OutputGroups = v
+	return s
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannels) SetState(v string) *ListMediaLiveChannelsResponseBodyChannels {
+	s.State = &v
+	return s
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannels) SetVideoSettings(v []*ListMediaLiveChannelsResponseBodyChannelsVideoSettings) *ListMediaLiveChannelsResponseBodyChannels {
+	s.VideoSettings = v
+	return s
+}
+
+type ListMediaLiveChannelsResponseBodyChannelsAudioSettings struct {
+	// The audio codec.
+	//
+	// example:
+	//
+	// aac
+	AudioCodec *string `json:"AudioCodec,omitempty" xml:"AudioCodec,omitempty"`
+	// The audio encoding settings.
+	AudioCodecSetting *ListMediaLiveChannelsResponseBodyChannelsAudioSettingsAudioCodecSetting `json:"AudioCodecSetting,omitempty" xml:"AudioCodecSetting,omitempty" type:"Struct"`
+	// The name of the audio selector.
+	//
+	// example:
+	//
+	// myselector
+	AudioSelectorName *string `json:"AudioSelectorName,omitempty" xml:"AudioSelectorName,omitempty"`
+	// A three-letter ISO 639-2 language code.
+	//
+	// example:
+	//
+	// eng
+	LanguageCode *string `json:"LanguageCode,omitempty" xml:"LanguageCode,omitempty"`
+	// The name of the language.
+	//
+	// example:
+	//
+	// English
+	LanguageName *string `json:"LanguageName,omitempty" xml:"LanguageName,omitempty"`
+	// The name of the audio settings.
+	//
+	// example:
+	//
+	// zhuanfengzhuang
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s ListMediaLiveChannelsResponseBodyChannelsAudioSettings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMediaLiveChannelsResponseBodyChannelsAudioSettings) GoString() string {
+	return s.String()
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannelsAudioSettings) SetAudioCodec(v string) *ListMediaLiveChannelsResponseBodyChannelsAudioSettings {
+	s.AudioCodec = &v
+	return s
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannelsAudioSettings) SetAudioCodecSetting(v *ListMediaLiveChannelsResponseBodyChannelsAudioSettingsAudioCodecSetting) *ListMediaLiveChannelsResponseBodyChannelsAudioSettings {
+	s.AudioCodecSetting = v
+	return s
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannelsAudioSettings) SetAudioSelectorName(v string) *ListMediaLiveChannelsResponseBodyChannelsAudioSettings {
+	s.AudioSelectorName = &v
+	return s
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannelsAudioSettings) SetLanguageCode(v string) *ListMediaLiveChannelsResponseBodyChannelsAudioSettings {
+	s.LanguageCode = &v
+	return s
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannelsAudioSettings) SetLanguageName(v string) *ListMediaLiveChannelsResponseBodyChannelsAudioSettings {
+	s.LanguageName = &v
+	return s
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannelsAudioSettings) SetName(v string) *ListMediaLiveChannelsResponseBodyChannelsAudioSettings {
+	s.Name = &v
+	return s
+}
+
+type ListMediaLiveChannelsResponseBodyChannelsAudioSettingsAudioCodecSetting struct {
+	// The audio bitrate. Unit: bit/s.
+	//
+	// example:
+	//
+	// 200000
+	Bitrate *int32 `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The audio codec profile.
+	//
+	// example:
+	//
+	// AAC-LOW
+	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	// The audio sample rate. Unit: Hz.
+	//
+	// example:
+	//
+	// 44100
+	SampleRate *int32 `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
+}
+
+func (s ListMediaLiveChannelsResponseBodyChannelsAudioSettingsAudioCodecSetting) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMediaLiveChannelsResponseBodyChannelsAudioSettingsAudioCodecSetting) GoString() string {
+	return s.String()
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannelsAudioSettingsAudioCodecSetting) SetBitrate(v int32) *ListMediaLiveChannelsResponseBodyChannelsAudioSettingsAudioCodecSetting {
+	s.Bitrate = &v
+	return s
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannelsAudioSettingsAudioCodecSetting) SetProfile(v string) *ListMediaLiveChannelsResponseBodyChannelsAudioSettingsAudioCodecSetting {
+	s.Profile = &v
+	return s
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannelsAudioSettingsAudioCodecSetting) SetSampleRate(v int32) *ListMediaLiveChannelsResponseBodyChannelsAudioSettingsAudioCodecSetting {
+	s.SampleRate = &v
+	return s
+}
+
+type ListMediaLiveChannelsResponseBodyChannelsInputAttachments struct {
+	// The audio selectors.
+	AudioSelectors []*ListMediaLiveChannelsResponseBodyChannelsInputAttachmentsAudioSelectors `json:"AudioSelectors,omitempty" xml:"AudioSelectors,omitempty" type:"Repeated"`
+	// The ID of the input.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SEGK5KA6KYKAWQQH
+	InputId *string `json:"InputId,omitempty" xml:"InputId,omitempty"`
+	// The name of the input.
+	//
+	// example:
+	//
+	// myinput
+	InputName *string `json:"InputName,omitempty" xml:"InputName,omitempty"`
+	// The name of the language.
+	//
+	// example:
+	//
+	// eng
+	LanguageName *string `json:"LanguageName,omitempty" xml:"LanguageName,omitempty"`
+}
+
+func (s ListMediaLiveChannelsResponseBodyChannelsInputAttachments) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMediaLiveChannelsResponseBodyChannelsInputAttachments) GoString() string {
+	return s.String()
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannelsInputAttachments) SetAudioSelectors(v []*ListMediaLiveChannelsResponseBodyChannelsInputAttachmentsAudioSelectors) *ListMediaLiveChannelsResponseBodyChannelsInputAttachments {
+	s.AudioSelectors = v
+	return s
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannelsInputAttachments) SetInputId(v string) *ListMediaLiveChannelsResponseBodyChannelsInputAttachments {
+	s.InputId = &v
+	return s
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannelsInputAttachments) SetInputName(v string) *ListMediaLiveChannelsResponseBodyChannelsInputAttachments {
+	s.InputName = &v
+	return s
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannelsInputAttachments) SetLanguageName(v string) *ListMediaLiveChannelsResponseBodyChannelsInputAttachments {
+	s.LanguageName = &v
+	return s
+}
+
+type ListMediaLiveChannelsResponseBodyChannelsInputAttachmentsAudioSelectors struct {
+	// The audio language selection.
+	AudioLanguageSelection *ListMediaLiveChannelsResponseBodyChannelsInputAttachmentsAudioSelectorsAudioLanguageSelection `json:"AudioLanguageSelection,omitempty" xml:"AudioLanguageSelection,omitempty" type:"Struct"`
+	// The audio PID selection.
+	AudioPidSelection *ListMediaLiveChannelsResponseBodyChannelsInputAttachmentsAudioSelectorsAudioPidSelection `json:"AudioPidSelection,omitempty" xml:"AudioPidSelection,omitempty" type:"Struct"`
+	// The audio track selection.
+	AudioTrackSelection []*ListMediaLiveChannelsResponseBodyChannelsInputAttachmentsAudioSelectorsAudioTrackSelection `json:"AudioTrackSelection,omitempty" xml:"AudioTrackSelection,omitempty" type:"Repeated"`
+	// The name of the audio selector.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// myselector
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s ListMediaLiveChannelsResponseBodyChannelsInputAttachmentsAudioSelectors) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMediaLiveChannelsResponseBodyChannelsInputAttachmentsAudioSelectors) GoString() string {
+	return s.String()
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannelsInputAttachmentsAudioSelectors) SetAudioLanguageSelection(v *ListMediaLiveChannelsResponseBodyChannelsInputAttachmentsAudioSelectorsAudioLanguageSelection) *ListMediaLiveChannelsResponseBodyChannelsInputAttachmentsAudioSelectors {
+	s.AudioLanguageSelection = v
+	return s
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannelsInputAttachmentsAudioSelectors) SetAudioPidSelection(v *ListMediaLiveChannelsResponseBodyChannelsInputAttachmentsAudioSelectorsAudioPidSelection) *ListMediaLiveChannelsResponseBodyChannelsInputAttachmentsAudioSelectors {
+	s.AudioPidSelection = v
+	return s
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannelsInputAttachmentsAudioSelectors) SetAudioTrackSelection(v []*ListMediaLiveChannelsResponseBodyChannelsInputAttachmentsAudioSelectorsAudioTrackSelection) *ListMediaLiveChannelsResponseBodyChannelsInputAttachmentsAudioSelectors {
+	s.AudioTrackSelection = v
+	return s
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannelsInputAttachmentsAudioSelectors) SetName(v string) *ListMediaLiveChannelsResponseBodyChannelsInputAttachmentsAudioSelectors {
+	s.Name = &v
+	return s
+}
+
+type ListMediaLiveChannelsResponseBodyChannelsInputAttachmentsAudioSelectorsAudioLanguageSelection struct {
+	// A three-letter ISO 639-2 language code from within an audio source.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eng
+	LanguageCode *string `json:"LanguageCode,omitempty" xml:"LanguageCode,omitempty"`
+}
+
+func (s ListMediaLiveChannelsResponseBodyChannelsInputAttachmentsAudioSelectorsAudioLanguageSelection) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMediaLiveChannelsResponseBodyChannelsInputAttachmentsAudioSelectorsAudioLanguageSelection) GoString() string {
+	return s.String()
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannelsInputAttachmentsAudioSelectorsAudioLanguageSelection) SetLanguageCode(v string) *ListMediaLiveChannelsResponseBodyChannelsInputAttachmentsAudioSelectorsAudioLanguageSelection {
+	s.LanguageCode = &v
+	return s
+}
+
+type ListMediaLiveChannelsResponseBodyChannelsInputAttachmentsAudioSelectorsAudioPidSelection struct {
+	// A PID from within a source.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
+	Pid *int64 `json:"Pid,omitempty" xml:"Pid,omitempty"`
+}
+
+func (s ListMediaLiveChannelsResponseBodyChannelsInputAttachmentsAudioSelectorsAudioPidSelection) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMediaLiveChannelsResponseBodyChannelsInputAttachmentsAudioSelectorsAudioPidSelection) GoString() string {
+	return s.String()
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannelsInputAttachmentsAudioSelectorsAudioPidSelection) SetPid(v int64) *ListMediaLiveChannelsResponseBodyChannelsInputAttachmentsAudioSelectorsAudioPidSelection {
+	s.Pid = &v
+	return s
+}
+
+type ListMediaLiveChannelsResponseBodyChannelsInputAttachmentsAudioSelectorsAudioTrackSelection struct {
+	// The track ID from within a source.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	TrackId *int64 `json:"TrackId,omitempty" xml:"TrackId,omitempty"`
+}
+
+func (s ListMediaLiveChannelsResponseBodyChannelsInputAttachmentsAudioSelectorsAudioTrackSelection) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMediaLiveChannelsResponseBodyChannelsInputAttachmentsAudioSelectorsAudioTrackSelection) GoString() string {
+	return s.String()
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannelsInputAttachmentsAudioSelectorsAudioTrackSelection) SetTrackId(v int64) *ListMediaLiveChannelsResponseBodyChannelsInputAttachmentsAudioSelectorsAudioTrackSelection {
+	s.TrackId = &v
+	return s
+}
+
+type ListMediaLiveChannelsResponseBodyChannelsOutputGroups struct {
+	// The MediaPackage destination.
+	MediaPackageGroupSetting *ListMediaLiveChannelsResponseBodyChannelsOutputGroupsMediaPackageGroupSetting `json:"MediaPackageGroupSetting,omitempty" xml:"MediaPackageGroupSetting,omitempty" type:"Struct"`
+	// The URL for monitoring the output group. The parameter is returned only when the output gourp type is MediaPackage.
+	//
+	// example:
+	//
+	// rtmp://xxx
+	MonitorUrl *string `json:"MonitorUrl,omitempty" xml:"MonitorUrl,omitempty"`
+	// The name of the output group.
+	//
+	// example:
+	//
+	// group1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The outputs in the output group.
+	Outputs []*ListMediaLiveChannelsResponseBodyChannelsOutputGroupsOutputs `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Repeated"`
+	// The output group type.
+	//
+	// example:
+	//
+	// MediaPackage
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListMediaLiveChannelsResponseBodyChannelsOutputGroups) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMediaLiveChannelsResponseBodyChannelsOutputGroups) GoString() string {
+	return s.String()
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannelsOutputGroups) SetMediaPackageGroupSetting(v *ListMediaLiveChannelsResponseBodyChannelsOutputGroupsMediaPackageGroupSetting) *ListMediaLiveChannelsResponseBodyChannelsOutputGroups {
+	s.MediaPackageGroupSetting = v
+	return s
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannelsOutputGroups) SetMonitorUrl(v string) *ListMediaLiveChannelsResponseBodyChannelsOutputGroups {
+	s.MonitorUrl = &v
+	return s
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannelsOutputGroups) SetName(v string) *ListMediaLiveChannelsResponseBodyChannelsOutputGroups {
+	s.Name = &v
+	return s
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannelsOutputGroups) SetOutputs(v []*ListMediaLiveChannelsResponseBodyChannelsOutputGroupsOutputs) *ListMediaLiveChannelsResponseBodyChannelsOutputGroups {
+	s.Outputs = v
+	return s
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannelsOutputGroups) SetType(v string) *ListMediaLiveChannelsResponseBodyChannelsOutputGroups {
+	s.Type = &v
+	return s
+}
+
+type ListMediaLiveChannelsResponseBodyChannelsOutputGroupsMediaPackageGroupSetting struct {
+	// ChannelName in MediaPackage.
+	//
+	// example:
+	//
+	// myPackageChannel
+	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+	// GroupName in MediaPackage.
+	//
+	// example:
+	//
+	// myPackageGroup
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+}
+
+func (s ListMediaLiveChannelsResponseBodyChannelsOutputGroupsMediaPackageGroupSetting) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMediaLiveChannelsResponseBodyChannelsOutputGroupsMediaPackageGroupSetting) GoString() string {
+	return s.String()
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannelsOutputGroupsMediaPackageGroupSetting) SetChannelName(v string) *ListMediaLiveChannelsResponseBodyChannelsOutputGroupsMediaPackageGroupSetting {
+	s.ChannelName = &v
+	return s
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannelsOutputGroupsMediaPackageGroupSetting) SetGroupName(v string) *ListMediaLiveChannelsResponseBodyChannelsOutputGroupsMediaPackageGroupSetting {
+	s.GroupName = &v
+	return s
+}
+
+type ListMediaLiveChannelsResponseBodyChannelsOutputGroupsOutputs struct {
+	// The referenced AudioSettings.
+	AudioSettingNames []*string `json:"AudioSettingNames,omitempty" xml:"AudioSettingNames,omitempty" type:"Repeated"`
+	// The settings of the output delivered to MediaPackage.
+	MediaPackageOutputSetting *ListMediaLiveChannelsResponseBodyChannelsOutputGroupsOutputsMediaPackageOutputSetting `json:"MediaPackageOutputSetting,omitempty" xml:"MediaPackageOutputSetting,omitempty" type:"Struct"`
+	// The media type of the output.
+	//
+	// example:
+	//
+	// 0
+	MediaType *int32 `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// The name of the output.
+	//
+	// example:
+	//
+	// output1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the referenced VideoSettings.
+	//
+	// example:
+	//
+	// myVideo1
+	VideoSettingName *string `json:"VideoSettingName,omitempty" xml:"VideoSettingName,omitempty"`
+}
+
+func (s ListMediaLiveChannelsResponseBodyChannelsOutputGroupsOutputs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMediaLiveChannelsResponseBodyChannelsOutputGroupsOutputs) GoString() string {
+	return s.String()
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannelsOutputGroupsOutputs) SetAudioSettingNames(v []*string) *ListMediaLiveChannelsResponseBodyChannelsOutputGroupsOutputs {
+	s.AudioSettingNames = v
+	return s
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannelsOutputGroupsOutputs) SetMediaPackageOutputSetting(v *ListMediaLiveChannelsResponseBodyChannelsOutputGroupsOutputsMediaPackageOutputSetting) *ListMediaLiveChannelsResponseBodyChannelsOutputGroupsOutputs {
+	s.MediaPackageOutputSetting = v
+	return s
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannelsOutputGroupsOutputs) SetMediaType(v int32) *ListMediaLiveChannelsResponseBodyChannelsOutputGroupsOutputs {
+	s.MediaType = &v
+	return s
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannelsOutputGroupsOutputs) SetName(v string) *ListMediaLiveChannelsResponseBodyChannelsOutputGroupsOutputs {
+	s.Name = &v
+	return s
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannelsOutputGroupsOutputs) SetVideoSettingName(v string) *ListMediaLiveChannelsResponseBodyChannelsOutputGroupsOutputs {
+	s.VideoSettingName = &v
+	return s
+}
+
+type ListMediaLiveChannelsResponseBodyChannelsOutputGroupsOutputsMediaPackageOutputSetting struct {
+	// The manifest audio group ID.
+	//
+	// example:
+	//
+	// audiogroup
+	AudioGroupId *string `json:"AudioGroupId,omitempty" xml:"AudioGroupId,omitempty"`
+	// The manifest name modifier. The child manifests include this modifier in their M3U8 file names.
+	//
+	// example:
+	//
+	// 480p
+	NameModifier *string `json:"NameModifier,omitempty" xml:"NameModifier,omitempty"`
+}
+
+func (s ListMediaLiveChannelsResponseBodyChannelsOutputGroupsOutputsMediaPackageOutputSetting) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMediaLiveChannelsResponseBodyChannelsOutputGroupsOutputsMediaPackageOutputSetting) GoString() string {
+	return s.String()
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannelsOutputGroupsOutputsMediaPackageOutputSetting) SetAudioGroupId(v string) *ListMediaLiveChannelsResponseBodyChannelsOutputGroupsOutputsMediaPackageOutputSetting {
+	s.AudioGroupId = &v
+	return s
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannelsOutputGroupsOutputsMediaPackageOutputSetting) SetNameModifier(v string) *ListMediaLiveChannelsResponseBodyChannelsOutputGroupsOutputsMediaPackageOutputSetting {
+	s.NameModifier = &v
+	return s
+}
+
+type ListMediaLiveChannelsResponseBodyChannelsVideoSettings struct {
+	// The height of the video in pixels.
+	//
+	// example:
+	//
+	// 720
+	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The name of the video settings.
+	//
+	// example:
+	//
+	// video1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The video codec.
+	//
+	// example:
+	//
+	// H264
+	VideoCodec *string `json:"VideoCodec,omitempty" xml:"VideoCodec,omitempty"`
+	// The video encoding settings.
+	VideoCodecSetting *ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSetting `json:"VideoCodecSetting,omitempty" xml:"VideoCodecSetting,omitempty" type:"Struct"`
+	// The width of the video in pixels.
+	//
+	// example:
+	//
+	// 1280
+	Width *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s ListMediaLiveChannelsResponseBodyChannelsVideoSettings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMediaLiveChannelsResponseBodyChannelsVideoSettings) GoString() string {
+	return s.String()
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannelsVideoSettings) SetHeight(v int32) *ListMediaLiveChannelsResponseBodyChannelsVideoSettings {
+	s.Height = &v
+	return s
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannelsVideoSettings) SetName(v string) *ListMediaLiveChannelsResponseBodyChannelsVideoSettings {
+	s.Name = &v
+	return s
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannelsVideoSettings) SetVideoCodec(v string) *ListMediaLiveChannelsResponseBodyChannelsVideoSettings {
+	s.VideoCodec = &v
+	return s
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannelsVideoSettings) SetVideoCodecSetting(v *ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSetting) *ListMediaLiveChannelsResponseBodyChannelsVideoSettings {
+	s.VideoCodecSetting = v
+	return s
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannelsVideoSettings) SetWidth(v int32) *ListMediaLiveChannelsResponseBodyChannelsVideoSettings {
+	s.Width = &v
+	return s
+}
+
+type ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSetting struct {
+	// The video encoding settings.
+	CodecDetail *ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSettingCodecDetail `json:"CodecDetail,omitempty" xml:"CodecDetail,omitempty" type:"Struct"`
+	// The frame rate.
+	Framerate *ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSettingFramerate `json:"Framerate,omitempty" xml:"Framerate,omitempty" type:"Struct"`
+	// The GOP setting.
+	Gop *ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSettingGop `json:"Gop,omitempty" xml:"Gop,omitempty" type:"Struct"`
+	// The video encoding rate.
+	Rate *ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSettingRate `json:"Rate,omitempty" xml:"Rate,omitempty" type:"Struct"`
+}
+
+func (s ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSetting) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSetting) GoString() string {
+	return s.String()
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSetting) SetCodecDetail(v *ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSettingCodecDetail) *ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSetting {
+	s.CodecDetail = v
+	return s
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSetting) SetFramerate(v *ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSettingFramerate) *ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSetting {
+	s.Framerate = v
+	return s
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSetting) SetGop(v *ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSettingGop) *ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSetting {
+	s.Gop = v
+	return s
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSetting) SetRate(v *ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSettingRate) *ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSetting {
+	s.Rate = v
+	return s
+}
+
+type ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSettingCodecDetail struct {
+	// The video encoding level. It is not supported yet.
+	//
+	// example:
+	//
+	// H264_LEVEL_AUTO
+	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The H.264 profile.
+	//
+	// example:
+	//
+	// MAIN
+	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+}
+
+func (s ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSettingCodecDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSettingCodecDetail) GoString() string {
+	return s.String()
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSettingCodecDetail) SetLevel(v string) *ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSettingCodecDetail {
+	s.Level = &v
+	return s
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSettingCodecDetail) SetProfile(v string) *ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSettingCodecDetail {
+	s.Profile = &v
+	return s
+}
+
+type ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSettingFramerate struct {
+	// The frame rate mode.
+	//
+	// example:
+	//
+	// SPECIFIED
+	FramerateControl *string `json:"FramerateControl,omitempty" xml:"FramerateControl,omitempty"`
+	// The denominator of the fixed frame rate.
+	//
+	// example:
+	//
+	// 1
+	FramerateDenominator *int32 `json:"FramerateDenominator,omitempty" xml:"FramerateDenominator,omitempty"`
+	// The numerator of the fixed frame rate.
+	//
+	// example:
+	//
+	// 25
+	FramerateNumerator *int32 `json:"FramerateNumerator,omitempty" xml:"FramerateNumerator,omitempty"`
+}
+
+func (s ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSettingFramerate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSettingFramerate) GoString() string {
+	return s.String()
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSettingFramerate) SetFramerateControl(v string) *ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSettingFramerate {
+	s.FramerateControl = &v
+	return s
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSettingFramerate) SetFramerateDenominator(v int32) *ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSettingFramerate {
+	s.FramerateDenominator = &v
+	return s
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSettingFramerate) SetFramerateNumerator(v int32) *ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSettingFramerate {
+	s.FramerateNumerator = &v
+	return s
+}
+
+type ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSettingGop struct {
+	// The number of B frames.
+	//
+	// example:
+	//
+	// 3
+	BframesNum *int32 `json:"BframesNum,omitempty" xml:"BframesNum,omitempty"`
+	// The GOP size.
+	//
+	// example:
+	//
+	// 90
+	GopSize *int32 `json:"GopSize,omitempty" xml:"GopSize,omitempty"`
+	// The GOP size unit.
+	//
+	// example:
+	//
+	// FRAMES
+	GopSizeUnits *string `json:"GopSizeUnits,omitempty" xml:"GopSizeUnits,omitempty"`
+}
+
+func (s ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSettingGop) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSettingGop) GoString() string {
+	return s.String()
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSettingGop) SetBframesNum(v int32) *ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSettingGop {
+	s.BframesNum = &v
+	return s
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSettingGop) SetGopSize(v int32) *ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSettingGop {
+	s.GopSize = &v
+	return s
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSettingGop) SetGopSizeUnits(v string) *ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSettingGop {
+	s.GopSizeUnits = &v
+	return s
+}
+
+type ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSettingRate struct {
+	// The video bitrate. Unit: bit/s.
+	//
+	// example:
+	//
+	// 2500000
+	Bitrate *int32 `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The video buffer size. Unit: bit/s.
+	//
+	// example:
+	//
+	// 6000000
+	BufferSize *int32 `json:"BufferSize,omitempty" xml:"BufferSize,omitempty"`
+	// The maximum bitrate. Unit: bit/s.
+	//
+	// example:
+	//
+	// 6000000
+	MaxBitrate *int32 `json:"MaxBitrate,omitempty" xml:"MaxBitrate,omitempty"`
+	// The bitrate control mode.
+	//
+	// example:
+	//
+	// ABR
+	RateControlMode *string `json:"RateControlMode,omitempty" xml:"RateControlMode,omitempty"`
+}
+
+func (s ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSettingRate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSettingRate) GoString() string {
+	return s.String()
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSettingRate) SetBitrate(v int32) *ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSettingRate {
+	s.Bitrate = &v
+	return s
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSettingRate) SetBufferSize(v int32) *ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSettingRate {
+	s.BufferSize = &v
+	return s
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSettingRate) SetMaxBitrate(v int32) *ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSettingRate {
+	s.MaxBitrate = &v
+	return s
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSettingRate) SetRateControlMode(v string) *ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSettingRate {
+	s.RateControlMode = &v
+	return s
+}
+
+type ListMediaLiveChannelsResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListMediaLiveChannelsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListMediaLiveChannelsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMediaLiveChannelsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListMediaLiveChannelsResponse) SetHeaders(v map[string]*string) *ListMediaLiveChannelsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListMediaLiveChannelsResponse) SetStatusCode(v int32) *ListMediaLiveChannelsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListMediaLiveChannelsResponse) SetBody(v *ListMediaLiveChannelsResponseBody) *ListMediaLiveChannelsResponse {
+	s.Body = v
+	return s
+}
+
+type ListMediaLiveInputSecurityGroupsRequest struct {
+	// The keyword of the query. You can perform a fuzzy search on security group ID or name.
+	//
+	// example:
+	//
+	// 123
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The number of entries per page. Valid values: 1 to 100. Default value: If you do not specify this parameter or if you set a value smaller than 10, the default value is 10. If you set a value greater than 100, the default value is 100.
+	//
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	//
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a4883
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The number of entries to be skipped in the query. If the number of entries you attempt to skip exceeds the number of entries that meet the condition, an empty list is returned.
+	//
+	// example:
+	//
+	// 20
+	Skip *int32 `json:"Skip,omitempty" xml:"Skip,omitempty"`
+	// The sorting order of the security groups by creation time. Default value: asc. Valid values: desc and asc. asc indicates the ascending order, and desc indicates the descending order.
+	//
+	// example:
+	//
+	// desc
+	SortOrder *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
+}
+
+func (s ListMediaLiveInputSecurityGroupsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMediaLiveInputSecurityGroupsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListMediaLiveInputSecurityGroupsRequest) SetKeyword(v string) *ListMediaLiveInputSecurityGroupsRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *ListMediaLiveInputSecurityGroupsRequest) SetMaxResults(v int32) *ListMediaLiveInputSecurityGroupsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListMediaLiveInputSecurityGroupsRequest) SetNextToken(v string) *ListMediaLiveInputSecurityGroupsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListMediaLiveInputSecurityGroupsRequest) SetSkip(v int32) *ListMediaLiveInputSecurityGroupsRequest {
+	s.Skip = &v
+	return s
+}
+
+func (s *ListMediaLiveInputSecurityGroupsRequest) SetSortOrder(v string) *ListMediaLiveInputSecurityGroupsRequest {
+	s.SortOrder = &v
+	return s
+}
+
+type ListMediaLiveInputSecurityGroupsResponseBody struct {
+	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a4883
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-426614174000
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The security groups.
+	SecurityGroups []*ListMediaLiveInputSecurityGroupsResponseBodySecurityGroups `json:"SecurityGroups,omitempty" xml:"SecurityGroups,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 100
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListMediaLiveInputSecurityGroupsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMediaLiveInputSecurityGroupsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListMediaLiveInputSecurityGroupsResponseBody) SetMaxResults(v int32) *ListMediaLiveInputSecurityGroupsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListMediaLiveInputSecurityGroupsResponseBody) SetNextToken(v string) *ListMediaLiveInputSecurityGroupsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListMediaLiveInputSecurityGroupsResponseBody) SetRequestId(v string) *ListMediaLiveInputSecurityGroupsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListMediaLiveInputSecurityGroupsResponseBody) SetSecurityGroups(v []*ListMediaLiveInputSecurityGroupsResponseBodySecurityGroups) *ListMediaLiveInputSecurityGroupsResponseBody {
+	s.SecurityGroups = v
+	return s
+}
+
+func (s *ListMediaLiveInputSecurityGroupsResponseBody) SetTotalCount(v int32) *ListMediaLiveInputSecurityGroupsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListMediaLiveInputSecurityGroupsResponseBodySecurityGroups struct {
+	// The time when the security group was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2024-12-03T06:56:42Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The IDs of the inputs associated with the security group.
+	InputIds []*string `json:"InputIds,omitempty" xml:"InputIds,omitempty" type:"Repeated"`
+	// The security group name.
+	//
+	// example:
+	//
+	// mysg
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the security group.
+	//
+	// example:
+	//
+	// SEGK5KA6KYKAWQQH
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The security group rules.
+	WhitelistRules []*string `json:"WhitelistRules,omitempty" xml:"WhitelistRules,omitempty" type:"Repeated"`
+}
+
+func (s ListMediaLiveInputSecurityGroupsResponseBodySecurityGroups) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMediaLiveInputSecurityGroupsResponseBodySecurityGroups) GoString() string {
+	return s.String()
+}
+
+func (s *ListMediaLiveInputSecurityGroupsResponseBodySecurityGroups) SetCreateTime(v string) *ListMediaLiveInputSecurityGroupsResponseBodySecurityGroups {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListMediaLiveInputSecurityGroupsResponseBodySecurityGroups) SetInputIds(v []*string) *ListMediaLiveInputSecurityGroupsResponseBodySecurityGroups {
+	s.InputIds = v
+	return s
+}
+
+func (s *ListMediaLiveInputSecurityGroupsResponseBodySecurityGroups) SetName(v string) *ListMediaLiveInputSecurityGroupsResponseBodySecurityGroups {
+	s.Name = &v
+	return s
+}
+
+func (s *ListMediaLiveInputSecurityGroupsResponseBodySecurityGroups) SetSecurityGroupId(v string) *ListMediaLiveInputSecurityGroupsResponseBodySecurityGroups {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *ListMediaLiveInputSecurityGroupsResponseBodySecurityGroups) SetWhitelistRules(v []*string) *ListMediaLiveInputSecurityGroupsResponseBodySecurityGroups {
+	s.WhitelistRules = v
+	return s
+}
+
+type ListMediaLiveInputSecurityGroupsResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListMediaLiveInputSecurityGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListMediaLiveInputSecurityGroupsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMediaLiveInputSecurityGroupsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListMediaLiveInputSecurityGroupsResponse) SetHeaders(v map[string]*string) *ListMediaLiveInputSecurityGroupsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListMediaLiveInputSecurityGroupsResponse) SetStatusCode(v int32) *ListMediaLiveInputSecurityGroupsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListMediaLiveInputSecurityGroupsResponse) SetBody(v *ListMediaLiveInputSecurityGroupsResponseBody) *ListMediaLiveInputSecurityGroupsResponse {
+	s.Body = v
+	return s
+}
+
+type ListMediaLiveInputsRequest struct {
+	// The keyword of the query. You can perform a fuzzy search on input ID or name.
+	//
+	// example:
+	//
+	// 123
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The number of entries per page. Valid values: 1 to 100. Default value: If you do not specify this parameter or if you set a value smaller than 10, the default value is 10. If you set a value greater than 100, the default value is 100.
+	//
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	//
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a4883
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The number of entries to be skipped in the query. If the number of entries you attempt to skip exceeds the number of entries that meet the condition, an empty list is returned.
+	//
+	// example:
+	//
+	// 20
+	Skip *int32 `json:"Skip,omitempty" xml:"Skip,omitempty"`
+	// The sorting order of the inputs by creation time. Default value: asc. Valid values: desc and asc. asc indicates the ascending order, and desc indicates the descending order.
+	//
+	// example:
+	//
+	// desc
+	SortOrder *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
+	// The type of inputs you want to query. You can separate multiple input types with commas (,) in a JSON array.
+	//
+	// example:
+	//
+	// ["RTMP_PUSH","SRT_PULL"]
+	Types *string `json:"Types,omitempty" xml:"Types,omitempty"`
+}
+
+func (s ListMediaLiveInputsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMediaLiveInputsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListMediaLiveInputsRequest) SetKeyword(v string) *ListMediaLiveInputsRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *ListMediaLiveInputsRequest) SetMaxResults(v int32) *ListMediaLiveInputsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListMediaLiveInputsRequest) SetNextToken(v string) *ListMediaLiveInputsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListMediaLiveInputsRequest) SetSkip(v int32) *ListMediaLiveInputsRequest {
+	s.Skip = &v
+	return s
+}
+
+func (s *ListMediaLiveInputsRequest) SetSortOrder(v string) *ListMediaLiveInputsRequest {
+	s.SortOrder = &v
+	return s
+}
+
+func (s *ListMediaLiveInputsRequest) SetTypes(v string) *ListMediaLiveInputsRequest {
+	s.Types = &v
+	return s
+}
+
+type ListMediaLiveInputsResponseBody struct {
+	// The inputs.
+	Inputs []*ListMediaLiveInputsResponseBodyInputs `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Repeated"`
+	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a4883
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// ******11-DB8D-4A9A-875B-275798******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 200
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListMediaLiveInputsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMediaLiveInputsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListMediaLiveInputsResponseBody) SetInputs(v []*ListMediaLiveInputsResponseBodyInputs) *ListMediaLiveInputsResponseBody {
+	s.Inputs = v
+	return s
+}
+
+func (s *ListMediaLiveInputsResponseBody) SetMaxResults(v int32) *ListMediaLiveInputsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListMediaLiveInputsResponseBody) SetNextToken(v string) *ListMediaLiveInputsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListMediaLiveInputsResponseBody) SetRequestId(v string) *ListMediaLiveInputsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListMediaLiveInputsResponseBody) SetTotalCount(v int32) *ListMediaLiveInputsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListMediaLiveInputsResponseBodyInputs struct {
+	// The IDs of the channels associated with the input.
+	ChannelIds []*string `json:"ChannelIds,omitempty" xml:"ChannelIds,omitempty" type:"Repeated"`
+	// The time when the input was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2024-12-03T06:56:42Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the input.
+	//
+	// example:
+	//
+	// SEGK5KA6KYKAWQQH
+	InputId *string `json:"InputId,omitempty" xml:"InputId,omitempty"`
+	// The input configurations.
+	InputInfos []*ListMediaLiveInputsResponseBodyInputsInputInfos `json:"InputInfos,omitempty" xml:"InputInfos,omitempty" type:"Repeated"`
+	// The name of the input.
+	//
+	// example:
+	//
+	// myinput
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The IDs of the security groups associated with the input.
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
+	// The input type.
+	//
+	// example:
+	//
+	// RTMP_PUSH
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListMediaLiveInputsResponseBodyInputs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMediaLiveInputsResponseBodyInputs) GoString() string {
+	return s.String()
+}
+
+func (s *ListMediaLiveInputsResponseBodyInputs) SetChannelIds(v []*string) *ListMediaLiveInputsResponseBodyInputs {
+	s.ChannelIds = v
+	return s
+}
+
+func (s *ListMediaLiveInputsResponseBodyInputs) SetCreateTime(v string) *ListMediaLiveInputsResponseBodyInputs {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListMediaLiveInputsResponseBodyInputs) SetInputId(v string) *ListMediaLiveInputsResponseBodyInputs {
+	s.InputId = &v
+	return s
+}
+
+func (s *ListMediaLiveInputsResponseBodyInputs) SetInputInfos(v []*ListMediaLiveInputsResponseBodyInputsInputInfos) *ListMediaLiveInputsResponseBodyInputs {
+	s.InputInfos = v
+	return s
+}
+
+func (s *ListMediaLiveInputsResponseBodyInputs) SetName(v string) *ListMediaLiveInputsResponseBodyInputs {
+	s.Name = &v
+	return s
+}
+
+func (s *ListMediaLiveInputsResponseBodyInputs) SetSecurityGroupIds(v []*string) *ListMediaLiveInputsResponseBodyInputs {
+	s.SecurityGroupIds = v
+	return s
+}
+
+func (s *ListMediaLiveInputsResponseBodyInputs) SetType(v string) *ListMediaLiveInputsResponseBodyInputs {
+	s.Type = &v
+	return s
+}
+
+type ListMediaLiveInputsResponseBodyInputsInputInfos struct {
+	// The endpoint that the stream is pushed to. This parameter is returned for PUSH inputs.
+	//
+	// example:
+	//
+	// rtmp://domain/app/stream
+	DestHost       *string `json:"DestHost,omitempty" xml:"DestHost,omitempty"`
+	FlowId         *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	FlowOutputName *string `json:"FlowOutputName,omitempty" xml:"FlowOutputName,omitempty"`
+	// The URL for input monitoring.
+	//
+	// example:
+	//
+	// rtmp://domain/app/stream_for_monitor
+	MonitorUrl *string `json:"MonitorUrl,omitempty" xml:"MonitorUrl,omitempty"`
+	// The source URL where the stream is pulled from. This parameter is returned for PULL inputs.
+	//
+	// example:
+	//
+	// rtmp://domain/app/stream
+	SourceUrl *string `json:"SourceUrl,omitempty" xml:"SourceUrl,omitempty"`
+	// The name of the pushed stream. This parameter is returned for PUSH inputs.
+	//
+	// example:
+	//
+	// mystream
+	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
+}
+
+func (s ListMediaLiveInputsResponseBodyInputsInputInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMediaLiveInputsResponseBodyInputsInputInfos) GoString() string {
+	return s.String()
+}
+
+func (s *ListMediaLiveInputsResponseBodyInputsInputInfos) SetDestHost(v string) *ListMediaLiveInputsResponseBodyInputsInputInfos {
+	s.DestHost = &v
+	return s
+}
+
+func (s *ListMediaLiveInputsResponseBodyInputsInputInfos) SetFlowId(v string) *ListMediaLiveInputsResponseBodyInputsInputInfos {
+	s.FlowId = &v
+	return s
+}
+
+func (s *ListMediaLiveInputsResponseBodyInputsInputInfos) SetFlowOutputName(v string) *ListMediaLiveInputsResponseBodyInputsInputInfos {
+	s.FlowOutputName = &v
+	return s
+}
+
+func (s *ListMediaLiveInputsResponseBodyInputsInputInfos) SetMonitorUrl(v string) *ListMediaLiveInputsResponseBodyInputsInputInfos {
+	s.MonitorUrl = &v
+	return s
+}
+
+func (s *ListMediaLiveInputsResponseBodyInputsInputInfos) SetSourceUrl(v string) *ListMediaLiveInputsResponseBodyInputsInputInfos {
+	s.SourceUrl = &v
+	return s
+}
+
+func (s *ListMediaLiveInputsResponseBodyInputsInputInfos) SetStreamName(v string) *ListMediaLiveInputsResponseBodyInputsInputInfos {
+	s.StreamName = &v
+	return s
+}
+
+type ListMediaLiveInputsResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListMediaLiveInputsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListMediaLiveInputsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMediaLiveInputsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListMediaLiveInputsResponse) SetHeaders(v map[string]*string) *ListMediaLiveInputsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListMediaLiveInputsResponse) SetStatusCode(v int32) *ListMediaLiveInputsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListMediaLiveInputsResponse) SetBody(v *ListMediaLiveInputsResponseBody) *ListMediaLiveInputsResponse {
+	s.Body = v
+	return s
+}
+
 type ListMediaMarksRequest struct {
 	// The ID of the media asset.
 	//
@@ -47972,24 +53235,38 @@ func (s *ListPipelinesResponse) SetBody(v *ListPipelinesResponseBody) *ListPipel
 }
 
 type ListProgramsRequest struct {
+	// The name of the channel.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// MyChannel
 	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *string `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Default value: 20. Valid values: 1 to 100.
+	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The name of the program.
+	//
 	// example:
 	//
 	// program1
 	ProgramName *string `json:"ProgramName,omitempty" xml:"ProgramName,omitempty"`
+	// The sorting order. By default, the query results are sorted by creation time in descending order. Valid values:
+	//
+	// 	- asc: ascending order.
+	//
+	// 	- desc: descending order.
+	//
 	// example:
 	//
 	// desc
@@ -48030,19 +53307,28 @@ func (s *ListProgramsRequest) SetSortBy(v string) *ListProgramsRequest {
 }
 
 type ListProgramsResponseBody struct {
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Default value: 20. Valid values: 1 to 100.
+	//
 	// example:
 	//
 	// 10
-	PageSize *int32                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The programs.
 	Programs []*ChannelAssemblyProgram `json:"Programs,omitempty" xml:"Programs,omitempty" type:"Repeated"`
+	// **Request ID**
+	//
 	// example:
 	//
 	// xxx-xxxx-xxxxx-xxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of programs returned.
+	//
 	// example:
 	//
 	// 100
@@ -48719,20 +54005,28 @@ func (s *ListPublicMediaBasicInfosResponse) SetBody(v *ListPublicMediaBasicInfos
 }
 
 type ListSchedulesRequest struct {
+	// The name of the channel.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// MyChannel
 	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The time window of the program schedule.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -48770,19 +54064,28 @@ func (s *ListSchedulesRequest) SetWindowDurationSeconds(v int64) *ListSchedulesR
 }
 
 type ListSchedulesResponseBody struct {
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Default value: 20. Valid values: 1 to 100.
+	//
 	// example:
 	//
 	// 10
-	PageSize *int32                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The program schedule.
 	Programs []*ChannelAssemblyScheduleData `json:"Programs,omitempty" xml:"Programs,omitempty" type:"Repeated"`
+	// **Request ID**
+	//
 	// example:
 	//
 	// xxx-xxxx-xxxxx-xxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 5
@@ -50295,26 +55598,40 @@ func (s *ListSnapshotJobsResponse) SetBody(v *ListSnapshotJobsResponseBody) *Lis
 }
 
 type ListSourceLocationsRequest struct {
+	// Specifies whether to ignore source locations marked as deleted. A value of true means ignoring source locations marked as deleted.
+	//
 	// example:
 	//
 	// true
 	FilterState *bool `json:"FilterState,omitempty" xml:"FilterState,omitempty"`
+	// 	- The page number.
+	//
+	// 	- Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Default value: 20. Valid values: 1 to 100.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The sorting order. By default, the query results are sorted by creation time in descending order.
+	//
 	// example:
 	//
 	// desc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The sorting order of the source locations based on the time when they were last modified.
+	//
 	// example:
 	//
 	// desc
 	SortByModifiedTime *string `json:"SortByModifiedTime,omitempty" xml:"SortByModifiedTime,omitempty"`
+	// The name of the source location.
+	//
 	// example:
 	//
 	// MySourceLocation
@@ -50360,19 +55677,28 @@ func (s *ListSourceLocationsRequest) SetSourceLocationName(v string) *ListSource
 }
 
 type ListSourceLocationsResponseBody struct {
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Default value: 20. Valid values: 1 to 100.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// **Request ID**
+	//
 	// example:
 	//
 	// xxx-xxxx-xxxxx-xxxx
-	RequestId          *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The source locations.
 	SourceLocationList []*ChannelAssemblySourceLocation `json:"SourceLocationList,omitempty" xml:"SourceLocationList,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 100
@@ -50442,34 +55768,50 @@ func (s *ListSourceLocationsResponse) SetBody(v *ListSourceLocationsResponseBody
 }
 
 type ListSourcesRequest struct {
+	// Specifies whether to ignore sources marked as deleted.
+	//
 	// example:
 	//
 	// true
 	FilterState *bool `json:"FilterState,omitempty" xml:"FilterState,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *string `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The sorting order. By default, the query results are sorted by creation time in descending order. Valid values: asc and desc.
+	//
 	// example:
 	//
 	// asc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The sorting order by modification time. Valid values: asc and desc.
+	//
 	// example:
 	//
 	// desc
 	SortByModifiedTime *string `json:"SortByModifiedTime,omitempty" xml:"SortByModifiedTime,omitempty"`
+	// The name of the source location.
+	//
 	// example:
 	//
 	// MySourceLocation
 	SourceLocationName *string `json:"SourceLocationName,omitempty" xml:"SourceLocationName,omitempty"`
+	// The name of the source.
+	//
 	// example:
 	//
 	// MyVodSource
 	SourceName *string `json:"SourceName,omitempty" xml:"SourceName,omitempty"`
+	// The source type. Valid values: vodSource and liveSource.
+	//
 	// example:
 	//
 	// vodSource
@@ -50525,19 +55867,28 @@ func (s *ListSourcesRequest) SetSourceType(v string) *ListSourcesRequest {
 }
 
 type ListSourcesResponseBody struct {
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Default value: 20. Valid values: 1 to 100.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// **Request ID**
+	//
 	// example:
 	//
 	// xxx-xxxx-xxxxx-xxxx
-	RequestId  *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The sources.
 	SourceList []*ChannelAssemblySource `json:"SourceList,omitempty" xml:"SourceList,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 100
@@ -52907,22 +58258,36 @@ func (s *ListTranscodeJobsResponse) SetBody(v *ListTranscodeJobsResponseBody) *L
 }
 
 type ListVodPackagingAssetsRequest struct {
+	// The name of the packaging group.
+	//
 	// example:
 	//
 	// vod_hls
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The search keyword. The names of the returned assets are prefixed with this keyword.
+	//
 	// example:
 	//
 	// movie
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The sorting order of the assets based on the time when they were ingested. Valid values:
+	//
+	// 	- desc (default): descending order.
+	//
+	// 	- asc: ascending order.
+	//
 	// example:
 	//
 	// desc
@@ -52963,23 +58328,38 @@ func (s *ListVodPackagingAssetsRequest) SetSortBy(v string) *ListVodPackagingAss
 }
 
 type ListVodPackagingAssetsResponseBody struct {
+	// The VOD packaging assets.
 	Assets []*ListVodPackagingAssetsResponseBodyAssets `json:"Assets,omitempty" xml:"Assets,omitempty" type:"Repeated"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The sorting order of the assets based on the time when they were ingested. Valid values:
+	//
+	// 	- desc: descending order.
+	//
+	// 	- asc: ascending order.
+	//
 	// example:
 	//
 	// desc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 100
@@ -53025,23 +58405,32 @@ func (s *ListVodPackagingAssetsResponseBody) SetTotalCount(v int32) *ListVodPack
 }
 
 type ListVodPackagingAssetsResponseBodyAssets struct {
+	// The name of the VOD packaging asset.
+	//
 	// example:
 	//
 	// 30min_movie
 	AssetName *string `json:"AssetName,omitempty" xml:"AssetName,omitempty"`
+	// The time when the asset was ingested. It follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2024-11-21T06:45:32Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The asset description.
+	//
 	// example:
 	//
 	// movie 30min
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the packaging group.
+	//
 	// example:
 	//
 	// vod_hls
-	GroupName *string                                        `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	Input     *ListVodPackagingAssetsResponseBodyAssetsInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The asset input configurations.
+	Input *ListVodPackagingAssetsResponseBodyAssetsInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
 }
 
 func (s ListVodPackagingAssetsResponseBodyAssets) String() string {
@@ -53078,7 +58467,10 @@ func (s *ListVodPackagingAssetsResponseBodyAssets) SetInput(v *ListVodPackagingA
 }
 
 type ListVodPackagingAssetsResponseBodyAssetsInput struct {
+	// The URL of the media file. Only M3U8 files stored in OSS are supported.
 	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// The input type. Only Object Storage Service (OSS) is supported.
+	//
 	// example:
 	//
 	// OSS
@@ -53133,22 +58525,36 @@ func (s *ListVodPackagingAssetsResponse) SetBody(v *ListVodPackagingAssetsRespon
 }
 
 type ListVodPackagingConfigurationsRequest struct {
+	// The name of the packaging group.
+	//
 	// example:
 	//
 	// vod_hls
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The search keyword. The names of the returned packaging configurations contain the keyword.
+	//
 	// example:
 	//
 	// hls
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The sorting order of the packaging configurations based on the time when they were created. Valid values:
+	//
+	// 	- desc (default): descending order.
+	//
+	// 	- asc: ascending order.
+	//
 	// example:
 	//
 	// desc
@@ -53189,23 +58595,38 @@ func (s *ListVodPackagingConfigurationsRequest) SetSortBy(v string) *ListVodPack
 }
 
 type ListVodPackagingConfigurationsResponseBody struct {
+	// The packaging configurations.
 	PackagingConfigurations []*VodPackagingConfiguration `json:"PackagingConfigurations,omitempty" xml:"PackagingConfigurations,omitempty" type:"Repeated"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The sorting order of the packaging configurations based on the time when they were created. Valid values:
+	//
+	// 	- desc: descending order.
+	//
+	// 	- asc: ascending order.
+	//
 	// example:
 	//
 	// desc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 5
@@ -53280,18 +58701,30 @@ func (s *ListVodPackagingConfigurationsResponse) SetBody(v *ListVodPackagingConf
 }
 
 type ListVodPackagingGroupsRequest struct {
+	// The search keyword. The names of the returned packaging groups contain the keyword.
+	//
 	// example:
 	//
 	// hls
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The sorting order of the packaging groups based on the time when they were created. Valid values:
+	//
+	// 	- desc (default): descending order.
+	//
+	// 	- asc: ascending order.
+	//
 	// example:
 	//
 	// desc
@@ -53327,23 +58760,38 @@ func (s *ListVodPackagingGroupsRequest) SetSortBy(v string) *ListVodPackagingGro
 }
 
 type ListVodPackagingGroupsResponseBody struct {
+	// The packaging groups.
 	PackagingGroups []*VodPackagingGroup `json:"PackagingGroups,omitempty" xml:"PackagingGroups,omitempty" type:"Repeated"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The sorting order of the packaging groups based on the time when they were created. Valid values:
+	//
+	// 	- desc: descending order.
+	//
+	// 	- asc: ascending order.
+	//
 	// example:
 	//
 	// desc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 5
@@ -63165,12 +68613,16 @@ func (s *SearchPublicMediaInfoResponse) SetBody(v *SearchPublicMediaInfoResponse
 }
 
 type SendAIAgentDataChannelMessageRequest struct {
+	// The ID of the AI agent in the conversation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 39f8e0bc005e4f309379701645f4****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The DataChannel message you want to send. You must specify a JSON string. The value can be up to 8,192 characters in length.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -63198,6 +68650,8 @@ func (s *SendAIAgentDataChannelMessageRequest) SetMessage(v string) *SendAIAgent
 }
 
 type SendAIAgentDataChannelMessageResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 7B117AF5-2A16-412C-B127-FA6175ED1AD0
@@ -63247,6 +68701,8 @@ func (s *SendAIAgentDataChannelMessageResponse) SetBody(v *SendAIAgentDataChanne
 }
 
 type SendAIAgentSpeechRequest struct {
+	// Specifies whether the broadcast can interrupt the ongoing speech. Default value: true
+	//
 	// example:
 	//
 	// true
@@ -63591,6 +69047,135 @@ func (s *SendLiveTranscodeJobCommandResponse) SetStatusCode(v int32) *SendLiveTr
 }
 
 func (s *SendLiveTranscodeJobCommandResponse) SetBody(v *SendLiveTranscodeJobCommandResponseBody) *SendLiveTranscodeJobCommandResponse {
+	s.Body = v
+	return s
+}
+
+type SendMessageChatTextRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 39f8e0bc005e4f309379701645f4****
+	AIAgentId *string `json:"AIAgentId,omitempty" xml:"AIAgentId,omitempty"`
+	// example:
+	//
+	// online
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// example:
+	//
+	// true
+	NeedArchiving *bool `json:"NeedArchiving,omitempty" xml:"NeedArchiving,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 60000042053
+	ReceiverId *string `json:"ReceiverId,omitempty" xml:"ReceiverId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// f27f9b9be28642a88e18****
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// This parameter is required.
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// announcement
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s SendMessageChatTextRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendMessageChatTextRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SendMessageChatTextRequest) SetAIAgentId(v string) *SendMessageChatTextRequest {
+	s.AIAgentId = &v
+	return s
+}
+
+func (s *SendMessageChatTextRequest) SetMode(v string) *SendMessageChatTextRequest {
+	s.Mode = &v
+	return s
+}
+
+func (s *SendMessageChatTextRequest) SetNeedArchiving(v bool) *SendMessageChatTextRequest {
+	s.NeedArchiving = &v
+	return s
+}
+
+func (s *SendMessageChatTextRequest) SetReceiverId(v string) *SendMessageChatTextRequest {
+	s.ReceiverId = &v
+	return s
+}
+
+func (s *SendMessageChatTextRequest) SetSessionId(v string) *SendMessageChatTextRequest {
+	s.SessionId = &v
+	return s
+}
+
+func (s *SendMessageChatTextRequest) SetText(v string) *SendMessageChatTextRequest {
+	s.Text = &v
+	return s
+}
+
+func (s *SendMessageChatTextRequest) SetType(v string) *SendMessageChatTextRequest {
+	s.Type = &v
+	return s
+}
+
+type SendMessageChatTextResponseBody struct {
+	// example:
+	//
+	// ******3B-0E1A-586A-AC29-742247******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SendMessageChatTextResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendMessageChatTextResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SendMessageChatTextResponseBody) SetRequestId(v string) *SendMessageChatTextResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SendMessageChatTextResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SendMessageChatTextResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SendMessageChatTextResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendMessageChatTextResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SendMessageChatTextResponse) SetHeaders(v map[string]*string) *SendMessageChatTextResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SendMessageChatTextResponse) SetStatusCode(v int32) *SendMessageChatTextResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SendMessageChatTextResponse) SetBody(v *SendMessageChatTextResponseBody) *SendMessageChatTextResponse {
 	s.Body = v
 	return s
 }
@@ -64021,26 +69606,42 @@ func (s *SetEventCallbackResponse) SetBody(v *SetEventCallbackResponseBody) *Set
 }
 
 type SetNotifyConfigRequest struct {
+	// The ID of the AI agent.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 39f8e0bc005e4f309379701645f4****
 	AIAgentId *string `json:"AIAgentId,omitempty" xml:"AIAgentId,omitempty"`
+	// The URL for receiving callback notifications. By default, this parameter is left empty.
+	//
 	// example:
 	//
 	// http://customer.com/callback
 	CallbackUrl *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
+	// Specifies whether to enable event notifications.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// true
 	EnableNotify *bool `json:"EnableNotify,omitempty" xml:"EnableNotify,omitempty"`
+	// The event types. If you do not specify this parameter, all event types are selected.
+	//
+	// 	- agent_start
+	//
+	// 	- agent_stop
+	//
+	// 	- error
+	//
 	// example:
 	//
 	// agent_start,agent_stop,error
 	EventTypes *string `json:"EventTypes,omitempty" xml:"EventTypes,omitempty"`
+	// The authentication token for callback. The token is carried in the Authorization header of a callback request. By default, this parameter is left empty.
+	//
 	// example:
 	//
 	// eyJhcHBpZCI6ICIxMjM0MTIzNxxxxx
@@ -64081,6 +69682,8 @@ func (s *SetNotifyConfigRequest) SetToken(v string) *SetNotifyConfigRequest {
 }
 
 type SetNotifyConfigResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 771A1414-27BF-53E6-AB73-EFCB*****ACF
@@ -64130,14 +69733,21 @@ func (s *SetNotifyConfigResponse) SetBody(v *SetNotifyConfigResponseBody) *SetNo
 }
 
 type StartAIAgentInstanceRequest struct {
+	// The ID of the AI agent created in the [IMS](https://ims.console.aliyun.com/ai/robot/list) console.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 39f8e0bc005e4f309379701645f4****
 	AIAgentId *string `json:"AIAgentId,omitempty" xml:"AIAgentId,omitempty"`
+	// 同步聊天记录配置。
+	ChatSyncConfig *StartAIAgentInstanceRequestChatSyncConfig `json:"ChatSyncConfig,omitempty" xml:"ChatSyncConfig,omitempty" type:"Struct"`
 	// This parameter is required.
-	RuntimeConfig  *AIAgentRuntimeConfig  `json:"RuntimeConfig,omitempty" xml:"RuntimeConfig,omitempty"`
+	RuntimeConfig *AIAgentRuntimeConfig `json:"RuntimeConfig,omitempty" xml:"RuntimeConfig,omitempty"`
+	// example:
+	//
+	// f213fbc005e4f309379701645f4****
 	SessionId      *string                `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 	TemplateConfig *AIAgentTemplateConfig `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
 	// example:
@@ -64156,6 +69766,11 @@ func (s StartAIAgentInstanceRequest) GoString() string {
 
 func (s *StartAIAgentInstanceRequest) SetAIAgentId(v string) *StartAIAgentInstanceRequest {
 	s.AIAgentId = &v
+	return s
+}
+
+func (s *StartAIAgentInstanceRequest) SetChatSyncConfig(v *StartAIAgentInstanceRequestChatSyncConfig) *StartAIAgentInstanceRequest {
+	s.ChatSyncConfig = v
 	return s
 }
 
@@ -64179,15 +69794,55 @@ func (s *StartAIAgentInstanceRequest) SetUserData(v string) *StartAIAgentInstanc
 	return s
 }
 
+type StartAIAgentInstanceRequestChatSyncConfig struct {
+	// IM的智能体Id。
+	//
+	// example:
+	//
+	// ******005e4f309379701645f4****
+	IMAIAgentId *string `json:"IMAIAgentId,omitempty" xml:"IMAIAgentId,omitempty"`
+	// 接收用户Id。
+	//
+	// example:
+	//
+	// 4167626d312034b2b1c3b7f2f3e41884
+	ReceiverId *string `json:"ReceiverId,omitempty" xml:"ReceiverId,omitempty"`
+}
+
+func (s StartAIAgentInstanceRequestChatSyncConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartAIAgentInstanceRequestChatSyncConfig) GoString() string {
+	return s.String()
+}
+
+func (s *StartAIAgentInstanceRequestChatSyncConfig) SetIMAIAgentId(v string) *StartAIAgentInstanceRequestChatSyncConfig {
+	s.IMAIAgentId = &v
+	return s
+}
+
+func (s *StartAIAgentInstanceRequestChatSyncConfig) SetReceiverId(v string) *StartAIAgentInstanceRequestChatSyncConfig {
+	s.ReceiverId = &v
+	return s
+}
+
 type StartAIAgentInstanceShrinkRequest struct {
+	// The ID of the AI agent created in the [IMS](https://ims.console.aliyun.com/ai/robot/list) console.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 39f8e0bc005e4f309379701645f4****
 	AIAgentId *string `json:"AIAgentId,omitempty" xml:"AIAgentId,omitempty"`
+	// 同步聊天记录配置。
+	ChatSyncConfigShrink *string `json:"ChatSyncConfig,omitempty" xml:"ChatSyncConfig,omitempty"`
 	// This parameter is required.
-	RuntimeConfigShrink  *string `json:"RuntimeConfig,omitempty" xml:"RuntimeConfig,omitempty"`
+	RuntimeConfigShrink *string `json:"RuntimeConfig,omitempty" xml:"RuntimeConfig,omitempty"`
+	// example:
+	//
+	// f213fbc005e4f309379701645f4****
 	SessionId            *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 	TemplateConfigShrink *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
 	// example:
@@ -64206,6 +69861,11 @@ func (s StartAIAgentInstanceShrinkRequest) GoString() string {
 
 func (s *StartAIAgentInstanceShrinkRequest) SetAIAgentId(v string) *StartAIAgentInstanceShrinkRequest {
 	s.AIAgentId = &v
+	return s
+}
+
+func (s *StartAIAgentInstanceShrinkRequest) SetChatSyncConfigShrink(v string) *StartAIAgentInstanceShrinkRequest {
+	s.ChatSyncConfigShrink = &v
 	return s
 }
 
@@ -64288,6 +69948,8 @@ func (s *StartAIAgentInstanceResponse) SetBody(v *StartAIAgentInstanceResponseBo
 }
 
 type StartChannelRequest struct {
+	// The name of the channel.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -64310,10 +69972,14 @@ func (s *StartChannelRequest) SetChannelName(v string) *StartChannelRequest {
 }
 
 type StartChannelResponseBody struct {
+	// **Request ID**
+	//
 	// example:
 	//
 	// xxx-xxxx-xxxxx-xxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -64363,6 +70029,81 @@ func (s *StartChannelResponse) SetStatusCode(v int32) *StartChannelResponse {
 }
 
 func (s *StartChannelResponse) SetBody(v *StartChannelResponseBody) *StartChannelResponse {
+	s.Body = v
+	return s
+}
+
+type StartMediaLiveChannelRequest struct {
+	// The ID of the channel.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SEGK5KA6KYKAWQQH
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+}
+
+func (s StartMediaLiveChannelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartMediaLiveChannelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartMediaLiveChannelRequest) SetChannelId(v string) *StartMediaLiveChannelRequest {
+	s.ChannelId = &v
+	return s
+}
+
+type StartMediaLiveChannelResponseBody struct {
+	// The ID of the request.
+	//
+	// example:
+	//
+	// ******11-DB8D-4A9A-875B-275798******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StartMediaLiveChannelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartMediaLiveChannelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartMediaLiveChannelResponseBody) SetRequestId(v string) *StartMediaLiveChannelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StartMediaLiveChannelResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartMediaLiveChannelResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StartMediaLiveChannelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartMediaLiveChannelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartMediaLiveChannelResponse) SetHeaders(v map[string]*string) *StartMediaLiveChannelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartMediaLiveChannelResponse) SetStatusCode(v int32) *StartMediaLiveChannelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StartMediaLiveChannelResponse) SetBody(v *StartMediaLiveChannelResponseBody) *StartMediaLiveChannelResponse {
 	s.Body = v
 	return s
 }
@@ -64818,6 +70559,8 @@ func (s *StopAIAgentInstanceResponse) SetBody(v *StopAIAgentInstanceResponseBody
 }
 
 type StopChannelRequest struct {
+	// The name of the channel.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -64840,10 +70583,18 @@ func (s *StopChannelRequest) SetChannelName(v string) *StopChannelRequest {
 }
 
 type StopChannelResponseBody struct {
+	// **Request ID**
+	//
 	// example:
 	//
 	// xxx-xxxx-xxxxx-xxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -64893,6 +70644,81 @@ func (s *StopChannelResponse) SetStatusCode(v int32) *StopChannelResponse {
 }
 
 func (s *StopChannelResponse) SetBody(v *StopChannelResponseBody) *StopChannelResponse {
+	s.Body = v
+	return s
+}
+
+type StopMediaLiveChannelRequest struct {
+	// The ID of the channel.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SEGK5KA6KYKAWQQH
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+}
+
+func (s StopMediaLiveChannelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopMediaLiveChannelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopMediaLiveChannelRequest) SetChannelId(v string) *StopMediaLiveChannelRequest {
+	s.ChannelId = &v
+	return s
+}
+
+type StopMediaLiveChannelResponseBody struct {
+	// The ID of the request.
+	//
+	// example:
+	//
+	// ******11-DB8D-4A9A-875B-275798******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StopMediaLiveChannelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopMediaLiveChannelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StopMediaLiveChannelResponseBody) SetRequestId(v string) *StopMediaLiveChannelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StopMediaLiveChannelResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopMediaLiveChannelResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StopMediaLiveChannelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopMediaLiveChannelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopMediaLiveChannelResponse) SetHeaders(v map[string]*string) *StopMediaLiveChannelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopMediaLiveChannelResponse) SetStatusCode(v int32) *StopMediaLiveChannelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StopMediaLiveChannelResponse) SetBody(v *StopMediaLiveChannelResponseBody) *StopMediaLiveChannelResponse {
 	s.Body = v
 	return s
 }
@@ -69656,11 +75482,28 @@ func (s *SubmitMediaCensorJobResponse) SetBody(v *SubmitMediaCensorJobResponseBo
 }
 
 type SubmitMediaConvertJobRequest struct {
+	// The idempotency key that is used to ensure repeated requests have the same effect as a single request.
+	//
+	// example:
+	//
+	// 86f8e525-9d73-4dac-88aa-7aa4e950c00a
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The configurations of the transcoding task.
+	//
 	// This parameter is required.
-	Config     *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The ID of the queue.
+	//
+	// example:
+	//
+	// e197ecfb103e4849922b054d3032f954
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	UserData   *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// The user data.
+	//
+	// example:
+	//
+	// {"videoId":"abcd"}
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s SubmitMediaConvertJobRequest) String() string {
@@ -69692,8 +75535,9 @@ func (s *SubmitMediaConvertJobRequest) SetUserData(v string) *SubmitMediaConvert
 }
 
 type SubmitMediaConvertJobResponseBody struct {
+	// The transcoding task.
 	Job *SubmitMediaConvertJobResponseBodyJob `json:"Job,omitempty" xml:"Job,omitempty" type:"Struct"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -69720,34 +75564,69 @@ func (s *SubmitMediaConvertJobResponseBody) SetRequestId(v string) *SubmitMediaC
 }
 
 type SubmitMediaConvertJobResponseBodyJob struct {
+	// The idempotency key of the request for creating the transcoding task.
+	//
+	// example:
+	//
+	// FB7F25E9-AD9B-1603-8AF6-F1E42DF2E706
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The error code returned when the transcoding task failed.
+	//
 	// example:
 	//
 	// 200
-	Code   *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The configurations of the transcoding task.
 	Config *SubmitMediaConvertJobResponseBodyJobConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
+	// The ID of the transcoding task.
+	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The error message returned when the transcoding task failed.
+	//
 	// example:
 	//
 	// ok
-	Message            *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
-	OutputDetails      []*MediaConvertOutputDetail      `json:"OutputDetails,omitempty" xml:"OutputDetails,omitempty" type:"Repeated"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The details of the transcoded outputs.
+	OutputDetails []*MediaConvertOutputDetail `json:"OutputDetails,omitempty" xml:"OutputDetails,omitempty" type:"Repeated"`
+	// The details of the output groups.
 	OutputGroupDetails []*MediaConvertOutputGroupDetail `json:"OutputGroupDetails,omitempty" xml:"OutputGroupDetails,omitempty" type:"Repeated"`
+	// The ID of the queue.
+	//
 	// example:
 	//
 	// 3780049
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// A2129C9F-CE95-58B5-B8C1-07758FF6C86F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the transcoding task. Valid values:
+	//
+	// 	- Inited: The task is initialized.
+	//
+	// 	- Running
+	//
+	// 	- Success
+	//
+	// 	- Failed
+	//
+	// 	- Cancelled
+	//
 	// example:
 	//
 	// Created
-	State    *string `json:"State,omitempty" xml:"State,omitempty"`
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The user data.
+	//
+	// example:
+	//
+	// {"videoId":"abcd"}
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
@@ -69815,9 +75694,12 @@ func (s *SubmitMediaConvertJobResponseBodyJob) SetUserData(v string) *SubmitMedi
 }
 
 type SubmitMediaConvertJobResponseBodyJobConfig struct {
-	Inputs       []*MediaConvertInput       `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Repeated"`
+	// The inputs of the transcoding task.
+	Inputs []*MediaConvertInput `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Repeated"`
+	// The output group configurations.
 	OutputGroups []*MediaConvertOutputGroup `json:"OutputGroups,omitempty" xml:"OutputGroups,omitempty" type:"Repeated"`
-	Outputs      []*MediaConvertOutput      `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Repeated"`
+	// The output configurations.
+	Outputs []*MediaConvertOutput `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Repeated"`
 }
 
 func (s SubmitMediaConvertJobResponseBodyJobConfig) String() string {
@@ -81028,14 +86910,20 @@ func (s *SubmitVideoTranslationJobResponse) SetBody(v *SubmitVideoTranslationJob
 }
 
 type TakeoverAIAgentCallRequest struct {
+	// The ID of the human agent that will take over the AI agent (UserId in ARTC). If you do not specify this parameter, it is automatically generated and returned.
+	//
 	// example:
 	//
 	// uid2
 	HumanAgentUserId *string `json:"HumanAgentUserId,omitempty" xml:"HumanAgentUserId,omitempty"`
+	// The ID of the AI agent that will be taken over.
+	//
 	// example:
 	//
 	// 39f8e0bc005e4f309379701645f4****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Specifies whether to return the ARTC token. Default value: false.
+	//
 	// example:
 	//
 	// false
@@ -81066,18 +86954,26 @@ func (s *TakeoverAIAgentCallRequest) SetRequireToken(v bool) *TakeoverAIAgentCal
 }
 
 type TakeoverAIAgentCallResponseBody struct {
+	// The ID of the ARTC channel.
+	//
 	// example:
 	//
 	// 70f22d5784194938a7e387052f2b3208
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The ID of the human agent.
+	//
 	// example:
 	//
 	// uid2
 	HumanAgentUserId *string `json:"HumanAgentUserId,omitempty" xml:"HumanAgentUserId,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// ******3B-0E1A-586A-AC29-742247******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ARTC token.
+	//
 	// example:
 	//
 	// eyJhcHBpZCI6ICIxMjM0MTIzNxxxxx
@@ -81142,14 +87038,20 @@ func (s *TakeoverAIAgentCallResponse) SetBody(v *TakeoverAIAgentCallResponseBody
 }
 
 type UpdateAIAgentInstanceRequest struct {
+	// The ID of the AI agent that you want to update.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 39f8e0bc005e4f309379701645f4****
-	InstanceId     *string                `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The template configurations of the AI agent. The configurations are merged with the template configurations that are used to start the AI agent. For more information, see the definition of TemplateConfig.
 	TemplateConfig *AIAgentTemplateConfig `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
-	UserData       *string                `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// example:
+	//
+	// {"VoiceId":"xiaoxia"}
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s UpdateAIAgentInstanceRequest) String() string {
@@ -81176,14 +87078,20 @@ func (s *UpdateAIAgentInstanceRequest) SetUserData(v string) *UpdateAIAgentInsta
 }
 
 type UpdateAIAgentInstanceShrinkRequest struct {
+	// The ID of the AI agent that you want to update.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 39f8e0bc005e4f309379701645f4****
-	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The template configurations of the AI agent. The configurations are merged with the template configurations that are used to start the AI agent. For more information, see the definition of TemplateConfig.
 	TemplateConfigShrink *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
-	UserData             *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// example:
+	//
+	// {"VoiceId":"xiaoxia"}
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s UpdateAIAgentInstanceShrinkRequest) String() string {
@@ -81210,6 +87118,8 @@ func (s *UpdateAIAgentInstanceShrinkRequest) SetUserData(v string) *UpdateAIAgen
 }
 
 type UpdateAIAgentInstanceResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 7B117AF5-2A16-412C-B127-FA6175ED1AD0
@@ -81259,13 +87169,19 @@ func (s *UpdateAIAgentInstanceResponse) SetBody(v *UpdateAIAgentInstanceResponse
 }
 
 type UpdateAdInsertionRequest struct {
-	// 内容URL前缀
+	// Specifies whether to enable ad marker passthrough. Default value: OFF.
+	//
+	// Valid values:
+	//
+	// 	- OFF: Disable.
+	//
+	// 	- ON: Enable.
 	//
 	// example:
 	//
 	// ON
 	AdMarkerPassthrough *string `json:"AdMarkerPassthrough,omitempty" xml:"AdMarkerPassthrough,omitempty"`
-	// 广告策略服务器URL
+	// The request URL of the ad decision server (ADS). HTTP and HTTPS are supported. The maximum length is 2,048 characters.
 	//
 	// This parameter is required.
 	//
@@ -81273,25 +87189,25 @@ type UpdateAdInsertionRequest struct {
 	//
 	// http://ads.com/ad1?param1=[palyer_params.p1]
 	AdsUrl *string `json:"AdsUrl,omitempty" xml:"AdsUrl,omitempty"`
-	// 广告分片的CDN前缀
+	// The CDN prefix for ad segments. HTTP and HTTPS are supported. The maximum length is 512 characters.
 	//
 	// example:
 	//
 	// http://cdn.com/
 	CdnAdSegmentUrlPrefix *string `json:"CdnAdSegmentUrlPrefix,omitempty" xml:"CdnAdSegmentUrlPrefix,omitempty"`
-	// 视频内容分片的CDN前缀
+	// The CDN prefix for content segments. HTTP and HTTPS are supported. The maximum length is 512 characters.
 	//
 	// example:
 	//
 	// http://cdn.com/
 	CdnContentSegmentUrlPrefix *string `json:"CdnContentSegmentUrlPrefix,omitempty" xml:"CdnContentSegmentUrlPrefix,omitempty"`
-	// 动态配置别名
+	// A JSON string that specifies the player parameter variables and aliases. Format: { "player_params.{name}": { "{key}": "{value}" } }. You can add up to 20 player_params.{name} entries. The name field can be up to 150 characters in length. Each player parameter can include up to 50 key-value pairs. A key can be up to 150 characters long, and a value can be up to 500 characters.
 	//
 	// example:
 	//
 	// { "player_params.p1": { "1": "abc" } }
 	ConfigAliases *string `json:"ConfigAliases,omitempty" xml:"ConfigAliases,omitempty"`
-	// 内容URL前缀
+	// The URL prefix for the source content. HTTP and HTTPS are supported. The maximum length is 512 characters.
 	//
 	// This parameter is required.
 	//
@@ -81299,7 +87215,7 @@ type UpdateAdInsertionRequest struct {
 	//
 	// https://source.com/
 	ContentUrlPrefix *string `json:"ContentUrlPrefix,omitempty" xml:"ContentUrlPrefix,omitempty"`
-	// 代表资源一级ID的资源属性字段
+	// The configuration name, which cannot be modified.
 	//
 	// This parameter is required.
 	//
@@ -81307,13 +87223,13 @@ type UpdateAdInsertionRequest struct {
 	//
 	// my_ad
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 个性化配置阈值
+	// Specifies the maximum duration of underfilled time allowed in an ad break. Unit: seconds. Default value: 8 seconds.
 	//
 	// example:
 	//
 	// 5
 	PersonalizationThreshold *int32 `json:"PersonalizationThreshold,omitempty" xml:"PersonalizationThreshold,omitempty"`
-	// slate广告URL
+	// The HTTP or HTTPS URL of the slate ad. Only MP4 format is supported. The maximum length is 2,048 characters.
 	//
 	// example:
 	//
@@ -81375,7 +87291,10 @@ func (s *UpdateAdInsertionRequest) SetSlateAdUrl(v string) *UpdateAdInsertionReq
 }
 
 type UpdateAdInsertionResponseBody struct {
+	// The ad insertion configuration.
 	Config *UpdateAdInsertionResponseBodyConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// ****63E8B7C7-4812-46AD-0FA56029AC86****
@@ -81401,59 +87320,59 @@ func (s *UpdateAdInsertionResponseBody) SetRequestId(v string) *UpdateAdInsertio
 }
 
 type UpdateAdInsertionResponseBodyConfig struct {
-	// 广告标记透传
+	// Indicates whether ad marker passthrough is enabled.
 	//
 	// example:
 	//
 	// ON
 	AdMarkerPassthrough *string `json:"AdMarkerPassthrough,omitempty" xml:"AdMarkerPassthrough,omitempty"`
-	// 广告策略服务器URL
+	// The request URL of ADS.
 	//
 	// example:
 	//
 	// http://ads.com/ad1?param1=[palyer_params.p1]
 	AdsUrl *string `json:"AdsUrl,omitempty" xml:"AdsUrl,omitempty"`
-	// CDN配置
+	// The CDN configurations.
 	CdnConfig *UpdateAdInsertionResponseBodyConfigCdnConfig `json:"CdnConfig,omitempty" xml:"CdnConfig,omitempty" type:"Struct"`
-	// 动态配置别名
+	// The player parameter variables and aliases.
 	//
 	// example:
 	//
 	// { "player_params.p1": { "1": "abc" } }
 	ConfigAliases *string `json:"ConfigAliases,omitempty" xml:"ConfigAliases,omitempty"`
-	// 内容URL前缀
+	// The URL prefix for the source content.
 	//
 	// example:
 	//
 	// https://source.com/
 	ContentUrlPrefix *string `json:"ContentUrlPrefix,omitempty" xml:"ContentUrlPrefix,omitempty"`
-	// 创建时间
+	// The time when the configuration was created.
 	//
 	// example:
 	//
 	// 2024-06-13T08:26:09Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 修改时间
+	// The time when the configuration was last modified.
 	//
 	// example:
 	//
 	// 2024-06-13T08:26:09Z
 	LastModified *string `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
-	// 清单播放端点配置
+	// The playback endpoint configuration.
 	ManifestEndpointConfig *UpdateAdInsertionResponseBodyConfigManifestEndpointConfig `json:"ManifestEndpointConfig,omitempty" xml:"ManifestEndpointConfig,omitempty" type:"Struct"`
-	// 广告插入配置名称
+	// The name of the ad insertion configuration.
 	//
 	// example:
 	//
 	// my_ad
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 个性化配置阈值
+	// The personalization threshold.
 	//
 	// example:
 	//
 	// 5
 	PersonalizationThreshold *int32 `json:"PersonalizationThreshold,omitempty" xml:"PersonalizationThreshold,omitempty"`
-	// slate广告URL
+	// The URL of the slate ad.
 	//
 	// example:
 	//
@@ -81525,13 +87444,13 @@ func (s *UpdateAdInsertionResponseBodyConfig) SetSlateAdUrl(v string) *UpdateAdI
 }
 
 type UpdateAdInsertionResponseBodyConfigCdnConfig struct {
-	// 广告分片的CDN前缀
+	// The CDN prefix for ad segments.
 	//
 	// example:
 	//
 	// http://cdn.com/
 	AdSegmentUrlPrefix *string `json:"AdSegmentUrlPrefix,omitempty" xml:"AdSegmentUrlPrefix,omitempty"`
-	// 视频内容分片的CDN前缀
+	// The CDN prefix for content segments.
 	//
 	// example:
 	//
@@ -81558,7 +87477,7 @@ func (s *UpdateAdInsertionResponseBodyConfigCdnConfig) SetContentSegmentUrlPrefi
 }
 
 type UpdateAdInsertionResponseBodyConfigManifestEndpointConfig struct {
-	// HLS清单播放端点前缀
+	// The prefix of the playback endpoint for HLS manifests.
 	HlsPrefix *string `json:"HlsPrefix,omitempty" xml:"HlsPrefix,omitempty"`
 }
 
@@ -81900,28 +87819,40 @@ func (s *UpdateCategoryResponse) SetBody(v *UpdateCategoryResponseBody) *UpdateC
 }
 
 type UpdateChannelRequest struct {
+	// Specifies whether to enable access control.
+	//
 	// example:
 	//
 	// true
 	AccessPolicy *bool `json:"AccessPolicy,omitempty" xml:"AccessPolicy,omitempty"`
+	// The token for accessing the channel.
+	//
 	// example:
 	//
 	// xxxxx
 	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	// The name of the channel.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// MyChannel
 	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+	// The source location of the filler slate.
+	//
 	// example:
 	//
 	// MySourceLocation
 	FillerSourceLocationName *string `json:"FillerSourceLocationName,omitempty" xml:"FillerSourceLocationName,omitempty"`
+	// The name of the filler slate.
+	//
 	// example:
 	//
 	// MySource
 	FillerSourceName *string `json:"FillerSourceName,omitempty" xml:"FillerSourceName,omitempty"`
+	// The channel output configurations.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -81985,7 +87916,10 @@ func (s *UpdateChannelRequest) SetOutPutConfigList(v string) *UpdateChannelReque
 }
 
 type UpdateChannelResponseBody struct {
+	// The channel information.
 	Channel *ChannelAssemblyChannel `json:"Channel,omitempty" xml:"Channel,omitempty"`
+	// **Request ID**
+	//
 	// example:
 	//
 	// xxx-xxxx-xxxxx-xxxx
@@ -82396,11 +88330,7 @@ func (s *UpdateEditingProjectResponse) SetBody(v *UpdateEditingProjectResponseBo
 }
 
 type UpdateLivePackageChannelRequest struct {
-	// 频道名称，字符必须为大小写英文字母或-、_。
-	//
-	// 1 ~ 200个字符。
-	//
-	// 格式：[A-Za-z0-9_-]+
+	// The channel name. It can contain letters, digits, hyphens (-), and underscores (_). The name must be 1 to 200 characters in length. Format: [A-Za-z0-9_-]+
 	//
 	// This parameter is required.
 	//
@@ -82408,9 +88338,9 @@ type UpdateLivePackageChannelRequest struct {
 	//
 	// channel-1
 	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
-	// 频道描述，最大1000个字符
+	// The channel description. It can be up to 1,000 characters in length.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 频道组名称
+	// The channel group name. It can contain letters, digits, hyphens (-), and underscores (_). The name must be 1 to 200 characters in length. Format: [A-Za-z0-9_-]+
 	//
 	// This parameter is required.
 	//
@@ -82418,7 +88348,7 @@ type UpdateLivePackageChannelRequest struct {
 	//
 	// channel-group-1
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// 输入协议，目前仅支持HLS
+	// The ingest protocol. Only HLS is supported.
 	//
 	// This parameter is required.
 	//
@@ -82426,7 +88356,7 @@ type UpdateLivePackageChannelRequest struct {
 	//
 	// HLS
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// 输入流m3u8切片个数，2～100
+	// The number of M3U8 segments. Valid values: 2 to 100.
 	//
 	// This parameter is required.
 	//
@@ -82434,7 +88364,7 @@ type UpdateLivePackageChannelRequest struct {
 	//
 	// 3
 	SegmentCount *int32 `json:"SegmentCount,omitempty" xml:"SegmentCount,omitempty"`
-	// 输入流切片时长，1～30
+	// The segment duration. Valid values: 1 to 30.
 	//
 	// This parameter is required.
 	//
@@ -82483,8 +88413,14 @@ func (s *UpdateLivePackageChannelRequest) SetSegmentDuration(v int32) *UpdateLiv
 }
 
 type UpdateLivePackageChannelResponseBody struct {
+	// The information about the live package channel.
 	LivePackageChannel *UpdateLivePackageChannelResponseBodyLivePackageChannel `json:"LivePackageChannel,omitempty" xml:"LivePackageChannel,omitempty" type:"Struct"`
-	RequestId          *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 771A1414-27BF-53E6-AB73-EFCB*****ACF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateLivePackageChannelResponseBody) String() string {
@@ -82506,50 +88442,47 @@ func (s *UpdateLivePackageChannelResponseBody) SetRequestId(v string) *UpdateLiv
 }
 
 type UpdateLivePackageChannelResponseBodyLivePackageChannel struct {
-	// 频道名称，字符必须为大小写英文字母或-、_。
-	//
-	// 1 ~ 200个字符。
-	//
-	// 格式：[A-Za-z0-9_-]+
+	// The channel name.
 	//
 	// example:
 	//
 	// channel-1
 	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
-	// 代表创建时间的资源属性字段
+	// The time when the channel was created.
 	//
 	// example:
 	//
 	// 2024-07-16T02:24:42Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 频道描述，最大1000个字符
+	// The channel description. It can be up to 1,000 characters in length.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 频道组名称
+	// The channel group name.
 	//
 	// example:
 	//
 	// channel-group-1
-	GroupName       *string                                                                  `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The ingest endpoints.
 	IngestEndpoints []*UpdateLivePackageChannelResponseBodyLivePackageChannelIngestEndpoints `json:"IngestEndpoints,omitempty" xml:"IngestEndpoints,omitempty" type:"Repeated"`
-	// 最后修改时间
+	// The time when the channel was last modified.
 	//
 	// example:
 	//
 	// 2024-07-16T02:24:42Z
 	LastModified *string `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
-	// 输入协议，目前仅支持HLS
+	// The ingest protocol. Only HLS is supported.
 	//
 	// example:
 	//
 	// HLS
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// 输入流m3u8切片个数，2～100
+	// The number of segments.
 	//
 	// example:
 	//
 	// 3
 	SegmentCount *int32 `json:"SegmentCount,omitempty" xml:"SegmentCount,omitempty"`
-	// 输入流切片时长，1～30
+	// The segment duration.
 	//
 	// example:
 	//
@@ -82611,18 +88544,26 @@ func (s *UpdateLivePackageChannelResponseBodyLivePackageChannel) SetSegmentDurat
 }
 
 type UpdateLivePackageChannelResponseBodyLivePackageChannelIngestEndpoints struct {
+	// The ingest endpoint ID.
+	//
 	// example:
 	//
 	// ingest1
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The password.
+	//
 	// example:
 	//
 	// 2F9e******b569c8
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The ingest endpoint URL.
+	//
 	// example:
 	//
 	// http://xxx-1.packagepush-abcxxx.ap-southeast-1.aliyuncsiceintl.com/v1/group01/1/ch01/manifest
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// The username.
+	//
 	// example:
 	//
 	// us12******das
@@ -82687,21 +88628,29 @@ func (s *UpdateLivePackageChannelResponse) SetBody(v *UpdateLivePackageChannelRe
 }
 
 type UpdateLivePackageChannelCredentialsRequest struct {
-	// 频道名称，字符必须为大小写英文字母或-、_。
-	//
-	// 1 ~ 200个字符。
-	//
-	// 格式：[A-Za-z0-9_-]+
+	// The channel name.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// channel-1
 	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
-	// 频道组名称
+	// The channel group name.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// group-1
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// 刷新密钥选项, 1: 刷新endpoint1，2:刷新endpoint2，3: 刷新endpoint1&2
+	// Specifies whether to update the credentials. 1: updates the credentials of endpoint 1. 2: updates the credentials of endpoint 2. 3: updates the credentials of endpoints 1 and 2.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 3
 	RotateCredentials *int32 `json:"RotateCredentials,omitempty" xml:"RotateCredentials,omitempty"`
 }
 
@@ -82729,8 +88678,14 @@ func (s *UpdateLivePackageChannelCredentialsRequest) SetRotateCredentials(v int3
 }
 
 type UpdateLivePackageChannelCredentialsResponseBody struct {
+	// The information about the ingest endpoint.
 	IngestEndpoints []*UpdateLivePackageChannelCredentialsResponseBodyIngestEndpoints `json:"IngestEndpoints,omitempty" xml:"IngestEndpoints,omitempty" type:"Repeated"`
-	RequestId       *string                                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 771A1414-27BF-53E6-AB73-EFCB*****ACF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateLivePackageChannelCredentialsResponseBody) String() string {
@@ -82752,18 +88707,26 @@ func (s *UpdateLivePackageChannelCredentialsResponseBody) SetRequestId(v string)
 }
 
 type UpdateLivePackageChannelCredentialsResponseBodyIngestEndpoints struct {
+	// The ingest endpoint ID. `input1` indicates primary and `input2` indicates secondary.
+	//
 	// example:
 	//
 	// input1
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The password.
+	//
 	// example:
 	//
 	// examplePassword123
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The ingest endpoint URL.
+	//
 	// example:
 	//
 	// rtmp://example.com/live/input1
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// The username.
+	//
 	// example:
 	//
 	// user1
@@ -82828,9 +88791,9 @@ func (s *UpdateLivePackageChannelCredentialsResponse) SetBody(v *UpdateLivePacka
 }
 
 type UpdateLivePackageChannelGroupRequest struct {
-	// 频道组描述
+	// The channel group description. It can be up to 1,000 characters in length.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 代表资源一级ID的资源属性字段
+	// The channel group name. It can contain letters, digits, hyphens (-), and underscores (_). The name must be 1 to 200 characters in length. Format: [A-Za-z0-9_-]+
 	//
 	// This parameter is required.
 	//
@@ -82859,7 +88822,10 @@ func (s *UpdateLivePackageChannelGroupRequest) SetGroupName(v string) *UpdateLiv
 }
 
 type UpdateLivePackageChannelGroupResponseBody struct {
+	// The information about the channel group.
 	LivePackageChannelGroup *UpdateLivePackageChannelGroupResponseBodyLivePackageChannelGroup `json:"LivePackageChannelGroup,omitempty" xml:"LivePackageChannelGroup,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// request-1234567890
@@ -82885,31 +88851,31 @@ func (s *UpdateLivePackageChannelGroupResponseBody) SetRequestId(v string) *Upda
 }
 
 type UpdateLivePackageChannelGroupResponseBodyLivePackageChannelGroup struct {
-	// 创建时间
+	// The time when the channel group was created. It is in the yyyy-MM-ddTHH:mm:ssZ format and displayed in UTC.
 	//
 	// example:
 	//
 	// 2023-04-01T12:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 描述
+	// The channel group description.
 	//
 	// example:
 	//
 	// Updated description of the channel group.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 频道组名称
+	// The channel group name.
 	//
 	// example:
 	//
 	// example-group-name
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// 修改时间
+	// The time when the channel group was last modified. It is in the yyyy-MM-ddTHH:mm:ssZ format and displayed in UTC.
 	//
 	// example:
 	//
 	// 2023-04-01T12:00:00Z
 	LastModified *string `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
-	// 源站域名
+	// The origin domain.
 	//
 	// example:
 	//
@@ -82980,17 +88946,13 @@ func (s *UpdateLivePackageChannelGroupResponse) SetBody(v *UpdateLivePackageChan
 }
 
 type UpdateLivePackageOriginEndpointRequest struct {
-	// 回源授权码，与IpWhitelist必选其一
+	// The authorization code. It can be up to 200 characters in length. You must configure AuthorizationCode, IpWhitelist, or both. Format: [A-Za-z0-9-_.]+
 	//
 	// example:
 	//
 	// Abc123Def456
 	AuthorizationCode *string `json:"AuthorizationCode,omitempty" xml:"AuthorizationCode,omitempty"`
-	// 频道名称。
-	//
-	// 1 ~ 200个字符。
-	//
-	// 正则匹配输入：[A-Za-z0-9_-]+
+	// The channel name.
 	//
 	// This parameter is required.
 	//
@@ -82998,13 +88960,9 @@ type UpdateLivePackageOriginEndpointRequest struct {
 	//
 	// channel-1
 	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
-	// 端点描述，最大1000个字符
+	// The endpoint description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 端点名称，要求在单个频道中唯一。
-	//
-	// 1 ~ 200个字符。
-	//
-	// 正则匹配输入：[A-Za-z0-9_-]+
+	// The origin endpoint name. It can contain letters, digits, hyphens (-), and underscores (_). The name must be 1 to 200 characters in length. Format: [A-Za-z0-9_-]+
 	//
 	// This parameter is required.
 	//
@@ -83012,11 +88970,7 @@ type UpdateLivePackageOriginEndpointRequest struct {
 	//
 	// endpoint-1
 	EndpointName *string `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
-	// 频道组名称。
-	//
-	// 1 ~ 200个字符。
-	//
-	// 正则匹配输入：[A-Za-z0-9_-]+
+	// The channel group name.
 	//
 	// This parameter is required.
 	//
@@ -83024,29 +88978,25 @@ type UpdateLivePackageOriginEndpointRequest struct {
 	//
 	// channel-group-1
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// IP黑名单，支持无类别域间路由（CIDR），逗号分隔
+	// The IP address blacklist. It supports subnet masks. Separate multiple IP addresses with commas (,).
 	//
 	// example:
 	//
 	// 103.0.0.0/8
 	IpBlacklist *string `json:"IpBlacklist,omitempty" xml:"IpBlacklist,omitempty"`
-	// IP白名单，支持无类别域间路由（CIDR），逗号分隔，与AuthorizationCode必选其一
+	// The IP address whitelist. It supports subnet masks. 0.0.0.0/0 is not allowed. It can be up to 1,000 characters in length. Separate multiple IP addresses with commas (,). You must configure AuthorizationCode, IpWhitelist, or both.
 	//
 	// example:
 	//
 	// 192.168.1.0/24,10.0.0.1
 	IpWhitelist *string `json:"IpWhitelist,omitempty" xml:"IpWhitelist,omitempty"`
-	// 播放列表名，缺省为manifest。
-	//
-	// 1 ~ 100个字符。
-	//
-	// 正则匹配输入：[A-Za-z0-9_]+
+	// The playlist name. Default value: manifest.
 	//
 	// example:
 	//
 	// manifest
 	ManifestName *string `json:"ManifestName,omitempty" xml:"ManifestName,omitempty"`
-	// 端点分发协议，暂只支持HLS
+	// The protocol. Only HLS is supported.
 	//
 	// This parameter is required.
 	//
@@ -83054,7 +89004,7 @@ type UpdateLivePackageOriginEndpointRequest struct {
 	//
 	// HLS
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// 时移天数，最大30天，0表示不支持时移
+	// The number of days that time-shifted content is available. Maximum value: 30.
 	//
 	// example:
 	//
@@ -83121,7 +89071,10 @@ func (s *UpdateLivePackageOriginEndpointRequest) SetTimeshiftVision(v int32) *Up
 }
 
 type UpdateLivePackageOriginEndpointResponseBody struct {
+	// The information about the origin endpoint.
 	LivePackageOriginEndpoint *UpdateLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint `json:"LivePackageOriginEndpoint,omitempty" xml:"LivePackageOriginEndpoint,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// b1f8d6c4-a123-4cd5-9e88-d0819e3bfa70
@@ -83147,75 +89100,75 @@ func (s *UpdateLivePackageOriginEndpointResponseBody) SetRequestId(v string) *Up
 }
 
 type UpdateLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint struct {
-	// 回源授权码，与IpWhitelist必选其一
+	// The authorization code.
 	//
 	// example:
 	//
 	// Abc123Def456
 	AuthorizationCode *string `json:"AuthorizationCode,omitempty" xml:"AuthorizationCode,omitempty"`
-	// 频道名称
+	// The channel name.
 	//
 	// example:
 	//
 	// channel-1
 	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
-	// 创建时间
+	// The time when the endpoint was created.
 	//
 	// example:
 	//
 	// 2023-04-01T12:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 端点描述
+	// The endpoint description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 端点名称
+	// The endpoint name.
 	//
 	// example:
 	//
 	// endpoint-1
 	EndpointName *string `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
-	// 源站端点回源播放地址
+	// The endpoint URL.
 	//
 	// example:
 	//
 	// https://xxx.packagepull-abcxxx.ap-southeast-1.aliyuncsiceintl.com/v1/group01/1/ch01/manifest
 	EndpointUrl *string `json:"EndpointUrl,omitempty" xml:"EndpointUrl,omitempty"`
-	// 频道组名称
+	// The channel group name.
 	//
 	// example:
 	//
 	// channel-group-1
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// IP黑名单，支持无类别域间路由（CIDR），逗号分隔
+	// The IP address blacklist. It supports subnet masks. Multiple IP addresses are separated by commas (,).
 	//
 	// example:
 	//
 	// 10.21.222.1/32,192.168.100.0/24
 	IpBlacklist *string `json:"IpBlacklist,omitempty" xml:"IpBlacklist,omitempty"`
-	// IP白名单，支持无类别域间路由（CIDR），逗号分隔，与AuthorizationCode必选其一
+	// The IP address whitelist. It supports subnet masks. Multiple IP addresses are separated by commas (,).
 	//
 	// example:
 	//
 	// 192.168.1.0/24,10.0.0.1/24
 	IpWhitelist *string `json:"IpWhitelist,omitempty" xml:"IpWhitelist,omitempty"`
-	// 最后修改时间
+	// The time when the endpoint was last modified.
 	//
 	// example:
 	//
 	// 2023-04-01T12:00:00Z
 	LastModified *string `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
-	// 播放列表名
+	// The playlist name. Default value: manifest.
 	//
 	// example:
 	//
 	// manifest
 	ManifestName *string `json:"ManifestName,omitempty" xml:"ManifestName,omitempty"`
-	// 端点分发协议，暂只支持HLS
+	// The protocol. Only HLS is supported.
 	//
 	// example:
 	//
 	// HLS
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// 时移天数，最大30天，0表示不支持时移
+	// The number of days that time-shifted content is available. Maximum value: 30.
 	//
 	// example:
 	//
@@ -84310,13 +90263,13 @@ func (s *UpdateLiveTranscodeTemplateResponse) SetBody(v *UpdateLiveTranscodeTemp
 }
 
 type UpdateMediaConnectFlowInputRequest struct {
-	// IP whitelist
+	// The IP address whitelist.
 	//
 	// example:
 	//
 	// 19.168.1.1/32,18.168.1.1/16
 	Cidrs *string `json:"Cidrs,omitempty" xml:"Cidrs,omitempty"`
-	// Flow instance ID
+	// The flow ID.
 	//
 	// This parameter is required.
 	//
@@ -84324,31 +90277,31 @@ type UpdateMediaConnectFlowInputRequest struct {
 	//
 	// 34900dc6-90ec-4968-af3c-fcd87f231a5f
 	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	// Input URL, modifiable when the input type is RTMP-PULL/SRT-Listener
+	// The source URL. You can modify this parameter only when the source type is RTMP-PULL or SRT-Listener.
 	//
 	// example:
 	//
 	// rtmp://pull.test.alivecdn.com/live/alitest
 	InputFromUrl *string `json:"InputFromUrl,omitempty" xml:"InputFromUrl,omitempty"`
-	// Input bitrate
+	// The maximum bitrate. Unit: bit/s.
 	//
 	// example:
 	//
 	// 2000000
 	MaxBitrate *int32 `json:"MaxBitrate,omitempty" xml:"MaxBitrate,omitempty"`
-	// SRT latency, modifiable when the input type is SRT-Listener/SRT-Caller
+	// The latency for the SRT stream. You can modify this parameter only when the source type is SRT-Listener or SRT-Caller.
 	//
 	// example:
 	//
 	// 1000
 	SrtLatency *int32 `json:"SrtLatency,omitempty" xml:"SrtLatency,omitempty"`
-	// SRT encryption key, modifiable when the input type is SRT-Listener/SRT-Caller
+	// The SRT key. You can modify this parameter only when the source type is SRT-Listener or SRT-Caller.
 	//
 	// example:
 	//
 	// FICUBPX4Q77DYHRF
 	SrtPassphrase *string `json:"SrtPassphrase,omitempty" xml:"SrtPassphrase,omitempty"`
-	// SRT encryption length, modifiable when the input type is SRT-Listener/SRT-Caller
+	// The encryption key length. You can modify this parameter only when the source type is SRT-Listener or SRT-Caller.
 	//
 	// example:
 	//
@@ -84400,25 +90353,25 @@ func (s *UpdateMediaConnectFlowInputRequest) SetSrtPbkeyLen(v int32) *UpdateMedi
 }
 
 type UpdateMediaConnectFlowInputResponseBody struct {
-	// Response body
+	// The response body.
 	//
 	// example:
 	//
 	// ""
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// Description of the API call
+	// The call description.
 	//
 	// example:
 	//
 	// OK
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 请求 ID
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 52451256-FFEA-5D2E-AA60-EE7053000F22
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Returned error code, 0 indicates success
+	// The returned error code. A value of 0 indicates the call is successful.
 	//
 	// example:
 	//
@@ -84484,13 +90437,13 @@ func (s *UpdateMediaConnectFlowInputResponse) SetBody(v *UpdateMediaConnectFlowI
 }
 
 type UpdateMediaConnectFlowOutputRequest struct {
-	// IP whitelist
+	// The IP address whitelist.
 	//
 	// example:
 	//
 	// 19.168.1.1/32,18.168.1.1/16
 	Cidrs *string `json:"Cidrs,omitempty" xml:"Cidrs,omitempty"`
-	// Flow instance ID
+	// The flow ID.
 	//
 	// This parameter is required.
 	//
@@ -84498,7 +90451,7 @@ type UpdateMediaConnectFlowOutputRequest struct {
 	//
 	// 34900dc6-90ec-4968-af3c-fcd87f231a5f
 	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	// Output name
+	// The output name.
 	//
 	// This parameter is required.
 	//
@@ -84506,31 +90459,31 @@ type UpdateMediaConnectFlowOutputRequest struct {
 	//
 	// AliTestOutput
 	OutputName *string `json:"OutputName,omitempty" xml:"OutputName,omitempty"`
-	// Output address, modifiable when the output type is RTMP-PUSH/SRT-Caller mode
+	// The output URL. You can modify this parameter only when the output type is RTMP-PUSH or SRT-Caller.
 	//
 	// example:
 	//
 	// rtmp://push.test.alivecdn.com/live/alitest
 	OutputToUrl *string `json:"OutputToUrl,omitempty" xml:"OutputToUrl,omitempty"`
-	// Player limit
+	// The maximum number of viewers.
 	//
 	// example:
 	//
 	// 5
 	PlayerLimit *string `json:"PlayerLimit,omitempty" xml:"PlayerLimit,omitempty"`
-	// SRT latency, modifiable when the input type is SRT-Listener/SRT-Caller
+	// The latency for the SRT stream. You can modify this parameter only when the source type is SRT-Listener or SRT-Caller.
 	//
 	// example:
 	//
 	// 1000
 	SrtLatency *string `json:"SrtLatency,omitempty" xml:"SrtLatency,omitempty"`
-	// SRT encryption key, modifiable when the input type is SRT-Listener/SRT-Caller
+	// The SRT key. You can modify this parameter only when the source type is SRT-Listener or SRT-Caller.
 	//
 	// example:
 	//
 	// FICUBPX4Q77DYHRF
 	SrtPassphrase *string `json:"SrtPassphrase,omitempty" xml:"SrtPassphrase,omitempty"`
-	// SRT encryption length, modifiable when the input type is SRT-Listener/SRT-Caller
+	// The encryption key length. You can modify this parameter only when the source type is SRT-Listener or SRT-Caller.
 	//
 	// example:
 	//
@@ -84587,25 +90540,25 @@ func (s *UpdateMediaConnectFlowOutputRequest) SetSrtPbkeyLen(v string) *UpdateMe
 }
 
 type UpdateMediaConnectFlowOutputResponseBody struct {
-	// Response body
+	// The response body.
 	//
 	// example:
 	//
 	// ""
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// Description of the API call
+	// The call description.
 	//
 	// example:
 	//
 	// OK
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Request ID
+	// The ID of the request.
 	//
 	// example:
 	//
 	// D737D0BC-4CB5-55AA-8119-B540C95DFE6A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Returned error code, 0 indicates success
+	// The returned error code. A value of 0 indicates the call is successful.
 	//
 	// example:
 	//
@@ -84671,7 +90624,7 @@ func (s *UpdateMediaConnectFlowOutputResponse) SetBody(v *UpdateMediaConnectFlow
 }
 
 type UpdateMediaConnectFlowStatusRequest struct {
-	// Flow instance ID
+	// The flow ID.
 	//
 	// This parameter is required.
 	//
@@ -84679,11 +90632,11 @@ type UpdateMediaConnectFlowStatusRequest struct {
 	//
 	// 34900dc6-90ec-4968-af3c-fcd87f231a5f
 	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	// Flow status:
+	// The flow state. Valid values:
 	//
-	// - online: Start Flow
+	// 	- online: starts the flow.
 	//
-	// - offline: Stop Flow
+	// 	- offline: stops the flow.
 	//
 	// This parameter is required.
 	//
@@ -84712,25 +90665,25 @@ func (s *UpdateMediaConnectFlowStatusRequest) SetStatus(v string) *UpdateMediaCo
 }
 
 type UpdateMediaConnectFlowStatusResponseBody struct {
-	// Response body
+	// The response body.
 	//
 	// example:
 	//
 	// ""
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// Description of the API call
+	// The call description.
 	//
 	// example:
 	//
 	// ok
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Request ID
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 20B3A1B6-4BD2-5DE6-BCBC-098C9B4F4E91
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 返回的错误码，0表示成功
+	// The returned error code. A value of 0 indicates that the call is successful.
 	//
 	// example:
 	//
@@ -85040,6 +90993,1314 @@ func (s *UpdateMediaInfoResponse) SetStatusCode(v int32) *UpdateMediaInfoRespons
 }
 
 func (s *UpdateMediaInfoResponse) SetBody(v *UpdateMediaInfoResponseBody) *UpdateMediaInfoResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateMediaLiveChannelRequest struct {
+	// The audio settings.
+	AudioSettings []*UpdateMediaLiveChannelRequestAudioSettings `json:"AudioSettings,omitempty" xml:"AudioSettings,omitempty" type:"Repeated"`
+	// The ID of the channel.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SEGK5KA6KYKAWQQH
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The inputs associated with the channel.
+	//
+	// This parameter is required.
+	InputAttachments []*UpdateMediaLiveChannelRequestInputAttachments `json:"InputAttachments,omitempty" xml:"InputAttachments,omitempty" type:"Repeated"`
+	// The name of the channel. Letters, digits, hyphens (-), and underscores (_) are supported. It can be up to 64 characters in length.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// mych
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The output groups.
+	//
+	// This parameter is required.
+	OutputGroups []*UpdateMediaLiveChannelRequestOutputGroups `json:"OutputGroups,omitempty" xml:"OutputGroups,omitempty" type:"Repeated"`
+	// The video settings.
+	VideoSettings []*UpdateMediaLiveChannelRequestVideoSettings `json:"VideoSettings,omitempty" xml:"VideoSettings,omitempty" type:"Repeated"`
+}
+
+func (s UpdateMediaLiveChannelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMediaLiveChannelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMediaLiveChannelRequest) SetAudioSettings(v []*UpdateMediaLiveChannelRequestAudioSettings) *UpdateMediaLiveChannelRequest {
+	s.AudioSettings = v
+	return s
+}
+
+func (s *UpdateMediaLiveChannelRequest) SetChannelId(v string) *UpdateMediaLiveChannelRequest {
+	s.ChannelId = &v
+	return s
+}
+
+func (s *UpdateMediaLiveChannelRequest) SetInputAttachments(v []*UpdateMediaLiveChannelRequestInputAttachments) *UpdateMediaLiveChannelRequest {
+	s.InputAttachments = v
+	return s
+}
+
+func (s *UpdateMediaLiveChannelRequest) SetName(v string) *UpdateMediaLiveChannelRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateMediaLiveChannelRequest) SetOutputGroups(v []*UpdateMediaLiveChannelRequestOutputGroups) *UpdateMediaLiveChannelRequest {
+	s.OutputGroups = v
+	return s
+}
+
+func (s *UpdateMediaLiveChannelRequest) SetVideoSettings(v []*UpdateMediaLiveChannelRequestVideoSettings) *UpdateMediaLiveChannelRequest {
+	s.VideoSettings = v
+	return s
+}
+
+type UpdateMediaLiveChannelRequestAudioSettings struct {
+	// The audio codec. If it is not specified, the source specification is used. Valid values: aac and libfdk_aac.
+	//
+	// example:
+	//
+	// libfdk_aac
+	AudioCodec *string `json:"AudioCodec,omitempty" xml:"AudioCodec,omitempty"`
+	// The audio encoding settings.
+	AudioCodecSetting *UpdateMediaLiveChannelRequestAudioSettingsAudioCodecSetting `json:"AudioCodecSetting,omitempty" xml:"AudioCodecSetting,omitempty" type:"Struct"`
+	// The name of the audio selector.
+	//
+	// example:
+	//
+	// a1
+	AudioSelectorName *string `json:"AudioSelectorName,omitempty" xml:"AudioSelectorName,omitempty"`
+	// Enter a three-letter ISO 639-2 language code. If the audio track selected by the audio selector has a language code, the language code specified in the audio selector is used. If the selected audio track does not have a language code, or if the audio selector cannot find a track that matches its criteria, this language code is used.
+	//
+	// example:
+	//
+	// eng
+	LanguageCode *string `json:"LanguageCode,omitempty" xml:"LanguageCode,omitempty"`
+	// The tag that identifies the language of the RTMP input. It can be referenced by the output. The maximum length is 32 characters. Supported characters:
+	//
+	// 	- Unicode letters
+	//
+	// 	- Digits (0-9)
+	//
+	// 	- Underscore (_)
+	//
+	// 	- Hyphen (-)
+	//
+	// 	- Space (a space cannot be at the beginning or end)
+	//
+	// example:
+	//
+	// English
+	LanguageName *string `json:"LanguageName,omitempty" xml:"LanguageName,omitempty"`
+	// The name of the audio settings. Letters, digits, hyphens (-), and underscores (_) are supported. It can be up to 64 characters in length.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// audio1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s UpdateMediaLiveChannelRequestAudioSettings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMediaLiveChannelRequestAudioSettings) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMediaLiveChannelRequestAudioSettings) SetAudioCodec(v string) *UpdateMediaLiveChannelRequestAudioSettings {
+	s.AudioCodec = &v
+	return s
+}
+
+func (s *UpdateMediaLiveChannelRequestAudioSettings) SetAudioCodecSetting(v *UpdateMediaLiveChannelRequestAudioSettingsAudioCodecSetting) *UpdateMediaLiveChannelRequestAudioSettings {
+	s.AudioCodecSetting = v
+	return s
+}
+
+func (s *UpdateMediaLiveChannelRequestAudioSettings) SetAudioSelectorName(v string) *UpdateMediaLiveChannelRequestAudioSettings {
+	s.AudioSelectorName = &v
+	return s
+}
+
+func (s *UpdateMediaLiveChannelRequestAudioSettings) SetLanguageCode(v string) *UpdateMediaLiveChannelRequestAudioSettings {
+	s.LanguageCode = &v
+	return s
+}
+
+func (s *UpdateMediaLiveChannelRequestAudioSettings) SetLanguageName(v string) *UpdateMediaLiveChannelRequestAudioSettings {
+	s.LanguageName = &v
+	return s
+}
+
+func (s *UpdateMediaLiveChannelRequestAudioSettings) SetName(v string) *UpdateMediaLiveChannelRequestAudioSettings {
+	s.Name = &v
+	return s
+}
+
+type UpdateMediaLiveChannelRequestAudioSettingsAudioCodecSetting struct {
+	// The audio bitrate. Unit: bit/s. Valid values: 8000 to 1000000. The value must be divisible by 1000.
+	//
+	// example:
+	//
+	// 200000
+	Bitrate *int32 `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The audio codec profile. When AudioCodec is set to aac, AAC-LOW and AAC-MAIN are supported. When AudioCodec is set to libfdk_aac, AAC-LOW, AAC-HE, and AAC-HEV2 are supported.
+	//
+	// example:
+	//
+	// AAC-LOW
+	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	// The audio sample rate. Unit: Hz. Valid values: 22050, 32000, 44100, 48000, and 96000.
+	//
+	// example:
+	//
+	// 44100
+	SampleRate *int32 `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
+}
+
+func (s UpdateMediaLiveChannelRequestAudioSettingsAudioCodecSetting) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMediaLiveChannelRequestAudioSettingsAudioCodecSetting) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMediaLiveChannelRequestAudioSettingsAudioCodecSetting) SetBitrate(v int32) *UpdateMediaLiveChannelRequestAudioSettingsAudioCodecSetting {
+	s.Bitrate = &v
+	return s
+}
+
+func (s *UpdateMediaLiveChannelRequestAudioSettingsAudioCodecSetting) SetProfile(v string) *UpdateMediaLiveChannelRequestAudioSettingsAudioCodecSetting {
+	s.Profile = &v
+	return s
+}
+
+func (s *UpdateMediaLiveChannelRequestAudioSettingsAudioCodecSetting) SetSampleRate(v int32) *UpdateMediaLiveChannelRequestAudioSettingsAudioCodecSetting {
+	s.SampleRate = &v
+	return s
+}
+
+type UpdateMediaLiveChannelRequestInputAttachments struct {
+	// The audio selectors.
+	AudioSelectors []*UpdateMediaLiveChannelRequestInputAttachmentsAudioSelectors `json:"AudioSelectors,omitempty" xml:"AudioSelectors,omitempty" type:"Repeated"`
+	// The ID of the associated input.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// myinput
+	InputId *string `json:"InputId,omitempty" xml:"InputId,omitempty"`
+	// The tag that identifies the language of the RTMP input. It can be referenced by the output. The maximum length is 32 characters. Supported characters:
+	//
+	// 	- Unicode letters
+	//
+	// 	- Digits (0-9)
+	//
+	// 	- Underscore (_)
+	//
+	// 	- Hyphen (-)
+	//
+	// 	- Space (a space cannot be at the beginning or end)
+	//
+	// example:
+	//
+	// English
+	LanguageName *string `json:"LanguageName,omitempty" xml:"LanguageName,omitempty"`
+}
+
+func (s UpdateMediaLiveChannelRequestInputAttachments) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMediaLiveChannelRequestInputAttachments) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMediaLiveChannelRequestInputAttachments) SetAudioSelectors(v []*UpdateMediaLiveChannelRequestInputAttachmentsAudioSelectors) *UpdateMediaLiveChannelRequestInputAttachments {
+	s.AudioSelectors = v
+	return s
+}
+
+func (s *UpdateMediaLiveChannelRequestInputAttachments) SetInputId(v string) *UpdateMediaLiveChannelRequestInputAttachments {
+	s.InputId = &v
+	return s
+}
+
+func (s *UpdateMediaLiveChannelRequestInputAttachments) SetLanguageName(v string) *UpdateMediaLiveChannelRequestInputAttachments {
+	s.LanguageName = &v
+	return s
+}
+
+type UpdateMediaLiveChannelRequestInputAttachmentsAudioSelectors struct {
+	// The audio language selection.
+	AudioLanguageSelection *UpdateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioLanguageSelection `json:"AudioLanguageSelection,omitempty" xml:"AudioLanguageSelection,omitempty" type:"Struct"`
+	// The audio PID selection.
+	AudioPidSelection *UpdateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioPidSelection `json:"AudioPidSelection,omitempty" xml:"AudioPidSelection,omitempty" type:"Struct"`
+	// The audio track selection.
+	AudioTrackSelection []*UpdateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioTrackSelection `json:"AudioTrackSelection,omitempty" xml:"AudioTrackSelection,omitempty" type:"Repeated"`
+	// The name of the audio selector. Letters, digits, hyphens (-), and underscores (_) are supported. It can be up to 64 characters in length.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// myselector
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s UpdateMediaLiveChannelRequestInputAttachmentsAudioSelectors) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMediaLiveChannelRequestInputAttachmentsAudioSelectors) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMediaLiveChannelRequestInputAttachmentsAudioSelectors) SetAudioLanguageSelection(v *UpdateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioLanguageSelection) *UpdateMediaLiveChannelRequestInputAttachmentsAudioSelectors {
+	s.AudioLanguageSelection = v
+	return s
+}
+
+func (s *UpdateMediaLiveChannelRequestInputAttachmentsAudioSelectors) SetAudioPidSelection(v *UpdateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioPidSelection) *UpdateMediaLiveChannelRequestInputAttachmentsAudioSelectors {
+	s.AudioPidSelection = v
+	return s
+}
+
+func (s *UpdateMediaLiveChannelRequestInputAttachmentsAudioSelectors) SetAudioTrackSelection(v []*UpdateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioTrackSelection) *UpdateMediaLiveChannelRequestInputAttachmentsAudioSelectors {
+	s.AudioTrackSelection = v
+	return s
+}
+
+func (s *UpdateMediaLiveChannelRequestInputAttachmentsAudioSelectors) SetName(v string) *UpdateMediaLiveChannelRequestInputAttachmentsAudioSelectors {
+	s.Name = &v
+	return s
+}
+
+type UpdateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioLanguageSelection struct {
+	// Enter a three-letter ISO 639-2 language code from within an audio source.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eng
+	LanguageCode *string `json:"LanguageCode,omitempty" xml:"LanguageCode,omitempty"`
+}
+
+func (s UpdateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioLanguageSelection) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioLanguageSelection) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioLanguageSelection) SetLanguageCode(v string) *UpdateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioLanguageSelection {
+	s.LanguageCode = &v
+	return s
+}
+
+type UpdateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioPidSelection struct {
+	// Enter a specific PID from within a source.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
+	Pid *int64 `json:"Pid,omitempty" xml:"Pid,omitempty"`
+}
+
+func (s UpdateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioPidSelection) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioPidSelection) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioPidSelection) SetPid(v int64) *UpdateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioPidSelection {
+	s.Pid = &v
+	return s
+}
+
+type UpdateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioTrackSelection struct {
+	// Specify one or more audio tracks from within a source using Track ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	TrackId *int64 `json:"TrackId,omitempty" xml:"TrackId,omitempty"`
+}
+
+func (s UpdateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioTrackSelection) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioTrackSelection) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioTrackSelection) SetTrackId(v int64) *UpdateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioTrackSelection {
+	s.TrackId = &v
+	return s
+}
+
+type UpdateMediaLiveChannelRequestOutputGroups struct {
+	// The MediaPackage destination.
+	MediaPackageGroupSetting *UpdateMediaLiveChannelRequestOutputGroupsMediaPackageGroupSetting `json:"MediaPackageGroupSetting,omitempty" xml:"MediaPackageGroupSetting,omitempty" type:"Struct"`
+	// The name of the output group. Letters, digits, hyphens (-), and underscores (_) are supported. It can be up to 64 characters in length.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// group1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The outputs in the output group.
+	//
+	// This parameter is required.
+	Outputs []*UpdateMediaLiveChannelRequestOutputGroupsOutputs `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Repeated"`
+	// The output group type. Only MediaPackage is supported.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MediaPackage
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s UpdateMediaLiveChannelRequestOutputGroups) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMediaLiveChannelRequestOutputGroups) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMediaLiveChannelRequestOutputGroups) SetMediaPackageGroupSetting(v *UpdateMediaLiveChannelRequestOutputGroupsMediaPackageGroupSetting) *UpdateMediaLiveChannelRequestOutputGroups {
+	s.MediaPackageGroupSetting = v
+	return s
+}
+
+func (s *UpdateMediaLiveChannelRequestOutputGroups) SetName(v string) *UpdateMediaLiveChannelRequestOutputGroups {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateMediaLiveChannelRequestOutputGroups) SetOutputs(v []*UpdateMediaLiveChannelRequestOutputGroupsOutputs) *UpdateMediaLiveChannelRequestOutputGroups {
+	s.Outputs = v
+	return s
+}
+
+func (s *UpdateMediaLiveChannelRequestOutputGroups) SetType(v string) *UpdateMediaLiveChannelRequestOutputGroups {
+	s.Type = &v
+	return s
+}
+
+type UpdateMediaLiveChannelRequestOutputGroupsMediaPackageGroupSetting struct {
+	// ChannelName in MediaPackage.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// myPackageChannel
+	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+	// GroupName in MediaPackage.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// myPackageGroup
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+}
+
+func (s UpdateMediaLiveChannelRequestOutputGroupsMediaPackageGroupSetting) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMediaLiveChannelRequestOutputGroupsMediaPackageGroupSetting) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMediaLiveChannelRequestOutputGroupsMediaPackageGroupSetting) SetChannelName(v string) *UpdateMediaLiveChannelRequestOutputGroupsMediaPackageGroupSetting {
+	s.ChannelName = &v
+	return s
+}
+
+func (s *UpdateMediaLiveChannelRequestOutputGroupsMediaPackageGroupSetting) SetGroupName(v string) *UpdateMediaLiveChannelRequestOutputGroupsMediaPackageGroupSetting {
+	s.GroupName = &v
+	return s
+}
+
+type UpdateMediaLiveChannelRequestOutputGroupsOutputs struct {
+	// The referenced AudioSettings.
+	AudioSettingNames []*string `json:"AudioSettingNames,omitempty" xml:"AudioSettingNames,omitempty" type:"Repeated"`
+	// The settings of the output delivered to MediaPackage.
+	MediaPackageOutputSetting *UpdateMediaLiveChannelRequestOutputGroupsOutputsMediaPackageOutputSetting `json:"MediaPackageOutputSetting,omitempty" xml:"MediaPackageOutputSetting,omitempty" type:"Struct"`
+	// The media type of the output. Valid values:
+	//
+	// 	- 0: Audio and Video
+	//
+	// 	- 1: Audio If you set the value to 1, you cannot reference VideoSettings.
+	//
+	// 	- 2: Video. If you set the value to 2, you cannot reference AudioSettings.
+	//
+	// example:
+	//
+	// 0
+	MediaType *int32 `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// The name of the output. Letters, digits, hyphens (-), and underscores (_) are supported. It can be up to 64 characters in length.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// output1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the referenced VideoSettings.
+	//
+	// example:
+	//
+	// myVideo1
+	VideoSettingName *string `json:"VideoSettingName,omitempty" xml:"VideoSettingName,omitempty"`
+}
+
+func (s UpdateMediaLiveChannelRequestOutputGroupsOutputs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMediaLiveChannelRequestOutputGroupsOutputs) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMediaLiveChannelRequestOutputGroupsOutputs) SetAudioSettingNames(v []*string) *UpdateMediaLiveChannelRequestOutputGroupsOutputs {
+	s.AudioSettingNames = v
+	return s
+}
+
+func (s *UpdateMediaLiveChannelRequestOutputGroupsOutputs) SetMediaPackageOutputSetting(v *UpdateMediaLiveChannelRequestOutputGroupsOutputsMediaPackageOutputSetting) *UpdateMediaLiveChannelRequestOutputGroupsOutputs {
+	s.MediaPackageOutputSetting = v
+	return s
+}
+
+func (s *UpdateMediaLiveChannelRequestOutputGroupsOutputs) SetMediaType(v int32) *UpdateMediaLiveChannelRequestOutputGroupsOutputs {
+	s.MediaType = &v
+	return s
+}
+
+func (s *UpdateMediaLiveChannelRequestOutputGroupsOutputs) SetName(v string) *UpdateMediaLiveChannelRequestOutputGroupsOutputs {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateMediaLiveChannelRequestOutputGroupsOutputs) SetVideoSettingName(v string) *UpdateMediaLiveChannelRequestOutputGroupsOutputs {
+	s.VideoSettingName = &v
+	return s
+}
+
+type UpdateMediaLiveChannelRequestOutputGroupsOutputsMediaPackageOutputSetting struct {
+	// The manifest audio group ID. To associate several audio tracks into one group, assign the same audio group ID. Viewers can select a track as needed. Letters, digits, hyphens (-), and underscores (_) are supported. It can be up to 40 characters in length.
+	//
+	// example:
+	//
+	// audiogroup
+	AudioGroupId *string `json:"AudioGroupId,omitempty" xml:"AudioGroupId,omitempty"`
+	// The manifest name modifier. The child manifests include this modifier in their M3U8 file names. Letters, digits, hyphens (-), and underscores (_) are supported. The maximum length is 40 characters.
+	//
+	// example:
+	//
+	// 480p
+	NameModifier *string `json:"NameModifier,omitempty" xml:"NameModifier,omitempty"`
+}
+
+func (s UpdateMediaLiveChannelRequestOutputGroupsOutputsMediaPackageOutputSetting) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMediaLiveChannelRequestOutputGroupsOutputsMediaPackageOutputSetting) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMediaLiveChannelRequestOutputGroupsOutputsMediaPackageOutputSetting) SetAudioGroupId(v string) *UpdateMediaLiveChannelRequestOutputGroupsOutputsMediaPackageOutputSetting {
+	s.AudioGroupId = &v
+	return s
+}
+
+func (s *UpdateMediaLiveChannelRequestOutputGroupsOutputsMediaPackageOutputSetting) SetNameModifier(v string) *UpdateMediaLiveChannelRequestOutputGroupsOutputsMediaPackageOutputSetting {
+	s.NameModifier = &v
+	return s
+}
+
+type UpdateMediaLiveChannelRequestVideoSettings struct {
+	// The height of the output. Valid values: 0 to 2000. If you set it to 0 or leave it empty, the height automatically adapts to the specified width to maintain the original aspect ratio.
+	//
+	// example:
+	//
+	// 720
+	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The name of the video settings. Letters, digits, hyphens (-), and underscores (_) are supported. It can be up to 64 characters in length.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// video1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The video codec. Valid values: H264 and H265.
+	//
+	// example:
+	//
+	// H264
+	VideoCodec *string `json:"VideoCodec,omitempty" xml:"VideoCodec,omitempty"`
+	// The video encoding settings.
+	VideoCodecSetting *UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSetting `json:"VideoCodecSetting,omitempty" xml:"VideoCodecSetting,omitempty" type:"Struct"`
+	// The width of the output. Valid values: 0 to 2000. If you set it to 0 or leave it empty, the width automatically adapts to the specified height to maintain the original aspect ratio.
+	//
+	// example:
+	//
+	// 1280
+	Width *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s UpdateMediaLiveChannelRequestVideoSettings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMediaLiveChannelRequestVideoSettings) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMediaLiveChannelRequestVideoSettings) SetHeight(v int32) *UpdateMediaLiveChannelRequestVideoSettings {
+	s.Height = &v
+	return s
+}
+
+func (s *UpdateMediaLiveChannelRequestVideoSettings) SetName(v string) *UpdateMediaLiveChannelRequestVideoSettings {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateMediaLiveChannelRequestVideoSettings) SetVideoCodec(v string) *UpdateMediaLiveChannelRequestVideoSettings {
+	s.VideoCodec = &v
+	return s
+}
+
+func (s *UpdateMediaLiveChannelRequestVideoSettings) SetVideoCodecSetting(v *UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSetting) *UpdateMediaLiveChannelRequestVideoSettings {
+	s.VideoCodecSetting = v
+	return s
+}
+
+func (s *UpdateMediaLiveChannelRequestVideoSettings) SetWidth(v int32) *UpdateMediaLiveChannelRequestVideoSettings {
+	s.Width = &v
+	return s
+}
+
+type UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSetting struct {
+	// The video encoding settings.
+	CodecDetail *UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingCodecDetail `json:"CodecDetail,omitempty" xml:"CodecDetail,omitempty" type:"Struct"`
+	// The frame rate. If it is not specified, the source specification is used.
+	Framerate *UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingFramerate `json:"Framerate,omitempty" xml:"Framerate,omitempty" type:"Struct"`
+	// The GOP setting. If it is not specified, the source specification is used.
+	Gop *UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingGop `json:"Gop,omitempty" xml:"Gop,omitempty" type:"Struct"`
+	// The video encoding rate. If it is not specified, the source specification is used.
+	Rate *UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingRate `json:"Rate,omitempty" xml:"Rate,omitempty" type:"Struct"`
+}
+
+func (s UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSetting) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSetting) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSetting) SetCodecDetail(v *UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingCodecDetail) *UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSetting {
+	s.CodecDetail = v
+	return s
+}
+
+func (s *UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSetting) SetFramerate(v *UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingFramerate) *UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSetting {
+	s.Framerate = v
+	return s
+}
+
+func (s *UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSetting) SetGop(v *UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingGop) *UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSetting {
+	s.Gop = v
+	return s
+}
+
+func (s *UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSetting) SetRate(v *UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingRate) *UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSetting {
+	s.Rate = v
+	return s
+}
+
+type UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingCodecDetail struct {
+	// The video encoding level. It is not supported yet.
+	//
+	// example:
+	//
+	// H264_LEVEL_AUTO
+	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The H.264 profile. Valid values: BASELINE, HIGH, and MAIN. Default value: MAIN. The parameter takes effect only when the codec is H.264.
+	//
+	// example:
+	//
+	// MAIN
+	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+}
+
+func (s UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingCodecDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingCodecDetail) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingCodecDetail) SetLevel(v string) *UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingCodecDetail {
+	s.Level = &v
+	return s
+}
+
+func (s *UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingCodecDetail) SetProfile(v string) *UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingCodecDetail {
+	s.Profile = &v
+	return s
+}
+
+type UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingFramerate struct {
+	// The frame rate mode. Valid values: SPECIFIED (fixed frame rate) and FROM_SOURCE (use source specification).
+	//
+	// example:
+	//
+	// SPECIFIED
+	FramerateControl *string `json:"FramerateControl,omitempty" xml:"FramerateControl,omitempty"`
+	// The denominator of the fixed frame rate. The parameter is required when FramerateControl is set to SPECIFIED. Valid values: 1 to 60. The numerator must be divisible by the denominator.
+	//
+	// example:
+	//
+	// 1
+	FramerateDenominator *int32 `json:"FramerateDenominator,omitempty" xml:"FramerateDenominator,omitempty"`
+	// The numerator of the fixed frame rate. The parameter is required when FramerateControl is set to SPECIFIED. Valid values: 1 to 60. The numerator must be divisible by the denominator.
+	//
+	// example:
+	//
+	// 25
+	FramerateNumerator *int32 `json:"FramerateNumerator,omitempty" xml:"FramerateNumerator,omitempty"`
+}
+
+func (s UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingFramerate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingFramerate) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingFramerate) SetFramerateControl(v string) *UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingFramerate {
+	s.FramerateControl = &v
+	return s
+}
+
+func (s *UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingFramerate) SetFramerateDenominator(v int32) *UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingFramerate {
+	s.FramerateDenominator = &v
+	return s
+}
+
+func (s *UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingFramerate) SetFramerateNumerator(v int32) *UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingFramerate {
+	s.FramerateNumerator = &v
+	return s
+}
+
+type UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingGop struct {
+	// The number of B frames. Valid values: 1 to 3.
+	//
+	// example:
+	//
+	// 3
+	BframesNum *int32 `json:"BframesNum,omitempty" xml:"BframesNum,omitempty"`
+	// The GOP size. When GopSizeUnits is set to SECONDS, the value range is from 1 to 20. When GopSizeUnits is set to FRAMES, the value range is from 1 to 3000.
+	//
+	// example:
+	//
+	// 90
+	GopSize *int32 `json:"GopSize,omitempty" xml:"GopSize,omitempty"`
+	// The GOP size unit. Valid values: FRAMES and SECONDS.
+	//
+	// example:
+	//
+	// FRAMES
+	GopSizeUnits *string `json:"GopSizeUnits,omitempty" xml:"GopSizeUnits,omitempty"`
+}
+
+func (s UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingGop) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingGop) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingGop) SetBframesNum(v int32) *UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingGop {
+	s.BframesNum = &v
+	return s
+}
+
+func (s *UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingGop) SetGopSize(v int32) *UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingGop {
+	s.GopSize = &v
+	return s
+}
+
+func (s *UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingGop) SetGopSizeUnits(v string) *UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingGop {
+	s.GopSizeUnits = &v
+	return s
+}
+
+type UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingRate struct {
+	// The video bitrate. Unit: bit/s. If you set it to 0 or leave it empty, the source specification is used. Valid values: 50000 to 6000000. The value must be divisible by 1000.
+	//
+	// example:
+	//
+	// 2500000
+	Bitrate *int32 `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The video buffer size. Unit: bit/s. Valid values: 100000 to 6000000. The value must be divisible by 1000.
+	//
+	// example:
+	//
+	// 6000000
+	BufferSize *int32 `json:"BufferSize,omitempty" xml:"BufferSize,omitempty"`
+	// The maximum bitrate. Unit: bit/s. Valid values: 100000 to 6000000. The value must be divisible by 1000.
+	//
+	// example:
+	//
+	// 6000000
+	MaxBitrate *int32 `json:"MaxBitrate,omitempty" xml:"MaxBitrate,omitempty"`
+	// The bitrate control mode. Valid values: CBR, ABR, and VBR.
+	//
+	// example:
+	//
+	// ABR
+	RateControlMode *string `json:"RateControlMode,omitempty" xml:"RateControlMode,omitempty"`
+}
+
+func (s UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingRate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingRate) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingRate) SetBitrate(v int32) *UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingRate {
+	s.Bitrate = &v
+	return s
+}
+
+func (s *UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingRate) SetBufferSize(v int32) *UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingRate {
+	s.BufferSize = &v
+	return s
+}
+
+func (s *UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingRate) SetMaxBitrate(v int32) *UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingRate {
+	s.MaxBitrate = &v
+	return s
+}
+
+func (s *UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingRate) SetRateControlMode(v string) *UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingRate {
+	s.RateControlMode = &v
+	return s
+}
+
+type UpdateMediaLiveChannelShrinkRequest struct {
+	// The audio settings.
+	AudioSettingsShrink *string `json:"AudioSettings,omitempty" xml:"AudioSettings,omitempty"`
+	// The ID of the channel.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SEGK5KA6KYKAWQQH
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The inputs associated with the channel.
+	//
+	// This parameter is required.
+	InputAttachmentsShrink *string `json:"InputAttachments,omitempty" xml:"InputAttachments,omitempty"`
+	// The name of the channel. Letters, digits, hyphens (-), and underscores (_) are supported. It can be up to 64 characters in length.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// mych
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The output groups.
+	//
+	// This parameter is required.
+	OutputGroupsShrink *string `json:"OutputGroups,omitempty" xml:"OutputGroups,omitempty"`
+	// The video settings.
+	VideoSettingsShrink *string `json:"VideoSettings,omitempty" xml:"VideoSettings,omitempty"`
+}
+
+func (s UpdateMediaLiveChannelShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMediaLiveChannelShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMediaLiveChannelShrinkRequest) SetAudioSettingsShrink(v string) *UpdateMediaLiveChannelShrinkRequest {
+	s.AudioSettingsShrink = &v
+	return s
+}
+
+func (s *UpdateMediaLiveChannelShrinkRequest) SetChannelId(v string) *UpdateMediaLiveChannelShrinkRequest {
+	s.ChannelId = &v
+	return s
+}
+
+func (s *UpdateMediaLiveChannelShrinkRequest) SetInputAttachmentsShrink(v string) *UpdateMediaLiveChannelShrinkRequest {
+	s.InputAttachmentsShrink = &v
+	return s
+}
+
+func (s *UpdateMediaLiveChannelShrinkRequest) SetName(v string) *UpdateMediaLiveChannelShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateMediaLiveChannelShrinkRequest) SetOutputGroupsShrink(v string) *UpdateMediaLiveChannelShrinkRequest {
+	s.OutputGroupsShrink = &v
+	return s
+}
+
+func (s *UpdateMediaLiveChannelShrinkRequest) SetVideoSettingsShrink(v string) *UpdateMediaLiveChannelShrinkRequest {
+	s.VideoSettingsShrink = &v
+	return s
+}
+
+type UpdateMediaLiveChannelResponseBody struct {
+	// The ID of the request.
+	//
+	// example:
+	//
+	// ******11-DB8D-4A9A-875B-275798******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateMediaLiveChannelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMediaLiveChannelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMediaLiveChannelResponseBody) SetRequestId(v string) *UpdateMediaLiveChannelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateMediaLiveChannelResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateMediaLiveChannelResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateMediaLiveChannelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMediaLiveChannelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMediaLiveChannelResponse) SetHeaders(v map[string]*string) *UpdateMediaLiveChannelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateMediaLiveChannelResponse) SetStatusCode(v int32) *UpdateMediaLiveChannelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateMediaLiveChannelResponse) SetBody(v *UpdateMediaLiveChannelResponseBody) *UpdateMediaLiveChannelResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateMediaLiveInputRequest struct {
+	// The ID of the input.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SEGK5KA6KYKAWQQH
+	InputId *string `json:"InputId,omitempty" xml:"InputId,omitempty"`
+	// The input settings. An input can have up to two sources: primary and backup sources.
+	//
+	// This parameter is required.
+	InputSettings []*UpdateMediaLiveInputRequestInputSettings `json:"InputSettings,omitempty" xml:"InputSettings,omitempty" type:"Repeated"`
+	// The name of the input. Letters, digits, hyphens (-), and underscores (_) are supported. It can be up to 64 characters in length.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// myinput
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The IDs of the security groups to be associated with the input. This parameter is required for PUSH inputs.
+	//
+	// example:
+	//
+	// ["G6G4X5T4SZYPSTT5"]
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
+}
+
+func (s UpdateMediaLiveInputRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMediaLiveInputRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMediaLiveInputRequest) SetInputId(v string) *UpdateMediaLiveInputRequest {
+	s.InputId = &v
+	return s
+}
+
+func (s *UpdateMediaLiveInputRequest) SetInputSettings(v []*UpdateMediaLiveInputRequestInputSettings) *UpdateMediaLiveInputRequest {
+	s.InputSettings = v
+	return s
+}
+
+func (s *UpdateMediaLiveInputRequest) SetName(v string) *UpdateMediaLiveInputRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateMediaLiveInputRequest) SetSecurityGroupIds(v []*string) *UpdateMediaLiveInputRequest {
+	s.SecurityGroupIds = v
+	return s
+}
+
+type UpdateMediaLiveInputRequestInputSettings struct {
+	FlowId         *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	FlowOutputName *string `json:"FlowOutputName,omitempty" xml:"FlowOutputName,omitempty"`
+	// The source URL where the stream is pulled from. This parameter is required for PULL inputs.
+	//
+	// example:
+	//
+	// rtmp://domain/app/stream
+	SourceUrl *string `json:"SourceUrl,omitempty" xml:"SourceUrl,omitempty"`
+	// The name of the pushed stream. This parameter is required for PUSH inputs. It can be up to 255 characters in length.
+	//
+	// example:
+	//
+	// mystream
+	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
+}
+
+func (s UpdateMediaLiveInputRequestInputSettings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMediaLiveInputRequestInputSettings) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMediaLiveInputRequestInputSettings) SetFlowId(v string) *UpdateMediaLiveInputRequestInputSettings {
+	s.FlowId = &v
+	return s
+}
+
+func (s *UpdateMediaLiveInputRequestInputSettings) SetFlowOutputName(v string) *UpdateMediaLiveInputRequestInputSettings {
+	s.FlowOutputName = &v
+	return s
+}
+
+func (s *UpdateMediaLiveInputRequestInputSettings) SetSourceUrl(v string) *UpdateMediaLiveInputRequestInputSettings {
+	s.SourceUrl = &v
+	return s
+}
+
+func (s *UpdateMediaLiveInputRequestInputSettings) SetStreamName(v string) *UpdateMediaLiveInputRequestInputSettings {
+	s.StreamName = &v
+	return s
+}
+
+type UpdateMediaLiveInputShrinkRequest struct {
+	// The ID of the input.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SEGK5KA6KYKAWQQH
+	InputId *string `json:"InputId,omitempty" xml:"InputId,omitempty"`
+	// The input settings. An input can have up to two sources: primary and backup sources.
+	//
+	// This parameter is required.
+	InputSettingsShrink *string `json:"InputSettings,omitempty" xml:"InputSettings,omitempty"`
+	// The name of the input. Letters, digits, hyphens (-), and underscores (_) are supported. It can be up to 64 characters in length.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// myinput
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The IDs of the security groups to be associated with the input. This parameter is required for PUSH inputs.
+	//
+	// example:
+	//
+	// ["G6G4X5T4SZYPSTT5"]
+	SecurityGroupIdsShrink *string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty"`
+}
+
+func (s UpdateMediaLiveInputShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMediaLiveInputShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMediaLiveInputShrinkRequest) SetInputId(v string) *UpdateMediaLiveInputShrinkRequest {
+	s.InputId = &v
+	return s
+}
+
+func (s *UpdateMediaLiveInputShrinkRequest) SetInputSettingsShrink(v string) *UpdateMediaLiveInputShrinkRequest {
+	s.InputSettingsShrink = &v
+	return s
+}
+
+func (s *UpdateMediaLiveInputShrinkRequest) SetName(v string) *UpdateMediaLiveInputShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateMediaLiveInputShrinkRequest) SetSecurityGroupIdsShrink(v string) *UpdateMediaLiveInputShrinkRequest {
+	s.SecurityGroupIdsShrink = &v
+	return s
+}
+
+type UpdateMediaLiveInputResponseBody struct {
+	// The ID of the request.
+	//
+	// example:
+	//
+	// ******3B-0E1A-586A-AC29-742247******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateMediaLiveInputResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMediaLiveInputResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMediaLiveInputResponseBody) SetRequestId(v string) *UpdateMediaLiveInputResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateMediaLiveInputResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateMediaLiveInputResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateMediaLiveInputResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMediaLiveInputResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMediaLiveInputResponse) SetHeaders(v map[string]*string) *UpdateMediaLiveInputResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateMediaLiveInputResponse) SetStatusCode(v int32) *UpdateMediaLiveInputResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateMediaLiveInputResponse) SetBody(v *UpdateMediaLiveInputResponseBody) *UpdateMediaLiveInputResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateMediaLiveInputSecurityGroupRequest struct {
+	// The name of the security group. Letters, digits, hyphens (-), and underscores (_) are supported. It can be up to 64 characters in length.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// mysg
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the security group.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SEGK5KA6KYKAWQQH
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The security group rules.
+	//
+	// This parameter is required.
+	WhitelistRules []*string `json:"WhitelistRules,omitempty" xml:"WhitelistRules,omitempty" type:"Repeated"`
+}
+
+func (s UpdateMediaLiveInputSecurityGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMediaLiveInputSecurityGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMediaLiveInputSecurityGroupRequest) SetName(v string) *UpdateMediaLiveInputSecurityGroupRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateMediaLiveInputSecurityGroupRequest) SetSecurityGroupId(v string) *UpdateMediaLiveInputSecurityGroupRequest {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *UpdateMediaLiveInputSecurityGroupRequest) SetWhitelistRules(v []*string) *UpdateMediaLiveInputSecurityGroupRequest {
+	s.WhitelistRules = v
+	return s
+}
+
+type UpdateMediaLiveInputSecurityGroupShrinkRequest struct {
+	// The name of the security group. Letters, digits, hyphens (-), and underscores (_) are supported. It can be up to 64 characters in length.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// mysg
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the security group.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SEGK5KA6KYKAWQQH
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The security group rules.
+	//
+	// This parameter is required.
+	WhitelistRulesShrink *string `json:"WhitelistRules,omitempty" xml:"WhitelistRules,omitempty"`
+}
+
+func (s UpdateMediaLiveInputSecurityGroupShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMediaLiveInputSecurityGroupShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMediaLiveInputSecurityGroupShrinkRequest) SetName(v string) *UpdateMediaLiveInputSecurityGroupShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateMediaLiveInputSecurityGroupShrinkRequest) SetSecurityGroupId(v string) *UpdateMediaLiveInputSecurityGroupShrinkRequest {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *UpdateMediaLiveInputSecurityGroupShrinkRequest) SetWhitelistRulesShrink(v string) *UpdateMediaLiveInputSecurityGroupShrinkRequest {
+	s.WhitelistRulesShrink = &v
+	return s
+}
+
+type UpdateMediaLiveInputSecurityGroupResponseBody struct {
+	// The ID of the request.
+	//
+	// example:
+	//
+	// ******11-DB8D-4A9A-875B-275798******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateMediaLiveInputSecurityGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMediaLiveInputSecurityGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMediaLiveInputSecurityGroupResponseBody) SetRequestId(v string) *UpdateMediaLiveInputSecurityGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateMediaLiveInputSecurityGroupResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateMediaLiveInputSecurityGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateMediaLiveInputSecurityGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMediaLiveInputSecurityGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMediaLiveInputSecurityGroupResponse) SetHeaders(v map[string]*string) *UpdateMediaLiveInputSecurityGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateMediaLiveInputSecurityGroupResponse) SetStatusCode(v int32) *UpdateMediaLiveInputSecurityGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateMediaLiveInputSecurityGroupResponse) SetBody(v *UpdateMediaLiveInputSecurityGroupResponseBody) *UpdateMediaLiveInputSecurityGroupResponse {
 	s.Body = v
 	return s
 }
@@ -85412,38 +92673,54 @@ func (s *UpdatePipelineResponse) SetBody(v *UpdatePipelineResponseBody) *UpdateP
 }
 
 type UpdateProgramRequest struct {
+	// The information about ad breaks.
+	//
 	// example:
 	//
 	// [{"MessageType":"SPLICE_INSERT","OffsetMillis":1000,"SourceLocationName":"MySourceLocation","SourceName":"MyAdSource","SpliceInsertSettings":{"AvailNumber":0,"AvailExpected":0,"SpliceEventID":1,"UniqueProgramID":0}}]
 	AdBreaks *string `json:"AdBreaks,omitempty" xml:"AdBreaks,omitempty"`
+	// The name of the channel.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// MyChannel
 	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+	// Extracts a clip from the source.
+	//
 	// example:
 	//
 	// {StartOffsetMillis: 213123, EndOffsetMillis: 213134}
 	ClipRange *string `json:"ClipRange,omitempty" xml:"ClipRange,omitempty"`
+	// The name of the program.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// program1
 	ProgramName *string `json:"ProgramName,omitempty" xml:"ProgramName,omitempty"`
+	// The name of the source location.
+	//
 	// example:
 	//
 	// MySourceLcation
 	SourceLocationName *string `json:"SourceLocationName,omitempty" xml:"SourceLocationName,omitempty"`
+	// The name of the source.
+	//
 	// example:
 	//
 	// MySource
 	SourceName *string `json:"SourceName,omitempty" xml:"SourceName,omitempty"`
+	// The source type of the program. Valid values: vodSource and liveSource.
+	//
 	// example:
 	//
 	// vodSource
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The program transition method.
+	//
 	// example:
 	//
 	// {"Type": "RELATIVE", "RelativePosition": "AFTER_PROGRAM", "RelativeProgram": "program2"}
@@ -85499,7 +92776,10 @@ func (s *UpdateProgramRequest) SetTransition(v string) *UpdateProgramRequest {
 }
 
 type UpdateProgramResponseBody struct {
+	// The information about the program.
 	Program *ChannelAssemblyProgram `json:"Program,omitempty" xml:"Program,omitempty"`
+	// **Request ID**
+	//
 	// example:
 	//
 	// xxx-xxxx-xxxxx-xxxx
@@ -85696,6 +92976,8 @@ func (s *UpdateRtcRobotInstanceResponse) SetBody(v *UpdateRtcRobotInstanceRespon
 }
 
 type UpdateSourceRequest struct {
+	// The source configurations.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -85710,18 +92992,24 @@ type UpdateSourceRequest struct {
 	//
 	// }]
 	HttpPackageConfigurations *string `json:"HttpPackageConfigurations,omitempty" xml:"HttpPackageConfigurations,omitempty"`
+	// The name of the source location.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// MySourcelocation
 	SourceLocationName *string `json:"SourceLocationName,omitempty" xml:"SourceLocationName,omitempty"`
+	// The name of the source.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// MySource
 	SourceName *string `json:"SourceName,omitempty" xml:"SourceName,omitempty"`
+	// The source type. Valid values: vodSource and liveSource.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -85759,11 +93047,14 @@ func (s *UpdateSourceRequest) SetSourceType(v string) *UpdateSourceRequest {
 }
 
 type UpdateSourceResponseBody struct {
+	// **Request ID**
+	//
 	// example:
 	//
 	// xxx-xxxx-xxxxx-xxxx
-	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Source    *ChannelAssemblySource `json:"Source,omitempty" xml:"Source,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The source information.
+	Source *ChannelAssemblySource `json:"Source,omitempty" xml:"Source,omitempty"`
 }
 
 func (s UpdateSourceResponseBody) String() string {
@@ -85814,18 +93105,26 @@ func (s *UpdateSourceResponse) SetBody(v *UpdateSourceResponseBody) *UpdateSourc
 }
 
 type UpdateSourceLocationRequest struct {
+	// The protocol and hostname of the source location.
+	//
 	// example:
 	//
 	// http://xxx.com
 	BaseUrl *string `json:"BaseUrl,omitempty" xml:"BaseUrl,omitempty"`
+	// Specifies whether to use an independent domain name to access the segments.
+	//
 	// example:
 	//
 	// true
 	EnableSegmentDelivery *bool `json:"EnableSegmentDelivery,omitempty" xml:"EnableSegmentDelivery,omitempty"`
+	// The domain name used to access the segments.
+	//
 	// example:
 	//
 	// http://xxxx.com
 	SegmentDeliveryUrl *string `json:"SegmentDeliveryUrl,omitempty" xml:"SegmentDeliveryUrl,omitempty"`
+	// The name of the source location.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -85863,10 +93162,13 @@ func (s *UpdateSourceLocationRequest) SetSourceLocationName(v string) *UpdateSou
 }
 
 type UpdateSourceLocationResponseBody struct {
+	// **Request ID**
+	//
 	// example:
 	//
 	// xxx-xxxx-xxxxx-xxxx
-	RequestId      *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The source location information.
 	SourceLocation *ChannelAssemblySourceLocation `json:"SourceLocation,omitempty" xml:"SourceLocation,omitempty"`
 }
 
@@ -86615,7 +93917,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 添加广告插入配置
+// Adds an ad insertion configuration.
 //
 // @param request - AddAdInsertionRequest
 //
@@ -86704,7 +94006,7 @@ func (client *Client) AddAdInsertionWithOptions(request *AddAdInsertionRequest, 
 
 // Summary:
 //
-// 添加广告插入配置
+// Adds an ad insertion configuration.
 //
 // @param request - AddAdInsertionRequest
 //
@@ -86955,25 +94257,25 @@ func (client *Client) AddFavoritePublicMedia(request *AddFavoritePublicMediaRequ
 
 // Summary:
 //
-// Add input for MediaConnect instance
+// Creates a source for a MediaConnect flow.
 //
 // Description:
 //
-// - If the provided Flow instance ID does not exist, the interface will return an error.
+//   When the specified flow ID is not available, an error code is returned.
 //
-// - A Flow instance can only have one Input.
+// 	- A flow can have only one source.
 //
-// ### Description of Input Types
+// ### [](#)Source type
 //
-// - RTMP-PUSH: Creates an input of the RTMP listening type. You can push to the URL returned by the interface using the RTMP protocol.
+// 	- RTMP-PUSH: An input that you can push to the returned URL over the RTMP protocol.
 //
-// - RTMP-PULL: Creates an input of the RTMP origin-pull type. The Flow will pull the RTMP live stream from the source you specify.
+// 	- RTMP-PULL: An input that the MediaConnect flow pulls from the specified server over the RTMP protocol.
 //
-// - SRT-Listener: Creates an input of the SRT listening type. You can push to the URL returned by the interface using the SRT protocol.
+// 	- SRT-Listener: An input that you can push to the returned URL over the SRT protocol.
 //
-// - SRT-Caller: Creates an input of the SRT origin-pull type. The Flow will pull the SRT live stream from the source you specify.
+// 	- SRT-Caller: An input that the MediaConnect flow pulls from the specified server over the SRT protocol.
 //
-// - Flow: Uses the output of another upstream Flow instance as the input. You need to specify both the instance ID and the output name of the paired Flow. The output of the upstream Flow instance must be of the SRT-Listener/RTMP-PULL type. When cascading between Flow instances, a dedicated line is used by default, which can be utilized for cross-regional distribution among multiple Flows.
+// 	- Flow: An input that uses the output of another upstream flow. You must specify an upstream flow and its output. The output type of the upstream flow must be SRT-Listener or RTMP-PULL. By default, a dedicated line is used when flows are cascaded. This allows for cross-region distribution among multiple flows.
 //
 // @param request - AddMediaConnectFlowInputRequest
 //
@@ -87066,25 +94368,25 @@ func (client *Client) AddMediaConnectFlowInputWithOptions(request *AddMediaConne
 
 // Summary:
 //
-// Add input for MediaConnect instance
+// Creates a source for a MediaConnect flow.
 //
 // Description:
 //
-// - If the provided Flow instance ID does not exist, the interface will return an error.
+//   When the specified flow ID is not available, an error code is returned.
 //
-// - A Flow instance can only have one Input.
+// 	- A flow can have only one source.
 //
-// ### Description of Input Types
+// ### [](#)Source type
 //
-// - RTMP-PUSH: Creates an input of the RTMP listening type. You can push to the URL returned by the interface using the RTMP protocol.
+// 	- RTMP-PUSH: An input that you can push to the returned URL over the RTMP protocol.
 //
-// - RTMP-PULL: Creates an input of the RTMP origin-pull type. The Flow will pull the RTMP live stream from the source you specify.
+// 	- RTMP-PULL: An input that the MediaConnect flow pulls from the specified server over the RTMP protocol.
 //
-// - SRT-Listener: Creates an input of the SRT listening type. You can push to the URL returned by the interface using the SRT protocol.
+// 	- SRT-Listener: An input that you can push to the returned URL over the SRT protocol.
 //
-// - SRT-Caller: Creates an input of the SRT origin-pull type. The Flow will pull the SRT live stream from the source you specify.
+// 	- SRT-Caller: An input that the MediaConnect flow pulls from the specified server over the SRT protocol.
 //
-// - Flow: Uses the output of another upstream Flow instance as the input. You need to specify both the instance ID and the output name of the paired Flow. The output of the upstream Flow instance must be of the SRT-Listener/RTMP-PULL type. When cascading between Flow instances, a dedicated line is used by default, which can be utilized for cross-regional distribution among multiple Flows.
+// 	- Flow: An input that uses the output of another upstream flow. You must specify an upstream flow and its output. The output type of the upstream flow must be SRT-Listener or RTMP-PULL. By default, a dedicated line is used when flows are cascaded. This allows for cross-region distribution among multiple flows.
 //
 // @param request - AddMediaConnectFlowInputRequest
 //
@@ -87102,29 +94404,29 @@ func (client *Client) AddMediaConnectFlowInput(request *AddMediaConnectFlowInput
 
 // Summary:
 //
-// Add output for MediaConnect instance
+// Creates an output for a MediaConnect flow.
 //
 // Description:
 //
-// - If the provided Flow instance ID does not exist, the interface will return an error.
+//   When the specified flow ID is not available, an error code is returned.
 //
-// - A Flow instance can have up to 4 outputs.
+// 	- A flow can have a maximum of four outputs.
 //
-// - The output names under the same Flow instance cannot be duplicated.
+// 	- The output names in the same flow cannot be duplicated.
 //
-// - You can set a maximum number of simultaneous players for each output. New plays will fail once this limit is exceeded. Each output supports up to 5 streams.
+// 	- You can set an upper limit on the number of concurrent viewers for each output. If this limit is exceeded, any new playback requests will fail. Each output supports up to five streams.
 //
-// ### Description of Output Types
+// ### [](#)Output types
 //
-// - RTMP-PUSH: Creates an output of the RTMP push type. The Flow will use the RTMP protocol to push the live stream to the origin you set.
+// 	- RTMP-PUSH: An output that the MediaConnect flow pushes to the server you specified over the RTMP protocol.
 //
-// - RTMP-PULL: Creates an output of the RTMP pull type. You can use the RTMP protocol to pull the stream from the URL returned by the interface.
+// 	- RTMP-PULL: An output that you can pull using the returned streaming URL over the RTMP protocol.
 //
-// - SRT-Caller: Creates an output of the SRT push type. The Flow will use the SRT protocol to push the live stream to the origin you set.
+// 	- SRT-Caller: An output that the MediaConnect flow pushes to the server you specified over the SRT protocol.
 //
-// - SRT-Listener: Creates an output of the SRT pull type. You can use the SRT protocol to pull the stream from the URL returned by the interface.
+// 	- SRT-Listener: An output that you can pull using the returned streaming URL over the SRT protocol.
 //
-// - Flow: Uses the input of another downstream Flow instance as the output. You need to specify both the instance ID and the input name of the paired Flow. The input type of the downstream Flow instance must be a listening type, i.e., SRT-Listener/RTMP-PUSH. This instance will push the live stream to the downstream Flow. When cascading between Flow instances, a dedicated line is used by default, which can be used for cross-regional distribution among multiple Flows.
+// 	- Flow: An output that is pushed to the source URL of another MediaConnect flow. The source type of the destination flow must be SRT-Listener or RTMP-PUSH. By default, a dedicated line is used when flows are cascaded. This allows for cross-region distribution among multiple flows.
 //
 // @param request - AddMediaConnectFlowOutputRequest
 //
@@ -87217,29 +94519,29 @@ func (client *Client) AddMediaConnectFlowOutputWithOptions(request *AddMediaConn
 
 // Summary:
 //
-// Add output for MediaConnect instance
+// Creates an output for a MediaConnect flow.
 //
 // Description:
 //
-// - If the provided Flow instance ID does not exist, the interface will return an error.
+//   When the specified flow ID is not available, an error code is returned.
 //
-// - A Flow instance can have up to 4 outputs.
+// 	- A flow can have a maximum of four outputs.
 //
-// - The output names under the same Flow instance cannot be duplicated.
+// 	- The output names in the same flow cannot be duplicated.
 //
-// - You can set a maximum number of simultaneous players for each output. New plays will fail once this limit is exceeded. Each output supports up to 5 streams.
+// 	- You can set an upper limit on the number of concurrent viewers for each output. If this limit is exceeded, any new playback requests will fail. Each output supports up to five streams.
 //
-// ### Description of Output Types
+// ### [](#)Output types
 //
-// - RTMP-PUSH: Creates an output of the RTMP push type. The Flow will use the RTMP protocol to push the live stream to the origin you set.
+// 	- RTMP-PUSH: An output that the MediaConnect flow pushes to the server you specified over the RTMP protocol.
 //
-// - RTMP-PULL: Creates an output of the RTMP pull type. You can use the RTMP protocol to pull the stream from the URL returned by the interface.
+// 	- RTMP-PULL: An output that you can pull using the returned streaming URL over the RTMP protocol.
 //
-// - SRT-Caller: Creates an output of the SRT push type. The Flow will use the SRT protocol to push the live stream to the origin you set.
+// 	- SRT-Caller: An output that the MediaConnect flow pushes to the server you specified over the SRT protocol.
 //
-// - SRT-Listener: Creates an output of the SRT pull type. You can use the SRT protocol to pull the stream from the URL returned by the interface.
+// 	- SRT-Listener: An output that you can pull using the returned streaming URL over the SRT protocol.
 //
-// - Flow: Uses the input of another downstream Flow instance as the output. You need to specify both the instance ID and the input name of the paired Flow. The input type of the downstream Flow instance must be a listening type, i.e., SRT-Listener/RTMP-PUSH. This instance will push the live stream to the downstream Flow. When cascading between Flow instances, a dedicated line is used by default, which can be used for cross-regional distribution among multiple Flows.
+// 	- Flow: An output that is pushed to the source URL of another MediaConnect flow. The source type of the destination flow must be SRT-Listener or RTMP-PUSH. By default, a dedicated line is used when flows are cascaded. This allows for cross-region distribution among multiple flows.
 //
 // @param request - AddMediaConnectFlowOutputRequest
 //
@@ -87532,7 +94834,7 @@ func (client *Client) AlterSearchIndex(request *AlterSearchIndexRequest) (_resul
 
 // Summary:
 //
-// 批量创建vod打包资产
+// Ingests multiple assets for VOD packaging.
 //
 // @param tmpReq - BatchCreateVodPackagingAssetRequest
 //
@@ -87595,7 +94897,7 @@ func (client *Client) BatchCreateVodPackagingAssetWithOptions(tmpReq *BatchCreat
 
 // Summary:
 //
-// 批量创建vod打包资产
+// Ingests multiple assets for VOD packaging.
 //
 // @param request - BatchCreateVodPackagingAssetRequest
 //
@@ -88024,7 +95326,7 @@ func (client *Client) CreateAvatarTrainingJob(request *CreateAvatarTrainingJobRe
 
 // Summary:
 //
-// 创建一个新的频道
+// Creates a channel in MediaWeaver.
 //
 // @param request - CreateChannelRequest
 //
@@ -88105,7 +95407,7 @@ func (client *Client) CreateChannelWithOptions(request *CreateChannelRequest, ru
 
 // Summary:
 //
-// 创建一个新的频道
+// Creates a channel in MediaWeaver.
 //
 // @param request - CreateChannelRequest
 //
@@ -88505,7 +95807,25 @@ func (client *Client) CreateEditingProject(request *CreateEditingProjectRequest)
 
 // Summary:
 //
-// 创建实时打包频道
+// Creates a live package channel.
+//
+// Description:
+//
+// ## [](#)Usage notes
+//
+// After you call this operation to create a live package channel, the system will automatically generate the ingest endpoint URL, and username and password required for authentication.
+//
+// ### [](#)Precautions
+//
+// 	- Channel group names and channel names can contain only letters, digits, underscores (_), and hyphens (-).
+//
+// 	- Only `HLS` is supported.
+//
+// 	- The segment duration must be from 1 to 30 seconds.
+//
+// 	- The number of M3U8 segments must be from 2 to 100.
+//
+// If the request succeeds, the system will return the details of the newly created channel, including the channel name, creation time, modification time, and ingest endpoint details.
 //
 // @param request - CreateLivePackageChannelRequest
 //
@@ -88584,7 +95904,25 @@ func (client *Client) CreateLivePackageChannelWithOptions(request *CreateLivePac
 
 // Summary:
 //
-// 创建实时打包频道
+// Creates a live package channel.
+//
+// Description:
+//
+// ## [](#)Usage notes
+//
+// After you call this operation to create a live package channel, the system will automatically generate the ingest endpoint URL, and username and password required for authentication.
+//
+// ### [](#)Precautions
+//
+// 	- Channel group names and channel names can contain only letters, digits, underscores (_), and hyphens (-).
+//
+// 	- Only `HLS` is supported.
+//
+// 	- The segment duration must be from 1 to 30 seconds.
+//
+// 	- The number of M3U8 segments must be from 2 to 100.
+//
+// If the request succeeds, the system will return the details of the newly created channel, including the channel name, creation time, modification time, and ingest endpoint details.
 //
 // @param request - CreateLivePackageChannelRequest
 //
@@ -88602,7 +95940,11 @@ func (client *Client) CreateLivePackageChannel(request *CreateLivePackageChannel
 
 // Summary:
 //
-// 添加实时打包频道组
+// Creates a live package channel group with a custom name and description.
+//
+// Description:
+//
+// After you create a channel group, the assigned origin domain is returned.
 //
 // @param request - CreateLivePackageChannelGroupRequest
 //
@@ -88665,7 +96007,11 @@ func (client *Client) CreateLivePackageChannelGroupWithOptions(request *CreateLi
 
 // Summary:
 //
-// 添加实时打包频道组
+// Creates a live package channel group with a custom name and description.
+//
+// Description:
+//
+// After you create a channel group, the assigned origin domain is returned.
 //
 // @param request - CreateLivePackageChannelGroupRequest
 //
@@ -88683,7 +96029,13 @@ func (client *Client) CreateLivePackageChannelGroup(request *CreateLivePackageCh
 
 // Summary:
 //
-// 创建实时打包源站端点
+// Creates an origin endpoint for a live package channel to deliver live streams in HLS format.
+//
+// Description:
+//
+// ## [](#)Usage notes
+//
+// This API operation is mainly used to configure origin settings, security policies including the IP address blacklist and whitelist and authorization code, and time shifting settings for channels. Before you create an origin endpoint, you must create a live package channel group and channel. After you create the endpoint, the endpoint URL and other configuration details are returned.
 //
 // @param request - CreateLivePackageOriginEndpointRequest
 //
@@ -88778,7 +96130,13 @@ func (client *Client) CreateLivePackageOriginEndpointWithOptions(request *Create
 
 // Summary:
 //
-// 创建实时打包源站端点
+// Creates an origin endpoint for a live package channel to deliver live streams in HLS format.
+//
+// Description:
+//
+// ## [](#)Usage notes
+//
+// This API operation is mainly used to configure origin settings, security policies including the IP address blacklist and whitelist and authorization code, and time shifting settings for channels. Before you create an origin endpoint, you must create a live package channel group and channel. After you create the endpoint, the endpoint URL and other configuration details are returned.
 //
 // @param request - CreateLivePackageOriginEndpointRequest
 //
@@ -89053,13 +96411,13 @@ func (client *Client) CreateLiveTranscodeTemplate(request *CreateLiveTranscodeTe
 
 // Summary:
 //
-// Create MediaConnect Flow
+// Creates a MediaConnect flow.
 //
 // Description:
 //
-// - The name of the Flow cannot be duplicated within the same region.
+//   The flow names cannot be duplicated in the same region.
 //
-// - When the interface responds normally, it will return the Flow instance ID. Please keep it properly.
+// 	- Take note of the returned flow ID. You may reference it in other API operations.
 //
 // @param request - CreateMediaConnectFlowRequest
 //
@@ -89116,13 +96474,13 @@ func (client *Client) CreateMediaConnectFlowWithOptions(request *CreateMediaConn
 
 // Summary:
 //
-// Create MediaConnect Flow
+// Creates a MediaConnect flow.
 //
 // Description:
 //
-// - The name of the Flow cannot be duplicated within the same region.
+//   The flow names cannot be duplicated in the same region.
 //
-// - When the interface responds normally, it will return the Flow instance ID. Please keep it properly.
+// 	- Take note of the returned flow ID. You may reference it in other API operations.
 //
 // @param request - CreateMediaConnectFlowRequest
 //
@@ -89131,6 +96489,333 @@ func (client *Client) CreateMediaConnectFlow(request *CreateMediaConnectFlowRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateMediaConnectFlowResponse{}
 	_body, _err := client.CreateMediaConnectFlowWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a MediaLive channel.
+//
+// Description:
+//
+//
+//
+//  	- ## [](#qps-)QPS limit
+//
+// This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+//
+// @param tmpReq - CreateMediaLiveChannelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMediaLiveChannelResponse
+func (client *Client) CreateMediaLiveChannelWithOptions(tmpReq *CreateMediaLiveChannelRequest, runtime *util.RuntimeOptions) (_result *CreateMediaLiveChannelResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateMediaLiveChannelShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.AudioSettings)) {
+		request.AudioSettingsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AudioSettings, tea.String("AudioSettings"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.InputAttachments)) {
+		request.InputAttachmentsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InputAttachments, tea.String("InputAttachments"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.OutputGroups)) {
+		request.OutputGroupsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OutputGroups, tea.String("OutputGroups"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.VideoSettings)) {
+		request.VideoSettingsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.VideoSettings, tea.String("VideoSettings"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AudioSettingsShrink)) {
+		body["AudioSettings"] = request.AudioSettingsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InputAttachmentsShrink)) {
+		body["InputAttachments"] = request.InputAttachmentsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputGroupsShrink)) {
+		body["OutputGroups"] = request.OutputGroupsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoSettingsShrink)) {
+		body["VideoSettings"] = request.VideoSettingsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateMediaLiveChannel"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateMediaLiveChannelResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateMediaLiveChannelResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Creates a MediaLive channel.
+//
+// Description:
+//
+//
+//
+//  	- ## [](#qps-)QPS limit
+//
+// This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+//
+// @param request - CreateMediaLiveChannelRequest
+//
+// @return CreateMediaLiveChannelResponse
+func (client *Client) CreateMediaLiveChannel(request *CreateMediaLiveChannelRequest) (_result *CreateMediaLiveChannelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateMediaLiveChannelResponse{}
+	_body, _err := client.CreateMediaLiveChannelWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a MediaLive input.
+//
+// Description:
+//
+//
+//
+//  	- ## [](#qps-)QPS limit
+//
+// This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+//
+// @param tmpReq - CreateMediaLiveInputRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMediaLiveInputResponse
+func (client *Client) CreateMediaLiveInputWithOptions(tmpReq *CreateMediaLiveInputRequest, runtime *util.RuntimeOptions) (_result *CreateMediaLiveInputResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateMediaLiveInputShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.InputSettings)) {
+		request.InputSettingsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InputSettings, tea.String("InputSettings"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.SecurityGroupIds)) {
+		request.SecurityGroupIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SecurityGroupIds, tea.String("SecurityGroupIds"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InputSettingsShrink)) {
+		body["InputSettings"] = request.InputSettingsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroupIdsShrink)) {
+		body["SecurityGroupIds"] = request.SecurityGroupIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateMediaLiveInput"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateMediaLiveInputResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateMediaLiveInputResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Creates a MediaLive input.
+//
+// Description:
+//
+//
+//
+//  	- ## [](#qps-)QPS limit
+//
+// This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+//
+// @param request - CreateMediaLiveInputRequest
+//
+// @return CreateMediaLiveInputResponse
+func (client *Client) CreateMediaLiveInput(request *CreateMediaLiveInputRequest) (_result *CreateMediaLiveInputResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateMediaLiveInputResponse{}
+	_body, _err := client.CreateMediaLiveInputWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a security group in MediaLive.
+//
+// Description:
+//
+//
+//
+//  	- ## [](#qps-)QPS limit
+//
+// This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+//
+// @param tmpReq - CreateMediaLiveInputSecurityGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMediaLiveInputSecurityGroupResponse
+func (client *Client) CreateMediaLiveInputSecurityGroupWithOptions(tmpReq *CreateMediaLiveInputSecurityGroupRequest, runtime *util.RuntimeOptions) (_result *CreateMediaLiveInputSecurityGroupResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateMediaLiveInputSecurityGroupShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.WhitelistRules)) {
+		request.WhitelistRulesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.WhitelistRules, tea.String("WhitelistRules"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WhitelistRulesShrink)) {
+		body["WhitelistRules"] = request.WhitelistRulesShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateMediaLiveInputSecurityGroup"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateMediaLiveInputSecurityGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateMediaLiveInputSecurityGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Creates a security group in MediaLive.
+//
+// Description:
+//
+//
+//
+//  	- ## [](#qps-)QPS limit
+//
+// This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+//
+// @param request - CreateMediaLiveInputSecurityGroupRequest
+//
+// @return CreateMediaLiveInputSecurityGroupResponse
+func (client *Client) CreateMediaLiveInputSecurityGroup(request *CreateMediaLiveInputSecurityGroupRequest) (_result *CreateMediaLiveInputSecurityGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateMediaLiveInputSecurityGroupResponse{}
+	_body, _err := client.CreateMediaLiveInputSecurityGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -89219,7 +96904,7 @@ func (client *Client) CreatePipeline(request *CreatePipelineRequest) (_result *C
 
 // Summary:
 //
-// 创建一个新的节目
+// Creates a program in a MediaWeaver channel.
 //
 // @param request - CreateProgramRequest
 //
@@ -89300,7 +96985,7 @@ func (client *Client) CreateProgramWithOptions(request *CreateProgramRequest, ru
 
 // Summary:
 //
-// 创建一个新的节目
+// Creates a program in a MediaWeaver channel.
 //
 // @param request - CreateProgramRequest
 //
@@ -89480,7 +97165,7 @@ func (client *Client) CreateSearchLib(request *CreateSearchLibRequest) (_result 
 
 // Summary:
 //
-// 创建一个新的源
+// Creates a source in MediaWeaver.
 //
 // @param request - CreateSourceRequest
 //
@@ -89545,7 +97230,7 @@ func (client *Client) CreateSourceWithOptions(request *CreateSourceRequest, runt
 
 // Summary:
 //
-// 创建一个新的源
+// Creates a source in MediaWeaver.
 //
 // @param request - CreateSourceRequest
 //
@@ -89563,7 +97248,7 @@ func (client *Client) CreateSource(request *CreateSourceRequest) (_result *Creat
 
 // Summary:
 //
-// 创建一个新的源位置
+// Creates a source location.
 //
 // @param request - CreateSourceLocationRequest
 //
@@ -89628,7 +97313,7 @@ func (client *Client) CreateSourceLocationWithOptions(request *CreateSourceLocat
 
 // Summary:
 //
-// 创建一个新的源位置
+// Creates a source location.
 //
 // @param request - CreateSourceLocationRequest
 //
@@ -89876,7 +97561,7 @@ func (client *Client) CreateUploadStream(request *CreateUploadStreamRequest) (_r
 
 // Summary:
 //
-// 创建vod打包资产
+// Ingests an asset for VOD packaging.
 //
 // @param tmpReq - CreateVodPackagingAssetRequest
 //
@@ -89951,7 +97636,7 @@ func (client *Client) CreateVodPackagingAssetWithOptions(tmpReq *CreateVodPackag
 
 // Summary:
 //
-// 创建vod打包资产
+// Ingests an asset for VOD packaging.
 //
 // @param request - CreateVodPackagingAssetRequest
 //
@@ -89969,7 +97654,7 @@ func (client *Client) CreateVodPackagingAsset(request *CreateVodPackagingAssetRe
 
 // Summary:
 //
-// 创建点播打包配置
+// Creates a packaging configuration.
 //
 // @param tmpReq - CreateVodPackagingConfigurationRequest
 //
@@ -90044,7 +97729,7 @@ func (client *Client) CreateVodPackagingConfigurationWithOptions(tmpReq *CreateV
 
 // Summary:
 //
-// 创建点播打包配置
+// Creates a packaging configuration.
 //
 // @param request - CreateVodPackagingConfigurationRequest
 //
@@ -90062,7 +97747,7 @@ func (client *Client) CreateVodPackagingConfiguration(request *CreateVodPackagin
 
 // Summary:
 //
-// 创建点播打包组
+// Creates a packaging group.
 //
 // @param request - CreateVodPackagingGroupRequest
 //
@@ -90119,7 +97804,7 @@ func (client *Client) CreateVodPackagingGroupWithOptions(request *CreateVodPacka
 
 // Summary:
 //
-// 创建点播打包组
+// Creates a packaging group.
 //
 // @param request - CreateVodPackagingGroupRequest
 //
@@ -90283,7 +97968,7 @@ func (client *Client) DeleteAIAgentDialogue(request *DeleteAIAgentDialogueReques
 
 // Summary:
 //
-// 删除广告插入配置
+// Deletes an ad insertion configuration.
 //
 // @param request - DeleteAdInsertionRequest
 //
@@ -90336,7 +98021,7 @@ func (client *Client) DeleteAdInsertionWithOptions(request *DeleteAdInsertionReq
 
 // Summary:
 //
-// 删除广告插入配置
+// Deletes an ad insertion configuration.
 //
 // @param request - DeleteAdInsertionRequest
 //
@@ -90504,7 +98189,7 @@ func (client *Client) DeleteCategory(request *DeleteCategoryRequest) (_result *D
 
 // Summary:
 //
-// 删除频道
+// Deletes a channel in MediaWeaver.
 //
 // @param request - DeleteChannelRequest
 //
@@ -90557,7 +98242,7 @@ func (client *Client) DeleteChannelWithOptions(request *DeleteChannelRequest, ru
 
 // Summary:
 //
-// 删除频道
+// Deletes a channel in MediaWeaver.
 //
 // @param request - DeleteChannelRequest
 //
@@ -91045,7 +98730,13 @@ func (client *Client) DeleteEditingProjects(request *DeleteEditingProjectsReques
 
 // Summary:
 //
-// 删除实时打包频道
+// Deletes a live package channel by GroupName and ChannelName.
+//
+// Description:
+//
+// ## [](#)Usage notes
+//
+// You need to provide GroupName and ChannelName as parameters to specify exactly which channel to delete. Before you delete a channel, you must delete the origin endpoints associated with the channel.
 //
 // @param request - DeleteLivePackageChannelRequest
 //
@@ -91102,7 +98793,13 @@ func (client *Client) DeleteLivePackageChannelWithOptions(request *DeleteLivePac
 
 // Summary:
 //
-// 删除实时打包频道
+// Deletes a live package channel by GroupName and ChannelName.
+//
+// Description:
+//
+// ## [](#)Usage notes
+//
+// You need to provide GroupName and ChannelName as parameters to specify exactly which channel to delete. Before you delete a channel, you must delete the origin endpoints associated with the channel.
 //
 // @param request - DeleteLivePackageChannelRequest
 //
@@ -91120,7 +98817,13 @@ func (client *Client) DeleteLivePackageChannel(request *DeleteLivePackageChannel
 
 // Summary:
 //
-// 删除直播打包频道组
+// Deletes a live package channel group by name.
+//
+// Description:
+//
+// ## [](#)Usage notes
+//
+// Make sure that no channels are included in the channel group before you delete it.
 //
 // @param request - DeleteLivePackageChannelGroupRequest
 //
@@ -91173,7 +98876,13 @@ func (client *Client) DeleteLivePackageChannelGroupWithOptions(request *DeleteLi
 
 // Summary:
 //
-// 删除直播打包频道组
+// Deletes a live package channel group by name.
+//
+// Description:
+//
+// ## [](#)Usage notes
+//
+// Make sure that no channels are included in the channel group before you delete it.
 //
 // @param request - DeleteLivePackageChannelGroupRequest
 //
@@ -91191,7 +98900,13 @@ func (client *Client) DeleteLivePackageChannelGroup(request *DeleteLivePackageCh
 
 // Summary:
 //
-// 删除实时打包源站端点
+// Deletes an origin endpoint associated with a live package channel.
+//
+// Description:
+//
+// ## [](#)Usage notes
+//
+// This API operation is used to delete an origin endpoint associated with a live package channel by specifying `GroupName`, `ChannelName`, and `EndpointName`. This operation will permanently delete the relevant configurations. Exercise caution when you perform this operation.
 //
 // @param request - DeleteLivePackageOriginEndpointRequest
 //
@@ -91252,7 +98967,13 @@ func (client *Client) DeleteLivePackageOriginEndpointWithOptions(request *Delete
 
 // Summary:
 //
-// 删除实时打包源站端点
+// Deletes an origin endpoint associated with a live package channel.
+//
+// Description:
+//
+// ## [](#)Usage notes
+//
+// This API operation is used to delete an origin endpoint associated with a live package channel by specifying `GroupName`, `ChannelName`, and `EndpointName`. This operation will permanently delete the relevant configurations. Exercise caution when you perform this operation.
 //
 // @param request - DeleteLivePackageOriginEndpointRequest
 //
@@ -91714,15 +99435,15 @@ func (client *Client) DeleteLiveTranscodeTemplate(request *DeleteLiveTranscodeTe
 
 // Summary:
 //
-// Delete MediaConnect instance by instance ID
+// Deletes a MediaConnect flow.
 //
 // Description:
 //
-// - When the input Flow instance ID does not exist, the interface will return an error.
+//   When the specified flow ID is not available, an error code is returned.
 //
-// - When deleting a Flow instance, all Inputs and Outputs bound to this Flow will also be deleted.
+// 	- When a flow is deleted, its source and outputs are also deleted.
 //
-// - You cannot delete a Flow instance that is in the online state.
+// 	- When a flow is in the online state, it cannot be deleted.
 //
 // @param request - DeleteMediaConnectFlowRequest
 //
@@ -91775,15 +99496,15 @@ func (client *Client) DeleteMediaConnectFlowWithOptions(request *DeleteMediaConn
 
 // Summary:
 //
-// Delete MediaConnect instance by instance ID
+// Deletes a MediaConnect flow.
 //
 // Description:
 //
-// - When the input Flow instance ID does not exist, the interface will return an error.
+//   When the specified flow ID is not available, an error code is returned.
 //
-// - When deleting a Flow instance, all Inputs and Outputs bound to this Flow will also be deleted.
+// 	- When a flow is deleted, its source and outputs are also deleted.
 //
-// - You cannot delete a Flow instance that is in the online state.
+// 	- When a flow is in the online state, it cannot be deleted.
 //
 // @param request - DeleteMediaConnectFlowRequest
 //
@@ -91801,15 +99522,15 @@ func (client *Client) DeleteMediaConnectFlow(request *DeleteMediaConnectFlowRequ
 
 // Summary:
 //
-// Delete the input of a specific MediaConnect instance
+// Deletes the source of a MediaConnect flow.
 //
 // Description:
 //
-// - If the provided Flow instance ID does not exist, the interface will return an error.
+//   When the specified flow ID is not available, an error code is returned.
 //
-// - When the Flow instance status is online, the input cannot be deleted.
+// 	- When a flow is in the online state, its source cannot be deleted.
 //
-// - Only after all outputs under the Flow instance have been deleted can the input be deleted.
+// 	- You can delete the source only after all outputs of the flow have been deleted.
 //
 // @param request - DeleteMediaConnectFlowInputRequest
 //
@@ -91862,15 +99583,15 @@ func (client *Client) DeleteMediaConnectFlowInputWithOptions(request *DeleteMedi
 
 // Summary:
 //
-// Delete the input of a specific MediaConnect instance
+// Deletes the source of a MediaConnect flow.
 //
 // Description:
 //
-// - If the provided Flow instance ID does not exist, the interface will return an error.
+//   When the specified flow ID is not available, an error code is returned.
 //
-// - When the Flow instance status is online, the input cannot be deleted.
+// 	- When a flow is in the online state, its source cannot be deleted.
 //
-// - Only after all outputs under the Flow instance have been deleted can the input be deleted.
+// 	- You can delete the source only after all outputs of the flow have been deleted.
 //
 // @param request - DeleteMediaConnectFlowInputRequest
 //
@@ -91888,13 +99609,13 @@ func (client *Client) DeleteMediaConnectFlowInput(request *DeleteMediaConnectFlo
 
 // Summary:
 //
-// Delete a specific MediaConnect output
+// Deletes an output of a MediaConnect flow.
 //
 // Description:
 //
-// - When the provided Flow instance ID does not exist, the interface will return an error.
+//   When the specified flow ID is not available, an error code is returned.
 //
-// - When the Flow instance status is online, the output cannot be deleted.
+// 	- When a flow is in the online state, its outputs cannot be deleted.
 //
 // @param request - DeleteMediaConnectFlowOutputRequest
 //
@@ -91951,13 +99672,13 @@ func (client *Client) DeleteMediaConnectFlowOutputWithOptions(request *DeleteMed
 
 // Summary:
 //
-// Delete a specific MediaConnect output
+// Deletes an output of a MediaConnect flow.
 //
 // Description:
 //
-// - When the provided Flow instance ID does not exist, the interface will return an error.
+//   When the specified flow ID is not available, an error code is returned.
 //
-// - When the Flow instance status is online, the output cannot be deleted.
+// 	- When a flow is in the online state, its outputs cannot be deleted.
 //
 // @param request - DeleteMediaConnectFlowOutputRequest
 //
@@ -92124,6 +99845,279 @@ func (client *Client) DeleteMediaInfos(request *DeleteMediaInfosRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteMediaInfosResponse{}
 	_body, _err := client.DeleteMediaInfosWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a MediaLive channel.
+//
+// Description:
+//
+//
+//
+//  	- 	- You can only delete a channel that is not running.
+//
+// ## [](#qps-)QPS limit
+//
+// This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+//
+// @param request - DeleteMediaLiveChannelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMediaLiveChannelResponse
+func (client *Client) DeleteMediaLiveChannelWithOptions(request *DeleteMediaLiveChannelRequest, runtime *util.RuntimeOptions) (_result *DeleteMediaLiveChannelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
+		body["ChannelId"] = request.ChannelId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteMediaLiveChannel"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteMediaLiveChannelResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteMediaLiveChannelResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Deletes a MediaLive channel.
+//
+// Description:
+//
+//
+//
+//  	- 	- You can only delete a channel that is not running.
+//
+// ## [](#qps-)QPS limit
+//
+// This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+//
+// @param request - DeleteMediaLiveChannelRequest
+//
+// @return DeleteMediaLiveChannelResponse
+func (client *Client) DeleteMediaLiveChannel(request *DeleteMediaLiveChannelRequest) (_result *DeleteMediaLiveChannelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteMediaLiveChannelResponse{}
+	_body, _err := client.DeleteMediaLiveChannelWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a MediaLive input.
+//
+// Description:
+//
+//
+//
+//  	- 	- You can delete an input only when it is not associated with a MediaLive channel.
+//
+// ## [](#qps-)QPS limit
+//
+// This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+//
+// @param request - DeleteMediaLiveInputRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMediaLiveInputResponse
+func (client *Client) DeleteMediaLiveInputWithOptions(request *DeleteMediaLiveInputRequest, runtime *util.RuntimeOptions) (_result *DeleteMediaLiveInputResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InputId)) {
+		body["InputId"] = request.InputId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteMediaLiveInput"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteMediaLiveInputResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteMediaLiveInputResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Deletes a MediaLive input.
+//
+// Description:
+//
+//
+//
+//  	- 	- You can delete an input only when it is not associated with a MediaLive channel.
+//
+// ## [](#qps-)QPS limit
+//
+// This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+//
+// @param request - DeleteMediaLiveInputRequest
+//
+// @return DeleteMediaLiveInputResponse
+func (client *Client) DeleteMediaLiveInput(request *DeleteMediaLiveInputRequest) (_result *DeleteMediaLiveInputResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteMediaLiveInputResponse{}
+	_body, _err := client.DeleteMediaLiveInputWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a security group in MediaLive.
+//
+// Description:
+//
+//
+//
+//  	- 	- You can only delete a security group not associated with an input.
+//
+// ## [](#qps-)QPS limit
+//
+// This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+//
+// @param request - DeleteMediaLiveInputSecurityGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMediaLiveInputSecurityGroupResponse
+func (client *Client) DeleteMediaLiveInputSecurityGroupWithOptions(request *DeleteMediaLiveInputSecurityGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteMediaLiveInputSecurityGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
+		body["SecurityGroupId"] = request.SecurityGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteMediaLiveInputSecurityGroup"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteMediaLiveInputSecurityGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteMediaLiveInputSecurityGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Deletes a security group in MediaLive.
+//
+// Description:
+//
+//
+//
+//  	- 	- You can only delete a security group not associated with an input.
+//
+// ## [](#qps-)QPS limit
+//
+// This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+//
+// @param request - DeleteMediaLiveInputSecurityGroupRequest
+//
+// @return DeleteMediaLiveInputSecurityGroupResponse
+func (client *Client) DeleteMediaLiveInputSecurityGroup(request *DeleteMediaLiveInputSecurityGroupRequest) (_result *DeleteMediaLiveInputSecurityGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteMediaLiveInputSecurityGroupResponse{}
+	_body, _err := client.DeleteMediaLiveInputSecurityGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -92366,7 +100360,7 @@ func (client *Client) DeletePlayInfo(request *DeletePlayInfoRequest) (_result *D
 
 // Summary:
 //
-// 删除节目
+// Deletes a program from a channel.
 //
 // @param request - DeleteProgramRequest
 //
@@ -92423,7 +100417,7 @@ func (client *Client) DeleteProgramWithOptions(request *DeleteProgramRequest, ru
 
 // Summary:
 //
-// 删除节目
+// Deletes a program from a channel.
 //
 // @param request - DeleteProgramRequest
 //
@@ -92512,7 +100506,7 @@ func (client *Client) DeleteSmartJob(request *DeleteSmartJobRequest) (_result *D
 
 // Summary:
 //
-// 删除源
+// Deletes a source from MediaWeaver.
 //
 // @param request - DeleteSourceRequest
 //
@@ -92577,7 +100571,7 @@ func (client *Client) DeleteSourceWithOptions(request *DeleteSourceRequest, runt
 
 // Summary:
 //
-// 删除源
+// Deletes a source from MediaWeaver.
 //
 // @param request - DeleteSourceRequest
 //
@@ -92595,7 +100589,7 @@ func (client *Client) DeleteSource(request *DeleteSourceRequest) (_result *Delet
 
 // Summary:
 //
-// 删除源位置
+// Deletes a source location.
 //
 // @param request - DeleteSourceLocationRequest
 //
@@ -92652,7 +100646,7 @@ func (client *Client) DeleteSourceLocationWithOptions(request *DeleteSourceLocat
 
 // Summary:
 //
-// 删除源位置
+// Deletes a source location.
 //
 // @param request - DeleteSourceLocationRequest
 //
@@ -92753,7 +100747,7 @@ func (client *Client) DeleteTemplate(request *DeleteTemplateRequest) (_result *D
 
 // Summary:
 //
-// 删除点播打包资产
+// Deletes a VOD packaging asset.
 //
 // @param request - DeleteVodPackagingAssetRequest
 //
@@ -92806,7 +100800,7 @@ func (client *Client) DeleteVodPackagingAssetWithOptions(request *DeleteVodPacka
 
 // Summary:
 //
-// 删除点播打包资产
+// Deletes a VOD packaging asset.
 //
 // @param request - DeleteVodPackagingAssetRequest
 //
@@ -92824,7 +100818,7 @@ func (client *Client) DeleteVodPackagingAsset(request *DeleteVodPackagingAssetRe
 
 // Summary:
 //
-// 删除点播打包配置
+// Deletes a packaging configuration.
 //
 // @param request - DeleteVodPackagingConfigurationRequest
 //
@@ -92877,7 +100871,7 @@ func (client *Client) DeleteVodPackagingConfigurationWithOptions(request *Delete
 
 // Summary:
 //
-// 删除点播打包配置
+// Deletes a packaging configuration.
 //
 // @param request - DeleteVodPackagingConfigurationRequest
 //
@@ -92895,7 +100889,7 @@ func (client *Client) DeleteVodPackagingConfiguration(request *DeleteVodPackagin
 
 // Summary:
 //
-// 删除点播打包组
+// Deletes a packaging group.
 //
 // @param request - DeleteVodPackagingGroupRequest
 //
@@ -92948,7 +100942,7 @@ func (client *Client) DeleteVodPackagingGroupWithOptions(request *DeleteVodPacka
 
 // Summary:
 //
-// 删除点播打包组
+// Deletes a packaging group.
 //
 // @param request - DeleteVodPackagingGroupRequest
 //
@@ -92966,7 +100960,15 @@ func (client *Client) DeleteVodPackagingGroup(request *DeleteVodPackagingGroupRe
 
 // Summary:
 //
-// 查询实例
+// Queries the information about an AI agent.
+//
+// Description:
+//
+// ## [](#)Request description
+//
+// 	- **Feature**: You can call this operation to query the information about an AI agent.
+//
+// 	- **Scenario**: If you need to monitor or analyze the performance of an AI agent in a call or debug the agent configurations, you can call this operation to obtain required data.
 //
 // @param request - DescribeAIAgentInstanceRequest
 //
@@ -93019,7 +101021,15 @@ func (client *Client) DescribeAIAgentInstanceWithOptions(request *DescribeAIAgen
 
 // Summary:
 //
-// 查询实例
+// Queries the information about an AI agent.
+//
+// Description:
+//
+// ## [](#)Request description
+//
+// 	- **Feature**: You can call this operation to query the information about an AI agent.
+//
+// 	- **Scenario**: If you need to monitor or analyze the performance of an AI agent in a call or debug the agent configurations, you can call this operation to obtain required data.
 //
 // @param request - DescribeAIAgentInstanceRequest
 //
@@ -93448,7 +101458,11 @@ func (client *Client) DescribeMeterImsSummary(request *DescribeMeterImsSummaryRe
 
 // Summary:
 //
-// 描述回调配置
+// Queries the event callback configurations of an AI agent.
+//
+// Description:
+//
+// You can call this operation to query the detailed callback configurations of an AI agent.
 //
 // @param request - DescribeNotifyConfigRequest
 //
@@ -93501,7 +101515,11 @@ func (client *Client) DescribeNotifyConfigWithOptions(request *DescribeNotifyCon
 
 // Summary:
 //
-// 描述回调配置
+// Queries the event callback configurations of an AI agent.
+//
+// Description:
+//
+// You can call this operation to query the detailed callback configurations of an AI agent.
 //
 // @param request - DescribeNotifyConfigRequest
 //
@@ -93910,7 +101928,15 @@ func (client *Client) DropSearchLib(request *DropSearchLibRequest) (_result *Dro
 
 // Summary:
 //
-// 创建一个智能体实例，返回智能体所在的频道、频道内名称以及进入频道所需的token。
+// Creates an AI agent. This operation returns the channel in which the AI agent resides, the username of the AI agent in the channel, and the token that you can use to join the channel.
+//
+// Description:
+//
+// ## [](#)Request description
+//
+// You can call this operation to create an AI agent based on the provided ID. You can join the channel based on the returned information and talk to the agent.
+//
+// **Note:*	- Make sure that the provided AI agent ID is valid and configure optional parameters based on your business requirements.
 //
 // @param tmpReq - GenerateAIAgentCallRequest
 //
@@ -93924,6 +101950,10 @@ func (client *Client) GenerateAIAgentCallWithOptions(tmpReq *GenerateAIAgentCall
 	}
 	request := &GenerateAIAgentCallShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ChatSyncConfig)) {
+		request.ChatSyncConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ChatSyncConfig, tea.String("ChatSyncConfig"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.TemplateConfig)) {
 		request.TemplateConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TemplateConfig, tea.String("TemplateConfig"), tea.String("json"))
 	}
@@ -93931,6 +101961,10 @@ func (client *Client) GenerateAIAgentCallWithOptions(tmpReq *GenerateAIAgentCall
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AIAgentId)) {
 		query["AIAgentId"] = request.AIAgentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChatSyncConfigShrink)) {
+		query["ChatSyncConfig"] = request.ChatSyncConfigShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Expire)) {
@@ -93989,7 +102023,15 @@ func (client *Client) GenerateAIAgentCallWithOptions(tmpReq *GenerateAIAgentCall
 
 // Summary:
 //
-// 创建一个智能体实例，返回智能体所在的频道、频道内名称以及进入频道所需的token。
+// Creates an AI agent. This operation returns the channel in which the AI agent resides, the username of the AI agent in the channel, and the token that you can use to join the channel.
+//
+// Description:
+//
+// ## [](#)Request description
+//
+// You can call this operation to create an AI agent based on the provided ID. You can join the channel based on the returned information and talk to the agent.
+//
+// **Note:*	- Make sure that the provided AI agent ID is valid and configure optional parameters based on your business requirements.
 //
 // @param request - GenerateAIAgentCallRequest
 //
@@ -94148,7 +102190,7 @@ func (client *Client) GenerateMessageChatToken(request *GenerateMessageChatToken
 
 // Summary:
 //
-// 获取广告插入配置
+// Obtains details of an ad insertion configuration.
 //
 // @param request - GetAdInsertionRequest
 //
@@ -94201,7 +102243,7 @@ func (client *Client) GetAdInsertionWithOptions(request *GetAdInsertionRequest, 
 
 // Summary:
 //
-// 获取广告插入配置
+// Obtains details of an ad insertion configuration.
 //
 // @param request - GetAdInsertionRequest
 //
@@ -94527,7 +102569,7 @@ func (client *Client) GetCategories(request *GetCategoriesRequest) (_result *Get
 
 // Summary:
 //
-// 获取频道
+// Queries information about a channel in MediaWeaver.
 //
 // @param request - GetChannelRequest
 //
@@ -94580,7 +102622,7 @@ func (client *Client) GetChannelWithOptions(request *GetChannelRequest, runtime 
 
 // Summary:
 //
-// 获取频道
+// Queries information about a channel in MediaWeaver.
 //
 // @param request - GetChannelRequest
 //
@@ -95551,7 +103593,13 @@ func (client *Client) GetLiveEditingJob(request *GetLiveEditingJobRequest) (_res
 
 // Summary:
 //
-// 获取实时打包频道
+// Queries the details of a live package channel.
+//
+// Description:
+//
+// ## [](#)Usage notes
+//
+// This API operation allows you to query the details of a live package channel, including the creation time, description, ingest endpoint, protocol, number of segments, and segment duration.
 //
 // @param request - GetLivePackageChannelRequest
 //
@@ -95608,7 +103656,13 @@ func (client *Client) GetLivePackageChannelWithOptions(request *GetLivePackageCh
 
 // Summary:
 //
-// 获取实时打包频道
+// Queries the details of a live package channel.
+//
+// Description:
+//
+// ## [](#)Usage notes
+//
+// This API operation allows you to query the details of a live package channel, including the creation time, description, ingest endpoint, protocol, number of segments, and segment duration.
 //
 // @param request - GetLivePackageChannelRequest
 //
@@ -95626,7 +103680,13 @@ func (client *Client) GetLivePackageChannel(request *GetLivePackageChannelReques
 
 // Summary:
 //
-// 获取直播打包频道组
+// Queries the details of a live package channel group by name.
+//
+// Description:
+//
+// ## [](#)Usage notes
+//
+// You can call this API operation to query the details of a specific channel group, including its name, description, origin domain, and creation and last modification timestamps.
 //
 // @param request - GetLivePackageChannelGroupRequest
 //
@@ -95679,7 +103739,13 @@ func (client *Client) GetLivePackageChannelGroupWithOptions(request *GetLivePack
 
 // Summary:
 //
-// 获取直播打包频道组
+// Queries the details of a live package channel group by name.
+//
+// Description:
+//
+// ## [](#)Usage notes
+//
+// You can call this API operation to query the details of a specific channel group, including its name, description, origin domain, and creation and last modification timestamps.
 //
 // @param request - GetLivePackageChannelGroupRequest
 //
@@ -95697,7 +103763,11 @@ func (client *Client) GetLivePackageChannelGroup(request *GetLivePackageChannelG
 
 // Summary:
 //
-// 获取实时打包源站端点
+// Queries origin endpoints associated with a live package channel.
+//
+// Description:
+//
+// ## [](#)Usage notes
 //
 // @param request - GetLivePackageOriginEndpointRequest
 //
@@ -95758,7 +103828,11 @@ func (client *Client) GetLivePackageOriginEndpointWithOptions(request *GetLivePa
 
 // Summary:
 //
-// 获取实时打包源站端点
+// Queries origin endpoints associated with a live package channel.
+//
+// Description:
+//
+// ## [](#)Usage notes
 //
 // @param request - GetLivePackageOriginEndpointRequest
 //
@@ -96186,13 +104260,13 @@ func (client *Client) GetLiveTranscodeTemplate(request *GetLiveTranscodeTemplate
 
 // Summary:
 //
-// Retrieve detailed information of the corresponding MediaConnect based on the instance ID
+// Obtains information about a specific MediaConnect flow.
 //
 // Description:
 //
-// - When the input Flow instance ID does not exist, the interface will return an error.
+//   When the specified flow ID is not available, an error code is returned.
 //
-// - The StartTime returned by the interface is only valid when the Flow status is online.
+// 	- The returned StartTime is valid only when the flow is in the online state.
 //
 // @param request - GetMediaConnectFlowRequest
 //
@@ -96245,13 +104319,13 @@ func (client *Client) GetMediaConnectFlowWithOptions(request *GetMediaConnectFlo
 
 // Summary:
 //
-// Retrieve detailed information of the corresponding MediaConnect based on the instance ID
+// Obtains information about a specific MediaConnect flow.
 //
 // Description:
 //
-// - When the input Flow instance ID does not exist, the interface will return an error.
+//   When the specified flow ID is not available, an error code is returned.
 //
-// - The StartTime returned by the interface is only valid when the Flow status is online.
+// 	- The returned StartTime is valid only when the flow is in the online state.
 //
 // @param request - GetMediaConnectFlowRequest
 //
@@ -96269,11 +104343,11 @@ func (client *Client) GetMediaConnectFlow(request *GetMediaConnectFlowRequest) (
 
 // Summary:
 //
-// Get input information under a MediaConnect instance
+// Obtains information about the source of a MediaConnect flow.
 //
 // Description:
 //
-// - When the provided Flow instance ID does not exist, the interface will return an error.
+//   When the specified flow ID is not available, an error code is returned.
 //
 // @param request - GetMediaConnectFlowInputRequest
 //
@@ -96326,11 +104400,11 @@ func (client *Client) GetMediaConnectFlowInputWithOptions(request *GetMediaConne
 
 // Summary:
 //
-// Get input information under a MediaConnect instance
+// Obtains information about the source of a MediaConnect flow.
 //
 // Description:
 //
-// - When the provided Flow instance ID does not exist, the interface will return an error.
+//   When the specified flow ID is not available, an error code is returned.
 //
 // @param request - GetMediaConnectFlowInputRequest
 //
@@ -96348,11 +104422,11 @@ func (client *Client) GetMediaConnectFlowInput(request *GetMediaConnectFlowInput
 
 // Summary:
 //
-// Retrieve detailed information of a specific output based on outputName
+// Obtains information about an output of a MediaConnect flow.
 //
 // Description:
 //
-// - When the provided Flow instance ID does not exist, the interface will return an error.
+//   When the specified flow ID is not available, an error code is returned.
 //
 // @param request - GetMediaConnectFlowOutputRequest
 //
@@ -96409,11 +104483,11 @@ func (client *Client) GetMediaConnectFlowOutputWithOptions(request *GetMediaConn
 
 // Summary:
 //
-// Retrieve detailed information of a specific output based on outputName
+// Obtains information about an output of a MediaConnect flow.
 //
 // Description:
 //
-// - When the provided Flow instance ID does not exist, the interface will return an error.
+//   When the specified flow ID is not available, an error code is returned.
 //
 // @param request - GetMediaConnectFlowOutputRequest
 //
@@ -96431,7 +104505,7 @@ func (client *Client) GetMediaConnectFlowOutput(request *GetMediaConnectFlowOutp
 
 // Summary:
 //
-// 获取 MediaConvert 任务详情
+// Obtains the details of a transcoding task.
 //
 // @param request - GetMediaConvertJobRequest
 //
@@ -96484,7 +104558,7 @@ func (client *Client) GetMediaConvertJobWithOptions(request *GetMediaConvertJobR
 
 // Summary:
 //
-// 获取 MediaConvert 任务详情
+// Obtains the details of a transcoding task.
 //
 // @param request - GetMediaConvertJobRequest
 //
@@ -96655,6 +104729,267 @@ func (client *Client) GetMediaInfoJob(request *GetMediaInfoJobRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &GetMediaInfoJobResponse{}
 	_body, _err := client.GetMediaInfoJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a MediaLive channel.
+//
+// Description:
+//
+//
+//
+//  	- ## [](#qps-)QPS limit
+//
+// This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+//
+// @param request - GetMediaLiveChannelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMediaLiveChannelResponse
+func (client *Client) GetMediaLiveChannelWithOptions(request *GetMediaLiveChannelRequest, runtime *util.RuntimeOptions) (_result *GetMediaLiveChannelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
+		body["ChannelId"] = request.ChannelId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetMediaLiveChannel"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetMediaLiveChannelResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetMediaLiveChannelResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Queries a MediaLive channel.
+//
+// Description:
+//
+//
+//
+//  	- ## [](#qps-)QPS limit
+//
+// This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+//
+// @param request - GetMediaLiveChannelRequest
+//
+// @return GetMediaLiveChannelResponse
+func (client *Client) GetMediaLiveChannel(request *GetMediaLiveChannelRequest) (_result *GetMediaLiveChannelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetMediaLiveChannelResponse{}
+	_body, _err := client.GetMediaLiveChannelWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a MediaLive input.
+//
+// Description:
+//
+//
+//
+//  	- ## [](#qps-)QPS limit
+//
+// This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+//
+// @param request - GetMediaLiveInputRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMediaLiveInputResponse
+func (client *Client) GetMediaLiveInputWithOptions(request *GetMediaLiveInputRequest, runtime *util.RuntimeOptions) (_result *GetMediaLiveInputResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InputId)) {
+		body["InputId"] = request.InputId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetMediaLiveInput"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetMediaLiveInputResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetMediaLiveInputResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Queries the details of a MediaLive input.
+//
+// Description:
+//
+//
+//
+//  	- ## [](#qps-)QPS limit
+//
+// This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+//
+// @param request - GetMediaLiveInputRequest
+//
+// @return GetMediaLiveInputResponse
+func (client *Client) GetMediaLiveInput(request *GetMediaLiveInputRequest) (_result *GetMediaLiveInputResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetMediaLiveInputResponse{}
+	_body, _err := client.GetMediaLiveInputWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a security group in MediaLive.
+//
+// Description:
+//
+//
+//
+//  	- ## [](#qps-)QPS limit
+//
+// This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+//
+// @param request - GetMediaLiveInputSecurityGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMediaLiveInputSecurityGroupResponse
+func (client *Client) GetMediaLiveInputSecurityGroupWithOptions(request *GetMediaLiveInputSecurityGroupRequest, runtime *util.RuntimeOptions) (_result *GetMediaLiveInputSecurityGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
+		body["SecurityGroupId"] = request.SecurityGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetMediaLiveInputSecurityGroup"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetMediaLiveInputSecurityGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetMediaLiveInputSecurityGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Queries the details of a security group in MediaLive.
+//
+// Description:
+//
+//
+//
+//  	- ## [](#qps-)QPS limit
+//
+// This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+//
+// @param request - GetMediaLiveInputSecurityGroupRequest
+//
+// @return GetMediaLiveInputSecurityGroupResponse
+func (client *Client) GetMediaLiveInputSecurityGroup(request *GetMediaLiveInputSecurityGroupRequest) (_result *GetMediaLiveInputSecurityGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetMediaLiveInputSecurityGroupResponse{}
+	_body, _err := client.GetMediaLiveInputSecurityGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -97031,7 +105366,7 @@ func (client *Client) GetPlayInfo(request *GetPlayInfoRequest) (_result *GetPlay
 
 // Summary:
 //
-// 获取节目
+// Queries a program.
 //
 // @param request - GetProgramRequest
 //
@@ -97088,7 +105423,7 @@ func (client *Client) GetProgramWithOptions(request *GetProgramRequest, runtime 
 
 // Summary:
 //
-// 获取节目
+// Queries a program.
 //
 // @param request - GetProgramRequest
 //
@@ -97477,7 +105812,7 @@ func (client *Client) GetSnapshotUrls(request *GetSnapshotUrlsRequest) (_result 
 
 // Summary:
 //
-// 获取源
+// Queries a source in MediaWeaver.
 //
 // @param request - GetSourceRequest
 //
@@ -97538,7 +105873,7 @@ func (client *Client) GetSourceWithOptions(request *GetSourceRequest, runtime *u
 
 // Summary:
 //
-// 获取源
+// Queries a source in MediaWeaver.
 //
 // @param request - GetSourceRequest
 //
@@ -97556,7 +105891,7 @@ func (client *Client) GetSource(request *GetSourceRequest) (_result *GetSourceRe
 
 // Summary:
 //
-// 获取源位置
+// Queries a source location.
 //
 // @param request - GetSourceLocationRequest
 //
@@ -97609,7 +105944,7 @@ func (client *Client) GetSourceLocationWithOptions(request *GetSourceLocationReq
 
 // Summary:
 //
-// 获取源位置
+// Queries a source location.
 //
 // @param request - GetSourceLocationRequest
 //
@@ -98271,7 +106606,7 @@ func (client *Client) GetVideoList(request *GetVideoListRequest) (_result *GetVi
 
 // Summary:
 //
-// 查询点播打包资产
+// Queries a VOD packaging asset.
 //
 // @param request - GetVodPackagingAssetRequest
 //
@@ -98324,7 +106659,7 @@ func (client *Client) GetVodPackagingAssetWithOptions(request *GetVodPackagingAs
 
 // Summary:
 //
-// 查询点播打包资产
+// Queries a VOD packaging asset.
 //
 // @param request - GetVodPackagingAssetRequest
 //
@@ -98342,7 +106677,7 @@ func (client *Client) GetVodPackagingAsset(request *GetVodPackagingAssetRequest)
 
 // Summary:
 //
-// 查询打包模板配置
+// Queries a packaging configuration.
 //
 // @param request - GetVodPackagingConfigurationRequest
 //
@@ -98395,7 +106730,7 @@ func (client *Client) GetVodPackagingConfigurationWithOptions(request *GetVodPac
 
 // Summary:
 //
-// 查询打包模板配置
+// Queries a packaging configuration.
 //
 // @param request - GetVodPackagingConfigurationRequest
 //
@@ -98413,7 +106748,7 @@ func (client *Client) GetVodPackagingConfiguration(request *GetVodPackagingConfi
 
 // Summary:
 //
-// 获取点播打包组
+// Queries a packaging group.
 //
 // @param request - GetVodPackagingGroupRequest
 //
@@ -98466,7 +106801,7 @@ func (client *Client) GetVodPackagingGroupWithOptions(request *GetVodPackagingGr
 
 // Summary:
 //
-// 获取点播打包组
+// Queries a packaging group.
 //
 // @param request - GetVodPackagingGroupRequest
 //
@@ -98733,7 +107068,17 @@ func (client *Client) ListAIAgentDialogues(request *ListAIAgentDialoguesRequest)
 
 // Summary:
 //
-// 列出实例
+// Queries a list of AI agents.
+//
+// Description:
+//
+// ## [](#)Request description
+//
+// You can call this operation to query a list of AI agents based on the `AIAgentId`. The optional parameters include `StartTime`, `EndTime`, `PageSize`, and `PageNumber`. The returned result includes the status, runtime configurations, template configurations, custom information, and the URL of call log file for each AI agent.
+//
+// **Note**:
+//
+// 	- The default value of `PageSize` is 10, and the default value of `PageNumber` is 1.
 //
 // @param request - ListAIAgentInstanceRequest
 //
@@ -98802,7 +107147,17 @@ func (client *Client) ListAIAgentInstanceWithOptions(request *ListAIAgentInstanc
 
 // Summary:
 //
-// 列出实例
+// Queries a list of AI agents.
+//
+// Description:
+//
+// ## [](#)Request description
+//
+// You can call this operation to query a list of AI agents based on the `AIAgentId`. The optional parameters include `StartTime`, `EndTime`, `PageSize`, and `PageNumber`. The returned result includes the status, runtime configurations, template configurations, custom information, and the URL of call log file for each AI agent.
+//
+// **Note**:
+//
+// 	- The default value of `PageSize` is 10, and the default value of `PageNumber` is 1.
 //
 // @param request - ListAIAgentInstanceRequest
 //
@@ -98820,7 +107175,7 @@ func (client *Client) ListAIAgentInstance(request *ListAIAgentInstanceRequest) (
 
 // Summary:
 //
-// 获取广告插入配置列表
+// Obtains ad insertion configurations.
 //
 // @param request - ListAdInsertionsRequest
 //
@@ -98893,7 +107248,7 @@ func (client *Client) ListAdInsertionsWithOptions(request *ListAdInsertionsReque
 
 // Summary:
 //
-// 获取广告插入配置列表
+// Obtains ad insertion configurations.
 //
 // @param request - ListAdInsertionsRequest
 //
@@ -98911,7 +107266,7 @@ func (client *Client) ListAdInsertions(request *ListAdInsertionsRequest) (_resul
 
 // Summary:
 //
-// 获取警告
+// Lists alerts received in MediaWeaver.
 //
 // @param request - ListAlertsRequest
 //
@@ -98992,7 +107347,7 @@ func (client *Client) ListAlertsWithOptions(request *ListAlertsRequest, runtime 
 
 // Summary:
 //
-// 获取警告
+// Lists alerts received in MediaWeaver.
 //
 // @param request - ListAlertsRequest
 //
@@ -99342,7 +107697,7 @@ func (client *Client) ListBatchMediaProducingJobs(request *ListBatchMediaProduci
 
 // Summary:
 //
-// 获取频道警告
+// Lists alerts for resources in a MediaWeaver channel.
 //
 // @param request - ListChannelAlertsRequest
 //
@@ -99419,7 +107774,7 @@ func (client *Client) ListChannelAlertsWithOptions(request *ListChannelAlertsReq
 
 // Summary:
 //
-// 获取频道警告
+// Lists alerts for resources in a MediaWeaver channel.
 //
 // @param request - ListChannelAlertsRequest
 //
@@ -99437,7 +107792,7 @@ func (client *Client) ListChannelAlerts(request *ListChannelAlertsRequest) (_res
 
 // Summary:
 //
-// 获取频道列表
+// Lists MediaWeaver channels.
 //
 // @param request - ListChannelsRequest
 //
@@ -99518,7 +107873,7 @@ func (client *Client) ListChannelsWithOptions(request *ListChannelsRequest, runt
 
 // Summary:
 //
-// 获取频道列表
+// Lists MediaWeaver channels.
 //
 // @param request - ListChannelsRequest
 //
@@ -100181,7 +108536,11 @@ func (client *Client) ListEditingProjects(request *ListEditingProjectsRequest) (
 
 // Summary:
 //
-// 查询实时打包频道组
+// Queries live package channel groups by page. Fuzzy search by name or description and sorting are supported.
+//
+// Description:
+//
+// ## [](#)Usage notes
 //
 // @param request - ListLivePackageChannelGroupsRequest
 //
@@ -100246,7 +108605,11 @@ func (client *Client) ListLivePackageChannelGroupsWithOptions(request *ListLiveP
 
 // Summary:
 //
-// 查询实时打包频道组
+// Queries live package channel groups by page. Fuzzy search by name or description and sorting are supported.
+//
+// Description:
+//
+// ## [](#)Usage notes
 //
 // @param request - ListLivePackageChannelGroupsRequest
 //
@@ -100264,7 +108627,23 @@ func (client *Client) ListLivePackageChannelGroups(request *ListLivePackageChann
 
 // Summary:
 //
-// 查询实时打包频道
+// Queries live package channels by channel group and keyword. Paging and sorting are supported.
+//
+// Description:
+//
+// ## [](#)Usage notes
+//
+// This API operation allows you to query live package channels by **GroupName*	- and **Keyword**. Keyword is optional. You can sort the channels by creation time in ascending or descending order and paginate the results. This facilitates the management of channels and retrieval of channel information.
+//
+// 	- **GroupName*	- is required to specify the channel group to which the channel belongs.
+//
+// 	- **Keyword*	- supports fuzzy match of channel names or descriptions, which helps quickly filter desired channels.
+//
+// 	- **PageNo*	- and **PageSize*	- can help control the paging of returned results to facilitate batch processing of data.
+//
+// 	- **SortBy*	- allows you to customize how the results are sorted. By default, the results are sorted in descending order.
+//
+// **RequestId*	- in the response is used for subsequent troubleshooting. **TotalCount*	- indicates the total number of channels that meet the conditions.
 //
 // @param request - ListLivePackageChannelsRequest
 //
@@ -100333,7 +108712,23 @@ func (client *Client) ListLivePackageChannelsWithOptions(request *ListLivePackag
 
 // Summary:
 //
-// 查询实时打包频道
+// Queries live package channels by channel group and keyword. Paging and sorting are supported.
+//
+// Description:
+//
+// ## [](#)Usage notes
+//
+// This API operation allows you to query live package channels by **GroupName*	- and **Keyword**. Keyword is optional. You can sort the channels by creation time in ascending or descending order and paginate the results. This facilitates the management of channels and retrieval of channel information.
+//
+// 	- **GroupName*	- is required to specify the channel group to which the channel belongs.
+//
+// 	- **Keyword*	- supports fuzzy match of channel names or descriptions, which helps quickly filter desired channels.
+//
+// 	- **PageNo*	- and **PageSize*	- can help control the paging of returned results to facilitate batch processing of data.
+//
+// 	- **SortBy*	- allows you to customize how the results are sorted. By default, the results are sorted in descending order.
+//
+// **RequestId*	- in the response is used for subsequent troubleshooting. **TotalCount*	- indicates the total number of channels that meet the conditions.
 //
 // @param request - ListLivePackageChannelsRequest
 //
@@ -100351,7 +108746,13 @@ func (client *Client) ListLivePackageChannels(request *ListLivePackageChannelsRe
 
 // Summary:
 //
-// 查询实时打包源站端点
+// Queries origin endpoints by channel group and channel name. Paging and sorting are supported.
+//
+// Description:
+//
+// ## [](#)Usage notes
+//
+// This API operation allows you to query origin endpoints associated with a live package channel. The results include detailed configurations about the origin endpoints, such as access URL, protocol, and security policies. Paging and sorting by creation time are supported.
 //
 // @param request - ListLivePackageOriginEndpointsRequest
 //
@@ -100424,7 +108825,13 @@ func (client *Client) ListLivePackageOriginEndpointsWithOptions(request *ListLiv
 
 // Summary:
 //
-// 查询实时打包源站端点
+// Queries origin endpoints by channel group and channel name. Paging and sorting are supported.
+//
+// Description:
+//
+// ## [](#)Usage notes
+//
+// This API operation allows you to query origin endpoints associated with a live package channel. The results include detailed configurations about the origin endpoints, such as access URL, protocol, and security policies. Paging and sorting by creation time are supported.
 //
 // @param request - ListLivePackageOriginEndpointsRequest
 //
@@ -101248,6 +109655,323 @@ func (client *Client) ListMediaInfoJobs(request *ListMediaInfoJobsRequest) (_res
 
 // Summary:
 //
+// Queries MediaLive channels.
+//
+// Description:
+//
+//
+//
+//  	- ## [](#qps-)QPS limit
+//
+// This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+//
+// @param request - ListMediaLiveChannelsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMediaLiveChannelsResponse
+func (client *Client) ListMediaLiveChannelsWithOptions(request *ListMediaLiveChannelsRequest, runtime *util.RuntimeOptions) (_result *ListMediaLiveChannelsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		body["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Skip)) {
+		body["Skip"] = request.Skip
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortOrder)) {
+		body["SortOrder"] = request.SortOrder
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.States)) {
+		body["States"] = request.States
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListMediaLiveChannels"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListMediaLiveChannelsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListMediaLiveChannelsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Queries MediaLive channels.
+//
+// Description:
+//
+//
+//
+//  	- ## [](#qps-)QPS limit
+//
+// This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+//
+// @param request - ListMediaLiveChannelsRequest
+//
+// @return ListMediaLiveChannelsResponse
+func (client *Client) ListMediaLiveChannels(request *ListMediaLiveChannelsRequest) (_result *ListMediaLiveChannelsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListMediaLiveChannelsResponse{}
+	_body, _err := client.ListMediaLiveChannelsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the security groups in MediaLive.
+//
+// Description:
+//
+//
+//
+//  	- ## [](#qps-)QPS limit
+//
+// This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+//
+// @param request - ListMediaLiveInputSecurityGroupsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMediaLiveInputSecurityGroupsResponse
+func (client *Client) ListMediaLiveInputSecurityGroupsWithOptions(request *ListMediaLiveInputSecurityGroupsRequest, runtime *util.RuntimeOptions) (_result *ListMediaLiveInputSecurityGroupsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		body["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Skip)) {
+		body["Skip"] = request.Skip
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortOrder)) {
+		body["SortOrder"] = request.SortOrder
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListMediaLiveInputSecurityGroups"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListMediaLiveInputSecurityGroupsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListMediaLiveInputSecurityGroupsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Queries the security groups in MediaLive.
+//
+// Description:
+//
+//
+//
+//  	- ## [](#qps-)QPS limit
+//
+// This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+//
+// @param request - ListMediaLiveInputSecurityGroupsRequest
+//
+// @return ListMediaLiveInputSecurityGroupsResponse
+func (client *Client) ListMediaLiveInputSecurityGroups(request *ListMediaLiveInputSecurityGroupsRequest) (_result *ListMediaLiveInputSecurityGroupsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListMediaLiveInputSecurityGroupsResponse{}
+	_body, _err := client.ListMediaLiveInputSecurityGroupsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries MediaLive inputs.
+//
+// Description:
+//
+//
+//
+//  	- ## [](#qps-)QPS limit
+//
+// This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+//
+// @param request - ListMediaLiveInputsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMediaLiveInputsResponse
+func (client *Client) ListMediaLiveInputsWithOptions(request *ListMediaLiveInputsRequest, runtime *util.RuntimeOptions) (_result *ListMediaLiveInputsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		body["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Skip)) {
+		body["Skip"] = request.Skip
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortOrder)) {
+		body["SortOrder"] = request.SortOrder
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Types)) {
+		body["Types"] = request.Types
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListMediaLiveInputs"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListMediaLiveInputsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListMediaLiveInputsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Queries MediaLive inputs.
+//
+// Description:
+//
+//
+//
+//  	- ## [](#qps-)QPS limit
+//
+// This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+//
+// @param request - ListMediaLiveInputsRequest
+//
+// @return ListMediaLiveInputsResponse
+func (client *Client) ListMediaLiveInputs(request *ListMediaLiveInputsRequest) (_result *ListMediaLiveInputsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListMediaLiveInputsResponse{}
+	_body, _err := client.ListMediaLiveInputsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a list of marks of a media asset.
 //
 // @param request - ListMediaMarksRequest
@@ -101596,7 +110320,7 @@ func (client *Client) ListPipelines(request *ListPipelinesRequest) (_result *Lis
 
 // Summary:
 //
-// 获取节目列表
+// Lists programs.
 //
 // @param request - ListProgramsRequest
 //
@@ -101665,7 +110389,7 @@ func (client *Client) ListProgramsWithOptions(request *ListProgramsRequest, runt
 
 // Summary:
 //
-// 获取节目列表
+// Lists programs.
 //
 // @param request - ListProgramsRequest
 //
@@ -101778,7 +110502,7 @@ func (client *Client) ListPublicMediaBasicInfos(request *ListPublicMediaBasicInf
 
 // Summary:
 //
-// 获取节目单
+// Lists the program schedule of a MediaWeaver channel.
 //
 // @param request - ListSchedulesRequest
 //
@@ -101843,7 +110567,7 @@ func (client *Client) ListSchedulesWithOptions(request *ListSchedulesRequest, ru
 
 // Summary:
 //
-// 获取节目单
+// Lists the program schedule of a MediaWeaver channel.
 //
 // @param request - ListSchedulesRequest
 //
@@ -102235,7 +110959,7 @@ func (client *Client) ListSnapshotJobs(request *ListSnapshotJobsRequest) (_resul
 
 // Summary:
 //
-// 列举源位置
+// Lists source locations.
 //
 // @param request - ListSourceLocationsRequest
 //
@@ -102308,7 +111032,7 @@ func (client *Client) ListSourceLocationsWithOptions(request *ListSourceLocation
 
 // Summary:
 //
-// 列举源位置
+// Lists source locations.
 //
 // @param request - ListSourceLocationsRequest
 //
@@ -102326,7 +111050,7 @@ func (client *Client) ListSourceLocations(request *ListSourceLocationsRequest) (
 
 // Summary:
 //
-// 列举源
+// Lists sources in MediaWeaver.
 //
 // @param request - ListSourcesRequest
 //
@@ -102407,7 +111131,7 @@ func (client *Client) ListSourcesWithOptions(request *ListSourcesRequest, runtim
 
 // Summary:
 //
-// 列举源
+// Lists sources in MediaWeaver.
 //
 // @param request - ListSourcesRequest
 //
@@ -102838,7 +111562,7 @@ func (client *Client) ListTranscodeJobs(request *ListTranscodeJobsRequest) (_res
 
 // Summary:
 //
-// 列举点播打包资产
+// Lists VOD packaging assets.
 //
 // @param request - ListVodPackagingAssetsRequest
 //
@@ -102907,7 +111631,7 @@ func (client *Client) ListVodPackagingAssetsWithOptions(request *ListVodPackagin
 
 // Summary:
 //
-// 列举点播打包资产
+// Lists VOD packaging assets.
 //
 // @param request - ListVodPackagingAssetsRequest
 //
@@ -102925,7 +111649,7 @@ func (client *Client) ListVodPackagingAssets(request *ListVodPackagingAssetsRequ
 
 // Summary:
 //
-// 列举点播打包配置列表
+// Lists packaging configurations.
 //
 // @param request - ListVodPackagingConfigurationsRequest
 //
@@ -102994,7 +111718,7 @@ func (client *Client) ListVodPackagingConfigurationsWithOptions(request *ListVod
 
 // Summary:
 //
-// 列举点播打包配置列表
+// Lists packaging configurations.
 //
 // @param request - ListVodPackagingConfigurationsRequest
 //
@@ -103012,7 +111736,7 @@ func (client *Client) ListVodPackagingConfigurations(request *ListVodPackagingCo
 
 // Summary:
 //
-// 列举点播打包组
+// Lists packaging groups.
 //
 // @param request - ListVodPackagingGroupsRequest
 //
@@ -103077,7 +111801,7 @@ func (client *Client) ListVodPackagingGroupsWithOptions(request *ListVodPackagin
 
 // Summary:
 //
-// 列举点播打包组
+// Lists packaging groups.
 //
 // @param request - ListVodPackagingGroupsRequest
 //
@@ -105374,7 +114098,7 @@ func (client *Client) SearchPublicMediaInfo(request *SearchPublicMediaInfoReques
 
 // Summary:
 //
-// 向智能体通话发送datachannel消息
+// Sends a DataChannel message to an AI agent.
 //
 // @param request - SendAIAgentDataChannelMessageRequest
 //
@@ -105431,7 +114155,7 @@ func (client *Client) SendAIAgentDataChannelMessageWithOptions(request *SendAIAg
 
 // Summary:
 //
-// 向智能体通话发送datachannel消息
+// Sends a DataChannel message to an AI agent.
 //
 // @param request - SendAIAgentDataChannelMessageRequest
 //
@@ -105449,7 +114173,19 @@ func (client *Client) SendAIAgentDataChannelMessage(request *SendAIAgentDataChan
 
 // Summary:
 //
-// 用来立即让某个智能体实例播报指定的文本。
+// Instructs an AI agent to immediately broadcast a text message and supports interruption settings.
+//
+// Description:
+//
+// You can call this operation to instruct an AI agent to broadcast the content that you specify. You can determine whether this broadcast can immediately interrupt the ongoing speech. The interruption is allowed by default.
+//
+// **Note**
+//
+// 	- Make sure that the `InstanceId` is valid and corresponds to an existing AI agent.
+//
+// 	- The content of `Text` must comply with the specifications and does not contain sensitive or inappropriate information.
+//
+// 	- If you do not want the new broadcast to interrupt the ongoing speech, you must set `EnableInterrupt` to `false`.
 //
 // @param request - SendAIAgentSpeechRequest
 //
@@ -105510,7 +114246,19 @@ func (client *Client) SendAIAgentSpeechWithOptions(request *SendAIAgentSpeechReq
 
 // Summary:
 //
-// 用来立即让某个智能体实例播报指定的文本。
+// Instructs an AI agent to immediately broadcast a text message and supports interruption settings.
+//
+// Description:
+//
+// You can call this operation to instruct an AI agent to broadcast the content that you specify. You can determine whether this broadcast can immediately interrupt the ongoing speech. The interruption is allowed by default.
+//
+// **Note**
+//
+// 	- Make sure that the `InstanceId` is valid and corresponds to an existing AI agent.
+//
+// 	- The content of `Text` must comply with the specifications and does not contain sensitive or inappropriate information.
+//
+// 	- If you do not want the new broadcast to interrupt the ongoing speech, you must set `EnableInterrupt` to `false`.
 //
 // @param request - SendAIAgentSpeechRequest
 //
@@ -105744,6 +114492,101 @@ func (client *Client) SendLiveTranscodeJobCommand(request *SendLiveTranscodeJobC
 	runtime := &util.RuntimeOptions{}
 	_result = &SendLiveTranscodeJobCommandResponse{}
 	_body, _err := client.SendLiveTranscodeJobCommandWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 向IM客户端发送消息。
+//
+// @param request - SendMessageChatTextRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SendMessageChatTextResponse
+func (client *Client) SendMessageChatTextWithOptions(request *SendMessageChatTextRequest, runtime *util.RuntimeOptions) (_result *SendMessageChatTextResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AIAgentId)) {
+		query["AIAgentId"] = request.AIAgentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mode)) {
+		query["Mode"] = request.Mode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NeedArchiving)) {
+		query["NeedArchiving"] = request.NeedArchiving
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReceiverId)) {
+		query["ReceiverId"] = request.ReceiverId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		query["SessionId"] = request.SessionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Text)) {
+		query["Text"] = request.Text
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SendMessageChatText"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SendMessageChatTextResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SendMessageChatTextResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 向IM客户端发送消息。
+//
+// @param request - SendMessageChatTextRequest
+//
+// @return SendMessageChatTextResponse
+func (client *Client) SendMessageChatText(request *SendMessageChatTextRequest) (_result *SendMessageChatTextResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SendMessageChatTextResponse{}
+	_body, _err := client.SendMessageChatTextWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -106073,7 +114916,13 @@ func (client *Client) SetEventCallback(request *SetEventCallbackRequest) (_resul
 
 // Summary:
 //
-// 更新回调配置
+// Enables or disables event notifications for an AI agent and configures the callback URL and event types.
+//
+// Description:
+//
+// ## [](#)Request description
+//
+// You can call this operation to configure event notifications for an AI agent. You can configure `EnableNotify` to enable or disable event notifications, configure `CallbackUrl` to specify a callback URL, and configure `EventTypes` to specify event types. You can also configure `Token` to specify an authentication token for enhanced security. The system returns a unique `RequestId` for subsequent tracing after a successful request.
 //
 // @param request - SetNotifyConfigRequest
 //
@@ -106142,7 +114991,13 @@ func (client *Client) SetNotifyConfigWithOptions(request *SetNotifyConfigRequest
 
 // Summary:
 //
-// 更新回调配置
+// Enables or disables event notifications for an AI agent and configures the callback URL and event types.
+//
+// Description:
+//
+// ## [](#)Request description
+//
+// You can call this operation to configure event notifications for an AI agent. You can configure `EnableNotify` to enable or disable event notifications, configure `CallbackUrl` to specify a callback URL, and configure `EventTypes` to specify event types. You can also configure `Token` to specify an authentication token for enhanced security. The system returns a unique `RequestId` for subsequent tracing after a successful request.
 //
 // @param request - SetNotifyConfigRequest
 //
@@ -106160,7 +115015,11 @@ func (client *Client) SetNotifyConfig(request *SetNotifyConfigRequest) (_result 
 
 // Summary:
 //
-// 启动一个智能体实例，并加入通话。
+// Starts an AI agent that is configured in the Intelligent Media Services (IMS) console.
+//
+// Description:
+//
+// You can call this operation to start an AI agent instance for a conversation. ````````When the AI agent is started, the system returns a unique `InstanceId` for subsequent tracking and operations.
 //
 // @param tmpReq - StartAIAgentInstanceRequest
 //
@@ -106174,6 +115033,10 @@ func (client *Client) StartAIAgentInstanceWithOptions(tmpReq *StartAIAgentInstan
 	}
 	request := &StartAIAgentInstanceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ChatSyncConfig)) {
+		request.ChatSyncConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ChatSyncConfig, tea.String("ChatSyncConfig"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.RuntimeConfig)) {
 		request.RuntimeConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RuntimeConfig, tea.String("RuntimeConfig"), tea.String("json"))
 	}
@@ -106185,6 +115048,10 @@ func (client *Client) StartAIAgentInstanceWithOptions(tmpReq *StartAIAgentInstan
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AIAgentId)) {
 		query["AIAgentId"] = request.AIAgentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChatSyncConfigShrink)) {
+		query["ChatSyncConfig"] = request.ChatSyncConfigShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RuntimeConfigShrink)) {
@@ -106239,7 +115106,11 @@ func (client *Client) StartAIAgentInstanceWithOptions(tmpReq *StartAIAgentInstan
 
 // Summary:
 //
-// 启动一个智能体实例，并加入通话。
+// Starts an AI agent that is configured in the Intelligent Media Services (IMS) console.
+//
+// Description:
+//
+// You can call this operation to start an AI agent instance for a conversation. ````````When the AI agent is started, the system returns a unique `InstanceId` for subsequent tracking and operations.
 //
 // @param request - StartAIAgentInstanceRequest
 //
@@ -106257,7 +115128,7 @@ func (client *Client) StartAIAgentInstance(request *StartAIAgentInstanceRequest)
 
 // Summary:
 //
-// 启动频道
+// Starts a channel.
 //
 // @param request - StartChannelRequest
 //
@@ -106310,7 +115181,7 @@ func (client *Client) StartChannelWithOptions(request *StartChannelRequest, runt
 
 // Summary:
 //
-// 启动频道
+// Starts a channel.
 //
 // @param request - StartChannelRequest
 //
@@ -106319,6 +115190,97 @@ func (client *Client) StartChannel(request *StartChannelRequest) (_result *Start
 	runtime := &util.RuntimeOptions{}
 	_result = &StartChannelResponse{}
 	_body, _err := client.StartChannelWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Starts a MediaLive channel.
+//
+// Description:
+//
+//
+//
+//  	- 	- You can call this operation only when the channel is idle. You cannot start a channel repeatedly.
+//
+// ## [](#qps-)QPS limit
+//
+// This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+//
+// @param request - StartMediaLiveChannelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartMediaLiveChannelResponse
+func (client *Client) StartMediaLiveChannelWithOptions(request *StartMediaLiveChannelRequest, runtime *util.RuntimeOptions) (_result *StartMediaLiveChannelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
+		body["ChannelId"] = request.ChannelId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartMediaLiveChannel"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StartMediaLiveChannelResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StartMediaLiveChannelResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Starts a MediaLive channel.
+//
+// Description:
+//
+//
+//
+//  	- 	- You can call this operation only when the channel is idle. You cannot start a channel repeatedly.
+//
+// ## [](#qps-)QPS limit
+//
+// This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+//
+// @param request - StartMediaLiveChannelRequest
+//
+// @return StartMediaLiveChannelResponse
+func (client *Client) StartMediaLiveChannel(request *StartMediaLiveChannelRequest) (_result *StartMediaLiveChannelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StartMediaLiveChannelResponse{}
+	_body, _err := client.StartMediaLiveChannelWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -106516,7 +115478,15 @@ func (client *Client) StartWorkflow(request *StartWorkflowRequest) (_result *Sta
 
 // Summary:
 //
-// 停止一个智能体实例。
+// Stops an AI agent instance.
+//
+// Description:
+//
+//   When you no longer need an AI agent to participate in a conversation or task, you can call this operation to stop the running agent and release relevant resources.****
+//
+// 	- You must specify the unique ID of the AI agent that you want to stop by using InstanceId.****
+//
+// 	- ****
 //
 // @param request - StopAIAgentInstanceRequest
 //
@@ -106569,7 +115539,15 @@ func (client *Client) StopAIAgentInstanceWithOptions(request *StopAIAgentInstanc
 
 // Summary:
 //
-// 停止一个智能体实例。
+// Stops an AI agent instance.
+//
+// Description:
+//
+//   When you no longer need an AI agent to participate in a conversation or task, you can call this operation to stop the running agent and release relevant resources.****
+//
+// 	- You must specify the unique ID of the AI agent that you want to stop by using InstanceId.****
+//
+// 	- ****
 //
 // @param request - StopAIAgentInstanceRequest
 //
@@ -106587,7 +115565,7 @@ func (client *Client) StopAIAgentInstance(request *StopAIAgentInstanceRequest) (
 
 // Summary:
 //
-// 停止频道
+// Stops a MediaWeaver channel.
 //
 // @param request - StopChannelRequest
 //
@@ -106640,7 +115618,7 @@ func (client *Client) StopChannelWithOptions(request *StopChannelRequest, runtim
 
 // Summary:
 //
-// 停止频道
+// Stops a MediaWeaver channel.
 //
 // @param request - StopChannelRequest
 //
@@ -106649,6 +115627,97 @@ func (client *Client) StopChannel(request *StopChannelRequest) (_result *StopCha
 	runtime := &util.RuntimeOptions{}
 	_result = &StopChannelResponse{}
 	_body, _err := client.StopChannelWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Stops a MediaLive channel.
+//
+// Description:
+//
+//
+//
+//  	- *
+//
+// ## [](#qps-)QPS limit
+//
+// This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+//
+// @param request - StopMediaLiveChannelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopMediaLiveChannelResponse
+func (client *Client) StopMediaLiveChannelWithOptions(request *StopMediaLiveChannelRequest, runtime *util.RuntimeOptions) (_result *StopMediaLiveChannelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
+		body["ChannelId"] = request.ChannelId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopMediaLiveChannel"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StopMediaLiveChannelResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StopMediaLiveChannelResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Stops a MediaLive channel.
+//
+// Description:
+//
+//
+//
+//  	- *
+//
+// ## [](#qps-)QPS limit
+//
+// This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+//
+// @param request - StopMediaLiveChannelRequest
+//
+// @return StopMediaLiveChannelResponse
+func (client *Client) StopMediaLiveChannel(request *StopMediaLiveChannelRequest) (_result *StopMediaLiveChannelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StopMediaLiveChannelResponse{}
+	_body, _err := client.StopMediaLiveChannelWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -108700,7 +117769,7 @@ func (client *Client) SubmitMediaCensorJob(request *SubmitMediaCensorJobRequest)
 
 // Summary:
 //
-// 提交媒体处理任务
+// Submits a transcoding task.
 //
 // @param request - SubmitMediaConvertJobRequest
 //
@@ -108765,7 +117834,7 @@ func (client *Client) SubmitMediaConvertJobWithOptions(request *SubmitMediaConve
 
 // Summary:
 //
-// 提交媒体处理任务
+// Submits a transcoding task.
 //
 // @param request - SubmitMediaConvertJobRequest
 //
@@ -110441,7 +119510,7 @@ func (client *Client) SubmitVideoTranslationJob(request *SubmitVideoTranslationJ
 
 // Summary:
 //
-// 切换真人客服接管模式
+// Hands off a conversation to a human agent.
 //
 // @param request - TakeoverAIAgentCallRequest
 //
@@ -110502,7 +119571,7 @@ func (client *Client) TakeoverAIAgentCallWithOptions(request *TakeoverAIAgentCal
 
 // Summary:
 //
-// 切换真人客服接管模式
+// Hands off a conversation to a human agent.
 //
 // @param request - TakeoverAIAgentCallRequest
 //
@@ -110520,7 +119589,13 @@ func (client *Client) TakeoverAIAgentCall(request *TakeoverAIAgentCallRequest) (
 
 // Summary:
 //
-// 修改实例的配置
+// Updates the configurations of an AI agent.
+//
+// Description:
+//
+// ## [](#)Request description
+//
+// You can call this operation to update the configurations of an AI agent, such as the tone, by specifying the agent ID and configurations.
 //
 // @param tmpReq - UpdateAIAgentInstanceRequest
 //
@@ -110587,7 +119662,13 @@ func (client *Client) UpdateAIAgentInstanceWithOptions(tmpReq *UpdateAIAgentInst
 
 // Summary:
 //
-// 修改实例的配置
+// Updates the configurations of an AI agent.
+//
+// Description:
+//
+// ## [](#)Request description
+//
+// You can call this operation to update the configurations of an AI agent, such as the tone, by specifying the agent ID and configurations.
 //
 // @param request - UpdateAIAgentInstanceRequest
 //
@@ -110605,7 +119686,7 @@ func (client *Client) UpdateAIAgentInstance(request *UpdateAIAgentInstanceReques
 
 // Summary:
 //
-// 更新广告插入配置
+// Modifies an ad insertion configuration.
 //
 // @param request - UpdateAdInsertionRequest
 //
@@ -110690,7 +119771,7 @@ func (client *Client) UpdateAdInsertionWithOptions(request *UpdateAdInsertionReq
 
 // Summary:
 //
-// 更新广告插入配置
+// Modifies an ad insertion configuration.
 //
 // @param request - UpdateAdInsertionRequest
 //
@@ -110886,7 +119967,7 @@ func (client *Client) UpdateCategory(request *UpdateCategoryRequest) (_result *U
 
 // Summary:
 //
-// 更新频道
+// Modifies a MediaWeaver channel.
 //
 // @param request - UpdateChannelRequest
 //
@@ -110959,7 +120040,7 @@ func (client *Client) UpdateChannelWithOptions(request *UpdateChannelRequest, ru
 
 // Summary:
 //
-// 更新频道
+// Modifies a MediaWeaver channel.
 //
 // @param request - UpdateChannelRequest
 //
@@ -111232,7 +120313,13 @@ func (client *Client) UpdateEditingProject(request *UpdateEditingProjectRequest)
 
 // Summary:
 //
-// 更新实时打包频道
+// Updates the configuration of a live package channel, including the protocol, segment duration, and number of segments.
+//
+// Description:
+//
+// ## [](#)Usage notes
+//
+// You need to provide the name of the channel group to which the channel belongs, channel name, protocol, segment duration, and number of segments to update. In addition, you can choose to add or modify the description of the channel. Make sure that the provided channel group name and channel name conform to the naming conventions.
 //
 // @param request - UpdateLivePackageChannelRequest
 //
@@ -111305,7 +120392,13 @@ func (client *Client) UpdateLivePackageChannelWithOptions(request *UpdateLivePac
 
 // Summary:
 //
-// 更新实时打包频道
+// Updates the configuration of a live package channel, including the protocol, segment duration, and number of segments.
+//
+// Description:
+//
+// ## [](#)Usage notes
+//
+// You need to provide the name of the channel group to which the channel belongs, channel name, protocol, segment duration, and number of segments to update. In addition, you can choose to add or modify the description of the channel. Make sure that the provided channel group name and channel name conform to the naming conventions.
 //
 // @param request - UpdateLivePackageChannelRequest
 //
@@ -111323,7 +120416,13 @@ func (client *Client) UpdateLivePackageChannel(request *UpdateLivePackageChannel
 
 // Summary:
 //
-// 更新实时打包频道
+// Updates the credentials of ingest endpoints associated with a live package channel.
+//
+// Description:
+//
+// ## [](#)Usage notes
+//
+// You can choose to update the primary endpoint, secondary endpoint, or both. The response includes the updated ingest endpoint URL, username, and password for the ingest device to reconfigure.
 //
 // @param request - UpdateLivePackageChannelCredentialsRequest
 //
@@ -111384,7 +120483,13 @@ func (client *Client) UpdateLivePackageChannelCredentialsWithOptions(request *Up
 
 // Summary:
 //
-// 更新实时打包频道
+// Updates the credentials of ingest endpoints associated with a live package channel.
+//
+// Description:
+//
+// ## [](#)Usage notes
+//
+// You can choose to update the primary endpoint, secondary endpoint, or both. The response includes the updated ingest endpoint URL, username, and password for the ingest device to reconfigure.
 //
 // @param request - UpdateLivePackageChannelCredentialsRequest
 //
@@ -111402,7 +120507,13 @@ func (client *Client) UpdateLivePackageChannelCredentials(request *UpdateLivePac
 
 // Summary:
 //
-// 修改直播打包频道组
+// Updates the information about a live package channel group including its description.
+//
+// Description:
+//
+// ## [](#)Usage notes
+//
+// This API operation allows you to modify the name and description of a live package channel group. The channel group name must conform to the naming conventions and can be up to 1,000 characters. The API response includes the updated channel group details and unique identifier of the request.
 //
 // @param request - UpdateLivePackageChannelGroupRequest
 //
@@ -111459,7 +120570,13 @@ func (client *Client) UpdateLivePackageChannelGroupWithOptions(request *UpdateLi
 
 // Summary:
 //
-// 修改直播打包频道组
+// Updates the information about a live package channel group including its description.
+//
+// Description:
+//
+// ## [](#)Usage notes
+//
+// This API operation allows you to modify the name and description of a live package channel group. The channel group name must conform to the naming conventions and can be up to 1,000 characters. The API response includes the updated channel group details and unique identifier of the request.
 //
 // @param request - UpdateLivePackageChannelGroupRequest
 //
@@ -111477,7 +120594,13 @@ func (client *Client) UpdateLivePackageChannelGroup(request *UpdateLivePackageCh
 
 // Summary:
 //
-// 修改实时打包源站端点
+// Updates the origin endpoint settings including the protocol, time shifting, and access control settings.
+//
+// Description:
+//
+// ## [](#)Usage notes
+//
+// You can call this operation to modify the origin protocol, set the number of days that time-shifted content is available, define playlist names, and configure the IP address blacklist and whitelist, allowing for fine-grained control over streaming media distribution. Some parameters are required. You must configure IpWhitelist, AuthorizationCode, or both.
 //
 // @param request - UpdateLivePackageOriginEndpointRequest
 //
@@ -111566,7 +120689,13 @@ func (client *Client) UpdateLivePackageOriginEndpointWithOptions(request *Update
 
 // Summary:
 //
-// 修改实时打包源站端点
+// Updates the origin endpoint settings including the protocol, time shifting, and access control settings.
+//
+// Description:
+//
+// ## [](#)Usage notes
+//
+// You can call this operation to modify the origin protocol, set the number of days that time-shifted content is available, define playlist names, and configure the IP address blacklist and whitelist, allowing for fine-grained control over streaming media distribution. Some parameters are required. You must configure IpWhitelist, AuthorizationCode, or both.
 //
 // @param request - UpdateLivePackageOriginEndpointRequest
 //
@@ -111962,13 +121091,13 @@ func (client *Client) UpdateLiveTranscodeTemplate(request *UpdateLiveTranscodeTe
 
 // Summary:
 //
-// Modify the input information of a specific MediaConnect flow
+// Modifies the source of a MediaConnect flow.
 //
 // Description:
 //
-// - The input can only be modified when the Flow instance status is offline.
+//   You can modify the source only when the flow is in the offline state.
 //
-// - The input type cannot be modified.
+// 	- The source type cannot be modified.
 //
 // @param request - UpdateMediaConnectFlowInputRequest
 //
@@ -112045,13 +121174,13 @@ func (client *Client) UpdateMediaConnectFlowInputWithOptions(request *UpdateMedi
 
 // Summary:
 //
-// Modify the input information of a specific MediaConnect flow
+// Modifies the source of a MediaConnect flow.
 //
 // Description:
 //
-// - The input can only be modified when the Flow instance status is offline.
+//   You can modify the source only when the flow is in the offline state.
 //
-// - The input type cannot be modified.
+// 	- The source type cannot be modified.
 //
 // @param request - UpdateMediaConnectFlowInputRequest
 //
@@ -112069,13 +121198,13 @@ func (client *Client) UpdateMediaConnectFlowInput(request *UpdateMediaConnectFlo
 
 // Summary:
 //
-// Modify information of a specific output in MediaConnect
+// Modifies an output of a MediaConnect flow.
 //
 // Description:
 //
-// - The output can only be modified when the Flow instance status is offline.
+//   You can modify an output only when the flow is in the offline state.
 //
-// - The output type cannot be modified.
+// 	- The output type cannot be modified.
 //
 // @param request - UpdateMediaConnectFlowOutputRequest
 //
@@ -112156,13 +121285,13 @@ func (client *Client) UpdateMediaConnectFlowOutputWithOptions(request *UpdateMed
 
 // Summary:
 //
-// Modify information of a specific output in MediaConnect
+// Modifies an output of a MediaConnect flow.
 //
 // Description:
 //
-// - The output can only be modified when the Flow instance status is offline.
+//   You can modify an output only when the flow is in the offline state.
 //
-// - The output type cannot be modified.
+// 	- The output type cannot be modified.
 //
 // @param request - UpdateMediaConnectFlowOutputRequest
 //
@@ -112180,7 +121309,7 @@ func (client *Client) UpdateMediaConnectFlowOutput(request *UpdateMediaConnectFl
 
 // Summary:
 //
-// Modify MediaConnect Instance Status
+// Modifies the state of a MediaConnect flow.
 //
 // @param request - UpdateMediaConnectFlowStatusRequest
 //
@@ -112237,7 +121366,7 @@ func (client *Client) UpdateMediaConnectFlowStatusWithOptions(request *UpdateMed
 
 // Summary:
 //
-// Modify MediaConnect Instance Status
+// Modifies the state of a MediaConnect flow.
 //
 // @param request - UpdateMediaConnectFlowStatusRequest
 //
@@ -112369,6 +121498,355 @@ func (client *Client) UpdateMediaInfo(request *UpdateMediaInfoRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateMediaInfoResponse{}
 	_body, _err := client.UpdateMediaInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies a MediaLive channel.
+//
+// Description:
+//
+//
+//
+//  	- 	- You can modify a MediaLive channel only when it is not running.
+//
+// ## [](#qps-)QPS limit
+//
+// This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+//
+// @param tmpReq - UpdateMediaLiveChannelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateMediaLiveChannelResponse
+func (client *Client) UpdateMediaLiveChannelWithOptions(tmpReq *UpdateMediaLiveChannelRequest, runtime *util.RuntimeOptions) (_result *UpdateMediaLiveChannelResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateMediaLiveChannelShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.AudioSettings)) {
+		request.AudioSettingsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AudioSettings, tea.String("AudioSettings"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.InputAttachments)) {
+		request.InputAttachmentsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InputAttachments, tea.String("InputAttachments"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.OutputGroups)) {
+		request.OutputGroupsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OutputGroups, tea.String("OutputGroups"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.VideoSettings)) {
+		request.VideoSettingsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.VideoSettings, tea.String("VideoSettings"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AudioSettingsShrink)) {
+		body["AudioSettings"] = request.AudioSettingsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
+		body["ChannelId"] = request.ChannelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InputAttachmentsShrink)) {
+		body["InputAttachments"] = request.InputAttachmentsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputGroupsShrink)) {
+		body["OutputGroups"] = request.OutputGroupsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoSettingsShrink)) {
+		body["VideoSettings"] = request.VideoSettingsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateMediaLiveChannel"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateMediaLiveChannelResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateMediaLiveChannelResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Modifies a MediaLive channel.
+//
+// Description:
+//
+//
+//
+//  	- 	- You can modify a MediaLive channel only when it is not running.
+//
+// ## [](#qps-)QPS limit
+//
+// This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+//
+// @param request - UpdateMediaLiveChannelRequest
+//
+// @return UpdateMediaLiveChannelResponse
+func (client *Client) UpdateMediaLiveChannel(request *UpdateMediaLiveChannelRequest) (_result *UpdateMediaLiveChannelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateMediaLiveChannelResponse{}
+	_body, _err := client.UpdateMediaLiveChannelWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies an input of MediaLive.
+//
+// Description:
+//
+//
+//
+//  	- 	- You can modify an input only when it is not associated with a MediaLive channel.
+//
+// ## [](#qps-)QPS limit
+//
+// This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+//
+// @param tmpReq - UpdateMediaLiveInputRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateMediaLiveInputResponse
+func (client *Client) UpdateMediaLiveInputWithOptions(tmpReq *UpdateMediaLiveInputRequest, runtime *util.RuntimeOptions) (_result *UpdateMediaLiveInputResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateMediaLiveInputShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.InputSettings)) {
+		request.InputSettingsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InputSettings, tea.String("InputSettings"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.SecurityGroupIds)) {
+		request.SecurityGroupIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SecurityGroupIds, tea.String("SecurityGroupIds"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InputSettingsShrink)) {
+		query["InputSettings"] = request.InputSettingsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroupIdsShrink)) {
+		query["SecurityGroupIds"] = request.SecurityGroupIdsShrink
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InputId)) {
+		body["InputId"] = request.InputId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateMediaLiveInput"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateMediaLiveInputResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateMediaLiveInputResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Modifies an input of MediaLive.
+//
+// Description:
+//
+//
+//
+//  	- 	- You can modify an input only when it is not associated with a MediaLive channel.
+//
+// ## [](#qps-)QPS limit
+//
+// This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+//
+// @param request - UpdateMediaLiveInputRequest
+//
+// @return UpdateMediaLiveInputResponse
+func (client *Client) UpdateMediaLiveInput(request *UpdateMediaLiveInputRequest) (_result *UpdateMediaLiveInputResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateMediaLiveInputResponse{}
+	_body, _err := client.UpdateMediaLiveInputWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies a security group created in MediaLive.
+//
+// Description:
+//
+//
+//
+//  	- 	- You can modify a security group only when it is not associated with a MediaLive input.
+//
+// ## [](#qps-)QPS limit
+//
+// This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+//
+// @param tmpReq - UpdateMediaLiveInputSecurityGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateMediaLiveInputSecurityGroupResponse
+func (client *Client) UpdateMediaLiveInputSecurityGroupWithOptions(tmpReq *UpdateMediaLiveInputSecurityGroupRequest, runtime *util.RuntimeOptions) (_result *UpdateMediaLiveInputSecurityGroupResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateMediaLiveInputSecurityGroupShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.WhitelistRules)) {
+		request.WhitelistRulesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.WhitelistRules, tea.String("WhitelistRules"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
+		body["SecurityGroupId"] = request.SecurityGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WhitelistRulesShrink)) {
+		body["WhitelistRules"] = request.WhitelistRulesShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateMediaLiveInputSecurityGroup"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateMediaLiveInputSecurityGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateMediaLiveInputSecurityGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Modifies a security group created in MediaLive.
+//
+// Description:
+//
+//
+//
+//  	- 	- You can modify a security group only when it is not associated with a MediaLive input.
+//
+// ## [](#qps-)QPS limit
+//
+// This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
+//
+// @param request - UpdateMediaLiveInputSecurityGroupRequest
+//
+// @return UpdateMediaLiveInputSecurityGroupResponse
+func (client *Client) UpdateMediaLiveInputSecurityGroup(request *UpdateMediaLiveInputSecurityGroupRequest) (_result *UpdateMediaLiveInputSecurityGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateMediaLiveInputSecurityGroupResponse{}
+	_body, _err := client.UpdateMediaLiveInputSecurityGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -112615,7 +122093,7 @@ func (client *Client) UpdatePipeline(request *UpdatePipelineRequest) (_result *U
 
 // Summary:
 //
-// 更新节目
+// Modifies a program in a MediaWeaver channel.
 //
 // @param request - UpdateProgramRequest
 //
@@ -112696,7 +122174,7 @@ func (client *Client) UpdateProgramWithOptions(request *UpdateProgramRequest, ru
 
 // Summary:
 //
-// 更新节目
+// Modifies a program in a MediaWeaver channel.
 //
 // @param request - UpdateProgramRequest
 //
@@ -112795,7 +122273,7 @@ func (client *Client) UpdateRtcRobotInstance(request *UpdateRtcRobotInstanceRequ
 
 // Summary:
 //
-// 更新源
+// Modifies a source in MediaWeaver.
 //
 // @param request - UpdateSourceRequest
 //
@@ -112860,7 +122338,7 @@ func (client *Client) UpdateSourceWithOptions(request *UpdateSourceRequest, runt
 
 // Summary:
 //
-// 更新源
+// Modifies a source in MediaWeaver.
 //
 // @param request - UpdateSourceRequest
 //
@@ -112878,7 +122356,7 @@ func (client *Client) UpdateSource(request *UpdateSourceRequest) (_result *Updat
 
 // Summary:
 //
-// 更新源位置
+// Modifies a source location.
 //
 // @param request - UpdateSourceLocationRequest
 //
@@ -112943,7 +122421,7 @@ func (client *Client) UpdateSourceLocationWithOptions(request *UpdateSourceLocat
 
 // Summary:
 //
-// 更新源位置
+// Modifies a source location.
 //
 // @param request - UpdateSourceLocationRequest
 //
