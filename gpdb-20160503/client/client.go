@@ -29434,6 +29434,259 @@ func (s *GetSecretValueResponse) SetBody(v *GetSecretValueResponseBody) *GetSecr
 	return s
 }
 
+type GetStatementResultRequest struct {
+	// Instance ID. Can be obtained by calling DescribeDBInstances.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// Database name.
+	//
+	// example:
+	//
+	// test
+	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	// Task ID for asynchronous SQL execution.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 9A920F47-416A-4044-817C-7C2A72AD16D3
+	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Region ID where the instance is located.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Access credential. Created through the CreateSecret interface.
+	//
+	// > When accessing this interface with a sub-account, the sub-account must have the UseSecret or GetSecretValue permission for this SecretArn.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// acs:gpdb:cn-beijing:1033**:secret/testsecret-eG2AQGRIwQ0zFp4VA7mYL3uiCXTfDQbQ
+	SecretArn *string `json:"SecretArn,omitempty" xml:"SecretArn,omitempty"`
+}
+
+func (s GetStatementResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStatementResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetStatementResultRequest) SetDBInstanceId(v string) *GetStatementResultRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *GetStatementResultRequest) SetDatabase(v string) *GetStatementResultRequest {
+	s.Database = &v
+	return s
+}
+
+func (s *GetStatementResultRequest) SetId(v string) *GetStatementResultRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *GetStatementResultRequest) SetOwnerId(v int64) *GetStatementResultRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *GetStatementResultRequest) SetRegionId(v string) *GetStatementResultRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetStatementResultRequest) SetSecretArn(v string) *GetStatementResultRequest {
+	s.SecretArn = &v
+	return s
+}
+
+type GetStatementResultResponseBody struct {
+	// The result of the asynchronous call.
+	Data *GetStatementResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Return message.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// API execution status, with values as follows:
+	//
+	// - **false**: Execution failed.
+	//
+	// - **true**: Execution succeeded.
+	//
+	// example:
+	//
+	// success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetStatementResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStatementResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetStatementResultResponseBody) SetData(v *GetStatementResultResponseBodyData) *GetStatementResultResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetStatementResultResponseBody) SetMessage(v string) *GetStatementResultResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetStatementResultResponseBody) SetRequestId(v string) *GetStatementResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetStatementResultResponseBody) SetStatus(v string) *GetStatementResultResponseBody {
+	s.Status = &v
+	return s
+}
+
+type GetStatementResultResponseBodyData struct {
+	// List of column metadata.
+	ColumnMetadata *GetStatementResultResponseBodyDataColumnMetadata `json:"ColumnMetadata,omitempty" xml:"ColumnMetadata,omitempty" type:"Struct"`
+	// Multiple rows of data.
+	Records *GetStatementResultResponseBodyDataRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Struct"`
+	// Total number of entries.
+	//
+	// example:
+	//
+	// 10
+	TotalNumRows *int64 `json:"TotalNumRows,omitempty" xml:"TotalNumRows,omitempty"`
+}
+
+func (s GetStatementResultResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStatementResultResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetStatementResultResponseBodyData) SetColumnMetadata(v *GetStatementResultResponseBodyDataColumnMetadata) *GetStatementResultResponseBodyData {
+	s.ColumnMetadata = v
+	return s
+}
+
+func (s *GetStatementResultResponseBodyData) SetRecords(v *GetStatementResultResponseBodyDataRecords) *GetStatementResultResponseBodyData {
+	s.Records = v
+	return s
+}
+
+func (s *GetStatementResultResponseBodyData) SetTotalNumRows(v int64) *GetStatementResultResponseBodyData {
+	s.TotalNumRows = &v
+	return s
+}
+
+type GetStatementResultResponseBodyDataColumnMetadata struct {
+	ColumnMetadata []*ColumnMetadata `json:"ColumnMetadata,omitempty" xml:"ColumnMetadata,omitempty" type:"Repeated"`
+}
+
+func (s GetStatementResultResponseBodyDataColumnMetadata) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStatementResultResponseBodyDataColumnMetadata) GoString() string {
+	return s.String()
+}
+
+func (s *GetStatementResultResponseBodyDataColumnMetadata) SetColumnMetadata(v []*ColumnMetadata) *GetStatementResultResponseBodyDataColumnMetadata {
+	s.ColumnMetadata = v
+	return s
+}
+
+type GetStatementResultResponseBodyDataRecords struct {
+	Records []*GetStatementResultResponseBodyDataRecordsRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+}
+
+func (s GetStatementResultResponseBodyDataRecords) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStatementResultResponseBodyDataRecords) GoString() string {
+	return s.String()
+}
+
+func (s *GetStatementResultResponseBodyDataRecords) SetRecords(v []*GetStatementResultResponseBodyDataRecordsRecords) *GetStatementResultResponseBodyDataRecords {
+	s.Records = v
+	return s
+}
+
+type GetStatementResultResponseBodyDataRecordsRecords struct {
+	Record []*Field `json:"Record,omitempty" xml:"Record,omitempty" type:"Repeated"`
+}
+
+func (s GetStatementResultResponseBodyDataRecordsRecords) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStatementResultResponseBodyDataRecordsRecords) GoString() string {
+	return s.String()
+}
+
+func (s *GetStatementResultResponseBodyDataRecordsRecords) SetRecord(v []*Field) *GetStatementResultResponseBodyDataRecordsRecords {
+	s.Record = v
+	return s
+}
+
+type GetStatementResultResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetStatementResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetStatementResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStatementResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetStatementResultResponse) SetHeaders(v map[string]*string) *GetStatementResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetStatementResultResponse) SetStatusCode(v int32) *GetStatementResultResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetStatementResultResponse) SetBody(v *GetStatementResultResponseBody) *GetStatementResultResponse {
+	s.Body = v
+	return s
+}
+
 type GetUploadDocumentJobRequest struct {
 	// The name of the document collection.
 	//
@@ -59124,6 +59377,97 @@ func (client *Client) GetSecretValue(request *GetSecretValueRequest) (_result *G
 	runtime := &util.RuntimeOptions{}
 	_result = &GetSecretValueResponse{}
 	_body, _err := client.GetSecretValueWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Get Asynchronous SQL Execution Result
+//
+// @param request - GetStatementResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetStatementResultResponse
+func (client *Client) GetStatementResultWithOptions(request *GetStatementResultRequest, runtime *util.RuntimeOptions) (_result *GetStatementResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Database)) {
+		query["Database"] = request.Database
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecretArn)) {
+		query["SecretArn"] = request.SecretArn
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetStatementResult"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetStatementResultResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetStatementResultResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Get Asynchronous SQL Execution Result
+//
+// @param request - GetStatementResultRequest
+//
+// @return GetStatementResultResponse
+func (client *Client) GetStatementResult(request *GetStatementResultRequest) (_result *GetStatementResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetStatementResultResponse{}
+	_body, _err := client.GetStatementResultWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
