@@ -1220,36 +1220,52 @@ func (s *CreateDBInstanceResponse) SetBody(v *CreateDBInstanceResponseBody) *Cre
 }
 
 type CreateElasticRuleRequest struct {
+	// The rule for computing resources of the required cluster.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// selectdb.2xlarge
 	ClusterClass *string `json:"ClusterClass,omitempty" xml:"ClusterClass,omitempty"`
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// selectdb-xxxb9f2w-be
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// selectdb-cn-7213cjv****
 	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
+	// The time when you want to execute the scheduled scaling rule.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 00:00
 	ElasticRuleStartTime *string `json:"ElasticRuleStartTime,omitempty" xml:"ElasticRuleStartTime,omitempty"`
+	// The execution cycle.
+	//
+	// Valid value:
+	//
+	// 	- Day
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Day
 	ExecutionPeriod *string `json:"ExecutionPeriod,omitempty" xml:"ExecutionPeriod,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1303,7 +1319,10 @@ func (s *CreateElasticRuleRequest) SetResourceOwnerId(v int64) *CreateElasticRul
 }
 
 type CreateElasticRuleResponseBody struct {
+	// The data returned.
 	Data *CreateElasticRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F8900A96-67F7-5274-A41B-7722E1ECF8C9
@@ -1329,26 +1348,42 @@ func (s *CreateElasticRuleResponseBody) SetRequestId(v string) *CreateElasticRul
 }
 
 type CreateElasticRuleResponseBodyData struct {
+	// The rule for computing resources of the required cluster.
+	//
 	// example:
 	//
 	// selectdb.2xlarge
 	ClusterClass *string `json:"ClusterClass,omitempty" xml:"ClusterClass,omitempty"`
+	// The cluster ID.
+	//
 	// example:
 	//
 	// selectdb-xxxb9f2w-be
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// selectdb-cn-7213cjv****
 	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
+	// The time when the scheduled scaling rule is executed.
+	//
 	// example:
 	//
 	// 00:00
 	ElasticRuleStartTime *string `json:"ElasticRuleStartTime,omitempty" xml:"ElasticRuleStartTime,omitempty"`
+	// The execution cycle.
+	//
+	// Valid value:
+	//
+	// 	- Day
+	//
 	// example:
 	//
 	// Day
 	ExecutionPeriod *string `json:"ExecutionPeriod,omitempty" xml:"ExecutionPeriod,omitempty"`
+	// The rule ID.
+	//
 	// example:
 	//
 	// 5465
@@ -1730,22 +1765,30 @@ func (s *DeleteDBInstanceResponse) SetBody(v *DeleteDBInstanceResponseBody) *Del
 }
 
 type DeleteElasticRuleRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// selectdb-xxx302i5-be
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// selectdb-cn-7213cjv****
 	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
+	// The cloud service.
+	//
 	// example:
 	//
 	// selectdb
 	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1753,6 +1796,8 @@ type DeleteElasticRuleRequest struct {
 	// cn-hanghzou
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The rule ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1800,10 +1845,20 @@ func (s *DeleteElasticRuleRequest) SetRuleId(v int64) *DeleteElasticRuleRequest 
 }
 
 type DeleteElasticRuleResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 4773E4EC-025D-509F-AEA9-D53123FDFB0F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the deletion is successful.
+	//
+	// Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -2327,23 +2382,29 @@ func (s *DescribeDBClusterConfigResponse) SetBody(v *DescribeDBClusterConfigResp
 }
 
 type DescribeDBClusterConfigChangeLogsRequest struct {
+	// The configuration file that you want to modify. For a compute cluster, set the value to be.conf. For a frontend (FE) cluster, set the value to fe.conf.
+	//
 	// example:
 	//
 	// be.conf
 	ConfigKey *string `json:"ConfigKey,omitempty" xml:"ConfigKey,omitempty"`
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// selectdb-cn-7213c8yvv09-be
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// selectdb-cn-jia3ma3b003
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The end of the time range to query.
+	// The end of the time range to query. Format: yyyy-MM-dd HH:mm:ss.
 	//
 	// This parameter is required.
 	//
@@ -2357,7 +2418,7 @@ type DescribeDBClusterConfigChangeLogsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The beginning of the time range to query.
+	// The beginning of the time range to query. Format: yyyy-MM-dd HH:mm:ss.
 	//
 	// This parameter is required.
 	//
@@ -2410,7 +2471,7 @@ type DescribeDBClusterConfigChangeLogsResponseBody struct {
 	//
 	// failed
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The returned data.
+	// The information returned.
 	Data *DescribeDBClusterConfigChangeLogsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The dynamic code. This parameter is not returned.
 	//
@@ -2464,6 +2525,8 @@ func (s *DescribeDBClusterConfigChangeLogsResponseBody) SetRequestId(v string) *
 }
 
 type DescribeDBClusterConfigChangeLogsResponseBodyData struct {
+	// The cluster ID.
+	//
 	// example:
 	//
 	// selectdb-cn-wny3li00g02-be
@@ -2472,6 +2535,8 @@ type DescribeDBClusterConfigChangeLogsResponseBodyData struct {
 	//
 	// 6585
 	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// selectdb-cn-wny3li00g02
@@ -4419,22 +4484,30 @@ func (s *DescribeDBInstancesResponse) SetBody(v *DescribeDBInstancesResponseBody
 }
 
 type DescribeElasticRulesRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// selectdb-cn-nwy3jv1oa02-be
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// selectdb-cn-7213cjv****
 	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
+	// The cloud service.
+	//
 	// example:
 	//
 	// selectdb
 	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4478,7 +4551,10 @@ func (s *DescribeElasticRulesRequest) SetResourceOwnerId(v int64) *DescribeElast
 }
 
 type DescribeElasticRulesResponseBody struct {
+	// The data returned.
 	Data *DescribeElasticRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F8900A96-67F7-5274-A41B-7722E1ECF8C9
@@ -4504,15 +4580,20 @@ func (s *DescribeElasticRulesResponseBody) SetRequestId(v string) *DescribeElast
 }
 
 type DescribeElasticRulesResponseBodyData struct {
+	// The cluster ID.
+	//
 	// example:
 	//
 	// selectdb-cn-nwy3jv1oa02-be
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// selectdb-cn-7213cjv****
-	DbInstanceId *string                                      `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
-	Rules        []*DescribeElasticRulesResponseBodyDataRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
+	// The details of the rules.
+	Rules []*DescribeElasticRulesResponseBodyDataRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
 func (s DescribeElasticRulesResponseBodyData) String() string {
@@ -4539,18 +4620,30 @@ func (s *DescribeElasticRulesResponseBodyData) SetRules(v []*DescribeElasticRule
 }
 
 type DescribeElasticRulesResponseBodyDataRules struct {
+	// The rule for computing resources of the required cluster.
+	//
 	// example:
 	//
 	// selectdb.2xlarge
 	ClusterClass *string `json:"ClusterClass,omitempty" xml:"ClusterClass,omitempty"`
+	// The time when you want to execute the scheduled scaling rule.
+	//
 	// example:
 	//
 	// 00:00
 	ElasticRuleStartTime *string `json:"ElasticRuleStartTime,omitempty" xml:"ElasticRuleStartTime,omitempty"`
+	// The execution cycle.
+	//
+	// Valid value:
+	//
+	// 	- Day
+	//
 	// example:
 	//
 	// Day
 	ExecutionPeriod *string `json:"ExecutionPeriod,omitempty" xml:"ExecutionPeriod,omitempty"`
+	// The rule ID.
+	//
 	// example:
 	//
 	// 5467
@@ -4610,6 +4703,193 @@ func (s *DescribeElasticRulesResponse) SetStatusCode(v int32) *DescribeElasticRu
 }
 
 func (s *DescribeElasticRulesResponse) SetBody(v *DescribeElasticRulesResponseBody) *DescribeElasticRulesResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeRegionsRequest struct {
+	// example:
+	//
+	// cn-beijing
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// example:
+	//
+	// cn-beijing-h
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s DescribeRegionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRegionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRegionsRequest) SetRegion(v string) *DescribeRegionsRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeRegionsRequest) SetZoneId(v string) *DescribeRegionsRequest {
+	s.ZoneId = &v
+	return s
+}
+
+type DescribeRegionsResponseBody struct {
+	RegionModelList []*DescribeRegionsResponseBodyRegionModelList `json:"RegionModelList,omitempty" xml:"RegionModelList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// F8900A96-67F7-5274-A41B-7722E1ECF8C9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeRegionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRegionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRegionsResponseBody) SetRegionModelList(v []*DescribeRegionsResponseBodyRegionModelList) *DescribeRegionsResponseBody {
+	s.RegionModelList = v
+	return s
+}
+
+func (s *DescribeRegionsResponseBody) SetRequestId(v string) *DescribeRegionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeRegionsResponseBodyRegionModelList struct {
+	// example:
+	//
+	// cn-beijing
+	RegionId *string                                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Zones    []*DescribeRegionsResponseBodyRegionModelListZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
+}
+
+func (s DescribeRegionsResponseBodyRegionModelList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRegionsResponseBodyRegionModelList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRegionsResponseBodyRegionModelList) SetRegionId(v string) *DescribeRegionsResponseBodyRegionModelList {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeRegionsResponseBodyRegionModelList) SetZones(v []*DescribeRegionsResponseBodyRegionModelListZones) *DescribeRegionsResponseBodyRegionModelList {
+	s.Zones = v
+	return s
+}
+
+type DescribeRegionsResponseBodyRegionModelListZones struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// false
+	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	// example:
+	//
+	// test
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// cn-beijing-h-aliyun
+	SubDomain *string `json:"SubDomain,omitempty" xml:"SubDomain,omitempty"`
+	// example:
+	//
+	// true
+	VpcEnabled *bool `json:"VpcEnabled,omitempty" xml:"VpcEnabled,omitempty"`
+	// example:
+	//
+	// cn-beijing-h
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s DescribeRegionsResponseBodyRegionModelListZones) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRegionsResponseBodyRegionModelListZones) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRegionsResponseBodyRegionModelListZones) SetDescription(v string) *DescribeRegionsResponseBodyRegionModelListZones {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeRegionsResponseBodyRegionModelListZones) SetDisabled(v bool) *DescribeRegionsResponseBodyRegionModelListZones {
+	s.Disabled = &v
+	return s
+}
+
+func (s *DescribeRegionsResponseBodyRegionModelListZones) SetLabel(v string) *DescribeRegionsResponseBodyRegionModelListZones {
+	s.Label = &v
+	return s
+}
+
+func (s *DescribeRegionsResponseBodyRegionModelListZones) SetName(v string) *DescribeRegionsResponseBodyRegionModelListZones {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeRegionsResponseBodyRegionModelListZones) SetRegionId(v string) *DescribeRegionsResponseBodyRegionModelListZones {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeRegionsResponseBodyRegionModelListZones) SetSubDomain(v string) *DescribeRegionsResponseBodyRegionModelListZones {
+	s.SubDomain = &v
+	return s
+}
+
+func (s *DescribeRegionsResponseBodyRegionModelListZones) SetVpcEnabled(v bool) *DescribeRegionsResponseBodyRegionModelListZones {
+	s.VpcEnabled = &v
+	return s
+}
+
+func (s *DescribeRegionsResponseBodyRegionModelListZones) SetZoneId(v string) *DescribeRegionsResponseBodyRegionModelListZones {
+	s.ZoneId = &v
+	return s
+}
+
+type DescribeRegionsResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeRegionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRegionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRegionsResponse) SetHeaders(v map[string]*string) *DescribeRegionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeRegionsResponse) SetStatusCode(v int32) *DescribeRegionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *DescribeRegionsResponse {
 	s.Body = v
 	return s
 }
@@ -4797,22 +5077,30 @@ func (s *DescribeSecurityIPListResponse) SetBody(v *DescribeSecurityIPListRespon
 }
 
 type EnDisableScalingRulesRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// selectdb-cn-nwy3jv1oa02-be
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// selectdb-cn-7213cjv****
 	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
+	// The cloud service.
+	//
 	// example:
 	//
 	// selectdb
 	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4820,6 +5108,14 @@ type EnDisableScalingRulesRequest struct {
 	// cn-hangzhou
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// Specifies whether to enable the scheduled scaling policy.
+	//
+	// Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4867,7 +5163,10 @@ func (s *EnDisableScalingRulesRequest) SetScalingRulesEnable(v bool) *EnDisableS
 }
 
 type EnDisableScalingRulesResponseBody struct {
+	// The data returned.
 	Data *EnDisableScalingRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 4773E4EC-025D-509F-AEA9-D53123FDFB0F
@@ -4893,14 +5192,26 @@ func (s *EnDisableScalingRulesResponseBody) SetRequestId(v string) *EnDisableSca
 }
 
 type EnDisableScalingRulesResponseBodyData struct {
+	// The cluster ID.
+	//
 	// example:
 	//
 	// selectdb-cn-pe33jc1nd01-be
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// selectdb-cn-7213cjv****
 	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
+	// Indicates whether the scheduled scaling policy is enabled.
+	//
+	// Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -5815,6 +6126,12 @@ type ModifyDBClusterConfigRequest struct {
 	//
 	// selectdb-xxxd8a5h60y
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// Specifies whether to perform parallel operations on the cluster node.
+	//
+	// example:
+	//
+	// false
+	ParallelOperation *bool `json:"ParallelOperation,omitempty" xml:"ParallelOperation,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -5851,6 +6168,11 @@ func (s *ModifyDBClusterConfigRequest) SetDBClusterId(v string) *ModifyDBCluster
 
 func (s *ModifyDBClusterConfigRequest) SetDBInstanceId(v string) *ModifyDBClusterConfigRequest {
 	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ModifyDBClusterConfigRequest) SetParallelOperation(v bool) *ModifyDBClusterConfigRequest {
+	s.ParallelOperation = &v
 	return s
 }
 
@@ -6131,34 +6453,52 @@ func (s *ModifyDBInstanceAttributeResponse) SetBody(v *ModifyDBInstanceAttribute
 }
 
 type ModifyElasticRuleRequest struct {
+	// The rule for computing resources of the required cluster.
+	//
 	// example:
 	//
 	// selectdb.2xlarge
 	ClusterClass *string `json:"ClusterClass,omitempty" xml:"ClusterClass,omitempty"`
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// selectdb-cn-nwy3jv1oa02-be
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// selectdb-cn-7213cjv****
 	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
+	// The time when you want to execute the scheduled scaling rule.
+	//
 	// example:
 	//
 	// 00:00
 	ElasticRuleStartTime *string `json:"ElasticRuleStartTime,omitempty" xml:"ElasticRuleStartTime,omitempty"`
+	// The execution cycle.
+	//
+	// Valid value:
+	//
+	// 	- Day
+	//
 	// example:
 	//
 	// Day
 	ExecutionPeriod *string `json:"ExecutionPeriod,omitempty" xml:"ExecutionPeriod,omitempty"`
+	// The cloud service.
+	//
 	// example:
 	//
 	// selectdb
 	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -6166,6 +6506,8 @@ type ModifyElasticRuleRequest struct {
 	// cn-hangzhou
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The rule ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -6228,7 +6570,10 @@ func (s *ModifyElasticRuleRequest) SetRuleId(v int64) *ModifyElasticRuleRequest 
 }
 
 type ModifyElasticRuleResponseBody struct {
+	// The data returned.
 	Data *ModifyElasticRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 5ED62C81-9948-5612-81E1-EA3853752306
@@ -6254,26 +6599,42 @@ func (s *ModifyElasticRuleResponseBody) SetRequestId(v string) *ModifyElasticRul
 }
 
 type ModifyElasticRuleResponseBodyData struct {
+	// The rule for computing resources of the required cluster.
+	//
 	// example:
 	//
 	// selectdb.2xlarge
 	ClusterClass *string `json:"ClusterClass,omitempty" xml:"ClusterClass,omitempty"`
+	// The cluster ID.
+	//
 	// example:
 	//
 	// selectdb-cn-zpr3if5wq03-be
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// selectdb-cn-7213cjv****
 	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
+	// The time when the scheduled scaling rule is executed.
+	//
 	// example:
 	//
 	// 00:00
 	ElasticRuleStartTime *string `json:"ElasticRuleStartTime,omitempty" xml:"ElasticRuleStartTime,omitempty"`
+	// The execution cycle.
+	//
+	// Valid value:
+	//
+	// 	- Day
+	//
 	// example:
 	//
 	// Day
 	ExecutionPeriod *string `json:"ExecutionPeriod,omitempty" xml:"ExecutionPeriod,omitempty"`
+	// The rule ID.
+	//
 	// example:
 	//
 	// 29252
@@ -6809,7 +7170,13 @@ type RestartDBClusterRequest struct {
 	//
 	// selectdb-cn-7213cjv****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The ID of the region in which the ApsaraDB for SelectDB instance resides.
+	// Specifies whether to perform parallel operations on the cluster node.
+	//
+	// example:
+	//
+	// false
+	ParallelOperation *bool `json:"ParallelOperation,omitempty" xml:"ParallelOperation,omitempty"`
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -6841,6 +7208,11 @@ func (s *RestartDBClusterRequest) SetDBClusterId(v string) *RestartDBClusterRequ
 
 func (s *RestartDBClusterRequest) SetDBInstanceId(v string) *RestartDBClusterRequest {
 	s.DBInstanceId = &v
+	return s
+}
+
+func (s *RestartDBClusterRequest) SetParallelOperation(v bool) *RestartDBClusterRequest {
+	s.ParallelOperation = &v
 	return s
 }
 
@@ -7164,7 +7536,8 @@ type UpgradeDBInstanceEngineVersionRequest struct {
 	// example:
 	//
 	// 2.4
-	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	EngineVersion     *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	ParallelOperation *bool   `json:"ParallelOperation,omitempty" xml:"ParallelOperation,omitempty"`
 	// The region ID of the instance.
 	//
 	// This parameter is required.
@@ -7197,6 +7570,11 @@ func (s *UpgradeDBInstanceEngineVersionRequest) SetDBInstanceId(v string) *Upgra
 
 func (s *UpgradeDBInstanceEngineVersionRequest) SetEngineVersion(v string) *UpgradeDBInstanceEngineVersionRequest {
 	s.EngineVersion = &v
+	return s
+}
+
+func (s *UpgradeDBInstanceEngineVersionRequest) SetParallelOperation(v bool) *UpgradeDBInstanceEngineVersionRequest {
+	s.ParallelOperation = &v
 	return s
 }
 
@@ -7362,13 +7740,24 @@ func (client *Client) AllocateInstancePublicConnectionWithOptions(request *Alloc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AllocateInstancePublicConnectionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AllocateInstancePublicConnectionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AllocateInstancePublicConnectionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -7486,13 +7875,24 @@ func (client *Client) CheckCreateDBInstanceWithOptions(request *CheckCreateDBIns
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CheckCreateDBInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CheckCreateDBInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CheckCreateDBInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -7550,13 +7950,24 @@ func (client *Client) CheckServiceLinkedRoleWithOptions(request *CheckServiceLin
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CheckServiceLinkedRoleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CheckServiceLinkedRoleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CheckServiceLinkedRoleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -7668,13 +8079,24 @@ func (client *Client) CreateDBClusterWithOptions(request *CreateDBClusterRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateDBClusterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateDBClusterResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateDBClusterResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -7808,13 +8230,24 @@ func (client *Client) CreateDBInstanceWithOptions(tmpReq *CreateDBInstanceReques
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateDBInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateDBInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateDBInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -7837,7 +8270,7 @@ func (client *Client) CreateDBInstance(request *CreateDBInstanceRequest) (_resul
 
 // Summary:
 //
-// 创建分时弹性规则
+// Creates a scheduled scaling rule.
 //
 // @param request - CreateElasticRuleRequest
 //
@@ -7892,18 +8325,29 @@ func (client *Client) CreateElasticRuleWithOptions(request *CreateElasticRuleReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateElasticRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateElasticRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateElasticRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 创建分时弹性规则
+// Creates a scheduled scaling rule.
 //
 // @param request - CreateElasticRuleRequest
 //
@@ -7956,13 +8400,24 @@ func (client *Client) CreateServiceLinkedRoleForSelectDBWithOptions(request *Cre
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateServiceLinkedRoleForSelectDBResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateServiceLinkedRoleForSelectDBResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateServiceLinkedRoleForSelectDBResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -8034,13 +8489,24 @@ func (client *Client) DeleteDBClusterWithOptions(request *DeleteDBClusterRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteDBClusterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteDBClusterResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteDBClusterResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -8104,13 +8570,24 @@ func (client *Client) DeleteDBInstanceWithOptions(request *DeleteDBInstanceReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteDBInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteDBInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteDBInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -8133,7 +8610,7 @@ func (client *Client) DeleteDBInstance(request *DeleteDBInstanceRequest) (_resul
 
 // Summary:
 //
-// 删除分时弹性规则
+// Deletes a scheduled scaling rule.
 //
 // @param request - DeleteElasticRuleRequest
 //
@@ -8184,18 +8661,29 @@ func (client *Client) DeleteElasticRuleWithOptions(request *DeleteElasticRuleReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteElasticRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteElasticRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteElasticRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 删除分时弹性规则
+// Deletes a scheduled scaling rule.
 //
 // @param request - DeleteElasticRuleRequest
 //
@@ -8248,13 +8736,24 @@ func (client *Client) DescribeAllDBInstanceClassWithOptions(request *DescribeAll
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeAllDBInstanceClassResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeAllDBInstanceClassResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeAllDBInstanceClassResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -8320,13 +8819,24 @@ func (client *Client) DescribeDBClusterConfigWithOptions(request *DescribeDBClus
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDBClusterConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDBClusterConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDBClusterConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -8400,13 +8910,24 @@ func (client *Client) DescribeDBClusterConfigChangeLogsWithOptions(request *Desc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDBClusterConfigChangeLogsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDBClusterConfigChangeLogsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDBClusterConfigChangeLogsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -8468,13 +8989,24 @@ func (client *Client) DescribeDBInstanceAttributeWithOptions(request *DescribeDB
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDBInstanceAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDBInstanceAttributeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDBInstanceAttributeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -8536,13 +9068,24 @@ func (client *Client) DescribeDBInstanceNetInfoWithOptions(request *DescribeDBIn
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDBInstanceNetInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDBInstanceNetInfoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDBInstanceNetInfoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -8634,13 +9177,24 @@ func (client *Client) DescribeDBInstancesWithOptions(tmpReq *DescribeDBInstances
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDBInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDBInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDBInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -8663,7 +9217,7 @@ func (client *Client) DescribeDBInstances(request *DescribeDBInstancesRequest) (
 
 // Summary:
 //
-// 查询分时弹性规则
+// Queries scheduled scaling rules.
 //
 // @param request - DescribeElasticRulesRequest
 //
@@ -8690,18 +9244,29 @@ func (client *Client) DescribeElasticRulesWithOptions(request *DescribeElasticRu
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeElasticRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeElasticRulesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeElasticRulesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 查询分时弹性规则
+// Queries scheduled scaling rules.
 //
 // @param request - DescribeElasticRulesRequest
 //
@@ -8710,6 +9275,73 @@ func (client *Client) DescribeElasticRules(request *DescribeElasticRulesRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeElasticRulesResponse{}
 	_body, _err := client.DescribeElasticRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取Region信息
+//
+// @param request - DescribeRegionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRegionsResponse
+func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, runtime *util.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRegions"),
+		Version:     tea.String("2023-05-22"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeRegionsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeRegionsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取Region信息
+//
+// @param request - DescribeRegionsRequest
+//
+// @return DescribeRegionsResponse
+func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result *DescribeRegionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeRegionsResponse{}
+	_body, _err := client.DescribeRegionsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8758,13 +9390,24 @@ func (client *Client) DescribeSecurityIPListWithOptions(request *DescribeSecurit
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeSecurityIPListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeSecurityIPListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeSecurityIPListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -8787,7 +9430,7 @@ func (client *Client) DescribeSecurityIPList(request *DescribeSecurityIPListRequ
 
 // Summary:
 //
-// 开关分时弹性策略
+// Uses the scheduled scaling policy.
 //
 // @param request - EnDisableScalingRulesRequest
 //
@@ -8838,18 +9481,29 @@ func (client *Client) EnDisableScalingRulesWithOptions(request *EnDisableScaling
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &EnDisableScalingRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &EnDisableScalingRulesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &EnDisableScalingRulesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 开关分时弹性策略
+// Uses the scheduled scaling policy.
 //
 // @param request - EnDisableScalingRulesRequest
 //
@@ -8894,13 +9548,24 @@ func (client *Client) GetCreateBEClusterInquiryWithOptions(request *GetCreateBEC
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetCreateBEClusterInquiryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetCreateBEClusterInquiryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetCreateBEClusterInquiryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -8950,13 +9615,24 @@ func (client *Client) GetModifyBEClusterInquiryWithOptions(request *GetModifyBEC
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetModifyBEClusterInquiryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetModifyBEClusterInquiryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetModifyBEClusterInquiryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9030,13 +9706,24 @@ func (client *Client) ModifyBEClusterAttributeWithOptions(request *ModifyBEClust
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyBEClusterAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyBEClusterAttributeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyBEClusterAttributeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9114,13 +9801,24 @@ func (client *Client) ModifyDBClusterWithOptions(request *ModifyDBClusterRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyDBClusterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyDBClusterResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyDBClusterResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9168,6 +9866,10 @@ func (client *Client) ModifyDBClusterConfigWithOptions(request *ModifyDBClusterC
 		query["DBInstanceId"] = request.DBInstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ParallelOperation)) {
+		query["ParallelOperation"] = request.ParallelOperation
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Parameters)) {
 		query["Parameters"] = request.Parameters
 	}
@@ -9194,13 +9896,24 @@ func (client *Client) ModifyDBClusterConfigWithOptions(request *ModifyDBClusterC
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyDBClusterConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyDBClusterConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyDBClusterConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9270,13 +9983,24 @@ func (client *Client) ModifyDBInstanceAttributeWithOptions(request *ModifyDBInst
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyDBInstanceAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyDBInstanceAttributeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyDBInstanceAttributeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9299,7 +10023,7 @@ func (client *Client) ModifyDBInstanceAttribute(request *ModifyDBInstanceAttribu
 
 // Summary:
 //
-// 修改分时弹性规则
+// Modifies a scheduled scaling rule.
 //
 // @param request - ModifyElasticRuleRequest
 //
@@ -9362,18 +10086,29 @@ func (client *Client) ModifyElasticRuleWithOptions(request *ModifyElasticRuleReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyElasticRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyElasticRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyElasticRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 修改分时弹性规则
+// Modifies a scheduled scaling rule.
 //
 // @param request - ModifyElasticRuleRequest
 //
@@ -9442,13 +10177,24 @@ func (client *Client) ModifySecurityIPListWithOptions(request *ModifySecurityIPL
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifySecurityIPListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifySecurityIPListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifySecurityIPListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9514,13 +10260,24 @@ func (client *Client) ReleaseInstancePublicConnectionWithOptions(request *Releas
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ReleaseInstancePublicConnectionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ReleaseInstancePublicConnectionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ReleaseInstancePublicConnectionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9570,13 +10327,24 @@ func (client *Client) ResetAccountPasswordWithOptions(request *ResetAccountPassw
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ResetAccountPasswordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ResetAccountPasswordResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ResetAccountPasswordResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9616,6 +10384,10 @@ func (client *Client) RestartDBClusterWithOptions(request *RestartDBClusterReque
 		query["DBClusterId"] = request.DBClusterId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ParallelOperation)) {
+		query["ParallelOperation"] = request.ParallelOperation
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
@@ -9648,13 +10420,24 @@ func (client *Client) RestartDBClusterWithOptions(request *RestartDBClusterReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RestartDBClusterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RestartDBClusterResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RestartDBClusterResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9720,13 +10503,24 @@ func (client *Client) StartBEClusterWithOptions(request *StartBEClusterRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StartBEClusterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StartBEClusterResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StartBEClusterResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9792,13 +10586,24 @@ func (client *Client) StopBEClusterWithOptions(request *StopBEClusterRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StopBEClusterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StopBEClusterResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StopBEClusterResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9842,6 +10647,10 @@ func (client *Client) UpgradeDBInstanceEngineVersionWithOptions(request *Upgrade
 		query["EngineVersion"] = request.EngineVersion
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ParallelOperation)) {
+		query["ParallelOperation"] = request.ParallelOperation
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
 	}
@@ -9868,13 +10677,24 @@ func (client *Client) UpgradeDBInstanceEngineVersionWithOptions(request *Upgrade
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpgradeDBInstanceEngineVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpgradeDBInstanceEngineVersionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpgradeDBInstanceEngineVersionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
