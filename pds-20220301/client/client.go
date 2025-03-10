@@ -3482,6 +3482,7 @@ func (s *FaceThumbnail) SetFaceThumbnail(v string) *FaceThumbnail {
 
 type File struct {
 	ActionList         []*string           `json:"action_list,omitempty" xml:"action_list,omitempty" type:"Repeated"`
+	AutoDeleteLeftSec  *int64              `json:"auto_delete_left_sec,omitempty" xml:"auto_delete_left_sec,omitempty"`
 	Category           *string             `json:"category,omitempty" xml:"category,omitempty"`
 	ContentHash        *string             `json:"content_hash,omitempty" xml:"content_hash,omitempty"`
 	ContentHashName    *string             `json:"content_hash_name,omitempty" xml:"content_hash_name,omitempty"`
@@ -3489,6 +3490,7 @@ type File struct {
 	Crc64Hash          *string             `json:"crc64_hash,omitempty" xml:"crc64_hash,omitempty"`
 	CreatedAt          *string             `json:"created_at,omitempty" xml:"created_at,omitempty"`
 	Description        *string             `json:"description,omitempty" xml:"description,omitempty"`
+	DirSizeInfo        *FileDirSizeInfo    `json:"dir_size_info,omitempty" xml:"dir_size_info,omitempty" type:"Struct"`
 	DomainId           *string             `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
 	DownloadUrl        *string             `json:"download_url,omitempty" xml:"download_url,omitempty"`
 	DriveId            *string             `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
@@ -3530,6 +3532,11 @@ func (s *File) SetActionList(v []*string) *File {
 	return s
 }
 
+func (s *File) SetAutoDeleteLeftSec(v int64) *File {
+	s.AutoDeleteLeftSec = &v
+	return s
+}
+
 func (s *File) SetCategory(v string) *File {
 	s.Category = &v
 	return s
@@ -3562,6 +3569,11 @@ func (s *File) SetCreatedAt(v string) *File {
 
 func (s *File) SetDescription(v string) *File {
 	s.Description = &v
+	return s
+}
+
+func (s *File) SetDirSizeInfo(v *FileDirSizeInfo) *File {
+	s.DirSizeInfo = v
 	return s
 }
 
@@ -3692,6 +3704,29 @@ func (s *File) SetUserTags(v map[string]*string) *File {
 
 func (s *File) SetVideoMediaMetadata(v *VideoMediaMetadata) *File {
 	s.VideoMediaMetadata = v
+	return s
+}
+
+type FileDirSizeInfo struct {
+	DirCount  *int64 `json:"dir_count,omitempty" xml:"dir_count,omitempty"`
+	FileCount *int64 `json:"file_count,omitempty" xml:"file_count,omitempty"`
+}
+
+func (s FileDirSizeInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FileDirSizeInfo) GoString() string {
+	return s.String()
+}
+
+func (s *FileDirSizeInfo) SetDirCount(v int64) *FileDirSizeInfo {
+	s.DirCount = &v
+	return s
+}
+
+func (s *FileDirSizeInfo) SetFileCount(v int64) *FileDirSizeInfo {
+	s.FileCount = &v
 	return s
 }
 
@@ -10087,7 +10122,7 @@ type CreateFileRequest struct {
 	//
 	// 2019-08-20T06:51:27.292Z
 	LocalModifiedAt *string `json:"local_modified_at,omitempty" xml:"local_modified_at,omitempty"`
-	// The name of the file. The name can be up to 1,024 bytes in length based on the UTF-8 encoding rule and cannot end with a forward slash (/).
+	// The name of the file. The name can be up to 1,024 bytes in length based on the UTF-8 encoding rule and cannot contain forward slash (/).
 	//
 	// This parameter is required.
 	//
@@ -17706,7 +17741,8 @@ type ListRecyclebinRequest struct {
 	// example:
 	//
 	// NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg
-	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
+	Marker             *string                  `json:"marker,omitempty" xml:"marker,omitempty"`
+	ThumbnailProcesses map[string]*ImageProcess `json:"thumbnail_processes,omitempty" xml:"thumbnail_processes,omitempty"`
 }
 
 func (s ListRecyclebinRequest) String() string {
@@ -17734,6 +17770,11 @@ func (s *ListRecyclebinRequest) SetLimit(v int32) *ListRecyclebinRequest {
 
 func (s *ListRecyclebinRequest) SetMarker(v string) *ListRecyclebinRequest {
 	s.Marker = &v
+	return s
+}
+
+func (s *ListRecyclebinRequest) SetThumbnailProcesses(v map[string]*ImageProcess) *ListRecyclebinRequest {
+	s.ThumbnailProcesses = v
 	return s
 }
 
@@ -19811,7 +19852,8 @@ type SearchFileRequest struct {
 	// example:
 	//
 	// true
-	ReturnTotalCount *bool `json:"return_total_count,omitempty" xml:"return_total_count,omitempty"`
+	ReturnTotalCount   *bool                    `json:"return_total_count,omitempty" xml:"return_total_count,omitempty"`
+	ThumbnailProcesses map[string]*ImageProcess `json:"thumbnail_processes,omitempty" xml:"thumbnail_processes,omitempty"`
 }
 
 func (s SearchFileRequest) String() string {
@@ -19859,6 +19901,11 @@ func (s *SearchFileRequest) SetRecursive(v bool) *SearchFileRequest {
 
 func (s *SearchFileRequest) SetReturnTotalCount(v bool) *SearchFileRequest {
 	s.ReturnTotalCount = &v
+	return s
+}
+
+func (s *SearchFileRequest) SetThumbnailProcesses(v map[string]*ImageProcess) *SearchFileRequest {
+	s.ThumbnailProcesses = v
 	return s
 }
 
@@ -22400,6 +22447,104 @@ func (s *UpdateUserResponse) SetBody(v *User) *UpdateUserResponse {
 	return s
 }
 
+type VideoDRMLicenseRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// widevine
+	DrmType *string `json:"drmType,omitempty" xml:"drmType,omitempty"`
+	// example:
+	//
+	// CAES6B8SQgpACioSENGxDhqCLIVwwCBOyPayyWoSENGxDhqCLIVwwCBOyPayyWpI88aJmwYQARoQdRV32
+	LicenseRequest *string `json:"licenseRequest,omitempty" xml:"licenseRequest,omitempty"`
+}
+
+func (s VideoDRMLicenseRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VideoDRMLicenseRequest) GoString() string {
+	return s.String()
+}
+
+func (s *VideoDRMLicenseRequest) SetDrmType(v string) *VideoDRMLicenseRequest {
+	s.DrmType = &v
+	return s
+}
+
+func (s *VideoDRMLicenseRequest) SetLicenseRequest(v string) *VideoDRMLicenseRequest {
+	s.LicenseRequest = &v
+	return s
+}
+
+type VideoDRMLicenseResponseBody struct {
+	// example:
+	//
+	// cb9swCy8P50H9KePsxET3jZ1tm41bDs9HTsxbWnsjf3bsf6QGdiS4kZPhDaskimbNyAfNjmhQRmWFt3AhwNF3
+	Data *string `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// ""
+	DeviceInfo *string `json:"device_info,omitempty" xml:"device_info,omitempty"`
+	// example:
+	//
+	// 0
+	States *string `json:"states,omitempty" xml:"states,omitempty"`
+}
+
+func (s VideoDRMLicenseResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VideoDRMLicenseResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *VideoDRMLicenseResponseBody) SetData(v string) *VideoDRMLicenseResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *VideoDRMLicenseResponseBody) SetDeviceInfo(v string) *VideoDRMLicenseResponseBody {
+	s.DeviceInfo = &v
+	return s
+}
+
+func (s *VideoDRMLicenseResponseBody) SetStates(v string) *VideoDRMLicenseResponseBody {
+	s.States = &v
+	return s
+}
+
+type VideoDRMLicenseResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *VideoDRMLicenseResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s VideoDRMLicenseResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VideoDRMLicenseResponse) GoString() string {
+	return s.String()
+}
+
+func (s *VideoDRMLicenseResponse) SetHeaders(v map[string]*string) *VideoDRMLicenseResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *VideoDRMLicenseResponse) SetStatusCode(v int32) *VideoDRMLicenseResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *VideoDRMLicenseResponse) SetBody(v *VideoDRMLicenseResponseBody) *VideoDRMLicenseResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -22415,6 +22560,7 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.ProductId = tea.String("pds")
 	gatewayClient, _err := gatewayclient.NewClient()
 	if _err != nil {
 		return _err
@@ -28303,6 +28449,10 @@ func (client *Client) ListRecyclebinWithOptions(request *ListRecyclebinRequest, 
 		body["marker"] = request.Marker
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ThumbnailProcesses)) {
+		body["thumbnail_processes"] = request.ThumbnailProcesses
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
@@ -29641,6 +29791,10 @@ func (client *Client) SearchFileWithOptions(request *SearchFileRequest, headers 
 
 	if !tea.BoolValue(util.IsUnset(request.ReturnTotalCount)) {
 		body["return_total_count"] = request.ReturnTotalCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThumbnailProcesses)) {
+		body["thumbnail_processes"] = request.ThumbnailProcesses
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -31211,6 +31365,74 @@ func (client *Client) UpdateUser(request *UpdateUserRequest) (_result *UpdateUse
 	headers := make(map[string]*string)
 	_result = &UpdateUserResponse{}
 	_body, _err := client.UpdateUserWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取视频的DRM License
+//
+// @param request - VideoDRMLicenseRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return VideoDRMLicenseResponse
+func (client *Client) VideoDRMLicenseWithOptions(request *VideoDRMLicenseRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *VideoDRMLicenseResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DrmType)) {
+		body["drmType"] = request.DrmType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LicenseRequest)) {
+		body["licenseRequest"] = request.LicenseRequest
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("VideoDRMLicense"),
+		Version:     tea.String("2022-03-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/file/video_drm_license"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &VideoDRMLicenseResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取视频的DRM License
+//
+// @param request - VideoDRMLicenseRequest
+//
+// @return VideoDRMLicenseResponse
+func (client *Client) VideoDRMLicense(request *VideoDRMLicenseRequest) (_result *VideoDRMLicenseResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &VideoDRMLicenseResponse{}
+	_body, _err := client.VideoDRMLicenseWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
