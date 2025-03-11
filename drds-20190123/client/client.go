@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -14,10 +11,28 @@ import (
 
 type ChangeAccountPasswordRequest struct {
 	// The name of the member account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The ID of the DRDS instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds********
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	// The new password.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
 }
 
@@ -46,8 +61,16 @@ func (s *ChangeAccountPasswordRequest) SetPassword(v string) *ChangeAccountPassw
 
 type ChangeAccountPasswordResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// DSSDF-SEWE-*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -101,13 +124,37 @@ func (s *ChangeAccountPasswordResponse) SetBody(v *ChangeAccountPasswordResponse
 type ChangeInstanceAzoneRequest struct {
 	ChangeVSwitch *bool `json:"ChangeVSwitch,omitempty" xml:"ChangeVSwitch,omitempty"`
 	// The ID of the PolarDB-X 1.0 instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drdsjiii1b49****
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	// The ID of the region.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	DrdsRegionId *string `json:"DrdsRegionId,omitempty" xml:"DrdsRegionId,omitempty"`
 	NewVSwitch   *string `json:"NewVSwitch,omitempty" xml:"NewVSwitch,omitempty"`
 	// The source zone of the PolarDB-X 1.0 instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou-B
 	OriginAzoneId *string `json:"OriginAzoneId,omitempty" xml:"OriginAzoneId,omitempty"`
 	// The destination zone to which you want to modify
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou-A
 	TargetAzoneId *string `json:"TargetAzoneId,omitempty" xml:"TargetAzoneId,omitempty"`
 }
 
@@ -151,8 +198,16 @@ func (s *ChangeInstanceAzoneRequest) SetTargetAzoneId(v string) *ChangeInstanceA
 
 type ChangeInstanceAzoneResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 2F7F8080-9132-4279-85D0-B7E5C4305162
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -205,8 +260,20 @@ func (s *ChangeInstanceAzoneResponse) SetBody(v *ChangeInstanceAzoneResponseBody
 
 type CheckDrdsDbNameRequest struct {
 	// DRDS database name
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds_test
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// DRDS instance ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds********
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -230,10 +297,22 @@ func (s *CheckDrdsDbNameRequest) SetDrdsInstanceId(v string) *CheckDrdsDbNameReq
 
 type CheckDrdsDbNameResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// CF38538C-68BD-4278-B58F-EDE96F******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the DRDS database name is valid. Valid values: true: The database name is valid. false: the database name is invalid.
+	//
+	// example:
+	//
+	// true
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 	// Indicates whether the call is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -291,8 +370,20 @@ func (s *CheckDrdsDbNameResponse) SetBody(v *CheckDrdsDbNameResponseBody) *Check
 
 type CheckExpandStatusRequest struct {
 	// The name of the PolarDB-X database.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The ID of the PolarDB-X 1.0 instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds***********
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -318,8 +409,16 @@ type CheckExpandStatusResponseBody struct {
 	// The result of the verification.
 	Data *CheckExpandStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 7CDBA7D5-8D62-4D24-9C65-510D62******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The result of the request.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -348,8 +447,16 @@ func (s *CheckExpandStatusResponseBody) SetSuccess(v bool) *CheckExpandStatusRes
 
 type CheckExpandStatusResponseBodyData struct {
 	// Indicates whether scale-out operations can be performed on the database.
+	//
+	// example:
+	//
+	// true
 	IsActive *bool `json:"IsActive,omitempty" xml:"IsActive,omitempty"`
 	// The additional information.
+	//
+	// example:
+	//
+	// success
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
 }
 
@@ -402,8 +509,20 @@ func (s *CheckExpandStatusResponse) SetBody(v *CheckExpandStatusResponseBody) *C
 
 type CheckSqlAuditEnableStatusRequest struct {
 	// The name of the database.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The ID of the PolarDB-X 1.0 instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds************
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -427,13 +546,26 @@ func (s *CheckSqlAuditEnableStatusRequest) SetDrdsInstanceId(v string) *CheckSql
 
 type CheckSqlAuditEnableStatusResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// FF13E47D-4E38-4A5A-BA68-32A554******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The status of the SQL audit feature. Valid values:
 	//
-	// *   enabled: The SQL audit feature is enabled.
-	// *   disabled: The SQL audit feature is disabled.
+	// 	- enabled: The SQL audit feature is enabled.
+	//
+	// 	- disabled: The SQL audit feature is disabled.
+	//
+	// example:
+	//
+	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -493,26 +625,64 @@ type CreateDrdsDBRequest struct {
 	// The name of the account that has permissions to access all databases on the ApsaraDB RDS for MySQL instance.
 	//
 	// This parameter is required only when the Type parameter is set to VERTICAL.
+	//
+	// example:
+	//
+	// drds_sample_account
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The type of the storage instances that are used by the PolarDB-X 1.0 database. Set the value to RDS.
+	//
+	// example:
+	//
+	// RDS
 	DbInstType *string `json:"DbInstType,omitempty" xml:"DbInstType,omitempty"`
 	// Specifies whether the required ApsaraDB RDS for MySQL instance is being created.
+	//
+	// example:
+	//
+	// false
 	DbInstanceIsCreating *bool `json:"DbInstanceIsCreating,omitempty" xml:"DbInstanceIsCreating,omitempty"`
 	// The name of the PolarDB-X 1.0 database you want to create.
+	//
+	// example:
+	//
+	// testdb
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The ID of the PolarDB-X 1.0 instance on which you want to create the database.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drdshbgal154****
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	// The encoding method that is used by the database.
+	//
+	// example:
+	//
+	// utf8
 	Encode     *string                          `json:"Encode,omitempty" xml:"Encode,omitempty"`
 	InstDbName []*CreateDrdsDBRequestInstDbName `json:"InstDbName,omitempty" xml:"InstDbName,omitempty" type:"Repeated"`
 	// The password that is used to log on to the database.
-	Password        *string                               `json:"Password,omitempty" xml:"Password,omitempty"`
+	//
+	// example:
+	//
+	// drds_sample_password
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// example:
+	//
+	// ["drds_sample_rds_id1", "drds_sample_rds_id2"]
 	RdsInstance     []*string                             `json:"RdsInstance,omitempty" xml:"RdsInstance,omitempty" type:"Repeated"`
 	RdsSuperAccount []*CreateDrdsDBRequestRdsSuperAccount `json:"RdsSuperAccount,omitempty" xml:"RdsSuperAccount,omitempty" type:"Repeated"`
 	// The partitioning mode of the database. Valid values:
 	//
-	// *   **HORIZONTAL**: The database is horizontally partitioned (sharded).
-	// *   **VERTICAL**: The database is vertically partitioned.
+	// 	- **HORIZONTAL**: The database is horizontally partitioned (sharded).
+	//
+	// 	- **VERTICAL**: The database is vertically partitioned.
+	//
+	// example:
+	//
+	// HORIZONTAL
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -581,8 +751,15 @@ func (s *CreateDrdsDBRequest) SetType(v string) *CreateDrdsDBRequest {
 
 type CreateDrdsDBRequestInstDbName struct {
 	// The ID of the ApsaraDB RDS for MySQL instance on which the databases need to be vertically partitioned. This parameter is required only when the Type parameter is set to VERTICAL.
-	DbInstanceId *string   `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
-	ShardDbName  []*string `json:"ShardDbName,omitempty" xml:"ShardDbName,omitempty" type:"Repeated"`
+	//
+	// example:
+	//
+	// drds_sample_rds_id
+	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
+	// example:
+	//
+	// ["drds_sample_db1", "drds_sample_db2"]
+	ShardDbName []*string `json:"ShardDbName,omitempty" xml:"ShardDbName,omitempty" type:"Repeated"`
 }
 
 func (s CreateDrdsDBRequestInstDbName) String() string {
@@ -605,10 +782,22 @@ func (s *CreateDrdsDBRequestInstDbName) SetShardDbName(v []*string) *CreateDrdsD
 
 type CreateDrdsDBRequestRdsSuperAccount struct {
 	// The account name of the super administrator that is used to connect to the ApsaraDB RDS for MySQL instance.
+	//
+	// example:
+	//
+	// drds_sample_rds_super_account
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The ID of ApsaraDB RDS instance.
+	//
+	// example:
+	//
+	// drds_sample_rds_id
 	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
 	// The password of the super administrator account that is used to connect to the ApsaraDB RDS instance.
+	//
+	// example:
+	//
+	// drds_sample_rds_super_password
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
 }
 
@@ -637,8 +826,16 @@ func (s *CreateDrdsDBRequestRdsSuperAccount) SetPassword(v string) *CreateDrdsDB
 
 type CreateDrdsDBResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// FF13E47D-4E38-4A5A-BA68-32A554AD45T6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The result of the request.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -691,74 +888,174 @@ func (s *CreateDrdsDBResponse) SetBody(v *CreateDrdsDBResponseBody) *CreateDrdsD
 
 type CreateDrdsInstanceRequest struct {
 	// Specifies the client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c1dd299c-10c6-11ea-bbbb-************
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies the description of the instance. The description must meet the following requirements:
 	//
-	// *   The description cannot contain the prefix http:// or https://.
-	// *   The description must start with a letter or a Chinese character, and can contain uppercase and lowercase letters, Chinese characters, digits, underscores (\_), and hyphens (-).
-	// *   The description must be 2 to 256 characters in length.
+	// 	- The description cannot contain the prefix http:// or https://.
+	//
+	// 	- The description must start with a letter or a Chinese character, and can contain uppercase and lowercase letters, Chinese characters, digits, underscores (_), and hyphens (-).
+	//
+	// 	- The description must be 2 to 256 characters in length.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Specifies the purchase duration of the subscription instance.
 	//
-	// *   If the PricingCycle parameter is set to year, the value range of the Duration parameter is 1 to 3.
-	// *   If the PricingCycle parameter is set to month, the value range of the Duration parameter is 1 to 9.
+	// 	- If the PricingCycle parameter is set to year, the value range of the Duration parameter is 1 to 3.
+	//
+	// 	- If the PricingCycle parameter is set to month, the value range of the Duration parameter is 1 to 9.
 	//
 	// >  This parameter only takes effect when the PayType parameter is set to drdsPre.
+	//
+	// example:
+	//
+	// 1
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	// Specifies the instance type of the instance. Valid values:
 	//
-	// *   **drds.sn2.4c16g**: The instance is of the Starter Edition.
-	// *   **drds.sn2.8c32g**: The instance is of the Standard Edition
-	// *   **drds.sn2.16c64g**: The instance is of the Enterprise Edition.
+	// 	- **drds.sn2.4c16g**: The instance is of the Starter Edition.
+	//
+	// 	- **drds.sn2.8c32g**: The instance is of the Standard Edition
+	//
+	// 	- **drds.sn2.16c64g**: The instance is of the Enterprise Edition.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds.sn2.4c16g
 	InstanceSeries *string `json:"InstanceSeries,omitempty" xml:"InstanceSeries,omitempty"`
 	// Specifies whether to enable automatic renewal. Valid values:
 	//
-	// *   **true**: If the PricingCycle parameter is set to month, the subscription is automatically renewed for one month. If the PricingCycle parameter is set to year, the subscription is automatically renewed for one year.
-	// *   **false**: The auto-renewal feature is disabled for the instance.
+	// 	- **true**: If the PricingCycle parameter is set to month, the subscription is automatically renewed for one month. If the PricingCycle parameter is set to year, the subscription is automatically renewed for one year.
+	//
+	// 	- **false**: The auto-renewal feature is disabled for the instance.
 	//
 	// >  This parameter only takes effect when the PayType parameter is set to drdsPre.
+	//
+	// example:
+	//
+	// true
 	IsAutoRenew *bool `json:"IsAutoRenew,omitempty" xml:"IsAutoRenew,omitempty"`
 	// Specifies the ID of the primary instance. This parameter is only required when you create a read-only instance.
+	//
+	// example:
+	//
+	// drds***********
 	MasterInstId *string `json:"MasterInstId,omitempty" xml:"MasterInstId,omitempty"`
 	// Specifies the MySQL version that is supported by the instance. Valid values:
 	//
-	// *   **5**: The instance is fully compatible with MySQL 5.x. This value is the default value.
-	// *   **8**: The instance is fully compatible with MySQL 8.0.
+	// 	- **5**: The instance is fully compatible with MySQL 5.x. This value is the default value.
+	//
+	// 	- **8**: The instance is fully compatible with MySQL 8.0.
 	//
 	// >  This parameter only takes effect when you create a primary instance. By default, the MySQL version of the read-only instance is the same as that of the primary instance.
+	//
+	// example:
+	//
+	// 5
 	MySQLVersion *int32 `json:"MySQLVersion,omitempty" xml:"MySQLVersion,omitempty"`
 	// Specifies the billing method of the instance. Valid values:
 	//
-	// *   **drdsPre**: The instance uses the subscription billing method.
-	// *   **drdsPost**: The instance uses the pay-as-you-go billing method.
-	// *   **drdsRo**: By default, the pay-as-you-go billing method is used when you create read-only instances.
+	// 	- **drdsPre**: The instance uses the subscription billing method.
+	//
+	// 	- **drdsPost**: The instance uses the pay-as-you-go billing method.
+	//
+	// 	- **drdsRo**: By default, the pay-as-you-go billing method is used when you create read-only instances.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drdsPost
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	// Specifies the unit of the subscription duration of the subscription instance. Valid values:
 	//
-	// *   **year**: The unit of the subscription duration is year.
-	// *   **month**: The unit of the subscription duration is month.
+	// 	- **year**: The unit of the subscription duration is year.
+	//
+	// 	- **month**: The unit of the subscription duration is month.
 	//
 	// >  This parameter is required if you set the PayType parameter to drdsPre.
+	//
+	// example:
+	//
+	// month
 	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
 	// Specifies the number of instances to be created. You can set the value only to 1. The value specifies that you can create one instance each time.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	Quantity *int32 `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
 	// Specifies the region ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// Specifies the ID of the resource group.
+	//
+	// example:
+	//
+	// rg-************
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// Specifies the specification code of the instance. The value consists of the instance type and the specified instance specification. For example, you can set the value to drds.sn2.4c16g.8c32g.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds.sn2.4c16g.8C32g
 	Specification *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
 	// Specifies the type of the instance. Set the value to PRIVATE. The value PRIVATE specifies that the instance is a dedicated instance.
 	//
 	// >  You can also set the value to 1 to specify that the instance is a dedicated instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PRIVATE
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// Specifies the ID of the VPC.
+	//
+	// example:
+	//
+	// vpc-**********
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// Specifies the ID of the vSwitch.
+	//
+	// example:
+	//
+	// vsw-**********
 	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
 	// Specifies the zone ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou-e
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 	// Specifies whether the instance is a high-availability instance.
+	//
+	// example:
+	//
+	// true
 	IsHa *bool `json:"isHa,omitempty" xml:"isHa,omitempty"`
 }
 
@@ -864,8 +1161,16 @@ type CreateDrdsInstanceResponseBody struct {
 	// Indicates the details of the result.
 	Data *CreateDrdsInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Indicates the ID of the request.
+	//
+	// example:
+	//
+	// D99D4644-A70D-49A3-B8B4-767ACC50SE2R
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -896,6 +1201,10 @@ type CreateDrdsInstanceResponseBodyData struct {
 	// Indicates the ID of the instance.
 	DrdsInstanceIdList *CreateDrdsInstanceResponseBodyDataDrdsInstanceIdList `json:"DrdsInstanceIdList,omitempty" xml:"DrdsInstanceIdList,omitempty" type:"Struct"`
 	// Indicates the ID of the order.
+	//
+	// example:
+	//
+	// 111111111111111
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 }
 
@@ -965,11 +1274,30 @@ func (s *CreateDrdsInstanceResponse) SetBody(v *CreateDrdsInstanceResponseBody) 
 
 type CreateInstanceAccountRequest struct {
 	// The username of the account you want to create.
-	AccountName *string                                    `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds_sample_account
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// This parameter is required.
 	DbPrivilege []*CreateInstanceAccountRequestDbPrivilege `json:"DbPrivilege,omitempty" xml:"DbPrivilege,omitempty" type:"Repeated"`
 	// The ID of the PolarDB-X 1.0 instance for which you want to create the account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drdsjiii1b49****
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	// The password of the account you want to create.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds_sample_password
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
 }
 
@@ -1003,8 +1331,16 @@ func (s *CreateInstanceAccountRequest) SetPassword(v string) *CreateInstanceAcco
 
 type CreateInstanceAccountRequestDbPrivilege struct {
 	// The name of the database that you want to manage by using the account to create.
+	//
+	// example:
+	//
+	// test123
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The permissions that you want to grant to the account to manage the database.
+	//
+	// example:
+	//
+	// DDL
 	Privilege *string `json:"Privilege,omitempty" xml:"Privilege,omitempty"`
 }
 
@@ -1028,8 +1364,16 @@ func (s *CreateInstanceAccountRequestDbPrivilege) SetPrivilege(v string) *Create
 
 type CreateInstanceAccountResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// FF13E47D-4E38-4A5A-BA68-4E610EVF56DC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -1082,8 +1426,18 @@ func (s *CreateInstanceAccountResponse) SetBody(v *CreateInstanceAccountResponse
 
 type CreateInstanceInternetAddressRequest struct {
 	// The ID of the DRDS instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds****************
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	// The ID of the region to which the DRDS instance belongs.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -1109,12 +1463,28 @@ type CreateInstanceInternetAddressResponseBody struct {
 	// The error code returned when the activity fails.
 	//
 	// >  This parameter appears only when an error occurs during the API call.
+	//
+	// example:
+	//
+	// 404
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the public IP address was created.
+	//
+	// example:
+	//
+	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 1DF6052F-15E2-4E69-9628-D6BCC3******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -1176,9 +1546,19 @@ func (s *CreateInstanceInternetAddressResponse) SetBody(v *CreateInstanceInterne
 }
 
 type CreateOrderForRdsRequest struct {
-	// The JSON string that contains the order details. For more information, see [CreateDBInstance](~~26228~~).
+	// The JSON string that contains the order details. For more information, see [CreateDBInstance](https://help.aliyun.com/document_detail/26228.html).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {"key":"value"}
 	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -1202,10 +1582,22 @@ func (s *CreateOrderForRdsRequest) SetRegionId(v string) *CreateOrderForRdsReque
 
 type CreateOrderForRdsResponseBody struct {
 	// The ID of the purchased RDS instance.
+	//
+	// example:
+	//
+	// [rm-***********]
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 9819BC51-D33D-4EB1-B80F-A89A20******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -1263,16 +1655,50 @@ func (s *CreateOrderForRdsResponse) SetBody(v *CreateOrderForRdsResponseBody) *C
 
 type CreateShardTaskRequest struct {
 	// The name of the DRDS database.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The ID of the DRDS instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds************
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	// The ID of the region where the resource group resides.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The name of the source table.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test_tb1
 	SourceTableName *string `json:"SourceTableName,omitempty" xml:"SourceTableName,omitempty"`
 	// The name of the destination table.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test_tb2
 	TargetTableName *string `json:"TargetTableName,omitempty" xml:"TargetTableName,omitempty"`
 	// The type of the task. Valid values:`  SHARD_TO_SINGLE `,`  SINGLE_TO_SHARD `,`  SHARD_TO_SHARD `.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SINGLE_TO_SHARD
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
@@ -1316,10 +1742,22 @@ func (s *CreateShardTaskRequest) SetTaskType(v string) *CreateShardTaskRequest {
 
 type CreateShardTaskResponseBody struct {
 	// Task creation result
+	//
+	// example:
+	//
+	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// F8997D95-94AD-416A-AE70-E24D08******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The result of the operation.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -1377,6 +1815,12 @@ func (s *CreateShardTaskResponse) SetBody(v *CreateShardTaskResponseBody) *Creat
 
 type DescribeBackMenuRequest struct {
 	// The ID of the DRDS instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds***********
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -1397,8 +1841,16 @@ type DescribeBackMenuResponseBody struct {
 	// The backup information list.
 	List *DescribeBackMenuResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 60C21BE4-EDFE-454C-95ED-3A5C74******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The result of request.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -1445,10 +1897,19 @@ func (s *DescribeBackMenuResponseBodyList) SetList(v []*DescribeBackMenuResponse
 type DescribeBackMenuResponseBodyListList struct {
 	// The backup method. Valid values:
 	//
-	// *   **Logic **: logical backup
-	// *   **phy**: physical backup
+	// 	- **Logic **: logical backup
+	//
+	// 	- **phy**: physical backup
+	//
+	// example:
+	//
+	// phy
 	MenuName *string `json:"MenuName,omitempty" xml:"MenuName,omitempty"`
 	// Indicates whether backup recovery is supported.
+	//
+	// example:
+	//
+	// true
 	Support *bool `json:"Support,omitempty" xml:"Support,omitempty"`
 }
 
@@ -1501,10 +1962,24 @@ func (s *DescribeBackMenuResponse) SetBody(v *DescribeBackMenuResponseBody) *Des
 
 type DescribeBackupDbsRequest struct {
 	// Query by backup set ID
+	//
+	// example:
+	//
+	// 201908367
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
 	// The ID of a DRDS instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds************
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	// Query by restoration time.
+	//
+	// example:
+	//
+	// 1568632541236
 	PreferredRestoreTime *string `json:"PreferredRestoreTime,omitempty" xml:"PreferredRestoreTime,omitempty"`
 }
 
@@ -1535,8 +2010,16 @@ type DescribeBackupDbsResponseBody struct {
 	// The details about a database.
 	DbNames *DescribeBackupDbsResponseBodyDbNames `json:"DbNames,omitempty" xml:"DbNames,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 842DFA7F-B09B-42A2-B115-E684AE******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The result of request.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -1611,6 +2094,12 @@ func (s *DescribeBackupDbsResponse) SetBody(v *DescribeBackupDbsResponseBody) *D
 
 type DescribeBackupLocalRequest struct {
 	// The ID of the PolarDB-X 1.0 instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds************
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -1631,8 +2120,16 @@ type DescribeBackupLocalResponseBody struct {
 	// The information about the backup policy.
 	BackupPolicyDO *DescribeBackupLocalResponseBodyBackupPolicyDO `json:"BackupPolicyDO,omitempty" xml:"BackupPolicyDO,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// FDC9CFD5-306D-4A23-9D8C-057274C6****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The result of the request.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -1661,43 +2158,116 @@ func (s *DescribeBackupLocalResponseBody) SetSuccess(v bool) *DescribeBackupLoca
 
 type DescribeBackupLocalResponseBodyBackupPolicyDO struct {
 	// No value is returned.
+	//
+	// example:
+	//
+	// null
 	BackupAppName *string `json:"BackupAppName,omitempty" xml:"BackupAppName,omitempty"`
 	// No value is returned.
+	//
+	// example:
+	//
+	// null
 	BackupDbName *string `json:"BackupDbName,omitempty" xml:"BackupDbName,omitempty"`
 	// No value is returned.
+	//
+	// example:
+	//
+	// null
 	BackupLevel *string `json:"BackupLevel,omitempty" xml:"BackupLevel,omitempty"`
 	// No value is returned.
+	//
+	// example:
+	//
+	// null
 	BackupLog *string `json:"BackupLog,omitempty" xml:"BackupLog,omitempty"`
 	// No value is returned.
+	//
+	// example:
+	//
+	// null
 	BackupMode *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
 	// No value is returned.
+	//
+	// example:
+	//
+	// null
 	BackupPolicyMode *string `json:"BackupPolicyMode,omitempty" xml:"BackupPolicyMode,omitempty"`
 	// No value is returned.
+	//
+	// example:
+	//
+	// 0
 	BackupRetentionPeriod *int64 `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
 	// No value is returned.
+	//
+	// example:
+	//
+	// null
 	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
 	// No value is returned.
+	//
+	// example:
+	//
+	// 0
 	DataBackupRetentionPeriod *int64 `json:"DataBackupRetentionPeriod,omitempty" xml:"DataBackupRetentionPeriod,omitempty"`
 	// No value is returned.
+	//
+	// example:
+	//
+	// 0
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// No value is returned.
+	//
+	// example:
+	//
+	// 0
 	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// Indicates whether the feature is enabled to forcibly delete binary log files if the used storage space of the instance exceeds 90% of the total storage space or the remaining storage space is less than 5 GB. Valid values:
 	//
-	// *   1: The feature is enabled.
-	// *   0: The feature is disabled.
+	// 	- 1: The feature is enabled.
+	//
+	// 	- 0: The feature is disabled.
+	//
+	// example:
+	//
+	// 1
 	HighSpaceUsageProtection *int64 `json:"HighSpaceUsageProtection,omitempty" xml:"HighSpaceUsageProtection,omitempty"`
-	// The number of hours for which log backup files are retained on the instance. Valid values: 0 to 168. Default value: **18**. The value **0** indicates that log backup files are not retained.
+	// The number of hours for which log backup files are retained on the instance. Valid values: 0 to 168. Default value: **18**. The value **0*	- indicates that log backup files are not retained.
+	//
+	// example:
+	//
+	// 18
 	LocalLogRetentionHours *int64 `json:"LocalLogRetentionHours,omitempty" xml:"LocalLogRetentionHours,omitempty"`
 	// The maximum storage usage that is allowed for local log files. Valid values: 0 to 50. Default value: 30.
+	//
+	// example:
+	//
+	// 30
 	LocalLogRetentionSpace *int64 `json:"LocalLogRetentionSpace,omitempty" xml:"LocalLogRetentionSpace,omitempty"`
 	// No value is returned.
+	//
+	// example:
+	//
+	// 0
 	LogBackupRetentionPeriod *int64 `json:"LogBackupRetentionPeriod,omitempty" xml:"LogBackupRetentionPeriod,omitempty"`
 	// No value is returned.
+	//
+	// example:
+	//
+	// null
 	NextBackupActuallyTime *string `json:"NextBackupActuallyTime,omitempty" xml:"NextBackupActuallyTime,omitempty"`
 	// No value is returned.
+	//
+	// example:
+	//
+	// null
 	PreferredBackupPeriod *string `json:"PreferredBackupPeriod,omitempty" xml:"PreferredBackupPeriod,omitempty"`
 	// No value is returned.
+	//
+	// example:
+	//
+	// null
 	PreferredBackupTime *string `json:"PreferredBackupTime,omitempty" xml:"PreferredBackupTime,omitempty"`
 }
 
@@ -1830,6 +2400,12 @@ func (s *DescribeBackupLocalResponse) SetBody(v *DescribeBackupLocalResponseBody
 
 type DescribeBackupPolicyRequest struct {
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drdshbga71nn****
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -1850,8 +2426,16 @@ type DescribeBackupPolicyResponseBody struct {
 	// The information about the backup policy.
 	BackupPolicyDO *DescribeBackupPolicyResponseBodyBackupPolicyDO `json:"BackupPolicyDO,omitempty" xml:"BackupPolicyDO,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 8FAF3989-79CD-4A67-8FFD-97899B64****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The result of the request.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -1880,60 +2464,142 @@ func (s *DescribeBackupPolicyResponseBody) SetSuccess(v bool) *DescribeBackupPol
 
 type DescribeBackupPolicyResponseBodyBackupPolicyDO struct {
 	// No value is returned.
+	//
+	// example:
+	//
+	// null
 	BackupAppName *string `json:"BackupAppName,omitempty" xml:"BackupAppName,omitempty"`
 	// No value is returned.
+	//
+	// example:
+	//
+	// null
 	BackupDbName *string `json:"BackupDbName,omitempty" xml:"BackupDbName,omitempty"`
 	// The backup level. Valid values:
 	//
-	// *   **db**: database backup
-	// *   **instance**: instance backup
+	// 	- **db**: database backup
+	//
+	// 	- **instance**: instance backup
+	//
+	// example:
+	//
+	// instance
 	BackupLevel *string `json:"BackupLevel,omitempty" xml:"BackupLevel,omitempty"`
 	// Indicates whether the log backup feature is enabled. Valid values:
 	//
-	// *   **1**: The log backup feature is enabled.
-	// *   **0**: The log backup feature is disabled.
+	// 	- **1**: The log backup feature is enabled.
+	//
+	// 	- **0**: The log backup feature is disabled.
+	//
+	// example:
+	//
+	// 1
 	BackupLog *string `json:"BackupLog,omitempty" xml:"BackupLog,omitempty"`
 	// The backup mode. Valid values:
 	//
-	// *   **logic**: logical backup
-	// *   **phy**: fast backup
+	// 	- **logic**: logical backup
+	//
+	// 	- **phy**: fast backup
+	//
+	// example:
+	//
+	// phy
 	BackupMode *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
 	// The type of the backup policy. Valid values:
 	//
-	// *   **DataBackupPolicy**: a data backup policy
-	// *   **LogBackupPolicy**: a log backup policy
+	// 	- **DataBackupPolicy**: a data backup policy
+	//
+	// 	- **LogBackupPolicy**: a log backup policy
+	//
+	// example:
+	//
+	// DataBackupPolicy
 	BackupPolicyMode *string `json:"BackupPolicyMode,omitempty" xml:"BackupPolicyMode,omitempty"`
 	// The retention period of backup files. Unit: days.
+	//
+	// example:
+	//
+	// 0
 	BackupRetentionPeriod *int64 `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
 	// No value is returned.
+	//
+	// example:
+	//
+	// null
 	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
 	// The retention period of data backup files. Unit: days.
+	//
+	// example:
+	//
+	// 0
 	DataBackupRetentionPeriod *int64 `json:"DataBackupRetentionPeriod,omitempty" xml:"DataBackupRetentionPeriod,omitempty"`
 	// No value is returned.
+	//
+	// example:
+	//
+	// 0
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// No value is returned.
+	//
+	// example:
+	//
+	// 0
 	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// No value is returned.
+	//
+	// example:
+	//
+	// 0
 	HighSpaceUsageProtection *int64 `json:"HighSpaceUsageProtection,omitempty" xml:"HighSpaceUsageProtection,omitempty"`
 	// No value is returned.
+	//
+	// example:
+	//
+	// 0
 	LocalLogRetentionHours *int64 `json:"LocalLogRetentionHours,omitempty" xml:"LocalLogRetentionHours,omitempty"`
 	// No value is returned.
+	//
+	// example:
+	//
+	// 0
 	LocalLogRetentionSpace *int64 `json:"LocalLogRetentionSpace,omitempty" xml:"LocalLogRetentionSpace,omitempty"`
 	// The retention period of log backup files. Unit: days.
+	//
+	// example:
+	//
+	// 0
 	LogBackupRetentionPeriod *int64 `json:"LogBackupRetentionPeriod,omitempty" xml:"LogBackupRetentionPeriod,omitempty"`
 	// No value is returned.
+	//
+	// example:
+	//
+	// null
 	NextBackupActuallyTime *string `json:"NextBackupActuallyTime,omitempty" xml:"NextBackupActuallyTime,omitempty"`
 	// The backup cycle. You can specify multiple backup cycles. Separate multiple backup cycles with commas (,). Valid values:
 	//
-	// *   **0**: every Monday
-	// *   **1**: every Tuesday
-	// *   **2**: every Wednesday
-	// *   **3**: every Thursday
-	// *   **4**: every Friday
-	// *   **5**: every Saturday
-	// *   **6**: every Sunday
+	// 	- **0**: every Monday
+	//
+	// 	- **1**: every Tuesday
+	//
+	// 	- **2**: every Wednesday
+	//
+	// 	- **3**: every Thursday
+	//
+	// 	- **4**: every Friday
+	//
+	// 	- **5**: every Saturday
+	//
+	// 	- **6**: every Sunday
+	//
+	// example:
+	//
+	// 1,4
 	PreferredBackupPeriod *string `json:"PreferredBackupPeriod,omitempty" xml:"PreferredBackupPeriod,omitempty"`
 	// The time range in which a backup is performed. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 22:00:00-23:00:00
 	PreferredBackupTime *string `json:"PreferredBackupTime,omitempty" xml:"PreferredBackupTime,omitempty"`
 }
 
@@ -2066,12 +2732,30 @@ func (s *DescribeBackupPolicyResponse) SetBody(v *DescribeBackupPolicyResponseBo
 
 type DescribeBackupSetsRequest struct {
 	// The ID of the DRDS instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds***********
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	// The end of the query time which is in timestamp format (measured in millisecond) .
 	//
 	// >  The end time must be later than the start time.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1591326000000
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The beginning of the query time which is in timestamp format (measured in millisecond).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1591327800000
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -2102,8 +2786,16 @@ type DescribeBackupSetsResponseBody struct {
 	// The list of backup sets.
 	BackupSets *DescribeBackupSetsResponseBodyBackupSets `json:"BackupSets,omitempty" xml:"BackupSets,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 7103AEE3-9025-442F-B82B-BABD0A******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -2149,42 +2841,88 @@ func (s *DescribeBackupSetsResponseBodyBackupSets) SetBackupSet(v []*DescribeBac
 
 type DescribeBackupSetsResponseBodyBackupSetsBackupSet struct {
 	// Backup Recovery duration.
+	//
+	// example:
+	//
+	// 2020-06-05 11:31:38
 	BackupConsitentTime *string `json:"BackupConsitentTime,omitempty" xml:"BackupConsitentTime,omitempty"`
 	// The list of backup databases.
 	BackupDbs *DescribeBackupSetsResponseBodyBackupSetsBackupSetBackupDbs `json:"BackupDbs,omitempty" xml:"BackupDbs,omitempty" type:"Struct"`
 	// The end of the backup time which is in timestamp format (measured in millisecond).
 	//
 	// >  0 indicates not finished.
+	//
+	// example:
+	//
+	// 1591327899000
 	BackupEndTime *int64 `json:"BackupEndTime,omitempty" xml:"BackupEndTime,omitempty"`
 	// The level of the backup. Valid values:
 	//
-	// *   db: The database level.
-	// *   instance: the instance level.
+	// 	- db: The database level.
+	//
+	// 	- instance: the instance level.
+	//
+	// example:
+	//
+	// instance
 	BackupLevel *string `json:"BackupLevel,omitempty" xml:"BackupLevel,omitempty"`
 	// The backup method. Valid values:
 	//
-	// *   logic: the logical backup.
-	// *   phy: fast backup
+	// 	- logic: the logical backup.
+	//
+	// 	- phy: fast backup
+	//
+	// example:
+	//
+	// logic
 	BackupMode *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
 	// The beginning of the backup time which is in timestamp format (measured in millisecond).
+	//
+	// example:
+	//
+	// 1591327754000
 	BackupStartTime *int64 `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
 	// The size of the backup set. Unit: MB.
+	//
+	// example:
+	//
+	// 93.24
 	BackupTotalSize *string `json:"BackupTotalSize,omitempty" xml:"BackupTotalSize,omitempty"`
 	// The type of the backup. Valid values:
 	//
-	// *   manual: indicates a manual backup.
-	// *   auto: indicates an automatic backup.
+	// 	- manual: indicates a manual backup.
+	//
+	// 	- auto: indicates an automatic backup.
+	//
+	// example:
+	//
+	// manual
 	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
 	// Indicates whether the backup set can be restored. Valid values:
+	//
+	// example:
+	//
+	// false
 	EnableRecovery *bool `json:"EnableRecovery,omitempty" xml:"EnableRecovery,omitempty"`
 	// The ID of the data backup file you want to use.
+	//
+	// example:
+	//
+	// ba30d5c4-a6dc-11ea-bd40-************
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The status of the backup instance. Valid values:
 	//
-	// *   \-1: Failed
-	// *   0: Not started
-	// *   1: The storage instance is running.
-	// *   2: Success
+	// 	- \\-1: Failed
+	//
+	// 	- 0: Not started
+	//
+	// 	- 1: The storage instance is running.
+	//
+	// 	- 2: Success
+	//
+	// example:
+	//
+	// 2
 	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -2299,6 +3037,12 @@ func (s *DescribeBackupSetsResponse) SetBody(v *DescribeBackupSetsResponseBody) 
 
 type DescribeBackupTimesRequest struct {
 	// The ID of the PolarDB-X 1.0 instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drdshbga71nn****
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -2317,10 +3061,18 @@ func (s *DescribeBackupTimesRequest) SetDrdsInstanceId(v string) *DescribeBackup
 
 type DescribeBackupTimesResponseBody struct {
 	// Indicates the ID of the request.
+	//
+	// example:
+	//
+	// 4780A19F-5ECB-4C56-AD20-966A3FF9DE5R
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates the information about the time range within which the data of the instance can be restored to a point in time.
 	RestoreTime *DescribeBackupTimesResponseBodyRestoreTime `json:"RestoreTime,omitempty" xml:"RestoreTime,omitempty" type:"Struct"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -2349,8 +3101,16 @@ func (s *DescribeBackupTimesResponseBody) SetSuccess(v bool) *DescribeBackupTime
 
 type DescribeBackupTimesResponseBodyRestoreTime struct {
 	// Indicates the end time. The time is in the UNIX timestamp format. The time is in UTC. Unit: ms.
+	//
+	// example:
+	//
+	// 1568636922671
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// Indicates the start time. The time is in the UNIX timestamp format. The time must be in UTC. Unit: ms.
+	//
+	// example:
+	//
+	// 1568632853000
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -2403,16 +3163,44 @@ func (s *DescribeBackupTimesResponse) SetBody(v *DescribeBackupTimesResponseBody
 
 type DescribeBroadcastTablesRequest struct {
 	// The number of the page to return.
+	//
+	// example:
+	//
+	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The name of the database.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test_db
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The ID of the PolarDB-X 1.0 instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds************
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The content of the query.
+	//
+	// example:
+	//
+	// tb1
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -2456,18 +3244,42 @@ func (s *DescribeBroadcastTablesRequest) SetRegionId(v string) *DescribeBroadcas
 
 type DescribeBroadcastTablesResponseBody struct {
 	// Indicates whether the database is sharded.
+	//
+	// example:
+	//
+	// true
 	IsShard *bool `json:"IsShard,omitempty" xml:"IsShard,omitempty"`
 	// Indicates information about broadcast tables.
 	List []*DescribeBroadcastTablesResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
 	// Indicates the page number of the returned page.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// Indicates the number of entries returned per page.
+	//
+	// example:
+	//
+	// 40
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// Indicates the ID of the request.
+	//
+	// example:
+	//
+	// 86E420ED-43F2-4788-A58C-921849******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// Indicates the total number of entries returned.
+	//
+	// example:
+	//
+	// 2
 	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -2516,26 +3328,54 @@ func (s *DescribeBroadcastTablesResponseBody) SetTotal(v int32) *DescribeBroadca
 
 type DescribeBroadcastTablesResponseBodyList struct {
 	// Indicates whether a table is a broadcast table.
+	//
+	// example:
+	//
+	// true
 	Broadcast *bool `json:"Broadcast,omitempty" xml:"Broadcast,omitempty"`
 	// Indicates the type of the broadcast table. Valid values:
 	//
-	// *   **1**: multi-write mode
-	// *   **2**: synchronous mode
+	// 	- **1**: multi-write mode
+	//
+	// 	- **2**: synchronous mode
+	//
+	// example:
+	//
+	// 1
 	BroadcastType *string `json:"BroadcastType,omitempty" xml:"BroadcastType,omitempty"`
 	// Indicates the storage type of the database. Valid values:
 	//
-	// *   **0**: RDS
-	// *   **4**: PolarDB
+	// 	- **0**: RDS
+	//
+	// 	- **4**: PolarDB
+	//
+	// example:
+	//
+	// 0
 	DbInstType *int32 `json:"DbInstType,omitempty" xml:"DbInstType,omitempty"`
 	// Indicates whether the broadcast table was sharded.
+	//
+	// example:
+	//
+	// false
 	IsShard *bool `json:"IsShard,omitempty" xml:"IsShard,omitempty"`
 	// Indicates the activation state of the broadcast table. Valid values:
 	//
-	// *   **1**: The broadcast table is activated.
-	// *   **2**: The broadcast table is being activated.
-	// *   **3**: An exception occurs when the broadcast table is being activated.
+	// 	- **1**: The broadcast table is activated.
+	//
+	// 	- **2**: The broadcast table is being activated.
+	//
+	// 	- **3**: An exception occurs when the broadcast table is being activated.
+	//
+	// example:
+	//
+	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// Indicates the name of the table.
+	//
+	// example:
+	//
+	// nation
 	Table *string `json:"Table,omitempty" xml:"Table,omitempty"`
 }
 
@@ -2608,14 +3448,38 @@ func (s *DescribeBroadcastTablesResponse) SetBody(v *DescribeBroadcastTablesResp
 
 type DescribeDbInstanceDbsRequest struct {
 	// The name of the privileged account of the PolarDB-X 1.0 instance. You do not need to specify this parameter if you have no privileged account.
+	//
+	// example:
+	//
+	// test
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The engine type of the storage-layer databases. Valid values: **POLARDB** and **RDS**.
+	// The engine type of the storage-layer databases. Valid values: **POLARDB*	- and **RDS**.
+	//
+	// example:
+	//
+	// POLARDB
 	DbInstType *string `json:"DbInstType,omitempty" xml:"DbInstType,omitempty"`
 	// The ID of the instance in which the storage-layer databases are deployed.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-****************
 	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
 	// The ID of the PolarDB-X 1.0 instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds************
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	// The password of the privileged account. You do not need to specify this parameter if you have no privileged account.
+	//
+	// example:
+	//
+	// pwd_111111
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
 }
 
@@ -2656,10 +3520,22 @@ type DescribeDbInstanceDbsResponseBody struct {
 	// Indicates the information about the storage-layer databases.
 	Databases *DescribeDbInstanceDbsResponseBodyDatabases `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// E9F3D991-08DE-4B74-BE0E-06B809******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// Indicates the total number of storage-layer databases.
+	//
+	// example:
+	//
+	// 1
 	Total *string `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -2710,14 +3586,28 @@ func (s *DescribeDbInstanceDbsResponseBodyDatabases) SetDatabase(v []*DescribeDb
 
 type DescribeDbInstanceDbsResponseBodyDatabasesDatabase struct {
 	// Indicates the name of a storage-layer database.
+	//
+	// example:
+	//
+	// db_test
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// Indicates the description of the storage-layer database.
+	//
+	// example:
+	//
+	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Indicates the state of the storage-layer database. Valid values:
 	//
-	// *   **0**: The database is being created.
-	// *   **1**: The database is available.
-	// *   **3**: The database is being deleted.
+	// 	- **0**: The database is being created.
+	//
+	// 	- **1**: The database is available.
+	//
+	// 	- **3**: The database is being deleted.
+	//
+	// example:
+	//
+	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -2774,17 +3664,43 @@ func (s *DescribeDbInstanceDbsResponse) SetBody(v *DescribeDbInstanceDbsResponse
 }
 
 type DescribeDbInstancesRequest struct {
-	// Storage layer type. Valid values: **POLARDB** or **RDS**.
+	// Storage layer type. Valid values: **POLARDB*	- or **RDS**.
+	//
+	// example:
+	//
+	// POLARDB
 	DbInstType *string `json:"DbInstType,omitempty" xml:"DbInstType,omitempty"`
 	// The ID of a DRDS instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds************
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	// The page number of the returned page.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the storage or cluster.
+	//
+	// example:
+	//
+	// pc-***************
 	Search *string `json:"Search,omitempty" xml:"Search,omitempty"`
 }
 
@@ -2830,6 +3746,10 @@ type DescribeDbInstancesResponseBody struct {
 	// The details of the instance.
 	Items *DescribeDbInstancesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 293275B3-8FC0-4619-A26E-6F062FASD56R
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2871,35 +3791,74 @@ func (s *DescribeDbInstancesResponseBodyItems) SetDBInstance(v []*DescribeDbInst
 type DescribeDbInstancesResponseBodyItemsDBInstance struct {
 	AllowAllCategory *bool `json:"AllowAllCategory,omitempty" xml:"AllowAllCategory,omitempty"`
 	// The description of the storage instance.
+	//
+	// example:
+	//
+	// test
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
 	// The ID of the storage instance.
+	//
+	// example:
+	//
+	// rm-****************
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// Storage layer instance status. Valid values:
 	//
-	// *   **0**: creating
-	// *   **1**: In use
-	// *   **3**: Deleting
-	// *   **5**: restarting
-	// *   **6**: upgrading /Downgrading
-	// *   **7**: Recovering
-	// *   **8**: switching the Internet and intranet
+	// 	- **0**: creating
+	//
+	// 	- **1**: In use
+	//
+	// 	- **3**: Deleting
+	//
+	// 	- **5**: restarting
+	//
+	// 	- **6**: upgrading /Downgrading
+	//
+	// 	- **7**: Recovering
+	//
+	// 	- **8**: switching the Internet and intranet
+	//
+	// example:
+	//
+	// 0
 	DBInstanceStatus *int32 `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
 	// The storage layer instance type.
+	//
+	// example:
+	//
+	// Primary
 	DBInstanceType *string `json:"DBInstanceType,omitempty" xml:"DBInstanceType,omitempty"`
 	// The engine of the storage instance.
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The version of the engine for the storage instance.
+	//
+	// example:
+	//
+	// 5.7
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	// The network type of the storage layer. Valid values:
 	//
-	// *   **VPC**: VPC
-	// *   **CLASSIC **: Classic Network
+	// 	- **VPC**: VPC
+	//
+	// 	- **CLASSIC **: Classic Network
+	//
+	// example:
+	//
+	// VPC
 	InstanceNetworkType *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
 	// The details about a read-only storage instance.
 	ReadOnlyDBInstanceId *DescribeDbInstancesResponseBodyItemsDBInstanceReadOnlyDBInstanceId `json:"ReadOnlyDBInstanceId,omitempty" xml:"ReadOnlyDBInstanceId,omitempty" type:"Struct"`
 	// The ID of the region where the storage instance resides.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the zone where the storage instance resides.
+	//
+	// example:
+	//
+	// cn-hangzhou-a
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -3014,8 +3973,20 @@ func (s *DescribeDbInstancesResponse) SetBody(v *DescribeDbInstancesResponseBody
 
 type DescribeDrdsDBRequest struct {
 	// The name of the database.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// db_test
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The ID of the PolarDB-X 1.0 instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds*********
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -3041,8 +4012,16 @@ type DescribeDrdsDBResponseBody struct {
 	// Indicates the details about the database.
 	Data *DescribeDrdsDBResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Indicates the ID of the request.
+	//
+	// example:
+	//
+	// 58FB0EC7-CF71-4E48-92FB-CF070D******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -3071,27 +4050,58 @@ func (s *DescribeDrdsDBResponseBody) SetSuccess(v bool) *DescribeDrdsDBResponseB
 
 type DescribeDrdsDBResponseBodyData struct {
 	// Indicates the time when the database was created. The value is in the UNIX timestamp format. Unit: ms.
+	//
+	// example:
+	//
+	// 1602050276000
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// Indicates the storage type of the database.
+	//
+	// example:
+	//
+	// RDS
 	DbInstType *string `json:"DbInstType,omitempty" xml:"DbInstType,omitempty"`
 	// Indicates the name of the database.
+	//
+	// example:
+	//
+	// db_test
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// Indicates the type of the instance in which the database is deployed. Valid values:
 	//
-	// *   **MASTER**: The instance is a primary instance.
-	// *   **SLAVE**: The instance is a read-only instance.
+	// 	- **MASTER**: The instance is a primary instance.
+	//
+	// 	- **SLAVE**: The instance is a read-only instance.
+	//
+	// example:
+	//
+	// MASTER
 	InstRole *string `json:"InstRole,omitempty" xml:"InstRole,omitempty"`
 	// Indicates the database sharding method.
 	//
-	// *   **HORIZONTAL**: The database is horizontally sharded.
-	// *   **VERTICAL**: The database is vertically sharded.
+	// 	- **HORIZONTAL**: The database is horizontally sharded.
+	//
+	// 	- **VERTICAL**: The database is vertically sharded.
+	//
+	// example:
+	//
+	// HORIZONTAL
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	// Indicates the schema name of the database.
+	//
+	// example:
+	//
+	// db_test*******************
 	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
 	// Indicates the state of the database. Valid values:
 	//
-	// *   **TO_BE_INIT**: The database is being created.
-	// *   **NORMAL**: The database is running.
+	// 	- **TO_BE_INIT**: The database is being created.
+	//
+	// 	- **NORMAL**: The database is running.
+	//
+	// example:
+	//
+	// NORMAL
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -3169,10 +4179,28 @@ func (s *DescribeDrdsDBResponse) SetBody(v *DescribeDrdsDBResponseBody) *Describ
 
 type DescribeDrdsDBClusterRequest struct {
 	// The ID of the PolarDB cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-*****************
 	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
 	// The name of the DRDS database.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds_test
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The ID of a DRDS instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds*********
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -3203,8 +4231,16 @@ type DescribeDrdsDBClusterResponseBody struct {
 	// The details of each PolarDB cluster.
 	DbInstance *DescribeDrdsDBClusterResponseBodyDbInstance `json:"DbInstance,omitempty" xml:"DbInstance,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 60A77FD6-0DE4-4A34-B6FB-9C2673******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The result of the request.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -3233,38 +4269,88 @@ func (s *DescribeDrdsDBClusterResponseBody) SetSuccess(v bool) *DescribeDrdsDBCl
 
 type DescribeDrdsDBClusterResponseBodyDbInstance struct {
 	// The ID of the PolarDB cluster.
+	//
+	// example:
+	//
+	// pc-*****************
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The status of the PolarDB instance.
+	//
+	// example:
+	//
+	// 1
 	DBInstanceStatus *string `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
 	// The information about the nodes in the PolarDB Cluster.
 	DBNodes *DescribeDrdsDBClusterResponseBodyDbInstanceDBNodes `json:"DBNodes,omitempty" xml:"DBNodes,omitempty" type:"Struct"`
 	// The type of storage used by the DRDS database.
+	//
+	// example:
+	//
+	// POLARDB
 	DbInstType *string `json:"DbInstType,omitempty" xml:"DbInstType,omitempty"`
 	// The endpoint of the PolarDB read /write splitting endpoint
 	Endpoints *DescribeDrdsDBClusterResponseBodyDbInstanceEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Struct"`
 	// The type of the DRDS database storage engine.
+	//
+	// example:
+	//
+	// POLARDB
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The version of the DRDS database storage engine.
+	//
+	// example:
+	//
+	// 8.0
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	// The time when the PolarDB cluster expires.
+	//
+	// example:
+	//
+	// 2019-09-27 11:22:33
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// The network type of the PolarDB cluster.
+	//
+	// example:
+	//
+	// VPC
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	// The billing method of the PolarDB cluster.
+	//
+	// example:
+	//
+	// Postpaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	// The PolarDB access port.
+	//
+	// example:
+	//
+	// 3306
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The type of RDS instance. PolarDB cluster does not support this parameter.
+	//
+	// example:
+	//
+	// ignore
 	RdsInstType *string `json:"RdsInstType,omitempty" xml:"RdsInstType,omitempty"`
 	// This parameter specifies the Read mode when the database storage type is PolarDB.
 	//
 	// Valid values:
 	//
-	// *   **DEFAULT**: the default mode (that is, all read traffic is sent to the PolarDB read /write node).
-	// *   **CUSTOM**: Custom mode (you can customize the ratio of traffic sent to read /write nodes and read-only nodes).
-	// *   **BALANCE**: read balancing mode (the read traffic is automatically distributed by the read load module of the PolarDB cluster, which can also be understood as the read traffic being evenly distributed to each node).
+	// 	- **DEFAULT**: the default mode (that is, all read traffic is sent to the PolarDB read /write node).
+	//
+	// 	- **CUSTOM**: Custom mode (you can customize the ratio of traffic sent to read /write nodes and read-only nodes).
+	//
+	// 	- **BALANCE**: read balancing mode (the read traffic is automatically distributed by the read load module of the PolarDB cluster, which can also be understood as the read traffic being evenly distributed to each node).
+	//
+	// example:
+	//
+	// CUSTOM
 	ReadMode *string `json:"ReadMode,omitempty" xml:"ReadMode,omitempty"`
 	// The number of days remaining on the PolarDB for MySQL instance.
+	//
+	// example:
+	//
+	// 0
 	RemainDays *string `json:"RemainDays,omitempty" xml:"RemainDays,omitempty"`
 }
 
@@ -3365,15 +4451,32 @@ func (s *DescribeDrdsDBClusterResponseBodyDbInstanceDBNodes) SetDBNode(v []*Desc
 
 type DescribeDrdsDBClusterResponseBodyDbInstanceDBNodesDBNode struct {
 	// The ID of the node in the apsaradb for PolarDB cluster.
+	//
+	// example:
+	//
+	// pi-***************
 	DBNodeId *string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
 	// The role of a node in the apsaradb for PolarDB cluster. Valid values:
 	//
-	// *   **Reader**
-	// *   **Writer**
+	// 	- **Reader**
+	//
+	// 	- **Writer**
+	//
+	// example:
+	//
+	// Reader
 	DBNodeRole *string `json:"DBNodeRole,omitempty" xml:"DBNodeRole,omitempty"`
 	// The status of the nodes in the PolarDB cluster.
+	//
+	// example:
+	//
+	// Running
 	DBNodeStatus *string `json:"DBNodeStatus,omitempty" xml:"DBNodeStatus,omitempty"`
 	// The ID of the zone where the node of the PolarDB cluster resides.
+	//
+	// example:
+	//
+	// cn-hangzhou-i
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -3424,10 +4527,22 @@ func (s *DescribeDrdsDBClusterResponseBodyDbInstanceEndpoints) SetEndpoint(v []*
 
 type DescribeDrdsDBClusterResponseBodyDbInstanceEndpointsEndpoint struct {
 	// The ID of the PolarDB connection address.
+	//
+	// example:
+	//
+	// pe-*****************
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
 	// The ID list of the nodes in the PolarDB connection string. Separate multiple nodes with commas (,).
+	//
+	// example:
+	//
+	// pi-*****************,pi-*****************
 	NodeIds *string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty"`
 	// The read ratio of this connection address managed by the DRDS database.
+	//
+	// example:
+	//
+	// 85
 	ReadWeight *int32 `json:"ReadWeight,omitempty" xml:"ReadWeight,omitempty"`
 }
 
@@ -3485,10 +4600,26 @@ func (s *DescribeDrdsDBClusterResponse) SetBody(v *DescribeDrdsDBClusterResponse
 
 type DescribeDrdsDBIpWhiteListRequest struct {
 	// The database name.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test_db
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds********
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	// The name of the whitelist group.
+	//
+	// example:
+	//
+	// group1
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -3525,8 +4656,16 @@ type DescribeDrdsDBIpWhiteListResponseBody struct {
 	// The IP address whitelist.
 	IpWhiteList *DescribeDrdsDBIpWhiteListResponseBodyIpWhiteList `json:"IpWhiteList,omitempty" xml:"IpWhiteList,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 017453B9-0001-4745-87BF-DD612D850ED0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -3601,14 +4740,34 @@ func (s *DescribeDrdsDBIpWhiteListResponse) SetBody(v *DescribeDrdsDBIpWhiteList
 
 type DescribeDrdsDBsRequest struct {
 	// The ID of the PolarDB-X 1.0 instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drdshbga1138****
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	// The number of the page to return. The value of this parameter must be an integer that is greater than 0. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of databases to return on each page. Valid values: **30**, **50**, and **100**.
 	//
 	// Default value: **30**.
+	//
+	// example:
+	//
+	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the region in which the PolarDB-X 1.0 instance is created.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -3644,14 +4803,34 @@ type DescribeDrdsDBsResponseBody struct {
 	// The list of returned databases.
 	Data *DescribeDrdsDBsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The page number of the returned page.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of databases returned on each page.
+	//
+	// example:
+	//
+	// 30
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 006B7D19-8CDB-4AA6-AAE7-23C107GS3W2T
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The number of returned databases.
+	//
+	// example:
+	//
+	// 1
 	Total *string `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -3712,19 +4891,44 @@ func (s *DescribeDrdsDBsResponseBodyData) SetDb(v []*DescribeDrdsDBsResponseBody
 
 type DescribeDrdsDBsResponseBodyDataDb struct {
 	// The time when the database is created. The value of this parameter is a UNIX timestamp. Unit: ms.
+	//
+	// example:
+	//
+	// 1563773824000
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The type of the database. Valid values: **RDS** and **POLARDB**.
+	// The type of the database. Valid values: **RDS*	- and **POLARDB**.
+	//
+	// example:
+	//
+	// RDS
 	DbInstType *string `json:"DbInstType,omitempty" xml:"DbInstType,omitempty"`
 	// The name of the database.
+	//
+	// example:
+	//
+	// drds_test
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The partitioning mode of the database. Valid values:
 	//
-	// *   **HORIZONTAL**: The database is horizontally partitioned.
-	// *   **VERTICAL**: The database is vertically partitioned.
+	// 	- **HORIZONTAL**: The database is horizontally partitioned.
+	//
+	// 	- **VERTICAL**: The database is vertically partitioned.
+	//
+	// example:
+	//
+	// HORIZONTAL
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	// The schema ID that is assigned to the partitioned database.
+	//
+	// example:
+	//
+	// drds_test_1563773871118kxqd
 	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
 	// The state of the database.
+	//
+	// example:
+	//
+	// NORMAL
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -3797,10 +5001,28 @@ func (s *DescribeDrdsDBsResponse) SetBody(v *DescribeDrdsDBsResponseBody) *Descr
 
 type DescribeDrdsDbInstanceRequest struct {
 	// The ID of the custom ApsaraDB RDS for MySQL instance that you want to query.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-bp1t1mk5a5bdj****
 	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
 	// The name of the database.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds_test
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The name of the PolarDB-X 1.0 instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drdshbga1138****
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -3831,8 +5053,16 @@ type DescribeDrdsDbInstanceResponseBody struct {
 	// The detailed information about the returned custom ApsaraDB RDS for MySQL instance.
 	DbInstance *DescribeDrdsDbInstanceResponseBodyDbInstance `json:"DbInstance,omitempty" xml:"DbInstance,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 4FE09970-CA69-4144-88CA-67FB4BTY56G3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -3861,42 +5091,100 @@ func (s *DescribeDrdsDbInstanceResponseBody) SetSuccess(v bool) *DescribeDrdsDbI
 
 type DescribeDrdsDbInstanceResponseBodyDbInstance struct {
 	// The URL used to connect to the custom ApsaraDB RDS for MySQL instance.
+	//
+	// example:
+	//
+	// rm-***************.mysql.rds.aliyuncs.com
 	ConnectUrl *string `json:"ConnectUrl,omitempty" xml:"ConnectUrl,omitempty"`
 	// The ID of the ApsaraDB RDS for MySQL instance.
+	//
+	// example:
+	//
+	// rm-***************
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The state of the instance.
+	//
+	// example:
+	//
+	// 1
 	DBInstanceStatus *string `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
 	// The role of the instance. Valid values:
 	//
-	// *   **Primary**: The instance is a primary instance.
-	// *   **ReadOnly**: The instance is a read-only instance.
+	// 	- **Primary**: The instance is a primary instance.
+	//
+	// 	- **ReadOnly**: The instance is a read-only instance.
+	//
+	// example:
+	//
+	// Primary
 	DbInstType *string `json:"DbInstType,omitempty" xml:"DbInstType,omitempty"`
 	// The ID of the resource.
+	//
+	// example:
+	//
+	// dm-*************
 	DmInstanceId *string `json:"DmInstanceId,omitempty" xml:"DmInstanceId,omitempty"`
 	// The engine of the database that is run on the instance. Valid value: **MySQL**.
+	//
+	// example:
+	//
+	// MySQL
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The engine version of the database that is run on the instance. Valid values: **5.7**.
+	//
+	// example:
+	//
+	// 5.7
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	// The time when the custom ApsaraDB RDS for MySQL instance expires. The value of this parameter is a UNIX timestamp. Unit: seconds.
 	//
 	// >  This parameter is returned only when the custom ApsaraDB RDS for MySQL instance is a subscription instance.
+	//
+	// example:
+	//
+	// 12341434315
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// The type of the network. Valid values: **VPC**.
+	//
+	// example:
+	//
+	// VPC
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	// The billing method of the custom ApsaraDB RDS for MySQL instance. Valid values:
 	//
-	// *   **Prepaid**: subscription
-	// *   **Postaid**: pay-as-you-go
+	// 	- **Prepaid**: subscription
+	//
+	// 	- **Postaid**: pay-as-you-go
+	//
+	// example:
+	//
+	// Postpaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	// The port used to connect to the custom ApsaraDB RDS for MySQL instance.
+	//
+	// example:
+	//
+	// 3306
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The type of the instance.
+	//
+	// example:
+	//
+	// RDS
 	RdsInstType *string `json:"RdsInstType,omitempty" xml:"RdsInstType,omitempty"`
 	// The list of read-only ApsaraDB RDS for MySQL instances.
 	ReadOnlyInstances *DescribeDrdsDbInstanceResponseBodyDbInstanceReadOnlyInstances `json:"ReadOnlyInstances,omitempty" xml:"ReadOnlyInstances,omitempty" type:"Struct"`
 	// The read ratio of the instance.
+	//
+	// example:
+	//
+	// 70
 	ReadWeight *int32 `json:"ReadWeight,omitempty" xml:"ReadWeight,omitempty"`
 	// The number of remaining days before the instance expires.
+	//
+	// example:
+	//
+	// 0
 	RemainDays *string `json:"RemainDays,omitempty" xml:"RemainDays,omitempty"`
 }
 
@@ -4002,34 +5290,94 @@ func (s *DescribeDrdsDbInstanceResponseBodyDbInstanceReadOnlyInstances) SetReadO
 
 type DescribeDrdsDbInstanceResponseBodyDbInstanceReadOnlyInstancesReadOnlyInstance struct {
 	// The URL used to connect to the read-only instance.
+	//
+	// example:
+	//
+	// rm-bp1ub71ct9skc3yxx.mysql.rds.aliyuncs.com
 	ConnectUrl *string `json:"ConnectUrl,omitempty" xml:"ConnectUrl,omitempty"`
 	// The ID of the read-only instance.
+	//
+	// example:
+	//
+	// rm-bp1ub71ct9skc****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The state of the read-only instance.
+	//
+	// example:
+	//
+	// 1
 	DBInstanceStatus *string `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
 	// The role of the read-only instance.
+	//
+	// example:
+	//
+	// RDS
 	DbInstType *string `json:"DbInstType,omitempty" xml:"DbInstType,omitempty"`
 	// The ID of the resource.
+	//
+	// example:
+	//
+	// dm-*************
 	DmInstanceId *string `json:"DmInstanceId,omitempty" xml:"DmInstanceId,omitempty"`
 	// The engine of the database that is run on the read-only instance.
+	//
+	// example:
+	//
+	// MySQL
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The engine version of the database that is run on the read-only instance.
+	//
+	// example:
+	//
+	// 5.7
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	// The timestamp that indicates when the read-only instance expires.
+	//
+	// example:
+	//
+	// 1823487328173
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// The network type of the read-only instance.
+	//
+	// example:
+	//
+	// VPC
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	// The billing method of the read-only instance.
+	//
+	// example:
+	//
+	// Postpaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	// The port used to connect to the read-only instance.
+	//
+	// example:
+	//
+	// 3306
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The type of the ApsaraDB RDS for MySQL instance.
+	//
+	// example:
+	//
+	// RDS
 	RdsInstType *string `json:"RdsInstType,omitempty" xml:"RdsInstType,omitempty"`
 	// The read ratio of the read-only instance.
+	//
+	// example:
+	//
+	// 30
 	ReadWeight *int32 `json:"ReadWeight,omitempty" xml:"ReadWeight,omitempty"`
 	// The number of remaining days before the read-only instance expires.
+	//
+	// example:
+	//
+	// 0
 	RemainDays *string `json:"RemainDays,omitempty" xml:"RemainDays,omitempty"`
 	// This parameter is unavailable for read-only instances.
+	//
+	// example:
+	//
+	// 0
 	VersionAction *int32 `json:"VersionAction,omitempty" xml:"VersionAction,omitempty"`
 }
 
@@ -4147,12 +5495,32 @@ func (s *DescribeDrdsDbInstanceResponse) SetBody(v *DescribeDrdsDbInstanceRespon
 
 type DescribeDrdsDbInstancesRequest struct {
 	// The name of the database.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dbname
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The ID of the PolarDB-X 1.0 instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drdshbga1138****
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	// The number of the page to return.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// example:
+	//
+	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
@@ -4188,14 +5556,34 @@ type DescribeDrdsDbInstancesResponseBody struct {
 	// Indicates information about the ApsaraDB RDS for MySQL instances that are used to store the data of the specified database.
 	DbInstances *DescribeDrdsDbInstancesResponseBodyDbInstances `json:"DbInstances,omitempty" xml:"DbInstances,omitempty" type:"Struct"`
 	// Indicates the page number of the returned page.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// Indicates the number of entries returned per page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// Indicates the ID of the request.
+	//
+	// example:
+	//
+	// 2F7F8080-9132-4279-85D0-B7E5C4305162
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// Indicates the number of primary ApsaraDB RDS for MySQL instances.
+	//
+	// example:
+	//
+	// 1
 	Total *string `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -4256,59 +5644,134 @@ func (s *DescribeDrdsDbInstancesResponseBodyDbInstances) SetDbInstance(v []*Desc
 
 type DescribeDrdsDbInstancesResponseBodyDbInstancesDbInstance struct {
 	// Indicates the endpoint that is used to connect to an ApsaraDB RDS for MySQL instance that is used to store the data of the specified database.
+	//
+	// example:
+	//
+	// rm-bp1t1mk5a5b******.mysql.rds.aliyuncs.com
 	ConnectUrl *string `json:"ConnectUrl,omitempty" xml:"ConnectUrl,omitempty"`
 	// Indicates the ID of the ApsaraDB RDS for MySQL instance that is used to store the data of the specified database.
+	//
+	// example:
+	//
+	// rm-bp1t1mk5a5bdj****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// Indicates the state of the ApsaraDB RDS for MySQL instance that is used to store the data of the specified database. Valid values:
 	//
-	// *   **0**: The ApsaraDB RDS for MySQL instance is being created.
-	// *   **1**: The ApsaraDB RDS for MySQL instance is running.
-	// *   **3**: The ApsaraDB RDS for MySQL instance is being deleted.
-	// *   **5**: The ApsaraDB RDS for MySQL instance is being restarted.
-	// *   **6**: The ApsaraDB RDS for MySQL instance is being upgraded or downgraded.
-	// *   **7**: The ApsaraDB RDS for MySQL instance is being backed up.
-	// *   **8**: The network type of the ApsaraDB RDS for MySQL instance is being changed.
-	// *   **9**: The ApsaraDB RDS for MySQL instance is being migrated.
-	// *   **11**: The data of the ApsaraDB RDS for MySQL instance is being migrated.
-	// *   **12**: A disaster-recovery instance is being generated.
-	// *   **13**: Data is being imported to the ApsaraDB RDS for MySQL instance.
-	// *   **14**: Data is being imported to the ApsaraDB RDS for MySQL instance from an another ApsaraDB RDS for MySQL instance.
-	// *   **15**: A failover is being performed.
-	// *   **16**: A temporary instance is being created.
-	// *   **17**: A network is being created for the ApsaraDB RDS for MySQL instance.
-	// *   **18**: The ApsaraDB RDS for MySQL instance is being cloned.
-	// *   **19**: The link is being changed.
-	// *   **20**: The read-only instances of the ApsaraDB RDS for MySQL instance are being migrated.
+	// 	- **0**: The ApsaraDB RDS for MySQL instance is being created.
+	//
+	// 	- **1**: The ApsaraDB RDS for MySQL instance is running.
+	//
+	// 	- **3**: The ApsaraDB RDS for MySQL instance is being deleted.
+	//
+	// 	- **5**: The ApsaraDB RDS for MySQL instance is being restarted.
+	//
+	// 	- **6**: The ApsaraDB RDS for MySQL instance is being upgraded or downgraded.
+	//
+	// 	- **7**: The ApsaraDB RDS for MySQL instance is being backed up.
+	//
+	// 	- **8**: The network type of the ApsaraDB RDS for MySQL instance is being changed.
+	//
+	// 	- **9**: The ApsaraDB RDS for MySQL instance is being migrated.
+	//
+	// 	- **11**: The data of the ApsaraDB RDS for MySQL instance is being migrated.
+	//
+	// 	- **12**: A disaster-recovery instance is being generated.
+	//
+	// 	- **13**: Data is being imported to the ApsaraDB RDS for MySQL instance.
+	//
+	// 	- **14**: Data is being imported to the ApsaraDB RDS for MySQL instance from an another ApsaraDB RDS for MySQL instance.
+	//
+	// 	- **15**: A failover is being performed.
+	//
+	// 	- **16**: A temporary instance is being created.
+	//
+	// 	- **17**: A network is being created for the ApsaraDB RDS for MySQL instance.
+	//
+	// 	- **18**: The ApsaraDB RDS for MySQL instance is being cloned.
+	//
+	// 	- **19**: The link is being changed.
+	//
+	// 	- **20**: The read-only instances of the ApsaraDB RDS for MySQL instance are being migrated.
+	//
+	// example:
+	//
+	// 1
 	DBInstanceStatus *string `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
 	// Indicates the type of the ApsaraDB RDS for MySQL instance that is used to store the data of the specified database. The value is set to RDS.
+	//
+	// example:
+	//
+	// RDS
 	DbInstType *string `json:"DbInstType,omitempty" xml:"DbInstType,omitempty"`
 	// Indicates the ID of a resource.
+	//
+	// example:
+	//
+	// dm-hbgau1zp****
 	DmInstanceId *string `json:"DmInstanceId,omitempty" xml:"DmInstanceId,omitempty"`
 	// Indicates the engine of the ApsaraDB RDS for MySQL instance that is used to store the data of the specified database.
+	//
+	// example:
+	//
+	// MySQL
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// Indicates the engine version of the ApsaraDB RDS for MySQL instance that is used to store the data of the specified database.
+	//
+	// example:
+	//
+	// 5.7
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	// Indicates the point in time when the ApsaraDB RDS for MySQL instance that is used to store the data of the specified database expires.
+	//
+	// example:
+	//
+	// 1237486127634
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// Indicates the network type of the ApsaraDB RDS for MySQL instance.
+	//
+	// example:
+	//
+	// VPC
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	// Indicates the billing method of the ApsaraDB RDS for MySQL instance that is used to store the data of the specified database. Valid values:
 	//
-	// *   **drdsPre**: The instance uses the subscription billing method.
-	// *   **drdsPost**: The instance uses the pay-as-you-go billing method.
+	// 	- **drdsPre**: The instance uses the subscription billing method.
+	//
+	// 	- **drdsPost**: The instance uses the pay-as-you-go billing method.
+	//
+	// example:
+	//
+	// PostPaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	// Indicates the port that is used to connect to the ApsaraDB RDS for MySQL instance that is used to store the data of the specified database.
+	//
+	// example:
+	//
+	// 3306
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 	// Indicates whether the ApsaraDB RDS for MySQL instance that is used to store the data of the specified database is a primary instance or a read-only instance.
 	//
-	// *   **Primary**: The instance is a primary instance.
-	// *   **Readonly**: The instance is a read-only instance.
+	// 	- **Primary**: The instance is a primary instance.
+	//
+	// 	- **Readonly**: The instance is a read-only instance.
+	//
+	// example:
+	//
+	// Primary
 	RdsInstType *string `json:"RdsInstType,omitempty" xml:"RdsInstType,omitempty"`
 	// Indicates information about the read-only instances of the ApsaraDB RDS for MySQL instance that is used to store the data of the specified database.
 	ReadOnlyInstances *DescribeDrdsDbInstancesResponseBodyDbInstancesDbInstanceReadOnlyInstances `json:"ReadOnlyInstances,omitempty" xml:"ReadOnlyInstances,omitempty" type:"Struct"`
 	// Indicates the read weight of the read-only instance.
+	//
+	// example:
+	//
+	// 30
 	ReadWeight *int32 `json:"ReadWeight,omitempty" xml:"ReadWeight,omitempty"`
 	// Indicates the number of remaining days before a subscription instance expires.
+	//
+	// example:
+	//
+	// 0
 	RemainDays *int32 `json:"RemainDays,omitempty" xml:"RemainDays,omitempty"`
 }
 
@@ -4414,54 +5877,128 @@ func (s *DescribeDrdsDbInstancesResponseBodyDbInstancesDbInstanceReadOnlyInstanc
 
 type DescribeDrdsDbInstancesResponseBodyDbInstancesDbInstanceReadOnlyInstancesReadOnlyInstance struct {
 	// Indicates the endpoint that is used to connect to the ApsaraDB RDS for MySQL instance that is used to store the data of the specified database.
+	//
+	// example:
+	//
+	// rm-bp1t1mk5a5b******.mysql.rds.aliyuncs.com
 	ConnectUrl *string `json:"ConnectUrl,omitempty" xml:"ConnectUrl,omitempty"`
 	// Indicates the state of the ApsaraDB RDS for MySQL instance that is used to store the data of the specified database. Valid values:
 	//
-	// *   **0**: The ApsaraDB RDS for MySQL instance is being created.
-	// *   **1**: The ApsaraDB RDS for MySQL instance is running.
-	// *   **3**: The ApsaraDB RDS for MySQL instance is being deleted.
-	// *   **5**: The ApsaraDB RDS for MySQL instance is being restarted.
-	// *   **6**: The ApsaraDB RDS for MySQL instance is being upgraded or downgraded.
-	// *   **7**: The ApsaraDB RDS for MySQL instance is being backed up.
-	// *   **8**: The network type of the ApsaraDB RDS for MySQL instance is being changed.
-	// *   **9**: The ApsaraDB RDS for MySQL instance is being migrated.
-	// *   **11**: The data of the ApsaraDB RDS for MySQL instance is being migrated.
-	// *   **12**: A disaster-recovery instance is being generated.
-	// *   **13**: Data is being imported to the ApsaraDB RDS for MySQL instance.
-	// *   **14**: Data is being imported to the ApsaraDB RDS for MySQL instance from an another ApsaraDB RDS for MySQL instance.
-	// *   **15**: A failover is being performed.
-	// *   **16**: A temporary instance is being created.
-	// *   **17**: A network is being created for the ApsaraDB RDS for MySQL instance.
-	// *   **18**: The ApsaraDB RDS for MySQL instance is being cloned.
-	// *   **19**: The link is being changed.
-	// *   **20**: The read-only instances of the ApsaraDB RDS for MySQL instance are being migrated.
+	// 	- **0**: The ApsaraDB RDS for MySQL instance is being created.
+	//
+	// 	- **1**: The ApsaraDB RDS for MySQL instance is running.
+	//
+	// 	- **3**: The ApsaraDB RDS for MySQL instance is being deleted.
+	//
+	// 	- **5**: The ApsaraDB RDS for MySQL instance is being restarted.
+	//
+	// 	- **6**: The ApsaraDB RDS for MySQL instance is being upgraded or downgraded.
+	//
+	// 	- **7**: The ApsaraDB RDS for MySQL instance is being backed up.
+	//
+	// 	- **8**: The network type of the ApsaraDB RDS for MySQL instance is being changed.
+	//
+	// 	- **9**: The ApsaraDB RDS for MySQL instance is being migrated.
+	//
+	// 	- **11**: The data of the ApsaraDB RDS for MySQL instance is being migrated.
+	//
+	// 	- **12**: A disaster-recovery instance is being generated.
+	//
+	// 	- **13**: Data is being imported to the ApsaraDB RDS for MySQL instance.
+	//
+	// 	- **14**: Data is being imported to the ApsaraDB RDS for MySQL instance from an another ApsaraDB RDS for MySQL instance.
+	//
+	// 	- **15**: A failover is being performed.
+	//
+	// 	- **16**: A temporary instance is being created.
+	//
+	// 	- **17**: A network is being created for the ApsaraDB RDS for MySQL instance.
+	//
+	// 	- **18**: The ApsaraDB RDS for MySQL instance is being cloned.
+	//
+	// 	- **19**: The link is being changed.
+	//
+	// 	- **20**: The read-only instances of the ApsaraDB RDS for MySQL instance are being migrated.
+	//
+	// example:
+	//
+	// 1
 	DBInstanceStatus *string `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
 	// Indicates the type of the ApsaraDB RDS for MySQL instance that is used to store the data of the specified database. The value is set to RDS.
+	//
+	// example:
+	//
+	// RDS
 	DbInstType *string `json:"DbInstType,omitempty" xml:"DbInstType,omitempty"`
 	// Indicates the ID of a resource.
+	//
+	// example:
+	//
+	// dm-hbgau1zp****
 	DmInstanceId *string `json:"DmInstanceId,omitempty" xml:"DmInstanceId,omitempty"`
 	// Indicates the engine of the ApsaraDB RDS for MySQL instance that is used to store the data of the specified database.
+	//
+	// example:
+	//
+	// MySQL
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// Indicates the engine version of the ApsaraDB RDS for MySQL instance that is used to store the data of the specified database.
+	//
+	// example:
+	//
+	// 5.7
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	// Indicates the timestamp when the ApsaraDB RDS for MySQL instance that is used to store the data of the specified database expires.
+	//
+	// example:
+	//
+	// 123421352351234
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// Indicates the name of a read-only instance.
+	//
+	// example:
+	//
+	// **
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// Indicates the network type of the read-only instance.
+	//
+	// example:
+	//
+	// VPC
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	// Indicates the billing method of the read-only instance.
 	//
-	// *   **drdsPre**: The instance uses the subscription billing method.
-	// *   **drdsPost**: The instance uses the pay-as-you-go billing method.
+	// 	- **drdsPre**: The instance uses the subscription billing method.
+	//
+	// 	- **drdsPost**: The instance uses the pay-as-you-go billing method.
+	//
+	// example:
+	//
+	// Postpaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	// Indicates the port that is used to connect to the read-only instance.
+	//
+	// example:
+	//
+	// 3306
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 	// Indicates the type of the read-only instance.
+	//
+	// example:
+	//
+	// RDS
 	RdsInstType *string `json:"RdsInstType,omitempty" xml:"RdsInstType,omitempty"`
 	// Indicates the read weight of the read-only instance.
+	//
+	// example:
+	//
+	// 70
 	ReadWeight *int32 `json:"ReadWeight,omitempty" xml:"ReadWeight,omitempty"`
 	// Indicates the number of remaining days before the read-only instance expires.
+	//
+	// example:
+	//
+	// 0
 	RemainDays *int32 `json:"RemainDays,omitempty" xml:"RemainDays,omitempty"`
 }
 
@@ -4574,8 +6111,20 @@ func (s *DescribeDrdsDbInstancesResponse) SetBody(v *DescribeDrdsDbInstancesResp
 
 type DescribeDrdsDbRdsNameListRequest struct {
 	// The name of the database.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds_test
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The ID of the PolarDB-X 1.0 instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drdsxxxxxxxxxxx
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -4601,8 +6150,16 @@ type DescribeDrdsDbRdsNameListResponseBody struct {
 	// Indicates the instances that are used to store the data of a database.
 	InstanceNameList *DescribeDrdsDbRdsNameListResponseBodyInstanceNameList `json:"InstanceNameList,omitempty" xml:"InstanceNameList,omitempty" type:"Struct"`
 	// Indicates the ID of the request.
+	//
+	// example:
+	//
+	// 7E6FA2BF-05F2-44DD-95C0-D1B5B8xxxxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -4677,8 +6234,18 @@ func (s *DescribeDrdsDbRdsNameListResponse) SetBody(v *DescribeDrdsDbRdsNameList
 
 type DescribeDrdsInstanceRequest struct {
 	// The ID of the instance that you want to query.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drdshbga1138****
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	// The ID of the region in which the instance is created.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -4704,8 +6271,16 @@ type DescribeDrdsInstanceResponseBody struct {
 	// The details of the instance.
 	Data *DescribeDrdsInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// B4F76641-BA45-4320-BE7C-9C62CFDAC9B2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -4734,66 +6309,166 @@ func (s *DescribeDrdsInstanceResponseBody) SetSuccess(v bool) *DescribeDrdsInsta
 
 type DescribeDrdsInstanceResponseBodyData struct {
 	// The commodity code of the instance.
+	//
+	// example:
+	//
+	// drdsPost
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	// The timestamp that indicates when the instance is created.
+	//
+	// example:
+	//
+	// 1568620311000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The description of the instance.
+	//
+	// example:
+	//
+	// drds_test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// drdssen1243as
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	// The timestamp that indicates when the instance expires.
+	//
+	// example:
+	//
+	// 4724323200000
 	ExpireDate *int64 `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
 	// The role of the instance. Valid values:
 	//
-	// *   **MASTER**: The instance is a primary instance.
-	// *   **SLAVE**: The instance is a read-only instance to analyze complex queries
-	// *   **SLAVE_FLOW**: The instance is a read-only instance for high-concurrency scenarios
+	// 	- **MASTER**: The instance is a primary instance.
+	//
+	// 	- **SLAVE**: The instance is a read-only instance to analyze complex queries
+	//
+	// 	- **SLAVE_FLOW**: The instance is a read-only instance for high-concurrency scenarios
+	//
+	// example:
+	//
+	// MASTER
 	InstRole *string `json:"InstRole,omitempty" xml:"InstRole,omitempty"`
 	// The instance series of the instance.
+	//
+	// example:
+	//
+	// drds.sn2.4c16g
 	InstanceSeries *string `json:"InstanceSeries,omitempty" xml:"InstanceSeries,omitempty"`
 	// The specification of the instance.
+	//
+	// example:
+	//
+	// drds.sn2.4c16g.8C32G
 	InstanceSpec *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
 	// The tag of the instance. Valid values:
 	//
-	// *   **NORMAL**: The instance is a standard instance.
-	// *   **HA**: The instance is a high-availability (HA) instance.
-	// *   **VPC**: The instance is a VPC-based instance.
+	// 	- **NORMAL**: The instance is a standard instance.
+	//
+	// 	- **HA**: The instance is a high-availability (HA) instance.
+	//
+	// 	- **VPC**: The instance is a VPC-based instance.
+	//
+	// example:
+	//
+	// NORMAL
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
 	// The machine type of the instance. The value of this parameter is **ecs**.
+	//
+	// example:
+	//
+	// ecs
 	MachineType *string `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
 	// The ID of the primary instance.
 	//
 	// >  This parameter is returned only when the instance is a primary instance.
+	//
+	// example:
+	//
+	// drdssen1243as
 	MasterInstanceId *string `json:"MasterInstanceId,omitempty" xml:"MasterInstanceId,omitempty"`
 	// The MySQL version that is supported by the instance.
+	//
+	// example:
+	//
+	// 5
 	MysqlVersion *int32 `json:"MysqlVersion,omitempty" xml:"MysqlVersion,omitempty"`
 	// The network type of the instance. Valid values: CLASSIC and VPC.
+	//
+	// example:
+	//
+	// CLASSIC
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	// The ID of the purchased instance.
+	//
+	// example:
+	//
+	// drdssen12****
 	OrderInstanceId *string `json:"OrderInstanceId,omitempty" xml:"OrderInstanceId,omitempty"`
 	// The version of .
+	//
+	// example:
+	//
+	// 5.3.*
 	ProductVersion *string `json:"ProductVersion,omitempty" xml:"ProductVersion,omitempty"`
 	// The details about each read-only instance that is associated with the instance.
 	ReadOnlyDBInstanceIds *DescribeDrdsInstanceResponseBodyDataReadOnlyDBInstanceIds `json:"ReadOnlyDBInstanceIds,omitempty" xml:"ReadOnlyDBInstanceIds,omitempty" type:"Struct"`
 	// The ID of the region in which the instance is created.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the instance belongs. The value of this parameter can be null.
+	//
+	// example:
+	//
+	// NULL
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The state of the instance.
+	//
+	// example:
+	//
+	// RUN
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The type of the instance used for storage.
+	//
+	// example:
+	//
+	// RDS
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 	// The type of the instance. Valid values: PRIVATE and PUBLIC. The value of PRIVATE indicates that the instance is a dedicated instance. The value of PUBLIC indicates that the instance is a shared instance.
+	//
+	// example:
+	//
+	// PRIVATE
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The version of the instance. The value of this parameter is 0.
+	//
+	// example:
+	//
+	// 0
 	Version *int64 `json:"Version,omitempty" xml:"Version,omitempty"`
 	// Indicates whether the version of the instance can be upgraded.
+	//
+	// example:
+	//
+	// Upgradeable
 	VersionAction *string `json:"VersionAction,omitempty" xml:"VersionAction,omitempty"`
 	// The list of returned virtual IP addresses (VIPs).
 	Vips *DescribeDrdsInstanceResponseBodyDataVips `json:"Vips,omitempty" xml:"Vips,omitempty" type:"Struct"`
 	// The ID of the instance that is deployed in the VPC.
+	//
+	// example:
+	//
+	// drdssen12****
 	VpcCloudInstanceId *string `json:"VpcCloudInstanceId,omitempty" xml:"VpcCloudInstanceId,omitempty"`
 	// The ID of the zone in which the instance is located.
+	//
+	// example:
+	//
+	// cn-hangzhou-e
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -4971,16 +6646,41 @@ func (s *DescribeDrdsInstanceResponseBodyDataVips) SetVip(v []*DescribeDrdsInsta
 
 type DescribeDrdsInstanceResponseBodyDataVipsVip struct {
 	// The domain name that is mapped to the VIP.
+	//
+	// example:
+	//
+	// drdssen1243as.drds.aliyuncs.com
 	Dns *string `json:"Dns,omitempty" xml:"Dns,omitempty"`
 	// The number of remaining days before the VIP expires.
+	//
+	// example:
+	//
+	// 0
 	ExpireDays *int64 `json:"ExpireDays,omitempty" xml:"ExpireDays,omitempty"`
 	// The ports that are opened on the VIP.
-	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	//
+	// example:
+	//
+	// 3306
+	Port         *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	RemoveWeight *bool   `json:"RemoveWeight,omitempty" xml:"RemoveWeight,omitempty"`
 	// The type of the VIP. Valid values: intranet and internet.
+	//
+	// example:
+	//
+	// intranet
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The ID of the VPC.
+	//
+	// example:
+	//
+	// vpc-bp**********
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// The ID of the vSwitch.
+	//
+	// example:
+	//
+	// vsw-bp***********
 	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
 }
 
@@ -5004,6 +6704,11 @@ func (s *DescribeDrdsInstanceResponseBodyDataVipsVip) SetExpireDays(v int64) *De
 
 func (s *DescribeDrdsInstanceResponseBodyDataVipsVip) SetPort(v string) *DescribeDrdsInstanceResponseBodyDataVipsVip {
 	s.Port = &v
+	return s
+}
+
+func (s *DescribeDrdsInstanceResponseBodyDataVipsVip) SetRemoveWeight(v bool) *DescribeDrdsInstanceResponseBodyDataVipsVip {
+	s.RemoveWeight = &v
 	return s
 }
 
@@ -5053,18 +6758,52 @@ func (s *DescribeDrdsInstanceResponse) SetBody(v *DescribeDrdsInstanceResponseBo
 
 type DescribeDrdsInstanceDbMonitorRequest struct {
 	// The name of the database.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds_test
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The ID of the Distributed Relational Database Service (DRDS) instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds*************
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	// The end time. Specify the time in the UNIX timestamp format. The time must be in UTC. Unit: ms.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1603166400000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The performance monitoring metrics. You can specify one or more metrics for a query at a time. Separate multiple metric parameters with commas (,).
 	//
-	// >  For more information about the details of performance monitoring metrics, see [Database monitoring](~~186704~~).
+	// >  For more information about the details of performance monitoring metrics, see [Database monitoring](https://help.aliyun.com/document_detail/186704.html).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// qps
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The start time. Specify the time in the UNIX timestamp format. The time must be in UTC. Unit: ms.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1603162800000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -5110,8 +6849,16 @@ type DescribeDrdsInstanceDbMonitorResponseBody struct {
 	// The list of monitoring data.
 	Data []*DescribeDrdsInstanceDbMonitorResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 2F7F8080-9132-4279-85D0-B7E5C4******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -5140,8 +6887,16 @@ func (s *DescribeDrdsInstanceDbMonitorResponseBody) SetSuccess(v bool) *Describe
 
 type DescribeDrdsInstanceDbMonitorResponseBodyData struct {
 	// The name of the monitoring metric.
+	//
+	// example:
+	//
+	// qps
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The unit of the monitoring metric.
+	//
+	// example:
+	//
+	// qps
 	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
 	// The details about the value of monitoring data.
 	Values []*DescribeDrdsInstanceDbMonitorResponseBodyDataValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
@@ -5172,8 +6927,16 @@ func (s *DescribeDrdsInstanceDbMonitorResponseBodyData) SetValues(v []*DescribeD
 
 type DescribeDrdsInstanceDbMonitorResponseBodyDataValues struct {
 	// The time point when the value of monitoring data was obtained. The value is in the UNIX timestamp format. Unit: ms.
+	//
+	// example:
+	//
+	// 1603162805000
 	Date *int64 `json:"Date,omitempty" xml:"Date,omitempty"`
 	// The data value.
+	//
+	// example:
+	//
+	// 0
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -5226,6 +6989,12 @@ func (s *DescribeDrdsInstanceDbMonitorResponse) SetBody(v *DescribeDrdsInstanceD
 
 type DescribeDrdsInstanceLevelTasksRequest struct {
 	// The ID of the PolarDB-X 1.0 instance of which the unfinished tasks you want to query.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drdssen12****
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -5244,8 +7013,16 @@ func (s *DescribeDrdsInstanceLevelTasksRequest) SetDrdsInstanceId(v string) *Des
 
 type DescribeDrdsInstanceLevelTasksResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 2F7F8080-9132-4279-85D0-B7E5C4305162
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The list of returned unfinished tasks.
 	Tasks *DescribeDrdsInstanceLevelTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Struct"`
@@ -5293,31 +7070,70 @@ func (s *DescribeDrdsInstanceLevelTasksResponseBodyTasks) SetTask(v []*DescribeD
 
 type DescribeDrdsInstanceLevelTasksResponseBodyTasksTask struct {
 	// Indicates whether the task can be canceled.
+	//
+	// example:
+	//
+	// false
 	AllowCancel *bool `json:"AllowCancel,omitempty" xml:"AllowCancel,omitempty"`
 	// The error message returned for the task.
 	ErrMsg *string `json:"ErrMsg,omitempty" xml:"ErrMsg,omitempty"`
 	// The timestamp when the task is created.
+	//
+	// example:
+	//
+	// 1568705520000
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// The progress of the task. Valid values: 0 to 100.
+	//
+	// example:
+	//
+	// 99
 	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
 	// The description of the task progress.
 	ProgressDescription *string `json:"ProgressDescription,omitempty" xml:"ProgressDescription,omitempty"`
 	// Indicates whether the progress of the task is displayed.
+	//
+	// example:
+	//
+	// true
 	ShowProgress *bool `json:"ShowProgress,omitempty" xml:"ShowProgress,omitempty"`
 	// The ID of the task.
+	//
+	// example:
+	//
+	// 12312
 	TargetId *int64 `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
 	// The name of the task.
+	//
+	// example:
+	//
+	// upgrade_instance
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 	// The phase of the task.
+	//
+	// example:
+	//
+	// 1
 	TaskPhase *string `json:"TaskPhase,omitempty" xml:"TaskPhase,omitempty"`
 	// The state of the task. Valid values:
 	//
-	// *   0: The task is being executed.
-	// *   1: The task is executed.
-	// *   2: The task failed to be executed.
-	// *   3: The task is canceled.
+	// 	- 0: The task is being executed.
+	//
+	// 	- 1: The task is executed.
+	//
+	// 	- 2: The task failed to be executed.
+	//
+	// 	- 3: The task is canceled.
+	//
+	// example:
+	//
+	// 0
 	TaskStatus *int32 `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
 	// The type of the task.
+	//
+	// example:
+	//
+	// 11
 	TaskType *int32 `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
@@ -5415,20 +7231,52 @@ func (s *DescribeDrdsInstanceLevelTasksResponse) SetBody(v *DescribeDrdsInstance
 
 type DescribeDrdsInstanceMonitorRequest struct {
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds*********
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	// The end time of the query. Specify the value in the UNIX timestamp format. The timestamp must be in UTC. Unit: ms.
 	//
 	// >  If the time range that you specify is less than 1 hour, the monitoring data that is collected in a 1-hour period before the end time is returned.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1603209690000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The performance monitoring metrics. You can specify one or more metrics. Separate multiple metric names with commas (,).
 	//
-	// >  For more information about performance monitoring metrics, see [Monitor instances](~~186703~~).
+	// >  For more information about performance monitoring metrics, see [Monitor instances](https://help.aliyun.com/document_detail/186703.html).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cpu
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The multiple of the default time interval that you want to use to collect monitoring data. By default, the system collects monitoring data of resources at an interval of 1 minute. If you set the value of this parameter to 2, the system collects monitoring data of the instance at an interval of 2 minutes.
+	//
+	// example:
+	//
+	// 1
 	PeriodMultiple *int32 `json:"PeriodMultiple,omitempty" xml:"PeriodMultiple,omitempty"`
 	// The ID of the region where the instance is deployed.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The start time of the query. Specify the value in the UNIX timestamp format. The timestamp must be in UTC. Unit: ms.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1603123290000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -5474,6 +7322,10 @@ type DescribeDrdsInstanceMonitorResponseBody struct {
 	// The result set of the query.
 	Data []*DescribeDrdsInstanceMonitorResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 2F7F8080-9132-4279-85D0-B7E5C4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5497,10 +7349,22 @@ func (s *DescribeDrdsInstanceMonitorResponseBody) SetRequestId(v string) *Descri
 
 type DescribeDrdsInstanceMonitorResponseBodyData struct {
 	// The name of the metric.
+	//
+	// example:
+	//
+	// cpu
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The number of nodes.
+	//
+	// example:
+	//
+	// 1
 	NodeNum *int32 `json:"NodeNum,omitempty" xml:"NodeNum,omitempty"`
 	// The unit of the metric value.
+	//
+	// example:
+	//
+	// %
 	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
 	// The details of the monitoring data of the metric.
 	Values []*DescribeDrdsInstanceMonitorResponseBodyDataValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
@@ -5536,8 +7400,16 @@ func (s *DescribeDrdsInstanceMonitorResponseBodyData) SetValues(v []*DescribeDrd
 
 type DescribeDrdsInstanceMonitorResponseBodyDataValues struct {
 	// The point in time when the value of the metric was collected. The value is in the UNIX timestamp format. The timestamp is displayed in UTC. Unit: ms.
+	//
+	// example:
+	//
+	// 1603163400000
 	Date *int64 `json:"Date,omitempty" xml:"Date,omitempty"`
 	// The value of the metric.
+	//
+	// example:
+	//
+	// 1.40
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -5590,8 +7462,18 @@ func (s *DescribeDrdsInstanceMonitorResponse) SetBody(v *DescribeDrdsInstanceMon
 
 type DescribeDrdsInstanceVersionRequest struct {
 	// The ID of the PolarDB-X 1.0 instance whose version you want to query.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drdshbga1138****
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -5617,8 +7499,16 @@ type DescribeDrdsInstanceVersionResponseBody struct {
 	// The details about the instance version.
 	Data *DescribeDrdsInstanceVersionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 2F7F8080-9132-4279-85D0-B7E5C4305162
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -5647,8 +7537,16 @@ func (s *DescribeDrdsInstanceVersionResponseBody) SetSuccess(v bool) *DescribeDr
 
 type DescribeDrdsInstanceVersionResponseBodyData struct {
 	// The current version of the instance.
+	//
+	// example:
+	//
+	// 5.3.12-15682777
 	InstanceVersion *string `json:"InstanceVersion,omitempty" xml:"InstanceVersion,omitempty"`
 	// The latest version of the instance.
+	//
+	// example:
+	//
+	// 5.4.12-16315258
 	NewestVersion *string `json:"NewestVersion,omitempty" xml:"NewestVersion,omitempty"`
 }
 
@@ -5701,26 +7599,65 @@ func (s *DescribeDrdsInstanceVersionResponse) SetBody(v *DescribeDrdsInstanceVer
 
 type DescribeDrdsInstancesRequest struct {
 	// The description of the instances.
+	//
+	// example:
+	//
+	// drds_test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Specifies whether the instances that you want to query expire.
+	//
+	// example:
+	//
+	// false
 	Expired *bool `json:"Expired,omitempty" xml:"Expired,omitempty"`
 	// Specifies whether hybrid queries are supported.
+	//
+	// example:
+	//
+	// FALSE
 	Mix *bool `json:"Mix,omitempty" xml:"Mix,omitempty"`
 	// The number of the page to return.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of instances returned on each page.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The version of the service.
+	//
+	// example:
+	//
+	// V1
 	ProductVersion *string `json:"ProductVersion,omitempty" xml:"ProductVersion,omitempty"`
 	// The ID of the region.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the instances you want to query belong. The value of this parameter can be NULL.
+	//
+	// example:
+	//
+	// NULL
 	ResourceGroupId *string                            `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	Tag             []*DescribeDrdsInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The type of the instances that you want to query. Valid values:
 	//
-	// *   **0**: shared instances
-	// *   **1**: dedicated instances
+	// 	- **0**: shared instances
+	//
+	// 	- **1**: dedicated instances
+	//
+	// example:
+	//
+	// 1
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -5784,8 +7721,16 @@ func (s *DescribeDrdsInstancesRequest) SetType(v string) *DescribeDrdsInstancesR
 
 type DescribeDrdsInstancesRequestTag struct {
 	// The key of the tag configured for the instances you want to query.
+	//
+	// example:
+	//
+	// acs:newretail:domain
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the tag configured for the instances you want to query.
+	//
+	// example:
+	//
+	// NEW_RETAIL
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -5811,12 +7756,28 @@ type DescribeDrdsInstancesResponseBody struct {
 	// The list of returned instances.
 	Instances *DescribeDrdsInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
 	// The page number of the returned page.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of instances returned on each page.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 8734773E-7B21-4A22-9106-CBD245F8****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of instances returned.
+	//
+	// example:
+	//
+	// 1
 	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -5872,74 +7833,178 @@ func (s *DescribeDrdsInstancesResponseBodyInstances) SetInstance(v []*DescribeDr
 
 type DescribeDrdsInstancesResponseBodyInstancesInstance struct {
 	// The commodity code of the service.
+	//
+	// example:
+	//
+	// drdsPost
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	// The timestamp that indicates when the instance is created.
+	//
+	// example:
+	//
+	// 1568620311000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The description of the instance.
+	//
+	// example:
+	//
+	// drds_test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// drdssen12****
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	// The timestamp that indicates when the instance expires.
+	//
+	// example:
+	//
+	// 4724323200000
 	ExpireDate *int64 `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
 	// The role of the instance. Valid values:
 	//
-	// *   MASTER: The instance is a primary instance.
-	// *   SLAVE: The instance is a read-only instance to analyze complex queries.
-	// *   SLAVE_FLOW: The instance is a read-only instance for high-concurrency scenarios.
+	// 	- MASTER: The instance is a primary instance.
+	//
+	// 	- SLAVE: The instance is a read-only instance to analyze complex queries.
+	//
+	// 	- SLAVE_FLOW: The instance is a read-only instance for high-concurrency scenarios.
+	//
+	// example:
+	//
+	// MASTER
 	InstRole *string `json:"InstRole,omitempty" xml:"InstRole,omitempty"`
 	// The instance series.
+	//
+	// example:
+	//
+	// drds.sn2.4c16g
 	InstanceSeries *string `json:"InstanceSeries,omitempty" xml:"InstanceSeries,omitempty"`
 	// The specification of the instance.
+	//
+	// example:
+	//
+	// drds.sn2.4c16g.8C32G
 	InstanceSpec *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
 	// The tag of the instance. Valid values:
 	//
-	// *   **NORMAL**: The instance is a standard instance.
-	// *   **HA**: The instance is a high-availability (HA) instance.
-	// *   **VPC**: The instance is a VPC-based instance.
+	// 	- **NORMAL**: The instance is a standard instance.
+	//
+	// 	- **HA**: The instance is a high-availability (HA) instance.
+	//
+	// 	- **VPC**: The instance is a VPC-based instance.
+	//
+	// example:
+	//
+	// NORMAL
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
 	// The machine type of the instance. Valid value: ecs.
+	//
+	// example:
+	//
+	// ecs
 	MachineType *string `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
 	// The ID of the primary instance.
+	//
+	// example:
+	//
+	// drdssen12****
 	MasterInstanceId *string `json:"MasterInstanceId,omitempty" xml:"MasterInstanceId,omitempty"`
 	// The network type of the instance. Valid values:
 	//
-	// *   **CLASSIC**
-	// *   **VPC**
+	// 	- **CLASSIC**
+	//
+	// 	- **VPC**
+	//
+	// example:
+	//
+	// CLASSIC
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	// The ID of the purchased instance.
+	//
+	// example:
+	//
+	// drdssen12****
 	OrderInstanceId *string `json:"OrderInstanceId,omitempty" xml:"OrderInstanceId,omitempty"`
 	// The version of the service.
+	//
+	// example:
+	//
+	// V1
 	ProductVersion *string `json:"ProductVersion,omitempty" xml:"ProductVersion,omitempty"`
 	// The IDs of read-only instances that are associated with the instance.
 	ReadOnlyDBInstanceIds *DescribeDrdsInstancesResponseBodyInstancesInstanceReadOnlyDBInstanceIds `json:"ReadOnlyDBInstanceIds,omitempty" xml:"ReadOnlyDBInstanceIds,omitempty" type:"Struct"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou-e
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the instance belongs.
+	//
+	// example:
+	//
+	// rg-aek2ljh3ye4****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The status of the instance.
+	//
+	// example:
+	//
+	// RUN
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The type of the instance. Valid values:
 	//
-	// *   **PUBLIC**: The returned instance is a shared instance.
-	// *   **PRIVATE**: The returned instance is a dedicated instance.
+	// 	- **PUBLIC**: The returned instance is a shared instance.
+	//
+	// 	- **PRIVATE**: The returned instance is a dedicated instance.
+	//
+	// example:
+	//
+	// PRIVATE
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The version of the instance.
+	//
+	// example:
+	//
+	// 0
 	Version *int64 `json:"Version,omitempty" xml:"Version,omitempty"`
 	// Indicates whether the version of the instance can be upgraded.
+	//
+	// example:
+	//
+	// Upgradable
 	VersionAction *string `json:"VersionAction,omitempty" xml:"VersionAction,omitempty"`
 	// The list of returned virtual IP addresses (VIPs).
 	Vips *DescribeDrdsInstancesResponseBodyInstancesInstanceVips `json:"Vips,omitempty" xml:"Vips,omitempty" type:"Struct"`
 	// The ID of the instance that is deployed in the VPC.
+	//
+	// example:
+	//
+	// drdssen12****
 	VpcCloudInstanceId *string `json:"VpcCloudInstanceId,omitempty" xml:"VpcCloudInstanceId,omitempty"`
 	// The ID of the VPC to which the instance belongs.
+	//
+	// example:
+	//
+	// vpc-bp**********
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// The ID of the zone in which the resource is located.
+	//
+	// example:
+	//
+	// vsw-bpxxxxxxxxxxxxx96
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 	// The edition of the instance. Valid values:
 	//
-	// *   **starter**: Starter Edition
-	// *   **enterprise**: Enterprise Edition
-	// *   **standard**: Standard Edition
+	// 	- **starter**: Starter Edition
+	//
+	// 	- **enterprise**: Enterprise Edition
+	//
+	// 	- **standard**: Standard Edition
+	//
+	// example:
+	//
+	// enterprise
 	Series *string `json:"series,omitempty" xml:"series,omitempty"`
 }
 
@@ -6117,19 +8182,44 @@ func (s *DescribeDrdsInstancesResponseBodyInstancesInstanceVips) SetVip(v []*Des
 
 type DescribeDrdsInstancesResponseBodyInstancesInstanceVipsVip struct {
 	// The virtual IP address.
+	//
+	// example:
+	//
+	// 10.23.***.***
 	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
 	// The ports that are opened on the VIP.
+	//
+	// example:
+	//
+	// 3306
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The type of the VIP. Valid values:
 	//
-	// *   intranet: a private IP address
-	// *   internet: a public IP address
+	// 	- intranet: a private IP address
+	//
+	// 	- internet: a public IP address
+	//
+	// example:
+	//
+	// intranet
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The ID of the VPC.
+	//
+	// example:
+	//
+	// vpc-bpxxxxxxxxxxxy
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// The ID of the vSwitch.
+	//
+	// example:
+	//
+	// vsw-bpxxxxxxxxxxxxx96
 	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
 	// The domain name that is mapped to the VIP.
+	//
+	// example:
+	//
+	// drdssen1243as.drds.aliyuncs.com
 	Dns *string `json:"dns,omitempty" xml:"dns,omitempty"`
 }
 
@@ -6202,15 +8292,36 @@ func (s *DescribeDrdsInstancesResponse) SetBody(v *DescribeDrdsInstancesResponse
 
 type DescribeDrdsParamsRequest struct {
 	// The name of the database.
+	//
+	// example:
+	//
+	// drds_test
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The ID of the PolarDB-X 1.0 instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// DescribeDrdsParams
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	// The type of nodes whose parameters you want to query. Valid values:
 	//
-	// *   **INSTANCE: the instance level.**
-	// *   **DB**: the database level.
+	// 	- **INSTANCE: the instance level.**
+	//
+	// 	- **DB**: the database level.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// INSTANCE
 	ParamLevel *string `json:"ParamLevel,omitempty" xml:"ParamLevel,omitempty"`
 	// The ID of the region where the PolarDB-X 1.0 instance is created.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -6246,8 +8357,16 @@ type DescribeDrdsParamsResponseBody struct {
 	// Indicates information about parameters.
 	List []*DescribeDrdsParamsResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
 	// Indicates the ID of the request.
+	//
+	// example:
+	//
+	// 2F7F8080-9132-4279-85D0-B7E5C4305162
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -6276,26 +8395,62 @@ func (s *DescribeDrdsParamsResponseBody) SetSuccess(v bool) *DescribeDrdsParamsR
 
 type DescribeDrdsParamsResponseBodyList struct {
 	// Indicates the name of the database.
+	//
+	// example:
+	//
+	// drds_test
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// Indicates whether a restart is required.
+	//
+	// example:
+	//
+	// true
 	NeedRestart *bool `json:"NeedRestart,omitempty" xml:"NeedRestart,omitempty"`
 	// Indicates the default value of a parameter.
+	//
+	// example:
+	//
+	// 1000
 	ParamDefaultValue *string `json:"ParamDefaultValue,omitempty" xml:"ParamDefaultValue,omitempty"`
 	// Indicates the description of the parameter.
 	ParamDesc *string `json:"ParamDesc,omitempty" xml:"ParamDesc,omitempty"`
 	// Indicates the name of the parameter.
+	//
+	// example:
+	//
+	// SLOW_SQL_TIME
 	ParamEnglishName *string `json:"ParamEnglishName,omitempty" xml:"ParamEnglishName,omitempty"`
 	// Indicates the parameter level.
+	//
+	// example:
+	//
+	// INSTANCE
 	ParamLevel *string `json:"ParamLevel,omitempty" xml:"ParamLevel,omitempty"`
 	// Indicates the name of the parameter.
 	ParamName *string `json:"ParamName,omitempty" xml:"ParamName,omitempty"`
 	// Indicates the value range of the parameter.
+	//
+	// example:
+	//
+	// [1000-900000]
 	ParamRanges *string `json:"ParamRanges,omitempty" xml:"ParamRanges,omitempty"`
 	// Indicates the type of the parameter.
+	//
+	// example:
+	//
+	// CONFIG
 	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
 	// Indicates the value of the parameter.
+	//
+	// example:
+	//
+	// 1000
 	ParamValue *string `json:"ParamValue,omitempty" xml:"ParamValue,omitempty"`
 	// Indicates the name of the variable.
+	//
+	// example:
+	//
+	// slowSqlTime
 	ParamVariableName *string `json:"ParamVariableName,omitempty" xml:"ParamVariableName,omitempty"`
 }
 
@@ -6394,7 +8549,13 @@ func (s *DescribeDrdsParamsResponse) SetBody(v *DescribeDrdsParamsResponseBody) 
 type DescribeDrdsRdsInstancesRequest struct {
 	// The ID of the PolarDB-X instance.
 	//
-	// > You can call the [DescribeDrdsInstances](~~139284~~) operation to query the information about instances in the specified account, such as the IDs of the instances.
+	// > You can call the [DescribeDrdsInstances](https://help.aliyun.com/document_detail/139284.html) operation to query the information about instances in the specified account, such as the IDs of the instances.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds*************
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -6415,8 +8576,16 @@ type DescribeDrdsRdsInstancesResponseBody struct {
 	// The information about the custom ApsaraDB RDS for MySQL instances at the storage layer.
 	DbInstances *DescribeDrdsRdsInstancesResponseBodyDbInstances `json:"DbInstances,omitempty" xml:"DbInstances,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 123DB16B-02F2-45F7-A571-843991******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -6462,49 +8631,112 @@ func (s *DescribeDrdsRdsInstancesResponseBodyDbInstances) SetDbInstance(v []*Des
 
 type DescribeDrdsRdsInstancesResponseBodyDbInstancesDbInstance struct {
 	// The internal endpoint of the custom ApsaraDB RDS for MySQL instance at the storage layer.
+	//
+	// example:
+	//
+	// rm-***************.mysql.rds.aliyuncs.com
 	ConnectUrl *string `json:"ConnectUrl,omitempty" xml:"ConnectUrl,omitempty"`
 	// The number of CPU cores of the custom ApsaraDB RDS for MySQL instance at the storage layer.
+	//
+	// example:
+	//
+	// 8
 	DBInstanceCPU *string `json:"DBInstanceCPU,omitempty" xml:"DBInstanceCPU,omitempty"`
 	// The instance family of the custom ApsaraDB RDS for MySQL instance at the storage layer. Valid values:
 	//
-	// *   **x**: general-purpose instance family
-	// *   **d**: dedicated instance family
-	// *   **h**: dedicated host instance family
+	// 	- **x**: general-purpose instance family
+	//
+	// 	- **d**: dedicated instance family
+	//
+	// 	- **h**: dedicated host instance family
+	//
+	// example:
+	//
+	// x
 	DBInstanceClassType *string `json:"DBInstanceClassType,omitempty" xml:"DBInstanceClassType,omitempty"`
 	// The ID of the custom ApsaraDB RDS for MySQL instance at the storage layer.
+	//
+	// example:
+	//
+	// rm-*****************
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The memory size of the custom ApsaraDB RDS for MySQL instance at the storage layer. Unit: MB.
+	//
+	// example:
+	//
+	// 8192
 	DBInstanceMemory *int64 `json:"DBInstanceMemory,omitempty" xml:"DBInstanceMemory,omitempty"`
 	// The status of the custom ApsaraDB RDS for MySQL instance at the storage layer. Valid values:
 	//
-	// *   0: The instance is being created.
-	// *   1: The instance is running.
-	// *   3: The instance is being deleted.
-	// *   5: The instance is being restarted.
-	// *   6: The instance is being upgraded or downgraded.
-	// *   7: The instance is being backed up.
-	// *   8: The network type of the instance is being changed.
-	// *   9: The instance is being migrated.
-	// *   11: The data stored on the instance is being migrated.
-	// *   12: A disaster recovery instance is being generated.
-	// *   13: Data is being imported to the instance.
-	// *   14: Data is being imported from another RDS instance to the instance.
-	// *   15: A switchover is being performed.
-	// *   16: A temporary instance is being created.
-	// *   17: The network of the instance is being created.
-	// *   18: The instance is being cloned.
-	// *   19: The link is being changed.
-	// *   20: The read-only RDS instances of the instance are being migrated.
+	// 	- 0: The instance is being created.
+	//
+	// 	- 1: The instance is running.
+	//
+	// 	- 3: The instance is being deleted.
+	//
+	// 	- 5: The instance is being restarted.
+	//
+	// 	- 6: The instance is being upgraded or downgraded.
+	//
+	// 	- 7: The instance is being backed up.
+	//
+	// 	- 8: The network type of the instance is being changed.
+	//
+	// 	- 9: The instance is being migrated.
+	//
+	// 	- 11: The data stored on the instance is being migrated.
+	//
+	// 	- 12: A disaster recovery instance is being generated.
+	//
+	// 	- 13: Data is being imported to the instance.
+	//
+	// 	- 14: Data is being imported from another RDS instance to the instance.
+	//
+	// 	- 15: A switchover is being performed.
+	//
+	// 	- 16: A temporary instance is being created.
+	//
+	// 	- 17: The network of the instance is being created.
+	//
+	// 	- 18: The instance is being cloned.
+	//
+	// 	- 19: The link is being changed.
+	//
+	// 	- 20: The read-only RDS instances of the instance are being migrated.
+	//
+	// example:
+	//
+	// 1
 	DBInstanceStatus *string `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
 	// The storage space of the custom ApsaraDB RDS for MySQL instance at the storage layer. Unit: GB.
+	//
+	// example:
+	//
+	// 20
 	DBInstanceStorage *int64 `json:"DBInstanceStorage,omitempty" xml:"DBInstanceStorage,omitempty"`
 	// The type of the instance at the storage layer. The value is RDS.
+	//
+	// example:
+	//
+	// RDS
 	DbInstType *string `json:"DbInstType,omitempty" xml:"DbInstType,omitempty"`
 	// The ID of the resource.
+	//
+	// example:
+	//
+	// dm-*************
 	DmInstanceId *string `json:"DmInstanceId,omitempty" xml:"DmInstanceId,omitempty"`
 	// The engine type of the custom ApsaraDB RDS for MySQL instance at the storage layer. The value is MySQL.
+	//
+	// example:
+	//
+	// MySQL
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The engine version of the custom ApsaraDB RDS for MySQL instance at the storage layer. The value is 8.0.
+	//
+	// example:
+	//
+	// 8.0
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	// The lock mode of the RDS instance. Valid values:
 	//
@@ -6519,24 +8751,54 @@ type DescribeDrdsRdsInstancesResponseBodyDbInstancesDbInstance struct {
 	// 4: The instance is automatically locked if the storage space of the instance reaches the upper limit.
 	//
 	// 5: The instance is automatically locked if the storage space of the read-only instances reaches the upper limit.
+	//
+	// example:
+	//
+	// 1
 	LockMode *int32 `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
 	// The reason why the RDS instance is locked.
+	//
+	// example:
+	//
+	// Manually Locked
 	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
 	// The network type of the custom ApsaraDB RDS for MySQL instance at the storage layer. The value is VPC.
+	//
+	// example:
+	//
+	// VPC
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	// The billing method of the custom ApsaraDB RDS for MySQL instance at the storage layer. Valid values:
 	//
-	// *   Postpaid: pay-as-you-go
-	// *   Prepaid: subscription
+	// 	- Postpaid: pay-as-you-go
+	//
+	// 	- Prepaid: subscription
+	//
+	// example:
+	//
+	// PostPaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	// The port used to connect to the instance over an internal network.
+	//
+	// example:
+	//
+	// 3306
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The type of the custom ApsaraDB RDS for MySQL instance at the storage layer. Valid values:
 	//
-	// *   Primary: primary instance
-	// *   Readonly: read-only instance
+	// 	- Primary: primary instance
+	//
+	// 	- Readonly: read-only instance
+	//
+	// example:
+	//
+	// Primary
 	RdsInstType *string `json:"RdsInstType,omitempty" xml:"RdsInstType,omitempty"`
 	// The read and write weights of the custom ApsaraDB RDS for MySQL instance at the storage layer.
+	//
+	// example:
+	//
+	// 0
 	ReadWeight *int32 `json:"ReadWeight,omitempty" xml:"ReadWeight,omitempty"`
 }
 
@@ -6669,14 +8931,38 @@ func (s *DescribeDrdsRdsInstancesResponse) SetBody(v *DescribeDrdsRdsInstancesRe
 
 type DescribeDrdsShardingDbsRequest struct {
 	// The name of the database whose shards you want to query.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds_test
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The matching pattern of the database name.
+	//
+	// example:
+	//
+	// test
 	DbNamePattern *string `json:"DbNamePattern,omitempty" xml:"DbNamePattern,omitempty"`
 	// The ID of the PolarDB-X 1.0 instance whose database shards you want to query.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drdshbgaf3c63qbo
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	// The page number of the returned page.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of database shards returned on each page.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
@@ -6715,16 +9001,36 @@ func (s *DescribeDrdsShardingDbsRequest) SetPageSize(v int64) *DescribeDrdsShard
 
 type DescribeDrdsShardingDbsResponseBody struct {
 	// The page number of the returned page.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of database shards returned per page.
+	//
+	// example:
+	//
+	// 20
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 509BDE17-505A-4B3B-854D-30D3F092502F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The list of returned database shards.
 	ShardingDbs *DescribeDrdsShardingDbsResponseBodyShardingDbs `json:"ShardingDbs,omitempty" xml:"ShardingDbs,omitempty" type:"Struct"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The number of returned database shards.
+	//
+	// example:
+	//
+	// 1
 	Total *string `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -6785,30 +9091,82 @@ func (s *DescribeDrdsShardingDbsResponseBodyShardingDbs) SetShardingDb(v []*Desc
 
 type DescribeDrdsShardingDbsResponseBodyShardingDbsShardingDb struct {
 	// The timeout period for a transaction to wait for the release of the data lock.
+	//
+	// example:
+	//
+	// 5000
 	BlockingTimeout *int32 `json:"BlockingTimeout,omitempty" xml:"BlockingTimeout,omitempty"`
 	// The URL that is used to access the Apsara RDS for MySQL instance.
+	//
+	// example:
+	//
+	// 100.100.64.100:11569
 	ConnectUrl *string `json:"ConnectUrl,omitempty" xml:"ConnectUrl,omitempty"`
 	// The properties of the connection string.
+	//
+	// example:
+	//
+	// connectTimeout=3000;autoReconnect=true;failOverReadOnly=false;socketTimeout=900000;rewriteBatchedStatements=true;characterEncoding=utf8
 	ConnectionProperties *string `json:"ConnectionProperties,omitempty" xml:"ConnectionProperties,omitempty"`
 	// The ID of the Apsara RDS for MySQL instance that is used as the storage of the database shard.
+	//
+	// example:
+	//
+	// rm-bp1hjzn0yv5j2****
 	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
 	// The status of the database.
+	//
+	// example:
+	//
+	// running
 	DbStatus *string `json:"DbStatus,omitempty" xml:"DbStatus,omitempty"`
 	// The engine of the database.
+	//
+	// example:
+	//
+	// mysql
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
 	// The name of group on which the database shard is stored.
+	//
+	// example:
+	//
+	// TEMP1_1568171495522SABE_KUP4_0000
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The timeout period of an idle connection.
+	//
+	// example:
+	//
+	// 30
 	IdleTimeOut *int32 `json:"IdleTimeOut,omitempty" xml:"IdleTimeOut,omitempty"`
 	// The maximum size of the connection pool.
+	//
+	// example:
+	//
+	// 60
 	MaxPoolSize *int32 `json:"MaxPoolSize,omitempty" xml:"MaxPoolSize,omitempty"`
 	// The minimum size of the connection pool.
+	//
+	// example:
+	//
+	// 5
 	MinPoolSize *int32 `json:"MinPoolSize,omitempty" xml:"MinPoolSize,omitempty"`
 	// The size of cache for the returned results.
+	//
+	// example:
+	//
+	// 0
 	PreparedStatementCacheSize *int32 `json:"PreparedStatementCacheSize,omitempty" xml:"PreparedStatementCacheSize,omitempty"`
 	// The name of the database shard.
+	//
+	// example:
+	//
+	// temp1_zhk1_0000
 	ShardingDbName *string `json:"ShardingDbName,omitempty" xml:"ShardingDbName,omitempty"`
 	// The username that is used to connect to the ApsaraDB RDS for MySQL instance.
+	//
+	// example:
+	//
+	// pg284mi8
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
@@ -6916,18 +9274,57 @@ func (s *DescribeDrdsShardingDbsResponse) SetBody(v *DescribeDrdsShardingDbsResp
 
 type DescribeDrdsSlowSqlsRequest struct {
 	// The name of the database.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test_db
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The ID of the PolarDB-X 1.0 instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds***************
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	// The start time of the SQL query. Specify the time in the UNIX timestamp format. The time must be in UTC. Unit: ms.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1568267711000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The SQL execution time. Unit: ms.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1000
 	ExeTime *int64 `json:"ExeTime,omitempty" xml:"ExeTime,omitempty"`
 	// The number of the page to return.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The end time of the SQL query. Specify the time in the UNIX timestamp format. The time must be in UTC. Unit: ms.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1568269711000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -6969,6 +9366,11 @@ func (s *DescribeDrdsSlowSqlsRequest) SetPageSize(v int32) *DescribeDrdsSlowSqls
 	return s
 }
 
+func (s *DescribeDrdsSlowSqlsRequest) SetRegionId(v string) *DescribeDrdsSlowSqlsRequest {
+	s.RegionId = &v
+	return s
+}
+
 func (s *DescribeDrdsSlowSqlsRequest) SetStartTime(v int64) *DescribeDrdsSlowSqlsRequest {
 	s.StartTime = &v
 	return s
@@ -6978,14 +9380,34 @@ type DescribeDrdsSlowSqlsResponseBody struct {
 	// Indicates the details of the slow SQL query.
 	Items *DescribeDrdsSlowSqlsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// Indicates the page number of the returned page.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// Indicates the number of entries returned on each page.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// Indicates the ID of the request.
+	//
+	// example:
+	//
+	// 509BDE17-505A-4B3B-854D-30D3F0******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// Indicates the total number of entries.
+	//
+	// example:
+	//
+	// 1
 	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -7046,14 +9468,34 @@ func (s *DescribeDrdsSlowSqlsResponseBodyItems) SetItem(v []*DescribeDrdsSlowSql
 
 type DescribeDrdsSlowSqlsResponseBodyItemsItem struct {
 	// Indicates the IP address of the execution machine.
+	//
+	// example:
+	//
+	// 10.0.***.***
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
 	// Indicates the response time. Unit: ms.
+	//
+	// example:
+	//
+	// 1568267711
 	ResponseTime *int64 `json:"ResponseTime,omitempty" xml:"ResponseTime,omitempty"`
 	// Indicates the name of the database.
+	//
+	// example:
+	//
+	// user
 	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
 	// Indicates the time when the slow SQL query was sent. Unit: ms.
+	//
+	// example:
+	//
+	// 1568267711
 	SendTime *int64 `json:"SendTime,omitempty" xml:"SendTime,omitempty"`
 	// Indicates the content of the slow SQL query.
+	//
+	// example:
+	//
+	// SELECT   count(1) from   payment_order where   order_status = \\"08\\";
 	Sql *string `json:"Sql,omitempty" xml:"Sql,omitempty"`
 }
 
@@ -7121,6 +9563,12 @@ func (s *DescribeDrdsSlowSqlsResponse) SetBody(v *DescribeDrdsSlowSqlsResponseBo
 
 type DescribeDrdsSqlAuditStatusRequest struct {
 	// The ID of the PolarDB-X 1.0 instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds************
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -7141,8 +9589,16 @@ type DescribeDrdsSqlAuditStatusResponseBody struct {
 	// The returned data set.
 	Data *DescribeDrdsSqlAuditStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// DC3ABA3E-0F8A-4596-9104-F5155C******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The result of the request.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -7188,24 +9644,52 @@ func (s *DescribeDrdsSqlAuditStatusResponseBodyData) SetData(v []*DescribeDrdsSq
 
 type DescribeDrdsSqlAuditStatusResponseBodyDataData struct {
 	// The name of the database.
+	//
+	// example:
+	//
+	// test
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// Indicates whether the complete report of the SQL audit is supported. Valid values: true and false.
+	//
+	// example:
+	//
+	// true
 	Detailed *string `json:"Detailed,omitempty" xml:"Detailed,omitempty"`
 	// Indicates whether the SQL audit feature is enabled for the database. Valid values: true and false.
+	//
+	// example:
+	//
+	// true
 	Enabled *string `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	// The UID of the external delivery.
 	//
 	// > This parameter is returned only if external log delivery is enabled.
+	//
+	// example:
+	//
+	// 111
 	ExtraAliUid *int64 `json:"ExtraAliUid,omitempty" xml:"ExtraAliUid,omitempty"`
 	// The Log Service Logstore from which logs are delivered.
 	//
 	// > This parameter is returned only if external log delivery is enabled.
+	//
+	// example:
+	//
+	// test
 	ExtraSlsLogStore *string `json:"ExtraSlsLogStore,omitempty" xml:"ExtraSlsLogStore,omitempty"`
 	// The Log Service project from which logs are delivered.
 	//
 	// > This parameter is returned only if external log delivery is enabled.
+	//
+	// example:
+	//
+	// test
 	ExtraSlsProject *string `json:"ExtraSlsProject,omitempty" xml:"ExtraSlsProject,omitempty"`
 	// Indicates whether external log delivery is enabled. Valid values: true and false.
+	//
+	// example:
+	//
+	// false
 	ExtraWriteEnabled *bool `json:"ExtraWriteEnabled,omitempty" xml:"ExtraWriteEnabled,omitempty"`
 }
 
@@ -7283,10 +9767,24 @@ func (s *DescribeDrdsSqlAuditStatusResponse) SetBody(v *DescribeDrdsSqlAuditStat
 
 type DescribeDrdsTasksRequest struct {
 	// The name of the database.
+	//
+	// example:
+	//
+	// test
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drdsxxxxxxxxxxxx
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	// The type of tasks.
+	//
+	// example:
+	//
+	// test
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
@@ -7315,8 +9813,16 @@ func (s *DescribeDrdsTasksRequest) SetTaskType(v string) *DescribeDrdsTasksReque
 
 type DescribeDrdsTasksResponseBody struct {
 	// Indicates the ID of the request.
+	//
+	// example:
+	//
+	// CD412DF7-F21D-44CE-88FF-ED24917174A8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// Indicates information about the tasks.
 	Tasks *DescribeDrdsTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Struct"`
@@ -7364,10 +9870,22 @@ func (s *DescribeDrdsTasksResponseBodyTasks) SetTask(v []*DescribeDrdsTasksRespo
 
 type DescribeDrdsTasksResponseBodyTasksTask struct {
 	// Indicates the content of a task.
+	//
+	// example:
+	//
+	// upgrade_instance
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// Indicates the ID of the task.
+	//
+	// example:
+	//
+	// 64148
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// Indicates the state of the task.
+	//
+	// example:
+	//
+	// FAILED
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
@@ -7425,8 +9943,20 @@ func (s *DescribeDrdsTasksResponse) SetBody(v *DescribeDrdsTasksResponseBody) *D
 
 type DescribeExpandLogicTableInfoListRequest struct {
 	// The name of the database.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds_flashback
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The ID of the PolarDB-X 1.0 instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds************
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -7452,8 +9982,16 @@ type DescribeExpandLogicTableInfoListResponseBody struct {
 	// Indicates the result that is returned.
 	Data *DescribeExpandLogicTableInfoListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0B6B7BDC-575D-4A77-A4F8-24B7EF******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -7499,10 +10037,22 @@ func (s *DescribeExpandLogicTableInfoListResponseBodyData) SetData(v []*Describe
 
 type DescribeExpandLogicTableInfoListResponseBodyDataData struct {
 	// Indicates the database sharding key.
+	//
+	// example:
+	//
+	// id
 	ShardDbKey *string `json:"ShardDbKey,omitempty" xml:"ShardDbKey,omitempty"`
 	// Indicates the table sharding key.
+	//
+	// example:
+	//
+	// address
 	ShardTbKey *string `json:"ShardTbKey,omitempty" xml:"ShardTbKey,omitempty"`
 	// Indicates the name of the table.
+	//
+	// example:
+	//
+	// employee_split2
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
@@ -7560,8 +10110,20 @@ func (s *DescribeExpandLogicTableInfoListResponse) SetBody(v *DescribeExpandLogi
 
 type DescribeHotDbListRequest struct {
 	// The name of the database.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds**********
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -7587,10 +10149,22 @@ type DescribeHotDbListResponseBody struct {
 	// The result that is returned.
 	Data *DescribeHotDbListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message that is returned.
+	//
+	// example:
+	//
+	// msg
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0B6B7BDC-575D-4A77-A4F8-24B7EF******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -7626,6 +10200,10 @@ type DescribeHotDbListResponseBodyData struct {
 	// The information about the databases on which hot-spot scale-out is performed.
 	List *DescribeHotDbListResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Struct"`
 	// The random number.
+	//
+	// example:
+	//
+	// jzhz
 	RandomCode *string `json:"RandomCode,omitempty" xml:"RandomCode,omitempty"`
 }
 
@@ -7667,6 +10245,10 @@ func (s *DescribeHotDbListResponseBodyDataList) SetInstanceDb(v []*DescribeHotDb
 type DescribeHotDbListResponseBodyDataListInstanceDb struct {
 	HotDbList *DescribeHotDbListResponseBodyDataListInstanceDbHotDbList `json:"HotDbList,omitempty" xml:"HotDbList,omitempty" type:"Struct"`
 	// The name of the instance.
+	//
+	// example:
+	//
+	// instanceName
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 }
 
@@ -7736,8 +10318,20 @@ func (s *DescribeHotDbListResponse) SetBody(v *DescribeHotDbListResponseBody) *D
 
 type DescribeInstDbLogInfoRequest struct {
 	// The name of the DRDS database.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds_test
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The ID of the DRDS instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds*********
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -7763,8 +10357,16 @@ type DescribeInstDbLogInfoResponseBody struct {
 	// The time range for log query.
 	LogTimeRange *DescribeInstDbLogInfoResponseBodyLogTimeRange `json:"LogTimeRange,omitempty" xml:"LogTimeRange,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// A5438952-70EE-4FA5-87A9-080DB0ASD45F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -7793,8 +10395,16 @@ func (s *DescribeInstDbLogInfoResponseBody) SetSuccess(v bool) *DescribeInstDbLo
 
 type DescribeInstDbLogInfoResponseBodyLogTimeRange struct {
 	// The start time of the query time range.
+	//
+	// example:
+	//
+	// 1568267711
 	SupportLatestTime *int64 `json:"SupportLatestTime,omitempty" xml:"SupportLatestTime,omitempty"`
 	// The end time of the task.
+	//
+	// example:
+	//
+	// 1568367711
 	SupportOldestTime *int64 `json:"SupportOldestTime,omitempty" xml:"SupportOldestTime,omitempty"`
 }
 
@@ -7847,8 +10457,20 @@ func (s *DescribeInstDbLogInfoResponse) SetBody(v *DescribeInstDbLogInfoResponse
 
 type DescribeInstDbSlsInfoRequest struct {
 	// The name of the database.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The ID of the PolarDB-X 1.0 instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds***********
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -7874,8 +10496,16 @@ type DescribeInstDbSlsInfoResponseBody struct {
 	// The details of the SQL audit.
 	AuditInfo *DescribeInstDbSlsInfoResponseBodyAuditInfo `json:"AuditInfo,omitempty" xml:"AuditInfo,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// DC3ABA3E-0F8A-4596-9104-F5155C******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -7904,8 +10534,16 @@ func (s *DescribeInstDbSlsInfoResponseBody) SetSuccess(v bool) *DescribeInstDbSl
 
 type DescribeInstDbSlsInfoResponseBodyAuditInfo struct {
 	// The name of the LogStore.
+	//
+	// example:
+	//
+	// test
 	LogStore *string `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
 	// The name of the Log Service project.
+	//
+	// example:
+	//
+	// test
 	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
 }
 
@@ -7958,6 +10596,12 @@ func (s *DescribeInstDbSlsInfoResponse) SetBody(v *DescribeInstDbSlsInfoResponse
 
 type DescribeInstanceAccountsRequest struct {
 	// The ID of the PolarDB-X 1.0 instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds*********
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -7978,8 +10622,16 @@ type DescribeInstanceAccountsResponseBody struct {
 	// Indicates the information about the instance accounts.
 	InstanceAccounts *DescribeInstanceAccountsResponseBodyInstanceAccounts `json:"InstanceAccounts,omitempty" xml:"InstanceAccounts,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// E2E4056D-57EB-4353-8355-2E6284******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -8025,17 +10677,34 @@ func (s *DescribeInstanceAccountsResponseBodyInstanceAccounts) SetInstanceAccoun
 
 type DescribeInstanceAccountsResponseBodyInstanceAccountsInstanceAccount struct {
 	// Indicates the username of an instance account.
+	//
+	// example:
+	//
+	// test_rds3
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// Indicates the type of an instance account. Valid values:
 	//
-	// *   **0**: The instance account is a privileged account.
-	// *   **1**: The instance account is a standard account.
+	// 	- **0**: The instance account is a privileged account.
+	//
+	// 	- **1**: The instance account is a standard account.
+	//
+	// example:
+	//
+	// 1
 	AccountType *int32 `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
 	// Indicates the information about the permissions of an account on a database.
 	DbPrivileges *DescribeInstanceAccountsResponseBodyInstanceAccountsInstanceAccountDbPrivileges `json:"DbPrivileges,omitempty" xml:"DbPrivileges,omitempty" type:"Struct"`
-	// Indicates the description of an account. By default, if 0 is the value of the AccountType parameter, **Created by DRDS** is returned as the value of the Description parameter. If 1 is the value of the AccountType parameter, an empty string is returned as the value of the Description parameter. You can modify the description of an account on the Accounts page in the PolarDB-X console.
+	// Indicates the description of an account. By default, if 0 is the value of the AccountType parameter, **Created by DRDS*	- is returned as the value of the Description parameter. If 1 is the value of the AccountType parameter, an empty string is returned as the value of the Description parameter. You can modify the description of an account on the Accounts page in the PolarDB-X console.
+	//
+	// example:
+	//
+	// Created by DRDS
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates an IP address that is allowed to access the database. The value **%** indicates that each IP address is allowed to access the database. \</note>
+	// Indicates an IP address that is allowed to access the database. The value **%*	- indicates that each IP address is allowed to access the database. \\</note>
+	//
+	// example:
+	//
+	// %
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
 }
 
@@ -8091,13 +10760,24 @@ func (s *DescribeInstanceAccountsResponseBodyInstanceAccountsInstanceAccountDbPr
 
 type DescribeInstanceAccountsResponseBodyInstanceAccountsInstanceAccountDbPrivilegesDbPrivilege struct {
 	// Indicates the name of a database.
+	//
+	// example:
+	//
+	// test_rds3
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// Indicates the permissions that an account is granted on the database. Valid values:
 	//
-	// *   **R**: The account is granted the permissions that are required to read the data of the database.
-	// *   **W**: The account is granted the permissions that are required to write data to the database.
-	// *   **DDL**: The account is granted the permissions that are required to perform DDL operations on the database.
-	// *   **DML**: The account is granted the permissions that are required to perform DML operations on the database.
+	// 	- **R**: The account is granted the permissions that are required to read the data of the database.
+	//
+	// 	- **W**: The account is granted the permissions that are required to write data to the database.
+	//
+	// 	- **DDL**: The account is granted the permissions that are required to perform DDL operations on the database.
+	//
+	// 	- **DML**: The account is granted the permissions that are required to perform DML operations on the database.
+	//
+	// example:
+	//
+	// R
 	Privilege *string `json:"Privilege,omitempty" xml:"Privilege,omitempty"`
 }
 
@@ -8150,6 +10830,12 @@ func (s *DescribeInstanceAccountsResponse) SetBody(v *DescribeInstanceAccountsRe
 
 type DescribeInstanceSwitchAzoneRequest struct {
 	// The ID of the DRDS instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drdsxxxxxxxxxxxx
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -8168,10 +10854,18 @@ func (s *DescribeInstanceSwitchAzoneRequest) SetDrdsInstanceId(v string) *Descri
 
 type DescribeInstanceSwitchAzoneResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// DSSDF-SEWE-23ERW
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The result of the operation.
 	Result *DescribeInstanceSwitchAzoneResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -8200,10 +10894,22 @@ func (s *DescribeInstanceSwitchAzoneResponseBody) SetSuccess(v bool) *DescribeIn
 
 type DescribeInstanceSwitchAzoneResponseBodyResult struct {
 	// The ID of the source azoneId.
+	//
+	// example:
+	//
+	// cn-hangzhou-a
 	OriginAzoneId *string `json:"OriginAzoneId,omitempty" xml:"OriginAzoneId,omitempty"`
 	// regionId.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// Indicates whether the job can be switched.
+	//
+	// example:
+	//
+	// true
 	SwitchAble *bool `json:"SwitchAble,omitempty" xml:"SwitchAble,omitempty"`
 	// Target azones.
 	TargetAzones *DescribeInstanceSwitchAzoneResponseBodyResultTargetAzones `json:"TargetAzones,omitempty" xml:"TargetAzones,omitempty" type:"Struct"`
@@ -8285,6 +10991,12 @@ func (s *DescribeInstanceSwitchAzoneResponse) SetBody(v *DescribeInstanceSwitchA
 
 type DescribeInstanceSwitchNetworkRequest struct {
 	// The ID of the PolarDB-X 1.0 instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds*********
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -8303,8 +11015,16 @@ func (s *DescribeInstanceSwitchNetworkRequest) SetDrdsInstanceId(v string) *Desc
 
 type DescribeInstanceSwitchNetworkResponseBody struct {
 	// Indicates the ID of the request.
+	//
+	// example:
+	//
+	// 03E12FE3-1638-483E-A9B6-1A9120SER56T
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// Indicates the information about the virtual private cloud (VPC) in which the instance is deployed.
 	VpcInfos *DescribeInstanceSwitchNetworkResponseBodyVpcInfos `json:"VpcInfos,omitempty" xml:"VpcInfos,omitempty" type:"Struct"`
@@ -8352,10 +11072,22 @@ func (s *DescribeInstanceSwitchNetworkResponseBodyVpcInfos) SetVpcInfo(v []*Desc
 
 type DescribeInstanceSwitchNetworkResponseBodyVpcInfosVpcInfo struct {
 	// Indicates the ID of the region in which the instance is deployed.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// Indicates the ID of the VPC.
+	//
+	// example:
+	//
+	// vpc_id
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// Indicates the name of the VPC.
+	//
+	// example:
+	//
+	// vpc_name
 	VpcName *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
 	// Indicates information about the vSwitch to which the instance is connected.
 	VswitchInfos *DescribeInstanceSwitchNetworkResponseBodyVpcInfosVpcInfoVswitchInfos `json:"VswitchInfos,omitempty" xml:"VswitchInfos,omitempty" type:"Struct"`
@@ -8408,14 +11140,34 @@ func (s *DescribeInstanceSwitchNetworkResponseBodyVpcInfosVpcInfoVswitchInfos) S
 
 type DescribeInstanceSwitchNetworkResponseBodyVpcInfosVpcInfoVswitchInfosVswitchInfo struct {
 	// Indicates the ID of the zone in which the instance is deployed.
+	//
+	// example:
+	//
+	// cn-hangzhou-a
 	AzoneId *string `json:"AzoneId,omitempty" xml:"AzoneId,omitempty"`
 	// Indicates whether you can change the network type of the instance.
+	//
+	// example:
+	//
+	// true
 	DrdsSupported *bool `json:"DrdsSupported,omitempty" xml:"DrdsSupported,omitempty"`
 	// Indicates the ID of the VPC.
+	//
+	// example:
+	//
+	// vpc_id
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// Indicates the ID of the vSwitch.
+	//
+	// example:
+	//
+	// vswitch_id
 	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
 	// Indicates the name of the vSwitch.
+	//
+	// example:
+	//
+	// vswitch_name
 	VswitchName *string `json:"VswitchName,omitempty" xml:"VswitchName,omitempty"`
 }
 
@@ -8483,10 +11235,26 @@ func (s *DescribeInstanceSwitchNetworkResponse) SetBody(v *DescribeInstanceSwitc
 
 type DescribePreCheckResultRequest struct {
 	// The ID of the PolarDB-X 1.0 instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drdshbga76p6****
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the precheck task.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 4561
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -8517,8 +11285,16 @@ type DescribePreCheckResultResponseBody struct {
 	// Indicates the result of the precheck task.
 	PreCheckResult *DescribePreCheckResultResponseBodyPreCheckResult `json:"PreCheckResult,omitempty" xml:"PreCheckResult,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// EED1A59A-CFEA-5CF8-BB4A-090E75B3D05E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -8549,6 +11325,10 @@ type DescribePreCheckResultResponseBodyPreCheckResult struct {
 	// Indicates the name of the precheck task.
 	PreCheckName *string `json:"PreCheckName,omitempty" xml:"PreCheckName,omitempty"`
 	// Indicates the state of the precheck task.
+	//
+	// example:
+	//
+	// FAIL
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
 	// Indicates the details about the subtasks of the precheck task.
 	SubCheckItems []*DescribePreCheckResultResponseBodyPreCheckResultSubCheckItems `json:"SubCheckItems,omitempty" xml:"SubCheckItems,omitempty" type:"Repeated"`
@@ -8579,6 +11359,10 @@ func (s *DescribePreCheckResultResponseBodyPreCheckResult) SetSubCheckItems(v []
 
 type DescribePreCheckResultResponseBodyPreCheckResultSubCheckItems struct {
 	// Indicates the error code that is returned by a subtask.
+	//
+	// example:
+	//
+	// 1004
 	ErrorMsgCode *string `json:"ErrorMsgCode,omitempty" xml:"ErrorMsgCode,omitempty"`
 	// Indicates an error message.
 	ErrorMsgParams []*string `json:"ErrorMsgParams,omitempty" xml:"ErrorMsgParams,omitempty" type:"Repeated"`
@@ -8647,18 +11431,48 @@ func (s *DescribePreCheckResultResponse) SetBody(v *DescribePreCheckResultRespon
 
 type DescribeRDSPerformanceRequest struct {
 	// The type of the database engine.
+	//
+	// example:
+	//
+	// mysql
 	DbInstType *string `json:"DbInstType,omitempty" xml:"DbInstType,omitempty"`
 	// The ID of the Distributed Relational Database Service (DRDS) instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds*********
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	// The end time of the query. Specify the time in the UNIX timestamp format. The time must be in UTC. Unit: ms.
+	//
+	// example:
+	//
+	// 1603209690000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The performance monitoring metrics. You can specify one or more metrics for a query at a time. Separate multiple metric parameters with commas (,).
 	//
-	// >  For more information about the details of performance monitoring metrics, see [Storage monitoring](~~186705~~).
+	// >  For more information about the details of performance monitoring metrics, see [Storage monitoring](https://help.aliyun.com/document_detail/186705.html).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MySQL_MemCpuUsage
 	Keys *string `json:"Keys,omitempty" xml:"Keys,omitempty"`
 	// The ID of the storage-layer ApsaraDB RDS for MySQL instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-************
 	RdsInstanceId *string `json:"RdsInstanceId,omitempty" xml:"RdsInstanceId,omitempty"`
 	// The start time of the query. Specify the time in the UNIX timestamp format. The time must be in UTC. Unit: ms.
+	//
+	// example:
+	//
+	// 1603123290000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -8704,8 +11518,16 @@ type DescribeRDSPerformanceResponseBody struct {
 	// The result set of the query.
 	Data []*DescribeRDSPerformanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// DB53EC68-463C-4187-8D2B-C2AD8C******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -8734,14 +11556,30 @@ func (s *DescribeRDSPerformanceResponseBody) SetSuccess(v bool) *DescribeRDSPerf
 
 type DescribeRDSPerformanceResponseBodyData struct {
 	// The name of the monitoring metric.
+	//
+	// example:
+	//
+	// cpuusage
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The name of the node.
 	//
 	// >  This parameter is returned only when the storage type of the database is PolarDB for MySQL. If the storage type of the database is ApsaraDB RDS for MySQL, this parameter is not returned.
+	//
+	// example:
+	//
+	// pi-*************
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
 	// The number of nodes.
+	//
+	// example:
+	//
+	// 1
 	NodeNum *int32 `json:"NodeNum,omitempty" xml:"NodeNum,omitempty"`
 	// The unit of the monitoring metric.
+	//
+	// example:
+	//
+	// %
 	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
 	// The details of the monitoring metric data.
 	Values []*DescribeRDSPerformanceResponseBodyDataValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
@@ -8782,8 +11620,16 @@ func (s *DescribeRDSPerformanceResponseBodyData) SetValues(v []*DescribeRDSPerfo
 
 type DescribeRDSPerformanceResponseBodyDataValues struct {
 	// The time point when the value of the monitoring metric was obtained. The value is in the UNIX timestamp format. The time is displayed in UTC. Unit: ms.
+	//
+	// example:
+	//
+	// 1603209660000
 	Date *int64 `json:"Date,omitempty" xml:"Date,omitempty"`
 	// The value of the monitoring metric.
+	//
+	// example:
+	//
+	// 0.58
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -8836,10 +11682,26 @@ func (s *DescribeRDSPerformanceResponse) SetBody(v *DescribeRDSPerformanceRespon
 
 type DescribeRdsCommodityRequest struct {
 	// The commodity code of the service.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drdsPost
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	// The ID of the PolarDB-X 1.0 instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds***********
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	// The type of the order.
+	//
+	// example:
+	//
+	// 1
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 }
 
@@ -8868,10 +11730,22 @@ func (s *DescribeRdsCommodityRequest) SetOrderType(v string) *DescribeRdsCommodi
 
 type DescribeRdsCommodityResponseBody struct {
 	// Indicates the returned result.
+	//
+	// example:
+	//
+	// test
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// Indicates the ID of the request.
+	//
+	// example:
+	//
+	// DC3ABA3E-0F8A-4596-9104-F5155C34315B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -8929,9 +11803,24 @@ func (s *DescribeRdsCommodityResponse) SetBody(v *DescribeRdsCommodityResponseBo
 
 type DescribeRdsPerformanceSummaryRequest struct {
 	// The ID of a DRDS instance.
-	DrdsInstanceId *string   `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	RdsInstanceId  []*string `json:"RdsInstanceId,omitempty" xml:"RdsInstanceId,omitempty" type:"Repeated"`
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds************
+	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-*****************
+	RdsInstanceId []*string `json:"RdsInstanceId,omitempty" xml:"RdsInstanceId,omitempty" type:"Repeated"`
 	// The ID of the region where the streaming domain resides.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -8962,8 +11851,16 @@ type DescribeRdsPerformanceSummaryResponseBody struct {
 	// A collection of objects.
 	RdsPerformanceInfos []*DescribeRdsPerformanceSummaryResponseBodyRdsPerformanceInfos `json:"RdsPerformanceInfos,omitempty" xml:"RdsPerformanceInfos,omitempty" type:"Repeated"`
 	// The request ID.
+	//
+	// example:
+	//
+	// B6876277-ECFD-4658-AC1E-A7FAD8******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the API request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -8992,16 +11889,40 @@ func (s *DescribeRdsPerformanceSummaryResponseBody) SetSuccess(v bool) *Describe
 
 type DescribeRdsPerformanceSummaryResponseBodyRdsPerformanceInfos struct {
 	// The number of active sessions of the RDS instance.
+	//
+	// example:
+	//
+	// 0
 	ActiveSessions *int32 `json:"ActiveSessions,omitempty" xml:"ActiveSessions,omitempty"`
 	// The CPU utilization of an RDS instance.
+	//
+	// example:
+	//
+	// 0.26
 	Cpu *float32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
 	// The IOPS of the RDS instance.
+	//
+	// example:
+	//
+	// 17.62
 	Iops *float32 `json:"Iops,omitempty" xml:"Iops,omitempty"`
 	// The ID of an RDS instance.
+	//
+	// example:
+	//
+	// rm-**************
 	RdsId *string `json:"RdsId,omitempty" xml:"RdsId,omitempty"`
 	// The disk usage of apsaradb for RDS. Unit: MB.
+	//
+	// example:
+	//
+	// 4145144777
 	SpaceUsage *int64 `json:"SpaceUsage,omitempty" xml:"SpaceUsage,omitempty"`
 	// The total number of current RDS sessions.
+	//
+	// example:
+	//
+	// 162
 	TotalSessions *int32 `json:"TotalSessions,omitempty" xml:"TotalSessions,omitempty"`
 }
 
@@ -9074,10 +11995,25 @@ func (s *DescribeRdsPerformanceSummaryResponse) SetBody(v *DescribeRdsPerformanc
 
 type DescribeRdsSuperAccountInstancesRequest struct {
 	// The type of the ApsaraDB RDS for MySQL instances. Default value: **RDS**.
+	//
+	// example:
+	//
+	// RDS
 	DbInstType *string `json:"DbInstType,omitempty" xml:"DbInstType,omitempty"`
 	// The ID of the PolarDB-X 1.0 instance.
-	DrdsInstanceId *string   `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
-	RdsInstance    []*string `json:"RdsInstance,omitempty" xml:"RdsInstance,omitempty" type:"Repeated"`
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds************
+	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// [\\"rm-*****************\\",\\"rm-*****************\\"]
+	RdsInstance []*string `json:"RdsInstance,omitempty" xml:"RdsInstance,omitempty" type:"Repeated"`
 }
 
 func (s DescribeRdsSuperAccountInstancesRequest) String() string {
@@ -9107,6 +12043,10 @@ type DescribeRdsSuperAccountInstancesResponseBody struct {
 	// The privileged accounts.
 	DbInstances *DescribeRdsSuperAccountInstancesResponseBodyDbInstances `json:"DbInstances,omitempty" xml:"DbInstances,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 5D64DE5944A1E541E0******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9176,10 +12116,26 @@ func (s *DescribeRdsSuperAccountInstancesResponse) SetBody(v *DescribeRdsSuperAc
 
 type DescribeRecycleBinStatusRequest struct {
 	// The name of the database that is created in the PolarDB-X 1.0 instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The ID of the PolarDB-X 1.0 instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds************
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -9208,13 +12164,26 @@ func (s *DescribeRecycleBinStatusRequest) SetRegionId(v string) *DescribeRecycle
 
 type DescribeRecycleBinStatusResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// ACB5258F-25AF-4D7C-8FAA-B6FE60******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The status of the table recycle bin. Valid values:
 	//
-	// *   disable: The table recycle bin is enabled.
-	// *   enable: The table recycle bin is disabled.
+	// 	- disable: The table recycle bin is enabled.
+	//
+	// 	- enable: The table recycle bin is disabled.
+	//
+	// example:
+	//
+	// disable
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The result of the request.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -9272,10 +12241,26 @@ func (s *DescribeRecycleBinStatusResponse) SetBody(v *DescribeRecycleBinStatusRe
 
 type DescribeRecycleBinTablesRequest struct {
 	// The name of the database.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds_test
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds***********
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -9306,8 +12291,16 @@ type DescribeRecycleBinTablesResponseBody struct {
 	// The data object returned.
 	Data []*DescribeRecycleBinTablesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 5D64DE5944A1E541E0CB908A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The result of the request.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -9336,10 +12329,22 @@ func (s *DescribeRecycleBinTablesResponseBody) SetSuccess(v bool) *DescribeRecyc
 
 type DescribeRecycleBinTablesResponseBodyData struct {
 	// The time when the table was created.
+	//
+	// example:
+	//
+	// 2019-09-16 14:42:06
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The original name of the table.
+	//
+	// example:
+	//
+	// BIN_T4AG3CY5WWXPKHITCHJY
 	OriginalTableName *string `json:"OriginalTableName,omitempty" xml:"OriginalTableName,omitempty"`
 	// The name of the table.
+	//
+	// example:
+	//
+	// test
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
@@ -9397,19 +12402,46 @@ func (s *DescribeRecycleBinTablesResponse) SetBody(v *DescribeRecycleBinTablesRe
 
 type DescribeRestoreOrderRequest struct {
 	// The name of the database involved in the backup.
+	//
+	// example:
+	//
+	// drds_flashback
 	BackupDbNames *string `json:"BackupDbNames,omitempty" xml:"BackupDbNames,omitempty"`
 	// The ID of the backup set.
+	//
+	// example:
+	//
+	// 1918df27-4563-11e9-8403-af4fbe******
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
 	// The level of the backup. Valid values:
 	//
-	// *   **DB**: The database Level
-	// *   **instance **: instance level
+	// 	- **DB**: The database Level
+	//
+	// 	- **instance **: instance level
+	//
+	// example:
+	//
+	// db
 	BackupLevel *string `json:"BackupLevel,omitempty" xml:"BackupLevel,omitempty"`
-	// The backup mode. Valid values: **logic** or **phy**.
+	// The backup mode. Valid values: **logic*	- or **phy**.
+	//
+	// example:
+	//
+	// phy
 	BackupMode *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
 	// The ID of the instance for which to modify the backup policy.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds************
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	// The preferred backup time.
+	//
+	// example:
+	//
+	// 2019-09-16 15:12:53
 	PreferredBackupTime *string `json:"PreferredBackupTime,omitempty" xml:"PreferredBackupTime,omitempty"`
 }
 
@@ -9453,10 +12485,18 @@ func (s *DescribeRestoreOrderRequest) SetPreferredBackupTime(v string) *Describe
 
 type DescribeRestoreOrderResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0AD2DE5D-B86B-40B5-9678-487D37******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The returned data object.
 	RestoreOrderDO *DescribeRestoreOrderResponseBodyRestoreOrderDO `json:"RestoreOrderDO,omitempty" xml:"RestoreOrderDO,omitempty" type:"Struct"`
 	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -9534,19 +12574,44 @@ func (s *DescribeRestoreOrderResponseBodyRestoreOrderDODrdsOrderDOList) SetDrdsO
 
 type DescribeRestoreOrderResponseBodyRestoreOrderDODrdsOrderDOListDrdsOrderDOList struct {
 	// The ID of the zone for which to query resources.
+	//
+	// example:
+	//
+	// cn-hangzhou-e
 	AzoneId *string `json:"AzoneId,omitempty" xml:"AzoneId,omitempty"`
 	// The instance type of the instance.
+	//
+	// example:
+	//
+	// 4C8G 	- 2
 	InstSpec *string `json:"InstSpec,omitempty" xml:"InstSpec,omitempty"`
 	// The network type. Valid values:
 	//
-	// *   **Classic **: Classic Network
-	// *   **vpc**: VPC
+	// 	- **Classic **: Classic Network
+	//
+	// 	- **vpc**: VPC
+	//
+	// example:
+	//
+	// vpc
 	Network *string `json:"Network,omitempty" xml:"Network,omitempty"`
 	// The region ID of the instance.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the vSwitch in the VPC.
+	//
+	// example:
+	//
+	// vsw-*******************
 	VSwtichId *string `json:"VSwtichId,omitempty" xml:"VSwtichId,omitempty"`
 	// The ID of the VPC network.
+	//
+	// example:
+	//
+	// vpc-*******************
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -9607,23 +12672,56 @@ func (s *DescribeRestoreOrderResponseBodyRestoreOrderDOPolarOrderDOList) SetPola
 
 type DescribeRestoreOrderResponseBodyRestoreOrderDOPolarOrderDOListPolarOrderDOList struct {
 	// The zone ID of the node.
+	//
+	// example:
+	//
+	// cn-hangzhou-g
 	AzoneId *string `json:"AzoneId,omitempty" xml:"AzoneId,omitempty"`
 	// The capacity of disk.
+	//
+	// example:
+	//
+	// 10240
 	DbInstanceStorage *string `json:"DbInstanceStorage,omitempty" xml:"DbInstanceStorage,omitempty"`
 	// The storage engine of PolarDB.
+	//
+	// example:
+	//
+	// POLARDB
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The type of the instance.
+	//
+	// example:
+	//
+	// polar.mysql.x4.large
 	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
 	// The network type. Valid values:
 	//
-	// *   **Classic**: Classic Network
-	// *   **vpc**: VPC
+	// 	- **Classic**: Classic Network
+	//
+	// 	- **vpc**: VPC
+	//
+	// example:
+	//
+	// VPC
 	Network *string `json:"Network,omitempty" xml:"Network,omitempty"`
 	// The number of streams that were returned.
+	//
+	// example:
+	//
+	// 1
 	Num *int64 `json:"Num,omitempty" xml:"Num,omitempty"`
 	// The region ID of the instance.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The version of the operating system.
+	//
+	// example:
+	//
+	// 5.6
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
@@ -9694,21 +12792,54 @@ func (s *DescribeRestoreOrderResponseBodyRestoreOrderDORdsOrderDOList) SetRdsOrd
 
 type DescribeRestoreOrderResponseBodyRestoreOrderDORdsOrderDOListRdsOrderDOList struct {
 	// The zone ID of the node.
+	//
+	// example:
+	//
+	// cn-hangzhou-g
 	AzoneId *string `json:"AzoneId,omitempty" xml:"AzoneId,omitempty"`
 	// The capacity of disk.
+	//
+	// example:
+	//
+	// 10240
 	DbInstanceStorage *string `json:"DbInstanceStorage,omitempty" xml:"DbInstanceStorage,omitempty"`
 	// The storage engine of the instance.
+	//
+	// example:
+	//
+	// MYSQL
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The instance type of the instance.
+	//
+	// example:
+	//
+	// rds.mysql.s2.large
 	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
 	// The network type. Valid values: - **Classic **: Classic Network
+	//
 	// - **vpc**: VPC
+	//
+	// example:
+	//
+	// VPC
 	Network *string `json:"Network,omitempty" xml:"Network,omitempty"`
 	// The number of streams that were returned.
+	//
+	// example:
+	//
+	// 1
 	Num *int64 `json:"Num,omitempty" xml:"Num,omitempty"`
 	// The region ID of the instance.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The version of the operating system.
+	//
+	// example:
+	//
+	// 5.6
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
@@ -9791,14 +12922,42 @@ func (s *DescribeRestoreOrderResponse) SetBody(v *DescribeRestoreOrderResponseBo
 
 type DescribeShardTaskInfoRequest struct {
 	// The name of the database.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// jjjjjj_ppppp
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The ID of the PolarDB-X 1.0 instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds*********
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The name of the table that you want to convert or shard.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a1
 	SourceTableName *string `json:"SourceTableName,omitempty" xml:"SourceTableName,omitempty"`
 	// The name of the table that is generated after you convert or shard the table.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a2
 	TargetTableName *string `json:"TargetTableName,omitempty" xml:"TargetTableName,omitempty"`
 }
 
@@ -9839,8 +12998,16 @@ type DescribeShardTaskInfoResponseBody struct {
 	// Indicates the data that is returned.
 	Data *DescribeShardTaskInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Indicates the unique ID of the request. If the request fails, provide this ID for technical support to troubleshoot the failure.
+	//
+	// example:
+	//
+	// 5D64DE5944A1E541E0CB908A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -9869,6 +13036,10 @@ func (s *DescribeShardTaskInfoResponseBody) SetSuccess(v bool) *DescribeShardTas
 
 type DescribeShardTaskInfoResponseBodyData struct {
 	// Indicates the number of remaining days before the tasks to shard tables or convert tables expire.
+	//
+	// example:
+	//
+	// 0
 	Expired *string `json:"Expired,omitempty" xml:"Expired,omitempty"`
 	// Indicates information about full migration tasks.
 	Full *DescribeShardTaskInfoResponseBodyDataFull `json:"Full,omitempty" xml:"Full,omitempty" type:"Struct"`
@@ -9879,16 +13050,32 @@ type DescribeShardTaskInfoResponseBodyData struct {
 	// Indicates information about incremental data synchronization.
 	Increment *DescribeShardTaskInfoResponseBodyDataIncrement `json:"Increment,omitempty" xml:"Increment,omitempty" type:"Struct"`
 	// Indicates the incremental data synchronization progress.
+	//
+	// example:
+	//
+	// 70
 	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
 	// Indicates check tasks.
 	Review *DescribeShardTaskInfoResponseBodyDataReview `json:"Review,omitempty" xml:"Review,omitempty" type:"Struct"`
 	// Indicates the name of the table that you convert or shard.
+	//
+	// example:
+	//
+	// a1
 	SourceTableName *string `json:"SourceTableName,omitempty" xml:"SourceTableName,omitempty"`
 	// Indicates the current stage of the task.
+	//
+	// example:
+	//
+	// 2
 	Stage *string `json:"Stage,omitempty" xml:"Stage,omitempty"`
 	// Indicates the state of the tasks to shard tables or convert tables.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// Indicates the name of the table after you convert or shard the table.
+	//
+	// example:
+	//
+	// a2
 	TargetTableName *string `json:"TargetTableName,omitempty" xml:"TargetTableName,omitempty"`
 }
 
@@ -9957,14 +13144,34 @@ func (s *DescribeShardTaskInfoResponseBodyData) SetTargetTableName(v string) *De
 
 type DescribeShardTaskInfoResponseBodyDataFull struct {
 	// Indicates the number of remaining days before the tasks expire.
+	//
+	// example:
+	//
+	// 0
 	Expired *int32 `json:"Expired,omitempty" xml:"Expired,omitempty"`
 	// Indicates the progress of the tasks.
+	//
+	// example:
+	//
+	// 100
 	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
 	// Indicates the start time when the tasks are performed.
+	//
+	// example:
+	//
+	// 2019-09-16 15:11:53
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// Indicates the number of tasks.
+	//
+	// example:
+	//
+	// 2
 	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 	// Indicates the number of transactions processed by the database per second.
+	//
+	// example:
+	//
+	// 0
 	Tps *int32 `json:"Tps,omitempty" xml:"Tps,omitempty"`
 }
 
@@ -10003,14 +13210,34 @@ func (s *DescribeShardTaskInfoResponseBodyDataFull) SetTps(v int32) *DescribeSha
 
 type DescribeShardTaskInfoResponseBodyDataFullCheck struct {
 	// Indicates the number of remaining days before the tasks expire.
+	//
+	// example:
+	//
+	// 0
 	Expired *int32 `json:"Expired,omitempty" xml:"Expired,omitempty"`
 	// Indicates the progress of the tasks.
+	//
+	// example:
+	//
+	// 0
 	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
 	// Indicates the start time when the tasks are performed.
+	//
+	// example:
+	//
+	// 2019-09-16 15:12:53
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// Indicates the number of tasks.
+	//
+	// example:
+	//
+	// 0
 	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 	// Indicates the number of transactions processed by the database per second.
+	//
+	// example:
+	//
+	// 0
 	Tps *int32 `json:"Tps,omitempty" xml:"Tps,omitempty"`
 }
 
@@ -10049,14 +13276,34 @@ func (s *DescribeShardTaskInfoResponseBodyDataFullCheck) SetTps(v int32) *Descri
 
 type DescribeShardTaskInfoResponseBodyDataFullRevise struct {
 	// Indicates the number of remaining days before the tasks expire.
+	//
+	// example:
+	//
+	// 0
 	Expired *int32 `json:"Expired,omitempty" xml:"Expired,omitempty"`
 	// Indicates the progress of the tasks.
+	//
+	// example:
+	//
+	// 0
 	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
 	// Indicates the start time when the tasks are performed.
+	//
+	// example:
+	//
+	// 2019-09-16 15:12:53
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// Indicates the number of tasks.
+	//
+	// example:
+	//
+	// 0
 	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 	// Indicates the number of transactions processed by the database per second.
+	//
+	// example:
+	//
+	// 0
 	Tps *int32 `json:"Tps,omitempty" xml:"Tps,omitempty"`
 }
 
@@ -10095,10 +13342,22 @@ func (s *DescribeShardTaskInfoResponseBodyDataFullRevise) SetTps(v int32) *Descr
 
 type DescribeShardTaskInfoResponseBodyDataIncrement struct {
 	// Indicates the latency of the incremental data synchronization.
+	//
+	// example:
+	//
+	// 1568617906
 	Delay *int32 `json:"Delay,omitempty" xml:"Delay,omitempty"`
 	// Indicates the start time when the incremental data synchronization is performed.
+	//
+	// example:
+	//
+	// 2019-09-16 15:12:53
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// Indicates the number of transactions processed by the database per second.
+	//
+	// example:
+	//
+	// 10
 	Tps *int32 `json:"Tps,omitempty" xml:"Tps,omitempty"`
 }
 
@@ -10127,14 +13386,34 @@ func (s *DescribeShardTaskInfoResponseBodyDataIncrement) SetTps(v int32) *Descri
 
 type DescribeShardTaskInfoResponseBodyDataReview struct {
 	// Indicates the number of remaining days before the tasks expire.
+	//
+	// example:
+	//
+	// 0
 	Expired *int32 `json:"Expired,omitempty" xml:"Expired,omitempty"`
 	// Indicates the progress of the tasks.
+	//
+	// example:
+	//
+	// 0
 	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
 	// Indicates the start time when the tasks are performed.
+	//
+	// example:
+	//
+	// 2019-09-16 15:12:53
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// Indicates the number of tasks.
+	//
+	// example:
+	//
+	// 5
 	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 	// Indicates the number of transactions processed by the database per second.
+	//
+	// example:
+	//
+	// 10
 	Tps *int32 `json:"Tps,omitempty" xml:"Tps,omitempty"`
 }
 
@@ -10202,6 +13481,12 @@ func (s *DescribeShardTaskInfoResponse) SetBody(v *DescribeShardTaskInfoResponse
 
 type DescribeSqlFlashbakTaskRequest struct {
 	// The ID of the PolarDB-X 1.0 instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds****c6vxxyzd
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -10220,10 +13505,18 @@ func (s *DescribeSqlFlashbakTaskRequest) SetDrdsInstanceId(v string) *DescribeSq
 
 type DescribeSqlFlashbakTaskResponseBody struct {
 	// Indicates the ID of the request.
+	//
+	// example:
+	//
+	// 5D64DE59-44A1-E541-E0CB-B7E5C4305162
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates the information about flashback tasks.
 	SqlFlashbackTasks *DescribeSqlFlashbakTaskResponseBodySqlFlashbackTasks `json:"SqlFlashbackTasks,omitempty" xml:"SqlFlashbackTasks,omitempty" type:"Struct"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -10269,46 +13562,120 @@ func (s *DescribeSqlFlashbakTaskResponseBodySqlFlashbackTasks) SetSqlFlashbackTa
 
 type DescribeSqlFlashbakTaskResponseBodySqlFlashbackTasksSqlFlashbackTask struct {
 	// Indicates the name of the database on which a flashback task is performed.
+	//
+	// example:
+	//
+	// drds_flashback
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// Indicates the download URL.
+	//
+	// example:
+	//
+	// http://...
 	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
 	// Indicates the time when the download URL expires.
+	//
+	// example:
+	//
+	// 1569216270000
 	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// Indicates the point in time when the instance was created.
+	//
+	// example:
+	//
+	// 1568611408000
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// Indicates the point in time when the flashback task is performed.
+	//
+	// example:
+	//
+	// 1568611469000
 	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// Indicates the ID of the primary key that corresponds to a table used in the flashback task.
+	//
+	// example:
+	//
+	// 238
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// Indicates the ID of the instance.
+	//
+	// example:
+	//
+	// drdshbga76p6****
 	InstId *string `json:"InstId,omitempty" xml:"InstId,omitempty"`
 	// Indicates the progress of the reverse call.
+	//
+	// example:
+	//
+	// 10
 	RecallProgress *int32 `json:"RecallProgress,omitempty" xml:"RecallProgress,omitempty"`
 	// Indicates the type of the flashback task. Valid values:
 	//
-	// *   **1**: image restoration
-	// *   **2**: reverse restoration
+	// 	- **1**: image restoration
+	//
+	// 	- **2**: reverse restoration
+	//
+	// example:
+	//
+	// 1
 	RecallRestoreType *int32 `json:"RecallRestoreType,omitempty" xml:"RecallRestoreType,omitempty"`
 	// Indicates the status of the data recall task.
+	//
+	// example:
+	//
+	// 1
 	RecallStatus *int32 `json:"RecallStatus,omitempty" xml:"RecallStatus,omitempty"`
 	// Indicates the type of the reverse call. Valid values:
 	//
-	// *   **0**: exact search
-	// *   **1**: fuzzy search
+	// 	- **0**: exact search
+	//
+	// 	- **1**: fuzzy search
+	//
+	// example:
+	//
+	// 1
 	RecallType *int32 `json:"RecallType,omitempty" xml:"RecallType,omitempty"`
 	// Indicates the start time of the reverse call.
+	//
+	// example:
+	//
+	// 1568509597000
 	SearchEndTime *int64 `json:"SearchEndTime,omitempty" xml:"SearchEndTime,omitempty"`
 	// Indicates the end time of the reverse call.
+	//
+	// example:
+	//
+	// 1568609597000
 	SearchStartTime *int64 `json:"SearchStartTime,omitempty" xml:"SearchStartTime,omitempty"`
 	// Indicates the number of data rows that are flashed back.
+	//
+	// example:
+	//
+	// 0
 	SqlCounter *int64 `json:"SqlCounter,omitempty" xml:"SqlCounter,omitempty"`
 	// Indicates the primary key specified in the SQL statements.
+	//
+	// example:
+	//
+	// id
 	SqlPk *string `json:"SqlPk,omitempty" xml:"SqlPk,omitempty"`
 	// Indicates the types of the SQL statements.
+	//
+	// example:
+	//
+	// Insert,Update,Delete
 	SqlType *string `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
 	// Indicates the name of the table that contains the data that are flashed back.
+	//
+	// example:
+	//
+	// drds_params
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 	// Indicates the ID of the trace of the SQL query.
+	//
+	// example:
+	//
+	// trace
 	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
@@ -10441,12 +13808,34 @@ func (s *DescribeSqlFlashbakTaskResponse) SetBody(v *DescribeSqlFlashbakTaskResp
 
 type DescribeTableRequest struct {
 	// The name of the database.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds_flashback
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The ID of the PolarDB-X 1.0 instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds*********
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	// The ID of the region where the PolarDB-X 1.0 instance is created.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The name of the table.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// employee_split
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
@@ -10482,8 +13871,16 @@ type DescribeTableResponseBody struct {
 	// Indicates the returned data.
 	Data *DescribeTableResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Indicates the unique ID of the request. If the request fails, provide this ID for technical support to troubleshoot the failure.
+	//
+	// example:
+	//
+	// B5644ABB-559A-4A1C-83F2-9E7209******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -10530,16 +13927,40 @@ func (s *DescribeTableResponseBodyData) SetList(v []*DescribeTableResponseBodyDa
 
 type DescribeTableResponseBodyDataList struct {
 	// Indicates the name of a column.
+	//
+	// example:
+	//
+	// Id
 	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
 	// Indicates the type of the column.
+	//
+	// example:
+	//
+	// bigint(20)
 	ColumnType *string `json:"ColumnType,omitempty" xml:"ColumnType,omitempty"`
 	// Extra
+	//
+	// example:
+	//
+	// auto_increment
 	Extra *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
 	// Indicates the primary key of the table.
+	//
+	// example:
+	//
+	// PRI
 	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
 	// Indicates whether the column can be empty.
+	//
+	// example:
+	//
+	// NO
 	IsAllowNull *string `json:"IsAllowNull,omitempty" xml:"IsAllowNull,omitempty"`
 	// Indicates whether the column is the primary key column of the table.
+	//
+	// example:
+	//
+	// YES
 	IsPk *string `json:"IsPk,omitempty" xml:"IsPk,omitempty"`
 }
 
@@ -10612,18 +14033,52 @@ func (s *DescribeTableResponse) SetBody(v *DescribeTableResponseBody) *DescribeT
 
 type DescribeTableListByTypeRequest struct {
 	// The number of the page to return.
+	//
+	// example:
+	//
+	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The name of the database.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds_flash****
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The ID of the PolarDB-X 1.0 instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drdshbga76p6****
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The field that you specify for your query.
+	//
+	// example:
+	//
+	// drdshbga76p61861
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The type of tables. Valid values:
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SINGLE
 	TableType *string `json:"TableType,omitempty" xml:"TableType,omitempty"`
 }
 
@@ -10674,14 +14129,34 @@ type DescribeTableListByTypeResponseBody struct {
 	// Indicates the information about tables.
 	List []*DescribeTableListByTypeResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
 	// Indicates the page number of the returned page.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// Indicates the number of entries returned per page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// Indicates the unique ID of the request. If the request fails, provide this ID for technical support to troubleshoot the failure.
+	//
+	// example:
+	//
+	// B360F47B-59E3-4D1C-BA03-6BFB1C993F88
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// Indicates the total number of returned tables.
+	//
+	// example:
+	//
+	// 1
 	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -10725,8 +14200,16 @@ func (s *DescribeTableListByTypeResponseBody) SetTotal(v int32) *DescribeTableLi
 
 type DescribeTableListByTypeResponseBodyList struct {
 	// Indicates the property of a table.
+	//
+	// example:
+	//
+	// single
 	Property *string `json:"Property,omitempty" xml:"Property,omitempty"`
 	// Indicates the name of the table.
+	//
+	// example:
+	//
+	// employee_split
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
@@ -10779,16 +14262,46 @@ func (s *DescribeTableListByTypeResponse) SetBody(v *DescribeTableListByTypeResp
 
 type DescribeTablesRequest struct {
 	// The page number of the returned page.
+	//
+	// example:
+	//
+	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The name of the database whose tables you want to query.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The ID of the PolarDB-X 1.0 instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds************
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	// The number of tables returned on each page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The query condition. The value of this parameter is the ID of the PolarDB-X 1.0 instance.
+	//
+	// example:
+	//
+	// drds************
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
 	// The ID of the region.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -10834,14 +14347,34 @@ type DescribeTablesResponseBody struct {
 	// The list of returned tables.
 	List []*DescribeTablesResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
 	// The number of returned pages.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of tables returned per page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 83AC3D7E-461C-4D87-8ACD-6CC295******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The total number of returned tables.
+	//
+	// example:
+	//
+	// 1
 	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -10885,26 +14418,60 @@ func (s *DescribeTablesResponseBody) SetTotal(v int32) *DescribeTablesResponseBo
 
 type DescribeTablesResponseBodyList struct {
 	// Indicates whether full table scanning is allowed.
+	//
+	// example:
+	//
+	// false
 	AllowFullTableScan *bool `json:"AllowFullTableScan,omitempty" xml:"AllowFullTableScan,omitempty"`
 	// Indicates whether the table is a replicated table.
+	//
+	// example:
+	//
+	// false
 	Broadcast *bool `json:"Broadcast,omitempty" xml:"Broadcast,omitempty"`
 	// The type of the PolarDB-X 1.0 instance. Valid values:
 	//
-	// *   0: The instance is a dedicated instance.
-	// *   1: The instance is a shard instance.
+	// 	- 0: The instance is a dedicated instance.
+	//
+	// 	- 1: The instance is a shard instance.
+	//
+	// example:
+	//
+	// 0
 	DbInstType *int32 `json:"DbInstType,omitempty" xml:"DbInstType,omitempty"`
 	// Indicates whether the table is locked.
+	//
+	// example:
+	//
+	// false
 	IsLocked *bool `json:"IsLocked,omitempty" xml:"IsLocked,omitempty"`
 	// Indicates whether the table is sharded.
+	//
+	// example:
+	//
+	// false
 	IsShard *bool `json:"IsShard,omitempty" xml:"IsShard,omitempty"`
 	// The shard key of the table.
+	//
+	// example:
+	//
+	// null
 	ShardKey *string `json:"ShardKey,omitempty" xml:"ShardKey,omitempty"`
 	// Indicates whether sharding tasks are performed on the table. Valid values:
 	//
-	// *   0: No sharding task is performed on the table.
-	// *   1: Sharding tasks are performed on the table.
+	// 	- 0: No sharding task is performed on the table.
+	//
+	// 	- 1: Sharding tasks are performed on the table.
+	//
+	// example:
+	//
+	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The name of the table.
+	//
+	// example:
+	//
+	// test
 	Table *string `json:"Table,omitempty" xml:"Table,omitempty"`
 }
 
@@ -10987,8 +14554,20 @@ func (s *DescribeTablesResponse) SetBody(v *DescribeTablesResponseBody) *Describ
 
 type DisableSqlAuditRequest struct {
 	// The name of the database for which you want to disable the SQL audit feature.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds_test
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The ID of the PolarDB-X 1.0 instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds***********
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -11012,10 +14591,22 @@ func (s *DisableSqlAuditRequest) SetDrdsInstanceId(v string) *DisableSqlAuditReq
 
 type DisableSqlAuditResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// E273749A-9A33-44CF-ABE7-0CB19C******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The return result.
+	//
+	// example:
+	//
+	// true
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -11073,8 +14664,18 @@ func (s *DisableSqlAuditResponse) SetBody(v *DisableSqlAuditResponseBody) *Disab
 
 type EnableInstanceIpv6AddressRequest struct {
 	// The ID of the PolarDB-X 1.0 instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds************
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	// The ID of the region in which the instance resides.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -11098,8 +14699,16 @@ func (s *EnableInstanceIpv6AddressRequest) SetRegionId(v string) *EnableInstance
 
 type EnableInstanceIpv6AddressResponseBody struct {
 	// The result of the request.
+	//
+	// example:
+	//
+	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 7E9F7F16-05B5-42DA-94D6-E36402******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11152,16 +14761,40 @@ func (s *EnableInstanceIpv6AddressResponse) SetBody(v *EnableInstanceIpv6Address
 
 type EnableSqlAuditRequest struct {
 	// The name of the database for which you want to enable the SQL audit feature.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The ID of the PolarDB-X 1.0 instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds***********
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	// Specifies whether to backtrack historical SQL statements for auditing.
+	//
+	// example:
+	//
+	// true
 	IsRecall *bool `json:"IsRecall,omitempty" xml:"IsRecall,omitempty"`
 	// The timestamp that indicates when the backtracking ends. Unit: milliseconds.
 	//
 	// > The end time of the backtracking must be later than the start time of the backtracking.
+	//
+	// example:
+	//
+	// 1568875132000
 	RecallEndTimestamp *string `json:"RecallEndTimestamp,omitempty" xml:"RecallEndTimestamp,omitempty"`
 	// The timestamp that indicates when the backtracking starts. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1568875132000
 	RecallStartTimestamp *string `json:"RecallStartTimestamp,omitempty" xml:"RecallStartTimestamp,omitempty"`
 }
 
@@ -11200,10 +14833,22 @@ func (s *EnableSqlAuditRequest) SetRecallStartTimestamp(v string) *EnableSqlAudi
 
 type EnableSqlAuditResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 463A5F0F-12AD-4544-A902-B2B983******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indices whether the SQL audit feature is enabled.
+	//
+	// example:
+	//
+	// true
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -11261,8 +14906,20 @@ func (s *EnableSqlAuditResponse) SetBody(v *EnableSqlAuditResponseBody) *EnableS
 
 type EnableSqlFlashbackMatchSwitchRequest struct {
 	// The name of the database you want to back up.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The ID of the ApsaraDB RDS for PostgreSQL instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds***********
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -11286,10 +14943,22 @@ func (s *EnableSqlFlashbackMatchSwitchRequest) SetDrdsInstanceId(v string) *Enab
 
 type EnableSqlFlashbackMatchSwitchResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 463A5F0F-12AD-4544-A902-B2B983******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether SqlFlashbackMatchSwitch is enabled or not.
+	//
+	// example:
+	//
+	// true
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 	// Indicates whether the request was sent successfully or not.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -11347,12 +15016,34 @@ func (s *EnableSqlFlashbackMatchSwitchResponse) SetBody(v *EnableSqlFlashbackMat
 
 type FlashbackRecycleBinTableRequest struct {
 	// The name of the database to which the table belongs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The ID of the instance to which the table belongs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds************
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The name of the logical table to be restored.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
@@ -11386,10 +15077,22 @@ func (s *FlashbackRecycleBinTableRequest) SetTableName(v string) *FlashbackRecyc
 
 type FlashbackRecycleBinTableResponseBody struct {
 	// Indicates whether the deleted logical table is restored.
+	//
+	// example:
+	//
+	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 463A5F0F-12AD-4544-A902-B2B983******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The result of the request.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -11447,8 +15150,20 @@ func (s *FlashbackRecycleBinTableResponse) SetBody(v *FlashbackRecycleBinTableRe
 
 type GetDrdsDbRdsRelationInfoRequest struct {
 	// The name of the DRDS database.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testDb
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The ID of the DRDS instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drdshbga948vbpd2
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -11474,8 +15189,16 @@ type GetDrdsDbRdsRelationInfoResponseBody struct {
 	// The structure information about the storage instances of the DRDS database. Each entry corresponds to a primary storage instance.
 	Data []*GetDrdsDbRdsRelationInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 82FD0D9B-9A65-40D3-B1D9-8851B1D4AF75
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -11504,12 +15227,24 @@ func (s *GetDrdsDbRdsRelationInfoResponseBody) SetSuccess(v bool) *GetDrdsDbRdsR
 
 type GetDrdsDbRdsRelationInfoResponseBodyData struct {
 	// The ID of the storage instance.
+	//
+	// example:
+	//
+	// rm-bp16ad920ndxxxx02
 	RdsInstanceId *string `json:"RdsInstanceId,omitempty" xml:"RdsInstanceId,omitempty"`
 	// The IDs of the read-only storage instances.
 	ReadOnlyInstanceInfo []*string `json:"ReadOnlyInstanceInfo,omitempty" xml:"ReadOnlyInstanceInfo,omitempty" type:"Repeated"`
 	// The ID of the storage instance that is in use. If the specified instance in the request is a primary DRDS instance, the value of this parameter is the ID of the primary storage instance. If the specified instance in the request is a read-only DRDS instance, the value of this parameter is the ID of the secondary storage instance.
+	//
+	// example:
+	//
+	// rm-bp1l8xi1dd9xxxxbj
 	UsedInstanceId *string `json:"UsedInstanceId,omitempty" xml:"UsedInstanceId,omitempty"`
 	// The type of the storage instance that is in use.
+	//
+	// example:
+	//
+	// RDS
 	UsedInstanceType *string `json:"UsedInstanceType,omitempty" xml:"UsedInstanceType,omitempty"`
 }
 
@@ -11572,11 +15307,27 @@ func (s *GetDrdsDbRdsRelationInfoResponse) SetBody(v *GetDrdsDbRdsRelationInfoRe
 
 type ListTagResourcesRequest struct {
 	// Specify the token that is used to display the returned tags on multiple pages.
+	//
+	// example:
+	//
+	// 6ab4640a-479b-41d0-ad3c-c6e888bc3d8f
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the region in which the resource is located.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId   *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The resource type. Set the value to INSTANCE.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// INSTANCE
 	ResourceType *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	Tag          []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
@@ -11616,8 +15367,16 @@ func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListT
 
 type ListTagResourcesRequestTag struct {
 	// The key of the tag that you want to query.
+	//
+	// example:
+	//
+	// color
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the tag that you want to query.
+	//
+	// example:
+	//
+	// red
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -11641,10 +15400,22 @@ func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequest
 
 type ListTagResourcesResponseBody struct {
 	// The token that is used to display the returned tags on multiple pages.
+	//
+	// example:
+	//
+	// 6ab4640a-479b-41d0-ad3c-c6e888bc3d8f
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 58CE1CB0-F0F4-4BA3-B876-135DC47DF52F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The list of returned tags.
 	TagResources *ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Struct"`
@@ -11697,12 +15468,28 @@ func (s *ListTagResourcesResponseBodyTagResources) SetTagResource(v []*ListTagRe
 
 type ListTagResourcesResponseBodyTagResourcesTagResource struct {
 	// The ID of the resource.
+	//
+	// example:
+	//
+	// drdshzsd11****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The resource type. The value of this parameter is fixed to INSTANCE.
+	//
+	// example:
+	//
+	// INSTANCE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The key of the tag.
+	//
+	// example:
+	//
+	// test
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	// The value of the tag.
+	//
+	// example:
+	//
+	// 1
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -11766,41 +15553,81 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 type ManagePrivateRdsRequest struct {
 	// The ID of the custom ApsaraDB RDS instance at the storage layer.
 	//
-	// > You can call the [DescribeDrdsRdsInstances](~~215526~~) operation to query the details of all ApsaraDB RDS instances, including the ID of the instance.
+	// > You can call the [DescribeDrdsRdsInstances](https://help.aliyun.com/document_detail/215526.html) operation to query the details of all ApsaraDB RDS instances, including the ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-***************
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The ID of the PolarDB-X 1.0 instance.
 	//
-	// > You can call the [DescribeDrdsInstances](~~139284~~) operation to query the details of all PolarDB-X 1.0 instances within an Alibaba Cloud account, including the IDs of the instances.
+	// > You can call the [DescribeDrdsInstances](https://help.aliyun.com/document_detail/139284.html) operation to query the details of all PolarDB-X 1.0 instances within an Alibaba Cloud account, including the IDs of the instances.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds*************
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	// The JSON string that consists of request parameters and the values of the request parameters of an operation that you need to call for the custom ApsaraDB RDS instance. The value of a request parameter is of the STRING type. Example: `{NodeId:"1797****"}`.
 	//
 	// For more information about the request parameters and valid values of the request parameters of each operation, see the request parameter sections in the following topics:
 	//
-	// *   [DescribeDBInstanceAttribute](~~26231~~)
-	// *   [DescribeAvailableClasses](~~196546~~)
-	// *   [DescribeSQLCollectorPolicy](~~26292~~)
-	// *   [ModifySQLCollectorPolicy](~~26293~~)
-	// *   [DescribeParameters](~~26285~~)
-	// *   [ModifyParameter](~~26286~~)
-	// *   [DescribeDBInstanceHAConfig](~~26244~~)
-	// *   [SwitchDBInstanceHA](~~26251~~)
+	// 	- [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/26231.html)
+	//
+	// 	- [DescribeAvailableClasses](https://help.aliyun.com/document_detail/196546.html)
+	//
+	// 	- [DescribeSQLCollectorPolicy](https://help.aliyun.com/document_detail/26292.html)
+	//
+	// 	- [ModifySQLCollectorPolicy](https://help.aliyun.com/document_detail/26293.html)
+	//
+	// 	- [DescribeParameters](https://help.aliyun.com/document_detail/26285.html)
+	//
+	// 	- [ModifyParameter](https://help.aliyun.com/document_detail/26286.html)
+	//
+	// 	- [DescribeDBInstanceHAConfig](https://help.aliyun.com/document_detail/26244.html)
+	//
+	// 	- [SwitchDBInstanceHA](https://help.aliyun.com/document_detail/26251.html)
 	//
 	// > Among the required request parameters of the preceding operations, you do not need to specify the `Action` and `DBInstanceId` parameters. You must specify all the other required request parameters.
+	//
+	// example:
+	//
+	// {NodeId:"1797****"}
 	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
 	// The operation that you want to perform on the custom ApsaraDB RDS instance. Valid values:
 	//
-	// *   **DescribeDBInstanceAttribute**: queries the details of the custom ApsaraDB RDS instance.
-	// *   **DescribeAvailableClasses**: queries the specifications that are supported for a custom ApsaraDB RDS instance. The specifications include the instance type and the storage capacity.
-	// *   **DescribeSQLCollectorPolicy**: queries whether the SQL Explorer (SQL Audit) feature is enabled for custom ApsaraDB RDS instance.
-	// *   **ModifySQLCollectorPolicy**: enables or disables the SQL Explorer (SQL Audit) feature for the custom ApsaraDB RDS instance.
-	// *   **DescribeParameters**: queries the parameter settings of the custom ApsaraDB RDS instance.
-	// *   **ModifyParameter**: modifies the parameters of the custom ApsaraDB RDS instance.
-	// *   **DescribeDBInstanceHAConfig**: queries the high availability mode and data replication mode of the custom ApsaraDB RDS instance.
-	// *   **SwitchDBInstanceHA**: switches workloads between the primary and secondary custom ApsaraDB RDS instances.
+	// 	- **DescribeDBInstanceAttribute**: queries the details of the custom ApsaraDB RDS instance.
+	//
+	// 	- **DescribeAvailableClasses**: queries the specifications that are supported for a custom ApsaraDB RDS instance. The specifications include the instance type and the storage capacity.
+	//
+	// 	- **DescribeSQLCollectorPolicy**: queries whether the SQL Explorer (SQL Audit) feature is enabled for custom ApsaraDB RDS instance.
+	//
+	// 	- **ModifySQLCollectorPolicy**: enables or disables the SQL Explorer (SQL Audit) feature for the custom ApsaraDB RDS instance.
+	//
+	// 	- **DescribeParameters**: queries the parameter settings of the custom ApsaraDB RDS instance.
+	//
+	// 	- **ModifyParameter**: modifies the parameters of the custom ApsaraDB RDS instance.
+	//
+	// 	- **DescribeDBInstanceHAConfig**: queries the high availability mode and data replication mode of the custom ApsaraDB RDS instance.
+	//
+	// 	- **SwitchDBInstanceHA**: switches workloads between the primary and secondary custom ApsaraDB RDS instances.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SwitchDBInstanceHA
 	RdsAction *string `json:"RdsAction,omitempty" xml:"RdsAction,omitempty"`
 	// The ID of the region in which the PolarDB-X 1.0 instance resides.
 	//
-	// > You can call the [DescribeDrdsInstances](~~139284~~) operation to query the details of all PolarDB-X 1.0 instances within an Alibaba Cloud account, including the IDs of regions in which the instances reside.
+	// > You can call the [DescribeDrdsInstances](https://help.aliyun.com/document_detail/139284.html) operation to query the details of all PolarDB-X 1.0 instances within an Alibaba Cloud account, including the IDs of regions in which the instances reside.
+	//
+	// example:
+	//
+	// cn-hanzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -11839,10 +15666,22 @@ func (s *ManagePrivateRdsRequest) SetRegionId(v string) *ManagePrivateRdsRequest
 
 type ManagePrivateRdsResponseBody struct {
 	// The parameter result set returned for the operation that is called for the custom ApsaraDB RDS instance.
+	//
+	// example:
+	//
+	// {"requestId":"E63C810A-4A13-47B6-BA67-C0E23A******"}
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0237BCD2-2C7A-4F86-A766-657AF6******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -11900,10 +15739,28 @@ func (s *ManagePrivateRdsResponse) SetBody(v *ManagePrivateRdsResponseBody) *Man
 
 type ModifyAccountDescriptionRequest struct {
 	// The name of the member account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The description of the account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the ApsaraDB RDS for PostgreSQL instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds************
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -11932,8 +15789,16 @@ func (s *ModifyAccountDescriptionRequest) SetDrdsInstanceId(v string) *ModifyAcc
 
 type ModifyAccountDescriptionResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 2F93CCD5-806F-4470-BBC7-20476A******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was sent successfully or not.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -11986,11 +15851,27 @@ func (s *ModifyAccountDescriptionResponse) SetBody(v *ModifyAccountDescriptionRe
 
 type ModifyAccountPrivilegeRequest struct {
 	// The username of the account that you want to modify.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// account_sec
 	AccountName *string                                     `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	DbPrivilege []*ModifyAccountPrivilegeRequestDbPrivilege `json:"DbPrivilege,omitempty" xml:"DbPrivilege,omitempty" type:"Repeated"`
 	// The ID of the PolarDB-X 1.0 instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drdshbgaen89****
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	// The ID of the region in which the PolarDB-X 1.0 instance is located.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -12024,8 +15905,16 @@ func (s *ModifyAccountPrivilegeRequest) SetRegionId(v string) *ModifyAccountPriv
 
 type ModifyAccountPrivilegeRequestDbPrivilege struct {
 	// The name of the database that you want to manage by using the account to modify.
+	//
+	// example:
+	//
+	// test123
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The permissions that you want to grant to the account.
+	//
+	// example:
+	//
+	// ReadWrite
 	Privilege *string `json:"Privilege,omitempty" xml:"Privilege,omitempty"`
 }
 
@@ -12049,8 +15938,16 @@ func (s *ModifyAccountPrivilegeRequestDbPrivilege) SetPrivilege(v string) *Modif
 
 type ModifyAccountPrivilegeResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 73559800-3c8c-11ec-bd40-99cfcff3fe1e
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -12103,8 +16000,20 @@ func (s *ModifyAccountPrivilegeResponse) SetBody(v *ModifyAccountPrivilegeRespon
 
 type ModifyDrdsInstanceDescriptionRequest struct {
 	// The description of the DRDS instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the DRDS instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds************
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -12128,8 +16037,16 @@ func (s *ModifyDrdsInstanceDescriptionRequest) SetDrdsInstanceId(v string) *Modi
 
 type ModifyDrdsInstanceDescriptionResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// C44CA24C-C7C4-4C0F-8AC9-1343F2******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -12182,19 +16099,46 @@ func (s *ModifyDrdsInstanceDescriptionResponse) SetBody(v *ModifyDrdsInstanceDes
 
 type ModifyDrdsIpWhiteListRequest struct {
 	// The name of the DRDS database.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The ID of the Message Queue for Apache Kafka instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds****c6vxxyzd
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	// The attribute of the IP address whitelist group.
 	GroupAttribute *string `json:"GroupAttribute,omitempty" xml:"GroupAttribute,omitempty"`
 	// The name of the IP address whitelist group.
+	//
+	// example:
+	//
+	// drds_******
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The modified whitelist. Separate multiple IP addresses with commas (,).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 127.***.***.***,10.***.***.***
 	IpWhiteList *string `json:"IpWhiteList,omitempty" xml:"IpWhiteList,omitempty"`
 	// Specifies the mode. Valid values:
 	//
-	// *   `True`: append modifications
-	// *   `False`: overwrite modification
+	// 	- `True`: append modifications
+	//
+	// 	- `False`: overwrite modification
+	//
+	// example:
+	//
+	// false
 	Mode *bool `json:"Mode,omitempty" xml:"Mode,omitempty"`
 }
 
@@ -12238,8 +16182,16 @@ func (s *ModifyDrdsIpWhiteListRequest) SetMode(v bool) *ModifyDrdsIpWhiteListReq
 
 type ModifyDrdsIpWhiteListResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 933A1EC2-8260-4D4F-A56A-73BA27******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -12292,14 +16244,44 @@ func (s *ModifyDrdsIpWhiteListResponse) SetBody(v *ModifyDrdsIpWhiteListResponse
 
 type ModifyPolarDbReadWeightRequest struct {
 	// Polar cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-****************
 	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
 	// The name of the database.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The node list in the destination apsaradb for PolarDB cluster. The nodes in each cluster are separated with commas (,) and colons (:).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pi-****************,pi-****************:pi-****************
 	DbNodeIds *string `json:"DbNodeIds,omitempty" xml:"DbNodeIds,omitempty"`
 	// The ID of a DRDS instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds************
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	// The weight of the PolarDB cluster. Separate multiple weights with commas (,).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 14,86
 	Weights *string `json:"Weights,omitempty" xml:"Weights,omitempty"`
 }
 
@@ -12338,8 +16320,16 @@ func (s *ModifyPolarDbReadWeightRequest) SetWeights(v string) *ModifyPolarDbRead
 
 type ModifyPolarDbReadWeightResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// B12FC174-D5CE-4A6E-83C1-0F8F86******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the database creation failure records were removed from the PolarDB-X instance.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -12392,12 +16382,36 @@ func (s *ModifyPolarDbReadWeightResponse) SetBody(v *ModifyPolarDbReadWeightResp
 
 type ModifyRdsReadWeightRequest struct {
 	// The name of the database.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The ID of the PolarDB-X 1.0 instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds************
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	// The names of the ApsaraDB RDS for MySQL instances. Separate the names with commas (,).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-****************,rm-****************
 	InstanceNames *string `json:"InstanceNames,omitempty" xml:"InstanceNames,omitempty"`
 	// The weights of the ApsaraDB RDS for MySQL instances. Separate the weights with commas (,).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 14,86
 	Weights *string `json:"Weights,omitempty" xml:"Weights,omitempty"`
 }
 
@@ -12431,8 +16445,16 @@ func (s *ModifyRdsReadWeightRequest) SetWeights(v string) *ModifyRdsReadWeightRe
 
 type ModifyRdsReadWeightResponseBody struct {
 	// Indicates the ID of the request.
+	//
+	// example:
+	//
+	// B12FC174-D5CE-4A6E-83C1-0F8F86******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -12485,18 +16507,38 @@ func (s *ModifyRdsReadWeightResponse) SetBody(v *ModifyRdsReadWeightResponseBody
 
 type PutStartBackupRequest struct {
 	// If you need to back up data at the database level, you must specify the list of databases to be backed up, and separate multiple databases with commas (,).
+	//
+	// example:
+	//
+	// db_1, db_2
 	BackupDbNames *string `json:"BackupDbNames,omitempty" xml:"BackupDbNames,omitempty"`
 	// The backup level. Valid values:
 	//
-	// *   instance: instance
-	// *   db: The database type.
-	BackupLevel *string `json:"BackupLevel,omitempty" xml:"BackupLevel,omitempty"`
-	// The backup mode. For more information, see [backup mode](~~108631~~) and the valid values are as follows:
+	// 	- instance: instance
 	//
-	// *   phy: fast backup
-	// *   logic: Consistent backup
+	// 	- db: The database type.
+	//
+	// example:
+	//
+	// db
+	BackupLevel *string `json:"BackupLevel,omitempty" xml:"BackupLevel,omitempty"`
+	// The backup mode. For more information, see [backup mode](https://help.aliyun.com/document_detail/108631.html) and the valid values are as follows:
+	//
+	// 	- phy: fast backup
+	//
+	// 	- logic: Consistent backup
+	//
+	// example:
+	//
+	// phy
 	BackupMode *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
 	// The ID of the DRDS instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds****c6vxxyzd
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -12530,10 +16572,22 @@ func (s *PutStartBackupRequest) SetDrdsInstanceId(v string) *PutStartBackupReque
 
 type PutStartBackupResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 5D64DE5944A1E541E0******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the backup task was submitted.
+	//
+	// example:
+	//
+	// success
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
 	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -12591,8 +16645,20 @@ func (s *PutStartBackupResponse) SetBody(v *PutStartBackupResponseBody) *PutStar
 
 type RefreshDrdsAtomUrlRequest struct {
 	// The name of the DRDS database.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The ID of the DRDS instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds************
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -12616,10 +16682,22 @@ func (s *RefreshDrdsAtomUrlRequest) SetDrdsInstanceId(v string) *RefreshDrdsAtom
 
 type RefreshDrdsAtomUrlResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// B12FC174-D5CE-4A6E-83C1-0F8F86******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the connection after refresh was successful.
+	//
+	// example:
+	//
+	// true
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -12677,8 +16755,18 @@ func (s *RefreshDrdsAtomUrlResponse) SetBody(v *RefreshDrdsAtomUrlResponseBody) 
 
 type ReleaseInstanceInternetAddressRequest struct {
 	// The ID of the DRDS instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds************
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	// The region where the instance is located.
+	//
+	// example:
+	//
+	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -12702,8 +16790,16 @@ func (s *ReleaseInstanceInternetAddressRequest) SetRegionId(v string) *ReleaseIn
 
 type ReleaseInstanceInternetAddressResponseBody struct {
 	// The result returned by the current API.
+	//
+	// example:
+	//
+	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// FD17CD3C-3355-49E8-9231-FE2DB0******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12755,9 +16851,21 @@ func (s *ReleaseInstanceInternetAddressResponse) SetBody(v *ReleaseInstanceInter
 }
 
 type RemoveBackupsSetRequest struct {
-	// The ID of the backup set. You can call the [DescribeBackupSets](~~139331~~) interface to query the ID of a backup set.
+	// The ID of the backup set. You can call the [DescribeBackupSets](https://help.aliyun.com/document_detail/139331.html) interface to query the ID of a backup set.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ba30d5c4-a6dc-11ea-bd40-************
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
 	// The ID of the DRDS instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds************
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -12781,10 +16889,22 @@ func (s *RemoveBackupsSetRequest) SetDrdsInstanceId(v string) *RemoveBackupsSetR
 
 type RemoveBackupsSetResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 70FED5BE-4DDC-4556-AD35-5A6D27******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether SQL audit was disabled for the DRDS database.
+	//
+	// example:
+	//
+	// success
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
 	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -12842,8 +16962,20 @@ func (s *RemoveBackupsSetResponse) SetBody(v *RemoveBackupsSetResponseBody) *Rem
 
 type RemoveDrdsDbRequest struct {
 	// The name of the database you want to back up.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The ID of the DRDS instance to which the destination database belongs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds************
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -12867,8 +16999,16 @@ func (s *RemoveDrdsDbRequest) SetDrdsInstanceId(v string) *RemoveDrdsDbRequest {
 
 type RemoveDrdsDbResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// B12FC174-D5CE-4A6E-83C1-0F8F86******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -12921,8 +17061,20 @@ func (s *RemoveDrdsDbResponse) SetBody(v *RemoveDrdsDbResponseBody) *RemoveDrdsD
 
 type RemoveDrdsDbFailedRecordRequest struct {
 	// The name of the DRDS database.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The ID of the ApsaraDB RDS for PostgreSQL instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds************
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -12946,10 +17098,22 @@ func (s *RemoveDrdsDbFailedRecordRequest) SetDrdsInstanceId(v string) *RemoveDrd
 
 type RemoveDrdsDbFailedRecordResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// D98BC610-5A91-453A-BC44-5873EF******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the database creation failure records were deleted from the DRDS instance.
+	//
+	// example:
+	//
+	// true
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -13007,6 +17171,12 @@ func (s *RemoveDrdsDbFailedRecordResponse) SetBody(v *RemoveDrdsDbFailedRecordRe
 
 type RemoveDrdsInstanceRequest struct {
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds************
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -13025,8 +17195,16 @@ func (s *RemoveDrdsInstanceRequest) SetDrdsInstanceId(v string) *RemoveDrdsInsta
 
 type RemoveDrdsInstanceResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// A3140FC7-B78B-4D8E-B0C8-926D28******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -13079,8 +17257,20 @@ func (s *RemoveDrdsInstanceResponse) SetBody(v *RemoveDrdsInstanceResponseBody) 
 
 type RemoveInstanceAccountRequest struct {
 	// The name of the member account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The ID of the DRDS instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds***********
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -13104,8 +17294,16 @@ func (s *RemoveInstanceAccountRequest) SetDrdsInstanceId(v string) *RemoveInstan
 
 type RemoveInstanceAccountResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// A3140FC7-B78B-4D8E-B0C8-926D28******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -13158,12 +17356,32 @@ func (s *RemoveInstanceAccountResponse) SetBody(v *RemoveInstanceAccountResponse
 
 type RemoveRecycleBinTableRequest struct {
 	// The name of the database.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The ID of the PolarDB-X 1.0 instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds************
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The name of the logical table.
+	//
+	// example:
+	//
+	// test
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
@@ -13197,10 +17415,22 @@ func (s *RemoveRecycleBinTableRequest) SetTableName(v string) *RemoveRecycleBinT
 
 type RemoveRecycleBinTableResponseBody struct {
 	// Indicates whether the table in the recycle bin is deleted.
+	//
+	// example:
+	//
+	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// A3140FC7-B78B-4D8E-B0C8-926D28******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The result of the request.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -13258,6 +17488,12 @@ func (s *RemoveRecycleBinTableResponse) SetBody(v *RemoveRecycleBinTableResponse
 
 type RestartDrdsInstanceRequest struct {
 	// The ID of a DRDS instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds************
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -13276,10 +17512,22 @@ func (s *RestartDrdsInstanceRequest) SetDrdsInstanceId(v string) *RestartDrdsIns
 
 type RestartDrdsInstanceResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// A3140FC7-B78B-4D8E-B0C8-926D28******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the database creation failure records were removed from the PolarDB-X instance.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The ID of the task.
+	//
+	// example:
+	//
+	// 1
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -13337,8 +17585,18 @@ func (s *RestartDrdsInstanceResponse) SetBody(v *RestartDrdsInstanceResponseBody
 
 type RollbackInstanceVersionRequest struct {
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds************
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -13362,8 +17620,16 @@ func (s *RollbackInstanceVersionRequest) SetRegionId(v string) *RollbackInstance
 
 type RollbackInstanceVersionResponseBody struct {
 	// Indicates whether the instance version was rolled back.
+	//
+	// example:
+	//
+	// true
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// DSSDF-SEWE-*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13416,12 +17682,30 @@ func (s *RollbackInstanceVersionResponse) SetBody(v *RollbackInstanceVersionResp
 
 type SetBackupLocalRequest struct {
 	// The ID of the PolarDB-X 1.0 instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drdshbgag23d13fds
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	// Specifies whether to enable the feature to forcibly delete binary log files if the used storage space reaches 90% of the total storage space or the remaining storage space is less than 5 GB. Valid values: 1 and 0. A value of 1 specifies to enable this feature. A value of 0 specifies not to enable this feature.
+	//
+	// example:
+	//
+	// 80
 	HighSpaceUsageProtection *string `json:"HighSpaceUsageProtection,omitempty" xml:"HighSpaceUsageProtection,omitempty"`
 	// The number of hours for which log backup files are retained on the instance. Valid values: 0 to 168. Default value: 18. A value of 0 indicates that log backup files are not retained.
+	//
+	// example:
+	//
+	// 12
 	LocalLogRetentionHours *string `json:"LocalLogRetentionHours,omitempty" xml:"LocalLogRetentionHours,omitempty"`
 	// The maximum storage space usage that is allowed for log files on the instance. Valid values: 0 to 50. Default value: 30.
+	//
+	// example:
+	//
+	// 30
 	LocalLogRetentionSpace *string `json:"LocalLogRetentionSpace,omitempty" xml:"LocalLogRetentionSpace,omitempty"`
 }
 
@@ -13455,10 +17739,22 @@ func (s *SetBackupLocalRequest) SetLocalLogRetentionSpace(v string) *SetBackupLo
 
 type SetBackupLocalResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 6F70CE62-5077-4B7B-95BC-4DAC45614DBE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The result returned.
+	//
+	// example:
+	//
+	// success
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
 	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -13518,41 +17814,92 @@ type SetBackupPolicyRequest struct {
 	// The databases to be backed up. Separate multiple databases with commas (,).
 	//
 	// >  This parameter takes effect only when the backup level is database level.
+	//
+	// example:
+	//
+	// test1,test2
 	BackupDbNames *string `json:"BackupDbNames,omitempty" xml:"BackupDbNames,omitempty"`
 	// The level of the backup. Valid values:
 	//
-	// *   db: The database type.
-	// *   instance: instance
+	// 	- db: The database type.
+	//
+	// 	- instance: instance
+	//
+	// example:
+	//
+	// db
 	BackupLevel *string `json:"BackupLevel,omitempty" xml:"BackupLevel,omitempty"`
 	// Specifies whether to enable log Backup. Valid values:
 	//
-	// *   1: enabled.
-	// *   0: disabled.
+	// 	- 1: enabled.
+	//
+	// 	- 0: disabled.
+	//
+	// example:
+	//
+	// 1
 	BackupLog *string `json:"BackupLog,omitempty" xml:"BackupLog,omitempty"`
 	// The backup mode. Valid values:
 	//
-	// *   **Logic **: logical backup
-	// *   **phy**: physical backup
+	// 	- **Logic **: logical backup
+	//
+	// 	- **phy**: physical backup
+	//
+	// example:
+	//
+	// phy
 	BackupMode *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
 	// The retention period of the backup data. Value range: 7 to 730.
+	//
+	// example:
+	//
+	// 7
 	DataBackupRetentionPeriod *string `json:"DataBackupRetentionPeriod,omitempty" xml:"DataBackupRetentionPeriod,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds************
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	// The log retention period. Valid values: 7 to 730. This value must be less than or equal to the number of data backup days.
+	//
+	// example:
+	//
+	// 7
 	LogBackupRetentionPeriod *string `json:"LogBackupRetentionPeriod,omitempty" xml:"LogBackupRetentionPeriod,omitempty"`
 	// The end time of the backup.
+	//
+	// example:
+	//
+	// 12:30:30
 	PreferredBackupEndTime *string `json:"PreferredBackupEndTime,omitempty" xml:"PreferredBackupEndTime,omitempty"`
 	// The backup cycle. Valid values:
 	//
-	// *   0: Monday
-	// *   1: Tuesday
-	// *   2: Wednesday
-	// *   3: Thursday
-	// *   4: Friday
-	// *   5: Saturday
-	// *   6: Sunday
+	// 	- 0: Monday
+	//
+	// 	- 1: Tuesday
+	//
+	// 	- 2: Wednesday
+	//
+	// 	- 3: Thursday
+	//
+	// 	- 4: Friday
+	//
+	// 	- 5: Saturday
+	//
+	// 	- 6: Sunday
+	//
+	// example:
+	//
+	// 0
 	PreferredBackupPeriod *string `json:"PreferredBackupPeriod,omitempty" xml:"PreferredBackupPeriod,omitempty"`
 	// The start time of the backup.
+	//
+	// example:
+	//
+	// 11:30:30
 	PreferredBackupStartTime *string `json:"PreferredBackupStartTime,omitempty" xml:"PreferredBackupStartTime,omitempty"`
 }
 
@@ -13616,10 +17963,22 @@ func (s *SetBackupPolicyRequest) SetPreferredBackupStartTime(v string) *SetBacku
 
 type SetBackupPolicyResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// A3140FC7-B78B-4D8E-B0C8-926D28******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the backup policy was successfully configured.
+	//
+	// example:
+	//
+	// success
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
 	// Indicates whether the database creation failure records were removed from the DRDS instance.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -13677,14 +18036,42 @@ func (s *SetBackupPolicyResponse) SetBody(v *SetBackupPolicyResponseBody) *SetBa
 
 type SetupBroadcastTablesRequest struct {
 	// Specifies whether to activate a broadcast table for the database.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
 	Active *bool `json:"Active,omitempty" xml:"Active,omitempty"`
 	// The name of the database for which you want to configure a broadcast table.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The ID of the PolarDB-X 1.0 instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds************
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	// The ID of the region in which the PolarDB-X 1.0 instance resides.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The name of the table.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	TableName []*string `json:"TableName,omitempty" xml:"TableName,omitempty" type:"Repeated"`
 }
 
@@ -13723,10 +18110,22 @@ func (s *SetupBroadcastTablesRequest) SetTableName(v []*string) *SetupBroadcastT
 
 type SetupBroadcastTablesResponseBody struct {
 	// Indicates whether the broadcast table is configured.
+	//
+	// example:
+	//
+	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// A3140FC7-B78B-4D8E-B0C8-926D28******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -13783,15 +18182,33 @@ func (s *SetupBroadcastTablesResponse) SetBody(v *SetupBroadcastTablesResponseBo
 }
 
 type SetupDrdsParamsRequest struct {
+	// This parameter is required.
 	Data []*SetupDrdsParamsRequestData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The ID of the PolarDB-X 1.0 instance for which you want to configure parameters.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drdsjiii1b49****
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	// The resource for which you want to configure parameters. Valid values:
 	//
-	// *   **INSTANCE**: Configure parameters for the instance.
-	// *   **DB**: Configure parameters for the databases of the instance.
+	// 	- **INSTANCE**: Configure parameters for the instance.
+	//
+	// 	- **DB**: Configure parameters for the databases of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// DB
 	ParamLevel *string `json:"ParamLevel,omitempty" xml:"ParamLevel,omitempty"`
 	// The ID of the region in which the PolarDB-X 1.0 instance is located.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -13825,18 +18242,40 @@ func (s *SetupDrdsParamsRequest) SetRegionId(v string) *SetupDrdsParamsRequest {
 
 type SetupDrdsParamsRequestData struct {
 	// The name of the parameter that you want to configure for a database.
+	//
+	// example:
+	//
+	// test_db
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The valid values of the parameter.
+	//
+	// example:
+	//
+	// [true|false]
 	ParamRanges *string `json:"ParamRanges,omitempty" xml:"ParamRanges,omitempty"`
 	// The type of the parameter that you want to configure. Valid values:
 	//
-	// *   **ATOM**: the configuration item in the layer-3 data source.
-	// *   **CONFIG**: the configuration item in ConfigServer.
-	// *   **DIAMOND**: the configuration item in Diamond.
+	// 	- **ATOM**: the configuration item in the layer-3 data source.
+	//
+	// 	- **CONFIG**: the configuration item in ConfigServer.
+	//
+	// 	- **DIAMOND**: the configuration item in Diamond.
+	//
+	// example:
+	//
+	// ATOM
 	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
 	// The value of parameter that you want to configure.
+	//
+	// example:
+	//
+	// true
 	ParamValue *string `json:"ParamValue,omitempty" xml:"ParamValue,omitempty"`
 	// The name of the parameter that you want to configure.
+	//
+	// example:
+	//
+	// FORBID_EXECUTE_DML_ALL
 	ParamVariableName *string `json:"ParamVariableName,omitempty" xml:"ParamVariableName,omitempty"`
 }
 
@@ -13875,10 +18314,22 @@ func (s *SetupDrdsParamsRequestData) SetParamVariableName(v string) *SetupDrdsPa
 
 type SetupDrdsParamsResponseBody struct {
 	// The returned results.
+	//
+	// example:
+	//
+	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 9B2F3840-5C98-475C-B269-2D5C3A31797C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -13936,15 +18387,38 @@ func (s *SetupDrdsParamsResponse) SetBody(v *SetupDrdsParamsResponseBody) *Setup
 
 type SetupRecycleBinStatusRequest struct {
 	// The name of the database.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The ID of the PolarDB-X 1.0 instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds************
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// Specifies the status of the table recycle bin. Valid values:
 	//
-	// *   enable: The table recycle bin is enabled.
-	// *   disable: The table recycle bin is disabled.
+	// 	- enable: The table recycle bin is enabled.
+	//
+	// 	- disable: The table recycle bin is disabled.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// enable
 	StatusAction *string `json:"StatusAction,omitempty" xml:"StatusAction,omitempty"`
 }
 
@@ -13978,10 +18452,22 @@ func (s *SetupRecycleBinStatusRequest) SetStatusAction(v string) *SetupRecycleBi
 
 type SetupRecycleBinStatusResponseBody struct {
 	// Indicates whether the table recycle bin is enabled.
+	//
+	// example:
+	//
+	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// A3140FC7-B78B-4D8E-B0C8-926D28******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The result of the request.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -14039,13 +18525,40 @@ func (s *SetupRecycleBinStatusResponse) SetBody(v *SetupRecycleBinStatusResponse
 
 type SetupTableRequest struct {
 	// Specifies whether to enable full table scan.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
 	AllowFullTableScan *bool `json:"AllowFullTableScan,omitempty" xml:"AllowFullTableScan,omitempty"`
 	// The name of the database in which the table resides.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The ID of the DRDS instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds************
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	// The ID of the region where the streaming domain resides.
-	RegionId  *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	TableName []*string `json:"TableName,omitempty" xml:"TableName,omitempty" type:"Repeated"`
 }
 
@@ -14084,10 +18597,22 @@ func (s *SetupTableRequest) SetTableName(v []*string) *SetupTableRequest {
 
 type SetupTableResponseBody struct {
 	// Specifies whether to use a full table scan.
+	//
+	// example:
+	//
+	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// A3140FC7-B78B-4D8E-B0C8-926D28******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -14147,24 +18672,52 @@ type StartRestoreRequest struct {
 	// The name of the database to be restored. Separate multiple databases with commas (,).
 	//
 	// >  If you do not specify any database name, all databases in the instance are restored by default.
+	//
+	// example:
+	//
+	// test1,test2
 	BackupDbNames *string `json:"BackupDbNames,omitempty" xml:"BackupDbNames,omitempty"`
 	// The ID of the DRDS backup set.
 	//
 	// >  If you do not specify this parameter, the system restores data by time (PreferredBackupTime).
+	//
+	// example:
+	//
+	// 23***
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
 	// The level of the backup. Valid values:
 	//
-	// *   db: The database level.
-	// *   instance: the instance level.
+	// 	- db: The database level.
+	//
+	// 	- instance: the instance level.
+	//
+	// example:
+	//
+	// db
 	BackupLevel *string `json:"BackupLevel,omitempty" xml:"BackupLevel,omitempty"`
 	// The backup method. Valid values:
 	//
-	// *   logic: the logical backup.
-	// *   phy: fast backup
+	// 	- logic: the logical backup.
+	//
+	// 	- phy: fast backup
+	//
+	// example:
+	//
+	// phy
 	BackupMode *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
 	// The ID of the DRDS instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rds********
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	// The restoration time of the instance, in the format of`  yyyy-MM-dd HH:mm:ss `.
+	//
+	// example:
+	//
+	// 2019-09-10 20:18:18
 	PreferredBackupTime *string `json:"PreferredBackupTime,omitempty" xml:"PreferredBackupTime,omitempty"`
 }
 
@@ -14208,10 +18761,22 @@ func (s *StartRestoreRequest) SetPreferredBackupTime(v string) *StartRestoreRequ
 
 type StartRestoreResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 721C71DD-D3D0-4327-BFDD-678326******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether SQL audit was disabled for the DRDS database.
+	//
+	// example:
+	//
+	// success
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
 	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -14269,17 +18834,48 @@ func (s *StartRestoreResponse) SetBody(v *StartRestoreResponseBody) *StartRestor
 
 type SubmitCleanTaskRequest struct {
 	// The name of the database that is scaled out.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The ID of the PolarDB-X 1.0 instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds*********
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	// The scale-out type. Valid values:
 	//
-	// *   smooth_expand: smooth scale-out
-	// *   hot_expand: hot-spot scale-out
+	// 	- smooth_expand: smooth scale-out
+	//
+	// 	- hot_expand: hot-spot scale-out
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// smooth_expand
 	ExpandType *string `json:"ExpandType,omitempty" xml:"ExpandType,omitempty"`
 	// The job ID of the scale-out task. The value of this parameter is the same as that of the ParentJobId parameter.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The ID of the scale-out task. This parameter is returned if you send a request for the smooth scale-out task.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
 	ParentJobId *string `json:"ParentJobId,omitempty" xml:"ParentJobId,omitempty"`
 }
 
@@ -14318,8 +18914,16 @@ func (s *SubmitCleanTaskRequest) SetParentJobId(v string) *SubmitCleanTaskReques
 
 type SubmitCleanTaskResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// DSSDF-SEWE-*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -14373,14 +18977,37 @@ func (s *SubmitCleanTaskResponse) SetBody(v *SubmitCleanTaskResponseBody) *Submi
 type SubmitHotExpandPreCheckTaskRequest struct {
 	// The type of the database. Valid values:
 	//
-	// *   RDS
-	// *   PolarDB
+	// 	- RDS
+	//
+	// 	- PolarDB
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// RDS
 	DbInstType *string `json:"DbInstType,omitempty" xml:"DbInstType,omitempty"`
 	// The name of the PolarDB-X database.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The ID of the PolarDB-X 1.0 instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drd*********
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	// The name of the table.
+	//
+	// example:
+	//
+	// test
 	TableList []*string `json:"TableList,omitempty" xml:"TableList,omitempty" type:"Repeated"`
 }
 
@@ -14414,12 +19041,28 @@ func (s *SubmitHotExpandPreCheckTaskRequest) SetTableList(v []*string) *SubmitHo
 
 type SubmitHotExpandPreCheckTaskResponseBody struct {
 	// The result of the task.
+	//
+	// example:
+	//
+	// scucess
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// FE104D26-AC19-49B5-AC67-947F69*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The ID of the task.
+	//
+	// example:
+	//
+	// 11111
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -14482,20 +19125,46 @@ func (s *SubmitHotExpandPreCheckTaskResponse) SetBody(v *SubmitHotExpandPreCheck
 
 type SubmitHotExpandTaskRequest struct {
 	// The name of the database.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drdshbga1138****
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	// The information about the database on which you want to perform hot-spot scale-out.
+	//
+	// This parameter is required.
 	ExtendedMapping []*SubmitHotExpandTaskRequestExtendedMapping `json:"ExtendedMapping,omitempty" xml:"ExtendedMapping,omitempty" type:"Repeated"`
 	// The information about the instance to which the hot-spot database belongs.
+	//
+	// This parameter is required.
 	InstanceDbMapping []*SubmitHotExpandTaskRequestInstanceDbMapping `json:"InstanceDbMapping,omitempty" xml:"InstanceDbMapping,omitempty" type:"Repeated"`
 	// The information about the hot-spot database.
+	//
+	// This parameter is required.
 	Mapping []*SubmitHotExpandTaskRequestMapping `json:"Mapping,omitempty" xml:"Mapping,omitempty" type:"Repeated"`
 	// The information about the privileged account.
 	SupperAccountMapping []*SubmitHotExpandTaskRequestSupperAccountMapping `json:"SupperAccountMapping,omitempty" xml:"SupperAccountMapping,omitempty" type:"Repeated"`
 	// The description of the task.
+	//
+	// example:
+	//
+	// test
 	TaskDesc *string `json:"TaskDesc,omitempty" xml:"TaskDesc,omitempty"`
 	// The name of the task.
+	//
+	// example:
+	//
+	// test
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 
@@ -14549,8 +19218,16 @@ func (s *SubmitHotExpandTaskRequest) SetTaskName(v string) *SubmitHotExpandTaskR
 
 type SubmitHotExpandTaskRequestExtendedMapping struct {
 	// The name of the source physical database.
+	//
+	// example:
+	//
+	// test
 	SrcDb *string `json:"SrcDb,omitempty" xml:"SrcDb,omitempty"`
 	// The ID of the ApsaraDB RDS instance to which the source physical database belongs.
+	//
+	// example:
+	//
+	// rm-bp1t1mk5a5bdj****
 	SrcInstanceId *string `json:"SrcInstanceId,omitempty" xml:"SrcInstanceId,omitempty"`
 }
 
@@ -14574,8 +19251,18 @@ func (s *SubmitHotExpandTaskRequestExtendedMapping) SetSrcInstanceId(v string) *
 
 type SubmitHotExpandTaskRequestInstanceDbMapping struct {
 	// The name of the hot-spot database.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hot_test_****_****
 	DbList *string `json:"DbList,omitempty" xml:"DbList,omitempty"`
 	// The name of the ApsaraDB RDS instance to which the hot-spot database belongs.
+	//
+	// example:
+	//
+	// rm-bp1t1mk5a5bdj****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 }
 
@@ -14599,18 +19286,46 @@ func (s *SubmitHotExpandTaskRequestInstanceDbMapping) SetInstanceName(v string) 
 
 type SubmitHotExpandTaskRequestMapping struct {
 	// The shard key used to split the database to which the associated table belongs.
+	//
+	// example:
+	//
+	// platform
 	DbShardColumn *string `json:"DbShardColumn,omitempty" xml:"DbShardColumn,omitempty"`
 	// The name of the hot-spot database.
+	//
+	// example:
+	//
+	// hot_test_****_****
 	HotDbName *string `json:"HotDbName,omitempty" xml:"HotDbName,omitempty"`
 	// The name of the hot-spot table. The name must be prefixed with the name of a logical table.
+	//
+	// example:
+	//
+	// test_table_*****
 	HotTableName *string `json:"HotTableName,omitempty" xml:"HotTableName,omitempty"`
 	// The name of the logical table on which you want to perform hot-spot scale-out.
+	//
+	// example:
+	//
+	// test_table
 	LogicTable *string `json:"LogicTable,omitempty" xml:"LogicTable,omitempty"`
 	// The value of the shard key used to split a database.
+	//
+	// example:
+	//
+	// test
 	ShardDbValue *string `json:"ShardDbValue,omitempty" xml:"ShardDbValue,omitempty"`
 	// The value of the shard key used to split a table.
+	//
+	// example:
+	//
+	// test
 	ShardTbValue *string `json:"ShardTbValue,omitempty" xml:"ShardTbValue,omitempty"`
 	// The shard key used to split an associated table.
+	//
+	// example:
+	//
+	// platform
 	TbShardColumn *string `json:"TbShardColumn,omitempty" xml:"TbShardColumn,omitempty"`
 }
 
@@ -14659,10 +19374,22 @@ func (s *SubmitHotExpandTaskRequestMapping) SetTbShardColumn(v string) *SubmitHo
 
 type SubmitHotExpandTaskRequestSupperAccountMapping struct {
 	// The ID of the ApsaraDB RDS instance that has the privileged account.
+	//
+	// example:
+	//
+	// rm-bp1t1mk5a5bdj****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// The name of the privileged account of the ApsaraDB RDS instance.
+	//
+	// example:
+	//
+	// test
 	SupperAccount *string `json:"SupperAccount,omitempty" xml:"SupperAccount,omitempty"`
 	// The password of the privileged account of the ApsaraDB RDS instance.
+	//
+	// example:
+	//
+	// 11111111
 	SupperPassword *string `json:"SupperPassword,omitempty" xml:"SupperPassword,omitempty"`
 }
 
@@ -14691,8 +19418,16 @@ func (s *SubmitHotExpandTaskRequestSupperAccountMapping) SetSupperPassword(v str
 
 type SubmitHotExpandTaskResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0B6B7BDC-575D-4A77-A4F8-24B7EFERV45Y
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -14746,12 +19481,31 @@ func (s *SubmitHotExpandTaskResponse) SetBody(v *SubmitHotExpandTaskResponseBody
 type SubmitSmoothExpandPreCheckRequest struct {
 	// The type of the database. Valid values:
 	//
-	// *   RDS
-	// *   POLARDB
+	// 	- RDS
+	//
+	// 	- POLARDB
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// RDS
 	DbInstType *string `json:"DbInstType,omitempty" xml:"DbInstType,omitempty"`
 	// The name of the PolarDB-X database.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The ID of the PolarDB-X 1.0 instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds*******
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -14780,12 +19534,28 @@ func (s *SubmitSmoothExpandPreCheckRequest) SetDrdsInstanceId(v string) *SubmitS
 
 type SubmitSmoothExpandPreCheckResponseBody struct {
 	// The result of the precheck task.
+	//
+	// example:
+	//
+	// success
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// FE104D26-AC19-49B5-AC67-947F69******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The ID of the precheck task.
+	//
+	// example:
+	//
+	// 11111
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -14848,8 +19618,20 @@ func (s *SubmitSmoothExpandPreCheckResponse) SetBody(v *SubmitSmoothExpandPreChe
 
 type SubmitSmoothExpandPreCheckTaskRequest struct {
 	// The name of the PolarDB-X 1.0 database.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The ID of the PolarDB-X 1.0 instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds823s4esd
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 }
 
@@ -14873,12 +19655,28 @@ func (s *SubmitSmoothExpandPreCheckTaskRequest) SetDrdsInstanceId(v string) *Sub
 
 type SubmitSmoothExpandPreCheckTaskResponseBody struct {
 	// Indicates whether the precheck task was submitted.
+	//
+	// example:
+	//
+	// scucess
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// DSSDF-SEWE-23ERW
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The ID of the task.
+	//
+	// example:
+	//
+	// 2321
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -14941,30 +19739,82 @@ func (s *SubmitSmoothExpandPreCheckTaskResponse) SetBody(v *SubmitSmoothExpandPr
 
 type SubmitSqlFlashbackTaskRequest struct {
 	// The name of the DRDS database.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The ID of a DRDS instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds*********
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	// The time when the SQL flashback task ends.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2019-09-10 23:23:23
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The restoration type. Valid values:
 	//
-	// *   1: Image restoration
-	// *   0: reverse recovery
+	// 	- 1: Image restoration
+	//
+	// 	- 0: reverse recovery
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
 	RecallRestoreType *int32 `json:"RecallRestoreType,omitempty" xml:"RecallRestoreType,omitempty"`
 	// Exact match or fuzzy match. Valid values:
 	//
-	// *   0: the exact match.
-	// *   1: the fuzzy match.
+	// 	- 0: the exact match.
+	//
+	// 	- 1: the fuzzy match.
+	//
+	// example:
+	//
+	// 0
 	RecallType *int32 `json:"RecallType,omitempty" xml:"RecallType,omitempty"`
 	// The primary key of flashback SQL.
+	//
+	// example:
+	//
+	// 11111
 	SqlPk *string `json:"SqlPk,omitempty" xml:"SqlPk,omitempty"`
 	// The type of the SQL statement. Valid values: INSERT, UPDATE, and DELETE. Separate multiple types with commas (,).
+	//
+	// example:
+	//
+	// INSERT,UPDATE
 	SqlType *string `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
 	// The start time of the flashback SQL statement.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2019-09-10 20:23:23
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The name of the table where the flashback SQL operation was performed.
+	//
+	// example:
+	//
+	// test
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 	// The Trace ID of the flashback SQL.
+	//
+	// example:
+	//
+	// ase*****
 	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
@@ -15028,10 +19878,22 @@ func (s *SubmitSqlFlashbackTaskRequest) SetTraceId(v string) *SubmitSqlFlashback
 
 type SubmitSqlFlashbackTaskResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// DSSDF-SEWE-*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the database creation failure records were removed from the DRDS instance.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The ID of the replication task.
+	//
+	// example:
+	//
+	// 1111
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -15089,10 +19951,26 @@ func (s *SubmitSqlFlashbackTaskResponse) SetBody(v *SubmitSqlFlashbackTaskRespon
 
 type SwitchGlobalBroadcastTypeRequest struct {
 	// The name of the database.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The ID of the PolarDB-X 1.0 instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds********
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -15121,10 +19999,22 @@ func (s *SwitchGlobalBroadcastTypeRequest) SetRegionId(v string) *SwitchGlobalBr
 
 type SwitchGlobalBroadcastTypeResponseBody struct {
 	// Indicates whether the mode of broadcast tables was switched from the multi-write mode to the asynchronous link mode.
+	//
+	// example:
+	//
+	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// DSSDF-SEWE-*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -15182,11 +20072,25 @@ func (s *SwitchGlobalBroadcastTypeResponse) SetBody(v *SwitchGlobalBroadcastType
 
 type TagResourcesRequest struct {
 	// The ID of the region in which the resource is located.
-	RegionId   *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The resource type. Set the value to INSTANCE.
-	ResourceType *string                   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag          []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// INSTANCE
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// This parameter is required.
+	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s TagResourcesRequest) String() string {
@@ -15219,8 +20123,16 @@ func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesR
 
 type TagResourcesRequestTag struct {
 	// The key of the tag that you want to add.
+	//
+	// example:
+	//
+	// color
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the tag that you want to add.
+	//
+	// example:
+	//
+	// red
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -15244,8 +20156,16 @@ func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
 
 type TagResourcesResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// FE5D94E3-3C93-3594-95D9-AAED2A980915
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -15298,13 +20218,37 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 
 type UntagResourcesRequest struct {
 	// Specifies whether to delete all tags of the resource.
+	//
+	// example:
+	//
+	// false
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
 	// The region ID of the instance.
-	RegionId   *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds********
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The type of the resource. Set the value to INSTANCE.
-	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey       []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// INSTANCE
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// example:
+	//
+	// color
+	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 
 func (s UntagResourcesRequest) String() string {
@@ -15342,8 +20286,16 @@ func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
 
 type UntagResourcesResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// DSSDF-SEWE-*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the database creation failure records were removed from the DRDS instance.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -15396,15 +20348,36 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 
 type UpdateInstanceNetworkRequest struct {
 	// Specifies the retention period of the classic network endpoint. Unit: days.
+	//
+	// example:
+	//
+	// 30
 	ClassicExpiredDays *int32 `json:"ClassicExpiredDays,omitempty" xml:"ClassicExpiredDays,omitempty"`
 	// The ID of the PolarDB-X 1.0 instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds******
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	// Specifies whether to retain the classic network endpoint.
+	//
+	// example:
+	//
+	// true
 	RetainClassic *bool `json:"RetainClassic,omitempty" xml:"RetainClassic,omitempty"`
 	// The network type of the PolarDB-X 1.0 instance. Valid values:
 	//
-	// *   vpc: Virtual Private Cloud (VPC)
-	// *   classic: classic network
+	// 	- vpc: Virtual Private Cloud (VPC)
+	//
+	// 	- classic: classic network
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// classic
 	SrcInstanceNetworkType *string `json:"SrcInstanceNetworkType,omitempty" xml:"SrcInstanceNetworkType,omitempty"`
 }
 
@@ -15438,8 +20411,16 @@ func (s *UpdateInstanceNetworkRequest) SetSrcInstanceNetworkType(v string) *Upda
 
 type UpdateInstanceNetworkResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// DSSDF-SEWE-*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The result of the request.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -15491,27 +20472,55 @@ func (s *UpdateInstanceNetworkResponse) SetBody(v *UpdateInstanceNetworkResponse
 }
 
 type UpdatePrivateRdsClassRequest struct {
-	// Specifies whether to use vouchers to offset the purchase fees. Valid values: **true** and **false**. Default value: false.
+	// Specifies whether to use vouchers to offset the purchase fees. Valid values: **true*	- and **false**. Default value: false.
 	//
 	// > If you downgrade the specifications of an instance after you use the vouchers, the vouchers used for the purchase cannot be refunded.
+	//
+	// example:
+	//
+	// true
 	AutoUseCoupon *bool `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
 	// The ID of the custom ApsaraDB RDS instance at the storage layer.
 	//
 	// > You can call the [DescribeDrdsRdsInstances](~~xxxx~~) operation to query the details of all ApsaraDB RDS instances at the storage layer of a PolarDB-X 1.0 instance, including the IDs of the ApsaraDB RDS instances.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-***************
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The ID of the PolarDB-X 1.0 instance.
 	//
-	// > You can call the [DescribeDrdsInstances](~~139284~~) operation to query the details of all PolarDB-X 1.0 instances within an Alibaba Cloud account, including the IDs of the instances.
+	// > You can call the [DescribeDrdsInstances](https://help.aliyun.com/document_detail/139284.html) operation to query the details of all PolarDB-X 1.0 instances within an Alibaba Cloud account, including the IDs of the instances.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds*************
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	// This parameter is discontinued.
+	//
+	// example:
+	//
+	// 12
 	PrePayDuration *int32 `json:"PrePayDuration,omitempty" xml:"PrePayDuration,omitempty"`
 	// The new instance type of the custom ApsaraDB RDS instance at the storage layer.
 	//
-	// > You can call the [DescribeAvailableClasses](~~196546~~) operation to view the specifications that are supported for a custom ApsaraDB RDS instance. The specifications include the instance type and the storage capacity.
+	// > You can call the [DescribeAvailableClasses](https://help.aliyun.com/document_detail/196546.html) operation to view the specifications that are supported for a custom ApsaraDB RDS instance. The specifications include the instance type and the storage capacity.
+	//
+	// example:
+	//
+	// rds.mysql.c1.xlarge
 	RdsClass *string `json:"RdsClass,omitempty" xml:"RdsClass,omitempty"`
 	// The new storage capacity of the custom ApsaraDB RDS instance at the storage layer.
 	//
-	// > You can call the [DescribeAvailableClasses](~~196546~~) operation to view the specifications that are supported for a custom ApsaraDB RDS instance. The specifications include the instance type and the storage capacity.
+	// > You can call the [DescribeAvailableClasses](https://help.aliyun.com/document_detail/196546.html) operation to view the specifications that are supported for a custom ApsaraDB RDS instance. The specifications include the instance type and the storage capacity.
+	//
+	// example:
+	//
+	// 50
 	Storage *string `json:"Storage,omitempty" xml:"Storage,omitempty"`
 }
 
@@ -15555,10 +20564,22 @@ func (s *UpdatePrivateRdsClassRequest) SetStorage(v string) *UpdatePrivateRdsCla
 
 type UpdatePrivateRdsClassResponseBody struct {
 	// The ID of the order.
+	//
+	// example:
+	//
+	// {     "orderId": "209136011******"   }
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 57D86AB4-8703-4DF4-BAB6-F7DE44******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -15617,15 +20638,33 @@ func (s *UpdatePrivateRdsClassResponse) SetBody(v *UpdatePrivateRdsClassResponse
 type UpdateResourceGroupAttributeRequest struct {
 	// The ID of the instance that you want to transfer.
 	//
-	// >  You can call the [DescribeDrdsInstances](~~139284~~) operation to view the details of the instances under the account, including the instance IDs.
+	// >  You can call the [DescribeDrdsInstances](https://help.aliyun.com/document_detail/139284.html) operation to view the details of the instances under the account, including the instance IDs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds***********
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	// The ID of the resource group that you want to specify.
 	//
-	// >  You can call the [ListResourceGroups](~~158855~~) operation to view the details of the resource groups, including the resource group IDs.
+	// >  You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to view the details of the resource groups, including the resource group IDs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rg-***************
 	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
 	// The ID of the region where the instance you want to transfer is located.
 	//
-	// >  You can call the [DescribeDrdsInstances](~~139284~~) operation to view the details of the instances under the account, including the region IDs.
+	// >  You can call the [DescribeDrdsInstances](https://help.aliyun.com/document_detail/139284.html) operation to view the details of the instances under the account, including the region IDs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -15654,6 +20693,10 @@ func (s *UpdateResourceGroupAttributeRequest) SetRegionId(v string) *UpdateResou
 
 type UpdateResourceGroupAttributeResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 91C7CAB5-3B2E-4FB6-893C-0162C0******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -15701,10 +20744,26 @@ func (s *UpdateResourceGroupAttributeResponse) SetBody(v *UpdateResourceGroupAtt
 
 type UpgradeHiStoreInstanceRequest struct {
 	// The ID of the PolarDB-X 1.0 instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drdssad23sdfc
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	// The ID of the column-oriented storage instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hi-sesex2e
 	HistoreInstanceId *string `json:"HistoreInstanceId,omitempty" xml:"HistoreInstanceId,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -15733,8 +20792,16 @@ func (s *UpgradeHiStoreInstanceRequest) SetRegionId(v string) *UpgradeHiStoreIns
 
 type UpgradeHiStoreInstanceResponseBody struct {
 	// Indicates whether the request was successful. A value of true indicates that the request was successful. An error message was returned if the request failed.
+	//
+	// example:
+	//
+	// true
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// DSSDF-SEWE-23ERW
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -15787,10 +20854,24 @@ func (s *UpgradeHiStoreInstanceResponse) SetBody(v *UpgradeHiStoreInstanceRespon
 
 type UpgradeInstanceVersionRequest struct {
 	// The ID of the PolarDB-X 1.0 instance that you want to upgrade.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drdshbgaen89****
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The version number of the PolarDB-X 1.0 instance. You can leave this parameter unspecified.
+	//
+	// example:
+	//
+	// t-drds-server-5.4.12-16348095.noarch.rpm
 	Rpm *string `json:"Rpm,omitempty" xml:"Rpm,omitempty"`
 }
 
@@ -15819,8 +20900,16 @@ func (s *UpgradeInstanceVersionRequest) SetRpm(v string) *UpgradeInstanceVersion
 
 type UpgradeInstanceVersionResponseBody struct {
 	// The result of the request.
+	//
+	// example:
+	//
+	// success
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 2F7F8080-9132-4279-85D0-B7E5C4305162
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -15873,20 +20962,56 @@ func (s *UpgradeInstanceVersionResponse) SetBody(v *UpgradeInstanceVersionRespon
 
 type ValidateShardTaskRequest struct {
 	// The name of the database.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The ID of the PolarDB-X 1.0 instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drds23ds****
 	DrdsInstanceId *string `json:"DrdsInstanceId,omitempty" xml:"DrdsInstanceId,omitempty"`
 	// The ID of the region where the PolarDB-X 1.0 instance is created.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The name of the table or table shard on which you want to perform the task.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// buyer
 	SourceTableName *string `json:"SourceTableName,omitempty" xml:"SourceTableName,omitempty"`
 	// The name of the table or table shard on which you perform the task.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// buyer_new
 	TargetTableName *string `json:"TargetTableName,omitempty" xml:"TargetTableName,omitempty"`
 	// The type of the task. Valid values:
 	//
-	// *   **SINGLE_TO_SHARD**: converts a single table to a table shard.
-	// *   **SHARD_TO_SINGLE**: converts a table shard to a single table.
-	// *   **SHARD_TO_SHARD**: converts a table shard to another table shard.
+	// 	- **SINGLE_TO_SHARD**: converts a single table to a table shard.
+	//
+	// 	- **SHARD_TO_SINGLE**: converts a table shard to a single table.
+	//
+	// 	- **SHARD_TO_SHARD**: converts a table shard to another table shard.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SINGLE_TO_SHARD
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
@@ -15932,8 +21057,16 @@ type ValidateShardTaskResponseBody struct {
 	// Indicates the check results.
 	List []*ValidateShardTaskResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
 	// Indicates the ID of the request.
+	//
+	// example:
+	//
+	// 0B6B7BDC-575D-4A77-A4F8-24B7EFAS45FG
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -15962,11 +21095,20 @@ func (s *ValidateShardTaskResponseBody) SetSuccess(v bool) *ValidateShardTaskRes
 
 type ValidateShardTaskResponseBodyList struct {
 	// Indicates the name of a check item.
+	//
+	// example:
+	//
+	// same_schema
 	Item *string `json:"Item,omitempty" xml:"Item,omitempty"`
 	// Indicates the result of the check item. Valid values:
 	//
-	// *   **0**: indicates the task is valid.
-	// *   **1**: indicates the task is invalid.
+	// 	- **0**: indicates the task is valid.
+	//
+	// 	- **1**: indicates the task is invalid.
+	//
+	// example:
+	//
+	// 0
 	Result *int32 `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
@@ -16107,6 +21249,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// @param request - ChangeAccountPasswordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ChangeAccountPasswordResponse
 func (client *Client) ChangeAccountPasswordWithOptions(request *ChangeAccountPasswordRequest, runtime *util.RuntimeOptions) (_result *ChangeAccountPasswordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16139,15 +21286,29 @@ func (client *Client) ChangeAccountPasswordWithOptions(request *ChangeAccountPas
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ChangeAccountPasswordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ChangeAccountPasswordResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ChangeAccountPasswordResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - ChangeAccountPasswordRequest
+//
+// @return ChangeAccountPasswordResponse
 func (client *Client) ChangeAccountPassword(request *ChangeAccountPasswordRequest) (_result *ChangeAccountPasswordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ChangeAccountPasswordResponse{}
@@ -16159,6 +21320,11 @@ func (client *Client) ChangeAccountPassword(request *ChangeAccountPasswordReques
 	return _result, _err
 }
 
+// @param request - ChangeInstanceAzoneRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ChangeInstanceAzoneResponse
 func (client *Client) ChangeInstanceAzoneWithOptions(request *ChangeInstanceAzoneRequest, runtime *util.RuntimeOptions) (_result *ChangeInstanceAzoneResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16203,15 +21369,29 @@ func (client *Client) ChangeInstanceAzoneWithOptions(request *ChangeInstanceAzon
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ChangeInstanceAzoneResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ChangeInstanceAzoneResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ChangeInstanceAzoneResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - ChangeInstanceAzoneRequest
+//
+// @return ChangeInstanceAzoneResponse
 func (client *Client) ChangeInstanceAzone(request *ChangeInstanceAzoneRequest) (_result *ChangeInstanceAzoneResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ChangeInstanceAzoneResponse{}
@@ -16223,6 +21403,11 @@ func (client *Client) ChangeInstanceAzone(request *ChangeInstanceAzoneRequest) (
 	return _result, _err
 }
 
+// @param request - CheckDrdsDbNameRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckDrdsDbNameResponse
 func (client *Client) CheckDrdsDbNameWithOptions(request *CheckDrdsDbNameRequest, runtime *util.RuntimeOptions) (_result *CheckDrdsDbNameResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16251,15 +21436,29 @@ func (client *Client) CheckDrdsDbNameWithOptions(request *CheckDrdsDbNameRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CheckDrdsDbNameResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CheckDrdsDbNameResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CheckDrdsDbNameResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - CheckDrdsDbNameRequest
+//
+// @return CheckDrdsDbNameResponse
 func (client *Client) CheckDrdsDbName(request *CheckDrdsDbNameRequest) (_result *CheckDrdsDbNameResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CheckDrdsDbNameResponse{}
@@ -16271,6 +21470,15 @@ func (client *Client) CheckDrdsDbName(request *CheckDrdsDbNameRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Verifies whether scale-out operations such as smooth scale-out can be performed on a PolarDB-X database.
+//
+// @param request - CheckExpandStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckExpandStatusResponse
 func (client *Client) CheckExpandStatusWithOptions(request *CheckExpandStatusRequest, runtime *util.RuntimeOptions) (_result *CheckExpandStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16299,15 +21507,33 @@ func (client *Client) CheckExpandStatusWithOptions(request *CheckExpandStatusReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CheckExpandStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CheckExpandStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CheckExpandStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Verifies whether scale-out operations such as smooth scale-out can be performed on a PolarDB-X database.
+//
+// @param request - CheckExpandStatusRequest
+//
+// @return CheckExpandStatusResponse
 func (client *Client) CheckExpandStatus(request *CheckExpandStatusRequest) (_result *CheckExpandStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CheckExpandStatusResponse{}
@@ -16319,6 +21545,15 @@ func (client *Client) CheckExpandStatus(request *CheckExpandStatusRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Checks whether the SQL audit feature is enabled for the logical database of a PolarDB-X 1.0 instance.
+//
+// @param request - CheckSqlAuditEnableStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckSqlAuditEnableStatusResponse
 func (client *Client) CheckSqlAuditEnableStatusWithOptions(request *CheckSqlAuditEnableStatusRequest, runtime *util.RuntimeOptions) (_result *CheckSqlAuditEnableStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16347,15 +21582,33 @@ func (client *Client) CheckSqlAuditEnableStatusWithOptions(request *CheckSqlAudi
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CheckSqlAuditEnableStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CheckSqlAuditEnableStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CheckSqlAuditEnableStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Checks whether the SQL audit feature is enabled for the logical database of a PolarDB-X 1.0 instance.
+//
+// @param request - CheckSqlAuditEnableStatusRequest
+//
+// @return CheckSqlAuditEnableStatusResponse
 func (client *Client) CheckSqlAuditEnableStatus(request *CheckSqlAuditEnableStatusRequest) (_result *CheckSqlAuditEnableStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CheckSqlAuditEnableStatusResponse{}
@@ -16367,6 +21620,11 @@ func (client *Client) CheckSqlAuditEnableStatus(request *CheckSqlAuditEnableStat
 	return _result, _err
 }
 
+// @param request - CreateDrdsDBRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDrdsDBResponse
 func (client *Client) CreateDrdsDBWithOptions(request *CreateDrdsDBRequest, runtime *util.RuntimeOptions) (_result *CreateDrdsDBResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16431,15 +21689,29 @@ func (client *Client) CreateDrdsDBWithOptions(request *CreateDrdsDBRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateDrdsDBResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateDrdsDBResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateDrdsDBResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - CreateDrdsDBRequest
+//
+// @return CreateDrdsDBResponse
 func (client *Client) CreateDrdsDB(request *CreateDrdsDBRequest) (_result *CreateDrdsDBResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDrdsDBResponse{}
@@ -16451,6 +21723,11 @@ func (client *Client) CreateDrdsDB(request *CreateDrdsDBRequest) (_result *Creat
 	return _result, _err
 }
 
+// @param request - CreateDrdsInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDrdsInstanceResponse
 func (client *Client) CreateDrdsInstanceWithOptions(request *CreateDrdsInstanceRequest, runtime *util.RuntimeOptions) (_result *CreateDrdsInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16543,15 +21820,29 @@ func (client *Client) CreateDrdsInstanceWithOptions(request *CreateDrdsInstanceR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateDrdsInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateDrdsInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateDrdsInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - CreateDrdsInstanceRequest
+//
+// @return CreateDrdsInstanceResponse
 func (client *Client) CreateDrdsInstance(request *CreateDrdsInstanceRequest) (_result *CreateDrdsInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDrdsInstanceResponse{}
@@ -16563,6 +21854,11 @@ func (client *Client) CreateDrdsInstance(request *CreateDrdsInstanceRequest) (_r
 	return _result, _err
 }
 
+// @param request - CreateInstanceAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateInstanceAccountResponse
 func (client *Client) CreateInstanceAccountWithOptions(request *CreateInstanceAccountRequest, runtime *util.RuntimeOptions) (_result *CreateInstanceAccountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16599,15 +21895,29 @@ func (client *Client) CreateInstanceAccountWithOptions(request *CreateInstanceAc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateInstanceAccountResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateInstanceAccountResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateInstanceAccountResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - CreateInstanceAccountRequest
+//
+// @return CreateInstanceAccountResponse
 func (client *Client) CreateInstanceAccount(request *CreateInstanceAccountRequest) (_result *CreateInstanceAccountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateInstanceAccountResponse{}
@@ -16619,6 +21929,11 @@ func (client *Client) CreateInstanceAccount(request *CreateInstanceAccountReques
 	return _result, _err
 }
 
+// @param request - CreateInstanceInternetAddressRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateInstanceInternetAddressResponse
 func (client *Client) CreateInstanceInternetAddressWithOptions(request *CreateInstanceInternetAddressRequest, runtime *util.RuntimeOptions) (_result *CreateInstanceInternetAddressResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16647,15 +21962,29 @@ func (client *Client) CreateInstanceInternetAddressWithOptions(request *CreateIn
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateInstanceInternetAddressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateInstanceInternetAddressResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateInstanceInternetAddressResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - CreateInstanceInternetAddressRequest
+//
+// @return CreateInstanceInternetAddressResponse
 func (client *Client) CreateInstanceInternetAddress(request *CreateInstanceInternetAddressRequest) (_result *CreateInstanceInternetAddressResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateInstanceInternetAddressResponse{}
@@ -16667,13 +21996,19 @@ func (client *Client) CreateInstanceInternetAddress(request *CreateInstanceInter
 	return _result, _err
 }
 
-/**
- * Before you call this operation, make sure that you understand the billing methods and pricing of PolarDB-X 1.0. For more information, visit the [pricing page](https://www.aliyun.com/price/product#/rds/detail).
- *
- * @param request CreateOrderForRdsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateOrderForRdsResponse
- */
+// Summary:
+//
+// Creates an order to purchase an ApsaraDB RDS for MySQL instance.
+//
+// Description:
+//
+// Before you call this operation, make sure that you understand the billing methods and pricing of PolarDB-X 1.0. For more information, visit the [pricing page](https://www.aliyun.com/price/product#/rds/detail).
+//
+// @param request - CreateOrderForRdsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateOrderForRdsResponse
 func (client *Client) CreateOrderForRdsWithOptions(request *CreateOrderForRdsRequest, runtime *util.RuntimeOptions) (_result *CreateOrderForRdsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16702,21 +22037,37 @@ func (client *Client) CreateOrderForRdsWithOptions(request *CreateOrderForRdsReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateOrderForRdsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateOrderForRdsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateOrderForRdsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
-/**
- * Before you call this operation, make sure that you understand the billing methods and pricing of PolarDB-X 1.0. For more information, visit the [pricing page](https://www.aliyun.com/price/product#/rds/detail).
- *
- * @param request CreateOrderForRdsRequest
- * @return CreateOrderForRdsResponse
- */
+// Summary:
+//
+// Creates an order to purchase an ApsaraDB RDS for MySQL instance.
+//
+// Description:
+//
+// Before you call this operation, make sure that you understand the billing methods and pricing of PolarDB-X 1.0. For more information, visit the [pricing page](https://www.aliyun.com/price/product#/rds/detail).
+//
+// @param request - CreateOrderForRdsRequest
+//
+// @return CreateOrderForRdsResponse
 func (client *Client) CreateOrderForRds(request *CreateOrderForRdsRequest) (_result *CreateOrderForRdsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateOrderForRdsResponse{}
@@ -16728,6 +22079,11 @@ func (client *Client) CreateOrderForRds(request *CreateOrderForRdsRequest) (_res
 	return _result, _err
 }
 
+// @param request - CreateShardTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateShardTaskResponse
 func (client *Client) CreateShardTaskWithOptions(request *CreateShardTaskRequest, runtime *util.RuntimeOptions) (_result *CreateShardTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16772,15 +22128,29 @@ func (client *Client) CreateShardTaskWithOptions(request *CreateShardTaskRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateShardTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateShardTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateShardTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - CreateShardTaskRequest
+//
+// @return CreateShardTaskResponse
 func (client *Client) CreateShardTask(request *CreateShardTaskRequest) (_result *CreateShardTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateShardTaskResponse{}
@@ -16792,6 +22162,11 @@ func (client *Client) CreateShardTask(request *CreateShardTaskRequest) (_result 
 	return _result, _err
 }
 
+// @param request - DescribeBackMenuRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBackMenuResponse
 func (client *Client) DescribeBackMenuWithOptions(request *DescribeBackMenuRequest, runtime *util.RuntimeOptions) (_result *DescribeBackMenuResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16816,15 +22191,29 @@ func (client *Client) DescribeBackMenuWithOptions(request *DescribeBackMenuReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeBackMenuResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeBackMenuResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeBackMenuResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - DescribeBackMenuRequest
+//
+// @return DescribeBackMenuResponse
 func (client *Client) DescribeBackMenu(request *DescribeBackMenuRequest) (_result *DescribeBackMenuResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeBackMenuResponse{}
@@ -16836,6 +22225,11 @@ func (client *Client) DescribeBackMenu(request *DescribeBackMenuRequest) (_resul
 	return _result, _err
 }
 
+// @param request - DescribeBackupDbsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBackupDbsResponse
 func (client *Client) DescribeBackupDbsWithOptions(request *DescribeBackupDbsRequest, runtime *util.RuntimeOptions) (_result *DescribeBackupDbsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16868,15 +22262,29 @@ func (client *Client) DescribeBackupDbsWithOptions(request *DescribeBackupDbsReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeBackupDbsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeBackupDbsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeBackupDbsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - DescribeBackupDbsRequest
+//
+// @return DescribeBackupDbsResponse
 func (client *Client) DescribeBackupDbs(request *DescribeBackupDbsRequest) (_result *DescribeBackupDbsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeBackupDbsResponse{}
@@ -16888,6 +22296,15 @@ func (client *Client) DescribeBackupDbs(request *DescribeBackupDbsRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the backup settings of local logs.
+//
+// @param request - DescribeBackupLocalRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBackupLocalResponse
 func (client *Client) DescribeBackupLocalWithOptions(request *DescribeBackupLocalRequest, runtime *util.RuntimeOptions) (_result *DescribeBackupLocalResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16912,15 +22329,33 @@ func (client *Client) DescribeBackupLocalWithOptions(request *DescribeBackupLoca
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeBackupLocalResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeBackupLocalResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeBackupLocalResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the backup settings of local logs.
+//
+// @param request - DescribeBackupLocalRequest
+//
+// @return DescribeBackupLocalResponse
 func (client *Client) DescribeBackupLocal(request *DescribeBackupLocalRequest) (_result *DescribeBackupLocalResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeBackupLocalResponse{}
@@ -16932,6 +22367,15 @@ func (client *Client) DescribeBackupLocal(request *DescribeBackupLocalRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a backup policy.
+//
+// @param request - DescribeBackupPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBackupPolicyResponse
 func (client *Client) DescribeBackupPolicyWithOptions(request *DescribeBackupPolicyRequest, runtime *util.RuntimeOptions) (_result *DescribeBackupPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16956,15 +22400,33 @@ func (client *Client) DescribeBackupPolicyWithOptions(request *DescribeBackupPol
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeBackupPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeBackupPolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeBackupPolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the information about a backup policy.
+//
+// @param request - DescribeBackupPolicyRequest
+//
+// @return DescribeBackupPolicyResponse
 func (client *Client) DescribeBackupPolicy(request *DescribeBackupPolicyRequest) (_result *DescribeBackupPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeBackupPolicyResponse{}
@@ -16976,6 +22438,11 @@ func (client *Client) DescribeBackupPolicy(request *DescribeBackupPolicyRequest)
 	return _result, _err
 }
 
+// @param request - DescribeBackupSetsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBackupSetsResponse
 func (client *Client) DescribeBackupSetsWithOptions(request *DescribeBackupSetsRequest, runtime *util.RuntimeOptions) (_result *DescribeBackupSetsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17008,15 +22475,29 @@ func (client *Client) DescribeBackupSetsWithOptions(request *DescribeBackupSetsR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeBackupSetsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeBackupSetsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeBackupSetsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - DescribeBackupSetsRequest
+//
+// @return DescribeBackupSetsResponse
 func (client *Client) DescribeBackupSets(request *DescribeBackupSetsRequest) (_result *DescribeBackupSetsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeBackupSetsResponse{}
@@ -17028,6 +22509,11 @@ func (client *Client) DescribeBackupSets(request *DescribeBackupSetsRequest) (_r
 	return _result, _err
 }
 
+// @param request - DescribeBackupTimesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBackupTimesResponse
 func (client *Client) DescribeBackupTimesWithOptions(request *DescribeBackupTimesRequest, runtime *util.RuntimeOptions) (_result *DescribeBackupTimesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17052,15 +22538,29 @@ func (client *Client) DescribeBackupTimesWithOptions(request *DescribeBackupTime
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeBackupTimesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeBackupTimesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeBackupTimesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - DescribeBackupTimesRequest
+//
+// @return DescribeBackupTimesResponse
 func (client *Client) DescribeBackupTimes(request *DescribeBackupTimesRequest) (_result *DescribeBackupTimesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeBackupTimesResponse{}
@@ -17072,6 +22572,11 @@ func (client *Client) DescribeBackupTimes(request *DescribeBackupTimesRequest) (
 	return _result, _err
 }
 
+// @param request - DescribeBroadcastTablesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBroadcastTablesResponse
 func (client *Client) DescribeBroadcastTablesWithOptions(request *DescribeBroadcastTablesRequest, runtime *util.RuntimeOptions) (_result *DescribeBroadcastTablesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17116,15 +22621,29 @@ func (client *Client) DescribeBroadcastTablesWithOptions(request *DescribeBroadc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeBroadcastTablesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeBroadcastTablesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeBroadcastTablesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - DescribeBroadcastTablesRequest
+//
+// @return DescribeBroadcastTablesResponse
 func (client *Client) DescribeBroadcastTables(request *DescribeBroadcastTablesRequest) (_result *DescribeBroadcastTablesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeBroadcastTablesResponse{}
@@ -17136,6 +22655,11 @@ func (client *Client) DescribeBroadcastTables(request *DescribeBroadcastTablesRe
 	return _result, _err
 }
 
+// @param request - DescribeDbInstanceDbsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDbInstanceDbsResponse
 func (client *Client) DescribeDbInstanceDbsWithOptions(request *DescribeDbInstanceDbsRequest, runtime *util.RuntimeOptions) (_result *DescribeDbInstanceDbsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17176,15 +22700,29 @@ func (client *Client) DescribeDbInstanceDbsWithOptions(request *DescribeDbInstan
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDbInstanceDbsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDbInstanceDbsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDbInstanceDbsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - DescribeDbInstanceDbsRequest
+//
+// @return DescribeDbInstanceDbsResponse
 func (client *Client) DescribeDbInstanceDbs(request *DescribeDbInstanceDbsRequest) (_result *DescribeDbInstanceDbsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDbInstanceDbsResponse{}
@@ -17196,6 +22734,15 @@ func (client *Client) DescribeDbInstanceDbs(request *DescribeDbInstanceDbsReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries DescribeDbInstances of the storage layer, such as RDS or PolarDB.
+//
+// @param request - DescribeDbInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDbInstancesResponse
 func (client *Client) DescribeDbInstancesWithOptions(request *DescribeDbInstancesRequest, runtime *util.RuntimeOptions) (_result *DescribeDbInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17240,15 +22787,33 @@ func (client *Client) DescribeDbInstancesWithOptions(request *DescribeDbInstance
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDbInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDbInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDbInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries DescribeDbInstances of the storage layer, such as RDS or PolarDB.
+//
+// @param request - DescribeDbInstancesRequest
+//
+// @return DescribeDbInstancesResponse
 func (client *Client) DescribeDbInstances(request *DescribeDbInstancesRequest) (_result *DescribeDbInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDbInstancesResponse{}
@@ -17260,6 +22825,11 @@ func (client *Client) DescribeDbInstances(request *DescribeDbInstancesRequest) (
 	return _result, _err
 }
 
+// @param request - DescribeDrdsDBRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDrdsDBResponse
 func (client *Client) DescribeDrdsDBWithOptions(request *DescribeDrdsDBRequest, runtime *util.RuntimeOptions) (_result *DescribeDrdsDBResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17288,15 +22858,29 @@ func (client *Client) DescribeDrdsDBWithOptions(request *DescribeDrdsDBRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDrdsDBResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDrdsDBResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDrdsDBResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - DescribeDrdsDBRequest
+//
+// @return DescribeDrdsDBResponse
 func (client *Client) DescribeDrdsDB(request *DescribeDrdsDBRequest) (_result *DescribeDrdsDBResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDrdsDBResponse{}
@@ -17308,6 +22892,15 @@ func (client *Client) DescribeDrdsDB(request *DescribeDrdsDBRequest) (_result *D
 	return _result, _err
 }
 
+// Summary:
+//
+// You can call this operation to query the information of the PolarDB cluster in the DRDS logical database.
+//
+// @param request - DescribeDrdsDBClusterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDrdsDBClusterResponse
 func (client *Client) DescribeDrdsDBClusterWithOptions(request *DescribeDrdsDBClusterRequest, runtime *util.RuntimeOptions) (_result *DescribeDrdsDBClusterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17340,15 +22933,33 @@ func (client *Client) DescribeDrdsDBClusterWithOptions(request *DescribeDrdsDBCl
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDrdsDBClusterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDrdsDBClusterResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDrdsDBClusterResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// You can call this operation to query the information of the PolarDB cluster in the DRDS logical database.
+//
+// @param request - DescribeDrdsDBClusterRequest
+//
+// @return DescribeDrdsDBClusterResponse
 func (client *Client) DescribeDrdsDBCluster(request *DescribeDrdsDBClusterRequest) (_result *DescribeDrdsDBClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDrdsDBClusterResponse{}
@@ -17360,6 +22971,11 @@ func (client *Client) DescribeDrdsDBCluster(request *DescribeDrdsDBClusterReques
 	return _result, _err
 }
 
+// @param request - DescribeDrdsDBIpWhiteListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDrdsDBIpWhiteListResponse
 func (client *Client) DescribeDrdsDBIpWhiteListWithOptions(request *DescribeDrdsDBIpWhiteListRequest, runtime *util.RuntimeOptions) (_result *DescribeDrdsDBIpWhiteListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17396,15 +23012,29 @@ func (client *Client) DescribeDrdsDBIpWhiteListWithOptions(request *DescribeDrds
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDrdsDBIpWhiteListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDrdsDBIpWhiteListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDrdsDBIpWhiteListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - DescribeDrdsDBIpWhiteListRequest
+//
+// @return DescribeDrdsDBIpWhiteListResponse
 func (client *Client) DescribeDrdsDBIpWhiteList(request *DescribeDrdsDBIpWhiteListRequest) (_result *DescribeDrdsDBIpWhiteListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDrdsDBIpWhiteListResponse{}
@@ -17416,6 +23046,11 @@ func (client *Client) DescribeDrdsDBIpWhiteList(request *DescribeDrdsDBIpWhiteLi
 	return _result, _err
 }
 
+// @param request - DescribeDrdsDBsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDrdsDBsResponse
 func (client *Client) DescribeDrdsDBsWithOptions(request *DescribeDrdsDBsRequest, runtime *util.RuntimeOptions) (_result *DescribeDrdsDBsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17452,15 +23087,29 @@ func (client *Client) DescribeDrdsDBsWithOptions(request *DescribeDrdsDBsRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDrdsDBsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDrdsDBsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDrdsDBsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - DescribeDrdsDBsRequest
+//
+// @return DescribeDrdsDBsResponse
 func (client *Client) DescribeDrdsDBs(request *DescribeDrdsDBsRequest) (_result *DescribeDrdsDBsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDrdsDBsResponse{}
@@ -17472,6 +23121,11 @@ func (client *Client) DescribeDrdsDBs(request *DescribeDrdsDBsRequest) (_result 
 	return _result, _err
 }
 
+// @param request - DescribeDrdsDbInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDrdsDbInstanceResponse
 func (client *Client) DescribeDrdsDbInstanceWithOptions(request *DescribeDrdsDbInstanceRequest, runtime *util.RuntimeOptions) (_result *DescribeDrdsDbInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17504,15 +23158,29 @@ func (client *Client) DescribeDrdsDbInstanceWithOptions(request *DescribeDrdsDbI
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDrdsDbInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDrdsDbInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDrdsDbInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - DescribeDrdsDbInstanceRequest
+//
+// @return DescribeDrdsDbInstanceResponse
 func (client *Client) DescribeDrdsDbInstance(request *DescribeDrdsDbInstanceRequest) (_result *DescribeDrdsDbInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDrdsDbInstanceResponse{}
@@ -17524,6 +23192,15 @@ func (client *Client) DescribeDrdsDbInstance(request *DescribeDrdsDbInstanceRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries ApsaraDB RDS for MySQL instances that are used to store the data of a database.
+//
+// @param request - DescribeDrdsDbInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDrdsDbInstancesResponse
 func (client *Client) DescribeDrdsDbInstancesWithOptions(request *DescribeDrdsDbInstancesRequest, runtime *util.RuntimeOptions) (_result *DescribeDrdsDbInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17560,15 +23237,33 @@ func (client *Client) DescribeDrdsDbInstancesWithOptions(request *DescribeDrdsDb
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDrdsDbInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDrdsDbInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDrdsDbInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries ApsaraDB RDS for MySQL instances that are used to store the data of a database.
+//
+// @param request - DescribeDrdsDbInstancesRequest
+//
+// @return DescribeDrdsDbInstancesResponse
 func (client *Client) DescribeDrdsDbInstances(request *DescribeDrdsDbInstancesRequest) (_result *DescribeDrdsDbInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDrdsDbInstancesResponse{}
@@ -17580,6 +23275,11 @@ func (client *Client) DescribeDrdsDbInstances(request *DescribeDrdsDbInstancesRe
 	return _result, _err
 }
 
+// @param request - DescribeDrdsDbRdsNameListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDrdsDbRdsNameListResponse
 func (client *Client) DescribeDrdsDbRdsNameListWithOptions(request *DescribeDrdsDbRdsNameListRequest, runtime *util.RuntimeOptions) (_result *DescribeDrdsDbRdsNameListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17608,15 +23308,29 @@ func (client *Client) DescribeDrdsDbRdsNameListWithOptions(request *DescribeDrds
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDrdsDbRdsNameListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDrdsDbRdsNameListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDrdsDbRdsNameListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - DescribeDrdsDbRdsNameListRequest
+//
+// @return DescribeDrdsDbRdsNameListResponse
 func (client *Client) DescribeDrdsDbRdsNameList(request *DescribeDrdsDbRdsNameListRequest) (_result *DescribeDrdsDbRdsNameListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDrdsDbRdsNameListResponse{}
@@ -17628,6 +23342,15 @@ func (client *Client) DescribeDrdsDbRdsNameList(request *DescribeDrdsDbRdsNameLi
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of a PolarDB-X 1.0 instance.
+//
+// @param request - DescribeDrdsInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDrdsInstanceResponse
 func (client *Client) DescribeDrdsInstanceWithOptions(request *DescribeDrdsInstanceRequest, runtime *util.RuntimeOptions) (_result *DescribeDrdsInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17656,15 +23379,33 @@ func (client *Client) DescribeDrdsInstanceWithOptions(request *DescribeDrdsInsta
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDrdsInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDrdsInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDrdsInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the details of a PolarDB-X 1.0 instance.
+//
+// @param request - DescribeDrdsInstanceRequest
+//
+// @return DescribeDrdsInstanceResponse
 func (client *Client) DescribeDrdsInstance(request *DescribeDrdsInstanceRequest) (_result *DescribeDrdsInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDrdsInstanceResponse{}
@@ -17676,6 +23417,11 @@ func (client *Client) DescribeDrdsInstance(request *DescribeDrdsInstanceRequest)
 	return _result, _err
 }
 
+// @param request - DescribeDrdsInstanceDbMonitorRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDrdsInstanceDbMonitorResponse
 func (client *Client) DescribeDrdsInstanceDbMonitorWithOptions(request *DescribeDrdsInstanceDbMonitorRequest, runtime *util.RuntimeOptions) (_result *DescribeDrdsInstanceDbMonitorResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17720,15 +23466,29 @@ func (client *Client) DescribeDrdsInstanceDbMonitorWithOptions(request *Describe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDrdsInstanceDbMonitorResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDrdsInstanceDbMonitorResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDrdsInstanceDbMonitorResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - DescribeDrdsInstanceDbMonitorRequest
+//
+// @return DescribeDrdsInstanceDbMonitorResponse
 func (client *Client) DescribeDrdsInstanceDbMonitor(request *DescribeDrdsInstanceDbMonitorRequest) (_result *DescribeDrdsInstanceDbMonitorResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDrdsInstanceDbMonitorResponse{}
@@ -17740,6 +23500,11 @@ func (client *Client) DescribeDrdsInstanceDbMonitor(request *DescribeDrdsInstanc
 	return _result, _err
 }
 
+// @param request - DescribeDrdsInstanceLevelTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDrdsInstanceLevelTasksResponse
 func (client *Client) DescribeDrdsInstanceLevelTasksWithOptions(request *DescribeDrdsInstanceLevelTasksRequest, runtime *util.RuntimeOptions) (_result *DescribeDrdsInstanceLevelTasksResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17764,15 +23529,29 @@ func (client *Client) DescribeDrdsInstanceLevelTasksWithOptions(request *Describ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDrdsInstanceLevelTasksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDrdsInstanceLevelTasksResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDrdsInstanceLevelTasksResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - DescribeDrdsInstanceLevelTasksRequest
+//
+// @return DescribeDrdsInstanceLevelTasksResponse
 func (client *Client) DescribeDrdsInstanceLevelTasks(request *DescribeDrdsInstanceLevelTasksRequest) (_result *DescribeDrdsInstanceLevelTasksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDrdsInstanceLevelTasksResponse{}
@@ -17784,6 +23563,11 @@ func (client *Client) DescribeDrdsInstanceLevelTasks(request *DescribeDrdsInstan
 	return _result, _err
 }
 
+// @param request - DescribeDrdsInstanceMonitorRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDrdsInstanceMonitorResponse
 func (client *Client) DescribeDrdsInstanceMonitorWithOptions(request *DescribeDrdsInstanceMonitorRequest, runtime *util.RuntimeOptions) (_result *DescribeDrdsInstanceMonitorResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17828,15 +23612,29 @@ func (client *Client) DescribeDrdsInstanceMonitorWithOptions(request *DescribeDr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDrdsInstanceMonitorResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDrdsInstanceMonitorResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDrdsInstanceMonitorResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - DescribeDrdsInstanceMonitorRequest
+//
+// @return DescribeDrdsInstanceMonitorResponse
 func (client *Client) DescribeDrdsInstanceMonitor(request *DescribeDrdsInstanceMonitorRequest) (_result *DescribeDrdsInstanceMonitorResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDrdsInstanceMonitorResponse{}
@@ -17848,6 +23646,11 @@ func (client *Client) DescribeDrdsInstanceMonitor(request *DescribeDrdsInstanceM
 	return _result, _err
 }
 
+// @param request - DescribeDrdsInstanceVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDrdsInstanceVersionResponse
 func (client *Client) DescribeDrdsInstanceVersionWithOptions(request *DescribeDrdsInstanceVersionRequest, runtime *util.RuntimeOptions) (_result *DescribeDrdsInstanceVersionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17876,15 +23679,29 @@ func (client *Client) DescribeDrdsInstanceVersionWithOptions(request *DescribeDr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDrdsInstanceVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDrdsInstanceVersionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDrdsInstanceVersionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - DescribeDrdsInstanceVersionRequest
+//
+// @return DescribeDrdsInstanceVersionResponse
 func (client *Client) DescribeDrdsInstanceVersion(request *DescribeDrdsInstanceVersionRequest) (_result *DescribeDrdsInstanceVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDrdsInstanceVersionResponse{}
@@ -17896,6 +23713,15 @@ func (client *Client) DescribeDrdsInstanceVersion(request *DescribeDrdsInstanceV
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries instances that meet the specified conditions.
+//
+// @param request - DescribeDrdsInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDrdsInstancesResponse
 func (client *Client) DescribeDrdsInstancesWithOptions(request *DescribeDrdsInstancesRequest, runtime *util.RuntimeOptions) (_result *DescribeDrdsInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17956,15 +23782,33 @@ func (client *Client) DescribeDrdsInstancesWithOptions(request *DescribeDrdsInst
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDrdsInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDrdsInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDrdsInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries instances that meet the specified conditions.
+//
+// @param request - DescribeDrdsInstancesRequest
+//
+// @return DescribeDrdsInstancesResponse
 func (client *Client) DescribeDrdsInstances(request *DescribeDrdsInstancesRequest) (_result *DescribeDrdsInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDrdsInstancesResponse{}
@@ -17976,6 +23820,11 @@ func (client *Client) DescribeDrdsInstances(request *DescribeDrdsInstancesReques
 	return _result, _err
 }
 
+// @param request - DescribeDrdsParamsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDrdsParamsResponse
 func (client *Client) DescribeDrdsParamsWithOptions(request *DescribeDrdsParamsRequest, runtime *util.RuntimeOptions) (_result *DescribeDrdsParamsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18012,15 +23861,29 @@ func (client *Client) DescribeDrdsParamsWithOptions(request *DescribeDrdsParamsR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDrdsParamsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDrdsParamsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDrdsParamsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - DescribeDrdsParamsRequest
+//
+// @return DescribeDrdsParamsResponse
 func (client *Client) DescribeDrdsParams(request *DescribeDrdsParamsRequest) (_result *DescribeDrdsParamsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDrdsParamsResponse{}
@@ -18032,6 +23895,15 @@ func (client *Client) DescribeDrdsParams(request *DescribeDrdsParamsRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about all custom ApsaraDB RDS for MySQL instances in a PolarDB-X instance.
+//
+// @param request - DescribeDrdsRdsInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDrdsRdsInstancesResponse
 func (client *Client) DescribeDrdsRdsInstancesWithOptions(request *DescribeDrdsRdsInstancesRequest, runtime *util.RuntimeOptions) (_result *DescribeDrdsRdsInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18056,15 +23928,33 @@ func (client *Client) DescribeDrdsRdsInstancesWithOptions(request *DescribeDrdsR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDrdsRdsInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDrdsRdsInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDrdsRdsInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the information about all custom ApsaraDB RDS for MySQL instances in a PolarDB-X instance.
+//
+// @param request - DescribeDrdsRdsInstancesRequest
+//
+// @return DescribeDrdsRdsInstancesResponse
 func (client *Client) DescribeDrdsRdsInstances(request *DescribeDrdsRdsInstancesRequest) (_result *DescribeDrdsRdsInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDrdsRdsInstancesResponse{}
@@ -18076,6 +23966,15 @@ func (client *Client) DescribeDrdsRdsInstances(request *DescribeDrdsRdsInstances
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the database shards of an PolarDB-X 1.0 instance.
+//
+// @param request - DescribeDrdsShardingDbsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDrdsShardingDbsResponse
 func (client *Client) DescribeDrdsShardingDbsWithOptions(request *DescribeDrdsShardingDbsRequest, runtime *util.RuntimeOptions) (_result *DescribeDrdsShardingDbsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18116,15 +24015,33 @@ func (client *Client) DescribeDrdsShardingDbsWithOptions(request *DescribeDrdsSh
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDrdsShardingDbsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDrdsShardingDbsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDrdsShardingDbsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the database shards of an PolarDB-X 1.0 instance.
+//
+// @param request - DescribeDrdsShardingDbsRequest
+//
+// @return DescribeDrdsShardingDbsResponse
 func (client *Client) DescribeDrdsShardingDbs(request *DescribeDrdsShardingDbsRequest) (_result *DescribeDrdsShardingDbsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDrdsShardingDbsResponse{}
@@ -18136,6 +24053,15 @@ func (client *Client) DescribeDrdsShardingDbs(request *DescribeDrdsShardingDbsRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a slow SQL query.
+//
+// @param request - DescribeDrdsSlowSqlsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDrdsSlowSqlsResponse
 func (client *Client) DescribeDrdsSlowSqlsWithOptions(request *DescribeDrdsSlowSqlsRequest, runtime *util.RuntimeOptions) (_result *DescribeDrdsSlowSqlsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18166,6 +24092,10 @@ func (client *Client) DescribeDrdsSlowSqlsWithOptions(request *DescribeDrdsSlowS
 		query["PageSize"] = request.PageSize
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		query["StartTime"] = request.StartTime
 	}
@@ -18184,15 +24114,33 @@ func (client *Client) DescribeDrdsSlowSqlsWithOptions(request *DescribeDrdsSlowS
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDrdsSlowSqlsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDrdsSlowSqlsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDrdsSlowSqlsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries a slow SQL query.
+//
+// @param request - DescribeDrdsSlowSqlsRequest
+//
+// @return DescribeDrdsSlowSqlsResponse
 func (client *Client) DescribeDrdsSlowSqls(request *DescribeDrdsSlowSqlsRequest) (_result *DescribeDrdsSlowSqlsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDrdsSlowSqlsResponse{}
@@ -18204,6 +24152,15 @@ func (client *Client) DescribeDrdsSlowSqls(request *DescribeDrdsSlowSqlsRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the SQL audit details of a PolarDB-X 1.0 instance.
+//
+// @param request - DescribeDrdsSqlAuditStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDrdsSqlAuditStatusResponse
 func (client *Client) DescribeDrdsSqlAuditStatusWithOptions(request *DescribeDrdsSqlAuditStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeDrdsSqlAuditStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18228,15 +24185,33 @@ func (client *Client) DescribeDrdsSqlAuditStatusWithOptions(request *DescribeDrd
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDrdsSqlAuditStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDrdsSqlAuditStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDrdsSqlAuditStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the SQL audit details of a PolarDB-X 1.0 instance.
+//
+// @param request - DescribeDrdsSqlAuditStatusRequest
+//
+// @return DescribeDrdsSqlAuditStatusResponse
 func (client *Client) DescribeDrdsSqlAuditStatus(request *DescribeDrdsSqlAuditStatusRequest) (_result *DescribeDrdsSqlAuditStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDrdsSqlAuditStatusResponse{}
@@ -18248,6 +24223,11 @@ func (client *Client) DescribeDrdsSqlAuditStatus(request *DescribeDrdsSqlAuditSt
 	return _result, _err
 }
 
+// @param request - DescribeDrdsTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDrdsTasksResponse
 func (client *Client) DescribeDrdsTasksWithOptions(request *DescribeDrdsTasksRequest, runtime *util.RuntimeOptions) (_result *DescribeDrdsTasksResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18280,15 +24260,29 @@ func (client *Client) DescribeDrdsTasksWithOptions(request *DescribeDrdsTasksReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDrdsTasksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDrdsTasksResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDrdsTasksResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - DescribeDrdsTasksRequest
+//
+// @return DescribeDrdsTasksResponse
 func (client *Client) DescribeDrdsTasks(request *DescribeDrdsTasksRequest) (_result *DescribeDrdsTasksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDrdsTasksResponse{}
@@ -18300,6 +24294,11 @@ func (client *Client) DescribeDrdsTasks(request *DescribeDrdsTasksRequest) (_res
 	return _result, _err
 }
 
+// @param request - DescribeExpandLogicTableInfoListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeExpandLogicTableInfoListResponse
 func (client *Client) DescribeExpandLogicTableInfoListWithOptions(request *DescribeExpandLogicTableInfoListRequest, runtime *util.RuntimeOptions) (_result *DescribeExpandLogicTableInfoListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18328,15 +24327,29 @@ func (client *Client) DescribeExpandLogicTableInfoListWithOptions(request *Descr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeExpandLogicTableInfoListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeExpandLogicTableInfoListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeExpandLogicTableInfoListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - DescribeExpandLogicTableInfoListRequest
+//
+// @return DescribeExpandLogicTableInfoListResponse
 func (client *Client) DescribeExpandLogicTableInfoList(request *DescribeExpandLogicTableInfoListRequest) (_result *DescribeExpandLogicTableInfoListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeExpandLogicTableInfoListResponse{}
@@ -18348,6 +24361,15 @@ func (client *Client) DescribeExpandLogicTableInfoList(request *DescribeExpandLo
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about databases on which hots-pot scale-out is performed.
+//
+// @param request - DescribeHotDbListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeHotDbListResponse
 func (client *Client) DescribeHotDbListWithOptions(request *DescribeHotDbListRequest, runtime *util.RuntimeOptions) (_result *DescribeHotDbListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18376,15 +24398,33 @@ func (client *Client) DescribeHotDbListWithOptions(request *DescribeHotDbListReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeHotDbListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeHotDbListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeHotDbListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the information about databases on which hots-pot scale-out is performed.
+//
+// @param request - DescribeHotDbListRequest
+//
+// @return DescribeHotDbListResponse
 func (client *Client) DescribeHotDbList(request *DescribeHotDbListRequest) (_result *DescribeHotDbListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeHotDbListResponse{}
@@ -18396,6 +24436,11 @@ func (client *Client) DescribeHotDbList(request *DescribeHotDbListRequest) (_res
 	return _result, _err
 }
 
+// @param request - DescribeInstDbLogInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstDbLogInfoResponse
 func (client *Client) DescribeInstDbLogInfoWithOptions(request *DescribeInstDbLogInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeInstDbLogInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18424,15 +24469,29 @@ func (client *Client) DescribeInstDbLogInfoWithOptions(request *DescribeInstDbLo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeInstDbLogInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeInstDbLogInfoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeInstDbLogInfoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - DescribeInstDbLogInfoRequest
+//
+// @return DescribeInstDbLogInfoResponse
 func (client *Client) DescribeInstDbLogInfo(request *DescribeInstDbLogInfoRequest) (_result *DescribeInstDbLogInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstDbLogInfoResponse{}
@@ -18444,6 +24503,15 @@ func (client *Client) DescribeInstDbLogInfo(request *DescribeInstDbLogInfoReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the names of the Log Service project and the Logstore used by the SQL audit feature.
+//
+// @param request - DescribeInstDbSlsInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstDbSlsInfoResponse
 func (client *Client) DescribeInstDbSlsInfoWithOptions(request *DescribeInstDbSlsInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeInstDbSlsInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18472,15 +24540,33 @@ func (client *Client) DescribeInstDbSlsInfoWithOptions(request *DescribeInstDbSl
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeInstDbSlsInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeInstDbSlsInfoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeInstDbSlsInfoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the names of the Log Service project and the Logstore used by the SQL audit feature.
+//
+// @param request - DescribeInstDbSlsInfoRequest
+//
+// @return DescribeInstDbSlsInfoResponse
 func (client *Client) DescribeInstDbSlsInfo(request *DescribeInstDbSlsInfoRequest) (_result *DescribeInstDbSlsInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstDbSlsInfoResponse{}
@@ -18492,6 +24578,15 @@ func (client *Client) DescribeInstDbSlsInfo(request *DescribeInstDbSlsInfoReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries information about an instance account.
+//
+// @param request - DescribeInstanceAccountsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstanceAccountsResponse
 func (client *Client) DescribeInstanceAccountsWithOptions(request *DescribeInstanceAccountsRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceAccountsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18516,15 +24611,33 @@ func (client *Client) DescribeInstanceAccountsWithOptions(request *DescribeInsta
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeInstanceAccountsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeInstanceAccountsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeInstanceAccountsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries information about an instance account.
+//
+// @param request - DescribeInstanceAccountsRequest
+//
+// @return DescribeInstanceAccountsResponse
 func (client *Client) DescribeInstanceAccounts(request *DescribeInstanceAccountsRequest) (_result *DescribeInstanceAccountsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstanceAccountsResponse{}
@@ -18536,6 +24649,15 @@ func (client *Client) DescribeInstanceAccounts(request *DescribeInstanceAccounts
 	return _result, _err
 }
 
+// Summary:
+//
+// Check whether zone switching is enabled
+//
+// @param request - DescribeInstanceSwitchAzoneRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstanceSwitchAzoneResponse
 func (client *Client) DescribeInstanceSwitchAzoneWithOptions(request *DescribeInstanceSwitchAzoneRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceSwitchAzoneResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18560,15 +24682,33 @@ func (client *Client) DescribeInstanceSwitchAzoneWithOptions(request *DescribeIn
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeInstanceSwitchAzoneResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeInstanceSwitchAzoneResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeInstanceSwitchAzoneResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Check whether zone switching is enabled
+//
+// @param request - DescribeInstanceSwitchAzoneRequest
+//
+// @return DescribeInstanceSwitchAzoneResponse
 func (client *Client) DescribeInstanceSwitchAzone(request *DescribeInstanceSwitchAzoneRequest) (_result *DescribeInstanceSwitchAzoneResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstanceSwitchAzoneResponse{}
@@ -18580,13 +24720,19 @@ func (client *Client) DescribeInstanceSwitchAzone(request *DescribeInstanceSwitc
 	return _result, _err
 }
 
-/**
- * ****
- *
- * @param request DescribeInstanceSwitchNetworkRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeInstanceSwitchNetworkResponse
- */
+// Summary:
+//
+// Queries whether you can change the network type of a PolarDB-X 1.0 instance.
+//
+// Description:
+//
+// ***
+//
+// @param request - DescribeInstanceSwitchNetworkRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstanceSwitchNetworkResponse
 func (client *Client) DescribeInstanceSwitchNetworkWithOptions(request *DescribeInstanceSwitchNetworkRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceSwitchNetworkResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18611,21 +24757,37 @@ func (client *Client) DescribeInstanceSwitchNetworkWithOptions(request *Describe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeInstanceSwitchNetworkResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeInstanceSwitchNetworkResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeInstanceSwitchNetworkResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
-/**
- * ****
- *
- * @param request DescribeInstanceSwitchNetworkRequest
- * @return DescribeInstanceSwitchNetworkResponse
- */
+// Summary:
+//
+// Queries whether you can change the network type of a PolarDB-X 1.0 instance.
+//
+// Description:
+//
+// ***
+//
+// @param request - DescribeInstanceSwitchNetworkRequest
+//
+// @return DescribeInstanceSwitchNetworkResponse
 func (client *Client) DescribeInstanceSwitchNetwork(request *DescribeInstanceSwitchNetworkRequest) (_result *DescribeInstanceSwitchNetworkResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstanceSwitchNetworkResponse{}
@@ -18637,6 +24799,11 @@ func (client *Client) DescribeInstanceSwitchNetwork(request *DescribeInstanceSwi
 	return _result, _err
 }
 
+// @param request - DescribePreCheckResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePreCheckResultResponse
 func (client *Client) DescribePreCheckResultWithOptions(request *DescribePreCheckResultRequest, runtime *util.RuntimeOptions) (_result *DescribePreCheckResultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18669,15 +24836,29 @@ func (client *Client) DescribePreCheckResultWithOptions(request *DescribePreChec
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribePreCheckResultResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribePreCheckResultResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribePreCheckResultResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - DescribePreCheckResultRequest
+//
+// @return DescribePreCheckResultResponse
 func (client *Client) DescribePreCheckResult(request *DescribePreCheckResultRequest) (_result *DescribePreCheckResultResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePreCheckResultResponse{}
@@ -18689,6 +24870,11 @@ func (client *Client) DescribePreCheckResult(request *DescribePreCheckResultRequ
 	return _result, _err
 }
 
+// @param request - DescribeRDSPerformanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRDSPerformanceResponse
 func (client *Client) DescribeRDSPerformanceWithOptions(request *DescribeRDSPerformanceRequest, runtime *util.RuntimeOptions) (_result *DescribeRDSPerformanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18733,15 +24919,29 @@ func (client *Client) DescribeRDSPerformanceWithOptions(request *DescribeRDSPerf
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeRDSPerformanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeRDSPerformanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeRDSPerformanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - DescribeRDSPerformanceRequest
+//
+// @return DescribeRDSPerformanceResponse
 func (client *Client) DescribeRDSPerformance(request *DescribeRDSPerformanceRequest) (_result *DescribeRDSPerformanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRDSPerformanceResponse{}
@@ -18753,6 +24953,11 @@ func (client *Client) DescribeRDSPerformance(request *DescribeRDSPerformanceRequ
 	return _result, _err
 }
 
+// @param request - DescribeRdsCommodityRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRdsCommodityResponse
 func (client *Client) DescribeRdsCommodityWithOptions(request *DescribeRdsCommodityRequest, runtime *util.RuntimeOptions) (_result *DescribeRdsCommodityResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18785,15 +24990,29 @@ func (client *Client) DescribeRdsCommodityWithOptions(request *DescribeRdsCommod
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeRdsCommodityResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeRdsCommodityResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeRdsCommodityResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - DescribeRdsCommodityRequest
+//
+// @return DescribeRdsCommodityResponse
 func (client *Client) DescribeRdsCommodity(request *DescribeRdsCommodityRequest) (_result *DescribeRdsCommodityResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRdsCommodityResponse{}
@@ -18805,6 +25024,11 @@ func (client *Client) DescribeRdsCommodity(request *DescribeRdsCommodityRequest)
 	return _result, _err
 }
 
+// @param request - DescribeRdsPerformanceSummaryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRdsPerformanceSummaryResponse
 func (client *Client) DescribeRdsPerformanceSummaryWithOptions(request *DescribeRdsPerformanceSummaryRequest, runtime *util.RuntimeOptions) (_result *DescribeRdsPerformanceSummaryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18837,15 +25061,29 @@ func (client *Client) DescribeRdsPerformanceSummaryWithOptions(request *Describe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeRdsPerformanceSummaryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeRdsPerformanceSummaryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeRdsPerformanceSummaryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - DescribeRdsPerformanceSummaryRequest
+//
+// @return DescribeRdsPerformanceSummaryResponse
 func (client *Client) DescribeRdsPerformanceSummary(request *DescribeRdsPerformanceSummaryRequest) (_result *DescribeRdsPerformanceSummaryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRdsPerformanceSummaryResponse{}
@@ -18857,6 +25095,11 @@ func (client *Client) DescribeRdsPerformanceSummary(request *DescribeRdsPerforma
 	return _result, _err
 }
 
+// @param request - DescribeRdsSuperAccountInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRdsSuperAccountInstancesResponse
 func (client *Client) DescribeRdsSuperAccountInstancesWithOptions(request *DescribeRdsSuperAccountInstancesRequest, runtime *util.RuntimeOptions) (_result *DescribeRdsSuperAccountInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18889,15 +25132,29 @@ func (client *Client) DescribeRdsSuperAccountInstancesWithOptions(request *Descr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeRdsSuperAccountInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeRdsSuperAccountInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeRdsSuperAccountInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - DescribeRdsSuperAccountInstancesRequest
+//
+// @return DescribeRdsSuperAccountInstancesResponse
 func (client *Client) DescribeRdsSuperAccountInstances(request *DescribeRdsSuperAccountInstancesRequest) (_result *DescribeRdsSuperAccountInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRdsSuperAccountInstancesResponse{}
@@ -18909,6 +25166,15 @@ func (client *Client) DescribeRdsSuperAccountInstances(request *DescribeRdsSuper
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the status of the table recycle bin.
+//
+// @param request - DescribeRecycleBinStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRecycleBinStatusResponse
 func (client *Client) DescribeRecycleBinStatusWithOptions(request *DescribeRecycleBinStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeRecycleBinStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18941,15 +25207,33 @@ func (client *Client) DescribeRecycleBinStatusWithOptions(request *DescribeRecyc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeRecycleBinStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeRecycleBinStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeRecycleBinStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the status of the table recycle bin.
+//
+// @param request - DescribeRecycleBinStatusRequest
+//
+// @return DescribeRecycleBinStatusResponse
 func (client *Client) DescribeRecycleBinStatus(request *DescribeRecycleBinStatusRequest) (_result *DescribeRecycleBinStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRecycleBinStatusResponse{}
@@ -18961,6 +25245,15 @@ func (client *Client) DescribeRecycleBinStatus(request *DescribeRecycleBinStatus
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the tables that can be restored in the recycle bin.
+//
+// @param request - DescribeRecycleBinTablesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRecycleBinTablesResponse
 func (client *Client) DescribeRecycleBinTablesWithOptions(request *DescribeRecycleBinTablesRequest, runtime *util.RuntimeOptions) (_result *DescribeRecycleBinTablesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18993,15 +25286,33 @@ func (client *Client) DescribeRecycleBinTablesWithOptions(request *DescribeRecyc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeRecycleBinTablesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeRecycleBinTablesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeRecycleBinTablesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the tables that can be restored in the recycle bin.
+//
+// @param request - DescribeRecycleBinTablesRequest
+//
+// @return DescribeRecycleBinTablesResponse
 func (client *Client) DescribeRecycleBinTables(request *DescribeRecycleBinTablesRequest) (_result *DescribeRecycleBinTablesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRecycleBinTablesResponse{}
@@ -19013,6 +25324,15 @@ func (client *Client) DescribeRecycleBinTables(request *DescribeRecycleBinTables
 	return _result, _err
 }
 
+// Summary:
+//
+// You can call the DescribeRestoreOrder operation to view the details of the order.
+//
+// @param request - DescribeRestoreOrderRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRestoreOrderResponse
 func (client *Client) DescribeRestoreOrderWithOptions(request *DescribeRestoreOrderRequest, runtime *util.RuntimeOptions) (_result *DescribeRestoreOrderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19057,15 +25377,33 @@ func (client *Client) DescribeRestoreOrderWithOptions(request *DescribeRestoreOr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeRestoreOrderResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeRestoreOrderResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeRestoreOrderResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// You can call the DescribeRestoreOrder operation to view the details of the order.
+//
+// @param request - DescribeRestoreOrderRequest
+//
+// @return DescribeRestoreOrderResponse
 func (client *Client) DescribeRestoreOrder(request *DescribeRestoreOrderRequest) (_result *DescribeRestoreOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRestoreOrderResponse{}
@@ -19077,6 +25415,11 @@ func (client *Client) DescribeRestoreOrder(request *DescribeRestoreOrderRequest)
 	return _result, _err
 }
 
+// @param request - DescribeShardTaskInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeShardTaskInfoResponse
 func (client *Client) DescribeShardTaskInfoWithOptions(request *DescribeShardTaskInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeShardTaskInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19117,15 +25460,29 @@ func (client *Client) DescribeShardTaskInfoWithOptions(request *DescribeShardTas
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeShardTaskInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeShardTaskInfoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeShardTaskInfoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - DescribeShardTaskInfoRequest
+//
+// @return DescribeShardTaskInfoResponse
 func (client *Client) DescribeShardTaskInfo(request *DescribeShardTaskInfoRequest) (_result *DescribeShardTaskInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeShardTaskInfoResponse{}
@@ -19137,6 +25494,15 @@ func (client *Client) DescribeShardTaskInfo(request *DescribeShardTaskInfoReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the flashback tasks that are performed on a PolarDB-X 1.0 instance.
+//
+// @param request - DescribeSqlFlashbakTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSqlFlashbakTaskResponse
 func (client *Client) DescribeSqlFlashbakTaskWithOptions(request *DescribeSqlFlashbakTaskRequest, runtime *util.RuntimeOptions) (_result *DescribeSqlFlashbakTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19161,15 +25527,33 @@ func (client *Client) DescribeSqlFlashbakTaskWithOptions(request *DescribeSqlFla
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeSqlFlashbakTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeSqlFlashbakTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeSqlFlashbakTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the flashback tasks that are performed on a PolarDB-X 1.0 instance.
+//
+// @param request - DescribeSqlFlashbakTaskRequest
+//
+// @return DescribeSqlFlashbakTaskResponse
 func (client *Client) DescribeSqlFlashbakTask(request *DescribeSqlFlashbakTaskRequest) (_result *DescribeSqlFlashbakTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSqlFlashbakTaskResponse{}
@@ -19181,6 +25565,15 @@ func (client *Client) DescribeSqlFlashbakTask(request *DescribeSqlFlashbakTaskRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries information about the schema of a table.
+//
+// @param request - DescribeTableRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeTableResponse
 func (client *Client) DescribeTableWithOptions(request *DescribeTableRequest, runtime *util.RuntimeOptions) (_result *DescribeTableResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19217,15 +25610,33 @@ func (client *Client) DescribeTableWithOptions(request *DescribeTableRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeTableResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeTableResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeTableResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries information about the schema of a table.
+//
+// @param request - DescribeTableRequest
+//
+// @return DescribeTableResponse
 func (client *Client) DescribeTable(request *DescribeTableRequest) (_result *DescribeTableResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeTableResponse{}
@@ -19237,6 +25648,11 @@ func (client *Client) DescribeTable(request *DescribeTableRequest) (_result *Des
 	return _result, _err
 }
 
+// @param request - DescribeTableListByTypeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeTableListByTypeResponse
 func (client *Client) DescribeTableListByTypeWithOptions(request *DescribeTableListByTypeRequest, runtime *util.RuntimeOptions) (_result *DescribeTableListByTypeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19285,15 +25701,29 @@ func (client *Client) DescribeTableListByTypeWithOptions(request *DescribeTableL
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeTableListByTypeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeTableListByTypeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeTableListByTypeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - DescribeTableListByTypeRequest
+//
+// @return DescribeTableListByTypeResponse
 func (client *Client) DescribeTableListByType(request *DescribeTableListByTypeRequest) (_result *DescribeTableListByTypeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeTableListByTypeResponse{}
@@ -19305,6 +25735,15 @@ func (client *Client) DescribeTableListByType(request *DescribeTableListByTypeRe
 	return _result, _err
 }
 
+// Summary:
+//
+// DescribeTables文档变更
+//
+// @param request - DescribeTablesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeTablesResponse
 func (client *Client) DescribeTablesWithOptions(request *DescribeTablesRequest, runtime *util.RuntimeOptions) (_result *DescribeTablesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19349,15 +25788,33 @@ func (client *Client) DescribeTablesWithOptions(request *DescribeTablesRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeTablesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeTablesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeTablesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// DescribeTables文档变更
+//
+// @param request - DescribeTablesRequest
+//
+// @return DescribeTablesResponse
 func (client *Client) DescribeTables(request *DescribeTablesRequest) (_result *DescribeTablesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeTablesResponse{}
@@ -19369,6 +25826,15 @@ func (client *Client) DescribeTables(request *DescribeTablesRequest) (_result *D
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables the SQL audit feature for a database.
+//
+// @param request - DisableSqlAuditRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableSqlAuditResponse
 func (client *Client) DisableSqlAuditWithOptions(request *DisableSqlAuditRequest, runtime *util.RuntimeOptions) (_result *DisableSqlAuditResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19397,15 +25863,33 @@ func (client *Client) DisableSqlAuditWithOptions(request *DisableSqlAuditRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DisableSqlAuditResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DisableSqlAuditResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DisableSqlAuditResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Disables the SQL audit feature for a database.
+//
+// @param request - DisableSqlAuditRequest
+//
+// @return DisableSqlAuditResponse
 func (client *Client) DisableSqlAudit(request *DisableSqlAuditRequest) (_result *DisableSqlAuditResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DisableSqlAuditResponse{}
@@ -19417,6 +25901,15 @@ func (client *Client) DisableSqlAudit(request *DisableSqlAuditRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an IPv6 address.
+//
+// @param request - EnableInstanceIpv6AddressRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableInstanceIpv6AddressResponse
 func (client *Client) EnableInstanceIpv6AddressWithOptions(request *EnableInstanceIpv6AddressRequest, runtime *util.RuntimeOptions) (_result *EnableInstanceIpv6AddressResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19445,15 +25938,33 @@ func (client *Client) EnableInstanceIpv6AddressWithOptions(request *EnableInstan
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &EnableInstanceIpv6AddressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &EnableInstanceIpv6AddressResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &EnableInstanceIpv6AddressResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Creates an IPv6 address.
+//
+// @param request - EnableInstanceIpv6AddressRequest
+//
+// @return EnableInstanceIpv6AddressResponse
 func (client *Client) EnableInstanceIpv6Address(request *EnableInstanceIpv6AddressRequest) (_result *EnableInstanceIpv6AddressResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EnableInstanceIpv6AddressResponse{}
@@ -19465,6 +25976,15 @@ func (client *Client) EnableInstanceIpv6Address(request *EnableInstanceIpv6Addre
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables the SQL audit feature for a database.
+//
+// @param request - EnableSqlAuditRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableSqlAuditResponse
 func (client *Client) EnableSqlAuditWithOptions(request *EnableSqlAuditRequest, runtime *util.RuntimeOptions) (_result *EnableSqlAuditResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19505,15 +26025,33 @@ func (client *Client) EnableSqlAuditWithOptions(request *EnableSqlAuditRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &EnableSqlAuditResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &EnableSqlAuditResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &EnableSqlAuditResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Enables the SQL audit feature for a database.
+//
+// @param request - EnableSqlAuditRequest
+//
+// @return EnableSqlAuditResponse
 func (client *Client) EnableSqlAudit(request *EnableSqlAuditRequest) (_result *EnableSqlAuditResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EnableSqlAuditResponse{}
@@ -19525,6 +26063,11 @@ func (client *Client) EnableSqlAudit(request *EnableSqlAuditRequest) (_result *E
 	return _result, _err
 }
 
+// @param request - EnableSqlFlashbackMatchSwitchRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableSqlFlashbackMatchSwitchResponse
 func (client *Client) EnableSqlFlashbackMatchSwitchWithOptions(request *EnableSqlFlashbackMatchSwitchRequest, runtime *util.RuntimeOptions) (_result *EnableSqlFlashbackMatchSwitchResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19553,15 +26096,29 @@ func (client *Client) EnableSqlFlashbackMatchSwitchWithOptions(request *EnableSq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &EnableSqlFlashbackMatchSwitchResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &EnableSqlFlashbackMatchSwitchResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &EnableSqlFlashbackMatchSwitchResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - EnableSqlFlashbackMatchSwitchRequest
+//
+// @return EnableSqlFlashbackMatchSwitchResponse
 func (client *Client) EnableSqlFlashbackMatchSwitch(request *EnableSqlFlashbackMatchSwitchRequest) (_result *EnableSqlFlashbackMatchSwitchResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EnableSqlFlashbackMatchSwitchResponse{}
@@ -19573,6 +26130,15 @@ func (client *Client) EnableSqlFlashbackMatchSwitch(request *EnableSqlFlashbackM
 	return _result, _err
 }
 
+// Summary:
+//
+// Restores a logical table that is deleted.
+//
+// @param request - FlashbackRecycleBinTableRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FlashbackRecycleBinTableResponse
 func (client *Client) FlashbackRecycleBinTableWithOptions(request *FlashbackRecycleBinTableRequest, runtime *util.RuntimeOptions) (_result *FlashbackRecycleBinTableResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19609,15 +26175,33 @@ func (client *Client) FlashbackRecycleBinTableWithOptions(request *FlashbackRecy
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &FlashbackRecycleBinTableResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &FlashbackRecycleBinTableResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &FlashbackRecycleBinTableResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Restores a logical table that is deleted.
+//
+// @param request - FlashbackRecycleBinTableRequest
+//
+// @return FlashbackRecycleBinTableResponse
 func (client *Client) FlashbackRecycleBinTable(request *FlashbackRecycleBinTableRequest) (_result *FlashbackRecycleBinTableResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &FlashbackRecycleBinTableResponse{}
@@ -19629,6 +26213,11 @@ func (client *Client) FlashbackRecycleBinTable(request *FlashbackRecycleBinTable
 	return _result, _err
 }
 
+// @param request - GetDrdsDbRdsRelationInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDrdsDbRdsRelationInfoResponse
 func (client *Client) GetDrdsDbRdsRelationInfoWithOptions(request *GetDrdsDbRdsRelationInfoRequest, runtime *util.RuntimeOptions) (_result *GetDrdsDbRdsRelationInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19657,15 +26246,29 @@ func (client *Client) GetDrdsDbRdsRelationInfoWithOptions(request *GetDrdsDbRdsR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetDrdsDbRdsRelationInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetDrdsDbRdsRelationInfoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetDrdsDbRdsRelationInfoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - GetDrdsDbRdsRelationInfoRequest
+//
+// @return GetDrdsDbRdsRelationInfoResponse
 func (client *Client) GetDrdsDbRdsRelationInfo(request *GetDrdsDbRdsRelationInfoRequest) (_result *GetDrdsDbRdsRelationInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDrdsDbRdsRelationInfoResponse{}
@@ -19677,6 +26280,11 @@ func (client *Client) GetDrdsDbRdsRelationInfo(request *GetDrdsDbRdsRelationInfo
 	return _result, _err
 }
 
+// @param request - ListTagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagResourcesResponse
 func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19717,15 +26325,29 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListTagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListTagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListTagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - ListTagResourcesRequest
+//
+// @return ListTagResourcesResponse
 func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTagResourcesResponse{}
@@ -19737,6 +26359,15 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Manages a custom ApsaraDB RDS instance at the storage layer.
+//
+// @param request - ManagePrivateRdsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ManagePrivateRdsResponse
 func (client *Client) ManagePrivateRdsWithOptions(request *ManagePrivateRdsRequest, runtime *util.RuntimeOptions) (_result *ManagePrivateRdsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19777,15 +26408,33 @@ func (client *Client) ManagePrivateRdsWithOptions(request *ManagePrivateRdsReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ManagePrivateRdsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ManagePrivateRdsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ManagePrivateRdsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Manages a custom ApsaraDB RDS instance at the storage layer.
+//
+// @param request - ManagePrivateRdsRequest
+//
+// @return ManagePrivateRdsResponse
 func (client *Client) ManagePrivateRds(request *ManagePrivateRdsRequest) (_result *ManagePrivateRdsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ManagePrivateRdsResponse{}
@@ -19797,6 +26446,11 @@ func (client *Client) ManagePrivateRds(request *ManagePrivateRdsRequest) (_resul
 	return _result, _err
 }
 
+// @param request - ModifyAccountDescriptionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyAccountDescriptionResponse
 func (client *Client) ModifyAccountDescriptionWithOptions(request *ModifyAccountDescriptionRequest, runtime *util.RuntimeOptions) (_result *ModifyAccountDescriptionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19829,15 +26483,29 @@ func (client *Client) ModifyAccountDescriptionWithOptions(request *ModifyAccount
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyAccountDescriptionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyAccountDescriptionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyAccountDescriptionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - ModifyAccountDescriptionRequest
+//
+// @return ModifyAccountDescriptionResponse
 func (client *Client) ModifyAccountDescription(request *ModifyAccountDescriptionRequest) (_result *ModifyAccountDescriptionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyAccountDescriptionResponse{}
@@ -19849,6 +26517,11 @@ func (client *Client) ModifyAccountDescription(request *ModifyAccountDescription
 	return _result, _err
 }
 
+// @param request - ModifyAccountPrivilegeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyAccountPrivilegeResponse
 func (client *Client) ModifyAccountPrivilegeWithOptions(request *ModifyAccountPrivilegeRequest, runtime *util.RuntimeOptions) (_result *ModifyAccountPrivilegeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19885,15 +26558,29 @@ func (client *Client) ModifyAccountPrivilegeWithOptions(request *ModifyAccountPr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyAccountPrivilegeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyAccountPrivilegeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyAccountPrivilegeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - ModifyAccountPrivilegeRequest
+//
+// @return ModifyAccountPrivilegeResponse
 func (client *Client) ModifyAccountPrivilege(request *ModifyAccountPrivilegeRequest) (_result *ModifyAccountPrivilegeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyAccountPrivilegeResponse{}
@@ -19905,6 +26592,11 @@ func (client *Client) ModifyAccountPrivilege(request *ModifyAccountPrivilegeRequ
 	return _result, _err
 }
 
+// @param request - ModifyDrdsInstanceDescriptionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDrdsInstanceDescriptionResponse
 func (client *Client) ModifyDrdsInstanceDescriptionWithOptions(request *ModifyDrdsInstanceDescriptionRequest, runtime *util.RuntimeOptions) (_result *ModifyDrdsInstanceDescriptionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19933,15 +26625,29 @@ func (client *Client) ModifyDrdsInstanceDescriptionWithOptions(request *ModifyDr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyDrdsInstanceDescriptionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyDrdsInstanceDescriptionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyDrdsInstanceDescriptionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - ModifyDrdsInstanceDescriptionRequest
+//
+// @return ModifyDrdsInstanceDescriptionResponse
 func (client *Client) ModifyDrdsInstanceDescription(request *ModifyDrdsInstanceDescriptionRequest) (_result *ModifyDrdsInstanceDescriptionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDrdsInstanceDescriptionResponse{}
@@ -19953,6 +26659,11 @@ func (client *Client) ModifyDrdsInstanceDescription(request *ModifyDrdsInstanceD
 	return _result, _err
 }
 
+// @param request - ModifyDrdsIpWhiteListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDrdsIpWhiteListResponse
 func (client *Client) ModifyDrdsIpWhiteListWithOptions(request *ModifyDrdsIpWhiteListRequest, runtime *util.RuntimeOptions) (_result *ModifyDrdsIpWhiteListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19997,15 +26708,29 @@ func (client *Client) ModifyDrdsIpWhiteListWithOptions(request *ModifyDrdsIpWhit
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyDrdsIpWhiteListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyDrdsIpWhiteListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyDrdsIpWhiteListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - ModifyDrdsIpWhiteListRequest
+//
+// @return ModifyDrdsIpWhiteListResponse
 func (client *Client) ModifyDrdsIpWhiteList(request *ModifyDrdsIpWhiteListRequest) (_result *ModifyDrdsIpWhiteListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDrdsIpWhiteListResponse{}
@@ -20017,6 +26742,11 @@ func (client *Client) ModifyDrdsIpWhiteList(request *ModifyDrdsIpWhiteListReques
 	return _result, _err
 }
 
+// @param request - ModifyPolarDbReadWeightRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyPolarDbReadWeightResponse
 func (client *Client) ModifyPolarDbReadWeightWithOptions(request *ModifyPolarDbReadWeightRequest, runtime *util.RuntimeOptions) (_result *ModifyPolarDbReadWeightResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20057,15 +26787,29 @@ func (client *Client) ModifyPolarDbReadWeightWithOptions(request *ModifyPolarDbR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyPolarDbReadWeightResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyPolarDbReadWeightResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyPolarDbReadWeightResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - ModifyPolarDbReadWeightRequest
+//
+// @return ModifyPolarDbReadWeightResponse
 func (client *Client) ModifyPolarDbReadWeight(request *ModifyPolarDbReadWeightRequest) (_result *ModifyPolarDbReadWeightResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyPolarDbReadWeightResponse{}
@@ -20077,6 +26821,11 @@ func (client *Client) ModifyPolarDbReadWeight(request *ModifyPolarDbReadWeightRe
 	return _result, _err
 }
 
+// @param request - ModifyRdsReadWeightRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyRdsReadWeightResponse
 func (client *Client) ModifyRdsReadWeightWithOptions(request *ModifyRdsReadWeightRequest, runtime *util.RuntimeOptions) (_result *ModifyRdsReadWeightResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20113,15 +26862,29 @@ func (client *Client) ModifyRdsReadWeightWithOptions(request *ModifyRdsReadWeigh
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyRdsReadWeightResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyRdsReadWeightResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyRdsReadWeightResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - ModifyRdsReadWeightRequest
+//
+// @return ModifyRdsReadWeightResponse
 func (client *Client) ModifyRdsReadWeight(request *ModifyRdsReadWeightRequest) (_result *ModifyRdsReadWeightResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyRdsReadWeightResponse{}
@@ -20133,6 +26896,11 @@ func (client *Client) ModifyRdsReadWeight(request *ModifyRdsReadWeightRequest) (
 	return _result, _err
 }
 
+// @param request - PutStartBackupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PutStartBackupResponse
 func (client *Client) PutStartBackupWithOptions(request *PutStartBackupRequest, runtime *util.RuntimeOptions) (_result *PutStartBackupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20169,15 +26937,29 @@ func (client *Client) PutStartBackupWithOptions(request *PutStartBackupRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &PutStartBackupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &PutStartBackupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &PutStartBackupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - PutStartBackupRequest
+//
+// @return PutStartBackupResponse
 func (client *Client) PutStartBackup(request *PutStartBackupRequest) (_result *PutStartBackupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &PutStartBackupResponse{}
@@ -20189,6 +26971,11 @@ func (client *Client) PutStartBackup(request *PutStartBackupRequest) (_result *P
 	return _result, _err
 }
 
+// @param request - RefreshDrdsAtomUrlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RefreshDrdsAtomUrlResponse
 func (client *Client) RefreshDrdsAtomUrlWithOptions(request *RefreshDrdsAtomUrlRequest, runtime *util.RuntimeOptions) (_result *RefreshDrdsAtomUrlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20217,15 +27004,29 @@ func (client *Client) RefreshDrdsAtomUrlWithOptions(request *RefreshDrdsAtomUrlR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RefreshDrdsAtomUrlResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RefreshDrdsAtomUrlResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RefreshDrdsAtomUrlResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - RefreshDrdsAtomUrlRequest
+//
+// @return RefreshDrdsAtomUrlResponse
 func (client *Client) RefreshDrdsAtomUrl(request *RefreshDrdsAtomUrlRequest) (_result *RefreshDrdsAtomUrlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RefreshDrdsAtomUrlResponse{}
@@ -20237,6 +27038,11 @@ func (client *Client) RefreshDrdsAtomUrl(request *RefreshDrdsAtomUrlRequest) (_r
 	return _result, _err
 }
 
+// @param request - ReleaseInstanceInternetAddressRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReleaseInstanceInternetAddressResponse
 func (client *Client) ReleaseInstanceInternetAddressWithOptions(request *ReleaseInstanceInternetAddressRequest, runtime *util.RuntimeOptions) (_result *ReleaseInstanceInternetAddressResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20265,15 +27071,29 @@ func (client *Client) ReleaseInstanceInternetAddressWithOptions(request *Release
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ReleaseInstanceInternetAddressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ReleaseInstanceInternetAddressResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ReleaseInstanceInternetAddressResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - ReleaseInstanceInternetAddressRequest
+//
+// @return ReleaseInstanceInternetAddressResponse
 func (client *Client) ReleaseInstanceInternetAddress(request *ReleaseInstanceInternetAddressRequest) (_result *ReleaseInstanceInternetAddressResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ReleaseInstanceInternetAddressResponse{}
@@ -20285,6 +27105,11 @@ func (client *Client) ReleaseInstanceInternetAddress(request *ReleaseInstanceInt
 	return _result, _err
 }
 
+// @param request - RemoveBackupsSetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveBackupsSetResponse
 func (client *Client) RemoveBackupsSetWithOptions(request *RemoveBackupsSetRequest, runtime *util.RuntimeOptions) (_result *RemoveBackupsSetResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20313,15 +27138,29 @@ func (client *Client) RemoveBackupsSetWithOptions(request *RemoveBackupsSetReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RemoveBackupsSetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RemoveBackupsSetResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RemoveBackupsSetResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - RemoveBackupsSetRequest
+//
+// @return RemoveBackupsSetResponse
 func (client *Client) RemoveBackupsSet(request *RemoveBackupsSetRequest) (_result *RemoveBackupsSetResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RemoveBackupsSetResponse{}
@@ -20333,6 +27172,11 @@ func (client *Client) RemoveBackupsSet(request *RemoveBackupsSetRequest) (_resul
 	return _result, _err
 }
 
+// @param request - RemoveDrdsDbRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveDrdsDbResponse
 func (client *Client) RemoveDrdsDbWithOptions(request *RemoveDrdsDbRequest, runtime *util.RuntimeOptions) (_result *RemoveDrdsDbResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20361,15 +27205,29 @@ func (client *Client) RemoveDrdsDbWithOptions(request *RemoveDrdsDbRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RemoveDrdsDbResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RemoveDrdsDbResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RemoveDrdsDbResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - RemoveDrdsDbRequest
+//
+// @return RemoveDrdsDbResponse
 func (client *Client) RemoveDrdsDb(request *RemoveDrdsDbRequest) (_result *RemoveDrdsDbResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RemoveDrdsDbResponse{}
@@ -20381,6 +27239,11 @@ func (client *Client) RemoveDrdsDb(request *RemoveDrdsDbRequest) (_result *Remov
 	return _result, _err
 }
 
+// @param request - RemoveDrdsDbFailedRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveDrdsDbFailedRecordResponse
 func (client *Client) RemoveDrdsDbFailedRecordWithOptions(request *RemoveDrdsDbFailedRecordRequest, runtime *util.RuntimeOptions) (_result *RemoveDrdsDbFailedRecordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20409,15 +27272,29 @@ func (client *Client) RemoveDrdsDbFailedRecordWithOptions(request *RemoveDrdsDbF
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RemoveDrdsDbFailedRecordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RemoveDrdsDbFailedRecordResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RemoveDrdsDbFailedRecordResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - RemoveDrdsDbFailedRecordRequest
+//
+// @return RemoveDrdsDbFailedRecordResponse
 func (client *Client) RemoveDrdsDbFailedRecord(request *RemoveDrdsDbFailedRecordRequest) (_result *RemoveDrdsDbFailedRecordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RemoveDrdsDbFailedRecordResponse{}
@@ -20429,14 +27306,21 @@ func (client *Client) RemoveDrdsDbFailedRecord(request *RemoveDrdsDbFailedRecord
 	return _result, _err
 }
 
-/**
- * > *   You can call this operation to release an instance that is charged based on only the pay-as-you-go billing method.
- * >*   If the specifications of the instance are being changed, or one or more databases exist in the instance, you cannot call this operation to release the instance.
- *
- * @param request RemoveDrdsInstanceRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return RemoveDrdsInstanceResponse
- */
+// Summary:
+//
+// Releases an instance.
+//
+// Description:
+//
+// > 	- You can call this operation to release an instance that is charged based on only the pay-as-you-go billing method.
+//
+// >	- If the specifications of the instance are being changed, or one or more databases exist in the instance, you cannot call this operation to release the instance.
+//
+// @param request - RemoveDrdsInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveDrdsInstanceResponse
 func (client *Client) RemoveDrdsInstanceWithOptions(request *RemoveDrdsInstanceRequest, runtime *util.RuntimeOptions) (_result *RemoveDrdsInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20461,22 +27345,39 @@ func (client *Client) RemoveDrdsInstanceWithOptions(request *RemoveDrdsInstanceR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RemoveDrdsInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RemoveDrdsInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RemoveDrdsInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
-/**
- * > *   You can call this operation to release an instance that is charged based on only the pay-as-you-go billing method.
- * >*   If the specifications of the instance are being changed, or one or more databases exist in the instance, you cannot call this operation to release the instance.
- *
- * @param request RemoveDrdsInstanceRequest
- * @return RemoveDrdsInstanceResponse
- */
+// Summary:
+//
+// Releases an instance.
+//
+// Description:
+//
+// > 	- You can call this operation to release an instance that is charged based on only the pay-as-you-go billing method.
+//
+// >	- If the specifications of the instance are being changed, or one or more databases exist in the instance, you cannot call this operation to release the instance.
+//
+// @param request - RemoveDrdsInstanceRequest
+//
+// @return RemoveDrdsInstanceResponse
 func (client *Client) RemoveDrdsInstance(request *RemoveDrdsInstanceRequest) (_result *RemoveDrdsInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RemoveDrdsInstanceResponse{}
@@ -20488,6 +27389,11 @@ func (client *Client) RemoveDrdsInstance(request *RemoveDrdsInstanceRequest) (_r
 	return _result, _err
 }
 
+// @param request - RemoveInstanceAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveInstanceAccountResponse
 func (client *Client) RemoveInstanceAccountWithOptions(request *RemoveInstanceAccountRequest, runtime *util.RuntimeOptions) (_result *RemoveInstanceAccountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20516,15 +27422,29 @@ func (client *Client) RemoveInstanceAccountWithOptions(request *RemoveInstanceAc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RemoveInstanceAccountResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RemoveInstanceAccountResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RemoveInstanceAccountResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - RemoveInstanceAccountRequest
+//
+// @return RemoveInstanceAccountResponse
 func (client *Client) RemoveInstanceAccount(request *RemoveInstanceAccountRequest) (_result *RemoveInstanceAccountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RemoveInstanceAccountResponse{}
@@ -20536,6 +27456,15 @@ func (client *Client) RemoveInstanceAccount(request *RemoveInstanceAccountReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a table in the recycle bin.
+//
+// @param request - RemoveRecycleBinTableRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveRecycleBinTableResponse
 func (client *Client) RemoveRecycleBinTableWithOptions(request *RemoveRecycleBinTableRequest, runtime *util.RuntimeOptions) (_result *RemoveRecycleBinTableResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20572,15 +27501,33 @@ func (client *Client) RemoveRecycleBinTableWithOptions(request *RemoveRecycleBin
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RemoveRecycleBinTableResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RemoveRecycleBinTableResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RemoveRecycleBinTableResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Deletes a table in the recycle bin.
+//
+// @param request - RemoveRecycleBinTableRequest
+//
+// @return RemoveRecycleBinTableResponse
 func (client *Client) RemoveRecycleBinTable(request *RemoveRecycleBinTableRequest) (_result *RemoveRecycleBinTableResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RemoveRecycleBinTableResponse{}
@@ -20592,6 +27539,11 @@ func (client *Client) RemoveRecycleBinTable(request *RemoveRecycleBinTableReques
 	return _result, _err
 }
 
+// @param request - RestartDrdsInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RestartDrdsInstanceResponse
 func (client *Client) RestartDrdsInstanceWithOptions(request *RestartDrdsInstanceRequest, runtime *util.RuntimeOptions) (_result *RestartDrdsInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20616,15 +27568,29 @@ func (client *Client) RestartDrdsInstanceWithOptions(request *RestartDrdsInstanc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RestartDrdsInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RestartDrdsInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RestartDrdsInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - RestartDrdsInstanceRequest
+//
+// @return RestartDrdsInstanceResponse
 func (client *Client) RestartDrdsInstance(request *RestartDrdsInstanceRequest) (_result *RestartDrdsInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RestartDrdsInstanceResponse{}
@@ -20636,6 +27602,11 @@ func (client *Client) RestartDrdsInstance(request *RestartDrdsInstanceRequest) (
 	return _result, _err
 }
 
+// @param request - RollbackInstanceVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RollbackInstanceVersionResponse
 func (client *Client) RollbackInstanceVersionWithOptions(request *RollbackInstanceVersionRequest, runtime *util.RuntimeOptions) (_result *RollbackInstanceVersionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20664,15 +27635,29 @@ func (client *Client) RollbackInstanceVersionWithOptions(request *RollbackInstan
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RollbackInstanceVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RollbackInstanceVersionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RollbackInstanceVersionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - RollbackInstanceVersionRequest
+//
+// @return RollbackInstanceVersionResponse
 func (client *Client) RollbackInstanceVersion(request *RollbackInstanceVersionRequest) (_result *RollbackInstanceVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RollbackInstanceVersionResponse{}
@@ -20684,6 +27669,15 @@ func (client *Client) RollbackInstanceVersion(request *RollbackInstanceVersionRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a backup policy.
+//
+// @param request - SetBackupLocalRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetBackupLocalResponse
 func (client *Client) SetBackupLocalWithOptions(request *SetBackupLocalRequest, runtime *util.RuntimeOptions) (_result *SetBackupLocalResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20720,15 +27714,33 @@ func (client *Client) SetBackupLocalWithOptions(request *SetBackupLocalRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SetBackupLocalResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetBackupLocalResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetBackupLocalResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Modifies a backup policy.
+//
+// @param request - SetBackupLocalRequest
+//
+// @return SetBackupLocalResponse
 func (client *Client) SetBackupLocal(request *SetBackupLocalRequest) (_result *SetBackupLocalResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetBackupLocalResponse{}
@@ -20740,6 +27752,11 @@ func (client *Client) SetBackupLocal(request *SetBackupLocalRequest) (_result *S
 	return _result, _err
 }
 
+// @param request - SetBackupPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetBackupPolicyResponse
 func (client *Client) SetBackupPolicyWithOptions(request *SetBackupPolicyRequest, runtime *util.RuntimeOptions) (_result *SetBackupPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20800,15 +27817,29 @@ func (client *Client) SetBackupPolicyWithOptions(request *SetBackupPolicyRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SetBackupPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetBackupPolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetBackupPolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - SetBackupPolicyRequest
+//
+// @return SetBackupPolicyResponse
 func (client *Client) SetBackupPolicy(request *SetBackupPolicyRequest) (_result *SetBackupPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetBackupPolicyResponse{}
@@ -20820,6 +27851,15 @@ func (client *Client) SetBackupPolicy(request *SetBackupPolicyRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Configures a broadcast table for a database.
+//
+// @param request - SetupBroadcastTablesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetupBroadcastTablesResponse
 func (client *Client) SetupBroadcastTablesWithOptions(request *SetupBroadcastTablesRequest, runtime *util.RuntimeOptions) (_result *SetupBroadcastTablesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20860,15 +27900,33 @@ func (client *Client) SetupBroadcastTablesWithOptions(request *SetupBroadcastTab
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SetupBroadcastTablesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetupBroadcastTablesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetupBroadcastTablesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Configures a broadcast table for a database.
+//
+// @param request - SetupBroadcastTablesRequest
+//
+// @return SetupBroadcastTablesResponse
 func (client *Client) SetupBroadcastTables(request *SetupBroadcastTablesRequest) (_result *SetupBroadcastTablesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetupBroadcastTablesResponse{}
@@ -20880,6 +27938,11 @@ func (client *Client) SetupBroadcastTables(request *SetupBroadcastTablesRequest)
 	return _result, _err
 }
 
+// @param request - SetupDrdsParamsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetupDrdsParamsResponse
 func (client *Client) SetupDrdsParamsWithOptions(request *SetupDrdsParamsRequest, runtime *util.RuntimeOptions) (_result *SetupDrdsParamsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20916,15 +27979,29 @@ func (client *Client) SetupDrdsParamsWithOptions(request *SetupDrdsParamsRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SetupDrdsParamsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetupDrdsParamsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetupDrdsParamsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - SetupDrdsParamsRequest
+//
+// @return SetupDrdsParamsResponse
 func (client *Client) SetupDrdsParams(request *SetupDrdsParamsRequest) (_result *SetupDrdsParamsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetupDrdsParamsResponse{}
@@ -20936,6 +28013,15 @@ func (client *Client) SetupDrdsParams(request *SetupDrdsParamsRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables the table recycle bin for a database.
+//
+// @param request - SetupRecycleBinStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetupRecycleBinStatusResponse
 func (client *Client) SetupRecycleBinStatusWithOptions(request *SetupRecycleBinStatusRequest, runtime *util.RuntimeOptions) (_result *SetupRecycleBinStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20972,15 +28058,33 @@ func (client *Client) SetupRecycleBinStatusWithOptions(request *SetupRecycleBinS
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SetupRecycleBinStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetupRecycleBinStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetupRecycleBinStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Enables the table recycle bin for a database.
+//
+// @param request - SetupRecycleBinStatusRequest
+//
+// @return SetupRecycleBinStatusResponse
 func (client *Client) SetupRecycleBinStatus(request *SetupRecycleBinStatusRequest) (_result *SetupRecycleBinStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetupRecycleBinStatusResponse{}
@@ -20992,6 +28096,11 @@ func (client *Client) SetupRecycleBinStatus(request *SetupRecycleBinStatusReques
 	return _result, _err
 }
 
+// @param request - SetupTableRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetupTableResponse
 func (client *Client) SetupTableWithOptions(request *SetupTableRequest, runtime *util.RuntimeOptions) (_result *SetupTableResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21032,15 +28141,29 @@ func (client *Client) SetupTableWithOptions(request *SetupTableRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SetupTableResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetupTableResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetupTableResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - SetupTableRequest
+//
+// @return SetupTableResponse
 func (client *Client) SetupTable(request *SetupTableRequest) (_result *SetupTableResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetupTableResponse{}
@@ -21052,6 +28175,11 @@ func (client *Client) SetupTable(request *SetupTableRequest) (_result *SetupTabl
 	return _result, _err
 }
 
+// @param request - StartRestoreRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartRestoreResponse
 func (client *Client) StartRestoreWithOptions(request *StartRestoreRequest, runtime *util.RuntimeOptions) (_result *StartRestoreResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21096,15 +28224,29 @@ func (client *Client) StartRestoreWithOptions(request *StartRestoreRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StartRestoreResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StartRestoreResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StartRestoreResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - StartRestoreRequest
+//
+// @return StartRestoreResponse
 func (client *Client) StartRestore(request *StartRestoreRequest) (_result *StartRestoreResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StartRestoreResponse{}
@@ -21116,6 +28258,15 @@ func (client *Client) StartRestore(request *StartRestoreRequest) (_result *Start
 	return _result, _err
 }
 
+// Summary:
+//
+// Submits a cleanup task for the scale-out of a PolarDB-X database.
+//
+// @param request - SubmitCleanTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitCleanTaskResponse
 func (client *Client) SubmitCleanTaskWithOptions(request *SubmitCleanTaskRequest, runtime *util.RuntimeOptions) (_result *SubmitCleanTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21156,15 +28307,33 @@ func (client *Client) SubmitCleanTaskWithOptions(request *SubmitCleanTaskRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SubmitCleanTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SubmitCleanTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SubmitCleanTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Submits a cleanup task for the scale-out of a PolarDB-X database.
+//
+// @param request - SubmitCleanTaskRequest
+//
+// @return SubmitCleanTaskResponse
 func (client *Client) SubmitCleanTask(request *SubmitCleanTaskRequest) (_result *SubmitCleanTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitCleanTaskResponse{}
@@ -21176,6 +28345,15 @@ func (client *Client) SubmitCleanTask(request *SubmitCleanTaskRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Submits a precheck task for the hot-spot scale-out of a PolarDB-X database. The task is used to check the table that does not contain the primary key.
+//
+// @param request - SubmitHotExpandPreCheckTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitHotExpandPreCheckTaskResponse
 func (client *Client) SubmitHotExpandPreCheckTaskWithOptions(request *SubmitHotExpandPreCheckTaskRequest, runtime *util.RuntimeOptions) (_result *SubmitHotExpandPreCheckTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21212,15 +28390,33 @@ func (client *Client) SubmitHotExpandPreCheckTaskWithOptions(request *SubmitHotE
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SubmitHotExpandPreCheckTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SubmitHotExpandPreCheckTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SubmitHotExpandPreCheckTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Submits a precheck task for the hot-spot scale-out of a PolarDB-X database. The task is used to check the table that does not contain the primary key.
+//
+// @param request - SubmitHotExpandPreCheckTaskRequest
+//
+// @return SubmitHotExpandPreCheckTaskResponse
 func (client *Client) SubmitHotExpandPreCheckTask(request *SubmitHotExpandPreCheckTaskRequest) (_result *SubmitHotExpandPreCheckTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitHotExpandPreCheckTaskResponse{}
@@ -21232,6 +28428,15 @@ func (client *Client) SubmitHotExpandPreCheckTask(request *SubmitHotExpandPreChe
 	return _result, _err
 }
 
+// Summary:
+//
+// Submits a hot-spot scale-out task for a database.
+//
+// @param request - SubmitHotExpandTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitHotExpandTaskResponse
 func (client *Client) SubmitHotExpandTaskWithOptions(request *SubmitHotExpandTaskRequest, runtime *util.RuntimeOptions) (_result *SubmitHotExpandTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21284,15 +28489,33 @@ func (client *Client) SubmitHotExpandTaskWithOptions(request *SubmitHotExpandTas
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SubmitHotExpandTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SubmitHotExpandTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SubmitHotExpandTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Submits a hot-spot scale-out task for a database.
+//
+// @param request - SubmitHotExpandTaskRequest
+//
+// @return SubmitHotExpandTaskResponse
 func (client *Client) SubmitHotExpandTask(request *SubmitHotExpandTaskRequest) (_result *SubmitHotExpandTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitHotExpandTaskResponse{}
@@ -21304,6 +28527,15 @@ func (client *Client) SubmitHotExpandTask(request *SubmitHotExpandTaskRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Submits a precheck task for the smooth scale-out of a PolarDB-X database.
+//
+// @param request - SubmitSmoothExpandPreCheckRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitSmoothExpandPreCheckResponse
 func (client *Client) SubmitSmoothExpandPreCheckWithOptions(request *SubmitSmoothExpandPreCheckRequest, runtime *util.RuntimeOptions) (_result *SubmitSmoothExpandPreCheckResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21336,15 +28568,33 @@ func (client *Client) SubmitSmoothExpandPreCheckWithOptions(request *SubmitSmoot
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SubmitSmoothExpandPreCheckResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SubmitSmoothExpandPreCheckResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SubmitSmoothExpandPreCheckResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Submits a precheck task for the smooth scale-out of a PolarDB-X database.
+//
+// @param request - SubmitSmoothExpandPreCheckRequest
+//
+// @return SubmitSmoothExpandPreCheckResponse
 func (client *Client) SubmitSmoothExpandPreCheck(request *SubmitSmoothExpandPreCheckRequest) (_result *SubmitSmoothExpandPreCheckResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitSmoothExpandPreCheckResponse{}
@@ -21356,6 +28606,15 @@ func (client *Client) SubmitSmoothExpandPreCheck(request *SubmitSmoothExpandPreC
 	return _result, _err
 }
 
+// Summary:
+//
+// Submits a precheck task for the smooth scale-out of a PolarDB-X 1.0 database.
+//
+// @param request - SubmitSmoothExpandPreCheckTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitSmoothExpandPreCheckTaskResponse
 func (client *Client) SubmitSmoothExpandPreCheckTaskWithOptions(request *SubmitSmoothExpandPreCheckTaskRequest, runtime *util.RuntimeOptions) (_result *SubmitSmoothExpandPreCheckTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21384,15 +28643,33 @@ func (client *Client) SubmitSmoothExpandPreCheckTaskWithOptions(request *SubmitS
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SubmitSmoothExpandPreCheckTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SubmitSmoothExpandPreCheckTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SubmitSmoothExpandPreCheckTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Submits a precheck task for the smooth scale-out of a PolarDB-X 1.0 database.
+//
+// @param request - SubmitSmoothExpandPreCheckTaskRequest
+//
+// @return SubmitSmoothExpandPreCheckTaskResponse
 func (client *Client) SubmitSmoothExpandPreCheckTask(request *SubmitSmoothExpandPreCheckTaskRequest) (_result *SubmitSmoothExpandPreCheckTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitSmoothExpandPreCheckTaskResponse{}
@@ -21404,6 +28681,11 @@ func (client *Client) SubmitSmoothExpandPreCheckTask(request *SubmitSmoothExpand
 	return _result, _err
 }
 
+// @param request - SubmitSqlFlashbackTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitSqlFlashbackTaskResponse
 func (client *Client) SubmitSqlFlashbackTaskWithOptions(request *SubmitSqlFlashbackTaskRequest, runtime *util.RuntimeOptions) (_result *SubmitSqlFlashbackTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21464,15 +28746,29 @@ func (client *Client) SubmitSqlFlashbackTaskWithOptions(request *SubmitSqlFlashb
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SubmitSqlFlashbackTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SubmitSqlFlashbackTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SubmitSqlFlashbackTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - SubmitSqlFlashbackTaskRequest
+//
+// @return SubmitSqlFlashbackTaskResponse
 func (client *Client) SubmitSqlFlashbackTask(request *SubmitSqlFlashbackTaskRequest) (_result *SubmitSqlFlashbackTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitSqlFlashbackTaskResponse{}
@@ -21484,6 +28780,15 @@ func (client *Client) SubmitSqlFlashbackTask(request *SubmitSqlFlashbackTaskRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Switches the mode of broadcast tables from the multi-write mode to the asynchronous link mode.
+//
+// @param request - SwitchGlobalBroadcastTypeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SwitchGlobalBroadcastTypeResponse
 func (client *Client) SwitchGlobalBroadcastTypeWithOptions(request *SwitchGlobalBroadcastTypeRequest, runtime *util.RuntimeOptions) (_result *SwitchGlobalBroadcastTypeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21516,15 +28821,33 @@ func (client *Client) SwitchGlobalBroadcastTypeWithOptions(request *SwitchGlobal
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SwitchGlobalBroadcastTypeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SwitchGlobalBroadcastTypeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SwitchGlobalBroadcastTypeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Switches the mode of broadcast tables from the multi-write mode to the asynchronous link mode.
+//
+// @param request - SwitchGlobalBroadcastTypeRequest
+//
+// @return SwitchGlobalBroadcastTypeResponse
 func (client *Client) SwitchGlobalBroadcastType(request *SwitchGlobalBroadcastTypeRequest) (_result *SwitchGlobalBroadcastTypeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SwitchGlobalBroadcastTypeResponse{}
@@ -21536,6 +28859,11 @@ func (client *Client) SwitchGlobalBroadcastType(request *SwitchGlobalBroadcastTy
 	return _result, _err
 }
 
+// @param request - TagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TagResourcesResponse
 func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *util.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21572,15 +28900,29 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &TagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &TagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &TagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - TagResourcesRequest
+//
+// @return TagResourcesResponse
 func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TagResourcesResponse{}
@@ -21592,6 +28934,11 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 	return _result, _err
 }
 
+// @param request - UntagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UntagResourcesResponse
 func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *util.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21632,15 +28979,29 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UntagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UntagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UntagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - UntagResourcesRequest
+//
+// @return UntagResourcesResponse
 func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UntagResourcesResponse{}
@@ -21652,6 +29013,15 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the network type of a PolarDB-X 1.0 instance.
+//
+// @param request - UpdateInstanceNetworkRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateInstanceNetworkResponse
 func (client *Client) UpdateInstanceNetworkWithOptions(request *UpdateInstanceNetworkRequest, runtime *util.RuntimeOptions) (_result *UpdateInstanceNetworkResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21688,15 +29058,33 @@ func (client *Client) UpdateInstanceNetworkWithOptions(request *UpdateInstanceNe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateInstanceNetworkResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateInstanceNetworkResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateInstanceNetworkResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Changes the network type of a PolarDB-X 1.0 instance.
+//
+// @param request - UpdateInstanceNetworkRequest
+//
+// @return UpdateInstanceNetworkResponse
 func (client *Client) UpdateInstanceNetwork(request *UpdateInstanceNetworkRequest) (_result *UpdateInstanceNetworkResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateInstanceNetworkResponse{}
@@ -21708,6 +29096,15 @@ func (client *Client) UpdateInstanceNetwork(request *UpdateInstanceNetworkReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the specifications of a custom ApsaraDB RDS instance at the storage layer.
+//
+// @param request - UpdatePrivateRdsClassRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdatePrivateRdsClassResponse
 func (client *Client) UpdatePrivateRdsClassWithOptions(request *UpdatePrivateRdsClassRequest, runtime *util.RuntimeOptions) (_result *UpdatePrivateRdsClassResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21752,15 +29149,33 @@ func (client *Client) UpdatePrivateRdsClassWithOptions(request *UpdatePrivateRds
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdatePrivateRdsClassResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdatePrivateRdsClassResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdatePrivateRdsClassResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Updates the specifications of a custom ApsaraDB RDS instance at the storage layer.
+//
+// @param request - UpdatePrivateRdsClassRequest
+//
+// @return UpdatePrivateRdsClassResponse
 func (client *Client) UpdatePrivateRdsClass(request *UpdatePrivateRdsClassRequest) (_result *UpdatePrivateRdsClassResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdatePrivateRdsClassResponse{}
@@ -21772,6 +29187,11 @@ func (client *Client) UpdatePrivateRdsClass(request *UpdatePrivateRdsClassReques
 	return _result, _err
 }
 
+// @param request - UpdateResourceGroupAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateResourceGroupAttributeResponse
 func (client *Client) UpdateResourceGroupAttributeWithOptions(request *UpdateResourceGroupAttributeRequest, runtime *util.RuntimeOptions) (_result *UpdateResourceGroupAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21804,15 +29224,29 @@ func (client *Client) UpdateResourceGroupAttributeWithOptions(request *UpdateRes
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateResourceGroupAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateResourceGroupAttributeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateResourceGroupAttributeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - UpdateResourceGroupAttributeRequest
+//
+// @return UpdateResourceGroupAttributeResponse
 func (client *Client) UpdateResourceGroupAttribute(request *UpdateResourceGroupAttributeRequest) (_result *UpdateResourceGroupAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateResourceGroupAttributeResponse{}
@@ -21824,6 +29258,15 @@ func (client *Client) UpdateResourceGroupAttribute(request *UpdateResourceGroupA
 	return _result, _err
 }
 
+// Summary:
+//
+// Upgrades the version of a column-oriented storage instance of a PolarDB-X 1.0 instance.
+//
+// @param request - UpgradeHiStoreInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpgradeHiStoreInstanceResponse
 func (client *Client) UpgradeHiStoreInstanceWithOptions(request *UpgradeHiStoreInstanceRequest, runtime *util.RuntimeOptions) (_result *UpgradeHiStoreInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21856,15 +29299,33 @@ func (client *Client) UpgradeHiStoreInstanceWithOptions(request *UpgradeHiStoreI
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpgradeHiStoreInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpgradeHiStoreInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpgradeHiStoreInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Upgrades the version of a column-oriented storage instance of a PolarDB-X 1.0 instance.
+//
+// @param request - UpgradeHiStoreInstanceRequest
+//
+// @return UpgradeHiStoreInstanceResponse
 func (client *Client) UpgradeHiStoreInstance(request *UpgradeHiStoreInstanceRequest) (_result *UpgradeHiStoreInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpgradeHiStoreInstanceResponse{}
@@ -21876,6 +29337,11 @@ func (client *Client) UpgradeHiStoreInstance(request *UpgradeHiStoreInstanceRequ
 	return _result, _err
 }
 
+// @param request - UpgradeInstanceVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpgradeInstanceVersionResponse
 func (client *Client) UpgradeInstanceVersionWithOptions(request *UpgradeInstanceVersionRequest, runtime *util.RuntimeOptions) (_result *UpgradeInstanceVersionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21908,15 +29374,29 @@ func (client *Client) UpgradeInstanceVersionWithOptions(request *UpgradeInstance
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpgradeInstanceVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpgradeInstanceVersionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpgradeInstanceVersionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - UpgradeInstanceVersionRequest
+//
+// @return UpgradeInstanceVersionResponse
 func (client *Client) UpgradeInstanceVersion(request *UpgradeInstanceVersionRequest) (_result *UpgradeInstanceVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpgradeInstanceVersionResponse{}
@@ -21928,6 +29408,11 @@ func (client *Client) UpgradeInstanceVersion(request *UpgradeInstanceVersionRequ
 	return _result, _err
 }
 
+// @param request - ValidateShardTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ValidateShardTaskResponse
 func (client *Client) ValidateShardTaskWithOptions(request *ValidateShardTaskRequest, runtime *util.RuntimeOptions) (_result *ValidateShardTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21972,15 +29457,29 @@ func (client *Client) ValidateShardTaskWithOptions(request *ValidateShardTaskReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ValidateShardTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ValidateShardTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ValidateShardTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - ValidateShardTaskRequest
+//
+// @return ValidateShardTaskResponse
 func (client *Client) ValidateShardTask(request *ValidateShardTaskRequest) (_result *ValidateShardTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ValidateShardTaskResponse{}
