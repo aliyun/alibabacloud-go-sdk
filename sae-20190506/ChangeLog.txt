@@ -1,3 +1,8 @@
+2025-03-12 Version: v3.1.1
+- Update API DescribeConfigurationPrice: add param ResourceType.
+- Update API ListApplications: update response param.
+
+
 2025-02-26 Version: v3.1.0
 - Support API ListAppServices.
 - Update API DeployApplication: add param SwimlanePvtzDiscoverySvc.

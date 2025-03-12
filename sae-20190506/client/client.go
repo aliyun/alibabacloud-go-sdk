@@ -24343,7 +24343,8 @@ type DescribeConfigurationPriceRequest struct {
 	// example:
 	//
 	// 4096
-	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	Memory       *int32  `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// example:
 	//
 	// Web
@@ -24365,6 +24366,11 @@ func (s *DescribeConfigurationPriceRequest) SetCpu(v int32) *DescribeConfigurati
 
 func (s *DescribeConfigurationPriceRequest) SetMemory(v int32) *DescribeConfigurationPriceRequest {
 	s.Memory = &v
+	return s
+}
+
+func (s *DescribeConfigurationPriceRequest) SetResourceType(v string) *DescribeConfigurationPriceRequest {
+	s.ResourceType = &v
 	return s
 }
 
@@ -35031,6 +35037,7 @@ type ListApplicationsResponseBodyDataApplications struct {
 	//
 	// demo-app
 	AppName   *string                                                 `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppType   *string                                                 `json:"AppType,omitempty" xml:"AppType,omitempty"`
 	BaseAppId *string                                                 `json:"BaseAppId,omitempty" xml:"BaseAppId,omitempty"`
 	Children  []*ListApplicationsResponseBodyDataApplicationsChildren `json:"Children,omitempty" xml:"Children,omitempty" type:"Repeated"`
 	// The CPU specifications that are required for each instance. Unit: millicores. This parameter cannot be set to 0. Valid values:
@@ -35094,6 +35101,8 @@ type ListApplicationsResponseBodyDataApplications struct {
 	//
 	// cn-beijing:demo
 	NamespaceId         *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	NamespaceName       *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	NewSaeVersion       *string `json:"NewSaeVersion,omitempty" xml:"NewSaeVersion,omitempty"`
 	PackageUrl          *string `json:"PackageUrl,omitempty" xml:"PackageUrl,omitempty"`
 	ProgrammingLanguage *string `json:"ProgrammingLanguage,omitempty" xml:"ProgrammingLanguage,omitempty"`
 	// The region ID.
@@ -35137,6 +35146,11 @@ func (s *ListApplicationsResponseBodyDataApplications) SetAppId(v string) *ListA
 
 func (s *ListApplicationsResponseBodyDataApplications) SetAppName(v string) *ListApplicationsResponseBodyDataApplications {
 	s.AppName = &v
+	return s
+}
+
+func (s *ListApplicationsResponseBodyDataApplications) SetAppType(v string) *ListApplicationsResponseBodyDataApplications {
+	s.AppType = &v
 	return s
 }
 
@@ -35185,6 +35199,16 @@ func (s *ListApplicationsResponseBodyDataApplications) SetNamespaceId(v string) 
 	return s
 }
 
+func (s *ListApplicationsResponseBodyDataApplications) SetNamespaceName(v string) *ListApplicationsResponseBodyDataApplications {
+	s.NamespaceName = &v
+	return s
+}
+
+func (s *ListApplicationsResponseBodyDataApplications) SetNewSaeVersion(v string) *ListApplicationsResponseBodyDataApplications {
+	s.NewSaeVersion = &v
+	return s
+}
+
 func (s *ListApplicationsResponseBodyDataApplications) SetPackageUrl(v string) *ListApplicationsResponseBodyDataApplications {
 	s.PackageUrl = &v
 	return s
@@ -35215,12 +35239,15 @@ type ListApplicationsResponseBodyDataApplicationsChildren struct {
 	AppDescription      *string                                                     `json:"AppDescription,omitempty" xml:"AppDescription,omitempty"`
 	AppId               *string                                                     `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	AppName             *string                                                     `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppType             *string                                                     `json:"AppType,omitempty" xml:"AppType,omitempty"`
 	BaseAppId           *string                                                     `json:"BaseAppId,omitempty" xml:"BaseAppId,omitempty"`
 	Cpu                 *int32                                                      `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
 	Instances           *int32                                                      `json:"Instances,omitempty" xml:"Instances,omitempty"`
 	Mem                 *int32                                                      `json:"Mem,omitempty" xml:"Mem,omitempty"`
 	MseEnabled          *bool                                                       `json:"MseEnabled,omitempty" xml:"MseEnabled,omitempty"`
 	NamespaceId         *string                                                     `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	NamespaceName       *string                                                     `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	NewSaeVersion       *string                                                     `json:"NewSaeVersion,omitempty" xml:"NewSaeVersion,omitempty"`
 	ProgrammingLanguage *string                                                     `json:"ProgrammingLanguage,omitempty" xml:"ProgrammingLanguage,omitempty"`
 	RegionId            *string                                                     `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RunningInstances    *int32                                                      `json:"RunningInstances,omitempty" xml:"RunningInstances,omitempty"`
@@ -35257,6 +35284,11 @@ func (s *ListApplicationsResponseBodyDataApplicationsChildren) SetAppName(v stri
 	return s
 }
 
+func (s *ListApplicationsResponseBodyDataApplicationsChildren) SetAppType(v string) *ListApplicationsResponseBodyDataApplicationsChildren {
+	s.AppType = &v
+	return s
+}
+
 func (s *ListApplicationsResponseBodyDataApplicationsChildren) SetBaseAppId(v string) *ListApplicationsResponseBodyDataApplicationsChildren {
 	s.BaseAppId = &v
 	return s
@@ -35284,6 +35316,16 @@ func (s *ListApplicationsResponseBodyDataApplicationsChildren) SetMseEnabled(v b
 
 func (s *ListApplicationsResponseBodyDataApplicationsChildren) SetNamespaceId(v string) *ListApplicationsResponseBodyDataApplicationsChildren {
 	s.NamespaceId = &v
+	return s
+}
+
+func (s *ListApplicationsResponseBodyDataApplicationsChildren) SetNamespaceName(v string) *ListApplicationsResponseBodyDataApplicationsChildren {
+	s.NamespaceName = &v
+	return s
+}
+
+func (s *ListApplicationsResponseBodyDataApplicationsChildren) SetNewSaeVersion(v string) *ListApplicationsResponseBodyDataApplicationsChildren {
+	s.NewSaeVersion = &v
 	return s
 }
 
@@ -50877,6 +50919,10 @@ func (client *Client) DescribeConfigurationPriceWithOptions(request *DescribeCon
 
 	if !tea.BoolValue(util.IsUnset(request.Memory)) {
 		query["Memory"] = request.Memory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Workload)) {
