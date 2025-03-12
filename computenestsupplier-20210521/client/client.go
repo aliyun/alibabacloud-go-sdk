@@ -894,7 +894,9 @@ type CreateArtifactRequestArtifactBuildPropertyCodeRepo struct {
 	// example:
 	//
 	// main
-	Branch *string `json:"Branch,omitempty" xml:"Branch,omitempty"`
+	Branch   *string `json:"Branch,omitempty" xml:"Branch,omitempty"`
+	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	OrgId    *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
 	// The owner of the code repository.
 	//
 	// >  This parameter is available only if the git repository is private.
@@ -913,6 +915,7 @@ type CreateArtifactRequestArtifactBuildPropertyCodeRepo struct {
 	//
 	// github
 	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	RepoId   *int64  `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	// The name of the repository.
 	//
 	// example:
@@ -934,6 +937,16 @@ func (s *CreateArtifactRequestArtifactBuildPropertyCodeRepo) SetBranch(v string)
 	return s
 }
 
+func (s *CreateArtifactRequestArtifactBuildPropertyCodeRepo) SetEndpoint(v string) *CreateArtifactRequestArtifactBuildPropertyCodeRepo {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *CreateArtifactRequestArtifactBuildPropertyCodeRepo) SetOrgId(v string) *CreateArtifactRequestArtifactBuildPropertyCodeRepo {
+	s.OrgId = &v
+	return s
+}
+
 func (s *CreateArtifactRequestArtifactBuildPropertyCodeRepo) SetOwner(v string) *CreateArtifactRequestArtifactBuildPropertyCodeRepo {
 	s.Owner = &v
 	return s
@@ -941,6 +954,11 @@ func (s *CreateArtifactRequestArtifactBuildPropertyCodeRepo) SetOwner(v string) 
 
 func (s *CreateArtifactRequestArtifactBuildPropertyCodeRepo) SetPlatform(v string) *CreateArtifactRequestArtifactBuildPropertyCodeRepo {
 	s.Platform = &v
+	return s
+}
+
+func (s *CreateArtifactRequestArtifactBuildPropertyCodeRepo) SetRepoId(v int64) *CreateArtifactRequestArtifactBuildPropertyCodeRepo {
+	s.RepoId = &v
 	return s
 }
 
@@ -19652,7 +19670,9 @@ type UpdateArtifactRequestArtifactBuildPropertyCodeRepo struct {
 	// example:
 	//
 	// main
-	Branch *string `json:"Branch,omitempty" xml:"Branch,omitempty"`
+	Branch   *string `json:"Branch,omitempty" xml:"Branch,omitempty"`
+	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	OrgId    *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
 	// The owner of the code repository.
 	//
 	// >  This parameter is available only if the git repository is private.
@@ -19667,6 +19687,7 @@ type UpdateArtifactRequestArtifactBuildPropertyCodeRepo struct {
 	//
 	// github
 	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	RepoId   *int64  `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	// The name of the repository.
 	//
 	// example:
@@ -19688,6 +19709,16 @@ func (s *UpdateArtifactRequestArtifactBuildPropertyCodeRepo) SetBranch(v string)
 	return s
 }
 
+func (s *UpdateArtifactRequestArtifactBuildPropertyCodeRepo) SetEndpoint(v string) *UpdateArtifactRequestArtifactBuildPropertyCodeRepo {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *UpdateArtifactRequestArtifactBuildPropertyCodeRepo) SetOrgId(v string) *UpdateArtifactRequestArtifactBuildPropertyCodeRepo {
+	s.OrgId = &v
+	return s
+}
+
 func (s *UpdateArtifactRequestArtifactBuildPropertyCodeRepo) SetOwner(v string) *UpdateArtifactRequestArtifactBuildPropertyCodeRepo {
 	s.Owner = &v
 	return s
@@ -19695,6 +19726,11 @@ func (s *UpdateArtifactRequestArtifactBuildPropertyCodeRepo) SetOwner(v string) 
 
 func (s *UpdateArtifactRequestArtifactBuildPropertyCodeRepo) SetPlatform(v string) *UpdateArtifactRequestArtifactBuildPropertyCodeRepo {
 	s.Platform = &v
+	return s
+}
+
+func (s *UpdateArtifactRequestArtifactBuildPropertyCodeRepo) SetRepoId(v int64) *UpdateArtifactRequestArtifactBuildPropertyCodeRepo {
+	s.RepoId = &v
 	return s
 }
 
