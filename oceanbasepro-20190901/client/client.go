@@ -3245,7 +3245,11 @@ type CreateProjectRequestFullTransferConfig struct {
 	// example:
 	//
 	// NORMAL
-	FullVerifySpeedMode *string `json:"FullVerifySpeedMode,omitempty" xml:"FullVerifySpeedMode,omitempty"`
+	FullVerifySpeedMode      *string `json:"FullVerifySpeedMode,omitempty" xml:"FullVerifySpeedMode,omitempty"`
+	HbaseObjCheckMode        *string `json:"HbaseObjCheckMode,omitempty" xml:"HbaseObjCheckMode,omitempty"`
+	HbaseObjMigMode          *string `json:"HbaseObjMigMode,omitempty" xml:"HbaseObjMigMode,omitempty"`
+	IndexDDLConcurrencyLimit *int32  `json:"IndexDDLConcurrencyLimit,omitempty" xml:"IndexDDLConcurrencyLimit,omitempty"`
+	MaxConcurrentIndexDDLs   *int32  `json:"MaxConcurrentIndexDDLs,omitempty" xml:"MaxConcurrentIndexDDLs,omitempty"`
 	// example:
 	//
 	// true
@@ -3276,6 +3280,26 @@ func (s *CreateProjectRequestFullTransferConfig) SetFullTransferSpeedMode(v stri
 
 func (s *CreateProjectRequestFullTransferConfig) SetFullVerifySpeedMode(v string) *CreateProjectRequestFullTransferConfig {
 	s.FullVerifySpeedMode = &v
+	return s
+}
+
+func (s *CreateProjectRequestFullTransferConfig) SetHbaseObjCheckMode(v string) *CreateProjectRequestFullTransferConfig {
+	s.HbaseObjCheckMode = &v
+	return s
+}
+
+func (s *CreateProjectRequestFullTransferConfig) SetHbaseObjMigMode(v string) *CreateProjectRequestFullTransferConfig {
+	s.HbaseObjMigMode = &v
+	return s
+}
+
+func (s *CreateProjectRequestFullTransferConfig) SetIndexDDLConcurrencyLimit(v int32) *CreateProjectRequestFullTransferConfig {
+	s.IndexDDLConcurrencyLimit = &v
+	return s
+}
+
+func (s *CreateProjectRequestFullTransferConfig) SetMaxConcurrentIndexDDLs(v int32) *CreateProjectRequestFullTransferConfig {
+	s.MaxConcurrentIndexDDLs = &v
 	return s
 }
 
@@ -3828,8 +3852,9 @@ type CreateProjectRequestTransferMappingDatabasesTables struct {
 	// example:
 	//
 	// table_name
-	Name         *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	ShardColumns []*string `json:"ShardColumns,omitempty" xml:"ShardColumns,omitempty" type:"Repeated"`
+	Name                *string                                                                `json:"Name,omitempty" xml:"Name,omitempty"`
+	ObkvPartitionConfig *CreateProjectRequestTransferMappingDatabasesTablesObkvPartitionConfig `json:"ObkvPartitionConfig,omitempty" xml:"ObkvPartitionConfig,omitempty" type:"Struct"`
+	ShardColumns        []*string                                                              `json:"ShardColumns,omitempty" xml:"ShardColumns,omitempty" type:"Repeated"`
 	// example:
 	//
 	// id > 1
@@ -3866,6 +3891,11 @@ func (s *CreateProjectRequestTransferMappingDatabasesTables) SetMappedName(v str
 
 func (s *CreateProjectRequestTransferMappingDatabasesTables) SetName(v string) *CreateProjectRequestTransferMappingDatabasesTables {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesTables) SetObkvPartitionConfig(v *CreateProjectRequestTransferMappingDatabasesTablesObkvPartitionConfig) *CreateProjectRequestTransferMappingDatabasesTables {
+	s.ObkvPartitionConfig = v
 	return s
 }
 
@@ -3917,6 +3947,35 @@ func (s *CreateProjectRequestTransferMappingDatabasesTablesAdbTableSchema) SetPa
 
 func (s *CreateProjectRequestTransferMappingDatabasesTablesAdbTableSchema) SetPrimaryKeys(v []*string) *CreateProjectRequestTransferMappingDatabasesTablesAdbTableSchema {
 	s.PrimaryKeys = v
+	return s
+}
+
+type CreateProjectRequestTransferMappingDatabasesTablesObkvPartitionConfig struct {
+	PartitionSize *int32  `json:"PartitionSize,omitempty" xml:"PartitionSize,omitempty"`
+	PartitionType *string `json:"PartitionType,omitempty" xml:"PartitionType,omitempty"`
+	VirtualColumn *string `json:"VirtualColumn,omitempty" xml:"VirtualColumn,omitempty"`
+}
+
+func (s CreateProjectRequestTransferMappingDatabasesTablesObkvPartitionConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectRequestTransferMappingDatabasesTablesObkvPartitionConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesTablesObkvPartitionConfig) SetPartitionSize(v int32) *CreateProjectRequestTransferMappingDatabasesTablesObkvPartitionConfig {
+	s.PartitionSize = &v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesTablesObkvPartitionConfig) SetPartitionType(v string) *CreateProjectRequestTransferMappingDatabasesTablesObkvPartitionConfig {
+	s.PartitionType = &v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesTablesObkvPartitionConfig) SetVirtualColumn(v string) *CreateProjectRequestTransferMappingDatabasesTablesObkvPartitionConfig {
+	s.VirtualColumn = &v
 	return s
 }
 
@@ -5278,8 +5337,9 @@ type CreateProjectModifyRecordsRequestDatabasesTables struct {
 	// example:
 	//
 	// table_name
-	Name         *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	ShardColumns []*string `json:"ShardColumns,omitempty" xml:"ShardColumns,omitempty" type:"Repeated"`
+	Name                *string                                                              `json:"Name,omitempty" xml:"Name,omitempty"`
+	ObkvPartitionConfig *CreateProjectModifyRecordsRequestDatabasesTablesObkvPartitionConfig `json:"ObkvPartitionConfig,omitempty" xml:"ObkvPartitionConfig,omitempty" type:"Struct"`
+	ShardColumns        []*string                                                            `json:"ShardColumns,omitempty" xml:"ShardColumns,omitempty" type:"Repeated"`
 	// example:
 	//
 	// id<1
@@ -5316,6 +5376,11 @@ func (s *CreateProjectModifyRecordsRequestDatabasesTables) SetMappedName(v strin
 
 func (s *CreateProjectModifyRecordsRequestDatabasesTables) SetName(v string) *CreateProjectModifyRecordsRequestDatabasesTables {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestDatabasesTables) SetObkvPartitionConfig(v *CreateProjectModifyRecordsRequestDatabasesTablesObkvPartitionConfig) *CreateProjectModifyRecordsRequestDatabasesTables {
+	s.ObkvPartitionConfig = v
 	return s
 }
 
@@ -5367,6 +5432,35 @@ func (s *CreateProjectModifyRecordsRequestDatabasesTablesAdbTableSchema) SetPart
 
 func (s *CreateProjectModifyRecordsRequestDatabasesTablesAdbTableSchema) SetPrimaryKeys(v []*string) *CreateProjectModifyRecordsRequestDatabasesTablesAdbTableSchema {
 	s.PrimaryKeys = v
+	return s
+}
+
+type CreateProjectModifyRecordsRequestDatabasesTablesObkvPartitionConfig struct {
+	PartitionSize *int32  `json:"PartitionSize,omitempty" xml:"PartitionSize,omitempty"`
+	PartitionType *string `json:"PartitionType,omitempty" xml:"PartitionType,omitempty"`
+	VirtualColumn *string `json:"VirtualColumn,omitempty" xml:"VirtualColumn,omitempty"`
+}
+
+func (s CreateProjectModifyRecordsRequestDatabasesTablesObkvPartitionConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectModifyRecordsRequestDatabasesTablesObkvPartitionConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectModifyRecordsRequestDatabasesTablesObkvPartitionConfig) SetPartitionSize(v int32) *CreateProjectModifyRecordsRequestDatabasesTablesObkvPartitionConfig {
+	s.PartitionSize = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestDatabasesTablesObkvPartitionConfig) SetPartitionType(v string) *CreateProjectModifyRecordsRequestDatabasesTablesObkvPartitionConfig {
+	s.PartitionType = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestDatabasesTablesObkvPartitionConfig) SetVirtualColumn(v string) *CreateProjectModifyRecordsRequestDatabasesTablesObkvPartitionConfig {
+	s.VirtualColumn = &v
 	return s
 }
 
@@ -6477,7 +6571,8 @@ type CreateTenantRequest struct {
 	// example:
 	//
 	// 2
-	Cpu          *int32             `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The initialization parameters.
 	CreateParams map[string]*string `json:"CreateParams,omitempty" xml:"CreateParams,omitempty"`
 	// The description of the database.
 	//
@@ -6588,7 +6683,12 @@ type CreateTenantRequest struct {
 	// example:
 	//
 	// vpc-bp1d2q3mhg9i23ofi****
-	UserVpcId      *string `json:"UserVpcId,omitempty" xml:"UserVpcId,omitempty"`
+	UserVpcId *string `json:"UserVpcId,omitempty" xml:"UserVpcId,omitempty"`
+	// The ID of the VPC owner.
+	//
+	// example:
+	//
+	// vpc-********
 	UserVpcOwnerId *string `json:"UserVpcOwnerId,omitempty" xml:"UserVpcOwnerId,omitempty"`
 }
 
@@ -6700,7 +6800,8 @@ type CreateTenantShrinkRequest struct {
 	// example:
 	//
 	// 2
-	Cpu                *int32  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The initialization parameters.
 	CreateParamsShrink *string `json:"CreateParams,omitempty" xml:"CreateParams,omitempty"`
 	// The description of the database.
 	//
@@ -6811,7 +6912,12 @@ type CreateTenantShrinkRequest struct {
 	// example:
 	//
 	// vpc-bp1d2q3mhg9i23ofi****
-	UserVpcId      *string `json:"UserVpcId,omitempty" xml:"UserVpcId,omitempty"`
+	UserVpcId *string `json:"UserVpcId,omitempty" xml:"UserVpcId,omitempty"`
+	// The ID of the VPC owner.
+	//
+	// example:
+	//
+	// vpc-********
 	UserVpcOwnerId *string `json:"UserVpcOwnerId,omitempty" xml:"UserVpcOwnerId,omitempty"`
 }
 
@@ -7273,6 +7379,10 @@ type CreateTenantUserRequest struct {
 	//
 	// RAS
 	EncryptionType *string `json:"EncryptionType,omitempty" xml:"EncryptionType,omitempty"`
+	// example:
+	//
+	// Encrypt,Decrypt
+	GlobalPermissions *string `json:"GlobalPermissions,omitempty" xml:"GlobalPermissions,omitempty"`
 	// The ID of the OceanBase cluster.
 	//
 	// This parameter is required.
@@ -7339,6 +7449,11 @@ func (s *CreateTenantUserRequest) SetEncryptionType(v string) *CreateTenantUserR
 	return s
 }
 
+func (s *CreateTenantUserRequest) SetGlobalPermissions(v string) *CreateTenantUserRequest {
+	s.GlobalPermissions = &v
+	return s
+}
+
 func (s *CreateTenantUserRequest) SetInstanceId(v string) *CreateTenantUserRequest {
 	s.InstanceId = &v
 	return s
@@ -7399,7 +7514,11 @@ func (s *CreateTenantUserResponseBody) SetTenantUser(v *CreateTenantUserResponse
 }
 
 type CreateTenantUserResponseBodyTenantUser struct {
-	Roles []*CreateTenantUserResponseBodyTenantUserRoles `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Encrypt,Decrypt
+	GlobalPermissions *string                                        `json:"GlobalPermissions,omitempty" xml:"GlobalPermissions,omitempty"`
+	Roles             []*CreateTenantUserResponseBodyTenantUserRoles `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
 	// example:
 	//
 	// pay_test
@@ -7417,6 +7536,11 @@ func (s CreateTenantUserResponseBodyTenantUser) String() string {
 
 func (s CreateTenantUserResponseBodyTenantUser) GoString() string {
 	return s.String()
+}
+
+func (s *CreateTenantUserResponseBodyTenantUser) SetGlobalPermissions(v string) *CreateTenantUserResponseBodyTenantUser {
+	s.GlobalPermissions = &v
+	return s
 }
 
 func (s *CreateTenantUserResponseBodyTenantUser) SetRoles(v []*CreateTenantUserResponseBodyTenantUserRoles) *CreateTenantUserResponseBodyTenantUser {
@@ -11852,16 +11976,19 @@ func (s *DescribeDatabasesResponse) SetBody(v *DescribeDatabasesResponseBody) *D
 }
 
 type DescribeInstanceRequest struct {
-	// The size of the data disk, in GB.
+	// The ID of the OceanBase cluster.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ob317v4uif****
-	InstanceId         *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MaxConnectionLimit *string `json:"MaxConnectionLimit,omitempty" xml:"MaxConnectionLimit,omitempty"`
-	// The information about the storage resources of the cluster.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The number of the page to return.
+	//
+	// - Pages start from page 1.
+	//
+	// - Default value: 1.
 	//
 	// example:
 	//
@@ -11882,20 +12009,15 @@ func (s *DescribeInstanceRequest) SetInstanceId(v string) *DescribeInstanceReque
 	return s
 }
 
-func (s *DescribeInstanceRequest) SetMaxConnectionLimit(v string) *DescribeInstanceRequest {
-	s.MaxConnectionLimit = &v
-	return s
-}
-
 func (s *DescribeInstanceRequest) SetPageNumber(v int32) *DescribeInstanceRequest {
 	s.PageNumber = &v
 	return s
 }
 
 type DescribeInstanceResponseBody struct {
-	// The log disk space of each replica node in the cluster. Unit: GB.
+	// The information of the OceanBase cluster.
 	Instance *DescribeInstanceResponseBodyInstance `json:"Instance,omitempty" xml:"Instance,omitempty" type:"Struct"`
-	// The total log disk space of the cluster, in GB.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -11922,163 +12044,346 @@ func (s *DescribeInstanceResponseBody) SetRequestId(v string) *DescribeInstanceR
 }
 
 type DescribeInstanceResponseBodyInstance struct {
-	AllowCreateProxySqlFirewallRule           *bool `json:"AllowCreateProxySqlFirewallRule,omitempty" xml:"AllowCreateProxySqlFirewallRule,omitempty"`
+	// Indicates whether the OceanBase Database Proxy (ODP) SQL firewall is supported.
+	//
+	// example:
+	//
+	// false
+	AllowCreateProxySqlFirewallRule *bool `json:"AllowCreateProxySqlFirewallRule,omitempty" xml:"AllowCreateProxySqlFirewallRule,omitempty"`
+	// Indicates whether the maximum number of public connections can be modified.
+	//
+	// example:
+	//
+	// false
 	AllowModifyInternetAddressConnectionLimit *bool `json:"AllowModifyInternetAddressConnectionLimit,omitempty" xml:"AllowModifyInternetAddressConnectionLimit,omitempty"`
-	// The operation that you want to perform. <br>Set the value to **DescribeInstance**.
+	// Indicates whether automatic renewal is enabled.
+	//
+	// This parameter is valid only for clusters whose billing methods are set to PREPAY.
 	//
 	// example:
 	//
 	// true
 	AutoRenewal *bool `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
-	// Example 1
+	// Indicates whether automatic upgrade of the OBServer version is enabled.
 	//
 	// example:
 	//
 	// true
-	AutoUpgradeObVersion *bool     `json:"AutoUpgradeObVersion,omitempty" xml:"AutoUpgradeObVersion,omitempty"`
-	AvailableZones       []*string `json:"AvailableZones,omitempty" xml:"AvailableZones,omitempty" type:"Repeated"`
+	AutoUpgradeObVersion *bool `json:"AutoUpgradeObVersion,omitempty" xml:"AutoUpgradeObVersion,omitempty"`
+	// The list of zones.
+	AvailableZones []*string `json:"AvailableZones,omitempty" xml:"AvailableZones,omitempty" type:"Repeated"`
+	// The CPU architecture of the cluster.
+	//
 	// example:
 	//
 	// X86
 	CpuArchitecture *string `json:"CpuArchitecture,omitempty" xml:"CpuArchitecture,omitempty"`
-	// Indicates whether the log disk specifications can be upgraded.
+	// The time in UTC when the cluster was created.
 	//
 	// example:
 	//
 	// 2021-10-19T07:13:41Z
-	CreateTime              *string                                                      `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DataDiskAutoScale       *bool                                                        `json:"DataDiskAutoScale,omitempty" xml:"DataDiskAutoScale,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Specifies whether to enable automatic scaling of the data disk.
+	//
+	// > <br>This parameter is deprecated.
+	//
+	// example:
+	//
+	// -
+	DataDiskAutoScale *bool `json:"DataDiskAutoScale,omitempty" xml:"DataDiskAutoScale,omitempty"`
+	// Specifies parameters for the automatic scaling of the data disk.
 	DataDiskAutoScaleConfig *DescribeInstanceResponseBodyInstanceDataDiskAutoScaleConfig `json:"DataDiskAutoScaleConfig,omitempty" xml:"DataDiskAutoScaleConfig,omitempty" type:"Struct"`
-	// The total number of CPU cores of the cluster.
+	// The time when the major compaction of cluster data is performed.
 	//
 	// example:
 	//
 	// 02:00
 	DataMergeTime *string `json:"DataMergeTime,omitempty" xml:"DataMergeTime,omitempty"`
-	// Alibaba Cloud CLI
+	// The data replica distribution mode of the cluster. Valid values:
+	//
+	// - n: indicates the single-IDC mode.
+	//
+	// - n-n: indicates the dual-IDC mode.
+	//
+	// - n-n-n: indicates the multi-IDC mode.
+	//
+	// > <br>The integer n represents the number of OBServer nodes in each IDC.
 	//
 	// example:
 	//
 	// 1-1-1
 	DeployMode *string `json:"DeployMode,omitempty" xml:"DeployMode,omitempty"`
-	// It is an online CLI tool that allows you to quickly retrieve and debug APIs. It can dynamically generate executable SDK code samples.
+	// The deployment type of the cluster. Valid values:
+	//
+	// - multiple: multi-IDC deployment
+	//
+	// - single: single-IDC deployment
+	//
+	// - dual: dual-IDC deployment
 	//
 	// example:
 	//
 	// multiple
 	DeployType *string `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
-	// The total storage space of the cluster, in GB.
+	// The type of the storage disk where the cluster is deployed.
+	//
+	// The default value is cloud_essd_pl1, which indicates an ESSD cloud disk.
 	//
 	// example:
 	//
 	// cloud_essd_pl1
-	DiskType                        *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
-	EnableIsolationOptimization     *bool   `json:"EnableIsolationOptimization,omitempty" xml:"EnableIsolationOptimization,omitempty"`
-	EnableProxyService              *bool   `json:"EnableProxyService,omitempty" xml:"EnableProxyService,omitempty"`
-	EnableReadOnlyReplica           *bool   `json:"EnableReadOnlyReplica,omitempty" xml:"EnableReadOnlyReplica,omitempty"`
-	EnableReadOnlyReplicaManagement *bool   `json:"EnableReadOnlyReplicaManagement,omitempty" xml:"EnableReadOnlyReplicaManagement,omitempty"`
+	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	// Specifies whether to enable isolation optimization.
+	//
 	// example:
 	//
 	// false
-	EnableUpgradeLogDisk  *bool  `json:"EnableUpgradeLogDisk,omitempty" xml:"EnableUpgradeLogDisk,omitempty"`
+	EnableIsolationOptimization *bool `json:"EnableIsolationOptimization,omitempty" xml:"EnableIsolationOptimization,omitempty"`
+	// Specifies whether to enable the proxy service.
+	//
+	// - true
+	//
+	// - false
+	//
+	// example:
+	//
+	// true
+	EnableProxyService *bool `json:"EnableProxyService,omitempty" xml:"EnableProxyService,omitempty"`
+	// Indicates whether read-only replicas are supported.
+	//
+	// example:
+	//
+	// true
+	EnableReadOnlyReplica *bool `json:"EnableReadOnlyReplica,omitempty" xml:"EnableReadOnlyReplica,omitempty"`
+	// Indicates whether read-only replicas can be purchased for the cluster.
+	//
+	// example:
+	//
+	// false
+	EnableReadOnlyReplicaManagement *bool `json:"EnableReadOnlyReplicaManagement,omitempty" xml:"EnableReadOnlyReplicaManagement,omitempty"`
+	// Indicates whether the log disk specifications can be upgraded.
+	//
+	// example:
+	//
+	// false
+	EnableUpgradeLogDisk *bool `json:"EnableUpgradeLogDisk,omitempty" xml:"EnableUpgradeLogDisk,omitempty"`
+	// The maximum number of units of the proxy service in exclusive mode.
+	//
+	// example:
+	//
+	// 1
 	ExclusiveUnitNumLimit *int32 `json:"ExclusiveUnitNumLimit,omitempty" xml:"ExclusiveUnitNumLimit,omitempty"`
-	// The information of the OceanBase cluster.
+	// The time in UTC when the cluster expires.
 	//
 	// example:
 	//
 	// 2021-10-17T16:00:00Z
-	ExpireTime           *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	InTempCapacityStatus *bool   `json:"InTempCapacityStatus,omitempty" xml:"InTempCapacityStatus,omitempty"`
-	// The detailed information of the OBServer version.
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// Specifies whether to indicate the temporary status of the capacity.
+	//
+	// example:
+	//
+	// false
+	InTempCapacityStatus *bool `json:"InTempCapacityStatus,omitempty" xml:"InTempCapacityStatus,omitempty"`
+	// The specifications of the cluster.  You can specify one of the following four plans:
+	//
+	// - 8C32G: indicates 8 CPU cores and 32 GB of memory.
+	//
+	// - 14C70G: indicates 14 CPU cores and 70 GB of memory.
+	//
+	// - 30C180G: indicates 30 CPU cores and 180 GB of memory.
+	//
+	// - 62C400G: indicates 62 CPU cores and 400 GB of memory.
 	//
 	// example:
 	//
 	// 14C70G
 	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
-	// The information about the log disk space of the cluster.
+	// The ID of the OceanBase cluster.
 	//
 	// example:
 	//
 	// ob317v4uif****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Indicates whether automatic upgrade of the OBServer version is enabled.
+	// The name of the OceanBase cluster.
 	//
 	// example:
 	//
 	// ob4test
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The role of the instance.
+	//
 	// example:
 	//
 	// NORMAL
 	InstanceRole *string `json:"InstanceRole,omitempty" xml:"InstanceRole,omitempty"`
+	// Indicates whether the OBServer version is the latest.
+	//
 	// example:
 	//
 	// true
 	IsLatestObVersion *bool `json:"IsLatestObVersion,omitempty" xml:"IsLatestObVersion,omitempty"`
-	// The information about the CPU resources of the cluster.
+	// Indicates whether trusted ECS instances are used.
 	//
 	// example:
 	//
 	// true
-	IsTrustEcs            *bool `json:"IsTrustEcs,omitempty" xml:"IsTrustEcs,omitempty"`
+	IsTrustEcs *bool `json:"IsTrustEcs,omitempty" xml:"IsTrustEcs,omitempty"`
+	// Specifies whether to enable the control group feature.
+	//
+	// example:
+	//
+	// false
 	IsolationOptimization *bool `json:"IsolationOptimization,omitempty" xml:"IsolationOptimization,omitempty"`
-	// The time when the major compaction of cluster data is performed.
+	// The period in UTC for the daily routine maintenance of the cluster.
 	//
 	// example:
 	//
 	// 19:00Z-20:00Z
 	MaintainTime *string `json:"MaintainTime,omitempty" xml:"MaintainTime,omitempty"`
+	// The number of nodes in the cluster. If the cluster is deployed in n-n-n mode, the number of nodes in the cluster equals n × 3.
+	//
 	// example:
 	//
 	// 6
 	NodeNum *string `json:"NodeNum,omitempty" xml:"NodeNum,omitempty"`
+	// The detailed information of the OBServer version.
+	//
 	// example:
 	//
 	// 2.2.77-20210526202046
 	ObRpmVersion *string `json:"ObRpmVersion,omitempty" xml:"ObRpmVersion,omitempty"`
-	// The list of zones.
+	// The billing method of the OceanBase cluster. Valid values:
+	//
+	// - PREPAY: the subscription billing method.
+	//
+	// - POSTPAY: the pay-as-you-go billing method.
 	//
 	// example:
 	//
 	// PREPAY
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// The ID of the primary cluster.
+	//
 	// example:
 	//
 	// ob3h8ytroxxxxx
 	PrimaryInstance *string `json:"PrimaryInstance,omitempty" xml:"PrimaryInstance,omitempty"`
+	// The region of the primary cluster.
+	//
 	// example:
 	//
 	// cn-hangzhou
-	PrimaryRegion      *string                                               `json:"PrimaryRegion,omitempty" xml:"PrimaryRegion,omitempty"`
-	ProxyClusterId     *string                                               `json:"ProxyClusterId,omitempty" xml:"ProxyClusterId,omitempty"`
-	ProxyServiceStatus *string                                               `json:"ProxyServiceStatus,omitempty" xml:"ProxyServiceStatus,omitempty"`
-	ReadOnlyResource   *DescribeInstanceResponseBodyInstanceReadOnlyResource `json:"ReadOnlyResource,omitempty" xml:"ReadOnlyResource,omitempty" type:"Struct"`
-	ReplicaMode        *string                                               `json:"ReplicaMode,omitempty" xml:"ReplicaMode,omitempty"`
-	// The size of used memory in the cluster, in GB.
-	Resource *DescribeInstanceResponseBodyInstanceResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Struct"`
-	// Indicates whether the OBServer version is the latest.
+	PrimaryRegion *string `json:"PrimaryRegion,omitempty" xml:"PrimaryRegion,omitempty"`
+	// The ID of the proxy cluster.
+	//
+	// > This parameter returns a value only if you set the **EnableProxyService*	- parameter to true.
 	//
 	// example:
 	//
-	// Indicates whether the OBServer version is the latest.
-	Series             *string `json:"Series,omitempty" xml:"Series,omitempty"`
-	SharedUnitNumLimit *int32  `json:"SharedUnitNumLimit,omitempty" xml:"SharedUnitNumLimit,omitempty"`
-	SpecType           *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
-	// The information about cluster resources.
+	// proxy-56****a6tg2o
+	ProxyClusterId *string `json:"ProxyClusterId,omitempty" xml:"ProxyClusterId,omitempty"`
+	// The status of the proxy service.
 	//
 	// example:
 	//
 	// ONLINE
-	Status          *string                                              `json:"Status,omitempty" xml:"Status,omitempty"`
+	ProxyServiceStatus *string `json:"ProxyServiceStatus,omitempty" xml:"ProxyServiceStatus,omitempty"`
+	// The information about cluster resources.
+	ReadOnlyResource *DescribeInstanceResponseBodyInstanceReadOnlyResource `json:"ReadOnlyResource,omitempty" xml:"ReadOnlyResource,omitempty" type:"Struct"`
+	// The number of full-featured replicas. Return value: 3 or 2.
+	//
+	// - 3: three full-featured replicas.
+	//
+	// - 2: two full-featured replicas.
+	//
+	// An OceanBase cluster deployed in three-zone mode supports only three full-featured replicas. An OceanBase cluster deployed in two-zone mode supports only two full-featured replicas. An OceanBase cluster deployed in one single zone supports two or three full-featured replicas.
+	//
+	// example:
+	//
+	// 2F1A
+	ReplicaMode *string `json:"ReplicaMode,omitempty" xml:"ReplicaMode,omitempty"`
+	// The information about cluster resources.
+	Resource *DescribeInstanceResponseBodyInstanceResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Struct"`
+	// The series of the instance. Valid values:
+	//
+	// - normal: Standard Cluster Edition (Cloud Disk). This is the default value.
+	//
+	// - normal_ssd: Standard Cluster Edition (Local Disk)
+	//
+	// - history: History Database Cluster Edition
+	//
+	// example:
+	//
+	// Normal
+	Series *string `json:"Series,omitempty" xml:"Series,omitempty"`
+	// The maximum number of units of the proxy service in shared mode.
+	//
+	// example:
+	//
+	// 3
+	SharedUnitNumLimit *int32 `json:"SharedUnitNumLimit,omitempty" xml:"SharedUnitNumLimit,omitempty"`
+	// The specification type.
+	//
+	// example:
+	//
+	// dedicatedspec
+	SpecType *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
+	// The status of the cluster. Valid values:
+	//
+	//  - PENDING_CREATE: The cluster is being created.
+	//
+	//  - ONLINE: The cluster is running.
+	//
+	//  - TENANT_CREATING: The tenant is being created.
+	//
+	// - TENANT_SPEC_MODIFYING: The tenant specifications are being modified.
+	//
+	// - EXPANDING: Nodes are being added to the cluster to increase its capacity.
+	//
+	// - REDUCING: Nodes are being removed from the cluster to reduce its capacity.
+	//
+	// - SPEC_UPGRADING: The service plan is being upgraded.
+	//
+	// - DISK_UPGRADING: The storage space is being expanded.
+	//
+	// - WHITE_LIST_MODIFYING: The whitelist is being modified.
+	//
+	// - PARAMETER_MODIFYING: Parameters are being modified.
+	//
+	// - SSL_MODIFYING: The SSL certificate is being changed.
+	//
+	// - PREPAID_EXPIRE_CLOSED: The payment is overdue. This parameter is valid for a cluster whose billing method is set to PREPAY.
+	//
+	// - ARREARS_CLOSED: The payment is overdue. This parameter is valid for a cluster whose billing method is set to POSTPAY.
+	//
+	// - PENDING_DELETE: The cluster is being deleted.
+	//
+	// Generally, the cluster is in the ONLINE state.
+	//
+	// example:
+	//
+	// ONLINE
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Specifies whether a tenant can be created.
 	TenantCreatable *DescribeInstanceResponseBodyInstanceTenantCreatable `json:"TenantCreatable,omitempty" xml:"TenantCreatable,omitempty" type:"Struct"`
-	UnitSpec        *string                                              `json:"UnitSpec,omitempty" xml:"UnitSpec,omitempty"`
-	// You can call this operation to query the detailed information of an OceanBase cluster.
+	// The unit specification of the proxy service.
+	//
+	// example:
+	//
+	// 2C4G
+	UnitSpec *string `json:"UnitSpec,omitempty" xml:"UnitSpec,omitempty"`
+	// The version of OceanBase Database.
 	//
 	// example:
 	//
 	// 2.2.77
-	Version *string   `json:"Version,omitempty" xml:"Version,omitempty"`
-	Zones   []*string `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The ID of the zone to which the instance belongs.
+	//
+	// <props="intl">For more information about how to obtain the list of zones, see [DescribeZones](https://www.alibabacloud.com/help/en/apsaradb-for-oceanbase/latest/api-oceanbasepro-2019-09-01-describezones).
+	Zones []*string `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
 }
 
 func (s DescribeInstanceResponseBodyInstance) String() string {
@@ -12325,15 +12630,60 @@ func (s *DescribeInstanceResponseBodyInstance) SetZones(v []*string) *DescribeIn
 }
 
 type DescribeInstanceResponseBodyInstanceDataDiskAutoScaleConfig struct {
-	AutoScale           *bool   `json:"AutoScale,omitempty" xml:"AutoScale,omitempty"`
-	MaxDiskSize         *int64  `json:"MaxDiskSize,omitempty" xml:"MaxDiskSize,omitempty"`
-	ScaleStepInMerge    *int64  `json:"ScaleStepInMerge,omitempty" xml:"ScaleStepInMerge,omitempty"`
-	ScaleStepInNormal   *int64  `json:"ScaleStepInNormal,omitempty" xml:"ScaleStepInNormal,omitempty"`
-	UpperMergeThreshold *int64  `json:"UpperMergeThreshold,omitempty" xml:"UpperMergeThreshold,omitempty"`
-	UpperScaleStep      *string `json:"UpperScaleStep,omitempty" xml:"UpperScaleStep,omitempty"`
-	UpperScaleStrategy  *string `json:"UpperScaleStrategy,omitempty" xml:"UpperScaleStrategy,omitempty"`
-	UpperThreshold      *int64  `json:"UpperThreshold,omitempty" xml:"UpperThreshold,omitempty"`
-	Upperbound          *int64  `json:"Upperbound,omitempty" xml:"Upperbound,omitempty"`
+	// Specifies whether to enable the automatic scaling of the data disk.
+	//
+	// example:
+	//
+	// true
+	AutoScale *bool `json:"AutoScale,omitempty" xml:"AutoScale,omitempty"`
+	// The maximum size of the disk, in GB.
+	//
+	// example:
+	//
+	// 80000
+	MaxDiskSize *int64 `json:"MaxDiskSize,omitempty" xml:"MaxDiskSize,omitempty"`
+	// The size of scaling step during a major compaction.
+	//
+	// example:
+	//
+	// 100
+	ScaleStepInMerge *int64 `json:"ScaleStepInMerge,omitempty" xml:"ScaleStepInMerge,omitempty"`
+	// The size of scaling step during daily use.
+	//
+	// example:
+	//
+	// 50
+	ScaleStepInNormal *int64 `json:"ScaleStepInNormal,omitempty" xml:"ScaleStepInNormal,omitempty"`
+	// The maximum usage of the data disk, in percentage, that triggers the scaling of the data disk for major compactions.
+	//
+	// example:
+	//
+	// 90
+	UpperMergeThreshold *int64 `json:"UpperMergeThreshold,omitempty" xml:"UpperMergeThreshold,omitempty"`
+	// The step size of the scale-out.
+	//
+	// example:
+	//
+	// 5
+	UpperScaleStep *string `json:"UpperScaleStep,omitempty" xml:"UpperScaleStep,omitempty"`
+	// The scale-out strategy. Valid values: RAW and PERCENTAGE.
+	//
+	// example:
+	//
+	// RAW
+	UpperScaleStrategy *string `json:"UpperScaleStrategy,omitempty" xml:"UpperScaleStrategy,omitempty"`
+	// The maximum usage of the data disk, in percentage, that triggers the scaling of the data disk for daily use.
+	//
+	// example:
+	//
+	// 80
+	UpperThreshold *int64 `json:"UpperThreshold,omitempty" xml:"UpperThreshold,omitempty"`
+	// The maximum space, in GB, to which the data disk can be scaled.
+	//
+	// example:
+	//
+	// 16
+	Upperbound *int64 `json:"Upperbound,omitempty" xml:"Upperbound,omitempty"`
 }
 
 func (s DescribeInstanceResponseBodyInstanceDataDiskAutoScaleConfig) String() string {
@@ -12390,11 +12740,18 @@ func (s *DescribeInstanceResponseBodyInstanceDataDiskAutoScaleConfig) SetUpperbo
 }
 
 type DescribeInstanceResponseBodyInstanceReadOnlyResource struct {
+	// The information about capacity units.
 	CapacityUnit *DescribeInstanceResponseBodyInstanceReadOnlyResourceCapacityUnit `json:"CapacityUnit,omitempty" xml:"CapacityUnit,omitempty" type:"Struct"`
-	Cpu          *DescribeInstanceResponseBodyInstanceReadOnlyResourceCpu          `json:"Cpu,omitempty" xml:"Cpu,omitempty" type:"Struct"`
-	DiskSize     *DescribeInstanceResponseBodyInstanceReadOnlyResourceDiskSize     `json:"DiskSize,omitempty" xml:"DiskSize,omitempty" type:"Struct"`
-	LogDiskSize  *DescribeInstanceResponseBodyInstanceReadOnlyResourceLogDiskSize  `json:"LogDiskSize,omitempty" xml:"LogDiskSize,omitempty" type:"Struct"`
-	Memory       *DescribeInstanceResponseBodyInstanceReadOnlyResourceMemory       `json:"Memory,omitempty" xml:"Memory,omitempty" type:"Struct"`
+	// The information about the CPU resources of the cluster.
+	Cpu *DescribeInstanceResponseBodyInstanceReadOnlyResourceCpu `json:"Cpu,omitempty" xml:"Cpu,omitempty" type:"Struct"`
+	// The information about the storage resources of the cluster.
+	DiskSize *DescribeInstanceResponseBodyInstanceReadOnlyResourceDiskSize `json:"DiskSize,omitempty" xml:"DiskSize,omitempty" type:"Struct"`
+	// The information about the log disk space of the cluster.
+	LogDiskSize *DescribeInstanceResponseBodyInstanceReadOnlyResourceLogDiskSize `json:"LogDiskSize,omitempty" xml:"LogDiskSize,omitempty" type:"Struct"`
+	// The information about the memory resources of the cluster.
+	Memory *DescribeInstanceResponseBodyInstanceReadOnlyResourceMemory `json:"Memory,omitempty" xml:"Memory,omitempty" type:"Struct"`
+	// The number of resource units in the cluster.
+	//
 	// example:
 	//
 	// 1
@@ -12440,8 +12797,23 @@ func (s *DescribeInstanceResponseBodyInstanceReadOnlyResource) SetUnitCount(v in
 }
 
 type DescribeInstanceResponseBodyInstanceReadOnlyResourceCapacityUnit struct {
-	MaxCapacityUnit  *int32  `json:"MaxCapacityUnit,omitempty" xml:"MaxCapacityUnit,omitempty"`
-	MinCapacityUnit  *int32  `json:"MinCapacityUnit,omitempty" xml:"MinCapacityUnit,omitempty"`
+	// The maximum number of capacity units.
+	//
+	// example:
+	//
+	// 4
+	MaxCapacityUnit *int32 `json:"MaxCapacityUnit,omitempty" xml:"MaxCapacityUnit,omitempty"`
+	// The minimum number of capacity units.
+	//
+	// example:
+	//
+	// 1
+	MinCapacityUnit *int32 `json:"MinCapacityUnit,omitempty" xml:"MinCapacityUnit,omitempty"`
+	// The number of used capacity units.
+	//
+	// example:
+	//
+	// 2
 	UsedCapacityUnit *string `json:"UsedCapacityUnit,omitempty" xml:"UsedCapacityUnit,omitempty"`
 }
 
@@ -12469,18 +12841,26 @@ func (s *DescribeInstanceResponseBodyInstanceReadOnlyResourceCapacityUnit) SetUs
 }
 
 type DescribeInstanceResponseBodyInstanceReadOnlyResourceCpu struct {
+	// The number of original CPU cores in the cluster.
+	//
 	// example:
 	//
 	// 14
 	OriginalTotalCpu *int64 `json:"OriginalTotalCpu,omitempty" xml:"OriginalTotalCpu,omitempty"`
+	// The total number of CPU cores of the cluster.
+	//
 	// example:
 	//
 	// 14
 	TotalCpu *int64 `json:"TotalCpu,omitempty" xml:"TotalCpu,omitempty"`
+	// The number of CPU cores of each replica node in the cluster.
+	//
 	// example:
 	//
 	// 10
 	UnitCpu *int64 `json:"UnitCpu,omitempty" xml:"UnitCpu,omitempty"`
+	// The number of CPU cores used by the cluster.
+	//
 	// example:
 	//
 	// 10
@@ -12516,22 +12896,46 @@ func (s *DescribeInstanceResponseBodyInstanceReadOnlyResourceCpu) SetUsedCpu(v i
 }
 
 type DescribeInstanceResponseBodyInstanceReadOnlyResourceDiskSize struct {
-	DataUsedSize        *float64  `json:"DataUsedSize,omitempty" xml:"DataUsedSize,omitempty"`
-	MaxDiskSize         *float64  `json:"MaxDiskSize,omitempty" xml:"MaxDiskSize,omitempty"`
+	// The size of the data disk, in GB.
+	//
+	// example:
+	//
+	// 200
+	DataUsedSize *float64 `json:"DataUsedSize,omitempty" xml:"DataUsedSize,omitempty"`
+	// The maximum disk size that can be created.
+	//
+	// example:
+	//
+	// 80000
+	MaxDiskSize *float64 `json:"MaxDiskSize,omitempty" xml:"MaxDiskSize,omitempty"`
+	// The maximum disk usage of the OBServer node.
 	MaxDiskUsedObServer []*string `json:"MaxDiskUsedObServer,omitempty" xml:"MaxDiskUsedObServer,omitempty" type:"Repeated"`
-	MaxDiskUsedPercent  *float64  `json:"MaxDiskUsedPercent,omitempty" xml:"MaxDiskUsedPercent,omitempty"`
+	// The maximum disk usage, in percentage.
+	//
+	// example:
+	//
+	// 0.14
+	MaxDiskUsedPercent *float64 `json:"MaxDiskUsedPercent,omitempty" xml:"MaxDiskUsedPercent,omitempty"`
+	// The original size of the disk.
+	//
 	// example:
 	//
 	// 200
 	OriginalTotalDiskSize *int64 `json:"OriginalTotalDiskSize,omitempty" xml:"OriginalTotalDiskSize,omitempty"`
+	// The total storage space of the cluster, in GB.
+	//
 	// example:
 	//
 	// 200
 	TotalDiskSize *int64 `json:"TotalDiskSize,omitempty" xml:"TotalDiskSize,omitempty"`
+	// The storage space of each replica node in the cluster, in GB.
+	//
 	// example:
 	//
 	// 200
 	UnitDiskSize *int64 `json:"UnitDiskSize,omitempty" xml:"UnitDiskSize,omitempty"`
+	// The size of used storage space of the cluster, in GB.
+	//
 	// example:
 	//
 	// 100
@@ -12587,13 +12991,28 @@ func (s *DescribeInstanceResponseBodyInstanceReadOnlyResourceDiskSize) SetUsedDi
 }
 
 type DescribeInstanceResponseBodyInstanceReadOnlyResourceLogDiskSize struct {
-	LogAssignedSize        *string   `json:"LogAssignedSize,omitempty" xml:"LogAssignedSize,omitempty"`
+	// The allocated disk space for log storage, in GB.
+	//
+	// example:
+	//
+	// 0.0
+	LogAssignedSize *string `json:"LogAssignedSize,omitempty" xml:"LogAssignedSize,omitempty"`
+	// The maximum storage space allocated for.
 	MaxLogAssignedObServer []*string `json:"MaxLogAssignedObServer,omitempty" xml:"MaxLogAssignedObServer,omitempty" type:"Repeated"`
-	MaxLogAssignedPercent  *string   `json:"MaxLogAssignedPercent,omitempty" xml:"MaxLogAssignedPercent,omitempty"`
+	// The maximum percentage of space allocated for log storage.
+	//
+	// example:
+	//
+	// 6.68
+	MaxLogAssignedPercent *string `json:"MaxLogAssignedPercent,omitempty" xml:"MaxLogAssignedPercent,omitempty"`
+	// The information about the log disk space of the cluster.
+	//
 	// example:
 	//
 	// 400
 	TotalDiskSize *int64 `json:"TotalDiskSize,omitempty" xml:"TotalDiskSize,omitempty"`
+	// The log disk space of each replica node in the cluster, in GB.
+	//
 	// example:
 	//
 	// 200
@@ -12634,18 +13053,26 @@ func (s *DescribeInstanceResponseBodyInstanceReadOnlyResourceLogDiskSize) SetUni
 }
 
 type DescribeInstanceResponseBodyInstanceReadOnlyResourceMemory struct {
+	// The original memory size of the cluster.
+	//
 	// example:
 	//
 	// 72
 	OriginalTotalMemory *int64 `json:"OriginalTotalMemory,omitempty" xml:"OriginalTotalMemory,omitempty"`
+	// The total memory size of the cluster, in GB.
+	//
 	// example:
 	//
 	// 70
 	TotalMemory *int64 `json:"TotalMemory,omitempty" xml:"TotalMemory,omitempty"`
+	// The memory size of each replica node in the cluster, in GB.
+	//
 	// example:
 	//
 	// 10
 	UnitMemory *int64 `json:"UnitMemory,omitempty" xml:"UnitMemory,omitempty"`
+	// The size of memory used by the cluster, in GB.
+	//
 	// example:
 	//
 	// 10
@@ -12681,20 +13108,17 @@ func (s *DescribeInstanceResponseBodyInstanceReadOnlyResourceMemory) SetUsedMemo
 }
 
 type DescribeInstanceResponseBodyInstanceResource struct {
+	// The information about capacity units.
 	CapacityUnit *DescribeInstanceResponseBodyInstanceResourceCapacityUnit `json:"CapacityUnit,omitempty" xml:"CapacityUnit,omitempty" type:"Struct"`
-	// The information of the OceanBase cluster.
+	// The information about the CPU resources of the cluster.
 	Cpu *DescribeInstanceResponseBodyInstanceResourceCpu `json:"Cpu,omitempty" xml:"Cpu,omitempty" type:"Struct"`
-	// The number of the page to return.
-	//
-	// - Start value: 1
-	//
-	// - Default value: 1
+	// The information about the storage resources of the cluster.
 	DiskSize *DescribeInstanceResponseBodyInstanceResourceDiskSize `json:"DiskSize,omitempty" xml:"DiskSize,omitempty" type:"Struct"`
-	// The server with the highest disk usage.
+	// The information about the log disk space of the cluster.
 	LogDiskSize *DescribeInstanceResponseBodyInstanceResourceLogDiskSize `json:"LogDiskSize,omitempty" xml:"LogDiskSize,omitempty" type:"Struct"`
-	// The name of the OceanBase cluster.
+	// The information about the memory resources of the cluster.
 	Memory *DescribeInstanceResponseBodyInstanceResourceMemory `json:"Memory,omitempty" xml:"Memory,omitempty" type:"Struct"`
-	// The number of CPU cores used in the cluster.
+	// The number of resource units in the cluster.
 	//
 	// example:
 	//
@@ -12741,8 +13165,23 @@ func (s *DescribeInstanceResponseBodyInstanceResource) SetUnitCount(v int64) *De
 }
 
 type DescribeInstanceResponseBodyInstanceResourceCapacityUnit struct {
-	MaxCapacityUnit  *int32  `json:"MaxCapacityUnit,omitempty" xml:"MaxCapacityUnit,omitempty"`
-	MinCapacityUnit  *int32  `json:"MinCapacityUnit,omitempty" xml:"MinCapacityUnit,omitempty"`
+	// The maximum number of capacity units.
+	//
+	// example:
+	//
+	// 4
+	MaxCapacityUnit *int32 `json:"MaxCapacityUnit,omitempty" xml:"MaxCapacityUnit,omitempty"`
+	// The minimum number of capacity units.
+	//
+	// example:
+	//
+	// 1
+	MinCapacityUnit *int32 `json:"MinCapacityUnit,omitempty" xml:"MinCapacityUnit,omitempty"`
+	// The number of used capacity units.
+	//
+	// example:
+	//
+	// 2
 	UsedCapacityUnit *string `json:"UsedCapacityUnit,omitempty" xml:"UsedCapacityUnit,omitempty"`
 }
 
@@ -12770,29 +13209,25 @@ func (s *DescribeInstanceResponseBodyInstanceResourceCapacityUnit) SetUsedCapaci
 }
 
 type DescribeInstanceResponseBodyInstanceResourceCpu struct {
+	// The number of original CPU cores in the cluster.
+	//
 	// example:
 	//
 	// 14
 	OriginalTotalCpu *int64 `json:"OriginalTotalCpu,omitempty" xml:"OriginalTotalCpu,omitempty"`
-	// The series of the OceanBase cluster. Valid values:
-	//
-	// - NORMAL: the high availability edition.
-	//
-	// - BASIC: the basic edition.
+	// The total number of CPU cores of the cluster.
 	//
 	// example:
 	//
 	// 14
 	TotalCpu *int64 `json:"TotalCpu,omitempty" xml:"TotalCpu,omitempty"`
-	// The type of the storage disk where the cluster is deployed.
-	//
-	// The default value is cloud_essd_pl1, which indicates an ESSD cloud disk.
+	// The number of CPU cores of each replica node in the cluster.
 	//
 	// example:
 	//
 	// 10
 	UnitCpu *int64 `json:"UnitCpu,omitempty" xml:"UnitCpu,omitempty"`
-	// Indicates whether automatic upgrade of the OBServer version is enabled.
+	// The number of CPU cores used in the cluster.
 	//
 	// example:
 	//
@@ -12829,14 +13264,19 @@ func (s *DescribeInstanceResponseBodyInstanceResourceCpu) SetUsedCpu(v int64) *D
 }
 
 type DescribeInstanceResponseBodyInstanceResourceDiskSize struct {
-	// The ID of the OceanBase cluster.
+	// The size of the data disk, in GB.
 	//
 	// example:
 	//
 	// 200
 	DataUsedSize *float64 `json:"DataUsedSize,omitempty" xml:"DataUsedSize,omitempty"`
-	MaxDiskSize  *float64 `json:"MaxDiskSize,omitempty" xml:"MaxDiskSize,omitempty"`
-	// The time in UTC when the cluster expires.
+	// The maximum disk size that can be created.
+	//
+	// example:
+	//
+	// 80000
+	MaxDiskSize *float64 `json:"MaxDiskSize,omitempty" xml:"MaxDiskSize,omitempty"`
+	// The maximum disk usage of the OBServer node.
 	MaxDiskUsedObServer []*string `json:"MaxDiskUsedObServer,omitempty" xml:"MaxDiskUsedObServer,omitempty" type:"Repeated"`
 	// The maximum disk usage, in percentage.
 	//
@@ -12844,39 +13284,25 @@ type DescribeInstanceResponseBodyInstanceResourceDiskSize struct {
 	//
 	// 0.14
 	MaxDiskUsedPercent *float64 `json:"MaxDiskUsedPercent,omitempty" xml:"MaxDiskUsedPercent,omitempty"`
+	// The original size of the disk.
+	//
 	// example:
 	//
 	// 200
 	OriginalTotalDiskSize *int64 `json:"OriginalTotalDiskSize,omitempty" xml:"OriginalTotalDiskSize,omitempty"`
-	// The data replica distribution mode of the cluster. Valid values:
-	//
-	// - n: indicates the single-IDC mode.
-	//
-	// - n-n: indicates the dual-IDC mode.
-	//
-	// - n-n-n: indicates the multi-IDC mode.
-	//
-	// > <br>The integer n represents the number of OBServer nodes in each IDC.
+	// The total storage space of the cluster, in GB.
 	//
 	// example:
 	//
 	// 200
 	TotalDiskSize *int64 `json:"TotalDiskSize,omitempty" xml:"TotalDiskSize,omitempty"`
-	// The list of zones.
+	// The storage space of each replica node in the cluster, in GB.
 	//
 	// example:
 	//
 	// 200
 	UnitDiskSize *int64 `json:"UnitDiskSize,omitempty" xml:"UnitDiskSize,omitempty"`
-	// The specifications of the cluster.  You can specify one of the following four plans:
-	//
-	// - 8C32G: indicates 8 CPU cores and 32 GB of memory.
-	//
-	// - 14C70G: indicates 14 CPU cores and 70 GB of memory.
-	//
-	// - 30C180G: indicates 30 CPU cores and 180 GB of memory.
-	//
-	// - 62C400G: indicates 62 CPU cores and 400 GB of memory.
+	// The size of used storage space of the cluster, in GB.
 	//
 	// example:
 	//
@@ -12933,17 +13359,33 @@ func (s *DescribeInstanceResponseBodyInstanceResourceDiskSize) SetUsedDiskSize(v
 }
 
 type DescribeInstanceResponseBodyInstanceResourceLogDiskSize struct {
-	LogAssignedSize        *string   `json:"LogAssignedSize,omitempty" xml:"LogAssignedSize,omitempty"`
+	// The allocated disk space for log storage, in GB.
+	//
+	// example:
+	//
+	// 0.0
+	LogAssignedSize *string `json:"LogAssignedSize,omitempty" xml:"LogAssignedSize,omitempty"`
+	// The maximum storage space allocated for.
 	MaxLogAssignedObServer []*string `json:"MaxLogAssignedObServer,omitempty" xml:"MaxLogAssignedObServer,omitempty" type:"Repeated"`
-	MaxLogAssignedPercent  *string   `json:"MaxLogAssignedPercent,omitempty" xml:"MaxLogAssignedPercent,omitempty"`
-	OriginalTotalDiskSize  *int32    `json:"OriginalTotalDiskSize,omitempty" xml:"OriginalTotalDiskSize,omitempty"`
-	// The ID of the region.
+	// The maximum percentage of space allocated for log storage.
+	//
+	// example:
+	//
+	// 6.68
+	MaxLogAssignedPercent *string `json:"MaxLogAssignedPercent,omitempty" xml:"MaxLogAssignedPercent,omitempty"`
+	// The original size of the disk.
+	//
+	// example:
+	//
+	// 200
+	OriginalTotalDiskSize *int32 `json:"OriginalTotalDiskSize,omitempty" xml:"OriginalTotalDiskSize,omitempty"`
+	// The total log disk space of the cluster, in GB.
 	//
 	// example:
 	//
 	// 400
 	TotalDiskSize *int64 `json:"TotalDiskSize,omitempty" xml:"TotalDiskSize,omitempty"`
-	// The request ID.
+	// The log disk space of each replica node in the cluster. Unit: GB.
 	//
 	// example:
 	//
@@ -12990,23 +13432,25 @@ func (s *DescribeInstanceResponseBodyInstanceResourceLogDiskSize) SetUnitDiskSiz
 }
 
 type DescribeInstanceResponseBodyInstanceResourceMemory struct {
+	// The original memory size of the cluster, in GB.
+	//
 	// example:
 	//
 	// 72
 	OriginalTotalMemory *int64 `json:"OriginalTotalMemory,omitempty" xml:"OriginalTotalMemory,omitempty"`
-	// Indicates whether trusted ECS instances are used.
+	// The total memory size of the cluster, in GB.
 	//
 	// example:
 	//
 	// 70
 	TotalMemory *int64 `json:"TotalMemory,omitempty" xml:"TotalMemory,omitempty"`
-	// The log disk space of each replica node in the cluster. Unit: GB.
+	// The memory size of each replica node in the cluster, in GB.
 	//
 	// example:
 	//
 	// 10
 	UnitMemory *int64 `json:"UnitMemory,omitempty" xml:"UnitMemory,omitempty"`
-	// The time in UTC when the cluster was created.
+	// The size of used memory in the cluster, in GB.
 	//
 	// example:
 	//
@@ -13043,11 +13487,18 @@ func (s *DescribeInstanceResponseBodyInstanceResourceMemory) SetUsedMemory(v int
 }
 
 type DescribeInstanceResponseBodyInstanceTenantCreatable struct {
+	// The reason why you cannot create a tenant in the cluster.
+	//
 	// example:
 	//
-	// CPU_NOT_ENOUGH、 MEMORY_NOT_ENOUGH、TENANT_COUNT_EXCEEDS_LIMIT
+	// CPU_NOT_ENOUGH,  MEMORY_NOT_ENOUGH, TENANT_COUNT_EXCEEDS_LIMIT
 	DisableCreateTenantReason *string `json:"DisableCreateTenantReason,omitempty" xml:"DisableCreateTenantReason,omitempty"`
-	EnableCreateTenant        *bool   `json:"EnableCreateTenant,omitempty" xml:"EnableCreateTenant,omitempty"`
+	// Specifies whether a tenant can be created.
+	//
+	// example:
+	//
+	// true
+	EnableCreateTenant *bool `json:"EnableCreateTenant,omitempty" xml:"EnableCreateTenant,omitempty"`
 }
 
 func (s DescribeInstanceResponseBodyInstanceTenantCreatable) String() string {
@@ -13153,10 +13604,13 @@ func (s *DescribeInstanceCreatableZoneResponseBody) SetZoneList(v []*DescribeIns
 }
 
 type DescribeInstanceCreatableZoneResponseBodyZoneList struct {
+	FullCopyId *string `json:"FullCopyId,omitempty" xml:"FullCopyId,omitempty"`
 	// example:
 	//
 	// true
-	IsInCluster *bool `json:"IsInCluster,omitempty" xml:"IsInCluster,omitempty"`
+	IsInCluster        *bool   `json:"IsInCluster,omitempty" xml:"IsInCluster,omitempty"`
+	LogicalZoneName    *string `json:"LogicalZoneName,omitempty" xml:"LogicalZoneName,omitempty"`
+	ReplicateZoneIndex *int64  `json:"ReplicateZoneIndex,omitempty" xml:"ReplicateZoneIndex,omitempty"`
 	// DescribeInstanceCreatableZone
 	//
 	// example:
@@ -13173,8 +13627,23 @@ func (s DescribeInstanceCreatableZoneResponseBodyZoneList) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeInstanceCreatableZoneResponseBodyZoneList) SetFullCopyId(v string) *DescribeInstanceCreatableZoneResponseBodyZoneList {
+	s.FullCopyId = &v
+	return s
+}
+
 func (s *DescribeInstanceCreatableZoneResponseBodyZoneList) SetIsInCluster(v bool) *DescribeInstanceCreatableZoneResponseBodyZoneList {
 	s.IsInCluster = &v
+	return s
+}
+
+func (s *DescribeInstanceCreatableZoneResponseBodyZoneList) SetLogicalZoneName(v string) *DescribeInstanceCreatableZoneResponseBodyZoneList {
+	s.LogicalZoneName = &v
+	return s
+}
+
+func (s *DescribeInstanceCreatableZoneResponseBodyZoneList) SetReplicateZoneIndex(v int64) *DescribeInstanceCreatableZoneResponseBodyZoneList {
+	s.ReplicateZoneIndex = &v
 	return s
 }
 
@@ -13213,12 +13682,15 @@ func (s *DescribeInstanceCreatableZoneResponse) SetBody(v *DescribeInstanceCreat
 }
 
 type DescribeInstanceSSLRequest struct {
+	// The ID of the OceanBase cluster.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ob317v4uif****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	TenantId   *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
 
 func (s DescribeInstanceSSLRequest) String() string {
@@ -13234,8 +13706,16 @@ func (s *DescribeInstanceSSLRequest) SetInstanceId(v string) *DescribeInstanceSS
 	return s
 }
 
+func (s *DescribeInstanceSSLRequest) SetTenantId(v string) *DescribeInstanceSSLRequest {
+	s.TenantId = &v
+	return s
+}
+
 type DescribeInstanceSSLResponseBody struct {
+	// The SSL setting of the OceanBase cluster instance.
 	InstanceSSL *DescribeInstanceSSLResponseBodyInstanceSSL `json:"InstanceSSL,omitempty" xml:"InstanceSSL,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// EE205C00-30E4-xxxx-xxxx-87E3A8A2AA0C
@@ -13261,30 +13741,61 @@ func (s *DescribeInstanceSSLResponseBody) SetRequestId(v string) *DescribeInstan
 }
 
 type DescribeInstanceSSLResponseBodyInstanceSSL struct {
+	// The status of automatic update of SSL certificates. Valid values:
+	//
+	// 	- CLOSE: The automatic update of SSL certificates is disabled.
+	//
+	// 	- OPEN: The automatic update of SSL certificates is enabled.
+	//
+	// example:
+	//
+	// OPEN
+	AutoUpdate *string `json:"AutoUpdate,omitempty" xml:"AutoUpdate,omitempty"`
+	// The URL of the certificate authority (CA) node.
+	//
 	// example:
 	//
 	// https://xxxx
 	CaUrl *string `json:"CaUrl,omitempty" xml:"CaUrl,omitempty"`
+	// The operation to modify the SSL status. Valid values:
+	//
+	// - open: Enable SSL encryption.
+	//
+	// - update: Update the CA certificate.
+	//
+	// - close: Disable SSL encryption.
+	//
 	// example:
 	//
 	// OPEN
 	EnableSSL *string `json:"EnableSSL,omitempty" xml:"EnableSSL,omitempty"`
+	// The forced enabling status of SSL.
+	//
 	// example:
 	//
 	// CLOSE
 	ForceSSL *string `json:"ForceSSL,omitempty" xml:"ForceSSL,omitempty"`
+	// Indicates whether SSL can be forcibly enabled.
+	//
 	// example:
 	//
 	// false
 	ForceSSLSupport *bool `json:"ForceSSLSupport,omitempty" xml:"ForceSSLSupport,omitempty"`
+	// The ID of the OceanBase cluster.
+	//
 	// example:
 	//
 	// ob317v4uif****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The SSL status of the cluster.
+	//
 	// example:
 	//
 	// RUNNING
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The validity period of the SSL certificate.
+	//
 	// example:
 	//
 	// 2024-09-20 07:55:03.0
@@ -13297,6 +13808,11 @@ func (s DescribeInstanceSSLResponseBodyInstanceSSL) String() string {
 
 func (s DescribeInstanceSSLResponseBodyInstanceSSL) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeInstanceSSLResponseBodyInstanceSSL) SetAutoUpdate(v string) *DescribeInstanceSSLResponseBodyInstanceSSL {
+	s.AutoUpdate = &v
+	return s
 }
 
 func (s *DescribeInstanceSSLResponseBodyInstanceSSL) SetCaUrl(v string) *DescribeInstanceSSLResponseBodyInstanceSSL {
@@ -13326,6 +13842,11 @@ func (s *DescribeInstanceSSLResponseBodyInstanceSSL) SetInstanceId(v string) *De
 
 func (s *DescribeInstanceSSLResponseBodyInstanceSSL) SetStatus(v string) *DescribeInstanceSSLResponseBodyInstanceSSL {
 	s.Status = &v
+	return s
+}
+
+func (s *DescribeInstanceSSLResponseBodyInstanceSSL) SetTenantId(v string) *DescribeInstanceSSLResponseBodyInstanceSSL {
+	s.TenantId = &v
 	return s
 }
 
@@ -13596,10 +14117,22 @@ func (s *DescribeInstanceSecurityConfigsResponse) SetBody(v *DescribeInstanceSec
 }
 
 type DescribeInstanceSummaryRequest struct {
+	// The number of the page to return.
+	//
+	// - Start value: 1
+	//
+	// - Default value: 1
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of rows to return on each page.
+	//
+	// - Maximum value: 100.
+	//
+	// - Default value: 10.
+	//
 	// example:
 	//
 	// 10
@@ -13625,7 +14158,10 @@ func (s *DescribeInstanceSummaryRequest) SetPageSize(v int32) *DescribeInstanceS
 }
 
 type DescribeInstanceSummaryResponseBody struct {
+	// The overview information about OceanBase instances.
 	InstanceSummary *DescribeInstanceSummaryResponseBodyInstanceSummary `json:"InstanceSummary,omitempty" xml:"InstanceSummary,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// EE205C00-30E4-XXXX-XXXX-87E3A8A2AA0C
@@ -13651,47 +14187,70 @@ func (s *DescribeInstanceSummaryResponseBody) SetRequestId(v string) *DescribeIn
 }
 
 type DescribeInstanceSummaryResponseBodyInstanceSummary struct {
+	// The total number of alerts during the query period.
+	//
 	// example:
 	//
 	// 1
 	AlarmSummaryCount *int64 `json:"AlarmSummaryCount,omitempty" xml:"AlarmSummaryCount,omitempty"`
+	// The total number of abnormal SQL statements.
+	//
 	// example:
 	//
 	// 1
 	AnomalySQLCount *int64 `json:"AnomalySQLCount,omitempty" xml:"AnomalySQLCount,omitempty"`
+	// The number of cluster instances.
+	//
 	// example:
 	//
 	// 1
 	ClusterInstancesCount *int64 `json:"ClusterInstancesCount,omitempty" xml:"ClusterInstancesCount,omitempty"`
+	// The number of expired instances.
+	//
 	// example:
 	//
 	// 1
 	ExpiredInstancesCount *int64 `json:"ExpiredInstancesCount,omitempty" xml:"ExpiredInstancesCount,omitempty"`
+	// The total number of expired instances to be released.
+	//
 	// example:
 	//
 	// 1
 	ImmediatelyExpiredInstancesCount *int64 `json:"ImmediatelyExpiredInstancesCount,omitempty" xml:"ImmediatelyExpiredInstancesCount,omitempty"`
+	// The total number of clusters with capacity risks.
+	//
 	// example:
 	//
 	// 2
 	InsufficientDiskInstancesCount *int64 `json:"InsufficientDiskInstancesCount,omitempty" xml:"InsufficientDiskInstancesCount,omitempty"`
+	// The number of overloaded instances.
+	//
 	// example:
 	//
 	// 1
-	OverLoadInstancesCount      *int64                                                                           `json:"OverLoadInstancesCount,omitempty" xml:"OverLoadInstancesCount,omitempty"`
+	OverLoadInstancesCount *int64 `json:"OverLoadInstancesCount,omitempty" xml:"OverLoadInstancesCount,omitempty"`
+	// A list of regional instances.
 	RegionalInstanceSummaryList []*DescribeInstanceSummaryResponseBodyInstanceSummaryRegionalInstanceSummaryList `json:"RegionalInstanceSummaryList,omitempty" xml:"RegionalInstanceSummaryList,omitempty" type:"Repeated"`
+	// The number of running instances.
+	//
 	// example:
 	//
 	// 1
 	RunningInstancesCount *int64 `json:"RunningInstancesCount,omitempty" xml:"RunningInstancesCount,omitempty"`
+	// The number of tenant instances.
+	//
 	// example:
 	//
 	// 1
 	TenantInstancesCount *int64 `json:"TenantInstancesCount,omitempty" xml:"TenantInstancesCount,omitempty"`
+	// The total number of instances.
+	//
 	// example:
 	//
 	// 3
 	TotalInstancesCount *int64 `json:"TotalInstancesCount,omitempty" xml:"TotalInstancesCount,omitempty"`
+	// The number of data transmission instances.
+	//
 	// example:
 	//
 	// 1
@@ -13767,30 +14326,42 @@ func (s *DescribeInstanceSummaryResponseBodyInstanceSummary) SetTotalOmsInstance
 }
 
 type DescribeInstanceSummaryResponseBodyInstanceSummaryRegionalInstanceSummaryList struct {
+	// The number of expired instances.
+	//
 	// example:
 	//
 	// 1
-	ExpiredInstancesCount *string `json:"ExpiredInstancesCount,omitempty" xml:"ExpiredInstancesCount,omitempty"`
+	ExpiredInstancesCount *int64 `json:"ExpiredInstancesCount,omitempty" xml:"ExpiredInstancesCount,omitempty"`
+	// The number of instances about to expire.
+	//
 	// example:
 	//
 	// 1
-	ImmediatelyExpiredInstancesCount *string `json:"ImmediatelyExpiredInstancesCount,omitempty" xml:"ImmediatelyExpiredInstancesCount,omitempty"`
+	ImmediatelyExpiredInstancesCount *int64 `json:"ImmediatelyExpiredInstancesCount,omitempty" xml:"ImmediatelyExpiredInstancesCount,omitempty"`
+	// The number of recently created instances.
+	//
 	// example:
 	//
 	// 1
-	RecentCreatedInstancesCount *string `json:"RecentCreatedInstancesCount,omitempty" xml:"RecentCreatedInstancesCount,omitempty"`
+	RecentCreatedInstancesCount *int64 `json:"RecentCreatedInstancesCount,omitempty" xml:"RecentCreatedInstancesCount,omitempty"`
+	// The ID of the region.
+	//
 	// example:
 	//
 	// cn-shanghai
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The total number of running instances.
+	//
 	// example:
 	//
 	// 1
-	RunningInstancesCount *string `json:"RunningInstancesCount,omitempty" xml:"RunningInstancesCount,omitempty"`
+	RunningInstancesCount *int64 `json:"RunningInstancesCount,omitempty" xml:"RunningInstancesCount,omitempty"`
+	// The total number of instances.
+	//
 	// example:
 	//
 	// 3
-	TotalInstancesCount *string `json:"TotalInstancesCount,omitempty" xml:"TotalInstancesCount,omitempty"`
+	TotalInstancesCount *int64 `json:"TotalInstancesCount,omitempty" xml:"TotalInstancesCount,omitempty"`
 }
 
 func (s DescribeInstanceSummaryResponseBodyInstanceSummaryRegionalInstanceSummaryList) String() string {
@@ -13801,17 +14372,17 @@ func (s DescribeInstanceSummaryResponseBodyInstanceSummaryRegionalInstanceSummar
 	return s.String()
 }
 
-func (s *DescribeInstanceSummaryResponseBodyInstanceSummaryRegionalInstanceSummaryList) SetExpiredInstancesCount(v string) *DescribeInstanceSummaryResponseBodyInstanceSummaryRegionalInstanceSummaryList {
+func (s *DescribeInstanceSummaryResponseBodyInstanceSummaryRegionalInstanceSummaryList) SetExpiredInstancesCount(v int64) *DescribeInstanceSummaryResponseBodyInstanceSummaryRegionalInstanceSummaryList {
 	s.ExpiredInstancesCount = &v
 	return s
 }
 
-func (s *DescribeInstanceSummaryResponseBodyInstanceSummaryRegionalInstanceSummaryList) SetImmediatelyExpiredInstancesCount(v string) *DescribeInstanceSummaryResponseBodyInstanceSummaryRegionalInstanceSummaryList {
+func (s *DescribeInstanceSummaryResponseBodyInstanceSummaryRegionalInstanceSummaryList) SetImmediatelyExpiredInstancesCount(v int64) *DescribeInstanceSummaryResponseBodyInstanceSummaryRegionalInstanceSummaryList {
 	s.ImmediatelyExpiredInstancesCount = &v
 	return s
 }
 
-func (s *DescribeInstanceSummaryResponseBodyInstanceSummaryRegionalInstanceSummaryList) SetRecentCreatedInstancesCount(v string) *DescribeInstanceSummaryResponseBodyInstanceSummaryRegionalInstanceSummaryList {
+func (s *DescribeInstanceSummaryResponseBodyInstanceSummaryRegionalInstanceSummaryList) SetRecentCreatedInstancesCount(v int64) *DescribeInstanceSummaryResponseBodyInstanceSummaryRegionalInstanceSummaryList {
 	s.RecentCreatedInstancesCount = &v
 	return s
 }
@@ -13821,12 +14392,12 @@ func (s *DescribeInstanceSummaryResponseBodyInstanceSummaryRegionalInstanceSumma
 	return s
 }
 
-func (s *DescribeInstanceSummaryResponseBodyInstanceSummaryRegionalInstanceSummaryList) SetRunningInstancesCount(v string) *DescribeInstanceSummaryResponseBodyInstanceSummaryRegionalInstanceSummaryList {
+func (s *DescribeInstanceSummaryResponseBodyInstanceSummaryRegionalInstanceSummaryList) SetRunningInstancesCount(v int64) *DescribeInstanceSummaryResponseBodyInstanceSummaryRegionalInstanceSummaryList {
 	s.RunningInstancesCount = &v
 	return s
 }
 
-func (s *DescribeInstanceSummaryResponseBodyInstanceSummaryRegionalInstanceSummaryList) SetTotalInstancesCount(v string) *DescribeInstanceSummaryResponseBodyInstanceSummaryRegionalInstanceSummaryList {
+func (s *DescribeInstanceSummaryResponseBodyInstanceSummaryRegionalInstanceSummaryList) SetTotalInstancesCount(v int64) *DescribeInstanceSummaryResponseBodyInstanceSummaryRegionalInstanceSummaryList {
 	s.TotalInstancesCount = &v
 	return s
 }
@@ -14077,7 +14648,7 @@ func (s *DescribeInstanceTenantModesResponse) SetBody(v *DescribeInstanceTenantM
 }
 
 type DescribeInstanceTopologyRequest struct {
-	// The status of the node.
+	// The ID of the OceanBase cluster.
 	//
 	// This parameter is required.
 	//
@@ -14101,13 +14672,13 @@ func (s *DescribeInstanceTopologyRequest) SetInstanceId(v string) *DescribeInsta
 }
 
 type DescribeInstanceTopologyResponseBody struct {
-	// The number of CPU cores used by the node.
+	// The topology of the cluster.
 	InstanceTopology *DescribeInstanceTopologyResponseBodyInstanceTopology `json:"InstanceTopology,omitempty" xml:"InstanceTopology,omitempty" type:"Struct"`
-	// The information about the CPU resources of the node.
+	// The ID of the request.
 	//
 	// example:
 	//
-	// EE205C00-30E4-XXXX-XXXX-87E3A8A2AA0C
+	// EE205C00-30E4-****-****-87E3A8A2AA0C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -14130,10 +14701,11 @@ func (s *DescribeInstanceTopologyResponseBody) SetRequestId(v string) *DescribeI
 }
 
 type DescribeInstanceTopologyResponseBodyInstanceTopology struct {
+	// The information about replicas.
 	Replicas []*DescribeInstanceTopologyResponseBodyInstanceTopologyReplicas `json:"Replicas,omitempty" xml:"Replicas,omitempty" type:"Repeated"`
-	// The total number of CPU cores for the node.
+	// The information about the tenants.
 	Tenants []*DescribeInstanceTopologyResponseBodyInstanceTopologyTenants `json:"Tenants,omitempty" xml:"Tenants,omitempty" type:"Repeated"`
-	// The information about resource units.
+	// The information about the zones in which the cluster is deployed.
 	Zones []*DescribeInstanceTopologyResponseBodyInstanceTopologyZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
 }
 
@@ -14161,14 +14733,56 @@ func (s *DescribeInstanceTopologyResponseBodyInstanceTopology) SetZones(v []*Des
 }
 
 type DescribeInstanceTopologyResponseBodyInstanceTopologyReplicas struct {
-	LogicalZone     *string                                                                      `json:"LogicalZone,omitempty" xml:"LogicalZone,omitempty"`
-	NodeNum         *int32                                                                       `json:"NodeNum,omitempty" xml:"NodeNum,omitempty"`
+	// The ID of the replica.
+	//
+	// example:
+	//
+	// cn-hangzhou-h-z0
+	LogicalZone *string `json:"LogicalZone,omitempty" xml:"LogicalZone,omitempty"`
+	// The number of nodes of the replica.
+	//
+	// example:
+	//
+	// 1
+	NodeNum *int32 `json:"NodeNum,omitempty" xml:"NodeNum,omitempty"`
+	// The type of the read-only replica.
+	//
+	// example:
+	//
+	// ROW_STORE
+	ReadOnlyReplicaType *string `json:"ReadOnlyReplicaType,omitempty" xml:"ReadOnlyReplicaType,omitempty"`
+	// The information about the replica resources.
 	ReplicaResource *DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResource `json:"ReplicaResource,omitempty" xml:"ReplicaResource,omitempty" type:"Struct"`
-	ReplicaType     *string                                                                      `json:"ReplicaType,omitempty" xml:"ReplicaType,omitempty"`
-	Status          *string                                                                      `json:"Status,omitempty" xml:"Status,omitempty"`
-	ZoneLogicalId   *int32                                                                       `json:"ZoneLogicalId,omitempty" xml:"ZoneLogicalId,omitempty"`
-	ZoneLogicalName *string                                                                      `json:"ZoneLogicalName,omitempty" xml:"ZoneLogicalName,omitempty"`
-	ZoneRegionName  *string                                                                      `json:"ZoneRegionName,omitempty" xml:"ZoneRegionName,omitempty"`
+	// The type of the replica.
+	//
+	// example:
+	//
+	// FULL
+	ReplicaType *string `json:"ReplicaType,omitempty" xml:"ReplicaType,omitempty"`
+	// The status of the replica. Valid values: ACTIVE, INACTIVE, and UNKNOWN.
+	//
+	// example:
+	//
+	// ACTIVE
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The serial number of the replica.
+	//
+	// example:
+	//
+	// 1
+	ZoneLogicalId *int32 `json:"ZoneLogicalId,omitempty" xml:"ZoneLogicalId,omitempty"`
+	// The region of the replica.
+	//
+	// example:
+	//
+	// cn-hangzhou-h
+	ZoneLogicalName *string `json:"ZoneLogicalName,omitempty" xml:"ZoneLogicalName,omitempty"`
+	// The zone of the replica.
+	//
+	// example:
+	//
+	// cn-hangzhou-h
+	ZoneRegionName *string `json:"ZoneRegionName,omitempty" xml:"ZoneRegionName,omitempty"`
 }
 
 func (s DescribeInstanceTopologyResponseBodyInstanceTopologyReplicas) String() string {
@@ -14186,6 +14800,11 @@ func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyReplicas) SetLogica
 
 func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyReplicas) SetNodeNum(v int32) *DescribeInstanceTopologyResponseBodyInstanceTopologyReplicas {
 	s.NodeNum = &v
+	return s
+}
+
+func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyReplicas) SetReadOnlyReplicaType(v string) *DescribeInstanceTopologyResponseBodyInstanceTopologyReplicas {
+	s.ReadOnlyReplicaType = &v
 	return s
 }
 
@@ -14220,9 +14839,12 @@ func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyReplicas) SetZoneRe
 }
 
 type DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResource struct {
-	Cpu      *DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResourceCpu      `json:"Cpu,omitempty" xml:"Cpu,omitempty" type:"Struct"`
+	// The information about the CPU resources of the replica.
+	Cpu *DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResourceCpu `json:"Cpu,omitempty" xml:"Cpu,omitempty" type:"Struct"`
+	// The information about the data disk of the replica.
 	DiskSize *DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResourceDiskSize `json:"DiskSize,omitempty" xml:"DiskSize,omitempty" type:"Struct"`
-	Memory   *DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResourceMemory   `json:"Memory,omitempty" xml:"Memory,omitempty" type:"Struct"`
+	// The information about the memory resources of the replica.
+	Memory *DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResourceMemory `json:"Memory,omitempty" xml:"Memory,omitempty" type:"Struct"`
 }
 
 func (s DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResource) String() string {
@@ -14249,8 +14871,18 @@ func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaReso
 }
 
 type DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResourceCpu struct {
+	// The total number of CPU cores of the replica.
+	//
+	// example:
+	//
+	// 16
 	TotalCpu *int32 `json:"TotalCpu,omitempty" xml:"TotalCpu,omitempty"`
-	UsedCpu  *int32 `json:"UsedCpu,omitempty" xml:"UsedCpu,omitempty"`
+	// The number of CPU cores used by the replica.
+	//
+	// example:
+	//
+	// 8
+	UsedCpu *int32 `json:"UsedCpu,omitempty" xml:"UsedCpu,omitempty"`
 }
 
 func (s DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResourceCpu) String() string {
@@ -14272,8 +14904,18 @@ func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaReso
 }
 
 type DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResourceDiskSize struct {
-	TotalDiskSize *int64   `json:"TotalDiskSize,omitempty" xml:"TotalDiskSize,omitempty"`
-	UsedDiskSize  *float32 `json:"UsedDiskSize,omitempty" xml:"UsedDiskSize,omitempty"`
+	// The total disk space of the replica, in GB.
+	//
+	// example:
+	//
+	// 100
+	TotalDiskSize *int64 `json:"TotalDiskSize,omitempty" xml:"TotalDiskSize,omitempty"`
+	// The disk space used by the replica, in GB.
+	//
+	// example:
+	//
+	// 50
+	UsedDiskSize *float32 `json:"UsedDiskSize,omitempty" xml:"UsedDiskSize,omitempty"`
 }
 
 func (s DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResourceDiskSize) String() string {
@@ -14295,8 +14937,18 @@ func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaReso
 }
 
 type DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResourceMemory struct {
+	// The total memory size of the replica, in GB.
+	//
+	// example:
+	//
+	// 32
 	TotalMemory *int64 `json:"TotalMemory,omitempty" xml:"TotalMemory,omitempty"`
-	UsedMemory  *int64 `json:"UsedMemory,omitempty" xml:"UsedMemory,omitempty"`
+	// The size of memory used by the replica, in GB.
+	//
+	// example:
+	//
+	// 16
+	UsedMemory *int64 `json:"UsedMemory,omitempty" xml:"UsedMemory,omitempty"`
 }
 
 func (s DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResourceMemory) String() string {
@@ -14318,64 +14970,111 @@ func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaReso
 }
 
 type DescribeInstanceTopologyResponseBodyInstanceTopologyTenants struct {
-	// The server with the highest disk usage.
+	// The deployment mode of the primary zone. Valid values:
+	//
+	// 	- RANDOM.
+	//
+	// 	- STATIC.
 	//
 	// example:
 	//
 	// RANDOM
 	PrimaryZoneDeployType *string `json:"PrimaryZoneDeployType,omitempty" xml:"PrimaryZoneDeployType,omitempty"`
-	// The information about the memory resources of the node.
+	// The number of CPU cores of the tenant.
 	//
 	// example:
 	//
 	// 2
 	TenantCpu *float32 `json:"TenantCpu,omitempty" xml:"TenantCpu,omitempty"`
-	// The name of the tenant.
+	// The deployment type of the tenant. Valid values:
+	//
+	// 	- multiple: multi-IDC deployment.
+	//
+	// 	- single: single-IDC deployment.
+	//
+	// 	- dual: dual-IDC deployment.
 	//
 	// example:
 	//
 	// multiple
-	TenantDeployType *string  `json:"TenantDeployType,omitempty" xml:"TenantDeployType,omitempty"`
-	TenantDiskSize   *float32 `json:"TenantDiskSize,omitempty" xml:"TenantDiskSize,omitempty"`
-	// The size of used memory of the node, in GB.
+	TenantDeployType *string `json:"TenantDeployType,omitempty" xml:"TenantDeployType,omitempty"`
+	// The disk space of the tenant, in GB.
+	//
+	// example:
+	//
+	// 2
+	TenantDiskSize *float32 `json:"TenantDiskSize,omitempty" xml:"TenantDiskSize,omitempty"`
+	// The ID of the tenant.
 	//
 	// example:
 	//
 	// t33h8y08k****
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// The total storage space of the node, in GB.
+	// The memory size of the tenant, in GB.
 	//
 	// example:
 	//
 	// 10
 	TenantMemory *float32 `json:"TenantMemory,omitempty" xml:"TenantMemory,omitempty"`
-	// The size of used storage space of the node, in GB.
+	// The mode of the tenant. Valid values:
+	//
+	// 	- Oracle
+	//
+	// 	- MySQL
 	//
 	// example:
 	//
 	// Oracle
 	TenantMode *string `json:"TenantMode,omitempty" xml:"TenantMode,omitempty"`
-	// The total memory size of the node, in GB.
+	// The name of the tenant.
 	//
 	// example:
 	//
 	// pay_online
 	TenantName *string `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
-	// The size of used memory of the node, in GB.
+	// The status of the tenant. Valid values:
+	//
+	// 	- PENDING_CREATE: The tenant is being created.
+	//
+	// 	- RESTORE: The tenant is being restored.
+	//
+	// 	- ONLINE: The tenant is running.
+	//
+	// 	- SPEC_MODIFYING: The specification of the tenant is being modified.
+	//
+	// 	- ALLOCATING_INTERNET_ADDRESS: A public IP address is being allocated to the tenant.
+	//
+	// 	- PENDING_OFFLINE_INTERNET_ADDRESS: The public IP address is being disabled.
+	//
+	// 	- PRIMARY_ZONE_MODIFYING: The tenant is being switched to a new primary zone.
+	//
+	// 	- PARAMETER_MODIFYING: Parameters are being modified.
+	//
+	// 	- WHITE_LIST_MODIFYING: The allowlist is being modified.
 	//
 	// example:
 	//
 	// ONLINE
-	TenantStatus     *string  `json:"TenantStatus,omitempty" xml:"TenantStatus,omitempty"`
-	TenantUnitCpu    *float32 `json:"TenantUnitCpu,omitempty" xml:"TenantUnitCpu,omitempty"`
+	TenantStatus *string `json:"TenantStatus,omitempty" xml:"TenantStatus,omitempty"`
+	// The number of CPU cores of a single node in the tenant.
+	//
+	// example:
+	//
+	// 4
+	TenantUnitCpu *float32 `json:"TenantUnitCpu,omitempty" xml:"TenantUnitCpu,omitempty"`
+	// The memory size of a single node in the tenant, in GB.
+	//
+	// example:
+	//
+	// 16
 	TenantUnitMemory *float32 `json:"TenantUnitMemory,omitempty" xml:"TenantUnitMemory,omitempty"`
-	// The number of CPU cores of the tenant.
+	// The number of resource units in the tenant.
 	//
 	// example:
 	//
 	// 1
 	TenantUnitNum *int32 `json:"TenantUnitNum,omitempty" xml:"TenantUnitNum,omitempty"`
-	// The information about the storage resources of the node.
+	// The information about the zones.
 	TenantZones []*DescribeInstanceTopologyResponseBodyInstanceTopologyTenantsTenantZones `json:"TenantZones,omitempty" xml:"TenantZones,omitempty" type:"Repeated"`
 }
 
@@ -14453,27 +15152,47 @@ func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyTenants) SetTenantZ
 }
 
 type DescribeInstanceTopologyResponseBodyInstanceTopologyTenantsTenantZones struct {
-	// The maximum disk usage, in percentage.
+	// Indicates whether the zone is the primary zone.
 	//
 	// example:
 	//
 	// true
-	IsPrimaryTenantZone *bool   `json:"IsPrimaryTenantZone,omitempty" xml:"IsPrimaryTenantZone,omitempty"`
-	LogicalZone         *string `json:"LogicalZone,omitempty" xml:"LogicalZone,omitempty"`
-	ReplicaType         *string `json:"ReplicaType,omitempty" xml:"ReplicaType,omitempty"`
-	// The server with the highest disk usage.
+	IsPrimaryTenantZone *bool `json:"IsPrimaryTenantZone,omitempty" xml:"IsPrimaryTenantZone,omitempty"`
+	// The ID of the replica.
+	//
+	// example:
+	//
+	// cn-hangzhou-h-z0
+	LogicalZone *string `json:"LogicalZone,omitempty" xml:"LogicalZone,omitempty"`
+	// The type of the read-only replica.
+	//
+	// example:
+	//
+	// ROW_STORE
+	ReadOnlyReplicaType *string `json:"ReadOnlyReplicaType,omitempty" xml:"ReadOnlyReplicaType,omitempty"`
+	// The replica type of the tenant.
+	//
+	// example:
+	//
+	// FULL
+	ReplicaType *string `json:"ReplicaType,omitempty" xml:"ReplicaType,omitempty"`
+	// The ID of the zone.
 	//
 	// example:
 	//
 	// cn-hangzhou-h
 	TenantZoneId *string `json:"TenantZoneId,omitempty" xml:"TenantZoneId,omitempty"`
-	// The information of zones.
+	// The role to access the zone. Valid values:
+	//
+	// 	- ReadWrite: a role that has the read and write privileges.
+	//
+	// 	- ReadOnly: a role that has only the read-only privilege.
 	//
 	// example:
 	//
 	// ReadWrite
 	TenantZoneRole *string `json:"TenantZoneRole,omitempty" xml:"TenantZoneRole,omitempty"`
-	// The information about the storage resources.
+	// The information about the resource units.
 	Units []*DescribeInstanceTopologyResponseBodyInstanceTopologyTenantsTenantZonesUnits `json:"Units,omitempty" xml:"Units,omitempty" type:"Repeated"`
 }
 
@@ -14492,6 +15211,11 @@ func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyTenantsTenantZones)
 
 func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyTenantsTenantZones) SetLogicalZone(v string) *DescribeInstanceTopologyResponseBodyInstanceTopologyTenantsTenantZones {
 	s.LogicalZone = &v
+	return s
+}
+
+func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyTenantsTenantZones) SetReadOnlyReplicaType(v string) *DescribeInstanceTopologyResponseBodyInstanceTopologyTenantsTenantZones {
+	s.ReadOnlyReplicaType = &v
 	return s
 }
 
@@ -14516,60 +15240,79 @@ func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyTenantsTenantZones)
 }
 
 type DescribeInstanceTopologyResponseBodyInstanceTopologyTenantsTenantZonesUnits struct {
-	// Indicates whether the migration can be canceled.
-	//
-	// This field is valid only for units that are being manually immigrated or emigrated.
+	// Indicates whether the migration can be canceled. This parameter is valid only for resource units that are being manually immigrated or emigrated.
 	//
 	// example:
 	//
 	// true
 	EnableCancelMigrateUnit *bool `json:"EnableCancelMigrateUnit,omitempty" xml:"EnableCancelMigrateUnit,omitempty"`
-	// The return result of the request.
+	// Indicates whether the resource unit can be migrated.
 	//
 	// example:
 	//
 	// true
 	EnableMigrateUnit *bool `json:"EnableMigrateUnit,omitempty" xml:"EnableMigrateUnit,omitempty"`
-	// The return result of the request.
+	// Indicates whether the resource unit is manually migrated.
 	//
 	// example:
 	//
 	// true
 	ManualMigrate *bool `json:"ManualMigrate,omitempty" xml:"ManualMigrate,omitempty"`
-	// It is an online CLI tool that allows you to quickly retrieve and debug APIs. It can dynamically generate executable SDK code samples.
+	// The ID of the OBServer node in which the resource unit resides.
 	//
 	// example:
 	//
 	// i-bp16niirq4zdmgvm****
-	NodeId      *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The type of the replica. Node filtering conditions are configured based on the replica type when you query the monitoring data of the OceanBase cluster.
+	//
+	// 	- By default, the replica type is not specified when you query the monitoring data of OceanBase clusters or the access proxy. If you do not specify the replica type when you query the monitoring data of an OceanBase cluster, the monitoring data of all nodes is queried.
+	//
+	// 	- If you set the replica type to FULL when you query the monitoring data of an OceanBase cluster, the monitoring data of only the full-featured replica nodes is queried.
+	//
+	// 	- If you set the replica type to READONLY when you query the monitoring data of an OceanBase cluster, the monitoring data of only the read-only replica nodes is queried.
+	//
+	// example:
+	//
+	// FULL
 	ReplicaType *string `json:"ReplicaType,omitempty" xml:"ReplicaType,omitempty"`
-	// Alibaba Cloud CLI
+	// The number of CPU cores of the resource unit.
 	//
 	// example:
 	//
 	// 2
 	UnitCpu *float32 `json:"UnitCpu,omitempty" xml:"UnitCpu,omitempty"`
-	// The operation that you want to perform.
-	//
-	// Set the value to **DescribeInstanceTopology**.
+	// The data size of the resource unit.
 	//
 	// example:
 	//
 	// 10
 	UnitDataSize *int64 `json:"UnitDataSize,omitempty" xml:"UnitDataSize,omitempty"`
-	// The topology of the cluster.
+	// The ID of the resource unit.
 	//
 	// example:
 	//
 	// 1002
 	UnitId *string `json:"UnitId,omitempty" xml:"UnitId,omitempty"`
-	// The ID of the tenant.
+	// The memory size of the resource unit, in GB.
 	//
 	// example:
 	//
 	// 10
 	UnitMemory *float32 `json:"UnitMemory,omitempty" xml:"UnitMemory,omitempty"`
-	// You can call this operation to query the topology of an OceanBase cluster.
+	// The status of the resource unit. Valid values:
+	//
+	// 	- ONLINE: The resource unit is running.
+	//
+	// 	- IMMIGRATING: The resource unit is being immigrated.
+	//
+	// 	- EMIGRATING: The resource unit is being emigrated.
+	//
+	// 	- CANCEL_EMIGRATING: The immigration of the resource unit is being canceled.
+	//
+	// 	- CANCEL_EMIGRATING: The emigration of the resource unit is being canceled.
+	//
+	// 	- DELETING: The resource unit is being deleted.
 	//
 	// example:
 	//
@@ -14636,27 +15379,27 @@ func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyTenantsTenantZonesU
 }
 
 type DescribeInstanceTopologyResponseBodyInstanceTopologyZones struct {
-	// The ID of the region.
+	// The information about the nodes.
 	Nodes []*DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
-	// The zone information of the cluster.
+	// The ID of the region.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The information about the memory resources of the node.
+	// The storage capacity of the zone.
 	//
 	// example:
 	//
 	// 200 GB
 	ZoneDisk *string `json:"ZoneDisk,omitempty" xml:"ZoneDisk,omitempty"`
-	// The information of the tenant.
+	// The ID of the zone.
 	//
 	// example:
 	//
 	// cn-hangzhou-i
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	// Example 1
+	// The information about zones.
 	ZoneResource *DescribeInstanceTopologyResponseBodyInstanceTopologyZonesZoneResource `json:"ZoneResource,omitempty" xml:"ZoneResource,omitempty" type:"Struct"`
 }
 
@@ -14694,30 +15437,60 @@ func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyZones) SetZoneResou
 }
 
 type DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodes struct {
-	FullCopyId  *int64  `json:"FullCopyId,omitempty" xml:"FullCopyId,omitempty"`
+	// The ID of the full-featured replica.
+	//
+	// example:
+	//
+	// 1
+	FullCopyId *int64 `json:"FullCopyId,omitempty" xml:"FullCopyId,omitempty"`
+	// The ID of the replica.
+	//
+	// example:
+	//
+	// cn-hangzhou-h-z0
 	LogicalZone *string `json:"LogicalZone,omitempty" xml:"LogicalZone,omitempty"`
-	// The information of zones.
+	// The ID of the replica node.
 	//
 	// example:
 	//
 	// 1
 	NodeCopyId *int64 `json:"NodeCopyId,omitempty" xml:"NodeCopyId,omitempty"`
-	// The ID of the resource unit.
+	// The ID of the node.
 	//
 	// example:
 	//
 	// i-bp16niirq4zdmgvm****
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The ID of the node.
+	// The information about node resources.
 	NodeResource *DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodesNodeResource `json:"NodeResource,omitempty" xml:"NodeResource,omitempty" type:"Struct"`
-	// The ID of the OBServer where the resource unit resides.
+	// The status of the node.
 	//
 	// example:
 	//
 	// ONLINE
-	NodeStatus     *string `json:"NodeStatus,omitempty" xml:"NodeStatus,omitempty"`
-	ReadOnlyCopyId *int64  `json:"ReadOnlyCopyId,omitempty" xml:"ReadOnlyCopyId,omitempty"`
-	ReplicaType    *string `json:"ReplicaType,omitempty" xml:"ReplicaType,omitempty"`
+	NodeStatus *string `json:"NodeStatus,omitempty" xml:"NodeStatus,omitempty"`
+	// The ID of the read-only replica.
+	//
+	// example:
+	//
+	// 1
+	ReadOnlyCopyId *int64 `json:"ReadOnlyCopyId,omitempty" xml:"ReadOnlyCopyId,omitempty"`
+	// The type of the read-only replica.
+	//
+	// example:
+	//
+	// ROW_STORE
+	ReadOnlyReplicaType *string `json:"ReadOnlyReplicaType,omitempty" xml:"ReadOnlyReplicaType,omitempty"`
+	// The type of the replica. Valid values:
+	//
+	// 	- FULL.
+	//
+	// 	- READONLY.
+	//
+	// example:
+	//
+	// FULL
+	ReplicaType *string `json:"ReplicaType,omitempty" xml:"ReplicaType,omitempty"`
 }
 
 func (s DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodes) String() string {
@@ -14763,15 +15536,23 @@ func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodes) SetRead
 	return s
 }
 
+func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodes) SetReadOnlyReplicaType(v string) *DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodes {
+	s.ReadOnlyReplicaType = &v
+	return s
+}
+
 func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodes) SetReplicaType(v string) *DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodes {
 	s.ReplicaType = &v
 	return s
 }
 
 type DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodesNodeResource struct {
-	Cpu      *DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodesNodeResourceCpu      `json:"Cpu,omitempty" xml:"Cpu,omitempty" type:"Struct"`
+	// The information about the CPU resources of the node.
+	Cpu *DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodesNodeResourceCpu `json:"Cpu,omitempty" xml:"Cpu,omitempty" type:"Struct"`
+	// The information about the storage resources of the node.
 	DiskSize *DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodesNodeResourceDiskSize `json:"DiskSize,omitempty" xml:"DiskSize,omitempty" type:"Struct"`
-	Memory   *DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodesNodeResourceMemory   `json:"Memory,omitempty" xml:"Memory,omitempty" type:"Struct"`
+	// The information about the memory resources of the node.
+	Memory *DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodesNodeResourceMemory `json:"Memory,omitempty" xml:"Memory,omitempty" type:"Struct"`
 }
 
 func (s DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodesNodeResource) String() string {
@@ -14798,10 +15579,14 @@ func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodesNodeResou
 }
 
 type DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodesNodeResourceCpu struct {
+	// The total number of CPU cores of the node.
+	//
 	// example:
 	//
 	// 14
 	TotalCpu *int32 `json:"TotalCpu,omitempty" xml:"TotalCpu,omitempty"`
+	// The number of CPU cores used by the node.
+	//
 	// example:
 	//
 	// 4
@@ -14827,8 +15612,18 @@ func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodesNodeResou
 }
 
 type DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodesNodeResourceDiskSize struct {
+	// The total storage space of the node, in GB.
+	//
+	// example:
+	//
+	// 100
 	TotalDiskSize *float64 `json:"TotalDiskSize,omitempty" xml:"TotalDiskSize,omitempty"`
-	UsedDiskSize  *float64 `json:"UsedDiskSize,omitempty" xml:"UsedDiskSize,omitempty"`
+	// The size of storage space used by the node, in GB.
+	//
+	// example:
+	//
+	// 50
+	UsedDiskSize *float64 `json:"UsedDiskSize,omitempty" xml:"UsedDiskSize,omitempty"`
 }
 
 func (s DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodesNodeResourceDiskSize) String() string {
@@ -14850,10 +15645,14 @@ func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodesNodeResou
 }
 
 type DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodesNodeResourceMemory struct {
+	// The total memory size of the node, in GB.
+	//
 	// example:
 	//
 	// 70
 	TotalMemory *int64 `json:"TotalMemory,omitempty" xml:"TotalMemory,omitempty"`
+	// The size of memory used by the node, in GB.
+	//
 	// example:
 	//
 	// 10
@@ -14879,6 +15678,7 @@ func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodesNodeResou
 }
 
 type DescribeInstanceTopologyResponseBodyInstanceTopologyZonesZoneResource struct {
+	// The information about the storage resources of the node.
 	DiskSize *DescribeInstanceTopologyResponseBodyInstanceTopologyZonesZoneResourceDiskSize `json:"DiskSize,omitempty" xml:"DiskSize,omitempty" type:"Struct"`
 }
 
@@ -14896,8 +15696,9 @@ func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyZonesZoneResource) 
 }
 
 type DescribeInstanceTopologyResponseBodyInstanceTopologyZonesZoneResourceDiskSize struct {
+	// The IDs of OBServer nodes that use the maximum disk space.
 	MaxDiskUsedObServer []*string `json:"MaxDiskUsedObServer,omitempty" xml:"MaxDiskUsedObServer,omitempty" type:"Repeated"`
-	// DescribeInstanceTopology
+	// The maximum disk usage, in percentage.
 	//
 	// example:
 	//
@@ -15135,7 +15936,7 @@ type DescribeInstancesResponseBodyInstances struct {
 	// example:
 	//
 	// 200
-	DiskSize *string `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
+	DiskSize *int64 `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
 	// The type of the storage disk where the cluster is deployed.
 	//
 	// The default value is cloud_essd_pl1, which indicates an ESSD cloud disk.
@@ -15233,7 +16034,12 @@ type DescribeInstancesResponseBodyInstances struct {
 	// example:
 	//
 	// 70
-	Mem          *int64  `json:"Mem,omitempty" xml:"Mem,omitempty"`
+	Mem *int64 `json:"Mem,omitempty" xml:"Mem,omitempty"`
+	// The version of the OceanBase Database RedHat Package Managerment (RPM) package.
+	//
+	// example:
+	//
+	// 4.2.1.7-107030032024062709
 	ObRpmVersion *string `json:"ObRpmVersion,omitempty" xml:"ObRpmVersion,omitempty"`
 	// The billing method for the OceanBase cluster. Valid values:
 	//
@@ -15245,6 +16051,10 @@ type DescribeInstancesResponseBodyInstances struct {
 	//
 	// PREPAY
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// example:
+	//
+	// 3F、2F1A
+	ReplicaMode *string `json:"ReplicaMode,omitempty" xml:"ReplicaMode,omitempty"`
 	// The information about cluster resources.
 	Resource *DescribeInstancesResponseBodyInstancesResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Struct"`
 	// The ID of the resource group.
@@ -15262,7 +16072,12 @@ type DescribeInstancesResponseBodyInstances struct {
 	// example:
 	//
 	// NORMAL
-	Series   *string `json:"Series,omitempty" xml:"Series,omitempty"`
+	Series *string `json:"Series,omitempty" xml:"Series,omitempty"`
+	// The specification type.
+	//
+	// example:
+	//
+	// dedicatedspec
 	SpecType *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
 	// The status of the cluster. Valid values:
 	//
@@ -15424,7 +16239,7 @@ func (s *DescribeInstancesResponseBodyInstances) SetDeployType(v string) *Descri
 	return s
 }
 
-func (s *DescribeInstancesResponseBodyInstances) SetDiskSize(v string) *DescribeInstancesResponseBodyInstances {
+func (s *DescribeInstancesResponseBodyInstances) SetDiskSize(v int64) *DescribeInstancesResponseBodyInstances {
 	s.DiskSize = &v
 	return s
 }
@@ -15501,6 +16316,11 @@ func (s *DescribeInstancesResponseBodyInstances) SetObRpmVersion(v string) *Desc
 
 func (s *DescribeInstancesResponseBodyInstances) SetPayType(v string) *DescribeInstancesResponseBodyInstances {
 	s.PayType = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstances) SetReplicaMode(v string) *DescribeInstancesResponseBodyInstances {
+	s.ReplicaMode = &v
 	return s
 }
 
@@ -16346,8 +17166,15 @@ type DescribeOasAnomalySQLListRequest struct {
 	// example:
 	//
 	// db_****
-	DbName     *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	DynamicSql *bool   `json:"DynamicSql,omitempty" xml:"DynamicSql,omitempty"`
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// Specifies whether the specified SQL statements are dynamic SQL statements.
+	//
+	// > This parameter specifies whether the values of the `SqlId` parameter are the IDs of dynamic SQL statements.
+	//
+	// example:
+	//
+	// false
+	DynamicSql *bool `json:"DynamicSql,omitempty" xml:"DynamicSql,omitempty"`
 	// The end time of the monitoring data.
 	//
 	// The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
@@ -16371,8 +17198,15 @@ type DescribeOasAnomalySQLListRequest struct {
 	// example:
 	//
 	// ob317v4uif****
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MergeDynamicSql *bool   `json:"MergeDynamicSql,omitempty" xml:"MergeDynamicSql,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Specifies whether to merge dynamic SQL statements in the return result.
+	//
+	// > This parameter specifies whether to aggregate the results of IN queries.
+	//
+	// example:
+	//
+	// false
+	MergeDynamicSql *bool `json:"MergeDynamicSql,omitempty" xml:"MergeDynamicSql,omitempty"`
 	// The node IP.
 	//
 	// example:
@@ -16546,7 +17380,7 @@ func (s *DescribeOasAnomalySQLListRequest) SetTenantId(v string) *DescribeOasAno
 }
 
 type DescribeOasAnomalySQLListResponseBody struct {
-	// The list of suspicious SQLs.
+	// The information about suspicious SQL statements.
 	Data []*DescribeOasAnomalySQLListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -16592,7 +17426,12 @@ type DescribeOasAnomalySQLListResponseBodyData struct {
 	//
 	// 100.24
 	AvgCpuTime *float64 `json:"AvgCpuTime,omitempty" xml:"AvgCpuTime,omitempty"`
-	AvgDbTime  *float64 `json:"AvgDbTime,omitempty" xml:"AvgDbTime,omitempty"`
+	// The average DB time.
+	//
+	// example:
+	//
+	// 100
+	AvgDbTime *float64 `json:"AvgDbTime,omitempty" xml:"AvgDbTime,omitempty"`
 	// Average response time of the suspicious SQL.
 	//
 	// example:
@@ -16604,9 +17443,19 @@ type DescribeOasAnomalySQLListResponseBodyData struct {
 	// example:
 	//
 	// 0
-	AvgGetPlanTime  *float64 `json:"AvgGetPlanTime,omitempty" xml:"AvgGetPlanTime,omitempty"`
+	AvgGetPlanTime *float64 `json:"AvgGetPlanTime,omitempty" xml:"AvgGetPlanTime,omitempty"`
+	// The average number of logical reads.
+	//
+	// example:
+	//
+	// 25
 	AvgLogicalReads *float32 `json:"AvgLogicalReads,omitempty" xml:"AvgLogicalReads,omitempty"`
-	AvgRetryCount   *float32 `json:"AvgRetryCount,omitempty" xml:"AvgRetryCount,omitempty"`
+	// The average number of retries.
+	//
+	// example:
+	//
+	// 4
+	AvgRetryCount *float32 `json:"AvgRetryCount,omitempty" xml:"AvgRetryCount,omitempty"`
 	// CPU time of the suspicious SQL.
 	//
 	// example:
@@ -16622,8 +17471,17 @@ type DescribeOasAnomalySQLListResponseBodyData struct {
 	// The type of the diagnosis.
 	DiagTypes []*string `json:"DiagTypes,omitempty" xml:"DiagTypes,omitempty" type:"Repeated"`
 	// The details of diagnosis.
-	Diagnosis  *string `json:"Diagnosis,omitempty" xml:"Diagnosis,omitempty"`
-	DynamicSql *bool   `json:"DynamicSql,omitempty" xml:"DynamicSql,omitempty"`
+	//
+	// example:
+	//
+	// -
+	Diagnosis *string `json:"Diagnosis,omitempty" xml:"Diagnosis,omitempty"`
+	// 是否动态SQL
+	//
+	// example:
+	//
+	// false
+	DynamicSql *bool `json:"DynamicSql,omitempty" xml:"DynamicSql,omitempty"`
 	// Total execution count of the suspicious SQL.
 	//
 	// example:
@@ -16647,7 +17505,8 @@ type DescribeOasAnomalySQLListResponseBodyData struct {
 	// example:
 	//
 	// 8D6E84****0B8FB1823D199E2CA1****
-	SqlId   *string                                             `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
+	SqlId *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
+	// The list of SQL statements.
 	SqlList []*DescribeOasAnomalySQLListResponseBodyDataSqlList `json:"SqlList,omitempty" xml:"SqlList,omitempty" type:"Repeated"`
 	// Prefix of the SQL text.
 	SqlTextShort *string `json:"SqlTextShort,omitempty" xml:"SqlTextShort,omitempty"`
@@ -16656,15 +17515,25 @@ type DescribeOasAnomalySQLListResponseBodyData struct {
 	// example:
 	//
 	// review
-	Suggestion *string  `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
-	SumDbTime  *float64 `json:"SumDbTime,omitempty" xml:"SumDbTime,omitempty"`
+	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
+	// The total DB time.
+	//
+	// example:
+	//
+	// 100
+	SumDbTime *float64 `json:"SumDbTime,omitempty" xml:"SumDbTime,omitempty"`
 	// Total response time of the suspicious SQL.
 	//
 	// example:
 	//
 	// 11452126.36
-	SumElapsedTime *string  `json:"SumElapsedTime,omitempty" xml:"SumElapsedTime,omitempty"`
-	SumRetryCount  *float32 `json:"SumRetryCount,omitempty" xml:"SumRetryCount,omitempty"`
+	SumElapsedTime *string `json:"SumElapsedTime,omitempty" xml:"SumElapsedTime,omitempty"`
+	// The total number of retries.
+	//
+	// example:
+	//
+	// 6
+	SumRetryCount *float32 `json:"SumRetryCount,omitempty" xml:"SumRetryCount,omitempty"`
 	// Username.
 	//
 	// example:
@@ -16792,26 +17661,124 @@ func (s *DescribeOasAnomalySQLListResponseBodyData) SetUserName(v string) *Descr
 }
 
 type DescribeOasAnomalySQLListResponseBodyDataSqlList struct {
-	AvgCpuTime       *float64  `json:"AvgCpuTime,omitempty" xml:"AvgCpuTime,omitempty"`
-	AvgDbTime        *float64  `json:"AvgDbTime,omitempty" xml:"AvgDbTime,omitempty"`
-	AvgElapsedTime   *float64  `json:"AvgElapsedTime,omitempty" xml:"AvgElapsedTime,omitempty"`
-	AvgGetPlanTime   *float64  `json:"AvgGetPlanTime,omitempty" xml:"AvgGetPlanTime,omitempty"`
-	AvgLogicalReads  *float32  `json:"AvgLogicalReads,omitempty" xml:"AvgLogicalReads,omitempty"`
-	AvgRetryCount    *float32  `json:"AvgRetryCount,omitempty" xml:"AvgRetryCount,omitempty"`
-	CpuTime          *float64  `json:"CpuTime,omitempty" xml:"CpuTime,omitempty"`
-	DbName           *string   `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	DiagTypes        []*string `json:"DiagTypes,omitempty" xml:"DiagTypes,omitempty" type:"Repeated"`
-	Diagnosis        *string   `json:"Diagnosis,omitempty" xml:"Diagnosis,omitempty"`
-	Executions       *float64  `json:"Executions,omitempty" xml:"Executions,omitempty"`
-	LastExecutedTime *float64  `json:"LastExecutedTime,omitempty" xml:"LastExecutedTime,omitempty"`
-	RiskLevel        *string   `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	SqlId            *string   `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
-	SqlTextShort     *string   `json:"SqlTextShort,omitempty" xml:"SqlTextShort,omitempty"`
-	Suggestion       *string   `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
-	SumDbTime        *float64  `json:"SumDbTime,omitempty" xml:"SumDbTime,omitempty"`
-	SumElapsedTime   *string   `json:"SumElapsedTime,omitempty" xml:"SumElapsedTime,omitempty"`
-	SumRetryCount    *float32  `json:"SumRetryCount,omitempty" xml:"SumRetryCount,omitempty"`
-	UserName         *string   `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The average CPU time.
+	//
+	// example:
+	//
+	// 100.24
+	AvgCpuTime *float64 `json:"AvgCpuTime,omitempty" xml:"AvgCpuTime,omitempty"`
+	// The average DB time.
+	//
+	// example:
+	//
+	// 100
+	AvgDbTime *float64 `json:"AvgDbTime,omitempty" xml:"AvgDbTime,omitempty"`
+	// The average response time.
+	//
+	// example:
+	//
+	// 100.28
+	AvgElapsedTime *float64 `json:"AvgElapsedTime,omitempty" xml:"AvgElapsedTime,omitempty"`
+	// The average plan generation time.
+	//
+	// example:
+	//
+	// 0
+	AvgGetPlanTime *float64 `json:"AvgGetPlanTime,omitempty" xml:"AvgGetPlanTime,omitempty"`
+	// The average number of logical reads.
+	//
+	// example:
+	//
+	// 25
+	AvgLogicalReads *float32 `json:"AvgLogicalReads,omitempty" xml:"AvgLogicalReads,omitempty"`
+	// The average number of retries.
+	//
+	// example:
+	//
+	// 4
+	AvgRetryCount *float32 `json:"AvgRetryCount,omitempty" xml:"AvgRetryCount,omitempty"`
+	// The total CPU time.
+	//
+	// example:
+	//
+	// 100.23
+	CpuTime *float64 `json:"CpuTime,omitempty" xml:"CpuTime,omitempty"`
+	// The name of the database.
+	//
+	// example:
+	//
+	// test_hsp****eway
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The diagnostic types.
+	DiagTypes []*string `json:"DiagTypes,omitempty" xml:"DiagTypes,omitempty" type:"Repeated"`
+	// The diagnostic details.
+	//
+	// > This parameter is deprecated.
+	//
+	// example:
+	//
+	// -
+	Diagnosis *string `json:"Diagnosis,omitempty" xml:"Diagnosis,omitempty"`
+	// The total number of executions.
+	//
+	// example:
+	//
+	// 100
+	Executions *float64 `json:"Executions,omitempty" xml:"Executions,omitempty"`
+	// The last execution time.
+	//
+	// example:
+	//
+	// 2023-04-12T04:38:38Z
+	LastExecutedTime *string `json:"LastExecutedTime,omitempty" xml:"LastExecutedTime,omitempty"`
+	// The risk level.
+	//
+	// example:
+	//
+	// LOW
+	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The ID of the SQL statement.
+	//
+	// example:
+	//
+	// 3A645****789F13DE0CF6D084FF9****
+	SqlId *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
+	// The prefix of the SQL text.
+	//
+	// example:
+	//
+	// select 	- from test
+	SqlTextShort *string `json:"SqlTextShort,omitempty" xml:"SqlTextShort,omitempty"`
+	// The suggestion on the suspicious SQL statement.
+	//
+	// example:
+	//
+	// {\\"Role\\": \\"eSG\\", \\"Result\\": \\"100\\", \\"Suggestion\\": \\"TRACER_OTHER_ERR\\"}
+	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
+	// The total DB time.
+	//
+	// example:
+	//
+	// 100
+	SumDbTime *float64 `json:"SumDbTime,omitempty" xml:"SumDbTime,omitempty"`
+	// The total response time.
+	//
+	// example:
+	//
+	// 11452126.36
+	SumElapsedTime *string `json:"SumElapsedTime,omitempty" xml:"SumElapsedTime,omitempty"`
+	// The total number of retries.
+	//
+	// example:
+	//
+	// 6
+	SumRetryCount *float32 `json:"SumRetryCount,omitempty" xml:"SumRetryCount,omitempty"`
+	// The username.
+	//
+	// example:
+	//
+	// test_user
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s DescribeOasAnomalySQLListResponseBodyDataSqlList) String() string {
@@ -16877,7 +17844,7 @@ func (s *DescribeOasAnomalySQLListResponseBodyDataSqlList) SetExecutions(v float
 	return s
 }
 
-func (s *DescribeOasAnomalySQLListResponseBodyDataSqlList) SetLastExecutedTime(v float64) *DescribeOasAnomalySQLListResponseBodyDataSqlList {
+func (s *DescribeOasAnomalySQLListResponseBodyDataSqlList) SetLastExecutedTime(v string) *DescribeOasAnomalySQLListResponseBodyDataSqlList {
 	s.LastExecutedTime = &v
 	return s
 }
@@ -17192,8 +18159,13 @@ type DescribeOasSQLHistoryListRequest struct {
 	// example:
 	//
 	// test_db
-	DbName     *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	DynamicSql *bool   `json:"DynamicSql,omitempty" xml:"DynamicSql,omitempty"`
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// Specifies whether the SQL statement is a dynamic SQL statement.
+	//
+	// example:
+	//
+	// false
+	DynamicSql *bool `json:"DynamicSql,omitempty" xml:"DynamicSql,omitempty"`
 	// The end time of querying the execution history of the SQL statement.
 	//
 	// The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
@@ -17371,7 +18343,12 @@ type DescribeOasSQLHistoryListResponseBodyData struct {
 	//
 	// 1875.34
 	AvgCpuTime *float64 `json:"AvgCpuTime,omitempty" xml:"AvgCpuTime,omitempty"`
-	AvgDbTime  *float64 `json:"AvgDbTime,omitempty" xml:"AvgDbTime,omitempty"`
+	// The average DB time, in milliseconds.
+	//
+	// example:
+	//
+	// 100
+	AvgDbTime *float64 `json:"AvgDbTime,omitempty" xml:"AvgDbTime,omitempty"`
 	// Average syntax parsing time (in milliseconds) during the execution period.
 	//
 	// example:
@@ -17690,7 +18667,12 @@ type DescribeOasSQLHistoryListResponseBodyData struct {
 	//
 	// 100
 	StrongConsistencyPercentage *float64 `json:"StrongConsistencyPercentage,omitempty" xml:"StrongConsistencyPercentage,omitempty"`
-	SumDbTime                   *float64 `json:"SumDbTime,omitempty" xml:"SumDbTime,omitempty"`
+	// The total DB time, in milliseconds.
+	//
+	// example:
+	//
+	// 100
+	SumDbTime *float64 `json:"SumDbTime,omitempty" xml:"SumDbTime,omitempty"`
 	// Total response time (in milliseconds) during the execution period.
 	//
 	// example:
@@ -17727,6 +18709,12 @@ type DescribeOasSQLHistoryListResponseBodyData struct {
 	//
 	// test_user
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The wait event.
+	//
+	// example:
+	//
+	// none
+	WaitEvent *string `json:"WaitEvent,omitempty" xml:"WaitEvent,omitempty"`
 	// Eventually consistent transaction percentage during the execution period.
 	//
 	// example:
@@ -18083,6 +19071,11 @@ func (s *DescribeOasSQLHistoryListResponseBodyData) SetUserName(v string) *Descr
 	return s
 }
 
+func (s *DescribeOasSQLHistoryListResponseBodyData) SetWaitEvent(v string) *DescribeOasSQLHistoryListResponseBodyData {
+	s.WaitEvent = &v
+	return s
+}
+
 func (s *DescribeOasSQLHistoryListResponseBodyData) SetWeakConsistencyPercentage(v float64) *DescribeOasSQLHistoryListResponseBodyData {
 	s.WeakConsistencyPercentage = &v
 	return s
@@ -18135,8 +19128,13 @@ type DescribeOasSQLPlansRequest struct {
 	// example:
 	//
 	// test_db
-	DbName     *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	DynamicSql *bool   `json:"DynamicSql,omitempty" xml:"DynamicSql,omitempty"`
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// Specifies whether the SQL statement is dynamic.
+	//
+	// example:
+	//
+	// false
+	DynamicSql *bool `json:"DynamicSql,omitempty" xml:"DynamicSql,omitempty"`
 	// The end time of querying the SQL execution plan.
 	//
 	// The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
@@ -18154,9 +19152,19 @@ type DescribeOasSQLPlansRequest struct {
 	// example:
 	//
 	// ob317v4uif****
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PlanUnionHash   *string `json:"PlanUnionHash,omitempty" xml:"PlanUnionHash,omitempty"`
-	ReturnBriefInfo *bool   `json:"ReturnBriefInfo,omitempty" xml:"ReturnBriefInfo,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The unique identifier of the execution plan.
+	//
+	// example:
+	//
+	// c4e9aaa797428df9a5a41828********
+	PlanUnionHash *string `json:"PlanUnionHash,omitempty" xml:"PlanUnionHash,omitempty"`
+	// Specifies whether to return an overview of the execution plan.
+	//
+	// example:
+	//
+	// true
+	ReturnBriefInfo *bool `json:"ReturnBriefInfo,omitempty" xml:"ReturnBriefInfo,omitempty"`
 	// SQL ID.
 	//
 	// This parameter is required.
@@ -18314,8 +19322,22 @@ type DescribeOasSQLPlansResponseBodyData struct {
 	// example:
 	//
 	// 513
-	MergedVersion *int64  `json:"MergedVersion,omitempty" xml:"MergedVersion,omitempty"`
-	OutlineId     *string `json:"OutlineId,omitempty" xml:"OutlineId,omitempty"`
+	MergedVersion *int64 `json:"MergedVersion,omitempty" xml:"MergedVersion,omitempty"`
+	// The ID of the outline used by the execution plan.
+	//
+	// example:
+	//
+	// 3********
+	OutlineId *string `json:"OutlineId,omitempty" xml:"OutlineId,omitempty"`
+	// The outline status of the execution plan. Valid values:
+	//
+	// 	- **Effective**: indicates that the outline_data and outlIne_content fields exactly match with each other.
+	//
+	// 	- **Unknown**: indicates that the outline status is unknown.
+	//
+	// example:
+	//
+	// Effective
 	OutlineStatus *string `json:"OutlineStatus,omitempty" xml:"OutlineStatus,omitempty"`
 	// Execution plan.
 	PlanExplain *DescribeOasSQLPlansResponseBodyDataPlanExplain `json:"PlanExplain,omitempty" xml:"PlanExplain,omitempty" type:"Struct"`
@@ -18344,8 +19366,13 @@ type DescribeOasSQLPlansResponseBodyData struct {
 	// example:
 	//
 	// "select 1 from t"
-	QuerySql  *string `json:"QuerySql,omitempty" xml:"QuerySql,omitempty"`
-	TableScan *bool   `json:"TableScan,omitempty" xml:"TableScan,omitempty"`
+	QuerySql *string `json:"QuerySql,omitempty" xml:"QuerySql,omitempty"`
+	// Indicates whether full table scan is performed.
+	//
+	// example:
+	//
+	// false
+	TableScan *bool `json:"TableScan,omitempty" xml:"TableScan,omitempty"`
 }
 
 func (s DescribeOasSQLPlansResponseBodyData) String() string {
@@ -18644,8 +19671,13 @@ type DescribeOasSQLPlansResponseBodyDataPlans struct {
 	// example:
 	//
 	// 2
-	ServerId *int64  `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	SqlId    *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
+	ServerId *int64 `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	// SQL ID.
+	//
+	// example:
+	//
+	// 46939C87ECA****95ED0FF64F44B****
+	SqlId *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
 	// Whether a full table scan is performed.
 	//
 	// example:
@@ -22206,7 +23238,11 @@ type DescribeOutlineBindingResponseBodyOutlineBinding struct {
 	//
 	// -1
 	OutlineId *int64 `json:"OutlineId,omitempty" xml:"OutlineId,omitempty"`
-	// 表名称
+	// The name of the tenant. The tenant name must start with a letter or an underscore (_), and contain 2 to 20 characters, which can be uppercase letters, lowercase letters, digits, and underscores (_). It cannot be set to sys.
+	//
+	// example:
+	//
+	// cluster_info
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
@@ -22554,13 +23590,15 @@ type DescribeParametersHistoryRequest struct {
 	Dimension *string `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
 	// The resource ID of the parameter type.
 	//
-	// You can leave this parameter unspecified when you call this operation to query the modification history of cluster parameters. In the case of tenant parameters, pass the tenant ID.
+	// You can leave this parameter unspecified when you call this operation to query cluster parameters. In the case of tenant parameters, pass the tenant ID.
 	//
 	// example:
 	//
-	// ob2mr3oae0****
+	// t4qx8****
 	DimensionValue *string `json:"DimensionValue,omitempty" xml:"DimensionValue,omitempty"`
-	// The end time for the query of parameter modification history.
+	// The end time of the time range for querying the SQL execution history.
+	//
+	// The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
 	//
 	// This parameter is required.
 	//
@@ -22590,7 +23628,7 @@ type DescribeParametersHistoryRequest struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of rows to return on each page.
 	//
-	// - Maximum value: 100
+	// - Maximum value: 100.
 	//
 	// - Default value: 10
 	//
@@ -22600,7 +23638,9 @@ type DescribeParametersHistoryRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The start time of the time range for querying the parameter modification history.
+	// The start time of querying the slow query execution.
+	//
+	// The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
 	//
 	// This parameter is required.
 	//
@@ -22654,14 +23694,14 @@ func (s *DescribeParametersHistoryRequest) SetStartTime(v string) *DescribeParam
 }
 
 type DescribeParametersHistoryResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// EE205C00-30E4-XXXX-XXXX-87E3A8A2AA0C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The list of parameter modification records.
-	Respond []*DescribeParametersHistoryResponseBodyRespond `json:"Respond,omitempty" xml:"Respond,omitempty" type:"Repeated"`
+	Respond *DescribeParametersHistoryResponseBodyRespond `json:"Respond,omitempty" xml:"Respond,omitempty" type:"Struct"`
 }
 
 func (s DescribeParametersHistoryResponseBody) String() string {
@@ -22677,25 +23717,29 @@ func (s *DescribeParametersHistoryResponseBody) SetRequestId(v string) *Describe
 	return s
 }
 
-func (s *DescribeParametersHistoryResponseBody) SetRespond(v []*DescribeParametersHistoryResponseBodyRespond) *DescribeParametersHistoryResponseBody {
+func (s *DescribeParametersHistoryResponseBody) SetRespond(v *DescribeParametersHistoryResponseBodyRespond) *DescribeParametersHistoryResponseBody {
 	s.Respond = v
 	return s
 }
 
 type DescribeParametersHistoryResponseBodyRespond struct {
-	// The number of returned entries on each page.
+	// The number of the page to return.
+	//
+	// - Start value: 1
+	//
+	// - Default value: 1
 	//
 	// example:
 	//
-	// Default value: 10.
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The parameter modification history.
+	// The information about parameters.
 	Parameters []*DescribeParametersHistoryResponseBodyRespondParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
-	// The number of parameter modification records.
+	// The total count, which takes effect in a pagination query.
 	//
 	// example:
 	//
-	// 2
+	// 5
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -22727,17 +23771,13 @@ type DescribeParametersHistoryResponseBodyRespondParameters struct {
 	//
 	// example:
 	//
-	// 2021-09-14 10:57:44
+	// 2024-11-26T08:03:34Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The resource ID of the parameter type.
-	//
-	// - When you called this operation to query the modification history of cluster parameters, the value is DEFAULT_DIMENSION_VALUE.
-	//
-	// - When you called this operation to query the modification history of tenant parameters, the value is the tenant ID.
+	// The resource ID of the parameter type. When you called this operation to query the modification history of cluster parameters, the value is DEFAULT_DIMENSION_VALUE. When you called this operation to query the modification history of tenant parameters, the value is the tenant ID.
 	//
 	// example:
 	//
-	// DEFAULT_DIMENSION_VALUE
+	// t69uo********
 	DimensionValue *string `json:"DimensionValue,omitempty" xml:"DimensionValue,omitempty"`
 	// The name of the parameter.
 	//
@@ -22749,19 +23789,19 @@ type DescribeParametersHistoryResponseBodyRespondParameters struct {
 	//
 	// example:
 	//
-	// 200
+	// 30
 	NewValue *string `json:"NewValue,omitempty" xml:"NewValue,omitempty"`
-	// The parameter value before modification.
+	// The value of the parameter before the modification.
 	//
 	// example:
 	//
-	// 300
+	// 10
 	OldValue *string `json:"OldValue,omitempty" xml:"OldValue,omitempty"`
-	// The modification status. Valid values:
+	// The modification status of the parameter. Valid values:
 	//
-	// - APPLIED: The modification was successful.
+	// 	- APPLIED: The parameter was modified.
 	//
-	// - SCHEDULING: The modification was to be made.
+	// 	- SCHEDULING: The parameter was to be modified.
 	//
 	// example:
 	//
@@ -22771,7 +23811,7 @@ type DescribeParametersHistoryResponseBodyRespondParameters struct {
 	//
 	// example:
 	//
-	// 2021-09-14 10:57:44
+	// 2024-11-26T08:03:34Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
@@ -22868,13 +23908,13 @@ type DescribeProcessStatsCompositionRequest struct {
 	//
 	// 127.*.*.*
 	ServerIp *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
-	// The SQL statement. It supports LIKE clauses, and you may specify only part of the clauses in the SQL statement.
+	// The SQL statement, which can contain LIKE clauses. You can specify only part of the clauses in the SQL statement.
 	//
 	// example:
 	//
 	// SELECT  ***	- FROM ***	- WHERE ***	- = ? AND ***	- = ?   ORDER BY ***	- ASC
 	SqlText *string `json:"SqlText,omitempty" xml:"SqlText,omitempty"`
-	// The state of the session.
+	// The status of the session.
 	//
 	// example:
 	//
@@ -22886,17 +23926,17 @@ type DescribeProcessStatsCompositionRequest struct {
 	//
 	// t33h8y08k****
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// The user identifier (UID) of OceanBase Database.
+	// The user identifier (UID) of the OceanBase database.
 	//
 	// example:
 	//
 	// 139*************
 	UId *string `json:"UId,omitempty" xml:"UId,omitempty"`
-	// The username that you use to log in to the database.
+	// The username of the database.
 	//
 	// example:
 	//
-	// test1
+	// ["test_user"]
 	Users *string `json:"Users,omitempty" xml:"Users,omitempty"`
 }
 
@@ -22951,7 +23991,7 @@ func (s *DescribeProcessStatsCompositionRequest) SetUsers(v string) *DescribePro
 type DescribeProcessStatsCompositionResponseBody struct {
 	// The return result.
 	Data *DescribeProcessStatsCompositionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -22978,12 +24018,34 @@ func (s *DescribeProcessStatsCompositionResponseBody) SetRequestId(v string) *De
 }
 
 type DescribeProcessStatsCompositionResponseBodyData struct {
-	ActiveSessionCount *int32                                                            `json:"ActiveSessionCount,omitempty" xml:"ActiveSessionCount,omitempty"`
-	AllProcessList     []*DescribeProcessStatsCompositionResponseBodyDataAllProcessList  `json:"AllProcessList,omitempty" xml:"AllProcessList,omitempty" type:"Repeated"`
-	IdleSessionCount   *int32                                                            `json:"IdleSessionCount,omitempty" xml:"IdleSessionCount,omitempty"`
-	ObVersion          *string                                                           `json:"ObVersion,omitempty" xml:"ObVersion,omitempty"`
-	SessionStatistics  *DescribeProcessStatsCompositionResponseBodyDataSessionStatistics `json:"SessionStatistics,omitempty" xml:"SessionStatistics,omitempty" type:"Struct"`
-	TotalSessionCount  *int32                                                            `json:"TotalSessionCount,omitempty" xml:"TotalSessionCount,omitempty"`
+	// The number of active sessions.
+	//
+	// example:
+	//
+	// 60
+	ActiveSessionCount *int32 `json:"ActiveSessionCount,omitempty" xml:"ActiveSessionCount,omitempty"`
+	// The details of all sessions.
+	AllProcessList []*DescribeProcessStatsCompositionResponseBodyDataAllProcessList `json:"AllProcessList,omitempty" xml:"AllProcessList,omitempty" type:"Repeated"`
+	// The number of sessions in the SLEEP state.
+	//
+	// example:
+	//
+	// 30
+	IdleSessionCount *int32 `json:"IdleSessionCount,omitempty" xml:"IdleSessionCount,omitempty"`
+	// The version of OceanBase Database.
+	//
+	// example:
+	//
+	// 3.2.4
+	ObVersion *string `json:"ObVersion,omitempty" xml:"ObVersion,omitempty"`
+	// The session data in different dimensions.
+	SessionStatistics *DescribeProcessStatsCompositionResponseBodyDataSessionStatistics `json:"SessionStatistics,omitempty" xml:"SessionStatistics,omitempty" type:"Struct"`
+	// The total number of sessions.
+	//
+	// example:
+	//
+	// 100
+	TotalSessionCount *int32 `json:"TotalSessionCount,omitempty" xml:"TotalSessionCount,omitempty"`
 }
 
 func (s DescribeProcessStatsCompositionResponseBodyData) String() string {
@@ -23025,21 +24087,102 @@ func (s *DescribeProcessStatsCompositionResponseBodyData) SetTotalSessionCount(v
 }
 
 type DescribeProcessStatsCompositionResponseBodyDataAllProcessList struct {
-	ClientIp    *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
-	Command     *string `json:"Command,omitempty" xml:"Command,omitempty"`
-	CpuTime     *int64  `json:"CpuTime,omitempty" xml:"CpuTime,omitempty"`
-	Database    *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	ExecuteTime *int64  `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
-	PlanId      *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	// The IP address of the client.
+	//
+	// example:
+	//
+	// xx.xx.xx.xx
+	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	// The type of the SQL statement being executed in the session.
+	//
+	// example:
+	//
+	// Query
+	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
+	// The CPU time spent on executing the current SQL statement, in seconds.
+	//
+	// > This parameter is introduced since OceanBase Database V3.2.4 BP5.
+	//
+	// example:
+	//
+	// 1
+	CpuTime *int64 `json:"CpuTime,omitempty" xml:"CpuTime,omitempty"`
+	// The name of the database.
+	//
+	// example:
+	//
+	// c1
+	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	// The definition of this parameter varies based on whether the SQL statement is executed.
+	//
+	// 	- When the request is accepted and the result is not returned to the client, this parameter indicates the time interval between the time when the request is accepted and the current time, in seconds.
+	//
+	// 	- When the request is not accepted, this parameter indicates the duration for which the current status lasts, in seconds.
+	//
+	// example:
+	//
+	// 5
+	ExecuteTime *int64 `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
+	// The ID of the execution plan.
+	//
+	// example:
+	//
+	// 1898
+	PlanId *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	// The session ID of the client. If an OceanBase Database Proxy (ODP) is used for connection, the session ID of the ODP is returned.
+	//
+	// example:
+	//
+	// 7521015416********
 	ProxySessId *string `json:"ProxySessId,omitempty" xml:"ProxySessId,omitempty"`
-	ServerIp    *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
-	SessionId   *int64  `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	SqlId       *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
-	SqlText     *string `json:"SqlText,omitempty" xml:"SqlText,omitempty"`
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TenantId    *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	TraceId     *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
-	User        *string `json:"User,omitempty" xml:"User,omitempty"`
+	// The IP address of the server.
+	//
+	// example:
+	//
+	// xx.xx.xx.xx
+	ServerIp *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
+	// The ID of the session.
+	//
+	// example:
+	//
+	// 322441****
+	SessionId *int64 `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The ID of the SQL statement.
+	//
+	// example:
+	//
+	// 45CCBDC7DEBDCDAXXXXAFC********
+	SqlId *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
+	// The SQL text.
+	//
+	// example:
+	//
+	// select 	- from c1 where id = 100;
+	SqlText *string `json:"SqlText,omitempty" xml:"SqlText,omitempty"`
+	// The status of the session.
+	//
+	// example:
+	//
+	// ACTIVE
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the tenant.
+	//
+	// example:
+	//
+	// test_mysql
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The ID of the trace.
+	//
+	// example:
+	//
+	// YB420XXX128-00062XXXX8313XXX1-X-X
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+	// The user to which the session belongs.
+	//
+	// example:
+	//
+	// test_user
+	User *string `json:"User,omitempty" xml:"User,omitempty"`
 }
 
 func (s DescribeProcessStatsCompositionResponseBodyDataAllProcessList) String() string {
@@ -23126,9 +24269,12 @@ func (s *DescribeProcessStatsCompositionResponseBodyDataAllProcessList) SetUser(
 }
 
 type DescribeProcessStatsCompositionResponseBodyDataSessionStatistics struct {
+	// The session data in the database dimension.
 	DataBaseStatistics []*DescribeProcessStatsCompositionResponseBodyDataSessionStatisticsDataBaseStatistics `json:"DataBaseStatistics,omitempty" xml:"DataBaseStatistics,omitempty" type:"Repeated"`
-	SourceStatistics   []*DescribeProcessStatsCompositionResponseBodyDataSessionStatisticsSourceStatistics   `json:"SourceStatistics,omitempty" xml:"SourceStatistics,omitempty" type:"Repeated"`
-	UserStatistics     []*DescribeProcessStatsCompositionResponseBodyDataSessionStatisticsUserStatistics     `json:"UserStatistics,omitempty" xml:"UserStatistics,omitempty" type:"Repeated"`
+	// The session data in the client dimension.
+	SourceStatistics []*DescribeProcessStatsCompositionResponseBodyDataSessionStatisticsSourceStatistics `json:"SourceStatistics,omitempty" xml:"SourceStatistics,omitempty" type:"Repeated"`
+	// The session data in the user dimension.
+	UserStatistics []*DescribeProcessStatsCompositionResponseBodyDataSessionStatisticsUserStatistics `json:"UserStatistics,omitempty" xml:"UserStatistics,omitempty" type:"Repeated"`
 }
 
 func (s DescribeProcessStatsCompositionResponseBodyDataSessionStatistics) String() string {
@@ -23155,10 +24301,30 @@ func (s *DescribeProcessStatsCompositionResponseBodyDataSessionStatistics) SetUs
 }
 
 type DescribeProcessStatsCompositionResponseBodyDataSessionStatisticsDataBaseStatistics struct {
-	ActiveCount *int64  `json:"ActiveCount,omitempty" xml:"ActiveCount,omitempty"`
+	// The number of active sessions.
+	//
+	// example:
+	//
+	// 25
+	ActiveCount *int64 `json:"ActiveCount,omitempty" xml:"ActiveCount,omitempty"`
+	// The name of the database.
+	//
+	// example:
+	//
+	// test_database
 	MetricValue *string `json:"MetricValue,omitempty" xml:"MetricValue,omitempty"`
-	TotalCount  *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 30
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The dimension. This value is fixed to database.
+	//
+	// example:
+	//
+	// database
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeProcessStatsCompositionResponseBodyDataSessionStatisticsDataBaseStatistics) String() string {
@@ -23190,10 +24356,30 @@ func (s *DescribeProcessStatsCompositionResponseBodyDataSessionStatisticsDataBas
 }
 
 type DescribeProcessStatsCompositionResponseBodyDataSessionStatisticsSourceStatistics struct {
-	ActiveCount *int64  `json:"ActiveCount,omitempty" xml:"ActiveCount,omitempty"`
+	// The number of active sessions.
+	//
+	// example:
+	//
+	// 25
+	ActiveCount *int64 `json:"ActiveCount,omitempty" xml:"ActiveCount,omitempty"`
+	// The IP address of the client.
+	//
+	// example:
+	//
+	// xx.xx.xx.xx
 	MetricValue *string `json:"MetricValue,omitempty" xml:"MetricValue,omitempty"`
-	TotalCount  *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 30
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The dimension. This value is fixed to client.
+	//
+	// example:
+	//
+	// client
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeProcessStatsCompositionResponseBodyDataSessionStatisticsSourceStatistics) String() string {
@@ -23225,10 +24411,30 @@ func (s *DescribeProcessStatsCompositionResponseBodyDataSessionStatisticsSourceS
 }
 
 type DescribeProcessStatsCompositionResponseBodyDataSessionStatisticsUserStatistics struct {
-	ActiveCount *int64  `json:"ActiveCount,omitempty" xml:"ActiveCount,omitempty"`
+	// The number of active sessions.
+	//
+	// example:
+	//
+	// 25
+	ActiveCount *int64 `json:"ActiveCount,omitempty" xml:"ActiveCount,omitempty"`
+	// The username.
+	//
+	// example:
+	//
+	// test_user
 	MetricValue *string `json:"MetricValue,omitempty" xml:"MetricValue,omitempty"`
-	TotalCount  *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 30
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The dimension. This value is fixed to user.
+	//
+	// example:
+	//
+	// user
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeProcessStatsCompositionResponseBodyDataSessionStatisticsUserStatistics) String() string {
@@ -29410,6 +30616,211 @@ func (s *DescribeProjectStepsResponse) SetBody(v *DescribeProjectStepsResponseBo
 	return s
 }
 
+type DescribeProxyServiceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ob317v4uif****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s DescribeProxyServiceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProxyServiceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProxyServiceRequest) SetInstanceId(v string) *DescribeProxyServiceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type DescribeProxyServiceResponseBody struct {
+	Data *DescribeProxyServiceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// EE205C00-30E4-XXXX-XXXX-87E3A8A2AA0C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeProxyServiceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProxyServiceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProxyServiceResponseBody) SetData(v *DescribeProxyServiceResponseBodyData) *DescribeProxyServiceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeProxyServiceResponseBody) SetRequestId(v string) *DescribeProxyServiceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeProxyServiceResponseBodyData struct {
+	// example:
+	//
+	// 2023-07-05T08:23:10Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentEndpointNum *int64 `json:"CurrentEndpointNum,omitempty" xml:"CurrentEndpointNum,omitempty"`
+	// example:
+	//
+	// 3
+	EndpointNumQuota *int64 `json:"EndpointNumQuota,omitempty" xml:"EndpointNumQuota,omitempty"`
+	// example:
+	//
+	// 2123-07-05T16:00:00
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// example:
+	//
+	// proxy-3t****zrieasg
+	ProxyClusterId *string `json:"ProxyClusterId,omitempty" xml:"ProxyClusterId,omitempty"`
+	// example:
+	//
+	// shared
+	ProxyMode *string `json:"ProxyMode,omitempty" xml:"ProxyMode,omitempty"`
+	// example:
+	//
+	// 1.0
+	ProxyServiceVersion *string `json:"ProxyServiceVersion,omitempty" xml:"ProxyServiceVersion,omitempty"`
+	// example:
+	//
+	// 4.3.1.0-xxxxxxxxx
+	ProxyVersion *string `json:"ProxyVersion,omitempty" xml:"ProxyVersion,omitempty"`
+	// example:
+	//
+	// ONLINE
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 1
+	UnitNum *int64 `json:"UnitNum,omitempty" xml:"UnitNum,omitempty"`
+	// example:
+	//
+	// 4
+	UnitNumLimit *int64 `json:"UnitNumLimit,omitempty" xml:"UnitNumLimit,omitempty"`
+	// example:
+	//
+	// 4C8GB
+	UnitSpec *string `json:"UnitSpec,omitempty" xml:"UnitSpec,omitempty"`
+	// example:
+	//
+	// cn-shanghai-e,cn-shanghai-f
+	Zone *string `json:"Zone,omitempty" xml:"Zone,omitempty"`
+}
+
+func (s DescribeProxyServiceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProxyServiceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProxyServiceResponseBodyData) SetCreateTime(v string) *DescribeProxyServiceResponseBodyData {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeProxyServiceResponseBodyData) SetCurrentEndpointNum(v int64) *DescribeProxyServiceResponseBodyData {
+	s.CurrentEndpointNum = &v
+	return s
+}
+
+func (s *DescribeProxyServiceResponseBodyData) SetEndpointNumQuota(v int64) *DescribeProxyServiceResponseBodyData {
+	s.EndpointNumQuota = &v
+	return s
+}
+
+func (s *DescribeProxyServiceResponseBodyData) SetExpireTime(v string) *DescribeProxyServiceResponseBodyData {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *DescribeProxyServiceResponseBodyData) SetProxyClusterId(v string) *DescribeProxyServiceResponseBodyData {
+	s.ProxyClusterId = &v
+	return s
+}
+
+func (s *DescribeProxyServiceResponseBodyData) SetProxyMode(v string) *DescribeProxyServiceResponseBodyData {
+	s.ProxyMode = &v
+	return s
+}
+
+func (s *DescribeProxyServiceResponseBodyData) SetProxyServiceVersion(v string) *DescribeProxyServiceResponseBodyData {
+	s.ProxyServiceVersion = &v
+	return s
+}
+
+func (s *DescribeProxyServiceResponseBodyData) SetProxyVersion(v string) *DescribeProxyServiceResponseBodyData {
+	s.ProxyVersion = &v
+	return s
+}
+
+func (s *DescribeProxyServiceResponseBodyData) SetStatus(v string) *DescribeProxyServiceResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeProxyServiceResponseBodyData) SetUnitNum(v int64) *DescribeProxyServiceResponseBodyData {
+	s.UnitNum = &v
+	return s
+}
+
+func (s *DescribeProxyServiceResponseBodyData) SetUnitNumLimit(v int64) *DescribeProxyServiceResponseBodyData {
+	s.UnitNumLimit = &v
+	return s
+}
+
+func (s *DescribeProxyServiceResponseBodyData) SetUnitSpec(v string) *DescribeProxyServiceResponseBodyData {
+	s.UnitSpec = &v
+	return s
+}
+
+func (s *DescribeProxyServiceResponseBodyData) SetZone(v string) *DescribeProxyServiceResponseBodyData {
+	s.Zone = &v
+	return s
+}
+
+type DescribeProxyServiceResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeProxyServiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeProxyServiceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProxyServiceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProxyServiceResponse) SetHeaders(v map[string]*string) *DescribeProxyServiceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeProxyServiceResponse) SetStatusCode(v int32) *DescribeProxyServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeProxyServiceResponse) SetBody(v *DescribeProxyServiceResponseBody) *DescribeProxyServiceResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeRecommendIndexRequest struct {
 	// The return result of the request.
 	//
@@ -29569,32 +30980,46 @@ func (s *DescribeRecommendIndexResponse) SetBody(v *DescribeRecommendIndexRespon
 }
 
 type DescribeRestorableTenantsRequest struct {
+	// The ID of the OceanBase cluster.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ob317v4uif****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Specifies whether the target cluster is online. **Note*	- This parameter is used for compatibility with earlier versions and can be left empty. When left empty, it specifies negation for the value of `isRemote`.
+	//
 	// example:
 	//
 	// true
 	IsOnline *bool `json:"IsOnline,omitempty" xml:"IsOnline,omitempty"`
+	// This parameter is provided for compatibility with earlier versions and can be left empty.
+	//
 	// example:
 	//
 	// true
 	IsRemote *bool `json:"IsRemote,omitempty" xml:"IsRemote,omitempty"`
+	// The backup method.
+	//
 	// example:
 	//
 	// native_logical
 	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	// The restore method. This parameter is required when `IsRemote` is set to `true`, and is optional otherwise.
+	//
 	// example:
 	//
 	// from_time_point
 	RestoreMode *string `json:"RestoreMode,omitempty" xml:"RestoreMode,omitempty"`
+	// The type of the restore object.
+	//
 	// example:
 	//
 	// tenant
 	RestoreObjectType *string `json:"RestoreObjectType,omitempty" xml:"RestoreObjectType,omitempty"`
+	// The ID of the backup set.
+	//
 	// example:
 	//
 	// bak-xxxxx
@@ -29645,11 +31070,16 @@ func (s *DescribeRestorableTenantsRequest) SetSetId(v string) *DescribeRestorabl
 }
 
 type DescribeRestorableTenantsResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// EE205C00-30E4-****-****-87E3A8A2AA0C
-	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Tenants   []*DescribeRestorableTenantsResponseBodyTenants `json:"Tenants,omitempty" xml:"Tenants,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the tenants.
+	Tenants []*DescribeRestorableTenantsResponseBodyTenants `json:"Tenants,omitempty" xml:"Tenants,omitempty" type:"Repeated"`
+	// The total number.
+	//
 	// example:
 	//
 	// 6
@@ -29680,72 +31110,108 @@ func (s *DescribeRestorableTenantsResponseBody) SetTotalCount(v int32) *Describe
 }
 
 type DescribeRestorableTenantsResponseBodyTenants struct {
+	// The name of the backup directory.
+	//
 	// example:
 	//
 	// backup
-	BackupBucketName *string                                                   `json:"BackupBucketName,omitempty" xml:"BackupBucketName,omitempty"`
-	BackupSets       []*DescribeRestorableTenantsResponseBodyTenantsBackupSets `json:"BackupSets,omitempty" xml:"BackupSets,omitempty" type:"Repeated"`
+	BackupBucketName *string `json:"BackupBucketName,omitempty" xml:"BackupBucketName,omitempty"`
+	// The list of backup sets.
+	BackupSets []*DescribeRestorableTenantsResponseBodyTenantsBackupSets `json:"BackupSets,omitempty" xml:"BackupSets,omitempty" type:"Repeated"`
+	// The ID of the cluster.
+	//
 	// example:
 	//
 	// objnf3b2****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The name of the cluster.
+	//
 	// example:
 	//
 	// testCluster
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// The number of CPU cores.
+	//
 	// example:
 	//
 	// 1
 	CpuNum *int64 `json:"CpuNum,omitempty" xml:"CpuNum,omitempty"`
+	// The size of memory for the tenant.
+	//
 	// example:
 	//
 	// 100
 	MemoryNum *int64 `json:"MemoryNum,omitempty" xml:"MemoryNum,omitempty"`
+	// The backup method.
+	//
 	// example:
 	//
 	// logical
 	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	// The version of the OceanBase Database RPM package.
+	//
 	// example:
 	//
 	// 3.2.3.1-2022080510****
 	ObRpmVersion *string `json:"ObRpmVersion,omitempty" xml:"ObRpmVersion,omitempty"`
+	// The ID of the tenant.
+	//
 	// example:
 	//
 	// tvd43v****
 	ObTenantId *string `json:"ObTenantId,omitempty" xml:"ObTenantId,omitempty"`
+	// The major version of OceanBase Database.
+	//
 	// example:
 	//
 	// 3.2.3.1
 	ObVersion *string `json:"ObVersion,omitempty" xml:"ObVersion,omitempty"`
+	// The region of the cluster.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	SourceRegion *string `json:"SourceRegion,omitempty" xml:"SourceRegion,omitempty"`
+	// The alias of the tenant.
+	//
 	// example:
 	//
 	// aaa
 	TenantAlias *string `json:"TenantAlias,omitempty" xml:"TenantAlias,omitempty"`
+	// The remaining validity period, in days, of the backup data of the tenant.
+	//
 	// example:
 	//
 	// 7
 	TenantDataBackupRemainDays *int32 `json:"TenantDataBackupRemainDays,omitempty" xml:"TenantDataBackupRemainDays,omitempty"`
+	// The ID of the tenant.
+	//
 	// example:
 	//
 	// ob317v4uif****
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The mode of the tenant.
+	//
 	// example:
 	//
 	// Oracle
 	TenantMode *string `json:"TenantMode,omitempty" xml:"TenantMode,omitempty"`
+	// The name of the tenant.
+	//
 	// example:
 	//
 	// sbtest1
-	TenantName       *string                                                         `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
+	TenantName *string `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
+	// The list of restorable periods of the tenant.
 	TimeIntervalList []*DescribeRestorableTenantsResponseBodyTenantsTimeIntervalList `json:"TimeIntervalList,omitempty" xml:"TimeIntervalList,omitempty" type:"Repeated"`
+	// The number of nodes of the tenant.
+	//
 	// example:
 	//
 	// 2
 	UnitNum *int64 `json:"UnitNum,omitempty" xml:"UnitNum,omitempty"`
+	// The size of disk space for the tenant.
+	//
 	// example:
 	//
 	// 50
@@ -29856,18 +31322,26 @@ func (s *DescribeRestorableTenantsResponseBodyTenants) SetUsedDisk(v int64) *Des
 }
 
 type DescribeRestorableTenantsResponseBodyTenantsBackupSets struct {
+	// The ID of the full backup set used for restore.
+	//
 	// example:
 	//
 	// bak-4n****gacpa8
 	BackupSetId *string `json:"BackupSetId,omitempty" xml:"BackupSetId,omitempty"`
+	// The checkpoint of the backup set.
+	//
 	// example:
 	//
 	// 2024-01-01\\"T\\"12:10:10.000\\"Z\\"
 	Checkpoint *string `json:"Checkpoint,omitempty" xml:"Checkpoint,omitempty"`
+	// The ID of the backup set.
+	//
 	// example:
 	//
 	// bak-xxxxx
 	SetId *string `json:"SetId,omitempty" xml:"SetId,omitempty"`
+	// The ID of the tenant.
+	//
 	// example:
 	//
 	// t5********
@@ -29903,18 +31377,26 @@ func (s *DescribeRestorableTenantsResponseBodyTenantsBackupSets) SetTenantId(v s
 }
 
 type DescribeRestorableTenantsResponseBodyTenantsTimeIntervalList struct {
+	// The end time of the restorable period.
+	//
 	// example:
 	//
 	// 2023-03-13T02:43:03Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Indicates whether the restore is based on archiving.
+	//
 	// example:
 	//
 	// true
 	FromArchive *bool `json:"FromArchive,omitempty" xml:"FromArchive,omitempty"`
+	// The start time of the restorable period.
+	//
 	// example:
 	//
 	// 2023-01-20T16:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The storage type of backup data.
+	//
 	// example:
 	//
 	// standard
@@ -31033,8 +32515,13 @@ type DescribeSQLSamplesRequest struct {
 	// example:
 	//
 	// ob317v4uif****
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ReturnSqlText *bool   `json:"ReturnSqlText,omitempty" xml:"ReturnSqlText,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Specifies whether to return the SQL text.
+	//
+	// example:
+	//
+	// true
+	ReturnSqlText *bool `json:"ReturnSqlText,omitempty" xml:"ReturnSqlText,omitempty"`
 	// SQL ID.
 	//
 	// This parameter is required.
@@ -31236,7 +32723,14 @@ type DescribeSQLSamplesResponseBodyData struct {
 	//
 	// 0
 	ExpectedWorkerCount *float64 `json:"ExpectedWorkerCount,omitempty" xml:"ExpectedWorkerCount,omitempty"`
-	FullSqlText         *string  `json:"FullSqlText,omitempty" xml:"FullSqlText,omitempty"`
+	// The full SQL text.
+	//
+	// > This parameter is unavailable.
+	//
+	// example:
+	//
+	// select 	- from test where c1 > 1 and c2 > 3;
+	FullSqlText *string `json:"FullSqlText,omitempty" xml:"FullSqlText,omitempty"`
 	// Plan generation time (in milliseconds).
 	//
 	// example:
@@ -31290,8 +32784,13 @@ type DescribeSQLSamplesResponseBodyData struct {
 	// example:
 	//
 	// 100010
-	ObUserId    *float64 `json:"ObUserId,omitempty" xml:"ObUserId,omitempty"`
-	ParamsValue *string  `json:"ParamsValue,omitempty" xml:"ParamsValue,omitempty"`
+	ObUserId *float64 `json:"ObUserId,omitempty" xml:"ObUserId,omitempty"`
+	// The parameter value of the SQL statement.
+	//
+	// example:
+	//
+	// 1****
+	ParamsValue *string `json:"ParamsValue,omitempty" xml:"ParamsValue,omitempty"`
 	// Average number of partition accessed during the execution period.
 	//
 	// example:
@@ -31369,7 +32868,12 @@ type DescribeSQLSamplesResponseBodyData struct {
 	// example:
 	//
 	// i-bp1db1****8uemejio
-	Server  *string `json:"Server,omitempty" xml:"Server,omitempty"`
+	Server *string `json:"Server,omitempty" xml:"Server,omitempty"`
+	// The SQL text.
+	//
+	// example:
+	//
+	// select *	- from t
 	SqlText *string `json:"SqlText,omitempty" xml:"SqlText,omitempty"`
 	// SQL type.
 	//
@@ -32321,7 +33825,8 @@ type DescribeSampleSqlRawTextsRequest struct {
 	// example:
 	//
 	// test_db
-	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	DbName     *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	DynamicSql *bool   `json:"DynamicSql,omitempty" xml:"DynamicSql,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -32370,6 +33875,11 @@ func (s DescribeSampleSqlRawTextsRequest) GoString() string {
 
 func (s *DescribeSampleSqlRawTextsRequest) SetDbName(v string) *DescribeSampleSqlRawTextsRequest {
 	s.DbName = &v
+	return s
+}
+
+func (s *DescribeSampleSqlRawTextsRequest) SetDynamicSql(v bool) *DescribeSampleSqlRawTextsRequest {
+	s.DynamicSql = &v
 	return s
 }
 
@@ -34467,15 +35977,7 @@ func (s *DescribeTagValuesResponse) SetBody(v *DescribeTagValuesResponseBody) *D
 }
 
 type DescribeTenantRequest struct {
-	// The status of the Internet address for accessing the tenant. Valid values:
-	//
-	// - CLOSED: The address is disabled.
-	//
-	// - ALLOCATING_INTERNET_ADDRESS: An address is being applied for.
-	//
-	// - PENDING_OFFLINE_INTERNET_ADDRESS: The address is being disabled.
-	//
-	// - ONLINE: The address is in service.
+	// The ID of the OceanBase cluster.
 	//
 	// This parameter is required.
 	//
@@ -34483,7 +35985,7 @@ type DescribeTenantRequest struct {
 	//
 	// ob317v4uif****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Indicates whether to enable transaction splitting.
+	// The ID of the tenant.
 	//
 	// This parameter is required.
 	//
@@ -34512,13 +36014,13 @@ func (s *DescribeTenantRequest) SetTenantId(v string) *DescribeTenantRequest {
 }
 
 type DescribeTenantResponseBody struct {
-	// The zone information of the tenant.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// EE205C00-30E4-XXXX-XXXX-87E3A8A2AA0C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the zone.
+	// The information about the tenant.
 	Tenant *DescribeTenantResponseBodyTenant `json:"Tenant,omitempty" xml:"Tenant,omitempty" type:"Struct"`
 }
 
@@ -34541,373 +36043,14 @@ func (s *DescribeTenantResponseBody) SetTenant(v *DescribeTenantResponseBodyTena
 }
 
 type DescribeTenantResponseBodyTenant struct {
-	// DescribeTenant
+	// The list of zones.
 	AvailableZones []*string `json:"AvailableZones,omitempty" xml:"AvailableZones,omitempty" type:"Repeated"`
-	// The number of CPU cores in each resource unit of the tenant.
+	// The character set.
 	//
 	// example:
 	//
 	// utf8mb4
 	Charset *string `json:"Charset,omitempty" xml:"Charset,omitempty"`
-	// 地址类型
-	//
-	// example:
-	//
-	// CLOSED
-	ClogServiceStatus *string `json:"ClogServiceStatus,omitempty" xml:"ClogServiceStatus,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// utf8mb4_general_ci
-	Collation *string `json:"Collation,omitempty" xml:"Collation,omitempty"`
-	// You can call this operation to create a single tenant in a specific cluster.
-	//
-	// example:
-	//
-	// 2021-09-17 15:52:17
-	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DataMergeTime *string `json:"DataMergeTime,omitempty" xml:"DataMergeTime,omitempty"`
-	// The list of zones.
-	//
-	// example:
-	//
-	// 1-1-1
-	DeployMode *string `json:"DeployMode,omitempty" xml:"DeployMode,omitempty"`
-	// The series of the instance.
-	//
-	// example:
-	//
-	// multiple
-	DeployType *string `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
-	// Indicates whether to enable read/write splitting endpoint.
-	//
-	// example:
-	//
-	// The information of the tenant.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// You can call this operation to query the information of a specific tenant in a specific cluster.
-	//
-	// example:
-	//
-	// cloud_essd_pl1
-	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
-	// 是否可以申请Binlog服务
-	EnableBinlogService *bool `json:"EnableBinlogService,omitempty" xml:"EnableBinlogService,omitempty"`
-	// The intranet address for accessing the tenant.
-	//
-	// example:
-	//
-	// false
-	EnableClogService *bool `json:"EnableClogService,omitempty" xml:"EnableClogService,omitempty"`
-	// The deployment type of the primary zone.
-	//
-	// example:
-	//
-	// true
-	EnableInternetAddressService *bool `json:"EnableInternetAddressService,omitempty" xml:"EnableInternetAddressService,omitempty"`
-	EnableParallelQuery          *bool `json:"EnableParallelQuery,omitempty" xml:"EnableParallelQuery,omitempty"`
-	EnableReadOnlyReplica        *bool `json:"EnableReadOnlyReplica,omitempty" xml:"EnableReadOnlyReplica,omitempty"`
-	// example:
-	//
-	// false
-	EnableReadWriteSplit *bool `json:"EnableReadWriteSplit,omitempty" xml:"EnableReadWriteSplit,omitempty"`
-	// {
-	//
-	//     "RequestId": "EE205C00-30E4-XXXX-XXXX-87E3A8A2AA0C",
-	//
-	//     "Tenant": {
-	//
-	//         "TenantId": "t33h8y08k****",
-	//
-	//         "TenantName": "pay_online",
-	//
-	//         "TenantMode": "Oracle",
-	//
-	//         "VpcId": "vpc-bp1d2q3mhg9i23ofi****",
-	//
-	//         "Status": "ONLINE",
-	//
-	//         "PrimaryZone": "cn-hangzhou-i",
-	//
-	//         "DeployType": "multiple",
-	//
-	//         "DeployMode": "1-1-1",
-	//
-	//         "Description": "PayCore business database",
-	//
-	//         "CreateTime": "2021-09-17 15:52:17",
-	//
-	//         "TenantResource": {
-	//
-	//             "UnitNum": 1,
-	//
-	//             "Cpu": {
-	//
-	//                 "UsedCpu": 8,
-	//
-	//                 "TotalCpu": 10,
-	//
-	//                 "UnitCpu": 8
-	//
-	//             },
-	//
-	//             "Memory": {
-	//
-	//                 "UsedMemory": 30,
-	//
-	//                 "TotalMemory": 64,
-	//
-	//                 "UnitMemory": 32
-	//
-	//             },
-	//
-	//             "DiskSize": {
-	//
-	//                 "UsedDiskSize": 86
-	//
-	//             }
-	//
-	//         },
-	//
-	//         "TenantConnections": [
-	//
-	//             {
-	//
-	//                 "ConnectionRole": "ReadWrite",
-	//
-	//                 "IntranetAddress": "t32a7ru5u****.oceanbase.aliyuncs.com",
-	//
-	//                 "IntranetPort": 3306,
-	//
-	//                 "InternetAddress": "t32a7ru5u****mo.oceanbase.aliyuncs.com",
-	//
-	//                 "InternetPort": 3306,
-	//
-	//                 "VpcId": "vpc-bp1qiail1asmfe23t****",
-	//
-	//                 "VSwitchId": "vsw-bp11k1aypnzu1l3whi****",
-	//
-	//                 "IntranetAddressMasterZoneId": "cn-hangzhou-i",
-	//
-	//                 "IntranetAddressSlaveZoneId": "cn-hangzhou-j",
-	//
-	//                 "IntranetAddressStatus": "ONLINE",
-	//
-	//                 "ConnectionZones": [
-	//
-	//                     "cn-hangzhou-i"
-	//
-	//                 ],
-	//
-	//                 "InternetAddressStatus": "CLOSED"
-	//
-	//             }
-	//
-	//         ],
-	//
-	//         "TenantZones": [
-	//
-	//             {
-	//
-	//                 "TenantZoneId": "cn-hangzhou-i",
-	//
-	//                 "Region": "cn-hangzhou",
-	//
-	//                 "TenantZoneRole": "ReadOnly"
-	//
-	//             }
-	//
-	//         ],
-	//
-	//         "ClogServiceStatus": "CLOSED"
-	//
-	//     }
-	//
-	// }
-	//
-	// example:
-	//
-	// KAFKA_PUBLIC
-	InstanceType        *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	LowerCaseTableNames *int32  `json:"LowerCaseTableNames,omitempty" xml:"LowerCaseTableNames,omitempty"`
-	// ```
-	//
-	// http(s)://[Endpoint]/?Action=DescribeTenant
-	//
-	// &InstanceId=ob317v4uif****
-	//
-	// &TenantId=ob2mr3oae0****
-	//
-	// &Common request parameters
-	//
-	// ```
-	//
-	// example:
-	//
-	// cn-hangzhou-h
-	MasterIntranetAddressZone *string `json:"MasterIntranetAddressZone,omitempty" xml:"MasterIntranetAddressZone,omitempty"`
-	// example:
-	//
-	// 32
-	MaxParallelQueryDegree *int64  `json:"MaxParallelQueryDegree,omitempty" xml:"MaxParallelQueryDegree,omitempty"`
-	OdpVersion             *string `json:"OdpVersion,omitempty" xml:"OdpVersion,omitempty"`
-	// example:
-	//
-	// POSTPAY
-	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The type of the payment.
-	//
-	// example:
-	//
-	// cn-hangzhou-i
-	PrimaryZone *string `json:"PrimaryZone,omitempty" xml:"PrimaryZone,omitempty"`
-	// Example 1
-	//
-	// example:
-	//
-	// RANDOM
-	PrimaryZoneDeployType *string                                           `json:"PrimaryZoneDeployType,omitempty" xml:"PrimaryZoneDeployType,omitempty"`
-	ReadOnlyResource      *DescribeTenantResponseBodyTenantReadOnlyResource `json:"ReadOnlyResource,omitempty" xml:"ReadOnlyResource,omitempty" type:"Struct"`
-	RecycleBinStatus      *string                                           `json:"RecycleBinStatus,omitempty" xml:"RecycleBinStatus,omitempty"`
-	// <DescribeTenantResponse>
-	//
-	//     <RequestId>EE205C00-30E4-XXXX-XXXX-87E3A8A2AA0C</RequestId>
-	//
-	//     <Tenant>
-	//
-	//         <TenantId>t33h8y08k****</TenantId>
-	//
-	//         <TenantName>pay_online</TenantName>
-	//
-	//         <TenantMode>Oracle</TenantMode>
-	//
-	//         <VpcId>vpc-bp1d2q3mhg9i23ofi****</VpcId>
-	//
-	//         <Status>ONLINE</Status>
-	//
-	//         <PrimaryZone>cn-hangzhou-i</PrimaryZone>
-	//
-	//         <DeployType>multiple</DeployType>
-	//
-	//         <DeployMode>1-1-1</DeployMode>
-	//
-	//         <Description>PayCore business database</Description>
-	//
-	//         <CreateTime>2021-09-17 15:52:17</CreateTime>
-	//
-	//         <TenantResource>
-	//
-	//             <UnitNum>1</UnitNum>
-	//
-	//             <Cpu>
-	//
-	//                 <UsedCpu>8</UsedCpu>
-	//
-	//                 <TotalCpu>10</TotalCpu>
-	//
-	//                 <UnitCpu>8</UnitCpu>
-	//
-	//             </Cpu>
-	//
-	//             <Memory>
-	//
-	//                 <UsedMemory>30</UsedMemory>
-	//
-	//                 <TotalMemory>64</TotalMemory>
-	//
-	//                 <UnitMemory>32</UnitMemory>
-	//
-	//             </Memory>
-	//
-	//             <DiskSize>
-	//
-	//                 <UsedDiskSize>86</UsedDiskSize>
-	//
-	//             </DiskSize>
-	//
-	//         </TenantResource>
-	//
-	//         <TenantConnections>
-	//
-	//             <ConnectionRole>ReadWrite</ConnectionRole>
-	//
-	//             <IntranetAddress>t32a7ru5u****.oceanbase.aliyuncs.com</IntranetAddress>
-	//
-	//             <IntranetPort>3306</IntranetPort>
-	//
-	//             <InternetAddress>t32a7ru5u****mo.oceanbase.aliyuncs.com</InternetAddress>
-	//
-	//             <InternetPort>3306</InternetPort>
-	//
-	//             <VpcId>vpc-bp1qiail1asmfe23t****</VpcId>
-	//
-	//             <VSwitchId>vsw-bp11k1aypnzu1l3whi****</VSwitchId>
-	//
-	//             <IntranetAddressMasterZoneId>cn-hangzhou-i</IntranetAddressMasterZoneId>
-	//
-	//             <IntranetAddressSlaveZoneId>cn-hangzhou-j</IntranetAddressSlaveZoneId>
-	//
-	//             <IntranetAddressStatus>ONLINE</IntranetAddressStatus>
-	//
-	//             <ConnectionZones>cn-hangzhou-i</ConnectionZones>
-	//
-	//             <InternetAddressStatus>CLOSED</InternetAddressStatus>
-	//
-	//         </TenantConnections>
-	//
-	//         <TenantZones>
-	//
-	//             <TenantZoneId>cn-hangzhou-i</TenantZoneId>
-	//
-	//             <Region>cn-hangzhou</Region>
-	//
-	//             <TenantZoneRole>ReadOnly</TenantZoneRole>
-	//
-	//         </TenantZones>
-	//
-	//         <ClogServiceStatus>CLOSED</ClogServiceStatus>
-	//
-	//     </Tenant>
-	//
-	// </DescribeTenantResponse>
-	//
-	// example:
-	//
-	// normal
-	Series *string `json:"Series,omitempty" xml:"Series,omitempty"`
-	// The character set.
-	//
-	// example:
-	//
-	// ONLINE
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The status of the tenant.
-	//
-	// - PENDING_CREATE: The tenant is being created.
-	//
-	// - RESTORE: The tenant is being recovered.
-	//
-	// - ONLINE: The tenant is running.
-	//
-	// - SPEC_MODIFYING: The specification of the tenant is being modified.
-	//
-	// - ALLOCATING_INTERNET_ADDRESS: An Internet address is being allocated.
-	//
-	// - PENDING_OFFLINE_INTERNET_ADDRESS: The Internet address is being disabled.
-	//
-	// - PRIMARY_ZONE_MODIFYING: The tenant is switching to a new primary zone.
-	//
-	// - PARAMETER_MODIFYING: Parameters are being modified.
-	//
-	// - WHITE_LIST_MODIFYING: The whitelist is being modified.
-	TenantConnections []*DescribeTenantResponseBodyTenantTenantConnections `json:"TenantConnections,omitempty" xml:"TenantConnections,omitempty" type:"Repeated"`
-	// The region where the zone of the tenant resides.
-	//
-	// example:
-	//
-	// t33h8y08k****
-	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	// The enabling status of the clog service.
 	//
 	// - CLOSED: The clog service is disabled.
@@ -34916,21 +36059,269 @@ type DescribeTenantResponseBodyTenant struct {
 	//
 	// example:
 	//
-	// Oracle
-	TenantMode *string `json:"TenantMode,omitempty" xml:"TenantMode,omitempty"`
-	// The request type of the zone of the tenant.  ReadWrite: The zone supports data reads and writes. ReadOnly: The zone supports only data reads. For a high availability cluster with multiple IDCs, the primary zone provides ReadWrite services, and the standby zone provides ReadOnly services. For a high availability cluster with a single IDC, all zones provide ReadWrite services.
+	// CLOSED
+	ClogServiceStatus *string `json:"ClogServiceStatus,omitempty" xml:"ClogServiceStatus,omitempty"`
+	// The collation.
 	//
 	// example:
 	//
-	// pay_online
-	TenantName *string `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
-	// It is an online CLI tool that allows you to quickly retrieve and debug APIs. It can dynamically generate executable SDK code samples.
-	TenantResource *DescribeTenantResponseBodyTenantTenantResource `json:"TenantResource,omitempty" xml:"TenantResource,omitempty" type:"Struct"`
-	// The standby zone corresponding to the address for accessing the tenant.
-	TenantZones []*DescribeTenantResponseBodyTenantTenantZones `json:"TenantZones,omitempty" xml:"TenantZones,omitempty" type:"Repeated"`
-	TimeZone    *string                                        `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
-	Version     *string                                        `json:"Version,omitempty" xml:"Version,omitempty"`
+	// utf8mb4_general_ci
+	Collation *string `json:"Collation,omitempty" xml:"Collation,omitempty"`
+	// The time when the tenant was created.
+	//
+	// example:
+	//
+	// 2023-04-21 11:15:47.0
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The major compaction time of the tenant. This parameter is supported only in OceanBase Database V4.0.0 and later.
+	//
+	// example:
+	//
+	// 02:36Z
+	DataMergeTime *string `json:"DataMergeTime,omitempty" xml:"DataMergeTime,omitempty"`
+	// The data replica distribution mode of the tenant.
+	//
+	// - For the high availability version, N-N-N indicates the three-zone mode, and N-N indicates the dual-zone or single-zone mode.
+	//
+	// - For the basic version, N indicates the single-zone mode.
+	//
+	// > <br>N represents the number of nodes in a single zone.
+	//
+	// example:
+	//
+	// 1-1-1
+	DeployMode *string `json:"DeployMode,omitempty" xml:"DeployMode,omitempty"`
+	// The deployment type of the cluster. Valid values:
+	//
+	// - multiple: multi-IDC deployment
+	//
+	// - single: single-IDC deployment
+	//
+	// - dual: dual-IDC deployment
+	//
+	// example:
+	//
+	// multiple
+	DeployType *string `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
+	// The description of the tenant.
+	//
+	// example:
+	//
+	// paycore database
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The type of the disk.
+	//
+	// example:
+	//
+	// cloud_essd_pl1
+	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	// Indicates whether the binlog service is available for application.
+	//
+	// example:
+	//
+	// true
+	EnableBinlogService *bool `json:"EnableBinlogService,omitempty" xml:"EnableBinlogService,omitempty"`
 	// Indicates whether the clog service is available. To enable the clog service, submit a ticket.
+	//
+	// example:
+	//
+	// false
+	EnableClogService *bool `json:"EnableClogService,omitempty" xml:"EnableClogService,omitempty"`
+	// Indicates whether the Internet address can be enabled for the tenant.
+	//
+	// example:
+	//
+	// true
+	EnableInternetAddressService *bool `json:"EnableInternetAddressService,omitempty" xml:"EnableInternetAddressService,omitempty"`
+	// Indicates whether parallel query can be enabled.
+	//
+	// example:
+	//
+	// true
+	EnableParallelQuery *bool `json:"EnableParallelQuery,omitempty" xml:"EnableParallelQuery,omitempty"`
+	// Indicates whether read-only replicas are supported.
+	//
+	// example:
+	//
+	// true
+	EnableReadOnlyReplica *bool `json:"EnableReadOnlyReplica,omitempty" xml:"EnableReadOnlyReplica,omitempty"`
+	// Indicates whether to enable read/write splitting endpoint.
+	//
+	// example:
+	//
+	// false
+	EnableReadWriteSplit *bool `json:"EnableReadWriteSplit,omitempty" xml:"EnableReadWriteSplit,omitempty"`
+	// The type of the instance.
+	//
+	// example:
+	//
+	// KAFKA_PUBLIC
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// Indicates whether the table name is case-sensitive. Valid values:
+	//
+	// 	- **1**: The table name is case-insensitive.
+	//
+	// 	- **0**: The table name is case-sensitive.
+	//
+	// example:
+	//
+	// 1
+	LowerCaseTableNames *int32 `json:"LowerCaseTableNames,omitempty" xml:"LowerCaseTableNames,omitempty"`
+	// The zone where the primary node is located.
+	//
+	// example:
+	//
+	// cn-hangzhou-h
+	MasterIntranetAddressZone *string `json:"MasterIntranetAddressZone,omitempty" xml:"MasterIntranetAddressZone,omitempty"`
+	// The maximum value of DOP.
+	//
+	// example:
+	//
+	// 32
+	MaxParallelQueryDegree *int64 `json:"MaxParallelQueryDegree,omitempty" xml:"MaxParallelQueryDegree,omitempty"`
+	// The ODP version.
+	//
+	// example:
+	//
+	// 4.3.1-xxxxxxxxx
+	OdpVersion *string `json:"OdpVersion,omitempty" xml:"OdpVersion,omitempty"`
+	// The parameter template.
+	//
+	// example:
+	//
+	// express_oltp
+	ParameterTemplate *string `json:"ParameterTemplate,omitempty" xml:"ParameterTemplate,omitempty"`
+	// The type of the payment.
+	//
+	// example:
+	//
+	// POSTPAY
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// The primary zone of the tenant.
+	//
+	// example:
+	//
+	// cn-hangzhou-h
+	PrimaryZone *string `json:"PrimaryZone,omitempty" xml:"PrimaryZone,omitempty"`
+	// The deployment type of the primary zone.
+	//
+	// example:
+	//
+	// RANDOM
+	PrimaryZoneDeployType *string `json:"PrimaryZoneDeployType,omitempty" xml:"PrimaryZoneDeployType,omitempty"`
+	// The information about read-only resources.
+	ReadOnlyResource *DescribeTenantResponseBodyTenantReadOnlyResource `json:"ReadOnlyResource,omitempty" xml:"ReadOnlyResource,omitempty" type:"Struct"`
+	// The status of the recycle bin in the tenant. Valid values:
+	//
+	// 	- ON: The recycly bin is enabled.
+	//
+	// 	- OFF: The recycle bin is disabled.
+	//
+	// example:
+	//
+	// ON
+	RecycleBinStatus *string `json:"RecycleBinStatus,omitempty" xml:"RecycleBinStatus,omitempty"`
+	// The series of the instance.
+	//
+	// example:
+	//
+	// normal
+	Series *string `json:"Series,omitempty" xml:"Series,omitempty"`
+	// The status of the tenant.
+	//
+	// - ONLINE: The tenant is running.
+	//
+	// - PENDING_CREATE: The tenant is being created.
+	//
+	// - WAITING_ALLOCATE_MASTER_ADDRESS: The standby cluster is waiting for the primary address to be created.
+	//
+	// - ALLOCATING_MASTER_ADDRESS: The primary address is being created.
+	//
+	// - DELETING_MASTER_ADDRESS: The primary address is being deleted.
+	//
+	// - ALLOCATING_INTERNET_ADDRESS: The Internet address is being created.
+	//
+	// - PENDING_OFFLINE_INTERNET_ADDRESS: The Internet address is being deleted.
+	//
+	// - ALLOCATING_READONLY_ADDRESS: The read-only address is being created.
+	//
+	// - DELETING_READONLY_ADDRESS: The read-only address is being deleted.
+	//
+	// - ALLOCATING_READWRITE_ADDRESS: The read/write splitting address is being created.
+	//
+	// - DELETING_READWRITE_ADDRESS: The read/write splitting address is being deleted.
+	//
+	// - ALLOCATING_CLOGSERVICE_ADDRESS: The clog address is being created.
+	//
+	// - DELETING_CLOGSERVICE_ADDRESS: The clog address is being deleted.
+	//
+	// - MODIFYING_ADDRESS: The domain name of the address is being modified.
+	//
+	// - MODIFYING_PRIMARY_ZONE: The primary zone is being switched.
+	//
+	// - MODIFYING_READONLY_ADDRESS: The read-only address is being modified.
+	//
+	// - MODIFYING_READWRITE_ADDRESS: The read/write splitting address is being modified.
+	//
+	// - SPEC_MODIFYING: The specifications of the tenant are being modified.
+	//
+	// - WHITE_LIST_MODIFYING: The allowlist is being modified.
+	//
+	// - CREATING_BINLOG: Binlogs are being created.
+	//
+	// example:
+	//
+	// ONLINE
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The connection information of the tenant.
+	TenantConnections []*DescribeTenantResponseBodyTenantTenantConnections `json:"TenantConnections,omitempty" xml:"TenantConnections,omitempty" type:"Repeated"`
+	// The ID of the tenant.
+	//
+	// example:
+	//
+	// t4louaeei****
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The maximum number of connections allowed in the tenant.
+	//
+	// example:
+	//
+	// 1600
+	TenantMaxConnections *string `json:"TenantMaxConnections,omitempty" xml:"TenantMaxConnections,omitempty"`
+	// The mode of the tenant.
+	//
+	// Valid values:
+	//
+	// - Oracle
+	//
+	// - MySQL
+	//
+	// example:
+	//
+	// MySQL
+	TenantMode *string `json:"TenantMode,omitempty" xml:"TenantMode,omitempty"`
+	// The name of the tenant.
+	//
+	// example:
+	//
+	// forMySQLTenant
+	TenantName *string `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
+	// The resource information of the tenant.
+	TenantResource *DescribeTenantResponseBodyTenantTenantResource `json:"TenantResource,omitempty" xml:"TenantResource,omitempty" type:"Struct"`
+	// The information about zones in the tenant.
+	TenantZones []*DescribeTenantResponseBodyTenantTenantZones `json:"TenantZones,omitempty" xml:"TenantZones,omitempty" type:"Repeated"`
+	// The time zone.
+	//
+	// example:
+	//
+	// Asia/Shanghai
+	TimeZone *string `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
+	// The version information.
+	//
+	// example:
+	//
+	// 4.2.1
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The Virtual Private Cloud (VPC) ID of the tenant. If no suitable VPC is available, create a VPC as prompted. For more information, see "What is a VPC".
 	//
 	// example:
 	//
@@ -35051,6 +36442,11 @@ func (s *DescribeTenantResponseBodyTenant) SetOdpVersion(v string) *DescribeTena
 	return s
 }
 
+func (s *DescribeTenantResponseBodyTenant) SetParameterTemplate(v string) *DescribeTenantResponseBodyTenant {
+	s.ParameterTemplate = &v
+	return s
+}
+
 func (s *DescribeTenantResponseBodyTenant) SetPayType(v string) *DescribeTenantResponseBodyTenant {
 	s.PayType = &v
 	return s
@@ -35096,6 +36492,11 @@ func (s *DescribeTenantResponseBodyTenant) SetTenantId(v string) *DescribeTenant
 	return s
 }
 
+func (s *DescribeTenantResponseBodyTenant) SetTenantMaxConnections(v string) *DescribeTenantResponseBodyTenant {
+	s.TenantMaxConnections = &v
+	return s
+}
+
 func (s *DescribeTenantResponseBodyTenant) SetTenantMode(v string) *DescribeTenantResponseBodyTenant {
 	s.TenantMode = &v
 	return s
@@ -35132,12 +36533,22 @@ func (s *DescribeTenantResponseBodyTenant) SetVpcId(v string) *DescribeTenantRes
 }
 
 type DescribeTenantResponseBodyTenantReadOnlyResource struct {
+	// The information about capacity units.
 	CapacityUnit *DescribeTenantResponseBodyTenantReadOnlyResourceCapacityUnit `json:"CapacityUnit,omitempty" xml:"CapacityUnit,omitempty" type:"Struct"`
-	Cpu          *DescribeTenantResponseBodyTenantReadOnlyResourceCpu          `json:"Cpu,omitempty" xml:"Cpu,omitempty" type:"Struct"`
-	DiskSize     *DescribeTenantResponseBodyTenantReadOnlyResourceDiskSize     `json:"DiskSize,omitempty" xml:"DiskSize,omitempty" type:"Struct"`
-	LogDiskSize  *DescribeTenantResponseBodyTenantReadOnlyResourceLogDiskSize  `json:"LogDiskSize,omitempty" xml:"LogDiskSize,omitempty" type:"Struct"`
-	Memory       *DescribeTenantResponseBodyTenantReadOnlyResourceMemory       `json:"Memory,omitempty" xml:"Memory,omitempty" type:"Struct"`
-	UnitNum      *int32                                                        `json:"UnitNum,omitempty" xml:"UnitNum,omitempty"`
+	// The number of CPU cores of each replica node in the cluster.
+	Cpu *DescribeTenantResponseBodyTenantReadOnlyResourceCpu `json:"Cpu,omitempty" xml:"Cpu,omitempty" type:"Struct"`
+	// The size of the data disk.
+	DiskSize *DescribeTenantResponseBodyTenantReadOnlyResourceDiskSize `json:"DiskSize,omitempty" xml:"DiskSize,omitempty" type:"Struct"`
+	// The information about the log disk resources of the tenant.
+	LogDiskSize *DescribeTenantResponseBodyTenantReadOnlyResourceLogDiskSize `json:"LogDiskSize,omitempty" xml:"LogDiskSize,omitempty" type:"Struct"`
+	// The information about the memory resources of the cluster.
+	Memory *DescribeTenantResponseBodyTenantReadOnlyResourceMemory `json:"Memory,omitempty" xml:"Memory,omitempty" type:"Struct"`
+	// The number of resource units in the tenant.
+	//
+	// example:
+	//
+	// 2
+	UnitNum *int32 `json:"UnitNum,omitempty" xml:"UnitNum,omitempty"`
 }
 
 func (s DescribeTenantResponseBodyTenantReadOnlyResource) String() string {
@@ -35179,9 +36590,24 @@ func (s *DescribeTenantResponseBodyTenantReadOnlyResource) SetUnitNum(v int32) *
 }
 
 type DescribeTenantResponseBodyTenantReadOnlyResourceCapacityUnit struct {
+	// The maximum number of capacity units.
+	//
+	// example:
+	//
+	// 16
 	MaxCapacityUnit *int32 `json:"MaxCapacityUnit,omitempty" xml:"MaxCapacityUnit,omitempty"`
+	// The minimum number of capacity units.
+	//
+	// example:
+	//
+	// 1
 	MinCapacityUnit *int32 `json:"MinCapacityUnit,omitempty" xml:"MinCapacityUnit,omitempty"`
-	UsedCapacit     *int32 `json:"UsedCapacit,omitempty" xml:"UsedCapacit,omitempty"`
+	// The number of used capacity units.
+	//
+	// example:
+	//
+	// 5
+	UsedCapacit *int32 `json:"UsedCapacit,omitempty" xml:"UsedCapacit,omitempty"`
 }
 
 func (s DescribeTenantResponseBodyTenantReadOnlyResourceCapacityUnit) String() string {
@@ -35208,14 +36634,23 @@ func (s *DescribeTenantResponseBodyTenantReadOnlyResourceCapacityUnit) SetUsedCa
 }
 
 type DescribeTenantResponseBodyTenantReadOnlyResourceCpu struct {
+	// The total number of CPU cores of the tenant.
+	//
 	// example:
 	//
 	// 10
 	TotalCpu *float32 `json:"TotalCpu,omitempty" xml:"TotalCpu,omitempty"`
+	// The number of CPU cores in each resource unit of the tenant.
+	//
 	// example:
 	//
 	// 8
 	UnitCpu *float32 `json:"UnitCpu,omitempty" xml:"UnitCpu,omitempty"`
+	// The number of CPU cores used by the cluster.
+	//
+	// example:
+	//
+	// 8
 	UsedCpu *float32 `json:"UsedCpu,omitempty" xml:"UsedCpu,omitempty"`
 }
 
@@ -35243,6 +36678,8 @@ func (s *DescribeTenantResponseBodyTenantReadOnlyResourceCpu) SetUsedCpu(v float
 }
 
 type DescribeTenantResponseBodyTenantReadOnlyResourceDiskSize struct {
+	// The size of disk space used by the tenant, in GB.
+	//
 	// example:
 	//
 	// 86
@@ -35263,8 +36700,18 @@ func (s *DescribeTenantResponseBodyTenantReadOnlyResourceDiskSize) SetUsedDiskSi
 }
 
 type DescribeTenantResponseBodyTenantReadOnlyResourceLogDiskSize struct {
+	// The total log disk size of the tenant, in GB.
+	//
+	// example:
+	//
+	// 8.0
 	TotalLogDisk *int32 `json:"TotalLogDisk,omitempty" xml:"TotalLogDisk,omitempty"`
-	UnitLogDisk  *int32 `json:"UnitLogDisk,omitempty" xml:"UnitLogDisk,omitempty"`
+	// The log disk size of each resource unit of the tenant, in GB.
+	//
+	// example:
+	//
+	// 8.0
+	UnitLogDisk *int32 `json:"UnitLogDisk,omitempty" xml:"UnitLogDisk,omitempty"`
 }
 
 func (s DescribeTenantResponseBodyTenantReadOnlyResourceLogDiskSize) String() string {
@@ -35286,14 +36733,20 @@ func (s *DescribeTenantResponseBodyTenantReadOnlyResourceLogDiskSize) SetUnitLog
 }
 
 type DescribeTenantResponseBodyTenantReadOnlyResourceMemory struct {
+	// The total memory size of the tenant, in GB.
+	//
 	// example:
 	//
 	// 64
 	TotalMemory *float32 `json:"TotalMemory,omitempty" xml:"TotalMemory,omitempty"`
+	// The memory size of each resource unit of the tenant, in GB.
+	//
 	// example:
 	//
 	// 32
 	UnitMemory *float32 `json:"UnitMemory,omitempty" xml:"UnitMemory,omitempty"`
+	// The size of memory used by the tenant, in GB.
+	//
 	// example:
 	//
 	// 30
@@ -35324,111 +36777,177 @@ func (s *DescribeTenantResponseBodyTenantReadOnlyResourceMemory) SetUsedMemory(v
 }
 
 type DescribeTenantResponseBodyTenantTenantConnections struct {
-	// The primary zone of the tenant.
+	// The type of the address.
+	//
+	// - MASTER: the primary address, which supports both data read and write.
+	//
+	// - READONLY: a read-only address.
+	//
+	// - READWRITE: a read/write splitting address.
+	//
+	// - CLOGSERVICE: a clog service address.
 	//
 	// example:
 	//
-	// MASTER
-	AddressType            *string   `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	// READONLY
+	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	// The logical zones of the endpoints.
 	ConnectionLogicalZones []*string `json:"ConnectionLogicalZones,omitempty" xml:"ConnectionLogicalZones,omitempty" type:"Repeated"`
-	ConnectionReplicaType  *string   `json:"ConnectionReplicaType,omitempty" xml:"ConnectionReplicaType,omitempty"`
-	// The Internet address for accessing the tenant.
+	// The type of the replica corresponding to the tenant connection.
+	//
+	// example:
+	//
+	// FULL
+	ConnectionReplicaType *string `json:"ConnectionReplicaType,omitempty" xml:"ConnectionReplicaType,omitempty"`
+	// The list of zones corresponding to the tenant connection.
 	//
 	// example:
 	//
 	// ["cn-hangzhou-i", "cn-hangzhou-j"]
-	ConnectionZones        []*string `json:"ConnectionZones,omitempty" xml:"ConnectionZones,omitempty" type:"Repeated"`
-	EnableTransactionSplit *bool     `json:"EnableTransactionSplit,omitempty" xml:"EnableTransactionSplit,omitempty"`
-	// The ID of the VPC.
+	ConnectionZones []*string `json:"ConnectionZones,omitempty" xml:"ConnectionZones,omitempty" type:"Repeated"`
+	// Specifies whether to enable transaction splitting.
+	//
+	// example:
+	//
+	// false
+	EnableTransactionSplit *bool `json:"EnableTransactionSplit,omitempty" xml:"EnableTransactionSplit,omitempty"`
+	// The Internet address for accessing the tenant.
 	//
 	// example:
 	//
 	// t32a7ru5u****mo.oceanbase.aliyuncs.com
 	InternetAddress *string `json:"InternetAddress,omitempty" xml:"InternetAddress,omitempty"`
-	// 实例系列
+	// The status of the Internet address for accessing the tenant. Valid values:
+	//
+	// - CLOSED: The address is disabled.
+	//
+	// - ALLOCATING_INTERNET_ADDRESS: An address is being applied for.
+	//
+	// - PENDING_OFFLINE_INTERNET_ADDRESS: The address is being disabled.
+	//
+	// - ONLINE: The address is in service.
 	//
 	// example:
 	//
 	// CLOSED
-	InternetAddressStatus      *string `json:"InternetAddressStatus,omitempty" xml:"InternetAddressStatus,omitempty"`
-	InternetMaxConnectionLimit *int64  `json:"InternetMaxConnectionLimit,omitempty" xml:"InternetMaxConnectionLimit,omitempty"`
-	InternetMaxConnectionNum   *int64  `json:"InternetMaxConnectionNum,omitempty" xml:"InternetMaxConnectionNum,omitempty"`
-	// 实例类型
+	InternetAddressStatus *string `json:"InternetAddressStatus,omitempty" xml:"InternetAddressStatus,omitempty"`
+	// The upper limit of the maximum number of public connections.
+	//
+	// example:
+	//
+	// 4000
+	InternetMaxConnectionLimit *int64 `json:"InternetMaxConnectionLimit,omitempty" xml:"InternetMaxConnectionLimit,omitempty"`
+	// The current value set for the maximum number of public connections.
+	//
+	// example:
+	//
+	// 2500
+	InternetMaxConnectionNum *int64 `json:"InternetMaxConnectionNum,omitempty" xml:"InternetMaxConnectionNum,omitempty"`
+	// The Internet port for accessing the tenant.
 	//
 	// example:
 	//
 	// 3306
-	InternetPort    *int32 `json:"InternetPort,omitempty" xml:"InternetPort,omitempty"`
+	InternetPort *int32 `json:"InternetPort,omitempty" xml:"InternetPort,omitempty"`
+	// The port for direct loads of public connections.
+	//
+	// example:
+	//
+	// 3307
 	InternetRpcPort *int32 `json:"InternetRpcPort,omitempty" xml:"InternetRpcPort,omitempty"`
-	// The deployment type of the cluster. Valid values:
-	//
-	// - multiple: multi-IDC deployment
-	//
-	// - single: single-IDC deployment
-	//
-	// - dual: dual-IDC deployment
+	// The intranet address for accessing the tenant.
 	//
 	// example:
 	//
-	// t32a7ru5u****.oceanbase.aliyuncs.com
+	// t4nunwxr0****.oceanbase.aliyuncs.com
 	IntranetAddress *string `json:"IntranetAddress,omitempty" xml:"IntranetAddress,omitempty"`
-	// PayCore business database
+	// The primary zone corresponding to the address for accessing the tenant.
 	//
 	// example:
 	//
-	// cn-hangzhou-i
+	// cn-hangzhou-b
 	IntranetAddressMasterZoneId *string `json:"IntranetAddressMasterZoneId,omitempty" xml:"IntranetAddressMasterZoneId,omitempty"`
-	// The total number of CPU cores of the tenant.
+	// The standby zone corresponding to the address for accessing the tenant.
 	//
 	// example:
 	//
-	// cn-hangzhou-j
+	// cn-hangzhou-g
 	IntranetAddressSlaveZoneId *string `json:"IntranetAddressSlaveZoneId,omitempty" xml:"IntranetAddressSlaveZoneId,omitempty"`
-	// 付费类型
+	// The status of the intranet address for accessing the tenant.
+	//
+	// The value ONLINE indicates that the address is in service.
 	//
 	// example:
 	//
 	// ONLINE
 	IntranetAddressStatus *string `json:"IntranetAddressStatus,omitempty" xml:"IntranetAddressStatus,omitempty"`
-	// The ID of the tenant.
+	// The intranet port for accessing the tenant.
+	//
+	// example:
+	//
+	// 2983
+	IntranetPort *int32 `json:"IntranetPort,omitempty" xml:"IntranetPort,omitempty"`
+	// The port for direct loads of private connections.
+	//
+	// example:
+	//
+	// 3307
+	IntranetRpcPort *int32 `json:"IntranetRpcPort,omitempty" xml:"IntranetRpcPort,omitempty"`
+	// The port of private SQL connections.
 	//
 	// example:
 	//
 	// 3306
-	IntranetPort       *int32 `json:"IntranetPort,omitempty" xml:"IntranetPort,omitempty"`
-	IntranetRpcPort    *int32 `json:"IntranetRpcPort,omitempty" xml:"IntranetRpcPort,omitempty"`
-	IntranetSqlPort    *int32 `json:"IntranetSqlPort,omitempty" xml:"IntranetSqlPort,omitempty"`
+	IntranetSqlPort *int32 `json:"IntranetSqlPort,omitempty" xml:"IntranetSqlPort,omitempty"`
+	// The current value set for the maximum number of private connections.
+	//
+	// example:
+	//
+	// 1000
 	MaxConnectionLimit *int64 `json:"MaxConnectionLimit,omitempty" xml:"MaxConnectionLimit,omitempty"`
+	// The maximum number of connections.
+	//
 	// example:
 	//
 	// 5000
-	MaxConnectionNum    *int64  `json:"MaxConnectionNum,omitempty" xml:"MaxConnectionNum,omitempty"`
-	OdpVersion          *string `json:"OdpVersion,omitempty" xml:"OdpVersion,omitempty"`
-	ParallelQueryDegree *int64  `json:"ParallelQueryDegree,omitempty" xml:"ParallelQueryDegree,omitempty"`
-	ProxyClusterId      *string `json:"ProxyClusterId,omitempty" xml:"ProxyClusterId,omitempty"`
+	MaxConnectionNum *int64 `json:"MaxConnectionNum,omitempty" xml:"MaxConnectionNum,omitempty"`
+	// The ODP version.
+	//
+	// example:
+	//
+	// 4.3.1-xxxxxxxxx
+	OdpVersion *string `json:"OdpVersion,omitempty" xml:"OdpVersion,omitempty"`
+	// The degree of parallelism (DOP).
+	//
+	// example:
+	//
+	// 1
+	ParallelQueryDegree *int64 `json:"ParallelQueryDegree,omitempty" xml:"ParallelQueryDegree,omitempty"`
+	// The ID of the OceanBase Database Proxy (ODP) cluster.
+	//
+	// example:
+	//
+	// proxy-xxxxxxx
+	ProxyClusterId *string `json:"ProxyClusterId,omitempty" xml:"ProxyClusterId,omitempty"`
+	// The ID of the tenant endpoint.
+	//
 	// example:
 	//
 	// obe-4tw51gp7****
 	TenantEndpointId *string `json:"TenantEndpointId,omitempty" xml:"TenantEndpointId,omitempty"`
-	// The primary zone corresponding to the address for accessing the tenant.
+	// Specifies whether to enable transaction splitting.
 	//
 	// example:
 	//
-	// true
+	// false
 	TransactionSplit *bool `json:"TransactionSplit,omitempty" xml:"TransactionSplit,omitempty"`
-	// The connection access information of the tenant.
+	// The ID of the vSwitch.
 	//
 	// example:
 	//
-	// vsw-bp11k1aypnzu1l3whi****
+	// vsw-bp1i7b94u2et716yl****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The service mode of the connection address. Valid values:
-	//
-	// ReadWrite: provides strong-consistency read and write services.
-	//
-	// ReadOnly: provides the read-only service to ensure ultimate consistency of data.
-	//
-	// Clog: provides transaction log services.
+	// The ID of the VPC.
 	//
 	// example:
 	//
@@ -35580,21 +37099,17 @@ func (s *DescribeTenantResponseBodyTenantTenantConnections) SetVpcId(v string) *
 }
 
 type DescribeTenantResponseBodyTenantTenantResource struct {
+	// The information about capacity units.
 	CapacityUnit *DescribeTenantResponseBodyTenantTenantResourceCapacityUnit `json:"CapacityUnit,omitempty" xml:"CapacityUnit,omitempty" type:"Struct"`
-	// The enabling status of the Clog service.
-	//
-	// CLOSED: The Clog service is disabled.
-	//
-	// - ONLINE: The Clog service is running.
+	// The information about the CPU resources of the tenant.
 	Cpu *DescribeTenantResponseBodyTenantTenantResourceCpu `json:"Cpu,omitempty" xml:"Cpu,omitempty" type:"Struct"`
-	// The status of the intranet address for accessing the tenant.
-	//
-	// The value ONLINE indicates that the address is in service.
-	DiskSize    *DescribeTenantResponseBodyTenantTenantResourceDiskSize    `json:"DiskSize,omitempty" xml:"DiskSize,omitempty" type:"Struct"`
+	// The information about the disk resources of the tenant.
+	DiskSize *DescribeTenantResponseBodyTenantTenantResourceDiskSize `json:"DiskSize,omitempty" xml:"DiskSize,omitempty" type:"Struct"`
+	// The information about the log disk resources of the tenant.
 	LogDiskSize *DescribeTenantResponseBodyTenantTenantResourceLogDiskSize `json:"LogDiskSize,omitempty" xml:"LogDiskSize,omitempty" type:"Struct"`
-	// The description of the tenant.
+	// The information about the memory resources of the tenant.
 	Memory *DescribeTenantResponseBodyTenantTenantResourceMemory `json:"Memory,omitempty" xml:"Memory,omitempty" type:"Struct"`
-	// Alibaba Cloud CLI
+	// The number of resource units for the tenant.
 	//
 	// example:
 	//
@@ -35641,9 +37156,24 @@ func (s *DescribeTenantResponseBodyTenantTenantResource) SetUnitNum(v int32) *De
 }
 
 type DescribeTenantResponseBodyTenantTenantResourceCapacityUnit struct {
+	// The maximum number of capacity units.
+	//
+	// example:
+	//
+	// 16
 	MaxCapacityUnit *int32 `json:"MaxCapacityUnit,omitempty" xml:"MaxCapacityUnit,omitempty"`
+	// The minimum number of capacity units.
+	//
+	// example:
+	//
+	// 1
 	MinCapacityUnit *int32 `json:"MinCapacityUnit,omitempty" xml:"MinCapacityUnit,omitempty"`
-	UsedCapacit     *int32 `json:"UsedCapacit,omitempty" xml:"UsedCapacit,omitempty"`
+	// The number of used capacity units.
+	//
+	// example:
+	//
+	// 5
+	UsedCapacit *int32 `json:"UsedCapacit,omitempty" xml:"UsedCapacit,omitempty"`
 }
 
 func (s DescribeTenantResponseBodyTenantTenantResourceCapacityUnit) String() string {
@@ -35670,31 +37200,19 @@ func (s *DescribeTenantResponseBodyTenantTenantResourceCapacityUnit) SetUsedCapa
 }
 
 type DescribeTenantResponseBodyTenantTenantResourceCpu struct {
-	// The data replica distribution mode of the tenant.
-	//
-	// - For the high availability version, N-N-N indicates the three-zone mode, and N-N indicates the dual-zone or single-zone mode.
-	//
-	// - For the basic version, N indicates the single-zone mode.
-	//
-	// > <br>N represents the number of nodes in a single zone.
+	// The total number of CPU cores of the tenant.
 	//
 	// example:
 	//
 	// 10
 	TotalCpu *float32 `json:"TotalCpu,omitempty" xml:"TotalCpu,omitempty"`
-	// The zone corresponding to the tenant connection.
+	// The number of CPU cores in each resource unit of the tenant.
 	//
 	// example:
 	//
 	// 8
 	UnitCpu *float32 `json:"UnitCpu,omitempty" xml:"UnitCpu,omitempty"`
-	// The tenant mode.
-	//
-	// Valid values:
-	//
-	// Oracle
-	//
-	// MySQL
+	// The number of used CPU cores of the tenant.
 	//
 	// example:
 	//
@@ -35726,7 +37244,7 @@ func (s *DescribeTenantResponseBodyTenantTenantResourceCpu) SetUsedCpu(v float32
 }
 
 type DescribeTenantResponseBodyTenantTenantResourceDiskSize struct {
-	// The total memory size of the tenant, in GB.
+	// The size of used disk space of the tenant, in GB.
 	//
 	// example:
 	//
@@ -35748,8 +37266,18 @@ func (s *DescribeTenantResponseBodyTenantTenantResourceDiskSize) SetUsedDiskSize
 }
 
 type DescribeTenantResponseBodyTenantTenantResourceLogDiskSize struct {
+	// The total size of log disk of the tenant, in GB.
+	//
+	// example:
+	//
+	// 8.0
 	TotalLogDisk *int32 `json:"TotalLogDisk,omitempty" xml:"TotalLogDisk,omitempty"`
-	UnitLogDisk  *int32 `json:"UnitLogDisk,omitempty" xml:"UnitLogDisk,omitempty"`
+	// The log disk size of each resource unit of the tenant, in GB.
+	//
+	// example:
+	//
+	// 8.0
+	UnitLogDisk *int32 `json:"UnitLogDisk,omitempty" xml:"UnitLogDisk,omitempty"`
 }
 
 func (s DescribeTenantResponseBodyTenantTenantResourceLogDiskSize) String() string {
@@ -35771,27 +37299,19 @@ func (s *DescribeTenantResponseBodyTenantTenantResourceLogDiskSize) SetUnitLogDi
 }
 
 type DescribeTenantResponseBodyTenantTenantResourceMemory struct {
-	// The information about the memory resources of the tenant.
+	// The total memory size of the tenant, in GB.
 	//
 	// example:
 	//
 	// 64
 	TotalMemory *float32 `json:"TotalMemory,omitempty" xml:"TotalMemory,omitempty"`
-	// The time when the tenant was created.
+	// The memory size of each resource unit of the tenant, in GB.
 	//
 	// example:
 	//
 	// 32
 	UnitMemory *float32 `json:"UnitMemory,omitempty" xml:"UnitMemory,omitempty"`
-	// The status of the Internet address for accessing the tenant. Valid values:
-	//
-	// Closed: The address is disabled.
-	//
-	// - ALLOCATING_INTERNET_ADDRESS: An address is being applied for.
-	//
-	// - PENDING_OFFLINE_INTERNET_ADDRESS: The address is being disabled.
-	//
-	// - ONLINE: The address is in service.
+	// The size of used memory of the tenant, in GB.
 	//
 	// example:
 	//
@@ -35823,24 +37343,25 @@ func (s *DescribeTenantResponseBodyTenantTenantResourceMemory) SetUsedMemory(v f
 }
 
 type DescribeTenantResponseBodyTenantTenantZones struct {
-	// 是否允许开启读写分离地址
+	// The region where the zone of the tenant resides.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The intranet port for accessing the tenant.
+	// The ID of the zone.
 	//
 	// example:
 	//
-	// cn-hangzhou-i
-	TenantZoneId       *string                                                          `json:"TenantZoneId,omitempty" xml:"TenantZoneId,omitempty"`
+	// cn-hangzhou-h
+	TenantZoneId *string `json:"TenantZoneId,omitempty" xml:"TenantZoneId,omitempty"`
+	// The zone replicas of the tenant.
 	TenantZoneReplicas []*DescribeTenantResponseBodyTenantTenantZonesTenantZoneReplicas `json:"TenantZoneReplicas,omitempty" xml:"TenantZoneReplicas,omitempty" type:"Repeated"`
-	// The character set.
+	// The role of the zone of the tenant.
 	//
 	// example:
 	//
-	// ReadOnly
+	// ReadWrite
 	TenantZoneRole *string `json:"TenantZoneRole,omitempty" xml:"TenantZoneRole,omitempty"`
 }
 
@@ -35873,11 +37394,47 @@ func (s *DescribeTenantResponseBodyTenantTenantZones) SetTenantZoneRole(v string
 }
 
 type DescribeTenantResponseBodyTenantTenantZonesTenantZoneReplicas struct {
-	FullCopyId      *int32  `json:"FullCopyId,omitempty" xml:"FullCopyId,omitempty"`
-	LogicZoneName   *string `json:"LogicZoneName,omitempty" xml:"LogicZoneName,omitempty"`
-	ReadOnlyCopyId  *string `json:"ReadOnlyCopyId,omitempty" xml:"ReadOnlyCopyId,omitempty"`
-	ZoneCopyId      *int32  `json:"ZoneCopyId,omitempty" xml:"ZoneCopyId,omitempty"`
-	ZoneNodes       *string `json:"ZoneNodes,omitempty" xml:"ZoneNodes,omitempty"`
+	// The ID of the full-featured replica.
+	//
+	// example:
+	//
+	// 3
+	FullCopyId *int32 `json:"FullCopyId,omitempty" xml:"FullCopyId,omitempty"`
+	// The name of the logical zone.
+	//
+	// example:
+	//
+	// cn-shanghai-f-z0
+	LogicZoneName *string `json:"LogicZoneName,omitempty" xml:"LogicZoneName,omitempty"`
+	// The ID of the read-only replica.
+	//
+	// example:
+	//
+	// 3
+	ReadOnlyCopyId *string `json:"ReadOnlyCopyId,omitempty" xml:"ReadOnlyCopyId,omitempty"`
+	// The type of the read-only replica.
+	//
+	// example:
+	//
+	// ROW_STORE
+	ReadOnlyReplicaType *string `json:"ReadOnlyReplicaType,omitempty" xml:"ReadOnlyReplicaType,omitempty"`
+	// The ID of the zone replica.
+	//
+	// example:
+	//
+	// 2
+	ZoneCopyId *int32 `json:"ZoneCopyId,omitempty" xml:"ZoneCopyId,omitempty"`
+	// The number of nodes in the zone.
+	//
+	// example:
+	//
+	// 1
+	ZoneNodes *int64 `json:"ZoneNodes,omitempty" xml:"ZoneNodes,omitempty"`
+	// The type of the zone replica.
+	//
+	// example:
+	//
+	// FULL
 	ZoneReplicaType *string `json:"ZoneReplicaType,omitempty" xml:"ZoneReplicaType,omitempty"`
 }
 
@@ -35904,12 +37461,17 @@ func (s *DescribeTenantResponseBodyTenantTenantZonesTenantZoneReplicas) SetReadO
 	return s
 }
 
+func (s *DescribeTenantResponseBodyTenantTenantZonesTenantZoneReplicas) SetReadOnlyReplicaType(v string) *DescribeTenantResponseBodyTenantTenantZonesTenantZoneReplicas {
+	s.ReadOnlyReplicaType = &v
+	return s
+}
+
 func (s *DescribeTenantResponseBodyTenantTenantZonesTenantZoneReplicas) SetZoneCopyId(v int32) *DescribeTenantResponseBodyTenantTenantZonesTenantZoneReplicas {
 	s.ZoneCopyId = &v
 	return s
 }
 
-func (s *DescribeTenantResponseBodyTenantTenantZonesTenantZoneReplicas) SetZoneNodes(v string) *DescribeTenantResponseBodyTenantTenantZonesTenantZoneReplicas {
+func (s *DescribeTenantResponseBodyTenantTenantZonesTenantZoneReplicas) SetZoneNodes(v int64) *DescribeTenantResponseBodyTenantTenantZonesTenantZoneReplicas {
 	s.ZoneNodes = &v
 	return s
 }
@@ -37063,6 +38625,14 @@ func (s *DescribeTenantTagsResponse) SetBody(v *DescribeTenantTagsResponseBody) 
 }
 
 type DescribeTenantUserRolesRequest struct {
+	// The ID of the OceanBase cluster.
+	//
+	// example:
+	//
+	// ob317v4uif****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the tenant. If you specify the ID of a tenant in MySQL mode, the privilege configuration of the regular user in MySQL mode is returned. If you specify the ID of a tenant in Oracle mode, the privilege configuration of the regular user in Oracle mode is returned.
+	//
 	// example:
 	//
 	// t4pnum****
@@ -37077,17 +38647,35 @@ func (s DescribeTenantUserRolesRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeTenantUserRolesRequest) SetInstanceId(v string) *DescribeTenantUserRolesRequest {
+	s.InstanceId = &v
+	return s
+}
+
 func (s *DescribeTenantUserRolesRequest) SetTenantId(v string) *DescribeTenantUserRolesRequest {
 	s.TenantId = &v
 	return s
 }
 
 type DescribeTenantUserRolesResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// EE205C00-30E4-XXXX-XXXX-87E3A8A2AA0C
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Role      []*string `json:"Role,omitempty" xml:"Role,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of roles of the user.
+	//
+	// Valid values:
+	//
+	// ReadWrite: a role that has the read and write privileges, namely ALL PRIVILEGES.
+	//
+	// ReadOnly: a role that has only the read-only privilege SELECT.
+	//
+	// DDL: a role that has DDL privileges such as CREATE, DROP, ALTER, SHOW VIEW, and CREATE VIEW.
+	//
+	// DML: a role that has DML privileges such as SELECT, INSERT, UPDATE, DELETE, and SHOW VIEW.
+	Role []*string `json:"Role,omitempty" xml:"Role,omitempty" type:"Repeated"`
 }
 
 func (s DescribeTenantUserRolesResponseBody) String() string {
@@ -37275,6 +38863,10 @@ type DescribeTenantUsersResponseBodyTenantUsers struct {
 	//
 	// use for test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// Encrypt,Decrypt
+	GlobalPermissions *string `json:"GlobalPermissions,omitempty" xml:"GlobalPermissions,omitempty"`
 	// 所属集群Id
 	//
 	// example:
@@ -37316,6 +38908,11 @@ func (s *DescribeTenantUsersResponseBodyTenantUsers) SetDatabases(v []*DescribeT
 
 func (s *DescribeTenantUsersResponseBodyTenantUsers) SetDescription(v string) *DescribeTenantUsersResponseBodyTenantUsers {
 	s.Description = &v
+	return s
+}
+
+func (s *DescribeTenantUsersResponseBodyTenantUsers) SetGlobalPermissions(v string) *DescribeTenantUsersResponseBodyTenantUsers {
+	s.GlobalPermissions = &v
 	return s
 }
 
@@ -37562,7 +39159,7 @@ func (s *DescribeTenantZonesReadResponse) SetBody(v *DescribeTenantZonesReadResp
 }
 
 type DescribeTenantsRequest struct {
-	// The number of used disks of the tenant.
+	// The ID of the OceanBase cluster.
 	//
 	// This parameter is required.
 	//
@@ -37570,31 +39167,41 @@ type DescribeTenantsRequest struct {
 	//
 	// ob317v4uif****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// It is an online CLI tool that allows you to quickly retrieve and debug APIs. It can dynamically generate executable SDK code samples.
+	// The number of the page to return.
+	//
+	// Start value: 1
+	//
+	// - Default value: 1
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// You can call this operation to query the tenants in an OceanBase cluster.
+	// The number of rows to return on each page.
+	//
+	// - Maximum value: 100.
+	//
+	// - Default value: 10
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The primary zone of the tenant.
+	// The search keyword.
 	//
 	// example:
 	//
 	// pay
 	SearchKey *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
-	// Alibaba Cloud CLI
+	// The ID of the tenant.
 	//
 	// example:
 	//
 	// ob2mr3oae0****
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// The information of tenants.
+	// The name of the tenant.
+	//
+	// It must start with a letter or an underscore (_), and contain 2 to 20 characters, which can be uppercase letters, lowercase letters, digits, and underscores (_).  It cannot be set to sys.
 	//
 	// example:
 	//
@@ -37641,15 +39248,15 @@ func (s *DescribeTenantsRequest) SetTenantName(v string) *DescribeTenantsRequest
 }
 
 type DescribeTenantsResponseBody struct {
-	// The ID of the tenant.
+	// The request ID.
 	//
 	// example:
 	//
 	// EE205C00-30E4-XXXX-XXXX-87E3A8A2AA0C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the OceanBase cluster.
+	// The information of tenants.
 	Tenants []*DescribeTenantsResponseBodyTenants `json:"Tenants,omitempty" xml:"Tenants,omitempty" type:"Repeated"`
-	// The total memory size of the tenant, in GB.
+	// The total number of tenants in the specified OceanBase cluster.
 	//
 	// example:
 	//
@@ -37681,10 +39288,14 @@ func (s *DescribeTenantsResponseBody) SetTotalCount(v int32) *DescribeTenantsRes
 }
 
 type DescribeTenantsResponseBodyTenants struct {
+	// The character set.
+	//
 	// example:
 	//
 	// utf8mb4
 	Charset *string `json:"Charset,omitempty" xml:"Charset,omitempty"`
+	// The collation.
+	//
 	// example:
 	//
 	// utf8mb4_general_ci
@@ -37695,62 +39306,61 @@ type DescribeTenantsResponseBodyTenants struct {
 	//
 	// 10
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The number of CPU cores in each resource unit of the tenant.
+	// The time when the tenant was created.
 	//
 	// example:
 	//
 	// 2021-09-17 15:52:17.0
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The search keyword.
+	// The data replica distribution mode of the tenant.
+	//
+	// - For the high availability version, N-N-N indicates the three-zone mode, and N-N indicates the dual-zone or single-zone mode.
+	//
+	// - For the basic version, N indicates the single-zone mode.
+	//
+	// > <br>N represents the number of nodes in a single zone.
 	//
 	// example:
 	//
 	// 1-1-1
 	DeployMode *string `json:"DeployMode,omitempty" xml:"DeployMode,omitempty"`
-	// The name of the tenant.
+	// The deployment type of the tenant. <br>
 	//
-	// It must start with a letter or an underscore (_), and contain 2 to 20 characters, which can be uppercase letters, lowercase letters, digits, and underscores (_).  It cannot be set to sys.
+	// - multiple: multi-IDC deployment
+	//
+	// - single: single-IDC deployment
+	//
+	// - dual: dual-IDC deployment
 	//
 	// example:
 	//
 	// multiple
 	DeployType *string `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
-	// Example 1
+	// The description of the tenant.
 	//
 	// example:
 	//
-	// ```
+	// PayCore business database
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether read-only replicas are supported.
 	//
-	// http(s)://[Endpoint]/?Action=DescribeTenants
+	// example:
 	//
-	// &InstanceId=ob317v4uif****
-	//
-	// &TenantName=pay_online
-	//
-	// &PageSize=10
-	//
-	// &PageNumber=1
-	//
-	// &TenantId=ob2mr3oae0****
-	//
-	// &SearchKey=pay
-	//
-	// &Common request parameters
-	//
-	// ```
-	Description           *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	EnableReadOnlyReplica *bool   `json:"EnableReadOnlyReplica,omitempty" xml:"EnableReadOnlyReplica,omitempty"`
-	// The number of the page to return.
-	//
-	// Start value: 1
-	//
-	// - Default value: 1
+	// true
+	EnableReadOnlyReplica *bool `json:"EnableReadOnlyReplica,omitempty" xml:"EnableReadOnlyReplica,omitempty"`
+	// The total memory size of the tenant, in GB.
 	//
 	// example:
 	//
 	// 20
 	Mem *int32 `json:"Mem,omitempty" xml:"Mem,omitempty"`
-	// The return result of the request.
+	// The parameter template.
+	//
+	// example:
+	//
+	// express_oltp
+	ParameterTemplate *string `json:"ParameterTemplate,omitempty" xml:"ParameterTemplate,omitempty"`
+	// The primary zone of the tenant.
 	//
 	// example:
 	//
@@ -37780,87 +39390,55 @@ type DescribeTenantsResponseBodyTenants struct {
 	//
 	// ONLINE
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// You can call this operation to query the tenants in an OceanBase cluster.
+	// The ID of the tenant.
 	//
 	// example:
 	//
 	// t33h8y08k****
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// {
+	// The tenant mode.
 	//
-	//     "TotalCount": 1,
+	// Valid values:
 	//
-	//     "RequestId": "EE205C00-30E4-XXXX-XXXX-87E3A8A2AA0C",
+	// Oracle
 	//
-	//     "Tenants": [
-	//
-	//         {
-	//
-	//             "VpcId": "vpc-bp1d2q3mhg9i23ofi****",
-	//
-	//             "Status": "ONLINE",
-	//
-	//             "PrimaryZone": "cn-hangzhou-i",
-	//
-	//             "DeployType": "multiple",
-	//
-	//             "DeployMode": "1-1-1",
-	//
-	//             "CreateTime": "2021-09-17 15:52:17.0",
-	//
-	//             "TenantName": "pay_online",
-	//
-	//             "Mem": 20,
-	//
-	//             "Cpu": 10,
-	//
-	//             "Description": "PayCore business database",
-	//
-	//             "TenantMode": "Oracle",
-	//
-	//             "TenantId": "t33h8y08k****",
-	//
-	//             "UnitCpu": 5,
-	//
-	//             "UnitMem": 10,
-	//
-	//             "UnitNum": 2,
-	//
-	//             "UsedDiskSize": 10
-	//
-	//         }
-	//
-	//     ]
-	//
-	// }
+	// MySQL
 	//
 	// example:
 	//
 	// Oracle
 	TenantMode *string `json:"TenantMode,omitempty" xml:"TenantMode,omitempty"`
-	// The information of tenants.
+	// The name of the tenant.
 	//
 	// example:
 	//
 	// pay_online
 	TenantName *string `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
+	// The number of CPU cores in each resource unit of the tenant.
+	//
 	// example:
 	//
 	// 5
 	UnitCpu *int32 `json:"UnitCpu,omitempty" xml:"UnitCpu,omitempty"`
+	// The memory size of each resource unit of the tenant, in GB.
+	//
 	// example:
 	//
 	// 10
 	UnitMem *int32 `json:"UnitMem,omitempty" xml:"UnitMem,omitempty"`
+	// The number of resource units in the tenant.
+	//
 	// example:
 	//
 	// 2
 	UnitNum *int32 `json:"UnitNum,omitempty" xml:"UnitNum,omitempty"`
+	// The number of used disks of the tenant.
+	//
 	// example:
 	//
 	// 10
 	UsedDiskSize *float64 `json:"UsedDiskSize,omitempty" xml:"UsedDiskSize,omitempty"`
-	// The time when the tenant was created.
+	// The ID of the VPC.   <br>If no suitable VPC is available, create a VPC as prompted. For more information, see "What is a VPC".
 	//
 	// example:
 	//
@@ -37918,6 +39496,11 @@ func (s *DescribeTenantsResponseBodyTenants) SetEnableReadOnlyReplica(v bool) *D
 
 func (s *DescribeTenantsResponseBodyTenants) SetMem(v int32) *DescribeTenantsResponseBodyTenants {
 	s.Mem = &v
+	return s
+}
+
+func (s *DescribeTenantsResponseBodyTenants) SetParameterTemplate(v string) *DescribeTenantsResponseBodyTenants {
+	s.ParameterTemplate = &v
 	return s
 }
 
@@ -46397,6 +47980,7 @@ type ModifyInstanceSSLRequest struct {
 	//
 	// ob317v4uif****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	TenantId   *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
 
 func (s ModifyInstanceSSLRequest) String() string {
@@ -46414,6 +47998,11 @@ func (s *ModifyInstanceSSLRequest) SetEnableSSL(v string) *ModifyInstanceSSLRequ
 
 func (s *ModifyInstanceSSLRequest) SetInstanceId(v string) *ModifyInstanceSSLRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyInstanceSSLRequest) SetTenantId(v string) *ModifyInstanceSSLRequest {
+	s.TenantId = &v
 	return s
 }
 
@@ -46465,6 +48054,7 @@ type ModifyInstanceSSLResponseBodyInstanceSSL struct {
 	//
 	// ob317v4uif****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	TenantId   *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
 
 func (s ModifyInstanceSSLResponseBodyInstanceSSL) String() string {
@@ -46482,6 +48072,11 @@ func (s *ModifyInstanceSSLResponseBodyInstanceSSL) SetEnableSSL(v string) *Modif
 
 func (s *ModifyInstanceSSLResponseBodyInstanceSSL) SetInstanceId(v string) *ModifyInstanceSSLResponseBodyInstanceSSL {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyInstanceSSLResponseBodyInstanceSSL) SetTenantId(v string) *ModifyInstanceSSLResponseBodyInstanceSSL {
+	s.TenantId = &v
 	return s
 }
 
@@ -48431,6 +50026,7 @@ func (s *ModifyTenantUserPasswordResponse) SetBody(v *ModifyTenantUserPasswordRe
 }
 
 type ModifyTenantUserRolesRequest struct {
+	GlobalPermissions *string `json:"GlobalPermissions,omitempty" xml:"GlobalPermissions,omitempty"`
 	// The type of the privilege modification operation.
 	//
 	// Valid values:
@@ -48483,6 +50079,10 @@ type ModifyTenantUserRolesRequest struct {
 	//
 	// [{"Database":"20210824160559","Role":"readwrite"}]
 	UserRole *string `json:"UserRole,omitempty" xml:"UserRole,omitempty"`
+	// example:
+	//
+	// Normal
+	UserType *string `json:"UserType,omitempty" xml:"UserType,omitempty"`
 }
 
 func (s ModifyTenantUserRolesRequest) String() string {
@@ -48491,6 +50091,11 @@ func (s ModifyTenantUserRolesRequest) String() string {
 
 func (s ModifyTenantUserRolesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyTenantUserRolesRequest) SetGlobalPermissions(v string) *ModifyTenantUserRolesRequest {
+	s.GlobalPermissions = &v
+	return s
 }
 
 func (s *ModifyTenantUserRolesRequest) SetInstanceId(v string) *ModifyTenantUserRolesRequest {
@@ -48515,6 +50120,11 @@ func (s *ModifyTenantUserRolesRequest) SetUserName(v string) *ModifyTenantUserRo
 
 func (s *ModifyTenantUserRolesRequest) SetUserRole(v string) *ModifyTenantUserRolesRequest {
 	s.UserRole = &v
+	return s
+}
+
+func (s *ModifyTenantUserRolesRequest) SetUserType(v string) *ModifyTenantUserRolesRequest {
+	s.UserType = &v
 	return s
 }
 
@@ -51679,6 +53289,8 @@ func (s *UpdateProjectConfigRequestCommonTransferConfig) SetSourceStoreFormat(v 
 }
 
 type UpdateProjectConfigRequestFullTransferConfig struct {
+	IndexDDLConcurrencyLimit *int32 `json:"IndexDDLConcurrencyLimit,omitempty" xml:"IndexDDLConcurrencyLimit,omitempty"`
+	MaxConcurrentIndexDDLs   *int32 `json:"MaxConcurrentIndexDDLs,omitempty" xml:"MaxConcurrentIndexDDLs,omitempty"`
 	// example:
 	//
 	// 64
@@ -51703,6 +53315,16 @@ func (s UpdateProjectConfigRequestFullTransferConfig) String() string {
 
 func (s UpdateProjectConfigRequestFullTransferConfig) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateProjectConfigRequestFullTransferConfig) SetIndexDDLConcurrencyLimit(v int32) *UpdateProjectConfigRequestFullTransferConfig {
+	s.IndexDDLConcurrencyLimit = &v
+	return s
+}
+
+func (s *UpdateProjectConfigRequestFullTransferConfig) SetMaxConcurrentIndexDDLs(v int32) *UpdateProjectConfigRequestFullTransferConfig {
+	s.MaxConcurrentIndexDDLs = &v
+	return s
 }
 
 func (s *UpdateProjectConfigRequestFullTransferConfig) SetReadWorkerNum(v int32) *UpdateProjectConfigRequestFullTransferConfig {
@@ -52208,13 +53830,24 @@ func (client *Client) BatchKillProcessListWithOptions(request *BatchKillProcessL
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &BatchKillProcessListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &BatchKillProcessListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &BatchKillProcessListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52276,13 +53909,24 @@ func (client *Client) BatchKillSessionListWithOptions(request *BatchKillSessionL
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &BatchKillSessionListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &BatchKillSessionListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &BatchKillSessionListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52336,13 +53980,24 @@ func (client *Client) CancelProjectModifyRecordWithOptions(request *CancelProjec
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CancelProjectModifyRecordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CancelProjectModifyRecordResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CancelProjectModifyRecordResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52400,13 +54055,24 @@ func (client *Client) CreateBackupSetDownloadLinkWithOptions(request *CreateBack
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateBackupSetDownloadLinkResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateBackupSetDownloadLinkResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateBackupSetDownloadLinkResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52484,13 +54150,24 @@ func (client *Client) CreateDatabaseWithOptions(request *CreateDatabaseRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateDatabaseResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateDatabaseResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateDatabaseResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52616,13 +54293,24 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52676,13 +54364,24 @@ func (client *Client) CreateLabelWithOptions(request *CreateLabelRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateLabelResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateLabelResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateLabelResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52780,13 +54479,24 @@ func (client *Client) CreateMySqlDataSourceWithOptions(request *CreateMySqlDataS
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateMySqlDataSourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateMySqlDataSourceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateMySqlDataSourceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52900,13 +54610,24 @@ func (client *Client) CreateOceanBaseDataSourceWithOptions(request *CreateOceanB
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateOceanBaseDataSourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateOceanBaseDataSourceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateOceanBaseDataSourceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53004,13 +54725,24 @@ func (client *Client) CreateOmsMysqlDataSourceWithOptions(request *CreateOmsMysq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateOmsMysqlDataSourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateOmsMysqlDataSourceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateOmsMysqlDataSourceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53174,13 +54906,24 @@ func (client *Client) CreateProjectWithOptions(tmpReq *CreateProjectRequest, run
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateProjectResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateProjectResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateProjectResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53244,13 +54987,24 @@ func (client *Client) CreateProjectModifyRecordsWithOptions(tmpReq *CreateProjec
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateProjectModifyRecordsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateProjectModifyRecordsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateProjectModifyRecordsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53324,13 +55078,24 @@ func (client *Client) CreateRdsPostgreSQLDataSourceWithOptions(request *CreateRd
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateRdsPostgreSQLDataSourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateRdsPostgreSQLDataSourceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateRdsPostgreSQLDataSourceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53392,13 +55157,24 @@ func (client *Client) CreateSecurityIpGroupWithOptions(request *CreateSecurityIp
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateSecurityIpGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateSecurityIpGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateSecurityIpGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53456,13 +55232,24 @@ func (client *Client) CreateTagWithOptions(request *CreateTagRequest, runtime *u
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateTagResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateTagResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateTagResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53524,13 +55311,24 @@ func (client *Client) CreateTagValueWithOptions(request *CreateTagValueRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateTagValueResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateTagValueResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateTagValueResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53650,13 +55448,24 @@ func (client *Client) CreateTenantWithOptions(tmpReq *CreateTenantRequest, runti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateTenantResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateTenantResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateTenantResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53726,13 +55535,24 @@ func (client *Client) CreateTenantReadOnlyConnectionWithOptions(request *CreateT
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateTenantReadOnlyConnectionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateTenantReadOnlyConnectionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateTenantReadOnlyConnectionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53798,13 +55618,24 @@ func (client *Client) CreateTenantSecurityIpGroupWithOptions(request *CreateTena
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateTenantSecurityIpGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateTenantSecurityIpGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateTenantSecurityIpGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53848,6 +55679,10 @@ func (client *Client) CreateTenantUserWithOptions(request *CreateTenantUserReque
 		body["EncryptionType"] = request.EncryptionType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.GlobalPermissions)) {
+		body["GlobalPermissions"] = request.GlobalPermissions
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		body["InstanceId"] = request.InstanceId
 	}
@@ -53886,13 +55721,24 @@ func (client *Client) CreateTenantUserWithOptions(request *CreateTenantUserReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateTenantUserResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateTenantUserResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateTenantUserResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53946,13 +55792,24 @@ func (client *Client) DeleteDataSourceWithOptions(request *DeleteDataSourceReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteDataSourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteDataSourceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteDataSourceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54014,13 +55871,24 @@ func (client *Client) DeleteDatabasesWithOptions(request *DeleteDatabasesRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteDatabasesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteDatabasesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteDatabasesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54090,13 +55958,24 @@ func (client *Client) DeleteInstancesWithOptions(request *DeleteInstancesRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54158,13 +56037,24 @@ func (client *Client) DeleteProjectWithOptions(request *DeleteProjectRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteProjectResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteProjectResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteProjectResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54222,13 +56112,24 @@ func (client *Client) DeleteSecurityIpGroupWithOptions(request *DeleteSecurityIp
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteSecurityIpGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteSecurityIpGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteSecurityIpGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54282,13 +56183,24 @@ func (client *Client) DeleteTagWithOptions(request *DeleteTagRequest, runtime *u
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteTagResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteTagResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteTagResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54346,13 +56258,24 @@ func (client *Client) DeleteTagValueWithOptions(request *DeleteTagValueRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteTagValueResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteTagValueResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteTagValueResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54414,13 +56337,24 @@ func (client *Client) DeleteTenantSecurityIpGroupWithOptions(request *DeleteTena
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteTenantSecurityIpGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteTenantSecurityIpGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteTenantSecurityIpGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54482,13 +56416,24 @@ func (client *Client) DeleteTenantUsersWithOptions(request *DeleteTenantUsersReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteTenantUsersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteTenantUsersResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteTenantUsersResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54546,13 +56491,24 @@ func (client *Client) DeleteTenantsWithOptions(request *DeleteTenantsRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteTenantsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteTenantsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteTenantsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54676,13 +56632,24 @@ func (client *Client) DescribeAnomalySQLListWithOptions(tmpReq *DescribeAnomalyS
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeAnomalySQLListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeAnomalySQLListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeAnomalySQLListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54744,13 +56711,24 @@ func (client *Client) DescribeAvailableCpuResourceWithOptions(request *DescribeA
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeAvailableCpuResourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeAvailableCpuResourceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeAvailableCpuResourceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54816,13 +56794,24 @@ func (client *Client) DescribeAvailableMemResourceWithOptions(request *DescribeA
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeAvailableMemResourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeAvailableMemResourceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeAvailableMemResourceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54884,13 +56873,24 @@ func (client *Client) DescribeAvailableSpecWithOptions(request *DescribeAvailabl
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeAvailableSpecResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeAvailableSpecResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeAvailableSpecResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54964,13 +56964,24 @@ func (client *Client) DescribeAvailableZoneWithOptions(request *DescribeAvailabl
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeAvailableZoneResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeAvailableZoneResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeAvailableZoneResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -55028,13 +57039,24 @@ func (client *Client) DescribeBackupEncryptedStringWithOptions(request *Describe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeBackupEncryptedStringResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeBackupEncryptedStringResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeBackupEncryptedStringResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -55092,13 +57114,24 @@ func (client *Client) DescribeBackupSetDownloadLinkWithOptions(request *Describe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeBackupSetDownloadLinkResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeBackupSetDownloadLinkResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeBackupSetDownloadLinkResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -55160,13 +57193,24 @@ func (client *Client) DescribeCharsetWithOptions(request *DescribeCharsetRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeCharsetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeCharsetResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeCharsetResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -55244,13 +57288,24 @@ func (client *Client) DescribeDataBackupSetWithOptions(request *DescribeDataBack
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDataBackupSetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDataBackupSetResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDataBackupSetResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -55328,13 +57383,24 @@ func (client *Client) DescribeDatabasesWithOptions(request *DescribeDatabasesReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDatabasesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDatabasesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDatabasesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -55357,7 +57423,7 @@ func (client *Client) DescribeDatabases(request *DescribeDatabasesRequest) (_res
 
 // Summary:
 //
-// The size of used memory in the cluster, in GB.
+// You can call this operation to query the detailed information of an OceanBase cluster.
 //
 // @param request - DescribeInstanceRequest
 //
@@ -55372,10 +57438,6 @@ func (client *Client) DescribeInstanceWithOptions(request *DescribeInstanceReque
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		body["InstanceId"] = request.InstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MaxConnectionLimit)) {
-		body["MaxConnectionLimit"] = request.MaxConnectionLimit
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
@@ -55396,18 +57458,29 @@ func (client *Client) DescribeInstanceWithOptions(request *DescribeInstanceReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// The size of used memory in the cluster, in GB.
+// You can call this operation to query the detailed information of an OceanBase cluster.
 //
 // @param request - DescribeInstanceRequest
 //
@@ -55456,13 +57529,24 @@ func (client *Client) DescribeInstanceCreatableZoneWithOptions(request *Describe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeInstanceCreatableZoneResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeInstanceCreatableZoneResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeInstanceCreatableZoneResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -55502,6 +57586,10 @@ func (client *Client) DescribeInstanceSSLWithOptions(request *DescribeInstanceSS
 		body["InstanceId"] = request.InstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -55516,13 +57604,24 @@ func (client *Client) DescribeInstanceSSLWithOptions(request *DescribeInstanceSS
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeInstanceSSLResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeInstanceSSLResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeInstanceSSLResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -55580,13 +57679,24 @@ func (client *Client) DescribeInstanceSecurityConfigsWithOptions(request *Descri
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeInstanceSecurityConfigsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeInstanceSecurityConfigsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeInstanceSecurityConfigsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -55609,7 +57719,7 @@ func (client *Client) DescribeInstanceSecurityConfigs(request *DescribeInstanceS
 
 // Summary:
 //
-// 工作台首页获取用户集群数汇总。
+// Obtains the overview information about OceanBase instances.
 //
 // @param request - DescribeInstanceSummaryRequest
 //
@@ -55644,18 +57754,29 @@ func (client *Client) DescribeInstanceSummaryWithOptions(request *DescribeInstan
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeInstanceSummaryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeInstanceSummaryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeInstanceSummaryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 工作台首页获取用户集群数汇总。
+// Obtains the overview information about OceanBase instances.
 //
 // @param request - DescribeInstanceSummaryRequest
 //
@@ -55708,13 +57829,24 @@ func (client *Client) DescribeInstanceTagsWithOptions(request *DescribeInstanceT
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeInstanceTagsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeInstanceTagsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeInstanceTagsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -55768,13 +57900,24 @@ func (client *Client) DescribeInstanceTenantModesWithOptions(request *DescribeIn
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeInstanceTenantModesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeInstanceTenantModesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeInstanceTenantModesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -55797,7 +57940,7 @@ func (client *Client) DescribeInstanceTenantModes(request *DescribeInstanceTenan
 
 // Summary:
 //
-// The ID of the zone.
+// You can call this operation to query the topology of an OceanBase cluster.
 //
 // @param request - DescribeInstanceTopologyRequest
 //
@@ -55828,18 +57971,29 @@ func (client *Client) DescribeInstanceTopologyWithOptions(request *DescribeInsta
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeInstanceTopologyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeInstanceTopologyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeInstanceTopologyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// The ID of the zone.
+// You can call this operation to query the topology of an OceanBase cluster.
 //
 // @param request - DescribeInstanceTopologyRequest
 //
@@ -55908,13 +58062,24 @@ func (client *Client) DescribeInstancesWithOptions(request *DescribeInstancesReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -56006,13 +58171,24 @@ func (client *Client) DescribeMetricsDataWithOptions(request *DescribeMetricsDat
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeMetricsDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeMetricsDataResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeMetricsDataResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -56098,13 +58274,24 @@ func (client *Client) DescribeNodeMetricsWithOptions(request *DescribeNodeMetric
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeNodeMetricsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeNodeMetricsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeNodeMetricsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -56226,13 +58413,24 @@ func (client *Client) DescribeOasAnomalySQLListWithOptions(request *DescribeOasA
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeOasAnomalySQLListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeOasAnomalySQLListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeOasAnomalySQLListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -56314,13 +58512,24 @@ func (client *Client) DescribeOasSQLDetailsWithOptions(request *DescribeOasSQLDe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeOasSQLDetailsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeOasSQLDetailsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeOasSQLDetailsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -56406,13 +58615,24 @@ func (client *Client) DescribeOasSQLHistoryListWithOptions(request *DescribeOasS
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeOasSQLHistoryListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeOasSQLHistoryListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeOasSQLHistoryListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -56502,13 +58722,24 @@ func (client *Client) DescribeOasSQLPlansWithOptions(request *DescribeOasSQLPlan
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeOasSQLPlansResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeOasSQLPlansResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeOasSQLPlansResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -56622,13 +58853,24 @@ func (client *Client) DescribeOasSlowSQLListWithOptions(request *DescribeOasSlow
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeOasSlowSQLListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeOasSlowSQLListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeOasSlowSQLListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -56742,13 +58984,24 @@ func (client *Client) DescribeOasTopSQLListWithOptions(request *DescribeOasTopSQ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeOasTopSQLListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeOasTopSQLListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeOasTopSQLListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -56822,13 +59075,24 @@ func (client *Client) DescribeOutlineBindingWithOptions(request *DescribeOutline
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeOutlineBindingResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeOutlineBindingResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeOutlineBindingResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -56890,13 +59154,24 @@ func (client *Client) DescribeParametersWithOptions(request *DescribeParametersR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeParametersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeParametersResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeParametersResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -56974,13 +59249,24 @@ func (client *Client) DescribeParametersHistoryWithOptions(request *DescribePara
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeParametersHistoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeParametersHistoryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeParametersHistoryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -57062,13 +59348,24 @@ func (client *Client) DescribeProcessStatsCompositionWithOptions(request *Descri
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeProcessStatsCompositionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeProcessStatsCompositionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeProcessStatsCompositionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -57122,13 +59419,24 @@ func (client *Client) DescribeProjectWithOptions(request *DescribeProjectRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeProjectResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeProjectResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeProjectResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -57182,13 +59490,24 @@ func (client *Client) DescribeProjectComponentsWithOptions(request *DescribeProj
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeProjectComponentsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeProjectComponentsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeProjectComponentsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -57242,13 +59561,24 @@ func (client *Client) DescribeProjectProgressWithOptions(request *DescribeProjec
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeProjectProgressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeProjectProgressResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeProjectProgressResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -57326,13 +59656,24 @@ func (client *Client) DescribeProjectStepMetricWithOptions(request *DescribeProj
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeProjectStepMetricResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeProjectStepMetricResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeProjectStepMetricResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -57386,13 +59727,24 @@ func (client *Client) DescribeProjectStepsWithOptions(request *DescribeProjectSt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeProjectStepsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeProjectStepsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeProjectStepsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -57406,6 +59758,77 @@ func (client *Client) DescribeProjectSteps(request *DescribeProjectStepsRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeProjectStepsResponse{}
 	_body, _err := client.DescribeProjectStepsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询代理服务信息
+//
+// @param request - DescribeProxyServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeProxyServiceResponse
+func (client *Client) DescribeProxyServiceWithOptions(request *DescribeProxyServiceRequest, runtime *util.RuntimeOptions) (_result *DescribeProxyServiceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeProxyService"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeProxyServiceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeProxyServiceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询代理服务信息
+//
+// @param request - DescribeProxyServiceRequest
+//
+// @return DescribeProxyServiceResponse
+func (client *Client) DescribeProxyService(request *DescribeProxyServiceRequest) (_result *DescribeProxyServiceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeProxyServiceResponse{}
+	_body, _err := client.DescribeProxyServiceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -57458,13 +59881,24 @@ func (client *Client) DescribeRecommendIndexWithOptions(request *DescribeRecomme
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeRecommendIndexResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeRecommendIndexResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeRecommendIndexResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -57491,7 +59925,7 @@ func (client *Client) DescribeRecommendIndex(request *DescribeRecommendIndexRequ
 
 // Summary:
 //
-// 获取可恢复租户
+// Queries information about restorable OceanBase Database tenants.
 //
 // @param request - DescribeRestorableTenantsRequest
 //
@@ -57546,18 +59980,29 @@ func (client *Client) DescribeRestorableTenantsWithOptions(request *DescribeRest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeRestorableTenantsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeRestorableTenantsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeRestorableTenantsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 获取可恢复租户
+// Queries information about restorable OceanBase Database tenants.
 //
 // @param request - DescribeRestorableTenantsRequest
 //
@@ -57610,13 +60055,24 @@ func (client *Client) DescribeSQLDetailsWithOptions(request *DescribeSQLDetailsR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeSQLDetailsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeSQLDetailsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeSQLDetailsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -57690,13 +60146,24 @@ func (client *Client) DescribeSQLHistoryListWithOptions(request *DescribeSQLHist
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeSQLHistoryListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeSQLHistoryListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeSQLHistoryListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -57754,13 +60221,24 @@ func (client *Client) DescribeSQLPlansWithOptions(request *DescribeSQLPlansReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeSQLPlansResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeSQLPlansResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeSQLPlansResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -57838,13 +60316,24 @@ func (client *Client) DescribeSQLSamplesWithOptions(request *DescribeSQLSamplesR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeSQLSamplesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeSQLSamplesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeSQLSamplesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -57922,13 +60411,24 @@ func (client *Client) DescribeSQLTuningAdvicesWithOptions(request *DescribeSQLTu
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeSQLTuningAdvicesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeSQLTuningAdvicesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeSQLTuningAdvicesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -57966,6 +60466,10 @@ func (client *Client) DescribeSampleSqlRawTextsWithOptions(request *DescribeSamp
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DbName)) {
 		body["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DynamicSql)) {
+		body["DynamicSql"] = request.DynamicSql
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
@@ -58010,13 +60514,24 @@ func (client *Client) DescribeSampleSqlRawTextsWithOptions(request *DescribeSamp
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeSampleSqlRawTextsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeSampleSqlRawTextsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeSampleSqlRawTextsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -58070,13 +60585,24 @@ func (client *Client) DescribeSecurityIpGroupsWithOptions(request *DescribeSecur
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeSecurityIpGroupsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeSecurityIpGroupsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeSecurityIpGroupsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -58134,13 +60660,24 @@ func (client *Client) DescribeSessionListWithOptions(request *DescribeSessionLis
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeSessionListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeSessionListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeSessionListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -58214,13 +60751,24 @@ func (client *Client) DescribeSlowSQLHistoryListWithOptions(request *DescribeSlo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeSlowSQLHistoryListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeSlowSQLHistoryListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeSlowSQLHistoryListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -58336,13 +60884,24 @@ func (client *Client) DescribeSlowSQLListWithOptions(tmpReq *DescribeSlowSQLList
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeSlowSQLListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeSlowSQLListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeSlowSQLListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -58400,13 +60959,24 @@ func (client *Client) DescribeStandbyCreateModeWithOptions(request *DescribeStan
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeStandbyCreateModeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeStandbyCreateModeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeStandbyCreateModeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -58460,13 +61030,24 @@ func (client *Client) DescribeTagValuesWithOptions(request *DescribeTagValuesReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeTagValuesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeTagValuesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeTagValuesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -58489,7 +61070,7 @@ func (client *Client) DescribeTagValues(request *DescribeTagValuesRequest) (_res
 
 // Summary:
 //
-// The ID of the VPC.
+// You can call this operation to query the information of a specific tenant in a specific cluster.
 //
 // @param request - DescribeTenantRequest
 //
@@ -58524,18 +61105,29 @@ func (client *Client) DescribeTenantWithOptions(request *DescribeTenantRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeTenantResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeTenantResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeTenantResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// The ID of the VPC.
+// You can call this operation to query the information of a specific tenant in a specific cluster.
 //
 // @param request - DescribeTenantRequest
 //
@@ -58600,13 +61192,24 @@ func (client *Client) DescribeTenantEncryptionWithOptions(request *DescribeTenan
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeTenantEncryptionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeTenantEncryptionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeTenantEncryptionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -58692,13 +61295,24 @@ func (client *Client) DescribeTenantMetricsWithOptions(request *DescribeTenantMe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeTenantMetricsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeTenantMetricsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeTenantMetricsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -58756,13 +61370,24 @@ func (client *Client) DescribeTenantReadableScnWithOptions(request *DescribeTena
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeTenantReadableScnResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeTenantReadableScnResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeTenantReadableScnResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -58824,13 +61449,24 @@ func (client *Client) DescribeTenantSecurityConfigsWithOptions(request *Describe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeTenantSecurityConfigsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeTenantSecurityConfigsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeTenantSecurityConfigsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -58888,13 +61524,24 @@ func (client *Client) DescribeTenantSecurityIpGroupsWithOptions(request *Describ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeTenantSecurityIpGroupsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeTenantSecurityIpGroupsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeTenantSecurityIpGroupsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -58956,13 +61603,24 @@ func (client *Client) DescribeTenantTagsWithOptions(request *DescribeTenantTagsR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeTenantTagsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeTenantTagsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeTenantTagsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -58998,6 +61656,10 @@ func (client *Client) DescribeTenantUserRolesWithOptions(request *DescribeTenant
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
 		body["TenantId"] = request.TenantId
 	}
@@ -59016,13 +61678,24 @@ func (client *Client) DescribeTenantUserRolesWithOptions(request *DescribeTenant
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeTenantUserRolesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeTenantUserRolesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeTenantUserRolesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -59092,13 +61765,24 @@ func (client *Client) DescribeTenantUsersWithOptions(request *DescribeTenantUser
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeTenantUsersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeTenantUsersResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeTenantUsersResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -59156,13 +61840,24 @@ func (client *Client) DescribeTenantZonesReadWithOptions(request *DescribeTenant
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeTenantZonesReadResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeTenantZonesReadResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeTenantZonesReadResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -59185,7 +61880,7 @@ func (client *Client) DescribeTenantZonesRead(request *DescribeTenantZonesReadRe
 
 // Summary:
 //
-// The total memory size of the tenant, in GB.
+// You can call this operation to query the tenants in an OceanBase cluster.
 //
 // @param request - DescribeTenantsRequest
 //
@@ -59236,18 +61931,29 @@ func (client *Client) DescribeTenantsWithOptions(request *DescribeTenantsRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeTenantsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeTenantsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeTenantsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// The total memory size of the tenant, in GB.
+// You can call this operation to query the tenants in an OceanBase cluster.
 //
 // @param request - DescribeTenantsRequest
 //
@@ -59285,13 +61991,24 @@ func (client *Client) DescribeTimeZonesWithOptions(runtime *util.RuntimeOptions)
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeTimeZonesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeTimeZonesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeTimeZonesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -59405,13 +62122,24 @@ func (client *Client) DescribeTopSQLListWithOptions(tmpReq *DescribeTopSQLListRe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeTopSQLListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeTopSQLListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeTopSQLListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -59473,13 +62201,24 @@ func (client *Client) DescribeZonesWithOptions(request *DescribeZonesRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeZonesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeZonesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeZonesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -59537,13 +62276,24 @@ func (client *Client) GetUploadOssUrlWithOptions(request *GetUploadOssUrlRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetUploadOssUrlResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetUploadOssUrlResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetUploadOssUrlResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -59605,13 +62355,24 @@ func (client *Client) KillProcessListWithOptions(request *KillProcessListRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &KillProcessListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &KillProcessListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &KillProcessListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -59654,13 +62415,24 @@ func (client *Client) ListAllLabelsWithOptions(runtime *util.RuntimeOptions) (_r
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListAllLabelsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListAllLabelsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListAllLabelsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -59738,13 +62510,24 @@ func (client *Client) ListDataSourceWithOptions(tmpReq *ListDataSourceRequest, r
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListDataSourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListDataSourceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListDataSourceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -59828,13 +62611,24 @@ func (client *Client) ListProjectFullVerifyResultWithOptions(tmpReq *ListProject
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListProjectFullVerifyResultResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListProjectFullVerifyResultResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListProjectFullVerifyResultResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -59888,13 +62682,24 @@ func (client *Client) ListProjectModifyRecordsWithOptions(request *ListProjectMo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListProjectModifyRecordsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListProjectModifyRecordsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListProjectModifyRecordsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -60010,13 +62815,24 @@ func (client *Client) ListProjectsWithOptions(tmpReq *ListProjectsRequest, runti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListProjectsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListProjectsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListProjectsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -60100,13 +62916,24 @@ func (client *Client) ListWorkerInstancesWithOptions(tmpReq *ListWorkerInstances
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListWorkerInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListWorkerInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListWorkerInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -60172,13 +62999,24 @@ func (client *Client) ModifyDatabaseDescriptionWithOptions(request *ModifyDataba
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyDatabaseDescriptionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyDatabaseDescriptionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyDatabaseDescriptionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -60244,13 +63082,24 @@ func (client *Client) ModifyDatabaseUserRolesWithOptions(request *ModifyDatabase
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyDatabaseUserRolesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyDatabaseUserRolesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyDatabaseUserRolesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -60308,13 +63157,24 @@ func (client *Client) ModifyInstanceNameWithOptions(request *ModifyInstanceNameR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyInstanceNameResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyInstanceNameResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyInstanceNameResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -60376,13 +63236,24 @@ func (client *Client) ModifyInstanceNodeNumWithOptions(request *ModifyInstanceNo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyInstanceNodeNumResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyInstanceNodeNumResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyInstanceNodeNumResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -60430,6 +63301,10 @@ func (client *Client) ModifyInstanceSSLWithOptions(request *ModifyInstanceSSLReq
 		body["InstanceId"] = request.InstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -60444,13 +63319,24 @@ func (client *Client) ModifyInstanceSSLWithOptions(request *ModifyInstanceSSLReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyInstanceSSLResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyInstanceSSLResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyInstanceSSLResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -60528,13 +63414,24 @@ func (client *Client) ModifyInstanceSpecWithOptions(request *ModifyInstanceSpecR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyInstanceSpecResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyInstanceSpecResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyInstanceSpecResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -60592,13 +63489,24 @@ func (client *Client) ModifyInstanceTagsWithOptions(request *ModifyInstanceTagsR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyInstanceTagsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyInstanceTagsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyInstanceTagsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -60664,13 +63572,24 @@ func (client *Client) ModifyInstanceTemporaryCapacityWithOptions(request *Modify
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyInstanceTemporaryCapacityResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyInstanceTemporaryCapacityResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyInstanceTemporaryCapacityResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -60736,13 +63655,24 @@ func (client *Client) ModifyParametersWithOptions(request *ModifyParametersReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyParametersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyParametersResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyParametersResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -60804,13 +63734,24 @@ func (client *Client) ModifySecurityIpsWithOptions(request *ModifySecurityIpsReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifySecurityIpsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifySecurityIpsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifySecurityIpsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -60864,13 +63805,24 @@ func (client *Client) ModifyTagNameWithOptions(request *ModifyTagNameRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyTagNameResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyTagNameResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyTagNameResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - ModifyTagNameRequest
@@ -60928,13 +63880,24 @@ func (client *Client) ModifyTagValueNameWithOptions(request *ModifyTagValueNameR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyTagValueNameResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyTagValueNameResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyTagValueNameResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -61000,13 +63963,24 @@ func (client *Client) ModifyTenantEncryptionWithOptions(request *ModifyTenantEnc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyTenantEncryptionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyTenantEncryptionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyTenantEncryptionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -61096,13 +64070,24 @@ func (client *Client) ModifyTenantPrimaryZoneWithOptions(request *ModifyTenantPr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyTenantPrimaryZoneResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyTenantPrimaryZoneResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyTenantPrimaryZoneResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -61176,13 +64161,24 @@ func (client *Client) ModifyTenantResourceWithOptions(request *ModifyTenantResou
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyTenantResourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyTenantResourceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyTenantResourceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -61248,13 +64244,24 @@ func (client *Client) ModifyTenantSecurityIpGroupWithOptions(request *ModifyTena
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyTenantSecurityIpGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyTenantSecurityIpGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyTenantSecurityIpGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -61316,13 +64323,24 @@ func (client *Client) ModifyTenantTagsWithOptions(request *ModifyTenantTagsReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyTenantTagsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyTenantTagsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyTenantTagsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -61388,13 +64406,24 @@ func (client *Client) ModifyTenantUserDescriptionWithOptions(request *ModifyTena
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyTenantUserDescriptionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyTenantUserDescriptionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyTenantUserDescriptionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -61464,13 +64493,24 @@ func (client *Client) ModifyTenantUserPasswordWithOptions(request *ModifyTenantU
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyTenantUserPasswordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyTenantUserPasswordResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyTenantUserPasswordResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -61506,6 +64546,10 @@ func (client *Client) ModifyTenantUserRolesWithOptions(request *ModifyTenantUser
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GlobalPermissions)) {
+		body["GlobalPermissions"] = request.GlobalPermissions
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		body["InstanceId"] = request.InstanceId
 	}
@@ -61526,6 +64570,10 @@ func (client *Client) ModifyTenantUserRolesWithOptions(request *ModifyTenantUser
 		body["UserRole"] = request.UserRole
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.UserType)) {
+		body["UserType"] = request.UserType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -61540,13 +64588,24 @@ func (client *Client) ModifyTenantUserRolesWithOptions(request *ModifyTenantUser
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyTenantUserRolesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyTenantUserRolesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyTenantUserRolesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -61612,13 +64671,24 @@ func (client *Client) ModifyTenantUserStatusWithOptions(request *ModifyTenantUse
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyTenantUserStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyTenantUserStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyTenantUserStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -61672,13 +64742,24 @@ func (client *Client) ReleaseProjectWithOptions(request *ReleaseProjectRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ReleaseProjectResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ReleaseProjectResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ReleaseProjectResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -61732,13 +64813,24 @@ func (client *Client) ReleaseWorkerInstanceWithOptions(request *ReleaseWorkerIns
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ReleaseWorkerInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ReleaseWorkerInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ReleaseWorkerInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -61800,13 +64892,24 @@ func (client *Client) RemoveStandbyInstanceWithOptions(request *RemoveStandbyIns
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RemoveStandbyInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RemoveStandbyInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RemoveStandbyInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -61860,13 +64963,24 @@ func (client *Client) ResumeProjectWithOptions(request *ResumeProjectRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ResumeProjectResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ResumeProjectResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ResumeProjectResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -61920,13 +65034,24 @@ func (client *Client) RetryProjectModifyRecordsWithOptions(request *RetryProject
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RetryProjectModifyRecordsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RetryProjectModifyRecordsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RetryProjectModifyRecordsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -61980,13 +65105,24 @@ func (client *Client) StartProjectWithOptions(request *StartProjectRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StartProjectResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StartProjectResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StartProjectResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -62040,13 +65176,24 @@ func (client *Client) StartProjectsByLabelWithOptions(request *StartProjectsByLa
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StartProjectsByLabelResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StartProjectsByLabelResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StartProjectsByLabelResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -62100,13 +65247,24 @@ func (client *Client) StopProjectWithOptions(request *StopProjectRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StopProjectResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StopProjectResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StopProjectResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -62160,13 +65318,24 @@ func (client *Client) StopProjectModifyRecordsWithOptions(request *StopProjectMo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StopProjectModifyRecordsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StopProjectModifyRecordsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StopProjectModifyRecordsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -62220,13 +65389,24 @@ func (client *Client) StopProjectsByLabelWithOptions(request *StopProjectsByLabe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StopProjectsByLabelResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StopProjectsByLabelResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StopProjectsByLabelResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -62288,13 +65468,24 @@ func (client *Client) SwitchoverInstanceWithOptions(request *SwitchoverInstanceR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SwitchoverInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SwitchoverInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SwitchoverInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -62382,13 +65573,24 @@ func (client *Client) UpdateProjectConfigWithOptions(tmpReq *UpdateProjectConfig
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateProjectConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateProjectConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateProjectConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
