@@ -968,6 +968,7 @@ func (s *CreateTranscriptionPhrasesResponse) SetBody(v *CreateTranscriptionPhras
 }
 
 type DeleteTranscriptionPhrasesResponseBody struct {
+	Data *DeleteTranscriptionPhrasesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// example:
 	//
 	// 0
@@ -990,6 +991,11 @@ func (s DeleteTranscriptionPhrasesResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DeleteTranscriptionPhrasesResponseBody) SetData(v *DeleteTranscriptionPhrasesResponseBodyData) *DeleteTranscriptionPhrasesResponseBody {
+	s.Data = v
+	return s
+}
+
 func (s *DeleteTranscriptionPhrasesResponseBody) SetErrorCode(v string) *DeleteTranscriptionPhrasesResponseBody {
 	s.ErrorCode = &v
 	return s
@@ -1001,6 +1007,35 @@ func (s *DeleteTranscriptionPhrasesResponseBody) SetErrorMessage(v string) *Dele
 }
 
 func (s *DeleteTranscriptionPhrasesResponseBody) SetStatus(v string) *DeleteTranscriptionPhrasesResponseBody {
+	s.Status = &v
+	return s
+}
+
+type DeleteTranscriptionPhrasesResponseBodyData struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DeleteTranscriptionPhrasesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTranscriptionPhrasesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTranscriptionPhrasesResponseBodyData) SetErrorCode(v string) *DeleteTranscriptionPhrasesResponseBodyData {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteTranscriptionPhrasesResponseBodyData) SetErrorMessage(v string) *DeleteTranscriptionPhrasesResponseBodyData {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteTranscriptionPhrasesResponseBodyData) SetStatus(v string) *DeleteTranscriptionPhrasesResponseBodyData {
 	s.Status = &v
 	return s
 }
