@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -13,15 +10,58 @@ import (
 )
 
 type AddLayer7CCRuleRequest struct {
-	Act             *string `json:"Act,omitempty" xml:"Act,omitempty"`
-	Count           *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
-	Domain          *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	Interval        *int32  `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	Mode            *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// close
+	Act *string `json:"Act,omitempty" xml:"Act,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// www.aliyun.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5
+	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// match
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testCcRule1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// test
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Ttl             *int32  `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
-	Uri             *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 60
+	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// /a/b/c
+	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
 }
 
 func (s AddLayer7CCRuleRequest) String() string {
@@ -78,6 +118,9 @@ func (s *AddLayer7CCRuleRequest) SetUri(v string) *AddLayer7CCRuleRequest {
 }
 
 type AddLayer7CCRuleResponseBody struct {
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -95,9 +138,9 @@ func (s *AddLayer7CCRuleResponseBody) SetRequestId(v string) *AddLayer7CCRuleRes
 }
 
 type AddLayer7CCRuleResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddLayer7CCRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddLayer7CCRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddLayer7CCRuleResponse) String() string {
@@ -124,10 +167,24 @@ func (s *AddLayer7CCRuleResponse) SetBody(v *AddLayer7CCRuleResponseBody) *AddLa
 }
 
 type CloseDomainSlsConfigRequest struct {
-	Domain          *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// www.example.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// cn
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// xx
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// example:
+	//
+	// 1.1.1.1
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
 func (s CloseDomainSlsConfigRequest) String() string {
@@ -159,6 +216,9 @@ func (s *CloseDomainSlsConfigRequest) SetSourceIp(v string) *CloseDomainSlsConfi
 }
 
 type CloseDomainSlsConfigResponseBody struct {
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -176,9 +236,9 @@ func (s *CloseDomainSlsConfigResponseBody) SetRequestId(v string) *CloseDomainSl
 }
 
 type CloseDomainSlsConfigResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CloseDomainSlsConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CloseDomainSlsConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CloseDomainSlsConfigResponse) String() string {
@@ -205,10 +265,30 @@ func (s *CloseDomainSlsConfigResponse) SetBody(v *CloseDomainSlsConfigResponseBo
 }
 
 type ConfigHealthCheckRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// tcp
 	ForwardProtocol *string `json:"ForwardProtocol,omitempty" xml:"ForwardProtocol,omitempty"`
-	FrontendPort    *int32  `json:"FrontendPort,omitempty" xml:"FrontendPort,omitempty"`
-	HealthCheck     *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 233
+	FrontendPort *int32 `json:"FrontendPort,omitempty" xml:"FrontendPort,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {"Type":"tcp","Timeout":10,"Port":80,"Interval":10,"Up":10,"Down":40}"}
+	HealthCheck *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ddoscoo-cn-XXXXXX
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s ConfigHealthCheckRequest) String() string {
@@ -240,6 +320,9 @@ func (s *ConfigHealthCheckRequest) SetInstanceId(v string) *ConfigHealthCheckReq
 }
 
 type ConfigHealthCheckResponseBody struct {
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -257,9 +340,9 @@ func (s *ConfigHealthCheckResponseBody) SetRequestId(v string) *ConfigHealthChec
 }
 
 type ConfigHealthCheckResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ConfigHealthCheckResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ConfigHealthCheckResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ConfigHealthCheckResponse) String() string {
@@ -286,7 +369,13 @@ func (s *ConfigHealthCheckResponse) SetBody(v *ConfigHealthCheckResponseBody) *C
 }
 
 type ConfigLayer4RuleRequest struct {
-	Listeners *string `json:"Listeners,omitempty" xml:"Listeners,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// [{"InstanceId":"xxxxxx-xxxxxx-xxxxxx-xxxxxxx","Protocol":"tcp","FrontendPort":80,"BackendPort":5,"RealServers":"1.1.1.1","2.2.2.2"}]
+	Listeners   *string `json:"Listeners,omitempty" xml:"Listeners,omitempty"`
+	ProxyEnable *int64  `json:"ProxyEnable,omitempty" xml:"ProxyEnable,omitempty"`
 }
 
 func (s ConfigLayer4RuleRequest) String() string {
@@ -302,7 +391,15 @@ func (s *ConfigLayer4RuleRequest) SetListeners(v string) *ConfigLayer4RuleReques
 	return s
 }
 
+func (s *ConfigLayer4RuleRequest) SetProxyEnable(v int64) *ConfigLayer4RuleRequest {
+	s.ProxyEnable = &v
+	return s
+}
+
 type ConfigLayer4RuleResponseBody struct {
+	// example:
+	//
+	// 0bcf28g5-d57c-11e7-9bs0-d89d6717dxbc
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -320,9 +417,9 @@ func (s *ConfigLayer4RuleResponseBody) SetRequestId(v string) *ConfigLayer4RuleR
 }
 
 type ConfigLayer4RuleResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ConfigLayer4RuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ConfigLayer4RuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ConfigLayer4RuleResponse) String() string {
@@ -349,10 +446,30 @@ func (s *ConfigLayer4RuleResponse) SetBody(v *ConfigLayer4RuleResponseBody) *Con
 }
 
 type ConfigLayer4RuleAttributeRequest struct {
-	Config          *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {"Slimit":{"CpsEnable":1,"MaxconnEnable":1,"Cps":1,"Maxconn":1},"Sla":{"CpsEnable":1,"MaxconnEnable":1,"Cps":100,"Maxconn":1000},"PayloadLen":{"Min":0,"Max":6000}}
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// TCP
 	ForwardProtocol *string `json:"ForwardProtocol,omitempty" xml:"ForwardProtocol,omitempty"`
-	FrontendPort    *int32  `json:"FrontendPort,omitempty" xml:"FrontendPort,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 233
+	FrontendPort *int32 `json:"FrontendPort,omitempty" xml:"FrontendPort,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ddoscoo-cn-XXXXX
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s ConfigLayer4RuleAttributeRequest) String() string {
@@ -384,6 +501,9 @@ func (s *ConfigLayer4RuleAttributeRequest) SetInstanceId(v string) *ConfigLayer4
 }
 
 type ConfigLayer4RuleAttributeResponseBody struct {
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -401,9 +521,9 @@ func (s *ConfigLayer4RuleAttributeResponseBody) SetRequestId(v string) *ConfigLa
 }
 
 type ConfigLayer4RuleAttributeResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ConfigLayer4RuleAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ConfigLayer4RuleAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ConfigLayer4RuleAttributeResponse) String() string {
@@ -430,10 +550,24 @@ func (s *ConfigLayer4RuleAttributeResponse) SetBody(v *ConfigLayer4RuleAttribute
 }
 
 type ConfigLayer7BlackWhiteListRequest struct {
-	BlackList       []*string `json:"BlackList,omitempty" xml:"BlackList,omitempty" type:"Repeated"`
-	Domain          *string   `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	ResourceGroupId *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	WhiteList       []*string `json:"WhiteList,omitempty" xml:"WhiteList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1.1.1.1
+	BlackList []*string `json:"BlackList,omitempty" xml:"BlackList,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// www.aliyun.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// test
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// 1.1.1.1
+	WhiteList []*string `json:"WhiteList,omitempty" xml:"WhiteList,omitempty" type:"Repeated"`
 }
 
 func (s ConfigLayer7BlackWhiteListRequest) String() string {
@@ -465,6 +599,9 @@ func (s *ConfigLayer7BlackWhiteListRequest) SetWhiteList(v []*string) *ConfigLay
 }
 
 type ConfigLayer7BlackWhiteListResponseBody struct {
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -482,9 +619,9 @@ func (s *ConfigLayer7BlackWhiteListResponseBody) SetRequestId(v string) *ConfigL
 }
 
 type ConfigLayer7BlackWhiteListResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ConfigLayer7BlackWhiteListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ConfigLayer7BlackWhiteListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ConfigLayer7BlackWhiteListResponse) String() string {
@@ -511,15 +648,58 @@ func (s *ConfigLayer7BlackWhiteListResponse) SetBody(v *ConfigLayer7BlackWhiteLi
 }
 
 type ConfigLayer7CCRuleRequest struct {
-	Act             *string `json:"Act,omitempty" xml:"Act,omitempty"`
-	Count           *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
-	Domain          *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	Interval        *int32  `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	Mode            *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// close
+	Act *string `json:"Act,omitempty" xml:"Act,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// www.aliyun.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5
+	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// match
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testCcRule1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// test
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Ttl             *int32  `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
-	Uri             *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 60
+	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// /a/b/c
+	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
 }
 
 func (s ConfigLayer7CCRuleRequest) String() string {
@@ -576,6 +756,9 @@ func (s *ConfigLayer7CCRuleRequest) SetUri(v string) *ConfigLayer7CCRuleRequest 
 }
 
 type ConfigLayer7CCRuleResponseBody struct {
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -593,9 +776,9 @@ func (s *ConfigLayer7CCRuleResponseBody) SetRequestId(v string) *ConfigLayer7CCR
 }
 
 type ConfigLayer7CCRuleResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ConfigLayer7CCRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ConfigLayer7CCRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ConfigLayer7CCRuleResponse) String() string {
@@ -622,9 +805,22 @@ func (s *ConfigLayer7CCRuleResponse) SetBody(v *ConfigLayer7CCRuleResponseBody) 
 }
 
 type ConfigLayer7CCTemplateRequest struct {
-	Domain          *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// www.aliyun.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// test
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Template        *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// default
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 }
 
 func (s ConfigLayer7CCTemplateRequest) String() string {
@@ -651,6 +847,9 @@ func (s *ConfigLayer7CCTemplateRequest) SetTemplate(v string) *ConfigLayer7CCTem
 }
 
 type ConfigLayer7CCTemplateResponseBody struct {
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -668,9 +867,9 @@ func (s *ConfigLayer7CCTemplateResponseBody) SetRequestId(v string) *ConfigLayer
 }
 
 type ConfigLayer7CCTemplateResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ConfigLayer7CCTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ConfigLayer7CCTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ConfigLayer7CCTemplateResponse) String() string {
@@ -697,11 +896,33 @@ func (s *ConfigLayer7CCTemplateResponse) SetBody(v *ConfigLayer7CCTemplateRespon
 }
 
 type ConfigLayer7CertRequest struct {
-	Cert            *string `json:"Cert,omitempty" xml:"Cert,omitempty"`
-	CertId          *int32  `json:"CertId,omitempty" xml:"CertId,omitempty"`
-	CertName        *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
-	Domain          *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	Key             *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// xx
+	Cert *string `json:"Cert,omitempty" xml:"Cert,omitempty"`
+	// example:
+	//
+	// 1234
+	CertId         *int32  `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	CertIdentifier *string `json:"CertIdentifier,omitempty" xml:"CertIdentifier,omitempty"`
+	// example:
+	//
+	// testCertName
+	CertName   *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
+	CertRegion *string `json:"CertRegion,omitempty" xml:"CertRegion,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// www.aliyun.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// xx
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// xx
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -723,8 +944,18 @@ func (s *ConfigLayer7CertRequest) SetCertId(v int32) *ConfigLayer7CertRequest {
 	return s
 }
 
+func (s *ConfigLayer7CertRequest) SetCertIdentifier(v string) *ConfigLayer7CertRequest {
+	s.CertIdentifier = &v
+	return s
+}
+
 func (s *ConfigLayer7CertRequest) SetCertName(v string) *ConfigLayer7CertRequest {
 	s.CertName = &v
+	return s
+}
+
+func (s *ConfigLayer7CertRequest) SetCertRegion(v string) *ConfigLayer7CertRequest {
+	s.CertRegion = &v
 	return s
 }
 
@@ -744,6 +975,9 @@ func (s *ConfigLayer7CertRequest) SetResourceGroupId(v string) *ConfigLayer7Cert
 }
 
 type ConfigLayer7CertResponseBody struct {
+	// example:
+	//
+	// 0bcf28g5-d57c-11e7-9bs0-d89d6717dxbc
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -761,9 +995,9 @@ func (s *ConfigLayer7CertResponseBody) SetRequestId(v string) *ConfigLayer7CertR
 }
 
 type ConfigLayer7CertResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ConfigLayer7CertResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ConfigLayer7CertResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ConfigLayer7CertResponse) String() string {
@@ -790,13 +1024,40 @@ func (s *ConfigLayer7CertResponse) SetBody(v *ConfigLayer7CertResponseBody) *Con
 }
 
 type ConfigLayer7RuleRequest struct {
-	Domain          *string   `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	InstanceIds     []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	ProxyTypeList   *string   `json:"ProxyTypeList,omitempty" xml:"ProxyTypeList,omitempty"`
-	ProxyTypes      []*string `json:"ProxyTypes,omitempty" xml:"ProxyTypes,omitempty" type:"Repeated"`
-	RealServers     []*string `json:"RealServers,omitempty" xml:"RealServers,omitempty" type:"Repeated"`
-	ResourceGroupId *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	RsType          *int32    `json:"RsType,omitempty" xml:"RsType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// www.aliyun.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// ddoscoo-cn-XXXXXX
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// [{"ProxyPorts":[80,8080],"ProxyType":"http"},{"ProxyPorts":[443],"ProxyType":"https"}]rts\\":[443],\\"ProxyType\\":\\"https\\"}]
+	ProxyTypeList *string `json:"ProxyTypeList,omitempty" xml:"ProxyTypeList,omitempty"`
+	// example:
+	//
+	// [{"ProxyPorts":[80,8080],"ProxyType":"http"},{"ProxyPorts":[443],"ProxyType":"https"}]rts\\":[443],\\"ProxyType\\":\\"https\\"}]
+	ProxyTypes []*string `json:"ProxyTypes,omitempty" xml:"ProxyTypes,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1.1.1.1
+	RealServers []*string `json:"RealServers,omitempty" xml:"RealServers,omitempty" type:"Repeated"`
+	// example:
+	//
+	// test
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
+	RsType *int32 `json:"RsType,omitempty" xml:"RsType,omitempty"`
 }
 
 func (s ConfigLayer7RuleRequest) String() string {
@@ -843,6 +1104,9 @@ func (s *ConfigLayer7RuleRequest) SetRsType(v int32) *ConfigLayer7RuleRequest {
 }
 
 type ConfigLayer7RuleResponseBody struct {
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -860,9 +1124,9 @@ func (s *ConfigLayer7RuleResponseBody) SetRequestId(v string) *ConfigLayer7RuleR
 }
 
 type ConfigLayer7RuleResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ConfigLayer7RuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ConfigLayer7RuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ConfigLayer7RuleResponse) String() string {
@@ -889,9 +1153,22 @@ func (s *ConfigLayer7RuleResponse) SetBody(v *ConfigLayer7RuleResponseBody) *Con
 }
 
 type CreateAsyncTaskRequest struct {
+	// example:
+	//
+	// test
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	TaskParams      *string `json:"TaskParams,omitempty" xml:"TaskParams,omitempty"`
-	TaskType        *int32  `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {"timestamp": 1530276554, "instanceId": "ddoscoo-woieuroi234"}
+	TaskParams *string `json:"TaskParams,omitempty" xml:"TaskParams,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	TaskType *int32 `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
 func (s CreateAsyncTaskRequest) String() string {
@@ -918,6 +1195,9 @@ func (s *CreateAsyncTaskRequest) SetTaskType(v int32) *CreateAsyncTaskRequest {
 }
 
 type CreateAsyncTaskResponseBody struct {
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -935,9 +1215,9 @@ func (s *CreateAsyncTaskResponseBody) SetRequestId(v string) *CreateAsyncTaskRes
 }
 
 type CreateAsyncTaskResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateAsyncTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAsyncTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateAsyncTaskResponse) String() string {
@@ -964,7 +1244,13 @@ func (s *CreateAsyncTaskResponse) SetBody(v *CreateAsyncTaskResponseBody) *Creat
 }
 
 type CreateLayer4RuleRequest struct {
-	Listeners *string `json:"Listeners,omitempty" xml:"Listeners,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// [{"InstanceId":"xxxxxx-xxxxxx-xxxxxx-xxxxxxx","Protocol":"tcp","FrontendPort":80,"BackendPort":5,"RealServers":"1.1.1.1","2.2.2.2"}]
+	Listeners   *string `json:"Listeners,omitempty" xml:"Listeners,omitempty"`
+	ProxyEnable *int32  `json:"ProxyEnable,omitempty" xml:"ProxyEnable,omitempty"`
 }
 
 func (s CreateLayer4RuleRequest) String() string {
@@ -980,7 +1266,15 @@ func (s *CreateLayer4RuleRequest) SetListeners(v string) *CreateLayer4RuleReques
 	return s
 }
 
+func (s *CreateLayer4RuleRequest) SetProxyEnable(v int32) *CreateLayer4RuleRequest {
+	s.ProxyEnable = &v
+	return s
+}
+
 type CreateLayer4RuleResponseBody struct {
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -998,9 +1292,9 @@ func (s *CreateLayer4RuleResponseBody) SetRequestId(v string) *CreateLayer4RuleR
 }
 
 type CreateLayer4RuleResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateLayer4RuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateLayer4RuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateLayer4RuleResponse) String() string {
@@ -1027,11 +1321,32 @@ func (s *CreateLayer4RuleResponse) SetBody(v *CreateLayer4RuleResponseBody) *Cre
 }
 
 type CreateLayer7RuleRequest struct {
-	Domain          *string   `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	InstanceIds     []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	ResourceGroupId *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	RsType          *int32    `json:"RsType,omitempty" xml:"RsType,omitempty"`
-	Rules           *string   `json:"Rules,omitempty" xml:"Rules,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// www.aliyun.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// ddoscoo-cn-XXXXX
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// test
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
+	RsType *int32 `json:"RsType,omitempty" xml:"RsType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// [{"ProxyRules":[{"ProxyPort":443,"RealServers":["1.1.1.1:443"]}],"ProxyType":"https"},{"ProxyRules":[{"ProxyPort":80,"RealServers":["1.1.1.1:80"]}],"ProxyType":"http"}]
+	Rules *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
 }
 
 func (s CreateLayer7RuleRequest) String() string {
@@ -1068,6 +1383,9 @@ func (s *CreateLayer7RuleRequest) SetRules(v string) *CreateLayer7RuleRequest {
 }
 
 type CreateLayer7RuleResponseBody struct {
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1085,9 +1403,9 @@ func (s *CreateLayer7RuleResponseBody) SetRequestId(v string) *CreateLayer7RuleR
 }
 
 type CreateLayer7RuleResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateLayer7RuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateLayer7RuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateLayer7RuleResponse) String() string {
@@ -1114,8 +1432,16 @@ func (s *CreateLayer7RuleResponse) SetBody(v *CreateLayer7RuleResponseBody) *Cre
 }
 
 type DeleteAsyncTaskRequest struct {
+	// example:
+	//
+	// test
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	TaskId          *int32  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
+	TaskId *int32 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s DeleteAsyncTaskRequest) String() string {
@@ -1137,6 +1463,9 @@ func (s *DeleteAsyncTaskRequest) SetTaskId(v int32) *DeleteAsyncTaskRequest {
 }
 
 type DeleteAsyncTaskResponseBody struct {
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1154,9 +1483,9 @@ func (s *DeleteAsyncTaskResponseBody) SetRequestId(v string) *DeleteAsyncTaskRes
 }
 
 type DeleteAsyncTaskResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteAsyncTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAsyncTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteAsyncTaskResponse) String() string {
@@ -1183,6 +1512,11 @@ func (s *DeleteAsyncTaskResponse) SetBody(v *DeleteAsyncTaskResponseBody) *Delet
 }
 
 type DeleteLayer4RuleRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {"InstanceId":"0bcf28g5-d57c-11e7-9bs0-d89d6717dxbc","Protocol":"tcp","FrontendPort":80}
 	Listeners *string `json:"Listeners,omitempty" xml:"Listeners,omitempty"`
 }
 
@@ -1200,6 +1534,9 @@ func (s *DeleteLayer4RuleRequest) SetListeners(v string) *DeleteLayer4RuleReques
 }
 
 type DeleteLayer4RuleResponseBody struct {
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1217,9 +1554,9 @@ func (s *DeleteLayer4RuleResponseBody) SetRequestId(v string) *DeleteLayer4RuleR
 }
 
 type DeleteLayer4RuleResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteLayer4RuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteLayer4RuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteLayer4RuleResponse) String() string {
@@ -1246,8 +1583,21 @@ func (s *DeleteLayer4RuleResponse) SetBody(v *DeleteLayer4RuleResponseBody) *Del
 }
 
 type DeleteLayer7CCRuleRequest struct {
-	Domain          *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// www.aliyun.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testCcRule1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// test
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -1275,6 +1625,9 @@ func (s *DeleteLayer7CCRuleRequest) SetResourceGroupId(v string) *DeleteLayer7CC
 }
 
 type DeleteLayer7CCRuleResponseBody struct {
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1292,9 +1645,9 @@ func (s *DeleteLayer7CCRuleResponseBody) SetRequestId(v string) *DeleteLayer7CCR
 }
 
 type DeleteLayer7CCRuleResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteLayer7CCRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteLayer7CCRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteLayer7CCRuleResponse) String() string {
@@ -1321,7 +1674,15 @@ func (s *DeleteLayer7CCRuleResponse) SetBody(v *DeleteLayer7CCRuleResponseBody) 
 }
 
 type DeleteLayer7RuleRequest struct {
-	Domain          *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// www.aliyun.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// test
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -1344,6 +1705,9 @@ func (s *DeleteLayer7RuleRequest) SetResourceGroupId(v string) *DeleteLayer7Rule
 }
 
 type DeleteLayer7RuleResponseBody struct {
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1361,9 +1725,9 @@ func (s *DeleteLayer7RuleResponseBody) SetRequestId(v string) *DeleteLayer7RuleR
 }
 
 type DeleteLayer7RuleResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteLayer7RuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteLayer7RuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteLayer7RuleResponse) String() string {
@@ -1390,9 +1754,19 @@ func (s *DeleteLayer7RuleResponse) SetBody(v *DeleteLayer7RuleResponseBody) *Del
 }
 
 type DescribeBackSourceCidrRequest struct {
-	Line            *string `json:"Line,omitempty" xml:"Line,omitempty"`
+	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	// example:
+	//
+	// coop-line-001
+	Line *string `json:"Line,omitempty" xml:"Line,omitempty"`
+	// example:
+	//
+	// test
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// example:
+	//
+	// 1.1.1.1
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
 func (s DescribeBackSourceCidrRequest) String() string {
@@ -1401,6 +1775,11 @@ func (s DescribeBackSourceCidrRequest) String() string {
 
 func (s DescribeBackSourceCidrRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeBackSourceCidrRequest) SetIpVersion(v string) *DescribeBackSourceCidrRequest {
+	s.IpVersion = &v
+	return s
 }
 
 func (s *DescribeBackSourceCidrRequest) SetLine(v string) *DescribeBackSourceCidrRequest {
@@ -1419,8 +1798,11 @@ func (s *DescribeBackSourceCidrRequest) SetSourceIp(v string) *DescribeBackSourc
 }
 
 type DescribeBackSourceCidrResponseBody struct {
-	CidrList  []*string `json:"CidrList,omitempty" xml:"CidrList,omitempty" type:"Repeated"`
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	CidrList []*string `json:"CidrList,omitempty" xml:"CidrList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeBackSourceCidrResponseBody) String() string {
@@ -1442,9 +1824,9 @@ func (s *DescribeBackSourceCidrResponseBody) SetRequestId(v string) *DescribeBac
 }
 
 type DescribeBackSourceCidrResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeBackSourceCidrResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeBackSourceCidrResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeBackSourceCidrResponse) String() string {
@@ -1471,11 +1853,26 @@ func (s *DescribeBackSourceCidrResponse) SetBody(v *DescribeBackSourceCidrRespon
 }
 
 type DescribeBatchSlsDispatchStatusRequest struct {
-	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageNo          *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// cn
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// xx
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// example:
+	//
+	// 1.1.1.1
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
 func (s DescribeBatchSlsDispatchStatusRequest) String() string {
@@ -1512,9 +1909,15 @@ func (s *DescribeBatchSlsDispatchStatusRequest) SetSourceIp(v string) *DescribeB
 }
 
 type DescribeBatchSlsDispatchStatusResponseBody struct {
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
 	RequestId           *string                                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SlsConfigStatusList []*DescribeBatchSlsDispatchStatusResponseBodySlsConfigStatusList `json:"SlsConfigStatusList,omitempty" xml:"SlsConfigStatusList,omitempty" type:"Repeated"`
-	TotalCount          *int32                                                           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 1
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeBatchSlsDispatchStatusResponseBody) String() string {
@@ -1541,8 +1944,14 @@ func (s *DescribeBatchSlsDispatchStatusResponseBody) SetTotalCount(v int32) *Des
 }
 
 type DescribeBatchSlsDispatchStatusResponseBodySlsConfigStatusList struct {
+	// example:
+	//
+	// www.example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	Enable *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// example:
+	//
+	// true
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
 }
 
 func (s DescribeBatchSlsDispatchStatusResponseBodySlsConfigStatusList) String() string {
@@ -1564,9 +1973,9 @@ func (s *DescribeBatchSlsDispatchStatusResponseBodySlsConfigStatusList) SetEnabl
 }
 
 type DescribeBatchSlsDispatchStatusResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeBatchSlsDispatchStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeBatchSlsDispatchStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeBatchSlsDispatchStatusResponse) String() string {
@@ -1593,13 +2002,44 @@ func (s *DescribeBatchSlsDispatchStatusResponse) SetBody(v *DescribeBatchSlsDisp
 }
 
 type DescribeDDoSEventsRequest struct {
-	Eip             *string `json:"Eip,omitempty" xml:"Eip,omitempty"`
-	EndTime         *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Offset          *int32  `json:"Offset,omitempty" xml:"Offset,omitempty"`
-	PageSize        *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1.1.1.1
+	Eip *string `json:"Eip,omitempty" xml:"Eip,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3289457324
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Offset *int32 `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// xx
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	StartTime       *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 1.1.1.1
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3289457398
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeDDoSEventsRequest) String() string {
@@ -1646,9 +2086,15 @@ func (s *DescribeDDoSEventsRequest) SetStartTime(v int64) *DescribeDDoSEventsReq
 }
 
 type DescribeDDoSEventsResponseBody struct {
-	Events    []*DescribeDDoSEventsResponseBodyEvents `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Total     *int64                                  `json:"Total,omitempty" xml:"Total,omitempty"`
+	Events []*DescribeDDoSEventsResponseBodyEvents `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s DescribeDDoSEventsResponseBody) String() string {
@@ -1675,10 +2121,22 @@ func (s *DescribeDDoSEventsResponseBody) SetTotal(v int64) *DescribeDDoSEventsRe
 }
 
 type DescribeDDoSEventsResponseBodyEvents struct {
-	EndTime   *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Interval  *int32  `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	StartTime *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 3289457398
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 12
+	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// example:
+	//
+	// 3289457324
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// blackhole_start
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeDDoSEventsResponseBodyEvents) String() string {
@@ -1710,9 +2168,9 @@ func (s *DescribeDDoSEventsResponseBodyEvents) SetStatus(v string) *DescribeDDoS
 }
 
 type DescribeDDoSEventsResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDDoSEventsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDDoSEventsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDDoSEventsResponse) String() string {
@@ -1739,12 +2197,38 @@ func (s *DescribeDDoSEventsResponse) SetBody(v *DescribeDDoSEventsResponseBody) 
 }
 
 type DescribeDDoSTrafficRequest struct {
-	Eip             *string `json:"Eip,omitempty" xml:"Eip,omitempty"`
-	EndTime         *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Interval        *int32  `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1.1.1.1
+	Eip *string `json:"Eip,omitempty" xml:"Eip,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3289457398
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 60
+	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// example:
+	//
+	// xx
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	StartTime       *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 1.1.1.1
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3289457324
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeDDoSTrafficRequest) String() string {
@@ -1787,9 +2271,18 @@ func (s *DescribeDDoSTrafficRequest) SetStartTime(v int64) *DescribeDDoSTrafficR
 
 type DescribeDDoSTrafficResponseBody struct {
 	DDoSTrafficPoints []*DescribeDDoSTrafficResponseBodyDDoSTrafficPoints `json:"DDoSTrafficPoints,omitempty" xml:"DDoSTrafficPoints,omitempty" type:"Repeated"`
-	DefenseInBytes    *int64                                              `json:"DefenseInBytes,omitempty" xml:"DefenseInBytes,omitempty"`
-	RequestId         *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SourceInBytes     *int64                                              `json:"SourceInBytes,omitempty" xml:"SourceInBytes,omitempty"`
+	// example:
+	//
+	// 23482234
+	DefenseInBytes *int64 `json:"DefenseInBytes,omitempty" xml:"DefenseInBytes,omitempty"`
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 19284762
+	SourceInBytes *int64 `json:"SourceInBytes,omitempty" xml:"SourceInBytes,omitempty"`
 }
 
 func (s DescribeDDoSTrafficResponseBody) String() string {
@@ -1821,9 +2314,18 @@ func (s *DescribeDDoSTrafficResponseBody) SetSourceInBytes(v int64) *DescribeDDo
 }
 
 type DescribeDDoSTrafficResponseBodyDDoSTrafficPoints struct {
+	// example:
+	//
+	// 129867
 	DefenseMaxInBps *int64 `json:"DefenseMaxInBps,omitempty" xml:"DefenseMaxInBps,omitempty"`
-	SourceMaxInBps  *int64 `json:"SourceMaxInBps,omitempty" xml:"SourceMaxInBps,omitempty"`
-	Time            *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
+	// example:
+	//
+	// 129867
+	SourceMaxInBps *int64 `json:"SourceMaxInBps,omitempty" xml:"SourceMaxInBps,omitempty"`
+	// example:
+	//
+	// 234082304
+	Time *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
 }
 
 func (s DescribeDDoSTrafficResponseBodyDDoSTrafficPoints) String() string {
@@ -1850,9 +2352,9 @@ func (s *DescribeDDoSTrafficResponseBodyDDoSTrafficPoints) SetTime(v int64) *Des
 }
 
 type DescribeDDoSTrafficResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDDoSTrafficResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDDoSTrafficResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDDoSTrafficResponse) String() string {
@@ -1879,8 +2381,14 @@ func (s *DescribeDDoSTrafficResponse) SetBody(v *DescribeDDoSTrafficResponseBody
 }
 
 type DescribeDefenseCountStatisticsRequest struct {
+	// example:
+	//
+	// xx
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// example:
+	//
+	// 1.1.1.1
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
 func (s DescribeDefenseCountStatisticsRequest) String() string {
@@ -1903,7 +2411,10 @@ func (s *DescribeDefenseCountStatisticsRequest) SetSourceIp(v string) *DescribeD
 
 type DescribeDefenseCountStatisticsResponseBody struct {
 	DefenseCountStatistics *DescribeDefenseCountStatisticsResponseBodyDefenseCountStatistics `json:"DefenseCountStatistics,omitempty" xml:"DefenseCountStatistics,omitempty" type:"Struct"`
-	RequestId              *string                                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDefenseCountStatisticsResponseBody) String() string {
@@ -1925,9 +2436,18 @@ func (s *DescribeDefenseCountStatisticsResponseBody) SetRequestId(v string) *Des
 }
 
 type DescribeDefenseCountStatisticsResponseBodyDefenseCountStatistics struct {
+	// example:
+	//
+	// 0
 	DefenseCountTotalUsageOfCurrentMonth *int32 `json:"DefenseCountTotalUsageOfCurrentMonth,omitempty" xml:"DefenseCountTotalUsageOfCurrentMonth,omitempty"`
-	FlowPackCountRemain                  *int32 `json:"FlowPackCountRemain,omitempty" xml:"FlowPackCountRemain,omitempty"`
-	MaxUsableDefenseCountCurrentMonth    *int32 `json:"MaxUsableDefenseCountCurrentMonth,omitempty" xml:"MaxUsableDefenseCountCurrentMonth,omitempty"`
+	// example:
+	//
+	// 10
+	FlowPackCountRemain *int32 `json:"FlowPackCountRemain,omitempty" xml:"FlowPackCountRemain,omitempty"`
+	// example:
+	//
+	// 0
+	MaxUsableDefenseCountCurrentMonth *int32 `json:"MaxUsableDefenseCountCurrentMonth,omitempty" xml:"MaxUsableDefenseCountCurrentMonth,omitempty"`
 }
 
 func (s DescribeDefenseCountStatisticsResponseBodyDefenseCountStatistics) String() string {
@@ -1954,9 +2474,9 @@ func (s *DescribeDefenseCountStatisticsResponseBodyDefenseCountStatistics) SetMa
 }
 
 type DescribeDefenseCountStatisticsResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDefenseCountStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDefenseCountStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDefenseCountStatisticsResponse) String() string {
@@ -1983,8 +2503,16 @@ func (s *DescribeDefenseCountStatisticsResponse) SetBody(v *DescribeDefenseCount
 }
 
 type DescribeDomainAccessModeRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// www.aliyun.com
 	DomainList []*string `json:"DomainList,omitempty" xml:"DomainList,omitempty" type:"Repeated"`
-	SourceIp   *string   `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// example:
+	//
+	// 1.1.1.1
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
 func (s DescribeDomainAccessModeRequest) String() string {
@@ -2007,7 +2535,10 @@ func (s *DescribeDomainAccessModeRequest) SetSourceIp(v string) *DescribeDomainA
 
 type DescribeDomainAccessModeResponseBody struct {
 	DomainModeList []*DescribeDomainAccessModeResponseBodyDomainModeList `json:"DomainModeList,omitempty" xml:"DomainModeList,omitempty" type:"Repeated"`
-	RequestId      *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDomainAccessModeResponseBody) String() string {
@@ -2029,8 +2560,14 @@ func (s *DescribeDomainAccessModeResponseBody) SetRequestId(v string) *DescribeD
 }
 
 type DescribeDomainAccessModeResponseBodyDomainModeList struct {
-	AccessMode *int32  `json:"AccessMode,omitempty" xml:"AccessMode,omitempty"`
-	Domain     *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// 1
+	AccessMode *int32 `json:"AccessMode,omitempty" xml:"AccessMode,omitempty"`
+	// example:
+	//
+	// www.aliyun.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 }
 
 func (s DescribeDomainAccessModeResponseBodyDomainModeList) String() string {
@@ -2052,9 +2589,9 @@ func (s *DescribeDomainAccessModeResponseBodyDomainModeList) SetDomain(v string)
 }
 
 type DescribeDomainAccessModeResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDomainAccessModeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDomainAccessModeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDomainAccessModeResponse) String() string {
@@ -2080,323 +2617,603 @@ func (s *DescribeDomainAccessModeResponse) SetBody(v *DescribeDomainAccessModeRe
 	return s
 }
 
-type DescribeDomainAttackEventsRequest struct {
-	Domain          *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	EndTime         *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Offset          *int32  `json:"Offset,omitempty" xml:"Offset,omitempty"`
-	PageSize        *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+type DescribeDomainAttackEventListRequest struct {
+	// example:
+	//
+	// example.aliyundoc.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// 1668740400
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	StartTime       *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 1681966800
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
-func (s DescribeDomainAttackEventsRequest) String() string {
+func (s DescribeDomainAttackEventListRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribeDomainAttackEventsRequest) GoString() string {
+func (s DescribeDomainAttackEventListRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDomainAttackEventsRequest) SetDomain(v string) *DescribeDomainAttackEventsRequest {
+func (s *DescribeDomainAttackEventListRequest) SetDomain(v string) *DescribeDomainAttackEventListRequest {
 	s.Domain = &v
 	return s
 }
 
-func (s *DescribeDomainAttackEventsRequest) SetEndTime(v int64) *DescribeDomainAttackEventsRequest {
+func (s *DescribeDomainAttackEventListRequest) SetEndTime(v int64) *DescribeDomainAttackEventListRequest {
 	s.EndTime = &v
 	return s
 }
 
-func (s *DescribeDomainAttackEventsRequest) SetOffset(v int32) *DescribeDomainAttackEventsRequest {
-	s.Offset = &v
+func (s *DescribeDomainAttackEventListRequest) SetPageNo(v int32) *DescribeDomainAttackEventListRequest {
+	s.PageNo = &v
 	return s
 }
 
-func (s *DescribeDomainAttackEventsRequest) SetPageSize(v string) *DescribeDomainAttackEventsRequest {
+func (s *DescribeDomainAttackEventListRequest) SetPageSize(v int32) *DescribeDomainAttackEventListRequest {
 	s.PageSize = &v
 	return s
 }
 
-func (s *DescribeDomainAttackEventsRequest) SetResourceGroupId(v string) *DescribeDomainAttackEventsRequest {
+func (s *DescribeDomainAttackEventListRequest) SetResourceGroupId(v string) *DescribeDomainAttackEventListRequest {
 	s.ResourceGroupId = &v
 	return s
 }
 
-func (s *DescribeDomainAttackEventsRequest) SetSourceIp(v string) *DescribeDomainAttackEventsRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *DescribeDomainAttackEventsRequest) SetStartTime(v int64) *DescribeDomainAttackEventsRequest {
+func (s *DescribeDomainAttackEventListRequest) SetStartTime(v int64) *DescribeDomainAttackEventListRequest {
 	s.StartTime = &v
 	return s
 }
 
-type DescribeDomainAttackEventsResponseBody struct {
-	Events    []*DescribeDomainAttackEventsResponseBodyEvents `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
-	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Total     *int64                                          `json:"Total,omitempty" xml:"Total,omitempty"`
+type DescribeDomainAttackEventListResponseBody struct {
+	DataList []*DescribeDomainAttackEventListResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 10
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
-func (s DescribeDomainAttackEventsResponseBody) String() string {
+func (s DescribeDomainAttackEventListResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribeDomainAttackEventsResponseBody) GoString() string {
+func (s DescribeDomainAttackEventListResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDomainAttackEventsResponseBody) SetEvents(v []*DescribeDomainAttackEventsResponseBodyEvents) *DescribeDomainAttackEventsResponseBody {
-	s.Events = v
+func (s *DescribeDomainAttackEventListResponseBody) SetDataList(v []*DescribeDomainAttackEventListResponseBodyDataList) *DescribeDomainAttackEventListResponseBody {
+	s.DataList = v
 	return s
 }
 
-func (s *DescribeDomainAttackEventsResponseBody) SetRequestId(v string) *DescribeDomainAttackEventsResponseBody {
+func (s *DescribeDomainAttackEventListResponseBody) SetRequestId(v string) *DescribeDomainAttackEventListResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *DescribeDomainAttackEventsResponseBody) SetTotal(v int64) *DescribeDomainAttackEventsResponseBody {
+func (s *DescribeDomainAttackEventListResponseBody) SetTotal(v int64) *DescribeDomainAttackEventListResponseBody {
 	s.Total = &v
 	return s
 }
 
-type DescribeDomainAttackEventsResponseBodyEvents struct {
-	BlockCount *int64 `json:"BlockCount,omitempty" xml:"BlockCount,omitempty"`
-	Duration   *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	EndTime    *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Finished   *bool  `json:"Finished,omitempty" xml:"Finished,omitempty"`
-	MaxQps     *int32 `json:"MaxQps,omitempty" xml:"MaxQps,omitempty"`
-	StartTime  *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+type DescribeDomainAttackEventListResponseBodyDataList struct {
+	// example:
+	//
+	// example.aliyundoc.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// 1670918400
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 300
+	MaxQps *int64 `json:"MaxQps,omitempty" xml:"MaxQps,omitempty"`
+	// example:
+	//
+	// 1666083600
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
-func (s DescribeDomainAttackEventsResponseBodyEvents) String() string {
+func (s DescribeDomainAttackEventListResponseBodyDataList) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribeDomainAttackEventsResponseBodyEvents) GoString() string {
+func (s DescribeDomainAttackEventListResponseBodyDataList) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDomainAttackEventsResponseBodyEvents) SetBlockCount(v int64) *DescribeDomainAttackEventsResponseBodyEvents {
-	s.BlockCount = &v
-	return s
-}
-
-func (s *DescribeDomainAttackEventsResponseBodyEvents) SetDuration(v int32) *DescribeDomainAttackEventsResponseBodyEvents {
-	s.Duration = &v
-	return s
-}
-
-func (s *DescribeDomainAttackEventsResponseBodyEvents) SetEndTime(v int64) *DescribeDomainAttackEventsResponseBodyEvents {
-	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeDomainAttackEventsResponseBodyEvents) SetFinished(v bool) *DescribeDomainAttackEventsResponseBodyEvents {
-	s.Finished = &v
-	return s
-}
-
-func (s *DescribeDomainAttackEventsResponseBodyEvents) SetMaxQps(v int32) *DescribeDomainAttackEventsResponseBodyEvents {
-	s.MaxQps = &v
-	return s
-}
-
-func (s *DescribeDomainAttackEventsResponseBodyEvents) SetStartTime(v int64) *DescribeDomainAttackEventsResponseBodyEvents {
-	s.StartTime = &v
-	return s
-}
-
-type DescribeDomainAttackEventsResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDomainAttackEventsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeDomainAttackEventsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDomainAttackEventsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDomainAttackEventsResponse) SetHeaders(v map[string]*string) *DescribeDomainAttackEventsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeDomainAttackEventsResponse) SetStatusCode(v int32) *DescribeDomainAttackEventsResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeDomainAttackEventsResponse) SetBody(v *DescribeDomainAttackEventsResponseBody) *DescribeDomainAttackEventsResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeDomainQpsRequest struct {
-	Domain          *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	EndTime         *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	StartTime       *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-}
-
-func (s DescribeDomainQpsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDomainQpsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDomainQpsRequest) SetDomain(v string) *DescribeDomainQpsRequest {
+func (s *DescribeDomainAttackEventListResponseBodyDataList) SetDomain(v string) *DescribeDomainAttackEventListResponseBodyDataList {
 	s.Domain = &v
 	return s
 }
 
-func (s *DescribeDomainQpsRequest) SetEndTime(v int64) *DescribeDomainQpsRequest {
+func (s *DescribeDomainAttackEventListResponseBodyDataList) SetEndTime(v int64) *DescribeDomainAttackEventListResponseBodyDataList {
 	s.EndTime = &v
 	return s
 }
 
-func (s *DescribeDomainQpsRequest) SetResourceGroupId(v string) *DescribeDomainQpsRequest {
-	s.ResourceGroupId = &v
+func (s *DescribeDomainAttackEventListResponseBodyDataList) SetMaxQps(v int64) *DescribeDomainAttackEventListResponseBodyDataList {
+	s.MaxQps = &v
 	return s
 }
 
-func (s *DescribeDomainQpsRequest) SetSourceIp(v string) *DescribeDomainQpsRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *DescribeDomainQpsRequest) SetStartTime(v int64) *DescribeDomainQpsRequest {
+func (s *DescribeDomainAttackEventListResponseBodyDataList) SetStartTime(v int64) *DescribeDomainAttackEventListResponseBodyDataList {
 	s.StartTime = &v
 	return s
 }
 
-type DescribeDomainQpsResponseBody struct {
-	Blocks        []*string `json:"Blocks,omitempty" xml:"Blocks,omitempty" type:"Repeated"`
-	CacheHits     []*string `json:"CacheHits,omitempty" xml:"CacheHits,omitempty" type:"Repeated"`
-	CcBlockQps    []*string `json:"CcBlockQps,omitempty" xml:"CcBlockQps,omitempty" type:"Repeated"`
-	CcJsQps       []*string `json:"CcJsQps,omitempty" xml:"CcJsQps,omitempty" type:"Repeated"`
-	Interval      *int32    `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	IpBlockQps    []*string `json:"IpBlockQps,omitempty" xml:"IpBlockQps,omitempty" type:"Repeated"`
-	PreciseBlocks []*string `json:"PreciseBlocks,omitempty" xml:"PreciseBlocks,omitempty" type:"Repeated"`
-	PreciseJsQps  []*string `json:"PreciseJsQps,omitempty" xml:"PreciseJsQps,omitempty" type:"Repeated"`
-	RegionBlocks  []*string `json:"RegionBlocks,omitempty" xml:"RegionBlocks,omitempty" type:"Repeated"`
-	RequestId     *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	StartTime     *int64    `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Totals        []*string `json:"Totals,omitempty" xml:"Totals,omitempty" type:"Repeated"`
+type DescribeDomainAttackEventListResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDomainAttackEventListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
-func (s DescribeDomainQpsResponseBody) String() string {
+func (s DescribeDomainAttackEventListResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribeDomainQpsResponseBody) GoString() string {
+func (s DescribeDomainAttackEventListResponse) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDomainQpsResponseBody) SetBlocks(v []*string) *DescribeDomainQpsResponseBody {
-	s.Blocks = v
-	return s
-}
-
-func (s *DescribeDomainQpsResponseBody) SetCacheHits(v []*string) *DescribeDomainQpsResponseBody {
-	s.CacheHits = v
-	return s
-}
-
-func (s *DescribeDomainQpsResponseBody) SetCcBlockQps(v []*string) *DescribeDomainQpsResponseBody {
-	s.CcBlockQps = v
-	return s
-}
-
-func (s *DescribeDomainQpsResponseBody) SetCcJsQps(v []*string) *DescribeDomainQpsResponseBody {
-	s.CcJsQps = v
-	return s
-}
-
-func (s *DescribeDomainQpsResponseBody) SetInterval(v int32) *DescribeDomainQpsResponseBody {
-	s.Interval = &v
-	return s
-}
-
-func (s *DescribeDomainQpsResponseBody) SetIpBlockQps(v []*string) *DescribeDomainQpsResponseBody {
-	s.IpBlockQps = v
-	return s
-}
-
-func (s *DescribeDomainQpsResponseBody) SetPreciseBlocks(v []*string) *DescribeDomainQpsResponseBody {
-	s.PreciseBlocks = v
-	return s
-}
-
-func (s *DescribeDomainQpsResponseBody) SetPreciseJsQps(v []*string) *DescribeDomainQpsResponseBody {
-	s.PreciseJsQps = v
-	return s
-}
-
-func (s *DescribeDomainQpsResponseBody) SetRegionBlocks(v []*string) *DescribeDomainQpsResponseBody {
-	s.RegionBlocks = v
-	return s
-}
-
-func (s *DescribeDomainQpsResponseBody) SetRequestId(v string) *DescribeDomainQpsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeDomainQpsResponseBody) SetStartTime(v int64) *DescribeDomainQpsResponseBody {
-	s.StartTime = &v
-	return s
-}
-
-func (s *DescribeDomainQpsResponseBody) SetTotals(v []*string) *DescribeDomainQpsResponseBody {
-	s.Totals = v
-	return s
-}
-
-type DescribeDomainQpsResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDomainQpsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeDomainQpsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDomainQpsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDomainQpsResponse) SetHeaders(v map[string]*string) *DescribeDomainQpsResponse {
+func (s *DescribeDomainAttackEventListResponse) SetHeaders(v map[string]*string) *DescribeDomainAttackEventListResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *DescribeDomainQpsResponse) SetStatusCode(v int32) *DescribeDomainQpsResponse {
+func (s *DescribeDomainAttackEventListResponse) SetStatusCode(v int32) *DescribeDomainAttackEventListResponse {
 	s.StatusCode = &v
 	return s
 }
 
-func (s *DescribeDomainQpsResponse) SetBody(v *DescribeDomainQpsResponseBody) *DescribeDomainQpsResponse {
+func (s *DescribeDomainAttackEventListResponse) SetBody(v *DescribeDomainAttackEventListResponseBody) *DescribeDomainAttackEventListResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDomainAttackMaxQpsRequest struct {
+	// example:
+	//
+	// example.aliyundoc.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1667801940
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// rg-acfm2pz25js****
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1657562370
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeDomainAttackMaxQpsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDomainAttackMaxQpsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDomainAttackMaxQpsRequest) SetDomain(v string) *DescribeDomainAttackMaxQpsRequest {
+	s.Domain = &v
+	return s
+}
+
+func (s *DescribeDomainAttackMaxQpsRequest) SetEndTime(v int64) *DescribeDomainAttackMaxQpsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeDomainAttackMaxQpsRequest) SetResourceGroupId(v string) *DescribeDomainAttackMaxQpsRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeDomainAttackMaxQpsRequest) SetStartTime(v int64) *DescribeDomainAttackMaxQpsRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeDomainAttackMaxQpsResponseBody struct {
+	// example:
+	//
+	// 613
+	Qps *string `json:"Qps,omitempty" xml:"Qps,omitempty"`
+	// example:
+	//
+	// 62F9BD81-8BCA-5B23-A3CB-3FB7CEB7A4CA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeDomainAttackMaxQpsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDomainAttackMaxQpsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDomainAttackMaxQpsResponseBody) SetQps(v string) *DescribeDomainAttackMaxQpsResponseBody {
+	s.Qps = &v
+	return s
+}
+
+func (s *DescribeDomainAttackMaxQpsResponseBody) SetRequestId(v string) *DescribeDomainAttackMaxQpsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeDomainAttackMaxQpsResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDomainAttackMaxQpsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeDomainAttackMaxQpsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDomainAttackMaxQpsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDomainAttackMaxQpsResponse) SetHeaders(v map[string]*string) *DescribeDomainAttackMaxQpsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDomainAttackMaxQpsResponse) SetStatusCode(v int32) *DescribeDomainAttackMaxQpsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDomainAttackMaxQpsResponse) SetBody(v *DescribeDomainAttackMaxQpsResponseBody) *DescribeDomainAttackMaxQpsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDomainOverviewRequest struct {
+	// example:
+	//
+	// example.aliyundoc.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// 1651809600
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// default
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// 1619798400
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeDomainOverviewRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDomainOverviewRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDomainOverviewRequest) SetDomain(v string) *DescribeDomainOverviewRequest {
+	s.Domain = &v
+	return s
+}
+
+func (s *DescribeDomainOverviewRequest) SetEndTime(v int64) *DescribeDomainOverviewRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeDomainOverviewRequest) SetResourceGroupId(v string) *DescribeDomainOverviewRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeDomainOverviewRequest) SetStartTime(v int64) *DescribeDomainOverviewRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeDomainOverviewResponseBody struct {
+	// example:
+	//
+	// 0
+	MaxHttp *int64 `json:"MaxHttp,omitempty" xml:"MaxHttp,omitempty"`
+	// example:
+	//
+	// 0
+	MaxHttps *int64 `json:"MaxHttps,omitempty" xml:"MaxHttps,omitempty"`
+	// example:
+	//
+	// C33EB3D5-AF96-43CA-9C7E-37A81BC06A1E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeDomainOverviewResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDomainOverviewResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDomainOverviewResponseBody) SetMaxHttp(v int64) *DescribeDomainOverviewResponseBody {
+	s.MaxHttp = &v
+	return s
+}
+
+func (s *DescribeDomainOverviewResponseBody) SetMaxHttps(v int64) *DescribeDomainOverviewResponseBody {
+	s.MaxHttps = &v
+	return s
+}
+
+func (s *DescribeDomainOverviewResponseBody) SetRequestId(v string) *DescribeDomainOverviewResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeDomainOverviewResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDomainOverviewResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeDomainOverviewResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDomainOverviewResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDomainOverviewResponse) SetHeaders(v map[string]*string) *DescribeDomainOverviewResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDomainOverviewResponse) SetStatusCode(v int32) *DescribeDomainOverviewResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDomainOverviewResponse) SetBody(v *DescribeDomainOverviewResponseBody) *DescribeDomainOverviewResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDomainQpsListRequest struct {
+	// example:
+	//
+	// example.aliyundoc.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// 1657162260
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1800
+	Interval *int64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// example:
+	//
+	// default
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// 1672362360
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeDomainQpsListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDomainQpsListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDomainQpsListRequest) SetDomain(v string) *DescribeDomainQpsListRequest {
+	s.Domain = &v
+	return s
+}
+
+func (s *DescribeDomainQpsListRequest) SetEndTime(v int64) *DescribeDomainQpsListRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeDomainQpsListRequest) SetInterval(v int64) *DescribeDomainQpsListRequest {
+	s.Interval = &v
+	return s
+}
+
+func (s *DescribeDomainQpsListRequest) SetResourceGroupId(v string) *DescribeDomainQpsListRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeDomainQpsListRequest) SetStartTime(v int64) *DescribeDomainQpsListRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeDomainQpsListResponseBody struct {
+	DataList  []*DescribeDomainQpsListResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
+	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeDomainQpsListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDomainQpsListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDomainQpsListResponseBody) SetDataList(v []*DescribeDomainQpsListResponseBodyDataList) *DescribeDomainQpsListResponseBody {
+	s.DataList = v
+	return s
+}
+
+func (s *DescribeDomainQpsListResponseBody) SetRequestId(v string) *DescribeDomainQpsListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeDomainQpsListResponseBodyDataList struct {
+	AttackQps    *int64 `json:"AttackQps,omitempty" xml:"AttackQps,omitempty"`
+	CacheHits    *int64 `json:"CacheHits,omitempty" xml:"CacheHits,omitempty"`
+	Index        *int64 `json:"Index,omitempty" xml:"Index,omitempty"`
+	MaxAttackQps *int64 `json:"MaxAttackQps,omitempty" xml:"MaxAttackQps,omitempty"`
+	MaxNormalQps *int64 `json:"MaxNormalQps,omitempty" xml:"MaxNormalQps,omitempty"`
+	MaxQps       *int64 `json:"MaxQps,omitempty" xml:"MaxQps,omitempty"`
+	TotalCount   *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalQps     *int64 `json:"TotalQps,omitempty" xml:"TotalQps,omitempty"`
+}
+
+func (s DescribeDomainQpsListResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDomainQpsListResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDomainQpsListResponseBodyDataList) SetAttackQps(v int64) *DescribeDomainQpsListResponseBodyDataList {
+	s.AttackQps = &v
+	return s
+}
+
+func (s *DescribeDomainQpsListResponseBodyDataList) SetCacheHits(v int64) *DescribeDomainQpsListResponseBodyDataList {
+	s.CacheHits = &v
+	return s
+}
+
+func (s *DescribeDomainQpsListResponseBodyDataList) SetIndex(v int64) *DescribeDomainQpsListResponseBodyDataList {
+	s.Index = &v
+	return s
+}
+
+func (s *DescribeDomainQpsListResponseBodyDataList) SetMaxAttackQps(v int64) *DescribeDomainQpsListResponseBodyDataList {
+	s.MaxAttackQps = &v
+	return s
+}
+
+func (s *DescribeDomainQpsListResponseBodyDataList) SetMaxNormalQps(v int64) *DescribeDomainQpsListResponseBodyDataList {
+	s.MaxNormalQps = &v
+	return s
+}
+
+func (s *DescribeDomainQpsListResponseBodyDataList) SetMaxQps(v int64) *DescribeDomainQpsListResponseBodyDataList {
+	s.MaxQps = &v
+	return s
+}
+
+func (s *DescribeDomainQpsListResponseBodyDataList) SetTotalCount(v int64) *DescribeDomainQpsListResponseBodyDataList {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeDomainQpsListResponseBodyDataList) SetTotalQps(v int64) *DescribeDomainQpsListResponseBodyDataList {
+	s.TotalQps = &v
+	return s
+}
+
+type DescribeDomainQpsListResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDomainQpsListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeDomainQpsListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDomainQpsListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDomainQpsListResponse) SetHeaders(v map[string]*string) *DescribeDomainQpsListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDomainQpsListResponse) SetStatusCode(v int32) *DescribeDomainQpsListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDomainQpsListResponse) SetBody(v *DescribeDomainQpsListResponseBody) *DescribeDomainQpsListResponse {
 	s.Body = v
 	return s
 }
 
 type DescribeDomainQpsWithCacheRequest struct {
-	Domain          *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	EndTime         *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// www.example.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1577796336
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// xx
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	StartTime       *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 1.1.1.1
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1577794536
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeDomainQpsWithCacheRequest) String() string {
@@ -2433,18 +3250,27 @@ func (s *DescribeDomainQpsWithCacheRequest) SetStartTime(v int64) *DescribeDomai
 }
 
 type DescribeDomainQpsWithCacheResponseBody struct {
-	Blocks        []*string `json:"Blocks,omitempty" xml:"Blocks,omitempty" type:"Repeated"`
-	CacheHits     []*string `json:"CacheHits,omitempty" xml:"CacheHits,omitempty" type:"Repeated"`
-	CcBlockQps    []*string `json:"CcBlockQps,omitempty" xml:"CcBlockQps,omitempty" type:"Repeated"`
-	CcJsQps       []*string `json:"CcJsQps,omitempty" xml:"CcJsQps,omitempty" type:"Repeated"`
+	Blocks     []*string `json:"Blocks,omitempty" xml:"Blocks,omitempty" type:"Repeated"`
+	CacheHits  []*string `json:"CacheHits,omitempty" xml:"CacheHits,omitempty" type:"Repeated"`
+	CcBlockQps []*string `json:"CcBlockQps,omitempty" xml:"CcBlockQps,omitempty" type:"Repeated"`
+	CcJsQps    []*string `json:"CcJsQps,omitempty" xml:"CcJsQps,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 60
 	Interval      *int32    `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	IpBlockQps    []*string `json:"IpBlockQps,omitempty" xml:"IpBlockQps,omitempty" type:"Repeated"`
 	PreciseBlocks []*string `json:"PreciseBlocks,omitempty" xml:"PreciseBlocks,omitempty" type:"Repeated"`
 	PreciseJsQps  []*string `json:"PreciseJsQps,omitempty" xml:"PreciseJsQps,omitempty" type:"Repeated"`
 	RegionBlocks  []*string `json:"RegionBlocks,omitempty" xml:"RegionBlocks,omitempty" type:"Repeated"`
-	RequestId     *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	StartTime     *int64    `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Totals        []*string `json:"Totals,omitempty" xml:"Totals,omitempty" type:"Repeated"`
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1577794500
+	StartTime *int64    `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Totals    []*string `json:"Totals,omitempty" xml:"Totals,omitempty" type:"Repeated"`
 }
 
 func (s DescribeDomainQpsWithCacheResponseBody) String() string {
@@ -2516,9 +3342,9 @@ func (s *DescribeDomainQpsWithCacheResponseBody) SetTotals(v []*string) *Describ
 }
 
 type DescribeDomainQpsWithCacheResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDomainQpsWithCacheResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDomainQpsWithCacheResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDomainQpsWithCacheResponse) String() string {
@@ -2545,10 +3371,24 @@ func (s *DescribeDomainQpsWithCacheResponse) SetBody(v *DescribeDomainQpsWithCac
 }
 
 type DescribeDomainSlsStatusRequest struct {
-	Domain          *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// www.example.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// cn
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// xx
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// example:
+	//
+	// 1.1.1.1
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
 func (s DescribeDomainSlsStatusRequest) String() string {
@@ -2580,10 +3420,22 @@ func (s *DescribeDomainSlsStatusRequest) SetSourceIp(v string) *DescribeDomainSl
 }
 
 type DescribeDomainSlsStatusResponseBody struct {
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// ddoscoo-logstore
 	SlsLogstore *string `json:"SlsLogstore,omitempty" xml:"SlsLogstore,omitempty"`
-	SlsProject  *string `json:"SlsProject,omitempty" xml:"SlsProject,omitempty"`
-	SlsStatus   *bool   `json:"SlsStatus,omitempty" xml:"SlsStatus,omitempty"`
+	// example:
+	//
+	// ddoscoo-project-xxxx-cn-hangzhou
+	SlsProject *string `json:"SlsProject,omitempty" xml:"SlsProject,omitempty"`
+	// example:
+	//
+	// true
+	SlsStatus *bool `json:"SlsStatus,omitempty" xml:"SlsStatus,omitempty"`
 }
 
 func (s DescribeDomainSlsStatusResponseBody) String() string {
@@ -2615,9 +3467,9 @@ func (s *DescribeDomainSlsStatusResponseBody) SetSlsStatus(v bool) *DescribeDoma
 }
 
 type DescribeDomainSlsStatusResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDomainSlsStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDomainSlsStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDomainSlsStatusResponse) String() string {
@@ -2643,14 +3495,301 @@ func (s *DescribeDomainSlsStatusResponse) SetBody(v *DescribeDomainSlsStatusResp
 	return s
 }
 
+type DescribeDomainStatusCodeListRequest struct {
+	// example:
+	//
+	// example.aliyundoc.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// 1583683200
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 1800
+	Interval *int64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// upstream
+	QueryType *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
+	// example:
+	//
+	// default
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// 1582992000
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeDomainStatusCodeListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDomainStatusCodeListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDomainStatusCodeListRequest) SetDomain(v string) *DescribeDomainStatusCodeListRequest {
+	s.Domain = &v
+	return s
+}
+
+func (s *DescribeDomainStatusCodeListRequest) SetEndTime(v int64) *DescribeDomainStatusCodeListRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeDomainStatusCodeListRequest) SetInterval(v int64) *DescribeDomainStatusCodeListRequest {
+	s.Interval = &v
+	return s
+}
+
+func (s *DescribeDomainStatusCodeListRequest) SetQueryType(v string) *DescribeDomainStatusCodeListRequest {
+	s.QueryType = &v
+	return s
+}
+
+func (s *DescribeDomainStatusCodeListRequest) SetResourceGroupId(v string) *DescribeDomainStatusCodeListRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeDomainStatusCodeListRequest) SetStartTime(v int64) *DescribeDomainStatusCodeListRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeDomainStatusCodeListResponseBody struct {
+	// example:
+	//
+	// 3B63C0DD-8AC5-44B2-95D6-064CA9296B9C
+	RequestId      *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StatusCodeList []*DescribeDomainStatusCodeListResponseBodyStatusCodeList `json:"StatusCodeList,omitempty" xml:"StatusCodeList,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDomainStatusCodeListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDomainStatusCodeListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDomainStatusCodeListResponseBody) SetRequestId(v string) *DescribeDomainStatusCodeListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDomainStatusCodeListResponseBody) SetStatusCodeList(v []*DescribeDomainStatusCodeListResponseBodyStatusCodeList) *DescribeDomainStatusCodeListResponseBody {
+	s.StatusCodeList = v
+	return s
+}
+
+type DescribeDomainStatusCodeListResponseBodyStatusCodeList struct {
+	// example:
+	//
+	// 0
+	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// example:
+	//
+	// 320
+	Status200 *int64 `json:"Status200,omitempty" xml:"Status200,omitempty"`
+	// example:
+	//
+	// 5776
+	Status2XX *int64 `json:"Status2XX,omitempty" xml:"Status2XX,omitempty"`
+	// example:
+	//
+	// 0
+	Status3XX *int64 `json:"Status3XX,omitempty" xml:"Status3XX,omitempty"`
+	// example:
+	//
+	// 0
+	Status403 *int64 `json:"Status403,omitempty" xml:"Status403,omitempty"`
+	// example:
+	//
+	// 34
+	Status404 *int64 `json:"Status404,omitempty" xml:"Status404,omitempty"`
+	// example:
+	//
+	// 11
+	Status405 *int64 `json:"Status405,omitempty" xml:"Status405,omitempty"`
+	Status410 *int64 `json:"Status410,omitempty" xml:"Status410,omitempty"`
+	Status499 *int64 `json:"Status499,omitempty" xml:"Status499,omitempty"`
+	// example:
+	//
+	// 168
+	Status4XX *int64 `json:"Status4XX,omitempty" xml:"Status4XX,omitempty"`
+	// example:
+	//
+	// 0
+	Status501 *int64 `json:"Status501,omitempty" xml:"Status501,omitempty"`
+	// example:
+	//
+	// 3
+	Status502 *int64 `json:"Status502,omitempty" xml:"Status502,omitempty"`
+	// example:
+	//
+	// 0
+	Status503 *int64 `json:"Status503,omitempty" xml:"Status503,omitempty"`
+	// example:
+	//
+	// 0
+	Status504 *int64 `json:"Status504,omitempty" xml:"Status504,omitempty"`
+	// example:
+	//
+	// 7
+	Status5XX *int64 `json:"Status5XX,omitempty" xml:"Status5XX,omitempty"`
+}
+
+func (s DescribeDomainStatusCodeListResponseBodyStatusCodeList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDomainStatusCodeListResponseBodyStatusCodeList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDomainStatusCodeListResponseBodyStatusCodeList) SetIndex(v int32) *DescribeDomainStatusCodeListResponseBodyStatusCodeList {
+	s.Index = &v
+	return s
+}
+
+func (s *DescribeDomainStatusCodeListResponseBodyStatusCodeList) SetStatus200(v int64) *DescribeDomainStatusCodeListResponseBodyStatusCodeList {
+	s.Status200 = &v
+	return s
+}
+
+func (s *DescribeDomainStatusCodeListResponseBodyStatusCodeList) SetStatus2XX(v int64) *DescribeDomainStatusCodeListResponseBodyStatusCodeList {
+	s.Status2XX = &v
+	return s
+}
+
+func (s *DescribeDomainStatusCodeListResponseBodyStatusCodeList) SetStatus3XX(v int64) *DescribeDomainStatusCodeListResponseBodyStatusCodeList {
+	s.Status3XX = &v
+	return s
+}
+
+func (s *DescribeDomainStatusCodeListResponseBodyStatusCodeList) SetStatus403(v int64) *DescribeDomainStatusCodeListResponseBodyStatusCodeList {
+	s.Status403 = &v
+	return s
+}
+
+func (s *DescribeDomainStatusCodeListResponseBodyStatusCodeList) SetStatus404(v int64) *DescribeDomainStatusCodeListResponseBodyStatusCodeList {
+	s.Status404 = &v
+	return s
+}
+
+func (s *DescribeDomainStatusCodeListResponseBodyStatusCodeList) SetStatus405(v int64) *DescribeDomainStatusCodeListResponseBodyStatusCodeList {
+	s.Status405 = &v
+	return s
+}
+
+func (s *DescribeDomainStatusCodeListResponseBodyStatusCodeList) SetStatus410(v int64) *DescribeDomainStatusCodeListResponseBodyStatusCodeList {
+	s.Status410 = &v
+	return s
+}
+
+func (s *DescribeDomainStatusCodeListResponseBodyStatusCodeList) SetStatus499(v int64) *DescribeDomainStatusCodeListResponseBodyStatusCodeList {
+	s.Status499 = &v
+	return s
+}
+
+func (s *DescribeDomainStatusCodeListResponseBodyStatusCodeList) SetStatus4XX(v int64) *DescribeDomainStatusCodeListResponseBodyStatusCodeList {
+	s.Status4XX = &v
+	return s
+}
+
+func (s *DescribeDomainStatusCodeListResponseBodyStatusCodeList) SetStatus501(v int64) *DescribeDomainStatusCodeListResponseBodyStatusCodeList {
+	s.Status501 = &v
+	return s
+}
+
+func (s *DescribeDomainStatusCodeListResponseBodyStatusCodeList) SetStatus502(v int64) *DescribeDomainStatusCodeListResponseBodyStatusCodeList {
+	s.Status502 = &v
+	return s
+}
+
+func (s *DescribeDomainStatusCodeListResponseBodyStatusCodeList) SetStatus503(v int64) *DescribeDomainStatusCodeListResponseBodyStatusCodeList {
+	s.Status503 = &v
+	return s
+}
+
+func (s *DescribeDomainStatusCodeListResponseBodyStatusCodeList) SetStatus504(v int64) *DescribeDomainStatusCodeListResponseBodyStatusCodeList {
+	s.Status504 = &v
+	return s
+}
+
+func (s *DescribeDomainStatusCodeListResponseBodyStatusCodeList) SetStatus5XX(v int64) *DescribeDomainStatusCodeListResponseBodyStatusCodeList {
+	s.Status5XX = &v
+	return s
+}
+
+type DescribeDomainStatusCodeListResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDomainStatusCodeListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeDomainStatusCodeListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDomainStatusCodeListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDomainStatusCodeListResponse) SetHeaders(v map[string]*string) *DescribeDomainStatusCodeListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDomainStatusCodeListResponse) SetStatusCode(v int32) *DescribeDomainStatusCodeListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDomainStatusCodeListResponse) SetBody(v *DescribeDomainStatusCodeListResponseBody) *DescribeDomainStatusCodeListResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeDomainsRequest struct {
-	Domain             *string   `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	InstanceIds        []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	Offset             *int32    `json:"Offset,omitempty" xml:"Offset,omitempty"`
-	PageSize           *string   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	QueryDomainPattern *string   `json:"QueryDomainPattern,omitempty" xml:"QueryDomainPattern,omitempty"`
-	ResourceGroupId    *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SourceIp           *string   `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// example:
+	//
+	// www.aliyun.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// ddoscoo-cn-XXXXXX
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
+	Offset *int32 `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// fuzzy
+	QueryDomainPattern *string `json:"QueryDomainPattern,omitempty" xml:"QueryDomainPattern,omitempty"`
+	// example:
+	//
+	// test
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// 1.1.1.1
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
 func (s DescribeDomainsRequest) String() string {
@@ -2697,9 +3836,15 @@ func (s *DescribeDomainsRequest) SetSourceIp(v string) *DescribeDomainsRequest {
 }
 
 type DescribeDomainsResponseBody struct {
-	Domains   []*DescribeDomainsResponseBodyDomains `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Total     *int64                                `json:"Total,omitempty" xml:"Total,omitempty"`
+	Domains []*DescribeDomainsResponseBodyDomains `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 10
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s DescribeDomainsResponseBody) String() string {
@@ -2726,19 +3871,47 @@ func (s *DescribeDomainsResponseBody) SetTotal(v int64) *DescribeDomainsResponse
 }
 
 type DescribeDomainsResponseBodyDomains struct {
-	BlackList     []*string                                          `json:"BlackList,omitempty" xml:"BlackList,omitempty" type:"Repeated"`
-	CcEnabled     *bool                                              `json:"CcEnabled,omitempty" xml:"CcEnabled,omitempty"`
-	CcRuleEnabled *bool                                              `json:"CcRuleEnabled,omitempty" xml:"CcRuleEnabled,omitempty"`
-	CcTemplate    *string                                            `json:"CcTemplate,omitempty" xml:"CcTemplate,omitempty"`
-	CertName      *string                                            `json:"CertName,omitempty" xml:"CertName,omitempty"`
-	Cname         *string                                            `json:"Cname,omitempty" xml:"Cname,omitempty"`
-	Domain        *string                                            `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	BlackList []*string `json:"BlackList,omitempty" xml:"BlackList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	CcEnabled *bool `json:"CcEnabled,omitempty" xml:"CcEnabled,omitempty"`
+	// example:
+	//
+	// true
+	CcRuleEnabled *bool `json:"CcRuleEnabled,omitempty" xml:"CcRuleEnabled,omitempty"`
+	// example:
+	//
+	// normal
+	CcTemplate *string `json:"CcTemplate,omitempty" xml:"CcTemplate,omitempty"`
+	// example:
+	//
+	// testCertName
+	CertName   *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
+	CertRegion *string `json:"CertRegion,omitempty" xml:"CertRegion,omitempty"`
+	// example:
+	//
+	// xxxxxxx.aliyunddos1006.com
+	Cname *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
+	// example:
+	//
+	// www.aliyun.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// true
 	Http2Enable   *bool                                              `json:"Http2Enable,omitempty" xml:"Http2Enable,omitempty"`
 	ProxyTypeList []*DescribeDomainsResponseBodyDomainsProxyTypeList `json:"ProxyTypeList,omitempty" xml:"ProxyTypeList,omitempty" type:"Repeated"`
 	RealServers   []*DescribeDomainsResponseBodyDomainsRealServers   `json:"RealServers,omitempty" xml:"RealServers,omitempty" type:"Repeated"`
-	SslCiphers    *string                                            `json:"SslCiphers,omitempty" xml:"SslCiphers,omitempty"`
-	SslProtocols  *string                                            `json:"SslProtocols,omitempty" xml:"SslProtocols,omitempty"`
-	WhiteList     []*string                                          `json:"WhiteList,omitempty" xml:"WhiteList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// xx
+	SslCiphers *string `json:"SslCiphers,omitempty" xml:"SslCiphers,omitempty"`
+	// example:
+	//
+	// xx
+	SslProtocols *string   `json:"SslProtocols,omitempty" xml:"SslProtocols,omitempty"`
+	WhiteList    []*string `json:"WhiteList,omitempty" xml:"WhiteList,omitempty" type:"Repeated"`
 }
 
 func (s DescribeDomainsResponseBodyDomains) String() string {
@@ -2771,6 +3944,11 @@ func (s *DescribeDomainsResponseBodyDomains) SetCcTemplate(v string) *DescribeDo
 
 func (s *DescribeDomainsResponseBodyDomains) SetCertName(v string) *DescribeDomainsResponseBodyDomains {
 	s.CertName = &v
+	return s
+}
+
+func (s *DescribeDomainsResponseBodyDomains) SetCertRegion(v string) *DescribeDomainsResponseBodyDomains {
+	s.CertRegion = &v
 	return s
 }
 
@@ -2816,7 +3994,10 @@ func (s *DescribeDomainsResponseBodyDomains) SetWhiteList(v []*string) *Describe
 
 type DescribeDomainsResponseBodyDomainsProxyTypeList struct {
 	ProxyPorts []*string `json:"ProxyPorts,omitempty" xml:"ProxyPorts,omitempty" type:"Repeated"`
-	ProxyType  *string   `json:"ProxyType,omitempty" xml:"ProxyType,omitempty"`
+	// example:
+	//
+	// http
+	ProxyType *string `json:"ProxyType,omitempty" xml:"ProxyType,omitempty"`
 }
 
 func (s DescribeDomainsResponseBodyDomainsProxyTypeList) String() string {
@@ -2838,8 +4019,14 @@ func (s *DescribeDomainsResponseBodyDomainsProxyTypeList) SetProxyType(v string)
 }
 
 type DescribeDomainsResponseBodyDomainsRealServers struct {
+	// example:
+	//
+	// 1.1.1.1
 	RealServer *string `json:"RealServer,omitempty" xml:"RealServer,omitempty"`
-	RsType     *int32  `json:"RsType,omitempty" xml:"RsType,omitempty"`
+	// example:
+	//
+	// 0
+	RsType *int32 `json:"RsType,omitempty" xml:"RsType,omitempty"`
 }
 
 func (s DescribeDomainsResponseBodyDomainsRealServers) String() string {
@@ -2861,9 +4048,9 @@ func (s *DescribeDomainsResponseBodyDomainsRealServers) SetRsType(v int32) *Desc
 }
 
 type DescribeDomainsResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDomainsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDomainsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDomainsResponse) String() string {
@@ -2890,8 +4077,16 @@ func (s *DescribeDomainsResponse) SetBody(v *DescribeDomainsResponseBody) *Descr
 }
 
 type DescribeElasticBandwidthSpecRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ddoscoo-cn-XXXXX
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	SourceIp   *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// example:
+	//
+	// 1.1.1.1
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
 func (s DescribeElasticBandwidthSpecRequest) String() string {
@@ -2914,7 +4109,10 @@ func (s *DescribeElasticBandwidthSpecRequest) SetSourceIp(v string) *DescribeEla
 
 type DescribeElasticBandwidthSpecResponseBody struct {
 	ElasticBandwidthSpec []*string `json:"ElasticBandwidthSpec,omitempty" xml:"ElasticBandwidthSpec,omitempty" type:"Repeated"`
-	RequestId            *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeElasticBandwidthSpecResponseBody) String() string {
@@ -2936,9 +4134,9 @@ func (s *DescribeElasticBandwidthSpecResponseBody) SetRequestId(v string) *Descr
 }
 
 type DescribeElasticBandwidthSpecResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeElasticBandwidthSpecResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeElasticBandwidthSpecResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeElasticBandwidthSpecResponse) String() string {
@@ -2965,8 +4163,16 @@ func (s *DescribeElasticBandwidthSpecResponse) SetBody(v *DescribeElasticBandwid
 }
 
 type DescribeHealthCheckListRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// [{"InstanceId":"ddoscoo-cn-XXXXX","Protocol":"tcp","FrontendPort":80}]
 	Listeners *string `json:"Listeners,omitempty" xml:"Listeners,omitempty"`
-	SourceIp  *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// example:
+	//
+	// 1.1.1.1
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
 func (s DescribeHealthCheckListRequest) String() string {
@@ -2989,7 +4195,10 @@ func (s *DescribeHealthCheckListRequest) SetSourceIp(v string) *DescribeHealthCh
 
 type DescribeHealthCheckListResponseBody struct {
 	Listeners []*DescribeHealthCheckListResponseBodyListeners `json:"Listeners,omitempty" xml:"Listeners,omitempty" type:"Repeated"`
-	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeHealthCheckListResponseBody) String() string {
@@ -3011,10 +4220,19 @@ func (s *DescribeHealthCheckListResponseBody) SetRequestId(v string) *DescribeHe
 }
 
 type DescribeHealthCheckListResponseBodyListeners struct {
+	// example:
+	//
+	// 233
 	FrontendPort *int32                                                   `json:"FrontendPort,omitempty" xml:"FrontendPort,omitempty"`
 	HealthCheck  *DescribeHealthCheckListResponseBodyListenersHealthCheck `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty" type:"Struct"`
-	InstanceId   *string                                                  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Protocol     *string                                                  `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// example:
+	//
+	// ddoscoo-cn-XXXXX
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// tcp
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 }
 
 func (s DescribeHealthCheckListResponseBodyListeners) String() string {
@@ -3046,14 +4264,38 @@ func (s *DescribeHealthCheckListResponseBodyListeners) SetProtocol(v string) *De
 }
 
 type DescribeHealthCheckListResponseBodyListenersHealthCheck struct {
-	Domain   *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	Down     *int32  `json:"Down,omitempty" xml:"Down,omitempty"`
-	Interval *int32  `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	Port     *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-	Timeout  *int32  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Up       *int32  `json:"Up,omitempty" xml:"Up,omitempty"`
-	Uri      *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	// example:
+	//
+	// www.aliyun.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// 500
+	Down *int32 `json:"Down,omitempty" xml:"Down,omitempty"`
+	// example:
+	//
+	// 15
+	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// example:
+	//
+	// 233
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// example:
+	//
+	// 1000
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// example:
+	//
+	// tcp
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 1000
+	Up *int32 `json:"Up,omitempty" xml:"Up,omitempty"`
+	// example:
+	//
+	// /a/b/c
+	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
 }
 
 func (s DescribeHealthCheckListResponseBodyListenersHealthCheck) String() string {
@@ -3105,9 +4347,9 @@ func (s *DescribeHealthCheckListResponseBodyListenersHealthCheck) SetUri(v strin
 }
 
 type DescribeHealthCheckListResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeHealthCheckListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeHealthCheckListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeHealthCheckListResponse) String() string {
@@ -3134,8 +4376,16 @@ func (s *DescribeHealthCheckListResponse) SetBody(v *DescribeHealthCheckListResp
 }
 
 type DescribeHealthCheckStatusListRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// [{"InstanceId":"ddoscoo-cn-XXXXX","Protocol":"tcp","FrontendPort":80}]
 	Listeners *string `json:"Listeners,omitempty" xml:"Listeners,omitempty"`
-	SourceIp  *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// example:
+	//
+	// 1.1.1.1
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
 func (s DescribeHealthCheckStatusListRequest) String() string {
@@ -3158,7 +4408,10 @@ func (s *DescribeHealthCheckStatusListRequest) SetSourceIp(v string) *DescribeHe
 
 type DescribeHealthCheckStatusListResponseBody struct {
 	HealthCheckStatusList []*DescribeHealthCheckStatusListResponseBodyHealthCheckStatusList `json:"HealthCheckStatusList,omitempty" xml:"HealthCheckStatusList,omitempty" type:"Repeated"`
-	RequestId             *string                                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeHealthCheckStatusListResponseBody) String() string {
@@ -3180,11 +4433,23 @@ func (s *DescribeHealthCheckStatusListResponseBody) SetRequestId(v string) *Desc
 }
 
 type DescribeHealthCheckStatusListResponseBodyHealthCheckStatusList struct {
-	FrontendPort         *int32                                                                                `json:"FrontendPort,omitempty" xml:"FrontendPort,omitempty"`
-	InstanceId           *string                                                                               `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 233
+	FrontendPort *int32 `json:"FrontendPort,omitempty" xml:"FrontendPort,omitempty"`
+	// example:
+	//
+	// ddoscoo-cn-XXXXX
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// tcp
 	Protocol             *string                                                                               `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	RealServerStatusList []*DescribeHealthCheckStatusListResponseBodyHealthCheckStatusListRealServerStatusList `json:"RealServerStatusList,omitempty" xml:"RealServerStatusList,omitempty" type:"Repeated"`
-	Status               *string                                                                               `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// normal
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeHealthCheckStatusListResponseBodyHealthCheckStatusList) String() string {
@@ -3221,8 +4486,14 @@ func (s *DescribeHealthCheckStatusListResponseBodyHealthCheckStatusList) SetStat
 }
 
 type DescribeHealthCheckStatusListResponseBodyHealthCheckStatusListRealServerStatusList struct {
+	// example:
+	//
+	// 1.1.1.1
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	Status  *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// normal
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeHealthCheckStatusListResponseBodyHealthCheckStatusListRealServerStatusList) String() string {
@@ -3244,9 +4515,9 @@ func (s *DescribeHealthCheckStatusListResponseBodyHealthCheckStatusListRealServe
 }
 
 type DescribeHealthCheckStatusListResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeHealthCheckStatusListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeHealthCheckStatusListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeHealthCheckStatusListResponse) String() string {
@@ -3273,8 +4544,16 @@ func (s *DescribeHealthCheckStatusListResponse) SetBody(v *DescribeHealthCheckSt
 }
 
 type DescribeInstanceDetailsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ["ddoscoo-cn-XXXX1", "ddoscoo-cn-XXXX2"]
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// example:
+	//
+	// 1.1.1.1
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
 func (s DescribeInstanceDetailsRequest) String() string {
@@ -3297,7 +4576,10 @@ func (s *DescribeInstanceDetailsRequest) SetSourceIp(v string) *DescribeInstance
 
 type DescribeInstanceDetailsResponseBody struct {
 	InstanceDetails []*DescribeInstanceDetailsResponseBodyInstanceDetails `json:"InstanceDetails,omitempty" xml:"InstanceDetails,omitempty" type:"Repeated"`
-	RequestId       *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeInstanceDetailsResponseBody) String() string {
@@ -3320,8 +4602,14 @@ func (s *DescribeInstanceDetailsResponseBody) SetRequestId(v string) *DescribeIn
 
 type DescribeInstanceDetailsResponseBodyInstanceDetails struct {
 	EipInfoList []*DescribeInstanceDetailsResponseBodyInstanceDetailsEipInfoList `json:"EipInfoList,omitempty" xml:"EipInfoList,omitempty" type:"Repeated"`
-	InstanceId  *string                                                          `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Line        *string                                                          `json:"Line,omitempty" xml:"Line,omitempty"`
+	// example:
+	//
+	// ddoscoo-cn-XXXXX
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// coop-line-001
+	Line *string `json:"Line,omitempty" xml:"Line,omitempty"`
 }
 
 func (s DescribeInstanceDetailsResponseBodyInstanceDetails) String() string {
@@ -3348,7 +4636,13 @@ func (s *DescribeInstanceDetailsResponseBodyInstanceDetails) SetLine(v string) *
 }
 
 type DescribeInstanceDetailsResponseBodyInstanceDetailsEipInfoList struct {
-	Eip    *string `json:"Eip,omitempty" xml:"Eip,omitempty"`
+	// example:
+	//
+	// 1.1.1.1
+	Eip *string `json:"Eip,omitempty" xml:"Eip,omitempty"`
+	// example:
+	//
+	// normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -3371,9 +4665,9 @@ func (s *DescribeInstanceDetailsResponseBodyInstanceDetailsEipInfoList) SetStatu
 }
 
 type DescribeInstanceDetailsResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeInstanceDetailsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeInstanceDetailsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeInstanceDetailsResponse) String() string {
@@ -3400,8 +4694,16 @@ func (s *DescribeInstanceDetailsResponse) SetBody(v *DescribeInstanceDetailsResp
 }
 
 type DescribeInstanceSpecsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ["ddoscoo-cn-XXXXX"]
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// example:
+	//
+	// 1.1.1.1
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
 func (s DescribeInstanceSpecsRequest) String() string {
@@ -3424,7 +4726,10 @@ func (s *DescribeInstanceSpecsRequest) SetSourceIp(v string) *DescribeInstanceSp
 
 type DescribeInstanceSpecsResponseBody struct {
 	InstanceSpecs []*DescribeInstanceSpecsResponseBodyInstanceSpecs `json:"InstanceSpecs,omitempty" xml:"InstanceSpecs,omitempty" type:"Repeated"`
-	RequestId     *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeInstanceSpecsResponseBody) String() string {
@@ -3446,16 +4751,46 @@ func (s *DescribeInstanceSpecsResponseBody) SetRequestId(v string) *DescribeInst
 }
 
 type DescribeInstanceSpecsResponseBodyInstanceSpecs struct {
-	BandwidthMbps    *int32  `json:"BandwidthMbps,omitempty" xml:"BandwidthMbps,omitempty"`
-	BaseBandwidth    *int32  `json:"BaseBandwidth,omitempty" xml:"BaseBandwidth,omitempty"`
-	DefenseCount     *int32  `json:"DefenseCount,omitempty" xml:"DefenseCount,omitempty"`
-	DomainLimit      *int32  `json:"DomainLimit,omitempty" xml:"DomainLimit,omitempty"`
-	ElasticBandwidth *int32  `json:"ElasticBandwidth,omitempty" xml:"ElasticBandwidth,omitempty"`
-	FunctionVersion  *string `json:"FunctionVersion,omitempty" xml:"FunctionVersion,omitempty"`
-	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PortLimit        *int32  `json:"PortLimit,omitempty" xml:"PortLimit,omitempty"`
-	QpsLimit         *int32  `json:"QpsLimit,omitempty" xml:"QpsLimit,omitempty"`
-	SiteLimit        *int32  `json:"SiteLimit,omitempty" xml:"SiteLimit,omitempty"`
+	// example:
+	//
+	// 20000
+	BandwidthMbps *int32 `json:"BandwidthMbps,omitempty" xml:"BandwidthMbps,omitempty"`
+	// example:
+	//
+	// 20
+	BaseBandwidth *int32 `json:"BaseBandwidth,omitempty" xml:"BaseBandwidth,omitempty"`
+	// example:
+	//
+	// 10
+	DefenseCount *int32 `json:"DefenseCount,omitempty" xml:"DefenseCount,omitempty"`
+	// example:
+	//
+	// 50
+	DomainLimit *int32 `json:"DomainLimit,omitempty" xml:"DomainLimit,omitempty"`
+	// example:
+	//
+	// 20
+	ElasticBandwidth *int32 `json:"ElasticBandwidth,omitempty" xml:"ElasticBandwidth,omitempty"`
+	// example:
+	//
+	// default
+	FunctionVersion *string `json:"FunctionVersion,omitempty" xml:"FunctionVersion,omitempty"`
+	// example:
+	//
+	// ddoscoo-cn-XXXXX
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 50
+	PortLimit *int32 `json:"PortLimit,omitempty" xml:"PortLimit,omitempty"`
+	// example:
+	//
+	// 1000
+	QpsLimit *int32 `json:"QpsLimit,omitempty" xml:"QpsLimit,omitempty"`
+	// example:
+	//
+	// 10
+	SiteLimit *int32 `json:"SiteLimit,omitempty" xml:"SiteLimit,omitempty"`
 }
 
 func (s DescribeInstanceSpecsResponseBodyInstanceSpecs) String() string {
@@ -3517,9 +4852,9 @@ func (s *DescribeInstanceSpecsResponseBodyInstanceSpecs) SetSiteLimit(v int32) *
 }
 
 type DescribeInstanceSpecsResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeInstanceSpecsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeInstanceSpecsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeInstanceSpecsResponse) String() string {
@@ -3546,8 +4881,16 @@ func (s *DescribeInstanceSpecsResponse) SetBody(v *DescribeInstanceSpecsResponse
 }
 
 type DescribeInstanceStatisticsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// [{"InstanceId":"ddoscoo-cn-XXXXX","InstanceId":"ddoscoo-cn-YYYYY"}]
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// example:
+	//
+	// 1.1.1.1
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
 func (s DescribeInstanceStatisticsRequest) String() string {
@@ -3570,7 +4913,10 @@ func (s *DescribeInstanceStatisticsRequest) SetSourceIp(v string) *DescribeInsta
 
 type DescribeInstanceStatisticsResponseBody struct {
 	InstanceStatistics []*DescribeInstanceStatisticsResponseBodyInstanceStatistics `json:"InstanceStatistics,omitempty" xml:"InstanceStatistics,omitempty" type:"Repeated"`
-	RequestId          *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeInstanceStatisticsResponseBody) String() string {
@@ -3592,11 +4938,26 @@ func (s *DescribeInstanceStatisticsResponseBody) SetRequestId(v string) *Describ
 }
 
 type DescribeInstanceStatisticsResponseBodyInstanceStatistics struct {
-	DefenseCountUsage *int32  `json:"DefenseCountUsage,omitempty" xml:"DefenseCountUsage,omitempty"`
-	DomainUsage       *int32  `json:"DomainUsage,omitempty" xml:"DomainUsage,omitempty"`
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PortUsage         *int32  `json:"PortUsage,omitempty" xml:"PortUsage,omitempty"`
-	SiteUsage         *int32  `json:"SiteUsage,omitempty" xml:"SiteUsage,omitempty"`
+	// example:
+	//
+	// 1
+	DefenseCountUsage *int32 `json:"DefenseCountUsage,omitempty" xml:"DefenseCountUsage,omitempty"`
+	// example:
+	//
+	// 10
+	DomainUsage *int32 `json:"DomainUsage,omitempty" xml:"DomainUsage,omitempty"`
+	// example:
+	//
+	// ddoscoo-cn-XXXXX
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 20
+	PortUsage *int32 `json:"PortUsage,omitempty" xml:"PortUsage,omitempty"`
+	// example:
+	//
+	// 1
+	SiteUsage *int32 `json:"SiteUsage,omitempty" xml:"SiteUsage,omitempty"`
 }
 
 func (s DescribeInstanceStatisticsResponseBodyInstanceStatistics) String() string {
@@ -3633,9 +4994,9 @@ func (s *DescribeInstanceStatisticsResponseBodyInstanceStatistics) SetSiteUsage(
 }
 
 type DescribeInstanceStatisticsResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeInstanceStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeInstanceStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeInstanceStatisticsResponse) String() string {
@@ -3662,19 +5023,59 @@ func (s *DescribeInstanceStatisticsResponse) SetBody(v *DescribeInstanceStatisti
 }
 
 type DescribeInstancesRequest struct {
-	Edition         *int32                         `json:"Edition,omitempty" xml:"Edition,omitempty"`
-	Enabled         *int32                         `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	ExpireEndTime   *int64                         `json:"ExpireEndTime,omitempty" xml:"ExpireEndTime,omitempty"`
-	ExpireStartTime *int64                         `json:"ExpireStartTime,omitempty" xml:"ExpireStartTime,omitempty"`
-	InstanceIds     *string                        `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	Ip              *string                        `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	PageNo          *string                        `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize        *string                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Remark          *string                        `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	ResourceGroupId *string                        `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SourceIp        *string                        `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Status          []*int32                       `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
-	Tag             []*DescribeInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 9
+	Edition *int32 `json:"Edition,omitempty" xml:"Edition,omitempty"`
+	// example:
+	//
+	// 1
+	Enabled *int32 `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// example:
+	//
+	// 1578931200000
+	ExpireEndTime *int64 `json:"ExpireEndTime,omitempty" xml:"ExpireEndTime,omitempty"`
+	// example:
+	//
+	// 1578931200000
+	ExpireStartTime *int64 `json:"ExpireStartTime,omitempty" xml:"ExpireStartTime,omitempty"`
+	// example:
+	//
+	// ["ddoscoo-cn-XXXXX"]
+	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	// example:
+	//
+	// 1.1.1.1
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNo *string `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// testRemark
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// example:
+	//
+	// xx
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// 1.1.1.1
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// example:
+	//
+	// 1
+	Status []*int32                       `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
+	Tag    []*DescribeInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeInstancesRequest) String() string {
@@ -3751,7 +5152,13 @@ func (s *DescribeInstancesRequest) SetTag(v []*DescribeInstancesRequestTag) *Des
 }
 
 type DescribeInstancesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// key
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -3775,8 +5182,14 @@ func (s *DescribeInstancesRequestTag) SetValue(v string) *DescribeInstancesReque
 
 type DescribeInstancesResponseBody struct {
 	Instances []*DescribeInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Total     *int64                                    `json:"Total,omitempty" xml:"Total,omitempty"`
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 10
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s DescribeInstancesResponseBody) String() string {
@@ -3803,14 +5216,38 @@ func (s *DescribeInstancesResponseBody) SetTotal(v int64) *DescribeInstancesResp
 }
 
 type DescribeInstancesResponseBodyInstances struct {
-	DebtStatus *int32  `json:"DebtStatus,omitempty" xml:"DebtStatus,omitempty"`
-	Edition    *int32  `json:"Edition,omitempty" xml:"Edition,omitempty"`
-	Enabled    *int32  `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	ExpireTime *int64  `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	GmtCreate  *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 0
+	DebtStatus *int32 `json:"DebtStatus,omitempty" xml:"DebtStatus,omitempty"`
+	// example:
+	//
+	// 9
+	Edition *int32 `json:"Edition,omitempty" xml:"Edition,omitempty"`
+	// example:
+	//
+	// 1
+	Enabled *int32 `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// example:
+	//
+	// 2308402384
+	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// example:
+	//
+	// 2308402384
+	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// ddoscoo-cn-XXXXX
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Remark     *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	Status     *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// testRemark
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// example:
+	//
+	// 1
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeInstancesResponseBodyInstances) String() string {
@@ -3862,9 +5299,9 @@ func (s *DescribeInstancesResponseBodyInstances) SetStatus(v int32) *DescribeIns
 }
 
 type DescribeInstancesResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeInstancesResponse) String() string {
@@ -3891,14 +5328,46 @@ func (s *DescribeInstancesResponse) SetBody(v *DescribeInstancesResponseBody) *D
 }
 
 type DescribeIpTrafficRequest struct {
-	Eip             *string `json:"Eip,omitempty" xml:"Eip,omitempty"`
-	EndTime         *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Interval        *int32  `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	Port            *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-	QueryProtocol   *string `json:"QueryProtocol,omitempty" xml:"QueryProtocol,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1.1.1.1
+	Eip *string `json:"Eip,omitempty" xml:"Eip,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1536734120
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 60
+	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// example:
+	//
+	// 233
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// example:
+	//
+	// http
+	QueryProtocol *string `json:"QueryProtocol,omitempty" xml:"QueryProtocol,omitempty"`
+	// example:
+	//
+	// xxx
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	StartTime       *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 1.1.1.1
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1536734112
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeIpTrafficRequest) String() string {
@@ -3950,12 +5419,27 @@ func (s *DescribeIpTrafficRequest) SetStartTime(v int64) *DescribeIpTrafficReque
 }
 
 type DescribeIpTrafficResponseBody struct {
-	AvgInBps        *int64                                          `json:"AvgInBps,omitempty" xml:"AvgInBps,omitempty"`
+	// example:
+	//
+	// 10000
+	AvgInBps *int64 `json:"AvgInBps,omitempty" xml:"AvgInBps,omitempty"`
+	// example:
+	//
+	// 10000
 	AvgOutBps       *int64                                          `json:"AvgOutBps,omitempty" xml:"AvgOutBps,omitempty"`
 	IpTrafficPoints []*DescribeIpTrafficResponseBodyIpTrafficPoints `json:"IpTrafficPoints,omitempty" xml:"IpTrafficPoints,omitempty" type:"Repeated"`
-	MaxInBps        *int64                                          `json:"MaxInBps,omitempty" xml:"MaxInBps,omitempty"`
-	MaxOutBps       *int64                                          `json:"MaxOutBps,omitempty" xml:"MaxOutBps,omitempty"`
-	RequestId       *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 10000
+	MaxInBps *int64 `json:"MaxInBps,omitempty" xml:"MaxInBps,omitempty"`
+	// example:
+	//
+	// 10000
+	MaxOutBps *int64 `json:"MaxOutBps,omitempty" xml:"MaxOutBps,omitempty"`
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeIpTrafficResponseBody) String() string {
@@ -3997,12 +5481,30 @@ func (s *DescribeIpTrafficResponseBody) SetRequestId(v string) *DescribeIpTraffi
 }
 
 type DescribeIpTrafficResponseBodyIpTrafficPoints struct {
-	ActConns   *int32 `json:"ActConns,omitempty" xml:"ActConns,omitempty"`
-	Cps        *int32 `json:"Cps,omitempty" xml:"Cps,omitempty"`
+	// example:
+	//
+	// 100
+	ActConns *int32 `json:"ActConns,omitempty" xml:"ActConns,omitempty"`
+	// example:
+	//
+	// 100
+	Cps *int32 `json:"Cps,omitempty" xml:"Cps,omitempty"`
+	// example:
+	//
+	// 100
 	InactConns *int32 `json:"InactConns,omitempty" xml:"InactConns,omitempty"`
-	MaxInbps   *int64 `json:"MaxInbps,omitempty" xml:"MaxInbps,omitempty"`
-	MaxOutbps  *int64 `json:"MaxOutbps,omitempty" xml:"MaxOutbps,omitempty"`
-	Time       *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
+	// example:
+	//
+	// 10000
+	MaxInbps *int64 `json:"MaxInbps,omitempty" xml:"MaxInbps,omitempty"`
+	// example:
+	//
+	// 10000
+	MaxOutbps *int64 `json:"MaxOutbps,omitempty" xml:"MaxOutbps,omitempty"`
+	// example:
+	//
+	// 1536734112
+	Time *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
 }
 
 func (s DescribeIpTrafficResponseBodyIpTrafficPoints) String() string {
@@ -4044,9 +5546,9 @@ func (s *DescribeIpTrafficResponseBodyIpTrafficPoints) SetTime(v int64) *Describ
 }
 
 type DescribeIpTrafficResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeIpTrafficResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeIpTrafficResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeIpTrafficResponse) String() string {
@@ -4073,8 +5575,16 @@ func (s *DescribeIpTrafficResponse) SetBody(v *DescribeIpTrafficResponseBody) *D
 }
 
 type DescribeLayer4RuleAttributesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// [{"InstanceId":"ddoscoo-cn-XXXXX","Protocol":"tcp","FrontendPort":80}]
 	Listeners *string `json:"Listeners,omitempty" xml:"Listeners,omitempty"`
-	SourceIp  *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// example:
+	//
+	// 1.1.1.1
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
 func (s DescribeLayer4RuleAttributesRequest) String() string {
@@ -4097,7 +5607,10 @@ func (s *DescribeLayer4RuleAttributesRequest) SetSourceIp(v string) *DescribeLay
 
 type DescribeLayer4RuleAttributesResponseBody struct {
 	Listeners []*DescribeLayer4RuleAttributesResponseBodyListeners `json:"Listeners,omitempty" xml:"Listeners,omitempty" type:"Repeated"`
-	RequestId *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeLayer4RuleAttributesResponseBody) String() string {
@@ -4119,10 +5632,19 @@ func (s *DescribeLayer4RuleAttributesResponseBody) SetRequestId(v string) *Descr
 }
 
 type DescribeLayer4RuleAttributesResponseBodyListeners struct {
-	Config       *DescribeLayer4RuleAttributesResponseBodyListenersConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
-	FrontendPort *int32                                                   `json:"FrontendPort,omitempty" xml:"FrontendPort,omitempty"`
-	InstanceId   *string                                                  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Protocol     *string                                                  `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	Config *DescribeLayer4RuleAttributesResponseBodyListenersConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
+	// example:
+	//
+	// 233
+	FrontendPort *int32 `json:"FrontendPort,omitempty" xml:"FrontendPort,omitempty"`
+	// example:
+	//
+	// ddoscoo-cn-XXXXX
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// tcp
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 }
 
 func (s DescribeLayer4RuleAttributesResponseBodyListeners) String() string {
@@ -4154,13 +5676,22 @@ func (s *DescribeLayer4RuleAttributesResponseBodyListeners) SetProtocol(v string
 }
 
 type DescribeLayer4RuleAttributesResponseBodyListenersConfig struct {
-	Cc                 *DescribeLayer4RuleAttributesResponseBodyListenersConfigCc         `json:"Cc,omitempty" xml:"Cc,omitempty" type:"Struct"`
-	NodataConn         *string                                                            `json:"NodataConn,omitempty" xml:"NodataConn,omitempty"`
-	PayloadLen         *DescribeLayer4RuleAttributesResponseBodyListenersConfigPayloadLen `json:"PayloadLen,omitempty" xml:"PayloadLen,omitempty" type:"Struct"`
-	PersistenceTimeout *int32                                                             `json:"PersistenceTimeout,omitempty" xml:"PersistenceTimeout,omitempty"`
-	Sla                *DescribeLayer4RuleAttributesResponseBodyListenersConfigSla        `json:"Sla,omitempty" xml:"Sla,omitempty" type:"Struct"`
-	Slimit             *DescribeLayer4RuleAttributesResponseBodyListenersConfigSlimit     `json:"Slimit,omitempty" xml:"Slimit,omitempty" type:"Struct"`
-	Synproxy           *string                                                            `json:"Synproxy,omitempty" xml:"Synproxy,omitempty"`
+	Cc *DescribeLayer4RuleAttributesResponseBodyListenersConfigCc `json:"Cc,omitempty" xml:"Cc,omitempty" type:"Struct"`
+	// example:
+	//
+	// on
+	NodataConn *string                                                            `json:"NodataConn,omitempty" xml:"NodataConn,omitempty"`
+	PayloadLen *DescribeLayer4RuleAttributesResponseBodyListenersConfigPayloadLen `json:"PayloadLen,omitempty" xml:"PayloadLen,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0
+	PersistenceTimeout *int32                                                         `json:"PersistenceTimeout,omitempty" xml:"PersistenceTimeout,omitempty"`
+	Sla                *DescribeLayer4RuleAttributesResponseBodyListenersConfigSla    `json:"Sla,omitempty" xml:"Sla,omitempty" type:"Struct"`
+	Slimit             *DescribeLayer4RuleAttributesResponseBodyListenersConfigSlimit `json:"Slimit,omitempty" xml:"Slimit,omitempty" type:"Struct"`
+	// example:
+	//
+	// on
+	Synproxy *string `json:"Synproxy,omitempty" xml:"Synproxy,omitempty"`
 }
 
 func (s DescribeLayer4RuleAttributesResponseBodyListenersConfig) String() string {
@@ -4224,10 +5755,22 @@ func (s *DescribeLayer4RuleAttributesResponseBodyListenersConfigCc) SetSblack(v 
 }
 
 type DescribeLayer4RuleAttributesResponseBodyListenersConfigCcSblack struct {
-	Cnt     *int32 `json:"Cnt,omitempty" xml:"Cnt,omitempty"`
-	During  *int32 `json:"During,omitempty" xml:"During,omitempty"`
+	// example:
+	//
+	// 5
+	Cnt *int32 `json:"Cnt,omitempty" xml:"Cnt,omitempty"`
+	// example:
+	//
+	// 60
+	During *int32 `json:"During,omitempty" xml:"During,omitempty"`
+	// example:
+	//
+	// 1800
 	Expires *int32 `json:"Expires,omitempty" xml:"Expires,omitempty"`
-	Type    *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 1
+	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeLayer4RuleAttributesResponseBodyListenersConfigCcSblack) String() string {
@@ -4259,7 +5802,13 @@ func (s *DescribeLayer4RuleAttributesResponseBodyListenersConfigCcSblack) SetTyp
 }
 
 type DescribeLayer4RuleAttributesResponseBodyListenersConfigPayloadLen struct {
+	// example:
+	//
+	// 2
 	Max *int32 `json:"Max,omitempty" xml:"Max,omitempty"`
+	// example:
+	//
+	// 1
 	Min *int32 `json:"Min,omitempty" xml:"Min,omitempty"`
 }
 
@@ -4282,9 +5831,21 @@ func (s *DescribeLayer4RuleAttributesResponseBodyListenersConfigPayloadLen) SetM
 }
 
 type DescribeLayer4RuleAttributesResponseBodyListenersConfigSla struct {
-	Cps           *int32 `json:"Cps,omitempty" xml:"Cps,omitempty"`
-	CpsEnable     *int32 `json:"CpsEnable,omitempty" xml:"CpsEnable,omitempty"`
-	Maxconn       *int32 `json:"Maxconn,omitempty" xml:"Maxconn,omitempty"`
+	// example:
+	//
+	// 100
+	Cps *int32 `json:"Cps,omitempty" xml:"Cps,omitempty"`
+	// example:
+	//
+	// 0
+	CpsEnable *int32 `json:"CpsEnable,omitempty" xml:"CpsEnable,omitempty"`
+	// example:
+	//
+	// 1000
+	Maxconn *int32 `json:"Maxconn,omitempty" xml:"Maxconn,omitempty"`
+	// example:
+	//
+	// 0
 	MaxconnEnable *int32 `json:"MaxconnEnable,omitempty" xml:"MaxconnEnable,omitempty"`
 }
 
@@ -4317,13 +5878,34 @@ func (s *DescribeLayer4RuleAttributesResponseBodyListenersConfigSla) SetMaxconnE
 }
 
 type DescribeLayer4RuleAttributesResponseBodyListenersConfigSlimit struct {
-	Bps           *int64 `json:"Bps,omitempty" xml:"Bps,omitempty"`
-	Cps           *int32 `json:"Cps,omitempty" xml:"Cps,omitempty"`
-	CpsEnable     *int32 `json:"CpsEnable,omitempty" xml:"CpsEnable,omitempty"`
-	CpsMode       *int32 `json:"CpsMode,omitempty" xml:"CpsMode,omitempty"`
-	Maxconn       *int32 `json:"Maxconn,omitempty" xml:"Maxconn,omitempty"`
+	// example:
+	//
+	// 0
+	Bps *int64 `json:"Bps,omitempty" xml:"Bps,omitempty"`
+	// example:
+	//
+	// 100
+	Cps *int32 `json:"Cps,omitempty" xml:"Cps,omitempty"`
+	// example:
+	//
+	// 0
+	CpsEnable *int32 `json:"CpsEnable,omitempty" xml:"CpsEnable,omitempty"`
+	// example:
+	//
+	// 2
+	CpsMode *int32 `json:"CpsMode,omitempty" xml:"CpsMode,omitempty"`
+	// example:
+	//
+	// 1000
+	Maxconn *int32 `json:"Maxconn,omitempty" xml:"Maxconn,omitempty"`
+	// example:
+	//
+	// 0
 	MaxconnEnable *int32 `json:"MaxconnEnable,omitempty" xml:"MaxconnEnable,omitempty"`
-	Pps           *int64 `json:"Pps,omitempty" xml:"Pps,omitempty"`
+	// example:
+	//
+	// 0
+	Pps *int64 `json:"Pps,omitempty" xml:"Pps,omitempty"`
 }
 
 func (s DescribeLayer4RuleAttributesResponseBodyListenersConfigSlimit) String() string {
@@ -4370,9 +5952,9 @@ func (s *DescribeLayer4RuleAttributesResponseBodyListenersConfigSlimit) SetPps(v
 }
 
 type DescribeLayer4RuleAttributesResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeLayer4RuleAttributesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeLayer4RuleAttributesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeLayer4RuleAttributesResponse) String() string {
@@ -4399,12 +5981,54 @@ func (s *DescribeLayer4RuleAttributesResponse) SetBody(v *DescribeLayer4RuleAttr
 }
 
 type DescribeLayer4RulesRequest struct {
+	// The type of forwarding protocol. Values:
+	//
+	// - **tcp**: Indicates TCP protocol.
+	//
+	// - **udp**: Indicates UDP protocol.
+	//
+	// example:
+	//
+	// tcp
 	ForwardProtocol *string `json:"ForwardProtocol,omitempty" xml:"ForwardProtocol,omitempty"`
-	FrontendPort    *int32  `json:"FrontendPort,omitempty" xml:"FrontendPort,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Offset          *int32  `json:"Offset,omitempty" xml:"Offset,omitempty"`
-	PageSize        *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// The forwarding port.
+	//
+	// example:
+	//
+	// 233
+	FrontendPort *int32 `json:"FrontendPort,omitempty" xml:"FrontendPort,omitempty"`
+	// The ID of the DDoS protection instance to be queried.
+	//
+	// > You can call [DescribeInstances](https://help.aliyun.com/document_detail/91478.html) to query all DDoS protection instance IDs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ddoscoo-cn-zvp2ay9b****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// In paginated queries, specifies which page of data to return. The minimum value is **1**, indicating the first page of data.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Offset *int32 `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	// In paginated queries, specifies the number of results per page. The maximum value is **50**, indicating that each page can contain up to 50 results.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The source IP address of the request. You do not need to fill this in; it is automatically obtained by the system.
+	//
+	// example:
+	//
+	// 192.0.XX.XX
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
 func (s DescribeLayer4RulesRequest) String() string {
@@ -4446,9 +6070,20 @@ func (s *DescribeLayer4RulesRequest) SetSourceIp(v string) *DescribeLayer4RulesR
 }
 
 type DescribeLayer4RulesResponseBody struct {
+	// Detailed configuration of port forwarding rules, including the forwarding port, forwarding protocol, and origin server addresses, etc.
 	Listeners []*DescribeLayer4RulesResponseBodyListeners `json:"Listeners,omitempty" xml:"Listeners,omitempty" type:"Repeated"`
-	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Total     *int64                                      `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The ID of the current request.
+	//
+	// example:
+	//
+	// 949919A2-6636-1444-9213-AB27DD88AAA8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of returned results.
+	//
+	// example:
+	//
+	// 1
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s DescribeLayer4RulesResponseBody) String() string {
@@ -4475,16 +6110,104 @@ func (s *DescribeLayer4RulesResponseBody) SetTotal(v int64) *DescribeLayer4Rules
 }
 
 type DescribeLayer4RulesResponseBodyListeners struct {
-	BackendPort  *int32    `json:"BackendPort,omitempty" xml:"BackendPort,omitempty"`
-	BakMode      *int32    `json:"BakMode,omitempty" xml:"BakMode,omitempty"`
-	CurrentIndex *int32    `json:"CurrentIndex,omitempty" xml:"CurrentIndex,omitempty"`
-	Eip          *string   `json:"Eip,omitempty" xml:"Eip,omitempty"`
-	FrontendPort *int32    `json:"FrontendPort,omitempty" xml:"FrontendPort,omitempty"`
-	InstanceId   *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IsAutoCreate *bool     `json:"IsAutoCreate,omitempty" xml:"IsAutoCreate,omitempty"`
-	Protocol     *string   `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	RealServers  []*string `json:"RealServers,omitempty" xml:"RealServers,omitempty" type:"Repeated"`
-	Remark       *string   `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The origin server port.
+	//
+	// example:
+	//
+	// 233
+	BackendPort *int32 `json:"BackendPort,omitempty" xml:"BackendPort,omitempty"`
+	// The origin mode. Values:
+	//
+	// - **0**: Indicates the default origin mode.
+	//
+	// - **1**: Indicates the primary/backup origin mode.
+	//
+	// example:
+	//
+	// 0
+	BakMode *int32 `json:"BakMode,omitempty" xml:"BakMode,omitempty"`
+	// The currently effective origin server type. Values:
+	//
+	// - **1**: Indicates that the primary origin server settings are in effect (DDoS protection forwards business traffic to the primary origin server IP address).
+	//
+	// - **2**: Indicates that the backup origin server settings are in effect (DDoS protection forwards business traffic to the backup origin server IP address).
+	//
+	// example:
+	//
+	// 1
+	CurrentIndex *int32 `json:"CurrentIndex,omitempty" xml:"CurrentIndex,omitempty"`
+	// The IP address of the DDoS protection instance.
+	//
+	// example:
+	//
+	// 203.107.XX.XX
+	Eip *string `json:"Eip,omitempty" xml:"Eip,omitempty"`
+	// The forwarding port.
+	//
+	// example:
+	//
+	// 233
+	FrontendPort *int32 `json:"FrontendPort,omitempty" xml:"FrontendPort,omitempty"`
+	// The ID of the DDoS protection instance.
+	//
+	// example:
+	//
+	// ddoscoo-cn-zvp2ay9b****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Indicates whether the rule was automatically created. Values:
+	//
+	// - **true**: Indicates that the rule was automatically created by DDoS protection.
+	//
+	// - **false**: Indicates that the rule was manually created by you.
+	//
+	// example:
+	//
+	// false
+	IsAutoCreate *bool `json:"IsAutoCreate,omitempty" xml:"IsAutoCreate,omitempty"`
+	// Payload rule module switch. Values:
+	//
+	// - 1: Enabled
+	//
+	// - 0: Disabled
+	//
+	// example:
+	//
+	// 0
+	PayloadRuleEnable *int64 `json:"PayloadRuleEnable,omitempty" xml:"PayloadRuleEnable,omitempty"`
+	// The type of forwarding protocol.
+	//
+	// example:
+	//
+	// tcp
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// Traffic diversion switch. Values:
+	//
+	// - **0*	- Off.
+	//
+	// - **1*	- On.
+	//
+	// example:
+	//
+	// 0
+	ProxyEnable *int32 `json:"ProxyEnable,omitempty" xml:"ProxyEnable,omitempty"`
+	// Traffic diversion status. Values:
+	//
+	// - on: Diversion is effective
+	//
+	// - off: Diversion is ineffective
+	//
+	// example:
+	//
+	// on
+	ProxyStatus *string `json:"ProxyStatus,omitempty" xml:"ProxyStatus,omitempty"`
+	// The list of origin server IP addresses.
+	RealServers []*string `json:"RealServers,omitempty" xml:"RealServers,omitempty" type:"Repeated"`
+	// The remarks for the port forwarding rule.
+	//
+	// example:
+	//
+	// test-remark
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 }
 
 func (s DescribeLayer4RulesResponseBodyListeners) String() string {
@@ -4530,8 +6253,23 @@ func (s *DescribeLayer4RulesResponseBodyListeners) SetIsAutoCreate(v bool) *Desc
 	return s
 }
 
+func (s *DescribeLayer4RulesResponseBodyListeners) SetPayloadRuleEnable(v int64) *DescribeLayer4RulesResponseBodyListeners {
+	s.PayloadRuleEnable = &v
+	return s
+}
+
 func (s *DescribeLayer4RulesResponseBodyListeners) SetProtocol(v string) *DescribeLayer4RulesResponseBodyListeners {
 	s.Protocol = &v
+	return s
+}
+
+func (s *DescribeLayer4RulesResponseBodyListeners) SetProxyEnable(v int32) *DescribeLayer4RulesResponseBodyListeners {
+	s.ProxyEnable = &v
+	return s
+}
+
+func (s *DescribeLayer4RulesResponseBodyListeners) SetProxyStatus(v string) *DescribeLayer4RulesResponseBodyListeners {
+	s.ProxyStatus = &v
 	return s
 }
 
@@ -4546,9 +6284,9 @@ func (s *DescribeLayer4RulesResponseBodyListeners) SetRemark(v string) *Describe
 }
 
 type DescribeLayer4RulesResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeLayer4RulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeLayer4RulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeLayer4RulesResponse) String() string {
@@ -4575,11 +6313,32 @@ func (s *DescribeLayer4RulesResponse) SetBody(v *DescribeLayer4RulesResponseBody
 }
 
 type DescribeLayer7CCRulesRequest struct {
-	Domain          *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	Offset          *int32  `json:"Offset,omitempty" xml:"Offset,omitempty"`
-	PageSize        *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// www.aliyun.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
+	Offset *int32 `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// test
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// example:
+	//
+	// 1.1.1.1
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
 func (s DescribeLayer7CCRulesRequest) String() string {
@@ -4617,8 +6376,14 @@ func (s *DescribeLayer7CCRulesRequest) SetSourceIp(v string) *DescribeLayer7CCRu
 
 type DescribeLayer7CCRulesResponseBody struct {
 	Layer7CCRules []*DescribeLayer7CCRulesResponseBodyLayer7CCRules `json:"Layer7CCRules,omitempty" xml:"Layer7CCRules,omitempty" type:"Repeated"`
-	RequestId     *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Total         *int64                                            `json:"Total,omitempty" xml:"Total,omitempty"`
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 10
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s DescribeLayer7CCRulesResponseBody) String() string {
@@ -4645,13 +6410,34 @@ func (s *DescribeLayer7CCRulesResponseBody) SetTotal(v int64) *DescribeLayer7CCR
 }
 
 type DescribeLayer7CCRulesResponseBodyLayer7CCRules struct {
-	Act      *string `json:"Act,omitempty" xml:"Act,omitempty"`
-	Count    *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
-	Interval *int32  `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	Mode     *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Ttl      *int32  `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
-	Uri      *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	// example:
+	//
+	// close
+	Act *string `json:"Act,omitempty" xml:"Act,omitempty"`
+	// example:
+	//
+	// 100
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// example:
+	//
+	// 60
+	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// example:
+	//
+	// match
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// example:
+	//
+	// testCcRule1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1000
+	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	// example:
+	//
+	// /a/b/c
+	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
 }
 
 func (s DescribeLayer7CCRulesResponseBodyLayer7CCRules) String() string {
@@ -4698,9 +6484,9 @@ func (s *DescribeLayer7CCRulesResponseBodyLayer7CCRules) SetUri(v string) *Descr
 }
 
 type DescribeLayer7CCRulesResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeLayer7CCRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeLayer7CCRulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeLayer7CCRulesResponse) String() string {
@@ -4727,9 +6513,18 @@ func (s *DescribeLayer7CCRulesResponse) SetBody(v *DescribeLayer7CCRulesResponse
 }
 
 type DescribeLogStoreExistStatusRequest struct {
-	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// cn
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// xx
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// example:
+	//
+	// 1.1.1.1
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
 func (s DescribeLogStoreExistStatusRequest) String() string {
@@ -4756,8 +6551,14 @@ func (s *DescribeLogStoreExistStatusRequest) SetSourceIp(v string) *DescribeLogS
 }
 
 type DescribeLogStoreExistStatusResponseBody struct {
-	ExistStatus *bool   `json:"ExistStatus,omitempty" xml:"ExistStatus,omitempty"`
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	ExistStatus *bool `json:"ExistStatus,omitempty" xml:"ExistStatus,omitempty"`
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeLogStoreExistStatusResponseBody) String() string {
@@ -4779,9 +6580,9 @@ func (s *DescribeLogStoreExistStatusResponseBody) SetRequestId(v string) *Descri
 }
 
 type DescribeLogStoreExistStatusResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeLogStoreExistStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeLogStoreExistStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeLogStoreExistStatusResponse) String() string {
@@ -4808,15 +6609,47 @@ func (s *DescribeLogStoreExistStatusResponse) SetBody(v *DescribeLogStoreExistSt
 }
 
 type DescribeOpEntitiesRequest struct {
-	EndTime         *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	EntityObject    *string `json:"EntityObject,omitempty" xml:"EntityObject,omitempty"`
-	EntityType      *int32  `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	OpAction        *int32  `json:"OpAction,omitempty" xml:"OpAction,omitempty"`
-	PageNo          *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1536715558000
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// xx
+	EntityObject *string `json:"EntityObject,omitempty" xml:"EntityObject,omitempty"`
+	// example:
+	//
+	// 1
+	EntityType *int32 `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	OpAction   *int32 `json:"OpAction,omitempty" xml:"OpAction,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// test
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	StartTime       *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 1.1.1.1
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1534123558000
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeOpEntitiesRequest) String() string {
@@ -4874,8 +6707,14 @@ func (s *DescribeOpEntitiesRequest) SetStartTime(v int64) *DescribeOpEntitiesReq
 
 type DescribeOpEntitiesResponseBody struct {
 	OpEntities []*DescribeOpEntitiesResponseBodyOpEntities `json:"OpEntities,omitempty" xml:"OpEntities,omitempty" type:"Repeated"`
-	RequestId  *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Total      *int64                                      `json:"Total,omitempty" xml:"Total,omitempty"`
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 10
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s DescribeOpEntitiesResponseBody) String() string {
@@ -4902,12 +6741,30 @@ func (s *DescribeOpEntitiesResponseBody) SetTotal(v int64) *DescribeOpEntitiesRe
 }
 
 type DescribeOpEntitiesResponseBodyOpEntities struct {
+	// example:
+	//
+	// 2.2.2.2
 	EntityObject *string `json:"EntityObject,omitempty" xml:"EntityObject,omitempty"`
-	EntityType   *int32  `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	GmtCreate    *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	OpAccount    *string `json:"OpAccount,omitempty" xml:"OpAccount,omitempty"`
-	OpAction     *int32  `json:"OpAction,omitempty" xml:"OpAction,omitempty"`
-	OpDesc       *string `json:"OpDesc,omitempty" xml:"OpDesc,omitempty"`
+	// example:
+	//
+	// 1
+	EntityType *int32 `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// example:
+	//
+	// 1536715558000
+	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 123
+	OpAccount *string `json:"OpAccount,omitempty" xml:"OpAccount,omitempty"`
+	// example:
+	//
+	// 1
+	OpAction *int32 `json:"OpAction,omitempty" xml:"OpAction,omitempty"`
+	// example:
+	//
+	// {"newEntity":{"elasticBandwidth":30},"oldEntity":{"elasticBandwidth":200}}
+	OpDesc *string `json:"OpDesc,omitempty" xml:"OpDesc,omitempty"`
 }
 
 func (s DescribeOpEntitiesResponseBodyOpEntities) String() string {
@@ -4949,9 +6806,9 @@ func (s *DescribeOpEntitiesResponseBodyOpEntities) SetOpDesc(v string) *Describe
 }
 
 type DescribeOpEntitiesResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeOpEntitiesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeOpEntitiesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeOpEntitiesResponse) String() string {
@@ -4978,10 +6835,22 @@ func (s *DescribeOpEntitiesResponse) SetBody(v *DescribeOpEntitiesResponseBody) 
 }
 
 type DescribeSimpleDomainsRequest struct {
-	InstanceIds     []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	Lang            *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	ResourceGroupId *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SourceIp        *string   `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// example:
+	//
+	// ddoscoo-cn-XXXXXX
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// cn
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// xx
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// 1.1.1.1
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
 func (s DescribeSimpleDomainsRequest) String() string {
@@ -5014,7 +6883,10 @@ func (s *DescribeSimpleDomainsRequest) SetSourceIp(v string) *DescribeSimpleDoma
 
 type DescribeSimpleDomainsResponseBody struct {
 	DomainList []*string `json:"DomainList,omitempty" xml:"DomainList,omitempty" type:"Repeated"`
-	RequestId  *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeSimpleDomainsResponseBody) String() string {
@@ -5036,9 +6908,9 @@ func (s *DescribeSimpleDomainsResponseBody) SetRequestId(v string) *DescribeSimp
 }
 
 type DescribeSimpleDomainsResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeSimpleDomainsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeSimpleDomainsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeSimpleDomainsResponse) String() string {
@@ -5065,9 +6937,18 @@ func (s *DescribeSimpleDomainsResponse) SetBody(v *DescribeSimpleDomainsResponse
 }
 
 type DescribeSlsAuthStatusRequest struct {
-	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// cn
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// xx
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// example:
+	//
+	// 1.1.1.1
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
 func (s DescribeSlsAuthStatusRequest) String() string {
@@ -5094,8 +6975,14 @@ func (s *DescribeSlsAuthStatusRequest) SetSourceIp(v string) *DescribeSlsAuthSta
 }
 
 type DescribeSlsAuthStatusResponseBody struct {
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SlsAuthStatus *bool   `json:"SlsAuthStatus,omitempty" xml:"SlsAuthStatus,omitempty"`
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	SlsAuthStatus *bool `json:"SlsAuthStatus,omitempty" xml:"SlsAuthStatus,omitempty"`
 }
 
 func (s DescribeSlsAuthStatusResponseBody) String() string {
@@ -5117,9 +7004,9 @@ func (s *DescribeSlsAuthStatusResponseBody) SetSlsAuthStatus(v bool) *DescribeSl
 }
 
 type DescribeSlsAuthStatusResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeSlsAuthStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeSlsAuthStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeSlsAuthStatusResponse) String() string {
@@ -5146,9 +7033,18 @@ func (s *DescribeSlsAuthStatusResponse) SetBody(v *DescribeSlsAuthStatusResponse
 }
 
 type DescribeSlsEmptyCountRequest struct {
-	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// cn
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// xx
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// example:
+	//
+	// 1.1.1.1
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
 func (s DescribeSlsEmptyCountRequest) String() string {
@@ -5175,8 +7071,14 @@ func (s *DescribeSlsEmptyCountRequest) SetSourceIp(v string) *DescribeSlsEmptyCo
 }
 
 type DescribeSlsEmptyCountResponseBody struct {
-	AvailableCount *int32  `json:"AvailableCount,omitempty" xml:"AvailableCount,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 0
+	AvailableCount *int32 `json:"AvailableCount,omitempty" xml:"AvailableCount,omitempty"`
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeSlsEmptyCountResponseBody) String() string {
@@ -5198,9 +7100,9 @@ func (s *DescribeSlsEmptyCountResponseBody) SetRequestId(v string) *DescribeSlsE
 }
 
 type DescribeSlsEmptyCountResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeSlsEmptyCountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeSlsEmptyCountResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeSlsEmptyCountResponse) String() string {
@@ -5227,9 +7129,18 @@ func (s *DescribeSlsEmptyCountResponse) SetBody(v *DescribeSlsEmptyCountResponse
 }
 
 type DescribeSlsLogstoreInfoRequest struct {
-	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// cn
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// xx
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// example:
+	//
+	// 1.1.1.1
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
 func (s DescribeSlsLogstoreInfoRequest) String() string {
@@ -5256,12 +7167,27 @@ func (s *DescribeSlsLogstoreInfoRequest) SetSourceIp(v string) *DescribeSlsLogst
 }
 
 type DescribeSlsLogstoreInfoResponseBody struct {
-	LogStore  *string `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
-	Project   *string `json:"Project,omitempty" xml:"Project,omitempty"`
-	Quota     *int64  `json:"Quota,omitempty" xml:"Quota,omitempty"`
+	// example:
+	//
+	// ddoscoo-logstore
+	LogStore *string `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
+	// example:
+	//
+	// ddoscoo-project-xxxx-cn-hangzhou
+	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
+	// example:
+	//
+	// 5497558138880
+	Quota *int64 `json:"Quota,omitempty" xml:"Quota,omitempty"`
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Ttl       *int32  `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
-	Used      *int64  `json:"Used,omitempty" xml:"Used,omitempty"`
+	// example:
+	//
+	// 0
+	Used *int64 `json:"Used,omitempty" xml:"Used,omitempty"`
 }
 
 func (s DescribeSlsLogstoreInfoResponseBody) String() string {
@@ -5303,9 +7229,9 @@ func (s *DescribeSlsLogstoreInfoResponseBody) SetUsed(v int64) *DescribeSlsLogst
 }
 
 type DescribeSlsLogstoreInfoResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeSlsLogstoreInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeSlsLogstoreInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeSlsLogstoreInfoResponse) String() string {
@@ -5332,9 +7258,18 @@ func (s *DescribeSlsLogstoreInfoResponse) SetBody(v *DescribeSlsLogstoreInfoResp
 }
 
 type DescribeSlsOpenStatusRequest struct {
-	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// cn
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// xx
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// example:
+	//
+	// 1.1.1.1
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
 func (s DescribeSlsOpenStatusRequest) String() string {
@@ -5361,8 +7296,14 @@ func (s *DescribeSlsOpenStatusRequest) SetSourceIp(v string) *DescribeSlsOpenSta
 }
 
 type DescribeSlsOpenStatusResponseBody struct {
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SlsOpenStatus *bool   `json:"SlsOpenStatus,omitempty" xml:"SlsOpenStatus,omitempty"`
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	SlsOpenStatus *bool `json:"SlsOpenStatus,omitempty" xml:"SlsOpenStatus,omitempty"`
 }
 
 func (s DescribeSlsOpenStatusResponseBody) String() string {
@@ -5384,9 +7325,9 @@ func (s *DescribeSlsOpenStatusResponseBody) SetSlsOpenStatus(v bool) *DescribeSl
 }
 
 type DescribeSlsOpenStatusResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeSlsOpenStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeSlsOpenStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeSlsOpenStatusResponse) String() string {
@@ -5413,9 +7354,18 @@ func (s *DescribeSlsOpenStatusResponse) SetBody(v *DescribeSlsOpenStatusResponse
 }
 
 type DescribleCertListRequest struct {
-	Domain          *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// www.aliyun.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// test
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// example:
+	//
+	// 1.1.1.1
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
 func (s DescribleCertListRequest) String() string {
@@ -5442,8 +7392,11 @@ func (s *DescribleCertListRequest) SetSourceIp(v string) *DescribleCertListReque
 }
 
 type DescribleCertListResponseBody struct {
-	CertList  []*DescribleCertListResponseBodyCertList `json:"CertList,omitempty" xml:"CertList,omitempty" type:"Repeated"`
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	CertList []*DescribleCertListResponseBodyCertList `json:"CertList,omitempty" xml:"CertList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribleCertListResponseBody) String() string {
@@ -5465,13 +7418,35 @@ func (s *DescribleCertListResponseBody) SetRequestId(v string) *DescribleCertLis
 }
 
 type DescribleCertListResponseBodyCertList struct {
-	Common        *string `json:"Common,omitempty" xml:"Common,omitempty"`
-	DomainRelated *bool   `json:"DomainRelated,omitempty" xml:"DomainRelated,omitempty"`
-	EndDate       *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	Id            *int32  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Issuer        *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	StartDate     *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	CertIdentifier *string `json:"CertIdentifier,omitempty" xml:"CertIdentifier,omitempty"`
+	// example:
+	//
+	// www.aliyun.com
+	Common *string `json:"Common,omitempty" xml:"Common,omitempty"`
+	// example:
+	//
+	// false
+	DomainRelated *bool `json:"DomainRelated,omitempty" xml:"DomainRelated,omitempty"`
+	// example:
+	//
+	// 2020-09-23
+	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// example:
+	//
+	// 123
+	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// DigiCert Inc
+	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	// example:
+	//
+	// testCertName
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 2019-09-24
+	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
 func (s DescribleCertListResponseBodyCertList) String() string {
@@ -5480,6 +7455,11 @@ func (s DescribleCertListResponseBodyCertList) String() string {
 
 func (s DescribleCertListResponseBodyCertList) GoString() string {
 	return s.String()
+}
+
+func (s *DescribleCertListResponseBodyCertList) SetCertIdentifier(v string) *DescribleCertListResponseBodyCertList {
+	s.CertIdentifier = &v
+	return s
 }
 
 func (s *DescribleCertListResponseBodyCertList) SetCommon(v string) *DescribleCertListResponseBodyCertList {
@@ -5518,9 +7498,9 @@ func (s *DescribleCertListResponseBodyCertList) SetStartDate(v string) *Describl
 }
 
 type DescribleCertListResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribleCertListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribleCertListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribleCertListResponse) String() string {
@@ -5547,9 +7527,20 @@ func (s *DescribleCertListResponse) SetBody(v *DescribleCertListResponseBody) *D
 }
 
 type DescribleLayer7InstanceRelationsRequest struct {
-	DomainList      []*string `json:"DomainList,omitempty" xml:"DomainList,omitempty" type:"Repeated"`
-	ResourceGroupId *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SourceIp        *string   `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// www.aliyun.com
+	DomainList []*string `json:"DomainList,omitempty" xml:"DomainList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// test
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// 1.1.1.1
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
 func (s DescribleLayer7InstanceRelationsRequest) String() string {
@@ -5577,7 +7568,10 @@ func (s *DescribleLayer7InstanceRelationsRequest) SetSourceIp(v string) *Describ
 
 type DescribleLayer7InstanceRelationsResponseBody struct {
 	Layer7InstanceRelations []*DescribleLayer7InstanceRelationsResponseBodyLayer7InstanceRelations `json:"Layer7InstanceRelations,omitempty" xml:"Layer7InstanceRelations,omitempty" type:"Repeated"`
-	RequestId               *string                                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribleLayer7InstanceRelationsResponseBody) String() string {
@@ -5599,6 +7593,9 @@ func (s *DescribleLayer7InstanceRelationsResponseBody) SetRequestId(v string) *D
 }
 
 type DescribleLayer7InstanceRelationsResponseBodyLayer7InstanceRelations struct {
+	// example:
+	//
+	// www.aliyun.com
 	Domain          *string                                                                               `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	InstanceDetails []*DescribleLayer7InstanceRelationsResponseBodyLayer7InstanceRelationsInstanceDetails `json:"InstanceDetails,omitempty" xml:"InstanceDetails,omitempty" type:"Repeated"`
 }
@@ -5622,11 +7619,17 @@ func (s *DescribleLayer7InstanceRelationsResponseBodyLayer7InstanceRelations) Se
 }
 
 type DescribleLayer7InstanceRelationsResponseBodyLayer7InstanceRelationsInstanceDetails struct {
-	EipList         []*string `json:"EipList,omitempty" xml:"EipList,omitempty" type:"Repeated"`
-	FunctionVersion *string   `json:"FunctionVersion,omitempty" xml:"FunctionVersion,omitempty"`
-	InstanceId      *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IpMode          *string   `json:"IpMode,omitempty" xml:"IpMode,omitempty"`
-	IpVersion       *string   `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	EipList []*string `json:"EipList,omitempty" xml:"EipList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// default
+	FunctionVersion *string `json:"FunctionVersion,omitempty" xml:"FunctionVersion,omitempty"`
+	// example:
+	//
+	// ddoscoo-cn-XXXXX
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	IpMode     *string `json:"IpMode,omitempty" xml:"IpMode,omitempty"`
+	IpVersion  *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
 }
 
 func (s DescribleLayer7InstanceRelationsResponseBodyLayer7InstanceRelationsInstanceDetails) String() string {
@@ -5663,9 +7666,9 @@ func (s *DescribleLayer7InstanceRelationsResponseBodyLayer7InstanceRelationsInst
 }
 
 type DescribleLayer7InstanceRelationsResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribleLayer7InstanceRelationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribleLayer7InstanceRelationsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribleLayer7InstanceRelationsResponse) String() string {
@@ -5692,9 +7695,20 @@ func (s *DescribleLayer7InstanceRelationsResponse) SetBody(v *DescribleLayer7Ins
 }
 
 type DisableLayer7CCRequest struct {
-	Domain          *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// www.aliyun.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// test
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// example:
+	//
+	// 1.1.1.1
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
 func (s DisableLayer7CCRequest) String() string {
@@ -5721,6 +7735,9 @@ func (s *DisableLayer7CCRequest) SetSourceIp(v string) *DisableLayer7CCRequest {
 }
 
 type DisableLayer7CCResponseBody struct {
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5738,9 +7755,9 @@ func (s *DisableLayer7CCResponseBody) SetRequestId(v string) *DisableLayer7CCRes
 }
 
 type DisableLayer7CCResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DisableLayer7CCResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DisableLayer7CCResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DisableLayer7CCResponse) String() string {
@@ -5767,9 +7784,20 @@ func (s *DisableLayer7CCResponse) SetBody(v *DisableLayer7CCResponseBody) *Disab
 }
 
 type DisableLayer7CCRuleRequest struct {
-	Domain          *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// www.aliyun.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// test
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// example:
+	//
+	// 1.1.1.1
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
 func (s DisableLayer7CCRuleRequest) String() string {
@@ -5796,6 +7824,9 @@ func (s *DisableLayer7CCRuleRequest) SetSourceIp(v string) *DisableLayer7CCRuleR
 }
 
 type DisableLayer7CCRuleResponseBody struct {
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5813,9 +7844,9 @@ func (s *DisableLayer7CCRuleResponseBody) SetRequestId(v string) *DisableLayer7C
 }
 
 type DisableLayer7CCRuleResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DisableLayer7CCRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DisableLayer7CCRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DisableLayer7CCRuleResponse) String() string {
@@ -5842,9 +7873,18 @@ func (s *DisableLayer7CCRuleResponse) SetBody(v *DisableLayer7CCRuleResponseBody
 }
 
 type EmptySlsLogstoreRequest struct {
-	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// cn
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// xx
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// example:
+	//
+	// 1.1.1.1
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
 func (s EmptySlsLogstoreRequest) String() string {
@@ -5871,6 +7911,9 @@ func (s *EmptySlsLogstoreRequest) SetSourceIp(v string) *EmptySlsLogstoreRequest
 }
 
 type EmptySlsLogstoreResponseBody struct {
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5888,9 +7931,9 @@ func (s *EmptySlsLogstoreResponseBody) SetRequestId(v string) *EmptySlsLogstoreR
 }
 
 type EmptySlsLogstoreResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *EmptySlsLogstoreResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EmptySlsLogstoreResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s EmptySlsLogstoreResponse) String() string {
@@ -5917,9 +7960,20 @@ func (s *EmptySlsLogstoreResponse) SetBody(v *EmptySlsLogstoreResponseBody) *Emp
 }
 
 type EnableLayer7CCRequest struct {
-	Domain          *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// www.aliyun.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// test
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// example:
+	//
+	// 1.1.1.1
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
 func (s EnableLayer7CCRequest) String() string {
@@ -5946,6 +8000,9 @@ func (s *EnableLayer7CCRequest) SetSourceIp(v string) *EnableLayer7CCRequest {
 }
 
 type EnableLayer7CCResponseBody struct {
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5963,9 +8020,9 @@ func (s *EnableLayer7CCResponseBody) SetRequestId(v string) *EnableLayer7CCRespo
 }
 
 type EnableLayer7CCResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *EnableLayer7CCResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EnableLayer7CCResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s EnableLayer7CCResponse) String() string {
@@ -5992,9 +8049,20 @@ func (s *EnableLayer7CCResponse) SetBody(v *EnableLayer7CCResponseBody) *EnableL
 }
 
 type EnableLayer7CCRuleRequest struct {
-	Domain          *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// www.aliyun.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// test
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// example:
+	//
+	// 1.1.1.1
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
 func (s EnableLayer7CCRuleRequest) String() string {
@@ -6021,6 +8089,9 @@ func (s *EnableLayer7CCRuleRequest) SetSourceIp(v string) *EnableLayer7CCRuleReq
 }
 
 type EnableLayer7CCRuleResponseBody struct {
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6038,9 +8109,9 @@ func (s *EnableLayer7CCRuleResponseBody) SetRequestId(v string) *EnableLayer7CCR
 }
 
 type EnableLayer7CCRuleResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *EnableLayer7CCRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EnableLayer7CCRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s EnableLayer7CCRuleResponse) String() string {
@@ -6067,11 +8138,30 @@ func (s *EnableLayer7CCRuleResponse) SetBody(v *EnableLayer7CCRuleResponseBody) 
 }
 
 type ListAsyncTaskRequest struct {
-	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageNo          *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// cn
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// xx
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// example:
+	//
+	// 1.1.1.1
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
 func (s ListAsyncTaskRequest) String() string {
@@ -6109,8 +8199,14 @@ func (s *ListAsyncTaskRequest) SetSourceIp(v string) *ListAsyncTaskRequest {
 
 type ListAsyncTaskResponseBody struct {
 	AsyncTasks []*ListAsyncTaskResponseBodyAsyncTasks `json:"AsyncTasks,omitempty" xml:"AsyncTasks,omitempty" type:"Repeated"`
-	RequestId  *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Total      *int32                                 `json:"Total,omitempty" xml:"Total,omitempty"`
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 10
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListAsyncTaskResponseBody) String() string {
@@ -6137,13 +8233,34 @@ func (s *ListAsyncTaskResponseBody) SetTotal(v int32) *ListAsyncTaskResponseBody
 }
 
 type ListAsyncTaskResponseBodyAsyncTasks struct {
-	EndTime    *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	StartTime  *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	TaskId     *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 1533866201000
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 1533866201000
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 123
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// {"instanceId": "ddoscoo-1234-qrq2134"}
 	TaskParams *string `json:"TaskParams,omitempty" xml:"TaskParams,omitempty"`
+	// example:
+	//
+	// {"instanceId": "ddoscoo-1234-qrq2134", "url": "https://oss.xxx.xxx"}
 	TaskResult *string `json:"TaskResult,omitempty" xml:"TaskResult,omitempty"`
-	TaskStatus *int32  `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	TaskType   *int32  `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// example:
+	//
+	// 1
+	TaskStatus *int32 `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// example:
+	//
+	// 1
+	TaskType *int32 `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
 func (s ListAsyncTaskResponseBodyAsyncTasks) String() string {
@@ -6190,9 +8307,9 @@ func (s *ListAsyncTaskResponseBodyAsyncTasks) SetTaskType(v int32) *ListAsyncTas
 }
 
 type ListAsyncTaskResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListAsyncTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAsyncTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListAsyncTaskResponse) String() string {
@@ -6219,9 +8336,18 @@ func (s *ListAsyncTaskResponse) SetBody(v *ListAsyncTaskResponseBody) *ListAsync
 }
 
 type ListLayer7CustomPortsRequest struct {
-	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// cn
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// xx
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// example:
+	//
+	// 1.1.1.1
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
 func (s ListLayer7CustomPortsRequest) String() string {
@@ -6249,7 +8375,10 @@ func (s *ListLayer7CustomPortsRequest) SetSourceIp(v string) *ListLayer7CustomPo
 
 type ListLayer7CustomPortsResponseBody struct {
 	Layer7CustomPorts []*ListLayer7CustomPortsResponseBodyLayer7CustomPorts `json:"Layer7CustomPorts,omitempty" xml:"Layer7CustomPorts,omitempty" type:"Repeated"`
-	RequestId         *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListLayer7CustomPortsResponseBody) String() string {
@@ -6273,7 +8402,10 @@ func (s *ListLayer7CustomPortsResponseBody) SetRequestId(v string) *ListLayer7Cu
 type ListLayer7CustomPortsResponseBodyLayer7CustomPorts struct {
 	Flag       *string   `json:"Flag,omitempty" xml:"Flag,omitempty"`
 	ProxyPorts []*string `json:"ProxyPorts,omitempty" xml:"ProxyPorts,omitempty" type:"Repeated"`
-	ProxyType  *string   `json:"ProxyType,omitempty" xml:"ProxyType,omitempty"`
+	// example:
+	//
+	// https
+	ProxyType *string `json:"ProxyType,omitempty" xml:"ProxyType,omitempty"`
 }
 
 func (s ListLayer7CustomPortsResponseBodyLayer7CustomPorts) String() string {
@@ -6300,9 +8432,9 @@ func (s *ListLayer7CustomPortsResponseBodyLayer7CustomPorts) SetProxyType(v stri
 }
 
 type ListLayer7CustomPortsResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListLayer7CustomPortsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListLayer7CustomPortsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListLayer7CustomPortsResponse) String() string {
@@ -6329,11 +8461,30 @@ func (s *ListLayer7CustomPortsResponse) SetBody(v *ListLayer7CustomPortsResponse
 }
 
 type ListTagKeysRequest struct {
-	CurrentPage     *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// test
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceType    *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// INSTANCE
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s ListTagKeysRequest) String() string {
@@ -6370,11 +8521,23 @@ func (s *ListTagKeysRequest) SetResourceType(v string) *ListTagKeysRequest {
 }
 
 type ListTagKeysResponseBody struct {
-	CurrentPage *int32                            `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize    *int32                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId   *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TagKeys     []*ListTagKeysResponseBodyTagKeys `json:"TagKeys,omitempty" xml:"TagKeys,omitempty" type:"Repeated"`
-	TotalCount  *int32                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 97935DF1-0289-4AA2-9DD1-72377838B16B
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TagKeys   []*ListTagKeysResponseBodyTagKeys `json:"TagKeys,omitempty" xml:"TagKeys,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 6
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListTagKeysResponseBody) String() string {
@@ -6411,8 +8574,14 @@ func (s *ListTagKeysResponseBody) SetTotalCount(v int32) *ListTagKeysResponseBod
 }
 
 type ListTagKeysResponseBodyTagKeys struct {
-	TagCount *int32  `json:"TagCount,omitempty" xml:"TagCount,omitempty"`
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// example:
+	//
+	// 1
+	TagCount *int32 `json:"TagCount,omitempty" xml:"TagCount,omitempty"`
+	// example:
+	//
+	// a
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 }
 
 func (s ListTagKeysResponseBodyTagKeys) String() string {
@@ -6434,9 +8603,9 @@ func (s *ListTagKeysResponseBodyTagKeys) SetTagKey(v string) *ListTagKeysRespons
 }
 
 type ListTagKeysResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTagKeysResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTagKeysResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTagKeysResponse) String() string {
@@ -6463,12 +8632,31 @@ func (s *ListTagKeysResponse) SetBody(v *ListTagKeysResponseBody) *ListTagKeysRe
 }
 
 type ListTagResourcesRequest struct {
-	NextToken       *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RegionId        *string                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId *string                       `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceId      []*string                     `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourceType    *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag             []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// example:
+	//
+	// RGuYpqDdKhzXb8C3.D1BwQgc1tMBsoxdGiEKHHUUCffomr
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// test
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// ddoscoo-cn-o4017n9q9004
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// INSTANCE
+	ResourceType *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Tag          []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListTagResourcesRequest) String() string {
@@ -6510,7 +8698,13 @@ func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListT
 }
 
 type ListTagResourcesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// testKey1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// testValue1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -6533,7 +8727,13 @@ func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequest
 }
 
 type ListTagResourcesResponseBody struct {
-	NextToken    *string                                   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// RGuYpqDdKhzXb8C3.D1BwQgc1tMBsoxdGiEKHHUUCffomr
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// C3F7E6AE-43B2-4730-B6A3-FD17552B8F65
 	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TagResources *ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Struct"`
 }
@@ -6579,10 +8779,22 @@ func (s *ListTagResourcesResponseBodyTagResources) SetTagResource(v []*ListTagRe
 }
 
 type ListTagResourcesResponseBodyTagResourcesTagResource struct {
-	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// ddoscoo-cn-o4017n9q9004
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// INSTANCE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	// example:
+	//
+	// testKey1
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// example:
+	//
+	// testValue1
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s ListTagResourcesResponseBodyTagResourcesTagResource) String() string {
@@ -6614,9 +8826,9 @@ func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetTagValue(v stri
 }
 
 type ListTagResourcesResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTagResourcesResponse) String() string {
@@ -6643,8 +8855,14 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 }
 
 type ListValueAddedRequest struct {
+	// example:
+	//
+	// xx
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// example:
+	//
+	// 1.1.1.1
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
 func (s ListValueAddedRequest) String() string {
@@ -6666,6 +8884,9 @@ func (s *ListValueAddedRequest) SetSourceIp(v string) *ListValueAddedRequest {
 }
 
 type ListValueAddedResponseBody struct {
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
 	RequestId      *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ValueAddedList []*ListValueAddedResponseBodyValueAddedList `json:"ValueAddedList,omitempty" xml:"ValueAddedList,omitempty" type:"Repeated"`
 }
@@ -6689,11 +8910,27 @@ func (s *ListValueAddedResponseBody) SetValueAddedList(v []*ListValueAddedRespon
 }
 
 type ListValueAddedResponseBodyValueAddedList struct {
-	ExpireTime *int64  `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	GmtCreate  *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 1580918400000
+	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// example:
+	//
+	// 1575527305000
+	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// ddos_fl_pre-cn-xxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	LogSize    *int64  `json:"LogSize,omitempty" xml:"LogSize,omitempty"`
-	Status     *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 5497558138880
+	LogSize *int64 `json:"LogSize,omitempty" xml:"LogSize,omitempty"`
+	// example:
+	//
+	// 1
+	Status      *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	StoreRegion *string `json:"StoreRegion,omitempty" xml:"StoreRegion,omitempty"`
 }
 
 func (s ListValueAddedResponseBodyValueAddedList) String() string {
@@ -6729,10 +8966,15 @@ func (s *ListValueAddedResponseBodyValueAddedList) SetStatus(v int32) *ListValue
 	return s
 }
 
+func (s *ListValueAddedResponseBodyValueAddedList) SetStoreRegion(v string) *ListValueAddedResponseBodyValueAddedList {
+	s.StoreRegion = &v
+	return s
+}
+
 type ListValueAddedResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListValueAddedResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListValueAddedResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListValueAddedResponse) String() string {
@@ -6759,9 +9001,22 @@ func (s *ListValueAddedResponse) SetBody(v *ListValueAddedResponseBody) *ListVal
 }
 
 type ModifyElasticBandWidthRequest struct {
-	ElasticBandwidth *int32  `json:"ElasticBandwidth,omitempty" xml:"ElasticBandwidth,omitempty"`
-	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	SourceIp         *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 30
+	ElasticBandwidth *int32 `json:"ElasticBandwidth,omitempty" xml:"ElasticBandwidth,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ddoscoo-cn-XXXXX
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 1.1.1.1
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
 func (s ModifyElasticBandWidthRequest) String() string {
@@ -6788,6 +9043,9 @@ func (s *ModifyElasticBandWidthRequest) SetSourceIp(v string) *ModifyElasticBand
 }
 
 type ModifyElasticBandWidthResponseBody struct {
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6805,9 +9063,9 @@ func (s *ModifyElasticBandWidthResponseBody) SetRequestId(v string) *ModifyElast
 }
 
 type ModifyElasticBandWidthResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyElasticBandWidthResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyElasticBandWidthResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyElasticBandWidthResponse) String() string {
@@ -6834,10 +9092,24 @@ func (s *ModifyElasticBandWidthResponse) SetBody(v *ModifyElasticBandWidthRespon
 }
 
 type ModifyFullLogTtlRequest struct {
-	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// cn
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// xx
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Ttl             *int32  `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	// example:
+	//
+	// 1.1.1.1
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 30
+	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
 }
 
 func (s ModifyFullLogTtlRequest) String() string {
@@ -6869,6 +9141,9 @@ func (s *ModifyFullLogTtlRequest) SetTtl(v int32) *ModifyFullLogTtlRequest {
 }
 
 type ModifyFullLogTtlResponseBody struct {
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6886,9 +9161,9 @@ func (s *ModifyFullLogTtlResponseBody) SetRequestId(v string) *ModifyFullLogTtlR
 }
 
 type ModifyFullLogTtlResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyFullLogTtlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyFullLogTtlResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyFullLogTtlResponse) String() string {
@@ -6915,9 +9190,15 @@ func (s *ModifyFullLogTtlResponse) SetBody(v *ModifyFullLogTtlResponseBody) *Mod
 }
 
 type ModifyInstanceRemarkRequest struct {
+	// example:
+	//
+	// ddoscoo-cn-XXXXX
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Remark     *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	SourceIp   *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// example:
+	//
+	// 1.1.1.1
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
 func (s ModifyInstanceRemarkRequest) String() string {
@@ -6944,6 +9225,9 @@ func (s *ModifyInstanceRemarkRequest) SetSourceIp(v string) *ModifyInstanceRemar
 }
 
 type ModifyInstanceRemarkResponseBody struct {
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6961,9 +9245,9 @@ func (s *ModifyInstanceRemarkResponseBody) SetRequestId(v string) *ModifyInstanc
 }
 
 type ModifyInstanceRemarkResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyInstanceRemarkResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyInstanceRemarkResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyInstanceRemarkResponse) String() string {
@@ -6990,10 +9274,24 @@ func (s *ModifyInstanceRemarkResponse) SetBody(v *ModifyInstanceRemarkResponseBo
 }
 
 type OpenDomainSlsConfigRequest struct {
-	Domain          *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// www.example.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// cn
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// xx
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// example:
+	//
+	// 1.1.1.1
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
 func (s OpenDomainSlsConfigRequest) String() string {
@@ -7025,6 +9323,9 @@ func (s *OpenDomainSlsConfigRequest) SetSourceIp(v string) *OpenDomainSlsConfigR
 }
 
 type OpenDomainSlsConfigResponseBody struct {
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7042,9 +9343,9 @@ func (s *OpenDomainSlsConfigResponseBody) SetRequestId(v string) *OpenDomainSlsC
 }
 
 type OpenDomainSlsConfigResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *OpenDomainSlsConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *OpenDomainSlsConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s OpenDomainSlsConfigResponse) String() string {
@@ -7111,9 +9412,9 @@ func (s *ReleaseInstanceResponseBody) SetRequestId(v string) *ReleaseInstanceRes
 }
 
 type ReleaseInstanceResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ReleaseInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ReleaseInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ReleaseInstanceResponse) String() string {
@@ -7140,8 +9441,16 @@ func (s *ReleaseInstanceResponse) SetBody(v *ReleaseInstanceResponseBody) *Relea
 }
 
 type ReleaseValueAddedRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ddos_fl_pre-cn-xxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	SourceIp   *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// example:
+	//
+	// 1.1.1.1
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
 func (s ReleaseValueAddedRequest) String() string {
@@ -7163,6 +9472,9 @@ func (s *ReleaseValueAddedRequest) SetSourceIp(v string) *ReleaseValueAddedReque
 }
 
 type ReleaseValueAddedResponseBody struct {
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7180,9 +9492,9 @@ func (s *ReleaseValueAddedResponseBody) SetRequestId(v string) *ReleaseValueAdde
 }
 
 type ReleaseValueAddedResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ReleaseValueAddedResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ReleaseValueAddedResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ReleaseValueAddedResponse) String() string {
@@ -7209,11 +9521,29 @@ func (s *ReleaseValueAddedResponse) SetBody(v *ReleaseValueAddedResponseBody) *R
 }
 
 type TagResourcesRequest struct {
-	RegionId        *string                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId *string                   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceId      []*string                 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourceType    *string                   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag             []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// test
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ddoscoo-cn-v0h1fmwbc024
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// INSTANCE
+	ResourceType *string                   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Tag          []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s TagResourcesRequest) String() string {
@@ -7250,7 +9580,13 @@ func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesR
 }
 
 type TagResourcesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// testKey1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// testValue1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -7273,6 +9609,9 @@ func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
 }
 
 type TagResourcesResponseBody struct {
+	// example:
+	//
+	// 7078CD1E-F609-47A4-9C39-B288CC27C686
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7290,9 +9629,9 @@ func (s *TagResourcesResponseBody) SetRequestId(v string) *TagResourcesResponseB
 }
 
 type TagResourcesResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s TagResourcesResponse) String() string {
@@ -7319,12 +9658,36 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 }
 
 type UntagResourcesRequest struct {
-	All             *bool     `json:"All,omitempty" xml:"All,omitempty"`
-	RegionId        *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceId      []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourceType    *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey          []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
+	// example:
+	//
+	// false
+	All *bool `json:"All,omitempty" xml:"All,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// test
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ddoscoo-cn-v0h1fmwbc024
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// INSTANCE
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// example:
+	//
+	// testKey1
+	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 
 func (s UntagResourcesRequest) String() string {
@@ -7366,6 +9729,9 @@ func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
 }
 
 type UntagResourcesResponseBody struct {
+	// example:
+	//
+	// F2D86AED-BA27-4584-BADC-B43BDA7EEBCA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7383,9 +9749,9 @@ func (s *UntagResourcesResponseBody) SetRequestId(v string) *UntagResourcesRespo
 }
 
 type UntagResourcesResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UntagResourcesResponse) String() string {
@@ -7458,6 +9824,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// @param request - AddLayer7CCRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddLayer7CCRuleResponse
 func (client *Client) AddLayer7CCRuleWithOptions(request *AddLayer7CCRuleRequest, runtime *util.RuntimeOptions) (_result *AddLayer7CCRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7514,15 +9885,29 @@ func (client *Client) AddLayer7CCRuleWithOptions(request *AddLayer7CCRuleRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AddLayer7CCRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AddLayer7CCRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AddLayer7CCRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - AddLayer7CCRuleRequest
+//
+// @return AddLayer7CCRuleResponse
 func (client *Client) AddLayer7CCRule(request *AddLayer7CCRuleRequest) (_result *AddLayer7CCRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddLayer7CCRuleResponse{}
@@ -7534,6 +9919,11 @@ func (client *Client) AddLayer7CCRule(request *AddLayer7CCRuleRequest) (_result 
 	return _result, _err
 }
 
+// @param request - CloseDomainSlsConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloseDomainSlsConfigResponse
 func (client *Client) CloseDomainSlsConfigWithOptions(request *CloseDomainSlsConfigRequest, runtime *util.RuntimeOptions) (_result *CloseDomainSlsConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7570,15 +9960,29 @@ func (client *Client) CloseDomainSlsConfigWithOptions(request *CloseDomainSlsCon
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CloseDomainSlsConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CloseDomainSlsConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CloseDomainSlsConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - CloseDomainSlsConfigRequest
+//
+// @return CloseDomainSlsConfigResponse
 func (client *Client) CloseDomainSlsConfig(request *CloseDomainSlsConfigRequest) (_result *CloseDomainSlsConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CloseDomainSlsConfigResponse{}
@@ -7590,6 +9994,11 @@ func (client *Client) CloseDomainSlsConfig(request *CloseDomainSlsConfigRequest)
 	return _result, _err
 }
 
+// @param request - ConfigHealthCheckRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConfigHealthCheckResponse
 func (client *Client) ConfigHealthCheckWithOptions(request *ConfigHealthCheckRequest, runtime *util.RuntimeOptions) (_result *ConfigHealthCheckResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7626,15 +10035,29 @@ func (client *Client) ConfigHealthCheckWithOptions(request *ConfigHealthCheckReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ConfigHealthCheckResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ConfigHealthCheckResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ConfigHealthCheckResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - ConfigHealthCheckRequest
+//
+// @return ConfigHealthCheckResponse
 func (client *Client) ConfigHealthCheck(request *ConfigHealthCheckRequest) (_result *ConfigHealthCheckResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ConfigHealthCheckResponse{}
@@ -7646,6 +10069,11 @@ func (client *Client) ConfigHealthCheck(request *ConfigHealthCheckRequest) (_res
 	return _result, _err
 }
 
+// @param request - ConfigLayer4RuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConfigLayer4RuleResponse
 func (client *Client) ConfigLayer4RuleWithOptions(request *ConfigLayer4RuleRequest, runtime *util.RuntimeOptions) (_result *ConfigLayer4RuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7654,6 +10082,10 @@ func (client *Client) ConfigLayer4RuleWithOptions(request *ConfigLayer4RuleReque
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Listeners)) {
 		query["Listeners"] = request.Listeners
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProxyEnable)) {
+		query["ProxyEnable"] = request.ProxyEnable
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -7670,15 +10102,29 @@ func (client *Client) ConfigLayer4RuleWithOptions(request *ConfigLayer4RuleReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ConfigLayer4RuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ConfigLayer4RuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ConfigLayer4RuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - ConfigLayer4RuleRequest
+//
+// @return ConfigLayer4RuleResponse
 func (client *Client) ConfigLayer4Rule(request *ConfigLayer4RuleRequest) (_result *ConfigLayer4RuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ConfigLayer4RuleResponse{}
@@ -7690,6 +10136,11 @@ func (client *Client) ConfigLayer4Rule(request *ConfigLayer4RuleRequest) (_resul
 	return _result, _err
 }
 
+// @param request - ConfigLayer4RuleAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConfigLayer4RuleAttributeResponse
 func (client *Client) ConfigLayer4RuleAttributeWithOptions(request *ConfigLayer4RuleAttributeRequest, runtime *util.RuntimeOptions) (_result *ConfigLayer4RuleAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7726,15 +10177,29 @@ func (client *Client) ConfigLayer4RuleAttributeWithOptions(request *ConfigLayer4
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ConfigLayer4RuleAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ConfigLayer4RuleAttributeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ConfigLayer4RuleAttributeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - ConfigLayer4RuleAttributeRequest
+//
+// @return ConfigLayer4RuleAttributeResponse
 func (client *Client) ConfigLayer4RuleAttribute(request *ConfigLayer4RuleAttributeRequest) (_result *ConfigLayer4RuleAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ConfigLayer4RuleAttributeResponse{}
@@ -7746,6 +10211,11 @@ func (client *Client) ConfigLayer4RuleAttribute(request *ConfigLayer4RuleAttribu
 	return _result, _err
 }
 
+// @param request - ConfigLayer7BlackWhiteListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConfigLayer7BlackWhiteListResponse
 func (client *Client) ConfigLayer7BlackWhiteListWithOptions(request *ConfigLayer7BlackWhiteListRequest, runtime *util.RuntimeOptions) (_result *ConfigLayer7BlackWhiteListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7782,15 +10252,29 @@ func (client *Client) ConfigLayer7BlackWhiteListWithOptions(request *ConfigLayer
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ConfigLayer7BlackWhiteListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ConfigLayer7BlackWhiteListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ConfigLayer7BlackWhiteListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - ConfigLayer7BlackWhiteListRequest
+//
+// @return ConfigLayer7BlackWhiteListResponse
 func (client *Client) ConfigLayer7BlackWhiteList(request *ConfigLayer7BlackWhiteListRequest) (_result *ConfigLayer7BlackWhiteListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ConfigLayer7BlackWhiteListResponse{}
@@ -7802,6 +10286,11 @@ func (client *Client) ConfigLayer7BlackWhiteList(request *ConfigLayer7BlackWhite
 	return _result, _err
 }
 
+// @param request - ConfigLayer7CCRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConfigLayer7CCRuleResponse
 func (client *Client) ConfigLayer7CCRuleWithOptions(request *ConfigLayer7CCRuleRequest, runtime *util.RuntimeOptions) (_result *ConfigLayer7CCRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7858,15 +10347,29 @@ func (client *Client) ConfigLayer7CCRuleWithOptions(request *ConfigLayer7CCRuleR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ConfigLayer7CCRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ConfigLayer7CCRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ConfigLayer7CCRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - ConfigLayer7CCRuleRequest
+//
+// @return ConfigLayer7CCRuleResponse
 func (client *Client) ConfigLayer7CCRule(request *ConfigLayer7CCRuleRequest) (_result *ConfigLayer7CCRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ConfigLayer7CCRuleResponse{}
@@ -7878,6 +10381,11 @@ func (client *Client) ConfigLayer7CCRule(request *ConfigLayer7CCRuleRequest) (_r
 	return _result, _err
 }
 
+// @param request - ConfigLayer7CCTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConfigLayer7CCTemplateResponse
 func (client *Client) ConfigLayer7CCTemplateWithOptions(request *ConfigLayer7CCTemplateRequest, runtime *util.RuntimeOptions) (_result *ConfigLayer7CCTemplateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7910,15 +10418,29 @@ func (client *Client) ConfigLayer7CCTemplateWithOptions(request *ConfigLayer7CCT
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ConfigLayer7CCTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ConfigLayer7CCTemplateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ConfigLayer7CCTemplateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - ConfigLayer7CCTemplateRequest
+//
+// @return ConfigLayer7CCTemplateResponse
 func (client *Client) ConfigLayer7CCTemplate(request *ConfigLayer7CCTemplateRequest) (_result *ConfigLayer7CCTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ConfigLayer7CCTemplateResponse{}
@@ -7930,6 +10452,11 @@ func (client *Client) ConfigLayer7CCTemplate(request *ConfigLayer7CCTemplateRequ
 	return _result, _err
 }
 
+// @param request - ConfigLayer7CertRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConfigLayer7CertResponse
 func (client *Client) ConfigLayer7CertWithOptions(request *ConfigLayer7CertRequest, runtime *util.RuntimeOptions) (_result *ConfigLayer7CertResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7944,8 +10471,16 @@ func (client *Client) ConfigLayer7CertWithOptions(request *ConfigLayer7CertReque
 		query["CertId"] = request.CertId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.CertIdentifier)) {
+		query["CertIdentifier"] = request.CertIdentifier
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CertName)) {
 		query["CertName"] = request.CertName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CertRegion)) {
+		query["CertRegion"] = request.CertRegion
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Domain)) {
@@ -7974,15 +10509,29 @@ func (client *Client) ConfigLayer7CertWithOptions(request *ConfigLayer7CertReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ConfigLayer7CertResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ConfigLayer7CertResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ConfigLayer7CertResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - ConfigLayer7CertRequest
+//
+// @return ConfigLayer7CertResponse
 func (client *Client) ConfigLayer7Cert(request *ConfigLayer7CertRequest) (_result *ConfigLayer7CertResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ConfigLayer7CertResponse{}
@@ -7994,6 +10543,11 @@ func (client *Client) ConfigLayer7Cert(request *ConfigLayer7CertRequest) (_resul
 	return _result, _err
 }
 
+// @param request - ConfigLayer7RuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConfigLayer7RuleResponse
 func (client *Client) ConfigLayer7RuleWithOptions(request *ConfigLayer7RuleRequest, runtime *util.RuntimeOptions) (_result *ConfigLayer7RuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8042,15 +10596,29 @@ func (client *Client) ConfigLayer7RuleWithOptions(request *ConfigLayer7RuleReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ConfigLayer7RuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ConfigLayer7RuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ConfigLayer7RuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - ConfigLayer7RuleRequest
+//
+// @return ConfigLayer7RuleResponse
 func (client *Client) ConfigLayer7Rule(request *ConfigLayer7RuleRequest) (_result *ConfigLayer7RuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ConfigLayer7RuleResponse{}
@@ -8062,6 +10630,11 @@ func (client *Client) ConfigLayer7Rule(request *ConfigLayer7RuleRequest) (_resul
 	return _result, _err
 }
 
+// @param request - CreateAsyncTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAsyncTaskResponse
 func (client *Client) CreateAsyncTaskWithOptions(request *CreateAsyncTaskRequest, runtime *util.RuntimeOptions) (_result *CreateAsyncTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8094,15 +10667,29 @@ func (client *Client) CreateAsyncTaskWithOptions(request *CreateAsyncTaskRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateAsyncTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateAsyncTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateAsyncTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - CreateAsyncTaskRequest
+//
+// @return CreateAsyncTaskResponse
 func (client *Client) CreateAsyncTask(request *CreateAsyncTaskRequest) (_result *CreateAsyncTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAsyncTaskResponse{}
@@ -8114,6 +10701,11 @@ func (client *Client) CreateAsyncTask(request *CreateAsyncTaskRequest) (_result 
 	return _result, _err
 }
 
+// @param request - CreateLayer4RuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateLayer4RuleResponse
 func (client *Client) CreateLayer4RuleWithOptions(request *CreateLayer4RuleRequest, runtime *util.RuntimeOptions) (_result *CreateLayer4RuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8122,6 +10714,10 @@ func (client *Client) CreateLayer4RuleWithOptions(request *CreateLayer4RuleReque
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Listeners)) {
 		query["Listeners"] = request.Listeners
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProxyEnable)) {
+		query["ProxyEnable"] = request.ProxyEnable
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -8138,15 +10734,29 @@ func (client *Client) CreateLayer4RuleWithOptions(request *CreateLayer4RuleReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateLayer4RuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateLayer4RuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateLayer4RuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - CreateLayer4RuleRequest
+//
+// @return CreateLayer4RuleResponse
 func (client *Client) CreateLayer4Rule(request *CreateLayer4RuleRequest) (_result *CreateLayer4RuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateLayer4RuleResponse{}
@@ -8158,6 +10768,11 @@ func (client *Client) CreateLayer4Rule(request *CreateLayer4RuleRequest) (_resul
 	return _result, _err
 }
 
+// @param request - CreateLayer7RuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateLayer7RuleResponse
 func (client *Client) CreateLayer7RuleWithOptions(request *CreateLayer7RuleRequest, runtime *util.RuntimeOptions) (_result *CreateLayer7RuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8198,15 +10813,29 @@ func (client *Client) CreateLayer7RuleWithOptions(request *CreateLayer7RuleReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateLayer7RuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateLayer7RuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateLayer7RuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - CreateLayer7RuleRequest
+//
+// @return CreateLayer7RuleResponse
 func (client *Client) CreateLayer7Rule(request *CreateLayer7RuleRequest) (_result *CreateLayer7RuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateLayer7RuleResponse{}
@@ -8218,6 +10847,11 @@ func (client *Client) CreateLayer7Rule(request *CreateLayer7RuleRequest) (_resul
 	return _result, _err
 }
 
+// @param request - DeleteAsyncTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAsyncTaskResponse
 func (client *Client) DeleteAsyncTaskWithOptions(request *DeleteAsyncTaskRequest, runtime *util.RuntimeOptions) (_result *DeleteAsyncTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8246,15 +10880,29 @@ func (client *Client) DeleteAsyncTaskWithOptions(request *DeleteAsyncTaskRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteAsyncTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteAsyncTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteAsyncTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - DeleteAsyncTaskRequest
+//
+// @return DeleteAsyncTaskResponse
 func (client *Client) DeleteAsyncTask(request *DeleteAsyncTaskRequest) (_result *DeleteAsyncTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteAsyncTaskResponse{}
@@ -8266,6 +10914,11 @@ func (client *Client) DeleteAsyncTask(request *DeleteAsyncTaskRequest) (_result 
 	return _result, _err
 }
 
+// @param request - DeleteLayer4RuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteLayer4RuleResponse
 func (client *Client) DeleteLayer4RuleWithOptions(request *DeleteLayer4RuleRequest, runtime *util.RuntimeOptions) (_result *DeleteLayer4RuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8290,15 +10943,29 @@ func (client *Client) DeleteLayer4RuleWithOptions(request *DeleteLayer4RuleReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteLayer4RuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteLayer4RuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteLayer4RuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - DeleteLayer4RuleRequest
+//
+// @return DeleteLayer4RuleResponse
 func (client *Client) DeleteLayer4Rule(request *DeleteLayer4RuleRequest) (_result *DeleteLayer4RuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteLayer4RuleResponse{}
@@ -8310,6 +10977,11 @@ func (client *Client) DeleteLayer4Rule(request *DeleteLayer4RuleRequest) (_resul
 	return _result, _err
 }
 
+// @param request - DeleteLayer7CCRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteLayer7CCRuleResponse
 func (client *Client) DeleteLayer7CCRuleWithOptions(request *DeleteLayer7CCRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteLayer7CCRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8342,15 +11014,29 @@ func (client *Client) DeleteLayer7CCRuleWithOptions(request *DeleteLayer7CCRuleR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteLayer7CCRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteLayer7CCRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteLayer7CCRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - DeleteLayer7CCRuleRequest
+//
+// @return DeleteLayer7CCRuleResponse
 func (client *Client) DeleteLayer7CCRule(request *DeleteLayer7CCRuleRequest) (_result *DeleteLayer7CCRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteLayer7CCRuleResponse{}
@@ -8362,6 +11048,11 @@ func (client *Client) DeleteLayer7CCRule(request *DeleteLayer7CCRuleRequest) (_r
 	return _result, _err
 }
 
+// @param request - DeleteLayer7RuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteLayer7RuleResponse
 func (client *Client) DeleteLayer7RuleWithOptions(request *DeleteLayer7RuleRequest, runtime *util.RuntimeOptions) (_result *DeleteLayer7RuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8390,15 +11081,29 @@ func (client *Client) DeleteLayer7RuleWithOptions(request *DeleteLayer7RuleReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteLayer7RuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteLayer7RuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteLayer7RuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - DeleteLayer7RuleRequest
+//
+// @return DeleteLayer7RuleResponse
 func (client *Client) DeleteLayer7Rule(request *DeleteLayer7RuleRequest) (_result *DeleteLayer7RuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteLayer7RuleResponse{}
@@ -8410,12 +11115,21 @@ func (client *Client) DeleteLayer7Rule(request *DeleteLayer7RuleRequest) (_resul
 	return _result, _err
 }
 
+// @param request - DescribeBackSourceCidrRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBackSourceCidrResponse
 func (client *Client) DescribeBackSourceCidrWithOptions(request *DescribeBackSourceCidrRequest, runtime *util.RuntimeOptions) (_result *DescribeBackSourceCidrResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IpVersion)) {
+		query["IpVersion"] = request.IpVersion
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Line)) {
 		query["Line"] = request.Line
 	}
@@ -8442,15 +11156,29 @@ func (client *Client) DescribeBackSourceCidrWithOptions(request *DescribeBackSou
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeBackSourceCidrResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeBackSourceCidrResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeBackSourceCidrResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - DescribeBackSourceCidrRequest
+//
+// @return DescribeBackSourceCidrResponse
 func (client *Client) DescribeBackSourceCidr(request *DescribeBackSourceCidrRequest) (_result *DescribeBackSourceCidrResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeBackSourceCidrResponse{}
@@ -8462,6 +11190,15 @@ func (client *Client) DescribeBackSourceCidr(request *DescribeBackSourceCidrRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// rosetta迁移
+//
+// @param request - DescribeBatchSlsDispatchStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBatchSlsDispatchStatusResponse
 func (client *Client) DescribeBatchSlsDispatchStatusWithOptions(request *DescribeBatchSlsDispatchStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeBatchSlsDispatchStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8502,15 +11239,33 @@ func (client *Client) DescribeBatchSlsDispatchStatusWithOptions(request *Describ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeBatchSlsDispatchStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeBatchSlsDispatchStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeBatchSlsDispatchStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// rosetta迁移
+//
+// @param request - DescribeBatchSlsDispatchStatusRequest
+//
+// @return DescribeBatchSlsDispatchStatusResponse
 func (client *Client) DescribeBatchSlsDispatchStatus(request *DescribeBatchSlsDispatchStatusRequest) (_result *DescribeBatchSlsDispatchStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeBatchSlsDispatchStatusResponse{}
@@ -8522,6 +11277,11 @@ func (client *Client) DescribeBatchSlsDispatchStatus(request *DescribeBatchSlsDi
 	return _result, _err
 }
 
+// @param request - DescribeDDoSEventsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDDoSEventsResponse
 func (client *Client) DescribeDDoSEventsWithOptions(request *DescribeDDoSEventsRequest, runtime *util.RuntimeOptions) (_result *DescribeDDoSEventsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8570,15 +11330,29 @@ func (client *Client) DescribeDDoSEventsWithOptions(request *DescribeDDoSEventsR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDDoSEventsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDDoSEventsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDDoSEventsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - DescribeDDoSEventsRequest
+//
+// @return DescribeDDoSEventsResponse
 func (client *Client) DescribeDDoSEvents(request *DescribeDDoSEventsRequest) (_result *DescribeDDoSEventsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDDoSEventsResponse{}
@@ -8590,6 +11364,11 @@ func (client *Client) DescribeDDoSEvents(request *DescribeDDoSEventsRequest) (_r
 	return _result, _err
 }
 
+// @param request - DescribeDDoSTrafficRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDDoSTrafficResponse
 func (client *Client) DescribeDDoSTrafficWithOptions(request *DescribeDDoSTrafficRequest, runtime *util.RuntimeOptions) (_result *DescribeDDoSTrafficResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8634,15 +11413,29 @@ func (client *Client) DescribeDDoSTrafficWithOptions(request *DescribeDDoSTraffi
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDDoSTrafficResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDDoSTrafficResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDDoSTrafficResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - DescribeDDoSTrafficRequest
+//
+// @return DescribeDDoSTrafficResponse
 func (client *Client) DescribeDDoSTraffic(request *DescribeDDoSTrafficRequest) (_result *DescribeDDoSTrafficResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDDoSTrafficResponse{}
@@ -8654,6 +11447,11 @@ func (client *Client) DescribeDDoSTraffic(request *DescribeDDoSTrafficRequest) (
 	return _result, _err
 }
 
+// @param request - DescribeDefenseCountStatisticsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDefenseCountStatisticsResponse
 func (client *Client) DescribeDefenseCountStatisticsWithOptions(request *DescribeDefenseCountStatisticsRequest, runtime *util.RuntimeOptions) (_result *DescribeDefenseCountStatisticsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8682,15 +11480,29 @@ func (client *Client) DescribeDefenseCountStatisticsWithOptions(request *Describ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDefenseCountStatisticsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDefenseCountStatisticsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDefenseCountStatisticsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - DescribeDefenseCountStatisticsRequest
+//
+// @return DescribeDefenseCountStatisticsResponse
 func (client *Client) DescribeDefenseCountStatistics(request *DescribeDefenseCountStatisticsRequest) (_result *DescribeDefenseCountStatisticsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDefenseCountStatisticsResponse{}
@@ -8702,6 +11514,11 @@ func (client *Client) DescribeDefenseCountStatistics(request *DescribeDefenseCou
 	return _result, _err
 }
 
+// @param request - DescribeDomainAccessModeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDomainAccessModeResponse
 func (client *Client) DescribeDomainAccessModeWithOptions(request *DescribeDomainAccessModeRequest, runtime *util.RuntimeOptions) (_result *DescribeDomainAccessModeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8730,15 +11547,29 @@ func (client *Client) DescribeDomainAccessModeWithOptions(request *DescribeDomai
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDomainAccessModeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDomainAccessModeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDomainAccessModeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - DescribeDomainAccessModeRequest
+//
+// @return DescribeDomainAccessModeResponse
 func (client *Client) DescribeDomainAccessMode(request *DescribeDomainAccessModeRequest) (_result *DescribeDomainAccessModeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDomainAccessModeResponse{}
@@ -8750,7 +11581,12 @@ func (client *Client) DescribeDomainAccessMode(request *DescribeDomainAccessMode
 	return _result, _err
 }
 
-func (client *Client) DescribeDomainAttackEventsWithOptions(request *DescribeDomainAttackEventsRequest, runtime *util.RuntimeOptions) (_result *DescribeDomainAttackEventsResponse, _err error) {
+// @param request - DescribeDomainAttackEventListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDomainAttackEventListResponse
+func (client *Client) DescribeDomainAttackEventListWithOptions(request *DescribeDomainAttackEventListRequest, runtime *util.RuntimeOptions) (_result *DescribeDomainAttackEventListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -8764,8 +11600,8 @@ func (client *Client) DescribeDomainAttackEventsWithOptions(request *DescribeDom
 		query["EndTime"] = request.EndTime
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Offset)) {
-		query["Offset"] = request.Offset
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
@@ -8776,10 +11612,6 @@ func (client *Client) DescribeDomainAttackEventsWithOptions(request *DescribeDom
 		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
-		query["SourceIp"] = request.SourceIp
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		query["StartTime"] = request.StartTime
 	}
@@ -8788,7 +11620,7 @@ func (client *Client) DescribeDomainAttackEventsWithOptions(request *DescribeDom
 		Query: openapiutil.Query(query),
 	}
 	params := &openapi.Params{
-		Action:      tea.String("DescribeDomainAttackEvents"),
+		Action:      tea.String("DescribeDomainAttackEventList"),
 		Version:     tea.String("2017-12-28"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
@@ -8798,19 +11630,33 @@ func (client *Client) DescribeDomainAttackEventsWithOptions(request *DescribeDom
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDomainAttackEventsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDomainAttackEventListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDomainAttackEventListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
-func (client *Client) DescribeDomainAttackEvents(request *DescribeDomainAttackEventsRequest) (_result *DescribeDomainAttackEventsResponse, _err error) {
+// @param request - DescribeDomainAttackEventListRequest
+//
+// @return DescribeDomainAttackEventListResponse
+func (client *Client) DescribeDomainAttackEventList(request *DescribeDomainAttackEventListRequest) (_result *DescribeDomainAttackEventListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &DescribeDomainAttackEventsResponse{}
-	_body, _err := client.DescribeDomainAttackEventsWithOptions(request, runtime)
+	_result = &DescribeDomainAttackEventListResponse{}
+	_body, _err := client.DescribeDomainAttackEventListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8818,7 +11664,12 @@ func (client *Client) DescribeDomainAttackEvents(request *DescribeDomainAttackEv
 	return _result, _err
 }
 
-func (client *Client) DescribeDomainQpsWithOptions(request *DescribeDomainQpsRequest, runtime *util.RuntimeOptions) (_result *DescribeDomainQpsResponse, _err error) {
+// @param request - DescribeDomainAttackMaxQpsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDomainAttackMaxQpsResponse
+func (client *Client) DescribeDomainAttackMaxQpsWithOptions(request *DescribeDomainAttackMaxQpsRequest, runtime *util.RuntimeOptions) (_result *DescribeDomainAttackMaxQpsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -8836,8 +11687,79 @@ func (client *Client) DescribeDomainQpsWithOptions(request *DescribeDomainQpsReq
 		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
-		query["SourceIp"] = request.SourceIp
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDomainAttackMaxQps"),
+		Version:     tea.String("2017-12-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDomainAttackMaxQpsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDomainAttackMaxQpsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// @param request - DescribeDomainAttackMaxQpsRequest
+//
+// @return DescribeDomainAttackMaxQpsResponse
+func (client *Client) DescribeDomainAttackMaxQps(request *DescribeDomainAttackMaxQpsRequest) (_result *DescribeDomainAttackMaxQpsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDomainAttackMaxQpsResponse{}
+	_body, _err := client.DescribeDomainAttackMaxQpsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - DescribeDomainOverviewRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDomainOverviewResponse
+func (client *Client) DescribeDomainOverviewWithOptions(request *DescribeDomainOverviewRequest, runtime *util.RuntimeOptions) (_result *DescribeDomainOverviewResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
@@ -8848,7 +11770,7 @@ func (client *Client) DescribeDomainQpsWithOptions(request *DescribeDomainQpsReq
 		Query: openapiutil.Query(query),
 	}
 	params := &openapi.Params{
-		Action:      tea.String("DescribeDomainQps"),
+		Action:      tea.String("DescribeDomainOverview"),
 		Version:     tea.String("2017-12-28"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
@@ -8858,19 +11780,33 @@ func (client *Client) DescribeDomainQpsWithOptions(request *DescribeDomainQpsReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDomainQpsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDomainOverviewResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDomainOverviewResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
-func (client *Client) DescribeDomainQps(request *DescribeDomainQpsRequest) (_result *DescribeDomainQpsResponse, _err error) {
+// @param request - DescribeDomainOverviewRequest
+//
+// @return DescribeDomainOverviewResponse
+func (client *Client) DescribeDomainOverview(request *DescribeDomainOverviewRequest) (_result *DescribeDomainOverviewResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &DescribeDomainQpsResponse{}
-	_body, _err := client.DescribeDomainQpsWithOptions(request, runtime)
+	_result = &DescribeDomainOverviewResponse{}
+	_body, _err := client.DescribeDomainOverviewWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8878,6 +11814,90 @@ func (client *Client) DescribeDomainQps(request *DescribeDomainQpsRequest) (_res
 	return _result, _err
 }
 
+// @param request - DescribeDomainQpsListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDomainQpsListResponse
+func (client *Client) DescribeDomainQpsListWithOptions(request *DescribeDomainQpsListRequest, runtime *util.RuntimeOptions) (_result *DescribeDomainQpsListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDomainQpsList"),
+		Version:     tea.String("2017-12-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDomainQpsListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDomainQpsListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// @param request - DescribeDomainQpsListRequest
+//
+// @return DescribeDomainQpsListResponse
+func (client *Client) DescribeDomainQpsList(request *DescribeDomainQpsListRequest) (_result *DescribeDomainQpsListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDomainQpsListResponse{}
+	_body, _err := client.DescribeDomainQpsListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - DescribeDomainQpsWithCacheRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDomainQpsWithCacheResponse
 func (client *Client) DescribeDomainQpsWithCacheWithOptions(request *DescribeDomainQpsWithCacheRequest, runtime *util.RuntimeOptions) (_result *DescribeDomainQpsWithCacheResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8918,15 +11938,29 @@ func (client *Client) DescribeDomainQpsWithCacheWithOptions(request *DescribeDom
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDomainQpsWithCacheResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDomainQpsWithCacheResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDomainQpsWithCacheResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - DescribeDomainQpsWithCacheRequest
+//
+// @return DescribeDomainQpsWithCacheResponse
 func (client *Client) DescribeDomainQpsWithCache(request *DescribeDomainQpsWithCacheRequest) (_result *DescribeDomainQpsWithCacheResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDomainQpsWithCacheResponse{}
@@ -8938,6 +11972,11 @@ func (client *Client) DescribeDomainQpsWithCache(request *DescribeDomainQpsWithC
 	return _result, _err
 }
 
+// @param request - DescribeDomainSlsStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDomainSlsStatusResponse
 func (client *Client) DescribeDomainSlsStatusWithOptions(request *DescribeDomainSlsStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeDomainSlsStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8974,15 +12013,29 @@ func (client *Client) DescribeDomainSlsStatusWithOptions(request *DescribeDomain
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDomainSlsStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDomainSlsStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDomainSlsStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - DescribeDomainSlsStatusRequest
+//
+// @return DescribeDomainSlsStatusResponse
 func (client *Client) DescribeDomainSlsStatus(request *DescribeDomainSlsStatusRequest) (_result *DescribeDomainSlsStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDomainSlsStatusResponse{}
@@ -8994,6 +12047,102 @@ func (client *Client) DescribeDomainSlsStatus(request *DescribeDomainSlsStatusRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询网站业务的响应状态码统计信息
+//
+// @param request - DescribeDomainStatusCodeListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDomainStatusCodeListResponse
+func (client *Client) DescribeDomainStatusCodeListWithOptions(request *DescribeDomainStatusCodeListRequest, runtime *util.RuntimeOptions) (_result *DescribeDomainStatusCodeListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryType)) {
+		query["QueryType"] = request.QueryType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDomainStatusCodeList"),
+		Version:     tea.String("2017-12-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDomainStatusCodeListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDomainStatusCodeListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询网站业务的响应状态码统计信息
+//
+// @param request - DescribeDomainStatusCodeListRequest
+//
+// @return DescribeDomainStatusCodeListResponse
+func (client *Client) DescribeDomainStatusCodeList(request *DescribeDomainStatusCodeListRequest) (_result *DescribeDomainStatusCodeListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDomainStatusCodeListResponse{}
+	_body, _err := client.DescribeDomainStatusCodeListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - DescribeDomainsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDomainsResponse
 func (client *Client) DescribeDomainsWithOptions(request *DescribeDomainsRequest, runtime *util.RuntimeOptions) (_result *DescribeDomainsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9042,15 +12191,29 @@ func (client *Client) DescribeDomainsWithOptions(request *DescribeDomainsRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDomainsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDomainsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDomainsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - DescribeDomainsRequest
+//
+// @return DescribeDomainsResponse
 func (client *Client) DescribeDomains(request *DescribeDomainsRequest) (_result *DescribeDomainsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDomainsResponse{}
@@ -9062,6 +12225,11 @@ func (client *Client) DescribeDomains(request *DescribeDomainsRequest) (_result 
 	return _result, _err
 }
 
+// @param request - DescribeElasticBandwidthSpecRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeElasticBandwidthSpecResponse
 func (client *Client) DescribeElasticBandwidthSpecWithOptions(request *DescribeElasticBandwidthSpecRequest, runtime *util.RuntimeOptions) (_result *DescribeElasticBandwidthSpecResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9090,15 +12258,29 @@ func (client *Client) DescribeElasticBandwidthSpecWithOptions(request *DescribeE
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeElasticBandwidthSpecResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeElasticBandwidthSpecResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeElasticBandwidthSpecResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - DescribeElasticBandwidthSpecRequest
+//
+// @return DescribeElasticBandwidthSpecResponse
 func (client *Client) DescribeElasticBandwidthSpec(request *DescribeElasticBandwidthSpecRequest) (_result *DescribeElasticBandwidthSpecResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeElasticBandwidthSpecResponse{}
@@ -9110,6 +12292,11 @@ func (client *Client) DescribeElasticBandwidthSpec(request *DescribeElasticBandw
 	return _result, _err
 }
 
+// @param request - DescribeHealthCheckListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeHealthCheckListResponse
 func (client *Client) DescribeHealthCheckListWithOptions(request *DescribeHealthCheckListRequest, runtime *util.RuntimeOptions) (_result *DescribeHealthCheckListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9138,15 +12325,29 @@ func (client *Client) DescribeHealthCheckListWithOptions(request *DescribeHealth
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeHealthCheckListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeHealthCheckListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeHealthCheckListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - DescribeHealthCheckListRequest
+//
+// @return DescribeHealthCheckListResponse
 func (client *Client) DescribeHealthCheckList(request *DescribeHealthCheckListRequest) (_result *DescribeHealthCheckListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeHealthCheckListResponse{}
@@ -9158,6 +12359,11 @@ func (client *Client) DescribeHealthCheckList(request *DescribeHealthCheckListRe
 	return _result, _err
 }
 
+// @param request - DescribeHealthCheckStatusListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeHealthCheckStatusListResponse
 func (client *Client) DescribeHealthCheckStatusListWithOptions(request *DescribeHealthCheckStatusListRequest, runtime *util.RuntimeOptions) (_result *DescribeHealthCheckStatusListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9186,15 +12392,29 @@ func (client *Client) DescribeHealthCheckStatusListWithOptions(request *Describe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeHealthCheckStatusListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeHealthCheckStatusListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeHealthCheckStatusListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - DescribeHealthCheckStatusListRequest
+//
+// @return DescribeHealthCheckStatusListResponse
 func (client *Client) DescribeHealthCheckStatusList(request *DescribeHealthCheckStatusListRequest) (_result *DescribeHealthCheckStatusListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeHealthCheckStatusListResponse{}
@@ -9206,6 +12426,11 @@ func (client *Client) DescribeHealthCheckStatusList(request *DescribeHealthCheck
 	return _result, _err
 }
 
+// @param request - DescribeInstanceDetailsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstanceDetailsResponse
 func (client *Client) DescribeInstanceDetailsWithOptions(request *DescribeInstanceDetailsRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceDetailsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9234,15 +12459,29 @@ func (client *Client) DescribeInstanceDetailsWithOptions(request *DescribeInstan
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeInstanceDetailsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeInstanceDetailsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeInstanceDetailsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - DescribeInstanceDetailsRequest
+//
+// @return DescribeInstanceDetailsResponse
 func (client *Client) DescribeInstanceDetails(request *DescribeInstanceDetailsRequest) (_result *DescribeInstanceDetailsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstanceDetailsResponse{}
@@ -9254,6 +12493,11 @@ func (client *Client) DescribeInstanceDetails(request *DescribeInstanceDetailsRe
 	return _result, _err
 }
 
+// @param request - DescribeInstanceSpecsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstanceSpecsResponse
 func (client *Client) DescribeInstanceSpecsWithOptions(request *DescribeInstanceSpecsRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceSpecsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9282,15 +12526,29 @@ func (client *Client) DescribeInstanceSpecsWithOptions(request *DescribeInstance
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeInstanceSpecsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeInstanceSpecsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeInstanceSpecsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - DescribeInstanceSpecsRequest
+//
+// @return DescribeInstanceSpecsResponse
 func (client *Client) DescribeInstanceSpecs(request *DescribeInstanceSpecsRequest) (_result *DescribeInstanceSpecsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstanceSpecsResponse{}
@@ -9302,6 +12560,11 @@ func (client *Client) DescribeInstanceSpecs(request *DescribeInstanceSpecsReques
 	return _result, _err
 }
 
+// @param request - DescribeInstanceStatisticsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstanceStatisticsResponse
 func (client *Client) DescribeInstanceStatisticsWithOptions(request *DescribeInstanceStatisticsRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceStatisticsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9330,15 +12593,29 @@ func (client *Client) DescribeInstanceStatisticsWithOptions(request *DescribeIns
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeInstanceStatisticsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeInstanceStatisticsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeInstanceStatisticsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - DescribeInstanceStatisticsRequest
+//
+// @return DescribeInstanceStatisticsResponse
 func (client *Client) DescribeInstanceStatistics(request *DescribeInstanceStatisticsRequest) (_result *DescribeInstanceStatisticsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstanceStatisticsResponse{}
@@ -9350,6 +12627,11 @@ func (client *Client) DescribeInstanceStatistics(request *DescribeInstanceStatis
 	return _result, _err
 }
 
+// @param request - DescribeInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstancesResponse
 func (client *Client) DescribeInstancesWithOptions(request *DescribeInstancesRequest, runtime *util.RuntimeOptions) (_result *DescribeInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9422,15 +12704,29 @@ func (client *Client) DescribeInstancesWithOptions(request *DescribeInstancesReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - DescribeInstancesRequest
+//
+// @return DescribeInstancesResponse
 func (client *Client) DescribeInstances(request *DescribeInstancesRequest) (_result *DescribeInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstancesResponse{}
@@ -9442,6 +12738,11 @@ func (client *Client) DescribeInstances(request *DescribeInstancesRequest) (_res
 	return _result, _err
 }
 
+// @param request - DescribeIpTrafficRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeIpTrafficResponse
 func (client *Client) DescribeIpTrafficWithOptions(request *DescribeIpTrafficRequest, runtime *util.RuntimeOptions) (_result *DescribeIpTrafficResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9494,15 +12795,29 @@ func (client *Client) DescribeIpTrafficWithOptions(request *DescribeIpTrafficReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeIpTrafficResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeIpTrafficResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeIpTrafficResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - DescribeIpTrafficRequest
+//
+// @return DescribeIpTrafficResponse
 func (client *Client) DescribeIpTraffic(request *DescribeIpTrafficRequest) (_result *DescribeIpTrafficResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeIpTrafficResponse{}
@@ -9514,6 +12829,11 @@ func (client *Client) DescribeIpTraffic(request *DescribeIpTrafficRequest) (_res
 	return _result, _err
 }
 
+// @param request - DescribeLayer4RuleAttributesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeLayer4RuleAttributesResponse
 func (client *Client) DescribeLayer4RuleAttributesWithOptions(request *DescribeLayer4RuleAttributesRequest, runtime *util.RuntimeOptions) (_result *DescribeLayer4RuleAttributesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9542,15 +12862,29 @@ func (client *Client) DescribeLayer4RuleAttributesWithOptions(request *DescribeL
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeLayer4RuleAttributesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeLayer4RuleAttributesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeLayer4RuleAttributesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - DescribeLayer4RuleAttributesRequest
+//
+// @return DescribeLayer4RuleAttributesResponse
 func (client *Client) DescribeLayer4RuleAttributes(request *DescribeLayer4RuleAttributesRequest) (_result *DescribeLayer4RuleAttributesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeLayer4RuleAttributesResponse{}
@@ -9562,6 +12896,15 @@ func (client *Client) DescribeLayer4RuleAttributes(request *DescribeLayer4RuleAt
 	return _result, _err
 }
 
+// Summary:
+//
+// Call DescribeLayer4Rules to query the detailed configuration of port forwarding rules for DDoS protection instances.
+//
+// @param request - DescribeLayer4RulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeLayer4RulesResponse
 func (client *Client) DescribeLayer4RulesWithOptions(request *DescribeLayer4RulesRequest, runtime *util.RuntimeOptions) (_result *DescribeLayer4RulesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9606,15 +12949,33 @@ func (client *Client) DescribeLayer4RulesWithOptions(request *DescribeLayer4Rule
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeLayer4RulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeLayer4RulesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeLayer4RulesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Call DescribeLayer4Rules to query the detailed configuration of port forwarding rules for DDoS protection instances.
+//
+// @param request - DescribeLayer4RulesRequest
+//
+// @return DescribeLayer4RulesResponse
 func (client *Client) DescribeLayer4Rules(request *DescribeLayer4RulesRequest) (_result *DescribeLayer4RulesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeLayer4RulesResponse{}
@@ -9626,6 +12987,11 @@ func (client *Client) DescribeLayer4Rules(request *DescribeLayer4RulesRequest) (
 	return _result, _err
 }
 
+// @param request - DescribeLayer7CCRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeLayer7CCRulesResponse
 func (client *Client) DescribeLayer7CCRulesWithOptions(request *DescribeLayer7CCRulesRequest, runtime *util.RuntimeOptions) (_result *DescribeLayer7CCRulesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9666,15 +13032,29 @@ func (client *Client) DescribeLayer7CCRulesWithOptions(request *DescribeLayer7CC
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeLayer7CCRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeLayer7CCRulesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeLayer7CCRulesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - DescribeLayer7CCRulesRequest
+//
+// @return DescribeLayer7CCRulesResponse
 func (client *Client) DescribeLayer7CCRules(request *DescribeLayer7CCRulesRequest) (_result *DescribeLayer7CCRulesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeLayer7CCRulesResponse{}
@@ -9686,6 +13066,11 @@ func (client *Client) DescribeLayer7CCRules(request *DescribeLayer7CCRulesReques
 	return _result, _err
 }
 
+// @param request - DescribeLogStoreExistStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeLogStoreExistStatusResponse
 func (client *Client) DescribeLogStoreExistStatusWithOptions(request *DescribeLogStoreExistStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeLogStoreExistStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9718,15 +13103,29 @@ func (client *Client) DescribeLogStoreExistStatusWithOptions(request *DescribeLo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeLogStoreExistStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeLogStoreExistStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeLogStoreExistStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - DescribeLogStoreExistStatusRequest
+//
+// @return DescribeLogStoreExistStatusResponse
 func (client *Client) DescribeLogStoreExistStatus(request *DescribeLogStoreExistStatusRequest) (_result *DescribeLogStoreExistStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeLogStoreExistStatusResponse{}
@@ -9738,6 +13137,11 @@ func (client *Client) DescribeLogStoreExistStatus(request *DescribeLogStoreExist
 	return _result, _err
 }
 
+// @param request - DescribeOpEntitiesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeOpEntitiesResponse
 func (client *Client) DescribeOpEntitiesWithOptions(request *DescribeOpEntitiesRequest, runtime *util.RuntimeOptions) (_result *DescribeOpEntitiesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9794,15 +13198,29 @@ func (client *Client) DescribeOpEntitiesWithOptions(request *DescribeOpEntitiesR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeOpEntitiesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeOpEntitiesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeOpEntitiesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - DescribeOpEntitiesRequest
+//
+// @return DescribeOpEntitiesResponse
 func (client *Client) DescribeOpEntities(request *DescribeOpEntitiesRequest) (_result *DescribeOpEntitiesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeOpEntitiesResponse{}
@@ -9814,6 +13232,11 @@ func (client *Client) DescribeOpEntities(request *DescribeOpEntitiesRequest) (_r
 	return _result, _err
 }
 
+// @param request - DescribeSimpleDomainsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSimpleDomainsResponse
 func (client *Client) DescribeSimpleDomainsWithOptions(request *DescribeSimpleDomainsRequest, runtime *util.RuntimeOptions) (_result *DescribeSimpleDomainsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9850,15 +13273,29 @@ func (client *Client) DescribeSimpleDomainsWithOptions(request *DescribeSimpleDo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeSimpleDomainsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeSimpleDomainsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeSimpleDomainsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - DescribeSimpleDomainsRequest
+//
+// @return DescribeSimpleDomainsResponse
 func (client *Client) DescribeSimpleDomains(request *DescribeSimpleDomainsRequest) (_result *DescribeSimpleDomainsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSimpleDomainsResponse{}
@@ -9870,6 +13307,11 @@ func (client *Client) DescribeSimpleDomains(request *DescribeSimpleDomainsReques
 	return _result, _err
 }
 
+// @param request - DescribeSlsAuthStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSlsAuthStatusResponse
 func (client *Client) DescribeSlsAuthStatusWithOptions(request *DescribeSlsAuthStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeSlsAuthStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9902,15 +13344,29 @@ func (client *Client) DescribeSlsAuthStatusWithOptions(request *DescribeSlsAuthS
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeSlsAuthStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeSlsAuthStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeSlsAuthStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - DescribeSlsAuthStatusRequest
+//
+// @return DescribeSlsAuthStatusResponse
 func (client *Client) DescribeSlsAuthStatus(request *DescribeSlsAuthStatusRequest) (_result *DescribeSlsAuthStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSlsAuthStatusResponse{}
@@ -9922,6 +13378,11 @@ func (client *Client) DescribeSlsAuthStatus(request *DescribeSlsAuthStatusReques
 	return _result, _err
 }
 
+// @param request - DescribeSlsEmptyCountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSlsEmptyCountResponse
 func (client *Client) DescribeSlsEmptyCountWithOptions(request *DescribeSlsEmptyCountRequest, runtime *util.RuntimeOptions) (_result *DescribeSlsEmptyCountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9954,15 +13415,29 @@ func (client *Client) DescribeSlsEmptyCountWithOptions(request *DescribeSlsEmpty
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeSlsEmptyCountResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeSlsEmptyCountResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeSlsEmptyCountResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - DescribeSlsEmptyCountRequest
+//
+// @return DescribeSlsEmptyCountResponse
 func (client *Client) DescribeSlsEmptyCount(request *DescribeSlsEmptyCountRequest) (_result *DescribeSlsEmptyCountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSlsEmptyCountResponse{}
@@ -9974,6 +13449,11 @@ func (client *Client) DescribeSlsEmptyCount(request *DescribeSlsEmptyCountReques
 	return _result, _err
 }
 
+// @param request - DescribeSlsLogstoreInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSlsLogstoreInfoResponse
 func (client *Client) DescribeSlsLogstoreInfoWithOptions(request *DescribeSlsLogstoreInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeSlsLogstoreInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10006,15 +13486,29 @@ func (client *Client) DescribeSlsLogstoreInfoWithOptions(request *DescribeSlsLog
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeSlsLogstoreInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeSlsLogstoreInfoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeSlsLogstoreInfoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - DescribeSlsLogstoreInfoRequest
+//
+// @return DescribeSlsLogstoreInfoResponse
 func (client *Client) DescribeSlsLogstoreInfo(request *DescribeSlsLogstoreInfoRequest) (_result *DescribeSlsLogstoreInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSlsLogstoreInfoResponse{}
@@ -10026,6 +13520,11 @@ func (client *Client) DescribeSlsLogstoreInfo(request *DescribeSlsLogstoreInfoRe
 	return _result, _err
 }
 
+// @param request - DescribeSlsOpenStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSlsOpenStatusResponse
 func (client *Client) DescribeSlsOpenStatusWithOptions(request *DescribeSlsOpenStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeSlsOpenStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10058,15 +13557,29 @@ func (client *Client) DescribeSlsOpenStatusWithOptions(request *DescribeSlsOpenS
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeSlsOpenStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeSlsOpenStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeSlsOpenStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - DescribeSlsOpenStatusRequest
+//
+// @return DescribeSlsOpenStatusResponse
 func (client *Client) DescribeSlsOpenStatus(request *DescribeSlsOpenStatusRequest) (_result *DescribeSlsOpenStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSlsOpenStatusResponse{}
@@ -10078,6 +13591,11 @@ func (client *Client) DescribeSlsOpenStatus(request *DescribeSlsOpenStatusReques
 	return _result, _err
 }
 
+// @param request - DescribleCertListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribleCertListResponse
 func (client *Client) DescribleCertListWithOptions(request *DescribleCertListRequest, runtime *util.RuntimeOptions) (_result *DescribleCertListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10110,15 +13628,29 @@ func (client *Client) DescribleCertListWithOptions(request *DescribleCertListReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribleCertListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribleCertListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribleCertListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - DescribleCertListRequest
+//
+// @return DescribleCertListResponse
 func (client *Client) DescribleCertList(request *DescribleCertListRequest) (_result *DescribleCertListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribleCertListResponse{}
@@ -10130,6 +13662,11 @@ func (client *Client) DescribleCertList(request *DescribleCertListRequest) (_res
 	return _result, _err
 }
 
+// @param request - DescribleLayer7InstanceRelationsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribleLayer7InstanceRelationsResponse
 func (client *Client) DescribleLayer7InstanceRelationsWithOptions(request *DescribleLayer7InstanceRelationsRequest, runtime *util.RuntimeOptions) (_result *DescribleLayer7InstanceRelationsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10162,15 +13699,29 @@ func (client *Client) DescribleLayer7InstanceRelationsWithOptions(request *Descr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribleLayer7InstanceRelationsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribleLayer7InstanceRelationsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribleLayer7InstanceRelationsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - DescribleLayer7InstanceRelationsRequest
+//
+// @return DescribleLayer7InstanceRelationsResponse
 func (client *Client) DescribleLayer7InstanceRelations(request *DescribleLayer7InstanceRelationsRequest) (_result *DescribleLayer7InstanceRelationsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribleLayer7InstanceRelationsResponse{}
@@ -10182,6 +13733,11 @@ func (client *Client) DescribleLayer7InstanceRelations(request *DescribleLayer7I
 	return _result, _err
 }
 
+// @param request - DisableLayer7CCRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableLayer7CCResponse
 func (client *Client) DisableLayer7CCWithOptions(request *DisableLayer7CCRequest, runtime *util.RuntimeOptions) (_result *DisableLayer7CCResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10214,15 +13770,29 @@ func (client *Client) DisableLayer7CCWithOptions(request *DisableLayer7CCRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DisableLayer7CCResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DisableLayer7CCResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DisableLayer7CCResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - DisableLayer7CCRequest
+//
+// @return DisableLayer7CCResponse
 func (client *Client) DisableLayer7CC(request *DisableLayer7CCRequest) (_result *DisableLayer7CCResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DisableLayer7CCResponse{}
@@ -10234,6 +13804,11 @@ func (client *Client) DisableLayer7CC(request *DisableLayer7CCRequest) (_result 
 	return _result, _err
 }
 
+// @param request - DisableLayer7CCRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableLayer7CCRuleResponse
 func (client *Client) DisableLayer7CCRuleWithOptions(request *DisableLayer7CCRuleRequest, runtime *util.RuntimeOptions) (_result *DisableLayer7CCRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10266,15 +13841,29 @@ func (client *Client) DisableLayer7CCRuleWithOptions(request *DisableLayer7CCRul
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DisableLayer7CCRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DisableLayer7CCRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DisableLayer7CCRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - DisableLayer7CCRuleRequest
+//
+// @return DisableLayer7CCRuleResponse
 func (client *Client) DisableLayer7CCRule(request *DisableLayer7CCRuleRequest) (_result *DisableLayer7CCRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DisableLayer7CCRuleResponse{}
@@ -10286,6 +13875,11 @@ func (client *Client) DisableLayer7CCRule(request *DisableLayer7CCRuleRequest) (
 	return _result, _err
 }
 
+// @param request - EmptySlsLogstoreRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EmptySlsLogstoreResponse
 func (client *Client) EmptySlsLogstoreWithOptions(request *EmptySlsLogstoreRequest, runtime *util.RuntimeOptions) (_result *EmptySlsLogstoreResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10318,15 +13912,29 @@ func (client *Client) EmptySlsLogstoreWithOptions(request *EmptySlsLogstoreReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &EmptySlsLogstoreResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &EmptySlsLogstoreResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &EmptySlsLogstoreResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - EmptySlsLogstoreRequest
+//
+// @return EmptySlsLogstoreResponse
 func (client *Client) EmptySlsLogstore(request *EmptySlsLogstoreRequest) (_result *EmptySlsLogstoreResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EmptySlsLogstoreResponse{}
@@ -10338,6 +13946,11 @@ func (client *Client) EmptySlsLogstore(request *EmptySlsLogstoreRequest) (_resul
 	return _result, _err
 }
 
+// @param request - EnableLayer7CCRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableLayer7CCResponse
 func (client *Client) EnableLayer7CCWithOptions(request *EnableLayer7CCRequest, runtime *util.RuntimeOptions) (_result *EnableLayer7CCResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10370,15 +13983,29 @@ func (client *Client) EnableLayer7CCWithOptions(request *EnableLayer7CCRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &EnableLayer7CCResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &EnableLayer7CCResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &EnableLayer7CCResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - EnableLayer7CCRequest
+//
+// @return EnableLayer7CCResponse
 func (client *Client) EnableLayer7CC(request *EnableLayer7CCRequest) (_result *EnableLayer7CCResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EnableLayer7CCResponse{}
@@ -10390,6 +14017,11 @@ func (client *Client) EnableLayer7CC(request *EnableLayer7CCRequest) (_result *E
 	return _result, _err
 }
 
+// @param request - EnableLayer7CCRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableLayer7CCRuleResponse
 func (client *Client) EnableLayer7CCRuleWithOptions(request *EnableLayer7CCRuleRequest, runtime *util.RuntimeOptions) (_result *EnableLayer7CCRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10422,15 +14054,29 @@ func (client *Client) EnableLayer7CCRuleWithOptions(request *EnableLayer7CCRuleR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &EnableLayer7CCRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &EnableLayer7CCRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &EnableLayer7CCRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - EnableLayer7CCRuleRequest
+//
+// @return EnableLayer7CCRuleResponse
 func (client *Client) EnableLayer7CCRule(request *EnableLayer7CCRuleRequest) (_result *EnableLayer7CCRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EnableLayer7CCRuleResponse{}
@@ -10442,6 +14088,11 @@ func (client *Client) EnableLayer7CCRule(request *EnableLayer7CCRuleRequest) (_r
 	return _result, _err
 }
 
+// @param request - ListAsyncTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAsyncTaskResponse
 func (client *Client) ListAsyncTaskWithOptions(request *ListAsyncTaskRequest, runtime *util.RuntimeOptions) (_result *ListAsyncTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10482,15 +14133,29 @@ func (client *Client) ListAsyncTaskWithOptions(request *ListAsyncTaskRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListAsyncTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListAsyncTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListAsyncTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - ListAsyncTaskRequest
+//
+// @return ListAsyncTaskResponse
 func (client *Client) ListAsyncTask(request *ListAsyncTaskRequest) (_result *ListAsyncTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAsyncTaskResponse{}
@@ -10502,6 +14167,11 @@ func (client *Client) ListAsyncTask(request *ListAsyncTaskRequest) (_result *Lis
 	return _result, _err
 }
 
+// @param request - ListLayer7CustomPortsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListLayer7CustomPortsResponse
 func (client *Client) ListLayer7CustomPortsWithOptions(request *ListLayer7CustomPortsRequest, runtime *util.RuntimeOptions) (_result *ListLayer7CustomPortsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10534,15 +14204,29 @@ func (client *Client) ListLayer7CustomPortsWithOptions(request *ListLayer7Custom
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListLayer7CustomPortsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListLayer7CustomPortsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListLayer7CustomPortsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - ListLayer7CustomPortsRequest
+//
+// @return ListLayer7CustomPortsResponse
 func (client *Client) ListLayer7CustomPorts(request *ListLayer7CustomPortsRequest) (_result *ListLayer7CustomPortsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListLayer7CustomPortsResponse{}
@@ -10554,6 +14238,11 @@ func (client *Client) ListLayer7CustomPorts(request *ListLayer7CustomPortsReques
 	return _result, _err
 }
 
+// @param request - ListTagKeysRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagKeysResponse
 func (client *Client) ListTagKeysWithOptions(request *ListTagKeysRequest, runtime *util.RuntimeOptions) (_result *ListTagKeysResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10594,15 +14283,29 @@ func (client *Client) ListTagKeysWithOptions(request *ListTagKeysRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListTagKeysResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListTagKeysResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListTagKeysResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - ListTagKeysRequest
+//
+// @return ListTagKeysResponse
 func (client *Client) ListTagKeys(request *ListTagKeysRequest) (_result *ListTagKeysResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTagKeysResponse{}
@@ -10614,6 +14317,11 @@ func (client *Client) ListTagKeys(request *ListTagKeysRequest) (_result *ListTag
 	return _result, _err
 }
 
+// @param request - ListTagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagResourcesResponse
 func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10658,15 +14366,29 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListTagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListTagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListTagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - ListTagResourcesRequest
+//
+// @return ListTagResourcesResponse
 func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTagResourcesResponse{}
@@ -10678,6 +14400,11 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	return _result, _err
 }
 
+// @param request - ListValueAddedRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListValueAddedResponse
 func (client *Client) ListValueAddedWithOptions(request *ListValueAddedRequest, runtime *util.RuntimeOptions) (_result *ListValueAddedResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10706,15 +14433,29 @@ func (client *Client) ListValueAddedWithOptions(request *ListValueAddedRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListValueAddedResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListValueAddedResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListValueAddedResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - ListValueAddedRequest
+//
+// @return ListValueAddedResponse
 func (client *Client) ListValueAdded(request *ListValueAddedRequest) (_result *ListValueAddedResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListValueAddedResponse{}
@@ -10726,6 +14467,11 @@ func (client *Client) ListValueAdded(request *ListValueAddedRequest) (_result *L
 	return _result, _err
 }
 
+// @param request - ModifyElasticBandWidthRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyElasticBandWidthResponse
 func (client *Client) ModifyElasticBandWidthWithOptions(request *ModifyElasticBandWidthRequest, runtime *util.RuntimeOptions) (_result *ModifyElasticBandWidthResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10758,15 +14504,29 @@ func (client *Client) ModifyElasticBandWidthWithOptions(request *ModifyElasticBa
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyElasticBandWidthResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyElasticBandWidthResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyElasticBandWidthResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - ModifyElasticBandWidthRequest
+//
+// @return ModifyElasticBandWidthResponse
 func (client *Client) ModifyElasticBandWidth(request *ModifyElasticBandWidthRequest) (_result *ModifyElasticBandWidthResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyElasticBandWidthResponse{}
@@ -10778,6 +14538,11 @@ func (client *Client) ModifyElasticBandWidth(request *ModifyElasticBandWidthRequ
 	return _result, _err
 }
 
+// @param request - ModifyFullLogTtlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyFullLogTtlResponse
 func (client *Client) ModifyFullLogTtlWithOptions(request *ModifyFullLogTtlRequest, runtime *util.RuntimeOptions) (_result *ModifyFullLogTtlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10814,15 +14579,29 @@ func (client *Client) ModifyFullLogTtlWithOptions(request *ModifyFullLogTtlReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyFullLogTtlResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyFullLogTtlResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyFullLogTtlResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - ModifyFullLogTtlRequest
+//
+// @return ModifyFullLogTtlResponse
 func (client *Client) ModifyFullLogTtl(request *ModifyFullLogTtlRequest) (_result *ModifyFullLogTtlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyFullLogTtlResponse{}
@@ -10834,6 +14613,11 @@ func (client *Client) ModifyFullLogTtl(request *ModifyFullLogTtlRequest) (_resul
 	return _result, _err
 }
 
+// @param request - ModifyInstanceRemarkRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyInstanceRemarkResponse
 func (client *Client) ModifyInstanceRemarkWithOptions(request *ModifyInstanceRemarkRequest, runtime *util.RuntimeOptions) (_result *ModifyInstanceRemarkResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10866,15 +14650,29 @@ func (client *Client) ModifyInstanceRemarkWithOptions(request *ModifyInstanceRem
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyInstanceRemarkResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyInstanceRemarkResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyInstanceRemarkResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - ModifyInstanceRemarkRequest
+//
+// @return ModifyInstanceRemarkResponse
 func (client *Client) ModifyInstanceRemark(request *ModifyInstanceRemarkRequest) (_result *ModifyInstanceRemarkResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyInstanceRemarkResponse{}
@@ -10886,6 +14684,11 @@ func (client *Client) ModifyInstanceRemark(request *ModifyInstanceRemarkRequest)
 	return _result, _err
 }
 
+// @param request - OpenDomainSlsConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OpenDomainSlsConfigResponse
 func (client *Client) OpenDomainSlsConfigWithOptions(request *OpenDomainSlsConfigRequest, runtime *util.RuntimeOptions) (_result *OpenDomainSlsConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10922,15 +14725,29 @@ func (client *Client) OpenDomainSlsConfigWithOptions(request *OpenDomainSlsConfi
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &OpenDomainSlsConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &OpenDomainSlsConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &OpenDomainSlsConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - OpenDomainSlsConfigRequest
+//
+// @return OpenDomainSlsConfigResponse
 func (client *Client) OpenDomainSlsConfig(request *OpenDomainSlsConfigRequest) (_result *OpenDomainSlsConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OpenDomainSlsConfigResponse{}
@@ -10942,6 +14759,11 @@ func (client *Client) OpenDomainSlsConfig(request *OpenDomainSlsConfigRequest) (
 	return _result, _err
 }
 
+// @param request - ReleaseInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReleaseInstanceResponse
 func (client *Client) ReleaseInstanceWithOptions(request *ReleaseInstanceRequest, runtime *util.RuntimeOptions) (_result *ReleaseInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10970,15 +14792,29 @@ func (client *Client) ReleaseInstanceWithOptions(request *ReleaseInstanceRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ReleaseInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ReleaseInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ReleaseInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - ReleaseInstanceRequest
+//
+// @return ReleaseInstanceResponse
 func (client *Client) ReleaseInstance(request *ReleaseInstanceRequest) (_result *ReleaseInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ReleaseInstanceResponse{}
@@ -10990,6 +14826,11 @@ func (client *Client) ReleaseInstance(request *ReleaseInstanceRequest) (_result 
 	return _result, _err
 }
 
+// @param request - ReleaseValueAddedRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReleaseValueAddedResponse
 func (client *Client) ReleaseValueAddedWithOptions(request *ReleaseValueAddedRequest, runtime *util.RuntimeOptions) (_result *ReleaseValueAddedResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11018,15 +14859,29 @@ func (client *Client) ReleaseValueAddedWithOptions(request *ReleaseValueAddedReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ReleaseValueAddedResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ReleaseValueAddedResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ReleaseValueAddedResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - ReleaseValueAddedRequest
+//
+// @return ReleaseValueAddedResponse
 func (client *Client) ReleaseValueAdded(request *ReleaseValueAddedRequest) (_result *ReleaseValueAddedResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ReleaseValueAddedResponse{}
@@ -11038,6 +14893,11 @@ func (client *Client) ReleaseValueAdded(request *ReleaseValueAddedRequest) (_res
 	return _result, _err
 }
 
+// @param request - TagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TagResourcesResponse
 func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *util.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11078,15 +14938,29 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &TagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &TagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &TagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - TagResourcesRequest
+//
+// @return TagResourcesResponse
 func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TagResourcesResponse{}
@@ -11098,6 +14972,11 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 	return _result, _err
 }
 
+// @param request - UntagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UntagResourcesResponse
 func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *util.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11142,15 +15021,29 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UntagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UntagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UntagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - UntagResourcesRequest
+//
+// @return UntagResourcesResponse
 func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UntagResourcesResponse{}
