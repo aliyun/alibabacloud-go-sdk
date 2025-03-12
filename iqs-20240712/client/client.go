@@ -311,10 +311,6 @@ func (s *BicyclingDirectionNovaRequest) SetShowPolyline(v bool) *BicyclingDirect
 type BicyclingDirectionNovaResponseBody struct {
 	Data      *BicyclingDirectionNovaResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	RequestId *string                                 `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// True
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s BicyclingDirectionNovaResponseBody) String() string {
@@ -332,11 +328,6 @@ func (s *BicyclingDirectionNovaResponseBody) SetData(v *BicyclingDirectionNovaRe
 
 func (s *BicyclingDirectionNovaResponseBody) SetRequestId(v string) *BicyclingDirectionNovaResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *BicyclingDirectionNovaResponseBody) SetSuccess(v bool) *BicyclingDirectionNovaResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -1079,10 +1070,6 @@ func (s *DrivingDirectionNovaRequest) SetShowPolyline(v bool) *DrivingDirectionN
 type DrivingDirectionNovaResponseBody struct {
 	Data      *DrivingDirectionNovaResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	RequestId *string                               `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s DrivingDirectionNovaResponseBody) String() string {
@@ -1100,11 +1087,6 @@ func (s *DrivingDirectionNovaResponseBody) SetData(v *DrivingDirectionNovaRespon
 
 func (s *DrivingDirectionNovaResponseBody) SetRequestId(v string) *DrivingDirectionNovaResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *DrivingDirectionNovaResponseBody) SetSuccess(v bool) *DrivingDirectionNovaResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -1482,10 +1464,6 @@ func (s *ElectrobikeDirectionNovaRequest) SetShowPolyline(v bool) *ElectrobikeDi
 type ElectrobikeDirectionNovaResponseBody struct {
 	Data      *ElectrobikeDirectionNovaResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	RequestId *string                                   `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// True
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s ElectrobikeDirectionNovaResponseBody) String() string {
@@ -1503,11 +1481,6 @@ func (s *ElectrobikeDirectionNovaResponseBody) SetData(v *ElectrobikeDirectionNo
 
 func (s *ElectrobikeDirectionNovaResponseBody) SetRequestId(v string) *ElectrobikeDirectionNovaResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *ElectrobikeDirectionNovaResponseBody) SetSuccess(v bool) *ElectrobikeDirectionNovaResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -1858,10 +1831,6 @@ func (s *GeoCodeRequest) SetCity(v string) *GeoCodeRequest {
 type GeoCodeResponseBody struct {
 	Data      []*GeoCodeResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 	RequestId *string                    `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// True
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s GeoCodeResponseBody) String() string {
@@ -1879,11 +1848,6 @@ func (s *GeoCodeResponseBody) SetData(v []*GeoCodeResponseBodyData) *GeoCodeResp
 
 func (s *GeoCodeResponseBody) SetRequestId(v string) *GeoCodeResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *GeoCodeResponseBody) SetSuccess(v bool) *GeoCodeResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -2111,10 +2075,6 @@ func (s *NearbySearchNovaRequest) SetTypes(v string) *NearbySearchNovaRequest {
 type NearbySearchNovaResponseBody struct {
 	Data      []*NearbySearchNovaResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 	RequestId *string                             `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// True
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s NearbySearchNovaResponseBody) String() string {
@@ -2132,11 +2092,6 @@ func (s *NearbySearchNovaResponseBody) SetData(v []*NearbySearchNovaResponseBody
 
 func (s *NearbySearchNovaResponseBody) SetRequestId(v string) *NearbySearchNovaResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *NearbySearchNovaResponseBody) SetSuccess(v bool) *NearbySearchNovaResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -2456,10 +2411,6 @@ func (s *PlaceSearchNovaRequest) SetTypes(v string) *PlaceSearchNovaRequest {
 type PlaceSearchNovaResponseBody struct {
 	Data      []*PlaceSearchNovaResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 	RequestId *string                            `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s PlaceSearchNovaResponseBody) String() string {
@@ -2477,11 +2428,6 @@ func (s *PlaceSearchNovaResponseBody) SetData(v []*PlaceSearchNovaResponseBodyDa
 
 func (s *PlaceSearchNovaResponseBody) SetRequestId(v string) *PlaceSearchNovaResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *PlaceSearchNovaResponseBody) SetSuccess(v bool) *PlaceSearchNovaResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -3137,10 +3083,6 @@ func (s *RgeoCodeRequest) SetLongitude(v string) *RgeoCodeRequest {
 type RgeoCodeResponseBody struct {
 	Data      *RgeoCodeResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	RequestId *string                   `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// True
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s RgeoCodeResponseBody) String() string {
@@ -3158,11 +3100,6 @@ func (s *RgeoCodeResponseBody) SetData(v *RgeoCodeResponseBodyData) *RgeoCodeRes
 
 func (s *RgeoCodeResponseBody) SetRequestId(v string) *RgeoCodeResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *RgeoCodeResponseBody) SetSuccess(v bool) *RgeoCodeResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -3507,10 +3444,6 @@ func (s *TransitIntegratedDirectionRequest) SetShowPolyline(v bool) *TransitInte
 type TransitIntegratedDirectionResponseBody struct {
 	Data      *TransitIntegratedDirectionResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	RequestId *string                                     `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s TransitIntegratedDirectionResponseBody) String() string {
@@ -3528,11 +3461,6 @@ func (s *TransitIntegratedDirectionResponseBody) SetData(v *TransitIntegratedDir
 
 func (s *TransitIntegratedDirectionResponseBody) SetRequestId(v string) *TransitIntegratedDirectionResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *TransitIntegratedDirectionResponseBody) SetSuccess(v bool) *TransitIntegratedDirectionResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -4469,7 +4397,8 @@ type TransitIntegratedDirectionResponseBodyDataPathsSegmentsTaxi struct {
 	// example:
 	//
 	// 116.476597,39.893420
-	OriginPoint *string `json:"originPoint,omitempty" xml:"originPoint,omitempty"`
+	OriginPoint *string                                                              `json:"originPoint,omitempty" xml:"originPoint,omitempty"`
+	Polyline    *TransitIntegratedDirectionResponseBodyDataPathsSegmentsTaxiPolyline `json:"polyline,omitempty" xml:"polyline,omitempty" type:"Struct"`
 	// example:
 	//
 	// 13.5
@@ -4519,8 +4448,30 @@ func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsTaxi) SetOriginP
 	return s
 }
 
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsTaxi) SetPolyline(v *TransitIntegratedDirectionResponseBodyDataPathsSegmentsTaxiPolyline) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsTaxi {
+	s.Polyline = v
+	return s
+}
+
 func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsTaxi) SetPrice(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsTaxi {
 	s.Price = &v
+	return s
+}
+
+type TransitIntegratedDirectionResponseBodyDataPathsSegmentsTaxiPolyline struct {
+	Polyline *string `json:"polyline,omitempty" xml:"polyline,omitempty"`
+}
+
+func (s TransitIntegratedDirectionResponseBodyDataPathsSegmentsTaxiPolyline) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransitIntegratedDirectionResponseBodyDataPathsSegmentsTaxiPolyline) GoString() string {
+	return s.String()
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsTaxiPolyline) SetPolyline(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsTaxiPolyline {
+	s.Polyline = &v
 	return s
 }
 
@@ -4847,10 +4798,6 @@ func (s *WalkingDirectionNovaRequest) SetShowPolyline(v bool) *WalkingDirectionN
 type WalkingDirectionNovaResponseBody struct {
 	Data      *WalkingDirectionNovaResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	RequestId *string                               `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s WalkingDirectionNovaResponseBody) String() string {
@@ -4868,11 +4815,6 @@ func (s *WalkingDirectionNovaResponseBody) SetData(v *WalkingDirectionNovaRespon
 
 func (s *WalkingDirectionNovaResponseBody) SetRequestId(v string) *WalkingDirectionNovaResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *WalkingDirectionNovaResponseBody) SetSuccess(v bool) *WalkingDirectionNovaResponseBody {
-	s.Success = &v
 	return s
 }
 
