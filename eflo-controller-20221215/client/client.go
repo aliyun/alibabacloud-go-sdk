@@ -129,6 +129,7 @@ type ChangeResourceGroupRequest struct {
 	//
 	// cn-wulanchabu
 	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
+	ResourceType     *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s ChangeResourceGroupRequest) String() string {
@@ -151,6 +152,11 @@ func (s *ChangeResourceGroupRequest) SetResourceId(v string) *ChangeResourceGrou
 
 func (s *ChangeResourceGroupRequest) SetResourceRegionId(v string) *ChangeResourceGroupRequest {
 	s.ResourceRegionId = &v
+	return s
+}
+
+func (s *ChangeResourceGroupRequest) SetResourceType(v string) *ChangeResourceGroupRequest {
+	s.ResourceType = &v
 	return s
 }
 
@@ -206,10 +212,14 @@ func (s *ChangeResourceGroupResponse) SetBody(v *ChangeResourceGroupResponseBody
 }
 
 type CloseSessionRequest struct {
+	// Session ID
+	//
 	// example:
 	//
 	// i207023871669364793713
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// Session token
+	//
 	// example:
 	//
 	// 03f53c719015a9ad4f4f55d66cac2dac161b18e8065ca75a3220b89de389c980
@@ -235,10 +245,14 @@ func (s *CloseSessionRequest) SetSessionToken(v string) *CloseSessionRequest {
 }
 
 type CloseSessionResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// 07AA3A1F-321E-50D8-B834-88C411331C94
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Session ID.
+	//
 	// example:
 	//
 	// i206495551737511455528
@@ -1688,28 +1702,43 @@ func (s *CreateDiagnosticTaskResponse) SetBody(v *CreateDiagnosticTaskResponseBo
 }
 
 type CreateNetTestTaskRequest struct {
+	// Cluster ID
+	//
 	// example:
 	//
 	// i119982311660892626523
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// Cluster name
+	//
 	// example:
 	//
 	// Eflo-YJ-Test-Cluster
-	ClusterName *string                            `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	CommTest    *CreateNetTestTaskRequestCommTest  `json:"CommTest,omitempty" xml:"CommTest,omitempty" type:"Struct"`
-	DelayTest   *CreateNetTestTaskRequestDelayTest `json:"DelayTest,omitempty" xml:"DelayTest,omitempty" type:"Struct"`
+	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// Required when the test type is communication library testing
+	CommTest *CreateNetTestTaskRequestCommTest `json:"CommTest,omitempty" xml:"CommTest,omitempty" type:"Struct"`
+	// Fill in this field when the network test type is delay testing.
+	DelayTest *CreateNetTestTaskRequestDelayTest `json:"DelayTest,omitempty" xml:"DelayTest,omitempty" type:"Struct"`
+	// Network test type.
+	//
+	// For example: DelayTest for latency testing, TrafficTest for traffic testing, CommTest for communication library testing.
+	//
 	// example:
 	//
 	// DelayTest
 	NetTestType *string `json:"NetTestType,omitempty" xml:"NetTestType,omitempty"`
+	// Network mode
+	//
 	// example:
 	//
 	// 2
 	NetworkMode *string `json:"NetworkMode,omitempty" xml:"NetworkMode,omitempty"`
+	// Test port number.
+	//
 	// example:
 	//
 	// 23604
-	Port        *string                              `json:"Port,omitempty" xml:"Port,omitempty"`
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// This field is empty if the TrafficModel is Fullmesh.
 	TrafficTest *CreateNetTestTaskRequestTrafficTest `json:"TrafficTest,omitempty" xml:"TrafficTest,omitempty" type:"Struct"`
 }
 
@@ -1762,15 +1791,22 @@ func (s *CreateNetTestTaskRequest) SetTrafficTest(v *CreateNetTestTaskRequestTra
 }
 
 type CreateNetTestTaskRequestCommTest struct {
+	// Number of GPUs
+	//
 	// example:
 	//
 	// 1
-	GPUNum *int64                                   `json:"GPUNum,omitempty" xml:"GPUNum,omitempty"`
-	Hosts  []*CreateNetTestTaskRequestCommTestHosts `json:"Hosts,omitempty" xml:"Hosts,omitempty" type:"Repeated"`
+	GPUNum *int64 `json:"GPUNum,omitempty" xml:"GPUNum,omitempty"`
+	// Resource ID
+	Hosts []*CreateNetTestTaskRequestCommTestHosts `json:"Hosts,omitempty" xml:"Hosts,omitempty" type:"Repeated"`
+	// Communication library model
+	//
 	// example:
 	//
 	// intention_v4
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// Communication library test category: ACCL or NCCL
+	//
 	// example:
 	//
 	// ACCL
@@ -1806,18 +1842,26 @@ func (s *CreateNetTestTaskRequestCommTest) SetType(v string) *CreateNetTestTaskR
 }
 
 type CreateNetTestTaskRequestCommTestHosts struct {
+	// IP address.
+	//
 	// example:
 	//
 	// 169.253.253.15
 	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
+	// Node ID.
+	//
 	// example:
 	//
 	// e01-tw-bqisacl3z6l
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// Resource ID
+	//
 	// example:
 	//
 	// i111670831721110797708
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// Service name.
+	//
 	// example:
 	//
 	// VBw
@@ -1853,6 +1897,7 @@ func (s *CreateNetTestTaskRequestCommTestHosts) SetServerName(v string) *CreateN
 }
 
 type CreateNetTestTaskRequestDelayTest struct {
+	// 输入测试节点的hosts
 	Hosts []*CreateNetTestTaskRequestDelayTestHosts `json:"Hosts,omitempty" xml:"Hosts,omitempty" type:"Repeated"`
 }
 
@@ -1870,22 +1915,32 @@ func (s *CreateNetTestTaskRequestDelayTest) SetHosts(v []*CreateNetTestTaskReque
 }
 
 type CreateNetTestTaskRequestDelayTestHosts struct {
+	// Network interface bond port
+	//
 	// example:
 	//
 	// bond1
 	Bond *string `json:"Bond,omitempty" xml:"Bond,omitempty"`
+	// Node IP
+	//
 	// example:
 	//
 	// 125.210.225.48
 	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
+	// Node ID.
+	//
 	// example:
 	//
 	// e01-cn-fou43an0a05
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// Resource ID
+	//
 	// example:
 	//
 	// e01-cn-bcd3u1aee06
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// Service name.
+	//
 	// example:
 	//
 	// NQU
@@ -1926,24 +1981,38 @@ func (s *CreateNetTestTaskRequestDelayTestHosts) SetServerName(v string) *Create
 }
 
 type CreateNetTestTaskRequestTrafficTest struct {
+	// Resource ID.
 	Clients []*CreateNetTestTaskRequestTrafficTestClients `json:"Clients,omitempty" xml:"Clients,omitempty" type:"Repeated"`
+	// The duration of the workflow task in seconds.
+	//
 	// example:
 	//
 	// 1
 	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// Enter True/False when the protocol is RDMA,
+	//
+	// this field is empty when the protocol is TCP.
+	//
 	// example:
 	//
 	// False
 	GDR *bool `json:"GDR,omitempty" xml:"GDR,omitempty"`
+	// Network protocol, either RDMA or TCP.
+	//
 	// example:
 	//
 	// TCP
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// Enter the number of concurrent connections when the protocol is TCP, or enter the configured QP value when the protocol is RDMA.
+	//
 	// example:
 	//
 	// 1
-	QP      *int64                                        `json:"QP,omitempty" xml:"QP,omitempty"`
+	QP *int64 `json:"QP,omitempty" xml:"QP,omitempty"`
+	// Service list
 	Servers []*CreateNetTestTaskRequestTrafficTestServers `json:"Servers,omitempty" xml:"Servers,omitempty" type:"Repeated"`
+	// Traffic model, either MTON or Fullmesh.
+	//
 	// example:
 	//
 	// Fullmesh
@@ -1994,22 +2063,32 @@ func (s *CreateNetTestTaskRequestTrafficTest) SetTrafficModel(v string) *CreateN
 }
 
 type CreateNetTestTaskRequestTrafficTestClients struct {
+	// Network card bond interface
+	//
 	// example:
 	//
 	// bond1
 	Bond *string `json:"Bond,omitempty" xml:"Bond,omitempty"`
+	// Node IP
+	//
 	// example:
 	//
 	// 192.168.1.1
 	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
+	// Node ID
+	//
 	// example:
 	//
 	// e01-tw-w5elqg7pw18
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// Resource ID
+	//
 	// example:
 	//
 	// e01-cn-20s41p6cx01
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// Service name.
+	//
 	// example:
 	//
 	// xMv
@@ -2050,22 +2129,32 @@ func (s *CreateNetTestTaskRequestTrafficTestClients) SetServerName(v string) *Cr
 }
 
 type CreateNetTestTaskRequestTrafficTestServers struct {
+	// Network card bond interface
+	//
 	// example:
 	//
 	// bond1
 	Bond *string `json:"Bond,omitempty" xml:"Bond,omitempty"`
+	// Node IP
+	//
 	// example:
 	//
 	// 47.121.110.190
 	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
+	// Node ID
+	//
 	// example:
 	//
 	// e01-tw-bqisacl3z6l
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// Resource ID
+	//
 	// example:
 	//
 	// e01-cn-wwo3etaqu0b
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// Service name.
+	//
 	// example:
 	//
 	// xMv
@@ -2106,28 +2195,43 @@ func (s *CreateNetTestTaskRequestTrafficTestServers) SetServerName(v string) *Cr
 }
 
 type CreateNetTestTaskShrinkRequest struct {
+	// Cluster ID
+	//
 	// example:
 	//
 	// i119982311660892626523
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// Cluster name
+	//
 	// example:
 	//
 	// Eflo-YJ-Test-Cluster
-	ClusterName     *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	CommTestShrink  *string `json:"CommTest,omitempty" xml:"CommTest,omitempty"`
+	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// Required when the test type is communication library testing
+	CommTestShrink *string `json:"CommTest,omitempty" xml:"CommTest,omitempty"`
+	// Fill in this field when the network test type is delay testing.
 	DelayTestShrink *string `json:"DelayTest,omitempty" xml:"DelayTest,omitempty"`
+	// Network test type.
+	//
+	// For example: DelayTest for latency testing, TrafficTest for traffic testing, CommTest for communication library testing.
+	//
 	// example:
 	//
 	// DelayTest
 	NetTestType *string `json:"NetTestType,omitempty" xml:"NetTestType,omitempty"`
+	// Network mode
+	//
 	// example:
 	//
 	// 2
 	NetworkMode *string `json:"NetworkMode,omitempty" xml:"NetworkMode,omitempty"`
+	// Test port number.
+	//
 	// example:
 	//
 	// 23604
-	Port              *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// This field is empty if the TrafficModel is Fullmesh.
 	TrafficTestShrink *string `json:"TrafficTest,omitempty" xml:"TrafficTest,omitempty"`
 }
 
@@ -2180,12 +2284,14 @@ func (s *CreateNetTestTaskShrinkRequest) SetTrafficTestShrink(v string) *CreateN
 }
 
 type CreateNetTestTaskResponseBody struct {
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 启动测试任务ID，网络测试任务的唯一标志。
+	//
 	// example:
 	//
 	// dr-uf6i0tv2refv8wz*****
@@ -2240,11 +2346,24 @@ func (s *CreateNetTestTaskResponse) SetBody(v *CreateNetTestTaskResponseBody) *C
 }
 
 type CreateSessionRequest struct {
+	// Instance ID.
+	//
 	// example:
 	//
 	// e01-cn-kvw44e6dn04
-	NodeId      *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// Session type corresponding to the session package.
+	//
+	// example:
+	//
+	// N	两种：
+	//
+	// Sol：基于串口[默认]
+	//
+	// Assistant：基于云助手
 	SessionType *string `json:"SessionType,omitempty" xml:"SessionType,omitempty"`
+	// Initiation time, 13-digit timestamp.
+	//
 	// example:
 	//
 	// 1669340937156
@@ -2275,24 +2394,32 @@ func (s *CreateSessionRequest) SetStartTime(v string) *CreateSessionRequest {
 }
 
 type CreateSessionResponseBody struct {
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//
 	// 887FA855-89F4-5DB3-B305-C5879EC480E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 节点  ID。
+	//
 	// example:
 	//
 	// 2A59143F1
 	ServerSn *string `json:"ServerSn,omitempty" xml:"ServerSn,omitempty"`
+	// Session ID.
+	//
 	// example:
 	//
 	// i207023871669364793713
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// Session token.
+	//
 	// example:
 	//
 	// 03f53c719015a9ad4f4f55d66cac2dac161b18e8065ca75a3220b89de389c980
 	SessionToken *string `json:"SessionToken,omitempty" xml:"SessionToken,omitempty"`
+	// WebSocket address
+	//
 	// example:
 	//
 	// ws://x.x.x.x:xx/calypso_web_console
@@ -3438,6 +3565,8 @@ func (s *DescribeInvocationsResponse) SetBody(v *DescribeInvocationsResponseBody
 }
 
 type DescribeNetTestResultRequest struct {
+	// Test task ID.
+	//
 	// example:
 	//
 	// dr-uf6i0tv2refv8wz*****
@@ -3458,48 +3587,77 @@ func (s *DescribeNetTestResultRequest) SetTestId(v string) *DescribeNetTestResul
 }
 
 type DescribeNetTestResultResponseBody struct {
+	// Cluster ID.
+	//
 	// example:
 	//
 	// i119982311660892626523
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// Cluster name.
+	//
 	// example:
 	//
 	// Standard_Cluster
-	ClusterName *string                                    `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	CommTest    *DescribeNetTestResultResponseBodyCommTest `json:"CommTest,omitempty" xml:"CommTest,omitempty" type:"Struct"`
+	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// Fill in when the traffic test type is communication library test
+	CommTest *DescribeNetTestResultResponseBodyCommTest `json:"CommTest,omitempty" xml:"CommTest,omitempty" type:"Struct"`
+	// Diagnosis task creation time.
+	//
 	// example:
 	//
 	// 2024-10-15T10:25:42+08:00
-	CreationTime *string                                     `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	DelayTest    *DescribeNetTestResultResponseBodyDelayTest `json:"DelayTest,omitempty" xml:"DelayTest,omitempty" type:"Struct"`
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// Fill in when the network test type is latency test
+	DelayTest *DescribeNetTestResultResponseBodyDelayTest `json:"DelayTest,omitempty" xml:"DelayTest,omitempty" type:"Struct"`
+	// Diagnosis task completion time.
+	//
 	// example:
 	//
 	// 2024-10-16T02:04Z
 	FinishedTime *string `json:"FinishedTime,omitempty" xml:"FinishedTime,omitempty"`
+	// Network test type.
+	//
 	// example:
 	//
 	// DelayTest
 	NetTestType *string `json:"NetTestType,omitempty" xml:"NetTestType,omitempty"`
+	// Test port number.
+	//
 	// example:
 	//
 	// 23604
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 8F065DDD-6996-5973-9691-9EC57BD0072E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Details of the diagnosis result. Returned as a JSON string.
+	//
 	// example:
 	//
 	// {}
 	ResultDetial *string `json:"ResultDetial,omitempty" xml:"ResultDetial,omitempty"`
+	// Diagnosis task status. Possible values:
+	//
+	// - InProgress: Diagnosis in progress.
+	//
+	// - Finished: Diagnosis completed.
+	//
+	// - Failed: Diagnosis failed.
+	//
 	// example:
 	//
 	// Failed
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Initiated test task ID, which is the unique identifier for the network test task.
+	//
 	// example:
 	//
 	// af35ce53-7c35-4277-834a-fbf49c316a96
-	TestId      *string                                       `json:"TestId,omitempty" xml:"TestId,omitempty"`
+	TestId *string `json:"TestId,omitempty" xml:"TestId,omitempty"`
+	// This field is empty if the traffic model (TrafficModel) is Fullmesh.
 	TrafficTest *DescribeNetTestResultResponseBodyTrafficTest `json:"TrafficTest,omitempty" xml:"TrafficTest,omitempty" type:"Struct"`
 }
 
@@ -3577,15 +3735,22 @@ func (s *DescribeNetTestResultResponseBody) SetTrafficTest(v *DescribeNetTestRes
 }
 
 type DescribeNetTestResultResponseBodyCommTest struct {
+	// Number of GPUs
+	//
 	// example:
 	//
 	// 1
-	GPUNum *string                                           `json:"GPUNum,omitempty" xml:"GPUNum,omitempty"`
-	Hosts  []*DescribeNetTestResultResponseBodyCommTestHosts `json:"Hosts,omitempty" xml:"Hosts,omitempty" type:"Repeated"`
+	GPUNum *string `json:"GPUNum,omitempty" xml:"GPUNum,omitempty"`
+	// Resource ID
+	Hosts []*DescribeNetTestResultResponseBodyCommTestHosts `json:"Hosts,omitempty" xml:"Hosts,omitempty" type:"Repeated"`
+	// Communication library model
+	//
 	// example:
 	//
 	// intention_v4
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// Communication library test category: ACCL or NCCL
+	//
 	// example:
 	//
 	// ACCL
@@ -3621,14 +3786,20 @@ func (s *DescribeNetTestResultResponseBodyCommTest) SetType(v string) *DescribeN
 }
 
 type DescribeNetTestResultResponseBodyCommTestHosts struct {
+	// IP address
+	//
 	// example:
 	//
 	// 169.253.253.15
 	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
+	// Resource ID
+	//
 	// example:
 	//
 	// i111670831721110797708
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// 服务名称。
+	//
 	// example:
 	//
 	// VBw
@@ -3659,6 +3830,7 @@ func (s *DescribeNetTestResultResponseBodyCommTestHosts) SetServerName(v string)
 }
 
 type DescribeNetTestResultResponseBodyDelayTest struct {
+	// Input the hosts of the test nodes
 	Hosts []*DescribeNetTestResultResponseBodyDelayTestHosts `json:"Hosts,omitempty" xml:"Hosts,omitempty" type:"Repeated"`
 }
 
@@ -3676,18 +3848,26 @@ func (s *DescribeNetTestResultResponseBodyDelayTest) SetHosts(v []*DescribeNetTe
 }
 
 type DescribeNetTestResultResponseBodyDelayTestHosts struct {
+	// Network card bond interface
+	//
 	// example:
 	//
 	// bond1
 	Bond *string `json:"Bond,omitempty" xml:"Bond,omitempty"`
+	// Node IP
+	//
 	// example:
 	//
 	// 125.210.225.48
 	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
+	// Resource ID
+	//
 	// example:
 	//
 	// e01-cn-bcd3u1aee06
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// Service name
+	//
 	// example:
 	//
 	// NQU
@@ -3723,24 +3903,36 @@ func (s *DescribeNetTestResultResponseBodyDelayTestHosts) SetServerName(v string
 }
 
 type DescribeNetTestResultResponseBodyTrafficTest struct {
+	// Resource ID.
 	Clients []*DescribeNetTestResultResponseBodyTrafficTestClients `json:"Clients,omitempty" xml:"Clients,omitempty" type:"Repeated"`
+	// Duration of the workflow task in seconds.
+	//
 	// example:
 	//
 	// 1
 	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// For RDMA, enter True/False; for TCP, this field is empty.
+	//
 	// example:
 	//
 	// False
 	GDR *string `json:"GDR,omitempty" xml:"GDR,omitempty"`
+	// Network protocol, either RDMA or TCP.
+	//
 	// example:
 	//
 	// TCP
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// For TCP, enter the number of concurrent test connections; for RDMA, enter the configured QP value.
+	//
 	// example:
 	//
 	// 1
-	QP      *int64                                                 `json:"QP,omitempty" xml:"QP,omitempty"`
+	QP *int64 `json:"QP,omitempty" xml:"QP,omitempty"`
+	// List of servers
 	Servers []*DescribeNetTestResultResponseBodyTrafficTestServers `json:"Servers,omitempty" xml:"Servers,omitempty" type:"Repeated"`
+	// Traffic model, either MTON or Fullmesh.
+	//
 	// example:
 	//
 	// Fullmesh
@@ -3791,18 +3983,26 @@ func (s *DescribeNetTestResultResponseBodyTrafficTest) SetTrafficModel(v string)
 }
 
 type DescribeNetTestResultResponseBodyTrafficTestClients struct {
+	// Network card bond interface
+	//
 	// example:
 	//
 	// bond1
 	Bond *string `json:"Bond,omitempty" xml:"Bond,omitempty"`
+	// Node IP
+	//
 	// example:
 	//
 	// 192.168.1.1
 	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
+	// Resource ID
+	//
 	// example:
 	//
 	// e01-cn-20s41p6cx01
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// 服务名称。
+	//
 	// example:
 	//
 	// xMv
@@ -3838,18 +4038,26 @@ func (s *DescribeNetTestResultResponseBodyTrafficTestClients) SetServerName(v st
 }
 
 type DescribeNetTestResultResponseBodyTrafficTestServers struct {
+	// Network card bond interface
+	//
 	// example:
 	//
 	// bond1
 	Bond *string `json:"Bond,omitempty" xml:"Bond,omitempty"`
+	// Node IP
+	//
 	// example:
 	//
 	// 47.121.110.190
 	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
+	// Resource ID
+	//
 	// example:
 	//
 	// e01-cn-wwo3etaqu0b
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// Service name
+	//
 	// example:
 	//
 	// xMv
@@ -6463,18 +6671,32 @@ func (s *ListClustersResponse) SetBody(v *ListClustersResponseBody) *ListCluster
 }
 
 type ListDiagnosticResultsRequest struct {
+	// Type of diagnosis
+	//
 	// example:
 	//
 	// NetDiag
 	DiagType *string `json:"DiagType,omitempty" xml:"DiagType,omitempty"`
+	// Number of items per page in a paginated query. The maximum value is 100.
+	//
+	// Default value:
+	//
+	// - If no value is set or the set value is less than 20, the default is 20.
+	//
+	// - If the set value is greater than 100, the default is 100.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Query token (Token), the value should be the NextToken parameter value returned from the previous API call.
+	//
 	// example:
 	//
 	// a3f2224a5ec7224116c4f5246120abe4
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Resource group ID
+	//
 	// example:
 	//
 	// rg-acfmywpvugkh7kq
@@ -6510,16 +6732,27 @@ func (s *ListDiagnosticResultsRequest) SetResourceGroupId(v string) *ListDiagnos
 }
 
 type ListDiagnosticResultsResponseBody struct {
+	// Diagnostic information
 	DiagnosticResults []*ListDiagnosticResultsResponseBodyDiagnosticResults `json:"DiagnosticResults,omitempty" xml:"DiagnosticResults,omitempty" type:"Repeated"`
+	// 分页查询时每页行数。最大值为100。
+	//
+	// 默认值：
+	//
+	// •当不设置值或设置的值小于20时，默认值为20。
+	//
+	// •当设置的值大于100时，默认值为100。
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// NextToken for the next page. Include this value when requesting the next page.
+	//
 	// example:
 	//
 	// a3f2224a5ec7224116c4f5246120abe4
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//
@@ -6556,39 +6789,62 @@ func (s *ListDiagnosticResultsResponseBody) SetRequestId(v string) *ListDiagnost
 }
 
 type ListDiagnosticResultsResponseBodyDiagnosticResults struct {
+	// Cluster ID
+	//
 	// example:
 	//
 	// i118578141694745246055
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// Cluster name
+	//
 	// example:
 	//
 	// pjlab-lingjun
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// Creation time of the diagnostic task.
+	//
 	// example:
 	//
 	// 2024-01-15T02:01:12Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	DiagContent  *string `json:"DiagContent,omitempty" xml:"DiagContent,omitempty"`
+	// Diagnosis content. For example, in network diagnosis, there are static configuration checks, dynamic operation checks, etc.
+	//
+	// example:
+	//
+	// diagcontent
+	DiagContent *string `json:"DiagContent,omitempty" xml:"DiagContent,omitempty"`
+	// Diagnosis ID
+	//
 	// example:
 	//
 	// 123
 	DiagId *string `json:"DiagId,omitempty" xml:"DiagId,omitempty"`
+	// Diagnosis result, success or failure.
+	//
 	// example:
 	//
 	// Success
 	DiagResult *string `json:"DiagResult,omitempty" xml:"DiagResult,omitempty"`
+	// Completion time of the diagnostic task.
+	//
 	// example:
 	//
 	// 2024-10-16T02:04Z
 	FinishedTime *string `json:"FinishedTime,omitempty" xml:"FinishedTime,omitempty"`
+	// Resource ID
+	//
 	// example:
 	//
 	// e01-cn-bl03ofg6206
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// Service name.
+	//
 	// example:
 	//
 	// proxy-rps.mos.csvw.com
 	ServerName *string `json:"ServerName,omitempty" xml:"ServerName,omitempty"`
+	// Governance status
+	//
 	// example:
 	//
 	// succeed
@@ -7151,6 +7407,7 @@ func (s *ListImagesResponse) SetBody(v *ListImagesResponseBody) *ListImagesRespo
 }
 
 type ListMachineNetworkInfoRequest struct {
+	// Array
 	MachineHpnInfo []*ListMachineNetworkInfoRequestMachineHpnInfo `json:"MachineHpnInfo,omitempty" xml:"MachineHpnInfo,omitempty" type:"Repeated"`
 }
 
@@ -7168,14 +7425,20 @@ func (s *ListMachineNetworkInfoRequest) SetMachineHpnInfo(v []*ListMachineNetwor
 }
 
 type ListMachineNetworkInfoRequestMachineHpnInfo struct {
+	// Cluster ID
+	//
 	// example:
 	//
 	// C1
 	HpnZone *string `json:"HpnZone,omitempty" xml:"HpnZone,omitempty"`
+	// Machine type
+	//
 	// example:
 	//
 	// efg2.C48cNHmcn
 	MachineType *string `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
+	// Region ID
+	//
 	// example:
 	//
 	// cn-heyuan
@@ -7206,6 +7469,7 @@ func (s *ListMachineNetworkInfoRequestMachineHpnInfo) SetRegionId(v string) *Lis
 }
 
 type ListMachineNetworkInfoShrinkRequest struct {
+	// Array
 	MachineHpnInfoShrink *string `json:"MachineHpnInfo,omitempty" xml:"MachineHpnInfo,omitempty"`
 }
 
@@ -7223,8 +7487,9 @@ func (s *ListMachineNetworkInfoShrinkRequest) SetMachineHpnInfoShrink(v string) 
 }
 
 type ListMachineNetworkInfoResponseBody struct {
+	// Array
 	MachineNetworkInfo []*ListMachineNetworkInfoResponseBodyMachineNetworkInfo `json:"MachineNetworkInfo,omitempty" xml:"MachineNetworkInfo,omitempty" type:"Repeated"`
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//
@@ -7251,30 +7516,44 @@ func (s *ListMachineNetworkInfoResponseBody) SetRequestId(v string) *ListMachine
 }
 
 type ListMachineNetworkInfoResponseBodyMachineNetworkInfo struct {
+	// Cluster network
+	//
 	// example:
 	//
 	// vpc/acl
 	ClusterNet *string `json:"ClusterNet,omitempty" xml:"ClusterNet,omitempty"`
+	// Whether jumbo frame capability is enabled
+	//
 	// example:
 	//
 	// true
 	EnableJumboFrame *bool `json:"EnableJumboFrame,omitempty" xml:"EnableJumboFrame,omitempty"`
+	// Cluster ID
+	//
 	// example:
 	//
 	// B1
 	HpnZone *string `json:"HpnZone,omitempty" xml:"HpnZone,omitempty"`
+	// Whether it is in DPU mode
+	//
 	// example:
 	//
 	// true
 	IsDpuMode *bool `json:"IsDpuMode,omitempty" xml:"IsDpuMode,omitempty"`
+	// Machine type
+	//
 	// example:
 	//
 	// efg1.nvga8n
 	MachineType *string `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
+	// Network architecture
+	//
 	// example:
 	//
 	// XX-7.0
 	NetArch *string `json:"NetArch,omitempty" xml:"NetArch,omitempty"`
+	// 地域ID。
+	//
 	// example:
 	//
 	// cn-heyuan
@@ -7566,18 +7845,32 @@ func (s *ListMachineTypesResponse) SetBody(v *ListMachineTypesResponseBody) *Lis
 }
 
 type ListNetTestResultsRequest struct {
+	// Number of items per page in a paginated query. The maximum value is 100.
+	//
+	// Default value:
+	//
+	// - If no value is set or the set value is less than 20, the default is 20.
+	//
+	// - If the set value is greater than 100, the default is 100.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Type of network test.
+	//
 	// example:
 	//
 	// DelayTest
 	NetTestType *string `json:"NetTestType,omitempty" xml:"NetTestType,omitempty"`
+	// Query token (Token), which should be the value of the NextToken parameter returned from the previous API call.
+	//
 	// example:
 	//
 	// 3a6b93229825ac667104463b56790c91
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Resource group ID
+	//
 	// example:
 	//
 	// rg-acfmxno4vh5muoq
@@ -7613,16 +7906,27 @@ func (s *ListNetTestResultsRequest) SetResourceGroupId(v string) *ListNetTestRes
 }
 
 type ListNetTestResultsResponseBody struct {
+	// 分页查询时每页行数。最大值为100。
+	//
+	// 默认值：
+	//
+	// •当不设置值或设置的值小于20时，默认值为20。
+	//
+	// •当设置的值大于100时，默认值为100。
+	//
 	// example:
 	//
 	// 20
-	MaxResults     *int64                                          `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// List of nodes
 	NetTestResults []*ListNetTestResultsResponseBodyNetTestResults `json:"NetTestResults,omitempty" xml:"NetTestResults,omitempty" type:"Repeated"`
+	// NextToken for the next page, to be included in the request for the next page
+	//
 	// example:
 	//
 	// 3a6b93229825ac667104463b56790c91
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//
@@ -7659,44 +7963,71 @@ func (s *ListNetTestResultsResponseBody) SetRequestId(v string) *ListNetTestResu
 }
 
 type ListNetTestResultsResponseBodyNetTestResults struct {
+	// Cluster ID
+	//
 	// example:
 	//
 	// i110667211718265012218
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// Cluster name
+	//
 	// example:
 	//
 	// test
-	ClusterName *string                                               `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	CommTest    *ListNetTestResultsResponseBodyNetTestResultsCommTest `json:"CommTest,omitempty" xml:"CommTest,omitempty" type:"Struct"`
+	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// To be filled when the network test type is communication library test
+	CommTest *ListNetTestResultsResponseBodyNetTestResultsCommTest `json:"CommTest,omitempty" xml:"CommTest,omitempty" type:"Struct"`
+	// Creation time.
+	//
 	// example:
 	//
 	// 2024-01-19T02:18:12Z
-	CreationTime *string                                                `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	DelayTest    *ListNetTestResultsResponseBodyNetTestResultsDelayTest `json:"DelayTest,omitempty" xml:"DelayTest,omitempty" type:"Struct"`
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// Fill in when the network test type is latency test
+	DelayTest *ListNetTestResultsResponseBodyNetTestResultsDelayTest `json:"DelayTest,omitempty" xml:"DelayTest,omitempty" type:"Struct"`
+	// Completion time.
+	//
 	// example:
 	//
 	// 2024-10-30T02:07Z
 	FinishedTime *string `json:"FinishedTime,omitempty" xml:"FinishedTime,omitempty"`
+	// Type of network test.
+	//
 	// example:
 	//
 	// NetDiag
 	NetTestType *string `json:"NetTestType,omitempty" xml:"NetTestType,omitempty"`
+	// Network mode
+	//
 	// example:
 	//
 	// 01
 	NetworkMode *string `json:"NetworkMode,omitempty" xml:"NetworkMode,omitempty"`
+	// Test port number.
+	//
 	// example:
 	//
 	// 80
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// Status of the network test task. Possible values:</br>
+	//
+	// - InProgress: Testing in progress.</br>
+	//
+	// - Finished: Test completed.</br>
+	//
+	// - Failed: Test failed.
+	//
 	// example:
 	//
 	// InProgress
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Test ID. A unique identifier for the resource test task.
+	//
 	// example:
 	//
 	// String	i-uf6i0tv2refv8wz*****
-	TestId      *string                                                  `json:"TestId,omitempty" xml:"TestId,omitempty"`
+	TestId *string `json:"TestId,omitempty" xml:"TestId,omitempty"`
+	// Fill in when the network test type is traffic test.
 	TrafficTest *ListNetTestResultsResponseBodyNetTestResultsTrafficTest `json:"TrafficTest,omitempty" xml:"TrafficTest,omitempty" type:"Struct"`
 }
 
@@ -7769,15 +8100,22 @@ func (s *ListNetTestResultsResponseBodyNetTestResults) SetTrafficTest(v *ListNet
 }
 
 type ListNetTestResultsResponseBodyNetTestResultsCommTest struct {
+	// Number of GPUs
+	//
 	// example:
 	//
 	// 4
-	GPUNum *string                                                      `json:"GPUNum,omitempty" xml:"GPUNum,omitempty"`
-	Hosts  []*ListNetTestResultsResponseBodyNetTestResultsCommTestHosts `json:"Hosts,omitempty" xml:"Hosts,omitempty" type:"Repeated"`
+	GPUNum *string `json:"GPUNum,omitempty" xml:"GPUNum,omitempty"`
+	// Input hosts for the test nodes
+	Hosts []*ListNetTestResultsResponseBodyNetTestResultsCommTestHosts `json:"Hosts,omitempty" xml:"Hosts,omitempty" type:"Repeated"`
+	// Communication library model
+	//
 	// example:
 	//
 	// AllToAll
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// Communication library test category: ACCL or NCCL
+	//
 	// example:
 	//
 	// ACCL
@@ -7813,14 +8151,20 @@ func (s *ListNetTestResultsResponseBodyNetTestResultsCommTest) SetType(v string)
 }
 
 type ListNetTestResultsResponseBodyNetTestResultsCommTestHosts struct {
+	// Node IP
+	//
 	// example:
 	//
 	// 10.51.16.21
 	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
+	// Resource ID
+	//
 	// example:
 	//
 	// e01-cn-wwo3eteze19
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// Service name
+	//
 	// example:
 	//
 	// www.xinjiaoyu.com
@@ -7851,6 +8195,7 @@ func (s *ListNetTestResultsResponseBodyNetTestResultsCommTestHosts) SetServerNam
 }
 
 type ListNetTestResultsResponseBodyNetTestResultsDelayTest struct {
+	// Resource list
 	Hosts []*ListNetTestResultsResponseBodyNetTestResultsDelayTestHosts `json:"Hosts,omitempty" xml:"Hosts,omitempty" type:"Repeated"`
 }
 
@@ -7868,18 +8213,26 @@ func (s *ListNetTestResultsResponseBodyNetTestResultsDelayTest) SetHosts(v []*Li
 }
 
 type ListNetTestResultsResponseBodyNetTestResultsDelayTestHosts struct {
+	// Bond interface of the network card
+	//
 	// example:
 	//
 	// bond1
 	Bond *string `json:"Bond,omitempty" xml:"Bond,omitempty"`
+	// Node IP
+	//
 	// example:
 	//
 	// pgm-bp174z988a27wre71o.pg.rds.aliyuncs.com
 	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
+	// 资源id
+	//
 	// example:
 	//
 	// e01-cn-wwo3eteze19
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// Service name
+	//
 	// example:
 	//
 	// WrF
@@ -7915,24 +8268,38 @@ func (s *ListNetTestResultsResponseBodyNetTestResultsDelayTestHosts) SetServerNa
 }
 
 type ListNetTestResultsResponseBodyNetTestResultsTrafficTest struct {
+	// Clients
 	Clients []*ListNetTestResultsResponseBodyNetTestResultsTrafficTestClients `json:"Clients,omitempty" xml:"Clients,omitempty" type:"Repeated"`
+	// Duration of the workflow task, in seconds.
+	//
 	// example:
 	//
 	// 1
 	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// 协议为RDMA时，填写True/False，
+	//
+	// 协议为TCP时，此字段为空。
+	//
 	// example:
 	//
 	// True
 	GDR *string `json:"GDR,omitempty" xml:"GDR,omitempty"`
+	// Network protocol, either RDMA or TCP.
+	//
 	// example:
 	//
 	// TCP
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// For TCP, enter the number of concurrent connections; for RDMA, enter the configured QP value.
+	//
 	// example:
 	//
 	// RDMA
-	QP      *int64                                                            `json:"QP,omitempty" xml:"QP,omitempty"`
+	QP *int64 `json:"QP,omitempty" xml:"QP,omitempty"`
+	// This field is empty when the traffic model (TrafficModel) is Fullmesh.
 	Servers []*ListNetTestResultsResponseBodyNetTestResultsTrafficTestServers `json:"Servers,omitempty" xml:"Servers,omitempty" type:"Repeated"`
+	// Traffic model, either MTON or Fullmesh.
+	//
 	// example:
 	//
 	// Fullmesh
@@ -7983,18 +8350,26 @@ func (s *ListNetTestResultsResponseBodyNetTestResultsTrafficTest) SetTrafficMode
 }
 
 type ListNetTestResultsResponseBodyNetTestResultsTrafficTestClients struct {
+	// Network interface bond port
+	//
 	// example:
 	//
 	// bond1
 	Bond *string `json:"Bond,omitempty" xml:"Bond,omitempty"`
+	// IP address.
+	//
 	// example:
 	//
 	// 74.73.100.1
 	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
+	// Resource ID.
+	//
 	// example:
 	//
 	// e01-cn-20p36bqet39
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// Service name.
+	//
 	// example:
 	//
 	// prod-gf-cn.juequling.com
@@ -8030,18 +8405,26 @@ func (s *ListNetTestResultsResponseBodyNetTestResultsTrafficTestClients) SetServ
 }
 
 type ListNetTestResultsResponseBodyNetTestResultsTrafficTestServers struct {
+	// Network interface bond port
+	//
 	// example:
 	//
 	// bond1
 	Bond *string `json:"Bond,omitempty" xml:"Bond,omitempty"`
+	// Node IP
+	//
 	// example:
 	//
 	// 10.1.168.183
 	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
+	// Resource ID.
+	//
 	// example:
 	//
 	// e01-cn-wwo3eteze19
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// Service name.
+	//
 	// example:
 	//
 	// prod-gf-cn.juequling.com
@@ -8617,7 +9000,10 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 }
 
 type ListUserClusterTypesResponseBody struct {
+	// List of cluster types. The number of array elements N ranges from 1 to 100.
 	ClusterTypes []*ListUserClusterTypesResponseBodyClusterTypes `json:"ClusterTypes,omitempty" xml:"ClusterTypes,omitempty" type:"Repeated"`
+	// The NextToken for the next page. Include this value when requesting the next page.
+	//
 	// example:
 	//
 	// 3a6b93229825ac667104463b56790c91
@@ -8654,10 +9040,14 @@ func (s *ListUserClusterTypesResponseBody) SetRequestId(v string) *ListUserClust
 }
 
 type ListUserClusterTypesResponseBodyClusterTypes struct {
+	// 访问类型。
+	//
 	// example:
 	//
 	// Public
 	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
+	// Type name
+	//
 	// example:
 	//
 	// AckEdgePro
@@ -10881,6 +11271,10 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 		query["ResourceRegionId"] = request.ResourceRegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -10935,7 +11329,11 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 
 // Summary:
 //
-// 断开连接
+// Disconnect Connection
+//
+// Description:
+//
+// An interface for creating a session, returning the front-end EndPoint, and initiating a periodic task to track the session status
 //
 // @param request - CloseSessionRequest
 //
@@ -10992,7 +11390,11 @@ func (client *Client) CloseSessionWithOptions(request *CloseSessionRequest, runt
 
 // Summary:
 //
-// 断开连接
+// Disconnect Connection
+//
+// Description:
+//
+// An interface for creating a session, returning the front-end EndPoint, and initiating a periodic task to track the session status
 //
 // @param request - CloseSessionRequest
 //
@@ -11238,7 +11640,11 @@ func (client *Client) CreateDiagnosticTask(request *CreateDiagnosticTaskRequest)
 
 // Summary:
 //
-// 创建网络测试任务
+// Create Network Test Task
+//
+// Description:
+//
+// An interface for creating a session, which returns the frontend EndPoint and initiates a periodic task to track the session status.
 //
 // @param tmpReq - CreateNetTestTaskRequest
 //
@@ -11333,7 +11739,11 @@ func (client *Client) CreateNetTestTaskWithOptions(tmpReq *CreateNetTestTaskRequ
 
 // Summary:
 //
-// 创建网络测试任务
+// Create Network Test Task
+//
+// Description:
+//
+// An interface for creating a session, which returns the frontend EndPoint and initiates a periodic task to track the session status.
 //
 // @param request - CreateNetTestTaskRequest
 //
@@ -11351,7 +11761,11 @@ func (client *Client) CreateNetTestTask(request *CreateNetTestTaskRequest) (_res
 
 // Summary:
 //
-// 创建Web Terminal会话
+// Create Web Terminal Session
+//
+// Description:
+//
+// An interface for creating a session, which returns the frontend EndPoint and initiates a periodic task to track the session status.
 //
 // @param request - CreateSessionRequest
 //
@@ -11412,7 +11826,11 @@ func (client *Client) CreateSessionWithOptions(request *CreateSessionRequest, ru
 
 // Summary:
 //
-// 创建Web Terminal会话
+// Create Web Terminal Session
+//
+// Description:
+//
+// An interface for creating a session, which returns the frontend EndPoint and initiates a periodic task to track the session status.
 //
 // @param request - CreateSessionRequest
 //
@@ -11655,7 +12073,11 @@ func (client *Client) DescribeInvocations(request *DescribeInvocationsRequest) (
 
 // Summary:
 //
-// 查询网络测试结果
+// Query Network Test Result
+//
+// Description:
+//
+// An interface for creating a session, returning the front-end EndPoint, and initiating a periodic task to track the session status
 //
 // @param request - DescribeNetTestResultRequest
 //
@@ -11708,7 +12130,11 @@ func (client *Client) DescribeNetTestResultWithOptions(request *DescribeNetTestR
 
 // Summary:
 //
-// 查询网络测试结果
+// Query Network Test Result
+//
+// Description:
+//
+// An interface for creating a session, returning the front-end EndPoint, and initiating a periodic task to track the session status
 //
 // @param request - DescribeNetTestResultRequest
 //
@@ -12352,7 +12778,11 @@ func (client *Client) ListClusters(request *ListClustersRequest) (_result *ListC
 
 // Summary:
 //
-// 诊断任务列表
+// List of Diagnostic Tasks
+//
+// Description:
+//
+// An interface for creating a session, which returns the frontend EndPoint and initiates a periodic task to track the session status.
 //
 // @param request - ListDiagnosticResultsRequest
 //
@@ -12417,7 +12847,11 @@ func (client *Client) ListDiagnosticResultsWithOptions(request *ListDiagnosticRe
 
 // Summary:
 //
-// 诊断任务列表
+// List of Diagnostic Tasks
+//
+// Description:
+//
+// An interface for creating a session, which returns the frontend EndPoint and initiates a periodic task to track the session status.
 //
 // @param request - ListDiagnosticResultsRequest
 //
@@ -12601,7 +13035,11 @@ func (client *Client) ListImages(request *ListImagesRequest) (_result *ListImage
 
 // Summary:
 //
-// 使用HPNZone和机型查询机型网络配置
+// Query machine network configuration using HPNZone and machine type
+//
+// Description:
+//
+// An interface for creating a session, returning the frontend EndPoint, and initiating a periodic task to track the session status
 //
 // @param tmpReq - ListMachineNetworkInfoRequest
 //
@@ -12660,7 +13098,11 @@ func (client *Client) ListMachineNetworkInfoWithOptions(tmpReq *ListMachineNetwo
 
 // Summary:
 //
-// 使用HPNZone和机型查询机型网络配置
+// Query machine network configuration using HPNZone and machine type
+//
+// Description:
+//
+// An interface for creating a session, returning the frontend EndPoint, and initiating a periodic task to track the session status
 //
 // @param request - ListMachineNetworkInfoRequest
 //
@@ -12749,7 +13191,11 @@ func (client *Client) ListMachineTypes(request *ListMachineTypesRequest) (_resul
 
 // Summary:
 //
-// 网络测试列表
+// Network Test List
+//
+// Description:
+//
+// An interface for creating a session, returning the frontend EndPoint, and initiating a periodic task to track the session status.
 //
 // @param request - ListNetTestResultsRequest
 //
@@ -12814,7 +13260,11 @@ func (client *Client) ListNetTestResultsWithOptions(request *ListNetTestResultsR
 
 // Summary:
 //
-// 网络测试列表
+// Network Test List
+//
+// Description:
+//
+// An interface for creating a session, returning the frontend EndPoint, and initiating a periodic task to track the session status.
 //
 // @param request - ListNetTestResultsRequest
 //
@@ -13002,7 +13452,11 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 
 // Summary:
 //
-// 查询用户可以使用的集群类型
+// Query the cluster types available to the user
+//
+// Description:
+//
+// An interface for creating a session, which returns the front-end EndPoint and initiates a periodic task to track the session status
 //
 // @param request - ListUserClusterTypesRequest
 //
@@ -13044,7 +13498,11 @@ func (client *Client) ListUserClusterTypesWithOptions(runtime *util.RuntimeOptio
 
 // Summary:
 //
-// 查询用户可以使用的集群类型
+// Query the cluster types available to the user
+//
+// Description:
+//
+// An interface for creating a session, which returns the front-end EndPoint and initiates a periodic task to track the session status
 //
 // @return ListUserClusterTypesResponse
 func (client *Client) ListUserClusterTypes() (_result *ListUserClusterTypesResponse, _err error) {
