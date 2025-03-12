@@ -2032,7 +2032,9 @@ type CreateCollectionRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId                *string                                         `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SparseVectorIndexConfig *CreateCollectionRequestSparseVectorIndexConfig `json:"SparseVectorIndexConfig,omitempty" xml:"SparseVectorIndexConfig,omitempty" type:"Struct"`
+	SupportSparse           *bool                                           `json:"SupportSparse,omitempty" xml:"SupportSparse,omitempty"`
 	// The ID of the workspace that consists of multiple AnalyticDB for PostgreSQL instances. You must specify one of the WorkspaceId and DBInstanceId parameters. If you specify both parameters, the WorkspaceId parameter takes effect.
 	//
 	// example:
@@ -2134,7 +2136,307 @@ func (s *CreateCollectionRequest) SetRegionId(v string) *CreateCollectionRequest
 	return s
 }
 
+func (s *CreateCollectionRequest) SetSparseVectorIndexConfig(v *CreateCollectionRequestSparseVectorIndexConfig) *CreateCollectionRequest {
+	s.SparseVectorIndexConfig = v
+	return s
+}
+
+func (s *CreateCollectionRequest) SetSupportSparse(v bool) *CreateCollectionRequest {
+	s.SupportSparse = &v
+	return s
+}
+
 func (s *CreateCollectionRequest) SetWorkspaceId(v string) *CreateCollectionRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type CreateCollectionRequestSparseVectorIndexConfig struct {
+	HnswEfConstruction *int32 `json:"HnswEfConstruction,omitempty" xml:"HnswEfConstruction,omitempty"`
+	HnswM              *int32 `json:"HnswM,omitempty" xml:"HnswM,omitempty"`
+}
+
+func (s CreateCollectionRequestSparseVectorIndexConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCollectionRequestSparseVectorIndexConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCollectionRequestSparseVectorIndexConfig) SetHnswEfConstruction(v int32) *CreateCollectionRequestSparseVectorIndexConfig {
+	s.HnswEfConstruction = &v
+	return s
+}
+
+func (s *CreateCollectionRequestSparseVectorIndexConfig) SetHnswM(v int32) *CreateCollectionRequestSparseVectorIndexConfig {
+	s.HnswM = &v
+	return s
+}
+
+type CreateCollectionShrinkRequest struct {
+	// The name of the collection that you want to create.
+	//
+	// >  The name must comply with the naming conventions of PostgreSQL objects.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// document
+	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// The instance ID.
+	//
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+	//
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The number of vector dimensions.
+	//
+	// >  If you specify this parameter, an index is created. When you call the [UpsertCollectionData](https://help.aliyun.com/document_detail/2401493.html) operation, make sure that the length of the Rows.Vector parameter is the same as the value of this parameter. If you do not specify this parameter, you can call the [CreateVectorIndex](https://help.aliyun.com/document_detail/2401499.html) operation to create an index.
+	//
+	// example:
+	//
+	// 1024
+	Dimension *int64 `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
+	// Specifies whether to use the memory mapping technology to create HNSW indexes. Valid values: 0 and 1. Default value: 0. We recommend that you set the value to 1 in scenarios that require upload speed but not data deletion.
+	//
+	// >
+	//
+	// 	- 0: uses segmented paging storage to create indexes. This method uses the shared buffer of PostgreSQL for caching and supports the delete and update operations.
+	//
+	// 	- 1: uses the memory mapping technology to create indexes. This method does not support the delete or update operation.
+	//
+	// example:
+	//
+	// 0
+	ExternalStorage *int32 `json:"ExternalStorage,omitempty" xml:"ExternalStorage,omitempty"`
+	// The fields used for full-text search. Separate multiple fields with commas (,). These fields must be keys defined in Metadata.
+	//
+	// example:
+	//
+	// title,content
+	FullTextRetrievalFields *string `json:"FullTextRetrievalFields,omitempty" xml:"FullTextRetrievalFields,omitempty"`
+	HnswEfConstruction      *string `json:"HnswEfConstruction,omitempty" xml:"HnswEfConstruction,omitempty"`
+	// The maximum number of neighbors for the Hierarchical Navigable Small World (HNSW) algorithm. Valid values: 1 to 1000. In most cases, this parameter is automatically configured based on the value of the Dimension parameter. You do not need to configure this parameter.
+	//
+	// >  We recommend that you configure this parameter based on the value of the Dimension parameter.
+	//
+	// *If you set Dimension to a value less than or equal to 384, set the value of HnswM to 16.
+	//
+	// *If you set Dimension to a value greater than 384 and less than or equal to 768, set the value of HnswM to 32.
+	//
+	// *If you set Dimension to a value greater than 768 and less than or equal to 1024, set the value of HnswM to 64.
+	//
+	// *If you set Dimension to a value greater than 1024, set the value of HnswM to 128.
+	//
+	// example:
+	//
+	// 64
+	HnswM *int32 `json:"HnswM,omitempty" xml:"HnswM,omitempty"`
+	// Name of the management account with rds_superuser permissions.
+	//
+	// > You can create an account through the console -> Account Management, or by using the [CreateAccount](https://help.aliyun.com/document_detail/2361789.html) API.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testaccount
+	ManagerAccount *string `json:"ManagerAccount,omitempty" xml:"ManagerAccount,omitempty"`
+	// The password of the manager account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testpassword
+	ManagerAccountPassword *string `json:"ManagerAccountPassword,omitempty" xml:"ManagerAccountPassword,omitempty"`
+	// The metadata of the vector data, which is a JSON string in the MAP format. The key specifies the field name, and the value specifies the data type.
+	//
+	// >  Supported data types:
+	//
+	// 	- For information about the supported data types, see [Data types](https://www.alibabacloud.com/help/zh/analyticdb/analyticdb-for-postgresql/developer-reference/data-types-1/).
+	//
+	// 	- The money data type is not supported.
+	//
+	// **
+	//
+	// **Warning*	- Reserved fields such as id, vector, to_tsvector, and source cannot be used.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {"title":"text","content":"text","response":"int"}
+	Metadata *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// The scalar index fields. Separate multiple fields with commas (,). These fields must be keys defined in Metadata.
+	//
+	// example:
+	//
+	// title
+	MetadataIndices *string `json:"MetadataIndices,omitempty" xml:"MetadataIndices,omitempty"`
+	// The method that is used to create vector indexes. Valid values:
+	//
+	// 	- l2: Euclidean distance.
+	//
+	// 	- ip: inner product distance.
+	//
+	// 	- cosine: cosine similarity.
+	//
+	// example:
+	//
+	// cosine
+	Metrics *string `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
+	// The name of the namespace.
+	//
+	// >  You can call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation to create a namespace and call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to query a list of namespaces.
+	//
+	// example:
+	//
+	// mynamespace
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The analyzer that is used for full-text search.
+	//
+	// example:
+	//
+	// zh_cn
+	Parser *string `json:"Parser,omitempty" xml:"Parser,omitempty"`
+	// Specifies whether to enable the product quantization (PQ) feature for index acceleration. We recommend that you enable this feature for more than 500,000 rows of data. Valid values:
+	//
+	// 	- 0: no.
+	//
+	// 	- 1 (default): yes.
+	//
+	// example:
+	//
+	// 0
+	PqEnable *int32 `json:"PqEnable,omitempty" xml:"PqEnable,omitempty"`
+	// The region ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId                      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SparseVectorIndexConfigShrink *string `json:"SparseVectorIndexConfig,omitempty" xml:"SparseVectorIndexConfig,omitempty"`
+	SupportSparse                 *bool   `json:"SupportSparse,omitempty" xml:"SupportSparse,omitempty"`
+	// The ID of the workspace that consists of multiple AnalyticDB for PostgreSQL instances. You must specify one of the WorkspaceId and DBInstanceId parameters. If you specify both parameters, the WorkspaceId parameter takes effect.
+	//
+	// example:
+	//
+	// gp-ws-*****
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s CreateCollectionShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCollectionShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCollectionShrinkRequest) SetCollection(v string) *CreateCollectionShrinkRequest {
+	s.Collection = &v
+	return s
+}
+
+func (s *CreateCollectionShrinkRequest) SetDBInstanceId(v string) *CreateCollectionShrinkRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *CreateCollectionShrinkRequest) SetDimension(v int64) *CreateCollectionShrinkRequest {
+	s.Dimension = &v
+	return s
+}
+
+func (s *CreateCollectionShrinkRequest) SetExternalStorage(v int32) *CreateCollectionShrinkRequest {
+	s.ExternalStorage = &v
+	return s
+}
+
+func (s *CreateCollectionShrinkRequest) SetFullTextRetrievalFields(v string) *CreateCollectionShrinkRequest {
+	s.FullTextRetrievalFields = &v
+	return s
+}
+
+func (s *CreateCollectionShrinkRequest) SetHnswEfConstruction(v string) *CreateCollectionShrinkRequest {
+	s.HnswEfConstruction = &v
+	return s
+}
+
+func (s *CreateCollectionShrinkRequest) SetHnswM(v int32) *CreateCollectionShrinkRequest {
+	s.HnswM = &v
+	return s
+}
+
+func (s *CreateCollectionShrinkRequest) SetManagerAccount(v string) *CreateCollectionShrinkRequest {
+	s.ManagerAccount = &v
+	return s
+}
+
+func (s *CreateCollectionShrinkRequest) SetManagerAccountPassword(v string) *CreateCollectionShrinkRequest {
+	s.ManagerAccountPassword = &v
+	return s
+}
+
+func (s *CreateCollectionShrinkRequest) SetMetadata(v string) *CreateCollectionShrinkRequest {
+	s.Metadata = &v
+	return s
+}
+
+func (s *CreateCollectionShrinkRequest) SetMetadataIndices(v string) *CreateCollectionShrinkRequest {
+	s.MetadataIndices = &v
+	return s
+}
+
+func (s *CreateCollectionShrinkRequest) SetMetrics(v string) *CreateCollectionShrinkRequest {
+	s.Metrics = &v
+	return s
+}
+
+func (s *CreateCollectionShrinkRequest) SetNamespace(v string) *CreateCollectionShrinkRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *CreateCollectionShrinkRequest) SetOwnerId(v int64) *CreateCollectionShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateCollectionShrinkRequest) SetParser(v string) *CreateCollectionShrinkRequest {
+	s.Parser = &v
+	return s
+}
+
+func (s *CreateCollectionShrinkRequest) SetPqEnable(v int32) *CreateCollectionShrinkRequest {
+	s.PqEnable = &v
+	return s
+}
+
+func (s *CreateCollectionShrinkRequest) SetRegionId(v string) *CreateCollectionShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateCollectionShrinkRequest) SetSparseVectorIndexConfigShrink(v string) *CreateCollectionShrinkRequest {
+	s.SparseVectorIndexConfigShrink = &v
+	return s
+}
+
+func (s *CreateCollectionShrinkRequest) SetSupportSparse(v bool) *CreateCollectionShrinkRequest {
+	s.SupportSparse = &v
+	return s
+}
+
+func (s *CreateCollectionShrinkRequest) SetWorkspaceId(v string) *CreateCollectionShrinkRequest {
 	s.WorkspaceId = &v
 	return s
 }
@@ -2310,11 +2612,11 @@ type CreateDBInstanceRequest struct {
 	//
 	// single
 	DeployMode *string `json:"DeployMode,omitempty" xml:"DeployMode,omitempty"`
-	// Indicates whether to enable SSL encryption. The values are as follows:
+	// Specifies whether to enable SSL encryption. Valid values:
 	//
-	// - **true**: Enable SSL encryption.
+	// 	- **true**
 	//
-	// - **false*	- (default): Do not enable SSL encryption.
+	// 	- **false*	- (default)
 	//
 	// example:
 	//
@@ -2410,6 +2712,19 @@ type CreateDBInstanceRequest struct {
 	//
 	// 2C16G
 	InstanceSpec *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
+	// This parameter must be specified if you want to change coordinator nodes to AI coordinator nodes.
+	//
+	// >-  You cannot specify the MasterAISpec and MasterCU parameters at the same time.
+	//
+	// >- You can change coordinator nodes to AI coordinator nodes only in specific regions and zones.
+	//
+	// >- Only AnalyticDB for PostgreSQL V7.0 instances of Basic Edition support AI coordinator nodes.
+	//
+	// >- You can view the valid values of this parameter on the configuration change page of coordinator nodes.
+	//
+	// example:
+	//
+	// ADB.AIMedium.2
 	MasterAISpec *string `json:"MasterAISpec,omitempty" xml:"MasterAISpec,omitempty"`
 	// Master resources, with the following values:
 	//
@@ -2436,15 +2751,17 @@ type CreateDBInstanceRequest struct {
 	// null
 	MasterNodeNum *string `json:"MasterNodeNum,omitempty" xml:"MasterNodeNum,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Billing type. The values are as follows:
+	// The billing method of the instance. Valid values:
 	//
-	// - **Postpaid**: Pay-as-you-go
+	// 	- **Postpaid**: pay-as-you-go.
 	//
-	// - **Prepaid**: Subscription
+	// 	- **Prepaid**: subscription.
 	//
-	// > - If not specified, it will default to pay-as-you-go.
+	// >
 	//
-	// > - When using the subscription billing model, there may be discounts for purchasing one year or longer at once. It is recommended to choose the billing type according to your needs.
+	// 	- If you do not specify this parameter, Postpaid is used.
+	//
+	// 	- You can obtain more cost savings if you create a subscription instance for one year or longer. We recommend that you select the billing method that best suits your needs.
 	//
 	// example:
 	//
@@ -2496,25 +2813,27 @@ type CreateDBInstanceRequest struct {
 	//
 	// rg-bp67acfmxazb4p****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// IP whitelist.
+	// The IP address whitelist of the instance.
 	//
-	// 127.0.0.1 indicates that no external IP addresses are allowed to access. You can modify the IP whitelist by calling the [ModifySecurityIps](https://help.aliyun.com/document_detail/86928.html) interface after the instance is created.
+	// A value of 127.0.0.1 denies access from any external IP address. You can call the [ModifySecurityIps](https://help.aliyun.com/document_detail/86928.html) operation to modify the IP address whitelist after you create an instance.
 	//
 	// example:
 	//
 	// 127.0.0.1
 	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
-	// ESSD cloud disk performance level. The values are as follows:
+	// The performance level of ESSDs. Valid values:
 	//
-	// - **pl0**: PL0 level.
+	// 	- **pl0**
 	//
-	// - **pl1**: PL1 level.
+	// 	- **pl1**
 	//
-	// - **pl2**: PL2 level.
+	// 	- **pl2**
 	//
-	// > - This parameter is effective only if the disk storage type is ESSD cloud disk.
+	// >
 	//
-	// > - If not specified, it defaults to PL1 level.
+	// 	- This parameter takes effect only when SegStorageType is set to cloud_essd.
+	//
+	// 	- If you do not specify this parameter, pl1 is used.
 	//
 	// example:
 	//
@@ -5242,7 +5561,7 @@ func (s *CreateRemoteADBDataSourceResponse) SetBody(v *CreateRemoteADBDataSource
 type CreateSampleDataRequest struct {
 	// The ID of the instance.
 	//
-	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/2361776.html) operation to query the IDs of all AnalyticDB for PostgreSQL instances in a specific region.
 	//
 	// This parameter is required.
 	//
@@ -5364,8 +5683,6 @@ type CreateSecretRequest struct {
 	//
 	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// gp-xxxxxxxxx
@@ -5412,7 +5729,8 @@ type CreateSecretRequest struct {
 	// example:
 	//
 	// testacc
-	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	Username    *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s CreateSecretRequest) String() string {
@@ -5460,6 +5778,11 @@ func (s *CreateSecretRequest) SetTestConnection(v bool) *CreateSecretRequest {
 
 func (s *CreateSecretRequest) SetUsername(v string) *CreateSecretRequest {
 	s.Username = &v
+	return s
+}
+
+func (s *CreateSecretRequest) SetWorkspaceId(v string) *CreateSecretRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -7020,8 +7343,6 @@ type CreateVectorIndexRequest struct {
 	//
 	// > This value must be consistent with the length of the vector data (Rows. Vector) uploaded via the [UpsertCollectionData](https://help.aliyun.com/document_detail/2401493.html) API.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 1024
@@ -7112,6 +7433,7 @@ type CreateVectorIndexRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateVectorIndexRequest) String() string {
@@ -7184,6 +7506,11 @@ func (s *CreateVectorIndexRequest) SetPqEnable(v int32) *CreateVectorIndexReques
 
 func (s *CreateVectorIndexRequest) SetRegionId(v string) *CreateVectorIndexRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *CreateVectorIndexRequest) SetType(v string) *CreateVectorIndexRequest {
+	s.Type = &v
 	return s
 }
 
@@ -9352,8 +9679,6 @@ type DeleteSecretRequest struct {
 	//
 	// >
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// gp-xxxxxxxxx
@@ -9382,7 +9707,8 @@ type DeleteSecretRequest struct {
 	// example:
 	//
 	// testsecret
-	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
+	SecretName  *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s DeleteSecretRequest) String() string {
@@ -9415,6 +9741,11 @@ func (s *DeleteSecretRequest) SetSecretArn(v string) *DeleteSecretRequest {
 
 func (s *DeleteSecretRequest) SetSecretName(v string) *DeleteSecretRequest {
 	s.SecretName = &v
+	return s
+}
+
+func (s *DeleteSecretRequest) SetWorkspaceId(v string) *DeleteSecretRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -9881,6 +10212,7 @@ type DeleteVectorIndexRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DeleteVectorIndexRequest) String() string {
@@ -9923,6 +10255,11 @@ func (s *DeleteVectorIndexRequest) SetOwnerId(v int64) *DeleteVectorIndexRequest
 
 func (s *DeleteVectorIndexRequest) SetRegionId(v string) *DeleteVectorIndexRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteVectorIndexRequest) SetType(v string) *DeleteVectorIndexRequest {
+	s.Type = &v
 	return s
 }
 
@@ -11350,7 +11687,8 @@ type DescribeCollectionResponseBody struct {
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SparseVectorMetrics *string `json:"SparseVectorMetrics,omitempty" xml:"SparseVectorMetrics,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
 	// 	- **success**
@@ -11360,7 +11698,8 @@ type DescribeCollectionResponseBody struct {
 	// example:
 	//
 	// success
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	SupportSparse *bool   `json:"SupportSparse,omitempty" xml:"SupportSparse,omitempty"`
 }
 
 func (s DescribeCollectionResponseBody) String() string {
@@ -11421,8 +11760,18 @@ func (s *DescribeCollectionResponseBody) SetRequestId(v string) *DescribeCollect
 	return s
 }
 
+func (s *DescribeCollectionResponseBody) SetSparseVectorMetrics(v string) *DescribeCollectionResponseBody {
+	s.SparseVectorMetrics = &v
+	return s
+}
+
 func (s *DescribeCollectionResponseBody) SetStatus(v string) *DescribeCollectionResponseBody {
 	s.Status = &v
+	return s
+}
+
+func (s *DescribeCollectionResponseBody) SetSupportSparse(v bool) *DescribeCollectionResponseBody {
+	s.SupportSparse = &v
 	return s
 }
 
@@ -12495,7 +12844,12 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	//
 	// 18:00Z
 	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
-	MasterAISpec      *string `json:"MasterAISpec,omitempty" xml:"MasterAISpec,omitempty"`
+	// The specifications of AI coordinator node resources of the instance. If the coordinator nodes of the instance are not AI nodes, null is returned.
+	//
+	// example:
+	//
+	// ADB.AIMedium.2
+	MasterAISpec *string `json:"MasterAISpec,omitempty" xml:"MasterAISpec,omitempty"`
 	// Master resources.
 	//
 	// example:
@@ -12611,7 +12965,12 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	// example:
 	//
 	// 4
-	SegNodeNum    *int32  `json:"SegNodeNum,omitempty" xml:"SegNodeNum,omitempty"`
+	SegNodeNum *int32 `json:"SegNodeNum,omitempty" xml:"SegNodeNum,omitempty"`
+	// The specifications of AI compute node resources of the instance. If the compute nodes of the instance are not AI nodes, null is returned.
+	//
+	// example:
+	//
+	// ADB.AIMedium.2
 	SegmentAISpec *string `json:"SegmentAISpec,omitempty" xml:"SegmentAISpec,omitempty"`
 	// Number of compute groups.
 	//
@@ -20734,7 +21093,7 @@ type DescribeHadoopDataSourceRequest struct {
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
 	// The region ID of the instance.
 	//
-	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/2361846.html) operation to query the most recent region list.
 	//
 	// example:
 	//
@@ -20820,7 +21179,7 @@ type DescribeHadoopDataSourceResponseBody struct {
 	//
 	// c-1234567
 	EmrInstanceId *string `json:"EmrInstanceId,omitempty" xml:"EmrInstanceId,omitempty"`
-	// The Id of External Data Service
+	// The ID of the external data service.
 	//
 	// example:
 	//
@@ -20866,7 +21225,7 @@ type DescribeHadoopDataSourceResponseBody struct {
 	//
 	// xxxxxx
 	MapReduceConf *string `json:"MapReduceConf,omitempty" xml:"MapReduceConf,omitempty"`
-	// The time when the service was last modified.
+	// The time when the data source was last modified.
 	//
 	// example:
 	//
@@ -26859,8 +27218,6 @@ type DescribeTableRequest struct {
 	//
 	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// gp-xxxxxxxxx
@@ -26907,7 +27264,8 @@ type DescribeTableRequest struct {
 	// example:
 	//
 	// mytable
-	Table *string `json:"Table,omitempty" xml:"Table,omitempty"`
+	Table       *string `json:"Table,omitempty" xml:"Table,omitempty"`
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s DescribeTableRequest) String() string {
@@ -26950,6 +27308,11 @@ func (s *DescribeTableRequest) SetSecretArn(v string) *DescribeTableRequest {
 
 func (s *DescribeTableRequest) SetTable(v string) *DescribeTableRequest {
 	s.Table = &v
+	return s
+}
+
+func (s *DescribeTableRequest) SetWorkspaceId(v string) *DescribeTableRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -28569,8 +28932,6 @@ type ExecuteStatementRequest struct {
 	//
 	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// gp-xxxxxxxxx
@@ -28585,7 +28946,8 @@ type ExecuteStatementRequest struct {
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
 	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The configuration parameters.
-	Parameters []interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	Parameters             []interface{}                                  `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	RagWorkspaceCollection *ExecuteStatementRequestRagWorkspaceCollection `json:"RagWorkspaceCollection,omitempty" xml:"RagWorkspaceCollection,omitempty" type:"Struct"`
 	// The region ID of the instance.
 	//
 	// This parameter is required.
@@ -28628,6 +28990,7 @@ type ExecuteStatementRequest struct {
 	//
 	// test
 	StatementName *string `json:"StatementName,omitempty" xml:"StatementName,omitempty"`
+	WorkspaceId   *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ExecuteStatementRequest) String() string {
@@ -28655,6 +29018,11 @@ func (s *ExecuteStatementRequest) SetOwnerId(v int64) *ExecuteStatementRequest {
 
 func (s *ExecuteStatementRequest) SetParameters(v []interface{}) *ExecuteStatementRequest {
 	s.Parameters = v
+	return s
+}
+
+func (s *ExecuteStatementRequest) SetRagWorkspaceCollection(v *ExecuteStatementRequestRagWorkspaceCollection) *ExecuteStatementRequest {
+	s.RagWorkspaceCollection = v
 	return s
 }
 
@@ -28688,12 +29056,38 @@ func (s *ExecuteStatementRequest) SetStatementName(v string) *ExecuteStatementRe
 	return s
 }
 
+func (s *ExecuteStatementRequest) SetWorkspaceId(v string) *ExecuteStatementRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type ExecuteStatementRequestRagWorkspaceCollection struct {
+	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	Namespace  *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+}
+
+func (s ExecuteStatementRequestRagWorkspaceCollection) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteStatementRequestRagWorkspaceCollection) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteStatementRequestRagWorkspaceCollection) SetCollection(v string) *ExecuteStatementRequestRagWorkspaceCollection {
+	s.Collection = &v
+	return s
+}
+
+func (s *ExecuteStatementRequestRagWorkspaceCollection) SetNamespace(v string) *ExecuteStatementRequestRagWorkspaceCollection {
+	s.Namespace = &v
+	return s
+}
+
 type ExecuteStatementShrinkRequest struct {
 	// The instance ID.
 	//
 	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -28709,7 +29103,8 @@ type ExecuteStatementShrinkRequest struct {
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
 	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The configuration parameters.
-	ParametersShrink *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	ParametersShrink             *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	RagWorkspaceCollectionShrink *string `json:"RagWorkspaceCollection,omitempty" xml:"RagWorkspaceCollection,omitempty"`
 	// The region ID of the instance.
 	//
 	// This parameter is required.
@@ -28752,6 +29147,7 @@ type ExecuteStatementShrinkRequest struct {
 	//
 	// test
 	StatementName *string `json:"StatementName,omitempty" xml:"StatementName,omitempty"`
+	WorkspaceId   *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ExecuteStatementShrinkRequest) String() string {
@@ -28782,6 +29178,11 @@ func (s *ExecuteStatementShrinkRequest) SetParametersShrink(v string) *ExecuteSt
 	return s
 }
 
+func (s *ExecuteStatementShrinkRequest) SetRagWorkspaceCollectionShrink(v string) *ExecuteStatementShrinkRequest {
+	s.RagWorkspaceCollectionShrink = &v
+	return s
+}
+
 func (s *ExecuteStatementShrinkRequest) SetRegionId(v string) *ExecuteStatementShrinkRequest {
 	s.RegionId = &v
 	return s
@@ -28809,6 +29210,11 @@ func (s *ExecuteStatementShrinkRequest) SetSqlsShrink(v string) *ExecuteStatemen
 
 func (s *ExecuteStatementShrinkRequest) SetStatementName(v string) *ExecuteStatementShrinkRequest {
 	s.StatementName = &v
+	return s
+}
+
+func (s *ExecuteStatementShrinkRequest) SetWorkspaceId(v string) *ExecuteStatementShrinkRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -29214,8 +29620,6 @@ type GetSecretValueRequest struct {
 	//
 	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// gp-xxxxxxxxx
@@ -29244,7 +29648,8 @@ type GetSecretValueRequest struct {
 	// example:
 	//
 	// testsecret
-	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
+	SecretName  *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s GetSecretValueRequest) String() string {
@@ -29277,6 +29682,11 @@ func (s *GetSecretValueRequest) SetSecretArn(v string) *GetSecretValueRequest {
 
 func (s *GetSecretValueRequest) SetSecretName(v string) *GetSecretValueRequest {
 	s.SecretName = &v
+	return s
+}
+
+func (s *GetSecretValueRequest) SetWorkspaceId(v string) *GetSecretValueRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -33762,8 +34172,6 @@ type ListSecretsRequest struct {
 	//
 	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// gp-xxxxxxxxx
@@ -33776,7 +34184,8 @@ type ListSecretsRequest struct {
 	// example:
 	//
 	// cn-beijing
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ListSecretsRequest) String() string {
@@ -33799,6 +34208,11 @@ func (s *ListSecretsRequest) SetOwnerId(v int64) *ListSecretsRequest {
 
 func (s *ListSecretsRequest) SetRegionId(v string) *ListSecretsRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListSecretsRequest) SetWorkspaceId(v string) *ListSecretsRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -37591,6 +38005,19 @@ type ModifyMasterSpecRequest struct {
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter must be specified if you want to change coordinator nodes to AI coordinator nodes.
+	//
+	// >-  You cannot specify the MasterAISpec and MasterCU parameters at the same time.
+	//
+	// >- You can change coordinator nodes to AI coordinator nodes only in specific regions and zones.
+	//
+	// >- Only AnalyticDB for PostgreSQL V7.0 instances of Basic Edition support AI coordinator nodes.
+	//
+	// >- You can view the valid values of this parameter on the configuration change page of coordinator nodes.
+	//
+	// example:
+	//
+	// ADB.AIMedium.2
 	MasterAISpec *string `json:"MasterAISpec,omitempty" xml:"MasterAISpec,omitempty"`
 	// The specifications of coordinator node resources. Valid values:
 	//
@@ -40122,6 +40549,7 @@ type QueryCollectionDataRequest struct {
 	//
 	// > Data from the relational table can be returned by setting the `IncludeMetadataFields` parameter. For example, `rds_table_name.id` indicates returning the `id` field from the relational table.
 	RelationalTableFilter *QueryCollectionDataRequestRelationalTableFilter `json:"RelationalTableFilter,omitempty" xml:"RelationalTableFilter,omitempty" type:"Struct"`
+	SparseVector          *QueryCollectionDataRequestSparseVector          `json:"SparseVector,omitempty" xml:"SparseVector,omitempty" type:"Struct"`
 	// Set the number of top results to return.
 	//
 	// This parameter is required.
@@ -40230,6 +40658,11 @@ func (s *QueryCollectionDataRequest) SetRelationalTableFilter(v *QueryCollection
 	return s
 }
 
+func (s *QueryCollectionDataRequest) SetSparseVector(v *QueryCollectionDataRequestSparseVector) *QueryCollectionDataRequest {
+	s.SparseVector = v
+	return s
+}
+
 func (s *QueryCollectionDataRequest) SetTopK(v int64) *QueryCollectionDataRequest {
 	s.TopK = &v
 	return s
@@ -40297,6 +40730,29 @@ func (s *QueryCollectionDataRequestRelationalTableFilter) SetTableField(v string
 
 func (s *QueryCollectionDataRequestRelationalTableFilter) SetTableName(v string) *QueryCollectionDataRequestRelationalTableFilter {
 	s.TableName = &v
+	return s
+}
+
+type QueryCollectionDataRequestSparseVector struct {
+	Indices []*int64   `json:"Indices,omitempty" xml:"Indices,omitempty" type:"Repeated"`
+	Values  []*float64 `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s QueryCollectionDataRequestSparseVector) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCollectionDataRequestSparseVector) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCollectionDataRequestSparseVector) SetIndices(v []*int64) *QueryCollectionDataRequestSparseVector {
+	s.Indices = v
+	return s
+}
+
+func (s *QueryCollectionDataRequestSparseVector) SetValues(v []*float64) *QueryCollectionDataRequestSparseVector {
+	s.Values = v
 	return s
 }
 
@@ -40468,6 +40924,7 @@ type QueryCollectionDataShrinkRequest struct {
 	//
 	// > Data from the relational table can be returned by setting the `IncludeMetadataFields` parameter. For example, `rds_table_name.id` indicates returning the `id` field from the relational table.
 	RelationalTableFilterShrink *string `json:"RelationalTableFilter,omitempty" xml:"RelationalTableFilter,omitempty"`
+	SparseVectorShrink          *string `json:"SparseVector,omitempty" xml:"SparseVector,omitempty"`
 	// Set the number of top results to return.
 	//
 	// This parameter is required.
@@ -40573,6 +41030,11 @@ func (s *QueryCollectionDataShrinkRequest) SetRegionId(v string) *QueryCollectio
 
 func (s *QueryCollectionDataShrinkRequest) SetRelationalTableFilterShrink(v string) *QueryCollectionDataShrinkRequest {
 	s.RelationalTableFilterShrink = &v
+	return s
+}
+
+func (s *QueryCollectionDataShrinkRequest) SetSparseVectorShrink(v string) *QueryCollectionDataShrinkRequest {
+	s.SparseVectorShrink = &v
 	return s
 }
 
@@ -43540,7 +44002,7 @@ type SwitchDBInstanceNetTypeRequest struct {
 	ConnectionStringPrefix *string `json:"ConnectionStringPrefix,omitempty" xml:"ConnectionStringPrefix,omitempty"`
 	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/2361776.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
 	//
 	// This parameter is required.
 	//
@@ -46849,8 +47311,9 @@ func (s *UpsertCollectionDataRequest) SetWorkspaceId(v string) *UpsertCollection
 }
 
 type UpsertCollectionDataRequestRows struct {
-	Id       *string            `json:"Id,omitempty" xml:"Id,omitempty"`
-	Metadata map[string]*string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	Id           *string                                      `json:"Id,omitempty" xml:"Id,omitempty"`
+	Metadata     map[string]*string                           `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	SparseVector *UpsertCollectionDataRequestRowsSparseVector `json:"SparseVector,omitempty" xml:"SparseVector,omitempty" type:"Struct"`
 	// This parameter is required.
 	Vector []*float64 `json:"Vector,omitempty" xml:"Vector,omitempty" type:"Repeated"`
 }
@@ -46873,8 +47336,36 @@ func (s *UpsertCollectionDataRequestRows) SetMetadata(v map[string]*string) *Ups
 	return s
 }
 
+func (s *UpsertCollectionDataRequestRows) SetSparseVector(v *UpsertCollectionDataRequestRowsSparseVector) *UpsertCollectionDataRequestRows {
+	s.SparseVector = v
+	return s
+}
+
 func (s *UpsertCollectionDataRequestRows) SetVector(v []*float64) *UpsertCollectionDataRequestRows {
 	s.Vector = v
+	return s
+}
+
+type UpsertCollectionDataRequestRowsSparseVector struct {
+	Indices []*int64   `json:"Indices,omitempty" xml:"Indices,omitempty" type:"Repeated"`
+	Values  []*float64 `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s UpsertCollectionDataRequestRowsSparseVector) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpsertCollectionDataRequestRowsSparseVector) GoString() string {
+	return s.String()
+}
+
+func (s *UpsertCollectionDataRequestRowsSparseVector) SetIndices(v []*int64) *UpsertCollectionDataRequestRowsSparseVector {
+	s.Indices = v
+	return s
+}
+
+func (s *UpsertCollectionDataRequestRowsSparseVector) SetValues(v []*float64) *UpsertCollectionDataRequestRowsSparseVector {
+	s.Values = v
 	return s
 }
 
@@ -48552,16 +49043,22 @@ func (client *Client) CreateBackup(request *CreateBackupRequest) (_result *Creat
 //
 // Creates a vector collection.
 //
-// @param request - CreateCollectionRequest
+// @param tmpReq - CreateCollectionRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateCollectionResponse
-func (client *Client) CreateCollectionWithOptions(request *CreateCollectionRequest, runtime *util.RuntimeOptions) (_result *CreateCollectionResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) CreateCollectionWithOptions(tmpReq *CreateCollectionRequest, runtime *util.RuntimeOptions) (_result *CreateCollectionResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &CreateCollectionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.SparseVectorIndexConfig)) {
+		request.SparseVectorIndexConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SparseVectorIndexConfig, tea.String("SparseVectorIndexConfig"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Collection)) {
 		query["Collection"] = request.Collection
@@ -48629,6 +49126,14 @@ func (client *Client) CreateCollectionWithOptions(request *CreateCollectionReque
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SparseVectorIndexConfigShrink)) {
+		query["SparseVectorIndexConfig"] = request.SparseVectorIndexConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SupportSparse)) {
+		query["SupportSparse"] = request.SupportSparse
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
@@ -49990,9 +50495,11 @@ func (client *Client) CreateRemoteADBDataSource(request *CreateRemoteADBDataSour
 //
 // Description:
 //
-//   You can call this operation to create a sample dataset for an AnalyticDB for PostgreSQL instance. Then, you can execute query statements on the sample dataset to use or test your instance. For more information about query statements, see [Dataset information and query examples](https://help.aliyun.com/document_detail/452277.html).
+//   You can call this operation to create a sample dataset for an AnalyticDB for PostgreSQL instance. Then, you can execute query statements on the sample dataset to experience or test your instance. For more information about query statements, see [Dataset information and query examples](https://help.aliyun.com/document_detail/452277.html).
 //
-// 	- This operation is supported only for AnalyticDB for PostgreSQL V6.3.8.8 and V6.3.10.3 or later, excluding the versions from V6.3.9.0 to V6.3.10.2.
+// 	- This operation is supported only for AnalyticDB for PostgreSQL V6.3.8.8 to 6.3.8.x, V6.3.10.3, and later.
+//
+// 	- Versions from V6.3.9.0 to V6.3.10.2 are not supported.
 //
 // @param request - CreateSampleDataRequest
 //
@@ -50053,9 +50560,11 @@ func (client *Client) CreateSampleDataWithOptions(request *CreateSampleDataReque
 //
 // Description:
 //
-//   You can call this operation to create a sample dataset for an AnalyticDB for PostgreSQL instance. Then, you can execute query statements on the sample dataset to use or test your instance. For more information about query statements, see [Dataset information and query examples](https://help.aliyun.com/document_detail/452277.html).
+//   You can call this operation to create a sample dataset for an AnalyticDB for PostgreSQL instance. Then, you can execute query statements on the sample dataset to experience or test your instance. For more information about query statements, see [Dataset information and query examples](https://help.aliyun.com/document_detail/452277.html).
 //
-// 	- This operation is supported only for AnalyticDB for PostgreSQL V6.3.8.8 and V6.3.10.3 or later, excluding the versions from V6.3.9.0 to V6.3.10.2.
+// 	- This operation is supported only for AnalyticDB for PostgreSQL V6.3.8.8 to 6.3.8.x, V6.3.10.3, and later.
+//
+// 	- Versions from V6.3.9.0 to V6.3.10.2 are not supported.
 //
 // @param request - CreateSampleDataRequest
 //
@@ -50116,6 +50625,10 @@ func (client *Client) CreateSecretWithOptions(request *CreateSecretRequest, runt
 
 	if !tea.BoolValue(util.IsUnset(request.Username)) {
 		query["Username"] = request.Username
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -50665,6 +51178,10 @@ func (client *Client) CreateVectorIndexWithOptions(request *CreateVectorIndexReq
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -52158,6 +52675,10 @@ func (client *Client) DeleteSecretWithOptions(request *DeleteSecretRequest, runt
 		query["SecretName"] = request.SecretName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -52488,6 +53009,10 @@ func (client *Client) DeleteVectorIndexWithOptions(request *DeleteVectorIndexReq
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -53383,7 +53908,7 @@ func (client *Client) DescribeDBClusterPerformance(request *DescribeDBClusterPer
 
 // Summary:
 //
-// Query detailed information about the instance
+// Query detailed information about the instance.
 //
 // Description:
 //
@@ -53456,7 +53981,7 @@ func (client *Client) DescribeDBInstanceAttributeWithOptions(request *DescribeDB
 
 // Summary:
 //
-// Query detailed information about the instance
+// Query detailed information about the instance.
 //
 // Description:
 //
@@ -58227,6 +58752,10 @@ func (client *Client) DescribeTableWithOptions(request *DescribeTableRequest, ru
 		query["Table"] = request.Table
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -59123,6 +59652,10 @@ func (client *Client) ExecuteStatementWithOptions(tmpReq *ExecuteStatementReques
 		request.ParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Parameters, tea.String("Parameters"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.RagWorkspaceCollection)) {
+		request.RagWorkspaceCollectionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RagWorkspaceCollection, tea.String("RagWorkspaceCollection"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.Sqls)) {
 		request.SqlsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Sqls, tea.String("Sqls"), tea.String("json"))
 	}
@@ -59140,6 +59673,10 @@ func (client *Client) ExecuteStatementWithOptions(tmpReq *ExecuteStatementReques
 		query["OwnerId"] = request.OwnerId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RagWorkspaceCollectionShrink)) {
+		query["RagWorkspaceCollection"] = request.RagWorkspaceCollectionShrink
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
 	}
@@ -59154,6 +59691,10 @@ func (client *Client) ExecuteStatementWithOptions(tmpReq *ExecuteStatementReques
 
 	if !tea.BoolValue(util.IsUnset(request.StatementName)) {
 		query["StatementName"] = request.StatementName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
 	}
 
 	body := map[string]interface{}{}
@@ -59330,6 +59871,10 @@ func (client *Client) GetSecretValueWithOptions(request *GetSecretValueRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.SecretName)) {
 		query["SecretName"] = request.SecretName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -61067,6 +61612,10 @@ func (client *Client) ListSecretsWithOptions(request *ListSecretsRequest, runtim
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -64058,6 +64607,10 @@ func (client *Client) QueryCollectionDataWithOptions(tmpReq *QueryCollectionData
 		request.RelationalTableFilterShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RelationalTableFilter, tea.String("RelationalTableFilter"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.SparseVector)) {
+		request.SparseVectorShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SparseVector, tea.String("SparseVector"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.Vector)) {
 		request.VectorShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Vector, tea.String("Vector"), tea.String("json"))
 	}
@@ -64125,6 +64678,10 @@ func (client *Client) QueryCollectionDataWithOptions(tmpReq *QueryCollectionData
 
 	if !tea.BoolValue(util.IsUnset(request.RelationalTableFilterShrink)) {
 		query["RelationalTableFilter"] = request.RelationalTableFilterShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SparseVectorShrink)) {
+		query["SparseVector"] = request.SparseVectorShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TopK)) {
