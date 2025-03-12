@@ -3906,7 +3906,8 @@ type Sku struct {
 	// example:
 	//
 	// 21000017
-	ShopId *string `json:"shopId,omitempty" xml:"shopId,omitempty"`
+	ShopId   *string `json:"shopId,omitempty" xml:"shopId,omitempty"`
+	SkuAlias *string `json:"skuAlias,omitempty" xml:"skuAlias,omitempty"`
 	// example:
 	//
 	// 660460842235822081
@@ -3997,6 +3998,11 @@ func (s *Sku) SetRankValue(v int64) *Sku {
 
 func (s *Sku) SetShopId(v string) *Sku {
 	s.ShopId = &v
+	return s
+}
+
+func (s *Sku) SetSkuAlias(v string) *Sku {
+	s.SkuAlias = &v
 	return s
 }
 
@@ -5383,10 +5389,14 @@ type SearchProductsRequest struct {
 	//
 	// ASC
 	OrderDirection *string `json:"orderDirection,omitempty" xml:"orderDirection,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 10
@@ -5404,6 +5414,8 @@ type SearchProductsRequest struct {
 	//
 	// Sellable
 	ProductStatus *string `json:"productStatus,omitempty" xml:"productStatus,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// PIDxxxx
@@ -5909,7 +5921,10 @@ func (s *SearchProductsResponse) SetBody(v *SearchProductsResponseBody) *SearchP
 }
 
 type SelectionGroupAddProductRequest struct {
+	// This parameter is required.
 	ProductIds []*string `json:"productIds,omitempty" xml:"productIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// PIDxxxxx
@@ -5981,7 +5996,10 @@ func (s *SelectionGroupAddProductResponse) SetBody(v *SelectionGroupAddProductRe
 }
 
 type SelectionGroupRemoveProductRequest struct {
+	// This parameter is required.
 	ProductIds []*string `json:"productIds,omitempty" xml:"productIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// PIDxxxxx
