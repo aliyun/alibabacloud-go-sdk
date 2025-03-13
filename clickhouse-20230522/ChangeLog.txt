@@ -1,3 +1,7 @@
+2025-03-13 Version: v1.0.3
+- Update API DescribeDBInstanceAttribute: update response param.
+
+
 2025-02-20 Version: v1.0.2
 - Update API CreateDBInstance: add param BackupSetId.
 - Update API CreateDBInstance: add param DeploySchema.
