@@ -186,6 +186,7 @@ func (s *LicenseInstanceAppDTO) SetUserId(v int64) *LicenseInstanceAppDTO {
 type LicenseInstanceAppDTOLicenseConfigs struct {
 	BusinessType    *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
 	FeatureIds      *string `json:"FeatureIds,omitempty" xml:"FeatureIds,omitempty"`
+	IsTrial         *bool   `json:"IsTrial,omitempty" xml:"IsTrial,omitempty"`
 	SdkId           *int32  `json:"SdkId,omitempty" xml:"SdkId,omitempty"`
 	SdkName         *string `json:"SdkName,omitempty" xml:"SdkName,omitempty"`
 	Subscription    *string `json:"Subscription,omitempty" xml:"Subscription,omitempty"`
@@ -208,6 +209,11 @@ func (s *LicenseInstanceAppDTOLicenseConfigs) SetBusinessType(v string) *License
 
 func (s *LicenseInstanceAppDTOLicenseConfigs) SetFeatureIds(v string) *LicenseInstanceAppDTOLicenseConfigs {
 	s.FeatureIds = &v
+	return s
+}
+
+func (s *LicenseInstanceAppDTOLicenseConfigs) SetIsTrial(v bool) *LicenseInstanceAppDTOLicenseConfigs {
+	s.IsTrial = &v
 	return s
 }
 
@@ -2015,6 +2021,14 @@ func (s *AttachAppPolicyToIdentityResponse) SetBody(v *AttachAppPolicyToIdentity
 }
 
 type BatchGetMediaInfosRequest struct {
+	// The ID of the media asset. The ID can be the video ID or audio ID. Separate IDs with commas (,). You can specify a maximum of 20 IDs. You can use one of the following methods to obtain the ID of the media asset:
+	//
+	// 	- Log on to the ApsaraVideo VOD console. In the left-side navigation pane, choose Media Files > Audio/Video. On the Video and Audio page, view the ID of the media asset. This method is applicable to files that are uploaded by using the ApsaraVideo VOD console.
+	//
+	// 	- Obtain the value of VideoId from the response to the CreateUploadVideo operation that you call to upload media assets.
+	//
+	// 	- Obtain the value of VideoId from the response to the SearchMedia operation that you call to query the media ID after the media asset is uploaded.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2037,9 +2051,14 @@ func (s *BatchGetMediaInfosRequest) SetMediaIds(v string) *BatchGetMediaInfosReq
 }
 
 type BatchGetMediaInfosResponseBody struct {
-	ForbiddenMediaIds []*string                                   `json:"ForbiddenMediaIds,omitempty" xml:"ForbiddenMediaIds,omitempty" type:"Repeated"`
-	MediaInfos        []*BatchGetMediaInfosResponseBodyMediaInfos `json:"MediaInfos,omitempty" xml:"MediaInfos,omitempty" type:"Repeated"`
-	NonExistMediaIds  []*string                                   `json:"NonExistMediaIds,omitempty" xml:"NonExistMediaIds,omitempty" type:"Repeated"`
+	// The IDs of the media assets that do not support the operation typically because you are not authorized to perform the operation. For more information, see [Overview](https://help.aliyun.com/document_detail/113600.html).
+	ForbiddenMediaIds []*string `json:"ForbiddenMediaIds,omitempty" xml:"ForbiddenMediaIds,omitempty" type:"Repeated"`
+	// Details about media assets.
+	MediaInfos []*BatchGetMediaInfosResponseBodyMediaInfos `json:"MediaInfos,omitempty" xml:"MediaInfos,omitempty" type:"Repeated"`
+	// The IDs of the media assets that do not exist.
+	NonExistMediaIds []*string `json:"NonExistMediaIds,omitempty" xml:"NonExistMediaIds,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9E290613-04F4-47F4-795D30732077****
@@ -2075,13 +2094,18 @@ func (s *BatchGetMediaInfosResponseBody) SetRequestId(v string) *BatchGetMediaIn
 }
 
 type BatchGetMediaInfosResponseBodyMediaInfos struct {
+	// The ID of the media asset.
+	//
 	// example:
 	//
 	// 10a5fa364a5b71ef89246733a78e****
-	MediaId       *string                                                 `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	MediaInfo     *BatchGetMediaInfosResponseBodyMediaInfosMediaInfo      `json:"MediaInfo,omitempty" xml:"MediaInfo,omitempty" type:"Struct"`
-	MezzanineInfo *BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfo  `json:"MezzanineInfo,omitempty" xml:"MezzanineInfo,omitempty" type:"Struct"`
-	PlayInfoList  []*BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList `json:"PlayInfoList,omitempty" xml:"PlayInfoList,omitempty" type:"Repeated"`
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The basic information of the media asset.
+	MediaInfo *BatchGetMediaInfosResponseBodyMediaInfosMediaInfo `json:"MediaInfo,omitempty" xml:"MediaInfo,omitempty" type:"Struct"`
+	// The source file information.
+	MezzanineInfo *BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfo `json:"MezzanineInfo,omitempty" xml:"MezzanineInfo,omitempty" type:"Struct"`
+	// The information about the audio or video stream.
+	PlayInfoList []*BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList `json:"PlayInfoList,omitempty" xml:"PlayInfoList,omitempty" type:"Repeated"`
 }
 
 func (s BatchGetMediaInfosResponseBodyMediaInfos) String() string {
@@ -2113,63 +2137,154 @@ func (s *BatchGetMediaInfosResponseBodyMediaInfos) SetPlayInfoList(v []*BatchGet
 }
 
 type BatchGetMediaInfosResponseBodyMediaInfosMediaInfo struct {
+	// The ID of the application.
+	//
 	// example:
 	//
 	// app-****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the category.
+	//
 	// example:
 	//
 	// 781111****
-	CateId   *int64  `json:"CateId,omitempty" xml:"CateId,omitempty"`
+	CateId *int64 `json:"CateId,omitempty" xml:"CateId,omitempty"`
+	// The name of the category.
+	//
+	// example:
+	//
+	// CateName
 	CateName *string `json:"CateName,omitempty" xml:"CateName,omitempty"`
+	// The thumbnail URL of the media asset.
+	//
 	// example:
 	//
 	// https://example.aliyundoc.com/****.jpg
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	// The time when the media asset was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2017-11-14T09:15:50Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description of the media asset.
+	//
+	// example:
+	//
+	// Aliyun VOD Video Description
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether the offline download feature is enabled. If you enable the offline download feature, users can download and play videos by using the ApsaraVideo Player on a local PC. For more information, see [Configure download settings](https://help.aliyun.com/document_detail/86107.html). Valid values:
+	//
+	// 	- **on**
+	//
+	// 	- **off**
+	//
 	// example:
 	//
 	// on
 	DownloadSwitch *string `json:"DownloadSwitch,omitempty" xml:"DownloadSwitch,omitempty"`
+	// The ID of the media asset.
+	//
 	// example:
 	//
 	// 7753d144efd74d6c45fe0570****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The time when the media asset was last updated. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2017-06-26T06:38:48Z
 	ModificationTime *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
+	// The period of time in which the audio file remains in the restored state.
+	//
 	// example:
 	//
 	// 2023-03-30T10:14:14Z
 	RestoreExpiration *string `json:"RestoreExpiration,omitempty" xml:"RestoreExpiration,omitempty"`
+	// The restoration status of the media asset. Valid values:
+	//
+	// 	- **Processing**
+	//
+	// 	- **Success**
+	//
+	// 	- **Failed**
+	//
 	// example:
 	//
 	// Success
-	RestoreStatus *string   `json:"RestoreStatus,omitempty" xml:"RestoreStatus,omitempty"`
-	Snapshots     []*string `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Repeated"`
+	RestoreStatus *string `json:"RestoreStatus,omitempty" xml:"RestoreStatus,omitempty"`
+	// The array of video snapshot URLs.
+	Snapshots []*string `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Repeated"`
+	// The status of the video. Valid values:
+	//
+	// 	- **Uploading**
+	//
+	// 	- **UploadFail**
+	//
+	// 	- **UploadSucc**
+	//
+	// 	- **Transcoding**
+	//
+	// 	- **TranscodeFail**
+	//
+	// 	- **Blocked**
+	//
+	// 	- **Normal**
+	//
 	// example:
 	//
 	// Normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The storage type. Valid values:
+	//
+	// 	- **Standard**: All media assets are stored as Standard objects.
+	//
+	// 	- **IA**: All media assets are stored as IA objects.
+	//
+	// 	- **Archive**: All media assets are stored as Archive objects.
+	//
+	// 	- **ColdArchive**: All media assets are stored as Cold Archive objects.
+	//
+	// 	- **SourceIA**: Only the source files are IA objects.
+	//
+	// 	- **SourceArchive**: Only the source files are Archive objects.
+	//
+	// 	- **SourceColdArchive**: Only the source file is stored as a Cold Archive object.
+	//
+	// 	- **Changing**: The storage class of the media asset is being changed.
+	//
+	// 	- **SourceChanging**: The storage class of the media asset is being changed.
+	//
 	// example:
 	//
 	// Standard
 	StorageClass *string `json:"StorageClass,omitempty" xml:"StorageClass,omitempty"`
+	// The storage address of the media asset.
+	//
 	// example:
 	//
 	// outin-***.oss-cn-shanghai.aliyuncs.com
 	StorageLocation *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
-	Tags            *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The tags of the media asset. Separate tags with commas (,).
+	//
+	// example:
+	//
+	// tag1,tag2
+	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The ID of the transcoding template group.
+	//
 	// example:
 	//
 	// b4039216985f4312a5382a4ed****
 	TemplateGroupId *string `json:"TemplateGroupId,omitempty" xml:"TemplateGroupId,omitempty"`
-	Title           *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The title of the media asset.
+	//
+	// example:
+	//
+	// Aliyun VOD Video Title
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The custom parameters.
+	//
 	// example:
 	//
 	// {"Extend":"xxx","MessageCallback":"xxx"}
@@ -2280,48 +2395,80 @@ func (s *BatchGetMediaInfosResponseBodyMediaInfosMediaInfo) SetUserData(v string
 }
 
 type BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfo struct {
+	// The information about the audio stream.
 	AudioStreamList []*BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfoAudioStreamList `json:"AudioStreamList,omitempty" xml:"AudioStreamList,omitempty" type:"Repeated"`
+	// The bitrate of the file. Unit: Kbit/s.
+	//
 	// example:
 	//
 	// 771.2280
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The time when the source file was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2017-11-14T09:15:50Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The duration of the file. Unit: seconds.
+	//
 	// example:
 	//
 	// 42.4930
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The name of the file.
+	//
 	// example:
 	//
 	// 27ffc438-164h67f57ef-0005-6884-51a-1****.mp4
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The OSS URL of the source file.
+	//
 	// example:
 	//
 	// http://example-bucket-****.oss-cn-shanghai.aliyuncs.com/27ffc438-164h67f57ef-0005-6884-51a-1****.mp4
 	FileURL *string `json:"FileURL,omitempty" xml:"FileURL,omitempty"`
+	// The frame rate of the file.
+	//
 	// example:
 	//
 	// 25.0000
 	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	// The height of the file. Unit: pixels.
+	//
 	// example:
 	//
 	// 540
 	Height *int64 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The ID of the media asset.
+	//
 	// example:
 	//
 	// 1f1a6fc03ca04814031b8a6559e****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The size of the file. Unit: bytes.
+	//
 	// example:
 	//
 	// 4096477
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The state of the file. Valid values:
+	//
+	// 	- **Uploading**: The file is being uploaded. This is the initial status.
+	//
+	// 	- **Normal**: The file is uploaded.
+	//
+	// 	- **UploadFail**: The file failed to be uploaded.
+	//
+	// 	- **Deleted**: The file is deleted.
+	//
 	// example:
 	//
 	// Normal
-	Status          *string                                                                 `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The information about the video streams.
 	VideoStreamList []*BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfoVideoStreamList `json:"VideoStreamList,omitempty" xml:"VideoStreamList,omitempty" type:"Repeated"`
+	// The width of the file. Unit: pixels.
+	//
 	// example:
 	//
 	// 960
@@ -2402,66 +2549,102 @@ func (s *BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfo) SetWidth(v int64
 }
 
 type BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfoAudioStreamList struct {
+	// The bitrate.
+	//
 	// example:
 	//
 	// 62.885
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The output layout of the audio channels. Valid values:
+	//
+	// 	- **mono**
+	//
+	// 	- **stereo**
+	//
 	// example:
 	//
 	// mono
 	ChannelLayout *string `json:"ChannelLayout,omitempty" xml:"ChannelLayout,omitempty"`
+	// The number of sound tracks.
+	//
 	// example:
 	//
 	// 1
 	Channels *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
+	// The full name of the encoding format.
+	//
 	// example:
 	//
 	// AAC (Advanced Audio Coding)
 	CodecLongName *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
+	// The short name of the encoding format.
+	//
 	// example:
 	//
 	// aac
 	CodecName *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
+	// The tag of the encoding format.
+	//
 	// example:
 	//
 	// 0x6134706d
 	CodecTag *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
+	// The tag string of the encoding format.
+	//
 	// example:
 	//
 	// mp4a
 	CodecTagString *string `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
+	// The time base of the encoder.
+	//
 	// example:
 	//
 	// 1/44100
 	CodecTimeBase *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
+	// The duration.
+	//
 	// example:
 	//
 	// 3.227574
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The sequence number of the audio stream. The value indicates the position of the audio stream in all audio streams.
+	//
 	// example:
 	//
 	// 0
 	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	// The language.
+	//
 	// example:
 	//
 	// und
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The total number of frames.
+	//
 	// example:
 	//
 	// 1
 	NumFrames *string `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
+	// The sampling format.
+	//
 	// example:
 	//
 	// fltp
 	SampleFmt *string `json:"SampleFmt,omitempty" xml:"SampleFmt,omitempty"`
+	// The sampling rate.
+	//
 	// example:
 	//
 	// 44100
 	SampleRate *string `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
+	// The start time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2017-01-11T12:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The time base.
+	//
 	// example:
 	//
 	// 0.000000
@@ -2557,98 +2740,146 @@ func (s *BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfoAudioStreamList) S
 }
 
 type BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfoVideoStreamList struct {
+	// The average frame rate.
+	//
 	// example:
 	//
 	// 30.0
 	AvgFPS *string `json:"AvgFPS,omitempty" xml:"AvgFPS,omitempty"`
+	// The bitrate of the file. Unit: Kbit/s.
+	//
 	// example:
 	//
 	// 500
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The full name of the encoding format.
+	//
 	// example:
 	//
 	// H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10
 	CodecLongName *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
+	// The short name of the encoding format.
+	//
 	// example:
 	//
 	// h264
 	CodecName *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
+	// The tag of the encoding format.
+	//
 	// example:
 	//
 	// 0x31637661
 	CodecTag *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
+	// The tag string of the encoding format.
+	//
 	// example:
 	//
 	// avc1
 	CodecTagString *string `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
+	// The time base of the encoder.
+	//
 	// example:
 	//
 	// 1/60
 	CodecTimeBase *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
+	// The display aspect ratio (DAR).
+	//
 	// example:
 	//
 	// 0:1
 	Dar *string `json:"Dar,omitempty" xml:"Dar,omitempty"`
+	// The duration.
+	//
 	// example:
 	//
 	// 3.166667
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The frame rate of the output file.
+	//
 	// example:
 	//
 	// 30.0
 	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	// The HDR type of the video stream.
+	//
 	// example:
 	//
 	// HDR
 	HDRType *string `json:"HDRType,omitempty" xml:"HDRType,omitempty"`
+	// Indicates whether the video stream contains bidirectional frames (B-frames).
+	//
 	// example:
 	//
 	// 0
 	HasBFrames *string `json:"HasBFrames,omitempty" xml:"HasBFrames,omitempty"`
+	// The height of the video stream.
+	//
 	// example:
 	//
 	// 320
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The sequence number of the video stream. The value identifies the position of the video stream in all video streams.
+	//
 	// example:
 	//
 	// 1
 	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	// The language.
+	//
 	// example:
 	//
 	// und
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The codec level.
+	//
 	// example:
 	//
 	// 30
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The total number of frames.
+	//
 	// example:
 	//
 	// 0
 	NumFrames *string `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
+	// The pixel format of the video stream.
+	//
 	// example:
 	//
 	// yuv420p
 	PixFmt *string `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
+	// The codec profile.
+	//
 	// example:
 	//
 	// Main
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	// The rotation angle of the video. Valid values: [0,360).
+	//
 	// example:
 	//
 	// 90
 	Rotate *string `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
+	// The sample aspect ratio (SAR).
+	//
 	// example:
 	//
 	// 0:1
 	Sar *string `json:"Sar,omitempty" xml:"Sar,omitempty"`
+	// The start time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2017-01-11T12:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The time base.
+	//
 	// example:
 	//
 	// 0.000000
 	Timebase *string `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
+	// The horizontal resolution of the video.
+	//
 	// example:
 	//
 	// 568
@@ -2784,33 +3015,228 @@ func (s *BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfoVideoStreamList) S
 }
 
 type BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList struct {
-	BitDepth         *int32  `json:"BitDepth,omitempty" xml:"BitDepth,omitempty"`
-	Bitrate          *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	CodecName        *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
-	CreationTime     *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Definition       *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
-	Duration         *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	Encrypt          *int64  `json:"Encrypt,omitempty" xml:"Encrypt,omitempty"`
-	EncryptMode      *string `json:"EncryptMode,omitempty" xml:"EncryptMode,omitempty"`
-	EncryptType      *string `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
-	Format           *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	Fps              *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	HDRType          *string `json:"HDRType,omitempty" xml:"HDRType,omitempty"`
-	Height           *int64  `json:"Height,omitempty" xml:"Height,omitempty"`
-	JobExt           *string `json:"JobExt,omitempty" xml:"JobExt,omitempty"`
-	JobId            *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	JobType          *int32  `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// The color depth. This value is an integer.
+	//
+	// example:
+	//
+	// 8
+	BitDepth *int32 `json:"BitDepth,omitempty" xml:"BitDepth,omitempty"`
+	// The bitrate of the media stream. Unit: Kbit/s.
+	//
+	// example:
+	//
+	// 450.878
+	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The short name of the codec.
+	//
+	// example:
+	//
+	// h264
+	CodecName *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
+	// The creation time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2022-04-18T07:37:15Z
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The quality of the video stream. Valid values:
+	//
+	// 	- **FD**: low definition
+	//
+	// 	- **LD**: standard definition
+	//
+	// 	- **SD**: high definition
+	//
+	// 	- **HD**: ultra-high definition
+	//
+	// 	- **OD**: original definition
+	//
+	// 	- **2K**
+	//
+	// 	- **4K**
+	//
+	// 	- **SQ**: standard sound quality
+	//
+	// 	- **HQ**: high sound quality
+	//
+	// 	- **AUTO**: adaptive bitrate
+	//
+	// example:
+	//
+	// LD
+	Definition *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
+	// The duration of the media stream. Unit: seconds.
+	//
+	// example:
+	//
+	// 9.0464
+	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// Indicates whether the media stream was encrypted. Valid values:
+	//
+	// 	- **0**: The media stream is not encrypted.
+	//
+	// 	- **1**: The media stream is encrypted.
+	//
+	// example:
+	//
+	// 1
+	Encrypt *int64 `json:"Encrypt,omitempty" xml:"Encrypt,omitempty"`
+	// The encryption type of the media stream. Valid values:
+	//
+	// 	- **License**: decryption on local devices.
+	//
+	// >  If the encryption type is **License**, only ApsaraVideo Player SDK can be used to play videos.
+	//
+	// example:
+	//
+	// License
+	EncryptMode *string `json:"EncryptMode,omitempty" xml:"EncryptMode,omitempty"`
+	// The encryption type of the media stream. Valid values:
+	//
+	// 	- **AliyunVoDEncryption**: Alibaba Cloud proprietary cryptography
+	//
+	// 	- **HLSEncryption**: HTTP Live Streaming (HLS) encryption
+	//
+	// >  If the encryption type is AliyunVoDEncryption, only ApsaraVideo Player SDK can be used to play videos.
+	//
+	// example:
+	//
+	// AliyunVoDEncryption
+	EncryptType *string `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
+	// The format of the media stream.
+	//
+	// 	- If the media file is a video file, the valid values are **mp4*	- and **m3u8**.
+	//
+	// 	- If the media asset is an audio-only file, the value is **mp3**.
+	//
+	// example:
+	//
+	// m3u8
+	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	// The frame rate of the media stream. Unit: frames per second (FPS).
+	//
+	// example:
+	//
+	// 25
+	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	// The HDR type of the media stream. Valid values:
+	//
+	// 	- HDR
+	//
+	// 	- HDR10
+	//
+	// 	- HLG
+	//
+	// 	- DolbyVision
+	//
+	// 	- HDRVivid
+	//
+	// 	- SDR+
+	//
+	// example:
+	//
+	// HLG
+	HDRType *string `json:"HDRType,omitempty" xml:"HDRType,omitempty"`
+	// The height of the media stream. Unit: pixels.
+	//
+	// example:
+	//
+	// 640
+	Height *int64 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The custom watermark information of the copyright watermark. This parameter is returned if you set `JobType` to `2`.
+	//
+	// example:
+	//
+	// CopyrightMarkTest
+	JobExt *string `json:"JobExt,omitempty" xml:"JobExt,omitempty"`
+	// The job ID for transcoding the media stream. This ID uniquely identifies a media stream.
+	//
+	// example:
+	//
+	// 80e9c6580e754a798c3c19c59b16****
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The type of the digital watermark. Valid values:
+	//
+	// 	- **1**: user-tracing watermark
+	//
+	// 	- **2**: copyright watermark
+	//
+	// example:
+	//
+	// 2
+	JobType *int32 `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// The update time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2022-04-20T06:32:19Z
 	ModificationTime *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
-	NarrowBandType   *string `json:"NarrowBandType,omitempty" xml:"NarrowBandType,omitempty"`
-	PlayURL          *string `json:"PlayURL,omitempty" xml:"PlayURL,omitempty"`
-	Size             *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
-	Specification    *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
-	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	StreamType       *string `json:"StreamType,omitempty" xml:"StreamType,omitempty"`
-	TemplateGroupId  *string `json:"TemplateGroupId,omitempty" xml:"TemplateGroupId,omitempty"`
-	TemplateId       *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	WatermarkId      *string `json:"WatermarkId,omitempty" xml:"WatermarkId,omitempty"`
-	Width            *int64  `json:"Width,omitempty" xml:"Width,omitempty"`
+	// The transcoding type. Valid values:
+	//
+	// 	- **0**: regular transcoding
+	//
+	// 	- **1.0**: Narrowband HD™ 1.0 transcoding
+	//
+	// 	- **2.0**: Narrowband HD™ 2.0 transcoding
+	//
+	// example:
+	//
+	// 0
+	NarrowBandType *string `json:"NarrowBandType,omitempty" xml:"NarrowBandType,omitempty"`
+	// The playback URL of the video stream.
+	PlayURL *string `json:"PlayURL,omitempty" xml:"PlayURL,omitempty"`
+	// The size of the media stream. Unit: bytes.
+	//
+	// example:
+	//
+	// 418112
+	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The specifications of transcoded audio and video streams. For more information about the valid values, see [Output specifications](~~124671#section-6bv-l0g-opq~~).
+	//
+	// example:
+	//
+	// H264.LD
+	Specification *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
+	// The status of the audio or video stream. Valid values:
+	//
+	// 	- **Normal**: The latest transcoded stream in each quality and format is in the Normal status.
+	//
+	// 	- **Invisible**: If multiple streams are transcoded in the same quality and format, the latest transcoded stream is in the Normal status and other streams are in the Invisible status.
+	//
+	// example:
+	//
+	// Normal
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The type of the media stream. If the media stream is a video stream, the value is **video**. If the media stream is an audio-only stream, the value is **audio**.
+	//
+	// example:
+	//
+	// video
+	StreamType *string `json:"StreamType,omitempty" xml:"StreamType,omitempty"`
+	// The ID of the transcoding template group.
+	//
+	// example:
+	//
+	// fb0716154b21a4ecb5b70a26ccc8****
+	TemplateGroupId *string `json:"TemplateGroupId,omitempty" xml:"TemplateGroupId,omitempty"`
+	// The ID of the transcoding template.
+	//
+	// example:
+	//
+	// a86a4338dd2e83da45154004a541****
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The ID of the watermark that is associated with the media stream.
+	//
+	// example:
+	//
+	// dgfn26457856****
+	WatermarkId *string `json:"WatermarkId,omitempty" xml:"WatermarkId,omitempty"`
+	// The width of the media stream. Unit: pixels.
+	//
+	// example:
+	//
+	// 360
+	Width *int64 `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList) String() string {
@@ -3376,24 +3802,32 @@ func (s *CancelUrlUploadJobsResponse) SetBody(v *CancelUrlUploadJobsResponseBody
 }
 
 type ChangeResourceGroupRequest struct {
+	// The ID of the resource group.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rg-aekzko7fsuj****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The ID of resource
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// app-xxxxxxx
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The ID of the region.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-shanghai
 	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
+	// The type of resource
+	//
 	// example:
 	//
 	// AppInfo
@@ -6507,18 +6941,52 @@ func (s *DeleteWatermarkResponse) SetBody(v *DeleteWatermarkResponseBody) *Delet
 }
 
 type DescribeMediaDistributionRequest struct {
+	// The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. The maximum time range to query is 6 months.
+	//
 	// example:
 	//
 	// 2017-01-11T12:59:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The statistical interval. Default value: day. Valid values:
+	//
+	// 	- hour: natural hour of the start and end time.
+	//
+	// 	- day: natural day of the start and end time.
+	//
+	// 	- week: natural week of the start and end time.
+	//
+	// 	- month: natural month of the start and end time.
+	//
 	// example:
 	//
 	// day
 	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. The maximum time range to query is 6 months.
+	//
 	// example:
 	//
 	// 2017-01-11T12:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The hierarchical storage type. Valid values:
+	//
+	// 	- Standard
+	//
+	// 	- IA
+	//
+	// 	- Archive
+	//
+	// 	- ColdArchive
+	//
+	// 	- SourceIA
+	//
+	// 	- SourceArchive
+	//
+	// 	- SourceColdArchive
+	//
+	// 	- Changing
+	//
+	// 	- SourceChanging
+	//
 	// example:
 	//
 	// Standard
@@ -6554,11 +7022,16 @@ func (s *DescribeMediaDistributionRequest) SetStorageClass(v string) *DescribeMe
 }
 
 type DescribeMediaDistributionResponseBody struct {
+	// The distribution list of media assets. The data is displayed based on the statistical cycle of the natural hour, day, week, or month of the start and end time.
 	MediaDistributionList []*DescribeMediaDistributionResponseBodyMediaDistributionList `json:"MediaDistributionList,omitempty" xml:"MediaDistributionList,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 25818875-5F78-4AF6-D7393642CA58****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of media assets returned.
+	//
 	// example:
 	//
 	// 100
@@ -6589,14 +7062,20 @@ func (s *DescribeMediaDistributionResponseBody) SetTotal(v int64) *DescribeMedia
 }
 
 type DescribeMediaDistributionResponseBodyMediaDistributionList struct {
+	// The number of media assets that are queried during the specified time range.
+	//
 	// example:
 	//
 	// 12
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The end of the time range during which data is queried (exclusive). The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2017-11-14T00:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The start of the time range during which data is queried (inclusive). The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2017-11-13T00:00:00Z
@@ -10122,23 +10601,39 @@ func (s *DescribeVodDomainLogResponse) SetBody(v *DescribeVodDomainLogResponseBo
 }
 
 type DescribeVodDomainMax95BpsDataRequest struct {
+	// The cycle to query the 95th percentile bandwidth data. Valid values:
+	//
+	// 	- day (default)
+	//
+	// 	- month
+	//
 	// example:
 	//
 	// month
 	Cycle *string `json:"Cycle,omitempty" xml:"Cycle,omitempty"`
+	// The domain name to be queried for acceleration. If the parameter is empty, the data merged from all accelerated domain names will be returned by default.
+	//
+	// > Batch domain name queries are not supported.
+	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// End time point. The date format follows the ISO8601 representation and uses UTC time, in the format yyyy-MM-dd\\"T\\"HH:mm:ssZ.
+	//
 	// example:
 	//
 	// 2017-01-12T13:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Start time point. The date format follows the ISO8601 representation and uses UTC time, in the format yyyy-MM-dd\\"T\\"HH:mm:ssZ.
+	//
 	// example:
 	//
 	// 2017-01-11T12:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The start time point for getting the data. The date format follows the ISO8601 representation and uses UTC time, in the format yyyy-MM-dd\\"T\\"HH:mm:ssZ.
+	//
 	// example:
 	//
 	// 2017-12-21T10:00:00Z
@@ -10184,31 +10679,52 @@ func (s *DescribeVodDomainMax95BpsDataRequest) SetTimePoint(v string) *DescribeV
 }
 
 type DescribeVodDomainMax95BpsDataResponseBody struct {
+	// Details of the 95th percentile bandwidth.
 	DetailData *DescribeVodDomainMax95BpsDataResponseBodyDetailData `json:"DetailData,omitempty" xml:"DetailData,omitempty" type:"Struct"`
+	// The domain name for CDN.
+	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The 95th percentile bandwidth in the Chinese mainland.
+	//
 	// example:
 	//
 	// 16777590.28
 	DomesticMax95Bps *string `json:"DomesticMax95Bps,omitempty" xml:"DomesticMax95Bps,omitempty"`
+	// The end of the time range to query.
+	//
+	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
+	// >  The end time must be later than the start time.
+	//
 	// example:
 	//
 	// 2017-01-11T13:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The 95th percentile bandwidth.
+	//
 	// example:
 	//
 	// 16777590.28
 	Max95Bps *string `json:"Max95Bps,omitempty" xml:"Max95Bps,omitempty"`
+	// The 95th percentile bandwidth outside the Chinese mainland.
+	//
 	// example:
 	//
 	// 0
 	OverseasMax95Bps *string `json:"OverseasMax95Bps,omitempty" xml:"OverseasMax95Bps,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 25818875-5F78-4A*****F6-D7393642CA58
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The beginning of the time range to query.
+	//
+	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
 	// example:
 	//
 	// 2017-01-11T12:00:00Z
@@ -10281,18 +10797,26 @@ func (s *DescribeVodDomainMax95BpsDataResponseBodyDetailData) SetMax95Detail(v [
 }
 
 type DescribeVodDomainMax95BpsDataResponseBodyDetailDataMax95Detail struct {
+	// The billable region where the peak 95 data was collected.
+	//
 	// example:
 	//
 	// CN
 	Area *string `json:"Area,omitempty" xml:"Area,omitempty"`
+	// The 95th percentile bandwidth.
+	//
 	// example:
 	//
 	// 16777590.28
 	Max95Bps *float32 `json:"Max95Bps,omitempty" xml:"Max95Bps,omitempty"`
+	// The time corresponding to the 95th percentile bandwidth peak.
+	//
 	// example:
 	//
 	// 2015-12-11T21:05:00Z
 	Max95BpsPeakTime *string `json:"Max95BpsPeakTime,omitempty" xml:"Max95BpsPeakTime,omitempty"`
+	// The timestamp of the returned data.
+	//
 	// example:
 	//
 	// 2024-01-18 10:11:32
@@ -13502,6 +14026,188 @@ func (s *DescribeVodDomainUsageDataResponse) SetBody(v *DescribeVodDomainUsageDa
 	return s
 }
 
+type DescribeVodEditingUsageDataRequest struct {
+	// example:
+	//
+	// app-****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 2024-11-07T16:00:00Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// example:
+	//
+	// H264.SD
+	Specification *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
+	// example:
+	//
+	// 2024-11-06T16:00:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeVodEditingUsageDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodEditingUsageDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodEditingUsageDataRequest) SetAppId(v string) *DescribeVodEditingUsageDataRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *DescribeVodEditingUsageDataRequest) SetEndTime(v string) *DescribeVodEditingUsageDataRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeVodEditingUsageDataRequest) SetOwnerId(v int64) *DescribeVodEditingUsageDataRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeVodEditingUsageDataRequest) SetRegion(v string) *DescribeVodEditingUsageDataRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeVodEditingUsageDataRequest) SetSpecification(v string) *DescribeVodEditingUsageDataRequest {
+	s.Specification = &v
+	return s
+}
+
+func (s *DescribeVodEditingUsageDataRequest) SetStartTime(v string) *DescribeVodEditingUsageDataRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeVodEditingUsageDataResponseBody struct {
+	EditingData []*DescribeVodEditingUsageDataResponseBodyEditingData `json:"EditingData,omitempty" xml:"EditingData,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2024-11-07T16:00:00Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 6CB55B62-6E5F-54D1-80BF-DFA3DE9F0***
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 2024-11-06T16:00:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeVodEditingUsageDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodEditingUsageDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodEditingUsageDataResponseBody) SetEditingData(v []*DescribeVodEditingUsageDataResponseBodyEditingData) *DescribeVodEditingUsageDataResponseBody {
+	s.EditingData = v
+	return s
+}
+
+func (s *DescribeVodEditingUsageDataResponseBody) SetEndTime(v string) *DescribeVodEditingUsageDataResponseBody {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeVodEditingUsageDataResponseBody) SetRequestId(v string) *DescribeVodEditingUsageDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeVodEditingUsageDataResponseBody) SetStartTime(v string) *DescribeVodEditingUsageDataResponseBody {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeVodEditingUsageDataResponseBodyEditingData struct {
+	// example:
+	//
+	// 123
+	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// example:
+	//
+	// H264.SD
+	Specification *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
+	// example:
+	//
+	// 2024-11-06T16:00:00Z
+	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+}
+
+func (s DescribeVodEditingUsageDataResponseBodyEditingData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodEditingUsageDataResponseBodyEditingData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodEditingUsageDataResponseBodyEditingData) SetDuration(v int64) *DescribeVodEditingUsageDataResponseBodyEditingData {
+	s.Duration = &v
+	return s
+}
+
+func (s *DescribeVodEditingUsageDataResponseBodyEditingData) SetRegion(v string) *DescribeVodEditingUsageDataResponseBodyEditingData {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeVodEditingUsageDataResponseBodyEditingData) SetSpecification(v string) *DescribeVodEditingUsageDataResponseBodyEditingData {
+	s.Specification = &v
+	return s
+}
+
+func (s *DescribeVodEditingUsageDataResponseBodyEditingData) SetTimeStamp(v string) *DescribeVodEditingUsageDataResponseBodyEditingData {
+	s.TimeStamp = &v
+	return s
+}
+
+type DescribeVodEditingUsageDataResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeVodEditingUsageDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeVodEditingUsageDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVodEditingUsageDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVodEditingUsageDataResponse) SetHeaders(v map[string]*string) *DescribeVodEditingUsageDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeVodEditingUsageDataResponse) SetStatusCode(v int32) *DescribeVodEditingUsageDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeVodEditingUsageDataResponse) SetBody(v *DescribeVodEditingUsageDataResponseBody) *DescribeVodEditingUsageDataResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeVodMediaPlayDataRequest struct {
 	// The ID of the media file (VideoId). You can specify this parameter to query all playback data of a media file. You can specify only one media ID. You can use one of the following methods to obtain the ID:
 	//
@@ -14513,19 +15219,27 @@ func (s *DescribeVodRefreshTasksResponse) SetBody(v *DescribeVodRefreshTasksResp
 }
 
 type DescribeVodSSLCertificateListRequest struct {
+	// The accelerated domain name.
+	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values: integers from 1 to 1000.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The keyword that is used to query certificates.
+	//
 	// example:
 	//
 	// certabc
@@ -14572,7 +15286,10 @@ func (s *DescribeVodSSLCertificateListRequest) SetSecurityToken(v string) *Descr
 }
 
 type DescribeVodSSLCertificateListResponseBody struct {
+	// The information about certificates.
 	CertificateListModel *DescribeVodSSLCertificateListResponseBodyCertificateListModel `json:"CertificateListModel,omitempty" xml:"CertificateListModel,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 25818875-5F78-4AF6-D7393642CA58****
@@ -14598,15 +15315,22 @@ func (s *DescribeVodSSLCertificateListResponseBody) SetRequestId(v string) *Desc
 }
 
 type DescribeVodSSLCertificateListResponseBodyCertificateListModel struct {
+	// The list of certificates.
 	CertList *DescribeVodSSLCertificateListResponseBodyCertificateListModelCertList `json:"CertList,omitempty" xml:"CertList,omitempty" type:"Struct"`
+	// The number of certificates that are returned.
+	//
 	// example:
 	//
 	// 2
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The page number. Pages start from page 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values: integers from 1 to 1000.
+	//
 	// example:
 	//
 	// 20
@@ -14659,30 +15383,44 @@ func (s *DescribeVodSSLCertificateListResponseBodyCertificateListModelCertList) 
 }
 
 type DescribeVodSSLCertificateListResponseBodyCertificateListModelCertListCert struct {
+	// The ID of the certificate.
+	//
 	// example:
 	//
 	// 235437
 	CertId *int64 `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	// The name of the certificate.
+	//
 	// example:
 	//
 	// video-ssl
 	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
+	// The region of the certificate. Valid values: **cn-hangzhou*	- and **ap-southeast-1**. Default value: **cn-hangzhou**.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	CertRegion *string `json:"CertRegion,omitempty" xml:"CertRegion,omitempty"`
+	// The Common Name (CN) attribute of the certificate. In most cases, the CN is a domain name.
+	//
 	// example:
 	//
 	// test
 	Common *string `json:"Common,omitempty" xml:"Common,omitempty"`
+	// The fingerprint of the certificate.
+	//
 	// example:
 	//
 	// ****
 	Fingerprint *string `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
+	// The certificate authority (CA) that issued the certificate.
+	//
 	// example:
 	//
 	// ****
 	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	// The time when the certificate was last modified. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1512388610
@@ -22079,12 +22817,22 @@ func (s *GetImageInfosResponse) SetBody(v *GetImageInfosResponseBody) *GetImageI
 }
 
 type GetJobDetailRequest struct {
+	// The ID of the task.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 5c9dff***************59d50a967f5
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The task type. Valid values:
+	//
+	// 	- transcode
+	//
+	// 	- snapshot
+	//
+	// 	- ai
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -22112,16 +22860,23 @@ func (s *GetJobDetailRequest) SetJobType(v string) *GetJobDetailRequest {
 }
 
 type GetJobDetailResponseBody struct {
+	// The details of the AI task. This parameter takes effect only when the TaskType parameter is set to AI.
 	AIJobDetail *GetJobDetailResponseBodyAIJobDetail `json:"AIJobDetail,omitempty" xml:"AIJobDetail,omitempty" type:"Struct"`
+	// The type of the task. Valid values:
+	//
 	// example:
 	//
 	// transcode
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6708D849-F109-1A6C-AC91-************
-	RequestId          *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SnapshotJobDetail  *GetJobDetailResponseBodySnapshotJobDetail  `json:"SnapshotJobDetail,omitempty" xml:"SnapshotJobDetail,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The details of the snapshot task. This parameter takes effect only when the jobType parameter is set to Snapshot.
+	SnapshotJobDetail *GetJobDetailResponseBodySnapshotJobDetail `json:"SnapshotJobDetail,omitempty" xml:"SnapshotJobDetail,omitempty" type:"Struct"`
+	// The details of the transcoding task. This parameter takes effect only when the jobType parameter is set to Transcode.
 	TranscodeJobDetail *GetJobDetailResponseBodyTranscodeJobDetail `json:"TranscodeJobDetail,omitempty" xml:"TranscodeJobDetail,omitempty" type:"Struct"`
 }
 
@@ -22159,38 +22914,72 @@ func (s *GetJobDetailResponseBody) SetTranscodeJobDetail(v *GetJobDetailResponse
 }
 
 type GetJobDetailResponseBodyAIJobDetail struct {
+	// The end time of the task.
+	//
 	// example:
 	//
 	// 2024-10-14T07:39:46Z
 	CompleteTime *string `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
+	// The time when the task was created. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2024-10-14T07:39:25Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the task.
+	//
 	// example:
 	//
 	// 5c9dff751ba**********59d50a967f5
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The type of the AI task.
+	//
 	// example:
 	//
 	// AIVideoCensor
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// The ID of the media asset.
+	//
 	// example:
 	//
 	// 30e5d7**********bd900764de7c0102
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The status of the task. Valid values:
+	//
+	// 	- reserved
+	//
+	// 	- init
+	//
+	// 	- success
+	//
+	// 	- fail
+	//
+	// 	- processing
+	//
+	// 	- analysing
+	//
 	// example:
 	//
 	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The template configuration.
+	//
 	// example:
 	//
 	// {"AuditRange":["video","image-cover","text-title"],"AuditContent":["screen"],"AuditItem":["terrorism","porn"],"AuditAutoBlock":"no"}
 	TemplateConfig *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
+	// The trigger mode. Valid values:
+	//
+	// 	- Auto
+	//
+	// 	- Manual
+	//
 	// example:
 	//
 	// Auto
 	Trigger *string `json:"Trigger,omitempty" xml:"Trigger,omitempty"`
+	// The ID of the user who submitted the task.
+	//
 	// example:
 	//
 	// 139109*****84930
@@ -22251,38 +23040,66 @@ func (s *GetJobDetailResponseBodyAIJobDetail) SetUserId(v int64) *GetJobDetailRe
 }
 
 type GetJobDetailResponseBodySnapshotJobDetail struct {
+	// The time when the task was complete.
+	//
 	// example:
 	//
 	// 2024-10-14T07:39:45Z
 	CompleteTime *string `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
+	// The time when the task was created. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2024-10-14T07:39:25Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the task.
+	//
 	// example:
 	//
 	// 63df12s0**********4hdq249t82kr91
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// Configuration of normal snapshots.
+	//
 	// example:
 	//
 	// {"inl":0,"num":32,"tm":5,"wd":"352","ft":"normal","hg":"640"}
 	NormalConfig *string `json:"NormalConfig,omitempty" xml:"NormalConfig,omitempty"`
+	// The sprite configuration.
+	//
 	// example:
 	//
 	// {"pad":"0","lines":"10","mgin":"0","cols":"10","ikcp":"false","hg":"68"}
 	SpriteConfig *string `json:"SpriteConfig,omitempty" xml:"SpriteConfig,omitempty"`
+	// The status of the task. Valid values:
+	//
+	// 	- Processing
+	//
+	// 	- Fail
+	//
+	// 	- Success
+	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The trigger mode. Valid values:
+	//
+	// 	- Auto
+	//
+	// 	- Manual
+	//
 	// example:
 	//
 	// Auto
 	Trigger *string `json:"Trigger,omitempty" xml:"Trigger,omitempty"`
+	// The ID of the user who submitted the task.
+	//
 	// example:
 	//
 	// 139109*****84930
 	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The ID of the media asset.
+	//
 	// example:
 	//
 	// 30e5d7**********bd900764de7c0102
@@ -22343,34 +23160,60 @@ func (s *GetJobDetailResponseBodySnapshotJobDetail) SetVideoId(v string) *GetJob
 }
 
 type GetJobDetailResponseBodyTranscodeJobDetail struct {
+	// The time when the task was complete.
+	//
 	// example:
 	//
 	// 2024-10-14T07:39:34Z
 	CompleteTime *string `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
+	// The time when the task was created. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2024-10-14T07:39:25Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The definition.
+	//
 	// example:
 	//
 	// HD
 	Definition *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
+	// The ID of the task.
+	//
 	// example:
 	//
 	// 2dc1634e**********3f1d22d1a0174e
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The status of the task. Valid values:
+	//
+	// 	- Submitted
+	//
+	// 	- Transcoding
+	//
+	// 	- TranscodeSuccess
+	//
+	// 	- TranscodeFail
+	//
+	// 	- TranscodeCancelled
+	//
 	// example:
 	//
 	// TranscodeSuccess
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the template.
+	//
 	// example:
 	//
 	// dbfaaec9e**********bf0b81219244c
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The ID of the user who submitted the task.
+	//
 	// example:
 	//
 	// 139109*****84930
 	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The ID of the media asset.
+	//
 	// example:
 	//
 	// 30e5d7**********bd900764de7c0102
@@ -26841,7 +27684,16 @@ type GetPlayInfoResponseBodyPlayInfoListPlayInfo struct {
 	// example:
 	//
 	// 450.878
-	Bitrate   *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The encoding type. The possible values are:
+	//
+	// - H264
+	//
+	// - H265
+	//
+	// example:
+	//
+	// H264
 	CodecName *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
 	// The time when the audio or video stream was created. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	//
@@ -27688,6 +28540,13 @@ func (s *GetTranscodeSummaryResponse) SetBody(v *GetTranscodeSummaryResponseBody
 }
 
 type GetTranscodeTaskRequest struct {
+	// Transcoding job ID. Supports up to 10 IDs, and multiple IDs should be separated by a comma (,). You can obtain this value in the following ways:
+	//
+	// When initiating a transcoding task through the [SubmitTranscodeJobs](https://help.aliyun.com/document_detail/454920.html) interface, it is the value of the returned parameter JobId.
+	//
+	// example:
+	//
+	// 86c1925fba0****,7afb201e7fa****,2cc4997378****
 	JobIds *string `json:"JobIds,omitempty" xml:"JobIds,omitempty"`
 	// The ID of the transcoding task. You can use one of the following methods to obtain the ID:
 	//
@@ -27720,13 +28579,15 @@ func (s *GetTranscodeTaskRequest) SetTranscodeTaskId(v string) *GetTranscodeTask
 }
 
 type GetTranscodeTaskResponseBody struct {
+	// The nonexistent job ID.
 	NonExistJobIds []*string `json:"NonExistJobIds,omitempty" xml:"NonExistJobIds,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
 	// example:
 	//
 	// F4C6D5BE-BF13-45*****6C-516EA8906DCD
-	RequestId            *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// List of transcode job information.
 	TranscodeJobInfoList []*GetTranscodeTaskResponseBodyTranscodeJobInfoList `json:"TranscodeJobInfoList,omitempty" xml:"TranscodeJobInfoList,omitempty" type:"Repeated"`
 	// Details about transcoding tasks.
 	TranscodeTask *GetTranscodeTaskResponseBodyTranscodeTask `json:"TranscodeTask,omitempty" xml:"TranscodeTask,omitempty" type:"Struct"`
@@ -27761,18 +28622,100 @@ func (s *GetTranscodeTaskResponseBody) SetTranscodeTask(v *GetTranscodeTaskRespo
 }
 
 type GetTranscodeTaskResponseBodyTranscodeJobInfoList struct {
-	CompleteTime        *string                                                     `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
-	CreationTime        *string                                                     `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Definition          *string                                                     `json:"Definition,omitempty" xml:"Definition,omitempty"`
-	ErrorCode           *string                                                     `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage        *string                                                     `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	InputFileUrl        *string                                                     `json:"InputFileUrl,omitempty" xml:"InputFileUrl,omitempty"`
-	OutputFile          *GetTranscodeTaskResponseBodyTranscodeJobInfoListOutputFile `json:"OutputFile,omitempty" xml:"OutputFile,omitempty" type:"Struct"`
-	Priority            *string                                                     `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	TranscodeJobId      *string                                                     `json:"TranscodeJobId,omitempty" xml:"TranscodeJobId,omitempty"`
-	TranscodeJobStatus  *string                                                     `json:"TranscodeJobStatus,omitempty" xml:"TranscodeJobStatus,omitempty"`
-	TranscodeProgress   *int64                                                      `json:"TranscodeProgress,omitempty" xml:"TranscodeProgress,omitempty"`
-	TranscodeTemplateId *string                                                     `json:"TranscodeTemplateId,omitempty" xml:"TranscodeTemplateId,omitempty"`
+	// The complete time of the transcoding job. The format is yyyy-MM-dd\\"T\\"HH:mm:ssZ (UTC time).
+	//
+	// example:
+	//
+	// 2019-02-26T08:30:16Z
+	CompleteTime *string `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
+	// The creation time of the transcoding job. The format is yyyy-MM-dd\\"T\\"HH:mm:ssZ (UTC time).
+	//
+	// example:
+	//
+	// 2019-02-26T08:27:16Z
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The clarity and audio quality types are defined as follows:
+	//
+	// - SD: Standard Definition.
+	//
+	// - HD: High Definition.
+	//
+	// - FHD: Full High Definition.
+	//
+	// - OD: Original Definition.
+	//
+	// - 2K: 2K.
+	//
+	// - 4K: 4K.
+	//
+	// - SQ: Standard Audio Quality.
+	//
+	// - HQ: High Audio Quality.
+	//
+	// - AUTO: Adaptive Bitrate.  This is only available when the transcoding template is configured with packaging settings. Please refer to [the Transcoding Template Configuration - Package Setting](https://api.aliyun-inc.com/~~52839~~?spm=openapi-amp.newDocPublishment.0.0.65b0281fNUFIXC) for more details.
+	//
+	// > This value represents the clarity label configured in the transcoding template and does not indicate the actual resolution range of the transcoded output file.
+	//
+	// example:
+	//
+	// LD
+	Definition *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
+	// The error code.
+	//
+	// example:
+	//
+	// 200
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned.
+	//
+	// example:
+	//
+	// ErrorMessage
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The OSS address of the source file for transcoding.
+	//
+	// example:
+	//
+	// http://outin-40564*****e1403e7.oss-cn-shanghai.aliyuncs.com/customerTrans/5b95e568f8e*****47f38e/31f1184c-*****b2a2-f94-c213f.wmv
+	InputFileUrl *string `json:"InputFileUrl,omitempty" xml:"InputFileUrl,omitempty"`
+	// Information about the transcoded output files.
+	OutputFile *GetTranscodeTaskResponseBodyTranscodeJobInfoListOutputFile `json:"OutputFile,omitempty" xml:"OutputFile,omitempty" type:"Struct"`
+	// The priority of the transcoding task.
+	//
+	// example:
+	//
+	// 6
+	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The ID of the transcode job.
+	//
+	// example:
+	//
+	// 38f0e513c88*****85515f9d50be188
+	TranscodeJobId *string `json:"TranscodeJobId,omitempty" xml:"TranscodeJobId,omitempty"`
+	// The status of the transcoding job:
+	//
+	// Transcoding: Transcoding in progress.
+	//
+	// TranscodeSuccess: Transcoding successful.
+	//
+	// TranscodeFail: Transcoding failed.
+	//
+	// example:
+	//
+	// Transcoding
+	TranscodeJobStatus *string `json:"TranscodeJobStatus,omitempty" xml:"TranscodeJobStatus,omitempty"`
+	// The processing progress of the transcoding job. The value range is [0, 100].
+	//
+	// example:
+	//
+	// 80
+	TranscodeProgress *int64 `json:"TranscodeProgress,omitempty" xml:"TranscodeProgress,omitempty"`
+	// The ID of the template used for the transcode job.
+	//
+	// example:
+	//
+	// 174b0534fea3*****b51c8f0ad1374
+	TranscodeTemplateId *string `json:"TranscodeTemplateId,omitempty" xml:"TranscodeTemplateId,omitempty"`
 }
 
 func (s GetTranscodeTaskResponseBodyTranscodeJobInfoList) String() string {
@@ -27844,19 +28787,84 @@ func (s *GetTranscodeTaskResponseBodyTranscodeJobInfoList) SetTranscodeTemplateI
 }
 
 type GetTranscodeTaskResponseBodyTranscodeJobInfoListOutputFile struct {
-	AudioStreamList    *string   `json:"AudioStreamList,omitempty" xml:"AudioStreamList,omitempty"`
-	Bitrate            *string   `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	Duration           *string   `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	Encryption         *string   `json:"Encryption,omitempty" xml:"Encryption,omitempty"`
-	Filesize           *int64    `json:"Filesize,omitempty" xml:"Filesize,omitempty"`
-	Format             *string   `json:"Format,omitempty" xml:"Format,omitempty"`
-	Fps                *string   `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	Height             *string   `json:"Height,omitempty" xml:"Height,omitempty"`
-	OutputFileUrl      *string   `json:"OutputFileUrl,omitempty" xml:"OutputFileUrl,omitempty"`
-	SubtitleStreamList *string   `json:"SubtitleStreamList,omitempty" xml:"SubtitleStreamList,omitempty"`
-	VideoStreamList    *string   `json:"VideoStreamList,omitempty" xml:"VideoStreamList,omitempty"`
-	WatermarkIdList    []*string `json:"WatermarkIdList,omitempty" xml:"WatermarkIdList,omitempty" type:"Repeated"`
-	Width              *string   `json:"Width,omitempty" xml:"Width,omitempty"`
+	// List of audio streams.
+	//
+	// example:
+	//
+	// "AudioStreamList": "[{\\"Bitrate\\":\\"64.533\\",\\"ChannelLayout\\":\\"stereo\\",\\"Channels\\":\\"2\\",\\"CodecLongName\\":\\"AAC (Advanced Audio Coding)\\",\\"CodecName\\":\\"aac\\",\\"CodecTag\\":\\"0x6134706d\\",\\"CodecTagString\\":\\"mp4a\\",\\"CodecTimeBase\\":\\"1/44100\\",\\"Duration\\":\\"12.615533\\",\\"Index\\":\\"1\\",\\"Lang\\":\\"und\\",\\"SampleFmt\\":\\"fltp\\",\\"Samplerate\\":\\"44100\\",\\"StartTime\\":\\"-0.046440\\",\\"Timebase\\":\\"1/44100\\"}]
+	AudioStreamList *string `json:"AudioStreamList,omitempty" xml:"AudioStreamList,omitempty"`
+	// Average bitrate of the transcoded output file. Unit: Kbps.
+	//
+	// example:
+	//
+	// 964
+	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// Duration of the transcoded output file. Unit: seconds (s).
+	//
+	// example:
+	//
+	// 12
+	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// Encryption configuration used for the transcoded output file. Values:
+	//
+	// - AliyunVoDEncryption: Alibaba Cloud Video Encryption (private encryption).
+	//
+	// - HLSEncryption: HLS standard encryption.
+	//
+	// example:
+	//
+	// {\\"EncryptType\\":\\"AliyunVoDEncryption\\"}
+	Encryption *string `json:"Encryption,omitempty" xml:"Encryption,omitempty"`
+	// Size of the transcoded output file. Unit: bytes (B).
+	//
+	// example:
+	//
+	// 851076
+	Filesize *int64 `json:"Filesize,omitempty" xml:"Filesize,omitempty"`
+	// Container format of the transcoded output file.
+	//
+	// example:
+	//
+	// m3u8
+	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	// Frame rate of the transcoded output file. Unit: frames per second (fps).
+	//
+	// example:
+	//
+	// 25
+	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	// Height of the video frame in the transcoded output file. Unit: pixels (px).
+	//
+	// example:
+	//
+	// 360
+	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	// OSS address of the transcoded output file.
+	//
+	// example:
+	//
+	// http://outin-40564*****e1403e7.oss-cn-shanghai.aliyuncs.com/883f5d*****f20aaa352f/c3be4f073*****7d5193ec8-{DestMd5}-od-S00000001-200000.mp4
+	OutputFileUrl *string `json:"OutputFileUrl,omitempty" xml:"OutputFileUrl,omitempty"`
+	// List of subtitle streams.
+	//
+	// example:
+	//
+	// []
+	SubtitleStreamList *string `json:"SubtitleStreamList,omitempty" xml:"SubtitleStreamList,omitempty"`
+	// List of video streams.
+	//
+	// example:
+	//
+	// [{\\"AvgFPS\\":\\"30.0\\",\\"Bitrate\\":\\"933.814\\",\\"CodecLongName\\":\\"H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10\\",\\"CodecName\\":\\"h264\\",\\"CodecTag\\":\\"0x31637661\\",\\"CodecTagString\\":\\"avc1\\",\\"CodecTimeBase\\":\\"1/60\\",\\"Dar\\":\\"9:16\\",\\"Duration\\":\\"12.033333\\",\\"Fps\\":\\"30.0\\",\\"HasBFrames\\":\\"2\\",\\"Height\\":\\"360\\",\\"Index\\":\\"0\\",\\"Lang\\":\\"und\\",\\"Level\\":\\"30\\",\\"PixFmt\\":\\"yuv420p\\",\\"Profile\\":\\"High\\",\\"Sar\\":\\"81:256\\",\\"StartTime\\":\\"0.000000\\",\\"Timebase\\":\\"1/15360\\",\\"Width\\":\\"640\\"}]
+	VideoStreamList *string `json:"VideoStreamList,omitempty" xml:"VideoStreamList,omitempty"`
+	// List of watermarks used for transcoding.
+	WatermarkIdList []*string `json:"WatermarkIdList,omitempty" xml:"WatermarkIdList,omitempty" type:"Repeated"`
+	// Width of the video frame in the transcoded output file. Unit: pixels (px).
+	//
+	// example:
+	//
+	// 640
+	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s GetTranscodeTaskResponseBodyTranscodeJobInfoListOutputFile) String() string {
@@ -29566,7 +30574,12 @@ type GetVideoInfoResponseBodyVideo struct {
 	// example:
 	//
 	// Video title in ApsaraVideo VOD
-	Title    *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Custom settings. This is a JSON string that supports settings such as message callbacks and upload acceleration. For more information, please refer to [UserData](https://help.aliyun.com/document_detail/86952.html).
+	//
+	// example:
+	//
+	// {"MessageCallback":{"CallbackURL":"http://example.aliyundoc.com"},"Extend":{"localId":"*****","test":"www"}}
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 	// The ID of the media file.
 	//
@@ -29962,7 +30975,12 @@ type GetVideoInfosResponseBodyVideoList struct {
 	// example:
 	//
 	// Video tiltle
-	Title    *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Custom settings. This is a JSON string that supports settings such as message callbacks and upload acceleration. For more information, please refer to [UserData](https://help.aliyun.com/document_detail/86952.html).
+	//
+	// example:
+	//
+	// {"MessageCallback":{"CallbackURL":"http://example.aliyundoc.com"},"Extend":{"localId":"*****","test":"www"}}
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 	// The ID of the audio or video file.
 	//
@@ -30442,7 +31460,8 @@ type GetVideoListResponseBodyVideoListVideo struct {
 	// example:
 	//
 	// Video title in ApsaraVideo VOD
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	Title    *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 	// The ID of the audio or video file.
 	//
 	// example:
@@ -30541,6 +31560,11 @@ func (s *GetVideoListResponseBodyVideoListVideo) SetTags(v string) *GetVideoList
 
 func (s *GetVideoListResponseBodyVideoListVideo) SetTitle(v string) *GetVideoListResponseBodyVideoListVideo {
 	s.Title = &v
+	return s
+}
+
+func (s *GetVideoListResponseBodyVideoListVideo) SetUserData(v string) *GetVideoListResponseBodyVideoListVideo {
+	s.UserData = &v
 	return s
 }
 
@@ -31823,7 +32847,7 @@ type ListAppInfoRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID to which the instance belongs.
 	//
 	// example:
 	//
@@ -31940,7 +32964,7 @@ type ListAppInfoResponseBodyAppInfoList struct {
 	//
 	// 2019-03-01T09:00:00Z
 	ModificationTime *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
-	// 地域。
+	// The region.
 	//
 	// example:
 	//
@@ -32610,12 +33634,22 @@ func (s *ListDynamicImageResponse) SetBody(v *ListDynamicImageResponseBody) *Lis
 }
 
 type ListJobInfoRequest struct {
+	// The type of the task. Valid values:
+	//
+	// 	- transcode
+	//
+	// 	- snapshot
+	//
+	// 	- ai
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// transcode
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// The ID of the media asset.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -32643,15 +33677,28 @@ func (s *ListJobInfoRequest) SetMediaId(v string) *ListJobInfoRequest {
 }
 
 type ListJobInfoResponseBody struct {
+	// The historical tasks of the last 6 months.
 	JobInfoList []*ListJobInfoResponseBodyJobInfoList `json:"JobInfoList,omitempty" xml:"JobInfoList,omitempty" type:"Repeated"`
+	// The type of the task. Valid values:
+	//
+	// 	- transcode
+	//
+	// 	- snapshot
+	//
+	// 	- ai
+	//
 	// example:
 	//
 	// transcode
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// The ID of the media asset.
+	//
 	// example:
 	//
 	// 30e5d7**********bd900764de7c0102
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6708D849-F109-1A6C-AC91-************
@@ -32687,22 +33734,32 @@ func (s *ListJobInfoResponseBody) SetRequestId(v string) *ListJobInfoResponseBod
 }
 
 type ListJobInfoResponseBodyJobInfoList struct {
+	// The time when the task was complete.
+	//
 	// example:
 	//
 	// 2024-10-14T07:39:34Z
 	CompleteTime *string `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
+	// The time when the task was created. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2024-10-14T07:39:25Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the task.
+	//
 	// example:
 	//
 	// 5c9dff751ba**********59d50a967f5
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The status of the task.
+	//
 	// example:
 	//
 	// TranscodeSuccess
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the user who submitted the task.
+	//
 	// example:
 	//
 	// 139109*****84930
@@ -38413,43 +39470,75 @@ func (s *SetVodDomainCertificateResponse) SetBody(v *SetVodDomainCertificateResp
 }
 
 type SetVodDomainSSLCertificateRequest struct {
+	// The ID of the certificate.
+	//
 	// example:
 	//
 	// 12342707
 	CertId *int64 `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	// The name of the certificate.
+	//
 	// example:
 	//
 	// cert_name
 	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
+	// The region of the certificate. Valid values:
+	//
+	// 	- **ap-southeast-1**: Singapore
+	//
+	// 	- **cn-hangzhou**: China (Hangzhou)
+	//
+	// Default value: **cn-hangzhou**
+	//
 	// example:
 	//
 	// cn-hangzhou
 	CertRegion *string `json:"CertRegion,omitempty" xml:"CertRegion,omitempty"`
+	// The type of the certificate.
+	//
+	// 	- **upload**: a user-uploaded SSL certificate.
+	//
+	// 	- **cas**: a certificate that is acquired through Certificate Management Service.
+	//
 	// example:
 	//
 	// cas
 	CertType *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
+	// VOD acceleration domain.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// Specifies whether the certificate is issued in canary releases. If you set this parameter to **staging**, the certificate is issued in canary releases. If you do not specify this parameter or set this parameter to other values, the certificate is officially issued.
+	//
 	// example:
 	//
 	// staging
 	Env     *string `json:"Env,omitempty" xml:"Env,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The private key. This parameter is required only if you enable the certificate.
+	//
 	// example:
 	//
 	// ****
 	SSLPri *string `json:"SSLPri,omitempty" xml:"SSLPri,omitempty"`
+	// Specifies whether to enable the SSL certificate. Default value: off. Valid values:
+	//
+	// 	- **on**
+	//
+	// 	- **off**
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// off
 	SSLProtocol *string `json:"SSLProtocol,omitempty" xml:"SSLProtocol,omitempty"`
+	// The content of the certificate. This parameter is required only if you enable the SSL certificate.
+	//
 	// example:
 	//
 	// ****
@@ -38521,6 +39610,8 @@ func (s *SetVodDomainSSLCertificateRequest) SetSecurityToken(v string) *SetVodDo
 }
 
 type SetVodDomainSSLCertificateResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// F4C6D5BE-BF13-45*****6C-516EA8906DCD
@@ -40168,7 +41259,12 @@ type SubmitTranscodeJobsRequest struct {
 	// example:
 	//
 	// 6
-	Priority  *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The custom identifier for deduplication. If you send a request, an error is returned if a request with the same identifier was sent in the last 7 days. A custom identifier can be up to 50 characters in length and can contain letters, digits, hyphens (-), and underscores (_). If you do not specify this parameter or leave this parameter empty, duplicate requests are not filtered.
+	//
+	// example:
+	//
+	// 5c62d40299034bbaa4c195da330****
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 	// The ID of the transcoding template group that you want to use. To view the template group ID, perform the following operations: Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Configuration Management*	- > **Media Processing*	- > **Transcoding Template Groups**.
 	//
@@ -41493,52 +42589,69 @@ func (s *UpdateTranscodeTemplateGroupResponse) SetBody(v *UpdateTranscodeTemplat
 }
 
 type UpdateVideoInfoRequest struct {
-	// The ID of the video category.
+	// The category ID. You can use one of the following methods to obtain the ID:
+	//
+	// 	- Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Configuration Management*	- > **Media Management*	- > **Categories*	- to view the category ID of the media file.
+	//
+	// 	- View the value of the CateId parameter returned by the [AddCategory](https://help.aliyun.com/document_detail/56401.html) operation that you called to create a category.
+	//
+	// 	- View the value of the CateId parameter returned by the [GetCategories](https://help.aliyun.com/document_detail/56406.html) operation that you called to query a category.
 	//
 	// example:
 	//
 	// 384761111
 	CateId *int64 `json:"CateId,omitempty" xml:"CateId,omitempty"`
-	// The URL of the video thumbnail.
+	// The URL of the audio/video thumbnail.
 	//
 	// example:
 	//
 	// https://example.aliyundoc.com/****.jpg
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	// The description of the video.
+	// The description of the audio or video file.
 	//
-	// 	- The value can be up to 1,024 bytes in length.
+	// 	- The description can be up to 1,024 bytes in length.
 	//
-	// 	- The string must be encoded in the UTF-8 format.
+	// 	- The value is encoded in UTF-8.
 	//
 	// example:
 	//
 	// video description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The tags of the video.
+	// The tags of the media file.
 	//
-	// 	- Each tag can be up to 32 bytes in length. A maximum of 16 tags can be specified.
+	// 	- Each tag can be up to 32 bytes in length. You can specify up to 16 tags.
 	//
 	// 	- Separate multiple tags with commas (,).
 	//
-	// 	- The string must be encoded in the UTF-8 format.
+	// 	- The value is encoded in UTF-8.
 	//
 	// example:
 	//
 	// tag1,tag2
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The title of the video.
+	// The title of the audio or video file.
 	//
-	// 	- The value can be up to 128 bytes in length.
+	// 	- The name cannot exceed 128 bytes.
 	//
-	// 	- The string must be encoded in the UTF-8 format.
+	// 	- The value is encoded in UTF-8.
 	//
 	// example:
 	//
 	// video title
-	Title    *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Custom settings. This is a JSON string that supports message callbacks, upload acceleration, and other settings. For more information, please refer to [UserData](https://help.aliyun.com/document_detail/86952.html).
+	//
+	// example:
+	//
+	// {"MessageCallback":{"CallbackURL":"http://example.aliyundoc.com"},"Extend":{"localId":"*****","test":"www"}}
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
-	// The ID of the video.
+	// The ID of the audio or video file. Perform the following operations to obtain the storage address:
+	//
+	// 	- Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Media Files*	- > **Audio/Video**. On the Video and Audio page, view the ID of the audio or video file. This method is applicable to files that are uploaded by using the ApsaraVideo VOD console.
+	//
+	// 	- Obtain the value of VideoId from the response to the [CreateUploadVideo](https://help.aliyun.com/document_detail/55407.html) operation that you called to obtain the upload URL and credential.
+	//
+	// 	- View the value of the VideoId parameter returned by the [SearchMedia](https://help.aliyun.com/document_detail/86044.html) operation that you called to query media information after the audio or video file is uploaded.
 	//
 	// This parameter is required.
 	//
@@ -41592,7 +42705,7 @@ func (s *UpdateVideoInfoRequest) SetVideoId(v string) *UpdateVideoInfoRequest {
 }
 
 type UpdateVideoInfoResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -42460,7 +43573,14 @@ type UploadStreamByURLRequest struct {
 	// example:
 	//
 	// https://example.com/lesson-01.mp4
-	StreamURL      *string `json:"StreamURL,omitempty" xml:"StreamURL,omitempty"`
+	StreamURL *string `json:"StreamURL,omitempty" xml:"StreamURL,omitempty"`
+	// Metadata information for uploading media files, in JSON string format.
+	//
+	// For more information, please refer to the table below for UploadMetadata.
+	//
+	// example:
+	//
+	// {"AddressMapping":"1","CustomPath":"test/xxx","CustomFileName":"xxx.mp4","isOverwritePath":"0"}
 	UploadMetadata *string `json:"UploadMetadata,omitempty" xml:"UploadMetadata,omitempty"`
 	// The user-defined parameter. For more information, see the "UserData: specifies the custom configurations for media upload" section of the [Request parameters](https://help.aliyun.com/document_detail/86952.html) topic.
 	//
@@ -42851,13 +43971,24 @@ func (client *Client) AddAITemplateWithOptions(request *AddAITemplateRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AddAITemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AddAITemplateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AddAITemplateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -42931,13 +44062,24 @@ func (client *Client) AddCategoryWithOptions(request *AddCategoryRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AddCategoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AddCategoryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AddCategoryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -43033,13 +44175,24 @@ func (client *Client) AddEditingProjectWithOptions(request *AddEditingProjectReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AddEditingProjectResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AddEditingProjectResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AddEditingProjectResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -43121,13 +44274,24 @@ func (client *Client) AddEditingProjectMaterialsWithOptions(request *AddEditingP
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AddEditingProjectMaterialsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AddEditingProjectMaterialsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AddEditingProjectMaterialsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -43211,13 +44375,24 @@ func (client *Client) AddTranscodeTemplateGroupWithOptions(request *AddTranscode
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AddTranscodeTemplateGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AddTranscodeTemplateGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AddTranscodeTemplateGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -43327,13 +44502,24 @@ func (client *Client) AddVodDomainWithOptions(request *AddVodDomainRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AddVodDomainResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AddVodDomainResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AddVodDomainResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -43411,13 +44597,24 @@ func (client *Client) AddVodStorageForAppWithOptions(request *AddVodStorageForAp
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AddVodStorageForAppResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AddVodStorageForAppResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AddVodStorageForAppResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -43495,13 +44692,24 @@ func (client *Client) AddVodTemplateWithOptions(request *AddVodTemplateRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AddVodTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AddVodTemplateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AddVodTemplateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -43585,13 +44793,24 @@ func (client *Client) AddWatermarkWithOptions(request *AddWatermarkRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AddWatermarkResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AddWatermarkResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AddWatermarkResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -43669,13 +44888,24 @@ func (client *Client) AttachAppPolicyToIdentityWithOptions(request *AttachAppPol
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AttachAppPolicyToIdentityResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AttachAppPolicyToIdentityResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AttachAppPolicyToIdentityResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -43702,7 +44932,13 @@ func (client *Client) AttachAppPolicyToIdentity(request *AttachAppPolicyToIdenti
 
 // Summary:
 //
-// 批量获取媒资信息
+// Obtains the basic information and source file information of multiple media assets.
+//
+// Description:
+//
+//   You can specify up to 20 audio or video file IDs in each request.
+//
+// 	- After a media file is uploaded, ApsaraVideo VOD processes the source file. Then, information about the media file is asynchronously generated. You can configure notifications for the [VideoAnalysisComplete](https://help.aliyun.com/document_detail/99935.html) event and call this operation to query information about a media file after you receive notifications for the [VideoAnalysisComplete](https://help.aliyun.com/document_detail/99935.html) event. For more information, see [Overview](https://help.aliyun.com/document_detail/55627.html).
 //
 // @param request - BatchGetMediaInfosRequest
 //
@@ -43733,18 +44969,35 @@ func (client *Client) BatchGetMediaInfosWithOptions(request *BatchGetMediaInfosR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &BatchGetMediaInfosResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &BatchGetMediaInfosResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &BatchGetMediaInfosResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 批量获取媒资信息
+// Obtains the basic information and source file information of multiple media assets.
+//
+// Description:
+//
+//   You can specify up to 20 audio or video file IDs in each request.
+//
+// 	- After a media file is uploaded, ApsaraVideo VOD processes the source file. Then, information about the media file is asynchronously generated. You can configure notifications for the [VideoAnalysisComplete](https://help.aliyun.com/document_detail/99935.html) event and call this operation to query information about a media file after you receive notifications for the [VideoAnalysisComplete](https://help.aliyun.com/document_detail/99935.html) event. For more information, see [Overview](https://help.aliyun.com/document_detail/55627.html).
 //
 // @param request - BatchGetMediaInfosRequest
 //
@@ -43813,13 +45066,24 @@ func (client *Client) BatchSetVodDomainConfigsWithOptions(request *BatchSetVodDo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &BatchSetVodDomainConfigsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &BatchSetVodDomainConfigsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &BatchSetVodDomainConfigsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -43891,13 +45155,24 @@ func (client *Client) BatchStartVodDomainWithOptions(request *BatchStartVodDomai
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &BatchStartVodDomainResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &BatchStartVodDomainResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &BatchStartVodDomainResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -43971,13 +45246,24 @@ func (client *Client) BatchStopVodDomainWithOptions(request *BatchStopVodDomainR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &BatchStopVodDomainResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &BatchStopVodDomainResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &BatchStopVodDomainResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -44049,13 +45335,24 @@ func (client *Client) CancelUrlUploadJobsWithOptions(request *CancelUrlUploadJob
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CancelUrlUploadJobsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CancelUrlUploadJobsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CancelUrlUploadJobsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -44086,7 +45383,7 @@ func (client *Client) CancelUrlUploadJobs(request *CancelUrlUploadJobsRequest) (
 
 // Summary:
 //
-// 资源转组
+// Transfers a resource to a specified resource group.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -44129,18 +45426,29 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ChangeResourceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ChangeResourceGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ChangeResourceGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 资源转组
+// Transfers a resource to a specified resource group.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -44205,13 +45513,24 @@ func (client *Client) CreateAppInfoWithOptions(request *CreateAppInfoRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateAppInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateAppInfoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateAppInfoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -44273,13 +45592,24 @@ func (client *Client) CreateAuditWithOptions(request *CreateAuditRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateAuditResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateAuditResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateAuditResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -44385,13 +45715,24 @@ func (client *Client) CreateUploadAttachedMediaWithOptions(request *CreateUpload
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateUploadAttachedMediaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateUploadAttachedMediaResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateUploadAttachedMediaResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -44505,13 +45846,24 @@ func (client *Client) CreateUploadImageWithOptions(request *CreateUploadImageReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateUploadImageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateUploadImageResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateUploadImageResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -44637,13 +45989,24 @@ func (client *Client) CreateUploadVideoWithOptions(request *CreateUploadVideoReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateUploadVideoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateUploadVideoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateUploadVideoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -44729,13 +46092,24 @@ func (client *Client) DecryptKMSDataKeyWithOptions(request *DecryptKMSDataKeyReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DecryptKMSDataKeyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DecryptKMSDataKeyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DecryptKMSDataKeyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -44795,13 +46169,24 @@ func (client *Client) DeleteAIImageInfosWithOptions(request *DeleteAIImageInfosR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteAIImageInfosResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteAIImageInfosResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteAIImageInfosResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -44867,13 +46252,24 @@ func (client *Client) DeleteAITemplateWithOptions(request *DeleteAITemplateReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteAITemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteAITemplateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteAITemplateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -44937,13 +46333,24 @@ func (client *Client) DeleteAppInfoWithOptions(request *DeleteAppInfoRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteAppInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteAppInfoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteAppInfoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -45007,13 +46414,24 @@ func (client *Client) DeleteAttachedMediaWithOptions(request *DeleteAttachedMedi
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteAttachedMediaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteAttachedMediaResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteAttachedMediaResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -45079,13 +46497,24 @@ func (client *Client) DeleteCategoryWithOptions(request *DeleteCategoryRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteCategoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteCategoryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteCategoryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -45153,13 +46582,24 @@ func (client *Client) DeleteDynamicImageWithOptions(request *DeleteDynamicImageR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteDynamicImageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteDynamicImageResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteDynamicImageResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -45237,13 +46677,24 @@ func (client *Client) DeleteEditingProjectWithOptions(request *DeleteEditingProj
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteEditingProjectResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteEditingProjectResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteEditingProjectResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -45268,6 +46719,10 @@ func (client *Client) DeleteEditingProject(request *DeleteEditingProjectRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除剪辑资源
+//
 // @param request - DeleteEditingProjectMaterialsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -45321,15 +46776,30 @@ func (client *Client) DeleteEditingProjectMaterialsWithOptions(request *DeleteEd
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteEditingProjectMaterialsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteEditingProjectMaterialsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteEditingProjectMaterialsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// 删除剪辑资源
+//
 // @param request - DeleteEditingProjectMaterialsRequest
 //
 // @return DeleteEditingProjectMaterialsResponse
@@ -45401,13 +46871,24 @@ func (client *Client) DeleteImageWithOptions(request *DeleteImageRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteImageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteImageResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteImageResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -45477,13 +46958,24 @@ func (client *Client) DeleteMessageCallbackWithOptions(request *DeleteMessageCal
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteMessageCallbackResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteMessageCallbackResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteMessageCallbackResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -45549,13 +47041,24 @@ func (client *Client) DeleteMezzaninesWithOptions(request *DeleteMezzaninesReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteMezzaninesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteMezzaninesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteMezzaninesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -45629,13 +47132,24 @@ func (client *Client) DeleteMultipartUploadWithOptions(request *DeleteMultipartU
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteMultipartUploadResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteMultipartUploadResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteMultipartUploadResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -45701,13 +47215,24 @@ func (client *Client) DeleteStreamWithOptions(request *DeleteStreamRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteStreamResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteStreamResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteStreamResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -45775,13 +47300,24 @@ func (client *Client) DeleteTranscodeTemplateGroupWithOptions(request *DeleteTra
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteTranscodeTemplateGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteTranscodeTemplateGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteTranscodeTemplateGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -45849,13 +47385,24 @@ func (client *Client) DeleteVideoWithOptions(request *DeleteVideoRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteVideoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteVideoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteVideoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -45937,13 +47484,24 @@ func (client *Client) DeleteVodDomainWithOptions(request *DeleteVodDomainRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteVodDomainResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteVodDomainResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteVodDomainResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46031,13 +47589,24 @@ func (client *Client) DeleteVodSpecificConfigWithOptions(request *DeleteVodSpeci
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteVodSpecificConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteVodSpecificConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteVodSpecificConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46101,13 +47670,24 @@ func (client *Client) DeleteVodTemplateWithOptions(request *DeleteVodTemplateReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteVodTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteVodTemplateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteVodTemplateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46167,13 +47747,24 @@ func (client *Client) DeleteWatermarkWithOptions(request *DeleteWatermarkRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteWatermarkResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteWatermarkResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteWatermarkResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46202,7 +47793,13 @@ func (client *Client) DeleteWatermark(request *DeleteWatermarkRequest) (_result 
 
 // Summary:
 //
-// 查询媒资数据分布
+// Queries the distribution of media asset data by time. The maximum time range to query is 6 months.
+//
+// Description:
+//
+//   This operation is available only in the China (Shanghai) region.
+//
+// 	- If you do not set the StartTime or EndTime parameter, the request returns the data collected in the previous 7 days. If you set both the parameters, the request returns the data collected within the specified time range.
 //
 // @param request - DescribeMediaDistributionRequest
 //
@@ -46245,18 +47842,35 @@ func (client *Client) DescribeMediaDistributionWithOptions(request *DescribeMedi
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeMediaDistributionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeMediaDistributionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeMediaDistributionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 查询媒资数据分布
+// Queries the distribution of media asset data by time. The maximum time range to query is 6 months.
+//
+// Description:
+//
+//   This operation is available only in the China (Shanghai) region.
+//
+// 	- If you do not set the StartTime or EndTime parameter, the request returns the data collected in the previous 7 days. If you set both the parameters, the request returns the data collected within the specified time range.
 //
 // @param request - DescribeMediaDistributionRequest
 //
@@ -46329,13 +47943,24 @@ func (client *Client) DescribePlayTopVideosWithOptions(request *DescribePlayTopV
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribePlayTopVideosResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribePlayTopVideosResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribePlayTopVideosResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46419,13 +48044,24 @@ func (client *Client) DescribePlayUserAvgWithOptions(request *DescribePlayUserAv
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribePlayUserAvgResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribePlayUserAvgResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribePlayUserAvgResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46507,13 +48143,24 @@ func (client *Client) DescribePlayUserTotalWithOptions(request *DescribePlayUser
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribePlayUserTotalResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribePlayUserTotalResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribePlayUserTotalResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46599,13 +48246,24 @@ func (client *Client) DescribePlayVideoStatisWithOptions(request *DescribePlayVi
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribePlayVideoStatisResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribePlayVideoStatisResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribePlayVideoStatisResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46691,13 +48349,24 @@ func (client *Client) DescribeVodAIDataWithOptions(request *DescribeVodAIDataReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeVodAIDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeVodAIDataResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeVodAIDataResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46769,13 +48438,24 @@ func (client *Client) DescribeVodCertificateListWithOptions(request *DescribeVod
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeVodCertificateListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeVodCertificateListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeVodCertificateListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46861,13 +48541,24 @@ func (client *Client) DescribeVodDomainBpsDataWithOptions(request *DescribeVodDo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeVodDomainBpsDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeVodDomainBpsDataResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeVodDomainBpsDataResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46969,13 +48660,24 @@ func (client *Client) DescribeVodDomainBpsDataByLayerWithOptions(request *Descri
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeVodDomainBpsDataByLayerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeVodDomainBpsDataByLayerResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeVodDomainBpsDataByLayerResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47053,13 +48755,24 @@ func (client *Client) DescribeVodDomainCertificateInfoWithOptions(request *Descr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeVodDomainCertificateInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeVodDomainCertificateInfoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeVodDomainCertificateInfoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47133,13 +48846,24 @@ func (client *Client) DescribeVodDomainConfigsWithOptions(request *DescribeVodDo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeVodDomainConfigsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeVodDomainConfigsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeVodDomainConfigsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47209,13 +48933,24 @@ func (client *Client) DescribeVodDomainDetailWithOptions(request *DescribeVodDom
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeVodDomainDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeVodDomainDetailResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeVodDomainDetailResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47311,13 +49046,24 @@ func (client *Client) DescribeVodDomainHitRateDataWithOptions(request *DescribeV
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeVodDomainHitRateDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeVodDomainHitRateDataResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeVodDomainHitRateDataResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47423,13 +49169,24 @@ func (client *Client) DescribeVodDomainLogWithOptions(request *DescribeVodDomain
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeVodDomainLogResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeVodDomainLogResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeVodDomainLogResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47460,6 +49217,10 @@ func (client *Client) DescribeVodDomainLog(request *DescribeVodDomainLogRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the 95th percentile bandwidth data of an accelerated domain name.
+//
 // @param request - DescribeVodDomainMax95BpsDataRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -47485,15 +49246,30 @@ func (client *Client) DescribeVodDomainMax95BpsDataWithOptions(request *Describe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeVodDomainMax95BpsDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeVodDomainMax95BpsDataResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeVodDomainMax95BpsDataResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the 95th percentile bandwidth data of an accelerated domain name.
+//
 // @param request - DescribeVodDomainMax95BpsDataRequest
 //
 // @return DescribeVodDomainMax95BpsDataResponse
@@ -47589,13 +49365,24 @@ func (client *Client) DescribeVodDomainQpsDataWithOptions(request *DescribeVodDo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeVodDomainQpsDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeVodDomainQpsDataResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeVodDomainQpsDataResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47691,13 +49478,24 @@ func (client *Client) DescribeVodDomainRealTimeBpsDataWithOptions(request *Descr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeVodDomainRealTimeBpsDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeVodDomainRealTimeBpsDataResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeVodDomainRealTimeBpsDataResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47791,13 +49589,24 @@ func (client *Client) DescribeVodDomainRealTimeByteHitRateDataWithOptions(reques
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeVodDomainRealTimeByteHitRateDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeVodDomainRealTimeByteHitRateDataResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeVodDomainRealTimeByteHitRateDataResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47873,13 +49682,24 @@ func (client *Client) DescribeVodDomainRealTimeDetailDataWithOptions(request *De
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeVodDomainRealTimeDetailDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeVodDomainRealTimeDetailDataResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeVodDomainRealTimeDetailDataResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47979,13 +49799,24 @@ func (client *Client) DescribeVodDomainRealTimeHttpCodeDataWithOptions(request *
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeVodDomainRealTimeHttpCodeDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeVodDomainRealTimeHttpCodeDataResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeVodDomainRealTimeHttpCodeDataResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48079,13 +49910,24 @@ func (client *Client) DescribeVodDomainRealTimeQpsDataWithOptions(request *Descr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeVodDomainRealTimeQpsDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeVodDomainRealTimeQpsDataResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeVodDomainRealTimeQpsDataResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48181,13 +50023,24 @@ func (client *Client) DescribeVodDomainRealTimeReqHitRateDataWithOptions(request
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeVodDomainRealTimeReqHitRateDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeVodDomainRealTimeReqHitRateDataResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeVodDomainRealTimeReqHitRateDataResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48307,13 +50160,24 @@ func (client *Client) DescribeVodDomainRealTimeTrafficDataWithOptions(request *D
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeVodDomainRealTimeTrafficDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeVodDomainRealTimeTrafficDataResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeVodDomainRealTimeTrafficDataResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48423,13 +50287,24 @@ func (client *Client) DescribeVodDomainReqHitRateDataWithOptions(request *Descri
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeVodDomainReqHitRateDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeVodDomainReqHitRateDataResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeVodDomainReqHitRateDataResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48543,13 +50418,24 @@ func (client *Client) DescribeVodDomainSrcBpsDataWithOptions(request *DescribeVo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeVodDomainSrcBpsDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeVodDomainSrcBpsDataResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeVodDomainSrcBpsDataResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48665,13 +50551,24 @@ func (client *Client) DescribeVodDomainSrcTrafficDataWithOptions(request *Descri
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeVodDomainSrcTrafficDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeVodDomainSrcTrafficDataResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeVodDomainSrcTrafficDataResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48795,13 +50692,24 @@ func (client *Client) DescribeVodDomainTrafficDataWithOptions(request *DescribeV
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeVodDomainTrafficDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeVodDomainTrafficDataResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeVodDomainTrafficDataResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48913,13 +50821,24 @@ func (client *Client) DescribeVodDomainUsageDataWithOptions(request *DescribeVod
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeVodDomainUsageDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeVodDomainUsageDataResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeVodDomainUsageDataResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48941,6 +50860,97 @@ func (client *Client) DescribeVodDomainUsageData(request *DescribeVodDomainUsage
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeVodDomainUsageDataResponse{}
 	_body, _err := client.DescribeVodDomainUsageDataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 点播云剪辑用量查询
+//
+// @param request - DescribeVodEditingUsageDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeVodEditingUsageDataResponse
+func (client *Client) DescribeVodEditingUsageDataWithOptions(request *DescribeVodEditingUsageDataRequest, runtime *util.RuntimeOptions) (_result *DescribeVodEditingUsageDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Specification)) {
+		query["Specification"] = request.Specification
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVodEditingUsageData"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeVodEditingUsageDataResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeVodEditingUsageDataResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 点播云剪辑用量查询
+//
+// @param request - DescribeVodEditingUsageDataRequest
+//
+// @return DescribeVodEditingUsageDataResponse
+func (client *Client) DescribeVodEditingUsageData(request *DescribeVodEditingUsageDataRequest) (_result *DescribeVodEditingUsageDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeVodEditingUsageDataResponse{}
+	_body, _err := client.DescribeVodEditingUsageDataWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -49039,13 +51049,24 @@ func (client *Client) DescribeVodMediaPlayDataWithOptions(request *DescribeVodMe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeVodMediaPlayDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeVodMediaPlayDataResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeVodMediaPlayDataResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -49157,13 +51178,24 @@ func (client *Client) DescribeVodRangeDataByLocateAndIspServiceWithOptions(reque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeVodRangeDataByLocateAndIspServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeVodRangeDataByLocateAndIspServiceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeVodRangeDataByLocateAndIspServiceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -49239,13 +51271,24 @@ func (client *Client) DescribeVodRefreshQuotaWithOptions(request *DescribeVodRef
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeVodRefreshQuotaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeVodRefreshQuotaResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeVodRefreshQuotaResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -49351,13 +51394,24 @@ func (client *Client) DescribeVodRefreshTasksWithOptions(request *DescribeVodRef
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeVodRefreshTasksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeVodRefreshTasksResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeVodRefreshTasksResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -49386,7 +51440,7 @@ func (client *Client) DescribeVodRefreshTasks(request *DescribeVodRefreshTasksRe
 
 // Summary:
 //
-// 查询证书列表，支持翻页
+// Queries the certificates by domain name.
 //
 // @param request - DescribeVodSSLCertificateListRequest
 //
@@ -49437,18 +51491,29 @@ func (client *Client) DescribeVodSSLCertificateListWithOptions(request *Describe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeVodSSLCertificateListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeVodSSLCertificateListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeVodSSLCertificateListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 查询证书列表，支持翻页
+// Queries the certificates by domain name.
 //
 // @param request - DescribeVodSSLCertificateListRequest
 //
@@ -49527,13 +51592,24 @@ func (client *Client) DescribeVodStorageDataWithOptions(request *DescribeVodStor
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeVodStorageDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeVodStorageDataResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeVodStorageDataResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -49615,13 +51691,24 @@ func (client *Client) DescribeVodTieringStorageDataWithOptions(request *Describe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeVodTieringStorageDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeVodTieringStorageDataResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeVodTieringStorageDataResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -49703,13 +51790,24 @@ func (client *Client) DescribeVodTieringStorageRetrievalDataWithOptions(request 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeVodTieringStorageRetrievalDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeVodTieringStorageRetrievalDataResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeVodTieringStorageRetrievalDataResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -49803,13 +51901,24 @@ func (client *Client) DescribeVodTranscodeDataWithOptions(request *DescribeVodTr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeVodTranscodeDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeVodTranscodeDataResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeVodTranscodeDataResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -49903,13 +52012,24 @@ func (client *Client) DescribeVodUserDomainsWithOptions(request *DescribeVodUser
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeVodUserDomainsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeVodUserDomainsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeVodUserDomainsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -49977,13 +52097,24 @@ func (client *Client) DescribeVodVerifyContentWithOptions(request *DescribeVodVe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeVodVerifyContentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeVodVerifyContentResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeVodVerifyContentResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50057,13 +52188,24 @@ func (client *Client) DetachAppPolicyFromIdentityWithOptions(request *DetachAppP
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DetachAppPolicyFromIdentityResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DetachAppPolicyFromIdentityResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DetachAppPolicyFromIdentityResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50143,13 +52285,24 @@ func (client *Client) GenerateDownloadSecretKeyWithOptions(request *GenerateDown
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GenerateDownloadSecretKeyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GenerateDownloadSecretKeyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GenerateDownloadSecretKeyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50221,13 +52374,24 @@ func (client *Client) GenerateKMSDataKeyWithOptions(request *GenerateKMSDataKeyR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GenerateKMSDataKeyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GenerateKMSDataKeyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GenerateKMSDataKeyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50305,13 +52469,24 @@ func (client *Client) GetAIImageJobsWithOptions(request *GetAIImageJobsRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetAIImageJobsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetAIImageJobsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetAIImageJobsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50377,13 +52552,24 @@ func (client *Client) GetAIMediaAuditJobWithOptions(request *GetAIMediaAuditJobR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetAIMediaAuditJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetAIMediaAuditJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetAIMediaAuditJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50447,13 +52633,24 @@ func (client *Client) GetAITemplateWithOptions(request *GetAITemplateRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetAITemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetAITemplateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetAITemplateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50535,13 +52732,24 @@ func (client *Client) GetAIVideoTagResultWithOptions(request *GetAIVideoTagResul
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetAIVideoTagResultResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetAIVideoTagResultResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetAIVideoTagResultResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50605,13 +52813,24 @@ func (client *Client) GetAppInfosWithOptions(request *GetAppInfosRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetAppInfosResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetAppInfosResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetAppInfosResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50681,13 +52900,24 @@ func (client *Client) GetAttachedMediaInfoWithOptions(request *GetAttachedMediaI
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetAttachedMediaInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetAttachedMediaInfoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetAttachedMediaInfoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50757,13 +52987,24 @@ func (client *Client) GetAuditHistoryWithOptions(request *GetAuditHistoryRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetAuditHistoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetAuditHistoryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetAuditHistoryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50833,13 +53074,24 @@ func (client *Client) GetCategoriesWithOptions(request *GetCategoriesRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetCategoriesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetCategoriesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetCategoriesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50899,13 +53151,24 @@ func (client *Client) GetDefaultAITemplateWithOptions(request *GetDefaultAITempl
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetDefaultAITemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetDefaultAITemplateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetDefaultAITemplateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50997,13 +53260,24 @@ func (client *Client) GetDigitalWatermarkExtractResultWithOptions(request *GetDi
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetDigitalWatermarkExtractResultResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetDigitalWatermarkExtractResultResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetDigitalWatermarkExtractResultResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -51077,13 +53351,24 @@ func (client *Client) GetEditingProjectWithOptions(request *GetEditingProjectReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetEditingProjectResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetEditingProjectResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetEditingProjectResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - GetEditingProjectRequest
@@ -51161,13 +53446,24 @@ func (client *Client) GetEditingProjectMaterialsWithOptions(request *GetEditingP
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetEditingProjectMaterialsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetEditingProjectMaterialsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetEditingProjectMaterialsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -51233,13 +53529,24 @@ func (client *Client) GetImageInfoWithOptions(request *GetImageInfoRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetImageInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetImageInfoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetImageInfoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -51309,13 +53616,24 @@ func (client *Client) GetImageInfosWithOptions(request *GetImageInfosRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetImageInfosResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetImageInfosResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetImageInfosResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -51346,7 +53664,17 @@ func (client *Client) GetImageInfos(request *GetImageInfosRequest) (_result *Get
 
 // Summary:
 //
-// 异步任务管理能力建设
+// Queries the details of an asynchronous task based on jobId.
+//
+// Description:
+//
+// ***
+//
+// You can call this operation to query only asynchronous tasks of the last six months. The types of tasks that you can query include transcoding tasks, snapshot tasks, and AI tasks.
+//
+// **QPS limit**
+//
+// You can call this operation up to 15 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/342790.html).
 //
 // @param request - GetJobDetailRequest
 //
@@ -51381,18 +53709,39 @@ func (client *Client) GetJobDetailWithOptions(request *GetJobDetailRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetJobDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetJobDetailResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetJobDetailResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 异步任务管理能力建设
+// Queries the details of an asynchronous task based on jobId.
+//
+// Description:
+//
+// ***
+//
+// You can call this operation to query only asynchronous tasks of the last six months. The types of tasks that you can query include transcoding tasks, snapshot tasks, and AI tasks.
+//
+// **QPS limit**
+//
+// You can call this operation up to 15 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/342790.html).
 //
 // @param request - GetJobDetailRequest
 //
@@ -51465,13 +53814,24 @@ func (client *Client) GetMediaAuditAudioResultDetailWithOptions(request *GetMedi
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetMediaAuditAudioResultDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetMediaAuditAudioResultDetailResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetMediaAuditAudioResultDetailResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -51529,13 +53889,24 @@ func (client *Client) GetMediaAuditResultWithOptions(request *GetMediaAuditResul
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetMediaAuditResultResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetMediaAuditResultResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetMediaAuditResultResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -51601,13 +53972,24 @@ func (client *Client) GetMediaAuditResultDetailWithOptions(request *GetMediaAudi
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetMediaAuditResultDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetMediaAuditResultDetailResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetMediaAuditResultDetailResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -51675,13 +54057,24 @@ func (client *Client) GetMediaAuditResultTimelineWithOptions(request *GetMediaAu
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetMediaAuditResultTimelineResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetMediaAuditResultTimelineResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetMediaAuditResultTimelineResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -51761,13 +54154,24 @@ func (client *Client) GetMediaDNAResultWithOptions(request *GetMediaDNAResultReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetMediaDNAResultResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetMediaDNAResultResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetMediaDNAResultResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -51829,13 +54233,24 @@ func (client *Client) GetMediaRefreshJobsWithOptions(request *GetMediaRefreshJob
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetMediaRefreshJobsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetMediaRefreshJobsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetMediaRefreshJobsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -51905,13 +54320,24 @@ func (client *Client) GetMessageCallbackWithOptions(request *GetMessageCallbackR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetMessageCallbackResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetMessageCallbackResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetMessageCallbackResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -51985,13 +54411,24 @@ func (client *Client) GetMezzanineInfoWithOptions(request *GetMezzanineInfoReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetMezzanineInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetMezzanineInfoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetMezzanineInfoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52018,7 +54455,7 @@ func (client *Client) GetMezzanineInfo(request *GetMezzanineInfoRequest) (_resul
 
 // Summary:
 //
-// Queries the playback URL of a video or audio file by its ID. After you obtain the playback URL of a file stored in ApsaraVideo VOD, you can use ApsaraVideo Player SDK for URL-based playback or use a third-party player such as a system player, open-source player, or self-developed player to play the file.
+// Obtains the playback URL by the audio or video ID. Then, you can use ApsaraVideo Player or a third-party player, such as a system player, open source player, orself-developed player, to play the audio or video.
 //
 // Description:
 //
@@ -52101,18 +54538,29 @@ func (client *Client) GetPlayInfoWithOptions(request *GetPlayInfoRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetPlayInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetPlayInfoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetPlayInfoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Queries the playback URL of a video or audio file by its ID. After you obtain the playback URL of a file stored in ApsaraVideo VOD, you can use ApsaraVideo Player SDK for URL-based playback or use a third-party player such as a system player, open-source player, or self-developed player to play the file.
+// Obtains the playback URL by the audio or video ID. Then, you can use ApsaraVideo Player or a third-party player, such as a system player, open source player, orself-developed player, to play the audio or video.
 //
 // Description:
 //
@@ -52179,13 +54627,24 @@ func (client *Client) GetTranscodeSummaryWithOptions(request *GetTranscodeSummar
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetTranscodeSummaryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetTranscodeSummaryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetTranscodeSummaryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52257,13 +54716,24 @@ func (client *Client) GetTranscodeTaskWithOptions(request *GetTranscodeTaskReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetTranscodeTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetTranscodeTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetTranscodeTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52325,13 +54795,24 @@ func (client *Client) GetTranscodeTemplateGroupWithOptions(request *GetTranscode
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetTranscodeTemplateGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetTranscodeTemplateGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetTranscodeTemplateGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52399,13 +54880,24 @@ func (client *Client) GetURLUploadInfosWithOptions(request *GetURLUploadInfosReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetURLUploadInfosResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetURLUploadInfosResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetURLUploadInfosResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52489,13 +54981,24 @@ func (client *Client) GetUploadDetailsWithOptions(request *GetUploadDetailsReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetUploadDetailsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetUploadDetailsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetUploadDetailsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52538,7 +55041,7 @@ func (client *Client) GetUploadDetails(request *GetUploadDetailsRequest) (_resul
 
 // Summary:
 //
-// Queries information such as the title, description, duration, thumbnail URL, status, creation time, size, snapshots, category, and tags about a single audio or video files based on the ID.
+// Obtains the title, description, duration, thumbnail URL, status, creation time, size, snapshots, category, and tags of a media file based on the file ID.
 //
 // Description:
 //
@@ -52573,18 +55076,29 @@ func (client *Client) GetVideoInfoWithOptions(request *GetVideoInfoRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetVideoInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetVideoInfoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetVideoInfoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Queries information such as the title, description, duration, thumbnail URL, status, creation time, size, snapshots, category, and tags about a single audio or video files based on the ID.
+// Obtains the title, description, duration, thumbnail URL, status, creation time, size, snapshots, category, and tags of a media file based on the file ID.
 //
 // Description:
 //
@@ -52643,13 +55157,24 @@ func (client *Client) GetVideoInfosWithOptions(request *GetVideoInfosRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetVideoInfosResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetVideoInfosResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetVideoInfosResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52741,13 +55266,24 @@ func (client *Client) GetVideoListWithOptions(request *GetVideoListRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetVideoListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetVideoListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetVideoListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52819,13 +55355,24 @@ func (client *Client) GetVideoPlayAuthWithOptions(request *GetVideoPlayAuthReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetVideoPlayAuthResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetVideoPlayAuthResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetVideoPlayAuthResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52885,13 +55432,24 @@ func (client *Client) GetVodTemplateWithOptions(request *GetVodTemplateRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetVodTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetVodTemplateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetVodTemplateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52945,13 +55503,24 @@ func (client *Client) GetWatermarkWithOptions(request *GetWatermarkRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetWatermarkResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetWatermarkResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetWatermarkResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53011,13 +55580,24 @@ func (client *Client) ListAIImageInfoWithOptions(request *ListAIImageInfoRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListAIImageInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListAIImageInfoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListAIImageInfoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53099,13 +55679,24 @@ func (client *Client) ListAIJobWithOptions(request *ListAIJobRequest, runtime *u
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListAIJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListAIJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListAIJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53171,13 +55762,24 @@ func (client *Client) ListAITemplateWithOptions(request *ListAITemplateRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListAITemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListAITemplateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListAITemplateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53259,13 +55861,24 @@ func (client *Client) ListAppInfoWithOptions(request *ListAppInfoRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListAppInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListAppInfoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListAppInfoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53341,13 +55954,24 @@ func (client *Client) ListAppPoliciesForIdentityWithOptions(request *ListAppPoli
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListAppPoliciesForIdentityResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListAppPoliciesForIdentityResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListAppPoliciesForIdentityResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53405,13 +56029,24 @@ func (client *Client) ListAuditSecurityIpWithOptions(request *ListAuditSecurityI
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListAuditSecurityIpResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListAuditSecurityIpResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListAuditSecurityIpResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53465,13 +56100,24 @@ func (client *Client) ListDynamicImageWithOptions(request *ListDynamicImageReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListDynamicImageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListDynamicImageResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListDynamicImageResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53494,7 +56140,19 @@ func (client *Client) ListDynamicImage(request *ListDynamicImageRequest) (_resul
 
 // Summary:
 //
-// 异步任务管理能力建设
+// Queries historical tasks based on the media asset ID.
+//
+// Description:
+//
+// ***
+//
+// 	- You can call the [GetJobDetail](https://apiworkbench.aliyun-inc.com/document/vod/2017-03-21/GetJobDetail?spm=openapi-amp.newDocPublishment.0.0.616a281fSegn0e) operation to query detailed information about the tasks.
+//
+// 	- You can call this operation to query only asynchronous tasks of the last six months. The types of tasks that you can query include transcoding tasks, snapshot tasks, and AI tasks.
+//
+// **QPS limits**
+//
+// You can call this operation up to 15 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/342790.html).
 //
 // @param request - ListJobInfoRequest
 //
@@ -53529,18 +56187,41 @@ func (client *Client) ListJobInfoWithOptions(request *ListJobInfoRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListJobInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListJobInfoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListJobInfoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 异步任务管理能力建设
+// Queries historical tasks based on the media asset ID.
+//
+// Description:
+//
+// ***
+//
+// 	- You can call the [GetJobDetail](https://apiworkbench.aliyun-inc.com/document/vod/2017-03-21/GetJobDetail?spm=openapi-amp.newDocPublishment.0.0.616a281fSegn0e) operation to query detailed information about the tasks.
+//
+// 	- You can call this operation to query only asynchronous tasks of the last six months. The types of tasks that you can query include transcoding tasks, snapshot tasks, and AI tasks.
+//
+// **QPS limits**
+//
+// You can call this operation up to 15 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/342790.html).
 //
 // @param request - ListJobInfoRequest
 //
@@ -53621,13 +56302,24 @@ func (client *Client) ListLiveRecordVideoWithOptions(request *ListLiveRecordVide
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListLiveRecordVideoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListLiveRecordVideoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListLiveRecordVideoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53705,13 +56397,24 @@ func (client *Client) ListSnapshotsWithOptions(request *ListSnapshotsRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListSnapshotsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListSnapshotsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListSnapshotsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53791,13 +56494,24 @@ func (client *Client) ListTranscodeTaskWithOptions(request *ListTranscodeTaskReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListTranscodeTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListTranscodeTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListTranscodeTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53861,13 +56575,24 @@ func (client *Client) ListTranscodeTemplateGroupWithOptions(request *ListTransco
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListTranscodeTemplateGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListTranscodeTemplateGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListTranscodeTemplateGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53929,13 +56654,24 @@ func (client *Client) ListVodTemplateWithOptions(request *ListVodTemplateRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListVodTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListVodTemplateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListVodTemplateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53989,13 +56725,24 @@ func (client *Client) ListWatermarkWithOptions(request *ListWatermarkRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListWatermarkResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListWatermarkResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListWatermarkResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54057,13 +56804,24 @@ func (client *Client) MoveAppResourceWithOptions(request *MoveAppResourceRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &MoveAppResourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &MoveAppResourceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &MoveAppResourceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54145,13 +56903,24 @@ func (client *Client) PreloadVodObjectCachesWithOptions(request *PreloadVodObjec
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &PreloadVodObjectCachesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &PreloadVodObjectCachesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &PreloadVodObjectCachesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54293,13 +57062,24 @@ func (client *Client) ProduceEditingProjectVideoWithOptions(request *ProduceEdit
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ProduceEditingProjectVideoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ProduceEditingProjectVideoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ProduceEditingProjectVideoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54429,13 +57209,24 @@ func (client *Client) RefreshMediaPlayUrlsWithOptions(request *RefreshMediaPlayU
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RefreshMediaPlayUrlsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RefreshMediaPlayUrlsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RefreshMediaPlayUrlsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54513,13 +57304,24 @@ func (client *Client) RefreshUploadVideoWithOptions(request *RefreshUploadVideoR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RefreshUploadVideoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RefreshUploadVideoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RefreshUploadVideoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54601,13 +57403,24 @@ func (client *Client) RefreshVodObjectCachesWithOptions(request *RefreshVodObjec
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RefreshVodObjectCachesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RefreshVodObjectCachesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RefreshVodObjectCachesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54693,13 +57506,24 @@ func (client *Client) RegisterMediaWithOptions(request *RegisterMediaRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RegisterMediaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RegisterMediaResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RegisterMediaResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54781,13 +57605,24 @@ func (client *Client) RestoreMediaWithOptions(request *RestoreMediaRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RestoreMediaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RestoreMediaResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RestoreMediaResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54885,13 +57720,24 @@ func (client *Client) SearchEditingProjectWithOptions(request *SearchEditingProj
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SearchEditingProjectResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SearchEditingProjectResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SearchEditingProjectResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54987,13 +57833,24 @@ func (client *Client) SearchMediaWithOptions(request *SearchMediaRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SearchMediaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SearchMediaResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SearchMediaResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -55077,13 +57934,24 @@ func (client *Client) SetAuditSecurityIpWithOptions(request *SetAuditSecurityIpR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SetAuditSecurityIpResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetAuditSecurityIpResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetAuditSecurityIpResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -55169,13 +58037,24 @@ func (client *Client) SetCrossdomainContentWithOptions(request *SetCrossdomainCo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SetCrossdomainContentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetCrossdomainContentResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetCrossdomainContentResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -55237,13 +58116,24 @@ func (client *Client) SetDefaultAITemplateWithOptions(request *SetDefaultAITempl
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SetDefaultAITemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetDefaultAITemplateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetDefaultAITemplateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -55301,13 +58191,24 @@ func (client *Client) SetDefaultTranscodeTemplateGroupWithOptions(request *SetDe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SetDefaultTranscodeTemplateGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetDefaultTranscodeTemplateGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetDefaultTranscodeTemplateGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -55361,13 +58262,24 @@ func (client *Client) SetDefaultWatermarkWithOptions(request *SetDefaultWatermar
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SetDefaultWatermarkResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetDefaultWatermarkResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetDefaultWatermarkResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -55441,13 +58353,24 @@ func (client *Client) SetEditingProjectMaterialsWithOptions(request *SetEditingP
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SetEditingProjectMaterialsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetEditingProjectMaterialsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetEditingProjectMaterialsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -55537,13 +58460,24 @@ func (client *Client) SetMessageCallbackWithOptions(request *SetMessageCallbackR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SetMessageCallbackResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetMessageCallbackResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetMessageCallbackResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -55629,13 +58563,24 @@ func (client *Client) SetVodDomainCertificateWithOptions(request *SetVodDomainCe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SetVodDomainCertificateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetVodDomainCertificateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetVodDomainCertificateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -55662,7 +58607,7 @@ func (client *Client) SetVodDomainCertificate(request *SetVodDomainCertificateRe
 
 // Summary:
 //
-// 设置证书
+// Enables or disables the SSL certificate of a domain name and updates the certificate information.
 //
 // @param request - SetVodDomainSSLCertificateRequest
 //
@@ -55733,18 +58678,29 @@ func (client *Client) SetVodDomainSSLCertificateWithOptions(request *SetVodDomai
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SetVodDomainSSLCertificateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetVodDomainSSLCertificateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetVodDomainSSLCertificateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 设置证书
+// Enables or disables the SSL certificate of a domain name and updates the certificate information.
 //
 // @param request - SetVodDomainSSLCertificateRequest
 //
@@ -55821,13 +58777,24 @@ func (client *Client) SubmitAIImageAuditJobWithOptions(request *SubmitAIImageAud
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SubmitAIImageAuditJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SubmitAIImageAuditJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SubmitAIImageAuditJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -55919,13 +58886,24 @@ func (client *Client) SubmitAIImageJobWithOptions(request *SubmitAIImageJobReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SubmitAIImageJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SubmitAIImageJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SubmitAIImageJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -56025,13 +59003,24 @@ func (client *Client) SubmitAIJobWithOptions(request *SubmitAIJobRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SubmitAIJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SubmitAIJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SubmitAIJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -56123,13 +59112,24 @@ func (client *Client) SubmitAIMediaAuditJobWithOptions(request *SubmitAIMediaAud
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SubmitAIMediaAuditJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SubmitAIMediaAuditJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SubmitAIMediaAuditJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -56225,13 +59225,24 @@ func (client *Client) SubmitDigitalWatermarkExtractJobWithOptions(request *Submi
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SubmitDigitalWatermarkExtractJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SubmitDigitalWatermarkExtractJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SubmitDigitalWatermarkExtractJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -56315,13 +59326,24 @@ func (client *Client) SubmitDynamicImageJobWithOptions(request *SubmitDynamicIma
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SubmitDynamicImageJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SubmitDynamicImageJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SubmitDynamicImageJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -56405,13 +59427,24 @@ func (client *Client) SubmitMediaDNADeleteJobWithOptions(request *SubmitMediaDNA
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SubmitMediaDNADeleteJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SubmitMediaDNADeleteJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SubmitMediaDNADeleteJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -56479,13 +59512,24 @@ func (client *Client) SubmitPreprocessJobsWithOptions(request *SubmitPreprocessJ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SubmitPreprocessJobsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SubmitPreprocessJobsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SubmitPreprocessJobsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -56597,13 +59641,24 @@ func (client *Client) SubmitSnapshotJobWithOptions(tmpReq *SubmitSnapshotJobRequ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SubmitSnapshotJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SubmitSnapshotJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SubmitSnapshotJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -56707,13 +59762,24 @@ func (client *Client) SubmitTranscodeJobsWithOptions(request *SubmitTranscodeJob
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SubmitTranscodeJobsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SubmitTranscodeJobsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SubmitTranscodeJobsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -56789,13 +59855,24 @@ func (client *Client) SubmitWorkflowJobWithOptions(request *SubmitWorkflowJobReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SubmitWorkflowJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SubmitWorkflowJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SubmitWorkflowJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -56869,13 +59946,24 @@ func (client *Client) UpdateAITemplateWithOptions(request *UpdateAITemplateReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateAITemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateAITemplateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateAITemplateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -56953,13 +60041,24 @@ func (client *Client) UpdateAppInfoWithOptions(request *UpdateAppInfoRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateAppInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateAppInfoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateAppInfoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -57023,13 +60122,24 @@ func (client *Client) UpdateAttachedMediaInfosWithOptions(request *UpdateAttache
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateAttachedMediaInfosResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateAttachedMediaInfosResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateAttachedMediaInfosResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -57095,13 +60205,24 @@ func (client *Client) UpdateCategoryWithOptions(request *UpdateCategoryRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateCategoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateCategoryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateCategoryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -57191,13 +60312,24 @@ func (client *Client) UpdateEditingProjectWithOptions(request *UpdateEditingProj
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateEditingProjectResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateEditingProjectResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateEditingProjectResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -57257,13 +60389,24 @@ func (client *Client) UpdateImageInfosWithOptions(request *UpdateImageInfosReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateImageInfosResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateImageInfosResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateImageInfosResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -57349,13 +60492,24 @@ func (client *Client) UpdateMediaStorageClassWithOptions(request *UpdateMediaSto
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateMediaStorageClassResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateMediaStorageClassResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateMediaStorageClassResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -57435,13 +60589,24 @@ func (client *Client) UpdateTranscodeTemplateGroupWithOptions(request *UpdateTra
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateTranscodeTemplateGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateTranscodeTemplateGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateTranscodeTemplateGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -57468,11 +60633,17 @@ func (client *Client) UpdateTranscodeTemplateGroup(request *UpdateTranscodeTempl
 
 // Summary:
 //
-// Modifies the information about a video.
+// Modifies the information about an audio or video file.
 //
 // Description:
 //
-// The specific parameter of a video is updated only when a new value is passed in the parameter.
+// ### [](#)
+//
+// You can call this operation to modify information such as the title, tags, and description about audio and video files based on audio or video IDs. You must pass in the parameters that you want to modify. Otherwise, parameter configurations are not overwritten.
+//
+// ### [](#qps-)Queries per second (QPS) limit
+//
+// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits on API operations](https://help.aliyun.com/document_detail/342790.html).
 //
 // @param request - UpdateVideoInfoRequest
 //
@@ -57527,22 +60698,39 @@ func (client *Client) UpdateVideoInfoWithOptions(request *UpdateVideoInfoRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateVideoInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateVideoInfoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateVideoInfoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Modifies the information about a video.
+// Modifies the information about an audio or video file.
 //
 // Description:
 //
-// The specific parameter of a video is updated only when a new value is passed in the parameter.
+// ### [](#)
+//
+// You can call this operation to modify information such as the title, tags, and description about audio and video files based on audio or video IDs. You must pass in the parameters that you want to modify. Otherwise, parameter configurations are not overwritten.
+//
+// ### [](#qps-)Queries per second (QPS) limit
+//
+// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits on API operations](https://help.aliyun.com/document_detail/342790.html).
 //
 // @param request - UpdateVideoInfoRequest
 //
@@ -57595,13 +60783,24 @@ func (client *Client) UpdateVideoInfosWithOptions(request *UpdateVideoInfosReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateVideoInfosResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateVideoInfosResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateVideoInfosResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -57679,13 +60878,24 @@ func (client *Client) UpdateVodDomainWithOptions(request *UpdateVodDomainRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateVodDomainResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateVodDomainResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateVodDomainResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -57751,13 +60961,24 @@ func (client *Client) UpdateVodTemplateWithOptions(request *UpdateVodTemplateReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateVodTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateVodTemplateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateVodTemplateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -57825,13 +61046,24 @@ func (client *Client) UpdateWatermarkWithOptions(request *UpdateWatermarkRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateWatermarkResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateWatermarkResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateWatermarkResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -57933,13 +61165,24 @@ func (client *Client) UploadMediaByURLWithOptions(request *UploadMediaByURLReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UploadMediaByURLResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UploadMediaByURLResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UploadMediaByURLResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -58041,13 +61284,24 @@ func (client *Client) UploadStreamByURLWithOptions(request *UploadStreamByURLReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UploadStreamByURLResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UploadStreamByURLResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UploadStreamByURLResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -58123,13 +61377,24 @@ func (client *Client) VerifyVodDomainOwnerWithOptions(request *VerifyVodDomainOw
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &VerifyVodDomainOwnerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &VerifyVodDomainOwnerResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &VerifyVodDomainOwnerResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
