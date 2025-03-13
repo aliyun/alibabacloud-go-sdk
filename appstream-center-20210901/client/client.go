@@ -5229,6 +5229,8 @@ type ListAppInstanceGroupRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. The value cannot be greater than `100`.
+	//
 	// example:
 	//
 	// 10
@@ -5419,6 +5421,12 @@ type ListAppInstanceGroupResponseBodyAppInstanceGroupModels struct {
 	// The resource groups.
 	NodePool     []*ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool `json:"NodePool,omitempty" xml:"NodePool,omitempty" type:"Repeated"`
 	OfficeSiteId *string                                                           `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	// The type of the operating system.
+	//
+	// Valid value:
+	//
+	// 	- Windows
+	//
 	// example:
 	//
 	// Windows
@@ -5448,6 +5456,8 @@ type ListAppInstanceGroupResponseBodyAppInstanceGroupModels struct {
 	//
 	// AVAILABLE
 	ResourceStatus *string `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
+	// The tags added to the resources.
+	ResourceTags []*ListAppInstanceGroupResponseBodyAppInstanceGroupModelsResourceTags `json:"ResourceTags,omitempty" xml:"ResourceTags,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 5
@@ -5608,6 +5618,11 @@ func (s *ListAppInstanceGroupResponseBodyAppInstanceGroupModels) SetReserveMinAm
 
 func (s *ListAppInstanceGroupResponseBodyAppInstanceGroupModels) SetResourceStatus(v string) *ListAppInstanceGroupResponseBodyAppInstanceGroupModels {
 	s.ResourceStatus = &v
+	return s
+}
+
+func (s *ListAppInstanceGroupResponseBodyAppInstanceGroupModels) SetResourceTags(v []*ListAppInstanceGroupResponseBodyAppInstanceGroupModelsResourceTags) *ListAppInstanceGroupResponseBodyAppInstanceGroupModels {
+	s.ResourceTags = v
 	return s
 }
 
@@ -5982,6 +5997,38 @@ func (s *ListAppInstanceGroupResponseBodyAppInstanceGroupModelsOtaInfo) SetTaskI
 	return s
 }
 
+type ListAppInstanceGroupResponseBodyAppInstanceGroupModelsResourceTags struct {
+	// The tag key.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag type. Valid values: Custom and System.
+	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// The tag value.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListAppInstanceGroupResponseBodyAppInstanceGroupModelsResourceTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAppInstanceGroupResponseBodyAppInstanceGroupModelsResourceTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListAppInstanceGroupResponseBodyAppInstanceGroupModelsResourceTags) SetKey(v string) *ListAppInstanceGroupResponseBodyAppInstanceGroupModelsResourceTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListAppInstanceGroupResponseBodyAppInstanceGroupModelsResourceTags) SetScope(v string) *ListAppInstanceGroupResponseBodyAppInstanceGroupModelsResourceTags {
+	s.Scope = &v
+	return s
+}
+
+func (s *ListAppInstanceGroupResponseBodyAppInstanceGroupModelsResourceTags) SetValue(v string) *ListAppInstanceGroupResponseBodyAppInstanceGroupModelsResourceTags {
+	s.Value = &v
+	return s
+}
+
 type ListAppInstanceGroupResponse struct {
 	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -6031,7 +6078,7 @@ type ListAppInstancesRequest struct {
 	// if can be null:
 	// false
 	AppInstanceIdList []*string `json:"AppInstanceIdList,omitempty" xml:"AppInstanceIdList,omitempty" type:"Repeated"`
-	// Specifies whether to query the information about deleted application instances. If you set this parameter to true, you must configure AppInstanceIdList. Otherwise, a parameter error is reported.
+	// Specifies whether to query the information about deleted app instances. If you set this parameter to true, you must configure AppInstanceIdList. Otherwise, a parameter error is reported.
 	//
 	// Valid values:
 	//
@@ -6043,13 +6090,13 @@ type ListAppInstancesRequest struct {
 	//
 	// true
 	IncludeDeleted *bool `json:"IncludeDeleted,omitempty" xml:"IncludeDeleted,omitempty"`
-	// The number of the page to return. Default value: `1`. We recommend that you configure this parameter.
+	// The page number. Default value: `1`. We recommend that you specify this parameter.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. The value cannot be greater than `100`. Default value: `20`. We recommend that you configure this parameter.
+	// The number of entries per page. The value cannot be greater than `100`. Default value: `20`. We recommend that you specify this parameter.
 	//
 	// example:
 	//
@@ -6059,7 +6106,8 @@ type ListAppInstancesRequest struct {
 	//
 	// if can be null:
 	// false
-	Status     []*string `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
+	Status []*string `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
+	// The user IDs. You can specify up to 100 IDs.
 	UserIdList []*string `json:"UserIdList,omitempty" xml:"UserIdList,omitempty" type:"Repeated"`
 }
 
@@ -6112,7 +6160,7 @@ func (s *ListAppInstancesRequest) SetUserIdList(v []*string) *ListAppInstancesRe
 }
 
 type ListAppInstancesResponseBody struct {
-	// The IDs of the application instances.
+	// The app instances.
 	AppInstanceModels []*ListAppInstancesResponseBodyAppInstanceModels `json:"AppInstanceModels,omitempty" xml:"AppInstanceModels,omitempty" type:"Repeated"`
 	// The page number of the returned page. We recommend that you configure this parameter.
 	//
@@ -6187,8 +6235,19 @@ type ListAppInstancesResponseBodyAppInstanceModels struct {
 	// ai-8dl7dzchklmka****
 	AppInstanceId *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
 	// The information about the binding between the application instance and end users.
-	BindInfo   *ListAppInstancesResponseBodyAppInstanceModelsBindInfo `json:"BindInfo,omitempty" xml:"BindInfo,omitempty" type:"Struct"`
-	ChargeType *string                                                `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	BindInfo *ListAppInstancesResponseBodyAppInstanceModelsBindInfo `json:"BindInfo,omitempty" xml:"BindInfo,omitempty" type:"Struct"`
+	// The billing method of the app instance. Valid values:
+	//
+	// 	- **PrePaid**: subscription.
+	//
+	// 	- **PostPaid**: pay-as-you-go
+	//
+	// >  This parameter is returned only if the ChargeResourceMode parameter of the delivery group to which the app instance belongs is set to Node.
+	//
+	// example:
+	//
+	// PostPaid
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The time when the application instance was created.
 	//
 	// example:
@@ -6206,8 +6265,16 @@ type ListAppInstancesResponseBodyAppInstanceModels struct {
 	// example:
 	//
 	// 10.13.13.211
-	MainEthPublicIp *string `json:"MainEthPublicIp,omitempty" xml:"MainEthPublicIp,omitempty"`
-	NodeId          *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	MainEthPublicIp    *string `json:"MainEthPublicIp,omitempty" xml:"MainEthPublicIp,omitempty"`
+	NetworkInterfaceIp *string `json:"NetworkInterfaceIp,omitempty" xml:"NetworkInterfaceIp,omitempty"`
+	// The ID of the node on which the app instance runs.
+	//
+	// >  This parameter is returned only if the ChargeResourceMode parameter of the delivery group to which the app instance belongs is set to Node.
+	//
+	// example:
+	//
+	// i-bp13********
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The session status. This parameter is returned only if the application instance is in the `RUNNING` state.
 	//
 	// Valid values:
@@ -6268,6 +6335,11 @@ func (s *ListAppInstancesResponseBodyAppInstanceModels) SetGmtModified(v string)
 
 func (s *ListAppInstancesResponseBodyAppInstanceModels) SetMainEthPublicIp(v string) *ListAppInstancesResponseBodyAppInstanceModels {
 	s.MainEthPublicIp = &v
+	return s
+}
+
+func (s *ListAppInstancesResponseBodyAppInstanceModels) SetNetworkInterfaceIp(v string) *ListAppInstancesResponseBodyAppInstanceModels {
+	s.NetworkInterfaceIp = &v
 	return s
 }
 
@@ -6943,6 +7015,172 @@ func (s *ListNodeInstanceTypeResponse) SetBody(v *ListNodeInstanceTypeResponseBo
 	return s
 }
 
+type ListNodesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// aig-53fvrq1oanz6c****
+	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CloudApp
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+}
+
+func (s ListNodesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNodesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListNodesRequest) SetAppInstanceGroupId(v string) *ListNodesRequest {
+	s.AppInstanceGroupId = &v
+	return s
+}
+
+func (s *ListNodesRequest) SetPageNumber(v int32) *ListNodesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListNodesRequest) SetPageSize(v int32) *ListNodesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListNodesRequest) SetProductType(v string) *ListNodesRequest {
+	s.ProductType = &v
+	return s
+}
+
+type ListNodesResponseBody struct {
+	// example:
+	//
+	// 100
+	Count      *int32                             `json:"Count,omitempty" xml:"Count,omitempty"`
+	NodeModels []*ListNodesResponseBodyNodeModels `json:"NodeModels,omitempty" xml:"NodeModels,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10
+	PerPageSize *int32 `json:"PerPageSize,omitempty" xml:"PerPageSize,omitempty"`
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	ToPage *int32 `json:"ToPage,omitempty" xml:"ToPage,omitempty"`
+}
+
+func (s ListNodesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNodesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListNodesResponseBody) SetCount(v int32) *ListNodesResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *ListNodesResponseBody) SetNodeModels(v []*ListNodesResponseBodyNodeModels) *ListNodesResponseBody {
+	s.NodeModels = v
+	return s
+}
+
+func (s *ListNodesResponseBody) SetPerPageSize(v int32) *ListNodesResponseBody {
+	s.PerPageSize = &v
+	return s
+}
+
+func (s *ListNodesResponseBody) SetRequestId(v string) *ListNodesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListNodesResponseBody) SetToPage(v int32) *ListNodesResponseBody {
+	s.ToPage = &v
+	return s
+}
+
+type ListNodesResponseBodyNodeModels struct {
+	// example:
+	//
+	// PostPaid
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// example:
+	//
+	// i-bp13********
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+}
+
+func (s ListNodesResponseBodyNodeModels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNodesResponseBodyNodeModels) GoString() string {
+	return s.String()
+}
+
+func (s *ListNodesResponseBodyNodeModels) SetChargeType(v string) *ListNodesResponseBodyNodeModels {
+	s.ChargeType = &v
+	return s
+}
+
+func (s *ListNodesResponseBodyNodeModels) SetNodeId(v string) *ListNodesResponseBodyNodeModels {
+	s.NodeId = &v
+	return s
+}
+
+type ListNodesResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListNodesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListNodesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNodesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListNodesResponse) SetHeaders(v map[string]*string) *ListNodesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListNodesResponse) SetStatusCode(v int32) *ListNodesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListNodesResponse) SetBody(v *ListNodesResponseBody) *ListNodesResponse {
+	s.Body = v
+	return s
+}
+
 type ListOtaTaskRequest struct {
 	// The ID of the delivery group.
 	//
@@ -7173,6 +7411,11 @@ func (s *ListOtaTaskResponse) SetBody(v *ListOtaTaskResponseBody) *ListOtaTaskRe
 }
 
 type ListRegionsRequest struct {
+	// >  This parameter is not publicly available.
+	//
+	// example:
+	//
+	// null
 	BizSource *string `json:"BizSource,omitempty" xml:"BizSource,omitempty"`
 	// The product type.
 	//
@@ -7678,6 +7921,274 @@ func (s *ListSessionPackagesResponse) SetBody(v *ListSessionPackagesResponseBody
 	return s
 }
 
+type ListTagCloudResourcesRequest struct {
+	// The number of entries per page. Maximum value: 1000. Default value: 50.
+	//
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// 50
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// ptnJAAAAAAAxNzE5OTEwNQ==
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The resource IDs. You can specify up to 50 resource IDs. You do not need to specify this parameter if you set ResourceType to AliUid.
+	ResourceIds []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
+	// The type of the cloud resource.
+	//
+	// Valid values:
+	//
+	// 	- AppId: app ID.
+	//
+	// 	- WyId: Alibaba Cloud Workspace user ID.
+	//
+	// 	- AppInstanceGroupId: delivery group ID.
+	//
+	// 	- AliUid: tenant ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// AppInstanceGroupId
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tag type.
+	//
+	// Valid values:
+	//
+	// 	- All (default): all tags.
+	//
+	// 	- Custom: custom tag.
+	//
+	// 	- System: system tag.
+	//
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// Custom
+	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+}
+
+func (s ListTagCloudResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagCloudResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagCloudResourcesRequest) SetMaxResults(v int32) *ListTagCloudResourcesRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListTagCloudResourcesRequest) SetNextToken(v string) *ListTagCloudResourcesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTagCloudResourcesRequest) SetResourceIds(v []*string) *ListTagCloudResourcesRequest {
+	s.ResourceIds = v
+	return s
+}
+
+func (s *ListTagCloudResourcesRequest) SetResourceType(v string) *ListTagCloudResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListTagCloudResourcesRequest) SetScope(v string) *ListTagCloudResourcesRequest {
+	s.Scope = &v
+	return s
+}
+
+type ListTagCloudResourcesResponseBody struct {
+	// Indicates whether the next query is required.
+	//
+	// example:
+	//
+	// AAAAAYRHtOLVQzCYj17y+OP7LZRrUJaF4rnBGQkWwMiVHlLZBB1w3Us37CVvhvyM0TXavA==
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The tags added to the cloud resources.
+	ResourceTags []*ListTagCloudResourcesResponseBodyResourceTags `json:"ResourceTags,omitempty" xml:"ResourceTags,omitempty" type:"Repeated"`
+	// The total number of entries.
+	//
+	// example:
+	//
+	// 15
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListTagCloudResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagCloudResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagCloudResourcesResponseBody) SetNextToken(v string) *ListTagCloudResourcesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTagCloudResourcesResponseBody) SetRequestId(v string) *ListTagCloudResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTagCloudResourcesResponseBody) SetResourceTags(v []*ListTagCloudResourcesResponseBodyResourceTags) *ListTagCloudResourcesResponseBody {
+	s.ResourceTags = v
+	return s
+}
+
+func (s *ListTagCloudResourcesResponseBody) SetTotalCount(v int32) *ListTagCloudResourcesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListTagCloudResourcesResponseBodyResourceTags struct {
+	// The resource ID.
+	//
+	// example:
+	//
+	// aig-0001
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The type of the cloud resource.
+	//
+	// Valid values:
+	//
+	// 	- AppId: app ID.
+	//
+	// 	- WyId: Alibaba Cloud Workspace user ID.
+	//
+	// 	- AppInstanceGroupId: delivery group ID.
+	//
+	// 	- AliUid: tenant ID.
+	//
+	// example:
+	//
+	// AppInstanceGroupId
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tags.
+	Tags []*ListTagCloudResourcesResponseBodyResourceTagsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+}
+
+func (s ListTagCloudResourcesResponseBodyResourceTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagCloudResourcesResponseBodyResourceTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagCloudResourcesResponseBodyResourceTags) SetResourceId(v string) *ListTagCloudResourcesResponseBodyResourceTags {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ListTagCloudResourcesResponseBodyResourceTags) SetResourceType(v string) *ListTagCloudResourcesResponseBodyResourceTags {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListTagCloudResourcesResponseBodyResourceTags) SetTags(v []*ListTagCloudResourcesResponseBodyResourceTagsTags) *ListTagCloudResourcesResponseBodyResourceTags {
+	s.Tags = v
+	return s
+}
+
+type ListTagCloudResourcesResponseBodyResourceTagsTags struct {
+	// The tag key.
+	//
+	// example:
+	//
+	// Resolution
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag type.
+	//
+	// Valid values:
+	//
+	// 	- Custom: custom tag.
+	//
+	// 	- System: system tag.
+	//
+	// example:
+	//
+	// Custom
+	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// 1080p
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListTagCloudResourcesResponseBodyResourceTagsTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagCloudResourcesResponseBodyResourceTagsTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagCloudResourcesResponseBodyResourceTagsTags) SetKey(v string) *ListTagCloudResourcesResponseBodyResourceTagsTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListTagCloudResourcesResponseBodyResourceTagsTags) SetScope(v string) *ListTagCloudResourcesResponseBodyResourceTagsTags {
+	s.Scope = &v
+	return s
+}
+
+func (s *ListTagCloudResourcesResponseBodyResourceTagsTags) SetValue(v string) *ListTagCloudResourcesResponseBodyResourceTagsTags {
+	s.Value = &v
+	return s
+}
+
+type ListTagCloudResourcesResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTagCloudResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListTagCloudResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagCloudResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagCloudResourcesResponse) SetHeaders(v map[string]*string) *ListTagCloudResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTagCloudResourcesResponse) SetStatusCode(v int32) *ListTagCloudResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTagCloudResourcesResponse) SetBody(v *ListTagCloudResourcesResponseBody) *ListTagCloudResourcesResponse {
+	s.Body = v
+	return s
+}
+
 type ListTenantConfigResponseBody struct {
 	// The request ID.
 	//
@@ -7894,8 +8405,21 @@ type ModifyAppInstanceGroupAttributeRequest struct {
 	// >  If you want to use this parameter, submit a ticket.
 	Network *ModifyAppInstanceGroupAttributeRequestNetwork `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
 	// The information about the resource group.
-	NodePool         *ModifyAppInstanceGroupAttributeRequestNodePool `json:"NodePool,omitempty" xml:"NodePool,omitempty" type:"Struct"`
-	PerSessionPerApp *bool                                           `json:"PerSessionPerApp,omitempty" xml:"PerSessionPerApp,omitempty"`
+	NodePool *ModifyAppInstanceGroupAttributeRequestNodePool `json:"NodePool,omitempty" xml:"NodePool,omitempty" type:"Struct"`
+	// Specifies whether only one application can be opened in a session.
+	//
+	// 	- After you enable this feature, the system assigns a session to each application if you open multiple applications in a delivery group. This consumes a larger number of sessions.
+	//
+	// Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// false
+	PerSessionPerApp *bool `json:"PerSessionPerApp,omitempty" xml:"PerSessionPerApp,omitempty"`
 	// The application ID of the pre-open application. If you set `PreOpenMode` to `SINGLE_APP`, you cannot leave this parameter empty.``
 	//
 	// example:
@@ -8148,7 +8672,8 @@ func (s *ModifyAppInstanceGroupAttributeRequestSecurityPolicy) SetSkipUserAuthCh
 
 type ModifyAppInstanceGroupAttributeRequestStoragePolicy struct {
 	// The storage types.
-	StorageTypeList   []*string                                                             `json:"StorageTypeList,omitempty" xml:"StorageTypeList,omitempty" type:"Repeated"`
+	StorageTypeList []*string `json:"StorageTypeList,omitempty" xml:"StorageTypeList,omitempty" type:"Repeated"`
+	// The configurations of user data roaming.
 	UserProfile       *ModifyAppInstanceGroupAttributeRequestStoragePolicyUserProfile       `json:"UserProfile,omitempty" xml:"UserProfile,omitempty" type:"Struct"`
 	UserProfileFollow *ModifyAppInstanceGroupAttributeRequestStoragePolicyUserProfileFollow `json:"UserProfileFollow,omitempty" xml:"UserProfileFollow,omitempty" type:"Struct"`
 }
@@ -8177,8 +8702,24 @@ func (s *ModifyAppInstanceGroupAttributeRequestStoragePolicy) SetUserProfileFoll
 }
 
 type ModifyAppInstanceGroupAttributeRequestStoragePolicyUserProfile struct {
-	FileSystemId      *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	UserProfileSwitch *bool   `json:"UserProfileSwitch,omitempty" xml:"UserProfileSwitch,omitempty"`
+	// The ID of the File Storage NAS (NAS) file system used to store user data.
+	//
+	// example:
+	//
+	// 06ae94****
+	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	// Specifies whether user data roaming is enabled.
+	//
+	// Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// false
+	UserProfileSwitch *bool `json:"UserProfileSwitch,omitempty" xml:"UserProfileSwitch,omitempty"`
 }
 
 func (s ModifyAppInstanceGroupAttributeRequestStoragePolicyUserProfile) String() string {
@@ -8238,8 +8779,21 @@ type ModifyAppInstanceGroupAttributeShrinkRequest struct {
 	// >  If you want to use this parameter, submit a ticket.
 	NetworkShrink *string `json:"Network,omitempty" xml:"Network,omitempty"`
 	// The information about the resource group.
-	NodePoolShrink   *string `json:"NodePool,omitempty" xml:"NodePool,omitempty"`
-	PerSessionPerApp *bool   `json:"PerSessionPerApp,omitempty" xml:"PerSessionPerApp,omitempty"`
+	NodePoolShrink *string `json:"NodePool,omitempty" xml:"NodePool,omitempty"`
+	// Specifies whether only one application can be opened in a session.
+	//
+	// 	- After you enable this feature, the system assigns a session to each application if you open multiple applications in a delivery group. This consumes a larger number of sessions.
+	//
+	// Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// false
+	PerSessionPerApp *bool `json:"PerSessionPerApp,omitempty" xml:"PerSessionPerApp,omitempty"`
 	// The application ID of the pre-open application. If you set `PreOpenMode` to `SINGLE_APP`, you cannot leave this parameter empty.``
 	//
 	// example:
@@ -8612,6 +9166,198 @@ func (s *ModifyAppPolicyResponse) SetStatusCode(v int32) *ModifyAppPolicyRespons
 }
 
 func (s *ModifyAppPolicyResponse) SetBody(v *ModifyAppPolicyResponseBody) *ModifyAppPolicyResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyNodePoolAmountRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// aig-9ciijz60n4xsv****
+	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	// This parameter is required.
+	NodePool *ModifyNodePoolAmountRequestNodePool `json:"NodePool,omitempty" xml:"NodePool,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CloudApp
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+}
+
+func (s ModifyNodePoolAmountRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyNodePoolAmountRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyNodePoolAmountRequest) SetAppInstanceGroupId(v string) *ModifyNodePoolAmountRequest {
+	s.AppInstanceGroupId = &v
+	return s
+}
+
+func (s *ModifyNodePoolAmountRequest) SetNodePool(v *ModifyNodePoolAmountRequestNodePool) *ModifyNodePoolAmountRequest {
+	s.NodePool = v
+	return s
+}
+
+func (s *ModifyNodePoolAmountRequest) SetProductType(v string) *ModifyNodePoolAmountRequest {
+	s.ProductType = &v
+	return s
+}
+
+type ModifyNodePoolAmountRequestNodePool struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	NodeAmount *int32 `json:"NodeAmount,omitempty" xml:"NodeAmount,omitempty"`
+	// example:
+	//
+	// EXPAND_FROM_POST_PAID_EXPLICIT
+	PrePaidNodeAmountModifyMode    *string   `json:"PrePaidNodeAmountModifyMode,omitempty" xml:"PrePaidNodeAmountModifyMode,omitempty"`
+	PrePaidNodeAmountModifyNodeIds []*string `json:"PrePaidNodeAmountModifyNodeIds,omitempty" xml:"PrePaidNodeAmountModifyNodeIds,omitempty" type:"Repeated"`
+}
+
+func (s ModifyNodePoolAmountRequestNodePool) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyNodePoolAmountRequestNodePool) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyNodePoolAmountRequestNodePool) SetNodeAmount(v int32) *ModifyNodePoolAmountRequestNodePool {
+	s.NodeAmount = &v
+	return s
+}
+
+func (s *ModifyNodePoolAmountRequestNodePool) SetPrePaidNodeAmountModifyMode(v string) *ModifyNodePoolAmountRequestNodePool {
+	s.PrePaidNodeAmountModifyMode = &v
+	return s
+}
+
+func (s *ModifyNodePoolAmountRequestNodePool) SetPrePaidNodeAmountModifyNodeIds(v []*string) *ModifyNodePoolAmountRequestNodePool {
+	s.PrePaidNodeAmountModifyNodeIds = v
+	return s
+}
+
+type ModifyNodePoolAmountShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// aig-9ciijz60n4xsv****
+	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	// This parameter is required.
+	NodePoolShrink *string `json:"NodePool,omitempty" xml:"NodePool,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CloudApp
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+}
+
+func (s ModifyNodePoolAmountShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyNodePoolAmountShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyNodePoolAmountShrinkRequest) SetAppInstanceGroupId(v string) *ModifyNodePoolAmountShrinkRequest {
+	s.AppInstanceGroupId = &v
+	return s
+}
+
+func (s *ModifyNodePoolAmountShrinkRequest) SetNodePoolShrink(v string) *ModifyNodePoolAmountShrinkRequest {
+	s.NodePoolShrink = &v
+	return s
+}
+
+func (s *ModifyNodePoolAmountShrinkRequest) SetProductType(v string) *ModifyNodePoolAmountShrinkRequest {
+	s.ProductType = &v
+	return s
+}
+
+type ModifyNodePoolAmountResponseBody struct {
+	Data *ModifyNodePoolAmountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyNodePoolAmountResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyNodePoolAmountResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyNodePoolAmountResponseBody) SetData(v *ModifyNodePoolAmountResponseBodyData) *ModifyNodePoolAmountResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ModifyNodePoolAmountResponseBody) SetRequestId(v string) *ModifyNodePoolAmountResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyNodePoolAmountResponseBodyData struct {
+	// example:
+	//
+	// 23429322113****
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+}
+
+func (s ModifyNodePoolAmountResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyNodePoolAmountResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyNodePoolAmountResponseBodyData) SetOrderId(v string) *ModifyNodePoolAmountResponseBodyData {
+	s.OrderId = &v
+	return s
+}
+
+type ModifyNodePoolAmountResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyNodePoolAmountResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyNodePoolAmountResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyNodePoolAmountResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyNodePoolAmountResponse) SetHeaders(v map[string]*string) *ModifyNodePoolAmountResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyNodePoolAmountResponse) SetStatusCode(v int32) *ModifyNodePoolAmountResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyNodePoolAmountResponse) SetBody(v *ModifyNodePoolAmountResponseBody) *ModifyNodePoolAmountResponse {
 	s.Body = v
 	return s
 }
@@ -9396,6 +10142,220 @@ func (s *RenewAppInstanceGroupResponse) SetBody(v *RenewAppInstanceGroupResponse
 	return s
 }
 
+type TagCloudResourcesRequest struct {
+	ResourceIds []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// AppInstanceGroupId
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// This parameter is required.
+	Tags []*TagCloudResourcesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+}
+
+func (s TagCloudResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagCloudResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TagCloudResourcesRequest) SetResourceIds(v []*string) *TagCloudResourcesRequest {
+	s.ResourceIds = v
+	return s
+}
+
+func (s *TagCloudResourcesRequest) SetResourceType(v string) *TagCloudResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *TagCloudResourcesRequest) SetTags(v []*TagCloudResourcesRequestTags) *TagCloudResourcesRequest {
+	s.Tags = v
+	return s
+}
+
+type TagCloudResourcesRequestTags struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Resolution
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 720p
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s TagCloudResourcesRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagCloudResourcesRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *TagCloudResourcesRequestTags) SetKey(v string) *TagCloudResourcesRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *TagCloudResourcesRequestTags) SetValue(v string) *TagCloudResourcesRequestTags {
+	s.Value = &v
+	return s
+}
+
+type TagCloudResourcesResponseBody struct {
+	FailedResources []*TagCloudResourcesResponseBodyFailedResources `json:"FailedResources,omitempty" xml:"FailedResources,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s TagCloudResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagCloudResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TagCloudResourcesResponseBody) SetFailedResources(v []*TagCloudResourcesResponseBodyFailedResources) *TagCloudResourcesResponseBody {
+	s.FailedResources = v
+	return s
+}
+
+func (s *TagCloudResourcesResponseBody) SetRequestId(v string) *TagCloudResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type TagCloudResourcesResponseBodyFailedResources struct {
+	// example:
+	//
+	// TAG_KEY_DUPLICATED
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// Duplicate tag keys exist.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// aig-001
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// AppInstanceGroupId
+	ResourceType *string                                             `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Tags         []*TagCloudResourcesResponseBodyFailedResourcesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+}
+
+func (s TagCloudResourcesResponseBodyFailedResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagCloudResourcesResponseBodyFailedResources) GoString() string {
+	return s.String()
+}
+
+func (s *TagCloudResourcesResponseBodyFailedResources) SetCode(v string) *TagCloudResourcesResponseBodyFailedResources {
+	s.Code = &v
+	return s
+}
+
+func (s *TagCloudResourcesResponseBodyFailedResources) SetMessage(v string) *TagCloudResourcesResponseBodyFailedResources {
+	s.Message = &v
+	return s
+}
+
+func (s *TagCloudResourcesResponseBodyFailedResources) SetResourceId(v string) *TagCloudResourcesResponseBodyFailedResources {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *TagCloudResourcesResponseBodyFailedResources) SetResourceType(v string) *TagCloudResourcesResponseBodyFailedResources {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *TagCloudResourcesResponseBodyFailedResources) SetTags(v []*TagCloudResourcesResponseBodyFailedResourcesTags) *TagCloudResourcesResponseBodyFailedResources {
+	s.Tags = v
+	return s
+}
+
+type TagCloudResourcesResponseBodyFailedResourcesTags struct {
+	// example:
+	//
+	// System/Scheduler/STOP_NEW_USER_CONNECTION
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// System
+	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// example:
+	//
+	// true
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s TagCloudResourcesResponseBodyFailedResourcesTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagCloudResourcesResponseBodyFailedResourcesTags) GoString() string {
+	return s.String()
+}
+
+func (s *TagCloudResourcesResponseBodyFailedResourcesTags) SetKey(v string) *TagCloudResourcesResponseBodyFailedResourcesTags {
+	s.Key = &v
+	return s
+}
+
+func (s *TagCloudResourcesResponseBodyFailedResourcesTags) SetScope(v string) *TagCloudResourcesResponseBodyFailedResourcesTags {
+	s.Scope = &v
+	return s
+}
+
+func (s *TagCloudResourcesResponseBodyFailedResourcesTags) SetValue(v string) *TagCloudResourcesResponseBodyFailedResourcesTags {
+	s.Value = &v
+	return s
+}
+
+type TagCloudResourcesResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TagCloudResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s TagCloudResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagCloudResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TagCloudResourcesResponse) SetHeaders(v map[string]*string) *TagCloudResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *TagCloudResourcesResponse) SetStatusCode(v int32) *TagCloudResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *TagCloudResourcesResponse) SetBody(v *TagCloudResourcesResponseBody) *TagCloudResourcesResponse {
+	s.Body = v
+	return s
+}
+
 type UnbindRequest struct {
 	// The ID of the delivery group. You can call the [GetConnectionTicket](~~GetConnectionTicket~~) operation to obtain the ID.
 	//
@@ -9519,6 +10479,231 @@ func (s *UnbindResponse) SetStatusCode(v int32) *UnbindResponse {
 }
 
 func (s *UnbindResponse) SetBody(v *UnbindResponseBody) *UnbindResponse {
+	s.Body = v
+	return s
+}
+
+type UntagCloudResourcesRequest struct {
+	// The resource IDs. You can specify up to 50 resource IDs. You do not need to specify this parameter if you set ResourceType to AliUid.
+	ResourceIds []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
+	// The type of the resource from which you want to remove tags.
+	//
+	// Valid values:
+	//
+	// 	- AppId: app ID.
+	//
+	// 	- WyId: Alibaba Cloud Workspace user ID.
+	//
+	// 	- AppInstanceGroupId: delivery group ID.
+	//
+	// 	- AliUid: tenant ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// AppInstanceGroupId
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tags that you want to remove from the cloud resources. System and custom tags are supported. You can specify up to 10 tags.
+	//
+	// Valid values for system tags:
+	//
+	// 	- `System/Scheduler/GRAYSCALE`: canary tags.
+	//
+	// 	- `System/Scheduler/STOP_NEW_USER_CONNECTION`: tags used to stop new users bound to the delivery group from establishing a connection.
+	//
+	// This parameter is required.
+	TagKeys []*string `json:"TagKeys,omitempty" xml:"TagKeys,omitempty" type:"Repeated"`
+}
+
+func (s UntagCloudResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UntagCloudResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UntagCloudResourcesRequest) SetResourceIds(v []*string) *UntagCloudResourcesRequest {
+	s.ResourceIds = v
+	return s
+}
+
+func (s *UntagCloudResourcesRequest) SetResourceType(v string) *UntagCloudResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *UntagCloudResourcesRequest) SetTagKeys(v []*string) *UntagCloudResourcesRequest {
+	s.TagKeys = v
+	return s
+}
+
+type UntagCloudResourcesResponseBody struct {
+	// The cloud resources whose tags failed to be removed and the corresponding tags.
+	FailedResources []*UntagCloudResourcesResponseBodyFailedResources `json:"FailedResources,omitempty" xml:"FailedResources,omitempty" type:"Repeated"`
+	// The request ID.
+	//
+	// example:
+	//
+	// E25FC620-6B6F-12D2-A992-AD8727DC****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UntagCloudResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UntagCloudResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UntagCloudResourcesResponseBody) SetFailedResources(v []*UntagCloudResourcesResponseBodyFailedResources) *UntagCloudResourcesResponseBody {
+	s.FailedResources = v
+	return s
+}
+
+func (s *UntagCloudResourcesResponseBody) SetRequestId(v string) *UntagCloudResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UntagCloudResourcesResponseBodyFailedResources struct {
+	// The error code.
+	//
+	// example:
+	//
+	// UNTAG_RESOURCE_FAILED
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message.
+	//
+	// example:
+	//
+	// Failed to untag resource.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The resource IDs.
+	//
+	// example:
+	//
+	// aig-00000001
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The type of the cloud resource.
+	//
+	// Valid values:
+	//
+	// 	- AppId: app ID.
+	//
+	// 	- WyId: Alibaba Cloud Workspace user ID.
+	//
+	// 	- AppInstanceGroupId: delivery group ID.
+	//
+	// 	- AliUid: tenant ID.
+	//
+	// example:
+	//
+	// AppInstanceGroupId
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tags that failed to be removed from the cloud resources.
+	Tags []*UntagCloudResourcesResponseBodyFailedResourcesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+}
+
+func (s UntagCloudResourcesResponseBodyFailedResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UntagCloudResourcesResponseBodyFailedResources) GoString() string {
+	return s.String()
+}
+
+func (s *UntagCloudResourcesResponseBodyFailedResources) SetCode(v string) *UntagCloudResourcesResponseBodyFailedResources {
+	s.Code = &v
+	return s
+}
+
+func (s *UntagCloudResourcesResponseBodyFailedResources) SetMessage(v string) *UntagCloudResourcesResponseBodyFailedResources {
+	s.Message = &v
+	return s
+}
+
+func (s *UntagCloudResourcesResponseBodyFailedResources) SetResourceId(v string) *UntagCloudResourcesResponseBodyFailedResources {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *UntagCloudResourcesResponseBodyFailedResources) SetResourceType(v string) *UntagCloudResourcesResponseBodyFailedResources {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *UntagCloudResourcesResponseBodyFailedResources) SetTags(v []*UntagCloudResourcesResponseBodyFailedResourcesTags) *UntagCloudResourcesResponseBodyFailedResources {
+	s.Tags = v
+	return s
+}
+
+type UntagCloudResourcesResponseBodyFailedResourcesTags struct {
+	// The tag key.
+	//
+	// example:
+	//
+	// Resolution
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag type.
+	//
+	// Valid values:
+	//
+	// 	- Custom: custom tag.
+	//
+	// 	- System: system tag.
+	//
+	// example:
+	//
+	// Custom
+	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+}
+
+func (s UntagCloudResourcesResponseBodyFailedResourcesTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UntagCloudResourcesResponseBodyFailedResourcesTags) GoString() string {
+	return s.String()
+}
+
+func (s *UntagCloudResourcesResponseBodyFailedResourcesTags) SetKey(v string) *UntagCloudResourcesResponseBodyFailedResourcesTags {
+	s.Key = &v
+	return s
+}
+
+func (s *UntagCloudResourcesResponseBodyFailedResourcesTags) SetScope(v string) *UntagCloudResourcesResponseBodyFailedResourcesTags {
+	s.Scope = &v
+	return s
+}
+
+type UntagCloudResourcesResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UntagCloudResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UntagCloudResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UntagCloudResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UntagCloudResourcesResponse) SetHeaders(v map[string]*string) *UntagCloudResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UntagCloudResourcesResponse) SetStatusCode(v int32) *UntagCloudResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UntagCloudResourcesResponse) SetBody(v *UntagCloudResourcesResponseBody) *UntagCloudResourcesResponse {
 	s.Body = v
 	return s
 }
@@ -11945,6 +13130,89 @@ func (client *Client) ListNodeInstanceType(request *ListNodeInstanceTypeRequest)
 
 // Summary:
 //
+// 查询节点列表
+//
+// @param request - ListNodesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListNodesResponse
+func (client *Client) ListNodesWithOptions(request *ListNodesRequest, runtime *util.RuntimeOptions) (_result *ListNodesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppInstanceGroupId)) {
+		body["AppInstanceGroupId"] = request.AppInstanceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		body["ProductType"] = request.ProductType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListNodes"),
+		Version:     tea.String("2021-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListNodesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListNodesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询节点列表
+//
+// @param request - ListNodesRequest
+//
+// @return ListNodesResponse
+func (client *Client) ListNodes(request *ListNodesRequest) (_result *ListNodesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListNodesResponse{}
+	_body, _err := client.ListNodesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the information about over-the-air (OTA) update tasks.
 //
 // @param request - ListOtaTaskRequest
@@ -12197,6 +13465,93 @@ func (client *Client) ListSessionPackages(request *ListSessionPackagesRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &ListSessionPackagesResponse{}
 	_body, _err := client.ListSessionPackagesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the tags added to one or more cloud resources.
+//
+// @param request - ListTagCloudResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagCloudResourcesResponse
+func (client *Client) ListTagCloudResourcesWithOptions(request *ListTagCloudResourcesRequest, runtime *util.RuntimeOptions) (_result *ListTagCloudResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceIds)) {
+		body["ResourceIds"] = request.ResourceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		body["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scope)) {
+		body["Scope"] = request.Scope
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTagCloudResources"),
+		Version:     tea.String("2021-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListTagCloudResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListTagCloudResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Queries the tags added to one or more cloud resources.
+//
+// @param request - ListTagCloudResourcesRequest
+//
+// @return ListTagCloudResourcesResponse
+func (client *Client) ListTagCloudResources(request *ListTagCloudResourcesRequest) (_result *ListTagCloudResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListTagCloudResourcesResponse{}
+	_body, _err := client.ListTagCloudResourcesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12561,6 +13916,91 @@ func (client *Client) ModifyAppPolicy(request *ModifyAppPolicyRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 包年包月交付组节点数量升级
+//
+// @param tmpReq - ModifyNodePoolAmountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyNodePoolAmountResponse
+func (client *Client) ModifyNodePoolAmountWithOptions(tmpReq *ModifyNodePoolAmountRequest, runtime *util.RuntimeOptions) (_result *ModifyNodePoolAmountResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ModifyNodePoolAmountShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.NodePool)) {
+		request.NodePoolShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.NodePool, tea.String("NodePool"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppInstanceGroupId)) {
+		body["AppInstanceGroupId"] = request.AppInstanceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodePoolShrink)) {
+		body["NodePool"] = request.NodePoolShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		body["ProductType"] = request.ProductType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyNodePoolAmount"),
+		Version:     tea.String("2021-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyNodePoolAmountResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyNodePoolAmountResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 包年包月交付组节点数量升级
+//
+// @param request - ModifyNodePoolAmountRequest
+//
+// @return ModifyNodePoolAmountResponse
+func (client *Client) ModifyNodePoolAmount(request *ModifyNodePoolAmountRequest) (_result *ModifyNodePoolAmountResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyNodePoolAmountResponse{}
+	_body, _err := client.ModifyNodePoolAmountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // @param tmpReq - ModifyNodePoolAttributeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -12901,6 +14341,85 @@ func (client *Client) RenewAppInstanceGroup(request *RenewAppInstanceGroupReques
 
 // Summary:
 //
+// 为云资源创建并绑定标签
+//
+// @param request - TagCloudResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TagCloudResourcesResponse
+func (client *Client) TagCloudResourcesWithOptions(request *TagCloudResourcesRequest, runtime *util.RuntimeOptions) (_result *TagCloudResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ResourceIds)) {
+		body["ResourceIds"] = request.ResourceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		body["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		body["Tags"] = request.Tags
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TagCloudResources"),
+		Version:     tea.String("2021-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &TagCloudResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &TagCloudResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 为云资源创建并绑定标签
+//
+// @param request - TagCloudResourcesRequest
+//
+// @return TagCloudResourcesResponse
+func (client *Client) TagCloudResources(request *TagCloudResourcesRequest) (_result *TagCloudResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &TagCloudResourcesResponse{}
+	_body, _err := client.TagCloudResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Unbinds a user and a session.
 //
 // @param request - UnbindRequest
@@ -12979,6 +14498,85 @@ func (client *Client) Unbind(request *UnbindRequest) (_result *UnbindResponse, _
 	runtime := &util.RuntimeOptions{}
 	_result = &UnbindResponse{}
 	_body, _err := client.UnbindWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Removes tags from cloud resources.
+//
+// @param request - UntagCloudResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UntagCloudResourcesResponse
+func (client *Client) UntagCloudResourcesWithOptions(request *UntagCloudResourcesRequest, runtime *util.RuntimeOptions) (_result *UntagCloudResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ResourceIds)) {
+		body["ResourceIds"] = request.ResourceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		body["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagKeys)) {
+		body["TagKeys"] = request.TagKeys
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UntagCloudResources"),
+		Version:     tea.String("2021-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UntagCloudResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UntagCloudResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Removes tags from cloud resources.
+//
+// @param request - UntagCloudResourcesRequest
+//
+// @return UntagCloudResourcesResponse
+func (client *Client) UntagCloudResources(request *UntagCloudResourcesRequest) (_result *UntagCloudResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UntagCloudResourcesResponse{}
+	_body, _err := client.UntagCloudResourcesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
