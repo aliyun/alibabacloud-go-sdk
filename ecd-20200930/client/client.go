@@ -13442,7 +13442,7 @@ func (s *DeleteConfigGroupResponse) SetBody(v *DeleteConfigGroupResponseBody) *D
 }
 
 type DeleteDesktopGroupRequest struct {
-	// The ID of the desktop group.
+	// The ID of the cloud computer share.
 	//
 	// This parameter is required.
 	//
@@ -18688,7 +18688,8 @@ type DescribeDesktopGroupsRequest struct {
 	// example:
 	//
 	// dg-2i8qxpv6t1a03****
-	DesktopGroupId  *string   `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
+	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
+	// The IDs of the cloud computer pool.
 	DesktopGroupIds []*string `json:"DesktopGroupIds,omitempty" xml:"DesktopGroupIds,omitempty" type:"Repeated"`
 	// The name of the cloud computer pool to query. Fuzzy search is supported.
 	//
@@ -18710,8 +18711,19 @@ type DescribeDesktopGroupsRequest struct {
 	// example:
 	//
 	// 10
-	MaxResults    *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	MultiResource *bool  `json:"MultiResource,omitempty" xml:"MultiResource,omitempty"`
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Specifies whether the shared group is a multi-cloud computer type.
+	//
+	// Valid values:
+	//
+	// - true: a multi-cloud computer type.
+	//
+	// - false: a single-cloud computer type.
+	//
+	// example:
+	//
+	// true
+	MultiResource *bool `json:"MultiResource,omitempty" xml:"MultiResource,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results. If the NextToken parameter is empty, no next page exists.
 	//
 	// example:
@@ -22335,7 +22347,8 @@ type DescribeDesktopsResponseBodyDesktops struct {
 	// example:
 	//
 	// null
-	DataDiskSize *string `json:"DataDiskSize,omitempty" xml:"DataDiskSize,omitempty"`
+	DataDiskSize        *string                                                    `json:"DataDiskSize,omitempty" xml:"DataDiskSize,omitempty"`
+	DesktopDurationList []*DescribeDesktopsResponseBodyDesktopsDesktopDurationList `json:"DesktopDurationList,omitempty" xml:"DesktopDurationList,omitempty" type:"Repeated"`
 	// The ID of the cloud computer pool to which cloud computers belong. Default value: null.``
 	//
 	// example:
@@ -22727,6 +22740,11 @@ func (s *DescribeDesktopsResponseBodyDesktops) SetDataDiskSize(v string) *Descri
 	return s
 }
 
+func (s *DescribeDesktopsResponseBodyDesktops) SetDesktopDurationList(v []*DescribeDesktopsResponseBodyDesktopsDesktopDurationList) *DescribeDesktopsResponseBodyDesktops {
+	s.DesktopDurationList = v
+	return s
+}
+
 func (s *DescribeDesktopsResponseBodyDesktops) SetDesktopGroupId(v string) *DescribeDesktopsResponseBodyDesktops {
 	s.DesktopGroupId = &v
 	return s
@@ -22984,6 +23002,89 @@ func (s *DescribeDesktopsResponseBodyDesktops) SetVolumeEncryptionKey(v string) 
 
 func (s *DescribeDesktopsResponseBodyDesktops) SetZoneType(v string) *DescribeDesktopsResponseBodyDesktops {
 	s.ZoneType = &v
+	return s
+}
+
+type DescribeDesktopsResponseBodyDesktopsDesktopDurationList struct {
+	OrderInstanceId       *string  `json:"OrderInstanceId,omitempty" xml:"OrderInstanceId,omitempty"`
+	PackageCreationTime   *string  `json:"PackageCreationTime,omitempty" xml:"PackageCreationTime,omitempty"`
+	PackageExpiredTime    *string  `json:"PackageExpiredTime,omitempty" xml:"PackageExpiredTime,omitempty"`
+	PackageId             *string  `json:"PackageId,omitempty" xml:"PackageId,omitempty"`
+	PackageStatus         *string  `json:"PackageStatus,omitempty" xml:"PackageStatus,omitempty"`
+	PackageType           *string  `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
+	PackageUsedUpStrategy *string  `json:"PackageUsedUpStrategy,omitempty" xml:"PackageUsedUpStrategy,omitempty"`
+	PeriodEndTime         *string  `json:"PeriodEndTime,omitempty" xml:"PeriodEndTime,omitempty"`
+	PeriodStartTime       *string  `json:"PeriodStartTime,omitempty" xml:"PeriodStartTime,omitempty"`
+	PostPaidLimitFee      *float32 `json:"PostPaidLimitFee,omitempty" xml:"PostPaidLimitFee,omitempty"`
+	TotalDuration         *int64   `json:"TotalDuration,omitempty" xml:"TotalDuration,omitempty"`
+	UsedDuration          *int64   `json:"UsedDuration,omitempty" xml:"UsedDuration,omitempty"`
+}
+
+func (s DescribeDesktopsResponseBodyDesktopsDesktopDurationList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDesktopsResponseBodyDesktopsDesktopDurationList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDesktopsResponseBodyDesktopsDesktopDurationList) SetOrderInstanceId(v string) *DescribeDesktopsResponseBodyDesktopsDesktopDurationList {
+	s.OrderInstanceId = &v
+	return s
+}
+
+func (s *DescribeDesktopsResponseBodyDesktopsDesktopDurationList) SetPackageCreationTime(v string) *DescribeDesktopsResponseBodyDesktopsDesktopDurationList {
+	s.PackageCreationTime = &v
+	return s
+}
+
+func (s *DescribeDesktopsResponseBodyDesktopsDesktopDurationList) SetPackageExpiredTime(v string) *DescribeDesktopsResponseBodyDesktopsDesktopDurationList {
+	s.PackageExpiredTime = &v
+	return s
+}
+
+func (s *DescribeDesktopsResponseBodyDesktopsDesktopDurationList) SetPackageId(v string) *DescribeDesktopsResponseBodyDesktopsDesktopDurationList {
+	s.PackageId = &v
+	return s
+}
+
+func (s *DescribeDesktopsResponseBodyDesktopsDesktopDurationList) SetPackageStatus(v string) *DescribeDesktopsResponseBodyDesktopsDesktopDurationList {
+	s.PackageStatus = &v
+	return s
+}
+
+func (s *DescribeDesktopsResponseBodyDesktopsDesktopDurationList) SetPackageType(v string) *DescribeDesktopsResponseBodyDesktopsDesktopDurationList {
+	s.PackageType = &v
+	return s
+}
+
+func (s *DescribeDesktopsResponseBodyDesktopsDesktopDurationList) SetPackageUsedUpStrategy(v string) *DescribeDesktopsResponseBodyDesktopsDesktopDurationList {
+	s.PackageUsedUpStrategy = &v
+	return s
+}
+
+func (s *DescribeDesktopsResponseBodyDesktopsDesktopDurationList) SetPeriodEndTime(v string) *DescribeDesktopsResponseBodyDesktopsDesktopDurationList {
+	s.PeriodEndTime = &v
+	return s
+}
+
+func (s *DescribeDesktopsResponseBodyDesktopsDesktopDurationList) SetPeriodStartTime(v string) *DescribeDesktopsResponseBodyDesktopsDesktopDurationList {
+	s.PeriodStartTime = &v
+	return s
+}
+
+func (s *DescribeDesktopsResponseBodyDesktopsDesktopDurationList) SetPostPaidLimitFee(v float32) *DescribeDesktopsResponseBodyDesktopsDesktopDurationList {
+	s.PostPaidLimitFee = &v
+	return s
+}
+
+func (s *DescribeDesktopsResponseBodyDesktopsDesktopDurationList) SetTotalDuration(v int64) *DescribeDesktopsResponseBodyDesktopsDesktopDurationList {
+	s.TotalDuration = &v
+	return s
+}
+
+func (s *DescribeDesktopsResponseBodyDesktopsDesktopDurationList) SetUsedDuration(v int64) *DescribeDesktopsResponseBodyDesktopsDesktopDurationList {
+	s.UsedDuration = &v
 	return s
 }
 
@@ -23308,7 +23409,7 @@ func (s *DescribeDesktopsResponse) SetBody(v *DescribeDesktopsResponseBody) *Des
 type DescribeDesktopsInGroupRequest struct {
 	CustomEndTimePeriod   *int64 `json:"CustomEndTimePeriod,omitempty" xml:"CustomEndTimePeriod,omitempty"`
 	CustomStartTimePeriod *int64 `json:"CustomStartTimePeriod,omitempty" xml:"CustomStartTimePeriod,omitempty"`
-	// The ID of the cloud computer pool.
+	// The ID of the cloud computer share.
 	//
 	// This parameter is required.
 	//
@@ -23328,19 +23429,23 @@ type DescribeDesktopsInGroupRequest struct {
 	//
 	// true
 	IgnoreDeleted *bool `json:"IgnoreDeleted,omitempty" xml:"IgnoreDeleted,omitempty"`
-	// The number of entries to return on each page. Valid values: 1 to 100. Default value: 10.
+	// The maximum number of entries per page.
+	//
+	// 	- Default value: 10.
+	//
+	// 	- Maximum value: 100.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. If the NextToken parameter is empty, no next page exists.
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The billing method of the desktop group.
+	// The billing method of the cloud computer share.
 	//
 	// example:
 	//
@@ -23405,7 +23510,9 @@ func (s *DescribeDesktopsInGroupRequest) SetRegionId(v string) *DescribeDesktops
 }
 
 type DescribeDesktopsInGroupResponseBody struct {
-	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	//
+	// If NextToken is empty, no next page exists.
 	//
 	// example:
 	//
@@ -23417,17 +23524,17 @@ type DescribeDesktopsInGroupResponseBody struct {
 	//
 	// 100
 	OnlinePrePaidDesktopsCount *int32 `json:"OnlinePrePaidDesktopsCount,omitempty" xml:"OnlinePrePaidDesktopsCount,omitempty"`
-	// The details about subscription cloud computers.
+	// The subscription cloud computers.
 	PaidDesktops []*DescribeDesktopsInGroupResponseBodyPaidDesktops `json:"PaidDesktops,omitempty" xml:"PaidDesktops,omitempty" type:"Repeated"`
-	// The total number of queried subscription cloud computers.
+	// The total number of subscription cloud computers.
 	//
 	// example:
 	//
 	// 10
 	PaidDesktopsCount *int32 `json:"PaidDesktopsCount,omitempty" xml:"PaidDesktopsCount,omitempty"`
-	// The details about pay-as-you-go cloud computers.
+	// The pay-as-you-go cloud computers.
 	PostPaidDesktops []*DescribeDesktopsInGroupResponseBodyPostPaidDesktops `json:"PostPaidDesktops,omitempty" xml:"PostPaidDesktops,omitempty" type:"Repeated"`
-	// The total number of queried pay-as-you-go cloud computers.
+	// The total number of pay-as-you-go cloud computers.
 	//
 	// example:
 	//
@@ -23669,13 +23776,13 @@ type DescribeDesktopsInGroupResponseBodyPaidDesktops struct {
 	//
 	// SYSTEM
 	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
-	// The ID of the authorized user of the cloud computer.
+	// The ID of the authorized user.
 	//
 	// example:
 	//
 	// alice
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The IDs of the end users who are connected to the cloud computers in the cloud computer pool. If no end users are connected, no values are returned for this parameter.
+	// The IDs of the end users who are connected to the cloud computers in the cloud computer share. If no end users are connected, no values are returned for this parameter.
 	EndUserIds []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
 	// The username of the authorized user.
 	//
@@ -23683,7 +23790,7 @@ type DescribeDesktopsInGroupResponseBodyPaidDesktops struct {
 	//
 	// alice
 	EndUserName *string `json:"EndUserName,omitempty" xml:"EndUserName,omitempty"`
-	// The usernames of the end users who are connected to the cloud computers in the cloud computer pool. If no end users are connected, no values are returned for this parameter.
+	// The usernames of the end users who are connected to the cloud computers in the cloud computer share. If no end users are connected, no values are returned for this parameter.
 	EndUserNames []*string `json:"EndUserNames,omitempty" xml:"EndUserNames,omitempty" type:"Repeated"`
 	// The image version.
 	//
@@ -23955,7 +24062,7 @@ type DescribeDesktopsInGroupResponseBodyPostPaidDesktops struct {
 	//
 	// Connected
 	ConnectionStatus *string `json:"ConnectionStatus,omitempty" xml:"ConnectionStatus,omitempty"`
-	// The retention period of the cloud computer.
+	// The retention period. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -33074,7 +33181,7 @@ type DescribePriceRequest struct {
 	//
 	// 120
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The number of cloud computers in the cloud computer pool. Default value: 1.
+	// The number of cloud computer shares. Default value: 1.
 	//
 	// >  This parameter takes effect only if you set `ResourceType` to `DesktopGroup`.
 	//
@@ -33082,45 +33189,9 @@ type DescribePriceRequest struct {
 	//
 	// 1
 	GroupDesktopCount *int32 `json:"GroupDesktopCount,omitempty" xml:"GroupDesktopCount,omitempty"`
-	// The resource specifications.
+	// The specifications of the resource.
 	//
-	// 	- If you set `ResourceType` to `Desktop`, you must specify this parameter.
-	//
-	//     	- ecd.basic.small
-	//
-	//     	- ecd.basic.large
-	//
-	//     	- ecd.advanced.large
-	//
-	//     	- ecd.advanced.xlarge
-	//
-	//     	- ecd.performance.2xlarge
-	//
-	//     	- ecd.graphics.xlarge
-	//
-	//     	- ecd.graphics.2xlarge
-	//
-	//     	- ecd.advanced.xlarge_s8d2
-	//
-	//     	- ecd.advanced.xlarge_s8d7
-	//
-	//     	- ecd.graphics.1g72c
-	//
-	//     	- eds.general.2c2g
-	//
-	//     	- eds.general.2c4g
-	//
-	//     	- eds.general.2c8g
-	//
-	//     	- eds.general.4c8g
-	//
-	//     	- eds.general.4c16g
-	//
-	//     	- eds.general.8c16g
-	//
-	//     	- eds.general.8c32g
-	//
-	//     	- eds.general.16c32g
+	// 	- This parameter is required if you set `ResourceType` to `Desktop`. You can call the [DescribeDesktopTypes](~~DescribeDesktopTypes~~) to query the available cloud computer types that correspond to the value of `DesktopTypeId`.
 	//
 	// 	- If you set `ResourceType` to `DesktopGroup`, set the value of this parameter to `large`.
 	//
@@ -33196,22 +33267,32 @@ type DescribePriceRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource type.
+	// The type of the resource.
 	//
 	// Valid values:
 	//
-	// 	- DesktopMonthPackage: the monthly subscription plan (also known as the 120-hour or 250-hour computing plan).
+	// 	- DesktopMonthPackage: monthly subscription cloud computers that use hourly limit plans.
 	//
-	// 	- Desktop (default): the pay-as-you-go cloud computer or the monthly subscription cloud computer (also known as the Unlimited computing plan).
+	// 	- Desktop (default): pay-as-you-go cloud computers/monthly subscription cloud computers that use unlimited plans.
 	//
-	// 	- Bandwidth: the premium bandwidth plan.
+	// 	- Bandwidth: premium bandwidth plans.
 	//
-	// 	- DesktopGroup: the cloud computer pool.
+	// 	- DesktopGroup: cloud computer shares.
 	//
 	// example:
 	//
 	// Desktop
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The category of the system disk.
+	//
+	// Valid values:
+	//
+	// 	- cloud_efficiency: the ultra disk
+	//
+	// 	- cloud_auto: the standard SSD.
+	//
+	// 	- cloud_essd: the Enterprise SSD (ESSD). Take note that only specific cloud computer types support ESSDs.
+	//
 	// example:
 	//
 	// 40
@@ -33222,6 +33303,16 @@ type DescribePriceRequest struct {
 	//
 	// 80
 	RootDiskSizeGib *int32 `json:"RootDiskSizeGib,omitempty" xml:"RootDiskSizeGib,omitempty"`
+	// The category of the data disk.
+	//
+	// Valid values:
+	//
+	// 	- cloud_efficiency: the ultra disk
+	//
+	// 	- cloud_auto: the standard SSD.
+	//
+	// 	- cloud_essd: the ESSD. Take note that only specific cloud computer types support ESSDs.
+	//
 	// example:
 	//
 	// 80
@@ -33323,7 +33414,7 @@ func (s *DescribePriceRequest) SetUserDiskSizeGib(v int32) *DescribePriceRequest
 }
 
 type DescribePriceResponseBody struct {
-	// The price information.
+	// The price details.
 	PriceInfo *DescribePriceResponseBodyPriceInfo `json:"PriceInfo,omitempty" xml:"PriceInfo,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -37960,7 +38051,7 @@ func (s *DetachEndUserResponse) SetBody(v *DetachEndUserResponseBody) *DetachEnd
 }
 
 type DisableDesktopsInGroupRequest struct {
-	// The ID of the desktop group.
+	// The ID of the cloud computer share.
 	//
 	// This parameter is required.
 	//
@@ -37968,11 +38059,11 @@ type DisableDesktopsInGroupRequest struct {
 	//
 	// dg-2i8qxpv6t1a03****
 	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
-	// The IDs of cloud desktops.
+	// The IDs of the cloud computers.
 	//
 	// This parameter is required.
 	DesktopIds []*string `json:"DesktopIds,omitempty" xml:"DesktopIds,omitempty" type:"Repeated"`
-	// The region ID.
+	// The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
 	//
 	// This parameter is required.
 	//
@@ -38006,7 +38097,7 @@ func (s *DisableDesktopsInGroupRequest) SetRegionId(v string) *DisableDesktopsIn
 }
 
 type DisableDesktopsInGroupResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -62682,15 +62773,15 @@ func (client *Client) DeleteConfigGroup(request *DeleteConfigGroupRequest) (_res
 
 // Summary:
 //
-// Releases a desktop group.
+// Releases a cloud computer share.
 //
 // Description:
 //
-//   Before you delete a desktop group, make sure that cloud desktops in the desktop group are not connected and no users are authorized to use the cloud desktops.
+//   Before releasing a cloud computer share, ensure that no cloud computers within it are in the Connected state and that no end users have access permissions to it.
 //
-// 	- You cannot delete a subscription desktop group when cloud desktops in the group are in valid period.
+// 	- You cannot delete a cloud computer share with an active subscription if it contains cloud computers that have not yet expired.
 //
-// 	- If you delete a pay-as-you-go desktop group, cloud desktops in the group are deleted.
+// 	- Deleting a pay-as-you-go cloud computer share will release all pay-as-you-go cloud computers within it.
 //
 // @param request - DeleteDesktopGroupRequest
 //
@@ -62747,15 +62838,15 @@ func (client *Client) DeleteDesktopGroupWithOptions(request *DeleteDesktopGroupR
 
 // Summary:
 //
-// Releases a desktop group.
+// Releases a cloud computer share.
 //
 // Description:
 //
-//   Before you delete a desktop group, make sure that cloud desktops in the desktop group are not connected and no users are authorized to use the cloud desktops.
+//   Before releasing a cloud computer share, ensure that no cloud computers within it are in the Connected state and that no end users have access permissions to it.
 //
-// 	- You cannot delete a subscription desktop group when cloud desktops in the group are in valid period.
+// 	- You cannot delete a cloud computer share with an active subscription if it contains cloud computers that have not yet expired.
 //
-// 	- If you delete a pay-as-you-go desktop group, cloud desktops in the group are deleted.
+// 	- Deleting a pay-as-you-go cloud computer share will release all pay-as-you-go cloud computers within it.
 //
 // @param request - DeleteDesktopGroupRequest
 //
@@ -65842,7 +65933,7 @@ func (client *Client) DescribeDesktops(request *DescribeDesktopsRequest) (_resul
 
 // Summary:
 //
-// Queries the cloud computers in a cloud computer pool by billing method.
+// Queries the cloud computers in a share by billing method.
 //
 // @param request - DescribeDesktopsInGroupRequest
 //
@@ -65923,7 +66014,7 @@ func (client *Client) DescribeDesktopsInGroupWithOptions(request *DescribeDeskto
 
 // Summary:
 //
-// Queries the cloud computers in a cloud computer pool by billing method.
+// Queries the cloud computers in a share by billing method.
 //
 // @param request - DescribeDesktopsInGroupRequest
 //
@@ -69388,7 +69479,7 @@ func (client *Client) DetachEndUser(request *DetachEndUserRequest) (_result *Det
 
 // Summary:
 //
-// Disables cloud desktops in a desktop group.
+// Disables specific cloud computers in a cloud computer share. After you call this operation to disable specific cloud computers, they enter the unavailable state.
 //
 // @param request - DisableDesktopsInGroupRequest
 //
@@ -69449,7 +69540,7 @@ func (client *Client) DisableDesktopsInGroupWithOptions(request *DisableDesktops
 
 // Summary:
 //
-// Disables cloud desktops in a desktop group.
+// Disables specific cloud computers in a cloud computer share. After you call this operation to disable specific cloud computers, they enter the unavailable state.
 //
 // @param request - DisableDesktopsInGroupRequest
 //
