@@ -445,6 +445,225 @@ func (s *CreateDialogResponse) SetBody(v *CreateDialogResponseBody) *CreateDialo
 	return s
 }
 
+type CreateDialogAnalysisTaskRequest struct {
+	AnalysisNodes []*string `json:"analysisNodes,omitempty" xml:"analysisNodes,omitempty" type:"Repeated"`
+	// This parameter is required.
+	ConversationList []*CreateDialogAnalysisTaskRequestConversationList `json:"conversationList,omitempty" xml:"conversationList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// {
+	//
+	// "labels": "XXX",
+	//
+	// "summaryConstraints": "XXX",
+	//
+	// "sopInfo": "XXX"
+	//
+	// }
+	MetaData map[string]interface{} `json:"metaData,omitempty" xml:"metaData,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// common
+	PlayCode *string `json:"playCode,omitempty" xml:"playCode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0FC6636E-380A-5369-AE01-D1C15BB9B254
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s CreateDialogAnalysisTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDialogAnalysisTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDialogAnalysisTaskRequest) SetAnalysisNodes(v []*string) *CreateDialogAnalysisTaskRequest {
+	s.AnalysisNodes = v
+	return s
+}
+
+func (s *CreateDialogAnalysisTaskRequest) SetConversationList(v []*CreateDialogAnalysisTaskRequestConversationList) *CreateDialogAnalysisTaskRequest {
+	s.ConversationList = v
+	return s
+}
+
+func (s *CreateDialogAnalysisTaskRequest) SetMetaData(v map[string]interface{}) *CreateDialogAnalysisTaskRequest {
+	s.MetaData = v
+	return s
+}
+
+func (s *CreateDialogAnalysisTaskRequest) SetPlayCode(v string) *CreateDialogAnalysisTaskRequest {
+	s.PlayCode = &v
+	return s
+}
+
+func (s *CreateDialogAnalysisTaskRequest) SetRequestId(v string) *CreateDialogAnalysisTaskRequest {
+	s.RequestId = &v
+	return s
+}
+
+type CreateDialogAnalysisTaskRequestConversationList struct {
+	// This parameter is required.
+	DialogueList []*CreateDialogAnalysisTaskRequestConversationListDialogueList `json:"dialogueList,omitempty" xml:"dialogueList,omitempty" type:"Repeated"`
+}
+
+func (s CreateDialogAnalysisTaskRequestConversationList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDialogAnalysisTaskRequestConversationList) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDialogAnalysisTaskRequestConversationList) SetDialogueList(v []*CreateDialogAnalysisTaskRequestConversationListDialogueList) *CreateDialogAnalysisTaskRequestConversationList {
+	s.DialogueList = v
+	return s
+}
+
+type CreateDialogAnalysisTaskRequestConversationListDialogueList struct {
+	// This parameter is required.
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+}
+
+func (s CreateDialogAnalysisTaskRequestConversationListDialogueList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDialogAnalysisTaskRequestConversationListDialogueList) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDialogAnalysisTaskRequestConversationListDialogueList) SetContent(v string) *CreateDialogAnalysisTaskRequestConversationListDialogueList {
+	s.Content = &v
+	return s
+}
+
+func (s *CreateDialogAnalysisTaskRequestConversationListDialogueList) SetRole(v string) *CreateDialogAnalysisTaskRequestConversationListDialogueList {
+	s.Role = &v
+	return s
+}
+
+type CreateDialogAnalysisTaskResponseBody struct {
+	// example:
+	//
+	// null
+	Cost *int64    `json:"cost,omitempty" xml:"cost,omitempty"`
+	Data []*string `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// null
+	DataType *string `json:"dataType,omitempty" xml:"dataType,omitempty"`
+	// example:
+	//
+	// 0
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// example:
+	//
+	// ok
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// EF4B5C9B-3BC8-5171-A47B-4C5CF3DC3258
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 2024-04-24 11:54:34
+	Time *string `json:"time,omitempty" xml:"time,omitempty"`
+}
+
+func (s CreateDialogAnalysisTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDialogAnalysisTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDialogAnalysisTaskResponseBody) SetCost(v int64) *CreateDialogAnalysisTaskResponseBody {
+	s.Cost = &v
+	return s
+}
+
+func (s *CreateDialogAnalysisTaskResponseBody) SetData(v []*string) *CreateDialogAnalysisTaskResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateDialogAnalysisTaskResponseBody) SetDataType(v string) *CreateDialogAnalysisTaskResponseBody {
+	s.DataType = &v
+	return s
+}
+
+func (s *CreateDialogAnalysisTaskResponseBody) SetErrCode(v string) *CreateDialogAnalysisTaskResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *CreateDialogAnalysisTaskResponseBody) SetMessage(v string) *CreateDialogAnalysisTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateDialogAnalysisTaskResponseBody) SetRequestId(v string) *CreateDialogAnalysisTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateDialogAnalysisTaskResponseBody) SetSuccess(v bool) *CreateDialogAnalysisTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CreateDialogAnalysisTaskResponseBody) SetTime(v string) *CreateDialogAnalysisTaskResponseBody {
+	s.Time = &v
+	return s
+}
+
+type CreateDialogAnalysisTaskResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDialogAnalysisTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateDialogAnalysisTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDialogAnalysisTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDialogAnalysisTaskResponse) SetHeaders(v map[string]*string) *CreateDialogAnalysisTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDialogAnalysisTaskResponse) SetStatusCode(v int32) *CreateDialogAnalysisTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDialogAnalysisTaskResponse) SetBody(v *CreateDialogAnalysisTaskResponseBody) *CreateDialogAnalysisTaskResponse {
+	s.Body = v
+	return s
+}
+
 type CreateDocsSummaryTaskRequest struct {
 	// This parameter is required.
 	DocInfos []*CreateDocsSummaryTaskRequestDocInfos `json:"docInfos,omitempty" xml:"docInfos,omitempty" type:"Repeated"`
@@ -13023,6 +13242,97 @@ func (client *Client) CreateDialog(workspaceId *string, request *CreateDialogReq
 	headers := make(map[string]*string)
 	_result = &CreateDialogResponse{}
 	_body, _err := client.CreateDialogWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建会话分析任务
+//
+// @param request - CreateDialogAnalysisTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDialogAnalysisTaskResponse
+func (client *Client) CreateDialogAnalysisTaskWithOptions(workspaceId *string, request *CreateDialogAnalysisTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateDialogAnalysisTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AnalysisNodes)) {
+		body["analysisNodes"] = request.AnalysisNodes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConversationList)) {
+		body["conversationList"] = request.ConversationList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MetaData)) {
+		body["metaData"] = request.MetaData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PlayCode)) {
+		body["playCode"] = request.PlayCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestId)) {
+		body["requestId"] = request.RequestId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDialogAnalysisTask"),
+		Version:     tea.String("2024-06-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/api/virtualHuman/dialog/analysis/submit"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateDialogAnalysisTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateDialogAnalysisTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 创建会话分析任务
+//
+// @param request - CreateDialogAnalysisTaskRequest
+//
+// @return CreateDialogAnalysisTaskResponse
+func (client *Client) CreateDialogAnalysisTask(workspaceId *string, request *CreateDialogAnalysisTaskRequest) (_result *CreateDialogAnalysisTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateDialogAnalysisTaskResponse{}
+	_body, _err := client.CreateDialogAnalysisTaskWithOptions(workspaceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
