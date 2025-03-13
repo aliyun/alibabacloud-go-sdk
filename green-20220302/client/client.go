@@ -5854,6 +5854,7 @@ func (s *VideoModerationResultResponseBodyDataFrameResultFrames) SetTimestamp(v 
 type VideoModerationResultResponseBodyDataFrameResultFramesResults struct {
 	// If a custom image library is hit, information about the custom image library is returned.
 	CustomImage []*VideoModerationResultResponseBodyDataFrameResultFramesResultsCustomImage `json:"CustomImage,omitempty" xml:"CustomImage,omitempty" type:"Repeated"`
+	LogoData    []*VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoData    `json:"LogoData,omitempty" xml:"LogoData,omitempty" type:"Repeated"`
 	// If the video contains a specific figure, the code of the identified figure is returned.
 	PublicFigure []*VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigure `json:"PublicFigure,omitempty" xml:"PublicFigure,omitempty" type:"Repeated"`
 	// The results of frame moderation parameters such as the label parameter and the confidence parameter.
@@ -5878,6 +5879,11 @@ func (s VideoModerationResultResponseBodyDataFrameResultFramesResults) GoString(
 
 func (s *VideoModerationResultResponseBodyDataFrameResultFramesResults) SetCustomImage(v []*VideoModerationResultResponseBodyDataFrameResultFramesResultsCustomImage) *VideoModerationResultResponseBodyDataFrameResultFramesResults {
 	s.CustomImage = v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyDataFrameResultFramesResults) SetLogoData(v []*VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoData) *VideoModerationResultResponseBodyDataFrameResultFramesResults {
+	s.LogoData = v
 	return s
 }
 
@@ -5931,6 +5937,93 @@ func (s *VideoModerationResultResponseBodyDataFrameResultFramesResultsCustomImag
 
 func (s *VideoModerationResultResponseBodyDataFrameResultFramesResultsCustomImage) SetLibId(v string) *VideoModerationResultResponseBodyDataFrameResultFramesResultsCustomImage {
 	s.LibId = &v
+	return s
+}
+
+type VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoData struct {
+	Location *VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoDataLocation `json:"Location,omitempty" xml:"Location,omitempty" type:"Struct"`
+	Logo     []*VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoDataLogo   `json:"Logo,omitempty" xml:"Logo,omitempty" type:"Repeated"`
+}
+
+func (s VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoData) GoString() string {
+	return s.String()
+}
+
+func (s *VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoData) SetLocation(v *VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoDataLocation) *VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoData {
+	s.Location = v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoData) SetLogo(v []*VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoDataLogo) *VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoData {
+	s.Logo = v
+	return s
+}
+
+type VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoDataLocation struct {
+	H *int32 `json:"H,omitempty" xml:"H,omitempty"`
+	W *int32 `json:"W,omitempty" xml:"W,omitempty"`
+	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoDataLocation) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoDataLocation) GoString() string {
+	return s.String()
+}
+
+func (s *VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoDataLocation) SetH(v int32) *VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoDataLocation {
+	s.H = &v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoDataLocation) SetW(v int32) *VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoDataLocation {
+	s.W = &v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoDataLocation) SetX(v int32) *VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoDataLocation {
+	s.X = &v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoDataLocation) SetY(v int32) *VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoDataLocation {
+	s.Y = &v
+	return s
+}
+
+type VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoDataLogo struct {
+	Confidence *int64  `json:"confidence,omitempty" xml:"confidence,omitempty"`
+	Label      *string `json:"label,omitempty" xml:"label,omitempty"`
+	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoDataLogo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoDataLogo) GoString() string {
+	return s.String()
+}
+
+func (s *VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoDataLogo) SetConfidence(v int64) *VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoDataLogo {
+	s.Confidence = &v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoDataLogo) SetLabel(v string) *VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoDataLogo {
+	s.Label = &v
+	return s
+}
+
+func (s *VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoDataLogo) SetName(v string) *VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoDataLogo {
+	s.Name = &v
 	return s
 }
 
