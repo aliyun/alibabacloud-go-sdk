@@ -965,12 +965,19 @@ type CreateAndroidInstanceGroupRequest struct {
 	//
 	// asadbuvwiabdbvchjsbj
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	EnableIpv6  *bool   `json:"EnableIpv6,omitempty" xml:"EnableIpv6,omitempty"`
+	// >  This parameter is not publicly available.
+	//
+	// example:
+	//
+	// null
+	EnableIpv6 *bool `json:"EnableIpv6,omitempty" xml:"EnableIpv6,omitempty"`
 	// Specifies whether to enable GPU acceleration.
 	//
-	// 	- true
+	// Valid values:
 	//
-	// 	- false (true)
+	// 	- true: enables GPU acceleration.
+	//
+	// 	- false (default): disables GPU acceleration.
 	//
 	// example:
 	//
@@ -986,7 +993,7 @@ type CreateAndroidInstanceGroupRequest struct {
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	// The name of the instance group.
 	//
-	// > The name can be up to 30 characters in length. It can contain letters, digits, colons (:), underscores (_), periods (.), or hyphens (-). It must start with letters but cannot start with http:// or https://.
+	// >  The name can be up to 30 characters in length. It can contain letters, digits, colons (:), underscores (_), periods (.), or hyphens (-). It must start with letters but cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
@@ -1008,10 +1015,15 @@ type CreateAndroidInstanceGroupRequest struct {
 	//
 	// acp.basic.small
 	InstanceGroupSpec *string `json:"InstanceGroupSpec,omitempty" xml:"InstanceGroupSpec,omitempty"`
-	Ipv6Bandwidth     *int32  `json:"Ipv6Bandwidth,omitempty" xml:"Ipv6Bandwidth,omitempty"`
-	// The ID of the key pair. When you create an instance group and specify a valid key pair ID, all cloud phone instances within the group will automatically be bound to that key pair upon creation. This eliminates the need to manually call the operation to bind key pairs to individual cloud phone instances.
+	// >  This parameter is not publicly available.
 	//
-	// Take note that binding key pairs to cloud phone instances is currently not supported during instance group resizing.
+	// example:
+	//
+	// null
+	Ipv6Bandwidth *int32 `json:"Ipv6Bandwidth,omitempty" xml:"Ipv6Bandwidth,omitempty"`
+	// The ID of the key pair. When you create an instance group and specify a valid key pair ID, all cloud phone instances within the group will automatically be bound to that key pair upon creation. This eliminates the need to manually bind key pairs to individual cloud phone instances.
+	//
+	// >  Binding key pairs to cloud phone instances is currently not supported during instance group resizing.
 	//
 	// example:
 	//
@@ -1058,8 +1070,9 @@ type CreateAndroidInstanceGroupRequest struct {
 	// example:
 	//
 	// pg-b7bxrrwxkijjh****
-	PolicyGroupId *string                                 `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
-	Tag           []*CreateAndroidInstanceGroupRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
+	// The tags
+	Tag []*CreateAndroidInstanceGroupRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The ID of the vSwitch. You can call the [DescribeVSwitches](https://help.aliyun.com/document_detail/448774.html) operation to query vSwitches.
 	//
 	// 	- This parameter is not required if you assign a shared network to cloud phones.
@@ -1181,7 +1194,17 @@ func (s *CreateAndroidInstanceGroupRequest) SetVSwitchId(v string) *CreateAndroi
 }
 
 type CreateAndroidInstanceGroupRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// key
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -5838,8 +5861,28 @@ func (s *DescribeKeyPairsResponse) SetBody(v *DescribeKeyPairsResponseBody) *Des
 }
 
 type DescribeRegionsRequest struct {
+	// The display language of the console. Valid values:
+	//
+	// 	- cn: Simplified Chinese
+	//
+	// 	- en: English
+	//
+	// example:
+	//
+	// en
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	SaleMode       *string `json:"SaleMode,omitempty" xml:"SaleMode,omitempty"`
+	// The sales mode.
+	//
+	// Valid values:
+	//
+	// 	- Instance: the instance group mode. [Default]
+	//
+	// 	- Node: the matrix mode. [Whitelist required]
+	//
+	// example:
+	//
+	// Instance
+	SaleMode *string `json:"SaleMode,omitempty" xml:"SaleMode,omitempty"`
 }
 
 func (s DescribeRegionsRequest) String() string {
@@ -5863,7 +5906,7 @@ func (s *DescribeRegionsRequest) SetSaleMode(v string) *DescribeRegionsRequest {
 type DescribeRegionsResponseBody struct {
 	// Available regions.
 	RegionModels []*DescribeRegionsResponseBodyRegionModels `json:"RegionModels,omitempty" xml:"RegionModels,omitempty" type:"Repeated"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
@@ -5890,12 +5933,17 @@ func (s *DescribeRegionsResponseBody) SetRequestId(v string) *DescribeRegionsRes
 }
 
 type DescribeRegionsResponseBodyRegionModels struct {
-	// Region ID.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region name.
+	//
+	// example:
+	//
+	// China (Hangzhou)
 	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
 }
 
@@ -8437,6 +8485,158 @@ func (s *ModifyAppResponse) SetStatusCode(v int32) *ModifyAppResponse {
 }
 
 func (s *ModifyAppResponse) SetBody(v *ModifyAppResponseBody) *ModifyAppResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyInstanceChargeTypeRequest struct {
+	// Specifies whether to enable the auto-payment feature. Default value: false.
+	//
+	// example:
+	//
+	// false
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// Specifies whether to enable the auto-renewal feature. Default value: false.
+	//
+	// example:
+	//
+	// false
+	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// The billing method. Valid values:
+	//
+	// >  Currently, this operation only allows you to change the billing method from **pay-as-you-go to subscription**.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PrePaid
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The IDs of the instance groups.
+	//
+	// This parameter is required.
+	InstanceGroupIds []*string `json:"InstanceGroupIds,omitempty" xml:"InstanceGroupIds,omitempty" type:"Repeated"`
+	// The subscription duration. The unit is specified by PeriodUnit. Valid values: 1 Month, 2 Months, 3 Months, 6 Months, and 1 Year.
+	//
+	// example:
+	//
+	// 1
+	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The unit of the subscription duration. Valid values:
+	//
+	// 	- **Month**
+	//
+	// 	- **Year**
+	//
+	// example:
+	//
+	// Month
+	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+}
+
+func (s ModifyInstanceChargeTypeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstanceChargeTypeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstanceChargeTypeRequest) SetAutoPay(v bool) *ModifyInstanceChargeTypeRequest {
+	s.AutoPay = &v
+	return s
+}
+
+func (s *ModifyInstanceChargeTypeRequest) SetAutoRenew(v bool) *ModifyInstanceChargeTypeRequest {
+	s.AutoRenew = &v
+	return s
+}
+
+func (s *ModifyInstanceChargeTypeRequest) SetChargeType(v string) *ModifyInstanceChargeTypeRequest {
+	s.ChargeType = &v
+	return s
+}
+
+func (s *ModifyInstanceChargeTypeRequest) SetInstanceGroupIds(v []*string) *ModifyInstanceChargeTypeRequest {
+	s.InstanceGroupIds = v
+	return s
+}
+
+func (s *ModifyInstanceChargeTypeRequest) SetPeriod(v int32) *ModifyInstanceChargeTypeRequest {
+	s.Period = &v
+	return s
+}
+
+func (s *ModifyInstanceChargeTypeRequest) SetPeriodUnit(v string) *ModifyInstanceChargeTypeRequest {
+	s.PeriodUnit = &v
+	return s
+}
+
+type ModifyInstanceChargeTypeResponseBody struct {
+	// The IDs of the instance groups.
+	InstanceGroupIds []*string `json:"InstanceGroupIds,omitempty" xml:"InstanceGroupIds,omitempty" type:"Repeated"`
+	// The ID of the order.
+	//
+	// example:
+	//
+	// 22326560487****
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 1A923337-44D9-5CAD-9A53-95084BD4****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyInstanceChargeTypeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstanceChargeTypeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstanceChargeTypeResponseBody) SetInstanceGroupIds(v []*string) *ModifyInstanceChargeTypeResponseBody {
+	s.InstanceGroupIds = v
+	return s
+}
+
+func (s *ModifyInstanceChargeTypeResponseBody) SetOrderId(v string) *ModifyInstanceChargeTypeResponseBody {
+	s.OrderId = &v
+	return s
+}
+
+func (s *ModifyInstanceChargeTypeResponseBody) SetRequestId(v string) *ModifyInstanceChargeTypeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyInstanceChargeTypeResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyInstanceChargeTypeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyInstanceChargeTypeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstanceChargeTypeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstanceChargeTypeResponse) SetHeaders(v map[string]*string) *ModifyInstanceChargeTypeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyInstanceChargeTypeResponse) SetStatusCode(v int32) *ModifyInstanceChargeTypeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyInstanceChargeTypeResponse) SetBody(v *ModifyInstanceChargeTypeResponseBody) *ModifyInstanceChargeTypeResponse {
 	s.Body = v
 	return s
 }
@@ -14176,6 +14376,97 @@ func (client *Client) ModifyApp(request *ModifyAppRequest) (_result *ModifyAppRe
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyAppResponse{}
 	_body, _err := client.ModifyAppWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the billing method. Currently, this operation only allows you to change the billing method from pay-as-you-go to subscription.
+//
+// @param request - ModifyInstanceChargeTypeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyInstanceChargeTypeResponse
+func (client *Client) ModifyInstanceChargeTypeWithOptions(request *ModifyInstanceChargeTypeRequest, runtime *util.RuntimeOptions) (_result *ModifyInstanceChargeTypeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoPay)) {
+		query["AutoPay"] = request.AutoPay
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoRenew)) {
+		query["AutoRenew"] = request.AutoRenew
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChargeType)) {
+		query["ChargeType"] = request.ChargeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceGroupIds)) {
+		query["InstanceGroupIds"] = request.InstanceGroupIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Period)) {
+		query["Period"] = request.Period
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeriodUnit)) {
+		query["PeriodUnit"] = request.PeriodUnit
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyInstanceChargeType"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyInstanceChargeTypeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyInstanceChargeTypeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Modifies the billing method. Currently, this operation only allows you to change the billing method from pay-as-you-go to subscription.
+//
+// @param request - ModifyInstanceChargeTypeRequest
+//
+// @return ModifyInstanceChargeTypeResponse
+func (client *Client) ModifyInstanceChargeType(request *ModifyInstanceChargeTypeRequest) (_result *ModifyInstanceChargeTypeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyInstanceChargeTypeResponse{}
+	_body, _err := client.ModifyInstanceChargeTypeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
