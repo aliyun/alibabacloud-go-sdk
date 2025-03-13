@@ -3924,7 +3924,8 @@ type BatchCreateDataLakePartitionsRequest struct {
 	// example:
 	//
 	// 3***
-	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	Tid         *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	WorkspaceId *int64 `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s BatchCreateDataLakePartitionsRequest) String() string {
@@ -3975,6 +3976,11 @@ func (s *BatchCreateDataLakePartitionsRequest) SetTid(v int64) *BatchCreateDataL
 	return s
 }
 
+func (s *BatchCreateDataLakePartitionsRequest) SetWorkspaceId(v int64) *BatchCreateDataLakePartitionsRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
 type BatchCreateDataLakePartitionsShrinkRequest struct {
 	// This parameter is required.
 	//
@@ -4013,7 +4019,8 @@ type BatchCreateDataLakePartitionsShrinkRequest struct {
 	// example:
 	//
 	// 3***
-	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	Tid         *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	WorkspaceId *int64 `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s BatchCreateDataLakePartitionsShrinkRequest) String() string {
@@ -4061,6 +4068,11 @@ func (s *BatchCreateDataLakePartitionsShrinkRequest) SetTableName(v string) *Bat
 
 func (s *BatchCreateDataLakePartitionsShrinkRequest) SetTid(v int64) *BatchCreateDataLakePartitionsShrinkRequest {
 	s.Tid = &v
+	return s
+}
+
+func (s *BatchCreateDataLakePartitionsShrinkRequest) SetWorkspaceId(v int64) *BatchCreateDataLakePartitionsShrinkRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -4180,7 +4192,8 @@ type BatchDeleteDataLakePartitionsRequest struct {
 	// example:
 	//
 	// 3****
-	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	Tid         *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	WorkspaceId *int64 `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s BatchDeleteDataLakePartitionsRequest) String() string {
@@ -4223,6 +4236,11 @@ func (s *BatchDeleteDataLakePartitionsRequest) SetTableName(v string) *BatchDele
 
 func (s *BatchDeleteDataLakePartitionsRequest) SetTid(v int64) *BatchDeleteDataLakePartitionsRequest {
 	s.Tid = &v
+	return s
+}
+
+func (s *BatchDeleteDataLakePartitionsRequest) SetWorkspaceId(v int64) *BatchDeleteDataLakePartitionsRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -4338,7 +4356,8 @@ type BatchUpdateDataLakePartitionsRequest struct {
 	// example:
 	//
 	// 3***
-	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	Tid         *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	WorkspaceId *int64 `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s BatchUpdateDataLakePartitionsRequest) String() string {
@@ -4379,6 +4398,11 @@ func (s *BatchUpdateDataLakePartitionsRequest) SetTid(v int64) *BatchUpdateDataL
 	return s
 }
 
+func (s *BatchUpdateDataLakePartitionsRequest) SetWorkspaceId(v int64) *BatchUpdateDataLakePartitionsRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
 type BatchUpdateDataLakePartitionsShrinkRequest struct {
 	// This parameter is required.
 	//
@@ -4409,7 +4433,8 @@ type BatchUpdateDataLakePartitionsShrinkRequest struct {
 	// example:
 	//
 	// 3***
-	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	Tid         *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	WorkspaceId *int64 `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s BatchUpdateDataLakePartitionsShrinkRequest) String() string {
@@ -4447,6 +4472,11 @@ func (s *BatchUpdateDataLakePartitionsShrinkRequest) SetTableName(v string) *Bat
 
 func (s *BatchUpdateDataLakePartitionsShrinkRequest) SetTid(v int64) *BatchUpdateDataLakePartitionsShrinkRequest {
 	s.Tid = &v
+	return s
+}
+
+func (s *BatchUpdateDataLakePartitionsShrinkRequest) SetWorkspaceId(v int64) *BatchUpdateDataLakePartitionsShrinkRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -6581,18 +6611,11 @@ type CreateDataCorrectOrderRequestParamDbItemList struct {
 	//
 	// 	- To query the ID of a physical database, call the [ListDatabases](https://help.aliyun.com/document_detail/141873.html) or [SearchDatabase](https://help.aliyun.com/document_detail/141876.html) operation.
 	//
-<<<<<<< Updated upstream
-	// 	- To obtain the ID of a logical database, call the [ListLogicDatabases](https://help.aliyun.com/document_detail/141874.html) or [SearchDatabase](https://help.aliyun.com/document_detail/141876.html) operation.
-=======
 	// 	- To query the ID of a logical database, call the [ListLogicDatabases](https://help.aliyun.com/document_detail/141874.html) or [SearchDatabase](https://help.aliyun.com/document_detail/141876.html) operation.
->>>>>>> Stashed changes
 	//
 	// example:
 	//
 	// 1860****
-<<<<<<< Updated upstream
-	DbId       *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
-=======
 	DbId *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
 	// The instance ID. You can call the ListInstances or GetInstance operation to query the instance ID.
 	//
@@ -6603,7 +6626,6 @@ type CreateDataCorrectOrderRequestParamDbItemList struct {
 	// example:
 	//
 	// 1860****
->>>>>>> Stashed changes
 	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// Specifies whether the database is a logical database. Valid values:
 	//
@@ -8210,7 +8232,8 @@ type CreateDataLakeDatabaseRequest struct {
 	// example:
 	//
 	// 3***
-	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	Tid         *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	WorkspaceId *int64 `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s CreateDataLakeDatabaseRequest) String() string {
@@ -8256,6 +8279,11 @@ func (s *CreateDataLakeDatabaseRequest) SetTid(v int64) *CreateDataLakeDatabaseR
 	return s
 }
 
+func (s *CreateDataLakeDatabaseRequest) SetWorkspaceId(v int64) *CreateDataLakeDatabaseRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
 type CreateDataLakeDatabaseShrinkRequest struct {
 	// This parameter is required.
 	//
@@ -8289,7 +8317,8 @@ type CreateDataLakeDatabaseShrinkRequest struct {
 	// example:
 	//
 	// 3***
-	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	Tid         *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	WorkspaceId *int64 `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s CreateDataLakeDatabaseShrinkRequest) String() string {
@@ -8332,6 +8361,11 @@ func (s *CreateDataLakeDatabaseShrinkRequest) SetParametersShrink(v string) *Cre
 
 func (s *CreateDataLakeDatabaseShrinkRequest) SetTid(v int64) *CreateDataLakeDatabaseShrinkRequest {
 	s.Tid = &v
+	return s
+}
+
+func (s *CreateDataLakeDatabaseShrinkRequest) SetWorkspaceId(v int64) *CreateDataLakeDatabaseShrinkRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -8669,7 +8703,8 @@ type CreateDataLakePartitionRequest struct {
 	// example:
 	//
 	// 3***
-	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	Tid         *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	WorkspaceId *int64 `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s CreateDataLakePartitionRequest) String() string {
@@ -8720,6 +8755,11 @@ func (s *CreateDataLakePartitionRequest) SetTid(v int64) *CreateDataLakePartitio
 	return s
 }
 
+func (s *CreateDataLakePartitionRequest) SetWorkspaceId(v int64) *CreateDataLakePartitionRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
 type CreateDataLakePartitionShrinkRequest struct {
 	// This parameter is required.
 	//
@@ -8758,7 +8798,8 @@ type CreateDataLakePartitionShrinkRequest struct {
 	// example:
 	//
 	// 3***
-	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	Tid         *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	WorkspaceId *int64 `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s CreateDataLakePartitionShrinkRequest) String() string {
@@ -8806,6 +8847,11 @@ func (s *CreateDataLakePartitionShrinkRequest) SetTableName(v string) *CreateDat
 
 func (s *CreateDataLakePartitionShrinkRequest) SetTid(v int64) *CreateDataLakePartitionShrinkRequest {
 	s.Tid = &v
+	return s
+}
+
+func (s *CreateDataLakePartitionShrinkRequest) SetWorkspaceId(v int64) *CreateDataLakePartitionShrinkRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -8912,7 +8958,8 @@ type CreateDataLakeTableRequest struct {
 	// example:
 	//
 	// 3***
-	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	Tid         *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	WorkspaceId *int64 `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s CreateDataLakeTableRequest) String() string {
@@ -8948,6 +8995,11 @@ func (s *CreateDataLakeTableRequest) SetTid(v int64) *CreateDataLakeTableRequest
 	return s
 }
 
+func (s *CreateDataLakeTableRequest) SetWorkspaceId(v int64) *CreateDataLakeTableRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
 type CreateDataLakeTableShrinkRequest struct {
 	// This parameter is required.
 	//
@@ -8972,7 +9024,8 @@ type CreateDataLakeTableShrinkRequest struct {
 	// example:
 	//
 	// 3***
-	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	Tid         *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	WorkspaceId *int64 `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s CreateDataLakeTableShrinkRequest) String() string {
@@ -9005,6 +9058,11 @@ func (s *CreateDataLakeTableShrinkRequest) SetTableInputShrink(v string) *Create
 
 func (s *CreateDataLakeTableShrinkRequest) SetTid(v int64) *CreateDataLakeTableShrinkRequest {
 	s.Tid = &v
+	return s
+}
+
+func (s *CreateDataLakeTableShrinkRequest) SetWorkspaceId(v int64) *CreateDataLakeTableShrinkRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -14445,7 +14503,8 @@ type DeleteDataLakeDatabaseRequest struct {
 	// example:
 	//
 	// 3***
-	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	Tid         *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	WorkspaceId *int64 `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s DeleteDataLakeDatabaseRequest) String() string {
@@ -14473,6 +14532,11 @@ func (s *DeleteDataLakeDatabaseRequest) SetDbName(v string) *DeleteDataLakeDatab
 
 func (s *DeleteDataLakeDatabaseRequest) SetTid(v int64) *DeleteDataLakeDatabaseRequest {
 	s.Tid = &v
+	return s
+}
+
+func (s *DeleteDataLakeDatabaseRequest) SetWorkspaceId(v int64) *DeleteDataLakeDatabaseRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -14735,7 +14799,8 @@ type DeleteDataLakePartitionRequest struct {
 	// example:
 	//
 	// 3***
-	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	Tid         *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	WorkspaceId *int64 `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s DeleteDataLakePartitionRequest) String() string {
@@ -14781,6 +14846,11 @@ func (s *DeleteDataLakePartitionRequest) SetTid(v int64) *DeleteDataLakePartitio
 	return s
 }
 
+func (s *DeleteDataLakePartitionRequest) SetWorkspaceId(v int64) *DeleteDataLakePartitionRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
 type DeleteDataLakePartitionShrinkRequest struct {
 	// This parameter is required.
 	//
@@ -14815,7 +14885,8 @@ type DeleteDataLakePartitionShrinkRequest struct {
 	// example:
 	//
 	// 3***
-	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	Tid         *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	WorkspaceId *int64 `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s DeleteDataLakePartitionShrinkRequest) String() string {
@@ -14858,6 +14929,11 @@ func (s *DeleteDataLakePartitionShrinkRequest) SetTableName(v string) *DeleteDat
 
 func (s *DeleteDataLakePartitionShrinkRequest) SetTid(v int64) *DeleteDataLakePartitionShrinkRequest {
 	s.Tid = &v
+	return s
+}
+
+func (s *DeleteDataLakePartitionShrinkRequest) SetWorkspaceId(v int64) *DeleteDataLakePartitionShrinkRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -14965,7 +15041,8 @@ type DeleteDataLakeTableRequest struct {
 	// example:
 	//
 	// 3***
-	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	Tid         *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	WorkspaceId *int64 `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s DeleteDataLakeTableRequest) String() string {
@@ -14998,6 +15075,11 @@ func (s *DeleteDataLakeTableRequest) SetTableName(v string) *DeleteDataLakeTable
 
 func (s *DeleteDataLakeTableRequest) SetTid(v int64) *DeleteDataLakeTableRequest {
 	s.Tid = &v
+	return s
+}
+
+func (s *DeleteDataLakeTableRequest) SetWorkspaceId(v int64) *DeleteDataLakeTableRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -25201,7 +25283,8 @@ type GetDataLakeCatalogRequest struct {
 	// example:
 	//
 	// 3
-	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	Tid         *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	WorkspaceId *int64 `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s GetDataLakeCatalogRequest) String() string {
@@ -25224,6 +25307,11 @@ func (s *GetDataLakeCatalogRequest) SetDataRegion(v string) *GetDataLakeCatalogR
 
 func (s *GetDataLakeCatalogRequest) SetTid(v int64) *GetDataLakeCatalogRequest {
 	s.Tid = &v
+	return s
+}
+
+func (s *GetDataLakeCatalogRequest) SetWorkspaceId(v int64) *GetDataLakeCatalogRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -25340,7 +25428,8 @@ type GetDataLakeDatabaseRequest struct {
 	// example:
 	//
 	// 3
-	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	Tid         *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	WorkspaceId *int64 `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s GetDataLakeDatabaseRequest) String() string {
@@ -25368,6 +25457,11 @@ func (s *GetDataLakeDatabaseRequest) SetName(v string) *GetDataLakeDatabaseReque
 
 func (s *GetDataLakeDatabaseRequest) SetTid(v int64) *GetDataLakeDatabaseRequest {
 	s.Tid = &v
+	return s
+}
+
+func (s *GetDataLakeDatabaseRequest) SetWorkspaceId(v int64) *GetDataLakeDatabaseRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -25638,7 +25732,8 @@ type GetDataLakePartitionRequest struct {
 	// example:
 	//
 	// 3***
-	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	Tid         *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	WorkspaceId *int64 `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s GetDataLakePartitionRequest) String() string {
@@ -25679,6 +25774,11 @@ func (s *GetDataLakePartitionRequest) SetTid(v int64) *GetDataLakePartitionReque
 	return s
 }
 
+func (s *GetDataLakePartitionRequest) SetWorkspaceId(v int64) *GetDataLakePartitionRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
 type GetDataLakePartitionShrinkRequest struct {
 	// This parameter is required.
 	//
@@ -25709,7 +25809,8 @@ type GetDataLakePartitionShrinkRequest struct {
 	// example:
 	//
 	// 3***
-	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	Tid         *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	WorkspaceId *int64 `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s GetDataLakePartitionShrinkRequest) String() string {
@@ -25747,6 +25848,11 @@ func (s *GetDataLakePartitionShrinkRequest) SetTableName(v string) *GetDataLakeP
 
 func (s *GetDataLakePartitionShrinkRequest) SetTid(v int64) *GetDataLakePartitionShrinkRequest {
 	s.Tid = &v
+	return s
+}
+
+func (s *GetDataLakePartitionShrinkRequest) SetWorkspaceId(v int64) *GetDataLakePartitionShrinkRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -25872,7 +25978,8 @@ type GetDataLakeTableRequest struct {
 	// example:
 	//
 	// 3
-	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	Tid         *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	WorkspaceId *int64 `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s GetDataLakeTableRequest) String() string {
@@ -25905,6 +26012,11 @@ func (s *GetDataLakeTableRequest) SetName(v string) *GetDataLakeTableRequest {
 
 func (s *GetDataLakeTableRequest) SetTid(v int64) *GetDataLakeTableRequest {
 	s.Tid = &v
+	return s
+}
+
+func (s *GetDataLakeTableRequest) SetWorkspaceId(v int64) *GetDataLakeTableRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -43159,7 +43271,8 @@ type ListDataLakeCatalogRequest struct {
 	// example:
 	//
 	// hive
-	SearchKey *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
+	SearchKey    *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
+	SessionToken *string `json:"SessionToken,omitempty" xml:"SessionToken,omitempty"`
 	// example:
 	//
 	// 3
@@ -43181,6 +43294,11 @@ func (s *ListDataLakeCatalogRequest) SetDataRegion(v string) *ListDataLakeCatalo
 
 func (s *ListDataLakeCatalogRequest) SetSearchKey(v string) *ListDataLakeCatalogRequest {
 	s.SearchKey = &v
+	return s
+}
+
+func (s *ListDataLakeCatalogRequest) SetSessionToken(v string) *ListDataLakeCatalogRequest {
+	s.SessionToken = &v
 	return s
 }
 
@@ -43302,7 +43420,8 @@ type ListDataLakeDatabaseRequest struct {
 	// example:
 	//
 	// 3
-	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	Tid         *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	WorkspaceId *int64 `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ListDataLakeDatabaseRequest) String() string {
@@ -43340,6 +43459,11 @@ func (s *ListDataLakeDatabaseRequest) SetSearchKey(v string) *ListDataLakeDataba
 
 func (s *ListDataLakeDatabaseRequest) SetTid(v int64) *ListDataLakeDatabaseRequest {
 	s.Tid = &v
+	return s
+}
+
+func (s *ListDataLakeDatabaseRequest) SetWorkspaceId(v int64) *ListDataLakeDatabaseRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -43472,7 +43596,8 @@ type ListDataLakeFunctionRequest struct {
 	// example:
 	//
 	// 3***
-	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	Tid         *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	WorkspaceId *int64 `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ListDataLakeFunctionRequest) String() string {
@@ -43515,6 +43640,11 @@ func (s *ListDataLakeFunctionRequest) SetNextToken(v string) *ListDataLakeFuncti
 
 func (s *ListDataLakeFunctionRequest) SetTid(v int64) *ListDataLakeFunctionRequest {
 	s.Tid = &v
+	return s
+}
+
+func (s *ListDataLakeFunctionRequest) SetWorkspaceId(v int64) *ListDataLakeFunctionRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -43655,7 +43785,8 @@ type ListDataLakeFunctionNameRequest struct {
 	// example:
 	//
 	// 3***
-	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	Tid         *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	WorkspaceId *int64 `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ListDataLakeFunctionNameRequest) String() string {
@@ -43698,6 +43829,11 @@ func (s *ListDataLakeFunctionNameRequest) SetNextToken(v string) *ListDataLakeFu
 
 func (s *ListDataLakeFunctionNameRequest) SetTid(v int64) *ListDataLakeFunctionNameRequest {
 	s.Tid = &v
+	return s
+}
+
+func (s *ListDataLakeFunctionNameRequest) SetWorkspaceId(v int64) *ListDataLakeFunctionNameRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -43841,7 +43977,8 @@ type ListDataLakePartitionRequest struct {
 	// example:
 	//
 	// 3***
-	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	Tid         *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	WorkspaceId *int64 `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ListDataLakePartitionRequest) String() string {
@@ -43892,6 +44029,11 @@ func (s *ListDataLakePartitionRequest) SetTid(v int64) *ListDataLakePartitionReq
 	return s
 }
 
+func (s *ListDataLakePartitionRequest) SetWorkspaceId(v int64) *ListDataLakePartitionRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
 type ListDataLakePartitionShrinkRequest struct {
 	// This parameter is required.
 	//
@@ -43932,7 +44074,8 @@ type ListDataLakePartitionShrinkRequest struct {
 	// example:
 	//
 	// 3***
-	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	Tid         *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	WorkspaceId *int64 `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ListDataLakePartitionShrinkRequest) String() string {
@@ -43980,6 +44123,11 @@ func (s *ListDataLakePartitionShrinkRequest) SetTableName(v string) *ListDataLak
 
 func (s *ListDataLakePartitionShrinkRequest) SetTid(v int64) *ListDataLakePartitionShrinkRequest {
 	s.Tid = &v
+	return s
+}
+
+func (s *ListDataLakePartitionShrinkRequest) SetWorkspaceId(v int64) *ListDataLakePartitionShrinkRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -44128,7 +44276,8 @@ type ListDataLakePartitionByFilterRequest struct {
 	// example:
 	//
 	// 3***
-	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	Tid         *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	WorkspaceId *int64 `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ListDataLakePartitionByFilterRequest) String() string {
@@ -44176,6 +44325,11 @@ func (s *ListDataLakePartitionByFilterRequest) SetTableName(v string) *ListDataL
 
 func (s *ListDataLakePartitionByFilterRequest) SetTid(v int64) *ListDataLakePartitionByFilterRequest {
 	s.Tid = &v
+	return s
+}
+
+func (s *ListDataLakePartitionByFilterRequest) SetWorkspaceId(v int64) *ListDataLakePartitionByFilterRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -44318,7 +44472,8 @@ type ListDataLakePartitionNameRequest struct {
 	// example:
 	//
 	// 3***
-	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	Tid         *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	WorkspaceId *int64 `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ListDataLakePartitionNameRequest) String() string {
@@ -44361,6 +44516,11 @@ func (s *ListDataLakePartitionNameRequest) SetTableName(v string) *ListDataLakeP
 
 func (s *ListDataLakePartitionNameRequest) SetTid(v int64) *ListDataLakePartitionNameRequest {
 	s.Tid = &v
+	return s
+}
+
+func (s *ListDataLakePartitionNameRequest) SetWorkspaceId(v int64) *ListDataLakePartitionNameRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -44505,7 +44665,8 @@ type ListDataLakeTableRequest struct {
 	// example:
 	//
 	// 3***
-	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	Tid         *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	WorkspaceId *int64 `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ListDataLakeTableRequest) String() string {
@@ -44553,6 +44714,11 @@ func (s *ListDataLakeTableRequest) SetTableType(v string) *ListDataLakeTableRequ
 
 func (s *ListDataLakeTableRequest) SetTid(v int64) *ListDataLakeTableRequest {
 	s.Tid = &v
+	return s
+}
+
+func (s *ListDataLakeTableRequest) SetWorkspaceId(v int64) *ListDataLakeTableRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -44697,7 +44863,8 @@ type ListDataLakeTableNameRequest struct {
 	// example:
 	//
 	// 3***
-	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	Tid         *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	WorkspaceId *int64 `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ListDataLakeTableNameRequest) String() string {
@@ -44745,6 +44912,11 @@ func (s *ListDataLakeTableNameRequest) SetTableType(v string) *ListDataLakeTable
 
 func (s *ListDataLakeTableNameRequest) SetTid(v int64) *ListDataLakeTableNameRequest {
 	s.Tid = &v
+	return s
+}
+
+func (s *ListDataLakeTableNameRequest) SetWorkspaceId(v int64) *ListDataLakeTableNameRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -44882,7 +45054,8 @@ type ListDataLakeTablebaseInfoRequest struct {
 	// example:
 	//
 	// 3***
-	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	Tid         *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	WorkspaceId *int64 `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ListDataLakeTablebaseInfoRequest) String() string {
@@ -44925,6 +45098,11 @@ func (s *ListDataLakeTablebaseInfoRequest) SetSearchKey(v string) *ListDataLakeT
 
 func (s *ListDataLakeTablebaseInfoRequest) SetTid(v int64) *ListDataLakeTablebaseInfoRequest {
 	s.Tid = &v
+	return s
+}
+
+func (s *ListDataLakeTablebaseInfoRequest) SetWorkspaceId(v int64) *ListDataLakeTablebaseInfoRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -65913,6 +66091,111 @@ func (s *SyncInstanceMetaResponse) SetBody(v *SyncInstanceMetaResponseBody) *Syn
 	return s
 }
 
+type TryRunTaskFlowRequest struct {
+	// example:
+	//
+	// 11****
+	DagId *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
+}
+
+func (s TryRunTaskFlowRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TryRunTaskFlowRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TryRunTaskFlowRequest) SetDagId(v int64) *TryRunTaskFlowRequest {
+	s.DagId = &v
+	return s
+}
+
+type TryRunTaskFlowResponseBody struct {
+	// example:
+	//
+	// UnknownError
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// UnknownError
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// 169****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 9997630E-1993-5E6D-9DF1-4EFEE755FE31
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s TryRunTaskFlowResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TryRunTaskFlowResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TryRunTaskFlowResponseBody) SetErrorCode(v string) *TryRunTaskFlowResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *TryRunTaskFlowResponseBody) SetErrorMessage(v string) *TryRunTaskFlowResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *TryRunTaskFlowResponseBody) SetInstanceId(v string) *TryRunTaskFlowResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *TryRunTaskFlowResponseBody) SetRequestId(v string) *TryRunTaskFlowResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *TryRunTaskFlowResponseBody) SetSuccess(v bool) *TryRunTaskFlowResponseBody {
+	s.Success = &v
+	return s
+}
+
+type TryRunTaskFlowResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TryRunTaskFlowResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s TryRunTaskFlowResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TryRunTaskFlowResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TryRunTaskFlowResponse) SetHeaders(v map[string]*string) *TryRunTaskFlowResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *TryRunTaskFlowResponse) SetStatusCode(v int32) *TryRunTaskFlowResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *TryRunTaskFlowResponse) SetBody(v *TryRunTaskFlowResponseBody) *TryRunTaskFlowResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateAbacPolicyRequest struct {
 	// example:
 	//
@@ -66347,7 +66630,8 @@ type UpdateDataLakeDatabaseRequest struct {
 	// example:
 	//
 	// 3***
-	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	Tid         *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	WorkspaceId *int64 `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s UpdateDataLakeDatabaseRequest) String() string {
@@ -66393,6 +66677,11 @@ func (s *UpdateDataLakeDatabaseRequest) SetTid(v int64) *UpdateDataLakeDatabaseR
 	return s
 }
 
+func (s *UpdateDataLakeDatabaseRequest) SetWorkspaceId(v int64) *UpdateDataLakeDatabaseRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
 type UpdateDataLakeDatabaseShrinkRequest struct {
 	// This parameter is required.
 	//
@@ -66426,7 +66715,8 @@ type UpdateDataLakeDatabaseShrinkRequest struct {
 	// example:
 	//
 	// 3***
-	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	Tid         *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	WorkspaceId *int64 `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s UpdateDataLakeDatabaseShrinkRequest) String() string {
@@ -66469,6 +66759,11 @@ func (s *UpdateDataLakeDatabaseShrinkRequest) SetParametersShrink(v string) *Upd
 
 func (s *UpdateDataLakeDatabaseShrinkRequest) SetTid(v int64) *UpdateDataLakeDatabaseShrinkRequest {
 	s.Tid = &v
+	return s
+}
+
+func (s *UpdateDataLakeDatabaseShrinkRequest) SetWorkspaceId(v int64) *UpdateDataLakeDatabaseShrinkRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -66826,7 +67121,8 @@ type UpdateDataLakePartitionRequest struct {
 	// example:
 	//
 	// 3***
-	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	Tid         *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	WorkspaceId *int64 `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s UpdateDataLakePartitionRequest) String() string {
@@ -66867,6 +67163,11 @@ func (s *UpdateDataLakePartitionRequest) SetTid(v int64) *UpdateDataLakePartitio
 	return s
 }
 
+func (s *UpdateDataLakePartitionRequest) SetWorkspaceId(v int64) *UpdateDataLakePartitionRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
 type UpdateDataLakePartitionShrinkRequest struct {
 	// This parameter is required.
 	//
@@ -66897,7 +67198,8 @@ type UpdateDataLakePartitionShrinkRequest struct {
 	// example:
 	//
 	// 3***
-	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	Tid         *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	WorkspaceId *int64 `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s UpdateDataLakePartitionShrinkRequest) String() string {
@@ -66935,6 +67237,11 @@ func (s *UpdateDataLakePartitionShrinkRequest) SetTableName(v string) *UpdateDat
 
 func (s *UpdateDataLakePartitionShrinkRequest) SetTid(v int64) *UpdateDataLakePartitionShrinkRequest {
 	s.Tid = &v
+	return s
+}
+
+func (s *UpdateDataLakePartitionShrinkRequest) SetWorkspaceId(v int64) *UpdateDataLakePartitionShrinkRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -67039,7 +67346,8 @@ type UpdateDataLakeTableRequest struct {
 	// example:
 	//
 	// 3***
-	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	Tid         *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	WorkspaceId *int64 `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s UpdateDataLakeTableRequest) String() string {
@@ -67080,6 +67388,11 @@ func (s *UpdateDataLakeTableRequest) SetTid(v int64) *UpdateDataLakeTableRequest
 	return s
 }
 
+func (s *UpdateDataLakeTableRequest) SetWorkspaceId(v int64) *UpdateDataLakeTableRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
 type UpdateDataLakeTableShrinkRequest struct {
 	// This parameter is required.
 	//
@@ -67105,7 +67418,8 @@ type UpdateDataLakeTableShrinkRequest struct {
 	// example:
 	//
 	// 3***
-	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	Tid         *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	WorkspaceId *int64 `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s UpdateDataLakeTableShrinkRequest) String() string {
@@ -67143,6 +67457,11 @@ func (s *UpdateDataLakeTableShrinkRequest) SetTableName(v string) *UpdateDataLak
 
 func (s *UpdateDataLakeTableShrinkRequest) SetTid(v int64) *UpdateDataLakeTableShrinkRequest {
 	s.Tid = &v
+	return s
+}
+
+func (s *UpdateDataLakeTableShrinkRequest) SetWorkspaceId(v int64) *UpdateDataLakeTableShrinkRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -68596,11 +68915,6 @@ type UpdateTaskContentV2Request struct {
 	//
 	// { "dbId":12****, "sql":"select 	- from test_table",   "dbType":"lindorm_sql"  }
 	NodeContent *string `json:"NodeContent,omitempty" xml:"NodeContent,omitempty"`
-<<<<<<< Updated upstream
-	// This parameter is required.
-	//
-=======
->>>>>>> Stashed changes
 	// example:
 	//
 	// 449***
@@ -70812,16 +71126,12 @@ type UpdateUserRequest struct {
 	// example:
 	//
 	// 123456789
-<<<<<<< Updated upstream
-	Uid       *int64  `json:"Uid,omitempty" xml:"Uid,omitempty"`
-=======
 	Uid *int64 `json:"Uid,omitempty" xml:"Uid,omitempty"`
 	// The UID of the String type. If you specify this parameter, the UID of the Long type is replaced.
 	//
 	// example:
 	//
 	// 322824****:dmstest.wu@A201***
->>>>>>> Stashed changes
 	UidString *string `json:"UidString,omitempty" xml:"UidString,omitempty"`
 	// The nickname of the user.
 	//
@@ -72051,6 +72361,10 @@ func (client *Client) BatchCreateDataLakePartitionsWithOptions(tmpReq *BatchCrea
 		query["Tid"] = request.Tid
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.PartitionInputsShrink)) {
 		body["PartitionInputs"] = request.PartitionInputsShrink
@@ -72152,6 +72466,10 @@ func (client *Client) BatchDeleteDataLakePartitionsWithOptions(request *BatchDel
 		query["Tid"] = request.Tid
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -72243,6 +72561,10 @@ func (client *Client) BatchUpdateDataLakePartitionsWithOptions(tmpReq *BatchUpda
 
 	if !tea.BoolValue(util.IsUnset(request.Tid)) {
 		query["Tid"] = request.Tid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
 	}
 
 	body := map[string]interface{}{}
@@ -73593,6 +73915,10 @@ func (client *Client) CreateDataLakeDatabaseWithOptions(tmpReq *CreateDataLakeDa
 		query["Tid"] = request.Tid
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -73793,6 +74119,10 @@ func (client *Client) CreateDataLakePartitionWithOptions(tmpReq *CreateDataLakeP
 		query["Tid"] = request.Tid
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.PartitionInputShrink)) {
 		body["PartitionInput"] = request.PartitionInputShrink
@@ -73886,6 +74216,10 @@ func (client *Client) CreateDataLakeTableWithOptions(tmpReq *CreateDataLakeTable
 
 	if !tea.BoolValue(util.IsUnset(request.Tid)) {
 		query["Tid"] = request.Tid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
 	}
 
 	body := map[string]interface{}{}
@@ -76259,6 +76593,10 @@ func (client *Client) DeleteDataLakeDatabaseWithOptions(request *DeleteDataLakeD
 		query["Tid"] = request.Tid
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -76451,6 +76789,10 @@ func (client *Client) DeleteDataLakePartitionWithOptions(tmpReq *DeleteDataLakeP
 		query["Tid"] = request.Tid
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -76536,6 +76878,10 @@ func (client *Client) DeleteDataLakeTableWithOptions(request *DeleteDataLakeTabl
 
 	if !tea.BoolValue(util.IsUnset(request.Tid)) {
 		query["Tid"] = request.Tid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -80113,6 +80459,10 @@ func (client *Client) GetDataLakeCatalogWithOptions(request *GetDataLakeCatalogR
 		query["Tid"] = request.Tid
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -80194,6 +80544,10 @@ func (client *Client) GetDataLakeDatabaseWithOptions(request *GetDataLakeDatabas
 
 	if !tea.BoolValue(util.IsUnset(request.Tid)) {
 		query["Tid"] = request.Tid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -80384,6 +80738,10 @@ func (client *Client) GetDataLakePartitionWithOptions(tmpReq *GetDataLakePartiti
 		query["Tid"] = request.Tid
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -80469,6 +80827,10 @@ func (client *Client) GetDataLakeTableWithOptions(request *GetDataLakeTableReque
 
 	if !tea.BoolValue(util.IsUnset(request.Tid)) {
 		query["Tid"] = request.Tid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -85499,6 +85861,10 @@ func (client *Client) ListDataLakeCatalogWithOptions(request *ListDataLakeCatalo
 		query["SearchKey"] = request.SearchKey
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SessionToken)) {
+		query["SessionToken"] = request.SessionToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Tid)) {
 		query["Tid"] = request.Tid
 	}
@@ -85592,6 +85958,10 @@ func (client *Client) ListDataLakeDatabaseWithOptions(request *ListDataLakeDatab
 
 	if !tea.BoolValue(util.IsUnset(request.Tid)) {
 		query["Tid"] = request.Tid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -85689,6 +86059,10 @@ func (client *Client) ListDataLakeFunctionWithOptions(request *ListDataLakeFunct
 		query["Tid"] = request.Tid
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -85782,6 +86156,10 @@ func (client *Client) ListDataLakeFunctionNameWithOptions(request *ListDataLakeF
 
 	if !tea.BoolValue(util.IsUnset(request.Tid)) {
 		query["Tid"] = request.Tid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -85885,6 +86263,10 @@ func (client *Client) ListDataLakePartitionWithOptions(tmpReq *ListDataLakeParti
 		query["Tid"] = request.Tid
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.PartNamesShrink)) {
 		body["PartNames"] = request.PartNamesShrink
@@ -85984,6 +86366,10 @@ func (client *Client) ListDataLakePartitionByFilterWithOptions(request *ListData
 
 	if !tea.BoolValue(util.IsUnset(request.Tid)) {
 		query["Tid"] = request.Tid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
 	}
 
 	body := map[string]interface{}{}
@@ -86087,6 +86473,10 @@ func (client *Client) ListDataLakePartitionNameWithOptions(request *ListDataLake
 		query["Tid"] = request.Tid
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -86184,6 +86574,10 @@ func (client *Client) ListDataLakeTableWithOptions(request *ListDataLakeTableReq
 
 	if !tea.BoolValue(util.IsUnset(request.Tid)) {
 		query["Tid"] = request.Tid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -86285,6 +86679,10 @@ func (client *Client) ListDataLakeTableNameWithOptions(request *ListDataLakeTabl
 		query["Tid"] = request.Tid
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -86378,6 +86776,10 @@ func (client *Client) ListDataLakeTablebaseInfoWithOptions(request *ListDataLake
 
 	if !tea.BoolValue(util.IsUnset(request.Tid)) {
 		query["Tid"] = request.Tid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -93247,6 +93649,77 @@ func (client *Client) SyncInstanceMeta(request *SyncInstanceMetaRequest) (_resul
 
 // Summary:
 //
+// 任务编排试运行
+//
+// @param request - TryRunTaskFlowRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TryRunTaskFlowResponse
+func (client *Client) TryRunTaskFlowWithOptions(request *TryRunTaskFlowRequest, runtime *util.RuntimeOptions) (_result *TryRunTaskFlowResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DagId)) {
+		query["DagId"] = request.DagId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TryRunTaskFlow"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &TryRunTaskFlowResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &TryRunTaskFlowResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 任务编排试运行
+//
+// @param request - TryRunTaskFlowRequest
+//
+// @return TryRunTaskFlowResponse
+func (client *Client) TryRunTaskFlow(request *TryRunTaskFlowRequest) (_result *TryRunTaskFlowResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &TryRunTaskFlowResponse{}
+	_body, _err := client.TryRunTaskFlowWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 更新权限策略
 //
 // @param request - UpdateAbacPolicyRequest
@@ -93472,6 +93945,10 @@ func (client *Client) UpdateDataLakeDatabaseWithOptions(tmpReq *UpdateDataLakeDa
 		query["Tid"] = request.Tid
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -93668,6 +94145,10 @@ func (client *Client) UpdateDataLakePartitionWithOptions(tmpReq *UpdateDataLakeP
 		query["Tid"] = request.Tid
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.PartitionInputShrink)) {
 		body["PartitionInput"] = request.PartitionInputShrink
@@ -93765,6 +94246,10 @@ func (client *Client) UpdateDataLakeTableWithOptions(tmpReq *UpdateDataLakeTable
 
 	if !tea.BoolValue(util.IsUnset(request.Tid)) {
 		query["Tid"] = request.Tid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
 	}
 
 	body := map[string]interface{}{}
@@ -94435,11 +94920,7 @@ func (client *Client) UpdateTaskContent(request *UpdateTaskContentRequest) (_res
 
 // Summary:
 //
-<<<<<<< Updated upstream
-// 接受大容量sql文件的更新节点内容API
-=======
 // 大sql更新节点专用
->>>>>>> Stashed changes
 //
 // @param request - UpdateTaskContentV2Request
 //
@@ -94498,11 +94979,7 @@ func (client *Client) UpdateTaskContentV2WithOptions(request *UpdateTaskContentV
 
 // Summary:
 //
-<<<<<<< Updated upstream
-// 接受大容量sql文件的更新节点内容API
-=======
 // 大sql更新节点专用
->>>>>>> Stashed changes
 //
 // @param request - UpdateTaskContentV2Request
 //
