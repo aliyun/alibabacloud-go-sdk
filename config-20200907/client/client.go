@@ -1249,8 +1249,11 @@ type CreateAggregateCompliancePackRequest struct {
 	// example:
 	//
 	// 1
-	RiskLevel *int32                                     `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	Tag       []*CreateAggregateCompliancePackRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The tags of the resource.
+	//
+	// You can add up to 20 tags to a resource.
+	Tag []*CreateAggregateCompliancePackRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The tag key of the resource that you want to evaluate by using the compliance package.
 	//
 	// example:
@@ -1539,7 +1542,21 @@ func (s *CreateAggregateCompliancePackRequestExcludeTagsScope) SetTagValue(v str
 }
 
 type CreateAggregateCompliancePackRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the tag that is added to the resource.
+	//
+	// You can add up to 20 tag keys to a resource.
+	//
+	// example:
+	//
+	// key-1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag that is added to the resource.
+	//
+	// You can add up to 20 tag values to a resource.
+	//
+	// example:
+	//
+	// value-1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1696,7 +1713,10 @@ type CreateAggregateCompliancePackShrinkRequest struct {
 	// example:
 	//
 	// 1
-	RiskLevel *int32  `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The tags of the resource.
+	//
+	// You can add up to 20 tags to a resource.
 	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 	// The tag key of the resource that you want to evaluate by using the compliance package.
 	//
@@ -2448,8 +2468,9 @@ type CreateAggregateConfigRuleRequest struct {
 	// example:
 	//
 	// ALIYUN
-	SourceOwner *string                                `json:"SourceOwner,omitempty" xml:"SourceOwner,omitempty"`
-	Tag         []*CreateAggregateConfigRuleRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	SourceOwner *string `json:"SourceOwner,omitempty" xml:"SourceOwner,omitempty"`
+	// The tags.
+	Tag []*CreateAggregateConfigRuleRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The logical relationship among the tag keys if you specify multiple tag keys for the `TagKeyScope` parameter. For example, if you set the `TagKeyScope` parameter to `ECS,OSS` and the TagKeyLogicScope parameter to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
 	//
 	// 	- AND
@@ -2662,7 +2683,25 @@ func (s *CreateAggregateConfigRuleRequestExcludeTagsScope) SetTagValue(v string)
 }
 
 type CreateAggregateConfigRuleRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	//
+	// The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	//
+	// You can specify at most 20 tag keys.
+	//
+	// example:
+	//
+	// key-1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag values.
+	//
+	// The tag values can be an empty string or up to 128 characters in length. The tag values cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+	//
+	// Each key-value must be unique. You can specify at most 20 tag values in each call.
+	//
+	// example:
+	//
+	// value-1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2920,7 +2959,8 @@ type CreateAggregateConfigRuleShrinkRequest struct {
 	//
 	// ALIYUN
 	SourceOwner *string `json:"SourceOwner,omitempty" xml:"SourceOwner,omitempty"`
-	TagShrink   *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The tags.
+	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 	// The logical relationship among the tag keys if you specify multiple tag keys for the `TagKeyScope` parameter. For example, if you set the `TagKeyScope` parameter to `ECS,OSS` and the TagKeyLogicScope parameter to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
 	//
 	// 	- AND
@@ -3493,8 +3533,11 @@ type CreateAggregatorRequest struct {
 	// example:
 	//
 	// fd-brHdgv****
-	FolderId *string                       `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	Tag      []*CreateAggregatorRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
+	// The tags of the resource.
+	//
+	// You can add up to 20 tags to a resource.
+	Tag []*CreateAggregatorRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s CreateAggregatorRequest) String() string {
@@ -3585,7 +3628,23 @@ func (s *CreateAggregatorRequestAggregatorAccounts) SetAccountType(v string) *Cr
 }
 
 type CreateAggregatorRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key of the resource. You can specify up to 20 tag keys.
+	//
+	// The tag key cannot be an empty string. The tag key must be 1 to 64 characters in length and cannot start with `aliyun` or `acs`:. The tag key cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// key-1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag values.
+	//
+	// The tag values can be an empty string or up to 128 characters in length. The tag values cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+	//
+	// Each key-value must be unique. You can specify at most 20 tag values in each call.
+	//
+	// example:
+	//
+	// value-1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -3672,7 +3731,10 @@ type CreateAggregatorShrinkRequest struct {
 	// example:
 	//
 	// fd-brHdgv****
-	FolderId  *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
+	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
+	// The tags of the resource.
+	//
+	// You can add up to 20 tags to a resource.
 	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
@@ -3874,8 +3936,11 @@ type CreateCompliancePackRequest struct {
 	// example:
 	//
 	// 1
-	RiskLevel *int32                            `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	Tag       []*CreateCompliancePackRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The tags of the resource.
+	//
+	// You can add up to 20 tags to a resource.
+	Tag []*CreateCompliancePackRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The tag key of the resource that you want to evaluate by using the compliance package.
 	//
 	// example:
@@ -4157,7 +4222,25 @@ func (s *CreateCompliancePackRequestExcludeTagsScope) SetTagValue(v string) *Cre
 }
 
 type CreateCompliancePackRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag keys.
+	//
+	// The tag keys cannot be an empty string. The tag keys can be up to 64 characters in length. The tag keys cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+	//
+	// You can specify at most 20 tag keys in each call.
+	//
+	// example:
+	//
+	// key-1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag values.
+	//
+	// The tag values can be an empty string or up to 128 characters in length. The tag values cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+	//
+	// Each key-value must be unique. You can specify at most 20 tag values in each call.
+	//
+	// example:
+	//
+	// value-1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -4305,7 +4388,10 @@ type CreateCompliancePackShrinkRequest struct {
 	// example:
 	//
 	// 1
-	RiskLevel *int32  `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The tags of the resource.
+	//
+	// You can add up to 20 tags to a resource.
 	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 	// The tag key of the resource that you want to evaluate by using the compliance package.
 	//
@@ -4603,25 +4689,35 @@ type CreateConfigDeliveryChannelRequest struct {
 	//
 	// false
 	ConfigurationSnapshot *bool `json:"ConfigurationSnapshot,omitempty" xml:"ConfigurationSnapshot,omitempty"`
-	// The rule that you want to attach to the delivery channel. This parameter is available when you deliver data of all types to MNS or deliver snapshots to Log Service.
+	// The rule that you want to attach to the delivery channel, used to specify subscription content filtering conditions.
 	//
-	// 	- If the value of the DeliveryChannelType parameter is MNS, take note of the following settings of the lowest risk level and resource types of the events to which you subscribed:
+	// 	- If you specify the minimum risk level and resource types for compliance events, it should be as follows:
 	//
 	//     	- The setting of the lowest risk level for the events to which you want to subscribe is in the following format: `{"filterType":"RuleRiskLevel","value":"1","multiple":false}`.
 	//
 	//         The `value` field indicates the lowest risk level of the events to which you want to subscribe. Valid values: 1, 2, and 3. The value 1 indicates the high risk level, the value 2 indicates the medium risk level, and the value 3 indicates the low risk level.
 	//
+	//         The `multiple` field indicates whether multiple values are supported for this group of filters. Risk levels only support single-value filtering, so the multiple field for compliance event type content can only be set to `false`.
+	//
 	//     	- The setting of the resource types of the events to which you want to subscribe is in the following format: `{"filterType":"ResourceType","values":["ACS::ACK::Cluster","ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage"],"multiple":true}`.
 	//
-	//         The `values` field indicates the resource types of the events to which you want to subscribe. The value of the field is a JSON array. Examples:
+	//         The `values` field indicates the resource types of the events to which you want to subscribe.
 	//
-	// `[{"filterType":"ResourceType","values":["ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage","ACS::CDN::Domain","ACS::CEN::CenBandwidthPackage","ACS::CEN::CenInstance","ACS::CEN::Flowlog","ACS::DdosCoo::Instance"],"multiple":true}]`
+	//         The `multiple` field indicates whether multiple values are supported for this group of filters. Resource types support multi-value filtering; when selecting multiple resource types, the multiple field can be set to true.
 	//
-	// 	- If you set the DeliveryChannelType parameter to SLS, the setting of the resource types of the snapshots to which you want to deliver is in the following format: `{"filterType":"ResourceType","values":["ACS::ACK::Cluster","ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage"],"multiple":true}`.
+	// The value of the field is a JSON array. Examples:
+	//
+	//         `[{"filterType":"ResourceType","values":["ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage","ACS::CDN::Domain","ACS::CEN::CenBandwidthPackage","ACS::CEN::CenInstance","ACS::CEN::Flowlog","ACS::DdosCoo::Instance"],"multiple":true}]`
+	//
+	//     	- You can also simultaneously specify both risk levels and resource types, such as:
+	//
+	//         `[{"filterType":"RuleRiskLevel","value":"2","multiple":false},{"filterType":"ResourceType","values":["ACS::CDN::Domain","ACS::ActionTrail::Trail"],"multiple":true}]`
+	//
+	// 	- If you specify the resource types for delivering configurations, the resource types are specified by: `{"filterType":"ResourceType","values":["ACS::ACK::Cluster","ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage"],"multiple":true}`.
 	//
 	//     The `values` field specifies the resource types of the snapshots to which you want to deliver. The value of the field is a JSON array. Examples:
 	//
-	// `[{"filterType":"ResourceType","values":["ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage","ACS::CDN::Domain","ACS::CEN::CenBandwidthPackage","ACS::CEN::CenInstance","ACS::CEN::Flowlog","ACS::DdosCoo::Instance"],"multiple":true}]`
+	//       `[{"filterType":"ResourceType","values":["ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage","ACS::CDN::Domain","ACS::CEN::CenBandwidthPackage","ACS::CEN::CenInstance","ACS::CEN::Flowlog","ACS::DdosCoo::Instance"],"multiple":true}]`
 	//
 	// example:
 	//
@@ -9875,8 +9971,11 @@ type GetAggregateCompliancePackRequest struct {
 	// example:
 	//
 	// cp-fdc8626622af00f9****
-	CompliancePackId *string                                 `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
-	Tag              []*GetAggregateCompliancePackRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
+	// The tags of the resource.
+	//
+	// You can add up to 20 tags to a resource.
+	Tag []*GetAggregateCompliancePackRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s GetAggregateCompliancePackRequest) String() string {
@@ -9903,7 +10002,23 @@ func (s *GetAggregateCompliancePackRequest) SetTag(v []*GetAggregateCompliancePa
 }
 
 type GetAggregateCompliancePackRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key of the resource. You can specify up to 20 tag keys.
+	//
+	// The tag key cannot be an empty string. The tag key must be 1 to 64 characters in length and cannot start with `aliyun` or `acs`:. The tag key cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// key-1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag values.
+	//
+	// The tag values can be an empty string or up to 128 characters in length. The tag values cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+	//
+	// Each key-value must be unique. You can specify at most 20 tag values in each call.
+	//
+	// example:
+	//
+	// value-1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -9946,7 +10061,10 @@ type GetAggregateCompliancePackShrinkRequest struct {
 	//
 	// cp-fdc8626622af00f9****
 	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
-	TagShrink        *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The tags of the resource.
+	//
+	// You can add up to 20 tags to a resource.
+	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
 func (s GetAggregateCompliancePackShrinkRequest) String() string {
@@ -10069,8 +10187,9 @@ type GetAggregateCompliancePackResponseBodyCompliancePack struct {
 	// example:
 	//
 	// ACTIVE
-	Status *string                                                     `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags   []*GetAggregateCompliancePackResponseBodyCompliancePackTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tags.
+	Tags []*GetAggregateCompliancePackResponseBodyCompliancePackTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The information about the current compliance package template. The rules in the template do not contain custom function rules. You can quickly create the same compliance package for other accounts or account groups based on the template information.
 	//
 	// example:
@@ -10520,7 +10639,17 @@ func (s *GetAggregateCompliancePackResponseBodyCompliancePackScopeTagsScope) Set
 }
 
 type GetAggregateCompliancePackResponseBodyCompliancePackTags struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag keys of the resource.
+	//
+	// example:
+	//
+	// key-1
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag values of the resource.
+	//
+	// example:
+	//
+	// value-1
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -15333,8 +15462,11 @@ type GetAggregatorRequest struct {
 	// example:
 	//
 	// ca-88ea626622af0055****
-	AggregatorId *string                    `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	Tag          []*GetAggregatorRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The tags of the resource.
+	//
+	// You can add up to 20 tags to a resource.
+	Tag []*GetAggregatorRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s GetAggregatorRequest) String() string {
@@ -15356,7 +15488,25 @@ func (s *GetAggregatorRequest) SetTag(v []*GetAggregatorRequestTag) *GetAggregat
 }
 
 type GetAggregatorRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	//
+	// The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	//
+	// You can specify at most 20 tag keys.
+	//
+	// example:
+	//
+	// key-1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag values.
+	//
+	// The tag values can be an empty string or up to 128 characters in length. The tag values cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+	//
+	// Each key-value must be unique. You can specify at most 20 tag values in each call.
+	//
+	// example:
+	//
+	// value-1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -15387,7 +15537,10 @@ type GetAggregatorShrinkRequest struct {
 	//
 	// ca-88ea626622af0055****
 	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	TagShrink    *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The tags of the resource.
+	//
+	// You can add up to 20 tags to a resource.
+	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
 func (s GetAggregatorShrinkRequest) String() string {
@@ -15505,8 +15658,9 @@ type GetAggregatorResponseBodyAggregator struct {
 	// example:
 	//
 	// fd-brHdgv****
-	FolderId *string                                    `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	Tags     []*GetAggregatorResponseBodyAggregatorTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
+	// tags
+	Tags []*GetAggregatorResponseBodyAggregatorTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s GetAggregatorResponseBodyAggregator) String() string {
@@ -15639,7 +15793,17 @@ func (s *GetAggregatorResponseBodyAggregatorAggregatorAccounts) SetRecorderStatu
 }
 
 type GetAggregatorResponseBodyAggregatorTags struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// key-1
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// value-1
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -15700,8 +15864,11 @@ type GetCompliancePackRequest struct {
 	// example:
 	//
 	// cp-a8a8626622af0082****
-	CompliancePackId *string                        `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
-	Tag              []*GetCompliancePackRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
+	// The tags of the resource.
+	//
+	// You can add up to 20 tags to a resource.
+	Tag []*GetCompliancePackRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s GetCompliancePackRequest) String() string {
@@ -15723,7 +15890,21 @@ func (s *GetCompliancePackRequest) SetTag(v []*GetCompliancePackRequestTag) *Get
 }
 
 type GetCompliancePackRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	//
+	// The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	//
+	// You can specify at most 20 tag keys.
+	//
+	// example:
+	//
+	// key-1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value. The tag value can be up to 256 characters in length and cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// value-1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -15756,7 +15937,10 @@ type GetCompliancePackShrinkRequest struct {
 	//
 	// cp-a8a8626622af0082****
 	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
-	TagShrink        *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The tags of the resource.
+	//
+	// You can add up to 20 tags to a resource.
+	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
 func (s GetCompliancePackShrinkRequest) String() string {
@@ -15868,71 +16052,112 @@ type GetCompliancePackResponseBodyCompliancePack struct {
 	// example:
 	//
 	// ACTIVE
-	Status *string                                            `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags   []*GetCompliancePackResponseBodyCompliancePackTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The list of tags.
+	Tags []*GetCompliancePackResponseBodyCompliancePackTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The information about the current compliance package template. The rules in the template do not contain custom function rules. You can quickly create the same compliance package for other accounts or account groups based on the template information.
 	//
 	// example:
 	//
 	// {
 	//
-	//       "configRuleTemplates": [
+	//     "configRuleTemplates": [
 	//
 	//         {
 	//
-	//           "configRuleName": "弹性IP实例带宽满足最低要求",
+	//             "configRuleName": "rule-example",
 	//
-	//           "scope": {
+	//             "scope": {
 	//
-	//             "complianceResourceTypes": [
+	//                 "complianceResourceTypes": [
 	//
-	//               "ACS::EIP::EipAddress"
+	//                     "ACS::ECS::Instance"
 	//
-	//             ]
+	//                 ]
 	//
-	//           },
+	//             },
 	//
-	//           "description": "弹性IP实例可用带宽大于等于指定参数值，视为“合规”。默认值：10MB",
+	//             "description": "",
 	//
-	//           "source": {
+	//             "source": {
 	//
-	//             "owner": "ALIYUN",
+	//                 "owner": "CUSTOM_CONFIGURATION",
 	//
-	//             "identifier": "eip-bandwidth-limit",
+	//                 "identifier": "acs-config-configuration",
 	//
-	//             "sourceDetails": [
+	//                 "sourceDetails": [
 	//
-	//               {
+	//                     {
 	//
-	//                 "messageType": "ConfigurationItemChangeNotification"
+	//                         "messageType": "ScheduledNotification",
 	//
-	//               }
+	//                         "maximumExecutionFrequency": "Twelve_Hours"
 	//
-	//             ]
+	//                     },
 	//
-	//           },
+	//                     {
 	//
-	//           "inputParameters": {
+	//                         "messageType": "ConfigurationItemChangeNotification"
 	//
-	//             "bandwidth": "10"
+	//                     }
 	//
-	//           }
+	//                 ],
+	//
+	//                 "conditions": "{\\"ComplianceConditions\\":\\"{\\\\\\"operator\\\\\\":\\\\\\"and\\\\\\",\\\\\\"children\\\\\\":[{\\\\\\"operator\\\\\\":\\\\\\"GreaterOrEquals\\\\\\",\\\\\\"featurePath\\\\\\":\\\\\\"$.Cpu\\\\\\",\\\\\\"featureSource\\\\\\":\\\\\\"CONFIGURATION\\\\\\",\\\\\\"desired\\\\\\":\\\\\\"2\\\\\\"}]}\\"}"
+	//
+	//             },
+	//
+	//             "inputParameters": {}
+	//
+	//         },
+	//
+	//         {
+	//
+	//             "configRuleName": "name",
+	//
+	//             "scope": {
+	//
+	//                 "complianceResourceTypes": [
+	//
+	//                     "ACS::OSS::Bucket"
+	//
+	//                 ]
+	//
+	//             },
+	//
+	//             "description": "description-1",
+	//
+	//             "source": {
+	//
+	//                 "owner": "ALIYUN",
+	//
+	//                 "identifier": "oss-bucket-referer-limit",
+	//
+	//                 "sourceDetails": [
+	//
+	//                     {
+	//
+	//                         "messageType": "ConfigurationItemChangeNotification"
+	//
+	//                     }
+	//
+	//                 ]
+	//
+	//             },
+	//
+	//             "inputParameters": {
+	//
+	//                 "allowEmptyReferer": "true",
+	//
+	//                 "allowReferers": "http://www.aliyun.com"
+	//
+	//             }
 	//
 	//         }
 	//
-	//       ],
+	//     ]
 	//
-	//       "compliancePackTemplate": {
-	//
-	//         "riskLevel": 2,
-	//
-	//         "compliancePackName": "gy-test",
-	//
-	//         "description": ""
-	//
-	//       }
-	//
-	//     }
+	// }
 	TemplateContent *string `json:"TemplateContent,omitempty" xml:"TemplateContent,omitempty"`
 }
 
@@ -16143,13 +16368,13 @@ func (s *GetCompliancePackResponseBodyCompliancePackConfigRulesConfigRuleParamet
 }
 
 type GetCompliancePackResponseBodyCompliancePackScope struct {
-	// Excluded region scope, multiple regions should be separated by commas.
+	// The IDs of regions that are excluded. Separate multiple region IDs with commas (,).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	ExcludeRegionIdsScope *string `json:"ExcludeRegionIdsScope,omitempty" xml:"ExcludeRegionIdsScope,omitempty"`
-	// Excluded resourceGroup scope, multiple resourceGroup should be separated by commas.
+	// The IDs of the resource groups whose resources you do not want to evaluate by using the compliance package. Separate multiple resource group IDs with commas (,).
 	//
 	// example:
 	//
@@ -16161,7 +16386,7 @@ type GetCompliancePackResponseBodyCompliancePackScope struct {
 	//
 	// eip-8vbf3x310fn56ijfd****
 	ExcludeResourceIdsScope *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
-	// Exclude tag scope.
+	// The scope of the tag that is excluded.
 	//
 	// This parameter is required.
 	ExcludeTagsScope []*GetCompliancePackResponseBodyCompliancePackScopeExcludeTagsScope `json:"ExcludeTagsScope,omitempty" xml:"ExcludeTagsScope,omitempty" type:"Repeated"`
@@ -16177,7 +16402,7 @@ type GetCompliancePackResponseBodyCompliancePackScope struct {
 	//
 	// rg-aekzc7r7rhx****
 	ResourceGroupIdsScope *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
-	// Include ResourceId scope, multiple resourceIds should be separated by commas.
+	// The IDs of the resources to which the rule applies. Separate multiple resource IDs with commas (,).
 	//
 	// example:
 	//
@@ -16195,7 +16420,7 @@ type GetCompliancePackResponseBodyCompliancePackScope struct {
 	//
 	// test
 	TagValueScope *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
-	// Include tag scope.
+	// The tag scope.
 	//
 	// This parameter is required.
 	TagsScope []*GetCompliancePackResponseBodyCompliancePackScopeTagsScope `json:"TagsScope,omitempty" xml:"TagsScope,omitempty" type:"Repeated"`
@@ -16260,13 +16485,13 @@ func (s *GetCompliancePackResponseBodyCompliancePackScope) SetTagsScope(v []*Get
 }
 
 type GetCompliancePackResponseBodyCompliancePackScopeExcludeTagsScope struct {
-	// The tag key.
+	// The key of the tag.
 	//
 	// example:
 	//
 	// key-2
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value.
+	// The value of the tag.
 	//
 	// example:
 	//
@@ -16293,13 +16518,13 @@ func (s *GetCompliancePackResponseBodyCompliancePackScopeExcludeTagsScope) SetTa
 }
 
 type GetCompliancePackResponseBodyCompliancePackScopeTagsScope struct {
-	// The tag key.
+	// The key of the tag.
 	//
 	// example:
 	//
 	// key-1
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value.
+	// The value of the tag.
 	//
 	// example:
 	//
@@ -16326,7 +16551,17 @@ func (s *GetCompliancePackResponseBodyCompliancePackScopeTagsScope) SetTagValue(
 }
 
 type GetCompliancePackResponseBodyCompliancePackTags struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag keys of the resource.
+	//
+	// example:
+	//
+	// key-1
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag values of the resource.
+	//
+	// example:
+	//
+	// value-1
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -21875,8 +22110,9 @@ type ListAggregateCompliancePacksRequest struct {
 	// example:
 	//
 	// ACTIVE
-	Status *string                                   `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tag    []*ListAggregateCompliancePacksRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tags.
+	Tag []*ListAggregateCompliancePacksRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListAggregateCompliancePacksRequest) String() string {
@@ -21913,7 +22149,23 @@ func (s *ListAggregateCompliancePacksRequest) SetTag(v []*ListAggregateComplianc
 }
 
 type ListAggregateCompliancePacksRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key of the resource. You can specify up to 20 tag keys.
+	//
+	// The tag key cannot be an empty string. The tag key must be 1 to 64 characters in length and cannot start with `aliyun` or `acs`:. The tag key cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// key-1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag values.
+	//
+	// The tag values can be an empty string or up to 128 characters in length. The tag values cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+	//
+	// Each key-value must be unique. You can specify at most 20 tag values in each call.
+	//
+	// example:
+	//
+	// value-1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -21971,7 +22223,8 @@ type ListAggregateCompliancePacksShrinkRequest struct {
 	// example:
 	//
 	// ACTIVE
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tags.
 	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
@@ -22009,7 +22262,7 @@ func (s *ListAggregateCompliancePacksShrinkRequest) SetTagShrink(v string) *List
 }
 
 type ListAggregateCompliancePacksResponseBody struct {
-	// The information about the compliance packages.
+	// The compliance packages returned.
 	CompliancePacksResult *ListAggregateCompliancePacksResponseBodyCompliancePacksResult `json:"CompliancePacksResult,omitempty" xml:"CompliancePacksResult,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -22038,7 +22291,7 @@ func (s *ListAggregateCompliancePacksResponseBody) SetRequestId(v string) *ListA
 }
 
 type ListAggregateCompliancePacksResponseBodyCompliancePacksResult struct {
-	// The details of the compliance package.
+	// The compliance packages.
 	CompliancePacks []*ListAggregateCompliancePacksResponseBodyCompliancePacksResultCompliancePacks `json:"CompliancePacks,omitempty" xml:"CompliancePacks,omitempty" type:"Repeated"`
 	// The page number of the returned page.
 	//
@@ -22152,8 +22405,9 @@ type ListAggregateCompliancePacksResponseBodyCompliancePacksResultCompliancePack
 	// example:
 	//
 	// ACTIVE
-	Status *string                                                                             `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags   []*ListAggregateCompliancePacksResponseBodyCompliancePacksResultCompliancePacksTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tags.
+	Tags []*ListAggregateCompliancePacksResponseBodyCompliancePacksResultCompliancePacksTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListAggregateCompliancePacksResponseBodyCompliancePacksResultCompliancePacks) String() string {
@@ -22215,7 +22469,17 @@ func (s *ListAggregateCompliancePacksResponseBodyCompliancePacksResultCompliance
 }
 
 type ListAggregateCompliancePacksResponseBodyCompliancePacksResultCompliancePacksTags struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// key-1
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// value-1
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -23380,8 +23644,11 @@ type ListAggregateConfigRulesRequest struct {
 	// example:
 	//
 	// 1
-	RiskLevel *int32                                `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	Tag       []*ListAggregateConfigRulesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The tags of the resource.
+	//
+	// You can add up to 20 tags to a resource.
+	Tag []*ListAggregateConfigRulesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListAggregateConfigRulesRequest) String() string {
@@ -23448,7 +23715,23 @@ func (s *ListAggregateConfigRulesRequest) SetTag(v []*ListAggregateConfigRulesRe
 }
 
 type ListAggregateConfigRulesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	//
+	// The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	//
+	// You can specify at most 20 tag keys.
+	//
+	// example:
+	//
+	// key-1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag. You can specify up to 20 tag values. The tag value can be an empty string.
+	//
+	// The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. The tag value cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// value-1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -23562,7 +23845,10 @@ type ListAggregateConfigRulesShrinkRequest struct {
 	// example:
 	//
 	// 1
-	RiskLevel *int32  `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The tags of the resource.
+	//
+	// You can add up to 20 tags to a resource.
 	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
@@ -25958,8 +26244,11 @@ type ListAggregatorsRequest struct {
 	// example:
 	//
 	// TGlzdFJlc291cmNlU2hhcmVzJjE1MTI2NjY4NzY5MTAzOTEmMiZORnI4NDhVeEtrUT0
-	NextToken *string                      `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Tag       []*ListAggregatorsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The tags of the resource.
+	//
+	// You can add up to 20 tags to a resource.
+	Tag []*ListAggregatorsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListAggregatorsRequest) String() string {
@@ -25986,7 +26275,23 @@ func (s *ListAggregatorsRequest) SetTag(v []*ListAggregatorsRequestTag) *ListAgg
 }
 
 type ListAggregatorsRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key of the resource. You can specify up to 20 tag keys.
+	//
+	// The tag key cannot be an empty string. The tag key must be 1 to 64 characters in length and cannot start with `aliyun` or `acs`:. The tag key cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// key-1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag values.
+	//
+	// The tag values can be an empty string or up to 128 characters in length. The tag values cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+	//
+	// Each key-value must be unique. You can specify at most 20 tag values in each call.
+	//
+	// example:
+	//
+	// value-1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -26023,6 +26328,9 @@ type ListAggregatorsShrinkRequest struct {
 	//
 	// TGlzdFJlc291cmNlU2hhcmVzJjE1MTI2NjY4NzY5MTAzOTEmMiZORnI4NDhVeEtrUT0
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The tags of the resource.
+	//
+	// You can add up to 20 tags to a resource.
 	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
@@ -26171,8 +26479,9 @@ type ListAggregatorsResponseBodyAggregatorsResultAggregators struct {
 	// example:
 	//
 	// r-BU****
-	FolderId *string                                                        `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	Tags     []*ListAggregatorsResponseBodyAggregatorsResultAggregatorsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
+	// tags
+	Tags []*ListAggregatorsResponseBodyAggregatorsResultAggregatorsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListAggregatorsResponseBodyAggregatorsResultAggregators) String() string {
@@ -26234,7 +26543,17 @@ func (s *ListAggregatorsResponseBodyAggregatorsResultAggregators) SetTags(v []*L
 }
 
 type ListAggregatorsResponseBodyAggregatorsResultAggregatorsTags struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag keys of the resource.
+	//
+	// example:
+	//
+	// key-1
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag values of the resource.
+	//
+	// example:
+	//
+	// value-1
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -26735,8 +27054,11 @@ type ListCompliancePacksRequest struct {
 	// example:
 	//
 	// ACTIVE
-	Status *string                          `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tag    []*ListCompliancePacksRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tags of the resource.
+	//
+	// You can add up to 20 tags to a resource.
+	Tag []*ListCompliancePacksRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListCompliancePacksRequest) String() string {
@@ -26768,7 +27090,23 @@ func (s *ListCompliancePacksRequest) SetTag(v []*ListCompliancePacksRequestTag) 
 }
 
 type ListCompliancePacksRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key of the resource. You can specify up to 20 tag keys.
+	//
+	// The tag key cannot be an empty string. The tag key must be 1 to 64 characters in length and cannot start with `aliyun` or `acs`:. The tag key cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// key-1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag values.
+	//
+	// The tag values can be an empty string or up to 128 characters in length. The tag values cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+	//
+	// Each key-value must be unique. You can specify at most 20 tag values in each call.
+	//
+	// example:
+	//
+	// value-1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -26816,7 +27154,10 @@ type ListCompliancePacksShrinkRequest struct {
 	// example:
 	//
 	// ACTIVE
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tags of the resource.
+	//
+	// You can add up to 20 tags to a resource.
 	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
@@ -26986,8 +27327,9 @@ type ListCompliancePacksResponseBodyCompliancePacksResultCompliancePacks struct 
 	// example:
 	//
 	// ACTIVE
-	Status *string                                                                    `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags   []*ListCompliancePacksResponseBodyCompliancePacksResultCompliancePacksTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tags.
+	Tags []*ListCompliancePacksResponseBodyCompliancePacksResultCompliancePacksTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListCompliancePacksResponseBodyCompliancePacksResultCompliancePacks) String() string {
@@ -27044,7 +27386,17 @@ func (s *ListCompliancePacksResponseBodyCompliancePacksResultCompliancePacks) Se
 }
 
 type ListCompliancePacksResponseBodyCompliancePacksResultCompliancePacksTags struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// tag key
+	//
+	// example:
+	//
+	// key-1
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// tag value
+	//
+	// example:
+	//
+	// value-1
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -29254,6 +29606,7 @@ func (s *ListIntegratedServiceResponse) SetBody(v *ListIntegratedServiceResponse
 }
 
 type ListManagedRulesRequest struct {
+	FilterType *string `json:"FilterType,omitempty" xml:"FilterType,omitempty"`
 	// The keyword of the managed rule.
 	//
 	// example:
@@ -29302,6 +29655,11 @@ func (s ListManagedRulesRequest) String() string {
 
 func (s ListManagedRulesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListManagedRulesRequest) SetFilterType(v string) *ListManagedRulesRequest {
+	s.FilterType = &v
+	return s
 }
 
 func (s *ListManagedRulesRequest) SetKeyword(v string) *ListManagedRulesRequest {
@@ -35828,8 +36186,11 @@ type UpdateAggregatorRequest struct {
 	// example:
 	//
 	// Test_Aggregator_Description
-	Description *string                       `json:"Description,omitempty" xml:"Description,omitempty"`
-	Tag         []*UpdateAggregatorRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The tags of the resource.
+	//
+	// You can add up to 20 tags to a resource.
+	Tag []*UpdateAggregatorRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s UpdateAggregatorRequest) String() string {
@@ -35925,7 +36286,23 @@ func (s *UpdateAggregatorRequestAggregatorAccounts) SetAccountType(v string) *Up
 }
 
 type UpdateAggregatorRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key of the resource. You can specify up to 20 tag keys.
+	//
+	// The tag key cannot be an empty string. The tag key must be 1 to 64 characters in length and cannot start with `aliyun` or `acs`:. The tag key cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// key-1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag values.
+	//
+	// The tag values can be an empty string or up to 128 characters in length. The tag values cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+	//
+	// Each key-value must be unique. You can specify at most 20 tag values in each call.
+	//
+	// example:
+	//
+	// value-1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -35987,7 +36364,10 @@ type UpdateAggregatorShrinkRequest struct {
 	//
 	// Test_Aggregator_Description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	TagShrink   *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The tags of the resource.
+	//
+	// You can add up to 20 tags to a resource.
+	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
 func (s UpdateAggregatorShrinkRequest) String() string {
@@ -36174,8 +36554,11 @@ type UpdateCompliancePackRequest struct {
 	// example:
 	//
 	// 1
-	RiskLevel *int32                            `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	Tag       []*UpdateCompliancePackRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The tags of the resource.
+	//
+	// You can add up to 20 tags to a resource.
+	Tag []*UpdateCompliancePackRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The tag key of the resource that you want to evaluate by using the compliance package.
 	//
 	// example:
@@ -36441,7 +36824,25 @@ func (s *UpdateCompliancePackRequestExcludeTagsScope) SetTagValue(v string) *Upd
 }
 
 type UpdateCompliancePackRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag keys.
+	//
+	// The tag keys cannot be an empty string. The tag keys can be up to 64 characters in length. The tag keys cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+	//
+	// You can specify at most 20 tag keys in each call.
+	//
+	// example:
+	//
+	// key-1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag values.
+	//
+	// The tag values can be an empty string or up to 128 characters in length. The tag values cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+	//
+	// Each key-value must be unique. You can specify at most 20 tag values in each call.
+	//
+	// example:
+	//
+	// value-1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -36580,7 +36981,10 @@ type UpdateCompliancePackShrinkRequest struct {
 	// example:
 	//
 	// 1
-	RiskLevel *int32  `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The tags of the resource.
+	//
+	// You can add up to 20 tags to a resource.
 	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 	// The tag key of the resource that you want to evaluate by using the compliance package.
 	//
@@ -48325,6 +48729,10 @@ func (client *Client) ListManagedRulesWithOptions(request *ListManagedRulesReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FilterType)) {
+		query["FilterType"] = request.FilterType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
 		query["Keyword"] = request.Keyword
 	}

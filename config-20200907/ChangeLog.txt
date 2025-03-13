@@ -1,3 +1,8 @@
+2025-03-13 Version: v2.4.13
+- Update API CreateConfigRule: update param Tag.
+- Update API ListManagedRules: add param FilterType.
+
+
 2025-01-21 Version: v2.4.12
 - Update API CreateAggregateCompliancePack: add param Tag.
 - Update API CreateAggregateConfigRule: add param Tag.
