@@ -358,6 +358,7 @@ type CreateJobRequestDeploymentPolicy struct {
 	//
 	// Dedicated
 	AllocationSpec *string                                  `json:"AllocationSpec,omitempty" xml:"AllocationSpec,omitempty"`
+	Level          *string                                  `json:"Level,omitempty" xml:"Level,omitempty"`
 	Network        *CreateJobRequestDeploymentPolicyNetwork `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
 	Tag            []*CreateJobRequestDeploymentPolicyTag   `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
@@ -372,6 +373,11 @@ func (s CreateJobRequestDeploymentPolicy) GoString() string {
 
 func (s *CreateJobRequestDeploymentPolicy) SetAllocationSpec(v string) *CreateJobRequestDeploymentPolicy {
 	s.AllocationSpec = &v
+	return s
+}
+
+func (s *CreateJobRequestDeploymentPolicy) SetLevel(v string) *CreateJobRequestDeploymentPolicy {
+	s.Level = &v
 	return s
 }
 
@@ -2385,6 +2391,7 @@ type GetJobResponseBodyJobInfoDeploymentPolicy struct {
 	//
 	// Dedicated
 	AllocationSpec *string                                           `json:"AllocationSpec,omitempty" xml:"AllocationSpec,omitempty"`
+	Level          *string                                           `json:"Level,omitempty" xml:"Level,omitempty"`
 	Network        *GetJobResponseBodyJobInfoDeploymentPolicyNetwork `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
 	Tags           []*GetJobResponseBodyJobInfoDeploymentPolicyTags  `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
@@ -2402,6 +2409,11 @@ func (s *GetJobResponseBodyJobInfoDeploymentPolicy) SetAllocationSpec(v string) 
 	return s
 }
 
+func (s *GetJobResponseBodyJobInfoDeploymentPolicy) SetLevel(v string) *GetJobResponseBodyJobInfoDeploymentPolicy {
+	s.Level = &v
+	return s
+}
+
 func (s *GetJobResponseBodyJobInfoDeploymentPolicy) SetNetwork(v *GetJobResponseBodyJobInfoDeploymentPolicyNetwork) *GetJobResponseBodyJobInfoDeploymentPolicy {
 	s.Network = v
 	return s
@@ -2413,6 +2425,7 @@ func (s *GetJobResponseBodyJobInfoDeploymentPolicy) SetTags(v []*GetJobResponseB
 }
 
 type GetJobResponseBodyJobInfoDeploymentPolicyNetwork struct {
+	EnableENIMapping        *bool     `json:"EnableENIMapping,omitempty" xml:"EnableENIMapping,omitempty"`
 	EnableExternalIpAddress *bool     `json:"EnableExternalIpAddress,omitempty" xml:"EnableExternalIpAddress,omitempty"`
 	Vswitch                 []*string `json:"Vswitch,omitempty" xml:"Vswitch,omitempty" type:"Repeated"`
 }
@@ -2423,6 +2436,11 @@ func (s GetJobResponseBodyJobInfoDeploymentPolicyNetwork) String() string {
 
 func (s GetJobResponseBodyJobInfoDeploymentPolicyNetwork) GoString() string {
 	return s.String()
+}
+
+func (s *GetJobResponseBodyJobInfoDeploymentPolicyNetwork) SetEnableENIMapping(v bool) *GetJobResponseBodyJobInfoDeploymentPolicyNetwork {
+	s.EnableENIMapping = &v
+	return s
 }
 
 func (s *GetJobResponseBodyJobInfoDeploymentPolicyNetwork) SetEnableExternalIpAddress(v bool) *GetJobResponseBodyJobInfoDeploymentPolicyNetwork {
