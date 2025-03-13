@@ -9,6 +9,86 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type AddDocumentInfo struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pdf
+	DocumentType *string `json:"documentType,omitempty" xml:"documentType,omitempty"`
+	// This parameter is required.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// This parameter is required.
+	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s AddDocumentInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDocumentInfo) GoString() string {
+	return s.String()
+}
+
+func (s *AddDocumentInfo) SetDocumentType(v string) *AddDocumentInfo {
+	s.DocumentType = &v
+	return s
+}
+
+func (s *AddDocumentInfo) SetName(v string) *AddDocumentInfo {
+	s.Name = &v
+	return s
+}
+
+func (s *AddDocumentInfo) SetUrl(v string) *AddDocumentInfo {
+	s.Url = &v
+	return s
+}
+
+type AddDocumentResult struct {
+	// example:
+	//
+	// example.pdf
+	DocName      *string       `json:"docName,omitempty" xml:"docName,omitempty"`
+	DocumentInfo *DocumentInfo `json:"documentInfo,omitempty" xml:"documentInfo,omitempty"`
+	// example:
+	//
+	// true
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s AddDocumentResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDocumentResult) GoString() string {
+	return s.String()
+}
+
+func (s *AddDocumentResult) SetDocName(v string) *AddDocumentResult {
+	s.DocName = &v
+	return s
+}
+
+func (s *AddDocumentResult) SetDocumentInfo(v *DocumentInfo) *AddDocumentResult {
+	s.DocumentInfo = v
+	return s
+}
+
+func (s *AddDocumentResult) SetErrorMessage(v string) *AddDocumentResult {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *AddDocumentResult) SetSuccess(v bool) *AddDocumentResult {
+	s.Success = &v
+	return s
+}
+
 type AnchorResponse struct {
 	AnchorCategory     *string `json:"anchorCategory,omitempty" xml:"anchorCategory,omitempty"`
 	AnchorId           *string `json:"anchorId,omitempty" xml:"anchorId,omitempty"`
@@ -107,6 +187,94 @@ func (s *AnchorResponse) SetSupportBgChange(v int32) *AnchorResponse {
 
 func (s *AnchorResponse) SetUseScene(v string) *AnchorResponse {
 	s.UseScene = &v
+	return s
+}
+
+type BatchAddDocumentResult struct {
+	// This parameter is required.
+	AddDocumentResults []*AddDocumentResult `json:"addDocumentResults,omitempty" xml:"addDocumentResults,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 3239281273464326823
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s BatchAddDocumentResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchAddDocumentResult) GoString() string {
+	return s.String()
+}
+
+func (s *BatchAddDocumentResult) SetAddDocumentResults(v []*AddDocumentResult) *BatchAddDocumentResult {
+	s.AddDocumentResults = v
+	return s
+}
+
+func (s *BatchAddDocumentResult) SetRequestId(v string) *BatchAddDocumentResult {
+	s.RequestId = &v
+	return s
+}
+
+type DocumentInfo struct {
+	DocumentType  *string `json:"documentType,omitempty" xml:"documentType,omitempty"`
+	Id            *string `json:"id,omitempty" xml:"id,omitempty"`
+	Name          *string `json:"name,omitempty" xml:"name,omitempty"`
+	ProcessStatus *string `json:"processStatus,omitempty" xml:"processStatus,omitempty"`
+}
+
+func (s DocumentInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DocumentInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DocumentInfo) SetDocumentType(v string) *DocumentInfo {
+	s.DocumentType = &v
+	return s
+}
+
+func (s *DocumentInfo) SetId(v string) *DocumentInfo {
+	s.Id = &v
+	return s
+}
+
+func (s *DocumentInfo) SetName(v string) *DocumentInfo {
+	s.Name = &v
+	return s
+}
+
+func (s *DocumentInfo) SetProcessStatus(v string) *DocumentInfo {
+	s.ProcessStatus = &v
+	return s
+}
+
+type DocumentResult struct {
+	DocumentInfo *DocumentInfo `json:"documentInfo,omitempty" xml:"documentInfo,omitempty"`
+	// example:
+	//
+	// 3239281273464326823
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s DocumentResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DocumentResult) GoString() string {
+	return s.String()
+}
+
+func (s *DocumentResult) SetDocumentInfo(v *DocumentInfo) *DocumentResult {
+	s.DocumentInfo = v
+	return s
+}
+
+func (s *DocumentResult) SetRequestId(v string) *DocumentResult {
+	s.RequestId = &v
 	return s
 }
 
@@ -333,6 +501,84 @@ func (s *IllustrationTaskResult) SetIllustrationTask(v *IllustrationTask) *Illus
 
 func (s *IllustrationTaskResult) SetRequestId(v string) *IllustrationTaskResult {
 	s.RequestId = &v
+	return s
+}
+
+type KnowledgeBaseInfo struct {
+	Description       *string `json:"description,omitempty" xml:"description,omitempty"`
+	Id                *string `json:"id,omitempty" xml:"id,omitempty"`
+	Industry          *string `json:"industry,omitempty" xml:"industry,omitempty"`
+	KnowledgeBaseType *string `json:"knowledgeBaseType,omitempty" xml:"knowledgeBaseType,omitempty"`
+	Name              *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s KnowledgeBaseInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s KnowledgeBaseInfo) GoString() string {
+	return s.String()
+}
+
+func (s *KnowledgeBaseInfo) SetDescription(v string) *KnowledgeBaseInfo {
+	s.Description = &v
+	return s
+}
+
+func (s *KnowledgeBaseInfo) SetId(v string) *KnowledgeBaseInfo {
+	s.Id = &v
+	return s
+}
+
+func (s *KnowledgeBaseInfo) SetIndustry(v string) *KnowledgeBaseInfo {
+	s.Industry = &v
+	return s
+}
+
+func (s *KnowledgeBaseInfo) SetKnowledgeBaseType(v string) *KnowledgeBaseInfo {
+	s.KnowledgeBaseType = &v
+	return s
+}
+
+func (s *KnowledgeBaseInfo) SetName(v string) *KnowledgeBaseInfo {
+	s.Name = &v
+	return s
+}
+
+type KnowledgeBaseListResult struct {
+	KnowledgeBases []*KnowledgeBaseInfo `json:"knowledgeBases,omitempty" xml:"knowledgeBases,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 3239281273464326823
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s KnowledgeBaseListResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s KnowledgeBaseListResult) GoString() string {
+	return s.String()
+}
+
+func (s *KnowledgeBaseListResult) SetKnowledgeBases(v []*KnowledgeBaseInfo) *KnowledgeBaseListResult {
+	s.KnowledgeBases = v
+	return s
+}
+
+func (s *KnowledgeBaseListResult) SetRequestId(v string) *KnowledgeBaseListResult {
+	s.RequestId = &v
+	return s
+}
+
+func (s *KnowledgeBaseListResult) SetTotal(v int32) *KnowledgeBaseListResult {
+	s.Total = &v
 	return s
 }
 
@@ -1161,6 +1407,52 @@ func (s *AddTextFeedbackResponse) SetBody(v *AddTextFeedbackResponseBody) *AddTe
 	return s
 }
 
+type BatchAddDocumentRequest struct {
+	AddDocumentInfos []*AddDocumentInfo `json:"addDocumentInfos,omitempty" xml:"addDocumentInfos,omitempty" type:"Repeated"`
+}
+
+func (s BatchAddDocumentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchAddDocumentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchAddDocumentRequest) SetAddDocumentInfos(v []*AddDocumentInfo) *BatchAddDocumentRequest {
+	s.AddDocumentInfos = v
+	return s
+}
+
+type BatchAddDocumentResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BatchAddDocumentResult `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s BatchAddDocumentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchAddDocumentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BatchAddDocumentResponse) SetHeaders(v map[string]*string) *BatchAddDocumentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BatchAddDocumentResponse) SetStatusCode(v int32) *BatchAddDocumentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BatchAddDocumentResponse) SetBody(v *BatchAddDocumentResult) *BatchAddDocumentResponse {
+	s.Body = v
+	return s
+}
+
 type BatchCreateAICoachTaskRequest struct {
 	// example:
 	//
@@ -1402,6 +1694,480 @@ func (s *BatchGetProjectTaskResponse) SetStatusCode(v int32) *BatchGetProjectTas
 }
 
 func (s *BatchGetProjectTaskResponse) SetBody(v *BatchGetProjectTaskResponseBody) *BatchGetProjectTaskResponse {
+	s.Body = v
+	return s
+}
+
+type BatchGetTrainTaskRequest struct {
+	// example:
+	//
+	// 1524004782431111
+	AliyunMainId *string   `json:"aliyunMainId,omitempty" xml:"aliyunMainId,omitempty"`
+	TaskIdList   []*string `json:"taskIdList,omitempty" xml:"taskIdList,omitempty" type:"Repeated"`
+}
+
+func (s BatchGetTrainTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchGetTrainTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchGetTrainTaskRequest) SetAliyunMainId(v string) *BatchGetTrainTaskRequest {
+	s.AliyunMainId = &v
+	return s
+}
+
+func (s *BatchGetTrainTaskRequest) SetTaskIdList(v []*string) *BatchGetTrainTaskRequest {
+	s.TaskIdList = v
+	return s
+}
+
+type BatchGetTrainTaskShrinkRequest struct {
+	// example:
+	//
+	// 1524004782431111
+	AliyunMainId     *string `json:"aliyunMainId,omitempty" xml:"aliyunMainId,omitempty"`
+	TaskIdListShrink *string `json:"taskIdList,omitempty" xml:"taskIdList,omitempty"`
+}
+
+func (s BatchGetTrainTaskShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchGetTrainTaskShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchGetTrainTaskShrinkRequest) SetAliyunMainId(v string) *BatchGetTrainTaskShrinkRequest {
+	s.AliyunMainId = &v
+	return s
+}
+
+func (s *BatchGetTrainTaskShrinkRequest) SetTaskIdListShrink(v string) *BatchGetTrainTaskShrinkRequest {
+	s.TaskIdListShrink = &v
+	return s
+}
+
+type BatchGetTrainTaskResponseBody struct {
+	// example:
+	//
+	// 2226A26A-26E5-5AB9-A14A-54D612FCF96A
+	RequestId *string                                   `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	VoiceList []*BatchGetTrainTaskResponseBodyVoiceList `json:"voiceList,omitempty" xml:"voiceList,omitempty" type:"Repeated"`
+}
+
+func (s BatchGetTrainTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchGetTrainTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BatchGetTrainTaskResponseBody) SetRequestId(v string) *BatchGetTrainTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *BatchGetTrainTaskResponseBody) SetVoiceList(v []*BatchGetTrainTaskResponseBodyVoiceList) *BatchGetTrainTaskResponseBody {
+	s.VoiceList = v
+	return s
+}
+
+type BatchGetTrainTaskResponseBodyVoiceList struct {
+	// example:
+	//
+	// 1524004782438111
+	AliyunSubId      *string `json:"aliyunSubId,omitempty" xml:"aliyunSubId,omitempty"`
+	AuditFailMessage *string `json:"auditFailMessage,omitempty" xml:"auditFailMessage,omitempty"`
+	// example:
+	//
+	// auditFail
+	AuditStatus *string `json:"auditStatus,omitempty" xml:"auditStatus,omitempty"`
+	// example:
+	//
+	// yyyy-MM-dd HH:mm:ss
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// example:
+	//
+	// M
+	Gender *string `json:"gender,omitempty" xml:"gender,omitempty"`
+	Name   *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// BASIC_MODEL
+	ResSpecType *string `json:"resSpecType,omitempty" xml:"resSpecType,omitempty"`
+	// example:
+	//
+	// 837091359375048704
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	// example:
+	//
+	// CopyVoice
+	TaskType         *string `json:"taskType,omitempty" xml:"taskType,omitempty"`
+	TrainFailMessage *string `json:"trainFailMessage,omitempty" xml:"trainFailMessage,omitempty"`
+	// example:
+	//
+	// trainFail
+	TrainStatus *string `json:"trainStatus,omitempty" xml:"trainStatus,omitempty"`
+	// example:
+	//
+	// realTimeInteractivity
+	UseScene      *string                                              `json:"useScene,omitempty" xml:"useScene,omitempty"`
+	VoiceMaterial *BatchGetTrainTaskResponseBodyVoiceListVoiceMaterial `json:"voiceMaterial,omitempty" xml:"voiceMaterial,omitempty" type:"Struct"`
+}
+
+func (s BatchGetTrainTaskResponseBodyVoiceList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchGetTrainTaskResponseBodyVoiceList) GoString() string {
+	return s.String()
+}
+
+func (s *BatchGetTrainTaskResponseBodyVoiceList) SetAliyunSubId(v string) *BatchGetTrainTaskResponseBodyVoiceList {
+	s.AliyunSubId = &v
+	return s
+}
+
+func (s *BatchGetTrainTaskResponseBodyVoiceList) SetAuditFailMessage(v string) *BatchGetTrainTaskResponseBodyVoiceList {
+	s.AuditFailMessage = &v
+	return s
+}
+
+func (s *BatchGetTrainTaskResponseBodyVoiceList) SetAuditStatus(v string) *BatchGetTrainTaskResponseBodyVoiceList {
+	s.AuditStatus = &v
+	return s
+}
+
+func (s *BatchGetTrainTaskResponseBodyVoiceList) SetCreateTime(v string) *BatchGetTrainTaskResponseBodyVoiceList {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *BatchGetTrainTaskResponseBodyVoiceList) SetGender(v string) *BatchGetTrainTaskResponseBodyVoiceList {
+	s.Gender = &v
+	return s
+}
+
+func (s *BatchGetTrainTaskResponseBodyVoiceList) SetName(v string) *BatchGetTrainTaskResponseBodyVoiceList {
+	s.Name = &v
+	return s
+}
+
+func (s *BatchGetTrainTaskResponseBodyVoiceList) SetResSpecType(v string) *BatchGetTrainTaskResponseBodyVoiceList {
+	s.ResSpecType = &v
+	return s
+}
+
+func (s *BatchGetTrainTaskResponseBodyVoiceList) SetTaskId(v string) *BatchGetTrainTaskResponseBodyVoiceList {
+	s.TaskId = &v
+	return s
+}
+
+func (s *BatchGetTrainTaskResponseBodyVoiceList) SetTaskType(v string) *BatchGetTrainTaskResponseBodyVoiceList {
+	s.TaskType = &v
+	return s
+}
+
+func (s *BatchGetTrainTaskResponseBodyVoiceList) SetTrainFailMessage(v string) *BatchGetTrainTaskResponseBodyVoiceList {
+	s.TrainFailMessage = &v
+	return s
+}
+
+func (s *BatchGetTrainTaskResponseBodyVoiceList) SetTrainStatus(v string) *BatchGetTrainTaskResponseBodyVoiceList {
+	s.TrainStatus = &v
+	return s
+}
+
+func (s *BatchGetTrainTaskResponseBodyVoiceList) SetUseScene(v string) *BatchGetTrainTaskResponseBodyVoiceList {
+	s.UseScene = &v
+	return s
+}
+
+func (s *BatchGetTrainTaskResponseBodyVoiceList) SetVoiceMaterial(v *BatchGetTrainTaskResponseBodyVoiceListVoiceMaterial) *BatchGetTrainTaskResponseBodyVoiceList {
+	s.VoiceMaterial = v
+	return s
+}
+
+type BatchGetTrainTaskResponseBodyVoiceListVoiceMaterial struct {
+	// example:
+	//
+	// 1
+	VoiceId *int64 `json:"voiceId,omitempty" xml:"voiceId,omitempty"`
+	// example:
+	//
+	// zh
+	VoiceLanguage *string `json:"voiceLanguage,omitempty" xml:"voiceLanguage,omitempty"`
+	// example:
+	//
+	// http://www.voice.com
+	VoiceUrl *string `json:"voiceUrl,omitempty" xml:"voiceUrl,omitempty"`
+}
+
+func (s BatchGetTrainTaskResponseBodyVoiceListVoiceMaterial) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchGetTrainTaskResponseBodyVoiceListVoiceMaterial) GoString() string {
+	return s.String()
+}
+
+func (s *BatchGetTrainTaskResponseBodyVoiceListVoiceMaterial) SetVoiceId(v int64) *BatchGetTrainTaskResponseBodyVoiceListVoiceMaterial {
+	s.VoiceId = &v
+	return s
+}
+
+func (s *BatchGetTrainTaskResponseBodyVoiceListVoiceMaterial) SetVoiceLanguage(v string) *BatchGetTrainTaskResponseBodyVoiceListVoiceMaterial {
+	s.VoiceLanguage = &v
+	return s
+}
+
+func (s *BatchGetTrainTaskResponseBodyVoiceListVoiceMaterial) SetVoiceUrl(v string) *BatchGetTrainTaskResponseBodyVoiceListVoiceMaterial {
+	s.VoiceUrl = &v
+	return s
+}
+
+type BatchGetTrainTaskResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BatchGetTrainTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s BatchGetTrainTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchGetTrainTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BatchGetTrainTaskResponse) SetHeaders(v map[string]*string) *BatchGetTrainTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BatchGetTrainTaskResponse) SetStatusCode(v int32) *BatchGetTrainTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BatchGetTrainTaskResponse) SetBody(v *BatchGetTrainTaskResponseBody) *BatchGetTrainTaskResponse {
+	s.Body = v
+	return s
+}
+
+type BatchGetVideoClipTaskRequest struct {
+	TaskIdList []*string `json:"taskIdList,omitempty" xml:"taskIdList,omitempty" type:"Repeated"`
+}
+
+func (s BatchGetVideoClipTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchGetVideoClipTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchGetVideoClipTaskRequest) SetTaskIdList(v []*string) *BatchGetVideoClipTaskRequest {
+	s.TaskIdList = v
+	return s
+}
+
+type BatchGetVideoClipTaskShrinkRequest struct {
+	TaskIdListShrink *string `json:"taskIdList,omitempty" xml:"taskIdList,omitempty"`
+}
+
+func (s BatchGetVideoClipTaskShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchGetVideoClipTaskShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchGetVideoClipTaskShrinkRequest) SetTaskIdListShrink(v string) *BatchGetVideoClipTaskShrinkRequest {
+	s.TaskIdListShrink = &v
+	return s
+}
+
+type BatchGetVideoClipTaskResponseBody struct {
+	// example:
+	//
+	// 86A90C40-D1AB-50DA-A4B1-0D545F80F2FE
+	RequestId *string                                      `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	TaskList  []*BatchGetVideoClipTaskResponseBodyTaskList `json:"taskList,omitempty" xml:"taskList,omitempty" type:"Repeated"`
+}
+
+func (s BatchGetVideoClipTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchGetVideoClipTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BatchGetVideoClipTaskResponseBody) SetRequestId(v string) *BatchGetVideoClipTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *BatchGetVideoClipTaskResponseBody) SetTaskList(v []*BatchGetVideoClipTaskResponseBodyTaskList) *BatchGetVideoClipTaskResponseBody {
+	s.TaskList = v
+	return s
+}
+
+type BatchGetVideoClipTaskResponseBodyTaskList struct {
+	// example:
+	//
+	// FINISHED
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// 864413342857035776
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	// example:
+	//
+	// 43335
+	TotalDuration *float64 `json:"totalDuration,omitempty" xml:"totalDuration,omitempty"`
+	// example:
+	//
+	// 11
+	TotalToken *int64                                                `json:"totalToken,omitempty" xml:"totalToken,omitempty"`
+	VideoList  []*BatchGetVideoClipTaskResponseBodyTaskListVideoList `json:"videoList,omitempty" xml:"videoList,omitempty" type:"Repeated"`
+}
+
+func (s BatchGetVideoClipTaskResponseBodyTaskList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchGetVideoClipTaskResponseBodyTaskList) GoString() string {
+	return s.String()
+}
+
+func (s *BatchGetVideoClipTaskResponseBodyTaskList) SetStatus(v string) *BatchGetVideoClipTaskResponseBodyTaskList {
+	s.Status = &v
+	return s
+}
+
+func (s *BatchGetVideoClipTaskResponseBodyTaskList) SetTaskId(v string) *BatchGetVideoClipTaskResponseBodyTaskList {
+	s.TaskId = &v
+	return s
+}
+
+func (s *BatchGetVideoClipTaskResponseBodyTaskList) SetTotalDuration(v float64) *BatchGetVideoClipTaskResponseBodyTaskList {
+	s.TotalDuration = &v
+	return s
+}
+
+func (s *BatchGetVideoClipTaskResponseBodyTaskList) SetTotalToken(v int64) *BatchGetVideoClipTaskResponseBodyTaskList {
+	s.TotalToken = &v
+	return s
+}
+
+func (s *BatchGetVideoClipTaskResponseBodyTaskList) SetVideoList(v []*BatchGetVideoClipTaskResponseBodyTaskListVideoList) *BatchGetVideoClipTaskResponseBodyTaskList {
+	s.VideoList = v
+	return s
+}
+
+type BatchGetVideoClipTaskResponseBodyTaskListVideoList struct {
+	// example:
+	//
+	// 0
+	BeginTime   *int32  `json:"beginTime,omitempty" xml:"beginTime,omitempty"`
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// 11110
+	EndTime  *int32  `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	Title    *string `json:"title,omitempty" xml:"title,omitempty"`
+	// example:
+	//
+	// https://e-ai.oss-cn-guangzhou.aliyuncs.com/video/jlkasdl.mp4
+	VideoDownloadUrl *string `json:"videoDownloadUrl,omitempty" xml:"videoDownloadUrl,omitempty"`
+	VideoName        *string `json:"videoName,omitempty" xml:"videoName,omitempty"`
+	// example:
+	//
+	// https://e-ai.oss-cn-guangzhou.aliyuncs.com/video/jlkasdl.mp4
+	VideoUrl *string `json:"videoUrl,omitempty" xml:"videoUrl,omitempty"`
+}
+
+func (s BatchGetVideoClipTaskResponseBodyTaskListVideoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchGetVideoClipTaskResponseBodyTaskListVideoList) GoString() string {
+	return s.String()
+}
+
+func (s *BatchGetVideoClipTaskResponseBodyTaskListVideoList) SetBeginTime(v int32) *BatchGetVideoClipTaskResponseBodyTaskListVideoList {
+	s.BeginTime = &v
+	return s
+}
+
+func (s *BatchGetVideoClipTaskResponseBodyTaskListVideoList) SetDescription(v string) *BatchGetVideoClipTaskResponseBodyTaskListVideoList {
+	s.Description = &v
+	return s
+}
+
+func (s *BatchGetVideoClipTaskResponseBodyTaskListVideoList) SetEndTime(v int32) *BatchGetVideoClipTaskResponseBodyTaskListVideoList {
+	s.EndTime = &v
+	return s
+}
+
+func (s *BatchGetVideoClipTaskResponseBodyTaskListVideoList) SetErrorMsg(v string) *BatchGetVideoClipTaskResponseBodyTaskListVideoList {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *BatchGetVideoClipTaskResponseBodyTaskListVideoList) SetTitle(v string) *BatchGetVideoClipTaskResponseBodyTaskListVideoList {
+	s.Title = &v
+	return s
+}
+
+func (s *BatchGetVideoClipTaskResponseBodyTaskListVideoList) SetVideoDownloadUrl(v string) *BatchGetVideoClipTaskResponseBodyTaskListVideoList {
+	s.VideoDownloadUrl = &v
+	return s
+}
+
+func (s *BatchGetVideoClipTaskResponseBodyTaskListVideoList) SetVideoName(v string) *BatchGetVideoClipTaskResponseBodyTaskListVideoList {
+	s.VideoName = &v
+	return s
+}
+
+func (s *BatchGetVideoClipTaskResponseBodyTaskListVideoList) SetVideoUrl(v string) *BatchGetVideoClipTaskResponseBodyTaskListVideoList {
+	s.VideoUrl = &v
+	return s
+}
+
+type BatchGetVideoClipTaskResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BatchGetVideoClipTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s BatchGetVideoClipTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchGetVideoClipTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BatchGetVideoClipTaskResponse) SetHeaders(v map[string]*string) *BatchGetVideoClipTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BatchGetVideoClipTaskResponse) SetStatusCode(v int32) *BatchGetVideoClipTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BatchGetVideoClipTaskResponse) SetBody(v *BatchGetVideoClipTaskResponseBody) *BatchGetVideoClipTaskResponse {
 	s.Body = v
 	return s
 }
@@ -2858,6 +3624,240 @@ func (s *CreateTextTaskResponse) SetBody(v *TextTaskResult) *CreateTextTaskRespo
 	return s
 }
 
+type CreateTrainTaskRequest struct {
+	// example:
+	//
+	// 13168123111
+	AliyunMainId *string `json:"aliyunMainId,omitempty" xml:"aliyunMainId,omitempty"`
+	// example:
+	//
+	// BASIC_MODEL
+	ResSpecType *string `json:"resSpecType,omitempty" xml:"resSpecType,omitempty"`
+	// example:
+	//
+	// CopyAnchorAndVoice
+	TaskType *string `json:"taskType,omitempty" xml:"taskType,omitempty"`
+	// example:
+	//
+	// realTimeInteractivity
+	UseScene *string `json:"useScene,omitempty" xml:"useScene,omitempty"`
+	// example:
+	//
+	// M
+	VoiceGender *string `json:"voiceGender,omitempty" xml:"voiceGender,omitempty"`
+	// example:
+	//
+	// zh
+	VoiceLanguage *string `json:"voiceLanguage,omitempty" xml:"voiceLanguage,omitempty"`
+	VoiceName     *string `json:"voiceName,omitempty" xml:"voiceName,omitempty"`
+	// example:
+	//
+	// https://yic-pre/video/test-0513.mp3
+	VoicePath *string `json:"voicePath,omitempty" xml:"voicePath,omitempty"`
+}
+
+func (s CreateTrainTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTrainTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTrainTaskRequest) SetAliyunMainId(v string) *CreateTrainTaskRequest {
+	s.AliyunMainId = &v
+	return s
+}
+
+func (s *CreateTrainTaskRequest) SetResSpecType(v string) *CreateTrainTaskRequest {
+	s.ResSpecType = &v
+	return s
+}
+
+func (s *CreateTrainTaskRequest) SetTaskType(v string) *CreateTrainTaskRequest {
+	s.TaskType = &v
+	return s
+}
+
+func (s *CreateTrainTaskRequest) SetUseScene(v string) *CreateTrainTaskRequest {
+	s.UseScene = &v
+	return s
+}
+
+func (s *CreateTrainTaskRequest) SetVoiceGender(v string) *CreateTrainTaskRequest {
+	s.VoiceGender = &v
+	return s
+}
+
+func (s *CreateTrainTaskRequest) SetVoiceLanguage(v string) *CreateTrainTaskRequest {
+	s.VoiceLanguage = &v
+	return s
+}
+
+func (s *CreateTrainTaskRequest) SetVoiceName(v string) *CreateTrainTaskRequest {
+	s.VoiceName = &v
+	return s
+}
+
+func (s *CreateTrainTaskRequest) SetVoicePath(v string) *CreateTrainTaskRequest {
+	s.VoicePath = &v
+	return s
+}
+
+type CreateTrainTaskResponseBody struct {
+	// example:
+	//
+	// 84657DE0-B68C-508B-AFE7-8ED921854E3C
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 837091359375048704
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+}
+
+func (s CreateTrainTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTrainTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTrainTaskResponseBody) SetRequestId(v string) *CreateTrainTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateTrainTaskResponseBody) SetTaskId(v string) *CreateTrainTaskResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type CreateTrainTaskResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateTrainTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateTrainTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTrainTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTrainTaskResponse) SetHeaders(v map[string]*string) *CreateTrainTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateTrainTaskResponse) SetStatusCode(v int32) *CreateTrainTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateTrainTaskResponse) SetBody(v *CreateTrainTaskResponseBody) *CreateTrainTaskResponse {
+	s.Body = v
+	return s
+}
+
+type CreateVideoClipTaskRequest struct {
+	// example:
+	//
+	// 1314445556
+	AliyunMainId *string   `json:"aliyunMainId,omitempty" xml:"aliyunMainId,omitempty"`
+	Description  *string   `json:"description,omitempty" xml:"description,omitempty"`
+	OssKeys      []*string `json:"ossKeys,omitempty" xml:"ossKeys,omitempty" type:"Repeated"`
+	Requirement  *string   `json:"requirement,omitempty" xml:"requirement,omitempty"`
+}
+
+func (s CreateVideoClipTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVideoClipTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVideoClipTaskRequest) SetAliyunMainId(v string) *CreateVideoClipTaskRequest {
+	s.AliyunMainId = &v
+	return s
+}
+
+func (s *CreateVideoClipTaskRequest) SetDescription(v string) *CreateVideoClipTaskRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateVideoClipTaskRequest) SetOssKeys(v []*string) *CreateVideoClipTaskRequest {
+	s.OssKeys = v
+	return s
+}
+
+func (s *CreateVideoClipTaskRequest) SetRequirement(v string) *CreateVideoClipTaskRequest {
+	s.Requirement = &v
+	return s
+}
+
+type CreateVideoClipTaskResponseBody struct {
+	// example:
+	//
+	// 86A90C40-D1AB-50DA-A4B1-0D545F80F2FE
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 837091359375048704
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+}
+
+func (s CreateVideoClipTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVideoClipTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVideoClipTaskResponseBody) SetRequestId(v string) *CreateVideoClipTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateVideoClipTaskResponseBody) SetTaskId(v string) *CreateVideoClipTaskResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type CreateVideoClipTaskResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateVideoClipTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateVideoClipTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVideoClipTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVideoClipTaskResponse) SetHeaders(v map[string]*string) *CreateVideoClipTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateVideoClipTaskResponse) SetStatusCode(v int32) *CreateVideoClipTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateVideoClipTaskResponse) SetBody(v *CreateVideoClipTaskResponseBody) *CreateVideoClipTaskResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteIndividuationProjectRequest struct {
 	// example:
 	//
@@ -3023,6 +4023,35 @@ func (s *DeleteIndividuationTextResponse) SetStatusCode(v int32) *DeleteIndividu
 }
 
 func (s *DeleteIndividuationTextResponse) SetBody(v *DeleteIndividuationTextResponseBody) *DeleteIndividuationTextResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDocumentResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DocumentResult    `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeDocumentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDocumentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDocumentResponse) SetHeaders(v map[string]*string) *DescribeDocumentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDocumentResponse) SetStatusCode(v int32) *DescribeDocumentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDocumentResponse) SetBody(v *DocumentResult) *DescribeDocumentResponse {
 	s.Body = v
 	return s
 }
@@ -3549,6 +4578,8 @@ func (s *GetAICoachScriptResponseBodyPoints) SetWeight(v int32) *GetAICoachScrip
 
 type GetAICoachScriptResponseBodyPointsAnswerList struct {
 	Name       *string                                                   `json:"name,omitempty" xml:"name,omitempty"`
+	NameList   []*string                                                 `json:"nameList,omitempty" xml:"nameList,omitempty" type:"Repeated"`
+	Operators  *string                                                   `json:"operators,omitempty" xml:"operators,omitempty"`
 	Parameters []*GetAICoachScriptResponseBodyPointsAnswerListParameters `json:"parameters,omitempty" xml:"parameters,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -3570,6 +4601,16 @@ func (s GetAICoachScriptResponseBodyPointsAnswerList) GoString() string {
 
 func (s *GetAICoachScriptResponseBodyPointsAnswerList) SetName(v string) *GetAICoachScriptResponseBodyPointsAnswerList {
 	s.Name = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBodyPointsAnswerList) SetNameList(v []*string) *GetAICoachScriptResponseBodyPointsAnswerList {
+	s.NameList = v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBodyPointsAnswerList) SetOperators(v string) *GetAICoachScriptResponseBodyPointsAnswerList {
+	s.Operators = &v
 	return s
 }
 
@@ -3892,7 +4933,8 @@ func (s *GetAICoachTaskSessionHistoryResponseBody) SetUid(v string) *GetAICoachT
 }
 
 type GetAICoachTaskSessionHistoryResponseBodyConversationList struct {
-	AudioUrl *string `json:"audioUrl,omitempty" xml:"audioUrl,omitempty"`
+	AudioUrl           *string `json:"audioUrl,omitempty" xml:"audioUrl,omitempty"`
+	EvaluationFeedback *string `json:"evaluationFeedback,omitempty" xml:"evaluationFeedback,omitempty"`
 	// example:
 	//
 	// {}
@@ -3912,6 +4954,11 @@ func (s GetAICoachTaskSessionHistoryResponseBodyConversationList) GoString() str
 
 func (s *GetAICoachTaskSessionHistoryResponseBodyConversationList) SetAudioUrl(v string) *GetAICoachTaskSessionHistoryResponseBodyConversationList {
 	s.AudioUrl = &v
+	return s
+}
+
+func (s *GetAICoachTaskSessionHistoryResponseBodyConversationList) SetEvaluationFeedback(v string) *GetAICoachTaskSessionHistoryResponseBodyConversationList {
+	s.EvaluationFeedback = &v
 	return s
 }
 
@@ -4181,7 +5228,8 @@ type GetOssUploadTokenRequest struct {
 	// example:
 	//
 	// ProductImage
-	FileType *string `json:"fileType,omitempty" xml:"fileType,omitempty"`
+	FileType   *string `json:"fileType,omitempty" xml:"fileType,omitempty"`
+	UploadType *int32  `json:"uploadType,omitempty" xml:"uploadType,omitempty"`
 }
 
 func (s GetOssUploadTokenRequest) String() string {
@@ -4199,6 +5247,11 @@ func (s *GetOssUploadTokenRequest) SetFileName(v string) *GetOssUploadTokenReque
 
 func (s *GetOssUploadTokenRequest) SetFileType(v string) *GetOssUploadTokenRequest {
 	s.FileType = &v
+	return s
+}
+
+func (s *GetOssUploadTokenRequest) SetUploadType(v int32) *GetOssUploadTokenRequest {
+	s.UploadType = &v
 	return s
 }
 
@@ -5346,6 +6399,259 @@ func (s *ListAICoachTaskPageResponse) SetBody(v *ListAICoachTaskPageResponseBody
 	return s
 }
 
+type ListAgentsRequest struct {
+	// example:
+	//
+	// 840016700254633984
+	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
+	// example:
+	//
+	// text
+	AgentScene *string `json:"agentScene,omitempty" xml:"agentScene,omitempty"`
+	// example:
+	//
+	// SYSTEM
+	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// 0
+	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
+}
+
+func (s ListAgentsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAgentsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAgentsRequest) SetAgentId(v string) *ListAgentsRequest {
+	s.AgentId = &v
+	return s
+}
+
+func (s *ListAgentsRequest) SetAgentScene(v string) *ListAgentsRequest {
+	s.AgentScene = &v
+	return s
+}
+
+func (s *ListAgentsRequest) SetOwner(v string) *ListAgentsRequest {
+	s.Owner = &v
+	return s
+}
+
+func (s *ListAgentsRequest) SetPageNumber(v int32) *ListAgentsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListAgentsRequest) SetPageSize(v int32) *ListAgentsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListAgentsRequest) SetStatus(v int32) *ListAgentsRequest {
+	s.Status = &v
+	return s
+}
+
+type ListAgentsResponseBody struct {
+	List []*ListAgentsResponseBodyList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 86A90C40-D1AB-50DA-A4B1-0D545F80F2FE
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 10
+	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListAgentsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAgentsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAgentsResponseBody) SetList(v []*ListAgentsResponseBodyList) *ListAgentsResponseBody {
+	s.List = v
+	return s
+}
+
+func (s *ListAgentsResponseBody) SetRequestId(v string) *ListAgentsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListAgentsResponseBody) SetSuccess(v bool) *ListAgentsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListAgentsResponseBody) SetTotal(v int32) *ListAgentsResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListAgentsResponseBodyList struct {
+	// example:
+	//
+	// 840016700254633984
+	AgentId   *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
+	AgentName *string `json:"agentName,omitempty" xml:"agentName,omitempty"`
+	// example:
+	//
+	// text
+	AgentScene            *string `json:"agentScene,omitempty" xml:"agentScene,omitempty"`
+	CharactersDescription *string `json:"charactersDescription,omitempty" xml:"charactersDescription,omitempty"`
+	// example:
+	//
+	// 1
+	EnableInteraction *int32 `json:"enableInteraction,omitempty" xml:"enableInteraction,omitempty"`
+	// example:
+	//
+	// Car
+	Industry *string `json:"industry,omitempty" xml:"industry,omitempty"`
+	// example:
+	//
+	// true
+	OnlineSearch *bool `json:"onlineSearch,omitempty" xml:"onlineSearch,omitempty"`
+	// example:
+	//
+	// SYSTEM
+	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
+	// example:
+	//
+	// http
+	//
+	// ;//www.abc.com/111.mp4
+	ReferenceUrl *string `json:"referenceUrl,omitempty" xml:"referenceUrl,omitempty"`
+	// example:
+	//
+	// 0
+	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// RED_BOOK
+	TextStyle *string `json:"textStyle,omitempty" xml:"textStyle,omitempty"`
+	// example:
+	//
+	// Seller
+	Viewer *string `json:"viewer,omitempty" xml:"viewer,omitempty"`
+}
+
+func (s ListAgentsResponseBodyList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAgentsResponseBodyList) GoString() string {
+	return s.String()
+}
+
+func (s *ListAgentsResponseBodyList) SetAgentId(v string) *ListAgentsResponseBodyList {
+	s.AgentId = &v
+	return s
+}
+
+func (s *ListAgentsResponseBodyList) SetAgentName(v string) *ListAgentsResponseBodyList {
+	s.AgentName = &v
+	return s
+}
+
+func (s *ListAgentsResponseBodyList) SetAgentScene(v string) *ListAgentsResponseBodyList {
+	s.AgentScene = &v
+	return s
+}
+
+func (s *ListAgentsResponseBodyList) SetCharactersDescription(v string) *ListAgentsResponseBodyList {
+	s.CharactersDescription = &v
+	return s
+}
+
+func (s *ListAgentsResponseBodyList) SetEnableInteraction(v int32) *ListAgentsResponseBodyList {
+	s.EnableInteraction = &v
+	return s
+}
+
+func (s *ListAgentsResponseBodyList) SetIndustry(v string) *ListAgentsResponseBodyList {
+	s.Industry = &v
+	return s
+}
+
+func (s *ListAgentsResponseBodyList) SetOnlineSearch(v bool) *ListAgentsResponseBodyList {
+	s.OnlineSearch = &v
+	return s
+}
+
+func (s *ListAgentsResponseBodyList) SetOwner(v string) *ListAgentsResponseBodyList {
+	s.Owner = &v
+	return s
+}
+
+func (s *ListAgentsResponseBodyList) SetReferenceUrl(v string) *ListAgentsResponseBodyList {
+	s.ReferenceUrl = &v
+	return s
+}
+
+func (s *ListAgentsResponseBodyList) SetStatus(v int32) *ListAgentsResponseBodyList {
+	s.Status = &v
+	return s
+}
+
+func (s *ListAgentsResponseBodyList) SetTextStyle(v string) *ListAgentsResponseBodyList {
+	s.TextStyle = &v
+	return s
+}
+
+func (s *ListAgentsResponseBodyList) SetViewer(v string) *ListAgentsResponseBodyList {
+	s.Viewer = &v
+	return s
+}
+
+type ListAgentsResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAgentsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListAgentsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAgentsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAgentsResponse) SetHeaders(v map[string]*string) *ListAgentsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAgentsResponse) SetStatusCode(v int32) *ListAgentsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAgentsResponse) SetBody(v *ListAgentsResponseBody) *ListAgentsResponse {
+	s.Body = v
+	return s
+}
+
 type ListAnchorRequest struct {
 	AnchorCategory *string `json:"anchorCategory,omitempty" xml:"anchorCategory,omitempty"`
 	// example:
@@ -5666,6 +6972,73 @@ func (s *ListAvatarProjectResponse) SetBody(v *ListAvatarProjectResponseBody) *L
 	return s
 }
 
+type ListKnowledgeBaseRequest struct {
+	// example:
+	//
+	// "186432649"
+	KnowledgeBaseId *string `json:"knowledgeBaseId,omitempty" xml:"knowledgeBaseId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+}
+
+func (s ListKnowledgeBaseRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListKnowledgeBaseRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListKnowledgeBaseRequest) SetKnowledgeBaseId(v string) *ListKnowledgeBaseRequest {
+	s.KnowledgeBaseId = &v
+	return s
+}
+
+func (s *ListKnowledgeBaseRequest) SetPageNumber(v int32) *ListKnowledgeBaseRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListKnowledgeBaseRequest) SetPageSize(v int32) *ListKnowledgeBaseRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListKnowledgeBaseResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *KnowledgeBaseListResult `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListKnowledgeBaseResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListKnowledgeBaseResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListKnowledgeBaseResponse) SetHeaders(v map[string]*string) *ListKnowledgeBaseResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListKnowledgeBaseResponse) SetStatusCode(v int32) *ListKnowledgeBaseResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListKnowledgeBaseResponse) SetBody(v *KnowledgeBaseListResult) *ListKnowledgeBaseResponse {
+	s.Body = v
+	return s
+}
+
 type ListTextThemesRequest struct {
 	Industry *string `json:"industry,omitempty" xml:"industry,omitempty"`
 }
@@ -5834,7 +7207,8 @@ type ListVoiceModelsRequest struct {
 	// example:
 	//
 	// offlineSynthesis
-	UseScene *string `json:"useScene,omitempty" xml:"useScene,omitempty"`
+	UseScene      *string `json:"useScene,omitempty" xml:"useScene,omitempty"`
+	VoiceLanguage *string `json:"voiceLanguage,omitempty" xml:"voiceLanguage,omitempty"`
 	// example:
 	//
 	// PRIVATE_VOICE
@@ -5866,6 +7240,11 @@ func (s *ListVoiceModelsRequest) SetResSpecType(v string) *ListVoiceModelsReques
 
 func (s *ListVoiceModelsRequest) SetUseScene(v string) *ListVoiceModelsRequest {
 	s.UseScene = &v
+	return s
+}
+
+func (s *ListVoiceModelsRequest) SetVoiceLanguage(v string) *ListVoiceModelsRequest {
+	s.VoiceLanguage = &v
 	return s
 }
 
@@ -6846,8 +8225,10 @@ type SaveAvatarProjectRequest struct {
 	// example:
 	//
 	// 1000196
-	AgentId *string                           `json:"agentId,omitempty" xml:"agentId,omitempty"`
-	Frames  []*SaveAvatarProjectRequestFrames `json:"frames,omitempty" xml:"frames,omitempty" type:"Repeated"`
+	AgentId   *string                           `json:"agentId,omitempty" xml:"agentId,omitempty"`
+	BitRate   *string                           `json:"bitRate,omitempty" xml:"bitRate,omitempty"`
+	FrameRate *string                           `json:"frameRate,omitempty" xml:"frameRate,omitempty"`
+	Frames    []*SaveAvatarProjectRequestFrames `json:"frames,omitempty" xml:"frames,omitempty" type:"Repeated"`
 	// example:
 	//
 	// CREATE
@@ -6868,7 +8249,8 @@ type SaveAvatarProjectRequest struct {
 	// example:
 	//
 	// 9:16
-	ScaleType *string `json:"scaleType,omitempty" xml:"scaleType,omitempty"`
+	ScaleType           *string `json:"scaleType,omitempty" xml:"scaleType,omitempty"`
+	SynchronizedDisplay *string `json:"synchronizedDisplay,omitempty" xml:"synchronizedDisplay,omitempty"`
 }
 
 func (s SaveAvatarProjectRequest) String() string {
@@ -6881,6 +8263,16 @@ func (s SaveAvatarProjectRequest) GoString() string {
 
 func (s *SaveAvatarProjectRequest) SetAgentId(v string) *SaveAvatarProjectRequest {
 	s.AgentId = &v
+	return s
+}
+
+func (s *SaveAvatarProjectRequest) SetBitRate(v string) *SaveAvatarProjectRequest {
+	s.BitRate = &v
+	return s
+}
+
+func (s *SaveAvatarProjectRequest) SetFrameRate(v string) *SaveAvatarProjectRequest {
+	s.FrameRate = &v
 	return s
 }
 
@@ -6916,6 +8308,11 @@ func (s *SaveAvatarProjectRequest) SetResolution(v string) *SaveAvatarProjectReq
 
 func (s *SaveAvatarProjectRequest) SetScaleType(v string) *SaveAvatarProjectRequest {
 	s.ScaleType = &v
+	return s
+}
+
+func (s *SaveAvatarProjectRequest) SetSynchronizedDisplay(v string) *SaveAvatarProjectRequest {
+	s.SynchronizedDisplay = &v
 	return s
 }
 
@@ -7046,7 +8443,8 @@ type SaveAvatarProjectRequestFramesVideoScript struct {
 	// example:
 	//
 	// 1.0
-	SpeedRate *string `json:"speedRate,omitempty" xml:"speedRate,omitempty"`
+	SpeedRate     *string `json:"speedRate,omitempty" xml:"speedRate,omitempty"`
+	VoiceLanguage *string `json:"voiceLanguage,omitempty" xml:"voiceLanguage,omitempty"`
 	// example:
 	//
 	// 1
@@ -7067,6 +8465,11 @@ func (s SaveAvatarProjectRequestFramesVideoScript) GoString() string {
 
 func (s *SaveAvatarProjectRequestFramesVideoScript) SetSpeedRate(v string) *SaveAvatarProjectRequestFramesVideoScript {
 	s.SpeedRate = &v
+	return s
+}
+
+func (s *SaveAvatarProjectRequestFramesVideoScript) SetVoiceLanguage(v string) *SaveAvatarProjectRequestFramesVideoScript {
+	s.VoiceLanguage = &v
 	return s
 }
 
@@ -8362,6 +9765,8 @@ type SubmitProjectTaskRequestFramesVideoScript struct {
 	//
 	// https://meeting.dingtalk.com/j/1COFppy0POR
 	AudioUrl   *string `json:"audioUrl,omitempty" xml:"audioUrl,omitempty"`
+	Emotion    *string `json:"emotion,omitempty" xml:"emotion,omitempty"`
+	PitchRate  *string `json:"pitchRate,omitempty" xml:"pitchRate,omitempty"`
 	SpeechOpen *bool   `json:"speechOpen,omitempty" xml:"speechOpen,omitempty"`
 	// example:
 	//
@@ -8371,7 +9776,8 @@ type SubmitProjectTaskRequestFramesVideoScript struct {
 	// example:
 	//
 	// TEXT
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	Type          *string `json:"type,omitempty" xml:"type,omitempty"`
+	VoiceLanguage *string `json:"voiceLanguage,omitempty" xml:"voiceLanguage,omitempty"`
 	// example:
 	//
 	// 11
@@ -8395,6 +9801,16 @@ func (s *SubmitProjectTaskRequestFramesVideoScript) SetAudioUrl(v string) *Submi
 	return s
 }
 
+func (s *SubmitProjectTaskRequestFramesVideoScript) SetEmotion(v string) *SubmitProjectTaskRequestFramesVideoScript {
+	s.Emotion = &v
+	return s
+}
+
+func (s *SubmitProjectTaskRequestFramesVideoScript) SetPitchRate(v string) *SubmitProjectTaskRequestFramesVideoScript {
+	s.PitchRate = &v
+	return s
+}
+
 func (s *SubmitProjectTaskRequestFramesVideoScript) SetSpeechOpen(v bool) *SubmitProjectTaskRequestFramesVideoScript {
 	s.SpeechOpen = &v
 	return s
@@ -8412,6 +9828,11 @@ func (s *SubmitProjectTaskRequestFramesVideoScript) SetTextContent(v string) *Su
 
 func (s *SubmitProjectTaskRequestFramesVideoScript) SetType(v string) *SubmitProjectTaskRequestFramesVideoScript {
 	s.Type = &v
+	return s
+}
+
+func (s *SubmitProjectTaskRequestFramesVideoScript) SetVoiceLanguage(v string) *SubmitProjectTaskRequestFramesVideoScript {
+	s.VoiceLanguage = &v
 	return s
 }
 
@@ -8740,6 +10161,81 @@ func (client *Client) AddTextFeedback(request *AddTextFeedbackRequest) (_result 
 
 // Summary:
 //
+// 批量添加知识文档
+//
+// @param request - BatchAddDocumentRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchAddDocumentResponse
+func (client *Client) BatchAddDocumentWithOptions(knowledgeBaseId *string, request *BatchAddDocumentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *BatchAddDocumentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AddDocumentInfos)) {
+		body["addDocumentInfos"] = request.AddDocumentInfos
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BatchAddDocument"),
+		Version:     tea.String("2024-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/yic/yic-console/openService/v1/knowledge-base/" + tea.StringValue(openapiutil.GetEncodeParam(knowledgeBaseId)) + "/documents"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &BatchAddDocumentResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &BatchAddDocumentResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 批量添加知识文档
+//
+// @param request - BatchAddDocumentRequest
+//
+// @return BatchAddDocumentResponse
+func (client *Client) BatchAddDocument(knowledgeBaseId *string, request *BatchAddDocumentRequest) (_result *BatchAddDocumentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &BatchAddDocumentResponse{}
+	_body, _err := client.BatchAddDocumentWithOptions(knowledgeBaseId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 批量发布剧本任务
 //
 // @param request - BatchCreateAICoachTaskRequest
@@ -8895,6 +10391,172 @@ func (client *Client) BatchGetProjectTask(request *BatchGetProjectTaskRequest) (
 	headers := make(map[string]*string)
 	_result = &BatchGetProjectTaskResponse{}
 	_body, _err := client.BatchGetProjectTaskWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量查询声音复刻任务
+//
+// @param tmpReq - BatchGetTrainTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchGetTrainTaskResponse
+func (client *Client) BatchGetTrainTaskWithOptions(tmpReq *BatchGetTrainTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *BatchGetTrainTaskResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &BatchGetTrainTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.TaskIdList)) {
+		request.TaskIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TaskIdList, tea.String("taskIdList"), tea.String("simple"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliyunMainId)) {
+		query["aliyunMainId"] = request.AliyunMainId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskIdListShrink)) {
+		query["taskIdList"] = request.TaskIdListShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BatchGetTrainTask"),
+		Version:     tea.String("2024-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/yic/yic-console/openService/v1/train/task/batchGetTrainTaskInfo"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &BatchGetTrainTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &BatchGetTrainTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 批量查询声音复刻任务
+//
+// @param request - BatchGetTrainTaskRequest
+//
+// @return BatchGetTrainTaskResponse
+func (client *Client) BatchGetTrainTask(request *BatchGetTrainTaskRequest) (_result *BatchGetTrainTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &BatchGetTrainTaskResponse{}
+	_body, _err := client.BatchGetTrainTaskWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量查询视频切片任务信息
+//
+// @param tmpReq - BatchGetVideoClipTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchGetVideoClipTaskResponse
+func (client *Client) BatchGetVideoClipTaskWithOptions(tmpReq *BatchGetVideoClipTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *BatchGetVideoClipTaskResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &BatchGetVideoClipTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.TaskIdList)) {
+		request.TaskIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TaskIdList, tea.String("taskIdList"), tea.String("simple"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TaskIdListShrink)) {
+		query["taskIdList"] = request.TaskIdListShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BatchGetVideoClipTask"),
+		Version:     tea.String("2024-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/yic/yic-console/openService/v1/video/clip/batchGetVideoClipTask"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &BatchGetVideoClipTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &BatchGetVideoClipTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 批量查询视频切片任务信息
+//
+// @param request - BatchGetVideoClipTaskRequest
+//
+// @return BatchGetVideoClipTaskResponse
+func (client *Client) BatchGetVideoClipTask(request *BatchGetVideoClipTaskRequest) (_result *BatchGetVideoClipTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &BatchGetVideoClipTaskResponse{}
+	_body, _err := client.BatchGetVideoClipTaskWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9920,6 +11582,196 @@ func (client *Client) CreateTextTask(request *CreateTextTaskRequest) (_result *C
 
 // Summary:
 //
+// 提交声音复刻任务
+//
+// @param request - CreateTrainTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTrainTaskResponse
+func (client *Client) CreateTrainTaskWithOptions(request *CreateTrainTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateTrainTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliyunMainId)) {
+		body["aliyunMainId"] = request.AliyunMainId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResSpecType)) {
+		body["resSpecType"] = request.ResSpecType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskType)) {
+		body["taskType"] = request.TaskType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UseScene)) {
+		body["useScene"] = request.UseScene
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VoiceGender)) {
+		body["voiceGender"] = request.VoiceGender
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VoiceLanguage)) {
+		body["voiceLanguage"] = request.VoiceLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VoiceName)) {
+		body["voiceName"] = request.VoiceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VoicePath)) {
+		body["voicePath"] = request.VoicePath
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateTrainTask"),
+		Version:     tea.String("2024-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/yic/yic-console/openService/v1/train/task/createTrainTask"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateTrainTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateTrainTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 提交声音复刻任务
+//
+// @param request - CreateTrainTaskRequest
+//
+// @return CreateTrainTaskResponse
+func (client *Client) CreateTrainTask(request *CreateTrainTaskRequest) (_result *CreateTrainTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateTrainTaskResponse{}
+	_body, _err := client.CreateTrainTaskWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交视频切片任务
+//
+// @param request - CreateVideoClipTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateVideoClipTaskResponse
+func (client *Client) CreateVideoClipTaskWithOptions(request *CreateVideoClipTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateVideoClipTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliyunMainId)) {
+		body["aliyunMainId"] = request.AliyunMainId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssKeys)) {
+		body["ossKeys"] = request.OssKeys
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Requirement)) {
+		body["requirement"] = request.Requirement
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateVideoClipTask"),
+		Version:     tea.String("2024-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/yic/yic-console/openService/v1/video/clip/createVideoClipTask"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateVideoClipTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateVideoClipTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 提交视频切片任务
+//
+// @param request - CreateVideoClipTaskRequest
+//
+// @return CreateVideoClipTaskResponse
+func (client *Client) CreateVideoClipTask(request *CreateVideoClipTaskRequest) (_result *CreateVideoClipTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateVideoClipTaskResponse{}
+	_body, _err := client.CreateVideoClipTaskWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 删除个性化文案项目
 //
 // @param request - DeleteIndividuationProjectRequest
@@ -10061,6 +11913,67 @@ func (client *Client) DeleteIndividuationText(request *DeleteIndividuationTextRe
 	headers := make(map[string]*string)
 	_result = &DeleteIndividuationTextResponse{}
 	_body, _err := client.DeleteIndividuationTextWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询文档信息与状态
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDocumentResponse
+func (client *Client) DescribeDocumentWithOptions(knowledgeBaseId *string, documentId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeDocumentResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDocument"),
+		Version:     tea.String("2024-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/yic/yic-console/openService/v1/knowledge-base/" + tea.StringValue(openapiutil.GetEncodeParam(knowledgeBaseId)) + "/documents/" + tea.StringValue(openapiutil.GetEncodeParam(documentId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDocumentResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDocumentResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询文档信息与状态
+//
+// @return DescribeDocumentResponse
+func (client *Client) DescribeDocument(knowledgeBaseId *string, documentId *string) (_result *DescribeDocumentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DescribeDocumentResponse{}
+	_body, _err := client.DescribeDocumentWithOptions(knowledgeBaseId, documentId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10533,6 +12446,10 @@ func (client *Client) GetOssUploadTokenWithOptions(request *GetOssUploadTokenReq
 
 	if !tea.BoolValue(util.IsUnset(request.FileType)) {
 		query["fileType"] = request.FileType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UploadType)) {
+		query["uploadType"] = request.UploadType
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -11132,6 +13049,101 @@ func (client *Client) ListAICoachTaskPage(request *ListAICoachTaskPageRequest) (
 
 // Summary:
 //
+// 分页查询智能体
+//
+// @param request - ListAgentsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAgentsResponse
+func (client *Client) ListAgentsWithOptions(request *ListAgentsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListAgentsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentId)) {
+		query["agentId"] = request.AgentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AgentScene)) {
+		query["agentScene"] = request.AgentScene
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Owner)) {
+		query["owner"] = request.Owner
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAgents"),
+		Version:     tea.String("2024-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/yic/yic-console/openService/v1/agent/listAgents"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListAgentsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListAgentsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 分页查询智能体
+//
+// @param request - ListAgentsRequest
+//
+// @return ListAgentsResponse
+func (client *Client) ListAgents(request *ListAgentsRequest) (_result *ListAgentsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListAgentsResponse{}
+	_body, _err := client.ListAgentsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取数字人模特列表
 //
 // @param request - ListAnchorRequest
@@ -11307,6 +13319,89 @@ func (client *Client) ListAvatarProject(request *ListAvatarProjectRequest) (_res
 	headers := make(map[string]*string)
 	_result = &ListAvatarProjectResponse{}
 	_body, _err := client.ListAvatarProjectWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询知识库
+//
+// @param request - ListKnowledgeBaseRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListKnowledgeBaseResponse
+func (client *Client) ListKnowledgeBaseWithOptions(request *ListKnowledgeBaseRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListKnowledgeBaseResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.KnowledgeBaseId)) {
+		query["knowledgeBaseId"] = request.KnowledgeBaseId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListKnowledgeBase"),
+		Version:     tea.String("2024-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/yic/yic-console/openService/v1/knowledge-base"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListKnowledgeBaseResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListKnowledgeBaseResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询知识库
+//
+// @param request - ListKnowledgeBaseRequest
+//
+// @return ListKnowledgeBaseResponse
+func (client *Client) ListKnowledgeBase(request *ListKnowledgeBaseRequest) (_result *ListKnowledgeBaseResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListKnowledgeBaseResponse{}
+	_body, _err := client.ListKnowledgeBaseWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11523,6 +13618,10 @@ func (client *Client) ListVoiceModelsWithOptions(request *ListVoiceModelsRequest
 
 	if !tea.BoolValue(util.IsUnset(request.UseScene)) {
 		query["useScene"] = request.UseScene
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VoiceLanguage)) {
+		query["voiceLanguage"] = request.VoiceLanguage
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VoiceType)) {
@@ -12070,6 +14169,14 @@ func (client *Client) SaveAvatarProjectWithOptions(request *SaveAvatarProjectReq
 		body["agentId"] = request.AgentId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.BitRate)) {
+		body["bitRate"] = request.BitRate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FrameRate)) {
+		body["frameRate"] = request.FrameRate
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Frames)) {
 		body["frames"] = request.Frames
 	}
@@ -12096,6 +14203,10 @@ func (client *Client) SaveAvatarProjectWithOptions(request *SaveAvatarProjectReq
 
 	if !tea.BoolValue(util.IsUnset(request.ScaleType)) {
 		body["scaleType"] = request.ScaleType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SynchronizedDisplay)) {
+		body["synchronizedDisplay"] = request.SynchronizedDisplay
 	}
 
 	req := &openapi.OpenApiRequest{
