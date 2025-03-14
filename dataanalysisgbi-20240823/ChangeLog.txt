@@ -1,3 +1,6 @@
+2025-03-14 Version: v1.3.5
+- Generated golang 2024-08-23 for DataAnalysisGBI.
+
 2025-03-14 Version: v1.3.4
 - Update API RunDataAnalysis: update response param.
 
