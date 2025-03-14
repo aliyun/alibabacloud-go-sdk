@@ -2371,6 +2371,7 @@ func (s *RunDataAnalysisResponseBody) SetMessage(v string) *RunDataAnalysisRespo
 }
 
 type RunDataAnalysisResponseBodyData struct {
+	Attempts []interface{} `json:"attempts,omitempty" xml:"attempts,omitempty" type:"Repeated"`
 	// example:
 	//
 	// Access was denied, message: No such namespace namespaces/tech-scp-chain7.
@@ -2409,6 +2410,11 @@ func (s RunDataAnalysisResponseBodyData) String() string {
 
 func (s RunDataAnalysisResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *RunDataAnalysisResponseBodyData) SetAttempts(v []interface{}) *RunDataAnalysisResponseBodyData {
+	s.Attempts = v
+	return s
 }
 
 func (s *RunDataAnalysisResponseBodyData) SetErrorMessage(v string) *RunDataAnalysisResponseBodyData {
