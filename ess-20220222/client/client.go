@@ -9511,8 +9511,11 @@ type CreateScalingGroupRequestCapacityOptions struct {
 	// example:
 	//
 	// 20
-	OnDemandPercentageAboveBaseCapacity *int32  `json:"OnDemandPercentageAboveBaseCapacity,omitempty" xml:"OnDemandPercentageAboveBaseCapacity,omitempty"`
-	PriceComparisonMode                 *string `json:"PriceComparisonMode,omitempty" xml:"PriceComparisonMode,omitempty"`
+	OnDemandPercentageAboveBaseCapacity *int32 `json:"OnDemandPercentageAboveBaseCapacity,omitempty" xml:"OnDemandPercentageAboveBaseCapacity,omitempty"`
+	// example:
+	//
+	// PricePerUnit
+	PriceComparisonMode *string `json:"PriceComparisonMode,omitempty" xml:"PriceComparisonMode,omitempty"`
 	// Specifies whether to replace pay-as-you-go instances with preemptible instances. If you specify `CompensateWithOnDemand`, it may result in a higher percentage of pay-as-you-go instances compared to the value of `OnDemandPercentageAboveBaseCapacity`. In this scenario, Auto Scaling will try to deploy preemptible instances to replace the surplus pay-as-you-go instances. When `CompensateWithOnDemand` is specified, Auto Scaling creates pay-as-you-go instances if there are not enough preemptible instance types. To avoid keeping these pay-as-you-go ECS instances for long periods, Auto Scaling tries to replace them with preemptible instances as soon as enough of preemptible instance types become available. Valid values:
 	//
 	// 	- true
@@ -9886,17 +9889,17 @@ func (s *CreateScalingGroupRequestServerGroups) SetWeight(v int32) *CreateScalin
 }
 
 type CreateScalingGroupRequestTags struct {
-	// The tag key.
+	// The tag key that you want to add to the scaling group.
 	//
 	// example:
 	//
 	// Department
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// Specifies whether to propagate the tag that you want to add. Valid values:
+	// Specifies whether to propagate the tag that you want to add to the scaling group. Valid values:
 	//
-	// 	- true: propagates the tag to new instances.
+	// 	- true: propagates the tag to only instances that are newly created.
 	//
-	// 	- false: does not propagate the tag to any instance.
+	// 	- false: does not propagate the tag to any instances.
 	//
 	// Default value: false.
 	//
@@ -9904,7 +9907,7 @@ type CreateScalingGroupRequestTags struct {
 	//
 	// false
 	Propagate *bool `json:"Propagate,omitempty" xml:"Propagate,omitempty"`
-	// The tag value.
+	// The tag value that you want to add to the scaling group.
 	//
 	// example:
 	//
@@ -18077,6 +18080,7 @@ func (s *DescribeElasticStrengthRequest) SetVSwitchIds(v []*string) *DescribeEla
 }
 
 type DescribeElasticStrengthResponseBody struct {
+	ElasticStrength *string `json:"ElasticStrength,omitempty" xml:"ElasticStrength,omitempty"`
 	// The scaling strength models.
 	ElasticStrengthModels []*DescribeElasticStrengthResponseBodyElasticStrengthModels `json:"ElasticStrengthModels,omitempty" xml:"ElasticStrengthModels,omitempty" type:"Repeated"`
 	// The request ID.
@@ -18105,6 +18109,11 @@ func (s DescribeElasticStrengthResponseBody) String() string {
 
 func (s DescribeElasticStrengthResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeElasticStrengthResponseBody) SetElasticStrength(v string) *DescribeElasticStrengthResponseBody {
+	s.ElasticStrength = &v
+	return s
 }
 
 func (s *DescribeElasticStrengthResponseBody) SetElasticStrengthModels(v []*DescribeElasticStrengthResponseBodyElasticStrengthModels) *DescribeElasticStrengthResponseBody {
@@ -18368,13 +18377,15 @@ type DescribeElasticStrengthResponseBodyResourcePools struct {
 	// example:
 	//
 	// ecs.c7t.xlarge
-	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InstanceType    *string                                                          `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InventoryHealth *DescribeElasticStrengthResponseBodyResourcePoolsInventoryHealth `json:"InventoryHealth,omitempty" xml:"InventoryHealth,omitempty" type:"Struct"`
 	// The error message returned when the scaling strength is the weakest.
 	//
 	// example:
 	//
 	// The instanceType does not support the image in the configuration.
-	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	Msg    *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The scaling strength of the resource pool.
 	//
 	// example:
@@ -18409,8 +18420,18 @@ func (s *DescribeElasticStrengthResponseBodyResourcePools) SetInstanceType(v str
 	return s
 }
 
+func (s *DescribeElasticStrengthResponseBodyResourcePools) SetInventoryHealth(v *DescribeElasticStrengthResponseBodyResourcePoolsInventoryHealth) *DescribeElasticStrengthResponseBodyResourcePools {
+	s.InventoryHealth = v
+	return s
+}
+
 func (s *DescribeElasticStrengthResponseBodyResourcePools) SetMsg(v string) *DescribeElasticStrengthResponseBodyResourcePools {
 	s.Msg = &v
+	return s
+}
+
+func (s *DescribeElasticStrengthResponseBodyResourcePools) SetStatus(v string) *DescribeElasticStrengthResponseBodyResourcePools {
+	s.Status = &v
 	return s
 }
 
@@ -18426,6 +18447,41 @@ func (s *DescribeElasticStrengthResponseBodyResourcePools) SetVSwitchIds(v []*st
 
 func (s *DescribeElasticStrengthResponseBodyResourcePools) SetZoneId(v string) *DescribeElasticStrengthResponseBodyResourcePools {
 	s.ZoneId = &v
+	return s
+}
+
+type DescribeElasticStrengthResponseBodyResourcePoolsInventoryHealth struct {
+	AdequacyScore *int32 `json:"AdequacyScore,omitempty" xml:"AdequacyScore,omitempty"`
+	HealthScore   *int32 `json:"HealthScore,omitempty" xml:"HealthScore,omitempty"`
+	HotScore      *int32 `json:"HotScore,omitempty" xml:"HotScore,omitempty"`
+	SupplyScore   *int32 `json:"SupplyScore,omitempty" xml:"SupplyScore,omitempty"`
+}
+
+func (s DescribeElasticStrengthResponseBodyResourcePoolsInventoryHealth) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeElasticStrengthResponseBodyResourcePoolsInventoryHealth) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeElasticStrengthResponseBodyResourcePoolsInventoryHealth) SetAdequacyScore(v int32) *DescribeElasticStrengthResponseBodyResourcePoolsInventoryHealth {
+	s.AdequacyScore = &v
+	return s
+}
+
+func (s *DescribeElasticStrengthResponseBodyResourcePoolsInventoryHealth) SetHealthScore(v int32) *DescribeElasticStrengthResponseBodyResourcePoolsInventoryHealth {
+	s.HealthScore = &v
+	return s
+}
+
+func (s *DescribeElasticStrengthResponseBodyResourcePoolsInventoryHealth) SetHotScore(v int32) *DescribeElasticStrengthResponseBodyResourcePoolsInventoryHealth {
+	s.HotScore = &v
+	return s
+}
+
+func (s *DescribeElasticStrengthResponseBodyResourcePoolsInventoryHealth) SetSupplyScore(v int32) *DescribeElasticStrengthResponseBodyResourcePoolsInventoryHealth {
+	s.SupplyScore = &v
 	return s
 }
 
@@ -24466,7 +24522,7 @@ type DescribeScalingGroupsRequest struct {
 	GroupType    *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Pages start from page 1.
+	// The page number. Minimum value: 1.
 	//
 	// Default value: 1.
 	//
@@ -25490,8 +25546,17 @@ type DescribeScalingGroupsResponseBodyScalingGroupsCapacityOptions struct {
 	// example:
 	//
 	// 0
-	OnDemandPercentageAboveBaseCapacity *int32  `json:"OnDemandPercentageAboveBaseCapacity,omitempty" xml:"OnDemandPercentageAboveBaseCapacity,omitempty"`
-	PriceComparisonMode                 *string `json:"PriceComparisonMode,omitempty" xml:"PriceComparisonMode,omitempty"`
+	OnDemandPercentageAboveBaseCapacity *int32 `json:"OnDemandPercentageAboveBaseCapacity,omitempty" xml:"OnDemandPercentageAboveBaseCapacity,omitempty"`
+	// The price comparison mode. Valid values:
+	//
+	// 	- PricePerUnit: compares prices based on capacity. The capacity of instances in a scaling group is determined by the weights of the instance types used. If no weight is specified, the default weight is 1.
+	//
+	// 	- PricePerVCpu: compares prices based on the price per vCPU.
+	//
+	// example:
+	//
+	// PricePerUnit
+	PriceComparisonMode *string `json:"PriceComparisonMode,omitempty" xml:"PriceComparisonMode,omitempty"`
 	// Specifies whether to replace pay-as-you-go ECS instances with preemptible ECS instances. If you specify `CompensateWithOnDemand`, it may result in a higher percentage of pay-as-you-go instances compared to the value of `OnDemandPercentageAboveBaseCapacity`. In this scenario, Auto Scaling will try to deploy preemptible ECS instances to replace the surplus pay-as-you-go ECS instances. When `CompensateWithOnDemand` is specified, Auto Scaling creates pay-as-you-go ECS instances if there are not enough preemptible instance types available. To avoid keeping these pay-as-you-go ECS instances for long periods, Auto Scaling tries to replace them with preemptible instances as soon as enough of preemptible instance types become available. Valid values:
 	//
 	// 	- true
@@ -37853,7 +37918,7 @@ func (s *ModifyScalingGroupRequest) SetVSwitchIds(v []*string) *ModifyScalingGro
 }
 
 type ModifyScalingGroupRequestCapacityOptions struct {
-	// Specifies whether to automatically create pay-as-you-go instances to meet the requirements on the number of ECS instances in the scaling group when the number of preemptible instances cannot be reached due to reasons such as cost-related issues and insufficient resources. This parameter takes effect only if you set `MultiAZPolicy` in the `CreateScalingGroup` operation to `COST_OPTIMIZED`. Valid values:
+	// Specifies whether to automatically create pay-as-you-go ECS instances to reach the required number of ECS instances when preemptible ECS instances cannot be created due to high prices or insufficient inventory of resources. This parameter takes effect only if you set `MultiAZPolicy` in the `CreateScalingGroup` operation to `COST_OPTIMIZED`. Valid values:
 	//
 	// 	- true
 	//
@@ -37863,7 +37928,7 @@ type ModifyScalingGroupRequestCapacityOptions struct {
 	//
 	// true
 	CompensateWithOnDemand *bool `json:"CompensateWithOnDemand,omitempty" xml:"CompensateWithOnDemand,omitempty"`
-	// The minimum number of pay-as-you-go instances that must be contained in the scaling group. When the actual number of pay-as-you-go instances in the scaling group drops below the value of this parameter, Auto Scaling preferentially creates pay-as-you-go instances. Valid values: 0 to 1000.
+	// The minimum number of pay-as-you-go instances required in the scaling group. When the number of pay-as-you-go instances drops below the value of this parameter, Auto Scaling preferentially creates pay-as-you-go instances. Valid values: 0 to 1000.
 	//
 	// If you set `MultiAZPolicy` to `COMPOSABLE`, the default value is 0.
 	//
@@ -37871,16 +37936,29 @@ type ModifyScalingGroupRequestCapacityOptions struct {
 	//
 	// 30
 	OnDemandBaseCapacity *int32 `json:"OnDemandBaseCapacity,omitempty" xml:"OnDemandBaseCapacity,omitempty"`
-	// The percentage of pay-as-you-go instances in the excess instances when the minimum number of pay-as-you-go instances is reached. `OnDemandBaseCapacity` specifies the minimum number of pay-as-you-go instances that must be contained in the scaling group. Valid values: 0 to 100
+	// The percentage of additional pay-as-you-go instances beyond the minimum required by `OnDemandBaseCapacity` in the scaling group. Valid values: 0 to 100
 	//
 	// If you set `MultiAZPolicy` to `COMPOSABLE`, the default value is 100.
 	//
 	// example:
 	//
 	// 20
-	OnDemandPercentageAboveBaseCapacity *int32  `json:"OnDemandPercentageAboveBaseCapacity,omitempty" xml:"OnDemandPercentageAboveBaseCapacity,omitempty"`
-	PriceComparisonMode                 *string `json:"PriceComparisonMode,omitempty" xml:"PriceComparisonMode,omitempty"`
-	// Specifies whether to replace pay-as-you-go ECS instances with preemptible ECS instances. If you specify `CompensateWithOnDemand`, it may result in a higher percentage of pay-as-you-go instances compared to the value of `OnDemandPercentageAboveBaseCapacity`. In this scenario, Auto Scaling will try to deploy preemptible ECS instances to replace the surplus pay-as-you-go ECS instances. When `CompensateWithOnDemand` is specified, Auto Scaling creates pay-as-you-go ECS instances if there are not enough preemptible instance types. To avoid keeping these pay-as-you-go ECS instances for long periods, Auto Scaling tries to replace them with preemptible instances as soon as enough of preemptible instance types become available. Valid values:
+	OnDemandPercentageAboveBaseCapacity *int32 `json:"OnDemandPercentageAboveBaseCapacity,omitempty" xml:"OnDemandPercentageAboveBaseCapacity,omitempty"`
+	// The price comparison mode. Valid values:
+	//
+	// 	- PricePerUnit: compares prices based on capacity.
+	//
+	//     The capacity of instances in a scaling group is determined by the weights of the instance types used. If no weight is specified, the default weight is 1, which specifies that each instance in the scaling group has a capacity of 1.
+	//
+	// 	- PricePerVCpu: compares prices based on the price per vCPU.
+	//
+	// Default value: PricePerUnit.
+	//
+	// example:
+	//
+	// PricePerUnit
+	PriceComparisonMode *string `json:"PriceComparisonMode,omitempty" xml:"PriceComparisonMode,omitempty"`
+	// Specifies whether to replace pay-as-you-go instances with preemptible instances. If you specify `CompensateWithOnDemand`, it may result in a higher percentage of pay-as-you-go instances compared to the value of `OnDemandPercentageAboveBaseCapacity`. In this case, Auto Scaling will try to deploy preemptible instances to replace the surplus pay-as-you-go instances. When `CompensateWithOnDemand` is specified, Auto Scaling creates pay-as-you-go instances if there are not enough preemptible instance types. To avoid keeping these pay-as-you-go ECS instances for long periods, Auto Scaling tries to replace them with preemptible instances as soon as enough of preemptible instance types become available. Valid values:
 	//
 	// 	- true
 	//
