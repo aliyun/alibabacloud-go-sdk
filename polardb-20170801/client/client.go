@@ -6550,7 +6550,8 @@ type DeleteMaskingRulesRequest struct {
 	// example:
 	//
 	// pc-*****************
-	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	DBClusterId      *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	InterfaceVersion *string `json:"InterfaceVersion,omitempty" xml:"InterfaceVersion,omitempty"`
 	// The name of the masking rule. You can specify multiple masking rules at a time. Separate the masking rules with commas (,).
 	//
 	// > You can call the [DescribeMaskingRules](https://help.aliyun.com/document_detail/212573.html) operation to query details of all the masking rules for a specified cluster, such as the names of the masking rules.
@@ -6573,6 +6574,11 @@ func (s DeleteMaskingRulesRequest) GoString() string {
 
 func (s *DeleteMaskingRulesRequest) SetDBClusterId(v string) *DeleteMaskingRulesRequest {
 	s.DBClusterId = &v
+	return s
+}
+
+func (s *DeleteMaskingRulesRequest) SetInterfaceVersion(v string) *DeleteMaskingRulesRequest {
+	s.InterfaceVersion = &v
 	return s
 }
 
@@ -10846,7 +10852,10 @@ type DescribeDBClusterAttributeResponseBody struct {
 	// example:
 	//
 	// 5,242,880
-	BlktagUsed      *int64  `json:"BlktagUsed,omitempty" xml:"BlktagUsed,omitempty"`
+	BlktagUsed *int64 `json:"BlktagUsed,omitempty" xml:"BlktagUsed,omitempty"`
+	// example:
+	//
+	// false
 	BurstingEnabled *string `json:"BurstingEnabled,omitempty" xml:"BurstingEnabled,omitempty"`
 	// [Product Series](https://help.aliyun.com/document_detail/183258.html), with values as follows:
 	//
@@ -11025,7 +11034,12 @@ type DescribeDBClusterAttributeResponseBody struct {
 	// example:
 	//
 	// OFF
-	ImciAutoIndex       *string `json:"ImciAutoIndex,omitempty" xml:"ImciAutoIndex,omitempty"`
+	ImciAutoIndex *string `json:"ImciAutoIndex,omitempty" xml:"ImciAutoIndex,omitempty"`
+	// Indicates whether failover with hot replica is enabled. Valid values:
+	//
+	// 	- `true`
+	//
+	// 	- `false` (default)
 	ImperceptibleSwitch *string `json:"ImperceptibleSwitch,omitempty" xml:"ImperceptibleSwitch,omitempty"`
 	// Maximum number of inodes in the file system.
 	//
@@ -11677,7 +11691,10 @@ type DescribeDBClusterAttributeResponseBodyDBNodes struct {
 	// example:
 	//
 	// polar.mysql.x4.large
-	DBNodeClass       *string `json:"DBNodeClass,omitempty" xml:"DBNodeClass,omitempty"`
+	DBNodeClass *string `json:"DBNodeClass,omitempty" xml:"DBNodeClass,omitempty"`
+	// example:
+	//
+	// test
 	DBNodeDescription *string `json:"DBNodeDescription,omitempty" xml:"DBNodeDescription,omitempty"`
 	// Node ID.
 	//
@@ -12835,9 +12852,23 @@ type DescribeDBClusterEndpointsResponseBodyItems struct {
 	// example:
 	//
 	// pi-***************,pi-***************
-	Nodes                 *string `json:"Nodes,omitempty" xml:"Nodes,omitempty"`
+	Nodes *string `json:"Nodes,omitempty" xml:"Nodes,omitempty"`
+	// The global consistency timeout policy. Valid values:
+	//
+	// 	- **0**: sends the request to the primary node.
+	//
+	// 	- **2**: downgrades the consistency level of a query to inconsistent read when a global consistent read in the query times out. No error message is returned to the client.
+	//
+	// example:
+	//
+	// 0
 	PolarSccTimeoutAction *string `json:"PolarSccTimeoutAction,omitempty" xml:"PolarSccTimeoutAction,omitempty"`
-	PolarSccWaitTimeout   *string `json:"PolarSccWaitTimeout,omitempty" xml:"PolarSccWaitTimeout,omitempty"`
+	// Global consistency timeout.
+	//
+	// example:
+	//
+	// 100
+	PolarSccWaitTimeout *string `json:"PolarSccWaitTimeout,omitempty" xml:"PolarSccWaitTimeout,omitempty"`
 	// The read/write mode. Valid values:
 	//
 	// 	- **ReadWrite**: handles read and write requests. Automatic read/write splitting is enabled.
@@ -12848,7 +12879,16 @@ type DescribeDBClusterEndpointsResponseBodyItems struct {
 	//
 	// ReadOnly
 	ReadWriteMode *string `json:"ReadWriteMode,omitempty" xml:"ReadWriteMode,omitempty"`
-	SccMode       *string `json:"SccMode,omitempty" xml:"SccMode,omitempty"`
+	// Indicates whether the global consistency (high-performance mode) feature is enabled for the node. Valid values:
+	//
+	// 	- **on**: enabled.
+	//
+	// 	- **off**: disabled
+	//
+	// example:
+	//
+	// on
+	SccMode *string `json:"SccMode,omitempty" xml:"SccMode,omitempty"`
 }
 
 func (s DescribeDBClusterEndpointsResponseBodyItems) String() string {
@@ -21935,7 +21975,8 @@ type DescribeMaskingRulesRequest struct {
 	// example:
 	//
 	// pc-*****************
-	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	DBClusterId      *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	InterfaceVersion *string `json:"InterfaceVersion,omitempty" xml:"InterfaceVersion,omitempty"`
 	// The name of the masking rule.
 	//
 	// example:
@@ -21954,6 +21995,11 @@ func (s DescribeMaskingRulesRequest) GoString() string {
 
 func (s *DescribeMaskingRulesRequest) SetDBClusterId(v string) *DescribeMaskingRulesRequest {
 	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeMaskingRulesRequest) SetInterfaceVersion(v string) *DescribeMaskingRulesRequest {
+	s.InterfaceVersion = &v
 	return s
 }
 
@@ -29550,6 +29596,120 @@ func (s *ModifyDBClusterAndNodesParametersResponse) SetBody(v *ModifyDBClusterAn
 	return s
 }
 
+type ModifyDBClusterArchRequest struct {
+	// example:
+	//
+	// pc-****************
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// example:
+	//
+	// on
+	HotStandbyCluster *string `json:"HotStandbyCluster,omitempty" xml:"HotStandbyCluster,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// cn-beijing-i
+	StandbyAZ *string `json:"StandbyAZ,omitempty" xml:"StandbyAZ,omitempty"`
+}
+
+func (s ModifyDBClusterArchRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBClusterArchRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBClusterArchRequest) SetDBClusterId(v string) *ModifyDBClusterArchRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *ModifyDBClusterArchRequest) SetHotStandbyCluster(v string) *ModifyDBClusterArchRequest {
+	s.HotStandbyCluster = &v
+	return s
+}
+
+func (s *ModifyDBClusterArchRequest) SetRegionId(v string) *ModifyDBClusterArchRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyDBClusterArchRequest) SetStandbyAZ(v string) *ModifyDBClusterArchRequest {
+	s.StandbyAZ = &v
+	return s
+}
+
+type ModifyDBClusterArchResponseBody struct {
+	// example:
+	//
+	// pc-**************
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// example:
+	//
+	// 2148126708*****
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 6A2EE5B4-CC9F-46E1-A747-E43BC9******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyDBClusterArchResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBClusterArchResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBClusterArchResponseBody) SetDBClusterId(v string) *ModifyDBClusterArchResponseBody {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *ModifyDBClusterArchResponseBody) SetOrderId(v string) *ModifyDBClusterArchResponseBody {
+	s.OrderId = &v
+	return s
+}
+
+func (s *ModifyDBClusterArchResponseBody) SetRequestId(v string) *ModifyDBClusterArchResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyDBClusterArchResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyDBClusterArchResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyDBClusterArchResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBClusterArchResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBClusterArchResponse) SetHeaders(v map[string]*string) *ModifyDBClusterArchResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyDBClusterArchResponse) SetStatusCode(v int32) *ModifyDBClusterArchResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyDBClusterArchResponse) SetBody(v *ModifyDBClusterArchResponseBody) *ModifyDBClusterArchResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyDBClusterAuditLogCollectorRequest struct {
 	// Specifies whether to enable or disable SQL collector. Valid values:
 	//
@@ -34237,7 +34397,8 @@ type ModifyMaskingRulesRequest struct {
 	// example:
 	//
 	// true
-	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Enable           *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	InterfaceVersion *string `json:"InterfaceVersion,omitempty" xml:"InterfaceVersion,omitempty"`
 	// The parameter that is used to specify the masking rule that you want to modify and the value in the JSON format. All parameter values are of the string type. Example: `{"auto": {"databases": ["db1"], "tables": ["tb1"], "columns": ["c1,c2"] }, "description": "This rule will be applied to the columns c1 and c2 in table t1", "enabled": true, "applies_to": ["user"]}`. Parameters in the function:
 	//
 	// 	- `"auto"`: specifies that the dynamic masking algorithm is supported. This parameter is required.
@@ -34309,6 +34470,11 @@ func (s *ModifyMaskingRulesRequest) SetDBClusterId(v string) *ModifyMaskingRules
 
 func (s *ModifyMaskingRulesRequest) SetEnable(v string) *ModifyMaskingRulesRequest {
 	s.Enable = &v
+	return s
+}
+
+func (s *ModifyMaskingRulesRequest) SetInterfaceVersion(v string) *ModifyMaskingRulesRequest {
+	s.InterfaceVersion = &v
 	return s
 }
 
@@ -40742,6 +40908,10 @@ func (client *Client) DeleteMaskingRulesWithOptions(request *DeleteMaskingRulesR
 		query["DBClusterId"] = request.DBClusterId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.InterfaceVersion)) {
+		query["InterfaceVersion"] = request.InterfaceVersion
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RuleNameList)) {
 		query["RuleNameList"] = request.RuleNameList
 	}
@@ -45261,6 +45431,10 @@ func (client *Client) DescribeMaskingRulesWithOptions(request *DescribeMaskingRu
 		query["DBClusterId"] = request.DBClusterId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.InterfaceVersion)) {
+		query["InterfaceVersion"] = request.InterfaceVersion
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RuleNameList)) {
 		query["RuleNameList"] = request.RuleNameList
 	}
@@ -48561,6 +48735,89 @@ func (client *Client) ModifyDBClusterAndNodesParameters(request *ModifyDBCluster
 
 // Summary:
 //
+// 变更standby模式
+//
+// @param request - ModifyDBClusterArchRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDBClusterArchResponse
+func (client *Client) ModifyDBClusterArchWithOptions(request *ModifyDBClusterArchRequest, runtime *util.RuntimeOptions) (_result *ModifyDBClusterArchResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HotStandbyCluster)) {
+		query["HotStandbyCluster"] = request.HotStandbyCluster
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StandbyAZ)) {
+		query["StandbyAZ"] = request.StandbyAZ
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyDBClusterArch"),
+		Version:     tea.String("2017-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyDBClusterArchResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyDBClusterArchResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 变更standby模式
+//
+// @param request - ModifyDBClusterArchRequest
+//
+// @return ModifyDBClusterArchResponse
+func (client *Client) ModifyDBClusterArch(request *ModifyDBClusterArchRequest) (_result *ModifyDBClusterArchResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyDBClusterArchResponse{}
+	_body, _err := client.ModifyDBClusterArchWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Enables or disables SQL collector for a PolarDB cluster. The features related to SQL collector include Audit Logs and SQL Explorer.
 //
 // @param request - ModifyDBClusterAuditLogCollectorRequest
@@ -51410,6 +51667,10 @@ func (client *Client) ModifyMaskingRulesWithOptions(request *ModifyMaskingRulesR
 
 	if !tea.BoolValue(util.IsUnset(request.Enable)) {
 		query["Enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InterfaceVersion)) {
+		query["InterfaceVersion"] = request.InterfaceVersion
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RuleConfig)) {
