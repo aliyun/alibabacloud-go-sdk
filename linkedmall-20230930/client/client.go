@@ -4037,6 +4037,10 @@ func (s *Sku) SetTitle(v string) *Sku {
 }
 
 type SkuQueryParam struct {
+	// example:
+	//
+	// 1
+	BuyAmount *int32 `json:"buyAmount,omitempty" xml:"buyAmount,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -4059,6 +4063,11 @@ func (s SkuQueryParam) GoString() string {
 	return s.String()
 }
 
+func (s *SkuQueryParam) SetBuyAmount(v int32) *SkuQueryParam {
+	s.BuyAmount = &v
+	return s
+}
+
 func (s *SkuQueryParam) SetProductId(v string) *SkuQueryParam {
 	s.ProductId = &v
 	return s
@@ -4070,6 +4079,10 @@ func (s *SkuQueryParam) SetSkuId(v string) *SkuQueryParam {
 }
 
 type SkuSaleInfo struct {
+	// example:
+	//
+	// 不可售
+	CanNotSellReason *string `json:"canNotSellReason,omitempty" xml:"canNotSellReason,omitempty"`
 	// example:
 	//
 	// true
@@ -4122,6 +4135,11 @@ func (s SkuSaleInfo) String() string {
 
 func (s SkuSaleInfo) GoString() string {
 	return s.String()
+}
+
+func (s *SkuSaleInfo) SetCanNotSellReason(v string) *SkuSaleInfo {
+	s.CanNotSellReason = &v
+	return s
 }
 
 func (s *SkuSaleInfo) SetCanSell(v bool) *SkuSaleInfo {
