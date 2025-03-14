@@ -3198,7 +3198,8 @@ type DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel struct {
 	// 8
 	Cpu *string `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
 	// The disks.
-	Disks []*DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Repeated"`
+	Disks      []*DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Repeated"`
+	EnableIpv6 *bool                                                               `json:"EnableIpv6,omitempty" xml:"EnableIpv6,omitempty"`
 	// The error code.
 	//
 	// example:
@@ -3265,6 +3266,7 @@ type DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel struct {
 	//
 	// RUNNING
 	InstanceGroupStatus *string `json:"InstanceGroupStatus,omitempty" xml:"InstanceGroupStatus,omitempty"`
+	Ipv6Bandwidth       *int32  `json:"Ipv6Bandwidth,omitempty" xml:"Ipv6Bandwidth,omitempty"`
 	// The memory size.
 	//
 	// example:
@@ -3371,6 +3373,11 @@ func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) SetDisks(v
 	return s
 }
 
+func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) SetEnableIpv6(v bool) *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel {
+	s.EnableIpv6 = &v
+	return s
+}
+
 func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) SetErrorCode(v string) *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel {
 	s.ErrorCode = &v
 	return s
@@ -3423,6 +3430,11 @@ func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) SetInstanc
 
 func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) SetInstanceGroupStatus(v string) *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel {
 	s.InstanceGroupStatus = &v
+	return s
+}
+
+func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) SetIpv6Bandwidth(v int32) *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel {
+	s.Ipv6Bandwidth = &v
 	return s
 }
 
@@ -3926,6 +3938,7 @@ type DescribeAndroidInstancesResponseBodyInstanceModel struct {
 	//
 	// 2023-05-06 10:42:10
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	ImageId     *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	// The version of the image.
 	//
 	// example:
@@ -4099,6 +4112,11 @@ func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetGmtExpired(v stri
 
 func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetGmtModified(v string) *DescribeAndroidInstancesResponseBodyInstanceModel {
 	s.GmtModified = &v
+	return s
+}
+
+func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetImageId(v string) *DescribeAndroidInstancesResponseBodyInstanceModel {
+	s.ImageId = &v
 	return s
 }
 
@@ -5334,7 +5352,8 @@ type DescribeImageListResponseBodyData struct {
 	// example:
 	//
 	// System
-	ImageType *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
+	ImageType    *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
+	ImageVersion *string `json:"ImageVersion,omitempty" xml:"ImageVersion,omitempty"`
 	// The language of the image.
 	//
 	// example:
@@ -5437,6 +5456,11 @@ func (s *DescribeImageListResponseBodyData) SetImageRegionList(v []*string) *Des
 
 func (s *DescribeImageListResponseBodyData) SetImageType(v string) *DescribeImageListResponseBodyData {
 	s.ImageType = &v
+	return s
+}
+
+func (s *DescribeImageListResponseBodyData) SetImageVersion(v string) *DescribeImageListResponseBodyData {
+	s.ImageVersion = &v
 	return s
 }
 
@@ -6131,15 +6155,17 @@ type DescribeSpecResponseBodySpecInfoModel struct {
 	// example:
 	//
 	// 8
-	Core *int32 `json:"Core,omitempty" xml:"Core,omitempty"`
+	Core          *int32  `json:"Core,omitempty" xml:"Core,omitempty"`
+	MaxPhoneCount *string `json:"MaxPhoneCount,omitempty" xml:"MaxPhoneCount,omitempty"`
 	// Memory size.
 	//
 	// example:
 	//
 	// 16
-	Memory     *int32  `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	PhoneCount *string `json:"PhoneCount,omitempty" xml:"PhoneCount,omitempty"`
-	Resolution *string `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
+	Memory        *int32  `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	MinPhoneCount *string `json:"MinPhoneCount,omitempty" xml:"MinPhoneCount,omitempty"`
+	PhoneCount    *string `json:"PhoneCount,omitempty" xml:"PhoneCount,omitempty"`
+	Resolution    *string `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
 	// Specification ID.
 	//
 	// example:
@@ -6179,8 +6205,18 @@ func (s *DescribeSpecResponseBodySpecInfoModel) SetCore(v int32) *DescribeSpecRe
 	return s
 }
 
+func (s *DescribeSpecResponseBodySpecInfoModel) SetMaxPhoneCount(v string) *DescribeSpecResponseBodySpecInfoModel {
+	s.MaxPhoneCount = &v
+	return s
+}
+
 func (s *DescribeSpecResponseBodySpecInfoModel) SetMemory(v int32) *DescribeSpecResponseBodySpecInfoModel {
 	s.Memory = &v
+	return s
+}
+
+func (s *DescribeSpecResponseBodySpecInfoModel) SetMinPhoneCount(v string) *DescribeSpecResponseBodySpecInfoModel {
+	s.MinPhoneCount = &v
 	return s
 }
 
@@ -9914,6 +9950,7 @@ type SendFileRequest struct {
 	//
 	// /data
 	SourceFilePath *string `json:"SourceFilePath,omitempty" xml:"SourceFilePath,omitempty"`
+	TargetFileName *string `json:"TargetFileName,omitempty" xml:"TargetFileName,omitempty"`
 	// The endpoint of the OSS bucket in which the file is stored.
 	//
 	// >  Set the value to an internal endpoint when the cloud phone instance and the OSS bucket are in the same region to improve transfer speed without incurring public traffic fees. Sample endpoint: `oss-cn-hangzhou-internal.aliyuncs.com`. For more information, see [OSS regions and endpoints](https://help.aliyun.com/document_detail/31837.html).
@@ -9955,6 +9992,11 @@ func (s *SendFileRequest) SetAndroidInstanceIdList(v []*string) *SendFileRequest
 
 func (s *SendFileRequest) SetSourceFilePath(v string) *SendFileRequest {
 	s.SourceFilePath = &v
+	return s
+}
+
+func (s *SendFileRequest) SetTargetFileName(v string) *SendFileRequest {
+	s.TargetFileName = &v
 	return s
 }
 
@@ -15193,6 +15235,10 @@ func (client *Client) SendFileWithOptions(request *SendFileRequest, runtime *uti
 
 	if !tea.BoolValue(util.IsUnset(request.SourceFilePath)) {
 		query["SourceFilePath"] = request.SourceFilePath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetFileName)) {
+		query["TargetFileName"] = request.TargetFileName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UploadEndpoint)) {
