@@ -77661,6 +77661,146 @@ func (s *SubmitScreenMediaHighlightsJobResponse) SetBody(v *SubmitScreenMediaHig
 	return s
 }
 
+type SubmitSegmentationJobRequest struct {
+	// example:
+	//
+	// ****12e8864746a0a398****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	InputConfig *string `json:"InputConfig,omitempty" xml:"InputConfig,omitempty"`
+	// example:
+	//
+	// {
+	//
+	// 	"Mode": "UserDefined",
+	//
+	// 	"Ranges": [{
+	//
+	// 		"In": 10,
+	//
+	// 		"Out": 20
+	//
+	// 	}, {
+	//
+	// 		"In": 35,
+	//
+	// 		"Out": 50
+	//
+	// 	}]
+	//
+	// }
+	JobParams *string `json:"JobParams,omitempty" xml:"JobParams,omitempty"`
+	// example:
+	//
+	// {
+	//
+	// 	"OutputMediaTarget": "oss-object",
+	//
+	// 	"Bucket": "test-bucket",
+	//
+	// 	"ObjectKey": "path/to/test_{index}.mp4",
+	//
+	// 	"Width": 1920,
+	//
+	// 	"Height": 1080,
+	//
+	// 	"ExportAsNewMedia": false
+	//
+	// }
+	OutputConfig *string `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty"`
+	UserData     *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s SubmitSegmentationJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitSegmentationJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitSegmentationJobRequest) SetClientToken(v string) *SubmitSegmentationJobRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *SubmitSegmentationJobRequest) SetInputConfig(v string) *SubmitSegmentationJobRequest {
+	s.InputConfig = &v
+	return s
+}
+
+func (s *SubmitSegmentationJobRequest) SetJobParams(v string) *SubmitSegmentationJobRequest {
+	s.JobParams = &v
+	return s
+}
+
+func (s *SubmitSegmentationJobRequest) SetOutputConfig(v string) *SubmitSegmentationJobRequest {
+	s.OutputConfig = &v
+	return s
+}
+
+func (s *SubmitSegmentationJobRequest) SetUserData(v string) *SubmitSegmentationJobRequest {
+	s.UserData = &v
+	return s
+}
+
+type SubmitSegmentationJobResponseBody struct {
+	// example:
+	//
+	// ****cdb3e74639973036bc84****
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// ******3B-0E1A-586A-AC29-742247******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SubmitSegmentationJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitSegmentationJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitSegmentationJobResponseBody) SetJobId(v string) *SubmitSegmentationJobResponseBody {
+	s.JobId = &v
+	return s
+}
+
+func (s *SubmitSegmentationJobResponseBody) SetRequestId(v string) *SubmitSegmentationJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SubmitSegmentationJobResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitSegmentationJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SubmitSegmentationJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitSegmentationJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitSegmentationJobResponse) SetHeaders(v map[string]*string) *SubmitSegmentationJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitSegmentationJobResponse) SetStatusCode(v int32) *SubmitSegmentationJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitSegmentationJobResponse) SetBody(v *SubmitSegmentationJobResponseBody) *SubmitSegmentationJobResponse {
+	s.Body = v
+	return s
+}
+
 type SubmitSmarttagJobRequest struct {
 	// The video description. The description can contain letters, digits, and hyphens (-) and cannot start with a special character. The description can be up to 1 KB in length.
 	//
@@ -118396,6 +118536,95 @@ func (client *Client) SubmitScreenMediaHighlightsJob(request *SubmitScreenMediaH
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitScreenMediaHighlightsJobResponse{}
 	_body, _err := client.SubmitScreenMediaHighlightsJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交拆条任务
+//
+// @param request - SubmitSegmentationJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitSegmentationJobResponse
+func (client *Client) SubmitSegmentationJobWithOptions(request *SubmitSegmentationJobRequest, runtime *util.RuntimeOptions) (_result *SubmitSegmentationJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobParams)) {
+		query["JobParams"] = request.JobParams
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputConfig)) {
+		query["OutputConfig"] = request.OutputConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InputConfig)) {
+		body["InputConfig"] = request.InputConfig
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitSegmentationJob"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SubmitSegmentationJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SubmitSegmentationJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 提交拆条任务
+//
+// @param request - SubmitSegmentationJobRequest
+//
+// @return SubmitSegmentationJobResponse
+func (client *Client) SubmitSegmentationJob(request *SubmitSegmentationJobRequest) (_result *SubmitSegmentationJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitSegmentationJobResponse{}
+	_body, _err := client.SubmitSegmentationJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
