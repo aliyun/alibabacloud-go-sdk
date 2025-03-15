@@ -416,7 +416,7 @@ type AttachKeyPairResponseBody struct {
 	//
 	// 30637AD6-D977-4833-A54C-CC89483E****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The results.
+	// The request results.
 	Results []*AttachKeyPairResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
 	// The total number of simple application servers to which the key pair is bound.
 	//
@@ -836,7 +836,12 @@ type CreateCustomImageRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-aek2bti7cf7****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the system disk snapshot.
 	//
@@ -2083,7 +2088,7 @@ type CreateInstancesRequest struct {
 	//
 	// false
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// The auto-renewal period. This parameter is required only when you set `AutoRenew` to true. Unit: months. Valid values: 1, 3, 6, 12, 24, and 36.
+	// The auto-renewal period. This parameter is required only when you set `AutoRenew` to true. Unit: month. Valid values: 1, 3, 6, 12, 24, and 36.
 	//
 	// example:
 	//
@@ -6733,6 +6738,8 @@ type DescribeDatabaseSlowLogRecordsRequest struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Valid values: 30 to 100.
 	//
+	// Maximum value: 100.
+	//
 	// Default value: 30.
 	//
 	// example:
@@ -8017,7 +8024,7 @@ type DescribeInstancePasswordsSettingRequest struct {
 	//
 	// ace0706b2ac4454d984295a94213****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the simple application server. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+	// The region ID of the simple application server. You can call the [ListRegions](https://help.aliyun.com/document_detail/2361076.html) operation to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -8063,7 +8070,7 @@ type DescribeInstancePasswordsSettingResponseBody struct {
 	//
 	// 20758A-585D-4A41-A9B2-28DA8F4****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether a VNC connection password is set.
+	// Indicates whether a VNC connection password is set for the simple application server.
 	//
 	// example:
 	//
@@ -8952,13 +8959,7 @@ type DescribeMonitorDataRequest struct {
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The interval at which the monitoring data is queried. Valid values: 60, 300, and 900. Unit: seconds.
 	//
-	// >
-	//
-	// If MetricName is set to FLOW_USED, Period is set to 3600 (one hour). In other cases, set Period based on your business requirements.
-	//
-	// **
-	//
-	// ****
+	// >  If MetricName is set to FLOW_USED, set Period to 3600 (one hour). In other cases, set Period based on your business requirements.
 	//
 	// This parameter is required.
 	//
@@ -8980,13 +8981,11 @@ type DescribeMonitorDataRequest struct {
 	//
 	// 	- Time format: YYYY-MM-DDThh:mm:ssZ.
 	//
-	// > The specified time range includes the end time and excludes the start time. The start time must be earlier than the end time.
+	// >
 	//
-	// The interval between the start time and the end time is less than or equal to 31 days.
+	// > - The specified time range includes the end time and excludes the start time. The start time must be earlier than the end time.
 	//
-	// **
-	//
-	// ****
+	// > - The interval between the start time and the end time is less than or equal to 31 days.
 	//
 	// This parameter is required.
 	//
@@ -9064,13 +9063,7 @@ type DescribeMonitorDataResponseBody struct {
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The interval at which the monitoring data is queried. Valid values: 60, 300, and 900. Unit: seconds.
 	//
-	// >
-	//
-	// If MetricName is set to FLOW_USED, the value of Period is 3600 (one hour).
-	//
-	// **
-	//
-	// ****
+	// >  If you set the MetricName request parameter to FLOW_USED, the value of Period is 3600 (one hour).
 	//
 	// example:
 	//
@@ -10521,6 +10514,8 @@ type ListCustomImagesRequest struct {
 	//
 	// ["test1****", "test2****"]
 	ImageNames *string `json:"ImageNames,omitempty" xml:"ImageNames,omitempty"`
+	// The ID of the simple application server from which the image is derived.
+	//
 	// example:
 	//
 	// ace0706b2ac4454d984295a94213****
@@ -10555,6 +10550,14 @@ type ListCustomImagesRequest struct {
 	//
 	// rg-aek2bti7cf7yj2i
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// Specifies whether to query shared images. Valid values:
+	//
+	// 	- False: do not query shared images. The shared images are not included in the response.
+	//
+	// 	- True: query shared images. The shared images are included in the response.
+	//
+	// If you do not specify this parameter, all images are returned.
+	//
 	// example:
 	//
 	// False
@@ -10733,6 +10736,7 @@ func (s *ListCustomImagesResponseBody) SetTotalCount(v string) *ListCustomImages
 }
 
 type ListCustomImagesResponseBodyCustomImages struct {
+	// The simple application servers created from the image.
 	CreateInstances []*string `json:"CreateInstances,omitempty" xml:"CreateInstances,omitempty" type:"Repeated"`
 	// The time when the snapshot was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is in UTC.
 	//
@@ -10770,11 +10774,13 @@ type ListCustomImagesResponseBodyCustomImages struct {
 	//
 	// false
 	InShare *bool `json:"InShare,omitempty" xml:"InShare,omitempty"`
+	// Indicates whether the custom image is shared across accounts.
+	//
 	// example:
 	//
 	// False
 	InShareUser *bool `json:"InShareUser,omitempty" xml:"InShareUser,omitempty"`
-	// The ID of the simple application server.
+	// The ID of the simple application server from which the image is derived.
 	//
 	// example:
 	//
@@ -10792,6 +10798,8 @@ type ListCustomImagesResponseBodyCustomImages struct {
 	//
 	// hua
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The operating system type of the image.
+	//
 	// example:
 	//
 	// Linux
@@ -10802,13 +10810,47 @@ type ListCustomImagesResponseBodyCustomImages struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The size of the image data disk. Unit: GiB.
+	//
+	// example:
+	//
+	// 20
+	RequiredDataDiskSize *int32 `json:"RequiredDataDiskSize,omitempty" xml:"RequiredDataDiskSize,omitempty"`
+	// The size of the image system disk. Unit: GiB.
+	//
+	// example:
+	//
+	// 20
+	RequiredSystemDiskSize *int32 `json:"RequiredSystemDiskSize,omitempty" xml:"RequiredSystemDiskSize,omitempty"`
 	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-acfm2h2lvp3ublq
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The status of the custom image.
+	// The name of the source image that is used to create the simple application server.
+	//
+	// example:
+	//
+	// CentOS
+	SourceImageName *string `json:"SourceImageName,omitempty" xml:"SourceImageName,omitempty"`
+	// The version of the source image that is used to create the simple application server.
+	//
+	// example:
+	//
+	// 8.0
+	SourceImageVersion *string `json:"SourceImageVersion,omitempty" xml:"SourceImageVersion,omitempty"`
+	// The status of the custom image. Valid values:
+	//
+	// 	- 0: copying
+	//
+	// 	- 1: available
+	//
+	// 	- 2: unavailable
+	//
+	// 	- 3: creation failed
+	//
+	// 	- 4: creating
 	//
 	// example:
 	//
@@ -10828,6 +10870,8 @@ type ListCustomImagesResponseBodyCustomImages struct {
 	SystemSnapshotName *string `json:"SystemSnapshotName,omitempty" xml:"SystemSnapshotName,omitempty"`
 	// The tags of the custom image.
 	Tags []*ListCustomImagesResponseBodyCustomImagesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The ID of the Alibaba Cloud account to which the image belongs.
+	//
 	// example:
 	//
 	// 180185828710****
@@ -10907,8 +10951,28 @@ func (s *ListCustomImagesResponseBodyCustomImages) SetRegionId(v string) *ListCu
 	return s
 }
 
+func (s *ListCustomImagesResponseBodyCustomImages) SetRequiredDataDiskSize(v int32) *ListCustomImagesResponseBodyCustomImages {
+	s.RequiredDataDiskSize = &v
+	return s
+}
+
+func (s *ListCustomImagesResponseBodyCustomImages) SetRequiredSystemDiskSize(v int32) *ListCustomImagesResponseBodyCustomImages {
+	s.RequiredSystemDiskSize = &v
+	return s
+}
+
 func (s *ListCustomImagesResponseBodyCustomImages) SetResourceGroupId(v string) *ListCustomImagesResponseBodyCustomImages {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ListCustomImagesResponseBodyCustomImages) SetSourceImageName(v string) *ListCustomImagesResponseBodyCustomImages {
+	s.SourceImageName = &v
+	return s
+}
+
+func (s *ListCustomImagesResponseBodyCustomImages) SetSourceImageVersion(v string) *ListCustomImagesResponseBodyCustomImages {
+	s.SourceImageVersion = &v
 	return s
 }
 
@@ -11545,13 +11609,13 @@ func (s *ListFirewallRulesRequest) SetTag(v []*ListFirewallRulesRequestTag) *Lis
 }
 
 type ListFirewallRulesRequestTag struct {
-	// The key of tag N to be added to the firewall rule. Valid values of N: 1 to 20.
+	// The tag key. A tag key must be 1 to 64 characters in length. You can add up to 20 tags.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N to be added to the firewall rule. Valid values of N: 1 to 20.
+	// The tag value. A tag value must be 1 to 64 characters in length. You can add up to 20 tags.
 	//
 	// example:
 	//
@@ -11578,7 +11642,7 @@ func (s *ListFirewallRulesRequestTag) SetValue(v string) *ListFirewallRulesReque
 }
 
 type ListFirewallRulesResponseBody struct {
-	// The array of firewall rules.
+	// Details of the firewall rules.
 	FirewallRules []*ListFirewallRulesResponseBodyFirewallRules `json:"FirewallRules,omitempty" xml:"FirewallRules,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -11734,13 +11798,13 @@ func (s *ListFirewallRulesResponseBodyFirewallRules) SetTags(v []*ListFirewallRu
 }
 
 type ListFirewallRulesResponseBodyFirewallRulesTags struct {
-	// The key of tag N to be added to the firewall rule. Valid values of N: 1 to 20.
+	// The tag key.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N to be added to the firewall rule. Valid values of N: 1 to 20.
+	// The tag value.
 	//
 	// example:
 	//
@@ -11848,11 +11912,7 @@ func (s *ListImagesRequest) SetRegionId(v string) *ListImagesRequest {
 }
 
 type ListImagesResponseBody struct {
-	// The OS type of the image. Valid values:
-	//
-	// 	- Linux
-	//
-	// 	- Windows
+	// Details of the queried images.
 	Images []*ListImagesResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -11882,6 +11942,12 @@ func (s *ListImagesResponseBody) SetRequestId(v string) *ListImagesResponseBody 
 
 type ListImagesResponseBodyImages struct {
 	// The description of the image.
+	//
+	// example:
+	//
+	// Apps ImageOS ImageCustom Images
+	//
+	// WordPress is a popular and powerful platform that allows you to build blogs and content management websites and implement custom features by using third-party templates and plug-ins. This WordPress image is built based on CentOS 7.9, PHP 7.4, MySQL 5.7, and Apache 2.4.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the image.
 	//
@@ -12419,7 +12485,7 @@ type ListInstancesRequest struct {
 	//
 	// ["2ad1ae67295445f598017499dc****", "2ad1ae67295445f598017123dc****"]
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	// The name of the simple application servers, which supports fuzzy search using wildcard *.
+	// The name of the simple application server. Fuzzy search with the asterisk (\\*) wildcard is supported.
 	//
 	// example:
 	//
@@ -12447,7 +12513,7 @@ type ListInstancesRequest struct {
 	//
 	// example:
 	//
-	// ["42.1.\*\*.**", "42.2.\*\*.**"]
+	// ["``42.1.**.**``", "``42.2.**.**``"]
 	PublicIpAddresses *string `json:"PublicIpAddresses,omitempty" xml:"PublicIpAddresses,omitempty"`
 	// The region ID of the simple application servers.
 	//
@@ -12581,7 +12647,7 @@ func (s *ListInstancesRequestTag) SetValue(v string) *ListInstancesRequestTag {
 }
 
 type ListInstancesResponseBody struct {
-	// Details about the simple application servers.
+	// Details about the queried simple application servers.
 	Instances []*ListInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -12703,7 +12769,7 @@ type ListInstancesResponseBodyInstances struct {
 	//
 	// EXPIRED
 	DisableReason *string `json:"DisableReason,omitempty" xml:"DisableReason,omitempty"`
-	// The disks that are attached to the simple application server.
+	// The information about the disks on the simple application server.
 	Disks []*ListInstancesResponseBodyInstancesDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Repeated"`
 	// The time when the simple application server expires. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
@@ -12736,7 +12802,8 @@ type ListInstancesResponseBodyInstances struct {
 	// example:
 	//
 	// test-InstanceName
-	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstanceName      *string                                                `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	NetworkAttributes []*ListInstancesResponseBodyInstancesNetworkAttributes `json:"NetworkAttributes,omitempty" xml:"NetworkAttributes,omitempty" type:"Repeated"`
 	// The ID of the instance plan.
 	//
 	// example:
@@ -12761,7 +12828,7 @@ type ListInstancesResponseBodyInstances struct {
 	//
 	// rg-aekz7jmhg5s****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The specifications of the resource.
+	// The specifications of the resources on the simple application server.
 	ResourceSpec *ListInstancesResponseBodyInstancesResourceSpec `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
 	// The status of the simple application server. Valid values:
 	//
@@ -12873,6 +12940,11 @@ func (s *ListInstancesResponseBodyInstances) SetInstanceName(v string) *ListInst
 	return s
 }
 
+func (s *ListInstancesResponseBodyInstances) SetNetworkAttributes(v []*ListInstancesResponseBodyInstancesNetworkAttributes) *ListInstancesResponseBodyInstances {
+	s.NetworkAttributes = v
+	return s
+}
+
 func (s *ListInstancesResponseBodyInstances) SetPlanId(v string) *ListInstancesResponseBodyInstances {
 	s.PlanId = &v
 	return s
@@ -12958,15 +13030,15 @@ type ListInstancesResponseBodyInstancesDisks struct {
 	DiskName *string `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
 	// The tags that are added to the disk.
 	DiskTags []*ListInstancesResponseBodyInstancesDisksDiskTags `json:"DiskTags,omitempty" xml:"DiskTags,omitempty" type:"Repeated"`
-	// The disk type. Valid values:
+	// The type of the disk. Valid values:
 	//
-	// 	- system: system disk
+	// 	- system: system disk.
 	//
-	// 	- data: data disk
+	// 	- data: data disk.
 	//
 	// example:
 	//
-	// System
+	// system
 	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
 	// The region ID.
 	//
@@ -12986,7 +13058,7 @@ type ListInstancesResponseBodyInstancesDisks struct {
 	//
 	// rg-aek2bti7cf7****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The disk size. Unit: GB.
+	// The size of the disk. Unit: GiB.
 	//
 	// example:
 	//
@@ -13201,8 +13273,43 @@ func (s *ListInstancesResponseBodyInstancesImage) SetOsType(v string) *ListInsta
 	return s
 }
 
+type ListInstancesResponseBodyInstancesNetworkAttributes struct {
+	PeakBandwidth      *int32  `json:"PeakBandwidth,omitempty" xml:"PeakBandwidth,omitempty"`
+	PrivateIpAddress   *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
+	PublicIpAddress    *string `json:"PublicIpAddress,omitempty" xml:"PublicIpAddress,omitempty"`
+	PublicIpDdosStatus *string `json:"PublicIpDdosStatus,omitempty" xml:"PublicIpDdosStatus,omitempty"`
+}
+
+func (s ListInstancesResponseBodyInstancesNetworkAttributes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesResponseBodyInstancesNetworkAttributes) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesResponseBodyInstancesNetworkAttributes) SetPeakBandwidth(v int32) *ListInstancesResponseBodyInstancesNetworkAttributes {
+	s.PeakBandwidth = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstancesNetworkAttributes) SetPrivateIpAddress(v string) *ListInstancesResponseBodyInstancesNetworkAttributes {
+	s.PrivateIpAddress = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstancesNetworkAttributes) SetPublicIpAddress(v string) *ListInstancesResponseBodyInstancesNetworkAttributes {
+	s.PublicIpAddress = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstancesNetworkAttributes) SetPublicIpDdosStatus(v string) *ListInstancesResponseBodyInstancesNetworkAttributes {
+	s.PublicIpDdosStatus = &v
+	return s
+}
+
 type ListInstancesResponseBodyInstancesResourceSpec struct {
-	// The bandwidth of the server.
+	// The bandwidth. Unit: Mbit/s.
 	//
 	// example:
 	//
@@ -13226,7 +13333,7 @@ type ListInstancesResponseBodyInstancesResourceSpec struct {
 	//
 	// cloud_efficiency
 	DiskCategory *string `json:"DiskCategory,omitempty" xml:"DiskCategory,omitempty"`
-	// The disk size.
+	// The size of the disk. Unit: GiB.
 	//
 	// example:
 	//
@@ -13242,7 +13349,7 @@ type ListInstancesResponseBodyInstancesResourceSpec struct {
 	//
 	// 818
 	Flow *float64 `json:"Flow,omitempty" xml:"Flow,omitempty"`
-	// The memory size of the server.
+	// The size of the memory. Unit: GiB.
 	//
 	// example:
 	//
@@ -13748,7 +13855,7 @@ func (s *ListPlansRequest) SetRegionId(v string) *ListPlansRequest {
 }
 
 type ListPlansResponseBody struct {
-	// The operating system types supported by the plan.
+	// Details about the plans.
 	Plans []*ListPlansResponseBodyPlans `json:"Plans,omitempty" xml:"Plans,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -13840,7 +13947,8 @@ type ListPlansResponseBodyPlans struct {
 	// example:
 	//
 	// swas.s2.c2m1s40b3t04
-	PlanId *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	PlanId   *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	PlanType *string `json:"PlanType,omitempty" xml:"PlanType,omitempty"`
 	// The operating system types supported by the plan.
 	//
 	// example:
@@ -13899,6 +14007,11 @@ func (s *ListPlansResponseBodyPlans) SetOriginPrice(v float64) *ListPlansRespons
 
 func (s *ListPlansResponseBodyPlans) SetPlanId(v string) *ListPlansResponseBodyPlans {
 	s.PlanId = &v
+	return s
+}
+
+func (s *ListPlansResponseBodyPlans) SetPlanType(v string) *ListPlansResponseBodyPlans {
+	s.PlanType = &v
 	return s
 }
 
@@ -14520,7 +14633,7 @@ type ListTagResourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource IDs. You can specify up to 50 resource IDs.
+	// The ID of the resource. You can specify up to 50 resource IDs.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The resource type. Valid values:
 	//
@@ -14542,7 +14655,7 @@ type ListTagResourcesRequest struct {
 	//
 	// instance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tags. You can specify up to 20 tags.
+	// The list of tags. You can specify up to 20 tags.
 	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -14585,13 +14698,13 @@ func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListT
 }
 
 type ListTagResourcesRequestTag struct {
-	// The key of tag N that you want to add to the simple application server. A tag key can be 1 to 64 characters in length. Valid values of N: 1 to 20.
+	// The key of the tag that you want to add to a resource. The tag key can be 1 to 64 characters in length.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N that you want to add to the simple application server. A tag value can be up to 64 characters in length. Valid values of N: 1 to 20.
+	// The value of the tag that you want to add to a resource. The tag value can be 1 to 64 characters in length.
 	//
 	// example:
 	//
@@ -14630,7 +14743,7 @@ type ListTagResourcesResponseBody struct {
 	//
 	// 20758A-585D-4A41-A9B2-28DA8F4F534F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// A collection of resource IDs and tags. The information includes the resource IDs, resource types, and key-value pairs.
+	// A collection of resources and the tags of the resources. The information includes the resource IDs, resource types, and key-value pairs of tags.
 	TagResources *ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Struct"`
 }
 
@@ -14681,7 +14794,19 @@ type ListTagResourcesResponseBodyTagResourcesTagResource struct {
 	//
 	// s-bw526m1vi6x20c6g****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The resource type.
+	// The type of the resource. Valid values:
+	//
+	// 	- instance
+	//
+	// 	- snapshot
+	//
+	// 	- customimage
+	//
+	// 	- command
+	//
+	// 	- firewallrule
+	//
+	// 	- disk
 	//
 	// example:
 	//
@@ -14777,6 +14902,14 @@ type LoginInstanceRequest struct {
 	//
 	// Test****
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The port number that is used to log on to the simple application server by using Workbench.
+	//
+	// 	- Linux servers: The default value is 22.
+	//
+	// 	- Windows servers: The default value is 3389.
+	//
+	// >  If you want to connect to a server by using a custom port, you must modify the default remote connection port. For more information, see [Configure a custom remote connection port](https://help.aliyun.com/document_detail/2807402.html).
+	//
 	// example:
 	//
 	// 3389
@@ -15644,7 +15777,7 @@ type ModifyInstanceVncPasswordRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The existing VNC password.
+	// The VNC connection password.
 	//
 	// example:
 	//
@@ -16266,7 +16399,7 @@ func (s *RenewInstanceResponse) SetBody(v *RenewInstanceResponseBody) *RenewInst
 }
 
 type ResetDatabaseAccountPasswordRequest struct {
-	// The password of the database administrator account.
+	// The password of the administrator account of the Simple Database Service instance.
 	//
 	// This parameter is required.
 	//
@@ -16509,7 +16642,8 @@ type ResetSystemRequest struct {
 	// example:
 	//
 	// ace0706b2ac4454d984295a94213****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId       *string                             `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	LoginCredentials *ResetSystemRequestLoginCredentials `json:"LoginCredentials,omitempty" xml:"LoginCredentials,omitempty" type:"Struct"`
 	// The region ID. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
 	//
 	// This parameter is required.
@@ -16543,8 +16677,36 @@ func (s *ResetSystemRequest) SetInstanceId(v string) *ResetSystemRequest {
 	return s
 }
 
+func (s *ResetSystemRequest) SetLoginCredentials(v *ResetSystemRequestLoginCredentials) *ResetSystemRequest {
+	s.LoginCredentials = v
+	return s
+}
+
 func (s *ResetSystemRequest) SetRegionId(v string) *ResetSystemRequest {
 	s.RegionId = &v
+	return s
+}
+
+type ResetSystemRequestLoginCredentials struct {
+	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	Password    *string `json:"Password,omitempty" xml:"Password,omitempty"`
+}
+
+func (s ResetSystemRequestLoginCredentials) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResetSystemRequestLoginCredentials) GoString() string {
+	return s.String()
+}
+
+func (s *ResetSystemRequestLoginCredentials) SetKeyPairName(v string) *ResetSystemRequestLoginCredentials {
+	s.KeyPairName = &v
+	return s
+}
+
+func (s *ResetSystemRequestLoginCredentials) SetPassword(v string) *ResetSystemRequestLoginCredentials {
+	s.Password = &v
 	return s
 }
 
@@ -16791,9 +16953,9 @@ type RunCommandRequest struct {
 	//
 	// RunShellScript
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The name of the password to be used to run the command on a Windows server.
+	// The name of the password used to run the command on a Windows simple application server.
 	//
-	// If you want to use a username other than the default "system" username to run the command on a Windows server, you must specify both the WindowsPasswordName and WorkingUser parameters. To mitigate the risk of password leaks, the password is stored in plaintext in Operation Orchestration Service (OOS) Parameter Store, and only the name of the password is passed in by using WindowsPasswordName.
+	// If you want to use a username other than the default "system" username to run the command on a Windows server, you must specify both the WindowsPasswordName and WorkingUser parameters. The password is hosted in plaintext in the parameter repository of CloudOps Orchestration Service (OOS) to mitigate the risk of password leaks. Only the name of the password is passed in by using WindowsPasswordName.
 	//
 	// example:
 	//
@@ -16977,9 +17139,9 @@ type RunCommandShrinkRequest struct {
 	//
 	// RunShellScript
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The name of the password to be used to run the command on a Windows server.
+	// The name of the password used to run the command on a Windows simple application server.
 	//
-	// If you want to use a username other than the default "system" username to run the command on a Windows server, you must specify both the WindowsPasswordName and WorkingUser parameters. To mitigate the risk of password leaks, the password is stored in plaintext in Operation Orchestration Service (OOS) Parameter Store, and only the name of the password is passed in by using WindowsPasswordName.
+	// If you want to use a username other than the default "system" username to run the command on a Windows server, you must specify both the WindowsPasswordName and WorkingUser parameters. The password is hosted in plaintext in the parameter repository of CloudOps Orchestration Service (OOS) to mitigate the risk of password leaks. Only the name of the password is passed in by using WindowsPasswordName.
 	//
 	// example:
 	//
@@ -17901,7 +18063,7 @@ type TagResourcesRequest struct {
 	//
 	// instance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tags. You can specify up to 20 tags.
+	// The list of tags. You can specify up to 20 tags.
 	//
 	// This parameter is required.
 	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -17941,17 +18103,17 @@ func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesR
 }
 
 type TagResourcesRequestTag struct {
-	// The key of tag N that you want to add to the simple application server. Valid values of N: 1 to 20.
+	// The key of tag N that you want to add to a resource.
 	//
-	// You cannot specify an empty string as a tag key. A tag key can be up to 64 characters in length. It cannot start with aliyun or acs: and cannot contain http:// or https://.
+	// You cannot specify an empty string as a tag key. The tag key can be up to 64 characters in length and cannot contain http:// or https://. The tag key cannot start with acs: or aliyun.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N that you want to add to the simple application server. Valid values of N: 1 to 20.
+	// The value of tag N that you want to add to a resource.
 	//
-	// You can specify an empty string as a tag value. A tag value can be up to 64 characters in length. It cannot start with aliyun or acs: and cannot contain http:// or https://.
+	// You can specify an empty string as a tag value. The tag value can be up to 64 characters in length and cannot contain http:// or https://.
 	//
 	// example:
 	//
@@ -18029,7 +18191,13 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 }
 
 type UntagResourcesRequest struct {
-	// Specifies whether to remove all tags. This parameter takes effect only when TagKey.N is not specified. Valid values: true and false. Default value: false.
+	// Specifies whether to remove all tags from the specified one or more resources. This parameter takes effect only if the TagKey.N parameter is not set. Valid values:
+	//
+	// 	- true: deletes all tags that are added to the specific lightweight resource. If no tags are added to the specific lightweight resource, the deletion operation is ignored.
+	//
+	// 	- false: does not delete the tags that are added to the specific lightweight resource.
+	//
+	// Default value: false.
 	//
 	// example:
 	//
@@ -18425,19 +18593,19 @@ type UpdateInstanceAttributeRequest struct {
 	//
 	// ace0706b2ac4454d984295a94213****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the simple application server. The name must be 2 to 128 characters in length. It must start with a letter but cannot start with `http://` or `https://`. The name can only contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+	// The name of the simple application server. The name must be 2 to 50 characters in length. It can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter or digit. Domain names are supported.
 	//
 	// example:
 	//
 	// test-InstanceName
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The new password of the simple application server. The password must be 8 to 30 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters:
+	// The new password of the simple application server. The password must be 8 to 30 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported:
 	//
 	//     ()`~!@#$%^&*-_+=|{}[]:;\\"<>,.?/
 	//
 	// For Windows instances, the password cannot start with a forward slash (/).
 	//
-	// >  For security reasons, we recommend that you use HTTPS to send requests if the `Password parameter` is specified.
+	// >  For security reasons, we recommend that you use HTTPS to send requests if `Password` is specified.
 	//
 	// example:
 	//
@@ -18978,13 +19146,24 @@ func (client *Client) AddCustomImageShareAccountWithOptions(request *AddCustomIm
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AddCustomImageShareAccountResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AddCustomImageShareAccountResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AddCustomImageShareAccountResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -19018,10 +19197,6 @@ func (client *Client) AddCustomImageShareAccount(request *AddCustomImageShareAcc
 // Description:
 //
 // By default, no public endpoints are assigned to Simple Database Service instances. If you want to access the databases of a Simple Database Service instance over the Internet by using Simple Container Service or Data Management (DMS), you must apply for a public endpoint for the Simple Database Service instance.
-//
-// ### QPS limit
-//
-// You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
 //
 // @param request - AllocatePublicConnectionRequest
 //
@@ -19060,13 +19235,24 @@ func (client *Client) AllocatePublicConnectionWithOptions(request *AllocatePubli
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AllocatePublicConnectionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AllocatePublicConnectionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AllocatePublicConnectionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -19076,10 +19262,6 @@ func (client *Client) AllocatePublicConnectionWithOptions(request *AllocatePubli
 // Description:
 //
 // By default, no public endpoints are assigned to Simple Database Service instances. If you want to access the databases of a Simple Database Service instance over the Internet by using Simple Container Service or Data Management (DMS), you must apply for a public endpoint for the Simple Database Service instance.
-//
-// ### QPS limit
-//
-// You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
 //
 // @param request - AllocatePublicConnectionRequest
 //
@@ -19144,13 +19326,24 @@ func (client *Client) ApplyFirewallTemplateWithOptions(request *ApplyFirewallTem
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ApplyFirewallTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ApplyFirewallTemplateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ApplyFirewallTemplateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -19224,13 +19417,24 @@ func (client *Client) AttachKeyPairWithOptions(request *AttachKeyPairRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AttachKeyPairResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AttachKeyPairResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AttachKeyPairResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -19324,13 +19528,24 @@ func (client *Client) CreateCommandWithOptions(request *CreateCommandRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateCommandResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateCommandResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateCommandResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -19357,27 +19572,23 @@ func (client *Client) CreateCommand(request *CreateCommandRequest) (_result *Cre
 //
 // Description:
 //
-// A custom image is created based on a snapshot of a simple application server. You can use a custom image to create multiple simple application servers that have the same configurations. You can also share custom images to ECS and use the shared images to create ECS instances or replace the OSs of existing ECS instances. For more information about custom images, see [Overview of custom images](https://help.aliyun.com/document_detail/199375.html).
+// A custom image is created from a snapshot of a simple application server. You can use a custom image to create multiple simple application servers that have the same configurations. You can also share custom images to ECS and use the shared images to create ECS instances or replace the OSs of existing ECS instances. For more information about custom images, see [Overview of custom images](https://help.aliyun.com/document_detail/199375.html).
 //
 // You must create a system disk snapshot of a simple application server before you create a custom image based on the snapshot. For more information, see [CreateSnapshot](https://help.aliyun.com/document_detail/190452.html).
 //
-// > If you need the data on the data disk of a simple application server when you create a custom image, create a snapshot for the data disk first.
+// >  If you need the data on the data disk of a simple application server when you create a custom image, create a snapshot for the data disk first.
 //
 // Before you create a custom image, take note of the following items:
 //
 // 	- The custom image and the corresponding simple application server must reside in the same region.
 //
-// 	- The maximum number of custom images that can be maintained in an Alibaba Cloud account is triple the number of simple application servers in the account. The value cannot be greater than 15.
+// 	- The maximum number of custom images that you can create is 3 times the number of simple application servers that you have, but cannot exceed 15.
 //
-// 	- You can directly create a custom image only based on the system disk snapshot of a simple application server. If you want a custom image to contain the data on the data disk of the simple application server, you must select a data disk snapshot when you create the custom image.
+// 	- You can directly create a custom image only based on the system disk snapshot of a simple application server. If you want a custom image to contain the data on the data disk of the simple application server, you must select a data disk snapshot in addition to a system disk snapshot when you create the custom image.
 //
-// 	- If a simple application server is released due to expiration or refunds, the custom images that are created based on a snapshot of the server are also released.
+// 	- If a simple application server is released due to expiration or refunds, the custom images that are created based on the server are also released.
 //
-// 	- If you reset a simple application server by changing the application system or OS of the server or replacing the image of the server, the disk data on the server is cleared. Back up the disk data as needed.
-//
-// ### QPS limit
-//
-// You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
+// 	- Resetting the system or changing the image of a simple application server clears the disk data on the server. Back up the data as needed.
 //
 // @param request - CreateCustomImageRequest
 //
@@ -19440,13 +19651,24 @@ func (client *Client) CreateCustomImageWithOptions(request *CreateCustomImageReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateCustomImageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateCustomImageResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateCustomImageResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -19455,27 +19677,23 @@ func (client *Client) CreateCustomImageWithOptions(request *CreateCustomImageReq
 //
 // Description:
 //
-// A custom image is created based on a snapshot of a simple application server. You can use a custom image to create multiple simple application servers that have the same configurations. You can also share custom images to ECS and use the shared images to create ECS instances or replace the OSs of existing ECS instances. For more information about custom images, see [Overview of custom images](https://help.aliyun.com/document_detail/199375.html).
+// A custom image is created from a snapshot of a simple application server. You can use a custom image to create multiple simple application servers that have the same configurations. You can also share custom images to ECS and use the shared images to create ECS instances or replace the OSs of existing ECS instances. For more information about custom images, see [Overview of custom images](https://help.aliyun.com/document_detail/199375.html).
 //
 // You must create a system disk snapshot of a simple application server before you create a custom image based on the snapshot. For more information, see [CreateSnapshot](https://help.aliyun.com/document_detail/190452.html).
 //
-// > If you need the data on the data disk of a simple application server when you create a custom image, create a snapshot for the data disk first.
+// >  If you need the data on the data disk of a simple application server when you create a custom image, create a snapshot for the data disk first.
 //
 // Before you create a custom image, take note of the following items:
 //
 // 	- The custom image and the corresponding simple application server must reside in the same region.
 //
-// 	- The maximum number of custom images that can be maintained in an Alibaba Cloud account is triple the number of simple application servers in the account. The value cannot be greater than 15.
+// 	- The maximum number of custom images that you can create is 3 times the number of simple application servers that you have, but cannot exceed 15.
 //
-// 	- You can directly create a custom image only based on the system disk snapshot of a simple application server. If you want a custom image to contain the data on the data disk of the simple application server, you must select a data disk snapshot when you create the custom image.
+// 	- You can directly create a custom image only based on the system disk snapshot of a simple application server. If you want a custom image to contain the data on the data disk of the simple application server, you must select a data disk snapshot in addition to a system disk snapshot when you create the custom image.
 //
-// 	- If a simple application server is released due to expiration or refunds, the custom images that are created based on a snapshot of the server are also released.
+// 	- If a simple application server is released due to expiration or refunds, the custom images that are created based on the server are also released.
 //
-// 	- If you reset a simple application server by changing the application system or OS of the server or replacing the image of the server, the disk data on the server is cleared. Back up the disk data as needed.
-//
-// ### QPS limit
-//
-// You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
+// 	- Resetting the system or changing the image of a simple application server clears the disk data on the server. Back up the data as needed.
 //
 // @param request - CreateCustomImageRequest
 //
@@ -19498,10 +19716,6 @@ func (client *Client) CreateCustomImage(request *CreateCustomImageRequest) (_res
 // Description:
 //
 // Firewalls serve to control network access to simple application servers and isolate security domains in the cloud. By default, SSH port 22, HTTP port 80, and HTTPS port 443 are enabled for simple application servers. Other ports are disabled. You can add firewall rules to enable more ports.
-//
-// ### QPS limits
-//
-// You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
 //
 // @param request - CreateFirewallRuleRequest
 //
@@ -19552,13 +19766,24 @@ func (client *Client) CreateFirewallRuleWithOptions(request *CreateFirewallRuleR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateFirewallRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateFirewallRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateFirewallRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -19568,10 +19793,6 @@ func (client *Client) CreateFirewallRuleWithOptions(request *CreateFirewallRuleR
 // Description:
 //
 // Firewalls serve to control network access to simple application servers and isolate security domains in the cloud. By default, SSH port 22, HTTP port 80, and HTTPS port 443 are enabled for simple application servers. Other ports are disabled. You can add firewall rules to enable more ports.
-//
-// ### QPS limits
-//
-// You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
 //
 // @param request - CreateFirewallRuleRequest
 //
@@ -19646,13 +19867,24 @@ func (client *Client) CreateFirewallRulesWithOptions(tmpReq *CreateFirewallRules
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateFirewallRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateFirewallRulesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateFirewallRulesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -19726,13 +19958,24 @@ func (client *Client) CreateFirewallTemplateWithOptions(request *CreateFirewallT
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateFirewallTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateFirewallTemplateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateFirewallTemplateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -19802,13 +20045,24 @@ func (client *Client) CreateFirewallTemplateRulesWithOptions(request *CreateFire
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateFirewallTemplateRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateFirewallTemplateRulesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateFirewallTemplateRulesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -19878,13 +20132,24 @@ func (client *Client) CreateInstanceKeyPairWithOptions(request *CreateInstanceKe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateInstanceKeyPairResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateInstanceKeyPairResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateInstanceKeyPairResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -19911,15 +20176,13 @@ func (client *Client) CreateInstanceKeyPair(request *CreateInstanceKeyPairReques
 //
 // Description:
 //
-//   Before you call this operation, we recommend that you understand the billing of Simple Application Server. For more information, see [Billable items](https://help.aliyun.com/document_detail/58623.html).
+//   Before you call this operation, we recommend that you understand the billing rules of Simple Application Server. For more information, see [Billable items](https://help.aliyun.com/document_detail/58623.html).
 //
-// 	- A maximum of 20 simple application servers can be maintained in an Alibaba Cloud account.
+// >  If you have coupons in your Alibaba Cloud account, the coupons are preferentially used to pay for the simple application servers.
+//
+// 	- You can create a maximum of 50 simple application servers in a region for an Alibaba Cloud account.
 //
 // 	- When you call this operation to create simple application servers, make sure that the balance in your account is sufficient to pay for the servers. If the balance in your account is insufficient, the servers cannot be created.
-//
-// ### QPS limit
-//
-// You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
 //
 // @param request - CreateInstancesRequest
 //
@@ -19986,13 +20249,24 @@ func (client *Client) CreateInstancesWithOptions(request *CreateInstancesRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -20001,15 +20275,13 @@ func (client *Client) CreateInstancesWithOptions(request *CreateInstancesRequest
 //
 // Description:
 //
-//   Before you call this operation, we recommend that you understand the billing of Simple Application Server. For more information, see [Billable items](https://help.aliyun.com/document_detail/58623.html).
+//   Before you call this operation, we recommend that you understand the billing rules of Simple Application Server. For more information, see [Billable items](https://help.aliyun.com/document_detail/58623.html).
 //
-// 	- A maximum of 20 simple application servers can be maintained in an Alibaba Cloud account.
+// >  If you have coupons in your Alibaba Cloud account, the coupons are preferentially used to pay for the simple application servers.
+//
+// 	- You can create a maximum of 50 simple application servers in a region for an Alibaba Cloud account.
 //
 // 	- When you call this operation to create simple application servers, make sure that the balance in your account is sufficient to pay for the servers. If the balance in your account is insufficient, the servers cannot be created.
-//
-// ### QPS limit
-//
-// You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
 //
 // @param request - CreateInstancesRequest
 //
@@ -20076,13 +20348,24 @@ func (client *Client) CreateKeyPairWithOptions(request *CreateKeyPairRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateKeyPairResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateKeyPairResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateKeyPairResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -20119,23 +20402,19 @@ func (client *Client) CreateKeyPair(request *CreateKeyPairRequest) (_result *Cre
 //
 // Description:
 //
-// A snapshot is a point-in-time backup of a disk. Snapshots can be used to back up data, recover data after accidental operations on instances, recover data after network attacks, and create custom images.
+// A snapshot is a point-in-time backup of a disk. Snapshots can be used to back up data, recover data after misoperations on servers, recover data after network attacks, and create custom images.
 //
-// > You are not charged for creating snapshots for disks of simple application servers.
+// >  You are not charged for creating snapshots in Simple Application Server.
 //
-// ### Precautions
+// ### [](#)Precautions
 //
-// 	- You can create up to three snapshots for disks of each simple application server.
+// 	- You can create up to three snapshots for each simple application server.
 //
-// 	- The maximum number of snapshots that can be retained in an Alibaba Cloud account is triple the number of simple application servers that you maintain. The value cannot be greater than 15.
+// 	- The maximum number of snapshots that you create per Alibaba Cloud account is triple of the number of simple application servers that are created. The value cannot be greater than 15.
 //
 // 	- If a simple application server is automatically released due to expiration, the snapshots created for the server are deleted.
 //
-// 	- If you reset the simple application server after you create a snapshot for a server, the snapshot is retained but cannot be used to roll back the disks of the server.
-//
-// ### QPS limit
-//
-// You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
+// 	- If you reset a simple application server after you create a snapshot for the server, the snapshot is retained but cannot be used to restore the disks of the server.
 //
 // @param request - CreateSnapshotRequest
 //
@@ -20186,13 +20465,24 @@ func (client *Client) CreateSnapshotWithOptions(request *CreateSnapshotRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateSnapshotResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateSnapshotResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateSnapshotResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -20201,23 +20491,19 @@ func (client *Client) CreateSnapshotWithOptions(request *CreateSnapshotRequest, 
 //
 // Description:
 //
-// A snapshot is a point-in-time backup of a disk. Snapshots can be used to back up data, recover data after accidental operations on instances, recover data after network attacks, and create custom images.
+// A snapshot is a point-in-time backup of a disk. Snapshots can be used to back up data, recover data after misoperations on servers, recover data after network attacks, and create custom images.
 //
-// > You are not charged for creating snapshots for disks of simple application servers.
+// >  You are not charged for creating snapshots in Simple Application Server.
 //
-// ### Precautions
+// ### [](#)Precautions
 //
-// 	- You can create up to three snapshots for disks of each simple application server.
+// 	- You can create up to three snapshots for each simple application server.
 //
-// 	- The maximum number of snapshots that can be retained in an Alibaba Cloud account is triple the number of simple application servers that you maintain. The value cannot be greater than 15.
+// 	- The maximum number of snapshots that you create per Alibaba Cloud account is triple of the number of simple application servers that are created. The value cannot be greater than 15.
 //
 // 	- If a simple application server is automatically released due to expiration, the snapshots created for the server are deleted.
 //
-// 	- If you reset the simple application server after you create a snapshot for a server, the snapshot is retained but cannot be used to roll back the disks of the server.
-//
-// ### QPS limit
-//
-// You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
+// 	- If you reset a simple application server after you create a snapshot for the server, the snapshot is retained but cannot be used to restore the disks of the server.
 //
 // @param request - CreateSnapshotRequest
 //
@@ -20274,13 +20560,24 @@ func (client *Client) DeleteCommandWithOptions(request *DeleteCommandRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteCommandResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteCommandResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteCommandResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -20313,11 +20610,7 @@ func (client *Client) DeleteCommand(request *DeleteCommandRequest) (_result *Del
 //
 // You can delete a custom image that you no longer need. After the custom image is deleted, you cannot use the custom image to reset the simple application servers that were created based on the custom image.
 //
-// > If a custom image is shared to Elastic Compute Service (ECS), you must unshare the image before you can delete it. After you unshare the custom image, you cannot query the custom image by using the ECS console or by calling ECS API operations. If you need to use the custom image in ECS, we recommend that you copy the image before you delete it. For more information, see [Copy a shared image of a simple application server in the ECS console](https://help.aliyun.com/document_detail/199378.html).
-//
-// ### QPS limit
-//
-// You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
+// >  To delete a shared image, you must unshare the image before you can delete it. After a custom image is unshared, you cannot query the custom image by using the Elastic Compute Service (ECS) console or API. If you want to use a custom image to create ECS instances, we recommend that you copy the custom image before you delete it. For more information, see [Copy a shared image of a simple application server in the ECS console](https://help.aliyun.com/document_detail/199378.html).
 //
 // @param request - DeleteCustomImageRequest
 //
@@ -20356,13 +20649,24 @@ func (client *Client) DeleteCustomImageWithOptions(request *DeleteCustomImageReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteCustomImageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteCustomImageResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteCustomImageResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -20373,11 +20677,7 @@ func (client *Client) DeleteCustomImageWithOptions(request *DeleteCustomImageReq
 //
 // You can delete a custom image that you no longer need. After the custom image is deleted, you cannot use the custom image to reset the simple application servers that were created based on the custom image.
 //
-// > If a custom image is shared to Elastic Compute Service (ECS), you must unshare the image before you can delete it. After you unshare the custom image, you cannot query the custom image by using the ECS console or by calling ECS API operations. If you need to use the custom image in ECS, we recommend that you copy the image before you delete it. For more information, see [Copy a shared image of a simple application server in the ECS console](https://help.aliyun.com/document_detail/199378.html).
-//
-// ### QPS limit
-//
-// You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
+// >  To delete a shared image, you must unshare the image before you can delete it. After a custom image is unshared, you cannot query the custom image by using the Elastic Compute Service (ECS) console or API. If you want to use a custom image to create ECS instances, we recommend that you copy the custom image before you delete it. For more information, see [Copy a shared image of a simple application server in the ECS console](https://help.aliyun.com/document_detail/199378.html).
 //
 // @param request - DeleteCustomImageRequest
 //
@@ -20399,7 +20699,7 @@ func (client *Client) DeleteCustomImage(request *DeleteCustomImageRequest) (_res
 //
 // Description:
 //
-// If a custom image is shared, you must unshare the image before you can delete it. After a custom image is unshared, you cannot query the custom image by using the Elastic Compute Service (ECS) console or by calling an ECS API operation. If you want to use a custom image to create ECS instances, we recommend that you copy the custom image before you delete it. For more information, see the "Copy custom images" topic.
+// If a custom image is shared, you must unshare the image before you can delete it. After a custom image is unshared, you cannot query the custom image by using the Elastic Compute Service (ECS) console or by calling an ECS API operation. If you want to use a custom image to create ECS instances, we recommend that you copy the custom image before you delete it. For more information, see [Copy a custom image](https://help.aliyun.com/document_detail/199378.html).
 //
 // @param request - DeleteCustomImagesRequest
 //
@@ -20438,13 +20738,24 @@ func (client *Client) DeleteCustomImagesWithOptions(request *DeleteCustomImagesR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteCustomImagesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteCustomImagesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteCustomImagesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -20453,7 +20764,7 @@ func (client *Client) DeleteCustomImagesWithOptions(request *DeleteCustomImagesR
 //
 // Description:
 //
-// If a custom image is shared, you must unshare the image before you can delete it. After a custom image is unshared, you cannot query the custom image by using the Elastic Compute Service (ECS) console or by calling an ECS API operation. If you want to use a custom image to create ECS instances, we recommend that you copy the custom image before you delete it. For more information, see the "Copy custom images" topic.
+// If a custom image is shared, you must unshare the image before you can delete it. After a custom image is unshared, you cannot query the custom image by using the Elastic Compute Service (ECS) console or by calling an ECS API operation. If you want to use a custom image to create ECS instances, we recommend that you copy the custom image before you delete it. For more information, see [Copy a custom image](https://help.aliyun.com/document_detail/199378.html).
 //
 // @param request - DeleteCustomImagesRequest
 //
@@ -20476,10 +20787,6 @@ func (client *Client) DeleteCustomImages(request *DeleteCustomImagesRequest) (_r
 // Description:
 //
 // After a firewall rule is deleted, your business deployed on the simple application server may become inaccessible. Before you delete a firewall rule, make sure that the firewall rule is no longer needed by the simple application server.
-//
-// ### QPS limit
-//
-// You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
 //
 // @param request - DeleteFirewallRuleRequest
 //
@@ -20522,13 +20829,24 @@ func (client *Client) DeleteFirewallRuleWithOptions(request *DeleteFirewallRuleR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteFirewallRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteFirewallRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteFirewallRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -20538,10 +20856,6 @@ func (client *Client) DeleteFirewallRuleWithOptions(request *DeleteFirewallRuleR
 // Description:
 //
 // After a firewall rule is deleted, your business deployed on the simple application server may become inaccessible. Before you delete a firewall rule, make sure that the firewall rule is no longer needed by the simple application server.
-//
-// ### QPS limit
-//
-// You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
 //
 // @param request - DeleteFirewallRuleRequest
 //
@@ -20612,13 +20926,24 @@ func (client *Client) DeleteFirewallRulesWithOptions(tmpReq *DeleteFirewallRules
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteFirewallRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteFirewallRulesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteFirewallRulesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -20692,13 +21017,24 @@ func (client *Client) DeleteFirewallTemplateRulesWithOptions(request *DeleteFire
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteFirewallTemplateRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteFirewallTemplateRulesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteFirewallTemplateRulesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -20768,13 +21104,24 @@ func (client *Client) DeleteFirewallTemplatesWithOptions(request *DeleteFirewall
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteFirewallTemplatesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteFirewallTemplatesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteFirewallTemplatesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -20840,13 +21187,24 @@ func (client *Client) DeleteInstanceKeyPairWithOptions(request *DeleteInstanceKe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteInstanceKeyPairResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteInstanceKeyPairResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteInstanceKeyPairResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -20912,13 +21270,24 @@ func (client *Client) DeleteKeyPairsWithOptions(request *DeleteKeyPairsRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteKeyPairsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteKeyPairsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteKeyPairsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -20951,11 +21320,7 @@ func (client *Client) DeleteKeyPairs(request *DeleteKeyPairsRequest) (_result *D
 //
 // You can delete a snapshot if you no longer need it.
 //
-// > If a custom image was created based on the snapshot, delete the custom image before you delete the snapshot.
-//
-// ### QPS limit
-//
-// You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
+// >  If a custom image was created from the snapshot, delete the custom image before you delete the snapshot.
 //
 // @param request - DeleteSnapshotRequest
 //
@@ -20994,13 +21359,24 @@ func (client *Client) DeleteSnapshotWithOptions(request *DeleteSnapshotRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteSnapshotResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteSnapshotResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteSnapshotResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -21011,11 +21387,7 @@ func (client *Client) DeleteSnapshotWithOptions(request *DeleteSnapshotRequest, 
 //
 // You can delete a snapshot if you no longer need it.
 //
-// > If a custom image was created based on the snapshot, delete the custom image before you delete the snapshot.
-//
-// ### QPS limit
-//
-// You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
+// >  If a custom image was created from the snapshot, delete the custom image before you delete the snapshot.
 //
 // @param request - DeleteSnapshotRequest
 //
@@ -21072,13 +21444,24 @@ func (client *Client) DeleteSnapshotsWithOptions(request *DeleteSnapshotsRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteSnapshotsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteSnapshotsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteSnapshotsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -21150,13 +21533,24 @@ func (client *Client) DescribeCloudAssistantAttributesWithOptions(tmpReq *Descri
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeCloudAssistantAttributesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeCloudAssistantAttributesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeCloudAssistantAttributesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -21232,13 +21626,24 @@ func (client *Client) DescribeCloudAssistantStatusWithOptions(tmpReq *DescribeCl
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeCloudAssistantStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeCloudAssistantStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeCloudAssistantStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -21304,13 +21709,24 @@ func (client *Client) DescribeCloudMonitorAgentStatusesWithOptions(request *Desc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeCloudMonitorAgentStatusesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeCloudMonitorAgentStatusesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeCloudMonitorAgentStatusesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -21396,13 +21812,24 @@ func (client *Client) DescribeCommandInvocationsWithOptions(request *DescribeCom
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeCommandInvocationsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeCommandInvocationsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeCommandInvocationsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -21488,13 +21915,24 @@ func (client *Client) DescribeCommandsWithOptions(request *DescribeCommandsReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeCommandsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeCommandsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeCommandsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -21522,8 +21960,6 @@ func (client *Client) DescribeCommands(request *DescribeCommandsRequest) (_resul
 // Description:
 //
 // You can call this operation to query the error logs of databases in a Simple Database Service instance and locate faults based on the error logs.
-//
-// \\### QPS limit You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
 //
 // @param request - DescribeDatabaseErrorLogsRequest
 //
@@ -21574,13 +22010,24 @@ func (client *Client) DescribeDatabaseErrorLogsWithOptions(request *DescribeData
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDatabaseErrorLogsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDatabaseErrorLogsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDatabaseErrorLogsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -21590,8 +22037,6 @@ func (client *Client) DescribeDatabaseErrorLogsWithOptions(request *DescribeData
 // Description:
 //
 // You can call this operation to query the error logs of databases in a Simple Database Service instance and locate faults based on the error logs.
-//
-// \\### QPS limit You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
 //
 // @param request - DescribeDatabaseErrorLogsRequest
 //
@@ -21613,11 +22058,7 @@ func (client *Client) DescribeDatabaseErrorLogs(request *DescribeDatabaseErrorLo
 //
 // Description:
 //
-// After you create a Simple Database Service instance, you can query the details about the vCPU, memory, disk size, storage IOPS (input/output operations per second), and total current connection number of the instance.
-//
-// ### QPS limit
-//
-// You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
+// After you create a Simple Database Service instance, you can query the details about the instance, including CPU, memory, and disk usage, storage IOPS, and total number of connections.
 //
 // @param request - DescribeDatabaseInstanceMetricDataRequest
 //
@@ -21664,13 +22105,24 @@ func (client *Client) DescribeDatabaseInstanceMetricDataWithOptions(request *Des
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDatabaseInstanceMetricDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDatabaseInstanceMetricDataResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDatabaseInstanceMetricDataResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -21679,11 +22131,7 @@ func (client *Client) DescribeDatabaseInstanceMetricDataWithOptions(request *Des
 //
 // Description:
 //
-// After you create a Simple Database Service instance, you can query the details about the vCPU, memory, disk size, storage IOPS (input/output operations per second), and total current connection number of the instance.
-//
-// ### QPS limit
-//
-// You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
+// After you create a Simple Database Service instance, you can query the details about the instance, including CPU, memory, and disk usage, storage IOPS, and total number of connections.
 //
 // @param request - DescribeDatabaseInstanceMetricDataRequest
 //
@@ -21740,13 +22188,24 @@ func (client *Client) DescribeDatabaseInstanceParametersWithOptions(request *Des
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDatabaseInstanceParametersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDatabaseInstanceParametersResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDatabaseInstanceParametersResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -21777,11 +22236,7 @@ func (client *Client) DescribeDatabaseInstanceParameters(request *DescribeDataba
 //
 // Description:
 //
-// You can call this operation to query the details of Simple Database Service instances in a region, including the IDs, names, plans, database versions, public endpoint, internal endpoint, creation time, and expiration time of the instances.
-//
-// ### QPS limit
-//
-// You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
+// You can call this operation to query the details of Simple Database Service instances in a region, including the IDs, names, plans, database versions, public endpoints, internal endpoints, creation time, and expiration time of the instances.
 //
 // @param request - DescribeDatabaseInstancesRequest
 //
@@ -21824,13 +22279,24 @@ func (client *Client) DescribeDatabaseInstancesWithOptions(request *DescribeData
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDatabaseInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDatabaseInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDatabaseInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -21839,11 +22305,7 @@ func (client *Client) DescribeDatabaseInstancesWithOptions(request *DescribeData
 //
 // Description:
 //
-// You can call this operation to query the details of Simple Database Service instances in a region, including the IDs, names, plans, database versions, public endpoint, internal endpoint, creation time, and expiration time of the instances.
-//
-// ### QPS limit
-//
-// You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
+// You can call this operation to query the details of Simple Database Service instances in a region, including the IDs, names, plans, database versions, public endpoints, internal endpoints, creation time, and expiration time of the instances.
 //
 // @param request - DescribeDatabaseInstancesRequest
 //
@@ -21867,11 +22329,7 @@ func (client *Client) DescribeDatabaseInstances(request *DescribeDatabaseInstanc
 //
 // You can query the slow query log details of a Simple Database Service instance and locate faults based on the log details.
 //
-// > Slow query log details are retained for 7 days.
-//
-// ### QPS limit
-//
-// You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
+// >  Slow query log details are retained for 7 days.
 //
 // @param request - DescribeDatabaseSlowLogRecordsRequest
 //
@@ -21922,13 +22380,24 @@ func (client *Client) DescribeDatabaseSlowLogRecordsWithOptions(request *Describ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDatabaseSlowLogRecordsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDatabaseSlowLogRecordsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDatabaseSlowLogRecordsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -21939,11 +22408,7 @@ func (client *Client) DescribeDatabaseSlowLogRecordsWithOptions(request *Describ
 //
 // You can query the slow query log details of a Simple Database Service instance and locate faults based on the log details.
 //
-// > Slow query log details are retained for 7 days.
-//
-// ### QPS limit
-//
-// You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
+// >  Slow query log details are retained for 7 days.
 //
 // @param request - DescribeDatabaseSlowLogRecordsRequest
 //
@@ -22012,13 +22477,24 @@ func (client *Client) DescribeFirewallTemplateApplyResultsWithOptions(request *D
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeFirewallTemplateApplyResultsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeFirewallTemplateApplyResultsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeFirewallTemplateApplyResultsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -22088,13 +22564,24 @@ func (client *Client) DescribeFirewallTemplateRulesApplyResultWithOptions(reques
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeFirewallTemplateRulesApplyResultResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeFirewallTemplateRulesApplyResultResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeFirewallTemplateRulesApplyResultResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -22164,13 +22651,24 @@ func (client *Client) DescribeFirewallTemplatesWithOptions(request *DescribeFire
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeFirewallTemplatesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeFirewallTemplatesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeFirewallTemplatesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -22232,13 +22730,24 @@ func (client *Client) DescribeInstanceKeyPairWithOptions(request *DescribeInstan
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeInstanceKeyPairResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeInstanceKeyPairResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeInstanceKeyPairResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -22300,13 +22809,24 @@ func (client *Client) DescribeInstancePasswordsSettingWithOptions(request *Descr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeInstancePasswordsSettingResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeInstancePasswordsSettingResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeInstancePasswordsSettingResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -22368,13 +22888,24 @@ func (client *Client) DescribeInstanceVncUrlWithOptions(request *DescribeInstanc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeInstanceVncUrlResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeInstanceVncUrlResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeInstanceVncUrlResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -22442,13 +22973,24 @@ func (client *Client) DescribeInvocationResultWithOptions(request *DescribeInvoc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeInvocationResultResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeInvocationResultResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeInvocationResultResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -22530,13 +23072,24 @@ func (client *Client) DescribeInvocationsWithOptions(request *DescribeInvocation
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeInvocationsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeInvocationsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeInvocationsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -22628,13 +23181,24 @@ func (client *Client) DescribeMonitorDataWithOptions(request *DescribeMonitorDat
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeMonitorDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeMonitorDataResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeMonitorDataResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -22696,13 +23260,24 @@ func (client *Client) DescribeSecurityAgentStatusWithOptions(request *DescribeSe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeSecurityAgentStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeSecurityAgentStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeSecurityAgentStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -22772,13 +23347,24 @@ func (client *Client) DetachKeyPairWithOptions(request *DetachKeyPairRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DetachKeyPairResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DetachKeyPairResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DetachKeyPairResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -22852,13 +23438,24 @@ func (client *Client) DisableFirewallRuleWithOptions(request *DisableFirewallRul
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DisableFirewallRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DisableFirewallRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DisableFirewallRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -22932,13 +23529,24 @@ func (client *Client) EnableFirewallRuleWithOptions(request *EnableFirewallRuleR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &EnableFirewallRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &EnableFirewallRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &EnableFirewallRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -23008,13 +23616,24 @@ func (client *Client) ImportKeyPairWithOptions(request *ImportKeyPairRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ImportKeyPairResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ImportKeyPairResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ImportKeyPairResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -23086,13 +23705,24 @@ func (client *Client) InstallCloudAssistantWithOptions(tmpReq *InstallCloudAssis
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &InstallCloudAssistantResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &InstallCloudAssistantResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &InstallCloudAssistantResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -23162,13 +23792,24 @@ func (client *Client) InstallCloudMonitorAgentWithOptions(request *InstallCloudM
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &InstallCloudMonitorAgentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &InstallCloudMonitorAgentResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &InstallCloudMonitorAgentResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -23260,13 +23901,24 @@ func (client *Client) InvokeCommandWithOptions(tmpReq *InvokeCommandRequest, run
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &InvokeCommandResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &InvokeCommandResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &InvokeCommandResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -23352,13 +24004,24 @@ func (client *Client) ListCustomImageShareAccountsWithOptions(request *ListCusto
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListCustomImageShareAccountsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListCustomImageShareAccountsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListCustomImageShareAccountsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -23456,13 +24119,24 @@ func (client *Client) ListCustomImagesWithOptions(request *ListCustomImagesReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListCustomImagesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListCustomImagesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListCustomImagesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -23489,11 +24163,7 @@ func (client *Client) ListCustomImages(request *ListCustomImagesRequest) (_resul
 //
 // Description:
 //
-// You can specify multiple request parameters that you want to query, such as `InstanceId`, `DiskIds`, and `ResourceGroupId`. Specified request parameters have logical AND relations. Only the specified parameters are included in the filter conditions.
-//
-// ### [](#qps-)QPS limits
-//
-// You can call this operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
+// The `InstanceId`, `DiskIds`, and `ResourceGroupId` parameters are optional. However, you can specify them as filter conditions and combine them with the logical AND operator to filter disks that you want to query.
 //
 // @param request - ListDisksRequest
 //
@@ -23552,13 +24222,24 @@ func (client *Client) ListDisksWithOptions(request *ListDisksRequest, runtime *u
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListDisksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListDisksResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListDisksResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -23567,11 +24248,7 @@ func (client *Client) ListDisksWithOptions(request *ListDisksRequest, runtime *u
 //
 // Description:
 //
-// You can specify multiple request parameters that you want to query, such as `InstanceId`, `DiskIds`, and `ResourceGroupId`. Specified request parameters have logical AND relations. Only the specified parameters are included in the filter conditions.
-//
-// ### [](#qps-)QPS limits
-//
-// You can call this operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
+// The `InstanceId`, `DiskIds`, and `ResourceGroupId` parameters are optional. However, you can specify them as filter conditions and combine them with the logical AND operator to filter disks that you want to query.
 //
 // @param request - ListDisksRequest
 //
@@ -23594,10 +24271,6 @@ func (client *Client) ListDisks(request *ListDisksRequest) (_result *ListDisksRe
 // Description:
 //
 // You can call the ListFirewallRules operation to query the firewall rule details of a simple application server, including the port range, firewall rule ID, and transport layer protocol.
-//
-// ### QPS limit
-//
-// You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
 //
 // @param request - ListFirewallRulesRequest
 //
@@ -23648,13 +24321,24 @@ func (client *Client) ListFirewallRulesWithOptions(request *ListFirewallRulesReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListFirewallRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListFirewallRulesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListFirewallRulesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -23664,10 +24348,6 @@ func (client *Client) ListFirewallRulesWithOptions(request *ListFirewallRulesReq
 // Description:
 //
 // You can call the ListFirewallRules operation to query the firewall rule details of a simple application server, including the port range, firewall rule ID, and transport layer protocol.
-//
-// ### QPS limit
-//
-// You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
 //
 // @param request - ListFirewallRulesRequest
 //
@@ -23689,11 +24369,7 @@ func (client *Client) ListFirewallRules(request *ListFirewallRulesRequest) (_res
 //
 // Description:
 //
-// You can query information about images in a region, including the IDs, names, and types of the images.
-//
-// ### QPS limit
-//
-// You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
+// You can query details about one or more images in a specified region, including the IDs, names, and types of the images.
 //
 // @param request - ListImagesRequest
 //
@@ -23732,13 +24408,24 @@ func (client *Client) ListImagesWithOptions(request *ListImagesRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListImagesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListImagesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListImagesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -23747,11 +24434,7 @@ func (client *Client) ListImagesWithOptions(request *ListImagesRequest, runtime 
 //
 // Description:
 //
-// You can query information about images in a region, including the IDs, names, and types of the images.
-//
-// ### QPS limit
-//
-// You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
+// You can query details about one or more images in a specified region, including the IDs, names, and types of the images.
 //
 // @param request - ListImagesRequest
 //
@@ -23773,15 +24456,11 @@ func (client *Client) ListImages(request *ListImagesRequest) (_result *ListImage
 //
 // Description:
 //
-// If the plan of your simple application server does not meet your business requirements, you can call the ListInstancePlansModification operation to obtain a list of plans to which you can upgrade your simple application server. Then, you can call the [UpgradeInstance](https://help.aliyun.com/document_detail/190445.html) operation to upgrade the server.
+// If the plan of your simple application server does not meet your business requirements, you can call the ListInstancePlansModification operation to obtain a list of plans that can be upgraded for your simple application server. Then, you can call the [UpgradeInstance](https://help.aliyun.com/document_detail/190445.html) operation to upgrade the plan.
 //
-// > We recommend that you create snapshots for the disks of your simple application server to back up data before you upgrade the server. For more information, see [CreateSnapshot](https://help.aliyun.com/document_detail/190452.html).
+// >  We recommend that you create snapshots for the disks of your simple application server to back up data before you upgrade the plan. For more information, see [CreateSnapshot](https://help.aliyun.com/document_detail/190452.html).
 //
 // For the precautions about plan upgrade, see [Upgrade a simple application server](https://help.aliyun.com/document_detail/61433.html).
-//
-// ### QPS limit
-//
-// You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
 //
 // @param request - ListInstancePlansModificationRequest
 //
@@ -23816,13 +24495,24 @@ func (client *Client) ListInstancePlansModificationWithOptions(request *ListInst
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListInstancePlansModificationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListInstancePlansModificationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListInstancePlansModificationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -23831,15 +24521,11 @@ func (client *Client) ListInstancePlansModificationWithOptions(request *ListInst
 //
 // Description:
 //
-// If the plan of your simple application server does not meet your business requirements, you can call the ListInstancePlansModification operation to obtain a list of plans to which you can upgrade your simple application server. Then, you can call the [UpgradeInstance](https://help.aliyun.com/document_detail/190445.html) operation to upgrade the server.
+// If the plan of your simple application server does not meet your business requirements, you can call the ListInstancePlansModification operation to obtain a list of plans that can be upgraded for your simple application server. Then, you can call the [UpgradeInstance](https://help.aliyun.com/document_detail/190445.html) operation to upgrade the plan.
 //
-// > We recommend that you create snapshots for the disks of your simple application server to back up data before you upgrade the server. For more information, see [CreateSnapshot](https://help.aliyun.com/document_detail/190452.html).
+// >  We recommend that you create snapshots for the disks of your simple application server to back up data before you upgrade the plan. For more information, see [CreateSnapshot](https://help.aliyun.com/document_detail/190452.html).
 //
 // For the precautions about plan upgrade, see [Upgrade a simple application server](https://help.aliyun.com/document_detail/61433.html).
-//
-// ### QPS limit
-//
-// You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
 //
 // @param request - ListInstancePlansModificationRequest
 //
@@ -23900,13 +24586,24 @@ func (client *Client) ListInstanceStatusWithOptions(request *ListInstanceStatusR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListInstanceStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListInstanceStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListInstanceStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -23934,10 +24631,6 @@ func (client *Client) ListInstanceStatus(request *ListInstanceStatusRequest) (_r
 // Description:
 //
 // You can call this operation to query the details of simple application servers in a specified region, including the names, public IP addresses, internal IP addresses, creation time, and expiration time of the servers.
-//
-// ### QPS limit
-//
-// You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
 //
 // @param request - ListInstancesRequest
 //
@@ -24004,13 +24697,24 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -24020,10 +24724,6 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, ru
 // Description:
 //
 // You can call this operation to query the details of simple application servers in a specified region, including the names, public IP addresses, internal IP addresses, creation time, and expiration time of the servers.
-//
-// ### QPS limit
-//
-// You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
 //
 // @param request - ListInstancesRequest
 //
@@ -24045,9 +24745,9 @@ func (client *Client) ListInstances(request *ListInstancesRequest) (_result *Lis
 //
 // Description:
 //
-// You can query the details of data transfer plans of simple application servers, including the data transfer quota, used amount and unused amount of the data transfer quota, and excess data transfers beyond the quota in the current month.
+// You can query the details of data transfer plans of simple application servers, including the total quota, used quota, unused quota, and excess data transfers in the current month.
 //
-// Simple Application Server provides data transfer quotas in plans. Plan prices include prices of data transfer quotas. You are charged for data transfers that exceed the quotas. Take note of the following items:
+// Simple Application Server provides data transfer plans that can be used to offset data transfer fees. You are charged for excess data transfers. Take note of the following items:
 //
 // 	- Only outbound data transfers of simple application servers over the Internet are calculated. Outbound data transfers include the data transfer quota and the excess data transfers beyond the quota. Inbound data transfers of simple application servers over the Internet are not calculated.
 //
@@ -24056,10 +24756,6 @@ func (client *Client) ListInstances(request *ListInstancesRequest) (_result *Lis
 // 	- You are not charged for data transfers between simple application servers within the same virtual private cloud (VPC).
 //
 // For more information, see [Quotas and billing of data transfers](https://help.aliyun.com/document_detail/86281.html).
-//
-// ### QPS limit
-//
-// You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
 //
 // @param request - ListInstancesTrafficPackagesRequest
 //
@@ -24094,13 +24790,24 @@ func (client *Client) ListInstancesTrafficPackagesWithOptions(request *ListInsta
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListInstancesTrafficPackagesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListInstancesTrafficPackagesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListInstancesTrafficPackagesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -24109,9 +24816,9 @@ func (client *Client) ListInstancesTrafficPackagesWithOptions(request *ListInsta
 //
 // Description:
 //
-// You can query the details of data transfer plans of simple application servers, including the data transfer quota, used amount and unused amount of the data transfer quota, and excess data transfers beyond the quota in the current month.
+// You can query the details of data transfer plans of simple application servers, including the total quota, used quota, unused quota, and excess data transfers in the current month.
 //
-// Simple Application Server provides data transfer quotas in plans. Plan prices include prices of data transfer quotas. You are charged for data transfers that exceed the quotas. Take note of the following items:
+// Simple Application Server provides data transfer plans that can be used to offset data transfer fees. You are charged for excess data transfers. Take note of the following items:
 //
 // 	- Only outbound data transfers of simple application servers over the Internet are calculated. Outbound data transfers include the data transfer quota and the excess data transfers beyond the quota. Inbound data transfers of simple application servers over the Internet are not calculated.
 //
@@ -24120,10 +24827,6 @@ func (client *Client) ListInstancesTrafficPackagesWithOptions(request *ListInsta
 // 	- You are not charged for data transfers between simple application servers within the same virtual private cloud (VPC).
 //
 // For more information, see [Quotas and billing of data transfers](https://help.aliyun.com/document_detail/86281.html).
-//
-// ### QPS limit
-//
-// You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
 //
 // @param request - ListInstancesTrafficPackagesRequest
 //
@@ -24168,13 +24871,24 @@ func (client *Client) ListKeyPairsWithOptions(request *ListKeyPairsRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListKeyPairsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListKeyPairsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListKeyPairsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -24202,10 +24916,6 @@ func (client *Client) ListKeyPairs(request *ListKeyPairsRequest) (_result *ListK
 // Description:
 //
 // You can query the details of all plans provided by Simple Application Server in a region, including the IDs, prices, disk sizes, and disk categories of the plans.
-//
-// ### QPS limit
-//
-// You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
 //
 // @param request - ListPlansRequest
 //
@@ -24236,13 +24946,24 @@ func (client *Client) ListPlansWithOptions(request *ListPlansRequest, runtime *u
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListPlansResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListPlansResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListPlansResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -24252,10 +24973,6 @@ func (client *Client) ListPlansWithOptions(request *ListPlansRequest, runtime *u
 // Description:
 //
 // You can query the details of all plans provided by Simple Application Server in a region, including the IDs, prices, disk sizes, and disk categories of the plans.
-//
-// ### QPS limit
-//
-// You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
 //
 // @param request - ListPlansRequest
 //
@@ -24278,10 +24995,6 @@ func (client *Client) ListPlans(request *ListPlansRequest) (_result *ListPlansRe
 // Description:
 //
 // The query results include all the Alibaba Cloud regions where Simple Application Server is supported on the international site (alibabacloud.com) and the China site (aliyun.com).
-//
-// ### QPS limit
-//
-// You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
 //
 // @param request - ListRegionsRequest
 //
@@ -24312,13 +25025,24 @@ func (client *Client) ListRegionsWithOptions(request *ListRegionsRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListRegionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListRegionsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListRegionsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -24328,10 +25052,6 @@ func (client *Client) ListRegionsWithOptions(request *ListRegionsRequest, runtim
 // Description:
 //
 // The query results include all the Alibaba Cloud regions where Simple Application Server is supported on the international site (alibabacloud.com) and the China site (aliyun.com).
-//
-// ### QPS limit
-//
-// You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
 //
 // @param request - ListRegionsRequest
 //
@@ -24353,11 +25073,7 @@ func (client *Client) ListRegions(request *ListRegionsRequest) (_result *ListReg
 //
 // Description:
 //
-// You can specify multiple request parameters that you want to query, such as `InstanceId`, `DiskId`, `SnapshotIds`, and `ResourceGroupId`. Specified parameters have logical AND relations. Only the specified parameters are included in the filter conditions.
-//
-// ### [](#qps-)QPS limits
-//
-// You can call this operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
+// The `InstanceId`, `DiskId`, `SnapshotIds`, and `ResourceGroupId` parameters are optional. However, you can specify them as filter conditions and combine them with the logical AND operator to filter snapshots that you want to query.
 //
 // @param request - ListSnapshotsRequest
 //
@@ -24420,13 +25136,24 @@ func (client *Client) ListSnapshotsWithOptions(request *ListSnapshotsRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListSnapshotsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListSnapshotsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListSnapshotsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -24435,11 +25162,7 @@ func (client *Client) ListSnapshotsWithOptions(request *ListSnapshotsRequest, ru
 //
 // Description:
 //
-// You can specify multiple request parameters that you want to query, such as `InstanceId`, `DiskId`, `SnapshotIds`, and `ResourceGroupId`. Specified parameters have logical AND relations. Only the specified parameters are included in the filter conditions.
-//
-// ### [](#qps-)QPS limits
-//
-// You can call this operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
+// The `InstanceId`, `DiskId`, `SnapshotIds`, and `ResourceGroupId` parameters are optional. However, you can specify them as filter conditions and combine them with the logical AND operator to filter snapshots that you want to query.
 //
 // @param request - ListSnapshotsRequest
 //
@@ -24457,7 +25180,7 @@ func (client *Client) ListSnapshots(request *ListSnapshotsRequest) (_result *Lis
 
 // Summary:
 //
-// 云产品查标签接口
+// Queries the tags that are added to simple resources, such as instances, snapshots, disks, images, commands, and firewall rules.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -24508,18 +25231,29 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListTagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListTagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListTagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 云产品查标签接口
+// Queries the tags that are added to simple resources, such as instances, snapshots, disks, images, commands, and firewall rules.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -24588,13 +25322,24 @@ func (client *Client) LoginInstanceWithOptions(request *LoginInstanceRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &LoginInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &LoginInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &LoginInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -24672,13 +25417,24 @@ func (client *Client) ModifyDatabaseInstanceDescriptionWithOptions(request *Modi
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyDatabaseInstanceDescriptionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyDatabaseInstanceDescriptionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyDatabaseInstanceDescriptionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -24709,7 +25465,7 @@ func (client *Client) ModifyDatabaseInstanceDescription(request *ModifyDatabaseI
 
 // Summary:
 //
-// Modifies the parameters of a Simple Database Service instance.
+// After you create a Simple Database Service instance, you can view the parameters of the instance or modify the parameters of the instance based on your business requirements.
 //
 // Description:
 //
@@ -24764,18 +25520,29 @@ func (client *Client) ModifyDatabaseInstanceParameterWithOptions(request *Modify
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyDatabaseInstanceParameterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyDatabaseInstanceParameterResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyDatabaseInstanceParameterResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Modifies the parameters of a Simple Database Service instance.
+// After you create a Simple Database Service instance, you can view the parameters of the instance or modify the parameters of the instance based on your business requirements.
 //
 // Description:
 //
@@ -24860,13 +25627,24 @@ func (client *Client) ModifyFirewallRuleWithOptions(request *ModifyFirewallRuleR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyFirewallRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyFirewallRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyFirewallRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -24944,13 +25722,24 @@ func (client *Client) ModifyFirewallTemplateWithOptions(request *ModifyFirewallT
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyFirewallTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyFirewallTemplateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyFirewallTemplateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -24981,19 +25770,15 @@ func (client *Client) ModifyFirewallTemplate(request *ModifyFirewallTemplateRequ
 //
 // Description:
 //
-// You can share a custom image with ECS. If the configurations of your simple application server cannot meet your business requirements, or you want to use ECS instances to deploy your business, you can share your custom image with ECS to transfer your business from Simple Application Server to ECS.
+// Custom images can be shared to ECS. If the configurations of your simple application server cannot meet your business requirements, or you want to deploy your business on ECS instances, you can share your custom image to ECS to transfer your business from Simple Application Server to ECS.
 //
-// > The shared image in ECS resides in the same region as the custom image in Simple Application Server.
+// >  The region in which the shared image resides in ECS is the same as the region in which the custom image resides in Simple Application Server.
 //
-// You can unshare a custom image based on your business requirements or when you want to delete the custom image. Take note of the following items:
+// You can unshare a custom image based on your business requirements or when you want to delete the custom image. After you unshare a custom image, take note of the following items:
 //
-// 	- After you unshare a custom image, you cannot query or use the custom image in the ECS console or by calling ECS API operations.
+// 	- You cannot query or use the custom image by using the ECS console or API.
 //
-// 	- After you unshare a custom image, you cannot re-initialize the disks of the ECS instances that were created based on the shared image.
-//
-// ### QPS limit
-//
-// You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
+// 	- You cannot re-initialize the disks of the ECS instances that were created based on the shared image.
 //
 // @param request - ModifyImageShareStatusRequest
 //
@@ -25036,13 +25821,24 @@ func (client *Client) ModifyImageShareStatusWithOptions(request *ModifyImageShar
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyImageShareStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyImageShareStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyImageShareStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -25051,19 +25847,15 @@ func (client *Client) ModifyImageShareStatusWithOptions(request *ModifyImageShar
 //
 // Description:
 //
-// You can share a custom image with ECS. If the configurations of your simple application server cannot meet your business requirements, or you want to use ECS instances to deploy your business, you can share your custom image with ECS to transfer your business from Simple Application Server to ECS.
+// Custom images can be shared to ECS. If the configurations of your simple application server cannot meet your business requirements, or you want to deploy your business on ECS instances, you can share your custom image to ECS to transfer your business from Simple Application Server to ECS.
 //
-// > The shared image in ECS resides in the same region as the custom image in Simple Application Server.
+// >  The region in which the shared image resides in ECS is the same as the region in which the custom image resides in Simple Application Server.
 //
-// You can unshare a custom image based on your business requirements or when you want to delete the custom image. Take note of the following items:
+// You can unshare a custom image based on your business requirements or when you want to delete the custom image. After you unshare a custom image, take note of the following items:
 //
-// 	- After you unshare a custom image, you cannot query or use the custom image in the ECS console or by calling ECS API operations.
+// 	- You cannot query or use the custom image by using the ECS console or API.
 //
-// 	- After you unshare a custom image, you cannot re-initialize the disks of the ECS instances that were created based on the shared image.
-//
-// ### QPS limit
-//
-// You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
+// 	- You cannot re-initialize the disks of the ECS instances that were created based on the shared image.
 //
 // @param request - ModifyImageShareStatusRequest
 //
@@ -25124,13 +25916,24 @@ func (client *Client) ModifyInstanceVncPasswordWithOptions(request *ModifyInstan
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyInstanceVncPasswordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyInstanceVncPasswordResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyInstanceVncPasswordResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -25160,10 +25963,6 @@ func (client *Client) ModifyInstanceVncPassword(request *ModifyInstanceVncPasswo
 //   Only simple application servers that are in the Running state can be restarted.
 //
 // 	- After you restart a simple application server, it enters the Starting state.
-//
-// ### QPS limit
-//
-// You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
 //
 // @param request - RebootInstanceRequest
 //
@@ -25202,13 +26001,24 @@ func (client *Client) RebootInstanceWithOptions(request *RebootInstanceRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RebootInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RebootInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RebootInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -25220,10 +26030,6 @@ func (client *Client) RebootInstanceWithOptions(request *RebootInstanceRequest, 
 //   Only simple application servers that are in the Running state can be restarted.
 //
 // 	- After you restart a simple application server, it enters the Starting state.
-//
-// ### QPS limit
-//
-// You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
 //
 // @param request - RebootInstanceRequest
 //
@@ -25284,13 +26090,24 @@ func (client *Client) RebootInstancesWithOptions(request *RebootInstancesRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RebootInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RebootInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RebootInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -25313,7 +26130,7 @@ func (client *Client) RebootInstances(request *RebootInstancesRequest) (_result 
 
 // Summary:
 //
-// Releases the public endpoint of a Simple Database Service instance.
+// If you no longer need to use a public endpoint to access a Simple Database Service instance, you can release the public endpoint.
 //
 // Description:
 //
@@ -25360,18 +26177,29 @@ func (client *Client) ReleasePublicConnectionWithOptions(request *ReleasePublicC
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ReleasePublicConnectionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ReleasePublicConnectionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ReleasePublicConnectionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Releases the public endpoint of a Simple Database Service instance.
+// If you no longer need to use a public endpoint to access a Simple Database Service instance, you can release the public endpoint.
 //
 // Description:
 //
@@ -25440,13 +26268,24 @@ func (client *Client) RemoveCustomImageShareAccountWithOptions(request *RemoveCu
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RemoveCustomImageShareAccountResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RemoveCustomImageShareAccountResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RemoveCustomImageShareAccountResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -25475,11 +26314,7 @@ func (client *Client) RemoveCustomImageShareAccount(request *RemoveCustomImageSh
 //
 //   Before you call this operation, we recommend that you understand the billing of Simple Application Server. For more information, see [Billable items](https://help.aliyun.com/document_detail/58623.html).
 //
-// 	- When you call this operation to renew a server, make sure that the balance in your account is sufficient. If the balance in your account is insufficient, the server cannot be renewed.
-//
-// ### QPS limit
-//
-// You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
+// 	- Before you call this operation, make sure that the balance in your account is sufficient. If the balance in your account is insufficient, the renewal fails.
 //
 // @param request - RenewInstanceRequest
 //
@@ -25522,13 +26357,24 @@ func (client *Client) RenewInstanceWithOptions(request *RenewInstanceRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RenewInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RenewInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RenewInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -25539,11 +26385,7 @@ func (client *Client) RenewInstanceWithOptions(request *RenewInstanceRequest, ru
 //
 //   Before you call this operation, we recommend that you understand the billing of Simple Application Server. For more information, see [Billable items](https://help.aliyun.com/document_detail/58623.html).
 //
-// 	- When you call this operation to renew a server, make sure that the balance in your account is sufficient. If the balance in your account is insufficient, the server cannot be renewed.
-//
-// ### QPS limit
-//
-// You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
+// 	- Before you call this operation, make sure that the balance in your account is sufficient. If the balance in your account is insufficient, the renewal fails.
 //
 // @param request - RenewInstanceRequest
 //
@@ -25561,7 +26403,7 @@ func (client *Client) RenewInstance(request *RenewInstanceRequest) (_result *Ren
 
 // Summary:
 //
-// Resets the password of the administrator account of a Simple Database Service instance.
+// If the password of your Simple Database Service instance is not strong, you can call this operation to change the password of the administrator account of the instance. To ensure security of the instance, we recommend that you regularly change the password of the instance.
 //
 // Description:
 //
@@ -25612,18 +26454,29 @@ func (client *Client) ResetDatabaseAccountPasswordWithOptions(request *ResetData
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ResetDatabaseAccountPasswordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ResetDatabaseAccountPasswordResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ResetDatabaseAccountPasswordResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Resets the password of the administrator account of a Simple Database Service instance.
+// If the password of your Simple Database Service instance is not strong, you can call this operation to change the password of the administrator account of the instance. To ensure security of the instance, we recommend that you regularly change the password of the instance.
 //
 // Description:
 //
@@ -25653,17 +26506,13 @@ func (client *Client) ResetDatabaseAccountPassword(request *ResetDatabaseAccount
 //
 // Description:
 //
-//   You can call this operation to roll back a disk only if the associated simple application server is in the Stopped state.
+//   You can call this operation only if the associated simple application server is in the Stopped state.
 //
-// 	- After a disk is rolled back, all data changes that are made from when the snapshot was created to when the disk is rolled back are lost. Back up disk data based on your needs before you roll back the disk.
+// 	- If you restore a disk from a snapshot, the incremental data after the snapshot is created is lost. We recommend that you back up the data before you perform this operation.
 //
-// ### Precautions
+// ### [](#)Precautions
 //
-// After you reset a simple application server, the disk data on the server is deleted. Snapshots created before the resetting operation are retained but cannot be used to roll back the disks of the server.
-//
-// ### QPS limit
-//
-// You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
+// Resetting the system or changing the image of a simple application server clears the disk data on the server. Snapshots created before the reset or change are retained but cannot be used to restore disks.
 //
 // @param request - ResetDiskRequest
 //
@@ -25706,13 +26555,24 @@ func (client *Client) ResetDiskWithOptions(request *ResetDiskRequest, runtime *u
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ResetDiskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ResetDiskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ResetDiskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -25721,17 +26581,13 @@ func (client *Client) ResetDiskWithOptions(request *ResetDiskRequest, runtime *u
 //
 // Description:
 //
-//   You can call this operation to roll back a disk only if the associated simple application server is in the Stopped state.
+//   You can call this operation only if the associated simple application server is in the Stopped state.
 //
-// 	- After a disk is rolled back, all data changes that are made from when the snapshot was created to when the disk is rolled back are lost. Back up disk data based on your needs before you roll back the disk.
+// 	- If you restore a disk from a snapshot, the incremental data after the snapshot is created is lost. We recommend that you back up the data before you perform this operation.
 //
-// ### Precautions
+// ### [](#)Precautions
 //
-// After you reset a simple application server, the disk data on the server is deleted. Snapshots created before the resetting operation are retained but cannot be used to roll back the disks of the server.
-//
-// ### QPS limit
-//
-// You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
+// Resetting the system or changing the image of a simple application server clears the disk data on the server. Snapshots created before the reset or change are retained but cannot be used to restore disks.
 //
 // @param request - ResetDiskRequest
 //
@@ -25753,51 +26609,45 @@ func (client *Client) ResetDisk(request *ResetDiskRequest) (_result *ResetDiskRe
 //
 // Description:
 //
-// You can reset a simple application server to re-install its application system or OS and re-initialize the server. You can reset a simple application server by resetting the current system or replacing the image.
+// You can reset a simple application server to re-install its applications or operating system and re-initialize the server. You can reset a simple application server by resetting the current system or changing the image.
 //
-// You can use one of the following methods to reset a simple application server:
+// 	- Reset the current system: You can re-install the operating system without changing the image.
 //
-// 	- Reset the current system. You can re-install the operating system without replacing the image.
+// 	- Change the image: You can select another Alibaba Cloud image or a custom image to re-install the operating system.
 //
-// 	- Replace the image. You can select an Alibaba Cloud image or a custom image that is different from the existing image of the server to reinstall the OS of the server.
+// ### [](#)Precautions
 //
-// ### Precautions
+// 	- Resetting the system or changing the image of a simple application server clears the disk data on the server. Back up the data as needed.
 //
-// 	- After you reset a simple application server, the disk data on the server is cleared. Back up the data as needed.
-//
-// 	- After you reset a simple application server, the monitoring operations that are performed on the server may fail. In this case, you can use one of the following methods to install the CloudMonitor agent on the server:
+// 	- After you reset a simple application server, monitoring may fail. In this case, you can use one of the following methods to install the CloudMonitor agent on the server:
 //
 //     	- Connect to the server: For more information, see [Manually install the CloudMonitor agent for C++ on an ECS instance](https://help.aliyun.com/document_detail/183482.html).
 //
 //     	- Use Command Assistant: For more information, see [Use Command Assistant](https://help.aliyun.com/document_detail/438681.html). You can obtain the command that can be used to install CloudMonitor from the "Common commands" section of the [Use Command Assistant](https://help.aliyun.com/document_detail/438681.html) topic.
 //
-// ### Limits
+// ### [](#)Limits
 //
-// 	- Snapshots that are created before a server is reset are retained, but the snapshots cannot be used to roll back the disks of the server.
+// 	- Snapshots that are created before the reset are retained, but the snapshots cannot be used to restore the disks of the server.
 //
-// 	- You cannot reset simple application servers that were created based on custom images that contain data of data disks.
+// 	- You cannot reset simple application servers that were created from custom images that contain data of data disks.
 //
-// 	- Before you reset a simple application server by replacing the existing image with a custom image, take note of the following items:
+// 	- If you reset a simple application server by replacing the existing image with a custom image, the following limits apply:
 //
 //     	- The custom image must reside in the same region as the current server.
 //
-//     	- The custom image cannot be created based on the current server. If you want to recover the data on the server, you can use a snapshot of the server to roll back the disks of the server.
+//     	- The custom image cannot be created based on the current server. If you want to restore the data on the server, you can use a snapshot of the server to restore disk data.
 //
-//     	- If your simple application server resides outside the Chinese mainland, you cannot switch the OS of the server between Windows Server and Linux. You cannot use a Windows Server custom image to reset a Linux simple application server. You also cannot use a Linux custom image to reset a Windows Server simple application server. You can switch the OSs of simple application servers only between Windows Server OSs or between Linux distributions.
+//     	- If your simple application server resides in a region outside the Chinese mainland, you cannot switch the operating system of the server between Windows Server and Linux. You cannot use a Windows Server custom image to reset a Linux simple application server. Similarly, you cannot use a Linux custom image to reset a Windows Server simple application server. You can switch the operating systems of simple application servers only between Windows Server versions or between Linux distributions.
 //
 //     	- The following limits apply to the disks attached to the simple application server:
 //
-//         	- If the custom image contains a system disk and a data disk but only a system disk is attached to the simple application server and no data disk is attached, you cannot use the custom image to reset the simple application server.
+//         	- If the custom image contains a system disk and a data disk but only a system disk is attached to the simple application server, you cannot use the custom image to reset the simple application server.
 //
 //         	- If the system disk size of the custom image is greater than the system disk size of the simple application server, you cannot directly use the custom image to reset the simple application server.
 //
-//         	- Only if the system disk size of the simple application server is greater than or equal to the system disk size of the custom image, you can use the custom image to reset the simple application server. To increase the system disk size of your simple application server, you can upgrade the server. For more information, see Upgrade a simple application server.
+//         	- Only if the system disk size of the simple application server is greater than or equal to the system disk size of the custom image, you can use the custom image to reset the simple application server. To increase the system disk size of your server, you can upgrade the server configuration. For more information, see Upgrade a simple application server.
 //
 //         	- If the data disk size of the custom image is greater than the data disk size of the simple application server, you cannot use the custom image to reset the simple application server.
-//
-// ### QPS limit
-//
-// You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
 //
 // @param request - ResetSystemRequest
 //
@@ -25822,6 +26672,10 @@ func (client *Client) ResetSystemWithOptions(request *ResetSystemRequest, runtim
 		query["InstanceId"] = request.InstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.LoginCredentials)) {
+		query["LoginCredentials"] = request.LoginCredentials
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
 	}
@@ -25840,13 +26694,24 @@ func (client *Client) ResetSystemWithOptions(request *ResetSystemRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ResetSystemResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ResetSystemResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ResetSystemResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -25855,51 +26720,45 @@ func (client *Client) ResetSystemWithOptions(request *ResetSystemRequest, runtim
 //
 // Description:
 //
-// You can reset a simple application server to re-install its application system or OS and re-initialize the server. You can reset a simple application server by resetting the current system or replacing the image.
+// You can reset a simple application server to re-install its applications or operating system and re-initialize the server. You can reset a simple application server by resetting the current system or changing the image.
 //
-// You can use one of the following methods to reset a simple application server:
+// 	- Reset the current system: You can re-install the operating system without changing the image.
 //
-// 	- Reset the current system. You can re-install the operating system without replacing the image.
+// 	- Change the image: You can select another Alibaba Cloud image or a custom image to re-install the operating system.
 //
-// 	- Replace the image. You can select an Alibaba Cloud image or a custom image that is different from the existing image of the server to reinstall the OS of the server.
+// ### [](#)Precautions
 //
-// ### Precautions
+// 	- Resetting the system or changing the image of a simple application server clears the disk data on the server. Back up the data as needed.
 //
-// 	- After you reset a simple application server, the disk data on the server is cleared. Back up the data as needed.
-//
-// 	- After you reset a simple application server, the monitoring operations that are performed on the server may fail. In this case, you can use one of the following methods to install the CloudMonitor agent on the server:
+// 	- After you reset a simple application server, monitoring may fail. In this case, you can use one of the following methods to install the CloudMonitor agent on the server:
 //
 //     	- Connect to the server: For more information, see [Manually install the CloudMonitor agent for C++ on an ECS instance](https://help.aliyun.com/document_detail/183482.html).
 //
 //     	- Use Command Assistant: For more information, see [Use Command Assistant](https://help.aliyun.com/document_detail/438681.html). You can obtain the command that can be used to install CloudMonitor from the "Common commands" section of the [Use Command Assistant](https://help.aliyun.com/document_detail/438681.html) topic.
 //
-// ### Limits
+// ### [](#)Limits
 //
-// 	- Snapshots that are created before a server is reset are retained, but the snapshots cannot be used to roll back the disks of the server.
+// 	- Snapshots that are created before the reset are retained, but the snapshots cannot be used to restore the disks of the server.
 //
-// 	- You cannot reset simple application servers that were created based on custom images that contain data of data disks.
+// 	- You cannot reset simple application servers that were created from custom images that contain data of data disks.
 //
-// 	- Before you reset a simple application server by replacing the existing image with a custom image, take note of the following items:
+// 	- If you reset a simple application server by replacing the existing image with a custom image, the following limits apply:
 //
 //     	- The custom image must reside in the same region as the current server.
 //
-//     	- The custom image cannot be created based on the current server. If you want to recover the data on the server, you can use a snapshot of the server to roll back the disks of the server.
+//     	- The custom image cannot be created based on the current server. If you want to restore the data on the server, you can use a snapshot of the server to restore disk data.
 //
-//     	- If your simple application server resides outside the Chinese mainland, you cannot switch the OS of the server between Windows Server and Linux. You cannot use a Windows Server custom image to reset a Linux simple application server. You also cannot use a Linux custom image to reset a Windows Server simple application server. You can switch the OSs of simple application servers only between Windows Server OSs or between Linux distributions.
+//     	- If your simple application server resides in a region outside the Chinese mainland, you cannot switch the operating system of the server between Windows Server and Linux. You cannot use a Windows Server custom image to reset a Linux simple application server. Similarly, you cannot use a Linux custom image to reset a Windows Server simple application server. You can switch the operating systems of simple application servers only between Windows Server versions or between Linux distributions.
 //
 //     	- The following limits apply to the disks attached to the simple application server:
 //
-//         	- If the custom image contains a system disk and a data disk but only a system disk is attached to the simple application server and no data disk is attached, you cannot use the custom image to reset the simple application server.
+//         	- If the custom image contains a system disk and a data disk but only a system disk is attached to the simple application server, you cannot use the custom image to reset the simple application server.
 //
 //         	- If the system disk size of the custom image is greater than the system disk size of the simple application server, you cannot directly use the custom image to reset the simple application server.
 //
-//         	- Only if the system disk size of the simple application server is greater than or equal to the system disk size of the custom image, you can use the custom image to reset the simple application server. To increase the system disk size of your simple application server, you can upgrade the server. For more information, see Upgrade a simple application server.
+//         	- Only if the system disk size of the simple application server is greater than or equal to the system disk size of the custom image, you can use the custom image to reset the simple application server. To increase the system disk size of your server, you can upgrade the server configuration. For more information, see Upgrade a simple application server.
 //
 //         	- If the data disk size of the custom image is greater than the data disk size of the simple application server, you cannot use the custom image to reset the simple application server.
-//
-// ### QPS limit
-//
-// You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
 //
 // @param request - ResetSystemRequest
 //
@@ -25917,7 +26776,7 @@ func (client *Client) ResetSystem(request *ResetSystemRequest) (_result *ResetSy
 
 // Summary:
 //
-// Restarts a Simple Database Service instance.
+// You can call this operation to restart a Simple Database Service instance that is in the Running state.
 //
 // Description:
 //
@@ -25964,18 +26823,29 @@ func (client *Client) RestartDatabaseInstanceWithOptions(request *RestartDatabas
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RestartDatabaseInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RestartDatabaseInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RestartDatabaseInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Restarts a Simple Database Service instance.
+// You can call this operation to restart a Simple Database Service instance that is in the Running state.
 //
 // Description:
 //
@@ -26088,13 +26958,24 @@ func (client *Client) RunCommandWithOptions(tmpReq *RunCommandRequest, runtime *
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RunCommandResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RunCommandResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RunCommandResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -26133,10 +27014,6 @@ func (client *Client) RunCommand(request *RunCommandRequest) (_result *RunComman
 //
 // You can call this operation to start a Simple Database Service instance that is in the Stopped state.
 //
-// ### QPS limit
-//
-// You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
-//
 // @param request - StartDatabaseInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -26174,13 +27051,24 @@ func (client *Client) StartDatabaseInstanceWithOptions(request *StartDatabaseIns
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StartDatabaseInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StartDatabaseInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StartDatabaseInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -26190,10 +27078,6 @@ func (client *Client) StartDatabaseInstanceWithOptions(request *StartDatabaseIns
 // Description:
 //
 // You can call this operation to start a Simple Database Service instance that is in the Stopped state.
-//
-// ### QPS limit
-//
-// You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
 //
 // @param request - StartDatabaseInstanceRequest
 //
@@ -26216,10 +27100,6 @@ func (client *Client) StartDatabaseInstance(request *StartDatabaseInstanceReques
 // Description:
 //
 // You can call this operation to start a simple application server that is in the Stopped state.
-//
-// ### QPS limit
-//
-// You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
 //
 // @param request - StartInstanceRequest
 //
@@ -26258,13 +27138,24 @@ func (client *Client) StartInstanceWithOptions(request *StartInstanceRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StartInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StartInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StartInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -26274,10 +27165,6 @@ func (client *Client) StartInstanceWithOptions(request *StartInstanceRequest, ru
 // Description:
 //
 // You can call this operation to start a simple application server that is in the Stopped state.
-//
-// ### QPS limit
-//
-// You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
 //
 // @param request - StartInstanceRequest
 //
@@ -26334,13 +27221,24 @@ func (client *Client) StartInstancesWithOptions(request *StartInstancesRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StartInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StartInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StartInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -26398,13 +27296,24 @@ func (client *Client) StartTerminalSessionWithOptions(request *StartTerminalSess
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StartTerminalSessionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StartTerminalSessionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StartTerminalSessionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -26432,10 +27341,6 @@ func (client *Client) StartTerminalSession(request *StartTerminalSessionRequest)
 // Description:
 //
 // You can call this operation to stop a Simple Database Service instance that is in the Running state. After the instance is stopped, you cannot log on to or access the instance.
-//
-// ### QPS limit
-//
-// You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
 //
 // @param request - StopDatabaseInstanceRequest
 //
@@ -26474,13 +27379,24 @@ func (client *Client) StopDatabaseInstanceWithOptions(request *StopDatabaseInsta
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StopDatabaseInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StopDatabaseInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StopDatabaseInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -26490,10 +27406,6 @@ func (client *Client) StopDatabaseInstanceWithOptions(request *StopDatabaseInsta
 // Description:
 //
 // You can call this operation to stop a Simple Database Service instance that is in the Running state. After the instance is stopped, you cannot log on to or access the instance.
-//
-// ### QPS limit
-//
-// You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
 //
 // @param request - StopDatabaseInstanceRequest
 //
@@ -26517,11 +27429,7 @@ func (client *Client) StopDatabaseInstance(request *StopDatabaseInstanceRequest)
 //
 // You can stop a simple application server that you do not use for the time being.
 //
-// >  Stopping a simple application server may interrupt your business. We recommend that you perform the stop operation during off-peak hours.
-//
-// ### QPS limit
-//
-// You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
+// >  Stopping a simple application server may interrupt your business. We recommend that you perform this operation during off-peak hours.
 //
 // @param request - StopInstanceRequest
 //
@@ -26560,13 +27468,24 @@ func (client *Client) StopInstanceWithOptions(request *StopInstanceRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StopInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StopInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StopInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -26577,11 +27496,7 @@ func (client *Client) StopInstanceWithOptions(request *StopInstanceRequest, runt
 //
 // You can stop a simple application server that you do not use for the time being.
 //
-// >  Stopping a simple application server may interrupt your business. We recommend that you perform the stop operation during off-peak hours.
-//
-// ### QPS limit
-//
-// You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
+// >  Stopping a simple application server may interrupt your business. We recommend that you perform this operation during off-peak hours.
 //
 // @param request - StopInstanceRequest
 //
@@ -26642,13 +27557,24 @@ func (client *Client) StopInstancesWithOptions(request *StopInstancesRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StopInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StopInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StopInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -26671,7 +27597,7 @@ func (client *Client) StopInstances(request *StopInstancesRequest) (_result *Sto
 
 // Summary:
 //
-// 打标签接口
+// Adds tags to simple application servers, snapshots, custom images, commands, firewall rules, and disks to facilitate the viewing and management of the preceding resources.
 //
 // @param request - TagResourcesRequest
 //
@@ -26718,18 +27644,29 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &TagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &TagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &TagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 打标签接口
+// Adds tags to simple application servers, snapshots, custom images, commands, firewall rules, and disks to facilitate the viewing and management of the preceding resources.
 //
 // @param request - TagResourcesRequest
 //
@@ -26747,7 +27684,7 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 
 // Summary:
 //
-// 删标签接口
+// Unbinds and deletes tags from specified lightweight resources, such as instances, snapshots, disks, images, commands, and firewall rules.
 //
 // @param request - UntagResourcesRequest
 //
@@ -26798,18 +27735,29 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UntagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UntagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UntagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 删标签接口
+// Unbinds and deletes tags from specified lightweight resources, such as instances, snapshots, disks, images, commands, and firewall rules.
 //
 // @param request - UntagResourcesRequest
 //
@@ -26878,13 +27826,24 @@ func (client *Client) UpdateCommandAttributeWithOptions(request *UpdateCommandAt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateCommandAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateCommandAttributeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateCommandAttributeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -26950,13 +27909,24 @@ func (client *Client) UpdateDiskAttributeWithOptions(request *UpdateDiskAttribut
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateDiskAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateDiskAttributeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateDiskAttributeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -26983,13 +27953,9 @@ func (client *Client) UpdateDiskAttribute(request *UpdateDiskAttributeRequest) (
 //
 // Description:
 //
-// ## Usage notes
+// ## [](#)Usage notes
 //
-// After you change the password of a simple application server, you must restart the server by calling the [RebootInstance](https://help.aliyun.com/document_detail/190443.html) operation to allow the new password to take effect.
-//
-// ### QPS limits
-//
-// You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
+// After you change the password of a simple application server, you must restart the server by calling the [RebootInstance](https://help.aliyun.com/document_detail/190443.html) operation for the new password to take effect.
 //
 // @param request - UpdateInstanceAttributeRequest
 //
@@ -27036,13 +28002,24 @@ func (client *Client) UpdateInstanceAttributeWithOptions(request *UpdateInstance
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateInstanceAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateInstanceAttributeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateInstanceAttributeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -27051,13 +28028,9 @@ func (client *Client) UpdateInstanceAttributeWithOptions(request *UpdateInstance
 //
 // Description:
 //
-// ## Usage notes
+// ## [](#)Usage notes
 //
-// After you change the password of a simple application server, you must restart the server by calling the [RebootInstance](https://help.aliyun.com/document_detail/190443.html) operation to allow the new password to take effect.
-//
-// ### QPS limits
-//
-// You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
+// After you change the password of a simple application server, you must restart the server by calling the [RebootInstance](https://help.aliyun.com/document_detail/190443.html) operation for the new password to take effect.
 //
 // @param request - UpdateInstanceAttributeRequest
 //
@@ -27118,13 +28091,24 @@ func (client *Client) UpdateSnapshotAttributeWithOptions(request *UpdateSnapshot
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateSnapshotAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateSnapshotAttributeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateSnapshotAttributeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -27151,13 +28135,9 @@ func (client *Client) UpdateSnapshotAttribute(request *UpdateSnapshotAttributeRe
 //
 // Description:
 //
-//   The plan of a simple application server cannot be downgraded, but can only be upgraded. For more information about plans, see [Billable items](https://help.aliyun.com/document_detail/58623.html).
+//   The plan of a simple application server can only be upgraded. For more information about plans, see [Billable items](https://help.aliyun.com/document_detail/58623.html).
 //
-// 	- When you call this operation to upgrade a server, make sure that the balance in your account is sufficient. If the balance in your account is insufficient, the server cannot be upgraded.
-//
-// ### QPS limit
-//
-// You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
+// 	- Before you call this operation, make sure that the balance in your account is sufficient. If the balance in your account is insufficient, the upgrade fails.
 //
 // @param request - UpgradeInstanceRequest
 //
@@ -27200,13 +28180,24 @@ func (client *Client) UpgradeInstanceWithOptions(request *UpgradeInstanceRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpgradeInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpgradeInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpgradeInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -27215,13 +28206,9 @@ func (client *Client) UpgradeInstanceWithOptions(request *UpgradeInstanceRequest
 //
 // Description:
 //
-//   The plan of a simple application server cannot be downgraded, but can only be upgraded. For more information about plans, see [Billable items](https://help.aliyun.com/document_detail/58623.html).
+//   The plan of a simple application server can only be upgraded. For more information about plans, see [Billable items](https://help.aliyun.com/document_detail/58623.html).
 //
-// 	- When you call this operation to upgrade a server, make sure that the balance in your account is sufficient. If the balance in your account is insufficient, the server cannot be upgraded.
-//
-// ### QPS limit
-//
-// You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
+// 	- Before you call this operation, make sure that the balance in your account is sufficient. If the balance in your account is insufficient, the upgrade fails.
 //
 // @param request - UpgradeInstanceRequest
 //
@@ -27286,13 +28273,24 @@ func (client *Client) UploadInstanceKeyPairWithOptions(request *UploadInstanceKe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UploadInstanceKeyPairResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UploadInstanceKeyPairResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UploadInstanceKeyPairResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
