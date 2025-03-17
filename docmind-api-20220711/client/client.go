@@ -2429,6 +2429,8 @@ type SubmitConvertPdfToWordJobRequest struct {
 	// https://gw.alipayobjects.com/os/basement_prod/598b9edf-5287-4065-9e36-464305c60698.pdf
 	FileUrl               *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 	ForceExportInnerImage *bool   `json:"ForceExportInnerImage,omitempty" xml:"ForceExportInnerImage,omitempty"`
+	FormulaEnhancement    *bool   `json:"FormulaEnhancement,omitempty" xml:"FormulaEnhancement,omitempty"`
+	Option                *string `json:"Option,omitempty" xml:"Option,omitempty"`
 	OssBucket             *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
 	OssEndpoint           *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
 }
@@ -2456,6 +2458,16 @@ func (s *SubmitConvertPdfToWordJobRequest) SetForceExportInnerImage(v bool) *Sub
 	return s
 }
 
+func (s *SubmitConvertPdfToWordJobRequest) SetFormulaEnhancement(v bool) *SubmitConvertPdfToWordJobRequest {
+	s.FormulaEnhancement = &v
+	return s
+}
+
+func (s *SubmitConvertPdfToWordJobRequest) SetOption(v string) *SubmitConvertPdfToWordJobRequest {
+	s.Option = &v
+	return s
+}
+
 func (s *SubmitConvertPdfToWordJobRequest) SetOssBucket(v string) *SubmitConvertPdfToWordJobRequest {
 	s.OssBucket = &v
 	return s
@@ -2476,6 +2488,8 @@ type SubmitConvertPdfToWordJobAdvanceRequest struct {
 	// https://gw.alipayobjects.com/os/basement_prod/598b9edf-5287-4065-9e36-464305c60698.pdf
 	FileUrlObject         io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 	ForceExportInnerImage *bool     `json:"ForceExportInnerImage,omitempty" xml:"ForceExportInnerImage,omitempty"`
+	FormulaEnhancement    *bool     `json:"FormulaEnhancement,omitempty" xml:"FormulaEnhancement,omitempty"`
+	Option                *string   `json:"Option,omitempty" xml:"Option,omitempty"`
 	OssBucket             *string   `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
 	OssEndpoint           *string   `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
 }
@@ -2500,6 +2514,16 @@ func (s *SubmitConvertPdfToWordJobAdvanceRequest) SetFileUrlObject(v io.Reader) 
 
 func (s *SubmitConvertPdfToWordJobAdvanceRequest) SetForceExportInnerImage(v bool) *SubmitConvertPdfToWordJobAdvanceRequest {
 	s.ForceExportInnerImage = &v
+	return s
+}
+
+func (s *SubmitConvertPdfToWordJobAdvanceRequest) SetFormulaEnhancement(v bool) *SubmitConvertPdfToWordJobAdvanceRequest {
+	s.FormulaEnhancement = &v
+	return s
+}
+
+func (s *SubmitConvertPdfToWordJobAdvanceRequest) SetOption(v string) *SubmitConvertPdfToWordJobAdvanceRequest {
+	s.Option = &v
 	return s
 }
 
@@ -5440,6 +5464,14 @@ func (client *Client) SubmitConvertPdfToWordJobWithOptions(request *SubmitConver
 
 	if !tea.BoolValue(util.IsUnset(request.ForceExportInnerImage)) {
 		query["ForceExportInnerImage"] = request.ForceExportInnerImage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FormulaEnhancement)) {
+		query["FormulaEnhancement"] = request.FormulaEnhancement
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Option)) {
+		query["Option"] = request.Option
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OssBucket)) {
