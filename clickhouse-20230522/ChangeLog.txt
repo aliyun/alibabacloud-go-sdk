@@ -1,3 +1,8 @@
+2025-03-17 Version: v1.0.4
+- Update API DeleteEndpoint: add param DBInstanceNetType.
+- Update API ModifyDBInstanceConnectionString: add param DBInstanceNetType.
+
+
 2025-03-13 Version: v1.0.3
 - Update API DescribeDBInstanceAttribute: update response param.
 

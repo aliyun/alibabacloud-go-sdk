@@ -1548,7 +1548,8 @@ type DeleteEndpointRequest struct {
 	// example:
 	//
 	// cc-bp100p4q1g9z3****
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	DBInstanceId      *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	DBInstanceNetType *string `json:"DBInstanceNetType,omitempty" xml:"DBInstanceNetType,omitempty"`
 	// The region ID.
 	//
 	// example:
@@ -1572,6 +1573,11 @@ func (s *DeleteEndpointRequest) SetConnectionString(v string) *DeleteEndpointReq
 
 func (s *DeleteEndpointRequest) SetDBInstanceId(v string) *DeleteEndpointRequest {
 	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DeleteEndpointRequest) SetDBInstanceNetType(v string) *DeleteEndpointRequest {
+	s.DBInstanceNetType = &v
 	return s
 }
 
@@ -2097,6 +2103,10 @@ type DescribeDBInstanceAttributeRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The region ID.
 	//
+	// Valid values:
+	//
+	// 	- cn-beijing
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -2122,7 +2132,7 @@ func (s *DescribeDBInstanceAttributeRequest) SetRegionId(v string) *DescribeDBIn
 }
 
 type DescribeDBInstanceAttributeResponseBody struct {
-	// The returned result.
+	// The result returned.
 	Data *DescribeDBInstanceAttributeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -2163,11 +2173,7 @@ type DescribeDBInstanceAttributeResponseBodyData struct {
 	//
 	// PD39050615820269****
 	Bid *string `json:"Bid,omitempty" xml:"Bid,omitempty"`
-	// The billing method. Valid values:
-	//
-	// 	- Prepaid: subscription
-	//
-	// 	- PostPaid: pay-as-you-go
+	// The billing method. Enterprise Edition clusters use the pay-as-you-go billing method.
 	//
 	// example:
 	//
@@ -2191,13 +2197,13 @@ type DescribeDBInstanceAttributeResponseBodyData struct {
 	//
 	// 0/1
 	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
-	// 集群可用区部署状态，支持single_az和multi_az两种类型。
+	// The deployment mode of the cluster. Valid values: single_az and multi_az.
 	//
-	// - single_az：server部署到主可用区ZoneId。
+	// 	- single_az: indicates that the server nodes are deployed in the primary zone. The ID of the primary zone is specified by the ZoneID parameter.
 	//
-	// - multi_az：server部署到多可用区MultiZones。
+	// 	- multi_az: indicates that the server nodes are deployed in multiple zones. The information about the zones is specified by the MultiZones parameter.
 	//
-	// keeper始终部署到多可用区MultiZones。
+	// The keeper nodes are deployed in multiple zones.
 	//
 	// example:
 	//
@@ -2271,7 +2277,7 @@ type DescribeDBInstanceAttributeResponseBodyData struct {
 	//
 	// 12:00
 	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
-	// 多可用信息。
+	// The information about the zones.
 	MultiZones []*DescribeDBInstanceAttributeResponseBodyDataMultiZones `json:"MultiZones,omitempty" xml:"MultiZones,omitempty" type:"Repeated"`
 	// The nodes.
 	Nodes []*DescribeDBInstanceAttributeResponseBodyDataNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
@@ -2514,9 +2520,9 @@ func (s *DescribeDBInstanceAttributeResponseBodyData) SetZoneId(v string) *Descr
 }
 
 type DescribeDBInstanceAttributeResponseBodyDataMultiZones struct {
-	// 交换机ID数组。
+	// The vSwitch IDs.
 	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
-	// 可用区ID。
+	// The zone ID.
 	//
 	// example:
 	//
@@ -5629,14 +5635,15 @@ type ModifyDBInstanceConnectionStringRequest struct {
 	// example:
 	//
 	// cc-xxxxx
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// 	- The database port that you want to disable. If you need to specify multiple database ports, separate the database ports with commas (,).
+	DBInstanceId      *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	DBInstanceNetType *string `json:"DBInstanceNetType,omitempty" xml:"DBInstanceNetType,omitempty"`
+	// 	- The database ports that you want to disable. Separate multiple ports with commas (,).
 	//
-	// 	- This parameter is available only in clusters whose engine version is 24.10.1.11098_1 or later.
+	// 	- This parameter is supported only for clusters whose minor engine version is 24.10.1.11098_1 or later.
 	//
 	//     **
 	//
-	//     **Note*	- If you create a cluster whose version is earlier than 24.10.1.11098_1, the cluster does not support this parameter even after being upgraded to 24.10.1.11098_1 or later.
+	//     **Note*	- If you create a cluster whose minor engine version is earlier than 24.10.1.11098_1 and you update the minor engine version to 24.10.1.11098_1 or later, the cluster still does not support this parameter.
 	//
 	// example:
 	//
@@ -5670,6 +5677,11 @@ func (s *ModifyDBInstanceConnectionStringRequest) SetConnectionStringPrefix(v st
 
 func (s *ModifyDBInstanceConnectionStringRequest) SetDBInstanceId(v string) *ModifyDBInstanceConnectionStringRequest {
 	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ModifyDBInstanceConnectionStringRequest) SetDBInstanceNetType(v string) *ModifyDBInstanceConnectionStringRequest {
+	s.DBInstanceNetType = &v
 	return s
 }
 
@@ -7522,6 +7534,10 @@ func (client *Client) DeleteEndpointWithOptions(request *DeleteEndpointRequest, 
 		query["DBInstanceId"] = request.DBInstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceNetType)) {
+		query["DBInstanceNetType"] = request.DBInstanceNetType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
 	}
@@ -8882,6 +8898,10 @@ func (client *Client) ModifyDBInstanceConnectionStringWithOptions(request *Modif
 
 	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
 		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceNetType)) {
+		query["DBInstanceNetType"] = request.DBInstanceNetType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DisablePorts)) {
