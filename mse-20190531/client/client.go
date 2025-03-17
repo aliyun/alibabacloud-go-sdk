@@ -5798,72 +5798,77 @@ func (s *AddGatewaySlbResponse) SetBody(v *AddGatewaySlbResponseBody) *AddGatewa
 }
 
 type AddMigrationTaskRequest struct {
-	// The language of the response. Valid values:
+	// Language type of the returned information:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The type of the instance. Valid values:
+	// Cluster type.
 	//
-	// 	- Nacos-Ans
+	// - Nacos-Ans
 	//
-	// 	- ZooKeeper
+	// - ZooKeeper
 	//
-	// 	- Eureka
+	// - Eureka
 	//
 	// example:
 	//
 	// Nacos-Ans
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	// The endpoint of the source instance node.
+	// Source instance node address.
 	//
 	// example:
 	//
 	// 192.168.1.1:8848
 	OriginInstanceAddress *string `json:"OriginInstanceAddress,omitempty" xml:"OriginInstanceAddress,omitempty"`
-	// The name of the source instance.
+	// Source instance name.
 	//
 	// example:
 	//
 	// Source instance
 	OriginInstanceName *string `json:"OriginInstanceName,omitempty" xml:"OriginInstanceName,omitempty"`
-	// The list of namespaces. This parameter is optional if you want to migrate applications from a Nacos instance.
+	// Namespace list, required when the source cluster is Nacos.
 	//
 	// example:
 	//
 	// namesapceId1,namesapceId2
 	OriginInstanceNamespace *string `json:"OriginInstanceNamespace,omitempty" xml:"OriginInstanceNamespace,omitempty"`
-	// The description.
+	// Description.
 	//
 	// example:
 	//
 	// This is a description.
 	ProjectDesc *string `json:"ProjectDesc,omitempty" xml:"ProjectDesc,omitempty"`
-	// The extended request parameters in the JSON format.
+	// Extended request parameters, in JSON format.
 	//
 	// example:
 	//
 	// {}
 	RequestPars *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
-	SyncType    *string `json:"SyncType,omitempty" xml:"SyncType,omitempty"`
-	// The name of the destination instance.
+	// SyncType
+	//
+	// example:
+	//
+	// Service
+	SyncType *string `json:"SyncType,omitempty" xml:"SyncType,omitempty"`
+	// Target instance name.
 	//
 	// example:
 	//
 	// Destination instance
 	TargetClusterName *string `json:"TargetClusterName,omitempty" xml:"TargetClusterName,omitempty"`
-	// The URL of the destination instance.
+	// Target instance URL.
 	//
 	// example:
 	//
 	// mse-66*****-nacos-ans.mse.aliyuncs.com:8848
 	TargetClusterUrl *string `json:"TargetClusterUrl,omitempty" xml:"TargetClusterUrl,omitempty"`
-	// The ID of the destination instance.
+	// Target instance ID.
 	//
 	// example:
 	//
@@ -5935,31 +5940,31 @@ func (s *AddMigrationTaskRequest) SetTargetInstanceId(v string) *AddMigrationTas
 }
 
 type AddMigrationTaskResponseBody struct {
-	// The data structure.
+	// Data structure.
 	Data *AddMigrationTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned if the request failed.
+	// Error code.
 	//
 	// example:
 	//
 	// mse-100-000
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The message returned.
+	// Message.
 	//
 	// example:
 	//
 	// The request is processed successfully.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// Request ID.
 	//
 	// example:
 	//
 	// 7466566F-F30F-4A29-965D-3E0AF21D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// 请求结果，取值如下：
 	//
-	// 	- `true`: The request was successful.
+	// - `true`：请求成功。
 	//
-	// 	- `false`: The request failed.
+	// - `false`：请求失败。
 	//
 	// example:
 	//
@@ -6001,68 +6006,73 @@ func (s *AddMigrationTaskResponseBody) SetSuccess(v bool) *AddMigrationTaskRespo
 }
 
 type AddMigrationTaskResponseBodyData struct {
-	// The type of the instance. Valid values:
+	// Cluster type.
 	//
-	// 	- Nacos-Ans
+	// - Nacos-Ans
 	//
-	// 	- ZooKeeper
+	// - ZooKeeper
 	//
-	// 	- Eureka
+	// - Eureka
 	//
 	// example:
 	//
 	// Nacos-Ans
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	// The ID of the task.
+	// Task ID.
 	//
 	// example:
 	//
 	// 12
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The endpoint of the source instance node.
+	// Source instance node address.
 	//
 	// example:
 	//
 	// 192.168.1.1:8848
 	OriginInstanceAddress *string `json:"OriginInstanceAddress,omitempty" xml:"OriginInstanceAddress,omitempty"`
-	// The name of the source instance.
+	// Source instance name.
 	//
 	// example:
 	//
 	// Source instance
 	OriginInstanceName *string `json:"OriginInstanceName,omitempty" xml:"OriginInstanceName,omitempty"`
-	// The list of namespaces. This parameter is optional if applications are migrated from a Nacos instance.
+	// Namespace list, required when the source cluster is Nacos.
 	//
 	// example:
 	//
 	// namesapceId1,namesapceId2
 	OriginInstanceNamespace *string `json:"OriginInstanceNamespace,omitempty" xml:"OriginInstanceNamespace,omitempty"`
-	// The description.
+	// Description.
 	//
 	// example:
 	//
 	// testsdfsdfsd
 	ProjectDesc *string `json:"ProjectDesc,omitempty" xml:"ProjectDesc,omitempty"`
-	SyncType    *string `json:"SyncType,omitempty" xml:"SyncType,omitempty"`
-	// The name of the destination instance.
+	// SyncType
+	//
+	// example:
+	//
+	// Service
+	SyncType *string `json:"SyncType,omitempty" xml:"SyncType,omitempty"`
+	// Target instance name.
 	//
 	// example:
 	//
 	// Destination instance
 	TargetClusterName *string `json:"TargetClusterName,omitempty" xml:"TargetClusterName,omitempty"`
-	// The URL of the destination instance.
+	// Target instance URL.
 	//
 	// example:
 	//
 	// mse-94d****-nacos-ans.mse.aliyuncs.com:8848
 	TargetClusterUrl *string `json:"TargetClusterUrl,omitempty" xml:"TargetClusterUrl,omitempty"`
-	// The ID of the destination instance.
+	// Target instance ID.
 	//
 	// example:
 	//
 	// mse-cn-7pp2w*****
 	TargetInstanceId *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
-	// The ID of the user.
+	// User ID.
 	//
 	// example:
 	//
@@ -7992,34 +8002,50 @@ func (s *ApplyTagPoliciesResponse) SetBody(v *ApplyTagPoliciesResponseBody) *App
 }
 
 type BindSentinelBlockFallbackDefinitionRequest struct {
+	// The language of the response. Valid values:
+	//
+	// 	- zh: Chinese
+	//
+	// 	- en: English
+	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The name of the application.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// spring-cloud-a
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// Behavior ID. 0:the default behavior.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 21
 	FallbackId *int64 `json:"FallbackId,omitempty" xml:"FallbackId,omitempty"`
+	// The microservice namespace.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// prod
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// Interface Name: The resource to which the rule applies. It must match the interface name in the console\\"s interface details.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// /a
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// Target rule type.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -8067,26 +8093,42 @@ func (s *BindSentinelBlockFallbackDefinitionRequest) SetTargetType(v string) *Bi
 }
 
 type BindSentinelBlockFallbackDefinitionResponseBody struct {
+	// The status code. A value of 200 is returned if the request is successful.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The HTTP status code returned.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 4E9FDCFE-0738-493B-B801-82BDFBCB****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- `true`: The request was successful.
+	//
+	// 	- `false`: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -8161,16 +8203,22 @@ func (s *BindSentinelBlockFallbackDefinitionResponse) SetBody(v *BindSentinelBlo
 }
 
 type ChangeResourceGroupRequest struct {
+	// The language in which the response is displayed. Values: zh (default): Chinese, en: English
+	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// Target resource group
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rg-acfm34x43l*****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// Resource ID, which is the ID of the registration and configuration center instance or the unique ID of the gateway
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -8179,12 +8227,16 @@ type ChangeResourceGroupRequest struct {
 	//
 	// gw-xxxxxxxxxxxxxxxxxxxx
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// Region ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
+	// Resource type, such as a registration and configuration center cluster or gateway instance
+	//
 	// example:
 	//
 	// Cluster,Gateway
@@ -8276,27 +8328,31 @@ func (s *ChangeResourceGroupResponse) SetBody(v *ChangeResourceGroupResponseBody
 }
 
 type CloneNacosConfigRequest struct {
-	// The language of the response. Valid values:
+	// Language type of the returned message:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The configuration items that you want to clone. The value of this parameter is the combination of the values of the dataId and group parameters. Separate multiple configuration items with commas (,).
+	// Configuration items to be cloned, in the format of dataId+group, with multiple items separated by commas.
+	//
+	// example:
+	//
+	// test+test,test1+test1
 	DataIds *string `json:"DataIds,omitempty" xml:"DataIds,omitempty"`
 	// Deprecated
 	//
-	// The list of configuration IDs.
+	// List of configuration IDs.
 	//
 	// example:
 	//
 	// 253661,253662
 	Ids *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
-	// The ID of the destination namespace.
+	// Instance ID.
 	//
 	// This parameter is required.
 	//
@@ -8304,23 +8360,19 @@ type CloneNacosConfigRequest struct {
 	//
 	// mse_prepaid_public_cn-i7m25igg403
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The policy used when a write conflict occurs.
-	//
-	// 	- ABORT
-	//
-	// 	- SKIP
-	//
-	// 	- OVERWRITE
+	// Source namespace ID.
 	//
 	// example:
 	//
 	// be821963-6d48-4ea5-9910-6057d****
 	OriginNamespaceId *string `json:"OriginNamespaceId,omitempty" xml:"OriginNamespaceId,omitempty"`
-	// The language of the response. Valid values:
+	// The strategy used when a write conflict occurs.
 	//
-	// 	- zh: Chinese
+	// - ABORT
 	//
-	// 	- en: English
+	// - SKIP
+	//
+	// - OVERWRITE
 	//
 	// This parameter is required.
 	//
@@ -8328,7 +8380,7 @@ type CloneNacosConfigRequest struct {
 	//
 	// OVERWRITE
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// The IDs of configurations.
+	// Target namespace ID.
 	//
 	// example:
 	//
@@ -8380,51 +8432,51 @@ func (s *CloneNacosConfigRequest) SetTargetNamespaceId(v string) *CloneNacosConf
 }
 
 type CloneNacosConfigResponseBody struct {
-	// The dynamic part in the error message. This parameter is used to replace the \\*\\*%s\\*\\	- variable in the **ErrMessage*	- parameter.
-	//
-	// >  If the return value of the **ErrMessage*	- parameter is **The Value of Input Parameter %s is not valid*	- and the return value of the **DynamicMessage*	- parameter is **DtsJobId**, the specified **DtsJobId*	- parameter is invalid.
+	// Response code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// Data overview.
 	Data *CloneNacosConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The number of successful operations.
+	// Dynamic error message, used to replace the **%s*	- in the **ErrMessage*	- error message.
+	//
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid**, and **DynamicMessage*	- returns **DtsJobId**, it indicates that the input request parameter **DtsJobId*	- is invalid.
 	//
 	// example:
 	//
 	// The specified parameter is invalid.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The message returned.
+	// Error code.
 	//
 	// example:
 	//
 	// mse-100-000
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// Indicates whether the request was successful. Valid values:
-	//
-	// 	- `true`: The request was successful.
-	//
-	// 	- `false`: The request failed.
+	// HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The details of the data.
+	// Response message.
 	//
 	// example:
 	//
 	// Clone Completed Successfully
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The error code returned if the request failed.
+	// Request ID.
 	//
 	// example:
 	//
 	// 6678DBA9-5600-5948-ACF8-ED3105B288A3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The response code returned.
+	// Request result, with the following values:
+	//
+	// - `true`: Request succeeded.
+	//
+	// - `false`: Request failed.
 	//
 	// example:
 	//
@@ -8481,17 +8533,17 @@ func (s *CloneNacosConfigResponseBody) SetSuccess(v bool) *CloneNacosConfigRespo
 }
 
 type CloneNacosConfigResponseBodyData struct {
-	// The details of the failed configurations.
+	// Failed configuration information.
 	FailData []*CloneNacosConfigResponseBodyDataFailData `json:"FailData,omitempty" xml:"FailData,omitempty" type:"Repeated"`
-	// The data structure.
+	// Number of skips.
 	//
 	// example:
 	//
 	// 1
 	SkipCount *int32 `json:"SkipCount,omitempty" xml:"SkipCount,omitempty"`
-	// The ID of the data.
+	// Skipped configuration information.
 	SkipData []*CloneNacosConfigResponseBodyDataSkipData `json:"SkipData,omitempty" xml:"SkipData,omitempty" type:"Repeated"`
-	// The details of the skipped configurations.
+	// Number of successes.
 	//
 	// example:
 	//
@@ -8528,18 +8580,23 @@ func (s *CloneNacosConfigResponseBodyData) SetSuccCount(v int32) *CloneNacosConf
 }
 
 type CloneNacosConfigResponseBodyDataFailData struct {
-	// mse-200-105
+	// Data ID.
 	//
 	// example:
 	//
 	// test2.yaml
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	// duplicatedClusterAliasName
+	// Group ID.
 	//
 	// example:
 	//
 	// test
-	Group  *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	// The reason for the current operation.
+	//
+	// example:
+	//
+	// param not support
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 }
 
@@ -8567,13 +8624,13 @@ func (s *CloneNacosConfigResponseBodyDataFailData) SetReason(v string) *CloneNac
 }
 
 type CloneNacosConfigResponseBodyDataSkipData struct {
-	// The details of the failed configurations.
+	// Data ID.
 	//
 	// example:
 	//
 	// test.yaml
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	// The data structure.
+	// Group ID.
 	//
 	// example:
 	//
@@ -8654,8 +8711,13 @@ type CloneSentinelRuleFromAhasRequest struct {
 	// example:
 	//
 	// false
-	IsAHASPublicRegion *bool   `json:"IsAHASPublicRegion,omitempty" xml:"IsAHASPublicRegion,omitempty"`
-	MseAppName         *string `json:"MseAppName,omitempty" xml:"MseAppName,omitempty"`
+	IsAHASPublicRegion *bool `json:"IsAHASPublicRegion,omitempty" xml:"IsAHASPublicRegion,omitempty"`
+	// The name of the MSE application after migration. If this parameter is not specified, the name of the Application High Availability Service (AHAS) application is used by default.
+	//
+	// example:
+	//
+	// spring-cloud-a
+	MseAppName *string `json:"MseAppName,omitempty" xml:"MseAppName,omitempty"`
 	// The namespace.
 	//
 	// This parameter is required.
@@ -9708,47 +9770,47 @@ func (s *CreateCircuitBreakerRuleResponse) SetBody(v *CreateCircuitBreakerRuleRe
 }
 
 type CreateClusterRequest struct {
-	// The language of the response. Valid values:
+	// The language type of the returned information:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The billing method. Valid values: PREPAY and POSTPAY.
+	// Billing method, including PREPAY (Subscription) and POSTPAY (Pay-As-You-Go).
 	//
-	// Ignore this parameter for serverless instances.
+	// This parameter is ignored for the Serverless edition.
 	//
 	// example:
 	//
 	// POSTPAY
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The engine specifications. Valid values:
+	// Engine specifications, with the following values:
 	//
 	// [Professional Edition]
 	//
-	// 	- `MSE_SC_2_4_60_c`: 2 vCPUs and 4 GB of memory
+	// - `MSE_SC_2_4_60_c`: 2 cores, 4GB
 	//
-	// 	- `MSE_SC_1_2_60_c`: 1 vCPU and 2 GB of memory
+	// - `MSE_SC_1_2_60_c`: 1 core, 2GB
 	//
-	// 	- `MSE_SC_4_8_60_c`: 4 vCPUs and 8 GB of memory
+	// - `MSE_SC_4_8_60_c`: 4 cores, 8GB
 	//
-	// 	- `MSE_SC_8_16_60_c`: 8 vCPUs and 16 GB of memory
+	// - `MSE_SC_8_16_60_c`: 8 cores, 16GB
 	//
-	// 	- `MSE_SC_16_32_60_c`: 16 vCPUs and 32 GB of memory
+	// - `MSE_SC_16_32_60_c`: 16 cores, 32GB
 	//
 	// [Developer Edition]
 	//
-	// 	- `MSE_SC_1_2_60_c`: 1 vCPU and 2 GB of memory
+	// - `MSE_SC_1_2_60_c`: 1 core, 2GB
 	//
-	// 	- `MSE_SC_2_4_60_c`: 2 vCPUs and 4 GB of memory
+	// - `MSE_SC_2_4_60_c`: 2 cores, 4GB
 	//
 	// [Serverless Edition]
 	//
-	// Ignore this parameter or set this parameter to `MSE_SC_SERVERLESS`.
+	// Ignore this parameter, or you can fill in `MSE_SC_SERVERLESS`.
 	//
 	// This parameter is required.
 	//
@@ -9756,7 +9818,7 @@ type CreateClusterRequest struct {
 	//
 	// MSE_SC_2_4_60_c
 	ClusterSpecification *string `json:"ClusterSpecification,omitempty" xml:"ClusterSpecification,omitempty"`
-	// The type of the instance. Valid values: ZooKeeper and Nacos-Ans.
+	// Cluster type, including ZooKeeper, Nacos-Ans.
 	//
 	// This parameter is required.
 	//
@@ -9764,25 +9826,25 @@ type CreateClusterRequest struct {
 	//
 	// Nacos-Ans
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	// The engine version of the instance. Valid values:
+	// Cluster version, with the following values:
 	//
 	// [Professional Edition]
 	//
-	// 	- `NACOS_2_0_0`
+	// - `NACOS_2_0_0`: indicates Nacos 2.x.x version.
 	//
-	// 	- `ZooKeeper_3_8_0`
+	// - `ZooKeeper_3_8_0`: indicates ZooKeeper 3.8.x version.
 	//
 	// [Developer Edition]
 	//
-	// 	- `NACOS_2_0_0`
+	// - `NACOS_2_0_0`: indicates Nacos 2.x version.
 	//
-	// 	- `ZooKeeper_3_8_0`
+	// - `ZooKeeper_3_8_0`: indicates ZooKeeper 3.8.x version.
 	//
 	// [Serverless Edition]
 	//
-	// 	- `NACOS_2_0_0`
+	// - `NACOS_2_0_0`: indicates Nacos 2.x version.
 	//
-	// 	- `ZooKeeper_3_8_0`
+	// - `ZooKeeper_3_8_0`: indicates ZooKeeper 3.8.x version.
 	//
 	// This parameter is required.
 	//
@@ -9790,7 +9852,7 @@ type CreateClusterRequest struct {
 	//
 	// NACOS_2_0_0
 	ClusterVersion *string `json:"ClusterVersion,omitempty" xml:"ClusterVersion,omitempty"`
-	// The network connection type. Valid values: `slb` or `single_eni`. For instances of the Developer Edition in some regions, only the value `single_eni` is supported.
+	// Network access type, `slb` or `single_eni`; some regions\\" Developer Edition only support the `single_eni` type.
 	//
 	// example:
 	//
@@ -9798,32 +9860,26 @@ type CreateClusterRequest struct {
 	ConnectionType *string `json:"ConnectionType,omitempty" xml:"ConnectionType,omitempty"`
 	// Deprecated
 	//
-	// This parameter is obsolete.
+	// No longer in use
 	//
 	// example:
 	//
 	// alicloud-disk-ssd
 	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
-	// Specifies whether to enable elastic IP addresses. This parameter is valid only if the ConnectionType parameter is set to `single_eni`.
-	//
-	// Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
+	// Valid when `ConnectionType` is `single_eni`, indicating whether to enable public network access (Elastic IP).
 	//
 	// if can be null:
 	// false
 	EipEnabled *bool `json:"EipEnabled,omitempty" xml:"EipEnabled,omitempty"`
-	// The number of nodes in the instance. Valid values: 1 to 9.
+	// Number of instance nodes, with a range limit of 1 to 9.
 	//
 	// [Professional Edition]
 	//
-	// 	- The value must be greater than or equal to 3 and must be an odd number.
+	// - The number of instances must be 3 or more and must be an odd number.
 	//
 	// [Developer Edition]
 	//
-	// 	- The value must be 1.
+	// - The number of instances can only be 1.
 	//
 	// [Serverless Edition]
 	//
@@ -9835,29 +9891,29 @@ type CreateClusterRequest struct {
 	//
 	// 3
 	InstanceCount *int32 `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
-	// The custom name of the instance.
+	// Custom instance name
 	//
 	// example:
 	//
 	// tanshuyingtest001
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// Configure this parameter unless otherwise specified. Valid values:
+	// Required unless under special circumstances, with the following values:
 	//
-	// 	- `mse_pro`: Professional Edition
+	// - `mse_pro`: indicates Professional Edition.
 	//
-	// 	- `mse_dev`: Developer Edition
+	// - `mse_dev`: indicates Developer Edition.
 	//
-	// 	- `mse_dev`: Serverless Edition
+	// - `mse_serverless`: indicates Serverless Edition.
 	//
 	// example:
 	//
 	// mse_pro
 	MseVersion *string `json:"MseVersion,omitempty" xml:"MseVersion,omitempty"`
-	// The network type of the MSE instance. Valid values:
+	// Network type, with the following values:
 	//
-	// 	- `privatenet`: VPC
+	// - `privatenet`: indicates a private network.
 	//
-	// 	- `pubnet`: Internet
+	// - `pubnet`: indicates a public network.
 	//
 	// This parameter is required.
 	//
@@ -9867,15 +9923,15 @@ type CreateClusterRequest struct {
 	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
 	// Deprecated
 	//
-	// This parameter is obsolete.
+	// No longer in use
 	//
 	// example:
 	//
 	// slb.s1.small
 	PrivateSlbSpecification *string `json:"PrivateSlbSpecification,omitempty" xml:"PrivateSlbSpecification,omitempty"`
-	// This parameter is valid only if the ConnectionType parameter is set to `slb`. The value 0 indicates that the Server Load Balancer (SLB) instance is not connected over the Internet. A value greater than 1 indicates the fixed bandwidth that is used to access the SLB instance over the Internet. Unit: Mbit/s.
+	// Valid when `ConnectionType` is `slb`. 0 indicates no public network access SLB creation, and values above 1 indicate a fixed bandwidth for public network access SLB; unit: Mbps.
 	//
-	// Valid values: 0 to 5000.
+	// Value range: 0~5000.
 	//
 	// example:
 	//
@@ -9883,55 +9939,55 @@ type CreateClusterRequest struct {
 	PubNetworkFlow *string `json:"PubNetworkFlow,omitempty" xml:"PubNetworkFlow,omitempty"`
 	// Deprecated
 	//
-	// This parameter is obsolete.
+	// No longer in use
 	//
 	// example:
 	//
 	// slb.s1.small
 	PubSlbSpecification *string `json:"PubSlbSpecification,omitempty" xml:"PubSlbSpecification,omitempty"`
-	// The region where the instance resides. Examples:
+	// The region where the cluster is located, including but not limited to the following regions:
 	//
-	// 	- `cn-hangzhou`: China (Hangzhou)
+	// - `cn-hangzhou`: Hangzhou
 	//
-	// 	- `cn-beijing`: China (Beijing)
+	// - `cn-beijing`: Beijing
 	//
-	// 	- `cn-shanghai`: China (Shanghai)
+	// - `cn-shanghai`: Shanghai
 	//
-	// 	- `cn-zhangjiakou`: China (Zhangjiakou)
+	// - `cn-zhangjiakou`: Zhangjiakou
 	//
-	// 	- `cn-shenzhen`: China (Shenzhen)
+	// - `cn-shenzhen`: Shenzhen
 	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The extended request parameters in the JSON format.
+	// Extended request parameters, in JSON format.
 	//
 	// example:
 	//
 	// {}
 	RequestPars *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
-	// The ID of the resource group. For the details of resource groups, see [View basic information of a resource group](https://help.aliyun.com/document_detail/457230.html).
+	// Resource group ID. For more details about the resource group, see [Basic Information of Resource Group](https://help.aliyun.com/document_detail/457230.html).
 	//
 	// example:
 	//
 	// rg-aekzcqmoay3dlyq
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The type of the security group to which the instance belongs. This parameter is valid only if the ConnectionType parameter is set to `single_eni`.
+	// Valid when `ConnectionType` is `single_eni`, indicating the security group type of the instance.
 	//
 	// example:
 	//
 	// enterprise
 	SecurityGroupType *string `json:"SecurityGroupType,omitempty" xml:"SecurityGroupType,omitempty"`
-	// The tags to add to the resource. You can specify up to 20 tags.
+	// List of tags to be added. Contains up to 20 items.
 	Tag []*CreateClusterRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The ID of the vSwitch.
+	// Switch ID.
 	//
 	// example:
 	//
 	// vsw-bp17opt4v18sto39k****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the virtual private cloud (VPC).
+	// VPC ID.
 	//
 	// example:
 	//
@@ -10058,13 +10114,13 @@ func (s *CreateClusterRequest) SetVpcId(v string) *CreateClusterRequest {
 }
 
 type CreateClusterRequestTag struct {
-	// The key of tag N to add to the resource.
+	// Tag key.
 	//
 	// example:
 	//
 	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N to add to the resource.
+	// Tag value.
 	//
 	// example:
 	//
@@ -10091,41 +10147,41 @@ func (s *CreateClusterRequestTag) SetValue(v string) *CreateClusterRequestTag {
 }
 
 type CreateClusterResponseBody struct {
-	// The error code returned if the request failed.
+	// Error code.
 	//
 	// example:
 	//
 	// mse-100-000
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The ID of the instance.
+	// Instance ID.
 	//
 	// example:
 	//
 	// mse-cn-st21ri2****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The message returned.
+	// Return message.
 	//
 	// example:
 	//
 	// The request is successfully processed.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the order.
+	// Order ID.
 	//
 	// example:
 	//
 	// 20574710974****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the request.
+	// Request ID.
 	//
 	// example:
 	//
 	// dc63-465d-8ef5-20dc18af****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Request result, with the following values:
 	//
-	// 	- `true`: The request was successful.
+	// - `true`: Request succeeded.
 	//
-	// 	- `false`: The request failed.
+	// - `false`: Request failed.
 	//
 	// example:
 	//
@@ -18813,23 +18869,27 @@ func (s *DeleteMigrationTaskResponse) SetBody(v *DeleteMigrationTaskResponseBody
 }
 
 type DeleteNacosConfigRequest struct {
-	// The language of the response. Valid values:
+	// Language type of the returned information:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The error code returned if the request failed.
+	// Whether it is a Beta release. Default is false.
+	//
+	// - `true`: Yes
+	//
+	// - `false`: No
 	//
 	// example:
 	//
 	// true
 	Beta *bool `json:"Beta,omitempty" xml:"Beta,omitempty"`
-	// The ID of the request.
+	// Configuration ID.
 	//
 	// This parameter is required.
 	//
@@ -18837,7 +18897,7 @@ type DeleteNacosConfigRequest struct {
 	//
 	// user-ds.yml
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	// The message returned.
+	// Group type.
 	//
 	// This parameter is required.
 	//
@@ -18845,7 +18905,7 @@ type DeleteNacosConfigRequest struct {
 	//
 	// HALVIE_MICRO_GROUP
 	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
-	// The HTTP status code.
+	// Instance ID.
 	//
 	// This parameter is required.
 	//
@@ -18853,7 +18913,7 @@ type DeleteNacosConfigRequest struct {
 	//
 	// mse_prepaid_public_cn-tl32epfyu18
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The request is successfully processed.
+	// Namespace ID. Default is public.
 	//
 	// example:
 	//
@@ -18900,27 +18960,38 @@ func (s *DeleteNacosConfigRequest) SetNamespaceId(v string) *DeleteNacosConfigRe
 }
 
 type DeleteNacosConfigResponseBody struct {
+	// Return code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Error code.
+	//
 	// example:
 	//
 	// mse-100-000
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+	// HTTP status code.
 	//
 	// example:
 	//
 	// 202
 	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	Message  *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Deletes a Nacos configuration.
+	// Message.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
 	//
 	// example:
 	//
 	// 4FEFC13F-EB50-51E1-97D8-C5CBA8CD1B84
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Request result, with the following values: - `true`: The request was successful. - `false`: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -31276,27 +31347,27 @@ func (s *GetMseSourceResponse) SetBody(v *GetMseSourceResponseBody) *GetMseSourc
 }
 
 type GetNacosConfigRequest struct {
-	// The language of the response. Valid values:
+	// Language type of the returned information:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// Specifies whether to perform a beta release. Valid values:
+	// Whether it is a Beta release.
 	//
-	// 	- `true`: yes
+	// - `true`: Yes
 	//
-	// 	- `false`: no
+	// - `false`: No
 	//
 	// example:
 	//
 	// true
 	Beta *bool `json:"Beta,omitempty" xml:"Beta,omitempty"`
-	// The ID of the data.
+	// Data ID.
 	//
 	// This parameter is required.
 	//
@@ -31304,7 +31375,7 @@ type GetNacosConfigRequest struct {
 	//
 	// halvie-mp-item****
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	// The name of the configuration group.
+	// Configuration group information.
 	//
 	// This parameter is required.
 	//
@@ -31312,7 +31383,7 @@ type GetNacosConfigRequest struct {
 	//
 	// common
 	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
-	// The ID of the instance.
+	// Instance ID.
 	//
 	// This parameter is required.
 	//
@@ -31320,7 +31391,7 @@ type GetNacosConfigRequest struct {
 	//
 	// mse-cn-i7m2h0****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the namespace.
+	// Namespace ID.
 	//
 	// example:
 	//
@@ -31367,31 +31438,31 @@ func (s *GetNacosConfigRequest) SetNamespaceId(v string) *GetNacosConfigRequest 
 }
 
 type GetNacosConfigResponseBody struct {
-	// The configuration information.
+	// Configuration information.
 	Configuration *GetNacosConfigResponseBodyConfiguration `json:"Configuration,omitempty" xml:"Configuration,omitempty" type:"Struct"`
-	// The error code returned if the request failed.
+	// Error code.
 	//
 	// example:
 	//
 	// mse-100-000
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The message returned.
+	// Message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// Request ID.
 	//
 	// example:
 	//
 	// B4EAB48C-BB4B-5B8D-B33B-35D69606C5AD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// The result of the request, with values as follows:
 	//
-	// 	- `true`: The request was successful.
+	// - `true`: The request was successful.
 	//
-	// 	- `false`: The request failed.
+	// - `false`: The request failed.
 	//
 	// example:
 	//
@@ -31433,62 +31504,63 @@ func (s *GetNacosConfigResponseBody) SetSuccess(v bool) *GetNacosConfigResponseB
 }
 
 type GetNacosConfigResponseBodyConfiguration struct {
-	// The name of the application.
+	// Application name.
 	//
 	// example:
 	//
 	// test
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The list of IP addresses where the beta release of the configuration is performed.
+	// List of IPs for Beta release.
 	//
 	// example:
 	//
-	// 1.1.XX.XX,2.2.XX.XX
+	// 1.1.XX.XX，2.2.XX.XX
 	BetaIps *string `json:"BetaIps,omitempty" xml:"BetaIps,omitempty"`
-	// The content of the configuration.
+	// Configuration content.
 	//
 	// example:
 	//
 	// log.level=error
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The ID of the configuration.
+	// Configuration ID.
 	//
 	// example:
 	//
 	// log.yaml
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	// The description of the configuration.
+	// Configuration description.
 	//
 	// example:
 	//
 	// For testing
 	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	// The encryption key.
+	// Encrypted key.
 	//
 	// example:
 	//
 	// key
-	EncryptedDataKey *string                                                `json:"EncryptedDataKey,omitempty" xml:"EncryptedDataKey,omitempty"`
-	GrayVersions     []*GetNacosConfigResponseBodyConfigurationGrayVersions `json:"GrayVersions,omitempty" xml:"GrayVersions,omitempty" type:"Repeated"`
-	// The name of the configuration group.
+	EncryptedDataKey *string `json:"EncryptedDataKey,omitempty" xml:"EncryptedDataKey,omitempty"`
+	// Current gray version information
+	GrayVersions []*GetNacosConfigResponseBodyConfigurationGrayVersions `json:"GrayVersions,omitempty" xml:"GrayVersions,omitempty" type:"Repeated"`
+	// Configuration group name.
 	//
 	// example:
 	//
 	// test
 	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
-	// The message digest of the configuration.
+	// Message digest of the configuration.
 	//
 	// example:
 	//
 	// 123rfsdf3
 	Md5 *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
-	// The tags of the configuration.
+	// Tags of the configuration.
 	//
 	// example:
 	//
 	// context
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The format of the configuration.
+	// Format of the configuration content.
 	//
 	// example:
 	//
@@ -31560,10 +31632,30 @@ func (s *GetNacosConfigResponseBodyConfiguration) SetType(v string) *GetNacosCon
 }
 
 type GetNacosConfigResponseBodyConfigurationGrayVersions struct {
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Priority *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	Rule     *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Gray version name
+	//
+	// example:
+	//
+	// test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The priority of the current gray rule.
+	//
+	// example:
+	//
+	// 20
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// Rules of the current gray version
+	//
+	// example:
+	//
+	// a=b
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Gray type
+	//
+	// example:
+	//
+	// Beta
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetNacosConfigResponseBodyConfigurationGrayVersions) String() string {
@@ -43422,6 +43514,10 @@ type ListFlowRulesResponseBody struct {
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// The returned message.
+	//
+	// example:
+	//
+	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -43627,7 +43723,12 @@ type ListFlowRulesResponseBodyDataResult struct {
 	//
 	// "{\\"appName\\":\\"spring-cloud-a\\",\\"fallbackBehavior\\":{\\"webFallbackMode\\":0,\\"webRespContentType\\":0,\\"webRespMessage\\":\\"Blocked\\",\\"webRespStatusCode\\":429},\\"id\\":977,\\"name\\":\\"Fallback\\",\\"namespace\\":\\"default\\",\\"resourceClassification\\":1}"
 	FallbackObject *string `json:"FallbackObject,omitempty" xml:"FallbackObject,omitempty"`
-	LimitApp       *string `json:"LimitApp,omitempty" xml:"LimitApp,omitempty"`
+	// Requests source application.
+	//
+	// example:
+	//
+	// spring-cloud-a
+	LimitApp *string `json:"LimitApp,omitempty" xml:"LimitApp,omitempty"`
 	// The timeout period for queuing when the value of ControlBehavior is set to 2. Unit: milliseconds.
 	//
 	// example:
@@ -43657,8 +43758,13 @@ type ListFlowRulesResponseBodyDataResult struct {
 	// example:
 	//
 	// /a
-	Resource     *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	ResourceType *int32  `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// Interface resource type.
+	//
+	// example:
+	//
+	// 1
+	ResourceType *int32 `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The rule ID.
 	//
 	// example:
@@ -54736,17 +54842,28 @@ func (s *ListSecurityGroupRuleResponse) SetBody(v *ListSecurityGroupRuleResponse
 }
 
 type ListSentinelBlockFallbackDefinitionsRequest struct {
+	// The language of the response. Valid values:
+	//
+	// 	- zh: Chinese
+	//
+	// 	- en: English
+	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The name of the application.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// spring-cloud-a
-	AppName           *string  `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// Behavior Classification Set.
 	ClassificationSet []*int32 `json:"ClassificationSet,omitempty" xml:"ClassificationSet,omitempty" type:"Repeated"`
+	// The name of the Microservices namespace.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -54784,17 +54901,28 @@ func (s *ListSentinelBlockFallbackDefinitionsRequest) SetNamespace(v string) *Li
 }
 
 type ListSentinelBlockFallbackDefinitionsShrinkRequest struct {
+	// The language of the response. Valid values:
+	//
+	// 	- zh: Chinese
+	//
+	// 	- en: English
+	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The name of the application.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// spring-cloud-a
-	AppName                 *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// Behavior Classification Set.
 	ClassificationSetShrink *string `json:"ClassificationSet,omitempty" xml:"ClassificationSet,omitempty"`
+	// The name of the Microservices namespace.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -54832,19 +54960,32 @@ func (s *ListSentinelBlockFallbackDefinitionsShrinkRequest) SetNamespace(v strin
 }
 
 type ListSentinelBlockFallbackDefinitionsResponseBody struct {
+	// The details of the data.
 	Data []*ListSentinelBlockFallbackDefinitionsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The HTTP status code returned.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The message returned.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 4E9FDCFE-0738-493B-B801-82BDFBCB****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- `true`: The request was successful.
+	//
+	// 	- `false`: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -54885,30 +55026,44 @@ func (s *ListSentinelBlockFallbackDefinitionsResponseBody) SetSuccess(v bool) *L
 }
 
 type ListSentinelBlockFallbackDefinitionsResponseBodyData struct {
+	// The name of the application.
+	//
 	// example:
 	//
 	// spring-cloud-a
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// Behavior  detail.
+	//
 	// example:
 	//
 	// {"webRespStatusCode":429,"webRespMessage":"test","webFallbackMode":0,"webRespContentType":0}
 	FallbackBehavior map[string]interface{} `json:"FallbackBehavior,omitempty" xml:"FallbackBehavior,omitempty"`
+	// Behavior Id
+	//
 	// example:
 	//
 	// 12
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the behavior.
+	//
 	// example:
 	//
 	// defaultFallback
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the Microservices namespace.
+	//
 	// example:
 	//
 	// default
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// Behavior classification.
+	//
 	// example:
 	//
 	// 1
 	ResourceClassification *string `json:"ResourceClassification,omitempty" xml:"ResourceClassification,omitempty"`
+	// Resource information bound to the behavior.
+	//
 	// example:
 	//
 	// {"/params/{hot}":[1]}
@@ -63142,13 +63297,13 @@ type QuerySwimmingLaneByIdResponseBody struct {
 	//
 	// {id:102,name:"test"}
 	Data *QuerySwimmingLaneByIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code.
+	// The error code returned if the request failed.
 	//
 	// example:
 	//
 	// mse-100-000
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned message.
+	// The message returned.
 	//
 	// example:
 	//
@@ -68967,6 +69122,108 @@ func (s *UpdateGatewayCircuitBreakerRuleResponse) SetStatusCode(v int32) *Update
 }
 
 func (s *UpdateGatewayCircuitBreakerRuleResponse) SetBody(v *UpdateGatewayCircuitBreakerRuleResponseBody) *UpdateGatewayCircuitBreakerRuleResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateGatewayConfigRequest struct {
+	// example:
+	//
+	// zh
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// EnableK8sSourceWorkloadFilter
+	ConfigName *string `json:"ConfigName,omitempty" xml:"ConfigName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {"enable":true,"filterOpt":"EQUAL","labelKey":"key","labelValue":"value"}
+	ConfigValue *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gw-b525dc1adf3c486ab96224a6346*****
+	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+}
+
+func (s UpdateGatewayConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayConfigRequest) SetAcceptLanguage(v string) *UpdateGatewayConfigRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdateGatewayConfigRequest) SetConfigName(v string) *UpdateGatewayConfigRequest {
+	s.ConfigName = &v
+	return s
+}
+
+func (s *UpdateGatewayConfigRequest) SetConfigValue(v string) *UpdateGatewayConfigRequest {
+	s.ConfigValue = &v
+	return s
+}
+
+func (s *UpdateGatewayConfigRequest) SetGatewayUniqueId(v string) *UpdateGatewayConfigRequest {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+type UpdateGatewayConfigResponseBody struct {
+	// example:
+	//
+	// AF21683A-29C7-4853-AC0F-B5ADEE4D****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateGatewayConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayConfigResponseBody) SetRequestId(v string) *UpdateGatewayConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateGatewayConfigResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateGatewayConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateGatewayConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayConfigResponse) SetHeaders(v map[string]*string) *UpdateGatewayConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateGatewayConfigResponse) SetStatusCode(v int32) *UpdateGatewayConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateGatewayConfigResponse) SetBody(v *UpdateGatewayConfigResponseBody) *UpdateGatewayConfigResponse {
 	s.Body = v
 	return s
 }
@@ -80547,7 +80804,7 @@ func (client *Client) AddGatewaySlb(request *AddGatewaySlbRequest) (_result *Add
 
 // Summary:
 //
-// Adds a migration task.
+// Create a new migration task
 //
 // @param request - AddMigrationTaskRequest
 //
@@ -80640,7 +80897,7 @@ func (client *Client) AddMigrationTaskWithOptions(request *AddMigrationTaskReque
 
 // Summary:
 //
-// Adds a migration task.
+// Create a new migration task
 //
 // @param request - AddMigrationTaskRequest
 //
@@ -81252,7 +81509,7 @@ func (client *Client) ApplyTagPolicies(request *ApplyTagPoliciesRequest) (_resul
 
 // Summary:
 //
-// 绑定流量防护行为
+// Binds traffic protection behavior.
 //
 // @param request - BindSentinelBlockFallbackDefinitionRequest
 //
@@ -81325,7 +81582,7 @@ func (client *Client) BindSentinelBlockFallbackDefinitionWithOptions(request *Bi
 
 // Summary:
 //
-// 绑定流量防护行为
+// Binds traffic protection behavior.
 //
 // @param request - BindSentinelBlockFallbackDefinitionRequest
 //
@@ -81343,7 +81600,7 @@ func (client *Client) BindSentinelBlockFallbackDefinition(request *BindSentinelB
 
 // Summary:
 //
-// 资源转组
+// Resource Transfer
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -81412,7 +81669,7 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 
 // Summary:
 //
-// 资源转组
+// Resource Transfer
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -81430,11 +81687,11 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 
 // Summary:
 //
-// Clones an existing Nacos configuration from a namespace to another namespace.
+// Copy Nacos Configuration
 //
 // Description:
 //
-// mse-200-105
+// > This OpenAPI is not the Nacos-SDK API. For information related to the Nacos-SDK API, please refer to the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
 //
 // @param request - CloneNacosConfigRequest
 //
@@ -81511,11 +81768,11 @@ func (client *Client) CloneNacosConfigWithOptions(request *CloneNacosConfigReque
 
 // Summary:
 //
-// Clones an existing Nacos configuration from a namespace to another namespace.
+// Copy Nacos Configuration
 //
 // Description:
 //
-// mse-200-105
+// > This OpenAPI is not the Nacos-SDK API. For information related to the Nacos-SDK API, please refer to the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
 //
 // @param request - CloneNacosConfigRequest
 //
@@ -81533,7 +81790,7 @@ func (client *Client) CloneNacosConfig(request *CloneNacosConfigRequest) (_resul
 
 // Summary:
 //
-// 从AHAS侧复制规则
+// Clones rules from Application High Availability Service.
 //
 // @param request - CloneSentinelRuleFromAhasRequest
 //
@@ -81606,7 +81863,7 @@ func (client *Client) CloneSentinelRuleFromAhasWithOptions(request *CloneSentine
 
 // Summary:
 //
-// 从AHAS侧复制规则
+// Clones rules from Application High Availability Service.
 //
 // @param request - CloneSentinelRuleFromAhasRequest
 //
@@ -81854,11 +82111,11 @@ func (client *Client) CreateCircuitBreakerRule(request *CreateCircuitBreakerRule
 
 // Summary:
 //
-// Creates a Microservices Engine (MSE) instance, such as an MSE ZooKeeper instance or an MSE Nacos instance.
+// Create an MSE registration and configuration center instance
 //
 // Description:
 //
-// Before you call this API operation, you must make sure that you fully understand the billing methods and pricing of MSE.
+// Please ensure that you fully understand the billing method and pricing of the MSE (Microservice Engine) product before using this interface.
 //
 // @param request - CreateClusterRequest
 //
@@ -81995,11 +82252,11 @@ func (client *Client) CreateClusterWithOptions(request *CreateClusterRequest, ru
 
 // Summary:
 //
-// Creates a Microservices Engine (MSE) instance, such as an MSE ZooKeeper instance or an MSE Nacos instance.
+// Create an MSE registration and configuration center instance
 //
 // Description:
 //
-// Before you call this API operation, you must make sure that you fully understand the billing methods and pricing of MSE.
+// Please ensure that you fully understand the billing method and pricing of the MSE (Microservice Engine) product before using this interface.
 //
 // @param request - CreateClusterRequest
 //
@@ -85172,7 +85429,11 @@ func (client *Client) DeleteMigrationTask(request *DeleteMigrationTaskRequest) (
 
 // Summary:
 //
-// 删除nacos指定配置
+// Delete specified Nacos configuration
+//
+// Description:
+//
+// > The current OpenAPI is not the Nacos-SDK API. For information related to the Nacos-SDK API, please refer to the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
 //
 // @param request - DeleteNacosConfigRequest
 //
@@ -85245,7 +85506,11 @@ func (client *Client) DeleteNacosConfigWithOptions(request *DeleteNacosConfigReq
 
 // Summary:
 //
-// 删除nacos指定配置
+// Delete specified Nacos configuration
+//
+// Description:
+//
+// > The current OpenAPI is not the Nacos-SDK API. For information related to the Nacos-SDK API, please refer to the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
 //
 // @param request - DeleteNacosConfigRequest
 //
@@ -88462,11 +88727,11 @@ func (client *Client) GetMseSource(request *GetMseSourceRequest) (_result *GetMs
 
 // Summary:
 //
-// Queries Nacos configurations.
+// Get Nacos Configuration
 //
 // Description:
 //
-// > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+// > This OpenAPI is not the Nacos-SDK API. For information related to the Nacos-SDK API, please refer to the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
 //
 // @param request - GetNacosConfigRequest
 //
@@ -88539,11 +88804,11 @@ func (client *Client) GetNacosConfigWithOptions(request *GetNacosConfigRequest, 
 
 // Summary:
 //
-// Queries Nacos configurations.
+// Get Nacos Configuration
 //
 // Description:
 //
-// > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+// > This OpenAPI is not the Nacos-SDK API. For information related to the Nacos-SDK API, please refer to the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
 //
 // @param request - GetNacosConfigRequest
 //
@@ -93726,7 +93991,7 @@ func (client *Client) ListSecurityGroupRule(request *ListSecurityGroupRuleReques
 
 // Summary:
 //
-// 查询流量防护行为
+// Obtains the custom behavior of traffic protection.
 //
 // @param tmpReq - ListSentinelBlockFallbackDefinitionsRequest
 //
@@ -93797,7 +94062,7 @@ func (client *Client) ListSentinelBlockFallbackDefinitionsWithOptions(tmpReq *Li
 
 // Summary:
 //
-// 查询流量防护行为
+// Obtains the custom behavior of traffic protection.
 //
 // @param request - ListSentinelBlockFallbackDefinitionsRequest
 //
@@ -98213,6 +98478,89 @@ func (client *Client) UpdateGatewayCircuitBreakerRule(request *UpdateGatewayCirc
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateGatewayCircuitBreakerRuleResponse{}
 	_body, _err := client.UpdateGatewayCircuitBreakerRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新网关配置
+//
+// @param request - UpdateGatewayConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateGatewayConfigResponse
+func (client *Client) UpdateGatewayConfigWithOptions(request *UpdateGatewayConfigRequest, runtime *util.RuntimeOptions) (_result *UpdateGatewayConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigName)) {
+		query["ConfigName"] = request.ConfigName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigValue)) {
+		query["ConfigValue"] = request.ConfigValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
+		query["GatewayUniqueId"] = request.GatewayUniqueId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateGatewayConfig"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateGatewayConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateGatewayConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 更新网关配置
+//
+// @param request - UpdateGatewayConfigRequest
+//
+// @return UpdateGatewayConfigResponse
+func (client *Client) UpdateGatewayConfig(request *UpdateGatewayConfigRequest) (_result *UpdateGatewayConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateGatewayConfigResponse{}
+	_body, _err := client.UpdateGatewayConfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

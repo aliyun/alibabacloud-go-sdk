@@ -1,3 +1,7 @@
+2025-03-17 Version: v5.18.0
+- Support API UpdateGatewayConfig.
+
+
 2025-02-20 Version: v5.17.4
 - Update API GetGatewayConfig: update response param.
 - Update API ListClusterHealthCheckTask: update response param.
