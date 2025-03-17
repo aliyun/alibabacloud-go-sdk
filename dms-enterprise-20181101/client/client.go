@@ -9883,13 +9883,14 @@ type CreateDifyInstanceRequest struct {
 	// example:
 	//
 	// Disable
-	ModelOption   *string `json:"ModelOption,omitempty" xml:"ModelOption,omitempty"`
-	OssPath       *string `json:"OssPath,omitempty" xml:"OssPath,omitempty"`
-	OssResourceId *int32  `json:"OssResourceId,omitempty" xml:"OssResourceId,omitempty"`
-	PayPeriod     *int32  `json:"PayPeriod,omitempty" xml:"PayPeriod,omitempty"`
-	PayPeriodType *string `json:"PayPeriodType,omitempty" xml:"PayPeriodType,omitempty"`
-	PayType       *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	Replicas      *int32  `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	ModelOption      *string `json:"ModelOption,omitempty" xml:"ModelOption,omitempty"`
+	NatGatewayOption *string `json:"NatGatewayOption,omitempty" xml:"NatGatewayOption,omitempty"`
+	OssPath          *string `json:"OssPath,omitempty" xml:"OssPath,omitempty"`
+	OssResourceId    *int32  `json:"OssResourceId,omitempty" xml:"OssResourceId,omitempty"`
+	PayPeriod        *int32  `json:"PayPeriod,omitempty" xml:"PayPeriod,omitempty"`
+	PayPeriodType    *string `json:"PayPeriodType,omitempty" xml:"PayPeriodType,omitempty"`
+	PayType          *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	Replicas         *int32  `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
 	// This parameter is required.
 	ResourceQuota *string `json:"ResourceQuota,omitempty" xml:"ResourceQuota,omitempty"`
 	// This parameter is required.
@@ -10049,6 +10050,11 @@ func (s *CreateDifyInstanceRequest) SetModelId(v string) *CreateDifyInstanceRequ
 
 func (s *CreateDifyInstanceRequest) SetModelOption(v string) *CreateDifyInstanceRequest {
 	s.ModelOption = &v
+	return s
+}
+
+func (s *CreateDifyInstanceRequest) SetNatGatewayOption(v string) *CreateDifyInstanceRequest {
+	s.NatGatewayOption = &v
 	return s
 }
 
@@ -43271,12 +43277,12 @@ type ListDataLakeCatalogRequest struct {
 	// example:
 	//
 	// hive
-	SearchKey    *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
-	SessionToken *string `json:"SessionToken,omitempty" xml:"SessionToken,omitempty"`
+	SearchKey *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
 	// example:
 	//
 	// 3
-	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	Tid         *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	WorkspaceId *int64 `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ListDataLakeCatalogRequest) String() string {
@@ -43297,13 +43303,13 @@ func (s *ListDataLakeCatalogRequest) SetSearchKey(v string) *ListDataLakeCatalog
 	return s
 }
 
-func (s *ListDataLakeCatalogRequest) SetSessionToken(v string) *ListDataLakeCatalogRequest {
-	s.SessionToken = &v
+func (s *ListDataLakeCatalogRequest) SetTid(v int64) *ListDataLakeCatalogRequest {
+	s.Tid = &v
 	return s
 }
 
-func (s *ListDataLakeCatalogRequest) SetTid(v int64) *ListDataLakeCatalogRequest {
-	s.Tid = &v
+func (s *ListDataLakeCatalogRequest) SetWorkspaceId(v int64) *ListDataLakeCatalogRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -74615,6 +74621,10 @@ func (client *Client) CreateDifyInstanceWithOptions(request *CreateDifyInstanceR
 		query["ModelOption"] = request.ModelOption
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.NatGatewayOption)) {
+		query["NatGatewayOption"] = request.NatGatewayOption
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OssPath)) {
 		query["OssPath"] = request.OssPath
 	}
@@ -85861,12 +85871,12 @@ func (client *Client) ListDataLakeCatalogWithOptions(request *ListDataLakeCatalo
 		query["SearchKey"] = request.SearchKey
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.SessionToken)) {
-		query["SessionToken"] = request.SessionToken
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.Tid)) {
 		query["Tid"] = request.Tid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
 	}
 
 	req := &openapi.OpenApiRequest{
