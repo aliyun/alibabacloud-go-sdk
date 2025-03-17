@@ -7898,7 +7898,8 @@ type CreateDesktopsRequest struct {
 	// example:
 	//
 	// 123456789
-	EndUserId []*string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty" type:"Repeated"`
+	EndUserId  []*string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty" type:"Repeated"`
+	ExtendInfo *string   `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty"`
 	// The ID of the cloud computer pool.
 	//
 	// example:
@@ -8141,6 +8142,11 @@ func (s *CreateDesktopsRequest) SetDirectoryId(v string) *CreateDesktopsRequest 
 
 func (s *CreateDesktopsRequest) SetEndUserId(v []*string) *CreateDesktopsRequest {
 	s.EndUserId = v
+	return s
+}
+
+func (s *CreateDesktopsRequest) SetExtendInfo(v string) *CreateDesktopsRequest {
+	s.ExtendInfo = &v
 	return s
 }
 
@@ -8905,7 +8911,8 @@ type CreateDesktopsShrinkRequest struct {
 	// example:
 	//
 	// 123456789
-	EndUserId []*string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty" type:"Repeated"`
+	EndUserId  []*string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty" type:"Repeated"`
+	ExtendInfo *string   `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty"`
 	// The ID of the cloud computer pool.
 	//
 	// example:
@@ -9148,6 +9155,11 @@ func (s *CreateDesktopsShrinkRequest) SetDirectoryId(v string) *CreateDesktopsSh
 
 func (s *CreateDesktopsShrinkRequest) SetEndUserId(v []*string) *CreateDesktopsShrinkRequest {
 	s.EndUserId = v
+	return s
+}
+
+func (s *CreateDesktopsShrinkRequest) SetExtendInfo(v string) *CreateDesktopsShrinkRequest {
+	s.ExtendInfo = &v
 	return s
 }
 
@@ -61107,6 +61119,10 @@ func (client *Client) CreateDesktopsWithOptions(tmpReq *CreateDesktopsRequest, r
 
 	if !tea.BoolValue(util.IsUnset(request.EndUserId)) {
 		query["EndUserId"] = request.EndUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtendInfo)) {
+		query["ExtendInfo"] = request.ExtendInfo
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
