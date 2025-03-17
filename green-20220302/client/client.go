@@ -854,7 +854,8 @@ type DescribeImageModerationResultResponseBodyDataResult struct {
 	// example:
 	//
 	// violent_explosion
-	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	Label     *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 }
 
 func (s DescribeImageModerationResultResponseBodyDataResult) String() string {
@@ -877,6 +878,11 @@ func (s *DescribeImageModerationResultResponseBodyDataResult) SetDescription(v s
 
 func (s *DescribeImageModerationResultResponseBodyDataResult) SetLabel(v string) *DescribeImageModerationResultResponseBodyDataResult {
 	s.Label = &v
+	return s
+}
+
+func (s *DescribeImageModerationResultResponseBodyDataResult) SetRiskLevel(v string) *DescribeImageModerationResultResponseBodyDataResult {
+	s.RiskLevel = &v
 	return s
 }
 
@@ -3926,7 +3932,8 @@ type ImageModerationResponseBodyDataResult struct {
 	// example:
 	//
 	// violent_explosion
-	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	Label     *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 }
 
 func (s ImageModerationResponseBodyDataResult) String() string {
@@ -3949,6 +3956,11 @@ func (s *ImageModerationResponseBodyDataResult) SetDescription(v string) *ImageM
 
 func (s *ImageModerationResponseBodyDataResult) SetLabel(v string) *ImageModerationResponseBodyDataResult {
 	s.Label = &v
+	return s
+}
+
+func (s *ImageModerationResponseBodyDataResult) SetRiskLevel(v string) *ImageModerationResponseBodyDataResult {
+	s.RiskLevel = &v
 	return s
 }
 
