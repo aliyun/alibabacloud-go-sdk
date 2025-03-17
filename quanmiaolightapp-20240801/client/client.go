@@ -3121,8 +3121,6 @@ type RunHotTopicSummaryRequestStepForCustomSummaryStyleConfig struct {
 	//
 	// 2
 	SummaryImageCount *int32 `json:"summaryImageCount,omitempty" xml:"summaryImageCount,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// qwen-max
