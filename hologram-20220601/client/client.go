@@ -10,10 +10,14 @@ import (
 )
 
 type ChangeResourceGroupRequest struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// hgprecn-cn-zvp25ysv3006
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// new resource group id
+	//
 	// example:
 	//
 	// rg-acfmxwerqwerasfd
@@ -39,6 +43,26 @@ func (s *ChangeResourceGroupRequest) SetNewResourceGroupId(v string) *ChangeReso
 }
 
 type ChangeResourceGroupResponseBody struct {
+	// The returned data.
+	//
+	// Valid values:
+	//
+	// 	- true
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- false
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
 	// example:
 	//
 	// true
@@ -385,7 +409,8 @@ type CreateInstanceRequest struct {
 	// example:
 	//
 	// 500
-	StorageSize *int64 `json:"storageSize,omitempty" xml:"storageSize,omitempty"`
+	StorageSize *int64  `json:"storageSize,omitempty" xml:"storageSize,omitempty"`
+	StorageType *string `json:"storageType,omitempty" xml:"storageType,omitempty"`
 	// The ID of the vSwitch. The zone in which the vSwitch resides must be the same as the zone in which the Hologres instance resides.
 	//
 	// This parameter is required.
@@ -500,6 +525,11 @@ func (s *CreateInstanceRequest) SetStorageSize(v int64) *CreateInstanceRequest {
 	return s
 }
 
+func (s *CreateInstanceRequest) SetStorageType(v string) *CreateInstanceRequest {
+	s.StorageType = &v
+	return s
+}
+
 func (s *CreateInstanceRequest) SetVSwitchId(v string) *CreateInstanceRequest {
 	s.VSwitchId = &v
 	return s
@@ -591,6 +621,10 @@ type CreateInstanceResponseBodyData struct {
 	// hgpostcn-cn-xxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The error details.
+	//
+	// example:
+	//
+	// Vpc is not available
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The order ID.
 	//
@@ -1464,7 +1498,12 @@ type GetInstanceResponseBodyInstance struct {
 	//
 	// true
 	EnableHiveAccess *string `json:"EnableHiveAccess,omitempty" xml:"EnableHiveAccess,omitempty"`
-	EnableServerless *bool   `json:"EnableServerless,omitempty" xml:"EnableServerless,omitempty"`
+	// EnableServerless
+	//
+	// example:
+	//
+	// true
+	EnableServerless *bool `json:"EnableServerless,omitempty" xml:"EnableServerless,omitempty"`
 	// The list of endpoints.
 	Endpoints []*GetInstanceResponseBodyInstanceEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
 	// The expiration time. This parameter is invalid for pay-as-you-go instances.
@@ -1638,7 +1677,18 @@ type GetInstanceResponseBodyInstance struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Disaster recovery instance role.
+	//
+	// 	- Active: Primary disaster recovery instance.
+	//
+	// 	- Passive: Disaster tolerance instance.
+	//
+	// 	- PreActive: Primary disaster recovery instance not yet in final state.
+	//
+	// example:
+	//
+	// Active
 	ReplicaRole *string `json:"ReplicaRole,omitempty" xml:"ReplicaRole,omitempty"`
 	// The ID of the resource group.
 	//
@@ -1646,7 +1696,16 @@ type GetInstanceResponseBodyInstance struct {
 	//
 	// rg-aekzuq7hpybze2i
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	StorageType     *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	// The storage type.
+	//
+	// 	- redundant: 3 copies
+	//
+	// 	- local: single copy
+	//
+	// example:
+	//
+	// redundant
+	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 	// The reason for the suspension.
 	//
 	// Valid values:
@@ -2102,7 +2161,7 @@ type GetWarehouseDetailResponseBody struct {
 	//
 	// D3AE84AB-0873-5FC7-A4C4-8CF869D2FA70
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The values returned.
+	// The returned values.
 	WarehouseDetail *GetWarehouseDetailResponseBodyWarehouseDetail `json:"WarehouseDetail,omitempty" xml:"WarehouseDetail,omitempty" type:"Struct"`
 }
 
@@ -2337,10 +2396,28 @@ func (s *GetWarehouseDetailResponse) SetBody(v *GetWarehouseDetailResponseBody) 
 }
 
 type ListBackupDataRequest struct {
+	// The backup type. Specific backup data is filtered based on the type. If you leave this parameter empty, all backup data is returned.
+	//
+	// Valid values:
+	//
+	// 	- redundant_remote
+	//
+	// 	- remote
+	//
+	// 	- redundant
+	//
+	// 	- full_remote
+	//
+	// 	- local
+	//
+	// 	- full
+	//
 	// example:
 	//
 	// redundant
 	BackupType *string `json:"backupType,omitempty" xml:"backupType,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// hgprecn-cn-wwoxxxxx
@@ -2366,7 +2443,10 @@ func (s *ListBackupDataRequest) SetInstanceId(v string) *ListBackupDataRequest {
 }
 
 type ListBackupDataResponseBody struct {
+	// The backups.
 	BackupDataList []*ListBackupDataResponseBodyBackupDataList `json:"BackupDataList,omitempty" xml:"BackupDataList,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 4AA0C48F-B5BB-5FF9-A43B-6B91E0715D46
@@ -2392,74 +2472,134 @@ func (s *ListBackupDataResponseBody) SetRequestId(v string) *ListBackupDataRespo
 }
 
 type ListBackupDataResponseBodyBackupDataList struct {
+	// The backup type. In general, the following two types are supported: local backup and remote backup. In the local backup type, snapshots reside in the same region as your instance. The following two sub-types are available: full (single backup, single replica) and redundant (zone-redundant storage, multiple replicas). In the remote backup type, snapshots and your instance reside in different regions. Remote backups are the replicas of the backups of the full or redundant type in another region. The values local and remote do not represent specific types, but are used only for data filtering. The value local indicates all local backups, and the value remote indicates all remote backups.
+	//
 	// example:
 	//
 	// redundant
 	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	// The size of cold data. Unit: bytes.
+	//
 	// example:
 	//
 	// 32413521
 	ColdDataSize *int64 `json:"ColdDataSize,omitempty" xml:"ColdDataSize,omitempty"`
+	// The description of the backup data.
+	//
 	// example:
 	//
 	// demo
 	DataDesc *string `json:"DataDesc,omitempty" xml:"DataDesc,omitempty"`
+	// The backup granularity.
+	//
+	// Valid values:
+	//
+	// 	- instance
+	//
 	// example:
 	//
 	// instance
 	DataGran *string `json:"DataGran,omitempty" xml:"DataGran,omitempty"`
+	// The size of the backup data. Unit: bytes.
+	//
 	// example:
 	//
 	// 76085723136
 	DataSize *int64 `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
+	// The snapshot time. The value format of this parameter follows the same standard as that of the StartTime parameter.
+	//
 	// example:
 	//
 	// 2024-10-28T12:23:37.000+00:00
 	DataTime *string `json:"DataTime,omitempty" xml:"DataTime,omitempty"`
+	// The end time of the backup task. The value format of this parameter follows the same standard as that of the StartTime parameter.
+	//
 	// example:
 	//
 	// 2024-10-28T12:27:34.000+00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The unique ID of the backup.
+	//
 	// example:
 	//
 	// 1780805690994479105
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// hgpostcn-cn-pe33jdxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the instance.
+	//
 	// example:
 	//
 	// my-hologres-dw
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The region in which the instance resides.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	InstanceRegion *string `json:"InstanceRegion,omitempty" xml:"InstanceRegion,omitempty"`
+	// The type of the instance.
+	//
+	// Valid values:
+	//
+	// 	- Warehouse: virtual warehouse instance
+	//
+	// 	- Standard: general-purpose instance
+	//
 	// example:
 	//
 	// Warehouse
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The zone in which the instance resides.
+	//
 	// example:
 	//
 	// cn-hangzhou-j
 	InstanceZoneId *string `json:"InstanceZoneId,omitempty" xml:"InstanceZoneId,omitempty"`
+	// The region in which the backup data resides.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	SnapshotRegion *string `json:"SnapshotRegion,omitempty" xml:"SnapshotRegion,omitempty"`
+	// The zone in which the backup data resides. In zone-redundant storage mode, backup data is stored in different zones, including the current zone.
+	//
 	// example:
 	//
 	// cn-hangzhou-j
 	SnapshotZoneId *string `json:"SnapshotZoneId,omitempty" xml:"SnapshotZoneId,omitempty"`
+	// The start time of the backup task. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ss.SSSTZ format. The time is displayed in UTC (the same below).
+	//
 	// example:
 	//
 	// 2024-10-28T11:19:56.000+00:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of the backup task.
+	//
+	// Valid values:
+	//
+	// 	- processing
+	//
+	// 	- completed
+	//
+	// 	- failed
+	//
 	// example:
 	//
 	// completed
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The mode in which the backup task is triggered.
+	//
+	// Valid values:
+	//
+	// 	- scheduled: periodic backup
+	//
+	// 	- manual: manual backup
+	//
 	// example:
 	//
 	// scheduled
@@ -2683,7 +2823,7 @@ type ListInstancesResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The list of queried instances.
+	// The instances.
 	InstanceList []*ListInstancesResponseBodyInstanceList `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -3736,6 +3876,10 @@ type RenewInstanceResponseBodyData struct {
 	// InvalidChargeType.UnRenewable
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The error details.
+	//
+	// example:
+	//
+	// InvalidChargeType.UnRenewable
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the order.
 	//
@@ -3923,13 +4067,13 @@ type RestartInstanceResponseBody struct {
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error code returned if the request failed.
+	// The error code.
 	//
 	// example:
 	//
 	// 404
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned if the request failed.
+	// The error message.
 	//
 	// example:
 	//
@@ -4115,13 +4259,13 @@ type ResumeInstanceResponseBody struct {
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error code returned if the request failed.
+	// The error code.
 	//
 	// example:
 	//
 	// 404
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned if the request failed.
+	// The error message.
 	//
 	// example:
 	//
@@ -4621,13 +4765,13 @@ type StopInstanceResponseBody struct {
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error code returned if the request failed.
+	// The error code.
 	//
 	// example:
 	//
 	// 404
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned if the request failed.
+	// The error message.
 	//
 	// example:
 	//
@@ -4825,7 +4969,7 @@ func (s *SuspendHoloWarehouseResponse) SetBody(v *SuspendHoloWarehouseResponseBo
 }
 
 type UpdateInstanceNameRequest struct {
-	// The new name of the instance.
+	// The new name of the instance. The name must be 2 to 64 characters in length.
 	//
 	// example:
 	//
@@ -4871,13 +5015,13 @@ type UpdateInstanceNameResponseBody struct {
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error code returned if the request failed.
+	// The error code.
 	//
 	// example:
 	//
 	// 404
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned if the request failed.
+	// The error message.
 	//
 	// example:
 	//
@@ -4993,51 +5137,49 @@ type UpdateInstanceNetworkTypeRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- others/null
+	// 	- others/null: The network type is not changed from AnyTunnel to SingleTunnel.
 	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- true
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// 	- true: The network type is changed from AnyTunnel to SingleTunnel.
 	//
 	// example:
 	//
 	// true
 	AnyTunnelToSingleTunnel *string `json:"anyTunnelToSingleTunnel,omitempty" xml:"anyTunnelToSingleTunnel,omitempty"`
-	// A list of network types that you want to enable. The list of enabled network types is randomly ordered. For example, the Internet, internal network, and VPCSingleTunnel network types are enabled. If you want to disable the Internet type, set this parameter to Intranet,VPCSingleTunnel.
+	// A list of network types that you want to enable. The network types are randomly ordered in the list. For example, the Internet, Intranet, and VPCSingleTunnel network types are enabled. If you want to disable the Internet type, set this parameter to Intranet,VPCSingleTunnel.
+	//
+	// Valid values:
+	//
+	// 	- VPCSingleTunnel: virtual private cloud (VPC).
+	//
+	// 	- Intranet: internal network.
+	//
+	// 	- VPCAnyTunnel: compatibility requirements. This value is not supported by new instances.
+	//
+	// 	- Internet: Internet.
 	//
 	// example:
 	//
 	// Internet,VPCSingleTunnel
 	NetworkTypes *string `json:"networkTypes,omitempty" xml:"networkTypes,omitempty"`
-	// The vSwitch ID.
+	// The ID of the vSwitch.
 	//
 	// example:
 	//
 	// vsw-2vccsiymtqr9aavew0vo3
 	VSwitchId *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
-	// The ID of the VPC to which the instance belongs.
+	// The ID of the VPC.
 	//
 	// example:
 	//
 	// vpc-t4netc3y5etlondfb5ra7
 	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
-	// The owner ID of the VPC, which is the ID of the Alibaba Cloud account.
+	// The ID of the Alibaba Cloud account to which the VPC belongs.
 	//
 	// example:
 	//
 	// 1999365732646672
 	VpcOwnerId *string `json:"vpcOwnerId,omitempty" xml:"vpcOwnerId,omitempty"`
-	// The region ID of the VPC.
+	// The region in which the VPC resides.
 	//
 	// example:
 	//
@@ -5108,13 +5250,13 @@ type UpdateInstanceNetworkTypeResponseBody struct {
 	//
 	// true
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error code returned if the request failed.
+	// The error code.
 	//
 	// example:
 	//
 	// 404
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned if the request failed.
+	// The error message.
 	//
 	// example:
 	//
@@ -5138,19 +5280,7 @@ type UpdateInstanceNetworkTypeResponseBody struct {
 	//
 	// 	- true
 	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
 	// 	- false
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
 	//
 	// example:
 	//
@@ -5312,13 +5442,24 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ChangeResourceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ChangeResourceGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ChangeResourceGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5380,13 +5521,24 @@ func (client *Client) CreateHoloWarehouseWithOptions(instanceId *string, request
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateHoloWarehouseResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateHoloWarehouseResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateHoloWarehouseResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5529,6 +5681,10 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 		body["storageSize"] = request.StorageSize
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.StorageType)) {
+		body["storageType"] = request.StorageType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
 		body["vSwitchId"] = request.VSwitchId
 	}
@@ -5556,13 +5712,24 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5660,13 +5827,24 @@ func (client *Client) DeleteHoloWarehouseWithOptions(instanceId *string, request
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteHoloWarehouseResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteHoloWarehouseResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteHoloWarehouseResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5696,11 +5874,9 @@ func (client *Client) DeleteHoloWarehouse(instanceId *string, request *DeleteHol
 //
 // > Before you call this operation, read the documentation and make sure that you understand the prerequisites and impacts of this operation.
 //
-// 	- After you delete a Hologres instance, data and objects in the instance cannot be restored. Proceed with caution. For more information, see [Billing overview](https://www.alibabacloud.com/help/en/hologres/product-overview/billing-overview#section-h6a-x58-jc0).
+// 	- After you delete a Hologres instance, data and objects in the instance cannot be restored. Proceed with caution. For more information, see [Billing overview](https://www.alibabacloud.com/help/zh/hologres/product-overview/billing-overview?spm=a2c63.p38356.0.0.efc33b87i5pDl7).
 //
 // 	- You can delete only pay-as-you-go instances.
-//
-// 	- If you want to unsubscribe from a subscription instance, submit a ticket.[](https://help.aliyun.com/document_detail/150284.html#section-ogc-9vc-858)
 //
 // @param request - DeleteInstanceRequest
 //
@@ -5734,13 +5910,24 @@ func (client *Client) DeleteInstanceWithOptions(instanceId *string, request *Del
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5751,11 +5938,9 @@ func (client *Client) DeleteInstanceWithOptions(instanceId *string, request *Del
 //
 // > Before you call this operation, read the documentation and make sure that you understand the prerequisites and impacts of this operation.
 //
-// 	- After you delete a Hologres instance, data and objects in the instance cannot be restored. Proceed with caution. For more information, see [Billing overview](https://www.alibabacloud.com/help/en/hologres/product-overview/billing-overview#section-h6a-x58-jc0).
+// 	- After you delete a Hologres instance, data and objects in the instance cannot be restored. Proceed with caution. For more information, see [Billing overview](https://www.alibabacloud.com/help/zh/hologres/product-overview/billing-overview?spm=a2c63.p38356.0.0.efc33b87i5pDl7).
 //
 // 	- You can delete only pay-as-you-go instances.
-//
-// 	- If you want to unsubscribe from a subscription instance, submit a ticket.[](https://help.aliyun.com/document_detail/150284.html#section-ogc-9vc-858)
 //
 // @param request - DeleteInstanceRequest
 //
@@ -5808,13 +5993,24 @@ func (client *Client) DisableHiveAccessWithOptions(instanceId *string, request *
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DisableHiveAccessResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DisableHiveAccessResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DisableHiveAccessResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5872,13 +6068,24 @@ func (client *Client) EnableHiveAccessWithOptions(instanceId *string, request *E
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &EnableHiveAccessResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &EnableHiveAccessResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &EnableHiveAccessResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5924,13 +6131,24 @@ func (client *Client) GetInstanceWithOptions(instanceId *string, headers map[str
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5974,13 +6192,24 @@ func (client *Client) GetWarehouseDetailWithOptions(instanceId *string, headers 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetWarehouseDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetWarehouseDetailResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetWarehouseDetailResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6002,7 +6231,7 @@ func (client *Client) GetWarehouseDetail(instanceId *string) (_result *GetWareho
 
 // Summary:
 //
-// 获取备份列表
+// Queries a list of backups. A backup is a full data snapshot of an instance at the end of the snapshot time. You can purchase another instance to completely restore the original data.
 //
 // @param request - ListBackupDataRequest
 //
@@ -6040,18 +6269,29 @@ func (client *Client) ListBackupDataWithOptions(request *ListBackupDataRequest, 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListBackupDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListBackupDataResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListBackupDataResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 获取备份列表
+// Queries a list of backups. A backup is a full data snapshot of an instance at the end of the snapshot time. You can purchase another instance to completely restore the original data.
 //
 // @param request - ListBackupDataRequest
 //
@@ -6112,13 +6352,24 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, he
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6164,13 +6415,24 @@ func (client *Client) ListWarehousesWithOptions(instanceId *string, headers map[
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListWarehousesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListWarehousesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListWarehousesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6226,13 +6488,24 @@ func (client *Client) RebalanceHoloWarehouseWithOptions(instanceId *string, requ
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RebalanceHoloWarehouseResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RebalanceHoloWarehouseResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RebalanceHoloWarehouseResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6294,13 +6567,24 @@ func (client *Client) RenameHoloWarehouseWithOptions(instanceId *string, request
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RenameHoloWarehouseResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RenameHoloWarehouseResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RenameHoloWarehouseResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6328,11 +6612,11 @@ func (client *Client) RenameHoloWarehouse(instanceId *string, request *RenameHol
 //
 // Description:
 //
-// > Before you call this operation, make sure that you understand the billing method and pricing of Hologres because this operation is charged.
+// >  Before you call this operation, make sure that you understand the billing method and pricing of Hologres because this operation is charged.
 //
-// 	- For more information about billing details of Hologres, see [Pricing](https://www.alibabacloud.com/help/en/hologres/product-overview/billing-overview).
+// 	- For more information about the billing of Hologres, see [Billing overview](https://www.alibabacloud.com/help/zh/hologres/product-overview/billing-overview).
 //
-// 	- For more information about how to renew a Hologres instance, see [Manage renewals](https://www.alibabacloud.com/help/en/hologres/product-overview/manage-renewals?spm=a2c63.p38356.0.0.73f27c8d1Q0FUi).
+// 	- For more information about how to renew a Hologres instance, see [Manage renewals](https://www.alibabacloud.com/help/zh/hologres/product-overview/manage-renewals?spm=a2c63.p38356.0.0.38e731c9VAwtDP).
 //
 // 	- You can renew only subscription instances.
 //
@@ -6372,13 +6656,24 @@ func (client *Client) RenewInstanceWithOptions(instanceId *string, request *Rene
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RenewInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RenewInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RenewInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6387,11 +6682,11 @@ func (client *Client) RenewInstanceWithOptions(instanceId *string, request *Rene
 //
 // Description:
 //
-// > Before you call this operation, make sure that you understand the billing method and pricing of Hologres because this operation is charged.
+// >  Before you call this operation, make sure that you understand the billing method and pricing of Hologres because this operation is charged.
 //
-// 	- For more information about billing details of Hologres, see [Pricing](https://www.alibabacloud.com/help/en/hologres/product-overview/billing-overview).
+// 	- For more information about the billing of Hologres, see [Billing overview](https://www.alibabacloud.com/help/zh/hologres/product-overview/billing-overview).
 //
-// 	- For more information about how to renew a Hologres instance, see [Manage renewals](https://www.alibabacloud.com/help/en/hologres/product-overview/manage-renewals?spm=a2c63.p38356.0.0.73f27c8d1Q0FUi).
+// 	- For more information about how to renew a Hologres instance, see [Manage renewals](https://www.alibabacloud.com/help/zh/hologres/product-overview/manage-renewals?spm=a2c63.p38356.0.0.38e731c9VAwtDP).
 //
 // 	- You can renew only subscription instances.
 //
@@ -6446,13 +6741,24 @@ func (client *Client) RestartHoloWarehouseWithOptions(instanceId *string, reques
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RestartHoloWarehouseResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RestartHoloWarehouseResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RestartHoloWarehouseResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6476,7 +6782,7 @@ func (client *Client) RestartHoloWarehouse(instanceId *string, request *RestartH
 
 // Summary:
 //
-// 重启实例
+// Restarts an instance.
 //
 // @param headers - map
 //
@@ -6498,18 +6804,29 @@ func (client *Client) RestartInstanceWithOptions(instanceId *string, headers map
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RestartInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RestartInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RestartInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 重启实例
+// Restarts an instance.
 //
 // @return RestartInstanceResponse
 func (client *Client) RestartInstance(instanceId *string) (_result *RestartInstanceResponse, _err error) {
@@ -6560,13 +6877,24 @@ func (client *Client) ResumeHoloWarehouseWithOptions(instanceId *string, request
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ResumeHoloWarehouseResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ResumeHoloWarehouseResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ResumeHoloWarehouseResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6590,7 +6918,7 @@ func (client *Client) ResumeHoloWarehouse(instanceId *string, request *ResumeHol
 
 // Summary:
 //
-// Resumes a suspended instance.
+// Resumes an instance.
 //
 // @param headers - map
 //
@@ -6612,18 +6940,29 @@ func (client *Client) ResumeInstanceWithOptions(instanceId *string, headers map[
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ResumeInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ResumeInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ResumeInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Resumes a suspended instance.
+// Resumes an instance.
 //
 // @return ResumeInstanceResponse
 func (client *Client) ResumeInstance(instanceId *string) (_result *ResumeInstanceResponse, _err error) {
@@ -6678,13 +7017,24 @@ func (client *Client) ScaleHoloWarehouseWithOptions(instanceId *string, request 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ScaleHoloWarehouseResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ScaleHoloWarehouseResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ScaleHoloWarehouseResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6770,13 +7120,24 @@ func (client *Client) ScaleInstanceWithOptions(instanceId *string, request *Scal
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ScaleInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ScaleInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ScaleInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6808,7 +7169,7 @@ func (client *Client) ScaleInstance(instanceId *string, request *ScaleInstanceRe
 
 // Summary:
 //
-// 暂停实例
+// Stops an instance.
 //
 // @param headers - map
 //
@@ -6830,18 +7191,29 @@ func (client *Client) StopInstanceWithOptions(instanceId *string, headers map[st
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StopInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StopInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StopInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 暂停实例
+// Stops an instance.
 //
 // @return StopInstanceResponse
 func (client *Client) StopInstance(instanceId *string) (_result *StopInstanceResponse, _err error) {
@@ -6892,13 +7264,24 @@ func (client *Client) SuspendHoloWarehouseWithOptions(instanceId *string, reques
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SuspendHoloWarehouseResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SuspendHoloWarehouseResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SuspendHoloWarehouseResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6956,13 +7339,24 @@ func (client *Client) UpdateInstanceNameWithOptions(instanceId *string, request 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateInstanceNameResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateInstanceNameResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateInstanceNameResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -7040,13 +7434,24 @@ func (client *Client) UpdateInstanceNetworkTypeWithOptions(instanceId *string, r
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateInstanceNetworkTypeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateInstanceNetworkTypeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateInstanceNetworkTypeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
