@@ -4792,6 +4792,7 @@ type RebootDesktopsRequest struct {
 	//
 	// v18101ac6a9e69c66b04a163031680463660b4b216cd758f34b60b9ad6a7c7f7334b83dd8f75eef4209c68f9f1080b****
 	LoginToken *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
+	OsUpdate   *bool   `json:"OsUpdate,omitempty" xml:"OsUpdate,omitempty"`
 	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the regions supported by WUYING Workspace.
 	//
 	// This parameter is required.
@@ -4855,6 +4856,11 @@ func (s *RebootDesktopsRequest) SetDesktopId(v []*string) *RebootDesktopsRequest
 
 func (s *RebootDesktopsRequest) SetLoginToken(v string) *RebootDesktopsRequest {
 	s.LoginToken = &v
+	return s
+}
+
+func (s *RebootDesktopsRequest) SetOsUpdate(v bool) *RebootDesktopsRequest {
+	s.OsUpdate = &v
 	return s
 }
 
@@ -6297,6 +6303,7 @@ type StopDesktopsRequest struct {
 	//
 	// v18101ac6a9e69c66b04a163031680463660b4b216cd758f34b60b9ad6a7c7f7334b83dd8f75eef4209c68f9f1080b****
 	LoginToken *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
+	OsUpdate   *bool   `json:"OsUpdate,omitempty" xml:"OsUpdate,omitempty"`
 	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the regions supported by WUYING Workspace.
 	//
 	// This parameter is required.
@@ -6354,6 +6361,11 @@ func (s *StopDesktopsRequest) SetDesktopId(v []*string) *StopDesktopsRequest {
 
 func (s *StopDesktopsRequest) SetLoginToken(v string) *StopDesktopsRequest {
 	s.LoginToken = &v
+	return s
+}
+
+func (s *StopDesktopsRequest) SetOsUpdate(v bool) *StopDesktopsRequest {
+	s.OsUpdate = &v
 	return s
 }
 
@@ -8445,6 +8457,10 @@ func (client *Client) RebootDesktopsWithOptions(request *RebootDesktopsRequest, 
 		query["LoginToken"] = request.LoginToken
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.OsUpdate)) {
+		query["OsUpdate"] = request.OsUpdate
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
 	}
@@ -9468,6 +9484,10 @@ func (client *Client) StopDesktopsWithOptions(request *StopDesktopsRequest, runt
 
 	if !tea.BoolValue(util.IsUnset(request.LoginToken)) {
 		query["LoginToken"] = request.LoginToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OsUpdate)) {
+		query["OsUpdate"] = request.OsUpdate
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
