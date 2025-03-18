@@ -1886,8 +1886,12 @@ func (s *AttachEnsInstancesResponse) SetBody(v *AttachEnsInstancesResponseBody) 
 }
 
 type AttachInstanceSDGRequest struct {
+	// The IDs of the instances.
+	//
 	// This parameter is required.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// The ID of the SDG.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1915,8 +1919,12 @@ func (s *AttachInstanceSDGRequest) SetSDGId(v string) *AttachInstanceSDGRequest 
 }
 
 type AttachInstanceSDGShrinkRequest struct {
+	// The IDs of the instances.
+	//
 	// This parameter is required.
 	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	// The ID of the SDG.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1944,7 +1952,10 @@ func (s *AttachInstanceSDGShrinkRequest) SetSDGId(v string) *AttachInstanceSDGSh
 }
 
 type AttachInstanceSDGResponseBody struct {
+	// The returned data object.
 	Data *AttachInstanceSDGResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// C0003E8B-B930-4F59-ADC0-0E209A9012A8
@@ -1970,11 +1981,20 @@ func (s *AttachInstanceSDGResponseBody) SetRequestId(v string) *AttachInstanceSD
 }
 
 type AttachInstanceSDGResponseBodyData struct {
+	// The response message. Success is returned for a successful request.
+	//
 	// example:
 	//
 	// success
-	Message *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
-	Result  *AttachInstanceSDGResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The execution result of the synchronization request.
+	Result *AttachInstanceSDGResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// Indicates whether all tasks are successful. Valid values:
+	//
+	// 	- **true**: All tasks are successful.
+	//
+	// 	- **false**: Failed tasks exist.
+	//
 	// example:
 	//
 	// true
@@ -2005,11 +2025,16 @@ func (s *AttachInstanceSDGResponseBodyData) SetSuccess(v bool) *AttachInstanceSD
 }
 
 type AttachInstanceSDGResponseBodyDataResult struct {
+	// The number of failed tasks.
+	//
 	// example:
 	//
 	// 0
-	FailedCount *int64                                                `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
+	FailedCount *int64 `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
+	// Details about failed tasks.
 	FailedItems []*AttachInstanceSDGResponseBodyDataResultFailedItems `json:"FailedItems,omitempty" xml:"FailedItems,omitempty" type:"Repeated"`
+	// The number of successful tasks.
+	//
 	// example:
 	//
 	// 1
@@ -2040,10 +2065,14 @@ func (s *AttachInstanceSDGResponseBodyDataResult) SetSuccessCount(v int64) *Atta
 }
 
 type AttachInstanceSDGResponseBodyDataResultFailedItems struct {
+	// The error message.
+	//
 	// example:
 	//
 	// sdg not found
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// The ID of the instance.
+	//
 	// example:
 	//
 	// aic-xxxxx-0
@@ -3146,7 +3175,12 @@ type CreateARMServerInstancesRequest struct {
 	// example:
 	//
 	// cn-guiyang-12
-	EnsRegionId    *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// Set one or more environment variables during EAIS instance initialization.
+	//
+	// example:
+	//
+	// [object Object]
 	EnvironmentVar *string `json:"EnvironmentVar,omitempty" xml:"EnvironmentVar,omitempty"`
 	// The refresh rate. Unit: Hz. Valid values: 30 and 60.
 	//
@@ -3872,8 +3906,11 @@ type CreateDiskRequest struct {
 	// example:
 	//
 	// s-897654321****
-	SnapshotId *string                 `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	Tag        []*CreateDiskRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	// The tags.
+	//
+	// You can specify at most 20 tags.
+	Tag []*CreateDiskRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s CreateDiskRequest) String() string {
@@ -3930,7 +3967,29 @@ func (s *CreateDiskRequest) SetTag(v []*CreateDiskRequestTag) *CreateDiskRequest
 }
 
 type CreateDiskRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of tag N of the instance. Valid values of N: **1*	- to **20**.
+	//
+	// 	- The key cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
+	//
+	// 	- The key must be up to 64 characters in length.
+	//
+	// 	- The tag key cannot be an empty string.
+	//
+	// example:
+	//
+	// pro
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of a tag that is attached to the topics you want to query. This parameter is not required. If you configure this parameter, you must also configure the **Key*	- parameter.***	- If you include the Key and Value parameters in a request, this operation queries only the topics that use the specified tags. If you do not include these parameters in a request, this operation queries all topics that you can access.
+	//
+	// 	- Valid values of N: 1 to 20.
+	//
+	// 	- The value of this parameter can be an empty string.
+	//
+	// 	- The tag key can be up to 128 characters in length and cannot contain http:// or https://. The tag key cannot start with acs: or aliyun.
+	//
+	// example:
+	//
+	// tagValue
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -4030,6 +4089,12 @@ type CreateEipInstanceRequest struct {
 	//
 	// 5
 	Bandwidth *int64 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
+	// example:
+	//
+	// 26C28756-2586-17AF-B802-0DC50D8FDEBB
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The description of the EIP.
 	//
 	// example:
@@ -4077,8 +4142,9 @@ type CreateEipInstanceRequest struct {
 	// example:
 	//
 	// EIP1
-	Name *string                        `json:"Name,omitempty" xml:"Name,omitempty"`
-	Tag  []*CreateEipInstanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The tags.
+	Tag []*CreateEipInstanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s CreateEipInstanceRequest) String() string {
@@ -4091,6 +4157,11 @@ func (s CreateEipInstanceRequest) GoString() string {
 
 func (s *CreateEipInstanceRequest) SetBandwidth(v int64) *CreateEipInstanceRequest {
 	s.Bandwidth = &v
+	return s
+}
+
+func (s *CreateEipInstanceRequest) SetClientToken(v string) *CreateEipInstanceRequest {
+	s.ClientToken = &v
 	return s
 }
 
@@ -4130,7 +4201,23 @@ func (s *CreateEipInstanceRequest) SetTag(v []*CreateEipInstanceRequestTag) *Cre
 }
 
 type CreateEipInstanceRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of tag N of the instance. Valid values of N: **1*	- to **20**.
+	//
+	// 	- The key cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
+	//
+	// 	- The key must be up to 64 characters in length.
+	//
+	// 	- The tag key cannot be an empty string.
+	//
+	// example:
+	//
+	// team
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of tag N that is added to the resource. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length. It cannot start with acs: or contain http:// or https://.
+	//
+	// example:
+	//
+	// tagValue
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -4264,7 +4351,8 @@ type CreateEnsRouteEntryRequest struct {
 	// example:
 	//
 	// vtb-bp1cifr72dioje82lse2j
-	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
+	RouteTableId    *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
+	SourceCidrBlock *string `json:"SourceCidrBlock,omitempty" xml:"SourceCidrBlock,omitempty"`
 }
 
 func (s CreateEnsRouteEntryRequest) String() string {
@@ -4302,6 +4390,11 @@ func (s *CreateEnsRouteEntryRequest) SetRouteEntryName(v string) *CreateEnsRoute
 
 func (s *CreateEnsRouteEntryRequest) SetRouteTableId(v string) *CreateEnsRouteEntryRequest {
 	s.RouteTableId = &v
+	return s
+}
+
+func (s *CreateEnsRouteEntryRequest) SetSourceCidrBlock(v string) *CreateEnsRouteEntryRequest {
+	s.SourceCidrBlock = &v
 	return s
 }
 
@@ -5404,7 +5497,7 @@ type CreateImageRequest struct {
 	//
 	// 	- false: The image is retained when the instance is released.
 	//
-	// 	- If you leave this parameter empty, the default value is used.
+	// 	- If you leave this property empty, false is used by default.
 	//
 	// example:
 	//
@@ -5430,6 +5523,12 @@ type CreateImageRequest struct {
 	//
 	// s-bp67acfmxazb4p****
 	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	// The region of the target OSS where the image is to be stored.
+	//
+	// example:
+	//
+	// cn-beijing
+	TargetOSSRegionId *string `json:"TargetOSSRegionId,omitempty" xml:"TargetOSSRegionId,omitempty"`
 }
 
 func (s CreateImageRequest) String() string {
@@ -5457,6 +5556,11 @@ func (s *CreateImageRequest) SetInstanceId(v string) *CreateImageRequest {
 
 func (s *CreateImageRequest) SetSnapshotId(v string) *CreateImageRequest {
 	s.SnapshotId = &v
+	return s
+}
+
+func (s *CreateImageRequest) SetTargetOSSRegionId(v string) *CreateImageRequest {
+	s.TargetOSSRegionId = &v
 	return s
 }
 
@@ -6176,6 +6280,7 @@ func (s *CreateKeyPairResponse) SetBody(v *CreateKeyPairResponseBody) *CreateKey
 }
 
 type CreateLoadBalancerRequest struct {
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The ID of the Edge Node Service (ENS) node.
 	//
 	// This parameter is required.
@@ -6232,6 +6337,11 @@ func (s CreateLoadBalancerRequest) String() string {
 
 func (s CreateLoadBalancerRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateLoadBalancerRequest) SetClientToken(v string) *CreateLoadBalancerRequest {
+	s.ClientToken = &v
+	return s
 }
 
 func (s *CreateLoadBalancerRequest) SetEnsRegionId(v string) *CreateLoadBalancerRequest {
@@ -6360,7 +6470,7 @@ func (s *CreateLoadBalancerResponse) SetBody(v *CreateLoadBalancerResponseBody) 
 }
 
 type CreateLoadBalancerHTTPListenerRequest struct {
-	// 负载均衡实例后端服务器使用的端口，取值：**1**~**65535**。
+	// The port used by the backend ELB server of the ELB instance. Valid values: **1*	- to **65535**.
 	//
 	// example:
 	//
@@ -7448,6 +7558,8 @@ type CreateLoadBalancerUDPListenerRequest struct {
 	//
 	// on
 	EipTransmit *string `json:"EipTransmit,omitempty" xml:"EipTransmit,omitempty"`
+	// The timeout period of a connection. Valid values: **10*	- to **900**. Default value: **900**. Unit: seconds.
+	//
 	// example:
 	//
 	// 500
@@ -7830,8 +7942,9 @@ type CreateNatGatewayRequest struct {
 	// example:
 	//
 	// n-5qj7ykuxmjn7k96l090sp****
-	NetworkId *string                       `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
-	Tag       []*CreateNatGatewayRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	// The tags.
+	Tag []*CreateNatGatewayRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The ID of the vSwitch.
 	//
 	// This parameter is required.
@@ -7881,7 +7994,23 @@ func (s *CreateNatGatewayRequest) SetVSwitchId(v string) *CreateNatGatewayReques
 }
 
 type CreateNatGatewayRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of tag N of the instance. Valid values of N: **1*	- to **20**.
+	//
+	// 	- The key cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
+	//
+	// 	- The key must be up to 64 characters in length.
+	//
+	// 	- The tag key cannot be an empty string.
+	//
+	// example:
+	//
+	// team
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of tag N that is added to the resource. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length. It cannot start with acs: or contain http:// or https://.
+	//
+	// example:
+	//
+	// Deep
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -8007,8 +8136,9 @@ type CreateNetworkRequest struct {
 	// example:
 	//
 	// abc
-	NetworkName *string                    `json:"NetworkName,omitempty" xml:"NetworkName,omitempty"`
-	Tag         []*CreateNetworkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	NetworkName *string `json:"NetworkName,omitempty" xml:"NetworkName,omitempty"`
+	// The resource tags.
+	Tag []*CreateNetworkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s CreateNetworkRequest) String() string {
@@ -8045,7 +8175,23 @@ func (s *CreateNetworkRequest) SetTag(v []*CreateNetworkRequestTag) *CreateNetwo
 }
 
 type CreateNetworkRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the tag that are to add to the instance. Valid values of N: **1*	- to **20**.
+	//
+	// 	- The key cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
+	//
+	// 	- The key must be up to 64 characters in length.
+	//
+	// 	- The tag key cannot be an empty string.
+	//
+	// example:
+	//
+	// key1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of tag N that is added to the resource. You can specify up to 20 tag values. The tag value can be an empty string. The tag value can be up to 128 characters in length. It cannot start with acs: or contain http:// or https://.
+	//
+	// example:
+	//
+	// tagValue
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -8721,13 +8867,15 @@ func (s *CreateSDGResponse) SetBody(v *CreateSDGResponseBody) *CreateSDGResponse
 }
 
 type CreateSecurityGroupRequest struct {
-	// The description of the security group. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https://.
+	// The description. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https://.
 	//
 	// example:
 	//
 	// testDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the security group. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). By default, this parameter is empty.
+	// Schema of Response
+	Permissions []*CreateSecurityGroupRequestPermissions `json:"Permissions,omitempty" xml:"Permissions,omitempty" type:"Repeated"`
+	// The name of the security group. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). By default, this parameter is empty.
 	//
 	// example:
 	//
@@ -8748,7 +8896,216 @@ func (s *CreateSecurityGroupRequest) SetDescription(v string) *CreateSecurityGro
 	return s
 }
 
+func (s *CreateSecurityGroupRequest) SetPermissions(v []*CreateSecurityGroupRequestPermissions) *CreateSecurityGroupRequest {
+	s.Permissions = v
+	return s
+}
+
 func (s *CreateSecurityGroupRequest) SetSecurityGroupName(v string) *CreateSecurityGroupRequest {
+	s.SecurityGroupName = &v
+	return s
+}
+
+type CreateSecurityGroupRequestPermissions struct {
+	// The description of the SDG.
+	//
+	// >  We recommend that you specify this parameter in details for subsequent queries.
+	//
+	// example:
+	//
+	// testDescription
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The destination IPv4 CIDR block. IPv4 CIDR blocks and IPv4 addresses are supported.
+	//
+	// This parameter is used to support quintuple rules. For more information, see [Security group quintuple rules](https://help.aliyun.com/document_detail/97439.html).
+	//
+	// example:
+	//
+	// 0.0.0.0/0
+	DestCidrIp *string `json:"DestCidrIp,omitempty" xml:"DestCidrIp,omitempty"`
+	// The direction in which the security group rule is applied.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ingress
+	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	// The protocol. The values of this parameter are case-insensitive. Valid values:
+	//
+	// 	- TCP.
+	//
+	// 	- UDP.
+	//
+	// 	- ICMP.
+	//
+	// 	- ICMPv6.
+	//
+	// 	- GRE.
+	//
+	// 	- ALL: All protocols are supported.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// TCP
+	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
+	// The action of the security group rule. Valid values:
+	//
+	// 	- accept: allows inbound access.
+	//
+	// 	- drop: denies inbound access and returns no responses. In this case, the request times out or the connection cannot be established.
+	//
+	// Default value: accept.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Accept
+	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// The range of destination port numbers for the protocols specified in the security group rule. Valid values:
+	//
+	// 	- If you set IpProtocol to TCP or UDP, the port number range is 1 to 65535. Specify a port range in the format of \\<Start port number>/\\<End port number>. Example: 1/200.
+	//
+	// 	- If you set IpProtocol to ICMP, the port number range is -1/-1.
+	//
+	// 	- If you set IpProtocol to GRE, the port number range is -1/-1.
+	//
+	// 	- If you set IpProtocol to ALL, the port number range is -1/-1, which indicates all port numbers.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 80/80
+	PortRange *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
+	// The priority of the security group rule. A smaller value specifies a higher priority. Valid values: 1 to 100.
+	//
+	// Default value: 1.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The source IPv4 CIDR block. IPv4 CIDR blocks and IPv4 addresses are supported.
+	//
+	// This parameter is used to support quintuple rules. For more information, see [Security group quintuple rules](https://help.aliyun.com/document_detail/97439.html).
+	//
+	// example:
+	//
+	// 0.0.0.0/0
+	SourceCidrIp *string `json:"SourceCidrIp,omitempty" xml:"SourceCidrIp,omitempty"`
+	// The range of source port numbers for the protocols specified in the security group rule. Valid values:
+	//
+	// 	- If you set IpProtocol to TCP or UDP, the port number range is 1 to 65535. Specify a port number range in the format of \\<Start port number>/\\<End port number>. Example: 1/200.
+	//
+	// 	- If you set IpProtocol to ICMP, the port number range is -1/-1.
+	//
+	// 	- If you set IpProtocol to GRE, the port number range is -1/-1.
+	//
+	// 	- If you set IpProtocol to ALL, the port number range is -1/-1, which indicates all port numbers.
+	//
+	// This parameter is used to support quintuple rules. For more information, see [Security group quintuple rules](https://help.aliyun.com/document_detail/97439.html).
+	//
+	// example:
+	//
+	// 22/22
+	SourcePortRange *string `json:"SourcePortRange,omitempty" xml:"SourcePortRange,omitempty"`
+}
+
+func (s CreateSecurityGroupRequestPermissions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSecurityGroupRequestPermissions) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSecurityGroupRequestPermissions) SetDescription(v string) *CreateSecurityGroupRequestPermissions {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateSecurityGroupRequestPermissions) SetDestCidrIp(v string) *CreateSecurityGroupRequestPermissions {
+	s.DestCidrIp = &v
+	return s
+}
+
+func (s *CreateSecurityGroupRequestPermissions) SetDirection(v string) *CreateSecurityGroupRequestPermissions {
+	s.Direction = &v
+	return s
+}
+
+func (s *CreateSecurityGroupRequestPermissions) SetIpProtocol(v string) *CreateSecurityGroupRequestPermissions {
+	s.IpProtocol = &v
+	return s
+}
+
+func (s *CreateSecurityGroupRequestPermissions) SetPolicy(v string) *CreateSecurityGroupRequestPermissions {
+	s.Policy = &v
+	return s
+}
+
+func (s *CreateSecurityGroupRequestPermissions) SetPortRange(v string) *CreateSecurityGroupRequestPermissions {
+	s.PortRange = &v
+	return s
+}
+
+func (s *CreateSecurityGroupRequestPermissions) SetPriority(v int32) *CreateSecurityGroupRequestPermissions {
+	s.Priority = &v
+	return s
+}
+
+func (s *CreateSecurityGroupRequestPermissions) SetSourceCidrIp(v string) *CreateSecurityGroupRequestPermissions {
+	s.SourceCidrIp = &v
+	return s
+}
+
+func (s *CreateSecurityGroupRequestPermissions) SetSourcePortRange(v string) *CreateSecurityGroupRequestPermissions {
+	s.SourcePortRange = &v
+	return s
+}
+
+type CreateSecurityGroupShrinkRequest struct {
+	// The description. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https://.
+	//
+	// example:
+	//
+	// testDescription
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Schema of Response
+	PermissionsShrink *string `json:"Permissions,omitempty" xml:"Permissions,omitempty"`
+	// The name of the security group. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). By default, this parameter is empty.
+	//
+	// example:
+	//
+	// Dcdn1:2_3-4
+	SecurityGroupName *string `json:"SecurityGroupName,omitempty" xml:"SecurityGroupName,omitempty"`
+}
+
+func (s CreateSecurityGroupShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSecurityGroupShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSecurityGroupShrinkRequest) SetDescription(v string) *CreateSecurityGroupShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateSecurityGroupShrinkRequest) SetPermissionsShrink(v string) *CreateSecurityGroupShrinkRequest {
+	s.PermissionsShrink = &v
+	return s
+}
+
+func (s *CreateSecurityGroupShrinkRequest) SetSecurityGroupName(v string) *CreateSecurityGroupShrinkRequest {
 	s.SecurityGroupName = &v
 	return s
 }
@@ -8950,13 +9307,23 @@ func (s *CreateSnapshotResponse) SetBody(v *CreateSnapshotResponseBody) *CreateS
 }
 
 type CreateSnatEntryRequest struct {
+	EipAffinity *bool `json:"EipAffinity,omitempty" xml:"EipAffinity,omitempty"`
 	// The timeout period for idle connections. Valid values: **1*	- to **86400**. Unit: seconds.
 	//
 	// example:
 	//
 	// 15
 	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
-	IspAffinity *bool  `json:"IspAffinity,omitempty" xml:"IspAffinity,omitempty"`
+	// Whether to enable operator affinity. Value taking:
+	//
+	// - false:Do not open.
+	//
+	// - true:Open.
+	//
+	// example:
+	//
+	// true
+	IspAffinity *bool `json:"IspAffinity,omitempty" xml:"IspAffinity,omitempty"`
 	// The ID of the Network Address Translation (NAT) gateway.
 	//
 	// This parameter is required.
@@ -9017,6 +9384,11 @@ func (s CreateSnatEntryRequest) String() string {
 
 func (s CreateSnatEntryRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateSnatEntryRequest) SetEipAffinity(v bool) *CreateSnatEntryRequest {
+	s.EipAffinity = &v
+	return s
 }
 
 func (s *CreateSnatEntryRequest) SetIdleTimeout(v int32) *CreateSnatEntryRequest {
@@ -9613,8 +9985,9 @@ type CreateVSwitchRequest struct {
 	// example:
 	//
 	// n-257gqcdfvx6n****
-	NetworkId *string                    `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
-	Tag       []*CreateVSwitchRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	// The tags.
+	Tag []*CreateVSwitchRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The name of the vSwitch. The name must meet the following requirements:
 	//
 	// 	- The name must be 2 to 128 characters in length.
@@ -9668,7 +10041,23 @@ func (s *CreateVSwitchRequest) SetVSwitchName(v string) *CreateVSwitchRequest {
 }
 
 type CreateVSwitchRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the tag that are to add to the instance. Valid values of N: **1*	- to **20**.
+	//
+	// 	- The key cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
+	//
+	// 	- The key must be up to 64 characters in length.
+	//
+	// 	- The tag key cannot be an empty string.
+	//
+	// example:
+	//
+	// team
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of tag N that is added to the resource. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length. It cannot start with acs: or contain http:// or https://.
+	//
+	// example:
+	//
+	// Deep
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -11381,6 +11770,7 @@ func (s *DeleteMountTargetResponse) SetBody(v *DeleteMountTargetResponseBody) *D
 }
 
 type DeleteNatGatewayRequest struct {
+	ForceDelete *bool `json:"ForceDelete,omitempty" xml:"ForceDelete,omitempty"`
 	// The ID of the NAT gateway that you want to delete.
 	//
 	// This parameter is required.
@@ -11397,6 +11787,11 @@ func (s DeleteNatGatewayRequest) String() string {
 
 func (s DeleteNatGatewayRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteNatGatewayRequest) SetForceDelete(v bool) *DeleteNatGatewayRequest {
+	s.ForceDelete = &v
+	return s
 }
 
 func (s *DeleteNatGatewayRequest) SetNatGatewayId(v string) *DeleteNatGatewayRequest {
@@ -15677,6 +16072,8 @@ func (s *DescribeCloudDiskAvailableResourceInfoResponseBodySupportResources) Set
 }
 
 type DescribeCloudDiskAvailableResourceInfoResponseBodySupportResourcesSupportResource struct {
+	// Node product capability.
+	Ability *DescribeCloudDiskAvailableResourceInfoResponseBodySupportResourcesSupportResourceAbility `json:"Ability,omitempty" xml:"Ability,omitempty" type:"Struct"`
 	// The number of disks that you can purchase.
 	//
 	// example:
@@ -15737,6 +16134,11 @@ func (s DescribeCloudDiskAvailableResourceInfoResponseBodySupportResourcesSuppor
 	return s.String()
 }
 
+func (s *DescribeCloudDiskAvailableResourceInfoResponseBodySupportResourcesSupportResource) SetAbility(v *DescribeCloudDiskAvailableResourceInfoResponseBodySupportResourcesSupportResourceAbility) *DescribeCloudDiskAvailableResourceInfoResponseBodySupportResourcesSupportResource {
+	s.Ability = v
+	return s
+}
+
 func (s *DescribeCloudDiskAvailableResourceInfoResponseBodySupportResourcesSupportResource) SetCanBuyCount(v int64) *DescribeCloudDiskAvailableResourceInfoResponseBodySupportResourcesSupportResource {
 	s.CanBuyCount = &v
 	return s
@@ -15769,6 +16171,23 @@ func (s *DescribeCloudDiskAvailableResourceInfoResponseBodySupportResourcesSuppo
 
 func (s *DescribeCloudDiskAvailableResourceInfoResponseBodySupportResourcesSupportResource) SetEnsRegionName(v string) *DescribeCloudDiskAvailableResourceInfoResponseBodySupportResourcesSupportResource {
 	s.EnsRegionName = &v
+	return s
+}
+
+type DescribeCloudDiskAvailableResourceInfoResponseBodySupportResourcesSupportResourceAbility struct {
+	Ability []*string `json:"Ability,omitempty" xml:"Ability,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCloudDiskAvailableResourceInfoResponseBodySupportResourcesSupportResourceAbility) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudDiskAvailableResourceInfoResponseBodySupportResourcesSupportResourceAbility) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudDiskAvailableResourceInfoResponseBodySupportResourcesSupportResourceAbility) SetAbility(v []*string) *DescribeCloudDiskAvailableResourceInfoResponseBodySupportResourcesSupportResourceAbility {
+	s.Ability = v
 	return s
 }
 
@@ -15807,7 +16226,8 @@ type DescribeCloudDiskTypesRequest struct {
 	// example:
 	//
 	// cn-chongqing-cmcc
-	EnsRegionId  *string   `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The edge nodes.
 	EnsRegionIds []*string `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty" type:"Repeated"`
 }
 
@@ -15835,7 +16255,8 @@ type DescribeCloudDiskTypesShrinkRequest struct {
 	// example:
 	//
 	// cn-chongqing-cmcc
-	EnsRegionId        *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The edge nodes.
 	EnsRegionIdsShrink *string `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty"`
 }
 
@@ -18734,9 +19155,25 @@ type DescribeDisksResponseBodyDisksDisks struct {
 	// example:
 	//
 	// 2021-11-11T14:34:55+08:00
-	CreationTime       *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	DeleteWithInstance *bool   `json:"DeleteWithInstance,omitempty" xml:"DeleteWithInstance,omitempty"`
-	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// Specifies whether the disk to be attached is released with the instance. Valid values:
+	//
+	// 	- true: The disk will be released when the ECS instance is released.
+	//
+	// 	- false: The disk will be retained when the ECS instance is released.
+	//
+	// 	- If you leave this parameter empty, the default value is used.
+	//
+	// example:
+	//
+	// false
+	DeleteWithInstance *bool `json:"DeleteWithInstance,omitempty" xml:"DeleteWithInstance,omitempty"`
+	// The namespace description.
+	//
+	// example:
+	//
+	// disk-description
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The billing method of the cloud disk or local disk. Valid values:
 	//
 	// 	- **prepaid**: subscription.
@@ -19016,6 +19453,7 @@ func (s *DescribeElbAvailableResourceInfoResponseBody) SetRequestId(v string) *D
 }
 
 type DescribeElbAvailableResourceInfoResponseBodyElbAvailableResourceInfo struct {
+	Ability []*string `json:"Ability,omitempty" xml:"Ability,omitempty" type:"Repeated"`
 	// The ID of the region.
 	//
 	// example:
@@ -19062,6 +19500,11 @@ func (s DescribeElbAvailableResourceInfoResponseBodyElbAvailableResourceInfo) St
 
 func (s DescribeElbAvailableResourceInfoResponseBodyElbAvailableResourceInfo) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeElbAvailableResourceInfoResponseBodyElbAvailableResourceInfo) SetAbility(v []*string) *DescribeElbAvailableResourceInfoResponseBodyElbAvailableResourceInfo {
+	s.Ability = v
+	return s
 }
 
 func (s *DescribeElbAvailableResourceInfoResponseBodyElbAvailableResourceInfo) SetArea(v string) *DescribeElbAvailableResourceInfoResponseBodyElbAvailableResourceInfo {
@@ -21190,7 +21633,11 @@ type DescribeEnsRouteEntryListRequest struct {
 	NextHopId *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
 	// The type of next hop of the custom route entry. Valid values:
 	//
-	// 	- Instance: an ENS instance.
+	// 	- Instance (default): an ENS instance.
+	//
+	// 	- HaVip: a high-availability virtual IP address (HAVIP).
+	//
+	// 	- NetworkPeer: VPC peering connection.
 	//
 	// example:
 	//
@@ -21231,8 +21678,6 @@ type DescribeEnsRouteEntryListRequest struct {
 	// Custom
 	RouteEntryType *string `json:"RouteEntryType,omitempty" xml:"RouteEntryType,omitempty"`
 	// The ID of the route table that you want to query.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -21312,7 +21757,7 @@ type DescribeEnsRouteEntryListResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the route.
+	// The information about the routes.
 	RouteEntrys []*DescribeEnsRouteEntryListResponseBodyRouteEntrys `json:"RouteEntrys,omitempty" xml:"RouteEntrys,omitempty" type:"Repeated"`
 	// The number of returned entries.
 	//
@@ -21356,6 +21801,7 @@ func (s *DescribeEnsRouteEntryListResponseBody) SetTotalCount(v int32) *Describe
 }
 
 type DescribeEnsRouteEntryListResponseBodyRouteEntrys struct {
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// Enter a description for the route.
 	//
 	// example:
@@ -21387,7 +21833,8 @@ type DescribeEnsRouteEntryListResponseBodyRouteEntrys struct {
 	// example:
 	//
 	// vtb-uf62p9o5cn35fi8xgurnm
-	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
+	RouteTableId    *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
+	SourceCidrBlock *string `json:"SourceCidrBlock,omitempty" xml:"SourceCidrBlock,omitempty"`
 	// The status of the route entry. Valid values:
 	//
 	// example:
@@ -21408,6 +21855,11 @@ func (s DescribeEnsRouteEntryListResponseBodyRouteEntrys) String() string {
 
 func (s DescribeEnsRouteEntryListResponseBodyRouteEntrys) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeEnsRouteEntryListResponseBodyRouteEntrys) SetCreationTime(v string) *DescribeEnsRouteEntryListResponseBodyRouteEntrys {
+	s.CreationTime = &v
+	return s
 }
 
 func (s *DescribeEnsRouteEntryListResponseBodyRouteEntrys) SetDescription(v string) *DescribeEnsRouteEntryListResponseBodyRouteEntrys {
@@ -21440,6 +21892,11 @@ func (s *DescribeEnsRouteEntryListResponseBodyRouteEntrys) SetRouteTableId(v str
 	return s
 }
 
+func (s *DescribeEnsRouteEntryListResponseBodyRouteEntrys) SetSourceCidrBlock(v string) *DescribeEnsRouteEntryListResponseBodyRouteEntrys {
+	s.SourceCidrBlock = &v
+	return s
+}
+
 func (s *DescribeEnsRouteEntryListResponseBodyRouteEntrys) SetStatus(v string) *DescribeEnsRouteEntryListResponseBodyRouteEntrys {
 	s.Status = &v
 	return s
@@ -21457,6 +21914,12 @@ type DescribeEnsRouteEntryListResponseBodyRouteEntrysNextHops struct {
 	//
 	// i-bp1111yup9991890woxq
 	NextHopId *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
+	// The instance ID of the next hop.
+	//
+	// example:
+	//
+	// testInstance
+	NextHopName *string `json:"NextHopName,omitempty" xml:"NextHopName,omitempty"`
 	// The type of the next hop. Valid values:
 	//
 	// example:
@@ -21475,6 +21938,11 @@ func (s DescribeEnsRouteEntryListResponseBodyRouteEntrysNextHops) GoString() str
 
 func (s *DescribeEnsRouteEntryListResponseBodyRouteEntrysNextHops) SetNextHopId(v string) *DescribeEnsRouteEntryListResponseBodyRouteEntrysNextHops {
 	s.NextHopId = &v
+	return s
+}
+
+func (s *DescribeEnsRouteEntryListResponseBodyRouteEntrysNextHops) SetNextHopName(v string) *DescribeEnsRouteEntryListResponseBodyRouteEntrysNextHops {
+	s.NextHopName = &v
 	return s
 }
 
@@ -21513,12 +21981,15 @@ func (s *DescribeEnsRouteEntryListResponse) SetBody(v *DescribeEnsRouteEntryList
 }
 
 type DescribeEnsRouteTablesRequest struct {
+	AssociateType *string `json:"AssociateType,omitempty" xml:"AssociateType,omitempty"`
 	// The ID of the ENS node.
 	//
 	// example:
 	//
 	// cn-xian-unicom
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The IDs of the Edge Node Service (ENS) nodes.
+	EnsRegionIds []*string `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty" type:"Repeated"`
 	// The ID of the network.
 	//
 	// example:
@@ -21542,7 +22013,9 @@ type DescribeEnsRouteTablesRequest struct {
 	// example:
 	//
 	// vtb-5p1cifr72di****
-	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
+	RouteTableId   *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
+	RouteTableName *string `json:"RouteTableName,omitempty" xml:"RouteTableName,omitempty"`
+	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeEnsRouteTablesRequest) String() string {
@@ -21553,8 +22026,18 @@ func (s DescribeEnsRouteTablesRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeEnsRouteTablesRequest) SetAssociateType(v string) *DescribeEnsRouteTablesRequest {
+	s.AssociateType = &v
+	return s
+}
+
 func (s *DescribeEnsRouteTablesRequest) SetEnsRegionId(v string) *DescribeEnsRouteTablesRequest {
 	s.EnsRegionId = &v
+	return s
+}
+
+func (s *DescribeEnsRouteTablesRequest) SetEnsRegionIds(v []*string) *DescribeEnsRouteTablesRequest {
+	s.EnsRegionIds = v
 	return s
 }
 
@@ -21575,6 +22058,16 @@ func (s *DescribeEnsRouteTablesRequest) SetPageSize(v int32) *DescribeEnsRouteTa
 
 func (s *DescribeEnsRouteTablesRequest) SetRouteTableId(v string) *DescribeEnsRouteTablesRequest {
 	s.RouteTableId = &v
+	return s
+}
+
+func (s *DescribeEnsRouteTablesRequest) SetRouteTableName(v string) *DescribeEnsRouteTablesRequest {
+	s.RouteTableName = &v
+	return s
+}
+
+func (s *DescribeEnsRouteTablesRequest) SetType(v string) *DescribeEnsRouteTablesRequest {
+	s.Type = &v
 	return s
 }
 
@@ -21641,18 +22134,21 @@ func (s *DescribeEnsRouteTablesResponseBody) SetTotalCount(v int32) *DescribeEns
 }
 
 type DescribeEnsRouteTablesResponseBodyRouteTables struct {
+	AssociateType *string `json:"AssociateType,omitempty" xml:"AssociateType,omitempty"`
 	// The time when the route table was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2024-03-08T08:35:18Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the edge node.
 	//
 	// example:
 	//
 	// cn-beijing-15
-	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	EnsRegionId                *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	IsDefaultGatewayRouteTable *bool   `json:"IsDefaultGatewayRouteTable,omitempty" xml:"IsDefaultGatewayRouteTable,omitempty"`
 	// The ID of the network.
 	//
 	// example:
@@ -21664,7 +22160,10 @@ type DescribeEnsRouteTablesResponseBodyRouteTables struct {
 	// example:
 	//
 	// rt-5xde2bit9****
-	RouteTableId   *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
+	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
+	// example:
+	//
+	// test-tf-vtb7
 	RouteTableName *string `json:"RouteTableName,omitempty" xml:"RouteTableName,omitempty"`
 	// The status. Valid values:
 	//
@@ -21696,13 +22195,28 @@ func (s DescribeEnsRouteTablesResponseBodyRouteTables) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeEnsRouteTablesResponseBodyRouteTables) SetAssociateType(v string) *DescribeEnsRouteTablesResponseBodyRouteTables {
+	s.AssociateType = &v
+	return s
+}
+
 func (s *DescribeEnsRouteTablesResponseBodyRouteTables) SetCreationTime(v string) *DescribeEnsRouteTablesResponseBodyRouteTables {
 	s.CreationTime = &v
 	return s
 }
 
+func (s *DescribeEnsRouteTablesResponseBodyRouteTables) SetDescription(v string) *DescribeEnsRouteTablesResponseBodyRouteTables {
+	s.Description = &v
+	return s
+}
+
 func (s *DescribeEnsRouteTablesResponseBodyRouteTables) SetEnsRegionId(v string) *DescribeEnsRouteTablesResponseBodyRouteTables {
 	s.EnsRegionId = &v
+	return s
+}
+
+func (s *DescribeEnsRouteTablesResponseBodyRouteTables) SetIsDefaultGatewayRouteTable(v bool) *DescribeEnsRouteTablesResponseBodyRouteTables {
+	s.IsDefaultGatewayRouteTable = &v
 	return s
 }
 
@@ -25699,7 +26213,8 @@ type DescribeImageInfosResponseBodyImagesImage struct {
 	// example:
 	//
 	// centos_6_08_64_20G_alibase_2017****
-	Description        *string                                                      `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The mappings between disks and snapshots in the image.
 	DiskDeviceMappings *DescribeImageInfosResponseBodyImagesImageDiskDeviceMappings `json:"DiskDeviceMappings,omitempty" xml:"DiskDeviceMappings,omitempty" type:"Struct"`
 	// The ID of the image.
 	//
@@ -25731,6 +26246,12 @@ type DescribeImageInfosResponseBodyImagesImage struct {
 	//
 	// linux
 	OSType *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
+	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-shenzhen
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeImageInfosResponseBodyImagesImage) String() string {
@@ -25781,6 +26302,11 @@ func (s *DescribeImageInfosResponseBodyImagesImage) SetOSType(v string) *Describ
 	return s
 }
 
+func (s *DescribeImageInfosResponseBodyImagesImage) SetRegionId(v string) *DescribeImageInfosResponseBodyImagesImage {
+	s.RegionId = &v
+	return s
+}
+
 type DescribeImageInfosResponseBodyImagesImageDiskDeviceMappings struct {
 	DiskDeviceMapping []*DescribeImageInfosResponseBodyImagesImageDiskDeviceMappingsDiskDeviceMapping `json:"DiskDeviceMapping,omitempty" xml:"DiskDeviceMapping,omitempty" type:"Repeated"`
 }
@@ -25799,9 +26325,33 @@ func (s *DescribeImageInfosResponseBodyImagesImageDiskDeviceMappings) SetDiskDev
 }
 
 type DescribeImageInfosResponseBodyImagesImageDiskDeviceMappingsDiskDeviceMapping struct {
-	Format  *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	Size    *string `json:"Size,omitempty" xml:"Size,omitempty"`
-	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The format of the image.
+	//
+	// example:
+	//
+	// The format of the image.
+	//
+	// raw
+	//
+	// qcow2
+	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	// The size of the image. Unit: GB.
+	//
+	// example:
+	//
+	// 100
+	Size *string `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The type of the disk. Valid values: System and Data.
+	//
+	// example:
+	//
+	// Data
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The ID of the image.
+	//
+	// example:
+	//
+	// i-test
 	ImageId *string `json:"imageId,omitempty" xml:"imageId,omitempty"`
 }
 
@@ -25997,7 +26547,7 @@ func (s *DescribeImageSharePermissionResponseBody) SetTotalCount(v int32) *Descr
 }
 
 type DescribeImageSharePermissionResponseBodyAccounts struct {
-	Account []*string `json:"Account,omitempty" xml:"Account,omitempty" type:"Repeated"`
+	Account []*DescribeImageSharePermissionResponseBodyAccountsAccount `json:"Account,omitempty" xml:"Account,omitempty" type:"Repeated"`
 }
 
 func (s DescribeImageSharePermissionResponseBodyAccounts) String() string {
@@ -26008,8 +26558,25 @@ func (s DescribeImageSharePermissionResponseBodyAccounts) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeImageSharePermissionResponseBodyAccounts) SetAccount(v []*string) *DescribeImageSharePermissionResponseBodyAccounts {
+func (s *DescribeImageSharePermissionResponseBodyAccounts) SetAccount(v []*DescribeImageSharePermissionResponseBodyAccountsAccount) *DescribeImageSharePermissionResponseBodyAccounts {
 	s.Account = v
+	return s
+}
+
+type DescribeImageSharePermissionResponseBodyAccountsAccount struct {
+	AliyunUid *string `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
+}
+
+func (s DescribeImageSharePermissionResponseBodyAccountsAccount) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeImageSharePermissionResponseBodyAccountsAccount) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImageSharePermissionResponseBodyAccountsAccount) SetAliyunUid(v string) *DescribeImageSharePermissionResponseBodyAccountsAccount {
+	s.AliyunUid = &v
 	return s
 }
 
@@ -26240,7 +26807,8 @@ type DescribeImagesResponseBodyImagesImage struct {
 	// example:
 	//
 	// 2017-12-08T12:10:03Z
-	CreationTime       *string                                                  `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The mappings between the disk and the snapshot in the image.
 	DiskDeviceMappings *DescribeImagesResponseBodyImagesImageDiskDeviceMappings `json:"DiskDeviceMappings,omitempty" xml:"DiskDeviceMappings,omitempty" type:"Struct"`
 	// The ID of the image.
 	//
@@ -26282,6 +26850,12 @@ type DescribeImagesResponseBodyImagesImage struct {
 	//
 	// centos
 	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	// The ID of the Edge Node Service (ENS) node.
+	//
+	// example:
+	//
+	// cn-qingdao
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the snapshot.
 	//
 	// example:
@@ -26338,6 +26912,11 @@ func (s *DescribeImagesResponseBodyImagesImage) SetPlatform(v string) *DescribeI
 	return s
 }
 
+func (s *DescribeImagesResponseBodyImagesImage) SetRegionId(v string) *DescribeImagesResponseBodyImagesImage {
+	s.RegionId = &v
+	return s
+}
+
 func (s *DescribeImagesResponseBodyImagesImage) SetSnapshotId(v string) *DescribeImagesResponseBodyImagesImage {
 	s.SnapshotId = &v
 	return s
@@ -26361,9 +26940,37 @@ func (s *DescribeImagesResponseBodyImagesImageDiskDeviceMappings) SetDiskDeviceM
 }
 
 type DescribeImagesResponseBodyImagesImageDiskDeviceMappingsDiskDeviceMapping struct {
-	Format  *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	Size    *string `json:"Size,omitempty" xml:"Size,omitempty"`
-	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The format of the image.
+	//
+	// example:
+	//
+	// The format of the image.
+	//
+	// raw
+	//
+	// qcow2
+	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	// The size of the disk. Unit: GiB.
+	//
+	// example:
+	//
+	// 100
+	Size *string `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The type of the disk. Valid values:
+	//
+	// 	- system: system disk.
+	//
+	// 	- data: data disk.
+	//
+	// example:
+	//
+	// Data
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The ID of image.
+	//
+	// example:
+	//
+	// i-test
 	ImageId *string `json:"imageId,omitempty" xml:"imageId,omitempty"`
 }
 
@@ -27059,21 +27666,30 @@ func (s *DescribeInstanceMonitorDataResponse) SetBody(v *DescribeInstanceMonitor
 }
 
 type DescribeInstanceSDGStatusRequest struct {
+	// The ID of the AIC instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// aic-xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The number of the page to return. Pages start from page 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
-	PageSize *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SDGIds   []*string `json:"SDGIds,omitempty" xml:"SDGIds,omitempty" type:"Repeated"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The IDs of SDGs that you want to query. By default, all SDGs are queried.
+	SDGIds []*string `json:"SDGIds,omitempty" xml:"SDGIds,omitempty" type:"Repeated"`
+	// The deployment status of the SDG.
+	//
 	// example:
 	//
 	// success
@@ -27114,21 +27730,30 @@ func (s *DescribeInstanceSDGStatusRequest) SetStatus(v string) *DescribeInstance
 }
 
 type DescribeInstanceSDGStatusShrinkRequest struct {
+	// The ID of the AIC instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// aic-xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The number of the page to return. Pages start from page 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The IDs of SDGs that you want to query. By default, all SDGs are queried.
 	SDGIdsShrink *string `json:"SDGIds,omitempty" xml:"SDGIds,omitempty"`
+	// The deployment status of the SDG.
+	//
 	// example:
 	//
 	// success
@@ -27169,19 +27794,28 @@ func (s *DescribeInstanceSDGStatusShrinkRequest) SetStatus(v string) *DescribeIn
 }
 
 type DescribeInstanceSDGStatusResponseBody struct {
+	// The deployment information of the SDGs.
 	DeploymentStatus []*DescribeInstanceSDGStatusResponseBodyDeploymentStatus `json:"DeploymentStatus,omitempty" xml:"DeploymentStatus,omitempty" type:"Repeated"`
+	// The number of the page to return. Pages start from page 1. Default value: 1
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Default value: **10**.
+	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// C0003E8B-B930-4F59-ADC0-0E209A9012A8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of queried deployment records.
+	//
 	// example:
 	//
 	// 1
@@ -27222,30 +27856,44 @@ func (s *DescribeInstanceSDGStatusResponseBody) SetTotalCount(v string) *Describ
 }
 
 type DescribeInstanceSDGStatusResponseBodyDeploymentStatus struct {
+	// The ID of the edge node.
+	//
 	// example:
 	//
 	// cn-guangzhou-26
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The ID of the AIC instance.
+	//
 	// example:
 	//
 	// aic-xxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The deployment type of the SDG.
+	//
 	// example:
 	//
 	// shared
 	MountType *string `json:"MountType,omitempty" xml:"MountType,omitempty"`
+	// Deployment Phase
+	//
 	// example:
 	//
 	// attach
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// The ID of the SDG.
+	//
 	// example:
 	//
 	// sdg-xxxxxxx
 	SDGId *string `json:"SDGId,omitempty" xml:"SDGId,omitempty"`
+	// The deployment status of the SDG.
+	//
 	// example:
 	//
 	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The time when the status was last updated.
+	//
 	// example:
 	//
 	// 2023-02-17T02:44:31Z
@@ -27846,8 +28494,9 @@ type DescribeInstancesRequest struct {
 	// example:
 	//
 	// sg-5kyicq2kfcapxrdds6tar7jqb
-	SecurityGroupId *string   `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	ServiceStatus   []*string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty" type:"Repeated"`
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The status of the service. Valid values.
+	ServiceStatus []*string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty" type:"Repeated"`
 	// The status of the instance. Valid values:
 	//
 	// 	- Running
@@ -28121,7 +28770,8 @@ type DescribeInstancesShrinkRequest struct {
 	// example:
 	//
 	// sg-5kyicq2kfcapxrdds6tar7jqb
-	SecurityGroupId     *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The status of the service. Valid values.
 	ServiceStatusShrink *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
 	// The status of the instance. Valid values:
 	//
@@ -28459,8 +29109,13 @@ type DescribeInstancesResponseBodyInstancesInstance struct {
 	// example:
 	//
 	// 100
-	InternetMaxBandwidthOut *int32  `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
-	KeyPairName             *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	InternetMaxBandwidthOut *int32 `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
+	// The name of the SSH key pair.
+	//
+	// example:
+	//
+	// terraform-example
+	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
 	// The memory size. Unit: MB.
 	//
 	// example:
@@ -28469,6 +29124,7 @@ type DescribeInstancesResponseBodyInstancesInstance struct {
 	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
 	// Details of the network.
 	NetworkAttributes *DescribeInstancesResponseBodyInstancesInstanceNetworkAttributes `json:"NetworkAttributes,omitempty" xml:"NetworkAttributes,omitempty" type:"Struct"`
+	// The ENI attached to the instance.
 	NetworkInterfaces *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfaces `json:"NetworkInterfaces,omitempty" xml:"NetworkInterfaces,omitempty" type:"Struct"`
 	// The name of the image.
 	//
@@ -28484,7 +29140,12 @@ type DescribeInstancesResponseBodyInstancesInstance struct {
 	PublicIpAddresses *DescribeInstancesResponseBodyInstancesInstancePublicIpAddresses `json:"PublicIpAddresses,omitempty" xml:"PublicIpAddresses,omitempty" type:"Struct"`
 	// The IDs of the security groups.
 	SecurityGroupIds *DescribeInstancesResponseBodyInstancesInstanceSecurityGroupIds `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Struct"`
-	ServiceStatus    *string                                                         `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
+	// The ID of your Alibaba Cloud account.
+	//
+	// example:
+	//
+	// Deleting
+	ServiceStatus *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
 	// The instance type.
 	//
 	// example:
@@ -28727,9 +29388,23 @@ type DescribeInstancesResponseBodyInstancesInstanceDataDiskDataDisk struct {
 	// example:
 	//
 	// 100
-	DiskSize     *int32  `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
+	DiskSize *int32 `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
+	// The KMS key ID used by the cloud drive.
+	//
+	// example:
+	//
+	// 0e478b7a-4262-4802-b8cb-00d3fxxxxx
 	EncryptKeyId *string `json:"EncryptKeyId,omitempty" xml:"EncryptKeyId,omitempty"`
-	Encrypted    *bool   `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
+	// Specifies whether to encrypt the new system disk. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false*	- (default): no
+	//
+	// example:
+	//
+	// true
+	Encrypted *bool `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
 	// The size of the disk. Unit: MiB.
 	//
 	// example:
@@ -28936,12 +29611,38 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfaces) SetNet
 }
 
 type DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfaces struct {
-	Ipv6Sets           *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfacesIpv6Sets      `json:"Ipv6Sets,omitempty" xml:"Ipv6Sets,omitempty" type:"Struct"`
-	MacAddress         *string                                                                                        `json:"MacAddress,omitempty" xml:"MacAddress,omitempty"`
-	NetworkInterfaceId *string                                                                                        `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
-	PrimaryIpAddress   *string                                                                                        `json:"PrimaryIpAddress,omitempty" xml:"PrimaryIpAddress,omitempty"`
-	PrivateIpSets      *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfacesPrivateIpSets `json:"PrivateIpSets,omitempty" xml:"PrivateIpSets,omitempty" type:"Struct"`
-	Type               *string                                                                                        `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The IPv6 addresses of the ENI. This parameter has a value only when `AdditionalAttributes.N` is set to `NETWORK_PRIMARY_ENI_IP`.
+	Ipv6Sets *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfacesIpv6Sets `json:"Ipv6Sets,omitempty" xml:"Ipv6Sets,omitempty" type:"Struct"`
+	// The MAC address of the ENI.
+	//
+	// example:
+	//
+	// 00:16:3e:4f:5f:ca
+	MacAddress *string `json:"MacAddress,omitempty" xml:"MacAddress,omitempty"`
+	// The ID of the ENI.
+	//
+	// example:
+	//
+	// eni-0wlonoy6jo8532gfzuama****
+	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
+	// The primary IP address of the ENI.
+	//
+	// example:
+	//
+	// ***************
+	PrimaryIpAddress *string `json:"PrimaryIpAddress,omitempty" xml:"PrimaryIpAddress,omitempty"`
+	// The private IP addresses of the ENI.
+	PrivateIpSets *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfacesPrivateIpSets `json:"PrivateIpSets,omitempty" xml:"PrivateIpSets,omitempty" type:"Struct"`
+	// The type of the disk. Valid values:
+	//
+	// 	- system: system disk.
+	//
+	// 	- data: data disk.
+	//
+	// example:
+	//
+	// Secondary
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfaces) String() string {
@@ -29000,6 +29701,11 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkI
 }
 
 type DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfacesIpv6SetsIpv6Set struct {
+	// IPv6 addresses N of the ENI. You can specify multiple IPv6 addresses. Valid values of N: 1 to 100.
+	//
+	// example:
+	//
+	// 2408:4005:396:3200:****:6609:821e:df7a
 	Ipv6Address *string `json:"Ipv6Address,omitempty" xml:"Ipv6Address,omitempty"`
 }
 
@@ -29034,7 +29740,23 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkI
 }
 
 type DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfacesPrivateIpSetsPrivateIpSet struct {
-	Primary          *bool   `json:"Primary,omitempty" xml:"Primary,omitempty"`
+	// Indicates whether the IP address is the primary private IP address. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	Primary *bool `json:"Primary,omitempty" xml:"Primary,omitempty"`
+	// The private IP address.
+	//
+	// >  This parameter is available only if ScheduleAreaLevel is set to Region and cannot be configured if ScheduleAreaLevel is set to other values. Otherwise, an error occurs. If you specify a private IP address, the number of instances must be 1. The private IP address takes effect only when the private IP address and the vSwitch ID are not empty.
+	//
+	// example:
+	//
+	// 10.75.66.***
 	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
 }
 
@@ -29930,6 +30652,7 @@ func (s *DescribeLoadBalancerAttributeResponseBodyBackendServers) SetWeight(v in
 }
 
 type DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocols struct {
+	BackendServerPort *int32 `json:"BackendServerPort,omitempty" xml:"BackendServerPort,omitempty"`
 	// The description of the listener.
 	//
 	// example:
@@ -29968,6 +30691,11 @@ func (s DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocols) Stri
 
 func (s DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocols) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocols) SetBackendServerPort(v int32) *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocols {
+	s.BackendServerPort = &v
+	return s
 }
 
 func (s *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocols) SetDescription(v string) *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocols {
@@ -31208,6 +31936,8 @@ func (s *DescribeLoadBalancerListenMonitorResponse) SetBody(v *DescribeLoadBalan
 }
 
 type DescribeLoadBalancerListenersRequest struct {
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ListenerPort *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	// The ID of the ELB instance.
 	//
 	// This parameter is required.
@@ -31236,6 +31966,16 @@ func (s DescribeLoadBalancerListenersRequest) String() string {
 
 func (s DescribeLoadBalancerListenersRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeLoadBalancerListenersRequest) SetDescription(v string) *DescribeLoadBalancerListenersRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerListenersRequest) SetListenerPort(v int32) *DescribeLoadBalancerListenersRequest {
+	s.ListenerPort = &v
+	return s
 }
 
 func (s *DescribeLoadBalancerListenersRequest) SetLoadBalancerId(v string) *DescribeLoadBalancerListenersRequest {
@@ -31333,6 +32073,7 @@ func (s *DescribeLoadBalancerListenersResponseBodyListeners) SetListener(v []*De
 }
 
 type DescribeLoadBalancerListenersResponseBodyListenersListener struct {
+	BackendServerPort *int32 `json:"BackendServerPort,omitempty" xml:"BackendServerPort,omitempty"`
 	// The timestamp when the listener was created.
 	//
 	// example:
@@ -31405,6 +32146,11 @@ func (s DescribeLoadBalancerListenersResponseBodyListenersListener) String() str
 
 func (s DescribeLoadBalancerListenersResponseBodyListenersListener) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeLoadBalancerListenersResponseBodyListenersListener) SetBackendServerPort(v int32) *DescribeLoadBalancerListenersResponseBodyListenersListener {
+	s.BackendServerPort = &v
+	return s
 }
 
 func (s *DescribeLoadBalancerListenersResponseBodyListenersListener) SetCreateTime(v string) *DescribeLoadBalancerListenersResponseBodyListenersListener {
@@ -32319,7 +33065,8 @@ type DescribeLoadBalancersRequest struct {
 	// example:
 	//
 	// cn-guangzhou-10
-	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	EnsRegionId  *string   `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	EnsRegionIds []*string `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty" type:"Repeated"`
 	// The ID of the ELB instance.
 	//
 	// example:
@@ -32389,6 +33136,11 @@ func (s *DescribeLoadBalancersRequest) SetAddress(v string) *DescribeLoadBalance
 
 func (s *DescribeLoadBalancersRequest) SetEnsRegionId(v string) *DescribeLoadBalancersRequest {
 	s.EnsRegionId = &v
+	return s
+}
+
+func (s *DescribeLoadBalancersRequest) SetEnsRegionIds(v []*string) *DescribeLoadBalancersRequest {
+	s.EnsRegionIds = v
 	return s
 }
 
@@ -34034,7 +34786,8 @@ type DescribeNatGatewaysRequest struct {
 	// example:
 	//
 	// cn-wuxi-9
-	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	EnsRegionId  *string   `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	EnsRegionIds []*string `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty" type:"Repeated"`
 	// The name of the NAT gateway.
 	//
 	// example:
@@ -34046,7 +34799,8 @@ type DescribeNatGatewaysRequest struct {
 	// example:
 	//
 	// nat-5t7nh1cfm6kxiszlttr38****
-	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	NatGatewayId  *string   `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	NatGatewayIds []*string `json:"NatGatewayIds,omitempty" xml:"NatGatewayIds,omitempty" type:"Repeated"`
 	// The ID of the network.
 	//
 	// example:
@@ -34090,6 +34844,11 @@ func (s *DescribeNatGatewaysRequest) SetEnsRegionId(v string) *DescribeNatGatewa
 	return s
 }
 
+func (s *DescribeNatGatewaysRequest) SetEnsRegionIds(v []*string) *DescribeNatGatewaysRequest {
+	s.EnsRegionIds = v
+	return s
+}
+
 func (s *DescribeNatGatewaysRequest) SetName(v string) *DescribeNatGatewaysRequest {
 	s.Name = &v
 	return s
@@ -34097,6 +34856,11 @@ func (s *DescribeNatGatewaysRequest) SetName(v string) *DescribeNatGatewaysReque
 
 func (s *DescribeNatGatewaysRequest) SetNatGatewayId(v string) *DescribeNatGatewaysRequest {
 	s.NatGatewayId = &v
+	return s
+}
+
+func (s *DescribeNatGatewaysRequest) SetNatGatewayIds(v []*string) *DescribeNatGatewaysRequest {
+	s.NatGatewayIds = v
 	return s
 }
 
@@ -34194,7 +34958,8 @@ type DescribeNatGatewaysResponseBodyNatGateways struct {
 	// example:
 	//
 	// cn-xiangyang-5
-	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	EnsRegionId *string                                              `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	IpLists     []*DescribeNatGatewaysResponseBodyNatGatewaysIpLists `json:"IpLists,omitempty" xml:"IpLists,omitempty" type:"Repeated"`
 	// The name of the NAT gateway.
 	//
 	// example:
@@ -34218,7 +34983,8 @@ type DescribeNatGatewaysResponseBodyNatGateways struct {
 	// example:
 	//
 	// enat.default
-	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	Spec   *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The ID of the vSwitch.
 	//
 	// example:
@@ -34245,6 +35011,11 @@ func (s *DescribeNatGatewaysResponseBodyNatGateways) SetEnsRegionId(v string) *D
 	return s
 }
 
+func (s *DescribeNatGatewaysResponseBodyNatGateways) SetIpLists(v []*DescribeNatGatewaysResponseBodyNatGatewaysIpLists) *DescribeNatGatewaysResponseBodyNatGateways {
+	s.IpLists = v
+	return s
+}
+
 func (s *DescribeNatGatewaysResponseBodyNatGateways) SetName(v string) *DescribeNatGatewaysResponseBodyNatGateways {
 	s.Name = &v
 	return s
@@ -34265,8 +35036,42 @@ func (s *DescribeNatGatewaysResponseBodyNatGateways) SetSpec(v string) *Describe
 	return s
 }
 
+func (s *DescribeNatGatewaysResponseBodyNatGateways) SetStatus(v string) *DescribeNatGatewaysResponseBodyNatGateways {
+	s.Status = &v
+	return s
+}
+
 func (s *DescribeNatGatewaysResponseBodyNatGateways) SetVSwitchId(v string) *DescribeNatGatewaysResponseBodyNatGateways {
 	s.VSwitchId = &v
+	return s
+}
+
+type DescribeNatGatewaysResponseBodyNatGatewaysIpLists struct {
+	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
+	IpAddress    *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
+	UsingStatus  *string `json:"UsingStatus,omitempty" xml:"UsingStatus,omitempty"`
+}
+
+func (s DescribeNatGatewaysResponseBodyNatGatewaysIpLists) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNatGatewaysResponseBodyNatGatewaysIpLists) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNatGatewaysResponseBodyNatGatewaysIpLists) SetAllocationId(v string) *DescribeNatGatewaysResponseBodyNatGatewaysIpLists {
+	s.AllocationId = &v
+	return s
+}
+
+func (s *DescribeNatGatewaysResponseBodyNatGatewaysIpLists) SetIpAddress(v string) *DescribeNatGatewaysResponseBodyNatGatewaysIpLists {
+	s.IpAddress = &v
+	return s
+}
+
+func (s *DescribeNatGatewaysResponseBodyNatGatewaysIpLists) SetUsingStatus(v string) *DescribeNatGatewaysResponseBodyNatGatewaysIpLists {
+	s.UsingStatus = &v
 	return s
 }
 
@@ -34918,7 +35723,16 @@ type DescribeNetworkAttributeResponseBody struct {
 	// example:
 	//
 	// cn-beijing
-	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	EnsRegionId         *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	GatewayRouteTableId *string `json:"GatewayRouteTableId,omitempty" xml:"GatewayRouteTableId,omitempty"`
+	// List of HaVipIds.
+	HaVipIds *DescribeNetworkAttributeResponseBodyHaVipIds `json:"HaVipIds,omitempty" xml:"HaVipIds,omitempty" type:"Struct"`
+	// The instance IDs.
+	InstanceIds *DescribeNetworkAttributeResponseBodyInstanceIds `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Struct"`
+	// List of ELB instances.
+	LoadBalancerIds *DescribeNetworkAttributeResponseBodyLoadBalancerIds `json:"LoadBalancerIds,omitempty" xml:"LoadBalancerIds,omitempty" type:"Struct"`
+	// List of NAT Gateways.
+	NatGatewayIds *DescribeNetworkAttributeResponseBodyNatGatewayIds `json:"NatGatewayIds,omitempty" xml:"NatGatewayIds,omitempty" type:"Struct"`
 	// The ID of the network access control list (ACL).
 	//
 	// example:
@@ -34931,6 +35745,8 @@ type DescribeNetworkAttributeResponseBody struct {
 	//
 	// n-5***
 	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	// A list of multicast source IDs.
+	NetworkInterfaceIds *DescribeNetworkAttributeResponseBodyNetworkInterfaceIds `json:"NetworkInterfaceIds,omitempty" xml:"NetworkInterfaceIds,omitempty" type:"Struct"`
 	// The name of the network.
 	//
 	// example:
@@ -34942,7 +35758,10 @@ type DescribeNetworkAttributeResponseBody struct {
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
+	// List of routing table IDs.
+	RouteTableIds *DescribeNetworkAttributeResponseBodyRouteTableIds `json:"RouteTableIds,omitempty" xml:"RouteTableIds,omitempty" type:"Struct"`
 	// The ID of the route table.
 	//
 	// example:
@@ -34996,6 +35815,31 @@ func (s *DescribeNetworkAttributeResponseBody) SetEnsRegionId(v string) *Describ
 	return s
 }
 
+func (s *DescribeNetworkAttributeResponseBody) SetGatewayRouteTableId(v string) *DescribeNetworkAttributeResponseBody {
+	s.GatewayRouteTableId = &v
+	return s
+}
+
+func (s *DescribeNetworkAttributeResponseBody) SetHaVipIds(v *DescribeNetworkAttributeResponseBodyHaVipIds) *DescribeNetworkAttributeResponseBody {
+	s.HaVipIds = v
+	return s
+}
+
+func (s *DescribeNetworkAttributeResponseBody) SetInstanceIds(v *DescribeNetworkAttributeResponseBodyInstanceIds) *DescribeNetworkAttributeResponseBody {
+	s.InstanceIds = v
+	return s
+}
+
+func (s *DescribeNetworkAttributeResponseBody) SetLoadBalancerIds(v *DescribeNetworkAttributeResponseBodyLoadBalancerIds) *DescribeNetworkAttributeResponseBody {
+	s.LoadBalancerIds = v
+	return s
+}
+
+func (s *DescribeNetworkAttributeResponseBody) SetNatGatewayIds(v *DescribeNetworkAttributeResponseBodyNatGatewayIds) *DescribeNetworkAttributeResponseBody {
+	s.NatGatewayIds = v
+	return s
+}
+
 func (s *DescribeNetworkAttributeResponseBody) SetNetworkAclId(v string) *DescribeNetworkAttributeResponseBody {
 	s.NetworkAclId = &v
 	return s
@@ -35006,6 +35850,11 @@ func (s *DescribeNetworkAttributeResponseBody) SetNetworkId(v string) *DescribeN
 	return s
 }
 
+func (s *DescribeNetworkAttributeResponseBody) SetNetworkInterfaceIds(v *DescribeNetworkAttributeResponseBodyNetworkInterfaceIds) *DescribeNetworkAttributeResponseBody {
+	s.NetworkInterfaceIds = v
+	return s
+}
+
 func (s *DescribeNetworkAttributeResponseBody) SetNetworkName(v string) *DescribeNetworkAttributeResponseBody {
 	s.NetworkName = &v
 	return s
@@ -35013,6 +35862,16 @@ func (s *DescribeNetworkAttributeResponseBody) SetNetworkName(v string) *Describ
 
 func (s *DescribeNetworkAttributeResponseBody) SetRequestId(v string) *DescribeNetworkAttributeResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeNetworkAttributeResponseBody) SetRouteTableId(v string) *DescribeNetworkAttributeResponseBody {
+	s.RouteTableId = &v
+	return s
+}
+
+func (s *DescribeNetworkAttributeResponseBody) SetRouteTableIds(v *DescribeNetworkAttributeResponseBodyRouteTableIds) *DescribeNetworkAttributeResponseBody {
+	s.RouteTableIds = v
 	return s
 }
 
@@ -35081,6 +35940,108 @@ func (s *DescribeNetworkAttributeResponseBodyCloudResourcesCloudResourceSetType)
 	return s
 }
 
+type DescribeNetworkAttributeResponseBodyHaVipIds struct {
+	HaVipId []*string `json:"HaVipId,omitempty" xml:"HaVipId,omitempty" type:"Repeated"`
+}
+
+func (s DescribeNetworkAttributeResponseBodyHaVipIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNetworkAttributeResponseBodyHaVipIds) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetworkAttributeResponseBodyHaVipIds) SetHaVipId(v []*string) *DescribeNetworkAttributeResponseBodyHaVipIds {
+	s.HaVipId = v
+	return s
+}
+
+type DescribeNetworkAttributeResponseBodyInstanceIds struct {
+	InstanceId []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
+}
+
+func (s DescribeNetworkAttributeResponseBodyInstanceIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNetworkAttributeResponseBodyInstanceIds) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetworkAttributeResponseBodyInstanceIds) SetInstanceId(v []*string) *DescribeNetworkAttributeResponseBodyInstanceIds {
+	s.InstanceId = v
+	return s
+}
+
+type DescribeNetworkAttributeResponseBodyLoadBalancerIds struct {
+	LoadBalancerId []*string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty" type:"Repeated"`
+}
+
+func (s DescribeNetworkAttributeResponseBodyLoadBalancerIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNetworkAttributeResponseBodyLoadBalancerIds) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetworkAttributeResponseBodyLoadBalancerIds) SetLoadBalancerId(v []*string) *DescribeNetworkAttributeResponseBodyLoadBalancerIds {
+	s.LoadBalancerId = v
+	return s
+}
+
+type DescribeNetworkAttributeResponseBodyNatGatewayIds struct {
+	NatGatewayId []*string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty" type:"Repeated"`
+}
+
+func (s DescribeNetworkAttributeResponseBodyNatGatewayIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNetworkAttributeResponseBodyNatGatewayIds) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetworkAttributeResponseBodyNatGatewayIds) SetNatGatewayId(v []*string) *DescribeNetworkAttributeResponseBodyNatGatewayIds {
+	s.NatGatewayId = v
+	return s
+}
+
+type DescribeNetworkAttributeResponseBodyNetworkInterfaceIds struct {
+	NetworkInterfaceId []*string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty" type:"Repeated"`
+}
+
+func (s DescribeNetworkAttributeResponseBodyNetworkInterfaceIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNetworkAttributeResponseBodyNetworkInterfaceIds) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetworkAttributeResponseBodyNetworkInterfaceIds) SetNetworkInterfaceId(v []*string) *DescribeNetworkAttributeResponseBodyNetworkInterfaceIds {
+	s.NetworkInterfaceId = v
+	return s
+}
+
+type DescribeNetworkAttributeResponseBodyRouteTableIds struct {
+	RouteTableId []*string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty" type:"Repeated"`
+}
+
+func (s DescribeNetworkAttributeResponseBodyRouteTableIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNetworkAttributeResponseBodyRouteTableIds) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetworkAttributeResponseBodyRouteTableIds) SetRouteTableId(v []*string) *DescribeNetworkAttributeResponseBodyRouteTableIds {
+	s.RouteTableId = v
+	return s
+}
+
 type DescribeNetworkAttributeResponseBodyVSwitchIds struct {
 	VSwitchId []*string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty" type:"Repeated"`
 }
@@ -35134,6 +36095,8 @@ type DescribeNetworkInterfacesRequest struct {
 	//
 	// cn-tianjin-cmcc
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The node information.
+	EnsRegionIds []*string `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty" type:"Repeated"`
 	// The ID of the instance.
 	//
 	// example:
@@ -35154,6 +36117,8 @@ type DescribeNetworkInterfacesRequest struct {
 	//
 	// eni-58z57orgmt6d1****
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
+	// A list of multicast source IDs.
+	NetworkInterfaceIds []*string `json:"NetworkInterfaceIds,omitempty" xml:"NetworkInterfaceIds,omitempty" type:"Repeated"`
 	// The name of the ENI.
 	//
 	// example:
@@ -35204,9 +36169,9 @@ type DescribeNetworkInterfacesRequest struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The type of the ENI. Valid values:
 	//
-	// 	- Primary: primary ENI.
+	// 	- Primary: the primary ENI.
 	//
-	// 	- Secondary: secondary ENI.
+	// 	- Secondary: the secondary ENI.
 	//
 	// This parameter is empty by default, which indicates that both primary and secondary ENIs are queried.
 	//
@@ -35235,6 +36200,11 @@ func (s *DescribeNetworkInterfacesRequest) SetEnsRegionId(v string) *DescribeNet
 	return s
 }
 
+func (s *DescribeNetworkInterfacesRequest) SetEnsRegionIds(v []*string) *DescribeNetworkInterfacesRequest {
+	s.EnsRegionIds = v
+	return s
+}
+
 func (s *DescribeNetworkInterfacesRequest) SetInstanceId(v string) *DescribeNetworkInterfacesRequest {
 	s.InstanceId = &v
 	return s
@@ -35252,6 +36222,11 @@ func (s *DescribeNetworkInterfacesRequest) SetNetworkId(v string) *DescribeNetwo
 
 func (s *DescribeNetworkInterfacesRequest) SetNetworkInterfaceId(v string) *DescribeNetworkInterfacesRequest {
 	s.NetworkInterfaceId = &v
+	return s
+}
+
+func (s *DescribeNetworkInterfacesRequest) SetNetworkInterfaceIds(v []*string) *DescribeNetworkInterfacesRequest {
+	s.NetworkInterfaceIds = v
 	return s
 }
 
@@ -35291,174 +36266,6 @@ func (s *DescribeNetworkInterfacesRequest) SetType(v string) *DescribeNetworkInt
 }
 
 func (s *DescribeNetworkInterfacesRequest) SetVSwitchId(v string) *DescribeNetworkInterfacesRequest {
-	s.VSwitchId = &v
-	return s
-}
-
-type DescribeNetworkInterfacesShrinkRequest struct {
-	// The region ID of the instance.
-	//
-	// example:
-	//
-	// cn-tianjin-cmcc
-	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// The ID of the instance.
-	//
-	// example:
-	//
-	// i-5t7z99n32gplriv
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// IPv6 addresses N of the ENI. You can specify multiple IPv6 addresses. Valid values of N: 1 to 100.
-	Ipv6AddressShrink *string `json:"Ipv6Address,omitempty" xml:"Ipv6Address,omitempty"`
-	// The ID of the network.
-	//
-	// example:
-	//
-	// n-2zeuphj08tt7q3brd****
-	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
-	// The ID of the ENI.
-	//
-	// example:
-	//
-	// eni-58z57orgmt6d1****
-	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
-	// The name of the ENI.
-	//
-	// example:
-	//
-	// test-01
-	NetworkInterfaceName *string `json:"NetworkInterfaceName,omitempty" xml:"NetworkInterfaceName,omitempty"`
-	// The page number of the returned page. Pages start from page 1. Default value: 1.
-	//
-	// example:
-	//
-	// 1
-	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Maximum value: 100. Default value: 50.
-	//
-	// example:
-	//
-	// 50
-	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The primary IP address of the ENI.
-	//
-	// example:
-	//
-	// ***
-	PrimaryIpAddress *string `json:"PrimaryIpAddress,omitempty" xml:"PrimaryIpAddress,omitempty"`
-	// The ID of the security group to which the secondary ENI belongs. To query the details of secondary ENIs based on the ID of a security group, specify this parameter.
-	//
-	// example:
-	//
-	// sg-5p1fg655nh68xyz9i***
-	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The status of the ENI. Valid values:
-	//
-	// 	- Available: The ENI is available.
-	//
-	// 	- Attaching: The ENI is being attached to an instance.
-	//
-	// 	- InUse: The ENI is attached to an instance.
-	//
-	// 	- Detaching: The ENI is being detached from an instance.
-	//
-	// 	- Deleting: The ENI is being deleted.
-	//
-	// This parameter is empty by default, which indicates that ENIs in all states are queried.
-	//
-	// example:
-	//
-	// Available
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the ENI. Valid values:
-	//
-	// 	- Primary: primary ENI.
-	//
-	// 	- Secondary: secondary ENI.
-	//
-	// This parameter is empty by default, which indicates that both primary and secondary ENIs are queried.
-	//
-	// example:
-	//
-	// Secondary
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The ID of the vSwitch.
-	//
-	// example:
-	//
-	// vsw-12345
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-}
-
-func (s DescribeNetworkInterfacesShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeNetworkInterfacesShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeNetworkInterfacesShrinkRequest) SetEnsRegionId(v string) *DescribeNetworkInterfacesShrinkRequest {
-	s.EnsRegionId = &v
-	return s
-}
-
-func (s *DescribeNetworkInterfacesShrinkRequest) SetInstanceId(v string) *DescribeNetworkInterfacesShrinkRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *DescribeNetworkInterfacesShrinkRequest) SetIpv6AddressShrink(v string) *DescribeNetworkInterfacesShrinkRequest {
-	s.Ipv6AddressShrink = &v
-	return s
-}
-
-func (s *DescribeNetworkInterfacesShrinkRequest) SetNetworkId(v string) *DescribeNetworkInterfacesShrinkRequest {
-	s.NetworkId = &v
-	return s
-}
-
-func (s *DescribeNetworkInterfacesShrinkRequest) SetNetworkInterfaceId(v string) *DescribeNetworkInterfacesShrinkRequest {
-	s.NetworkInterfaceId = &v
-	return s
-}
-
-func (s *DescribeNetworkInterfacesShrinkRequest) SetNetworkInterfaceName(v string) *DescribeNetworkInterfacesShrinkRequest {
-	s.NetworkInterfaceName = &v
-	return s
-}
-
-func (s *DescribeNetworkInterfacesShrinkRequest) SetPageNumber(v string) *DescribeNetworkInterfacesShrinkRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *DescribeNetworkInterfacesShrinkRequest) SetPageSize(v string) *DescribeNetworkInterfacesShrinkRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeNetworkInterfacesShrinkRequest) SetPrimaryIpAddress(v string) *DescribeNetworkInterfacesShrinkRequest {
-	s.PrimaryIpAddress = &v
-	return s
-}
-
-func (s *DescribeNetworkInterfacesShrinkRequest) SetSecurityGroupId(v string) *DescribeNetworkInterfacesShrinkRequest {
-	s.SecurityGroupId = &v
-	return s
-}
-
-func (s *DescribeNetworkInterfacesShrinkRequest) SetStatus(v string) *DescribeNetworkInterfacesShrinkRequest {
-	s.Status = &v
-	return s
-}
-
-func (s *DescribeNetworkInterfacesShrinkRequest) SetType(v string) *DescribeNetworkInterfacesShrinkRequest {
-	s.Type = &v
-	return s
-}
-
-func (s *DescribeNetworkInterfacesShrinkRequest) SetVSwitchId(v string) *DescribeNetworkInterfacesShrinkRequest {
 	s.VSwitchId = &v
 	return s
 }
@@ -35881,12 +36688,16 @@ type DescribeNetworksRequest struct {
 	//
 	// cn-beijing-telecom
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The node information.
+	EnsRegionIds []*string `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty" type:"Repeated"`
 	// The ID of the network.
 	//
 	// example:
 	//
 	// n-5***
 	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	// The ID of Network.
+	NetworkIds []*string `json:"NetworkIds,omitempty" xml:"NetworkIds,omitempty" type:"Repeated"`
 	// The name of the network.
 	//
 	// example:
@@ -35920,8 +36731,18 @@ func (s *DescribeNetworksRequest) SetEnsRegionId(v string) *DescribeNetworksRequ
 	return s
 }
 
+func (s *DescribeNetworksRequest) SetEnsRegionIds(v []*string) *DescribeNetworksRequest {
+	s.EnsRegionIds = v
+	return s
+}
+
 func (s *DescribeNetworksRequest) SetNetworkId(v string) *DescribeNetworksRequest {
 	s.NetworkId = &v
+	return s
+}
+
+func (s *DescribeNetworksRequest) SetNetworkIds(v []*string) *DescribeNetworksRequest {
+	s.NetworkIds = v
 	return s
 }
 
@@ -36043,7 +36864,8 @@ type DescribeNetworksResponseBodyNetworksNetwork struct {
 	// example:
 	//
 	// cn-beijing
-	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	EnsRegionId         *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	GatewayRouteTableId *string `json:"GatewayRouteTableId,omitempty" xml:"GatewayRouteTableId,omitempty"`
 	// The ID of the network access control list (ACL).
 	//
 	// example:
@@ -36061,7 +36883,10 @@ type DescribeNetworksResponseBodyNetworksNetwork struct {
 	// example:
 	//
 	// example
-	NetworkName *string `json:"NetworkName,omitempty" xml:"NetworkName,omitempty"`
+	NetworkName  *string `json:"NetworkName,omitempty" xml:"NetworkName,omitempty"`
+	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
+	// The ID of the route table. Valid values of **N*	- are **1*	- to **20**, which specifies that you can disassociate a gateway endpoint from at most 20 route tables at a time.
+	RouteTableIds *DescribeNetworksResponseBodyNetworksNetworkRouteTableIds `json:"RouteTableIds,omitempty" xml:"RouteTableIds,omitempty" type:"Struct"`
 	// The route table ID.
 	//
 	// example:
@@ -36110,6 +36935,11 @@ func (s *DescribeNetworksResponseBodyNetworksNetwork) SetEnsRegionId(v string) *
 	return s
 }
 
+func (s *DescribeNetworksResponseBodyNetworksNetwork) SetGatewayRouteTableId(v string) *DescribeNetworksResponseBodyNetworksNetwork {
+	s.GatewayRouteTableId = &v
+	return s
+}
+
 func (s *DescribeNetworksResponseBodyNetworksNetwork) SetNetworkAclId(v string) *DescribeNetworksResponseBodyNetworksNetwork {
 	s.NetworkAclId = &v
 	return s
@@ -36125,6 +36955,16 @@ func (s *DescribeNetworksResponseBodyNetworksNetwork) SetNetworkName(v string) *
 	return s
 }
 
+func (s *DescribeNetworksResponseBodyNetworksNetwork) SetRouteTableId(v string) *DescribeNetworksResponseBodyNetworksNetwork {
+	s.RouteTableId = &v
+	return s
+}
+
+func (s *DescribeNetworksResponseBodyNetworksNetwork) SetRouteTableIds(v *DescribeNetworksResponseBodyNetworksNetworkRouteTableIds) *DescribeNetworksResponseBodyNetworksNetwork {
+	s.RouteTableIds = v
+	return s
+}
+
 func (s *DescribeNetworksResponseBodyNetworksNetwork) SetRouterTableId(v string) *DescribeNetworksResponseBodyNetworksNetwork {
 	s.RouterTableId = &v
 	return s
@@ -36137,6 +36977,23 @@ func (s *DescribeNetworksResponseBodyNetworksNetwork) SetStatus(v string) *Descr
 
 func (s *DescribeNetworksResponseBodyNetworksNetwork) SetVSwitchIds(v *DescribeNetworksResponseBodyNetworksNetworkVSwitchIds) *DescribeNetworksResponseBodyNetworksNetwork {
 	s.VSwitchIds = v
+	return s
+}
+
+type DescribeNetworksResponseBodyNetworksNetworkRouteTableIds struct {
+	RouteTableId []*string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty" type:"Repeated"`
+}
+
+func (s DescribeNetworksResponseBodyNetworksNetworkRouteTableIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNetworksResponseBodyNetworksNetworkRouteTableIds) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetworksResponseBodyNetworksNetworkRouteTableIds) SetRouteTableId(v []*string) *DescribeNetworksResponseBodyNetworksNetworkRouteTableIds {
+	s.RouteTableId = v
 	return s
 }
 
@@ -39433,20 +40290,27 @@ func (s *DescribeSDGResponse) SetBody(v *DescribeSDGResponseBody) *DescribeSDGRe
 }
 
 type DescribeSDGDeploymentStatusRequest struct {
-	DeploymentType *string   `json:"DeploymentType,omitempty" xml:"DeploymentType,omitempty"`
-	InstanceIds    []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// The deployment type.
+	//
+	// example:
+	//
+	// shared
+	DeploymentType *string `json:"DeploymentType,omitempty" xml:"DeploymentType,omitempty"`
+	// IDs of Android in Container (AIC) instances.
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// The number of the page to return. Pages start from page **1**. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries returned on each page.
 	//
 	// example:
 	//
 	// 10
-	PageSize  *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The IDs of the nodes.
 	RegionIds []*string `json:"RegionIds,omitempty" xml:"RegionIds,omitempty" type:"Repeated"`
 	// The ID of the SDG.
 	//
@@ -39455,7 +40319,12 @@ type DescribeSDGDeploymentStatusRequest struct {
 	// example:
 	//
 	// sdg-xxxx
-	SDGId  *string `json:"SDGId,omitempty" xml:"SDGId,omitempty"`
+	SDGId *string `json:"SDGId,omitempty" xml:"SDGId,omitempty"`
+	// The deployment status of the SDG.
+	//
+	// example:
+	//
+	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -39503,7 +40372,13 @@ func (s *DescribeSDGDeploymentStatusRequest) SetStatus(v string) *DescribeSDGDep
 }
 
 type DescribeSDGDeploymentStatusShrinkRequest struct {
-	DeploymentType    *string `json:"DeploymentType,omitempty" xml:"DeploymentType,omitempty"`
+	// The deployment type.
+	//
+	// example:
+	//
+	// shared
+	DeploymentType *string `json:"DeploymentType,omitempty" xml:"DeploymentType,omitempty"`
+	// IDs of Android in Container (AIC) instances.
 	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
 	// The number of the page to return. Pages start from page **1**. Default value: **1**.
 	//
@@ -39511,12 +40386,13 @@ type DescribeSDGDeploymentStatusShrinkRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries returned on each page.
 	//
 	// example:
 	//
 	// 10
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The IDs of the nodes.
 	RegionIdsShrink *string `json:"RegionIds,omitempty" xml:"RegionIds,omitempty"`
 	// The ID of the SDG.
 	//
@@ -39525,7 +40401,12 @@ type DescribeSDGDeploymentStatusShrinkRequest struct {
 	// example:
 	//
 	// sdg-xxxx
-	SDGId  *string `json:"SDGId,omitempty" xml:"SDGId,omitempty"`
+	SDGId *string `json:"SDGId,omitempty" xml:"SDGId,omitempty"`
+	// The deployment status of the SDG.
+	//
+	// example:
+	//
+	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -39573,7 +40454,7 @@ func (s *DescribeSDGDeploymentStatusShrinkRequest) SetStatus(v string) *Describe
 }
 
 type DescribeSDGDeploymentStatusResponseBody struct {
-	// The deployment information of the SDG.
+	// The list of SDG deployment information.
 	DeploymentStatus []*DescribeSDGDeploymentStatusResponseBodyDeploymentStatus `json:"DeploymentStatus,omitempty" xml:"DeploymentStatus,omitempty" type:"Repeated"`
 	// The page number. Pages start from page 1. Default value: 1
 	//
@@ -39587,7 +40468,7 @@ type DescribeSDGDeploymentStatusResponseBody struct {
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -39653,14 +40534,19 @@ type DescribeSDGDeploymentStatusResponseBodyDeploymentStatus struct {
 	//
 	// overlay
 	MountType *string `json:"MountType,omitempty" xml:"MountType,omitempty"`
-	Phase     *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// The deployment phase of the SDG.
+	//
+	// example:
+	//
+	// attach
+	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
 	// The ID of the edge node.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// the deployment status of the shared data group SDG.
+	// The deployment status of the SDG.
 	//
 	// Valid values:
 	//
@@ -40660,13 +41546,13 @@ type DescribeSecurityGroupsRequest struct {
 	//
 	// 	- Pages start from page 1.
 	//
-	// 	- Default value: 1.
+	// 	- Default value: 1
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
 	// 	- Maximum value: 50.
 	//
@@ -40725,7 +41611,7 @@ type DescribeSecurityGroupsResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -40798,7 +41684,7 @@ func (s *DescribeSecurityGroupsResponseBodySecurityGroups) SetSecurityGroup(v []
 }
 
 type DescribeSecurityGroupsResponseBodySecurityGroupsSecurityGroup struct {
-	// The time when the security group was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format. The time is displayed in UTC. The format is yyyy-MM-ddThh:mmZ.
+	// The creation time. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -40816,6 +41702,10 @@ type DescribeSecurityGroupsResponseBodySecurityGroupsSecurityGroup struct {
 	//
 	// 5
 	InstanceCount *int32 `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
+	// The list of instance IDs.
+	InstanceIds *DescribeSecurityGroupsResponseBodySecurityGroupsSecurityGroupInstanceIds `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Struct"`
+	// The IDs of ENIs.
+	NetworkInterfaceIds *DescribeSecurityGroupsResponseBodySecurityGroupsSecurityGroupNetworkInterfaceIds `json:"NetworkInterfaceIds,omitempty" xml:"NetworkInterfaceIds,omitempty" type:"Struct"`
 	// The ID of the security group.
 	//
 	// example:
@@ -40853,6 +41743,16 @@ func (s *DescribeSecurityGroupsResponseBodySecurityGroupsSecurityGroup) SetInsta
 	return s
 }
 
+func (s *DescribeSecurityGroupsResponseBodySecurityGroupsSecurityGroup) SetInstanceIds(v *DescribeSecurityGroupsResponseBodySecurityGroupsSecurityGroupInstanceIds) *DescribeSecurityGroupsResponseBodySecurityGroupsSecurityGroup {
+	s.InstanceIds = v
+	return s
+}
+
+func (s *DescribeSecurityGroupsResponseBodySecurityGroupsSecurityGroup) SetNetworkInterfaceIds(v *DescribeSecurityGroupsResponseBodySecurityGroupsSecurityGroupNetworkInterfaceIds) *DescribeSecurityGroupsResponseBodySecurityGroupsSecurityGroup {
+	s.NetworkInterfaceIds = v
+	return s
+}
+
 func (s *DescribeSecurityGroupsResponseBodySecurityGroupsSecurityGroup) SetSecurityGroupId(v string) *DescribeSecurityGroupsResponseBodySecurityGroupsSecurityGroup {
 	s.SecurityGroupId = &v
 	return s
@@ -40860,6 +41760,40 @@ func (s *DescribeSecurityGroupsResponseBodySecurityGroupsSecurityGroup) SetSecur
 
 func (s *DescribeSecurityGroupsResponseBodySecurityGroupsSecurityGroup) SetSecurityGroupName(v string) *DescribeSecurityGroupsResponseBodySecurityGroupsSecurityGroup {
 	s.SecurityGroupName = &v
+	return s
+}
+
+type DescribeSecurityGroupsResponseBodySecurityGroupsSecurityGroupInstanceIds struct {
+	InstanceId []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
+}
+
+func (s DescribeSecurityGroupsResponseBodySecurityGroupsSecurityGroupInstanceIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSecurityGroupsResponseBodySecurityGroupsSecurityGroupInstanceIds) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSecurityGroupsResponseBodySecurityGroupsSecurityGroupInstanceIds) SetInstanceId(v []*string) *DescribeSecurityGroupsResponseBodySecurityGroupsSecurityGroupInstanceIds {
+	s.InstanceId = v
+	return s
+}
+
+type DescribeSecurityGroupsResponseBodySecurityGroupsSecurityGroupNetworkInterfaceIds struct {
+	NetworkInterfaceId []*string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty" type:"Repeated"`
+}
+
+func (s DescribeSecurityGroupsResponseBodySecurityGroupsSecurityGroupNetworkInterfaceIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSecurityGroupsResponseBodySecurityGroupsSecurityGroupNetworkInterfaceIds) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSecurityGroupsResponseBodySecurityGroupsSecurityGroupNetworkInterfaceIds) SetNetworkInterfaceId(v []*string) *DescribeSecurityGroupsResponseBodySecurityGroupsSecurityGroupNetworkInterfaceIds {
+	s.NetworkInterfaceId = v
 	return s
 }
 
@@ -40968,13 +41902,16 @@ type DescribeSelfImagesResponseBody struct {
 	// 0
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The image information.
-	Images *DescribeSelfImagesResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Struct"`
+	Images     *DescribeSelfImagesResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Struct"`
+	PageNumber *string                               `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *string                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The request ID.
 	//
 	// example:
 	//
 	// A8B8EB73-B4FD-4262-8EF6-680DF39C9BA0
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeSelfImagesResponseBody) String() string {
@@ -40995,8 +41932,23 @@ func (s *DescribeSelfImagesResponseBody) SetImages(v *DescribeSelfImagesResponse
 	return s
 }
 
+func (s *DescribeSelfImagesResponseBody) SetPageNumber(v string) *DescribeSelfImagesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeSelfImagesResponseBody) SetPageSize(v string) *DescribeSelfImagesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
 func (s *DescribeSelfImagesResponseBody) SetRequestId(v string) *DescribeSelfImagesResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSelfImagesResponseBody) SetTotalCount(v string) *DescribeSelfImagesResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -41039,7 +41991,8 @@ type DescribeSelfImagesResponseBodyImagesImage struct {
 	// example:
 	//
 	// 2017-12-08T12:10:03Z
-	CreationTime       *string                                                      `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The mappings between the disk and the snapshot in the image.
 	DiskDeviceMappings *DescribeSelfImagesResponseBodyImagesImageDiskDeviceMappings `json:"DiskDeviceMappings,omitempty" xml:"DiskDeviceMappings,omitempty" type:"Struct"`
 	// The ID of the image.
 	//
@@ -41105,6 +42058,12 @@ type DescribeSelfImagesResponseBodyImagesImage struct {
 	//
 	// centos
 	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-shenzhen
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The snapshot ID.
 	//
 	// example:
@@ -41203,6 +42162,11 @@ func (s *DescribeSelfImagesResponseBodyImagesImage) SetPlatform(v string) *Descr
 	return s
 }
 
+func (s *DescribeSelfImagesResponseBodyImagesImage) SetRegionId(v string) *DescribeSelfImagesResponseBodyImagesImage {
+	s.RegionId = &v
+	return s
+}
+
 func (s *DescribeSelfImagesResponseBodyImagesImage) SetSnapshotId(v string) *DescribeSelfImagesResponseBodyImagesImage {
 	s.SnapshotId = &v
 	return s
@@ -41231,9 +42195,37 @@ func (s *DescribeSelfImagesResponseBodyImagesImageDiskDeviceMappings) SetDiskDev
 }
 
 type DescribeSelfImagesResponseBodyImagesImageDiskDeviceMappingsDiskDeviceMapping struct {
-	Format  *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	Size    *string `json:"Size,omitempty" xml:"Size,omitempty"`
-	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The format of the image.
+	//
+	// example:
+	//
+	// The format of the image.
+	//
+	// raw
+	//
+	// qcow2
+	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	// The size of the disk. Unit: GiB.
+	//
+	// example:
+	//
+	// 100
+	Size *string `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The type of the disk. Valid values:
+	//
+	// 	- system: system disk.
+	//
+	// 	- data: data disk.
+	//
+	// example:
+	//
+	// Data
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The ID of image.
+	//
+	// example:
+	//
+	// i-test
 	ImageId *string `json:"imageId,omitempty" xml:"imageId,omitempty"`
 }
 
@@ -42169,7 +43161,12 @@ type DescribeSnapshotsRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	EnsRegionId  *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The node information.
+	//
+	// example:
+	//
+	// ["cn-suzhou-telecom","cn-chengdu-telecom"]
 	EnsRegionIds *string `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty"`
 	// The ID of the instance.
 	//
@@ -42177,7 +43174,7 @@ type DescribeSnapshotsRequest struct {
 	//
 	// i-bp67acfmxazb4p****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
@@ -42194,7 +43191,12 @@ type DescribeSnapshotsRequest struct {
 	// example:
 	//
 	// sp-bp67acfmxazb4p****
-	SnapshotId   *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	// The name of the snapshot. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+	//
+	// example:
+	//
+	// testSnapshotName
 	SnapshotName *string `json:"SnapshotName,omitempty" xml:"SnapshotName,omitempty"`
 }
 
@@ -42536,14 +43538,24 @@ type DescribeSnatAttributeResponseBody struct {
 	// example:
 	//
 	// 101.10. XX.XX/24
-	DestCIDR *string `json:"DestCIDR,omitempty" xml:"DestCIDR,omitempty"`
+	DestCIDR    *string `json:"DestCIDR,omitempty" xml:"DestCIDR,omitempty"`
+	EipAffinity *bool   `json:"EipAffinity,omitempty" xml:"EipAffinity,omitempty"`
 	// The timeout period. Unit: seconds.
 	//
 	// example:
 	//
 	// 10
 	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
-	IspAffinity *bool  `json:"IspAffinity,omitempty" xml:"IspAffinity,omitempty"`
+	// Whether to enable operator affinity. Value taking:
+	//
+	// - false:Do not open.
+	//
+	// - true:Open.
+	//
+	// example:
+	//
+	// true
+	IspAffinity *bool `json:"IspAffinity,omitempty" xml:"IspAffinity,omitempty"`
 	// The ID of the Network Address Translation (NAT) gateway.
 	//
 	// example:
@@ -42641,6 +43653,11 @@ func (s *DescribeSnatAttributeResponseBody) SetCreationTime(v string) *DescribeS
 
 func (s *DescribeSnatAttributeResponseBody) SetDestCIDR(v string) *DescribeSnatAttributeResponseBody {
 	s.DestCIDR = &v
+	return s
+}
+
+func (s *DescribeSnatAttributeResponseBody) SetEipAffinity(v bool) *DescribeSnatAttributeResponseBody {
+	s.EipAffinity = &v
 	return s
 }
 
@@ -42834,7 +43851,8 @@ type DescribeSnatTableEntriesRequest struct {
 	// example:
 	//
 	// 58.XXXX.XXX.29
-	SnatIp *string `json:"SnatIp,omitempty" xml:"SnatIp,omitempty"`
+	SnatIp  *string   `json:"SnatIp,omitempty" xml:"SnatIp,omitempty"`
+	SnatIps []*string `json:"SnatIps,omitempty" xml:"SnatIps,omitempty" type:"Repeated"`
 	// The source CIDR block specified in the SNAT entry.
 	//
 	// example:
@@ -42878,6 +43896,11 @@ func (s *DescribeSnatTableEntriesRequest) SetSnatEntryName(v string) *DescribeSn
 
 func (s *DescribeSnatTableEntriesRequest) SetSnatIp(v string) *DescribeSnatTableEntriesRequest {
 	s.SnatIp = &v
+	return s
+}
+
+func (s *DescribeSnatTableEntriesRequest) SetSnatIps(v []*string) *DescribeSnatTableEntriesRequest {
+	s.SnatIps = v
 	return s
 }
 
@@ -42949,13 +43972,23 @@ func (s *DescribeSnatTableEntriesResponseBody) SetTotalCount(v int32) *DescribeS
 }
 
 type DescribeSnatTableEntriesResponseBodySnatTableEntries struct {
+	EipAffinity *bool `json:"EipAffinity,omitempty" xml:"EipAffinity,omitempty"`
 	// The timeout period for idle connections. Valid values: **1*	- to **86400**. Unit: seconds.
 	//
 	// example:
 	//
 	// 900
 	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
-	IspAffinity *bool  `json:"IspAffinity,omitempty" xml:"IspAffinity,omitempty"`
+	// Whether to enable operator affinity. Value taking:
+	//
+	// - false:Do not open.
+	//
+	// - true:Open.
+	//
+	// example:
+	//
+	// true
+	IspAffinity *bool `json:"IspAffinity,omitempty" xml:"IspAffinity,omitempty"`
 	// The ID of the NAT gateway.
 	//
 	// example:
@@ -43026,6 +44059,11 @@ func (s DescribeSnatTableEntriesResponseBodySnatTableEntries) String() string {
 
 func (s DescribeSnatTableEntriesResponseBodySnatTableEntries) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeSnatTableEntriesResponseBodySnatTableEntries) SetEipAffinity(v bool) *DescribeSnatTableEntriesResponseBodySnatTableEntries {
+	s.EipAffinity = &v
+	return s
 }
 
 func (s *DescribeSnatTableEntriesResponseBodySnatTableEntries) SetIdleTimeout(v int32) *DescribeSnatTableEntriesResponseBodySnatTableEntries {
@@ -44022,34 +45060,295 @@ func (s *DescribeUserBandWidthDataResponse) SetBody(v *DescribeUserBandWidthData
 	return s
 }
 
+type DescribeVSwitchAttributesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vsw-5****
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+}
+
+func (s DescribeVSwitchAttributesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVSwitchAttributesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVSwitchAttributesRequest) SetVSwitchId(v string) *DescribeVSwitchAttributesRequest {
+	s.VSwitchId = &v
+	return s
+}
+
+type DescribeVSwitchAttributesResponseBody struct {
+	// example:
+	//
+	// 253
+	AvailableIpAddressCount *int64 `json:"AvailableIpAddressCount,omitempty" xml:"AvailableIpAddressCount,omitempty"`
+	// example:
+	//
+	// 10.0.0.0/24
+	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	// example:
+	//
+	// 2019-06-01T00:00:00Z
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// example:
+	//
+	// This is my vswitch.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// cn-xian-unicom
+	EnsRegionId     *string                                               `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	HaVipIds        *DescribeVSwitchAttributesResponseBodyHaVipIds        `json:"HaVipIds,omitempty" xml:"HaVipIds,omitempty" type:"Struct"`
+	InstanceIds     *DescribeVSwitchAttributesResponseBodyInstanceIds     `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Struct"`
+	LoadBalancerIds *DescribeVSwitchAttributesResponseBodyLoadBalancerIds `json:"LoadBalancerIds,omitempty" xml:"LoadBalancerIds,omitempty" type:"Struct"`
+	NatGatewayIds   *DescribeVSwitchAttributesResponseBodyNatGatewayIds   `json:"NatGatewayIds,omitempty" xml:"NatGatewayIds,omitempty" type:"Struct"`
+	// example:
+	//
+	// n-257gqcdfvx6n****
+	NetworkId           *string                                                   `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	NetworkInterfaceIds *DescribeVSwitchAttributesResponseBodyNetworkInterfaceIds `json:"NetworkInterfaceIds,omitempty" xml:"NetworkInterfaceIds,omitempty" type:"Struct"`
+	// example:
+	//
+	// C0003****2A8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// vsw-5****
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// example:
+	//
+	// Test-switch
+	VSwitchName *string `json:"VSwitchName,omitempty" xml:"VSwitchName,omitempty"`
+}
+
+func (s DescribeVSwitchAttributesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVSwitchAttributesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVSwitchAttributesResponseBody) SetAvailableIpAddressCount(v int64) *DescribeVSwitchAttributesResponseBody {
+	s.AvailableIpAddressCount = &v
+	return s
+}
+
+func (s *DescribeVSwitchAttributesResponseBody) SetCidrBlock(v string) *DescribeVSwitchAttributesResponseBody {
+	s.CidrBlock = &v
+	return s
+}
+
+func (s *DescribeVSwitchAttributesResponseBody) SetCreatedTime(v string) *DescribeVSwitchAttributesResponseBody {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *DescribeVSwitchAttributesResponseBody) SetDescription(v string) *DescribeVSwitchAttributesResponseBody {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeVSwitchAttributesResponseBody) SetEnsRegionId(v string) *DescribeVSwitchAttributesResponseBody {
+	s.EnsRegionId = &v
+	return s
+}
+
+func (s *DescribeVSwitchAttributesResponseBody) SetHaVipIds(v *DescribeVSwitchAttributesResponseBodyHaVipIds) *DescribeVSwitchAttributesResponseBody {
+	s.HaVipIds = v
+	return s
+}
+
+func (s *DescribeVSwitchAttributesResponseBody) SetInstanceIds(v *DescribeVSwitchAttributesResponseBodyInstanceIds) *DescribeVSwitchAttributesResponseBody {
+	s.InstanceIds = v
+	return s
+}
+
+func (s *DescribeVSwitchAttributesResponseBody) SetLoadBalancerIds(v *DescribeVSwitchAttributesResponseBodyLoadBalancerIds) *DescribeVSwitchAttributesResponseBody {
+	s.LoadBalancerIds = v
+	return s
+}
+
+func (s *DescribeVSwitchAttributesResponseBody) SetNatGatewayIds(v *DescribeVSwitchAttributesResponseBodyNatGatewayIds) *DescribeVSwitchAttributesResponseBody {
+	s.NatGatewayIds = v
+	return s
+}
+
+func (s *DescribeVSwitchAttributesResponseBody) SetNetworkId(v string) *DescribeVSwitchAttributesResponseBody {
+	s.NetworkId = &v
+	return s
+}
+
+func (s *DescribeVSwitchAttributesResponseBody) SetNetworkInterfaceIds(v *DescribeVSwitchAttributesResponseBodyNetworkInterfaceIds) *DescribeVSwitchAttributesResponseBody {
+	s.NetworkInterfaceIds = v
+	return s
+}
+
+func (s *DescribeVSwitchAttributesResponseBody) SetRequestId(v string) *DescribeVSwitchAttributesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeVSwitchAttributesResponseBody) SetStatus(v string) *DescribeVSwitchAttributesResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeVSwitchAttributesResponseBody) SetVSwitchId(v string) *DescribeVSwitchAttributesResponseBody {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *DescribeVSwitchAttributesResponseBody) SetVSwitchName(v string) *DescribeVSwitchAttributesResponseBody {
+	s.VSwitchName = &v
+	return s
+}
+
+type DescribeVSwitchAttributesResponseBodyHaVipIds struct {
+	HaVipId []*string `json:"HaVipId,omitempty" xml:"HaVipId,omitempty" type:"Repeated"`
+}
+
+func (s DescribeVSwitchAttributesResponseBodyHaVipIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVSwitchAttributesResponseBodyHaVipIds) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVSwitchAttributesResponseBodyHaVipIds) SetHaVipId(v []*string) *DescribeVSwitchAttributesResponseBodyHaVipIds {
+	s.HaVipId = v
+	return s
+}
+
+type DescribeVSwitchAttributesResponseBodyInstanceIds struct {
+	InstanceId []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
+}
+
+func (s DescribeVSwitchAttributesResponseBodyInstanceIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVSwitchAttributesResponseBodyInstanceIds) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVSwitchAttributesResponseBodyInstanceIds) SetInstanceId(v []*string) *DescribeVSwitchAttributesResponseBodyInstanceIds {
+	s.InstanceId = v
+	return s
+}
+
+type DescribeVSwitchAttributesResponseBodyLoadBalancerIds struct {
+	LoadBalancerId []*string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty" type:"Repeated"`
+}
+
+func (s DescribeVSwitchAttributesResponseBodyLoadBalancerIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVSwitchAttributesResponseBodyLoadBalancerIds) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVSwitchAttributesResponseBodyLoadBalancerIds) SetLoadBalancerId(v []*string) *DescribeVSwitchAttributesResponseBodyLoadBalancerIds {
+	s.LoadBalancerId = v
+	return s
+}
+
+type DescribeVSwitchAttributesResponseBodyNatGatewayIds struct {
+	NatGatewayId []*string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty" type:"Repeated"`
+}
+
+func (s DescribeVSwitchAttributesResponseBodyNatGatewayIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVSwitchAttributesResponseBodyNatGatewayIds) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVSwitchAttributesResponseBodyNatGatewayIds) SetNatGatewayId(v []*string) *DescribeVSwitchAttributesResponseBodyNatGatewayIds {
+	s.NatGatewayId = v
+	return s
+}
+
+type DescribeVSwitchAttributesResponseBodyNetworkInterfaceIds struct {
+	NetworkInterfaceId []*string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty" type:"Repeated"`
+}
+
+func (s DescribeVSwitchAttributesResponseBodyNetworkInterfaceIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVSwitchAttributesResponseBodyNetworkInterfaceIds) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVSwitchAttributesResponseBodyNetworkInterfaceIds) SetNetworkInterfaceId(v []*string) *DescribeVSwitchAttributesResponseBodyNetworkInterfaceIds {
+	s.NetworkInterfaceId = v
+	return s
+}
+
+type DescribeVSwitchAttributesResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeVSwitchAttributesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeVSwitchAttributesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVSwitchAttributesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVSwitchAttributesResponse) SetHeaders(v map[string]*string) *DescribeVSwitchAttributesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeVSwitchAttributesResponse) SetStatusCode(v int32) *DescribeVSwitchAttributesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeVSwitchAttributesResponse) SetBody(v *DescribeVSwitchAttributesResponseBody) *DescribeVSwitchAttributesResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeVSwitchesRequest struct {
-	// The ID of the edge node.
+	// The ID of the ENS node.
 	//
 	// example:
 	//
 	// cn-xian-unicom
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// The ID of the VPC to which the vSwitches belong.
+	// The node information.
+	EnsRegionIds []*string `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty" type:"Repeated"`
+	// The ID of the VPC to which the vSwitch belongs.
 	//
 	// example:
 	//
 	// vpc-25cdvfeq58pl****
 	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
-	// The order in which you want to sort the returned data. Example: {"EnsRegionId":"desc"}.
-	//
-	// By default, the nodes are sorted by IDs in descending order.
-	//
-	// example:
-	//
-	// {"EnsRegionId":"desc"}
-	OrderByParams *string `json:"OrderByParams,omitempty" xml:"OrderByParams,omitempty"`
-	// The page number of the returned page. Default value: **1**.
+	// The page number. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: **1 to 50**. Default value: **10**.
+	// The number of entries per page. Maximum value: **50**. Default value: **10**.
 	//
 	// example:
 	//
@@ -44061,6 +45360,8 @@ type DescribeVSwitchesRequest struct {
 	//
 	// vsw-5m9xhlq8oh***
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The list of vSwitches in the network.
+	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
 	// The name of the vSwitch.
 	//
 	// example:
@@ -44082,13 +45383,13 @@ func (s *DescribeVSwitchesRequest) SetEnsRegionId(v string) *DescribeVSwitchesRe
 	return s
 }
 
-func (s *DescribeVSwitchesRequest) SetNetworkId(v string) *DescribeVSwitchesRequest {
-	s.NetworkId = &v
+func (s *DescribeVSwitchesRequest) SetEnsRegionIds(v []*string) *DescribeVSwitchesRequest {
+	s.EnsRegionIds = v
 	return s
 }
 
-func (s *DescribeVSwitchesRequest) SetOrderByParams(v string) *DescribeVSwitchesRequest {
-	s.OrderByParams = &v
+func (s *DescribeVSwitchesRequest) SetNetworkId(v string) *DescribeVSwitchesRequest {
+	s.NetworkId = &v
 	return s
 }
 
@@ -44107,13 +45408,18 @@ func (s *DescribeVSwitchesRequest) SetVSwitchId(v string) *DescribeVSwitchesRequ
 	return s
 }
 
+func (s *DescribeVSwitchesRequest) SetVSwitchIds(v []*string) *DescribeVSwitchesRequest {
+	s.VSwitchIds = v
+	return s
+}
+
 func (s *DescribeVSwitchesRequest) SetVSwitchName(v string) *DescribeVSwitchesRequest {
 	s.VSwitchName = &v
 	return s
 }
 
 type DescribeVSwitchesResponseBody struct {
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
@@ -44131,7 +45437,7 @@ type DescribeVSwitchesResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries in the list.
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -44198,7 +45504,7 @@ type DescribeVSwitchesResponseBodyVSwitchesVSwitch struct {
 	//
 	// 10.21.224.0/22
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	// The time when the vSwitch was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+	// The time when the VPC was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -44210,7 +45516,7 @@ type DescribeVSwitchesResponseBodyVSwitchesVSwitch struct {
 	//
 	// VSwitchDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the edge node.
+	// The ID of the ENS node.
 	//
 	// example:
 	//
@@ -44222,7 +45528,7 @@ type DescribeVSwitchesResponseBodyVSwitchesVSwitch struct {
 	//
 	// 1024
 	FreeIpCount *int64 `json:"FreeIpCount,omitempty" xml:"FreeIpCount,omitempty"`
-	// The ID of the network.
+	// The ID of the virtual private cloud (VPC).
 	//
 	// example:
 	//
@@ -44434,8 +45740,12 @@ func (s *DetachDiskResponse) SetBody(v *DetachDiskResponseBody) *DetachDiskRespo
 }
 
 type DetachInstanceSDGRequest struct {
+	// The IDs of the instances.
+	//
 	// This parameter is required.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// The ID of the SDG.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -44463,8 +45773,12 @@ func (s *DetachInstanceSDGRequest) SetSDGId(v string) *DetachInstanceSDGRequest 
 }
 
 type DetachInstanceSDGShrinkRequest struct {
+	// The IDs of the instances.
+	//
 	// This parameter is required.
 	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	// The ID of the SDG.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -44492,7 +45806,10 @@ func (s *DetachInstanceSDGShrinkRequest) SetSDGId(v string) *DetachInstanceSDGSh
 }
 
 type DetachInstanceSDGResponseBody struct {
+	// The returned data object.
 	Data *DetachInstanceSDGResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CEF72CEB-54B6-4AE8-B225-F876FF7BA984
@@ -44518,11 +45835,20 @@ func (s *DetachInstanceSDGResponseBody) SetRequestId(v string) *DetachInstanceSD
 }
 
 type DetachInstanceSDGResponseBodyData struct {
+	// The response message. Success is returned for a successful request.
+	//
 	// example:
 	//
 	// success
-	Message *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
-	Result  *DetachInstanceSDGResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The execution result of the synchronization request.
+	Result *DetachInstanceSDGResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// Indicates whether all tasks are successful. Valid values:
+	//
+	// 	- true: All tasks are successful.
+	//
+	// 	- false: Failed tasks exist.
+	//
 	// example:
 	//
 	// true
@@ -44553,11 +45879,16 @@ func (s *DetachInstanceSDGResponseBodyData) SetSuccess(v bool) *DetachInstanceSD
 }
 
 type DetachInstanceSDGResponseBodyDataResult struct {
+	// The number of failed tasks.
+	//
 	// example:
 	//
 	// 0
-	FailedCount *int64                                                `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
+	FailedCount *int64 `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
+	// Details about failed tasks.
 	FailedItems []*DetachInstanceSDGResponseBodyDataResultFailedItems `json:"FailedItems,omitempty" xml:"FailedItems,omitempty" type:"Repeated"`
+	// The number of successful tasks.
+	//
 	// example:
 	//
 	// 1
@@ -44588,10 +45919,14 @@ func (s *DetachInstanceSDGResponseBodyDataResult) SetSuccessCount(v string) *Det
 }
 
 type DetachInstanceSDGResponseBodyDataResultFailedItems struct {
+	// The error message.
+	//
 	// example:
 	//
 	// sdg not found
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// The ID of the instance.
+	//
 	// example:
 	//
 	// aic-xxxxx-0
@@ -47724,6 +49059,61 @@ func (s *ListObjectsResponse) SetBody(v *ListObjectsResponseBody) *ListObjectsRe
 	return s
 }
 
+type ListProductAbilitiesResponseBody struct {
+	ProductAbilities []*string `json:"ProductAbilities,omitempty" xml:"ProductAbilities,omitempty" type:"Repeated"`
+	// example:
+	//
+	// xxxxx-75ED-422E-A022-7121FA18C968
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListProductAbilitiesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProductAbilitiesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListProductAbilitiesResponseBody) SetProductAbilities(v []*string) *ListProductAbilitiesResponseBody {
+	s.ProductAbilities = v
+	return s
+}
+
+func (s *ListProductAbilitiesResponseBody) SetRequestId(v string) *ListProductAbilitiesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListProductAbilitiesResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListProductAbilitiesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListProductAbilitiesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProductAbilitiesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListProductAbilitiesResponse) SetHeaders(v map[string]*string) *ListProductAbilitiesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListProductAbilitiesResponse) SetStatusCode(v int32) *ListProductAbilitiesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListProductAbilitiesResponse) SetBody(v *ListProductAbilitiesResponseBody) *ListProductAbilitiesResponse {
+	s.Body = v
+	return s
+}
+
 type ListTagResourcesRequest struct {
 	// The token of the first page to query.
 	//
@@ -48050,6 +49440,95 @@ func (s *ModifyEnsEipAddressAttributeResponse) SetBody(v *ModifyEnsEipAddressAtt
 	return s
 }
 
+type ModifyEnsRouteEntryRequest struct {
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rte-5****
+	RouteEntryId *string `json:"RouteEntryId,omitempty" xml:"RouteEntryId,omitempty"`
+	// example:
+	//
+	// test
+	RouteEntryName *string `json:"RouteEntryName,omitempty" xml:"RouteEntryName,omitempty"`
+}
+
+func (s ModifyEnsRouteEntryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyEnsRouteEntryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyEnsRouteEntryRequest) SetDescription(v string) *ModifyEnsRouteEntryRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *ModifyEnsRouteEntryRequest) SetRouteEntryId(v string) *ModifyEnsRouteEntryRequest {
+	s.RouteEntryId = &v
+	return s
+}
+
+func (s *ModifyEnsRouteEntryRequest) SetRouteEntryName(v string) *ModifyEnsRouteEntryRequest {
+	s.RouteEntryName = &v
+	return s
+}
+
+type ModifyEnsRouteEntryResponseBody struct {
+	// example:
+	//
+	// C0003E8B-B930-4F59-ADC0-0E209A9012A8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyEnsRouteEntryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyEnsRouteEntryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyEnsRouteEntryResponseBody) SetRequestId(v string) *ModifyEnsRouteEntryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyEnsRouteEntryResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyEnsRouteEntryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyEnsRouteEntryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyEnsRouteEntryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyEnsRouteEntryResponse) SetHeaders(v map[string]*string) *ModifyEnsRouteEntryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyEnsRouteEntryResponse) SetStatusCode(v int32) *ModifyEnsRouteEntryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyEnsRouteEntryResponse) SetBody(v *ModifyEnsRouteEntryResponseBody) *ModifyEnsRouteEntryResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyEpnInstanceRequest struct {
 	// The ID of the EPN instance.
 	//
@@ -48268,6 +49747,8 @@ func (s *ModifyFileSystemResponse) SetBody(v *ModifyFileSystemResponseBody) *Mod
 }
 
 type ModifyForwardEntryRequest struct {
+	ExternalIp   *string `json:"ExternalIp,omitempty" xml:"ExternalIp,omitempty"`
+	ExternalPort *string `json:"ExternalPort,omitempty" xml:"ExternalPort,omitempty"`
 	// The ID of the DNAT entry.
 	//
 	// This parameter is required.
@@ -48287,7 +49768,10 @@ type ModifyForwardEntryRequest struct {
 	// example:
 	//
 	// 80
-	HealthCheckPort *int32 `json:"HealthCheckPort,omitempty" xml:"HealthCheckPort,omitempty"`
+	HealthCheckPort *int32  `json:"HealthCheckPort,omitempty" xml:"HealthCheckPort,omitempty"`
+	InternalIp      *string `json:"InternalIp,omitempty" xml:"InternalIp,omitempty"`
+	InternalPort    *string `json:"InternalPort,omitempty" xml:"InternalPort,omitempty"`
+	IpProtocol      *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
 }
 
 func (s ModifyForwardEntryRequest) String() string {
@@ -48296,6 +49780,16 @@ func (s ModifyForwardEntryRequest) String() string {
 
 func (s ModifyForwardEntryRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyForwardEntryRequest) SetExternalIp(v string) *ModifyForwardEntryRequest {
+	s.ExternalIp = &v
+	return s
+}
+
+func (s *ModifyForwardEntryRequest) SetExternalPort(v string) *ModifyForwardEntryRequest {
+	s.ExternalPort = &v
+	return s
 }
 
 func (s *ModifyForwardEntryRequest) SetForwardEntryId(v string) *ModifyForwardEntryRequest {
@@ -48310,6 +49804,21 @@ func (s *ModifyForwardEntryRequest) SetForwardEntryName(v string) *ModifyForward
 
 func (s *ModifyForwardEntryRequest) SetHealthCheckPort(v int32) *ModifyForwardEntryRequest {
 	s.HealthCheckPort = &v
+	return s
+}
+
+func (s *ModifyForwardEntryRequest) SetInternalIp(v string) *ModifyForwardEntryRequest {
+	s.InternalIp = &v
+	return s
+}
+
+func (s *ModifyForwardEntryRequest) SetInternalPort(v string) *ModifyForwardEntryRequest {
+	s.InternalPort = &v
+	return s
+}
+
+func (s *ModifyForwardEntryRequest) SetIpProtocol(v string) *ModifyForwardEntryRequest {
+	s.IpProtocol = &v
 	return s
 }
 
@@ -49889,6 +51398,7 @@ func (s *ModifySnapshotAttributeResponse) SetBody(v *ModifySnapshotAttributeResp
 }
 
 type ModifySnatEntryRequest struct {
+	EipAffinity *bool `json:"EipAffinity,omitempty" xml:"EipAffinity,omitempty"`
 	// example:
 	//
 	// true
@@ -49903,6 +51413,7 @@ type ModifySnatEntryRequest struct {
 	//
 	// test0
 	SnatEntryName *string `json:"SnatEntryName,omitempty" xml:"SnatEntryName,omitempty"`
+	SnatIp        *string `json:"SnatIp,omitempty" xml:"SnatIp,omitempty"`
 }
 
 func (s ModifySnatEntryRequest) String() string {
@@ -49911,6 +51422,11 @@ func (s ModifySnatEntryRequest) String() string {
 
 func (s ModifySnatEntryRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifySnatEntryRequest) SetEipAffinity(v bool) *ModifySnatEntryRequest {
+	s.EipAffinity = &v
+	return s
 }
 
 func (s *ModifySnatEntryRequest) SetIspAffinity(v bool) *ModifySnatEntryRequest {
@@ -49925,6 +51441,11 @@ func (s *ModifySnatEntryRequest) SetSnatEntryId(v string) *ModifySnatEntryReques
 
 func (s *ModifySnatEntryRequest) SetSnatEntryName(v string) *ModifySnatEntryRequest {
 	s.SnatEntryName = &v
+	return s
+}
+
+func (s *ModifySnatEntryRequest) SetSnatIp(v string) *ModifySnatEntryRequest {
+	s.SnatIp = &v
 	return s
 }
 
@@ -50083,8 +51604,12 @@ func (s *ModifyVSwitchAttributeResponse) SetBody(v *ModifyVSwitchAttributeRespon
 }
 
 type MountInstanceSDGRequest struct {
+	// The IDs of the instances.
+	//
 	// This parameter is required.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// The ID of the SDG.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -50112,8 +51637,12 @@ func (s *MountInstanceSDGRequest) SetSDGId(v string) *MountInstanceSDGRequest {
 }
 
 type MountInstanceSDGShrinkRequest struct {
+	// The IDs of the instances.
+	//
 	// This parameter is required.
 	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	// The ID of the SDG.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -50141,7 +51670,10 @@ func (s *MountInstanceSDGShrinkRequest) SetSDGId(v string) *MountInstanceSDGShri
 }
 
 type MountInstanceSDGResponseBody struct {
+	// The returned data object.
 	Data *MountInstanceSDGResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F3B261DD-3858-4D3C-877D-303ADF374600
@@ -50167,11 +51699,20 @@ func (s *MountInstanceSDGResponseBody) SetRequestId(v string) *MountInstanceSDGR
 }
 
 type MountInstanceSDGResponseBodyData struct {
+	// The response message. Success is returned for a successful request.
+	//
 	// example:
 	//
 	// success
-	Message *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
-	Result  *MountInstanceSDGResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The execution result of the synchronization request.
+	Result *MountInstanceSDGResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// Indicates whether all tasks are successful. Valid values:
+	//
+	// 	- **true**: All tasks are successful.
+	//
+	// 	- **false**: Failed tasks exist.
+	//
 	// example:
 	//
 	// true
@@ -50202,11 +51743,16 @@ func (s *MountInstanceSDGResponseBodyData) SetSuccess(v bool) *MountInstanceSDGR
 }
 
 type MountInstanceSDGResponseBodyDataResult struct {
+	// The number of failed tasks.
+	//
 	// example:
 	//
 	// 0
-	FailedCount *int64                                               `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
+	FailedCount *int64 `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
+	// Details about failed tasks.
 	FailedItems []*MountInstanceSDGResponseBodyDataResultFailedItems `json:"FailedItems,omitempty" xml:"FailedItems,omitempty" type:"Repeated"`
+	// The number of successful tasks.
+	//
 	// example:
 	//
 	// 1
@@ -50237,10 +51783,14 @@ func (s *MountInstanceSDGResponseBodyDataResult) SetSuccessCount(v int64) *Mount
 }
 
 type MountInstanceSDGResponseBodyDataResultFailedItems struct {
+	// The error message.
+	//
 	// example:
 	//
 	// sdg not found
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// The ID of the instance.
+	//
 	// example:
 	//
 	// aic-xxxxx-0
@@ -50881,57 +52431,12 @@ func (s *PushApplicationDataResponse) SetBody(v *PushApplicationDataResponseBody
 }
 
 type PutBucketRequest struct {
-	// The access control list (ACL) of the bucket. Valid values:
-	//
-	// 	- **private*	- (default)
-	//
-	// 	- **public-read-write**
-	//
-	// 	- **public-read**
-	//
-	// example:
-	//
-	// private
 	BucketAcl *string `json:"BucketAcl,omitempty" xml:"BucketAcl,omitempty"`
-	// The name of the bucket. This parameter can contain 3 to 50 characters in length and can contain only lowercase letters, digits, and hyphens (-). The name cannot start or end with a hyphen (-).
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// test
-	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
-	// The remarks. The remarks are 0 to 128 characters in length.
-	//
-	// example:
-	//
-	// numb
-	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The scheduling scope. This parameter takes effect only when the value of the LogicalBucketType parameter is standard. Valid values:
-	//
-	// 	- **domestic**: Chinese mainland.
-	//
-	// 	- **oversea**: outside the Chinese mainland.
-	//
-	// example:
-	//
-	// domestic
-	DispatchScope *string `json:"DispatchScope,omitempty" xml:"DispatchScope,omitempty"`
-	// The region ID of the node. This parameter is required if the value of the LogicalBucketType parameter is sink.
-	//
-	// example:
-	//
-	// cn-beijing-15
-	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// The type of the bucket. Valid values:
-	//
-	// 	- **sink**: single-node bucket.
-	//
-	// 	- **standard**: bucket for global scheduling.
-	//
-	// example:
-	//
-	// sink
+	BucketName        *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
+	Comment           *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	DispatchScope     *string `json:"DispatchScope,omitempty" xml:"DispatchScope,omitempty"`
+	EnsRegionId       *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
 	LogicalBucketType *string `json:"LogicalBucketType,omitempty" xml:"LogicalBucketType,omitempty"`
 }
 
@@ -51239,7 +52744,12 @@ type PutBucketLifecycleResponseBody struct {
 	//
 	// 62373E71-5521-4620-8AAB-133CCE49357A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RuleId    *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The ID of the rule.
+	//
+	// example:
+	//
+	// b8f93xxxxx4881xxxxxc71d991
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
 func (s PutBucketLifecycleResponseBody) String() string {
@@ -52248,7 +53758,8 @@ type ReleaseInstanceResponseBody struct {
 	// example:
 	//
 	// 4EC47282-1B74-4534-BD0E-403F3EE64CAF
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s ReleaseInstanceResponseBody) String() string {
@@ -52261,6 +53772,11 @@ func (s ReleaseInstanceResponseBody) GoString() string {
 
 func (s *ReleaseInstanceResponseBody) SetRequestId(v string) *ReleaseInstanceResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *ReleaseInstanceResponseBody) SetResourceType(v string) *ReleaseInstanceResponseBody {
+	s.ResourceType = &v
 	return s
 }
 
@@ -54830,7 +56346,7 @@ type RunInstancesRequest struct {
 	//
 	// 2023-06-28T14:38:52Z
 	AutoReleaseTime *string `json:"AutoReleaseTime,omitempty" xml:"AutoReleaseTime,omitempty"`
-	// Specifies whether to enable auto-renewal. Valid values:
+	// Specifies whether to enable auto-renewal for the premium bandwidth plan. Examples:
 	//
 	// 	- **true**.
 	//
@@ -54898,7 +56414,7 @@ type RunInstancesRequest struct {
 	//
 	// instance
 	InstanceChargeStrategy *string `json:"InstanceChargeStrategy,omitempty" xml:"InstanceChargeStrategy,omitempty"`
-	// The billing method of the instance. Valid values:
+	// The billing method of the instance. Examples:
 	//
 	// 	- **PrePaid**: subscription.
 	//
@@ -54946,13 +56462,15 @@ type RunInstancesRequest struct {
 	//
 	// 1
 	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
-	// The type of the IP address. Examples:
+	// The type of the IP address. Valid values:
 	//
 	// 	- **ipv4*	- (default).
 	//
 	// 	- **ipv6**.
 	//
-	// 	- **ipv4Andipv6**.
+	// 	- **ipv4Andipv6*	- (single stack).
+	//
+	// 	- **ipv4Withipv6*	- (dual stack).
 	//
 	// example:
 	//
@@ -55052,7 +56570,7 @@ type RunInstancesRequest struct {
 	//
 	// Region
 	ScheduleAreaLevel *string `json:"ScheduleAreaLevel,omitempty" xml:"ScheduleAreaLevel,omitempty"`
-	// The scheduling price policy. Valid values:
+	// The scheduling price policy. Examples:
 	//
 	// 	- **PriceHighPriority**: The high price prevails.
 	//
@@ -55079,11 +56597,22 @@ type RunInstancesRequest struct {
 	// example:
 	//
 	// sg-test
-	SecurityId   *string `json:"SecurityId,omitempty" xml:"SecurityId,omitempty"`
-	SpotDuration *int32  `json:"SpotDuration,omitempty" xml:"SpotDuration,omitempty"`
+	SecurityId *string `json:"SecurityId,omitempty" xml:"SecurityId,omitempty"`
+	// The protection period of the preemptible instance. Unit: hours. Default value: 1. Valid values:
+	//
+	// 	- 1: After a preemptible instance is created, Alibaba Cloud ensures that the instance is not automatically released within 1 hour. After the 1-hour protection period ends, the system compares the bid price with the market price and checks the resource inventory to determine whether to retain or release the instance.
+	//
+	// 	- 0: After a preemptible instance is created, Alibaba Cloud does not ensure that the instance runs for 1 hour. The system compares the bid price with the market price and checks the resource inventory to determine whether to retain or release the instance.
+	//
+	// Alibaba Cloud sends an ECS system event to notify you 5 minutes before the instance is released. Preemptible instances are billed by second. We recommend that you specify an appropriate protection period based on your business requirements.
+	//
+	// example:
+	//
+	// 2
+	SpotDuration *int32 `json:"SpotDuration,omitempty" xml:"SpotDuration,omitempty"`
 	// The bidding policy for the pay-as-you-go instance. This parameter is valid only when the `InstanceChargeType` parameter is set to `PostPaid`. Valid values:
 	//
-	// 	- NoSpot: The instance is created as a regular pay-as-you-go instance.
+	// 	- NoSpot: The elastic container instances are pay-as-you-go instances.
 	//
 	// 	- SpotAsPriceGo: The instance is a preemptible instance for which the market price at the time of purchase is automatically used as the bidding price.
 	//
@@ -55313,7 +56842,7 @@ func (s *RunInstancesRequest) SetVSwitchId(v string) *RunInstancesRequest {
 }
 
 type RunInstancesRequestDataDisk struct {
-	// The category of the disk. Valid values:
+	// The category of the disk. Examples:
 	//
 	// 	- **cloud_efficiency**: ultra disk.
 	//
@@ -55327,7 +56856,7 @@ type RunInstancesRequestDataDisk struct {
 	//
 	// cloud_efficiency
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// Indicates whether the cloud disk is encrypted. Valid values:
+	// Specifies whether to encrypt the disk. Valid values:
 	//
 	// 	- true.
 	//
@@ -55472,7 +57001,7 @@ type RunInstancesShrinkRequest struct {
 	//
 	// 2023-06-28T14:38:52Z
 	AutoReleaseTime *string `json:"AutoReleaseTime,omitempty" xml:"AutoReleaseTime,omitempty"`
-	// Specifies whether to enable auto-renewal. Valid values:
+	// Specifies whether to enable auto-renewal for the premium bandwidth plan. Examples:
 	//
 	// 	- **true**.
 	//
@@ -55540,7 +57069,7 @@ type RunInstancesShrinkRequest struct {
 	//
 	// instance
 	InstanceChargeStrategy *string `json:"InstanceChargeStrategy,omitempty" xml:"InstanceChargeStrategy,omitempty"`
-	// The billing method of the instance. Valid values:
+	// The billing method of the instance. Examples:
 	//
 	// 	- **PrePaid**: subscription.
 	//
@@ -55588,13 +57117,15 @@ type RunInstancesShrinkRequest struct {
 	//
 	// 1
 	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
-	// The type of the IP address. Examples:
+	// The type of the IP address. Valid values:
 	//
 	// 	- **ipv4*	- (default).
 	//
 	// 	- **ipv6**.
 	//
-	// 	- **ipv4Andipv6**.
+	// 	- **ipv4Andipv6*	- (single stack).
+	//
+	// 	- **ipv4Withipv6*	- (dual stack).
 	//
 	// example:
 	//
@@ -55694,7 +57225,7 @@ type RunInstancesShrinkRequest struct {
 	//
 	// Region
 	ScheduleAreaLevel *string `json:"ScheduleAreaLevel,omitempty" xml:"ScheduleAreaLevel,omitempty"`
-	// The scheduling price policy. Valid values:
+	// The scheduling price policy. Examples:
 	//
 	// 	- **PriceHighPriority**: The high price prevails.
 	//
@@ -55721,11 +57252,22 @@ type RunInstancesShrinkRequest struct {
 	// example:
 	//
 	// sg-test
-	SecurityId   *string `json:"SecurityId,omitempty" xml:"SecurityId,omitempty"`
-	SpotDuration *int32  `json:"SpotDuration,omitempty" xml:"SpotDuration,omitempty"`
+	SecurityId *string `json:"SecurityId,omitempty" xml:"SecurityId,omitempty"`
+	// The protection period of the preemptible instance. Unit: hours. Default value: 1. Valid values:
+	//
+	// 	- 1: After a preemptible instance is created, Alibaba Cloud ensures that the instance is not automatically released within 1 hour. After the 1-hour protection period ends, the system compares the bid price with the market price and checks the resource inventory to determine whether to retain or release the instance.
+	//
+	// 	- 0: After a preemptible instance is created, Alibaba Cloud does not ensure that the instance runs for 1 hour. The system compares the bid price with the market price and checks the resource inventory to determine whether to retain or release the instance.
+	//
+	// Alibaba Cloud sends an ECS system event to notify you 5 minutes before the instance is released. Preemptible instances are billed by second. We recommend that you specify an appropriate protection period based on your business requirements.
+	//
+	// example:
+	//
+	// 2
+	SpotDuration *int32 `json:"SpotDuration,omitempty" xml:"SpotDuration,omitempty"`
 	// The bidding policy for the pay-as-you-go instance. This parameter is valid only when the `InstanceChargeType` parameter is set to `PostPaid`. Valid values:
 	//
-	// 	- NoSpot: The instance is created as a regular pay-as-you-go instance.
+	// 	- NoSpot: The elastic container instances are pay-as-you-go instances.
 	//
 	// 	- SpotAsPriceGo: The instance is a preemptible instance for which the market price at the time of purchase is automatically used as the bidding price.
 	//
@@ -59008,6 +60550,7 @@ type UnAssociateEnsEipAddressRequest struct {
 	//
 	// eip-5sqa431nx3vee8heqxfxp****
 	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
+	Force        *bool   `json:"Force,omitempty" xml:"Force,omitempty"`
 }
 
 func (s UnAssociateEnsEipAddressRequest) String() string {
@@ -59020,6 +60563,11 @@ func (s UnAssociateEnsEipAddressRequest) GoString() string {
 
 func (s *UnAssociateEnsEipAddressRequest) SetAllocationId(v string) *UnAssociateEnsEipAddressRequest {
 	s.AllocationId = &v
+	return s
+}
+
+func (s *UnAssociateEnsEipAddressRequest) SetForce(v bool) *UnAssociateEnsEipAddressRequest {
+	s.Force = &v
 	return s
 }
 
@@ -59625,8 +61173,12 @@ func (s *UnloadRegionSDGResponse) SetBody(v *UnloadRegionSDGResponseBody) *Unloa
 }
 
 type UnmountInstanceSDGRequest struct {
+	// The IDs of the instances.
+	//
 	// This parameter is required.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// The ID of the SDG.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -59654,8 +61206,12 @@ func (s *UnmountInstanceSDGRequest) SetSDGId(v string) *UnmountInstanceSDGReques
 }
 
 type UnmountInstanceSDGShrinkRequest struct {
+	// The IDs of the instances.
+	//
 	// This parameter is required.
 	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	// The ID of the SDG.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -59683,7 +61239,10 @@ func (s *UnmountInstanceSDGShrinkRequest) SetSDGId(v string) *UnmountInstanceSDG
 }
 
 type UnmountInstanceSDGResponseBody struct {
+	// The returned data object.
 	Data *UnmountInstanceSDGResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 125B04C7-3D0D-4245-AF96-14E3758E3F06
@@ -59709,11 +61268,20 @@ func (s *UnmountInstanceSDGResponseBody) SetRequestId(v string) *UnmountInstance
 }
 
 type UnmountInstanceSDGResponseBodyData struct {
+	// The response message. Success is returned for a successful request.
+	//
 	// example:
 	//
 	// success
-	Message *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Result  *UnmountInstanceSDGResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The execution result of the synchronization request.
+	Result *UnmountInstanceSDGResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// Indicates whether all tasks are successful. Valid values:
+	//
+	// 	- true: All tasks are successful.
+	//
+	// 	- false: Failed tasks exist.
+	//
 	// example:
 	//
 	// true
@@ -59744,11 +61312,16 @@ func (s *UnmountInstanceSDGResponseBodyData) SetSuccess(v bool) *UnmountInstance
 }
 
 type UnmountInstanceSDGResponseBodyDataResult struct {
+	// The number of failed tasks.
+	//
 	// example:
 	//
 	// 0
-	FailedCount *int64                                                 `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
+	FailedCount *int64 `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
+	// Details about failed tasks.
 	FailedItems []*UnmountInstanceSDGResponseBodyDataResultFailedItems `json:"FailedItems,omitempty" xml:"FailedItems,omitempty" type:"Repeated"`
+	// The number of successful tasks.
+	//
 	// example:
 	//
 	// 1
@@ -59779,10 +61352,14 @@ func (s *UnmountInstanceSDGResponseBodyDataResult) SetSuccessCount(v int64) *Unm
 }
 
 type UnmountInstanceSDGResponseBodyDataResultFailedItems struct {
+	// The error message.
+	//
 	// example:
 	//
 	// sdg not found
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// The ID of the instance.
+	//
 	// example:
 	//
 	// aic-xxxxx-0
@@ -60520,13 +62097,24 @@ func (client *Client) AccosicateNetworkAclWithOptions(request *AccosicateNetwork
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AccosicateNetworkAclResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AccosicateNetworkAclResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AccosicateNetworkAclResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -60596,13 +62184,24 @@ func (client *Client) AddBackendServersWithOptions(tmpReq *AddBackendServersRequ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AddBackendServersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AddBackendServersResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AddBackendServersResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -60658,13 +62257,24 @@ func (client *Client) AddDeviceInternetPortWithOptions(request *AddDeviceInterne
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AddDeviceInternetPortResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AddDeviceInternetPortResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AddDeviceInternetPortResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -60736,13 +62346,24 @@ func (client *Client) AddNetworkInterfaceToInstanceWithOptions(request *AddNetwo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AddNetworkInterfaceToInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AddNetworkInterfaceToInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AddNetworkInterfaceToInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -60810,13 +62431,24 @@ func (client *Client) AddSnatIpForSnatEntryWithOptions(request *AddSnatIpForSnat
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AddSnatIpForSnatEntryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AddSnatIpForSnatEntryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AddSnatIpForSnatEntryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -60874,13 +62506,24 @@ func (client *Client) AssignPrivateIpAddressesWithOptions(request *AssignPrivate
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AssignPrivateIpAddressesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AssignPrivateIpAddressesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AssignPrivateIpAddressesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -60946,13 +62589,24 @@ func (client *Client) AssociateEnsEipAddressWithOptions(request *AssociateEnsEip
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AssociateEnsEipAddressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AssociateEnsEipAddressResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AssociateEnsEipAddressResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -61034,13 +62688,24 @@ func (client *Client) AssociateHaVipWithOptions(request *AssociateHaVipRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AssociateHaVipResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AssociateHaVipResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AssociateHaVipResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -61122,13 +62787,24 @@ func (client *Client) AttachDiskWithOptions(request *AttachDiskRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AttachDiskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AttachDiskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AttachDiskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -61196,13 +62872,24 @@ func (client *Client) AttachEnsInstancesWithOptions(request *AttachEnsInstancesR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AttachEnsInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AttachEnsInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AttachEnsInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -61235,7 +62922,7 @@ func (client *Client) AttachEnsInstances(request *AttachEnsInstancesRequest) (_r
 
 // Summary:
 //
-// 将某个SDG attach到对应的AIC上
+// Attaches a shared data group (SDG) to the corresponding Android in Container (AIC) instance.
 //
 // @param tmpReq - AttachInstanceSDGRequest
 //
@@ -61276,18 +62963,29 @@ func (client *Client) AttachInstanceSDGWithOptions(tmpReq *AttachInstanceSDGRequ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AttachInstanceSDGResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AttachInstanceSDGResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AttachInstanceSDGResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 将某个SDG attach到对应的AIC上
+// Attaches a shared data group (SDG) to the corresponding Android in Container (AIC) instance.
 //
 // @param request - AttachInstanceSDGRequest
 //
@@ -61354,13 +63052,24 @@ func (client *Client) AttachNetworkInterfaceWithOptions(request *AttachNetworkIn
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AttachNetworkInterfaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AttachNetworkInterfaceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AttachNetworkInterfaceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -61452,13 +63161,24 @@ func (client *Client) AuthorizeSecurityGroupWithOptions(request *AuthorizeSecuri
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AuthorizeSecurityGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AuthorizeSecurityGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AuthorizeSecurityGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -61540,13 +63260,24 @@ func (client *Client) AuthorizeSecurityGroupEgressWithOptions(request *Authorize
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AuthorizeSecurityGroupEgressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AuthorizeSecurityGroupEgressResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AuthorizeSecurityGroupEgressResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -61616,13 +63347,24 @@ func (client *Client) CleanDistDataWithOptions(request *CleanDistDataRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CleanDistDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CleanDistDataResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CleanDistDataResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -61678,13 +63420,24 @@ func (client *Client) CopySDGWithOptions(tmpReq *CopySDGRequest, runtime *util.R
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CopySDGResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CopySDGResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CopySDGResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -61756,13 +63509,24 @@ func (client *Client) CopySnapshotWithOptions(tmpReq *CopySnapshotRequest, runti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CopySnapshotResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CopySnapshotResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CopySnapshotResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -61876,13 +63640,24 @@ func (client *Client) CreateARMServerInstancesWithOptions(request *CreateARMServ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateARMServerInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateARMServerInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateARMServerInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -61940,13 +63715,24 @@ func (client *Client) CreateApplicationWithOptions(request *CreateApplicationReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateApplicationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateApplicationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateApplicationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -62012,13 +63798,24 @@ func (client *Client) CreateClassicNetworkWithOptions(request *CreateClassicNetw
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateClassicNetworkResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateClassicNetworkResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateClassicNetworkResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -62082,13 +63879,24 @@ func (client *Client) CreateClusterWithOptions(request *CreateClusterRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateClusterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateClusterResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateClusterResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -62180,13 +63988,24 @@ func (client *Client) CreateDiskWithOptions(request *CreateDiskRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateDiskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateDiskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateDiskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -62232,6 +64051,10 @@ func (client *Client) CreateEipInstanceWithOptions(request *CreateEipInstanceReq
 		query["Bandwidth"] = request.Bandwidth
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		query["Description"] = request.Description
 	}
@@ -62274,13 +64097,24 @@ func (client *Client) CreateEipInstanceWithOptions(request *CreateEipInstanceReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateEipInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateEipInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateEipInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -62346,6 +64180,10 @@ func (client *Client) CreateEnsRouteEntryWithOptions(request *CreateEnsRouteEntr
 		query["RouteTableId"] = request.RouteTableId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SourceCidrBlock)) {
+		query["SourceCidrBlock"] = request.SourceCidrBlock
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -62360,13 +64198,24 @@ func (client *Client) CreateEnsRouteEntryWithOptions(request *CreateEnsRouteEntr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateEnsRouteEntryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateEnsRouteEntryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateEnsRouteEntryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -62438,13 +64287,24 @@ func (client *Client) CreateEnsSaleControlWithOptions(tmpReq *CreateEnsSaleContr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateEnsSaleControlResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateEnsSaleControlResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateEnsSaleControlResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -62502,13 +64362,24 @@ func (client *Client) CreateEnsServiceWithOptions(request *CreateEnsServiceReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateEnsServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateEnsServiceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateEnsServiceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -62578,13 +64449,24 @@ func (client *Client) CreateEpnInstanceWithOptions(request *CreateEpnInstanceReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateEpnInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateEpnInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateEpnInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -62640,13 +64522,24 @@ func (client *Client) CreateFileSystemWithOptions(tmpReq *CreateFileSystemReques
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateFileSystemResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateFileSystemResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateFileSystemResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -62732,13 +64625,24 @@ func (client *Client) CreateForwardEntryWithOptions(request *CreateForwardEntryR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateForwardEntryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateForwardEntryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateForwardEntryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -62808,13 +64712,24 @@ func (client *Client) CreateHaVipWithOptions(request *CreateHaVipRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateHaVipResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateHaVipResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateHaVipResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -62866,6 +64781,10 @@ func (client *Client) CreateImageWithOptions(request *CreateImageRequest, runtim
 		query["SnapshotId"] = request.SnapshotId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.TargetOSSRegionId)) {
+		query["TargetOSSRegionId"] = request.TargetOSSRegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -62880,13 +64799,24 @@ func (client *Client) CreateImageWithOptions(request *CreateImageRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateImageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateImageResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateImageResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -63036,13 +64966,24 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -63110,13 +65051,24 @@ func (client *Client) CreateInstanceActiveOpsTaskWithOptions(tmpReq *CreateInsta
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateInstanceActiveOpsTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateInstanceActiveOpsTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateInstanceActiveOpsTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -63174,13 +65126,24 @@ func (client *Client) CreateKeyPairWithOptions(request *CreateKeyPairRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateKeyPairResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateKeyPairResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateKeyPairResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -63226,6 +65189,10 @@ func (client *Client) CreateLoadBalancerWithOptions(request *CreateLoadBalancerR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EnsRegionId)) {
 		query["EnsRegionId"] = request.EnsRegionId
 	}
@@ -63264,13 +65231,24 @@ func (client *Client) CreateLoadBalancerWithOptions(request *CreateLoadBalancerR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateLoadBalancerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateLoadBalancerResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateLoadBalancerResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -63412,13 +65390,24 @@ func (client *Client) CreateLoadBalancerHTTPListenerWithOptions(request *CreateL
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateLoadBalancerHTTPListenerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateLoadBalancerHTTPListenerResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateLoadBalancerHTTPListenerResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -63572,13 +65561,24 @@ func (client *Client) CreateLoadBalancerHTTPSListenerWithOptions(request *Create
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateLoadBalancerHTTPSListenerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateLoadBalancerHTTPSListenerResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateLoadBalancerHTTPSListenerResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -63708,13 +65708,24 @@ func (client *Client) CreateLoadBalancerTCPListenerWithOptions(request *CreateLo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateLoadBalancerTCPListenerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateLoadBalancerTCPListenerResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateLoadBalancerTCPListenerResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -63832,13 +65843,24 @@ func (client *Client) CreateLoadBalancerUDPListenerWithOptions(request *CreateLo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateLoadBalancerUDPListenerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateLoadBalancerUDPListenerResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateLoadBalancerUDPListenerResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -63916,13 +65938,24 @@ func (client *Client) CreateMountTargetWithOptions(request *CreateMountTargetReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateMountTargetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateMountTargetResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateMountTargetResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -64002,13 +66035,24 @@ func (client *Client) CreateNatGatewayWithOptions(request *CreateNatGatewayReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateNatGatewayResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateNatGatewayResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateNatGatewayResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -64084,13 +66128,24 @@ func (client *Client) CreateNetworkWithOptions(request *CreateNetworkRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateNetworkResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateNetworkResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateNetworkResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -64154,13 +66209,24 @@ func (client *Client) CreateNetworkAclWithOptions(request *CreateNetworkAclReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateNetworkAclResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateNetworkAclResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateNetworkAclResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -64246,13 +66312,24 @@ func (client *Client) CreateNetworkAclEntryWithOptions(request *CreateNetworkAcl
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateNetworkAclEntryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateNetworkAclEntryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateNetworkAclEntryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -64324,13 +66401,24 @@ func (client *Client) CreateNetworkInterfaceWithOptions(tmpReq *CreateNetworkInt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateNetworkInterfaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateNetworkInterfaceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateNetworkInterfaceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -64392,13 +66480,24 @@ func (client *Client) CreateSDGWithOptions(request *CreateSDGRequest, runtime *u
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateSDGResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateSDGResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateSDGResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -64435,19 +66534,29 @@ func (client *Client) CreateSDG(request *CreateSDGRequest) (_result *CreateSDGRe
 //
 // Creates a security group.
 //
-// @param request - CreateSecurityGroupRequest
+// @param tmpReq - CreateSecurityGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateSecurityGroupResponse
-func (client *Client) CreateSecurityGroupWithOptions(request *CreateSecurityGroupRequest, runtime *util.RuntimeOptions) (_result *CreateSecurityGroupResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) CreateSecurityGroupWithOptions(tmpReq *CreateSecurityGroupRequest, runtime *util.RuntimeOptions) (_result *CreateSecurityGroupResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &CreateSecurityGroupShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Permissions)) {
+		request.PermissionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Permissions, tea.String("Permissions"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PermissionsShrink)) {
+		query["Permissions"] = request.PermissionsShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SecurityGroupName)) {
@@ -64468,13 +66577,24 @@ func (client *Client) CreateSecurityGroupWithOptions(request *CreateSecurityGrou
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateSecurityGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateSecurityGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateSecurityGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -64540,13 +66660,24 @@ func (client *Client) CreateSnapshotWithOptions(request *CreateSnapshotRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateSnapshotResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateSnapshotResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateSnapshotResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -64582,6 +66713,10 @@ func (client *Client) CreateSnatEntryWithOptions(request *CreateSnatEntryRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EipAffinity)) {
+		query["EipAffinity"] = request.EipAffinity
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.IdleTimeout)) {
 		query["IdleTimeout"] = request.IdleTimeout
 	}
@@ -64632,13 +66767,24 @@ func (client *Client) CreateSnatEntryWithOptions(request *CreateSnatEntryRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateSnatEntryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateSnatEntryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateSnatEntryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -64698,13 +66844,24 @@ func (client *Client) CreateStorageGatewayWithOptions(tmpReq *CreateStorageGatew
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateStorageGatewayResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateStorageGatewayResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateStorageGatewayResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -64794,13 +66951,24 @@ func (client *Client) CreateStorageVolumeWithOptions(request *CreateStorageVolum
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateStorageVolumeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateStorageVolumeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateStorageVolumeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -64823,7 +66991,7 @@ func (client *Client) CreateStorageVolume(request *CreateStorageVolumeRequest) (
 
 // Summary:
 //
-// Creates a vSwitch.
+// A vSwitch is created.
 //
 // @param request - CreateVSwitchRequest
 //
@@ -64874,18 +67042,29 @@ func (client *Client) CreateVSwitchWithOptions(request *CreateVSwitchRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateVSwitchResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateVSwitchResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateVSwitchResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Creates a vSwitch.
+// A vSwitch is created.
 //
 // @param request - CreateVSwitchRequest
 //
@@ -64938,13 +67117,24 @@ func (client *Client) DeleteApplicationWithOptions(request *DeleteApplicationReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteApplicationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteApplicationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteApplicationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -65004,13 +67194,24 @@ func (client *Client) DeleteBucketWithOptions(request *DeleteBucketRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteBucketResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteBucketResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteBucketResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -65074,13 +67275,24 @@ func (client *Client) DeleteBucketLifecycleWithOptions(request *DeleteBucketLife
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteBucketLifecycleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteBucketLifecycleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteBucketLifecycleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -65130,13 +67342,24 @@ func (client *Client) DeleteDeviceInternetPortWithOptions(request *DeleteDeviceI
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteDeviceInternetPortResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteDeviceInternetPortResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteDeviceInternetPortResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -65194,13 +67417,24 @@ func (client *Client) DeleteDiskWithOptions(request *DeleteDiskRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteDiskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteDiskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteDiskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -65258,13 +67492,24 @@ func (client *Client) DeleteEipWithOptions(request *DeleteEipRequest, runtime *u
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteEipResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteEipResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteEipResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -65318,13 +67563,24 @@ func (client *Client) DeleteEnsRouteEntryWithOptions(request *DeleteEnsRouteEntr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteEnsRouteEntryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteEnsRouteEntryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteEnsRouteEntryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -65396,13 +67652,24 @@ func (client *Client) DeleteEnsSaleConditionControlWithOptions(tmpReq *DeleteEns
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteEnsSaleConditionControlResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteEnsSaleConditionControlResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteEnsSaleConditionControlResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -65474,13 +67741,24 @@ func (client *Client) DeleteEnsSaleControlWithOptions(tmpReq *DeleteEnsSaleContr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteEnsSaleControlResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteEnsSaleControlResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteEnsSaleControlResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -65538,13 +67816,24 @@ func (client *Client) DeleteEpnInstanceWithOptions(request *DeleteEpnInstanceReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteEpnInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteEpnInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteEpnInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -65598,13 +67887,24 @@ func (client *Client) DeleteFileSystemWithOptions(request *DeleteFileSystemReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteFileSystemResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteFileSystemResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteFileSystemResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -65658,13 +67958,24 @@ func (client *Client) DeleteForwardEntryWithOptions(request *DeleteForwardEntryR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteForwardEntryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteForwardEntryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteForwardEntryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -65724,13 +68035,24 @@ func (client *Client) DeleteHaVipsWithOptions(tmpReq *DeleteHaVipsRequest, runti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteHaVipsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteHaVipsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteHaVipsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -65784,13 +68106,24 @@ func (client *Client) DeleteImageWithOptions(request *DeleteImageRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteImageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteImageResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteImageResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -65854,13 +68187,24 @@ func (client *Client) DeleteKeyPairsWithOptions(request *DeleteKeyPairsRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteKeyPairsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteKeyPairsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteKeyPairsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -65934,13 +68278,24 @@ func (client *Client) DeleteLoadBalancerListenerWithOptions(request *DeleteLoadB
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteLoadBalancerListenerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteLoadBalancerListenerResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteLoadBalancerListenerResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -66012,13 +68367,24 @@ func (client *Client) DeleteMountTargetWithOptions(request *DeleteMountTargetReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteMountTargetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteMountTargetResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteMountTargetResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -66058,6 +68424,10 @@ func (client *Client) DeleteNatGatewayWithOptions(request *DeleteNatGatewayReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ForceDelete)) {
+		query["ForceDelete"] = request.ForceDelete
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.NatGatewayId)) {
 		query["NatGatewayId"] = request.NatGatewayId
 	}
@@ -66076,13 +68446,24 @@ func (client *Client) DeleteNatGatewayWithOptions(request *DeleteNatGatewayReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteNatGatewayResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteNatGatewayResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteNatGatewayResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -66136,13 +68517,24 @@ func (client *Client) DeleteNetworkWithOptions(request *DeleteNetworkRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteNetworkResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteNetworkResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteNetworkResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -66196,13 +68588,24 @@ func (client *Client) DeleteNetworkAclWithOptions(request *DeleteNetworkAclReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteNetworkAclResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteNetworkAclResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteNetworkAclResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -66256,13 +68659,24 @@ func (client *Client) DeleteNetworkAclEntryWithOptions(request *DeleteNetworkAcl
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteNetworkAclEntryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteNetworkAclEntryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteNetworkAclEntryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -66322,13 +68736,24 @@ func (client *Client) DeleteNetworkInterfacesWithOptions(tmpReq *DeleteNetworkIn
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteNetworkInterfacesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteNetworkInterfacesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteNetworkInterfacesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -66386,13 +68811,24 @@ func (client *Client) DeleteObjectWithOptions(request *DeleteObjectRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteObjectResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteObjectResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteObjectResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -66456,13 +68892,24 @@ func (client *Client) DeleteSDGWithOptions(tmpReq *DeleteSDGRequest, runtime *ut
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteSDGResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteSDGResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteSDGResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -66524,13 +68971,24 @@ func (client *Client) DeleteSecurityGroupWithOptions(request *DeleteSecurityGrou
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteSecurityGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteSecurityGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteSecurityGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -66588,13 +69046,24 @@ func (client *Client) DeleteSnapshotWithOptions(request *DeleteSnapshotRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteSnapshotResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteSnapshotResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteSnapshotResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -66648,13 +69117,24 @@ func (client *Client) DeleteSnatEntryWithOptions(request *DeleteSnatEntryRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteSnatEntryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteSnatEntryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteSnatEntryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -66712,13 +69192,24 @@ func (client *Client) DeleteSnatIpForSnatEntryWithOptions(request *DeleteSnatIpF
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteSnatIpForSnatEntryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteSnatIpForSnatEntryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteSnatIpForSnatEntryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -66772,13 +69263,24 @@ func (client *Client) DeleteStorageGatewayWithOptions(request *DeleteStorageGate
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteStorageGatewayResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteStorageGatewayResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteStorageGatewayResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -66832,13 +69334,24 @@ func (client *Client) DeleteStorageVolumeWithOptions(request *DeleteStorageVolum
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteStorageVolumeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteStorageVolumeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteStorageVolumeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -66896,13 +69409,24 @@ func (client *Client) DeleteVSwitchWithOptions(request *DeleteVSwitchRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteVSwitchResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteVSwitchResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteVSwitchResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -66974,13 +69498,24 @@ func (client *Client) DeployInstanceSDGWithOptions(tmpReq *DeployInstanceSDGRequ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeployInstanceSDGResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeployInstanceSDGResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeployInstanceSDGResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -67036,13 +69571,24 @@ func (client *Client) DeploySDGWithOptions(tmpReq *DeploySDGRequest, runtime *ut
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeploySDGResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeploySDGResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeploySDGResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -67128,13 +69674,24 @@ func (client *Client) DescribeAICImagesWithOptions(request *DescribeAICImagesReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeAICImagesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeAICImagesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeAICImagesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -67206,13 +69763,24 @@ func (client *Client) DescribeARMServerInstancesWithOptions(tmpReq *DescribeARMS
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeARMServerInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeARMServerInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeARMServerInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -67282,13 +69850,24 @@ func (client *Client) DescribeApplicationWithOptions(request *DescribeApplicatio
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeApplicationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeApplicationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeApplicationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -67331,13 +69910,24 @@ func (client *Client) DescribeAvailableResourceWithOptions(runtime *util.Runtime
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeAvailableResourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeAvailableResourceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeAvailableResourceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -67378,13 +69968,24 @@ func (client *Client) DescribeAvailableResourceInfoWithOptions(runtime *util.Run
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeAvailableResourceInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeAvailableResourceInfoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeAvailableResourceInfoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -67425,13 +70026,24 @@ func (client *Client) DescribeBandWithdChargeTypeWithOptions(runtime *util.Runti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeBandWithdChargeTypeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeBandWithdChargeTypeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeBandWithdChargeTypeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -67495,13 +70107,24 @@ func (client *Client) DescribeBandwitdhByInternetChargeTypeWithOptions(request *
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeBandwitdhByInternetChargeTypeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeBandwitdhByInternetChargeTypeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeBandwitdhByInternetChargeTypeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -67544,13 +70167,24 @@ func (client *Client) DescribeCloudDiskAvailableResourceInfoWithOptions(runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeCloudDiskAvailableResourceInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeCloudDiskAvailableResourceInfoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeCloudDiskAvailableResourceInfoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -67571,7 +70205,7 @@ func (client *Client) DescribeCloudDiskAvailableResourceInfo() (_result *Describ
 
 // Summary:
 //
-// Queries the specifications of resources that you can purchase when you create an instance.
+// The specifications of available resources are queried when you create a disk.
 //
 // @param tmpReq - DescribeCloudDiskTypesRequest
 //
@@ -67604,18 +70238,29 @@ func (client *Client) DescribeCloudDiskTypesWithOptions(tmpReq *DescribeCloudDis
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeCloudDiskTypesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeCloudDiskTypesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeCloudDiskTypesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Queries the specifications of resources that you can purchase when you create an instance.
+// The specifications of available resources are queried when you create a disk.
 //
 // @param request - DescribeCloudDiskTypesRequest
 //
@@ -67668,13 +70313,24 @@ func (client *Client) DescribeClusterWithOptions(request *DescribeClusterRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeClusterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeClusterResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeClusterResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -67736,13 +70392,24 @@ func (client *Client) DescribeClusterKubeConfigWithOptions(request *DescribeClus
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeClusterKubeConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeClusterKubeConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeClusterKubeConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -67800,13 +70467,24 @@ func (client *Client) DescribeCreatePrePaidInstanceResultWithOptions(request *De
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeCreatePrePaidInstanceResultResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeCreatePrePaidInstanceResultResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeCreatePrePaidInstanceResultResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -67898,13 +70576,24 @@ func (client *Client) DescribeDataDistResultWithOptions(tmpReq *DescribeDataDist
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDataDistResultResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDataDistResultResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDataDistResultResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -67954,13 +70643,24 @@ func (client *Client) DescribeDataDownloadURLWithOptions(request *DescribeDataDo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDataDownloadURLResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDataDownloadURLResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDataDownloadURLResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -68042,13 +70742,24 @@ func (client *Client) DescribeDataPushResultWithOptions(request *DescribeDataPus
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDataPushResultResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDataPushResultResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDataPushResultResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -68098,13 +70809,24 @@ func (client *Client) DescribeDeviceServiceWithOptions(request *DescribeDeviceSe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDeviceServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDeviceServiceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDeviceServiceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -68154,13 +70876,24 @@ func (client *Client) DescribeDiskIopsListWithOptions(request *DescribeDiskIopsL
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDiskIopsListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDiskIopsListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDiskIopsListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -68270,13 +71003,24 @@ func (client *Client) DescribeDisksWithOptions(request *DescribeDisksRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDisksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDisksResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDisksResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -68319,13 +71063,24 @@ func (client *Client) DescribeElbAvailableResourceInfoWithOptions(runtime *util.
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeElbAvailableResourceInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeElbAvailableResourceInfoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeElbAvailableResourceInfoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -68377,13 +71132,24 @@ func (client *Client) DescribeEnsCommodityCodeWithOptions(request *DescribeEnsCo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeEnsCommodityCodeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeEnsCommodityCodeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeEnsCommodityCodeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -68441,13 +71207,24 @@ func (client *Client) DescribeEnsCommodityModuleCodeWithOptions(request *Describ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeEnsCommodityModuleCodeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeEnsCommodityModuleCodeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeEnsCommodityModuleCodeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -68533,13 +71310,24 @@ func (client *Client) DescribeEnsEipAddressesWithOptions(request *DescribeEnsEip
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeEnsEipAddressesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeEnsEipAddressesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeEnsEipAddressesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -68597,13 +71385,24 @@ func (client *Client) DescribeEnsNetDistrictWithOptions(request *DescribeEnsNetD
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeEnsNetDistrictResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeEnsNetDistrictResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeEnsNetDistrictResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -68646,13 +71445,24 @@ func (client *Client) DescribeEnsNetLevelWithOptions(runtime *util.RuntimeOption
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeEnsNetLevelResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeEnsNetLevelResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeEnsNetLevelResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -68708,13 +71518,24 @@ func (client *Client) DescribeEnsNetSaleDistrictWithOptions(request *DescribeEns
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeEnsNetSaleDistrictResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeEnsNetSaleDistrictResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeEnsNetSaleDistrictResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -68768,13 +71589,24 @@ func (client *Client) DescribeEnsRegionIdIpv6InfoWithOptions(request *DescribeEn
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeEnsRegionIdIpv6InfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeEnsRegionIdIpv6InfoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeEnsRegionIdIpv6InfoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -68852,13 +71684,24 @@ func (client *Client) DescribeEnsRegionIdResourceWithOptions(request *DescribeEn
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeEnsRegionIdResourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeEnsRegionIdResourceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeEnsRegionIdResourceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -68916,13 +71759,24 @@ func (client *Client) DescribeEnsRegionsWithOptions(request *DescribeEnsRegionsR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeEnsRegionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeEnsRegionsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeEnsRegionsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -68972,13 +71826,24 @@ func (client *Client) DescribeEnsResourceUsageWithOptions(request *DescribeEnsRe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeEnsResourceUsageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeEnsResourceUsageResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeEnsResourceUsageResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -69064,13 +71929,24 @@ func (client *Client) DescribeEnsRouteEntryListWithOptions(request *DescribeEnsR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeEnsRouteEntryListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeEnsRouteEntryListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeEnsRouteEntryListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -69106,8 +71982,16 @@ func (client *Client) DescribeEnsRouteTablesWithOptions(request *DescribeEnsRout
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AssociateType)) {
+		query["AssociateType"] = request.AssociateType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EnsRegionId)) {
 		query["EnsRegionId"] = request.EnsRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnsRegionIds)) {
+		query["EnsRegionIds"] = request.EnsRegionIds
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NetworkId)) {
@@ -69126,6 +72010,14 @@ func (client *Client) DescribeEnsRouteTablesWithOptions(request *DescribeEnsRout
 		query["RouteTableId"] = request.RouteTableId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RouteTableName)) {
+		query["RouteTableName"] = request.RouteTableName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -69140,13 +72032,24 @@ func (client *Client) DescribeEnsRouteTablesWithOptions(request *DescribeEnsRout
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeEnsRouteTablesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeEnsRouteTablesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeEnsRouteTablesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -69216,13 +72119,24 @@ func (client *Client) DescribeEnsSaleControlWithOptions(request *DescribeEnsSale
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeEnsSaleControlResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeEnsSaleControlResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeEnsSaleControlResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -69284,13 +72198,24 @@ func (client *Client) DescribeEnsSaleControlAvailableResourceWithOptions(request
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeEnsSaleControlAvailableResourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeEnsSaleControlAvailableResourceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeEnsSaleControlAvailableResourceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -69360,13 +72285,24 @@ func (client *Client) DescribeEnsSaleControlStockWithOptions(request *DescribeEn
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeEnsSaleControlStockResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeEnsSaleControlStockResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeEnsSaleControlStockResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -69448,13 +72384,24 @@ func (client *Client) DescribeEpnBandWidthDataWithOptions(request *DescribeEpnBa
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeEpnBandWidthDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeEpnBandWidthDataResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeEpnBandWidthDataResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -69524,13 +72471,24 @@ func (client *Client) DescribeEpnBandwitdhByInternetChargeTypeWithOptions(reques
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeEpnBandwitdhByInternetChargeTypeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeEpnBandwitdhByInternetChargeTypeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeEpnBandwitdhByInternetChargeTypeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -69588,13 +72546,24 @@ func (client *Client) DescribeEpnInstanceAttributeWithOptions(request *DescribeE
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeEpnInstanceAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeEpnInstanceAttributeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeEpnInstanceAttributeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -69664,13 +72633,24 @@ func (client *Client) DescribeEpnInstancesWithOptions(request *DescribeEpnInstan
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeEpnInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeEpnInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeEpnInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -69728,13 +72708,24 @@ func (client *Client) DescribeEpnMeasurementDataWithOptions(request *DescribeEpn
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeEpnMeasurementDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeEpnMeasurementDataResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeEpnMeasurementDataResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -69808,13 +72799,24 @@ func (client *Client) DescribeExportImageInfoWithOptions(request *DescribeExport
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeExportImageInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeExportImageInfoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeExportImageInfoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -69876,13 +72878,24 @@ func (client *Client) DescribeExportImageStatusWithOptions(request *DescribeExpo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeExportImageStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeExportImageStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeExportImageStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -69932,13 +72945,24 @@ func (client *Client) DescribeFileSystemsWithOptions(request *DescribeFileSystem
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeFileSystemsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeFileSystemsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeFileSystemsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -70020,13 +73044,24 @@ func (client *Client) DescribeForwardTableEntriesWithOptions(request *DescribeFo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeForwardTableEntriesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeForwardTableEntriesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeForwardTableEntriesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -70076,13 +73111,24 @@ func (client *Client) DescribeHaVipsWithOptions(request *DescribeHaVipsRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeHaVipsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeHaVipsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeHaVipsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -70136,13 +73182,24 @@ func (client *Client) DescribeImageInfosWithOptions(request *DescribeImageInfosR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeImageInfosResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeImageInfosResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeImageInfosResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -70208,13 +73265,24 @@ func (client *Client) DescribeImageSharePermissionWithOptions(request *DescribeI
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeImageSharePermissionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeImageSharePermissionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeImageSharePermissionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -70292,13 +73360,24 @@ func (client *Client) DescribeImagesWithOptions(request *DescribeImagesRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeImagesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeImagesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeImagesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -70356,13 +73435,24 @@ func (client *Client) DescribeInstanceAutoRenewAttributeWithOptions(request *Des
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeInstanceAutoRenewAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeInstanceAutoRenewAttributeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeInstanceAutoRenewAttributeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -70412,13 +73502,24 @@ func (client *Client) DescribeInstanceBandwidthDetailWithOptions(request *Descri
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeInstanceBandwidthDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeInstanceBandwidthDetailResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeInstanceBandwidthDetailResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -70484,13 +73585,24 @@ func (client *Client) DescribeInstanceMonitorDataWithOptions(request *DescribeIn
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeInstanceMonitorDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeInstanceMonitorDataResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeInstanceMonitorDataResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -70513,7 +73625,7 @@ func (client *Client) DescribeInstanceMonitorData(request *DescribeInstanceMonit
 
 // Summary:
 //
-// 描述某个AIC实例下的SDG挂载情况
+// Queries shared data groups (SDGs) that are mounted to an Android in Container (AIC) instance.
 //
 // @param tmpReq - DescribeInstanceSDGStatusRequest
 //
@@ -70546,18 +73658,29 @@ func (client *Client) DescribeInstanceSDGStatusWithOptions(tmpReq *DescribeInsta
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeInstanceSDGStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeInstanceSDGStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeInstanceSDGStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 描述某个AIC实例下的SDG挂载情况
+// Queries shared data groups (SDGs) that are mounted to an Android in Container (AIC) instance.
 //
 // @param request - DescribeInstanceSDGStatusRequest
 //
@@ -70595,13 +73718,24 @@ func (client *Client) DescribeInstanceSpecWithOptions(runtime *util.RuntimeOptio
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeInstanceSpecResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeInstanceSpecResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeInstanceSpecResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -70642,13 +73776,24 @@ func (client *Client) DescribeInstanceTypesWithOptions(runtime *util.RuntimeOpti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeInstanceTypesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeInstanceTypesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeInstanceTypesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -70700,13 +73845,24 @@ func (client *Client) DescribeInstanceVncUrlWithOptions(request *DescribeInstanc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeInstanceVncUrlResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeInstanceVncUrlResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeInstanceVncUrlResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -70729,7 +73885,7 @@ func (client *Client) DescribeInstanceVncUrl(request *DescribeInstanceVncUrlRequ
 
 // Summary:
 //
-// Queries the details of one or more Edge Node Service (ENS) instances.
+// You can call this operation to view the details of one or more instances.
 //
 // Description:
 //
@@ -70854,18 +74010,29 @@ func (client *Client) DescribeInstancesWithOptions(tmpReq *DescribeInstancesRequ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Queries the details of one or more Edge Node Service (ENS) instances.
+// You can call this operation to view the details of one or more instances.
 //
 // Description:
 //
@@ -70934,13 +74101,24 @@ func (client *Client) DescribeKeyPairsWithOptions(request *DescribeKeyPairsReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeKeyPairsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeKeyPairsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeKeyPairsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -71000,13 +74178,24 @@ func (client *Client) DescribeLoadBalancerAttributeWithOptions(request *Describe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeLoadBalancerAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeLoadBalancerAttributeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeLoadBalancerAttributeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -71076,13 +74265,24 @@ func (client *Client) DescribeLoadBalancerHTTPListenerAttributeWithOptions(reque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeLoadBalancerHTTPListenerAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeLoadBalancerHTTPListenerAttributeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeLoadBalancerHTTPListenerAttributeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -71152,13 +74352,24 @@ func (client *Client) DescribeLoadBalancerHTTPSListenerAttributeWithOptions(requ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeLoadBalancerHTTPSListenerAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeLoadBalancerHTTPSListenerAttributeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeLoadBalancerHTTPSListenerAttributeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -71220,13 +74431,24 @@ func (client *Client) DescribeLoadBalancerListenMonitorWithOptions(request *Desc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeLoadBalancerListenMonitorResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeLoadBalancerListenMonitorResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeLoadBalancerListenMonitorResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -71268,6 +74490,14 @@ func (client *Client) DescribeLoadBalancerListenersWithOptions(request *Describe
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ListenerPort)) {
+		query["ListenerPort"] = request.ListenerPort
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.LoadBalancerId)) {
 		query["LoadBalancerId"] = request.LoadBalancerId
 	}
@@ -71294,13 +74524,24 @@ func (client *Client) DescribeLoadBalancerListenersWithOptions(request *Describe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeLoadBalancerListenersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeLoadBalancerListenersResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeLoadBalancerListenersResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -71350,13 +74591,24 @@ func (client *Client) DescribeLoadBalancerSpecWithOptions(request *DescribeLoadB
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeLoadBalancerSpecResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeLoadBalancerSpecResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeLoadBalancerSpecResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -71420,13 +74672,24 @@ func (client *Client) DescribeLoadBalancerTCPListenerAttributeWithOptions(reques
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeLoadBalancerTCPListenerAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeLoadBalancerTCPListenerAttributeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeLoadBalancerTCPListenerAttributeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -71496,13 +74759,24 @@ func (client *Client) DescribeLoadBalancerUDPListenerAttributeWithOptions(reques
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeLoadBalancerUDPListenerAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeLoadBalancerUDPListenerAttributeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeLoadBalancerUDPListenerAttributeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -71564,13 +74838,24 @@ func (client *Client) DescribeLoadBalancersWithOptions(request *DescribeLoadBala
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeLoadBalancersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeLoadBalancersResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeLoadBalancersResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -71634,13 +74919,24 @@ func (client *Client) DescribeMeasurementDataWithOptions(request *DescribeMeasur
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeMeasurementDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeMeasurementDataResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeMeasurementDataResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -71710,13 +75006,24 @@ func (client *Client) DescribeMountTargetsWithOptions(request *DescribeMountTarg
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeMountTargetsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeMountTargetsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeMountTargetsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -71766,13 +75073,24 @@ func (client *Client) DescribeNCInformationWithOptions(request *DescribeNCInform
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeNCInformationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeNCInformationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeNCInformationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -71822,13 +75140,24 @@ func (client *Client) DescribeNatGatewaysWithOptions(request *DescribeNatGateway
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeNatGatewaysResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeNatGatewaysResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeNatGatewaysResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -71878,13 +75207,24 @@ func (client *Client) DescribeNetworkAclsWithOptions(request *DescribeNetworkAcl
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeNetworkAclsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeNetworkAclsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeNetworkAclsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -71944,13 +75284,24 @@ func (client *Client) DescribeNetworkAttributeWithOptions(request *DescribeNetwo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeNetworkAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeNetworkAttributeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeNetworkAttributeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -71981,33 +75332,31 @@ func (client *Client) DescribeNetworkAttribute(request *DescribeNetworkAttribute
 //
 // Queries Elastic Network Interfaces (ENIs).
 //
-// @param tmpReq - DescribeNetworkInterfacesRequest
+// @param request - DescribeNetworkInterfacesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeNetworkInterfacesResponse
-func (client *Client) DescribeNetworkInterfacesWithOptions(tmpReq *DescribeNetworkInterfacesRequest, runtime *util.RuntimeOptions) (_result *DescribeNetworkInterfacesResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
+func (client *Client) DescribeNetworkInterfacesWithOptions(request *DescribeNetworkInterfacesRequest, runtime *util.RuntimeOptions) (_result *DescribeNetworkInterfacesResponse, _err error) {
+	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	request := &DescribeNetworkInterfacesShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.Ipv6Address)) {
-		request.Ipv6AddressShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Ipv6Address, tea.String("Ipv6Address"), tea.String("simple"))
-	}
-
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.EnsRegionId)) {
 		query["EnsRegionId"] = request.EnsRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnsRegionIds)) {
+		query["EnsRegionIds"] = request.EnsRegionIds
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Ipv6AddressShrink)) {
-		query["Ipv6Address"] = request.Ipv6AddressShrink
+	if !tea.BoolValue(util.IsUnset(request.Ipv6Address)) {
+		query["Ipv6Address"] = request.Ipv6Address
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NetworkId)) {
@@ -72016,6 +75365,10 @@ func (client *Client) DescribeNetworkInterfacesWithOptions(tmpReq *DescribeNetwo
 
 	if !tea.BoolValue(util.IsUnset(request.NetworkInterfaceId)) {
 		query["NetworkInterfaceId"] = request.NetworkInterfaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkInterfaceIds)) {
+		query["NetworkInterfaceIds"] = request.NetworkInterfaceIds
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NetworkInterfaceName)) {
@@ -72064,13 +75417,24 @@ func (client *Client) DescribeNetworkInterfacesWithOptions(tmpReq *DescribeNetwo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeNetworkInterfacesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeNetworkInterfacesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeNetworkInterfacesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -72116,8 +75480,16 @@ func (client *Client) DescribeNetworksWithOptions(request *DescribeNetworksReque
 		query["EnsRegionId"] = request.EnsRegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.EnsRegionIds)) {
+		query["EnsRegionIds"] = request.EnsRegionIds
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.NetworkId)) {
 		query["NetworkId"] = request.NetworkId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkIds)) {
+		query["NetworkIds"] = request.NetworkIds
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NetworkName)) {
@@ -72146,13 +75518,24 @@ func (client *Client) DescribeNetworksWithOptions(request *DescribeNetworksReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeNetworksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeNetworksResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeNetworksResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -72224,13 +75607,24 @@ func (client *Client) DescribePrePaidInstanceStockWithOptions(request *DescribeP
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribePrePaidInstanceStockResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribePrePaidInstanceStockResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribePrePaidInstanceStockResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -72322,13 +75716,24 @@ func (client *Client) DescribePriceWithOptions(tmpReq *DescribePriceRequest, run
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribePriceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribePriceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribePriceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -72378,13 +75783,24 @@ func (client *Client) DescribeRegionIspsWithOptions(request *DescribeRegionIspsR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeRegionIspsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeRegionIspsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeRegionIspsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -72434,13 +75850,24 @@ func (client *Client) DescribeRegionResourceWithOptions(request *DescribeRegionR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeRegionResourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeRegionResourceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeRegionResourceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -72483,13 +75910,24 @@ func (client *Client) DescribeReservedResourceWithOptions(runtime *util.RuntimeO
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeReservedResourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeReservedResourceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeReservedResourceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -72537,13 +75975,24 @@ func (client *Client) DescribeResourceTimelineWithOptions(request *DescribeResou
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeResourceTimelineResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeResourceTimelineResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeResourceTimelineResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -72611,13 +76060,24 @@ func (client *Client) DescribeSDGWithOptions(tmpReq *DescribeSDGRequest, runtime
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeSDGResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeSDGResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeSDGResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -72705,13 +76165,24 @@ func (client *Client) DescribeSDGDeploymentStatusWithOptions(tmpReq *DescribeSDG
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeSDGDeploymentStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeSDGDeploymentStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeSDGDeploymentStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -72779,13 +76250,24 @@ func (client *Client) DescribeSDGsWithOptions(tmpReq *DescribeSDGsRequest, runti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeSDGsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeSDGsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeSDGsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -72859,13 +76341,24 @@ func (client *Client) DescribeSecondaryPublicIpAddressesWithOptions(request *Des
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeSecondaryPublicIpAddressesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeSecondaryPublicIpAddressesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeSecondaryPublicIpAddressesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -72919,13 +76412,24 @@ func (client *Client) DescribeSecurityGroupAttributeWithOptions(request *Describ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeSecurityGroupAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeSecurityGroupAttributeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeSecurityGroupAttributeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -72991,13 +76495,24 @@ func (client *Client) DescribeSecurityGroupsWithOptions(request *DescribeSecurit
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeSecurityGroupsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeSecurityGroupsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeSecurityGroupsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -73067,13 +76582,24 @@ func (client *Client) DescribeSelfImagesWithOptions(request *DescribeSelfImagesR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeSelfImagesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeSelfImagesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeSelfImagesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -73135,13 +76661,24 @@ func (client *Client) DescribeServcieScheduleWithOptions(request *DescribeServci
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeServcieScheduleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeServcieScheduleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeServcieScheduleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -73197,13 +76734,24 @@ func (client *Client) DescribeServerLoadBalancerListenMonitorWithOptions(request
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeServerLoadBalancerListenMonitorResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeServerLoadBalancerListenMonitorResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeServerLoadBalancerListenMonitorResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -73265,13 +76813,24 @@ func (client *Client) DescribeServerLoadBalancerMonitorWithOptions(request *Desc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeServerLoadBalancerMonitorResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeServerLoadBalancerMonitorResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeServerLoadBalancerMonitorResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -73359,13 +76918,24 @@ func (client *Client) DescribeSnapshotsWithOptions(request *DescribeSnapshotsReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeSnapshotsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeSnapshotsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeSnapshotsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -73419,13 +76989,24 @@ func (client *Client) DescribeSnatAttributeWithOptions(request *DescribeSnatAttr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeSnatAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeSnatAttributeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeSnatAttributeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -73475,13 +77056,24 @@ func (client *Client) DescribeSnatTableEntriesWithOptions(request *DescribeSnatT
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeSnatTableEntriesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeSnatTableEntriesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeSnatTableEntriesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -73555,13 +77147,24 @@ func (client *Client) DescribeStorageGatewayWithOptions(request *DescribeStorage
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeStorageGatewayResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeStorageGatewayResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeStorageGatewayResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -73639,13 +77242,24 @@ func (client *Client) DescribeStorageVolumeWithOptions(request *DescribeStorageV
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeStorageVolumeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeStorageVolumeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeStorageVolumeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -73719,13 +77333,24 @@ func (client *Client) DescribeUserBandWidthDataWithOptions(request *DescribeUser
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeUserBandWidthDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeUserBandWidthDataResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeUserBandWidthDataResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -73739,6 +77364,77 @@ func (client *Client) DescribeUserBandWidthData(request *DescribeUserBandWidthDa
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeUserBandWidthDataResponse{}
 	_body, _err := client.DescribeUserBandWidthDataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 调用DescribeVSwitchAttributes接口查询指定交换机的配置信息。
+//
+// @param request - DescribeVSwitchAttributesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeVSwitchAttributesResponse
+func (client *Client) DescribeVSwitchAttributesWithOptions(request *DescribeVSwitchAttributesRequest, runtime *util.RuntimeOptions) (_result *DescribeVSwitchAttributesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVSwitchAttributes"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeVSwitchAttributesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeVSwitchAttributesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 调用DescribeVSwitchAttributes接口查询指定交换机的配置信息。
+//
+// @param request - DescribeVSwitchAttributesRequest
+//
+// @return DescribeVSwitchAttributesResponse
+func (client *Client) DescribeVSwitchAttributes(request *DescribeVSwitchAttributesRequest) (_result *DescribeVSwitchAttributesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeVSwitchAttributesResponse{}
+	_body, _err := client.DescribeVSwitchAttributesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -73765,12 +77461,12 @@ func (client *Client) DescribeVSwitchesWithOptions(request *DescribeVSwitchesReq
 		query["EnsRegionId"] = request.EnsRegionId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.NetworkId)) {
-		query["NetworkId"] = request.NetworkId
+	if !tea.BoolValue(util.IsUnset(request.EnsRegionIds)) {
+		query["EnsRegionIds"] = request.EnsRegionIds
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OrderByParams)) {
-		query["OrderByParams"] = request.OrderByParams
+	if !tea.BoolValue(util.IsUnset(request.NetworkId)) {
+		query["NetworkId"] = request.NetworkId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
@@ -73783,6 +77479,10 @@ func (client *Client) DescribeVSwitchesWithOptions(request *DescribeVSwitchesReq
 
 	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
 		query["VSwitchId"] = request.VSwitchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitchIds)) {
+		query["VSwitchIds"] = request.VSwitchIds
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VSwitchName)) {
@@ -73803,13 +77503,24 @@ func (client *Client) DescribeVSwitchesWithOptions(request *DescribeVSwitchesReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeVSwitchesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeVSwitchesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeVSwitchesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -73867,13 +77578,24 @@ func (client *Client) DetachDiskWithOptions(request *DetachDiskRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DetachDiskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DetachDiskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DetachDiskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -73896,7 +77618,7 @@ func (client *Client) DetachDisk(request *DetachDiskRequest) (_result *DetachDis
 
 // Summary:
 //
-// 解除SDG的attach状态
+// Detaches a shared data group (SDG).
 //
 // @param tmpReq - DetachInstanceSDGRequest
 //
@@ -73937,18 +77659,29 @@ func (client *Client) DetachInstanceSDGWithOptions(tmpReq *DetachInstanceSDGRequ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DetachInstanceSDGResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DetachInstanceSDGResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DetachInstanceSDGResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 解除SDG的attach状态
+// Detaches a shared data group (SDG).
 //
 // @param request - DetachInstanceSDGRequest
 //
@@ -74009,13 +77742,24 @@ func (client *Client) DetachNetworkInterfaceWithOptions(request *DetachNetworkIn
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DetachNetworkInterfaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DetachNetworkInterfaceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DetachNetworkInterfaceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -74089,13 +77833,24 @@ func (client *Client) DistApplicationDataWithOptions(request *DistApplicationDat
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DistApplicationDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DistApplicationDataResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DistApplicationDataResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -74153,13 +77908,24 @@ func (client *Client) ExportBillDetailDataWithOptions(request *ExportBillDetailD
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ExportBillDetailDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ExportBillDetailDataResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ExportBillDetailDataResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -74229,13 +77995,24 @@ func (client *Client) ExportImageWithOptions(request *ExportImageRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ExportImageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ExportImageResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ExportImageResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -74293,13 +78070,24 @@ func (client *Client) ExportMeasurementDataWithOptions(request *ExportMeasuremen
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ExportMeasurementDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ExportMeasurementDataResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ExportMeasurementDataResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -74353,13 +78141,24 @@ func (client *Client) GetBucketAclWithOptions(request *GetBucketAclRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetBucketAclResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetBucketAclResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetBucketAclResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -74413,13 +78212,24 @@ func (client *Client) GetBucketInfoWithOptions(request *GetBucketInfoRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetBucketInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetBucketInfoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetBucketInfoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -74477,13 +78287,24 @@ func (client *Client) GetBucketLifecycleWithOptions(request *GetBucketLifecycleR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetBucketLifecycleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetBucketLifecycleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetBucketLifecycleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -74533,13 +78354,24 @@ func (client *Client) GetDeviceInternetPortWithOptions(request *GetDeviceInterne
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetDeviceInternetPortResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetDeviceInternetPortResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetDeviceInternetPortResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -74589,13 +78421,24 @@ func (client *Client) GetOssStorageAndAccByBucketsWithOptions(request *GetOssSto
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetOssStorageAndAccByBucketsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetOssStorageAndAccByBucketsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetOssStorageAndAccByBucketsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -74649,13 +78492,24 @@ func (client *Client) GetOssUsageDataWithOptions(request *GetOssUsageDataRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetOssUsageDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetOssUsageDataResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetOssUsageDataResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -74723,13 +78577,24 @@ func (client *Client) ImportKeyPairWithOptions(request *ImportKeyPairRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ImportKeyPairResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ImportKeyPairResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ImportKeyPairResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -74793,13 +78658,24 @@ func (client *Client) JoinPublicIpsToEpnInstanceWithOptions(request *JoinPublicI
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &JoinPublicIpsToEpnInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &JoinPublicIpsToEpnInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &JoinPublicIpsToEpnInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -74865,13 +78741,24 @@ func (client *Client) JoinSecurityGroupWithOptions(request *JoinSecurityGroupReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &JoinSecurityGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &JoinSecurityGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &JoinSecurityGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -74933,13 +78820,24 @@ func (client *Client) JoinVSwitchesToEpnInstanceWithOptions(request *JoinVSwitch
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &JoinVSwitchesToEpnInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &JoinVSwitchesToEpnInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &JoinVSwitchesToEpnInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -75005,13 +78903,24 @@ func (client *Client) LeaveSecurityGroupWithOptions(request *LeaveSecurityGroupR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &LeaveSecurityGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &LeaveSecurityGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &LeaveSecurityGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -75097,13 +79006,24 @@ func (client *Client) ListApplicationsWithOptions(request *ListApplicationsReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListApplicationsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListApplicationsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListApplicationsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -75165,13 +79085,24 @@ func (client *Client) ListBucketsWithOptions(request *ListBucketsRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListBucketsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListBucketsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListBucketsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -75249,13 +79180,24 @@ func (client *Client) ListObjectsWithOptions(request *ListObjectsRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListObjectsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListObjectsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListObjectsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -75269,6 +79211,64 @@ func (client *Client) ListObjects(request *ListObjectsRequest) (_result *ListObj
 	runtime := &util.RuntimeOptions{}
 	_result = &ListObjectsResponse{}
 	_body, _err := client.ListObjectsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取所有产品能力
+//
+// @param request - ListProductAbilitiesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListProductAbilitiesResponse
+func (client *Client) ListProductAbilitiesWithOptions(runtime *util.RuntimeOptions) (_result *ListProductAbilitiesResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("ListProductAbilities"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListProductAbilitiesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListProductAbilitiesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取所有产品能力
+//
+// @return ListProductAbilitiesResponse
+func (client *Client) ListProductAbilities() (_result *ListProductAbilitiesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListProductAbilitiesResponse{}
+	_body, _err := client.ListProductAbilitiesWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -75321,13 +79321,24 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListTagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListTagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListTagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -75393,13 +79404,24 @@ func (client *Client) ModifyEnsEipAddressAttributeWithOptions(request *ModifyEns
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyEnsEipAddressAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyEnsEipAddressAttributeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyEnsEipAddressAttributeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -75413,6 +79435,85 @@ func (client *Client) ModifyEnsEipAddressAttribute(request *ModifyEnsEipAddressA
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyEnsEipAddressAttributeResponse{}
 	_body, _err := client.ModifyEnsEipAddressAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 调用ModifyEnsRouteEntry接口修改自定义路由条目名称、描述。
+//
+// @param request - ModifyEnsRouteEntryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyEnsRouteEntryResponse
+func (client *Client) ModifyEnsRouteEntryWithOptions(request *ModifyEnsRouteEntryRequest, runtime *util.RuntimeOptions) (_result *ModifyEnsRouteEntryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteEntryId)) {
+		query["RouteEntryId"] = request.RouteEntryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteEntryName)) {
+		query["RouteEntryName"] = request.RouteEntryName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyEnsRouteEntry"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyEnsRouteEntryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyEnsRouteEntryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 调用ModifyEnsRouteEntry接口修改自定义路由条目名称、描述。
+//
+// @param request - ModifyEnsRouteEntryRequest
+//
+// @return ModifyEnsRouteEntryResponse
+func (client *Client) ModifyEnsRouteEntry(request *ModifyEnsRouteEntryRequest) (_result *ModifyEnsRouteEntryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyEnsRouteEntryResponse{}
+	_body, _err := client.ModifyEnsRouteEntryWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -75465,13 +79566,24 @@ func (client *Client) ModifyEpnInstanceWithOptions(request *ModifyEpnInstanceReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyEpnInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyEpnInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyEpnInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -75533,13 +79645,24 @@ func (client *Client) ModifyFileSystemWithOptions(request *ModifyFileSystemReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyFileSystemResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyFileSystemResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyFileSystemResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -75575,6 +79698,14 @@ func (client *Client) ModifyForwardEntryWithOptions(request *ModifyForwardEntryR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ExternalIp)) {
+		query["ExternalIp"] = request.ExternalIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExternalPort)) {
+		query["ExternalPort"] = request.ExternalPort
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ForwardEntryId)) {
 		query["ForwardEntryId"] = request.ForwardEntryId
 	}
@@ -75585,6 +79716,18 @@ func (client *Client) ModifyForwardEntryWithOptions(request *ModifyForwardEntryR
 
 	if !tea.BoolValue(util.IsUnset(request.HealthCheckPort)) {
 		query["HealthCheckPort"] = request.HealthCheckPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InternalIp)) {
+		query["InternalIp"] = request.InternalIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InternalPort)) {
+		query["InternalPort"] = request.InternalPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpProtocol)) {
+		query["IpProtocol"] = request.IpProtocol
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -75601,13 +79744,24 @@ func (client *Client) ModifyForwardEntryWithOptions(request *ModifyForwardEntryR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyForwardEntryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyForwardEntryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyForwardEntryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -75665,13 +79819,24 @@ func (client *Client) ModifyHaVipAttributeWithOptions(request *ModifyHaVipAttrib
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyHaVipAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyHaVipAttributeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyHaVipAttributeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -75729,13 +79894,24 @@ func (client *Client) ModifyImageAttributeWithOptions(request *ModifyImageAttrib
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyImageAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyImageAttributeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyImageAttributeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -75797,13 +79973,24 @@ func (client *Client) ModifyImageSharePermissionWithOptions(request *ModifyImage
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyImageSharePermissionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyImageSharePermissionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyImageSharePermissionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -75881,13 +80068,24 @@ func (client *Client) ModifyInstanceAttributeWithOptions(request *ModifyInstance
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyInstanceAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyInstanceAttributeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyInstanceAttributeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -75965,13 +80163,24 @@ func (client *Client) ModifyInstanceAutoRenewAttributeWithOptions(request *Modif
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyInstanceAutoRenewAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyInstanceAutoRenewAttributeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyInstanceAutoRenewAttributeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -76021,13 +80230,24 @@ func (client *Client) ModifyInstanceBootConfigurationWithOptions(request *Modify
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyInstanceBootConfigurationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyInstanceBootConfigurationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyInstanceBootConfigurationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -76117,13 +80337,24 @@ func (client *Client) ModifyInstanceChargeTypeWithOptions(tmpReq *ModifyInstance
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyInstanceChargeTypeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyInstanceChargeTypeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyInstanceChargeTypeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -76193,13 +80424,24 @@ func (client *Client) ModifyLoadBalancerAttributeWithOptions(request *ModifyLoad
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyLoadBalancerAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyLoadBalancerAttributeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyLoadBalancerAttributeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -76273,13 +80515,24 @@ func (client *Client) ModifyNetworkAttributeWithOptions(request *ModifyNetworkAt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyNetworkAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyNetworkAttributeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyNetworkAttributeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -76347,13 +80600,24 @@ func (client *Client) ModifyNetworkInterfaceAttributeWithOptions(request *Modify
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyNetworkInterfaceAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyNetworkInterfaceAttributeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyNetworkInterfaceAttributeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -76411,13 +80675,24 @@ func (client *Client) ModifyPrepayInstanceSpecWithOptions(request *ModifyPrepayI
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyPrepayInstanceSpecResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyPrepayInstanceSpecResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyPrepayInstanceSpecResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -76485,13 +80760,24 @@ func (client *Client) ModifySecurityGroupAttributeWithOptions(request *ModifySec
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifySecurityGroupAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifySecurityGroupAttributeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifySecurityGroupAttributeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -76559,13 +80845,24 @@ func (client *Client) ModifySnapshotAttributeWithOptions(request *ModifySnapshot
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifySnapshotAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifySnapshotAttributeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifySnapshotAttributeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -76601,6 +80898,10 @@ func (client *Client) ModifySnatEntryWithOptions(request *ModifySnatEntryRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EipAffinity)) {
+		query["EipAffinity"] = request.EipAffinity
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.IspAffinity)) {
 		query["IspAffinity"] = request.IspAffinity
 	}
@@ -76611,6 +80912,10 @@ func (client *Client) ModifySnatEntryWithOptions(request *ModifySnatEntryRequest
 
 	if !tea.BoolValue(util.IsUnset(request.SnatEntryName)) {
 		query["SnatEntryName"] = request.SnatEntryName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SnatIp)) {
+		query["SnatIp"] = request.SnatIp
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -76627,13 +80932,24 @@ func (client *Client) ModifySnatEntryWithOptions(request *ModifySnatEntryRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifySnatEntryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifySnatEntryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifySnatEntryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -76701,13 +81017,24 @@ func (client *Client) ModifyVSwitchAttributeWithOptions(request *ModifyVSwitchAt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyVSwitchAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyVSwitchAttributeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyVSwitchAttributeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -76736,7 +81063,7 @@ func (client *Client) ModifyVSwitchAttribute(request *ModifyVSwitchAttributeRequ
 
 // Summary:
 //
-// 将已经attach在instance上的SDG实际部署到对应的AIC
+// Deploys the SDG that has been attached to instances on the corresponding Android in Container (AIC) instance.
 //
 // @param tmpReq - MountInstanceSDGRequest
 //
@@ -76777,18 +81104,29 @@ func (client *Client) MountInstanceSDGWithOptions(tmpReq *MountInstanceSDGReques
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &MountInstanceSDGResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &MountInstanceSDGResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &MountInstanceSDGResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 将已经attach在instance上的SDG实际部署到对应的AIC
+// Deploys the SDG that has been attached to instances on the corresponding Android in Container (AIC) instance.
 //
 // @param request - MountInstanceSDGRequest
 //
@@ -76859,13 +81197,24 @@ func (client *Client) PreloadRegionSDGWithOptions(tmpReq *PreloadRegionSDGReques
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &PreloadRegionSDGResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &PreloadRegionSDGResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &PreloadRegionSDGResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -76923,13 +81272,24 @@ func (client *Client) PrepareUploadWithOptions(request *PrepareUploadRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &PrepareUploadResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &PrepareUploadResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &PrepareUploadResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -76995,13 +81355,24 @@ func (client *Client) PushApplicationDataWithOptions(request *PushApplicationDat
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &PushApplicationDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &PushApplicationDataResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &PushApplicationDataResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -77036,33 +81407,33 @@ func (client *Client) PutBucketWithOptions(request *PutBucketRequest, runtime *u
 	if _err != nil {
 		return _result, _err
 	}
-	body := map[string]interface{}{}
+	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.BucketAcl)) {
-		body["BucketAcl"] = request.BucketAcl
+		query["BucketAcl"] = request.BucketAcl
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.BucketName)) {
-		body["BucketName"] = request.BucketName
+		query["BucketName"] = request.BucketName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Comment)) {
-		body["Comment"] = request.Comment
+		query["Comment"] = request.Comment
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DispatchScope)) {
-		body["DispatchScope"] = request.DispatchScope
+		query["DispatchScope"] = request.DispatchScope
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EnsRegionId)) {
-		body["EnsRegionId"] = request.EnsRegionId
+		query["EnsRegionId"] = request.EnsRegionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.LogicalBucketType)) {
-		body["LogicalBucketType"] = request.LogicalBucketType
+		query["LogicalBucketType"] = request.LogicalBucketType
 	}
 
 	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("PutBucket"),
@@ -77075,13 +81446,24 @@ func (client *Client) PutBucketWithOptions(request *PutBucketRequest, runtime *u
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &PutBucketResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &PutBucketResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &PutBucketResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -77139,13 +81521,24 @@ func (client *Client) PutBucketAclWithOptions(request *PutBucketAclRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &PutBucketAclResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &PutBucketAclResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &PutBucketAclResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -77229,13 +81622,24 @@ func (client *Client) PutBucketLifecycleWithOptions(request *PutBucketLifecycleR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &PutBucketLifecycleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &PutBucketLifecycleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &PutBucketLifecycleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -77299,13 +81703,24 @@ func (client *Client) ReInitDiskWithOptions(request *ReInitDiskRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ReInitDiskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ReInitDiskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ReInitDiskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -77361,13 +81776,24 @@ func (client *Client) RebootAICInstanceWithOptions(tmpReq *RebootAICInstanceRequ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RebootAICInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RebootAICInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RebootAICInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -77417,13 +81843,24 @@ func (client *Client) RebootARMServerInstanceWithOptions(request *RebootARMServe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RebootARMServerInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RebootARMServerInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RebootARMServerInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -77487,13 +81924,24 @@ func (client *Client) RebootInstanceWithOptions(request *RebootInstanceRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RebootInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RebootInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RebootInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -77559,13 +82007,24 @@ func (client *Client) RebootInstancesWithOptions(tmpReq *RebootInstancesRequest,
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RebootInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RebootInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RebootInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -77615,13 +82074,24 @@ func (client *Client) RecoverAICInstanceWithOptions(request *RecoverAICInstanceR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RecoverAICInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RecoverAICInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RecoverAICInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -77683,13 +82153,24 @@ func (client *Client) ReinitInstanceWithOptions(request *ReinitInstanceRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ReinitInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ReinitInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ReinitInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -77757,13 +82238,24 @@ func (client *Client) ReinitInstancesWithOptions(tmpReq *ReinitInstancesRequest,
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ReinitInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ReinitInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ReinitInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -77817,13 +82309,24 @@ func (client *Client) ReleaseAICInstanceWithOptions(request *ReleaseAICInstanceR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ReleaseAICInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ReleaseAICInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ReleaseAICInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -77877,13 +82380,24 @@ func (client *Client) ReleaseARMServerInstanceWithOptions(request *ReleaseARMSer
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ReleaseARMServerInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ReleaseARMServerInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ReleaseARMServerInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -77943,13 +82457,24 @@ func (client *Client) ReleaseInstanceWithOptions(request *ReleaseInstanceRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ReleaseInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ReleaseInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ReleaseInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -78009,13 +82534,24 @@ func (client *Client) ReleasePostPaidInstanceWithOptions(request *ReleasePostPai
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ReleasePostPaidInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ReleasePostPaidInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ReleasePostPaidInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -78069,13 +82605,24 @@ func (client *Client) ReleasePrePaidInstanceWithOptions(request *ReleasePrePaidI
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ReleasePrePaidInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ReleasePrePaidInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ReleasePrePaidInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -78145,13 +82692,24 @@ func (client *Client) RemoveBackendServersWithOptions(tmpReq *RemoveBackendServe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RemoveBackendServersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RemoveBackendServersResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RemoveBackendServersResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -78217,13 +82775,24 @@ func (client *Client) RemoveInstanceSDGWithOptions(tmpReq *RemoveInstanceSDGRequ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RemoveInstanceSDGResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RemoveInstanceSDGResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RemoveInstanceSDGResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -78281,13 +82850,24 @@ func (client *Client) RemovePublicIpsFromEpnInstanceWithOptions(request *RemoveP
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RemovePublicIpsFromEpnInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RemovePublicIpsFromEpnInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RemovePublicIpsFromEpnInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -78343,13 +82923,24 @@ func (client *Client) RemoveSDGWithOptions(tmpReq *RemoveSDGRequest, runtime *ut
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RemoveSDGResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RemoveSDGResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RemoveSDGResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -78407,13 +82998,24 @@ func (client *Client) RemoveVSwitchesFromEpnInstanceWithOptions(request *RemoveV
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RemoveVSwitchesFromEpnInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RemoveVSwitchesFromEpnInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RemoveVSwitchesFromEpnInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -78479,13 +83081,24 @@ func (client *Client) RenewARMServerInstanceWithOptions(request *RenewARMServerI
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RenewARMServerInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RenewARMServerInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RenewARMServerInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -78535,13 +83148,24 @@ func (client *Client) RenewInstanceWithOptions(request *RenewInstanceRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RenewInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RenewInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RenewInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -78615,13 +83239,24 @@ func (client *Client) RescaleApplicationWithOptions(request *RescaleApplicationR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RescaleApplicationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RescaleApplicationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RescaleApplicationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -78713,13 +83348,24 @@ func (client *Client) RescaleDeviceServiceWithOptions(request *RescaleDeviceServ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RescaleDeviceServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RescaleDeviceServiceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RescaleDeviceServiceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -78769,13 +83415,24 @@ func (client *Client) ResetAICInstanceWithOptions(request *ResetAICInstanceReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ResetAICInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ResetAICInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ResetAICInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -78825,13 +83482,24 @@ func (client *Client) ResetDeviceInstanceWithOptions(request *ResetDeviceInstanc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ResetDeviceInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ResetDeviceInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ResetDeviceInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -78901,13 +83569,24 @@ func (client *Client) ResetDiskWithOptions(request *ResetDiskRequest, runtime *u
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ResetDiskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ResetDiskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ResetDiskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -78977,13 +83656,24 @@ func (client *Client) ResizeDiskWithOptions(request *ResizeDiskRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ResizeDiskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ResizeDiskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ResizeDiskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -79033,13 +83723,24 @@ func (client *Client) RestartDeviceInstanceWithOptions(request *RestartDeviceIns
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RestartDeviceInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RestartDeviceInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RestartDeviceInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -79125,13 +83826,24 @@ func (client *Client) RevokeSecurityGroupWithOptions(request *RevokeSecurityGrou
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RevokeSecurityGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RevokeSecurityGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RevokeSecurityGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -79221,13 +83933,24 @@ func (client *Client) RevokeSecurityGroupEgressWithOptions(request *RevokeSecuri
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RevokeSecurityGroupEgressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RevokeSecurityGroupEgressResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RevokeSecurityGroupEgressResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -79297,13 +84020,24 @@ func (client *Client) RollbackApplicationWithOptions(request *RollbackApplicatio
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RollbackApplicationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RollbackApplicationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RollbackApplicationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -79511,13 +84245,24 @@ func (client *Client) RunInstancesWithOptions(tmpReq *RunInstancesRequest, runti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RunInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RunInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RunInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -79603,13 +84348,24 @@ func (client *Client) RunServiceScheduleWithOptions(request *RunServiceScheduleR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RunServiceScheduleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RunServiceScheduleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RunServiceScheduleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -79659,13 +84415,24 @@ func (client *Client) SaveSDGWithOptions(request *SaveSDGRequest, runtime *util.
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SaveSDGResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SaveSDGResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SaveSDGResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -79735,13 +84502,24 @@ func (client *Client) SetBackendServersWithOptions(tmpReq *SetBackendServersRequ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SetBackendServersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetBackendServersResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetBackendServersResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -79871,13 +84649,24 @@ func (client *Client) SetLoadBalancerHTTPListenerAttributeWithOptions(request *S
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SetLoadBalancerHTTPListenerAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetLoadBalancerHTTPListenerAttributeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetLoadBalancerHTTPListenerAttributeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -80007,13 +84796,24 @@ func (client *Client) SetLoadBalancerHTTPSListenerAttributeWithOptions(request *
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SetLoadBalancerHTTPSListenerAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetLoadBalancerHTTPSListenerAttributeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetLoadBalancerHTTPSListenerAttributeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -80083,13 +84883,24 @@ func (client *Client) SetLoadBalancerStatusWithOptions(request *SetLoadBalancerS
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SetLoadBalancerStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetLoadBalancerStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetLoadBalancerStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -80215,13 +85026,24 @@ func (client *Client) SetLoadBalancerTCPListenerAttributeWithOptions(request *Se
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SetLoadBalancerTCPListenerAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetLoadBalancerTCPListenerAttributeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetLoadBalancerTCPListenerAttributeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -80335,13 +85157,24 @@ func (client *Client) SetLoadBalancerUDPListenerAttributeWithOptions(request *Se
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SetLoadBalancerUDPListenerAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetLoadBalancerUDPListenerAttributeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetLoadBalancerUDPListenerAttributeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -80401,13 +85234,24 @@ func (client *Client) StartEpnInstanceWithOptions(request *StartEpnInstanceReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StartEpnInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StartEpnInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StartEpnInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -80467,13 +85311,24 @@ func (client *Client) StartInstanceWithOptions(request *StartInstanceRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StartInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StartInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StartInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -80539,13 +85394,24 @@ func (client *Client) StartInstancesWithOptions(tmpReq *StartInstancesRequest, r
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StartInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StartInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StartInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -80613,13 +85479,24 @@ func (client *Client) StartLoadBalancerListenerWithOptions(request *StartLoadBal
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StartLoadBalancerListenerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StartLoadBalancerListenerResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StartLoadBalancerListenerResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -80683,13 +85560,24 @@ func (client *Client) StartSnatIpForSnatEntryWithOptions(request *StartSnatIpFor
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StartSnatIpForSnatEntryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StartSnatIpForSnatEntryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StartSnatIpForSnatEntryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -80743,13 +85631,24 @@ func (client *Client) StopEpnInstanceWithOptions(request *StopEpnInstanceRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StopEpnInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StopEpnInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StopEpnInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -80817,13 +85716,24 @@ func (client *Client) StopInstanceWithOptions(request *StopInstanceRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StopInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StopInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StopInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -80893,13 +85803,24 @@ func (client *Client) StopInstancesWithOptions(tmpReq *StopInstancesRequest, run
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StopInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StopInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StopInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -80967,13 +85888,24 @@ func (client *Client) StopLoadBalancerListenerWithOptions(request *StopLoadBalan
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StopLoadBalancerListenerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StopLoadBalancerListenerResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StopLoadBalancerListenerResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -81037,13 +85969,24 @@ func (client *Client) StopSnatIpForSnatEntryWithOptions(request *StopSnatIpForSn
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StopSnatIpForSnatEntryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StopSnatIpForSnatEntryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StopSnatIpForSnatEntryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -81109,13 +86052,24 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &TagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &TagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &TagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -81159,6 +86113,10 @@ func (client *Client) UnAssociateEnsEipAddressWithOptions(request *UnAssociateEn
 		query["AllocationId"] = request.AllocationId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Force)) {
+		query["Force"] = request.Force
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -81173,13 +86131,24 @@ func (client *Client) UnAssociateEnsEipAddressWithOptions(request *UnAssociateEn
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UnAssociateEnsEipAddressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UnAssociateEnsEipAddressResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UnAssociateEnsEipAddressResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -81237,13 +86206,24 @@ func (client *Client) UnassignPrivateIpAddressesWithOptions(request *UnassignPri
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UnassignPrivateIpAddressesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UnassignPrivateIpAddressesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UnassignPrivateIpAddressesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -81301,13 +86281,24 @@ func (client *Client) UnassociateHaVipWithOptions(request *UnassociateHaVipReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UnassociateHaVipResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UnassociateHaVipResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UnassociateHaVipResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -81365,13 +86356,24 @@ func (client *Client) UnassociateNetworkAclWithOptions(request *UnassociateNetwo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UnassociateNetworkAclResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UnassociateNetworkAclResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UnassociateNetworkAclResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -81443,13 +86445,24 @@ func (client *Client) UnloadRegionSDGWithOptions(tmpReq *UnloadRegionSDGRequest,
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UnloadRegionSDGResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UnloadRegionSDGResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UnloadRegionSDGResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -81472,7 +86485,7 @@ func (client *Client) UnloadRegionSDG(request *UnloadRegionSDGRequest) (_result 
 
 // Summary:
 //
-// 将已经Mount的SDG从对应的Instance上解除下来，恢复到attach状态
+// Unmounts a shared data group (SDG) from instances.
 //
 // @param tmpReq - UnmountInstanceSDGRequest
 //
@@ -81513,18 +86526,29 @@ func (client *Client) UnmountInstanceSDGWithOptions(tmpReq *UnmountInstanceSDGRe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UnmountInstanceSDGResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UnmountInstanceSDGResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UnmountInstanceSDGResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 将已经Mount的SDG从对应的Instance上解除下来，恢复到attach状态
+// Unmounts a shared data group (SDG) from instances.
 //
 // @param request - UnmountInstanceSDGRequest
 //
@@ -81585,13 +86609,24 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UntagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UntagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UntagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -81663,13 +86698,24 @@ func (client *Client) UpdateEnsSaleControlWithOptions(tmpReq *UpdateEnsSaleContr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateEnsSaleControlResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateEnsSaleControlResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateEnsSaleControlResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -81725,13 +86771,24 @@ func (client *Client) UpgradeAICInstanceImageWithOptions(tmpReq *UpgradeAICInsta
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpgradeAICInstanceImageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpgradeAICInstanceImageResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpgradeAICInstanceImageResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -81793,13 +86850,24 @@ func (client *Client) UpgradeApplicationWithOptions(request *UpgradeApplicationR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpgradeApplicationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpgradeApplicationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpgradeApplicationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
