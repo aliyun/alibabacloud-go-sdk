@@ -20344,7 +20344,8 @@ type DescribeDownloadRecordsRequest struct {
 	// example:
 	//
 	// gp-bp12ga6v69h86****
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	DBInstanceId     *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	DownloadTaskType *string `json:"DownloadTaskType,omitempty" xml:"DownloadTaskType,omitempty"`
 }
 
 func (s DescribeDownloadRecordsRequest) String() string {
@@ -20357,6 +20358,11 @@ func (s DescribeDownloadRecordsRequest) GoString() string {
 
 func (s *DescribeDownloadRecordsRequest) SetDBInstanceId(v string) *DescribeDownloadRecordsRequest {
 	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeDownloadRecordsRequest) SetDownloadTaskType(v string) *DescribeDownloadRecordsRequest {
+	s.DownloadTaskType = &v
 	return s
 }
 
@@ -56366,6 +56372,10 @@ func (client *Client) DescribeDownloadRecordsWithOptions(request *DescribeDownlo
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
 		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DownloadTaskType)) {
+		query["DownloadTaskType"] = request.DownloadTaskType
 	}
 
 	req := &openapi.OpenApiRequest{
