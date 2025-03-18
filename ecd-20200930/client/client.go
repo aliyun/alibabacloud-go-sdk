@@ -22552,7 +22552,8 @@ type DescribeDesktopsResponseBodyDesktops struct {
 	// example:
 	//
 	// Windows
-	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	OsType   *string                                       `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	OsUpdate *DescribeDesktopsResponseBodyDesktopsOsUpdate `json:"OsUpdate,omitempty" xml:"OsUpdate,omitempty" type:"Struct"`
 	// The information about the OS platform.
 	//
 	// Valid values:
@@ -22909,6 +22910,11 @@ func (s *DescribeDesktopsResponseBodyDesktops) SetOfficeSiteVpcType(v string) *D
 
 func (s *DescribeDesktopsResponseBodyDesktops) SetOsType(v string) *DescribeDesktopsResponseBodyDesktops {
 	s.OsType = &v
+	return s
+}
+
+func (s *DescribeDesktopsResponseBodyDesktops) SetOsUpdate(v *DescribeDesktopsResponseBodyDesktopsOsUpdate) *DescribeDesktopsResponseBodyDesktops {
+	s.OsUpdate = v
 	return s
 }
 
@@ -23276,6 +23282,64 @@ func (s *DescribeDesktopsResponseBodyDesktopsFotaUpdate) SetReleaseNoteJp(v stri
 
 func (s *DescribeDesktopsResponseBodyDesktopsFotaUpdate) SetSize(v int64) *DescribeDesktopsResponseBodyDesktopsFotaUpdate {
 	s.Size = &v
+	return s
+}
+
+type DescribeDesktopsResponseBodyDesktopsOsUpdate struct {
+	CheckId      *string                                                 `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
+	PackageCount *int32                                                  `json:"PackageCount,omitempty" xml:"PackageCount,omitempty"`
+	Packages     []*DescribeDesktopsResponseBodyDesktopsOsUpdatePackages `json:"Packages,omitempty" xml:"Packages,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDesktopsResponseBodyDesktopsOsUpdate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDesktopsResponseBodyDesktopsOsUpdate) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDesktopsResponseBodyDesktopsOsUpdate) SetCheckId(v string) *DescribeDesktopsResponseBodyDesktopsOsUpdate {
+	s.CheckId = &v
+	return s
+}
+
+func (s *DescribeDesktopsResponseBodyDesktopsOsUpdate) SetPackageCount(v int32) *DescribeDesktopsResponseBodyDesktopsOsUpdate {
+	s.PackageCount = &v
+	return s
+}
+
+func (s *DescribeDesktopsResponseBodyDesktopsOsUpdate) SetPackages(v []*DescribeDesktopsResponseBodyDesktopsOsUpdatePackages) *DescribeDesktopsResponseBodyDesktopsOsUpdate {
+	s.Packages = v
+	return s
+}
+
+type DescribeDesktopsResponseBodyDesktopsOsUpdatePackages struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Kb          *string `json:"Kb,omitempty" xml:"Kb,omitempty"`
+	Title       *string `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s DescribeDesktopsResponseBodyDesktopsOsUpdatePackages) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDesktopsResponseBodyDesktopsOsUpdatePackages) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDesktopsResponseBodyDesktopsOsUpdatePackages) SetDescription(v string) *DescribeDesktopsResponseBodyDesktopsOsUpdatePackages {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeDesktopsResponseBodyDesktopsOsUpdatePackages) SetKb(v string) *DescribeDesktopsResponseBodyDesktopsOsUpdatePackages {
+	s.Kb = &v
+	return s
+}
+
+func (s *DescribeDesktopsResponseBodyDesktopsOsUpdatePackages) SetTitle(v string) *DescribeDesktopsResponseBodyDesktopsOsUpdatePackages {
+	s.Title = &v
 	return s
 }
 
@@ -31379,6 +31443,7 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
 	//
 	// on
 	EndUserGroupCoordinate *string `json:"EndUserGroupCoordinate,omitempty" xml:"EndUserGroupCoordinate,omitempty"`
+	FileMigrate            *string `json:"FileMigrate,omitempty" xml:"FileMigrate,omitempty"`
 	// Transfers files.
 	//
 	// example:
@@ -32048,6 +32113,7 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
 	//
 	// EndUserId
 	WatermarkType *string `json:"WatermarkType,omitempty" xml:"WatermarkType,omitempty"`
+	WuyingKeeper  *string `json:"WuyingKeeper,omitempty" xml:"WuyingKeeper,omitempty"`
 	// Specifies whether to provide the AI Assistant function in the DesktopAssistant when the cloud computer is accessed from the Alibaba Cloud Workspace desktop clients (including the Windows client and the macOS client).
 	//
 	// > Desktop clients of V7.7 and higher versions required.
@@ -32199,6 +32265,11 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetEndUserApplyAd
 
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetEndUserGroupCoordinate(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
 	s.EndUserGroupCoordinate = &v
+	return s
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetFileMigrate(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.FileMigrate = &v
 	return s
 }
 
@@ -32569,6 +32640,11 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetWatermarkTrans
 
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetWatermarkType(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
 	s.WatermarkType = &v
+	return s
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetWuyingKeeper(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.WuyingKeeper = &v
 	return s
 }
 
@@ -51996,6 +52072,7 @@ type RebootDesktopsRequest struct {
 	//
 	// ecd-gx2x1dhsmucyy****
 	DesktopId []*string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
+	OsUpdate  *bool     `json:"OsUpdate,omitempty" xml:"OsUpdate,omitempty"`
 	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
 	//
 	// This parameter is required.
@@ -52016,6 +52093,11 @@ func (s RebootDesktopsRequest) GoString() string {
 
 func (s *RebootDesktopsRequest) SetDesktopId(v []*string) *RebootDesktopsRequest {
 	s.DesktopId = v
+	return s
+}
+
+func (s *RebootDesktopsRequest) SetOsUpdate(v bool) *RebootDesktopsRequest {
+	s.OsUpdate = &v
 	return s
 }
 
@@ -55699,6 +55781,7 @@ type StopDesktopsRequest struct {
 	//
 	// ecd-7w78ozhjcwa3u****
 	DesktopId []*string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
+	OsUpdate  *bool     `json:"OsUpdate,omitempty" xml:"OsUpdate,omitempty"`
 	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
 	//
 	// This parameter is required.
@@ -55743,6 +55826,11 @@ func (s StopDesktopsRequest) GoString() string {
 
 func (s *StopDesktopsRequest) SetDesktopId(v []*string) *StopDesktopsRequest {
 	s.DesktopId = v
+	return s
+}
+
+func (s *StopDesktopsRequest) SetOsUpdate(v bool) *StopDesktopsRequest {
+	s.OsUpdate = &v
 	return s
 }
 
@@ -75728,6 +75816,10 @@ func (client *Client) RebootDesktopsWithOptions(request *RebootDesktopsRequest, 
 		query["DesktopId"] = request.DesktopId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.OsUpdate)) {
+		query["OsUpdate"] = request.OsUpdate
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
 	}
@@ -77874,6 +77966,10 @@ func (client *Client) StopDesktopsWithOptions(request *StopDesktopsRequest, runt
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DesktopId)) {
 		query["DesktopId"] = request.DesktopId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OsUpdate)) {
+		query["OsUpdate"] = request.OsUpdate
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
