@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -14,7 +11,12 @@ import (
 
 type AddUserToOrganizationalUnitsHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	Authorization *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Bearer xxxx
+	Authorization *string `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
 }
 
 func (s AddUserToOrganizationalUnitsHeaders) String() string {
@@ -36,6 +38,11 @@ func (s *AddUserToOrganizationalUnitsHeaders) SetAuthorization(v string) *AddUse
 }
 
 type AddUserToOrganizationalUnitsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// [ou_wovwffm62xifdziem7an7xxxxx]
 	OrganizationalUnitIds []*string `json:"organizationalUnitIds,omitempty" xml:"organizationalUnitIds,omitempty" type:"Repeated"`
 }
 
@@ -53,8 +60,8 @@ func (s *AddUserToOrganizationalUnitsRequest) SetOrganizationalUnitIds(v []*stri
 }
 
 type AddUserToOrganizationalUnitsResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s AddUserToOrganizationalUnitsResponse) String() string {
@@ -75,9 +82,197 @@ func (s *AddUserToOrganizationalUnitsResponse) SetStatusCode(v int32) *AddUserTo
 	return s
 }
 
+type AddUsersToGroupHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Bearer xxxx
+	Authorization *string `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s AddUsersToGroupHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddUsersToGroupHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *AddUsersToGroupHeaders) SetCommonHeaders(v map[string]*string) *AddUsersToGroupHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *AddUsersToGroupHeaders) SetAuthorization(v string) *AddUsersToGroupHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type AddUsersToGroupRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// [user_d6sbsuumeta4h66ec3il7yxxxx}
+	UserIds []*string `json:"userIds,omitempty" xml:"userIds,omitempty" type:"Repeated"`
+}
+
+func (s AddUsersToGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddUsersToGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddUsersToGroupRequest) SetUserIds(v []*string) *AddUsersToGroupRequest {
+	s.UserIds = v
+	return s
+}
+
+type AddUsersToGroupResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s AddUsersToGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddUsersToGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddUsersToGroupResponse) SetHeaders(v map[string]*string) *AddUsersToGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddUsersToGroupResponse) SetStatusCode(v int32) *AddUsersToGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type CreateGroupHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Bearer xxxx
+	Authorization *string `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s CreateGroupHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGroupHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGroupHeaders) SetCommonHeaders(v map[string]*string) *CreateGroupHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CreateGroupHeaders) SetAuthorization(v string) *CreateGroupHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type CreateGroupRequest struct {
+	// example:
+	//
+	// group_2bo6lefcewdausyyxxxx
+	GroupExternalId *string `json:"groupExternalId,omitempty" xml:"groupExternalId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// name001
+	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
+}
+
+func (s CreateGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGroupRequest) SetGroupExternalId(v string) *CreateGroupRequest {
+	s.GroupExternalId = &v
+	return s
+}
+
+func (s *CreateGroupRequest) SetGroupName(v string) *CreateGroupRequest {
+	s.GroupName = &v
+	return s
+}
+
+type CreateGroupResponseBody struct {
+	// example:
+	//
+	// group_wovwffm62xifdziem7an7xxxxx
+	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
+}
+
+func (s CreateGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGroupResponseBody) SetGroupId(v string) *CreateGroupResponseBody {
+	s.GroupId = &v
+	return s
+}
+
+type CreateGroupResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGroupResponse) SetHeaders(v map[string]*string) *CreateGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateGroupResponse) SetStatusCode(v int32) *CreateGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateGroupResponse) SetBody(v *CreateGroupResponseBody) *CreateGroupResponse {
+	s.Body = v
+	return s
+}
+
 type CreateOrganizationalUnitHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	Authorization *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+	// The authentication information. Format: Bearer ${access_token}. Example: Bearer ATxxxx.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Bearer AT8csE2seYxxxxxij
+	Authorization *string `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
 }
 
 func (s CreateOrganizationalUnitHeaders) String() string {
@@ -99,10 +294,36 @@ func (s *CreateOrganizationalUnitHeaders) SetAuthorization(v string) *CreateOrga
 }
 
 type CreateOrganizationalUnitRequest struct {
-	Description                  *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The description of the organizational unit.
+	//
+	// example:
+	//
+	// test organizational unit
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The external ID of the organizational unit. The external ID can be used to map external data to the data of the organizational unit in Employee Identity and Access Management (EIAM) of Identity as a Service (IDaaS). By default, the external ID is the organizational unit ID.
+	//
+	// For organizational units with the same source type and source ID, each organizational unit has a unique external ID.
+	//
+	// example:
+	//
+	// ou_wovwffm62xifdziem7an7xxxxx
 	OrganizationalUnitExternalId *string `json:"organizationalUnitExternalId,omitempty" xml:"organizationalUnitExternalId,omitempty"`
-	OrganizationalUnitName       *string `json:"organizationalUnitName,omitempty" xml:"organizationalUnitName,omitempty"`
-	ParentId                     *string `json:"parentId,omitempty" xml:"parentId,omitempty"`
+	// The name of the organizational unit.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// name001
+	OrganizationalUnitName *string `json:"organizationalUnitName,omitempty" xml:"organizationalUnitName,omitempty"`
+	// The ID of the parent organizational unit.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ou_wovwffm62xifdziem7an7xxxxx
+	ParentId *string `json:"parentId,omitempty" xml:"parentId,omitempty"`
 }
 
 func (s CreateOrganizationalUnitRequest) String() string {
@@ -134,6 +355,11 @@ func (s *CreateOrganizationalUnitRequest) SetParentId(v string) *CreateOrganizat
 }
 
 type CreateOrganizationalUnitResponseBody struct {
+	// The ID of the organizational unit.
+	//
+	// example:
+	//
+	// ou_wovwffm62xifdziem7an7xxxxx
 	OrganizationalUnitId *string `json:"organizationalUnitId,omitempty" xml:"organizationalUnitId,omitempty"`
 }
 
@@ -151,9 +377,9 @@ func (s *CreateOrganizationalUnitResponseBody) SetOrganizationalUnitId(v string)
 }
 
 type CreateOrganizationalUnitResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateOrganizationalUnitResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateOrganizationalUnitResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateOrganizationalUnitResponse) String() string {
@@ -181,7 +407,14 @@ func (s *CreateOrganizationalUnitResponse) SetBody(v *CreateOrganizationalUnitRe
 
 type CreateUserHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	Authorization *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+	// The authentication information. Format: Bearer ${access_token}. Example: Bearer ATxxxx.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Bearer AT8csE2seYxxxxxij
+	Authorization *string `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
 }
 
 func (s CreateUserHeaders) String() string {
@@ -203,19 +436,80 @@ func (s *CreateUserHeaders) SetAuthorization(v string) *CreateUserHeaders {
 }
 
 type CreateUserRequest struct {
-	CustomFields                 []*CreateUserRequestCustomFields               `json:"customFields,omitempty" xml:"customFields,omitempty" type:"Repeated"`
-	Description                  *string                                        `json:"description,omitempty" xml:"description,omitempty"`
-	DisplayName                  *string                                        `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	Email                        *string                                        `json:"email,omitempty" xml:"email,omitempty"`
-	EmailVerified                *bool                                          `json:"emailVerified,omitempty" xml:"emailVerified,omitempty"`
-	Password                     *string                                        `json:"password,omitempty" xml:"password,omitempty"`
+	// Custom fields
+	CustomFields []*CreateUserRequestCustomFields `json:"customFields,omitempty" xml:"customFields,omitempty" type:"Repeated"`
+	// The description of the account. The description can be up to 256 characters in length.
+	//
+	// example:
+	//
+	// test user
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The display name of the account. The display name can be up to 64 characters in length.
+	//
+	// example:
+	//
+	// display_name001
+	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// The email address of the user who owns the account.
+	//
+	// example:
+	//
+	// example@example.com
+	Email *string `json:"email,omitempty" xml:"email,omitempty"`
+	// Indicates whether the email address is verified. This field is required if an email address is specified. If you have no special requirement, set this parameter to true.
+	//
+	// example:
+	//
+	// true
+	EmailVerified *bool `json:"emailVerified,omitempty" xml:"emailVerified,omitempty"`
+	// The password of the account. For information about the password rules, go to the Create User panel in the Identity as a Service (IDaaS) console.
+	//
+	// example:
+	//
+	// xxxxx
+	Password *string `json:"password,omitempty" xml:"password,omitempty"`
+	// Configure the initial password
 	PasswordInitializationConfig *CreateUserRequestPasswordInitializationConfig `json:"passwordInitializationConfig,omitempty" xml:"passwordInitializationConfig,omitempty" type:"Struct"`
-	PhoneNumber                  *string                                        `json:"phoneNumber,omitempty" xml:"phoneNumber,omitempty"`
-	PhoneNumberVerified          *bool                                          `json:"phoneNumberVerified,omitempty" xml:"phoneNumberVerified,omitempty"`
-	PhoneRegion                  *string                                        `json:"phoneRegion,omitempty" xml:"phoneRegion,omitempty"`
-	PrimaryOrganizationalUnitId  *string                                        `json:"primaryOrganizationalUnitId,omitempty" xml:"primaryOrganizationalUnitId,omitempty"`
-	UserExternalId               *string                                        `json:"userExternalId,omitempty" xml:"userExternalId,omitempty"`
-	Username                     *string                                        `json:"username,omitempty" xml:"username,omitempty"`
+	// The mobile number of the user who owns the account.
+	//
+	// example:
+	//
+	// 156xxxxxxx
+	PhoneNumber *string `json:"phoneNumber,omitempty" xml:"phoneNumber,omitempty"`
+	// Indicates whether the mobile number is verified. This field is required if a mobile number is specified. If you have no special requirement, set this parameter to true.
+	//
+	// example:
+	//
+	// true
+	PhoneNumberVerified *bool `json:"phoneNumberVerified,omitempty" xml:"phoneNumberVerified,omitempty"`
+	// The country code of the mobile number. For example, the country code of China is 86 without 00 or +. This parameter is required if a mobile number is specified.
+	//
+	// example:
+	//
+	// 86
+	PhoneRegion *string `json:"phoneRegion,omitempty" xml:"phoneRegion,omitempty"`
+	// The ID of the primary organizational unit.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ou_wovwffm62xifdziem7an7xxxxx
+	PrimaryOrganizationalUnitId *string `json:"primaryOrganizationalUnitId,omitempty" xml:"primaryOrganizationalUnitId,omitempty"`
+	// The external ID of the account. The external ID can be used to map external data to the data of the account in EIAM of Identity as a Service (IDaaS). By default, the external ID is the account ID.
+	//
+	// example:
+	//
+	// user_d6sbsuumeta4h66ec3il7yxxxx
+	UserExternalId *string `json:"userExternalId,omitempty" xml:"userExternalId,omitempty"`
+	// The username of the account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// name001
+	Username *string `json:"username,omitempty" xml:"username,omitempty"`
 }
 
 func (s CreateUserRequest) String() string {
@@ -292,7 +586,17 @@ func (s *CreateUserRequest) SetUsername(v string) *CreateUserRequest {
 }
 
 type CreateUserRequestCustomFields struct {
-	FieldName  *string `json:"fieldName,omitempty" xml:"fieldName,omitempty"`
+	// Field name
+	//
+	// example:
+	//
+	// age
+	FieldName *string `json:"fieldName,omitempty" xml:"fieldName,omitempty"`
+	// Filed value
+	//
+	// example:
+	//
+	// fieldValue_001
 	FieldValue *string `json:"fieldValue,omitempty" xml:"fieldValue,omitempty"`
 }
 
@@ -315,10 +619,30 @@ func (s *CreateUserRequestCustomFields) SetFieldValue(v string) *CreateUserReque
 }
 
 type CreateUserRequestPasswordInitializationConfig struct {
-	PasswordForcedUpdateStatus           *string   `json:"passwordForcedUpdateStatus,omitempty" xml:"passwordForcedUpdateStatus,omitempty"`
-	PasswordInitializationPolicyPriority *string   `json:"passwordInitializationPolicyPriority,omitempty" xml:"passwordInitializationPolicyPriority,omitempty"`
-	PasswordInitializationType           *string   `json:"passwordInitializationType,omitempty" xml:"passwordInitializationType,omitempty"`
-	UserNotificationChannels             []*string `json:"userNotificationChannels,omitempty" xml:"userNotificationChannels,omitempty" type:"Repeated"`
+	// Password  forced update
+	//
+	// example:
+	//
+	// enabled
+	PasswordForcedUpdateStatus *string `json:"passwordForcedUpdateStatus,omitempty" xml:"passwordForcedUpdateStatus,omitempty"`
+	// Password policy
+	//
+	// example:
+	//
+	// global
+	PasswordInitializationPolicyPriority *string `json:"passwordInitializationPolicyPriority,omitempty" xml:"passwordInitializationPolicyPriority,omitempty"`
+	// Password Initialization Type
+	//
+	// example:
+	//
+	// random
+	PasswordInitializationType *string `json:"passwordInitializationType,omitempty" xml:"passwordInitializationType,omitempty"`
+	// User Notification Channels
+	//
+	// example:
+	//
+	// sms
+	UserNotificationChannels []*string `json:"userNotificationChannels,omitempty" xml:"userNotificationChannels,omitempty" type:"Repeated"`
 }
 
 func (s CreateUserRequestPasswordInitializationConfig) String() string {
@@ -350,6 +674,11 @@ func (s *CreateUserRequestPasswordInitializationConfig) SetUserNotificationChann
 }
 
 type CreateUserResponseBody struct {
+	// The account ID.
+	//
+	// example:
+	//
+	// user_d6sbsuumeta4h66ec3il7yxxxx
 	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 
@@ -367,9 +696,9 @@ func (s *CreateUserResponseBody) SetUserId(v string) *CreateUserResponseBody {
 }
 
 type CreateUserResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateUserResponse) String() string {
@@ -395,9 +724,67 @@ func (s *CreateUserResponse) SetBody(v *CreateUserResponseBody) *CreateUserRespo
 	return s
 }
 
+type DeleteGroupHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Bearer xxxx
+	Authorization *string `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s DeleteGroupHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGroupHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGroupHeaders) SetCommonHeaders(v map[string]*string) *DeleteGroupHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *DeleteGroupHeaders) SetAuthorization(v string) *DeleteGroupHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type DeleteGroupResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s DeleteGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGroupResponse) SetHeaders(v map[string]*string) *DeleteGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteGroupResponse) SetStatusCode(v int32) *DeleteGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type DeleteOrganizationalUnitHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	Authorization *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+	// The authentication information. Format: Bearer ${access_token}. Example: Bearer ATxxxx.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Bearer AT8csE2seYxxxxxij
+	Authorization *string `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
 }
 
 func (s DeleteOrganizationalUnitHeaders) String() string {
@@ -419,8 +806,8 @@ func (s *DeleteOrganizationalUnitHeaders) SetAuthorization(v string) *DeleteOrga
 }
 
 type DeleteOrganizationalUnitResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s DeleteOrganizationalUnitResponse) String() string {
@@ -443,7 +830,14 @@ func (s *DeleteOrganizationalUnitResponse) SetStatusCode(v int32) *DeleteOrganiz
 
 type DeleteUserHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	Authorization *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+	// The authentication information. Format: Bearer ${access_token}. Example: Bearer ATxxxx.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Bearer AT8csE2seYxxxxxij
+	Authorization *string `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
 }
 
 func (s DeleteUserHeaders) String() string {
@@ -465,8 +859,8 @@ func (s *DeleteUserHeaders) SetAuthorization(v string) *DeleteUserHeaders {
 }
 
 type DeleteUserResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s DeleteUserResponse) String() string {
@@ -489,7 +883,14 @@ func (s *DeleteUserResponse) SetStatusCode(v int32) *DeleteUserResponse {
 
 type DisableUserHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	Authorization *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+	// The authentication information. Format: Bearer ${access_token}. Example: Bearer ATxxxx.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Bearer xxxx
+	Authorization *string `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
 }
 
 func (s DisableUserHeaders) String() string {
@@ -511,8 +912,8 @@ func (s *DisableUserHeaders) SetAuthorization(v string) *DisableUserHeaders {
 }
 
 type DisableUserResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s DisableUserResponse) String() string {
@@ -535,7 +936,14 @@ func (s *DisableUserResponse) SetStatusCode(v int32) *DisableUserResponse {
 
 type EnableUserHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	Authorization *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+	// The authentication information. Format: Bearer ${access_token}. Example: Bearer ATxxxx.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Bearer xxxx
+	Authorization *string `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
 }
 
 func (s EnableUserHeaders) String() string {
@@ -557,8 +965,8 @@ func (s *EnableUserHeaders) SetAuthorization(v string) *EnableUserHeaders {
 }
 
 type EnableUserResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s EnableUserResponse) String() string {
@@ -580,6 +988,11 @@ func (s *EnableUserResponse) SetStatusCode(v int32) *EnableUserResponse {
 }
 
 type GenerateDeviceCodeRequest struct {
+	// The authorization scope.
+	//
+	// example:
+	//
+	// xxx
 	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
 }
 
@@ -597,12 +1010,49 @@ func (s *GenerateDeviceCodeRequest) SetScope(v string) *GenerateDeviceCodeReques
 }
 
 type GenerateDeviceCodeResponseBody struct {
-	DeviceCode              *string `json:"device_code,omitempty" xml:"device_code,omitempty"`
-	ExpiresAt               *int64  `json:"expires_at,omitempty" xml:"expires_at,omitempty"`
-	ExpiresIn               *int64  `json:"expires_in,omitempty" xml:"expires_in,omitempty"`
-	Interval                *int64  `json:"interval,omitempty" xml:"interval,omitempty"`
-	UserCode                *string `json:"user_code,omitempty" xml:"user_code,omitempty"`
-	VerificationUri         *string `json:"verification_uri,omitempty" xml:"verification_uri,omitempty"`
+	// The device code.
+	//
+	// example:
+	//
+	// xxxxx
+	DeviceCode *string `json:"device_code,omitempty" xml:"device_code,omitempty"`
+	// The time when the token expires. This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1653288641
+	ExpiresAt *int64 `json:"expires_at,omitempty" xml:"expires_at,omitempty"`
+	// The remaining validity period of the device code. Unit: seconds.
+	//
+	// example:
+	//
+	// 1200
+	ExpiresIn *int64 `json:"expires_in,omitempty" xml:"expires_in,omitempty"`
+	// The timeout period of the request token. Unit: seconds.
+	//
+	// example:
+	//
+	// 5
+	Interval *int64 `json:"interval,omitempty" xml:"interval,omitempty"`
+	// The user authorization code.
+	//
+	// example:
+	//
+	// xxxxx
+	UserCode *string `json:"user_code,omitempty" xml:"user_code,omitempty"`
+	// The verification URI.
+	//
+	// example:
+	//
+	// https://example.com/authorize/device
+	VerificationUri *string `json:"verification_uri,omitempty" xml:"verification_uri,omitempty"`
+	// The complete verification URI.
+	//
+	// example:
+	//
+	// https://example.com/authorize/device?user_code=
+	//
+	// xxxx
 	VerificationUriComplete *string `json:"verification_uri_complete,omitempty" xml:"verification_uri_complete,omitempty"`
 }
 
@@ -650,9 +1100,9 @@ func (s *GenerateDeviceCodeResponseBody) SetVerificationUriComplete(v string) *G
 }
 
 type GenerateDeviceCodeResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GenerateDeviceCodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GenerateDeviceCodeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GenerateDeviceCodeResponse) String() string {
@@ -679,18 +1129,110 @@ func (s *GenerateDeviceCodeResponse) SetBody(v *GenerateDeviceCodeResponseBody) 
 }
 
 type GenerateTokenRequest struct {
-	ClientId     *string `json:"client_id,omitempty" xml:"client_id,omitempty"`
+	// The client ID.
+	//
+	// example:
+	//
+	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
+	ClientId *string `json:"client_id,omitempty" xml:"client_id,omitempty"`
+	// The client secret. This parameter is required if grant_type is set to client_credentials.
+	//
+	// example:
+	//
+	// CSEHDcHcrUKHw1CuxkJEHPveWRXBGqVqRsxxxx
 	ClientSecret *string `json:"client_secret,omitempty" xml:"client_secret,omitempty"`
-	Code         *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The authorization code. This parameter is required if grant_type is set to authorization_code.
+	//
+	// example:
+	//
+	// xxxx
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The verification code.
+	//
+	// example:
+	//
+	// xxx
 	CodeVerifier *string `json:"code_verifier,omitempty" xml:"code_verifier,omitempty"`
-	DeviceCode   *string `json:"device_code,omitempty" xml:"device_code,omitempty"`
+	// The device code. This parameter is required if grant_type is set to authorization_code.urn:ietf:params:oauth:grant-type:device_code.
+	//
+	// example:
+	//
+	// xxxx
+	DeviceCode *string `json:"device_code,omitempty" xml:"device_code,omitempty"`
+	// The excluded tags.
+	//
+	// example:
+	//
+	// ATxxx
 	ExclusiveTag *string `json:"exclusive_tag,omitempty" xml:"exclusive_tag,omitempty"`
-	GrantType    *string `json:"grant_type,omitempty" xml:"grant_type,omitempty"`
-	Password     *string `json:"password,omitempty" xml:"password,omitempty"`
-	RedirectUri  *string `json:"redirect_uri,omitempty" xml:"redirect_uri,omitempty"`
+	// The authorization type. Valid values:
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// <!---->
+	//
+	// 	- authorization_code
+	//
+	// 	- urn:ietf:params:oauth:grant-type:device_code
+	//
+	// 	- refresh_token
+	//
+	// 	- client_credentials: You must specify the client_id and client_secret parameters.
+	//
+	// 	- password: This option is not supported.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// client_credentials
+	GrantType *string `json:"grant_type,omitempty" xml:"grant_type,omitempty"`
+	// The username. This parameter is required if grant_type is set to password. The password authentication type is not supported.
+	//
+	// example:
+	//
+	// xxxxxx
+	Password *string `json:"password,omitempty" xml:"password,omitempty"`
+	// The redirect URI. This parameter is required if grant_type is set to authorization_code. The value of this parameter must be the same as the redirect URI in the request to obtain the authorization code.
+	//
+	// example:
+	//
+	// xxx
+	RedirectUri *string `json:"redirect_uri,omitempty" xml:"redirect_uri,omitempty"`
+	// The refreshed token. This parameter is required if grant_type is set to refresh_token.
+	//
+	// example:
+	//
+	// ATxxx
 	RefreshToken *string `json:"refresh_token,omitempty" xml:"refresh_token,omitempty"`
-	Scope        *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	Username     *string `json:"username,omitempty" xml:"username,omitempty"`
+	// The authorization scope. Valid values:
+	//
+	// 	- openid
+	//
+	// 	- email
+	//
+	// 	- phone
+	//
+	// 	- profile
+	//
+	// example:
+	//
+	// xxxx
+	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
+	// The username. This parameter is required if grant_type is set to password. The password authentication type is not supported.
+	//
+	// example:
+	//
+	// uesrname_001
+	Username *string `json:"username,omitempty" xml:"username,omitempty"`
 }
 
 func (s GenerateTokenRequest) String() string {
@@ -762,15 +1304,42 @@ func (s *GenerateTokenRequest) SetUsername(v string) *GenerateTokenRequest {
 }
 
 type GenerateTokenResponseBody struct {
-	// access_token。
+	// The access token.
+	//
+	// example:
+	//
+	// ATxxx
 	AccessToken *string `json:"access_token,omitempty" xml:"access_token,omitempty"`
-	ExpiresAt   *int64  `json:"expires_at,omitempty" xml:"expires_at,omitempty"`
-	ExpiresIn   *int64  `json:"expires_in,omitempty" xml:"expires_in,omitempty"`
-	// id_token。
+	// The time when the token expires. This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1653288641
+	ExpiresAt *int64 `json:"expires_at,omitempty" xml:"expires_at,omitempty"`
+	// The remaining validity period of the token. Unit: seconds.
+	//
+	// example:
+	//
+	// 1200
+	ExpiresIn *int64 `json:"expires_in,omitempty" xml:"expires_in,omitempty"`
+	// The ID token.
+	//
+	// example:
+	//
+	// xxxxx
 	IdToken *string `json:"id_token,omitempty" xml:"id_token,omitempty"`
-	// refresh_token。
+	// The refresh token.
+	//
+	// example:
+	//
+	// RTxxx
 	RefreshToken *string `json:"refresh_token,omitempty" xml:"refresh_token,omitempty"`
-	TokenType    *string `json:"token_type,omitempty" xml:"token_type,omitempty"`
+	// The type of the token. Valid values: Basic Bearer
+	//
+	// example:
+	//
+	// Bearer
+	TokenType *string `json:"token_type,omitempty" xml:"token_type,omitempty"`
 }
 
 func (s GenerateTokenResponseBody) String() string {
@@ -812,9 +1381,9 @@ func (s *GenerateTokenResponseBody) SetTokenType(v string) *GenerateTokenRespons
 }
 
 type GenerateTokenResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GenerateTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GenerateTokenResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GenerateTokenResponse) String() string {
@@ -842,7 +1411,14 @@ func (s *GenerateTokenResponse) SetBody(v *GenerateTokenResponseBody) *GenerateT
 
 type GetApplicationProvisioningScopeHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	Authorization *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+	// The authentication information. Format: Bearer ${access_token}. Example: Bearer ATxxxx.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Bearer AT8csE2seYxxxxxij
+	Authorization *string `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
 }
 
 func (s GetApplicationProvisioningScopeHeaders) String() string {
@@ -864,6 +1440,12 @@ func (s *GetApplicationProvisioningScopeHeaders) SetAuthorization(v string) *Get
 }
 
 type GetApplicationProvisioningScopeResponseBody struct {
+	GroupIds []*string `json:"groupIds,omitempty" xml:"groupIds,omitempty" type:"Repeated"`
+	// The IDs of organizational units.
+	//
+	// example:
+	//
+	// [ou_xxx001]
 	OrganizationalUnitIds []*string `json:"organizationalUnitIds,omitempty" xml:"organizationalUnitIds,omitempty" type:"Repeated"`
 }
 
@@ -875,15 +1457,20 @@ func (s GetApplicationProvisioningScopeResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *GetApplicationProvisioningScopeResponseBody) SetGroupIds(v []*string) *GetApplicationProvisioningScopeResponseBody {
+	s.GroupIds = v
+	return s
+}
+
 func (s *GetApplicationProvisioningScopeResponseBody) SetOrganizationalUnitIds(v []*string) *GetApplicationProvisioningScopeResponseBody {
 	s.OrganizationalUnitIds = v
 	return s
 }
 
 type GetApplicationProvisioningScopeResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetApplicationProvisioningScopeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetApplicationProvisioningScopeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetApplicationProvisioningScopeResponse) String() string {
@@ -909,9 +1496,165 @@ func (s *GetApplicationProvisioningScopeResponse) SetBody(v *GetApplicationProvi
 	return s
 }
 
+type GetGroupHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Bearer xxxx
+	Authorization *string `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s GetGroupHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGroupHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetGroupHeaders) SetCommonHeaders(v map[string]*string) *GetGroupHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetGroupHeaders) SetAuthorization(v string) *GetGroupHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type GetGroupResponseBody struct {
+	// example:
+	//
+	// 1652085686179
+	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// example:
+	//
+	// description_demo
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// group_ufdsasn35ea5lmthk267xxxxx
+	GroupExternalId *string `json:"groupExternalId,omitempty" xml:"groupExternalId,omitempty"`
+	// example:
+	//
+	// group_ufdsasn35ea5lmthk267xxxxx
+	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
+	// example:
+	//
+	// name_test
+	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
+	GroupSourceId *string `json:"groupSourceId,omitempty" xml:"groupSourceId,omitempty"`
+	// example:
+	//
+	// build_in
+	GroupSourceType *string `json:"groupSourceType,omitempty" xml:"groupSourceType,omitempty"`
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// example:
+	//
+	// 1652085686179
+	UpdateTime *int64 `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+}
+
+func (s GetGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetGroupResponseBody) SetCreateTime(v int64) *GetGroupResponseBody {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetGroupResponseBody) SetDescription(v string) *GetGroupResponseBody {
+	s.Description = &v
+	return s
+}
+
+func (s *GetGroupResponseBody) SetGroupExternalId(v string) *GetGroupResponseBody {
+	s.GroupExternalId = &v
+	return s
+}
+
+func (s *GetGroupResponseBody) SetGroupId(v string) *GetGroupResponseBody {
+	s.GroupId = &v
+	return s
+}
+
+func (s *GetGroupResponseBody) SetGroupName(v string) *GetGroupResponseBody {
+	s.GroupName = &v
+	return s
+}
+
+func (s *GetGroupResponseBody) SetGroupSourceId(v string) *GetGroupResponseBody {
+	s.GroupSourceId = &v
+	return s
+}
+
+func (s *GetGroupResponseBody) SetGroupSourceType(v string) *GetGroupResponseBody {
+	s.GroupSourceType = &v
+	return s
+}
+
+func (s *GetGroupResponseBody) SetInstanceId(v string) *GetGroupResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetGroupResponseBody) SetUpdateTime(v int64) *GetGroupResponseBody {
+	s.UpdateTime = &v
+	return s
+}
+
+type GetGroupResponse struct {
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetGroupResponse) SetHeaders(v map[string]*string) *GetGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetGroupResponse) SetStatusCode(v int32) *GetGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetGroupResponse) SetBody(v *GetGroupResponseBody) *GetGroupResponse {
+	s.Body = v
+	return s
+}
+
 type GetOrganizationalUnitHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	Authorization *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+	// The authentication information. Format: Bearer ${access_token}. Example: Bearer ATxxxx.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Bearer AT8csE2seYxxxxxij
+	Authorization *string `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
 }
 
 func (s GetOrganizationalUnitHeaders) String() string {
@@ -933,16 +1676,74 @@ func (s *GetOrganizationalUnitHeaders) SetAuthorization(v string) *GetOrganizati
 }
 
 type GetOrganizationalUnitResponseBody struct {
-	CreateTime                   *int64  `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	Description                  *string `json:"description,omitempty" xml:"description,omitempty"`
-	InstanceId                   *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The time when the organizational unit was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1652083425923
+	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The description of the organizational unit.
+	//
+	// example:
+	//
+	// xxxxx
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The instance ID.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The external ID of the organizational unit.
+	//
+	// example:
+	//
+	// id_wovwffm62xifdziem7an7xxxxx
 	OrganizationalUnitExternalId *string `json:"organizationalUnitExternalId,omitempty" xml:"organizationalUnitExternalId,omitempty"`
-	OrganizationalUnitId         *string `json:"organizationalUnitId,omitempty" xml:"organizationalUnitId,omitempty"`
-	OrganizationalUnitName       *string `json:"organizationalUnitName,omitempty" xml:"organizationalUnitName,omitempty"`
-	OrganizationalUnitSourceId   *string `json:"organizationalUnitSourceId,omitempty" xml:"organizationalUnitSourceId,omitempty"`
+	// The ID of the organizational unit.
+	//
+	// example:
+	//
+	// ou_wovwffm62xifdziem7an7xxxxx
+	OrganizationalUnitId *string `json:"organizationalUnitId,omitempty" xml:"organizationalUnitId,omitempty"`
+	// The name of the organizational unit.
+	//
+	// example:
+	//
+	// name001
+	OrganizationalUnitName *string `json:"organizationalUnitName,omitempty" xml:"organizationalUnitName,omitempty"`
+	// The source ID of the organizational unit.
+	//
+	// example:
+	//
+	// id_wovwffm62xifdziem7an7xxxxx
+	OrganizationalUnitSourceId *string `json:"organizationalUnitSourceId,omitempty" xml:"organizationalUnitSourceId,omitempty"`
+	// The source type of the organizational unit. Valid values:
+	//
+	// 	- build_in: The organizational unit was created in Identity as a Service (IDaaS).
+	//
+	// 	- ding_talk: The organizational unit was imported from DingTalk.
+	//
+	// 	- ad: The organizational unit was imported from Microsoft Active Directory (AD).
+	//
+	// 	- ldap: The organizational unit was imported from a Lightweight Directory Access Protocol (LDAP) service.
+	//
+	// example:
+	//
+	// build_in
 	OrganizationalUnitSourceType *string `json:"organizationalUnitSourceType,omitempty" xml:"organizationalUnitSourceType,omitempty"`
-	ParentId                     *string `json:"parentId,omitempty" xml:"parentId,omitempty"`
-	UpdateTime                   *int64  `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// The ID of the parent organizational unit.
+	//
+	// example:
+	//
+	// ou_wovwffm62xifdziem7an7xxxxx
+	ParentId *string `json:"parentId,omitempty" xml:"parentId,omitempty"`
+	// The time when the organizational unit was last updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1652083425923
+	UpdateTime *int64 `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
 }
 
 func (s GetOrganizationalUnitResponseBody) String() string {
@@ -1004,9 +1805,9 @@ func (s *GetOrganizationalUnitResponseBody) SetUpdateTime(v int64) *GetOrganizat
 }
 
 type GetOrganizationalUnitResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetOrganizationalUnitResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetOrganizationalUnitResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetOrganizationalUnitResponse) String() string {
@@ -1034,7 +1835,14 @@ func (s *GetOrganizationalUnitResponse) SetBody(v *GetOrganizationalUnitResponse
 
 type GetOrganizationalUnitIdByExternalIdHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	Authorization *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+	// The authentication information. Format: Bearer ${access_token}. Example: Bearer ATxxxx.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Bearer AT8csE2seYxxxxxij
+	Authorization *string `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
 }
 
 func (s GetOrganizationalUnitIdByExternalIdHeaders) String() string {
@@ -1056,8 +1864,41 @@ func (s *GetOrganizationalUnitIdByExternalIdHeaders) SetAuthorization(v string) 
 }
 
 type GetOrganizationalUnitIdByExternalIdRequest struct {
+	// The external ID of the organizational unit. The external ID can be used to map external data to the data of the organizational unit in Employee Identity and Access Management (EIAM) of Identity as a Service (IDaaS). By default, the external ID is the organizational unit ID.
+	//
+	// Note: For organizational units with the same source type and source ID, each organizational unit has a unique external ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ou_wovwffm62xifdziem7an7xxxxx
 	OrganizationalUnitExternalId *string `json:"organizationalUnitExternalId,omitempty" xml:"organizationalUnitExternalId,omitempty"`
-	OrganizationalUnitSourceId   *string `json:"organizationalUnitSourceId,omitempty" xml:"organizationalUnitSourceId,omitempty"`
+	// The source ID of the organizational unit.
+	//
+	// If the organizational unit was created in IDaaS, its source ID is the ID of the IDaaS instance. If the organizational unit was imported, its source ID is the enterprise ID in the source. For example, if the organizational unit was imported from DingTalk, its source ID is the corpId value of the enterprise in DingTalk.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
+	OrganizationalUnitSourceId *string `json:"organizationalUnitSourceId,omitempty" xml:"organizationalUnitSourceId,omitempty"`
+	// The source type of the organizational unit. Valid values:
+	//
+	// 	- build_in: The organizational unit was created in IDaaS.
+	//
+	// 	- ding_talk: The organizational unit was imported from DingTalk.
+	//
+	// 	- ad: The organizational unit was imported from Microsoft Active Directory (AD).
+	//
+	// 	- ldap: The organizational unit was imported from a Lightweight Directory Access Protocol (LDAP) service.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// build_in
 	OrganizationalUnitSourceType *string `json:"organizationalUnitSourceType,omitempty" xml:"organizationalUnitSourceType,omitempty"`
 }
 
@@ -1085,6 +1926,11 @@ func (s *GetOrganizationalUnitIdByExternalIdRequest) SetOrganizationalUnitSource
 }
 
 type GetOrganizationalUnitIdByExternalIdResponseBody struct {
+	// The ID of the organizational unit.
+	//
+	// example:
+	//
+	// ou_wovwffm62xifdziem7an7xxxxx
 	OrganizationalUnitId *string `json:"organizationalUnitId,omitempty" xml:"organizationalUnitId,omitempty"`
 }
 
@@ -1102,9 +1948,9 @@ func (s *GetOrganizationalUnitIdByExternalIdResponseBody) SetOrganizationalUnitI
 }
 
 type GetOrganizationalUnitIdByExternalIdResponse struct {
-	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetOrganizationalUnitIdByExternalIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetOrganizationalUnitIdByExternalIdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetOrganizationalUnitIdByExternalIdResponse) String() string {
@@ -1132,7 +1978,14 @@ func (s *GetOrganizationalUnitIdByExternalIdResponse) SetBody(v *GetOrganization
 
 type GetUserHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	Authorization *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+	// The authentication information. Format: Bearer ${access_token}. Example: Bearer ATxxxx.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Bearer AT8csE2seYxxxxxij
+	Authorization *string `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
 }
 
 func (s GetUserHeaders) String() string {
@@ -1154,31 +2007,150 @@ func (s *GetUserHeaders) SetAuthorization(v string) *GetUserHeaders {
 }
 
 type GetUserResponseBody struct {
-	AccountExpireTime *int64                             `json:"accountExpireTime,omitempty" xml:"accountExpireTime,omitempty"`
-	CreateTime        *int64                             `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	CustomFields      []*GetUserResponseBodyCustomFields `json:"customFields,omitempty" xml:"customFields,omitempty" type:"Repeated"`
-	Description       *string                            `json:"description,omitempty" xml:"description,omitempty"`
-	DisplayName       *string                            `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	Email             *string                            `json:"email,omitempty" xml:"email,omitempty"`
-	EmailVerified     *bool                              `json:"emailVerified,omitempty" xml:"emailVerified,omitempty"`
+	// The time when the account expires. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1652085686179
+	AccountExpireTime *int64 `json:"accountExpireTime,omitempty" xml:"accountExpireTime,omitempty"`
+	// The time when the account was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1652085686179
+	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The extended fields of the account.
+	CustomFields []*GetUserResponseBodyCustomFields `json:"customFields,omitempty" xml:"customFields,omitempty" type:"Repeated"`
+	// The description of the account.
+	//
+	// example:
+	//
+	// xxxx
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The display name of the account.
+	//
+	// example:
+	//
+	// display_name001
+	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// The email address of the user.
+	//
+	// example:
+	//
+	// example@example.com
+	Email *string `json:"email,omitempty" xml:"email,omitempty"`
+	// Indicates whether the email address has been verified. A value of true indicates that the email address has been verified by the user or has been set to the verified status by the administrator. A value of false indicates that the email address has not been verified.
+	//
+	// example:
+	//
+	// true
+	EmailVerified *bool `json:"emailVerified,omitempty" xml:"emailVerified,omitempty"`
 	// 账户所属组列表。
-	Groups                      []*GetUserResponseBodyGroups              `json:"groups,omitempty" xml:"groups,omitempty" type:"Repeated"`
-	InstanceId                  *string                                   `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	LockExpireTime              *int64                                    `json:"lockExpireTime,omitempty" xml:"lockExpireTime,omitempty"`
-	OrganizationalUnits         []*GetUserResponseBodyOrganizationalUnits `json:"organizationalUnits,omitempty" xml:"organizationalUnits,omitempty" type:"Repeated"`
-	PasswordSet                 *bool                                     `json:"passwordSet,omitempty" xml:"passwordSet,omitempty"`
-	PhoneNumber                 *string                                   `json:"phoneNumber,omitempty" xml:"phoneNumber,omitempty"`
-	PhoneNumberVerified         *bool                                     `json:"phoneNumberVerified,omitempty" xml:"phoneNumberVerified,omitempty"`
-	PhoneRegion                 *string                                   `json:"phoneRegion,omitempty" xml:"phoneRegion,omitempty"`
-	PrimaryOrganizationalUnitId *string                                   `json:"primaryOrganizationalUnitId,omitempty" xml:"primaryOrganizationalUnitId,omitempty"`
-	RegisterTime                *int64                                    `json:"registerTime,omitempty" xml:"registerTime,omitempty"`
-	Status                      *string                                   `json:"status,omitempty" xml:"status,omitempty"`
-	UpdateTime                  *int64                                    `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	UserExternalId              *string                                   `json:"userExternalId,omitempty" xml:"userExternalId,omitempty"`
-	UserId                      *string                                   `json:"userId,omitempty" xml:"userId,omitempty"`
-	UserSourceId                *string                                   `json:"userSourceId,omitempty" xml:"userSourceId,omitempty"`
-	UserSourceType              *string                                   `json:"userSourceType,omitempty" xml:"userSourceType,omitempty"`
-	Username                    *string                                   `json:"username,omitempty" xml:"username,omitempty"`
+	Groups []*GetUserResponseBodyGroups `json:"groups,omitempty" xml:"groups,omitempty" type:"Repeated"`
+	// The instance ID.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The time when the account lock expires. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1652085686179
+	LockExpireTime *int64 `json:"lockExpireTime,omitempty" xml:"lockExpireTime,omitempty"`
+	// The organizational units to which the account belongs.
+	OrganizationalUnits []*GetUserResponseBodyOrganizationalUnits `json:"organizationalUnits,omitempty" xml:"organizationalUnits,omitempty" type:"Repeated"`
+	// Indicates whether the password is set.
+	//
+	// example:
+	//
+	// true
+	PasswordSet *bool `json:"passwordSet,omitempty" xml:"passwordSet,omitempty"`
+	// The mobile number of the user who owns the account.
+	//
+	// example:
+	//
+	// 156xxxxxxx
+	PhoneNumber *string `json:"phoneNumber,omitempty" xml:"phoneNumber,omitempty"`
+	// Indicates whether the mobile number has been verified. A value of true indicates that the mobile number has been verified by the user or has been set to the verified status by the administrator. A value of false indicates that the mobile number has not been verified.
+	//
+	// example:
+	//
+	// true
+	PhoneNumberVerified *bool `json:"phoneNumberVerified,omitempty" xml:"phoneNumberVerified,omitempty"`
+	// The country code of the mobile number. For example, the country code of China is 86 without 00 or +.
+	//
+	// example:
+	//
+	// 86
+	PhoneRegion *string `json:"phoneRegion,omitempty" xml:"phoneRegion,omitempty"`
+	// The ID of the primary organizational unit of the account.
+	//
+	// example:
+	//
+	// ou_wovwffm62xifdziem7an7xxxxx
+	PrimaryOrganizationalUnitId *string `json:"primaryOrganizationalUnitId,omitempty" xml:"primaryOrganizationalUnitId,omitempty"`
+	// The time when the account was registered. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1652085686179
+	RegisterTime *int64 `json:"registerTime,omitempty" xml:"registerTime,omitempty"`
+	// The status of the account. Valid values: enabled disabled
+	//
+	// example:
+	//
+	// enabled
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The time when the account was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1652085686179
+	UpdateTime *int64 `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// The external ID of the account. The external ID can be used to map external data to the data of the account in EIAM of Identity as a Service (IDaaS). By default, the external ID is the account ID.
+	//
+	// Note: For accounts with the same source type and source ID, each account has a unique external ID.
+	//
+	// example:
+	//
+	// user_d6sbsuumeta4h66ec3il7yxxxx
+	UserExternalId *string `json:"userExternalId,omitempty" xml:"userExternalId,omitempty"`
+	// The account ID.
+	//
+	// example:
+	//
+	// user_d6sbsuumeta4h66ec3il7yxxxx
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	// The source ID of the account.
+	//
+	// If the account was created in IDaaS, its source ID is the ID of the IDaaS instance. If the account was imported, its source ID is the enterprise ID in the source. For example, if the account was imported from DingTalk, its source ID is the corpId value of the enterprise in DingTalk.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
+	UserSourceId *string `json:"userSourceId,omitempty" xml:"userSourceId,omitempty"`
+	// The source type of the account. Valid values:
+	//
+	// 	- build_in: The account was created in IDaaS.
+	//
+	// 	- ding_talk: The account was imported from DingTalk.
+	//
+	// 	- ad: The account was imported from Microsoft Active Directory (AD).
+	//
+	// 	- ldap: The account was imported from a Lightweight Directory Access Protocol (LDAP) service.
+	//
+	// example:
+	//
+	// build_in
+	UserSourceType *string `json:"userSourceType,omitempty" xml:"userSourceType,omitempty"`
+	// The username of the account.
+	//
+	// example:
+	//
+	// name001
+	Username *string `json:"username,omitempty" xml:"username,omitempty"`
 }
 
 func (s GetUserResponseBody) String() string {
@@ -1310,7 +2282,17 @@ func (s *GetUserResponseBody) SetUsername(v string) *GetUserResponseBody {
 }
 
 type GetUserResponseBodyCustomFields struct {
-	FieldName  *string `json:"fieldName,omitempty" xml:"fieldName,omitempty"`
+	// The name of the extended field.
+	//
+	// example:
+	//
+	// xxxx
+	FieldName *string `json:"fieldName,omitempty" xml:"fieldName,omitempty"`
+	// The value of the extended field. Field values are returned as strings regardless of the data types of the fields. For example, true or false is returned for a Boolean field.
+	//
+	// example:
+	//
+	// 字段数据值
 	FieldValue *string `json:"fieldValue,omitempty" xml:"fieldValue,omitempty"`
 }
 
@@ -1334,10 +2316,22 @@ func (s *GetUserResponseBodyCustomFields) SetFieldValue(v string) *GetUserRespon
 
 type GetUserResponseBodyGroups struct {
 	// 组描述。
+	//
+	// example:
+	//
+	// description_demo
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// 组ID。
+	//
+	// example:
+	//
+	// group_ufdsasn35ea5lmthk267xxxxx
 	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
 	// 组名称。
+	//
+	// example:
+	//
+	// name_test
 	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
 }
 
@@ -1365,9 +2359,24 @@ func (s *GetUserResponseBodyGroups) SetGroupName(v string) *GetUserResponseBodyG
 }
 
 type GetUserResponseBodyOrganizationalUnits struct {
-	OrganizationalUnitId   *string `json:"organizationalUnitId,omitempty" xml:"organizationalUnitId,omitempty"`
+	// The ID of the organizational unit.
+	//
+	// example:
+	//
+	// ou_wovwffm62xifdziem7an7xxxxx
+	OrganizationalUnitId *string `json:"organizationalUnitId,omitempty" xml:"organizationalUnitId,omitempty"`
+	// The name of the organizational unit.
+	//
+	// example:
+	//
+	// name001
 	OrganizationalUnitName *string `json:"organizationalUnitName,omitempty" xml:"organizationalUnitName,omitempty"`
-	Primary                *bool   `json:"primary,omitempty" xml:"primary,omitempty"`
+	// Indicates whether the organizational unit is the primary organizational unit.
+	//
+	// example:
+	//
+	// true
+	Primary *bool `json:"primary,omitempty" xml:"primary,omitempty"`
 }
 
 func (s GetUserResponseBodyOrganizationalUnits) String() string {
@@ -1394,9 +2403,9 @@ func (s *GetUserResponseBodyOrganizationalUnits) SetPrimary(v bool) *GetUserResp
 }
 
 type GetUserResponse struct {
-	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetUserResponse) String() string {
@@ -1424,7 +2433,14 @@ func (s *GetUserResponse) SetBody(v *GetUserResponseBody) *GetUserResponse {
 
 type GetUserIdByEmailHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	Authorization *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+	// The authentication information. Format: Bearer ${access_token}. Example: Bearer ATxxxx.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Bearer AT8csE2seYxxxxxij
+	Authorization *string `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
 }
 
 func (s GetUserIdByEmailHeaders) String() string {
@@ -1446,6 +2462,13 @@ func (s *GetUserIdByEmailHeaders) SetAuthorization(v string) *GetUserIdByEmailHe
 }
 
 type GetUserIdByEmailRequest struct {
+	// The email address of the user who owns the account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example@example.com
 	Email *string `json:"email,omitempty" xml:"email,omitempty"`
 }
 
@@ -1463,6 +2486,11 @@ func (s *GetUserIdByEmailRequest) SetEmail(v string) *GetUserIdByEmailRequest {
 }
 
 type GetUserIdByEmailResponseBody struct {
+	// The account ID.
+	//
+	// example:
+	//
+	// user_d6sbsuumeta4h66ec3il7yxxxx
 	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 
@@ -1480,9 +2508,9 @@ func (s *GetUserIdByEmailResponseBody) SetUserId(v string) *GetUserIdByEmailResp
 }
 
 type GetUserIdByEmailResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetUserIdByEmailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetUserIdByEmailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetUserIdByEmailResponse) String() string {
@@ -1510,7 +2538,14 @@ func (s *GetUserIdByEmailResponse) SetBody(v *GetUserIdByEmailResponseBody) *Get
 
 type GetUserIdByPhoneNumberHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	Authorization *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+	// The authentication information. Format: Bearer ${access_token}. Example: Bearer ATxxxx.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Bearer AT8csE2seYxxxxxij
+	Authorization *string `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
 }
 
 func (s GetUserIdByPhoneNumberHeaders) String() string {
@@ -1532,6 +2567,13 @@ func (s *GetUserIdByPhoneNumberHeaders) SetAuthorization(v string) *GetUserIdByP
 }
 
 type GetUserIdByPhoneNumberRequest struct {
+	// The mobile number of the user who owns the account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 156xxxxxxx
 	PhoneNumber *string `json:"phoneNumber,omitempty" xml:"phoneNumber,omitempty"`
 }
 
@@ -1549,6 +2591,11 @@ func (s *GetUserIdByPhoneNumberRequest) SetPhoneNumber(v string) *GetUserIdByPho
 }
 
 type GetUserIdByPhoneNumberResponseBody struct {
+	// The account ID.
+	//
+	// example:
+	//
+	// user_d6sbsuumeta4h66ec3il7yxxxx
 	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 
@@ -1566,9 +2613,9 @@ func (s *GetUserIdByPhoneNumberResponseBody) SetUserId(v string) *GetUserIdByPho
 }
 
 type GetUserIdByPhoneNumberResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetUserIdByPhoneNumberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetUserIdByPhoneNumberResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetUserIdByPhoneNumberResponse) String() string {
@@ -1596,7 +2643,14 @@ func (s *GetUserIdByPhoneNumberResponse) SetBody(v *GetUserIdByPhoneNumberRespon
 
 type GetUserIdByUserExternalIdHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	Authorization *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+	// The authentication information. Format: Bearer ${access_token}. Example: Bearer ATxxxx.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Bearer AT8csE2seYxxxxxij
+	Authorization *string `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
 }
 
 func (s GetUserIdByUserExternalIdHeaders) String() string {
@@ -1618,8 +2672,37 @@ func (s *GetUserIdByUserExternalIdHeaders) SetAuthorization(v string) *GetUserId
 }
 
 type GetUserIdByUserExternalIdRequest struct {
+	// The external ID of the account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxx001
 	UserExternalId *string `json:"userExternalId,omitempty" xml:"userExternalId,omitempty"`
-	UserSourceId   *string `json:"userSourceId,omitempty" xml:"userSourceId,omitempty"`
+	// The source ID of the account. If the account was created in IDaaS, its source ID is the ID of the IDaaS instance. If the account was imported, its source ID is the enterprise ID in the source. For example, if the account was imported from DingTalk, its source ID is the corpId value of the enterprise in DingTalk.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
+	UserSourceId *string `json:"userSourceId,omitempty" xml:"userSourceId,omitempty"`
+	// The source type of the account. Valid values:
+	//
+	// 	- build_in: The account was created in Identity as a Service (IDaaS).
+	//
+	// 	- ding_talk: The account was imported from DingTalk.
+	//
+	// 	- ad: The account was imported from Microsoft Active Directory (AD).
+	//
+	// 	- ldap: The account was imported from a Lightweight Directory Access Protocol (LDAP) service.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// build_in
 	UserSourceType *string `json:"userSourceType,omitempty" xml:"userSourceType,omitempty"`
 }
 
@@ -1647,6 +2730,11 @@ func (s *GetUserIdByUserExternalIdRequest) SetUserSourceType(v string) *GetUserI
 }
 
 type GetUserIdByUserExternalIdResponseBody struct {
+	// The account ID.
+	//
+	// example:
+	//
+	// user_d6sbsuumeta4h66ec3il7yxxxx
 	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 
@@ -1664,9 +2752,9 @@ func (s *GetUserIdByUserExternalIdResponseBody) SetUserId(v string) *GetUserIdBy
 }
 
 type GetUserIdByUserExternalIdResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetUserIdByUserExternalIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetUserIdByUserExternalIdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetUserIdByUserExternalIdResponse) String() string {
@@ -1694,7 +2782,14 @@ func (s *GetUserIdByUserExternalIdResponse) SetBody(v *GetUserIdByUserExternalId
 
 type GetUserIdByUsernameHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	Authorization *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+	// The authentication information. Format: Bearer ${access_token}. Example: Bearer ATxxxx.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Bearer xxxx
+	Authorization *string `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
 }
 
 func (s GetUserIdByUsernameHeaders) String() string {
@@ -1716,6 +2811,13 @@ func (s *GetUserIdByUsernameHeaders) SetAuthorization(v string) *GetUserIdByUser
 }
 
 type GetUserIdByUsernameRequest struct {
+	// The username of the account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// username_001
 	Username *string `json:"username,omitempty" xml:"username,omitempty"`
 }
 
@@ -1733,6 +2835,11 @@ func (s *GetUserIdByUsernameRequest) SetUsername(v string) *GetUserIdByUsernameR
 }
 
 type GetUserIdByUsernameResponseBody struct {
+	// The account ID.
+	//
+	// example:
+	//
+	// user_d6sbsuumeta4h66ec3il7yxxxx
 	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 
@@ -1750,9 +2857,9 @@ func (s *GetUserIdByUsernameResponseBody) SetUserId(v string) *GetUserIdByUserna
 }
 
 type GetUserIdByUsernameResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetUserIdByUsernameResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetUserIdByUsernameResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetUserIdByUsernameResponse) String() string {
@@ -1781,6 +2888,12 @@ func (s *GetUserIdByUsernameResponse) SetBody(v *GetUserIdByUsernameResponseBody
 type GetUserInfoHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// The authentication information. Format: Bearer ${access_token}. Example: Bearer ATxxxx.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Bearer xxxx
 	Authorization *string `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
 }
 
@@ -1803,9 +2916,9 @@ func (s *GetUserInfoHeaders) SetAuthorization(v string) *GetUserInfoHeaders {
 }
 
 type GetUserInfoResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       map[string]interface{} `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       map[string]interface{} `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetUserInfoResponse) String() string {
@@ -1831,9 +2944,428 @@ func (s *GetUserInfoResponse) SetBody(v map[string]interface{}) *GetUserInfoResp
 	return s
 }
 
+type ListGroupsHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Bearer xxxx
+	Authorization *string `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s ListGroupsHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGroupsHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListGroupsHeaders) SetCommonHeaders(v map[string]*string) *ListGroupsHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListGroupsHeaders) SetAuthorization(v string) *ListGroupsHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type ListGroupsRequest struct {
+	// example:
+	//
+	// group_xxx
+	GroupNameStartWith *string `json:"groupNameStartWith,omitempty" xml:"groupNameStartWith,omitempty"`
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// nextToken
+	//
+	// example:
+	//
+	// NTxxx
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+}
+
+func (s ListGroupsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGroupsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListGroupsRequest) SetGroupNameStartWith(v string) *ListGroupsRequest {
+	s.GroupNameStartWith = &v
+	return s
+}
+
+func (s *ListGroupsRequest) SetMaxResults(v int32) *ListGroupsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListGroupsRequest) SetNextToken(v string) *ListGroupsRequest {
+	s.NextToken = &v
+	return s
+}
+
+type ListGroupsResponseBody struct {
+	Data []*ListGroupsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// example:
+	//
+	// NTxxx
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// example:
+	//
+	// 1000
+	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+}
+
+func (s ListGroupsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGroupsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListGroupsResponseBody) SetData(v []*ListGroupsResponseBodyData) *ListGroupsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListGroupsResponseBody) SetMaxResults(v int32) *ListGroupsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListGroupsResponseBody) SetNextToken(v string) *ListGroupsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListGroupsResponseBody) SetTotalCount(v int64) *ListGroupsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListGroupsResponseBodyData struct {
+	// example:
+	//
+	// 1652085686179
+	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// example:
+	//
+	// description_demo
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// group_ufdsasn35ea5lmthk267xxxxx
+	GroupExternalId *string `json:"groupExternalId,omitempty" xml:"groupExternalId,omitempty"`
+	// example:
+	//
+	// group_ufdsasn35ea5lmthk267xxxxx
+	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
+	// example:
+	//
+	// name_test
+	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
+	GroupSourceId *string `json:"groupSourceId,omitempty" xml:"groupSourceId,omitempty"`
+	// example:
+	//
+	// build_in
+	GroupSourceType *string `json:"groupSourceType,omitempty" xml:"groupSourceType,omitempty"`
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// example:
+	//
+	// 1652085686179
+	UpdateTime *int64 `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+}
+
+func (s ListGroupsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGroupsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListGroupsResponseBodyData) SetCreateTime(v int64) *ListGroupsResponseBodyData {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListGroupsResponseBodyData) SetDescription(v string) *ListGroupsResponseBodyData {
+	s.Description = &v
+	return s
+}
+
+func (s *ListGroupsResponseBodyData) SetGroupExternalId(v string) *ListGroupsResponseBodyData {
+	s.GroupExternalId = &v
+	return s
+}
+
+func (s *ListGroupsResponseBodyData) SetGroupId(v string) *ListGroupsResponseBodyData {
+	s.GroupId = &v
+	return s
+}
+
+func (s *ListGroupsResponseBodyData) SetGroupName(v string) *ListGroupsResponseBodyData {
+	s.GroupName = &v
+	return s
+}
+
+func (s *ListGroupsResponseBodyData) SetGroupSourceId(v string) *ListGroupsResponseBodyData {
+	s.GroupSourceId = &v
+	return s
+}
+
+func (s *ListGroupsResponseBodyData) SetGroupSourceType(v string) *ListGroupsResponseBodyData {
+	s.GroupSourceType = &v
+	return s
+}
+
+func (s *ListGroupsResponseBodyData) SetInstanceId(v string) *ListGroupsResponseBodyData {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListGroupsResponseBodyData) SetUpdateTime(v int64) *ListGroupsResponseBodyData {
+	s.UpdateTime = &v
+	return s
+}
+
+type ListGroupsResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListGroupsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGroupsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListGroupsResponse) SetHeaders(v map[string]*string) *ListGroupsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListGroupsResponse) SetStatusCode(v int32) *ListGroupsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListGroupsResponse) SetBody(v *ListGroupsResponseBody) *ListGroupsResponse {
+	s.Body = v
+	return s
+}
+
+type ListGroupsForUserHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Bearer xxxx
+	Authorization *string `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s ListGroupsForUserHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGroupsForUserHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListGroupsForUserHeaders) SetCommonHeaders(v map[string]*string) *ListGroupsForUserHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListGroupsForUserHeaders) SetAuthorization(v string) *ListGroupsForUserHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type ListGroupsForUserRequest struct {
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// nextToken
+	//
+	// example:
+	//
+	// NTxxx
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+}
+
+func (s ListGroupsForUserRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGroupsForUserRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListGroupsForUserRequest) SetMaxResults(v int32) *ListGroupsForUserRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListGroupsForUserRequest) SetNextToken(v string) *ListGroupsForUserRequest {
+	s.NextToken = &v
+	return s
+}
+
+type ListGroupsForUserResponseBody struct {
+	Data []*ListGroupsForUserResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 20
+	MaxResults *int64 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// example:
+	//
+	// NTxxx
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// example:
+	//
+	// 1000
+	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+}
+
+func (s ListGroupsForUserResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGroupsForUserResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListGroupsForUserResponseBody) SetData(v []*ListGroupsForUserResponseBodyData) *ListGroupsForUserResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListGroupsForUserResponseBody) SetMaxResults(v int64) *ListGroupsForUserResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListGroupsForUserResponseBody) SetNextToken(v string) *ListGroupsForUserResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListGroupsForUserResponseBody) SetTotalCount(v int64) *ListGroupsForUserResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListGroupsForUserResponseBodyData struct {
+	// example:
+	//
+	// user_d6sbsuumeta4h66ec3il7yxxxx
+	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
+	GroupMemberRelationSourceId *string `json:"groupMemberRelationSourceId,omitempty" xml:"groupMemberRelationSourceId,omitempty"`
+	// example:
+	//
+	// build_in
+	GroupMemberRelationSourceType *string `json:"groupMemberRelationSourceType,omitempty" xml:"groupMemberRelationSourceType,omitempty"`
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+}
+
+func (s ListGroupsForUserResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGroupsForUserResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListGroupsForUserResponseBodyData) SetGroupId(v string) *ListGroupsForUserResponseBodyData {
+	s.GroupId = &v
+	return s
+}
+
+func (s *ListGroupsForUserResponseBodyData) SetGroupMemberRelationSourceId(v string) *ListGroupsForUserResponseBodyData {
+	s.GroupMemberRelationSourceId = &v
+	return s
+}
+
+func (s *ListGroupsForUserResponseBodyData) SetGroupMemberRelationSourceType(v string) *ListGroupsForUserResponseBodyData {
+	s.GroupMemberRelationSourceType = &v
+	return s
+}
+
+func (s *ListGroupsForUserResponseBodyData) SetInstanceId(v string) *ListGroupsForUserResponseBodyData {
+	s.InstanceId = &v
+	return s
+}
+
+type ListGroupsForUserResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListGroupsForUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListGroupsForUserResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGroupsForUserResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListGroupsForUserResponse) SetHeaders(v map[string]*string) *ListGroupsForUserResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListGroupsForUserResponse) SetStatusCode(v int32) *ListGroupsForUserResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListGroupsForUserResponse) SetBody(v *ListGroupsForUserResponseBody) *ListGroupsForUserResponse {
+	s.Body = v
+	return s
+}
+
 type ListOrganizationalUnitParentIdsHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	Authorization *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+	// The authentication information. Format: Bearer ${access_token}. Example: Bearer ATxxxx.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Bearer AT8csE2seYxxxxxij
+	Authorization *string `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
 }
 
 func (s ListOrganizationalUnitParentIdsHeaders) String() string {
@@ -1855,6 +3387,11 @@ func (s *ListOrganizationalUnitParentIdsHeaders) SetAuthorization(v string) *Lis
 }
 
 type ListOrganizationalUnitParentIdsResponseBody struct {
+	// The IDs of the parent organizational units. The IDs of the organizational unit are ordered based on their levels from high to low. Only the IDs of the organizational units within the authorization scope are displayed.
+	//
+	// example:
+	//
+	// [ou_xxx001]
 	ParentIds []*string `json:"parentIds,omitempty" xml:"parentIds,omitempty" type:"Repeated"`
 }
 
@@ -1872,9 +3409,9 @@ func (s *ListOrganizationalUnitParentIdsResponseBody) SetParentIds(v []*string) 
 }
 
 type ListOrganizationalUnitParentIdsResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListOrganizationalUnitParentIdsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListOrganizationalUnitParentIdsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListOrganizationalUnitParentIdsResponse) String() string {
@@ -1902,7 +3439,14 @@ func (s *ListOrganizationalUnitParentIdsResponse) SetBody(v *ListOrganizationalU
 
 type ListOrganizationalUnitsHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	Authorization *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+	// The authentication information. Format: Bearer ${access_token}. Example: Bearer ATxxxx.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Bearer AT8csE2seYxxxxxij
+	Authorization *string `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
 }
 
 func (s ListOrganizationalUnitsHeaders) String() string {
@@ -1924,9 +3468,26 @@ func (s *ListOrganizationalUnitsHeaders) SetAuthorization(v string) *ListOrganiz
 }
 
 type ListOrganizationalUnitsRequest struct {
-	PageNumber *int32  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize   *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	ParentId   *string `json:"parentId,omitempty" xml:"parentId,omitempty"`
+	// The page number. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries per page. Default value: 20. Valid values: 1 to 100.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The ID of the parent organizational unit.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ou_wovwffm62xifdziem7an7xxxxx
+	ParentId *string `json:"parentId,omitempty" xml:"parentId,omitempty"`
 }
 
 func (s ListOrganizationalUnitsRequest) String() string {
@@ -1953,8 +3514,14 @@ func (s *ListOrganizationalUnitsRequest) SetParentId(v string) *ListOrganization
 }
 
 type ListOrganizationalUnitsResponseBody struct {
-	Data       []*ListOrganizationalUnitsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	TotalCount *int64                                     `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	// The queried organizational units.
+	Data []*ListOrganizationalUnitsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1000
+	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s ListOrganizationalUnitsResponseBody) String() string {
@@ -1976,16 +3543,78 @@ func (s *ListOrganizationalUnitsResponseBody) SetTotalCount(v int64) *ListOrgani
 }
 
 type ListOrganizationalUnitsResponseBodyData struct {
-	CreateTime                   *int64  `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	Description                  *string `json:"description,omitempty" xml:"description,omitempty"`
-	InstanceId                   *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The time when the organizational unit was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1652083425923
+	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The description of the organizational unit.
+	//
+	// example:
+	//
+	// test organizational unit
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The instance ID.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The external ID of the organizational unit. The external ID can be used to map external data to the data of the organizational unit in EIAM of Identity as a Service (IDaaS). By default, the external ID is the organizational unit ID.
+	//
+	// Note: For organizational units with the same source type and source ID, each organizational unit has a unique external ID.
+	//
+	// example:
+	//
+	// ou_wovwffm62xifdziem7an7xxxxx
 	OrganizationalUnitExternalId *string `json:"organizationalUnitExternalId,omitempty" xml:"organizationalUnitExternalId,omitempty"`
-	OrganizationalUnitId         *string `json:"organizationalUnitId,omitempty" xml:"organizationalUnitId,omitempty"`
-	OrganizationalUnitName       *string `json:"organizationalUnitName,omitempty" xml:"organizationalUnitName,omitempty"`
-	OrganizationalUnitSourceId   *string `json:"organizationalUnitSourceId,omitempty" xml:"organizationalUnitSourceId,omitempty"`
+	// The ID of the organizational unit.
+	//
+	// example:
+	//
+	// ou_wovwffm62xifdziem7an7xxxxx
+	OrganizationalUnitId *string `json:"organizationalUnitId,omitempty" xml:"organizationalUnitId,omitempty"`
+	// The name of the organizational unit.
+	//
+	// example:
+	//
+	// name001
+	OrganizationalUnitName *string `json:"organizationalUnitName,omitempty" xml:"organizationalUnitName,omitempty"`
+	// The source ID of the organizational unit.
+	//
+	// If the organizational unit was created in IDaaS, its source ID is the ID of the IDaaS instance. If the organizational unit was imported, its source ID is the enterprise ID in the source. For example, if the organizational unit was imported from DingTalk, its source ID is the corpId value of the enterprise in DingTalk.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
+	OrganizationalUnitSourceId *string `json:"organizationalUnitSourceId,omitempty" xml:"organizationalUnitSourceId,omitempty"`
+	// The source type of the organizational unit. Valid values:
+	//
+	// 	- build_in: The organizational unit was created in IDaaS.
+	//
+	// 	- ding_talk: The organizational unit was imported from DingTalk.
+	//
+	// 	- ad: The organizational unit was imported from Microsoft Active Directory (AD).
+	//
+	// 	- ldap: The organizational unit was imported from a Lightweight Directory Access Protocol (LDAP) service.
+	//
+	// example:
+	//
+	// build_in
 	OrganizationalUnitSourceType *string `json:"organizationalUnitSourceType,omitempty" xml:"organizationalUnitSourceType,omitempty"`
-	ParentId                     *string `json:"parentId,omitempty" xml:"parentId,omitempty"`
-	UpdateTime                   *int64  `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// The ID of the parent organizational unit.
+	//
+	// example:
+	//
+	// ou_wovwffm62xifdziem7an7xxxxx
+	ParentId *string `json:"parentId,omitempty" xml:"parentId,omitempty"`
+	// The time when the organizational unit was last updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1652083425923
+	UpdateTime *int64 `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
 }
 
 func (s ListOrganizationalUnitsResponseBodyData) String() string {
@@ -2047,9 +3676,9 @@ func (s *ListOrganizationalUnitsResponseBodyData) SetUpdateTime(v int64) *ListOr
 }
 
 type ListOrganizationalUnitsResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListOrganizationalUnitsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListOrganizationalUnitsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListOrganizationalUnitsResponse) String() string {
@@ -2077,7 +3706,14 @@ func (s *ListOrganizationalUnitsResponse) SetBody(v *ListOrganizationalUnitsResp
 
 type ListUsersHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	Authorization *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+	// The authentication information. Format: Bearer ${access_token}. Example: Bearer ATxxxx.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Bearer AT8csE2seYxxxxxij
+	Authorization *string `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
 }
 
 func (s ListUsersHeaders) String() string {
@@ -2099,9 +3735,24 @@ func (s *ListUsersHeaders) SetAuthorization(v string) *ListUsersHeaders {
 }
 
 type ListUsersRequest struct {
+	// The ID of the organizational unit.
+	//
+	// example:
+	//
+	// ou_wovwffm62xifdziem7an7xxxxx
 	OrganizationalUnitId *string `json:"organizationalUnitId,omitempty" xml:"organizationalUnitId,omitempty"`
-	PageNumber           *int32  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize             *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The page number. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries per page. Default value: 20. Valid values: 1 to 100.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 }
 
 func (s ListUsersRequest) String() string {
@@ -2128,8 +3779,14 @@ func (s *ListUsersRequest) SetPageSize(v int32) *ListUsersRequest {
 }
 
 type ListUsersResponseBody struct {
-	Data       []*ListUsersResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	TotalCount *int64                       `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	// The queried EIAM accounts.
+	Data []*ListUsersResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1000
+	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s ListUsersResponseBody) String() string {
@@ -2151,27 +3808,136 @@ func (s *ListUsersResponseBody) SetTotalCount(v int64) *ListUsersResponseBody {
 }
 
 type ListUsersResponseBodyData struct {
-	AccountExpireTime *int64  `json:"accountExpireTime,omitempty" xml:"accountExpireTime,omitempty"`
-	CreateTime        *int64  `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	Description       *string `json:"description,omitempty" xml:"description,omitempty"`
-	DisplayName       *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	Email             *string `json:"email,omitempty" xml:"email,omitempty"`
-	EmailVerified     *bool   `json:"emailVerified,omitempty" xml:"emailVerified,omitempty"`
-	InstanceId        *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	LockExpireTime    *int64  `json:"lockExpireTime,omitempty" xml:"lockExpireTime,omitempty"`
+	// The time when the account expires. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1652085686179
+	AccountExpireTime *int64 `json:"accountExpireTime,omitempty" xml:"accountExpireTime,omitempty"`
+	// The time when the account was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1652085686179
+	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// example:
+	//
+	// xxxx
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The display name of the account.
+	//
+	// example:
+	//
+	// display_name001
+	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// The email address of the user who owns the account.
+	//
+	// example:
+	//
+	// example@example.com
+	Email *string `json:"email,omitempty" xml:"email,omitempty"`
+	// Indicates whether the email address has been verified. A value of true indicates that the email address has been verified by the user or has been set to the verified status by the administrator. A value of false indicates that the email address has not been verified.
+	//
+	// example:
+	//
+	// true
+	EmailVerified *bool `json:"emailVerified,omitempty" xml:"emailVerified,omitempty"`
+	// The instance ID.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The time when the account lock expires. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1652085686179
+	LockExpireTime *int64 `json:"lockExpireTime,omitempty" xml:"lockExpireTime,omitempty"`
 	// 密码是否已设置
-	PasswordSet         *bool   `json:"passwordSet,omitempty" xml:"passwordSet,omitempty"`
-	PhoneNumber         *string `json:"phoneNumber,omitempty" xml:"phoneNumber,omitempty"`
-	PhoneNumberVerified *bool   `json:"phoneNumberVerified,omitempty" xml:"phoneNumberVerified,omitempty"`
-	PhoneRegion         *string `json:"phoneRegion,omitempty" xml:"phoneRegion,omitempty"`
-	RegisterTime        *int64  `json:"registerTime,omitempty" xml:"registerTime,omitempty"`
-	Status              *string `json:"status,omitempty" xml:"status,omitempty"`
-	UpdateTime          *int64  `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	UserExternalId      *string `json:"userExternalId,omitempty" xml:"userExternalId,omitempty"`
-	UserId              *string `json:"userId,omitempty" xml:"userId,omitempty"`
-	UserSourceId        *string `json:"userSourceId,omitempty" xml:"userSourceId,omitempty"`
-	UserSourceType      *string `json:"userSourceType,omitempty" xml:"userSourceType,omitempty"`
-	Username            *string `json:"username,omitempty" xml:"username,omitempty"`
+	//
+	// example:
+	//
+	// true
+	PasswordSet *bool `json:"passwordSet,omitempty" xml:"passwordSet,omitempty"`
+	// The mobile number of the user who owns the account.
+	//
+	// example:
+	//
+	// 156xxxxxxx
+	PhoneNumber *string `json:"phoneNumber,omitempty" xml:"phoneNumber,omitempty"`
+	// Indicates whether the mobile number has been verified. A value of true indicates that the mobile number has been verified by the user or has been set to the verified status by the administrator. A value of false indicates that the mobile number has not been verified.
+	//
+	// example:
+	//
+	// true
+	PhoneNumberVerified *bool `json:"phoneNumberVerified,omitempty" xml:"phoneNumberVerified,omitempty"`
+	// The country code of the mobile number. For example, the country code of China is 86 without 00 or +.
+	//
+	// example:
+	//
+	// 86
+	PhoneRegion *string `json:"phoneRegion,omitempty" xml:"phoneRegion,omitempty"`
+	// The time when the account was registered. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1652085686179
+	RegisterTime *int64 `json:"registerTime,omitempty" xml:"registerTime,omitempty"`
+	// The status of the account. Valid values: enabled disabled
+	//
+	// example:
+	//
+	// enabled
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The time when the account was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1652085686179
+	UpdateTime *int64 `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// The external ID of the account. The external ID can be used to map external data to the data of the account in EIAM of Identity as a Service (IDaaS). By default, the external ID is the account ID.
+	//
+	// Note: For accounts with the same source type and source ID, each account has a unique external ID.
+	//
+	// example:
+	//
+	// user_d6sbsuumeta4h66ec3il7yxxxx
+	UserExternalId *string `json:"userExternalId,omitempty" xml:"userExternalId,omitempty"`
+	// The account ID.
+	//
+	// example:
+	//
+	// user_d6sbsuumeta4h66ec3il7yxxxx
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	// The source ID of the account.
+	//
+	// If the account was created in IDaaS, its source ID is the ID of the IDaaS instance. If the account was imported, its source ID is the enterprise ID in the source. For example, if the account was imported from DingTalk, its source ID is the corpId value of the enterprise in DingTalk.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
+	UserSourceId *string `json:"userSourceId,omitempty" xml:"userSourceId,omitempty"`
+	// The source type of the account. Valid values:
+	//
+	// 	- build_in: The account was created in IDaaS.
+	//
+	// 	- ding_talk: The account was imported from DingTalk.
+	//
+	// 	- ad: The account was imported from Microsoft Active Directory (AD).
+	//
+	// 	- ldap: The account was imported from a Lightweight Directory Access Protocol (LDAP) service.
+	//
+	// example:
+	//
+	// build_in
+	UserSourceType *string `json:"userSourceType,omitempty" xml:"userSourceType,omitempty"`
+	// The username of the account.
+	//
+	// example:
+	//
+	// name001
+	Username *string `json:"username,omitempty" xml:"username,omitempty"`
 }
 
 func (s ListUsersResponseBodyData) String() string {
@@ -2283,9 +4049,9 @@ func (s *ListUsersResponseBodyData) SetUsername(v string) *ListUsersResponseBody
 }
 
 type ListUsersResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListUsersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListUsersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListUsersResponse) String() string {
@@ -2311,9 +4077,248 @@ func (s *ListUsersResponse) SetBody(v *ListUsersResponseBody) *ListUsersResponse
 	return s
 }
 
+type ListUsersForGroupHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Bearer xxxx
+	Authorization *string `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s ListUsersForGroupHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUsersForGroupHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListUsersForGroupHeaders) SetCommonHeaders(v map[string]*string) *ListUsersForGroupHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListUsersForGroupHeaders) SetAuthorization(v string) *ListUsersForGroupHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type ListUsersForGroupRequest struct {
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// nextToken
+	//
+	// example:
+	//
+	// NTxxx
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+}
+
+func (s ListUsersForGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUsersForGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListUsersForGroupRequest) SetMaxResults(v int32) *ListUsersForGroupRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListUsersForGroupRequest) SetNextToken(v string) *ListUsersForGroupRequest {
+	s.NextToken = &v
+	return s
+}
+
+type ListUsersForGroupResponseBody struct {
+	Data []*ListUsersForGroupResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// example:
+	//
+	// NTxxx
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// example:
+	//
+	// 1000
+	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+}
+
+func (s ListUsersForGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUsersForGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListUsersForGroupResponseBody) SetData(v []*ListUsersForGroupResponseBodyData) *ListUsersForGroupResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListUsersForGroupResponseBody) SetMaxResults(v int32) *ListUsersForGroupResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListUsersForGroupResponseBody) SetNextToken(v string) *ListUsersForGroupResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListUsersForGroupResponseBody) SetTotalCount(v int64) *ListUsersForGroupResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListUsersForGroupResponseBodyData struct {
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// example:
+	//
+	// user_001
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+}
+
+func (s ListUsersForGroupResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUsersForGroupResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListUsersForGroupResponseBodyData) SetInstanceId(v string) *ListUsersForGroupResponseBodyData {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListUsersForGroupResponseBodyData) SetUserId(v string) *ListUsersForGroupResponseBodyData {
+	s.UserId = &v
+	return s
+}
+
+type ListUsersForGroupResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListUsersForGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListUsersForGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUsersForGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListUsersForGroupResponse) SetHeaders(v map[string]*string) *ListUsersForGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListUsersForGroupResponse) SetStatusCode(v int32) *ListUsersForGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListUsersForGroupResponse) SetBody(v *ListUsersForGroupResponseBody) *ListUsersForGroupResponse {
+	s.Body = v
+	return s
+}
+
+type PatchGroupHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Bearer xxxx
+	Authorization *string `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s PatchGroupHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PatchGroupHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *PatchGroupHeaders) SetCommonHeaders(v map[string]*string) *PatchGroupHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *PatchGroupHeaders) SetAuthorization(v string) *PatchGroupHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type PatchGroupRequest struct {
+	// example:
+	//
+	// name001
+	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
+}
+
+func (s PatchGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PatchGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PatchGroupRequest) SetGroupName(v string) *PatchGroupRequest {
+	s.GroupName = &v
+	return s
+}
+
+type PatchGroupResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s PatchGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PatchGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PatchGroupResponse) SetHeaders(v map[string]*string) *PatchGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PatchGroupResponse) SetStatusCode(v int32) *PatchGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type PatchOrganizationalUnitHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	Authorization *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+	// The authentication information. Format: Bearer ${access_token}. Example: Bearer ATxxxx.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Bearer AT8csE2seYxxxxxij
+	Authorization *string `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
 }
 
 func (s PatchOrganizationalUnitHeaders) String() string {
@@ -2335,7 +4340,17 @@ func (s *PatchOrganizationalUnitHeaders) SetAuthorization(v string) *PatchOrgani
 }
 
 type PatchOrganizationalUnitRequest struct {
-	Description            *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The description of the organizational unit.
+	//
+	// example:
+	//
+	// test organizational unit
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The name of the organizational unit.
+	//
+	// example:
+	//
+	// name001
 	OrganizationalUnitName *string `json:"organizationalUnitName,omitempty" xml:"organizationalUnitName,omitempty"`
 }
 
@@ -2358,8 +4373,8 @@ func (s *PatchOrganizationalUnitRequest) SetOrganizationalUnitName(v string) *Pa
 }
 
 type PatchOrganizationalUnitResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s PatchOrganizationalUnitResponse) String() string {
@@ -2382,7 +4397,14 @@ func (s *PatchOrganizationalUnitResponse) SetStatusCode(v int32) *PatchOrganizat
 
 type PatchUserHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	Authorization *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+	// The authentication information. Format: Bearer ${access_token}. Example: Bearer ATxxxx.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Bearer AT8csE2seYxxxxxij
+	Authorization *string `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
 }
 
 func (s PatchUserHeaders) String() string {
@@ -2404,14 +4426,49 @@ func (s *PatchUserHeaders) SetAuthorization(v string) *PatchUserHeaders {
 }
 
 type PatchUserRequest struct {
-	CustomFields        []*PatchUserRequestCustomFields `json:"customFields,omitempty" xml:"customFields,omitempty" type:"Repeated"`
-	DisplayName         *string                         `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	Email               *string                         `json:"email,omitempty" xml:"email,omitempty"`
-	EmailVerified       *bool                           `json:"emailVerified,omitempty" xml:"emailVerified,omitempty"`
-	PhoneNumber         *string                         `json:"phoneNumber,omitempty" xml:"phoneNumber,omitempty"`
-	PhoneNumberVerified *bool                           `json:"phoneNumberVerified,omitempty" xml:"phoneNumberVerified,omitempty"`
-	PhoneRegion         *string                         `json:"phoneRegion,omitempty" xml:"phoneRegion,omitempty"`
-	Username            *string                         `json:"username,omitempty" xml:"username,omitempty"`
+	CustomFields []*PatchUserRequestCustomFields `json:"customFields,omitempty" xml:"customFields,omitempty" type:"Repeated"`
+	// The display name of the account.
+	//
+	// example:
+	//
+	// display_name001
+	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// The email address of the user who owns the account.
+	//
+	// example:
+	//
+	// example@example.com
+	Email *string `json:"email,omitempty" xml:"email,omitempty"`
+	// Indicates whether the email address is verified. This field is required if an email address is specified. If you have no special requirement, set this parameter to true.
+	//
+	// example:
+	//
+	// true
+	EmailVerified *bool `json:"emailVerified,omitempty" xml:"emailVerified,omitempty"`
+	// The mobile number of the user who owns the account.
+	//
+	// example:
+	//
+	// 156xxxxxxx
+	PhoneNumber *string `json:"phoneNumber,omitempty" xml:"phoneNumber,omitempty"`
+	// Indicates whether the mobile number is verified. This field is required if a mobile number is specified. If you have no special requirement, set this parameter to true.
+	//
+	// example:
+	//
+	// true
+	PhoneNumberVerified *bool `json:"phoneNumberVerified,omitempty" xml:"phoneNumberVerified,omitempty"`
+	// The country code of the mobile number. For example, the country code of China is 86 without 00 or +. This parameter is required if a mobile number is specified.
+	//
+	// example:
+	//
+	// 86
+	PhoneRegion *string `json:"phoneRegion,omitempty" xml:"phoneRegion,omitempty"`
+	// The username of the account.
+	//
+	// example:
+	//
+	// name001
+	Username *string `json:"username,omitempty" xml:"username,omitempty"`
 }
 
 func (s PatchUserRequest) String() string {
@@ -2463,14 +4520,31 @@ func (s *PatchUserRequest) SetUsername(v string) *PatchUserRequest {
 }
 
 type PatchUserRequestCustomFields struct {
-	FieldName  *string `json:"fieldName,omitempty" xml:"fieldName,omitempty"`
+	// example:
+	//
+	// age
+	FieldName *string `json:"fieldName,omitempty" xml:"fieldName,omitempty"`
+	// example:
+	//
+	// test_value
 	FieldValue *string `json:"fieldValue,omitempty" xml:"fieldValue,omitempty"`
 	// 字段操作类型，取值可选范围：
+	//
 	// - add：添加。
+	//
 	// - replace：替换。若对应扩展字段无设置值，会转换为add操作。
+	//
 	// - remove：移除。
+	//
+	// example:
+	//
+	// replace
 	Operation *string `json:"operation,omitempty" xml:"operation,omitempty"`
 	// Deprecated
+	//
+	// example:
+	//
+	// replace
 	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
 }
 
@@ -2503,8 +4577,8 @@ func (s *PatchUserRequestCustomFields) SetOperator(v string) *PatchUserRequestCu
 }
 
 type PatchUserResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s PatchUserResponse) String() string {
@@ -2527,7 +4601,12 @@ func (s *PatchUserResponse) SetStatusCode(v int32) *PatchUserResponse {
 
 type RemoveUserFromOrganizationalUnitsHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	Authorization *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Bearer xxxx
+	Authorization *string `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
 }
 
 func (s RemoveUserFromOrganizationalUnitsHeaders) String() string {
@@ -2549,6 +4628,11 @@ func (s *RemoveUserFromOrganizationalUnitsHeaders) SetAuthorization(v string) *R
 }
 
 type RemoveUserFromOrganizationalUnitsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// [ou_wovwffm62xifdziem7an7xxxxx]
 	OrganizationalUnitIds []*string `json:"organizationalUnitIds,omitempty" xml:"organizationalUnitIds,omitempty" type:"Repeated"`
 }
 
@@ -2566,8 +4650,8 @@ func (s *RemoveUserFromOrganizationalUnitsRequest) SetOrganizationalUnitIds(v []
 }
 
 type RemoveUserFromOrganizationalUnitsResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s RemoveUserFromOrganizationalUnitsResponse) String() string {
@@ -2588,10 +4672,105 @@ func (s *RemoveUserFromOrganizationalUnitsResponse) SetStatusCode(v int32) *Remo
 	return s
 }
 
+type RemoveUsersFromGroupHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Bearer xxxx
+	Authorization *string `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s RemoveUsersFromGroupHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveUsersFromGroupHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveUsersFromGroupHeaders) SetCommonHeaders(v map[string]*string) *RemoveUsersFromGroupHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *RemoveUsersFromGroupHeaders) SetAuthorization(v string) *RemoveUsersFromGroupHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type RemoveUsersFromGroupRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// [user_d6sbsuumeta4h66ec3il7yxxxx}
+	UserIds []*string `json:"userIds,omitempty" xml:"userIds,omitempty" type:"Repeated"`
+}
+
+func (s RemoveUsersFromGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveUsersFromGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveUsersFromGroupRequest) SetUserIds(v []*string) *RemoveUsersFromGroupRequest {
+	s.UserIds = v
+	return s
+}
+
+type RemoveUsersFromGroupResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s RemoveUsersFromGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveUsersFromGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveUsersFromGroupResponse) SetHeaders(v map[string]*string) *RemoveUsersFromGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RemoveUsersFromGroupResponse) SetStatusCode(v int32) *RemoveUsersFromGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type RevokeTokenRequest struct {
-	ClientId      *string `json:"client_id,omitempty" xml:"client_id,omitempty"`
-	ClientSecret  *string `json:"client_secret,omitempty" xml:"client_secret,omitempty"`
-	Token         *string `json:"token,omitempty" xml:"token,omitempty"`
+	// The client ID.
+	//
+	// example:
+	//
+	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
+	ClientId *string `json:"client_id,omitempty" xml:"client_id,omitempty"`
+	// The client secret.
+	//
+	// example:
+	//
+	// CSEHDcHcrUKHw1CuxkJEHPveWRXBGqVqRsxxxx
+	ClientSecret *string `json:"client_secret,omitempty" xml:"client_secret,omitempty"`
+	// The token to be revoked.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ATxxxx
+	Token *string `json:"token,omitempty" xml:"token,omitempty"`
+	// The type of the token. Valid values: access_token refresh_token
+	//
+	// example:
+	//
+	// access_token
 	TokenTypeHint *string `json:"token_type_hint,omitempty" xml:"token_type_hint,omitempty"`
 }
 
@@ -2624,9 +4803,9 @@ func (s *RevokeTokenRequest) SetTokenTypeHint(v string) *RevokeTokenRequest {
 }
 
 type RevokeTokenResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       map[string]interface{} `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       map[string]interface{} `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RevokeTokenResponse) String() string {
@@ -2654,7 +4833,12 @@ func (s *RevokeTokenResponse) SetBody(v map[string]interface{}) *RevokeTokenResp
 
 type SetUserPrimaryOrganizationalUnitHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	Authorization *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Bearer xxxx
+	Authorization *string `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
 }
 
 func (s SetUserPrimaryOrganizationalUnitHeaders) String() string {
@@ -2676,6 +4860,11 @@ func (s *SetUserPrimaryOrganizationalUnitHeaders) SetAuthorization(v string) *Se
 }
 
 type SetUserPrimaryOrganizationalUnitRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ou_wovwffm62xifdziem7an7xxxxx
 	OrganizationalUnitId *string `json:"organizationalUnitId,omitempty" xml:"organizationalUnitId,omitempty"`
 }
 
@@ -2693,8 +4882,8 @@ func (s *SetUserPrimaryOrganizationalUnitRequest) SetOrganizationalUnitId(v stri
 }
 
 type SetUserPrimaryOrganizationalUnitResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s SetUserPrimaryOrganizationalUnitResponse) String() string {
@@ -2717,7 +4906,12 @@ func (s *SetUserPrimaryOrganizationalUnitResponse) SetStatusCode(v int32) *SetUs
 
 type UpdateUserPasswordHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	Authorization *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Bearer xxxx
+	Authorization *string `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
 }
 
 func (s UpdateUserPasswordHeaders) String() string {
@@ -2739,6 +4933,9 @@ func (s *UpdateUserPasswordHeaders) SetAuthorization(v string) *UpdateUserPasswo
 }
 
 type UpdateUserPasswordRequest struct {
+	// example:
+	//
+	// xxxx
 	Password *string `json:"password,omitempty" xml:"password,omitempty"`
 }
 
@@ -2756,8 +4953,8 @@ func (s *UpdateUserPasswordRequest) SetPassword(v string) *UpdateUserPasswordReq
 }
 
 type UpdateUserPasswordResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s UpdateUserPasswordResponse) String() string {
@@ -2826,6 +5023,17 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// 将账户加入多个组织
+//
+// @param request - AddUserToOrganizationalUnitsRequest
+//
+// @param headers - AddUserToOrganizationalUnitsHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddUserToOrganizationalUnitsResponse
 func (client *Client) AddUserToOrganizationalUnitsWithOptions(instanceId *string, applicationId *string, userId *string, request *AddUserToOrganizationalUnitsRequest, headers *AddUserToOrganizationalUnitsHeaders, runtime *util.RuntimeOptions) (_result *AddUserToOrganizationalUnitsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2860,15 +5068,33 @@ func (client *Client) AddUserToOrganizationalUnitsWithOptions(instanceId *string
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("none"),
 	}
-	_result = &AddUserToOrganizationalUnitsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AddUserToOrganizationalUnitsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AddUserToOrganizationalUnitsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// 将账户加入多个组织
+//
+// @param request - AddUserToOrganizationalUnitsRequest
+//
+// @return AddUserToOrganizationalUnitsResponse
 func (client *Client) AddUserToOrganizationalUnits(instanceId *string, applicationId *string, userId *string, request *AddUserToOrganizationalUnitsRequest) (_result *AddUserToOrganizationalUnitsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &AddUserToOrganizationalUnitsHeaders{}
@@ -2881,6 +5107,189 @@ func (client *Client) AddUserToOrganizationalUnits(instanceId *string, applicati
 	return _result, _err
 }
 
+// Summary:
+//
+// 为指定组批量关联账户
+//
+// @param request - AddUsersToGroupRequest
+//
+// @param headers - AddUsersToGroupHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddUsersToGroupResponse
+func (client *Client) AddUsersToGroupWithOptions(instanceId *string, applicationId *string, groupId *string, request *AddUsersToGroupRequest, headers *AddUsersToGroupHeaders, runtime *util.RuntimeOptions) (_result *AddUsersToGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UserIds)) {
+		body["userIds"] = request.UserIds
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddUsersToGroup"),
+		Version:     tea.String("2022-02-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(applicationId)) + "/groups/" + tea.StringValue(openapiutil.GetEncodeParam(groupId)) + "/actions/addUsersToGroup"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("Anonymous"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AddUsersToGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AddUsersToGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 为指定组批量关联账户
+//
+// @param request - AddUsersToGroupRequest
+//
+// @return AddUsersToGroupResponse
+func (client *Client) AddUsersToGroup(instanceId *string, applicationId *string, groupId *string, request *AddUsersToGroupRequest) (_result *AddUsersToGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &AddUsersToGroupHeaders{}
+	_result = &AddUsersToGroupResponse{}
+	_body, _err := client.AddUsersToGroupWithOptions(instanceId, applicationId, groupId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建一个EIAM组
+//
+// @param request - CreateGroupRequest
+//
+// @param headers - CreateGroupHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateGroupResponse
+func (client *Client) CreateGroupWithOptions(instanceId *string, applicationId *string, request *CreateGroupRequest, headers *CreateGroupHeaders, runtime *util.RuntimeOptions) (_result *CreateGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupExternalId)) {
+		body["groupExternalId"] = request.GroupExternalId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		body["groupName"] = request.GroupName
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateGroup"),
+		Version:     tea.String("2022-02-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(applicationId)) + "/groups"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("Anonymous"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 创建一个EIAM组
+//
+// @param request - CreateGroupRequest
+//
+// @return CreateGroupResponse
+func (client *Client) CreateGroup(instanceId *string, applicationId *string, request *CreateGroupRequest) (_result *CreateGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &CreateGroupHeaders{}
+	_result = &CreateGroupResponse{}
+	_body, _err := client.CreateGroupWithOptions(instanceId, applicationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an organizational unit.
+//
+// @param request - CreateOrganizationalUnitRequest
+//
+// @param headers - CreateOrganizationalUnitHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateOrganizationalUnitResponse
 func (client *Client) CreateOrganizationalUnitWithOptions(instanceId *string, applicationId *string, request *CreateOrganizationalUnitRequest, headers *CreateOrganizationalUnitHeaders, runtime *util.RuntimeOptions) (_result *CreateOrganizationalUnitResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2927,15 +5336,33 @@ func (client *Client) CreateOrganizationalUnitWithOptions(instanceId *string, ap
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateOrganizationalUnitResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateOrganizationalUnitResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateOrganizationalUnitResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Creates an organizational unit.
+//
+// @param request - CreateOrganizationalUnitRequest
+//
+// @return CreateOrganizationalUnitResponse
 func (client *Client) CreateOrganizationalUnit(instanceId *string, applicationId *string, request *CreateOrganizationalUnitRequest) (_result *CreateOrganizationalUnitResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &CreateOrganizationalUnitHeaders{}
@@ -2948,6 +5375,17 @@ func (client *Client) CreateOrganizationalUnit(instanceId *string, applicationId
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an Employee Identity and Access Management (EIAM) account in an organizational unit.
+//
+// @param request - CreateUserRequest
+//
+// @param headers - CreateUserHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateUserResponse
 func (client *Client) CreateUserWithOptions(instanceId *string, applicationId *string, request *CreateUserRequest, headers *CreateUserHeaders, runtime *util.RuntimeOptions) (_result *CreateUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3030,15 +5468,33 @@ func (client *Client) CreateUserWithOptions(instanceId *string, applicationId *s
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateUserResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateUserResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateUserResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Creates an Employee Identity and Access Management (EIAM) account in an organizational unit.
+//
+// @param request - CreateUserRequest
+//
+// @return CreateUserResponse
 func (client *Client) CreateUser(instanceId *string, applicationId *string, request *CreateUserRequest) (_result *CreateUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &CreateUserHeaders{}
@@ -3051,6 +5507,85 @@ func (client *Client) CreateUser(instanceId *string, applicationId *string, requ
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除指定组
+//
+// @param headers - DeleteGroupHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteGroupResponse
+func (client *Client) DeleteGroupWithOptions(instanceId *string, applicationId *string, groupId *string, headers *DeleteGroupHeaders, runtime *util.RuntimeOptions) (_result *DeleteGroupResponse, _err error) {
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteGroup"),
+		Version:     tea.String("2022-02-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(applicationId)) + "/groups/" + tea.StringValue(openapiutil.GetEncodeParam(groupId))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("Anonymous"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 删除指定组
+//
+// @return DeleteGroupResponse
+func (client *Client) DeleteGroup(instanceId *string, applicationId *string, groupId *string) (_result *DeleteGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &DeleteGroupHeaders{}
+	_result = &DeleteGroupResponse{}
+	_body, _err := client.DeleteGroupWithOptions(instanceId, applicationId, groupId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes an organizational unit.
+//
+// @param headers - DeleteOrganizationalUnitHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteOrganizationalUnitResponse
 func (client *Client) DeleteOrganizationalUnitWithOptions(instanceId *string, applicationId *string, organizationalUnitId *string, headers *DeleteOrganizationalUnitHeaders, runtime *util.RuntimeOptions) (_result *DeleteOrganizationalUnitResponse, _err error) {
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
@@ -3075,15 +5610,31 @@ func (client *Client) DeleteOrganizationalUnitWithOptions(instanceId *string, ap
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("none"),
 	}
-	_result = &DeleteOrganizationalUnitResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteOrganizationalUnitResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteOrganizationalUnitResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Deletes an organizational unit.
+//
+// @return DeleteOrganizationalUnitResponse
 func (client *Client) DeleteOrganizationalUnit(instanceId *string, applicationId *string, organizationalUnitId *string) (_result *DeleteOrganizationalUnitResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &DeleteOrganizationalUnitHeaders{}
@@ -3096,6 +5647,15 @@ func (client *Client) DeleteOrganizationalUnit(instanceId *string, applicationId
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an Employee Identity and Access Management (EIAM) account.
+//
+// @param headers - DeleteUserHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteUserResponse
 func (client *Client) DeleteUserWithOptions(instanceId *string, applicationId *string, userId *string, headers *DeleteUserHeaders, runtime *util.RuntimeOptions) (_result *DeleteUserResponse, _err error) {
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
@@ -3120,15 +5680,31 @@ func (client *Client) DeleteUserWithOptions(instanceId *string, applicationId *s
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("none"),
 	}
-	_result = &DeleteUserResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteUserResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteUserResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Deletes an Employee Identity and Access Management (EIAM) account.
+//
+// @return DeleteUserResponse
 func (client *Client) DeleteUser(instanceId *string, applicationId *string, userId *string) (_result *DeleteUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &DeleteUserHeaders{}
@@ -3141,6 +5717,15 @@ func (client *Client) DeleteUser(instanceId *string, applicationId *string, user
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables an Employee Identity and Access Management (EIAM) account.
+//
+// @param headers - DisableUserHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableUserResponse
 func (client *Client) DisableUserWithOptions(instanceId *string, applicationId *string, userId *string, headers *DisableUserHeaders, runtime *util.RuntimeOptions) (_result *DisableUserResponse, _err error) {
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
@@ -3165,15 +5750,31 @@ func (client *Client) DisableUserWithOptions(instanceId *string, applicationId *
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("none"),
 	}
-	_result = &DisableUserResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DisableUserResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DisableUserResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Disables an Employee Identity and Access Management (EIAM) account.
+//
+// @return DisableUserResponse
 func (client *Client) DisableUser(instanceId *string, applicationId *string, userId *string) (_result *DisableUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &DisableUserHeaders{}
@@ -3186,6 +5787,15 @@ func (client *Client) DisableUser(instanceId *string, applicationId *string, use
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables an Employee Identity and Access Management (EIAM) account.
+//
+// @param headers - EnableUserHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableUserResponse
 func (client *Client) EnableUserWithOptions(instanceId *string, applicationId *string, userId *string, headers *EnableUserHeaders, runtime *util.RuntimeOptions) (_result *EnableUserResponse, _err error) {
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
@@ -3210,15 +5820,31 @@ func (client *Client) EnableUserWithOptions(instanceId *string, applicationId *s
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("none"),
 	}
-	_result = &EnableUserResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &EnableUserResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &EnableUserResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Enables an Employee Identity and Access Management (EIAM) account.
+//
+// @return EnableUserResponse
 func (client *Client) EnableUser(instanceId *string, applicationId *string, userId *string) (_result *EnableUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &EnableUserHeaders{}
@@ -3231,6 +5857,17 @@ func (client *Client) EnableUser(instanceId *string, applicationId *string, user
 	return _result, _err
 }
 
+// Summary:
+//
+// Generates a device code.
+//
+// @param request - GenerateDeviceCodeRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GenerateDeviceCodeResponse
 func (client *Client) GenerateDeviceCodeWithOptions(instanceId *string, applicationId *string, request *GenerateDeviceCodeRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GenerateDeviceCodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3256,15 +5893,33 @@ func (client *Client) GenerateDeviceCodeWithOptions(instanceId *string, applicat
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GenerateDeviceCodeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GenerateDeviceCodeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GenerateDeviceCodeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Generates a device code.
+//
+// @param request - GenerateDeviceCodeRequest
+//
+// @return GenerateDeviceCodeResponse
 func (client *Client) GenerateDeviceCode(instanceId *string, applicationId *string, request *GenerateDeviceCodeRequest) (_result *GenerateDeviceCodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -3277,6 +5932,23 @@ func (client *Client) GenerateDeviceCode(instanceId *string, applicationId *stri
 	return _result, _err
 }
 
+// Summary:
+//
+// Generates a token for accessing an application in an instance.
+//
+// Description:
+//
+// >
+//
+// 	- The following authorization types are supported: authorization code, device code, refresh token, and client credentials.
+//
+// @param request - GenerateTokenRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GenerateTokenResponse
 func (client *Client) GenerateTokenWithOptions(instanceId *string, applicationId *string, request *GenerateTokenRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GenerateTokenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3346,15 +6018,39 @@ func (client *Client) GenerateTokenWithOptions(instanceId *string, applicationId
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GenerateTokenResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GenerateTokenResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GenerateTokenResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Generates a token for accessing an application in an instance.
+//
+// Description:
+//
+// >
+//
+// 	- The following authorization types are supported: authorization code, device code, refresh token, and client credentials.
+//
+// @param request - GenerateTokenRequest
+//
+// @return GenerateTokenResponse
 func (client *Client) GenerateToken(instanceId *string, applicationId *string, request *GenerateTokenRequest) (_result *GenerateTokenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -3367,6 +6063,21 @@ func (client *Client) GenerateToken(instanceId *string, applicationId *string, r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the synchronization scope of an application in an instance.
+//
+// Description:
+//
+// >
+//
+// 	- You can go to the Applications page in the IDaaS console to set the synchronization scope. After an application is created, the application has the permission to call this operation by default.
+//
+// @param headers - GetApplicationProvisioningScopeHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetApplicationProvisioningScopeResponse
 func (client *Client) GetApplicationProvisioningScopeWithOptions(instanceId *string, applicationId *string, headers *GetApplicationProvisioningScopeHeaders, runtime *util.RuntimeOptions) (_result *GetApplicationProvisioningScopeResponse, _err error) {
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
@@ -3391,15 +6102,37 @@ func (client *Client) GetApplicationProvisioningScopeWithOptions(instanceId *str
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetApplicationProvisioningScopeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetApplicationProvisioningScopeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetApplicationProvisioningScopeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the synchronization scope of an application in an instance.
+//
+// Description:
+//
+// >
+//
+// 	- You can go to the Applications page in the IDaaS console to set the synchronization scope. After an application is created, the application has the permission to call this operation by default.
+//
+// @return GetApplicationProvisioningScopeResponse
 func (client *Client) GetApplicationProvisioningScope(instanceId *string, applicationId *string) (_result *GetApplicationProvisioningScopeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetApplicationProvisioningScopeHeaders{}
@@ -3412,6 +6145,85 @@ func (client *Client) GetApplicationProvisioningScope(instanceId *string, applic
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询一个EIAM组信息
+//
+// @param headers - GetGroupHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetGroupResponse
+func (client *Client) GetGroupWithOptions(instanceId *string, applicationId *string, groupId *string, headers *GetGroupHeaders, runtime *util.RuntimeOptions) (_result *GetGroupResponse, _err error) {
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetGroup"),
+		Version:     tea.String("2022-02-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(applicationId)) + "/groups/" + tea.StringValue(openapiutil.GetEncodeParam(groupId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("Anonymous"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询一个EIAM组信息
+//
+// @return GetGroupResponse
+func (client *Client) GetGroup(instanceId *string, applicationId *string, groupId *string) (_result *GetGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetGroupHeaders{}
+	_result = &GetGroupResponse{}
+	_body, _err := client.GetGroupWithOptions(instanceId, applicationId, groupId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the information of an organizational unit.
+//
+// @param headers - GetOrganizationalUnitHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetOrganizationalUnitResponse
 func (client *Client) GetOrganizationalUnitWithOptions(instanceId *string, applicationId *string, organizationalUnitId *string, headers *GetOrganizationalUnitHeaders, runtime *util.RuntimeOptions) (_result *GetOrganizationalUnitResponse, _err error) {
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
@@ -3436,15 +6248,31 @@ func (client *Client) GetOrganizationalUnitWithOptions(instanceId *string, appli
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetOrganizationalUnitResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetOrganizationalUnitResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetOrganizationalUnitResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the information of an organizational unit.
+//
+// @return GetOrganizationalUnitResponse
 func (client *Client) GetOrganizationalUnit(instanceId *string, applicationId *string, organizationalUnitId *string) (_result *GetOrganizationalUnitResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetOrganizationalUnitHeaders{}
@@ -3457,6 +6285,17 @@ func (client *Client) GetOrganizationalUnit(instanceId *string, applicationId *s
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the ID of an organizational unit based on the external ID
+//
+// @param request - GetOrganizationalUnitIdByExternalIdRequest
+//
+// @param headers - GetOrganizationalUnitIdByExternalIdHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetOrganizationalUnitIdByExternalIdResponse
 func (client *Client) GetOrganizationalUnitIdByExternalIdWithOptions(instanceId *string, applicationId *string, request *GetOrganizationalUnitIdByExternalIdRequest, headers *GetOrganizationalUnitIdByExternalIdHeaders, runtime *util.RuntimeOptions) (_result *GetOrganizationalUnitIdByExternalIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3499,15 +6338,33 @@ func (client *Client) GetOrganizationalUnitIdByExternalIdWithOptions(instanceId 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetOrganizationalUnitIdByExternalIdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetOrganizationalUnitIdByExternalIdResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetOrganizationalUnitIdByExternalIdResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Obtains the ID of an organizational unit based on the external ID
+//
+// @param request - GetOrganizationalUnitIdByExternalIdRequest
+//
+// @return GetOrganizationalUnitIdByExternalIdResponse
 func (client *Client) GetOrganizationalUnitIdByExternalId(instanceId *string, applicationId *string, request *GetOrganizationalUnitIdByExternalIdRequest) (_result *GetOrganizationalUnitIdByExternalIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetOrganizationalUnitIdByExternalIdHeaders{}
@@ -3520,6 +6377,15 @@ func (client *Client) GetOrganizationalUnitIdByExternalId(instanceId *string, ap
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information of an Employee Identity and Access Management (EIAM) account.
+//
+// @param headers - GetUserHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUserResponse
 func (client *Client) GetUserWithOptions(instanceId *string, applicationId *string, userId *string, headers *GetUserHeaders, runtime *util.RuntimeOptions) (_result *GetUserResponse, _err error) {
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
@@ -3544,15 +6410,31 @@ func (client *Client) GetUserWithOptions(instanceId *string, applicationId *stri
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetUserResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetUserResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetUserResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the information of an Employee Identity and Access Management (EIAM) account.
+//
+// @return GetUserResponse
 func (client *Client) GetUser(instanceId *string, applicationId *string, userId *string) (_result *GetUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetUserHeaders{}
@@ -3565,6 +6447,17 @@ func (client *Client) GetUser(instanceId *string, applicationId *string, userId 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the ID of an Employee Identity and Access Management (EIAM) account by email address.
+//
+// @param request - GetUserIdByEmailRequest
+//
+// @param headers - GetUserIdByEmailHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUserIdByEmailResponse
 func (client *Client) GetUserIdByEmailWithOptions(instanceId *string, applicationId *string, request *GetUserIdByEmailRequest, headers *GetUserIdByEmailHeaders, runtime *util.RuntimeOptions) (_result *GetUserIdByEmailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3599,15 +6492,33 @@ func (client *Client) GetUserIdByEmailWithOptions(instanceId *string, applicatio
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetUserIdByEmailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetUserIdByEmailResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetUserIdByEmailResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the ID of an Employee Identity and Access Management (EIAM) account by email address.
+//
+// @param request - GetUserIdByEmailRequest
+//
+// @return GetUserIdByEmailResponse
 func (client *Client) GetUserIdByEmail(instanceId *string, applicationId *string, request *GetUserIdByEmailRequest) (_result *GetUserIdByEmailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetUserIdByEmailHeaders{}
@@ -3620,6 +6531,17 @@ func (client *Client) GetUserIdByEmail(instanceId *string, applicationId *string
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the ID of an Employee Identity and Access Management (EIAM) account based on the mobile number.
+//
+// @param request - GetUserIdByPhoneNumberRequest
+//
+// @param headers - GetUserIdByPhoneNumberHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUserIdByPhoneNumberResponse
 func (client *Client) GetUserIdByPhoneNumberWithOptions(instanceId *string, applicationId *string, request *GetUserIdByPhoneNumberRequest, headers *GetUserIdByPhoneNumberHeaders, runtime *util.RuntimeOptions) (_result *GetUserIdByPhoneNumberResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3654,15 +6576,33 @@ func (client *Client) GetUserIdByPhoneNumberWithOptions(instanceId *string, appl
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetUserIdByPhoneNumberResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetUserIdByPhoneNumberResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetUserIdByPhoneNumberResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the ID of an Employee Identity and Access Management (EIAM) account based on the mobile number.
+//
+// @param request - GetUserIdByPhoneNumberRequest
+//
+// @return GetUserIdByPhoneNumberResponse
 func (client *Client) GetUserIdByPhoneNumber(instanceId *string, applicationId *string, request *GetUserIdByPhoneNumberRequest) (_result *GetUserIdByPhoneNumberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetUserIdByPhoneNumberHeaders{}
@@ -3675,6 +6615,17 @@ func (client *Client) GetUserIdByPhoneNumber(instanceId *string, applicationId *
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the ID of an Employee Identity and Access Management (EIAM) account based on the external ID.
+//
+// @param request - GetUserIdByUserExternalIdRequest
+//
+// @param headers - GetUserIdByUserExternalIdHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUserIdByUserExternalIdResponse
 func (client *Client) GetUserIdByUserExternalIdWithOptions(instanceId *string, applicationId *string, request *GetUserIdByUserExternalIdRequest, headers *GetUserIdByUserExternalIdHeaders, runtime *util.RuntimeOptions) (_result *GetUserIdByUserExternalIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3717,15 +6668,33 @@ func (client *Client) GetUserIdByUserExternalIdWithOptions(instanceId *string, a
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetUserIdByUserExternalIdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetUserIdByUserExternalIdResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetUserIdByUserExternalIdResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the ID of an Employee Identity and Access Management (EIAM) account based on the external ID.
+//
+// @param request - GetUserIdByUserExternalIdRequest
+//
+// @return GetUserIdByUserExternalIdResponse
 func (client *Client) GetUserIdByUserExternalId(instanceId *string, applicationId *string, request *GetUserIdByUserExternalIdRequest) (_result *GetUserIdByUserExternalIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetUserIdByUserExternalIdHeaders{}
@@ -3738,6 +6707,17 @@ func (client *Client) GetUserIdByUserExternalId(instanceId *string, applicationI
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the ID of an Employee Identity and Access Management (EIAM) account based on the username.
+//
+// @param request - GetUserIdByUsernameRequest
+//
+// @param headers - GetUserIdByUsernameHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUserIdByUsernameResponse
 func (client *Client) GetUserIdByUsernameWithOptions(instanceId *string, applicationId *string, request *GetUserIdByUsernameRequest, headers *GetUserIdByUsernameHeaders, runtime *util.RuntimeOptions) (_result *GetUserIdByUsernameResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3772,15 +6752,33 @@ func (client *Client) GetUserIdByUsernameWithOptions(instanceId *string, applica
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetUserIdByUsernameResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetUserIdByUsernameResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetUserIdByUsernameResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the ID of an Employee Identity and Access Management (EIAM) account based on the username.
+//
+// @param request - GetUserIdByUsernameRequest
+//
+// @return GetUserIdByUsernameResponse
 func (client *Client) GetUserIdByUsername(instanceId *string, applicationId *string, request *GetUserIdByUsernameRequest) (_result *GetUserIdByUsernameResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetUserIdByUsernameHeaders{}
@@ -3793,6 +6791,15 @@ func (client *Client) GetUserIdByUsername(instanceId *string, applicationId *str
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information of a user by using the user token.
+//
+// @param headers - GetUserInfoHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUserInfoResponse
 func (client *Client) GetUserInfoWithOptions(instanceId *string, applicationId *string, headers *GetUserInfoHeaders, runtime *util.RuntimeOptions) (_result *GetUserInfoResponse, _err error) {
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
@@ -3817,15 +6824,31 @@ func (client *Client) GetUserInfoWithOptions(instanceId *string, applicationId *
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetUserInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetUserInfoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetUserInfoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the information of a user by using the user token.
+//
+// @return GetUserInfoResponse
 func (client *Client) GetUserInfo(instanceId *string, applicationId *string) (_result *GetUserInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetUserInfoHeaders{}
@@ -3838,6 +6861,195 @@ func (client *Client) GetUserInfo(instanceId *string, applicationId *string) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询组列表
+//
+// @param request - ListGroupsRequest
+//
+// @param headers - ListGroupsHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListGroupsResponse
+func (client *Client) ListGroupsWithOptions(instanceId *string, applicationId *string, request *ListGroupsRequest, headers *ListGroupsHeaders, runtime *util.RuntimeOptions) (_result *ListGroupsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupNameStartWith)) {
+		query["groupNameStartWith"] = request.GroupNameStartWith
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["nextToken"] = request.NextToken
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListGroups"),
+		Version:     tea.String("2022-02-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(applicationId)) + "/groups"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("Anonymous"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListGroupsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListGroupsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询组列表
+//
+// @param request - ListGroupsRequest
+//
+// @return ListGroupsResponse
+func (client *Client) ListGroups(instanceId *string, applicationId *string, request *ListGroupsRequest) (_result *ListGroupsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ListGroupsHeaders{}
+	_result = &ListGroupsResponse{}
+	_body, _err := client.ListGroupsWithOptions(instanceId, applicationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取账户关联组列表
+//
+// @param request - ListGroupsForUserRequest
+//
+// @param headers - ListGroupsForUserHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListGroupsForUserResponse
+func (client *Client) ListGroupsForUserWithOptions(instanceId *string, applicationId *string, userId *string, request *ListGroupsForUserRequest, headers *ListGroupsForUserHeaders, runtime *util.RuntimeOptions) (_result *ListGroupsForUserResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["nextToken"] = request.NextToken
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListGroupsForUser"),
+		Version:     tea.String("2022-02-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(applicationId)) + "/users/" + tea.StringValue(openapiutil.GetEncodeParam(userId)) + "/actions/listGroupsForUser"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("Anonymous"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListGroupsForUserResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListGroupsForUserResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取账户关联组列表
+//
+// @param request - ListGroupsForUserRequest
+//
+// @return ListGroupsForUserResponse
+func (client *Client) ListGroupsForUser(instanceId *string, applicationId *string, userId *string, request *ListGroupsForUserRequest) (_result *ListGroupsForUserResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ListGroupsForUserHeaders{}
+	_result = &ListGroupsForUserResponse{}
+	_body, _err := client.ListGroupsForUserWithOptions(instanceId, applicationId, userId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the information of all the parent organizational units of an organizational unit.
+//
+// @param headers - ListOrganizationalUnitParentIdsHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListOrganizationalUnitParentIdsResponse
 func (client *Client) ListOrganizationalUnitParentIdsWithOptions(instanceId *string, applicationId *string, organizationalUnitId *string, headers *ListOrganizationalUnitParentIdsHeaders, runtime *util.RuntimeOptions) (_result *ListOrganizationalUnitParentIdsResponse, _err error) {
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
@@ -3862,15 +7074,31 @@ func (client *Client) ListOrganizationalUnitParentIdsWithOptions(instanceId *str
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListOrganizationalUnitParentIdsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListOrganizationalUnitParentIdsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListOrganizationalUnitParentIdsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the information of all the parent organizational units of an organizational unit.
+//
+// @return ListOrganizationalUnitParentIdsResponse
 func (client *Client) ListOrganizationalUnitParentIds(instanceId *string, applicationId *string, organizationalUnitId *string) (_result *ListOrganizationalUnitParentIdsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ListOrganizationalUnitParentIdsHeaders{}
@@ -3883,6 +7111,17 @@ func (client *Client) ListOrganizationalUnitParentIds(instanceId *string, applic
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information of Employee Identity and Access Management (EIAM) organizational units by page.
+//
+// @param request - ListOrganizationalUnitsRequest
+//
+// @param headers - ListOrganizationalUnitsHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListOrganizationalUnitsResponse
 func (client *Client) ListOrganizationalUnitsWithOptions(instanceId *string, applicationId *string, request *ListOrganizationalUnitsRequest, headers *ListOrganizationalUnitsHeaders, runtime *util.RuntimeOptions) (_result *ListOrganizationalUnitsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3925,15 +7164,33 @@ func (client *Client) ListOrganizationalUnitsWithOptions(instanceId *string, app
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListOrganizationalUnitsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListOrganizationalUnitsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListOrganizationalUnitsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the information of Employee Identity and Access Management (EIAM) organizational units by page.
+//
+// @param request - ListOrganizationalUnitsRequest
+//
+// @return ListOrganizationalUnitsResponse
 func (client *Client) ListOrganizationalUnits(instanceId *string, applicationId *string, request *ListOrganizationalUnitsRequest) (_result *ListOrganizationalUnitsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ListOrganizationalUnitsHeaders{}
@@ -3946,6 +7203,17 @@ func (client *Client) ListOrganizationalUnits(instanceId *string, applicationId 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information of Employee Identity and Access Management (EIAM) accounts by page.
+//
+// @param request - ListUsersRequest
+//
+// @param headers - ListUsersHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUsersResponse
 func (client *Client) ListUsersWithOptions(instanceId *string, applicationId *string, request *ListUsersRequest, headers *ListUsersHeaders, runtime *util.RuntimeOptions) (_result *ListUsersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3988,15 +7256,33 @@ func (client *Client) ListUsersWithOptions(instanceId *string, applicationId *st
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListUsersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListUsersResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListUsersResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the information of Employee Identity and Access Management (EIAM) accounts by page.
+//
+// @param request - ListUsersRequest
+//
+// @return ListUsersResponse
 func (client *Client) ListUsers(instanceId *string, applicationId *string, request *ListUsersRequest) (_result *ListUsersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ListUsersHeaders{}
@@ -4009,6 +7295,193 @@ func (client *Client) ListUsers(instanceId *string, applicationId *string, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询指定组下账户IDS
+//
+// @param request - ListUsersForGroupRequest
+//
+// @param headers - ListUsersForGroupHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUsersForGroupResponse
+func (client *Client) ListUsersForGroupWithOptions(instanceId *string, applicationId *string, groupId *string, request *ListUsersForGroupRequest, headers *ListUsersForGroupHeaders, runtime *util.RuntimeOptions) (_result *ListUsersForGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["nextToken"] = request.NextToken
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListUsersForGroup"),
+		Version:     tea.String("2022-02-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(applicationId)) + "/groups/" + tea.StringValue(openapiutil.GetEncodeParam(groupId)) + "/actions/listUsersForGroup"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("Anonymous"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListUsersForGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListUsersForGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询指定组下账户IDS
+//
+// @param request - ListUsersForGroupRequest
+//
+// @return ListUsersForGroupResponse
+func (client *Client) ListUsersForGroup(instanceId *string, applicationId *string, groupId *string, request *ListUsersForGroupRequest) (_result *ListUsersForGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ListUsersForGroupHeaders{}
+	_result = &ListUsersForGroupResponse{}
+	_body, _err := client.ListUsersForGroupWithOptions(instanceId, applicationId, groupId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新组信息
+//
+// @param request - PatchGroupRequest
+//
+// @param headers - PatchGroupHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PatchGroupResponse
+func (client *Client) PatchGroupWithOptions(instanceId *string, applicationId *string, groupId *string, request *PatchGroupRequest, headers *PatchGroupHeaders, runtime *util.RuntimeOptions) (_result *PatchGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		body["groupName"] = request.GroupName
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PatchGroup"),
+		Version:     tea.String("2022-02-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(applicationId)) + "/groups/" + tea.StringValue(openapiutil.GetEncodeParam(groupId))),
+		Method:      tea.String("PATCH"),
+		AuthType:    tea.String("Anonymous"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &PatchGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &PatchGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 更新组信息
+//
+// @param request - PatchGroupRequest
+//
+// @return PatchGroupResponse
+func (client *Client) PatchGroup(instanceId *string, applicationId *string, groupId *string, request *PatchGroupRequest) (_result *PatchGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &PatchGroupHeaders{}
+	_result = &PatchGroupResponse{}
+	_body, _err := client.PatchGroupWithOptions(instanceId, applicationId, groupId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies an EIAM organizational unit.
+//
+// Description:
+//
+// The operation conforms to the HTTP PATCH request method. The value of a parameter is modified only if the parameter is specified in the request.
+//
+// @param request - PatchOrganizationalUnitRequest
+//
+// @param headers - PatchOrganizationalUnitHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PatchOrganizationalUnitResponse
 func (client *Client) PatchOrganizationalUnitWithOptions(instanceId *string, applicationId *string, organizationalUnitId *string, request *PatchOrganizationalUnitRequest, headers *PatchOrganizationalUnitHeaders, runtime *util.RuntimeOptions) (_result *PatchOrganizationalUnitResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4047,15 +7520,37 @@ func (client *Client) PatchOrganizationalUnitWithOptions(instanceId *string, app
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("none"),
 	}
-	_result = &PatchOrganizationalUnitResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &PatchOrganizationalUnitResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &PatchOrganizationalUnitResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Modifies an EIAM organizational unit.
+//
+// Description:
+//
+// The operation conforms to the HTTP PATCH request method. The value of a parameter is modified only if the parameter is specified in the request.
+//
+// @param request - PatchOrganizationalUnitRequest
+//
+// @return PatchOrganizationalUnitResponse
 func (client *Client) PatchOrganizationalUnit(instanceId *string, applicationId *string, organizationalUnitId *string, request *PatchOrganizationalUnitRequest) (_result *PatchOrganizationalUnitResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &PatchOrganizationalUnitHeaders{}
@@ -4068,6 +7563,21 @@ func (client *Client) PatchOrganizationalUnit(instanceId *string, applicationId 
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies an Employee Identity and Access Management (EIAM) account.
+//
+// Description:
+//
+// The operation conforms to the HTTP PATCH request method. The value of a parameter is modified only if the parameter is specified in the request.
+//
+// @param request - PatchUserRequest
+//
+// @param headers - PatchUserHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PatchUserResponse
 func (client *Client) PatchUserWithOptions(instanceId *string, applicationId *string, userId *string, request *PatchUserRequest, headers *PatchUserHeaders, runtime *util.RuntimeOptions) (_result *PatchUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4130,15 +7640,37 @@ func (client *Client) PatchUserWithOptions(instanceId *string, applicationId *st
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("none"),
 	}
-	_result = &PatchUserResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &PatchUserResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &PatchUserResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Modifies an Employee Identity and Access Management (EIAM) account.
+//
+// Description:
+//
+// The operation conforms to the HTTP PATCH request method. The value of a parameter is modified only if the parameter is specified in the request.
+//
+// @param request - PatchUserRequest
+//
+// @return PatchUserResponse
 func (client *Client) PatchUser(instanceId *string, applicationId *string, userId *string, request *PatchUserRequest) (_result *PatchUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &PatchUserHeaders{}
@@ -4151,6 +7683,17 @@ func (client *Client) PatchUser(instanceId *string, applicationId *string, userI
 	return _result, _err
 }
 
+// Summary:
+//
+// 将账户从多个组织移除【不支持移除主组织】
+//
+// @param request - RemoveUserFromOrganizationalUnitsRequest
+//
+// @param headers - RemoveUserFromOrganizationalUnitsHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveUserFromOrganizationalUnitsResponse
 func (client *Client) RemoveUserFromOrganizationalUnitsWithOptions(instanceId *string, applicationId *string, userId *string, request *RemoveUserFromOrganizationalUnitsRequest, headers *RemoveUserFromOrganizationalUnitsHeaders, runtime *util.RuntimeOptions) (_result *RemoveUserFromOrganizationalUnitsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4185,15 +7728,33 @@ func (client *Client) RemoveUserFromOrganizationalUnitsWithOptions(instanceId *s
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("none"),
 	}
-	_result = &RemoveUserFromOrganizationalUnitsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RemoveUserFromOrganizationalUnitsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RemoveUserFromOrganizationalUnitsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// 将账户从多个组织移除【不支持移除主组织】
+//
+// @param request - RemoveUserFromOrganizationalUnitsRequest
+//
+// @return RemoveUserFromOrganizationalUnitsResponse
 func (client *Client) RemoveUserFromOrganizationalUnits(instanceId *string, applicationId *string, userId *string, request *RemoveUserFromOrganizationalUnitsRequest) (_result *RemoveUserFromOrganizationalUnitsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &RemoveUserFromOrganizationalUnitsHeaders{}
@@ -4206,6 +7767,101 @@ func (client *Client) RemoveUserFromOrganizationalUnits(instanceId *string, appl
 	return _result, _err
 }
 
+// Summary:
+//
+// 为指定组批量解除账户关联
+//
+// @param request - RemoveUsersFromGroupRequest
+//
+// @param headers - RemoveUsersFromGroupHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveUsersFromGroupResponse
+func (client *Client) RemoveUsersFromGroupWithOptions(instanceId *string, applicationId *string, groupId *string, request *RemoveUsersFromGroupRequest, headers *RemoveUsersFromGroupHeaders, runtime *util.RuntimeOptions) (_result *RemoveUsersFromGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UserIds)) {
+		body["userIds"] = request.UserIds
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RemoveUsersFromGroup"),
+		Version:     tea.String("2022-02-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(applicationId)) + "/groups/" + tea.StringValue(openapiutil.GetEncodeParam(groupId)) + "/actions/removeUsersFromGroup"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("Anonymous"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RemoveUsersFromGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RemoveUsersFromGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 为指定组批量解除账户关联
+//
+// @param request - RemoveUsersFromGroupRequest
+//
+// @return RemoveUsersFromGroupResponse
+func (client *Client) RemoveUsersFromGroup(instanceId *string, applicationId *string, groupId *string, request *RemoveUsersFromGroupRequest) (_result *RemoveUsersFromGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &RemoveUsersFromGroupHeaders{}
+	_result = &RemoveUsersFromGroupResponse{}
+	_body, _err := client.RemoveUsersFromGroupWithOptions(instanceId, applicationId, groupId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Revokes an access token or refresh token.
+//
+// @param request - RevokeTokenRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RevokeTokenResponse
 func (client *Client) RevokeTokenWithOptions(instanceId *string, applicationId *string, request *RevokeTokenRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RevokeTokenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4243,15 +7899,33 @@ func (client *Client) RevokeTokenWithOptions(instanceId *string, applicationId *
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RevokeTokenResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RevokeTokenResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RevokeTokenResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Revokes an access token or refresh token.
+//
+// @param request - RevokeTokenRequest
+//
+// @return RevokeTokenResponse
 func (client *Client) RevokeToken(instanceId *string, applicationId *string, request *RevokeTokenRequest) (_result *RevokeTokenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -4264,6 +7938,17 @@ func (client *Client) RevokeToken(instanceId *string, applicationId *string, req
 	return _result, _err
 }
 
+// Summary:
+//
+// 将指定组织设置为账户主组织，移除旧主组织，加入新主组织。
+//
+// @param request - SetUserPrimaryOrganizationalUnitRequest
+//
+// @param headers - SetUserPrimaryOrganizationalUnitHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetUserPrimaryOrganizationalUnitResponse
 func (client *Client) SetUserPrimaryOrganizationalUnitWithOptions(instanceId *string, applicationId *string, userId *string, request *SetUserPrimaryOrganizationalUnitRequest, headers *SetUserPrimaryOrganizationalUnitHeaders, runtime *util.RuntimeOptions) (_result *SetUserPrimaryOrganizationalUnitResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4298,15 +7983,33 @@ func (client *Client) SetUserPrimaryOrganizationalUnitWithOptions(instanceId *st
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("none"),
 	}
-	_result = &SetUserPrimaryOrganizationalUnitResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetUserPrimaryOrganizationalUnitResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetUserPrimaryOrganizationalUnitResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// 将指定组织设置为账户主组织，移除旧主组织，加入新主组织。
+//
+// @param request - SetUserPrimaryOrganizationalUnitRequest
+//
+// @return SetUserPrimaryOrganizationalUnitResponse
 func (client *Client) SetUserPrimaryOrganizationalUnit(instanceId *string, applicationId *string, userId *string, request *SetUserPrimaryOrganizationalUnitRequest) (_result *SetUserPrimaryOrganizationalUnitResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &SetUserPrimaryOrganizationalUnitHeaders{}
@@ -4319,6 +8022,17 @@ func (client *Client) SetUserPrimaryOrganizationalUnit(instanceId *string, appli
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新账户密码
+//
+// @param request - UpdateUserPasswordRequest
+//
+// @param headers - UpdateUserPasswordHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateUserPasswordResponse
 func (client *Client) UpdateUserPasswordWithOptions(instanceId *string, applicationId *string, userId *string, request *UpdateUserPasswordRequest, headers *UpdateUserPasswordHeaders, runtime *util.RuntimeOptions) (_result *UpdateUserPasswordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4353,15 +8067,33 @@ func (client *Client) UpdateUserPasswordWithOptions(instanceId *string, applicat
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("none"),
 	}
-	_result = &UpdateUserPasswordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateUserPasswordResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateUserPasswordResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// 更新账户密码
+//
+// @param request - UpdateUserPasswordRequest
+//
+// @return UpdateUserPasswordResponse
 func (client *Client) UpdateUserPassword(instanceId *string, applicationId *string, userId *string, request *UpdateUserPasswordRequest) (_result *UpdateUserPasswordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &UpdateUserPasswordHeaders{}
