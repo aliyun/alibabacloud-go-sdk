@@ -48,9 +48,9 @@ func (s *EventMatchRule) SetSuffix(v string) *EventMatchRule {
 }
 
 type AuthorizeEndpointAclRequest struct {
-	// The ACL policy. Valid value:
+	// The ACL policy. Valid values:
 	//
-	// 	- **allow**: indicates that the operation is initiated from an endpoint in CIDR whitelist. (Only allow is supported)
+	// 	- **allow**: indicates that this operation is included in the Cidr whitelist. (Only the allow is supported.)
 	//
 	// This parameter is required.
 	//
@@ -58,13 +58,13 @@ type AuthorizeEndpointAclRequest struct {
 	//
 	// allow
 	AclStrategy *string `json:"AclStrategy,omitempty" xml:"AclStrategy,omitempty"`
-	// The CIDR blocks.
+	// The list of CIDR block.
 	//
 	// This parameter is required.
 	CidrList []*string `json:"CidrList,omitempty" xml:"CidrList,omitempty" type:"Repeated"`
-	// The type of the endpoint. Valid value:
+	// The type of the endpoint. Valid values:
 	//
-	// 	- **public**: indicates public endpoint. (Only public endpoint is supported.)
+	// 	- **public**: indicates public endpoint. (Only the public endpoint is supported.)
 	//
 	// This parameter is required.
 	//
@@ -98,9 +98,9 @@ func (s *AuthorizeEndpointAclRequest) SetEndpointType(v string) *AuthorizeEndpoi
 }
 
 type AuthorizeEndpointAclShrinkRequest struct {
-	// The ACL policy. Valid value:
+	// The ACL policy. Valid values:
 	//
-	// 	- **allow**: indicates that the operation is initiated from an endpoint in CIDR whitelist. (Only allow is supported)
+	// 	- **allow**: indicates that this operation is included in the Cidr whitelist. (Only the allow is supported.)
 	//
 	// This parameter is required.
 	//
@@ -108,13 +108,13 @@ type AuthorizeEndpointAclShrinkRequest struct {
 	//
 	// allow
 	AclStrategy *string `json:"AclStrategy,omitempty" xml:"AclStrategy,omitempty"`
-	// The CIDR blocks.
+	// The list of CIDR block.
 	//
 	// This parameter is required.
 	CidrListShrink *string `json:"CidrList,omitempty" xml:"CidrList,omitempty"`
-	// The type of the endpoint. Valid value:
+	// The type of the endpoint. Valid values:
 	//
-	// 	- **public**: indicates public endpoint. (Only public endpoint is supported.)
+	// 	- **public**: indicates public endpoint. (Only the public endpoint is supported.)
 	//
 	// This parameter is required.
 	//
@@ -148,19 +148,19 @@ func (s *AuthorizeEndpointAclShrinkRequest) SetEndpointType(v string) *Authorize
 }
 
 type AuthorizeEndpointAclResponseBody struct {
-	// The response code.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The message returned.
+	// The returned message.
 	//
 	// example:
 	//
 	// operation success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -242,14 +242,250 @@ func (s *AuthorizeEndpointAclResponse) SetBody(v *AuthorizeEndpointAclResponseBo
 	return s
 }
 
+type CreateEventRuleRequest struct {
+	// This parameter is required.
+	Endpoints []*CreateEventRuleRequestEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
+	// This parameter is required.
+	EventTypes []*string `json:"EventTypes,omitempty" xml:"EventTypes,omitempty" type:"Repeated"`
+	// This parameter is required.
+	MatchRules [][]*EventMatchRule `json:"MatchRules,omitempty" xml:"MatchRules,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// oss
+	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rule-xsXDW
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+}
+
+func (s CreateEventRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEventRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEventRuleRequest) SetEndpoints(v []*CreateEventRuleRequestEndpoints) *CreateEventRuleRequest {
+	s.Endpoints = v
+	return s
+}
+
+func (s *CreateEventRuleRequest) SetEventTypes(v []*string) *CreateEventRuleRequest {
+	s.EventTypes = v
+	return s
+}
+
+func (s *CreateEventRuleRequest) SetMatchRules(v [][]*EventMatchRule) *CreateEventRuleRequest {
+	s.MatchRules = v
+	return s
+}
+
+func (s *CreateEventRuleRequest) SetProductName(v string) *CreateEventRuleRequest {
+	s.ProductName = &v
+	return s
+}
+
+func (s *CreateEventRuleRequest) SetRuleName(v string) *CreateEventRuleRequest {
+	s.RuleName = &v
+	return s
+}
+
+type CreateEventRuleRequestEndpoints struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http
+	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-xxx-queue
+	EndpointValue *string `json:"EndpointValue,omitempty" xml:"EndpointValue,omitempty"`
+}
+
+func (s CreateEventRuleRequestEndpoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEventRuleRequestEndpoints) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEventRuleRequestEndpoints) SetEndpointType(v string) *CreateEventRuleRequestEndpoints {
+	s.EndpointType = &v
+	return s
+}
+
+func (s *CreateEventRuleRequestEndpoints) SetEndpointValue(v string) *CreateEventRuleRequestEndpoints {
+	s.EndpointValue = &v
+	return s
+}
+
+type CreateEventRuleShrinkRequest struct {
+	// This parameter is required.
+	EndpointsShrink *string `json:"Endpoints,omitempty" xml:"Endpoints,omitempty"`
+	// This parameter is required.
+	EventTypesShrink *string `json:"EventTypes,omitempty" xml:"EventTypes,omitempty"`
+	// This parameter is required.
+	MatchRulesShrink *string `json:"MatchRules,omitempty" xml:"MatchRules,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// oss
+	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rule-xsXDW
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+}
+
+func (s CreateEventRuleShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEventRuleShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEventRuleShrinkRequest) SetEndpointsShrink(v string) *CreateEventRuleShrinkRequest {
+	s.EndpointsShrink = &v
+	return s
+}
+
+func (s *CreateEventRuleShrinkRequest) SetEventTypesShrink(v string) *CreateEventRuleShrinkRequest {
+	s.EventTypesShrink = &v
+	return s
+}
+
+func (s *CreateEventRuleShrinkRequest) SetMatchRulesShrink(v string) *CreateEventRuleShrinkRequest {
+	s.MatchRulesShrink = &v
+	return s
+}
+
+func (s *CreateEventRuleShrinkRequest) SetProductName(v string) *CreateEventRuleShrinkRequest {
+	s.ProductName = &v
+	return s
+}
+
+func (s *CreateEventRuleShrinkRequest) SetRuleName(v string) *CreateEventRuleShrinkRequest {
+	s.RuleName = &v
+	return s
+}
+
+type CreateEventRuleResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// rule-xsXDW
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// operation success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 06273500-249F-5863-121D-74D51123****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// Success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateEventRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEventRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEventRuleResponseBody) SetCode(v int64) *CreateEventRuleResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateEventRuleResponseBody) SetData(v string) *CreateEventRuleResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateEventRuleResponseBody) SetMessage(v string) *CreateEventRuleResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateEventRuleResponseBody) SetRequestId(v string) *CreateEventRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateEventRuleResponseBody) SetStatus(v string) *CreateEventRuleResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *CreateEventRuleResponseBody) SetSuccess(v bool) *CreateEventRuleResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateEventRuleResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateEventRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateEventRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEventRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEventRuleResponse) SetHeaders(v map[string]*string) *CreateEventRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateEventRuleResponse) SetStatusCode(v int32) *CreateEventRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateEventRuleResponse) SetBody(v *CreateEventRuleResponseBody) *CreateEventRuleResponse {
+	s.Body = v
+	return s
+}
+
 type CreateQueueRequest struct {
 	// The period after which all messages sent to the queue are consumed. Valid values: 0 to 604800. Unit: seconds. Default value: 0
 	//
 	// example:
 	//
 	// 0
-	DelaySeconds *int64                       `json:"DelaySeconds,omitempty" xml:"DelaySeconds,omitempty"`
-	DlqPolicy    *CreateQueueRequestDlqPolicy `json:"DlqPolicy,omitempty" xml:"DlqPolicy,omitempty" type:"Struct"`
+	DelaySeconds *int64 `json:"DelaySeconds,omitempty" xml:"DelaySeconds,omitempty"`
+	// The dead-letter queue policy.
+	DlqPolicy *CreateQueueRequestDlqPolicy `json:"DlqPolicy,omitempty" xml:"DlqPolicy,omitempty" type:"Struct"`
 	// Specifies whether to enable the log management feature. Valid values:
 	//
 	// 	- true: enabled.
@@ -268,7 +504,7 @@ type CreateQueueRequest struct {
 	//
 	// 65536
 	MaximumMessageSize *int64 `json:"MaximumMessageSize,omitempty" xml:"MaximumMessageSize,omitempty"`
-	// The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is received. Valid values: 60 to 604800. Unit: seconds. Default value: 345600.
+	// The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is consumed. Valid values: 60 to 604800. Unit: seconds. Default value: 345600.
 	//
 	// example:
 	//
@@ -287,8 +523,9 @@ type CreateQueueRequest struct {
 	// example:
 	//
 	// 06273500-249F-5863-121D-74D51123****
-	QueueName *string                  `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
-	Tag       []*CreateQueueRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	// The tags.
+	Tag []*CreateQueueRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: 1 to 43200. Unit: seconds. Default value: 30.
 	//
 	// example:
@@ -351,9 +588,24 @@ func (s *CreateQueueRequest) SetVisibilityTimeout(v int64) *CreateQueueRequest {
 }
 
 type CreateQueueRequestDlqPolicy struct {
+	// The queue to which dead-letter messages are delivered.
+	//
+	// example:
+	//
+	// deadLetterQueue
 	DeadLetterTargetQueue *string `json:"DeadLetterTargetQueue,omitempty" xml:"DeadLetterTargetQueue,omitempty"`
-	Enabled               *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	MaxReceiveCount       *int32  `json:"MaxReceiveCount,omitempty" xml:"MaxReceiveCount,omitempty"`
+	// Specifies whether to enable the dead-letter message delivery.
+	//
+	// example:
+	//
+	// true
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The maximum number of retries.
+	//
+	// example:
+	//
+	// 3
+	MaxReceiveCount *int32 `json:"MaxReceiveCount,omitempty" xml:"MaxReceiveCount,omitempty"`
 }
 
 func (s CreateQueueRequestDlqPolicy) String() string {
@@ -380,10 +632,14 @@ func (s *CreateQueueRequestDlqPolicy) SetMaxReceiveCount(v int32) *CreateQueueRe
 }
 
 type CreateQueueRequestTag struct {
+	// The key of the tag.
+	//
 	// example:
 	//
 	// tag1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// test
@@ -414,7 +670,8 @@ type CreateQueueShrinkRequest struct {
 	// example:
 	//
 	// 0
-	DelaySeconds    *int64  `json:"DelaySeconds,omitempty" xml:"DelaySeconds,omitempty"`
+	DelaySeconds *int64 `json:"DelaySeconds,omitempty" xml:"DelaySeconds,omitempty"`
+	// The dead-letter queue policy.
 	DlqPolicyShrink *string `json:"DlqPolicy,omitempty" xml:"DlqPolicy,omitempty"`
 	// Specifies whether to enable the log management feature. Valid values:
 	//
@@ -434,7 +691,7 @@ type CreateQueueShrinkRequest struct {
 	//
 	// 65536
 	MaximumMessageSize *int64 `json:"MaximumMessageSize,omitempty" xml:"MaximumMessageSize,omitempty"`
-	// The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is received. Valid values: 60 to 604800. Unit: seconds. Default value: 345600.
+	// The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is consumed. Valid values: 60 to 604800. Unit: seconds. Default value: 345600.
 	//
 	// example:
 	//
@@ -453,8 +710,9 @@ type CreateQueueShrinkRequest struct {
 	// example:
 	//
 	// 06273500-249F-5863-121D-74D51123****
-	QueueName *string                        `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
-	Tag       []*CreateQueueShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	// The tags.
+	Tag []*CreateQueueShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: 1 to 43200. Unit: seconds. Default value: 30.
 	//
 	// example:
@@ -517,10 +775,14 @@ func (s *CreateQueueShrinkRequest) SetVisibilityTimeout(v int64) *CreateQueueShr
 }
 
 type CreateQueueShrinkRequestTag struct {
+	// The key of the tag.
+	//
 	// example:
 	//
 	// tag1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// test
@@ -919,6 +1181,124 @@ func (s *CreateTopicResponse) SetBody(v *CreateTopicResponseBody) *CreateTopicRe
 	return s
 }
 
+type DeleteEventRuleRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// oss
+	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rule-xsXDW
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+}
+
+func (s DeleteEventRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEventRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEventRuleRequest) SetProductName(v string) *DeleteEventRuleRequest {
+	s.ProductName = &v
+	return s
+}
+
+func (s *DeleteEventRuleRequest) SetRuleName(v string) *DeleteEventRuleRequest {
+	s.RuleName = &v
+	return s
+}
+
+type DeleteEventRuleResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// operation success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 06273500-249F-5863-121D-74D51123****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// Success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteEventRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEventRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEventRuleResponseBody) SetCode(v int64) *DeleteEventRuleResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteEventRuleResponseBody) SetMessage(v string) *DeleteEventRuleResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteEventRuleResponseBody) SetRequestId(v string) *DeleteEventRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteEventRuleResponseBody) SetStatus(v string) *DeleteEventRuleResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *DeleteEventRuleResponseBody) SetSuccess(v bool) *DeleteEventRuleResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteEventRuleResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteEventRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteEventRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEventRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEventRuleResponse) SetHeaders(v map[string]*string) *DeleteEventRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteEventRuleResponse) SetStatusCode(v int32) *DeleteEventRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteEventRuleResponse) SetBody(v *DeleteEventRuleResponseBody) *DeleteEventRuleResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteQueueRequest struct {
 	// The name of the queue.
 	//
@@ -1212,9 +1592,9 @@ func (s *DeleteTopicResponse) SetBody(v *DeleteTopicResponseBody) *DeleteTopicRe
 }
 
 type DisableEndpointRequest struct {
-	// The type of the endpoint. Valid value:
+	// The type of the endpoint. Value:
 	//
-	// 	- **public**: indicates a public endpoint. (Only public endpoint is supported.)
+	// 	- **public**: indicates an public endpoint. (Only the public endpoint is supported.)
 	//
 	// This parameter is required.
 	//
@@ -1238,19 +1618,19 @@ func (s *DisableEndpointRequest) SetEndpointType(v string) *DisableEndpointReque
 }
 
 type DisableEndpointResponseBody struct {
-	// The response code.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The message returned.
+	// The returned message.
 	//
 	// example:
 	//
 	// operation success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -1335,7 +1715,7 @@ func (s *DisableEndpointResponse) SetBody(v *DisableEndpointResponseBody) *Disab
 type EnableEndpointRequest struct {
 	// The type of the endpoint. Valid value:
 	//
-	// 	- **public**: indicates a public endpoint. (Only public endpoint is supported.)
+	// 	- **public**: indicates public endpoint. (Only the public is supported.)
 	//
 	// This parameter is required.
 	//
@@ -1359,19 +1739,19 @@ func (s *EnableEndpointRequest) SetEndpointType(v string) *EnableEndpointRequest
 }
 
 type EnableEndpointResponseBody struct {
-	// The response code.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The message returned.
+	// The returned message.
 	//
 	// example:
 	//
 	// operation success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -1454,9 +1834,9 @@ func (s *EnableEndpointResponse) SetBody(v *EnableEndpointResponseBody) *EnableE
 }
 
 type GetEndpointAttributeRequest struct {
-	// The type of the endpoint. Valid value:
+	// The type of the endpoint. Value:
 	//
-	// 	- **public**: indicates a public endpoint. (Only public endpoint is supported.)
+	// 	- **public**: indicates public endpoint. (Only the public is supported.)
 	//
 	// This parameter is required.
 	//
@@ -1480,15 +1860,15 @@ func (s *GetEndpointAttributeRequest) SetEndpointType(v string) *GetEndpointAttr
 }
 
 type GetEndpointAttributeResponseBody struct {
-	// The response code.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The response data.
 	Data *GetEndpointAttributeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned.
+	// The returned message.
 	//
 	// example:
 	//
@@ -1553,7 +1933,7 @@ func (s *GetEndpointAttributeResponseBody) SetSuccess(v bool) *GetEndpointAttrib
 }
 
 type GetEndpointAttributeResponseBodyData struct {
-	// The CIDR blocks.
+	// The list of CIDR block.
 	CidrList []*GetEndpointAttributeResponseBodyDataCidrList `json:"CidrList,omitempty" xml:"CidrList,omitempty" type:"Repeated"`
 	// Specifies whether the endpoint is enabled.
 	//
@@ -1582,9 +1962,9 @@ func (s *GetEndpointAttributeResponseBodyData) SetEndpointEnabled(v bool) *GetEn
 }
 
 type GetEndpointAttributeResponseBodyDataCidrList struct {
-	// The ACL policy. Valid value:
+	// The ACL policy. Valid values:
 	//
-	// 	- **allow**: indicates that the current endpoint allows access from the corresponding CIDR block. (Only allow is supported)
+	// 	- **allow**: indicates that the current endpoint allows access from the corresponding CIDR block. (Only allow is supported.)
 	//
 	// example:
 	//
@@ -1596,7 +1976,7 @@ type GetEndpointAttributeResponseBodyDataCidrList struct {
 	//
 	// 172.18.0.0/24
 	Cidr *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
-	// The time when the list was created.
+	// The creation time.
 	//
 	// example:
 	//
@@ -1664,8 +2044,9 @@ type GetQueueAttributesRequest struct {
 	// example:
 	//
 	// demo-queue
-	QueueName *string                         `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
-	Tag       []*GetQueueAttributesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	// The tags.
+	Tag []*GetQueueAttributesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s GetQueueAttributesRequest) String() string {
@@ -1687,10 +2068,14 @@ func (s *GetQueueAttributesRequest) SetTag(v []*GetQueueAttributesRequestTag) *G
 }
 
 type GetQueueAttributesRequestTag struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// tag1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// test
@@ -1812,8 +2197,9 @@ type GetQueueAttributesResponseBodyData struct {
 	// example:
 	//
 	// 30
-	DelaySeconds *int64                                       `json:"DelaySeconds,omitempty" xml:"DelaySeconds,omitempty"`
-	DlqPolicy    *GetQueueAttributesResponseBodyDataDlqPolicy `json:"DlqPolicy,omitempty" xml:"DlqPolicy,omitempty" type:"Struct"`
+	DelaySeconds *int64 `json:"DelaySeconds,omitempty" xml:"DelaySeconds,omitempty"`
+	// The dead-letter queue policy.
+	DlqPolicy *GetQueueAttributesResponseBodyDataDlqPolicy `json:"DlqPolicy,omitempty" xml:"DlqPolicy,omitempty" type:"Struct"`
 	// The total number of messages that are in the Inactive state in the queue. The value is an approximate value. Default value: 0. We recommend that you do not use the return value and that you call CloudMonitor API operations to query the metric value.
 	//
 	// example:
@@ -1859,8 +2245,9 @@ type GetQueueAttributesResponseBodyData struct {
 	// example:
 	//
 	// demo-queue
-	QueueName *string                                   `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
-	Tags      []*GetQueueAttributesResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	// The tag.
+	Tags []*GetQueueAttributesResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: 1 to 43200. Unit: seconds. Default value: 30.
 	//
 	// example:
@@ -1948,9 +2335,24 @@ func (s *GetQueueAttributesResponseBodyData) SetVisibilityTimeout(v int64) *GetQ
 }
 
 type GetQueueAttributesResponseBodyDataDlqPolicy struct {
+	// The queue to which dead-letter messages are delivered.
+	//
+	// example:
+	//
+	// deadLetterTargetQueue
 	DeadLetterTargetQueue *string `json:"DeadLetterTargetQueue,omitempty" xml:"DeadLetterTargetQueue,omitempty"`
-	Enabled               *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	MaxReceiveCount       *string `json:"MaxReceiveCount,omitempty" xml:"MaxReceiveCount,omitempty"`
+	// Specifies whether to enable the dead-letter message delivery.
+	//
+	// example:
+	//
+	// true
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The maximum number of retries.
+	//
+	// example:
+	//
+	// 3
+	MaxReceiveCount *string `json:"MaxReceiveCount,omitempty" xml:"MaxReceiveCount,omitempty"`
 }
 
 func (s GetQueueAttributesResponseBodyDataDlqPolicy) String() string {
@@ -1977,10 +2379,14 @@ func (s *GetQueueAttributesResponseBodyDataDlqPolicy) SetMaxReceiveCount(v strin
 }
 
 type GetQueueAttributesResponseBodyDataTags struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// tag1
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// test
@@ -2078,7 +2484,7 @@ type GetSubscriptionAttributesResponseBody struct {
 	//
 	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The data returned.
 	Data *GetSubscriptionAttributesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
@@ -2150,8 +2556,9 @@ type GetSubscriptionAttributesResponseBodyData struct {
 	// example:
 	//
 	// 1449554806
-	CreateTime *int64                                              `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DlqPolicy  *GetSubscriptionAttributesResponseBodyDataDlqPolicy `json:"DlqPolicy,omitempty" xml:"DlqPolicy,omitempty" type:"Struct"`
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The dead-letter queue policy.
+	DlqPolicy *GetSubscriptionAttributesResponseBodyDataDlqPolicy `json:"DlqPolicy,omitempty" xml:"DlqPolicy,omitempty" type:"Struct"`
 	// The endpoint to which the messages are pushed.
 	//
 	// example:
@@ -2271,8 +2678,18 @@ func (s *GetSubscriptionAttributesResponseBodyData) SetTopicOwner(v string) *Get
 }
 
 type GetSubscriptionAttributesResponseBodyDataDlqPolicy struct {
+	// The queue to which dead-letter messages are delivered.
+	//
+	// example:
+	//
+	// deadLetterTargetQueue
 	DeadLetterTargetQueue *string `json:"DeadLetterTargetQueue,omitempty" xml:"DeadLetterTargetQueue,omitempty"`
-	Enabled               *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// Specifies whether to enable the dead-letter message delivery.
+	//
+	// example:
+	//
+	// true
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 }
 
 func (s GetSubscriptionAttributesResponseBodyDataDlqPolicy) String() string {
@@ -2633,8 +3050,9 @@ type ListQueueRequest struct {
 	// example:
 	//
 	// demo-queue
-	QueueName *string                `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
-	Tag       []*ListQueueRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	// The tags.
+	Tag []*ListQueueRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListQueueRequest) String() string {
@@ -2666,10 +3084,14 @@ func (s *ListQueueRequest) SetTag(v []*ListQueueRequestTag) *ListQueueRequest {
 }
 
 type ListQueueRequestTag struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// tag1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// test
@@ -2841,7 +3263,7 @@ func (s *ListQueueResponseBodyData) SetTotal(v int64) *ListQueueResponseBodyData
 }
 
 type ListQueueResponseBodyDataPageData struct {
-	// The total number of messages that are in the Active state in the queue. The value is an approximate value. Default value: 0. We recommend that you do not use the return value and that you call CloudMonitor API operations to query the metric value.
+	// The total number of messages that are in the Active state in the queue. The value is an approximate number. Default value: 0. We recommend that you do not use the return value and that you call CloudMonitor API operations to query the metric value.
 	//
 	// example:
 	//
@@ -2853,7 +3275,7 @@ type ListQueueResponseBodyDataPageData struct {
 	//
 	// 1250700999
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The total number of messages that are in the Delayed state in the queue. The value is an approximate value. Default value: 0. We recommend that you do not use the return value and that you call CloudMonitor API operations to query the metric value.
+	// The total number of the messages that are in the Delayed state in the queue. The value is an approximate number. Default value: 0. We recommend that you do not use the return value and that you call CloudMonitor API operations to query the metric value.
 	//
 	// example:
 	//
@@ -2864,9 +3286,10 @@ type ListQueueResponseBodyDataPageData struct {
 	// example:
 	//
 	// 30
-	DelaySeconds *int64                                      `json:"DelaySeconds,omitempty" xml:"DelaySeconds,omitempty"`
-	DlqPolicy    *ListQueueResponseBodyDataPageDataDlqPolicy `json:"DlqPolicy,omitempty" xml:"DlqPolicy,omitempty" type:"Struct"`
-	// The total number of messages that are in the Inactive state in the queue. The value is an approximate value. Default value: 0. We recommend that you do not use the return value and that you call CloudMonitor API operations to query the metric value.
+	DelaySeconds *int64 `json:"DelaySeconds,omitempty" xml:"DelaySeconds,omitempty"`
+	// The dead-letter queue policy.
+	DlqPolicy *ListQueueResponseBodyDataPageDataDlqPolicy `json:"DlqPolicy,omitempty" xml:"DlqPolicy,omitempty" type:"Struct"`
+	// The total number of the messages that are in the Inactive state in the queue. The value is an approximate number. Default value: 0. We recommend that you do not use the return value and that you call CloudMonitor API operations to query the metric value.
 	//
 	// example:
 	//
@@ -3001,9 +3424,24 @@ func (s *ListQueueResponseBodyDataPageData) SetVisibilityTimeout(v int64) *ListQ
 }
 
 type ListQueueResponseBodyDataPageDataDlqPolicy struct {
+	// The queue to which dead-letter messages are delivered.
+	//
+	// example:
+	//
+	// deadLetterTargetQueue
 	DeadLetterTargetQueue *string `json:"DeadLetterTargetQueue,omitempty" xml:"DeadLetterTargetQueue,omitempty"`
-	Enabled               *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	MaxReceiveCount       *string `json:"MaxReceiveCount,omitempty" xml:"MaxReceiveCount,omitempty"`
+	// Specifies whether to enable the dead-letter message delivery.
+	//
+	// example:
+	//
+	// true
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The maximum number of retries.
+	//
+	// example:
+	//
+	// 3
+	MaxReceiveCount *string `json:"MaxReceiveCount,omitempty" xml:"MaxReceiveCount,omitempty"`
 }
 
 func (s ListQueueResponseBodyDataPageDataDlqPolicy) String() string {
@@ -3153,7 +3591,7 @@ type ListSubscriptionByTopicResponseBody struct {
 	//
 	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The data returned.
 	Data *ListSubscriptionByTopicResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
@@ -3298,8 +3736,9 @@ type ListSubscriptionByTopicResponseBodyDataPageData struct {
 	// example:
 	//
 	// 1449554806
-	CreateTime *int64                                                    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DlqPolicy  *ListSubscriptionByTopicResponseBodyDataPageDataDlqPolicy `json:"DlqPolicy,omitempty" xml:"DlqPolicy,omitempty" type:"Struct"`
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The dead-letter queue policy.
+	DlqPolicy *ListSubscriptionByTopicResponseBodyDataPageDataDlqPolicy `json:"DlqPolicy,omitempty" xml:"DlqPolicy,omitempty" type:"Struct"`
 	// The endpoint to which the messages are pushed.
 	//
 	// example:
@@ -3419,8 +3858,18 @@ func (s *ListSubscriptionByTopicResponseBodyDataPageData) SetTopicOwner(v string
 }
 
 type ListSubscriptionByTopicResponseBodyDataPageDataDlqPolicy struct {
+	// The queue to which dead-letter messages are delivered.
+	//
+	// example:
+	//
+	// dead-letter-queue
 	DeadLetterTargetQueue *string `json:"DeadLetterTargetQueue,omitempty" xml:"DeadLetterTargetQueue,omitempty"`
-	Enabled               *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// Specifies whether to enable the dead-letter message delivery.
+	//
+	// example:
+	//
+	// true
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 }
 
 func (s ListSubscriptionByTopicResponseBodyDataPageDataDlqPolicy) String() string {
@@ -3862,9 +4311,9 @@ func (s *ListTopicResponse) SetBody(v *ListTopicResponseBody) *ListTopicResponse
 }
 
 type RevokeEndpointAclRequest struct {
-	// The ACL policy. Valid value:
+	// The ACL policy. Value:
 	//
-	// 	- **allow**: indicates that the operation is initiated from an endpoint in CIDR whitelist. (Only allow is supported)
+	// 	- **allow**: indicates that this operation is included in the Cidr whitelist. (Only the allow is supported.)
 	//
 	// This parameter is required.
 	//
@@ -3872,13 +4321,13 @@ type RevokeEndpointAclRequest struct {
 	//
 	// allow
 	AclStrategy *string `json:"AclStrategy,omitempty" xml:"AclStrategy,omitempty"`
-	// The CIDR blocks.
+	// The list of CIDR block.
 	//
 	// This parameter is required.
 	CidrList []*string `json:"CidrList,omitempty" xml:"CidrList,omitempty" type:"Repeated"`
-	// The type of the endpoint. Valid value:
+	// The type of the endpoint. Valid values:
 	//
-	// 	- **public**: indicates an public endpoint. (Only public endpoint is supported.)
+	// 	- **public**: indicates public endpoint. (Only the public is supported.)
 	//
 	// This parameter is required.
 	//
@@ -3912,9 +4361,9 @@ func (s *RevokeEndpointAclRequest) SetEndpointType(v string) *RevokeEndpointAclR
 }
 
 type RevokeEndpointAclShrinkRequest struct {
-	// The ACL policy. Valid value:
+	// The ACL policy. Value:
 	//
-	// 	- **allow**: indicates that the operation is initiated from an endpoint in CIDR whitelist. (Only allow is supported)
+	// 	- **allow**: indicates that this operation is included in the Cidr whitelist. (Only the allow is supported.)
 	//
 	// This parameter is required.
 	//
@@ -3922,13 +4371,13 @@ type RevokeEndpointAclShrinkRequest struct {
 	//
 	// allow
 	AclStrategy *string `json:"AclStrategy,omitempty" xml:"AclStrategy,omitempty"`
-	// The CIDR blocks.
+	// The list of CIDR block.
 	//
 	// This parameter is required.
 	CidrListShrink *string `json:"CidrList,omitempty" xml:"CidrList,omitempty"`
-	// The type of the endpoint. Valid value:
+	// The type of the endpoint. Valid values:
 	//
-	// 	- **public**: indicates an public endpoint. (Only public endpoint is supported.)
+	// 	- **public**: indicates public endpoint. (Only the public is supported.)
 	//
 	// This parameter is required.
 	//
@@ -3962,19 +4411,19 @@ func (s *RevokeEndpointAclShrinkRequest) SetEndpointType(v string) *RevokeEndpoi
 }
 
 type RevokeEndpointAclResponseBody struct {
-	// The response code.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The message returned.
+	// The returned message.
 	//
 	// example:
 	//
 	// operation success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -4062,8 +4511,9 @@ type SetQueueAttributesRequest struct {
 	// example:
 	//
 	// 0
-	DelaySeconds *int64                              `json:"DelaySeconds,omitempty" xml:"DelaySeconds,omitempty"`
-	DlqPolicy    *SetQueueAttributesRequestDlqPolicy `json:"DlqPolicy,omitempty" xml:"DlqPolicy,omitempty" type:"Struct"`
+	DelaySeconds *int64 `json:"DelaySeconds,omitempty" xml:"DelaySeconds,omitempty"`
+	// The dead-letter queue policy.
+	DlqPolicy *SetQueueAttributesRequestDlqPolicy `json:"DlqPolicy,omitempty" xml:"DlqPolicy,omitempty" type:"Struct"`
 	// Specifies whether to enable the log management feature. Valid values:
 	//
 	// 	- true: enabled.
@@ -4157,9 +4607,24 @@ func (s *SetQueueAttributesRequest) SetVisibilityTimeout(v int64) *SetQueueAttri
 }
 
 type SetQueueAttributesRequestDlqPolicy struct {
+	// The queue to which dead-letter messages are delivered.
+	//
+	// example:
+	//
+	// deadLetterTargetQueue
 	DeadLetterTargetQueue *string `json:"DeadLetterTargetQueue,omitempty" xml:"DeadLetterTargetQueue,omitempty"`
-	Enabled               *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	MaxReceiveCount       *int32  `json:"MaxReceiveCount,omitempty" xml:"MaxReceiveCount,omitempty"`
+	// Specifies whether to enable the dead-letter message delivery.
+	//
+	// example:
+	//
+	// true
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The maximum number of retries.
+	//
+	// example:
+	//
+	// 3
+	MaxReceiveCount *int32 `json:"MaxReceiveCount,omitempty" xml:"MaxReceiveCount,omitempty"`
 }
 
 func (s SetQueueAttributesRequestDlqPolicy) String() string {
@@ -4191,7 +4656,8 @@ type SetQueueAttributesShrinkRequest struct {
 	// example:
 	//
 	// 0
-	DelaySeconds    *int64  `json:"DelaySeconds,omitempty" xml:"DelaySeconds,omitempty"`
+	DelaySeconds *int64 `json:"DelaySeconds,omitempty" xml:"DelaySeconds,omitempty"`
+	// The dead-letter queue policy.
 	DlqPolicyShrink *string `json:"DlqPolicy,omitempty" xml:"DlqPolicy,omitempty"`
 	// Specifies whether to enable the log management feature. Valid values:
 	//
@@ -4428,6 +4894,7 @@ func (s *SetQueueAttributesResponse) SetBody(v *SetQueueAttributesResponseBody) 
 }
 
 type SetSubscriptionAttributesRequest struct {
+	// The dead-letter queue policy.
 	DlqPolicy *SetSubscriptionAttributesRequestDlqPolicy `json:"DlqPolicy,omitempty" xml:"DlqPolicy,omitempty" type:"Struct"`
 	// The retry policy that is applied if an error occurs when Message Service (MNS) pushes messages to the endpoint. Valid values:
 	//
@@ -4486,8 +4953,18 @@ func (s *SetSubscriptionAttributesRequest) SetTopicName(v string) *SetSubscripti
 }
 
 type SetSubscriptionAttributesRequestDlqPolicy struct {
+	// The queue to which dead-letter messages are delivered.
+	//
+	// example:
+	//
+	// deadLetterTargetQueue
 	DeadLetterTargetQueue *string `json:"DeadLetterTargetQueue,omitempty" xml:"DeadLetterTargetQueue,omitempty"`
-	Enabled               *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// Specifies whether to enable the dead-letter message delivery.
+	//
+	// example:
+	//
+	// true
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 }
 
 func (s SetSubscriptionAttributesRequestDlqPolicy) String() string {
@@ -4509,6 +4986,7 @@ func (s *SetSubscriptionAttributesRequestDlqPolicy) SetEnabled(v bool) *SetSubsc
 }
 
 type SetSubscriptionAttributesShrinkRequest struct {
+	// The dead-letter queue policy.
 	DlqPolicyShrink *string `json:"DlqPolicy,omitempty" xml:"DlqPolicy,omitempty"`
 	// The retry policy that is applied if an error occurs when Message Service (MNS) pushes messages to the endpoint. Valid values:
 	//
@@ -4901,6 +5379,7 @@ func (s *SetTopicAttributesResponse) SetBody(v *SetTopicAttributesResponseBody) 
 }
 
 type SubscribeRequest struct {
+	// The dead-letter queue policy.
 	DlqPolicy *SubscribeRequestDlqPolicy `json:"DlqPolicy,omitempty" xml:"DlqPolicy,omitempty" type:"Struct"`
 	// The receiver endpoint. The format of the endpoint varies based on the terminal type.
 	//
@@ -5035,8 +5514,18 @@ func (s *SubscribeRequest) SetTopicName(v string) *SubscribeRequest {
 }
 
 type SubscribeRequestDlqPolicy struct {
+	// The queue to which dead-letter messages are delivered.
+	//
+	// example:
+	//
+	// deadLetterTargetQueue
 	DeadLetterTargetQueue *string `json:"DeadLetterTargetQueue,omitempty" xml:"DeadLetterTargetQueue,omitempty"`
-	Enabled               *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// Specifies whether to enable the dead-letter message delivery.
+	//
+	// example:
+	//
+	// true
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 }
 
 func (s SubscribeRequestDlqPolicy) String() string {
@@ -5058,6 +5547,7 @@ func (s *SubscribeRequestDlqPolicy) SetEnabled(v bool) *SubscribeRequestDlqPolic
 }
 
 type SubscribeShrinkRequest struct {
+	// The dead-letter queue policy.
 	DlqPolicyShrink *string `json:"DlqPolicy,omitempty" xml:"DlqPolicy,omitempty"`
 	// The receiver endpoint. The format of the endpoint varies based on the terminal type.
 	//
@@ -5525,7 +6015,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Adds one or more ACLrules for an endpoint of a specified type.
+// You can call this operation to add one or more rules of access control lists (ACLs) for the endpoint of a type.
 //
 // @param tmpReq - AuthorizeEndpointAclRequest
 //
@@ -5592,7 +6082,7 @@ func (client *Client) AuthorizeEndpointAclWithOptions(tmpReq *AuthorizeEndpointA
 
 // Summary:
 //
-// Adds one or more ACLrules for an endpoint of a specified type.
+// You can call this operation to add one or more rules of access control lists (ACLs) for the endpoint of a type.
 //
 // @param request - AuthorizeEndpointAclRequest
 //
@@ -5601,6 +6091,107 @@ func (client *Client) AuthorizeEndpointAcl(request *AuthorizeEndpointAclRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &AuthorizeEndpointAclResponse{}
 	_body, _err := client.AuthorizeEndpointAclWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建事件规则
+//
+// @param tmpReq - CreateEventRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateEventRuleResponse
+func (client *Client) CreateEventRuleWithOptions(tmpReq *CreateEventRuleRequest, runtime *util.RuntimeOptions) (_result *CreateEventRuleResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateEventRuleShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Endpoints)) {
+		request.EndpointsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Endpoints, tea.String("Endpoints"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.EventTypes)) {
+		request.EventTypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EventTypes, tea.String("EventTypes"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.MatchRules)) {
+		request.MatchRulesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MatchRules, tea.String("MatchRules"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndpointsShrink)) {
+		query["Endpoints"] = request.EndpointsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EventTypesShrink)) {
+		query["EventTypes"] = request.EventTypesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MatchRulesShrink)) {
+		query["MatchRules"] = request.MatchRulesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductName)) {
+		query["ProductName"] = request.ProductName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
+		query["RuleName"] = request.RuleName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateEventRule"),
+		Version:     tea.String("2022-01-19"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateEventRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateEventRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 创建事件规则
+//
+// @param request - CreateEventRuleRequest
+//
+// @return CreateEventRuleResponse
+func (client *Client) CreateEventRule(request *CreateEventRuleRequest) (_result *CreateEventRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateEventRuleResponse{}
+	_body, _err := client.CreateEventRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5804,6 +6395,81 @@ func (client *Client) CreateTopic(request *CreateTopicRequest) (_result *CreateT
 
 // Summary:
 //
+// 删除事件规则
+//
+// @param request - DeleteEventRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteEventRuleResponse
+func (client *Client) DeleteEventRuleWithOptions(request *DeleteEventRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteEventRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ProductName)) {
+		query["ProductName"] = request.ProductName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
+		query["RuleName"] = request.RuleName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteEventRule"),
+		Version:     tea.String("2022-01-19"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteEventRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteEventRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 删除事件规则
+//
+// @param request - DeleteEventRuleRequest
+//
+// @return DeleteEventRuleResponse
+func (client *Client) DeleteEventRule(request *DeleteEventRuleRequest) (_result *DeleteEventRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteEventRuleResponse{}
+	_body, _err := client.DeleteEventRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a queue.
 //
 // @param request - DeleteQueueRequest
@@ -5946,7 +6612,7 @@ func (client *Client) DeleteTopic(request *DeleteTopicRequest) (_result *DeleteT
 
 // Summary:
 //
-// You can call this operation to disable an endpoint of a specified type. After the endpoint is disabled, requests from the endpoint are blocked and an error is returned.
+// You can call this operation to disenable the endpoint of a type. After the endpoint is disabled, all requests from the endpoint are blocked and an error is returned.
 //
 // @param request - DisableEndpointRequest
 //
@@ -5999,7 +6665,7 @@ func (client *Client) DisableEndpointWithOptions(request *DisableEndpointRequest
 
 // Summary:
 //
-// You can call this operation to disable an endpoint of a specified type. After the endpoint is disabled, requests from the endpoint are blocked and an error is returned.
+// You can call this operation to disenable the endpoint of a type. After the endpoint is disabled, all requests from the endpoint are blocked and an error is returned.
 //
 // @param request - DisableEndpointRequest
 //
@@ -6017,7 +6683,7 @@ func (client *Client) DisableEndpoint(request *DisableEndpointRequest) (_result 
 
 // Summary:
 //
-// You can call this operation to enable an endpoint of a specified type. If the endpoint is enabled, requests from the endpoint that are included in the access control lists (ACLs) are not blocked.
+// You can call this operation to enable the endpoint of a type. If the endpoint is enabled, requests from the endpoint that are included in the access control lists (ACLs) are not blocked.
 //
 // @param request - EnableEndpointRequest
 //
@@ -6070,7 +6736,7 @@ func (client *Client) EnableEndpointWithOptions(request *EnableEndpointRequest, 
 
 // Summary:
 //
-// You can call this operation to enable an endpoint of a specified type. If the endpoint is enabled, requests from the endpoint that are included in the access control lists (ACLs) are not blocked.
+// You can call this operation to enable the endpoint of a type. If the endpoint is enabled, requests from the endpoint that are included in the access control lists (ACLs) are not blocked.
 //
 // @param request - EnableEndpointRequest
 //
@@ -6633,7 +7299,7 @@ func (client *Client) ListTopic(request *ListTopicRequest) (_result *ListTopicRe
 
 // Summary:
 //
-// Deletes one or more ACLs from an endpoint of a specified type.
+// You can call this operation to delete one or more rules of access control lists (ACLs) for the endpoint of a type.
 //
 // @param tmpReq - RevokeEndpointAclRequest
 //
@@ -6700,7 +7366,7 @@ func (client *Client) RevokeEndpointAclWithOptions(tmpReq *RevokeEndpointAclRequ
 
 // Summary:
 //
-// Deletes one or more ACLs from an endpoint of a specified type.
+// You can call this operation to delete one or more rules of access control lists (ACLs) for the endpoint of a type.
 //
 // @param request - RevokeEndpointAclRequest
 //
