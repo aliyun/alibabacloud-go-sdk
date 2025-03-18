@@ -23303,7 +23303,8 @@ type DescribeDatasetListRequest struct {
 	// example:
 	//
 	// 4add6a61804e47858266883e********
-	DatasetIds *string `json:"DatasetIds,omitempty" xml:"DatasetIds,omitempty"`
+	DatasetIds  *string `json:"DatasetIds,omitempty" xml:"DatasetIds,omitempty"`
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
 	// The number of the page to return. Pages start from page 1. Default value: 1.
 	//
 	// example:
@@ -23331,6 +23332,11 @@ func (s DescribeDatasetListRequest) GoString() string {
 
 func (s *DescribeDatasetListRequest) SetDatasetIds(v string) *DescribeDatasetListRequest {
 	s.DatasetIds = &v
+	return s
+}
+
+func (s *DescribeDatasetListRequest) SetDatasetName(v string) *DescribeDatasetListRequest {
+	s.DatasetName = &v
 	return s
 }
 
@@ -58786,6 +58792,10 @@ func (client *Client) DescribeDatasetListWithOptions(request *DescribeDatasetLis
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DatasetIds)) {
 		query["DatasetIds"] = request.DatasetIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
+		query["DatasetName"] = request.DatasetName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
