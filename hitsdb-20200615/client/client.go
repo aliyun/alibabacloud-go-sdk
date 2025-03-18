@@ -5587,7 +5587,8 @@ type GetLindormInstanceResponseBodyEngineList struct {
 	// example:
 	//
 	// 8GB
-	MemorySize *string `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
+	MemorySize    *string `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
+	Specification *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
 	// The version of the engine.
 	//
 	// example:
@@ -5631,6 +5632,11 @@ func (s *GetLindormInstanceResponseBodyEngineList) SetLatestVersion(v string) *G
 
 func (s *GetLindormInstanceResponseBodyEngineList) SetMemorySize(v string) *GetLindormInstanceResponseBodyEngineList {
 	s.MemorySize = &v
+	return s
+}
+
+func (s *GetLindormInstanceResponseBodyEngineList) SetSpecification(v string) *GetLindormInstanceResponseBodyEngineList {
+	s.Specification = &v
 	return s
 }
 
