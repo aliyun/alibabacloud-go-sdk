@@ -2524,10 +2524,12 @@ func (s *RunDataAnalysisResponseBodyDataVisualization) SetText(v string) *RunDat
 }
 
 type RunDataAnalysisResponseBodyDataVisualizationData struct {
+	Option *string `json:"option,omitempty" xml:"option,omitempty"`
 	// example:
 	//
 	// bar
 	PlotType *string   `json:"plotType,omitempty" xml:"plotType,omitempty"`
+	Stack    *bool     `json:"stack,omitempty" xml:"stack,omitempty"`
 	XAxis    []*string `json:"xAxis,omitempty" xml:"xAxis,omitempty" type:"Repeated"`
 	YAxis    []*string `json:"yAxis,omitempty" xml:"yAxis,omitempty" type:"Repeated"`
 }
@@ -2540,8 +2542,18 @@ func (s RunDataAnalysisResponseBodyDataVisualizationData) GoString() string {
 	return s.String()
 }
 
+func (s *RunDataAnalysisResponseBodyDataVisualizationData) SetOption(v string) *RunDataAnalysisResponseBodyDataVisualizationData {
+	s.Option = &v
+	return s
+}
+
 func (s *RunDataAnalysisResponseBodyDataVisualizationData) SetPlotType(v string) *RunDataAnalysisResponseBodyDataVisualizationData {
 	s.PlotType = &v
+	return s
+}
+
+func (s *RunDataAnalysisResponseBodyDataVisualizationData) SetStack(v bool) *RunDataAnalysisResponseBodyDataVisualizationData {
+	s.Stack = &v
 	return s
 }
 
