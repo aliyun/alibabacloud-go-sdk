@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/sophonsoar-20220728/v2
+module github.com/alibabacloud-go/sophonsoar-20220728/v3
 
 go 1.14
 
