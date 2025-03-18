@@ -6131,6 +6131,10 @@ type RunVideoAnalysisRequest struct {
 	SnapshotInterval  *float64 `json:"snapshotInterval,omitempty" xml:"snapshotInterval,omitempty"`
 	// example:
 	//
+	// 10
+	SplitInterval *int32 `json:"splitInterval,omitempty" xml:"splitInterval,omitempty"`
+	// example:
+	//
 	// a3d1c2ac-f086-4a21-9069-f5631542f5a2
 	TaskId                         *string                                    `json:"taskId,omitempty" xml:"taskId,omitempty"`
 	TextProcessTasks               []*RunVideoAnalysisRequestTextProcessTasks `json:"textProcessTasks,omitempty" xml:"textProcessTasks,omitempty" type:"Repeated"`
@@ -6198,6 +6202,11 @@ func (s *RunVideoAnalysisRequest) SetOriginalSessionId(v string) *RunVideoAnalys
 
 func (s *RunVideoAnalysisRequest) SetSnapshotInterval(v float64) *RunVideoAnalysisRequest {
 	s.SnapshotInterval = &v
+	return s
+}
+
+func (s *RunVideoAnalysisRequest) SetSplitInterval(v int32) *RunVideoAnalysisRequest {
+	s.SplitInterval = &v
 	return s
 }
 
@@ -6352,6 +6361,10 @@ type RunVideoAnalysisShrinkRequest struct {
 	SnapshotInterval  *float64 `json:"snapshotInterval,omitempty" xml:"snapshotInterval,omitempty"`
 	// example:
 	//
+	// 10
+	SplitInterval *int32 `json:"splitInterval,omitempty" xml:"splitInterval,omitempty"`
+	// example:
+	//
 	// a3d1c2ac-f086-4a21-9069-f5631542f5a2
 	TaskId                         *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
 	TextProcessTasksShrink         *string `json:"textProcessTasks,omitempty" xml:"textProcessTasks,omitempty"`
@@ -6419,6 +6432,11 @@ func (s *RunVideoAnalysisShrinkRequest) SetOriginalSessionId(v string) *RunVideo
 
 func (s *RunVideoAnalysisShrinkRequest) SetSnapshotInterval(v float64) *RunVideoAnalysisShrinkRequest {
 	s.SnapshotInterval = &v
+	return s
+}
+
+func (s *RunVideoAnalysisShrinkRequest) SetSplitInterval(v int32) *RunVideoAnalysisShrinkRequest {
+	s.SplitInterval = &v
 	return s
 }
 
@@ -7713,7 +7731,11 @@ type SubmitVideoAnalysisTaskRequest struct {
 	// example:
 	//
 	// 2
-	SnapshotInterval               *float64                                          `json:"snapshotInterval,omitempty" xml:"snapshotInterval,omitempty"`
+	SnapshotInterval *float64 `json:"snapshotInterval,omitempty" xml:"snapshotInterval,omitempty"`
+	// example:
+	//
+	// 10
+	SplitInterval                  *int32                                            `json:"splitInterval,omitempty" xml:"splitInterval,omitempty"`
 	TextProcessTasks               []*SubmitVideoAnalysisTaskRequestTextProcessTasks `json:"textProcessTasks,omitempty" xml:"textProcessTasks,omitempty" type:"Repeated"`
 	VideoExtraInfo                 *string                                           `json:"videoExtraInfo,omitempty" xml:"videoExtraInfo,omitempty"`
 	VideoModelCustomPromptTemplate *string                                           `json:"videoModelCustomPromptTemplate,omitempty" xml:"videoModelCustomPromptTemplate,omitempty"`
@@ -7776,6 +7798,11 @@ func (s *SubmitVideoAnalysisTaskRequest) SetModelId(v string) *SubmitVideoAnalys
 
 func (s *SubmitVideoAnalysisTaskRequest) SetSnapshotInterval(v float64) *SubmitVideoAnalysisTaskRequest {
 	s.SnapshotInterval = &v
+	return s
+}
+
+func (s *SubmitVideoAnalysisTaskRequest) SetSplitInterval(v int32) *SubmitVideoAnalysisTaskRequest {
+	s.SplitInterval = &v
 	return s
 }
 
@@ -7930,10 +7957,14 @@ type SubmitVideoAnalysisTaskShrinkRequest struct {
 	// example:
 	//
 	// 2
-	SnapshotInterval               *float64 `json:"snapshotInterval,omitempty" xml:"snapshotInterval,omitempty"`
-	TextProcessTasksShrink         *string  `json:"textProcessTasks,omitempty" xml:"textProcessTasks,omitempty"`
-	VideoExtraInfo                 *string  `json:"videoExtraInfo,omitempty" xml:"videoExtraInfo,omitempty"`
-	VideoModelCustomPromptTemplate *string  `json:"videoModelCustomPromptTemplate,omitempty" xml:"videoModelCustomPromptTemplate,omitempty"`
+	SnapshotInterval *float64 `json:"snapshotInterval,omitempty" xml:"snapshotInterval,omitempty"`
+	// example:
+	//
+	// 10
+	SplitInterval                  *int32  `json:"splitInterval,omitempty" xml:"splitInterval,omitempty"`
+	TextProcessTasksShrink         *string `json:"textProcessTasks,omitempty" xml:"textProcessTasks,omitempty"`
+	VideoExtraInfo                 *string `json:"videoExtraInfo,omitempty" xml:"videoExtraInfo,omitempty"`
+	VideoModelCustomPromptTemplate *string `json:"videoModelCustomPromptTemplate,omitempty" xml:"videoModelCustomPromptTemplate,omitempty"`
 	// example:
 	//
 	// qwen-vl-max-latest
@@ -7993,6 +8024,11 @@ func (s *SubmitVideoAnalysisTaskShrinkRequest) SetModelId(v string) *SubmitVideo
 
 func (s *SubmitVideoAnalysisTaskShrinkRequest) SetSnapshotInterval(v float64) *SubmitVideoAnalysisTaskShrinkRequest {
 	s.SnapshotInterval = &v
+	return s
+}
+
+func (s *SubmitVideoAnalysisTaskShrinkRequest) SetSplitInterval(v int32) *SubmitVideoAnalysisTaskShrinkRequest {
+	s.SplitInterval = &v
 	return s
 }
 
@@ -9916,6 +9952,10 @@ func (client *Client) RunVideoAnalysisWithOptions(workspaceId *string, tmpReq *R
 		body["snapshotInterval"] = request.SnapshotInterval
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SplitInterval)) {
+		body["splitInterval"] = request.SplitInterval
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
 		body["taskId"] = request.TaskId
 	}
@@ -10180,6 +10220,10 @@ func (client *Client) SubmitVideoAnalysisTaskWithOptions(workspaceId *string, tm
 
 	if !tea.BoolValue(util.IsUnset(request.SnapshotInterval)) {
 		body["snapshotInterval"] = request.SnapshotInterval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SplitInterval)) {
+		body["splitInterval"] = request.SplitInterval
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TextProcessTasksShrink)) {
