@@ -894,9 +894,21 @@ type CreateArtifactRequestArtifactBuildPropertyCodeRepo struct {
 	// example:
 	//
 	// main
-	Branch   *string `json:"Branch,omitempty" xml:"Branch,omitempty"`
+	Branch *string `json:"Branch,omitempty" xml:"Branch,omitempty"`
+	// The endpoint.
+	//
+	// The URL address used to access the privately deployed GitLab instance.
+	//
+	// example:
+	//
+	// http://121.40.25.0
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	OrgId    *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	// The organization ID.
+	//
+	// example:
+	//
+	// 455231
+	OrgId *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
 	// The owner of the code repository.
 	//
 	// >  This parameter is available only if the git repository is private.
@@ -911,11 +923,20 @@ type CreateArtifactRequestArtifactBuildPropertyCodeRepo struct {
 	//
 	// - gitee
 	//
+	// - gitlab
+	//
+	// - codeup
+	//
 	// example:
 	//
 	// github
 	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	RepoId   *int64  `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// The repository ID.
+	//
+	// example:
+	//
+	// 103
+	RepoId *int64 `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	// The name of the repository.
 	//
 	// example:
@@ -9882,6 +9903,12 @@ func (s *GetSupplierInformationRequest) SetRegionId(v string) *GetSupplierInform
 }
 
 type GetSupplierInformationResponseBody struct {
+	// Acr container namespace
+	//
+	// example:
+	//
+	// computenest
+	AcrNamespace *string `json:"AcrNamespace,omitempty" xml:"AcrNamespace,omitempty"`
 	// The delivery settings.
 	DeliverySettings *GetSupplierInformationResponseBodyDeliverySettings `json:"DeliverySettings,omitempty" xml:"DeliverySettings,omitempty" type:"Struct"`
 	// Whether to enable reseller
@@ -9940,6 +9967,11 @@ func (s GetSupplierInformationResponseBody) String() string {
 
 func (s GetSupplierInformationResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *GetSupplierInformationResponseBody) SetAcrNamespace(v string) *GetSupplierInformationResponseBody {
+	s.AcrNamespace = &v
+	return s
 }
 
 func (s *GetSupplierInformationResponseBody) SetDeliverySettings(v *GetSupplierInformationResponseBodyDeliverySettings) *GetSupplierInformationResponseBody {
@@ -10592,6 +10624,7 @@ type ListAcrImageRepositoriesResponseBodyRepositories struct {
 	//
 	// 2021-05-20T00:00:00Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	Namespace    *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The image repo ID.
 	//
 	// example:
@@ -10631,6 +10664,11 @@ func (s *ListAcrImageRepositoriesResponseBodyRepositories) SetCreateTime(v strin
 
 func (s *ListAcrImageRepositoriesResponseBodyRepositories) SetModifiedTime(v string) *ListAcrImageRepositoriesResponseBodyRepositories {
 	s.ModifiedTime = &v
+	return s
+}
+
+func (s *ListAcrImageRepositoriesResponseBodyRepositories) SetNamespace(v string) *ListAcrImageRepositoriesResponseBodyRepositories {
+	s.Namespace = &v
 	return s
 }
 
@@ -19670,9 +19708,21 @@ type UpdateArtifactRequestArtifactBuildPropertyCodeRepo struct {
 	// example:
 	//
 	// main
-	Branch   *string `json:"Branch,omitempty" xml:"Branch,omitempty"`
+	Branch *string `json:"Branch,omitempty" xml:"Branch,omitempty"`
+	// The endpoint.
+	//
+	// The URL address used to access the privately deployed GitLab instance.
+	//
+	// example:
+	//
+	// http://121.40.25.0
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	OrgId    *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	// The organization ID.
+	//
+	// example:
+	//
+	// 455231
+	OrgId *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
 	// The owner of the code repository.
 	//
 	// >  This parameter is available only if the git repository is private.
@@ -19681,13 +19731,26 @@ type UpdateArtifactRequestArtifactBuildPropertyCodeRepo struct {
 	//
 	// aliyun-computenest
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The platform where the code repository is hosted.
+	// The platform type. Valid values:
+	//
+	// - github
+	//
+	// - gitee
+	//
+	// - gitlab
+	//
+	// - codeup
 	//
 	// example:
 	//
 	// github
 	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	RepoId   *int64  `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// The repository ID.
+	//
+	// example:
+	//
+	// 103
+	RepoId *int64 `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	// The name of the repository.
 	//
 	// example:
@@ -25494,9 +25557,9 @@ func (client *Client) GetServiceTestTask(request *GetServiceTestTaskRequest) (_r
 
 // Summary:
 //
+// 获取服务商信息
 //
-//
-//  	- @param request GetSupplierInformationRequest
+// @param request - GetSupplierInformationRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -25547,9 +25610,9 @@ func (client *Client) GetSupplierInformationWithOptions(request *GetSupplierInfo
 
 // Summary:
 //
+// 获取服务商信息
 //
-//
-//  	- @param request GetSupplierInformationRequest
+// @param request - GetSupplierInformationRequest
 //
 // @return GetSupplierInformationResponse
 func (client *Client) GetSupplierInformation(request *GetSupplierInformationRequest) (_result *GetSupplierInformationResponse, _err error) {
@@ -25897,7 +25960,7 @@ func (client *Client) ListAcrImageTags(request *ListAcrImageTagsRequest) (_resul
 
 // Summary:
 //
-// Get the list of artifact security risks
+// # Get the list of artifact security risks
 //
 // @param request - ListArtifactRisksRequest
 //
@@ -25954,7 +26017,7 @@ func (client *Client) ListArtifactRisksWithOptions(request *ListArtifactRisksReq
 
 // Summary:
 //
-// Get the list of artifact security risks
+// # Get the list of artifact security risks
 //
 // @param request - ListArtifactRisksRequest
 //
@@ -26148,7 +26211,7 @@ func (client *Client) ListArtifacts(request *ListArtifactsRequest) (_result *Lis
 
 // Summary:
 //
-// Paginated query of distributor information list
+// # Paginated query of distributor information list
 //
 // @param request - ListResellersRequest
 //
@@ -26213,7 +26276,7 @@ func (client *Client) ListResellersWithOptions(request *ListResellersRequest, ru
 
 // Summary:
 //
-// Paginated query of distributor information list
+// # Paginated query of distributor information list
 //
 // @param request - ListResellersRequest
 //
@@ -26528,7 +26591,7 @@ func (client *Client) ListServiceInstanceResources(request *ListServiceInstanceR
 
 // Summary:
 //
-// View the upgrade history of a service instance
+// # View the upgrade history of a service instance
 //
 // @param request - ListServiceInstanceUpgradeHistoryRequest
 //
@@ -26593,7 +26656,7 @@ func (client *Client) ListServiceInstanceUpgradeHistoryWithOptions(request *List
 
 // Summary:
 //
-// View the upgrade history of a service instance
+// # View the upgrade history of a service instance
 //
 // @param request - ListServiceInstanceUpgradeHistoryRequest
 //
@@ -28295,7 +28358,7 @@ func (client *Client) RestartServiceInstance(request *RestartServiceInstanceRequ
 
 // Summary:
 //
-// Rollback Service Instance
+// # Rollback Service Instance
 //
 // @param request - RollbackServiceInstanceRequest
 //
@@ -28356,7 +28419,7 @@ func (client *Client) RollbackServiceInstanceWithOptions(request *RollbackServic
 
 // Summary:
 //
-// Rollback Service Instance
+// # Rollback Service Instance
 //
 // @param request - RollbackServiceInstanceRequest
 //
@@ -29269,7 +29332,7 @@ func (client *Client) UpdateServiceTestCase(request *UpdateServiceTestCaseReques
 
 // Summary:
 //
-// Update Service Sharing Permissions
+// # Update Service Sharing Permissions
 //
 // @param request - UpdateSharedAccountPermissionRequest
 //
@@ -29342,7 +29405,7 @@ func (client *Client) UpdateSharedAccountPermissionWithOptions(request *UpdateSh
 
 // Summary:
 //
-// Update Service Sharing Permissions
+// # Update Service Sharing Permissions
 //
 // @param request - UpdateSharedAccountPermissionRequest
 //
