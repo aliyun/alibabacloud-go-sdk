@@ -678,10 +678,12 @@ func (s *DashboardFilter) SetRouteName(v string) *DashboardFilter {
 
 type DomainInfo struct {
 	CertIdentifier  *string `json:"certIdentifier,omitempty" xml:"certIdentifier,omitempty"`
+	ClientCACert    *string `json:"clientCACert,omitempty" xml:"clientCACert,omitempty"`
 	CreateFrom      *string `json:"createFrom,omitempty" xml:"createFrom,omitempty"`
 	CreateTimestamp *int64  `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
 	DomainId        *string `json:"domainId,omitempty" xml:"domainId,omitempty"`
 	ForceHttps      *bool   `json:"forceHttps,omitempty" xml:"forceHttps,omitempty"`
+	MTLSEnabled     *bool   `json:"mTLSEnabled,omitempty" xml:"mTLSEnabled,omitempty"`
 	Name            *string `json:"name,omitempty" xml:"name,omitempty"`
 	Protocol        *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
 	// example:
@@ -705,6 +707,11 @@ func (s *DomainInfo) SetCertIdentifier(v string) *DomainInfo {
 	return s
 }
 
+func (s *DomainInfo) SetClientCACert(v string) *DomainInfo {
+	s.ClientCACert = &v
+	return s
+}
+
 func (s *DomainInfo) SetCreateFrom(v string) *DomainInfo {
 	s.CreateFrom = &v
 	return s
@@ -722,6 +729,11 @@ func (s *DomainInfo) SetDomainId(v string) *DomainInfo {
 
 func (s *DomainInfo) SetForceHttps(v bool) *DomainInfo {
 	s.ForceHttps = &v
+	return s
+}
+
+func (s *DomainInfo) SetMTLSEnabled(v bool) *DomainInfo {
+	s.MTLSEnabled = &v
 	return s
 }
 
@@ -4305,18 +4317,26 @@ func (s *AddGatewaySecurityGroupRuleResponse) SetBody(v *AddGatewaySecurityGroup
 }
 
 type ChangeResourceGroupRequest struct {
+	// Target resource group ID.
+	//
 	// example:
 	//
 	// rg-aekzdrfx2xdnaja
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// Resource ID
+	//
 	// example:
 	//
 	// gw-ct4i14um1hkn0tpqfae0
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// Resource type
+	//
 	// example:
 	//
 	// gateway
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// Service name, fixed value apig
+	//
 	// example:
 	//
 	// apig
@@ -4352,6 +4372,8 @@ func (s *ChangeResourceGroupRequest) SetService(v string) *ChangeResourceGroupRe
 }
 
 type ChangeResourceGroupResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// 59F86F37-787A-52DB-9475-DB5A255517F0
@@ -4413,6 +4435,20 @@ type CreateDomainRequest struct {
 	//
 	// 1ef1da5f-38ed-69b3-****-037781890265
 	CertIdentifier *string `json:"certIdentifier,omitempty" xml:"certIdentifier,omitempty"`
+	// Client CA Certificate
+	//
+	// example:
+	//
+	// -----BEGIN CERTIFICATE-----
+	//
+	// MIIFBTCCAu2gAwIBAgIUORLpYPGSFD1YOP6PMbE7Wd/mpTQwDQYJKoZIhvcNAQEL
+	//
+	// BQAwE************************************************2VwVOJ2gqX3
+	//
+	// YuGaxvIbDy0iQJ1GMerPRyzJTeVEtdIKT29u0PdFRr4KZWom35qX7G4=
+	//
+	// -----END CERTIFICATE-----
+	ClientCACert *string `json:"clientCACert,omitempty" xml:"clientCACert,omitempty"`
 	// Set the HTTPS protocol type, whether to enable forced HTTPS redirection.
 	//
 	// example:
@@ -4425,6 +4461,8 @@ type CreateDomainRequest struct {
 	//
 	// Open
 	Http2Option *string `json:"http2Option,omitempty" xml:"http2Option,omitempty"`
+	// Whether to enable mTLS mutual authentication
+	MTLSEnabled *bool `json:"mTLSEnabled,omitempty" xml:"mTLSEnabled,omitempty"`
 	// Domain name.
 	//
 	// This parameter is required.
@@ -4485,6 +4523,11 @@ func (s *CreateDomainRequest) SetCertIdentifier(v string) *CreateDomainRequest {
 	return s
 }
 
+func (s *CreateDomainRequest) SetClientCACert(v string) *CreateDomainRequest {
+	s.ClientCACert = &v
+	return s
+}
+
 func (s *CreateDomainRequest) SetForceHttps(v bool) *CreateDomainRequest {
 	s.ForceHttps = &v
 	return s
@@ -4492,6 +4535,11 @@ func (s *CreateDomainRequest) SetForceHttps(v bool) *CreateDomainRequest {
 
 func (s *CreateDomainRequest) SetHttp2Option(v string) *CreateDomainRequest {
 	s.Http2Option = &v
+	return s
+}
+
+func (s *CreateDomainRequest) SetMTLSEnabled(v bool) *CreateDomainRequest {
+	s.MTLSEnabled = &v
 	return s
 }
 
@@ -5242,25 +5290,25 @@ func (s *CreateHttpApiOperationResponse) SetBody(v *CreateHttpApiOperationRespon
 }
 
 type CreateHttpApiRouteRequest struct {
-	// Backend service configuration for the route.
+	// The backend service configurations of the route.
 	BackendConfig *CreateHttpApiRouteRequestBackendConfig `json:"backendConfig,omitempty" xml:"backendConfig,omitempty" type:"Struct"`
-	// Route description.
+	// The route description.
 	//
 	// example:
 	//
-	// 用户登陆路由。
+	// User logon route
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Domain IDs.
+	// The domain name IDs.
 	DomainIds []*string `json:"domainIds,omitempty" xml:"domainIds,omitempty" type:"Repeated"`
-	// Environment ID.
+	// The environment ID.
 	//
 	// example:
 	//
 	// env-cpqnr6tlhtgubcv***
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-	// Route match rules.
+	// The rule for matching the route.
 	Match *HttpRouteMatch `json:"match,omitempty" xml:"match,omitempty"`
-	// Route name.
+	// The route name.
 	//
 	// example:
 	//
@@ -5307,21 +5355,21 @@ func (s *CreateHttpApiRouteRequest) SetName(v string) *CreateHttpApiRouteRequest
 }
 
 type CreateHttpApiRouteRequestBackendConfig struct {
-	// Backend service scenario.
+	// The scenario of the backend service.
 	//
-	// - SingleService: Single service.
+	// 	- SingleService
 	//
-	// - MultiServiceByRatio: Multiple services with ratio-based canary release.
+	// 	- MultiServiceByRatio
 	//
-	// - Mock: Mock service.
+	// 	- Mock
 	//
-	// - Redirect: Redirect service.
+	// 	- Redirect
 	//
 	// example:
 	//
 	// SingleService
 	Scene *string `json:"scene,omitempty" xml:"scene,omitempty"`
-	// List of backend services.
+	// The backend services.
 	Services []*CreateHttpApiRouteRequestBackendConfigServices `json:"services,omitempty" xml:"services,omitempty" type:"Repeated"`
 }
 
@@ -5344,35 +5392,35 @@ func (s *CreateHttpApiRouteRequestBackendConfig) SetServices(v []*CreateHttpApiR
 }
 
 type CreateHttpApiRouteRequestBackendConfigServices struct {
-	// Service port, not provided for dynamic ports.
+	// The service port. If you want to use a dynamic port, do not pass this parameter.
 	//
 	// example:
 	//
 	// 8080
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
-	// Service protocol:
+	// The protocol. Valid values:
 	//
-	// - HTTP.
+	// 	- HTTP
 	//
-	// - HTTPS.
+	// 	- HTTPS
 	//
 	// example:
 	//
 	// HTTP
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	// Service ID.
+	// The service ID.
 	//
 	// example:
 	//
 	// svc-crbgq0dlhtgr***
 	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	// Service version, valid only in label-based scenarios.
+	// The service version. Pass this parameter for tag-based routing.
 	//
 	// example:
 	//
 	// v1
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-	// Percentage value of traffic distribution.
+	// The percentage value of traffic.
 	//
 	// example:
 	//
@@ -5414,21 +5462,21 @@ func (s *CreateHttpApiRouteRequestBackendConfigServices) SetWeight(v int32) *Cre
 }
 
 type CreateHttpApiRouteResponseBody struct {
-	// Response status code.
+	// The status code.
 	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Response data.
+	// The response data.
 	Data *CreateHttpApiRouteResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Response message.
+	// The returned message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
@@ -5465,7 +5513,7 @@ func (s *CreateHttpApiRouteResponseBody) SetRequestId(v string) *CreateHttpApiRo
 }
 
 type CreateHttpApiRouteResponseBodyData struct {
-	// Route ID。
+	// The route ID.
 	//
 	// example:
 	//
@@ -5516,19 +5564,30 @@ func (s *CreateHttpApiRouteResponse) SetBody(v *CreateHttpApiRouteResponseBody) 
 }
 
 type CreatePolicyRequest struct {
+	// Policy type, including RateLimit, ConcurrencyLimit, CircuitBreaker, HttpRewrite, HeaderModify, Cors, Authentication, FlowCopy, Timeout, Retry, IpAccessControl, DirectResponse, Redirect, Fallback, ServiceTls, ServiceLb, ServicePortTls, Waf, JWTAuth, OIDCAuth, ExternalZAuth, AiProxy, ModelRouter, AiStatistics, AiSecurityGuard, AiFallback, ModelMapper, AiTokenRateLimit, AiCache, DynamicRoute
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Timeout
 	ClassName *string `json:"className,omitempty" xml:"className,omitempty"`
+	// Policy configuration
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// {"unitNum":1,"timeUnit":"s","enable":true}
-	Config      *string `json:"config,omitempty" xml:"config,omitempty"`
+	Config *string `json:"config,omitempty" xml:"config,omitempty"`
+	// Policy description
+	//
+	// example:
+	//
+	// timeout policy
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Policy name
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -5566,16 +5625,21 @@ func (s *CreatePolicyRequest) SetName(v string) *CreatePolicyRequest {
 }
 
 type CreatePolicyResponseBody struct {
+	// Response status code.
+	//
 	// example:
 	//
 	// Ok
-	Code *string                       `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Response data.
 	Data *CreatePolicyResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//
@@ -5612,6 +5676,8 @@ func (s *CreatePolicyResponseBody) SetRequestId(v string) *CreatePolicyResponseB
 }
 
 type CreatePolicyResponseBodyData struct {
+	// Policy ID
+	//
 	// example:
 	//
 	// p-cq7l5s5lhtgi6qasr***
@@ -5661,30 +5727,40 @@ func (s *CreatePolicyResponse) SetBody(v *CreatePolicyResponseBody) *CreatePolic
 }
 
 type CreatePolicyAttachmentRequest struct {
+	// Attached resource ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// api-cu07jj6m1hkokaus***
 	AttachResourceId *string `json:"attachResourceId,omitempty" xml:"attachResourceId,omitempty"`
+	// Attached resource type, such as HttpApi, GatewayRoute, Operation, GatewayService, GatewayServicePort, Gateway, Domain
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// HttpApi
 	AttachResourceType *string `json:"attachResourceType,omitempty" xml:"attachResourceType,omitempty"`
+	// Environment ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// env-cquqsollhtgid***
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
+	// Gateway instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gw-cq7l5s5lhtgi6qas***
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// Policy ID
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -5727,16 +5803,21 @@ func (s *CreatePolicyAttachmentRequest) SetPolicyId(v string) *CreatePolicyAttac
 }
 
 type CreatePolicyAttachmentResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// Ok
-	Code *string                                 `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Response data.
 	Data *CreatePolicyAttachmentResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//
@@ -5773,6 +5854,8 @@ func (s *CreatePolicyAttachmentResponseBody) SetRequestId(v string) *CreatePolic
 }
 
 type CreatePolicyAttachmentResponseBodyData struct {
+	// Policy Mount ID
+	//
 	// example:
 	//
 	// pr-cqooju5lhtgquuj6***
@@ -5822,12 +5905,34 @@ func (s *CreatePolicyAttachmentResponse) SetBody(v *CreatePolicyAttachmentRespon
 }
 
 type CreateServiceRequest struct {
+	// Gateway ID.
+	//
 	// example:
 	//
 	// gw-cq7l5s5lhtg***
-	GatewayId       *string                               `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	ResourceGroupId *string                               `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	ServiceConfigs  []*CreateServiceRequestServiceConfigs `json:"serviceConfigs,omitempty" xml:"serviceConfigs,omitempty" type:"Repeated"`
+	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// Resource group ID.
+	//
+	// example:
+	//
+	// rg-xxx
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// List of service configuration information.
+	ServiceConfigs []*CreateServiceRequestServiceConfigs `json:"serviceConfigs,omitempty" xml:"serviceConfigs,omitempty" type:"Repeated"`
+	// Service source:
+	//
+	// - MSE_NACOS: Services in MSE Nacos.
+	//
+	// - K8S: Services in the K8S cluster of container service.
+	//
+	// - VIP: Fixed address service.
+	//
+	// - DNS: DNS domain name service.
+	//
+	// - FC3: Function Compute service.
+	//
+	// - SAE_K8S_SERVICE: SAE K8S service.
+	//
 	// example:
 	//
 	// MSE_NACOS
@@ -5863,20 +5968,40 @@ func (s *CreateServiceRequest) SetSourceType(v string) *CreateServiceRequest {
 }
 
 type CreateServiceRequestServiceConfigs struct {
-	Addresses       []*string        `json:"addresses,omitempty" xml:"addresses,omitempty" type:"Repeated"`
+	// List of domain names or fixed addresses.
+	Addresses []*string `json:"addresses,omitempty" xml:"addresses,omitempty" type:"Repeated"`
+	// AI service configuration.
 	AiServiceConfig *AiServiceConfig `json:"aiServiceConfig,omitempty" xml:"aiServiceConfig,omitempty"`
+	// List of DNS server addresses.
+	DnsServers []*string `json:"dnsServers,omitempty" xml:"dnsServers,omitempty" type:"Repeated"`
+	// Service group name.
+	//
+	// Needs to be specified when `sourceType` is MSE_NACOS.
+	//
 	// example:
 	//
 	// DEFAULT_GROUP
 	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
+	// Service name.
+	//
 	// example:
 	//
 	// user-service
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Namespace of the service:
+	//
+	// - When `sourceType` is K8S, it represents the namespace where the K8S service is located.
+	//
+	// - When `sourceType` is MSE_NACOS, it represents the namespace in Nacos.
+	//
+	// It needs to be specified when `sourceType` is K8S or MSE_NACOS.
+	//
 	// example:
 	//
 	// PUBLIC
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// Function version or alias.
+	//
 	// example:
 	//
 	// LATEST
@@ -5901,6 +6026,11 @@ func (s *CreateServiceRequestServiceConfigs) SetAiServiceConfig(v *AiServiceConf
 	return s
 }
 
+func (s *CreateServiceRequestServiceConfigs) SetDnsServers(v []*string) *CreateServiceRequestServiceConfigs {
+	s.DnsServers = v
+	return s
+}
+
 func (s *CreateServiceRequestServiceConfigs) SetGroupName(v string) *CreateServiceRequestServiceConfigs {
 	s.GroupName = &v
 	return s
@@ -5922,15 +6052,22 @@ func (s *CreateServiceRequestServiceConfigs) SetQualifier(v string) *CreateServi
 }
 
 type CreateServiceResponseBody struct {
+	// Response status code.
+	//
 	// example:
 	//
 	// Ok
-	Code *string                        `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Response data.
 	Data *CreateServiceResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// C67DED2B-F19B-5BEC-88C1-D6EB854CD0D4
@@ -5966,6 +6103,7 @@ func (s *CreateServiceResponseBody) SetRequestId(v string) *CreateServiceRespons
 }
 
 type CreateServiceResponseBodyData struct {
+	// List of service IDs.
 	ServiceIds []*string `json:"serviceIds,omitempty" xml:"serviceIds,omitempty" type:"Repeated"`
 }
 
@@ -6326,19 +6464,19 @@ func (s *DeleteGatewaySecurityGroupRuleResponse) SetBody(v *DeleteGatewaySecurit
 }
 
 type DeleteHttpApiResponseBody struct {
-	// Response status code.
+	// The status code.
 	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Response message.
+	// The returned message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
@@ -6545,15 +6683,19 @@ func (s *DeleteHttpApiRouteResponse) SetBody(v *DeleteHttpApiRouteResponseBody) 
 }
 
 type DeletePolicyResponseBody struct {
+	// Response status code.
+	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//
@@ -6614,15 +6756,19 @@ func (s *DeletePolicyResponse) SetBody(v *DeletePolicyResponseBody) *DeletePolic
 }
 
 type DeletePolicyAttachmentResponseBody struct {
+	// Response status code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//
@@ -6683,7 +6829,10 @@ func (s *DeletePolicyAttachmentResponse) SetBody(v *DeletePolicyAttachmentRespon
 }
 
 type DeployHttpApiRequest struct {
+	// Rest API deployment configuration. Required when deploying an HTTP API as a Rest API.
 	RestApiConfig *DeployHttpApiRequestRestApiConfig `json:"restApiConfig,omitempty" xml:"restApiConfig,omitempty" type:"Struct"`
+	// Route ID. This must be provided when publishing the route of an HTTP API.
+	//
 	// example:
 	//
 	// hr-cr82undlhtgrl***
@@ -6709,8 +6858,16 @@ func (s *DeployHttpApiRequest) SetRouteId(v string) *DeployHttpApiRequest {
 }
 
 type DeployHttpApiRequestRestApiConfig struct {
-	Description *string                                       `json:"description,omitempty" xml:"description,omitempty"`
+	// Publication description.
+	//
+	// example:
+	//
+	// 用户服务API发布。
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Publication environment configuration.
 	Environment *DeployHttpApiRequestRestApiConfigEnvironment `json:"environment,omitempty" xml:"environment,omitempty" type:"Struct"`
+	// Historical version number. If this field is specified, the publication information will be based on the historical version information.
+	//
 	// example:
 	//
 	// apr-xxx
@@ -6741,15 +6898,21 @@ func (s *DeployHttpApiRequestRestApiConfig) SetRevisionId(v string) *DeployHttpA
 }
 
 type DeployHttpApiRequestRestApiConfigEnvironment struct {
+	// API publication scenario.
+	//
 	// example:
 	//
 	// SingleService
-	BackendScene    *string   `json:"backendScene,omitempty" xml:"backendScene,omitempty"`
+	BackendScene *string `json:"backendScene,omitempty" xml:"backendScene,omitempty"`
+	// List of user domains.
 	CustomDomainIds []*string `json:"customDomainIds,omitempty" xml:"customDomainIds,omitempty" type:"Repeated"`
+	// Environment ID.
+	//
 	// example:
 	//
 	// env-cpqnr6tlhtgubc***
-	EnvironmentId  *string                                                       `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
+	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
+	// Existing service configurations. Only one entry is allowed in a single-service scenario, while multiple entries are allowed in scenarios such as by ratio or by content.
 	ServiceConfigs []*DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs `json:"serviceConfigs,omitempty" xml:"serviceConfigs,omitempty" type:"Repeated"`
 }
 
@@ -6782,23 +6945,38 @@ func (s *DeployHttpApiRequestRestApiConfigEnvironment) SetServiceConfigs(v []*De
 }
 
 type DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs struct {
+	// Configuration of matching conditions related to API deployment.
 	Match *HttpApiBackendMatchConditions `json:"match,omitempty" xml:"match,omitempty"`
+	// Service port, do not provide for dynamic ports.
+	//
 	// example:
 	//
 	// 8080
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
+	// Service protocol:
+	//
+	// - HTTP.
+	//
+	// - HTTPS.
+	//
 	// example:
 	//
 	// HTTP
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	// Service ID.
+	//
 	// example:
 	//
 	// svc-cr6pk4tlhtgm58e***
 	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	// Service version.
+	//
 	// example:
 	//
 	// v1
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	// Weight, range [1,100], valid only in the by-ratio scenario.
+	//
 	// example:
 	//
 	// 49
@@ -6844,14 +7022,20 @@ func (s *DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs) SetWeight(v
 }
 
 type DeployHttpApiResponseBody struct {
+	// Response status code.
+	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// 响应消息。
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 0C2D1C68-0D93-5561-8EE6-FDB7BF067A30
@@ -7013,20 +7197,42 @@ func (s *ExportHttpApiResponse) SetBody(v *ExportHttpApiResponseBody) *ExportHtt
 }
 
 type GetDashboardRequest struct {
+	// zh: Chinese
+	//
+	// en: English
+	//
 	// example:
 	//
 	// zh
-	AcceptLanguage *string                    `json:"acceptLanguage,omitempty" xml:"acceptLanguage,omitempty"`
-	ApiId          *string                    `json:"apiId,omitempty" xml:"apiId,omitempty"`
-	Filter         *GetDashboardRequestFilter `json:"filter,omitempty" xml:"filter,omitempty" type:"Struct"`
+	AcceptLanguage *string `json:"acceptLanguage,omitempty" xml:"acceptLanguage,omitempty"`
+	// API ID
+	//
+	// example:
+	//
+	// api-c9uuekzmia8q2****
+	ApiId *string `json:"apiId,omitempty" xml:"apiId,omitempty"`
+	// Filter configuration
+	Filter *GetDashboardRequestFilter `json:"filter,omitempty" xml:"filter,omitempty" type:"Struct"`
+	// Dashboard name:
+	//
+	// - LOG: Access log
+	//
+	// - PLUGIN: Plugin log
+	//
 	// example:
 	//
 	// PLUGIN
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Plugin ID.
+	//
 	// example:
 	//
 	// pls-dn82a9djd8z****
 	PluginClassId *string `json:"pluginClassId,omitempty" xml:"pluginClassId,omitempty"`
+	// Dashboard source:
+	//
+	// - SLS: Log dashboard
+	//
 	// example:
 	//
 	// SLS
@@ -7072,6 +7278,8 @@ func (s *GetDashboardRequest) SetSource(v string) *GetDashboardRequest {
 }
 
 type GetDashboardRequestFilter struct {
+	// Route name
+	//
 	// example:
 	//
 	// test-route
@@ -7092,20 +7300,42 @@ func (s *GetDashboardRequestFilter) SetRouteName(v string) *GetDashboardRequestF
 }
 
 type GetDashboardShrinkRequest struct {
+	// zh: Chinese
+	//
+	// en: English
+	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"acceptLanguage,omitempty" xml:"acceptLanguage,omitempty"`
-	ApiId          *string `json:"apiId,omitempty" xml:"apiId,omitempty"`
-	FilterShrink   *string `json:"filter,omitempty" xml:"filter,omitempty"`
+	// API ID
+	//
+	// example:
+	//
+	// api-c9uuekzmia8q2****
+	ApiId *string `json:"apiId,omitempty" xml:"apiId,omitempty"`
+	// Filter configuration
+	FilterShrink *string `json:"filter,omitempty" xml:"filter,omitempty"`
+	// Dashboard name:
+	//
+	// - LOG: Access log
+	//
+	// - PLUGIN: Plugin log
+	//
 	// example:
 	//
 	// PLUGIN
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Plugin ID.
+	//
 	// example:
 	//
 	// pls-dn82a9djd8z****
 	PluginClassId *string `json:"pluginClassId,omitempty" xml:"pluginClassId,omitempty"`
+	// Dashboard source:
+	//
+	// - SLS: Log dashboard
+	//
 	// example:
 	//
 	// SLS
@@ -7151,25 +7381,34 @@ func (s *GetDashboardShrinkRequest) SetSource(v string) *GetDashboardShrinkReque
 }
 
 type GetDashboardResponseBody struct {
+	// Response code
+	//
 	// example:
 	//
 	// 200
-	Code *int32                        `json:"code,omitempty" xml:"code,omitempty"`
+	Code *int32 `json:"code,omitempty" xml:"code,omitempty"`
+	// Response data
 	Data *GetDashboardResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Backend error code
+	//
 	// example:
 	//
 	// Ok
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// Error message
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Id of the request
+	// Request ID
 	//
 	// example:
 	//
 	// 2F46B9E7-67EF-5C8A-BA52-D38D5B32AF2C
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Whether the request was successful
+	//
 	// example:
 	//
 	// true
@@ -7215,18 +7454,26 @@ func (s *GetDashboardResponseBody) SetSuccess(v bool) *GetDashboardResponseBody 
 }
 
 type GetDashboardResponseBodyData struct {
+	// Gateway unique identifier
+	//
 	// example:
 	//
 	// gw-co370icmjeu****
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// Dashboard name
+	//
 	// example:
 	//
 	// PLUGIN
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Dashboard title
+	//
 	// example:
 	//
 	// APIG Plugin
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// Dashboard URL link
+	//
 	// example:
 	//
 	// https://sls.console.aliyun.com/lognext/project/xxxxx
@@ -7291,6 +7538,11 @@ func (s *GetDashboardResponse) SetBody(v *GetDashboardResponseBody) *GetDashboar
 }
 
 type GetDomainRequest struct {
+	// Indicates whether include domain related resource information.
+	//
+	// example:
+	//
+	// true
 	WithStatistics *bool `json:"withStatistics,omitempty" xml:"withStatistics,omitempty"`
 }
 
@@ -7364,15 +7616,45 @@ type GetDomainResponseBodyData struct {
 	// example:
 	//
 	// RSA
-	Algorithm        *string `json:"algorithm,omitempty" xml:"algorithm,omitempty"`
+	Algorithm *string `json:"algorithm,omitempty" xml:"algorithm,omitempty"`
+	// CA certificate identifier
+	//
+	// example:
+	//
+	// 876****-cn-hangzhou
 	CaCertIdentifier *string `json:"caCertIdentifier,omitempty" xml:"caCertIdentifier,omitempty"`
-	CertIdentifier   *string `json:"certIdentifier,omitempty" xml:"certIdentifier,omitempty"`
+	// Certificate Identifier
+	//
+	// example:
+	//
+	// 645****-cn-hangzhou
+	CertIdentifier *string `json:"certIdentifier,omitempty" xml:"certIdentifier,omitempty"`
 	// Certificate name
 	//
 	// example:
 	//
 	// test-cert
 	CertName *string `json:"certName,omitempty" xml:"certName,omitempty"`
+	// Client CA Cert
+	//
+	// example:
+	//
+	// -----BEGIN CERTIFICATE-----
+	//
+	// xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/mpTQwDQYJKoZIhvcNAQEL
+	//
+	// BxSbrGeJ8i0576Gn7Qezyho9abZOUhGaPeoB
+	//
+	// AIHWWl428uUSG/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	//
+	// yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy+ZMJ8r4swA4swHwYDVR0jBBgwFoAU
+	//
+	// qroVyYKk7ylhcSn+ZMJ8r4swA4swDwYDVR0TAQH/BAUwAwEB/zANBgkqhkiG9w0B
+	//
+	// xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=
+	//
+	// -----END CERTIFICATE-----
+	ClientCACert *string `json:"clientCACert,omitempty" xml:"clientCACert,omitempty"`
 	// Where it was created from.
 	//
 	// example:
@@ -7415,6 +7697,12 @@ type GetDomainResponseBodyData struct {
 	//
 	// Alibaba
 	Issuer *string `json:"issuer,omitempty" xml:"issuer,omitempty"`
+	// true
+	//
+	// example:
+	//
+	// false
+	MTLSEnabled *bool `json:"mTLSEnabled,omitempty" xml:"mTLSEnabled,omitempty"`
 	// Domain name.
 	//
 	// example:
@@ -7442,16 +7730,23 @@ type GetDomainResponseBodyData struct {
 	// example:
 	//
 	// HTTP
-	Protocol        *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-aekzvlxzgo5b4si
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// All domain names bound to the certificate.
 	//
 	// example:
 	//
 	// aliyun.com
-	Sans                  *string                                  `json:"sans,omitempty" xml:"sans,omitempty"`
-	StatisticsInfo        *GetDomainResponseBodyDataStatisticsInfo `json:"statisticsInfo,omitempty" xml:"statisticsInfo,omitempty" type:"Struct"`
-	TlsCipherSuitesConfig *TlsCipherSuitesConfig                   `json:"tlsCipherSuitesConfig,omitempty" xml:"tlsCipherSuitesConfig,omitempty"`
+	Sans *string `json:"sans,omitempty" xml:"sans,omitempty"`
+	// The array of domain related resource information
+	StatisticsInfo *GetDomainResponseBodyDataStatisticsInfo `json:"statisticsInfo,omitempty" xml:"statisticsInfo,omitempty" type:"Struct"`
+	// The TLS cipher suites config.
+	TlsCipherSuitesConfig *TlsCipherSuitesConfig `json:"tlsCipherSuitesConfig,omitempty" xml:"tlsCipherSuitesConfig,omitempty"`
 	// Maximum TLS protocol version, supports up to TLS 1.3.
 	//
 	// example:
@@ -7500,6 +7795,11 @@ func (s *GetDomainResponseBodyData) SetCertName(v string) *GetDomainResponseBody
 	return s
 }
 
+func (s *GetDomainResponseBodyData) SetClientCACert(v string) *GetDomainResponseBodyData {
+	s.ClientCACert = &v
+	return s
+}
+
 func (s *GetDomainResponseBodyData) SetCreateFrom(v string) *GetDomainResponseBodyData {
 	s.CreateFrom = &v
 	return s
@@ -7532,6 +7832,11 @@ func (s *GetDomainResponseBodyData) SetHttp2Option(v string) *GetDomainResponseB
 
 func (s *GetDomainResponseBodyData) SetIssuer(v string) *GetDomainResponseBodyData {
 	s.Issuer = &v
+	return s
+}
+
+func (s *GetDomainResponseBodyData) SetMTLSEnabled(v bool) *GetDomainResponseBodyData {
+	s.MTLSEnabled = &v
 	return s
 }
 
@@ -7591,8 +7896,14 @@ func (s *GetDomainResponseBodyData) SetUpdatetimestamp(v int64) *GetDomainRespon
 }
 
 type GetDomainResponseBodyDataStatisticsInfo struct {
+	// The array of related resource infomations.
 	ResourceStatistics []*ResourceStatistic `json:"resourceStatistics,omitempty" xml:"resourceStatistics,omitempty" type:"Repeated"`
-	TotalCount         *string              `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1
+	TotalCount *string `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s GetDomainResponseBodyDataStatisticsInfo) String() string {
@@ -8864,11 +9175,16 @@ func (s *GetHttpApiRouteResponse) SetBody(v *GetHttpApiRouteResponseBody) *GetHt
 }
 
 type GetPolicyResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// Ok
-	Code *string           `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Response data.
 	Data *PolicyDetailInfo `json:"data,omitempty" xml:"data,omitempty"`
+	// Response message.
+	//
 	// example:
 	//
 	// success
@@ -8939,16 +9255,21 @@ func (s *GetPolicyResponse) SetBody(v *GetPolicyResponseBody) *GetPolicyResponse
 }
 
 type GetPolicyAttachmentResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                              `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Response data.
 	Data *GetPolicyAttachmentResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//
@@ -8985,30 +9306,44 @@ func (s *GetPolicyAttachmentResponseBody) SetRequestId(v string) *GetPolicyAttac
 }
 
 type GetPolicyAttachmentResponseBodyData struct {
+	// Attached Resource ID
+	//
 	// example:
 	//
 	// op-csbkd9llhtgqhqua***
 	AttachResourceId *string `json:"attachResourceId,omitempty" xml:"attachResourceId,omitempty"`
+	// Attached resource type, HttpApi, GatewayRoute, Operation, GatewayService, GatewayServicePort, Gateway, Domain
+	//
 	// example:
 	//
 	// Operation
 	AttachResourceType *string `json:"attachResourceType,omitempty" xml:"attachResourceType,omitempty"`
+	// Policy attachment configuration
+	//
 	// example:
 	//
 	// {"unitNum":1,"timeUnit":"s","enable":true}
 	Config *string `json:"config,omitempty" xml:"config,omitempty"`
+	// Environment ID
+	//
 	// example:
 	//
 	// env-cq7l5s5lhtgi6qa***
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
+	// Gateway Instance ID
+	//
 	// example:
 	//
 	// gw-cq2vundlhtg***
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// Policy Attachment ID
+	//
 	// example:
 	//
 	// pr-cqoojualhtgquuj***
 	PolicyAttachmentId *string `json:"policyAttachmentId,omitempty" xml:"policyAttachmentId,omitempty"`
+	// Policy ID
+	//
 	// example:
 	//
 	// p-cq7l5s5bblhtgi6qas***
@@ -9088,15 +9423,22 @@ func (s *GetPolicyAttachmentResponse) SetBody(v *GetPolicyAttachmentResponseBody
 }
 
 type GetResourceOverviewResponseBody struct {
+	// Response status code.
+	//
 	// example:
 	//
 	// Ok
-	Code *string                              `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Resource information.
 	Data *GetResourceOverviewResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// DD19A442-93C5-5C97-AFA0-B9C57EBD781B
@@ -9132,7 +9474,9 @@ func (s *GetResourceOverviewResponseBody) SetRequestId(v string) *GetResourceOve
 }
 
 type GetResourceOverviewResponseBodyData struct {
-	Api     *GetResourceOverviewResponseBodyDataApi     `json:"api,omitempty" xml:"api,omitempty" type:"Struct"`
+	// API information.
+	Api *GetResourceOverviewResponseBodyDataApi `json:"api,omitempty" xml:"api,omitempty" type:"Struct"`
+	// Gateway information.
 	Gateway *GetResourceOverviewResponseBodyDataGateway `json:"gateway,omitempty" xml:"gateway,omitempty" type:"Struct"`
 }
 
@@ -9155,10 +9499,14 @@ func (s *GetResourceOverviewResponseBodyData) SetGateway(v *GetResourceOverviewR
 }
 
 type GetResourceOverviewResponseBodyDataApi struct {
+	// Number of published APIs.
+	//
 	// example:
 	//
 	// 1
 	PublishedCount *int64 `json:"publishedCount,omitempty" xml:"publishedCount,omitempty"`
+	// Number of APIs.
+	//
 	// example:
 	//
 	// 1
@@ -9184,10 +9532,14 @@ func (s *GetResourceOverviewResponseBodyDataApi) SetTotalCount(v int64) *GetReso
 }
 
 type GetResourceOverviewResponseBodyDataGateway struct {
+	// Number of running gateways.
+	//
 	// example:
 	//
 	// 1
 	RunningCount *int64 `json:"runningCount,omitempty" xml:"runningCount,omitempty"`
+	// Number of gateway instances.
+	//
 	// example:
 	//
 	// 1
@@ -9242,15 +9594,22 @@ func (s *GetResourceOverviewResponse) SetBody(v *GetResourceOverviewResponseBody
 }
 
 type GetServiceResponseBody struct {
+	// Response status code.
+	//
 	// example:
 	//
 	// Ok
-	Code *string  `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Service details data.
 	Data *Service `json:"data,omitempty" xml:"data,omitempty"`
+	// Response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 8FA9BB94-915B-5299-A694-49FCC7F5DD00
@@ -9315,6 +9674,12 @@ func (s *GetServiceResponse) SetBody(v *GetServiceResponseBody) *GetServiceRespo
 }
 
 type GetTraceConfigRequest struct {
+	// Language Type:
+	//
+	// zh: Chinese
+	//
+	// en: English
+	//
 	// example:
 	//
 	// zh
@@ -9335,19 +9700,32 @@ func (s *GetTraceConfigRequest) SetAcceptLanguage(v string) *GetTraceConfigReque
 }
 
 type GetTraceConfigResponseBody struct {
+	// Response Code
+	//
 	// example:
 	//
 	// 200
-	Code *int32                          `json:"code,omitempty" xml:"code,omitempty"`
+	Code *int32 `json:"code,omitempty" xml:"code,omitempty"`
+	// Response Data
 	Data *GetTraceConfigResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Error Message
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 2F46B9E7-67EF-5C8A-BA52-D38D5B32AF2C
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Boolean	Request Result, with the following values:
+	//
+	// true: Request succeeded.
+	//
+	// false: Request failed.
+	//
 	// example:
 	//
 	// true
@@ -9388,22 +9766,44 @@ func (s *GetTraceConfigResponseBody) SetSuccess(v bool) *GetTraceConfigResponseB
 }
 
 type GetTraceConfigResponseBodyData struct {
+	// Whether to Enable Tracing:
+	//
+	// true: Enabled
+	//
+	// false: Disabled
+	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// Sampling Rate
+	//
 	// example:
 	//
 	// 50
 	SampleRatio *int32 `json:"sampleRatio,omitempty" xml:"sampleRatio,omitempty"`
+	// Service ID, present when the tracing type is SKYWALKING
+	//
 	// example:
 	//
 	// ss-co370icmjeu****
 	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	// 服务端口，链路追踪类型为SKYWALKING时存在该参数
+	//
 	// example:
 	//
 	// 8090
 	ServicePort *string `json:"servicePort,omitempty" xml:"servicePort,omitempty"`
+	// Tracing Type:
+	//
+	// - XTRACE
+	//
+	// - SKYWALKING
+	//
+	// - OPENTELEMETRY
+	//
+	// - OTSKYWALKING
+	//
 	// example:
 	//
 	// SKYWALKING
@@ -10799,7 +11199,8 @@ type ListGatewaysResponseBodyDataItems struct {
 	// example:
 	//
 	// Running
-	Status         *string          `json:"status,omitempty" xml:"status,omitempty"`
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// List of sub domain information
 	SubDomainInfos []*SubDomainInfo `json:"subDomainInfos,omitempty" xml:"subDomainInfos,omitempty" type:"Repeated"`
 	// Array of tags.
 	Tags []*ListGatewaysResponseBodyDataItemsTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
@@ -11530,42 +11931,83 @@ func (s *ListHttpApiOperationsResponse) SetBody(v *ListHttpApiOperationsResponse
 }
 
 type ListHttpApiRoutesRequest struct {
+	// Filter the interface list based on a specific consumer authorization rule ID. The interface list in the response will only include authorized interfaces.
+	//
+	// example:
+	//
+	// cas-xxx
 	ConsumerAuthorizationRuleId *string `json:"consumerAuthorizationRuleId,omitempty" xml:"consumerAuthorizationRuleId,omitempty"`
+	// Deployment status of the route.
+	//
 	// example:
 	//
 	// NotDeployed
 	DeployStatuses *string `json:"deployStatuses,omitempty" xml:"deployStatuses,omitempty"`
-	DomainId       *string `json:"domainId,omitempty" xml:"domainId,omitempty"`
+	// Filter route information by domain ID.
+	//
+	// example:
+	//
+	// d-xxx
+	DomainId *string `json:"domainId,omitempty" xml:"domainId,omitempty"`
+	// Environment ID.
+	//
 	// example:
 	//
 	// env-cpqnr6tlhtgubc***
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
+	// Cloud-native API Gateway ID.
+	//
 	// example:
 	//
 	// gw-cpv4sqdl****
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// Route name.
+	//
 	// example:
 	//
 	// itemcenter-gateway
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Fuzzy search by route name.
+	//
 	// example:
 	//
 	// item
 	NameLike *string `json:"nameLike,omitempty" xml:"nameLike,omitempty"`
+	// Page number, starting from 1. Default is 1 if not specified.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// Page size, valid range [1, 100]. Default is 10 if not specified.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Fuzzy search by route path.
+	//
 	// example:
 	//
 	// /v1
-	PathLike                       *string `json:"pathLike,omitempty" xml:"pathLike,omitempty"`
-	WithAuthPolicyInfo             *bool   `json:"withAuthPolicyInfo,omitempty" xml:"withAuthPolicyInfo,omitempty"`
-	WithConsumerInfoById           *string `json:"withConsumerInfoById,omitempty" xml:"withConsumerInfoById,omitempty"`
+	PathLike *string `json:"pathLike,omitempty" xml:"pathLike,omitempty"`
+	// The response includes consumer authorization information.
+	//
+	// example:
+	//
+	// true
+	WithAuthPolicyInfo *bool `json:"withAuthPolicyInfo,omitempty" xml:"withAuthPolicyInfo,omitempty"`
+	// Each route information in the response carries the list of authorization rules for the specified consumer ID.
+	//
+	// example:
+	//
+	// cs-xxx
+	WithConsumerInfoById *string `json:"withConsumerInfoById,omitempty" xml:"withConsumerInfoById,omitempty"`
+	// Each route information in the response carries the attachment information for the specified plugin ID.
+	//
+	// example:
+	//
+	// pl-xxx
 	WithPluginAttachmentByPluginId *string `json:"withPluginAttachmentByPluginId,omitempty" xml:"withPluginAttachmentByPluginId,omitempty"`
 }
 
@@ -11643,15 +12085,22 @@ func (s *ListHttpApiRoutesRequest) SetWithPluginAttachmentByPluginId(v string) *
 }
 
 type ListHttpApiRoutesResponseBody struct {
+	// Response status code.
+	//
 	// example:
 	//
 	// Ok
-	Code *string                            `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Response data.
 	Data *ListHttpApiRoutesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// CBEEB8C1-108E-50F0-9BEA-DED79553C309
@@ -11687,15 +12136,22 @@ func (s *ListHttpApiRoutesResponseBody) SetRequestId(v string) *ListHttpApiRoute
 }
 
 type ListHttpApiRoutesResponseBodyData struct {
+	// List of routes.
 	Items []*HttpRoute `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// Page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// Page size.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Total number of items.
+	//
 	// example:
 	//
 	// 9
@@ -11778,20 +12234,25 @@ type ListHttpApisRequest struct {
 	//
 	// login
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Page number, starting from 1, default is 1 if not provided.
+	// Page number, starting from 1, default is 1 if not specified.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// Page size, valid range [1, 100], default is 10 if not provided.
+	// Page size, valid range [1, 100], default is 10 if not specified.
 	//
 	// example:
 	//
 	// 10
-	PageSize        *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Resource group ID.
+	//
+	// example:
+	//
+	// rg-ahr5uil8raz0rq3b
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// Type of HTTP API. Supports multiple types, separated by ",".
+	// Type of HTTP API. Multiple types can be passed, separated by ",".
 	//
 	// - Http
 	//
@@ -11805,22 +12266,47 @@ type ListHttpApisRequest struct {
 	//
 	// Http,Rest
 	Types *string `json:"types,omitempty" xml:"types,omitempty"`
-	// Each API information in the response carries consumer authentication policy information under the specified environment ID.
+	// Each API information in the response carries consumer authentication policy information for the specified environment ID.
 	//
 	// example:
 	//
 	// env-xxx
 	WithAuthPolicyInEnvironmentId *string `json:"withAuthPolicyInEnvironmentId,omitempty" xml:"withAuthPolicyInEnvironmentId,omitempty"`
-	WithAuthPolicyList            *bool   `json:"withAuthPolicyList,omitempty" xml:"withAuthPolicyList,omitempty"`
+	// Whether the authentication policy is enabled.
+	//
+	// example:
+	//
+	// true
+	WithAuthPolicyList *bool `json:"withAuthPolicyList,omitempty" xml:"withAuthPolicyList,omitempty"`
 	// Each API information in the response carries a list of authorization rules for the specified consumer ID.
 	//
 	// example:
 	//
 	// cs-xxx
-	WithConsumerInfoById           *string `json:"withConsumerInfoById,omitempty" xml:"withConsumerInfoById,omitempty"`
-	WithEnvironmentInfo            *bool   `json:"withEnvironmentInfo,omitempty" xml:"withEnvironmentInfo,omitempty"`
-	WithEnvironmentInfoById        *string `json:"withEnvironmentInfoById,omitempty" xml:"withEnvironmentInfoById,omitempty"`
-	WithIngressInfo                *bool   `json:"withIngressInfo,omitempty" xml:"withIngressInfo,omitempty"`
+	WithConsumerInfoById *string `json:"withConsumerInfoById,omitempty" xml:"withConsumerInfoById,omitempty"`
+	// Environment information
+	//
+	// example:
+	//
+	// true
+	WithEnvironmentInfo *bool `json:"withEnvironmentInfo,omitempty" xml:"withEnvironmentInfo,omitempty"`
+	// Environment ID
+	//
+	// example:
+	//
+	// env-ctovu5mm1hksb4q8ln40
+	WithEnvironmentInfoById *string `json:"withEnvironmentInfoById,omitempty" xml:"withEnvironmentInfoById,omitempty"`
+	// Ingress information
+	//
+	// example:
+	//
+	// false
+	WithIngressInfo *bool `json:"withIngressInfo,omitempty" xml:"withIngressInfo,omitempty"`
+	// Plugin ID, used to get plugin release information based on this ID.
+	//
+	// example:
+	//
+	// pl-ct9qn3um1hktue8dqol0
 	WithPluginAttachmentByPluginId *string `json:"withPluginAttachmentByPluginId,omitempty" xml:"withPluginAttachmentByPluginId,omitempty"`
 }
 
@@ -12034,22 +12520,52 @@ func (s *ListHttpApisResponse) SetBody(v *ListHttpApisResponseBody) *ListHttpApi
 }
 
 type ListPolicyClassesRequest struct {
+	// Types of attachment points supported by the policy.
+	//
+	// - HttpApi: HttpApi.
+	//
+	// - Operation: Operation of HttpApi.
+	//
+	// - GatewayRoute: Gateway route.
+	//
+	// - GatewayService: Gateway service.
+	//
+	// - GatewayServicePort: Gateway service port.
+	//
+	// - Domain: Gateway domain.
+	//
+	// - Gateway: Gateway.
+	//
 	// example:
 	//
 	// Operation
 	AttachResourceType *string `json:"attachResourceType,omitempty" xml:"attachResourceType,omitempty"`
+	// Direction of the policy.
+	//
+	// - Outbound: OutBound.
+	//
+	// - Inbound: InBound.
+	//
+	// - Both directions: Both.
+	//
 	// example:
 	//
 	// InBound
 	Direction *string `json:"direction,omitempty" xml:"direction,omitempty"`
+	// Page number, default is 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// Page size
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Type of the policy template.
+	//
 	// example:
 	//
 	// FlowControl
@@ -12090,15 +12606,22 @@ func (s *ListPolicyClassesRequest) SetType(v string) *ListPolicyClassesRequest {
 }
 
 type ListPolicyClassesResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// Ok
-	Code *string                            `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Policy template information.
 	Data *ListPolicyClassesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// ResponseMessage
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 23B45FA9-7208-5E55-B5CE-B6B2567DD822
@@ -12134,15 +12657,22 @@ func (s *ListPolicyClassesResponseBody) SetRequestId(v string) *ListPolicyClasse
 }
 
 type ListPolicyClassesResponseBodyData struct {
+	// List of policy templates
 	Items []*PolicyClassInfo `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// Page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// Page size
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Total number of items.
+	//
 	// example:
 	//
 	// 10
@@ -12207,23 +12737,48 @@ func (s *ListPolicyClassesResponse) SetBody(v *ListPolicyClassesResponseBody) *L
 }
 
 type ListServicesRequest struct {
+	// Cloud-native API Gateway ID.
+	//
 	// example:
 	//
 	// gw-cpv4sqdl*****
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// Exact query by service name.
+	//
 	// example:
 	//
 	// user-service
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Page number, starting from 1. Default is 1 if not specified.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// Page size, valid range [1, 100]. Default is 10 if not specified.
+	//
 	// example:
 	//
 	// 10
-	PageSize        *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Resource group ID.
+	//
+	// example:
+	//
+	// rg-acfmxxe5rc6cvla
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// Query by service source type. Service sources:
+	//
+	// - MSE_NACOS: Services from MSE Nacos.
+	//
+	// - K8S: Services from K8S clusters in container services.
+	//
+	// - FC3: Services from function computing.
+	//
+	// - VIP: Services from a fixed address.
+	//
+	// - DNS: Services from a domain name.
+	//
 	// example:
 	//
 	// MSE_NACOS
@@ -12269,15 +12824,22 @@ func (s *ListServicesRequest) SetSourceType(v string) *ListServicesRequest {
 }
 
 type ListServicesResponseBody struct {
+	// Response status code.
+	//
 	// example:
 	//
 	// Ok
-	Code *string                       `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Response data.
 	Data *ListServicesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 585657D2-1C20-5B8A-AF17-D727C6490BE4
@@ -12313,15 +12875,22 @@ func (s *ListServicesResponseBody) SetRequestId(v string) *ListServicesResponseB
 }
 
 type ListServicesResponseBodyData struct {
+	// Service list.
 	Items []*Service `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// Page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// Page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Total count.
+	//
 	// example:
 	//
 	// 18
@@ -12386,18 +12955,26 @@ func (s *ListServicesResponse) SetBody(v *ListServicesResponseBody) *ListService
 }
 
 type ListSslCertsRequest struct {
+	// Name matching keyword.
+	//
 	// example:
 	//
 	// ali
 	CertNameLike *string `json:"certNameLike,omitempty" xml:"certNameLike,omitempty"`
+	// Domain name.
+	//
 	// example:
 	//
 	// fun.iot.evideocloud.com.cn
 	DomainName *string `json:"domainName,omitempty" xml:"domainName,omitempty"`
+	// Page number, default is 1
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// Page size, default is 10
+	//
 	// example:
 	//
 	// 10
@@ -12433,15 +13010,22 @@ func (s *ListSslCertsRequest) SetPageSize(v int32) *ListSslCertsRequest {
 }
 
 type ListSslCertsResponseBody struct {
+	// Response status code.
+	//
 	// example:
 	//
 	// Ok
-	Code *string                       `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Returned data
 	Data *ListSslCertsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// AADF7197-3384-52AF-A2DE-A66696734129
@@ -12477,15 +13061,22 @@ func (s *ListSslCertsResponseBody) SetRequestId(v string) *ListSslCertsResponseB
 }
 
 type ListSslCertsResponseBodyData struct {
+	// List of certificate information.
 	Items []*SslCertMetaInfo `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// Page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// Page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Total count.
+	//
 	// example:
 	//
 	// 2
@@ -12550,15 +13141,22 @@ func (s *ListSslCertsResponse) SetBody(v *ListSslCertsResponseBody) *ListSslCert
 }
 
 type ListZonesResponseBody struct {
+	// Response status code.
+	//
 	// example:
 	//
 	// Ok
-	Code *string                    `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Returned data.
 	Data *ListZonesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// E8079207-B651-592A-A565-23E9EE5673B0
@@ -12594,6 +13192,7 @@ func (s *ListZonesResponseBody) SetRequestId(v string) *ListZonesResponseBody {
 }
 
 type ListZonesResponseBodyData struct {
+	// List of availability zones.
 	Items []*ListZonesResponseBodyDataItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 }
 
@@ -12611,6 +13210,8 @@ func (s *ListZonesResponseBodyData) SetItems(v []*ListZonesResponseBodyDataItems
 }
 
 type ListZonesResponseBodyDataItems struct {
+	// 可用区ID。
+	//
 	// example:
 	//
 	// cn-shenzhen-c
@@ -12732,9 +13333,129 @@ func (s *RestartGatewayResponse) SetBody(v *RestartGatewayResponseBody) *Restart
 	return s
 }
 
+type UndeployHttpApiRequest struct {
+	// example:
+	//
+	// env-cqsmtellhtgvo***
+	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
+	// example:
+	//
+	// hr-cr82undlhtgrle***
+	RouteId *string `json:"routeId,omitempty" xml:"routeId,omitempty"`
+}
+
+func (s UndeployHttpApiRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UndeployHttpApiRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UndeployHttpApiRequest) SetEnvironmentId(v string) *UndeployHttpApiRequest {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *UndeployHttpApiRequest) SetRouteId(v string) *UndeployHttpApiRequest {
+	s.RouteId = &v
+	return s
+}
+
+type UndeployHttpApiResponseBody struct {
+	// example:
+	//
+	// Ok
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// 3ACFC7A7-45A9-58CF-B2D5-765B60254695
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s UndeployHttpApiResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UndeployHttpApiResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UndeployHttpApiResponseBody) SetCode(v string) *UndeployHttpApiResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UndeployHttpApiResponseBody) SetMessage(v string) *UndeployHttpApiResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UndeployHttpApiResponseBody) SetRequestId(v string) *UndeployHttpApiResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UndeployHttpApiResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UndeployHttpApiResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UndeployHttpApiResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UndeployHttpApiResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UndeployHttpApiResponse) SetHeaders(v map[string]*string) *UndeployHttpApiResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UndeployHttpApiResponse) SetStatusCode(v int32) *UndeployHttpApiResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UndeployHttpApiResponse) SetBody(v *UndeployHttpApiResponseBody) *UndeployHttpApiResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateDomainRequest struct {
+	// CA certificate identifier
+	//
+	// example:
+	//
+	// 1ef1da5f-38ed-69b3-****-037781890265
 	CaCertIdentifier *string `json:"caCertIdentifier,omitempty" xml:"caCertIdentifier,omitempty"`
-	CertIdentifier   *string `json:"certIdentifier,omitempty" xml:"certIdentifier,omitempty"`
+	// Certificate identifier
+	//
+	// example:
+	//
+	// 1ef1da5f-38ed-69b3-****-037781890265
+	CertIdentifier *string `json:"certIdentifier,omitempty" xml:"certIdentifier,omitempty"`
+	// Client CA Certificate
+	//
+	// example:
+	//
+	// -----BEGIN CERTIFICATE-----
+	//
+	// MIIFBTCCAu2gAwIBAgIUORLpYPGSFD1YOP6PMbE7Wd/mpTQwDQYJKoZIhvcNAQEL
+	//
+	// BQAwE************************************************2VwVOJ2gqX3
+	//
+	// YuGaxvIbDy0iQJ1GMerPRyzJTeVEtdIKT29u0PdFRr4KZWom35qX7G4=
+	//
+	// -----END CERTIFICATE-----
+	ClientCACert *string `json:"clientCACert,omitempty" xml:"clientCACert,omitempty"`
 	// Set the HTTPS protocol type, whether to enable forced HTTPS redirection.
 	//
 	// example:
@@ -12747,6 +13468,8 @@ type UpdateDomainRequest struct {
 	//
 	// Open
 	Http2Option *string `json:"http2Option,omitempty" xml:"http2Option,omitempty"`
+	// Whether to enable mTLS mutual authentication
+	MTLSEnabled *bool `json:"mTLSEnabled,omitempty" xml:"mTLSEnabled,omitempty"`
 	// The protocol type supported by the domain.
 	//
 	// - HTTP: Supports only HTTP protocol.
@@ -12793,6 +13516,11 @@ func (s *UpdateDomainRequest) SetCertIdentifier(v string) *UpdateDomainRequest {
 	return s
 }
 
+func (s *UpdateDomainRequest) SetClientCACert(v string) *UpdateDomainRequest {
+	s.ClientCACert = &v
+	return s
+}
+
 func (s *UpdateDomainRequest) SetForceHttps(v bool) *UpdateDomainRequest {
 	s.ForceHttps = &v
 	return s
@@ -12800,6 +13528,11 @@ func (s *UpdateDomainRequest) SetForceHttps(v bool) *UpdateDomainRequest {
 
 func (s *UpdateDomainRequest) SetHttp2Option(v string) *UpdateDomainRequest {
 	s.Http2Option = &v
+	return s
+}
+
+func (s *UpdateDomainRequest) SetMTLSEnabled(v bool) *UpdateDomainRequest {
+	s.MTLSEnabled = &v
 	return s
 }
 
@@ -13224,10 +13957,11 @@ func (s *UpdateGatewayNameResponse) SetBody(v *UpdateGatewayNameResponseBody) *U
 }
 
 type UpdateHttpApiRequest struct {
-	// List of AI protocols.
-	AiProtocols []*string   `json:"aiProtocols,omitempty" xml:"aiProtocols,omitempty" type:"Repeated"`
-	AuthConfig  *AuthConfig `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
-	// Base path of the API, which must start with a \\"/\\".
+	// The AI protocols.
+	AiProtocols []*string `json:"aiProtocols,omitempty" xml:"aiProtocols,omitempty" type:"Repeated"`
+	// The authentication configuration.
+	AuthConfig *AuthConfig `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
+	// The API base path, which must start with a forward slash (/).
 	//
 	// This parameter is required.
 	//
@@ -13235,20 +13969,21 @@ type UpdateHttpApiRequest struct {
 	//
 	// /v1
 	BasePath *string `json:"basePath,omitempty" xml:"basePath,omitempty"`
-	// List of API deployment configurations.
+	// The deployment configurations.
 	DeployConfigs []*HttpApiDeployConfig `json:"deployConfigs,omitempty" xml:"deployConfigs,omitempty" type:"Repeated"`
-	// API description.
+	// The API description.
 	//
 	// example:
 	//
-	// 更新API描述
+	// API for testing
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	EnableAuth  *bool   `json:"enableAuth,omitempty" xml:"enableAuth,omitempty"`
-	// Configuration information for the HTTP Ingress API.
+	// Specifies whether to enable authentication.
+	EnableAuth *bool `json:"enableAuth,omitempty" xml:"enableAuth,omitempty"`
+	// The HTTP Ingress API configurations.
 	IngressConfig *UpdateHttpApiRequestIngressConfig `json:"ingressConfig,omitempty" xml:"ingressConfig,omitempty" type:"Struct"`
-	// List of API access protocols.
+	// The protocols that are used to access the API.
 	Protocols []*string `json:"protocols,omitempty" xml:"protocols,omitempty" type:"Repeated"`
-	// API versioning configuration.
+	// The versioning configurations.
 	VersionConfig *HttpApiVersionConfig `json:"versionConfig,omitempty" xml:"versionConfig,omitempty"`
 }
 
@@ -13306,31 +14041,31 @@ func (s *UpdateHttpApiRequest) SetVersionConfig(v *HttpApiVersionConfig) *Update
 }
 
 type UpdateHttpApiRequestIngressConfig struct {
-	// Environment ID.
+	// The environment ID.
 	//
 	// example:
 	//
 	// env-cr6ql0tlhtgmc****
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-	// Ingress Class being listened to.
+	// The Ingress class for listening.
 	//
 	// example:
 	//
 	// mse
 	IngressClass *string `json:"ingressClass,omitempty" xml:"ingressClass,omitempty"`
-	// Whether to update the address in the Ingress Status.
+	// Specifies whether to update the address in Ingress Status.
 	//
 	// example:
 	//
 	// false
 	OverrideIngressIp *bool `json:"overrideIngressIp,omitempty" xml:"overrideIngressIp,omitempty"`
-	// Source ID.
+	// The source ID.
 	//
 	// example:
 	//
 	// src-crdddallhtgtr****
 	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
-	// Watched namespace.
+	// The namespace for listening.
 	//
 	// example:
 	//
@@ -13372,19 +14107,19 @@ func (s *UpdateHttpApiRequestIngressConfig) SetWatchNamespace(v string) *UpdateH
 }
 
 type UpdateHttpApiResponseBody struct {
-	// Response status code.
+	// The status code.
 	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Response message.
+	// The returned message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
@@ -13762,13 +14497,22 @@ func (s *UpdateHttpApiRouteResponse) SetBody(v *UpdateHttpApiRouteResponseBody) 
 }
 
 type UpdatePolicyRequest struct {
+	// Policy configuration
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// {"unitNum":1,"timeUnit":"s","enable":true}
-	Config      *string `json:"config,omitempty" xml:"config,omitempty"`
+	Config *string `json:"config,omitempty" xml:"config,omitempty"`
+	// Description
+	//
+	// example:
+	//
+	// this is a timeout policy description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Policy name
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -13801,14 +14545,20 @@ func (s *UpdatePolicyRequest) SetName(v string) *UpdatePolicyRequest {
 }
 
 type UpdatePolicyResponseBody struct {
+	// Response status code.
+	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// C67DED2B-F19B-5BEC-88C1-D6EB854C***
@@ -14094,7 +14844,7 @@ func (client *Client) AddGatewaySecurityGroupRule(gatewayId *string, request *Ad
 
 // Summary:
 //
-// 资源转组
+// Resource Group Transfer
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -14162,7 +14912,7 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 
 // Summary:
 //
-// 资源转组
+// Resource Group Transfer
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -14208,12 +14958,20 @@ func (client *Client) CreateDomainWithOptions(request *CreateDomainRequest, head
 		body["certIdentifier"] = request.CertIdentifier
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ClientCACert)) {
+		body["clientCACert"] = request.ClientCACert
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ForceHttps)) {
 		body["forceHttps"] = request.ForceHttps
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Http2Option)) {
 		body["http2Option"] = request.Http2Option
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MTLSEnabled)) {
+		body["mTLSEnabled"] = request.MTLSEnabled
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
@@ -14599,7 +15357,7 @@ func (client *Client) CreateHttpApiOperation(httpApiId *string, request *CreateH
 
 // Summary:
 //
-// Create a route for HttpApi
+// Creates a route for an HTTP API.
 //
 // @param request - CreateHttpApiRouteRequest
 //
@@ -14675,7 +15433,7 @@ func (client *Client) CreateHttpApiRouteWithOptions(httpApiId *string, request *
 
 // Summary:
 //
-// Create a route for HttpApi
+// Creates a route for an HTTP API.
 //
 // @param request - CreateHttpApiRouteRequest
 //
@@ -14694,7 +15452,7 @@ func (client *Client) CreateHttpApiRoute(httpApiId *string, request *CreateHttpA
 
 // Summary:
 //
-// 创建策略
+// Create Policy
 //
 // @param request - CreatePolicyRequest
 //
@@ -14762,7 +15520,7 @@ func (client *Client) CreatePolicyWithOptions(request *CreatePolicyRequest, head
 
 // Summary:
 //
-// 创建策略
+// Create Policy
 //
 // @param request - CreatePolicyRequest
 //
@@ -14781,7 +15539,7 @@ func (client *Client) CreatePolicy(request *CreatePolicyRequest) (_result *Creat
 
 // Summary:
 //
-// 创建策略资源挂载
+// Create policy resource mount
 //
 // @param request - CreatePolicyAttachmentRequest
 //
@@ -14853,7 +15611,7 @@ func (client *Client) CreatePolicyAttachmentWithOptions(request *CreatePolicyAtt
 
 // Summary:
 //
-// 创建策略资源挂载
+// Create policy resource mount
 //
 // @param request - CreatePolicyAttachmentRequest
 //
@@ -14872,7 +15630,11 @@ func (client *Client) CreatePolicyAttachment(request *CreatePolicyAttachmentRequ
 
 // Summary:
 //
-// 创建服务
+// Create Service
+//
+// Description:
+//
+// The interface supports creating multiple services.
 //
 // @param request - CreateServiceRequest
 //
@@ -14940,7 +15702,11 @@ func (client *Client) CreateServiceWithOptions(request *CreateServiceRequest, he
 
 // Summary:
 //
-// 创建服务
+// Create Service
+//
+// Description:
+//
+// The interface supports creating multiple services.
 //
 // @param request - CreateServiceRequest
 //
@@ -15223,7 +15989,7 @@ func (client *Client) DeleteGatewaySecurityGroupRule(gatewayId *string, security
 
 // Summary:
 //
-// Delete HTTP API
+// Deletes an HTTP API.
 //
 // @param headers - map
 //
@@ -15267,7 +16033,7 @@ func (client *Client) DeleteHttpApiWithOptions(httpApiId *string, headers map[st
 
 // Summary:
 //
-// Delete HTTP API
+// Deletes an HTTP API.
 //
 // @return DeleteHttpApiResponse
 func (client *Client) DeleteHttpApi(httpApiId *string) (_result *DeleteHttpApiResponse, _err error) {
@@ -15406,7 +16172,7 @@ func (client *Client) DeleteHttpApiRoute(httpApiId *string, routeId *string) (_r
 
 // Summary:
 //
-// 删除策略
+// Delete Policy
 //
 // @param headers - map
 //
@@ -15450,7 +16216,7 @@ func (client *Client) DeletePolicyWithOptions(policyId *string, headers map[stri
 
 // Summary:
 //
-// 删除策略
+// Delete Policy
 //
 // @return DeletePolicyResponse
 func (client *Client) DeletePolicy(policyId *string) (_result *DeletePolicyResponse, _err error) {
@@ -15467,7 +16233,7 @@ func (client *Client) DeletePolicy(policyId *string) (_result *DeletePolicyRespo
 
 // Summary:
 //
-// 删除策略资源挂载
+// Delete policy resource attachment
 //
 // @param headers - map
 //
@@ -15511,7 +16277,7 @@ func (client *Client) DeletePolicyAttachmentWithOptions(policyAttachmentId *stri
 
 // Summary:
 //
-// 删除策略资源挂载
+// Delete policy resource attachment
 //
 // @return DeletePolicyAttachmentResponse
 func (client *Client) DeletePolicyAttachment(policyAttachmentId *string) (_result *DeletePolicyAttachmentResponse, _err error) {
@@ -15528,7 +16294,7 @@ func (client *Client) DeletePolicyAttachment(policyAttachmentId *string) (_resul
 
 // Summary:
 //
-// 部署HttpApi
+// Deploy HttpApi
 //
 // @param request - DeployHttpApiRequest
 //
@@ -15588,7 +16354,7 @@ func (client *Client) DeployHttpApiWithOptions(httpApiId *string, request *Deplo
 
 // Summary:
 //
-// 部署HttpApi
+// Deploy HttpApi
 //
 // @param request - DeployHttpApiRequest
 //
@@ -15668,7 +16434,7 @@ func (client *Client) ExportHttpApi(httpApiId *string) (_result *ExportHttpApiRe
 
 // Summary:
 //
-// 获取监控/日志大盘接口
+// Get Monitoring/Logging Dashboard Interface
 //
 // @param tmpReq - GetDashboardRequest
 //
@@ -15750,7 +16516,7 @@ func (client *Client) GetDashboardWithOptions(gatewayId *string, tmpReq *GetDash
 
 // Summary:
 //
-// 获取监控/日志大盘接口
+// Get Monitoring/Logging Dashboard Interface
 //
 // @param request - GetDashboardRequest
 //
@@ -16234,7 +17000,7 @@ func (client *Client) GetPolicy(policyId *string) (_result *GetPolicyResponse, _
 
 // Summary:
 //
-// 查询策略资源挂载
+// Query Policy Resource Attachment
 //
 // @param headers - map
 //
@@ -16278,7 +17044,7 @@ func (client *Client) GetPolicyAttachmentWithOptions(policyAttachmentId *string,
 
 // Summary:
 //
-// 查询策略资源挂载
+// Query Policy Resource Attachment
 //
 // @return GetPolicyAttachmentResponse
 func (client *Client) GetPolicyAttachment(policyAttachmentId *string) (_result *GetPolicyAttachmentResponse, _err error) {
@@ -16295,7 +17061,7 @@ func (client *Client) GetPolicyAttachment(policyAttachmentId *string) (_result *
 
 // Summary:
 //
-// 获取资源概览信息
+// Get resource overview information
 //
 // @param headers - map
 //
@@ -16339,7 +17105,7 @@ func (client *Client) GetResourceOverviewWithOptions(headers map[string]*string,
 
 // Summary:
 //
-// 获取资源概览信息
+// Get resource overview information
 //
 // @return GetResourceOverviewResponse
 func (client *Client) GetResourceOverview() (_result *GetResourceOverviewResponse, _err error) {
@@ -16356,7 +17122,7 @@ func (client *Client) GetResourceOverview() (_result *GetResourceOverviewRespons
 
 // Summary:
 //
-// 获取服务详情
+// Get Service Details
 //
 // @param headers - map
 //
@@ -16400,7 +17166,7 @@ func (client *Client) GetServiceWithOptions(serviceId *string, headers map[strin
 
 // Summary:
 //
-// 获取服务详情
+// Get Service Details
 //
 // @return GetServiceResponse
 func (client *Client) GetService(serviceId *string) (_result *GetServiceResponse, _err error) {
@@ -16417,7 +17183,7 @@ func (client *Client) GetService(serviceId *string) (_result *GetServiceResponse
 
 // Summary:
 //
-// 获取链路追踪配置
+// Retrieve Tracing Configuration
 //
 // @param request - GetTraceConfigRequest
 //
@@ -16473,7 +17239,7 @@ func (client *Client) GetTraceConfigWithOptions(gatewayId *string, request *GetT
 
 // Summary:
 //
-// 获取链路追踪配置
+// Retrieve Tracing Configuration
 //
 // @param request - GetTraceConfigRequest
 //
@@ -17015,7 +17781,7 @@ func (client *Client) ListHttpApiOperations(httpApiId *string, request *ListHttp
 
 // Summary:
 //
-// 创建HttpApi的路由
+// Create a route for HttpApi
 //
 // @param request - ListHttpApiRoutesRequest
 //
@@ -17119,7 +17885,7 @@ func (client *Client) ListHttpApiRoutesWithOptions(httpApiId *string, request *L
 
 // Summary:
 //
-// 创建HttpApi的路由
+// Create a route for HttpApi
 //
 // @param request - ListHttpApiRoutesRequest
 //
@@ -17265,7 +18031,7 @@ func (client *Client) ListHttpApis(request *ListHttpApisRequest) (_result *ListH
 
 // Summary:
 //
-// ListPolicyClasses。
+// ListPolicyClasses
 //
 // @param request - ListPolicyClassesRequest
 //
@@ -17337,7 +18103,7 @@ func (client *Client) ListPolicyClassesWithOptions(request *ListPolicyClassesReq
 
 // Summary:
 //
-// ListPolicyClasses。
+// ListPolicyClasses
 //
 // @param request - ListPolicyClassesRequest
 //
@@ -17356,7 +18122,7 @@ func (client *Client) ListPolicyClasses(request *ListPolicyClassesRequest) (_res
 
 // Summary:
 //
-// 获取服务列表
+// Get Service List
 //
 // @param request - ListServicesRequest
 //
@@ -17432,7 +18198,7 @@ func (client *Client) ListServicesWithOptions(request *ListServicesRequest, head
 
 // Summary:
 //
-// 获取服务列表
+// Get Service List
 //
 // @param request - ListServicesRequest
 //
@@ -17451,7 +18217,7 @@ func (client *Client) ListServices(request *ListServicesRequest) (_result *ListS
 
 // Summary:
 //
-// ListSslCerts。
+// ListSslCerts
 //
 // @param request - ListSslCertsRequest
 //
@@ -17519,7 +18285,7 @@ func (client *Client) ListSslCertsWithOptions(request *ListSslCertsRequest, head
 
 // Summary:
 //
-// ListSslCerts。
+// ListSslCerts
 //
 // @param request - ListSslCertsRequest
 //
@@ -17538,7 +18304,7 @@ func (client *Client) ListSslCerts(request *ListSslCertsRequest) (_result *ListS
 
 // Summary:
 //
-// 获取云原生API网关region下的可用区
+// Retrieve the availability zones under a cloud-native API gateway region
 //
 // @param headers - map
 //
@@ -17582,7 +18348,7 @@ func (client *Client) ListZonesWithOptions(headers map[string]*string, runtime *
 
 // Summary:
 //
-// 获取云原生API网关region下的可用区
+// Retrieve the availability zones under a cloud-native API gateway region
 //
 // @return ListZonesResponse
 func (client *Client) ListZones() (_result *ListZonesResponse, _err error) {
@@ -17660,7 +18426,90 @@ func (client *Client) RestartGateway(gatewayId *string) (_result *RestartGateway
 
 // Summary:
 //
+// 取消部署HttpApi
+//
+// @param request - UndeployHttpApiRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UndeployHttpApiResponse
+func (client *Client) UndeployHttpApiWithOptions(httpApiId *string, request *UndeployHttpApiRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UndeployHttpApiResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EnvironmentId)) {
+		body["environmentId"] = request.EnvironmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteId)) {
+		body["routeId"] = request.RouteId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UndeployHttpApi"),
+		Version:     tea.String("2024-03-27"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1/http-apis/" + tea.StringValue(openapiutil.GetEncodeParam(httpApiId)) + "/undeploy"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UndeployHttpApiResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UndeployHttpApiResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 取消部署HttpApi
+//
+// @param request - UndeployHttpApiRequest
+//
+// @return UndeployHttpApiResponse
+func (client *Client) UndeployHttpApi(httpApiId *string, request *UndeployHttpApiRequest) (_result *UndeployHttpApiResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UndeployHttpApiResponse{}
+	_body, _err := client.UndeployHttpApiWithOptions(httpApiId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // UpdateDomain
+//
+// Description:
+//
+// 只有类型为**容器服务**的来源允许更新监听Ingress的配置。
 //
 // @param request - UpdateDomainRequest
 //
@@ -17683,12 +18532,20 @@ func (client *Client) UpdateDomainWithOptions(domainId *string, request *UpdateD
 		body["certIdentifier"] = request.CertIdentifier
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ClientCACert)) {
+		body["clientCACert"] = request.ClientCACert
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ForceHttps)) {
 		body["forceHttps"] = request.ForceHttps
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Http2Option)) {
 		body["http2Option"] = request.Http2Option
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MTLSEnabled)) {
+		body["mTLSEnabled"] = request.MTLSEnabled
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Protocol)) {
@@ -17745,6 +18602,10 @@ func (client *Client) UpdateDomainWithOptions(domainId *string, request *UpdateD
 // Summary:
 //
 // UpdateDomain
+//
+// Description:
+//
+// 只有类型为**容器服务**的来源允许更新监听Ingress的配置。
 //
 // @param request - UpdateDomainRequest
 //
@@ -17998,7 +18859,7 @@ func (client *Client) UpdateGatewayName(gatewayId *string, request *UpdateGatewa
 
 // Summary:
 //
-// Update HTTP API
+// Updates an HTTP API.
 //
 // @param request - UpdateHttpApiRequest
 //
@@ -18086,7 +18947,7 @@ func (client *Client) UpdateHttpApiWithOptions(httpApiId *string, request *Updat
 
 // Summary:
 //
-// Update HTTP API
+// Updates an HTTP API.
 //
 // @param request - UpdateHttpApiRequest
 //
@@ -18271,7 +19132,7 @@ func (client *Client) UpdateHttpApiRoute(httpApiId *string, routeId *string, req
 
 // Summary:
 //
-// 更新策略
+// Update Policy
 //
 // @param request - UpdatePolicyRequest
 //
@@ -18335,7 +19196,7 @@ func (client *Client) UpdatePolicyWithOptions(policyId *string, request *UpdateP
 
 // Summary:
 //
-// 更新策略
+// Update Policy
 //
 // @param request - UpdatePolicyRequest
 //
