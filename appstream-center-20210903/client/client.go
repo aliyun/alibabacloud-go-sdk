@@ -22,7 +22,8 @@ type GetConnectionTicketRequest struct {
 	// example:
 	//
 	// 1.0.0.1
-	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	AppVersion         *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	AutoConnectInQueue *bool   `json:"AutoConnectInQueue,omitempty" xml:"AutoConnectInQueue,omitempty"`
 	// example:
 	//
 	// cn-hangzhou
@@ -38,7 +39,8 @@ type GetConnectionTicketRequest struct {
 	// example:
 	//
 	// windows_"Windows 10 Enterprise LTSC 2019" 10.0 (Build 17763)
-	ClientOS *string `json:"ClientOS,omitempty" xml:"ClientOS,omitempty"`
+	ClientOS   *string `json:"ClientOS,omitempty" xml:"ClientOS,omitempty"`
+	ClientType *string `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
 	// example:
 	//
 	// 2.0.1-D-20211008.101607
@@ -47,7 +49,8 @@ type GetConnectionTicketRequest struct {
 	// example:
 	//
 	// test.test
-	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	EndUserId         *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	EnvironmentConfig *string `json:"EnvironmentConfig,omitempty" xml:"EnvironmentConfig,omitempty"`
 	// example:
 	//
 	// cn-hangzhou
@@ -113,6 +116,11 @@ func (s *GetConnectionTicketRequest) SetAppVersion(v string) *GetConnectionTicke
 	return s
 }
 
+func (s *GetConnectionTicketRequest) SetAutoConnectInQueue(v bool) *GetConnectionTicketRequest {
+	s.AutoConnectInQueue = &v
+	return s
+}
+
 func (s *GetConnectionTicketRequest) SetBizRegionId(v string) *GetConnectionTicketRequest {
 	s.BizRegionId = &v
 	return s
@@ -133,6 +141,11 @@ func (s *GetConnectionTicketRequest) SetClientOS(v string) *GetConnectionTicketR
 	return s
 }
 
+func (s *GetConnectionTicketRequest) SetClientType(v string) *GetConnectionTicketRequest {
+	s.ClientType = &v
+	return s
+}
+
 func (s *GetConnectionTicketRequest) SetClientVersion(v string) *GetConnectionTicketRequest {
 	s.ClientVersion = &v
 	return s
@@ -145,6 +158,11 @@ func (s *GetConnectionTicketRequest) SetConnectionProperties(v string) *GetConne
 
 func (s *GetConnectionTicketRequest) SetEndUserId(v string) *GetConnectionTicketRequest {
 	s.EndUserId = &v
+	return s
+}
+
+func (s *GetConnectionTicketRequest) SetEnvironmentConfig(v string) *GetConnectionTicketRequest {
+	s.EnvironmentConfig = &v
 	return s
 }
 
@@ -339,12 +357,13 @@ func (s *GetConnectionTicketResponseBody) SetTicket(v string) *GetConnectionTick
 }
 
 type GetConnectionTicketResponseBodyBindQueueInfo struct {
-	Length           *int32  `json:"Length,omitempty" xml:"Length,omitempty"`
-	Rank             *int32  `json:"Rank,omitempty" xml:"Rank,omitempty"`
-	RemainingTimeMin *int32  `json:"RemainingTimeMin,omitempty" xml:"RemainingTimeMin,omitempty"`
-	RequestKey       *string `json:"RequestKey,omitempty" xml:"RequestKey,omitempty"`
-	TargetId         *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	WaitTimeMin      *int32  `json:"WaitTimeMin,omitempty" xml:"WaitTimeMin,omitempty"`
+	QueueStatus   *string `json:"QueueStatus,omitempty" xml:"QueueStatus,omitempty"`
+	Rank          *int32  `json:"Rank,omitempty" xml:"Rank,omitempty"`
+	ReadyTimeout  *int64  `json:"ReadyTimeout,omitempty" xml:"ReadyTimeout,omitempty"`
+	RemainingTime *int64  `json:"RemainingTime,omitempty" xml:"RemainingTime,omitempty"`
+	RequestKey    *string `json:"RequestKey,omitempty" xml:"RequestKey,omitempty"`
+	TargetId      *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	WaitTime      *int64  `json:"WaitTime,omitempty" xml:"WaitTime,omitempty"`
 }
 
 func (s GetConnectionTicketResponseBodyBindQueueInfo) String() string {
@@ -355,8 +374,8 @@ func (s GetConnectionTicketResponseBodyBindQueueInfo) GoString() string {
 	return s.String()
 }
 
-func (s *GetConnectionTicketResponseBodyBindQueueInfo) SetLength(v int32) *GetConnectionTicketResponseBodyBindQueueInfo {
-	s.Length = &v
+func (s *GetConnectionTicketResponseBodyBindQueueInfo) SetQueueStatus(v string) *GetConnectionTicketResponseBodyBindQueueInfo {
+	s.QueueStatus = &v
 	return s
 }
 
@@ -365,8 +384,13 @@ func (s *GetConnectionTicketResponseBodyBindQueueInfo) SetRank(v int32) *GetConn
 	return s
 }
 
-func (s *GetConnectionTicketResponseBodyBindQueueInfo) SetRemainingTimeMin(v int32) *GetConnectionTicketResponseBodyBindQueueInfo {
-	s.RemainingTimeMin = &v
+func (s *GetConnectionTicketResponseBodyBindQueueInfo) SetReadyTimeout(v int64) *GetConnectionTicketResponseBodyBindQueueInfo {
+	s.ReadyTimeout = &v
+	return s
+}
+
+func (s *GetConnectionTicketResponseBodyBindQueueInfo) SetRemainingTime(v int64) *GetConnectionTicketResponseBodyBindQueueInfo {
+	s.RemainingTime = &v
 	return s
 }
 
@@ -380,8 +404,8 @@ func (s *GetConnectionTicketResponseBodyBindQueueInfo) SetTargetId(v string) *Ge
 	return s
 }
 
-func (s *GetConnectionTicketResponseBodyBindQueueInfo) SetWaitTimeMin(v int32) *GetConnectionTicketResponseBodyBindQueueInfo {
-	s.WaitTimeMin = &v
+func (s *GetConnectionTicketResponseBodyBindQueueInfo) SetWaitTime(v int64) *GetConnectionTicketResponseBodyBindQueueInfo {
+	s.WaitTime = &v
 	return s
 }
 
@@ -439,272 +463,6 @@ func (s *GetConnectionTicketResponse) SetStatusCode(v int32) *GetConnectionTicke
 }
 
 func (s *GetConnectionTicketResponse) SetBody(v *GetConnectionTicketResponseBody) *GetConnectionTicketResponse {
-	s.Body = v
-	return s
-}
-
-type ListLFUAppRequest struct {
-	AliUid             *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	ApiType            *string `json:"ApiType,omitempty" xml:"ApiType,omitempty"`
-	BizRegionId        *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
-	ClientChannel      *string `json:"ClientChannel,omitempty" xml:"ClientChannel,omitempty"`
-	ClientId           *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	ClientIp           *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
-	ClientOS           *string `json:"ClientOS,omitempty" xml:"ClientOS,omitempty"`
-	ClientVersion      *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
-	EndUserId          *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	ExtendsAccessToken *string `json:"ExtendsAccessToken,omitempty" xml:"ExtendsAccessToken,omitempty"`
-	IdpId              *string `json:"IdpId,omitempty" xml:"IdpId,omitempty"`
-	LoginRegionId      *string `json:"LoginRegionId,omitempty" xml:"LoginRegionId,omitempty"`
-	LoginToken         *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
-	ProductType        *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SessionId          *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	TraceId            *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
-	Uuid               *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-	WyId               *string `json:"WyId,omitempty" xml:"WyId,omitempty"`
-}
-
-func (s ListLFUAppRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListLFUAppRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListLFUAppRequest) SetAliUid(v int64) *ListLFUAppRequest {
-	s.AliUid = &v
-	return s
-}
-
-func (s *ListLFUAppRequest) SetApiType(v string) *ListLFUAppRequest {
-	s.ApiType = &v
-	return s
-}
-
-func (s *ListLFUAppRequest) SetBizRegionId(v string) *ListLFUAppRequest {
-	s.BizRegionId = &v
-	return s
-}
-
-func (s *ListLFUAppRequest) SetClientChannel(v string) *ListLFUAppRequest {
-	s.ClientChannel = &v
-	return s
-}
-
-func (s *ListLFUAppRequest) SetClientId(v string) *ListLFUAppRequest {
-	s.ClientId = &v
-	return s
-}
-
-func (s *ListLFUAppRequest) SetClientIp(v string) *ListLFUAppRequest {
-	s.ClientIp = &v
-	return s
-}
-
-func (s *ListLFUAppRequest) SetClientOS(v string) *ListLFUAppRequest {
-	s.ClientOS = &v
-	return s
-}
-
-func (s *ListLFUAppRequest) SetClientVersion(v string) *ListLFUAppRequest {
-	s.ClientVersion = &v
-	return s
-}
-
-func (s *ListLFUAppRequest) SetEndUserId(v string) *ListLFUAppRequest {
-	s.EndUserId = &v
-	return s
-}
-
-func (s *ListLFUAppRequest) SetExtendsAccessToken(v string) *ListLFUAppRequest {
-	s.ExtendsAccessToken = &v
-	return s
-}
-
-func (s *ListLFUAppRequest) SetIdpId(v string) *ListLFUAppRequest {
-	s.IdpId = &v
-	return s
-}
-
-func (s *ListLFUAppRequest) SetLoginRegionId(v string) *ListLFUAppRequest {
-	s.LoginRegionId = &v
-	return s
-}
-
-func (s *ListLFUAppRequest) SetLoginToken(v string) *ListLFUAppRequest {
-	s.LoginToken = &v
-	return s
-}
-
-func (s *ListLFUAppRequest) SetProductType(v string) *ListLFUAppRequest {
-	s.ProductType = &v
-	return s
-}
-
-func (s *ListLFUAppRequest) SetRegionId(v string) *ListLFUAppRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *ListLFUAppRequest) SetSessionId(v string) *ListLFUAppRequest {
-	s.SessionId = &v
-	return s
-}
-
-func (s *ListLFUAppRequest) SetTraceId(v string) *ListLFUAppRequest {
-	s.TraceId = &v
-	return s
-}
-
-func (s *ListLFUAppRequest) SetUuid(v string) *ListLFUAppRequest {
-	s.Uuid = &v
-	return s
-}
-
-func (s *ListLFUAppRequest) SetWyId(v string) *ListLFUAppRequest {
-	s.WyId = &v
-	return s
-}
-
-type ListLFUAppResponseBody struct {
-	Code           *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Count          *int32                        `json:"Count,omitempty" xml:"Count,omitempty"`
-	Data           []*ListLFUAppResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	HttpStatusCode *int32                        `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                       `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                         `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s ListLFUAppResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListLFUAppResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListLFUAppResponseBody) SetCode(v string) *ListLFUAppResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *ListLFUAppResponseBody) SetCount(v int32) *ListLFUAppResponseBody {
-	s.Count = &v
-	return s
-}
-
-func (s *ListLFUAppResponseBody) SetData(v []*ListLFUAppResponseBodyData) *ListLFUAppResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *ListLFUAppResponseBody) SetHttpStatusCode(v int32) *ListLFUAppResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *ListLFUAppResponseBody) SetMessage(v string) *ListLFUAppResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *ListLFUAppResponseBody) SetRequestId(v string) *ListLFUAppResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListLFUAppResponseBody) SetSuccess(v bool) *ListLFUAppResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ListLFUAppResponseBodyData struct {
-	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppName        *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	AppVersion     *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	AppVersionName *string `json:"AppVersionName,omitempty" xml:"AppVersionName,omitempty"`
-	IconUrl        *string `json:"IconUrl,omitempty" xml:"IconUrl,omitempty"`
-	IsAuth         *bool   `json:"IsAuth,omitempty" xml:"IsAuth,omitempty"`
-	OsType         *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ListLFUAppResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListLFUAppResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *ListLFUAppResponseBodyData) SetAppId(v string) *ListLFUAppResponseBodyData {
-	s.AppId = &v
-	return s
-}
-
-func (s *ListLFUAppResponseBodyData) SetAppName(v string) *ListLFUAppResponseBodyData {
-	s.AppName = &v
-	return s
-}
-
-func (s *ListLFUAppResponseBodyData) SetAppVersion(v string) *ListLFUAppResponseBodyData {
-	s.AppVersion = &v
-	return s
-}
-
-func (s *ListLFUAppResponseBodyData) SetAppVersionName(v string) *ListLFUAppResponseBodyData {
-	s.AppVersionName = &v
-	return s
-}
-
-func (s *ListLFUAppResponseBodyData) SetIconUrl(v string) *ListLFUAppResponseBodyData {
-	s.IconUrl = &v
-	return s
-}
-
-func (s *ListLFUAppResponseBodyData) SetIsAuth(v bool) *ListLFUAppResponseBodyData {
-	s.IsAuth = &v
-	return s
-}
-
-func (s *ListLFUAppResponseBodyData) SetOsType(v string) *ListLFUAppResponseBodyData {
-	s.OsType = &v
-	return s
-}
-
-func (s *ListLFUAppResponseBodyData) SetRequestId(v string) *ListLFUAppResponseBodyData {
-	s.RequestId = &v
-	return s
-}
-
-type ListLFUAppResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *ListLFUAppResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s ListLFUAppResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListLFUAppResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListLFUAppResponse) SetHeaders(v map[string]*string) *ListLFUAppResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListLFUAppResponse) SetStatusCode(v int32) *ListLFUAppResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ListLFUAppResponse) SetBody(v *ListLFUAppResponseBody) *ListLFUAppResponse {
 	s.Body = v
 	return s
 }
@@ -1315,6 +1073,642 @@ func (s *ListRunningAppsResponse) SetBody(v *ListRunningAppsResponseBody) *ListR
 	return s
 }
 
+type ResetAppResourcesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// aig-9ciijz60n4xsv****
+	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// f4a0dc8e-1702-4728-9a60-95b27a35****
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// example:
+	//
+	// 1.2.3.4
+	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	// example:
+	//
+	// windows_\\"Windows 10 Pro\\" 10.0 (Build 22631)
+	ClientOS *string `json:"ClientOS,omitempty" xml:"ClientOS,omitempty"`
+	// example:
+	//
+	// 7.7.0-R-20241217.092056
+	ClientVersion *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
+	// example:
+	//
+	// user01
+	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	LoginRegionId *string `json:"LoginRegionId,omitempty" xml:"LoginRegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// v285fdd7f6d39fa7861981639366085772e150a390a5bb7b43c4e62440d94fc392b945770e1596cebe90085ce0af4d****
+	LoginToken *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// AndroidCloud
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// This parameter is required.
+	ResourceIds []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c261a6a1-e242-4f4b-813c-5fe807e49f03
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// 2943802884B27030B6759F9132B2****
+	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+}
+
+func (s ResetAppResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResetAppResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ResetAppResourcesRequest) SetAppInstanceGroupId(v string) *ResetAppResourcesRequest {
+	s.AppInstanceGroupId = &v
+	return s
+}
+
+func (s *ResetAppResourcesRequest) SetBizRegionId(v string) *ResetAppResourcesRequest {
+	s.BizRegionId = &v
+	return s
+}
+
+func (s *ResetAppResourcesRequest) SetClientId(v string) *ResetAppResourcesRequest {
+	s.ClientId = &v
+	return s
+}
+
+func (s *ResetAppResourcesRequest) SetClientIp(v string) *ResetAppResourcesRequest {
+	s.ClientIp = &v
+	return s
+}
+
+func (s *ResetAppResourcesRequest) SetClientOS(v string) *ResetAppResourcesRequest {
+	s.ClientOS = &v
+	return s
+}
+
+func (s *ResetAppResourcesRequest) SetClientVersion(v string) *ResetAppResourcesRequest {
+	s.ClientVersion = &v
+	return s
+}
+
+func (s *ResetAppResourcesRequest) SetEndUserId(v string) *ResetAppResourcesRequest {
+	s.EndUserId = &v
+	return s
+}
+
+func (s *ResetAppResourcesRequest) SetLoginRegionId(v string) *ResetAppResourcesRequest {
+	s.LoginRegionId = &v
+	return s
+}
+
+func (s *ResetAppResourcesRequest) SetLoginToken(v string) *ResetAppResourcesRequest {
+	s.LoginToken = &v
+	return s
+}
+
+func (s *ResetAppResourcesRequest) SetProductType(v string) *ResetAppResourcesRequest {
+	s.ProductType = &v
+	return s
+}
+
+func (s *ResetAppResourcesRequest) SetResourceIds(v []*string) *ResetAppResourcesRequest {
+	s.ResourceIds = v
+	return s
+}
+
+func (s *ResetAppResourcesRequest) SetSessionId(v string) *ResetAppResourcesRequest {
+	s.SessionId = &v
+	return s
+}
+
+func (s *ResetAppResourcesRequest) SetUuid(v string) *ResetAppResourcesRequest {
+	s.Uuid = &v
+	return s
+}
+
+type ResetAppResourcesResponseBody struct {
+	// example:
+	//
+	// InvalidAppInstanceGroup.NotFound
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// The app instance group is not found.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ResetAppResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResetAppResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ResetAppResourcesResponseBody) SetCode(v string) *ResetAppResourcesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ResetAppResourcesResponseBody) SetMessage(v string) *ResetAppResourcesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ResetAppResourcesResponseBody) SetRequestId(v string) *ResetAppResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ResetAppResourcesResponseBody) SetSuccess(v string) *ResetAppResourcesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ResetAppResourcesResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ResetAppResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ResetAppResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResetAppResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ResetAppResourcesResponse) SetHeaders(v map[string]*string) *ResetAppResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ResetAppResourcesResponse) SetStatusCode(v int32) *ResetAppResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ResetAppResourcesResponse) SetBody(v *ResetAppResourcesResponseBody) *ResetAppResourcesResponse {
+	s.Body = v
+	return s
+}
+
+type RestartAppResourcesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// aig-53fvrq1oanz6c****
+	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eac19bef-1e45-4190-a03a-4ea74b699ca7
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// example:
+	//
+	// 1.2.3.4
+	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	// example:
+	//
+	// windows_\\"Windows 10 Enterprise\\" 10.0 (Build 14393)
+	ClientOS *string `json:"ClientOS,omitempty" xml:"ClientOS,omitempty"`
+	// example:
+	//
+	// 7.5.3-RS-20241127.131156
+	ClientVersion *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
+	// example:
+	//
+	// user001
+	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	LoginRegionId *string `json:"LoginRegionId,omitempty" xml:"LoginRegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// v1124500957832f30b3e716406562071655aa43b2a723ed2be0837815483d54e025db13ba5469f06f2410d0efc4d302e36
+	LoginToken *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// AndroidCloud
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// This parameter is required.
+	ResourceIds []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c261a6a1-e242-4f4b-813c-5fe807e49f03
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// 2943802884B27030B6759F9132B2****
+	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+}
+
+func (s RestartAppResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RestartAppResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RestartAppResourcesRequest) SetAppInstanceGroupId(v string) *RestartAppResourcesRequest {
+	s.AppInstanceGroupId = &v
+	return s
+}
+
+func (s *RestartAppResourcesRequest) SetBizRegionId(v string) *RestartAppResourcesRequest {
+	s.BizRegionId = &v
+	return s
+}
+
+func (s *RestartAppResourcesRequest) SetClientId(v string) *RestartAppResourcesRequest {
+	s.ClientId = &v
+	return s
+}
+
+func (s *RestartAppResourcesRequest) SetClientIp(v string) *RestartAppResourcesRequest {
+	s.ClientIp = &v
+	return s
+}
+
+func (s *RestartAppResourcesRequest) SetClientOS(v string) *RestartAppResourcesRequest {
+	s.ClientOS = &v
+	return s
+}
+
+func (s *RestartAppResourcesRequest) SetClientVersion(v string) *RestartAppResourcesRequest {
+	s.ClientVersion = &v
+	return s
+}
+
+func (s *RestartAppResourcesRequest) SetEndUserId(v string) *RestartAppResourcesRequest {
+	s.EndUserId = &v
+	return s
+}
+
+func (s *RestartAppResourcesRequest) SetLoginRegionId(v string) *RestartAppResourcesRequest {
+	s.LoginRegionId = &v
+	return s
+}
+
+func (s *RestartAppResourcesRequest) SetLoginToken(v string) *RestartAppResourcesRequest {
+	s.LoginToken = &v
+	return s
+}
+
+func (s *RestartAppResourcesRequest) SetProductType(v string) *RestartAppResourcesRequest {
+	s.ProductType = &v
+	return s
+}
+
+func (s *RestartAppResourcesRequest) SetResourceIds(v []*string) *RestartAppResourcesRequest {
+	s.ResourceIds = v
+	return s
+}
+
+func (s *RestartAppResourcesRequest) SetSessionId(v string) *RestartAppResourcesRequest {
+	s.SessionId = &v
+	return s
+}
+
+func (s *RestartAppResourcesRequest) SetUuid(v string) *RestartAppResourcesRequest {
+	s.Uuid = &v
+	return s
+}
+
+type RestartAppResourcesResponseBody struct {
+	// example:
+	//
+	// InvalidAppInstanceGroup.NotFound
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// The app instance group is not found.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s RestartAppResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RestartAppResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RestartAppResourcesResponseBody) SetCode(v string) *RestartAppResourcesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *RestartAppResourcesResponseBody) SetMessage(v string) *RestartAppResourcesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *RestartAppResourcesResponseBody) SetRequestId(v string) *RestartAppResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RestartAppResourcesResponseBody) SetSuccess(v string) *RestartAppResourcesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type RestartAppResourcesResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RestartAppResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RestartAppResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RestartAppResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RestartAppResourcesResponse) SetHeaders(v map[string]*string) *RestartAppResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RestartAppResourcesResponse) SetStatusCode(v int32) *RestartAppResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RestartAppResourcesResponse) SetBody(v *RestartAppResourcesResponseBody) *RestartAppResourcesResponse {
+	s.Body = v
+	return s
+}
+
+type StartAppResourcesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// aig-9ciijz60n4xsv****
+	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eac19bef-1e45-4190-a03a-4ea74b69****
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// example:
+	//
+	// 1.2.3.4
+	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	// example:
+	//
+	// windows_\\"Windows 10 Pro\\" 10.0 (Build 22631)
+	ClientOS *string `json:"ClientOS,omitempty" xml:"ClientOS,omitempty"`
+	// example:
+	//
+	// 7.5.1-R-20240903.163046
+	ClientVersion *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
+	// example:
+	//
+	// testUser01
+	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	LoginRegionId *string `json:"LoginRegionId,omitempty" xml:"LoginRegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// v185fdd7f6d39fa7861981639366085772e150a390a5bb7b43c4e62440d94fc392b945770e1596cebe90085ce0af4d****
+	LoginToken *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// AndroidCloud
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// This parameter is required.
+	ResourceIds []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a863f4c3-2f1d-4971-8cf7-e2b92ae9****
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// 2943802884B27030B6759F9132B2****
+	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+}
+
+func (s StartAppResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartAppResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartAppResourcesRequest) SetAppInstanceGroupId(v string) *StartAppResourcesRequest {
+	s.AppInstanceGroupId = &v
+	return s
+}
+
+func (s *StartAppResourcesRequest) SetBizRegionId(v string) *StartAppResourcesRequest {
+	s.BizRegionId = &v
+	return s
+}
+
+func (s *StartAppResourcesRequest) SetClientId(v string) *StartAppResourcesRequest {
+	s.ClientId = &v
+	return s
+}
+
+func (s *StartAppResourcesRequest) SetClientIp(v string) *StartAppResourcesRequest {
+	s.ClientIp = &v
+	return s
+}
+
+func (s *StartAppResourcesRequest) SetClientOS(v string) *StartAppResourcesRequest {
+	s.ClientOS = &v
+	return s
+}
+
+func (s *StartAppResourcesRequest) SetClientVersion(v string) *StartAppResourcesRequest {
+	s.ClientVersion = &v
+	return s
+}
+
+func (s *StartAppResourcesRequest) SetEndUserId(v string) *StartAppResourcesRequest {
+	s.EndUserId = &v
+	return s
+}
+
+func (s *StartAppResourcesRequest) SetLoginRegionId(v string) *StartAppResourcesRequest {
+	s.LoginRegionId = &v
+	return s
+}
+
+func (s *StartAppResourcesRequest) SetLoginToken(v string) *StartAppResourcesRequest {
+	s.LoginToken = &v
+	return s
+}
+
+func (s *StartAppResourcesRequest) SetProductType(v string) *StartAppResourcesRequest {
+	s.ProductType = &v
+	return s
+}
+
+func (s *StartAppResourcesRequest) SetResourceIds(v []*string) *StartAppResourcesRequest {
+	s.ResourceIds = v
+	return s
+}
+
+func (s *StartAppResourcesRequest) SetSessionId(v string) *StartAppResourcesRequest {
+	s.SessionId = &v
+	return s
+}
+
+func (s *StartAppResourcesRequest) SetUuid(v string) *StartAppResourcesRequest {
+	s.Uuid = &v
+	return s
+}
+
+type StartAppResourcesResponseBody struct {
+	// example:
+	//
+	// InvalidAppInstanceGroup.NotFound
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// The app instance group is not found.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s StartAppResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartAppResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartAppResourcesResponseBody) SetCode(v string) *StartAppResourcesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *StartAppResourcesResponseBody) SetMessage(v string) *StartAppResourcesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *StartAppResourcesResponseBody) SetRequestId(v string) *StartAppResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *StartAppResourcesResponseBody) SetSuccess(v string) *StartAppResourcesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type StartAppResourcesResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartAppResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StartAppResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartAppResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartAppResourcesResponse) SetHeaders(v map[string]*string) *StartAppResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartAppResourcesResponse) SetStatusCode(v int32) *StartAppResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StartAppResourcesResponse) SetBody(v *StartAppResourcesResponseBody) *StartAppResourcesResponse {
+	s.Body = v
+	return s
+}
+
 type StopAppRequest struct {
 	// example:
 	//
@@ -1560,6 +1954,218 @@ func (s *StopAppResponse) SetStatusCode(v int32) *StopAppResponse {
 }
 
 func (s *StopAppResponse) SetBody(v *StopAppResponseBody) *StopAppResponse {
+	s.Body = v
+	return s
+}
+
+type StopAppResourcesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// aig-9ciijz60n4xsv****
+	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eac19bef-1e45-4190-a03a-4ea74b699ca7
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// example:
+	//
+	// 1.2.3.4
+	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	// example:
+	//
+	// windows_"Windows 10 Enterprise" 10.0 (Build 19042)
+	ClientOS *string `json:"ClientOS,omitempty" xml:"ClientOS,omitempty"`
+	// example:
+	//
+	// 7.2.0-R-20241008.110000
+	ClientVersion *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
+	// example:
+	//
+	// testUser
+	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	LoginRegionId *string `json:"LoginRegionId,omitempty" xml:"LoginRegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// v12369636c721ba6b3ddb1683341016775c3f63e4d0e78f120f9a0544ed826b7af7daf747c402f0d0730b52f451b70****
+	LoginToken *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// AndroidCloud
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// This parameter is required.
+	ResourceIds []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 597e869d-ea14-4b83-9490-714f68bfe935
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// C50973691A6D2BE23F2CDD73B85B****
+	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+}
+
+func (s StopAppResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopAppResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopAppResourcesRequest) SetAppInstanceGroupId(v string) *StopAppResourcesRequest {
+	s.AppInstanceGroupId = &v
+	return s
+}
+
+func (s *StopAppResourcesRequest) SetBizRegionId(v string) *StopAppResourcesRequest {
+	s.BizRegionId = &v
+	return s
+}
+
+func (s *StopAppResourcesRequest) SetClientId(v string) *StopAppResourcesRequest {
+	s.ClientId = &v
+	return s
+}
+
+func (s *StopAppResourcesRequest) SetClientIp(v string) *StopAppResourcesRequest {
+	s.ClientIp = &v
+	return s
+}
+
+func (s *StopAppResourcesRequest) SetClientOS(v string) *StopAppResourcesRequest {
+	s.ClientOS = &v
+	return s
+}
+
+func (s *StopAppResourcesRequest) SetClientVersion(v string) *StopAppResourcesRequest {
+	s.ClientVersion = &v
+	return s
+}
+
+func (s *StopAppResourcesRequest) SetEndUserId(v string) *StopAppResourcesRequest {
+	s.EndUserId = &v
+	return s
+}
+
+func (s *StopAppResourcesRequest) SetLoginRegionId(v string) *StopAppResourcesRequest {
+	s.LoginRegionId = &v
+	return s
+}
+
+func (s *StopAppResourcesRequest) SetLoginToken(v string) *StopAppResourcesRequest {
+	s.LoginToken = &v
+	return s
+}
+
+func (s *StopAppResourcesRequest) SetProductType(v string) *StopAppResourcesRequest {
+	s.ProductType = &v
+	return s
+}
+
+func (s *StopAppResourcesRequest) SetResourceIds(v []*string) *StopAppResourcesRequest {
+	s.ResourceIds = v
+	return s
+}
+
+func (s *StopAppResourcesRequest) SetSessionId(v string) *StopAppResourcesRequest {
+	s.SessionId = &v
+	return s
+}
+
+func (s *StopAppResourcesRequest) SetUuid(v string) *StopAppResourcesRequest {
+	s.Uuid = &v
+	return s
+}
+
+type StopAppResourcesResponseBody struct {
+	// example:
+	//
+	// InvalidAppInstanceGroup.NotFound
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// The app instance group is not found.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 829444D6-9FD3-5C65-A570-065975537647
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s StopAppResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopAppResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StopAppResourcesResponseBody) SetCode(v string) *StopAppResourcesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *StopAppResourcesResponseBody) SetMessage(v string) *StopAppResourcesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *StopAppResourcesResponseBody) SetRequestId(v string) *StopAppResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *StopAppResourcesResponseBody) SetSuccess(v string) *StopAppResourcesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type StopAppResourcesResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopAppResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StopAppResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopAppResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopAppResourcesResponse) SetHeaders(v map[string]*string) *StopAppResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopAppResourcesResponse) SetStatusCode(v int32) *StopAppResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StopAppResourcesResponse) SetBody(v *StopAppResourcesResponseBody) *StopAppResourcesResponse {
 	s.Body = v
 	return s
 }
@@ -1827,6 +2433,10 @@ func (client *Client) GetConnectionTicketWithOptions(request *GetConnectionTicke
 		body["AppVersion"] = request.AppVersion
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.AutoConnectInQueue)) {
+		body["AutoConnectInQueue"] = request.AutoConnectInQueue
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.BizRegionId)) {
 		body["BizRegionId"] = request.BizRegionId
 	}
@@ -1843,6 +2453,10 @@ func (client *Client) GetConnectionTicketWithOptions(request *GetConnectionTicke
 		body["ClientOS"] = request.ClientOS
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ClientType)) {
+		body["ClientType"] = request.ClientType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ClientVersion)) {
 		body["ClientVersion"] = request.ClientVersion
 	}
@@ -1853,6 +2467,10 @@ func (client *Client) GetConnectionTicketWithOptions(request *GetConnectionTicke
 
 	if !tea.BoolValue(util.IsUnset(request.EndUserId)) {
 		body["EndUserId"] = request.EndUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvironmentConfig)) {
+		body["EnvironmentConfig"] = request.EnvironmentConfig
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.LoginRegionId)) {
@@ -1905,13 +2523,24 @@ func (client *Client) GetConnectionTicketWithOptions(request *GetConnectionTicke
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetConnectionTicketResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetConnectionTicketResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetConnectionTicketResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -1925,130 +2554,6 @@ func (client *Client) GetConnectionTicket(request *GetConnectionTicketRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &GetConnectionTicketResponse{}
 	_body, _err := client.GetConnectionTicketWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// @param request - ListLFUAppRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return ListLFUAppResponse
-func (client *Client) ListLFUAppWithOptions(request *ListLFUAppRequest, runtime *util.RuntimeOptions) (_result *ListLFUAppResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AliUid)) {
-		body["AliUid"] = request.AliUid
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ApiType)) {
-		body["ApiType"] = request.ApiType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.BizRegionId)) {
-		body["BizRegionId"] = request.BizRegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ClientChannel)) {
-		body["ClientChannel"] = request.ClientChannel
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ClientId)) {
-		body["ClientId"] = request.ClientId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ClientIp)) {
-		body["ClientIp"] = request.ClientIp
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ClientOS)) {
-		body["ClientOS"] = request.ClientOS
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ClientVersion)) {
-		body["ClientVersion"] = request.ClientVersion
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EndUserId)) {
-		body["EndUserId"] = request.EndUserId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ExtendsAccessToken)) {
-		body["ExtendsAccessToken"] = request.ExtendsAccessToken
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.IdpId)) {
-		body["IdpId"] = request.IdpId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.LoginRegionId)) {
-		body["LoginRegionId"] = request.LoginRegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.LoginToken)) {
-		body["LoginToken"] = request.LoginToken
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
-		body["ProductType"] = request.ProductType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		body["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
-		body["SessionId"] = request.SessionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TraceId)) {
-		body["TraceId"] = request.TraceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Uuid)) {
-		body["Uuid"] = request.Uuid
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.WyId)) {
-		body["WyId"] = request.WyId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListLFUApp"),
-		Version:     tea.String("2021-09-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("Anonymous"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListLFUAppResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - ListLFUAppRequest
-//
-// @return ListLFUAppResponse
-func (client *Client) ListLFUApp(request *ListLFUAppRequest) (_result *ListLFUAppResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListLFUAppResponse{}
-	_body, _err := client.ListLFUAppWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2145,13 +2650,24 @@ func (client *Client) ListPublishedAppInfoWithOptions(request *ListPublishedAppI
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListPublishedAppInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListPublishedAppInfoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListPublishedAppInfoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -2249,13 +2765,24 @@ func (client *Client) ListRunningAppsWithOptions(request *ListRunningAppsRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListRunningAppsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListRunningAppsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListRunningAppsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -2269,6 +2796,363 @@ func (client *Client) ListRunningApps(request *ListRunningAppsRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &ListRunningAppsResponse{}
 	_body, _err := client.ListRunningAppsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 重置应用资源
+//
+// @param request - ResetAppResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResetAppResourcesResponse
+func (client *Client) ResetAppResourcesWithOptions(request *ResetAppResourcesRequest, runtime *util.RuntimeOptions) (_result *ResetAppResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppInstanceGroupId)) {
+		body["AppInstanceGroupId"] = request.AppInstanceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BizRegionId)) {
+		body["BizRegionId"] = request.BizRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientId)) {
+		body["ClientId"] = request.ClientId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientIp)) {
+		body["ClientIp"] = request.ClientIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientOS)) {
+		body["ClientOS"] = request.ClientOS
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientVersion)) {
+		body["ClientVersion"] = request.ClientVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndUserId)) {
+		body["EndUserId"] = request.EndUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoginRegionId)) {
+		body["LoginRegionId"] = request.LoginRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoginToken)) {
+		body["LoginToken"] = request.LoginToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		body["ProductType"] = request.ProductType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceIds)) {
+		body["ResourceIds"] = request.ResourceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		body["SessionId"] = request.SessionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuid)) {
+		body["Uuid"] = request.Uuid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ResetAppResources"),
+		Version:     tea.String("2021-09-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("Anonymous"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ResetAppResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ResetAppResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 重置应用资源
+//
+// @param request - ResetAppResourcesRequest
+//
+// @return ResetAppResourcesResponse
+func (client *Client) ResetAppResources(request *ResetAppResourcesRequest) (_result *ResetAppResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ResetAppResourcesResponse{}
+	_body, _err := client.ResetAppResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 重启应用资源
+//
+// @param request - RestartAppResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RestartAppResourcesResponse
+func (client *Client) RestartAppResourcesWithOptions(request *RestartAppResourcesRequest, runtime *util.RuntimeOptions) (_result *RestartAppResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppInstanceGroupId)) {
+		body["AppInstanceGroupId"] = request.AppInstanceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BizRegionId)) {
+		body["BizRegionId"] = request.BizRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientId)) {
+		body["ClientId"] = request.ClientId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientIp)) {
+		body["ClientIp"] = request.ClientIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientOS)) {
+		body["ClientOS"] = request.ClientOS
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientVersion)) {
+		body["ClientVersion"] = request.ClientVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndUserId)) {
+		body["EndUserId"] = request.EndUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoginRegionId)) {
+		body["LoginRegionId"] = request.LoginRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoginToken)) {
+		body["LoginToken"] = request.LoginToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		body["ProductType"] = request.ProductType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceIds)) {
+		body["ResourceIds"] = request.ResourceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		body["SessionId"] = request.SessionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuid)) {
+		body["Uuid"] = request.Uuid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RestartAppResources"),
+		Version:     tea.String("2021-09-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("Anonymous"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RestartAppResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RestartAppResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 重启应用资源
+//
+// @param request - RestartAppResourcesRequest
+//
+// @return RestartAppResourcesResponse
+func (client *Client) RestartAppResources(request *RestartAppResourcesRequest) (_result *RestartAppResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RestartAppResourcesResponse{}
+	_body, _err := client.RestartAppResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 启动应用资源
+//
+// @param request - StartAppResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartAppResourcesResponse
+func (client *Client) StartAppResourcesWithOptions(request *StartAppResourcesRequest, runtime *util.RuntimeOptions) (_result *StartAppResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppInstanceGroupId)) {
+		body["AppInstanceGroupId"] = request.AppInstanceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BizRegionId)) {
+		body["BizRegionId"] = request.BizRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientId)) {
+		body["ClientId"] = request.ClientId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientIp)) {
+		body["ClientIp"] = request.ClientIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientOS)) {
+		body["ClientOS"] = request.ClientOS
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientVersion)) {
+		body["ClientVersion"] = request.ClientVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndUserId)) {
+		body["EndUserId"] = request.EndUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoginRegionId)) {
+		body["LoginRegionId"] = request.LoginRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoginToken)) {
+		body["LoginToken"] = request.LoginToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		body["ProductType"] = request.ProductType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceIds)) {
+		body["ResourceIds"] = request.ResourceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		body["SessionId"] = request.SessionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuid)) {
+		body["Uuid"] = request.Uuid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartAppResources"),
+		Version:     tea.String("2021-09-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("Anonymous"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StartAppResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StartAppResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 启动应用资源
+//
+// @param request - StartAppResourcesRequest
+//
+// @return StartAppResourcesResponse
+func (client *Client) StartAppResources(request *StartAppResourcesRequest) (_result *StartAppResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StartAppResourcesResponse{}
+	_body, _err := client.StartAppResourcesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2389,13 +3273,24 @@ func (client *Client) StopAppWithOptions(request *StopAppRequest, runtime *util.
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StopAppResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StopAppResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StopAppResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -2409,6 +3304,125 @@ func (client *Client) StopApp(request *StopAppRequest) (_result *StopAppResponse
 	runtime := &util.RuntimeOptions{}
 	_result = &StopAppResponse{}
 	_body, _err := client.StopAppWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 关闭应用资源
+//
+// @param request - StopAppResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopAppResourcesResponse
+func (client *Client) StopAppResourcesWithOptions(request *StopAppResourcesRequest, runtime *util.RuntimeOptions) (_result *StopAppResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppInstanceGroupId)) {
+		body["AppInstanceGroupId"] = request.AppInstanceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BizRegionId)) {
+		body["BizRegionId"] = request.BizRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientId)) {
+		body["ClientId"] = request.ClientId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientIp)) {
+		body["ClientIp"] = request.ClientIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientOS)) {
+		body["ClientOS"] = request.ClientOS
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientVersion)) {
+		body["ClientVersion"] = request.ClientVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndUserId)) {
+		body["EndUserId"] = request.EndUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoginRegionId)) {
+		body["LoginRegionId"] = request.LoginRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoginToken)) {
+		body["LoginToken"] = request.LoginToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		body["ProductType"] = request.ProductType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceIds)) {
+		body["ResourceIds"] = request.ResourceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		body["SessionId"] = request.SessionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuid)) {
+		body["Uuid"] = request.Uuid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopAppResources"),
+		Version:     tea.String("2021-09-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("Anonymous"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StopAppResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StopAppResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 关闭应用资源
+//
+// @param request - StopAppResourcesRequest
+//
+// @return StopAppResourcesResponse
+func (client *Client) StopAppResources(request *StopAppResourcesRequest) (_result *StopAppResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StopAppResourcesResponse{}
+	_body, _err := client.StopAppResourcesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2497,13 +3511,24 @@ func (client *Client) UnbindWithOptions(request *UnbindRequest, runtime *util.Ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UnbindResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UnbindResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UnbindResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
