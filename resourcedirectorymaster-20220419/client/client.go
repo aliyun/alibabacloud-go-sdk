@@ -5398,10 +5398,13 @@ func (s *GetPayerForAccountResponse) SetBody(v *GetPayerForAccountResponseBody) 
 }
 
 type GetResourceDirectoryResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// CD76D376-2517-4924-92C5-DBC52262F93A
-	RequestId         *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the resource directory.
 	ResourceDirectory *GetResourceDirectoryResponseBodyResourceDirectory `json:"ResourceDirectory,omitempty" xml:"ResourceDirectory,omitempty" type:"Struct"`
 }
 
@@ -5424,32 +5427,72 @@ func (s *GetResourceDirectoryResponseBody) SetResourceDirectory(v *GetResourceDi
 }
 
 type GetResourceDirectoryResponseBodyResourceDirectory struct {
+	// The status of the Control Policy feature. Valid values:
+	//
+	// - Enabled: The feature is enabled.
+	//
+	// - PendingEnable: The feature is being enabled.
+	//
+	// - Disabled: The feature is disabled.
+	//
+	// - PendingDisable: The feature is being disabled.
+	//
 	// example:
 	//
 	// Enabled
 	ControlPolicyStatus *string `json:"ControlPolicyStatus,omitempty" xml:"ControlPolicyStatus,omitempty"`
+	// The time when the resource directory was enabled.
+	//
 	// example:
 	//
 	// 2019-02-18T15:32:10.473Z
-	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The real-name verification information.
+	//
+	// example:
+	//
+	// **	- Co., Ltd.
 	IdentityInformation *string `json:"IdentityInformation,omitempty" xml:"IdentityInformation,omitempty"`
+	// The ID of the management account.
+	//
 	// example:
 	//
 	// 172845045600****
 	MasterAccountId *string `json:"MasterAccountId,omitempty" xml:"MasterAccountId,omitempty"`
+	// The name of the management account.
+	//
 	// example:
 	//
 	// aliyun-admin
-	MasterAccountName                  *string `json:"MasterAccountName,omitempty" xml:"MasterAccountName,omitempty"`
+	MasterAccountName *string `json:"MasterAccountName,omitempty" xml:"MasterAccountName,omitempty"`
+	// The status of the Member Display Name Synchronization feature. Valid values:
+	//
+	// 	- Enabled
+	//
+	// 	- Disabled
+	//
+	// example:
+	//
+	// Enabled
 	MemberAccountDisplayNameSyncStatus *string `json:"MemberAccountDisplayNameSyncStatus,omitempty" xml:"MemberAccountDisplayNameSyncStatus,omitempty"`
+	// The status of the member deletion feature. Valid values:
+	//
+	// - Enabled: The feature is enabled. You can call the [DeleteAccount](~~DeleteAccount~~) operation to delete members of the resource account type.
+	//
+	// - Disabled: The feature is disabled. You cannot delete members of the resource account type.
+	//
 	// example:
 	//
 	// Enabled
 	MemberDeletionStatus *string `json:"MemberDeletionStatus,omitempty" xml:"MemberDeletionStatus,omitempty"`
+	// The ID of the resource directory.
+	//
 	// example:
 	//
 	// rd-St****
 	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
+	// The ID of the Root folder.
+	//
 	// example:
 	//
 	// r-Zo****
@@ -5857,9 +5900,21 @@ type ListAccountsRequest struct {
 	// example:
 	//
 	// true
-	IncludeTags *bool   `json:"IncludeTags,omitempty" xml:"IncludeTags,omitempty"`
-	MaxResults  *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken   *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	IncludeTags *bool `json:"IncludeTags,omitempty" xml:"IncludeTags,omitempty"`
+	// The number of entries per page. After you configure this parameter, token-based paging is preferentially used.
+	//
+	// Valid values: 1 to 100. Default value: 10.
+	//
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. If you leave this parameter empty, the query starts from the beginning.
+	//
+	// example:
+	//
+	// TGlzdFJlc291cm****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The number of the page to return.
 	//
 	// Pages start from page 1. Default value: 1.
@@ -5966,8 +6021,13 @@ func (s *ListAccountsRequestTag) SetValue(v string) *ListAccountsRequestTag {
 
 type ListAccountsResponseBody struct {
 	// The information about the members.
-	Accounts  *ListAccountsResponseBodyAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Struct"`
-	NextToken *string                           `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Accounts *ListAccountsResponseBodyAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Struct"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	//
+	// example:
+	//
+	// TGlzdFJlc291cm****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The page number of the returned page.
 	//
 	// example:
@@ -6909,15 +6969,15 @@ type ListControlPoliciesRequest struct {
 	//
 	// zh-CN
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// The number of the page to return.
+	// The page number.
 	//
-	// Pages start from page 1. Default value: 1.
+	// Page starts from page 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
 	// Valid values: 1 to 100. Default value: 10.
 	//
@@ -6934,8 +6994,9 @@ type ListControlPoliciesRequest struct {
 	// example:
 	//
 	// System
-	PolicyType *string                          `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
-	Tag        []*ListControlPoliciesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	// The tags.
+	Tag []*ListControlPoliciesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListControlPoliciesRequest) String() string {
@@ -6972,7 +7033,17 @@ func (s *ListControlPoliciesRequest) SetTag(v []*ListControlPoliciesRequestTag) 
 }
 
 type ListControlPoliciesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// tag_key
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// tag_value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -6995,7 +7066,7 @@ func (s *ListControlPoliciesRequestTag) SetValue(v string) *ListControlPoliciesR
 }
 
 type ListControlPoliciesResponseBody struct {
-	// The information of the access control policies.
+	// The access control policies.
 	ControlPolicies *ListControlPoliciesResponseBodyControlPolicies `json:"ControlPolicies,omitempty" xml:"ControlPolicies,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
@@ -7123,8 +7194,9 @@ type ListControlPoliciesResponseBodyControlPoliciesControlPolicy struct {
 	// example:
 	//
 	// System
-	PolicyType *string                                                          `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
-	Tags       *ListControlPoliciesResponseBodyControlPoliciesControlPolicyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	// The tags.
+	Tags *ListControlPoliciesResponseBodyControlPoliciesControlPolicyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	// The time when the access control policy was updated.
 	//
 	// example:
@@ -7204,7 +7276,17 @@ func (s *ListControlPoliciesResponseBodyControlPoliciesControlPolicyTags) SetTag
 }
 
 type ListControlPoliciesResponseBodyControlPoliciesControlPolicyTagsTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// tag_key
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// tag_value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -11076,6 +11158,100 @@ func (s *SetMemberDeletionPermissionResponse) SetBody(v *SetMemberDeletionPermis
 	return s
 }
 
+type SetMemberDisplayNameSyncStatusRequest struct {
+	// The status of the Member Display Name Synchronization feature. Valid values:
+	//
+	// 	- Enabled: The feature is enabled. This indicates that the display names specified by the management account for the members will be synchronized to the basic account information of the members. The display name information will be visible and perceptible to the members. If a notification is sent to a member, the display name of the member will be used as the appellation of the member.
+	//
+	// 	- Disabled: The feature is disabled. This indicates that the display names specified by the management account for the members are valid only in the resource directory and will not be updated to the basic account information of the members.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Enabled
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s SetMemberDisplayNameSyncStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetMemberDisplayNameSyncStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetMemberDisplayNameSyncStatusRequest) SetStatus(v string) *SetMemberDisplayNameSyncStatusRequest {
+	s.Status = &v
+	return s
+}
+
+type SetMemberDisplayNameSyncStatusResponseBody struct {
+	// The status of the Member Display Name Synchronization feature. Valid values:
+	//
+	// 	- Enabled
+	//
+	// 	- Disabled
+	//
+	// example:
+	//
+	// Enabled
+	MemberAccountDisplayNameSyncStatus *string `json:"MemberAccountDisplayNameSyncStatus,omitempty" xml:"MemberAccountDisplayNameSyncStatus,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 9B34724D-54B0-4A51-B34D-4512372FE1BE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SetMemberDisplayNameSyncStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetMemberDisplayNameSyncStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetMemberDisplayNameSyncStatusResponseBody) SetMemberAccountDisplayNameSyncStatus(v string) *SetMemberDisplayNameSyncStatusResponseBody {
+	s.MemberAccountDisplayNameSyncStatus = &v
+	return s
+}
+
+func (s *SetMemberDisplayNameSyncStatusResponseBody) SetRequestId(v string) *SetMemberDisplayNameSyncStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SetMemberDisplayNameSyncStatusResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetMemberDisplayNameSyncStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SetMemberDisplayNameSyncStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetMemberDisplayNameSyncStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetMemberDisplayNameSyncStatusResponse) SetHeaders(v map[string]*string) *SetMemberDisplayNameSyncStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetMemberDisplayNameSyncStatusResponse) SetStatusCode(v int32) *SetMemberDisplayNameSyncStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SetMemberDisplayNameSyncStatusResponse) SetBody(v *SetMemberDisplayNameSyncStatusResponseBody) *SetMemberDisplayNameSyncStatusResponse {
+	s.Body = v
+	return s
+}
+
 type TagResourcesRequest struct {
 	// The Alibaba Cloud account IDs of the members.
 	//
@@ -12155,12 +12331,16 @@ func (s *UpdateMessageContactResponse) SetBody(v *UpdateMessageContactResponseBo
 }
 
 type UpdatePayerForAccountRequest struct {
+	// The Alibaba Cloud account ID of the member.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 138660628348****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The ID of the billing account.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -12188,6 +12368,8 @@ func (s *UpdatePayerForAccountRequest) SetPayerAccountId(v string) *UpdatePayerF
 }
 
 type UpdatePayerForAccountResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 9B34724D-54B0-4A51-B34D-4512372FE1BE
@@ -15029,7 +15211,7 @@ func (client *Client) GetPayerForAccount(request *GetPayerForAccountRequest) (_r
 
 // Summary:
 //
-// \\*\\*\\	- Co., Ltd.
+// Queries the information of a resource directory. If you use a management account to call this API operation, the system returns the information of the resource directory that is enabled by using the management account. If you use a member to call this operation, the system returns the information of
 //
 // @param request - GetResourceDirectoryRequest
 //
@@ -15071,7 +15253,7 @@ func (client *Client) GetResourceDirectoryWithOptions(runtime *util.RuntimeOptio
 
 // Summary:
 //
-// \\*\\*\\	- Co., Ltd.
+// Queries the information of a resource directory. If you use a management account to call this API operation, the system returns the information of the resource directory that is enabled by using the management account. If you use a member to call this operation, the system returns the information of
 //
 // @return GetResourceDirectoryResponse
 func (client *Client) GetResourceDirectory() (_result *GetResourceDirectoryResponse, _err error) {
@@ -15174,7 +15356,7 @@ func (client *Client) InviteAccountToResourceDirectory(request *InviteAccountToR
 
 // Summary:
 //
-// Queries all the members in a resource directory.
+// Queries a list of members in a resource directory.
 //
 // Description:
 //
@@ -15255,7 +15437,7 @@ func (client *Client) ListAccountsWithOptions(request *ListAccountsRequest, runt
 
 // Summary:
 //
-// Queries all the members in a resource directory.
+// Queries a list of members in a resource directory.
 //
 // Description:
 //
@@ -17355,6 +17537,77 @@ func (client *Client) SetMemberDeletionPermission(request *SetMemberDeletionPerm
 
 // Summary:
 //
+// Enables or disables the Member Display Name Synchronization feature.
+//
+// @param request - SetMemberDisplayNameSyncStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetMemberDisplayNameSyncStatusResponse
+func (client *Client) SetMemberDisplayNameSyncStatusWithOptions(request *SetMemberDisplayNameSyncStatusRequest, runtime *util.RuntimeOptions) (_result *SetMemberDisplayNameSyncStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetMemberDisplayNameSyncStatus"),
+		Version:     tea.String("2022-04-19"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetMemberDisplayNameSyncStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetMemberDisplayNameSyncStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Enables or disables the Member Display Name Synchronization feature.
+//
+// @param request - SetMemberDisplayNameSyncStatusRequest
+//
+// @return SetMemberDisplayNameSyncStatusResponse
+func (client *Client) SetMemberDisplayNameSyncStatus(request *SetMemberDisplayNameSyncStatusRequest) (_result *SetMemberDisplayNameSyncStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetMemberDisplayNameSyncStatusResponse{}
+	_body, _err := client.SetMemberDisplayNameSyncStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Adds tags to the members in a resource directory.
 //
 // @param request - TagResourcesRequest
@@ -17865,7 +18118,7 @@ func (client *Client) UpdateMessageContact(request *UpdateMessageContactRequest)
 
 // Summary:
 //
-// 更新成员的结算账号
+// Updates the billing account of a member.
 //
 // @param request - UpdatePayerForAccountRequest
 //
@@ -17922,7 +18175,7 @@ func (client *Client) UpdatePayerForAccountWithOptions(request *UpdatePayerForAc
 
 // Summary:
 //
-// 更新成员的结算账号
+// Updates the billing account of a member.
 //
 // @param request - UpdatePayerForAccountRequest
 //
