@@ -6680,6 +6680,189 @@ func (s *GetUserInformationResponse) SetBody(v *GetUserInformationResponseBody) 
 	return s
 }
 
+type ListPoliciesRequest struct {
+	// Page size.
+	//
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Token for the next query, an empty nextToken indicates there is no next page.
+	//
+	// example:
+	//
+	// BBBAAfu+XtuBE55iRLHEYYuojI4=
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListPoliciesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPoliciesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListPoliciesRequest) SetMaxResults(v int32) *ListPoliciesRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListPoliciesRequest) SetNextToken(v string) *ListPoliciesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListPoliciesRequest) SetRegionId(v string) *ListPoliciesRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListPoliciesResponseBody struct {
+	// 分页大小。
+	//
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Next Token
+	//
+	// example:
+	//
+	// AAAAAZ9FmxgN6wKfeK/GOKRnnjU=
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Permission policy list
+	Policies []*ListPoliciesResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
+	// Request ID
+	//
+	// example:
+	//
+	// 51945B04-6AA6-410D-93BA-236E0248B104
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListPoliciesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPoliciesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListPoliciesResponseBody) SetMaxResults(v int32) *ListPoliciesResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListPoliciesResponseBody) SetNextToken(v string) *ListPoliciesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListPoliciesResponseBody) SetPolicies(v []*ListPoliciesResponseBodyPolicies) *ListPoliciesResponseBody {
+	s.Policies = v
+	return s
+}
+
+func (s *ListPoliciesResponseBody) SetRequestId(v string) *ListPoliciesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListPoliciesResponseBodyPolicies struct {
+	// Permission policy description.
+	//
+	// example:
+	//
+	// Only read permission policy
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Policy content.
+	//
+	// example:
+	//
+	// {"Action":["*:Describe*","*:List*","*:Get*","*:BatchGet*","*:Query*","*:BatchQuery*","actiontrail:LookupEvents"],"Resource":["*"],"Effect":"Allow"}
+	PolicyDocument *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
+	// Permission policy name.
+	//
+	// example:
+	//
+	// AliyunComputeNestPolicyForReadOnly
+	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	// Permission policy type.
+	//
+	// - Custom: Custom policy.
+	//
+	// - System: System policy.
+	//
+	// example:
+	//
+	// System
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+}
+
+func (s ListPoliciesResponseBodyPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPoliciesResponseBodyPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *ListPoliciesResponseBodyPolicies) SetDescription(v string) *ListPoliciesResponseBodyPolicies {
+	s.Description = &v
+	return s
+}
+
+func (s *ListPoliciesResponseBodyPolicies) SetPolicyDocument(v string) *ListPoliciesResponseBodyPolicies {
+	s.PolicyDocument = &v
+	return s
+}
+
+func (s *ListPoliciesResponseBodyPolicies) SetPolicyName(v string) *ListPoliciesResponseBodyPolicies {
+	s.PolicyName = &v
+	return s
+}
+
+func (s *ListPoliciesResponseBodyPolicies) SetPolicyType(v string) *ListPoliciesResponseBodyPolicies {
+	s.PolicyType = &v
+	return s
+}
+
+type ListPoliciesResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListPoliciesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListPoliciesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPoliciesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListPoliciesResponse) SetHeaders(v map[string]*string) *ListPoliciesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListPoliciesResponse) SetStatusCode(v int32) *ListPoliciesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListPoliciesResponse) SetBody(v *ListPoliciesResponseBody) *ListPoliciesResponse {
+	s.Body = v
+	return s
+}
+
 type ListServiceCategoriesResponseBody struct {
 	// The category list of the service.
 	Categories []*string `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
@@ -6741,13 +6924,19 @@ func (s *ListServiceCategoriesResponse) SetBody(v *ListServiceCategoriesResponse
 type ListServiceInstanceLogsRequest struct {
 	// The filters.
 	Filter []*ListServiceInstanceLogsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
-	// The log source. Valid values:
+	// The log source. When this field is empty, query logs with the source set to computeNest and ros. Valid values:
 	//
-	// 	- computeNest (default): logs of the deployment and upgrade of the service instance.
+	// computeNest : logs of the deployment and upgrade of the service instance.
 	//
-	// 	- application: logs generated by the application.
+	// application: logs generated by the application.
 	//
-	// 	- actionTrail: logs generated by ActionTrail.
+	// actionTrail: logs generated by ActionTrail.
+	//
+	// compliancePack: Logs originating from the compliance package.
+	//
+	// ros: Logs originating from ROS.
+	//
+	// meteringData：Logs originating from the pay-as-you-go model.
 	//
 	// example:
 	//
@@ -6791,11 +6980,11 @@ type ListServiceInstanceLogsRequest struct {
 	//
 	// si-70a3b15bb626435b****
 	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
-	// Sort Order. Possible values:
+	// The order in which you want to sort the results. Valid values:
 	//
-	// + Ascending: Ascending order
+	// 	- Ascending
 	//
-	// + Descending (default value): Descending order
+	// 	- (Default) Descending
 	//
 	// example:
 	//
@@ -6992,13 +7181,19 @@ type ListServiceInstanceLogsResponseBodyServiceInstancesLogs struct {
 	//
 	// ROS.Stack
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The source of the service instance log. Valid values:
+	// The log source. Valid values:
 	//
-	// computeNest: logs of the deployment and upgrade of the service instance.
+	// computeNest : logs of the deployment and upgrade of the service instance.
 	//
 	// application: logs generated by the application.
 	//
 	// actionTrail: logs generated by ActionTrail.
+	//
+	// compliancePack: Logs originating from the compliance package.
+	//
+	// ros: Logs originating from ROS.
+	//
+	// meteringData：Logs originating from the pay-as-you-go model.
 	//
 	// example:
 	//
@@ -7119,22 +7314,6 @@ func (s *ListServiceInstanceLogsResponse) SetBody(v *ListServiceInstanceLogsResp
 }
 
 type ListServiceInstanceResourcesRequest struct {
-	// End time of resource usage.
-	//
-	// <notice	Note: Only supports querying service instances on private deployments.
-	//
-	// example:
-	//
-	// 2022-03-01T12:00:00
-	ExpireTimeEnd *string `json:"ExpireTimeEnd,omitempty" xml:"ExpireTimeEnd,omitempty"`
-	// Start time of resource usage.
-	//
-	// <notice	Note: Only supports querying service instances on private deployments.
-	//
-	// example:
-	//
-	// 2022-01-01T12:00:00
-	ExpireTimeStart *string `json:"ExpireTimeStart,omitempty" xml:"ExpireTimeStart,omitempty"`
 	// The filter conditions. Vaild values:
 	//
 	// - ExpireTimeStart：
@@ -7175,16 +7354,6 @@ type ListServiceInstanceResourcesRequest struct {
 	//
 	// AAAAAc3HCuYhJi/wvpk4xOr0VLbAx7BkQzyYC+ONO+WudHGKEdB0uWSY7AGnM3qCgm/Ynge7zU6NWdbj0Tegyajyqyc=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The billing method of the read-only instance. Valid values:
-	//
-	// 	- **Postpaid**: pay-as-you-go
-	//
-	// 	- **Prepaid**: subscription
-	//
-	// example:
-	//
-	// Subscription
-	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	// The region ID. Valid values:
 	//
 	// 	- cn-hangzhou: China (Hangzhou).
@@ -7195,8 +7364,6 @@ type ListServiceInstanceResourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The Alibaba Cloud Resource Name (ARN) of a resource.
-	ResourceARN []*string `json:"ResourceARN,omitempty" xml:"ResourceARN,omitempty" type:"Repeated"`
 	// The ID of the service instance.
 	//
 	// This parameter is required.
@@ -7223,16 +7390,6 @@ func (s ListServiceInstanceResourcesRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListServiceInstanceResourcesRequest) SetExpireTimeEnd(v string) *ListServiceInstanceResourcesRequest {
-	s.ExpireTimeEnd = &v
-	return s
-}
-
-func (s *ListServiceInstanceResourcesRequest) SetExpireTimeStart(v string) *ListServiceInstanceResourcesRequest {
-	s.ExpireTimeStart = &v
-	return s
-}
-
 func (s *ListServiceInstanceResourcesRequest) SetFilters(v []*ListServiceInstanceResourcesRequestFilters) *ListServiceInstanceResourcesRequest {
 	s.Filters = v
 	return s
@@ -7248,18 +7405,8 @@ func (s *ListServiceInstanceResourcesRequest) SetNextToken(v string) *ListServic
 	return s
 }
 
-func (s *ListServiceInstanceResourcesRequest) SetPayType(v string) *ListServiceInstanceResourcesRequest {
-	s.PayType = &v
-	return s
-}
-
 func (s *ListServiceInstanceResourcesRequest) SetRegionId(v string) *ListServiceInstanceResourcesRequest {
 	s.RegionId = &v
-	return s
-}
-
-func (s *ListServiceInstanceResourcesRequest) SetResourceARN(v []*string) *ListServiceInstanceResourcesRequest {
-	s.ResourceARN = v
 	return s
 }
 
@@ -8733,7 +8880,7 @@ func (s *ListServiceUsagesRequestFilter) SetValue(v []*string) *ListServiceUsage
 }
 
 type ListServiceUsagesResponseBody struct {
-	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	// The maximum number of entries per page. Valid values: 1 to 100. Default value: 20.
 	//
 	// example:
 	//
@@ -8753,7 +8900,12 @@ type ListServiceUsagesResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The service applications.
 	ServiceUsages []*ListServiceUsagesResponseBodyServiceUsages `json:"ServiceUsages,omitempty" xml:"ServiceUsages,omitempty" type:"Repeated"`
-	TotalCount    *int32                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 2
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListServiceUsagesResponseBody) String() string {
@@ -8812,7 +8964,7 @@ type ListServiceUsagesResponseBodyServiceUsages struct {
 	//
 	// example:
 	//
-	// LobeChat社区版
+	// LobelChat
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	// The state of the service application. Valid values:
 	//
@@ -8846,7 +8998,7 @@ type ListServiceUsagesResponseBodyServiceUsages struct {
 	//
 	// 127383705958xxxx
 	UserAliUid *int64 `json:"UserAliUid,omitempty" xml:"UserAliUid,omitempty"`
-	// The information about the applicant.
+	// The information about the applicants.
 	UserInformation map[string]*string `json:"UserInformation,omitempty" xml:"UserInformation,omitempty"`
 }
 
@@ -13682,6 +13834,85 @@ func (client *Client) GetUserInformation(request *GetUserInformationRequest) (_r
 
 // Summary:
 //
+// Query Permission Policy List
+//
+// @param request - ListPoliciesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPoliciesResponse
+func (client *Client) ListPoliciesWithOptions(request *ListPoliciesRequest, runtime *util.RuntimeOptions) (_result *ListPoliciesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListPolicies"),
+		Version:     tea.String("2021-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListPoliciesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListPoliciesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Query Permission Policy List
+//
+// @param request - ListPoliciesRequest
+//
+// @return ListPoliciesResponse
+func (client *Client) ListPolicies(request *ListPoliciesRequest) (_result *ListPoliciesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListPoliciesResponse{}
+	_body, _err := client.ListPoliciesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询服务类别
 //
 // @param request - ListServiceCategoriesRequest
@@ -13852,14 +14083,6 @@ func (client *Client) ListServiceInstanceResourcesWithOptions(request *ListServi
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ExpireTimeEnd)) {
-		query["ExpireTimeEnd"] = request.ExpireTimeEnd
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ExpireTimeStart)) {
-		query["ExpireTimeStart"] = request.ExpireTimeStart
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.Filters)) {
 		query["Filters"] = request.Filters
 	}
@@ -13872,16 +14095,8 @@ func (client *Client) ListServiceInstanceResourcesWithOptions(request *ListServi
 		query["NextToken"] = request.NextToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.PayType)) {
-		query["PayType"] = request.PayType
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceARN)) {
-		query["ResourceARN"] = request.ResourceARN
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ServiceInstanceId)) {
