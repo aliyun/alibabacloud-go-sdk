@@ -1344,7 +1344,8 @@ type CreateLindormInstanceRequest struct {
 	// example:
 	//
 	// lindorm.g.xlarge
-	StreamSpec *string `json:"StreamSpec,omitempty" xml:"StreamSpec,omitempty"`
+	StreamSpec *string                            `json:"StreamSpec,omitempty" xml:"StreamSpec,omitempty"`
+	Tag        []*CreateLindormInstanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The number of the LindormTSDB nodes in the instance. The valid values of this parameter depend on the value of the PayType parameter.
 	//
 	// 	- If the PayType parameter is set to **PREPAY**, set this parameter to an integer that ranges from **0*	- to **24**.
@@ -1603,6 +1604,11 @@ func (s *CreateLindormInstanceRequest) SetStreamSpec(v string) *CreateLindormIns
 	return s
 }
 
+func (s *CreateLindormInstanceRequest) SetTag(v []*CreateLindormInstanceRequestTag) *CreateLindormInstanceRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *CreateLindormInstanceRequest) SetTsdbNum(v int32) *CreateLindormInstanceRequest {
 	s.TsdbNum = &v
 	return s
@@ -1625,6 +1631,29 @@ func (s *CreateLindormInstanceRequest) SetVSwitchId(v string) *CreateLindormInst
 
 func (s *CreateLindormInstanceRequest) SetZoneId(v string) *CreateLindormInstanceRequest {
 	s.ZoneId = &v
+	return s
+}
+
+type CreateLindormInstanceRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateLindormInstanceRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLindormInstanceRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLindormInstanceRequestTag) SetKey(v string) *CreateLindormInstanceRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateLindormInstanceRequestTag) SetValue(v string) *CreateLindormInstanceRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -12697,6 +12726,10 @@ func (client *Client) CreateLindormInstanceWithOptions(request *CreateLindormIns
 		query["StreamSpec"] = request.StreamSpec
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TsdbNum)) {
 		query["TsdbNum"] = request.TsdbNum
 	}
@@ -16669,9 +16702,9 @@ func (client *Client) SetDefaultOlapComputeGroup(request *SetDefaultOlapComputeG
 //
 // Prerequisites
 //
-// 	- The LindormTable version of your instance is 2.6.0 or later.
+//   - The LindormTable version of your instance is 2.6.0 or later.
 //
-// 	- The LindormTable of your instance supports LindormSQL V3. The value of the EnableLsqlVersionV3 parameter in the response of the GetLindormInstance operation is true for Lindorm instances purchased after Oct 24, 2023, which indicates that LindormSQL is supported by these instances by default. If you want to enable LindormSQL for instances purchased before Oct 24, 2023, contact the on-duty technical support.
+//   - The LindormTable of your instance supports LindormSQL V3. The value of the EnableLsqlVersionV3 parameter in the response of the GetLindormInstance operation is true for Lindorm instances purchased after Oct 24, 2023, which indicates that LindormSQL is supported by these instances by default. If you want to enable LindormSQL for instances purchased before Oct 24, 2023, contact the on-duty technical support.
 //
 // You can enable the MySQL compatibility feature for a Lindorm instance only when the instance meets the preceding requirements.
 //
@@ -16756,9 +16789,9 @@ func (client *Client) SwitchLSQLV3MySQLServiceWithOptions(request *SwitchLSQLV3M
 //
 // Prerequisites
 //
-// 	- The LindormTable version of your instance is 2.6.0 or later.
+//   - The LindormTable version of your instance is 2.6.0 or later.
 //
-// 	- The LindormTable of your instance supports LindormSQL V3. The value of the EnableLsqlVersionV3 parameter in the response of the GetLindormInstance operation is true for Lindorm instances purchased after Oct 24, 2023, which indicates that LindormSQL is supported by these instances by default. If you want to enable LindormSQL for instances purchased before Oct 24, 2023, contact the on-duty technical support.
+//   - The LindormTable of your instance supports LindormSQL V3. The value of the EnableLsqlVersionV3 parameter in the response of the GetLindormInstance operation is true for Lindorm instances purchased after Oct 24, 2023, which indicates that LindormSQL is supported by these instances by default. If you want to enable LindormSQL for instances purchased before Oct 24, 2023, contact the on-duty technical support.
 //
 // You can enable the MySQL compatibility feature for a Lindorm instance only when the instance meets the preceding requirements.
 //
