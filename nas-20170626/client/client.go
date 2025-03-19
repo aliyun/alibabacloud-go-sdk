@@ -4241,7 +4241,8 @@ type CreateLifecyclePolicyRequest struct {
 	// example:
 	//
 	// 31a8e4****
-	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	FileSystemId *string   `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	FsetIds      []*string `json:"FsetIds,omitempty" xml:"FsetIds,omitempty" type:"Repeated"`
 	// The name of the lifecycle policy. The name must be 3 to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
 	//
 	// This parameter is required.
@@ -4262,12 +4263,11 @@ type CreateLifecyclePolicyRequest struct {
 	//
 	// 	- DEFAULT_ATIME_90: Files that are not accessed in the last 90 days are dumped to the IA storage medium.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// DEFAULT_ATIME_14
 	LifecycleRuleName *string `json:"LifecycleRuleName,omitempty" xml:"LifecycleRuleName,omitempty"`
+	LifecycleRuleType *string `json:"LifecycleRuleType,omitempty" xml:"LifecycleRuleType,omitempty"`
 	// The absolute path of the directory that is associated with the lifecycle policy.
 	//
 	// If you specify this parameter, you can associate the lifecycle policy with only one directory. The path must start with a forward slash (/) and must be a path that exists in the mount target.
@@ -4311,6 +4311,11 @@ func (s *CreateLifecyclePolicyRequest) SetFileSystemId(v string) *CreateLifecycl
 	return s
 }
 
+func (s *CreateLifecyclePolicyRequest) SetFsetIds(v []*string) *CreateLifecyclePolicyRequest {
+	s.FsetIds = v
+	return s
+}
+
 func (s *CreateLifecyclePolicyRequest) SetLifecyclePolicyName(v string) *CreateLifecyclePolicyRequest {
 	s.LifecyclePolicyName = &v
 	return s
@@ -4318,6 +4323,11 @@ func (s *CreateLifecyclePolicyRequest) SetLifecyclePolicyName(v string) *CreateL
 
 func (s *CreateLifecyclePolicyRequest) SetLifecycleRuleName(v string) *CreateLifecyclePolicyRequest {
 	s.LifecycleRuleName = &v
+	return s
+}
+
+func (s *CreateLifecyclePolicyRequest) SetLifecycleRuleType(v string) *CreateLifecyclePolicyRequest {
+	s.LifecycleRuleType = &v
 	return s
 }
 
@@ -12177,7 +12187,9 @@ type DescribeFileSystemsResponseBodyFileSystemsFileSystem struct {
 	// example:
 	//
 	// rg-acfmwavnfdf****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceGroupId    *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SecondaryBandwidth *int32  `json:"SecondaryBandwidth,omitempty" xml:"SecondaryBandwidth,omitempty"`
+	SecondaryCapacity  *int64  `json:"SecondaryCapacity,omitempty" xml:"SecondaryCapacity,omitempty"`
 	// The status of the file system. Valid values:
 	//
 	// - Pending: The file system is being created or modified.
@@ -12360,6 +12372,16 @@ func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystem) SetRegionId(v str
 
 func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystem) SetResourceGroupId(v string) *DescribeFileSystemsResponseBodyFileSystemsFileSystem {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystem) SetSecondaryBandwidth(v int32) *DescribeFileSystemsResponseBodyFileSystemsFileSystem {
+	s.SecondaryBandwidth = &v
+	return s
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystem) SetSecondaryCapacity(v int64) *DescribeFileSystemsResponseBodyFileSystemsFileSystem {
+	s.SecondaryCapacity = &v
 	return s
 }
 
@@ -12955,9 +12977,33 @@ type DescribeFilesetsRequest struct {
 	// example:
 	//
 	// TGlzdFJlc291cmNlU****mVzJjE1MTI2NjY4NzY5MTAzOTEmMiZORnI4NDhVeEtrUT0=
-	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The condition by which the results are sorted. Valid values:
+	//
+	// 	- FileCountLimit: the file quantity quota
+	//
+	// 	- SizeLimit: the capacity quota
+	//
+	// 	- FileCountUsage: the usage of the file quantity quota
+	//
+	// 	- SpaceUsage: the capacity usage
+	//
+	// example:
+	//
+	// FileCountLimit
 	OrderByField *string `json:"OrderByField,omitempty" xml:"OrderByField,omitempty"`
-	SortOrder    *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
+	// The order in which you want to sort the results. Valid values:
+	//
+	// 	- asc (default): ascending order
+	//
+	// 	- desc: descending order
+	//
+	// >  This parameter takes effect only if you specify the OrderByField parameter.
+	//
+	// example:
+	//
+	// asc
+	SortOrder *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
 }
 
 func (s DescribeFilesetsRequest) String() string {
@@ -13027,7 +13073,7 @@ type DescribeFilesetsRequestFilters struct {
 	//
 	// example:
 	//
-	// fset-12345678,fset-12345679
+	// fset-1902718ea0ae****,fset-3212718ea0ae****
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -13186,7 +13232,7 @@ type DescribeFilesetsResponseBodyEntriesEntrie struct {
 	FsetId *string `json:"FsetId,omitempty" xml:"FsetId,omitempty"`
 	// The quota information.
 	//
-	// >  Only CPFS for LINGJUN V2.7.0 and later support this parameter.
+	// >  Only CPFS for Lingjun V2.7.0 and later support this parameter.
 	Quota *DescribeFilesetsResponseBodyEntriesEntrieQuota `json:"Quota,omitempty" xml:"Quota,omitempty" type:"Struct"`
 	// The capacity usage. Unit: bytes.
 	//
@@ -13284,23 +13330,21 @@ func (s *DescribeFilesetsResponseBodyEntriesEntrie) SetUpdateTime(v string) *Des
 }
 
 type DescribeFilesetsResponseBodyEntriesEntrieQuota struct {
-	// The limit of the file quantity of the quota. Valid values:
+	// The file quantity quota. Valid values:
 	//
-	// Minimum value: 10000.
+	// 	- Minimum value: 10000.
 	//
-	// Maximum value: 10000000000.
+	// 	- Maximum value: 10000000000.
 	//
 	// example:
 	//
 	// 10000
 	FileCountLimit *int64 `json:"FileCountLimit,omitempty" xml:"FileCountLimit,omitempty"`
-	// The limit of the quota capacity. Unit: bytes.
+	// The capacity quota. Unit: bytes.
 	//
-	// Minimum value: 10737418240 (10 GiB).
+	// 	- Minimum value: 10737418240 (10 GiB).
 	//
-	// Maximum value: 1073741824000 (1024000 GiB).
-	//
-	// Step size: 1073741824 (1 GiB).
+	// 	- Step size: 1073741824 (1 GiB).
 	//
 	// example:
 	//
@@ -13361,7 +13405,9 @@ type DescribeLifecyclePoliciesRequest struct {
 	// example:
 	//
 	// 31a8e4****
-	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	FileSystemId   *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	FileSystemType *string `json:"FileSystemType,omitempty" xml:"FileSystemType,omitempty"`
+	FsetId         *string `json:"FsetId,omitempty" xml:"FsetId,omitempty"`
 	// The name of the lifecycle policy. The name must meet the following conventions:
 	//
 	// The name must be 3 to 64 characters in length and must start with a letter. It can contain letters, digits, underscores (_), and hyphens (-).
@@ -13415,6 +13461,16 @@ func (s DescribeLifecyclePoliciesRequest) GoString() string {
 
 func (s *DescribeLifecyclePoliciesRequest) SetFileSystemId(v string) *DescribeLifecyclePoliciesRequest {
 	s.FileSystemId = &v
+	return s
+}
+
+func (s *DescribeLifecyclePoliciesRequest) SetFileSystemType(v string) *DescribeLifecyclePoliciesRequest {
+	s.FileSystemType = &v
+	return s
+}
+
+func (s *DescribeLifecyclePoliciesRequest) SetFsetId(v string) *DescribeLifecyclePoliciesRequest {
+	s.FsetId = &v
 	return s
 }
 
@@ -13508,13 +13564,15 @@ type DescribeLifecyclePoliciesResponseBodyLifecyclePolicies struct {
 	// example:
 	//
 	// 2019-10-30T10:08:08Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	EnableLifecycle *bool   `json:"EnableLifecycle,omitempty" xml:"EnableLifecycle,omitempty"`
 	// The ID of the file system.
 	//
 	// example:
 	//
 	// 31a8e4****
-	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	FileSystemId *string   `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	FsetIds      []*string `json:"FsetIds,omitempty" xml:"FsetIds,omitempty" type:"Repeated"`
 	// The name of the lifecycle policy.
 	//
 	// example:
@@ -13537,6 +13595,7 @@ type DescribeLifecyclePoliciesResponseBodyLifecyclePolicies struct {
 	//
 	// DEFAULT_ATIME_14
 	LifecycleRuleName *string `json:"LifecycleRuleName,omitempty" xml:"LifecycleRuleName,omitempty"`
+	LifecycleRuleType *string `json:"LifecycleRuleType,omitempty" xml:"LifecycleRuleType,omitempty"`
 	// The absolute path of a directory with which the lifecycle policy is associated.
 	//
 	// example:
@@ -13544,7 +13603,8 @@ type DescribeLifecyclePoliciesResponseBodyLifecyclePolicies struct {
 	// /pathway/to/folder
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
 	// The absolute paths to multiple directories associated with the lifecycle policy.
-	Paths []*string `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Repeated"`
+	Paths  []*string `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Repeated"`
+	Status *string   `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The storage type of the data that is dumped to the IA storage medium.
 	//
 	// Default value: InfrequentAccess (IA).
@@ -13568,8 +13628,18 @@ func (s *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies) SetCreateTime(v
 	return s
 }
 
+func (s *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies) SetEnableLifecycle(v bool) *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies {
+	s.EnableLifecycle = &v
+	return s
+}
+
 func (s *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies) SetFileSystemId(v string) *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies {
 	s.FileSystemId = &v
+	return s
+}
+
+func (s *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies) SetFsetIds(v []*string) *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies {
+	s.FsetIds = v
 	return s
 }
 
@@ -13583,6 +13653,11 @@ func (s *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies) SetLifecycleRul
 	return s
 }
 
+func (s *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies) SetLifecycleRuleType(v string) *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies {
+	s.LifecycleRuleType = &v
+	return s
+}
+
 func (s *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies) SetPath(v string) *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies {
 	s.Path = &v
 	return s
@@ -13590,6 +13665,11 @@ func (s *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies) SetPath(v strin
 
 func (s *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies) SetPaths(v []*string) *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies {
 	s.Paths = v
+	return s
+}
+
+func (s *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies) SetStatus(v string) *DescribeLifecyclePoliciesResponseBodyLifecyclePolicies {
+	s.Status = &v
 	return s
 }
 
@@ -20687,6 +20767,7 @@ func (s *ModifyLDAPConfigResponse) SetBody(v *ModifyLDAPConfigResponseBody) *Mod
 }
 
 type ModifyLifecyclePolicyRequest struct {
+	EnableLifecycle *bool `json:"EnableLifecycle,omitempty" xml:"EnableLifecycle,omitempty"`
 	// The ID of the file system.
 	//
 	// This parameter is required.
@@ -20694,7 +20775,8 @@ type ModifyLifecyclePolicyRequest struct {
 	// example:
 	//
 	// 31a8e4****
-	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	FileSystemId *string   `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	FsetIds      []*string `json:"FsetIds,omitempty" xml:"FsetIds,omitempty" type:"Repeated"`
 	// The name of the lifecycle policy.
 	//
 	// The name must be 3 to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
@@ -20716,8 +20798,6 @@ type ModifyLifecyclePolicyRequest struct {
 	// 	- DEFAULT_ATIME_60: Files that are not accessed in the last 60 days are dumped to the IA storage medium.
 	//
 	// 	- DEFAULT_ATIME_90: Files that are not accessed in the last 90 days are dumped to the IA storage medium.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -20749,8 +20829,18 @@ func (s ModifyLifecyclePolicyRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyLifecyclePolicyRequest) SetEnableLifecycle(v bool) *ModifyLifecyclePolicyRequest {
+	s.EnableLifecycle = &v
+	return s
+}
+
 func (s *ModifyLifecyclePolicyRequest) SetFileSystemId(v string) *ModifyLifecyclePolicyRequest {
 	s.FileSystemId = &v
+	return s
+}
+
+func (s *ModifyLifecyclePolicyRequest) SetFsetIds(v []*string) *ModifyLifecyclePolicyRequest {
+	s.FsetIds = v
 	return s
 }
 
@@ -23182,19 +23272,19 @@ func (client *Client) AddClientToBlackList(request *AddClientToBlackListRequest)
 //
 // >  The tag feature has been upgraded and this document will be unpublished. For more information, see TagResources.
 //
-// 	- Each tag consists of a tag key (TagKey) and a tag value (TagValue).
+//   - Each tag consists of a tag key (TagKey) and a tag value (TagValue).
 //
-// 	- Placeholders at the start and end of each TagKey and TagValue are automatically removed. Placeholders include the spacebar ( ), tab (\\t), line break (\\n), and carriage return (\\r).
+//   - Placeholders at the start and end of each TagKey and TagValue are automatically removed. Placeholders include the spacebar ( ), tab (\\t), line break (\\n), and carriage return (\\r).
 //
-// 	- You must specify a tag key. You can leave a tag value empty.
+//   - You must specify a tag key. You can leave a tag value empty.
 //
-// 	- The tag key and tag value are not case-sensitive.
+//   - The tag key and tag value are not case-sensitive.
 //
-// 	- A tag key can be up to 64 characters in length and a tag value can be up to 128 characters in length.
+//   - A tag key can be up to 64 characters in length and a tag value can be up to 128 characters in length.
 //
-// 	- You can add a maximum of 10 tags to a file system. If you add two tags with the same tag key, the newly added tag will overwrite the existing tag.
+//   - You can add a maximum of 10 tags to a file system. If you add two tags with the same tag key, the newly added tag will overwrite the existing tag.
 //
-// 	- If you remove a tag from all linked file systems, the tag is automatically deleted.
+//   - If you remove a tag from all linked file systems, the tag is automatically deleted.
 //
 // @param request - AddTagsRequest
 //
@@ -23260,19 +23350,19 @@ func (client *Client) AddTagsWithOptions(request *AddTagsRequest, runtime *util.
 //
 // >  The tag feature has been upgraded and this document will be unpublished. For more information, see TagResources.
 //
-// 	- Each tag consists of a tag key (TagKey) and a tag value (TagValue).
+//   - Each tag consists of a tag key (TagKey) and a tag value (TagValue).
 //
-// 	- Placeholders at the start and end of each TagKey and TagValue are automatically removed. Placeholders include the spacebar ( ), tab (\\t), line break (\\n), and carriage return (\\r).
+//   - Placeholders at the start and end of each TagKey and TagValue are automatically removed. Placeholders include the spacebar ( ), tab (\\t), line break (\\n), and carriage return (\\r).
 //
-// 	- You must specify a tag key. You can leave a tag value empty.
+//   - You must specify a tag key. You can leave a tag value empty.
 //
-// 	- The tag key and tag value are not case-sensitive.
+//   - The tag key and tag value are not case-sensitive.
 //
-// 	- A tag key can be up to 64 characters in length and a tag value can be up to 128 characters in length.
+//   - A tag key can be up to 64 characters in length and a tag value can be up to 128 characters in length.
 //
-// 	- You can add a maximum of 10 tags to a file system. If you add two tags with the same tag key, the newly added tag will overwrite the existing tag.
+//   - You can add a maximum of 10 tags to a file system. If you add two tags with the same tag key, the newly added tag will overwrite the existing tag.
 //
-// 	- If you remove a tag from all linked file systems, the tag is automatically deleted.
+//   - If you remove a tag from all linked file systems, the tag is automatically deleted.
 //
 // @param request - AddTagsRequest
 //
@@ -23295,15 +23385,15 @@ func (client *Client) AddTags(request *AddTagsRequest) (_result *AddTagsResponse
 //
 // Description:
 //
-//   The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+//	  The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
 //
-// 	- Only advanced Extreme NAS file systems support this feature.
+//		- Only advanced Extreme NAS file systems support this feature.
 //
-// 	- You can apply only one automatic snapshot policy to each file system.
+//		- You can apply only one automatic snapshot policy to each file system.
 //
-// 	- Each automatic snapshot policy can be applied to multiple file systems.
+//		- Each automatic snapshot policy can be applied to multiple file systems.
 //
-// 	- If an automatic snapshot policy is applied to a file system, you can call the ApplyAutoSnapshotPolicy operation to change the automatic snapshot policy.
+//		- If an automatic snapshot policy is applied to a file system, you can call the ApplyAutoSnapshotPolicy operation to change the automatic snapshot policy.
 //
 // @param request - ApplyAutoSnapshotPolicyRequest
 //
@@ -23364,15 +23454,15 @@ func (client *Client) ApplyAutoSnapshotPolicyWithOptions(request *ApplyAutoSnaps
 //
 // Description:
 //
-//   The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+//	  The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
 //
-// 	- Only advanced Extreme NAS file systems support this feature.
+//		- Only advanced Extreme NAS file systems support this feature.
 //
-// 	- You can apply only one automatic snapshot policy to each file system.
+//		- You can apply only one automatic snapshot policy to each file system.
 //
-// 	- Each automatic snapshot policy can be applied to multiple file systems.
+//		- Each automatic snapshot policy can be applied to multiple file systems.
 //
-// 	- If an automatic snapshot policy is applied to a file system, you can call the ApplyAutoSnapshotPolicy operation to change the automatic snapshot policy.
+//		- If an automatic snapshot policy is applied to a file system, you can call the ApplyAutoSnapshotPolicy operation to change the automatic snapshot policy.
 //
 // @param request - ApplyAutoSnapshotPolicyRequest
 //
@@ -23394,25 +23484,25 @@ func (client *Client) ApplyAutoSnapshotPolicy(request *ApplyAutoSnapshotPolicyRe
 //
 // Description:
 //
-//   This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+//	  This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
 //
-// 	- Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
+//		- Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
 //
-// 	- You can add AutoRefresh configurations only to the dataflows that are in the `Running` state.
+//		- You can add AutoRefresh configurations only to the dataflows that are in the `Running` state.
 //
-// 	- You can add a maximum of five AutoRefresh configurations to a dataflow.
+//		- You can add a maximum of five AutoRefresh configurations to a dataflow.
 //
-// 	- It generally takes 2 to 5 minutes to create an AutoRefresh configuration. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/2838084.html) operation to query the dataflow status.
+//		- It generally takes 2 to 5 minutes to create an AutoRefresh configuration. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/2838084.html) operation to query the dataflow status.
 //
-// 	- AutoRefresh depends on the object modification events collected by EventBridge from the source Object Storage Service (OSS) bucket. You must first [activate EventBridge](https://help.aliyun.com/document_detail/182246.html).
+//		- AutoRefresh depends on the object modification events collected by EventBridge from the source Object Storage Service (OSS) bucket. You must first [activate EventBridge](https://help.aliyun.com/document_detail/182246.html).
 //
-//     > The event buses and event rules created for CPFS in the EventBridge console contain the `Create for cpfs auto refresh` description. The event buses and event rules cannot be modified or deleted. Otherwise, AutoRefresh cannot work properly.
+//	    > The event buses and event rules created for CPFS in the EventBridge console contain the `Create for cpfs auto refresh` description. The event buses and event rules cannot be modified or deleted. Otherwise, AutoRefresh cannot work properly.
 //
-// 	- The AutoRefresh configuration applies only to the prefix and is specified by the RefreshPath parameter. When you add an AutoRefresh configuration to the prefix for a CPFS dataflow, an event bus is created at the user side and an event rule is created for the prefix of the source OSS bucket. When an object is modified in the prefix of the source OSS bucket, an OSS event is generated in the EventBridge console. The event is processed by the CPFS dataflow.
+//		- The AutoRefresh configuration applies only to the prefix and is specified by the RefreshPath parameter. When you add an AutoRefresh configuration to the prefix for a CPFS dataflow, an event bus is created at the user side and an event rule is created for the prefix of the source OSS bucket. When an object is modified in the prefix of the source OSS bucket, an OSS event is generated in the EventBridge console. The event is processed by the CPFS dataflow.
 //
-// 	- After AutoRefresh is configured, if the data in the source OSS bucket is updated, the updated metadata is automatically synchronized to the CPFS file system. You can load the updated data when you access files, or run a dataflow task to load the updated data.
+//		- After AutoRefresh is configured, if the data in the source OSS bucket is updated, the updated metadata is automatically synchronized to the CPFS file system. You can load the updated data when you access files, or run a dataflow task to load the updated data.
 //
-// 	- AutoRefreshInterval refers to the interval at which CPFS checks whether data is updated in the prefix of the source OSS bucket. If data is updated, CPFS runs an AutoRefresh task. If the frequency of triggering the object modification event in the source OSS bucket exceeds the processing capability of the CPFS dataflow, AutoRefresh tasks are accumulated, metadata updates are delayed, and the dataflow status becomes Misconfigured. To resolve these issues, you can increase the dataflow specifications or reduce the frequency of triggering the object modification event.
+//		- AutoRefreshInterval refers to the interval at which CPFS checks whether data is updated in the prefix of the source OSS bucket. If data is updated, CPFS runs an AutoRefresh task. If the frequency of triggering the object modification event in the source OSS bucket exceeds the processing capability of the CPFS dataflow, AutoRefresh tasks are accumulated, metadata updates are delayed, and the dataflow status becomes Misconfigured. To resolve these issues, you can increase the dataflow specifications or reduce the frequency of triggering the object modification event.
 //
 // @param request - ApplyDataFlowAutoRefreshRequest
 //
@@ -23493,25 +23583,25 @@ func (client *Client) ApplyDataFlowAutoRefreshWithOptions(request *ApplyDataFlow
 //
 // Description:
 //
-//   This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+//	  This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
 //
-// 	- Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
+//		- Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
 //
-// 	- You can add AutoRefresh configurations only to the dataflows that are in the `Running` state.
+//		- You can add AutoRefresh configurations only to the dataflows that are in the `Running` state.
 //
-// 	- You can add a maximum of five AutoRefresh configurations to a dataflow.
+//		- You can add a maximum of five AutoRefresh configurations to a dataflow.
 //
-// 	- It generally takes 2 to 5 minutes to create an AutoRefresh configuration. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/2838084.html) operation to query the dataflow status.
+//		- It generally takes 2 to 5 minutes to create an AutoRefresh configuration. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/2838084.html) operation to query the dataflow status.
 //
-// 	- AutoRefresh depends on the object modification events collected by EventBridge from the source Object Storage Service (OSS) bucket. You must first [activate EventBridge](https://help.aliyun.com/document_detail/182246.html).
+//		- AutoRefresh depends on the object modification events collected by EventBridge from the source Object Storage Service (OSS) bucket. You must first [activate EventBridge](https://help.aliyun.com/document_detail/182246.html).
 //
-//     > The event buses and event rules created for CPFS in the EventBridge console contain the `Create for cpfs auto refresh` description. The event buses and event rules cannot be modified or deleted. Otherwise, AutoRefresh cannot work properly.
+//	    > The event buses and event rules created for CPFS in the EventBridge console contain the `Create for cpfs auto refresh` description. The event buses and event rules cannot be modified or deleted. Otherwise, AutoRefresh cannot work properly.
 //
-// 	- The AutoRefresh configuration applies only to the prefix and is specified by the RefreshPath parameter. When you add an AutoRefresh configuration to the prefix for a CPFS dataflow, an event bus is created at the user side and an event rule is created for the prefix of the source OSS bucket. When an object is modified in the prefix of the source OSS bucket, an OSS event is generated in the EventBridge console. The event is processed by the CPFS dataflow.
+//		- The AutoRefresh configuration applies only to the prefix and is specified by the RefreshPath parameter. When you add an AutoRefresh configuration to the prefix for a CPFS dataflow, an event bus is created at the user side and an event rule is created for the prefix of the source OSS bucket. When an object is modified in the prefix of the source OSS bucket, an OSS event is generated in the EventBridge console. The event is processed by the CPFS dataflow.
 //
-// 	- After AutoRefresh is configured, if the data in the source OSS bucket is updated, the updated metadata is automatically synchronized to the CPFS file system. You can load the updated data when you access files, or run a dataflow task to load the updated data.
+//		- After AutoRefresh is configured, if the data in the source OSS bucket is updated, the updated metadata is automatically synchronized to the CPFS file system. You can load the updated data when you access files, or run a dataflow task to load the updated data.
 //
-// 	- AutoRefreshInterval refers to the interval at which CPFS checks whether data is updated in the prefix of the source OSS bucket. If data is updated, CPFS runs an AutoRefresh task. If the frequency of triggering the object modification event in the source OSS bucket exceeds the processing capability of the CPFS dataflow, AutoRefresh tasks are accumulated, metadata updates are delayed, and the dataflow status becomes Misconfigured. To resolve these issues, you can increase the dataflow specifications or reduce the frequency of triggering the object modification event.
+//		- AutoRefreshInterval refers to the interval at which CPFS checks whether data is updated in the prefix of the source OSS bucket. If data is updated, CPFS runs an AutoRefresh task. If the frequency of triggering the object modification event in the source OSS bucket exceeds the processing capability of the CPFS dataflow, AutoRefresh tasks are accumulated, metadata updates are delayed, and the dataflow status becomes Misconfigured. To resolve these issues, you can increase the dataflow specifications or reduce the frequency of triggering the object modification event.
 //
 // @param request - ApplyDataFlowAutoRefreshRequest
 //
@@ -23533,9 +23623,9 @@ func (client *Client) ApplyDataFlowAutoRefresh(request *ApplyDataFlowAutoRefresh
 //
 // Description:
 //
-//   The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+//	  The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
 //
-// 	- Only advanced Extreme NAS file systems support this feature.
+//		- Only advanced Extreme NAS file systems support this feature.
 //
 // @param request - CancelAutoSnapshotPolicyRequest
 //
@@ -23592,9 +23682,9 @@ func (client *Client) CancelAutoSnapshotPolicyWithOptions(request *CancelAutoSna
 //
 // Description:
 //
-//   The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+//	  The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
 //
-// 	- Only advanced Extreme NAS file systems support this feature.
+//		- Only advanced Extreme NAS file systems support this feature.
 //
 // @param request - CancelAutoSnapshotPolicyRequest
 //
@@ -23616,13 +23706,13 @@ func (client *Client) CancelAutoSnapshotPolicy(request *CancelAutoSnapshotPolicy
 //
 // Description:
 //
-//   This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+//	  This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
 //
-// 	- Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
+//		- Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
 //
-// 	- You can cancel AutoRefresh configurations only for the dataflows that are in the `Running` or `Stopped` state.
+//		- You can cancel AutoRefresh configurations only for the dataflows that are in the `Running` or `Stopped` state.
 //
-// 	- It generally takes 2 to 5 minutes to cancel the AutoRefresh configurations. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/2838084.html) operation to query the status of the AutoRefresh tasks.
+//		- It generally takes 2 to 5 minutes to cancel the AutoRefresh configurations. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/2838084.html) operation to query the status of the AutoRefresh tasks.
 //
 // @param request - CancelDataFlowAutoRefreshRequest
 //
@@ -23695,13 +23785,13 @@ func (client *Client) CancelDataFlowAutoRefreshWithOptions(request *CancelDataFl
 //
 // Description:
 //
-//   This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+//	  This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
 //
-// 	- Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
+//		- Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
 //
-// 	- You can cancel AutoRefresh configurations only for the dataflows that are in the `Running` or `Stopped` state.
+//		- You can cancel AutoRefresh configurations only for the dataflows that are in the `Running` or `Stopped` state.
 //
-// 	- It generally takes 2 to 5 minutes to cancel the AutoRefresh configurations. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/2838084.html) operation to query the status of the AutoRefresh tasks.
+//		- It generally takes 2 to 5 minutes to cancel the AutoRefresh configurations. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/2838084.html) operation to query the status of the AutoRefresh tasks.
 //
 // @param request - CancelDataFlowAutoRefreshRequest
 //
@@ -23723,11 +23813,11 @@ func (client *Client) CancelDataFlowAutoRefresh(request *CancelDataFlowAutoRefre
 //
 // Description:
 //
-//   Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.6.0 and later support this operation. You can view the version information on the file system details page in the console.
+//	  Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.6.0 and later support this operation. You can view the version information on the file system details page in the console.
 //
-// 	- You can cancel a data streaming task only when the task is in the CREATED or RUNNING state.
+//		- You can cancel a data streaming task only when the task is in the CREATED or RUNNING state.
 //
-// 	- Data streaming tasks are executed asynchronously. You can call the DescribeDataFlowSubTasks operation to query the task execution status.
+//		- Data streaming tasks are executed asynchronously. You can call the DescribeDataFlowSubTasks operation to query the task execution status.
 //
 // @param request - CancelDataFlowSubTaskRequest
 //
@@ -23804,11 +23894,11 @@ func (client *Client) CancelDataFlowSubTaskWithOptions(request *CancelDataFlowSu
 //
 // Description:
 //
-//   Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.6.0 and later support this operation. You can view the version information on the file system details page in the console.
+//	  Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.6.0 and later support this operation. You can view the version information on the file system details page in the console.
 //
-// 	- You can cancel a data streaming task only when the task is in the CREATED or RUNNING state.
+//		- You can cancel a data streaming task only when the task is in the CREATED or RUNNING state.
 //
-// 	- Data streaming tasks are executed asynchronously. You can call the DescribeDataFlowSubTasks operation to query the task execution status.
+//		- Data streaming tasks are executed asynchronously. You can call the DescribeDataFlowSubTasks operation to query the task execution status.
 //
 // @param request - CancelDataFlowSubTaskRequest
 //
@@ -23830,11 +23920,11 @@ func (client *Client) CancelDataFlowSubTask(request *CancelDataFlowSubTaskReques
 //
 // Description:
 //
-//   Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.4.0 and later support data flow tasks. You can view the version information on the file system details page in the console.
+//	  Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.4.0 and later support data flow tasks. You can view the version information on the file system details page in the console.
 //
-// 	- You can cancel only the data flow tasks that are in the `Pending` and `Executing` states.
+//		- You can cancel only the data flow tasks that are in the `Pending` and `Executing` states.
 //
-// 	- It generally takes 5 to 10 minutes to cancel a data flow task. You can query the task execution status by calling the [DescribeDataFlowTasks](https://help.aliyun.com/document_detail/2838089.html) operation.
+//		- It generally takes 5 to 10 minutes to cancel a data flow task. You can query the task execution status by calling the [DescribeDataFlowTasks](https://help.aliyun.com/document_detail/2838089.html) operation.
 //
 // @param request - CancelDataFlowTaskRequest
 //
@@ -23907,11 +23997,11 @@ func (client *Client) CancelDataFlowTaskWithOptions(request *CancelDataFlowTaskR
 //
 // Description:
 //
-//   Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.4.0 and later support data flow tasks. You can view the version information on the file system details page in the console.
+//	  Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.4.0 and later support data flow tasks. You can view the version information on the file system details page in the console.
 //
-// 	- You can cancel only the data flow tasks that are in the `Pending` and `Executing` states.
+//		- You can cancel only the data flow tasks that are in the `Pending` and `Executing` states.
 //
-// 	- It generally takes 5 to 10 minutes to cancel a data flow task. You can query the task execution status by calling the [DescribeDataFlowTasks](https://help.aliyun.com/document_detail/2838089.html) operation.
+//		- It generally takes 5 to 10 minutes to cancel a data flow task. You can query the task execution status by calling the [DescribeDataFlowTasks](https://help.aliyun.com/document_detail/2838089.html) operation.
 //
 // @param request - CancelDataFlowTaskRequest
 //
@@ -24194,13 +24284,13 @@ func (client *Client) CancelLifecycleRetrieveJob(request *CancelLifecycleRetriev
 //
 // Description:
 //
-//   Only General-purpose NAS file systems support this operation.
+//	  Only General-purpose NAS file systems support this operation.
 //
-// 	- You can cancel only jobs that are in the Running state. You cannot cancel jobs that are in the PartialSuccess, Success, Fail, or Cancelled state.
+//		- You can cancel only jobs that are in the Running state. You cannot cancel jobs that are in the PartialSuccess, Success, Fail, or Cancelled state.
 //
-// 	- If you cancel a running job that permanently deletes files, you cannot restore the files that are already permanently deleted.
+//		- If you cancel a running job that permanently deletes files, you cannot restore the files that are already permanently deleted.
 //
-// 	- If you cancel a running job that restores files, you can query the restored files from the file system, and query the unrestored files from the recycle bin.
+//		- If you cancel a running job that restores files, you can query the restored files from the file system, and query the unrestored files from the recycle bin.
 //
 // @param request - CancelRecycleBinJobRequest
 //
@@ -24253,13 +24343,13 @@ func (client *Client) CancelRecycleBinJobWithOptions(request *CancelRecycleBinJo
 //
 // Description:
 //
-//   Only General-purpose NAS file systems support this operation.
+//	  Only General-purpose NAS file systems support this operation.
 //
-// 	- You can cancel only jobs that are in the Running state. You cannot cancel jobs that are in the PartialSuccess, Success, Fail, or Cancelled state.
+//		- You can cancel only jobs that are in the Running state. You cannot cancel jobs that are in the PartialSuccess, Success, Fail, or Cancelled state.
 //
-// 	- If you cancel a running job that permanently deletes files, you cannot restore the files that are already permanently deleted.
+//		- If you cancel a running job that permanently deletes files, you cannot restore the files that are already permanently deleted.
 //
-// 	- If you cancel a running job that restores files, you can query the restored files from the file system, and query the unrestored files from the recycle bin.
+//		- If you cancel a running job that restores files, you can query the restored files from the file system, and query the unrestored files from the recycle bin.
 //
 // @param request - CancelRecycleBinJobRequest
 //
@@ -24447,11 +24537,11 @@ func (client *Client) CreateAccessGroup(request *CreateAccessGroupRequest) (_res
 //
 // Description:
 //
-//   After you call the CreateAccessPoint operation, an access point is not immediately created. Therefore, after you call the CreateAccessPoint operation successfully, call the [DescribeAccessPoints](https://help.aliyun.com/document_detail/2712239.html) or [DescribeAccessPoint](https://help.aliyun.com/document_detail/2712240.html) operation to query the status of the access point. If the status is **Active**, mount the file system. Otherwise, the file system may fail to be mounted.
+//	  After you call the CreateAccessPoint operation, an access point is not immediately created. Therefore, after you call the CreateAccessPoint operation successfully, call the [DescribeAccessPoints](https://help.aliyun.com/document_detail/2712239.html) or [DescribeAccessPoint](https://help.aliyun.com/document_detail/2712240.html) operation to query the status of the access point. If the status is **Active**, mount the file system. Otherwise, the file system may fail to be mounted.
 //
-// 	- Only General-purpose Network File System (NFS) file systems support access points.
+//		- Only General-purpose Network File System (NFS) file systems support access points.
 //
-// 	- If you want to call the EnabledRam operation to enable a Resource Access Management (RAM) policy, you must configure the corresponding RAM permissions. For more information, see [Manage endpoints](https://help.aliyun.com/document_detail/2545998.html).
+//		- If you want to call the EnabledRam operation to enable a Resource Access Management (RAM) policy, you must configure the corresponding RAM permissions. For more information, see [Manage endpoints](https://help.aliyun.com/document_detail/2545998.html).
 //
 // @param request - CreateAccessPointRequest
 //
@@ -24556,11 +24646,11 @@ func (client *Client) CreateAccessPointWithOptions(request *CreateAccessPointReq
 //
 // Description:
 //
-//   After you call the CreateAccessPoint operation, an access point is not immediately created. Therefore, after you call the CreateAccessPoint operation successfully, call the [DescribeAccessPoints](https://help.aliyun.com/document_detail/2712239.html) or [DescribeAccessPoint](https://help.aliyun.com/document_detail/2712240.html) operation to query the status of the access point. If the status is **Active**, mount the file system. Otherwise, the file system may fail to be mounted.
+//	  After you call the CreateAccessPoint operation, an access point is not immediately created. Therefore, after you call the CreateAccessPoint operation successfully, call the [DescribeAccessPoints](https://help.aliyun.com/document_detail/2712239.html) or [DescribeAccessPoint](https://help.aliyun.com/document_detail/2712240.html) operation to query the status of the access point. If the status is **Active**, mount the file system. Otherwise, the file system may fail to be mounted.
 //
-// 	- Only General-purpose Network File System (NFS) file systems support access points.
+//		- Only General-purpose Network File System (NFS) file systems support access points.
 //
-// 	- If you want to call the EnabledRam operation to enable a Resource Access Management (RAM) policy, you must configure the corresponding RAM permissions. For more information, see [Manage endpoints](https://help.aliyun.com/document_detail/2545998.html).
+//		- If you want to call the EnabledRam operation to enable a Resource Access Management (RAM) policy, you must configure the corresponding RAM permissions. For more information, see [Manage endpoints](https://help.aliyun.com/document_detail/2545998.html).
 //
 // @param request - CreateAccessPointRequest
 //
@@ -24677,25 +24767,25 @@ func (client *Client) CreateAccessRule(request *CreateAccessRuleRequest) (_resul
 //
 // Description:
 //
-//   The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+//	  The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
 //
-// 	- Only advanced Extreme NAS file systems support the snapshot feature.
+//		- Only advanced Extreme NAS file systems support the snapshot feature.
 //
-// 	- You can create a maximum of 100 automatic snapshot policies in each region for an Alibaba Cloud account.
+//		- You can create a maximum of 100 automatic snapshot policies in each region for an Alibaba Cloud account.
 //
-// 	- If an auto snapshot is being created when the scheduled time for a new auto snapshot arrives, the creation of the new snapshot is skipped. This occurs if the file system stores a large volume of data. For example, you have scheduled auto snapshots to be created at 09:00:00, 10:00:00, 11:00:00, and 12:00:00 for a file system. The system starts to create an auto snapshot at 09:00:00 and does not complete the process until 10:20:00. The process takes 80 minutes because the file system has a large volume of data. In this case, the system does not create an auto snapshot at 10:00:00, but creates an auto snapshot at 11:00:00.
+//		- If an auto snapshot is being created when the scheduled time for a new auto snapshot arrives, the creation of the new snapshot is skipped. This occurs if the file system stores a large volume of data. For example, you have scheduled auto snapshots to be created at 09:00:00, 10:00:00, 11:00:00, and 12:00:00 for a file system. The system starts to create an auto snapshot at 09:00:00 and does not complete the process until 10:20:00. The process takes 80 minutes because the file system has a large volume of data. In this case, the system does not create an auto snapshot at 10:00:00, but creates an auto snapshot at 11:00:00.
 //
-// 	- A maximum of 128 auto snapshots can be created for a file system. If the upper limit is reached, the earliest auto snapshot is deleted. This rule does not apply to manual snapshots.
+//		- A maximum of 128 auto snapshots can be created for a file system. If the upper limit is reached, the earliest auto snapshot is deleted. This rule does not apply to manual snapshots.
 //
-// 	- If you modify the retention period of an automatic snapshot policy, the modification applies only to subsequent snapshots, but not to the existing snapshots.
+//		- If you modify the retention period of an automatic snapshot policy, the modification applies only to subsequent snapshots, but not to the existing snapshots.
 //
-// 	- If an auto snapshot is being created for a file system, you cannot create a manual snapshot for the file system. You must wait after the auto snapshot is created.
+//		- If an auto snapshot is being created for a file system, you cannot create a manual snapshot for the file system. You must wait after the auto snapshot is created.
 //
-// 	- You can only apply automatic snapshot policies to a file system that is in the Running state.
+//		- You can only apply automatic snapshot policies to a file system that is in the Running state.
 //
-// 	- All auto snapshots are named in the `auto_yyyyMMdd_X` format, where: `auto` indicates that the snapshot is created based on an automatic snapshot policy. `yyyyMMdd` indicates the date on which the snapshot is created. `y` indicates the year. `M` indicates the month. `d` indicates the day. `X` indicates the ordinal number of the snapshot on the current day. For example, `auto_20201018_1` indicates the first auto snapshot that was created on October 18, 2020.
+//		- All auto snapshots are named in the `auto_yyyyMMdd_X` format, where: `auto` indicates that the snapshot is created based on an automatic snapshot policy. `yyyyMMdd` indicates the date on which the snapshot is created. `y` indicates the year. `M` indicates the month. `d` indicates the day. `X` indicates the ordinal number of the snapshot on the current day. For example, `auto_20201018_1` indicates the first auto snapshot that was created on October 18, 2020.
 //
-// 	- After an automatic snapshot policy is created, you can call the ApplyAutoSnapshotPolicy operation to apply the policy to a file system and call the ModifyAutoSnapshotPolicy operation to modify the policy.
+//		- After an automatic snapshot policy is created, you can call the ApplyAutoSnapshotPolicy operation to apply the policy to a file system and call the ModifyAutoSnapshotPolicy operation to modify the policy.
 //
 // @param request - CreateAutoSnapshotPolicyRequest
 //
@@ -24768,25 +24858,25 @@ func (client *Client) CreateAutoSnapshotPolicyWithOptions(request *CreateAutoSna
 //
 // Description:
 //
-//   The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+//	  The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
 //
-// 	- Only advanced Extreme NAS file systems support the snapshot feature.
+//		- Only advanced Extreme NAS file systems support the snapshot feature.
 //
-// 	- You can create a maximum of 100 automatic snapshot policies in each region for an Alibaba Cloud account.
+//		- You can create a maximum of 100 automatic snapshot policies in each region for an Alibaba Cloud account.
 //
-// 	- If an auto snapshot is being created when the scheduled time for a new auto snapshot arrives, the creation of the new snapshot is skipped. This occurs if the file system stores a large volume of data. For example, you have scheduled auto snapshots to be created at 09:00:00, 10:00:00, 11:00:00, and 12:00:00 for a file system. The system starts to create an auto snapshot at 09:00:00 and does not complete the process until 10:20:00. The process takes 80 minutes because the file system has a large volume of data. In this case, the system does not create an auto snapshot at 10:00:00, but creates an auto snapshot at 11:00:00.
+//		- If an auto snapshot is being created when the scheduled time for a new auto snapshot arrives, the creation of the new snapshot is skipped. This occurs if the file system stores a large volume of data. For example, you have scheduled auto snapshots to be created at 09:00:00, 10:00:00, 11:00:00, and 12:00:00 for a file system. The system starts to create an auto snapshot at 09:00:00 and does not complete the process until 10:20:00. The process takes 80 minutes because the file system has a large volume of data. In this case, the system does not create an auto snapshot at 10:00:00, but creates an auto snapshot at 11:00:00.
 //
-// 	- A maximum of 128 auto snapshots can be created for a file system. If the upper limit is reached, the earliest auto snapshot is deleted. This rule does not apply to manual snapshots.
+//		- A maximum of 128 auto snapshots can be created for a file system. If the upper limit is reached, the earliest auto snapshot is deleted. This rule does not apply to manual snapshots.
 //
-// 	- If you modify the retention period of an automatic snapshot policy, the modification applies only to subsequent snapshots, but not to the existing snapshots.
+//		- If you modify the retention period of an automatic snapshot policy, the modification applies only to subsequent snapshots, but not to the existing snapshots.
 //
-// 	- If an auto snapshot is being created for a file system, you cannot create a manual snapshot for the file system. You must wait after the auto snapshot is created.
+//		- If an auto snapshot is being created for a file system, you cannot create a manual snapshot for the file system. You must wait after the auto snapshot is created.
 //
-// 	- You can only apply automatic snapshot policies to a file system that is in the Running state.
+//		- You can only apply automatic snapshot policies to a file system that is in the Running state.
 //
-// 	- All auto snapshots are named in the `auto_yyyyMMdd_X` format, where: `auto` indicates that the snapshot is created based on an automatic snapshot policy. `yyyyMMdd` indicates the date on which the snapshot is created. `y` indicates the year. `M` indicates the month. `d` indicates the day. `X` indicates the ordinal number of the snapshot on the current day. For example, `auto_20201018_1` indicates the first auto snapshot that was created on October 18, 2020.
+//		- All auto snapshots are named in the `auto_yyyyMMdd_X` format, where: `auto` indicates that the snapshot is created based on an automatic snapshot policy. `yyyyMMdd` indicates the date on which the snapshot is created. `y` indicates the year. `M` indicates the month. `d` indicates the day. `X` indicates the ordinal number of the snapshot on the current day. For example, `auto_20201018_1` indicates the first auto snapshot that was created on October 18, 2020.
 //
-// 	- After an automatic snapshot policy is created, you can call the ApplyAutoSnapshotPolicy operation to apply the policy to a file system and call the ModifyAutoSnapshotPolicy operation to modify the policy.
+//		- After an automatic snapshot policy is created, you can call the ApplyAutoSnapshotPolicy operation to apply the policy to a file system and call the ModifyAutoSnapshotPolicy operation to modify the policy.
 //
 // @param request - CreateAutoSnapshotPolicyRequest
 //
@@ -24808,65 +24898,65 @@ func (client *Client) CreateAutoSnapshotPolicy(request *CreateAutoSnapshotPolicy
 //
 // Description:
 //
-//   Basic operations
+//	  Basic operations
 //
-//     	- Cloud Parallel File Storage (CPFS) for LINGJUN V2.4.0 and later support data flows.
+//	    	- Cloud Parallel File Storage (CPFS) for LINGJUN V2.4.0 and later support data flows.
 //
-//     	- You can create a data flow only when a CPFS for LINGJUN file system is in the Running state.
+//	    	- You can create a data flow only when a CPFS for LINGJUN file system is in the Running state.
 //
-//     	- A maximum of 10 data flows can be created for a CPFS for LINGJUN file system.
+//	    	- A maximum of 10 data flows can be created for a CPFS for LINGJUN file system.
 //
-//     	- It generally takes 2 to 5 minutes to create a data flow. You can call the DescribeDataFlows operation to check whether the data flow has been created.
+//	    	- It generally takes 2 to 5 minutes to create a data flow. You can call the DescribeDataFlows operation to check whether the data flow has been created.
 //
-// 	- Permissions
+//		- Permissions
 //
-//     When you create a data flow, CPFS for LINGJUN obtains the following two service-linked roles: `AliyunServiceRoleForNasOssDataflow` and `AliyunServiceRoleForNasEventNotification`. For more information, see [CPFS service-linked roles](https://help.aliyun.com/document_detail/2837688.html).
+//	    When you create a data flow, CPFS for LINGJUN obtains the following two service-linked roles: `AliyunServiceRoleForNasOssDataflow` and `AliyunServiceRoleForNasEventNotification`. For more information, see [CPFS service-linked roles](https://help.aliyun.com/document_detail/2837688.html).
 //
-// 	- CPFS for LINGJUN usage notes
+//		- CPFS for LINGJUN usage notes
 //
-//      	- Source storage
+//	     	- Source storage
 //
-//          	- The source storage is an Object Storage Service (OSS) bucket. SourceStorage for a data flow must be an OSS bucket.
+//	         	- The source storage is an Object Storage Service (OSS) bucket. SourceStorage for a data flow must be an OSS bucket.
 //
-//          	- CPFS for LINGJUN data flows support both encrypted and unencrypted access to OSS. If you select SSL-encrypted access to OSS, make sure that encryption in transit for OSS buckets supports encrypted access.
+//	         	- CPFS for LINGJUN data flows support both encrypted and unencrypted access to OSS. If you select SSL-encrypted access to OSS, make sure that encryption in transit for OSS buckets supports encrypted access.
 //
-//          	- If data flows for multiple CPFS for LINGJUN file systems or multiple data flows for the same CPFS for LINGJUN file system are stored in the same OSS bucket, you must enable versioning for the OSS bucket to prevent data conflicts caused by data export from multiple CPFS for LINGJUN file systems to one OSS bucket.
+//	         	- If data flows for multiple CPFS for LINGJUN file systems or multiple data flows for the same CPFS for LINGJUN file system are stored in the same OSS bucket, you must enable versioning for the OSS bucket to prevent data conflicts caused by data export from multiple CPFS for LINGJUN file systems to one OSS bucket.
 //
-//          	- Data flows are not supported for OSS buckets across regions. The OSS bucket must reside in the same region as the CPFS file system.
+//	         	- Data flows are not supported for OSS buckets across regions. The OSS bucket must reside in the same region as the CPFS file system.
 //
-//          	- CPFS for LINGJUN V2.6.0 and later allow you to create data flows for OSS buckets across accounts.
+//	         	- CPFS for LINGJUN V2.6.0 and later allow you to create data flows for OSS buckets across accounts.
 //
-//          	- The account id parameter is required only when you use OSS buckets across accounts.
+//	         	- The account id parameter is required only when you use OSS buckets across accounts.
 //
-//          	- To use OSS buckets across accounts, you must first grant permissions to the related accounts. For more information, see [Cross-account authorization on data flows](https://help.aliyun.com/document_detail/2713462.html).
+//	         	- To use OSS buckets across accounts, you must first grant permissions to the related accounts. For more information, see [Cross-account authorization on data flows](https://help.aliyun.com/document_detail/2713462.html).
 //
-//          >  Before you create a data flow, you must configure a tag (key: cpfs-dataflow, value: true) for the source OSS bucket. This way, the created data flow can access the data in the OSS bucket. When a data flow is being used, do not delete or modify the tag. Otherwise, the data flow for CPFS for LINGJUN cannot access the data in the OSS bucket.
+//	         >  Before you create a data flow, you must configure a tag (key: cpfs-dataflow, value: true) for the source OSS bucket. This way, the created data flow can access the data in the OSS bucket. When a data flow is being used, do not delete or modify the tag. Otherwise, the data flow for CPFS for LINGJUN cannot access the data in the OSS bucket.
 //
-//     	- Limits of data flows on file systems
+//	    	- Limits of data flows on file systems
 //
-//         	- You cannot rename a non-empty directory in a path that is associated with a data flow. Otherwise, the Permission Denied error message or an error message indicating that the directory is not empty is returned.
+//	        	- You cannot rename a non-empty directory in a path that is associated with a data flow. Otherwise, the Permission Denied error message or an error message indicating that the directory is not empty is returned.
 //
-//         	- Proceed with caution when you use special characters in the names of directories and files. The following characters are supported: letters, digits, exclamation points (!), hyphens (-), underscores (_), periods (.), asterisks (\\*), and parentheses (()).
+//	        	- Proceed with caution when you use special characters in the names of directories and files. The following characters are supported: letters, digits, exclamation points (!), hyphens (-), underscores (_), periods (.), asterisks (\\*), and parentheses (()).
 //
-//         	- The path can be up to 1,023 characters in length.
+//	        	- The path can be up to 1,023 characters in length.
 //
-//     	- Limits of data flows on import
+//	    	- Limits of data flows on import
 //
-//         	- After a symbolic link is imported to CPFS for LINGJUN, the symbolic link is converted into a common data file that contains no symbolic link information.
+//	        	- After a symbolic link is imported to CPFS for LINGJUN, the symbolic link is converted into a common data file that contains no symbolic link information.
 //
-//         	- If an OSS bucket has multiple versions, only data of the latest version is used.
+//	        	- If an OSS bucket has multiple versions, only data of the latest version is used.
 //
-//         	- The name of a file or a subdirectory can be up to 255 bytes in length.
+//	        	- The name of a file or a subdirectory can be up to 255 bytes in length.
 //
-//     	- Limits of data flows on export
+//	    	- Limits of data flows on export
 //
-//         	- After a symbolic link is synchronized to OSS, the file that the symbolic link points to is not synchronized to OSS. In this case, the symbolic link is converted into a common object that contains no data.
+//	        	- After a symbolic link is synchronized to OSS, the file that the symbolic link points to is not synchronized to OSS. In this case, the symbolic link is converted into a common object that contains no data.
 //
-//         	- Hard links can be synchronized to OSS only as common files that contain no link information.
+//	        	- Hard links can be synchronized to OSS only as common files that contain no link information.
 //
-//         	- After a file of the Socket, Device, or Pipe type is exported to an OSS bucket, the file is converted into a common object that contains no data.
+//	        	- After a file of the Socket, Device, or Pipe type is exported to an OSS bucket, the file is converted into a common object that contains no data.
 //
-//         	- The directory path can be up to 1,023 characters in length.
+//	        	- The directory path can be up to 1,023 characters in length.
 //
 // @param request - CreateDataFlowRequest
 //
@@ -24971,65 +25061,65 @@ func (client *Client) CreateDataFlowWithOptions(request *CreateDataFlowRequest, 
 //
 // Description:
 //
-//   Basic operations
+//	  Basic operations
 //
-//     	- Cloud Parallel File Storage (CPFS) for LINGJUN V2.4.0 and later support data flows.
+//	    	- Cloud Parallel File Storage (CPFS) for LINGJUN V2.4.0 and later support data flows.
 //
-//     	- You can create a data flow only when a CPFS for LINGJUN file system is in the Running state.
+//	    	- You can create a data flow only when a CPFS for LINGJUN file system is in the Running state.
 //
-//     	- A maximum of 10 data flows can be created for a CPFS for LINGJUN file system.
+//	    	- A maximum of 10 data flows can be created for a CPFS for LINGJUN file system.
 //
-//     	- It generally takes 2 to 5 minutes to create a data flow. You can call the DescribeDataFlows operation to check whether the data flow has been created.
+//	    	- It generally takes 2 to 5 minutes to create a data flow. You can call the DescribeDataFlows operation to check whether the data flow has been created.
 //
-// 	- Permissions
+//		- Permissions
 //
-//     When you create a data flow, CPFS for LINGJUN obtains the following two service-linked roles: `AliyunServiceRoleForNasOssDataflow` and `AliyunServiceRoleForNasEventNotification`. For more information, see [CPFS service-linked roles](https://help.aliyun.com/document_detail/2837688.html).
+//	    When you create a data flow, CPFS for LINGJUN obtains the following two service-linked roles: `AliyunServiceRoleForNasOssDataflow` and `AliyunServiceRoleForNasEventNotification`. For more information, see [CPFS service-linked roles](https://help.aliyun.com/document_detail/2837688.html).
 //
-// 	- CPFS for LINGJUN usage notes
+//		- CPFS for LINGJUN usage notes
 //
-//      	- Source storage
+//	     	- Source storage
 //
-//          	- The source storage is an Object Storage Service (OSS) bucket. SourceStorage for a data flow must be an OSS bucket.
+//	         	- The source storage is an Object Storage Service (OSS) bucket. SourceStorage for a data flow must be an OSS bucket.
 //
-//          	- CPFS for LINGJUN data flows support both encrypted and unencrypted access to OSS. If you select SSL-encrypted access to OSS, make sure that encryption in transit for OSS buckets supports encrypted access.
+//	         	- CPFS for LINGJUN data flows support both encrypted and unencrypted access to OSS. If you select SSL-encrypted access to OSS, make sure that encryption in transit for OSS buckets supports encrypted access.
 //
-//          	- If data flows for multiple CPFS for LINGJUN file systems or multiple data flows for the same CPFS for LINGJUN file system are stored in the same OSS bucket, you must enable versioning for the OSS bucket to prevent data conflicts caused by data export from multiple CPFS for LINGJUN file systems to one OSS bucket.
+//	         	- If data flows for multiple CPFS for LINGJUN file systems or multiple data flows for the same CPFS for LINGJUN file system are stored in the same OSS bucket, you must enable versioning for the OSS bucket to prevent data conflicts caused by data export from multiple CPFS for LINGJUN file systems to one OSS bucket.
 //
-//          	- Data flows are not supported for OSS buckets across regions. The OSS bucket must reside in the same region as the CPFS file system.
+//	         	- Data flows are not supported for OSS buckets across regions. The OSS bucket must reside in the same region as the CPFS file system.
 //
-//          	- CPFS for LINGJUN V2.6.0 and later allow you to create data flows for OSS buckets across accounts.
+//	         	- CPFS for LINGJUN V2.6.0 and later allow you to create data flows for OSS buckets across accounts.
 //
-//          	- The account id parameter is required only when you use OSS buckets across accounts.
+//	         	- The account id parameter is required only when you use OSS buckets across accounts.
 //
-//          	- To use OSS buckets across accounts, you must first grant permissions to the related accounts. For more information, see [Cross-account authorization on data flows](https://help.aliyun.com/document_detail/2713462.html).
+//	         	- To use OSS buckets across accounts, you must first grant permissions to the related accounts. For more information, see [Cross-account authorization on data flows](https://help.aliyun.com/document_detail/2713462.html).
 //
-//          >  Before you create a data flow, you must configure a tag (key: cpfs-dataflow, value: true) for the source OSS bucket. This way, the created data flow can access the data in the OSS bucket. When a data flow is being used, do not delete or modify the tag. Otherwise, the data flow for CPFS for LINGJUN cannot access the data in the OSS bucket.
+//	         >  Before you create a data flow, you must configure a tag (key: cpfs-dataflow, value: true) for the source OSS bucket. This way, the created data flow can access the data in the OSS bucket. When a data flow is being used, do not delete or modify the tag. Otherwise, the data flow for CPFS for LINGJUN cannot access the data in the OSS bucket.
 //
-//     	- Limits of data flows on file systems
+//	    	- Limits of data flows on file systems
 //
-//         	- You cannot rename a non-empty directory in a path that is associated with a data flow. Otherwise, the Permission Denied error message or an error message indicating that the directory is not empty is returned.
+//	        	- You cannot rename a non-empty directory in a path that is associated with a data flow. Otherwise, the Permission Denied error message or an error message indicating that the directory is not empty is returned.
 //
-//         	- Proceed with caution when you use special characters in the names of directories and files. The following characters are supported: letters, digits, exclamation points (!), hyphens (-), underscores (_), periods (.), asterisks (\\*), and parentheses (()).
+//	        	- Proceed with caution when you use special characters in the names of directories and files. The following characters are supported: letters, digits, exclamation points (!), hyphens (-), underscores (_), periods (.), asterisks (\\*), and parentheses (()).
 //
-//         	- The path can be up to 1,023 characters in length.
+//	        	- The path can be up to 1,023 characters in length.
 //
-//     	- Limits of data flows on import
+//	    	- Limits of data flows on import
 //
-//         	- After a symbolic link is imported to CPFS for LINGJUN, the symbolic link is converted into a common data file that contains no symbolic link information.
+//	        	- After a symbolic link is imported to CPFS for LINGJUN, the symbolic link is converted into a common data file that contains no symbolic link information.
 //
-//         	- If an OSS bucket has multiple versions, only data of the latest version is used.
+//	        	- If an OSS bucket has multiple versions, only data of the latest version is used.
 //
-//         	- The name of a file or a subdirectory can be up to 255 bytes in length.
+//	        	- The name of a file or a subdirectory can be up to 255 bytes in length.
 //
-//     	- Limits of data flows on export
+//	    	- Limits of data flows on export
 //
-//         	- After a symbolic link is synchronized to OSS, the file that the symbolic link points to is not synchronized to OSS. In this case, the symbolic link is converted into a common object that contains no data.
+//	        	- After a symbolic link is synchronized to OSS, the file that the symbolic link points to is not synchronized to OSS. In this case, the symbolic link is converted into a common object that contains no data.
 //
-//         	- Hard links can be synchronized to OSS only as common files that contain no link information.
+//	        	- Hard links can be synchronized to OSS only as common files that contain no link information.
 //
-//         	- After a file of the Socket, Device, or Pipe type is exported to an OSS bucket, the file is converted into a common object that contains no data.
+//	        	- After a file of the Socket, Device, or Pipe type is exported to an OSS bucket, the file is converted into a common object that contains no data.
 //
-//         	- The directory path can be up to 1,023 characters in length.
+//	        	- The directory path can be up to 1,023 characters in length.
 //
 // @param request - CreateDataFlowRequest
 //
@@ -25051,13 +25141,13 @@ func (client *Client) CreateDataFlow(request *CreateDataFlowRequest) (_result *C
 //
 // Description:
 //
-//   Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.6.0 and later support this operation. You can view the version information on the file system details page in the console.
+//	  Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.6.0 and later support this operation. You can view the version information on the file system details page in the console.
 //
-// 	- You can create subtasks only for a data streaming subtask in the Executing state.
+//		- You can create subtasks only for a data streaming subtask in the Executing state.
 //
-// 	- Data streaming tasks are executed asynchronously. You can call the DescribeDataFlowSubTasks operation to query the task execution status.
+//		- Data streaming tasks are executed asynchronously. You can call the DescribeDataFlowSubTasks operation to query the task execution status.
 //
-// 	- When the type of data flow task is streaming, the running status only indicates that a streaming import or export task can be created. It does not indicate that the import or export task is running.
+//		- When the type of data flow task is streaming, the running status only indicates that a streaming import or export task can be created. It does not indicate that the import or export task is running.
 //
 // @param request - CreateDataFlowSubTaskRequest
 //
@@ -25142,13 +25232,13 @@ func (client *Client) CreateDataFlowSubTaskWithOptions(request *CreateDataFlowSu
 //
 // Description:
 //
-//   Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.6.0 and later support this operation. You can view the version information on the file system details page in the console.
+//	  Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.6.0 and later support this operation. You can view the version information on the file system details page in the console.
 //
-// 	- You can create subtasks only for a data streaming subtask in the Executing state.
+//		- You can create subtasks only for a data streaming subtask in the Executing state.
 //
-// 	- Data streaming tasks are executed asynchronously. You can call the DescribeDataFlowSubTasks operation to query the task execution status.
+//		- Data streaming tasks are executed asynchronously. You can call the DescribeDataFlowSubTasks operation to query the task execution status.
 //
-// 	- When the type of data flow task is streaming, the running status only indicates that a streaming import or export task can be created. It does not indicate that the import or export task is running.
+//		- When the type of data flow task is streaming, the running status only indicates that a streaming import or export task can be created. It does not indicate that the import or export task is running.
 //
 // @param request - CreateDataFlowSubTaskRequest
 //
@@ -25170,17 +25260,17 @@ func (client *Client) CreateDataFlowSubTask(request *CreateDataFlowSubTaskReques
 //
 // Description:
 //
-//   Only Cloud Parallel File Storage CPFS for LINGJUN V2.4.0 and later support data flows. You can view the version information on the file system details page in the console.
+//	  Only Cloud Parallel File Storage CPFS for LINGJUN V2.4.0 and later support data flows. You can view the version information on the file system details page in the console.
 //
-// 	- You can create a data flow task only for a data flow that is in the Running state.
+//		- You can create a data flow task only for a data flow that is in the Running state.
 //
-// 	- Data flow tasks are executed asynchronously. You can call the [DescribeDataFlowTasks](https://help.aliyun.com/document_detail/2838089.html) operation to query the task execution status. The task duration depends on the amount of data to be imported and exported. If a large amount of data exists, we recommend that you create multiple tasks.
+//		- Data flow tasks are executed asynchronously. You can call the [DescribeDataFlowTasks](https://help.aliyun.com/document_detail/2838089.html) operation to query the task execution status. The task duration depends on the amount of data to be imported and exported. If a large amount of data exists, we recommend that you create multiple tasks.
 //
-// 	- When you manually run a data flow task, the automatic data update task for the data flow is interrupted and enters the pending state.
+//		- When you manually run a data flow task, the automatic data update task for the data flow is interrupted and enters the pending state.
 //
-// 	- When you create an export task, make sure that the total length of the absolute path of the files to be exported from a CPFS or CPFS for LINGJUN file system does not exceed 1,023 characters.
+//		- When you create an export task, make sure that the total length of the absolute path of the files to be exported from a CPFS or CPFS for LINGJUN file system does not exceed 1,023 characters.
 //
-// 	- CPFS for LINGJUN supports two types of tasks: batch tasks and streaming tasks. For more information, see [Task types](https://help.aliyun.com/document_detail/2845429.html).
+//		- CPFS for LINGJUN supports two types of tasks: batch tasks and streaming tasks. For more information, see [Task types](https://help.aliyun.com/document_detail/2845429.html).
 //
 // @param request - CreateDataFlowTaskRequest
 //
@@ -25281,17 +25371,17 @@ func (client *Client) CreateDataFlowTaskWithOptions(request *CreateDataFlowTaskR
 //
 // Description:
 //
-//   Only Cloud Parallel File Storage CPFS for LINGJUN V2.4.0 and later support data flows. You can view the version information on the file system details page in the console.
+//	  Only Cloud Parallel File Storage CPFS for LINGJUN V2.4.0 and later support data flows. You can view the version information on the file system details page in the console.
 //
-// 	- You can create a data flow task only for a data flow that is in the Running state.
+//		- You can create a data flow task only for a data flow that is in the Running state.
 //
-// 	- Data flow tasks are executed asynchronously. You can call the [DescribeDataFlowTasks](https://help.aliyun.com/document_detail/2838089.html) operation to query the task execution status. The task duration depends on the amount of data to be imported and exported. If a large amount of data exists, we recommend that you create multiple tasks.
+//		- Data flow tasks are executed asynchronously. You can call the [DescribeDataFlowTasks](https://help.aliyun.com/document_detail/2838089.html) operation to query the task execution status. The task duration depends on the amount of data to be imported and exported. If a large amount of data exists, we recommend that you create multiple tasks.
 //
-// 	- When you manually run a data flow task, the automatic data update task for the data flow is interrupted and enters the pending state.
+//		- When you manually run a data flow task, the automatic data update task for the data flow is interrupted and enters the pending state.
 //
-// 	- When you create an export task, make sure that the total length of the absolute path of the files to be exported from a CPFS or CPFS for LINGJUN file system does not exceed 1,023 characters.
+//		- When you create an export task, make sure that the total length of the absolute path of the files to be exported from a CPFS or CPFS for LINGJUN file system does not exceed 1,023 characters.
 //
-// 	- CPFS for LINGJUN supports two types of tasks: batch tasks and streaming tasks. For more information, see [Task types](https://help.aliyun.com/document_detail/2845429.html).
+//		- CPFS for LINGJUN supports two types of tasks: batch tasks and streaming tasks. For more information, see [Task types](https://help.aliyun.com/document_detail/2845429.html).
 //
 // @param request - CreateDataFlowTaskRequest
 //
@@ -25412,9 +25502,9 @@ func (client *Client) CreateDir(request *CreateDirRequest) (_result *CreateDirRe
 //
 // Description:
 //
-//   This operation is only available to some users.
+//	  This operation is only available to some users.
 //
-// 	- This operation supports only General-purpose NAS file systems that use the Server Message Block (SMB) protocol and have Resource Access Management (RAM) enabled.
+//		- This operation supports only General-purpose NAS file systems that use the Server Message Block (SMB) protocol and have Resource Access Management (RAM) enabled.
 //
 // @param request - CreateFileRequest
 //
@@ -25487,9 +25577,9 @@ func (client *Client) CreateFileWithOptions(request *CreateFileRequest, runtime 
 //
 // Description:
 //
-//   This operation is only available to some users.
+//	  This operation is only available to some users.
 //
-// 	- This operation supports only General-purpose NAS file systems that use the Server Message Block (SMB) protocol and have Resource Access Management (RAM) enabled.
+//		- This operation supports only General-purpose NAS file systems that use the Server Message Block (SMB) protocol and have Resource Access Management (RAM) enabled.
 //
 // @param request - CreateFileRequest
 //
@@ -25511,11 +25601,11 @@ func (client *Client) CreateFile(request *CreateFileRequest) (_result *CreateFil
 //
 // Description:
 //
-//   Before you call this operation, you must understand the billing and pricing of File Storage NAS. For more information, see [Billing](https://help.aliyun.com/document_detail/178365.html) and [Pricing](https://www.alibabacloud.com/product/nas/pricing).
+//	  Before you call this operation, you must understand the billing and pricing of File Storage NAS. For more information, see [Billing](https://help.aliyun.com/document_detail/178365.html) and [Pricing](https://www.alibabacloud.com/product/nas/pricing).
 //
-// 	- Before you create a file system, you must complete real-name verification.
+//		- Before you create a file system, you must complete real-name verification.
 //
-// 	- When you call this operation, a service-linked role of NAS is automatically created. For more information, see [Manage the service-linked roles of NAS](https://help.aliyun.com/document_detail/208530.html).
+//		- When you call this operation, a service-linked role of NAS is automatically created. For more information, see [Manage the service-linked roles of NAS](https://help.aliyun.com/document_detail/208530.html).
 //
 // @param request - CreateFileSystemRequest
 //
@@ -25636,11 +25726,11 @@ func (client *Client) CreateFileSystemWithOptions(request *CreateFileSystemReque
 //
 // Description:
 //
-//   Before you call this operation, you must understand the billing and pricing of File Storage NAS. For more information, see [Billing](https://help.aliyun.com/document_detail/178365.html) and [Pricing](https://www.alibabacloud.com/product/nas/pricing).
+//	  Before you call this operation, you must understand the billing and pricing of File Storage NAS. For more information, see [Billing](https://help.aliyun.com/document_detail/178365.html) and [Pricing](https://www.alibabacloud.com/product/nas/pricing).
 //
-// 	- Before you create a file system, you must complete real-name verification.
+//		- Before you create a file system, you must complete real-name verification.
 //
-// 	- When you call this operation, a service-linked role of NAS is automatically created. For more information, see [Manage the service-linked roles of NAS](https://help.aliyun.com/document_detail/208530.html).
+//		- When you call this operation, a service-linked role of NAS is automatically created. For more information, see [Manage the service-linked roles of NAS](https://help.aliyun.com/document_detail/208530.html).
 //
 // @param request - CreateFileSystemRequest
 //
@@ -25662,25 +25752,25 @@ func (client *Client) CreateFileSystem(request *CreateFileSystemRequest) (_resul
 //
 // Description:
 //
-//   Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.7.0 and later support this operation. You can view the version information on the file system details page in the console.
+//	  Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.7.0 and later support this operation. You can view the version information on the file system details page in the console.
 //
-// 	- A maximum of 500 filesets can be created for a CPFS file system.
+//		- A maximum of 500 filesets can be created for a CPFS file system.
 //
-// 	- The fileset path must be a new path and cannot be an existing path. Fileset paths cannot be renamed and cannot be symbolic links.
+//		- The fileset path must be a new path and cannot be an existing path. Fileset paths cannot be renamed and cannot be symbolic links.
 //
-// 	- The maximum depth supported by a fileset path is eight levels. The depth of the root directory / is 0 levels. For example, the fileset path /test/aaa/ccc/ has three levels.
+//		- The maximum depth supported by a fileset path is eight levels. The depth of the root directory / is 0 levels. For example, the fileset path /test/aaa/ccc/ has three levels.
 //
-// 	- If the fileset path is a multi-level path, the parent directory must be an existing directory.
+//		- If the fileset path is a multi-level path, the parent directory must be an existing directory.
 //
-// 	- Nested filesets are not supported. If a fileset is specified as a parent directory, its subdirectory cannot be a fileset. A fileset path supports only one quota.
+//		- Nested filesets are not supported. If a fileset is specified as a parent directory, its subdirectory cannot be a fileset. A fileset path supports only one quota.
 //
-// 	- The minimum capacity quota of a fileset is 10 GiB. The scaling step size is 1 GiB. The maximum capacity quota is 1,000 TiB. The capacity quota cannot exceed the total capacity of the file system.
+//		- The minimum capacity quota of a fileset is 10 GiB. The scaling step size is 1 GiB. The maximum capacity quota is 1,000 TiB. The capacity quota cannot exceed the total capacity of the file system.
 //
-// 	- A fileset supports a minimum of 10,000 files or directories and a maximum of 10 billion files or directories. The scaling step size is 1.
+//		- A fileset supports a minimum of 10,000 files or directories and a maximum of 10 billion files or directories. The scaling step size is 1.
 //
-// 	- When you modify a directory quota, you must set the quota capacity or the number of files to be greater than the capacity or file quantity that has been used.
+//		- When you modify a directory quota, you must set the quota capacity or the number of files to be greater than the capacity or file quantity that has been used.
 //
-// 	- The quota statistics have a 5-minute latency. The actual usage takes effect after 5 minutes.
+//		- The quota statistics have a 5-minute latency. The actual usage takes effect after 5 minutes.
 //
 // @param request - CreateFilesetRequest
 //
@@ -25761,25 +25851,25 @@ func (client *Client) CreateFilesetWithOptions(request *CreateFilesetRequest, ru
 //
 // Description:
 //
-//   Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.7.0 and later support this operation. You can view the version information on the file system details page in the console.
+//	  Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.7.0 and later support this operation. You can view the version information on the file system details page in the console.
 //
-// 	- A maximum of 500 filesets can be created for a CPFS file system.
+//		- A maximum of 500 filesets can be created for a CPFS file system.
 //
-// 	- The fileset path must be a new path and cannot be an existing path. Fileset paths cannot be renamed and cannot be symbolic links.
+//		- The fileset path must be a new path and cannot be an existing path. Fileset paths cannot be renamed and cannot be symbolic links.
 //
-// 	- The maximum depth supported by a fileset path is eight levels. The depth of the root directory / is 0 levels. For example, the fileset path /test/aaa/ccc/ has three levels.
+//		- The maximum depth supported by a fileset path is eight levels. The depth of the root directory / is 0 levels. For example, the fileset path /test/aaa/ccc/ has three levels.
 //
-// 	- If the fileset path is a multi-level path, the parent directory must be an existing directory.
+//		- If the fileset path is a multi-level path, the parent directory must be an existing directory.
 //
-// 	- Nested filesets are not supported. If a fileset is specified as a parent directory, its subdirectory cannot be a fileset. A fileset path supports only one quota.
+//		- Nested filesets are not supported. If a fileset is specified as a parent directory, its subdirectory cannot be a fileset. A fileset path supports only one quota.
 //
-// 	- The minimum capacity quota of a fileset is 10 GiB. The scaling step size is 1 GiB. The maximum capacity quota is 1,000 TiB. The capacity quota cannot exceed the total capacity of the file system.
+//		- The minimum capacity quota of a fileset is 10 GiB. The scaling step size is 1 GiB. The maximum capacity quota is 1,000 TiB. The capacity quota cannot exceed the total capacity of the file system.
 //
-// 	- A fileset supports a minimum of 10,000 files or directories and a maximum of 10 billion files or directories. The scaling step size is 1.
+//		- A fileset supports a minimum of 10,000 files or directories and a maximum of 10 billion files or directories. The scaling step size is 1.
 //
-// 	- When you modify a directory quota, you must set the quota capacity or the number of files to be greater than the capacity or file quantity that has been used.
+//		- When you modify a directory quota, you must set the quota capacity or the number of files to be greater than the capacity or file quantity that has been used.
 //
-// 	- The quota statistics have a 5-minute latency. The actual usage takes effect after 5 minutes.
+//		- The quota statistics have a 5-minute latency. The actual usage takes effect after 5 minutes.
 //
 // @param request - CreateFilesetRequest
 //
@@ -25890,9 +25980,9 @@ func (client *Client) CreateLDAPConfig(request *CreateLDAPConfigRequest) (_resul
 //
 // Description:
 //
-//   You can create lifecycle policies only for General-purpose NAS file systems.
+//	  You can create lifecycle policies only for General-purpose NAS file systems.
 //
-// 	- You can create up to 20 lifecycle policies in each region within an Alibaba Cloud account.
+//		- You can create up to 20 lifecycle policies in each region within an Alibaba Cloud account.
 //
 // @param request - CreateLifecyclePolicyRequest
 //
@@ -25909,12 +25999,20 @@ func (client *Client) CreateLifecyclePolicyWithOptions(request *CreateLifecycleP
 		query["FileSystemId"] = request.FileSystemId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.FsetIds)) {
+		query["FsetIds"] = request.FsetIds
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.LifecyclePolicyName)) {
 		query["LifecyclePolicyName"] = request.LifecyclePolicyName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.LifecycleRuleName)) {
 		query["LifecycleRuleName"] = request.LifecycleRuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LifecycleRuleType)) {
+		query["LifecycleRuleType"] = request.LifecycleRuleType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Path)) {
@@ -25969,9 +26067,9 @@ func (client *Client) CreateLifecyclePolicyWithOptions(request *CreateLifecycleP
 //
 // Description:
 //
-//   You can create lifecycle policies only for General-purpose NAS file systems.
+//	  You can create lifecycle policies only for General-purpose NAS file systems.
 //
-// 	- You can create up to 20 lifecycle policies in each region within an Alibaba Cloud account.
+//		- You can create up to 20 lifecycle policies in each region within an Alibaba Cloud account.
 //
 // @param request - CreateLifecyclePolicyRequest
 //
@@ -25993,9 +26091,9 @@ func (client *Client) CreateLifecyclePolicy(request *CreateLifecyclePolicyReques
 //
 // Description:
 //
-//   Only General-purpose NAS file systems support this operation.
+//	  Only General-purpose NAS file systems support this operation.
 //
-// 	- You can run a maximum of 20 data retrieval tasks in each region within an Alibaba Cloud account.
+//		- You can run a maximum of 20 data retrieval tasks in each region within an Alibaba Cloud account.
 //
 // @param request - CreateLifecycleRetrieveJobRequest
 //
@@ -26060,9 +26158,9 @@ func (client *Client) CreateLifecycleRetrieveJobWithOptions(request *CreateLifec
 //
 // Description:
 //
-//   Only General-purpose NAS file systems support this operation.
+//	  Only General-purpose NAS file systems support this operation.
 //
-// 	- You can run a maximum of 20 data retrieval tasks in each region within an Alibaba Cloud account.
+//		- You can run a maximum of 20 data retrieval tasks in each region within an Alibaba Cloud account.
 //
 // @param request - CreateLifecycleRetrieveJobRequest
 //
@@ -26159,9 +26257,9 @@ func (client *Client) CreateLogAnalysis(request *CreateLogAnalysisRequest) (_res
 //
 // Description:
 //
-//   After you call the CreateMountTarget operation, a mount target is not immediately created. Therefore, we recommend that you call the DescribeMountTargets operation to query the status of the mount target. If the mount target is in the **Active*	- state, you can then mount the file system. Otherwise, the file system may fail to be mounted.
+//	  After you call the CreateMountTarget operation, a mount target is not immediately created. Therefore, we recommend that you call the DescribeMountTargets operation to query the status of the mount target. If the mount target is in the **Active*	- state, you can then mount the file system. Otherwise, the file system may fail to be mounted.
 //
-// 	- When you call this operation, a service-linked role of NAS is automatically created. For more information, see [Manage the service-linked roles of NAS](https://help.aliyun.com/document_detail/208530.html).
+//		- When you call this operation, a service-linked role of NAS is automatically created. For more information, see [Manage the service-linked roles of NAS](https://help.aliyun.com/document_detail/208530.html).
 //
 // @param request - CreateMountTargetRequest
 //
@@ -26246,9 +26344,9 @@ func (client *Client) CreateMountTargetWithOptions(request *CreateMountTargetReq
 //
 // Description:
 //
-//   After you call the CreateMountTarget operation, a mount target is not immediately created. Therefore, we recommend that you call the DescribeMountTargets operation to query the status of the mount target. If the mount target is in the **Active*	- state, you can then mount the file system. Otherwise, the file system may fail to be mounted.
+//	  After you call the CreateMountTarget operation, a mount target is not immediately created. Therefore, we recommend that you call the DescribeMountTargets operation to query the status of the mount target. If the mount target is in the **Active*	- state, you can then mount the file system. Otherwise, the file system may fail to be mounted.
 //
-// 	- When you call this operation, a service-linked role of NAS is automatically created. For more information, see [Manage the service-linked roles of NAS](https://help.aliyun.com/document_detail/208530.html).
+//		- When you call this operation, a service-linked role of NAS is automatically created. For more information, see [Manage the service-linked roles of NAS](https://help.aliyun.com/document_detail/208530.html).
 //
 // @param request - CreateMountTargetRequest
 //
@@ -26270,21 +26368,21 @@ func (client *Client) CreateMountTarget(request *CreateMountTargetRequest) (_res
 //
 // Description:
 //
-//   This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+//	  This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
 //
-// 	- Prerequisites
+//		- Prerequisites
 //
-//     A protocol service is created.
+//	    A protocol service is created.
 //
-// 	- Others
+//		- Others
 //
-//     	- The virtual private cloud (VPC) CIDR block of the export directory for the protocol service cannot overlap with the VPC CIDR block of the file system.
+//	    	- The virtual private cloud (VPC) CIDR block of the export directory for the protocol service cannot overlap with the VPC CIDR block of the file system.
 //
-//     	- The VPC CIDR blocks of multiple export directories of a protocol service cannot overlap.
+//	    	- The VPC CIDR blocks of multiple export directories of a protocol service cannot overlap.
 //
-//     	- You can create a maximum of 10 export directories for a protocol service.
+//	    	- You can create a maximum of 10 export directories for a protocol service.
 //
-//     	- When you create export directories for a protocol service, a maximum of 32 IP addresses that are allocated by the specified vSwitch are used. Make sure that the vSwitch can provide sufficient IP addresses.
+//	    	- When you create export directories for a protocol service, a maximum of 32 IP addresses that are allocated by the specified vSwitch are used. Make sure that the vSwitch can provide sufficient IP addresses.
 //
 // @param request - CreateProtocolMountTargetRequest
 //
@@ -26377,21 +26475,21 @@ func (client *Client) CreateProtocolMountTargetWithOptions(request *CreateProtoc
 //
 // Description:
 //
-//   This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+//	  This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
 //
-// 	- Prerequisites
+//		- Prerequisites
 //
-//     A protocol service is created.
+//	    A protocol service is created.
 //
-// 	- Others
+//		- Others
 //
-//     	- The virtual private cloud (VPC) CIDR block of the export directory for the protocol service cannot overlap with the VPC CIDR block of the file system.
+//	    	- The virtual private cloud (VPC) CIDR block of the export directory for the protocol service cannot overlap with the VPC CIDR block of the file system.
 //
-//     	- The VPC CIDR blocks of multiple export directories of a protocol service cannot overlap.
+//	    	- The VPC CIDR blocks of multiple export directories of a protocol service cannot overlap.
 //
-//     	- You can create a maximum of 10 export directories for a protocol service.
+//	    	- You can create a maximum of 10 export directories for a protocol service.
 //
-//     	- When you create export directories for a protocol service, a maximum of 32 IP addresses that are allocated by the specified vSwitch are used. Make sure that the vSwitch can provide sufficient IP addresses.
+//	    	- When you create export directories for a protocol service, a maximum of 32 IP addresses that are allocated by the specified vSwitch are used. Make sure that the vSwitch can provide sufficient IP addresses.
 //
 // @param request - CreateProtocolMountTargetRequest
 //
@@ -26413,29 +26511,29 @@ func (client *Client) CreateProtocolMountTarget(request *CreateProtocolMountTarg
 //
 // Description:
 //
-//   This operation is available only to CPFS file systems on the China site (aliyun.com).
+//	  This operation is available only to CPFS file systems on the China site (aliyun.com).
 //
-// 	- Only CPFS V2.3.0 and later support protocol services. You can query the version information of the file system by calling the [DescribeFileSystems](~~2402188.~~) operation.
+//		- Only CPFS V2.3.0 and later support protocol services. You can query the version information of the file system by calling the [DescribeFileSystems](~~2402188.~~) operation.
 //
-// 	- Protocol service types
+//		- Protocol service types
 //
-//     Protocol services are classified into general-purpose protocol services and cache protocol services. Different from general-purpose protocol services, cache protocol services can cache hot data. If data exists in the cache, the bandwidth of the cache protocol service may exceed the bandwidth of the CPFS file system, reaching the maximum bandwidth specified for the protocol service.
+//	    Protocol services are classified into general-purpose protocol services and cache protocol services. Different from general-purpose protocol services, cache protocol services can cache hot data. If data exists in the cache, the bandwidth of the cache protocol service may exceed the bandwidth of the CPFS file system, reaching the maximum bandwidth specified for the protocol service.
 //
-//     	- General-purpose protocol services: provide NFS access and [directory-level mount targets](https://help.aliyun.com/document_detail/427175.html) for CPFS file systems. You do not need to configure a POSIX client to manage clusters. General-purpose protocol services are provided free of charge.
+//	    	- General-purpose protocol services: provide NFS access and [directory-level mount targets](https://help.aliyun.com/document_detail/427175.html) for CPFS file systems. You do not need to configure a POSIX client to manage clusters. General-purpose protocol services are provided free of charge.
 //
-//     	- Cache protocol services: provide the server memory cache based on the least recently used (LRU) policy. When data is cached in the memory, CPFS provides higher internal bandwidth. Cache protocol services are divided into Cache L1 and Cache L2 specifications. The differences are the internal bandwidth size and memory cache size.
+//	    	- Cache protocol services: provide the server memory cache based on the least recently used (LRU) policy. When data is cached in the memory, CPFS provides higher internal bandwidth. Cache protocol services are divided into Cache L1 and Cache L2 specifications. The differences are the internal bandwidth size and memory cache size.
 //
-//        >   Note You are charged for using cache protocol services, which are in invitational preview. For more information about the billing method of cache protocol services, see [Billable items](https://help.aliyun.com/document_detail/111858.html). If you have any feedback or questions, you can join the DingTalk group (group number: 31045006299).
+//	       >   Note You are charged for using cache protocol services, which are in invitational preview. For more information about the billing method of cache protocol services, see [Billable items](https://help.aliyun.com/document_detail/111858.html). If you have any feedback or questions, you can join the DingTalk group (group number: 31045006299).
 //
-// 	- Protocol type
+//		- Protocol type
 //
-//     Only NFSv3 is supported.
+//	    Only NFSv3 is supported.
 //
-// 	- Others
+//		- Others
 //
-//     	- Only one protocol service can be created for a CPFS file system.
+//	    	- Only one protocol service can be created for a CPFS file system.
 //
-//     	- A protocol service can use a maximum of 32 IP addresses that are allocated by a specified vSwitch. Make sure that the vSwitch can provide sufficient IP addresses.
+//	    	- A protocol service can use a maximum of 32 IP addresses that are allocated by a specified vSwitch. Make sure that the vSwitch can provide sufficient IP addresses.
 //
 // @param request - CreateProtocolServiceRequest
 //
@@ -26524,29 +26622,29 @@ func (client *Client) CreateProtocolServiceWithOptions(request *CreateProtocolSe
 //
 // Description:
 //
-//   This operation is available only to CPFS file systems on the China site (aliyun.com).
+//	  This operation is available only to CPFS file systems on the China site (aliyun.com).
 //
-// 	- Only CPFS V2.3.0 and later support protocol services. You can query the version information of the file system by calling the [DescribeFileSystems](~~2402188.~~) operation.
+//		- Only CPFS V2.3.0 and later support protocol services. You can query the version information of the file system by calling the [DescribeFileSystems](~~2402188.~~) operation.
 //
-// 	- Protocol service types
+//		- Protocol service types
 //
-//     Protocol services are classified into general-purpose protocol services and cache protocol services. Different from general-purpose protocol services, cache protocol services can cache hot data. If data exists in the cache, the bandwidth of the cache protocol service may exceed the bandwidth of the CPFS file system, reaching the maximum bandwidth specified for the protocol service.
+//	    Protocol services are classified into general-purpose protocol services and cache protocol services. Different from general-purpose protocol services, cache protocol services can cache hot data. If data exists in the cache, the bandwidth of the cache protocol service may exceed the bandwidth of the CPFS file system, reaching the maximum bandwidth specified for the protocol service.
 //
-//     	- General-purpose protocol services: provide NFS access and [directory-level mount targets](https://help.aliyun.com/document_detail/427175.html) for CPFS file systems. You do not need to configure a POSIX client to manage clusters. General-purpose protocol services are provided free of charge.
+//	    	- General-purpose protocol services: provide NFS access and [directory-level mount targets](https://help.aliyun.com/document_detail/427175.html) for CPFS file systems. You do not need to configure a POSIX client to manage clusters. General-purpose protocol services are provided free of charge.
 //
-//     	- Cache protocol services: provide the server memory cache based on the least recently used (LRU) policy. When data is cached in the memory, CPFS provides higher internal bandwidth. Cache protocol services are divided into Cache L1 and Cache L2 specifications. The differences are the internal bandwidth size and memory cache size.
+//	    	- Cache protocol services: provide the server memory cache based on the least recently used (LRU) policy. When data is cached in the memory, CPFS provides higher internal bandwidth. Cache protocol services are divided into Cache L1 and Cache L2 specifications. The differences are the internal bandwidth size and memory cache size.
 //
-//        >   Note You are charged for using cache protocol services, which are in invitational preview. For more information about the billing method of cache protocol services, see [Billable items](https://help.aliyun.com/document_detail/111858.html). If you have any feedback or questions, you can join the DingTalk group (group number: 31045006299).
+//	       >   Note You are charged for using cache protocol services, which are in invitational preview. For more information about the billing method of cache protocol services, see [Billable items](https://help.aliyun.com/document_detail/111858.html). If you have any feedback or questions, you can join the DingTalk group (group number: 31045006299).
 //
-// 	- Protocol type
+//		- Protocol type
 //
-//     Only NFSv3 is supported.
+//	    Only NFSv3 is supported.
 //
-// 	- Others
+//		- Others
 //
-//     	- Only one protocol service can be created for a CPFS file system.
+//	    	- Only one protocol service can be created for a CPFS file system.
 //
-//     	- A protocol service can use a maximum of 32 IP addresses that are allocated by a specified vSwitch. Make sure that the vSwitch can provide sufficient IP addresses.
+//	    	- A protocol service can use a maximum of 32 IP addresses that are allocated by a specified vSwitch. Make sure that the vSwitch can provide sufficient IP addresses.
 //
 // @param request - CreateProtocolServiceRequest
 //
@@ -26568,11 +26666,11 @@ func (client *Client) CreateProtocolService(request *CreateProtocolServiceReques
 //
 // Description:
 //
-//   Only General-purpose NAS file systems support this operation.
+//	  Only General-purpose NAS file systems support this operation.
 //
-// 	- If you permanently delete a directory, the files in the directory are recursively cleared.
+//		- If you permanently delete a directory, the files in the directory are recursively cleared.
 //
-// 	- You can run only one job at a time for a single file system to permanently delete the files from the file system. You cannot create a restoration or deletion job when a file or directory is being deleted.
+//		- You can run only one job at a time for a single file system to permanently delete the files from the file system. You cannot create a restoration or deletion job when a file or directory is being deleted.
 //
 // @param request - CreateRecycleBinDeleteJobRequest
 //
@@ -26625,11 +26723,11 @@ func (client *Client) CreateRecycleBinDeleteJobWithOptions(request *CreateRecycl
 //
 // Description:
 //
-//   Only General-purpose NAS file systems support this operation.
+//	  Only General-purpose NAS file systems support this operation.
 //
-// 	- If you permanently delete a directory, the files in the directory are recursively cleared.
+//		- If you permanently delete a directory, the files in the directory are recursively cleared.
 //
-// 	- You can run only one job at a time for a single file system to permanently delete the files from the file system. You cannot create a restoration or deletion job when a file or directory is being deleted.
+//		- You can run only one job at a time for a single file system to permanently delete the files from the file system. You cannot create a restoration or deletion job when a file or directory is being deleted.
 //
 // @param request - CreateRecycleBinDeleteJobRequest
 //
@@ -26653,13 +26751,13 @@ func (client *Client) CreateRecycleBinDeleteJob(request *CreateRecycleBinDeleteJ
 //
 // ### Usage notes
 //
-// 	- Only General-purpose NAS file systems support this operation.
+//   - Only General-purpose NAS file systems support this operation.
 //
-// 	- You can run only one job at a time for a single file system to restore files to or clear files from the file system. You cannot create a restore or cleanup job when files are being restored from the recycle bin.
+//   - You can run only one job at a time for a single file system to restore files to or clear files from the file system. You cannot create a restore or cleanup job when files are being restored from the recycle bin.
 //
-// 	- You can restore only one file or directory in a single restore job. If you restore a specified directory, all files in the directory are recursively restored.
+//   - You can restore only one file or directory in a single restore job. If you restore a specified directory, all files in the directory are recursively restored.
 //
-// 	- After files are restored, the data of the files is defragmented. When the data is being defragmented, the read performance is slightly degraded.
+//   - After files are restored, the data of the files is defragmented. When the data is being defragmented, the read performance is slightly degraded.
 //
 // @param request - CreateRecycleBinRestoreJobRequest
 //
@@ -26714,13 +26812,13 @@ func (client *Client) CreateRecycleBinRestoreJobWithOptions(request *CreateRecyc
 //
 // ### Usage notes
 //
-// 	- Only General-purpose NAS file systems support this operation.
+//   - Only General-purpose NAS file systems support this operation.
 //
-// 	- You can run only one job at a time for a single file system to restore files to or clear files from the file system. You cannot create a restore or cleanup job when files are being restored from the recycle bin.
+//   - You can run only one job at a time for a single file system to restore files to or clear files from the file system. You cannot create a restore or cleanup job when files are being restored from the recycle bin.
 //
-// 	- You can restore only one file or directory in a single restore job. If you restore a specified directory, all files in the directory are recursively restored.
+//   - You can restore only one file or directory in a single restore job. If you restore a specified directory, all files in the directory are recursively restored.
 //
-// 	- After files are restored, the data of the files is defragmented. When the data is being defragmented, the read performance is slightly degraded.
+//   - After files are restored, the data of the files is defragmented. When the data is being defragmented, the read performance is slightly degraded.
 //
 // @param request - CreateRecycleBinRestoreJobRequest
 //
@@ -26742,23 +26840,23 @@ func (client *Client) CreateRecycleBinRestoreJob(request *CreateRecycleBinRestor
 //
 // Description:
 //
-//   The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+//	  The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
 //
-// 	- Only advanced Extreme NAS file systems support the snapshot feature.
+//		- Only advanced Extreme NAS file systems support the snapshot feature.
 //
-// 	- You can create a maximum of 128 snapshots for a file system.
+//		- You can create a maximum of 128 snapshots for a file system.
 //
-// 	- The compute node on which a file system is mounted must function as expected. Otherwise, you cannot create a snapshot for the file system.
+//		- The compute node on which a file system is mounted must function as expected. Otherwise, you cannot create a snapshot for the file system.
 //
-// 	- You can create only one snapshot for a file system at a time.
+//		- You can create only one snapshot for a file system at a time.
 //
-// 	- If the file system expires when a snapshot is being created, the file system is released and the snapshot is deleted.
+//		- If the file system expires when a snapshot is being created, the file system is released and the snapshot is deleted.
 //
-// 	- When you create a snapshot for a file system, the I/O performance of the file system may be degraded for a short period of time. We recommend that you create snapshots during off-peak hours.
+//		- When you create a snapshot for a file system, the I/O performance of the file system may be degraded for a short period of time. We recommend that you create snapshots during off-peak hours.
 //
-// 	- A snapshot is a backup of a file system at a specific point in time. After you create a snapshot, incremental data that is generated in the file system will not be synchronized to the snapshot.
+//		- A snapshot is a backup of a file system at a specific point in time. After you create a snapshot, incremental data that is generated in the file system will not be synchronized to the snapshot.
 //
-// 	- Manually created snapshots will not be deleted until 15 days after the service is suspended due to overdue payments. We recommend that you delete unnecessary snapshots at regular intervals to prevent extra fees incurred by the snapshots.
+//		- Manually created snapshots will not be deleted until 15 days after the service is suspended due to overdue payments. We recommend that you delete unnecessary snapshots at regular intervals to prevent extra fees incurred by the snapshots.
 //
 // @param request - CreateSnapshotRequest
 //
@@ -26827,23 +26925,23 @@ func (client *Client) CreateSnapshotWithOptions(request *CreateSnapshotRequest, 
 //
 // Description:
 //
-//   The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+//	  The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
 //
-// 	- Only advanced Extreme NAS file systems support the snapshot feature.
+//		- Only advanced Extreme NAS file systems support the snapshot feature.
 //
-// 	- You can create a maximum of 128 snapshots for a file system.
+//		- You can create a maximum of 128 snapshots for a file system.
 //
-// 	- The compute node on which a file system is mounted must function as expected. Otherwise, you cannot create a snapshot for the file system.
+//		- The compute node on which a file system is mounted must function as expected. Otherwise, you cannot create a snapshot for the file system.
 //
-// 	- You can create only one snapshot for a file system at a time.
+//		- You can create only one snapshot for a file system at a time.
 //
-// 	- If the file system expires when a snapshot is being created, the file system is released and the snapshot is deleted.
+//		- If the file system expires when a snapshot is being created, the file system is released and the snapshot is deleted.
 //
-// 	- When you create a snapshot for a file system, the I/O performance of the file system may be degraded for a short period of time. We recommend that you create snapshots during off-peak hours.
+//		- When you create a snapshot for a file system, the I/O performance of the file system may be degraded for a short period of time. We recommend that you create snapshots during off-peak hours.
 //
-// 	- A snapshot is a backup of a file system at a specific point in time. After you create a snapshot, incremental data that is generated in the file system will not be synchronized to the snapshot.
+//		- A snapshot is a backup of a file system at a specific point in time. After you create a snapshot, incremental data that is generated in the file system will not be synchronized to the snapshot.
 //
-// 	- Manually created snapshots will not be deleted until 15 days after the service is suspended due to overdue payments. We recommend that you delete unnecessary snapshots at regular intervals to prevent extra fees incurred by the snapshots.
+//		- Manually created snapshots will not be deleted until 15 days after the service is suspended due to overdue payments. We recommend that you delete unnecessary snapshots at regular intervals to prevent extra fees incurred by the snapshots.
 //
 // @param request - CreateSnapshotRequest
 //
@@ -26948,9 +27046,9 @@ func (client *Client) DeleteAccessGroup(request *DeleteAccessGroupRequest) (_res
 //
 // Description:
 //
-//   Only General-purpose Network File System (NFS) file systems support access points.
+//	  Only General-purpose Network File System (NFS) file systems support access points.
 //
-// 	- After an access point is deleted, all I/O operations that are being performed on the directory accessed over the access point are interrupted immediately. Exercise caution when you perform this operation.
+//		- After an access point is deleted, all I/O operations that are being performed on the directory accessed over the access point are interrupted immediately. Exercise caution when you perform this operation.
 //
 // @param request - DeleteAccessPointRequest
 //
@@ -27011,9 +27109,9 @@ func (client *Client) DeleteAccessPointWithOptions(request *DeleteAccessPointReq
 //
 // Description:
 //
-//   Only General-purpose Network File System (NFS) file systems support access points.
+//	  Only General-purpose Network File System (NFS) file systems support access points.
 //
-// 	- After an access point is deleted, all I/O operations that are being performed on the directory accessed over the access point are interrupted immediately. Exercise caution when you perform this operation.
+//		- After an access point is deleted, all I/O operations that are being performed on the directory accessed over the access point are interrupted immediately. Exercise caution when you perform this operation.
 //
 // @param request - DeleteAccessPointRequest
 //
@@ -27122,11 +27220,11 @@ func (client *Client) DeleteAccessRule(request *DeleteAccessRuleRequest) (_resul
 //
 // Description:
 //
-//   The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+//	  The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
 //
-// 	- Only advanced Extreme NAS file systems support the snapshot feature.
+//		- Only advanced Extreme NAS file systems support the snapshot feature.
 //
-// 	- If you delete an automatic snapshot policy that is applied to a file system, snapshots for the file system are no longer created based on the policy.
+//		- If you delete an automatic snapshot policy that is applied to a file system, snapshots for the file system are no longer created based on the policy.
 //
 // @param request - DeleteAutoSnapshotPolicyRequest
 //
@@ -27183,11 +27281,11 @@ func (client *Client) DeleteAutoSnapshotPolicyWithOptions(request *DeleteAutoSna
 //
 // Description:
 //
-//   The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+//	  The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
 //
-// 	- Only advanced Extreme NAS file systems support the snapshot feature.
+//		- Only advanced Extreme NAS file systems support the snapshot feature.
 //
-// 	- If you delete an automatic snapshot policy that is applied to a file system, snapshots for the file system are no longer created based on the policy.
+//		- If you delete an automatic snapshot policy that is applied to a file system, snapshots for the file system are no longer created based on the policy.
 //
 // @param request - DeleteAutoSnapshotPolicyRequest
 //
@@ -27209,11 +27307,11 @@ func (client *Client) DeleteAutoSnapshotPolicy(request *DeleteAutoSnapshotPolicy
 //
 // Description:
 //
-//   Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.4.0 and later support data flows. You can view the version information on the file system details page in the console.
+//	  Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.4.0 and later support data flows. You can view the version information on the file system details page in the console.
 //
-// 	- You can delete the data flows that are only in the `Running` or `Stopped` state.
+//		- You can delete the data flows that are only in the `Running` or `Stopped` state.
 //
-// 	- After a data flow is deleted, the resources related to the data flow are released and cannot be restored. You must create a data flow again if required.
+//		- After a data flow is deleted, the resources related to the data flow are released and cannot be restored. You must create a data flow again if required.
 //
 // @param request - DeleteDataFlowRequest
 //
@@ -27282,11 +27380,11 @@ func (client *Client) DeleteDataFlowWithOptions(request *DeleteDataFlowRequest, 
 //
 // Description:
 //
-//   Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.4.0 and later support data flows. You can view the version information on the file system details page in the console.
+//	  Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.4.0 and later support data flows. You can view the version information on the file system details page in the console.
 //
-// 	- You can delete the data flows that are only in the `Running` or `Stopped` state.
+//		- You can delete the data flows that are only in the `Running` or `Stopped` state.
 //
-// 	- After a data flow is deleted, the resources related to the data flow are released and cannot be restored. You must create a data flow again if required.
+//		- After a data flow is deleted, the resources related to the data flow are released and cannot be restored. You must create a data flow again if required.
 //
 // @param request - DeleteDataFlowRequest
 //
@@ -27308,11 +27406,11 @@ func (client *Client) DeleteDataFlow(request *DeleteDataFlowRequest) (_result *D
 //
 // Description:
 //
-//   Before you delete a file system, you must delete all mount targets of the file system.
+//	  Before you delete a file system, you must delete all mount targets of the file system.
 //
-// 	- Before you delete a file system, you must make sure that no lifecycle policy is created for the file system.
+//		- Before you delete a file system, you must make sure that no lifecycle policy is created for the file system.
 //
-// 	- After a file system is deleted, the data on the file system cannot be restored. Proceed with caution.
+//		- After a file system is deleted, the data on the file system cannot be restored. Proceed with caution.
 //
 // @param request - DeleteFileSystemRequest
 //
@@ -27369,11 +27467,11 @@ func (client *Client) DeleteFileSystemWithOptions(request *DeleteFileSystemReque
 //
 // Description:
 //
-//   Before you delete a file system, you must delete all mount targets of the file system.
+//	  Before you delete a file system, you must delete all mount targets of the file system.
 //
-// 	- Before you delete a file system, you must make sure that no lifecycle policy is created for the file system.
+//		- Before you delete a file system, you must make sure that no lifecycle policy is created for the file system.
 //
-// 	- After a file system is deleted, the data on the file system cannot be restored. Proceed with caution.
+//		- After a file system is deleted, the data on the file system cannot be restored. Proceed with caution.
 //
 // @param request - DeleteFileSystemRequest
 //
@@ -27395,9 +27493,9 @@ func (client *Client) DeleteFileSystem(request *DeleteFileSystemRequest) (_resul
 //
 // Description:
 //
-//   Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.7.0 and later support this operation. After you delete a fileset, all data in the fileset is deleted and cannot be restored. Proceed with caution.
+//	  Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.7.0 and later support this operation. After you delete a fileset, all data in the fileset is deleted and cannot be restored. Proceed with caution.
 //
-// 	- If deletion protection is enabled for the fileset, you must disable deletion protection before you delete the fileset.
+//		- If deletion protection is enabled for the fileset, you must disable deletion protection before you delete the fileset.
 //
 // @param request - DeleteFilesetRequest
 //
@@ -27466,9 +27564,9 @@ func (client *Client) DeleteFilesetWithOptions(request *DeleteFilesetRequest, ru
 //
 // Description:
 //
-//   Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.7.0 and later support this operation. After you delete a fileset, all data in the fileset is deleted and cannot be restored. Proceed with caution.
+//	  Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.7.0 and later support this operation. After you delete a fileset, all data in the fileset is deleted and cannot be restored. Proceed with caution.
 //
-// 	- If deletion protection is enabled for the fileset, you must disable deletion protection before you delete the fileset.
+//		- If deletion protection is enabled for the fileset, you must disable deletion protection before you delete the fileset.
 //
 // @param request - DeleteFilesetRequest
 //
@@ -27903,9 +28001,9 @@ func (client *Client) DeleteProtocolMountTarget(request *DeleteProtocolMountTarg
 //
 // Description:
 //
-//   This operation is available only to CPFS file systems on the China site (aliyun.com).
+//	  This operation is available only to CPFS file systems on the China site (aliyun.com).
 //
-// 	- When you delete a protocol service, the export directories in the protocol service are also deleted.
+//		- When you delete a protocol service, the export directories in the protocol service are also deleted.
 //
 // @param request - DeleteProtocolServiceRequest
 //
@@ -27974,9 +28072,9 @@ func (client *Client) DeleteProtocolServiceWithOptions(request *DeleteProtocolSe
 //
 // Description:
 //
-//   This operation is available only to CPFS file systems on the China site (aliyun.com).
+//	  This operation is available only to CPFS file systems on the China site (aliyun.com).
 //
-// 	- When you delete a protocol service, the export directories in the protocol service are also deleted.
+//		- When you delete a protocol service, the export directories in the protocol service are also deleted.
 //
 // @param request - DeleteProtocolServiceRequest
 //
@@ -27998,9 +28096,9 @@ func (client *Client) DeleteProtocolService(request *DeleteProtocolServiceReques
 //
 // Description:
 //
-//   The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+//	  The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
 //
-// 	- Only advanced Extreme NAS file systems support this feature.
+//		- Only advanced Extreme NAS file systems support this feature.
 //
 // @param request - DeleteSnapshotRequest
 //
@@ -28057,9 +28155,9 @@ func (client *Client) DeleteSnapshotWithOptions(request *DeleteSnapshotRequest, 
 //
 // Description:
 //
-//   The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+//	  The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
 //
-// 	- Only advanced Extreme NAS file systems support this feature.
+//		- Only advanced Extreme NAS file systems support this feature.
 //
 // @param request - DeleteSnapshotRequest
 //
@@ -28429,9 +28527,9 @@ func (client *Client) DescribeAccessRules(request *DescribeAccessRulesRequest) (
 //
 // Description:
 //
-//   The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+//	  The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
 //
-// 	- Only advanced Extreme NAS file systems support this feature.
+//		- Only advanced Extreme NAS file systems support this feature.
 //
 // @param request - DescribeAutoSnapshotPoliciesRequest
 //
@@ -28500,9 +28598,9 @@ func (client *Client) DescribeAutoSnapshotPoliciesWithOptions(request *DescribeA
 //
 // Description:
 //
-//   The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+//	  The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
 //
-// 	- Only advanced Extreme NAS file systems support this feature.
+//		- Only advanced Extreme NAS file systems support this feature.
 //
 // @param request - DescribeAutoSnapshotPoliciesRequest
 //
@@ -28524,9 +28622,9 @@ func (client *Client) DescribeAutoSnapshotPolicies(request *DescribeAutoSnapshot
 //
 // Description:
 //
-//   The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+//	  The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
 //
-// 	- Only advanced Extreme NAS file systems support the snapshot feature.
+//		- Only advanced Extreme NAS file systems support the snapshot feature.
 //
 // @param request - DescribeAutoSnapshotTasksRequest
 //
@@ -28599,9 +28697,9 @@ func (client *Client) DescribeAutoSnapshotTasksWithOptions(request *DescribeAuto
 //
 // Description:
 //
-//   The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+//	  The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
 //
-// 	- Only advanced Extreme NAS file systems support the snapshot feature.
+//		- Only advanced Extreme NAS file systems support the snapshot feature.
 //
 // @param request - DescribeAutoSnapshotTasksRequest
 //
@@ -28898,11 +28996,11 @@ func (client *Client) DescribeDataFlowTasks(request *DescribeDataFlowTasksReques
 //
 // Description:
 //
-//   Only CPFS for LINGJUN V2.4.0 and later support data flows. You can view the version information on the file system details page in the console.
+//	  Only CPFS for LINGJUN V2.4.0 and later support data flows. You can view the version information on the file system details page in the console.
 //
-// 	- In Filters, FsetIds, DataFlowlds, SourceStorage, ThroughputList, and Status support exact match only. FileSystemPath, Description, and SourceStoragePath support fuzzy match.
+//		- In Filters, FsetIds, DataFlowlds, SourceStorage, ThroughputList, and Status support exact match only. FileSystemPath, Description, and SourceStoragePath support fuzzy match.
 //
-// 	- Combined query is supported.
+//		- Combined query is supported.
 //
 // @param request - DescribeDataFlowsRequest
 //
@@ -28971,11 +29069,11 @@ func (client *Client) DescribeDataFlowsWithOptions(request *DescribeDataFlowsReq
 //
 // Description:
 //
-//   Only CPFS for LINGJUN V2.4.0 and later support data flows. You can view the version information on the file system details page in the console.
+//	  Only CPFS for LINGJUN V2.4.0 and later support data flows. You can view the version information on the file system details page in the console.
 //
-// 	- In Filters, FsetIds, DataFlowlds, SourceStorage, ThroughputList, and Status support exact match only. FileSystemPath, Description, and SourceStoragePath support fuzzy match.
+//		- In Filters, FsetIds, DataFlowlds, SourceStorage, ThroughputList, and Status support exact match only. FileSystemPath, Description, and SourceStoragePath support fuzzy match.
 //
-// 	- Combined query is supported.
+//		- Combined query is supported.
 //
 // @param request - DescribeDataFlowsRequest
 //
@@ -29264,11 +29362,11 @@ func (client *Client) DescribeFileSystems(request *DescribeFileSystemsRequest) (
 //
 // Description:
 //
-//   Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.7.0 and later support this operation. You can view the version information on the file system details page in the console.
+//	  Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.7.0 and later support this operation. You can view the version information on the file system details page in the console.
 //
-// 	- In Filters, FsetIds supports exact match only. FileSystemPath and Description support fuzzy match.
+//		- In Filters, FsetIds supports exact match only. FileSystemPath and Description support fuzzy match.
 //
-// 	- Combined query is supported.
+//		- Combined query is supported.
 //
 // @param request - DescribeFilesetsRequest
 //
@@ -29345,11 +29443,11 @@ func (client *Client) DescribeFilesetsWithOptions(request *DescribeFilesetsReque
 //
 // Description:
 //
-//   Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.7.0 and later support this operation. You can view the version information on the file system details page in the console.
+//	  Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.7.0 and later support this operation. You can view the version information on the file system details page in the console.
 //
-// 	- In Filters, FsetIds supports exact match only. FileSystemPath and Description support fuzzy match.
+//		- In Filters, FsetIds supports exact match only. FileSystemPath and Description support fuzzy match.
 //
-// 	- Combined query is supported.
+//		- Combined query is supported.
 //
 // @param request - DescribeFilesetsRequest
 //
@@ -29616,9 +29714,9 @@ func (client *Client) DescribeMountTargets(request *DescribeMountTargetsRequest)
 //
 // Description:
 //
-//   Only General-purpose NAS file systems support this operation.
+//	  Only General-purpose NAS file systems support this operation.
 //
-// 	- This operation returns the clients that have accessed the specified file system within the last minute. If the file system is mounted on a client but the client did not access the file system within the last minute, the client is not included in the returned information.
+//		- This operation returns the clients that have accessed the specified file system within the last minute. If the file system is mounted on a client but the client did not access the file system within the last minute, the client is not included in the returned information.
 //
 // @param request - DescribeMountedClientsRequest
 //
@@ -29695,9 +29793,9 @@ func (client *Client) DescribeMountedClientsWithOptions(request *DescribeMounted
 //
 // Description:
 //
-//   Only General-purpose NAS file systems support this operation.
+//	  Only General-purpose NAS file systems support this operation.
 //
-// 	- This operation returns the clients that have accessed the specified file system within the last minute. If the file system is mounted on a client but the client did not access the file system within the last minute, the client is not included in the returned information.
+//		- This operation returns the clients that have accessed the specified file system within the last minute. If the file system is mounted on a client but the client did not access the file system within the last minute, the client is not included in the returned information.
 //
 // @param request - DescribeMountedClientsRequest
 //
@@ -30138,9 +30236,9 @@ func (client *Client) DescribeSmbAcl(request *DescribeSmbAclRequest) (_result *D
 //
 // Description:
 //
-//   The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+//	  The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
 //
-// 	- Only advanced Extreme NAS file systems support this feature.
+//		- Only advanced Extreme NAS file systems support this feature.
 //
 // @param request - DescribeSnapshotsRequest
 //
@@ -30225,9 +30323,9 @@ func (client *Client) DescribeSnapshotsWithOptions(request *DescribeSnapshotsReq
 //
 // Description:
 //
-//   The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+//	  The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
 //
-// 	- Only advanced Extreme NAS file systems support this feature.
+//		- Only advanced Extreme NAS file systems support this feature.
 //
 // @param request - DescribeSnapshotsRequest
 //
@@ -30407,11 +30505,11 @@ func (client *Client) DescribeZones(request *DescribeZonesRequest) (_result *Des
 //
 // Description:
 //
-//   Only General-purpose NAS file systems support this operation.
+//	  Only General-purpose NAS file systems support this operation.
 //
-// 	- If you disable the recycle bin, all files in the recycle bin are permanently deleted.
+//		- If you disable the recycle bin, all files in the recycle bin are permanently deleted.
 //
-// 	- If you disable and then enable the recycle bin, the recycle bin is empty. You cannot retrieve the deleted files.
+//		- If you disable and then enable the recycle bin, the recycle bin is empty. You cannot retrieve the deleted files.
 //
 // @param request - DisableAndCleanRecycleBinRequest
 //
@@ -30464,11 +30562,11 @@ func (client *Client) DisableAndCleanRecycleBinWithOptions(request *DisableAndCl
 //
 // Description:
 //
-//   Only General-purpose NAS file systems support this operation.
+//	  Only General-purpose NAS file systems support this operation.
 //
-// 	- If you disable the recycle bin, all files in the recycle bin are permanently deleted.
+//		- If you disable the recycle bin, all files in the recycle bin are permanently deleted.
 //
-// 	- If you disable and then enable the recycle bin, the recycle bin is empty. You cannot retrieve the deleted files.
+//		- If you disable and then enable the recycle bin, the recycle bin is empty. You cannot retrieve the deleted files.
 //
 // @param request - DisableAndCleanRecycleBinRequest
 //
@@ -31292,9 +31390,9 @@ func (client *Client) ListRecentlyRecycledDirectories(request *ListRecentlyRecyc
 //
 // Description:
 //
-//   Only General-purpose NAS file systems support this operation.
+//	  Only General-purpose NAS file systems support this operation.
 //
-// 	- You can query a maximum of 50 jobs that are recently executed.
+//		- You can query a maximum of 50 jobs that are recently executed.
 //
 // @param request - ListRecycleBinJobsRequest
 //
@@ -31347,9 +31445,9 @@ func (client *Client) ListRecycleBinJobsWithOptions(request *ListRecycleBinJobsR
 //
 // Description:
 //
-//   Only General-purpose NAS file systems support this operation.
+//	  Only General-purpose NAS file systems support this operation.
 //
-// 	- You can query a maximum of 50 jobs that are recently executed.
+//		- You can query a maximum of 50 jobs that are recently executed.
 //
 // @param request - ListRecycleBinJobsRequest
 //
@@ -31818,9 +31916,9 @@ func (client *Client) ModifyAccessRule(request *ModifyAccessRuleRequest) (_resul
 //
 // Description:
 //
-//   The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+//	  The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
 //
-// 	- Only advanced Extreme NAS file systems support this feature.
+//		- Only advanced Extreme NAS file systems support this feature.
 //
 // @param request - ModifyAutoSnapshotPolicyRequest
 //
@@ -31893,9 +31991,9 @@ func (client *Client) ModifyAutoSnapshotPolicyWithOptions(request *ModifyAutoSna
 //
 // Description:
 //
-//   The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+//	  The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
 //
-// 	- Only advanced Extreme NAS file systems support this feature.
+//		- Only advanced Extreme NAS file systems support this feature.
 //
 // @param request - ModifyAutoSnapshotPolicyRequest
 //
@@ -31917,11 +32015,11 @@ func (client *Client) ModifyAutoSnapshotPolicy(request *ModifyAutoSnapshotPolicy
 //
 // Description:
 //
-//   Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.4.0 and later support data flows.
+//	  Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.4.0 and later support data flows.
 //
-// 	- You can modify the attributes only of the data flows that are in the `Running` state.
+//		- You can modify the attributes only of the data flows that are in the `Running` state.
 //
-// 	- It generally takes 2 to 5 minutes to modify the attributes of a data flow. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/2838084.html) operation to query the status of the data flow to be modified.
+//		- It generally takes 2 to 5 minutes to modify the attributes of a data flow. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/2838084.html) operation to query the status of the data flow to be modified.
 //
 // @param request - ModifyDataFlowRequest
 //
@@ -31998,11 +32096,11 @@ func (client *Client) ModifyDataFlowWithOptions(request *ModifyDataFlowRequest, 
 //
 // Description:
 //
-//   Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.4.0 and later support data flows.
+//	  Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.4.0 and later support data flows.
 //
-// 	- You can modify the attributes only of the data flows that are in the `Running` state.
+//		- You can modify the attributes only of the data flows that are in the `Running` state.
 //
-// 	- It generally takes 2 to 5 minutes to modify the attributes of a data flow. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/2838084.html) operation to query the status of the data flow to be modified.
+//		- It generally takes 2 to 5 minutes to modify the attributes of a data flow. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/2838084.html) operation to query the status of the data flow to be modified.
 //
 // @param request - ModifyDataFlowRequest
 //
@@ -32024,13 +32122,13 @@ func (client *Client) ModifyDataFlow(request *ModifyDataFlowRequest) (_result *M
 //
 // Description:
 //
-//   This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+//	  This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
 //
-// 	- Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
+//		- Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
 //
-// 	- You can modify the AutoRefresh configurations only for the dataflows that are in the `Running` or `Stopped` state.
+//		- You can modify the AutoRefresh configurations only for the dataflows that are in the `Running` or `Stopped` state.
 //
-// 	- It generally takes 2 to 5 minutes to modify an AutoRefresh configuration. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/2838084.html) operation to query the task of modifying an AutoRefresh configuration.
+//		- It generally takes 2 to 5 minutes to modify an AutoRefresh configuration. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/2838084.html) operation to query the task of modifying an AutoRefresh configuration.
 //
 // @param request - ModifyDataFlowAutoRefreshRequest
 //
@@ -32107,13 +32205,13 @@ func (client *Client) ModifyDataFlowAutoRefreshWithOptions(request *ModifyDataFl
 //
 // Description:
 //
-//   This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+//	  This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
 //
-// 	- Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
+//		- Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
 //
-// 	- You can modify the AutoRefresh configurations only for the dataflows that are in the `Running` or `Stopped` state.
+//		- You can modify the AutoRefresh configurations only for the dataflows that are in the `Running` or `Stopped` state.
 //
-// 	- It generally takes 2 to 5 minutes to modify an AutoRefresh configuration. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/2838084.html) operation to query the task of modifying an AutoRefresh configuration.
+//		- It generally takes 2 to 5 minutes to modify an AutoRefresh configuration. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/2838084.html) operation to query the task of modifying an AutoRefresh configuration.
 //
 // @param request - ModifyDataFlowAutoRefreshRequest
 //
@@ -32429,8 +32527,16 @@ func (client *Client) ModifyLifecyclePolicyWithOptions(request *ModifyLifecycleP
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EnableLifecycle)) {
+		query["EnableLifecycle"] = request.EnableLifecycle
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.FileSystemId)) {
 		query["FileSystemId"] = request.FileSystemId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FsetIds)) {
+		query["FsetIds"] = request.FsetIds
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.LifecyclePolicyName)) {
@@ -33139,13 +33245,13 @@ func (client *Client) RemoveTags(request *RemoveTagsRequest) (_result *RemoveTag
 //
 // Description:
 //
-//   The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+//	  The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
 //
-// 	- Only advanced Extreme NAS file systems support this feature.
+//		- Only advanced Extreme NAS file systems support this feature.
 //
-// 	- The file system must be in the Running state.
+//		- The file system must be in the Running state.
 //
-// 	- To roll back a file system to a snapshot, you must specify the ID of the snapshot that is created from the file system.
+//		- To roll back a file system to a snapshot, you must specify the ID of the snapshot that is created from the file system.
 //
 // @param request - ResetFileSystemRequest
 //
@@ -33206,13 +33312,13 @@ func (client *Client) ResetFileSystemWithOptions(request *ResetFileSystemRequest
 //
 // Description:
 //
-//   The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+//	  The snapshot feature is in public preview and is provided free of charge. [File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
 //
-// 	- Only advanced Extreme NAS file systems support this feature.
+//		- Only advanced Extreme NAS file systems support this feature.
 //
-// 	- The file system must be in the Running state.
+//		- The file system must be in the Running state.
 //
-// 	- To roll back a file system to a snapshot, you must specify the ID of the snapshot that is created from the file system.
+//		- To roll back a file system to a snapshot, you must specify the ID of the snapshot that is created from the file system.
 //
 // @param request - ResetFileSystemRequest
 //
@@ -33416,15 +33522,15 @@ func (client *Client) SetDirQuota(request *SetDirQuotaRequest) (_result *SetDirQ
 //
 // Description:
 //
-//   Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.7.0 and later support this operation.
+//	  Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.7.0 and later support this operation.
 //
-// 	- The minimum capacity quota of a fileset is 10 GiB, and the maximum capacity quota is 1,000 TiB. The scaling step size is 1 GiB. The capacity quota cannot exceed the total capacity of the file system.
+//		- The minimum capacity quota of a fileset is 10 GiB, and the maximum capacity quota is 1,000 TiB. The scaling step size is 1 GiB. The capacity quota cannot exceed the total capacity of the file system.
 //
-// 	- A fileset supports a minimum of 10,000 files or directories and a maximum of 10 billion files or directories. The scaling step size is 1.
+//		- A fileset supports a minimum of 10,000 files or directories and a maximum of 10 billion files or directories. The scaling step size is 1.
 //
-// 	- When you modify a directory quota, you must set the quota capacity or the file quantity to be greater than the capacity or file quantity that has been used.
+//		- When you modify a directory quota, you must set the quota capacity or the file quantity to be greater than the capacity or file quantity that has been used.
 //
-// 	- The quota statistics have a 5-minute latency. The actual usage takes effect after 5 minutes.
+//		- The quota statistics have a 5-minute latency. The actual usage takes effect after 5 minutes.
 //
 // @param request - SetFilesetQuotaRequest
 //
@@ -33501,15 +33607,15 @@ func (client *Client) SetFilesetQuotaWithOptions(request *SetFilesetQuotaRequest
 //
 // Description:
 //
-//   Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.7.0 and later support this operation.
+//	  Only Cloud Parallel File Storage (CPFS) for LINGJUN V2.7.0 and later support this operation.
 //
-// 	- The minimum capacity quota of a fileset is 10 GiB, and the maximum capacity quota is 1,000 TiB. The scaling step size is 1 GiB. The capacity quota cannot exceed the total capacity of the file system.
+//		- The minimum capacity quota of a fileset is 10 GiB, and the maximum capacity quota is 1,000 TiB. The scaling step size is 1 GiB. The capacity quota cannot exceed the total capacity of the file system.
 //
-// 	- A fileset supports a minimum of 10,000 files or directories and a maximum of 10 billion files or directories. The scaling step size is 1.
+//		- A fileset supports a minimum of 10,000 files or directories and a maximum of 10 billion files or directories. The scaling step size is 1.
 //
-// 	- When you modify a directory quota, you must set the quota capacity or the file quantity to be greater than the capacity or file quantity that has been used.
+//		- When you modify a directory quota, you must set the quota capacity or the file quantity to be greater than the capacity or file quantity that has been used.
 //
-// 	- The quota statistics have a 5-minute latency. The actual usage takes effect after 5 minutes.
+//		- The quota statistics have a 5-minute latency. The actual usage takes effect after 5 minutes.
 //
 // @param request - SetFilesetQuotaRequest
 //
@@ -33531,15 +33637,15 @@ func (client *Client) SetFilesetQuota(request *SetFilesetQuotaRequest) (_result 
 //
 // Description:
 //
-//   This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+//	  This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
 //
-// 	- Only CPFS V2.2.0 and later support data flows. You can view the version information on the file system details page in the console.
+//		- Only CPFS V2.2.0 and later support data flows. You can view the version information on the file system details page in the console.
 //
-// 	- You can enable the data flows that are only in the `Stopped` state.
+//		- You can enable the data flows that are only in the `Stopped` state.
 //
-// 	- If the value of DryRun is `true`, you can check whether sufficient resources are available to enable the specified data flow. If the resources are insufficient, the data flow cannot be enabled.
+//		- If the value of DryRun is `true`, you can check whether sufficient resources are available to enable the specified data flow. If the resources are insufficient, the data flow cannot be enabled.
 //
-// 	- It generally takes 2 to 5 minutes to enable a data flow. You can query the data flow status by calling the [DescribeDataFlows](https://help.aliyun.com/document_detail/2402270.html) operation.
+//		- It generally takes 2 to 5 minutes to enable a data flow. You can query the data flow status by calling the [DescribeDataFlows](https://help.aliyun.com/document_detail/2402270.html) operation.
 //
 // @param request - StartDataFlowRequest
 //
@@ -33608,15 +33714,15 @@ func (client *Client) StartDataFlowWithOptions(request *StartDataFlowRequest, ru
 //
 // Description:
 //
-//   This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+//	  This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
 //
-// 	- Only CPFS V2.2.0 and later support data flows. You can view the version information on the file system details page in the console.
+//		- Only CPFS V2.2.0 and later support data flows. You can view the version information on the file system details page in the console.
 //
-// 	- You can enable the data flows that are only in the `Stopped` state.
+//		- You can enable the data flows that are only in the `Stopped` state.
 //
-// 	- If the value of DryRun is `true`, you can check whether sufficient resources are available to enable the specified data flow. If the resources are insufficient, the data flow cannot be enabled.
+//		- If the value of DryRun is `true`, you can check whether sufficient resources are available to enable the specified data flow. If the resources are insufficient, the data flow cannot be enabled.
 //
-// 	- It generally takes 2 to 5 minutes to enable a data flow. You can query the data flow status by calling the [DescribeDataFlows](https://help.aliyun.com/document_detail/2402270.html) operation.
+//		- It generally takes 2 to 5 minutes to enable a data flow. You can query the data flow status by calling the [DescribeDataFlows](https://help.aliyun.com/document_detail/2402270.html) operation.
 //
 // @param request - StartDataFlowRequest
 //
@@ -33638,17 +33744,17 @@ func (client *Client) StartDataFlow(request *StartDataFlowRequest) (_result *Sta
 //
 // Description:
 //
-//   This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+//	  This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
 //
-// 	- Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
+//		- Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
 //
-// 	- You can disable only the dataflows that are in the `Running` state.
+//		- You can disable only the dataflows that are in the `Running` state.
 //
-// 	- After a dataflow is disabled, you cannot create a dataflow task for the dataflow. If AutoRefresh is configured, source data updates are not synchronized to CPFS.
+//		- After a dataflow is disabled, you cannot create a dataflow task for the dataflow. If AutoRefresh is configured, source data updates are not synchronized to CPFS.
 //
-// 	- After a dataflow is disabled, the dataflow throughput is no longer billed because resources are reclaimed. However, the dataflow may fail to be restarted due to insufficient resources.
+//		- After a dataflow is disabled, the dataflow throughput is no longer billed because resources are reclaimed. However, the dataflow may fail to be restarted due to insufficient resources.
 //
-// 	- It generally takes 2 to 5 minutes to disable a dataflow. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/2402271.html) operation to query the dataflow status.
+//		- It generally takes 2 to 5 minutes to disable a dataflow. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/2402271.html) operation to query the dataflow status.
 //
 // @param request - StopDataFlowRequest
 //
@@ -33717,17 +33823,17 @@ func (client *Client) StopDataFlowWithOptions(request *StopDataFlowRequest, runt
 //
 // Description:
 //
-//   This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+//	  This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
 //
-// 	- Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
+//		- Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
 //
-// 	- You can disable only the dataflows that are in the `Running` state.
+//		- You can disable only the dataflows that are in the `Running` state.
 //
-// 	- After a dataflow is disabled, you cannot create a dataflow task for the dataflow. If AutoRefresh is configured, source data updates are not synchronized to CPFS.
+//		- After a dataflow is disabled, you cannot create a dataflow task for the dataflow. If AutoRefresh is configured, source data updates are not synchronized to CPFS.
 //
-// 	- After a dataflow is disabled, the dataflow throughput is no longer billed because resources are reclaimed. However, the dataflow may fail to be restarted due to insufficient resources.
+//		- After a dataflow is disabled, the dataflow throughput is no longer billed because resources are reclaimed. However, the dataflow may fail to be restarted due to insufficient resources.
 //
-// 	- It generally takes 2 to 5 minutes to disable a dataflow. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/2402271.html) operation to query the dataflow status.
+//		- It generally takes 2 to 5 minutes to disable a dataflow. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/2402271.html) operation to query the dataflow status.
 //
 // @param request - StopDataFlowRequest
 //
@@ -33986,9 +34092,9 @@ func (client *Client) UpdateRecycleBinAttribute(request *UpdateRecycleBinAttribu
 //
 // Description:
 //
-//   Only Extreme NAS file systems and CPFS file systems can be scaled up. CPFS file systems are available only on the China site (aliyun.com).
+//	  Only Extreme NAS file systems and CPFS file systems can be scaled up. CPFS file systems are available only on the China site (aliyun.com).
 //
-// 	- A General-purpose NAS file system is automatically scaled up. You do not need to call this operation to scale up a General-purpose NAS file system.
+//		- A General-purpose NAS file system is automatically scaled up. You do not need to call this operation to scale up a General-purpose NAS file system.
 //
 // @param request - UpgradeFileSystemRequest
 //
@@ -34057,9 +34163,9 @@ func (client *Client) UpgradeFileSystemWithOptions(request *UpgradeFileSystemReq
 //
 // Description:
 //
-//   Only Extreme NAS file systems and CPFS file systems can be scaled up. CPFS file systems are available only on the China site (aliyun.com).
+//	  Only Extreme NAS file systems and CPFS file systems can be scaled up. CPFS file systems are available only on the China site (aliyun.com).
 //
-// 	- A General-purpose NAS file system is automatically scaled up. You do not need to call this operation to scale up a General-purpose NAS file system.
+//		- A General-purpose NAS file system is automatically scaled up. You do not need to call this operation to scale up a General-purpose NAS file system.
 //
 // @param request - UpgradeFileSystemRequest
 //
