@@ -2754,6 +2754,332 @@ func (s *CreateInstanceResponse) SetBody(v *CreateInstanceResponseBody) *CreateI
 	return s
 }
 
+type CreateModelRequest struct {
+	Content *CreateModelRequestContent `json:"content,omitempty" xml:"content,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// true
+	DryRun *string `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
+}
+
+func (s CreateModelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateModelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateModelRequest) SetContent(v *CreateModelRequestContent) *CreateModelRequest {
+	s.Content = v
+	return s
+}
+
+func (s *CreateModelRequest) SetName(v string) *CreateModelRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateModelRequest) SetDryRun(v string) *CreateModelRequest {
+	s.DryRun = &v
+	return s
+}
+
+type CreateModelRequestContent struct {
+	// example:
+	//
+	// 128
+	Dimension *int32 `json:"dimension,omitempty" xml:"dimension,omitempty"`
+	// example:
+	//
+	// POST
+	Method *string `json:"method,omitempty" xml:"method,omitempty"`
+	// example:
+	//
+	// text_embedding
+	ModelType *string                            `json:"modelType,omitempty" xml:"modelType,omitempty"`
+	Request   *CreateModelRequestContentRequest  `json:"request,omitempty" xml:"request,omitempty" type:"Struct"`
+	Response  *CreateModelRequestContentResponse `json:"response,omitempty" xml:"response,omitempty" type:"Struct"`
+	// example:
+	//
+	// http://***.platform-cn-shanghai.opensearch.aliyuncs.com/v3/openapi/workspaces/default/text-embedding/ops-text-embedding-001
+	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s CreateModelRequestContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateModelRequestContent) GoString() string {
+	return s.String()
+}
+
+func (s *CreateModelRequestContent) SetDimension(v int32) *CreateModelRequestContent {
+	s.Dimension = &v
+	return s
+}
+
+func (s *CreateModelRequestContent) SetMethod(v string) *CreateModelRequestContent {
+	s.Method = &v
+	return s
+}
+
+func (s *CreateModelRequestContent) SetModelType(v string) *CreateModelRequestContent {
+	s.ModelType = &v
+	return s
+}
+
+func (s *CreateModelRequestContent) SetRequest(v *CreateModelRequestContentRequest) *CreateModelRequestContent {
+	s.Request = v
+	return s
+}
+
+func (s *CreateModelRequestContent) SetResponse(v *CreateModelRequestContentResponse) *CreateModelRequestContent {
+	s.Response = v
+	return s
+}
+
+func (s *CreateModelRequestContent) SetUrl(v string) *CreateModelRequestContent {
+	s.Url = &v
+	return s
+}
+
+type CreateModelRequestContentRequest struct {
+	Header     *CreateModelRequestContentRequestHeader     `json:"header,omitempty" xml:"header,omitempty" type:"Struct"`
+	Parameters *CreateModelRequestContentRequestParameters `json:"parameters,omitempty" xml:"parameters,omitempty" type:"Struct"`
+	// example:
+	//
+	// {\\"input\\": [\\"%{input}\\"], \\"input_type\\": \\"%{input_type}\\"}
+	RequestBody *string                                    `json:"requestBody,omitempty" xml:"requestBody,omitempty"`
+	UrlParams   *CreateModelRequestContentRequestUrlParams `json:"urlParams,omitempty" xml:"urlParams,omitempty" type:"Struct"`
+}
+
+func (s CreateModelRequestContentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateModelRequestContentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateModelRequestContentRequest) SetHeader(v *CreateModelRequestContentRequestHeader) *CreateModelRequestContentRequest {
+	s.Header = v
+	return s
+}
+
+func (s *CreateModelRequestContentRequest) SetParameters(v *CreateModelRequestContentRequestParameters) *CreateModelRequestContentRequest {
+	s.Parameters = v
+	return s
+}
+
+func (s *CreateModelRequestContentRequest) SetRequestBody(v string) *CreateModelRequestContentRequest {
+	s.RequestBody = &v
+	return s
+}
+
+func (s *CreateModelRequestContentRequest) SetUrlParams(v *CreateModelRequestContentRequestUrlParams) *CreateModelRequestContentRequest {
+	s.UrlParams = v
+	return s
+}
+
+type CreateModelRequestContentRequestHeader struct {
+	// example:
+	//
+	// Bearer OS-v0********6vvs
+	Authorization *string `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+	// example:
+	//
+	// application/json
+	ContentType *string `json:"Content-Type,omitempty" xml:"Content-Type,omitempty"`
+}
+
+func (s CreateModelRequestContentRequestHeader) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateModelRequestContentRequestHeader) GoString() string {
+	return s.String()
+}
+
+func (s *CreateModelRequestContentRequestHeader) SetAuthorization(v string) *CreateModelRequestContentRequestHeader {
+	s.Authorization = &v
+	return s
+}
+
+func (s *CreateModelRequestContentRequestHeader) SetContentType(v string) *CreateModelRequestContentRequestHeader {
+	s.ContentType = &v
+	return s
+}
+
+type CreateModelRequestContentRequestParameters struct {
+	Build  *CreateModelRequestContentRequestParametersBuild  `json:"build,omitempty" xml:"build,omitempty" type:"Struct"`
+	Search *CreateModelRequestContentRequestParametersSearch `json:"search,omitempty" xml:"search,omitempty" type:"Struct"`
+}
+
+func (s CreateModelRequestContentRequestParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateModelRequestContentRequestParameters) GoString() string {
+	return s.String()
+}
+
+func (s *CreateModelRequestContentRequestParameters) SetBuild(v *CreateModelRequestContentRequestParametersBuild) *CreateModelRequestContentRequestParameters {
+	s.Build = v
+	return s
+}
+
+func (s *CreateModelRequestContentRequestParameters) SetSearch(v *CreateModelRequestContentRequestParametersSearch) *CreateModelRequestContentRequestParameters {
+	s.Search = v
+	return s
+}
+
+type CreateModelRequestContentRequestParametersBuild struct {
+	// example:
+	//
+	// query
+	InputType *string `json:"input_type,omitempty" xml:"input_type,omitempty"`
+}
+
+func (s CreateModelRequestContentRequestParametersBuild) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateModelRequestContentRequestParametersBuild) GoString() string {
+	return s.String()
+}
+
+func (s *CreateModelRequestContentRequestParametersBuild) SetInputType(v string) *CreateModelRequestContentRequestParametersBuild {
+	s.InputType = &v
+	return s
+}
+
+type CreateModelRequestContentRequestParametersSearch struct {
+	// example:
+	//
+	// document
+	InputType *string `json:"input_type,omitempty" xml:"input_type,omitempty"`
+}
+
+func (s CreateModelRequestContentRequestParametersSearch) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateModelRequestContentRequestParametersSearch) GoString() string {
+	return s.String()
+}
+
+func (s *CreateModelRequestContentRequestParametersSearch) SetInputType(v string) *CreateModelRequestContentRequestParametersSearch {
+	s.InputType = &v
+	return s
+}
+
+type CreateModelRequestContentRequestUrlParams struct {
+	// example:
+	//
+	// key: value
+	Build map[string]interface{} `json:"build,omitempty" xml:"build,omitempty"`
+	// example:
+	//
+	// key: value
+	Search map[string]interface{} `json:"search,omitempty" xml:"search,omitempty"`
+}
+
+func (s CreateModelRequestContentRequestUrlParams) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateModelRequestContentRequestUrlParams) GoString() string {
+	return s.String()
+}
+
+func (s *CreateModelRequestContentRequestUrlParams) SetBuild(v map[string]interface{}) *CreateModelRequestContentRequestUrlParams {
+	s.Build = v
+	return s
+}
+
+func (s *CreateModelRequestContentRequestUrlParams) SetSearch(v map[string]interface{}) *CreateModelRequestContentRequestUrlParams {
+	s.Search = v
+	return s
+}
+
+type CreateModelRequestContentResponse struct {
+	// example:
+	//
+	// $.result.embeddings[*].embedding
+	Embeddings *string `json:"embeddings,omitempty" xml:"embeddings,omitempty"`
+}
+
+func (s CreateModelRequestContentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateModelRequestContentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateModelRequestContentResponse) SetEmbeddings(v string) *CreateModelRequestContentResponse {
+	s.Embeddings = &v
+	return s
+}
+
+type CreateModelResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 022F36C7-9FB4-5D67-BEBC-3D14B0984463
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s CreateModelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateModelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateModelResponseBody) SetRequestId(v string) *CreateModelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateModelResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateModelResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateModelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateModelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateModelResponse) SetHeaders(v map[string]*string) *CreateModelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateModelResponse) SetStatusCode(v int32) *CreateModelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateModelResponse) SetBody(v *CreateModelResponseBody) *CreateModelResponse {
+	s.Body = v
+	return s
+}
+
 type CreatePublicUrlResponseBody struct {
 	// The request ID.
 	//
@@ -3636,6 +3962,83 @@ func (s *CreateTableResponse) SetBody(v *CreateTableResponseBody) *CreateTableRe
 	return s
 }
 
+type DebugModelRequest struct {
+	Input *string `json:"input,omitempty" xml:"input,omitempty"`
+	// example:
+	//
+	// true
+	IsOnline *string `json:"isOnline,omitempty" xml:"isOnline,omitempty"`
+}
+
+func (s DebugModelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DebugModelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DebugModelRequest) SetInput(v string) *DebugModelRequest {
+	s.Input = &v
+	return s
+}
+
+func (s *DebugModelRequest) SetIsOnline(v string) *DebugModelRequest {
+	s.IsOnline = &v
+	return s
+}
+
+type DebugModelResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// E7B7D598-B080-5C8E-AA35-D43EC0D5F886
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s DebugModelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DebugModelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DebugModelResponseBody) SetRequestId(v string) *DebugModelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DebugModelResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DebugModelResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DebugModelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DebugModelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DebugModelResponse) SetHeaders(v map[string]*string) *DebugModelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DebugModelResponse) SetStatusCode(v int32) *DebugModelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DebugModelResponse) SetBody(v *DebugModelResponseBody) *DebugModelResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteAdvanceConfigResponseBody struct {
 	// The ID of the request.
 	//
@@ -4324,6 +4727,57 @@ func (s *DeleteInstanceResponse) SetStatusCode(v int32) *DeleteInstanceResponse 
 }
 
 func (s *DeleteInstanceResponse) SetBody(v *DeleteInstanceResponseBody) *DeleteInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteModelResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 022F36C7-9FB4-5D67-BEBC-3D14B0984463
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s DeleteModelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteModelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteModelResponseBody) SetRequestId(v string) *DeleteModelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteModelResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteModelResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteModelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteModelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteModelResponse) SetHeaders(v map[string]*string) *DeleteModelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteModelResponse) SetStatusCode(v int32) *DeleteModelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteModelResponse) SetBody(v *DeleteModelResponseBody) *DeleteModelResponse {
 	s.Body = v
 	return s
 }
@@ -8869,6 +9323,379 @@ func (s *GetInstanceResponse) SetStatusCode(v int32) *GetInstanceResponse {
 }
 
 func (s *GetInstanceResponse) SetBody(v *GetInstanceResponseBody) *GetInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type GetModelResponseBody struct {
+	// example:
+	//
+	// 38b079f1-7846-4226-8c90-3e2644b5c52b
+	RequestId *string                     `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result    *GetModelResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+}
+
+func (s GetModelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetModelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetModelResponseBody) SetRequestId(v string) *GetModelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetModelResponseBody) SetResult(v *GetModelResponseBodyResult) *GetModelResponseBody {
+	s.Result = v
+	return s
+}
+
+type GetModelResponseBodyResult struct {
+	Content *GetModelResponseBodyResultContent `json:"content,omitempty" xml:"content,omitempty" type:"Struct"`
+	// example:
+	//
+	// 2024-05-21 16:05:26
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// example:
+	//
+	// 128
+	Dimension *int32 `json:"dimension,omitempty" xml:"dimension,omitempty"`
+	// example:
+	//
+	// test
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// ok
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// text_embedding
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// example:
+	//
+	// 2024-05-21 16:05:26
+	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// example:
+	//
+	// http://***.platform-cn-shanghai.opensearch.aliyuncs.com/v3/openapi/workspaces/default/text-embedding/ops-text-embedding-001
+	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s GetModelResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetModelResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetModelResponseBodyResult) SetContent(v *GetModelResponseBodyResultContent) *GetModelResponseBodyResult {
+	s.Content = v
+	return s
+}
+
+func (s *GetModelResponseBodyResult) SetCreateTime(v string) *GetModelResponseBodyResult {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetModelResponseBodyResult) SetDimension(v int32) *GetModelResponseBodyResult {
+	s.Dimension = &v
+	return s
+}
+
+func (s *GetModelResponseBodyResult) SetName(v string) *GetModelResponseBodyResult {
+	s.Name = &v
+	return s
+}
+
+func (s *GetModelResponseBodyResult) SetStatus(v string) *GetModelResponseBodyResult {
+	s.Status = &v
+	return s
+}
+
+func (s *GetModelResponseBodyResult) SetType(v string) *GetModelResponseBodyResult {
+	s.Type = &v
+	return s
+}
+
+func (s *GetModelResponseBodyResult) SetUpdateTime(v string) *GetModelResponseBodyResult {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *GetModelResponseBodyResult) SetUrl(v string) *GetModelResponseBodyResult {
+	s.Url = &v
+	return s
+}
+
+type GetModelResponseBodyResultContent struct {
+	// example:
+	//
+	// POST
+	Method *string `json:"method,omitempty" xml:"method,omitempty"`
+	// example:
+	//
+	// test
+	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
+	// example:
+	//
+	// text_embedding
+	ModelType *string                                    `json:"modelType,omitempty" xml:"modelType,omitempty"`
+	Request   *GetModelResponseBodyResultContentRequest  `json:"request,omitempty" xml:"request,omitempty" type:"Struct"`
+	Response  *GetModelResponseBodyResultContentResponse `json:"response,omitempty" xml:"response,omitempty" type:"Struct"`
+	// example:
+	//
+	// http://***.platform-cn-shanghai.opensearch.aliyuncs.com/v3/openapi/workspaces/default/text-embedding/ops-text-embedding-001
+	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s GetModelResponseBodyResultContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetModelResponseBodyResultContent) GoString() string {
+	return s.String()
+}
+
+func (s *GetModelResponseBodyResultContent) SetMethod(v string) *GetModelResponseBodyResultContent {
+	s.Method = &v
+	return s
+}
+
+func (s *GetModelResponseBodyResultContent) SetModelName(v string) *GetModelResponseBodyResultContent {
+	s.ModelName = &v
+	return s
+}
+
+func (s *GetModelResponseBodyResultContent) SetModelType(v string) *GetModelResponseBodyResultContent {
+	s.ModelType = &v
+	return s
+}
+
+func (s *GetModelResponseBodyResultContent) SetRequest(v *GetModelResponseBodyResultContentRequest) *GetModelResponseBodyResultContent {
+	s.Request = v
+	return s
+}
+
+func (s *GetModelResponseBodyResultContent) SetResponse(v *GetModelResponseBodyResultContentResponse) *GetModelResponseBodyResultContent {
+	s.Response = v
+	return s
+}
+
+func (s *GetModelResponseBodyResultContent) SetUrl(v string) *GetModelResponseBodyResultContent {
+	s.Url = &v
+	return s
+}
+
+type GetModelResponseBodyResultContentRequest struct {
+	Header     *GetModelResponseBodyResultContentRequestHeader     `json:"header,omitempty" xml:"header,omitempty" type:"Struct"`
+	Parameters *GetModelResponseBodyResultContentRequestParameters `json:"parameters,omitempty" xml:"parameters,omitempty" type:"Struct"`
+	// example:
+	//
+	// {\\"input\\": [\\"%{input}\\"], \\"input_type\\": \\"%{input_type}\\"}
+	RequestBody *string                                            `json:"requestBody,omitempty" xml:"requestBody,omitempty"`
+	UrlParams   *GetModelResponseBodyResultContentRequestUrlParams `json:"urlParams,omitempty" xml:"urlParams,omitempty" type:"Struct"`
+}
+
+func (s GetModelResponseBodyResultContentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetModelResponseBodyResultContentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetModelResponseBodyResultContentRequest) SetHeader(v *GetModelResponseBodyResultContentRequestHeader) *GetModelResponseBodyResultContentRequest {
+	s.Header = v
+	return s
+}
+
+func (s *GetModelResponseBodyResultContentRequest) SetParameters(v *GetModelResponseBodyResultContentRequestParameters) *GetModelResponseBodyResultContentRequest {
+	s.Parameters = v
+	return s
+}
+
+func (s *GetModelResponseBodyResultContentRequest) SetRequestBody(v string) *GetModelResponseBodyResultContentRequest {
+	s.RequestBody = &v
+	return s
+}
+
+func (s *GetModelResponseBodyResultContentRequest) SetUrlParams(v *GetModelResponseBodyResultContentRequestUrlParams) *GetModelResponseBodyResultContentRequest {
+	s.UrlParams = v
+	return s
+}
+
+type GetModelResponseBodyResultContentRequestHeader struct {
+	// example:
+	//
+	// Bearer OS-v0********6vvs
+	Authorization *string `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+	// example:
+	//
+	// application/json
+	ContentType *string `json:"Content-Type,omitempty" xml:"Content-Type,omitempty"`
+}
+
+func (s GetModelResponseBodyResultContentRequestHeader) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetModelResponseBodyResultContentRequestHeader) GoString() string {
+	return s.String()
+}
+
+func (s *GetModelResponseBodyResultContentRequestHeader) SetAuthorization(v string) *GetModelResponseBodyResultContentRequestHeader {
+	s.Authorization = &v
+	return s
+}
+
+func (s *GetModelResponseBodyResultContentRequestHeader) SetContentType(v string) *GetModelResponseBodyResultContentRequestHeader {
+	s.ContentType = &v
+	return s
+}
+
+type GetModelResponseBodyResultContentRequestParameters struct {
+	Build  *GetModelResponseBodyResultContentRequestParametersBuild  `json:"build,omitempty" xml:"build,omitempty" type:"Struct"`
+	Search *GetModelResponseBodyResultContentRequestParametersSearch `json:"search,omitempty" xml:"search,omitempty" type:"Struct"`
+}
+
+func (s GetModelResponseBodyResultContentRequestParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetModelResponseBodyResultContentRequestParameters) GoString() string {
+	return s.String()
+}
+
+func (s *GetModelResponseBodyResultContentRequestParameters) SetBuild(v *GetModelResponseBodyResultContentRequestParametersBuild) *GetModelResponseBodyResultContentRequestParameters {
+	s.Build = v
+	return s
+}
+
+func (s *GetModelResponseBodyResultContentRequestParameters) SetSearch(v *GetModelResponseBodyResultContentRequestParametersSearch) *GetModelResponseBodyResultContentRequestParameters {
+	s.Search = v
+	return s
+}
+
+type GetModelResponseBodyResultContentRequestParametersBuild struct {
+	// example:
+	//
+	// query
+	InputType *string `json:"input_type,omitempty" xml:"input_type,omitempty"`
+}
+
+func (s GetModelResponseBodyResultContentRequestParametersBuild) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetModelResponseBodyResultContentRequestParametersBuild) GoString() string {
+	return s.String()
+}
+
+func (s *GetModelResponseBodyResultContentRequestParametersBuild) SetInputType(v string) *GetModelResponseBodyResultContentRequestParametersBuild {
+	s.InputType = &v
+	return s
+}
+
+type GetModelResponseBodyResultContentRequestParametersSearch struct {
+	// example:
+	//
+	// document
+	InputType *string `json:"input_type,omitempty" xml:"input_type,omitempty"`
+}
+
+func (s GetModelResponseBodyResultContentRequestParametersSearch) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetModelResponseBodyResultContentRequestParametersSearch) GoString() string {
+	return s.String()
+}
+
+func (s *GetModelResponseBodyResultContentRequestParametersSearch) SetInputType(v string) *GetModelResponseBodyResultContentRequestParametersSearch {
+	s.InputType = &v
+	return s
+}
+
+type GetModelResponseBodyResultContentRequestUrlParams struct {
+	// example:
+	//
+	// key: value
+	Build map[string]interface{} `json:"build,omitempty" xml:"build,omitempty"`
+	// example:
+	//
+	// key: value
+	Search map[string]interface{} `json:"search,omitempty" xml:"search,omitempty"`
+}
+
+func (s GetModelResponseBodyResultContentRequestUrlParams) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetModelResponseBodyResultContentRequestUrlParams) GoString() string {
+	return s.String()
+}
+
+func (s *GetModelResponseBodyResultContentRequestUrlParams) SetBuild(v map[string]interface{}) *GetModelResponseBodyResultContentRequestUrlParams {
+	s.Build = v
+	return s
+}
+
+func (s *GetModelResponseBodyResultContentRequestUrlParams) SetSearch(v map[string]interface{}) *GetModelResponseBodyResultContentRequestUrlParams {
+	s.Search = v
+	return s
+}
+
+type GetModelResponseBodyResultContentResponse struct {
+	// example:
+	//
+	// $.result.embeddings[*].embedding
+	Embeddings *string `json:"embeddings,omitempty" xml:"embeddings,omitempty"`
+}
+
+func (s GetModelResponseBodyResultContentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetModelResponseBodyResultContentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetModelResponseBodyResultContentResponse) SetEmbeddings(v string) *GetModelResponseBodyResultContentResponse {
+	s.Embeddings = &v
+	return s
+}
+
+type GetModelResponse struct {
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetModelResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetModelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetModelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetModelResponse) SetHeaders(v map[string]*string) *GetModelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetModelResponse) SetStatusCode(v int32) *GetModelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetModelResponse) SetBody(v *GetModelResponseBody) *GetModelResponse {
 	s.Body = v
 	return s
 }
@@ -14145,6 +14972,435 @@ func (s *ListLogsResponse) SetBody(v *ListLogsResponseBody) *ListLogsResponse {
 	return s
 }
 
+type ListModelsRequest struct {
+	// example:
+	//
+	// test1
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// text_embedding
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s ListModelsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListModelsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListModelsRequest) SetName(v string) *ListModelsRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListModelsRequest) SetPageNumber(v int32) *ListModelsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListModelsRequest) SetPageSize(v int32) *ListModelsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListModelsRequest) SetType(v string) *ListModelsRequest {
+	s.Type = &v
+	return s
+}
+
+type ListModelsResponseBody struct {
+	// example:
+	//
+	// 38b079f1-7846-4226-8c90-3e2644b5c52b
+	RequestId *string                         `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result    []*ListModelsResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 14
+	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+}
+
+func (s ListModelsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListModelsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListModelsResponseBody) SetRequestId(v string) *ListModelsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListModelsResponseBody) SetResult(v []*ListModelsResponseBodyResult) *ListModelsResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ListModelsResponseBody) SetTotalCount(v int32) *ListModelsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListModelsResponseBodyResult struct {
+	Content *ListModelsResponseBodyResultContent `json:"content,omitempty" xml:"content,omitempty" type:"Struct"`
+	// example:
+	//
+	// 2024-05-21 16:05:26
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// example:
+	//
+	// 128
+	Dimension *int32 `json:"dimension,omitempty" xml:"dimension,omitempty"`
+	// example:
+	//
+	// test
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// ok
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// text_embedding
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// example:
+	//
+	// 2024-05-21 16:05:26
+	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// example:
+	//
+	// http://***.platform-cn-shanghai.opensearch.aliyuncs.com/v3/openapi/workspaces/default/text-embedding/ops-text-embedding-001
+	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s ListModelsResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListModelsResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListModelsResponseBodyResult) SetContent(v *ListModelsResponseBodyResultContent) *ListModelsResponseBodyResult {
+	s.Content = v
+	return s
+}
+
+func (s *ListModelsResponseBodyResult) SetCreateTime(v string) *ListModelsResponseBodyResult {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListModelsResponseBodyResult) SetDimension(v int32) *ListModelsResponseBodyResult {
+	s.Dimension = &v
+	return s
+}
+
+func (s *ListModelsResponseBodyResult) SetName(v string) *ListModelsResponseBodyResult {
+	s.Name = &v
+	return s
+}
+
+func (s *ListModelsResponseBodyResult) SetStatus(v string) *ListModelsResponseBodyResult {
+	s.Status = &v
+	return s
+}
+
+func (s *ListModelsResponseBodyResult) SetType(v string) *ListModelsResponseBodyResult {
+	s.Type = &v
+	return s
+}
+
+func (s *ListModelsResponseBodyResult) SetUpdateTime(v string) *ListModelsResponseBodyResult {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *ListModelsResponseBodyResult) SetUrl(v string) *ListModelsResponseBodyResult {
+	s.Url = &v
+	return s
+}
+
+type ListModelsResponseBodyResultContent struct {
+	// example:
+	//
+	// POST
+	Method *string `json:"method,omitempty" xml:"method,omitempty"`
+	// example:
+	//
+	// test
+	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
+	// example:
+	//
+	// text_embedding
+	ModelType *string                                      `json:"modelType,omitempty" xml:"modelType,omitempty"`
+	Request   *ListModelsResponseBodyResultContentRequest  `json:"request,omitempty" xml:"request,omitempty" type:"Struct"`
+	Response  *ListModelsResponseBodyResultContentResponse `json:"response,omitempty" xml:"response,omitempty" type:"Struct"`
+	// example:
+	//
+	// http://***.platform-cn-shanghai.opensearch.aliyuncs.com/v3/openapi/workspaces/default/text-embedding/ops-text-embedding-001
+	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s ListModelsResponseBodyResultContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListModelsResponseBodyResultContent) GoString() string {
+	return s.String()
+}
+
+func (s *ListModelsResponseBodyResultContent) SetMethod(v string) *ListModelsResponseBodyResultContent {
+	s.Method = &v
+	return s
+}
+
+func (s *ListModelsResponseBodyResultContent) SetModelName(v string) *ListModelsResponseBodyResultContent {
+	s.ModelName = &v
+	return s
+}
+
+func (s *ListModelsResponseBodyResultContent) SetModelType(v string) *ListModelsResponseBodyResultContent {
+	s.ModelType = &v
+	return s
+}
+
+func (s *ListModelsResponseBodyResultContent) SetRequest(v *ListModelsResponseBodyResultContentRequest) *ListModelsResponseBodyResultContent {
+	s.Request = v
+	return s
+}
+
+func (s *ListModelsResponseBodyResultContent) SetResponse(v *ListModelsResponseBodyResultContentResponse) *ListModelsResponseBodyResultContent {
+	s.Response = v
+	return s
+}
+
+func (s *ListModelsResponseBodyResultContent) SetUrl(v string) *ListModelsResponseBodyResultContent {
+	s.Url = &v
+	return s
+}
+
+type ListModelsResponseBodyResultContentRequest struct {
+	Header     *ListModelsResponseBodyResultContentRequestHeader     `json:"header,omitempty" xml:"header,omitempty" type:"Struct"`
+	Parameters *ListModelsResponseBodyResultContentRequestParameters `json:"parameters,omitempty" xml:"parameters,omitempty" type:"Struct"`
+	// example:
+	//
+	// {\\"input\\": [\\"%{input}\\"], \\"input_type\\": \\"%{input_type}\\"}
+	RequestBody *string                                              `json:"requestBody,omitempty" xml:"requestBody,omitempty"`
+	UrlParams   *ListModelsResponseBodyResultContentRequestUrlParams `json:"urlParams,omitempty" xml:"urlParams,omitempty" type:"Struct"`
+}
+
+func (s ListModelsResponseBodyResultContentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListModelsResponseBodyResultContentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListModelsResponseBodyResultContentRequest) SetHeader(v *ListModelsResponseBodyResultContentRequestHeader) *ListModelsResponseBodyResultContentRequest {
+	s.Header = v
+	return s
+}
+
+func (s *ListModelsResponseBodyResultContentRequest) SetParameters(v *ListModelsResponseBodyResultContentRequestParameters) *ListModelsResponseBodyResultContentRequest {
+	s.Parameters = v
+	return s
+}
+
+func (s *ListModelsResponseBodyResultContentRequest) SetRequestBody(v string) *ListModelsResponseBodyResultContentRequest {
+	s.RequestBody = &v
+	return s
+}
+
+func (s *ListModelsResponseBodyResultContentRequest) SetUrlParams(v *ListModelsResponseBodyResultContentRequestUrlParams) *ListModelsResponseBodyResultContentRequest {
+	s.UrlParams = v
+	return s
+}
+
+type ListModelsResponseBodyResultContentRequestHeader struct {
+	// example:
+	//
+	// Bearer OS-v0********6vvs
+	Authorization *string `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+	// example:
+	//
+	// application/json
+	ContentType *string `json:"Content-Type,omitempty" xml:"Content-Type,omitempty"`
+}
+
+func (s ListModelsResponseBodyResultContentRequestHeader) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListModelsResponseBodyResultContentRequestHeader) GoString() string {
+	return s.String()
+}
+
+func (s *ListModelsResponseBodyResultContentRequestHeader) SetAuthorization(v string) *ListModelsResponseBodyResultContentRequestHeader {
+	s.Authorization = &v
+	return s
+}
+
+func (s *ListModelsResponseBodyResultContentRequestHeader) SetContentType(v string) *ListModelsResponseBodyResultContentRequestHeader {
+	s.ContentType = &v
+	return s
+}
+
+type ListModelsResponseBodyResultContentRequestParameters struct {
+	Build  *ListModelsResponseBodyResultContentRequestParametersBuild  `json:"build,omitempty" xml:"build,omitempty" type:"Struct"`
+	Search *ListModelsResponseBodyResultContentRequestParametersSearch `json:"search,omitempty" xml:"search,omitempty" type:"Struct"`
+}
+
+func (s ListModelsResponseBodyResultContentRequestParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListModelsResponseBodyResultContentRequestParameters) GoString() string {
+	return s.String()
+}
+
+func (s *ListModelsResponseBodyResultContentRequestParameters) SetBuild(v *ListModelsResponseBodyResultContentRequestParametersBuild) *ListModelsResponseBodyResultContentRequestParameters {
+	s.Build = v
+	return s
+}
+
+func (s *ListModelsResponseBodyResultContentRequestParameters) SetSearch(v *ListModelsResponseBodyResultContentRequestParametersSearch) *ListModelsResponseBodyResultContentRequestParameters {
+	s.Search = v
+	return s
+}
+
+type ListModelsResponseBodyResultContentRequestParametersBuild struct {
+	// example:
+	//
+	// query
+	InputType *string `json:"input_type,omitempty" xml:"input_type,omitempty"`
+}
+
+func (s ListModelsResponseBodyResultContentRequestParametersBuild) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListModelsResponseBodyResultContentRequestParametersBuild) GoString() string {
+	return s.String()
+}
+
+func (s *ListModelsResponseBodyResultContentRequestParametersBuild) SetInputType(v string) *ListModelsResponseBodyResultContentRequestParametersBuild {
+	s.InputType = &v
+	return s
+}
+
+type ListModelsResponseBodyResultContentRequestParametersSearch struct {
+	// example:
+	//
+	// document
+	InputType *string `json:"input_type,omitempty" xml:"input_type,omitempty"`
+}
+
+func (s ListModelsResponseBodyResultContentRequestParametersSearch) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListModelsResponseBodyResultContentRequestParametersSearch) GoString() string {
+	return s.String()
+}
+
+func (s *ListModelsResponseBodyResultContentRequestParametersSearch) SetInputType(v string) *ListModelsResponseBodyResultContentRequestParametersSearch {
+	s.InputType = &v
+	return s
+}
+
+type ListModelsResponseBodyResultContentRequestUrlParams struct {
+	// example:
+	//
+	// key: value
+	Build map[string]interface{} `json:"build,omitempty" xml:"build,omitempty"`
+	// example:
+	//
+	// key: value
+	Search map[string]interface{} `json:"search,omitempty" xml:"search,omitempty"`
+}
+
+func (s ListModelsResponseBodyResultContentRequestUrlParams) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListModelsResponseBodyResultContentRequestUrlParams) GoString() string {
+	return s.String()
+}
+
+func (s *ListModelsResponseBodyResultContentRequestUrlParams) SetBuild(v map[string]interface{}) *ListModelsResponseBodyResultContentRequestUrlParams {
+	s.Build = v
+	return s
+}
+
+func (s *ListModelsResponseBodyResultContentRequestUrlParams) SetSearch(v map[string]interface{}) *ListModelsResponseBodyResultContentRequestUrlParams {
+	s.Search = v
+	return s
+}
+
+type ListModelsResponseBodyResultContentResponse struct {
+	// example:
+	//
+	// $.result.embeddings[*].embedding
+	Embeddings *string `json:"embeddings,omitempty" xml:"embeddings,omitempty"`
+}
+
+func (s ListModelsResponseBodyResultContentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListModelsResponseBodyResultContentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListModelsResponseBodyResultContentResponse) SetEmbeddings(v string) *ListModelsResponseBodyResultContentResponse {
+	s.Embeddings = &v
+	return s
+}
+
+type ListModelsResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListModelsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListModelsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListModelsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListModelsResponse) SetHeaders(v map[string]*string) *ListModelsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListModelsResponse) SetStatusCode(v int32) *ListModelsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListModelsResponse) SetBody(v *ListModelsResponseBody) *ListModelsResponse {
+	s.Body = v
+	return s
+}
+
 type ListOnlineConfigsRequest struct {
 	// The name of the domain
 	//
@@ -17611,6 +18867,330 @@ func (s *ModifyIndexVersionResponse) SetBody(v *ModifyIndexVersionResponseBody) 
 	return s
 }
 
+type ModifyModelRequest struct {
+	Content *ModifyModelRequestContent `json:"content,omitempty" xml:"content,omitempty" type:"Struct"`
+	// example:
+	//
+	// ok
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// true
+	DryRun *string `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
+}
+
+func (s ModifyModelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyModelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyModelRequest) SetContent(v *ModifyModelRequestContent) *ModifyModelRequest {
+	s.Content = v
+	return s
+}
+
+func (s *ModifyModelRequest) SetStatus(v string) *ModifyModelRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *ModifyModelRequest) SetDryRun(v string) *ModifyModelRequest {
+	s.DryRun = &v
+	return s
+}
+
+type ModifyModelRequestContent struct {
+	// example:
+	//
+	// 128
+	Dimension *int32 `json:"dimension,omitempty" xml:"dimension,omitempty"`
+	// example:
+	//
+	// POST
+	Method *string `json:"method,omitempty" xml:"method,omitempty"`
+	// example:
+	//
+	// text_embedding
+	ModelType *string                            `json:"modelType,omitempty" xml:"modelType,omitempty"`
+	Request   *ModifyModelRequestContentRequest  `json:"request,omitempty" xml:"request,omitempty" type:"Struct"`
+	Response  *ModifyModelRequestContentResponse `json:"response,omitempty" xml:"response,omitempty" type:"Struct"`
+	// example:
+	//
+	// http://***.platform-cn-shanghai.opensearch.aliyuncs.com/v3/openapi/workspaces/default/text-embedding/ops-text-embedding-001
+	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s ModifyModelRequestContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyModelRequestContent) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyModelRequestContent) SetDimension(v int32) *ModifyModelRequestContent {
+	s.Dimension = &v
+	return s
+}
+
+func (s *ModifyModelRequestContent) SetMethod(v string) *ModifyModelRequestContent {
+	s.Method = &v
+	return s
+}
+
+func (s *ModifyModelRequestContent) SetModelType(v string) *ModifyModelRequestContent {
+	s.ModelType = &v
+	return s
+}
+
+func (s *ModifyModelRequestContent) SetRequest(v *ModifyModelRequestContentRequest) *ModifyModelRequestContent {
+	s.Request = v
+	return s
+}
+
+func (s *ModifyModelRequestContent) SetResponse(v *ModifyModelRequestContentResponse) *ModifyModelRequestContent {
+	s.Response = v
+	return s
+}
+
+func (s *ModifyModelRequestContent) SetUrl(v string) *ModifyModelRequestContent {
+	s.Url = &v
+	return s
+}
+
+type ModifyModelRequestContentRequest struct {
+	Header     *ModifyModelRequestContentRequestHeader     `json:"header,omitempty" xml:"header,omitempty" type:"Struct"`
+	Parameters *ModifyModelRequestContentRequestParameters `json:"parameters,omitempty" xml:"parameters,omitempty" type:"Struct"`
+	// example:
+	//
+	// {\\"input\\": [\\"%{input}\\"], \\"input_type\\": \\"%{input_type}\\"}
+	RequestBody *string                                    `json:"requestBody,omitempty" xml:"requestBody,omitempty"`
+	UrlParams   *ModifyModelRequestContentRequestUrlParams `json:"urlParams,omitempty" xml:"urlParams,omitempty" type:"Struct"`
+}
+
+func (s ModifyModelRequestContentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyModelRequestContentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyModelRequestContentRequest) SetHeader(v *ModifyModelRequestContentRequestHeader) *ModifyModelRequestContentRequest {
+	s.Header = v
+	return s
+}
+
+func (s *ModifyModelRequestContentRequest) SetParameters(v *ModifyModelRequestContentRequestParameters) *ModifyModelRequestContentRequest {
+	s.Parameters = v
+	return s
+}
+
+func (s *ModifyModelRequestContentRequest) SetRequestBody(v string) *ModifyModelRequestContentRequest {
+	s.RequestBody = &v
+	return s
+}
+
+func (s *ModifyModelRequestContentRequest) SetUrlParams(v *ModifyModelRequestContentRequestUrlParams) *ModifyModelRequestContentRequest {
+	s.UrlParams = v
+	return s
+}
+
+type ModifyModelRequestContentRequestHeader struct {
+	// example:
+	//
+	// Bearer OS-v0********6vvs
+	Authorization *string `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+	// example:
+	//
+	// application/json
+	ContentType *string `json:"Content-Type,omitempty" xml:"Content-Type,omitempty"`
+}
+
+func (s ModifyModelRequestContentRequestHeader) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyModelRequestContentRequestHeader) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyModelRequestContentRequestHeader) SetAuthorization(v string) *ModifyModelRequestContentRequestHeader {
+	s.Authorization = &v
+	return s
+}
+
+func (s *ModifyModelRequestContentRequestHeader) SetContentType(v string) *ModifyModelRequestContentRequestHeader {
+	s.ContentType = &v
+	return s
+}
+
+type ModifyModelRequestContentRequestParameters struct {
+	Build  *ModifyModelRequestContentRequestParametersBuild  `json:"build,omitempty" xml:"build,omitempty" type:"Struct"`
+	Search *ModifyModelRequestContentRequestParametersSearch `json:"search,omitempty" xml:"search,omitempty" type:"Struct"`
+}
+
+func (s ModifyModelRequestContentRequestParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyModelRequestContentRequestParameters) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyModelRequestContentRequestParameters) SetBuild(v *ModifyModelRequestContentRequestParametersBuild) *ModifyModelRequestContentRequestParameters {
+	s.Build = v
+	return s
+}
+
+func (s *ModifyModelRequestContentRequestParameters) SetSearch(v *ModifyModelRequestContentRequestParametersSearch) *ModifyModelRequestContentRequestParameters {
+	s.Search = v
+	return s
+}
+
+type ModifyModelRequestContentRequestParametersBuild struct {
+	// example:
+	//
+	// query
+	InputType *string `json:"input_type,omitempty" xml:"input_type,omitempty"`
+}
+
+func (s ModifyModelRequestContentRequestParametersBuild) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyModelRequestContentRequestParametersBuild) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyModelRequestContentRequestParametersBuild) SetInputType(v string) *ModifyModelRequestContentRequestParametersBuild {
+	s.InputType = &v
+	return s
+}
+
+type ModifyModelRequestContentRequestParametersSearch struct {
+	// example:
+	//
+	// document
+	InputType *string `json:"input_type,omitempty" xml:"input_type,omitempty"`
+}
+
+func (s ModifyModelRequestContentRequestParametersSearch) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyModelRequestContentRequestParametersSearch) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyModelRequestContentRequestParametersSearch) SetInputType(v string) *ModifyModelRequestContentRequestParametersSearch {
+	s.InputType = &v
+	return s
+}
+
+type ModifyModelRequestContentRequestUrlParams struct {
+	// example:
+	//
+	// key: value
+	Build map[string]interface{} `json:"build,omitempty" xml:"build,omitempty"`
+	// example:
+	//
+	// key: value
+	Search map[string]interface{} `json:"search,omitempty" xml:"search,omitempty"`
+}
+
+func (s ModifyModelRequestContentRequestUrlParams) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyModelRequestContentRequestUrlParams) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyModelRequestContentRequestUrlParams) SetBuild(v map[string]interface{}) *ModifyModelRequestContentRequestUrlParams {
+	s.Build = v
+	return s
+}
+
+func (s *ModifyModelRequestContentRequestUrlParams) SetSearch(v map[string]interface{}) *ModifyModelRequestContentRequestUrlParams {
+	s.Search = v
+	return s
+}
+
+type ModifyModelRequestContentResponse struct {
+	// example:
+	//
+	// $.result.embeddings[*].embedding
+	Embeddings *string `json:"embeddings,omitempty" xml:"embeddings,omitempty"`
+}
+
+func (s ModifyModelRequestContentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyModelRequestContentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyModelRequestContentResponse) SetEmbeddings(v string) *ModifyModelRequestContentResponse {
+	s.Embeddings = &v
+	return s
+}
+
+type ModifyModelResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// D39EE0F1-D7EF-5F46-B781-6BF4185308B0
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s ModifyModelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyModelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyModelResponseBody) SetRequestId(v string) *ModifyModelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyModelResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyModelResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyModelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyModelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyModelResponse) SetHeaders(v map[string]*string) *ModifyModelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyModelResponse) SetStatusCode(v int32) *ModifyModelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyModelResponse) SetBody(v *ModifyModelResponseBody) *ModifyModelResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyNodeConfigRequest struct {
 	// Specifies whether to enable the index.
 	//
@@ -20912,11 +22492,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // ## Method
 //
-//     POST
+//	POST
 //
 // ## URI
 //
-//     /openapi/ha3/instances/{instanceId}/actions/build-index
+//	/openapi/ha3/instances/{instanceId}/actions/build-index
 //
 // @param request - BuildIndexRequest
 //
@@ -21006,11 +22586,11 @@ func (client *Client) BuildIndexWithOptions(instanceId *string, request *BuildIn
 //
 // ## Method
 //
-//     POST
+//	POST
 //
 // ## URI
 //
-//     /openapi/ha3/instances/{instanceId}/actions/build-index
+//	/openapi/ha3/instances/{instanceId}/actions/build-index
 //
 // @param request - BuildIndexRequest
 //
@@ -21697,7 +23277,7 @@ func (client *Client) CreateFolder(instanceId *string, database *string, request
 //
 // ```java
 //
-// POST
+// # POST
 //
 // ```
 //
@@ -21809,7 +23389,7 @@ func (client *Client) CreateIndexWithOptions(instanceId *string, request *Create
 //
 // ```java
 //
-// POST
+// # POST
 //
 // ```
 //
@@ -21940,6 +23520,91 @@ func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *C
 	headers := make(map[string]*string)
 	_result = &CreateInstanceResponse{}
 	_body, _err := client.CreateInstanceWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建模型信息
+//
+// @param request - CreateModelRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateModelResponse
+func (client *Client) CreateModelWithOptions(instanceId *string, request *CreateModelRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateModelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["dryRun"] = request.DryRun
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		body["content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateModel"),
+		Version:     tea.String("2021-10-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/ha3/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/models"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateModelResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateModelResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 创建模型信息
+//
+// @param request - CreateModelRequest
+//
+// @return CreateModelResponse
+func (client *Client) CreateModel(instanceId *string, request *CreateModelRequest) (_result *CreateModelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateModelResponse{}
+	_body, _err := client.CreateModelWithOptions(instanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22194,17 +23859,98 @@ func (client *Client) CreateTable(instanceId *string, request *CreateTableReques
 
 // Summary:
 //
+// 调试模型
+//
+// @param request - DebugModelRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DebugModelResponse
+func (client *Client) DebugModelWithOptions(instanceId *string, modelName *string, request *DebugModelRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DebugModelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IsOnline)) {
+		query["isOnline"] = request.IsOnline
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Input)) {
+		body["input"] = request.Input
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DebugModel"),
+		Version:     tea.String("2021-10-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/ha3/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/models/" + tea.StringValue(openapiutil.GetEncodeParam(modelName)) + "/actions/debug"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DebugModelResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DebugModelResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 调试模型
+//
+// @param request - DebugModelRequest
+//
+// @return DebugModelResponse
+func (client *Client) DebugModel(instanceId *string, modelName *string, request *DebugModelRequest) (_result *DebugModelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DebugModelResponse{}
+	_body, _err := client.DebugModelWithOptions(instanceId, modelName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes the details about advanced configurations.
 //
 // Description:
 //
 // ## Method
 //
-//     DELETE
+//	DELETE
 //
 // ## URI
 //
-//     /openapi/ha3/instances/{instanceId}/advanced-configs/{configName}
+//	/openapi/ha3/instances/{instanceId}/advanced-configs/{configName}
 //
 // @param headers - map
 //
@@ -22254,11 +24000,11 @@ func (client *Client) DeleteAdvanceConfigWithOptions(instanceId *string, configN
 //
 // ## Method
 //
-//     DELETE
+//	DELETE
 //
 // ## URI
 //
-//     /openapi/ha3/instances/{instanceId}/advanced-configs/{configName}
+//	/openapi/ha3/instances/{instanceId}/advanced-configs/{configName}
 //
 // @return DeleteAdvanceConfigResponse
 func (client *Client) DeleteAdvanceConfig(instanceId *string, configName *string) (_result *DeleteAdvanceConfigResponse, _err error) {
@@ -22610,11 +24356,11 @@ func (client *Client) DeleteFolder(instanceId *string, database *string, folderI
 //
 // ## Method
 //
-//     DELETE
+//	DELETE
 //
 // ## URI
 //
-//     /openapi/ha3/instances/{instanceId}/indexes/{indexName}?dataSource=xxx
+//	/openapi/ha3/instances/{instanceId}/indexes/{indexName}?dataSource=xxx
 //
 // @param request - DeleteIndexRequest
 //
@@ -22680,11 +24426,11 @@ func (client *Client) DeleteIndexWithOptions(instanceId *string, indexName *stri
 //
 // ## Method
 //
-//     DELETE
+//	DELETE
 //
 // ## URI
 //
-//     /openapi/ha3/instances/{instanceId}/indexes/{indexName}?dataSource=xxx
+//	/openapi/ha3/instances/{instanceId}/indexes/{indexName}?dataSource=xxx
 //
 // @param request - DeleteIndexRequest
 //
@@ -22709,11 +24455,11 @@ func (client *Client) DeleteIndex(instanceId *string, indexName *string, request
 //
 // ## Method
 //
-//     DELETE
+//	DELETE
 //
 // ## URI
 //
-//     /openapi/ha3/instances/{instanceId}/indexes/{indexName}/versions/{versionName}
+//	/openapi/ha3/instances/{instanceId}/indexes/{indexName}/versions/{versionName}
 //
 // @param headers - map
 //
@@ -22763,11 +24509,11 @@ func (client *Client) DeleteIndexVersionWithOptions(instanceId *string, indexNam
 //
 // ## Method
 //
-//     DELETE
+//	DELETE
 //
 // ## URI
 //
-//     /openapi/ha3/instances/{instanceId}/indexes/{indexName}/versions/{versionName}
+//	/openapi/ha3/instances/{instanceId}/indexes/{indexName}/versions/{versionName}
 //
 // @return DeleteIndexVersionResponse
 func (client *Client) DeleteIndexVersion(instanceId *string, indexName *string, versionName *string) (_result *DeleteIndexVersionResponse, _err error) {
@@ -22856,6 +24602,67 @@ func (client *Client) DeleteInstance(instanceId *string) (_result *DeleteInstanc
 	headers := make(map[string]*string)
 	_result = &DeleteInstanceResponse{}
 	_body, _err := client.DeleteInstanceWithOptions(instanceId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除模型
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteModelResponse
+func (client *Client) DeleteModelWithOptions(instanceId *string, modelName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteModelResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteModel"),
+		Version:     tea.String("2021-10-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/ha3/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/models/" + tea.StringValue(openapiutil.GetEncodeParam(modelName))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteModelResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteModelResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 删除模型
+//
+// @return DeleteModelResponse
+func (client *Client) DeleteModel(instanceId *string, modelName *string) (_result *DeleteModelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteModelResponse{}
+	_body, _err := client.DeleteModelWithOptions(instanceId, modelName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23214,7 +25021,7 @@ func (client *Client) ExecuteSqlInstance(instanceId *string, database *string, s
 //
 // ```java
 //
-// PUT
+// # PUT
 //
 // ```
 //
@@ -23276,7 +25083,7 @@ func (client *Client) ForceSwitchWithOptions(instanceId *string, fsmId *string, 
 //
 // ```java
 //
-// PUT
+// # PUT
 //
 // ```
 //
@@ -23309,11 +25116,11 @@ func (client *Client) ForceSwitch(instanceId *string, fsmId *string) (_result *F
 //
 // ## Method
 //
-//     GET
+//	GET
 //
 // ## URI
 //
-//     /openapi/ha3/instances/{instanceId}/advanced-configs/{configName}
+//	/openapi/ha3/instances/{instanceId}/advanced-configs/{configName}
 //
 // @param request - GetAdvanceConfigRequest
 //
@@ -23375,11 +25182,11 @@ func (client *Client) GetAdvanceConfigWithOptions(instanceId *string, configName
 //
 // ## Method
 //
-//     GET
+//	GET
 //
 // ## URI
 //
-//     /openapi/ha3/instances/{instanceId}/advanced-configs/{configName}
+//	/openapi/ha3/instances/{instanceId}/advanced-configs/{configName}
 //
 // @param request - GetAdvanceConfigRequest
 //
@@ -23404,11 +25211,11 @@ func (client *Client) GetAdvanceConfig(instanceId *string, configName *string, r
 //
 // ## Method
 //
-//     GET
+//	GET
 //
 // ## URI
 //
-//     /openapi/ha3/instances/{instanceId}/advanced-configs/{configName}/file?fileName={fileName}
+//	/openapi/ha3/instances/{instanceId}/advanced-configs/{configName}/file?fileName={fileName}
 //
 // @param request - GetAdvanceConfigFileRequest
 //
@@ -23470,11 +25277,11 @@ func (client *Client) GetAdvanceConfigFileWithOptions(instanceId *string, config
 //
 // ## Method
 //
-//     GET
+//	GET
 //
 // ## URI
 //
-//     /openapi/ha3/instances/{instanceId}/advanced-configs/{configName}/file?fileName={fileName}
+//	/openapi/ha3/instances/{instanceId}/advanced-configs/{configName}/file?fileName={fileName}
 //
 // @param request - GetAdvanceConfigFileRequest
 //
@@ -23580,7 +25387,7 @@ func (client *Client) GetCluster(instanceId *string, clusterName *string) (_resu
 //
 // ### Method
 //
-// GET
+// # GET
 //
 // ### URI
 //
@@ -23634,7 +25441,7 @@ func (client *Client) GetClusterRunTimeInfoWithOptions(instanceId *string, heade
 //
 // ### Method
 //
-// GET
+// # GET
 //
 // ### URI
 //
@@ -23856,7 +25663,7 @@ func (client *Client) GetDatabaseSchema(instanceId *string, database *string, ta
 //
 // ## Method
 //
-// GET
+// # GET
 //
 // ## URI
 //
@@ -23914,7 +25721,7 @@ func (client *Client) GetDeployGraphWithOptions(instanceId *string, headers map[
 //
 // ## Method
 //
-// GET
+// # GET
 //
 // ## URI
 //
@@ -23945,11 +25752,11 @@ func (client *Client) GetDeployGraph(instanceId *string) (_result *GetDeployGrap
 //
 // ## [](#)Method
 //
-//     GET
+//	GET
 //
 // ## [](#uri)URI
 //
-//     /openapi/ha3/instances/{instanceId}/indexes/{indexName}/versions/{versionName}/file
+//	/openapi/ha3/instances/{instanceId}/indexes/{indexName}/versions/{versionName}/file
 //
 // @param request - GetFileRequest
 //
@@ -24011,11 +25818,11 @@ func (client *Client) GetFileWithOptions(instanceId *string, indexName *string, 
 //
 // ## [](#)Method
 //
-//     GET
+//	GET
 //
 // ## [](#uri)URI
 //
-//     /openapi/ha3/instances/{instanceId}/indexes/{indexName}/versions/{versionName}/file
+//	/openapi/ha3/instances/{instanceId}/indexes/{indexName}/versions/{versionName}/file
 //
 // @param request - GetFileRequest
 //
@@ -24040,11 +25847,11 @@ func (client *Client) GetFile(instanceId *string, indexName *string, versionName
 //
 // ## [](#)Method
 //
-//     GET
+//	GET
 //
 // ## [](#uri)URI
 //
-//     /openapi/ha3/instances/{instanceId}/indexes/{indexName}
+//	/openapi/ha3/instances/{instanceId}/indexes/{indexName}
 //
 // @param headers - map
 //
@@ -24094,11 +25901,11 @@ func (client *Client) GetIndexWithOptions(instanceId *string, indexName *string,
 //
 // ## [](#)Method
 //
-//     GET
+//	GET
 //
 // ## [](#uri)URI
 //
-//     /openapi/ha3/instances/{instanceId}/indexes/{indexName}
+//	/openapi/ha3/instances/{instanceId}/indexes/{indexName}
 //
 // @return GetIndexResponse
 func (client *Client) GetIndex(instanceId *string, indexName *string) (_result *GetIndexResponse, _err error) {
@@ -24182,11 +25989,11 @@ func (client *Client) GetIndexOnlineStrategy(instanceId *string, dataSourceName 
 //
 // ## Method
 //
-//     GET
+//	GET
 //
 // ## URI
 //
-//     /openapi/ha3/instances/{instanceId}/clusters/{clusterName}/index-version
+//	/openapi/ha3/instances/{instanceId}/clusters/{clusterName}/index-version
 //
 // @param headers - map
 //
@@ -24236,11 +26043,11 @@ func (client *Client) GetIndexVersionWithOptions(instanceId *string, clusterName
 //
 // ## Method
 //
-//     GET
+//	GET
 //
 // ## URI
 //
-//     /openapi/ha3/instances/{instanceId}/clusters/{clusterName}/index-version
+//	/openapi/ha3/instances/{instanceId}/clusters/{clusterName}/index-version
 //
 // @return GetIndexVersionResponse
 func (client *Client) GetIndexVersion(instanceId *string, clusterName *string) (_result *GetIndexVersionResponse, _err error) {
@@ -24265,7 +26072,7 @@ func (client *Client) GetIndexVersion(instanceId *string, clusterName *string) (
 //
 // ```java
 //
-// GET
+// # GET
 //
 // ```
 //
@@ -24327,7 +26134,7 @@ func (client *Client) GetInstanceWithOptions(instanceId *string, headers map[str
 //
 // ```java
 //
-// GET
+// # GET
 //
 // ```
 //
@@ -24345,6 +26152,87 @@ func (client *Client) GetInstance(instanceId *string) (_result *GetInstanceRespo
 	headers := make(map[string]*string)
 	_result = &GetInstanceResponse{}
 	_body, _err := client.GetInstanceWithOptions(instanceId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 通过实例ID和模型名称查询特定模型的详细配置信息。
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 该API用于获取指定实例下的特定模型的详细信息，包括模型类型、URL、状态等。
+//
+// - 确保提供的`instanceId`和`modelName`是有效的，否则可能返回错误或找不到资源。
+//
+// - 返回的数据结构中包含了模型的内容（如请求头、参数等）以及创建和更新时间，有助于了解模型的具体配置及其最新状态。
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetModelResponse
+func (client *Client) GetModelWithOptions(instanceId *string, modelName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetModelResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetModel"),
+		Version:     tea.String("2021-10-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/ha3/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/models/" + tea.StringValue(openapiutil.GetEncodeParam(modelName))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetModelResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetModelResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 通过实例ID和模型名称查询特定模型的详细配置信息。
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 该API用于获取指定实例下的特定模型的详细信息，包括模型类型、URL、状态等。
+//
+// - 确保提供的`instanceId`和`modelName`是有效的，否则可能返回错误或找不到资源。
+//
+// - 返回的数据结构中包含了模型的内容（如请求头、参数等）以及创建和更新时间，有助于了解模型的具体配置及其最新状态。
+//
+// @return GetModelResponse
+func (client *Client) GetModel(instanceId *string, modelName *string) (_result *GetModelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetModelResponse{}
+	_body, _err := client.GetModelWithOptions(instanceId, modelName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24887,7 +26775,7 @@ func (client *Client) ListAliases(instanceId *string) (_result *ListAliasesRespo
 //
 // ### Method
 //
-// GET
+// # GET
 //
 // ### URI
 //
@@ -24941,7 +26829,7 @@ func (client *Client) ListClusterNamesWithOptions(headers map[string]*string, ru
 //
 // ### Method
 //
-// GET
+// # GET
 //
 // ### URI
 //
@@ -24970,7 +26858,7 @@ func (client *Client) ListClusterNames() (_result *ListClusterNamesResponse, _er
 //
 // ```java
 //
-// GET
+// # GET
 //
 // ```
 //
@@ -25032,7 +26920,7 @@ func (client *Client) ListClusterTasksWithOptions(instanceId *string, headers ma
 //
 // ```java
 //
-// GET
+// # GET
 //
 // ```
 //
@@ -25067,7 +26955,7 @@ func (client *Client) ListClusterTasks(instanceId *string) (_result *ListCluster
 //
 // ```java
 //
-// GET
+// # GET
 //
 // ```
 //
@@ -25129,7 +27017,7 @@ func (client *Client) ListClustersWithOptions(instanceId *string, headers map[st
 //
 // ```java
 //
-// GET
+// # GET
 //
 // ```
 //
@@ -25245,7 +27133,7 @@ func (client *Client) ListDataSourceSchemas(instanceId *string, dataSourceName *
 //
 // ```java
 //
-// GET
+// # GET
 //
 // ```
 //
@@ -25307,7 +27195,7 @@ func (client *Client) ListDataSourceTasksWithOptions(instanceId *string, headers
 //
 // ```java
 //
-// GET
+// # GET
 //
 // ```
 //
@@ -25626,11 +27514,11 @@ func (client *Client) ListIndexRecoverRecords(indexName *string, instanceId *str
 //
 // ## Method
 //
-//     GET
+//	GET
 //
 // ## URI
 //
-//     /openapi/ha3/instances/{instanceId}/indexes
+//	/openapi/ha3/instances/{instanceId}/indexes
 //
 // @param request - ListIndexesRequest
 //
@@ -25704,11 +27592,11 @@ func (client *Client) ListIndexesWithOptions(instanceId *string, request *ListIn
 //
 // ## Method
 //
-//     GET
+//	GET
 //
 // ## URI
 //
-//     /openapi/ha3/instances/{instanceId}/indexes
+//	/openapi/ha3/instances/{instanceId}/indexes
 //
 // @param request - ListIndexesRequest
 //
@@ -26050,6 +27938,105 @@ func (client *Client) ListLogs(instanceId *string, request *ListLogsRequest) (_r
 
 // Summary:
 //
+// 通过实例ID查询指定条件下的模型列表。
+//
+// Description:
+//
+// ## 请求说明
+//
+// 本API用于从指定实例中获取模型列表，支持通过模型名称、类型以及分页参数进行筛选。请求时需提供实例ID作为路径参数，其他筛选条件为可选的查询参数。
+//
+// @param request - ListModelsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListModelsResponse
+func (client *Client) ListModelsWithOptions(instanceId *string, request *ListModelsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListModelsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListModels"),
+		Version:     tea.String("2021-10-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/ha3/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/models"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListModelsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListModelsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 通过实例ID查询指定条件下的模型列表。
+//
+// Description:
+//
+// ## 请求说明
+//
+// 本API用于从指定实例中获取模型列表，支持通过模型名称、类型以及分页参数进行筛选。请求时需提供实例ID作为路径参数，其他筛选条件为可选的查询参数。
+//
+// @param request - ListModelsRequest
+//
+// @return ListModelsResponse
+func (client *Client) ListModels(instanceId *string, request *ListModelsRequest) (_result *ListModelsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListModelsResponse{}
+	_body, _err := client.ListModelsWithOptions(instanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the details of an online configuration.
 //
 // Description:
@@ -26058,7 +28045,7 @@ func (client *Client) ListLogs(instanceId *string, request *ListLogsRequest) (_r
 //
 // ```java
 //
-// GET
+// # GET
 //
 // ```
 //
@@ -26132,7 +28119,7 @@ func (client *Client) ListOnlineConfigsWithOptions(instanceId *string, nodeName 
 //
 // ```java
 //
-// GET
+// # GET
 //
 // ```
 //
@@ -27074,11 +29061,11 @@ func (client *Client) ModifyAdvanceConfig(instanceId *string, configName *string
 //
 // ## Method
 //
-//     put
+//	put
 //
 // ## URI
 //
-//     /openapi/ha3/instances/{instanceId}/advanced-configs/{configName}/file?fileName={fileName}
+//	/openapi/ha3/instances/{instanceId}/advanced-configs/{configName}/file?fileName={fileName}
 //
 // @param request - ModifyAdvanceConfigFileRequest
 //
@@ -27150,11 +29137,11 @@ func (client *Client) ModifyAdvanceConfigFileWithOptions(instanceId *string, con
 //
 // ## Method
 //
-//     put
+//	put
 //
 // ## URI
 //
-//     /openapi/ha3/instances/{instanceId}/advanced-configs/{configName}/file?fileName={fileName}
+//	/openapi/ha3/instances/{instanceId}/advanced-configs/{configName}/file?fileName={fileName}
 //
 // @param request - ModifyAdvanceConfigFileRequest
 //
@@ -27345,7 +29332,7 @@ func (client *Client) ModifyClusterDesc(instanceId *string, clusterName *string,
 //
 // ## Request syntax
 //
-//     PUT /openapi/ha3/instances/{instanceId}/cluster-offline-config
+//	PUT /openapi/ha3/instances/{instanceId}/cluster-offline-config
 //
 // @param request - ModifyClusterOfflineConfigRequest
 //
@@ -27439,7 +29426,7 @@ func (client *Client) ModifyClusterOfflineConfigWithOptions(instanceId *string, 
 //
 // ## Request syntax
 //
-//     PUT /openapi/ha3/instances/{instanceId}/cluster-offline-config
+//	PUT /openapi/ha3/instances/{instanceId}/cluster-offline-config
 //
 // @param request - ModifyClusterOfflineConfigRequest
 //
@@ -27664,11 +29651,11 @@ func (client *Client) ModifyDataSourceDeploy(instanceId *string, deployName *str
 //
 // ## Method
 //
-//     PUT
+//	PUT
 //
 // ## URI
 //
-//     /openapi/ha3/instances/{instanceId}/indexes/{indexName}/versions/{versionName}/file?fileName=/root/test.txt
+//	/openapi/ha3/instances/{instanceId}/indexes/{indexName}/versions/{versionName}/file?fileName=/root/test.txt
 //
 // @param request - ModifyFileRequest
 //
@@ -27740,11 +29727,11 @@ func (client *Client) ModifyFileWithOptions(instanceId *string, indexName *strin
 //
 // ## Method
 //
-//     PUT
+//	PUT
 //
 // ## URI
 //
-//     /openapi/ha3/instances/{instanceId}/indexes/{indexName}/versions/{versionName}/file?fileName=/root/test.txt
+//	/openapi/ha3/instances/{instanceId}/indexes/{indexName}/versions/{versionName}/file?fileName=/root/test.txt
 //
 // @param request - ModifyFileRequest
 //
@@ -28072,11 +30059,11 @@ func (client *Client) ModifyIndexPartition(instanceId *string, request *ModifyIn
 //
 // ## [](#)Method
 //
-//     PUT
+//	PUT
 //
 // ## [](#uri)URI
 //
-//     /openapi/ha3/instances/{instanceId}/clusters/{clusterName}/index-version
+//	/openapi/ha3/instances/{instanceId}/clusters/{clusterName}/index-version
 //
 // @param request - ModifyIndexVersionRequest
 //
@@ -28133,11 +30120,11 @@ func (client *Client) ModifyIndexVersionWithOptions(instanceId *string, clusterN
 //
 // ## [](#)Method
 //
-//     PUT
+//	PUT
 //
 // ## [](#uri)URI
 //
-//     /openapi/ha3/instances/{instanceId}/clusters/{clusterName}/index-version
+//	/openapi/ha3/instances/{instanceId}/clusters/{clusterName}/index-version
 //
 // @param request - ModifyIndexVersionRequest
 //
@@ -28156,6 +30143,91 @@ func (client *Client) ModifyIndexVersion(instanceId *string, clusterName *string
 
 // Summary:
 //
+// 修改模型详情，修改模型状态
+//
+// @param request - ModifyModelRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyModelResponse
+func (client *Client) ModifyModelWithOptions(instanceId *string, modelName *string, request *ModifyModelRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ModifyModelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["dryRun"] = request.DryRun
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		body["content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		body["status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyModel"),
+		Version:     tea.String("2021-10-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/ha3/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/models/" + tea.StringValue(openapiutil.GetEncodeParam(modelName))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyModelResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyModelResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 修改模型详情，修改模型状态
+//
+// @param request - ModifyModelRequest
+//
+// @return ModifyModelResponse
+func (client *Client) ModifyModel(instanceId *string, modelName *string, request *ModifyModelRequest) (_result *ModifyModelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ModifyModelResponse{}
+	_body, _err := client.ModifyModelWithOptions(instanceId, modelName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies the configurations of a node.
 //
 // Description:
@@ -28164,7 +30236,7 @@ func (client *Client) ModifyIndexVersion(instanceId *string, clusterName *string
 //
 // ```java
 //
-// PUT
+// # PUT
 //
 // ```
 //
@@ -28276,7 +30348,7 @@ func (client *Client) ModifyNodeConfigWithOptions(instanceId *string, request *M
 //
 // ```java
 //
-// PUT
+// # PUT
 //
 // ```
 //
@@ -28770,7 +30842,7 @@ func (client *Client) ModifyTable(instanceId *string, tableName *string, request
 //
 // ~~~
 //
-// POST
+// # POST
 //
 // ~~~
 //
@@ -28848,7 +30920,7 @@ func (client *Client) PublishAdvanceConfigWithOptions(instanceId *string, config
 //
 // ~~~
 //
-// POST
+// # POST
 //
 // ~~~
 //
@@ -28883,11 +30955,11 @@ func (client *Client) PublishAdvanceConfig(instanceId *string, configName *strin
 //
 // ## Method
 //
-//     POST
+//	POST
 //
 // ## URI
 //
-//     /openapi/ha3/instances/{instanceId}/indexes/{indexName}/actions/publish
+//	/openapi/ha3/instances/{instanceId}/indexes/{indexName}/actions/publish
 //
 // @param request - PublishIndexVersionRequest
 //
@@ -28949,11 +31021,11 @@ func (client *Client) PublishIndexVersionWithOptions(instanceId *string, indexNa
 //
 // ## Method
 //
-//     POST
+//	POST
 //
 // ## URI
 //
-//     /openapi/ha3/instances/{instanceId}/indexes/{indexName}/actions/publish
+//	/openapi/ha3/instances/{instanceId}/indexes/{indexName}/actions/publish
 //
 // @param request - PublishIndexVersionRequest
 //
@@ -29238,7 +31310,7 @@ func (client *Client) Reindex(instanceId *string, tableName *string, request *Re
 //
 // ```java
 //
-// DELETE
+// # DELETE
 //
 // ```
 //
@@ -29300,7 +31372,7 @@ func (client *Client) RemoveClusterWithOptions(instanceId *string, clusterName *
 //
 // ```java
 //
-// DELETE
+// # DELETE
 //
 // ```
 //
@@ -29508,7 +31580,7 @@ func (client *Client) StopIndex(instanceId *string, indexName *string) (_result 
 //
 // ```java
 //
-// PUT
+// # PUT
 //
 // ```
 //
@@ -29570,7 +31642,7 @@ func (client *Client) StopTaskWithOptions(instanceId *string, fsmId *string, hea
 //
 // ```java
 //
-// PUT
+// # PUT
 //
 // ```
 //
