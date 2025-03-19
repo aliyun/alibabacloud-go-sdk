@@ -293,6 +293,38 @@ func (s *AllocateStrategySpec) SetNodeSpecs(v []*NodeSpec) *AllocateStrategySpec
 	return s
 }
 
+type BindingPolicy struct {
+	ExcludeNodes []*string `json:"ExcludeNodes,omitempty" xml:"ExcludeNodes,omitempty" type:"Repeated"`
+	IncludeNodes []*string `json:"IncludeNodes,omitempty" xml:"IncludeNodes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 5
+	NodeSpecCount *int64 `json:"NodeSpecCount,omitempty" xml:"NodeSpecCount,omitempty"`
+}
+
+func (s BindingPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindingPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *BindingPolicy) SetExcludeNodes(v []*string) *BindingPolicy {
+	s.ExcludeNodes = v
+	return s
+}
+
+func (s *BindingPolicy) SetIncludeNodes(v []*string) *BindingPolicy {
+	s.IncludeNodes = v
+	return s
+}
+
+func (s *BindingPolicy) SetNodeSpecCount(v int64) *BindingPolicy {
+	s.NodeSpecCount = &v
+	return s
+}
+
 type Channel struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// This parameter is required.
@@ -1515,6 +1547,35 @@ func (s *NodeMetric) SetNodeID(v string) *NodeMetric {
 	return s
 }
 
+type NodeOperationResult struct {
+	Message  *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s NodeOperationResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s NodeOperationResult) GoString() string {
+	return s.String()
+}
+
+func (s *NodeOperationResult) SetMessage(v string) *NodeOperationResult {
+	s.Message = &v
+	return s
+}
+
+func (s *NodeOperationResult) SetNodeName(v string) *NodeOperationResult {
+	s.NodeName = &v
+	return s
+}
+
+func (s *NodeOperationResult) SetStatus(v string) *NodeOperationResult {
+	s.Status = &v
+	return s
+}
+
 type NodePodInfo struct {
 	// example:
 	//
@@ -1681,6 +1742,7 @@ func (s *NodeSnapshotWorkloads) SetWorkloadType(v string) *NodeSnapshotWorkloads
 }
 
 type NodeSpec struct {
+	BindingPolicy *BindingPolicy `json:"BindingPolicy,omitempty" xml:"BindingPolicy,omitempty"`
 	// example:
 	//
 	// 10
@@ -1697,6 +1759,11 @@ func (s NodeSpec) String() string {
 
 func (s NodeSpec) GoString() string {
 	return s.String()
+}
+
+func (s *NodeSpec) SetBindingPolicy(v *BindingPolicy) *NodeSpec {
+	s.BindingPolicy = v
+	return s
 }
 
 func (s *NodeSpec) SetCount(v int64) *NodeSpec {
@@ -3239,6 +3306,35 @@ func (s *ResourceGroupMetric) SetMetrics(v []*Metric) *ResourceGroupMetric {
 
 func (s *ResourceGroupMetric) SetResourceGroupID(v string) *ResourceGroupMetric {
 	s.ResourceGroupID = &v
+	return s
+}
+
+type ResourceLimitDetails struct {
+	GCLevel                   *string                `json:"GCLevel,omitempty" xml:"GCLevel,omitempty"`
+	ResourceLimit             map[string]interface{} `json:"ResourceLimit,omitempty" xml:"ResourceLimit,omitempty"`
+	ShouldIgnoreResourceCheck *bool                  `json:"ShouldIgnoreResourceCheck,omitempty" xml:"ShouldIgnoreResourceCheck,omitempty"`
+}
+
+func (s ResourceLimitDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResourceLimitDetails) GoString() string {
+	return s.String()
+}
+
+func (s *ResourceLimitDetails) SetGCLevel(v string) *ResourceLimitDetails {
+	s.GCLevel = &v
+	return s
+}
+
+func (s *ResourceLimitDetails) SetResourceLimit(v map[string]interface{}) *ResourceLimitDetails {
+	s.ResourceLimit = v
+	return s
+}
+
+func (s *ResourceLimitDetails) SetShouldIgnoreResourceCheck(v bool) *ResourceLimitDetails {
+	s.ShouldIgnoreResourceCheck = &v
 	return s
 }
 
@@ -9344,7 +9440,8 @@ type ListNodesRequest struct {
 	// example:
 	//
 	// T4
-	GPUType *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
+	GPUType         *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
+	MachineGroupIds *string `json:"MachineGroupIds,omitempty" xml:"MachineGroupIds,omitempty"`
 	// example:
 	//
 	// lingjxxxx
@@ -9416,6 +9513,11 @@ func (s *ListNodesRequest) SetFilterByResourceGroupIds(v string) *ListNodesReque
 
 func (s *ListNodesRequest) SetGPUType(v string) *ListNodesRequest {
 	s.GPUType = &v
+	return s
+}
+
+func (s *ListNodesRequest) SetMachineGroupIds(v string) *ListNodesRequest {
+	s.MachineGroupIds = &v
 	return s
 }
 
@@ -9968,7 +10070,8 @@ type ListResourceGroupMachineGroupsRequest struct {
 	// example:
 	//
 	// ecs.c6.large
-	EcsSpec *string `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
+	EcsSpec         *string `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
+	MachineGroupIDs *string `json:"MachineGroupIDs,omitempty" xml:"MachineGroupIDs,omitempty"`
 	// example:
 	//
 	// test
@@ -10026,6 +10129,11 @@ func (s *ListResourceGroupMachineGroupsRequest) SetCreatorID(v string) *ListReso
 
 func (s *ListResourceGroupMachineGroupsRequest) SetEcsSpec(v string) *ListResourceGroupMachineGroupsRequest {
 	s.EcsSpec = &v
+	return s
+}
+
+func (s *ListResourceGroupMachineGroupsRequest) SetMachineGroupIDs(v string) *ListResourceGroupMachineGroupsRequest {
+	s.MachineGroupIDs = &v
 	return s
 }
 
@@ -15388,6 +15496,10 @@ func (client *Client) ListNodesWithOptions(request *ListNodesRequest, headers ma
 		query["GPUType"] = request.GPUType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.MachineGroupIds)) {
+		query["MachineGroupIds"] = request.MachineGroupIds
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.NodeNames)) {
 		query["NodeNames"] = request.NodeNames
 	}
@@ -15783,6 +15895,10 @@ func (client *Client) ListResourceGroupMachineGroupsWithOptions(ResourceGroupID 
 
 	if !tea.BoolValue(util.IsUnset(request.EcsSpec)) {
 		query["EcsSpec"] = request.EcsSpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MachineGroupIDs)) {
+		query["MachineGroupIDs"] = request.MachineGroupIDs
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
