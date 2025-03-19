@@ -4701,7 +4701,20 @@ func (s *TextModerationPlusResponseBody) SetRequestId(v string) *TextModerationP
 type TextModerationPlusResponseBodyData struct {
 	// The suggestion.
 	Advice []*TextModerationPlusResponseBodyDataAdvice `json:"Advice,omitempty" xml:"Advice,omitempty" type:"Repeated"`
-	DataId *string                                     `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	// The level of prompt attack
+	//
+	// example:
+	//
+	// none
+	AttackLevel *string `json:"AttackLevel,omitempty" xml:"AttackLevel,omitempty"`
+	// The result of prompt attack detect
+	AttackResult []*TextModerationPlusResponseBodyDataAttackResult `json:"AttackResult,omitempty" xml:"AttackResult,omitempty" type:"Repeated"`
+	// The id of data
+	//
+	// example:
+	//
+	// text1234
+	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
 	// The results.
 	Result []*TextModerationPlusResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 	// Risk Level
@@ -4716,6 +4729,14 @@ type TextModerationPlusResponseBodyData struct {
 	//
 	// 1
 	Score *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
+	// The level of sensitivity data
+	//
+	// example:
+	//
+	// S0
+	SensitiveLevel *string `json:"SensitiveLevel,omitempty" xml:"SensitiveLevel,omitempty"`
+	// The result of sensitivity data detect
+	SensitiveResult []*TextModerationPlusResponseBodyDataSensitiveResult `json:"SensitiveResult,omitempty" xml:"SensitiveResult,omitempty" type:"Repeated"`
 }
 
 func (s TextModerationPlusResponseBodyData) String() string {
@@ -4728,6 +4749,16 @@ func (s TextModerationPlusResponseBodyData) GoString() string {
 
 func (s *TextModerationPlusResponseBodyData) SetAdvice(v []*TextModerationPlusResponseBodyDataAdvice) *TextModerationPlusResponseBodyData {
 	s.Advice = v
+	return s
+}
+
+func (s *TextModerationPlusResponseBodyData) SetAttackLevel(v string) *TextModerationPlusResponseBodyData {
+	s.AttackLevel = &v
+	return s
+}
+
+func (s *TextModerationPlusResponseBodyData) SetAttackResult(v []*TextModerationPlusResponseBodyDataAttackResult) *TextModerationPlusResponseBodyData {
+	s.AttackResult = v
 	return s
 }
 
@@ -4748,6 +4779,16 @@ func (s *TextModerationPlusResponseBodyData) SetRiskLevel(v string) *TextModerat
 
 func (s *TextModerationPlusResponseBodyData) SetScore(v float32) *TextModerationPlusResponseBodyData {
 	s.Score = &v
+	return s
+}
+
+func (s *TextModerationPlusResponseBodyData) SetSensitiveLevel(v string) *TextModerationPlusResponseBodyData {
+	s.SensitiveLevel = &v
+	return s
+}
+
+func (s *TextModerationPlusResponseBodyData) SetSensitiveResult(v []*TextModerationPlusResponseBodyDataSensitiveResult) *TextModerationPlusResponseBodyData {
+	s.SensitiveResult = v
 	return s
 }
 
@@ -4792,6 +4833,61 @@ func (s *TextModerationPlusResponseBodyDataAdvice) SetHitLabel(v string) *TextMo
 
 func (s *TextModerationPlusResponseBodyDataAdvice) SetHitLibName(v string) *TextModerationPlusResponseBodyDataAdvice {
 	s.HitLibName = &v
+	return s
+}
+
+type TextModerationPlusResponseBodyDataAttackResult struct {
+	// The level of prompt attack
+	//
+	// example:
+	//
+	// none
+	AttackLevel *string `json:"AttackLevel,omitempty" xml:"AttackLevel,omitempty"`
+	// The confidence
+	//
+	// example:
+	//
+	// 0
+	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	// Description
+	//
+	// example:
+	//
+	// safe
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The label
+	//
+	// example:
+	//
+	// safe
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+}
+
+func (s TextModerationPlusResponseBodyDataAttackResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TextModerationPlusResponseBodyDataAttackResult) GoString() string {
+	return s.String()
+}
+
+func (s *TextModerationPlusResponseBodyDataAttackResult) SetAttackLevel(v string) *TextModerationPlusResponseBodyDataAttackResult {
+	s.AttackLevel = &v
+	return s
+}
+
+func (s *TextModerationPlusResponseBodyDataAttackResult) SetConfidence(v float32) *TextModerationPlusResponseBodyDataAttackResult {
+	s.Confidence = &v
+	return s
+}
+
+func (s *TextModerationPlusResponseBodyDataAttackResult) SetDescription(v string) *TextModerationPlusResponseBodyDataAttackResult {
+	s.Description = &v
+	return s
+}
+
+func (s *TextModerationPlusResponseBodyDataAttackResult) SetLabel(v string) *TextModerationPlusResponseBodyDataAttackResult {
+	s.Label = &v
 	return s
 }
 
@@ -4887,6 +4983,57 @@ func (s *TextModerationPlusResponseBodyDataResultCustomizedHit) SetKeyWords(v st
 
 func (s *TextModerationPlusResponseBodyDataResultCustomizedHit) SetLibName(v string) *TextModerationPlusResponseBodyDataResultCustomizedHit {
 	s.LibName = &v
+	return s
+}
+
+type TextModerationPlusResponseBodyDataSensitiveResult struct {
+	// Description
+	//
+	// example:
+	//
+	// xxx
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The label
+	//
+	// example:
+	//
+	// 1234
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The sensitive data.
+	SensitiveData []*string `json:"SensitiveData,omitempty" xml:"SensitiveData,omitempty" type:"Repeated"`
+	// The level of sensitivity data
+	//
+	// example:
+	//
+	// S1
+	SensitiveLevel *string `json:"SensitiveLevel,omitempty" xml:"SensitiveLevel,omitempty"`
+}
+
+func (s TextModerationPlusResponseBodyDataSensitiveResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TextModerationPlusResponseBodyDataSensitiveResult) GoString() string {
+	return s.String()
+}
+
+func (s *TextModerationPlusResponseBodyDataSensitiveResult) SetDescription(v string) *TextModerationPlusResponseBodyDataSensitiveResult {
+	s.Description = &v
+	return s
+}
+
+func (s *TextModerationPlusResponseBodyDataSensitiveResult) SetLabel(v string) *TextModerationPlusResponseBodyDataSensitiveResult {
+	s.Label = &v
+	return s
+}
+
+func (s *TextModerationPlusResponseBodyDataSensitiveResult) SetSensitiveData(v []*string) *TextModerationPlusResponseBodyDataSensitiveResult {
+	s.SensitiveData = v
+	return s
+}
+
+func (s *TextModerationPlusResponseBodyDataSensitiveResult) SetSensitiveLevel(v string) *TextModerationPlusResponseBodyDataSensitiveResult {
+	s.SensitiveLevel = &v
 	return s
 }
 
