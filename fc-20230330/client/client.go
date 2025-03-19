@@ -649,7 +649,8 @@ type CreateFunctionInput struct {
 	// example:
 	//
 	// my function
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	Description     *string `json:"description,omitempty" xml:"description,omitempty"`
+	DisableOndemand *bool   `json:"disableOndemand,omitempty" xml:"disableOndemand,omitempty"`
 	// example:
 	//
 	// 512
@@ -739,6 +740,11 @@ func (s *CreateFunctionInput) SetCustomRuntimeConfig(v *CustomRuntimeConfig) *Cr
 
 func (s *CreateFunctionInput) SetDescription(v string) *CreateFunctionInput {
 	s.Description = &v
+	return s
+}
+
+func (s *CreateFunctionInput) SetDisableOndemand(v bool) *CreateFunctionInput {
+	s.DisableOndemand = &v
 	return s
 }
 
@@ -1671,7 +1677,8 @@ type Function struct {
 	// example:
 	//
 	// my function
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	Description     *string `json:"description,omitempty" xml:"description,omitempty"`
+	DisableOndemand *bool   `json:"disableOndemand,omitempty" xml:"disableOndemand,omitempty"`
 	// example:
 	//
 	// 512
@@ -1801,6 +1808,11 @@ func (s *Function) SetCustomRuntimeConfig(v *CustomRuntimeConfig) *Function {
 
 func (s *Function) SetDescription(v string) *Function {
 	s.Description = &v
+	return s
+}
+
+func (s *Function) SetDisableOndemand(v bool) *Function {
+	s.DisableOndemand = &v
 	return s
 }
 
@@ -4944,7 +4956,8 @@ type UpdateFunctionInput struct {
 	// example:
 	//
 	// my function
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	Description     *string `json:"description,omitempty" xml:"description,omitempty"`
+	DisableOndemand *bool   `json:"disableOndemand,omitempty" xml:"disableOndemand,omitempty"`
 	// example:
 	//
 	// 512
@@ -5020,6 +5033,11 @@ func (s *UpdateFunctionInput) SetCustomRuntimeConfig(v *CustomRuntimeConfig) *Up
 
 func (s *UpdateFunctionInput) SetDescription(v string) *UpdateFunctionInput {
 	s.Description = &v
+	return s
+}
+
+func (s *UpdateFunctionInput) SetDisableOndemand(v bool) *UpdateFunctionInput {
+	s.DisableOndemand = &v
 	return s
 }
 
@@ -5828,7 +5846,7 @@ func (s *DeleteLayerVersionResponse) SetStatusCode(v int32) *DeleteLayerVersionR
 }
 
 type DeleteProvisionConfigRequest struct {
-	// The function alias or LATEST.
+	// The function alias.
 	//
 	// example:
 	//
@@ -6268,7 +6286,7 @@ func (s *GetLayerVersionByArnResponse) SetBody(v *Layer) *GetLayerVersionByArnRe
 }
 
 type GetProvisionConfigRequest struct {
-	// The function alias or LATEST.
+	// The function alias.
 	//
 	// example:
 	//
@@ -6668,21 +6686,23 @@ type ListAsyncTasksRequest struct {
 	StartedTimeEnd *int64 `json:"startedTimeEnd,omitempty" xml:"startedTimeEnd,omitempty"`
 	// The state of asynchronous tasks. The following items list the states of an asynchronous task:
 	//
-	// 	- Enqueued: The asynchronous invocation is enqueued and is waiting to be executed.
+	// 	- Enqueued: The asynchronous invocation is enqueued and waiting to be executed.
+	//
+	// 	- Dequeued: The asynchronous invocation is dequeued and waiting to be triggered.
+	//
+	// 	- Running: The invocation is being executed.
 	//
 	// 	- Succeeded: The invocation is successful.
 	//
 	// 	- Failed: The invocation fails.
 	//
-	// 	- Running: The invocation is being executed.
-	//
 	// 	- Stopped: The invocation is terminated.
 	//
 	// 	- Stopping: The invocation is being terminated.
 	//
-	// 	- Invalid: The invocation is invalid and not executed due to specific reasons. For example, the function is deleted.
+	// 	- Expired: The maximum validity period of messages is specified for asynchronous invocation. The invocation is discarded and not executed because the specified maximum validity period of messages expires.
 	//
-	// 	- Expired: The maximum validity period of messages is specified for asynchronous invocation. The invocation is discarded and not executed because the specified maximum validity period has elapsed.
+	// 	- Invalid: The invocation is invalid and not executed due to specific reasons. For example, the function is deleted.
 	//
 	// 	- Retrying: The asynchronous invocation is being retried due to an execution error.
 	//
@@ -6994,7 +7014,7 @@ func (s *ListFunctionVersionsResponse) SetBody(v *ListVersionsOutput) *ListFunct
 }
 
 type ListFunctionsRequest struct {
-	// The version of Function Compute to which the functions belong. Valid values: v3 and v2. v3: only lists functions of Function Compute 3.0. v2: only lists functions of Function Compute 2.0. By default, this parameter is left empty and functions in both Function Compute 2.0 and Function Compute 3.0 are listed.
+	// The version of Function Compute to which the functions belong. Valid values: v3 and v2. v3: only lists functions of Function Compute 3.0. v2: only lists functions of Function Compute 2.0. By default, this parameter is left empty and functions in both Function Compute 3.0 and Function Compute 2.0 are listed.
 	//
 	// example:
 	//
@@ -7018,6 +7038,7 @@ type ListFunctionsRequest struct {
 	//
 	// my-func
 	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
+	Tags   []*Tag  `json:"tags" xml:"tags" type:"Repeated"`
 }
 
 func (s ListFunctionsRequest) String() string {
@@ -7045,6 +7066,72 @@ func (s *ListFunctionsRequest) SetNextToken(v string) *ListFunctionsRequest {
 
 func (s *ListFunctionsRequest) SetPrefix(v string) *ListFunctionsRequest {
 	s.Prefix = &v
+	return s
+}
+
+func (s *ListFunctionsRequest) SetTags(v []*Tag) *ListFunctionsRequest {
+	s.Tags = v
+	return s
+}
+
+type ListFunctionsShrinkRequest struct {
+	// The version of Function Compute to which the functions belong. Valid values: v3 and v2. v3: only lists functions of Function Compute 3.0. v2: only lists functions of Function Compute 2.0. By default, this parameter is left empty and functions in both Function Compute 3.0 and Function Compute 2.0 are listed.
+	//
+	// example:
+	//
+	// v3
+	FcVersion *string `json:"fcVersion,omitempty" xml:"fcVersion,omitempty"`
+	// The number of functions to return. The minimum value is 1 and the maximum value is 100.
+	//
+	// example:
+	//
+	// 10
+	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
+	// The pagination token.
+	//
+	// example:
+	//
+	// MTIzNCNhYmM=
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The prefix of the function name.
+	//
+	// example:
+	//
+	// my-func
+	Prefix     *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
+	TagsShrink *string `json:"tags,omitempty" xml:"tags,omitempty"`
+}
+
+func (s ListFunctionsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFunctionsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListFunctionsShrinkRequest) SetFcVersion(v string) *ListFunctionsShrinkRequest {
+	s.FcVersion = &v
+	return s
+}
+
+func (s *ListFunctionsShrinkRequest) SetLimit(v int32) *ListFunctionsShrinkRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *ListFunctionsShrinkRequest) SetNextToken(v string) *ListFunctionsShrinkRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListFunctionsShrinkRequest) SetPrefix(v string) *ListFunctionsShrinkRequest {
+	s.Prefix = &v
+	return s
+}
+
+func (s *ListFunctionsShrinkRequest) SetTagsShrink(v string) *ListFunctionsShrinkRequest {
+	s.TagsShrink = &v
 	return s
 }
 
@@ -7489,7 +7576,7 @@ type ListTagResourcesRequest struct {
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The resource IDs.
 	ResourceId []*string `json:"ResourceId" xml:"ResourceId" type:"Repeated"`
-	// The resource type.
+	// The type of the resource.
 	//
 	// This parameter is required.
 	//
@@ -7588,7 +7675,7 @@ type ListTagResourcesShrinkRequest struct {
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The resource IDs.
 	ResourceIdShrink *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The resource type.
+	// The type of the resource.
 	//
 	// This parameter is required.
 	//
@@ -7816,7 +7903,7 @@ func (s *PublishFunctionVersionResponse) SetBody(v *Version) *PublishFunctionVer
 }
 
 type PutAsyncInvokeConfigRequest struct {
-	// The asynchronous invocation configurations.
+	// The configurations of asynchronous function invocations.
 	//
 	// This parameter is required.
 	Body *PutAsyncInvokeConfigInput `json:"body,omitempty" xml:"body,omitempty"`
@@ -7983,11 +8070,11 @@ func (s *PutLayerACLResponse) SetStatusCode(v int32) *PutLayerACLResponse {
 }
 
 type PutProvisionConfigRequest struct {
-	// The provisioned instance configurations.
+	// The provisioned configuration information.
 	//
 	// This parameter is required.
 	Body *PutProvisionConfigInput `json:"body,omitempty" xml:"body,omitempty"`
-	// The function alias or LATEST.
+	// The function alias.
 	//
 	// example:
 	//
@@ -9255,7 +9342,7 @@ func (client *Client) DeleteFunction(functionName *string) (_result *DeleteFunct
 
 // Summary:
 //
-// Deletes a function version.
+// http://pre.hhht/#vpc
 //
 // @param headers - map
 //
@@ -9299,7 +9386,7 @@ func (client *Client) DeleteFunctionVersionWithOptions(functionName *string, ver
 
 // Summary:
 //
-// Deletes a function version.
+// http://pre.hhht/#vpc
 //
 // @return DeleteFunctionVersionResponse
 func (client *Client) DeleteFunctionVersion(functionName *string, versionId *string) (_result *DeleteFunctionVersionResponse, _err error) {
@@ -10955,18 +11042,24 @@ func (client *Client) ListFunctionVersions(functionName *string, request *ListFu
 //
 // 列出函数。
 //
-// @param request - ListFunctionsRequest
+// @param tmpReq - ListFunctionsRequest
 //
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListFunctionsResponse
-func (client *Client) ListFunctionsWithOptions(request *ListFunctionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListFunctionsResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ListFunctionsWithOptions(tmpReq *ListFunctionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListFunctionsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &ListFunctionsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("tags"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.FcVersion)) {
 		query["fcVersion"] = request.FcVersion
@@ -10982,6 +11075,10 @@ func (client *Client) ListFunctionsWithOptions(request *ListFunctionsRequest, he
 
 	if !tea.BoolValue(util.IsUnset(request.Prefix)) {
 		query["prefix"] = request.Prefix
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
+		query["tags"] = request.TagsShrink
 	}
 
 	req := &openapi.OpenApiRequest{
