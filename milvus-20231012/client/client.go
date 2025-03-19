@@ -9,6 +9,109 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type CreateDefaultRoleResponseBody struct {
+	// example:
+	//
+	// { "PolicyType": "AccountLevelIdentityBasedPolicy", "AuthPrincipalOwnerId": "xxxx", "EncodedDiagnosticMessage": "xxxx", "AuthPrincipalType": "SubUser", "AuthPrincipalDisplayName": "xxxx", "NoPermissionType": "ImplicitDeny", "AuthAction": "milvus:xxxx" }
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// true
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// Instance.NotFound
+	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	// example:
+	//
+	// Failed to find instance c-123xxx
+	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// ABCD-1234-5678-EFGH
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateDefaultRoleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDefaultRoleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDefaultRoleResponseBody) SetAccessDeniedDetail(v string) *CreateDefaultRoleResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *CreateDefaultRoleResponseBody) SetData(v bool) *CreateDefaultRoleResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateDefaultRoleResponseBody) SetErrCode(v string) *CreateDefaultRoleResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *CreateDefaultRoleResponseBody) SetErrMessage(v string) *CreateDefaultRoleResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *CreateDefaultRoleResponseBody) SetHttpStatusCode(v int32) *CreateDefaultRoleResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CreateDefaultRoleResponseBody) SetRequestId(v string) *CreateDefaultRoleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateDefaultRoleResponseBody) SetSuccess(v bool) *CreateDefaultRoleResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateDefaultRoleResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDefaultRoleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateDefaultRoleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDefaultRoleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDefaultRoleResponse) SetHeaders(v map[string]*string) *CreateDefaultRoleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDefaultRoleResponse) SetStatusCode(v int32) *CreateDefaultRoleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDefaultRoleResponse) SetBody(v *CreateDefaultRoleResponseBody) *CreateDefaultRoleResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeAccessControlListRequest struct {
 	// example:
 	//
@@ -439,7 +542,8 @@ type GetInstanceDetailResponseBodyData struct {
 	// example:
 	//
 	// sg-123xxx
-	SgId *string `json:"SgId,omitempty" xml:"SgId,omitempty"`
+	SgId *string                                  `json:"SgId,omitempty" xml:"SgId,omitempty"`
+	Tags []*GetInstanceDetailResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 2.4.1-1.0-0.0.1
@@ -571,6 +675,11 @@ func (s *GetInstanceDetailResponseBodyData) SetRunningTime(v int64) *GetInstance
 
 func (s *GetInstanceDetailResponseBodyData) SetSgId(v string) *GetInstanceDetailResponseBodyData {
 	s.SgId = &v
+	return s
+}
+
+func (s *GetInstanceDetailResponseBodyData) SetTags(v []*GetInstanceDetailResponseBodyDataTags) *GetInstanceDetailResponseBodyData {
+	s.Tags = v
 	return s
 }
 
@@ -826,6 +935,29 @@ func (s *GetInstanceDetailResponseBodyDataMeasureConfig) SetQueryNodeReplica(v i
 	return s
 }
 
+type GetInstanceDetailResponseBodyDataTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetInstanceDetailResponseBodyDataTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceDetailResponseBodyDataTags) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceDetailResponseBodyDataTags) SetKey(v string) *GetInstanceDetailResponseBodyDataTags {
+	s.Key = &v
+	return s
+}
+
+func (s *GetInstanceDetailResponseBodyDataTags) SetValue(v string) *GetInstanceDetailResponseBodyDataTags {
+	s.Value = &v
+	return s
+}
+
 type GetInstanceDetailResponse struct {
 	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -879,7 +1011,8 @@ type ListInstancesRequest struct {
 	// example:
 	//
 	// rg-123xxx
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceGroupId *string                    `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tag             []*ListInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListInstancesRequest) String() string {
@@ -917,6 +1050,105 @@ func (s *ListInstancesRequest) SetRegionId(v string) *ListInstancesRequest {
 
 func (s *ListInstancesRequest) SetResourceGroupId(v string) *ListInstancesRequest {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ListInstancesRequest) SetTag(v []*ListInstancesRequestTag) *ListInstancesRequest {
+	s.Tag = v
+	return s
+}
+
+type ListInstancesRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListInstancesRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesRequestTag) SetKey(v string) *ListInstancesRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *ListInstancesRequestTag) SetValue(v string) *ListInstancesRequestTag {
+	s.Value = &v
+	return s
+}
+
+type ListInstancesShrinkRequest struct {
+	// example:
+	//
+	// c-123xxx
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// milvus-test
+	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-123xxx
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	TagShrink       *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+}
+
+func (s ListInstancesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesShrinkRequest) SetClusterId(v string) *ListInstancesShrinkRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *ListInstancesShrinkRequest) SetClusterName(v string) *ListInstancesShrinkRequest {
+	s.ClusterName = &v
+	return s
+}
+
+func (s *ListInstancesShrinkRequest) SetPageNumber(v int32) *ListInstancesShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListInstancesShrinkRequest) SetPageSize(v int32) *ListInstancesShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListInstancesShrinkRequest) SetRegionId(v string) *ListInstancesShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListInstancesShrinkRequest) SetResourceGroupId(v string) *ListInstancesShrinkRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ListInstancesShrinkRequest) SetTagShrink(v string) *ListInstancesShrinkRequest {
+	s.TagShrink = &v
 	return s
 }
 
@@ -1001,6 +1233,7 @@ func (s *ListInstancesResponseBody) SetTotal(v int32) *ListInstancesResponseBody
 }
 
 type ListInstancesResponseBodyData struct {
+	AutoBackup *bool `json:"AutoBackup,omitempty" xml:"AutoBackup,omitempty"`
 	// example:
 	//
 	// 1718608505000
@@ -1054,7 +1287,8 @@ type ListInstancesResponseBodyData struct {
 	// example:
 	//
 	// sg-123xxx
-	SgId *string `json:"SgId,omitempty" xml:"SgId,omitempty"`
+	SgId *string                              `json:"SgId,omitempty" xml:"SgId,omitempty"`
+	Tags []*ListInstancesResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// example:
 	//
 	// vpc-123xxx
@@ -1075,6 +1309,11 @@ func (s ListInstancesResponseBodyData) String() string {
 
 func (s ListInstancesResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *ListInstancesResponseBodyData) SetAutoBackup(v bool) *ListInstancesResponseBodyData {
+	s.AutoBackup = &v
+	return s
 }
 
 func (s *ListInstancesResponseBodyData) SetBeginTime(v int64) *ListInstancesResponseBodyData {
@@ -1149,6 +1388,11 @@ func (s *ListInstancesResponseBodyData) SetRunningTime(v int32) *ListInstancesRe
 
 func (s *ListInstancesResponseBodyData) SetSgId(v string) *ListInstancesResponseBodyData {
 	s.SgId = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyData) SetTags(v []*ListInstancesResponseBodyDataTags) *ListInstancesResponseBodyData {
+	s.Tags = v
 	return s
 }
 
@@ -1291,6 +1535,29 @@ func (s *ListInstancesResponseBodyDataClusterInfoMilvusResourceInfoList) SetDisk
 
 func (s *ListInstancesResponseBodyDataClusterInfoMilvusResourceInfoList) SetReplica(v int32) *ListInstancesResponseBodyDataClusterInfoMilvusResourceInfoList {
 	s.Replica = &v
+	return s
+}
+
+type ListInstancesResponseBodyDataTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListInstancesResponseBodyDataTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesResponseBodyDataTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesResponseBodyDataTags) SetKey(v string) *ListInstancesResponseBodyDataTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyDataTags) SetValue(v string) *ListInstancesResponseBodyDataTags {
+	s.Value = &v
 	return s
 }
 
@@ -1947,6 +2214,67 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
+// 为用户创建AliyunServiceRoleForMilvus
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDefaultRoleResponse
+func (client *Client) CreateDefaultRoleWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateDefaultRoleResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDefaultRole"),
+		Version:     tea.String("2023-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/webapi/user/create_default_role"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateDefaultRoleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateDefaultRoleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 为用户创建AliyunServiceRoleForMilvus
+//
+// @return CreateDefaultRoleResponse
+func (client *Client) CreateDefaultRole() (_result *CreateDefaultRoleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateDefaultRoleResponse{}
+	_body, _err := client.CreateDefaultRoleWithOptions(headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取Milvus公网访问ACL信息
 //
 // @param request - DescribeAccessControlListRequest
@@ -1981,13 +2309,24 @@ func (client *Client) DescribeAccessControlListWithOptions(request *DescribeAcce
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeAccessControlListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeAccessControlListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeAccessControlListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -2045,13 +2384,24 @@ func (client *Client) DescribeInstanceConfigsWithOptions(request *DescribeInstan
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeInstanceConfigsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeInstanceConfigsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeInstanceConfigsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -2109,13 +2459,24 @@ func (client *Client) GetInstanceDetailWithOptions(request *GetInstanceDetailReq
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetInstanceDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetInstanceDetailResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetInstanceDetailResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -2139,20 +2500,26 @@ func (client *Client) GetInstanceDetail(request *GetInstanceDetailRequest) (_res
 
 // Summary:
 //
-// 根据集群ID或者名称等信息过滤集群
+// 根据集群ID或者名称搜索集群
 //
-// @param request - ListInstancesRequest
+// @param tmpReq - ListInstancesRequest
 //
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListInstancesResponse
-func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListInstancesResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ListInstancesWithOptions(tmpReq *ListInstancesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListInstancesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &ListInstancesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tag)) {
+		request.TagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tag, tea.String("Tag"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
 		query["ClusterId"] = request.ClusterId
@@ -2178,6 +2545,10 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, he
 		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.TagShrink)) {
+		query["Tag"] = request.TagShrink
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -2193,18 +2564,29 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, he
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 根据集群ID或者名称等信息过滤集群
+// 根据集群ID或者名称搜索集群
 //
 // @param request - ListInstancesRequest
 //
@@ -2265,13 +2647,24 @@ func (client *Client) ModifyInstanceConfigWithOptions(request *ModifyInstanceCon
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyInstanceConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyInstanceConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyInstanceConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -2337,13 +2730,24 @@ func (client *Client) UpdateAccessControlListWithOptions(request *UpdateAccessCo
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateAccessControlListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateAccessControlListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateAccessControlListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -2405,13 +2809,24 @@ func (client *Client) UpdateInstanceNameWithOptions(request *UpdateInstanceNameR
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateInstanceNameResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateInstanceNameResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateInstanceNameResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -2481,13 +2896,24 @@ func (client *Client) UpdatePublicNetworkStatusWithOptions(request *UpdatePublic
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdatePublicNetworkStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdatePublicNetworkStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdatePublicNetworkStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
