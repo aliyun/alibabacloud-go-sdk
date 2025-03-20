@@ -9878,7 +9878,8 @@ type CreateOriginRuleRequest struct {
 	// example:
 	//
 	// on
-	Range *string `json:"Range,omitempty" xml:"Range,omitempty"`
+	Range          *string `json:"Range,omitempty" xml:"Range,omitempty"`
+	RangeChunkSize *string `json:"RangeChunkSize,omitempty" xml:"RangeChunkSize,omitempty"`
 	// Rule content, using conditional expressions to match user requests. This parameter is not required when adding global configurations. There are two usage scenarios:
 	//
 	// - Match all incoming requests: Set the value to true
@@ -9971,6 +9972,11 @@ func (s *CreateOriginRuleRequest) SetOriginVerify(v string) *CreateOriginRuleReq
 
 func (s *CreateOriginRuleRequest) SetRange(v string) *CreateOriginRuleRequest {
 	s.Range = &v
+	return s
+}
+
+func (s *CreateOriginRuleRequest) SetRangeChunkSize(v string) *CreateOriginRuleRequest {
+	s.RangeChunkSize = &v
 	return s
 }
 
@@ -30357,7 +30363,8 @@ type GetOriginRuleResponseBody struct {
 	// example:
 	//
 	// on
-	Range *string `json:"Range,omitempty" xml:"Range,omitempty"`
+	Range          *string `json:"Range,omitempty" xml:"Range,omitempty"`
+	RangeChunkSize *string `json:"RangeChunkSize,omitempty" xml:"RangeChunkSize,omitempty"`
 	// Request ID.
 	//
 	// example:
@@ -30464,6 +30471,11 @@ func (s *GetOriginRuleResponseBody) SetOriginVerify(v string) *GetOriginRuleResp
 
 func (s *GetOriginRuleResponseBody) SetRange(v string) *GetOriginRuleResponseBody {
 	s.Range = &v
+	return s
+}
+
+func (s *GetOriginRuleResponseBody) SetRangeChunkSize(v string) *GetOriginRuleResponseBody {
+	s.RangeChunkSize = &v
 	return s
 }
 
@@ -45375,7 +45387,8 @@ type ListOriginRulesResponseBodyConfigs struct {
 	// example:
 	//
 	// on
-	Range *string `json:"Range,omitempty" xml:"Range,omitempty"`
+	Range          *string `json:"Range,omitempty" xml:"Range,omitempty"`
+	RangeChunkSize *string `json:"RangeChunkSize,omitempty" xml:"RangeChunkSize,omitempty"`
 	// Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
 	//
 	// - Match all incoming requests: Set the value to true
@@ -45476,6 +45489,11 @@ func (s *ListOriginRulesResponseBodyConfigs) SetOriginVerify(v string) *ListOrig
 
 func (s *ListOriginRulesResponseBodyConfigs) SetRange(v string) *ListOriginRulesResponseBodyConfigs {
 	s.Range = &v
+	return s
+}
+
+func (s *ListOriginRulesResponseBodyConfigs) SetRangeChunkSize(v string) *ListOriginRulesResponseBodyConfigs {
+	s.RangeChunkSize = &v
 	return s
 }
 
@@ -60112,7 +60130,8 @@ type UpdateOriginRuleRequest struct {
 	// example:
 	//
 	// on
-	Range *string `json:"Range,omitempty" xml:"Range,omitempty"`
+	Range          *string `json:"Range,omitempty" xml:"Range,omitempty"`
+	RangeChunkSize *string `json:"RangeChunkSize,omitempty" xml:"RangeChunkSize,omitempty"`
 	// Rule content, used to match user requests with conditional expressions. This parameter is not required when adding a global configuration. There are two usage scenarios:
 	//
 	// - Match all incoming requests: Set the value to true
@@ -60204,6 +60223,11 @@ func (s *UpdateOriginRuleRequest) SetOriginVerify(v string) *UpdateOriginRuleReq
 
 func (s *UpdateOriginRuleRequest) SetRange(v string) *UpdateOriginRuleRequest {
 	s.Range = &v
+	return s
+}
+
+func (s *UpdateOriginRuleRequest) SetRangeChunkSize(v string) *UpdateOriginRuleRequest {
+	s.RangeChunkSize = &v
 	return s
 }
 
@@ -68163,6 +68187,10 @@ func (client *Client) CreateOriginRuleWithOptions(request *CreateOriginRuleReque
 
 	if !tea.BoolValue(util.IsUnset(request.Range)) {
 		query["Range"] = request.Range
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RangeChunkSize)) {
+		query["RangeChunkSize"] = request.RangeChunkSize
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Rule)) {
@@ -86032,6 +86060,10 @@ func (client *Client) UpdateOriginRuleWithOptions(request *UpdateOriginRuleReque
 
 	if !tea.BoolValue(util.IsUnset(request.Range)) {
 		query["Range"] = request.Range
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RangeChunkSize)) {
+		query["RangeChunkSize"] = request.RangeChunkSize
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Rule)) {
