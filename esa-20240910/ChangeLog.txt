@@ -1,3 +1,20 @@
+2025-03-20 Version: v2.23.0
+- Support API GetEdgeContainerAppResourceReserve.
+- Support API PurchaseCacheReserve.
+- Support API UpdateCacheReserveSpec.
+- Support API UpdateEdgeContainerAppResourceReserve.
+- Update API CreateRoutine: update param SpecName.
+- Update API GetClientCaCertificate: update response param.
+- Update API GetClientCertificate: update response param.
+- Update API GetRoutine: update response param.
+- Update API ListClientCaCertificates: update response param.
+- Update API ListClientCertificates: update response param.
+- Update API ListScheduledPreloadJobs: update response param.
+- Update API SetClientCertificateHostnames: update response param.
+- Update API UpdateCustomScenePolicy: update param Objects.
+- Update API UploadClientCaCertificate: update param Name.
+
+
 2025-03-01 Version: v2.22.1
 - Update API CreateOriginRule: add param OriginMtls.
 - Update API CreateOriginRule: add param OriginVerify.
