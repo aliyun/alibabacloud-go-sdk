@@ -12506,7 +12506,8 @@ type ListInstancesRequest struct {
 	// example:
 	//
 	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PlanType *string `json:"PlanType,omitempty" xml:"PlanType,omitempty"`
 	// The public IP addresses of the simple application servers. The value can be a JSON array that consists of up to 100 IP addresses. Separate multiple IP addresses with commas (,).
 	//
 	// > If you specify both `InstanceIds` and `PublicIpAddresses`, make sure that the specified IDs and the specified public IP addresses belong to the same simple application servers. Otherwise, an empty result is returned.
@@ -12585,6 +12586,11 @@ func (s *ListInstancesRequest) SetPageNumber(v int32) *ListInstancesRequest {
 
 func (s *ListInstancesRequest) SetPageSize(v int32) *ListInstancesRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListInstancesRequest) SetPlanType(v string) *ListInstancesRequest {
+	s.PlanType = &v
 	return s
 }
 
@@ -12809,7 +12815,8 @@ type ListInstancesResponseBodyInstances struct {
 	// example:
 	//
 	// swas.s2.c2m2s50b4t08
-	PlanId *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	PlanId   *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	PlanType *string `json:"PlanType,omitempty" xml:"PlanType,omitempty"`
 	// The public IP address.
 	//
 	// example:
@@ -12947,6 +12954,11 @@ func (s *ListInstancesResponseBodyInstances) SetNetworkAttributes(v []*ListInsta
 
 func (s *ListInstancesResponseBodyInstances) SetPlanId(v string) *ListInstancesResponseBodyInstances {
 	s.PlanId = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstances) SetPlanType(v string) *ListInstancesResponseBodyInstances {
+	s.PlanType = &v
 	return s
 }
 
@@ -13954,7 +13966,8 @@ type ListPlansResponseBodyPlans struct {
 	// example:
 	//
 	// ["Linux","Windows"]
-	SupportPlatform *string `json:"SupportPlatform,omitempty" xml:"SupportPlatform,omitempty"`
+	SupportPlatform *string                           `json:"SupportPlatform,omitempty" xml:"SupportPlatform,omitempty"`
+	Tags            []*ListPlansResponseBodyPlansTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListPlansResponseBodyPlans) String() string {
@@ -14017,6 +14030,40 @@ func (s *ListPlansResponseBodyPlans) SetPlanType(v string) *ListPlansResponseBod
 
 func (s *ListPlansResponseBodyPlans) SetSupportPlatform(v string) *ListPlansResponseBodyPlans {
 	s.SupportPlatform = &v
+	return s
+}
+
+func (s *ListPlansResponseBodyPlans) SetTags(v []*ListPlansResponseBodyPlansTags) *ListPlansResponseBodyPlans {
+	s.Tags = v
+	return s
+}
+
+type ListPlansResponseBodyPlansTags struct {
+	CnTitle *string `json:"CnTitle,omitempty" xml:"CnTitle,omitempty"`
+	Color   *string `json:"Color,omitempty" xml:"Color,omitempty"`
+	EnTitle *string `json:"EnTitle,omitempty" xml:"EnTitle,omitempty"`
+}
+
+func (s ListPlansResponseBodyPlansTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPlansResponseBodyPlansTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListPlansResponseBodyPlansTags) SetCnTitle(v string) *ListPlansResponseBodyPlansTags {
+	s.CnTitle = &v
+	return s
+}
+
+func (s *ListPlansResponseBodyPlansTags) SetColor(v string) *ListPlansResponseBodyPlansTags {
+	s.Color = &v
+	return s
+}
+
+func (s *ListPlansResponseBodyPlansTags) SetEnTitle(v string) *ListPlansResponseBodyPlansTags {
+	s.EnTitle = &v
 	return s
 }
 
@@ -19101,9 +19148,9 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // Description:
 //
-//   Before you share a custom image, make sure that all sensitive data and files are removed from the image.
+//	  Before you share a custom image, make sure that all sensitive data and files are removed from the image.
 //
-// 	- The IDs of the Alibaba Cloud accounts with which you want to share the image is obtained. Move the pointer over the profile in the upper-right corner of the Simple Application Server console. In the card that appears, if Main Account is displayed, the showed account ID is the Alibaba Cloud account ID.
+//		- The IDs of the Alibaba Cloud accounts with which you want to share the image is obtained. Move the pointer over the profile in the upper-right corner of the Simple Application Server console. In the card that appears, if Main Account is displayed, the showed account ID is the Alibaba Cloud account ID.
 //
 // @param request - AddCustomImageShareAccountRequest
 //
@@ -19172,9 +19219,9 @@ func (client *Client) AddCustomImageShareAccountWithOptions(request *AddCustomIm
 //
 // Description:
 //
-//   Before you share a custom image, make sure that all sensitive data and files are removed from the image.
+//	  Before you share a custom image, make sure that all sensitive data and files are removed from the image.
 //
-// 	- The IDs of the Alibaba Cloud accounts with which you want to share the image is obtained. Move the pointer over the profile in the upper-right corner of the Simple Application Server console. In the card that appears, if Main Account is displayed, the showed account ID is the Alibaba Cloud account ID.
+//		- The IDs of the Alibaba Cloud accounts with which you want to share the image is obtained. Move the pointer over the profile in the upper-right corner of the Simple Application Server console. In the card that appears, if Main Account is displayed, the showed account ID is the Alibaba Cloud account ID.
 //
 // @param request - AddCustomImageShareAccountRequest
 //
@@ -19580,15 +19627,15 @@ func (client *Client) CreateCommand(request *CreateCommandRequest) (_result *Cre
 //
 // Before you create a custom image, take note of the following items:
 //
-// 	- The custom image and the corresponding simple application server must reside in the same region.
+//   - The custom image and the corresponding simple application server must reside in the same region.
 //
-// 	- The maximum number of custom images that you can create is 3 times the number of simple application servers that you have, but cannot exceed 15.
+//   - The maximum number of custom images that you can create is 3 times the number of simple application servers that you have, but cannot exceed 15.
 //
-// 	- You can directly create a custom image only based on the system disk snapshot of a simple application server. If you want a custom image to contain the data on the data disk of the simple application server, you must select a data disk snapshot in addition to a system disk snapshot when you create the custom image.
+//   - You can directly create a custom image only based on the system disk snapshot of a simple application server. If you want a custom image to contain the data on the data disk of the simple application server, you must select a data disk snapshot in addition to a system disk snapshot when you create the custom image.
 //
-// 	- If a simple application server is released due to expiration or refunds, the custom images that are created based on the server are also released.
+//   - If a simple application server is released due to expiration or refunds, the custom images that are created based on the server are also released.
 //
-// 	- Resetting the system or changing the image of a simple application server clears the disk data on the server. Back up the data as needed.
+//   - Resetting the system or changing the image of a simple application server clears the disk data on the server. Back up the data as needed.
 //
 // @param request - CreateCustomImageRequest
 //
@@ -19685,15 +19732,15 @@ func (client *Client) CreateCustomImageWithOptions(request *CreateCustomImageReq
 //
 // Before you create a custom image, take note of the following items:
 //
-// 	- The custom image and the corresponding simple application server must reside in the same region.
+//   - The custom image and the corresponding simple application server must reside in the same region.
 //
-// 	- The maximum number of custom images that you can create is 3 times the number of simple application servers that you have, but cannot exceed 15.
+//   - The maximum number of custom images that you can create is 3 times the number of simple application servers that you have, but cannot exceed 15.
 //
-// 	- You can directly create a custom image only based on the system disk snapshot of a simple application server. If you want a custom image to contain the data on the data disk of the simple application server, you must select a data disk snapshot in addition to a system disk snapshot when you create the custom image.
+//   - You can directly create a custom image only based on the system disk snapshot of a simple application server. If you want a custom image to contain the data on the data disk of the simple application server, you must select a data disk snapshot in addition to a system disk snapshot when you create the custom image.
 //
-// 	- If a simple application server is released due to expiration or refunds, the custom images that are created based on the server are also released.
+//   - If a simple application server is released due to expiration or refunds, the custom images that are created based on the server are also released.
 //
-// 	- Resetting the system or changing the image of a simple application server clears the disk data on the server. Back up the data as needed.
+//   - Resetting the system or changing the image of a simple application server clears the disk data on the server. Back up the data as needed.
 //
 // @param request - CreateCustomImageRequest
 //
@@ -20176,13 +20223,13 @@ func (client *Client) CreateInstanceKeyPair(request *CreateInstanceKeyPairReques
 //
 // Description:
 //
-//   Before you call this operation, we recommend that you understand the billing rules of Simple Application Server. For more information, see [Billable items](https://help.aliyun.com/document_detail/58623.html).
+//	Before you call this operation, we recommend that you understand the billing rules of Simple Application Server. For more information, see [Billable items](https://help.aliyun.com/document_detail/58623.html).
 //
 // >  If you have coupons in your Alibaba Cloud account, the coupons are preferentially used to pay for the simple application servers.
 //
-// 	- You can create a maximum of 50 simple application servers in a region for an Alibaba Cloud account.
+//   - You can create a maximum of 50 simple application servers in a region for an Alibaba Cloud account.
 //
-// 	- When you call this operation to create simple application servers, make sure that the balance in your account is sufficient to pay for the servers. If the balance in your account is insufficient, the servers cannot be created.
+//   - When you call this operation to create simple application servers, make sure that the balance in your account is sufficient to pay for the servers. If the balance in your account is insufficient, the servers cannot be created.
 //
 // @param request - CreateInstancesRequest
 //
@@ -20275,13 +20322,13 @@ func (client *Client) CreateInstancesWithOptions(request *CreateInstancesRequest
 //
 // Description:
 //
-//   Before you call this operation, we recommend that you understand the billing rules of Simple Application Server. For more information, see [Billable items](https://help.aliyun.com/document_detail/58623.html).
+//	Before you call this operation, we recommend that you understand the billing rules of Simple Application Server. For more information, see [Billable items](https://help.aliyun.com/document_detail/58623.html).
 //
 // >  If you have coupons in your Alibaba Cloud account, the coupons are preferentially used to pay for the simple application servers.
 //
-// 	- You can create a maximum of 50 simple application servers in a region for an Alibaba Cloud account.
+//   - You can create a maximum of 50 simple application servers in a region for an Alibaba Cloud account.
 //
-// 	- When you call this operation to create simple application servers, make sure that the balance in your account is sufficient to pay for the servers. If the balance in your account is insufficient, the servers cannot be created.
+//   - When you call this operation to create simple application servers, make sure that the balance in your account is sufficient to pay for the servers. If the balance in your account is insufficient, the servers cannot be created.
 //
 // @param request - CreateInstancesRequest
 //
@@ -20305,11 +20352,11 @@ func (client *Client) CreateInstances(request *CreateInstancesRequest) (_result 
 //
 // Alibaba Cloud SSH key pairs offer a secure and efficient logon authentication mechanism, facilitating both verification and encrypted communication within the SSH protocol framework. An SSH key pair is essentially constituted by a public key and a private key. Tailored for Linux-based simple application servers, this security measure enhances security and convenience, effectively addressing your heightened security requirements.
 //
-// 	- The key pair logon method is only valid for Linux-based simple application servers.
+//   - The key pair logon method is only valid for Linux-based simple application servers.
 //
-// 	- A maximum of 10 key pairs can be created in a region for an Alibaba Cloud account.
+//   - A maximum of 10 key pairs can be created in a region for an Alibaba Cloud account.
 //
-// 	- Only RSA 2048-bit key pairs can be created in the Simple Application Server console.
+//   - Only RSA 2048-bit key pairs can be created in the Simple Application Server console.
 //
 // @param request - CreateKeyPairRequest
 //
@@ -20376,11 +20423,11 @@ func (client *Client) CreateKeyPairWithOptions(request *CreateKeyPairRequest, ru
 //
 // Alibaba Cloud SSH key pairs offer a secure and efficient logon authentication mechanism, facilitating both verification and encrypted communication within the SSH protocol framework. An SSH key pair is essentially constituted by a public key and a private key. Tailored for Linux-based simple application servers, this security measure enhances security and convenience, effectively addressing your heightened security requirements.
 //
-// 	- The key pair logon method is only valid for Linux-based simple application servers.
+//   - The key pair logon method is only valid for Linux-based simple application servers.
 //
-// 	- A maximum of 10 key pairs can be created in a region for an Alibaba Cloud account.
+//   - A maximum of 10 key pairs can be created in a region for an Alibaba Cloud account.
 //
-// 	- Only RSA 2048-bit key pairs can be created in the Simple Application Server console.
+//   - Only RSA 2048-bit key pairs can be created in the Simple Application Server console.
 //
 // @param request - CreateKeyPairRequest
 //
@@ -20408,13 +20455,13 @@ func (client *Client) CreateKeyPair(request *CreateKeyPairRequest) (_result *Cre
 //
 // ### [](#)Precautions
 //
-// 	- You can create up to three snapshots for each simple application server.
+//   - You can create up to three snapshots for each simple application server.
 //
-// 	- The maximum number of snapshots that you create per Alibaba Cloud account is triple of the number of simple application servers that are created. The value cannot be greater than 15.
+//   - The maximum number of snapshots that you create per Alibaba Cloud account is triple of the number of simple application servers that are created. The value cannot be greater than 15.
 //
-// 	- If a simple application server is automatically released due to expiration, the snapshots created for the server are deleted.
+//   - If a simple application server is automatically released due to expiration, the snapshots created for the server are deleted.
 //
-// 	- If you reset a simple application server after you create a snapshot for the server, the snapshot is retained but cannot be used to restore the disks of the server.
+//   - If you reset a simple application server after you create a snapshot for the server, the snapshot is retained but cannot be used to restore the disks of the server.
 //
 // @param request - CreateSnapshotRequest
 //
@@ -20497,13 +20544,13 @@ func (client *Client) CreateSnapshotWithOptions(request *CreateSnapshotRequest, 
 //
 // ### [](#)Precautions
 //
-// 	- You can create up to three snapshots for each simple application server.
+//   - You can create up to three snapshots for each simple application server.
 //
-// 	- The maximum number of snapshots that you create per Alibaba Cloud account is triple of the number of simple application servers that are created. The value cannot be greater than 15.
+//   - The maximum number of snapshots that you create per Alibaba Cloud account is triple of the number of simple application servers that are created. The value cannot be greater than 15.
 //
-// 	- If a simple application server is automatically released due to expiration, the snapshots created for the server are deleted.
+//   - If a simple application server is automatically released due to expiration, the snapshots created for the server are deleted.
 //
-// 	- If you reset a simple application server after you create a snapshot for the server, the snapshot is retained but cannot be used to restore the disks of the server.
+//   - If you reset a simple application server after you create a snapshot for the server, the snapshot is retained but cannot be used to restore the disks of the server.
 //
 // @param request - CreateSnapshotRequest
 //
@@ -22932,9 +22979,9 @@ func (client *Client) DescribeInstanceVncUrl(request *DescribeInstanceVncUrlRequ
 //
 // Description:
 //
-//   After you execute a command, the command may not succeed or return the expected results. You can call this operation to query the execution result of a command.
+//	  After you execute a command, the command may not succeed or return the expected results. You can call this operation to query the execution result of a command.
 //
-// 	- You can query the execution results that were generated within the last two weeks. A maximum of 100,000 entries of execution results can be retained.
+//		- You can query the execution results that were generated within the last two weeks. A maximum of 100,000 entries of execution results can be retained.
 //
 // @param request - DescribeInvocationResultRequest
 //
@@ -22999,9 +23046,9 @@ func (client *Client) DescribeInvocationResultWithOptions(request *DescribeInvoc
 //
 // Description:
 //
-//   After you execute a command, the command may not succeed or return the expected results. You can call this operation to query the execution result of a command.
+//	  After you execute a command, the command may not succeed or return the expected results. You can call this operation to query the execution result of a command.
 //
-// 	- You can query the execution results that were generated within the last two weeks. A maximum of 100,000 entries of execution results can be retained.
+//		- You can query the execution results that were generated within the last two weeks. A maximum of 100,000 entries of execution results can be retained.
 //
 // @param request - DescribeInvocationResultRequest
 //
@@ -23023,9 +23070,9 @@ func (client *Client) DescribeInvocationResult(request *DescribeInvocationResult
 //
 // Description:
 //
-//   After you execute a command, the command may not succeed or return the expected results. You can call this operation to query the actual execution results.
+//	  After you execute a command, the command may not succeed or return the expected results. You can call this operation to query the actual execution results.
 //
-// 	- You can query the execution results that were generated within the last two weeks. Up to 100,000 entries of execution results can be retained.
+//		- You can query the execution results that were generated within the last two weeks. Up to 100,000 entries of execution results can be retained.
 //
 // @param request - DescribeInvocationsRequest
 //
@@ -23098,9 +23145,9 @@ func (client *Client) DescribeInvocationsWithOptions(request *DescribeInvocation
 //
 // Description:
 //
-//   After you execute a command, the command may not succeed or return the expected results. You can call this operation to query the actual execution results.
+//	  After you execute a command, the command may not succeed or return the expected results. You can call this operation to query the actual execution results.
 //
-// 	- You can query the execution results that were generated within the last two weeks. Up to 100,000 entries of execution results can be retained.
+//		- You can query the execution results that were generated within the last two weeks. Up to 100,000 entries of execution results can be retained.
 //
 // @param request - DescribeInvocationsRequest
 //
@@ -23836,19 +23883,19 @@ func (client *Client) InstallCloudMonitorAgent(request *InstallCloudMonitorAgent
 //
 // Description:
 //
-//   The simple application servers for which you want to call the operation must meet the following conditions. If a simple application server cannot meet the conditions, you must call this operation again.
+//	  The simple application servers for which you want to call the operation must meet the following conditions. If a simple application server cannot meet the conditions, you must call this operation again.
 //
-//     	- The simple application servers are in the `Running` state. You can call the [ListInstances](https://help.aliyun.com/document_detail/2361065.html) operation to query the status of simple application servers.
+//	    	- The simple application servers are in the `Running` state. You can call the [ListInstances](https://help.aliyun.com/document_detail/2361065.html) operation to query the status of simple application servers.
 //
-//     	- Cloud Assistant Agent is installed on the simple application servers. For more information, see [InstallCloudAssistant](https://help.aliyun.com/document_detail/2361030.html).
+//	    	- Cloud Assistant Agent is installed on the simple application servers. For more information, see [InstallCloudAssistant](https://help.aliyun.com/document_detail/2361030.html).
 //
-//     	- If you run a PowerShell command, make sure that the PowerShell module is configured for the simple application servers.
+//	    	- If you run a PowerShell command, make sure that the PowerShell module is configured for the simple application servers.
 //
-// 	- The command may fail to be run due to the abnormal states of simple application servers, network exceptions, or exceptions in Cloud Assistant Agent. If the command fails to be run, no execution information is generated.
+//		- The command may fail to be run due to the abnormal states of simple application servers, network exceptions, or exceptions in Cloud Assistant Agent. If the command fails to be run, no execution information is generated.
 //
-// 	- If you enable the custom parameter feature when you create a command, you must set the `Parameters` parameter to specify custom parameters when you run the command.
+//		- If you enable the custom parameter feature when you create a command, you must set the `Parameters` parameter to specify custom parameters when you run the command.
 //
-// 	- When you call this operation, you can select only one common command or a custom command that you have created.
+//		- When you call this operation, you can select only one common command or a custom command that you have created.
 //
 // @param tmpReq - InvokeCommandRequest
 //
@@ -23927,19 +23974,19 @@ func (client *Client) InvokeCommandWithOptions(tmpReq *InvokeCommandRequest, run
 //
 // Description:
 //
-//   The simple application servers for which you want to call the operation must meet the following conditions. If a simple application server cannot meet the conditions, you must call this operation again.
+//	  The simple application servers for which you want to call the operation must meet the following conditions. If a simple application server cannot meet the conditions, you must call this operation again.
 //
-//     	- The simple application servers are in the `Running` state. You can call the [ListInstances](https://help.aliyun.com/document_detail/2361065.html) operation to query the status of simple application servers.
+//	    	- The simple application servers are in the `Running` state. You can call the [ListInstances](https://help.aliyun.com/document_detail/2361065.html) operation to query the status of simple application servers.
 //
-//     	- Cloud Assistant Agent is installed on the simple application servers. For more information, see [InstallCloudAssistant](https://help.aliyun.com/document_detail/2361030.html).
+//	    	- Cloud Assistant Agent is installed on the simple application servers. For more information, see [InstallCloudAssistant](https://help.aliyun.com/document_detail/2361030.html).
 //
-//     	- If you run a PowerShell command, make sure that the PowerShell module is configured for the simple application servers.
+//	    	- If you run a PowerShell command, make sure that the PowerShell module is configured for the simple application servers.
 //
-// 	- The command may fail to be run due to the abnormal states of simple application servers, network exceptions, or exceptions in Cloud Assistant Agent. If the command fails to be run, no execution information is generated.
+//		- The command may fail to be run due to the abnormal states of simple application servers, network exceptions, or exceptions in Cloud Assistant Agent. If the command fails to be run, no execution information is generated.
 //
-// 	- If you enable the custom parameter feature when you create a command, you must set the `Parameters` parameter to specify custom parameters when you run the command.
+//		- If you enable the custom parameter feature when you create a command, you must set the `Parameters` parameter to specify custom parameters when you run the command.
 //
-// 	- When you call this operation, you can select only one common command or a custom command that you have created.
+//		- When you call this operation, you can select only one common command or a custom command that you have created.
 //
 // @param request - InvokeCommandRequest
 //
@@ -24663,6 +24710,10 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, ru
 		query["PageSize"] = request.PageSize
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.PlanType)) {
+		query["PlanType"] = request.PlanType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PublicIpAddresses)) {
 		query["PublicIpAddresses"] = request.PublicIpAddresses
 	}
@@ -24749,11 +24800,11 @@ func (client *Client) ListInstances(request *ListInstancesRequest) (_result *Lis
 //
 // Simple Application Server provides data transfer plans that can be used to offset data transfer fees. You are charged for excess data transfers. Take note of the following items:
 //
-// 	- Only outbound data transfers of simple application servers over the Internet are calculated. Outbound data transfers include the data transfer quota and the excess data transfers beyond the quota. Inbound data transfers of simple application servers over the Internet are not calculated.
+//   - Only outbound data transfers of simple application servers over the Internet are calculated. Outbound data transfers include the data transfer quota and the excess data transfers beyond the quota. Inbound data transfers of simple application servers over the Internet are not calculated.
 //
-// 	- Outbound data transfers from simple application servers to other Alibaba Cloud services over the Internet first consume data transfer quotas. If the quotas are exhausted, you are charged for excess data transfers.
+//   - Outbound data transfers from simple application servers to other Alibaba Cloud services over the Internet first consume data transfer quotas. If the quotas are exhausted, you are charged for excess data transfers.
 //
-// 	- You are not charged for data transfers between simple application servers within the same virtual private cloud (VPC).
+//   - You are not charged for data transfers between simple application servers within the same virtual private cloud (VPC).
 //
 // For more information, see [Quotas and billing of data transfers](https://help.aliyun.com/document_detail/86281.html).
 //
@@ -24820,11 +24871,11 @@ func (client *Client) ListInstancesTrafficPackagesWithOptions(request *ListInsta
 //
 // Simple Application Server provides data transfer plans that can be used to offset data transfer fees. You are charged for excess data transfers. Take note of the following items:
 //
-// 	- Only outbound data transfers of simple application servers over the Internet are calculated. Outbound data transfers include the data transfer quota and the excess data transfers beyond the quota. Inbound data transfers of simple application servers over the Internet are not calculated.
+//   - Only outbound data transfers of simple application servers over the Internet are calculated. Outbound data transfers include the data transfer quota and the excess data transfers beyond the quota. Inbound data transfers of simple application servers over the Internet are not calculated.
 //
-// 	- Outbound data transfers from simple application servers to other Alibaba Cloud services over the Internet first consume data transfer quotas. If the quotas are exhausted, you are charged for excess data transfers.
+//   - Outbound data transfers from simple application servers to other Alibaba Cloud services over the Internet first consume data transfer quotas. If the quotas are exhausted, you are charged for excess data transfers.
 //
-// 	- You are not charged for data transfers between simple application servers within the same virtual private cloud (VPC).
+//   - You are not charged for data transfers between simple application servers within the same virtual private cloud (VPC).
 //
 // For more information, see [Quotas and billing of data transfers](https://help.aliyun.com/document_detail/86281.html).
 //
@@ -25776,9 +25827,9 @@ func (client *Client) ModifyFirewallTemplate(request *ModifyFirewallTemplateRequ
 //
 // You can unshare a custom image based on your business requirements or when you want to delete the custom image. After you unshare a custom image, take note of the following items:
 //
-// 	- You cannot query or use the custom image by using the ECS console or API.
+//   - You cannot query or use the custom image by using the ECS console or API.
 //
-// 	- You cannot re-initialize the disks of the ECS instances that were created based on the shared image.
+//   - You cannot re-initialize the disks of the ECS instances that were created based on the shared image.
 //
 // @param request - ModifyImageShareStatusRequest
 //
@@ -25853,9 +25904,9 @@ func (client *Client) ModifyImageShareStatusWithOptions(request *ModifyImageShar
 //
 // You can unshare a custom image based on your business requirements or when you want to delete the custom image. After you unshare a custom image, take note of the following items:
 //
-// 	- You cannot query or use the custom image by using the ECS console or API.
+//   - You cannot query or use the custom image by using the ECS console or API.
 //
-// 	- You cannot re-initialize the disks of the ECS instances that were created based on the shared image.
+//   - You cannot re-initialize the disks of the ECS instances that were created based on the shared image.
 //
 // @param request - ModifyImageShareStatusRequest
 //
@@ -25960,9 +26011,9 @@ func (client *Client) ModifyInstanceVncPassword(request *ModifyInstanceVncPasswo
 //
 // Description:
 //
-//   Only simple application servers that are in the Running state can be restarted.
+//	  Only simple application servers that are in the Running state can be restarted.
 //
-// 	- After you restart a simple application server, it enters the Starting state.
+//		- After you restart a simple application server, it enters the Starting state.
 //
 // @param request - RebootInstanceRequest
 //
@@ -26027,9 +26078,9 @@ func (client *Client) RebootInstanceWithOptions(request *RebootInstanceRequest, 
 //
 // Description:
 //
-//   Only simple application servers that are in the Running state can be restarted.
+//	  Only simple application servers that are in the Running state can be restarted.
 //
-// 	- After you restart a simple application server, it enters the Starting state.
+//		- After you restart a simple application server, it enters the Starting state.
 //
 // @param request - RebootInstanceRequest
 //
@@ -26312,9 +26363,9 @@ func (client *Client) RemoveCustomImageShareAccount(request *RemoveCustomImageSh
 //
 // Description:
 //
-//   Before you call this operation, we recommend that you understand the billing of Simple Application Server. For more information, see [Billable items](https://help.aliyun.com/document_detail/58623.html).
+//	  Before you call this operation, we recommend that you understand the billing of Simple Application Server. For more information, see [Billable items](https://help.aliyun.com/document_detail/58623.html).
 //
-// 	- Before you call this operation, make sure that the balance in your account is sufficient. If the balance in your account is insufficient, the renewal fails.
+//		- Before you call this operation, make sure that the balance in your account is sufficient. If the balance in your account is insufficient, the renewal fails.
 //
 // @param request - RenewInstanceRequest
 //
@@ -26383,9 +26434,9 @@ func (client *Client) RenewInstanceWithOptions(request *RenewInstanceRequest, ru
 //
 // Description:
 //
-//   Before you call this operation, we recommend that you understand the billing of Simple Application Server. For more information, see [Billable items](https://help.aliyun.com/document_detail/58623.html).
+//	  Before you call this operation, we recommend that you understand the billing of Simple Application Server. For more information, see [Billable items](https://help.aliyun.com/document_detail/58623.html).
 //
-// 	- Before you call this operation, make sure that the balance in your account is sufficient. If the balance in your account is insufficient, the renewal fails.
+//		- Before you call this operation, make sure that the balance in your account is sufficient. If the balance in your account is insufficient, the renewal fails.
 //
 // @param request - RenewInstanceRequest
 //
@@ -26506,9 +26557,9 @@ func (client *Client) ResetDatabaseAccountPassword(request *ResetDatabaseAccount
 //
 // Description:
 //
-//   You can call this operation only if the associated simple application server is in the Stopped state.
+//	  You can call this operation only if the associated simple application server is in the Stopped state.
 //
-// 	- If you restore a disk from a snapshot, the incremental data after the snapshot is created is lost. We recommend that you back up the data before you perform this operation.
+//		- If you restore a disk from a snapshot, the incremental data after the snapshot is created is lost. We recommend that you back up the data before you perform this operation.
 //
 // ### [](#)Precautions
 //
@@ -26581,9 +26632,9 @@ func (client *Client) ResetDiskWithOptions(request *ResetDiskRequest, runtime *u
 //
 // Description:
 //
-//   You can call this operation only if the associated simple application server is in the Stopped state.
+//	  You can call this operation only if the associated simple application server is in the Stopped state.
 //
-// 	- If you restore a disk from a snapshot, the incremental data after the snapshot is created is lost. We recommend that you back up the data before you perform this operation.
+//		- If you restore a disk from a snapshot, the incremental data after the snapshot is created is lost. We recommend that you back up the data before you perform this operation.
 //
 // ### [](#)Precautions
 //
@@ -26611,43 +26662,43 @@ func (client *Client) ResetDisk(request *ResetDiskRequest) (_result *ResetDiskRe
 //
 // You can reset a simple application server to re-install its applications or operating system and re-initialize the server. You can reset a simple application server by resetting the current system or changing the image.
 //
-// 	- Reset the current system: You can re-install the operating system without changing the image.
+//   - Reset the current system: You can re-install the operating system without changing the image.
 //
-// 	- Change the image: You can select another Alibaba Cloud image or a custom image to re-install the operating system.
+//   - Change the image: You can select another Alibaba Cloud image or a custom image to re-install the operating system.
 //
 // ### [](#)Precautions
 //
-// 	- Resetting the system or changing the image of a simple application server clears the disk data on the server. Back up the data as needed.
+//   - Resetting the system or changing the image of a simple application server clears the disk data on the server. Back up the data as needed.
 //
-// 	- After you reset a simple application server, monitoring may fail. In this case, you can use one of the following methods to install the CloudMonitor agent on the server:
+//   - After you reset a simple application server, monitoring may fail. In this case, you can use one of the following methods to install the CloudMonitor agent on the server:
 //
-//     	- Connect to the server: For more information, see [Manually install the CloudMonitor agent for C++ on an ECS instance](https://help.aliyun.com/document_detail/183482.html).
+//   - Connect to the server: For more information, see [Manually install the CloudMonitor agent for C++ on an ECS instance](https://help.aliyun.com/document_detail/183482.html).
 //
-//     	- Use Command Assistant: For more information, see [Use Command Assistant](https://help.aliyun.com/document_detail/438681.html). You can obtain the command that can be used to install CloudMonitor from the "Common commands" section of the [Use Command Assistant](https://help.aliyun.com/document_detail/438681.html) topic.
+//   - Use Command Assistant: For more information, see [Use Command Assistant](https://help.aliyun.com/document_detail/438681.html). You can obtain the command that can be used to install CloudMonitor from the "Common commands" section of the [Use Command Assistant](https://help.aliyun.com/document_detail/438681.html) topic.
 //
 // ### [](#)Limits
 //
-// 	- Snapshots that are created before the reset are retained, but the snapshots cannot be used to restore the disks of the server.
+//   - Snapshots that are created before the reset are retained, but the snapshots cannot be used to restore the disks of the server.
 //
-// 	- You cannot reset simple application servers that were created from custom images that contain data of data disks.
+//   - You cannot reset simple application servers that were created from custom images that contain data of data disks.
 //
-// 	- If you reset a simple application server by replacing the existing image with a custom image, the following limits apply:
+//   - If you reset a simple application server by replacing the existing image with a custom image, the following limits apply:
 //
-//     	- The custom image must reside in the same region as the current server.
+//   - The custom image must reside in the same region as the current server.
 //
-//     	- The custom image cannot be created based on the current server. If you want to restore the data on the server, you can use a snapshot of the server to restore disk data.
+//   - The custom image cannot be created based on the current server. If you want to restore the data on the server, you can use a snapshot of the server to restore disk data.
 //
-//     	- If your simple application server resides in a region outside the Chinese mainland, you cannot switch the operating system of the server between Windows Server and Linux. You cannot use a Windows Server custom image to reset a Linux simple application server. Similarly, you cannot use a Linux custom image to reset a Windows Server simple application server. You can switch the operating systems of simple application servers only between Windows Server versions or between Linux distributions.
+//   - If your simple application server resides in a region outside the Chinese mainland, you cannot switch the operating system of the server between Windows Server and Linux. You cannot use a Windows Server custom image to reset a Linux simple application server. Similarly, you cannot use a Linux custom image to reset a Windows Server simple application server. You can switch the operating systems of simple application servers only between Windows Server versions or between Linux distributions.
 //
-//     	- The following limits apply to the disks attached to the simple application server:
+//   - The following limits apply to the disks attached to the simple application server:
 //
-//         	- If the custom image contains a system disk and a data disk but only a system disk is attached to the simple application server, you cannot use the custom image to reset the simple application server.
+//   - If the custom image contains a system disk and a data disk but only a system disk is attached to the simple application server, you cannot use the custom image to reset the simple application server.
 //
-//         	- If the system disk size of the custom image is greater than the system disk size of the simple application server, you cannot directly use the custom image to reset the simple application server.
+//   - If the system disk size of the custom image is greater than the system disk size of the simple application server, you cannot directly use the custom image to reset the simple application server.
 //
-//         	- Only if the system disk size of the simple application server is greater than or equal to the system disk size of the custom image, you can use the custom image to reset the simple application server. To increase the system disk size of your server, you can upgrade the server configuration. For more information, see Upgrade a simple application server.
+//   - Only if the system disk size of the simple application server is greater than or equal to the system disk size of the custom image, you can use the custom image to reset the simple application server. To increase the system disk size of your server, you can upgrade the server configuration. For more information, see Upgrade a simple application server.
 //
-//         	- If the data disk size of the custom image is greater than the data disk size of the simple application server, you cannot use the custom image to reset the simple application server.
+//   - If the data disk size of the custom image is greater than the data disk size of the simple application server, you cannot use the custom image to reset the simple application server.
 //
 // @param request - ResetSystemRequest
 //
@@ -26722,43 +26773,43 @@ func (client *Client) ResetSystemWithOptions(request *ResetSystemRequest, runtim
 //
 // You can reset a simple application server to re-install its applications or operating system and re-initialize the server. You can reset a simple application server by resetting the current system or changing the image.
 //
-// 	- Reset the current system: You can re-install the operating system without changing the image.
+//   - Reset the current system: You can re-install the operating system without changing the image.
 //
-// 	- Change the image: You can select another Alibaba Cloud image or a custom image to re-install the operating system.
+//   - Change the image: You can select another Alibaba Cloud image or a custom image to re-install the operating system.
 //
 // ### [](#)Precautions
 //
-// 	- Resetting the system or changing the image of a simple application server clears the disk data on the server. Back up the data as needed.
+//   - Resetting the system or changing the image of a simple application server clears the disk data on the server. Back up the data as needed.
 //
-// 	- After you reset a simple application server, monitoring may fail. In this case, you can use one of the following methods to install the CloudMonitor agent on the server:
+//   - After you reset a simple application server, monitoring may fail. In this case, you can use one of the following methods to install the CloudMonitor agent on the server:
 //
-//     	- Connect to the server: For more information, see [Manually install the CloudMonitor agent for C++ on an ECS instance](https://help.aliyun.com/document_detail/183482.html).
+//   - Connect to the server: For more information, see [Manually install the CloudMonitor agent for C++ on an ECS instance](https://help.aliyun.com/document_detail/183482.html).
 //
-//     	- Use Command Assistant: For more information, see [Use Command Assistant](https://help.aliyun.com/document_detail/438681.html). You can obtain the command that can be used to install CloudMonitor from the "Common commands" section of the [Use Command Assistant](https://help.aliyun.com/document_detail/438681.html) topic.
+//   - Use Command Assistant: For more information, see [Use Command Assistant](https://help.aliyun.com/document_detail/438681.html). You can obtain the command that can be used to install CloudMonitor from the "Common commands" section of the [Use Command Assistant](https://help.aliyun.com/document_detail/438681.html) topic.
 //
 // ### [](#)Limits
 //
-// 	- Snapshots that are created before the reset are retained, but the snapshots cannot be used to restore the disks of the server.
+//   - Snapshots that are created before the reset are retained, but the snapshots cannot be used to restore the disks of the server.
 //
-// 	- You cannot reset simple application servers that were created from custom images that contain data of data disks.
+//   - You cannot reset simple application servers that were created from custom images that contain data of data disks.
 //
-// 	- If you reset a simple application server by replacing the existing image with a custom image, the following limits apply:
+//   - If you reset a simple application server by replacing the existing image with a custom image, the following limits apply:
 //
-//     	- The custom image must reside in the same region as the current server.
+//   - The custom image must reside in the same region as the current server.
 //
-//     	- The custom image cannot be created based on the current server. If you want to restore the data on the server, you can use a snapshot of the server to restore disk data.
+//   - The custom image cannot be created based on the current server. If you want to restore the data on the server, you can use a snapshot of the server to restore disk data.
 //
-//     	- If your simple application server resides in a region outside the Chinese mainland, you cannot switch the operating system of the server between Windows Server and Linux. You cannot use a Windows Server custom image to reset a Linux simple application server. Similarly, you cannot use a Linux custom image to reset a Windows Server simple application server. You can switch the operating systems of simple application servers only between Windows Server versions or between Linux distributions.
+//   - If your simple application server resides in a region outside the Chinese mainland, you cannot switch the operating system of the server between Windows Server and Linux. You cannot use a Windows Server custom image to reset a Linux simple application server. Similarly, you cannot use a Linux custom image to reset a Windows Server simple application server. You can switch the operating systems of simple application servers only between Windows Server versions or between Linux distributions.
 //
-//     	- The following limits apply to the disks attached to the simple application server:
+//   - The following limits apply to the disks attached to the simple application server:
 //
-//         	- If the custom image contains a system disk and a data disk but only a system disk is attached to the simple application server, you cannot use the custom image to reset the simple application server.
+//   - If the custom image contains a system disk and a data disk but only a system disk is attached to the simple application server, you cannot use the custom image to reset the simple application server.
 //
-//         	- If the system disk size of the custom image is greater than the system disk size of the simple application server, you cannot directly use the custom image to reset the simple application server.
+//   - If the system disk size of the custom image is greater than the system disk size of the simple application server, you cannot directly use the custom image to reset the simple application server.
 //
-//         	- Only if the system disk size of the simple application server is greater than or equal to the system disk size of the custom image, you can use the custom image to reset the simple application server. To increase the system disk size of your server, you can upgrade the server configuration. For more information, see Upgrade a simple application server.
+//   - Only if the system disk size of the simple application server is greater than or equal to the system disk size of the custom image, you can use the custom image to reset the simple application server. To increase the system disk size of your server, you can upgrade the server configuration. For more information, see Upgrade a simple application server.
 //
-//         	- If the data disk size of the custom image is greater than the data disk size of the simple application server, you cannot use the custom image to reset the simple application server.
+//   - If the data disk size of the custom image is greater than the data disk size of the simple application server, you cannot use the custom image to reset the simple application server.
 //
 // @param request - ResetSystemRequest
 //
@@ -26879,9 +26930,9 @@ func (client *Client) RestartDatabaseInstance(request *RestartDatabaseInstanceRe
 //
 // Before you use Command Assistant, take note of the following items:
 //
-// 	- The simple application server must be in the Running state.
+//   - The simple application server must be in the Running state.
 //
-// 	- The Cloud Assistant client is installed on the server. By default, the Cloud Assistant client is installed on simple application servers. If you have manually uninstalled the client, you must reinstall it. For more information, see [Install the Cloud Assistant Agent](https://help.aliyun.com/document_detail/64921.html).
+//   - The Cloud Assistant client is installed on the server. By default, the Cloud Assistant client is installed on simple application servers. If you have manually uninstalled the client, you must reinstall it. For more information, see [Install the Cloud Assistant Agent](https://help.aliyun.com/document_detail/64921.html).
 //
 // @param tmpReq - RunCommandRequest
 //
@@ -26988,9 +27039,9 @@ func (client *Client) RunCommandWithOptions(tmpReq *RunCommandRequest, runtime *
 //
 // Before you use Command Assistant, take note of the following items:
 //
-// 	- The simple application server must be in the Running state.
+//   - The simple application server must be in the Running state.
 //
-// 	- The Cloud Assistant client is installed on the server. By default, the Cloud Assistant client is installed on simple application servers. If you have manually uninstalled the client, you must reinstall it. For more information, see [Install the Cloud Assistant Agent](https://help.aliyun.com/document_detail/64921.html).
+//   - The Cloud Assistant client is installed on the server. By default, the Cloud Assistant client is installed on simple application servers. If you have manually uninstalled the client, you must reinstall it. For more information, see [Install the Cloud Assistant Agent](https://help.aliyun.com/document_detail/64921.html).
 //
 // @param request - RunCommandRequest
 //
@@ -28135,9 +28186,9 @@ func (client *Client) UpdateSnapshotAttribute(request *UpdateSnapshotAttributeRe
 //
 // Description:
 //
-//   The plan of a simple application server can only be upgraded. For more information about plans, see [Billable items](https://help.aliyun.com/document_detail/58623.html).
+//	  The plan of a simple application server can only be upgraded. For more information about plans, see [Billable items](https://help.aliyun.com/document_detail/58623.html).
 //
-// 	- Before you call this operation, make sure that the balance in your account is sufficient. If the balance in your account is insufficient, the upgrade fails.
+//		- Before you call this operation, make sure that the balance in your account is sufficient. If the balance in your account is insufficient, the upgrade fails.
 //
 // @param request - UpgradeInstanceRequest
 //
@@ -28206,9 +28257,9 @@ func (client *Client) UpgradeInstanceWithOptions(request *UpgradeInstanceRequest
 //
 // Description:
 //
-//   The plan of a simple application server can only be upgraded. For more information about plans, see [Billable items](https://help.aliyun.com/document_detail/58623.html).
+//	  The plan of a simple application server can only be upgraded. For more information about plans, see [Billable items](https://help.aliyun.com/document_detail/58623.html).
 //
-// 	- Before you call this operation, make sure that the balance in your account is sufficient. If the balance in your account is insufficient, the upgrade fails.
+//		- Before you call this operation, make sure that the balance in your account is sufficient. If the balance in your account is insufficient, the upgrade fails.
 //
 // @param request - UpgradeInstanceRequest
 //
