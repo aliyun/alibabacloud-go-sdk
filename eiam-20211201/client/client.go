@@ -815,6 +815,418 @@ func (s *CreateApplicationClientSecretResponse) SetBody(v *CreateApplicationClie
 	return s
 }
 
+type CreateConditionalAccessPolicyRequest struct {
+	// Idempotent token.
+	//
+	// example:
+	//
+	// client-token-example
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Conditional access policy name
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// My Conditional Access Policy
+	ConditionalAccessPolicyName *string `json:"ConditionalAccessPolicyName,omitempty" xml:"ConditionalAccessPolicyName,omitempty"`
+	// Type of the conditional access policy, with the following options:
+	//
+	// arn:alibaba:idaas:authn:access:policy:system: System policy.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// arn:alibaba:idaas:authn:access:policy:system
+	ConditionalAccessPolicyType *string `json:"ConditionalAccessPolicyType,omitempty" xml:"ConditionalAccessPolicyType,omitempty"`
+	// Condition content configuration for the conditional access policy
+	ConditionsConfig *CreateConditionalAccessPolicyRequestConditionsConfig `json:"ConditionsConfig,omitempty" xml:"ConditionsConfig,omitempty" type:"Struct"`
+	// Action configuration for the conditional access policy
+	DecisionConfig *CreateConditionalAccessPolicyRequestDecisionConfig `json:"DecisionConfig,omitempty" xml:"DecisionConfig,omitempty" type:"Struct"`
+	// Execution type of the conditional access policy, with the following options:
+	//
+	// enforcement: Enforce the policy.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// enforcement
+	DecisionType *string `json:"DecisionType,omitempty" xml:"DecisionType,omitempty"`
+	// Description of the conditional access policy
+	//
+	// example:
+	//
+	// Test Description
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Execution point of the conditional access policy, with the following options:
+	//
+	// - arn:alibaba:idaas:authn:access:rule:eval_at:after_step1: Allow.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// arn:alibaba:idaas:authn:access:rule:eval_at:after_step1
+	EvaluateAt *string `json:"EvaluateAt,omitempty" xml:"EvaluateAt,omitempty"`
+	// Instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Priority of the conditional access policy, lower values indicate higher priority
+	//
+	// Minimum value: 1
+	//
+	// Maximum value: 100
+	//
+	// example:
+	//
+	// 1
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+}
+
+func (s CreateConditionalAccessPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateConditionalAccessPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateConditionalAccessPolicyRequest) SetClientToken(v string) *CreateConditionalAccessPolicyRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateConditionalAccessPolicyRequest) SetConditionalAccessPolicyName(v string) *CreateConditionalAccessPolicyRequest {
+	s.ConditionalAccessPolicyName = &v
+	return s
+}
+
+func (s *CreateConditionalAccessPolicyRequest) SetConditionalAccessPolicyType(v string) *CreateConditionalAccessPolicyRequest {
+	s.ConditionalAccessPolicyType = &v
+	return s
+}
+
+func (s *CreateConditionalAccessPolicyRequest) SetConditionsConfig(v *CreateConditionalAccessPolicyRequestConditionsConfig) *CreateConditionalAccessPolicyRequest {
+	s.ConditionsConfig = v
+	return s
+}
+
+func (s *CreateConditionalAccessPolicyRequest) SetDecisionConfig(v *CreateConditionalAccessPolicyRequestDecisionConfig) *CreateConditionalAccessPolicyRequest {
+	s.DecisionConfig = v
+	return s
+}
+
+func (s *CreateConditionalAccessPolicyRequest) SetDecisionType(v string) *CreateConditionalAccessPolicyRequest {
+	s.DecisionType = &v
+	return s
+}
+
+func (s *CreateConditionalAccessPolicyRequest) SetDescription(v string) *CreateConditionalAccessPolicyRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateConditionalAccessPolicyRequest) SetEvaluateAt(v string) *CreateConditionalAccessPolicyRequest {
+	s.EvaluateAt = &v
+	return s
+}
+
+func (s *CreateConditionalAccessPolicyRequest) SetInstanceId(v string) *CreateConditionalAccessPolicyRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateConditionalAccessPolicyRequest) SetPriority(v int32) *CreateConditionalAccessPolicyRequest {
+	s.Priority = &v
+	return s
+}
+
+type CreateConditionalAccessPolicyRequestConditionsConfig struct {
+	// Target applications for the conditional access policy
+	Applications *CreateConditionalAccessPolicyRequestConditionsConfigApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Struct"`
+	// Network zones for conditional access policy
+	NetworkZones *CreateConditionalAccessPolicyRequestConditionsConfigNetworkZones `json:"NetworkZones,omitempty" xml:"NetworkZones,omitempty" type:"Struct"`
+	// Target users of the conditional access policy
+	Users *CreateConditionalAccessPolicyRequestConditionsConfigUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Struct"`
+}
+
+func (s CreateConditionalAccessPolicyRequestConditionsConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateConditionalAccessPolicyRequestConditionsConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateConditionalAccessPolicyRequestConditionsConfig) SetApplications(v *CreateConditionalAccessPolicyRequestConditionsConfigApplications) *CreateConditionalAccessPolicyRequestConditionsConfig {
+	s.Applications = v
+	return s
+}
+
+func (s *CreateConditionalAccessPolicyRequestConditionsConfig) SetNetworkZones(v *CreateConditionalAccessPolicyRequestConditionsConfigNetworkZones) *CreateConditionalAccessPolicyRequestConditionsConfig {
+	s.NetworkZones = v
+	return s
+}
+
+func (s *CreateConditionalAccessPolicyRequestConditionsConfig) SetUsers(v *CreateConditionalAccessPolicyRequestConditionsConfigUsers) *CreateConditionalAccessPolicyRequestConditionsConfig {
+	s.Users = v
+	return s
+}
+
+type CreateConditionalAccessPolicyRequestConditionsConfigApplications struct {
+	// Excluded applications
+	ExcludeApplications []*string `json:"ExcludeApplications,omitempty" xml:"ExcludeApplications,omitempty" type:"Repeated"`
+	// Included applications
+	IncludeApplications []*string `json:"IncludeApplications,omitempty" xml:"IncludeApplications,omitempty" type:"Repeated"`
+}
+
+func (s CreateConditionalAccessPolicyRequestConditionsConfigApplications) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateConditionalAccessPolicyRequestConditionsConfigApplications) GoString() string {
+	return s.String()
+}
+
+func (s *CreateConditionalAccessPolicyRequestConditionsConfigApplications) SetExcludeApplications(v []*string) *CreateConditionalAccessPolicyRequestConditionsConfigApplications {
+	s.ExcludeApplications = v
+	return s
+}
+
+func (s *CreateConditionalAccessPolicyRequestConditionsConfigApplications) SetIncludeApplications(v []*string) *CreateConditionalAccessPolicyRequestConditionsConfigApplications {
+	s.IncludeApplications = v
+	return s
+}
+
+type CreateConditionalAccessPolicyRequestConditionsConfigNetworkZones struct {
+	// Excluded network zones
+	ExcludeNetworkZones []*string `json:"ExcludeNetworkZones,omitempty" xml:"ExcludeNetworkZones,omitempty" type:"Repeated"`
+	// Included network zones
+	IncludeNetworkZones []*string `json:"IncludeNetworkZones,omitempty" xml:"IncludeNetworkZones,omitempty" type:"Repeated"`
+}
+
+func (s CreateConditionalAccessPolicyRequestConditionsConfigNetworkZones) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateConditionalAccessPolicyRequestConditionsConfigNetworkZones) GoString() string {
+	return s.String()
+}
+
+func (s *CreateConditionalAccessPolicyRequestConditionsConfigNetworkZones) SetExcludeNetworkZones(v []*string) *CreateConditionalAccessPolicyRequestConditionsConfigNetworkZones {
+	s.ExcludeNetworkZones = v
+	return s
+}
+
+func (s *CreateConditionalAccessPolicyRequestConditionsConfigNetworkZones) SetIncludeNetworkZones(v []*string) *CreateConditionalAccessPolicyRequestConditionsConfigNetworkZones {
+	s.IncludeNetworkZones = v
+	return s
+}
+
+type CreateConditionalAccessPolicyRequestConditionsConfigUsers struct {
+	// Excluded user groups
+	ExcludeGroups []*string `json:"ExcludeGroups,omitempty" xml:"ExcludeGroups,omitempty" type:"Repeated"`
+	// Excluded organizations
+	ExcludeOrganizationalUnits []*string `json:"ExcludeOrganizationalUnits,omitempty" xml:"ExcludeOrganizationalUnits,omitempty" type:"Repeated"`
+	// Excluded users
+	ExcludeUsers []*string `json:"ExcludeUsers,omitempty" xml:"ExcludeUsers,omitempty" type:"Repeated"`
+	// Included user groups
+	IncludeGroups []*string `json:"IncludeGroups,omitempty" xml:"IncludeGroups,omitempty" type:"Repeated"`
+	// Included organizations
+	IncludeOrganizationalUnits []*string `json:"IncludeOrganizationalUnits,omitempty" xml:"IncludeOrganizationalUnits,omitempty" type:"Repeated"`
+	// Selected user
+	IncludeUsers []*string `json:"IncludeUsers,omitempty" xml:"IncludeUsers,omitempty" type:"Repeated"`
+}
+
+func (s CreateConditionalAccessPolicyRequestConditionsConfigUsers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateConditionalAccessPolicyRequestConditionsConfigUsers) GoString() string {
+	return s.String()
+}
+
+func (s *CreateConditionalAccessPolicyRequestConditionsConfigUsers) SetExcludeGroups(v []*string) *CreateConditionalAccessPolicyRequestConditionsConfigUsers {
+	s.ExcludeGroups = v
+	return s
+}
+
+func (s *CreateConditionalAccessPolicyRequestConditionsConfigUsers) SetExcludeOrganizationalUnits(v []*string) *CreateConditionalAccessPolicyRequestConditionsConfigUsers {
+	s.ExcludeOrganizationalUnits = v
+	return s
+}
+
+func (s *CreateConditionalAccessPolicyRequestConditionsConfigUsers) SetExcludeUsers(v []*string) *CreateConditionalAccessPolicyRequestConditionsConfigUsers {
+	s.ExcludeUsers = v
+	return s
+}
+
+func (s *CreateConditionalAccessPolicyRequestConditionsConfigUsers) SetIncludeGroups(v []*string) *CreateConditionalAccessPolicyRequestConditionsConfigUsers {
+	s.IncludeGroups = v
+	return s
+}
+
+func (s *CreateConditionalAccessPolicyRequestConditionsConfigUsers) SetIncludeOrganizationalUnits(v []*string) *CreateConditionalAccessPolicyRequestConditionsConfigUsers {
+	s.IncludeOrganizationalUnits = v
+	return s
+}
+
+func (s *CreateConditionalAccessPolicyRequestConditionsConfigUsers) SetIncludeUsers(v []*string) *CreateConditionalAccessPolicyRequestConditionsConfigUsers {
+	s.IncludeUsers = v
+	return s
+}
+
+type CreateConditionalAccessPolicyRequestDecisionConfig struct {
+	// Whether to enable session reuse
+	//
+	// example:
+	//
+	// enabled
+	ActiveSessionReuseStatus *string `json:"ActiveSessionReuseStatus,omitempty" xml:"ActiveSessionReuseStatus,omitempty"`
+	// Decision action for the conditional access policy, with the following options:
+	//
+	// - allow: Allow.
+	//
+	// - deny: Deny.
+	//
+	// example:
+	//
+	// allow or deny
+	Effect *string `json:"Effect,omitempty" xml:"Effect,omitempty"`
+	// Re-authentication interval (in seconds) for the conditional access policy
+	//
+	// - Maximum MFA re-authentication interval: 86400
+	//
+	// - Minimum MFA re-authentication interval: 300
+	//
+	// example:
+	//
+	// 500
+	MfaAuthenticationIntervalSeconds *int64 `json:"MfaAuthenticationIntervalSeconds,omitempty" xml:"MfaAuthenticationIntervalSeconds,omitempty"`
+	// Allowed MFA types for the conditional access policy, with the following options:
+	//
+	// - ia_otp_sms: SMS verification code
+	//
+	// - ia_otp_email: Email verification code
+	//
+	// - ia_totp: OTP dynamic password
+	//
+	// - ia_webauthn: WebAuthn
+	MfaAuthenticationMethods []*string `json:"MfaAuthenticationMethods,omitempty" xml:"MfaAuthenticationMethods,omitempty" type:"Repeated"`
+	// MFA type for the conditional access policy, with the following options:
+	//
+	// - directly_access: Direct access
+	//
+	// - mfa_required: MFA required
+	//
+	// example:
+	//
+	// directly_access
+	MfaType *string `json:"MfaType,omitempty" xml:"MfaType,omitempty"`
+}
+
+func (s CreateConditionalAccessPolicyRequestDecisionConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateConditionalAccessPolicyRequestDecisionConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateConditionalAccessPolicyRequestDecisionConfig) SetActiveSessionReuseStatus(v string) *CreateConditionalAccessPolicyRequestDecisionConfig {
+	s.ActiveSessionReuseStatus = &v
+	return s
+}
+
+func (s *CreateConditionalAccessPolicyRequestDecisionConfig) SetEffect(v string) *CreateConditionalAccessPolicyRequestDecisionConfig {
+	s.Effect = &v
+	return s
+}
+
+func (s *CreateConditionalAccessPolicyRequestDecisionConfig) SetMfaAuthenticationIntervalSeconds(v int64) *CreateConditionalAccessPolicyRequestDecisionConfig {
+	s.MfaAuthenticationIntervalSeconds = &v
+	return s
+}
+
+func (s *CreateConditionalAccessPolicyRequestDecisionConfig) SetMfaAuthenticationMethods(v []*string) *CreateConditionalAccessPolicyRequestDecisionConfig {
+	s.MfaAuthenticationMethods = v
+	return s
+}
+
+func (s *CreateConditionalAccessPolicyRequestDecisionConfig) SetMfaType(v string) *CreateConditionalAccessPolicyRequestDecisionConfig {
+	s.MfaType = &v
+	return s
+}
+
+type CreateConditionalAccessPolicyResponseBody struct {
+	// Conditional Access Policy ID
+	//
+	// example:
+	//
+	// cp_xxxxx
+	ConditionalAccessPolicyId *string `json:"ConditionalAccessPolicyId,omitempty" xml:"ConditionalAccessPolicyId,omitempty"`
+	// Request ID.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateConditionalAccessPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateConditionalAccessPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateConditionalAccessPolicyResponseBody) SetConditionalAccessPolicyId(v string) *CreateConditionalAccessPolicyResponseBody {
+	s.ConditionalAccessPolicyId = &v
+	return s
+}
+
+func (s *CreateConditionalAccessPolicyResponseBody) SetRequestId(v string) *CreateConditionalAccessPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateConditionalAccessPolicyResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateConditionalAccessPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateConditionalAccessPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateConditionalAccessPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateConditionalAccessPolicyResponse) SetHeaders(v map[string]*string) *CreateConditionalAccessPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateConditionalAccessPolicyResponse) SetStatusCode(v int32) *CreateConditionalAccessPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateConditionalAccessPolicyResponse) SetBody(v *CreateConditionalAccessPolicyResponseBody) *CreateConditionalAccessPolicyResponse {
+	s.Body = v
+	return s
+}
+
 type CreateDomainRequest struct {
 	// 域名。最大长度限制255，格式由数字、字母、横线（-）点（.）组成;
 	//
@@ -3092,6 +3504,94 @@ func (s *DeleteApplicationClientSecretResponse) SetBody(v *DeleteApplicationClie
 	return s
 }
 
+type DeleteConditionalAccessPolicyRequest struct {
+	// Conditional Access Policy ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cap_11111
+	ConditionalAccessPolicyId *string `json:"ConditionalAccessPolicyId,omitempty" xml:"ConditionalAccessPolicyId,omitempty"`
+	// Instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s DeleteConditionalAccessPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteConditionalAccessPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteConditionalAccessPolicyRequest) SetConditionalAccessPolicyId(v string) *DeleteConditionalAccessPolicyRequest {
+	s.ConditionalAccessPolicyId = &v
+	return s
+}
+
+func (s *DeleteConditionalAccessPolicyRequest) SetInstanceId(v string) *DeleteConditionalAccessPolicyRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type DeleteConditionalAccessPolicyResponseBody struct {
+	// Request ID.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteConditionalAccessPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteConditionalAccessPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteConditionalAccessPolicyResponseBody) SetRequestId(v string) *DeleteConditionalAccessPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteConditionalAccessPolicyResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteConditionalAccessPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteConditionalAccessPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteConditionalAccessPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteConditionalAccessPolicyResponse) SetHeaders(v map[string]*string) *DeleteConditionalAccessPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteConditionalAccessPolicyResponse) SetStatusCode(v int32) *DeleteConditionalAccessPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteConditionalAccessPolicyResponse) SetBody(v *DeleteConditionalAccessPolicyResponseBody) *DeleteConditionalAccessPolicyResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteDomainRequest struct {
 	// 域名ID。
 	//
@@ -4327,6 +4827,94 @@ func (s *DisableApplicationSsoResponse) SetBody(v *DisableApplicationSsoResponse
 	return s
 }
 
+type DisableConditionalAccessPolicyRequest struct {
+	// Conditional Access Policy ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cap_11111
+	ConditionalAccessPolicyId *string `json:"ConditionalAccessPolicyId,omitempty" xml:"ConditionalAccessPolicyId,omitempty"`
+	// Instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s DisableConditionalAccessPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableConditionalAccessPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DisableConditionalAccessPolicyRequest) SetConditionalAccessPolicyId(v string) *DisableConditionalAccessPolicyRequest {
+	s.ConditionalAccessPolicyId = &v
+	return s
+}
+
+func (s *DisableConditionalAccessPolicyRequest) SetInstanceId(v string) *DisableConditionalAccessPolicyRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type DisableConditionalAccessPolicyResponseBody struct {
+	// 请求ID。
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DisableConditionalAccessPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableConditionalAccessPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DisableConditionalAccessPolicyResponseBody) SetRequestId(v string) *DisableConditionalAccessPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DisableConditionalAccessPolicyResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DisableConditionalAccessPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DisableConditionalAccessPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableConditionalAccessPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DisableConditionalAccessPolicyResponse) SetHeaders(v map[string]*string) *DisableConditionalAccessPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DisableConditionalAccessPolicyResponse) SetStatusCode(v int32) *DisableConditionalAccessPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DisableConditionalAccessPolicyResponse) SetBody(v *DisableConditionalAccessPolicyResponseBody) *DisableConditionalAccessPolicyResponse {
+	s.Body = v
+	return s
+}
+
 type DisableDomainProxyTokenRequest struct {
 	// 域名ID。
 	//
@@ -5120,6 +5708,94 @@ func (s *EnableApplicationSsoResponse) SetStatusCode(v int32) *EnableApplication
 }
 
 func (s *EnableApplicationSsoResponse) SetBody(v *EnableApplicationSsoResponseBody) *EnableApplicationSsoResponse {
+	s.Body = v
+	return s
+}
+
+type EnableConditionalAccessPolicyRequest struct {
+	// Conditional Access Policy ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cap_11111
+	ConditionalAccessPolicyId *string `json:"ConditionalAccessPolicyId,omitempty" xml:"ConditionalAccessPolicyId,omitempty"`
+	// Instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s EnableConditionalAccessPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableConditionalAccessPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EnableConditionalAccessPolicyRequest) SetConditionalAccessPolicyId(v string) *EnableConditionalAccessPolicyRequest {
+	s.ConditionalAccessPolicyId = &v
+	return s
+}
+
+func (s *EnableConditionalAccessPolicyRequest) SetInstanceId(v string) *EnableConditionalAccessPolicyRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type EnableConditionalAccessPolicyResponseBody struct {
+	// 请求ID。
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s EnableConditionalAccessPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableConditionalAccessPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *EnableConditionalAccessPolicyResponseBody) SetRequestId(v string) *EnableConditionalAccessPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type EnableConditionalAccessPolicyResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EnableConditionalAccessPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s EnableConditionalAccessPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableConditionalAccessPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EnableConditionalAccessPolicyResponse) SetHeaders(v map[string]*string) *EnableConditionalAccessPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EnableConditionalAccessPolicyResponse) SetStatusCode(v int32) *EnableConditionalAccessPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *EnableConditionalAccessPolicyResponse) SetBody(v *EnableConditionalAccessPolicyResponseBody) *EnableConditionalAccessPolicyResponse {
 	s.Body = v
 	return s
 }
@@ -7195,6 +7871,444 @@ func (s *GetApplicationSsoConfigResponse) SetStatusCode(v int32) *GetApplication
 }
 
 func (s *GetApplicationSsoConfigResponse) SetBody(v *GetApplicationSsoConfigResponseBody) *GetApplicationSsoConfigResponse {
+	s.Body = v
+	return s
+}
+
+type GetConditionalAccessPolicyRequest struct {
+	// Conditional Access Policy ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cap_11111
+	ConditionalAccessPolicyId *string `json:"ConditionalAccessPolicyId,omitempty" xml:"ConditionalAccessPolicyId,omitempty"`
+	// Instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s GetConditionalAccessPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetConditionalAccessPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetConditionalAccessPolicyRequest) SetConditionalAccessPolicyId(v string) *GetConditionalAccessPolicyRequest {
+	s.ConditionalAccessPolicyId = &v
+	return s
+}
+
+func (s *GetConditionalAccessPolicyRequest) SetInstanceId(v string) *GetConditionalAccessPolicyRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type GetConditionalAccessPolicyResponseBody struct {
+	// Details of the conditional access policy
+	ConditionalAccessPolicy *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicy `json:"ConditionalAccessPolicy,omitempty" xml:"ConditionalAccessPolicy,omitempty" type:"Struct"`
+	// Request ID.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetConditionalAccessPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetConditionalAccessPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetConditionalAccessPolicyResponseBody) SetConditionalAccessPolicy(v *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicy) *GetConditionalAccessPolicyResponseBody {
+	s.ConditionalAccessPolicy = v
+	return s
+}
+
+func (s *GetConditionalAccessPolicyResponseBody) SetRequestId(v string) *GetConditionalAccessPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetConditionalAccessPolicyResponseBodyConditionalAccessPolicy struct {
+	// Conditional Access Policy ID
+	//
+	// example:
+	//
+	// cp_xxxxx
+	ConditionalAccessPolicyId *string `json:"ConditionalAccessPolicyId,omitempty" xml:"ConditionalAccessPolicyId,omitempty"`
+	// Conditional Access Policy Name
+	//
+	// example:
+	//
+	// My Policy
+	ConditionalAccessPolicyName *string `json:"ConditionalAccessPolicyName,omitempty" xml:"ConditionalAccessPolicyName,omitempty"`
+	// Type of the conditional access policy
+	//
+	// example:
+	//
+	// arn:alibaba:idaas:authn:access:policy:system
+	ConditionalAccessPolicyType *string `json:"ConditionalAccessPolicyType,omitempty" xml:"ConditionalAccessPolicyType,omitempty"`
+	// Conditional access policy content
+	ConditionsConfig *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfig `json:"ConditionsConfig,omitempty" xml:"ConditionsConfig,omitempty" type:"Struct"`
+	// Creation time
+	//
+	// example:
+	//
+	// 1741857554000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Action of the conditional access policy
+	DecisionConfig *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyDecisionConfig `json:"DecisionConfig,omitempty" xml:"DecisionConfig,omitempty" type:"Struct"`
+	// Execution type of the conditional access policy
+	//
+	// example:
+	//
+	// enforcement
+	DecisionType *string `json:"DecisionType,omitempty" xml:"DecisionType,omitempty"`
+	// Description of the conditional access policy
+	//
+	// example:
+	//
+	// ga access port for ecs: internal-cn-hangzhou-docker-builder-2(i-bp19g1pheaailkk1xvr6)
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Execution point of the conditional access policy
+	//
+	// example:
+	//
+	// arn:alibaba:idaas:authn:access:rule:eval_at:after_step1
+	EvaluateAt *string `json:"EvaluateAt,omitempty" xml:"EvaluateAt,omitempty"`
+	// Instance ID
+	//
+	// example:
+	//
+	// idaas_qnx6fbrinlecptl5hld23lfkvy
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Last updated time
+	//
+	// example:
+	//
+	// 1741857554000
+	LastUpdatedTime *int64 `json:"LastUpdatedTime,omitempty" xml:"LastUpdatedTime,omitempty"`
+	// Priority
+	//
+	// example:
+	//
+	// 5
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// Enable or disable status of the conditional access policy
+	//
+	// example:
+	//
+	// enabled
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetConditionalAccessPolicyResponseBodyConditionalAccessPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetConditionalAccessPolicyResponseBodyConditionalAccessPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicy) SetConditionalAccessPolicyId(v string) *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicy {
+	s.ConditionalAccessPolicyId = &v
+	return s
+}
+
+func (s *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicy) SetConditionalAccessPolicyName(v string) *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicy {
+	s.ConditionalAccessPolicyName = &v
+	return s
+}
+
+func (s *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicy) SetConditionalAccessPolicyType(v string) *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicy {
+	s.ConditionalAccessPolicyType = &v
+	return s
+}
+
+func (s *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicy) SetConditionsConfig(v *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfig) *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicy {
+	s.ConditionsConfig = v
+	return s
+}
+
+func (s *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicy) SetCreateTime(v int64) *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicy {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicy) SetDecisionConfig(v *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyDecisionConfig) *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicy {
+	s.DecisionConfig = v
+	return s
+}
+
+func (s *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicy) SetDecisionType(v string) *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicy {
+	s.DecisionType = &v
+	return s
+}
+
+func (s *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicy) SetDescription(v string) *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicy {
+	s.Description = &v
+	return s
+}
+
+func (s *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicy) SetEvaluateAt(v string) *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicy {
+	s.EvaluateAt = &v
+	return s
+}
+
+func (s *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicy) SetInstanceId(v string) *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicy {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicy) SetLastUpdatedTime(v int64) *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicy {
+	s.LastUpdatedTime = &v
+	return s
+}
+
+func (s *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicy) SetPriority(v int32) *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicy {
+	s.Priority = &v
+	return s
+}
+
+func (s *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicy) SetStatus(v string) *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicy {
+	s.Status = &v
+	return s
+}
+
+type GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfig struct {
+	// Target applications of the conditional access policy
+	Applications *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfigApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Struct"`
+	// Network zones for the conditional access policy
+	NetworkZones *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfigNetworkZones `json:"NetworkZones,omitempty" xml:"NetworkZones,omitempty" type:"Struct"`
+	// Target users of the conditional access policy
+	Users *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfigUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Struct"`
+}
+
+func (s GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfig) SetApplications(v *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfigApplications) *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfig {
+	s.Applications = v
+	return s
+}
+
+func (s *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfig) SetNetworkZones(v *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfigNetworkZones) *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfig {
+	s.NetworkZones = v
+	return s
+}
+
+func (s *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfig) SetUsers(v *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfigUsers) *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfig {
+	s.Users = v
+	return s
+}
+
+type GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfigApplications struct {
+	// Excluded applications
+	ExcludeApplications []*string `json:"ExcludeApplications,omitempty" xml:"ExcludeApplications,omitempty" type:"Repeated"`
+	// Selected applications
+	IncludeApplications []*string `json:"IncludeApplications,omitempty" xml:"IncludeApplications,omitempty" type:"Repeated"`
+}
+
+func (s GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfigApplications) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfigApplications) GoString() string {
+	return s.String()
+}
+
+func (s *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfigApplications) SetExcludeApplications(v []*string) *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfigApplications {
+	s.ExcludeApplications = v
+	return s
+}
+
+func (s *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfigApplications) SetIncludeApplications(v []*string) *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfigApplications {
+	s.IncludeApplications = v
+	return s
+}
+
+type GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfigNetworkZones struct {
+	// Excluded network zones
+	ExcludeNetworkZones []*string `json:"ExcludeNetworkZones,omitempty" xml:"ExcludeNetworkZones,omitempty" type:"Repeated"`
+	// Included network zones
+	IncludeNetworkZones []*string `json:"IncludeNetworkZones,omitempty" xml:"IncludeNetworkZones,omitempty" type:"Repeated"`
+}
+
+func (s GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfigNetworkZones) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfigNetworkZones) GoString() string {
+	return s.String()
+}
+
+func (s *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfigNetworkZones) SetExcludeNetworkZones(v []*string) *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfigNetworkZones {
+	s.ExcludeNetworkZones = v
+	return s
+}
+
+func (s *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfigNetworkZones) SetIncludeNetworkZones(v []*string) *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfigNetworkZones {
+	s.IncludeNetworkZones = v
+	return s
+}
+
+type GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfigUsers struct {
+	// Excluded user groups
+	ExcludeGroups []*string `json:"ExcludeGroups,omitempty" xml:"ExcludeGroups,omitempty" type:"Repeated"`
+	// Excluded organizations
+	ExcludeOrganizationalUnits []*string `json:"ExcludeOrganizationalUnits,omitempty" xml:"ExcludeOrganizationalUnits,omitempty" type:"Repeated"`
+	// Excluded users
+	ExcludeUsers []*string `json:"ExcludeUsers,omitempty" xml:"ExcludeUsers,omitempty" type:"Repeated"`
+	// Selected user groups
+	IncludeGroups []*string `json:"IncludeGroups,omitempty" xml:"IncludeGroups,omitempty" type:"Repeated"`
+	// Included organizations
+	IncludeOrganizationalUnits []*string `json:"IncludeOrganizationalUnits,omitempty" xml:"IncludeOrganizationalUnits,omitempty" type:"Repeated"`
+	// Selected users
+	IncludeUsers []*string `json:"IncludeUsers,omitempty" xml:"IncludeUsers,omitempty" type:"Repeated"`
+}
+
+func (s GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfigUsers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfigUsers) GoString() string {
+	return s.String()
+}
+
+func (s *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfigUsers) SetExcludeGroups(v []*string) *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfigUsers {
+	s.ExcludeGroups = v
+	return s
+}
+
+func (s *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfigUsers) SetExcludeOrganizationalUnits(v []*string) *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfigUsers {
+	s.ExcludeOrganizationalUnits = v
+	return s
+}
+
+func (s *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfigUsers) SetExcludeUsers(v []*string) *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfigUsers {
+	s.ExcludeUsers = v
+	return s
+}
+
+func (s *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfigUsers) SetIncludeGroups(v []*string) *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfigUsers {
+	s.IncludeGroups = v
+	return s
+}
+
+func (s *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfigUsers) SetIncludeOrganizationalUnits(v []*string) *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfigUsers {
+	s.IncludeOrganizationalUnits = v
+	return s
+}
+
+func (s *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfigUsers) SetIncludeUsers(v []*string) *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfigUsers {
+	s.IncludeUsers = v
+	return s
+}
+
+type GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyDecisionConfig struct {
+	// Whether to enable session reuse
+	//
+	// example:
+	//
+	// enabled
+	ActiveSessionReuseStatus *string `json:"ActiveSessionReuseStatus,omitempty" xml:"ActiveSessionReuseStatus,omitempty"`
+	// Decision action of the conditional access policy
+	//
+	// example:
+	//
+	// allow
+	Effect *string `json:"Effect,omitempty" xml:"Effect,omitempty"`
+	// Re-authentication interval (in seconds) for the conditional access policy
+	//
+	// example:
+	//
+	// 300
+	MfaAuthenticationIntervalSeconds *int64 `json:"MfaAuthenticationIntervalSeconds,omitempty" xml:"MfaAuthenticationIntervalSeconds,omitempty"`
+	// Allowed MFA types for the conditional access policy
+	MfaAuthenticationMethods []*string `json:"MfaAuthenticationMethods,omitempty" xml:"MfaAuthenticationMethods,omitempty" type:"Repeated"`
+	// MFA authentication type of the conditional access policy
+	//
+	// example:
+	//
+	// directly_access
+	MfaType *string `json:"MfaType,omitempty" xml:"MfaType,omitempty"`
+}
+
+func (s GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyDecisionConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyDecisionConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyDecisionConfig) SetActiveSessionReuseStatus(v string) *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyDecisionConfig {
+	s.ActiveSessionReuseStatus = &v
+	return s
+}
+
+func (s *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyDecisionConfig) SetEffect(v string) *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyDecisionConfig {
+	s.Effect = &v
+	return s
+}
+
+func (s *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyDecisionConfig) SetMfaAuthenticationIntervalSeconds(v int64) *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyDecisionConfig {
+	s.MfaAuthenticationIntervalSeconds = &v
+	return s
+}
+
+func (s *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyDecisionConfig) SetMfaAuthenticationMethods(v []*string) *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyDecisionConfig {
+	s.MfaAuthenticationMethods = v
+	return s
+}
+
+func (s *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyDecisionConfig) SetMfaType(v string) *GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyDecisionConfig {
+	s.MfaType = &v
+	return s
+}
+
+type GetConditionalAccessPolicyResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetConditionalAccessPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetConditionalAccessPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetConditionalAccessPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetConditionalAccessPolicyResponse) SetHeaders(v map[string]*string) *GetConditionalAccessPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetConditionalAccessPolicyResponse) SetStatusCode(v int32) *GetConditionalAccessPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetConditionalAccessPolicyResponse) SetBody(v *GetConditionalAccessPolicyResponseBody) *GetConditionalAccessPolicyResponse {
 	s.Body = v
 	return s
 }
@@ -14260,6 +15374,939 @@ func (s *ListApplicationsForUserResponse) SetStatusCode(v int32) *ListApplicatio
 }
 
 func (s *ListApplicationsForUserResponse) SetBody(v *ListApplicationsForUserResponseBody) *ListApplicationsForUserResponse {
+	s.Body = v
+	return s
+}
+
+type ListConditionalAccessPoliciesRequest struct {
+	// Instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Number of items per page in a paginated query.
+	//
+	// example:
+	//
+	// 20
+	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Token for the next page query.
+	//
+	// example:
+	//
+	// NTxxxxxexample
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Token for the previous page query.
+	//
+	// example:
+	//
+	// PTxxxxxexample
+	PreviousToken *string `json:"PreviousToken,omitempty" xml:"PreviousToken,omitempty"`
+}
+
+func (s ListConditionalAccessPoliciesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConditionalAccessPoliciesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListConditionalAccessPoliciesRequest) SetInstanceId(v string) *ListConditionalAccessPoliciesRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListConditionalAccessPoliciesRequest) SetMaxResults(v int64) *ListConditionalAccessPoliciesRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListConditionalAccessPoliciesRequest) SetNextToken(v string) *ListConditionalAccessPoliciesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListConditionalAccessPoliciesRequest) SetPreviousToken(v string) *ListConditionalAccessPoliciesRequest {
+	s.PreviousToken = &v
+	return s
+}
+
+type ListConditionalAccessPoliciesResponseBody struct {
+	// Collection of conditional access policies
+	ConditionalAccessPolicies []*ListConditionalAccessPoliciesResponseBodyConditionalAccessPolicies `json:"ConditionalAccessPolicies,omitempty" xml:"ConditionalAccessPolicies,omitempty" type:"Repeated"`
+	// The token value returned by this call for the next page query.
+	//
+	// example:
+	//
+	// NTxxxexample
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Previous page query token (Token)
+	//
+	// example:
+	//
+	// PTxxxxxexample
+	PreviousToken *string `json:"PreviousToken,omitempty" xml:"PreviousToken,omitempty"`
+	// Request ID.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total number of items in the list.
+	//
+	// example:
+	//
+	// 100
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListConditionalAccessPoliciesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConditionalAccessPoliciesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListConditionalAccessPoliciesResponseBody) SetConditionalAccessPolicies(v []*ListConditionalAccessPoliciesResponseBodyConditionalAccessPolicies) *ListConditionalAccessPoliciesResponseBody {
+	s.ConditionalAccessPolicies = v
+	return s
+}
+
+func (s *ListConditionalAccessPoliciesResponseBody) SetNextToken(v string) *ListConditionalAccessPoliciesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListConditionalAccessPoliciesResponseBody) SetPreviousToken(v string) *ListConditionalAccessPoliciesResponseBody {
+	s.PreviousToken = &v
+	return s
+}
+
+func (s *ListConditionalAccessPoliciesResponseBody) SetRequestId(v string) *ListConditionalAccessPoliciesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListConditionalAccessPoliciesResponseBody) SetTotalCount(v int64) *ListConditionalAccessPoliciesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListConditionalAccessPoliciesResponseBodyConditionalAccessPolicies struct {
+	// Conditional access policy ID
+	//
+	// example:
+	//
+	// cp_xxxxx
+	ConditionalAccessPolicyId *string `json:"ConditionalAccessPolicyId,omitempty" xml:"ConditionalAccessPolicyId,omitempty"`
+	// Conditional access policy name
+	//
+	// example:
+	//
+	// My Policy
+	ConditionalAccessPolicyName *string `json:"ConditionalAccessPolicyName,omitempty" xml:"ConditionalAccessPolicyName,omitempty"`
+	// Type of the conditional access policy
+	//
+	// example:
+	//
+	// arn:alibaba:idaas:authn:access:policy:system
+	ConditionalAccessPolicyType *string `json:"ConditionalAccessPolicyType,omitempty" xml:"ConditionalAccessPolicyType,omitempty"`
+	// Content of the conditional access policy
+	ConditionsConfig *ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfig `json:"ConditionsConfig,omitempty" xml:"ConditionsConfig,omitempty" type:"Struct"`
+	// Creation time
+	//
+	// example:
+	//
+	// 1741857554000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Action of the conditional access policy
+	DecisionConfig *ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesDecisionConfig `json:"DecisionConfig,omitempty" xml:"DecisionConfig,omitempty" type:"Struct"`
+	// Execution type of the conditional access policy
+	//
+	// example:
+	//
+	// enforcement
+	DecisionType *string `json:"DecisionType,omitempty" xml:"DecisionType,omitempty"`
+	// Description of the conditional access policy
+	//
+	// example:
+	//
+	// My Policy Description
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Execution point of the conditional access policy
+	//
+	// example:
+	//
+	// arn:alibaba:idaas:authn:access:rule:eval_at:after_step1
+	EvaluateAt *string `json:"EvaluateAt,omitempty" xml:"EvaluateAt,omitempty"`
+	// Instance ID
+	//
+	// example:
+	//
+	// idaas_ksvv5c7f2l6uzh6oqspeks23ni
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Last updated time
+	//
+	// example:
+	//
+	// 1741857554000
+	LastUpdatedTime *int64 `json:"LastUpdatedTime,omitempty" xml:"LastUpdatedTime,omitempty"`
+	// Priority, 1-100
+	//
+	// example:
+	//
+	// 1
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// Enable or disable status of the conditional access policy
+	//
+	// example:
+	//
+	// disabled
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListConditionalAccessPoliciesResponseBodyConditionalAccessPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConditionalAccessPoliciesResponseBodyConditionalAccessPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *ListConditionalAccessPoliciesResponseBodyConditionalAccessPolicies) SetConditionalAccessPolicyId(v string) *ListConditionalAccessPoliciesResponseBodyConditionalAccessPolicies {
+	s.ConditionalAccessPolicyId = &v
+	return s
+}
+
+func (s *ListConditionalAccessPoliciesResponseBodyConditionalAccessPolicies) SetConditionalAccessPolicyName(v string) *ListConditionalAccessPoliciesResponseBodyConditionalAccessPolicies {
+	s.ConditionalAccessPolicyName = &v
+	return s
+}
+
+func (s *ListConditionalAccessPoliciesResponseBodyConditionalAccessPolicies) SetConditionalAccessPolicyType(v string) *ListConditionalAccessPoliciesResponseBodyConditionalAccessPolicies {
+	s.ConditionalAccessPolicyType = &v
+	return s
+}
+
+func (s *ListConditionalAccessPoliciesResponseBodyConditionalAccessPolicies) SetConditionsConfig(v *ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfig) *ListConditionalAccessPoliciesResponseBodyConditionalAccessPolicies {
+	s.ConditionsConfig = v
+	return s
+}
+
+func (s *ListConditionalAccessPoliciesResponseBodyConditionalAccessPolicies) SetCreateTime(v int64) *ListConditionalAccessPoliciesResponseBodyConditionalAccessPolicies {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListConditionalAccessPoliciesResponseBodyConditionalAccessPolicies) SetDecisionConfig(v *ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesDecisionConfig) *ListConditionalAccessPoliciesResponseBodyConditionalAccessPolicies {
+	s.DecisionConfig = v
+	return s
+}
+
+func (s *ListConditionalAccessPoliciesResponseBodyConditionalAccessPolicies) SetDecisionType(v string) *ListConditionalAccessPoliciesResponseBodyConditionalAccessPolicies {
+	s.DecisionType = &v
+	return s
+}
+
+func (s *ListConditionalAccessPoliciesResponseBodyConditionalAccessPolicies) SetDescription(v string) *ListConditionalAccessPoliciesResponseBodyConditionalAccessPolicies {
+	s.Description = &v
+	return s
+}
+
+func (s *ListConditionalAccessPoliciesResponseBodyConditionalAccessPolicies) SetEvaluateAt(v string) *ListConditionalAccessPoliciesResponseBodyConditionalAccessPolicies {
+	s.EvaluateAt = &v
+	return s
+}
+
+func (s *ListConditionalAccessPoliciesResponseBodyConditionalAccessPolicies) SetInstanceId(v string) *ListConditionalAccessPoliciesResponseBodyConditionalAccessPolicies {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListConditionalAccessPoliciesResponseBodyConditionalAccessPolicies) SetLastUpdatedTime(v int64) *ListConditionalAccessPoliciesResponseBodyConditionalAccessPolicies {
+	s.LastUpdatedTime = &v
+	return s
+}
+
+func (s *ListConditionalAccessPoliciesResponseBodyConditionalAccessPolicies) SetPriority(v int32) *ListConditionalAccessPoliciesResponseBodyConditionalAccessPolicies {
+	s.Priority = &v
+	return s
+}
+
+func (s *ListConditionalAccessPoliciesResponseBodyConditionalAccessPolicies) SetStatus(v string) *ListConditionalAccessPoliciesResponseBodyConditionalAccessPolicies {
+	s.Status = &v
+	return s
+}
+
+type ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfig struct {
+	// Target applications of the conditional access policy
+	Applications *ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfigApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Struct"`
+	// Network zones for conditional access policies
+	NetworkZones *ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfigNetworkZones `json:"NetworkZones,omitempty" xml:"NetworkZones,omitempty" type:"Struct"`
+	// Target users of the conditional access policy
+	Users *ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfigUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Struct"`
+}
+
+func (s ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfig) SetApplications(v *ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfigApplications) *ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfig {
+	s.Applications = v
+	return s
+}
+
+func (s *ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfig) SetNetworkZones(v *ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfigNetworkZones) *ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfig {
+	s.NetworkZones = v
+	return s
+}
+
+func (s *ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfig) SetUsers(v *ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfigUsers) *ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfig {
+	s.Users = v
+	return s
+}
+
+type ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfigApplications struct {
+	// Excluded applications
+	ExcludeApplications []*string `json:"ExcludeApplications,omitempty" xml:"ExcludeApplications,omitempty" type:"Repeated"`
+	// Selected applications
+	IncludeApplications []*string `json:"IncludeApplications,omitempty" xml:"IncludeApplications,omitempty" type:"Repeated"`
+}
+
+func (s ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfigApplications) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfigApplications) GoString() string {
+	return s.String()
+}
+
+func (s *ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfigApplications) SetExcludeApplications(v []*string) *ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfigApplications {
+	s.ExcludeApplications = v
+	return s
+}
+
+func (s *ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfigApplications) SetIncludeApplications(v []*string) *ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfigApplications {
+	s.IncludeApplications = v
+	return s
+}
+
+type ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfigNetworkZones struct {
+	// Excluded network zones
+	ExcludeNetworkZones []*string `json:"ExcludeNetworkZones,omitempty" xml:"ExcludeNetworkZones,omitempty" type:"Repeated"`
+	// Included network ranges
+	IncludeNetworkZones []*string `json:"IncludeNetworkZones,omitempty" xml:"IncludeNetworkZones,omitempty" type:"Repeated"`
+}
+
+func (s ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfigNetworkZones) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfigNetworkZones) GoString() string {
+	return s.String()
+}
+
+func (s *ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfigNetworkZones) SetExcludeNetworkZones(v []*string) *ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfigNetworkZones {
+	s.ExcludeNetworkZones = v
+	return s
+}
+
+func (s *ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfigNetworkZones) SetIncludeNetworkZones(v []*string) *ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfigNetworkZones {
+	s.IncludeNetworkZones = v
+	return s
+}
+
+type ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfigUsers struct {
+	// Excluded user groups
+	ExcludeGroups []*string `json:"ExcludeGroups,omitempty" xml:"ExcludeGroups,omitempty" type:"Repeated"`
+	// Excluded organizations
+	ExcludeOrganizationalUnits []*string `json:"ExcludeOrganizationalUnits,omitempty" xml:"ExcludeOrganizationalUnits,omitempty" type:"Repeated"`
+	// Excluded users
+	ExcludeUsers []*string `json:"ExcludeUsers,omitempty" xml:"ExcludeUsers,omitempty" type:"Repeated"`
+	// Included user groups
+	IncludeGroups []*string `json:"IncludeGroups,omitempty" xml:"IncludeGroups,omitempty" type:"Repeated"`
+	// Included organizations
+	IncludeOrganizationalUnits []*string `json:"IncludeOrganizationalUnits,omitempty" xml:"IncludeOrganizationalUnits,omitempty" type:"Repeated"`
+	// Selected users
+	IncludeUsers []*string `json:"IncludeUsers,omitempty" xml:"IncludeUsers,omitempty" type:"Repeated"`
+}
+
+func (s ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfigUsers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfigUsers) GoString() string {
+	return s.String()
+}
+
+func (s *ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfigUsers) SetExcludeGroups(v []*string) *ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfigUsers {
+	s.ExcludeGroups = v
+	return s
+}
+
+func (s *ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfigUsers) SetExcludeOrganizationalUnits(v []*string) *ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfigUsers {
+	s.ExcludeOrganizationalUnits = v
+	return s
+}
+
+func (s *ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfigUsers) SetExcludeUsers(v []*string) *ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfigUsers {
+	s.ExcludeUsers = v
+	return s
+}
+
+func (s *ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfigUsers) SetIncludeGroups(v []*string) *ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfigUsers {
+	s.IncludeGroups = v
+	return s
+}
+
+func (s *ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfigUsers) SetIncludeOrganizationalUnits(v []*string) *ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfigUsers {
+	s.IncludeOrganizationalUnits = v
+	return s
+}
+
+func (s *ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfigUsers) SetIncludeUsers(v []*string) *ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesConditionsConfigUsers {
+	s.IncludeUsers = v
+	return s
+}
+
+type ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesDecisionConfig struct {
+	// Whether to enable session reuse for secondary authentication
+	//
+	// example:
+	//
+	// disabled
+	ActiveSessionReuseStatus *string `json:"ActiveSessionReuseStatus,omitempty" xml:"ActiveSessionReuseStatus,omitempty"`
+	// Decision action of the conditional access policy:
+	//
+	// deny  Deny
+	//
+	// allow Allow
+	//
+	// example:
+	//
+	// deny
+	Effect *string `json:"Effect,omitempty" xml:"Effect,omitempty"`
+	// Re-authentication interval for the conditional access policy (in seconds) 300-86400
+	//
+	// example:
+	//
+	// 300
+	MfaAuthenticationIntervalSeconds *int64 `json:"MfaAuthenticationIntervalSeconds,omitempty" xml:"MfaAuthenticationIntervalSeconds,omitempty"`
+	// MFA types allowed by the conditional access policy
+	MfaAuthenticationMethods []*string `json:"MfaAuthenticationMethods,omitempty" xml:"MfaAuthenticationMethods,omitempty" type:"Repeated"`
+	// Conditional Access Policy Mfa Type
+	//
+	// example:
+	//
+	// directly_access
+	MfaType *string `json:"MfaType,omitempty" xml:"MfaType,omitempty"`
+}
+
+func (s ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesDecisionConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesDecisionConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesDecisionConfig) SetActiveSessionReuseStatus(v string) *ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesDecisionConfig {
+	s.ActiveSessionReuseStatus = &v
+	return s
+}
+
+func (s *ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesDecisionConfig) SetEffect(v string) *ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesDecisionConfig {
+	s.Effect = &v
+	return s
+}
+
+func (s *ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesDecisionConfig) SetMfaAuthenticationIntervalSeconds(v int64) *ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesDecisionConfig {
+	s.MfaAuthenticationIntervalSeconds = &v
+	return s
+}
+
+func (s *ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesDecisionConfig) SetMfaAuthenticationMethods(v []*string) *ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesDecisionConfig {
+	s.MfaAuthenticationMethods = v
+	return s
+}
+
+func (s *ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesDecisionConfig) SetMfaType(v string) *ListConditionalAccessPoliciesResponseBodyConditionalAccessPoliciesDecisionConfig {
+	s.MfaType = &v
+	return s
+}
+
+type ListConditionalAccessPoliciesResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListConditionalAccessPoliciesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListConditionalAccessPoliciesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConditionalAccessPoliciesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListConditionalAccessPoliciesResponse) SetHeaders(v map[string]*string) *ListConditionalAccessPoliciesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListConditionalAccessPoliciesResponse) SetStatusCode(v int32) *ListConditionalAccessPoliciesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListConditionalAccessPoliciesResponse) SetBody(v *ListConditionalAccessPoliciesResponseBody) *ListConditionalAccessPoliciesResponse {
+	s.Body = v
+	return s
+}
+
+type ListConditionalAccessPoliciesForNetworkZoneRequest struct {
+	// Instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Application ID associated with the conditional access policy
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// app_11111
+	NetworkZoneId *string `json:"NetworkZoneId,omitempty" xml:"NetworkZoneId,omitempty"`
+}
+
+func (s ListConditionalAccessPoliciesForNetworkZoneRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConditionalAccessPoliciesForNetworkZoneRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListConditionalAccessPoliciesForNetworkZoneRequest) SetInstanceId(v string) *ListConditionalAccessPoliciesForNetworkZoneRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListConditionalAccessPoliciesForNetworkZoneRequest) SetNetworkZoneId(v string) *ListConditionalAccessPoliciesForNetworkZoneRequest {
+	s.NetworkZoneId = &v
+	return s
+}
+
+type ListConditionalAccessPoliciesForNetworkZoneResponseBody struct {
+	// Collection of conditional access policies
+	ConditionalAccessPolicies []*ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPolicies `json:"ConditionalAccessPolicies,omitempty" xml:"ConditionalAccessPolicies,omitempty" type:"Repeated"`
+	// Request ID.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListConditionalAccessPoliciesForNetworkZoneResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConditionalAccessPoliciesForNetworkZoneResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListConditionalAccessPoliciesForNetworkZoneResponseBody) SetConditionalAccessPolicies(v []*ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPolicies) *ListConditionalAccessPoliciesForNetworkZoneResponseBody {
+	s.ConditionalAccessPolicies = v
+	return s
+}
+
+func (s *ListConditionalAccessPoliciesForNetworkZoneResponseBody) SetRequestId(v string) *ListConditionalAccessPoliciesForNetworkZoneResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPolicies struct {
+	// Conditional access policy ID
+	//
+	// example:
+	//
+	// cp_xxxxx
+	ConditionalAccessPolicyId *string `json:"ConditionalAccessPolicyId,omitempty" xml:"ConditionalAccessPolicyId,omitempty"`
+	// Conditional access policy name
+	//
+	// example:
+	//
+	// My Policy
+	ConditionalAccessPolicyName *string `json:"ConditionalAccessPolicyName,omitempty" xml:"ConditionalAccessPolicyName,omitempty"`
+	// Type of the conditional access policy
+	//
+	// example:
+	//
+	// arn:alibaba:idaas:authn:access:policy:system
+	ConditionalAccessPolicyType *string `json:"ConditionalAccessPolicyType,omitempty" xml:"ConditionalAccessPolicyType,omitempty"`
+	// Content of the conditional access policy
+	ConditionsConfig *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesConditionsConfig `json:"ConditionsConfig,omitempty" xml:"ConditionsConfig,omitempty" type:"Struct"`
+	// Creation Time
+	//
+	// example:
+	//
+	// 1741857554000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Action of the conditional access policy
+	DecisionConfig *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesDecisionConfig `json:"DecisionConfig,omitempty" xml:"DecisionConfig,omitempty" type:"Struct"`
+	// Execution type of the conditional access policy
+	//
+	// example:
+	//
+	// enforcement
+	DecisionType *string `json:"DecisionType,omitempty" xml:"DecisionType,omitempty"`
+	// Description of the conditional access policy
+	//
+	// example:
+	//
+	// terraform-example
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Execution point of the conditional access policy
+	//
+	// example:
+	//
+	// arn:alibaba:idaas:authn:access:rule:eval_at:after_step1
+	EvaluateAt *string `json:"EvaluateAt,omitempty" xml:"EvaluateAt,omitempty"`
+	// Instance ID
+	//
+	// example:
+	//
+	// idaas_oynbcyaaejuik6b37eldz4pinu
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Last Updated Time
+	//
+	// example:
+	//
+	// 1741857554000
+	LastUpdatedTime *int64 `json:"LastUpdatedTime,omitempty" xml:"LastUpdatedTime,omitempty"`
+	// Priority
+	//
+	// example:
+	//
+	// 10
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// Enable or disable status of the conditional access policy
+	//
+	// example:
+	//
+	// disabled
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPolicies) SetConditionalAccessPolicyId(v string) *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPolicies {
+	s.ConditionalAccessPolicyId = &v
+	return s
+}
+
+func (s *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPolicies) SetConditionalAccessPolicyName(v string) *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPolicies {
+	s.ConditionalAccessPolicyName = &v
+	return s
+}
+
+func (s *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPolicies) SetConditionalAccessPolicyType(v string) *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPolicies {
+	s.ConditionalAccessPolicyType = &v
+	return s
+}
+
+func (s *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPolicies) SetConditionsConfig(v *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesConditionsConfig) *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPolicies {
+	s.ConditionsConfig = v
+	return s
+}
+
+func (s *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPolicies) SetCreateTime(v int64) *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPolicies {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPolicies) SetDecisionConfig(v *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesDecisionConfig) *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPolicies {
+	s.DecisionConfig = v
+	return s
+}
+
+func (s *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPolicies) SetDecisionType(v string) *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPolicies {
+	s.DecisionType = &v
+	return s
+}
+
+func (s *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPolicies) SetDescription(v string) *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPolicies {
+	s.Description = &v
+	return s
+}
+
+func (s *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPolicies) SetEvaluateAt(v string) *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPolicies {
+	s.EvaluateAt = &v
+	return s
+}
+
+func (s *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPolicies) SetInstanceId(v string) *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPolicies {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPolicies) SetLastUpdatedTime(v int64) *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPolicies {
+	s.LastUpdatedTime = &v
+	return s
+}
+
+func (s *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPolicies) SetPriority(v int32) *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPolicies {
+	s.Priority = &v
+	return s
+}
+
+func (s *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPolicies) SetStatus(v string) *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPolicies {
+	s.Status = &v
+	return s
+}
+
+type ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesConditionsConfig struct {
+	// Target applications of the conditional access policy
+	Applications *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesConditionsConfigApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Struct"`
+	// Network zones for conditional access policies
+	NetworkZones *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesConditionsConfigNetworkZones `json:"NetworkZones,omitempty" xml:"NetworkZones,omitempty" type:"Struct"`
+	// Target users of the conditional access policy
+	Users *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesConditionsConfigUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Struct"`
+}
+
+func (s ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesConditionsConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesConditionsConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesConditionsConfig) SetApplications(v *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesConditionsConfigApplications) *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesConditionsConfig {
+	s.Applications = v
+	return s
+}
+
+func (s *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesConditionsConfig) SetNetworkZones(v *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesConditionsConfigNetworkZones) *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesConditionsConfig {
+	s.NetworkZones = v
+	return s
+}
+
+func (s *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesConditionsConfig) SetUsers(v *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesConditionsConfigUsers) *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesConditionsConfig {
+	s.Users = v
+	return s
+}
+
+type ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesConditionsConfigApplications struct {
+	// Excluded applications
+	ExcludeApplications []*string `json:"ExcludeApplications,omitempty" xml:"ExcludeApplications,omitempty" type:"Repeated"`
+	// Selected applications
+	IncludeApplications []*string `json:"IncludeApplications,omitempty" xml:"IncludeApplications,omitempty" type:"Repeated"`
+}
+
+func (s ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesConditionsConfigApplications) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesConditionsConfigApplications) GoString() string {
+	return s.String()
+}
+
+func (s *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesConditionsConfigApplications) SetExcludeApplications(v []*string) *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesConditionsConfigApplications {
+	s.ExcludeApplications = v
+	return s
+}
+
+func (s *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesConditionsConfigApplications) SetIncludeApplications(v []*string) *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesConditionsConfigApplications {
+	s.IncludeApplications = v
+	return s
+}
+
+type ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesConditionsConfigNetworkZones struct {
+	// Excluded network zones
+	ExcludeNetworkZones []*string `json:"ExcludeNetworkZones,omitempty" xml:"ExcludeNetworkZones,omitempty" type:"Repeated"`
+	// Included network zones
+	IncludeNetworkZones []*string `json:"IncludeNetworkZones,omitempty" xml:"IncludeNetworkZones,omitempty" type:"Repeated"`
+}
+
+func (s ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesConditionsConfigNetworkZones) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesConditionsConfigNetworkZones) GoString() string {
+	return s.String()
+}
+
+func (s *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesConditionsConfigNetworkZones) SetExcludeNetworkZones(v []*string) *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesConditionsConfigNetworkZones {
+	s.ExcludeNetworkZones = v
+	return s
+}
+
+func (s *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesConditionsConfigNetworkZones) SetIncludeNetworkZones(v []*string) *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesConditionsConfigNetworkZones {
+	s.IncludeNetworkZones = v
+	return s
+}
+
+type ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesConditionsConfigUsers struct {
+	// Excluded user groups
+	ExcludeGroups []*string `json:"ExcludeGroups,omitempty" xml:"ExcludeGroups,omitempty" type:"Repeated"`
+	// Excluded organizations
+	ExcludeOrganizationalUnits []*string `json:"ExcludeOrganizationalUnits,omitempty" xml:"ExcludeOrganizationalUnits,omitempty" type:"Repeated"`
+	// Excluded Users
+	ExcludeUsers []*string `json:"ExcludeUsers,omitempty" xml:"ExcludeUsers,omitempty" type:"Repeated"`
+	// Selected user groups
+	IncludeGroups []*string `json:"IncludeGroups,omitempty" xml:"IncludeGroups,omitempty" type:"Repeated"`
+	// Selected organizations
+	IncludeOrganizationalUnits []*string `json:"IncludeOrganizationalUnits,omitempty" xml:"IncludeOrganizationalUnits,omitempty" type:"Repeated"`
+	// Selected users
+	IncludeUsers []*string `json:"IncludeUsers,omitempty" xml:"IncludeUsers,omitempty" type:"Repeated"`
+}
+
+func (s ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesConditionsConfigUsers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesConditionsConfigUsers) GoString() string {
+	return s.String()
+}
+
+func (s *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesConditionsConfigUsers) SetExcludeGroups(v []*string) *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesConditionsConfigUsers {
+	s.ExcludeGroups = v
+	return s
+}
+
+func (s *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesConditionsConfigUsers) SetExcludeOrganizationalUnits(v []*string) *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesConditionsConfigUsers {
+	s.ExcludeOrganizationalUnits = v
+	return s
+}
+
+func (s *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesConditionsConfigUsers) SetExcludeUsers(v []*string) *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesConditionsConfigUsers {
+	s.ExcludeUsers = v
+	return s
+}
+
+func (s *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesConditionsConfigUsers) SetIncludeGroups(v []*string) *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesConditionsConfigUsers {
+	s.IncludeGroups = v
+	return s
+}
+
+func (s *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesConditionsConfigUsers) SetIncludeOrganizationalUnits(v []*string) *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesConditionsConfigUsers {
+	s.IncludeOrganizationalUnits = v
+	return s
+}
+
+func (s *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesConditionsConfigUsers) SetIncludeUsers(v []*string) *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesConditionsConfigUsers {
+	s.IncludeUsers = v
+	return s
+}
+
+type ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesDecisionConfig struct {
+	// Whether session reuse is enabled
+	//
+	// example:
+	//
+	// enabled
+	ActiveSessionReuseStatus *string `json:"ActiveSessionReuseStatus,omitempty" xml:"ActiveSessionReuseStatus,omitempty"`
+	// Decision action of the conditional access policy
+	//
+	// example:
+	//
+	// allow
+	Effect *string `json:"Effect,omitempty" xml:"Effect,omitempty"`
+	// Re-authentication interval for conditional access policy (seconds)
+	//
+	// example:
+	//
+	// 300
+	MfaAuthenticationIntervalSeconds *int64 `json:"MfaAuthenticationIntervalSeconds,omitempty" xml:"MfaAuthenticationIntervalSeconds,omitempty"`
+	// MFA types allowed by the conditional access policy
+	MfaAuthenticationMethods []*string `json:"MfaAuthenticationMethods,omitempty" xml:"MfaAuthenticationMethods,omitempty" type:"Repeated"`
+	// MFA type of the conditional access policy
+	//
+	// example:
+	//
+	// directly_access
+	MfaType *string `json:"MfaType,omitempty" xml:"MfaType,omitempty"`
+}
+
+func (s ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesDecisionConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesDecisionConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesDecisionConfig) SetActiveSessionReuseStatus(v string) *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesDecisionConfig {
+	s.ActiveSessionReuseStatus = &v
+	return s
+}
+
+func (s *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesDecisionConfig) SetEffect(v string) *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesDecisionConfig {
+	s.Effect = &v
+	return s
+}
+
+func (s *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesDecisionConfig) SetMfaAuthenticationIntervalSeconds(v int64) *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesDecisionConfig {
+	s.MfaAuthenticationIntervalSeconds = &v
+	return s
+}
+
+func (s *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesDecisionConfig) SetMfaAuthenticationMethods(v []*string) *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesDecisionConfig {
+	s.MfaAuthenticationMethods = v
+	return s
+}
+
+func (s *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesDecisionConfig) SetMfaType(v string) *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesDecisionConfig {
+	s.MfaType = &v
+	return s
+}
+
+type ListConditionalAccessPoliciesForNetworkZoneResponse struct {
+	Headers    map[string]*string                                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListConditionalAccessPoliciesForNetworkZoneResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListConditionalAccessPoliciesForNetworkZoneResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConditionalAccessPoliciesForNetworkZoneResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListConditionalAccessPoliciesForNetworkZoneResponse) SetHeaders(v map[string]*string) *ListConditionalAccessPoliciesForNetworkZoneResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListConditionalAccessPoliciesForNetworkZoneResponse) SetStatusCode(v int32) *ListConditionalAccessPoliciesForNetworkZoneResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListConditionalAccessPoliciesForNetworkZoneResponse) SetBody(v *ListConditionalAccessPoliciesForNetworkZoneResponseBody) *ListConditionalAccessPoliciesForNetworkZoneResponse {
 	s.Body = v
 	return s
 }
@@ -23884,6 +25931,443 @@ func (s *UpdateApplicationDescriptionResponse) SetBody(v *UpdateApplicationDescr
 	return s
 }
 
+type UpdateConditionalAccessPolicyRequest struct {
+	// Conditional Access Policy ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cap_11111
+	ConditionalAccessPolicyId *string `json:"ConditionalAccessPolicyId,omitempty" xml:"ConditionalAccessPolicyId,omitempty"`
+	// Conditional Access Policy Name
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// My Policy
+	ConditionalAccessPolicyName *string `json:"ConditionalAccessPolicyName,omitempty" xml:"ConditionalAccessPolicyName,omitempty"`
+	// Conditional Access Policy Condition Content Configuration
+	ConditionsConfig *UpdateConditionalAccessPolicyRequestConditionsConfig `json:"ConditionsConfig,omitempty" xml:"ConditionsConfig,omitempty" type:"Struct"`
+	// Conditional Access Policy Action Configuration
+	DecisionConfig *UpdateConditionalAccessPolicyRequestDecisionConfig `json:"DecisionConfig,omitempty" xml:"DecisionConfig,omitempty" type:"Struct"`
+	// Conditional Access Policy Execution Type
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// enforcement
+	DecisionType *string `json:"DecisionType,omitempty" xml:"DecisionType,omitempty"`
+	// Instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Priority of the conditional access policy
+	//
+	// example:
+	//
+	// 1
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+}
+
+func (s UpdateConditionalAccessPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateConditionalAccessPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateConditionalAccessPolicyRequest) SetConditionalAccessPolicyId(v string) *UpdateConditionalAccessPolicyRequest {
+	s.ConditionalAccessPolicyId = &v
+	return s
+}
+
+func (s *UpdateConditionalAccessPolicyRequest) SetConditionalAccessPolicyName(v string) *UpdateConditionalAccessPolicyRequest {
+	s.ConditionalAccessPolicyName = &v
+	return s
+}
+
+func (s *UpdateConditionalAccessPolicyRequest) SetConditionsConfig(v *UpdateConditionalAccessPolicyRequestConditionsConfig) *UpdateConditionalAccessPolicyRequest {
+	s.ConditionsConfig = v
+	return s
+}
+
+func (s *UpdateConditionalAccessPolicyRequest) SetDecisionConfig(v *UpdateConditionalAccessPolicyRequestDecisionConfig) *UpdateConditionalAccessPolicyRequest {
+	s.DecisionConfig = v
+	return s
+}
+
+func (s *UpdateConditionalAccessPolicyRequest) SetDecisionType(v string) *UpdateConditionalAccessPolicyRequest {
+	s.DecisionType = &v
+	return s
+}
+
+func (s *UpdateConditionalAccessPolicyRequest) SetInstanceId(v string) *UpdateConditionalAccessPolicyRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateConditionalAccessPolicyRequest) SetPriority(v int32) *UpdateConditionalAccessPolicyRequest {
+	s.Priority = &v
+	return s
+}
+
+type UpdateConditionalAccessPolicyRequestConditionsConfig struct {
+	// Target Applications for the Conditional Access Policy
+	Applications *UpdateConditionalAccessPolicyRequestConditionsConfigApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Struct"`
+	// Network zones for conditional access policy
+	NetworkZones *UpdateConditionalAccessPolicyRequestConditionsConfigNetworkZones `json:"NetworkZones,omitempty" xml:"NetworkZones,omitempty" type:"Struct"`
+	// Target Users for the Conditional Access Policy
+	Users *UpdateConditionalAccessPolicyRequestConditionsConfigUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Struct"`
+}
+
+func (s UpdateConditionalAccessPolicyRequestConditionsConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateConditionalAccessPolicyRequestConditionsConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateConditionalAccessPolicyRequestConditionsConfig) SetApplications(v *UpdateConditionalAccessPolicyRequestConditionsConfigApplications) *UpdateConditionalAccessPolicyRequestConditionsConfig {
+	s.Applications = v
+	return s
+}
+
+func (s *UpdateConditionalAccessPolicyRequestConditionsConfig) SetNetworkZones(v *UpdateConditionalAccessPolicyRequestConditionsConfigNetworkZones) *UpdateConditionalAccessPolicyRequestConditionsConfig {
+	s.NetworkZones = v
+	return s
+}
+
+func (s *UpdateConditionalAccessPolicyRequestConditionsConfig) SetUsers(v *UpdateConditionalAccessPolicyRequestConditionsConfigUsers) *UpdateConditionalAccessPolicyRequestConditionsConfig {
+	s.Users = v
+	return s
+}
+
+type UpdateConditionalAccessPolicyRequestConditionsConfigApplications struct {
+	// Excluded Applications
+	ExcludeApplications []*string `json:"ExcludeApplications,omitempty" xml:"ExcludeApplications,omitempty" type:"Repeated"`
+	// Included Applications
+	IncludeApplications []*string `json:"IncludeApplications,omitempty" xml:"IncludeApplications,omitempty" type:"Repeated"`
+}
+
+func (s UpdateConditionalAccessPolicyRequestConditionsConfigApplications) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateConditionalAccessPolicyRequestConditionsConfigApplications) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateConditionalAccessPolicyRequestConditionsConfigApplications) SetExcludeApplications(v []*string) *UpdateConditionalAccessPolicyRequestConditionsConfigApplications {
+	s.ExcludeApplications = v
+	return s
+}
+
+func (s *UpdateConditionalAccessPolicyRequestConditionsConfigApplications) SetIncludeApplications(v []*string) *UpdateConditionalAccessPolicyRequestConditionsConfigApplications {
+	s.IncludeApplications = v
+	return s
+}
+
+type UpdateConditionalAccessPolicyRequestConditionsConfigNetworkZones struct {
+	// Excluded network zones
+	ExcludeNetworkZones []*string `json:"ExcludeNetworkZones,omitempty" xml:"ExcludeNetworkZones,omitempty" type:"Repeated"`
+	// Included network zones
+	IncludeNetworkZones []*string `json:"IncludeNetworkZones,omitempty" xml:"IncludeNetworkZones,omitempty" type:"Repeated"`
+}
+
+func (s UpdateConditionalAccessPolicyRequestConditionsConfigNetworkZones) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateConditionalAccessPolicyRequestConditionsConfigNetworkZones) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateConditionalAccessPolicyRequestConditionsConfigNetworkZones) SetExcludeNetworkZones(v []*string) *UpdateConditionalAccessPolicyRequestConditionsConfigNetworkZones {
+	s.ExcludeNetworkZones = v
+	return s
+}
+
+func (s *UpdateConditionalAccessPolicyRequestConditionsConfigNetworkZones) SetIncludeNetworkZones(v []*string) *UpdateConditionalAccessPolicyRequestConditionsConfigNetworkZones {
+	s.IncludeNetworkZones = v
+	return s
+}
+
+type UpdateConditionalAccessPolicyRequestConditionsConfigUsers struct {
+	// Excluded user groups
+	ExcludeGroups []*string `json:"ExcludeGroups,omitempty" xml:"ExcludeGroups,omitempty" type:"Repeated"`
+	// Excluded organizations
+	ExcludeOrganizationalUnits []*string `json:"ExcludeOrganizationalUnits,omitempty" xml:"ExcludeOrganizationalUnits,omitempty" type:"Repeated"`
+	// Excluded Users
+	ExcludeUsers []*string `json:"ExcludeUsers,omitempty" xml:"ExcludeUsers,omitempty" type:"Repeated"`
+	// Included User Groups
+	IncludeGroups []*string `json:"IncludeGroups,omitempty" xml:"IncludeGroups,omitempty" type:"Repeated"`
+	// Included organizations
+	IncludeOrganizationalUnits []*string `json:"IncludeOrganizationalUnits,omitempty" xml:"IncludeOrganizationalUnits,omitempty" type:"Repeated"`
+	// Included Users
+	IncludeUsers []*string `json:"IncludeUsers,omitempty" xml:"IncludeUsers,omitempty" type:"Repeated"`
+}
+
+func (s UpdateConditionalAccessPolicyRequestConditionsConfigUsers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateConditionalAccessPolicyRequestConditionsConfigUsers) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateConditionalAccessPolicyRequestConditionsConfigUsers) SetExcludeGroups(v []*string) *UpdateConditionalAccessPolicyRequestConditionsConfigUsers {
+	s.ExcludeGroups = v
+	return s
+}
+
+func (s *UpdateConditionalAccessPolicyRequestConditionsConfigUsers) SetExcludeOrganizationalUnits(v []*string) *UpdateConditionalAccessPolicyRequestConditionsConfigUsers {
+	s.ExcludeOrganizationalUnits = v
+	return s
+}
+
+func (s *UpdateConditionalAccessPolicyRequestConditionsConfigUsers) SetExcludeUsers(v []*string) *UpdateConditionalAccessPolicyRequestConditionsConfigUsers {
+	s.ExcludeUsers = v
+	return s
+}
+
+func (s *UpdateConditionalAccessPolicyRequestConditionsConfigUsers) SetIncludeGroups(v []*string) *UpdateConditionalAccessPolicyRequestConditionsConfigUsers {
+	s.IncludeGroups = v
+	return s
+}
+
+func (s *UpdateConditionalAccessPolicyRequestConditionsConfigUsers) SetIncludeOrganizationalUnits(v []*string) *UpdateConditionalAccessPolicyRequestConditionsConfigUsers {
+	s.IncludeOrganizationalUnits = v
+	return s
+}
+
+func (s *UpdateConditionalAccessPolicyRequestConditionsConfigUsers) SetIncludeUsers(v []*string) *UpdateConditionalAccessPolicyRequestConditionsConfigUsers {
+	s.IncludeUsers = v
+	return s
+}
+
+type UpdateConditionalAccessPolicyRequestDecisionConfig struct {
+	// Whether to enable session reuse
+	//
+	// example:
+	//
+	// enabled
+	ActiveSessionReuseStatus *string `json:"ActiveSessionReuseStatus,omitempty" xml:"ActiveSessionReuseStatus,omitempty"`
+	// Conditional Access Policy Decision Action
+	//
+	// example:
+	//
+	// allow
+	Effect *string `json:"Effect,omitempty" xml:"Effect,omitempty"`
+	// Conditional Access Policy Re-authentication Interval (seconds)
+	//
+	// example:
+	//
+	// 300
+	MfaAuthenticationIntervalSeconds *int64 `json:"MfaAuthenticationIntervalSeconds,omitempty" xml:"MfaAuthenticationIntervalSeconds,omitempty"`
+	// Allowed MFA types for the Conditional Access Policy
+	MfaAuthenticationMethods []*string `json:"MfaAuthenticationMethods,omitempty" xml:"MfaAuthenticationMethods,omitempty" type:"Repeated"`
+	// Conditional Access Policy MFA Type
+	//
+	// example:
+	//
+	// directly_access
+	MfaType *string `json:"MfaType,omitempty" xml:"MfaType,omitempty"`
+}
+
+func (s UpdateConditionalAccessPolicyRequestDecisionConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateConditionalAccessPolicyRequestDecisionConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateConditionalAccessPolicyRequestDecisionConfig) SetActiveSessionReuseStatus(v string) *UpdateConditionalAccessPolicyRequestDecisionConfig {
+	s.ActiveSessionReuseStatus = &v
+	return s
+}
+
+func (s *UpdateConditionalAccessPolicyRequestDecisionConfig) SetEffect(v string) *UpdateConditionalAccessPolicyRequestDecisionConfig {
+	s.Effect = &v
+	return s
+}
+
+func (s *UpdateConditionalAccessPolicyRequestDecisionConfig) SetMfaAuthenticationIntervalSeconds(v int64) *UpdateConditionalAccessPolicyRequestDecisionConfig {
+	s.MfaAuthenticationIntervalSeconds = &v
+	return s
+}
+
+func (s *UpdateConditionalAccessPolicyRequestDecisionConfig) SetMfaAuthenticationMethods(v []*string) *UpdateConditionalAccessPolicyRequestDecisionConfig {
+	s.MfaAuthenticationMethods = v
+	return s
+}
+
+func (s *UpdateConditionalAccessPolicyRequestDecisionConfig) SetMfaType(v string) *UpdateConditionalAccessPolicyRequestDecisionConfig {
+	s.MfaType = &v
+	return s
+}
+
+type UpdateConditionalAccessPolicyResponseBody struct {
+	// Request ID.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateConditionalAccessPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateConditionalAccessPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateConditionalAccessPolicyResponseBody) SetRequestId(v string) *UpdateConditionalAccessPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateConditionalAccessPolicyResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateConditionalAccessPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateConditionalAccessPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateConditionalAccessPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateConditionalAccessPolicyResponse) SetHeaders(v map[string]*string) *UpdateConditionalAccessPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateConditionalAccessPolicyResponse) SetStatusCode(v int32) *UpdateConditionalAccessPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateConditionalAccessPolicyResponse) SetBody(v *UpdateConditionalAccessPolicyResponseBody) *UpdateConditionalAccessPolicyResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateConditionalAccessPolicyDescriptionRequest struct {
+	// Conditional Access Policy ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cap_11111
+	ConditionalAccessPolicyId *string `json:"ConditionalAccessPolicyId,omitempty" xml:"ConditionalAccessPolicyId,omitempty"`
+	// Description of the conditional access policy
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Test Description
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s UpdateConditionalAccessPolicyDescriptionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateConditionalAccessPolicyDescriptionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateConditionalAccessPolicyDescriptionRequest) SetConditionalAccessPolicyId(v string) *UpdateConditionalAccessPolicyDescriptionRequest {
+	s.ConditionalAccessPolicyId = &v
+	return s
+}
+
+func (s *UpdateConditionalAccessPolicyDescriptionRequest) SetDescription(v string) *UpdateConditionalAccessPolicyDescriptionRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateConditionalAccessPolicyDescriptionRequest) SetInstanceId(v string) *UpdateConditionalAccessPolicyDescriptionRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type UpdateConditionalAccessPolicyDescriptionResponseBody struct {
+	// Request ID.
+	//
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateConditionalAccessPolicyDescriptionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateConditionalAccessPolicyDescriptionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateConditionalAccessPolicyDescriptionResponseBody) SetRequestId(v string) *UpdateConditionalAccessPolicyDescriptionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateConditionalAccessPolicyDescriptionResponse struct {
+	Headers    map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateConditionalAccessPolicyDescriptionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateConditionalAccessPolicyDescriptionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateConditionalAccessPolicyDescriptionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateConditionalAccessPolicyDescriptionResponse) SetHeaders(v map[string]*string) *UpdateConditionalAccessPolicyDescriptionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateConditionalAccessPolicyDescriptionResponse) SetStatusCode(v int32) *UpdateConditionalAccessPolicyDescriptionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateConditionalAccessPolicyDescriptionResponse) SetBody(v *UpdateConditionalAccessPolicyDescriptionResponseBody) *UpdateConditionalAccessPolicyDescriptionResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateGroupRequest struct {
 	// The external ID of the group.
 	//
@@ -26192,6 +28676,121 @@ func (client *Client) CreateApplicationClientSecret(request *CreateApplicationCl
 
 // Summary:
 //
+// # Create Conditional Access Policy
+//
+// Description:
+//
+// # Create Conditional Access Policy
+//
+// @param request - CreateConditionalAccessPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateConditionalAccessPolicyResponse
+func (client *Client) CreateConditionalAccessPolicyWithOptions(request *CreateConditionalAccessPolicyRequest, runtime *util.RuntimeOptions) (_result *CreateConditionalAccessPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConditionalAccessPolicyName)) {
+		query["ConditionalAccessPolicyName"] = request.ConditionalAccessPolicyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConditionalAccessPolicyType)) {
+		query["ConditionalAccessPolicyType"] = request.ConditionalAccessPolicyType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConditionsConfig)) {
+		query["ConditionsConfig"] = request.ConditionsConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DecisionConfig)) {
+		query["DecisionConfig"] = request.DecisionConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DecisionType)) {
+		query["DecisionType"] = request.DecisionType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EvaluateAt)) {
+		query["EvaluateAt"] = request.EvaluateAt
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Priority)) {
+		query["Priority"] = request.Priority
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateConditionalAccessPolicy"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateConditionalAccessPolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateConditionalAccessPolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// # Create Conditional Access Policy
+//
+// Description:
+//
+// # Create Conditional Access Policy
+//
+// @param request - CreateConditionalAccessPolicyRequest
+//
+// @return CreateConditionalAccessPolicyResponse
+func (client *Client) CreateConditionalAccessPolicy(request *CreateConditionalAccessPolicyRequest) (_result *CreateConditionalAccessPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateConditionalAccessPolicyResponse{}
+	_body, _err := client.CreateConditionalAccessPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建域名。
 //
 // @param request - CreateDomainRequest
@@ -27098,6 +29697,89 @@ func (client *Client) DeleteApplicationClientSecret(request *DeleteApplicationCl
 
 // Summary:
 //
+// # Delete Conditional Access Policy
+//
+// Description:
+//
+// When deleting a specified conditional access policy, please ensure that the policy is no longer in use. After deletion, all configuration data will be removed and cannot be recovered.
+//
+// @param request - DeleteConditionalAccessPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteConditionalAccessPolicyResponse
+func (client *Client) DeleteConditionalAccessPolicyWithOptions(request *DeleteConditionalAccessPolicyRequest, runtime *util.RuntimeOptions) (_result *DeleteConditionalAccessPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConditionalAccessPolicyId)) {
+		query["ConditionalAccessPolicyId"] = request.ConditionalAccessPolicyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteConditionalAccessPolicy"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteConditionalAccessPolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteConditionalAccessPolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// # Delete Conditional Access Policy
+//
+// Description:
+//
+// When deleting a specified conditional access policy, please ensure that the policy is no longer in use. After deletion, all configuration data will be removed and cannot be recovered.
+//
+// @param request - DeleteConditionalAccessPolicyRequest
+//
+// @return DeleteConditionalAccessPolicyResponse
+func (client *Client) DeleteConditionalAccessPolicy(request *DeleteConditionalAccessPolicyRequest) (_result *DeleteConditionalAccessPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteConditionalAccessPolicyResponse{}
+	_body, _err := client.DeleteConditionalAccessPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 删除域名。
 //
 // @param request - DeleteDomainRequest
@@ -27631,7 +30313,7 @@ func (client *Client) DeleteOrganizationalUnit(request *DeleteOrganizationalUnit
 
 // Summary:
 //
-// Delete organizational unit information, forcibly deleting all accounts and sub-organizations beneath it
+// # Delete organizational unit information, forcibly deleting all accounts and sub-organizations beneath it
 //
 // @param request - DeleteOrganizationalUnitChildrenRequest
 //
@@ -27688,7 +30370,7 @@ func (client *Client) DeleteOrganizationalUnitChildrenWithOptions(request *Delet
 
 // Summary:
 //
-// Delete organizational unit information, forcibly deleting all accounts and sub-organizations beneath it
+// # Delete organizational unit information, forcibly deleting all accounts and sub-organizations beneath it
 //
 // @param request - DeleteOrganizationalUnitChildrenRequest
 //
@@ -28159,6 +30841,89 @@ func (client *Client) DisableApplicationSso(request *DisableApplicationSsoReques
 	runtime := &util.RuntimeOptions{}
 	_result = &DisableApplicationSsoResponse{}
 	_body, _err := client.DisableApplicationSsoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # Disable Conditional Access Policy
+//
+// Description:
+//
+// When changing a conditional access policy from an enabled state to a disabled state, the policy will no longer intercept. Please confirm that you are aware of the potential risks associated with this action.
+//
+// @param request - DisableConditionalAccessPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableConditionalAccessPolicyResponse
+func (client *Client) DisableConditionalAccessPolicyWithOptions(request *DisableConditionalAccessPolicyRequest, runtime *util.RuntimeOptions) (_result *DisableConditionalAccessPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConditionalAccessPolicyId)) {
+		query["ConditionalAccessPolicyId"] = request.ConditionalAccessPolicyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DisableConditionalAccessPolicy"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DisableConditionalAccessPolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DisableConditionalAccessPolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// # Disable Conditional Access Policy
+//
+// Description:
+//
+// When changing a conditional access policy from an enabled state to a disabled state, the policy will no longer intercept. Please confirm that you are aware of the potential risks associated with this action.
+//
+// @param request - DisableConditionalAccessPolicyRequest
+//
+// @return DisableConditionalAccessPolicyResponse
+func (client *Client) DisableConditionalAccessPolicy(request *DisableConditionalAccessPolicyRequest) (_result *DisableConditionalAccessPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DisableConditionalAccessPolicyResponse{}
+	_body, _err := client.DisableConditionalAccessPolicyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28847,6 +31612,89 @@ func (client *Client) EnableApplicationSso(request *EnableApplicationSsoRequest)
 
 // Summary:
 //
+// # Enable Conditional Access Policy
+//
+// Description:
+//
+// When changing the status of a conditional access policy from enabled to disabled, the policy will no longer intercept. Please confirm that you are aware of the potential risks associated with this action.
+//
+// @param request - EnableConditionalAccessPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableConditionalAccessPolicyResponse
+func (client *Client) EnableConditionalAccessPolicyWithOptions(request *EnableConditionalAccessPolicyRequest, runtime *util.RuntimeOptions) (_result *EnableConditionalAccessPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConditionalAccessPolicyId)) {
+		query["ConditionalAccessPolicyId"] = request.ConditionalAccessPolicyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EnableConditionalAccessPolicy"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &EnableConditionalAccessPolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &EnableConditionalAccessPolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// # Enable Conditional Access Policy
+//
+// Description:
+//
+// When changing the status of a conditional access policy from enabled to disabled, the policy will no longer intercept. Please confirm that you are aware of the potential risks associated with this action.
+//
+// @param request - EnableConditionalAccessPolicyRequest
+//
+// @return EnableConditionalAccessPolicyResponse
+func (client *Client) EnableConditionalAccessPolicy(request *EnableConditionalAccessPolicyRequest) (_result *EnableConditionalAccessPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &EnableConditionalAccessPolicyResponse{}
+	_body, _err := client.EnableConditionalAccessPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 启用指定域名代理Token。
 //
 // @param request - EnableDomainProxyTokenRequest
@@ -29522,6 +32370,89 @@ func (client *Client) GetApplicationSsoConfig(request *GetApplicationSsoConfigRe
 
 // Summary:
 //
+// # Get Conditional Access Policy
+//
+// Description:
+//
+// # Query Conditional Access Policy
+//
+// @param request - GetConditionalAccessPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetConditionalAccessPolicyResponse
+func (client *Client) GetConditionalAccessPolicyWithOptions(request *GetConditionalAccessPolicyRequest, runtime *util.RuntimeOptions) (_result *GetConditionalAccessPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConditionalAccessPolicyId)) {
+		query["ConditionalAccessPolicyId"] = request.ConditionalAccessPolicyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetConditionalAccessPolicy"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetConditionalAccessPolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetConditionalAccessPolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// # Get Conditional Access Policy
+//
+// Description:
+//
+// # Query Conditional Access Policy
+//
+// @param request - GetConditionalAccessPolicyRequest
+//
+// @return GetConditionalAccessPolicyResponse
+func (client *Client) GetConditionalAccessPolicy(request *GetConditionalAccessPolicyRequest) (_result *GetConditionalAccessPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetConditionalAccessPolicyResponse{}
+	_body, _err := client.GetConditionalAccessPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询一个域名的详细信息。
 //
 // @param request - GetDomainRequest
@@ -30039,7 +32970,7 @@ func (client *Client) GetInstance(request *GetInstanceRequest) (_result *GetInst
 
 // Summary:
 //
-// Query the currently effective License information of the instance
+// # Query the currently effective License information of the instance
 //
 // Description:
 //
@@ -30096,7 +33027,7 @@ func (client *Client) GetInstanceLicenseWithOptions(request *GetInstanceLicenseR
 
 // Summary:
 //
-// Query the currently effective License information of the instance
+// # Query the currently effective License information of the instance
 //
 // Description:
 //
@@ -31141,6 +34072,180 @@ func (client *Client) ListApplicationsForUser(request *ListApplicationsForUserRe
 
 // Summary:
 //
+// # List of Conditional Access Policies
+//
+// Description:
+//
+// # Paginated query for the list of conditional access policies
+//
+// @param request - ListConditionalAccessPoliciesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListConditionalAccessPoliciesResponse
+func (client *Client) ListConditionalAccessPoliciesWithOptions(request *ListConditionalAccessPoliciesRequest, runtime *util.RuntimeOptions) (_result *ListConditionalAccessPoliciesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PreviousToken)) {
+		query["PreviousToken"] = request.PreviousToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListConditionalAccessPolicies"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListConditionalAccessPoliciesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListConditionalAccessPoliciesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// # List of Conditional Access Policies
+//
+// Description:
+//
+// # Paginated query for the list of conditional access policies
+//
+// @param request - ListConditionalAccessPoliciesRequest
+//
+// @return ListConditionalAccessPoliciesResponse
+func (client *Client) ListConditionalAccessPolicies(request *ListConditionalAccessPoliciesRequest) (_result *ListConditionalAccessPoliciesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListConditionalAccessPoliciesResponse{}
+	_body, _err := client.ListConditionalAccessPoliciesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # List Conditional Access Policies Associated with Network Areas
+//
+// Description:
+//
+// # List Conditional Access Policies Associated with Network Zones
+//
+// @param request - ListConditionalAccessPoliciesForNetworkZoneRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListConditionalAccessPoliciesForNetworkZoneResponse
+func (client *Client) ListConditionalAccessPoliciesForNetworkZoneWithOptions(request *ListConditionalAccessPoliciesForNetworkZoneRequest, runtime *util.RuntimeOptions) (_result *ListConditionalAccessPoliciesForNetworkZoneResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkZoneId)) {
+		query["NetworkZoneId"] = request.NetworkZoneId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListConditionalAccessPoliciesForNetworkZone"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListConditionalAccessPoliciesForNetworkZoneResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListConditionalAccessPoliciesForNetworkZoneResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// # List Conditional Access Policies Associated with Network Areas
+//
+// Description:
+//
+// # List Conditional Access Policies Associated with Network Zones
+//
+// @param request - ListConditionalAccessPoliciesForNetworkZoneRequest
+//
+// @return ListConditionalAccessPoliciesForNetworkZoneResponse
+func (client *Client) ListConditionalAccessPoliciesForNetworkZone(request *ListConditionalAccessPoliciesForNetworkZoneRequest) (_result *ListConditionalAccessPoliciesForNetworkZoneResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListConditionalAccessPoliciesForNetworkZoneResponse{}
+	_body, _err := client.ListConditionalAccessPoliciesForNetworkZoneWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 列表查询域名代理Token信息。
 //
 // @param request - ListDomainProxyTokensRequest
@@ -32071,7 +35176,7 @@ func (client *Client) ListNetworkAccessEndpoints(request *ListNetworkAccessEndpo
 
 // Summary:
 //
-// 列表某个网络访问端点下的访问路径。
+// 列表查询某个网络访问端点下的访问路径。
 //
 // @param request - ListNetworkAccessPathsRequest
 //
@@ -32128,7 +35233,7 @@ func (client *Client) ListNetworkAccessPathsWithOptions(request *ListNetworkAcce
 
 // Summary:
 //
-// 列表某个网络访问端点下的访问路径。
+// 列表查询某个网络访问端点下的访问路径。
 //
 // @param request - ListNetworkAccessPathsRequest
 //
@@ -34781,6 +37886,196 @@ func (client *Client) UpdateApplicationDescription(request *UpdateApplicationDes
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateApplicationDescriptionResponse{}
 	_body, _err := client.UpdateApplicationDescriptionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # Update Conditional Access Policy
+//
+// Description:
+//
+// # Update Conditional Access Policy
+//
+// @param request - UpdateConditionalAccessPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateConditionalAccessPolicyResponse
+func (client *Client) UpdateConditionalAccessPolicyWithOptions(request *UpdateConditionalAccessPolicyRequest, runtime *util.RuntimeOptions) (_result *UpdateConditionalAccessPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConditionalAccessPolicyId)) {
+		query["ConditionalAccessPolicyId"] = request.ConditionalAccessPolicyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConditionalAccessPolicyName)) {
+		query["ConditionalAccessPolicyName"] = request.ConditionalAccessPolicyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConditionsConfig)) {
+		query["ConditionsConfig"] = request.ConditionsConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DecisionConfig)) {
+		query["DecisionConfig"] = request.DecisionConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DecisionType)) {
+		query["DecisionType"] = request.DecisionType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Priority)) {
+		query["Priority"] = request.Priority
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateConditionalAccessPolicy"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateConditionalAccessPolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateConditionalAccessPolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// # Update Conditional Access Policy
+//
+// Description:
+//
+// # Update Conditional Access Policy
+//
+// @param request - UpdateConditionalAccessPolicyRequest
+//
+// @return UpdateConditionalAccessPolicyResponse
+func (client *Client) UpdateConditionalAccessPolicy(request *UpdateConditionalAccessPolicyRequest) (_result *UpdateConditionalAccessPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateConditionalAccessPolicyResponse{}
+	_body, _err := client.UpdateConditionalAccessPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # Update Conditional Access Policy Description
+//
+// Description:
+//
+// # Update Conditional Access Policy Description
+//
+// @param request - UpdateConditionalAccessPolicyDescriptionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateConditionalAccessPolicyDescriptionResponse
+func (client *Client) UpdateConditionalAccessPolicyDescriptionWithOptions(request *UpdateConditionalAccessPolicyDescriptionRequest, runtime *util.RuntimeOptions) (_result *UpdateConditionalAccessPolicyDescriptionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConditionalAccessPolicyId)) {
+		query["ConditionalAccessPolicyId"] = request.ConditionalAccessPolicyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateConditionalAccessPolicyDescription"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateConditionalAccessPolicyDescriptionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateConditionalAccessPolicyDescriptionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// # Update Conditional Access Policy Description
+//
+// Description:
+//
+// # Update Conditional Access Policy Description
+//
+// @param request - UpdateConditionalAccessPolicyDescriptionRequest
+//
+// @return UpdateConditionalAccessPolicyDescriptionResponse
+func (client *Client) UpdateConditionalAccessPolicyDescription(request *UpdateConditionalAccessPolicyDescriptionRequest) (_result *UpdateConditionalAccessPolicyDescriptionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateConditionalAccessPolicyDescriptionResponse{}
+	_body, _err := client.UpdateConditionalAccessPolicyDescriptionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
