@@ -2361,7 +2361,8 @@ type CreateIdentityProviderRequestUdPullConfig struct {
 	// example:
 	//
 	// disabled
-	IncrementalCallbackStatus *string `json:"IncrementalCallbackStatus,omitempty" xml:"IncrementalCallbackStatus,omitempty"`
+	IncrementalCallbackStatus *string                                                      `json:"IncrementalCallbackStatus,omitempty" xml:"IncrementalCallbackStatus,omitempty"`
+	PeriodicSyncConfig        *CreateIdentityProviderRequestUdPullConfigPeriodicSyncConfig `json:"PeriodicSyncConfig,omitempty" xml:"PeriodicSyncConfig,omitempty" type:"Struct"`
 	// example:
 	//
 	// disabled
@@ -2390,6 +2391,11 @@ func (s *CreateIdentityProviderRequestUdPullConfig) SetIncrementalCallbackStatus
 	return s
 }
 
+func (s *CreateIdentityProviderRequestUdPullConfig) SetPeriodicSyncConfig(v *CreateIdentityProviderRequestUdPullConfigPeriodicSyncConfig) *CreateIdentityProviderRequestUdPullConfig {
+	s.PeriodicSyncConfig = v
+	return s
+}
+
 func (s *CreateIdentityProviderRequestUdPullConfig) SetPeriodicSyncStatus(v string) *CreateIdentityProviderRequestUdPullConfig {
 	s.PeriodicSyncStatus = &v
 	return s
@@ -2397,6 +2403,41 @@ func (s *CreateIdentityProviderRequestUdPullConfig) SetPeriodicSyncStatus(v stri
 
 func (s *CreateIdentityProviderRequestUdPullConfig) SetUdSyncScopeConfig(v *CreateIdentityProviderRequestUdPullConfigUdSyncScopeConfig) *CreateIdentityProviderRequestUdPullConfig {
 	s.UdSyncScopeConfig = v
+	return s
+}
+
+type CreateIdentityProviderRequestUdPullConfigPeriodicSyncConfig struct {
+	// example:
+	//
+	// 0 45 1 	- 	- ?
+	PeriodicSyncCron  *string  `json:"PeriodicSyncCron,omitempty" xml:"PeriodicSyncCron,omitempty"`
+	PeriodicSyncTimes []*int32 `json:"PeriodicSyncTimes,omitempty" xml:"PeriodicSyncTimes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// cron
+	PeriodicSyncType *string `json:"PeriodicSyncType,omitempty" xml:"PeriodicSyncType,omitempty"`
+}
+
+func (s CreateIdentityProviderRequestUdPullConfigPeriodicSyncConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIdentityProviderRequestUdPullConfigPeriodicSyncConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIdentityProviderRequestUdPullConfigPeriodicSyncConfig) SetPeriodicSyncCron(v string) *CreateIdentityProviderRequestUdPullConfigPeriodicSyncConfig {
+	s.PeriodicSyncCron = &v
+	return s
+}
+
+func (s *CreateIdentityProviderRequestUdPullConfigPeriodicSyncConfig) SetPeriodicSyncTimes(v []*int32) *CreateIdentityProviderRequestUdPullConfigPeriodicSyncConfig {
+	s.PeriodicSyncTimes = v
+	return s
+}
+
+func (s *CreateIdentityProviderRequestUdPullConfigPeriodicSyncConfig) SetPeriodicSyncType(v string) *CreateIdentityProviderRequestUdPullConfigPeriodicSyncConfig {
+	s.PeriodicSyncType = &v
 	return s
 }
 
@@ -10142,7 +10183,8 @@ type GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfiguration struc
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// ldap同步侧相关配置信息
-	LdapUdPullConfig *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationLdapUdPullConfig `json:"LdapUdPullConfig,omitempty" xml:"LdapUdPullConfig,omitempty" type:"Struct"`
+	LdapUdPullConfig   *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationLdapUdPullConfig   `json:"LdapUdPullConfig,omitempty" xml:"LdapUdPullConfig,omitempty" type:"Struct"`
+	PeriodicSyncConfig *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationPeriodicSyncConfig `json:"PeriodicSyncConfig,omitempty" xml:"PeriodicSyncConfig,omitempty" type:"Struct"`
 	// example:
 	//
 	// enabled
@@ -10183,6 +10225,11 @@ func (s *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfiguration) 
 
 func (s *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfiguration) SetLdapUdPullConfig(v *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationLdapUdPullConfig) *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfiguration {
 	s.LdapUdPullConfig = v
+	return s
+}
+
+func (s *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfiguration) SetPeriodicSyncConfig(v *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationPeriodicSyncConfig) *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfiguration {
+	s.PeriodicSyncConfig = v
 	return s
 }
 
@@ -10275,6 +10322,41 @@ func (s *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationLd
 
 func (s *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationLdapUdPullConfig) SetUserObjectClassCustomFilter(v string) *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationLdapUdPullConfig {
 	s.UserObjectClassCustomFilter = &v
+	return s
+}
+
+type GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationPeriodicSyncConfig struct {
+	// example:
+	//
+	// 0 45 1 	- 	- ?
+	PeriodicSyncCron  *string `json:"PeriodicSyncCron,omitempty" xml:"PeriodicSyncCron,omitempty"`
+	PeriodicSyncTimes *int32  `json:"PeriodicSyncTimes,omitempty" xml:"PeriodicSyncTimes,omitempty"`
+	// example:
+	//
+	// cron
+	PeriodicSyncType *string `json:"PeriodicSyncType,omitempty" xml:"PeriodicSyncType,omitempty"`
+}
+
+func (s GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationPeriodicSyncConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationPeriodicSyncConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationPeriodicSyncConfig) SetPeriodicSyncCron(v string) *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationPeriodicSyncConfig {
+	s.PeriodicSyncCron = &v
+	return s
+}
+
+func (s *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationPeriodicSyncConfig) SetPeriodicSyncTimes(v int32) *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationPeriodicSyncConfig {
+	s.PeriodicSyncTimes = &v
+	return s
+}
+
+func (s *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationPeriodicSyncConfig) SetPeriodicSyncType(v string) *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationPeriodicSyncConfig {
+	s.PeriodicSyncType = &v
 	return s
 }
 
@@ -24739,7 +24821,8 @@ type SetIdentityProviderUdPullConfigurationRequest struct {
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// ldap同步侧相关配置信息
-	LdapUdPullConfig *SetIdentityProviderUdPullConfigurationRequestLdapUdPullConfig `json:"LdapUdPullConfig,omitempty" xml:"LdapUdPullConfig,omitempty" type:"Struct"`
+	LdapUdPullConfig   *SetIdentityProviderUdPullConfigurationRequestLdapUdPullConfig   `json:"LdapUdPullConfig,omitempty" xml:"LdapUdPullConfig,omitempty" type:"Struct"`
+	PeriodicSyncConfig *SetIdentityProviderUdPullConfigurationRequestPeriodicSyncConfig `json:"PeriodicSyncConfig,omitempty" xml:"PeriodicSyncConfig,omitempty" type:"Struct"`
 	// example:
 	//
 	// disabled
@@ -24780,6 +24863,11 @@ func (s *SetIdentityProviderUdPullConfigurationRequest) SetInstanceId(v string) 
 
 func (s *SetIdentityProviderUdPullConfigurationRequest) SetLdapUdPullConfig(v *SetIdentityProviderUdPullConfigurationRequestLdapUdPullConfig) *SetIdentityProviderUdPullConfigurationRequest {
 	s.LdapUdPullConfig = v
+	return s
+}
+
+func (s *SetIdentityProviderUdPullConfigurationRequest) SetPeriodicSyncConfig(v *SetIdentityProviderUdPullConfigurationRequestPeriodicSyncConfig) *SetIdentityProviderUdPullConfigurationRequest {
+	s.PeriodicSyncConfig = v
 	return s
 }
 
@@ -24872,6 +24960,41 @@ func (s *SetIdentityProviderUdPullConfigurationRequestLdapUdPullConfig) SetUserO
 
 func (s *SetIdentityProviderUdPullConfigurationRequestLdapUdPullConfig) SetUserObjectClassCustomFilter(v string) *SetIdentityProviderUdPullConfigurationRequestLdapUdPullConfig {
 	s.UserObjectClassCustomFilter = &v
+	return s
+}
+
+type SetIdentityProviderUdPullConfigurationRequestPeriodicSyncConfig struct {
+	// example:
+	//
+	// 0 45 1 	- 	- ?
+	PeriodicSyncCron  *string  `json:"PeriodicSyncCron,omitempty" xml:"PeriodicSyncCron,omitempty"`
+	PeriodicSyncTimes []*int32 `json:"PeriodicSyncTimes,omitempty" xml:"PeriodicSyncTimes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// cron
+	PeriodicSyncType *string `json:"PeriodicSyncType,omitempty" xml:"PeriodicSyncType,omitempty"`
+}
+
+func (s SetIdentityProviderUdPullConfigurationRequestPeriodicSyncConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetIdentityProviderUdPullConfigurationRequestPeriodicSyncConfig) GoString() string {
+	return s.String()
+}
+
+func (s *SetIdentityProviderUdPullConfigurationRequestPeriodicSyncConfig) SetPeriodicSyncCron(v string) *SetIdentityProviderUdPullConfigurationRequestPeriodicSyncConfig {
+	s.PeriodicSyncCron = &v
+	return s
+}
+
+func (s *SetIdentityProviderUdPullConfigurationRequestPeriodicSyncConfig) SetPeriodicSyncTimes(v []*int32) *SetIdentityProviderUdPullConfigurationRequestPeriodicSyncConfig {
+	s.PeriodicSyncTimes = v
+	return s
+}
+
+func (s *SetIdentityProviderUdPullConfigurationRequestPeriodicSyncConfig) SetPeriodicSyncType(v string) *SetIdentityProviderUdPullConfigurationRequestPeriodicSyncConfig {
+	s.PeriodicSyncType = &v
 	return s
 }
 
@@ -37167,6 +37290,10 @@ func (client *Client) SetIdentityProviderUdPullConfigurationWithOptions(request 
 
 	if !tea.BoolValue(util.IsUnset(request.LdapUdPullConfig)) {
 		query["LdapUdPullConfig"] = request.LdapUdPullConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeriodicSyncConfig)) {
+		query["PeriodicSyncConfig"] = request.PeriodicSyncConfig
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PeriodicSyncStatus)) {
