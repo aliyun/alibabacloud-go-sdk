@@ -21770,6 +21770,7 @@ type RecoverRenderingDataPackageRequest struct {
 	//
 	// dp-449ea3d16c0841b8bf33ec5bbc86a152
 	DataPackageId *string `json:"DataPackageId,omitempty" xml:"DataPackageId,omitempty"`
+	LoadMode      *string `json:"LoadMode,omitempty" xml:"LoadMode,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -21788,6 +21789,11 @@ func (s RecoverRenderingDataPackageRequest) GoString() string {
 
 func (s *RecoverRenderingDataPackageRequest) SetDataPackageId(v string) *RecoverRenderingDataPackageRequest {
 	s.DataPackageId = &v
+	return s
+}
+
+func (s *RecoverRenderingDataPackageRequest) SetLoadMode(v string) *RecoverRenderingDataPackageRequest {
+	s.LoadMode = &v
 	return s
 }
 
@@ -36116,6 +36122,10 @@ func (client *Client) RecoverRenderingDataPackageWithOptions(request *RecoverRen
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DataPackageId)) {
 		query["DataPackageId"] = request.DataPackageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoadMode)) {
+		query["LoadMode"] = request.LoadMode
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RenderingInstanceId)) {
