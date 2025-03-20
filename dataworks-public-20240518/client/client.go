@@ -5,8 +5,13 @@ import (
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
+	openplatform "github.com/alibabacloud-go/openplatform-20191219/v2/client"
+	fileform "github.com/alibabacloud-go/tea-fileform/service"
+	oss "github.com/alibabacloud-go/tea-oss-sdk/client"
+	ossutil "github.com/alibabacloud-go/tea-oss-utils/service"
 	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
+	"io"
 )
 
 type DataQualityEvaluationTask struct {
@@ -1711,7 +1716,7 @@ type AbolishDeploymentRequest struct {
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
 	//
-	// You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+	// You can use this parameter to specify the DataWorks workspace on which you want to perform the API operation.
 	//
 	// This parameter is required.
 	//
@@ -5431,17 +5436,17 @@ func (s *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThr
 }
 
 type CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsCritical struct {
-	// 阈值表达式。
+	// The threshold expression.
 	//
-	// 波动率类型规则必须使用表达式方式表示波动阈值。如：
+	// If the template specified by the TemplateCode parameter is about fluctuation, you must use an expression to represent the threshold for fluctuation. Examples:
 	//
-	// - 波动上升大于0.01： $checkValue > 0.01
+	// 	- $checkValue > 0.01
 	//
-	// - 波动下降大于0.01：$checkValue < -0.01
+	// 	- $checkValue < -0.01
 	//
-	// - 波动率绝对值：abs($checkValue) > 0.01
+	// 	- abs($checkValue) > 0.01
 	//
-	// 固定值类型规则也可以使用表达式方式配置阈值，如果同时配置，表达式优先级高于Operator和Value
+	// If the template specified by the TemplateCode parameter is about fixed value, you can also use an expression to represent the threshold. If you configure the Expression, Operator, and Value parameters for the threshold at the same time, the Expression parameter takes precedence over the Operator and Value parameters.
 	//
 	// example:
 	//
@@ -5497,17 +5502,17 @@ func (s *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThr
 }
 
 type CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsExpected struct {
-	// 阈值表达式。
+	// The threshold expression.
 	//
-	// 波动率类型规则必须使用表达式方式表示波动阈值。如：
+	// If the template specified by the TemplateCode parameter is about fluctuation, you must use an expression to represent the threshold for fluctuation. Examples:
 	//
-	// - 波动上升大于0.01： $checkValue > 0.01
+	// 	- $checkValue > 0.01
 	//
-	// - 波动下降大于0.01：$checkValue < -0.01
+	// 	- $checkValue < -0.01
 	//
-	// - 波动率绝对值：abs($checkValue) > 0.01
+	// 	- abs($checkValue) > 0.01
 	//
-	// 固定值类型规则也可以使用表达式方式配置阈值，如果同时配置，表达式优先级高于Operator和Value
+	// If the template specified by the TemplateCode parameter is about fixed value, you can also use an expression to represent the threshold. If you configure the Expression, Operator, and Value parameters for the threshold at the same time, the Expression parameter takes precedence over the Operator and Value parameters.
 	//
 	// example:
 	//
@@ -5563,17 +5568,17 @@ func (s *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThr
 }
 
 type CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsWarned struct {
-	// 阈值表达式。
+	// The threshold expression.
 	//
-	// 波动率类型规则必须使用表达式方式表示波动阈值。如：
+	// If the template specified by the TemplateCode parameter is about fluctuation, you must use an expression to represent the threshold for fluctuation. Examples:
 	//
-	// - 波动上升大于0.01： $checkValue > 0.01
+	// 	- $checkValue > 0.01
 	//
-	// - 波动下降大于0.01：$checkValue < -0.01
+	// 	- $checkValue < -0.01
 	//
-	// - 波动率绝对值：abs($checkValue) > 0.01
+	// 	- abs($checkValue) > 0.01
 	//
-	// 固定值类型规则也可以使用表达式方式配置阈值，如果同时配置，表达式优先级高于Operator和Value
+	// If the template specified by the TemplateCode parameter is about fixed value, you can also use an expression to represent the threshold. If you configure the Expression, Operator, and Value parameters for the threshold at the same time, the Expression parameter takes precedence over the Operator and Value parameters.
 	//
 	// example:
 	//
@@ -7314,7 +7319,7 @@ type CreateDataQualityRuleTemplateRequestSamplingConfig struct {
 	//
 	// 	- CountDistinctNotIn: the number of unique values that are different from the referenced values that you specified in the rule after deduplication.
 	//
-	// 	- UserDefinedSql: indicates that data is sampled by executing custom SQL statements.
+	// 	- UserDefinedSql: specifies that data is sampled by executing custom SQL statements.
 	//
 	// example:
 	//
@@ -9197,7 +9202,7 @@ func (s *CreateResourceResponse) SetBody(v *CreateResourceResponseBody) *CreateR
 }
 
 type CreateResourceGroupRequest struct {
-	// The ID of the resource group.
+	// The ID of the Alibaba Cloud resource group.
 	//
 	// example:
 	//
@@ -9207,7 +9212,7 @@ type CreateResourceGroupRequest struct {
 	AliyunResourceTags []*CreateResourceGroupRequestAliyunResourceTags `json:"AliyunResourceTags,omitempty" xml:"AliyunResourceTags,omitempty" type:"Repeated"`
 	// Specifies whether to enable auto-renewal.
 	AutoRenewEnabled *bool `json:"AutoRenewEnabled,omitempty" xml:"AutoRenewEnabled,omitempty"`
-	// The idempotent identifier of the client is used to ensure idempotent operation of creating a common resource group.
+	// The client token that is used to ensure the idempotence of the request.
 	//
 	// This parameter is required.
 	//
@@ -9215,7 +9220,7 @@ type CreateResourceGroupRequest struct {
 	//
 	// eb870033-74c8-4b1b-9664-04c4e7cc3465
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The name of a common resource group. It must start with a letter and can contain letters, numbers, and underscores (_). It can be up to 128 characters in length.
+	// The name of the serverless resource group. The name can be a maximum of 128 characters in length and can contain letters, digits, and underscores (_). The name must start with a letter.
 	//
 	// This parameter is required.
 	//
@@ -9223,7 +9228,7 @@ type CreateResourceGroupRequest struct {
 	//
 	// common_resource_group
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The duration of the payment.
+	// The subscription duration.
 	//
 	// example:
 	//
@@ -9243,13 +9248,13 @@ type CreateResourceGroupRequest struct {
 	//
 	// PrePaid
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	// Note for creating a common resource group, which can contain letters, Chinese characters, numbers, underscores (_), and a maximum of 128 characters.
+	// The description of the serverless resource group. The description can be a maximum of 128 characters in length and can contain letters, digits, and underscores (_).
 	//
 	// example:
 	//
 	// Create a serverless resource group for common tasks
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The specifications of the resource group. Unit: compute unit (CU). This parameter is required only when you set the PaymentType parameter to PrePaid.
+	// The specifications of the serverless resource group. Unit: CU. This parameter is required only if you set the PaymentType parameter to PrePaid.
 	//
 	// example:
 	//
@@ -9375,7 +9380,7 @@ func (s *CreateResourceGroupRequestAliyunResourceTags) SetValue(v string) *Creat
 }
 
 type CreateResourceGroupShrinkRequest struct {
-	// The ID of the resource group.
+	// The ID of the Alibaba Cloud resource group.
 	//
 	// example:
 	//
@@ -9385,7 +9390,7 @@ type CreateResourceGroupShrinkRequest struct {
 	AliyunResourceTagsShrink *string `json:"AliyunResourceTags,omitempty" xml:"AliyunResourceTags,omitempty"`
 	// Specifies whether to enable auto-renewal.
 	AutoRenewEnabled *bool `json:"AutoRenewEnabled,omitempty" xml:"AutoRenewEnabled,omitempty"`
-	// The idempotent identifier of the client is used to ensure idempotent operation of creating a common resource group.
+	// The client token that is used to ensure the idempotence of the request.
 	//
 	// This parameter is required.
 	//
@@ -9393,7 +9398,7 @@ type CreateResourceGroupShrinkRequest struct {
 	//
 	// eb870033-74c8-4b1b-9664-04c4e7cc3465
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The name of a common resource group. It must start with a letter and can contain letters, numbers, and underscores (_). It can be up to 128 characters in length.
+	// The name of the serverless resource group. The name can be a maximum of 128 characters in length and can contain letters, digits, and underscores (_). The name must start with a letter.
 	//
 	// This parameter is required.
 	//
@@ -9401,7 +9406,7 @@ type CreateResourceGroupShrinkRequest struct {
 	//
 	// common_resource_group
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The duration of the payment.
+	// The subscription duration.
 	//
 	// example:
 	//
@@ -9421,13 +9426,13 @@ type CreateResourceGroupShrinkRequest struct {
 	//
 	// PrePaid
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	// Note for creating a common resource group, which can contain letters, Chinese characters, numbers, underscores (_), and a maximum of 128 characters.
+	// The description of the serverless resource group. The description can be a maximum of 128 characters in length and can contain letters, digits, and underscores (_).
 	//
 	// example:
 	//
 	// Create a serverless resource group for common tasks
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The specifications of the resource group. Unit: compute unit (CU). This parameter is required only when you set the PaymentType parameter to PrePaid.
+	// The specifications of the serverless resource group. Unit: CU. This parameter is required only if you set the PaymentType parameter to PrePaid.
 	//
 	// example:
 	//
@@ -9520,15 +9525,15 @@ func (s *CreateResourceGroupShrinkRequest) SetVswitchId(v string) *CreateResourc
 }
 
 type CreateResourceGroupResponseBody struct {
-	// The ID of the request. It is used to locate logs and troubleshoot problems.
+	// The request ID.
 	//
 	// example:
 	//
 	// 6A6CBE87-9F91-1323-B680-E7A7065XXXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The order information for creating a serverless resource group.
+	// The information about the order that is used to create the serverless resource group.
 	ResourceGroupOrder *CreateResourceGroupResponseBodyResourceGroupOrder `json:"ResourceGroupOrder,omitempty" xml:"ResourceGroupOrder,omitempty" type:"Struct"`
-	// Whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -9560,19 +9565,19 @@ func (s *CreateResourceGroupResponseBody) SetSuccess(v bool) *CreateResourceGrou
 }
 
 type CreateResourceGroupResponseBodyResourceGroupOrder struct {
-	// The unique identifier of the serverless resource group.
+	// The ID of the serverless resource group.
 	//
 	// example:
 	//
 	// Serverless_res_group_524257424564736_6831777003XXXXX
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ID of the order to create a serverless resource group.
+	// The ID of the order that is used to create the serverless resource group.
 	//
 	// example:
 	//
 	// 2391982058XXXXX
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the order instance that created the serverless resource group.
+	// The instance ID of the order that is used to create the serverless resource group.
 	//
 	// example:
 	//
@@ -9649,6 +9654,8 @@ type CreateRouteRequest struct {
 	//
 	// 1000
 	NetworkId *int64 `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	// Unique identifier of the serverless resource group.
+	//
 	// example:
 	//
 	// Serverless_res_group_524257424564736_6831777003XXXXX
@@ -9985,7 +9992,7 @@ type CreateWorkflowInstancesRequest struct {
 	//
 	// 100
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// Task parameters. Set parameters for a specific task. In JSON format, the key is the Task ID. For more information about the value format, see Task Script parameters (Task.Script. GetTask of the Parameter interface).
+	// The task-specific parameters. The value is in the JSON format. The key specifies the task ID. You can call the GetTask operation to obtain the format of the value by querying the script parameters.
 	//
 	// example:
 	//
@@ -10009,7 +10016,7 @@ type CreateWorkflowInstancesRequest struct {
 	//
 	// SupplementData
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The ID of the workflow to which the workflow belongs. The default value of WorkflowId for retroactive data is 1.
+	// The ID of the workflow to which the instance belongs. This parameter is set to 1 for auto triggered tasks.
 	//
 	// This parameter is required.
 	//
@@ -10017,7 +10024,7 @@ type CreateWorkflowInstancesRequest struct {
 	//
 	// 1
 	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
-	// Workflow parameters. The priority is higher than the task parameters. JSON format.
+	// The workflow parameters. The priority of workflow parameters is higher than that of task parameters. You can call the GetTask operation to obtain the format of the workflow parameters by querying the Parameters parameter.
 	//
 	// example:
 	//
@@ -10098,8 +10105,6 @@ type CreateWorkflowInstancesRequestDefaultRunProperties struct {
 	// Alarm configuration.
 	Alert *CreateWorkflowInstancesRequestDefaultRunPropertiesAlert `json:"Alert,omitempty" xml:"Alert,omitempty" type:"Struct"`
 	// Analyze the configuration.
-	//
-	// This parameter is required.
 	Analysis *CreateWorkflowInstancesRequestDefaultRunPropertiesAnalysis `json:"Analysis,omitempty" xml:"Analysis,omitempty" type:"Struct"`
 	// The list of project IDs that do not need to be run.
 	ExcludeProjectIds []*int64 `json:"ExcludeProjectIds,omitempty" xml:"ExcludeProjectIds,omitempty" type:"Repeated"`
@@ -10134,8 +10139,6 @@ type CreateWorkflowInstancesRequestDefaultRunProperties struct {
 	// Asc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
 	// The number of rows that the task has. Values from 2 to 10 are parallelism and 1 is serial.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -10269,15 +10272,11 @@ func (s *CreateWorkflowInstancesRequestDefaultRunPropertiesAlert) SetType(v stri
 type CreateWorkflowInstancesRequestDefaultRunPropertiesAnalysis struct {
 	// Whether to block the operation if the analysis fails.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// true
 	Blocked *bool `json:"Blocked,omitempty" xml:"Blocked,omitempty"`
 	// Whether to enable analysis.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -10488,7 +10487,7 @@ type CreateWorkflowInstancesShrinkRequest struct {
 	//
 	// 100
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// Task parameters. Set parameters for a specific task. In JSON format, the key is the Task ID. For more information about the value format, see Task Script parameters (Task.Script. GetTask of the Parameter interface).
+	// The task-specific parameters. The value is in the JSON format. The key specifies the task ID. You can call the GetTask operation to obtain the format of the value by querying the script parameters.
 	//
 	// example:
 	//
@@ -10512,7 +10511,7 @@ type CreateWorkflowInstancesShrinkRequest struct {
 	//
 	// SupplementData
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The ID of the workflow to which the workflow belongs. The default value of WorkflowId for retroactive data is 1.
+	// The ID of the workflow to which the instance belongs. This parameter is set to 1 for auto triggered tasks.
 	//
 	// This parameter is required.
 	//
@@ -10520,7 +10519,7 @@ type CreateWorkflowInstancesShrinkRequest struct {
 	//
 	// 1
 	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
-	// Workflow parameters. The priority is higher than the task parameters. JSON format.
+	// The workflow parameters. The priority of workflow parameters is higher than that of task parameters. You can call the GetTask operation to obtain the format of the workflow parameters by querying the Parameters parameter.
 	//
 	// example:
 	//
@@ -10739,6 +10738,95 @@ func (s *DeleteAlertRuleResponse) SetStatusCode(v int32) *DeleteAlertRuleRespons
 }
 
 func (s *DeleteAlertRuleResponse) SetBody(v *DeleteAlertRuleResponseBody) *DeleteAlertRuleResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteCertificateRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 676303114031776
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 106560
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+}
+
+func (s DeleteCertificateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCertificateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCertificateRequest) SetId(v int64) *DeleteCertificateRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *DeleteCertificateRequest) SetProjectId(v int64) *DeleteCertificateRequest {
+	s.ProjectId = &v
+	return s
+}
+
+type DeleteCertificateResponseBody struct {
+	// example:
+	//
+	// D9A61DC0-B922-421B-B706
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteCertificateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCertificateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCertificateResponseBody) SetRequestId(v string) *DeleteCertificateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteCertificateResponseBody) SetSuccess(v bool) *DeleteCertificateResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteCertificateResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteCertificateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCertificateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCertificateResponse) SetHeaders(v map[string]*string) *DeleteCertificateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteCertificateResponse) SetStatusCode(v int32) *DeleteCertificateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteCertificateResponse) SetBody(v *DeleteCertificateResponseBody) *DeleteCertificateResponse {
 	s.Body = v
 	return s
 }
@@ -11571,7 +11659,7 @@ type DeleteFunctionRequest struct {
 	//
 	// 860438872620113XXXX
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID. You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to obtain the ID. You can use this parameter to specify the DataWorks workspace on which you want to perform the API operation.
 	//
 	// This parameter is required.
 	//
@@ -11760,9 +11848,9 @@ type DeleteNodeRequest struct {
 	//
 	// 860438872620113XXXX
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to obtain the ID.
 	//
-	// You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+	// You can use this parameter to specify the DataWorks workspace on which you want to perform the API operation.
 	//
 	// This parameter is required.
 	//
@@ -12030,7 +12118,7 @@ type DeleteResourceRequest struct {
 	//
 	// 860438872620113XXXX
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID. You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to obtain the ID. You can use this parameter to specify the DataWorks workspace on which you want to perform the API operation.
 	//
 	// This parameter is required.
 	//
@@ -12888,9 +12976,9 @@ type ExecDeploymentStageRequest struct {
 	//
 	// a7ef0634-20ec-4a7c-a214-54020f91XXXX
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to obtain the ID.
 	//
-	// You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+	// You can use this parameter to specify the DataWorks workspace on which you want to perform the API operation.
 	//
 	// This parameter is required.
 	//
@@ -12994,9 +13082,7 @@ func (s *ExecDeploymentStageResponse) SetBody(v *ExecDeploymentStageResponseBody
 }
 
 type ExecuteAdhocWorkflowInstanceRequest struct {
-	// 业务日期。
-	//
-	// This parameter is required.
+	// The data timestamp.
 	//
 	// example:
 	//
@@ -13267,7 +13353,7 @@ type ExecuteAdhocWorkflowInstanceRequestTasksInputsVariables struct {
 	//
 	// key1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The value of the variable.
+	// The value of the variable. You must configure this parameter in the `The ancestor output: The output variable name of the ancestor task` format.
 	//
 	// example:
 	//
@@ -13347,7 +13433,7 @@ type ExecuteAdhocWorkflowInstanceRequestTasksOutputsVariables struct {
 	//
 	// key1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The type of the variable. Valid values:
+	// The type. Valid values:
 	//
 	// 	- System
 	//
@@ -13472,9 +13558,7 @@ func (s *ExecuteAdhocWorkflowInstanceRequestTasksScript) SetParameters(v string)
 }
 
 type ExecuteAdhocWorkflowInstanceShrinkRequest struct {
-	// 业务日期。
-	//
-	// This parameter is required.
+	// The data timestamp.
 	//
 	// example:
 	//
@@ -14263,6 +14347,166 @@ func (s *GetAlertRuleResponse) SetStatusCode(v int32) *GetAlertRuleResponse {
 }
 
 func (s *GetAlertRuleResponse) SetBody(v *GetAlertRuleResponseBody) *GetAlertRuleResponse {
+	s.Body = v
+	return s
+}
+
+type GetCertificateRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 676303114031776
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 1065601
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+}
+
+func (s GetCertificateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCertificateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetCertificateRequest) SetId(v int64) *GetCertificateRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *GetCertificateRequest) SetProjectId(v int64) *GetCertificateRequest {
+	s.ProjectId = &v
+	return s
+}
+
+type GetCertificateResponseBody struct {
+	Certificate *GetCertificateResponseBodyCertificate `json:"Certificate,omitempty" xml:"Certificate,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0000-ABCD-EFG****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetCertificateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCertificateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetCertificateResponseBody) SetCertificate(v *GetCertificateResponseBodyCertificate) *GetCertificateResponseBody {
+	s.Certificate = v
+	return s
+}
+
+func (s *GetCertificateResponseBody) SetRequestId(v string) *GetCertificateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetCertificateResponseBodyCertificate struct {
+	// example:
+	//
+	// 1730217600000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1107550004253538
+	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// example:
+	//
+	// This is a file
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 77549
+	FileSizeInBytes *int64 `json:"FileSizeInBytes,omitempty" xml:"FileSizeInBytes,omitempty"`
+	// example:
+	//
+	// 676303114031776
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// ca1.crt
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 177161
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+}
+
+func (s GetCertificateResponseBodyCertificate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCertificateResponseBodyCertificate) GoString() string {
+	return s.String()
+}
+
+func (s *GetCertificateResponseBodyCertificate) SetCreateTime(v int64) *GetCertificateResponseBodyCertificate {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetCertificateResponseBodyCertificate) SetCreateUser(v string) *GetCertificateResponseBodyCertificate {
+	s.CreateUser = &v
+	return s
+}
+
+func (s *GetCertificateResponseBodyCertificate) SetDescription(v string) *GetCertificateResponseBodyCertificate {
+	s.Description = &v
+	return s
+}
+
+func (s *GetCertificateResponseBodyCertificate) SetFileSizeInBytes(v int64) *GetCertificateResponseBodyCertificate {
+	s.FileSizeInBytes = &v
+	return s
+}
+
+func (s *GetCertificateResponseBodyCertificate) SetId(v int64) *GetCertificateResponseBodyCertificate {
+	s.Id = &v
+	return s
+}
+
+func (s *GetCertificateResponseBodyCertificate) SetName(v string) *GetCertificateResponseBodyCertificate {
+	s.Name = &v
+	return s
+}
+
+func (s *GetCertificateResponseBodyCertificate) SetProjectId(v int64) *GetCertificateResponseBodyCertificate {
+	s.ProjectId = &v
+	return s
+}
+
+type GetCertificateResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetCertificateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCertificateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetCertificateResponse) SetHeaders(v map[string]*string) *GetCertificateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetCertificateResponse) SetStatusCode(v int32) *GetCertificateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetCertificateResponse) SetBody(v *GetCertificateResponseBody) *GetCertificateResponse {
 	s.Body = v
 	return s
 }
@@ -15452,9 +15696,23 @@ type GetDIJobLogRequest struct {
 	// example:
 	//
 	// 6153616438
-	InstanceId *int64  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	NodeType   *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Node type. Currently, it is only applicable in the view resource group 2.0 task:
+	//
+	// - MASTER: obtains logs of JobManager.
+	//
+	// - WORKER: obtains logs of TaskManager.
+	//
+	// example:
+	//
+	// MASTER
+	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	// The page number of the pagination query. The value is a positive integer greater than or equal to 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 }
 
 func (s GetDIJobLogRequest) String() string {
@@ -16625,39 +16883,39 @@ func (s *GetDataQualityRuleResponseBody) SetRequestId(v string) *GetDataQualityR
 type GetDataQualityRuleResponseBodyDataQualityRule struct {
 	// The check settings for sample data.
 	CheckingConfig *GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfig `json:"CheckingConfig,omitempty" xml:"CheckingConfig,omitempty" type:"Struct"`
-	// The description of the rule. It can be up to 500 characters in length.
+	// The description of the rule. The description can be up to 500 characters in length.
 	//
 	// example:
 	//
 	// this is a odps _sql task
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Whether the rule is enabled.
+	// Indicates whether the rule is enabled.
 	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The list of quality rule verification problem processors.
+	// The operations that you can perform after the rule-based check fails.
 	ErrorHandlers []*GetDataQualityRuleResponseBodyDataQualityRuleErrorHandlers `json:"ErrorHandlers,omitempty" xml:"ErrorHandlers,omitempty" type:"Repeated"`
-	// The ID of the rule.
+	// The rule ID.
 	//
 	// example:
 	//
 	// 16033
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the rule.
+	// The rule name.
 	//
 	// example:
 	//
 	// The table cannot be empty.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the DataWorks workspace.
+	// The DataWorks workspace ID.
 	//
 	// example:
 	//
 	// 1948
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The settings required for sample collection.
+	// The sampling settings.
 	SamplingConfig *GetDataQualityRuleResponseBodyDataQualityRuleSamplingConfig `json:"SamplingConfig,omitempty" xml:"SamplingConfig,omitempty" type:"Struct"`
 	// Rule for the business level (corresponding to the strong and weak rules on the page), optional enumeration value:
 	//
@@ -16669,7 +16927,7 @@ type GetDataQualityRuleResponseBodyDataQualityRule struct {
 	//
 	// High
 	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
-	// The object monitored by the rule.
+	// The monitored object of the rule.
 	Target *GetDataQualityRuleResponseBodyDataQualityRuleTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
 	// The ID of the template used by the rule.
 	//
@@ -16743,7 +17001,7 @@ func (s *GetDataQualityRuleResponseBodyDataQualityRule) SetTemplateCode(v string
 }
 
 type GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfig struct {
-	// Some types of thresholds need to query some reference samples, and then summarize the values of the reference samples to obtain the threshold for comparison. Here, an expression is used to represent the query method of the reference samples.
+	// The method that is used to query the referenced samples. To obtain some types of thresholds, you need to query reference values. In this example, an expression is used to indicate the query method of referenced samples.
 	//
 	// example:
 	//
@@ -16751,19 +17009,19 @@ type GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfig struct {
 	ReferencedSamplesFilter *string `json:"ReferencedSamplesFilter,omitempty" xml:"ReferencedSamplesFilter,omitempty"`
 	// The threshold settings.
 	Thresholds *GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholds `json:"Thresholds,omitempty" xml:"Thresholds,omitempty" type:"Struct"`
-	// Threshold Calculation method:
+	// The threshold calculation method. Valid values:
 	//
-	// - Fixed
+	// 	- Fixed
 	//
-	// - Fluctation
+	// 	- Fluctation
 	//
-	// - FluctationDiscreate
+	// 	- FluctationDiscreate
 	//
-	// - Auto
+	// 	- Auto
 	//
-	// - Average
+	// 	- Average
 	//
-	// - Variance
+	// 	- Variance
 	//
 	// example:
 	//
@@ -16833,19 +17091,19 @@ type GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholdsCritic
 	//
 	// $checkValue > 0.05
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
-	// Comparison character:
+	// The comparison operator. Valid values:
 	//
-	// - \\>
+	// 	- \\>
 	//
-	// - % =
+	// 	- \\>=
 	//
-	// - <
+	// 	- <
 	//
-	// - <=
+	// 	- <=
 	//
-	// - ! =
+	// 	- !=
 	//
-	// - =
+	// 	- \\=
 	//
 	// example:
 	//
@@ -16889,19 +17147,19 @@ type GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholdsExpect
 	//
 	// $checkValue <= 0.01
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
-	// Comparison character:
+	// The comparison operator. Valid values:
 	//
-	// - \\>
+	// 	- \\>
 	//
-	// - % =
+	// 	- \\>=
 	//
-	// - <
+	// 	- <
 	//
-	// - <=
+	// 	- <=
 	//
-	// - ! =
+	// 	- !=
 	//
-	// - =
+	// 	- \\=
 	//
 	// example:
 	//
@@ -16945,19 +17203,19 @@ type GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholdsWarned
 	//
 	// $checkValue > 0.01
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
-	// Comparison character:
+	// The comparison operator. Valid values:
 	//
-	// - \\>
+	// 	- \\>
 	//
-	// - % =
+	// 	- \\>=
 	//
-	// - <
+	// 	- <
 	//
-	// - <=
+	// 	- <=
 	//
-	// - ! =
+	// 	- !=
 	//
-	// - =
+	// 	- \\=
 	//
 	// example:
 	//
@@ -16995,7 +17253,7 @@ func (s *GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholdsWa
 }
 
 type GetDataQualityRuleResponseBodyDataQualityRuleErrorHandlers struct {
-	// For custom SQL rules, you must specify SQL to filter problem data.
+	// The SQL statement that is used to filter failed tasks. If you define the rule by using custom SQL statements, you must specify an SQL statement to filter failed tasks.
 	//
 	// example:
 	//
@@ -17030,55 +17288,55 @@ func (s *GetDataQualityRuleResponseBodyDataQualityRuleErrorHandlers) SetType(v s
 }
 
 type GetDataQualityRuleResponseBodyDataQualityRuleSamplingConfig struct {
-	// The name of the sampled metric:
+	// The metrics used for sampling. Valid values:
 	//
-	// - Count: number of table rows
+	// 	- Count: the number of rows in the table.
 	//
-	// - Min: minimum value of the field
+	// 	- Min: the minimum value of the field.
 	//
-	// - Max: The maximum value of the field.
+	// 	- Max: the maximum value of the field.
 	//
-	// - Avg: field mean
+	// 	- Avg: the average value of the field.
 	//
-	// - DistinctCount: number of unique field values
+	// 	- DistinctCount: the number of unique values of the field after deduplication.
 	//
-	// - DistinctPercent: the ratio of the number of unique field values to the number of data rows.
+	// 	- DistinctPercent: the proportion of the number of unique values of the field after deduplication to the number of rows in the table.
 	//
-	// - DuplicatedCount: number of duplicate field values
+	// 	- DuplicatedCount: the number of duplicated values of the field.
 	//
-	// - DuplicatedPercent: the ratio of the number of duplicate field values to the number of data rows.
+	// 	- DuplicatedPercent: the proportion of the number of duplicated values of the field to the number of rows in the table.
 	//
-	// - TableSize: table size
+	// 	- TableSize: the table size.
 	//
-	// - NullValueCount: number of rows with empty fields
+	// 	- NullValueCount: the number of rows in which the field value is null.
 	//
-	// - NullValuePercent: the proportion of fields that are empty.
+	// 	- NullValuePercent: the proportion of the number of rows in which the field value is null to the number of rows in the table.
 	//
-	// - GroupCount: aggregate each value by field value and the corresponding number of data rows
+	// 	- GroupCount: the field value and the number of rows for each field value.
 	//
-	// - CountNotIn: the enumerated value does not match the number of rows.
+	// 	- CountNotIn: the number of rows in which the field values are different from the referenced values that you specified in the rule.
 	//
-	// - CountDistinctNotIn: the number of unique values that the enumerated values do not match.
+	// 	- CountDistinctNotIn: the number of unique values that are different from the referenced values that you specified in the rule after deduplication.
 	//
-	// - UserDefinedSql: use custom SQL to collect samples
+	// 	- UserDefinedSql: indicates that data is sampled by executing custom SQL statements.
 	//
 	// example:
 	//
 	// Max
 	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
-	// Parameters required for sample collection.
+	// The parameters required for sampling.
 	//
 	// example:
 	//
 	// { "Columns": [ "id", "name" ] , "SQL": "select count(1) from table;"}
 	MetricParameters *string `json:"MetricParameters,omitempty" xml:"MetricParameters,omitempty"`
-	// The condition for secondary filtering of data that is not concerned during sampling, which can be up to 16777215 characters in length.
+	// The statements that are used to filter unnecessary data during sampling. The statements can be up to 16,777,215 characters in length.
 	//
 	// example:
 	//
 	// id IS NULL
 	SamplingFilter *string `json:"SamplingFilter,omitempty" xml:"SamplingFilter,omitempty"`
-	// Before executing the sample statement, insert some runtime parameter setting statements, which can be up to 1000 characters in length. Currently, only MaxCompute is supported.
+	// The statements that are used to configure the parameters required for sampling before you execute the sampling statements. The statements can be up to 1,000 characters in length. Only the MaxCompute database is supported.
 	//
 	// example:
 	//
@@ -17137,13 +17395,13 @@ type GetDataQualityRuleResponseBodyDataQualityRuleTarget struct {
 	//
 	// maxcompute
 	DatabaseType *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
-	// Partition settings for partitioned tables.
+	// The configuration of the partitioned table.
 	//
 	// example:
 	//
 	// ds=$[yyyymmdd-1]
 	PartitionSpec *string `json:"PartitionSpec,omitempty" xml:"PartitionSpec,omitempty"`
-	// The unique ID of the table used by the rule in the data map.
+	// The ID of the table that is limited by the rule in Data Map.
 	//
 	// example:
 	//
@@ -17270,33 +17528,33 @@ func (s *GetDataQualityRuleTemplateResponseBody) SetRequestId(v string) *GetData
 }
 
 type GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplate struct {
-	// Sample verification settings.
+	// The check settings for sample data.
 	CheckingConfig *GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplateCheckingConfig `json:"CheckingConfig,omitempty" xml:"CheckingConfig,omitempty" type:"Struct"`
-	// The Code of the rule template.
+	// The code for the template.
 	//
 	// example:
 	//
 	// USER_DEFINED:123
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The category directory where the custom template is stored, separated by slashes. Each level name can be up to 1024 characters in length and cannot contain white space characters or slashes.
+	// The directory in which the template is stored. Slashes (/) are used to separate directory levels. The name of each directory level can be up to 1,024 characters in length. It cannot contain whitespace characters or slashes (/).
 	//
 	// example:
 	//
 	// /ods/order_data
 	DirectoryPath *string `json:"DirectoryPath,omitempty" xml:"DirectoryPath,omitempty"`
-	// The name of the rule template. It can contain up to 512 characters in length, including numbers, letters, Chinese characters, and half-width punctuation marks.
+	// The name of the template. The name can be up to 512 characters in length and can contain digits, letters, and punctuation marks.
 	//
 	// example:
 	//
 	// Table row Count Verification
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the DataWorks workspace.
+	// The DataWorks workspace ID.
 	//
 	// example:
 	//
 	// 4020
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The settings required for sample collection.
+	// The sampling settings.
 	SamplingConfig *GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplateSamplingConfig `json:"SamplingConfig,omitempty" xml:"SamplingConfig,omitempty" type:"Struct"`
 	// Available range of templates:
 	//
@@ -17354,25 +17612,25 @@ func (s *GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplate) SetVisib
 }
 
 type GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplateCheckingConfig struct {
-	// Some types of thresholds need to query some reference samples, and then summarize the values of the reference samples to obtain the threshold for comparison. Here, an expression is used to represent the query method of the reference samples.
+	// The method that is used to query the referenced samples. To obtain some types of thresholds, you need to query reference samples and perform aggregate operations on the reference values. In this example, an expression is used to indicate the query method of referenced samples.
 	//
 	// example:
 	//
 	// { "bizdate": [ "-1", "-7", "-1m" ] }
 	ReferencedSamplesFilter *string `json:"ReferencedSamplesFilter,omitempty" xml:"ReferencedSamplesFilter,omitempty"`
-	// Threshold Calculation method:
+	// The threshold calculation method. Valid values:
 	//
-	// - Fixed
+	// 	- Fixed
 	//
-	// - Fluctation
+	// 	- Fluctation
 	//
-	// - FluctationDiscreate
+	// 	- FluctationDiscreate
 	//
-	// - Auto
+	// 	- Auto
 	//
-	// - Average
+	// 	- Average
 	//
-	// - Variance
+	// 	- Variance
 	//
 	// example:
 	//
@@ -17399,49 +17657,49 @@ func (s *GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplateCheckingCo
 }
 
 type GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplateSamplingConfig struct {
-	// The name of the sampled metric.
+	// The metrics used for sampling. Valid values:
 	//
-	// - Count: number of table rows
+	// 	- Count: the number of rows in the table.
 	//
-	// - Min: minimum value of the field
+	// 	- Min: the minimum value of the field.
 	//
-	// - Max: The maximum value of the field.
+	// 	- Max: the maximum value of the field.
 	//
-	// - Avg: field mean
+	// 	- Avg: the average value of the field.
 	//
-	// - DistinctCount: number of unique field values
+	// 	- DistinctCount: the number of unique values of the field after deduplication.
 	//
-	// - DistinctPercent: the ratio of the number of unique field values to the number of data rows.
+	// 	- DistinctPercent: the proportion of the number of unique values of the field after deduplication to the number of rows in the table.
 	//
-	// - DuplicatedCount: number of duplicate field values
+	// 	- DuplicatedCount: the number of duplicated values of the field.
 	//
-	// - DuplicatedPercent: the ratio of the number of duplicate field values to the number of data rows.
+	// 	- DuplicatedPercent: the proportion of the number of duplicated values of the field to the number of rows in the table.
 	//
-	// - TableSize: table size
+	// 	- TableSize: the table size.
 	//
-	// - NullValueCount: number of rows with empty fields
+	// 	- NullValueCount: the number of rows in which the field value is null.
 	//
-	// - NullValuePercent: the proportion of fields that are empty.
+	// 	- NullValuePercent: the proportion of the number of rows in which the field value is null to the number of rows in the table.
 	//
-	// - GroupCount: aggregate each value by field value and the corresponding number of data rows
+	// 	- GroupCount: the field value and the number of rows for each field value.
 	//
-	// - CountNotIn: the enumerated value does not match the number of rows.
+	// 	- CountNotIn: the number of rows in which the field values are different from the referenced values that you specified in the rule.
 	//
-	// - CountDistinctNotIn: the number of unique values that the enumerated values do not match.
+	// 	- CountDistinctNotIn: the number of unique values that are different from the referenced values that you specified in the rule after deduplication.
 	//
-	// - UserDefinedSql: use custom SQL to collect samples.
+	// 	- UserDefinedSql: indicates that data is sampled by executing custom SQL statements.
 	//
 	// example:
 	//
 	// Max
 	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
-	// Parameters required for sample collection.
+	// The parameters required for sampling.
 	//
 	// example:
 	//
 	// {"SQL": "select count(1) from table;"}
 	MetricParameters *string `json:"MetricParameters,omitempty" xml:"MetricParameters,omitempty"`
-	// Before executing the sample statement, insert some runtime parameter setting statements, which can be up to 1000 characters in length. Currently, only MaxCompute is supported.
+	// The statements that are used to configure the parameters required for sampling before you execute the sampling statements. The statements can be up to 1,000 characters in length. Only the MaxCompute database is supported.
 	//
 	// example:
 	//
@@ -24290,6 +24548,170 @@ func (s *GrantMemberProjectRolesResponse) SetBody(v *GrantMemberProjectRolesResp
 	return s
 }
 
+type ImportCertificateRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// -
+	CertificateFile *string `json:"CertificateFile,omitempty" xml:"CertificateFile,omitempty"`
+	// example:
+	//
+	// This is a file
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ca1.crt
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 106560
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+}
+
+func (s ImportCertificateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportCertificateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ImportCertificateRequest) SetCertificateFile(v string) *ImportCertificateRequest {
+	s.CertificateFile = &v
+	return s
+}
+
+func (s *ImportCertificateRequest) SetDescription(v string) *ImportCertificateRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *ImportCertificateRequest) SetName(v string) *ImportCertificateRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ImportCertificateRequest) SetProjectId(v int64) *ImportCertificateRequest {
+	s.ProjectId = &v
+	return s
+}
+
+type ImportCertificateAdvanceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// -
+	CertificateFileObject io.Reader `json:"CertificateFile,omitempty" xml:"CertificateFile,omitempty"`
+	// example:
+	//
+	// This is a file
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ca1.crt
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 106560
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+}
+
+func (s ImportCertificateAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportCertificateAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ImportCertificateAdvanceRequest) SetCertificateFileObject(v io.Reader) *ImportCertificateAdvanceRequest {
+	s.CertificateFileObject = v
+	return s
+}
+
+func (s *ImportCertificateAdvanceRequest) SetDescription(v string) *ImportCertificateAdvanceRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *ImportCertificateAdvanceRequest) SetName(v string) *ImportCertificateAdvanceRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ImportCertificateAdvanceRequest) SetProjectId(v int64) *ImportCertificateAdvanceRequest {
+	s.ProjectId = &v
+	return s
+}
+
+type ImportCertificateResponseBody struct {
+	// example:
+	//
+	// 676303114031776
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 7C352CB7-CD88-50CF-9D0D-E81BDF020E7F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ImportCertificateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportCertificateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ImportCertificateResponseBody) SetId(v int64) *ImportCertificateResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *ImportCertificateResponseBody) SetRequestId(v string) *ImportCertificateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ImportCertificateResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ImportCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ImportCertificateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportCertificateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ImportCertificateResponse) SetHeaders(v map[string]*string) *ImportCertificateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ImportCertificateResponse) SetStatusCode(v int32) *ImportCertificateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ImportCertificateResponse) SetBody(v *ImportCertificateResponseBody) *ImportCertificateResponse {
+	s.Body = v
+	return s
+}
+
 type ImportWorkflowDefinitionRequest struct {
 	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
 	//
@@ -25472,6 +25894,264 @@ func (s *ListAlertRulesResponse) SetStatusCode(v int32) *ListAlertRulesResponse 
 }
 
 func (s *ListAlertRulesResponse) SetBody(v *ListAlertRulesResponseBody) *ListAlertRulesResponse {
+	s.Body = v
+	return s
+}
+
+type ListCertificatesRequest struct {
+	// example:
+	//
+	// 1107550004253538
+	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// example:
+	//
+	// 1593877765000
+	EndCreateTime *int64 `json:"EndCreateTime,omitempty" xml:"EndCreateTime,omitempty"`
+	// example:
+	//
+	// xm_create_test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// Asc
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10000
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// Id
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// example:
+	//
+	// 1730217600000
+	StartCreateTime *int64 `json:"StartCreateTime,omitempty" xml:"StartCreateTime,omitempty"`
+}
+
+func (s ListCertificatesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCertificatesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCertificatesRequest) SetCreateUser(v string) *ListCertificatesRequest {
+	s.CreateUser = &v
+	return s
+}
+
+func (s *ListCertificatesRequest) SetEndCreateTime(v int64) *ListCertificatesRequest {
+	s.EndCreateTime = &v
+	return s
+}
+
+func (s *ListCertificatesRequest) SetName(v string) *ListCertificatesRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListCertificatesRequest) SetOrder(v string) *ListCertificatesRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *ListCertificatesRequest) SetPageNumber(v int32) *ListCertificatesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListCertificatesRequest) SetPageSize(v int32) *ListCertificatesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCertificatesRequest) SetProjectId(v int64) *ListCertificatesRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListCertificatesRequest) SetSortBy(v string) *ListCertificatesRequest {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListCertificatesRequest) SetStartCreateTime(v int64) *ListCertificatesRequest {
+	s.StartCreateTime = &v
+	return s
+}
+
+type ListCertificatesResponseBody struct {
+	PagingInfo *ListCertificatesResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// ecb967ec-c137-48****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListCertificatesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCertificatesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCertificatesResponseBody) SetPagingInfo(v *ListCertificatesResponseBodyPagingInfo) *ListCertificatesResponseBody {
+	s.PagingInfo = v
+	return s
+}
+
+func (s *ListCertificatesResponseBody) SetRequestId(v string) *ListCertificatesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListCertificatesResponseBodyPagingInfo struct {
+	Certificates []*ListCertificatesResponseBodyPagingInfoCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 100
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListCertificatesResponseBodyPagingInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCertificatesResponseBodyPagingInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListCertificatesResponseBodyPagingInfo) SetCertificates(v []*ListCertificatesResponseBodyPagingInfoCertificates) *ListCertificatesResponseBodyPagingInfo {
+	s.Certificates = v
+	return s
+}
+
+func (s *ListCertificatesResponseBodyPagingInfo) SetPageNumber(v int32) *ListCertificatesResponseBodyPagingInfo {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListCertificatesResponseBodyPagingInfo) SetPageSize(v int32) *ListCertificatesResponseBodyPagingInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCertificatesResponseBodyPagingInfo) SetTotalCount(v int32) *ListCertificatesResponseBodyPagingInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type ListCertificatesResponseBodyPagingInfoCertificates struct {
+	// example:
+	//
+	// 1730217600000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1107550004253538
+	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// example:
+	//
+	// This is a file
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 1024
+	FileSizeInBytes *int64 `json:"FileSizeInBytes,omitempty" xml:"FileSizeInBytes,omitempty"`
+	// example:
+	//
+	// 676303114031776
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// ca1.crt
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s ListCertificatesResponseBodyPagingInfoCertificates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCertificatesResponseBodyPagingInfoCertificates) GoString() string {
+	return s.String()
+}
+
+func (s *ListCertificatesResponseBodyPagingInfoCertificates) SetCreateTime(v int64) *ListCertificatesResponseBodyPagingInfoCertificates {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListCertificatesResponseBodyPagingInfoCertificates) SetCreateUser(v string) *ListCertificatesResponseBodyPagingInfoCertificates {
+	s.CreateUser = &v
+	return s
+}
+
+func (s *ListCertificatesResponseBodyPagingInfoCertificates) SetDescription(v string) *ListCertificatesResponseBodyPagingInfoCertificates {
+	s.Description = &v
+	return s
+}
+
+func (s *ListCertificatesResponseBodyPagingInfoCertificates) SetFileSizeInBytes(v int64) *ListCertificatesResponseBodyPagingInfoCertificates {
+	s.FileSizeInBytes = &v
+	return s
+}
+
+func (s *ListCertificatesResponseBodyPagingInfoCertificates) SetId(v int64) *ListCertificatesResponseBodyPagingInfoCertificates {
+	s.Id = &v
+	return s
+}
+
+func (s *ListCertificatesResponseBodyPagingInfoCertificates) SetName(v string) *ListCertificatesResponseBodyPagingInfoCertificates {
+	s.Name = &v
+	return s
+}
+
+type ListCertificatesResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListCertificatesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListCertificatesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCertificatesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCertificatesResponse) SetHeaders(v map[string]*string) *ListCertificatesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCertificatesResponse) SetStatusCode(v int32) *ListCertificatesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCertificatesResponse) SetBody(v *ListCertificatesResponseBody) *ListCertificatesResponse {
 	s.Body = v
 	return s
 }
@@ -29332,31 +30012,31 @@ type ListDataQualityResultsRequest struct {
 	//
 	// 2024-05-04
 	BizdateTo *string `json:"BizdateTo,omitempty" xml:"BizdateTo,omitempty"`
-	// The earliest time when data quality verification results are generated.
+	// The earliest time when the data quality check result was generated.
 	//
 	// example:
 	//
 	// 1710239005403
 	CreateTimeFrom *int64 `json:"CreateTimeFrom,omitempty" xml:"CreateTimeFrom,omitempty"`
-	// The latest generation time of data quality verification results.
+	// The latest time when the data quality check result was generated.
 	//
 	// example:
 	//
 	// 1710239005403
 	CreateTimeTo *int64 `json:"CreateTimeTo,omitempty" xml:"CreateTimeTo,omitempty"`
-	// The ID of the data quality verification task.
+	// The ID of the data quality monitoring task.
 	//
 	// example:
 	//
 	// 200001
 	DataQualityEvaluationTaskId *int64 `json:"DataQualityEvaluationTaskId,omitempty" xml:"DataQualityEvaluationTaskId,omitempty"`
-	// The ID of the data quality verification task instance.
+	// The ID of the instance generated by the check.
 	//
 	// example:
 	//
 	// 10001
 	DataQualityEvaluationTaskInstanceId *int64 `json:"DataQualityEvaluationTaskInstanceId,omitempty" xml:"DataQualityEvaluationTaskInstanceId,omitempty"`
-	// The ID of the data quality rule.
+	// The ID of the data quality monitoring rule.
 	//
 	// example:
 	//
@@ -29478,13 +30158,13 @@ type ListDataQualityResultsResponseBodyPagingInfo struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries.
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -29521,15 +30201,15 @@ func (s *ListDataQualityResultsResponseBodyPagingInfo) SetTotalCount(v int32) *L
 }
 
 type ListDataQualityResultsResponseBodyPagingInfoDataQualityResults struct {
-	// The time when the verification result was generated.
+	// The time when the data quality check result was generated.
 	//
 	// example:
 	//
 	// 1708284916414
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The check details.
+	// The information about the data quality check.
 	Details []*ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
-	// The ID of the verification result.
+	// The ID of the check result.
 	//
 	// example:
 	//
@@ -29537,7 +30217,7 @@ type ListDataQualityResultsResponseBodyPagingInfoDataQualityResults struct {
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The snapshot of the rule configuration when the check starts.
 	Rule *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRule `json:"Rule,omitempty" xml:"Rule,omitempty" type:"Struct"`
-	// The sample value used for this verification.
+	// The sample values used for the check.
 	//
 	// example:
 	//
@@ -29575,7 +30255,7 @@ type ListDataQualityResultsResponseBodyPagingInfoDataQualityResults struct {
 	//
 	// PASSED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the verification task instance.
+	// The ID of the instance generated by the check.
 	//
 	// example:
 	//
@@ -29627,13 +30307,13 @@ func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResults) SetTask
 }
 
 type ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsDetails struct {
-	// The value used to compare with the threshold.
+	// The value that is used for comparison with the threshold.
 	//
 	// example:
 	//
 	// 100.0
 	CheckedValue *string `json:"CheckedValue,omitempty" xml:"CheckedValue,omitempty"`
-	// Use the referenced sample to participate in the CheckedValue calculation of the benchmark value.
+	// The value that is calculated based on sample data. The value serves as a baseline value during the calculation of the value of the CheckedValue parameter.
 	//
 	// example:
 	//
@@ -29681,13 +30361,13 @@ func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsDetails) 
 type ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRule struct {
 	// The check settings for sample data.
 	CheckingConfig *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfig `json:"CheckingConfig,omitempty" xml:"CheckingConfig,omitempty" type:"Struct"`
-	// The description of the rule. It can be up to 500 characters in length.
+	// The description of the rule. The description can be up to 500 characters in length.
 	//
 	// example:
 	//
 	// this is a odps _sql task
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Whether the rule is enabled.
+	// Indicates whether the rule is enabled.
 	//
 	// example:
 	//
@@ -29695,19 +30375,19 @@ type ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRule struct {
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	// The operations that you can perform after the rule-based check fails.
 	ErrorHandlers []*ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleErrorHandlers `json:"ErrorHandlers,omitempty" xml:"ErrorHandlers,omitempty" type:"Repeated"`
-	// The ID of the rule.
+	// The rule ID.
 	//
 	// example:
 	//
 	// 100001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The rule name, a combination of numbers, English letters, Chinese characters, and half-width punctuation marks, can be up to 255 characters in length.
+	// The name of the rule. The name can be up to 255 characters in length and can contain digits, letters, and punctuation marks.
 	//
 	// example:
 	//
 	// The table cannot be empty.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// DataWorks the ID of the project.
+	// The DataWorks workspace ID.
 	//
 	// example:
 	//
@@ -29799,7 +30479,7 @@ func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRule) Set
 }
 
 type ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfig struct {
-	// Some types of thresholds need to query some reference samples, and then summarize the values of the reference samples to obtain the threshold for comparison. Here, an expression is used to represent the query method of the reference samples.
+	// The method that is used to query the referenced samples. To obtain some types of thresholds, you need to query reference samples and perform aggregate operations on the reference values. In this example, an expression is used to indicate the query method of referenced samples.
 	//
 	// example:
 	//
@@ -29885,20 +30565,22 @@ func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheck
 type ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholdsCritical struct {
 	// The threshold expression.
 	//
-	// The volatility type rule must use an expression to represent the volatility threshold. For example:
+	// If the template specified by the TemplateCode parameter is about fluctuation, you must use an expression to represent the threshold for fluctuation. Examples:
 	//
-	// - Fluctuation rise greater than 0.01: $checkValue > 0.01
+	// 	- $checkValue > 0.01
 	//
-	// - Fluctuation drop greater than 0.01:$checkValue < -0.01
+	// 	- $checkValue < -0.01
 	//
-	// - Absolute volatility: abs($checkValue) > 0.01
+	// 	- abs($checkValue) > 0.01
 	//
-	// You can also use expressions to configure thresholds for fixed-Value rules. If you configure them at the same time, the expression priority is higher than Operator and Value.
+	// If the template specified by the TemplateCode parameter is about fixed value, you can also use an expression to represent the threshold. If you configure the Expression, Operator, and Value parameters for the threshold at the same time, the Expression parameter takes precedence over the Operator and Value parameters.
 	//
 	// example:
 	//
 	// $checkValue > 0.01
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	// The comparison operator. Valid values:
+	//
 	// 	- \\>
 	//
 	// 	- \\>=
@@ -29949,20 +30631,22 @@ func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheck
 type ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholdsExpected struct {
 	// The threshold expression.
 	//
-	// The volatility type rule must use an expression to represent the volatility threshold. For example:
+	// If the template specified by the TemplateCode parameter is about fluctuation, you must use an expression to represent the threshold for fluctuation. Examples:
 	//
-	// - Fluctuation rise greater than 0.01: $checkValue > 0.01
+	// 	- $checkValue > 0.01
 	//
-	// - Fluctuation drop greater than 0.01:$checkValue < -0.01
+	// 	- $checkValue < -0.01
 	//
-	// - Absolute volatility: abs($checkValue) > 0.01
+	// 	- abs($checkValue) > 0.01
 	//
-	// You can also use expressions to configure thresholds for fixed-Value rules. If you configure them at the same time, the expression priority is higher than Operator and Value.
+	// If the template specified by the TemplateCode parameter is about fixed value, you can also use an expression to represent the threshold. If you configure the Expression, Operator, and Value parameters for the threshold at the same time, the Expression parameter takes precedence over the Operator and Value parameters.
 	//
 	// example:
 	//
 	// $checkValue > 0.01
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	// The comparison operator. Valid values:
+	//
 	// 	- \\>
 	//
 	// 	- \\>=
@@ -30013,20 +30697,22 @@ func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheck
 type ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholdsWarned struct {
 	// The threshold expression.
 	//
-	// The volatility type rule must use an expression to represent the volatility threshold. For example:
+	// If the template specified by the TemplateCode parameter is about fluctuation, you must use an expression to represent the threshold for fluctuation. Examples:
 	//
-	// - Fluctuation rise greater than 0.01: $checkValue > 0.01
+	// 	- $checkValue > 0.01
 	//
-	// - Fluctuation drop greater than 0.01:$checkValue < -0.01
+	// 	- $checkValue < -0.01
 	//
-	// - Absolute volatility: abs($checkValue) > 0.01
+	// 	- abs($checkValue) > 0.01
 	//
-	// You can also use expressions to configure thresholds for fixed-Value rules. If you configure them at the same time, the expression priority is higher than Operator and Value.
+	// If the template specified by the TemplateCode parameter is about fixed value, you can also use an expression to represent the threshold. If you configure the Expression, Operator, and Value parameters for the threshold at the same time, the Expression parameter takes precedence over the Operator and Value parameters.
 	//
 	// example:
 	//
 	// $checkValue > 0.01
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	// The comparison operator. Valid values:
+	//
 	// 	- \\>
 	//
 	// 	- \\>=
@@ -30075,7 +30761,7 @@ func (s *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheck
 }
 
 type ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleErrorHandlers struct {
-	// For custom SQL rules, you must specify SQL to filter problem data.
+	// The SQL statement that is used to filter failed tasks. If the rule is defined by custom SQL statements, you must specify an SQL statement to filter failed tasks.
 	//
 	// example:
 	//
@@ -30146,19 +30832,19 @@ type ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleSamplingC
 	//
 	// COUNT
 	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
-	// Parameters required for sample collection.
+	// The parameters required for sampling.
 	//
 	// example:
 	//
 	// { "columns": [ "id", "name" ] }
 	MetricParameters *string `json:"MetricParameters,omitempty" xml:"MetricParameters,omitempty"`
-	// The condition for secondary filtering of data that is not concerned during sampling, which can be up to 16777215 characters in length.
+	// The statements that are used to filter unnecessary data during sampling. The statements can be up to 16,777,215 characters in length.
 	//
 	// example:
 	//
 	// id IS NULL
 	SamplingFilter *string `json:"SamplingFilter,omitempty" xml:"SamplingFilter,omitempty"`
-	// Before executing the sample statement, insert some runtime parameter setting statements, which can be up to 1000 characters in length. Currently, only MaxCompute is supported.
+	// The statements that are used to configure the parameters required for sampling before you execute the sampling statements. The statements can be up to 1,000 characters in length. Only the MaxCompute database is supported.
 	//
 	// example:
 	//
@@ -30215,7 +30901,7 @@ type ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleTarget st
 	//
 	// MAX_COMPUTE
 	DatabaseType *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
-	// The unique ID of the table in the data map.
+	// The ID of the table in Data Map.
 	//
 	// example:
 	//
@@ -31044,15 +31730,15 @@ func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfi
 type ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsCritical struct {
 	// The threshold expression.
 	//
-	// The volatility type rule must use an expression to represent the volatility threshold. For example:
+	// If the template specified by the TemplateCode parameter is about fluctuation, you must use an expression to represent the threshold for fluctuation. Examples:
 	//
-	// - Fluctuation rise greater than 0.01: $checkValue > 0.01
+	// 	- $checkValue > 0.01
 	//
-	// - Fluctuation drop greater than 0.01:$checkValue < -0.01
+	// 	- $checkValue < -0.01
 	//
-	// - Absolute volatility: abs($checkValue) > 0.01
+	// 	- abs($checkValue) > 0.01
 	//
-	// You can also use expressions to configure thresholds for fixed-Value rules. If you configure them at the same time, the expression priority is higher than Operator and Value.
+	// If the template specified by the TemplateCode parameter is about fixed value, you can also use an expression to represent the threshold. If you configure the Expression, Operator, and Value parameters for the threshold at the same time, the Expression parameter takes precedence over the Operator and Value parameters.
 	//
 	// example:
 	//
@@ -31110,15 +31796,15 @@ func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfi
 type ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsExpected struct {
 	// The threshold expression.
 	//
-	// The volatility type rule must use an expression to represent the volatility threshold. For example:
+	// If the template specified by the TemplateCode parameter is about fluctuation, you must use an expression to represent the threshold for fluctuation. Examples:
 	//
-	// - Fluctuation rise greater than 0.01: $checkValue > 0.01
+	// 	- $checkValue > 0.01
 	//
-	// - Fluctuation drop greater than 0.01:$checkValue < -0.01
+	// 	- $checkValue < -0.01
 	//
-	// - Absolute volatility: abs($checkValue) > 0.01
+	// 	- abs($checkValue) > 0.01
 	//
-	// You can also use expressions to configure thresholds for fixed-Value rules. If you configure them at the same time, the expression priority is higher than Operator and Value.
+	// If the template specified by the TemplateCode parameter is about fixed value, you can also use an expression to represent the threshold. If you configure the Expression, Operator, and Value parameters for the threshold at the same time, the Expression parameter takes precedence over the Operator and Value parameters.
 	//
 	// example:
 	//
@@ -31176,15 +31862,15 @@ func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfi
 type ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsWarned struct {
 	// The threshold expression.
 	//
-	// The volatility type rule must use an expression to represent the volatility threshold. For example:
+	// If the template specified by the TemplateCode parameter is about fluctuation, you must use an expression to represent the threshold for fluctuation. Examples:
 	//
-	// - Fluctuation rise greater than 0.01: $checkValue > 0.01
+	// 	- $checkValue > 0.01
 	//
-	// - Fluctuation drop greater than 0.01:$checkValue < -0.01
+	// 	- $checkValue < -0.01
 	//
-	// - Absolute volatility: abs($checkValue) > 0.01
+	// 	- abs($checkValue) > 0.01
 	//
-	// You can also use expressions to configure thresholds for fixed-Value rules. If you configure them at the same time, the expression priority is higher than Operator and Value.
+	// If the template specified by the TemplateCode parameter is about fixed value, you can also use an expression to represent the threshold. If you configure the Expression, Operator, and Value parameters for the threshold at the same time, the Expression parameter takes precedence over the Operator and Value parameters.
 	//
 	// example:
 	//
@@ -37548,7 +38234,7 @@ type ListNodesResponseBodyPagingInfoNodesOutputsVariables struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The node to which the variable belongs.
 	Node *ListNodesResponseBodyPagingInfoNodesOutputsVariablesNode `json:"Node,omitempty" xml:"Node,omitempty" type:"Struct"`
-	// The scope of the variable. Valid value:
+	// The scope of the variable. Valid values:
 	//
 	// 	- NodeParameter
 	//
@@ -37562,7 +38248,7 @@ type ListNodesResponseBodyPagingInfoNodesOutputsVariables struct {
 	//
 	// NodeParameter
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// The type of the variable. Valid value:
+	// The type of the variable. Valid values:
 	//
 	// 	- NoKvVariableExpression
 	//
@@ -37818,7 +38504,7 @@ type ListNodesResponseBodyPagingInfoNodesTags struct {
 	//
 	// null
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The tag value
 	//
 	// example:
 	//
@@ -39312,23 +39998,23 @@ type ListResourceGroupsRequest struct {
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The types of resource groups to query. If you do not configure this parameter, only serverless resource groups are returned by default.
 	ResourceGroupTypes []*string `json:"ResourceGroupTypes,omitempty" xml:"ResourceGroupTypes,omitempty" type:"Repeated"`
-	// The list of fields used for sorting. Fields such as TriggerTime and StartedTime are supported. You must configure this parameter in the Sorting field + Sort by (Desc/Asc). By default, results are sorted in ascending order. Valid values:
+	// The fields used for sorting. Fields such as TriggerTime and StartedTime are supported. The value of this parameter is in the Sort field + Sort by (Desc/Asc) format. By default, results are sorted in ascending order. Valid values:
 	//
-	// 	- Id (Desc/Asc): resource group ID
+	// 	- Id (Desc/Asc): the resource group ID
 	//
-	// 	- Name (Desc/Asc): resource group name
+	// 	- Name (Desc/Asc): the name of the resource group
 	//
-	// 	- Remark (Desc/Asc): resource group remarks
+	// 	- Remark (Desc/Asc): the remarks of the resource group
 	//
-	// 	- Type (Desc/Asc): resource group type
+	// 	- Type (Desc/Asc): the type of the resource group
 	//
-	// 	- Status (Desc/Asc): status of resources in a resource group
+	// 	- Status (Desc/Asc): the status of the resource group
 	//
-	// 	- Spec (Desc/Asc): resource group specifications
+	// 	- Spec (Desc/Asc): the specifications of the resource group
 	//
-	// 	- CreateUser (Desc/Asc): creator
+	// 	- CreateUser (Desc/Asc): the creator of the resource group
 	//
-	// 	- CreateTime (Desc/Asc): creation time
+	// 	- CreateTime (Desc/Asc): the time when the route is created
 	//
 	// Default value: CreateTime Asc
 	//
@@ -39476,23 +40162,23 @@ type ListResourceGroupsShrinkRequest struct {
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The types of resource groups to query. If you do not configure this parameter, only serverless resource groups are returned by default.
 	ResourceGroupTypesShrink *string `json:"ResourceGroupTypes,omitempty" xml:"ResourceGroupTypes,omitempty"`
-	// The list of fields used for sorting. Fields such as TriggerTime and StartedTime are supported. You must configure this parameter in the Sorting field + Sort by (Desc/Asc). By default, results are sorted in ascending order. Valid values:
+	// The fields used for sorting. Fields such as TriggerTime and StartedTime are supported. The value of this parameter is in the Sort field + Sort by (Desc/Asc) format. By default, results are sorted in ascending order. Valid values:
 	//
-	// 	- Id (Desc/Asc): resource group ID
+	// 	- Id (Desc/Asc): the resource group ID
 	//
-	// 	- Name (Desc/Asc): resource group name
+	// 	- Name (Desc/Asc): the name of the resource group
 	//
-	// 	- Remark (Desc/Asc): resource group remarks
+	// 	- Remark (Desc/Asc): the remarks of the resource group
 	//
-	// 	- Type (Desc/Asc): resource group type
+	// 	- Type (Desc/Asc): the type of the resource group
 	//
-	// 	- Status (Desc/Asc): status of resources in a resource group
+	// 	- Status (Desc/Asc): the status of the resource group
 	//
-	// 	- Spec (Desc/Asc): resource group specifications
+	// 	- Spec (Desc/Asc): the specifications of the resource group
 	//
-	// 	- CreateUser (Desc/Asc): creator
+	// 	- CreateUser (Desc/Asc): the creator of the resource group
 	//
-	// 	- CreateTime (Desc/Asc): creation time
+	// 	- CreateTime (Desc/Asc): the time when the route is created
 	//
 	// Default value: CreateTime Asc
 	//
@@ -39659,8 +40345,9 @@ type ListResourceGroupsResponseBodyPagingInfoResourceGroupList struct {
 	// example:
 	//
 	// rg-aek2kqofrgXXXXX
-	AliyunResourceGroupId *string                                                                        `json:"AliyunResourceGroupId,omitempty" xml:"AliyunResourceGroupId,omitempty"`
-	AliyunResourceTags    []*ListResourceGroupsResponseBodyPagingInfoResourceGroupListAliyunResourceTags `json:"AliyunResourceTags,omitempty" xml:"AliyunResourceTags,omitempty" type:"Repeated"`
+	AliyunResourceGroupId *string `json:"AliyunResourceGroupId,omitempty" xml:"AliyunResourceGroupId,omitempty"`
+	// Alibaba Cloud tag list
+	AliyunResourceTags []*ListResourceGroupsResponseBodyPagingInfoResourceGroupListAliyunResourceTags `json:"AliyunResourceTags,omitempty" xml:"AliyunResourceTags,omitempty" type:"Repeated"`
 	// The creation time, which is a 64-bit timestamp.
 	//
 	// example:
@@ -39715,7 +40402,7 @@ type ListResourceGroupsResponseBodyPagingInfoResourceGroupList struct {
 	//
 	// Create a common resource group for common tasks
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The type of resource group. Valid values:
+	// The type of the resource group. Valid values:
 	//
 	// 	- CommonV2: serverless resource group
 	//
@@ -39739,9 +40426,9 @@ type ListResourceGroupsResponseBodyPagingInfoResourceGroupList struct {
 	//
 	// 	- Deleted: The resource group is released or destroyed.
 	//
-	// 	- Creating: The resource group is being started.
+	// 	- Creating: The resource group is being created.
 	//
-	// 	- CreateFailed: The resource group fails to be started.
+	// 	- CreateFailed: The resource group fails to be created.
 	//
 	// 	- Updating: The resource group is being scaled in or out, or the configurations of the resource group are being changed.
 	//
@@ -39752,6 +40439,10 @@ type ListResourceGroupsResponseBodyPagingInfoResourceGroupList struct {
 	// 	- DeleteFailed: The resource group fails to be released or destroyed.
 	//
 	// 	- Timeout: The operations that are performed on the resource group time out.
+	//
+	// 	- Freezed: The resource group is frozen.
+	//
+	// 	- Starting: The resource group is being started.
 	//
 	// example:
 	//
@@ -39838,10 +40529,14 @@ func (s *ListResourceGroupsResponseBodyPagingInfoResourceGroupList) SetStatus(v 
 }
 
 type ListResourceGroupsResponseBodyPagingInfoResourceGroupListAliyunResourceTags struct {
+	// Tag Key
+	//
 	// example:
 	//
 	// Key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Tag Value
+	//
 	// example:
 	//
 	// Value
@@ -45618,7 +46313,7 @@ type ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitions struct {
 	//
 	// 463497880880954XXXX
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The times when the workflow was last modified. This value is a UNIX timestamp.
+	// The time when the workflow was last modified. This value is a UNIX timestamp.
 	//
 	// example:
 	//
@@ -47000,9 +47695,9 @@ type MoveFunctionRequest struct {
 	//
 	// root/demo
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to obtain the ID.
 	//
-	// You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+	// This parameter indicates the DataWorks workspace to which the API operation is applied.
 	//
 	// This parameter is required.
 	//
@@ -47122,7 +47817,7 @@ type MoveNodeRequest struct {
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
 	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
 	//
-	// You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+	// You can use this parameter to specify the DataWorks workspace on which you want to perform the API operation.
 	//
 	// This parameter is required.
 	//
@@ -47240,9 +47935,9 @@ type MoveResourceRequest struct {
 	//
 	// root/demo
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to obtain the ID.
 	//
-	// You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+	// You can use this parameter to specify the DataWorks workspace on which you want to perform the API operation.
 	//
 	// This parameter is required.
 	//
@@ -47360,7 +48055,7 @@ type MoveWorkflowDefinitionRequest struct {
 	//
 	// root/demo
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID. You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to obtain the ID. This parameter indicates the DataWorks workspace to which the API operation is applied.
 	//
 	// This parameter is required.
 	//
@@ -49653,6 +50348,181 @@ func (s *TagDataAssetsResponse) SetStatusCode(v int32) *TagDataAssetsResponse {
 }
 
 func (s *TagDataAssetsResponse) SetBody(v *TagDataAssetsResponseBody) *TagDataAssetsResponse {
+	s.Body = v
+	return s
+}
+
+type TestDataSourceConnectivityRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 144544
+	DataSourceId *int64 `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10001
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Serverless_res_group_524257424564736_6831777003XXXXX
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+}
+
+func (s TestDataSourceConnectivityRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TestDataSourceConnectivityRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TestDataSourceConnectivityRequest) SetDataSourceId(v int64) *TestDataSourceConnectivityRequest {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *TestDataSourceConnectivityRequest) SetProjectId(v int64) *TestDataSourceConnectivityRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *TestDataSourceConnectivityRequest) SetResourceGroupId(v string) *TestDataSourceConnectivityRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+type TestDataSourceConnectivityResponseBody struct {
+	Connectivity *TestDataSourceConnectivityResponseBodyConnectivity `json:"Connectivity,omitempty" xml:"Connectivity,omitempty" type:"Struct"`
+	// example:
+	//
+	// 4CDF7B72-020B-542A-8465-21CFFA81****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s TestDataSourceConnectivityResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TestDataSourceConnectivityResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TestDataSourceConnectivityResponseBody) SetConnectivity(v *TestDataSourceConnectivityResponseBodyConnectivity) *TestDataSourceConnectivityResponseBody {
+	s.Connectivity = v
+	return s
+}
+
+func (s *TestDataSourceConnectivityResponseBody) SetRequestId(v string) *TestDataSourceConnectivityResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type TestDataSourceConnectivityResponseBodyConnectivity struct {
+	ConnectMessage *string `json:"ConnectMessage,omitempty" xml:"ConnectMessage,omitempty"`
+	// example:
+	//
+	// Connectable
+	ConnectState *string                                                         `json:"ConnectState,omitempty" xml:"ConnectState,omitempty"`
+	DetailLogs   []*TestDataSourceConnectivityResponseBodyConnectivityDetailLogs `json:"DetailLogs,omitempty" xml:"DetailLogs,omitempty" type:"Repeated"`
+}
+
+func (s TestDataSourceConnectivityResponseBodyConnectivity) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TestDataSourceConnectivityResponseBodyConnectivity) GoString() string {
+	return s.String()
+}
+
+func (s *TestDataSourceConnectivityResponseBodyConnectivity) SetConnectMessage(v string) *TestDataSourceConnectivityResponseBodyConnectivity {
+	s.ConnectMessage = &v
+	return s
+}
+
+func (s *TestDataSourceConnectivityResponseBodyConnectivity) SetConnectState(v string) *TestDataSourceConnectivityResponseBodyConnectivity {
+	s.ConnectState = &v
+	return s
+}
+
+func (s *TestDataSourceConnectivityResponseBodyConnectivity) SetDetailLogs(v []*TestDataSourceConnectivityResponseBodyConnectivityDetailLogs) *TestDataSourceConnectivityResponseBodyConnectivity {
+	s.DetailLogs = v
+	return s
+}
+
+type TestDataSourceConnectivityResponseBodyConnectivityDetailLogs struct {
+	// example:
+	//
+	// validate_input_parameters
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 1730217604002
+	EndTime *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1730217600001
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s TestDataSourceConnectivityResponseBodyConnectivityDetailLogs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TestDataSourceConnectivityResponseBodyConnectivityDetailLogs) GoString() string {
+	return s.String()
+}
+
+func (s *TestDataSourceConnectivityResponseBodyConnectivityDetailLogs) SetCode(v string) *TestDataSourceConnectivityResponseBodyConnectivityDetailLogs {
+	s.Code = &v
+	return s
+}
+
+func (s *TestDataSourceConnectivityResponseBodyConnectivityDetailLogs) SetEndTime(v int64) *TestDataSourceConnectivityResponseBodyConnectivityDetailLogs {
+	s.EndTime = &v
+	return s
+}
+
+func (s *TestDataSourceConnectivityResponseBodyConnectivityDetailLogs) SetMessage(v string) *TestDataSourceConnectivityResponseBodyConnectivityDetailLogs {
+	s.Message = &v
+	return s
+}
+
+func (s *TestDataSourceConnectivityResponseBodyConnectivityDetailLogs) SetStartTime(v int64) *TestDataSourceConnectivityResponseBodyConnectivityDetailLogs {
+	s.StartTime = &v
+	return s
+}
+
+type TestDataSourceConnectivityResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TestDataSourceConnectivityResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s TestDataSourceConnectivityResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TestDataSourceConnectivityResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TestDataSourceConnectivityResponse) SetHeaders(v map[string]*string) *TestDataSourceConnectivityResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *TestDataSourceConnectivityResponse) SetStatusCode(v int32) *TestDataSourceConnectivityResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *TestDataSourceConnectivityResponse) SetBody(v *TestDataSourceConnectivityResponseBody) *TestDataSourceConnectivityResponse {
 	s.Body = v
 	return s
 }
@@ -52393,7 +53263,7 @@ type UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfig struct
 	Thresholds *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholds `json:"Thresholds,omitempty" xml:"Thresholds,omitempty" type:"Struct"`
 	// The threshold calculation method. Valid values:
 	//
-	// 	- Fluctuation
+	// 	- Fluctation
 	//
 	// 	- Auto
 	//
@@ -52465,17 +53335,17 @@ func (s *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThr
 }
 
 type UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsCritical struct {
-	// 阈值表达式。
+	// The threshold expression.
 	//
-	// 波动率类型规则必须使用表达式方式表示波动阈值。如：
+	// If the template specified by the TemplateCode parameter is about fluctuation, you must use an expression to represent the threshold for fluctuation. Examples:
 	//
-	// - 波动上升大于0.01： $checkValue > 0.01
+	// 	- $checkValue > 0.01
 	//
-	// - 波动下降大于0.01：$checkValue < -0.01
+	// 	- $checkValue < -0.01
 	//
-	// - 波动率绝对值：abs($checkValue) > 0.01
+	// 	- abs($checkValue) > 0.01
 	//
-	// 固定值类型规则也可以使用表达式方式配置阈值，如果同时配置，表达式优先级高于Operator和Value
+	// If the template specified by the TemplateCode parameter is about fixed value, you can also use an expression to represent the threshold. If you configure the Expression, Operator, and Value parameters for the threshold at the same time, the Expression parameter takes precedence over the Operator and Value parameters.
 	//
 	// example:
 	//
@@ -52531,17 +53401,17 @@ func (s *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThr
 }
 
 type UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsExpected struct {
-	// 阈值表达式。
+	// The threshold expression.
 	//
-	// 波动率类型规则必须使用表达式方式表示波动阈值。如：
+	// If the template specified by the TemplateCode parameter is about fluctuation, you must use an expression to represent the threshold for fluctuation. Examples:
 	//
-	// - 波动上升大于0.01： $checkValue > 0.01
+	// 	- $checkValue > 0.01
 	//
-	// - 波动下降大于0.01：$checkValue < -0.01
+	// 	- $checkValue < -0.01
 	//
-	// - 波动率绝对值：abs($checkValue) > 0.01
+	// 	- abs($checkValue) > 0.01
 	//
-	// 固定值类型规则也可以使用表达式方式配置阈值，如果同时配置，表达式优先级高于Operator和Value
+	// If the template specified by the TemplateCode parameter is about fixed value, you can also use an expression to represent the threshold. If you configure the Expression, Operator, and Value parameters for the threshold at the same time, the Expression parameter takes precedence over the Operator and Value parameters.
 	//
 	// example:
 	//
@@ -52597,17 +53467,17 @@ func (s *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThr
 }
 
 type UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsWarned struct {
-	// 阈值表达式。
+	// The threshold expression.
 	//
-	// 波动率类型规则必须使用表达式方式表示波动阈值。如：
+	// If the template specified by the TemplateCode parameter is about fluctuation, you must use an expression to represent the threshold for fluctuation. Examples:
 	//
-	// - 波动上升大于0.01： $checkValue > 0.01
+	// 	- $checkValue > 0.01
 	//
-	// - 波动下降大于0.01：$checkValue < -0.01
+	// 	- $checkValue < -0.01
 	//
-	// - 波动率绝对值：abs($checkValue) > 0.01
+	// 	- abs($checkValue) > 0.01
 	//
-	// 固定值类型规则也可以使用表达式方式配置阈值，如果同时配置，表达式优先级高于Operator和Value
+	// If the template specified by the TemplateCode parameter is about fixed value, you can also use an expression to represent the threshold. If you configure the Expression, Operator, and Value parameters for the threshold at the same time, the Expression parameter takes precedence over the Operator and Value parameters.
 	//
 	// example:
 	//
@@ -52698,39 +53568,37 @@ func (s *UpdateDataQualityEvaluationTaskRequestDataQualityRulesErrorHandlers) Se
 }
 
 type UpdateDataQualityEvaluationTaskRequestDataQualityRulesSamplingConfig struct {
-	// The metrics used for sampling.
-	//
-	// Valid values:
-	//
-	// 	- DuplicatedPercent: the proportion of the number of duplicated values of the field to the number of rows in the table.
-	//
-	// 	- DuplicatedCount: the number of duplicated values of the field.
-	//
-	// 	- TableSize: the table size.
-	//
-	// 	- CountNotIn: the number of rows in which the field values are different from the referenced values that you specified in the rule.
-	//
-	// 	- Max: the maximum value of the field.
-	//
-	// 	- GroupCount: the field value and the number of rows for each field value.
+	// The metrics used for sampling. Valid values:
 	//
 	// 	- Count: the number of rows in the table.
 	//
-	// 	- CountDistinctNotIn: the number of unique values that are different from the referenced values that you specified in the rule after deduplication.
-	//
 	// 	- Min: the minimum value of the field.
+	//
+	// 	- Max: the maximum value of the field.
 	//
 	// 	- Avg: the average value of the field.
 	//
 	// 	- DistinctCount: the number of unique values of the field after deduplication.
 	//
-	// 	- NullValueCount: the number of rows in which the field value is null.
+	// 	- DistinctPercent: the proportion of the number of unique values of the field after deduplication to the number of rows in the table.
 	//
-	// 	- UserDefinedSql: specifies that data is sampled by executing custom SQL statements.
+	// 	- DuplicatedCount: the number of duplicated values of the field.
+	//
+	// 	- DuplicatedPercent: the proportion of the number of duplicated values of the field to the number of rows in the table.
+	//
+	// 	- TableSize: the table size.
+	//
+	// 	- NullValueCount: the number of rows in which the field value is null.
 	//
 	// 	- NullValuePercent: the proportion of the number of rows in which the field value is null to the number of rows in the table.
 	//
-	// 	- DistinctPercent: the proportion of the number of unique values of the field after deduplication to the number of rows in the table.
+	// 	- GroupCount: the field value and the number of rows for each field value.
+	//
+	// 	- CountNotIn: the number of rows in which the field values are different from the referenced values that you specified in the rule.
+	//
+	// 	- CountDistinctNotIn: the number of unique values that are different from the referenced values that you specified in the rule after deduplication.
+	//
+	// 	- UserDefinedSql: specifies that data is sampled by executing custom SQL statements.
 	//
 	// example:
 	//
@@ -55351,33 +56219,33 @@ func (s *UpdateRouteResponse) SetBody(v *UpdateRouteResponseBody) *UpdateRouteRe
 }
 
 type UpdateTaskRequest struct {
-	// The client unique code of the task, which uniquely identifies a task. It is used to implement asynchronous and idempotent functions. If it is not specified during creation, the system will automatically generate the code, which will be uniquely bound to the resource ID. If you specify this parameter when updating and deleting resources, it should be consistent with the client unique code when creating resources.
+	// The unique code of the client. This code uniquely identifies a task. This parameter is used to create a task asynchronously and implement the idempotence of the task. If you do not specify this parameter when you create the task, the system automatically generates a unique code. The unique code is uniquely associated with the task ID. If you specify this parameter when you update or delete the task, the value of this parameter must be the unique code that is used to create the task.
 	//
 	// example:
 	//
 	// Task_0bc5213917368545132902xxxxxxxx
 	ClientUniqueCode *string `json:"ClientUniqueCode,omitempty" xml:"ClientUniqueCode,omitempty"`
-	// The associated data source information.
+	// The information about the associated data source.
 	DataSource *UpdateTaskRequestDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
-	// Dependency information.
+	// The dependency information.
 	Dependencies []*UpdateTaskRequestDependencies `json:"Dependencies,omitempty" xml:"Dependencies,omitempty" type:"Repeated"`
-	// The description.
+	// The description of the task.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The project environment.
+	// The environment of the workspace. Valid values:
 	//
-	// - Prod: Production
+	// 	- Prod: production environment
 	//
-	// - Dev: Development
+	// 	- Dev: development environment
 	//
 	// example:
 	//
 	// Prod
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	// The ID of the task.
+	// The task ID.
 	//
 	// This parameter is required.
 	//
@@ -55385,19 +56253,19 @@ type UpdateTaskRequest struct {
 	//
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Enter information.
+	// The input information.
 	Inputs *UpdateTaskRequestInputs `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Struct"`
-	// The instance generation mode.
+	// The instance generation mode. Valid values:
 	//
-	// - T +1 (second born)
+	// 	- T+1
 	//
-	// - Immediately (generate now)
+	// 	- Immediately
 	//
 	// example:
 	//
 	// T+1
 	InstanceMode *string `json:"InstanceMode,omitempty" xml:"InstanceMode,omitempty"`
-	// The name.
+	// The name of the task.
 	//
 	// This parameter is required.
 	//
@@ -55407,7 +56275,7 @@ type UpdateTaskRequest struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The output information.
 	Outputs *UpdateTaskRequestOutputs `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Struct"`
-	// The account ID of the owner of the task.
+	// The account ID of the task owner.
 	//
 	// This parameter is required.
 	//
@@ -55415,19 +56283,19 @@ type UpdateTaskRequest struct {
 	//
 	// 1000
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The retry interval, in seconds.
+	// The rerun interval. Unit: seconds.
 	//
 	// example:
 	//
 	// 60
 	RerunInterval *int32 `json:"RerunInterval,omitempty" xml:"RerunInterval,omitempty"`
-	// The configuration of whether the task is allowed to rerun.
+	// The rerun mode. Valid values:
 	//
-	// - AllDenied: failure or success cannot be rerun.
+	// 	- AllDenied: The task cannot be rerun regardless of whether the task is successfully run or fails to run.
 	//
-	// - FailureAllowed: only failures can be rerun
+	// 	- FailureAllowed: The task can be rerun only after it fails to run.
 	//
-	// - AllAllowed: you can run again if you fail or succeed.
+	// 	- AllAllowed: The task can be rerun regardless of whether the task is successfully run or fails to run.
 	//
 	// This parameter is required.
 	//
@@ -55435,27 +56303,27 @@ type UpdateTaskRequest struct {
 	//
 	// AllAllowed
 	RerunMode *string `json:"RerunMode,omitempty" xml:"RerunMode,omitempty"`
-	// The number of retries that take effect when the task is set to rerun.
+	// The number of times that the task is rerun. This parameter takes effect only if the RerunMode parameter is set to AllAllowed or FailureAllowed.
 	//
 	// example:
 	//
 	// 3
 	RerunTimes *int32 `json:"RerunTimes,omitempty" xml:"RerunTimes,omitempty"`
-	// Configuration of the runtime environment, such as resource group information.
+	// The configurations of the runtime environment, such as the resource group information.
 	//
 	// This parameter is required.
 	RuntimeResource *UpdateTaskRequestRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
-	// Run the script information.
+	// The script information.
 	Script *UpdateTaskRequestScript `json:"Script,omitempty" xml:"Script,omitempty" type:"Struct"`
-	// The list of task tags.
+	// The tags.
 	Tags []*UpdateTaskRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The timeout period of the task execution, in seconds.
+	// The timeout period of task running. Unit: seconds.
 	//
 	// example:
 	//
 	// 3600
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	// The trigger method of the task.
+	// The trigger method.
 	//
 	// This parameter is required.
 	Trigger *UpdateTaskRequestTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
@@ -55587,15 +56455,15 @@ func (s *UpdateTaskRequestDataSource) SetName(v string) *UpdateTaskRequestDataSo
 }
 
 type UpdateTaskRequestDependencies struct {
-	// The type of the dependency.
+	// The dependency type. Valid values:
 	//
-	// - CrossCycleDependsOnChildren: cross-cycle dependency level-1 child nodes
+	// 	- CrossCycleDependsOnChildren: cross-cycle dependency on level-1 descendant nodes
 	//
-	// - CrossCycleDependsOnSelf: cross-cycle dependency
+	// 	- CrossCycleDependsOnSelf: cross-cycle dependency on the current node
 	//
-	// - CrossCycleDependsOnOtherNode: cross-cycle dependency on other nodes
+	// 	- CrossCycleDependsOnOtherNode: cross-cycle dependency on other nodes
 	//
-	// - Normal: same-cycle dependency
+	// 	- Normal: same-cycle scheduling dependency
 	//
 	// This parameter is required.
 	//
@@ -55603,13 +56471,13 @@ type UpdateTaskRequestDependencies struct {
 	//
 	// Normal
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The output identifier of the upstream task. (This field is returned when the input content is set depending on the same cycle)
+	// The identifier of the output of the ancestor task. This parameter is returned only if `same-cycle scheduling dependencies` and the node input are configured.
 	//
 	// example:
 	//
 	// pre.odps_sql_demo_0
 	UpstreamOutput *string `json:"UpstreamOutput,omitempty" xml:"UpstreamOutput,omitempty"`
-	// The Id of the upstream task. (This field is returned when the input content is not set for cross-cycle dependencies on other nodes and same-cycle dependencies.
+	// The ancestor task ID. This parameter is returned only if `cross-cycle scheduling dependencies` or `same-cycle scheduling dependencies` and the node input are not configured.
 	//
 	// example:
 	//
@@ -55641,7 +56509,7 @@ func (s *UpdateTaskRequestDependencies) SetUpstreamTaskId(v int64) *UpdateTaskRe
 }
 
 type UpdateTaskRequestInputs struct {
-	// The list of variable definitions.
+	// The variables.
 	Variables []*UpdateTaskRequestInputsVariables `json:"Variables,omitempty" xml:"Variables,omitempty" type:"Repeated"`
 }
 
@@ -55665,15 +56533,15 @@ type UpdateTaskRequestInputsVariables struct {
 	//
 	// key1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Type.
+	// The type. Valid values:
 	//
-	// - Constant: Constant
+	// 	- Constant: constant
 	//
-	// - PassThrough: parameter node output
+	// 	- PassThrough: node output
 	//
-	// - System: variable
+	// 	- System: variable
 	//
-	// - NodeOutput: script output
+	// 	- NodeOutput: script output
 	//
 	// This parameter is required.
 	//
@@ -55713,9 +56581,9 @@ func (s *UpdateTaskRequestInputsVariables) SetValue(v string) *UpdateTaskRequest
 }
 
 type UpdateTaskRequestOutputs struct {
-	// The list of task output definitions.
+	// The task outputs.
 	TaskOutputs []*UpdateTaskRequestOutputsTaskOutputs `json:"TaskOutputs,omitempty" xml:"TaskOutputs,omitempty" type:"Repeated"`
-	// The list of variable definitions.
+	// The variables.
 	Variables []*UpdateTaskRequestOutputsVariables `json:"Variables,omitempty" xml:"Variables,omitempty" type:"Repeated"`
 }
 
@@ -55738,7 +56606,7 @@ func (s *UpdateTaskRequestOutputs) SetVariables(v []*UpdateTaskRequestOutputsVar
 }
 
 type UpdateTaskRequestOutputsTaskOutputs struct {
-	// The output identifier.
+	// The identifier of the output.
 	//
 	// example:
 	//
@@ -55766,15 +56634,15 @@ type UpdateTaskRequestOutputsVariables struct {
 	//
 	// key1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Type.
+	// The type. Valid values:
 	//
-	// - Constant: Constant
+	// 	- Constant: constant
 	//
-	// - PassThrough: parameter node output
+	// 	- PassThrough: node output
 	//
-	// - System: variable
+	// 	- System: variable
 	//
-	// - NodeOutput: script output
+	// 	- NodeOutput: script output
 	//
 	// This parameter is required.
 	//
@@ -55814,19 +56682,19 @@ func (s *UpdateTaskRequestOutputsVariables) SetValue(v string) *UpdateTaskReques
 }
 
 type UpdateTaskRequestRuntimeResource struct {
-	// Configure CU consumption for task running.
+	// The default number of compute units (CUs) configured for task running.
 	//
 	// example:
 	//
 	// 0.25
 	Cu *string `json:"Cu,omitempty" xml:"Cu,omitempty"`
-	// The ID of the image configured for the task.
+	// The ID of the image configured for task running.
 	//
 	// example:
 	//
 	// i-xxxxxx
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
-	// The identifier of the scheduling resource group configured for running the task.
+	// The ID of the resource group for scheduling configured for task running.
 	//
 	// This parameter is required.
 	//
@@ -55866,7 +56734,7 @@ type UpdateTaskRequestScript struct {
 	//
 	// echo "helloWorld"
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The list of script parameters.
+	// The script parameters.
 	//
 	// example:
 	//
@@ -55901,7 +56769,7 @@ type UpdateTaskRequestTags struct {
 	//
 	// key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	//
 	// example:
 	//
@@ -55928,41 +56796,41 @@ func (s *UpdateTaskRequestTags) SetValue(v string) *UpdateTaskRequestTags {
 }
 
 type UpdateTaskRequestTrigger struct {
-	// Cron expression, which takes effect when type = Scheduler.
+	// The CRON expression. This parameter takes effect only if the Type parameter is set to Scheduler.
 	//
 	// example:
 	//
 	// 00 00 00 	- 	- ?
 	Cron *string `json:"Cron,omitempty" xml:"Cron,omitempty"`
-	// The expiration time of the periodic trigger, which takes effect when type = Scheduler.
+	// The end time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
 	//
 	// example:
 	//
 	// 9999-01-01 00:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The operation mode when the trigger is triggered. It takes effect when type = Scheduler.
+	// The running mode of the task after it is triggered. This parameter takes effect only if the Type parameter is set to Scheduler. Valid values:
 	//
-	// - Pause: Pause
+	// 	- Pause
 	//
-	// - Skip: empty run
+	// 	- Skip
 	//
-	// - Normal: Normal operation
+	// 	- Normal
 	//
 	// example:
 	//
 	// Normal
 	Recurrence *string `json:"Recurrence,omitempty" xml:"Recurrence,omitempty"`
-	// The time when the cycle trigger takes effect. It takes effect when type = Scheduler.
+	// The start time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
 	//
 	// example:
 	//
 	// 1970-01-01 00:00:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The type of the trigger method.
+	// The trigger type. Valid values:
 	//
-	// - Scheduler: the scheduling cycle is triggered.
+	// 	- Scheduler: periodic scheduling
 	//
-	// - Manual: manually triggered
+	// 	- Manual: manual scheduling
 	//
 	// This parameter is required.
 	//
@@ -56006,33 +56874,33 @@ func (s *UpdateTaskRequestTrigger) SetType(v string) *UpdateTaskRequestTrigger {
 }
 
 type UpdateTaskShrinkRequest struct {
-	// The client unique code of the task, which uniquely identifies a task. It is used to implement asynchronous and idempotent functions. If it is not specified during creation, the system will automatically generate the code, which will be uniquely bound to the resource ID. If you specify this parameter when updating and deleting resources, it should be consistent with the client unique code when creating resources.
+	// The unique code of the client. This code uniquely identifies a task. This parameter is used to create a task asynchronously and implement the idempotence of the task. If you do not specify this parameter when you create the task, the system automatically generates a unique code. The unique code is uniquely associated with the task ID. If you specify this parameter when you update or delete the task, the value of this parameter must be the unique code that is used to create the task.
 	//
 	// example:
 	//
 	// Task_0bc5213917368545132902xxxxxxxx
 	ClientUniqueCode *string `json:"ClientUniqueCode,omitempty" xml:"ClientUniqueCode,omitempty"`
-	// The associated data source information.
+	// The information about the associated data source.
 	DataSourceShrink *string `json:"DataSource,omitempty" xml:"DataSource,omitempty"`
-	// Dependency information.
+	// The dependency information.
 	DependenciesShrink *string `json:"Dependencies,omitempty" xml:"Dependencies,omitempty"`
-	// The description.
+	// The description of the task.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The project environment.
+	// The environment of the workspace. Valid values:
 	//
-	// - Prod: Production
+	// 	- Prod: production environment
 	//
-	// - Dev: Development
+	// 	- Dev: development environment
 	//
 	// example:
 	//
 	// Prod
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	// The ID of the task.
+	// The task ID.
 	//
 	// This parameter is required.
 	//
@@ -56040,19 +56908,19 @@ type UpdateTaskShrinkRequest struct {
 	//
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Enter information.
+	// The input information.
 	InputsShrink *string `json:"Inputs,omitempty" xml:"Inputs,omitempty"`
-	// The instance generation mode.
+	// The instance generation mode. Valid values:
 	//
-	// - T +1 (second born)
+	// 	- T+1
 	//
-	// - Immediately (generate now)
+	// 	- Immediately
 	//
 	// example:
 	//
 	// T+1
 	InstanceMode *string `json:"InstanceMode,omitempty" xml:"InstanceMode,omitempty"`
-	// The name.
+	// The name of the task.
 	//
 	// This parameter is required.
 	//
@@ -56062,7 +56930,7 @@ type UpdateTaskShrinkRequest struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The output information.
 	OutputsShrink *string `json:"Outputs,omitempty" xml:"Outputs,omitempty"`
-	// The account ID of the owner of the task.
+	// The account ID of the task owner.
 	//
 	// This parameter is required.
 	//
@@ -56070,19 +56938,19 @@ type UpdateTaskShrinkRequest struct {
 	//
 	// 1000
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The retry interval, in seconds.
+	// The rerun interval. Unit: seconds.
 	//
 	// example:
 	//
 	// 60
 	RerunInterval *int32 `json:"RerunInterval,omitempty" xml:"RerunInterval,omitempty"`
-	// The configuration of whether the task is allowed to rerun.
+	// The rerun mode. Valid values:
 	//
-	// - AllDenied: failure or success cannot be rerun.
+	// 	- AllDenied: The task cannot be rerun regardless of whether the task is successfully run or fails to run.
 	//
-	// - FailureAllowed: only failures can be rerun
+	// 	- FailureAllowed: The task can be rerun only after it fails to run.
 	//
-	// - AllAllowed: you can run again if you fail or succeed.
+	// 	- AllAllowed: The task can be rerun regardless of whether the task is successfully run or fails to run.
 	//
 	// This parameter is required.
 	//
@@ -56090,27 +56958,27 @@ type UpdateTaskShrinkRequest struct {
 	//
 	// AllAllowed
 	RerunMode *string `json:"RerunMode,omitempty" xml:"RerunMode,omitempty"`
-	// The number of retries that take effect when the task is set to rerun.
+	// The number of times that the task is rerun. This parameter takes effect only if the RerunMode parameter is set to AllAllowed or FailureAllowed.
 	//
 	// example:
 	//
 	// 3
 	RerunTimes *int32 `json:"RerunTimes,omitempty" xml:"RerunTimes,omitempty"`
-	// Configuration of the runtime environment, such as resource group information.
+	// The configurations of the runtime environment, such as the resource group information.
 	//
 	// This parameter is required.
 	RuntimeResourceShrink *string `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty"`
-	// Run the script information.
+	// The script information.
 	ScriptShrink *string `json:"Script,omitempty" xml:"Script,omitempty"`
-	// The list of task tags.
+	// The tags.
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The timeout period of the task execution, in seconds.
+	// The timeout period of task running. Unit: seconds.
 	//
 	// example:
 	//
 	// 3600
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	// The trigger method of the task.
+	// The trigger method.
 	//
 	// This parameter is required.
 	TriggerShrink *string `json:"Trigger,omitempty" xml:"Trigger,omitempty"`
@@ -56220,13 +57088,13 @@ func (s *UpdateTaskShrinkRequest) SetTriggerShrink(v string) *UpdateTaskShrinkRe
 }
 
 type UpdateTaskResponseBody struct {
-	// The ID of the request. It is used to locate logs and troubleshoot problems.
+	// The request ID.
 	//
 	// example:
 	//
 	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Whether the operation is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -56475,13 +57343,13 @@ func (s *UpdateTaskInstancesResponse) SetBody(v *UpdateTaskInstancesResponseBody
 }
 
 type UpdateWorkflowRequest struct {
-	// The client-side unique code of the workflow for asynchronous and idempotent implementation. If not specified during creation, the system will automatically generate the code, which will be uniquely bound to the resource ID. If you specify this parameter when updating and deleting resources, it should be consistent with the client unique code when creating resources.
+	// The unique code of the client. This parameter is used to create a workflow asynchronously and implement the idempotence of the workflow. If you do not specify this parameter when you create the workflow, the system automatically generates a unique code. The unique code is uniquely associated with the workflow ID. If you specify this parameter when you update or delete the workflow, the value of this parameter must be the unique code that is used to create the workflow.
 	//
 	// example:
 	//
 	// Workflow_0bc5213917368545132902xxxxxxxx
 	ClientUniqueCode *string `json:"ClientUniqueCode,omitempty" xml:"ClientUniqueCode,omitempty"`
-	// Dependency information.
+	// The dependency information.
 	Dependencies []*UpdateWorkflowRequestDependencies `json:"Dependencies,omitempty" xml:"Dependencies,omitempty" type:"Repeated"`
 	// The description.
 	//
@@ -56489,17 +57357,17 @@ type UpdateWorkflowRequest struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The project environment.
+	// The environment of the workspace. Valid values:
 	//
-	// - Prod: Production
+	// 	- Prod: production environment
 	//
-	// - Dev: Development
+	// 	- Dev: development environment
 	//
 	// example:
 	//
 	// Prod
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	// The ID of the workflow.
+	// The workflow ID.
 	//
 	// This parameter is required.
 	//
@@ -56507,7 +57375,7 @@ type UpdateWorkflowRequest struct {
 	//
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name.
+	// The name of the workflow.
 	//
 	// This parameter is required.
 	//
@@ -56525,15 +57393,15 @@ type UpdateWorkflowRequest struct {
 	//
 	// 1000
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The list of parameters.
+	// The parameters.
 	//
 	// example:
 	//
 	// para1=$bizdate para2=$[yyyymmdd]
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	// The list of workflow tags.
+	// The tags.
 	Tags []*UpdateWorkflowRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The list of tasks.
+	// The tasks.
 	Tasks []*UpdateWorkflowRequestTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
 	// The trigger method.
 	//
@@ -56610,15 +57478,15 @@ func (s *UpdateWorkflowRequest) SetTrigger(v *UpdateWorkflowRequestTrigger) *Upd
 }
 
 type UpdateWorkflowRequestDependencies struct {
-	// The type of the dependency.
+	// The dependency type. Valid values:
 	//
-	// - CrossCycleDependsOnChildren: cross-cycle dependency level-1 child nodes
+	// 	- CrossCycleDependsOnChildren: cross-cycle dependency on level-1 descendant nodes
 	//
-	// - CrossCycleDependsOnSelf: cross-cycle dependency
+	// 	- CrossCycleDependsOnSelf: cross-cycle dependency on the current node
 	//
-	// - CrossCycleDependsOnOtherNode: cross-cycle dependency on other nodes
+	// 	- CrossCycleDependsOnOtherNode: cross-cycle dependency on other nodes
 	//
-	// - Normal: same-cycle dependency
+	// 	- Normal: same-cycle scheduling dependency
 	//
 	// This parameter is required.
 	//
@@ -56626,13 +57494,13 @@ type UpdateWorkflowRequestDependencies struct {
 	//
 	// Normal
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The output identifier of the upstream task. (This field is returned when `same cycle dependence` and input content is set)
+	// The identifier of the output of the ancestor task. This parameter is returned only if `same-cycle scheduling dependencies` and the node input are configured.
 	//
 	// example:
 	//
 	// pre.odps_sql_demo_0
 	UpstreamOutput *string `json:"UpstreamOutput,omitempty" xml:"UpstreamOutput,omitempty"`
-	// The Id of the upstream task. (This field is returned when the input content is not set for `cross-cycle dependency other nodes` and `same-cycle dependency `, otherwise it is not returned)
+	// The ancestor task ID. This parameter is returned only if `cross-cycle scheduling dependencies` or `same-cycle scheduling dependencies` and the node input are not configured.
 	//
 	// example:
 	//
@@ -56664,7 +57532,7 @@ func (s *UpdateWorkflowRequestDependencies) SetUpstreamTaskId(v int64) *UpdateWo
 }
 
 type UpdateWorkflowRequestOutputs struct {
-	// The list of workflow task output definitions.
+	// The task outputs.
 	TaskOutputs []*UpdateWorkflowRequestOutputsTaskOutputs `json:"TaskOutputs,omitempty" xml:"TaskOutputs,omitempty" type:"Repeated"`
 }
 
@@ -56682,7 +57550,7 @@ func (s *UpdateWorkflowRequestOutputs) SetTaskOutputs(v []*UpdateWorkflowRequest
 }
 
 type UpdateWorkflowRequestOutputsTaskOutputs struct {
-	// The output identifier.
+	// The identifier of the output.
 	//
 	// example:
 	//
@@ -56712,7 +57580,7 @@ type UpdateWorkflowRequestTags struct {
 	//
 	// key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	//
 	// example:
 	//
@@ -56745,15 +57613,15 @@ type UpdateWorkflowRequestTasks struct {
 	//
 	// 1234
 	BaseLineId *int64 `json:"BaseLineId,omitempty" xml:"BaseLineId,omitempty"`
-	// The client-side unique code of the task, which is used to implement asynchronous and idempotent functions. If not specified during creation, the system will automatically generate the code, which will be uniquely bound to the resource ID. If you specify this parameter when updating and deleting resources, it should be consistent with the client unique code when creating resources.
+	// The unique code of the client. This parameter is used to create a task asynchronously and implement the idempotence of the task. If you do not specify this parameter when you create the task, the system automatically generates a unique code. The unique code is uniquely associated with the task ID. If you specify this parameter when you update or delete the task, the value of this parameter must be the unique code that is used to create the task.
 	//
 	// example:
 	//
 	// Task_0bc5213917368545132902xxxxxxxx
 	ClientUniqueCode *string `json:"ClientUniqueCode,omitempty" xml:"ClientUniqueCode,omitempty"`
-	// The associated data source information.
+	// The information about the associated data source.
 	DataSource *UpdateWorkflowRequestTasksDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
-	// Dependency information.
+	// The dependency information.
 	Dependencies []*UpdateWorkflowRequestTasksDependencies `json:"Dependencies,omitempty" xml:"Dependencies,omitempty" type:"Repeated"`
 	// The description.
 	//
@@ -56761,17 +57629,17 @@ type UpdateWorkflowRequestTasks struct {
 	//
 	// Test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The project environment.
+	// The environment of the workspace. Valid values:
 	//
-	// - Prod: Production
+	// 	- Prod
 	//
-	// - Dev: Development
+	// 	- Dev
 	//
 	// example:
 	//
 	// Prod
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	// The ID of the task. If you enter this field, a full update is performed on the corresponding task. If you do not enter this field, a new task is created.
+	// The task ID. If you configure this parameter, full update is performed on the task. If you do not configure this parameter, another task is created.
 	//
 	// This parameter is required.
 	//
@@ -56779,7 +57647,7 @@ type UpdateWorkflowRequestTasks struct {
 	//
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Enter information.
+	// The input information.
 	Inputs *UpdateWorkflowRequestTasksInputs `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Struct"`
 	// The name of the task.
 	//
@@ -56799,19 +57667,19 @@ type UpdateWorkflowRequestTasks struct {
 	//
 	// 1000
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The retry interval, in seconds.
+	// The rerun interval. Unit: seconds.
 	//
 	// example:
 	//
 	// 60
 	RerunInterval *int32 `json:"RerunInterval,omitempty" xml:"RerunInterval,omitempty"`
-	// The configuration of whether the task is allowed to rerun.
+	// The rerun mode. Valid values:
 	//
-	// - AllDenied (failure or success cannot be rerun)
+	// 	- AllDenied: The task cannot be rerun regardless of whether the task is successfully run or fails to run.
 	//
-	// - FailureAllowed (only failures can be rerun)
+	// 	- FailureAllowed: The task can be rerun only after it fails to run.
 	//
-	// - AllAllowed (run again if failed or successful)
+	// 	- AllAllowed: The task can be rerun regardless of whether the task is successfully run or fails to run.
 	//
 	// This parameter is required.
 	//
@@ -56819,27 +57687,27 @@ type UpdateWorkflowRequestTasks struct {
 	//
 	// AllAllowed
 	RerunMode *string `json:"RerunMode,omitempty" xml:"RerunMode,omitempty"`
-	// The number of retries that take effect when the task is set to rerun.
+	// The number of times that the task is rerun. This parameter takes effect only if the RerunMode parameter is set to AllAllowed or FailureAllowed.
 	//
 	// example:
 	//
 	// 3
 	RerunTimes *int32 `json:"RerunTimes,omitempty" xml:"RerunTimes,omitempty"`
-	// Configuration of the runtime environment, such as resource group information.
+	// The configurations of the runtime environment, such as the resource group information.
 	//
 	// This parameter is required.
 	RuntimeResource *UpdateWorkflowRequestTasksRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
-	// Run the script information.
+	// The script information.
 	Script *UpdateWorkflowRequestTasksScript `json:"Script,omitempty" xml:"Script,omitempty" type:"Struct"`
-	// The list of task tags.
+	// The tags.
 	Tags []*UpdateWorkflowRequestTasksTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The timeout period of the task execution, in seconds.
+	// The timeout period of task running. Unit: seconds.
 	//
 	// example:
 	//
 	// 3600
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	// The trigger method of the task.
+	// The trigger method.
 	//
 	// This parameter is required.
 	Trigger *UpdateWorkflowRequestTasksTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
@@ -56984,15 +57852,15 @@ func (s *UpdateWorkflowRequestTasksDataSource) SetName(v string) *UpdateWorkflow
 }
 
 type UpdateWorkflowRequestTasksDependencies struct {
-	// The type of the dependency.
+	// The dependency type. Valid values:
 	//
-	// - CrossCycleDependsOnChildren: cross-cycle dependency level-1 child nodes
+	// 	- CrossCycleDependsOnChildren: cross-cycle dependency on level-1 descendant nodes
 	//
-	// - CrossCycleDependsOnSelf: cross-cycle dependency
+	// 	- CrossCycleDependsOnSelf: cross-cycle dependency on the current node
 	//
-	// - CrossCycleDependsOnOtherNode: cross-cycle dependency on other nodes
+	// 	- CrossCycleDependsOnOtherNode: cross-cycle dependency on other nodes
 	//
-	// - Normal: same-cycle dependency
+	// 	- Normal: same-cycle scheduling dependency
 	//
 	// This parameter is required.
 	//
@@ -57000,13 +57868,13 @@ type UpdateWorkflowRequestTasksDependencies struct {
 	//
 	// Normal
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The output identifier of the upstream task. (This field is returned when the input content is set depending on the same cycle)
+	// The identifier of the output of the ancestor task. This parameter is returned only if `same-cycle scheduling dependencies` and the node input are configured.
 	//
 	// example:
 	//
 	// pre.odps_sql_demo_0
 	UpstreamOutput *string `json:"UpstreamOutput,omitempty" xml:"UpstreamOutput,omitempty"`
-	// The Id of the upstream task. (This field is returned when the input content is not set for cross-cycle dependencies on other nodes and same-cycle dependencies.
+	// The ancestor task ID. This parameter is returned only if `cross-cycle scheduling dependencies` or `same-cycle scheduling dependencies` and the node input are not configured.
 	//
 	// example:
 	//
@@ -57038,7 +57906,7 @@ func (s *UpdateWorkflowRequestTasksDependencies) SetUpstreamTaskId(v int64) *Upd
 }
 
 type UpdateWorkflowRequestTasksInputs struct {
-	// The list of variable definitions.
+	// The variables.
 	Variables []*UpdateWorkflowRequestTasksInputsVariables `json:"Variables,omitempty" xml:"Variables,omitempty" type:"Repeated"`
 }
 
@@ -57062,15 +57930,15 @@ type UpdateWorkflowRequestTasksInputsVariables struct {
 	//
 	// key1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Type.
+	// The type. Valid values:
 	//
-	// - Constant: Constant
+	// 	- Constant: constant
 	//
-	// - PassThrough: parameter node output
+	// 	- PassThrough: node output
 	//
-	// - System: variable
+	// 	- System: variable
 	//
-	// - NodeOutput: script output
+	// 	- NodeOutput: script output
 	//
 	// This parameter is required.
 	//
@@ -57110,9 +57978,9 @@ func (s *UpdateWorkflowRequestTasksInputsVariables) SetValue(v string) *UpdateWo
 }
 
 type UpdateWorkflowRequestTasksOutputs struct {
-	// The list of task output definitions.
+	// The task outputs.
 	TaskOutputs []*UpdateWorkflowRequestTasksOutputsTaskOutputs `json:"TaskOutputs,omitempty" xml:"TaskOutputs,omitempty" type:"Repeated"`
-	// The list of variable definitions.
+	// The variables.
 	Variables []*UpdateWorkflowRequestTasksOutputsVariables `json:"Variables,omitempty" xml:"Variables,omitempty" type:"Repeated"`
 }
 
@@ -57135,7 +58003,7 @@ func (s *UpdateWorkflowRequestTasksOutputs) SetVariables(v []*UpdateWorkflowRequ
 }
 
 type UpdateWorkflowRequestTasksOutputsTaskOutputs struct {
-	// The output identifier.
+	// The identifier of the output.
 	//
 	// example:
 	//
@@ -57163,15 +58031,15 @@ type UpdateWorkflowRequestTasksOutputsVariables struct {
 	//
 	// key1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Type.
+	// The type. Valid values:
 	//
-	// - Constant: Constant
+	// 	- Constant: constant
 	//
-	// - PassThrough: parameter node output
+	// 	- PassThrough: node output
 	//
-	// - System: variable
+	// 	- System: variable
 	//
-	// - NodeOutput: script output
+	// 	- NodeOutput: script output
 	//
 	// This parameter is required.
 	//
@@ -57211,19 +58079,19 @@ func (s *UpdateWorkflowRequestTasksOutputsVariables) SetValue(v string) *UpdateW
 }
 
 type UpdateWorkflowRequestTasksRuntimeResource struct {
-	// Configure CU consumption for task running.
+	// The default number of compute units (CUs) configured for task running.
 	//
 	// example:
 	//
 	// 0.25
 	Cu *string `json:"Cu,omitempty" xml:"Cu,omitempty"`
-	// The ID of the image configured for the task.
+	// The ID of the image configured for task running.
 	//
 	// example:
 	//
 	// i-xxxxxx
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
-	// The identifier of the scheduling resource group configured for running the task.
+	// The ID of the resource group for scheduling configured for task running.
 	//
 	// This parameter is required.
 	//
@@ -57263,7 +58131,7 @@ type UpdateWorkflowRequestTasksScript struct {
 	//
 	// echo "helloWorld"
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The list of script parameters.
+	// The script parameters.
 	//
 	// example:
 	//
@@ -57298,7 +58166,7 @@ type UpdateWorkflowRequestTasksTags struct {
 	//
 	// key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	//
 	// example:
 	//
@@ -57325,13 +58193,13 @@ func (s *UpdateWorkflowRequestTasksTags) SetValue(v string) *UpdateWorkflowReque
 }
 
 type UpdateWorkflowRequestTasksTrigger struct {
-	// The operation mode when the trigger is triggered. It takes effect when type = Scheduler.
+	// The running mode of the task after it is triggered. This parameter takes effect only if the Type parameter is set to Scheduler. Valid values:
 	//
-	// - Pause: Pause
+	// 	- Pause
 	//
-	// - Skip: empty run
+	// 	- Skip
 	//
-	// - Normal: Normal operation
+	// 	- Normal
 	//
 	// This parameter is required.
 	//
@@ -57339,11 +58207,11 @@ type UpdateWorkflowRequestTasksTrigger struct {
 	//
 	// Normal
 	Recurrence *string `json:"Recurrence,omitempty" xml:"Recurrence,omitempty"`
-	// The type of the trigger method.
+	// The trigger type. Valid values:
 	//
-	// - Scheduler: the scheduling cycle is triggered.
+	// 	- Scheduler: periodic scheduling
 	//
-	// - Manual: manually triggered
+	// 	- Manual: manual scheduling
 	//
 	// example:
 	//
@@ -57370,29 +58238,29 @@ func (s *UpdateWorkflowRequestTasksTrigger) SetType(v string) *UpdateWorkflowReq
 }
 
 type UpdateWorkflowRequestTrigger struct {
-	// Cron expression, which takes effect when type = Scheduler.
+	// The CRON expression. This parameter takes effect only if the Type parameter is set to Scheduler.
 	//
 	// example:
 	//
 	// 00 00 00 	- 	- ?
 	Cron *string `json:"Cron,omitempty" xml:"Cron,omitempty"`
-	// The expiration time of the periodic trigger, which takes effect when type = Scheduler.
+	// The end time of the time range during which the workflow is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
 	//
 	// example:
 	//
 	// 9999-01-01 00:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The time when the cycle trigger takes effect. It takes effect when type = Scheduler.
+	// The start time of the time range during which the workflow is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
 	//
 	// example:
 	//
 	// 1970-01-01 00:00:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The type of the trigger method.
+	// The trigger type. Valid values:
 	//
-	// - Scheduler: the scheduling cycle is triggered.
+	// 	- Scheduler: periodic scheduling
 	//
-	// - Manual: manually triggered
+	// 	- Manual: manual scheduling
 	//
 	// This parameter is required.
 	//
@@ -57431,13 +58299,13 @@ func (s *UpdateWorkflowRequestTrigger) SetType(v string) *UpdateWorkflowRequestT
 }
 
 type UpdateWorkflowShrinkRequest struct {
-	// The client-side unique code of the workflow for asynchronous and idempotent implementation. If not specified during creation, the system will automatically generate the code, which will be uniquely bound to the resource ID. If you specify this parameter when updating and deleting resources, it should be consistent with the client unique code when creating resources.
+	// The unique code of the client. This parameter is used to create a workflow asynchronously and implement the idempotence of the workflow. If you do not specify this parameter when you create the workflow, the system automatically generates a unique code. The unique code is uniquely associated with the workflow ID. If you specify this parameter when you update or delete the workflow, the value of this parameter must be the unique code that is used to create the workflow.
 	//
 	// example:
 	//
 	// Workflow_0bc5213917368545132902xxxxxxxx
 	ClientUniqueCode *string `json:"ClientUniqueCode,omitempty" xml:"ClientUniqueCode,omitempty"`
-	// Dependency information.
+	// The dependency information.
 	DependenciesShrink *string `json:"Dependencies,omitempty" xml:"Dependencies,omitempty"`
 	// The description.
 	//
@@ -57445,17 +58313,17 @@ type UpdateWorkflowShrinkRequest struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The project environment.
+	// The environment of the workspace. Valid values:
 	//
-	// - Prod: Production
+	// 	- Prod: production environment
 	//
-	// - Dev: Development
+	// 	- Dev: development environment
 	//
 	// example:
 	//
 	// Prod
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	// The ID of the workflow.
+	// The workflow ID.
 	//
 	// This parameter is required.
 	//
@@ -57463,7 +58331,7 @@ type UpdateWorkflowShrinkRequest struct {
 	//
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name.
+	// The name of the workflow.
 	//
 	// This parameter is required.
 	//
@@ -57481,15 +58349,15 @@ type UpdateWorkflowShrinkRequest struct {
 	//
 	// 1000
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The list of parameters.
+	// The parameters.
 	//
 	// example:
 	//
 	// para1=$bizdate para2=$[yyyymmdd]
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	// The list of workflow tags.
+	// The tags.
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The list of tasks.
+	// The tasks.
 	TasksShrink *string `json:"Tasks,omitempty" xml:"Tasks,omitempty"`
 	// The trigger method.
 	//
@@ -57566,13 +58434,13 @@ func (s *UpdateWorkflowShrinkRequest) SetTriggerShrink(v string) *UpdateWorkflow
 }
 
 type UpdateWorkflowResponseBody struct {
-	// The ID of the request. It is used to locate logs and troubleshoot problems.
+	// The request ID.
 	//
 	// example:
 	//
 	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Whether the operation is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -57997,7 +58865,7 @@ func (client *Client) AbolishDeployment(request *AbolishDeploymentRequest) (_res
 //
 // 2.  Your account must be assigned one of the following roles of the desired workspace:
 //
-// 	- Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M
+//   - Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M
 //
 // @param request - AssociateProjectToResourceGroupRequest
 //
@@ -58062,7 +58930,7 @@ func (client *Client) AssociateProjectToResourceGroupWithOptions(request *Associ
 //
 // 2.  Your account must be assigned one of the following roles of the desired workspace:
 //
-// 	- Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M
+//   - Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M
 //
 // @param request - AssociateProjectToResourceGroupRequest
 //
@@ -58080,7 +58948,7 @@ func (client *Client) AssociateProjectToResourceGroup(request *AssociateProjectT
 
 // Summary:
 //
-// Associates monitoring rules with a monitor
+// # Associates monitoring rules with a monitor
 //
 // @param tmpReq - AttachDataQualityRulesToEvaluationTaskRequest
 //
@@ -58147,7 +59015,7 @@ func (client *Client) AttachDataQualityRulesToEvaluationTaskWithOptions(tmpReq *
 
 // Summary:
 //
-// Associates monitoring rules with a monitor
+// # Associates monitoring rules with a monitor
 //
 // @param request - AttachDataQualityRulesToEvaluationTaskRequest
 //
@@ -58262,7 +59130,7 @@ func (client *Client) BatchUpdateTasks(request *BatchUpdateTasksRequest) (_resul
 //
 // 2.  You can call this operation only if you are assigned one of the following roles in DataWorks:
 //
-// 	- Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M
+//   - Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M
 //
 // @param request - CloneDataSourceRequest
 //
@@ -58327,7 +59195,7 @@ func (client *Client) CloneDataSourceWithOptions(request *CloneDataSourceRequest
 //
 // 2.  You can call this operation only if you are assigned one of the following roles in DataWorks:
 //
-// 	- Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M
+//   - Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M
 //
 // @param request - CloneDataSourceRequest
 //
@@ -58523,9 +59391,9 @@ func (client *Client) CreateDIAlarmRule(request *CreateDIAlarmRuleRequest) (_res
 //
 // Description:
 //
-//   This API operation is available for all DataWorks editions.
+//	  This API operation is available for all DataWorks editions.
 //
-// 	- You can call this API operation to create a synchronization task. When you call this API operation, you must configure parameters such as SourceDataSourceSettings, DestinationDataSourceSettings, MigrationType, TransformationRules, TableMappings, and JobSettings. The SourceDataSourceSettings parameter defines the settings related to the source. The DestinationDataSourceSettings parameter defines the settings related to the destination. The MigrationType parameter defines the synchronization task type. The TransformationRules parameter defines the transformation rules for objects involved in the synchronization task. The TableMappings parameter defines the mappings between rules used to select synchronization objects in the source and transformation rules applied to the selected synchronization objects. The JobSettings parameter defines the settings for the dimension of the synchronization task, including policies for data type mappings between source fields and destination fields and settings for periodic scheduling.
+//		- You can call this API operation to create a synchronization task. When you call this API operation, you must configure parameters such as SourceDataSourceSettings, DestinationDataSourceSettings, MigrationType, TransformationRules, TableMappings, and JobSettings. The SourceDataSourceSettings parameter defines the settings related to the source. The DestinationDataSourceSettings parameter defines the settings related to the destination. The MigrationType parameter defines the synchronization task type. The TransformationRules parameter defines the transformation rules for objects involved in the synchronization task. The TableMappings parameter defines the mappings between rules used to select synchronization objects in the source and transformation rules applied to the selected synchronization objects. The JobSettings parameter defines the settings for the dimension of the synchronization task, including policies for data type mappings between source fields and destination fields and settings for periodic scheduling.
 //
 // @param tmpReq - CreateDIJobRequest
 //
@@ -58604,9 +59472,9 @@ func (client *Client) CreateDIJobWithOptions(tmpReq *CreateDIJobRequest, runtime
 //
 // Description:
 //
-//   This API operation is available for all DataWorks editions.
+//	  This API operation is available for all DataWorks editions.
 //
-// 	- You can call this API operation to create a synchronization task. When you call this API operation, you must configure parameters such as SourceDataSourceSettings, DestinationDataSourceSettings, MigrationType, TransformationRules, TableMappings, and JobSettings. The SourceDataSourceSettings parameter defines the settings related to the source. The DestinationDataSourceSettings parameter defines the settings related to the destination. The MigrationType parameter defines the synchronization task type. The TransformationRules parameter defines the transformation rules for objects involved in the synchronization task. The TableMappings parameter defines the mappings between rules used to select synchronization objects in the source and transformation rules applied to the selected synchronization objects. The JobSettings parameter defines the settings for the dimension of the synchronization task, including policies for data type mappings between source fields and destination fields and settings for periodic scheduling.
+//		- You can call this API operation to create a synchronization task. When you call this API operation, you must configure parameters such as SourceDataSourceSettings, DestinationDataSourceSettings, MigrationType, TransformationRules, TableMappings, and JobSettings. The SourceDataSourceSettings parameter defines the settings related to the source. The DestinationDataSourceSettings parameter defines the settings related to the destination. The MigrationType parameter defines the synchronization task type. The TransformationRules parameter defines the transformation rules for objects involved in the synchronization task. The TableMappings parameter defines the mappings between rules used to select synchronization objects in the source and transformation rules applied to the selected synchronization objects. The JobSettings parameter defines the settings for the dimension of the synchronization task, including policies for data type mappings between source fields and destination fields and settings for periodic scheduling.
 //
 // @param request - CreateDIJobRequest
 //
@@ -58866,7 +59734,7 @@ func (client *Client) CreateDataQualityEvaluationTask(request *CreateDataQuality
 
 // Summary:
 //
-// Creates a monitor instance
+// # Creates a monitor instance
 //
 // @param tmpReq - CreateDataQualityEvaluationTaskInstanceRequest
 //
@@ -58937,7 +59805,7 @@ func (client *Client) CreateDataQualityEvaluationTaskInstanceWithOptions(tmpReq 
 
 // Summary:
 //
-// Creates a monitor instance
+// # Creates a monitor instance
 //
 // @param request - CreateDataQualityEvaluationTaskInstanceRequest
 //
@@ -59189,7 +60057,7 @@ func (client *Client) CreateDataQualityRuleTemplate(request *CreateDataQualityRu
 //
 // 2.  You can call this operation only if you are assigned one of the following roles in DataWorks:
 //
-// 	- Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M
+//   - Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M
 //
 // @param request - CreateDataSourceRequest
 //
@@ -59270,7 +60138,7 @@ func (client *Client) CreateDataSourceWithOptions(request *CreateDataSourceReque
 //
 // 2.  You can call this operation only if you are assigned one of the following roles in DataWorks:
 //
-// 	- Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M
+//   - Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M
 //
 // @param request - CreateDataSourceRequest
 //
@@ -59296,7 +60164,7 @@ func (client *Client) CreateDataSource(request *CreateDataSourceRequest) (_resul
 //
 // 2.  If you want to share a data source from Workspace A to Workspace B, you must have the permissions to share the data source in both workspaces. You can call this operation only if you are assigned one of the following roles in DataWorks:
 //
-// 	- Tenant Owner, Tenant Administrator, Workspace Administrator, and Workspace Owner
+//   - Tenant Owner, Tenant Administrator, Workspace Administrator, and Workspace Owner
 //
 // @param request - CreateDataSourceSharedRuleRequest
 //
@@ -59369,7 +60237,7 @@ func (client *Client) CreateDataSourceSharedRuleWithOptions(request *CreateDataS
 //
 // 2.  If you want to share a data source from Workspace A to Workspace B, you must have the permissions to share the data source in both workspaces. You can call this operation only if you are assigned one of the following roles in DataWorks:
 //
-// 	- Tenant Owner, Tenant Administrator, Workspace Administrator, and Workspace Owner
+//   - Tenant Owner, Tenant Administrator, Workspace Administrator, and Workspace Owner
 //
 // @param request - CreateDataSourceSharedRuleRequest
 //
@@ -59951,7 +60819,7 @@ func (client *Client) CreateProjectMember(request *CreateProjectMemberRequest) (
 //
 // Description:
 //
-// Private
+// # Private
 //
 // @param request - CreateResourceRequest
 //
@@ -60012,7 +60880,7 @@ func (client *Client) CreateResourceWithOptions(request *CreateResourceRequest, 
 //
 // Description:
 //
-// Private
+// # Private
 //
 // @param request - CreateResourceRequest
 //
@@ -60517,6 +61385,81 @@ func (client *Client) DeleteAlertRule(request *DeleteAlertRuleRequest) (_result 
 
 // Summary:
 //
+// 删除认证文件
+//
+// @param request - DeleteCertificateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCertificateResponse
+func (client *Client) DeleteCertificateWithOptions(request *DeleteCertificateRequest, runtime *util.RuntimeOptions) (_result *DeleteCertificateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteCertificate"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteCertificateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteCertificateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 删除认证文件
+//
+// @param request - DeleteCertificateRequest
+//
+// @return DeleteCertificateResponse
+func (client *Client) DeleteCertificate(request *DeleteCertificateRequest) (_result *DeleteCertificateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteCertificateResponse{}
+	_body, _err := client.DeleteCertificateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes an alert rule configured for a synchronization task.
 //
 // @param request - DeleteDIAlarmRuleRequest
@@ -60981,7 +61924,7 @@ func (client *Client) DeleteDataQualityRuleTemplate(request *DeleteDataQualityRu
 //
 // 2.  You can call this operation only if you are assigned one of the following roles in DataWorks:
 //
-// 	- Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M
+//   - Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M
 //
 // @param request - DeleteDataSourceRequest
 //
@@ -61038,7 +61981,7 @@ func (client *Client) DeleteDataSourceWithOptions(request *DeleteDataSourceReque
 //
 // 2.  You can call this operation only if you are assigned one of the following roles in DataWorks:
 //
-// 	- Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M
+//   - Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M
 //
 // @param request - DeleteDataSourceRequest
 //
@@ -61064,7 +62007,7 @@ func (client *Client) DeleteDataSource(request *DeleteDataSourceRequest) (_resul
 //
 // 2.  If you want to delete a sharing rule of a data source from Workspace A to Workspace B, you must have the permissions to share the data source in Workspace A or Workspace B. You can call this operation only if you are assigned one of the following roles in DataWorks:
 //
-// 	- Tenant Owner, Tenant Administrator, Workspace Administrator, and Workspace Owner
+//   - Tenant Owner, Tenant Administrator, Workspace Administrator, and Workspace Owner
 //
 // @param request - DeleteDataSourceSharedRuleRequest
 //
@@ -61125,7 +62068,7 @@ func (client *Client) DeleteDataSourceSharedRuleWithOptions(request *DeleteDataS
 //
 // 2.  If you want to delete a sharing rule of a data source from Workspace A to Workspace B, you must have the permissions to share the data source in Workspace A or Workspace B. You can call this operation only if you are assigned one of the following roles in DataWorks:
 //
-// 	- Tenant Owner, Tenant Administrator, Workspace Administrator, and Workspace Owner
+//   - Tenant Owner, Tenant Administrator, Workspace Administrator, and Workspace Owner
 //
 // @param request - DeleteDataSourceSharedRuleRequest
 //
@@ -62050,7 +62993,7 @@ func (client *Client) DeleteWorkflowDefinition(request *DeleteWorkflowDefinition
 
 // Summary:
 //
-// Disassociates monitoring rules from a monitor
+// # Disassociates monitoring rules from a monitor
 //
 // @param tmpReq - DetachDataQualityRulesFromEvaluationTaskRequest
 //
@@ -62117,7 +63060,7 @@ func (client *Client) DetachDataQualityRulesFromEvaluationTaskWithOptions(tmpReq
 
 // Summary:
 //
-// Disassociates monitoring rules from a monitor
+// # Disassociates monitoring rules from a monitor
 //
 // @param request - DetachDataQualityRulesFromEvaluationTaskRequest
 //
@@ -62143,7 +63086,7 @@ func (client *Client) DetachDataQualityRulesFromEvaluationTask(request *DetachDa
 //
 // 2.  Your account must be assigned one of the following roles of the desired workspace:
 //
-// 	- Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M
+//   - Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M
 //
 // @param request - DissociateProjectFromResourceGroupRequest
 //
@@ -62208,7 +63151,7 @@ func (client *Client) DissociateProjectFromResourceGroupWithOptions(request *Dis
 //
 // 2.  Your account must be assigned one of the following roles of the desired workspace:
 //
-// 	- Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M
+//   - Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M
 //
 // @param request - DissociateProjectFromResourceGroupRequest
 //
@@ -62482,6 +63425,73 @@ func (client *Client) GetAlertRule(request *GetAlertRuleRequest) (_result *GetAl
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAlertRuleResponse{}
 	_body, _err := client.GetAlertRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看认证文件
+//
+// @param request - GetCertificateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCertificateResponse
+func (client *Client) GetCertificateWithOptions(request *GetCertificateRequest, runtime *util.RuntimeOptions) (_result *GetCertificateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetCertificate"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetCertificateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetCertificateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查看认证文件
+//
+// @param request - GetCertificateRequest
+//
+// @return GetCertificateResponse
+func (client *Client) GetCertificate(request *GetCertificateRequest) (_result *GetCertificateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetCertificateResponse{}
+	_body, _err := client.GetCertificateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -63008,7 +64018,7 @@ func (client *Client) GetDataQualityRuleTemplate(request *GetDataQualityRuleTemp
 //
 // 2.  You can call this operation only if you are assigned one of the following roles in DataWorks:
 //
-// 	- Tenant Owner, Workspace Administrator, Deployment, Development, Project Owner, and O\\&M
+//   - Tenant Owner, Workspace Administrator, Deployment, Development, Project Owner, and O\\&M
 //
 // @param request - GetDataSourceRequest
 //
@@ -63065,7 +64075,7 @@ func (client *Client) GetDataSourceWithOptions(request *GetDataSourceRequest, ru
 //
 // 2.  You can call this operation only if you are assigned one of the following roles in DataWorks:
 //
-// 	- Tenant Owner, Workspace Administrator, Deployment, Development, Project Owner, and O\\&M
+//   - Tenant Owner, Workspace Administrator, Deployment, Development, Project Owner, and O\\&M
 //
 // @param request - GetDataSourceRequest
 //
@@ -64411,15 +65421,209 @@ func (client *Client) GrantMemberProjectRoles(request *GrantMemberProjectRolesRe
 
 // Summary:
 //
+// 验证用
+//
+// @param request - ImportCertificateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ImportCertificateResponse
+func (client *Client) ImportCertificateWithOptions(request *ImportCertificateRequest, runtime *util.RuntimeOptions) (_result *ImportCertificateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CertificateFile)) {
+		query["CertificateFile"] = request.CertificateFile
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ImportCertificate"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ImportCertificateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ImportCertificateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 验证用
+//
+// @param request - ImportCertificateRequest
+//
+// @return ImportCertificateResponse
+func (client *Client) ImportCertificate(request *ImportCertificateRequest) (_result *ImportCertificateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ImportCertificateResponse{}
+	_body, _err := client.ImportCertificateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ImportCertificateAdvance(request *ImportCertificateAdvanceRequest, runtime *util.RuntimeOptions) (_result *ImportCertificateResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("dataworks-public"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	importCertificateReq := &ImportCertificateRequest{}
+	openapiutil.Convert(request, importCertificateReq)
+	if !tea.BoolValue(util.IsUnset(request.CertificateFileObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.CertificateFileObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		importCertificateReq.CertificateFile = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+	}
+
+	importCertificateResp, _err := client.ImportCertificateWithOptions(importCertificateReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = importCertificateResp
+	return _result, _err
+}
+
+// Summary:
+//
 // Imports a workflow and its child nodes that are specified by the FlowSpec field to DataStudio.
 //
 // Description:
 //
 // >
 //
-// 	- You cannot use this API operation to import multiple workflows at a time. If you specify multiple workflows by using FlowSpec, the system imports only the first specified workflow.
+//   - You cannot use this API operation to import multiple workflows at a time. If you specify multiple workflows by using FlowSpec, the system imports only the first specified workflow.
 //
-// 	- ImportWorkflowDefinition is an asynchronous operation. After you send a request, an asynchronous task is generated, and the system returns the ID of the asynchronous task. You can call the GetJobStatus operation to query the status of the asynchronous task.
+//   - ImportWorkflowDefinition is an asynchronous operation. After you send a request, an asynchronous task is generated, and the system returns the ID of the asynchronous task. You can call the GetJobStatus operation to query the status of the asynchronous task.
 //
 // @param request - ImportWorkflowDefinitionRequest
 //
@@ -64482,9 +65686,9 @@ func (client *Client) ImportWorkflowDefinitionWithOptions(request *ImportWorkflo
 //
 // >
 //
-// 	- You cannot use this API operation to import multiple workflows at a time. If you specify multiple workflows by using FlowSpec, the system imports only the first specified workflow.
+//   - You cannot use this API operation to import multiple workflows at a time. If you specify multiple workflows by using FlowSpec, the system imports only the first specified workflow.
 //
-// 	- ImportWorkflowDefinition is an asynchronous operation. After you send a request, an asynchronous task is generated, and the system returns the ID of the asynchronous task. You can call the GetJobStatus operation to query the status of the asynchronous task.
+//   - ImportWorkflowDefinition is an asynchronous operation. After you send a request, an asynchronous task is generated, and the system returns the ID of the asynchronous task. You can call the GetJobStatus operation to query the status of the asynchronous task.
 //
 // @param request - ImportWorkflowDefinitionRequest
 //
@@ -64598,6 +65802,73 @@ func (client *Client) ListAlertRules(request *ListAlertRulesRequest) (_result *L
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAlertRulesResponse{}
 	_body, _err := client.ListAlertRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询认证文件列表
+//
+// @param request - ListCertificatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCertificatesResponse
+func (client *Client) ListCertificatesWithOptions(request *ListCertificatesRequest, runtime *util.RuntimeOptions) (_result *ListCertificatesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCertificates"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListCertificatesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListCertificatesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询认证文件列表
+//
+// @param request - ListCertificatesRequest
+//
+// @return ListCertificatesResponse
+func (client *Client) ListCertificates(request *ListCertificatesRequest) (_result *ListCertificatesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListCertificatesResponse{}
+	_body, _err := client.ListCertificatesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -65507,7 +66778,7 @@ func (client *Client) ListDataQualityRules(request *ListDataQualityRulesRequest)
 //
 // 2.  If you want to query the sharing rules of a data source that is associated with Workspace A, you must have the permissions to share the data source in Workspace A. You can call this operation only if you are assigned one of the following roles in DataWorks:
 //
-// 	- Tenant Owner, Tenant Administrator, Workspace Administrator, and Workspace Owner
+//   - Tenant Owner, Tenant Administrator, Workspace Administrator, and Workspace Owner
 //
 // @param request - ListDataSourceSharedRulesRequest
 //
@@ -65564,7 +66835,7 @@ func (client *Client) ListDataSourceSharedRulesWithOptions(request *ListDataSour
 //
 // 2.  If you want to query the sharing rules of a data source that is associated with Workspace A, you must have the permissions to share the data source in Workspace A. You can call this operation only if you are assigned one of the following roles in DataWorks:
 //
-// 	- Tenant Owner, Tenant Administrator, Workspace Administrator, and Workspace Owner
+//   - Tenant Owner, Tenant Administrator, Workspace Administrator, and Workspace Owner
 //
 // @param request - ListDataSourceSharedRulesRequest
 //
@@ -65590,7 +66861,7 @@ func (client *Client) ListDataSourceSharedRules(request *ListDataSourceSharedRul
 //
 // 2.  You can call this operation only if you are assigned one of the following roles in DataWorks:
 //
-// 	- Tenant Owner, Workspace Administrator, Deploy, Develop, Visitor, Workspace Owner, O\\&M, Model Designer, Security Administrator, Data Analyst, OpenPlatform Administrator, and Data Governance Administrator
+//   - Tenant Owner, Workspace Administrator, Deploy, Develop, Visitor, Workspace Owner, O\\&M, Model Designer, Security Administrator, Data Analyst, OpenPlatform Administrator, and Data Governance Administrator
 //
 // @param tmpReq - ListDataSourcesRequest
 //
@@ -65653,7 +66924,7 @@ func (client *Client) ListDataSourcesWithOptions(tmpReq *ListDataSourcesRequest,
 //
 // 2.  You can call this operation only if you are assigned one of the following roles in DataWorks:
 //
-// 	- Tenant Owner, Workspace Administrator, Deploy, Develop, Visitor, Workspace Owner, O\\&M, Model Designer, Security Administrator, Data Analyst, OpenPlatform Administrator, and Data Governance Administrator
+//   - Tenant Owner, Workspace Administrator, Deploy, Develop, Visitor, Workspace Owner, O\\&M, Model Designer, Security Administrator, Data Analyst, OpenPlatform Administrator, and Data Governance Administrator
 //
 // @param request - ListDataSourcesRequest
 //
@@ -69313,6 +70584,85 @@ func (client *Client) TagDataAssets(request *TagDataAssetsRequest) (_result *Tag
 
 // Summary:
 //
+// 测试数据源在资源组上的连通性
+//
+// @param request - TestDataSourceConnectivityRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TestDataSourceConnectivityResponse
+func (client *Client) TestDataSourceConnectivityWithOptions(request *TestDataSourceConnectivityRequest, runtime *util.RuntimeOptions) (_result *TestDataSourceConnectivityResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataSourceId)) {
+		query["DataSourceId"] = request.DataSourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TestDataSourceConnectivity"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &TestDataSourceConnectivityResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &TestDataSourceConnectivityResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 测试数据源在资源组上的连通性
+//
+// @param request - TestDataSourceConnectivityRequest
+//
+// @return TestDataSourceConnectivityResponse
+func (client *Client) TestDataSourceConnectivity(request *TestDataSourceConnectivityRequest) (_result *TestDataSourceConnectivityResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &TestDataSourceConnectivityResponse{}
+	_body, _err := client.TestDataSourceConnectivityWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Triggers a task to run by using an HTTP Trigger node at a specified time.
 //
 // Description:
@@ -70254,7 +71604,7 @@ func (client *Client) UpdateDataQualityRuleTemplate(request *UpdateDataQualityRu
 //
 // 2.  You can call this operation only if you are assigned one of the following roles in DataWorks:
 //
-// 	- Tenant Owner, Tenant Administrator, Workspace Administrator, Workspace Owner, and O\\&M
+//   - Tenant Owner, Tenant Administrator, Workspace Administrator, Workspace Owner, and O\\&M
 //
 // @param request - UpdateDataSourceRequest
 //
@@ -70331,7 +71681,7 @@ func (client *Client) UpdateDataSourceWithOptions(request *UpdateDataSourceReque
 //
 // 2.  You can call this operation only if you are assigned one of the following roles in DataWorks:
 //
-// 	- Tenant Owner, Tenant Administrator, Workspace Administrator, Workspace Owner, and O\\&M
+//   - Tenant Owner, Tenant Administrator, Workspace Administrator, Workspace Owner, and O\\&M
 //
 // @param request - UpdateDataSourceRequest
 //
@@ -70853,6 +72203,10 @@ func (client *Client) UpdateRoute(request *UpdateRouteRequest) (_result *UpdateR
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates a specified task in full update mode.
+//
 // @param tmpReq - UpdateTaskRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -71008,6 +72362,10 @@ func (client *Client) UpdateTaskWithOptions(tmpReq *UpdateTaskRequest, runtime *
 
 }
 
+// Summary:
+//
+// Updates a specified task in full update mode.
+//
 // @param request - UpdateTaskRequest
 //
 // @return UpdateTaskResponse
@@ -71111,6 +72469,14 @@ func (client *Client) UpdateTaskInstances(request *UpdateTaskInstancesRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates a specified workflow in full update mode.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
 // @param tmpReq - UpdateWorkflowRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -71226,6 +72592,14 @@ func (client *Client) UpdateWorkflowWithOptions(tmpReq *UpdateWorkflowRequest, r
 
 }
 
+// Summary:
+//
+// Updates a specified workflow in full update mode.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
 // @param request - UpdateWorkflowRequest
 //
 // @return UpdateWorkflowResponse
@@ -71243,6 +72617,10 @@ func (client *Client) UpdateWorkflow(request *UpdateWorkflowRequest) (_result *U
 // Summary:
 //
 // Updates the basic information about a workflow in DataStudio. This API operation performs an incremental update. The update information is described by using FlowSpec.
+//
+// Description:
+//
+// >  You cannot use this API operation to create multiple workflows at a time. If you specify multiple workflows in the FlowSpec filed, only the first workflow is created. Other specified workflows and the nodes in the workflows are ignored. You can call the UpdateNode operation to update a node.
 //
 // @param request - UpdateWorkflowDefinitionRequest
 //
@@ -71304,6 +72682,10 @@ func (client *Client) UpdateWorkflowDefinitionWithOptions(request *UpdateWorkflo
 // Summary:
 //
 // Updates the basic information about a workflow in DataStudio. This API operation performs an incremental update. The update information is described by using FlowSpec.
+//
+// Description:
+//
+// >  You cannot use this API operation to create multiple workflows at a time. If you specify multiple workflows in the FlowSpec filed, only the first workflow is created. Other specified workflows and the nodes in the workflows are ignored. You can call the UpdateNode operation to update a node.
 //
 // @param request - UpdateWorkflowDefinitionRequest
 //
