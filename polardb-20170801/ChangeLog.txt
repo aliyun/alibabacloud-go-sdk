@@ -1,3 +1,7 @@
+2025-03-20 Version: v6.7.1
+- Update API DescribeDBClusterAttribute: update response param.
+
+
 2025-03-15 Version: v6.7.0
 - Support API ModifyDBClusterArch.
 - Update API CreateAccount: add param NodeType.

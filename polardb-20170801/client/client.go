@@ -10840,7 +10840,8 @@ type DescribeDBClusterAttributeResponseBody struct {
 	// example:
 	//
 	// X86
-	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
+	Architecture            *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
+	AutoUpgradeMinorVersion *string `json:"AutoUpgradeMinorVersion,omitempty" xml:"AutoUpgradeMinorVersion,omitempty"`
 	// Maximum number of blktags in the file system.
 	//
 	// example:
@@ -11354,6 +11355,11 @@ func (s *DescribeDBClusterAttributeResponseBody) SetAiType(v string) *DescribeDB
 
 func (s *DescribeDBClusterAttributeResponseBody) SetArchitecture(v string) *DescribeDBClusterAttributeResponseBody {
 	s.Architecture = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBody) SetAutoUpgradeMinorVersion(v string) *DescribeDBClusterAttributeResponseBody {
+	s.AutoUpgradeMinorVersion = &v
 	return s
 }
 
@@ -37790,9 +37796,9 @@ func (client *Client) CloseAITask(request *CloseAITaskRequest) (_result *CloseAI
 //
 // Description:
 //
-//   You can call this operation to cancel the migration task before data migration.
+//	  You can call this operation to cancel the migration task before data migration.
 //
-// 	- You can call this operation to perform the migration task after data migration.
+//		- You can call this operation to perform the migration task after data migration.
 //
 // > Before you call this operation, ensure that a one-click upgrade task has been created for the cluster. You can call the [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) operation to create an upgrade task. Set the **CreationOption*	- parameter to **MigrationFromRDS**. For more information, see [Create a PolarDB for MySQL cluster by using the Migration from RDS method](https://help.aliyun.com/document_detail/121582.html).
 //
@@ -37871,9 +37877,9 @@ func (client *Client) CloseDBClusterMigrationWithOptions(request *CloseDBCluster
 //
 // Description:
 //
-//   You can call this operation to cancel the migration task before data migration.
+//	  You can call this operation to cancel the migration task before data migration.
 //
-// 	- You can call this operation to perform the migration task after data migration.
+//		- You can call this operation to perform the migration task after data migration.
 //
 // > Before you call this operation, ensure that a one-click upgrade task has been created for the cluster. You can call the [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) operation to create an upgrade task. Set the **CreationOption*	- parameter to **MigrationFromRDS**. For more information, see [Create a PolarDB for MySQL cluster by using the Migration from RDS method](https://help.aliyun.com/document_detail/121582.html).
 //
@@ -38125,11 +38131,11 @@ func (client *Client) CreateActivationCode(request *CreateActivationCodeRequest)
 //
 // >
 //
-// 	- You can manually create up to three backups for each cluster.
+//   - You can manually create up to three backups for each cluster.
 //
-// 	- The `Exceeding the daily backup times of this DB cluster` error message indicates that three manual backups already exist in your cluster. You must delete existing backups before you call this operation to manually create backups. For more information about how to delete backups, see [Delete backups](https://help.aliyun.com/document_detail/98101.html).
+//   - The `Exceeding the daily backup times of this DB cluster` error message indicates that three manual backups already exist in your cluster. You must delete existing backups before you call this operation to manually create backups. For more information about how to delete backups, see [Delete backups](https://help.aliyun.com/document_detail/98101.html).
 //
-// 	- After you call this operation, a backup task is created in the backend. The task may be time-consuming if you want to back up large amounts of data.
+//   - After you call this operation, a backup task is created in the backend. The task may be time-consuming if you want to back up large amounts of data.
 //
 // @param request - CreateBackupRequest
 //
@@ -38208,11 +38214,11 @@ func (client *Client) CreateBackupWithOptions(request *CreateBackupRequest, runt
 //
 // >
 //
-// 	- You can manually create up to three backups for each cluster.
+//   - You can manually create up to three backups for each cluster.
 //
-// 	- The `Exceeding the daily backup times of this DB cluster` error message indicates that three manual backups already exist in your cluster. You must delete existing backups before you call this operation to manually create backups. For more information about how to delete backups, see [Delete backups](https://help.aliyun.com/document_detail/98101.html).
+//   - The `Exceeding the daily backup times of this DB cluster` error message indicates that three manual backups already exist in your cluster. You must delete existing backups before you call this operation to manually create backups. For more information about how to delete backups, see [Delete backups](https://help.aliyun.com/document_detail/98101.html).
 //
-// 	- After you call this operation, a backup task is created in the backend. The task may be time-consuming if you want to back up large amounts of data.
+//   - After you call this operation, a backup task is created in the backend. The task may be time-consuming if you want to back up large amounts of data.
 //
 // @param request - CreateBackupRequest
 //
@@ -39154,9 +39160,9 @@ func (client *Client) CreateDBNodes(request *CreateDBNodesRequest) (_result *Cre
 //
 // Before you call this operation, make sure that the following requirements are met:
 //
-// 	- The cluster is in the Running state.
+//   - The cluster is in the Running state.
 //
-// 	- The cluster is unlocked.
+//   - The cluster is unlocked.
 //
 // @param request - CreateDatabaseRequest
 //
@@ -39259,9 +39265,9 @@ func (client *Client) CreateDatabaseWithOptions(request *CreateDatabaseRequest, 
 //
 // Before you call this operation, make sure that the following requirements are met:
 //
-// 	- The cluster is in the Running state.
+//   - The cluster is in the Running state.
 //
-// 	- The cluster is unlocked.
+//   - The cluster is unlocked.
 //
 // @param request - CreateDatabaseRequest
 //
@@ -39994,9 +40000,9 @@ func (client *Client) DeleteAccount(request *DeleteAccountRequest) (_result *Del
 //
 // Before you call this operation, make sure that the cluster meets the following requirements:
 //
-// 	- The cluster is in the Running state.
+//   - The cluster is in the Running state.
 //
-// 	- The backup sets are in the Success state.
+//   - The backup sets are in the Success state.
 //
 // > 	- You can call the [DescribeBackups](https://help.aliyun.com/document_detail/98102.html) operation to query the status of backup sets.
 //
@@ -40079,9 +40085,9 @@ func (client *Client) DeleteBackupWithOptions(request *DeleteBackupRequest, runt
 //
 // Before you call this operation, make sure that the cluster meets the following requirements:
 //
-// 	- The cluster is in the Running state.
+//   - The cluster is in the Running state.
 //
-// 	- The backup sets are in the Success state.
+//   - The backup sets are in the Success state.
 //
 // > 	- You can call the [DescribeBackups](https://help.aliyun.com/document_detail/98102.html) operation to query the status of backup sets.
 //
@@ -43116,27 +43122,27 @@ func (client *Client) DescribeDBClusterParameters(request *DescribeDBClusterPara
 //
 // Description:
 //
-//   When the monitoring data is collected every 5 seconds:
+//	  When the monitoring data is collected every 5 seconds:
 //
-//     	- If the query time range is less than or equal to 1 hour, the data is displayed at intervals of 5 seconds.
+//	    	- If the query time range is less than or equal to 1 hour, the data is displayed at intervals of 5 seconds.
 //
-//     	- If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
+//	    	- If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
 //
-//     	- If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
+//	    	- If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
 //
-//     	- If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
+//	    	- If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
 //
-//     	- When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
+//	    	- When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
 //
-// 	- When the monitoring data is collected every 60 seconds:
+//		- When the monitoring data is collected every 60 seconds:
 //
-//     	- If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
+//	    	- If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
 //
-//     	- If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
+//	    	- If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
 //
-//     	- If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
+//	    	- If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
 //
-//     	- When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
+//	    	- When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
 //
 // >  By default, the monitoring data is collected once every 60 seconds. You can call the [ModifyDBClusterMonitor](https://help.aliyun.com/document_detail/159557.html) operation to set the data collection interval to every 5 seconds.
 //
@@ -43215,27 +43221,27 @@ func (client *Client) DescribeDBClusterPerformanceWithOptions(request *DescribeD
 //
 // Description:
 //
-//   When the monitoring data is collected every 5 seconds:
+//	  When the monitoring data is collected every 5 seconds:
 //
-//     	- If the query time range is less than or equal to 1 hour, the data is displayed at intervals of 5 seconds.
+//	    	- If the query time range is less than or equal to 1 hour, the data is displayed at intervals of 5 seconds.
 //
-//     	- If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
+//	    	- If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
 //
-//     	- If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
+//	    	- If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
 //
-//     	- If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
+//	    	- If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
 //
-//     	- When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
+//	    	- When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
 //
-// 	- When the monitoring data is collected every 60 seconds:
+//		- When the monitoring data is collected every 60 seconds:
 //
-//     	- If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
+//	    	- If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
 //
-//     	- If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
+//	    	- If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
 //
-//     	- If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
+//	    	- If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
 //
-//     	- When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
+//	    	- When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
 //
 // >  By default, the monitoring data is collected once every 60 seconds. You can call the [ModifyDBClusterMonitor](https://help.aliyun.com/document_detail/159557.html) operation to set the data collection interval to every 5 seconds.
 //
@@ -44067,27 +44073,27 @@ func (client *Client) DescribeDBLinks(request *DescribeDBLinksRequest) (_result 
 //
 // Description:
 //
-//   When the monitoring data is collected every 5 seconds:
+//	  When the monitoring data is collected every 5 seconds:
 //
-//     	- If the query time range is less than or equal to 1 hour, the data is displayed at intervals of 5 seconds.
+//	    	- If the query time range is less than or equal to 1 hour, the data is displayed at intervals of 5 seconds.
 //
-//     	- If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
+//	    	- If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
 //
-//     	- If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
+//	    	- If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
 //
-//     	- If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
+//	    	- If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
 //
-//     	- When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
+//	    	- When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
 //
-// 	- When the monitoring data is collected every 60 seconds:
+//		- When the monitoring data is collected every 60 seconds:
 //
-//     	- If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
+//	    	- If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
 //
-//     	- If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
+//	    	- If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
 //
-//     	- If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
+//	    	- If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
 //
-//     	- When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
+//	    	- When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
 //
 // >  By default, the monitoring data is collected once every 60 seconds. You can call the [ModifyDBClusterMonitor](https://help.aliyun.com/document_detail/159557.html) operation to set the data collection interval to every 5 seconds.
 //
@@ -44170,27 +44176,27 @@ func (client *Client) DescribeDBNodePerformanceWithOptions(request *DescribeDBNo
 //
 // Description:
 //
-//   When the monitoring data is collected every 5 seconds:
+//	  When the monitoring data is collected every 5 seconds:
 //
-//     	- If the query time range is less than or equal to 1 hour, the data is displayed at intervals of 5 seconds.
+//	    	- If the query time range is less than or equal to 1 hour, the data is displayed at intervals of 5 seconds.
 //
-//     	- If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
+//	    	- If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
 //
-//     	- If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
+//	    	- If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
 //
-//     	- If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
+//	    	- If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
 //
-//     	- When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
+//	    	- When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
 //
-// 	- When the monitoring data is collected every 60 seconds:
+//		- When the monitoring data is collected every 60 seconds:
 //
-//     	- If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
+//	    	- If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
 //
-//     	- If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
+//	    	- If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
 //
-//     	- If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
+//	    	- If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
 //
-//     	- When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
+//	    	- When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
 //
 // >  By default, the monitoring data is collected once every 60 seconds. You can call the [ModifyDBClusterMonitor](https://help.aliyun.com/document_detail/159557.html) operation to set the data collection interval to every 5 seconds.
 //
@@ -46412,7 +46418,7 @@ func (client *Client) DescribeScheduleTasks(request *DescribeScheduleTasksReques
 
 // Summary:
 //
-// Slow Log Details
+// # Slow Log Details
 //
 // Description:
 //
@@ -46519,7 +46525,7 @@ func (client *Client) DescribeSlowLogRecordsWithOptions(request *DescribeSlowLog
 
 // Summary:
 //
-// Slow Log Details
+// # Slow Log Details
 //
 // Description:
 //
@@ -46666,9 +46672,9 @@ func (client *Client) DescribeSlowLogs(request *DescribeSlowLogsRequest) (_resul
 //
 // Description:
 //
-//   You can call this operation to view the details of a task that is generated by a specific API operation or in the PolarDB console. The system calls the specific API operation when you perform an operation in the PolarDB console. For example, you can view the details of the task when you call the [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) operation or [create a cluster](https://help.aliyun.com/document_detail/58769.html) in the PolarDB console.
+//	  You can call this operation to view the details of a task that is generated by a specific API operation or in the PolarDB console. The system calls the specific API operation when you perform an operation in the PolarDB console. For example, you can view the details of the task when you call the [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) operation or [create a cluster](https://help.aliyun.com/document_detail/58769.html) in the PolarDB console.
 //
-// 	- You can view the details of tasks that are generated only when you call the [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) operation to create a cluster and `CreationOption` is not set to `CreateGdnStandby`.
+//		- You can view the details of tasks that are generated only when you call the [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) operation to create a cluster and `CreationOption` is not set to `CreateGdnStandby`.
 //
 // @param request - DescribeTasksRequest
 //
@@ -46765,9 +46771,9 @@ func (client *Client) DescribeTasksWithOptions(request *DescribeTasksRequest, ru
 //
 // Description:
 //
-//   You can call this operation to view the details of a task that is generated by a specific API operation or in the PolarDB console. The system calls the specific API operation when you perform an operation in the PolarDB console. For example, you can view the details of the task when you call the [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) operation or [create a cluster](https://help.aliyun.com/document_detail/58769.html) in the PolarDB console.
+//	  You can call this operation to view the details of a task that is generated by a specific API operation or in the PolarDB console. The system calls the specific API operation when you perform an operation in the PolarDB console. For example, you can view the details of the task when you call the [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) operation or [create a cluster](https://help.aliyun.com/document_detail/58769.html) in the PolarDB console.
 //
-// 	- You can view the details of tasks that are generated only when you call the [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) operation to create a cluster and `CreationOption` is not set to `CreateGdnStandby`.
+//		- You can view the details of tasks that are generated only when you call the [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) operation to create a cluster and `CreationOption` is not set to `CreateGdnStandby`.
 //
 // @param request - DescribeTasksRequest
 //
@@ -49317,9 +49323,9 @@ func (client *Client) ModifyDBClusterMaintainTime(request *ModifyDBClusterMainta
 //
 // Description:
 //
-//   You can call this operation to switch the task that migrates data from ApsaraDB for RDS to PolarDB.
+//	  You can call this operation to switch the task that migrates data from ApsaraDB for RDS to PolarDB.
 //
-// 	- You can call this operation to roll back the task that migrates data from ApsaraDB for RDS to PolarDB.
+//		- You can call this operation to roll back the task that migrates data from ApsaraDB for RDS to PolarDB.
 //
 // > Before you call this operation, ensure that a one-click upgrade task has been created for the cluster. You can call the [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) operation to create an upgrade task. Set the **CreationOption*	- parameter to **MigrationFromRDS**. For more information, see [Create a PolarDB for MySQL cluster by using the Migration from RDS method](https://help.aliyun.com/document_detail/121582.html).
 //
@@ -49414,9 +49420,9 @@ func (client *Client) ModifyDBClusterMigrationWithOptions(request *ModifyDBClust
 //
 // Description:
 //
-//   You can call this operation to switch the task that migrates data from ApsaraDB for RDS to PolarDB.
+//	  You can call this operation to switch the task that migrates data from ApsaraDB for RDS to PolarDB.
 //
-// 	- You can call this operation to roll back the task that migrates data from ApsaraDB for RDS to PolarDB.
+//		- You can call this operation to roll back the task that migrates data from ApsaraDB for RDS to PolarDB.
 //
 // > Before you call this operation, ensure that a one-click upgrade task has been created for the cluster. You can call the [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) operation to create an upgrade task. Set the **CreationOption*	- parameter to **MigrationFromRDS**. For more information, see [Create a PolarDB for MySQL cluster by using the Migration from RDS method](https://help.aliyun.com/document_detail/121582.html).
 //
@@ -49440,27 +49446,27 @@ func (client *Client) ModifyDBClusterMigration(request *ModifyDBClusterMigration
 //
 // Description:
 //
-//   When the monitoring data is collected every 5 seconds:
+//	  When the monitoring data is collected every 5 seconds:
 //
-//     	- If the query time range is less than or equal to 1 hour, the data is displayed at intervals of 5 seconds.
+//	    	- If the query time range is less than or equal to 1 hour, the data is displayed at intervals of 5 seconds.
 //
-//     	- If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
+//	    	- If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
 //
-//     	- If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
+//	    	- If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
 //
-//     	- If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
+//	    	- If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
 //
-//     	- When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
+//	    	- When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
 //
-// 	- When the monitoring data is collected every 60 seconds:
+//		- When the monitoring data is collected every 60 seconds:
 //
-//     	- If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
+//	    	- If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
 //
-//     	- If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
+//	    	- If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
 //
-//     	- If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
+//	    	- If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
 //
-//     	- When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
+//	    	- When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
 //
 // @param request - ModifyDBClusterMonitorRequest
 //
@@ -49537,27 +49543,27 @@ func (client *Client) ModifyDBClusterMonitorWithOptions(request *ModifyDBCluster
 //
 // Description:
 //
-//   When the monitoring data is collected every 5 seconds:
+//	  When the monitoring data is collected every 5 seconds:
 //
-//     	- If the query time range is less than or equal to 1 hour, the data is displayed at intervals of 5 seconds.
+//	    	- If the query time range is less than or equal to 1 hour, the data is displayed at intervals of 5 seconds.
 //
-//     	- If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
+//	    	- If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
 //
-//     	- If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
+//	    	- If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
 //
-//     	- If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
+//	    	- If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
 //
-//     	- When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
+//	    	- When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
 //
-// 	- When the monitoring data is collected every 60 seconds:
+//		- When the monitoring data is collected every 60 seconds:
 //
-//     	- If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
+//	    	- If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
 //
-//     	- If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
+//	    	- If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
 //
-//     	- If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
+//	    	- If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
 //
-//     	- When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
+//	    	- When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
 //
 // @param request - ModifyDBClusterMonitorRequest
 //
@@ -53036,11 +53042,11 @@ func (client *Client) TempModifyDBNode(request *TempModifyDBNodeRequest) (_resul
 //
 // >
 //
-// 	- PolarDB clusters support the subscription and pay-as-you-go billing methods. You can change the billing method from subscription to pay-as-you-go or from pay-as-you-go to subscription based on your business requirements. For more information, see [Change the billing method from subscription to pay-as-you-go](https://help.aliyun.com/document_detail/172886.html) and [Change the billing method from pay-as-you-go to subscription](https://help.aliyun.com/document_detail/84076.html).
+//   - PolarDB clusters support the subscription and pay-as-you-go billing methods. You can change the billing method from subscription to pay-as-you-go or from pay-as-you-go to subscription based on your business requirements. For more information, see [Change the billing method from subscription to pay-as-you-go](https://help.aliyun.com/document_detail/172886.html) and [Change the billing method from pay-as-you-go to subscription](https://help.aliyun.com/document_detail/84076.html).
 //
-// 	- You cannot change the billing method from pay-as-you-go to subscription if your account balance is insufficient.
+//   - You cannot change the billing method from pay-as-you-go to subscription if your account balance is insufficient.
 //
-// 	- If you change the billing method from subscription to pay-as-you-go, the system automatically refunds the balance of the prepaid subscription fees.
+//   - If you change the billing method from subscription to pay-as-you-go, the system automatically refunds the balance of the prepaid subscription fees.
 //
 // @param request - TransformDBClusterPayTypeRequest
 //
@@ -53139,11 +53145,11 @@ func (client *Client) TransformDBClusterPayTypeWithOptions(request *TransformDBC
 //
 // >
 //
-// 	- PolarDB clusters support the subscription and pay-as-you-go billing methods. You can change the billing method from subscription to pay-as-you-go or from pay-as-you-go to subscription based on your business requirements. For more information, see [Change the billing method from subscription to pay-as-you-go](https://help.aliyun.com/document_detail/172886.html) and [Change the billing method from pay-as-you-go to subscription](https://help.aliyun.com/document_detail/84076.html).
+//   - PolarDB clusters support the subscription and pay-as-you-go billing methods. You can change the billing method from subscription to pay-as-you-go or from pay-as-you-go to subscription based on your business requirements. For more information, see [Change the billing method from subscription to pay-as-you-go](https://help.aliyun.com/document_detail/172886.html) and [Change the billing method from pay-as-you-go to subscription](https://help.aliyun.com/document_detail/84076.html).
 //
-// 	- You cannot change the billing method from pay-as-you-go to subscription if your account balance is insufficient.
+//   - You cannot change the billing method from pay-as-you-go to subscription if your account balance is insufficient.
 //
-// 	- If you change the billing method from subscription to pay-as-you-go, the system automatically refunds the balance of the prepaid subscription fees.
+//   - If you change the billing method from subscription to pay-as-you-go, the system automatically refunds the balance of the prepaid subscription fees.
 //
 // @param request - TransformDBClusterPayTypeRequest
 //
