@@ -1,3 +1,21 @@
+2025-03-20 Version: v6.8.1
+- Update API CreateProject: update param body.
+- Update API DeleteProject: add param forceDelete.
+- Update API DeleteScheduledSQL: update param project.
+- Update API DeleteScheduledSQL: update param scheduledSQLName.
+- Update API DisableScheduledSQL: update param project.
+- Update API DisableScheduledSQL: update param scheduledSQLName.
+- Update API EnableScheduledSQL: update param project.
+- Update API EnableScheduledSQL: update param scheduledSQLName.
+- Update API GetScheduledSQL: update param project.
+- Update API GetScheduledSQL: update param scheduledSQLName.
+- Update API ListOSSHDFSExports: update param logstore.
+- Update API ListScheduledSQLs: update param project.
+- Update API ListScheduledSQLs: update param logstore.
+- Update API UpdateOSSHDFSExport: update param body.
+- Update API UpdateProject: update param body.
+
+
 2025-02-12 Version: v6.8.0
 - Support API DeleteIngestProcessor.
 - Support API GetIngestProcessor.
