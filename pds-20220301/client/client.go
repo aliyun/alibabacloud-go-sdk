@@ -8518,6 +8518,102 @@ func (s *AssignRoleResponse) SetStatusCode(v int32) *AssignRoleResponse {
 	return s
 }
 
+type AuditLogExportRequest struct {
+	// example:
+	//
+	// 2024-01-log.csv
+	FileName *string `json:"file_name,omitempty" xml:"file_name,omitempty"`
+	// example:
+	//
+	// zh_CN
+	Language *string `json:"language,omitempty" xml:"language,omitempty"`
+	// example:
+	//
+	// acted_at DESC
+	OrderBy *string `json:"order_by,omitempty" xml:"order_by,omitempty"`
+	// example:
+	//
+	// acted_at > \\"2025-03-10T16:00:00\\" and acted_at < \\"2025-03-17T15:59:59\\"
+	Query *string `json:"query,omitempty" xml:"query,omitempty"`
+}
+
+func (s AuditLogExportRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AuditLogExportRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AuditLogExportRequest) SetFileName(v string) *AuditLogExportRequest {
+	s.FileName = &v
+	return s
+}
+
+func (s *AuditLogExportRequest) SetLanguage(v string) *AuditLogExportRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *AuditLogExportRequest) SetOrderBy(v string) *AuditLogExportRequest {
+	s.OrderBy = &v
+	return s
+}
+
+func (s *AuditLogExportRequest) SetQuery(v string) *AuditLogExportRequest {
+	s.Query = &v
+	return s
+}
+
+type AuditLogExportResponseBody struct {
+	// example:
+	//
+	// 4221bf6e6ab43c255edc4463bf3a6f5f5d31****
+	AsyncTaskId *string `json:"async_task_id,omitempty" xml:"async_task_id,omitempty"`
+}
+
+func (s AuditLogExportResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AuditLogExportResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AuditLogExportResponseBody) SetAsyncTaskId(v string) *AuditLogExportResponseBody {
+	s.AsyncTaskId = &v
+	return s
+}
+
+type AuditLogExportResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AuditLogExportResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AuditLogExportResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AuditLogExportResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AuditLogExportResponse) SetHeaders(v map[string]*string) *AuditLogExportResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AuditLogExportResponse) SetStatusCode(v int32) *AuditLogExportResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AuditLogExportResponse) SetBody(v *AuditLogExportResponseBody) *AuditLogExportResponse {
+	s.Body = v
+	return s
+}
+
 type AuthorizeRequest struct {
 	// The application ID returned when the application was created.
 	//
@@ -17716,9 +17812,9 @@ type ListRecyclebinRequest struct {
 	//
 	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
-	// Specifies the returned fields.
+	// The fields of an entry (file or folder) to return.
 	//
-	// 1\\. If you set this parameter to \\*, all fields of the file are returned.
+	// 1\\. If you set this parameter to \\*, all fields are returned.
 	//
 	// 2\\. If you set this parameter to a null value or leave this parameter empty, the fields, such as file creator, file modifier, and custom tags, are not returned.
 	//
@@ -17728,20 +17824,21 @@ type ListRecyclebinRequest struct {
 	//
 	// *
 	Fields *string `json:"fields,omitempty" xml:"fields,omitempty"`
-	// The maximum number of results to return. Valid values: 1 to 200. Default value: 50.
+	// The maximum number of entries to return. Valid values: 1 to 200. Default value: 50.
 	//
-	// The number of returned results must be less than or equal to the specified number.
+	// The number of returned entries must be less than or equal to the value of this parameter.
 	//
 	// example:
 	//
 	// 50
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of marker. By default, this parameter is left empty.
+	// The name of the entry after which the list begins. Entries whose names are alphabetically after the value of this parameter are returned. If you do not specify this parameter, all entries are returned. This parameter is left empty by default.
 	//
 	// example:
 	//
 	// NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg
-	Marker             *string                  `json:"marker,omitempty" xml:"marker,omitempty"`
+	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
+	// The thumbnail configurations. Up to five thumbnails can be returned at a time. The value contains key-value pairs. You can customize the keys. The URL of a thumbnail is returned based on the key.
 	ThumbnailProcesses map[string]*ImageProcess `json:"thumbnail_processes,omitempty" xml:"thumbnail_processes,omitempty"`
 }
 
@@ -22448,12 +22545,22 @@ func (s *UpdateUserResponse) SetBody(v *User) *UpdateUserResponse {
 }
 
 type VideoDRMLicenseRequest struct {
+	// The type of DRM encryption.
+	//
+	// Valid values:
+	//
+	// 	- fairplay
+	//
+	// 	- widevine
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// widevine
 	DrmType *string `json:"drmType,omitempty" xml:"drmType,omitempty"`
+	// The request that is initiated to obtain the license.
+	//
 	// example:
 	//
 	// CAES6B8SQgpACioSENGxDhqCLIVwwCBOyPayyWoSENGxDhqCLIVwwCBOyPayyWpI88aJmwYQARoQdRV32
@@ -22479,14 +22586,20 @@ func (s *VideoDRMLicenseRequest) SetLicenseRequest(v string) *VideoDRMLicenseReq
 }
 
 type VideoDRMLicenseResponseBody struct {
+	// The returned DRM license.
+	//
 	// example:
 	//
 	// cb9swCy8P50H9KePsxET3jZ1tm41bDs9HTsxbWnsjf3bsf6QGdiS4kZPhDaskimbNyAfNjmhQRmWFt3AhwNF3
 	Data *string `json:"data,omitempty" xml:"data,omitempty"`
+	// The information about the device from which the DRM request was initiated.
+	//
 	// example:
 	//
 	// ""
 	DeviceInfo *string `json:"device_info,omitempty" xml:"device_info,omitempty"`
+	// The request state returned by the DRM server.
+	//
 	// example:
 	//
 	// 0
@@ -22793,6 +22906,82 @@ func (client *Client) AssignRole(request *AssignRoleRequest) (_result *AssignRol
 	headers := make(map[string]*string)
 	_result = &AssignRoleResponse{}
 	_body, _err := client.AssignRoleWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 导出审计日志
+//
+// @param request - AuditLogExportRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AuditLogExportResponse
+func (client *Client) AuditLogExportWithOptions(request *AuditLogExportRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AuditLogExportResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FileName)) {
+		body["file_name"] = request.FileName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		body["language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderBy)) {
+		body["order_by"] = request.OrderBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Query)) {
+		body["query"] = request.Query
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AuditLogExport"),
+		Version:     tea.String("2022-03-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/audit_log/export"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AuditLogExportResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 导出审计日志
+//
+// @param request - AuditLogExportRequest
+//
+// @return AuditLogExportResponse
+func (client *Client) AuditLogExport(request *AuditLogExportRequest) (_result *AuditLogExportResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &AuditLogExportResponse{}
+	_body, _err := client.AuditLogExportWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24508,7 +24697,7 @@ func (client *Client) CsiGetFileInfo(request *CsiGetFileInfoRequest) (_result *C
 
 // Summary:
 //
-// Delete the domain
+// # Delete the domain
 //
 // @param request - DeleteDomainRequest
 //
@@ -24553,7 +24742,7 @@ func (client *Client) DeleteDomainWithOptions(request *DeleteDomainRequest, head
 
 // Summary:
 //
-// Delete the domain
+// # Delete the domain
 //
 // @param request - DeleteDomainRequest
 //
@@ -25350,11 +25539,11 @@ func (client *Client) FileListPermission(request *FileListPermissionRequest) (_r
 //
 // This operation is an incremental update operation. Take note of the following items:
 //
-// 	- If a tag name specified in the request is the same as an existing tag name, the existing tag is overwritten.
+//   - If a tag name specified in the request is the same as an existing tag name, the existing tag is overwritten.
 //
-// 	- If a tag name specified in the request is different from the existing tag names, the specified tag is added.
+//   - If a tag name specified in the request is different from the existing tag names, the specified tag is added.
 //
-// 	- The existing tags with unique names are not affected.
+//   - The existing tags with unique names are not affected.
 //
 // @param request - FilePutUserTagsRequest
 //
@@ -25413,11 +25602,11 @@ func (client *Client) FilePutUserTagsWithOptions(request *FilePutUserTagsRequest
 //
 // This operation is an incremental update operation. Take note of the following items:
 //
-// 	- If a tag name specified in the request is the same as an existing tag name, the existing tag is overwritten.
+//   - If a tag name specified in the request is the same as an existing tag name, the existing tag is overwritten.
 //
-// 	- If a tag name specified in the request is different from the existing tag names, the specified tag is added.
+//   - If a tag name specified in the request is different from the existing tag names, the specified tag is added.
 //
-// 	- The existing tags with unique names are not affected.
+//   - The existing tags with unique names are not affected.
 //
 // @param request - FilePutUserTagsRequest
 //
@@ -29590,7 +29779,7 @@ func (client *Client) SearchAddressGroups(request *SearchAddressGroupsRequest) (
 
 // Summary:
 //
-// Search domain with specified attributes
+// # Search domain with specified attributes
 //
 // @param request - SearchDomainsRequest
 //
@@ -29647,7 +29836,7 @@ func (client *Client) SearchDomainsWithOptions(request *SearchDomainsRequest, he
 
 // Summary:
 //
-// Search domain with specified attributes
+// # Search domain with specified attributes
 //
 // @param request - SearchDomainsRequest
 //
@@ -30402,7 +30591,7 @@ func (client *Client) TrashFile(request *TrashFileRequest) (_result *TrashFileRe
 
 // Summary:
 //
-// Unlink Account Binding
+// # Unlink Account Binding
 //
 // @param request - UnLinkAccountRequest
 //
@@ -30459,7 +30648,7 @@ func (client *Client) UnLinkAccountWithOptions(request *UnLinkAccountRequest, he
 
 // Summary:
 //
-// Unlink Account Binding
+// # Unlink Account Binding
 //
 // @param request - UnLinkAccountRequest
 //
@@ -31374,7 +31563,7 @@ func (client *Client) UpdateUser(request *UpdateUserRequest) (_result *UpdateUse
 
 // Summary:
 //
-// 获取视频的DRM License
+// Obtain the digital rights management (DRM) license of a video.
 //
 // @param request - VideoDRMLicenseRequest
 //
@@ -31423,7 +31612,7 @@ func (client *Client) VideoDRMLicenseWithOptions(request *VideoDRMLicenseRequest
 
 // Summary:
 //
-// 获取视频的DRM License
+// Obtain the digital rights management (DRM) license of a video.
 //
 // @param request - VideoDRMLicenseRequest
 //
