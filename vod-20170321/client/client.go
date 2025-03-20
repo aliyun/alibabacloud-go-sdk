@@ -15731,6 +15731,7 @@ func (s *DescribeVodStorageDataResponse) SetBody(v *DescribeVodStorageDataRespon
 }
 
 type DescribeVodTieringStorageDataRequest struct {
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// The end time at which data is obtained. The end time must be later than the start time. The difference cannot exceed 31 days. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
 	//
 	// example:
@@ -15770,6 +15771,11 @@ func (s DescribeVodTieringStorageDataRequest) String() string {
 
 func (s DescribeVodTieringStorageDataRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeVodTieringStorageDataRequest) SetAppId(v string) *DescribeVodTieringStorageDataRequest {
+	s.AppId = &v
+	return s
 }
 
 func (s *DescribeVodTieringStorageDataRequest) SetEndTime(v string) *DescribeVodTieringStorageDataRequest {
@@ -15922,6 +15928,7 @@ func (s *DescribeVodTieringStorageDataResponse) SetBody(v *DescribeVodTieringSto
 }
 
 type DescribeVodTieringStorageRetrievalDataRequest struct {
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// The end of the time range to query. The end time must be later than the start time. The time range cannot exceed 31 days. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
 	//
 	// example:
@@ -15961,6 +15968,11 @@ func (s DescribeVodTieringStorageRetrievalDataRequest) String() string {
 
 func (s DescribeVodTieringStorageRetrievalDataRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeVodTieringStorageRetrievalDataRequest) SetAppId(v string) *DescribeVodTieringStorageRetrievalDataRequest {
+	s.AppId = &v
+	return s
 }
 
 func (s *DescribeVodTieringStorageRetrievalDataRequest) SetEndTime(v string) *DescribeVodTieringStorageRetrievalDataRequest {
@@ -43930,9 +43942,9 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // Description:
 //
-//   Regions that support this operation: **China (Beijing)**, **China (Shanghai)**, and **Singapore**.
+//	  Regions that support this operation: **China (Beijing)**, **China (Shanghai)**, and **Singapore**.
 //
-// 	- Before you add an AI template for automated review and smart thumbnail tasks, make sure that [automated review](https://ai.aliyun.com/vi/censor) and [smart thumbnail](https://ai.aliyun.com/vi/cover) are enabled.
+//		- Before you add an AI template for automated review and smart thumbnail tasks, make sure that [automated review](https://ai.aliyun.com/vi/censor) and [smart thumbnail](https://ai.aliyun.com/vi/cover) are enabled.
 //
 // @param request - AddAITemplateRequest
 //
@@ -43997,9 +44009,9 @@ func (client *Client) AddAITemplateWithOptions(request *AddAITemplateRequest, ru
 //
 // Description:
 //
-//   Regions that support this operation: **China (Beijing)**, **China (Shanghai)**, and **Singapore**.
+//	  Regions that support this operation: **China (Beijing)**, **China (Shanghai)**, and **Singapore**.
 //
-// 	- Before you add an AI template for automated review and smart thumbnail tasks, make sure that [automated review](https://ai.aliyun.com/vi/censor) and [smart thumbnail](https://ai.aliyun.com/vi/cover) are enabled.
+//		- Before you add an AI template for automated review and smart thumbnail tasks, make sure that [automated review](https://ai.aliyun.com/vi/censor) and [smart thumbnail](https://ai.aliyun.com/vi/cover) are enabled.
 //
 // @param request - AddAITemplateRequest
 //
@@ -44021,9 +44033,9 @@ func (client *Client) AddAITemplate(request *AddAITemplateRequest) (_result *Add
 //
 // Description:
 //
-//   You can create a maximum of 3 levels of categories for audio, video, and image files and 2 levels of categories for short video materials. Each category level can contain a maximum of 100 subcategories. To create categories for audio and video files, set `Type` to `default`. To create categories for short video materials, set `Type` to `material`.
+//	  You can create a maximum of 3 levels of categories for audio, video, and image files and 2 levels of categories for short video materials. Each category level can contain a maximum of 100 subcategories. To create categories for audio and video files, set `Type` to `default`. To create categories for short video materials, set `Type` to `material`.
 //
-// 	- After you create a category, you can categorize media resources during upload or categorize the uploaded media resources. For more information, see [Manage video categories](https://help.aliyun.com/document_detail/86070.html).
+//		- After you create a category, you can categorize media resources during upload or categorize the uploaded media resources. For more information, see [Manage video categories](https://help.aliyun.com/document_detail/86070.html).
 //
 // @param request - AddCategoryRequest
 //
@@ -44088,9 +44100,9 @@ func (client *Client) AddCategoryWithOptions(request *AddCategoryRequest, runtim
 //
 // Description:
 //
-//   You can create a maximum of 3 levels of categories for audio, video, and image files and 2 levels of categories for short video materials. Each category level can contain a maximum of 100 subcategories. To create categories for audio and video files, set `Type` to `default`. To create categories for short video materials, set `Type` to `material`.
+//	  You can create a maximum of 3 levels of categories for audio, video, and image files and 2 levels of categories for short video materials. Each category level can contain a maximum of 100 subcategories. To create categories for audio and video files, set `Type` to `default`. To create categories for short video materials, set `Type` to `material`.
 //
-// 	- After you create a category, you can categorize media resources during upload or categorize the uploaded media resources. For more information, see [Manage video categories](https://help.aliyun.com/document_detail/86070.html).
+//		- After you create a category, you can categorize media resources during upload or categorize the uploaded media resources. For more information, see [Manage video categories](https://help.aliyun.com/document_detail/86070.html).
 //
 // @param request - AddCategoryRequest
 //
@@ -44112,7 +44124,7 @@ func (client *Client) AddCategory(request *AddCategoryRequest) (_result *AddCate
 //
 // Description:
 //
-//   For more information about the online editing feature, see [Overview](https://help.aliyun.com/document_detail/95482.html).
+//	For more information about the online editing feature, see [Overview](https://help.aliyun.com/document_detail/95482.html).
 //
 // @param request - AddEditingProjectRequest
 //
@@ -44201,7 +44213,7 @@ func (client *Client) AddEditingProjectWithOptions(request *AddEditingProjectReq
 //
 // Description:
 //
-//   For more information about the online editing feature, see [Overview](https://help.aliyun.com/document_detail/95482.html).
+//	For more information about the online editing feature, see [Overview](https://help.aliyun.com/document_detail/95482.html).
 //
 // @param request - AddEditingProjectRequest
 //
@@ -44318,17 +44330,17 @@ func (client *Client) AddEditingProjectMaterials(request *AddEditingProjectMater
 //
 // Description:
 //
-//   You cannot perform custom operations on transcoding template groups that are **locked*	- in the ApsaraVideo VOD console. You can call the [GetTranscodeTemplateGroup](~~GetTranscodeTemplateGroup~~) operation to query the information about a transcoding template group and check whether the transcoding template group is locked based on the value of the Locked parameter. You can call the [UpdateTranscodeTemplateGroup](~~UpdateTranscodeTemplateGroup~~) operation to unlock a transcoding template group if it is locked. Then, you can perform custom operations on the transcoding template group.
+//	  You cannot perform custom operations on transcoding template groups that are **locked*	- in the ApsaraVideo VOD console. You can call the [GetTranscodeTemplateGroup](~~GetTranscodeTemplateGroup~~) operation to query the information about a transcoding template group and check whether the transcoding template group is locked based on the value of the Locked parameter. You can call the [UpdateTranscodeTemplateGroup](~~UpdateTranscodeTemplateGroup~~) operation to unlock a transcoding template group if it is locked. Then, you can perform custom operations on the transcoding template group.
 //
-// 	- An Object Storage Service (OSS) bucket is required to store files that are used for transcoding. You cannot create a transcoding template group if no bucket is available. To activate a bucket, perform the following operations: Log on to the ApsaraVideo VOD console. In the left-side navigation pane, choose **Configuration Management > Media Management > Storage**. On the **Storage*	- page, activate the bucket that is allocated by ApsaraVideo VOD.
+//		- An Object Storage Service (OSS) bucket is required to store files that are used for transcoding. You cannot create a transcoding template group if no bucket is available. To activate a bucket, perform the following operations: Log on to the ApsaraVideo VOD console. In the left-side navigation pane, choose **Configuration Management > Media Management > Storage**. On the **Storage*	- page, activate the bucket that is allocated by ApsaraVideo VOD.
 //
-// 	- You cannot add transcoding templates to the **No Transcoding*	- template group.
+//		- You cannot add transcoding templates to the **No Transcoding*	- template group.
 //
-// 	- You can create a maximum of 20 transcoding template groups.
+//		- You can create a maximum of 20 transcoding template groups.
 //
-// 	- You can add a maximum of 20 transcoding templates to a transcoding template group.
+//		- You can add a maximum of 20 transcoding templates to a transcoding template group.
 //
-// 	- If you want to generate a URL for adaptive bitrate streaming, you can add video packaging templates to a transcoding template group. You can add a maximum of 10 video packaging templates to a transcoding template group. If you add more than 10 video packaging templates, URLs of the video transcoded based on the video packaging templates are generated but the URL for adaptive bitrate streaming is not generated.
+//		- If you want to generate a URL for adaptive bitrate streaming, you can add video packaging templates to a transcoding template group. You can add a maximum of 10 video packaging templates to a transcoding template group. If you add more than 10 video packaging templates, URLs of the video transcoded based on the video packaging templates are generated but the URL for adaptive bitrate streaming is not generated.
 //
 // ### QPS limits
 //
@@ -44401,17 +44413,17 @@ func (client *Client) AddTranscodeTemplateGroupWithOptions(request *AddTranscode
 //
 // Description:
 //
-//   You cannot perform custom operations on transcoding template groups that are **locked*	- in the ApsaraVideo VOD console. You can call the [GetTranscodeTemplateGroup](~~GetTranscodeTemplateGroup~~) operation to query the information about a transcoding template group and check whether the transcoding template group is locked based on the value of the Locked parameter. You can call the [UpdateTranscodeTemplateGroup](~~UpdateTranscodeTemplateGroup~~) operation to unlock a transcoding template group if it is locked. Then, you can perform custom operations on the transcoding template group.
+//	  You cannot perform custom operations on transcoding template groups that are **locked*	- in the ApsaraVideo VOD console. You can call the [GetTranscodeTemplateGroup](~~GetTranscodeTemplateGroup~~) operation to query the information about a transcoding template group and check whether the transcoding template group is locked based on the value of the Locked parameter. You can call the [UpdateTranscodeTemplateGroup](~~UpdateTranscodeTemplateGroup~~) operation to unlock a transcoding template group if it is locked. Then, you can perform custom operations on the transcoding template group.
 //
-// 	- An Object Storage Service (OSS) bucket is required to store files that are used for transcoding. You cannot create a transcoding template group if no bucket is available. To activate a bucket, perform the following operations: Log on to the ApsaraVideo VOD console. In the left-side navigation pane, choose **Configuration Management > Media Management > Storage**. On the **Storage*	- page, activate the bucket that is allocated by ApsaraVideo VOD.
+//		- An Object Storage Service (OSS) bucket is required to store files that are used for transcoding. You cannot create a transcoding template group if no bucket is available. To activate a bucket, perform the following operations: Log on to the ApsaraVideo VOD console. In the left-side navigation pane, choose **Configuration Management > Media Management > Storage**. On the **Storage*	- page, activate the bucket that is allocated by ApsaraVideo VOD.
 //
-// 	- You cannot add transcoding templates to the **No Transcoding*	- template group.
+//		- You cannot add transcoding templates to the **No Transcoding*	- template group.
 //
-// 	- You can create a maximum of 20 transcoding template groups.
+//		- You can create a maximum of 20 transcoding template groups.
 //
-// 	- You can add a maximum of 20 transcoding templates to a transcoding template group.
+//		- You can add a maximum of 20 transcoding templates to a transcoding template group.
 //
-// 	- If you want to generate a URL for adaptive bitrate streaming, you can add video packaging templates to a transcoding template group. You can add a maximum of 10 video packaging templates to a transcoding template group. If you add more than 10 video packaging templates, URLs of the video transcoded based on the video packaging templates are generated but the URL for adaptive bitrate streaming is not generated.
+//		- If you want to generate a URL for adaptive bitrate streaming, you can add video packaging templates to a transcoding template group. You can add a maximum of 10 video packaging templates to a transcoding template group. If you add more than 10 video packaging templates, URLs of the video transcoded based on the video packaging templates are generated but the URL for adaptive bitrate streaming is not generated.
 //
 // ### QPS limits
 //
@@ -44437,13 +44449,13 @@ func (client *Client) AddTranscodeTemplateGroup(request *AddTranscodeTemplateGro
 //
 // Description:
 //
-//   This operation is available only in the **China (Shanghai)*	- region.
+//	  This operation is available only in the **China (Shanghai)*	- region.
 //
-// 	- Before you add a domain name to accelerate, you must activate ApsaraVideo VOD and apply for an Internet content provider (ICP) filing for the domain name. For more information about how to activate ApsaraVideo VOD, see [Activate ApsaraVideo VOD](https://help.aliyun.com/document_detail/51512.html).
+//		- Before you add a domain name to accelerate, you must activate ApsaraVideo VOD and apply for an Internet content provider (ICP) filing for the domain name. For more information about how to activate ApsaraVideo VOD, see [Activate ApsaraVideo VOD](https://help.aliyun.com/document_detail/51512.html).
 //
-// 	- If the content on the origin server is not stored on Alibaba Cloud, the content must be reviewed by Alibaba Cloud. The review will be complete by the end of the next business day after you submit an application.
+//		- If the content on the origin server is not stored on Alibaba Cloud, the content must be reviewed by Alibaba Cloud. The review will be complete by the end of the next business day after you submit an application.
 //
-// 	- You can add only one domain name to accelerate in a request. You can add a maximum of 20 accelerated domain names within an Alibaba Cloud account.
+//		- You can add only one domain name to accelerate in a request. You can add a maximum of 20 accelerated domain names within an Alibaba Cloud account.
 //
 // @param request - AddVodDomainRequest
 //
@@ -44528,13 +44540,13 @@ func (client *Client) AddVodDomainWithOptions(request *AddVodDomainRequest, runt
 //
 // Description:
 //
-//   This operation is available only in the **China (Shanghai)*	- region.
+//	  This operation is available only in the **China (Shanghai)*	- region.
 //
-// 	- Before you add a domain name to accelerate, you must activate ApsaraVideo VOD and apply for an Internet content provider (ICP) filing for the domain name. For more information about how to activate ApsaraVideo VOD, see [Activate ApsaraVideo VOD](https://help.aliyun.com/document_detail/51512.html).
+//		- Before you add a domain name to accelerate, you must activate ApsaraVideo VOD and apply for an Internet content provider (ICP) filing for the domain name. For more information about how to activate ApsaraVideo VOD, see [Activate ApsaraVideo VOD](https://help.aliyun.com/document_detail/51512.html).
 //
-// 	- If the content on the origin server is not stored on Alibaba Cloud, the content must be reviewed by Alibaba Cloud. The review will be complete by the end of the next business day after you submit an application.
+//		- If the content on the origin server is not stored on Alibaba Cloud, the content must be reviewed by Alibaba Cloud. The review will be complete by the end of the next business day after you submit an application.
 //
-// 	- You can add only one domain name to accelerate in a request. You can add a maximum of 20 accelerated domain names within an Alibaba Cloud account.
+//		- You can add only one domain name to accelerate in a request. You can add a maximum of 20 accelerated domain names within an Alibaba Cloud account.
 //
 // @param request - AddVodDomainRequest
 //
@@ -44647,9 +44659,9 @@ func (client *Client) AddVodStorageForApp(request *AddVodStorageForAppRequest) (
 //
 // Description:
 //
-//   After you add a snapshot template, you can call the [SubmitSnapshotJob](https://help.aliyun.com/document_detail/72213.html) operation and specify the template ID to submit a snapshot job.
+//	  After you add a snapshot template, you can call the [SubmitSnapshotJob](https://help.aliyun.com/document_detail/72213.html) operation and specify the template ID to submit a snapshot job.
 //
-// 	- You can use the HTTP (HTTPS compatible) callback or MNS callback method to receive the [SnapshotComplete](https://help.aliyun.com/document_detail/57337.html) callback. For more information, see [Overview](https://help.aliyun.com/document_detail/55627.html).
+//		- You can use the HTTP (HTTPS compatible) callback or MNS callback method to receive the [SnapshotComplete](https://help.aliyun.com/document_detail/57337.html) callback. For more information, see [Overview](https://help.aliyun.com/document_detail/55627.html).
 //
 // @param request - AddVodTemplateRequest
 //
@@ -44718,9 +44730,9 @@ func (client *Client) AddVodTemplateWithOptions(request *AddVodTemplateRequest, 
 //
 // Description:
 //
-//   After you add a snapshot template, you can call the [SubmitSnapshotJob](https://help.aliyun.com/document_detail/72213.html) operation and specify the template ID to submit a snapshot job.
+//	  After you add a snapshot template, you can call the [SubmitSnapshotJob](https://help.aliyun.com/document_detail/72213.html) operation and specify the template ID to submit a snapshot job.
 //
-// 	- You can use the HTTP (HTTPS compatible) callback or MNS callback method to receive the [SnapshotComplete](https://help.aliyun.com/document_detail/57337.html) callback. For more information, see [Overview](https://help.aliyun.com/document_detail/55627.html).
+//		- You can use the HTTP (HTTPS compatible) callback or MNS callback method to receive the [SnapshotComplete](https://help.aliyun.com/document_detail/57337.html) callback. For more information, see [Overview](https://help.aliyun.com/document_detail/55627.html).
 //
 // @param request - AddVodTemplateRequest
 //
@@ -44742,11 +44754,11 @@ func (client *Client) AddVodTemplate(request *AddVodTemplateRequest) (_result *A
 //
 // Description:
 //
-//   You can call this operation to create an `Image` watermark template or a `Text` watermark template. You can use static images in the PNG format or dynamic images in the GIF, APNG, and MOV formats as image watermarks.
+//	  You can call this operation to create an `Image` watermark template or a `Text` watermark template. You can use static images in the PNG format or dynamic images in the GIF, APNG, and MOV formats as image watermarks.
 //
-// 	- After you call this operation to create a watermark template, you must call the [AddTranscodeTemplateGroup](~~AddTranscodeTemplateGroup~~) or [UpdateTranscodeTemplateGroup](~~UpdateTranscodeTemplateGroup~~) operation to associate the watermark template with a transcoding template group. This way, you can add watermarks to videos during transcoding.
+//		- After you call this operation to create a watermark template, you must call the [AddTranscodeTemplateGroup](~~AddTranscodeTemplateGroup~~) or [UpdateTranscodeTemplateGroup](~~UpdateTranscodeTemplateGroup~~) operation to associate the watermark template with a transcoding template group. This way, you can add watermarks to videos during transcoding.
 //
-// 	- For more information, see [Video watermarks](https://help.aliyun.com/document_detail/99369.html).
+//		- For more information, see [Video watermarks](https://help.aliyun.com/document_detail/99369.html).
 //
 // @param request - AddWatermarkRequest
 //
@@ -44819,11 +44831,11 @@ func (client *Client) AddWatermarkWithOptions(request *AddWatermarkRequest, runt
 //
 // Description:
 //
-//   You can call this operation to create an `Image` watermark template or a `Text` watermark template. You can use static images in the PNG format or dynamic images in the GIF, APNG, and MOV formats as image watermarks.
+//	  You can call this operation to create an `Image` watermark template or a `Text` watermark template. You can use static images in the PNG format or dynamic images in the GIF, APNG, and MOV formats as image watermarks.
 //
-// 	- After you call this operation to create a watermark template, you must call the [AddTranscodeTemplateGroup](~~AddTranscodeTemplateGroup~~) or [UpdateTranscodeTemplateGroup](~~UpdateTranscodeTemplateGroup~~) operation to associate the watermark template with a transcoding template group. This way, you can add watermarks to videos during transcoding.
+//		- After you call this operation to create a watermark template, you must call the [AddTranscodeTemplateGroup](~~AddTranscodeTemplateGroup~~) or [UpdateTranscodeTemplateGroup](~~UpdateTranscodeTemplateGroup~~) operation to associate the watermark template with a transcoding template group. This way, you can add watermarks to videos during transcoding.
 //
-// 	- For more information, see [Video watermarks](https://help.aliyun.com/document_detail/99369.html).
+//		- For more information, see [Video watermarks](https://help.aliyun.com/document_detail/99369.html).
 //
 // @param request - AddWatermarkRequest
 //
@@ -44936,9 +44948,9 @@ func (client *Client) AttachAppPolicyToIdentity(request *AttachAppPolicyToIdenti
 //
 // Description:
 //
-//   You can specify up to 20 audio or video file IDs in each request.
+//	  You can specify up to 20 audio or video file IDs in each request.
 //
-// 	- After a media file is uploaded, ApsaraVideo VOD processes the source file. Then, information about the media file is asynchronously generated. You can configure notifications for the [VideoAnalysisComplete](https://help.aliyun.com/document_detail/99935.html) event and call this operation to query information about a media file after you receive notifications for the [VideoAnalysisComplete](https://help.aliyun.com/document_detail/99935.html) event. For more information, see [Overview](https://help.aliyun.com/document_detail/55627.html).
+//		- After a media file is uploaded, ApsaraVideo VOD processes the source file. Then, information about the media file is asynchronously generated. You can configure notifications for the [VideoAnalysisComplete](https://help.aliyun.com/document_detail/99935.html) event and call this operation to query information about a media file after you receive notifications for the [VideoAnalysisComplete](https://help.aliyun.com/document_detail/99935.html) event. For more information, see [Overview](https://help.aliyun.com/document_detail/55627.html).
 //
 // @param request - BatchGetMediaInfosRequest
 //
@@ -44995,9 +45007,9 @@ func (client *Client) BatchGetMediaInfosWithOptions(request *BatchGetMediaInfosR
 //
 // Description:
 //
-//   You can specify up to 20 audio or video file IDs in each request.
+//	  You can specify up to 20 audio or video file IDs in each request.
 //
-// 	- After a media file is uploaded, ApsaraVideo VOD processes the source file. Then, information about the media file is asynchronously generated. You can configure notifications for the [VideoAnalysisComplete](https://help.aliyun.com/document_detail/99935.html) event and call this operation to query information about a media file after you receive notifications for the [VideoAnalysisComplete](https://help.aliyun.com/document_detail/99935.html) event. For more information, see [Overview](https://help.aliyun.com/document_detail/55627.html).
+//		- After a media file is uploaded, ApsaraVideo VOD processes the source file. Then, information about the media file is asynchronously generated. You can configure notifications for the [VideoAnalysisComplete](https://help.aliyun.com/document_detail/99935.html) event and call this operation to query information about a media file after you receive notifications for the [VideoAnalysisComplete](https://help.aliyun.com/document_detail/99935.html) event. For more information, see [Overview](https://help.aliyun.com/document_detail/55627.html).
 //
 // @param request - BatchGetMediaInfosRequest
 //
@@ -45114,9 +45126,9 @@ func (client *Client) BatchSetVodDomainConfigs(request *BatchSetVodDomainConfigs
 //
 // Description:
 //
-//   This operation is available only in the **China (Shanghai)*	- region.
+//	  This operation is available only in the **China (Shanghai)*	- region.
 //
-// 	- If the domain name that you want to enable is invalid or your Alibaba Cloud account has overdue payments, you cannot call this operation to enable the domain name.
+//		- If the domain name that you want to enable is invalid or your Alibaba Cloud account has overdue payments, you cannot call this operation to enable the domain name.
 //
 // @param request - BatchStartVodDomainRequest
 //
@@ -45181,9 +45193,9 @@ func (client *Client) BatchStartVodDomainWithOptions(request *BatchStartVodDomai
 //
 // Description:
 //
-//   This operation is available only in the **China (Shanghai)*	- region.
+//	  This operation is available only in the **China (Shanghai)*	- region.
 //
-// 	- If the domain name that you want to enable is invalid or your Alibaba Cloud account has overdue payments, you cannot call this operation to enable the domain name.
+//		- If the domain name that you want to enable is invalid or your Alibaba Cloud account has overdue payments, you cannot call this operation to enable the domain name.
 //
 // @param request - BatchStartVodDomainRequest
 //
@@ -45205,9 +45217,9 @@ func (client *Client) BatchStartVodDomain(request *BatchStartVodDomainRequest) (
 //
 // Description:
 //
-//   This operation is available only in the **China (Shanghai)*	- region.
+//	  This operation is available only in the **China (Shanghai)*	- region.
 //
-// 	- After you disable an accelerated domain name, the information about the domain name is retained. The system automatically reroutes all the requests that are destined for the domain name to the origin server.
+//		- After you disable an accelerated domain name, the information about the domain name is retained. The system automatically reroutes all the requests that are destined for the domain name to the origin server.
 //
 // @param request - BatchStopVodDomainRequest
 //
@@ -45272,9 +45284,9 @@ func (client *Client) BatchStopVodDomainWithOptions(request *BatchStopVodDomainR
 //
 // Description:
 //
-//   This operation is available only in the **China (Shanghai)*	- region.
+//	  This operation is available only in the **China (Shanghai)*	- region.
 //
-// 	- After you disable an accelerated domain name, the information about the domain name is retained. The system automatically reroutes all the requests that are destined for the domain name to the origin server.
+//		- After you disable an accelerated domain name, the information about the domain name is retained. The system automatically reroutes all the requests that are destined for the domain name to the origin server.
 //
 // @param request - BatchStopVodDomainRequest
 //
@@ -45296,11 +45308,11 @@ func (client *Client) BatchStopVodDomain(request *BatchStopVodDomainRequest) (_r
 //
 // Description:
 //
-//   You can cancel only URL-based upload jobs in the **Pending*	- state. You can query the status of a URL-based upload job by calling the [GetURLUploadInfos](https://help.aliyun.com/document_detail/106830.html) operation.
+//	  You can cancel only URL-based upload jobs in the **Pending*	- state. You can query the status of a URL-based upload job by calling the [GetURLUploadInfos](https://help.aliyun.com/document_detail/106830.html) operation.
 //
-// 	- You cannot cancel an upload job that already starts.
+//		- You cannot cancel an upload job that already starts.
 //
-// 	- You must specify either JobIds or UploadUrls. If you specify both parameters, only JobIds takes effect.
+//		- You must specify either JobIds or UploadUrls. If you specify both parameters, only JobIds takes effect.
 //
 // @param request - CancelUrlUploadJobsRequest
 //
@@ -45361,11 +45373,11 @@ func (client *Client) CancelUrlUploadJobsWithOptions(request *CancelUrlUploadJob
 //
 // Description:
 //
-//   You can cancel only URL-based upload jobs in the **Pending*	- state. You can query the status of a URL-based upload job by calling the [GetURLUploadInfos](https://help.aliyun.com/document_detail/106830.html) operation.
+//	  You can cancel only URL-based upload jobs in the **Pending*	- state. You can query the status of a URL-based upload job by calling the [GetURLUploadInfos](https://help.aliyun.com/document_detail/106830.html) operation.
 //
-// 	- You cannot cancel an upload job that already starts.
+//		- You cannot cancel an upload job that already starts.
 //
-// 	- You must specify either JobIds or UploadUrls. If you specify both parameters, only JobIds takes effect.
+//		- You must specify either JobIds or UploadUrls. If you specify both parameters, only JobIds takes effect.
 //
 // @param request - CancelUrlUploadJobsRequest
 //
@@ -45636,15 +45648,15 @@ func (client *Client) CreateAudit(request *CreateAuditRequest) (_result *CreateA
 //
 // Description:
 //
-//   **Make sure that you understand the billing method and prices of ApsaraVideo VOD before you call this operation. You are charged storage fees after you upload media files to ApsaraVideo VOD. For more information, see [Billing of media asset storage](~~188308#section_e97_xrp_mzz~~). If you have activated the acceleration service, you are charged acceleration fees when you upload media files to ApsaraVideo VOD. For more information, see [Billing of acceleration traffic](~~188310#section_sta_zm2_tsv~~).**
+//	  **Make sure that you understand the billing method and prices of ApsaraVideo VOD before you call this operation. You are charged storage fees after you upload media files to ApsaraVideo VOD. For more information, see [Billing of media asset storage](~~188308#section_e97_xrp_mzz~~). If you have activated the acceleration service, you are charged acceleration fees when you upload media files to ApsaraVideo VOD. For more information, see [Billing of acceleration traffic](~~188310#section_sta_zm2_tsv~~).**
 //
-// 	- You can call this operation only to obtain the upload URLs and credentials for media files and create media assets in ApsaraVideo VOD. You cannot call this operation to upload media files. For more information about how to upload media files by calling API operations, see [Upload media files by calling API operations](https://help.aliyun.com/document_detail/476208.html).
+//		- You can call this operation only to obtain the upload URLs and credentials for media files and create media assets in ApsaraVideo VOD. You cannot call this operation to upload media files. For more information about how to upload media files by calling API operations, see [Upload media files by calling API operations](https://help.aliyun.com/document_detail/476208.html).
 //
-// 	- If the upload credential expires after 3,000 seconds, you can call the CreateUploadAttachedMedia operation again to obtain a new upload URL and a new upload credential.
+//		- If the upload credential expires after 3,000 seconds, you can call the CreateUploadAttachedMedia operation again to obtain a new upload URL and a new upload credential.
 //
-// 	- You can configure a callback to receive an [AttachedMediaUploadComplete](https://help.aliyun.com/document_detail/103250.html) event notification to determine whether the upload is successful.
+//		- You can configure a callback to receive an [AttachedMediaUploadComplete](https://help.aliyun.com/document_detail/103250.html) event notification to determine whether the upload is successful.
 //
-// 	- You must obtain a URL and a credential before you upload a media file to ApsaraVideo VOD. ApsaraVideo VOD supports multiple upload methods. Each method has different requirements on upload URLs and credentials. For more information, see [Upload URLs and credentials](https://help.aliyun.com/document_detail/55397.html).
+//		- You must obtain a URL and a credential before you upload a media file to ApsaraVideo VOD. ApsaraVideo VOD supports multiple upload methods. Each method has different requirements on upload URLs and credentials. For more information, see [Upload URLs and credentials](https://help.aliyun.com/document_detail/55397.html).
 //
 // @param request - CreateUploadAttachedMediaRequest
 //
@@ -45741,15 +45753,15 @@ func (client *Client) CreateUploadAttachedMediaWithOptions(request *CreateUpload
 //
 // Description:
 //
-//   **Make sure that you understand the billing method and prices of ApsaraVideo VOD before you call this operation. You are charged storage fees after you upload media files to ApsaraVideo VOD. For more information, see [Billing of media asset storage](~~188308#section_e97_xrp_mzz~~). If you have activated the acceleration service, you are charged acceleration fees when you upload media files to ApsaraVideo VOD. For more information, see [Billing of acceleration traffic](~~188310#section_sta_zm2_tsv~~).**
+//	  **Make sure that you understand the billing method and prices of ApsaraVideo VOD before you call this operation. You are charged storage fees after you upload media files to ApsaraVideo VOD. For more information, see [Billing of media asset storage](~~188308#section_e97_xrp_mzz~~). If you have activated the acceleration service, you are charged acceleration fees when you upload media files to ApsaraVideo VOD. For more information, see [Billing of acceleration traffic](~~188310#section_sta_zm2_tsv~~).**
 //
-// 	- You can call this operation only to obtain the upload URLs and credentials for media files and create media assets in ApsaraVideo VOD. You cannot call this operation to upload media files. For more information about how to upload media files by calling API operations, see [Upload media files by calling API operations](https://help.aliyun.com/document_detail/476208.html).
+//		- You can call this operation only to obtain the upload URLs and credentials for media files and create media assets in ApsaraVideo VOD. You cannot call this operation to upload media files. For more information about how to upload media files by calling API operations, see [Upload media files by calling API operations](https://help.aliyun.com/document_detail/476208.html).
 //
-// 	- If the upload credential expires after 3,000 seconds, you can call the CreateUploadAttachedMedia operation again to obtain a new upload URL and a new upload credential.
+//		- If the upload credential expires after 3,000 seconds, you can call the CreateUploadAttachedMedia operation again to obtain a new upload URL and a new upload credential.
 //
-// 	- You can configure a callback to receive an [AttachedMediaUploadComplete](https://help.aliyun.com/document_detail/103250.html) event notification to determine whether the upload is successful.
+//		- You can configure a callback to receive an [AttachedMediaUploadComplete](https://help.aliyun.com/document_detail/103250.html) event notification to determine whether the upload is successful.
 //
-// 	- You must obtain a URL and a credential before you upload a media file to ApsaraVideo VOD. ApsaraVideo VOD supports multiple upload methods. Each method has different requirements on upload URLs and credentials. For more information, see [Upload URLs and credentials](https://help.aliyun.com/document_detail/55397.html).
+//		- You must obtain a URL and a credential before you upload a media file to ApsaraVideo VOD. ApsaraVideo VOD supports multiple upload methods. Each method has different requirements on upload URLs and credentials. For more information, see [Upload URLs and credentials](https://help.aliyun.com/document_detail/55397.html).
 //
 // @param request - CreateUploadAttachedMediaRequest
 //
@@ -45771,15 +45783,15 @@ func (client *Client) CreateUploadAttachedMedia(request *CreateUploadAttachedMed
 //
 // Description:
 //
-//   **Make sure that you understand the billing method and price of ApsaraVideo VOD before you call this operation. You are charged storage fees after you upload media files to ApsaraVideo VOD. For more information, see [Billing of media asset storage](~~188308#section_e97_xrp_mzz~~). If you have activated the acceleration service, you are charged acceleration fees when you upload media files to ApsaraVideo VOD. For more information, see [Billing of acceleration traffic](~~188310#section_sta_zm2_tsv~~).**
+//	  **Make sure that you understand the billing method and price of ApsaraVideo VOD before you call this operation. You are charged storage fees after you upload media files to ApsaraVideo VOD. For more information, see [Billing of media asset storage](~~188308#section_e97_xrp_mzz~~). If you have activated the acceleration service, you are charged acceleration fees when you upload media files to ApsaraVideo VOD. For more information, see [Billing of acceleration traffic](~~188310#section_sta_zm2_tsv~~).**
 //
-// 	- You must obtain a URL and a credential before you upload an image to ApsaraVideo VOD. ApsaraVideo VOD provides multiple upload methods. You can upload files by using server upload SDKs, client upload SDKs, URLs, Object Storage Service (OSS) API, or OSS SDKs. Each upload method has different requirements for obtaining upload URLs and credentials. For more information, see the "Usage notes" section of the [Upload URLs and credentials](https://help.aliyun.com/document_detail/55397.html) topic.
+//		- You must obtain a URL and a credential before you upload an image to ApsaraVideo VOD. ApsaraVideo VOD provides multiple upload methods. You can upload files by using server upload SDKs, client upload SDKs, URLs, Object Storage Service (OSS) API, or OSS SDKs. Each upload method has different requirements for obtaining upload URLs and credentials. For more information, see the "Usage notes" section of the [Upload URLs and credentials](https://help.aliyun.com/document_detail/55397.html) topic.
 //
-// 	- You cannot refresh the upload URL or credential when you upload images. If the image upload credential expires, you can call this operation to obtain a new upload URL and credential. By default, the validity period of an image upload credential is 3,000 seconds.
+//		- You cannot refresh the upload URL or credential when you upload images. If the image upload credential expires, you can call this operation to obtain a new upload URL and credential. By default, the validity period of an image upload credential is 3,000 seconds.
 //
-// 	- You can call the [CreateUploadAttachedMedia](https://help.aliyun.com/document_detail/98467.html) operation to upload image watermarks.
+//		- You can call the [CreateUploadAttachedMedia](https://help.aliyun.com/document_detail/98467.html) operation to upload image watermarks.
 //
-// 	- You can configure a callback for [ImageUploadComplete](https://help.aliyun.com/document_detail/91968.html) to receive notifications about the image upload status.
+//		- You can configure a callback for [ImageUploadComplete](https://help.aliyun.com/document_detail/91968.html) to receive notifications about the image upload status.
 //
 // @param request - CreateUploadImageRequest
 //
@@ -45872,15 +45884,15 @@ func (client *Client) CreateUploadImageWithOptions(request *CreateUploadImageReq
 //
 // Description:
 //
-//   **Make sure that you understand the billing method and price of ApsaraVideo VOD before you call this operation. You are charged storage fees after you upload media files to ApsaraVideo VOD. For more information, see [Billing of media asset storage](~~188308#section_e97_xrp_mzz~~). If you have activated the acceleration service, you are charged acceleration fees when you upload media files to ApsaraVideo VOD. For more information, see [Billing of acceleration traffic](~~188310#section_sta_zm2_tsv~~).**
+//	  **Make sure that you understand the billing method and price of ApsaraVideo VOD before you call this operation. You are charged storage fees after you upload media files to ApsaraVideo VOD. For more information, see [Billing of media asset storage](~~188308#section_e97_xrp_mzz~~). If you have activated the acceleration service, you are charged acceleration fees when you upload media files to ApsaraVideo VOD. For more information, see [Billing of acceleration traffic](~~188310#section_sta_zm2_tsv~~).**
 //
-// 	- You must obtain a URL and a credential before you upload an image to ApsaraVideo VOD. ApsaraVideo VOD provides multiple upload methods. You can upload files by using server upload SDKs, client upload SDKs, URLs, Object Storage Service (OSS) API, or OSS SDKs. Each upload method has different requirements for obtaining upload URLs and credentials. For more information, see the "Usage notes" section of the [Upload URLs and credentials](https://help.aliyun.com/document_detail/55397.html) topic.
+//		- You must obtain a URL and a credential before you upload an image to ApsaraVideo VOD. ApsaraVideo VOD provides multiple upload methods. You can upload files by using server upload SDKs, client upload SDKs, URLs, Object Storage Service (OSS) API, or OSS SDKs. Each upload method has different requirements for obtaining upload URLs and credentials. For more information, see the "Usage notes" section of the [Upload URLs and credentials](https://help.aliyun.com/document_detail/55397.html) topic.
 //
-// 	- You cannot refresh the upload URL or credential when you upload images. If the image upload credential expires, you can call this operation to obtain a new upload URL and credential. By default, the validity period of an image upload credential is 3,000 seconds.
+//		- You cannot refresh the upload URL or credential when you upload images. If the image upload credential expires, you can call this operation to obtain a new upload URL and credential. By default, the validity period of an image upload credential is 3,000 seconds.
 //
-// 	- You can call the [CreateUploadAttachedMedia](https://help.aliyun.com/document_detail/98467.html) operation to upload image watermarks.
+//		- You can call the [CreateUploadAttachedMedia](https://help.aliyun.com/document_detail/98467.html) operation to upload image watermarks.
 //
-// 	- You can configure a callback for [ImageUploadComplete](https://help.aliyun.com/document_detail/91968.html) to receive notifications about the image upload status.
+//		- You can configure a callback for [ImageUploadComplete](https://help.aliyun.com/document_detail/91968.html) to receive notifications about the image upload status.
 //
 // @param request - CreateUploadImageRequest
 //
@@ -45902,19 +45914,19 @@ func (client *Client) CreateUploadImage(request *CreateUploadImageRequest) (_res
 //
 // Description:
 //
-//   **Make sure that you understand the billing method and prices of ApsaraVideo VOD before you call this operation. You are charged storage fees after you upload media files to ApsaraVideo VOD. For more information, see [Billing of media asset storage](~~188308#section_e97_xrp_mzz~~). If you have activated the acceleration service, you are charged acceleration fees when you upload media files to ApsaraVideo VOD. For more information, see [Billing of acceleration traffic](~~188310#section_sta_zm2_tsv~~).**
+//	  **Make sure that you understand the billing method and prices of ApsaraVideo VOD before you call this operation. You are charged storage fees after you upload media files to ApsaraVideo VOD. For more information, see [Billing of media asset storage](~~188308#section_e97_xrp_mzz~~). If you have activated the acceleration service, you are charged acceleration fees when you upload media files to ApsaraVideo VOD. For more information, see [Billing of acceleration traffic](~~188310#section_sta_zm2_tsv~~).**
 //
-// 	- You can call this operation to obtain upload URLs and credentials for video and audio files. For more information, see [Upload URLs and credentials](https://help.aliyun.com/document_detail/55397.html).
+//		- You can call this operation to obtain upload URLs and credentials for video and audio files. For more information, see [Upload URLs and credentials](https://help.aliyun.com/document_detail/55397.html).
 //
-// 	- You can call this operation only to obtain the upload URLs and credentials for media files and create media assets in ApsaraVideo VOD. You cannot call this operation to upload media files. For more information about how to upload media files by calling API operations, see [Upload media files by calling API operations](https://help.aliyun.com/document_detail/476208.html).
+//		- You can call this operation only to obtain the upload URLs and credentials for media files and create media assets in ApsaraVideo VOD. You cannot call this operation to upload media files. For more information about how to upload media files by calling API operations, see [Upload media files by calling API operations](https://help.aliyun.com/document_detail/476208.html).
 //
-// 	- If the upload credential expires, call the [RefreshUploadVideo](~~RefreshUploadVideo~~) operation to obtain a new upload credential. The default validity period of an upload credential is 3,000 seconds.
+//		- If the upload credential expires, call the [RefreshUploadVideo](~~RefreshUploadVideo~~) operation to obtain a new upload credential. The default validity period of an upload credential is 3,000 seconds.
 //
-// 	- You can configure a callback to receive an event notification when an audio or video file is uploaded. Alternatively, after you upload an audio or video file, you can call the [GetMezzanineInfo](https://help.aliyun.com/document_detail/59624.html) operation to determine whether the upload is successful. For more information, see [Overview](https://help.aliyun.com/document_detail/55396.html).
+//		- You can configure a callback to receive an event notification when an audio or video file is uploaded. Alternatively, after you upload an audio or video file, you can call the [GetMezzanineInfo](https://help.aliyun.com/document_detail/59624.html) operation to determine whether the upload is successful. For more information, see [Overview](https://help.aliyun.com/document_detail/55396.html).
 //
-// 	- The value of the VideoId parameter that is returned after you call this operation can be used for media processing or the lifecycle management of media assets.
+//		- The value of the VideoId parameter that is returned after you call this operation can be used for media processing or the lifecycle management of media assets.
 //
-// 	- You must obtain a URL and a credential before you upload a media file to ApsaraVideo VOD. ApsaraVideo VOD supports multiple upload methods. Each method has different requirements on upload URLs and credentials. For more information, see [Upload URLs and credentials](https://help.aliyun.com/document_detail/55397.html).
+//		- You must obtain a URL and a credential before you upload a media file to ApsaraVideo VOD. ApsaraVideo VOD supports multiple upload methods. Each method has different requirements on upload URLs and credentials. For more information, see [Upload URLs and credentials](https://help.aliyun.com/document_detail/55397.html).
 //
 // @param request - CreateUploadVideoRequest
 //
@@ -46015,19 +46027,19 @@ func (client *Client) CreateUploadVideoWithOptions(request *CreateUploadVideoReq
 //
 // Description:
 //
-//   **Make sure that you understand the billing method and prices of ApsaraVideo VOD before you call this operation. You are charged storage fees after you upload media files to ApsaraVideo VOD. For more information, see [Billing of media asset storage](~~188308#section_e97_xrp_mzz~~). If you have activated the acceleration service, you are charged acceleration fees when you upload media files to ApsaraVideo VOD. For more information, see [Billing of acceleration traffic](~~188310#section_sta_zm2_tsv~~).**
+//	  **Make sure that you understand the billing method and prices of ApsaraVideo VOD before you call this operation. You are charged storage fees after you upload media files to ApsaraVideo VOD. For more information, see [Billing of media asset storage](~~188308#section_e97_xrp_mzz~~). If you have activated the acceleration service, you are charged acceleration fees when you upload media files to ApsaraVideo VOD. For more information, see [Billing of acceleration traffic](~~188310#section_sta_zm2_tsv~~).**
 //
-// 	- You can call this operation to obtain upload URLs and credentials for video and audio files. For more information, see [Upload URLs and credentials](https://help.aliyun.com/document_detail/55397.html).
+//		- You can call this operation to obtain upload URLs and credentials for video and audio files. For more information, see [Upload URLs and credentials](https://help.aliyun.com/document_detail/55397.html).
 //
-// 	- You can call this operation only to obtain the upload URLs and credentials for media files and create media assets in ApsaraVideo VOD. You cannot call this operation to upload media files. For more information about how to upload media files by calling API operations, see [Upload media files by calling API operations](https://help.aliyun.com/document_detail/476208.html).
+//		- You can call this operation only to obtain the upload URLs and credentials for media files and create media assets in ApsaraVideo VOD. You cannot call this operation to upload media files. For more information about how to upload media files by calling API operations, see [Upload media files by calling API operations](https://help.aliyun.com/document_detail/476208.html).
 //
-// 	- If the upload credential expires, call the [RefreshUploadVideo](~~RefreshUploadVideo~~) operation to obtain a new upload credential. The default validity period of an upload credential is 3,000 seconds.
+//		- If the upload credential expires, call the [RefreshUploadVideo](~~RefreshUploadVideo~~) operation to obtain a new upload credential. The default validity period of an upload credential is 3,000 seconds.
 //
-// 	- You can configure a callback to receive an event notification when an audio or video file is uploaded. Alternatively, after you upload an audio or video file, you can call the [GetMezzanineInfo](https://help.aliyun.com/document_detail/59624.html) operation to determine whether the upload is successful. For more information, see [Overview](https://help.aliyun.com/document_detail/55396.html).
+//		- You can configure a callback to receive an event notification when an audio or video file is uploaded. Alternatively, after you upload an audio or video file, you can call the [GetMezzanineInfo](https://help.aliyun.com/document_detail/59624.html) operation to determine whether the upload is successful. For more information, see [Overview](https://help.aliyun.com/document_detail/55396.html).
 //
-// 	- The value of the VideoId parameter that is returned after you call this operation can be used for media processing or the lifecycle management of media assets.
+//		- The value of the VideoId parameter that is returned after you call this operation can be used for media processing or the lifecycle management of media assets.
 //
-// 	- You must obtain a URL and a credential before you upload a media file to ApsaraVideo VOD. ApsaraVideo VOD supports multiple upload methods. Each method has different requirements on upload URLs and credentials. For more information, see [Upload URLs and credentials](https://help.aliyun.com/document_detail/55397.html).
+//		- You must obtain a URL and a credential before you upload a media file to ApsaraVideo VOD. ApsaraVideo VOD supports multiple upload methods. Each method has different requirements on upload URLs and credentials. For more information, see [Upload URLs and credentials](https://help.aliyun.com/document_detail/55397.html).
 //
 // @param request - CreateUploadVideoRequest
 //
@@ -46136,9 +46148,9 @@ func (client *Client) DecryptKMSDataKey(request *DecryptKMSDataKeyRequest) (_res
 //
 // Description:
 //
-//   Regions that support this operation: **China (Beijing)*	- and **China (Shanghai)**.
+//	  Regions that support this operation: **China (Beijing)*	- and **China (Shanghai)**.
 //
-// 	- This operation deletes only information about images that are submitted for AI processing. The image files are not deleted.
+//		- This operation deletes only information about images that are submitted for AI processing. The image files are not deleted.
 //
 // @param request - DeleteAIImageInfosRequest
 //
@@ -46195,9 +46207,9 @@ func (client *Client) DeleteAIImageInfosWithOptions(request *DeleteAIImageInfosR
 //
 // Description:
 //
-//   Regions that support this operation: **China (Beijing)*	- and **China (Shanghai)**.
+//	  Regions that support this operation: **China (Beijing)*	- and **China (Shanghai)**.
 //
-// 	- This operation deletes only information about images that are submitted for AI processing. The image files are not deleted.
+//		- This operation deletes only information about images that are submitted for AI processing. The image files are not deleted.
 //
 // @param request - DeleteAIImageInfosRequest
 //
@@ -46219,9 +46231,9 @@ func (client *Client) DeleteAIImageInfos(request *DeleteAIImageInfosRequest) (_r
 //
 // Description:
 //
-//   Regions that support this operation: **China (Beijing)**, **China (Shanghai)**, and **Singapore**.
+//	  Regions that support this operation: **China (Beijing)**, **China (Shanghai)**, and **Singapore**.
 //
-// 	- You cannot delete an AI template that is set as the default template.
+//		- You cannot delete an AI template that is set as the default template.
 //
 // @param request - DeleteAITemplateRequest
 //
@@ -46278,9 +46290,9 @@ func (client *Client) DeleteAITemplateWithOptions(request *DeleteAITemplateReque
 //
 // Description:
 //
-//   Regions that support this operation: **China (Beijing)**, **China (Shanghai)**, and **Singapore**.
+//	  Regions that support this operation: **China (Beijing)**, **China (Shanghai)**, and **Singapore**.
 //
-// 	- You cannot delete an AI template that is set as the default template.
+//		- You cannot delete an AI template that is set as the default template.
 //
 // @param request - DeleteAITemplateRequest
 //
@@ -46381,9 +46393,9 @@ func (client *Client) DeleteAppInfo(request *DeleteAppInfoRequest) (_result *Del
 //
 // Description:
 //
-//   **This operation physically deletes auxiliary media assets. You cannot recover the auxiliary media assets that you deleted. Exercise caution when you call this operation.**
+//	  **This operation physically deletes auxiliary media assets. You cannot recover the auxiliary media assets that you deleted. Exercise caution when you call this operation.**
 //
-// 	- You can delete a maximum of 20 auxiliary media assets in one request.
+//		- You can delete a maximum of 20 auxiliary media assets in one request.
 //
 // @param request - DeleteAttachedMediaRequest
 //
@@ -46440,9 +46452,9 @@ func (client *Client) DeleteAttachedMediaWithOptions(request *DeleteAttachedMedi
 //
 // Description:
 //
-//   **This operation physically deletes auxiliary media assets. You cannot recover the auxiliary media assets that you deleted. Exercise caution when you call this operation.**
+//	  **This operation physically deletes auxiliary media assets. You cannot recover the auxiliary media assets that you deleted. Exercise caution when you call this operation.**
 //
-// 	- You can delete a maximum of 20 auxiliary media assets in one request.
+//		- You can delete a maximum of 20 auxiliary media assets in one request.
 //
 // @param request - DeleteAttachedMediaRequest
 //
@@ -46464,9 +46476,9 @@ func (client *Client) DeleteAttachedMedia(request *DeleteAttachedMediaRequest) (
 //
 // Description:
 //
-//   **After you call this operation to delete a category, all subcategories including level 2 and level 3 categories are deleted at the same time. Exercise caution when you call this operation.**
+//	  **After you call this operation to delete a category, all subcategories including level 2 and level 3 categories are deleted at the same time. Exercise caution when you call this operation.**
 //
-// 	- If you have classified specific media resources to a category, the category names labeled on these media resources are automatically deleted when you delete the category.
+//		- If you have classified specific media resources to a category, the category names labeled on these media resources are automatically deleted when you delete the category.
 //
 // @param request - DeleteCategoryRequest
 //
@@ -46523,9 +46535,9 @@ func (client *Client) DeleteCategoryWithOptions(request *DeleteCategoryRequest, 
 //
 // Description:
 //
-//   **After you call this operation to delete a category, all subcategories including level 2 and level 3 categories are deleted at the same time. Exercise caution when you call this operation.**
+//	  **After you call this operation to delete a category, all subcategories including level 2 and level 3 categories are deleted at the same time. Exercise caution when you call this operation.**
 //
-// 	- If you have classified specific media resources to a category, the category names labeled on these media resources are automatically deleted when you delete the category.
+//		- If you have classified specific media resources to a category, the category names labeled on these media resources are automatically deleted when you delete the category.
 //
 // @param request - DeleteCategoryRequest
 //
@@ -46630,7 +46642,7 @@ func (client *Client) DeleteDynamicImage(request *DeleteDynamicImageRequest) (_r
 //
 // Description:
 //
-//   You can call this operation to delete multiple online editing projects at a time.
+//	You can call this operation to delete multiple online editing projects at a time.
 //
 // @param request - DeleteEditingProjectRequest
 //
@@ -46703,7 +46715,7 @@ func (client *Client) DeleteEditingProjectWithOptions(request *DeleteEditingProj
 //
 // Description:
 //
-//   You can call this operation to delete multiple online editing projects at a time.
+//	You can call this operation to delete multiple online editing projects at a time.
 //
 // @param request - DeleteEditingProjectRequest
 //
@@ -46820,11 +46832,11 @@ func (client *Client) DeleteEditingProjectMaterials(request *DeleteEditingProjec
 //
 // Description:
 //
-//   **After you call this operation to delete an image, the source file is permanently deleted and cannot be recovered. Exercise caution when you call this operation.**
+//	  **After you call this operation to delete an image, the source file is permanently deleted and cannot be recovered. Exercise caution when you call this operation.**
 //
-// 	- If some images are cached on Alibaba Cloud CDN points of presence (POPs), the image URLs do not immediately become invalid.
+//		- If some images are cached on Alibaba Cloud CDN points of presence (POPs), the image URLs do not immediately become invalid.
 //
-// 	- You can call this operation to delete uploaded images and video snapshots.
+//		- You can call this operation to delete uploaded images and video snapshots.
 //
 // @param request - DeleteImageRequest
 //
@@ -46897,11 +46909,11 @@ func (client *Client) DeleteImageWithOptions(request *DeleteImageRequest, runtim
 //
 // Description:
 //
-//   **After you call this operation to delete an image, the source file is permanently deleted and cannot be recovered. Exercise caution when you call this operation.**
+//	  **After you call this operation to delete an image, the source file is permanently deleted and cannot be recovered. Exercise caution when you call this operation.**
 //
-// 	- If some images are cached on Alibaba Cloud CDN points of presence (POPs), the image URLs do not immediately become invalid.
+//		- If some images are cached on Alibaba Cloud CDN points of presence (POPs), the image URLs do not immediately become invalid.
 //
-// 	- You can call this operation to delete uploaded images and video snapshots.
+//		- You can call this operation to delete uploaded images and video snapshots.
 //
 // @param request - DeleteImageRequest
 //
@@ -47089,11 +47101,11 @@ func (client *Client) DeleteMezzanines(request *DeleteMezzaninesRequest) (_resul
 //
 // Description:
 //
-//   During multipart upload, useless parts may be retained if the upload fails. These useless parts are automatically deleted after 7 days. You can call this operation to delete the generated parts after the upload is successful or fails.
+//	  During multipart upload, useless parts may be retained if the upload fails. These useless parts are automatically deleted after 7 days. You can call this operation to delete the generated parts after the upload is successful or fails.
 //
-// 	- This operation does not delete the source file or transcoded file, but deletes only the parts generated during the upload.
+//		- This operation does not delete the source file or transcoded file, but deletes only the parts generated during the upload.
 //
-// 	- If you call the [DeleteVideo](https://help.aliyun.com/document_detail/52837.html) operation, the entire video file is deleted, including the generated parts.
+//		- If you call the [DeleteVideo](https://help.aliyun.com/document_detail/52837.html) operation, the entire video file is deleted, including the generated parts.
 //
 // @param request - DeleteMultipartUploadRequest
 //
@@ -47158,11 +47170,11 @@ func (client *Client) DeleteMultipartUploadWithOptions(request *DeleteMultipartU
 //
 // Description:
 //
-//   During multipart upload, useless parts may be retained if the upload fails. These useless parts are automatically deleted after 7 days. You can call this operation to delete the generated parts after the upload is successful or fails.
+//	  During multipart upload, useless parts may be retained if the upload fails. These useless parts are automatically deleted after 7 days. You can call this operation to delete the generated parts after the upload is successful or fails.
 //
-// 	- This operation does not delete the source file or transcoded file, but deletes only the parts generated during the upload.
+//		- This operation does not delete the source file or transcoded file, but deletes only the parts generated during the upload.
 //
-// 	- If you call the [DeleteVideo](https://help.aliyun.com/document_detail/52837.html) operation, the entire video file is deleted, including the generated parts.
+//		- If you call the [DeleteVideo](https://help.aliyun.com/document_detail/52837.html) operation, the entire video file is deleted, including the generated parts.
 //
 // @param request - DeleteMultipartUploadRequest
 //
@@ -47259,9 +47271,9 @@ func (client *Client) DeleteStream(request *DeleteStreamRequest) (_result *Delet
 //
 // Description:
 //
-//   You cannot call this operation to delete the default transcoding template. You can delete the transcoding template when it is no longer specified as the default one.
+//	  You cannot call this operation to delete the default transcoding template. You can delete the transcoding template when it is no longer specified as the default one.
 //
-// 	- For security purposes, you cannot add, modify, or delete transcoding templates in a transcoding template group that is locked. To check whether a transcoding template group is locked, call the [GetTranscodeTemplateGroup](~~GetTranscodeTemplateGroup~~) operation and obtain the Locked parameter from the response. To modify transcoding templates within a locked transcoding template group, you must call the [UpdateTranscodeTemplateGroup](~~UpdateTranscodeTemplateGroup~~) operation to unlock the transcoding template group first.
+//		- For security purposes, you cannot add, modify, or delete transcoding templates in a transcoding template group that is locked. To check whether a transcoding template group is locked, call the [GetTranscodeTemplateGroup](~~GetTranscodeTemplateGroup~~) operation and obtain the Locked parameter from the response. To modify transcoding templates within a locked transcoding template group, you must call the [UpdateTranscodeTemplateGroup](~~UpdateTranscodeTemplateGroup~~) operation to unlock the transcoding template group first.
 //
 // @param request - DeleteTranscodeTemplateGroupRequest
 //
@@ -47326,9 +47338,9 @@ func (client *Client) DeleteTranscodeTemplateGroupWithOptions(request *DeleteTra
 //
 // Description:
 //
-//   You cannot call this operation to delete the default transcoding template. You can delete the transcoding template when it is no longer specified as the default one.
+//	  You cannot call this operation to delete the default transcoding template. You can delete the transcoding template when it is no longer specified as the default one.
 //
-// 	- For security purposes, you cannot add, modify, or delete transcoding templates in a transcoding template group that is locked. To check whether a transcoding template group is locked, call the [GetTranscodeTemplateGroup](~~GetTranscodeTemplateGroup~~) operation and obtain the Locked parameter from the response. To modify transcoding templates within a locked transcoding template group, you must call the [UpdateTranscodeTemplateGroup](~~UpdateTranscodeTemplateGroup~~) operation to unlock the transcoding template group first.
+//		- For security purposes, you cannot add, modify, or delete transcoding templates in a transcoding template group that is locked. To check whether a transcoding template group is locked, call the [GetTranscodeTemplateGroup](~~GetTranscodeTemplateGroup~~) operation and obtain the Locked parameter from the response. To modify transcoding templates within a locked transcoding template group, you must call the [UpdateTranscodeTemplateGroup](~~UpdateTranscodeTemplateGroup~~) operation to unlock the transcoding template group first.
 //
 // @param request - DeleteTranscodeTemplateGroupRequest
 //
@@ -47350,11 +47362,11 @@ func (client *Client) DeleteTranscodeTemplateGroup(request *DeleteTranscodeTempl
 //
 // Description:
 //
-//   This operation physically deletes videos. Deleted videos cannot be recovered. Exercise caution when you call this operation.
+//	  This operation physically deletes videos. Deleted videos cannot be recovered. Exercise caution when you call this operation.
 //
-// 	- You can call this operation to delete multiple videos at a time.
+//		- You can call this operation to delete multiple videos at a time.
 //
-// 	- When you delete a video, its source file, transcoded stream file, and thumbnail screenshot are also deleted. However, the Alibaba Cloud Content Delivery Network (CDN) cache is not refreshed simultaneously. You can use the refresh feature in the ApsaraVideo VOD console to clear garbage data on CDN nodes. For more information, see [Refresh and prefetch](https://help.aliyun.com/document_detail/86098.html).
+//		- When you delete a video, its source file, transcoded stream file, and thumbnail screenshot are also deleted. However, the Alibaba Cloud Content Delivery Network (CDN) cache is not refreshed simultaneously. You can use the refresh feature in the ApsaraVideo VOD console to clear garbage data on CDN nodes. For more information, see [Refresh and prefetch](https://help.aliyun.com/document_detail/86098.html).
 //
 // @param request - DeleteVideoRequest
 //
@@ -47411,11 +47423,11 @@ func (client *Client) DeleteVideoWithOptions(request *DeleteVideoRequest, runtim
 //
 // Description:
 //
-//   This operation physically deletes videos. Deleted videos cannot be recovered. Exercise caution when you call this operation.
+//	  This operation physically deletes videos. Deleted videos cannot be recovered. Exercise caution when you call this operation.
 //
-// 	- You can call this operation to delete multiple videos at a time.
+//		- You can call this operation to delete multiple videos at a time.
 //
-// 	- When you delete a video, its source file, transcoded stream file, and thumbnail screenshot are also deleted. However, the Alibaba Cloud Content Delivery Network (CDN) cache is not refreshed simultaneously. You can use the refresh feature in the ApsaraVideo VOD console to clear garbage data on CDN nodes. For more information, see [Refresh and prefetch](https://help.aliyun.com/document_detail/86098.html).
+//		- When you delete a video, its source file, transcoded stream file, and thumbnail screenshot are also deleted. However, the Alibaba Cloud Content Delivery Network (CDN) cache is not refreshed simultaneously. You can use the refresh feature in the ApsaraVideo VOD console to clear garbage data on CDN nodes. For more information, see [Refresh and prefetch](https://help.aliyun.com/document_detail/86098.html).
 //
 // @param request - DeleteVideoRequest
 //
@@ -47538,11 +47550,11 @@ func (client *Client) DeleteVodDomain(request *DeleteVodDomainRequest) (_result 
 //
 // >
 //
-// 	- This operation is available only in the **China (Shanghai)*	- region.
+//   - This operation is available only in the **China (Shanghai)*	- region.
 //
-// 	- After the configurations of a domain name for CDN are deleted, the domain name becomes unavailable. We recommend that you restore the A record at your DNS service provider before you delete the configurations of the domain name for CDN.
+//   - After the configurations of a domain name for CDN are deleted, the domain name becomes unavailable. We recommend that you restore the A record at your DNS service provider before you delete the configurations of the domain name for CDN.
 //
-// 	- After you call this operation to remove a domain name for CDN from ApsaraVideo VOD, all records that are related to the domain name are deleted. If you only want to disable a domain name for CDN, call the [BatchStopVodDomain](https://help.aliyun.com/document_detail/120208.html) operation.
+//   - After you call this operation to remove a domain name for CDN from ApsaraVideo VOD, all records that are related to the domain name are deleted. If you only want to disable a domain name for CDN, call the [BatchStopVodDomain](https://help.aliyun.com/document_detail/120208.html) operation.
 //
 // @param request - DeleteVodSpecificConfigRequest
 //
@@ -47617,11 +47629,11 @@ func (client *Client) DeleteVodSpecificConfigWithOptions(request *DeleteVodSpeci
 //
 // >
 //
-// 	- This operation is available only in the **China (Shanghai)*	- region.
+//   - This operation is available only in the **China (Shanghai)*	- region.
 //
-// 	- After the configurations of a domain name for CDN are deleted, the domain name becomes unavailable. We recommend that you restore the A record at your DNS service provider before you delete the configurations of the domain name for CDN.
+//   - After the configurations of a domain name for CDN are deleted, the domain name becomes unavailable. We recommend that you restore the A record at your DNS service provider before you delete the configurations of the domain name for CDN.
 //
-// 	- After you call this operation to remove a domain name for CDN from ApsaraVideo VOD, all records that are related to the domain name are deleted. If you only want to disable a domain name for CDN, call the [BatchStopVodDomain](https://help.aliyun.com/document_detail/120208.html) operation.
+//   - After you call this operation to remove a domain name for CDN from ApsaraVideo VOD, all records that are related to the domain name are deleted. If you only want to disable a domain name for CDN, call the [BatchStopVodDomain](https://help.aliyun.com/document_detail/120208.html) operation.
 //
 // @param request - DeleteVodSpecificConfigRequest
 //
@@ -47714,9 +47726,9 @@ func (client *Client) DeleteVodTemplate(request *DeleteVodTemplateRequest) (_res
 //
 // Description:
 //
-//   **After you delete an image watermark template, the source watermark file is physically deleted and cannot be restored. Exercise caution when you call this operation.**
+//	  **After you delete an image watermark template, the source watermark file is physically deleted and cannot be restored. Exercise caution when you call this operation.**
 //
-// 	- You cannot delete the default watermark template. To delete a default watermark template, call the [SetDefaultWatermark](~~SetDefaultWatermark~~) operation to set another watermark template as the default one.
+//		- You cannot delete the default watermark template. To delete a default watermark template, call the [SetDefaultWatermark](~~SetDefaultWatermark~~) operation to set another watermark template as the default one.
 //
 // @param request - DeleteWatermarkRequest
 //
@@ -47773,9 +47785,9 @@ func (client *Client) DeleteWatermarkWithOptions(request *DeleteWatermarkRequest
 //
 // Description:
 //
-//   **After you delete an image watermark template, the source watermark file is physically deleted and cannot be restored. Exercise caution when you call this operation.**
+//	  **After you delete an image watermark template, the source watermark file is physically deleted and cannot be restored. Exercise caution when you call this operation.**
 //
-// 	- You cannot delete the default watermark template. To delete a default watermark template, call the [SetDefaultWatermark](~~SetDefaultWatermark~~) operation to set another watermark template as the default one.
+//		- You cannot delete the default watermark template. To delete a default watermark template, call the [SetDefaultWatermark](~~SetDefaultWatermark~~) operation to set another watermark template as the default one.
 //
 // @param request - DeleteWatermarkRequest
 //
@@ -47797,9 +47809,9 @@ func (client *Client) DeleteWatermark(request *DeleteWatermarkRequest) (_result 
 //
 // Description:
 //
-//   This operation is available only in the China (Shanghai) region.
+//	  This operation is available only in the China (Shanghai) region.
 //
-// 	- If you do not set the StartTime or EndTime parameter, the request returns the data collected in the previous 7 days. If you set both the parameters, the request returns the data collected within the specified time range.
+//		- If you do not set the StartTime or EndTime parameter, the request returns the data collected in the previous 7 days. If you set both the parameters, the request returns the data collected within the specified time range.
 //
 // @param request - DescribeMediaDistributionRequest
 //
@@ -47868,9 +47880,9 @@ func (client *Client) DescribeMediaDistributionWithOptions(request *DescribeMedi
 //
 // Description:
 //
-//   This operation is available only in the China (Shanghai) region.
+//	  This operation is available only in the China (Shanghai) region.
 //
-// 	- If you do not set the StartTime or EndTime parameter, the request returns the data collected in the previous 7 days. If you set both the parameters, the request returns the data collected within the specified time range.
+//		- If you do not set the StartTime or EndTime parameter, the request returns the data collected in the previous 7 days. If you set both the parameters, the request returns the data collected within the specified time range.
 //
 // @param request - DescribeMediaDistributionRequest
 //
@@ -47892,15 +47904,15 @@ func (client *Client) DescribeMediaDistribution(request *DescribeMediaDistributi
 //
 // Description:
 //
-//   This operation is available only in the **China (Shanghai)*	- region.
+//	  This operation is available only in the **China (Shanghai)*	- region.
 //
-// 	- You can query playback statistics on top 1,000 videos at most on a specified day. By default, top videos are sorted in descending order based on video views.
+//		- You can query playback statistics on top 1,000 videos at most on a specified day. By default, top videos are sorted in descending order based on video views.
 //
-// 	- You can call this operation to query only playback statistics collected on videos that are played by using ApsaraVideo Player SDKs.
+//		- You can call this operation to query only playback statistics collected on videos that are played by using ApsaraVideo Player SDKs.
 //
-// 	- Playback statistics for the previous day are generated at 09:00 on the current day, in UTC+8.
+//		- Playback statistics for the previous day are generated at 09:00 on the current day, in UTC+8.
 //
-// 	- You can query data that is generated since January 1, 2018. The maximum time range to query is 180 days.
+//		- You can query data that is generated since January 1, 2018. The maximum time range to query is 180 days.
 //
 // @param request - DescribePlayTopVideosRequest
 //
@@ -47969,15 +47981,15 @@ func (client *Client) DescribePlayTopVideosWithOptions(request *DescribePlayTopV
 //
 // Description:
 //
-//   This operation is available only in the **China (Shanghai)*	- region.
+//	  This operation is available only in the **China (Shanghai)*	- region.
 //
-// 	- You can query playback statistics on top 1,000 videos at most on a specified day. By default, top videos are sorted in descending order based on video views.
+//		- You can query playback statistics on top 1,000 videos at most on a specified day. By default, top videos are sorted in descending order based on video views.
 //
-// 	- You can call this operation to query only playback statistics collected on videos that are played by using ApsaraVideo Player SDKs.
+//		- You can call this operation to query only playback statistics collected on videos that are played by using ApsaraVideo Player SDKs.
 //
-// 	- Playback statistics for the previous day are generated at 09:00 on the current day, in UTC+8.
+//		- Playback statistics for the previous day are generated at 09:00 on the current day, in UTC+8.
 //
-// 	- You can query data that is generated since January 1, 2018. The maximum time range to query is 180 days.
+//		- You can query data that is generated since January 1, 2018. The maximum time range to query is 180 days.
 //
 // @param request - DescribePlayTopVideosRequest
 //
@@ -48098,13 +48110,13 @@ func (client *Client) DescribePlayUserAvg(request *DescribePlayUserAvgRequest) (
 //
 // Description:
 //
-//   This operation is available only in the **China (Shanghai)*	- region.
+//	  This operation is available only in the **China (Shanghai)*	- region.
 //
-// 	- You can call this operation to query only playback statistics collected on videos that are played by using ApsaraVideo Player SDKs.
+//		- You can call this operation to query only playback statistics collected on videos that are played by using ApsaraVideo Player SDKs.
 //
-// 	- Playback statistics for the current day are generated at 09:00 (UTC+8) on the next day.
+//		- Playback statistics for the current day are generated at 09:00 (UTC+8) on the next day.
 //
-// 	- You can query data that is generated since January 1, 2018. The maximum time range to query is 180 days.
+//		- You can query data that is generated since January 1, 2018. The maximum time range to query is 180 days.
 //
 // @param request - DescribePlayUserTotalRequest
 //
@@ -48169,13 +48181,13 @@ func (client *Client) DescribePlayUserTotalWithOptions(request *DescribePlayUser
 //
 // Description:
 //
-//   This operation is available only in the **China (Shanghai)*	- region.
+//	  This operation is available only in the **China (Shanghai)*	- region.
 //
-// 	- You can call this operation to query only playback statistics collected on videos that are played by using ApsaraVideo Player SDKs.
+//		- You can call this operation to query only playback statistics collected on videos that are played by using ApsaraVideo Player SDKs.
 //
-// 	- Playback statistics for the current day are generated at 09:00 (UTC+8) on the next day.
+//		- Playback statistics for the current day are generated at 09:00 (UTC+8) on the next day.
 //
-// 	- You can query data that is generated since January 1, 2018. The maximum time range to query is 180 days.
+//		- You can query data that is generated since January 1, 2018. The maximum time range to query is 180 days.
 //
 // @param request - DescribePlayUserTotalRequest
 //
@@ -48197,13 +48209,13 @@ func (client *Client) DescribePlayUserTotal(request *DescribePlayUserTotalReques
 //
 // Description:
 //
-//   This operation is available only in the **China (Shanghai)*	- region.
+//	  This operation is available only in the **China (Shanghai)*	- region.
 //
-// 	- You can call this operation to query only playback statistics collected on videos that are played by using ApsaraVideo Player SDKs.
+//		- You can call this operation to query only playback statistics collected on videos that are played by using ApsaraVideo Player SDKs.
 //
-// 	- Playback statistics for the current day are generated at 09:00 (UTC+8) on the next day.
+//		- Playback statistics for the current day are generated at 09:00 (UTC+8) on the next day.
 //
-// 	- You can query only data in the last 730 days. The maximum time range to query is 180 days.
+//		- You can query only data in the last 730 days. The maximum time range to query is 180 days.
 //
 // @param request - DescribePlayVideoStatisRequest
 //
@@ -48272,13 +48284,13 @@ func (client *Client) DescribePlayVideoStatisWithOptions(request *DescribePlayVi
 //
 // Description:
 //
-//   This operation is available only in the **China (Shanghai)*	- region.
+//	  This operation is available only in the **China (Shanghai)*	- region.
 //
-// 	- You can call this operation to query only playback statistics collected on videos that are played by using ApsaraVideo Player SDKs.
+//		- You can call this operation to query only playback statistics collected on videos that are played by using ApsaraVideo Player SDKs.
 //
-// 	- Playback statistics for the current day are generated at 09:00 (UTC+8) on the next day.
+//		- Playback statistics for the current day are generated at 09:00 (UTC+8) on the next day.
 //
-// 	- You can query only data in the last 730 days. The maximum time range to query is 180 days.
+//		- You can query only data in the last 730 days. The maximum time range to query is 180 days.
 //
 // @param request - DescribePlayVideoStatisRequest
 //
@@ -48983,9 +48995,9 @@ func (client *Client) DescribeVodDomainDetail(request *DescribeVodDomainDetailRe
 //
 // This operation is supported only in the **China (Shanghai)*	- region.
 //
-// 	- You can specify a maximum of 500 accelerated domain names.
+//   - You can specify a maximum of 500 accelerated domain names.
 //
-// 	- If you specify neither `StartTime` nor `EndTime`, the data of the last 24 hours is queried. You can specify both `StartTime` and `EndTime` parameters to query data of a specified time range.
+//   - If you specify neither `StartTime` nor `EndTime`, the data of the last 24 hours is queried. You can specify both `StartTime` and `EndTime` parameters to query data of a specified time range.
 //
 // **Time granularity**
 //
@@ -49074,9 +49086,9 @@ func (client *Client) DescribeVodDomainHitRateDataWithOptions(request *DescribeV
 //
 // This operation is supported only in the **China (Shanghai)*	- region.
 //
-// 	- You can specify a maximum of 500 accelerated domain names.
+//   - You can specify a maximum of 500 accelerated domain names.
 //
-// 	- If you specify neither `StartTime` nor `EndTime`, the data of the last 24 hours is queried. You can specify both `StartTime` and `EndTime` parameters to query data of a specified time range.
+//   - If you specify neither `StartTime` nor `EndTime`, the data of the last 24 hours is queried. You can specify both `StartTime` and `EndTime` parameters to query data of a specified time range.
 //
 // **Time granularity**
 //
@@ -49112,13 +49124,13 @@ func (client *Client) DescribeVodDomainHitRateData(request *DescribeVodDomainHit
 //
 // Description:
 //
-//   This operation is available only in the **China (Shanghai)*	- region.
+//	  This operation is available only in the **China (Shanghai)*	- region.
 //
-// 	- For more information about the log format and latency, see [Download logs](https://help.aliyun.com/document_detail/86099.html).
+//		- For more information about the log format and latency, see [Download logs](https://help.aliyun.com/document_detail/86099.html).
 //
-// 	- If you specify neither the StartTime parameter nor the EndTime parameter, the log data in the last 24 hours is queried.
+//		- If you specify neither the StartTime parameter nor the EndTime parameter, the log data in the last 24 hours is queried.
 //
-// 	- You can specify both the StartTime and EndTime parameters to query the log data that is generated in the specified time range.
+//		- You can specify both the StartTime and EndTime parameters to query the log data that is generated in the specified time range.
 //
 // @param request - DescribeVodDomainLogRequest
 //
@@ -49195,13 +49207,13 @@ func (client *Client) DescribeVodDomainLogWithOptions(request *DescribeVodDomain
 //
 // Description:
 //
-//   This operation is available only in the **China (Shanghai)*	- region.
+//	  This operation is available only in the **China (Shanghai)*	- region.
 //
-// 	- For more information about the log format and latency, see [Download logs](https://help.aliyun.com/document_detail/86099.html).
+//		- For more information about the log format and latency, see [Download logs](https://help.aliyun.com/document_detail/86099.html).
 //
-// 	- If you specify neither the StartTime parameter nor the EndTime parameter, the log data in the last 24 hours is queried.
+//		- If you specify neither the StartTime parameter nor the EndTime parameter, the log data in the last 24 hours is queried.
 //
-// 	- You can specify both the StartTime and EndTime parameters to query the log data that is generated in the specified time range.
+//		- You can specify both the StartTime and EndTime parameters to query the log data that is generated in the specified time range.
 //
 // @param request - DescribeVodDomainLogRequest
 //
@@ -49292,9 +49304,9 @@ func (client *Client) DescribeVodDomainMax95BpsData(request *DescribeVodDomainMa
 //
 // This operation is available only in the China (Shanghai) region.
 //
-// 	- You can call this operation up to 100 times per second per account.
+//   - You can call this operation up to 100 times per second per account.
 //
-// 	- If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
+//   - If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
 //
 // **Time granularity**
 //
@@ -49393,9 +49405,9 @@ func (client *Client) DescribeVodDomainQpsDataWithOptions(request *DescribeVodDo
 //
 // This operation is available only in the China (Shanghai) region.
 //
-// 	- You can call this operation up to 100 times per second per account.
+//   - You can call this operation up to 100 times per second per account.
 //
-// 	- If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
+//   - If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
 //
 // **Time granularity**
 //
@@ -49435,9 +49447,9 @@ func (client *Client) DescribeVodDomainQpsData(request *DescribeVodDomainQpsData
 //
 // This operation is supported only in the **China (Shanghai)*	- region.
 //
-// 	- You can specify a maximum of 500 accelerated domain names.
+//   - You can specify a maximum of 500 accelerated domain names.
 //
-// 	- If you specify neither `StartTime` nor `EndTime`, the data of the last 1 hour is queried. You can specify both `StartTime` and `EndTime` parameters to query data of a specified time range.
+//   - If you specify neither `StartTime` nor `EndTime`, the data of the last 1 hour is queried. You can specify both `StartTime` and `EndTime` parameters to query data of a specified time range.
 //
 // **Time granularity**
 //
@@ -49506,9 +49518,9 @@ func (client *Client) DescribeVodDomainRealTimeBpsDataWithOptions(request *Descr
 //
 // This operation is supported only in the **China (Shanghai)*	- region.
 //
-// 	- You can specify a maximum of 500 accelerated domain names.
+//   - You can specify a maximum of 500 accelerated domain names.
 //
-// 	- If you specify neither `StartTime` nor `EndTime`, the data of the last 1 hour is queried. You can specify both `StartTime` and `EndTime` parameters to query data of a specified time range.
+//   - If you specify neither `StartTime` nor `EndTime`, the data of the last 1 hour is queried. You can specify both `StartTime` and `EndTime` parameters to query data of a specified time range.
 //
 // **Time granularity**
 //
@@ -49546,9 +49558,9 @@ func (client *Client) DescribeVodDomainRealTimeBpsData(request *DescribeVodDomai
 //
 // This operation is supported only in the **China (Shanghai)*	- region.
 //
-// 	- You can specify a maximum of 100 accelerated domain names.
+//   - You can specify a maximum of 100 accelerated domain names.
 //
-// 	- If you specify neither `StartTime` nor `EndTime`, the data of the last 1 hour is queried. You can specify both `StartTime` and `EndTime` parameters to query data of a specified time range.
+//   - If you specify neither `StartTime` nor `EndTime`, the data of the last 1 hour is queried. You can specify both `StartTime` and `EndTime` parameters to query data of a specified time range.
 //
 // **Time granularity**
 //
@@ -49617,9 +49629,9 @@ func (client *Client) DescribeVodDomainRealTimeByteHitRateDataWithOptions(reques
 //
 // This operation is supported only in the **China (Shanghai)*	- region.
 //
-// 	- You can specify a maximum of 100 accelerated domain names.
+//   - You can specify a maximum of 100 accelerated domain names.
 //
-// 	- If you specify neither `StartTime` nor `EndTime`, the data of the last 1 hour is queried. You can specify both `StartTime` and `EndTime` parameters to query data of a specified time range.
+//   - If you specify neither `StartTime` nor `EndTime`, the data of the last 1 hour is queried. You can specify both `StartTime` and `EndTime` parameters to query data of a specified time range.
 //
 // **Time granularity**
 //
@@ -49732,9 +49744,9 @@ func (client *Client) DescribeVodDomainRealTimeDetailData(request *DescribeVodDo
 //
 // This operation is supported only in the **China (Shanghai)*	- region.
 //
-// 	- You can specify a maximum of 100 accelerated domain names.
+//   - You can specify a maximum of 100 accelerated domain names.
 //
-// 	- If you specify neither `StartTime` nor `EndTime`, the data of the last 1 hour is queried. You can specify both `StartTime` and `EndTime` parameters to query data of a specified time range.
+//   - If you specify neither `StartTime` nor `EndTime`, the data of the last 1 hour is queried. You can specify both `StartTime` and `EndTime` parameters to query data of a specified time range.
 //
 // **Time granularity**
 //
@@ -49827,9 +49839,9 @@ func (client *Client) DescribeVodDomainRealTimeHttpCodeDataWithOptions(request *
 //
 // This operation is supported only in the **China (Shanghai)*	- region.
 //
-// 	- You can specify a maximum of 100 accelerated domain names.
+//   - You can specify a maximum of 100 accelerated domain names.
 //
-// 	- If you specify neither `StartTime` nor `EndTime`, the data of the last 1 hour is queried. You can specify both `StartTime` and `EndTime` parameters to query data of a specified time range.
+//   - If you specify neither `StartTime` nor `EndTime`, the data of the last 1 hour is queried. You can specify both `StartTime` and `EndTime` parameters to query data of a specified time range.
 //
 // **Time granularity**
 //
@@ -49867,9 +49879,9 @@ func (client *Client) DescribeVodDomainRealTimeHttpCodeData(request *DescribeVod
 //
 // This operation is supported only in the **China (Shanghai)*	- region.
 //
-// 	- You can specify a maximum of 500 accelerated domain names.
+//   - You can specify a maximum of 500 accelerated domain names.
 //
-// 	- If you specify neither `StartTime` nor `EndTime`, the data of the last 1 hour is queried. You can specify both `StartTime` and `EndTime` parameters to query data of a specified time range.
+//   - If you specify neither `StartTime` nor `EndTime`, the data of the last 1 hour is queried. You can specify both `StartTime` and `EndTime` parameters to query data of a specified time range.
 //
 // **Time granularity**
 //
@@ -49938,9 +49950,9 @@ func (client *Client) DescribeVodDomainRealTimeQpsDataWithOptions(request *Descr
 //
 // This operation is supported only in the **China (Shanghai)*	- region.
 //
-// 	- You can specify a maximum of 500 accelerated domain names.
+//   - You can specify a maximum of 500 accelerated domain names.
 //
-// 	- If you specify neither `StartTime` nor `EndTime`, the data of the last 1 hour is queried. You can specify both `StartTime` and `EndTime` parameters to query data of a specified time range.
+//   - If you specify neither `StartTime` nor `EndTime`, the data of the last 1 hour is queried. You can specify both `StartTime` and `EndTime` parameters to query data of a specified time range.
 //
 // **Time granularity**
 //
@@ -49978,11 +49990,11 @@ func (client *Client) DescribeVodDomainRealTimeQpsData(request *DescribeVodDomai
 //
 // This operation is supported only in the **China (Shanghai)*	- region.
 //
-// 	- You can specify a maximum of 100 accelerated domain names.
+//   - You can specify a maximum of 100 accelerated domain names.
 //
-// 	- If you specify neither `StartTime` nor `EndTime`, the data of the last 1 hour is queried. You can specify both `StartTime` and `EndTime` parameters to query data of a specified time range.
+//   - If you specify neither `StartTime` nor `EndTime`, the data of the last 1 hour is queried. You can specify both `StartTime` and `EndTime` parameters to query data of a specified time range.
 //
-// 	- By default, the POST method is used for Go. To use the FET method, you must declare `request.Method="GET"`.
+//   - By default, the POST method is used for Go. To use the FET method, you must declare `request.Method="GET"`.
 //
 // **Time granularity**
 //
@@ -50051,11 +50063,11 @@ func (client *Client) DescribeVodDomainRealTimeReqHitRateDataWithOptions(request
 //
 // This operation is supported only in the **China (Shanghai)*	- region.
 //
-// 	- You can specify a maximum of 100 accelerated domain names.
+//   - You can specify a maximum of 100 accelerated domain names.
 //
-// 	- If you specify neither `StartTime` nor `EndTime`, the data of the last 1 hour is queried. You can specify both `StartTime` and `EndTime` parameters to query data of a specified time range.
+//   - If you specify neither `StartTime` nor `EndTime`, the data of the last 1 hour is queried. You can specify both `StartTime` and `EndTime` parameters to query data of a specified time range.
 //
-// 	- By default, the POST method is used for Go. To use the FET method, you must declare `request.Method="GET"`.
+//   - By default, the POST method is used for Go. To use the FET method, you must declare `request.Method="GET"`.
 //
 // **Time granularity**
 //
@@ -50093,9 +50105,9 @@ func (client *Client) DescribeVodDomainRealTimeReqHitRateData(request *DescribeV
 //
 // This operation is supported only in the **China (Shanghai)*	- region.
 //
-// 	- You can specify a maximum of 100 accelerated domain names.
+//   - You can specify a maximum of 100 accelerated domain names.
 //
-// 	- If you specify neither `StartTime` nor `EndTime`, the data of the last 1 hour is queried. You can specify both `StartTime` and `EndTime` parameters to query data of a specified time range.
+//   - If you specify neither `StartTime` nor `EndTime`, the data of the last 1 hour is queried. You can specify both `StartTime` and `EndTime` parameters to query data of a specified time range.
 //
 // **Time granularity**
 //
@@ -50188,9 +50200,9 @@ func (client *Client) DescribeVodDomainRealTimeTrafficDataWithOptions(request *D
 //
 // This operation is supported only in the **China (Shanghai)*	- region.
 //
-// 	- You can specify a maximum of 100 accelerated domain names.
+//   - You can specify a maximum of 100 accelerated domain names.
 //
-// 	- If you specify neither `StartTime` nor `EndTime`, the data of the last 1 hour is queried. You can specify both `StartTime` and `EndTime` parameters to query data of a specified time range.
+//   - If you specify neither `StartTime` nor `EndTime`, the data of the last 1 hour is queried. You can specify both `StartTime` and `EndTime` parameters to query data of a specified time range.
 //
 // **Time granularity**
 //
@@ -50228,9 +50240,9 @@ func (client *Client) DescribeVodDomainRealTimeTrafficData(request *DescribeVodD
 //
 // This operation is supported only in the **China (Shanghai)*	- region.
 //
-// 	- You can specify a maximum of 500 accelerated domain names.
+//   - You can specify a maximum of 500 accelerated domain names.
 //
-// 	- If you specify neither `StartTime` nor `EndTime`, the data of the last 24 hours is queried. You can specify both `StartTime` and `EndTime` parameters to query data of a specified time range.
+//   - If you specify neither `StartTime` nor `EndTime`, the data of the last 24 hours is queried. You can specify both `StartTime` and `EndTime` parameters to query data of a specified time range.
 //
 // **Time granularity**
 //
@@ -50315,9 +50327,9 @@ func (client *Client) DescribeVodDomainReqHitRateDataWithOptions(request *Descri
 //
 // This operation is supported only in the **China (Shanghai)*	- region.
 //
-// 	- You can specify a maximum of 500 accelerated domain names.
+//   - You can specify a maximum of 500 accelerated domain names.
 //
-// 	- If you specify neither `StartTime` nor `EndTime`, the data of the last 24 hours is queried. You can specify both `StartTime` and `EndTime` parameters to query data of a specified time range.
+//   - If you specify neither `StartTime` nor `EndTime`, the data of the last 24 hours is queried. You can specify both `StartTime` and `EndTime` parameters to query data of a specified time range.
 //
 // **Time granularity**
 //
@@ -50355,9 +50367,9 @@ func (client *Client) DescribeVodDomainReqHitRateData(request *DescribeVodDomain
 //
 // This operation is supported only in the **China (Shanghai)*	- region.
 //
-// 	- You can specify a maximum of 500 accelerated domain names.
+//   - You can specify a maximum of 500 accelerated domain names.
 //
-// 	- If you specify neither `StartTime` nor `EndTime`, the data of the last 24 hours is queried. You can specify both `StartTime` and `EndTime` parameters to query data of a specified time range.
+//   - If you specify neither `StartTime` nor `EndTime`, the data of the last 24 hours is queried. You can specify both `StartTime` and `EndTime` parameters to query data of a specified time range.
 //
 // **Time granularity**
 //
@@ -50446,9 +50458,9 @@ func (client *Client) DescribeVodDomainSrcBpsDataWithOptions(request *DescribeVo
 //
 // This operation is supported only in the **China (Shanghai)*	- region.
 //
-// 	- You can specify a maximum of 500 accelerated domain names.
+//   - You can specify a maximum of 500 accelerated domain names.
 //
-// 	- If you specify neither `StartTime` nor `EndTime`, the data of the last 24 hours is queried. You can specify both `StartTime` and `EndTime` parameters to query data of a specified time range.
+//   - If you specify neither `StartTime` nor `EndTime`, the data of the last 24 hours is queried. You can specify both `StartTime` and `EndTime` parameters to query data of a specified time range.
 //
 // **Time granularity**
 //
@@ -50486,11 +50498,11 @@ func (client *Client) DescribeVodDomainSrcBpsData(request *DescribeVodDomainSrcB
 //
 // This operation is available only in the **China (Shanghai)*	- region.
 //
-// 	- ApsaraVideo VOD stores the origin traffic data for 90 days before the data is deleted.
+//   - ApsaraVideo VOD stores the origin traffic data for 90 days before the data is deleted.
 //
-// 	- If you do not set the `StartTime` or `EndTime` parameter, the request returns the data collected in the last 24 hours. If you set both the `StartTime` and `EndTime` parameters, the request returns the data collected within the specified time range.
+//   - If you do not set the `StartTime` or `EndTime` parameter, the request returns the data collected in the last 24 hours. If you set both the `StartTime` and `EndTime` parameters, the request returns the data collected within the specified time range.
 //
-// 	- You can specify a maximum of 500 domain names in a request. Separate multiple domain names with commas (,). If you specify multiple domain names in a request, aggregation results are returned.
+//   - You can specify a maximum of 500 domain names in a request. Separate multiple domain names with commas (,). If you specify multiple domain names in a request, aggregation results are returned.
 //
 // ### Time granularity
 //
@@ -50579,11 +50591,11 @@ func (client *Client) DescribeVodDomainSrcTrafficDataWithOptions(request *Descri
 //
 // This operation is available only in the **China (Shanghai)*	- region.
 //
-// 	- ApsaraVideo VOD stores the origin traffic data for 90 days before the data is deleted.
+//   - ApsaraVideo VOD stores the origin traffic data for 90 days before the data is deleted.
 //
-// 	- If you do not set the `StartTime` or `EndTime` parameter, the request returns the data collected in the last 24 hours. If you set both the `StartTime` and `EndTime` parameters, the request returns the data collected within the specified time range.
+//   - If you do not set the `StartTime` or `EndTime` parameter, the request returns the data collected in the last 24 hours. If you set both the `StartTime` and `EndTime` parameters, the request returns the data collected within the specified time range.
 //
-// 	- You can specify a maximum of 500 domain names in a request. Separate multiple domain names with commas (,). If you specify multiple domain names in a request, aggregation results are returned.
+//   - You can specify a maximum of 500 domain names in a request. Separate multiple domain names with commas (,). If you specify multiple domain names in a request, aggregation results are returned.
 //
 // ### Time granularity
 //
@@ -50621,9 +50633,9 @@ func (client *Client) DescribeVodDomainSrcTrafficData(request *DescribeVodDomain
 //
 // This operation is supported only in the **China (Shanghai)*	- region.
 //
-// 	- You can specify a maximum of 500 accelerated domain names.
+//   - You can specify a maximum of 500 accelerated domain names.
 //
-// 	- If you specify neither `StartTime` nor `EndTime`, the data of the last 24 hour is queried. You can specify both `StartTime` and `EndTime` parameters to query data of a specified time range.
+//   - If you specify neither `StartTime` nor `EndTime`, the data of the last 24 hour is queried. You can specify both `StartTime` and `EndTime` parameters to query data of a specified time range.
 //
 // **Time granularity**
 //
@@ -50720,9 +50732,9 @@ func (client *Client) DescribeVodDomainTrafficDataWithOptions(request *DescribeV
 //
 // This operation is supported only in the **China (Shanghai)*	- region.
 //
-// 	- You can specify a maximum of 500 accelerated domain names.
+//   - You can specify a maximum of 500 accelerated domain names.
 //
-// 	- If you specify neither `StartTime` nor `EndTime`, the data of the last 24 hour is queried. You can specify both `StartTime` and `EndTime` parameters to query data of a specified time range.
+//   - If you specify neither `StartTime` nor `EndTime`, the data of the last 24 hour is queried. You can specify both `StartTime` and `EndTime` parameters to query data of a specified time range.
 //
 // **Time granularity**
 //
@@ -50758,11 +50770,11 @@ func (client *Client) DescribeVodDomainTrafficData(request *DescribeVodDomainTra
 //
 // Description:
 //
-//   This operation is available only in the **China (Shanghai)*	- region.
+//	  This operation is available only in the **China (Shanghai)*	- region.
 //
-// 	- You can specify up to 100 accelerated domain names in a request. Separate multiple domain names with commas (,). If you do not specify an accelerated domain name, the data of all accelerated domain names within your Alibaba Cloud account is returned.
+//		- You can specify up to 100 accelerated domain names in a request. Separate multiple domain names with commas (,). If you do not specify an accelerated domain name, the data of all accelerated domain names within your Alibaba Cloud account is returned.
 //
-// 	- You can query data in the last year. The maximum time range that can be queried is three months. If you specify a time range of one to three days, the system returns data on an hourly basis. If you specify a time range of four days or more, the system returns data on a daily basis.
+//		- You can query data in the last year. The maximum time range that can be queried is three months. If you specify a time range of one to three days, the system returns data on an hourly basis. If you specify a time range of four days or more, the system returns data on a daily basis.
 //
 // @param request - DescribeVodDomainUsageDataRequest
 //
@@ -50847,11 +50859,11 @@ func (client *Client) DescribeVodDomainUsageDataWithOptions(request *DescribeVod
 //
 // Description:
 //
-//   This operation is available only in the **China (Shanghai)*	- region.
+//	  This operation is available only in the **China (Shanghai)*	- region.
 //
-// 	- You can specify up to 100 accelerated domain names in a request. Separate multiple domain names with commas (,). If you do not specify an accelerated domain name, the data of all accelerated domain names within your Alibaba Cloud account is returned.
+//		- You can specify up to 100 accelerated domain names in a request. Separate multiple domain names with commas (,). If you do not specify an accelerated domain name, the data of all accelerated domain names within your Alibaba Cloud account is returned.
 //
-// 	- You can query data in the last year. The maximum time range that can be queried is three months. If you specify a time range of one to three days, the system returns data on an hourly basis. If you specify a time range of four days or more, the system returns data on a daily basis.
+//		- You can query data in the last year. The maximum time range that can be queried is three months. If you specify a time range of one to three days, the system returns data on an hourly basis. If you specify a time range of four days or more, the system returns data on a daily basis.
 //
 // @param request - DescribeVodDomainUsageDataRequest
 //
@@ -50964,29 +50976,29 @@ func (client *Client) DescribeVodEditingUsageData(request *DescribeVodEditingUsa
 //
 // Description:
 //
-//   This operation is available only in the **China (Shanghai)*	- region.
+//	  This operation is available only in the **China (Shanghai)*	- region.
 //
-// 	- Only playback data in ApsaraVideo Player SDK is collected.
+//		- Only playback data in ApsaraVideo Player SDK is collected.
 //
-// 	- You can query only data within the last 30 days.
+//		- You can query only data within the last 30 days.
 //
-// 	- Before you call this operation, make sure that the following requirements are met:
+//		- Before you call this operation, make sure that the following requirements are met:
 //
-//     	- ApsaraVideo Player SDK for Android or iOS
+//	    	- ApsaraVideo Player SDK for Android or iOS
 //
-//         	- ApsaraVideo Player SDK for Android or iOS V5.4.9.2 or later is used.
+//	        	- ApsaraVideo Player SDK for Android or iOS V5.4.9.2 or later is used.
 //
-//         	- A license for ApsaraVideo Player SDK is obtained. For more information, see [Manage licenses](https://help.aliyun.com/document_detail/469166.html).
+//	        	- A license for ApsaraVideo Player SDK is obtained. For more information, see [Manage licenses](https://help.aliyun.com/document_detail/469166.html).
 //
-//         	- The log reporting feature is enabled. By default, the feature is enabled for ApsaraVideo Player SDKs. For more information, see [Integrate ApsaraVideo Player SDK for Android](~~311525#section-dc4-gp6-xk2~~) and [Integrate ApsaraVideo Player SDK for iOS](~~313855#section-cmf-k7d-jg5~~).
+//	        	- The log reporting feature is enabled. By default, the feature is enabled for ApsaraVideo Player SDKs. For more information, see [Integrate ApsaraVideo Player SDK for Android](~~311525#section-dc4-gp6-xk2~~) and [Integrate ApsaraVideo Player SDK for iOS](~~313855#section-cmf-k7d-jg5~~).
 //
-//     	- ApsaraVideo Player SDK for Web
+//	    	- ApsaraVideo Player SDK for Web
 //
-//         	- ApsaraVideo Player SDK for Web V2.16.0 or later is used.
+//	        	- ApsaraVideo Player SDK for Web V2.16.0 or later is used.
 //
-//         	- A license for **playback quality monitoring*	- is obtained. To apply for the license, [submit a request on Yida to enable value-added features for ApsaraVideo Player SDK for Web](https://yida.alibaba-inc.com/o/webplayer#/). For more information, see the description of the `license` parameter in the [API operations](~~125572#section-3ty-gwp-6pa~~) topic.
+//	        	- A license for **playback quality monitoring*	- is obtained. To apply for the license, [submit a request on Yida to enable value-added features for ApsaraVideo Player SDK for Web](https://yida.alibaba-inc.com/o/webplayer#/). For more information, see the description of the `license` parameter in the [API operations](~~125572#section-3ty-gwp-6pa~~) topic.
 //
-//         	- The log reporting feature is enabled. By default, the feature is enabled for ApsaraVideo Player SDKs.
+//	        	- The log reporting feature is enabled. By default, the feature is enabled for ApsaraVideo Player SDKs.
 //
 // @param request - DescribeVodMediaPlayDataRequest
 //
@@ -51075,29 +51087,29 @@ func (client *Client) DescribeVodMediaPlayDataWithOptions(request *DescribeVodMe
 //
 // Description:
 //
-//   This operation is available only in the **China (Shanghai)*	- region.
+//	  This operation is available only in the **China (Shanghai)*	- region.
 //
-// 	- Only playback data in ApsaraVideo Player SDK is collected.
+//		- Only playback data in ApsaraVideo Player SDK is collected.
 //
-// 	- You can query only data within the last 30 days.
+//		- You can query only data within the last 30 days.
 //
-// 	- Before you call this operation, make sure that the following requirements are met:
+//		- Before you call this operation, make sure that the following requirements are met:
 //
-//     	- ApsaraVideo Player SDK for Android or iOS
+//	    	- ApsaraVideo Player SDK for Android or iOS
 //
-//         	- ApsaraVideo Player SDK for Android or iOS V5.4.9.2 or later is used.
+//	        	- ApsaraVideo Player SDK for Android or iOS V5.4.9.2 or later is used.
 //
-//         	- A license for ApsaraVideo Player SDK is obtained. For more information, see [Manage licenses](https://help.aliyun.com/document_detail/469166.html).
+//	        	- A license for ApsaraVideo Player SDK is obtained. For more information, see [Manage licenses](https://help.aliyun.com/document_detail/469166.html).
 //
-//         	- The log reporting feature is enabled. By default, the feature is enabled for ApsaraVideo Player SDKs. For more information, see [Integrate ApsaraVideo Player SDK for Android](~~311525#section-dc4-gp6-xk2~~) and [Integrate ApsaraVideo Player SDK for iOS](~~313855#section-cmf-k7d-jg5~~).
+//	        	- The log reporting feature is enabled. By default, the feature is enabled for ApsaraVideo Player SDKs. For more information, see [Integrate ApsaraVideo Player SDK for Android](~~311525#section-dc4-gp6-xk2~~) and [Integrate ApsaraVideo Player SDK for iOS](~~313855#section-cmf-k7d-jg5~~).
 //
-//     	- ApsaraVideo Player SDK for Web
+//	    	- ApsaraVideo Player SDK for Web
 //
-//         	- ApsaraVideo Player SDK for Web V2.16.0 or later is used.
+//	        	- ApsaraVideo Player SDK for Web V2.16.0 or later is used.
 //
-//         	- A license for **playback quality monitoring*	- is obtained. To apply for the license, [submit a request on Yida to enable value-added features for ApsaraVideo Player SDK for Web](https://yida.alibaba-inc.com/o/webplayer#/). For more information, see the description of the `license` parameter in the [API operations](~~125572#section-3ty-gwp-6pa~~) topic.
+//	        	- A license for **playback quality monitoring*	- is obtained. To apply for the license, [submit a request on Yida to enable value-added features for ApsaraVideo Player SDK for Web](https://yida.alibaba-inc.com/o/webplayer#/). For more information, see the description of the `license` parameter in the [API operations](~~125572#section-3ty-gwp-6pa~~) topic.
 //
-//         	- The log reporting feature is enabled. By default, the feature is enabled for ApsaraVideo Player SDKs.
+//	        	- The log reporting feature is enabled. By default, the feature is enabled for ApsaraVideo Player SDKs.
 //
 // @param request - DescribeVodMediaPlayDataRequest
 //
@@ -51321,9 +51333,9 @@ func (client *Client) DescribeVodRefreshQuota(request *DescribeVodRefreshQuotaRe
 //
 // Description:
 //
-//   This operation is available only in the **China (Shanghai)*	- region.
+//	  This operation is available only in the **China (Shanghai)*	- region.
 //
-// 	- If you do not specify the TaskId or ObjectPath parameter, the data in the last three days is returned on the first page. By default, one page displays a maximum of 20 entries. You can specify the TaskId and ObjectPath parameters at the same time.
+//		- If you do not specify the TaskId or ObjectPath parameter, the data in the last three days is returned on the first page. By default, one page displays a maximum of 20 entries. You can specify the TaskId and ObjectPath parameters at the same time.
 //
 // @param request - DescribeVodRefreshTasksRequest
 //
@@ -51420,9 +51432,9 @@ func (client *Client) DescribeVodRefreshTasksWithOptions(request *DescribeVodRef
 //
 // Description:
 //
-//   This operation is available only in the **China (Shanghai)*	- region.
+//	  This operation is available only in the **China (Shanghai)*	- region.
 //
-// 	- If you do not specify the TaskId or ObjectPath parameter, the data in the last three days is returned on the first page. By default, one page displays a maximum of 20 entries. You can specify the TaskId and ObjectPath parameters at the same time.
+//		- If you do not specify the TaskId or ObjectPath parameter, the data in the last three days is returned on the first page. By default, one page displays a maximum of 20 entries. You can specify the TaskId and ObjectPath parameters at the same time.
 //
 // @param request - DescribeVodRefreshTasksRequest
 //
@@ -51642,9 +51654,9 @@ func (client *Client) DescribeVodStorageData(request *DescribeVodStorageDataRequ
 //
 // Description:
 //
-//   This operation is available only in the **China (Shanghai)*	- region.
+//	  This operation is available only in the **China (Shanghai)*	- region.
 //
-// 	- If you specify a time range within 7 days, the request returns the data based on hours. If you specify a time range longer than 7 days, the request returns the data based on days. The maximum time range is 31 days.
+//		- If you specify a time range within 7 days, the request returns the data based on hours. If you specify a time range longer than 7 days, the request returns the data based on days. The maximum time range is 31 days.
 //
 // @param request - DescribeVodTieringStorageDataRequest
 //
@@ -51657,6 +51669,10 @@ func (client *Client) DescribeVodTieringStorageDataWithOptions(request *Describe
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		query["EndTime"] = request.EndTime
 	}
@@ -51717,9 +51733,9 @@ func (client *Client) DescribeVodTieringStorageDataWithOptions(request *Describe
 //
 // Description:
 //
-//   This operation is available only in the **China (Shanghai)*	- region.
+//	  This operation is available only in the **China (Shanghai)*	- region.
 //
-// 	- If you specify a time range within 7 days, the request returns the data based on hours. If you specify a time range longer than 7 days, the request returns the data based on days. The maximum time range is 31 days.
+//		- If you specify a time range within 7 days, the request returns the data based on hours. If you specify a time range longer than 7 days, the request returns the data based on days. The maximum time range is 31 days.
 //
 // @param request - DescribeVodTieringStorageDataRequest
 //
@@ -51741,9 +51757,9 @@ func (client *Client) DescribeVodTieringStorageData(request *DescribeVodTieringS
 //
 // Description:
 //
-//   This operation is available only in the **China (Shanghai)*	- region.
+//	  This operation is available only in the **China (Shanghai)*	- region.
 //
-// 	- If you specify a time range within 7 days, the request returns the data based on hours. If you specify a time range longer than 7 days, the request returns the data based on days. The maximum time range is 31 days.
+//		- If you specify a time range within 7 days, the request returns the data based on hours. If you specify a time range longer than 7 days, the request returns the data based on days. The maximum time range is 31 days.
 //
 // @param request - DescribeVodTieringStorageRetrievalDataRequest
 //
@@ -51756,6 +51772,10 @@ func (client *Client) DescribeVodTieringStorageRetrievalDataWithOptions(request 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		query["EndTime"] = request.EndTime
 	}
@@ -51816,9 +51836,9 @@ func (client *Client) DescribeVodTieringStorageRetrievalDataWithOptions(request 
 //
 // Description:
 //
-//   This operation is available only in the **China (Shanghai)*	- region.
+//	  This operation is available only in the **China (Shanghai)*	- region.
 //
-// 	- If you specify a time range within 7 days, the request returns the data based on hours. If you specify a time range longer than 7 days, the request returns the data based on days. The maximum time range is 31 days.
+//		- If you specify a time range within 7 days, the request returns the data based on hours. If you specify a time range longer than 7 days, the request returns the data based on days. The maximum time range is 31 days.
 //
 // @param request - DescribeVodTieringStorageRetrievalDataRequest
 //
@@ -51840,9 +51860,9 @@ func (client *Client) DescribeVodTieringStorageRetrievalData(request *DescribeVo
 //
 // Description:
 //
-//   This operation is available only in the **China (Shanghai)*	- region.
+//	  This operation is available only in the **China (Shanghai)*	- region.
 //
-// 	- If the time range to query is less than or equal to seven days, the system returns the statistics collected on an hourly basis. If the time range to query is greater than seven days, the system returns the statistics collected on a daily basis. The maximum time range that you can specify to query is 31 days.
+//		- If the time range to query is less than or equal to seven days, the system returns the statistics collected on an hourly basis. If the time range to query is greater than seven days, the system returns the statistics collected on a daily basis. The maximum time range that you can specify to query is 31 days.
 //
 // @param request - DescribeVodTranscodeDataRequest
 //
@@ -51927,9 +51947,9 @@ func (client *Client) DescribeVodTranscodeDataWithOptions(request *DescribeVodTr
 //
 // Description:
 //
-//   This operation is available only in the **China (Shanghai)*	- region.
+//	  This operation is available only in the **China (Shanghai)*	- region.
 //
-// 	- If the time range to query is less than or equal to seven days, the system returns the statistics collected on an hourly basis. If the time range to query is greater than seven days, the system returns the statistics collected on a daily basis. The maximum time range that you can specify to query is 31 days.
+//		- If the time range to query is less than or equal to seven days, the system returns the statistics collected on an hourly basis. If the time range to query is greater than seven days, the system returns the statistics collected on a daily basis. The maximum time range that you can specify to query is 31 days.
 //
 // @param request - DescribeVodTranscodeDataRequest
 //
@@ -51951,9 +51971,9 @@ func (client *Client) DescribeVodTranscodeData(request *DescribeVodTranscodeData
 //
 // Description:
 //
-//   You can filter domain names by name and status. Fuzzy match is supported for domain name-based query.
+//	  You can filter domain names by name and status. Fuzzy match is supported for domain name-based query.
 //
-// 	- This operation is available only in the China (Shanghai) region.
+//		- This operation is available only in the China (Shanghai) region.
 //
 // @param request - DescribeVodUserDomainsRequest
 //
@@ -52038,9 +52058,9 @@ func (client *Client) DescribeVodUserDomainsWithOptions(request *DescribeVodUser
 //
 // Description:
 //
-//   You can filter domain names by name and status. Fuzzy match is supported for domain name-based query.
+//	  You can filter domain names by name and status. Fuzzy match is supported for domain name-based query.
 //
-// 	- This operation is available only in the China (Shanghai) region.
+//		- This operation is available only in the China (Shanghai) region.
 //
 // @param request - DescribeVodUserDomainsRequest
 //
@@ -52062,7 +52082,7 @@ func (client *Client) DescribeVodUserDomains(request *DescribeVodUserDomainsRequ
 //
 // Description:
 //
-//   This operation is available only in the **China (Shanghai)*	- region.
+//	This operation is available only in the **China (Shanghai)*	- region.
 //
 // @param request - DescribeVodVerifyContentRequest
 //
@@ -52123,7 +52143,7 @@ func (client *Client) DescribeVodVerifyContentWithOptions(request *DescribeVodVe
 //
 // Description:
 //
-//   This operation is available only in the **China (Shanghai)*	- region.
+//	This operation is available only in the **China (Shanghai)*	- region.
 //
 // @param request - DescribeVodVerifyContentRequest
 //
@@ -52236,9 +52256,9 @@ func (client *Client) DetachAppPolicyFromIdentity(request *DetachAppPolicyFromId
 //
 // Description:
 //
-//   To use the secure download feature, you must enable the download feature in the ApsaraVideo VOD console and set the download method to secure download. For more information, see [Configure download settings](https://help.aliyun.com/document_detail/86107.html).
+//	  To use the secure download feature, you must enable the download feature in the ApsaraVideo VOD console and set the download method to secure download. For more information, see [Configure download settings](https://help.aliyun.com/document_detail/86107.html).
 //
-// 	- After you generate a key for secure download, you must configure the key in ApsaraVideo Player SDK. For more information, see [Secure download](https://help.aliyun.com/document_detail/124735.html).
+//		- After you generate a key for secure download, you must configure the key in ApsaraVideo Player SDK. For more information, see [Secure download](https://help.aliyun.com/document_detail/124735.html).
 //
 // @param request - GenerateDownloadSecretKeyRequest
 //
@@ -52311,9 +52331,9 @@ func (client *Client) GenerateDownloadSecretKeyWithOptions(request *GenerateDown
 //
 // Description:
 //
-//   To use the secure download feature, you must enable the download feature in the ApsaraVideo VOD console and set the download method to secure download. For more information, see [Configure download settings](https://help.aliyun.com/document_detail/86107.html).
+//	  To use the secure download feature, you must enable the download feature in the ApsaraVideo VOD console and set the download method to secure download. For more information, see [Configure download settings](https://help.aliyun.com/document_detail/86107.html).
 //
-// 	- After you generate a key for secure download, you must configure the key in ApsaraVideo Player SDK. For more information, see [Secure download](https://help.aliyun.com/document_detail/124735.html).
+//		- After you generate a key for secure download, you must configure the key in ApsaraVideo Player SDK. For more information, see [Secure download](https://help.aliyun.com/document_detail/124735.html).
 //
 // @param request - GenerateDownloadSecretKeyRequest
 //
@@ -52418,11 +52438,11 @@ func (client *Client) GenerateKMSDataKey(request *GenerateKMSDataKeyRequest) (_r
 //
 // Description:
 //
-//   Regions that support this operation: **China (Beijing)*	- and **China (Shanghai)**.
+//	  Regions that support this operation: **China (Beijing)*	- and **China (Shanghai)**.
 //
-// 	- Call the [SubmitAIImageJob](~~SubmitAIImageJob~~) operation to submit image AI processing jobs before you call this operation to query image AI processing jobs.
+//		- Call the [SubmitAIImageJob](~~SubmitAIImageJob~~) operation to submit image AI processing jobs before you call this operation to query image AI processing jobs.
 //
-// 	- You can query a maximum of 10 jobs of image AI processing in one request.
+//		- You can query a maximum of 10 jobs of image AI processing in one request.
 //
 // @param request - GetAIImageJobsRequest
 //
@@ -52495,11 +52515,11 @@ func (client *Client) GetAIImageJobsWithOptions(request *GetAIImageJobsRequest, 
 //
 // Description:
 //
-//   Regions that support this operation: **China (Beijing)*	- and **China (Shanghai)**.
+//	  Regions that support this operation: **China (Beijing)*	- and **China (Shanghai)**.
 //
-// 	- Call the [SubmitAIImageJob](~~SubmitAIImageJob~~) operation to submit image AI processing jobs before you call this operation to query image AI processing jobs.
+//		- Call the [SubmitAIImageJob](~~SubmitAIImageJob~~) operation to submit image AI processing jobs before you call this operation to query image AI processing jobs.
 //
-// 	- You can query a maximum of 10 jobs of image AI processing in one request.
+//		- You can query a maximum of 10 jobs of image AI processing in one request.
 //
 // @param request - GetAIImageJobsRequest
 //
@@ -52600,9 +52620,9 @@ func (client *Client) GetAIMediaAuditJob(request *GetAIMediaAuditJobRequest) (_r
 //
 // Description:
 //
-//   Regions that support this operation: **China (Beijing)**, **China (Shanghai)**, and **Singapore**.
+//	  Regions that support this operation: **China (Beijing)**, **China (Shanghai)**, and **Singapore**.
 //
-// 	- Before you call this operation to query details of an AI template, you must obtain the ID of the AI template.
+//		- Before you call this operation to query details of an AI template, you must obtain the ID of the AI template.
 //
 // @param request - GetAITemplateRequest
 //
@@ -52659,9 +52679,9 @@ func (client *Client) GetAITemplateWithOptions(request *GetAITemplateRequest, ru
 //
 // Description:
 //
-//   Regions that support this operation: **China (Beijing)**, **China (Shanghai)**, and **Singapore**.
+//	  Regions that support this operation: **China (Beijing)**, **China (Shanghai)**, and **Singapore**.
 //
-// 	- Before you call this operation to query details of an AI template, you must obtain the ID of the AI template.
+//		- Before you call this operation to query details of an AI template, you must obtain the ID of the AI template.
 //
 // @param request - GetAITemplateRequest
 //
@@ -52683,9 +52703,9 @@ func (client *Client) GetAITemplate(request *GetAITemplateRequest) (_result *Get
 //
 // Description:
 //
-//   Regions that support this operation: **China (Beijing)**, **China (Shanghai)**, and **Singapore**.
+//	  Regions that support this operation: **China (Beijing)**, **China (Shanghai)**, and **Singapore**.
 //
-// 	- You can obtain the smart tagging results by using the video ID.
+//		- You can obtain the smart tagging results by using the video ID.
 //
 // @param request - GetAIVideoTagResultRequest
 //
@@ -52758,9 +52778,9 @@ func (client *Client) GetAIVideoTagResultWithOptions(request *GetAIVideoTagResul
 //
 // Description:
 //
-//   Regions that support this operation: **China (Beijing)**, **China (Shanghai)**, and **Singapore**.
+//	  Regions that support this operation: **China (Beijing)**, **China (Shanghai)**, and **Singapore**.
 //
-// 	- You can obtain the smart tagging results by using the video ID.
+//		- You can obtain the smart tagging results by using the video ID.
 //
 // @param request - GetAIVideoTagResultRequest
 //
@@ -53118,9 +53138,9 @@ func (client *Client) GetCategories(request *GetCategoriesRequest) (_result *Get
 //
 // Description:
 //
-//   Regions that support this operation: **China (Beijing)**, **China (Shanghai)**, and **Singapore**.
+//	  Regions that support this operation: **China (Beijing)**, **China (Shanghai)**, and **Singapore**.
 //
-// 	- You can query information only about the default AI template for automated review.
+//		- You can query information only about the default AI template for automated review.
 //
 // @param request - GetDefaultAITemplateRequest
 //
@@ -53177,9 +53197,9 @@ func (client *Client) GetDefaultAITemplateWithOptions(request *GetDefaultAITempl
 //
 // Description:
 //
-//   Regions that support this operation: **China (Beijing)**, **China (Shanghai)**, and **Singapore**.
+//	  Regions that support this operation: **China (Beijing)**, **China (Shanghai)**, and **Singapore**.
 //
-// 	- You can query information only about the default AI template for automated review.
+//		- You can query information only about the default AI template for automated review.
 //
 // @param request - GetDefaultAITemplateRequest
 //
@@ -53201,11 +53221,11 @@ func (client *Client) GetDefaultAITemplate(request *GetDefaultAITemplateRequest)
 //
 // Description:
 //
-//   This operation is supported only in the China (Shanghai) and China (Beijing) regions.
+//	  This operation is supported only in the China (Shanghai) and China (Beijing) regions.
 //
-// 	- You can call this operation to query the watermark content after you call the [SubmitDigitalWatermarkExtractJob](~~SubmitDigitalWatermarkExtractJob~~) operation to extract the copyright or user-tracing watermark in a video.
+//		- You can call this operation to query the watermark content after you call the [SubmitDigitalWatermarkExtractJob](~~SubmitDigitalWatermarkExtractJob~~) operation to extract the copyright or user-tracing watermark in a video.
 //
-// 	- You can query watermark content extracted only from watermark extraction jobs that are submitted in the last 2 years.
+//		- You can query watermark content extracted only from watermark extraction jobs that are submitted in the last 2 years.
 //
 // @param request - GetDigitalWatermarkExtractResultRequest
 //
@@ -53286,11 +53306,11 @@ func (client *Client) GetDigitalWatermarkExtractResultWithOptions(request *GetDi
 //
 // Description:
 //
-//   This operation is supported only in the China (Shanghai) and China (Beijing) regions.
+//	  This operation is supported only in the China (Shanghai) and China (Beijing) regions.
 //
-// 	- You can call this operation to query the watermark content after you call the [SubmitDigitalWatermarkExtractJob](~~SubmitDigitalWatermarkExtractJob~~) operation to extract the copyright or user-tracing watermark in a video.
+//		- You can call this operation to query the watermark content after you call the [SubmitDigitalWatermarkExtractJob](~~SubmitDigitalWatermarkExtractJob~~) operation to extract the copyright or user-tracing watermark in a video.
 //
-// 	- You can query watermark content extracted only from watermark extraction jobs that are submitted in the last 2 years.
+//		- You can query watermark content extracted only from watermark extraction jobs that are submitted in the last 2 years.
 //
 // @param request - GetDigitalWatermarkExtractResultRequest
 //
@@ -53573,11 +53593,11 @@ func (client *Client) GetImageInfo(request *GetImageInfoRequest) (_result *GetIm
 //
 // Description:
 //
-//   You can call the [CreateUploadImage](~~CreateUploadImage~~) operation to upload images to ApsaraVideo VOD and call this operation to query the basic information about multiple images at a time.
+//	  You can call the [CreateUploadImage](~~CreateUploadImage~~) operation to upload images to ApsaraVideo VOD and call this operation to query the basic information about multiple images at a time.
 //
-// 	- To query information about video snapshots, call the [ListSnapshots](~~ListSnapshots~~) operation.
+//		- To query information about video snapshots, call the [ListSnapshots](~~ListSnapshots~~) operation.
 //
-// 	- You can specify up to 20 image IDs in one call.
+//		- You can specify up to 20 image IDs in one call.
 //
 // @param request - GetImageInfosRequest
 //
@@ -53642,11 +53662,11 @@ func (client *Client) GetImageInfosWithOptions(request *GetImageInfosRequest, ru
 //
 // Description:
 //
-//   You can call the [CreateUploadImage](~~CreateUploadImage~~) operation to upload images to ApsaraVideo VOD and call this operation to query the basic information about multiple images at a time.
+//	  You can call the [CreateUploadImage](~~CreateUploadImage~~) operation to upload images to ApsaraVideo VOD and call this operation to query the basic information about multiple images at a time.
 //
-// 	- To query information about video snapshots, call the [ListSnapshots](~~ListSnapshots~~) operation.
+//		- To query information about video snapshots, call the [ListSnapshots](~~ListSnapshots~~) operation.
 //
-// 	- You can specify up to 20 image IDs in one call.
+//		- You can specify up to 20 image IDs in one call.
 //
 // @param request - GetImageInfosRequest
 //
@@ -53933,11 +53953,11 @@ func (client *Client) GetMediaAuditResult(request *GetMediaAuditResultRequest) (
 //
 // Description:
 //
-//   By default, only details of snapshots that violate content regulations and potentially violate content regulations are returned.
+//	  By default, only details of snapshots that violate content regulations and potentially violate content regulations are returned.
 //
-// 	- ApsaraVideo VOD stores the snapshots in the automated review results free of charge for two weeks. After this period, the snapshots are automatically deleted.
+//		- ApsaraVideo VOD stores the snapshots in the automated review results free of charge for two weeks. After this period, the snapshots are automatically deleted.
 //
-// 	- This operation is available only in the Singapore region.
+//		- This operation is available only in the Singapore region.
 //
 // @param request - GetMediaAuditResultDetailRequest
 //
@@ -53998,11 +54018,11 @@ func (client *Client) GetMediaAuditResultDetailWithOptions(request *GetMediaAudi
 //
 // Description:
 //
-//   By default, only details of snapshots that violate content regulations and potentially violate content regulations are returned.
+//	  By default, only details of snapshots that violate content regulations and potentially violate content regulations are returned.
 //
-// 	- ApsaraVideo VOD stores the snapshots in the automated review results free of charge for two weeks. After this period, the snapshots are automatically deleted.
+//		- ApsaraVideo VOD stores the snapshots in the automated review results free of charge for two weeks. After this period, the snapshots are automatically deleted.
 //
-// 	- This operation is available only in the Singapore region.
+//		- This operation is available only in the Singapore region.
 //
 // @param request - GetMediaAuditResultDetailRequest
 //
@@ -54459,11 +54479,11 @@ func (client *Client) GetMezzanineInfo(request *GetMezzanineInfoRequest) (_resul
 //
 // Description:
 //
-//   **Make sure that you understand the billing method and price of ApsaraVideo VOD before you call this operation. You are charged for outbound traffic when you download or play videos based on URLs in ApsaraVideo VOD. For more information about billing of outbound traffic, see [Billing of outbound traffic](~~188308#section-rwh-e88-f7j~~). If you have configured an accelerated domain name, see [Billing of the acceleration service](~~188308#section-c5t-oq9-15e~~). If you have activated the acceleration service, you are charged acceleration fees when you upload media files to ApsaraVideo VOD. For more information, see [Billing of acceleration traffic](~~188310#section_sta_zm2_tsv~~).**
+//	  **Make sure that you understand the billing method and price of ApsaraVideo VOD before you call this operation. You are charged for outbound traffic when you download or play videos based on URLs in ApsaraVideo VOD. For more information about billing of outbound traffic, see [Billing of outbound traffic](~~188308#section-rwh-e88-f7j~~). If you have configured an accelerated domain name, see [Billing of the acceleration service](~~188308#section-c5t-oq9-15e~~). If you have activated the acceleration service, you are charged acceleration fees when you upload media files to ApsaraVideo VOD. For more information, see [Billing of acceleration traffic](~~188310#section_sta_zm2_tsv~~).**
 //
-// 	- Only videos whose Status is Normal can be played. For more information, see [Overview](https://help.aliyun.com/document_detail/57290.html).
+//		- Only videos whose Status is Normal can be played. For more information, see [Overview](https://help.aliyun.com/document_detail/57290.html).
 //
-// 	- If video playback fails, you can call the [GetMezzanineInfo](~~GetMezzanineInfo~~) operation to check whether the video source information is correct.
+//		- If video playback fails, you can call the [GetMezzanineInfo](~~GetMezzanineInfo~~) operation to check whether the video source information is correct.
 //
 // @param request - GetPlayInfoRequest
 //
@@ -54564,11 +54584,11 @@ func (client *Client) GetPlayInfoWithOptions(request *GetPlayInfoRequest, runtim
 //
 // Description:
 //
-//   **Make sure that you understand the billing method and price of ApsaraVideo VOD before you call this operation. You are charged for outbound traffic when you download or play videos based on URLs in ApsaraVideo VOD. For more information about billing of outbound traffic, see [Billing of outbound traffic](~~188308#section-rwh-e88-f7j~~). If you have configured an accelerated domain name, see [Billing of the acceleration service](~~188308#section-c5t-oq9-15e~~). If you have activated the acceleration service, you are charged acceleration fees when you upload media files to ApsaraVideo VOD. For more information, see [Billing of acceleration traffic](~~188310#section_sta_zm2_tsv~~).**
+//	  **Make sure that you understand the billing method and price of ApsaraVideo VOD before you call this operation. You are charged for outbound traffic when you download or play videos based on URLs in ApsaraVideo VOD. For more information about billing of outbound traffic, see [Billing of outbound traffic](~~188308#section-rwh-e88-f7j~~). If you have configured an accelerated domain name, see [Billing of the acceleration service](~~188308#section-c5t-oq9-15e~~). If you have activated the acceleration service, you are charged acceleration fees when you upload media files to ApsaraVideo VOD. For more information, see [Billing of acceleration traffic](~~188310#section_sta_zm2_tsv~~).**
 //
-// 	- Only videos whose Status is Normal can be played. For more information, see [Overview](https://help.aliyun.com/document_detail/57290.html).
+//		- Only videos whose Status is Normal can be played. For more information, see [Overview](https://help.aliyun.com/document_detail/57290.html).
 //
-// 	- If video playback fails, you can call the [GetMezzanineInfo](~~GetMezzanineInfo~~) operation to check whether the video source information is correct.
+//		- If video playback fails, you can call the [GetMezzanineInfo](~~GetMezzanineInfo~~) operation to check whether the video source information is correct.
 //
 // @param request - GetPlayInfoRequest
 //
@@ -54590,13 +54610,13 @@ func (client *Client) GetPlayInfo(request *GetPlayInfoRequest) (_result *GetPlay
 //
 // Description:
 //
-//   An audio or video file may be transcoded multiple times. This operation returns only the latest transcoding summary.
+//	  An audio or video file may be transcoded multiple times. This operation returns only the latest transcoding summary.
 //
-// 	- You can query transcoding summaries for a maximum of 10 audio and video files in one request.
+//		- You can query transcoding summaries for a maximum of 10 audio and video files in one request.
 //
-// 	- You can call the [ListTranscodeTask](https://help.aliyun.com/document_detail/109120.html) operation to query historical transcoding tasks.
+//		- You can call the [ListTranscodeTask](https://help.aliyun.com/document_detail/109120.html) operation to query historical transcoding tasks.
 //
-// 	- **You can call this operation to query information only about transcoding tasks created within the past year.
+//		- **You can call this operation to query information only about transcoding tasks created within the past year.
 //
 // @param request - GetTranscodeSummaryRequest
 //
@@ -54653,13 +54673,13 @@ func (client *Client) GetTranscodeSummaryWithOptions(request *GetTranscodeSummar
 //
 // Description:
 //
-//   An audio or video file may be transcoded multiple times. This operation returns only the latest transcoding summary.
+//	  An audio or video file may be transcoded multiple times. This operation returns only the latest transcoding summary.
 //
-// 	- You can query transcoding summaries for a maximum of 10 audio and video files in one request.
+//		- You can query transcoding summaries for a maximum of 10 audio and video files in one request.
 //
-// 	- You can call the [ListTranscodeTask](https://help.aliyun.com/document_detail/109120.html) operation to query historical transcoding tasks.
+//		- You can call the [ListTranscodeTask](https://help.aliyun.com/document_detail/109120.html) operation to query historical transcoding tasks.
 //
-// 	- **You can call this operation to query information only about transcoding tasks created within the past year.
+//		- **You can call this operation to query information only about transcoding tasks created within the past year.
 //
 // @param request - GetTranscodeSummaryRequest
 //
@@ -54930,23 +54950,23 @@ func (client *Client) GetURLUploadInfos(request *GetURLUploadInfosRequest) (_res
 //
 // Description:
 //
-//   You can call this operation to obtain the upload details only about audio and video files.
+//	  You can call this operation to obtain the upload details only about audio and video files.
 //
-// 	- If you use the ApsaraVideo VOD console to upload audio and video files, you can call this operation to query information such as the upload ratio. If you use an upload SDK to upload audio and video files, make sure that the version of the [upload SDK](https://help.aliyun.com/document_detail/52200.html) meets one of the following requirements:
+//		- If you use the ApsaraVideo VOD console to upload audio and video files, you can call this operation to query information such as the upload ratio. If you use an upload SDK to upload audio and video files, make sure that the version of the [upload SDK](https://help.aliyun.com/document_detail/52200.html) meets one of the following requirements:
 //
-//     	- The version of the upload SDK for Java is 1.4.4 or later.
+//	    	- The version of the upload SDK for Java is 1.4.4 or later.
 //
-//     	- The version of the upload SDK for C++ is 1.0.0 or later.
+//	    	- The version of the upload SDK for C++ is 1.0.0 or later.
 //
-//     	- The version of the upload SDK for PHP is 1.0.2 or later.
+//	    	- The version of the upload SDK for PHP is 1.0.2 or later.
 //
-//     	- The version of the upload SDK for Python is 1.3.0 or later.
+//	    	- The version of the upload SDK for Python is 1.3.0 or later.
 //
-//     	- The version of the upload SDK for JavaScript is 1.4.0 or later.
+//	    	- The version of the upload SDK for JavaScript is 1.4.0 or later.
 //
-//     	- The version of the upload SDK for Android is 1.5.0 or later.
+//	    	- The version of the upload SDK for Android is 1.5.0 or later.
 //
-//     	- The version of the upload SDK for iOS is 1.5.0 or later.
+//	    	- The version of the upload SDK for iOS is 1.5.0 or later.
 //
 // @param request - GetUploadDetailsRequest
 //
@@ -55007,23 +55027,23 @@ func (client *Client) GetUploadDetailsWithOptions(request *GetUploadDetailsReque
 //
 // Description:
 //
-//   You can call this operation to obtain the upload details only about audio and video files.
+//	  You can call this operation to obtain the upload details only about audio and video files.
 //
-// 	- If you use the ApsaraVideo VOD console to upload audio and video files, you can call this operation to query information such as the upload ratio. If you use an upload SDK to upload audio and video files, make sure that the version of the [upload SDK](https://help.aliyun.com/document_detail/52200.html) meets one of the following requirements:
+//		- If you use the ApsaraVideo VOD console to upload audio and video files, you can call this operation to query information such as the upload ratio. If you use an upload SDK to upload audio and video files, make sure that the version of the [upload SDK](https://help.aliyun.com/document_detail/52200.html) meets one of the following requirements:
 //
-//     	- The version of the upload SDK for Java is 1.4.4 or later.
+//	    	- The version of the upload SDK for Java is 1.4.4 or later.
 //
-//     	- The version of the upload SDK for C++ is 1.0.0 or later.
+//	    	- The version of the upload SDK for C++ is 1.0.0 or later.
 //
-//     	- The version of the upload SDK for PHP is 1.0.2 or later.
+//	    	- The version of the upload SDK for PHP is 1.0.2 or later.
 //
-//     	- The version of the upload SDK for Python is 1.3.0 or later.
+//	    	- The version of the upload SDK for Python is 1.3.0 or later.
 //
-//     	- The version of the upload SDK for JavaScript is 1.4.0 or later.
+//	    	- The version of the upload SDK for JavaScript is 1.4.0 or later.
 //
-//     	- The version of the upload SDK for Android is 1.5.0 or later.
+//	    	- The version of the upload SDK for Android is 1.5.0 or later.
 //
-//     	- The version of the upload SDK for iOS is 1.5.0 or later.
+//	    	- The version of the upload SDK for iOS is 1.5.0 or later.
 //
 // @param request - GetUploadDetailsRequest
 //
@@ -55124,9 +55144,9 @@ func (client *Client) GetVideoInfo(request *GetVideoInfoRequest) (_result *GetVi
 //
 // Description:
 //
-//   You can specify up to 20 audio or video file IDs in each request.
+//	  You can specify up to 20 audio or video file IDs in each request.
 //
-// 	- After a media file is uploaded, ApsaraVideo VOD processes the source file. Then, information about the media file is asynchronously generated. You can configure notifications for the [VideoAnalysisComplete](https://help.aliyun.com/document_detail/99935.html) event and call this operation to query information about a media file after you receive notifications for the [VideoAnalysisComplete](https://help.aliyun.com/document_detail/99935.html) event. For more information, see [Overview](https://help.aliyun.com/document_detail/55627.html).
+//		- After a media file is uploaded, ApsaraVideo VOD processes the source file. Then, information about the media file is asynchronously generated. You can configure notifications for the [VideoAnalysisComplete](https://help.aliyun.com/document_detail/99935.html) event and call this operation to query information about a media file after you receive notifications for the [VideoAnalysisComplete](https://help.aliyun.com/document_detail/99935.html) event. For more information, see [Overview](https://help.aliyun.com/document_detail/55627.html).
 //
 // @param request - GetVideoInfosRequest
 //
@@ -55183,9 +55203,9 @@ func (client *Client) GetVideoInfosWithOptions(request *GetVideoInfosRequest, ru
 //
 // Description:
 //
-//   You can specify up to 20 audio or video file IDs in each request.
+//	  You can specify up to 20 audio or video file IDs in each request.
 //
-// 	- After a media file is uploaded, ApsaraVideo VOD processes the source file. Then, information about the media file is asynchronously generated. You can configure notifications for the [VideoAnalysisComplete](https://help.aliyun.com/document_detail/99935.html) event and call this operation to query information about a media file after you receive notifications for the [VideoAnalysisComplete](https://help.aliyun.com/document_detail/99935.html) event. For more information, see [Overview](https://help.aliyun.com/document_detail/55627.html).
+//		- After a media file is uploaded, ApsaraVideo VOD processes the source file. Then, information about the media file is asynchronously generated. You can configure notifications for the [VideoAnalysisComplete](https://help.aliyun.com/document_detail/99935.html) event and call this operation to query information about a media file after you receive notifications for the [VideoAnalysisComplete](https://help.aliyun.com/document_detail/99935.html) event. For more information, see [Overview](https://help.aliyun.com/document_detail/55627.html).
 //
 // @param request - GetVideoInfosRequest
 //
@@ -55314,9 +55334,9 @@ func (client *Client) GetVideoList(request *GetVideoListRequest) (_result *GetVi
 //
 // Description:
 //
-//   You can call this operation to obtain a playback credential when you use ApsaraVideo Player SDK to play a media file based on PlayAuth. The credential is used to obtain the playback URL. For more information, see [ApsaraVideo Player SDK](https://help.aliyun.com/document_detail/125579.html).
+//	  You can call this operation to obtain a playback credential when you use ApsaraVideo Player SDK to play a media file based on PlayAuth. The credential is used to obtain the playback URL. For more information, see [ApsaraVideo Player SDK](https://help.aliyun.com/document_detail/125579.html).
 //
-// 	- You cannot obtain the playback URL of a video by using a credential that has expired. A new credential is required.
+//		- You cannot obtain the playback URL of a video by using a credential that has expired. A new credential is required.
 //
 // @param request - GetVideoPlayAuthRequest
 //
@@ -55381,9 +55401,9 @@ func (client *Client) GetVideoPlayAuthWithOptions(request *GetVideoPlayAuthReque
 //
 // Description:
 //
-//   You can call this operation to obtain a playback credential when you use ApsaraVideo Player SDK to play a media file based on PlayAuth. The credential is used to obtain the playback URL. For more information, see [ApsaraVideo Player SDK](https://help.aliyun.com/document_detail/125579.html).
+//	  You can call this operation to obtain a playback credential when you use ApsaraVideo Player SDK to play a media file based on PlayAuth. The credential is used to obtain the playback URL. For more information, see [ApsaraVideo Player SDK](https://help.aliyun.com/document_detail/125579.html).
 //
-// 	- You cannot obtain the playback URL of a video by using a credential that has expired. A new credential is required.
+//		- You cannot obtain the playback URL of a video by using a credential that has expired. A new credential is required.
 //
 // @param request - GetVideoPlayAuthRequest
 //
@@ -55547,9 +55567,9 @@ func (client *Client) GetWatermark(request *GetWatermarkRequest) (_result *GetWa
 //
 // Description:
 //
-//   Regions that support this operation: **China (Beijing)*	- and **China (Shanghai)**.
+//	  Regions that support this operation: **China (Beijing)*	- and **China (Shanghai)**.
 //
-// 	- You can call this operation to query AI processing results about images of a specified video. Images of different videos cannot be queried in one request.
+//		- You can call this operation to query AI processing results about images of a specified video. Images of different videos cannot be queried in one request.
 //
 // @param request - ListAIImageInfoRequest
 //
@@ -55606,9 +55626,9 @@ func (client *Client) ListAIImageInfoWithOptions(request *ListAIImageInfoRequest
 //
 // Description:
 //
-//   Regions that support this operation: **China (Beijing)*	- and **China (Shanghai)**.
+//	  Regions that support this operation: **China (Beijing)*	- and **China (Shanghai)**.
 //
-// 	- You can call this operation to query AI processing results about images of a specified video. Images of different videos cannot be queried in one request.
+//		- You can call this operation to query AI processing results about images of a specified video. Images of different videos cannot be queried in one request.
 //
 // @param request - ListAIImageInfoRequest
 //
@@ -55630,9 +55650,9 @@ func (client *Client) ListAIImageInfo(request *ListAIImageInfoRequest) (_result 
 //
 // Description:
 //
-//   Regions that support this operation: **China (Beijing)**, **China (Shanghai)**, and **Singapore**.
+//	  Regions that support this operation: **China (Beijing)**, **China (Shanghai)**, and **Singapore**.
 //
-// 	- You can call this operation to query video fingerprinting jobs and smart tagging jobs.
+//		- You can call this operation to query video fingerprinting jobs and smart tagging jobs.
 //
 // @param request - ListAIJobRequest
 //
@@ -55705,9 +55725,9 @@ func (client *Client) ListAIJobWithOptions(request *ListAIJobRequest, runtime *u
 //
 // Description:
 //
-//   Regions that support this operation: **China (Beijing)**, **China (Shanghai)**, and **Singapore**.
+//	  Regions that support this operation: **China (Beijing)**, **China (Shanghai)**, and **Singapore**.
 //
-// 	- You can call this operation to query video fingerprinting jobs and smart tagging jobs.
+//		- You can call this operation to query video fingerprinting jobs and smart tagging jobs.
 //
 // @param request - ListAIJobRequest
 //
@@ -55729,9 +55749,9 @@ func (client *Client) ListAIJob(request *ListAIJobRequest) (_result *ListAIJobRe
 //
 // Description:
 //
-//   Regions that support this operation: **China (Beijing)**, **China (Shanghai)**, and **Singapore**.
+//	  Regions that support this operation: **China (Beijing)**, **China (Shanghai)**, and **Singapore**.
 //
-// 	- You can call this operation to query AI templates of a specified type.
+//		- You can call this operation to query AI templates of a specified type.
 //
 // @param request - ListAITemplateRequest
 //
@@ -55788,9 +55808,9 @@ func (client *Client) ListAITemplateWithOptions(request *ListAITemplateRequest, 
 //
 // Description:
 //
-//   Regions that support this operation: **China (Beijing)**, **China (Shanghai)**, and **Singapore**.
+//	  Regions that support this operation: **China (Beijing)**, **China (Shanghai)**, and **Singapore**.
 //
-// 	- You can call this operation to query AI templates of a specified type.
+//		- You can call this operation to query AI templates of a specified type.
 //
 // @param request - ListAITemplateRequest
 //
@@ -56146,9 +56166,9 @@ func (client *Client) ListDynamicImage(request *ListDynamicImageRequest) (_resul
 //
 // ***
 //
-// 	- You can call the [GetJobDetail](https://apiworkbench.aliyun-inc.com/document/vod/2017-03-21/GetJobDetail?spm=openapi-amp.newDocPublishment.0.0.616a281fSegn0e) operation to query detailed information about the tasks.
+//   - You can call the [GetJobDetail](https://apiworkbench.aliyun-inc.com/document/vod/2017-03-21/GetJobDetail?spm=openapi-amp.newDocPublishment.0.0.616a281fSegn0e) operation to query detailed information about the tasks.
 //
-// 	- You can call this operation to query only asynchronous tasks of the last six months. The types of tasks that you can query include transcoding tasks, snapshot tasks, and AI tasks.
+//   - You can call this operation to query only asynchronous tasks of the last six months. The types of tasks that you can query include transcoding tasks, snapshot tasks, and AI tasks.
 //
 // **QPS limits**
 //
@@ -56215,9 +56235,9 @@ func (client *Client) ListJobInfoWithOptions(request *ListJobInfoRequest, runtim
 //
 // ***
 //
-// 	- You can call the [GetJobDetail](https://apiworkbench.aliyun-inc.com/document/vod/2017-03-21/GetJobDetail?spm=openapi-amp.newDocPublishment.0.0.616a281fSegn0e) operation to query detailed information about the tasks.
+//   - You can call the [GetJobDetail](https://apiworkbench.aliyun-inc.com/document/vod/2017-03-21/GetJobDetail?spm=openapi-amp.newDocPublishment.0.0.616a281fSegn0e) operation to query detailed information about the tasks.
 //
-// 	- You can call this operation to query only asynchronous tasks of the last six months. The types of tasks that you can query include transcoding tasks, snapshot tasks, and AI tasks.
+//   - You can call this operation to query only asynchronous tasks of the last six months. The types of tasks that you can query include transcoding tasks, snapshot tasks, and AI tasks.
 //
 // **QPS limits**
 //
@@ -56445,9 +56465,9 @@ func (client *Client) ListSnapshots(request *ListSnapshotsRequest) (_result *Lis
 //
 // Description:
 //
-//   You can call the [GetTranscodeTask](https://help.aliyun.com/document_detail/109121.html) operation to query details about transcoding jobs.
+//	  You can call the [GetTranscodeTask](https://help.aliyun.com/document_detail/109121.html) operation to query details about transcoding jobs.
 //
-// 	- **You can call this operation to query only transcoding tasks created within the past year.**
+//		- **You can call this operation to query only transcoding tasks created within the past year.**
 //
 // @param request - ListTranscodeTaskRequest
 //
@@ -56520,9 +56540,9 @@ func (client *Client) ListTranscodeTaskWithOptions(request *ListTranscodeTaskReq
 //
 // Description:
 //
-//   You can call the [GetTranscodeTask](https://help.aliyun.com/document_detail/109121.html) operation to query details about transcoding jobs.
+//	  You can call the [GetTranscodeTask](https://help.aliyun.com/document_detail/109121.html) operation to query details about transcoding jobs.
 //
-// 	- **You can call this operation to query only transcoding tasks created within the past year.**
+//		- **You can call this operation to query only transcoding tasks created within the past year.**
 //
 // @param request - ListTranscodeTaskRequest
 //
@@ -56955,39 +56975,39 @@ func (client *Client) PreloadVodObjectCaches(request *PreloadVodObjectCachesRequ
 //
 // Description:
 //
-//   **Make sure that you understand the billing method and price of ApsaraVideo VOD before you call this operation. You are charged for using the online editing feature. For more information, see [Billing](~~188310#section-pyv-b8h-bo7~~).**
+//	  **Make sure that you understand the billing method and price of ApsaraVideo VOD before you call this operation. You are charged for using the online editing feature. For more information, see [Billing](~~188310#section-pyv-b8h-bo7~~).**
 //
-// 	- This operation returns only the submission result of a video production task. When the submission result is returned, video production may still be in progress. After a video production task is submitted, the task is queued in the background for asynchronous processing.
+//		- This operation returns only the submission result of a video production task. When the submission result is returned, video production may still be in progress. After a video production task is submitted, the task is queued in the background for asynchronous processing.
 //
-// 	- The source files that are used in the timeline of an online editing project can be materials directly uploaded to the online project or selected from the media asset library. Only media assets that are in the Normal state can be used in the project.
+//		- The source files that are used in the timeline of an online editing project can be materials directly uploaded to the online project or selected from the media asset library. Only media assets that are in the Normal state can be used in the project.
 //
-// 	- Videos are produced based on ProjectId and Timeline. The following content describes the parameter configurations:
+//		- Videos are produced based on ProjectId and Timeline. The following content describes the parameter configurations:
 //
-//     	- You must specify ProjectId or Timeline. If you leave both parameters empty, the video cannot be produced.
+//	    	- You must specify ProjectId or Timeline. If you leave both parameters empty, the video cannot be produced.
 //
-//     	- If you specify Timeline and leave ProjectId empty, the system automatically creates an online editing project based on Timeline and adds the materials specified in the Timeline to the project to produce videos.
+//	    	- If you specify Timeline and leave ProjectId empty, the system automatically creates an online editing project based on Timeline and adds the materials specified in the Timeline to the project to produce videos.
 //
-//     	- If you specify ProjectId and leave Timeline empty, the system automatically uses the latest timeline information of the project to produce videos.
+//	    	- If you specify ProjectId and leave Timeline empty, the system automatically uses the latest timeline information of the project to produce videos.
 //
-//     	- If you specify both ProjectId and Timeline, the system automatically uses the timeline information that you specified to produce videos and updates the project timeline and materials. You can also specify other parameters to update the corresponding information about the online editing project.
+//	    	- If you specify both ProjectId and Timeline, the system automatically uses the timeline information that you specified to produce videos and updates the project timeline and materials. You can also specify other parameters to update the corresponding information about the online editing project.
 //
-// 	- You can create up to 100 video tracks, 100 image tracks, and 100 subtitle tracks in a project.
+//		- You can create up to 100 video tracks, 100 image tracks, and 100 subtitle tracks in a project.
 //
-// 	- The total size of material files cannot exceed 1 TB.
+//		- The total size of material files cannot exceed 1 TB.
 //
-// 	- The buckets in which the materials reside and where the exported videos are stored must be in the same region as the region where ApsaraVideo VOD is activated.
+//		- The buckets in which the materials reside and where the exported videos are stored must be in the same region as the region where ApsaraVideo VOD is activated.
 //
-// 	- The exported videos must meet the following requirements:
+//		- The exported videos must meet the following requirements:
 //
-//     	- The width and height of the video image cannot be less than 128 pixels.
+//	    	- The width and height of the video image cannot be less than 128 pixels.
 //
-//     	- The width and height of the video image cannot exceed 4,096 pixels.
+//	    	- The width and height of the video image cannot exceed 4,096 pixels.
 //
-//     	- The width cannot exceed 2,160 pixels.
+//	    	- The width cannot exceed 2,160 pixels.
 //
-// 	- After a video is produced, the video is automatically uploaded to ApsaraVideo VOD. Then, the **ProduceMediaComplete*	- and **FileUploadComplete*	- event notifications are sent to you. After the produced video is transcoded, the **StreamTranscodeComplete*	- and **TranscodeComplete*	- event notifications are sent to you.
+//		- After a video is produced, the video is automatically uploaded to ApsaraVideo VOD. Then, the **ProduceMediaComplete*	- and **FileUploadComplete*	- event notifications are sent to you. After the produced video is transcoded, the **StreamTranscodeComplete*	- and **TranscodeComplete*	- event notifications are sent to you.
 //
-// 	- You can add special effects to the video. For more information, see [Special effects](https://help.aliyun.com/document_detail/69082.html).
+//		- You can add special effects to the video. For more information, see [Special effects](https://help.aliyun.com/document_detail/69082.html).
 //
 // @param request - ProduceEditingProjectVideoRequest
 //
@@ -57088,39 +57108,39 @@ func (client *Client) ProduceEditingProjectVideoWithOptions(request *ProduceEdit
 //
 // Description:
 //
-//   **Make sure that you understand the billing method and price of ApsaraVideo VOD before you call this operation. You are charged for using the online editing feature. For more information, see [Billing](~~188310#section-pyv-b8h-bo7~~).**
+//	  **Make sure that you understand the billing method and price of ApsaraVideo VOD before you call this operation. You are charged for using the online editing feature. For more information, see [Billing](~~188310#section-pyv-b8h-bo7~~).**
 //
-// 	- This operation returns only the submission result of a video production task. When the submission result is returned, video production may still be in progress. After a video production task is submitted, the task is queued in the background for asynchronous processing.
+//		- This operation returns only the submission result of a video production task. When the submission result is returned, video production may still be in progress. After a video production task is submitted, the task is queued in the background for asynchronous processing.
 //
-// 	- The source files that are used in the timeline of an online editing project can be materials directly uploaded to the online project or selected from the media asset library. Only media assets that are in the Normal state can be used in the project.
+//		- The source files that are used in the timeline of an online editing project can be materials directly uploaded to the online project or selected from the media asset library. Only media assets that are in the Normal state can be used in the project.
 //
-// 	- Videos are produced based on ProjectId and Timeline. The following content describes the parameter configurations:
+//		- Videos are produced based on ProjectId and Timeline. The following content describes the parameter configurations:
 //
-//     	- You must specify ProjectId or Timeline. If you leave both parameters empty, the video cannot be produced.
+//	    	- You must specify ProjectId or Timeline. If you leave both parameters empty, the video cannot be produced.
 //
-//     	- If you specify Timeline and leave ProjectId empty, the system automatically creates an online editing project based on Timeline and adds the materials specified in the Timeline to the project to produce videos.
+//	    	- If you specify Timeline and leave ProjectId empty, the system automatically creates an online editing project based on Timeline and adds the materials specified in the Timeline to the project to produce videos.
 //
-//     	- If you specify ProjectId and leave Timeline empty, the system automatically uses the latest timeline information of the project to produce videos.
+//	    	- If you specify ProjectId and leave Timeline empty, the system automatically uses the latest timeline information of the project to produce videos.
 //
-//     	- If you specify both ProjectId and Timeline, the system automatically uses the timeline information that you specified to produce videos and updates the project timeline and materials. You can also specify other parameters to update the corresponding information about the online editing project.
+//	    	- If you specify both ProjectId and Timeline, the system automatically uses the timeline information that you specified to produce videos and updates the project timeline and materials. You can also specify other parameters to update the corresponding information about the online editing project.
 //
-// 	- You can create up to 100 video tracks, 100 image tracks, and 100 subtitle tracks in a project.
+//		- You can create up to 100 video tracks, 100 image tracks, and 100 subtitle tracks in a project.
 //
-// 	- The total size of material files cannot exceed 1 TB.
+//		- The total size of material files cannot exceed 1 TB.
 //
-// 	- The buckets in which the materials reside and where the exported videos are stored must be in the same region as the region where ApsaraVideo VOD is activated.
+//		- The buckets in which the materials reside and where the exported videos are stored must be in the same region as the region where ApsaraVideo VOD is activated.
 //
-// 	- The exported videos must meet the following requirements:
+//		- The exported videos must meet the following requirements:
 //
-//     	- The width and height of the video image cannot be less than 128 pixels.
+//	    	- The width and height of the video image cannot be less than 128 pixels.
 //
-//     	- The width and height of the video image cannot exceed 4,096 pixels.
+//	    	- The width and height of the video image cannot exceed 4,096 pixels.
 //
-//     	- The width cannot exceed 2,160 pixels.
+//	    	- The width cannot exceed 2,160 pixels.
 //
-// 	- After a video is produced, the video is automatically uploaded to ApsaraVideo VOD. Then, the **ProduceMediaComplete*	- and **FileUploadComplete*	- event notifications are sent to you. After the produced video is transcoded, the **StreamTranscodeComplete*	- and **TranscodeComplete*	- event notifications are sent to you.
+//		- After a video is produced, the video is automatically uploaded to ApsaraVideo VOD. Then, the **ProduceMediaComplete*	- and **FileUploadComplete*	- event notifications are sent to you. After the produced video is transcoded, the **StreamTranscodeComplete*	- and **TranscodeComplete*	- event notifications are sent to you.
 //
-// 	- You can add special effects to the video. For more information, see [Special effects](https://help.aliyun.com/document_detail/69082.html).
+//		- You can add special effects to the video. For more information, see [Special effects](https://help.aliyun.com/document_detail/69082.html).
 //
 // @param request - ProduceEditingProjectVideoRequest
 //
@@ -57142,11 +57162,11 @@ func (client *Client) ProduceEditingProjectVideo(request *ProduceEditingProjectV
 //
 // Description:
 //
-//   ApsaraVideo VOD allows you to purge and prefetch resources. The purge feature forces the point of presence (POP) to clear cached resources and retrieve the latest resources from origin servers. The prefetch feature allows the POP to retrieve frequently accessed resources from origin servers during off-peak hours. This increases the cache hit ratio.
+//	  ApsaraVideo VOD allows you to purge and prefetch resources. The purge feature forces the point of presence (POP) to clear cached resources and retrieve the latest resources from origin servers. The prefetch feature allows the POP to retrieve frequently accessed resources from origin servers during off-peak hours. This increases the cache hit ratio.
 //
-// 	- You can call this operation to submit purge or prefetch tasks based on the media ID. You can also specify the format and resolution of the media streams to purge or prefetch based on your business requirements.
+//		- You can call this operation to submit purge or prefetch tasks based on the media ID. You can also specify the format and resolution of the media streams to purge or prefetch based on your business requirements.
 //
-// 	- You can submit a maximum of 20 purge or prefetch tasks at a time.
+//		- You can submit a maximum of 20 purge or prefetch tasks at a time.
 //
 // @param request - RefreshMediaPlayUrlsRequest
 //
@@ -57235,11 +57255,11 @@ func (client *Client) RefreshMediaPlayUrlsWithOptions(request *RefreshMediaPlayU
 //
 // Description:
 //
-//   ApsaraVideo VOD allows you to purge and prefetch resources. The purge feature forces the point of presence (POP) to clear cached resources and retrieve the latest resources from origin servers. The prefetch feature allows the POP to retrieve frequently accessed resources from origin servers during off-peak hours. This increases the cache hit ratio.
+//	  ApsaraVideo VOD allows you to purge and prefetch resources. The purge feature forces the point of presence (POP) to clear cached resources and retrieve the latest resources from origin servers. The prefetch feature allows the POP to retrieve frequently accessed resources from origin servers during off-peak hours. This increases the cache hit ratio.
 //
-// 	- You can call this operation to submit purge or prefetch tasks based on the media ID. You can also specify the format and resolution of the media streams to purge or prefetch based on your business requirements.
+//		- You can call this operation to submit purge or prefetch tasks based on the media ID. You can also specify the format and resolution of the media streams to purge or prefetch based on your business requirements.
 //
-// 	- You can submit a maximum of 20 purge or prefetch tasks at a time.
+//		- You can submit a maximum of 20 purge or prefetch tasks at a time.
 //
 // @param request - RefreshMediaPlayUrlsRequest
 //
@@ -57352,11 +57372,11 @@ func (client *Client) RefreshUploadVideo(request *RefreshUploadVideoRequest) (_r
 //
 // Description:
 //
-//   This operation is available only in the **China (Shanghai)*	- region.
+//	  This operation is available only in the **China (Shanghai)*	- region.
 //
-// 	- You can submit a maximum of 2,000 requests to refresh resources based on URLs and 100 requests to refresh resources based on directories each day by using an Alibaba Cloud account.
+//		- You can submit a maximum of 2,000 requests to refresh resources based on URLs and 100 requests to refresh resources based on directories each day by using an Alibaba Cloud account.
 //
-// 	- You can call the [RefreshVodObjectCaches](https://help.aliyun.com/document_detail/69215.html) operation to refresh content and the [PreloadVodObjectCaches](https://help.aliyun.com/document_detail/69211.html) operation to prefetch content.
+//		- You can call the [RefreshVodObjectCaches](https://help.aliyun.com/document_detail/69215.html) operation to refresh content and the [PreloadVodObjectCaches](https://help.aliyun.com/document_detail/69211.html) operation to prefetch content.
 //
 // @param request - RefreshVodObjectCachesRequest
 //
@@ -57429,11 +57449,11 @@ func (client *Client) RefreshVodObjectCachesWithOptions(request *RefreshVodObjec
 //
 // Description:
 //
-//   This operation is available only in the **China (Shanghai)*	- region.
+//	  This operation is available only in the **China (Shanghai)*	- region.
 //
-// 	- You can submit a maximum of 2,000 requests to refresh resources based on URLs and 100 requests to refresh resources based on directories each day by using an Alibaba Cloud account.
+//		- You can submit a maximum of 2,000 requests to refresh resources based on URLs and 100 requests to refresh resources based on directories each day by using an Alibaba Cloud account.
 //
-// 	- You can call the [RefreshVodObjectCaches](https://help.aliyun.com/document_detail/69215.html) operation to refresh content and the [PreloadVodObjectCaches](https://help.aliyun.com/document_detail/69211.html) operation to prefetch content.
+//		- You can call the [RefreshVodObjectCaches](https://help.aliyun.com/document_detail/69215.html) operation to refresh content and the [PreloadVodObjectCaches](https://help.aliyun.com/document_detail/69211.html) operation to prefetch content.
 //
 // @param request - RefreshVodObjectCachesRequest
 //
@@ -57455,15 +57475,15 @@ func (client *Client) RefreshVodObjectCaches(request *RefreshVodObjectCachesRequ
 //
 // Description:
 //
-//   After you add an OSS bucket to ApsaraVideo VOD, you must register media files in the OSS bucket to generate the required information. Then, you can use media IDs for features such as transcoding, snapshot capture, and AI processing.use features such as xxx on media files by specifying their IDs?
+//	  After you add an OSS bucket to ApsaraVideo VOD, you must register media files in the OSS bucket to generate the required information. Then, you can use media IDs for features such as transcoding, snapshot capture, and AI processing.use features such as xxx on media files by specifying their IDs?
 //
-// 	- You can register up to 10 media files in an OSS bucket in a request. The media files must be stored in the same bucket.
+//		- You can register up to 10 media files in an OSS bucket in a request. The media files must be stored in the same bucket.
 //
-// 	- If you do not specify a transcoding template group ID when you upload a media file to ApsaraVideo VOD, the media file is automatically transcoded based on the default template group. If you do not specify a transcoding template group ID after you register a media file, the media file is not automatically transcoded. The registered media files are automatically transcoded only if you specify a transcoding template group ID.
+//		- If you do not specify a transcoding template group ID when you upload a media file to ApsaraVideo VOD, the media file is automatically transcoded based on the default template group. If you do not specify a transcoding template group ID after you register a media file, the media file is not automatically transcoded. The registered media files are automatically transcoded only if you specify a transcoding template group ID.
 //
-// 	- If the media file that you want to register has been registered, this operation returns only the unique media ID that is associated with the media file. No further operation is performed.
+//		- If the media file that you want to register has been registered, this operation returns only the unique media ID that is associated with the media file. No further operation is performed.
 //
-// 	- Make sure that the media file that you want to register has a valid suffix. Otherwise, the registration fails.
+//		- Make sure that the media file that you want to register has a valid suffix. Otherwise, the registration fails.
 //
 // @param request - RegisterMediaRequest
 //
@@ -57532,15 +57552,15 @@ func (client *Client) RegisterMediaWithOptions(request *RegisterMediaRequest, ru
 //
 // Description:
 //
-//   After you add an OSS bucket to ApsaraVideo VOD, you must register media files in the OSS bucket to generate the required information. Then, you can use media IDs for features such as transcoding, snapshot capture, and AI processing.use features such as xxx on media files by specifying their IDs?
+//	  After you add an OSS bucket to ApsaraVideo VOD, you must register media files in the OSS bucket to generate the required information. Then, you can use media IDs for features such as transcoding, snapshot capture, and AI processing.use features such as xxx on media files by specifying their IDs?
 //
-// 	- You can register up to 10 media files in an OSS bucket in a request. The media files must be stored in the same bucket.
+//		- You can register up to 10 media files in an OSS bucket in a request. The media files must be stored in the same bucket.
 //
-// 	- If you do not specify a transcoding template group ID when you upload a media file to ApsaraVideo VOD, the media file is automatically transcoded based on the default template group. If you do not specify a transcoding template group ID after you register a media file, the media file is not automatically transcoded. The registered media files are automatically transcoded only if you specify a transcoding template group ID.
+//		- If you do not specify a transcoding template group ID when you upload a media file to ApsaraVideo VOD, the media file is automatically transcoded based on the default template group. If you do not specify a transcoding template group ID after you register a media file, the media file is not automatically transcoded. The registered media files are automatically transcoded only if you specify a transcoding template group ID.
 //
-// 	- If the media file that you want to register has been registered, this operation returns only the unique media ID that is associated with the media file. No further operation is performed.
+//		- If the media file that you want to register has been registered, this operation returns only the unique media ID that is associated with the media file. No further operation is performed.
 //
-// 	- Make sure that the media file that you want to register has a valid suffix. Otherwise, the registration fails.
+//		- Make sure that the media file that you want to register has a valid suffix. Otherwise, the registration fails.
 //
 // @param request - RegisterMediaRequest
 //
@@ -57766,17 +57786,17 @@ func (client *Client) SearchEditingProject(request *SearchEditingProjectRequest)
 //
 // The maximum number of data records that you can query varies based on the method used to query the data. You can use the following methods to query data:
 //
-// 	- Method 1: Traverse data by page
+//   - Method 1: Traverse data by page
 //
 //     You can use the PageNo and PageSize parameters to traverse up to 5,000 data records that meet the specified filter condition. PageNo specifies the page number and PageSize specifies the number of data records displayed on a page. If the number of data records that meet the specified filter condition exceeds 5,000, change the filter conditions to narrow down the results. You cannot use this method to traverse all data records. If you want to traverse more data records, use Method 2.
 //
-// 	- Method 2: Traverse all data (available only for audio and video files)
+//   - Method 2: Traverse all data (available only for audio and video files)
 //
 //     You can use this method to traverse up to 2 million data records related to audio and video files. If the number of data records that meet the specified filter condition exceeds 2 million, change the filter conditions to narrow down the results. To traverse data page by page, you must set the PageNo, PageSize, and ScrollToken parameters. The total number of data records from the current page to the target page cannot exceed 100. For example, you set PageSize to 20. The following content describes the traverse logic:
 //
-//     	- When the PageNo parameter is set to 1, you can traverse data records from page 1 to page 5.
+//   - When the PageNo parameter is set to 1, you can traverse data records from page 1 to page 5.
 //
-//     	- When the PageNo parameter is set to 2, you can traverse data records from page 2 to page 6.
+//   - When the PageNo parameter is set to 2, you can traverse data records from page 2 to page 6.
 //
 // Make sure that you set the appropriate page number and page size, and use a traverse method based on the number of results that meet your filter condition.
 //
@@ -57861,17 +57881,17 @@ func (client *Client) SearchMediaWithOptions(request *SearchMediaRequest, runtim
 //
 // The maximum number of data records that you can query varies based on the method used to query the data. You can use the following methods to query data:
 //
-// 	- Method 1: Traverse data by page
+//   - Method 1: Traverse data by page
 //
 //     You can use the PageNo and PageSize parameters to traverse up to 5,000 data records that meet the specified filter condition. PageNo specifies the page number and PageSize specifies the number of data records displayed on a page. If the number of data records that meet the specified filter condition exceeds 5,000, change the filter conditions to narrow down the results. You cannot use this method to traverse all data records. If you want to traverse more data records, use Method 2.
 //
-// 	- Method 2: Traverse all data (available only for audio and video files)
+//   - Method 2: Traverse all data (available only for audio and video files)
 //
 //     You can use this method to traverse up to 2 million data records related to audio and video files. If the number of data records that meet the specified filter condition exceeds 2 million, change the filter conditions to narrow down the results. To traverse data page by page, you must set the PageNo, PageSize, and ScrollToken parameters. The total number of data records from the current page to the target page cannot exceed 100. For example, you set PageSize to 20. The following content describes the traverse logic:
 //
-//     	- When the PageNo parameter is set to 1, you can traverse data records from page 1 to page 5.
+//   - When the PageNo parameter is set to 1, you can traverse data records from page 1 to page 5.
 //
-//     	- When the PageNo parameter is set to 2, you can traverse data records from page 2 to page 6.
+//   - When the PageNo parameter is set to 2, you can traverse data records from page 2 to page 6.
 //
 // Make sure that you set the appropriate page number and page size, and use a traverse method based on the number of results that meet your filter condition.
 //
@@ -58825,9 +58845,9 @@ func (client *Client) SubmitAIImageAuditJob(request *SubmitAIImageAuditJobReques
 //
 // Description:
 //
-//   Regions that support this operation: **China (Beijing)*	- and **China (Shanghai)**.
+//	  Regions that support this operation: **China (Beijing)*	- and **China (Shanghai)**.
 //
-// 	- After you call this operation, you can call the [GetAIImageJobs](https://help.aliyun.com/document_detail/186923.html) operation to query the job execution result.
+//		- After you call this operation, you can call the [GetAIImageJobs](https://help.aliyun.com/document_detail/186923.html) operation to query the job execution result.
 //
 // @param request - SubmitAIImageJobRequest
 //
@@ -58912,9 +58932,9 @@ func (client *Client) SubmitAIImageJobWithOptions(request *SubmitAIImageJobReque
 //
 // Description:
 //
-//   Regions that support this operation: **China (Beijing)*	- and **China (Shanghai)**.
+//	  Regions that support this operation: **China (Beijing)*	- and **China (Shanghai)**.
 //
-// 	- After you call this operation, you can call the [GetAIImageJobs](https://help.aliyun.com/document_detail/186923.html) operation to query the job execution result.
+//		- After you call this operation, you can call the [GetAIImageJobs](https://help.aliyun.com/document_detail/186923.html) operation to query the job execution result.
 //
 // @param request - SubmitAIImageJobRequest
 //
@@ -58936,15 +58956,15 @@ func (client *Client) SubmitAIImageJob(request *SubmitAIImageJobRequest) (_resul
 //
 // Description:
 //
-//   **Make sure that you understand the billing method and price of ApsaraVideo VOD before you call this operation. You are charged for using the smart tagging and video fingerprinting features. For more information, see [Billing of video AI](~~188310#section-g7l-s3o-9ng~~).**
+//	  **Make sure that you understand the billing method and price of ApsaraVideo VOD before you call this operation. You are charged for using the smart tagging and video fingerprinting features. For more information, see [Billing of video AI](~~188310#section-g7l-s3o-9ng~~).**
 //
-// 	- Regions that support the video fingerprinting feature: **China (Beijing)**, **China (Shanghai)**, and **Singapore**. Regions that support the smart tagging feature: **China (Beijing)*	- and **China (Shanghai)**.
+//		- Regions that support the video fingerprinting feature: **China (Beijing)**, **China (Shanghai)**, and **Singapore**. Regions that support the smart tagging feature: **China (Beijing)*	- and **China (Shanghai)**.
 //
-// 	- You need to enable the video fingerprinting feature or the smart tagging feature before you can call this operation to submit jobs. For more information, see [Overview](https://help.aliyun.com/document_detail/101148.html).
+//		- You need to enable the video fingerprinting feature or the smart tagging feature before you can call this operation to submit jobs. For more information, see [Overview](https://help.aliyun.com/document_detail/101148.html).
 //
-// 	- If this is the first time you use the video fingerprinting feature, you must submit a ticket to apply for using the media fingerprint library for free. Otherwise, the video fingerprinting feature will be affected. For more information about how to submit a ticket, see [Contact us](https://help.aliyun.com/document_detail/464625.html).
+//		- If this is the first time you use the video fingerprinting feature, you must submit a ticket to apply for using the media fingerprint library for free. Otherwise, the video fingerprinting feature will be affected. For more information about how to submit a ticket, see [Contact us](https://help.aliyun.com/document_detail/464625.html).
 //
-// 	- After you submit an AI job, ApsaraVideo VOD asynchronously processes the job. The operation may return a response before the job is complete. You can configure the [Event Notification](https://help.aliyun.com/document_detail/55627.html) feature and set the callback event to **AI Processing Completed**. After you receive the event notification, you can query the execution result of the AI job.
+//		- After you submit an AI job, ApsaraVideo VOD asynchronously processes the job. The operation may return a response before the job is complete. You can configure the [Event Notification](https://help.aliyun.com/document_detail/55627.html) feature and set the callback event to **AI Processing Completed**. After you receive the event notification, you can query the execution result of the AI job.
 //
 // @param request - SubmitAIJobRequest
 //
@@ -59029,15 +59049,15 @@ func (client *Client) SubmitAIJobWithOptions(request *SubmitAIJobRequest, runtim
 //
 // Description:
 //
-//   **Make sure that you understand the billing method and price of ApsaraVideo VOD before you call this operation. You are charged for using the smart tagging and video fingerprinting features. For more information, see [Billing of video AI](~~188310#section-g7l-s3o-9ng~~).**
+//	  **Make sure that you understand the billing method and price of ApsaraVideo VOD before you call this operation. You are charged for using the smart tagging and video fingerprinting features. For more information, see [Billing of video AI](~~188310#section-g7l-s3o-9ng~~).**
 //
-// 	- Regions that support the video fingerprinting feature: **China (Beijing)**, **China (Shanghai)**, and **Singapore**. Regions that support the smart tagging feature: **China (Beijing)*	- and **China (Shanghai)**.
+//		- Regions that support the video fingerprinting feature: **China (Beijing)**, **China (Shanghai)**, and **Singapore**. Regions that support the smart tagging feature: **China (Beijing)*	- and **China (Shanghai)**.
 //
-// 	- You need to enable the video fingerprinting feature or the smart tagging feature before you can call this operation to submit jobs. For more information, see [Overview](https://help.aliyun.com/document_detail/101148.html).
+//		- You need to enable the video fingerprinting feature or the smart tagging feature before you can call this operation to submit jobs. For more information, see [Overview](https://help.aliyun.com/document_detail/101148.html).
 //
-// 	- If this is the first time you use the video fingerprinting feature, you must submit a ticket to apply for using the media fingerprint library for free. Otherwise, the video fingerprinting feature will be affected. For more information about how to submit a ticket, see [Contact us](https://help.aliyun.com/document_detail/464625.html).
+//		- If this is the first time you use the video fingerprinting feature, you must submit a ticket to apply for using the media fingerprint library for free. Otherwise, the video fingerprinting feature will be affected. For more information about how to submit a ticket, see [Contact us](https://help.aliyun.com/document_detail/464625.html).
 //
-// 	- After you submit an AI job, ApsaraVideo VOD asynchronously processes the job. The operation may return a response before the job is complete. You can configure the [Event Notification](https://help.aliyun.com/document_detail/55627.html) feature and set the callback event to **AI Processing Completed**. After you receive the event notification, you can query the execution result of the AI job.
+//		- After you submit an AI job, ApsaraVideo VOD asynchronously processes the job. The operation may return a response before the job is complete. You can configure the [Event Notification](https://help.aliyun.com/document_detail/55627.html) feature and set the callback event to **AI Processing Completed**. After you receive the event notification, you can query the execution result of the AI job.
 //
 // @param request - SubmitAIJobRequest
 //
@@ -59059,13 +59079,13 @@ func (client *Client) SubmitAIJob(request *SubmitAIJobRequest) (_result *SubmitA
 //
 // Description:
 //
-//   **Make sure that you understand the billing methods and price of ApsaraVideo VOD before you call this operation. You are charged for using the automated review feature. For more information about billing, submit a ticket or contact your account manager.**
+//	  **Make sure that you understand the billing methods and price of ApsaraVideo VOD before you call this operation. You are charged for using the automated review feature. For more information about billing, submit a ticket or contact your account manager.**
 //
-// 	- You can call this operation only in the **China (Shanghai)**, **China (Beijing)**, and **Singapore*	- regions.
+//		- You can call this operation only in the **China (Shanghai)**, **China (Beijing)**, and **Singapore*	- regions.
 //
-// 	- For more information, see [Automated review](https://help.aliyun.com/document_detail/101148.html).
+//		- For more information, see [Automated review](https://help.aliyun.com/document_detail/101148.html).
 //
-// 	- After an automated review job is complete, the images generated during the review are stored in the VOD bucket for two weeks free of charge. The images are automatically deleted after two weeks.
+//		- After an automated review job is complete, the images generated during the review are stored in the VOD bucket for two weeks free of charge. The images are automatically deleted after two weeks.
 //
 // @param request - SubmitAIMediaAuditJobRequest
 //
@@ -59138,13 +59158,13 @@ func (client *Client) SubmitAIMediaAuditJobWithOptions(request *SubmitAIMediaAud
 //
 // Description:
 //
-//   **Make sure that you understand the billing methods and price of ApsaraVideo VOD before you call this operation. You are charged for using the automated review feature. For more information about billing, submit a ticket or contact your account manager.**
+//	  **Make sure that you understand the billing methods and price of ApsaraVideo VOD before you call this operation. You are charged for using the automated review feature. For more information about billing, submit a ticket or contact your account manager.**
 //
-// 	- You can call this operation only in the **China (Shanghai)**, **China (Beijing)**, and **Singapore*	- regions.
+//		- You can call this operation only in the **China (Shanghai)**, **China (Beijing)**, and **Singapore*	- regions.
 //
-// 	- For more information, see [Automated review](https://help.aliyun.com/document_detail/101148.html).
+//		- For more information, see [Automated review](https://help.aliyun.com/document_detail/101148.html).
 //
-// 	- After an automated review job is complete, the images generated during the review are stored in the VOD bucket for two weeks free of charge. The images are automatically deleted after two weeks.
+//		- After an automated review job is complete, the images generated during the review are stored in the VOD bucket for two weeks free of charge. The images are automatically deleted after two weeks.
 //
 // @param request - SubmitAIMediaAuditJobRequest
 //
@@ -59166,15 +59186,15 @@ func (client *Client) SubmitAIMediaAuditJob(request *SubmitAIMediaAuditJobReques
 //
 // Description:
 //
-//   **Make sure that you understand the billing methods and price of ApsaraVideo VOD before you call this operation. You are charged for generating and extracting digital watermarks. For more information, see [Billing](~~188310#62b9c940403se~~).**
+//	  **Make sure that you understand the billing methods and price of ApsaraVideo VOD before you call this operation. You are charged for generating and extracting digital watermarks. For more information, see [Billing](~~188310#62b9c940403se~~).**
 //
-// 	- This operation is supported only in the **China (Shanghai)*	- and **China (Beijing)*	- regions.
+//		- This operation is supported only in the **China (Shanghai)*	- and **China (Beijing)*	- regions.
 //
-// 	- Before you submit a digital watermark extraction job, make sure that the following conditions are met:
+//		- Before you submit a digital watermark extraction job, make sure that the following conditions are met:
 //
-//     	- The video from which you want to extract the watermark is uploaded to the ApsaraVideo VOD.
+//	    	- The video from which you want to extract the watermark is uploaded to the ApsaraVideo VOD.
 //
-//     	- The video from which you want to extract the watermark is longer than 6 minutes.
+//	    	- The video from which you want to extract the watermark is longer than 6 minutes.
 //
 // @param request - SubmitDigitalWatermarkExtractJobRequest
 //
@@ -59251,15 +59271,15 @@ func (client *Client) SubmitDigitalWatermarkExtractJobWithOptions(request *Submi
 //
 // Description:
 //
-//   **Make sure that you understand the billing methods and price of ApsaraVideo VOD before you call this operation. You are charged for generating and extracting digital watermarks. For more information, see [Billing](~~188310#62b9c940403se~~).**
+//	  **Make sure that you understand the billing methods and price of ApsaraVideo VOD before you call this operation. You are charged for generating and extracting digital watermarks. For more information, see [Billing](~~188310#62b9c940403se~~).**
 //
-// 	- This operation is supported only in the **China (Shanghai)*	- and **China (Beijing)*	- regions.
+//		- This operation is supported only in the **China (Shanghai)*	- and **China (Beijing)*	- regions.
 //
-// 	- Before you submit a digital watermark extraction job, make sure that the following conditions are met:
+//		- Before you submit a digital watermark extraction job, make sure that the following conditions are met:
 //
-//     	- The video from which you want to extract the watermark is uploaded to the ApsaraVideo VOD.
+//	    	- The video from which you want to extract the watermark is uploaded to the ApsaraVideo VOD.
 //
-//     	- The video from which you want to extract the watermark is longer than 6 minutes.
+//	    	- The video from which you want to extract the watermark is longer than 6 minutes.
 //
 // @param request - SubmitDigitalWatermarkExtractJobRequest
 //
@@ -59281,9 +59301,9 @@ func (client *Client) SubmitDigitalWatermarkExtractJob(request *SubmitDigitalWat
 //
 // Description:
 //
-//   You can capture a part of a video and generate animated images only when the video is in the **Uploaded**, **Transcoding**, **Normal**, **Reviewing**, or **Flagged*	- state.
+//	  You can capture a part of a video and generate animated images only when the video is in the **Uploaded**, **Transcoding**, **Normal**, **Reviewing**, or **Flagged*	- state.
 //
-// 	- The fees for frame animation are included in your video transcoding bill. You are charged based on the output resolution and the duration. For more information, see [Billing of basic services](https://help.aliyun.com/document_detail/188308.html).
+//		- The fees for frame animation are included in your video transcoding bill. You are charged based on the output resolution and the duration. For more information, see [Billing of basic services](https://help.aliyun.com/document_detail/188308.html).
 //
 // ### QPS limits
 //
@@ -59352,9 +59372,9 @@ func (client *Client) SubmitDynamicImageJobWithOptions(request *SubmitDynamicIma
 //
 // Description:
 //
-//   You can capture a part of a video and generate animated images only when the video is in the **Uploaded**, **Transcoding**, **Normal**, **Reviewing**, or **Flagged*	- state.
+//	  You can capture a part of a video and generate animated images only when the video is in the **Uploaded**, **Transcoding**, **Normal**, **Reviewing**, or **Flagged*	- state.
 //
-// 	- The fees for frame animation are included in your video transcoding bill. You are charged based on the output resolution and the duration. For more information, see [Billing of basic services](https://help.aliyun.com/document_detail/188308.html).
+//		- The fees for frame animation are included in your video transcoding bill. You are charged based on the output resolution and the duration. For more information, see [Billing of basic services](https://help.aliyun.com/document_detail/188308.html).
 //
 // ### QPS limits
 //
@@ -59475,9 +59495,9 @@ func (client *Client) SubmitMediaDNADeleteJob(request *SubmitMediaDNADeleteJobRe
 //
 // Description:
 //
-//   During video preprocessing, videos are transcoded to meet the playback requirements of the production studio. Therefore, **you are charged for video preprocessing**. For more information about billing, see [Billing of production studios](https://help.aliyun.com/document_detail/64531.html).
+//	  During video preprocessing, videos are transcoded to meet the playback requirements of the production studio. Therefore, **you are charged for video preprocessing**. For more information about billing, see [Billing of production studios](https://help.aliyun.com/document_detail/64531.html).
 //
-// 	- You can obtain the preprocessing result in the [TranscodeComplete](https://help.aliyun.com/document_detail/55638.html) event notification. If **Preprocess=true*	- is returned in the event notification, the video is transcoded.
+//		- You can obtain the preprocessing result in the [TranscodeComplete](https://help.aliyun.com/document_detail/55638.html) event notification. If **Preprocess=true*	- is returned in the event notification, the video is transcoded.
 //
 // @param request - SubmitPreprocessJobsRequest
 //
@@ -59538,9 +59558,9 @@ func (client *Client) SubmitPreprocessJobsWithOptions(request *SubmitPreprocessJ
 //
 // Description:
 //
-//   During video preprocessing, videos are transcoded to meet the playback requirements of the production studio. Therefore, **you are charged for video preprocessing**. For more information about billing, see [Billing of production studios](https://help.aliyun.com/document_detail/64531.html).
+//	  During video preprocessing, videos are transcoded to meet the playback requirements of the production studio. Therefore, **you are charged for video preprocessing**. For more information about billing, see [Billing of production studios](https://help.aliyun.com/document_detail/64531.html).
 //
-// 	- You can obtain the preprocessing result in the [TranscodeComplete](https://help.aliyun.com/document_detail/55638.html) event notification. If **Preprocess=true*	- is returned in the event notification, the video is transcoded.
+//		- You can obtain the preprocessing result in the [TranscodeComplete](https://help.aliyun.com/document_detail/55638.html) event notification. If **Preprocess=true*	- is returned in the event notification, the video is transcoded.
 //
 // @param request - SubmitPreprocessJobsRequest
 //
@@ -59562,9 +59582,9 @@ func (client *Client) SubmitPreprocessJobs(request *SubmitPreprocessJobsRequest)
 //
 // Description:
 //
-//   Only snapshots in the JPG format are generated.
+//	  Only snapshots in the JPG format are generated.
 //
-// 	- After a snapshot is captured, the [SnapshotComplete](https://help.aliyun.com/document_detail/57337.html) callback is fired and EventType=SnapshotComplete, SubType=SpecifiedTime is returned.
+//		- After a snapshot is captured, the [SnapshotComplete](https://help.aliyun.com/document_detail/57337.html) callback is fired and EventType=SnapshotComplete, SubType=SpecifiedTime is returned.
 //
 // ### [](#qps-)QPS limits
 //
@@ -59667,9 +59687,9 @@ func (client *Client) SubmitSnapshotJobWithOptions(tmpReq *SubmitSnapshotJobRequ
 //
 // Description:
 //
-//   Only snapshots in the JPG format are generated.
+//	  Only snapshots in the JPG format are generated.
 //
-// 	- After a snapshot is captured, the [SnapshotComplete](https://help.aliyun.com/document_detail/57337.html) callback is fired and EventType=SnapshotComplete, SubType=SpecifiedTime is returned.
+//		- After a snapshot is captured, the [SnapshotComplete](https://help.aliyun.com/document_detail/57337.html) callback is fired and EventType=SnapshotComplete, SubType=SpecifiedTime is returned.
 //
 // ### [](#qps-)QPS limits
 //
@@ -59697,13 +59717,13 @@ func (client *Client) SubmitSnapshotJob(request *SubmitSnapshotJobRequest) (_res
 //
 // ### [](#)Usage notes
 //
-// 	- **Make sure that you understand the billing methods and prices of ApsaraVideo VOD before you call this operation. For more information about billing of the transcoding feature, see [Billing of basic services](~~188308#section-ejb-nii-nqa~~).**
+//   - **Make sure that you understand the billing methods and prices of ApsaraVideo VOD before you call this operation. For more information about billing of the transcoding feature, see [Billing of basic services](~~188308#section-ejb-nii-nqa~~).**
 //
-// 	- You can transcode a video only in the Uploaded, Normal, or Reviewing state.
+//   - You can transcode a video only in the Uploaded, Normal, or Reviewing state.
 //
-// 	- You can obtain the transcoding results from the [StreamTranscodeComplete](https://help.aliyun.com/document_detail/55636.html) or [TranscodeComplete](https://help.aliyun.com/document_detail/55638.html) callback.
+//   - You can obtain the transcoding results from the [StreamTranscodeComplete](https://help.aliyun.com/document_detail/55636.html) or [TranscodeComplete](https://help.aliyun.com/document_detail/55638.html) callback.
 //
-// 	- You can call this operation to dynamically override the subtitle URL in an HTTP Live Streaming (HLS) packaging task. If the packaging task does not contain subtitles, we recommend that you specify the ID of the specific packaging template group when you upload the video instead of calling this operation.
+//   - You can call this operation to dynamically override the subtitle URL in an HTTP Live Streaming (HLS) packaging task. If the packaging task does not contain subtitles, we recommend that you specify the ID of the specific packaging template group when you upload the video instead of calling this operation.
 //
 // @param request - SubmitTranscodeJobsRequest
 //
@@ -59790,13 +59810,13 @@ func (client *Client) SubmitTranscodeJobsWithOptions(request *SubmitTranscodeJob
 //
 // ### [](#)Usage notes
 //
-// 	- **Make sure that you understand the billing methods and prices of ApsaraVideo VOD before you call this operation. For more information about billing of the transcoding feature, see [Billing of basic services](~~188308#section-ejb-nii-nqa~~).**
+//   - **Make sure that you understand the billing methods and prices of ApsaraVideo VOD before you call this operation. For more information about billing of the transcoding feature, see [Billing of basic services](~~188308#section-ejb-nii-nqa~~).**
 //
-// 	- You can transcode a video only in the Uploaded, Normal, or Reviewing state.
+//   - You can transcode a video only in the Uploaded, Normal, or Reviewing state.
 //
-// 	- You can obtain the transcoding results from the [StreamTranscodeComplete](https://help.aliyun.com/document_detail/55636.html) or [TranscodeComplete](https://help.aliyun.com/document_detail/55638.html) callback.
+//   - You can obtain the transcoding results from the [StreamTranscodeComplete](https://help.aliyun.com/document_detail/55636.html) or [TranscodeComplete](https://help.aliyun.com/document_detail/55638.html) callback.
 //
-// 	- You can call this operation to dynamically override the subtitle URL in an HTTP Live Streaming (HLS) packaging task. If the packaging task does not contain subtitles, we recommend that you specify the ID of the specific packaging template group when you upload the video instead of calling this operation.
+//   - You can call this operation to dynamically override the subtitle URL in an HTTP Live Streaming (HLS) packaging task. If the packaging task does not contain subtitles, we recommend that you specify the ID of the specific packaging template group when you upload the video instead of calling this operation.
 //
 // @param request - SubmitTranscodeJobsRequest
 //
@@ -59820,7 +59840,7 @@ func (client *Client) SubmitTranscodeJobs(request *SubmitTranscodeJobsRequest) (
 //
 // **Make sure that you understand the billing method and price of ApsaraVideo VOD before you call this operation. When you use workflows to process videos, you may be charged for transcoding, encryption, and automated review. For more information, see [Billing overview](https://help.aliyun.com/document_detail/188307.html).**
 //
-// 	- You can call this operation to initiate a VOD workflow to process media files. For more information, see [Workflows](https://help.aliyun.com/document_detail/115347.html).
+//   - You can call this operation to initiate a VOD workflow to process media files. For more information, see [Workflows](https://help.aliyun.com/document_detail/115347.html).
 //
 // @param request - SubmitWorkflowJobRequest
 //
@@ -59883,7 +59903,7 @@ func (client *Client) SubmitWorkflowJobWithOptions(request *SubmitWorkflowJobReq
 //
 // **Make sure that you understand the billing method and price of ApsaraVideo VOD before you call this operation. When you use workflows to process videos, you may be charged for transcoding, encryption, and automated review. For more information, see [Billing overview](https://help.aliyun.com/document_detail/188307.html).**
 //
-// 	- You can call this operation to initiate a VOD workflow to process media files. For more information, see [Workflows](https://help.aliyun.com/document_detail/115347.html).
+//   - You can call this operation to initiate a VOD workflow to process media files. For more information, see [Workflows](https://help.aliyun.com/document_detail/115347.html).
 //
 // @param request - SubmitWorkflowJobRequest
 //
@@ -59905,9 +59925,9 @@ func (client *Client) SubmitWorkflowJob(request *SubmitWorkflowJobRequest) (_res
 //
 // Description:
 //
-//   Regions that support this operation: **China (Beijing)**, **China (Shanghai)**, and **Singapore**.
+//	  Regions that support this operation: **China (Beijing)**, **China (Shanghai)**, and **Singapore**.
 //
-// 	- After you call the [AddAITemplate](https://help.aliyun.com/document_detail/102930.html) operation to add an AI template, you can call this operation to modify the AI template.
+//		- After you call the [AddAITemplate](https://help.aliyun.com/document_detail/102930.html) operation to add an AI template, you can call this operation to modify the AI template.
 //
 // @param request - UpdateAITemplateRequest
 //
@@ -59972,9 +59992,9 @@ func (client *Client) UpdateAITemplateWithOptions(request *UpdateAITemplateReque
 //
 // Description:
 //
-//   Regions that support this operation: **China (Beijing)**, **China (Shanghai)**, and **Singapore**.
+//	  Regions that support this operation: **China (Beijing)**, **China (Shanghai)**, and **Singapore**.
 //
-// 	- After you call the [AddAITemplate](https://help.aliyun.com/document_detail/102930.html) operation to add an AI template, you can call this operation to modify the AI template.
+//		- After you call the [AddAITemplate](https://help.aliyun.com/document_detail/102930.html) operation to add an AI template, you can call this operation to modify the AI template.
 //
 // @param request - UpdateAITemplateRequest
 //
@@ -60356,9 +60376,9 @@ func (client *Client) UpdateEditingProject(request *UpdateEditingProjectRequest)
 //
 // Description:
 //
-//   You can call this operation to modify information such as the title, tags, description, and category about images based on image IDs. You must pass in the parameters that you want to modify. Otherwise, parameter configurations are not overwritten.
+//	  You can call this operation to modify information such as the title, tags, description, and category about images based on image IDs. You must pass in the parameters that you want to modify. Otherwise, parameter configurations are not overwritten.
 //
-// 	- You can modify the information about up to 20 images at a time.
+//		- You can modify the information about up to 20 images at a time.
 //
 // @param request - UpdateImageInfosRequest
 //
@@ -60415,9 +60435,9 @@ func (client *Client) UpdateImageInfosWithOptions(request *UpdateImageInfosReque
 //
 // Description:
 //
-//   You can call this operation to modify information such as the title, tags, description, and category about images based on image IDs. You must pass in the parameters that you want to modify. Otherwise, parameter configurations are not overwritten.
+//	  You can call this operation to modify information such as the title, tags, description, and category about images based on image IDs. You must pass in the parameters that you want to modify. Otherwise, parameter configurations are not overwritten.
 //
-// 	- You can modify the information about up to 20 images at a time.
+//		- You can modify the information about up to 20 images at a time.
 //
 // @param request - UpdateImageInfosRequest
 //
@@ -60439,13 +60459,13 @@ func (client *Client) UpdateImageInfos(request *UpdateImageInfosRequest) (_resul
 //
 // Description:
 //
-//   This operation is an asynchronous operation. You can call this operation to modify the storage classes of media assets. After the storage class is modified, a callback notification is sent.
+//	  This operation is an asynchronous operation. You can call this operation to modify the storage classes of media assets. After the storage class is modified, a callback notification is sent.
 //
-// 	- If the storage class of the media asset is Archive or Cold Archive and you call this operation to modify the storage class of the media asset, the media asset is automatically restored before the storage class is modified. You do not need to call the RestoreMedia operation to restore the media asset. You must specify the restoration priority for Cold Archive objects. Default configuration: RestoreTier=Standard.
+//		- If the storage class of the media asset is Archive or Cold Archive and you call this operation to modify the storage class of the media asset, the media asset is automatically restored before the storage class is modified. You do not need to call the RestoreMedia operation to restore the media asset. You must specify the restoration priority for Cold Archive objects. Default configuration: RestoreTier=Standard.
 //
-// 	- Media assets whose storage classes are being modified cannot be used or processed.
+//		- Media assets whose storage classes are being modified cannot be used or processed.
 //
-// 	- Non-Standard objects have minimum storage durations. If an object is stored for less than the minimum storage duration, the storage class of the object cannot be changed. The following content describes the minimum storage durations for objects in different storage classes: IA or IA storage for source files: 30 days, Archive or Archive storage for source files: 60 days, Cold Archive or Cold Archive for source files: 180 days.
+//		- Non-Standard objects have minimum storage durations. If an object is stored for less than the minimum storage duration, the storage class of the object cannot be changed. The following content describes the minimum storage durations for objects in different storage classes: IA or IA storage for source files: 30 days, Archive or Archive storage for source files: 60 days, Cold Archive or Cold Archive for source files: 180 days.
 //
 // @param request - UpdateMediaStorageClassRequest
 //
@@ -60518,13 +60538,13 @@ func (client *Client) UpdateMediaStorageClassWithOptions(request *UpdateMediaSto
 //
 // Description:
 //
-//   This operation is an asynchronous operation. You can call this operation to modify the storage classes of media assets. After the storage class is modified, a callback notification is sent.
+//	  This operation is an asynchronous operation. You can call this operation to modify the storage classes of media assets. After the storage class is modified, a callback notification is sent.
 //
-// 	- If the storage class of the media asset is Archive or Cold Archive and you call this operation to modify the storage class of the media asset, the media asset is automatically restored before the storage class is modified. You do not need to call the RestoreMedia operation to restore the media asset. You must specify the restoration priority for Cold Archive objects. Default configuration: RestoreTier=Standard.
+//		- If the storage class of the media asset is Archive or Cold Archive and you call this operation to modify the storage class of the media asset, the media asset is automatically restored before the storage class is modified. You do not need to call the RestoreMedia operation to restore the media asset. You must specify the restoration priority for Cold Archive objects. Default configuration: RestoreTier=Standard.
 //
-// 	- Media assets whose storage classes are being modified cannot be used or processed.
+//		- Media assets whose storage classes are being modified cannot be used or processed.
 //
-// 	- Non-Standard objects have minimum storage durations. If an object is stored for less than the minimum storage duration, the storage class of the object cannot be changed. The following content describes the minimum storage durations for objects in different storage classes: IA or IA storage for source files: 30 days, Archive or Archive storage for source files: 60 days, Cold Archive or Cold Archive for source files: 180 days.
+//		- Non-Standard objects have minimum storage durations. If an object is stored for less than the minimum storage duration, the storage class of the object cannot be changed. The following content describes the minimum storage durations for objects in different storage classes: IA or IA storage for source files: 30 days, Archive or Archive storage for source files: 60 days, Cold Archive or Cold Archive for source files: 180 days.
 //
 // @param request - UpdateMediaStorageClassRequest
 //
@@ -60831,7 +60851,7 @@ func (client *Client) UpdateVideoInfos(request *UpdateVideoInfosRequest) (_resul
 //
 // Description:
 //
-// UpdateVodDomain
+// # UpdateVodDomain
 //
 // @param request - UpdateVodDomainRequest
 //
@@ -60904,7 +60924,7 @@ func (client *Client) UpdateVodDomainWithOptions(request *UpdateVodDomainRequest
 //
 // Description:
 //
-// UpdateVodDomain
+// # UpdateVodDomain
 //
 // @param request - UpdateVodDomainRequest
 //
@@ -61005,9 +61025,9 @@ func (client *Client) UpdateVodTemplate(request *UpdateVodTemplateRequest) (_res
 //
 // Description:
 //
-//   You can modify the name and configurations of the watermark template after you call the [AddWatermark](~~AddWatermark~~) operation to create a watermark template.
+//	  You can modify the name and configurations of the watermark template after you call the [AddWatermark](~~AddWatermark~~) operation to create a watermark template.
 //
-// 	- You cannot call this operation to change the image in an image watermark template.
+//		- You cannot call this operation to change the image in an image watermark template.
 //
 // @param request - UpdateWatermarkRequest
 //
@@ -61072,9 +61092,9 @@ func (client *Client) UpdateWatermarkWithOptions(request *UpdateWatermarkRequest
 //
 // Description:
 //
-//   You can modify the name and configurations of the watermark template after you call the [AddWatermark](~~AddWatermark~~) operation to create a watermark template.
+//	  You can modify the name and configurations of the watermark template after you call the [AddWatermark](~~AddWatermark~~) operation to create a watermark template.
 //
-// 	- You cannot call this operation to change the image in an image watermark template.
+//		- You cannot call this operation to change the image in an image watermark template.
 //
 // @param request - UpdateWatermarkRequest
 //
@@ -61096,17 +61116,17 @@ func (client *Client) UpdateWatermark(request *UpdateWatermarkRequest) (_result 
 //
 // Description:
 //
-//   You can call this operation to upload media files that are not stored on a local server or device and must be uploaded based on URLs over the Internet.
+//	  You can call this operation to upload media files that are not stored on a local server or device and must be uploaded based on URLs over the Internet.
 //
-// 	- The URL-based upload jobs are asynchronous. After you submit a URL-based upload job by calling this operation, it may take hours, even days to complete. If you require high timeliness, we recommend that you use the upload SDK.
+//		- The URL-based upload jobs are asynchronous. After you submit a URL-based upload job by calling this operation, it may take hours, even days to complete. If you require high timeliness, we recommend that you use the upload SDK.
 //
-// 	- If you configure callbacks, you can receive an [UploadByURLComplete](https://help.aliyun.com/document_detail/86326.html) event notification after the media file is uploaded. You can query the upload status by calling the [GetURLUploadInfos](https://help.aliyun.com/document_detail/106830.html) operation.
+//		- If you configure callbacks, you can receive an [UploadByURLComplete](https://help.aliyun.com/document_detail/86326.html) event notification after the media file is uploaded. You can query the upload status by calling the [GetURLUploadInfos](https://help.aliyun.com/document_detail/106830.html) operation.
 //
-// 	- After you submit an upload job, the job is asynchronously processed on the cloud. All URL-based upload jobs that are submitted in each region are queued. The waiting time for the upload job depends on the number of queued jobs. After the upload job is complete, you can associate the playback URL included in the callback with the media ID.
+//		- After you submit an upload job, the job is asynchronously processed on the cloud. All URL-based upload jobs that are submitted in each region are queued. The waiting time for the upload job depends on the number of queued jobs. After the upload job is complete, you can associate the playback URL included in the callback with the media ID.
 //
-// 	- You can call this operation only in the **China (Shanghai)*	- and **Singapore*	- regions.
+//		- You can call this operation only in the **China (Shanghai)*	- and **Singapore*	- regions.
 //
-// 	- Every time you submit a URL-based upload job, a new media ID is generated in ApsaraVideo VOD.
+//		- Every time you submit a URL-based upload job, a new media ID is generated in ApsaraVideo VOD.
 //
 // @param request - UploadMediaByURLRequest
 //
@@ -61191,17 +61211,17 @@ func (client *Client) UploadMediaByURLWithOptions(request *UploadMediaByURLReque
 //
 // Description:
 //
-//   You can call this operation to upload media files that are not stored on a local server or device and must be uploaded based on URLs over the Internet.
+//	  You can call this operation to upload media files that are not stored on a local server or device and must be uploaded based on URLs over the Internet.
 //
-// 	- The URL-based upload jobs are asynchronous. After you submit a URL-based upload job by calling this operation, it may take hours, even days to complete. If you require high timeliness, we recommend that you use the upload SDK.
+//		- The URL-based upload jobs are asynchronous. After you submit a URL-based upload job by calling this operation, it may take hours, even days to complete. If you require high timeliness, we recommend that you use the upload SDK.
 //
-// 	- If you configure callbacks, you can receive an [UploadByURLComplete](https://help.aliyun.com/document_detail/86326.html) event notification after the media file is uploaded. You can query the upload status by calling the [GetURLUploadInfos](https://help.aliyun.com/document_detail/106830.html) operation.
+//		- If you configure callbacks, you can receive an [UploadByURLComplete](https://help.aliyun.com/document_detail/86326.html) event notification after the media file is uploaded. You can query the upload status by calling the [GetURLUploadInfos](https://help.aliyun.com/document_detail/106830.html) operation.
 //
-// 	- After you submit an upload job, the job is asynchronously processed on the cloud. All URL-based upload jobs that are submitted in each region are queued. The waiting time for the upload job depends on the number of queued jobs. After the upload job is complete, you can associate the playback URL included in the callback with the media ID.
+//		- After you submit an upload job, the job is asynchronously processed on the cloud. All URL-based upload jobs that are submitted in each region are queued. The waiting time for the upload job depends on the number of queued jobs. After the upload job is complete, you can associate the playback URL included in the callback with the media ID.
 //
-// 	- You can call this operation only in the **China (Shanghai)*	- and **Singapore*	- regions.
+//		- You can call this operation only in the **China (Shanghai)*	- and **Singapore*	- regions.
 //
-// 	- Every time you submit a URL-based upload job, a new media ID is generated in ApsaraVideo VOD.
+//		- Every time you submit a URL-based upload job, a new media ID is generated in ApsaraVideo VOD.
 //
 // @param request - UploadMediaByURLRequest
 //
@@ -61223,13 +61243,13 @@ func (client *Client) UploadMediaByURL(request *UploadMediaByURLRequest) (_resul
 //
 // Description:
 //
-//   **Make sure that you understand the billing method and price of ApsaraVideo VOD before you call this operation. You are charged storage fees after you upload media files to ApsaraVideo VOD. For more information, see [Billing of media asset storage](~~188308#section_e97_xrp_mzz~~). If you have activated the acceleration service, you are charged acceleration fees when you upload media files to ApsaraVideo VOD. For more information, see [Billing of acceleration traffic](~~188310#section_sta_zm2_tsv~~).**
+//	  **Make sure that you understand the billing method and price of ApsaraVideo VOD before you call this operation. You are charged storage fees after you upload media files to ApsaraVideo VOD. For more information, see [Billing of media asset storage](~~188308#section_e97_xrp_mzz~~). If you have activated the acceleration service, you are charged acceleration fees when you upload media files to ApsaraVideo VOD. For more information, see [Billing of acceleration traffic](~~188310#section_sta_zm2_tsv~~).**
 //
-// 	- This operation is available only in the **China (Shanghai)*	- and **Singapore*	- regions.
+//		- This operation is available only in the **China (Shanghai)*	- and **Singapore*	- regions.
 //
-// 	- You can call this operation to upload transcoded streams to ApsaraVideo VOD from external storage. The following HDR types of transcoded streams are supported: HDR, HDR 10, HLG, Dolby Vision, HDR Vivid, and SDR+.
+//		- You can call this operation to upload transcoded streams to ApsaraVideo VOD from external storage. The following HDR types of transcoded streams are supported: HDR, HDR 10, HLG, Dolby Vision, HDR Vivid, and SDR+.
 //
-// 	- You can call the [GetURLUploadInfos](https://help.aliyun.com/document_detail/106830.html) operation to query the upload status. After the upload is complete, the callback of the [UploadByURLComplete](https://help.aliyun.com/document_detail/376427.html) event is returned.
+//		- You can call the [GetURLUploadInfos](https://help.aliyun.com/document_detail/106830.html) operation to query the upload status. After the upload is complete, the callback of the [UploadByURLComplete](https://help.aliyun.com/document_detail/376427.html) event is returned.
 //
 // @param request - UploadStreamByURLRequest
 //
@@ -61310,13 +61330,13 @@ func (client *Client) UploadStreamByURLWithOptions(request *UploadStreamByURLReq
 //
 // Description:
 //
-//   **Make sure that you understand the billing method and price of ApsaraVideo VOD before you call this operation. You are charged storage fees after you upload media files to ApsaraVideo VOD. For more information, see [Billing of media asset storage](~~188308#section_e97_xrp_mzz~~). If you have activated the acceleration service, you are charged acceleration fees when you upload media files to ApsaraVideo VOD. For more information, see [Billing of acceleration traffic](~~188310#section_sta_zm2_tsv~~).**
+//	  **Make sure that you understand the billing method and price of ApsaraVideo VOD before you call this operation. You are charged storage fees after you upload media files to ApsaraVideo VOD. For more information, see [Billing of media asset storage](~~188308#section_e97_xrp_mzz~~). If you have activated the acceleration service, you are charged acceleration fees when you upload media files to ApsaraVideo VOD. For more information, see [Billing of acceleration traffic](~~188310#section_sta_zm2_tsv~~).**
 //
-// 	- This operation is available only in the **China (Shanghai)*	- and **Singapore*	- regions.
+//		- This operation is available only in the **China (Shanghai)*	- and **Singapore*	- regions.
 //
-// 	- You can call this operation to upload transcoded streams to ApsaraVideo VOD from external storage. The following HDR types of transcoded streams are supported: HDR, HDR 10, HLG, Dolby Vision, HDR Vivid, and SDR+.
+//		- You can call this operation to upload transcoded streams to ApsaraVideo VOD from external storage. The following HDR types of transcoded streams are supported: HDR, HDR 10, HLG, Dolby Vision, HDR Vivid, and SDR+.
 //
-// 	- You can call the [GetURLUploadInfos](https://help.aliyun.com/document_detail/106830.html) operation to query the upload status. After the upload is complete, the callback of the [UploadByURLComplete](https://help.aliyun.com/document_detail/376427.html) event is returned.
+//		- You can call the [GetURLUploadInfos](https://help.aliyun.com/document_detail/106830.html) operation to query the upload status. After the upload is complete, the callback of the [UploadByURLComplete](https://help.aliyun.com/document_detail/376427.html) event is returned.
 //
 // @param request - UploadStreamByURLRequest
 //
