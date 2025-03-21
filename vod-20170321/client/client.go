@@ -21051,6 +21051,135 @@ func (s *GetCategoriesResponse) SetBody(v *GetCategoriesResponseBody) *GetCatego
 	return s
 }
 
+type GetDailyPlayRegionStatisRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2025-03-20
+	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing
+	MediaRegion *string `json:"MediaRegion,omitempty" xml:"MediaRegion,omitempty"`
+}
+
+func (s GetDailyPlayRegionStatisRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDailyPlayRegionStatisRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDailyPlayRegionStatisRequest) SetDate(v string) *GetDailyPlayRegionStatisRequest {
+	s.Date = &v
+	return s
+}
+
+func (s *GetDailyPlayRegionStatisRequest) SetMediaRegion(v string) *GetDailyPlayRegionStatisRequest {
+	s.MediaRegion = &v
+	return s
+}
+
+type GetDailyPlayRegionStatisResponseBody struct {
+	DailyPlayRegionStatisList []*GetDailyPlayRegionStatisResponseBodyDailyPlayRegionStatisList `json:"DailyPlayRegionStatisList,omitempty" xml:"DailyPlayRegionStatisList,omitempty" type:"Repeated"`
+	EmptyDates                []*string                                                        `json:"EmptyDates,omitempty" xml:"EmptyDates,omitempty" type:"Repeated"`
+	FailDates                 []*string                                                        `json:"FailDates,omitempty" xml:"FailDates,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 67720502-CDDB-3F1C-8A91-12258*******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetDailyPlayRegionStatisResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDailyPlayRegionStatisResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDailyPlayRegionStatisResponseBody) SetDailyPlayRegionStatisList(v []*GetDailyPlayRegionStatisResponseBodyDailyPlayRegionStatisList) *GetDailyPlayRegionStatisResponseBody {
+	s.DailyPlayRegionStatisList = v
+	return s
+}
+
+func (s *GetDailyPlayRegionStatisResponseBody) SetEmptyDates(v []*string) *GetDailyPlayRegionStatisResponseBody {
+	s.EmptyDates = v
+	return s
+}
+
+func (s *GetDailyPlayRegionStatisResponseBody) SetFailDates(v []*string) *GetDailyPlayRegionStatisResponseBody {
+	s.FailDates = v
+	return s
+}
+
+func (s *GetDailyPlayRegionStatisResponseBody) SetRequestId(v string) *GetDailyPlayRegionStatisResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetDailyPlayRegionStatisResponseBodyDailyPlayRegionStatisList struct {
+	// example:
+	//
+	// 2025-03-20
+	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
+	// example:
+	//
+	// https://outin-e70266d4ed*******0163e1403e7.oss-cn-shanghai.aliyuncs.com/dataexport/play/cn_hangzhou_20250320_video_traffic.csv?*******
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+}
+
+func (s GetDailyPlayRegionStatisResponseBodyDailyPlayRegionStatisList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDailyPlayRegionStatisResponseBodyDailyPlayRegionStatisList) GoString() string {
+	return s.String()
+}
+
+func (s *GetDailyPlayRegionStatisResponseBodyDailyPlayRegionStatisList) SetDate(v string) *GetDailyPlayRegionStatisResponseBodyDailyPlayRegionStatisList {
+	s.Date = &v
+	return s
+}
+
+func (s *GetDailyPlayRegionStatisResponseBodyDailyPlayRegionStatisList) SetFileUrl(v string) *GetDailyPlayRegionStatisResponseBodyDailyPlayRegionStatisList {
+	s.FileUrl = &v
+	return s
+}
+
+type GetDailyPlayRegionStatisResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDailyPlayRegionStatisResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetDailyPlayRegionStatisResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDailyPlayRegionStatisResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDailyPlayRegionStatisResponse) SetHeaders(v map[string]*string) *GetDailyPlayRegionStatisResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDailyPlayRegionStatisResponse) SetStatusCode(v int32) *GetDailyPlayRegionStatisResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDailyPlayRegionStatisResponse) SetBody(v *GetDailyPlayRegionStatisResponseBody) *GetDailyPlayRegionStatisResponse {
+	s.Body = v
+	return s
+}
+
 type GetDefaultAITemplateRequest struct {
 	// The type of the AI template. Set the value to **AIMediaAudit**, which specifies the automated review.
 	//
@@ -53125,6 +53254,81 @@ func (client *Client) GetCategories(request *GetCategoriesRequest) (_result *Get
 	runtime := &util.RuntimeOptions{}
 	_result = &GetCategoriesResponse{}
 	_body, _err := client.GetCategoriesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 支持区域化媒资ID级别播放数据查询
+//
+// @param request - GetDailyPlayRegionStatisRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDailyPlayRegionStatisResponse
+func (client *Client) GetDailyPlayRegionStatisWithOptions(request *GetDailyPlayRegionStatisRequest, runtime *util.RuntimeOptions) (_result *GetDailyPlayRegionStatisResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Date)) {
+		query["Date"] = request.Date
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaRegion)) {
+		query["MediaRegion"] = request.MediaRegion
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDailyPlayRegionStatis"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetDailyPlayRegionStatisResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetDailyPlayRegionStatisResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 支持区域化媒资ID级别播放数据查询
+//
+// @param request - GetDailyPlayRegionStatisRequest
+//
+// @return GetDailyPlayRegionStatisResponse
+func (client *Client) GetDailyPlayRegionStatis(request *GetDailyPlayRegionStatisRequest) (_result *GetDailyPlayRegionStatisResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDailyPlayRegionStatisResponse{}
+	_body, _err := client.GetDailyPlayRegionStatisWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
