@@ -105,7 +105,7 @@ func (s *ApproveOperationResponse) SetBody(v *ApproveOperationResponseBody) *App
 }
 
 type ChangeResourceGroupRequest struct {
-	// Target Resource Group
+	// System-defined parameter. Value: **ChangeResourceGroup**.
 	//
 	// This parameter is required.
 	//
@@ -113,7 +113,7 @@ type ChangeResourceGroupRequest struct {
 	//
 	// rg-aekzyqdwnfabx6q
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Resource ID
+	// $.parameters[1].schema.example
 	//
 	// This parameter is required.
 	//
@@ -121,7 +121,7 @@ type ChangeResourceGroupRequest struct {
 	//
 	// i118099391667548921125
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// Region ID
+	// Resource Group Change
 	//
 	// This parameter is required.
 	//
@@ -129,7 +129,12 @@ type ChangeResourceGroupRequest struct {
 	//
 	// cn-wulanchabu
 	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
-	ResourceType     *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// $.parameters[3].schema.enumValueTitles
+	//
+	// example:
+	//
+	// Node
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s ChangeResourceGroupRequest) String() string {
@@ -161,7 +166,7 @@ func (s *ChangeResourceGroupRequest) SetResourceType(v string) *ChangeResourceGr
 }
 
 type ChangeResourceGroupResponseBody struct {
-	// ID of the request
+	// Id of the request
 	//
 	// example:
 	//
@@ -2345,6 +2350,206 @@ func (s *CreateNetTestTaskResponse) SetBody(v *CreateNetTestTaskResponseBody) *C
 	return s
 }
 
+type CreateNodeGroupRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// i118191731740041623425
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	NodeGroup *CreateNodeGroupRequestNodeGroup `json:"NodeGroup,omitempty" xml:"NodeGroup,omitempty" type:"Struct"`
+	NodeUnit  map[string]interface{}           `json:"NodeUnit,omitempty" xml:"NodeUnit,omitempty"`
+}
+
+func (s CreateNodeGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateNodeGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateNodeGroupRequest) SetClusterId(v string) *CreateNodeGroupRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *CreateNodeGroupRequest) SetNodeGroup(v *CreateNodeGroupRequestNodeGroup) *CreateNodeGroupRequest {
+	s.NodeGroup = v
+	return s
+}
+
+func (s *CreateNodeGroupRequest) SetNodeUnit(v map[string]interface{}) *CreateNodeGroupRequest {
+	s.NodeUnit = v
+	return s
+}
+
+type CreateNodeGroupRequestNodeGroup struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-wulanchabu-b
+	Az *string `json:"Az,omitempty" xml:"Az,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// i191887641687336652616
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// mock-machine-type3
+	MachineType          *string `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
+	NodeGroupDescription *string `json:"NodeGroupDescription,omitempty" xml:"NodeGroupDescription,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PAI-LINGJUN
+	NodeGroupName *string `json:"NodeGroupName,omitempty" xml:"NodeGroupName,omitempty"`
+}
+
+func (s CreateNodeGroupRequestNodeGroup) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateNodeGroupRequestNodeGroup) GoString() string {
+	return s.String()
+}
+
+func (s *CreateNodeGroupRequestNodeGroup) SetAz(v string) *CreateNodeGroupRequestNodeGroup {
+	s.Az = &v
+	return s
+}
+
+func (s *CreateNodeGroupRequestNodeGroup) SetImageId(v string) *CreateNodeGroupRequestNodeGroup {
+	s.ImageId = &v
+	return s
+}
+
+func (s *CreateNodeGroupRequestNodeGroup) SetMachineType(v string) *CreateNodeGroupRequestNodeGroup {
+	s.MachineType = &v
+	return s
+}
+
+func (s *CreateNodeGroupRequestNodeGroup) SetNodeGroupDescription(v string) *CreateNodeGroupRequestNodeGroup {
+	s.NodeGroupDescription = &v
+	return s
+}
+
+func (s *CreateNodeGroupRequestNodeGroup) SetNodeGroupName(v string) *CreateNodeGroupRequestNodeGroup {
+	s.NodeGroupName = &v
+	return s
+}
+
+type CreateNodeGroupShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// i118191731740041623425
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	NodeGroupShrink *string `json:"NodeGroup,omitempty" xml:"NodeGroup,omitempty"`
+	NodeUnitShrink  *string `json:"NodeUnit,omitempty" xml:"NodeUnit,omitempty"`
+}
+
+func (s CreateNodeGroupShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateNodeGroupShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateNodeGroupShrinkRequest) SetClusterId(v string) *CreateNodeGroupShrinkRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *CreateNodeGroupShrinkRequest) SetNodeGroupShrink(v string) *CreateNodeGroupShrinkRequest {
+	s.NodeGroupShrink = &v
+	return s
+}
+
+func (s *CreateNodeGroupShrinkRequest) SetNodeUnitShrink(v string) *CreateNodeGroupShrinkRequest {
+	s.NodeUnitShrink = &v
+	return s
+}
+
+type CreateNodeGroupResponseBody struct {
+	// example:
+	//
+	// ng-ec3c96ff0aa4c60d
+	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+	// example:
+	//
+	// emr-default
+	NodeGroupName *string `json:"NodeGroupName,omitempty" xml:"NodeGroupName,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 887FA855-89F4-5DB3-B305-C5879EC480E6
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateNodeGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateNodeGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateNodeGroupResponseBody) SetNodeGroupId(v string) *CreateNodeGroupResponseBody {
+	s.NodeGroupId = &v
+	return s
+}
+
+func (s *CreateNodeGroupResponseBody) SetNodeGroupName(v string) *CreateNodeGroupResponseBody {
+	s.NodeGroupName = &v
+	return s
+}
+
+func (s *CreateNodeGroupResponseBody) SetRequestId(v string) *CreateNodeGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateNodeGroupResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateNodeGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateNodeGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateNodeGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateNodeGroupResponse) SetHeaders(v map[string]*string) *CreateNodeGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateNodeGroupResponse) SetStatusCode(v int32) *CreateNodeGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateNodeGroupResponse) SetBody(v *CreateNodeGroupResponseBody) *CreateNodeGroupResponse {
+	s.Body = v
+	return s
+}
+
 type CreateSessionRequest struct {
 	// Instance ID.
 	//
@@ -2559,6 +2764,86 @@ func (s *DeleteClusterResponse) SetStatusCode(v int32) *DeleteClusterResponse {
 }
 
 func (s *DeleteClusterResponse) SetBody(v *DeleteClusterResponseBody) *DeleteClusterResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteNodeGroupRequest struct {
+	// example:
+	//
+	// i114444141733395242745
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// i121824791737080429819
+	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+}
+
+func (s DeleteNodeGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteNodeGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteNodeGroupRequest) SetClusterId(v string) *DeleteNodeGroupRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DeleteNodeGroupRequest) SetNodeGroupId(v string) *DeleteNodeGroupRequest {
+	s.NodeGroupId = &v
+	return s
+}
+
+type DeleteNodeGroupResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 887FA855-89F4-5DB3-B305-C5879EC480E6
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteNodeGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteNodeGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteNodeGroupResponseBody) SetRequestId(v string) *DeleteNodeGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteNodeGroupResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteNodeGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteNodeGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteNodeGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteNodeGroupResponse) SetHeaders(v map[string]*string) *DeleteNodeGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteNodeGroupResponse) SetStatusCode(v int32) *DeleteNodeGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteNodeGroupResponse) SetBody(v *DeleteNodeGroupResponseBody) *DeleteNodeGroupResponse {
 	s.Body = v
 	return s
 }
@@ -2868,6 +3153,141 @@ func (s *DescribeClusterResponse) SetStatusCode(v int32) *DescribeClusterRespons
 }
 
 func (s *DescribeClusterResponse) SetBody(v *DescribeClusterResponseBody) *DescribeClusterResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDiagnosticResultRequest struct {
+	// example:
+	//
+	// diag-i151942361720577788844
+	DiagnosticId *string `json:"DiagnosticId,omitempty" xml:"DiagnosticId,omitempty"`
+}
+
+func (s DescribeDiagnosticResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDiagnosticResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDiagnosticResultRequest) SetDiagnosticId(v string) *DescribeDiagnosticResultRequest {
+	s.DiagnosticId = &v
+	return s
+}
+
+type DescribeDiagnosticResultResponseBody struct {
+	// example:
+	//
+	// i118913031696573280136
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// 2024-06-15T10:17:56
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// example:
+	//
+	// diag-i155363241720059671316
+	DiagnosticId      *string       `json:"DiagnosticId,omitempty" xml:"DiagnosticId,omitempty"`
+	DiagnosticResults []interface{} `json:"DiagnosticResults,omitempty" xml:"DiagnosticResults,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Fault
+	DiagnosticState *string `json:"DiagnosticState,omitempty" xml:"DiagnosticState,omitempty"`
+	// example:
+	//
+	// CheckByAiJobLogs
+	DiagnosticType *string `json:"DiagnosticType,omitempty" xml:"DiagnosticType,omitempty"`
+	// example:
+	//
+	// 2024-06-11T10:00:30
+	EndTime *string   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	NodeIds []*string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 8F065DDD-6996-5973-9691-9EC57BD0072E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeDiagnosticResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDiagnosticResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDiagnosticResultResponseBody) SetClusterId(v string) *DescribeDiagnosticResultResponseBody {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeDiagnosticResultResponseBody) SetCreatedTime(v string) *DescribeDiagnosticResultResponseBody {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *DescribeDiagnosticResultResponseBody) SetDiagnosticId(v string) *DescribeDiagnosticResultResponseBody {
+	s.DiagnosticId = &v
+	return s
+}
+
+func (s *DescribeDiagnosticResultResponseBody) SetDiagnosticResults(v []interface{}) *DescribeDiagnosticResultResponseBody {
+	s.DiagnosticResults = v
+	return s
+}
+
+func (s *DescribeDiagnosticResultResponseBody) SetDiagnosticState(v string) *DescribeDiagnosticResultResponseBody {
+	s.DiagnosticState = &v
+	return s
+}
+
+func (s *DescribeDiagnosticResultResponseBody) SetDiagnosticType(v string) *DescribeDiagnosticResultResponseBody {
+	s.DiagnosticType = &v
+	return s
+}
+
+func (s *DescribeDiagnosticResultResponseBody) SetEndTime(v string) *DescribeDiagnosticResultResponseBody {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeDiagnosticResultResponseBody) SetNodeIds(v []*string) *DescribeDiagnosticResultResponseBody {
+	s.NodeIds = v
+	return s
+}
+
+func (s *DescribeDiagnosticResultResponseBody) SetRequestId(v string) *DescribeDiagnosticResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeDiagnosticResultResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDiagnosticResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeDiagnosticResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDiagnosticResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDiagnosticResultResponse) SetHeaders(v map[string]*string) *DescribeDiagnosticResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDiagnosticResultResponse) SetStatusCode(v int32) *DescribeDiagnosticResultResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDiagnosticResultResponse) SetBody(v *DescribeDiagnosticResultResponseBody) *DescribeDiagnosticResultResponse {
 	s.Body = v
 	return s
 }
@@ -6215,7 +6635,9 @@ type ListClusterNodesResponseBodyNodes struct {
 	// example:
 	//
 	// sn_tOuUk
-	Sn *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
+	Sn        *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId     *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// Zone ID
 	//
 	// example:
@@ -6289,6 +6711,16 @@ func (s *ListClusterNodesResponseBodyNodes) SetOperatingState(v string) *ListClu
 
 func (s *ListClusterNodesResponseBodyNodes) SetSn(v string) *ListClusterNodesResponseBodyNodes {
 	s.Sn = &v
+	return s
+}
+
+func (s *ListClusterNodesResponseBodyNodes) SetVSwitchId(v string) *ListClusterNodesResponseBodyNodes {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *ListClusterNodesResponseBodyNodes) SetVpcId(v string) *ListClusterNodesResponseBodyNodes {
+	s.VpcId = &v
 	return s
 }
 
@@ -11122,6 +11554,86 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 	return s
 }
 
+type UpdateNodeGroupRequest struct {
+	// example:
+	//
+	// test-update
+	NewNodeGroupName *string `json:"NewNodeGroupName,omitempty" xml:"NewNodeGroupName,omitempty"`
+	// example:
+	//
+	// i120021051733814190732
+	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+}
+
+func (s UpdateNodeGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateNodeGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateNodeGroupRequest) SetNewNodeGroupName(v string) *UpdateNodeGroupRequest {
+	s.NewNodeGroupName = &v
+	return s
+}
+
+func (s *UpdateNodeGroupRequest) SetNodeGroupId(v string) *UpdateNodeGroupRequest {
+	s.NodeGroupId = &v
+	return s
+}
+
+type UpdateNodeGroupResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 8F065DDD-6996-5973-9691-9EC57BD0072E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateNodeGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateNodeGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateNodeGroupResponseBody) SetRequestId(v string) *UpdateNodeGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateNodeGroupResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateNodeGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateNodeGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateNodeGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateNodeGroupResponse) SetHeaders(v map[string]*string) *UpdateNodeGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateNodeGroupResponse) SetStatusCode(v int32) *UpdateNodeGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateNodeGroupResponse) SetBody(v *UpdateNodeGroupResponseBody) *UpdateNodeGroupResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -11171,7 +11683,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Approve Operation
+// # Approve Operation
 //
 // @param request - ApproveOperationRequest
 //
@@ -11228,7 +11740,7 @@ func (client *Client) ApproveOperationWithOptions(request *ApproveOperationReque
 
 // Summary:
 //
-// Approve Operation
+// # Approve Operation
 //
 // @param request - ApproveOperationRequest
 //
@@ -11246,7 +11758,7 @@ func (client *Client) ApproveOperation(request *ApproveOperationRequest) (_resul
 
 // Summary:
 //
-// Resource Group Change
+// # Target Resource Group
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -11311,7 +11823,7 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 
 // Summary:
 //
-// Resource Group Change
+// # Target Resource Group
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -11329,11 +11841,11 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 
 // Summary:
 //
-// Disconnect Connection
+// # Disconnect Connection
 //
 // Description:
 //
-// An interface for creating a session, returning the front-end EndPoint, and initiating a periodic task to track the session status
+// # An interface for creating a session, returning the front-end EndPoint, and initiating a periodic task to track the session status
 //
 // @param request - CloseSessionRequest
 //
@@ -11390,11 +11902,11 @@ func (client *Client) CloseSessionWithOptions(request *CloseSessionRequest, runt
 
 // Summary:
 //
-// Disconnect Connection
+// # Disconnect Connection
 //
 // Description:
 //
-// An interface for creating a session, returning the front-end EndPoint, and initiating a periodic task to track the session status
+// # An interface for creating a session, returning the front-end EndPoint, and initiating a periodic task to track the session status
 //
 // @param request - CloseSessionRequest
 //
@@ -11412,7 +11924,7 @@ func (client *Client) CloseSession(request *CloseSessionRequest) (_result *Close
 
 // Summary:
 //
-// Create a large-scale computing cluster
+// # Create a large-scale computing cluster
 //
 // @param tmpReq - CreateClusterRequest
 //
@@ -11529,7 +12041,7 @@ func (client *Client) CreateClusterWithOptions(tmpReq *CreateClusterRequest, run
 
 // Summary:
 //
-// Create a large-scale computing cluster
+// # Create a large-scale computing cluster
 //
 // @param request - CreateClusterRequest
 //
@@ -11547,7 +12059,7 @@ func (client *Client) CreateCluster(request *CreateClusterRequest) (_result *Cre
 
 // Summary:
 //
-// Diagnostic Task Creation Interface
+// # Diagnostic Task Creation Interface
 //
 // @param tmpReq - CreateDiagnosticTaskRequest
 //
@@ -11622,7 +12134,7 @@ func (client *Client) CreateDiagnosticTaskWithOptions(tmpReq *CreateDiagnosticTa
 
 // Summary:
 //
-// Diagnostic Task Creation Interface
+// # Diagnostic Task Creation Interface
 //
 // @param request - CreateDiagnosticTaskRequest
 //
@@ -11640,7 +12152,7 @@ func (client *Client) CreateDiagnosticTask(request *CreateDiagnosticTaskRequest)
 
 // Summary:
 //
-// Create Network Test Task
+// # Create Network Test Task
 //
 // Description:
 //
@@ -11739,7 +12251,7 @@ func (client *Client) CreateNetTestTaskWithOptions(tmpReq *CreateNetTestTaskRequ
 
 // Summary:
 //
-// Create Network Test Task
+// # Create Network Test Task
 //
 // Description:
 //
@@ -11761,7 +12273,96 @@ func (client *Client) CreateNetTestTask(request *CreateNetTestTaskRequest) (_res
 
 // Summary:
 //
-// Create Web Terminal Session
+// 创建集群下的节点分组
+//
+// @param tmpReq - CreateNodeGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateNodeGroupResponse
+func (client *Client) CreateNodeGroupWithOptions(tmpReq *CreateNodeGroupRequest, runtime *util.RuntimeOptions) (_result *CreateNodeGroupResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateNodeGroupShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.NodeGroup)) {
+		request.NodeGroupShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.NodeGroup, tea.String("NodeGroup"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.NodeUnit)) {
+		request.NodeUnitShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.NodeUnit, tea.String("NodeUnit"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		body["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeGroupShrink)) {
+		body["NodeGroup"] = request.NodeGroupShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeUnitShrink)) {
+		body["NodeUnit"] = request.NodeUnitShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateNodeGroup"),
+		Version:     tea.String("2022-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateNodeGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateNodeGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 创建集群下的节点分组
+//
+// @param request - CreateNodeGroupRequest
+//
+// @return CreateNodeGroupResponse
+func (client *Client) CreateNodeGroup(request *CreateNodeGroupRequest) (_result *CreateNodeGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateNodeGroupResponse{}
+	_body, _err := client.CreateNodeGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # Create Web Terminal Session
 //
 // Description:
 //
@@ -11826,7 +12427,7 @@ func (client *Client) CreateSessionWithOptions(request *CreateSessionRequest, ru
 
 // Summary:
 //
-// Create Web Terminal Session
+// # Create Web Terminal Session
 //
 // Description:
 //
@@ -11848,7 +12449,7 @@ func (client *Client) CreateSession(request *CreateSessionRequest) (_result *Cre
 
 // Summary:
 //
-// Delete cluster instance
+// # Delete cluster instance
 //
 // @param request - DeleteClusterRequest
 //
@@ -11901,7 +12502,7 @@ func (client *Client) DeleteClusterWithOptions(request *DeleteClusterRequest, ru
 
 // Summary:
 //
-// Delete cluster instance
+// # Delete cluster instance
 //
 // @param request - DeleteClusterRequest
 //
@@ -11919,7 +12520,82 @@ func (client *Client) DeleteCluster(request *DeleteClusterRequest) (_result *Del
 
 // Summary:
 //
-// Cluster Details
+// 删除节点分组
+//
+// @param request - DeleteNodeGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteNodeGroupResponse
+func (client *Client) DeleteNodeGroupWithOptions(request *DeleteNodeGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteNodeGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		body["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeGroupId)) {
+		body["NodeGroupId"] = request.NodeGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteNodeGroup"),
+		Version:     tea.String("2022-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteNodeGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteNodeGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 删除节点分组
+//
+// @param request - DeleteNodeGroupRequest
+//
+// @return DeleteNodeGroupResponse
+func (client *Client) DeleteNodeGroup(request *DeleteNodeGroupRequest) (_result *DeleteNodeGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteNodeGroupResponse{}
+	_body, _err := client.DeleteNodeGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # Cluster Details
 //
 // @param request - DescribeClusterRequest
 //
@@ -11972,7 +12648,7 @@ func (client *Client) DescribeClusterWithOptions(request *DescribeClusterRequest
 
 // Summary:
 //
-// Cluster Details
+// # Cluster Details
 //
 // @param request - DescribeClusterRequest
 //
@@ -11990,7 +12666,78 @@ func (client *Client) DescribeCluster(request *DescribeClusterRequest) (_result 
 
 // Summary:
 //
-// Query the list and status of operations assistant command executions
+// 诊断任务查询接口
+//
+// @param request - DescribeDiagnosticResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDiagnosticResultResponse
+func (client *Client) DescribeDiagnosticResultWithOptions(request *DescribeDiagnosticResultRequest, runtime *util.RuntimeOptions) (_result *DescribeDiagnosticResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DiagnosticId)) {
+		body["DiagnosticId"] = request.DiagnosticId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDiagnosticResult"),
+		Version:     tea.String("2022-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDiagnosticResultResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDiagnosticResultResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 诊断任务查询接口
+//
+// @param request - DescribeDiagnosticResultRequest
+//
+// @return DescribeDiagnosticResultResponse
+func (client *Client) DescribeDiagnosticResult(request *DescribeDiagnosticResultRequest) (_result *DescribeDiagnosticResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDiagnosticResultResponse{}
+	_body, _err := client.DescribeDiagnosticResultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # Query the list and status of operations assistant command executions
 //
 // @param request - DescribeInvocationsRequest
 //
@@ -12055,7 +12802,7 @@ func (client *Client) DescribeInvocationsWithOptions(request *DescribeInvocation
 
 // Summary:
 //
-// Query the list and status of operations assistant command executions
+// # Query the list and status of operations assistant command executions
 //
 // @param request - DescribeInvocationsRequest
 //
@@ -12073,11 +12820,11 @@ func (client *Client) DescribeInvocations(request *DescribeInvocationsRequest) (
 
 // Summary:
 //
-// Query Network Test Result
+// # Query Network Test Result
 //
 // Description:
 //
-// An interface for creating a session, returning the front-end EndPoint, and initiating a periodic task to track the session status
+// # An interface for creating a session, returning the front-end EndPoint, and initiating a periodic task to track the session status
 //
 // @param request - DescribeNetTestResultRequest
 //
@@ -12130,11 +12877,11 @@ func (client *Client) DescribeNetTestResultWithOptions(request *DescribeNetTestR
 
 // Summary:
 //
-// Query Network Test Result
+// # Query Network Test Result
 //
 // Description:
 //
-// An interface for creating a session, returning the front-end EndPoint, and initiating a periodic task to track the session status
+// # An interface for creating a session, returning the front-end EndPoint, and initiating a periodic task to track the session status
 //
 // @param request - DescribeNetTestResultRequest
 //
@@ -12152,7 +12899,7 @@ func (client *Client) DescribeNetTestResult(request *DescribeNetTestResultReques
 
 // Summary:
 //
-// Query node list
+// # Query node list
 //
 // @param request - DescribeNodeRequest
 //
@@ -12205,7 +12952,7 @@ func (client *Client) DescribeNodeWithOptions(request *DescribeNodeRequest, runt
 
 // Summary:
 //
-// Query node list
+// # Query node list
 //
 // @param request - DescribeNodeRequest
 //
@@ -12223,7 +12970,7 @@ func (client *Client) DescribeNode(request *DescribeNodeRequest) (_result *Descr
 
 // Summary:
 //
-// Region List
+// # Region List
 //
 // @param request - DescribeRegionsRequest
 //
@@ -12276,7 +13023,7 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 
 // Summary:
 //
-// Region List
+// # Region List
 //
 // @param request - DescribeRegionsRequest
 //
@@ -12294,7 +13041,7 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 
 // Summary:
 //
-// Query the list and status of files sent by the operation assistant
+// # Query the list and status of files sent by the operation assistant
 //
 // @param request - DescribeSendFileResultsRequest
 //
@@ -12351,7 +13098,7 @@ func (client *Client) DescribeSendFileResultsWithOptions(request *DescribeSendFi
 
 // Summary:
 //
-// Query the list and status of files sent by the operation assistant
+// # Query the list and status of files sent by the operation assistant
 //
 // @param request - DescribeSendFileResultsRequest
 //
@@ -12369,7 +13116,7 @@ func (client *Client) DescribeSendFileResults(request *DescribeSendFileResultsRe
 
 // Summary:
 //
-// Query Task Details
+// # Query Task Details
 //
 // @param request - DescribeTaskRequest
 //
@@ -12422,7 +13169,7 @@ func (client *Client) DescribeTaskWithOptions(request *DescribeTaskRequest, runt
 
 // Summary:
 //
-// Query Task Details
+// # Query Task Details
 //
 // @param request - DescribeTaskRequest
 //
@@ -12440,7 +13187,7 @@ func (client *Client) DescribeTask(request *DescribeTaskRequest) (_result *Descr
 
 // Summary:
 //
-// List of Available Zones
+// # List of Available Zones
 //
 // @param request - DescribeZonesRequest
 //
@@ -12493,7 +13240,7 @@ func (client *Client) DescribeZonesWithOptions(request *DescribeZonesRequest, ru
 
 // Summary:
 //
-// List of Available Zones
+// # List of Available Zones
 //
 // @param request - DescribeZonesRequest
 //
@@ -12511,7 +13258,7 @@ func (client *Client) DescribeZones(request *DescribeZonesRequest) (_result *Des
 
 // Summary:
 //
-// Cluster Scaling
+// # Cluster Scaling
 //
 // @param tmpReq - ExtendClusterRequest
 //
@@ -12598,7 +13345,7 @@ func (client *Client) ExtendClusterWithOptions(tmpReq *ExtendClusterRequest, run
 
 // Summary:
 //
-// Cluster Scaling
+// # Cluster Scaling
 //
 // @param request - ExtendClusterRequest
 //
@@ -12616,7 +13363,7 @@ func (client *Client) ExtendCluster(request *ExtendClusterRequest) (_result *Ext
 
 // Summary:
 //
-// List of host groups under the cluster, and list of hosts under each group
+// # List of host groups under the cluster, and list of hosts under each group
 //
 // @param request - ListClusterNodesRequest
 //
@@ -12681,7 +13428,7 @@ func (client *Client) ListClusterNodesWithOptions(request *ListClusterNodesReque
 
 // Summary:
 //
-// List of host groups under the cluster, and list of hosts under each group
+// # List of host groups under the cluster, and list of hosts under each group
 //
 // @param request - ListClusterNodesRequest
 //
@@ -12699,7 +13446,7 @@ func (client *Client) ListClusterNodes(request *ListClusterNodesRequest) (_resul
 
 // Summary:
 //
-// Get the list of cluster instances
+// # Get the list of cluster instances
 //
 // @param request - ListClustersRequest
 //
@@ -12760,7 +13507,7 @@ func (client *Client) ListClustersWithOptions(request *ListClustersRequest, runt
 
 // Summary:
 //
-// Get the list of cluster instances
+// # Get the list of cluster instances
 //
 // @param request - ListClustersRequest
 //
@@ -12778,7 +13525,7 @@ func (client *Client) ListClusters(request *ListClustersRequest) (_result *ListC
 
 // Summary:
 //
-// List of Diagnostic Tasks
+// # List of Diagnostic Tasks
 //
 // Description:
 //
@@ -12847,7 +13594,7 @@ func (client *Client) ListDiagnosticResultsWithOptions(request *ListDiagnosticRe
 
 // Summary:
 //
-// List of Diagnostic Tasks
+// # List of Diagnostic Tasks
 //
 // Description:
 //
@@ -12869,7 +13616,7 @@ func (client *Client) ListDiagnosticResults(request *ListDiagnosticResultsReques
 
 // Summary:
 //
-// List of Available Physical Machines
+// # List of Available Physical Machines
 //
 // @param request - ListFreeNodesRequest
 //
@@ -12938,7 +13685,7 @@ func (client *Client) ListFreeNodesWithOptions(request *ListFreeNodesRequest, ru
 
 // Summary:
 //
-// List of Available Physical Machines
+// # List of Available Physical Machines
 //
 // @param request - ListFreeNodesRequest
 //
@@ -12956,7 +13703,7 @@ func (client *Client) ListFreeNodes(request *ListFreeNodesRequest) (_result *Lis
 
 // Summary:
 //
-// Query the list of images available to the user
+// # Query the list of images available to the user
 //
 // @param request - ListImagesRequest
 //
@@ -13017,7 +13764,7 @@ func (client *Client) ListImagesWithOptions(request *ListImagesRequest, runtime 
 
 // Summary:
 //
-// Query the list of images available to the user
+// # Query the list of images available to the user
 //
 // @param request - ListImagesRequest
 //
@@ -13035,11 +13782,11 @@ func (client *Client) ListImages(request *ListImagesRequest) (_result *ListImage
 
 // Summary:
 //
-// Query machine network configuration using HPNZone and machine type
+// # Query machine network configuration using HPNZone and machine type
 //
 // Description:
 //
-// An interface for creating a session, returning the frontend EndPoint, and initiating a periodic task to track the session status
+// # An interface for creating a session, returning the frontend EndPoint, and initiating a periodic task to track the session status
 //
 // @param tmpReq - ListMachineNetworkInfoRequest
 //
@@ -13098,11 +13845,11 @@ func (client *Client) ListMachineNetworkInfoWithOptions(tmpReq *ListMachineNetwo
 
 // Summary:
 //
-// Query machine network configuration using HPNZone and machine type
+// # Query machine network configuration using HPNZone and machine type
 //
 // Description:
 //
-// An interface for creating a session, returning the frontend EndPoint, and initiating a periodic task to track the session status
+// # An interface for creating a session, returning the frontend EndPoint, and initiating a periodic task to track the session status
 //
 // @param request - ListMachineNetworkInfoRequest
 //
@@ -13120,7 +13867,7 @@ func (client *Client) ListMachineNetworkInfo(request *ListMachineNetworkInfoRequ
 
 // Summary:
 //
-// Query the list of machine types available to the user
+// # Query the list of machine types available to the user
 //
 // @param request - ListMachineTypesRequest
 //
@@ -13173,7 +13920,7 @@ func (client *Client) ListMachineTypesWithOptions(request *ListMachineTypesReque
 
 // Summary:
 //
-// Query the list of machine types available to the user
+// # Query the list of machine types available to the user
 //
 // @param request - ListMachineTypesRequest
 //
@@ -13191,7 +13938,7 @@ func (client *Client) ListMachineTypes(request *ListMachineTypesRequest) (_resul
 
 // Summary:
 //
-// Network Test List
+// # Network Test List
 //
 // Description:
 //
@@ -13260,7 +14007,7 @@ func (client *Client) ListNetTestResultsWithOptions(request *ListNetTestResultsR
 
 // Summary:
 //
-// Network Test List
+// # Network Test List
 //
 // Description:
 //
@@ -13282,7 +14029,7 @@ func (client *Client) ListNetTestResults(request *ListNetTestResultsRequest) (_r
 
 // Summary:
 //
-// Query Node Group Information Under the Cluster
+// # Query Node Group Information Under the Cluster
 //
 // @param request - ListNodeGroupsRequest
 //
@@ -13347,7 +14094,7 @@ func (client *Client) ListNodeGroupsWithOptions(request *ListNodeGroupsRequest, 
 
 // Summary:
 //
-// Query Node Group Information Under the Cluster
+// # Query Node Group Information Under the Cluster
 //
 // @param request - ListNodeGroupsRequest
 //
@@ -13365,7 +14112,7 @@ func (client *Client) ListNodeGroups(request *ListNodeGroupsRequest) (_result *L
 
 // Summary:
 //
-// Query Resource Tags
+// # Query Resource Tags
 //
 // @param request - ListTagResourcesRequest
 //
@@ -13434,7 +14181,7 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 
 // Summary:
 //
-// Query Resource Tags
+// # Query Resource Tags
 //
 // @param request - ListTagResourcesRequest
 //
@@ -13452,11 +14199,11 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 
 // Summary:
 //
-// Query the cluster types available to the user
+// # Query the cluster types available to the user
 //
 // Description:
 //
-// An interface for creating a session, which returns the front-end EndPoint and initiates a periodic task to track the session status
+// # An interface for creating a session, which returns the front-end EndPoint and initiates a periodic task to track the session status
 //
 // @param request - ListUserClusterTypesRequest
 //
@@ -13498,11 +14245,11 @@ func (client *Client) ListUserClusterTypesWithOptions(runtime *util.RuntimeOptio
 
 // Summary:
 //
-// Query the cluster types available to the user
+// # Query the cluster types available to the user
 //
 // Description:
 //
-// An interface for creating a session, which returns the front-end EndPoint and initiates a periodic task to track the session status
+// # An interface for creating a session, which returns the front-end EndPoint and initiates a periodic task to track the session status
 //
 // @return ListUserClusterTypesResponse
 func (client *Client) ListUserClusterTypes() (_result *ListUserClusterTypesResponse, _err error) {
@@ -13518,7 +14265,7 @@ func (client *Client) ListUserClusterTypes() (_result *ListUserClusterTypesRespo
 
 // Summary:
 //
-// Reboot Machine
+// # Reboot Machine
 //
 // @param tmpReq - RebootNodesRequest
 //
@@ -13585,7 +14332,7 @@ func (client *Client) RebootNodesWithOptions(tmpReq *RebootNodesRequest, runtime
 
 // Summary:
 //
-// Reboot Machine
+// # Reboot Machine
 //
 // @param request - RebootNodesRequest
 //
@@ -13603,7 +14350,7 @@ func (client *Client) RebootNodes(request *RebootNodesRequest) (_result *RebootN
 
 // Summary:
 //
-// Machine Reinstallation
+// # Machine Reinstallation
 //
 // @param tmpReq - ReimageNodesRequest
 //
@@ -13674,7 +14421,7 @@ func (client *Client) ReimageNodesWithOptions(tmpReq *ReimageNodesRequest, runti
 
 // Summary:
 //
-// Machine Reinstallation
+// # Machine Reinstallation
 //
 // @param request - ReimageNodesRequest
 //
@@ -13692,7 +14439,7 @@ func (client *Client) ReimageNodes(request *ReimageNodesRequest) (_result *Reima
 
 // Summary:
 //
-// Execute a Shell script on one or more Lingjun machines
+// # Execute a Shell script on one or more Lingjun machines
 //
 // @param tmpReq - RunCommandRequest
 //
@@ -13815,7 +14562,7 @@ func (client *Client) RunCommandWithOptions(tmpReq *RunCommandRequest, runtime *
 
 // Summary:
 //
-// Execute a Shell script on one or more Lingjun machines
+// # Execute a Shell script on one or more Lingjun machines
 //
 // @param request - RunCommandRequest
 //
@@ -13833,7 +14580,7 @@ func (client *Client) RunCommand(request *RunCommandRequest) (_result *RunComman
 
 // Summary:
 //
-// Send a remote file to one or more Lingjun machines
+// # Send a remote file to one or more Lingjun machines
 //
 // @param tmpReq - SendFileRequest
 //
@@ -13932,7 +14679,7 @@ func (client *Client) SendFileWithOptions(tmpReq *SendFileRequest, runtime *util
 
 // Summary:
 //
-// Send a remote file to one or more Lingjun machines
+// # Send a remote file to one or more Lingjun machines
 //
 // @param request - SendFileRequest
 //
@@ -13950,7 +14697,7 @@ func (client *Client) SendFile(request *SendFileRequest) (_result *SendFileRespo
 
 // Summary:
 //
-// Shrink
+// # Shrink
 //
 // @param tmpReq - ShrinkClusterRequest
 //
@@ -14017,7 +14764,7 @@ func (client *Client) ShrinkClusterWithOptions(tmpReq *ShrinkClusterRequest, run
 
 // Summary:
 //
-// Shrink
+// # Shrink
 //
 // @param request - ShrinkClusterRequest
 //
@@ -14035,7 +14782,7 @@ func (client *Client) ShrinkCluster(request *ShrinkClusterRequest) (_result *Shr
 
 // Summary:
 //
-// Stop the operation assistant command process
+// # Stop the operation assistant command process
 //
 // @param tmpReq - StopInvocationRequest
 //
@@ -14098,7 +14845,7 @@ func (client *Client) StopInvocationWithOptions(tmpReq *StopInvocationRequest, r
 
 // Summary:
 //
-// Stop the operation assistant command process
+// # Stop the operation assistant command process
 //
 // @param request - StopInvocationRequest
 //
@@ -14116,7 +14863,7 @@ func (client *Client) StopInvocation(request *StopInvocationRequest) (_result *S
 
 // Summary:
 //
-// Shut down the nodes
+// # Shut down the nodes
 //
 // @param tmpReq - StopNodesRequest
 //
@@ -14179,7 +14926,7 @@ func (client *Client) StopNodesWithOptions(tmpReq *StopNodesRequest, runtime *ut
 
 // Summary:
 //
-// Shut down the nodes
+// # Shut down the nodes
 //
 // @param request - StopNodesRequest
 //
@@ -14197,7 +14944,7 @@ func (client *Client) StopNodes(request *StopNodesRequest) (_result *StopNodesRe
 
 // Summary:
 //
-// Tag User Resources
+// # Tag User Resources
 //
 // @param request - TagResourcesRequest
 //
@@ -14262,7 +15009,7 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 
 // Summary:
 //
-// Tag User Resources
+// # Tag User Resources
 //
 // @param request - TagResourcesRequest
 //
@@ -14280,7 +15027,7 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 
 // Summary:
 //
-// Remove user tags from resources
+// # Remove user tags from resources
 //
 // @param request - UntagResourcesRequest
 //
@@ -14349,7 +15096,7 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 
 // Summary:
 //
-// Remove user tags from resources
+// # Remove user tags from resources
 //
 // @param request - UntagResourcesRequest
 //
@@ -14358,6 +15105,81 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 	runtime := &util.RuntimeOptions{}
 	_result = &UntagResourcesResponse{}
 	_body, _err := client.UntagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新节点分组
+//
+// @param request - UpdateNodeGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateNodeGroupResponse
+func (client *Client) UpdateNodeGroupWithOptions(request *UpdateNodeGroupRequest, runtime *util.RuntimeOptions) (_result *UpdateNodeGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NewNodeGroupName)) {
+		body["NewNodeGroupName"] = request.NewNodeGroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeGroupId)) {
+		body["NodeGroupId"] = request.NodeGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateNodeGroup"),
+		Version:     tea.String("2022-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateNodeGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateNodeGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 更新节点分组
+//
+// @param request - UpdateNodeGroupRequest
+//
+// @return UpdateNodeGroupResponse
+func (client *Client) UpdateNodeGroup(request *UpdateNodeGroupRequest) (_result *UpdateNodeGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateNodeGroupResponse{}
+	_body, _err := client.UpdateNodeGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
