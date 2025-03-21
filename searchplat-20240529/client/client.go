@@ -1586,10 +1586,11 @@ func (s *GetTextEmbeddingResponse) SetBody(v *GetTextEmbeddingResponseBody) *Get
 }
 
 type GetTextGenerationRequest struct {
-	CsiLevel *string `json:"csi_level,omitempty" xml:"csi_level,omitempty"`
+	CsiLevel     *string `json:"csi_level,omitempty" xml:"csi_level,omitempty"`
+	EnableSearch *bool   `json:"enable_search,omitempty" xml:"enable_search,omitempty"`
 	// This parameter is required.
 	Messages   []*GetTextGenerationRequestMessages `json:"messages,omitempty" xml:"messages,omitempty" type:"Repeated"`
-	Parameters map[string]*string                  `json:"parameters,omitempty" xml:"parameters,omitempty"`
+	Parameters map[string]interface{}              `json:"parameters,omitempty" xml:"parameters,omitempty"`
 	Stream     *bool                               `json:"stream,omitempty" xml:"stream,omitempty"`
 }
 
@@ -1606,12 +1607,17 @@ func (s *GetTextGenerationRequest) SetCsiLevel(v string) *GetTextGenerationReque
 	return s
 }
 
+func (s *GetTextGenerationRequest) SetEnableSearch(v bool) *GetTextGenerationRequest {
+	s.EnableSearch = &v
+	return s
+}
+
 func (s *GetTextGenerationRequest) SetMessages(v []*GetTextGenerationRequestMessages) *GetTextGenerationRequest {
 	s.Messages = v
 	return s
 }
 
-func (s *GetTextGenerationRequest) SetParameters(v map[string]*string) *GetTextGenerationRequest {
+func (s *GetTextGenerationRequest) SetParameters(v map[string]interface{}) *GetTextGenerationRequest {
 	s.Parameters = v
 	return s
 }
@@ -1680,7 +1686,8 @@ func (s *GetTextGenerationResponseBody) SetUsage(v *GetTextGenerationResponseBod
 }
 
 type GetTextGenerationResponseBodyResult struct {
-	Text *string `json:"text,omitempty" xml:"text,omitempty"`
+	SearchResults []*GetTextGenerationResponseBodyResultSearchResults `json:"search_results,omitempty" xml:"search_results,omitempty" type:"Repeated"`
+	Text          *string                                             `json:"text,omitempty" xml:"text,omitempty"`
 }
 
 func (s GetTextGenerationResponseBodyResult) String() string {
@@ -1691,8 +1698,36 @@ func (s GetTextGenerationResponseBodyResult) GoString() string {
 	return s.String()
 }
 
+func (s *GetTextGenerationResponseBodyResult) SetSearchResults(v []*GetTextGenerationResponseBodyResultSearchResults) *GetTextGenerationResponseBodyResult {
+	s.SearchResults = v
+	return s
+}
+
 func (s *GetTextGenerationResponseBodyResult) SetText(v string) *GetTextGenerationResponseBodyResult {
 	s.Text = &v
+	return s
+}
+
+type GetTextGenerationResponseBodyResultSearchResults struct {
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	Url   *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s GetTextGenerationResponseBodyResultSearchResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTextGenerationResponseBodyResultSearchResults) GoString() string {
+	return s.String()
+}
+
+func (s *GetTextGenerationResponseBodyResultSearchResults) SetTitle(v string) *GetTextGenerationResponseBodyResultSearchResults {
+	s.Title = &v
+	return s
+}
+
+func (s *GetTextGenerationResponseBodyResultSearchResults) SetUrl(v string) *GetTextGenerationResponseBodyResultSearchResults {
+	s.Url = &v
 	return s
 }
 
@@ -1937,6 +1972,245 @@ func (s *GetTextSparseEmbeddingResponse) SetBody(v *GetTextSparseEmbeddingRespon
 	return s
 }
 
+type GetWebSearchRequest struct {
+	// This parameter is required.
+	Query *string `json:"query,omitempty" xml:"query,omitempty"`
+	TopK  *int64  `json:"top_k,omitempty" xml:"top_k,omitempty"`
+	Way   *string `json:"way,omitempty" xml:"way,omitempty"`
+}
+
+func (s GetWebSearchRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWebSearchRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetWebSearchRequest) SetQuery(v string) *GetWebSearchRequest {
+	s.Query = &v
+	return s
+}
+
+func (s *GetWebSearchRequest) SetTopK(v int64) *GetWebSearchRequest {
+	s.TopK = &v
+	return s
+}
+
+func (s *GetWebSearchRequest) SetWay(v string) *GetWebSearchRequest {
+	s.Way = &v
+	return s
+}
+
+type GetWebSearchResponseBody struct {
+	Latency   *int32                          `json:"latency,omitempty" xml:"latency,omitempty"`
+	RequestId *string                         `json:"request_id,omitempty" xml:"request_id,omitempty"`
+	Result    *GetWebSearchResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	Usage     *GetWebSearchResponseBodyUsage  `json:"usage,omitempty" xml:"usage,omitempty" type:"Struct"`
+}
+
+func (s GetWebSearchResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWebSearchResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetWebSearchResponseBody) SetLatency(v int32) *GetWebSearchResponseBody {
+	s.Latency = &v
+	return s
+}
+
+func (s *GetWebSearchResponseBody) SetRequestId(v string) *GetWebSearchResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetWebSearchResponseBody) SetResult(v *GetWebSearchResponseBodyResult) *GetWebSearchResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *GetWebSearchResponseBody) SetUsage(v *GetWebSearchResponseBodyUsage) *GetWebSearchResponseBody {
+	s.Usage = v
+	return s
+}
+
+type GetWebSearchResponseBodyResult struct {
+	SearchResult []*GetWebSearchResponseBodyResultSearchResult `json:"search_result,omitempty" xml:"search_result,omitempty" type:"Repeated"`
+}
+
+func (s GetWebSearchResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWebSearchResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetWebSearchResponseBodyResult) SetSearchResult(v []*GetWebSearchResponseBodyResultSearchResult) *GetWebSearchResponseBodyResult {
+	s.SearchResult = v
+	return s
+}
+
+type GetWebSearchResponseBodyResultSearchResult struct {
+	Content  *string `json:"content,omitempty" xml:"content,omitempty"`
+	Link     *string `json:"link,omitempty" xml:"link,omitempty"`
+	Position *int64  `json:"position,omitempty" xml:"position,omitempty"`
+	Snippet  *string `json:"snippet,omitempty" xml:"snippet,omitempty"`
+	Tilte    *string `json:"tilte,omitempty" xml:"tilte,omitempty"`
+}
+
+func (s GetWebSearchResponseBodyResultSearchResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWebSearchResponseBodyResultSearchResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetWebSearchResponseBodyResultSearchResult) SetContent(v string) *GetWebSearchResponseBodyResultSearchResult {
+	s.Content = &v
+	return s
+}
+
+func (s *GetWebSearchResponseBodyResultSearchResult) SetLink(v string) *GetWebSearchResponseBodyResultSearchResult {
+	s.Link = &v
+	return s
+}
+
+func (s *GetWebSearchResponseBodyResultSearchResult) SetPosition(v int64) *GetWebSearchResponseBodyResultSearchResult {
+	s.Position = &v
+	return s
+}
+
+func (s *GetWebSearchResponseBodyResultSearchResult) SetSnippet(v string) *GetWebSearchResponseBodyResultSearchResult {
+	s.Snippet = &v
+	return s
+}
+
+func (s *GetWebSearchResponseBodyResultSearchResult) SetTilte(v string) *GetWebSearchResponseBodyResultSearchResult {
+	s.Tilte = &v
+	return s
+}
+
+type GetWebSearchResponseBodyUsage struct {
+	FilterModel  *GetWebSearchResponseBodyUsageFilterModel  `json:"filter_model,omitempty" xml:"filter_model,omitempty" type:"Struct"`
+	RewriteModel *GetWebSearchResponseBodyUsageRewriteModel `json:"rewrite_model,omitempty" xml:"rewrite_model,omitempty" type:"Struct"`
+	SearchCount  *int64                                     `json:"search_count,omitempty" xml:"search_count,omitempty"`
+}
+
+func (s GetWebSearchResponseBodyUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWebSearchResponseBodyUsage) GoString() string {
+	return s.String()
+}
+
+func (s *GetWebSearchResponseBodyUsage) SetFilterModel(v *GetWebSearchResponseBodyUsageFilterModel) *GetWebSearchResponseBodyUsage {
+	s.FilterModel = v
+	return s
+}
+
+func (s *GetWebSearchResponseBodyUsage) SetRewriteModel(v *GetWebSearchResponseBodyUsageRewriteModel) *GetWebSearchResponseBodyUsage {
+	s.RewriteModel = v
+	return s
+}
+
+func (s *GetWebSearchResponseBodyUsage) SetSearchCount(v int64) *GetWebSearchResponseBodyUsage {
+	s.SearchCount = &v
+	return s
+}
+
+type GetWebSearchResponseBodyUsageFilterModel struct {
+	InputTokens  *int64 `json:"input_tokens,omitempty" xml:"input_tokens,omitempty"`
+	OutputTokens *int64 `json:"output_tokens,omitempty" xml:"output_tokens,omitempty"`
+	TotalTokens  *int64 `json:"total_tokens,omitempty" xml:"total_tokens,omitempty"`
+}
+
+func (s GetWebSearchResponseBodyUsageFilterModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWebSearchResponseBodyUsageFilterModel) GoString() string {
+	return s.String()
+}
+
+func (s *GetWebSearchResponseBodyUsageFilterModel) SetInputTokens(v int64) *GetWebSearchResponseBodyUsageFilterModel {
+	s.InputTokens = &v
+	return s
+}
+
+func (s *GetWebSearchResponseBodyUsageFilterModel) SetOutputTokens(v int64) *GetWebSearchResponseBodyUsageFilterModel {
+	s.OutputTokens = &v
+	return s
+}
+
+func (s *GetWebSearchResponseBodyUsageFilterModel) SetTotalTokens(v int64) *GetWebSearchResponseBodyUsageFilterModel {
+	s.TotalTokens = &v
+	return s
+}
+
+type GetWebSearchResponseBodyUsageRewriteModel struct {
+	InputTokens  *int64 `json:"input_tokens,omitempty" xml:"input_tokens,omitempty"`
+	OutputTokens *int64 `json:"output_tokens,omitempty" xml:"output_tokens,omitempty"`
+	TotalTokens  *int64 `json:"total_tokens,omitempty" xml:"total_tokens,omitempty"`
+}
+
+func (s GetWebSearchResponseBodyUsageRewriteModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWebSearchResponseBodyUsageRewriteModel) GoString() string {
+	return s.String()
+}
+
+func (s *GetWebSearchResponseBodyUsageRewriteModel) SetInputTokens(v int64) *GetWebSearchResponseBodyUsageRewriteModel {
+	s.InputTokens = &v
+	return s
+}
+
+func (s *GetWebSearchResponseBodyUsageRewriteModel) SetOutputTokens(v int64) *GetWebSearchResponseBodyUsageRewriteModel {
+	s.OutputTokens = &v
+	return s
+}
+
+func (s *GetWebSearchResponseBodyUsageRewriteModel) SetTotalTokens(v int64) *GetWebSearchResponseBodyUsageRewriteModel {
+	s.TotalTokens = &v
+	return s
+}
+
+type GetWebSearchResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetWebSearchResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetWebSearchResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWebSearchResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetWebSearchResponse) SetHeaders(v map[string]*string) *GetWebSearchResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetWebSearchResponse) SetStatusCode(v int32) *GetWebSearchResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetWebSearchResponse) SetBody(v *GetWebSearchResponseBody) *GetWebSearchResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -1952,6 +2226,7 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.ProductId = tea.String("Searchplat")
 	gatewayClient, _err := gatewayclient.NewClient()
 	if _err != nil {
 		return _err
@@ -2655,6 +2930,10 @@ func (client *Client) GetTextGenerationWithOptions(workspaceName *string, servic
 		body["csi_level"] = request.CsiLevel
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.EnableSearch)) {
+		body["enable_search"] = request.EnableSearch
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Messages)) {
 		body["messages"] = request.Messages
 	}
@@ -2775,6 +3054,78 @@ func (client *Client) GetTextSparseEmbedding(workspaceName *string, serviceId *s
 	headers := make(map[string]*string)
 	_result = &GetTextSparseEmbeddingResponse{}
 	_body, _err := client.GetTextSparseEmbeddingWithOptions(workspaceName, serviceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 联网搜索
+//
+// @param request - GetWebSearchRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetWebSearchResponse
+func (client *Client) GetWebSearchWithOptions(workspaceName *string, serviceId *string, request *GetWebSearchRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetWebSearchResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Query)) {
+		body["query"] = request.Query
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TopK)) {
+		body["top_k"] = request.TopK
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Way)) {
+		body["way"] = request.Way
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetWebSearch"),
+		Version:     tea.String("2024-05-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v3/openapi/workspaces/" + tea.StringValue(workspaceName) + "/web-search/" + tea.StringValue(serviceId)),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetWebSearchResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 联网搜索
+//
+// @param request - GetWebSearchRequest
+//
+// @return GetWebSearchResponse
+func (client *Client) GetWebSearch(workspaceName *string, serviceId *string, request *GetWebSearchRequest) (_result *GetWebSearchResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetWebSearchResponse{}
+	_body, _err := client.GetWebSearchWithOptions(workspaceName, serviceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}

@@ -10,7 +10,7 @@ English | [简体中文](README-CN.md)
 If you use `go mod` to manage your dependence, you can use the following command:
 
 ```sh
-$ go get github.com/alibabacloud-go/searchplat-20240529
+$ go get github.com/alibabacloud-go/searchplat-20240529/v2
 ```
 
 ## Issues
