@@ -10,10 +10,17 @@ import (
 )
 
 type ActivateLicenseRequest struct {
+	// example:
+	//
+	// XXX
 	Fingerprint *string `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
-	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OrderId     *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// ID
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 12bea6b4489fsde7b903fe05934a0adx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OrderId    *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 }
 
 func (s ActivateLicenseRequest) String() string {
@@ -45,13 +52,33 @@ func (s *ActivateLicenseRequest) SetOrderId(v string) *ActivateLicenseRequest {
 }
 
 type ActivateLicenseResponseBody struct {
-	AccessDeniedDetail *string                          `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Code               *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data               *ActivateLicenseResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	HttpStatusCode     *int32                           `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message            *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId          *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success            *string                          `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// {}
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *ActivateLicenseResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 65308A66-8764-53EE-8D4A-201E86CA88C5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ActivateLicenseResponseBody) String() string {
@@ -98,24 +125,62 @@ func (s *ActivateLicenseResponseBody) SetSuccess(v string) *ActivateLicenseRespo
 }
 
 type ActivateLicenseResponseBodyData struct {
-	ActivateRecord        []*ActivateLicenseResponseBodyDataActivateRecord `json:"ActivateRecord,omitempty" xml:"ActivateRecord,omitempty" type:"Repeated"`
-	ActivateTime          *string                                          `json:"ActivateTime,omitempty" xml:"ActivateTime,omitempty"`
-	AllDuration           *string                                          `json:"AllDuration,omitempty" xml:"AllDuration,omitempty"`
-	ApplicableSpecs       *string                                          `json:"ApplicableSpecs,omitempty" xml:"ApplicableSpecs,omitempty"`
-	BuyTime               *string                                          `json:"BuyTime,omitempty" xml:"BuyTime,omitempty"`
-	CpuLimit              *int32                                           `json:"CpuLimit,omitempty" xml:"CpuLimit,omitempty"`
-	Description           *string                                          `json:"Description,omitempty" xml:"Description,omitempty"`
-	Duration              *string                                          `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	EffectTime            *string                                          `json:"EffectTime,omitempty" xml:"EffectTime,omitempty"`
-	ExpireTime            *string                                          `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	Fingerprint           *string                                          `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
-	Id                    *string                                          `json:"Id,omitempty" xml:"Id,omitempty"`
-	InstanceId            *string                                          `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	LicenseCode           *string                                          `json:"LicenseCode,omitempty" xml:"LicenseCode,omitempty"`
-	LicenseSpecName       *string                                          `json:"LicenseSpecName,omitempty" xml:"LicenseSpecName,omitempty"`
-	MemoryLimit           *int32                                           `json:"MemoryLimit,omitempty" xml:"MemoryLimit,omitempty"`
-	Status                *string                                          `json:"Status,omitempty" xml:"Status,omitempty"`
-	UnActivateAllDuration *string                                          `json:"UnActivateAllDuration,omitempty" xml:"UnActivateAllDuration,omitempty"`
+	ActivateRecord []*ActivateLicenseResponseBodyDataActivateRecord `json:"ActivateRecord,omitempty" xml:"ActivateRecord,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2024-04-29 15:03:12
+	ActivateTime    *string `json:"ActivateTime,omitempty" xml:"ActivateTime,omitempty"`
+	AllDuration     *string `json:"AllDuration,omitempty" xml:"AllDuration,omitempty"`
+	ApplicableSpecs *string `json:"ApplicableSpecs,omitempty" xml:"ApplicableSpecs,omitempty"`
+	// example:
+	//
+	// 2024-04-29 15:00:15
+	BuyTime *string `json:"BuyTime,omitempty" xml:"BuyTime,omitempty"`
+	// example:
+	//
+	// 72
+	CpuLimit *int32 `json:"CpuLimit,omitempty" xml:"CpuLimit,omitempty"`
+	// example:
+	//
+	// ""
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Duration    *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// example:
+	//
+	// 2024-05-01 00:00:00
+	EffectTime *string `json:"EffectTime,omitempty" xml:"EffectTime,omitempty"`
+	// example:
+	//
+	// 2025-05-01 00:00:00
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// example:
+	//
+	// XXXX
+	Fingerprint *string `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
+	// Id
+	//
+	// example:
+	//
+	// 1
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// c39128fcb74e482546a72de90cdsaba3
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// XXX
+	LicenseCode     *string `json:"LicenseCode,omitempty" xml:"LicenseCode,omitempty"`
+	LicenseSpecName *string `json:"LicenseSpecName,omitempty" xml:"LicenseSpecName,omitempty"`
+	// example:
+	//
+	// 256
+	MemoryLimit *int32 `json:"MemoryLimit,omitempty" xml:"MemoryLimit,omitempty"`
+	// example:
+	//
+	// activated
+	Status                *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	UnActivateAllDuration *string `json:"UnActivateAllDuration,omitempty" xml:"UnActivateAllDuration,omitempty"`
 }
 
 func (s ActivateLicenseResponseBodyData) String() string {
@@ -217,13 +282,31 @@ func (s *ActivateLicenseResponseBodyData) SetUnActivateAllDuration(v string) *Ac
 }
 
 type ActivateLicenseResponseBodyDataActivateRecord struct {
+	// example:
+	//
+	// 2024-04-29 15:03:12
 	ActivateTime *string `json:"ActivateTime,omitempty" xml:"ActivateTime,omitempty"`
-	BuyTime      *string `json:"BuyTime,omitempty" xml:"BuyTime,omitempty"`
-	Duration     *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	ExpireTime   *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	LicenseCode  *string `json:"LicenseCode,omitempty" xml:"LicenseCode,omitempty"`
-	OrderId      *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 2024-04-29 15:01:15
+	BuyTime  *string `json:"BuyTime,omitempty" xml:"BuyTime,omitempty"`
+	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// example:
+	//
+	// 2025-05-01 00:00:00
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// example:
+	//
+	// XXX
+	LicenseCode *string `json:"LicenseCode,omitempty" xml:"LicenseCode,omitempty"`
+	// example:
+	//
+	// XXX
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// activated
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ActivateLicenseResponseBodyDataActivateRecord) String() string {
@@ -1834,7 +1917,15 @@ func (s *GetAivppAlgoJobResponse) SetBody(v *GetAivppAlgoJobResponseBody) *GetAi
 }
 
 type GetLicenseRequest struct {
-	Id         *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	// ID
+	//
+	// example:
+	//
+	// 1
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// c31238fcb74e482588a72de90cd7dba3
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -1857,13 +1948,31 @@ func (s *GetLicenseRequest) SetInstanceId(v string) *GetLicenseRequest {
 }
 
 type GetLicenseResponseBody struct {
-	AccessDeniedDetail *string                     `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Code               *string                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data               *GetLicenseResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	HttpStatusCode     *int32                      `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message            *string                     `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId          *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success            *string                     `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// None
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetLicenseResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 68738E75-43C1-5AE5-9F3A-AFEF576D7B5F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetLicenseResponseBody) String() string {
@@ -1912,28 +2021,69 @@ func (s *GetLicenseResponseBody) SetSuccess(v string) *GetLicenseResponseBody {
 type GetLicenseResponseBodyData struct {
 	ActivateRecord []*GetLicenseResponseBodyDataActivateRecord `json:"ActivateRecord,omitempty" xml:"ActivateRecord,omitempty" type:"Repeated"`
 	// 代表资源一级ID的资源属性字段
+	//
+	// example:
+	//
+	// 2024-04-29 15:03:12
 	ActivateTime    *string `json:"ActivateTime,omitempty" xml:"ActivateTime,omitempty"`
 	AdaptiveMachine *string `json:"AdaptiveMachine,omitempty" xml:"AdaptiveMachine,omitempty"`
 	AllDuration     *string `json:"AllDuration,omitempty" xml:"AllDuration,omitempty"`
 	ApplicableSpecs *string `json:"ApplicableSpecs,omitempty" xml:"ApplicableSpecs,omitempty"`
 	// 代表资源名称的资源属性字段
-	BuyTime     *string `json:"BuyTime,omitempty" xml:"BuyTime,omitempty"`
-	CpuLimit    *int32  `json:"CpuLimit,omitempty" xml:"CpuLimit,omitempty"`
+	//
+	// example:
+	//
+	// 2024-04-29 15:01:15
+	BuyTime *string `json:"BuyTime,omitempty" xml:"BuyTime,omitempty"`
+	// example:
+	//
+	// 72
+	CpuLimit *int32 `json:"CpuLimit,omitempty" xml:"CpuLimit,omitempty"`
+	// example:
+	//
+	// ""
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	Duration    *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	EffectTime  *string `json:"EffectTime,omitempty" xml:"EffectTime,omitempty"`
-	ExpireTime  *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// example:
+	//
+	// 2024-05-01 00:00:00
+	EffectTime *string `json:"EffectTime,omitempty" xml:"EffectTime,omitempty"`
+	// example:
+	//
+	// 2025-05-01 00:00:00
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// 代表创建时间的资源属性字段
-	Fingerprint     *string `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
-	Id              *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	//
+	// example:
+	//
+	// XXX
+	Fingerprint *string `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
+	// ID
+	//
+	// example:
+	//
+	// 1
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// c31238fcb74e482588a72de90cd7dba3
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// XXX
 	LicenseCode     *string `json:"LicenseCode,omitempty" xml:"LicenseCode,omitempty"`
 	LicenseSpecCode *string `json:"LicenseSpecCode,omitempty" xml:"LicenseSpecCode,omitempty"`
 	// 代表资源组的资源属性字段
-	LicenseSpecName       *string `json:"LicenseSpecName,omitempty" xml:"LicenseSpecName,omitempty"`
-	LicenseSpecType       *string `json:"LicenseSpecType,omitempty" xml:"LicenseSpecType,omitempty"`
-	MemoryLimit           *int32  `json:"MemoryLimit,omitempty" xml:"MemoryLimit,omitempty"`
-	Proposal              *string `json:"Proposal,omitempty" xml:"Proposal,omitempty"`
+	LicenseSpecName *string `json:"LicenseSpecName,omitempty" xml:"LicenseSpecName,omitempty"`
+	LicenseSpecType *string `json:"LicenseSpecType,omitempty" xml:"LicenseSpecType,omitempty"`
+	// example:
+	//
+	// 256
+	MemoryLimit *int32  `json:"MemoryLimit,omitempty" xml:"MemoryLimit,omitempty"`
+	Proposal    *string `json:"Proposal,omitempty" xml:"Proposal,omitempty"`
+	// example:
+	//
+	// activated
 	Status                *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	UnActivateAllDuration *string `json:"UnActivateAllDuration,omitempty" xml:"UnActivateAllDuration,omitempty"`
 }
@@ -2057,13 +2207,31 @@ func (s *GetLicenseResponseBodyData) SetUnActivateAllDuration(v string) *GetLice
 }
 
 type GetLicenseResponseBodyDataActivateRecord struct {
+	// example:
+	//
+	// 2024-04-29 15:03:12
 	ActivateTime *string `json:"ActivateTime,omitempty" xml:"ActivateTime,omitempty"`
-	BuyTime      *string `json:"BuyTime,omitempty" xml:"BuyTime,omitempty"`
-	Duration     *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	ExpireTime   *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	LicenseCode  *string `json:"LicenseCode,omitempty" xml:"LicenseCode,omitempty"`
-	OrderId      *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 2024-04-29 15:01:15
+	BuyTime  *string `json:"BuyTime,omitempty" xml:"BuyTime,omitempty"`
+	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// example:
+	//
+	// 2025-05-01 00:00:00
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// example:
+	//
+	// XXXX
+	LicenseCode *string `json:"LicenseCode,omitempty" xml:"LicenseCode,omitempty"`
+	// example:
+	//
+	// 1040b91765d14ad1a40ff22589070342
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// activated
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetLicenseResponseBodyDataActivateRecord) String() string {
@@ -2386,9 +2554,15 @@ func (s *ListAivppResourcesResponse) SetBody(v *ListAivppResourcesResponseBody) 
 }
 
 type ListLicensesRequest struct {
-	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	QueryStr    *string `json:"QueryStr,omitempty" xml:"QueryStr,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// example:
+	//
+	// 12
+	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	QueryStr *string `json:"QueryStr,omitempty" xml:"QueryStr,omitempty"`
 }
 
 func (s ListLicensesRequest) String() string {
@@ -2415,18 +2589,51 @@ func (s *ListLicensesRequest) SetQueryStr(v string) *ListLicensesRequest {
 }
 
 type ListLicensesResponseBody struct {
-	AccessDeniedDetail *string                                `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Code               *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	CurrentPage        *int32                                 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	HttpStatusCode     *int32                                 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	LicenseList        []*ListLicensesResponseBodyLicenseList `json:"LicenseList,omitempty" xml:"LicenseList,omitempty" type:"Repeated"`
-	Message            *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	PageSize           *int32                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId          *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success            *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount         *int64                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	TotalPage          *string                                `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
-	TotalPageCount     *string                                `json:"TotalPageCount,omitempty" xml:"TotalPageCount,omitempty"`
+	// example:
+	//
+	// {}
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32                                 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	LicenseList    []*ListLicensesResponseBodyLicenseList `json:"LicenseList,omitempty" xml:"LicenseList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 12
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// FAC892CE-5A94-5616-91DC-629B09CC6792
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 42
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 4
+	TotalPage *string `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	// example:
+	//
+	// 4
+	TotalPageCount *string `json:"TotalPageCount,omitempty" xml:"TotalPageCount,omitempty"`
 }
 
 func (s ListLicensesResponseBody) String() string {
@@ -2498,21 +2705,57 @@ func (s *ListLicensesResponseBody) SetTotalPageCount(v string) *ListLicensesResp
 }
 
 type ListLicensesResponseBodyLicenseList struct {
-	ActivateTime          *string `json:"ActivateTime,omitempty" xml:"ActivateTime,omitempty"`
-	AdaptiveMachine       *int32  `json:"AdaptiveMachine,omitempty" xml:"AdaptiveMachine,omitempty"`
-	AllDuration           *string `json:"AllDuration,omitempty" xml:"AllDuration,omitempty"`
-	BuyTime               *string `json:"BuyTime,omitempty" xml:"BuyTime,omitempty"`
-	CpuLimit              *int32  `json:"CpuLimit,omitempty" xml:"CpuLimit,omitempty"`
-	Description           *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Duration              *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	EffectTime            *string `json:"EffectTime,omitempty" xml:"EffectTime,omitempty"`
-	ExpireTime            *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	Id                    *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	InstanceId            *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	LicenseSpecCode       *string `json:"LicenseSpecCode,omitempty" xml:"LicenseSpecCode,omitempty"`
-	LicenseSpecName       *string `json:"LicenseSpecName,omitempty" xml:"LicenseSpecName,omitempty"`
-	LicenseSpecType       *string `json:"LicenseSpecType,omitempty" xml:"LicenseSpecType,omitempty"`
-	MemoryLimit           *int32  `json:"MemoryLimit,omitempty" xml:"MemoryLimit,omitempty"`
+	// example:
+	//
+	// 2024-10-14 14:15:45
+	ActivateTime    *string `json:"ActivateTime,omitempty" xml:"ActivateTime,omitempty"`
+	AdaptiveMachine *int32  `json:"AdaptiveMachine,omitempty" xml:"AdaptiveMachine,omitempty"`
+	AllDuration     *string `json:"AllDuration,omitempty" xml:"AllDuration,omitempty"`
+	// example:
+	//
+	// 2024-10-14 13:17:20
+	BuyTime *string `json:"BuyTime,omitempty" xml:"BuyTime,omitempty"`
+	// example:
+	//
+	// 72
+	CpuLimit *int32 `json:"CpuLimit,omitempty" xml:"CpuLimit,omitempty"`
+	// example:
+	//
+	// ""
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Duration    *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// example:
+	//
+	// 2024-10-14 14:15:45
+	EffectTime *string `json:"EffectTime,omitempty" xml:"EffectTime,omitempty"`
+	// example:
+	//
+	// 2025-10-14 14:15:45
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// example:
+	//
+	// 1
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 451f14ee73604aesdfe4da606764ce09
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// aics_1000
+	LicenseSpecCode *string `json:"LicenseSpecCode,omitempty" xml:"LicenseSpecCode,omitempty"`
+	LicenseSpecName *string `json:"LicenseSpecName,omitempty" xml:"LicenseSpecName,omitempty"`
+	// example:
+	//
+	// brainindustrial_aicsruntime_public_cn
+	LicenseSpecType *string `json:"LicenseSpecType,omitempty" xml:"LicenseSpecType,omitempty"`
+	// example:
+	//
+	// 256
+	MemoryLimit *int32 `json:"MemoryLimit,omitempty" xml:"MemoryLimit,omitempty"`
+	// example:
+	//
+	// activated
 	Status                *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	UnActivateAllDuration *string `json:"UnActivateAllDuration,omitempty" xml:"UnActivateAllDuration,omitempty"`
 }
@@ -2640,6 +2883,9 @@ func (s *ListLicensesResponse) SetBody(v *ListLicensesResponseBody) *ListLicense
 }
 
 type ListUserResourcesRequest struct {
+	// example:
+	//
+	// BrainIndustrial
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 }
 
@@ -2657,13 +2903,30 @@ func (s *ListUserResourcesRequest) SetCommodityCode(v string) *ListUserResources
 }
 
 type ListUserResourcesResponseBody struct {
-	AccessDeniedDetail *string                              `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Code               *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data               []*ListUserResourcesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	HttpStatusCode     *int32                               `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message            *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId          *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success            *string                              `json:"Success,omitempty" xml:"Success,omitempty"`
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*ListUserResourcesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 65308A66-8764-53EE-8D4A-201E86CA88C5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListUserResourcesResponseBody) String() string {
@@ -2710,14 +2973,32 @@ func (s *ListUserResourcesResponseBody) SetSuccess(v string) *ListUserResourcesR
 }
 
 type ListUserResourcesResponseBodyData struct {
-	ChargeType    *string `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
+	ChargeType *string `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
+	// example:
+	//
+	// brainindustrial_simupostpaid_public_cn
 	CommodityCode *string `json:"commodityCode,omitempty" xml:"commodityCode,omitempty"`
-	EndDate       *string `json:"endDate,omitempty" xml:"endDate,omitempty"`
-	InstanceId    *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	Region        *string `json:"region,omitempty" xml:"region,omitempty"`
-	StartDate     *string `json:"startDate,omitempty" xml:"startDate,omitempty"`
-	Status        *string `json:"status,omitempty" xml:"status,omitempty"`
-	StatusMsg     *string `json:"statusMsg,omitempty" xml:"statusMsg,omitempty"`
+	// example:
+	//
+	// 2024-12-21
+	EndDate *string `json:"endDate,omitempty" xml:"endDate,omitempty"`
+	// example:
+	//
+	// 12345ea3cff446e8837078c2baffbe83
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	Region *string `json:"region,omitempty" xml:"region,omitempty"`
+	// example:
+	//
+	// 20240902
+	StartDate *string `json:"startDate,omitempty" xml:"startDate,omitempty"`
+	// example:
+	//
+	// ""
+	Status    *string `json:"status,omitempty" xml:"status,omitempty"`
+	StatusMsg *string `json:"statusMsg,omitempty" xml:"statusMsg,omitempty"`
 }
 
 func (s ListUserResourcesResponseBodyData) String() string {
@@ -2793,6 +3074,131 @@ func (s *ListUserResourcesResponse) SetStatusCode(v int32) *ListUserResourcesRes
 }
 
 func (s *ListUserResourcesResponse) SetBody(v *ListUserResourcesResponseBody) *ListUserResourcesResponse {
+	s.Body = v
+	return s
+}
+
+type OpenApiInvokeRequest struct {
+	// example:
+	//
+	// 119397
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// example:
+	//
+	// {"a":{"value":1}}
+	Param *string `json:"Param,omitempty" xml:"Param,omitempty"`
+	// example:
+	//
+	// 215168378e7b43789cabeef1d0db9320
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+}
+
+func (s OpenApiInvokeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OpenApiInvokeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *OpenApiInvokeRequest) SetNodeId(v string) *OpenApiInvokeRequest {
+	s.NodeId = &v
+	return s
+}
+
+func (s *OpenApiInvokeRequest) SetParam(v string) *OpenApiInvokeRequest {
+	s.Param = &v
+	return s
+}
+
+func (s *OpenApiInvokeRequest) SetServiceId(v string) *OpenApiInvokeRequest {
+	s.ServiceId = &v
+	return s
+}
+
+type OpenApiInvokeResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// {"dd":{"keyName":"dd","type":"Int","value":2,"quality":192}}
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 68738E75-43C1-5AE5-9F3A-AFEF576D7B5F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s OpenApiInvokeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OpenApiInvokeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *OpenApiInvokeResponseBody) SetCode(v string) *OpenApiInvokeResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *OpenApiInvokeResponseBody) SetData(v string) *OpenApiInvokeResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *OpenApiInvokeResponseBody) SetMessage(v string) *OpenApiInvokeResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *OpenApiInvokeResponseBody) SetRequestId(v string) *OpenApiInvokeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *OpenApiInvokeResponseBody) SetSuccess(v string) *OpenApiInvokeResponseBody {
+	s.Success = &v
+	return s
+}
+
+type OpenApiInvokeResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *OpenApiInvokeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s OpenApiInvokeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OpenApiInvokeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *OpenApiInvokeResponse) SetHeaders(v map[string]*string) *OpenApiInvokeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *OpenApiInvokeResponse) SetStatusCode(v int32) *OpenApiInvokeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *OpenApiInvokeResponse) SetBody(v *OpenApiInvokeResponseBody) *OpenApiInvokeResponse {
 	s.Body = v
 	return s
 }
@@ -3459,7 +3865,7 @@ func (client *Client) GetAivppAlgoJob(request *GetAivppAlgoJobRequest) (_result 
 
 // Summary:
 //
-// License详情
+// # License详情
 //
 // @param request - GetLicenseRequest
 //
@@ -3516,7 +3922,7 @@ func (client *Client) GetLicenseWithOptions(request *GetLicenseRequest, runtime 
 
 // Summary:
 //
-// License详情
+// # License详情
 //
 // @param request - GetLicenseRequest
 //
@@ -3609,7 +4015,7 @@ func (client *Client) ListAivppResources(request *ListAivppResourcesRequest) (_r
 
 // Summary:
 //
-// License列表
+// # License列表
 //
 // @param request - ListLicensesRequest
 //
@@ -3670,7 +4076,7 @@ func (client *Client) ListLicensesWithOptions(request *ListLicensesRequest, runt
 
 // Summary:
 //
-// License列表
+// # License列表
 //
 // @param request - ListLicensesRequest
 //
@@ -3750,6 +4156,87 @@ func (client *Client) ListUserResources(request *ListUserResourcesRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &ListUserResourcesResponse{}
 	_body, _err := client.ListUserResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 调用aics openapi
+//
+// @param request - OpenApiInvokeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OpenApiInvokeResponse
+func (client *Client) OpenApiInvokeWithOptions(request *OpenApiInvokeRequest, runtime *util.RuntimeOptions) (_result *OpenApiInvokeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		query["NodeId"] = request.NodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Param)) {
+		body["Param"] = request.Param
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("OpenApiInvoke"),
+		Version:     tea.String("2020-09-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &OpenApiInvokeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &OpenApiInvokeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 调用aics openapi
+//
+// @param request - OpenApiInvokeRequest
+//
+// @return OpenApiInvokeResponse
+func (client *Client) OpenApiInvoke(request *OpenApiInvokeRequest) (_result *OpenApiInvokeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &OpenApiInvokeResponse{}
+	_body, _err := client.OpenApiInvokeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
