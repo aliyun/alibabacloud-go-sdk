@@ -1353,16 +1353,18 @@ type MassPushRequestPushTask struct {
 	AndroidXiaoMiNotifyBody *string `json:"AndroidXiaoMiNotifyBody,omitempty" xml:"AndroidXiaoMiNotifyBody,omitempty"`
 	// Deprecated
 	AndroidXiaoMiNotifyTitle *string `json:"AndroidXiaoMiNotifyTitle,omitempty" xml:"AndroidXiaoMiNotifyTitle,omitempty"`
+	// Deprecated
+	//
 	// example:
 	//
 	// https://f6.market.xiaomi.com/download/MiPass/aaa/bbb.png
 	AndroidXiaomiBigPictureUrl *string `json:"AndroidXiaomiBigPictureUrl,omitempty" xml:"AndroidXiaomiBigPictureUrl,omitempty"`
+	// Deprecated
+	//
 	// example:
 	//
 	// https://imag.example.com/image.png
 	AndroidXiaomiImageUrl *string `json:"AndroidXiaomiImageUrl,omitempty" xml:"AndroidXiaomiImageUrl,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// hello
@@ -1463,7 +1465,14 @@ type MassPushRequestPushTask struct {
 	// example:
 	//
 	// active
-	IOSInterruptionLevel *string `json:"iOSInterruptionLevel,omitempty" xml:"iOSInterruptionLevel,omitempty"`
+	IOSInterruptionLevel          *string `json:"iOSInterruptionLevel,omitempty" xml:"iOSInterruptionLevel,omitempty"`
+	IOSLiveActivityAttributes     *string `json:"iOSLiveActivityAttributes,omitempty" xml:"iOSLiveActivityAttributes,omitempty"`
+	IOSLiveActivityAttributesType *string `json:"iOSLiveActivityAttributesType,omitempty" xml:"iOSLiveActivityAttributesType,omitempty"`
+	IOSLiveActivityContentState   *string `json:"iOSLiveActivityContentState,omitempty" xml:"iOSLiveActivityContentState,omitempty"`
+	IOSLiveActivityDismissalDate  *int64  `json:"iOSLiveActivityDismissalDate,omitempty" xml:"iOSLiveActivityDismissalDate,omitempty"`
+	IOSLiveActivityEvent          *string `json:"iOSLiveActivityEvent,omitempty" xml:"iOSLiveActivityEvent,omitempty"`
+	IOSLiveActivityId             *string `json:"iOSLiveActivityId,omitempty" xml:"iOSLiveActivityId,omitempty"`
+	IOSLiveActivityStaleDate      *int64  `json:"iOSLiveActivityStaleDate,omitempty" xml:"iOSLiveActivityStaleDate,omitempty"`
 	// example:
 	//
 	// ””
@@ -1921,6 +1930,41 @@ func (s *MassPushRequestPushTask) SetIOSInterruptionLevel(v string) *MassPushReq
 	return s
 }
 
+func (s *MassPushRequestPushTask) SetIOSLiveActivityAttributes(v string) *MassPushRequestPushTask {
+	s.IOSLiveActivityAttributes = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetIOSLiveActivityAttributesType(v string) *MassPushRequestPushTask {
+	s.IOSLiveActivityAttributesType = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetIOSLiveActivityContentState(v string) *MassPushRequestPushTask {
+	s.IOSLiveActivityContentState = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetIOSLiveActivityDismissalDate(v int64) *MassPushRequestPushTask {
+	s.IOSLiveActivityDismissalDate = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetIOSLiveActivityEvent(v string) *MassPushRequestPushTask {
+	s.IOSLiveActivityEvent = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetIOSLiveActivityId(v string) *MassPushRequestPushTask {
+	s.IOSLiveActivityId = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetIOSLiveActivityStaleDate(v int64) *MassPushRequestPushTask {
+	s.IOSLiveActivityStaleDate = &v
+	return s
+}
+
 func (s *MassPushRequestPushTask) SetIOSMusic(v string) *MassPushRequestPushTask {
 	s.IOSMusic = &v
 	return s
@@ -2171,10 +2215,14 @@ type PushRequest struct {
 	AndroidXiaoMiNotifyBody *string `json:"AndroidXiaoMiNotifyBody,omitempty" xml:"AndroidXiaoMiNotifyBody,omitempty"`
 	// Deprecated
 	AndroidXiaoMiNotifyTitle *string `json:"AndroidXiaoMiNotifyTitle,omitempty" xml:"AndroidXiaoMiNotifyTitle,omitempty"`
+	// Deprecated
+	//
 	// example:
 	//
 	// https://f6.market.xiaomi.com/download/MiPass/aaa/bbb.png
 	AndroidXiaomiBigPictureUrl *string `json:"AndroidXiaomiBigPictureUrl,omitempty" xml:"AndroidXiaomiBigPictureUrl,omitempty"`
+	// Deprecated
+	//
 	// example:
 	//
 	// https://imag.example.com/image.png
@@ -2185,8 +2233,6 @@ type PushRequest struct {
 	//
 	// 23267207
 	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// hello
@@ -2302,7 +2348,14 @@ type PushRequest struct {
 	// example:
 	//
 	// active
-	IOSInterruptionLevel *string `json:"iOSInterruptionLevel,omitempty" xml:"iOSInterruptionLevel,omitempty"`
+	IOSInterruptionLevel          *string `json:"iOSInterruptionLevel,omitempty" xml:"iOSInterruptionLevel,omitempty"`
+	IOSLiveActivityAttributes     *string `json:"iOSLiveActivityAttributes,omitempty" xml:"iOSLiveActivityAttributes,omitempty"`
+	IOSLiveActivityAttributesType *string `json:"iOSLiveActivityAttributesType,omitempty" xml:"iOSLiveActivityAttributesType,omitempty"`
+	IOSLiveActivityContentState   *string `json:"iOSLiveActivityContentState,omitempty" xml:"iOSLiveActivityContentState,omitempty"`
+	IOSLiveActivityDismissalDate  *int64  `json:"iOSLiveActivityDismissalDate,omitempty" xml:"iOSLiveActivityDismissalDate,omitempty"`
+	IOSLiveActivityEvent          *string `json:"iOSLiveActivityEvent,omitempty" xml:"iOSLiveActivityEvent,omitempty"`
+	IOSLiveActivityId             *string `json:"iOSLiveActivityId,omitempty" xml:"iOSLiveActivityId,omitempty"`
+	IOSLiveActivityStaleDate      *int64  `json:"iOSLiveActivityStaleDate,omitempty" xml:"iOSLiveActivityStaleDate,omitempty"`
 	// example:
 	//
 	// ""
@@ -2792,6 +2845,41 @@ func (s *PushRequest) SetIOSExtParameters(v string) *PushRequest {
 
 func (s *PushRequest) SetIOSInterruptionLevel(v string) *PushRequest {
 	s.IOSInterruptionLevel = &v
+	return s
+}
+
+func (s *PushRequest) SetIOSLiveActivityAttributes(v string) *PushRequest {
+	s.IOSLiveActivityAttributes = &v
+	return s
+}
+
+func (s *PushRequest) SetIOSLiveActivityAttributesType(v string) *PushRequest {
+	s.IOSLiveActivityAttributesType = &v
+	return s
+}
+
+func (s *PushRequest) SetIOSLiveActivityContentState(v string) *PushRequest {
+	s.IOSLiveActivityContentState = &v
+	return s
+}
+
+func (s *PushRequest) SetIOSLiveActivityDismissalDate(v int64) *PushRequest {
+	s.IOSLiveActivityDismissalDate = &v
+	return s
+}
+
+func (s *PushRequest) SetIOSLiveActivityEvent(v string) *PushRequest {
+	s.IOSLiveActivityEvent = &v
+	return s
+}
+
+func (s *PushRequest) SetIOSLiveActivityId(v string) *PushRequest {
+	s.IOSLiveActivityId = &v
+	return s
+}
+
+func (s *PushRequest) SetIOSLiveActivityStaleDate(v int64) *PushRequest {
+	s.IOSLiveActivityStaleDate = &v
 	return s
 }
 
@@ -6998,6 +7086,34 @@ func (client *Client) PushWithOptions(request *PushRequest, runtime *util.Runtim
 		query["iOSInterruptionLevel"] = request.IOSInterruptionLevel
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.IOSLiveActivityAttributes)) {
+		query["iOSLiveActivityAttributes"] = request.IOSLiveActivityAttributes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IOSLiveActivityAttributesType)) {
+		query["iOSLiveActivityAttributesType"] = request.IOSLiveActivityAttributesType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IOSLiveActivityContentState)) {
+		query["iOSLiveActivityContentState"] = request.IOSLiveActivityContentState
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IOSLiveActivityDismissalDate)) {
+		query["iOSLiveActivityDismissalDate"] = request.IOSLiveActivityDismissalDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IOSLiveActivityEvent)) {
+		query["iOSLiveActivityEvent"] = request.IOSLiveActivityEvent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IOSLiveActivityId)) {
+		query["iOSLiveActivityId"] = request.IOSLiveActivityId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IOSLiveActivityStaleDate)) {
+		query["iOSLiveActivityStaleDate"] = request.IOSLiveActivityStaleDate
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.IOSMusic)) {
 		query["iOSMusic"] = request.IOSMusic
 	}
@@ -7966,7 +8082,7 @@ func (client *Client) QueryPushRecords(request *QueryPushRecordsRequest) (_resul
 
 // Summary:
 //
-// App维度推送统计
+// # App维度推送统计
 //
 // @param request - QueryPushStatByAppRequest
 //
@@ -8031,7 +8147,7 @@ func (client *Client) QueryPushStatByAppWithOptions(request *QueryPushStatByAppR
 
 // Summary:
 //
-// App维度推送统计
+// # App维度推送统计
 //
 // @param request - QueryPushStatByAppRequest
 //
