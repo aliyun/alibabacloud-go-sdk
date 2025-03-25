@@ -2848,9 +2848,9 @@ func (s *CreateDBClusterResponse) SetBody(v *CreateDBClusterResponseBody) *Creat
 type CreateDBClusterEndpointRequest struct {
 	// Specifies whether to enable automatic association of newly added nodes with the cluster endpoint. Valid values:
 	//
-	// 	- **Enable**: enables automatic association of newly added nodes with the cluster endpoint.
+	// 	- **Enable**
 	//
-	// 	- **Disable*	- (default): disables automatic association of newly added nodes with the cluster endpoint.
+	// 	- **Disable*	- (default)
 	//
 	// example:
 	//
@@ -2983,12 +2983,6 @@ type CreateDBClusterEndpointRequest struct {
 	// 	- **ON**
 	//
 	// 	- **OFF**
-	//
-	// Enumerated values:
-	//
-	// 	- on
-	//
-	// 	- off
 	//
 	// example:
 	//
@@ -6550,7 +6544,14 @@ type DeleteMaskingRulesRequest struct {
 	// example:
 	//
 	// pc-*****************
-	DBClusterId      *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// Deletes data masking or encryption rules. Valid values:
+	//
+	// v1: deletes data masking rules. v2: deletes data encryption rules.
+	//
+	// example:
+	//
+	// v1
 	InterfaceVersion *string `json:"InterfaceVersion,omitempty" xml:"InterfaceVersion,omitempty"`
 	// The name of the masking rule. You can specify multiple masking rules at a time. Separate the masking rules with commas (,).
 	//
@@ -7144,9 +7145,11 @@ type DescribeAccountsResponseBodyAccounts struct {
 	AccountStatus *string `json:"AccountStatus,omitempty" xml:"AccountStatus,omitempty"`
 	// The type of the account. Valid values:
 	//
-	// 	- **Normal**: a standard account
+	// 	- **Normal**: standard account.
 	//
-	// 	- **Super**: a privileged account
+	// 	- **Super**: privileged account.
+	//
+	// 	- **ReadOnly**: global read-only account.
 	//
 	// example:
 	//
@@ -11869,7 +11872,8 @@ type DescribeDBClusterAttributeResponseBodyDBNodes struct {
 	// example:
 	//
 	// Primary
-	SubCluster *string `json:"SubCluster,omitempty" xml:"SubCluster,omitempty"`
+	SubCluster          *string `json:"SubCluster,omitempty" xml:"SubCluster,omitempty"`
+	SubGroupDescription *string `json:"SubGroupDescription,omitempty" xml:"SubGroupDescription,omitempty"`
 	// Availability zone ID.
 	//
 	// example:
@@ -12003,6 +12007,11 @@ func (s *DescribeDBClusterAttributeResponseBodyDBNodes) SetServerlessType(v stri
 
 func (s *DescribeDBClusterAttributeResponseBodyDBNodes) SetSubCluster(v string) *DescribeDBClusterAttributeResponseBodyDBNodes {
 	s.SubCluster = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyDBNodes) SetSubGroupDescription(v string) *DescribeDBClusterAttributeResponseBodyDBNodes {
+	s.SubGroupDescription = &v
 	return s
 }
 
@@ -15864,7 +15873,7 @@ type DescribeDBClustersRequest struct {
 	Expired      *bool   `json:"Expired,omitempty" xml:"Expired,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. The value must be an integer that is greater than 0. Default value: **1**.
+	// The page number. The value must be a positive integer that does not exceed the maximum value of the INTEGER data type. Default value: **1**.
 	//
 	// example:
 	//
@@ -21188,6 +21197,435 @@ func (s *DescribeGlobalSecurityIPGroupRelationResponse) SetStatusCode(v int32) *
 }
 
 func (s *DescribeGlobalSecurityIPGroupRelationResponse) SetBody(v *DescribeGlobalSecurityIPGroupRelationResponseBody) *DescribeGlobalSecurityIPGroupRelationResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeHistoryTasksRequest struct {
+	// example:
+	//
+	// 0
+	FromExecTime *int32 `json:"FromExecTime,omitempty" xml:"FromExecTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2025-01-02T11:31:03Z
+	FromStartTime *string `json:"FromStartTime,omitempty" xml:"FromStartTime,omitempty"`
+	// example:
+	//
+	// pc-2zed3m89cw***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// Instance
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-************
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *int64  `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// example:
+	//
+	// Running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// t-0mqi38ho0cgjv***
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// ChangeVariable
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// example:
+	//
+	// 0
+	ToExecTime *int32 `json:"ToExecTime,omitempty" xml:"ToExecTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2025-01-03T11:31:03Z
+	ToStartTime *string `json:"ToStartTime,omitempty" xml:"ToStartTime,omitempty"`
+}
+
+func (s DescribeHistoryTasksRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHistoryTasksRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHistoryTasksRequest) SetFromExecTime(v int32) *DescribeHistoryTasksRequest {
+	s.FromExecTime = &v
+	return s
+}
+
+func (s *DescribeHistoryTasksRequest) SetFromStartTime(v string) *DescribeHistoryTasksRequest {
+	s.FromStartTime = &v
+	return s
+}
+
+func (s *DescribeHistoryTasksRequest) SetInstanceId(v string) *DescribeHistoryTasksRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeHistoryTasksRequest) SetInstanceType(v string) *DescribeHistoryTasksRequest {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeHistoryTasksRequest) SetOwnerId(v int64) *DescribeHistoryTasksRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeHistoryTasksRequest) SetPageNumber(v int32) *DescribeHistoryTasksRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeHistoryTasksRequest) SetPageSize(v int32) *DescribeHistoryTasksRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeHistoryTasksRequest) SetRegionId(v string) *DescribeHistoryTasksRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeHistoryTasksRequest) SetResourceGroupId(v string) *DescribeHistoryTasksRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeHistoryTasksRequest) SetResourceOwnerAccount(v int64) *DescribeHistoryTasksRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeHistoryTasksRequest) SetResourceOwnerId(v int64) *DescribeHistoryTasksRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeHistoryTasksRequest) SetSecurityToken(v string) *DescribeHistoryTasksRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *DescribeHistoryTasksRequest) SetStatus(v string) *DescribeHistoryTasksRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeHistoryTasksRequest) SetTaskId(v string) *DescribeHistoryTasksRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *DescribeHistoryTasksRequest) SetTaskType(v string) *DescribeHistoryTasksRequest {
+	s.TaskType = &v
+	return s
+}
+
+func (s *DescribeHistoryTasksRequest) SetToExecTime(v int32) *DescribeHistoryTasksRequest {
+	s.ToExecTime = &v
+	return s
+}
+
+func (s *DescribeHistoryTasksRequest) SetToStartTime(v string) *DescribeHistoryTasksRequest {
+	s.ToStartTime = &v
+	return s
+}
+
+type DescribeHistoryTasksResponseBody struct {
+	Items []*DescribeHistoryTasksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// F90D7C14-2D1C-5B88-9CD1-23AB2CF89***
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 2
+	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeHistoryTasksResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHistoryTasksResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHistoryTasksResponseBody) SetItems(v []*DescribeHistoryTasksResponseBodyItems) *DescribeHistoryTasksResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *DescribeHistoryTasksResponseBody) SetPageNumber(v int32) *DescribeHistoryTasksResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeHistoryTasksResponseBody) SetPageSize(v int32) *DescribeHistoryTasksResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeHistoryTasksResponseBody) SetRequestId(v string) *DescribeHistoryTasksResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeHistoryTasksResponseBody) SetTotalCount(v string) *DescribeHistoryTasksResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeHistoryTasksResponseBodyItems struct {
+	// example:
+	//
+	// {}
+	ActionInfo *string `json:"ActionInfo,omitempty" xml:"ActionInfo,omitempty"`
+	// example:
+	//
+	// User
+	CallerSource *string `json:"CallerSource,omitempty" xml:"CallerSource,omitempty"`
+	// example:
+	//
+	// 1816563541899***
+	CallerUid *string `json:"CallerUid,omitempty" xml:"CallerUid,omitempty"`
+	// example:
+	//
+	// finish_task
+	CurrentStepName *string `json:"CurrentStepName,omitempty" xml:"CurrentStepName,omitempty"`
+	// example:
+	//
+	// polardb_mysql
+	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	// example:
+	//
+	// 2025-03-03T07:30:57Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// pc-2zed3m89cw***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// pc-2zed3m89cw***
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// example:
+	//
+	// Instance
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// example:
+	//
+	// polardb
+	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	// example:
+	//
+	// 100.0
+	Progress *float32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// example:
+	//
+	// ""
+	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 0
+	RemainTime *int32 `json:"RemainTime,omitempty" xml:"RemainTime,omitempty"`
+	// example:
+	//
+	// 2025-03-03T07:25:16Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// Succeed
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// {\\"steps\\":[{\\"step_name\\":\\"init_task\\"},{\\"step_name\\":\\"exec_task\\"},{\\"step_name\\":\\"finish_task\\"}]}
+	TaskDetail *string `json:"TaskDetail,omitempty" xml:"TaskDetail,omitempty"`
+	// example:
+	//
+	// t-0mqt8qhnw04ipz0***
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// ChangeVariable
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// example:
+	//
+	// 1816563541899***
+	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
+}
+
+func (s DescribeHistoryTasksResponseBodyItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHistoryTasksResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHistoryTasksResponseBodyItems) SetActionInfo(v string) *DescribeHistoryTasksResponseBodyItems {
+	s.ActionInfo = &v
+	return s
+}
+
+func (s *DescribeHistoryTasksResponseBodyItems) SetCallerSource(v string) *DescribeHistoryTasksResponseBodyItems {
+	s.CallerSource = &v
+	return s
+}
+
+func (s *DescribeHistoryTasksResponseBodyItems) SetCallerUid(v string) *DescribeHistoryTasksResponseBodyItems {
+	s.CallerUid = &v
+	return s
+}
+
+func (s *DescribeHistoryTasksResponseBodyItems) SetCurrentStepName(v string) *DescribeHistoryTasksResponseBodyItems {
+	s.CurrentStepName = &v
+	return s
+}
+
+func (s *DescribeHistoryTasksResponseBodyItems) SetDbType(v string) *DescribeHistoryTasksResponseBodyItems {
+	s.DbType = &v
+	return s
+}
+
+func (s *DescribeHistoryTasksResponseBodyItems) SetEndTime(v string) *DescribeHistoryTasksResponseBodyItems {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeHistoryTasksResponseBodyItems) SetInstanceId(v string) *DescribeHistoryTasksResponseBodyItems {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeHistoryTasksResponseBodyItems) SetInstanceName(v string) *DescribeHistoryTasksResponseBodyItems {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *DescribeHistoryTasksResponseBodyItems) SetInstanceType(v string) *DescribeHistoryTasksResponseBodyItems {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeHistoryTasksResponseBodyItems) SetProduct(v string) *DescribeHistoryTasksResponseBodyItems {
+	s.Product = &v
+	return s
+}
+
+func (s *DescribeHistoryTasksResponseBodyItems) SetProgress(v float32) *DescribeHistoryTasksResponseBodyItems {
+	s.Progress = &v
+	return s
+}
+
+func (s *DescribeHistoryTasksResponseBodyItems) SetReasonCode(v string) *DescribeHistoryTasksResponseBodyItems {
+	s.ReasonCode = &v
+	return s
+}
+
+func (s *DescribeHistoryTasksResponseBodyItems) SetRegionId(v string) *DescribeHistoryTasksResponseBodyItems {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeHistoryTasksResponseBodyItems) SetRemainTime(v int32) *DescribeHistoryTasksResponseBodyItems {
+	s.RemainTime = &v
+	return s
+}
+
+func (s *DescribeHistoryTasksResponseBodyItems) SetStartTime(v string) *DescribeHistoryTasksResponseBodyItems {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeHistoryTasksResponseBodyItems) SetStatus(v string) *DescribeHistoryTasksResponseBodyItems {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeHistoryTasksResponseBodyItems) SetTaskDetail(v string) *DescribeHistoryTasksResponseBodyItems {
+	s.TaskDetail = &v
+	return s
+}
+
+func (s *DescribeHistoryTasksResponseBodyItems) SetTaskId(v string) *DescribeHistoryTasksResponseBodyItems {
+	s.TaskId = &v
+	return s
+}
+
+func (s *DescribeHistoryTasksResponseBodyItems) SetTaskType(v string) *DescribeHistoryTasksResponseBodyItems {
+	s.TaskType = &v
+	return s
+}
+
+func (s *DescribeHistoryTasksResponseBodyItems) SetUid(v string) *DescribeHistoryTasksResponseBodyItems {
+	s.Uid = &v
+	return s
+}
+
+type DescribeHistoryTasksResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeHistoryTasksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeHistoryTasksResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHistoryTasksResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHistoryTasksResponse) SetHeaders(v map[string]*string) *DescribeHistoryTasksResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeHistoryTasksResponse) SetStatusCode(v int32) *DescribeHistoryTasksResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeHistoryTasksResponse) SetBody(v *DescribeHistoryTasksResponseBody) *DescribeHistoryTasksResponse {
 	s.Body = v
 	return s
 }
@@ -28968,7 +29406,11 @@ type ModifyDBClusterRequest struct {
 	DataSyncMode *string `json:"DataSyncMode,omitempty" xml:"DataSyncMode,omitempty"`
 	// The fault injection method. Valid values:
 	//
-	// 	- CrashSQLInjection: `Crash SQL`-based fault injection.
+	// 	- 0: `Crash SQL`-based fault injection.
+	//
+	// Valid values:
+	//
+	// 	- CrashSQLInjection: CrashSQLInjection.
 	//
 	// example:
 	//
@@ -29603,18 +30045,36 @@ func (s *ModifyDBClusterAndNodesParametersResponse) SetBody(v *ModifyDBClusterAn
 }
 
 type ModifyDBClusterArchRequest struct {
+	// The ID of the cluster.
+	//
 	// example:
 	//
 	// pc-****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// Specifies whether to enable the hot standby storage cluster feature. Valid values:
+	//
+	// 	- **on**: enables hot standby storage cluster.
+	//
+	// 	- **equal**: Enable a peer-to-peer cluster.
+	//
 	// example:
 	//
 	// on
 	HotStandbyCluster *string `json:"HotStandbyCluster,omitempty" xml:"HotStandbyCluster,omitempty"`
+	// The region ID.
+	//
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query information about regions.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The zone of the hot standby storage cluster. Valid values:
+	//
+	// 	- **auto*	- (default): The zone is automatically selected.
+	//
+	// >  You can use the default value when HotStandbyCluster is set to on. If HotStandbyCluster is set to equal, specify the zone of the hot standby storage cluster. You can call the [DescribeZones](https://help.aliyun.com/document_detail/98041.html) operation to query information about zones.
+	//
 	// example:
 	//
 	// cn-beijing-i
@@ -29650,14 +30110,20 @@ func (s *ModifyDBClusterArchRequest) SetStandbyAZ(v string) *ModifyDBClusterArch
 }
 
 type ModifyDBClusterArchResponseBody struct {
+	// The cluster ID.
+	//
 	// example:
 	//
 	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The order ID.
+	//
 	// example:
 	//
 	// 2148126708*****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6A2EE5B4-CC9F-46E1-A747-E43BC9******
@@ -34405,7 +34871,7 @@ type ModifyMaskingRulesRequest struct {
 	// true
 	Enable           *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	InterfaceVersion *string `json:"InterfaceVersion,omitempty" xml:"InterfaceVersion,omitempty"`
-	// The parameter that is used to specify the masking rule that you want to modify and the value in the JSON format. All parameter values are of the string type. Example: `{"auto": {"databases": ["db1"], "tables": ["tb1"], "columns": ["c1,c2"] }, "description": "This rule will be applied to the columns c1 and c2 in table t1", "enabled": true, "applies_to": ["user"]}`. Parameters in the function:
+	// The parameter that is used to specify the masking rule that you want to modify and the value in the JSON format. All parameter values are of the string type. Example: `{"auto": {"databases": ["db1"], "tables": ["tb1"], "columns": ["c1,c2"] }, "description": "This rule will be applied to the columns c1 and c2 in table t1", "enabled": true, "applies_to": ["user"]}`. Where,
 	//
 	// 	- `"auto"`: specifies that the dynamic masking algorithm is supported. This parameter is required.
 	//
@@ -34415,17 +34881,19 @@ type ModifyMaskingRulesRequest struct {
 	//
 	// 	- `"columns"`: Required. The names of fields to which the masking rule is applied. Separate the names with commas (,).
 	//
-	// 	- `"description"`: Optional. The description of the masking rule. The description can be up to 64 characters in length.
+	// 	- `"description"`: Optional. The description of the masking rule. The description is up to 64 characters in length.
 	//
-	// 	- `"enabled"`: Required. Specifies whether to enable the masking rule. Valid values: **true*	- and **false**.
+	// 	- `"enabled"`: Required. Specifies whether to enable the masking rule. Valid values: **true*	- (enable) and **false*	- (disable).
 	//
 	// 	- `"applies_to"`: The names of database accounts to which the masking rule is applied. Separate the names with commas (,).
 	//
 	// 	- `"exempted"`: The names of database accounts to which the masking rule is not applied. Separate the names with commas (,).
 	//
-	// >- If you specify `RuleName`, `RuleConfig` parameter is required.
+	// >
 	//
-	// >- You need to select either `"applies_to"` or `"exempted"`.
+	// 	- If you specify `RuleName`, `RuleConfig` parameter is required.
+	//
+	// 	- You need to select either `"applies_to"` or `"exempted"`.
 	//
 	// example:
 	//
@@ -34433,9 +34901,11 @@ type ModifyMaskingRulesRequest struct {
 	RuleConfig *string `json:"RuleConfig,omitempty" xml:"RuleConfig,omitempty"`
 	// The name of the data masking rule. You can specify only one rule name at a time.
 	//
-	// >- You can call the [DescribeMaskingRules](https://help.aliyun.com/document_detail/212573.html) operation to query the details of all masking rules for a specified cluster, such as the names of the masking rules.
+	// >
 	//
-	// >- If the rule name does not exist in the cluster, the system automatically creates a masking rule based on the name and the value of `RuleConfig`.
+	// 	- You can call the [DescribeMaskingRules](https://help.aliyun.com/document_detail/212573.html) operation to query the details of all masking rules for a specified cluster, such as the names of the masking rules.
+	//
+	// 	- If the rule name does not exist in the cluster, the system automatically creates a masking rule based on the name and the value of `RuleConfig`.
 	//
 	// example:
 	//
@@ -45139,6 +45609,141 @@ func (client *Client) DescribeGlobalSecurityIPGroupRelation(request *DescribeGlo
 
 // Summary:
 //
+// 任务中心任务列表
+//
+// @param request - DescribeHistoryTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeHistoryTasksResponse
+func (client *Client) DescribeHistoryTasksWithOptions(request *DescribeHistoryTasksRequest, runtime *util.RuntimeOptions) (_result *DescribeHistoryTasksResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FromExecTime)) {
+		query["FromExecTime"] = request.FromExecTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FromStartTime)) {
+		query["FromStartTime"] = request.FromStartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		query["InstanceType"] = request.InstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskType)) {
+		query["TaskType"] = request.TaskType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ToExecTime)) {
+		query["ToExecTime"] = request.ToExecTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ToStartTime)) {
+		query["ToStartTime"] = request.ToStartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeHistoryTasks"),
+		Version:     tea.String("2017-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeHistoryTasksResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeHistoryTasksResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 任务中心任务列表
+//
+// @param request - DescribeHistoryTasksRequest
+//
+// @return DescribeHistoryTasksResponse
+func (client *Client) DescribeHistoryTasks(request *DescribeHistoryTasksRequest) (_result *DescribeHistoryTasksResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeHistoryTasksResponse{}
+	_body, _err := client.DescribeHistoryTasksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the information of a license order.
 //
 // @param request - DescribeLicenseOrderDetailsRequest
@@ -48741,7 +49346,7 @@ func (client *Client) ModifyDBClusterAndNodesParameters(request *ModifyDBCluster
 
 // Summary:
 //
-// 变更standby模式
+// Changes the high availability mode of the cluster.
 //
 // @param request - ModifyDBClusterArchRequest
 //
@@ -48806,7 +49411,7 @@ func (client *Client) ModifyDBClusterArchWithOptions(request *ModifyDBClusterArc
 
 // Summary:
 //
-// 变更standby模式
+// Changes the high availability mode of the cluster.
 //
 // @param request - ModifyDBClusterArchRequest
 //

@@ -1,3 +1,8 @@
+2025-03-25 Version: v6.8.0
+- Support API DescribeHistoryTasks.
+- Update API DescribeDBClusterAttribute: add response parameters Body.DBNodes.$.SubGroupDescription.
+
+
 2025-03-20 Version: v6.7.1
 - Update API DescribeDBClusterAttribute: update response param.
 
