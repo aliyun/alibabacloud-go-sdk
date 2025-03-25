@@ -8880,7 +8880,8 @@ type CreateApplicationRequest struct {
 	// example:
 	//
 	// true
-	SwitchEnable *string `json:"SwitchEnable,omitempty" xml:"SwitchEnable,omitempty"`
+	SwitchEnable *string                         `json:"SwitchEnable,omitempty" xml:"SwitchEnable,omitempty"`
+	Tags         []*CreateApplicationRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s CreateApplicationRequest) String() string {
@@ -8928,6 +8929,147 @@ func (s *CreateApplicationRequest) SetSource(v string) *CreateApplicationRequest
 
 func (s *CreateApplicationRequest) SetSwitchEnable(v string) *CreateApplicationRequest {
 	s.SwitchEnable = &v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetTags(v []*CreateApplicationRequestTags) *CreateApplicationRequest {
+	s.Tags = v
+	return s
+}
+
+type CreateApplicationRequestTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateApplicationRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApplicationRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApplicationRequestTags) SetKey(v string) *CreateApplicationRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateApplicationRequestTags) SetValue(v string) *CreateApplicationRequestTags {
+	s.Value = &v
+	return s
+}
+
+type CreateApplicationShrinkRequest struct {
+	// The language of the response. Valid values:
+	//
+	// 	- zh: Chinese
+	//
+	// 	- en: English
+	//
+	// example:
+	//
+	// zh
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The name of the application.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// spring-cloud-a
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The programming language of the application.
+	//
+	// example:
+	//
+	// JAVA
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// MSE命名空间名字。
+	//
+	// example:
+	//
+	// prod
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The region to which the application belongs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// Specifies whether to start the switch.
+	//
+	// example:
+	//
+	// true
+	SentinelEnable *string `json:"SentinelEnable,omitempty" xml:"SentinelEnable,omitempty"`
+	// The service where the application is deployed. A value of ACK indicates Container Service for Kubernetes.
+	//
+	// example:
+	//
+	// ACK
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The name of the Microservices Engine (MSE) namespace.
+	//
+	// example:
+	//
+	// true
+	SwitchEnable *string `json:"SwitchEnable,omitempty" xml:"SwitchEnable,omitempty"`
+	TagsShrink   *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+}
+
+func (s CreateApplicationShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApplicationShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApplicationShrinkRequest) SetAcceptLanguage(v string) *CreateApplicationShrinkRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *CreateApplicationShrinkRequest) SetAppName(v string) *CreateApplicationShrinkRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *CreateApplicationShrinkRequest) SetLanguage(v string) *CreateApplicationShrinkRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *CreateApplicationShrinkRequest) SetNamespace(v string) *CreateApplicationShrinkRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *CreateApplicationShrinkRequest) SetRegion(v string) *CreateApplicationShrinkRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *CreateApplicationShrinkRequest) SetSentinelEnable(v string) *CreateApplicationShrinkRequest {
+	s.SentinelEnable = &v
+	return s
+}
+
+func (s *CreateApplicationShrinkRequest) SetSource(v string) *CreateApplicationShrinkRequest {
+	s.Source = &v
+	return s
+}
+
+func (s *CreateApplicationShrinkRequest) SetSwitchEnable(v string) *CreateApplicationShrinkRequest {
+	s.SwitchEnable = &v
+	return s
+}
+
+func (s *CreateApplicationShrinkRequest) SetTagsShrink(v string) *CreateApplicationShrinkRequest {
+	s.TagsShrink = &v
 	return s
 }
 
@@ -13034,7 +13176,8 @@ type CreateNamespaceRequest struct {
 	// example:
 	//
 	// myNamespace
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string                      `json:"Name,omitempty" xml:"Name,omitempty"`
+	Tag  []*CreateNamespaceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s CreateNamespaceRequest) String() string {
@@ -13057,6 +13200,75 @@ func (s *CreateNamespaceRequest) SetDescribe(v string) *CreateNamespaceRequest {
 
 func (s *CreateNamespaceRequest) SetName(v string) *CreateNamespaceRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateNamespaceRequest) SetTag(v []*CreateNamespaceRequestTag) *CreateNamespaceRequest {
+	s.Tag = v
+	return s
+}
+
+type CreateNamespaceRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateNamespaceRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateNamespaceRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateNamespaceRequestTag) SetKey(v string) *CreateNamespaceRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateNamespaceRequestTag) SetValue(v string) *CreateNamespaceRequestTag {
+	s.Value = &v
+	return s
+}
+
+type CreateNamespaceShrinkRequest struct {
+	// example:
+	//
+	// zh
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	Describe       *string `json:"Describe,omitempty" xml:"Describe,omitempty"`
+	// example:
+	//
+	// myNamespace
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+}
+
+func (s CreateNamespaceShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateNamespaceShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateNamespaceShrinkRequest) SetAcceptLanguage(v string) *CreateNamespaceShrinkRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *CreateNamespaceShrinkRequest) SetDescribe(v string) *CreateNamespaceShrinkRequest {
+	s.Describe = &v
+	return s
+}
+
+func (s *CreateNamespaceShrinkRequest) SetName(v string) *CreateNamespaceShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateNamespaceShrinkRequest) SetTagShrink(v string) *CreateNamespaceShrinkRequest {
+	s.TagShrink = &v
 	return s
 }
 
@@ -23461,7 +23673,8 @@ type GetApplicationListRequest struct {
 	// example:
 	//
 	// true
-	SwitchEnable *bool `json:"SwitchEnable,omitempty" xml:"SwitchEnable,omitempty"`
+	SwitchEnable *bool                            `json:"SwitchEnable,omitempty" xml:"SwitchEnable,omitempty"`
+	Tags         []*GetApplicationListRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s GetApplicationListRequest) String() string {
@@ -23524,6 +23737,182 @@ func (s *GetApplicationListRequest) SetSource(v string) *GetApplicationListReque
 
 func (s *GetApplicationListRequest) SetSwitchEnable(v bool) *GetApplicationListRequest {
 	s.SwitchEnable = &v
+	return s
+}
+
+func (s *GetApplicationListRequest) SetTags(v []*GetApplicationListRequestTags) *GetApplicationListRequest {
+	s.Tags = v
+	return s
+}
+
+type GetApplicationListRequestTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetApplicationListRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApplicationListRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationListRequestTags) SetKey(v string) *GetApplicationListRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *GetApplicationListRequestTags) SetValue(v string) *GetApplicationListRequestTags {
+	s.Value = &v
+	return s
+}
+
+type GetApplicationListShrinkRequest struct {
+	// The language of the response. Valid values:
+	//
+	// 	- zh: Chinese
+	//
+	// 	- en: English
+	//
+	// example:
+	//
+	// zh
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The ID of an application.
+	//
+	// example:
+	//
+	// hkhon1po62@c3df23522b*****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of an application.
+	//
+	// example:
+	//
+	// rest-container
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The programming language of the application, such as Java and Go.
+	//
+	// example:
+	//
+	// Java
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// The microservice namespace to which the application belongs.
+	//
+	// example:
+	//
+	// default
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The number of the page to return.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the region.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// Specifies whether to enable the Sentinel-compatible mode.
+	//
+	// example:
+	//
+	// true
+	SentinelEnable *bool `json:"SentinelEnable,omitempty" xml:"SentinelEnable,omitempty"`
+	// The source of the application. The value is fixed as edasmsc.
+	//
+	// example:
+	//
+	// edasmsc
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// Specifies whether to enable switching.
+	//
+	// example:
+	//
+	// true
+	SwitchEnable *bool   `json:"SwitchEnable,omitempty" xml:"SwitchEnable,omitempty"`
+	TagsShrink   *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+}
+
+func (s GetApplicationListShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApplicationListShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationListShrinkRequest) SetAcceptLanguage(v string) *GetApplicationListShrinkRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *GetApplicationListShrinkRequest) SetAppId(v string) *GetApplicationListShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *GetApplicationListShrinkRequest) SetAppName(v string) *GetApplicationListShrinkRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *GetApplicationListShrinkRequest) SetLanguage(v string) *GetApplicationListShrinkRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *GetApplicationListShrinkRequest) SetNamespace(v string) *GetApplicationListShrinkRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *GetApplicationListShrinkRequest) SetPageNumber(v int32) *GetApplicationListShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *GetApplicationListShrinkRequest) SetPageSize(v int32) *GetApplicationListShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetApplicationListShrinkRequest) SetRegion(v string) *GetApplicationListShrinkRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *GetApplicationListShrinkRequest) SetSentinelEnable(v bool) *GetApplicationListShrinkRequest {
+	s.SentinelEnable = &v
+	return s
+}
+
+func (s *GetApplicationListShrinkRequest) SetSource(v string) *GetApplicationListShrinkRequest {
+	s.Source = &v
+	return s
+}
+
+func (s *GetApplicationListShrinkRequest) SetSwitchEnable(v bool) *GetApplicationListShrinkRequest {
+	s.SwitchEnable = &v
+	return s
+}
+
+func (s *GetApplicationListShrinkRequest) SetTagsShrink(v string) *GetApplicationListShrinkRequest {
+	s.TagsShrink = &v
 	return s
 }
 
@@ -23687,7 +24076,8 @@ type GetApplicationListResponseBodyDataResult struct {
 	// example:
 	//
 	// 0
-	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *int64                 `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags   map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The user ID.
 	//
 	// example:
@@ -23746,6 +24136,11 @@ func (s *GetApplicationListResponseBodyDataResult) SetSource(v string) *GetAppli
 
 func (s *GetApplicationListResponseBodyDataResult) SetStatus(v int64) *GetApplicationListResponseBodyDataResult {
 	s.Status = &v
+	return s
+}
+
+func (s *GetApplicationListResponseBodyDataResult) SetTags(v map[string]interface{}) *GetApplicationListResponseBodyDataResult {
+	s.Tags = v
 	return s
 }
 
@@ -53374,7 +53769,8 @@ type ListNamespacesRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Region *string                     `json:"Region,omitempty" xml:"Region,omitempty"`
+	Tag    []*ListNamespacesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListNamespacesRequest) String() string {
@@ -53407,6 +53803,98 @@ func (s *ListNamespacesRequest) SetPageSize(v int32) *ListNamespacesRequest {
 
 func (s *ListNamespacesRequest) SetRegion(v string) *ListNamespacesRequest {
 	s.Region = &v
+	return s
+}
+
+func (s *ListNamespacesRequest) SetTag(v []*ListNamespacesRequestTag) *ListNamespacesRequest {
+	s.Tag = v
+	return s
+}
+
+type ListNamespacesRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListNamespacesRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNamespacesRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListNamespacesRequestTag) SetKey(v string) *ListNamespacesRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *ListNamespacesRequestTag) SetValue(v string) *ListNamespacesRequestTag {
+	s.Value = &v
+	return s
+}
+
+type ListNamespacesShrinkRequest struct {
+	// example:
+	//
+	// zh
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// example:
+	//
+	// myNamespace
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	Region    *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+}
+
+func (s ListNamespacesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNamespacesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListNamespacesShrinkRequest) SetAcceptLanguage(v string) *ListNamespacesShrinkRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *ListNamespacesShrinkRequest) SetName(v string) *ListNamespacesShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListNamespacesShrinkRequest) SetPageNumber(v int32) *ListNamespacesShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListNamespacesShrinkRequest) SetPageSize(v int32) *ListNamespacesShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListNamespacesShrinkRequest) SetRegion(v string) *ListNamespacesShrinkRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *ListNamespacesShrinkRequest) SetTagShrink(v string) *ListNamespacesShrinkRequest {
+	s.TagShrink = &v
 	return s
 }
 
@@ -53507,7 +53995,8 @@ type ListNamespacesResponseBodyDataResult struct {
 	// example:
 	//
 	// cn-hangzhou
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Region *string                `json:"Region,omitempty" xml:"Region,omitempty"`
+	Tags   map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// example:
 	//
 	// 2024-09-02T09:49:48.000+0000
@@ -53557,6 +54046,11 @@ func (s *ListNamespacesResponseBodyDataResult) SetNamespace(v string) *ListNames
 
 func (s *ListNamespacesResponseBodyDataResult) SetRegion(v string) *ListNamespacesResponseBodyDataResult {
 	s.Region = &v
+	return s
+}
+
+func (s *ListNamespacesResponseBodyDataResult) SetTags(v map[string]interface{}) *ListNamespacesResponseBodyDataResult {
+	s.Tags = v
 	return s
 }
 
@@ -80804,7 +81298,7 @@ func (client *Client) AddGatewaySlb(request *AddGatewaySlbRequest) (_result *Add
 
 // Summary:
 //
-// Create a new migration task
+// # Create a new migration task
 //
 // @param request - AddMigrationTaskRequest
 //
@@ -80897,7 +81391,7 @@ func (client *Client) AddMigrationTaskWithOptions(request *AddMigrationTaskReque
 
 // Summary:
 //
-// Create a new migration task
+// # Create a new migration task
 //
 // @param request - AddMigrationTaskRequest
 //
@@ -81600,7 +82094,7 @@ func (client *Client) BindSentinelBlockFallbackDefinition(request *BindSentinelB
 
 // Summary:
 //
-// Resource Transfer
+// # Resource Transfer
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -81669,7 +82163,7 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 
 // Summary:
 //
-// Resource Transfer
+// # Resource Transfer
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -81687,7 +82181,7 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 
 // Summary:
 //
-// Copy Nacos Configuration
+// # Copy Nacos Configuration
 //
 // Description:
 //
@@ -81768,7 +82262,7 @@ func (client *Client) CloneNacosConfigWithOptions(request *CloneNacosConfigReque
 
 // Summary:
 //
-// Copy Nacos Configuration
+// # Copy Nacos Configuration
 //
 // Description:
 //
@@ -81883,16 +82377,22 @@ func (client *Client) CloneSentinelRuleFromAhas(request *CloneSentinelRuleFromAh
 //
 // Creates an application.
 //
-// @param request - CreateApplicationRequest
+// @param tmpReq - CreateApplicationRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateApplicationResponse
-func (client *Client) CreateApplicationWithOptions(request *CreateApplicationRequest, runtime *util.RuntimeOptions) (_result *CreateApplicationResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) CreateApplicationWithOptions(tmpReq *CreateApplicationRequest, runtime *util.RuntimeOptions) (_result *CreateApplicationResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &CreateApplicationShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("Tags"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
 		query["AcceptLanguage"] = request.AcceptLanguage
@@ -81924,6 +82424,10 @@ func (client *Client) CreateApplicationWithOptions(request *CreateApplicationReq
 
 	if !tea.BoolValue(util.IsUnset(request.SwitchEnable)) {
 		query["SwitchEnable"] = request.SwitchEnable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
+		query["Tags"] = request.TagsShrink
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -82111,7 +82615,7 @@ func (client *Client) CreateCircuitBreakerRule(request *CreateCircuitBreakerRule
 
 // Summary:
 //
-// Create an MSE registration and configuration center instance
+// # Create an MSE registration and configuration center instance
 //
 // Description:
 //
@@ -82252,7 +82756,7 @@ func (client *Client) CreateClusterWithOptions(request *CreateClusterRequest, ru
 
 // Summary:
 //
-// Create an MSE registration and configuration center instance
+// # Create an MSE registration and configuration center instance
 //
 // Description:
 //
@@ -83414,18 +83918,24 @@ func (client *Client) CreateNacosService(request *CreateNacosServiceRequest) (_r
 
 // Summary:
 //
-// CreateNamespace
+// # CreateNamespace
 //
-// @param request - CreateNamespaceRequest
+// @param tmpReq - CreateNamespaceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateNamespaceResponse
-func (client *Client) CreateNamespaceWithOptions(request *CreateNamespaceRequest, runtime *util.RuntimeOptions) (_result *CreateNamespaceResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) CreateNamespaceWithOptions(tmpReq *CreateNamespaceRequest, runtime *util.RuntimeOptions) (_result *CreateNamespaceResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &CreateNamespaceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tag)) {
+		request.TagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tag, tea.String("Tag"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
 		query["AcceptLanguage"] = request.AcceptLanguage
@@ -83437,6 +83947,10 @@ func (client *Client) CreateNamespaceWithOptions(request *CreateNamespaceRequest
 
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagShrink)) {
+		query["Tag"] = request.TagShrink
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -83475,7 +83989,7 @@ func (client *Client) CreateNamespaceWithOptions(request *CreateNamespaceRequest
 
 // Summary:
 //
-// CreateNamespace
+// # CreateNamespace
 //
 // @param request - CreateNamespaceRequest
 //
@@ -85429,7 +85943,7 @@ func (client *Client) DeleteMigrationTask(request *DeleteMigrationTaskRequest) (
 
 // Summary:
 //
-// Delete specified Nacos configuration
+// # Delete specified Nacos configuration
 //
 // Description:
 //
@@ -85506,7 +86020,7 @@ func (client *Client) DeleteNacosConfigWithOptions(request *DeleteNacosConfigReq
 
 // Summary:
 //
-// Delete specified Nacos configuration
+// # Delete specified Nacos configuration
 //
 // Description:
 //
@@ -87138,16 +87652,22 @@ func (client *Client) GetApplicationInstanceList(request *GetApplicationInstance
 //
 // Obtains the list of applications.
 //
-// @param request - GetApplicationListRequest
+// @param tmpReq - GetApplicationListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetApplicationListResponse
-func (client *Client) GetApplicationListWithOptions(request *GetApplicationListRequest, runtime *util.RuntimeOptions) (_result *GetApplicationListResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) GetApplicationListWithOptions(tmpReq *GetApplicationListRequest, runtime *util.RuntimeOptions) (_result *GetApplicationListResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &GetApplicationListShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("Tags"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
 		query["AcceptLanguage"] = request.AcceptLanguage
@@ -87191,6 +87711,10 @@ func (client *Client) GetApplicationListWithOptions(request *GetApplicationListR
 
 	if !tea.BoolValue(util.IsUnset(request.SwitchEnable)) {
 		query["SwitchEnable"] = request.SwitchEnable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
+		query["Tags"] = request.TagsShrink
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -88727,7 +89251,7 @@ func (client *Client) GetMseSource(request *GetMseSourceRequest) (_result *GetMs
 
 // Summary:
 //
-// Get Nacos Configuration
+// # Get Nacos Configuration
 //
 // Description:
 //
@@ -88804,7 +89328,7 @@ func (client *Client) GetNacosConfigWithOptions(request *GetNacosConfigRequest, 
 
 // Summary:
 //
-// Get Nacos Configuration
+// # Get Nacos Configuration
 //
 // Description:
 //
@@ -93610,16 +94134,22 @@ func (client *Client) ListNacosHistoryConfigs(request *ListNacosHistoryConfigsRe
 //
 // 展示命名空间列表
 //
-// @param request - ListNamespacesRequest
+// @param tmpReq - ListNamespacesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListNamespacesResponse
-func (client *Client) ListNamespacesWithOptions(request *ListNamespacesRequest, runtime *util.RuntimeOptions) (_result *ListNamespacesResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ListNamespacesWithOptions(tmpReq *ListNamespacesRequest, runtime *util.RuntimeOptions) (_result *ListNamespacesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &ListNamespacesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tag)) {
+		request.TagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tag, tea.String("Tag"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
 		query["AcceptLanguage"] = request.AcceptLanguage
@@ -93639,6 +94169,10 @@ func (client *Client) ListNamespacesWithOptions(request *ListNamespacesRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.Region)) {
 		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagShrink)) {
+		query["Tag"] = request.TagShrink
 	}
 
 	req := &openapi.OpenApiRequest{
