@@ -1005,17 +1005,15 @@ type AddUserToDesktopGroupRequest struct {
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the desktop group that you want to assign to more regular users.
+	// The ID of the cloud computer share.
 	//
 	// example:
 	//
 	// dg-2i8qxpv6t1a03****
 	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
-	// The IDs of the desktop groups.
+	// The IDs of the cloud computer shares.
 	DesktopGroupIds []*string `json:"DesktopGroupIds,omitempty" xml:"DesktopGroupIds,omitempty" type:"Repeated"`
 	// The regular users to whom you want to assign the desktop group.
-	//
-	// This parameter is required.
 	EndUserIds []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
 	// The ID of the region.
 	//
@@ -1024,7 +1022,8 @@ type AddUserToDesktopGroupRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	UserOuPath *string `json:"UserOuPath,omitempty" xml:"UserOuPath,omitempty"`
 }
 
 func (s AddUserToDesktopGroupRequest) String() string {
@@ -1057,6 +1056,11 @@ func (s *AddUserToDesktopGroupRequest) SetEndUserIds(v []*string) *AddUserToDesk
 
 func (s *AddUserToDesktopGroupRequest) SetRegionId(v string) *AddUserToDesktopGroupRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *AddUserToDesktopGroupRequest) SetUserOuPath(v string) *AddUserToDesktopGroupRequest {
+	s.UserOuPath = &v
 	return s
 }
 
@@ -7179,6 +7183,7 @@ type CreateDesktopGroupRequest struct {
 	//
 	// ccg-0caoeogrk9m5****
 	TimerGroupId *string `json:"TimerGroupId,omitempty" xml:"TimerGroupId,omitempty"`
+	UserOuPath   *string `json:"UserOuPath,omitempty" xml:"UserOuPath,omitempty"`
 	// Specifies whether to enable disk encryption.
 	//
 	// example:
@@ -7471,6 +7476,11 @@ func (s *CreateDesktopGroupRequest) SetTag(v []*CreateDesktopGroupRequestTag) *C
 
 func (s *CreateDesktopGroupRequest) SetTimerGroupId(v string) *CreateDesktopGroupRequest {
 	s.TimerGroupId = &v
+	return s
+}
+
+func (s *CreateDesktopGroupRequest) SetUserOuPath(v string) *CreateDesktopGroupRequest {
+	s.UserOuPath = &v
 	return s
 }
 
@@ -19396,7 +19406,8 @@ type DescribeDesktopGroupsResponseBodyDesktopGroups struct {
 	// 80
 	SystemDiskSize *int32 `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
 	// The tags attached to the cloud computer pool.
-	Tags []*DescribeDesktopGroupsResponseBodyDesktopGroupsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Tags       []*DescribeDesktopGroupsResponseBodyDesktopGroupsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	UserOuPath *string                                               `json:"UserOuPath,omitempty" xml:"UserOuPath,omitempty"`
 	// The version number of the cloud computer pool.
 	//
 	// example:
@@ -19647,6 +19658,11 @@ func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetSystemDiskSize(v int
 
 func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetTags(v []*DescribeDesktopGroupsResponseBodyDesktopGroupsTags) *DescribeDesktopGroupsResponseBodyDesktopGroups {
 	s.Tags = v
+	return s
+}
+
+func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetUserOuPath(v string) *DescribeDesktopGroupsResponseBodyDesktopGroups {
+	s.UserOuPath = &v
 	return s
 }
 
@@ -36401,7 +36417,7 @@ func (s *DescribeUserConnectionRecordsRequest) SetRegionId(v string) *DescribeUs
 }
 
 type DescribeUserConnectionRecordsResponseBody struct {
-	// Details about connection records of the end user.
+	// The connection records.
 	ConnectionRecords []*DescribeUserConnectionRecordsResponseBodyConnectionRecords `json:"ConnectionRecords,omitempty" xml:"ConnectionRecords,omitempty" type:"Repeated"`
 	// The token that is used to start the next query.
 	//
@@ -36441,7 +36457,7 @@ func (s *DescribeUserConnectionRecordsResponseBody) SetRequestId(v string) *Desc
 }
 
 type DescribeUserConnectionRecordsResponseBodyConnectionRecords struct {
-	// The duration for which the end user is connected to the cloud computer. Unit: seconds.
+	// The connection duration. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -36866,7 +36882,7 @@ type DescribeUsersInGroupRequest struct {
 	//
 	// 1
 	ConnectState *int32 `json:"ConnectState,omitempty" xml:"ConnectState,omitempty"`
-	// The ID of the cloud computer pool.
+	// The ID of the cloud computer share.
 	//
 	// This parameter is required.
 	//
@@ -37011,7 +37027,7 @@ type DescribeUsersInGroupResponseBody struct {
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The total number of authorized users that is connected to cloud computers in the cloud computer pool.
+	// The total number of authorized users that are connected to cloud computers of the cloud computer share.
 	//
 	// example:
 	//
@@ -37022,8 +37038,9 @@ type DescribeUsersInGroupResponseBody struct {
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of authorized users of the cloud computer pool.
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	UserOuPath *string `json:"UserOuPath,omitempty" xml:"UserOuPath,omitempty"`
+	// The total number of authorized users of the cloud computer share.
 	//
 	// example:
 	//
@@ -37056,6 +37073,11 @@ func (s *DescribeUsersInGroupResponseBody) SetOnlineUsersCount(v int32) *Describ
 
 func (s *DescribeUsersInGroupResponseBody) SetRequestId(v string) *DescribeUsersInGroupResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeUsersInGroupResponseBody) SetUserOuPath(v string) *DescribeUsersInGroupResponseBody {
+	s.UserOuPath = &v
 	return s
 }
 
@@ -38869,7 +38891,7 @@ type ExportClientEventsResponseBody struct {
 	//
 	// example:
 	//
-	// https://cn-shanghai-servicemanager.oss-cn-shanghai.aliyuncs.com/A0_CLIENT_EVENT/EDS_Events%20List_20220519234611_w5HuD83KGs.csv?Expires=1652975773&OSSAccessKeyId=LTYL****8tso&Signature=4erMG*********k%3D
+	// https://cn-shanghai-servicemanager.oss-cn-shanghai.aliyuncs.com/A0_CLIENT_EVENT/EDS_Events%20List_20220519234611_w5HuD83KGs.csv?Expires=1652975773&OSSAccessKeyId=****&Signature=4erMG*********k%3D
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
@@ -38921,7 +38943,7 @@ func (s *ExportClientEventsResponse) SetBody(v *ExportClientEventsResponseBody) 
 }
 
 type ExportDesktopGroupInfoRequest struct {
-	// The billing method of the cloud computer pool.
+	// The billing method of the cloud computer share.
 	//
 	// Valid values:
 	//
@@ -38933,17 +38955,17 @@ type ExportDesktopGroupInfoRequest struct {
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The IDs of the cloud computer pools.
+	// The IDs of the cloud computer shares.
 	DesktopGroupId []*string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty" type:"Repeated"`
-	// The name of the cloud computer pool.
+	// The name of the cloud computer share.
 	//
 	// example:
 	//
 	// test
 	DesktopGroupName *string `json:"DesktopGroupName,omitempty" xml:"DesktopGroupName,omitempty"`
-	// The authorized user IDs of cloud computer pools.
+	// The IDs of the users to be authorized.
 	EndUserId []*string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty" type:"Repeated"`
-	// The time when the subscription cloud computer pool expires.
+	// The expiration date of the subscription cloud computer share.
 	//
 	// example:
 	//
@@ -38971,13 +38993,13 @@ type ExportDesktopGroupInfoRequest struct {
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the office network to which the cloud computer pool belongs.
+	// The ID of the office network.
 	//
 	// example:
 	//
 	// cn-hangzhou+dir-467671****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The ID of the policy that is associated with the cloud computer pool.
+	// The ID of the security policy.
 	//
 	// example:
 	//
@@ -38991,7 +39013,7 @@ type ExportDesktopGroupInfoRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The tags attached to the cloud computer pool. You can specify 1 to 20 tags.
+	// The tags. You can specify up to 20 tags.
 	Tag []*ExportDesktopGroupInfoRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -39064,13 +39086,13 @@ func (s *ExportDesktopGroupInfoRequest) SetTag(v []*ExportDesktopGroupInfoReques
 }
 
 type ExportDesktopGroupInfoRequestTag struct {
-	// The key of the tag. If you specify the `Tag` parameter, you must also specify the `Key` parameter. The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`. You cannot specify an empty string as a tag key.
+	// The tag key. You cannot specify an empty string as a tag key. A tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. The tag key cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag. The tag value can be an empty string. The tag value can be up to 128 characters in length. It cannot start with `acs:` and cannot contain `http://` or `https://`.
+	// The tag value. You can specify an empty string as a tag key. A tag value can be up to 128 characters in length and cannot start with `acs:`. The tag value cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
@@ -39103,27 +39125,27 @@ type ExportDesktopGroupInfoResponseBody struct {
 	//
 	// 24E05D3E-08F4-551E-B1F0-F6D84EE0BCCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The URL from which you can download the exported cloud computer pools. The details of the cloud computer pools include:
+	// The download URL of the XLSX file that contains cloud computer shares. The XLSX file provides the following information:
 	//
-	// 	- IDs and names of the cloud computer pools
+	// 	- Cloud computer share ID/name
 	//
-	// 	- IDs and names of the office networks
+	// 	- Office network ID/name
 	//
-	// 	- Cloud computer pool templates
+	// 	- Cloud computer share template
 	//
-	// 	- Number of CPU cores and memory size
+	// 	- vCPUs/Memory size
 	//
-	// 	- System disks and data disks
+	// 	- System disk/Data disk
 	//
-	// 	- Names of security policies
+	// 	- Security policy name
 	//
-	// 	- Number of current authorized users
+	// 	- Number of authorized users
 	//
-	// 	- Billing methods
+	// 	- Billing method
 	//
-	// 	- The time when the cloud computer pools were created
+	// 	- Creation time
 	//
-	// 	- The time when the cloud computer pools expire
+	// 	- Expiration time
 	//
 	// example:
 	//
@@ -51659,7 +51681,7 @@ func (s *ModifyUserEntitlementResponse) SetBody(v *ModifyUserEntitlementResponse
 }
 
 type ModifyUserToDesktopGroupRequest struct {
-	// The ID of the cloud computer pool whose end users you want to change.
+	// The ID of the cloud computer share.
 	//
 	// This parameter is required.
 	//
@@ -52819,17 +52841,15 @@ func (s *RemoveFilePermissionResponse) SetBody(v *RemoveFilePermissionResponseBo
 }
 
 type RemoveUserFromDesktopGroupRequest struct {
-	// The ID of the cloud computer pool for which you want to remove the authorized users.
+	// The ID of the cloud computer share.
 	//
 	// example:
 	//
 	// dg-2i8qxpv6t1a03****
 	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
-	// The IDs of cloud computer pools.
+	// The IDs of the cloud computer shares.
 	DesktopGroupIds []*string `json:"DesktopGroupIds,omitempty" xml:"DesktopGroupIds,omitempty" type:"Repeated"`
 	// The IDs of the authorized users that you want to remove.
-	//
-	// This parameter is required.
 	EndUserIds []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
 	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
 	//
@@ -52838,7 +52858,8 @@ type RemoveUserFromDesktopGroupRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	UserOuPath *string `json:"UserOuPath,omitempty" xml:"UserOuPath,omitempty"`
 }
 
 func (s RemoveUserFromDesktopGroupRequest) String() string {
@@ -52866,6 +52887,11 @@ func (s *RemoveUserFromDesktopGroupRequest) SetEndUserIds(v []*string) *RemoveUs
 
 func (s *RemoveUserFromDesktopGroupRequest) SetRegionId(v string) *RemoveUserFromDesktopGroupRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *RemoveUserFromDesktopGroupRequest) SetUserOuPath(v string) *RemoveUserFromDesktopGroupRequest {
+	s.UserOuPath = &v
 	return s
 }
 
@@ -53026,7 +53052,7 @@ type RenewDesktopGroupRequest struct {
 	//
 	// false
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// The ID of the cloud computer pool.
+	// The ID of the shared group.
 	//
 	// This parameter is required.
 	//
@@ -53643,13 +53669,17 @@ func (s *RenewNetworkPackagesResponse) SetBody(v *RenewNetworkPackagesResponseBo
 }
 
 type ResetDesktopsRequest struct {
-	// The ID of the cloud computer pool. If you specify the `DesktopId` parameter, ignore the `DesktopGroupId` parameter. If you do not specify the `DesktopId` parameter, specify the `DesktopGroupId` parameter in the call to request all IDs of the cloud computers in the specified pool.
+	// The ID of the cloud computer share.
+	//
+	// 	- If you specify `DesktopId`, ignore `DesktopGroupId`.
+	//
+	// 	- If you leave `DesktopId` empty, the system obtains the IDs of all cloud computers within the share specified by `DesktopGroupId`.``
 	//
 	// example:
 	//
 	// dg-07if7qsxoxkb6****
 	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
-	// The IDs of the cloud computer pools.
+	// The IDs of the cloud computer shares.
 	DesktopGroupIds []*string `json:"DesktopGroupIds,omitempty" xml:"DesktopGroupIds,omitempty" type:"Repeated"`
 	// The IDs of the cloud computers. You can specify the IDs of 1 to 100 cloud computers.
 	DesktopId []*string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
@@ -53659,9 +53689,15 @@ type ResetDesktopsRequest struct {
 	//
 	// m-4zfb6zj728hhr****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The billing method.
+	// The billing method of the cloud computer share.
 	//
-	// > This parameter is available only when you reset cloud computer pools. If you leave this parameter empty, all cloud computers in the specified cloud computer pool are reset, regardless of how the cloud computers are billed.
+	// >  This parameter takes effect when you reset a cloud computer share. If you leave this parameter empty, all cloud computers in that share are reset.
+	//
+	// Valid values:
+	//
+	// 	- PostPaid: pay-as-you-go.
+	//
+	// 	- PrePaid: subscription.
 	//
 	// example:
 	//
@@ -54635,7 +54671,7 @@ type SetDesktopGroupTimerRequest struct {
 	//
 	// 0 0 2 ? 	- 1-7
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
-	// The ID of the cloud computer pool.
+	// The ID of the cloud computer share.
 	//
 	// This parameter is required.
 	//
@@ -54783,7 +54819,7 @@ func (s *SetDesktopGroupTimerResponse) SetBody(v *SetDesktopGroupTimerResponseBo
 }
 
 type SetDesktopGroupTimerStatusRequest struct {
-	// The ID of the cloud computer pool.
+	// The ID of the cloud computer share.
 	//
 	// This parameter is required.
 	//
@@ -57703,7 +57739,7 @@ func (client *Client) AddFilePermission(request *AddFilePermissionRequest) (_res
 
 // Summary:
 //
-// Adds authorized end users of a desktop group.
+// Adds authorized users for a cloud computer share. The system automatically assigns cloud computers from a share to authorized users based on administrator-configured rules.
 //
 // @param request - AddUserToDesktopGroupRequest
 //
@@ -57734,6 +57770,10 @@ func (client *Client) AddUserToDesktopGroupWithOptions(request *AddUserToDesktop
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserOuPath)) {
+		query["UserOuPath"] = request.UserOuPath
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -57772,7 +57812,7 @@ func (client *Client) AddUserToDesktopGroupWithOptions(request *AddUserToDesktop
 
 // Summary:
 //
-// Adds authorized end users of a desktop group.
+// Adds authorized users for a cloud computer share. The system automatically assigns cloud computers from a share to authorized users based on administrator-configured rules.
 //
 // @param request - AddUserToDesktopGroupRequest
 //
@@ -58314,9 +58354,9 @@ func (client *Client) AssociateNetworkPackage(request *AssociateNetworkPackageRe
 //
 // Prerequisites
 //
-// 	- A CEN instance is created.
+//   - A CEN instance is created.
 //
-// 	- The office network is an advanced office network, and the account system type is convenient account.
+//   - The office network is an advanced office network, and the account system type is convenient account.
 //
 // >  The office network is added to the CEN instance when you create the instance. An office network can be added to only one CEN instance.
 //
@@ -58393,9 +58433,9 @@ func (client *Client) AttachCenWithOptions(request *AttachCenRequest, runtime *u
 //
 // Prerequisites
 //
-// 	- A CEN instance is created.
+//   - A CEN instance is created.
 //
-// 	- The office network is an advanced office network, and the account system type is convenient account.
+//   - The office network is an advanced office network, and the account system type is convenient account.
 //
 // >  The office network is added to the CEN instance when you create the instance. An office network can be added to only one CEN instance.
 //
@@ -59564,7 +59604,7 @@ func (client *Client) CreateADConnectorDirectory(request *CreateADConnectorDirec
 //
 // 3.  Call the [ListUserAdOrganizationUnits](https://help.aliyun.com/document_detail/311259.html) operation to query a list of organizational units (OUs) of the AD domain, and call the [ConfigADConnectorUser](https://help.aliyun.com/document_detail/311262.html) operation to specify an OU and administrator for the AD office network.
 //
-//     >  When you create the AD office network, take note of the DomainUserName and DomainPassword parameters. If you specify the parameters, you need to only configure a conditional forwarder. If you do not specify the parameters, you must configure a conditional forwarder, trust relationship, and OU as prompted.
+//	>  When you create the AD office network, take note of the DomainUserName and DomainPassword parameters. If you specify the parameters, you need to only configure a conditional forwarder. If you do not specify the parameters, you must configure a conditional forwarder, trust relationship, and OU as prompted.
 //
 // For more information, see [Create and manage enterprise AD office networks](https://help.aliyun.com/document_detail/214469.html).
 //
@@ -59721,7 +59761,7 @@ func (client *Client) CreateADConnectorOfficeSiteWithOptions(request *CreateADCo
 //
 // 3.  Call the [ListUserAdOrganizationUnits](https://help.aliyun.com/document_detail/311259.html) operation to query a list of organizational units (OUs) of the AD domain, and call the [ConfigADConnectorUser](https://help.aliyun.com/document_detail/311262.html) operation to specify an OU and administrator for the AD office network.
 //
-//     >  When you create the AD office network, take note of the DomainUserName and DomainPassword parameters. If you specify the parameters, you need to only configure a conditional forwarder. If you do not specify the parameters, you must configure a conditional forwarder, trust relationship, and OU as prompted.
+//	>  When you create the AD office network, take note of the DomainUserName and DomainPassword parameters. If you specify the parameters, you need to only configure a conditional forwarder. If you do not specify the parameters, you must configure a conditional forwarder, trust relationship, and OU as prompted.
 //
 // For more information, see [Create and manage enterprise AD office networks](https://help.aliyun.com/document_detail/214469.html).
 //
@@ -60692,9 +60732,9 @@ func (client *Client) CreateConfigGroup(request *CreateConfigGroupRequest) (_res
 //
 // Description:
 //
-//   To learn about the features, application scenarios, usage limits, scaling policies, and other details of shared groups, refer to [Overview](https://help.aliyun.com/document_detail/290959.html).
+//	  To learn about the features, application scenarios, usage limits, scaling policies, and other details of shared groups, refer to [Overview](https://help.aliyun.com/document_detail/290959.html).
 //
-// 	- Before you call this operation, make sure that the required resources, such as the office network, cloud computer template, and policies, are created.
+//		- Before you call this operation, make sure that the required resources, such as the office network, cloud computer template, and policies, are created.
 //
 // @param request - CreateDesktopGroupRequest
 //
@@ -60919,6 +60959,10 @@ func (client *Client) CreateDesktopGroupWithOptions(request *CreateDesktopGroupR
 		query["TimerGroupId"] = request.TimerGroupId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.UserOuPath)) {
+		query["UserOuPath"] = request.UserOuPath
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.VolumeEncryptionEnabled)) {
 		query["VolumeEncryptionEnabled"] = request.VolumeEncryptionEnabled
 	}
@@ -60971,9 +61015,9 @@ func (client *Client) CreateDesktopGroupWithOptions(request *CreateDesktopGroupR
 //
 // Description:
 //
-//   To learn about the features, application scenarios, usage limits, scaling policies, and other details of shared groups, refer to [Overview](https://help.aliyun.com/document_detail/290959.html).
+//	  To learn about the features, application scenarios, usage limits, scaling policies, and other details of shared groups, refer to [Overview](https://help.aliyun.com/document_detail/290959.html).
 //
-// 	- Before you call this operation, make sure that the required resources, such as the office network, cloud computer template, and policies, are created.
+//		- Before you call this operation, make sure that the required resources, such as the office network, cloud computer template, and policies, are created.
 //
 // @param request - CreateDesktopGroupRequest
 //
@@ -61128,15 +61172,15 @@ func (client *Client) CreateDesktopOversoldGroup(request *CreateDesktopOversoldG
 //
 // Before you create cloud computers, complete the following preparations:
 //
-// 	- An office network (formerly called workspace) and users are created. For more information, see:
+//   - An office network (formerly called workspace) and users are created. For more information, see:
 //
-//     	- Convenience office network: [CreateSimpleOfficeSite](https://help.aliyun.com/document_detail/215416.html) and [CreateUsers](https://help.aliyun.com/document_detail/437832.html).
+//   - Convenience office network: [CreateSimpleOfficeSite](https://help.aliyun.com/document_detail/215416.html) and [CreateUsers](https://help.aliyun.com/document_detail/437832.html).
 //
-//     	- Active Directory (AD) office network: [CreateADConnectorOfficeSite](https://help.aliyun.com/document_detail/215417.html) and [Create an AD user](https://help.aliyun.com/document_detail/188619.html).
+//   - Active Directory (AD) office network: [CreateADConnectorOfficeSite](https://help.aliyun.com/document_detail/215417.html) and [Create an AD user](https://help.aliyun.com/document_detail/188619.html).
 //
-// 	- Make sure a cloud computer template exists. If no cloud computer template exists, call the [CreateBundle](https://help.aliyun.com/document_detail/188883.html) operation to create a template.
+//   - Make sure a cloud computer template exists. If no cloud computer template exists, call the [CreateBundle](https://help.aliyun.com/document_detail/188883.html) operation to create a template.
 //
-// 	- Make sure a policy exists. If no policy exists, call the [CreatePolicyGroup](https://help.aliyun.com/document_detail/188889.html) operation to create a policy.
+//   - Make sure a policy exists. If no policy exists, call the [CreatePolicyGroup](https://help.aliyun.com/document_detail/188889.html) operation to create a policy.
 //
 // If you want the cloud computers to automatically execute a custom command script, you can use the `UserCommands` field to configure a custom command.
 //
@@ -61335,15 +61379,15 @@ func (client *Client) CreateDesktopsWithOptions(tmpReq *CreateDesktopsRequest, r
 //
 // Before you create cloud computers, complete the following preparations:
 //
-// 	- An office network (formerly called workspace) and users are created. For more information, see:
+//   - An office network (formerly called workspace) and users are created. For more information, see:
 //
-//     	- Convenience office network: [CreateSimpleOfficeSite](https://help.aliyun.com/document_detail/215416.html) and [CreateUsers](https://help.aliyun.com/document_detail/437832.html).
+//   - Convenience office network: [CreateSimpleOfficeSite](https://help.aliyun.com/document_detail/215416.html) and [CreateUsers](https://help.aliyun.com/document_detail/437832.html).
 //
-//     	- Active Directory (AD) office network: [CreateADConnectorOfficeSite](https://help.aliyun.com/document_detail/215417.html) and [Create an AD user](https://help.aliyun.com/document_detail/188619.html).
+//   - Active Directory (AD) office network: [CreateADConnectorOfficeSite](https://help.aliyun.com/document_detail/215417.html) and [Create an AD user](https://help.aliyun.com/document_detail/188619.html).
 //
-// 	- Make sure a cloud computer template exists. If no cloud computer template exists, call the [CreateBundle](https://help.aliyun.com/document_detail/188883.html) operation to create a template.
+//   - Make sure a cloud computer template exists. If no cloud computer template exists, call the [CreateBundle](https://help.aliyun.com/document_detail/188883.html) operation to create a template.
 //
-// 	- Make sure a policy exists. If no policy exists, call the [CreatePolicyGroup](https://help.aliyun.com/document_detail/188889.html) operation to create a policy.
+//   - Make sure a policy exists. If no policy exists, call the [CreatePolicyGroup](https://help.aliyun.com/document_detail/188889.html) operation to create a policy.
 //
 // If you want the cloud computers to automatically execute a custom command script, you can use the `UserCommands` field to configure a custom command.
 //
@@ -62088,9 +62132,9 @@ func (client *Client) CreatePolicyGroup(request *CreatePolicyGroupRequest) (_res
 //
 // Before you create a RAM directory, complete the following preparations:
 //
-// 	- Call the `CreateVpc` operation to create a virtual private cloud (VPC) in a region supported by Elastic Desktop Service.
+//   - Call the `CreateVpc` operation to create a virtual private cloud (VPC) in a region supported by Elastic Desktop Service.
 //
-// 	- Call the `CreateVSwitch` operation to create a vSwitch in the VPC. The vSwitch is in a zone that is supported by Elastic Desktop Service. You can call the [DescribeZones](https://help.aliyun.com/document_detail/196648.html) operation to obtain the most recent zone list for a region supported by Elastic Desktop Service
+//   - Call the `CreateVSwitch` operation to create a vSwitch in the VPC. The vSwitch is in a zone that is supported by Elastic Desktop Service. You can call the [DescribeZones](https://help.aliyun.com/document_detail/196648.html) operation to obtain the most recent zone list for a region supported by Elastic Desktop Service
 //
 // @param request - CreateRAMDirectoryRequest
 //
@@ -62169,9 +62213,9 @@ func (client *Client) CreateRAMDirectoryWithOptions(request *CreateRAMDirectoryR
 //
 // Before you create a RAM directory, complete the following preparations:
 //
-// 	- Call the `CreateVpc` operation to create a virtual private cloud (VPC) in a region supported by Elastic Desktop Service.
+//   - Call the `CreateVpc` operation to create a virtual private cloud (VPC) in a region supported by Elastic Desktop Service.
 //
-// 	- Call the `CreateVSwitch` operation to create a vSwitch in the VPC. The vSwitch is in a zone that is supported by Elastic Desktop Service. You can call the [DescribeZones](https://help.aliyun.com/document_detail/196648.html) operation to obtain the most recent zone list for a region supported by Elastic Desktop Service
+//   - Call the `CreateVSwitch` operation to create a vSwitch in the VPC. The vSwitch is in a zone that is supported by Elastic Desktop Service. You can call the [DescribeZones](https://help.aliyun.com/document_detail/196648.html) operation to obtain the most recent zone list for a region supported by Elastic Desktop Service
 //
 // @param request - CreateRAMDirectoryRequest
 //
@@ -62881,11 +62925,11 @@ func (client *Client) DeleteConfigGroup(request *DeleteConfigGroupRequest) (_res
 //
 // Description:
 //
-//   Before releasing a cloud computer share, ensure that no cloud computers within it are in the Connected state and that no end users have access permissions to it.
+//	  Before releasing a cloud computer share, ensure that no cloud computers within it are in the Connected state and that no end users have access permissions to it.
 //
-// 	- You cannot delete a cloud computer share with an active subscription if it contains cloud computers that have not yet expired.
+//		- You cannot delete a cloud computer share with an active subscription if it contains cloud computers that have not yet expired.
 //
-// 	- Deleting a pay-as-you-go cloud computer share will release all pay-as-you-go cloud computers within it.
+//		- Deleting a pay-as-you-go cloud computer share will release all pay-as-you-go cloud computers within it.
 //
 // @param request - DeleteDesktopGroupRequest
 //
@@ -62946,11 +62990,11 @@ func (client *Client) DeleteDesktopGroupWithOptions(request *DeleteDesktopGroupR
 //
 // Description:
 //
-//   Before releasing a cloud computer share, ensure that no cloud computers within it are in the Connected state and that no end users have access permissions to it.
+//	  Before releasing a cloud computer share, ensure that no cloud computers within it are in the Connected state and that no end users have access permissions to it.
 //
-// 	- You cannot delete a cloud computer share with an active subscription if it contains cloud computers that have not yet expired.
+//		- You cannot delete a cloud computer share with an active subscription if it contains cloud computers that have not yet expired.
 //
-// 	- Deleting a pay-as-you-go cloud computer share will release all pay-as-you-go cloud computers within it.
+//		- Deleting a pay-as-you-go cloud computer share will release all pay-as-you-go cloud computers within it.
 //
 // @param request - DeleteDesktopGroupRequest
 //
@@ -63288,9 +63332,9 @@ func (client *Client) DeleteEduRoom(request *DeleteEduRoomRequest) (_result *Del
 //
 // Description:
 //
-//   Images include system images and custom images. System images cannot be deleted.
+//	  Images include system images and custom images. System images cannot be deleted.
 //
-// 	- If an image that you want to delete is referenced by a cloud computer template, call the [DeleteBundles](https://help.aliyun.com/document_detail/436972.html) operation to delete the cloud computer template before you delete the image.
+//		- If an image that you want to delete is referenced by a cloud computer template, call the [DeleteBundles](https://help.aliyun.com/document_detail/436972.html) operation to delete the cloud computer template before you delete the image.
 //
 // @param request - DeleteImagesRequest
 //
@@ -63355,9 +63399,9 @@ func (client *Client) DeleteImagesWithOptions(request *DeleteImagesRequest, runt
 //
 // Description:
 //
-//   Images include system images and custom images. System images cannot be deleted.
+//	  Images include system images and custom images. System images cannot be deleted.
 //
-// 	- If an image that you want to delete is referenced by a cloud computer template, call the [DeleteBundles](https://help.aliyun.com/document_detail/436972.html) operation to delete the cloud computer template before you delete the image.
+//		- If an image that you want to delete is referenced by a cloud computer template, call the [DeleteBundles](https://help.aliyun.com/document_detail/436972.html) operation to delete the cloud computer template before you delete the image.
 //
 // @param request - DeleteImagesRequest
 //
@@ -63381,7 +63425,7 @@ func (client *Client) DeleteImages(request *DeleteImagesRequest) (_result *Delet
 //
 // Before you delete a File Storage NAS (NAS) file system, make sure that the data you want to retain is backed up.
 //
-// 	Warning: If a NAS file system is deleted, data stored in the NAS file system cannot be restored. Proceed with caution when you delete NAS file systems.
+//	Warning: If a NAS file system is deleted, data stored in the NAS file system cannot be restored. Proceed with caution when you delete NAS file systems.
 //
 // @param request - DeleteNASFileSystemsRequest
 //
@@ -63444,7 +63488,7 @@ func (client *Client) DeleteNASFileSystemsWithOptions(request *DeleteNASFileSyst
 //
 // Before you delete a File Storage NAS (NAS) file system, make sure that the data you want to retain is backed up.
 //
-// 	Warning: If a NAS file system is deleted, data stored in the NAS file system cannot be restored. Proceed with caution when you delete NAS file systems.
+//	Warning: If a NAS file system is deleted, data stored in the NAS file system cannot be restored. Proceed with caution when you delete NAS file systems.
 //
 // @param request - DeleteNASFileSystemsRequest
 //
@@ -63543,9 +63587,9 @@ func (client *Client) DeleteNetworkPackages(request *DeleteNetworkPackagesReques
 //
 // Before you delete an office network, make sure that the following operations are complete:
 //
-// 	- All cloud computers in the office network are released.
+//   - All cloud computers in the office network are released.
 //
-// 	- The data that you want to retain is backed up.
+//   - The data that you want to retain is backed up.
 //
 // >  Resources and data on cloud computers in an office network cannot be restored after you delete it. Proceed with caution.
 //
@@ -63610,9 +63654,9 @@ func (client *Client) DeleteOfficeSitesWithOptions(request *DeleteOfficeSitesReq
 //
 // Before you delete an office network, make sure that the following operations are complete:
 //
-// 	- All cloud computers in the office network are released.
+//   - All cloud computers in the office network are released.
 //
-// 	- The data that you want to retain is backed up.
+//   - The data that you want to retain is backed up.
 //
 // >  Resources and data on cloud computers in an office network cannot be restored after you delete it. Proceed with caution.
 //
@@ -63636,9 +63680,9 @@ func (client *Client) DeleteOfficeSites(request *DeleteOfficeSitesRequest) (_res
 //
 // Description:
 //
-//   You cannot delete the cloud computer policy created by the Elastic Desktop Service (EDS) system.
+//	  You cannot delete the cloud computer policy created by the Elastic Desktop Service (EDS) system.
 //
-// 	- You cannot delete the cloud computer policies that are associated with cloud computers.
+//		- You cannot delete the cloud computer policies that are associated with cloud computers.
 //
 // @param request - DeletePolicyGroupsRequest
 //
@@ -63699,9 +63743,9 @@ func (client *Client) DeletePolicyGroupsWithOptions(request *DeletePolicyGroupsR
 //
 // Description:
 //
-//   You cannot delete the cloud computer policy created by the Elastic Desktop Service (EDS) system.
+//	  You cannot delete the cloud computer policy created by the Elastic Desktop Service (EDS) system.
 //
-// 	- You cannot delete the cloud computer policies that are associated with cloud computers.
+//		- You cannot delete the cloud computer policies that are associated with cloud computers.
 //
 // @param request - DeletePolicyGroupsRequest
 //
@@ -67082,9 +67126,9 @@ func (client *Client) DescribeImages(request *DescribeImagesRequest) (_result *D
 
 // Description:
 //
-//   After you run a command, it may not succeed. You can call this operation to query the execution result.
+//	  After you run a command, it may not succeed. You can call this operation to query the execution result.
 //
-// 	- You can query the information about execution in the last two weeks. A maximum of 100,000 lines of execution information can be retained.
+//		- You can query the information about execution in the last two weeks. A maximum of 100,000 lines of execution information can be retained.
 //
 // @param request - DescribeInvocationsRequest
 //
@@ -67181,9 +67225,9 @@ func (client *Client) DescribeInvocationsWithOptions(request *DescribeInvocation
 
 // Description:
 //
-//   After you run a command, it may not succeed. You can call this operation to query the execution result.
+//	  After you run a command, it may not succeed. You can call this operation to query the execution result.
 //
-// 	- You can query the information about execution in the last two weeks. A maximum of 100,000 lines of execution information can be retained.
+//		- You can query the information about execution in the last two weeks. A maximum of 100,000 lines of execution information can be retained.
 //
 // @param request - DescribeInvocationsRequest
 //
@@ -67739,11 +67783,11 @@ func (client *Client) DescribePolicyGroups(request *DescribePolicyGroupsRequest)
 //
 // The request parameters vary based on the type of desktop resources whose price you want to query. Take note of the following items:
 //
-// 	- If you set ResourceType to OfficeSite, you must specify InstanceType.
+//   - If you set ResourceType to OfficeSite, you must specify InstanceType.
 //
-// 	- If you set ResourceType to Bandwidth, the pay-by-data-transfer metering method is used for network billing.
+//   - If you set ResourceType to Bandwidth, the pay-by-data-transfer metering method is used for network billing.
 //
-// 	- If you set ResourceType to Desktop, you must specify InstanceType, RootDiskSizeGib, and UserDiskSizeGib. You can specify OsType, PeriodUnit, Period, and Amount based on your business requirements.
+//   - If you set ResourceType to Desktop, you must specify InstanceType, RootDiskSizeGib, and UserDiskSizeGib. You can specify OsType, PeriodUnit, Period, and Amount based on your business requirements.
 //
 // > Before you call this operation to query the prices of cloud desktops by setting ResourceType to Desktop, you must know the desktop types and disk sizes that EDS provides. The disk sizes vary based on the desktop types. For more information, see [Cloud desktop types](https://help.aliyun.com/document_detail/188609.html).
 //
@@ -67866,11 +67910,11 @@ func (client *Client) DescribePriceWithOptions(request *DescribePriceRequest, ru
 //
 // The request parameters vary based on the type of desktop resources whose price you want to query. Take note of the following items:
 //
-// 	- If you set ResourceType to OfficeSite, you must specify InstanceType.
+//   - If you set ResourceType to OfficeSite, you must specify InstanceType.
 //
-// 	- If you set ResourceType to Bandwidth, the pay-by-data-transfer metering method is used for network billing.
+//   - If you set ResourceType to Bandwidth, the pay-by-data-transfer metering method is used for network billing.
 //
-// 	- If you set ResourceType to Desktop, you must specify InstanceType, RootDiskSizeGib, and UserDiskSizeGib. You can specify OsType, PeriodUnit, Period, and Amount based on your business requirements.
+//   - If you set ResourceType to Desktop, you must specify InstanceType, RootDiskSizeGib, and UserDiskSizeGib. You can specify OsType, PeriodUnit, Period, and Amount based on your business requirements.
 //
 // > Before you call this operation to query the prices of cloud desktops by setting ResourceType to Desktop, you must know the desktop types and disk sizes that EDS provides. The disk sizes vary based on the desktop types. For more information, see [Cloud desktop types](https://help.aliyun.com/document_detail/188609.html).
 //
@@ -68487,9 +68531,9 @@ func (client *Client) DescribeRenewalPrice(request *DescribeRenewalPriceRequest)
 //
 // Description:
 //
-//   This is a central operation and can be called only by using services in the China (Shanghai) region.
+//	  This is a central operation and can be called only by using services in the China (Shanghai) region.
 //
-// 	- You can query session statistics for the past hour.
+//		- You can query session statistics for the past hour.
 //
 // @param request - DescribeSessionStatisticRequest
 //
@@ -68566,9 +68610,9 @@ func (client *Client) DescribeSessionStatisticWithOptions(request *DescribeSessi
 //
 // Description:
 //
-//   This is a central operation and can be called only by using services in the China (Shanghai) region.
+//	  This is a central operation and can be called only by using services in the China (Shanghai) region.
 //
-// 	- You can query session statistics for the past hour.
+//		- You can query session statistics for the past hour.
 //
 // @param request - DescribeSessionStatisticRequest
 //
@@ -69073,7 +69117,7 @@ func (client *Client) DescribeUserProfilePathRules(request *DescribeUserProfileP
 
 // Summary:
 //
-// Queries the information about authorized users in a cloud computer pool, including the usernames, email addresses, mobile numbers, and cloud computer IDs.
+// Queries the information about authorized users of a cloud computer share, including the usernames, email addresses, mobile numbers, and cloud computer IDs.
 //
 // @param request - DescribeUsersInGroupRequest
 //
@@ -69162,7 +69206,7 @@ func (client *Client) DescribeUsersInGroupWithOptions(request *DescribeUsersInGr
 
 // Summary:
 //
-// Queries the information about authorized users in a cloud computer pool, including the usernames, email addresses, mobile numbers, and cloud computer IDs.
+// Queries the information about authorized users of a cloud computer share, including the usernames, email addresses, mobile numbers, and cloud computer IDs.
 //
 // @param request - DescribeUsersInGroupRequest
 //
@@ -69816,7 +69860,7 @@ func (client *Client) DissociateNetworkPackage(request *DissociateNetworkPackage
 
 // Summary:
 //
-// CDS文件下载
+// # CDS文件下载
 //
 // @param request - DownloadCdsFileRequest
 //
@@ -69885,7 +69929,7 @@ func (client *Client) DownloadCdsFileWithOptions(request *DownloadCdsFileRequest
 
 // Summary:
 //
-// CDS文件下载
+// # CDS文件下载
 //
 // @param request - DownloadCdsFileRequest
 //
@@ -70018,7 +70062,7 @@ func (client *Client) ExportClientEvents(request *ExportClientEventsRequest) (_r
 
 // Summary:
 //
-// Exports cloud computer pools. The list of cloud computer pools is saved as an XLSX file. Each entry of cloud computer pool data includes the ID and name of the cloud computer pool, the ID and name of the office network, the cloud computer pool template, and the name of the security policy.
+// Exports cloud computer shares and saves the list as an XLSX file. Each entry includes the ID and name of the cloud computer share, the ID and name of the office network, the cloud computer share template, and the name of the security policy.
 //
 // @param request - ExportDesktopGroupInfoRequest
 //
@@ -70115,7 +70159,7 @@ func (client *Client) ExportDesktopGroupInfoWithOptions(request *ExportDesktopGr
 
 // Summary:
 //
-// Exports cloud computer pools. The list of cloud computer pools is saved as an XLSX file. Each entry of cloud computer pool data includes the ID and name of the cloud computer pool, the ID and name of the office network, the cloud computer pool template, and the name of the security policy.
+// Exports cloud computer shares and saves the list as an XLSX file. Each entry includes the ID and name of the cloud computer share, the ID and name of the office network, the cloud computer share template, and the name of the security policy.
 //
 // @param request - ExportDesktopGroupInfoRequest
 //
@@ -70139,35 +70183,35 @@ func (client *Client) ExportDesktopGroupInfo(request *ExportDesktopGroupInfoRequ
 //
 // The cloud computer list exported by calling this operation is saved as a CSV file. Each entry of data of a cloud computer includes the following fields:
 //
-// 	- Cloud computer ID and name
+//   - Cloud computer ID and name
 //
-// 	- Office network ID and name
+//   - Office network ID and name
 //
-// 	- The instance type, OS and protocol of the cloud computer
+//   - The instance type, OS and protocol of the cloud computer
 //
-// 	- System disk and data disk of the cloud computer
+//   - System disk and data disk of the cloud computer
 //
-// 	- The status
+//   - The status
 //
-// 	- Purchase method
+//   - Purchase method
 //
-// 	- The time when the cloud computer expires
+//   - The time when the cloud computer expires
 //
-// 	- Remaining duration and total duration
+//   - Remaining duration and total duration
 //
-// 	- Number of assigned users and number of current users
+//   - Number of assigned users and number of current users
 //
-// 	- Office network type
+//   - Office network type
 //
-// 	- The time when the cloud computer was created
+//   - The time when the cloud computer was created
 //
-// 	- Tags
+//   - Tags
 //
-// 	- Encryption status
+//   - Encryption status
 //
-// 	- IP
+//   - IP
 //
-// 	- The hostname
+//   - The hostname
 //
 // @param request - ExportDesktopListInfoRequest
 //
@@ -70282,35 +70326,35 @@ func (client *Client) ExportDesktopListInfoWithOptions(request *ExportDesktopLis
 //
 // The cloud computer list exported by calling this operation is saved as a CSV file. Each entry of data of a cloud computer includes the following fields:
 //
-// 	- Cloud computer ID and name
+//   - Cloud computer ID and name
 //
-// 	- Office network ID and name
+//   - Office network ID and name
 //
-// 	- The instance type, OS and protocol of the cloud computer
+//   - The instance type, OS and protocol of the cloud computer
 //
-// 	- System disk and data disk of the cloud computer
+//   - System disk and data disk of the cloud computer
 //
-// 	- The status
+//   - The status
 //
-// 	- Purchase method
+//   - Purchase method
 //
-// 	- The time when the cloud computer expires
+//   - The time when the cloud computer expires
 //
-// 	- Remaining duration and total duration
+//   - Remaining duration and total duration
 //
-// 	- Number of assigned users and number of current users
+//   - Number of assigned users and number of current users
 //
-// 	- Office network type
+//   - Office network type
 //
-// 	- The time when the cloud computer was created
+//   - The time when the cloud computer was created
 //
-// 	- Tags
+//   - Tags
 //
-// 	- Encryption status
+//   - Encryption status
 //
-// 	- IP
+//   - IP
 //
-// 	- The hostname
+//   - The hostname
 //
 // @param request - ExportDesktopListInfoRequest
 //
@@ -70518,7 +70562,7 @@ func (client *Client) GetConnectionTicket(request *GetConnectionTicketRequest) (
 
 // Summary:
 //
-// Obtains the credentials of the stream collaboration
+// # Obtains the credentials of the stream collaboration
 //
 // @param request - GetCoordinateTicketRequest
 //
@@ -70587,7 +70631,7 @@ func (client *Client) GetCoordinateTicketWithOptions(request *GetCoordinateTicke
 
 // Summary:
 //
-// Obtains the credentials of the stream collaboration
+// # Obtains the credentials of the stream collaboration
 //
 // @param request - GetCoordinateTicketRequest
 //
@@ -73049,11 +73093,11 @@ func (client *Client) ModifyCustomizedListHeaders(request *ModifyCustomizedListH
 //
 // Description:
 //
-//   Before you call this operation, make sure that you fully understand the billing methods of cloud computers. For more information, see [Billing overview](https://help.aliyun.com/document_detail/188395.html).
+//	  Before you call this operation, make sure that you fully understand the billing methods of cloud computers. For more information, see [Billing overview](https://help.aliyun.com/document_detail/188395.html).
 //
-// 	- Before you call this operation, make sure that the cloud computers whose billing method you want to change are in the Running or Stopped state and you have no overdue payments in your Alibaba Cloud account.
+//		- Before you call this operation, make sure that the cloud computers whose billing method you want to change are in the Running or Stopped state and you have no overdue payments in your Alibaba Cloud account.
 //
-// 	- After the order payment is completed, the system starts to change the billing method of the cloud computers. During the change, you cannot perform operations, such as starting or stopping the cloud computers, and changing configurations of the cloud computers.
+//		- After the order payment is completed, the system starts to change the billing method of the cloud computers. During the change, you cannot perform operations, such as starting or stopping the cloud computers, and changing configurations of the cloud computers.
 //
 // @param request - ModifyDesktopChargeTypeRequest
 //
@@ -73138,11 +73182,11 @@ func (client *Client) ModifyDesktopChargeTypeWithOptions(request *ModifyDesktopC
 //
 // Description:
 //
-//   Before you call this operation, make sure that you fully understand the billing methods of cloud computers. For more information, see [Billing overview](https://help.aliyun.com/document_detail/188395.html).
+//	  Before you call this operation, make sure that you fully understand the billing methods of cloud computers. For more information, see [Billing overview](https://help.aliyun.com/document_detail/188395.html).
 //
-// 	- Before you call this operation, make sure that the cloud computers whose billing method you want to change are in the Running or Stopped state and you have no overdue payments in your Alibaba Cloud account.
+//		- Before you call this operation, make sure that the cloud computers whose billing method you want to change are in the Running or Stopped state and you have no overdue payments in your Alibaba Cloud account.
 //
-// 	- After the order payment is completed, the system starts to change the billing method of the cloud computers. During the change, you cannot perform operations, such as starting or stopping the cloud computers, and changing configurations of the cloud computers.
+//		- After the order payment is completed, the system starts to change the billing method of the cloud computers. During the change, you cannot perform operations, such as starting or stopping the cloud computers, and changing configurations of the cloud computers.
 //
 // @param request - ModifyDesktopChargeTypeRequest
 //
@@ -73788,23 +73832,23 @@ func (client *Client) ModifyDesktopOversoldUserGroup(request *ModifyDesktopOvers
 //
 // Changing the configurations of a cloud computer includes changing the instance type of the cloud computer and scaling up the disks of the cloud computer.
 //
-// 	- Before you change the configurations of a cloud computer, you must understand the instance types and disk sizes supported by cloud computers. For more information, see [Cloud computer types](https://help.aliyun.com/document_detail/188609.html). You can call the [DescribeDesktopTypes](https://help.aliyun.com/document_detail/188882.html) operation to query the instance types supported by cloud computers.
+//   - Before you change the configurations of a cloud computer, you must understand the instance types and disk sizes supported by cloud computers. For more information, see [Cloud computer types](https://help.aliyun.com/document_detail/188609.html). You can call the [DescribeDesktopTypes](https://help.aliyun.com/document_detail/188882.html) operation to query the instance types supported by cloud computers.
 //
-// 	- You must change at least one of the following configurations: instance type, system disk size, and data disk size of the cloud computer. You must specify at least one of the following parameters: `DesktopType`, `RootDiskSizeGib`, and `UserDiskSizeGib`. Take note of the following items:
+//   - You must change at least one of the following configurations: instance type, system disk size, and data disk size of the cloud computer. You must specify at least one of the following parameters: `DesktopType`, `RootDiskSizeGib`, and `UserDiskSizeGib`. Take note of the following items:
 //
-//     	- The instance type of a cloud computer includes the configurations of vCPUs, memory, and GPUs. You can only change an instance type to another. You cannot change only one of the configurations.
+//   - The instance type of a cloud computer includes the configurations of vCPUs, memory, and GPUs. You can only change an instance type to another. You cannot change only one of the configurations.
 //
-//     	- You cannot change a cloud computer between the General Office type and the non-General Office type. You cannot yet change a cloud computer between the Graphics type and the non-Graphics type.
+//   - You cannot change a cloud computer between the General Office type and the non-General Office type. You cannot yet change a cloud computer between the Graphics type and the non-Graphics type.
 //
-//     	- The system disk and data disks of a cloud computer can only be scaled up and cannot be scaled down.
+//   - The system disk and data disks of a cloud computer can only be scaled up and cannot be scaled down.
 //
-//     	- If the billing method of the cloud computer is subscription, the system calculates the price difference based on the configuration difference between the original cloud computer and the new cloud computer. You must make up for the price difference or receive a refund for the price difference.
+//   - If the billing method of the cloud computer is subscription, the system calculates the price difference based on the configuration difference between the original cloud computer and the new cloud computer. You must make up for the price difference or receive a refund for the price difference.
 //
-//     	- We recommend that you do not change the configurations of a cloud computer twice within 5 minutes.
+//   - We recommend that you do not change the configurations of a cloud computer twice within 5 minutes.
 //
-//     	- When you change the configurations of a cloud computer, the cloud computer must be in the Stopped state.
+//   - When you change the configurations of a cloud computer, the cloud computer must be in the Stopped state.
 //
-// 	- After you change the configurations of a cloud computer, the personal data on the cloud computer is not affected.
+//   - After you change the configurations of a cloud computer, the personal data on the cloud computer is not affected.
 //
 // @param request - ModifyDesktopSpecRequest
 //
@@ -73899,23 +73943,23 @@ func (client *Client) ModifyDesktopSpecWithOptions(request *ModifyDesktopSpecReq
 //
 // Changing the configurations of a cloud computer includes changing the instance type of the cloud computer and scaling up the disks of the cloud computer.
 //
-// 	- Before you change the configurations of a cloud computer, you must understand the instance types and disk sizes supported by cloud computers. For more information, see [Cloud computer types](https://help.aliyun.com/document_detail/188609.html). You can call the [DescribeDesktopTypes](https://help.aliyun.com/document_detail/188882.html) operation to query the instance types supported by cloud computers.
+//   - Before you change the configurations of a cloud computer, you must understand the instance types and disk sizes supported by cloud computers. For more information, see [Cloud computer types](https://help.aliyun.com/document_detail/188609.html). You can call the [DescribeDesktopTypes](https://help.aliyun.com/document_detail/188882.html) operation to query the instance types supported by cloud computers.
 //
-// 	- You must change at least one of the following configurations: instance type, system disk size, and data disk size of the cloud computer. You must specify at least one of the following parameters: `DesktopType`, `RootDiskSizeGib`, and `UserDiskSizeGib`. Take note of the following items:
+//   - You must change at least one of the following configurations: instance type, system disk size, and data disk size of the cloud computer. You must specify at least one of the following parameters: `DesktopType`, `RootDiskSizeGib`, and `UserDiskSizeGib`. Take note of the following items:
 //
-//     	- The instance type of a cloud computer includes the configurations of vCPUs, memory, and GPUs. You can only change an instance type to another. You cannot change only one of the configurations.
+//   - The instance type of a cloud computer includes the configurations of vCPUs, memory, and GPUs. You can only change an instance type to another. You cannot change only one of the configurations.
 //
-//     	- You cannot change a cloud computer between the General Office type and the non-General Office type. You cannot yet change a cloud computer between the Graphics type and the non-Graphics type.
+//   - You cannot change a cloud computer between the General Office type and the non-General Office type. You cannot yet change a cloud computer between the Graphics type and the non-Graphics type.
 //
-//     	- The system disk and data disks of a cloud computer can only be scaled up and cannot be scaled down.
+//   - The system disk and data disks of a cloud computer can only be scaled up and cannot be scaled down.
 //
-//     	- If the billing method of the cloud computer is subscription, the system calculates the price difference based on the configuration difference between the original cloud computer and the new cloud computer. You must make up for the price difference or receive a refund for the price difference.
+//   - If the billing method of the cloud computer is subscription, the system calculates the price difference based on the configuration difference between the original cloud computer and the new cloud computer. You must make up for the price difference or receive a refund for the price difference.
 //
-//     	- We recommend that you do not change the configurations of a cloud computer twice within 5 minutes.
+//   - We recommend that you do not change the configurations of a cloud computer twice within 5 minutes.
 //
-//     	- When you change the configurations of a cloud computer, the cloud computer must be in the Stopped state.
+//   - When you change the configurations of a cloud computer, the cloud computer must be in the Stopped state.
 //
-// 	- After you change the configurations of a cloud computer, the personal data on the cloud computer is not affected.
+//   - After you change the configurations of a cloud computer, the personal data on the cloud computer is not affected.
 //
 // @param request - ModifyDesktopSpecRequest
 //
@@ -74218,11 +74262,11 @@ func (client *Client) ModifyDiskSpec(request *ModifyDiskSpecRequest) (_result *M
 //
 // Description:
 //
-//   The cloud computer must be in the Running state.
+//	  The cloud computer must be in the Running state.
 //
-// 	- After you call this operation, the assignment result is immediately returned. You can call the [DescribeDesktops](https://help.aliyun.com/document_detail/436815.html) operation to query the assignment of the cloud computer. The value of the `ManagementFlags` response parameter indicates the assignment of the cloud computer. A value of `ASSIGNING` indicates that the cloud computer is being assigned, and other values indicate that the cloud computer is assigned.
+//		- After you call this operation, the assignment result is immediately returned. You can call the [DescribeDesktops](https://help.aliyun.com/document_detail/436815.html) operation to query the assignment of the cloud computer. The value of the `ManagementFlags` response parameter indicates the assignment of the cloud computer. A value of `ASSIGNING` indicates that the cloud computer is being assigned, and other values indicate that the cloud computer is assigned.
 //
-// 	- We recommend that you check the assignment every 2 to 5 seconds and perform the checks within 50 seconds. Typically, 1 to 5 seconds are required to complete the assignment.
+//		- We recommend that you check the assignment every 2 to 5 seconds and perform the checks within 50 seconds. Typically, 1 to 5 seconds are required to complete the assignment.
 //
 // @param request - ModifyEntitlementRequest
 //
@@ -74287,11 +74331,11 @@ func (client *Client) ModifyEntitlementWithOptions(request *ModifyEntitlementReq
 //
 // Description:
 //
-//   The cloud computer must be in the Running state.
+//	  The cloud computer must be in the Running state.
 //
-// 	- After you call this operation, the assignment result is immediately returned. You can call the [DescribeDesktops](https://help.aliyun.com/document_detail/436815.html) operation to query the assignment of the cloud computer. The value of the `ManagementFlags` response parameter indicates the assignment of the cloud computer. A value of `ASSIGNING` indicates that the cloud computer is being assigned, and other values indicate that the cloud computer is assigned.
+//		- After you call this operation, the assignment result is immediately returned. You can call the [DescribeDesktops](https://help.aliyun.com/document_detail/436815.html) operation to query the assignment of the cloud computer. The value of the `ManagementFlags` response parameter indicates the assignment of the cloud computer. A value of `ASSIGNING` indicates that the cloud computer is being assigned, and other values indicate that the cloud computer is assigned.
 //
-// 	- We recommend that you check the assignment every 2 to 5 seconds and perform the checks within 50 seconds. Typically, 1 to 5 seconds are required to complete the assignment.
+//		- We recommend that you check the assignment every 2 to 5 seconds and perform the checks within 50 seconds. Typically, 1 to 5 seconds are required to complete the assignment.
 //
 // @param request - ModifyEntitlementRequest
 //
@@ -74410,25 +74454,25 @@ func (client *Client) ModifyImageAttribute(request *ModifyImageAttributeRequest)
 //
 // ### [](#)Quota and billing
 //
-// 	- A shared image does not count against the image quotas of principals to which the image is shared.
+//   - A shared image does not count against the image quotas of principals to which the image is shared.
 //
-// 	- After a principal uses a shared image to create a cloud computer, the sharer is not charged for the shared image.
+//   - After a principal uses a shared image to create a cloud computer, the sharer is not charged for the shared image.
 //
-// 	- You are not charged for shared images.
+//   - You are not charged for shared images.
 //
 // ### [](#)Supported sharing behaviors
 //
-// 	- You can share custom images with other Alibaba Cloud accounts.
+//   - You can share custom images with other Alibaba Cloud accounts.
 //
-// 	- You can share custom images between accounts in the China site (aliyun.com) and the international site (alibabacloud.com).
+//   - You can share custom images between accounts in the China site (aliyun.com) and the international site (alibabacloud.com).
 //
 // ### [](#)Unsupported sharing behaviors
 //
-// 	- You cannot share images that are shared by other Alibaba Cloud accounts.
+//   - You cannot share images that are shared by other Alibaba Cloud accounts.
 //
-// 	- You cannot share encrypted images.
+//   - You cannot share encrypted images.
 //
-// 	- You cannot share images across regions. If you want to share an image across regions, you must copy the image to the destination region and then share the image. For more information, see [CopyImage](https://help.aliyun.com/document_detail/436978.html).
+//   - You cannot share images across regions. If you want to share an image across regions, you must copy the image to the destination region and then share the image. For more information, see [CopyImage](https://help.aliyun.com/document_detail/436978.html).
 //
 // @param request - ModifyImagePermissionRequest
 //
@@ -74503,25 +74547,25 @@ func (client *Client) ModifyImagePermissionWithOptions(request *ModifyImagePermi
 //
 // ### [](#)Quota and billing
 //
-// 	- A shared image does not count against the image quotas of principals to which the image is shared.
+//   - A shared image does not count against the image quotas of principals to which the image is shared.
 //
-// 	- After a principal uses a shared image to create a cloud computer, the sharer is not charged for the shared image.
+//   - After a principal uses a shared image to create a cloud computer, the sharer is not charged for the shared image.
 //
-// 	- You are not charged for shared images.
+//   - You are not charged for shared images.
 //
 // ### [](#)Supported sharing behaviors
 //
-// 	- You can share custom images with other Alibaba Cloud accounts.
+//   - You can share custom images with other Alibaba Cloud accounts.
 //
-// 	- You can share custom images between accounts in the China site (aliyun.com) and the international site (alibabacloud.com).
+//   - You can share custom images between accounts in the China site (aliyun.com) and the international site (alibabacloud.com).
 //
 // ### [](#)Unsupported sharing behaviors
 //
-// 	- You cannot share images that are shared by other Alibaba Cloud accounts.
+//   - You cannot share images that are shared by other Alibaba Cloud accounts.
 //
-// 	- You cannot share encrypted images.
+//   - You cannot share encrypted images.
 //
-// 	- You cannot share images across regions. If you want to share an image across regions, you must copy the image to the destination region and then share the image. For more information, see [CopyImage](https://help.aliyun.com/document_detail/436978.html).
+//   - You cannot share images across regions. If you want to share an image across regions, you must copy the image to the destination region and then share the image. For more information, see [CopyImage](https://help.aliyun.com/document_detail/436978.html).
 //
 // @param request - ModifyImagePermissionRequest
 //
@@ -75617,7 +75661,7 @@ func (client *Client) ModifyUserEntitlement(request *ModifyUserEntitlementReques
 
 // Summary:
 //
-// Changes the end users of a cloud computer pool into new end users.
+// # Replaces the existing authorized users of a cloud computer share with different users
 //
 // @param request - ModifyUserToDesktopGroupRequest
 //
@@ -75682,7 +75726,7 @@ func (client *Client) ModifyUserToDesktopGroupWithOptions(request *ModifyUserToD
 
 // Summary:
 //
-// Changes the end users of a cloud computer pool into new end users.
+// # Replaces the existing authorized users of a cloud computer share with different users
 //
 // @param request - ModifyUserToDesktopGroupRequest
 //
@@ -75888,15 +75932,15 @@ func (client *Client) RebootDesktops(request *RebootDesktopsRequest) (_result *R
 //
 // Take note of the following limits when you change an image:
 //
-// 	- You can select an image whose OS is different from the OS of the original image. The image change feature is not supported in the following regions: China (Hong Kong), Singapore, and Japan (Tokyo).
+//   - You can select an image whose OS is different from the OS of the original image. The image change feature is not supported in the following regions: China (Hong Kong), Singapore, and Japan (Tokyo).
 //
-// 	- GPU images and non-GPU images cannot be exchanged. Graphic-based cloud computers can only use GPU-accelerated images. The other cloud computers can only use non-GPU-accelerated images.
+//   - GPU images and non-GPU images cannot be exchanged. Graphic-based cloud computers can only use GPU-accelerated images. The other cloud computers can only use non-GPU-accelerated images.
 //
 // After the image of a cloud computer is changed, the system uses the new image to initialize the system disk of the cloud computer. This has the following impacts:
 //
-// 	- Data in the system disk of the original cloud computer is cleared. Snapshots that are created based on the system disk of the original cloud computer become unavailable. The system automatically deletes the snapshots.
+//   - Data in the system disk of the original cloud computer is cleared. Snapshots that are created based on the system disk of the original cloud computer become unavailable. The system automatically deletes the snapshots.
 //
-// 	- If the OS of the image is changed, the data in the data disk of the original cloud computer is cleared, and the snapshots that are created based on the data disk of the original cloud computer can no longer be used. The system automatically deletes the snapshots. If the OS of the image is not changed, the data in the data disk of the original cloud computer is retained, and the snapshots that are created based on the data disk of the original cloud computer can still be used.
+//   - If the OS of the image is changed, the data in the data disk of the original cloud computer is cleared, and the snapshots that are created based on the data disk of the original cloud computer can no longer be used. The system automatically deletes the snapshots. If the OS of the image is not changed, the data in the data disk of the original cloud computer is retained, and the snapshots that are created based on the data disk of the original cloud computer can still be used.
 //
 // @param request - RebuildDesktopsRequest
 //
@@ -75971,15 +76015,15 @@ func (client *Client) RebuildDesktopsWithOptions(request *RebuildDesktopsRequest
 //
 // Take note of the following limits when you change an image:
 //
-// 	- You can select an image whose OS is different from the OS of the original image. The image change feature is not supported in the following regions: China (Hong Kong), Singapore, and Japan (Tokyo).
+//   - You can select an image whose OS is different from the OS of the original image. The image change feature is not supported in the following regions: China (Hong Kong), Singapore, and Japan (Tokyo).
 //
-// 	- GPU images and non-GPU images cannot be exchanged. Graphic-based cloud computers can only use GPU-accelerated images. The other cloud computers can only use non-GPU-accelerated images.
+//   - GPU images and non-GPU images cannot be exchanged. Graphic-based cloud computers can only use GPU-accelerated images. The other cloud computers can only use non-GPU-accelerated images.
 //
 // After the image of a cloud computer is changed, the system uses the new image to initialize the system disk of the cloud computer. This has the following impacts:
 //
-// 	- Data in the system disk of the original cloud computer is cleared. Snapshots that are created based on the system disk of the original cloud computer become unavailable. The system automatically deletes the snapshots.
+//   - Data in the system disk of the original cloud computer is cleared. Snapshots that are created based on the system disk of the original cloud computer become unavailable. The system automatically deletes the snapshots.
 //
-// 	- If the OS of the image is changed, the data in the data disk of the original cloud computer is cleared, and the snapshots that are created based on the data disk of the original cloud computer can no longer be used. The system automatically deletes the snapshots. If the OS of the image is not changed, the data in the data disk of the original cloud computer is retained, and the snapshots that are created based on the data disk of the original cloud computer can still be used.
+//   - If the OS of the image is changed, the data in the data disk of the original cloud computer is cleared, and the snapshots that are created based on the data disk of the original cloud computer can no longer be used. The system automatically deletes the snapshots. If the OS of the image is not changed, the data in the data disk of the original cloud computer is retained, and the snapshots that are created based on the data disk of the original cloud computer can still be used.
 //
 // @param request - RebuildDesktopsRequest
 //
@@ -76094,7 +76138,7 @@ func (client *Client) RemoveFilePermission(request *RemoveFilePermissionRequest)
 
 // Summary:
 //
-// Removes authorized users of cloud computer pools. The removed users can no longer connect to cloud computers in the cloud computer pool.
+// Revokes user access permissions for a cloud computer share. Once access permissions for a cloud computer share are revoked from a user, the user can no longer access any cloud computers within that share.
 //
 // @param request - RemoveUserFromDesktopGroupRequest
 //
@@ -76121,6 +76165,10 @@ func (client *Client) RemoveUserFromDesktopGroupWithOptions(request *RemoveUserF
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserOuPath)) {
+		query["UserOuPath"] = request.UserOuPath
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -76159,7 +76207,7 @@ func (client *Client) RemoveUserFromDesktopGroupWithOptions(request *RemoveUserF
 
 // Summary:
 //
-// Removes authorized users of cloud computer pools. The removed users can no longer connect to cloud computers in the cloud computer pool.
+// Revokes user access permissions for a cloud computer share. Once access permissions for a cloud computer share are revoked from a user, the user can no longer access any cloud computers within that share.
 //
 // @param request - RemoveUserFromDesktopGroupRequest
 //
@@ -76260,7 +76308,7 @@ func (client *Client) RemoveUserFromDesktopOversoldUserGroup(request *RemoveUser
 
 // Summary:
 //
-// Renew a subscription cloud computer pool.
+// Renews a shared cloud computer.
 //
 // @param request - RenewDesktopGroupRequest
 //
@@ -76333,7 +76381,7 @@ func (client *Client) RenewDesktopGroupWithOptions(request *RenewDesktopGroupReq
 
 // Summary:
 //
-// Renew a subscription cloud computer pool.
+// Renews a shared cloud computer.
 //
 // @param request - RenewDesktopGroupRequest
 //
@@ -76624,11 +76672,11 @@ func (client *Client) RenewNetworkPackages(request *RenewNetworkPackagesRequest)
 
 // Summary:
 //
-// Resets cloud computers.
+// Resets cloud computers of a cloud computer share.
 //
 // Description:
 //
-// > You can call this operation to reset only cloud computers in a cloud computer pool.
+// >  You can call this operation to reset only cloud computers from a cloud computer share.
 //
 // @param request - ResetDesktopsRequest
 //
@@ -76709,11 +76757,11 @@ func (client *Client) ResetDesktopsWithOptions(request *ResetDesktopsRequest, ru
 
 // Summary:
 //
-// Resets cloud computers.
+// Resets cloud computers of a cloud computer share.
 //
 // Description:
 //
-// > You can call this operation to reset only cloud computers in a cloud computer pool.
+// >  You can call this operation to reset only cloud computers from a cloud computer share.
 //
 // @param request - ResetDesktopsRequest
 //
@@ -76820,11 +76868,11 @@ func (client *Client) ResetNASDefaultMountTarget(request *ResetNASDefaultMountTa
 //
 // Before you call this operation, make sure that the following operations are performed:
 //
-// 	- The data that you want to retain is backed up.
+//   - The data that you want to retain is backed up.
 //
 //     > The disk restoration operation is irreversible. After you call this operation, the disk is restored to the status at the point in time when the snapshot was created. Data that is generated between the snapshot creation time and the current time is lost. Before you restore the disk based on the snapshot, make sure that you back up data.
 //
-// 	- The cloud computer to which the disk belongs is stopped.
+//   - The cloud computer to which the disk belongs is stopped.
 //
 // @param request - ResetSnapshotRequest
 //
@@ -76887,11 +76935,11 @@ func (client *Client) ResetSnapshotWithOptions(request *ResetSnapshotRequest, ru
 //
 // Before you call this operation, make sure that the following operations are performed:
 //
-// 	- The data that you want to retain is backed up.
+//   - The data that you want to retain is backed up.
 //
 //     > The disk restoration operation is irreversible. After you call this operation, the disk is restored to the status at the point in time when the snapshot was created. Data that is generated between the snapshot creation time and the current time is lost. Before you restore the disk based on the snapshot, make sure that you back up data.
 //
-// 	- The cloud computer to which the disk belongs is stopped.
+//   - The cloud computer to which the disk belongs is stopped.
 //
 // @param request - ResetSnapshotRequest
 //
@@ -77265,7 +77313,7 @@ func (client *Client) SetDesktopGroupScaleTimer(request *SetDesktopGroupScaleTim
 
 // Summary:
 //
-// Configures a scheduled task for a cloud computer pool, such as starting, stopping, restarting or resting cloud computers in the pool.
+// Configures a scheduled start, stop, restart, or reset task for a cloud computer share.
 //
 // @param request - SetDesktopGroupTimerRequest
 //
@@ -77338,7 +77386,7 @@ func (client *Client) SetDesktopGroupTimerWithOptions(request *SetDesktopGroupTi
 
 // Summary:
 //
-// Configures a scheduled task for a cloud computer pool, such as starting, stopping, restarting or resting cloud computers in the pool.
+// Configures a scheduled start, stop, restart, or reset task for a cloud computer share.
 //
 // @param request - SetDesktopGroupTimerRequest
 //
@@ -77356,7 +77404,7 @@ func (client *Client) SetDesktopGroupTimer(request *SetDesktopGroupTimerRequest)
 
 // Summary:
 //
-// Sets the status of a scheduled task for a cloud computer pool. For example, you enable or disable the scheduled task.
+// Sets the status of a scheduled task for a cloud computer share, such as enabling or disabling it.
 //
 // @param request - SetDesktopGroupTimerStatusRequest
 //
@@ -77421,7 +77469,7 @@ func (client *Client) SetDesktopGroupTimerStatusWithOptions(request *SetDesktopG
 
 // Summary:
 //
-// Sets the status of a scheduled task for a cloud computer pool. For example, you enable or disable the scheduled task.
+// Sets the status of a scheduled task for a cloud computer share, such as enabling or disabling it.
 //
 // @param request - SetDesktopGroupTimerStatusRequest
 //
