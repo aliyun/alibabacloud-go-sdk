@@ -2914,6 +2914,8 @@ func (s *DeleteMemoryNodeResponse) SetBody(v *DeleteMemoryNodeResponseBody) *Del
 }
 
 type DeletePromptTemplateResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// FE9B6CBF-47E6-5D76-9C5D-B814DD5ABxxx
@@ -3382,7 +3384,8 @@ type GetIndexJobStatusResponseBodyDataDocuments struct {
 	// file_9a65732555b54d5ea10796ca5742ba22_XXXXXXXX
 	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
 	// The name of the document.
-	DocName *string `json:"DocName,omitempty" xml:"DocName,omitempty"`
+	DocName     *string `json:"DocName,omitempty" xml:"DocName,omitempty"`
+	GmtModified *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// The error message.
 	//
 	// example:
@@ -3425,6 +3428,11 @@ func (s *GetIndexJobStatusResponseBodyDataDocuments) SetDocId(v string) *GetInde
 
 func (s *GetIndexJobStatusResponseBodyDataDocuments) SetDocName(v string) *GetIndexJobStatusResponseBodyDataDocuments {
 	s.DocName = &v
+	return s
+}
+
+func (s *GetIndexJobStatusResponseBodyDataDocuments) SetGmtModified(v int64) *GetIndexJobStatusResponseBodyDataDocuments {
+	s.GmtModified = &v
 	return s
 }
 
@@ -3623,20 +3631,30 @@ func (s *GetMemoryNodeResponse) SetBody(v *GetMemoryNodeResponseBody) *GetMemory
 }
 
 type GetPromptTemplateResponseBody struct {
+	// The template content.
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	Name    *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The template name.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The template ID.
+	//
 	// example:
 	//
 	// 6e49109bfeb94a39bb268f4e483ccxxx
 	PromptTemplateId *string `json:"promptTemplateId,omitempty" xml:"promptTemplateId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 8C56C7AF-6573-19CE-B018-E05E1EDCF4C5
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The variables of the template.
+	//
 	// example:
 	//
 	// ["theme"]
 	Variables []*string `json:"variables,omitempty" xml:"variables,omitempty" type:"Repeated"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// llm-us9hjmt32nysdxxx
@@ -5049,6 +5067,7 @@ type ListIndexDocumentsResponseBodyDataDocuments struct {
 	//
 	// pdf
 	DocumentType *string `json:"DocumentType,omitempty" xml:"DocumentType,omitempty"`
+	GmtModified  *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// The primary key ID of the document.
 	//
 	// example:
@@ -5108,6 +5127,11 @@ func (s *ListIndexDocumentsResponseBodyDataDocuments) SetCode(v string) *ListInd
 
 func (s *ListIndexDocumentsResponseBodyDataDocuments) SetDocumentType(v string) *ListIndexDocumentsResponseBodyDataDocuments {
 	s.DocumentType = &v
+	return s
+}
+
+func (s *ListIndexDocumentsResponseBodyDataDocuments) SetGmtModified(v int64) *ListIndexDocumentsResponseBodyDataDocuments {
+	s.GmtModified = &v
 	return s
 }
 
@@ -5873,15 +5897,22 @@ func (s *ListMemoryNodesResponse) SetBody(v *ListMemoryNodesResponseBody) *ListM
 }
 
 type ListPromptTemplatesRequest struct {
+	// The maximum number of returned entries.
+	//
 	// example:
 	//
 	// 10
-	MaxResults *int32  `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The keyword that is used to search for templates.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The token that determines the start position of the query. Set this parameter to the value of the NextToken parameter that is returned from the last call.
+	//
 	// example:
 	//
 	// dc270401186b433f975d7e1faaa34e0e
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The type of the template. Valid values: · System · Custom
+	//
 	// example:
 	//
 	// System
@@ -5917,23 +5948,34 @@ func (s *ListPromptTemplatesRequest) SetType(v string) *ListPromptTemplatesReque
 }
 
 type ListPromptTemplatesResponseBody struct {
+	// The maximum number of returned entries.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The token that determines the start position of the next query.
+	//
 	// example:
 	//
 	// dc270401186b433f975d7e1faaa34e0e
-	NextToken       *string                                           `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The templates.
 	PromptTemplates []*ListPromptTemplatesResponseBodyPromptTemplates `json:"promptTemplates,omitempty" xml:"promptTemplates,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// FE9B6CBF-47E6-5D76-9C5D-B814DD5AB071
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 15
 	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// llm-us9hjmt32nysdxxx
@@ -5979,16 +6021,23 @@ func (s *ListPromptTemplatesResponseBody) SetWorkspaceId(v string) *ListPromptTe
 }
 
 type ListPromptTemplatesResponseBodyPromptTemplates struct {
+	// The template content
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	Name    *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The template name.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The template ID.
+	//
 	// example:
 	//
 	// d6935b7efbe34d11b13df9307151cf8c
 	PromptTemplateId *string `json:"promptTemplateId,omitempty" xml:"promptTemplateId,omitempty"`
+	// The template type.
+	//
 	// example:
 	//
 	// "System"
-	Type      *string   `json:"type,omitempty" xml:"type,omitempty"`
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The variables of the template.
 	Variables []*string `json:"variables,omitempty" xml:"variables,omitempty" type:"Repeated"`
 }
 
@@ -8595,8 +8644,10 @@ func (s *UpdateMemoryNodeResponse) SetBody(v *UpdateMemoryNodeResponseBody) *Upd
 }
 
 type UpdatePromptTemplateRequest struct {
+	// The template content.
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	Name    *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The template name.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
 func (s UpdatePromptTemplateRequest) String() string {
@@ -8618,6 +8669,8 @@ func (s *UpdatePromptTemplateRequest) SetName(v string) *UpdatePromptTemplateReq
 }
 
 type UpdatePromptTemplateResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// FE9B6CBF-47E6-5D76-9C5D-B814DD5ABxxx
@@ -8713,6 +8766,10 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// 添加类目
+//
 // @param request - AddCategoryRequest
 //
 // @param headers - map
@@ -8753,15 +8810,30 @@ func (client *Client) AddCategoryWithOptions(WorkspaceId *string, request *AddCa
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AddCategoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AddCategoryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AddCategoryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// 添加类目
+//
 // @param request - AddCategoryRequest
 //
 // @return AddCategoryResponse
@@ -8783,15 +8855,15 @@ func (client *Client) AddCategory(WorkspaceId *string, request *AddCategoryReque
 //
 // Description:
 //
-//   Before you call this operation, make sure that you have obtained the lease and uploaded the document to the temporary storage space by using the [ApplyFileUploadLease](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-applyfileuploadlease) operation. For more information, see [Upload files by calling API](https://www.alibabacloud.com/help/en/model-studio/developer-reference/upload-files-by-calling-api).
+//	Before you call this operation, make sure that you have obtained the lease and uploaded the document to the temporary storage space by using the [ApplyFileUploadLease](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-applyfileuploadlease) operation. For more information, see [Upload files by calling API](https://www.alibabacloud.com/help/en/model-studio/developer-reference/upload-files-by-calling-api).
 //
 // >  After you call this operation, the used lease ID expires immediately. Do not use the same lease ID to submit new requests.
 //
-// 	- You must call this operation within 12 hours after you call the [ApplyFileUploadLease](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-applyfileuploadlease) operation. Otherwise, the lease expires and the request fails.
+//   - You must call this operation within 12 hours after you call the [ApplyFileUploadLease](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-applyfileuploadlease) operation. Otherwise, the lease expires and the request fails.
 //
-// 	- After you call this operation, the system parses and imports your document. The process takes some time.
+//   - After you call this operation, the system parses and imports your document. The process takes some time.
 //
-// 	- This interface is not idempotent.
+//   - This interface is not idempotent.
 //
 // @param tmpReq - AddFileRequest
 //
@@ -8847,13 +8919,24 @@ func (client *Client) AddFileWithOptions(WorkspaceId *string, tmpReq *AddFileReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AddFileResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AddFileResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AddFileResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -8862,15 +8945,15 @@ func (client *Client) AddFileWithOptions(WorkspaceId *string, tmpReq *AddFileReq
 //
 // Description:
 //
-//   Before you call this operation, make sure that you have obtained the lease and uploaded the document to the temporary storage space by using the [ApplyFileUploadLease](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-applyfileuploadlease) operation. For more information, see [Upload files by calling API](https://www.alibabacloud.com/help/en/model-studio/developer-reference/upload-files-by-calling-api).
+//	Before you call this operation, make sure that you have obtained the lease and uploaded the document to the temporary storage space by using the [ApplyFileUploadLease](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-applyfileuploadlease) operation. For more information, see [Upload files by calling API](https://www.alibabacloud.com/help/en/model-studio/developer-reference/upload-files-by-calling-api).
 //
 // >  After you call this operation, the used lease ID expires immediately. Do not use the same lease ID to submit new requests.
 //
-// 	- You must call this operation within 12 hours after you call the [ApplyFileUploadLease](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-applyfileuploadlease) operation. Otherwise, the lease expires and the request fails.
+//   - You must call this operation within 12 hours after you call the [ApplyFileUploadLease](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-applyfileuploadlease) operation. Otherwise, the lease expires and the request fails.
 //
-// 	- After you call this operation, the system parses and imports your document. The process takes some time.
+//   - After you call this operation, the system parses and imports your document. The process takes some time.
 //
-// 	- This interface is not idempotent.
+//   - This interface is not idempotent.
 //
 // @param request - AddFileRequest
 //
@@ -8893,13 +8976,13 @@ func (client *Client) AddFile(WorkspaceId *string, request *AddFileRequest) (_re
 //
 // Description:
 //
-//   This operation returns an HTTP URL that can be used to upload an unstructured document (the lease) and parameters required for the upload. Structured documents are not supported.
+//	  This operation returns an HTTP URL that can be used to upload an unstructured document (the lease) and parameters required for the upload. Structured documents are not supported.
 //
-// 	- The HTTP URL returned by this operation is valid only for minutes. Upload the document before the URL expires.
+//		- The HTTP URL returned by this operation is valid only for minutes. Upload the document before the URL expires.
 //
-// 	- After you apply for a lease and upload a document, the document is stored in a temporary storage space for 12 hours.
+//		- After you apply for a lease and upload a document, the document is stored in a temporary storage space for 12 hours.
 //
-// 	- This interface is not idempotent.
+//		- This interface is not idempotent.
 //
 // @param request - ApplyFileUploadLeaseRequest
 //
@@ -8945,13 +9028,24 @@ func (client *Client) ApplyFileUploadLeaseWithOptions(CategoryId *string, Worksp
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ApplyFileUploadLeaseResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ApplyFileUploadLeaseResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ApplyFileUploadLeaseResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -8960,13 +9054,13 @@ func (client *Client) ApplyFileUploadLeaseWithOptions(CategoryId *string, Worksp
 //
 // Description:
 //
-//   This operation returns an HTTP URL that can be used to upload an unstructured document (the lease) and parameters required for the upload. Structured documents are not supported.
+//	  This operation returns an HTTP URL that can be used to upload an unstructured document (the lease) and parameters required for the upload. Structured documents are not supported.
 //
-// 	- The HTTP URL returned by this operation is valid only for minutes. Upload the document before the URL expires.
+//		- The HTTP URL returned by this operation is valid only for minutes. Upload the document before the URL expires.
 //
-// 	- After you apply for a lease and upload a document, the document is stored in a temporary storage space for 12 hours.
+//		- After you apply for a lease and upload a document, the document is stored in a temporary storage space for 12 hours.
 //
-// 	- This interface is not idempotent.
+//		- This interface is not idempotent.
 //
 // @param request - ApplyFileUploadLeaseRequest
 //
@@ -9045,13 +9139,24 @@ func (client *Client) CreateAndPulishAgentWithOptions(workspaceId *string, tmpRe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateAndPulishAgentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateAndPulishAgentResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateAndPulishAgentResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9211,13 +9316,24 @@ func (client *Client) CreateIndexWithOptions(WorkspaceId *string, tmpReq *Create
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateIndexResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateIndexResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateIndexResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9283,13 +9399,24 @@ func (client *Client) CreateMemoryWithOptions(workspaceId *string, request *Crea
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateMemoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateMemoryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateMemoryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9347,13 +9474,24 @@ func (client *Client) CreateMemoryNodeWithOptions(workspaceId *string, memoryId 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateMemoryNodeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateMemoryNodeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateMemoryNodeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9377,7 +9515,7 @@ func (client *Client) CreateMemoryNode(workspaceId *string, memoryId *string, re
 
 // Summary:
 //
-// 创建Prompt模板
+// Creates a prompt template.
 //
 // @param request - CreatePromptTemplateRequest
 //
@@ -9415,18 +9553,29 @@ func (client *Client) CreatePromptTemplateWithOptions(workspaceId *string, reque
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreatePromptTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreatePromptTemplateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreatePromptTemplateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 创建Prompt模板
+// Creates a prompt template.
 //
 // @param request - CreatePromptTemplateRequest
 //
@@ -9467,13 +9616,24 @@ func (client *Client) DeleteAgentWithOptions(workspaceId *string, appCode *strin
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteAgentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteAgentResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteAgentResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9493,6 +9653,10 @@ func (client *Client) DeleteAgent(workspaceId *string, appCode *string) (_result
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除类目
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9513,15 +9677,30 @@ func (client *Client) DeleteCategoryWithOptions(CategoryId *string, WorkspaceId 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteCategoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteCategoryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteCategoryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// 删除类目
+//
 // @return DeleteCategoryResponse
 func (client *Client) DeleteCategory(CategoryId *string, WorkspaceId *string) (_result *DeleteCategoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
@@ -9559,13 +9738,24 @@ func (client *Client) DeleteFileWithOptions(FileId *string, WorkspaceId *string,
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteFileResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteFileResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteFileResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9591,15 +9781,15 @@ func (client *Client) DeleteFile(FileId *string, WorkspaceId *string) (_result *
 //
 // Description:
 //
-//   Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
+//	  Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
 //
-// 	- If a knowledge base is being called by an application, disassociate the knowledge base before you can delete it. To disassociate the knowledge base, you must use the console. For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base).
+//		- If a knowledge base is being called by an application, disassociate the knowledge base before you can delete it. To disassociate the knowledge base, you must use the console. For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base).
 //
-// 	- After you delete a knowledge base, it cannot be recovered. We recommend that you proceed with caution.
+//		- After you delete a knowledge base, it cannot be recovered. We recommend that you proceed with caution.
 //
-// 	- Imported documents are not deleted from the [Data Management](https://bailian.console.aliyun.com/#/data-center) if you call this operation.
+//		- Imported documents are not deleted from the [Data Management](https://bailian.console.aliyun.com/#/data-center) if you call this operation.
 //
-// 	- This interface is idempotent.
+//		- This interface is idempotent.
 //
 // @param request - DeleteIndexRequest
 //
@@ -9633,13 +9823,24 @@ func (client *Client) DeleteIndexWithOptions(WorkspaceId *string, request *Delet
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteIndexResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteIndexResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteIndexResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9648,15 +9849,15 @@ func (client *Client) DeleteIndexWithOptions(WorkspaceId *string, request *Delet
 //
 // Description:
 //
-//   Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
+//	  Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
 //
-// 	- If a knowledge base is being called by an application, disassociate the knowledge base before you can delete it. To disassociate the knowledge base, you must use the console. For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base).
+//		- If a knowledge base is being called by an application, disassociate the knowledge base before you can delete it. To disassociate the knowledge base, you must use the console. For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base).
 //
-// 	- After you delete a knowledge base, it cannot be recovered. We recommend that you proceed with caution.
+//		- After you delete a knowledge base, it cannot be recovered. We recommend that you proceed with caution.
 //
-// 	- Imported documents are not deleted from the [Data Management](https://bailian.console.aliyun.com/#/data-center) if you call this operation.
+//		- Imported documents are not deleted from the [Data Management](https://bailian.console.aliyun.com/#/data-center) if you call this operation.
 //
-// 	- This interface is idempotent.
+//		- This interface is idempotent.
 //
 // @param request - DeleteIndexRequest
 //
@@ -9679,15 +9880,15 @@ func (client *Client) DeleteIndex(WorkspaceId *string, request *DeleteIndexReque
 //
 // Description:
 //
-//   Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
+//	  Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
 //
-// 	- Only documents with the INSERT_ERROR and FINISH states can be deleted. To query the status of documents in a specified knowledge base, call the [ListIndexDocuments](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-listindexdocuments) operation.
+//		- Only documents with the INSERT_ERROR and FINISH states can be deleted. To query the status of documents in a specified knowledge base, call the [ListIndexDocuments](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-listindexdocuments) operation.
 //
-// 	- After you delete a document, it cannot be recovered and the [Retrieve](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-retrieve) operation cannot query information about the document. We recommend that you proceed with caution.
+//		- After you delete a document, it cannot be recovered and the [Retrieve](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-retrieve) operation cannot query information about the document. We recommend that you proceed with caution.
 //
-// 	- Imported documents are not deleted from the [Data Management](https://bailian.console.aliyun.com/#/data-center) if you call this operation.
+//		- Imported documents are not deleted from the [Data Management](https://bailian.console.aliyun.com/#/data-center) if you call this operation.
 //
-// 	- This interface is idempotent.
+//		- This interface is idempotent.
 //
 // @param tmpReq - DeleteIndexDocumentRequest
 //
@@ -9731,13 +9932,24 @@ func (client *Client) DeleteIndexDocumentWithOptions(WorkspaceId *string, tmpReq
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteIndexDocumentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteIndexDocumentResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteIndexDocumentResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9746,15 +9958,15 @@ func (client *Client) DeleteIndexDocumentWithOptions(WorkspaceId *string, tmpReq
 //
 // Description:
 //
-//   Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
+//	  Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
 //
-// 	- Only documents with the INSERT_ERROR and FINISH states can be deleted. To query the status of documents in a specified knowledge base, call the [ListIndexDocuments](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-listindexdocuments) operation.
+//		- Only documents with the INSERT_ERROR and FINISH states can be deleted. To query the status of documents in a specified knowledge base, call the [ListIndexDocuments](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-listindexdocuments) operation.
 //
-// 	- After you delete a document, it cannot be recovered and the [Retrieve](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-retrieve) operation cannot query information about the document. We recommend that you proceed with caution.
+//		- After you delete a document, it cannot be recovered and the [Retrieve](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-retrieve) operation cannot query information about the document. We recommend that you proceed with caution.
 //
-// 	- Imported documents are not deleted from the [Data Management](https://bailian.console.aliyun.com/#/data-center) if you call this operation.
+//		- Imported documents are not deleted from the [Data Management](https://bailian.console.aliyun.com/#/data-center) if you call this operation.
 //
-// 	- This interface is idempotent.
+//		- This interface is idempotent.
 //
 // @param request - DeleteIndexDocumentRequest
 //
@@ -9795,13 +10007,24 @@ func (client *Client) DeleteMemoryWithOptions(workspaceId *string, memoryId *str
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteMemoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteMemoryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteMemoryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9845,13 +10068,24 @@ func (client *Client) DeleteMemoryNodeWithOptions(workspaceId *string, memoryId 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteMemoryNodeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteMemoryNodeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteMemoryNodeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9873,7 +10107,7 @@ func (client *Client) DeleteMemoryNode(workspaceId *string, memoryId *string, me
 
 // Summary:
 //
-// 基于模板Id删除Prompt模板。
+// Deletes a prompt template based on the template ID.
 //
 // @param headers - map
 //
@@ -9895,18 +10129,29 @@ func (client *Client) DeletePromptTemplateWithOptions(workspaceId *string, promp
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeletePromptTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeletePromptTemplateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeletePromptTemplateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 基于模板Id删除Prompt模板。
+// Deletes a prompt template based on the template ID.
 //
 // @return DeletePromptTemplateResponse
 func (client *Client) DeletePromptTemplate(workspaceId *string, promptTemplateId *string) (_result *DeletePromptTemplateResponse, _err error) {
@@ -9929,9 +10174,9 @@ func (client *Client) DeletePromptTemplate(workspaceId *string, promptTemplateId
 //
 // Before you call this API, make sure that your document is uploaded to the [Data Management](https://bailian.console.aliyun.com/knowledge-base#/data-center) page of Alibaba Cloud Model Studio.
 //
-// 	- You can also call this operation to query unstructured documents that you upload on the [Data Management](https://bailian.console.aliyun.com/knowledge-base#/data-center) page.
+//   - You can also call this operation to query unstructured documents that you upload on the [Data Management](https://bailian.console.aliyun.com/knowledge-base#/data-center) page.
 //
-// 	- This operation is idempotent.
+//   - This operation is idempotent.
 //
 // **Throttling:*	- Make sure that the interval between the two queries is at least 15 seconds. Otherwise, you may trigger system throttling. If throttling is triggered, try again later.
 //
@@ -9955,13 +10200,24 @@ func (client *Client) DescribeFileWithOptions(WorkspaceId *string, FileId *strin
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeFileResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeFileResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeFileResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9972,9 +10228,9 @@ func (client *Client) DescribeFileWithOptions(WorkspaceId *string, FileId *strin
 //
 // Before you call this API, make sure that your document is uploaded to the [Data Management](https://bailian.console.aliyun.com/knowledge-base#/data-center) page of Alibaba Cloud Model Studio.
 //
-// 	- You can also call this operation to query unstructured documents that you upload on the [Data Management](https://bailian.console.aliyun.com/knowledge-base#/data-center) page.
+//   - You can also call this operation to query unstructured documents that you upload on the [Data Management](https://bailian.console.aliyun.com/knowledge-base#/data-center) page.
 //
-// 	- This operation is idempotent.
+//   - This operation is idempotent.
 //
 // **Throttling:*	- Make sure that the interval between the two queries is at least 15 seconds. Otherwise, you may trigger system throttling. If throttling is triggered, try again later.
 //
@@ -10047,13 +10303,24 @@ func (client *Client) GetIndexJobStatusWithOptions(WorkspaceId *string, request 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetIndexJobStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetIndexJobStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetIndexJobStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -10107,13 +10374,24 @@ func (client *Client) GetMemoryWithOptions(workspaceId *string, memoryId *string
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetMemoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetMemoryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetMemoryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -10157,13 +10435,24 @@ func (client *Client) GetMemoryNodeWithOptions(workspaceId *string, memoryId *st
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetMemoryNodeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetMemoryNodeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetMemoryNodeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -10185,7 +10474,7 @@ func (client *Client) GetMemoryNode(workspaceId *string, memoryId *string, memor
 
 // Summary:
 //
-// 基于模板Id获取Prompt模板。
+// Obtains a prompt template based on the template ID.
 //
 // @param headers - map
 //
@@ -10207,18 +10496,29 @@ func (client *Client) GetPromptTemplateWithOptions(workspaceId *string, promptTe
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetPromptTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetPromptTemplateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetPromptTemplateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 基于模板Id获取Prompt模板。
+// Obtains a prompt template based on the template ID.
 //
 // @return GetPromptTemplateResponse
 func (client *Client) GetPromptTemplate(workspaceId *string, promptTemplateId *string) (_result *GetPromptTemplateResponse, _err error) {
@@ -10257,13 +10557,24 @@ func (client *Client) GetPublishedAgentWithOptions(workspaceId *string, appCode 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetPublishedAgentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetPublishedAgentResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetPublishedAgentResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -10285,7 +10596,7 @@ func (client *Client) GetPublishedAgent(workspaceId *string, appCode *string) (_
 
 // Summary:
 //
-// ListCategory
+// # ListCategory
 //
 // @param request - ListCategoryRequest
 //
@@ -10331,18 +10642,29 @@ func (client *Client) ListCategoryWithOptions(WorkspaceId *string, request *List
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListCategoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListCategoryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListCategoryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// ListCategory
+// # ListCategory
 //
 // @param request - ListCategoryRequest
 //
@@ -10365,9 +10687,9 @@ func (client *Client) ListCategory(WorkspaceId *string, request *ListCategoryReq
 //
 // Description:
 //
-//   Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
+//	  Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
 //
-// 	- This interface is idempotent.
+//		- This interface is idempotent.
 //
 // @param request - ListChunksRequest
 //
@@ -10421,13 +10743,24 @@ func (client *Client) ListChunksWithOptions(WorkspaceId *string, request *ListCh
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListChunksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListChunksResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListChunksResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -10436,9 +10769,9 @@ func (client *Client) ListChunksWithOptions(WorkspaceId *string, request *ListCh
 //
 // Description:
 //
-//   Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
+//	  Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
 //
-// 	- This interface is idempotent.
+//		- This interface is idempotent.
 //
 // @param request - ListChunksRequest
 //
@@ -10503,13 +10836,24 @@ func (client *Client) ListFileWithOptions(WorkspaceId *string, request *ListFile
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListFileResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListFileResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListFileResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -10537,9 +10881,9 @@ func (client *Client) ListFile(WorkspaceId *string, request *ListFileRequest) (_
 //
 // Description:
 //
-//   Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
+//	  Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
 //
-// 	- This interface is idempotent.
+//		- This interface is idempotent.
 //
 // @param request - ListIndexDocumentsRequest
 //
@@ -10589,13 +10933,24 @@ func (client *Client) ListIndexDocumentsWithOptions(WorkspaceId *string, request
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListIndexDocumentsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListIndexDocumentsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListIndexDocumentsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -10604,9 +10959,9 @@ func (client *Client) ListIndexDocumentsWithOptions(WorkspaceId *string, request
 //
 // Description:
 //
-//   Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
+//	  Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
 //
-// 	- This interface is idempotent.
+//		- This interface is idempotent.
 //
 // @param request - ListIndexDocumentsRequest
 //
@@ -10671,13 +11026,24 @@ func (client *Client) ListIndicesWithOptions(WorkspaceId *string, request *ListI
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListIndicesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListIndicesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListIndicesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -10743,13 +11109,24 @@ func (client *Client) ListMemoriesWithOptions(workspaceId *string, request *List
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListMemoriesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListMemoriesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListMemoriesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -10811,13 +11188,24 @@ func (client *Client) ListMemoryNodesWithOptions(workspaceId *string, memoryId *
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListMemoryNodesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListMemoryNodesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListMemoryNodesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -10841,7 +11229,7 @@ func (client *Client) ListMemoryNodes(workspaceId *string, memoryId *string, req
 
 // Summary:
 //
-// 获取Prompt模板列表。
+// Obtains a list of prompt templates.
 //
 // @param request - ListPromptTemplatesRequest
 //
@@ -10887,18 +11275,29 @@ func (client *Client) ListPromptTemplatesWithOptions(workspaceId *string, reques
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListPromptTemplatesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListPromptTemplatesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListPromptTemplatesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 获取Prompt模板列表。
+// Obtains a list of prompt templates.
 //
 // @param request - ListPromptTemplatesRequest
 //
@@ -10955,13 +11354,24 @@ func (client *Client) ListPublishedAgentWithOptions(workspaceId *string, request
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListPublishedAgentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListPublishedAgentResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListPublishedAgentResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -10989,11 +11399,11 @@ func (client *Client) ListPublishedAgent(workspaceId *string, request *ListPubli
 //
 // Description:
 //
-//   Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
+//	  Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
 //
-// 	- The response time may be long because this operation involves complex retrieval and matching. We recommend that you set appropriate timeout and retry policy for requests.
+//		- The response time may be long because this operation involves complex retrieval and matching. We recommend that you set appropriate timeout and retry policy for requests.
 //
-// 	- This interface is idempotent.
+//		- This interface is idempotent.
 //
 // @param tmpReq - RetrieveRequest
 //
@@ -11093,13 +11503,24 @@ func (client *Client) RetrieveWithOptions(WorkspaceId *string, tmpReq *RetrieveR
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RetrieveResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RetrieveResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RetrieveResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -11108,11 +11529,11 @@ func (client *Client) RetrieveWithOptions(WorkspaceId *string, tmpReq *RetrieveR
 //
 // Description:
 //
-//   Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
+//	  Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
 //
-// 	- The response time may be long because this operation involves complex retrieval and matching. We recommend that you set appropriate timeout and retry policy for requests.
+//		- The response time may be long because this operation involves complex retrieval and matching. We recommend that you set appropriate timeout and retry policy for requests.
 //
-// 	- This interface is idempotent.
+//		- This interface is idempotent.
 //
 // @param request - RetrieveRequest
 //
@@ -11135,13 +11556,13 @@ func (client *Client) Retrieve(WorkspaceId *string, request *RetrieveRequest) (_
 //
 // Description:
 //
-//   You must first upload documents to [Data Management](https://bailian.console.aliyun.com/#/data-center) and obtain the `FileId`. The documents are the knowledge source of the knowledge base. For more information, see [Import Data](https://www.alibabacloud.com/help/en/model-studio/user-guide/data-import-instructions).
+//	  You must first upload documents to [Data Management](https://bailian.console.aliyun.com/#/data-center) and obtain the `FileId`. The documents are the knowledge source of the knowledge base. For more information, see [Import Data](https://www.alibabacloud.com/help/en/model-studio/user-guide/data-import-instructions).
 //
-// 	- Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
+//		- Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
 //
-// 	- After you call this operation, you can call the [GetIndexJobStatus](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-getindexjobstatus) operation to query the status of the job. More than 20 calls to the GetIndexJobStatus operation per minute may trigger throttling.
+//		- After you call this operation, you can call the [GetIndexJobStatus](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-getindexjobstatus) operation to query the status of the job. More than 20 calls to the GetIndexJobStatus operation per minute may trigger throttling.
 //
-// 	- Execution takes a period of time after this operation is called. Do not make new request before the request is returned. This interface is not idempotent.
+//		- Execution takes a period of time after this operation is called. Do not make new request before the request is returned. This interface is not idempotent.
 //
 // @param tmpReq - SubmitIndexAddDocumentsJobRequest
 //
@@ -11197,13 +11618,24 @@ func (client *Client) SubmitIndexAddDocumentsJobWithOptions(WorkspaceId *string,
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SubmitIndexAddDocumentsJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SubmitIndexAddDocumentsJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SubmitIndexAddDocumentsJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -11212,13 +11644,13 @@ func (client *Client) SubmitIndexAddDocumentsJobWithOptions(WorkspaceId *string,
 //
 // Description:
 //
-//   You must first upload documents to [Data Management](https://bailian.console.aliyun.com/#/data-center) and obtain the `FileId`. The documents are the knowledge source of the knowledge base. For more information, see [Import Data](https://www.alibabacloud.com/help/en/model-studio/user-guide/data-import-instructions).
+//	  You must first upload documents to [Data Management](https://bailian.console.aliyun.com/#/data-center) and obtain the `FileId`. The documents are the knowledge source of the knowledge base. For more information, see [Import Data](https://www.alibabacloud.com/help/en/model-studio/user-guide/data-import-instructions).
 //
-// 	- Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
+//		- Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
 //
-// 	- After you call this operation, you can call the [GetIndexJobStatus](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-getindexjobstatus) operation to query the status of the job. More than 20 calls to the GetIndexJobStatus operation per minute may trigger throttling.
+//		- After you call this operation, you can call the [GetIndexJobStatus](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-getindexjobstatus) operation to query the status of the job. More than 20 calls to the GetIndexJobStatus operation per minute may trigger throttling.
 //
-// 	- Execution takes a period of time after this operation is called. Do not make new request before the request is returned. This interface is not idempotent.
+//		- Execution takes a period of time after this operation is called. Do not make new request before the request is returned. This interface is not idempotent.
 //
 // @param request - SubmitIndexAddDocumentsJobRequest
 //
@@ -11281,13 +11713,24 @@ func (client *Client) SubmitIndexJobWithOptions(WorkspaceId *string, request *Su
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SubmitIndexJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SubmitIndexJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SubmitIndexJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -11381,13 +11824,24 @@ func (client *Client) UpdateAndPublishAgentWithOptions(workspaceId *string, appC
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateAndPublishAgentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateAndPublishAgentResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateAndPublishAgentResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -11471,13 +11925,24 @@ func (client *Client) UpdateAndPublishAgentSelectiveWithOptions(workspaceId *str
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateAndPublishAgentSelectiveResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateAndPublishAgentSelectiveResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateAndPublishAgentSelectiveResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -11541,13 +12006,24 @@ func (client *Client) UpdateFileTagWithOptions(WorkspaceId *string, FileId *stri
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateFileTagResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateFileTagResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateFileTagResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -11605,13 +12081,24 @@ func (client *Client) UpdateMemoryWithOptions(workspaceId *string, memoryId *str
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateMemoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateMemoryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateMemoryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -11669,13 +12156,24 @@ func (client *Client) UpdateMemoryNodeWithOptions(workspaceId *string, memoryId 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateMemoryNodeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateMemoryNodeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateMemoryNodeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -11699,7 +12197,7 @@ func (client *Client) UpdateMemoryNode(workspaceId *string, memoryId *string, me
 
 // Summary:
 //
-// 基于模板Id增量更新Prompt模板。
+// Updates a prompt template based on the template ID.
 //
 // @param request - UpdatePromptTemplateRequest
 //
@@ -11737,18 +12235,29 @@ func (client *Client) UpdatePromptTemplateWithOptions(workspaceId *string, promp
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdatePromptTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdatePromptTemplateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdatePromptTemplateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 基于模板Id增量更新Prompt模板。
+// Updates a prompt template based on the template ID.
 //
 // @param request - UpdatePromptTemplateRequest
 //
