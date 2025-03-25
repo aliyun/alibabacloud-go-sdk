@@ -2807,6 +2807,504 @@ func (s *GetComputeQuotaScheduleResponse) SetBody(v *GetComputeQuotaScheduleResp
 	return s
 }
 
+type GetJobInfoResponseBody struct {
+	// The returned data.
+	Data *GetJobInfoResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The error code.
+	//
+	// example:
+	//
+	// OBJECT_NOT_EXIST
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// The error message.
+	//
+	// example:
+	//
+	// This object does not exist.
+	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// The HTTP status code.
+	//
+	// 	- 1xx: informational response. The request is received and is being processed.
+	//
+	// 	- 2xx: success. The request is successfully received, understood, and accepted by the server.
+	//
+	// 	- 3xx: redirection. The request is redirected, and further actions are required to complete the request.
+	//
+	// 	- 4xx: client error. The request contains invalid request parameters and syntaxes, or specific request conditions cannot be met.
+	//
+	// 	- 5xx: server error. The server cannot meet requirements due to other reasons.
+	//
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 0be3e0bb16654558425251398e27a9
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s GetJobInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetJobInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobInfoResponseBody) SetData(v *GetJobInfoResponseBodyData) *GetJobInfoResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetJobInfoResponseBody) SetErrorCode(v string) *GetJobInfoResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetJobInfoResponseBody) SetErrorMsg(v string) *GetJobInfoResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *GetJobInfoResponseBody) SetHttpCode(v int32) *GetJobInfoResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *GetJobInfoResponseBody) SetRequestId(v string) *GetJobInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetJobInfoResponseBodyData struct {
+	// CPU usage of the job at the snapshot time. Unit: Core.
+	//
+	// example:
+	//
+	// 10
+	CuUsage *int64 `json:"cuUsage,omitempty" xml:"cuUsage,omitempty"`
+	// The time when the job was finished.
+	//
+	// example:
+	//
+	// 1672112913
+	EndAtTime *int64 `json:"endAtTime,omitempty" xml:"endAtTime,omitempty"`
+	// The ID of the upstream node.
+	//
+	// example:
+	//
+	// node_4
+	ExtNodeId *string `json:"extNodeId,omitempty" xml:"extNodeId,omitempty"`
+	// The account ID of the task owner.
+	//
+	// example:
+	//
+	// duty_2
+	ExtNodeOnDuty *string `json:"extNodeOnDuty,omitempty" xml:"extNodeOnDuty,omitempty"`
+	// The upstream platform.
+	//
+	// example:
+	//
+	// platform_3
+	ExtPlantFrom *string `json:"extPlantFrom,omitempty" xml:"extPlantFrom,omitempty"`
+	// The amount of scanned data for the job. Unit: byte.
+	//
+	// example:
+	//
+	// 1234
+	InputBytes *float64 `json:"inputBytes,omitempty" xml:"inputBytes,omitempty"`
+	// The instance ID.
+	//
+	// example:
+	//
+	// 20230410****60gg
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The account that commits the job.
+	//
+	// example:
+	//
+	// ALIYUN$7632***@aliyun.com
+	JobOwner *string `json:"jobOwner,omitempty" xml:"jobOwner,omitempty"`
+	// The list of sub-status of the job.
+	JobSubStatusList []*GetJobInfoResponseBodyDataJobSubStatusList `json:"jobSubStatusList,omitempty" xml:"jobSubStatusList,omitempty" type:"Repeated"`
+	// The type of the job.
+	//
+	// example:
+	//
+	// SQL
+	JobType *string `json:"jobType,omitempty" xml:"jobType,omitempty"`
+	// Memory usage of the job at the snapshot time. Unit: MB.
+	//
+	// example:
+	//
+	// 40
+	MemoryUsage *int64 `json:"memoryUsage,omitempty" xml:"memoryUsage,omitempty"`
+	// The priority of the job.
+	//
+	// example:
+	//
+	// 1
+	Priority *int64 `json:"priority,omitempty" xml:"priority,omitempty"`
+	// The name of the project.
+	//
+	// example:
+	//
+	// dp_cdm_prod
+	Project *string `json:"project,omitempty" xml:"project,omitempty"`
+	// The nickname of the computing Quota used by the job.
+	//
+	// example:
+	//
+	// os_bigdata
+	QuotaNickname *string `json:"quotaNickname,omitempty" xml:"quotaNickname,omitempty"`
+	// The type of the quota.
+	//
+	// example:
+	//
+	// subscription
+	QuotaType *string `json:"quotaType,omitempty" xml:"quotaType,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
+	Region *string `json:"region,omitempty" xml:"region,omitempty"`
+	// The start time of the job.
+	//
+	// > The time when the job received the first batch of computing resources.
+	//
+	// example:
+	//
+	// 1672112113
+	RunningAtTime *int64 `json:"runningAtTime,omitempty" xml:"runningAtTime,omitempty"`
+	// The running duration, which is the duration from the runningAtTime to the snapshotTime of the job. Unit: seconds (s).
+	//
+	// example:
+	//
+	// 800
+	RunningTime *int64 `json:"runningTime,omitempty" xml:"runningTime,omitempty"`
+	// The intelligent diagnostics results.
+	SceneResults []*GetJobInfoResponseBodyDataSceneResults `json:"sceneResults,omitempty" xml:"sceneResults,omitempty" type:"Repeated"`
+	// The signature of the SQL job.
+	//
+	// example:
+	//
+	// 20c1efb4a7caca1865f4aa784bb500efae74af04
+	Signature *string `json:"signature,omitempty" xml:"signature,omitempty"`
+	// The status of the job.
+	//
+	// example:
+	//
+	// running
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The time when the job was committed.
+	//
+	// example:
+	//
+	// 1672112013
+	SubmittedAtTime *int64 `json:"submittedAtTime,omitempty" xml:"submittedAtTime,omitempty"`
+	// The tenant ID.
+	//
+	// example:
+	//
+	// 4784****5249
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+	// The interval from the time when the job was submitted to the snapshotTime .Unit: seconds (s).
+	//
+	// example:
+	//
+	// 900
+	TotalTime *int64 `json:"totalTime,omitempty" xml:"totalTime,omitempty"`
+	// The duration from the time the job is submitted to the time the job starts to run. Unit: seconds (s).
+	//
+	// example:
+	//
+	// 100
+	WaitingTime *int64 `json:"waitingTime,omitempty" xml:"waitingTime,omitempty"`
+}
+
+func (s GetJobInfoResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetJobInfoResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobInfoResponseBodyData) SetCuUsage(v int64) *GetJobInfoResponseBodyData {
+	s.CuUsage = &v
+	return s
+}
+
+func (s *GetJobInfoResponseBodyData) SetEndAtTime(v int64) *GetJobInfoResponseBodyData {
+	s.EndAtTime = &v
+	return s
+}
+
+func (s *GetJobInfoResponseBodyData) SetExtNodeId(v string) *GetJobInfoResponseBodyData {
+	s.ExtNodeId = &v
+	return s
+}
+
+func (s *GetJobInfoResponseBodyData) SetExtNodeOnDuty(v string) *GetJobInfoResponseBodyData {
+	s.ExtNodeOnDuty = &v
+	return s
+}
+
+func (s *GetJobInfoResponseBodyData) SetExtPlantFrom(v string) *GetJobInfoResponseBodyData {
+	s.ExtPlantFrom = &v
+	return s
+}
+
+func (s *GetJobInfoResponseBodyData) SetInputBytes(v float64) *GetJobInfoResponseBodyData {
+	s.InputBytes = &v
+	return s
+}
+
+func (s *GetJobInfoResponseBodyData) SetInstanceId(v string) *GetJobInfoResponseBodyData {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetJobInfoResponseBodyData) SetJobOwner(v string) *GetJobInfoResponseBodyData {
+	s.JobOwner = &v
+	return s
+}
+
+func (s *GetJobInfoResponseBodyData) SetJobSubStatusList(v []*GetJobInfoResponseBodyDataJobSubStatusList) *GetJobInfoResponseBodyData {
+	s.JobSubStatusList = v
+	return s
+}
+
+func (s *GetJobInfoResponseBodyData) SetJobType(v string) *GetJobInfoResponseBodyData {
+	s.JobType = &v
+	return s
+}
+
+func (s *GetJobInfoResponseBodyData) SetMemoryUsage(v int64) *GetJobInfoResponseBodyData {
+	s.MemoryUsage = &v
+	return s
+}
+
+func (s *GetJobInfoResponseBodyData) SetPriority(v int64) *GetJobInfoResponseBodyData {
+	s.Priority = &v
+	return s
+}
+
+func (s *GetJobInfoResponseBodyData) SetProject(v string) *GetJobInfoResponseBodyData {
+	s.Project = &v
+	return s
+}
+
+func (s *GetJobInfoResponseBodyData) SetQuotaNickname(v string) *GetJobInfoResponseBodyData {
+	s.QuotaNickname = &v
+	return s
+}
+
+func (s *GetJobInfoResponseBodyData) SetQuotaType(v string) *GetJobInfoResponseBodyData {
+	s.QuotaType = &v
+	return s
+}
+
+func (s *GetJobInfoResponseBodyData) SetRegion(v string) *GetJobInfoResponseBodyData {
+	s.Region = &v
+	return s
+}
+
+func (s *GetJobInfoResponseBodyData) SetRunningAtTime(v int64) *GetJobInfoResponseBodyData {
+	s.RunningAtTime = &v
+	return s
+}
+
+func (s *GetJobInfoResponseBodyData) SetRunningTime(v int64) *GetJobInfoResponseBodyData {
+	s.RunningTime = &v
+	return s
+}
+
+func (s *GetJobInfoResponseBodyData) SetSceneResults(v []*GetJobInfoResponseBodyDataSceneResults) *GetJobInfoResponseBodyData {
+	s.SceneResults = v
+	return s
+}
+
+func (s *GetJobInfoResponseBodyData) SetSignature(v string) *GetJobInfoResponseBodyData {
+	s.Signature = &v
+	return s
+}
+
+func (s *GetJobInfoResponseBodyData) SetStatus(v string) *GetJobInfoResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *GetJobInfoResponseBodyData) SetSubmittedAtTime(v int64) *GetJobInfoResponseBodyData {
+	s.SubmittedAtTime = &v
+	return s
+}
+
+func (s *GetJobInfoResponseBodyData) SetTenantId(v string) *GetJobInfoResponseBodyData {
+	s.TenantId = &v
+	return s
+}
+
+func (s *GetJobInfoResponseBodyData) SetTotalTime(v int64) *GetJobInfoResponseBodyData {
+	s.TotalTime = &v
+	return s
+}
+
+func (s *GetJobInfoResponseBodyData) SetWaitingTime(v int64) *GetJobInfoResponseBodyData {
+	s.WaitingTime = &v
+	return s
+}
+
+type GetJobInfoResponseBodyDataJobSubStatusList struct {
+	// The code of the sub-status.
+	//
+	// example:
+	//
+	// 1010
+	Code *int32 `json:"code,omitempty" xml:"code,omitempty"`
+	// The description of the sub-status.
+	//
+	// example:
+	//
+	// Waiting for scheduling
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The start time of the sub-status.
+	//
+	// example:
+	//
+	// 2025-03-05 00:04:15.717364 +0800
+	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+}
+
+func (s GetJobInfoResponseBodyDataJobSubStatusList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetJobInfoResponseBodyDataJobSubStatusList) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobInfoResponseBodyDataJobSubStatusList) SetCode(v int32) *GetJobInfoResponseBodyDataJobSubStatusList {
+	s.Code = &v
+	return s
+}
+
+func (s *GetJobInfoResponseBodyDataJobSubStatusList) SetDescription(v string) *GetJobInfoResponseBodyDataJobSubStatusList {
+	s.Description = &v
+	return s
+}
+
+func (s *GetJobInfoResponseBodyDataJobSubStatusList) SetStartTime(v string) *GetJobInfoResponseBodyDataJobSubStatusList {
+	s.StartTime = &v
+	return s
+}
+
+type GetJobInfoResponseBodyDataSceneResults struct {
+	// The intelligent diagnostics result description.
+	//
+	// example:
+	//
+	// This job uses annual and monthly computing resources. It may be that the job is waiting for resources due to the large amount of overall job running data, many resources requested, and low job priority. Please go to Resource Consumption to view the specific situation. You can also go to Cost Optimization to see if you need to adjust resource configuration.
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Information about the nodes where data skew or data expansion is detected. This parameter is returned only when the diagnostics scenario is data skew or data expansion.
+	Params map[string]*string `json:"params,omitempty" xml:"params,omitempty"`
+	// The intelligent diagnostics result scenario.
+	//
+	// example:
+	//
+	// LackResource
+	Scene *string `json:"scene,omitempty" xml:"scene,omitempty"`
+	// The intelligent diagnostics result tag.
+	//
+	// example:
+	//
+	// SubscriptionLackResource
+	SceneTag *string `json:"sceneTag,omitempty" xml:"sceneTag,omitempty"`
+	// The intelligent diagnostics result summary.
+	//
+	// example:
+	//
+	// Insufficient computing resources available for the job. Click to view details.
+	Summary *string `json:"summary,omitempty" xml:"summary,omitempty"`
+	// The intelligent diagnostics result type.
+	//
+	// example:
+	//
+	// warning
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s GetJobInfoResponseBodyDataSceneResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetJobInfoResponseBodyDataSceneResults) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobInfoResponseBodyDataSceneResults) SetDescription(v string) *GetJobInfoResponseBodyDataSceneResults {
+	s.Description = &v
+	return s
+}
+
+func (s *GetJobInfoResponseBodyDataSceneResults) SetParams(v map[string]*string) *GetJobInfoResponseBodyDataSceneResults {
+	s.Params = v
+	return s
+}
+
+func (s *GetJobInfoResponseBodyDataSceneResults) SetScene(v string) *GetJobInfoResponseBodyDataSceneResults {
+	s.Scene = &v
+	return s
+}
+
+func (s *GetJobInfoResponseBodyDataSceneResults) SetSceneTag(v string) *GetJobInfoResponseBodyDataSceneResults {
+	s.SceneTag = &v
+	return s
+}
+
+func (s *GetJobInfoResponseBodyDataSceneResults) SetSummary(v string) *GetJobInfoResponseBodyDataSceneResults {
+	s.Summary = &v
+	return s
+}
+
+func (s *GetJobInfoResponseBodyDataSceneResults) SetType(v string) *GetJobInfoResponseBodyDataSceneResults {
+	s.Type = &v
+	return s
+}
+
+type GetJobInfoResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetJobInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetJobInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetJobInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobInfoResponse) SetHeaders(v map[string]*string) *GetJobInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetJobInfoResponse) SetStatusCode(v int32) *GetJobInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetJobInfoResponse) SetBody(v *GetJobInfoResponseBody) *GetJobInfoResponse {
+	s.Body = v
+	return s
+}
+
 type GetJobResourceUsageRequest struct {
 	// The date that is accurate to the day part for the query. The date must be in the yyyy-MM-dd format.
 	//
@@ -5918,19 +6416,22 @@ type GetProjectResponseBodyDataProperties struct {
 	// example:
 	//
 	// false
-	AllowFullScan *bool `json:"allowFullScan,omitempty" xml:"allowFullScan,omitempty"`
+	AllowFullScan *bool  `json:"allowFullScan,omitempty" xml:"allowFullScan,omitempty"`
+	AutoMvQuotaGb *int64 `json:"autoMvQuotaGb,omitempty" xml:"autoMvQuotaGb,omitempty"`
 	// The Tunnel parent resource group that is bound to the project. You do not need to pay attention to this group.
 	//
 	// example:
 	//
 	// No value
 	ElderTunnelQuota *string `json:"elderTunnelQuota,omitempty" xml:"elderTunnelQuota,omitempty"`
+	EnableAutoMv     *bool   `json:"enableAutoMv,omitempty" xml:"enableAutoMv,omitempty"`
 	// Indicates whether the DECIMAL type of the MaxCompute V2.0 data type edition is enabled.
 	//
 	// example:
 	//
 	// true
 	EnableDecimal2 *bool `json:"enableDecimal2,omitempty" xml:"enableDecimal2,omitempty"`
+	EnableDr       *bool `json:"enableDr,omitempty" xml:"enableDr,omitempty"`
 	// Indicates whether external table caching is forcefully enabled.
 	//
 	// example:
@@ -6026,13 +6527,28 @@ func (s *GetProjectResponseBodyDataProperties) SetAllowFullScan(v bool) *GetProj
 	return s
 }
 
+func (s *GetProjectResponseBodyDataProperties) SetAutoMvQuotaGb(v int64) *GetProjectResponseBodyDataProperties {
+	s.AutoMvQuotaGb = &v
+	return s
+}
+
 func (s *GetProjectResponseBodyDataProperties) SetElderTunnelQuota(v string) *GetProjectResponseBodyDataProperties {
 	s.ElderTunnelQuota = &v
 	return s
 }
 
+func (s *GetProjectResponseBodyDataProperties) SetEnableAutoMv(v bool) *GetProjectResponseBodyDataProperties {
+	s.EnableAutoMv = &v
+	return s
+}
+
 func (s *GetProjectResponseBodyDataProperties) SetEnableDecimal2(v bool) *GetProjectResponseBodyDataProperties {
 	s.EnableDecimal2 = &v
+	return s
+}
+
+func (s *GetProjectResponseBodyDataProperties) SetEnableDr(v bool) *GetProjectResponseBodyDataProperties {
+	s.EnableDr = &v
 	return s
 }
 
@@ -12675,22 +13191,50 @@ type ListJobInfosRequest struct {
 	// example:
 	//
 	// true
-	AscOrder      *bool     `json:"ascOrder,omitempty" xml:"ascOrder,omitempty"`
+	AscOrder *bool `json:"ascOrder,omitempty" xml:"ascOrder,omitempty"`
+	// The ancestor node IDs.
 	ExtNodeIdList []*string `json:"extNodeIdList,omitempty" xml:"extNodeIdList,omitempty" type:"Repeated"`
+	// The start timestamp.
+	//
 	// This parameter is required.
-	From           *int64    `json:"from,omitempty" xml:"from,omitempty"`
+	//
+	// example:
+	//
+	// 1672112000
+	From *int64 `json:"from,omitempty" xml:"from,omitempty"`
+	// The job instance IDs.
 	InstanceIdList []*string `json:"instanceIdList,omitempty" xml:"instanceIdList,omitempty" type:"Repeated"`
-	JobOwnerList   []*string `json:"jobOwnerList,omitempty" xml:"jobOwnerList,omitempty" type:"Repeated"`
-	PriorityList   []*int64  `json:"priorityList,omitempty" xml:"priorityList,omitempty" type:"Repeated"`
-	ProjectList    []*string `json:"projectList,omitempty" xml:"projectList,omitempty" type:"Repeated"`
-	QuotaNickname  *string   `json:"quotaNickname,omitempty" xml:"quotaNickname,omitempty"`
-	SceneTagList   []*string `json:"sceneTagList,omitempty" xml:"sceneTagList,omitempty" type:"Repeated"`
-	SignatureList  []*string `json:"signatureList,omitempty" xml:"signatureList,omitempty" type:"Repeated"`
-	SortByList     []*string `json:"sortByList,omitempty" xml:"sortByList,omitempty" type:"Repeated"`
-	SortOrderList  []*string `json:"sortOrderList,omitempty" xml:"sortOrderList,omitempty" type:"Repeated"`
-	StatusList     []*string `json:"statusList,omitempty" xml:"statusList,omitempty" type:"Repeated"`
+	// The job owners.
+	JobOwnerList []*string `json:"jobOwnerList,omitempty" xml:"jobOwnerList,omitempty" type:"Repeated"`
+	// The job priorities.
+	PriorityList []*int64 `json:"priorityList,omitempty" xml:"priorityList,omitempty" type:"Repeated"`
+	// The project names.
+	ProjectList []*string `json:"projectList,omitempty" xml:"projectList,omitempty" type:"Repeated"`
+	// The quota nickname.
+	//
+	// example:
+	//
+	// quota_nickname
+	QuotaNickname *string `json:"quotaNickname,omitempty" xml:"quotaNickname,omitempty"`
+	// The intelligent diagnostics tags.
+	SceneTagList []*string `json:"sceneTagList,omitempty" xml:"sceneTagList,omitempty" type:"Repeated"`
+	// The job signatures.
+	SignatureList []*string `json:"signatureList,omitempty" xml:"signatureList,omitempty" type:"Repeated"`
+	// The sorting columns.
+	SortByList []*string `json:"sortByList,omitempty" xml:"sortByList,omitempty" type:"Repeated"`
+	// The orders for the sorting columns.
+	SortOrderList []*string `json:"sortOrderList,omitempty" xml:"sortOrderList,omitempty" type:"Repeated"`
+	// The job states.
+	StatusList []*string `json:"statusList,omitempty" xml:"statusList,omitempty" type:"Repeated"`
+	// The end timestamp.
+	//
 	// This parameter is required.
-	To       *int64    `json:"to,omitempty" xml:"to,omitempty"`
+	//
+	// example:
+	//
+	// 1672112130
+	To *int64 `json:"to,omitempty" xml:"to,omitempty"`
+	// The job types.
 	TypeList []*string `json:"typeList,omitempty" xml:"typeList,omitempty" type:"Repeated"`
 	// The column based on which you want to sort query results.
 	//
@@ -12966,6 +13510,12 @@ type ListJobInfosResponseBodyDataJobInfoList struct {
 	//
 	// platform_3
 	ExtPlantFrom *string `json:"extPlantFrom,omitempty" xml:"extPlantFrom,omitempty"`
+	// The amount of scanned data for the job. Unit: byte.
+	//
+	// example:
+	//
+	// 1234
+	InputBytes *float64 `json:"inputBytes,omitempty" xml:"inputBytes,omitempty"`
 	// The instance ID.
 	//
 	// example:
@@ -13130,6 +13680,11 @@ func (s *ListJobInfosResponseBodyDataJobInfoList) SetExtNodeOnDuty(v string) *Li
 
 func (s *ListJobInfosResponseBodyDataJobInfoList) SetExtPlantFrom(v string) *ListJobInfosResponseBodyDataJobInfoList {
 	s.ExtPlantFrom = &v
+	return s
+}
+
+func (s *ListJobInfosResponseBodyDataJobInfoList) SetInputBytes(v float64) *ListJobInfosResponseBodyDataJobInfoList {
+	s.InputBytes = &v
 	return s
 }
 
@@ -13623,7 +14178,7 @@ func (s *ListJobMetricResponse) SetBody(v *ListJobMetricResponseBody) *ListJobMe
 }
 
 type ListJobSnapshotInfosRequest struct {
-	// Specifies whether to sort query results in ascending or descending order.
+	// Specifies whether to sort data in ascending order.
 	//
 	// example:
 	//
@@ -13671,7 +14226,7 @@ type ListJobSnapshotInfosRequest struct {
 	To *int64 `json:"to,omitempty" xml:"to,omitempty"`
 	// The type of the job.
 	TypeList []*string `json:"typeList,omitempty" xml:"typeList,omitempty" type:"Repeated"`
-	// The column based on which you want to sort query results.
+	// The sorting column.
 	//
 	// example:
 	//
@@ -13807,7 +14362,7 @@ func (s *ListJobSnapshotInfosRequest) SetTenantId(v string) *ListJobSnapshotInfo
 }
 
 type ListJobSnapshotInfosResponseBody struct {
-	// The data returned.
+	// The returned data.
 	Data *ListJobSnapshotInfosResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The error code.
 	//
@@ -13879,7 +14434,7 @@ func (s *ListJobSnapshotInfosResponseBody) SetRequestId(v string) *ListJobSnapsh
 }
 
 type ListJobSnapshotInfosResponseBodyData struct {
-	// The list of jobs snapshot information
+	// The job snapshots.
 	JobInfoList []*ListJobSnapshotInfosResponseBodyDataJobInfoList `json:"jobInfoList,omitempty" xml:"jobInfoList,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -13930,13 +14485,23 @@ func (s *ListJobSnapshotInfosResponseBodyData) SetTotalCount(v int64) *ListJobSn
 }
 
 type ListJobSnapshotInfosResponseBodyDataJobInfoList struct {
+	// The CPU request amount of the job at the snapshot time point. Unit: Core.
+	//
+	// example:
+	//
+	// 200
 	CpuRequest *int64 `json:"cpuRequest,omitempty" xml:"cpuRequest,omitempty"`
 	// CPU usage of the job at the snapshot time. Unit: Core.
 	//
 	// example:
 	//
 	// 100
-	CpuUsage               *int64   `json:"cpuUsage,omitempty" xml:"cpuUsage,omitempty"`
+	CpuUsage *int64 `json:"cpuUsage,omitempty" xml:"cpuUsage,omitempty"`
+	// The CPU satisfaction ratio of the job at the snapshot time point (cpuUsage/cpuRequest).
+	//
+	// example:
+	//
+	// 0.5
 	CpuUsageToRequestRatio *float64 `json:"cpuUsageToRequestRatio,omitempty" xml:"cpuUsageToRequestRatio,omitempty"`
 	// The ID of the upstream node.
 	//
@@ -13985,14 +14550,24 @@ type ListJobSnapshotInfosResponseBodyDataJobInfoList struct {
 	// example:
 	//
 	// -1
-	MaxMemoryPct  *float64 `json:"maxMemoryPct,omitempty" xml:"maxMemoryPct,omitempty"`
-	MemoryRequest *int64   `json:"memoryRequest,omitempty" xml:"memoryRequest,omitempty"`
+	MaxMemoryPct *float64 `json:"maxMemoryPct,omitempty" xml:"maxMemoryPct,omitempty"`
+	// The Memory request amount of the job at the snapshot time point. Unit: MB.
+	//
+	// example:
+	//
+	// 409600
+	MemoryRequest *int64 `json:"memoryRequest,omitempty" xml:"memoryRequest,omitempty"`
 	// Memory usage of the job at the snapshot time. Unit: MB.
 	//
 	// example:
 	//
 	// 409600
-	MemoryUsage               *int64   `json:"memoryUsage,omitempty" xml:"memoryUsage,omitempty"`
+	MemoryUsage *int64 `json:"memoryUsage,omitempty" xml:"memoryUsage,omitempty"`
+	// The Memory satisfaction ratio of the job at the snapshot time point (memoryUsage/memoryRequest).
+	//
+	// example:
+	//
+	// 1
 	MemoryUsageToRequestRatio *float64 `json:"memoryUsageToRequestRatio,omitempty" xml:"memoryUsageToRequestRatio,omitempty"`
 	// The CPU usage ratio of the annual or monthly subscription job at the snapshot time (CPU usage / (reserved CPU guarantee + elastic reserved CPU)). This parameter is not available for pay-as-you-go jobs.
 	//
@@ -26121,6 +26696,7 @@ type UpdateProjectBasicMetaRequestProperties struct {
 	//
 	// true
 	EnableDecimal2 *bool `json:"enableDecimal2,omitempty" xml:"enableDecimal2,omitempty"`
+	EnableDr       *bool `json:"enableDr,omitempty" xml:"enableDr,omitempty"`
 	// Indicates whether the routing of the Tunnel resource group is enabled.
 	//
 	// - true: The data transfer tasks that are submitted by the project by default use the Tunnel resource group that is bound to the project.
@@ -26198,6 +26774,11 @@ func (s *UpdateProjectBasicMetaRequestProperties) SetAllowFullScan(v bool) *Upda
 
 func (s *UpdateProjectBasicMetaRequestProperties) SetEnableDecimal2(v bool) *UpdateProjectBasicMetaRequestProperties {
 	s.EnableDecimal2 = &v
+	return s
+}
+
+func (s *UpdateProjectBasicMetaRequestProperties) SetEnableDr(v bool) *UpdateProjectBasicMetaRequestProperties {
+	s.EnableDr = &v
 	return s
 }
 
@@ -28309,6 +28890,67 @@ func (client *Client) GetComputeQuotaSchedule(nickname *string, request *GetComp
 	headers := make(map[string]*string)
 	_result = &GetComputeQuotaScheduleResponse{}
 	_body, _err := client.GetComputeQuotaScheduleWithOptions(nickname, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Get basic information about a single job.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetJobInfoResponse
+func (client *Client) GetJobInfoWithOptions(instanceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetJobInfoResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetJobInfo"),
+		Version:     tea.String("2022-01-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/jobs/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/info"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetJobInfoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetJobInfoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Get basic information about a single job.
+//
+// @return GetJobInfoResponse
+func (client *Client) GetJobInfo(instanceId *string) (_result *GetJobInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetJobInfoResponse{}
+	_body, _err := client.GetJobInfoWithOptions(instanceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32984,7 +33626,7 @@ func (client *Client) UpdatePackage(projectName *string, packageName *string, re
 
 // Summary:
 //
-// Update Project Basic Information
+// # Update Project Basic Information
 //
 // @param request - UpdateProjectBasicMetaRequest
 //
@@ -33044,7 +33686,7 @@ func (client *Client) UpdateProjectBasicMetaWithOptions(projectName *string, req
 
 // Summary:
 //
-// Update Project Basic Information
+// # Update Project Basic Information
 //
 // @param request - UpdateProjectBasicMetaRequest
 //
@@ -33063,7 +33705,7 @@ func (client *Client) UpdateProjectBasicMeta(projectName *string, request *Updat
 
 // Summary:
 //
-// Modify Default Project Compute Quota
+// # Modify Default Project Compute Quota
 //
 // @param request - UpdateProjectDefaultQuotaRequest
 //
@@ -33119,7 +33761,7 @@ func (client *Client) UpdateProjectDefaultQuotaWithOptions(projectName *string, 
 
 // Summary:
 //
-// Modify Default Project Compute Quota
+// # Modify Default Project Compute Quota
 //
 // @param request - UpdateProjectDefaultQuotaRequest
 //
