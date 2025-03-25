@@ -2411,6 +2411,7 @@ type CreateNodeGroupRequestNodeGroup struct {
 	//
 	// PAI-LINGJUN
 	NodeGroupName *string `json:"NodeGroupName,omitempty" xml:"NodeGroupName,omitempty"`
+	UserData      *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateNodeGroupRequestNodeGroup) String() string {
@@ -2443,6 +2444,11 @@ func (s *CreateNodeGroupRequestNodeGroup) SetNodeGroupDescription(v string) *Cre
 
 func (s *CreateNodeGroupRequestNodeGroup) SetNodeGroupName(v string) *CreateNodeGroupRequestNodeGroup {
 	s.NodeGroupName = &v
+	return s
+}
+
+func (s *CreateNodeGroupRequestNodeGroup) SetUserData(v string) *CreateNodeGroupRequestNodeGroup {
+	s.UserData = &v
 	return s
 }
 
@@ -4663,7 +4669,8 @@ type DescribeNodeResponseBody struct {
 	// example:
 	//
 	// sag42ckf4jx
-	Sn *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
+	Sn       *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 	// Zone ID
 	//
 	// example:
@@ -4762,6 +4769,11 @@ func (s *DescribeNodeResponseBody) SetResourceGroupId(v string) *DescribeNodeRes
 
 func (s *DescribeNodeResponseBody) SetSn(v string) *DescribeNodeResponseBody {
 	s.Sn = &v
+	return s
+}
+
+func (s *DescribeNodeResponseBody) SetUserData(v string) *DescribeNodeResponseBody {
+	s.UserData = &v
 	return s
 }
 
@@ -6496,7 +6508,9 @@ type ListClusterNodesRequest struct {
 	// example:
 	//
 	// ng-ec3c96ff0aa4c60d
-	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+	NodeGroupId     *string                        `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+	ResourceGroupId *string                        `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tags            []*ListClusterNodesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListClusterNodesRequest) String() string {
@@ -6524,6 +6538,39 @@ func (s *ListClusterNodesRequest) SetNextToken(v string) *ListClusterNodesReques
 
 func (s *ListClusterNodesRequest) SetNodeGroupId(v string) *ListClusterNodesRequest {
 	s.NodeGroupId = &v
+	return s
+}
+
+func (s *ListClusterNodesRequest) SetResourceGroupId(v string) *ListClusterNodesRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ListClusterNodesRequest) SetTags(v []*ListClusterNodesRequestTags) *ListClusterNodesRequest {
+	s.Tags = v
+	return s
+}
+
+type ListClusterNodesRequestTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListClusterNodesRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListClusterNodesRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListClusterNodesRequestTags) SetKey(v string) *ListClusterNodesRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListClusterNodesRequestTags) SetValue(v string) *ListClusterNodesRequestTags {
+	s.Value = &v
 	return s
 }
 
@@ -6568,6 +6615,7 @@ func (s *ListClusterNodesResponseBody) SetRequestId(v string) *ListClusterNodesR
 }
 
 type ListClusterNodesResponseBodyNodes struct {
+	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	// Creation time
 	//
 	// example:
@@ -6597,7 +6645,8 @@ type ListClusterNodesResponseBodyNodes struct {
 	// example:
 	//
 	// i190297201669099844192
-	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ImageId   *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
 	// Machine type
 	//
 	// example:
@@ -6635,9 +6684,21 @@ type ListClusterNodesResponseBodyNodes struct {
 	// example:
 	//
 	// sn_tOuUk
-	Sn        *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
+	Sn     *string                                  `json:"Sn,omitempty" xml:"Sn,omitempty"`
+	Tags   []*ListClusterNodesResponseBodyNodesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TaskId *string                                  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// 专有网络交换机ID
+	//
+	// example:
+	//
+	// vsw-bp1mxqhw8o20tgv3xk47h
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcId     *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// 专有网络ID
+	//
+	// example:
+	//
+	// vpc-0jltf9vinjz3if3lltdy7
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// Zone ID
 	//
 	// example:
@@ -6652,6 +6713,11 @@ func (s ListClusterNodesResponseBodyNodes) String() string {
 
 func (s ListClusterNodesResponseBodyNodes) GoString() string {
 	return s.String()
+}
+
+func (s *ListClusterNodesResponseBodyNodes) SetCommodityCode(v string) *ListClusterNodesResponseBodyNodes {
+	s.CommodityCode = &v
+	return s
 }
 
 func (s *ListClusterNodesResponseBodyNodes) SetCreateTime(v string) *ListClusterNodesResponseBodyNodes {
@@ -6676,6 +6742,11 @@ func (s *ListClusterNodesResponseBodyNodes) SetHpnZone(v string) *ListClusterNod
 
 func (s *ListClusterNodesResponseBodyNodes) SetImageId(v string) *ListClusterNodesResponseBodyNodes {
 	s.ImageId = &v
+	return s
+}
+
+func (s *ListClusterNodesResponseBodyNodes) SetImageName(v string) *ListClusterNodesResponseBodyNodes {
+	s.ImageName = &v
 	return s
 }
 
@@ -6711,6 +6782,16 @@ func (s *ListClusterNodesResponseBodyNodes) SetOperatingState(v string) *ListClu
 
 func (s *ListClusterNodesResponseBodyNodes) SetSn(v string) *ListClusterNodesResponseBodyNodes {
 	s.Sn = &v
+	return s
+}
+
+func (s *ListClusterNodesResponseBodyNodes) SetTags(v []*ListClusterNodesResponseBodyNodesTags) *ListClusterNodesResponseBodyNodes {
+	s.Tags = v
+	return s
+}
+
+func (s *ListClusterNodesResponseBodyNodes) SetTaskId(v string) *ListClusterNodesResponseBodyNodes {
+	s.TaskId = &v
 	return s
 }
 
@@ -6784,6 +6865,29 @@ func (s *ListClusterNodesResponseBodyNodesNetworks) SetVpdId(v string) *ListClus
 	return s
 }
 
+type ListClusterNodesResponseBodyNodesTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListClusterNodesResponseBodyNodesTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListClusterNodesResponseBodyNodesTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListClusterNodesResponseBodyNodesTags) SetKey(v string) *ListClusterNodesResponseBodyNodesTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListClusterNodesResponseBodyNodesTags) SetValue(v string) *ListClusterNodesResponseBodyNodesTags {
+	s.Value = &v
+	return s
+}
+
 type ListClusterNodesResponse struct {
 	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -6831,7 +6935,8 @@ type ListClustersRequest struct {
 	// example:
 	//
 	// rg-aek2bg6wyoox6jq
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceGroupId *string                    `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tags            []*ListClustersRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListClustersRequest) String() string {
@@ -6854,6 +6959,34 @@ func (s *ListClustersRequest) SetNextToken(v string) *ListClustersRequest {
 
 func (s *ListClustersRequest) SetResourceGroupId(v string) *ListClustersRequest {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ListClustersRequest) SetTags(v []*ListClustersRequestTags) *ListClustersRequest {
+	s.Tags = v
+	return s
+}
+
+type ListClustersRequestTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListClustersRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListClustersRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListClustersRequestTags) SetKey(v string) *ListClustersRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListClustersRequestTags) SetValue(v string) *ListClustersRequestTags {
+	s.Value = &v
 	return s
 }
 
@@ -6969,7 +7102,8 @@ type ListClustersResponseBodyClusters struct {
 	// example:
 	//
 	// rg-aek2ajbjoloa23q
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceGroupId *string                                 `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tags            []*ListClustersResponseBodyClustersTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// Task ID
 	//
 	// example:
@@ -7058,6 +7192,11 @@ func (s *ListClustersResponseBodyClusters) SetResourceGroupId(v string) *ListClu
 	return s
 }
 
+func (s *ListClustersResponseBodyClusters) SetTags(v []*ListClustersResponseBodyClustersTags) *ListClustersResponseBodyClusters {
+	s.Tags = v
+	return s
+}
+
 func (s *ListClustersResponseBodyClusters) SetTaskId(v string) *ListClustersResponseBodyClusters {
 	s.TaskId = &v
 	return s
@@ -7070,6 +7209,29 @@ func (s *ListClustersResponseBodyClusters) SetUpdateTime(v string) *ListClusters
 
 func (s *ListClustersResponseBodyClusters) SetVpcId(v string) *ListClustersResponseBodyClusters {
 	s.VpcId = &v
+	return s
+}
+
+type ListClustersResponseBodyClustersTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListClustersResponseBodyClustersTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListClustersResponseBodyClustersTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListClustersResponseBodyClustersTags) SetKey(v string) *ListClustersResponseBodyClustersTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListClustersResponseBodyClustersTags) SetValue(v string) *ListClustersResponseBodyClustersTags {
+	s.Value = &v
 	return s
 }
 
@@ -7400,7 +7562,8 @@ type ListFreeNodesRequest struct {
 	// example:
 	//
 	// rg-acfmxno4vh5muoq
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceGroupId *string                     `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tags            []*ListFreeNodesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListFreeNodesRequest) String() string {
@@ -7433,6 +7596,37 @@ func (s *ListFreeNodesRequest) SetNextToken(v string) *ListFreeNodesRequest {
 
 func (s *ListFreeNodesRequest) SetResourceGroupId(v string) *ListFreeNodesRequest {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ListFreeNodesRequest) SetTags(v []*ListFreeNodesRequestTags) *ListFreeNodesRequest {
+	s.Tags = v
+	return s
+}
+
+type ListFreeNodesRequestTags struct {
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// 129
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListFreeNodesRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFreeNodesRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListFreeNodesRequestTags) SetKey(v string) *ListFreeNodesRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListFreeNodesRequestTags) SetValue(v string) *ListFreeNodesRequestTags {
+	s.Value = &v
 	return s
 }
 
@@ -7477,6 +7671,7 @@ func (s *ListFreeNodesResponseBody) SetRequestId(v string) *ListFreeNodesRespons
 }
 
 type ListFreeNodesResponseBodyNodes struct {
+	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	// Creation time
 	//
 	// example:
@@ -7506,7 +7701,8 @@ type ListFreeNodesResponseBodyNodes struct {
 	// example:
 	//
 	// e01-cn-7pp2x193801
-	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeId         *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	OperatingState *string `json:"OperatingState,omitempty" xml:"OperatingState,omitempty"`
 	// Resource group ID
 	//
 	// example:
@@ -7518,7 +7714,8 @@ type ListFreeNodesResponseBodyNodes struct {
 	// example:
 	//
 	// sn_pozkHBgicd
-	Sn *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
+	Sn   *string                               `json:"Sn,omitempty" xml:"Sn,omitempty"`
+	Tags []*ListFreeNodesResponseBodyNodesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// Availability zone ID
 	//
 	// example:
@@ -7533,6 +7730,11 @@ func (s ListFreeNodesResponseBodyNodes) String() string {
 
 func (s ListFreeNodesResponseBodyNodes) GoString() string {
 	return s.String()
+}
+
+func (s *ListFreeNodesResponseBodyNodes) SetCommodityCode(v string) *ListFreeNodesResponseBodyNodes {
+	s.CommodityCode = &v
+	return s
 }
 
 func (s *ListFreeNodesResponseBodyNodes) SetCreateTime(v string) *ListFreeNodesResponseBodyNodes {
@@ -7560,6 +7762,11 @@ func (s *ListFreeNodesResponseBodyNodes) SetNodeId(v string) *ListFreeNodesRespo
 	return s
 }
 
+func (s *ListFreeNodesResponseBodyNodes) SetOperatingState(v string) *ListFreeNodesResponseBodyNodes {
+	s.OperatingState = &v
+	return s
+}
+
 func (s *ListFreeNodesResponseBodyNodes) SetResourceGroupId(v string) *ListFreeNodesResponseBodyNodes {
 	s.ResourceGroupId = &v
 	return s
@@ -7570,8 +7777,36 @@ func (s *ListFreeNodesResponseBodyNodes) SetSn(v string) *ListFreeNodesResponseB
 	return s
 }
 
+func (s *ListFreeNodesResponseBodyNodes) SetTags(v []*ListFreeNodesResponseBodyNodesTags) *ListFreeNodesResponseBodyNodes {
+	s.Tags = v
+	return s
+}
+
 func (s *ListFreeNodesResponseBodyNodes) SetZoneId(v string) *ListFreeNodesResponseBodyNodes {
 	s.ZoneId = &v
+	return s
+}
+
+type ListFreeNodesResponseBodyNodesTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListFreeNodesResponseBodyNodesTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFreeNodesResponseBodyNodesTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListFreeNodesResponseBodyNodesTags) SetKey(v string) *ListFreeNodesResponseBodyNodesTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListFreeNodesResponseBodyNodesTags) SetValue(v string) *ListFreeNodesResponseBodyNodesTags {
+	s.Value = &v
 	return s
 }
 
@@ -11563,6 +11798,7 @@ type UpdateNodeGroupRequest struct {
 	//
 	// i120021051733814190732
 	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+	UserData    *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s UpdateNodeGroupRequest) String() string {
@@ -11580,6 +11816,11 @@ func (s *UpdateNodeGroupRequest) SetNewNodeGroupName(v string) *UpdateNodeGroupR
 
 func (s *UpdateNodeGroupRequest) SetNodeGroupId(v string) *UpdateNodeGroupRequest {
 	s.NodeGroupId = &v
+	return s
+}
+
+func (s *UpdateNodeGroupRequest) SetUserData(v string) *UpdateNodeGroupRequest {
+	s.UserData = &v
 	return s
 }
 
@@ -13375,6 +13616,11 @@ func (client *Client) ListClusterNodesWithOptions(request *ListClusterNodesReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
 		body["ClusterId"] = request.ClusterId
@@ -13392,8 +13638,13 @@ func (client *Client) ListClusterNodesWithOptions(request *ListClusterNodesReque
 		body["NodeGroupId"] = request.NodeGroupId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		body["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListClusterNodes"),
@@ -13458,6 +13709,11 @@ func (client *Client) ListClustersWithOptions(request *ListClustersRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
 		body["MaxResults"] = request.MaxResults
@@ -13472,7 +13728,8 @@ func (client *Client) ListClustersWithOptions(request *ListClustersRequest, runt
 	}
 
 	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListClusters"),
@@ -13628,6 +13885,11 @@ func (client *Client) ListFreeNodesWithOptions(request *ListFreeNodesRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.HpnZone)) {
 		body["HpnZone"] = request.HpnZone
@@ -13650,7 +13912,8 @@ func (client *Client) ListFreeNodesWithOptions(request *ListFreeNodesRequest, ru
 	}
 
 	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListFreeNodes"),
@@ -15133,6 +15396,10 @@ func (client *Client) UpdateNodeGroupWithOptions(request *UpdateNodeGroupRequest
 
 	if !tea.BoolValue(util.IsUnset(request.NodeGroupId)) {
 		body["NodeGroupId"] = request.NodeGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		body["UserData"] = request.UserData
 	}
 
 	req := &openapi.OpenApiRequest{
