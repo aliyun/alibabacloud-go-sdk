@@ -1,3 +1,12 @@
+2025-03-25 Version: v3.0.0
+- Update API ListPlans: add response parameters Body.Plans.$.IspType.
+- Update API ListPlans: add response parameters Body.Plans.$.PublicIpNum.
+- Update API ListPlans: update response parameters Body.Plans.$.Memory' type has changed.
+- Update API ListPlans: update response parameters Body.Plans.$.Memory' format has changed.
+- Update API ListPlans: update response parameters Body.Plans.$.OriginPrice' type has changed.
+- Update API ListPlans: update response parameters Body.Plans.$.OriginPrice' format has changed.
+
+
 2025-03-20 Version: v2.1.1
 - Update API ListInstances: add param PlanType.
 - Update API ListInstances: update response param.

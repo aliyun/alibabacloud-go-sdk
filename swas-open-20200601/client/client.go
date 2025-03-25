@@ -3,11 +3,23 @@ package client
 
 import (
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
-	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
-	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/v2/service"
-	"github.com/alibabacloud-go/tea/tea"
+	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
+	"github.com/alibabacloud-go/tea/dara"
 )
+
+type iAddCustomImageShareAccountRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetAccount(v []*int64) *AddCustomImageShareAccountRequest
+	GetAccount() []*int64
+	SetClientToken(v string) *AddCustomImageShareAccountRequest
+	GetClientToken() *string
+	SetImageId(v string) *AddCustomImageShareAccountRequest
+	GetImageId() *string
+	SetRegionId(v string) *AddCustomImageShareAccountRequest
+	GetRegionId() *string
+}
 
 type AddCustomImageShareAccountRequest struct {
 	// The IDs of the Alibaba Cloud accounts with which you want to share the custom image.
@@ -39,11 +51,27 @@ type AddCustomImageShareAccountRequest struct {
 }
 
 func (s AddCustomImageShareAccountRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s AddCustomImageShareAccountRequest) GoString() string {
 	return s.String()
+}
+
+func (s *AddCustomImageShareAccountRequest) GetAccount() []*int64 {
+	return s.Account
+}
+
+func (s *AddCustomImageShareAccountRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *AddCustomImageShareAccountRequest) GetImageId() *string {
+	return s.ImageId
+}
+
+func (s *AddCustomImageShareAccountRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *AddCustomImageShareAccountRequest) SetAccount(v []*int64) *AddCustomImageShareAccountRequest {
@@ -66,6 +94,18 @@ func (s *AddCustomImageShareAccountRequest) SetRegionId(v string) *AddCustomImag
 	return s
 }
 
+func (s *AddCustomImageShareAccountRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iAddCustomImageShareAccountResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetRequestId(v string) *AddCustomImageShareAccountResponseBody
+	GetRequestId() *string
+}
+
 type AddCustomImageShareAccountResponseBody struct {
 	// The request ID.
 	//
@@ -76,16 +116,36 @@ type AddCustomImageShareAccountResponseBody struct {
 }
 
 func (s AddCustomImageShareAccountResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s AddCustomImageShareAccountResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *AddCustomImageShareAccountResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
 func (s *AddCustomImageShareAccountResponseBody) SetRequestId(v string) *AddCustomImageShareAccountResponseBody {
 	s.RequestId = &v
 	return s
+}
+
+func (s *AddCustomImageShareAccountResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iAddCustomImageShareAccountResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *AddCustomImageShareAccountResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *AddCustomImageShareAccountResponse
+	GetStatusCode() *int32
+	SetBody(v *AddCustomImageShareAccountResponseBody) *AddCustomImageShareAccountResponse
+	GetBody() *AddCustomImageShareAccountResponseBody
 }
 
 type AddCustomImageShareAccountResponse struct {
@@ -95,11 +155,23 @@ type AddCustomImageShareAccountResponse struct {
 }
 
 func (s AddCustomImageShareAccountResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s AddCustomImageShareAccountResponse) GoString() string {
 	return s.String()
+}
+
+func (s *AddCustomImageShareAccountResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *AddCustomImageShareAccountResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *AddCustomImageShareAccountResponse) GetBody() *AddCustomImageShareAccountResponseBody {
+	return s.Body
 }
 
 func (s *AddCustomImageShareAccountResponse) SetHeaders(v map[string]*string) *AddCustomImageShareAccountResponse {
@@ -115,6 +187,22 @@ func (s *AddCustomImageShareAccountResponse) SetStatusCode(v int32) *AddCustomIm
 func (s *AddCustomImageShareAccountResponse) SetBody(v *AddCustomImageShareAccountResponseBody) *AddCustomImageShareAccountResponse {
 	s.Body = v
 	return s
+}
+
+func (s *AddCustomImageShareAccountResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iAllocatePublicConnectionRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientToken(v string) *AllocatePublicConnectionRequest
+	GetClientToken() *string
+	SetDatabaseInstanceId(v string) *AllocatePublicConnectionRequest
+	GetDatabaseInstanceId() *string
+	SetRegionId(v string) *AllocatePublicConnectionRequest
+	GetRegionId() *string
 }
 
 type AllocatePublicConnectionRequest struct {
@@ -143,11 +231,23 @@ type AllocatePublicConnectionRequest struct {
 }
 
 func (s AllocatePublicConnectionRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s AllocatePublicConnectionRequest) GoString() string {
 	return s.String()
+}
+
+func (s *AllocatePublicConnectionRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *AllocatePublicConnectionRequest) GetDatabaseInstanceId() *string {
+	return s.DatabaseInstanceId
+}
+
+func (s *AllocatePublicConnectionRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *AllocatePublicConnectionRequest) SetClientToken(v string) *AllocatePublicConnectionRequest {
@@ -163,6 +263,20 @@ func (s *AllocatePublicConnectionRequest) SetDatabaseInstanceId(v string) *Alloc
 func (s *AllocatePublicConnectionRequest) SetRegionId(v string) *AllocatePublicConnectionRequest {
 	s.RegionId = &v
 	return s
+}
+
+func (s *AllocatePublicConnectionRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iAllocatePublicConnectionResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetPublicConnection(v string) *AllocatePublicConnectionResponseBody
+	GetPublicConnection() *string
+	SetRequestId(v string) *AllocatePublicConnectionResponseBody
+	GetRequestId() *string
 }
 
 type AllocatePublicConnectionResponseBody struct {
@@ -181,11 +295,19 @@ type AllocatePublicConnectionResponseBody struct {
 }
 
 func (s AllocatePublicConnectionResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s AllocatePublicConnectionResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *AllocatePublicConnectionResponseBody) GetPublicConnection() *string {
+	return s.PublicConnection
+}
+
+func (s *AllocatePublicConnectionResponseBody) GetRequestId() *string {
+	return s.RequestId
 }
 
 func (s *AllocatePublicConnectionResponseBody) SetPublicConnection(v string) *AllocatePublicConnectionResponseBody {
@@ -198,6 +320,22 @@ func (s *AllocatePublicConnectionResponseBody) SetRequestId(v string) *AllocateP
 	return s
 }
 
+func (s *AllocatePublicConnectionResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iAllocatePublicConnectionResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *AllocatePublicConnectionResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *AllocatePublicConnectionResponse
+	GetStatusCode() *int32
+	SetBody(v *AllocatePublicConnectionResponseBody) *AllocatePublicConnectionResponse
+	GetBody() *AllocatePublicConnectionResponseBody
+}
+
 type AllocatePublicConnectionResponse struct {
 	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -205,11 +343,23 @@ type AllocatePublicConnectionResponse struct {
 }
 
 func (s AllocatePublicConnectionResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s AllocatePublicConnectionResponse) GoString() string {
 	return s.String()
+}
+
+func (s *AllocatePublicConnectionResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *AllocatePublicConnectionResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *AllocatePublicConnectionResponse) GetBody() *AllocatePublicConnectionResponseBody {
+	return s.Body
 }
 
 func (s *AllocatePublicConnectionResponse) SetHeaders(v map[string]*string) *AllocatePublicConnectionResponse {
@@ -225,6 +375,24 @@ func (s *AllocatePublicConnectionResponse) SetStatusCode(v int32) *AllocatePubli
 func (s *AllocatePublicConnectionResponse) SetBody(v *AllocatePublicConnectionResponseBody) *AllocatePublicConnectionResponse {
 	s.Body = v
 	return s
+}
+
+func (s *AllocatePublicConnectionResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iApplyFirewallTemplateRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientToken(v string) *ApplyFirewallTemplateRequest
+	GetClientToken() *string
+	SetFirewallTemplateId(v string) *ApplyFirewallTemplateRequest
+	GetFirewallTemplateId() *string
+	SetInstanceIds(v []*string) *ApplyFirewallTemplateRequest
+	GetInstanceIds() []*string
+	SetRegionId(v string) *ApplyFirewallTemplateRequest
+	GetRegionId() *string
 }
 
 type ApplyFirewallTemplateRequest struct {
@@ -257,11 +425,27 @@ type ApplyFirewallTemplateRequest struct {
 }
 
 func (s ApplyFirewallTemplateRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ApplyFirewallTemplateRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ApplyFirewallTemplateRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *ApplyFirewallTemplateRequest) GetFirewallTemplateId() *string {
+	return s.FirewallTemplateId
+}
+
+func (s *ApplyFirewallTemplateRequest) GetInstanceIds() []*string {
+	return s.InstanceIds
+}
+
+func (s *ApplyFirewallTemplateRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *ApplyFirewallTemplateRequest) SetClientToken(v string) *ApplyFirewallTemplateRequest {
@@ -284,6 +468,20 @@ func (s *ApplyFirewallTemplateRequest) SetRegionId(v string) *ApplyFirewallTempl
 	return s
 }
 
+func (s *ApplyFirewallTemplateRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iApplyFirewallTemplateResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetRequestId(v string) *ApplyFirewallTemplateResponseBody
+	GetRequestId() *string
+	SetTaskId(v string) *ApplyFirewallTemplateResponseBody
+	GetTaskId() *string
+}
+
 type ApplyFirewallTemplateResponseBody struct {
 	// The request ID.
 	//
@@ -300,11 +498,19 @@ type ApplyFirewallTemplateResponseBody struct {
 }
 
 func (s ApplyFirewallTemplateResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ApplyFirewallTemplateResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ApplyFirewallTemplateResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
+func (s *ApplyFirewallTemplateResponseBody) GetTaskId() *string {
+	return s.TaskId
 }
 
 func (s *ApplyFirewallTemplateResponseBody) SetRequestId(v string) *ApplyFirewallTemplateResponseBody {
@@ -317,6 +523,22 @@ func (s *ApplyFirewallTemplateResponseBody) SetTaskId(v string) *ApplyFirewallTe
 	return s
 }
 
+func (s *ApplyFirewallTemplateResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iApplyFirewallTemplateResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *ApplyFirewallTemplateResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *ApplyFirewallTemplateResponse
+	GetStatusCode() *int32
+	SetBody(v *ApplyFirewallTemplateResponseBody) *ApplyFirewallTemplateResponse
+	GetBody() *ApplyFirewallTemplateResponseBody
+}
+
 type ApplyFirewallTemplateResponse struct {
 	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -324,11 +546,23 @@ type ApplyFirewallTemplateResponse struct {
 }
 
 func (s ApplyFirewallTemplateResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ApplyFirewallTemplateResponse) GoString() string {
 	return s.String()
+}
+
+func (s *ApplyFirewallTemplateResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *ApplyFirewallTemplateResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *ApplyFirewallTemplateResponse) GetBody() *ApplyFirewallTemplateResponseBody {
+	return s.Body
 }
 
 func (s *ApplyFirewallTemplateResponse) SetHeaders(v map[string]*string) *ApplyFirewallTemplateResponse {
@@ -344,6 +578,24 @@ func (s *ApplyFirewallTemplateResponse) SetStatusCode(v int32) *ApplyFirewallTem
 func (s *ApplyFirewallTemplateResponse) SetBody(v *ApplyFirewallTemplateResponseBody) *ApplyFirewallTemplateResponse {
 	s.Body = v
 	return s
+}
+
+func (s *ApplyFirewallTemplateResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iAttachKeyPairRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientToken(v string) *AttachKeyPairRequest
+	GetClientToken() *string
+	SetInstanceIds(v []*string) *AttachKeyPairRequest
+	GetInstanceIds() []*string
+	SetKeyPairName(v string) *AttachKeyPairRequest
+	GetKeyPairName() *string
+	SetRegionId(v string) *AttachKeyPairRequest
+	GetRegionId() *string
 }
 
 type AttachKeyPairRequest struct {
@@ -376,11 +628,27 @@ type AttachKeyPairRequest struct {
 }
 
 func (s AttachKeyPairRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s AttachKeyPairRequest) GoString() string {
 	return s.String()
+}
+
+func (s *AttachKeyPairRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *AttachKeyPairRequest) GetInstanceIds() []*string {
+	return s.InstanceIds
+}
+
+func (s *AttachKeyPairRequest) GetKeyPairName() *string {
+	return s.KeyPairName
+}
+
+func (s *AttachKeyPairRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *AttachKeyPairRequest) SetClientToken(v string) *AttachKeyPairRequest {
@@ -401,6 +669,24 @@ func (s *AttachKeyPairRequest) SetKeyPairName(v string) *AttachKeyPairRequest {
 func (s *AttachKeyPairRequest) SetRegionId(v string) *AttachKeyPairRequest {
 	s.RegionId = &v
 	return s
+}
+
+func (s *AttachKeyPairRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iAttachKeyPairResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetFailCount(v int32) *AttachKeyPairResponseBody
+	GetFailCount() *int32
+	SetRequestId(v string) *AttachKeyPairResponseBody
+	GetRequestId() *string
+	SetResults(v []*AttachKeyPairResponseBodyResults) *AttachKeyPairResponseBody
+	GetResults() []*AttachKeyPairResponseBodyResults
+	SetTotalCount(v int32) *AttachKeyPairResponseBody
+	GetTotalCount() *int32
 }
 
 type AttachKeyPairResponseBody struct {
@@ -427,11 +713,27 @@ type AttachKeyPairResponseBody struct {
 }
 
 func (s AttachKeyPairResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s AttachKeyPairResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *AttachKeyPairResponseBody) GetFailCount() *int32 {
+	return s.FailCount
+}
+
+func (s *AttachKeyPairResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
+func (s *AttachKeyPairResponseBody) GetResults() []*AttachKeyPairResponseBodyResults {
+	return s.Results
+}
+
+func (s *AttachKeyPairResponseBody) GetTotalCount() *int32 {
+	return s.TotalCount
 }
 
 func (s *AttachKeyPairResponseBody) SetFailCount(v int32) *AttachKeyPairResponseBody {
@@ -452,6 +754,10 @@ func (s *AttachKeyPairResponseBody) SetResults(v []*AttachKeyPairResponseBodyRes
 func (s *AttachKeyPairResponseBody) SetTotalCount(v int32) *AttachKeyPairResponseBody {
 	s.TotalCount = &v
 	return s
+}
+
+func (s *AttachKeyPairResponseBody) Validate() error {
+	return dara.Validate(s)
 }
 
 type AttachKeyPairResponseBodyResults struct {
@@ -486,11 +792,27 @@ type AttachKeyPairResponseBodyResults struct {
 }
 
 func (s AttachKeyPairResponseBodyResults) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s AttachKeyPairResponseBodyResults) GoString() string {
 	return s.String()
+}
+
+func (s *AttachKeyPairResponseBodyResults) GetCode() *string {
+	return s.Code
+}
+
+func (s *AttachKeyPairResponseBodyResults) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *AttachKeyPairResponseBodyResults) GetMessage() *string {
+	return s.Message
+}
+
+func (s *AttachKeyPairResponseBodyResults) GetSuccess() *string {
+	return s.Success
 }
 
 func (s *AttachKeyPairResponseBodyResults) SetCode(v string) *AttachKeyPairResponseBodyResults {
@@ -513,6 +835,22 @@ func (s *AttachKeyPairResponseBodyResults) SetSuccess(v string) *AttachKeyPairRe
 	return s
 }
 
+func (s *AttachKeyPairResponseBodyResults) Validate() error {
+	return dara.Validate(s)
+}
+
+type iAttachKeyPairResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *AttachKeyPairResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *AttachKeyPairResponse
+	GetStatusCode() *int32
+	SetBody(v *AttachKeyPairResponseBody) *AttachKeyPairResponse
+	GetBody() *AttachKeyPairResponseBody
+}
+
 type AttachKeyPairResponse struct {
 	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -520,11 +858,23 @@ type AttachKeyPairResponse struct {
 }
 
 func (s AttachKeyPairResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s AttachKeyPairResponse) GoString() string {
 	return s.String()
+}
+
+func (s *AttachKeyPairResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *AttachKeyPairResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *AttachKeyPairResponse) GetBody() *AttachKeyPairResponseBody {
+	return s.Body
 }
 
 func (s *AttachKeyPairResponse) SetHeaders(v map[string]*string) *AttachKeyPairResponse {
@@ -540,6 +890,36 @@ func (s *AttachKeyPairResponse) SetStatusCode(v int32) *AttachKeyPairResponse {
 func (s *AttachKeyPairResponse) SetBody(v *AttachKeyPairResponseBody) *AttachKeyPairResponse {
 	s.Body = v
 	return s
+}
+
+func (s *AttachKeyPairResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iCreateCommandRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetCommandContent(v string) *CreateCommandRequest
+	GetCommandContent() *string
+	SetDescription(v string) *CreateCommandRequest
+	GetDescription() *string
+	SetEnableParameter(v bool) *CreateCommandRequest
+	GetEnableParameter() *bool
+	SetName(v string) *CreateCommandRequest
+	GetName() *string
+	SetRegionId(v string) *CreateCommandRequest
+	GetRegionId() *string
+	SetResourceGroupId(v string) *CreateCommandRequest
+	GetResourceGroupId() *string
+	SetTag(v []*CreateCommandRequestTag) *CreateCommandRequest
+	GetTag() []*CreateCommandRequestTag
+	SetTimeout(v int64) *CreateCommandRequest
+	GetTimeout() *int64
+	SetType(v string) *CreateCommandRequest
+	GetType() *string
+	SetWorkingDir(v string) *CreateCommandRequest
+	GetWorkingDir() *string
 }
 
 type CreateCommandRequest struct {
@@ -638,11 +1018,51 @@ type CreateCommandRequest struct {
 }
 
 func (s CreateCommandRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s CreateCommandRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateCommandRequest) GetCommandContent() *string {
+	return s.CommandContent
+}
+
+func (s *CreateCommandRequest) GetDescription() *string {
+	return s.Description
+}
+
+func (s *CreateCommandRequest) GetEnableParameter() *bool {
+	return s.EnableParameter
+}
+
+func (s *CreateCommandRequest) GetName() *string {
+	return s.Name
+}
+
+func (s *CreateCommandRequest) GetRegionId() *string {
+	return s.RegionId
+}
+
+func (s *CreateCommandRequest) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
+func (s *CreateCommandRequest) GetTag() []*CreateCommandRequestTag {
+	return s.Tag
+}
+
+func (s *CreateCommandRequest) GetTimeout() *int64 {
+	return s.Timeout
+}
+
+func (s *CreateCommandRequest) GetType() *string {
+	return s.Type
+}
+
+func (s *CreateCommandRequest) GetWorkingDir() *string {
+	return s.WorkingDir
 }
 
 func (s *CreateCommandRequest) SetCommandContent(v string) *CreateCommandRequest {
@@ -695,6 +1115,10 @@ func (s *CreateCommandRequest) SetWorkingDir(v string) *CreateCommandRequest {
 	return s
 }
 
+func (s *CreateCommandRequest) Validate() error {
+	return dara.Validate(s)
+}
+
 type CreateCommandRequestTag struct {
 	// The key of tag N that you want to add to the command. Valid values of N: 1 to 20.
 	//
@@ -715,11 +1139,19 @@ type CreateCommandRequestTag struct {
 }
 
 func (s CreateCommandRequestTag) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s CreateCommandRequestTag) GoString() string {
 	return s.String()
+}
+
+func (s *CreateCommandRequestTag) GetKey() *string {
+	return s.Key
+}
+
+func (s *CreateCommandRequestTag) GetValue() *string {
+	return s.Value
 }
 
 func (s *CreateCommandRequestTag) SetKey(v string) *CreateCommandRequestTag {
@@ -730,6 +1162,20 @@ func (s *CreateCommandRequestTag) SetKey(v string) *CreateCommandRequestTag {
 func (s *CreateCommandRequestTag) SetValue(v string) *CreateCommandRequestTag {
 	s.Value = &v
 	return s
+}
+
+func (s *CreateCommandRequestTag) Validate() error {
+	return dara.Validate(s)
+}
+
+type iCreateCommandResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetCommandId(v string) *CreateCommandResponseBody
+	GetCommandId() *string
+	SetRequestId(v string) *CreateCommandResponseBody
+	GetRequestId() *string
 }
 
 type CreateCommandResponseBody struct {
@@ -748,11 +1194,19 @@ type CreateCommandResponseBody struct {
 }
 
 func (s CreateCommandResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s CreateCommandResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateCommandResponseBody) GetCommandId() *string {
+	return s.CommandId
+}
+
+func (s *CreateCommandResponseBody) GetRequestId() *string {
+	return s.RequestId
 }
 
 func (s *CreateCommandResponseBody) SetCommandId(v string) *CreateCommandResponseBody {
@@ -765,6 +1219,22 @@ func (s *CreateCommandResponseBody) SetRequestId(v string) *CreateCommandRespons
 	return s
 }
 
+func (s *CreateCommandResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iCreateCommandResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *CreateCommandResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *CreateCommandResponse
+	GetStatusCode() *int32
+	SetBody(v *CreateCommandResponseBody) *CreateCommandResponse
+	GetBody() *CreateCommandResponseBody
+}
+
 type CreateCommandResponse struct {
 	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -772,11 +1242,23 @@ type CreateCommandResponse struct {
 }
 
 func (s CreateCommandResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s CreateCommandResponse) GoString() string {
 	return s.String()
+}
+
+func (s *CreateCommandResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *CreateCommandResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *CreateCommandResponse) GetBody() *CreateCommandResponseBody {
+	return s.Body
 }
 
 func (s *CreateCommandResponse) SetHeaders(v map[string]*string) *CreateCommandResponse {
@@ -792,6 +1274,34 @@ func (s *CreateCommandResponse) SetStatusCode(v int32) *CreateCommandResponse {
 func (s *CreateCommandResponse) SetBody(v *CreateCommandResponseBody) *CreateCommandResponse {
 	s.Body = v
 	return s
+}
+
+func (s *CreateCommandResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iCreateCustomImageRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientToken(v string) *CreateCustomImageRequest
+	GetClientToken() *string
+	SetDataSnapshotId(v string) *CreateCustomImageRequest
+	GetDataSnapshotId() *string
+	SetDescription(v string) *CreateCustomImageRequest
+	GetDescription() *string
+	SetImageName(v string) *CreateCustomImageRequest
+	GetImageName() *string
+	SetInstanceId(v string) *CreateCustomImageRequest
+	GetInstanceId() *string
+	SetRegionId(v string) *CreateCustomImageRequest
+	GetRegionId() *string
+	SetResourceGroupId(v string) *CreateCustomImageRequest
+	GetResourceGroupId() *string
+	SetSystemSnapshotId(v string) *CreateCustomImageRequest
+	GetSystemSnapshotId() *string
+	SetTag(v []*CreateCustomImageRequestTag) *CreateCustomImageRequest
+	GetTag() []*CreateCustomImageRequestTag
 }
 
 type CreateCustomImageRequest struct {
@@ -854,11 +1364,47 @@ type CreateCustomImageRequest struct {
 }
 
 func (s CreateCustomImageRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s CreateCustomImageRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateCustomImageRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *CreateCustomImageRequest) GetDataSnapshotId() *string {
+	return s.DataSnapshotId
+}
+
+func (s *CreateCustomImageRequest) GetDescription() *string {
+	return s.Description
+}
+
+func (s *CreateCustomImageRequest) GetImageName() *string {
+	return s.ImageName
+}
+
+func (s *CreateCustomImageRequest) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *CreateCustomImageRequest) GetRegionId() *string {
+	return s.RegionId
+}
+
+func (s *CreateCustomImageRequest) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
+func (s *CreateCustomImageRequest) GetSystemSnapshotId() *string {
+	return s.SystemSnapshotId
+}
+
+func (s *CreateCustomImageRequest) GetTag() []*CreateCustomImageRequestTag {
+	return s.Tag
 }
 
 func (s *CreateCustomImageRequest) SetClientToken(v string) *CreateCustomImageRequest {
@@ -906,6 +1452,10 @@ func (s *CreateCustomImageRequest) SetTag(v []*CreateCustomImageRequestTag) *Cre
 	return s
 }
 
+func (s *CreateCustomImageRequest) Validate() error {
+	return dara.Validate(s)
+}
+
 type CreateCustomImageRequestTag struct {
 	// The key of tag N that you want to add to the custom image. Valid values of N: 1 to 20.
 	//
@@ -926,11 +1476,19 @@ type CreateCustomImageRequestTag struct {
 }
 
 func (s CreateCustomImageRequestTag) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s CreateCustomImageRequestTag) GoString() string {
 	return s.String()
+}
+
+func (s *CreateCustomImageRequestTag) GetKey() *string {
+	return s.Key
+}
+
+func (s *CreateCustomImageRequestTag) GetValue() *string {
+	return s.Value
 }
 
 func (s *CreateCustomImageRequestTag) SetKey(v string) *CreateCustomImageRequestTag {
@@ -941,6 +1499,20 @@ func (s *CreateCustomImageRequestTag) SetKey(v string) *CreateCustomImageRequest
 func (s *CreateCustomImageRequestTag) SetValue(v string) *CreateCustomImageRequestTag {
 	s.Value = &v
 	return s
+}
+
+func (s *CreateCustomImageRequestTag) Validate() error {
+	return dara.Validate(s)
+}
+
+type iCreateCustomImageResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetImageId(v string) *CreateCustomImageResponseBody
+	GetImageId() *string
+	SetRequestId(v string) *CreateCustomImageResponseBody
+	GetRequestId() *string
 }
 
 type CreateCustomImageResponseBody struct {
@@ -959,11 +1531,19 @@ type CreateCustomImageResponseBody struct {
 }
 
 func (s CreateCustomImageResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s CreateCustomImageResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateCustomImageResponseBody) GetImageId() *string {
+	return s.ImageId
+}
+
+func (s *CreateCustomImageResponseBody) GetRequestId() *string {
+	return s.RequestId
 }
 
 func (s *CreateCustomImageResponseBody) SetImageId(v string) *CreateCustomImageResponseBody {
@@ -976,6 +1556,22 @@ func (s *CreateCustomImageResponseBody) SetRequestId(v string) *CreateCustomImag
 	return s
 }
 
+func (s *CreateCustomImageResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iCreateCustomImageResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *CreateCustomImageResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *CreateCustomImageResponse
+	GetStatusCode() *int32
+	SetBody(v *CreateCustomImageResponseBody) *CreateCustomImageResponse
+	GetBody() *CreateCustomImageResponseBody
+}
+
 type CreateCustomImageResponse struct {
 	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -983,11 +1579,23 @@ type CreateCustomImageResponse struct {
 }
 
 func (s CreateCustomImageResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s CreateCustomImageResponse) GoString() string {
 	return s.String()
+}
+
+func (s *CreateCustomImageResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *CreateCustomImageResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *CreateCustomImageResponse) GetBody() *CreateCustomImageResponseBody {
+	return s.Body
 }
 
 func (s *CreateCustomImageResponse) SetHeaders(v map[string]*string) *CreateCustomImageResponse {
@@ -1003,6 +1611,28 @@ func (s *CreateCustomImageResponse) SetStatusCode(v int32) *CreateCustomImageRes
 func (s *CreateCustomImageResponse) SetBody(v *CreateCustomImageResponseBody) *CreateCustomImageResponse {
 	s.Body = v
 	return s
+}
+
+func (s *CreateCustomImageResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iCreateFirewallRuleRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientToken(v string) *CreateFirewallRuleRequest
+	GetClientToken() *string
+	SetInstanceId(v string) *CreateFirewallRuleRequest
+	GetInstanceId() *string
+	SetPort(v string) *CreateFirewallRuleRequest
+	GetPort() *string
+	SetRegionId(v string) *CreateFirewallRuleRequest
+	GetRegionId() *string
+	SetRemark(v string) *CreateFirewallRuleRequest
+	GetRemark() *string
+	SetRuleProtocol(v string) *CreateFirewallRuleRequest
+	GetRuleProtocol() *string
 }
 
 type CreateFirewallRuleRequest struct {
@@ -1065,11 +1695,35 @@ type CreateFirewallRuleRequest struct {
 }
 
 func (s CreateFirewallRuleRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s CreateFirewallRuleRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateFirewallRuleRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *CreateFirewallRuleRequest) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *CreateFirewallRuleRequest) GetPort() *string {
+	return s.Port
+}
+
+func (s *CreateFirewallRuleRequest) GetRegionId() *string {
+	return s.RegionId
+}
+
+func (s *CreateFirewallRuleRequest) GetRemark() *string {
+	return s.Remark
+}
+
+func (s *CreateFirewallRuleRequest) GetRuleProtocol() *string {
+	return s.RuleProtocol
 }
 
 func (s *CreateFirewallRuleRequest) SetClientToken(v string) *CreateFirewallRuleRequest {
@@ -1102,6 +1756,20 @@ func (s *CreateFirewallRuleRequest) SetRuleProtocol(v string) *CreateFirewallRul
 	return s
 }
 
+func (s *CreateFirewallRuleRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iCreateFirewallRuleResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetFirewallId(v string) *CreateFirewallRuleResponseBody
+	GetFirewallId() *string
+	SetRequestId(v string) *CreateFirewallRuleResponseBody
+	GetRequestId() *string
+}
+
 type CreateFirewallRuleResponseBody struct {
 	// The ID of the firewall rule.
 	//
@@ -1118,11 +1786,19 @@ type CreateFirewallRuleResponseBody struct {
 }
 
 func (s CreateFirewallRuleResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s CreateFirewallRuleResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateFirewallRuleResponseBody) GetFirewallId() *string {
+	return s.FirewallId
+}
+
+func (s *CreateFirewallRuleResponseBody) GetRequestId() *string {
+	return s.RequestId
 }
 
 func (s *CreateFirewallRuleResponseBody) SetFirewallId(v string) *CreateFirewallRuleResponseBody {
@@ -1135,6 +1811,22 @@ func (s *CreateFirewallRuleResponseBody) SetRequestId(v string) *CreateFirewallR
 	return s
 }
 
+func (s *CreateFirewallRuleResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iCreateFirewallRuleResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *CreateFirewallRuleResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *CreateFirewallRuleResponse
+	GetStatusCode() *int32
+	SetBody(v *CreateFirewallRuleResponseBody) *CreateFirewallRuleResponse
+	GetBody() *CreateFirewallRuleResponseBody
+}
+
 type CreateFirewallRuleResponse struct {
 	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -1142,11 +1834,23 @@ type CreateFirewallRuleResponse struct {
 }
 
 func (s CreateFirewallRuleResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s CreateFirewallRuleResponse) GoString() string {
 	return s.String()
+}
+
+func (s *CreateFirewallRuleResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *CreateFirewallRuleResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *CreateFirewallRuleResponse) GetBody() *CreateFirewallRuleResponseBody {
+	return s.Body
 }
 
 func (s *CreateFirewallRuleResponse) SetHeaders(v map[string]*string) *CreateFirewallRuleResponse {
@@ -1162,6 +1866,26 @@ func (s *CreateFirewallRuleResponse) SetStatusCode(v int32) *CreateFirewallRuleR
 func (s *CreateFirewallRuleResponse) SetBody(v *CreateFirewallRuleResponseBody) *CreateFirewallRuleResponse {
 	s.Body = v
 	return s
+}
+
+func (s *CreateFirewallRuleResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iCreateFirewallRulesRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientToken(v string) *CreateFirewallRulesRequest
+	GetClientToken() *string
+	SetFirewallRules(v []*CreateFirewallRulesRequestFirewallRules) *CreateFirewallRulesRequest
+	GetFirewallRules() []*CreateFirewallRulesRequestFirewallRules
+	SetInstanceId(v string) *CreateFirewallRulesRequest
+	GetInstanceId() *string
+	SetRegionId(v string) *CreateFirewallRulesRequest
+	GetRegionId() *string
+	SetTag(v []*CreateFirewallRulesRequestTag) *CreateFirewallRulesRequest
+	GetTag() []*CreateFirewallRulesRequestTag
 }
 
 type CreateFirewallRulesRequest struct {
@@ -1194,11 +1918,31 @@ type CreateFirewallRulesRequest struct {
 }
 
 func (s CreateFirewallRulesRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s CreateFirewallRulesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateFirewallRulesRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *CreateFirewallRulesRequest) GetFirewallRules() []*CreateFirewallRulesRequestFirewallRules {
+	return s.FirewallRules
+}
+
+func (s *CreateFirewallRulesRequest) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *CreateFirewallRulesRequest) GetRegionId() *string {
+	return s.RegionId
+}
+
+func (s *CreateFirewallRulesRequest) GetTag() []*CreateFirewallRulesRequestTag {
+	return s.Tag
 }
 
 func (s *CreateFirewallRulesRequest) SetClientToken(v string) *CreateFirewallRulesRequest {
@@ -1224,6 +1968,10 @@ func (s *CreateFirewallRulesRequest) SetRegionId(v string) *CreateFirewallRulesR
 func (s *CreateFirewallRulesRequest) SetTag(v []*CreateFirewallRulesRequestTag) *CreateFirewallRulesRequest {
 	s.Tag = v
 	return s
+}
+
+func (s *CreateFirewallRulesRequest) Validate() error {
+	return dara.Validate(s)
 }
 
 type CreateFirewallRulesRequestFirewallRules struct {
@@ -1266,11 +2014,27 @@ type CreateFirewallRulesRequestFirewallRules struct {
 }
 
 func (s CreateFirewallRulesRequestFirewallRules) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s CreateFirewallRulesRequestFirewallRules) GoString() string {
 	return s.String()
+}
+
+func (s *CreateFirewallRulesRequestFirewallRules) GetPort() *string {
+	return s.Port
+}
+
+func (s *CreateFirewallRulesRequestFirewallRules) GetRemark() *string {
+	return s.Remark
+}
+
+func (s *CreateFirewallRulesRequestFirewallRules) GetRuleProtocol() *string {
+	return s.RuleProtocol
+}
+
+func (s *CreateFirewallRulesRequestFirewallRules) GetSourceCidrIp() *string {
+	return s.SourceCidrIp
 }
 
 func (s *CreateFirewallRulesRequestFirewallRules) SetPort(v string) *CreateFirewallRulesRequestFirewallRules {
@@ -1293,6 +2057,10 @@ func (s *CreateFirewallRulesRequestFirewallRules) SetSourceCidrIp(v string) *Cre
 	return s
 }
 
+func (s *CreateFirewallRulesRequestFirewallRules) Validate() error {
+	return dara.Validate(s)
+}
+
 type CreateFirewallRulesRequestTag struct {
 	// The tag key. Valid values of N: 1 to 20.
 	//
@@ -1313,11 +2081,19 @@ type CreateFirewallRulesRequestTag struct {
 }
 
 func (s CreateFirewallRulesRequestTag) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s CreateFirewallRulesRequestTag) GoString() string {
 	return s.String()
+}
+
+func (s *CreateFirewallRulesRequestTag) GetKey() *string {
+	return s.Key
+}
+
+func (s *CreateFirewallRulesRequestTag) GetValue() *string {
+	return s.Value
 }
 
 func (s *CreateFirewallRulesRequestTag) SetKey(v string) *CreateFirewallRulesRequestTag {
@@ -1328,6 +2104,26 @@ func (s *CreateFirewallRulesRequestTag) SetKey(v string) *CreateFirewallRulesReq
 func (s *CreateFirewallRulesRequestTag) SetValue(v string) *CreateFirewallRulesRequestTag {
 	s.Value = &v
 	return s
+}
+
+func (s *CreateFirewallRulesRequestTag) Validate() error {
+	return dara.Validate(s)
+}
+
+type iCreateFirewallRulesShrinkRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientToken(v string) *CreateFirewallRulesShrinkRequest
+	GetClientToken() *string
+	SetFirewallRulesShrink(v string) *CreateFirewallRulesShrinkRequest
+	GetFirewallRulesShrink() *string
+	SetInstanceId(v string) *CreateFirewallRulesShrinkRequest
+	GetInstanceId() *string
+	SetRegionId(v string) *CreateFirewallRulesShrinkRequest
+	GetRegionId() *string
+	SetTag(v []*CreateFirewallRulesShrinkRequestTag) *CreateFirewallRulesShrinkRequest
+	GetTag() []*CreateFirewallRulesShrinkRequestTag
 }
 
 type CreateFirewallRulesShrinkRequest struct {
@@ -1360,11 +2156,31 @@ type CreateFirewallRulesShrinkRequest struct {
 }
 
 func (s CreateFirewallRulesShrinkRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s CreateFirewallRulesShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateFirewallRulesShrinkRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *CreateFirewallRulesShrinkRequest) GetFirewallRulesShrink() *string {
+	return s.FirewallRulesShrink
+}
+
+func (s *CreateFirewallRulesShrinkRequest) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *CreateFirewallRulesShrinkRequest) GetRegionId() *string {
+	return s.RegionId
+}
+
+func (s *CreateFirewallRulesShrinkRequest) GetTag() []*CreateFirewallRulesShrinkRequestTag {
+	return s.Tag
 }
 
 func (s *CreateFirewallRulesShrinkRequest) SetClientToken(v string) *CreateFirewallRulesShrinkRequest {
@@ -1392,6 +2208,10 @@ func (s *CreateFirewallRulesShrinkRequest) SetTag(v []*CreateFirewallRulesShrink
 	return s
 }
 
+func (s *CreateFirewallRulesShrinkRequest) Validate() error {
+	return dara.Validate(s)
+}
+
 type CreateFirewallRulesShrinkRequestTag struct {
 	// The tag key. Valid values of N: 1 to 20.
 	//
@@ -1412,11 +2232,19 @@ type CreateFirewallRulesShrinkRequestTag struct {
 }
 
 func (s CreateFirewallRulesShrinkRequestTag) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s CreateFirewallRulesShrinkRequestTag) GoString() string {
 	return s.String()
+}
+
+func (s *CreateFirewallRulesShrinkRequestTag) GetKey() *string {
+	return s.Key
+}
+
+func (s *CreateFirewallRulesShrinkRequestTag) GetValue() *string {
+	return s.Value
 }
 
 func (s *CreateFirewallRulesShrinkRequestTag) SetKey(v string) *CreateFirewallRulesShrinkRequestTag {
@@ -1427,6 +2255,20 @@ func (s *CreateFirewallRulesShrinkRequestTag) SetKey(v string) *CreateFirewallRu
 func (s *CreateFirewallRulesShrinkRequestTag) SetValue(v string) *CreateFirewallRulesShrinkRequestTag {
 	s.Value = &v
 	return s
+}
+
+func (s *CreateFirewallRulesShrinkRequestTag) Validate() error {
+	return dara.Validate(s)
+}
+
+type iCreateFirewallRulesResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetFirewallRuleIds(v []*string) *CreateFirewallRulesResponseBody
+	GetFirewallRuleIds() []*string
+	SetRequestId(v string) *CreateFirewallRulesResponseBody
+	GetRequestId() *string
 }
 
 type CreateFirewallRulesResponseBody struct {
@@ -1441,11 +2283,19 @@ type CreateFirewallRulesResponseBody struct {
 }
 
 func (s CreateFirewallRulesResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s CreateFirewallRulesResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateFirewallRulesResponseBody) GetFirewallRuleIds() []*string {
+	return s.FirewallRuleIds
+}
+
+func (s *CreateFirewallRulesResponseBody) GetRequestId() *string {
+	return s.RequestId
 }
 
 func (s *CreateFirewallRulesResponseBody) SetFirewallRuleIds(v []*string) *CreateFirewallRulesResponseBody {
@@ -1458,6 +2308,22 @@ func (s *CreateFirewallRulesResponseBody) SetRequestId(v string) *CreateFirewall
 	return s
 }
 
+func (s *CreateFirewallRulesResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iCreateFirewallRulesResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *CreateFirewallRulesResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *CreateFirewallRulesResponse
+	GetStatusCode() *int32
+	SetBody(v *CreateFirewallRulesResponseBody) *CreateFirewallRulesResponse
+	GetBody() *CreateFirewallRulesResponseBody
+}
+
 type CreateFirewallRulesResponse struct {
 	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -1465,11 +2331,23 @@ type CreateFirewallRulesResponse struct {
 }
 
 func (s CreateFirewallRulesResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s CreateFirewallRulesResponse) GoString() string {
 	return s.String()
+}
+
+func (s *CreateFirewallRulesResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *CreateFirewallRulesResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *CreateFirewallRulesResponse) GetBody() *CreateFirewallRulesResponseBody {
+	return s.Body
 }
 
 func (s *CreateFirewallRulesResponse) SetHeaders(v map[string]*string) *CreateFirewallRulesResponse {
@@ -1485,6 +2363,24 @@ func (s *CreateFirewallRulesResponse) SetStatusCode(v int32) *CreateFirewallRule
 func (s *CreateFirewallRulesResponse) SetBody(v *CreateFirewallRulesResponseBody) *CreateFirewallRulesResponse {
 	s.Body = v
 	return s
+}
+
+func (s *CreateFirewallRulesResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iCreateFirewallTemplateRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetDescription(v string) *CreateFirewallTemplateRequest
+	GetDescription() *string
+	SetFirewallRule(v []*CreateFirewallTemplateRequestFirewallRule) *CreateFirewallTemplateRequest
+	GetFirewallRule() []*CreateFirewallTemplateRequestFirewallRule
+	SetName(v string) *CreateFirewallTemplateRequest
+	GetName() *string
+	SetRegionId(v string) *CreateFirewallTemplateRequest
+	GetRegionId() *string
 }
 
 type CreateFirewallTemplateRequest struct {
@@ -1515,11 +2411,27 @@ type CreateFirewallTemplateRequest struct {
 }
 
 func (s CreateFirewallTemplateRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s CreateFirewallTemplateRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateFirewallTemplateRequest) GetDescription() *string {
+	return s.Description
+}
+
+func (s *CreateFirewallTemplateRequest) GetFirewallRule() []*CreateFirewallTemplateRequestFirewallRule {
+	return s.FirewallRule
+}
+
+func (s *CreateFirewallTemplateRequest) GetName() *string {
+	return s.Name
+}
+
+func (s *CreateFirewallTemplateRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *CreateFirewallTemplateRequest) SetDescription(v string) *CreateFirewallTemplateRequest {
@@ -1540,6 +2452,10 @@ func (s *CreateFirewallTemplateRequest) SetName(v string) *CreateFirewallTemplat
 func (s *CreateFirewallTemplateRequest) SetRegionId(v string) *CreateFirewallTemplateRequest {
 	s.RegionId = &v
 	return s
+}
+
+func (s *CreateFirewallTemplateRequest) Validate() error {
+	return dara.Validate(s)
 }
 
 type CreateFirewallTemplateRequestFirewallRule struct {
@@ -1582,11 +2498,27 @@ type CreateFirewallTemplateRequestFirewallRule struct {
 }
 
 func (s CreateFirewallTemplateRequestFirewallRule) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s CreateFirewallTemplateRequestFirewallRule) GoString() string {
 	return s.String()
+}
+
+func (s *CreateFirewallTemplateRequestFirewallRule) GetPort() *string {
+	return s.Port
+}
+
+func (s *CreateFirewallTemplateRequestFirewallRule) GetRemark() *string {
+	return s.Remark
+}
+
+func (s *CreateFirewallTemplateRequestFirewallRule) GetRuleProtocol() *string {
+	return s.RuleProtocol
+}
+
+func (s *CreateFirewallTemplateRequestFirewallRule) GetSourceCidrIp() *string {
+	return s.SourceCidrIp
 }
 
 func (s *CreateFirewallTemplateRequestFirewallRule) SetPort(v string) *CreateFirewallTemplateRequestFirewallRule {
@@ -1609,6 +2541,20 @@ func (s *CreateFirewallTemplateRequestFirewallRule) SetSourceCidrIp(v string) *C
 	return s
 }
 
+func (s *CreateFirewallTemplateRequestFirewallRule) Validate() error {
+	return dara.Validate(s)
+}
+
+type iCreateFirewallTemplateResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetFirewallTemplateId(v string) *CreateFirewallTemplateResponseBody
+	GetFirewallTemplateId() *string
+	SetRequestId(v string) *CreateFirewallTemplateResponseBody
+	GetRequestId() *string
+}
+
 type CreateFirewallTemplateResponseBody struct {
 	// The ID of the firewall template.
 	//
@@ -1625,11 +2571,19 @@ type CreateFirewallTemplateResponseBody struct {
 }
 
 func (s CreateFirewallTemplateResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s CreateFirewallTemplateResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateFirewallTemplateResponseBody) GetFirewallTemplateId() *string {
+	return s.FirewallTemplateId
+}
+
+func (s *CreateFirewallTemplateResponseBody) GetRequestId() *string {
+	return s.RequestId
 }
 
 func (s *CreateFirewallTemplateResponseBody) SetFirewallTemplateId(v string) *CreateFirewallTemplateResponseBody {
@@ -1642,6 +2596,22 @@ func (s *CreateFirewallTemplateResponseBody) SetRequestId(v string) *CreateFirew
 	return s
 }
 
+func (s *CreateFirewallTemplateResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iCreateFirewallTemplateResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *CreateFirewallTemplateResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *CreateFirewallTemplateResponse
+	GetStatusCode() *int32
+	SetBody(v *CreateFirewallTemplateResponseBody) *CreateFirewallTemplateResponse
+	GetBody() *CreateFirewallTemplateResponseBody
+}
+
 type CreateFirewallTemplateResponse struct {
 	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -1649,11 +2619,23 @@ type CreateFirewallTemplateResponse struct {
 }
 
 func (s CreateFirewallTemplateResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s CreateFirewallTemplateResponse) GoString() string {
 	return s.String()
+}
+
+func (s *CreateFirewallTemplateResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *CreateFirewallTemplateResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *CreateFirewallTemplateResponse) GetBody() *CreateFirewallTemplateResponseBody {
+	return s.Body
 }
 
 func (s *CreateFirewallTemplateResponse) SetHeaders(v map[string]*string) *CreateFirewallTemplateResponse {
@@ -1669,6 +2651,22 @@ func (s *CreateFirewallTemplateResponse) SetStatusCode(v int32) *CreateFirewallT
 func (s *CreateFirewallTemplateResponse) SetBody(v *CreateFirewallTemplateResponseBody) *CreateFirewallTemplateResponse {
 	s.Body = v
 	return s
+}
+
+func (s *CreateFirewallTemplateResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iCreateFirewallTemplateRulesRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetFirewallRule(v []*CreateFirewallTemplateRulesRequestFirewallRule) *CreateFirewallTemplateRulesRequest
+	GetFirewallRule() []*CreateFirewallTemplateRulesRequestFirewallRule
+	SetFirewallTemplateId(v string) *CreateFirewallTemplateRulesRequest
+	GetFirewallTemplateId() *string
+	SetRegionId(v string) *CreateFirewallTemplateRulesRequest
+	GetRegionId() *string
 }
 
 type CreateFirewallTemplateRulesRequest struct {
@@ -1695,11 +2693,23 @@ type CreateFirewallTemplateRulesRequest struct {
 }
 
 func (s CreateFirewallTemplateRulesRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s CreateFirewallTemplateRulesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateFirewallTemplateRulesRequest) GetFirewallRule() []*CreateFirewallTemplateRulesRequestFirewallRule {
+	return s.FirewallRule
+}
+
+func (s *CreateFirewallTemplateRulesRequest) GetFirewallTemplateId() *string {
+	return s.FirewallTemplateId
+}
+
+func (s *CreateFirewallTemplateRulesRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *CreateFirewallTemplateRulesRequest) SetFirewallRule(v []*CreateFirewallTemplateRulesRequestFirewallRule) *CreateFirewallTemplateRulesRequest {
@@ -1715,6 +2725,10 @@ func (s *CreateFirewallTemplateRulesRequest) SetFirewallTemplateId(v string) *Cr
 func (s *CreateFirewallTemplateRulesRequest) SetRegionId(v string) *CreateFirewallTemplateRulesRequest {
 	s.RegionId = &v
 	return s
+}
+
+func (s *CreateFirewallTemplateRulesRequest) Validate() error {
+	return dara.Validate(s)
 }
 
 type CreateFirewallTemplateRulesRequestFirewallRule struct {
@@ -1761,11 +2775,27 @@ type CreateFirewallTemplateRulesRequestFirewallRule struct {
 }
 
 func (s CreateFirewallTemplateRulesRequestFirewallRule) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s CreateFirewallTemplateRulesRequestFirewallRule) GoString() string {
 	return s.String()
+}
+
+func (s *CreateFirewallTemplateRulesRequestFirewallRule) GetPort() *string {
+	return s.Port
+}
+
+func (s *CreateFirewallTemplateRulesRequestFirewallRule) GetRemark() *string {
+	return s.Remark
+}
+
+func (s *CreateFirewallTemplateRulesRequestFirewallRule) GetRuleProtocol() *string {
+	return s.RuleProtocol
+}
+
+func (s *CreateFirewallTemplateRulesRequestFirewallRule) GetSourceCidrIp() *string {
+	return s.SourceCidrIp
 }
 
 func (s *CreateFirewallTemplateRulesRequestFirewallRule) SetPort(v string) *CreateFirewallTemplateRulesRequestFirewallRule {
@@ -1788,6 +2818,20 @@ func (s *CreateFirewallTemplateRulesRequestFirewallRule) SetSourceCidrIp(v strin
 	return s
 }
 
+func (s *CreateFirewallTemplateRulesRequestFirewallRule) Validate() error {
+	return dara.Validate(s)
+}
+
+type iCreateFirewallTemplateRulesResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetFirewallTemplateRules(v []*CreateFirewallTemplateRulesResponseBodyFirewallTemplateRules) *CreateFirewallTemplateRulesResponseBody
+	GetFirewallTemplateRules() []*CreateFirewallTemplateRulesResponseBodyFirewallTemplateRules
+	SetRequestId(v string) *CreateFirewallTemplateRulesResponseBody
+	GetRequestId() *string
+}
+
 type CreateFirewallTemplateRulesResponseBody struct {
 	// The firewall template rules.
 	FirewallTemplateRules []*CreateFirewallTemplateRulesResponseBodyFirewallTemplateRules `json:"FirewallTemplateRules,omitempty" xml:"FirewallTemplateRules,omitempty" type:"Repeated"`
@@ -1800,11 +2844,19 @@ type CreateFirewallTemplateRulesResponseBody struct {
 }
 
 func (s CreateFirewallTemplateRulesResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s CreateFirewallTemplateRulesResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateFirewallTemplateRulesResponseBody) GetFirewallTemplateRules() []*CreateFirewallTemplateRulesResponseBodyFirewallTemplateRules {
+	return s.FirewallTemplateRules
+}
+
+func (s *CreateFirewallTemplateRulesResponseBody) GetRequestId() *string {
+	return s.RequestId
 }
 
 func (s *CreateFirewallTemplateRulesResponseBody) SetFirewallTemplateRules(v []*CreateFirewallTemplateRulesResponseBodyFirewallTemplateRules) *CreateFirewallTemplateRulesResponseBody {
@@ -1815,6 +2867,10 @@ func (s *CreateFirewallTemplateRulesResponseBody) SetFirewallTemplateRules(v []*
 func (s *CreateFirewallTemplateRulesResponseBody) SetRequestId(v string) *CreateFirewallTemplateRulesResponseBody {
 	s.RequestId = &v
 	return s
+}
+
+func (s *CreateFirewallTemplateRulesResponseBody) Validate() error {
+	return dara.Validate(s)
 }
 
 type CreateFirewallTemplateRulesResponseBodyFirewallTemplateRules struct {
@@ -1861,11 +2917,31 @@ type CreateFirewallTemplateRulesResponseBodyFirewallTemplateRules struct {
 }
 
 func (s CreateFirewallTemplateRulesResponseBodyFirewallTemplateRules) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s CreateFirewallTemplateRulesResponseBodyFirewallTemplateRules) GoString() string {
 	return s.String()
+}
+
+func (s *CreateFirewallTemplateRulesResponseBodyFirewallTemplateRules) GetFirewallTemplateRuleId() *string {
+	return s.FirewallTemplateRuleId
+}
+
+func (s *CreateFirewallTemplateRulesResponseBodyFirewallTemplateRules) GetPort() *string {
+	return s.Port
+}
+
+func (s *CreateFirewallTemplateRulesResponseBodyFirewallTemplateRules) GetRemark() *string {
+	return s.Remark
+}
+
+func (s *CreateFirewallTemplateRulesResponseBodyFirewallTemplateRules) GetRuleProtocol() *string {
+	return s.RuleProtocol
+}
+
+func (s *CreateFirewallTemplateRulesResponseBodyFirewallTemplateRules) GetSourceCidrIp() *string {
+	return s.SourceCidrIp
 }
 
 func (s *CreateFirewallTemplateRulesResponseBodyFirewallTemplateRules) SetFirewallTemplateRuleId(v string) *CreateFirewallTemplateRulesResponseBodyFirewallTemplateRules {
@@ -1893,6 +2969,22 @@ func (s *CreateFirewallTemplateRulesResponseBodyFirewallTemplateRules) SetSource
 	return s
 }
 
+func (s *CreateFirewallTemplateRulesResponseBodyFirewallTemplateRules) Validate() error {
+	return dara.Validate(s)
+}
+
+type iCreateFirewallTemplateRulesResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *CreateFirewallTemplateRulesResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *CreateFirewallTemplateRulesResponse
+	GetStatusCode() *int32
+	SetBody(v *CreateFirewallTemplateRulesResponseBody) *CreateFirewallTemplateRulesResponse
+	GetBody() *CreateFirewallTemplateRulesResponseBody
+}
+
 type CreateFirewallTemplateRulesResponse struct {
 	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -1900,11 +2992,23 @@ type CreateFirewallTemplateRulesResponse struct {
 }
 
 func (s CreateFirewallTemplateRulesResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s CreateFirewallTemplateRulesResponse) GoString() string {
 	return s.String()
+}
+
+func (s *CreateFirewallTemplateRulesResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *CreateFirewallTemplateRulesResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *CreateFirewallTemplateRulesResponse) GetBody() *CreateFirewallTemplateRulesResponseBody {
+	return s.Body
 }
 
 func (s *CreateFirewallTemplateRulesResponse) SetHeaders(v map[string]*string) *CreateFirewallTemplateRulesResponse {
@@ -1920,6 +3024,24 @@ func (s *CreateFirewallTemplateRulesResponse) SetStatusCode(v int32) *CreateFire
 func (s *CreateFirewallTemplateRulesResponse) SetBody(v *CreateFirewallTemplateRulesResponseBody) *CreateFirewallTemplateRulesResponse {
 	s.Body = v
 	return s
+}
+
+func (s *CreateFirewallTemplateRulesResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iCreateInstanceKeyPairRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientToken(v string) *CreateInstanceKeyPairRequest
+	GetClientToken() *string
+	SetInstanceId(v string) *CreateInstanceKeyPairRequest
+	GetInstanceId() *string
+	SetKeyPairName(v string) *CreateInstanceKeyPairRequest
+	GetKeyPairName() *string
+	SetRegionId(v string) *CreateInstanceKeyPairRequest
+	GetRegionId() *string
 }
 
 type CreateInstanceKeyPairRequest struct {
@@ -1956,11 +3078,27 @@ type CreateInstanceKeyPairRequest struct {
 }
 
 func (s CreateInstanceKeyPairRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s CreateInstanceKeyPairRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateInstanceKeyPairRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *CreateInstanceKeyPairRequest) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *CreateInstanceKeyPairRequest) GetKeyPairName() *string {
+	return s.KeyPairName
+}
+
+func (s *CreateInstanceKeyPairRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *CreateInstanceKeyPairRequest) SetClientToken(v string) *CreateInstanceKeyPairRequest {
@@ -1981,6 +3119,24 @@ func (s *CreateInstanceKeyPairRequest) SetKeyPairName(v string) *CreateInstanceK
 func (s *CreateInstanceKeyPairRequest) SetRegionId(v string) *CreateInstanceKeyPairRequest {
 	s.RegionId = &v
 	return s
+}
+
+func (s *CreateInstanceKeyPairRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iCreateInstanceKeyPairResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetFingerprint(v string) *CreateInstanceKeyPairResponseBody
+	GetFingerprint() *string
+	SetKeyPairName(v string) *CreateInstanceKeyPairResponseBody
+	GetKeyPairName() *string
+	SetPrivateKey(v string) *CreateInstanceKeyPairResponseBody
+	GetPrivateKey() *string
+	SetRequestId(v string) *CreateInstanceKeyPairResponseBody
+	GetRequestId() *string
 }
 
 type CreateInstanceKeyPairResponseBody struct {
@@ -2011,11 +3167,27 @@ type CreateInstanceKeyPairResponseBody struct {
 }
 
 func (s CreateInstanceKeyPairResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s CreateInstanceKeyPairResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateInstanceKeyPairResponseBody) GetFingerprint() *string {
+	return s.Fingerprint
+}
+
+func (s *CreateInstanceKeyPairResponseBody) GetKeyPairName() *string {
+	return s.KeyPairName
+}
+
+func (s *CreateInstanceKeyPairResponseBody) GetPrivateKey() *string {
+	return s.PrivateKey
+}
+
+func (s *CreateInstanceKeyPairResponseBody) GetRequestId() *string {
+	return s.RequestId
 }
 
 func (s *CreateInstanceKeyPairResponseBody) SetFingerprint(v string) *CreateInstanceKeyPairResponseBody {
@@ -2038,6 +3210,22 @@ func (s *CreateInstanceKeyPairResponseBody) SetRequestId(v string) *CreateInstan
 	return s
 }
 
+func (s *CreateInstanceKeyPairResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iCreateInstanceKeyPairResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *CreateInstanceKeyPairResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *CreateInstanceKeyPairResponse
+	GetStatusCode() *int32
+	SetBody(v *CreateInstanceKeyPairResponseBody) *CreateInstanceKeyPairResponse
+	GetBody() *CreateInstanceKeyPairResponseBody
+}
+
 type CreateInstanceKeyPairResponse struct {
 	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -2045,11 +3233,23 @@ type CreateInstanceKeyPairResponse struct {
 }
 
 func (s CreateInstanceKeyPairResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s CreateInstanceKeyPairResponse) GoString() string {
 	return s.String()
+}
+
+func (s *CreateInstanceKeyPairResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *CreateInstanceKeyPairResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *CreateInstanceKeyPairResponse) GetBody() *CreateInstanceKeyPairResponseBody {
+	return s.Body
 }
 
 func (s *CreateInstanceKeyPairResponse) SetHeaders(v map[string]*string) *CreateInstanceKeyPairResponse {
@@ -2065,6 +3265,36 @@ func (s *CreateInstanceKeyPairResponse) SetStatusCode(v int32) *CreateInstanceKe
 func (s *CreateInstanceKeyPairResponse) SetBody(v *CreateInstanceKeyPairResponseBody) *CreateInstanceKeyPairResponse {
 	s.Body = v
 	return s
+}
+
+func (s *CreateInstanceKeyPairResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iCreateInstancesRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetAmount(v int32) *CreateInstancesRequest
+	GetAmount() *int32
+	SetAutoRenew(v bool) *CreateInstancesRequest
+	GetAutoRenew() *bool
+	SetAutoRenewPeriod(v int32) *CreateInstancesRequest
+	GetAutoRenewPeriod() *int32
+	SetChargeType(v string) *CreateInstancesRequest
+	GetChargeType() *string
+	SetClientToken(v string) *CreateInstancesRequest
+	GetClientToken() *string
+	SetDataDiskSize(v int64) *CreateInstancesRequest
+	GetDataDiskSize() *int64
+	SetImageId(v string) *CreateInstancesRequest
+	GetImageId() *string
+	SetPeriod(v int32) *CreateInstancesRequest
+	GetPeriod() *int32
+	SetPlanId(v string) *CreateInstancesRequest
+	GetPlanId() *string
+	SetRegionId(v string) *CreateInstancesRequest
+	GetRegionId() *string
 }
 
 type CreateInstancesRequest struct {
@@ -2155,11 +3385,51 @@ type CreateInstancesRequest struct {
 }
 
 func (s CreateInstancesRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s CreateInstancesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateInstancesRequest) GetAmount() *int32 {
+	return s.Amount
+}
+
+func (s *CreateInstancesRequest) GetAutoRenew() *bool {
+	return s.AutoRenew
+}
+
+func (s *CreateInstancesRequest) GetAutoRenewPeriod() *int32 {
+	return s.AutoRenewPeriod
+}
+
+func (s *CreateInstancesRequest) GetChargeType() *string {
+	return s.ChargeType
+}
+
+func (s *CreateInstancesRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *CreateInstancesRequest) GetDataDiskSize() *int64 {
+	return s.DataDiskSize
+}
+
+func (s *CreateInstancesRequest) GetImageId() *string {
+	return s.ImageId
+}
+
+func (s *CreateInstancesRequest) GetPeriod() *int32 {
+	return s.Period
+}
+
+func (s *CreateInstancesRequest) GetPlanId() *string {
+	return s.PlanId
+}
+
+func (s *CreateInstancesRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *CreateInstancesRequest) SetAmount(v int32) *CreateInstancesRequest {
@@ -2212,6 +3482,20 @@ func (s *CreateInstancesRequest) SetRegionId(v string) *CreateInstancesRequest {
 	return s
 }
 
+func (s *CreateInstancesRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iCreateInstancesResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetInstanceIds(v []*string) *CreateInstancesResponseBody
+	GetInstanceIds() []*string
+	SetRequestId(v string) *CreateInstancesResponseBody
+	GetRequestId() *string
+}
+
 type CreateInstancesResponseBody struct {
 	// The IDs of the simple application servers.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
@@ -2224,11 +3508,19 @@ type CreateInstancesResponseBody struct {
 }
 
 func (s CreateInstancesResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s CreateInstancesResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateInstancesResponseBody) GetInstanceIds() []*string {
+	return s.InstanceIds
+}
+
+func (s *CreateInstancesResponseBody) GetRequestId() *string {
+	return s.RequestId
 }
 
 func (s *CreateInstancesResponseBody) SetInstanceIds(v []*string) *CreateInstancesResponseBody {
@@ -2241,6 +3533,22 @@ func (s *CreateInstancesResponseBody) SetRequestId(v string) *CreateInstancesRes
 	return s
 }
 
+func (s *CreateInstancesResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iCreateInstancesResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *CreateInstancesResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *CreateInstancesResponse
+	GetStatusCode() *int32
+	SetBody(v *CreateInstancesResponseBody) *CreateInstancesResponse
+	GetBody() *CreateInstancesResponseBody
+}
+
 type CreateInstancesResponse struct {
 	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -2248,11 +3556,23 @@ type CreateInstancesResponse struct {
 }
 
 func (s CreateInstancesResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s CreateInstancesResponse) GoString() string {
 	return s.String()
+}
+
+func (s *CreateInstancesResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *CreateInstancesResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *CreateInstancesResponse) GetBody() *CreateInstancesResponseBody {
+	return s.Body
 }
 
 func (s *CreateInstancesResponse) SetHeaders(v map[string]*string) *CreateInstancesResponse {
@@ -2268,6 +3588,22 @@ func (s *CreateInstancesResponse) SetStatusCode(v int32) *CreateInstancesRespons
 func (s *CreateInstancesResponse) SetBody(v *CreateInstancesResponseBody) *CreateInstancesResponse {
 	s.Body = v
 	return s
+}
+
+func (s *CreateInstancesResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iCreateKeyPairRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientToken(v string) *CreateKeyPairRequest
+	GetClientToken() *string
+	SetKeyPairName(v string) *CreateKeyPairRequest
+	GetKeyPairName() *string
+	SetRegionId(v string) *CreateKeyPairRequest
+	GetRegionId() *string
 }
 
 type CreateKeyPairRequest struct {
@@ -2296,11 +3632,23 @@ type CreateKeyPairRequest struct {
 }
 
 func (s CreateKeyPairRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s CreateKeyPairRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateKeyPairRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *CreateKeyPairRequest) GetKeyPairName() *string {
+	return s.KeyPairName
+}
+
+func (s *CreateKeyPairRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *CreateKeyPairRequest) SetClientToken(v string) *CreateKeyPairRequest {
@@ -2316,6 +3664,22 @@ func (s *CreateKeyPairRequest) SetKeyPairName(v string) *CreateKeyPairRequest {
 func (s *CreateKeyPairRequest) SetRegionId(v string) *CreateKeyPairRequest {
 	s.RegionId = &v
 	return s
+}
+
+func (s *CreateKeyPairRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iCreateKeyPairResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetKeyPairName(v string) *CreateKeyPairResponseBody
+	GetKeyPairName() *string
+	SetPrivateKeyBody(v string) *CreateKeyPairResponseBody
+	GetPrivateKeyBody() *string
+	SetRequestId(v string) *CreateKeyPairResponseBody
+	GetRequestId() *string
 }
 
 type CreateKeyPairResponseBody struct {
@@ -2340,11 +3704,23 @@ type CreateKeyPairResponseBody struct {
 }
 
 func (s CreateKeyPairResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s CreateKeyPairResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateKeyPairResponseBody) GetKeyPairName() *string {
+	return s.KeyPairName
+}
+
+func (s *CreateKeyPairResponseBody) GetPrivateKeyBody() *string {
+	return s.PrivateKeyBody
+}
+
+func (s *CreateKeyPairResponseBody) GetRequestId() *string {
+	return s.RequestId
 }
 
 func (s *CreateKeyPairResponseBody) SetKeyPairName(v string) *CreateKeyPairResponseBody {
@@ -2362,6 +3738,22 @@ func (s *CreateKeyPairResponseBody) SetRequestId(v string) *CreateKeyPairRespons
 	return s
 }
 
+func (s *CreateKeyPairResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iCreateKeyPairResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *CreateKeyPairResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *CreateKeyPairResponse
+	GetStatusCode() *int32
+	SetBody(v *CreateKeyPairResponseBody) *CreateKeyPairResponse
+	GetBody() *CreateKeyPairResponseBody
+}
+
 type CreateKeyPairResponse struct {
 	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -2369,11 +3761,23 @@ type CreateKeyPairResponse struct {
 }
 
 func (s CreateKeyPairResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s CreateKeyPairResponse) GoString() string {
 	return s.String()
+}
+
+func (s *CreateKeyPairResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *CreateKeyPairResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *CreateKeyPairResponse) GetBody() *CreateKeyPairResponseBody {
+	return s.Body
 }
 
 func (s *CreateKeyPairResponse) SetHeaders(v map[string]*string) *CreateKeyPairResponse {
@@ -2389,6 +3793,28 @@ func (s *CreateKeyPairResponse) SetStatusCode(v int32) *CreateKeyPairResponse {
 func (s *CreateKeyPairResponse) SetBody(v *CreateKeyPairResponseBody) *CreateKeyPairResponse {
 	s.Body = v
 	return s
+}
+
+func (s *CreateKeyPairResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iCreateSnapshotRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientToken(v string) *CreateSnapshotRequest
+	GetClientToken() *string
+	SetDiskId(v string) *CreateSnapshotRequest
+	GetDiskId() *string
+	SetRegionId(v string) *CreateSnapshotRequest
+	GetRegionId() *string
+	SetResourceGroupId(v string) *CreateSnapshotRequest
+	GetResourceGroupId() *string
+	SetSnapshotName(v string) *CreateSnapshotRequest
+	GetSnapshotName() *string
+	SetTag(v []*CreateSnapshotRequestTag) *CreateSnapshotRequest
+	GetTag() []*CreateSnapshotRequestTag
 }
 
 type CreateSnapshotRequest struct {
@@ -2433,11 +3859,35 @@ type CreateSnapshotRequest struct {
 }
 
 func (s CreateSnapshotRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s CreateSnapshotRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateSnapshotRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *CreateSnapshotRequest) GetDiskId() *string {
+	return s.DiskId
+}
+
+func (s *CreateSnapshotRequest) GetRegionId() *string {
+	return s.RegionId
+}
+
+func (s *CreateSnapshotRequest) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
+func (s *CreateSnapshotRequest) GetSnapshotName() *string {
+	return s.SnapshotName
+}
+
+func (s *CreateSnapshotRequest) GetTag() []*CreateSnapshotRequestTag {
+	return s.Tag
 }
 
 func (s *CreateSnapshotRequest) SetClientToken(v string) *CreateSnapshotRequest {
@@ -2470,6 +3920,10 @@ func (s *CreateSnapshotRequest) SetTag(v []*CreateSnapshotRequestTag) *CreateSna
 	return s
 }
 
+func (s *CreateSnapshotRequest) Validate() error {
+	return dara.Validate(s)
+}
+
 type CreateSnapshotRequestTag struct {
 	// The key of the tag to add to the snapshot. Valid values of N: 1 to 20.
 	//
@@ -2490,11 +3944,19 @@ type CreateSnapshotRequestTag struct {
 }
 
 func (s CreateSnapshotRequestTag) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s CreateSnapshotRequestTag) GoString() string {
 	return s.String()
+}
+
+func (s *CreateSnapshotRequestTag) GetKey() *string {
+	return s.Key
+}
+
+func (s *CreateSnapshotRequestTag) GetValue() *string {
+	return s.Value
 }
 
 func (s *CreateSnapshotRequestTag) SetKey(v string) *CreateSnapshotRequestTag {
@@ -2505,6 +3967,20 @@ func (s *CreateSnapshotRequestTag) SetKey(v string) *CreateSnapshotRequestTag {
 func (s *CreateSnapshotRequestTag) SetValue(v string) *CreateSnapshotRequestTag {
 	s.Value = &v
 	return s
+}
+
+func (s *CreateSnapshotRequestTag) Validate() error {
+	return dara.Validate(s)
+}
+
+type iCreateSnapshotResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetRequestId(v string) *CreateSnapshotResponseBody
+	GetRequestId() *string
+	SetSnapshotId(v string) *CreateSnapshotResponseBody
+	GetSnapshotId() *string
 }
 
 type CreateSnapshotResponseBody struct {
@@ -2523,11 +3999,19 @@ type CreateSnapshotResponseBody struct {
 }
 
 func (s CreateSnapshotResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s CreateSnapshotResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateSnapshotResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
+func (s *CreateSnapshotResponseBody) GetSnapshotId() *string {
+	return s.SnapshotId
 }
 
 func (s *CreateSnapshotResponseBody) SetRequestId(v string) *CreateSnapshotResponseBody {
@@ -2540,6 +4024,22 @@ func (s *CreateSnapshotResponseBody) SetSnapshotId(v string) *CreateSnapshotResp
 	return s
 }
 
+func (s *CreateSnapshotResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iCreateSnapshotResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *CreateSnapshotResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *CreateSnapshotResponse
+	GetStatusCode() *int32
+	SetBody(v *CreateSnapshotResponseBody) *CreateSnapshotResponse
+	GetBody() *CreateSnapshotResponseBody
+}
+
 type CreateSnapshotResponse struct {
 	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -2547,11 +4047,23 @@ type CreateSnapshotResponse struct {
 }
 
 func (s CreateSnapshotResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s CreateSnapshotResponse) GoString() string {
 	return s.String()
+}
+
+func (s *CreateSnapshotResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *CreateSnapshotResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *CreateSnapshotResponse) GetBody() *CreateSnapshotResponseBody {
+	return s.Body
 }
 
 func (s *CreateSnapshotResponse) SetHeaders(v map[string]*string) *CreateSnapshotResponse {
@@ -2567,6 +4079,20 @@ func (s *CreateSnapshotResponse) SetStatusCode(v int32) *CreateSnapshotResponse 
 func (s *CreateSnapshotResponse) SetBody(v *CreateSnapshotResponseBody) *CreateSnapshotResponse {
 	s.Body = v
 	return s
+}
+
+func (s *CreateSnapshotResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDeleteCommandRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetCommandId(v string) *DeleteCommandRequest
+	GetCommandId() *string
+	SetRegionId(v string) *DeleteCommandRequest
+	GetRegionId() *string
 }
 
 type DeleteCommandRequest struct {
@@ -2589,11 +4115,19 @@ type DeleteCommandRequest struct {
 }
 
 func (s DeleteCommandRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DeleteCommandRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteCommandRequest) GetCommandId() *string {
+	return s.CommandId
+}
+
+func (s *DeleteCommandRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *DeleteCommandRequest) SetCommandId(v string) *DeleteCommandRequest {
@@ -2606,6 +4140,18 @@ func (s *DeleteCommandRequest) SetRegionId(v string) *DeleteCommandRequest {
 	return s
 }
 
+func (s *DeleteCommandRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDeleteCommandResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetRequestId(v string) *DeleteCommandResponseBody
+	GetRequestId() *string
+}
+
 type DeleteCommandResponseBody struct {
 	// The request ID.
 	//
@@ -2616,16 +4162,36 @@ type DeleteCommandResponseBody struct {
 }
 
 func (s DeleteCommandResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DeleteCommandResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DeleteCommandResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
 func (s *DeleteCommandResponseBody) SetRequestId(v string) *DeleteCommandResponseBody {
 	s.RequestId = &v
 	return s
+}
+
+func (s *DeleteCommandResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDeleteCommandResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *DeleteCommandResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *DeleteCommandResponse
+	GetStatusCode() *int32
+	SetBody(v *DeleteCommandResponseBody) *DeleteCommandResponse
+	GetBody() *DeleteCommandResponseBody
 }
 
 type DeleteCommandResponse struct {
@@ -2635,11 +4201,23 @@ type DeleteCommandResponse struct {
 }
 
 func (s DeleteCommandResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DeleteCommandResponse) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteCommandResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *DeleteCommandResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *DeleteCommandResponse) GetBody() *DeleteCommandResponseBody {
+	return s.Body
 }
 
 func (s *DeleteCommandResponse) SetHeaders(v map[string]*string) *DeleteCommandResponse {
@@ -2655,6 +4233,22 @@ func (s *DeleteCommandResponse) SetStatusCode(v int32) *DeleteCommandResponse {
 func (s *DeleteCommandResponse) SetBody(v *DeleteCommandResponseBody) *DeleteCommandResponse {
 	s.Body = v
 	return s
+}
+
+func (s *DeleteCommandResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDeleteCustomImageRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientToken(v string) *DeleteCustomImageRequest
+	GetClientToken() *string
+	SetImageId(v string) *DeleteCustomImageRequest
+	GetImageId() *string
+	SetRegionId(v string) *DeleteCustomImageRequest
+	GetRegionId() *string
 }
 
 type DeleteCustomImageRequest struct {
@@ -2683,11 +4277,23 @@ type DeleteCustomImageRequest struct {
 }
 
 func (s DeleteCustomImageRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DeleteCustomImageRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteCustomImageRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *DeleteCustomImageRequest) GetImageId() *string {
+	return s.ImageId
+}
+
+func (s *DeleteCustomImageRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *DeleteCustomImageRequest) SetClientToken(v string) *DeleteCustomImageRequest {
@@ -2705,6 +4311,18 @@ func (s *DeleteCustomImageRequest) SetRegionId(v string) *DeleteCustomImageReque
 	return s
 }
 
+func (s *DeleteCustomImageRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDeleteCustomImageResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetRequestId(v string) *DeleteCustomImageResponseBody
+	GetRequestId() *string
+}
+
 type DeleteCustomImageResponseBody struct {
 	// The request ID.
 	//
@@ -2715,16 +4333,36 @@ type DeleteCustomImageResponseBody struct {
 }
 
 func (s DeleteCustomImageResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DeleteCustomImageResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DeleteCustomImageResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
 func (s *DeleteCustomImageResponseBody) SetRequestId(v string) *DeleteCustomImageResponseBody {
 	s.RequestId = &v
 	return s
+}
+
+func (s *DeleteCustomImageResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDeleteCustomImageResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *DeleteCustomImageResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *DeleteCustomImageResponse
+	GetStatusCode() *int32
+	SetBody(v *DeleteCustomImageResponseBody) *DeleteCustomImageResponse
+	GetBody() *DeleteCustomImageResponseBody
 }
 
 type DeleteCustomImageResponse struct {
@@ -2734,11 +4372,23 @@ type DeleteCustomImageResponse struct {
 }
 
 func (s DeleteCustomImageResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DeleteCustomImageResponse) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteCustomImageResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *DeleteCustomImageResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *DeleteCustomImageResponse) GetBody() *DeleteCustomImageResponseBody {
+	return s.Body
 }
 
 func (s *DeleteCustomImageResponse) SetHeaders(v map[string]*string) *DeleteCustomImageResponse {
@@ -2754,6 +4404,22 @@ func (s *DeleteCustomImageResponse) SetStatusCode(v int32) *DeleteCustomImageRes
 func (s *DeleteCustomImageResponse) SetBody(v *DeleteCustomImageResponseBody) *DeleteCustomImageResponse {
 	s.Body = v
 	return s
+}
+
+func (s *DeleteCustomImageResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDeleteCustomImagesRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientToken(v string) *DeleteCustomImagesRequest
+	GetClientToken() *string
+	SetImageIds(v string) *DeleteCustomImagesRequest
+	GetImageIds() *string
+	SetRegionId(v string) *DeleteCustomImagesRequest
+	GetRegionId() *string
 }
 
 type DeleteCustomImagesRequest struct {
@@ -2782,11 +4448,23 @@ type DeleteCustomImagesRequest struct {
 }
 
 func (s DeleteCustomImagesRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DeleteCustomImagesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteCustomImagesRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *DeleteCustomImagesRequest) GetImageIds() *string {
+	return s.ImageIds
+}
+
+func (s *DeleteCustomImagesRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *DeleteCustomImagesRequest) SetClientToken(v string) *DeleteCustomImagesRequest {
@@ -2804,6 +4482,18 @@ func (s *DeleteCustomImagesRequest) SetRegionId(v string) *DeleteCustomImagesReq
 	return s
 }
 
+func (s *DeleteCustomImagesRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDeleteCustomImagesResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetRequestId(v string) *DeleteCustomImagesResponseBody
+	GetRequestId() *string
+}
+
 type DeleteCustomImagesResponseBody struct {
 	// The request ID.
 	//
@@ -2814,16 +4504,36 @@ type DeleteCustomImagesResponseBody struct {
 }
 
 func (s DeleteCustomImagesResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DeleteCustomImagesResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DeleteCustomImagesResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
 func (s *DeleteCustomImagesResponseBody) SetRequestId(v string) *DeleteCustomImagesResponseBody {
 	s.RequestId = &v
 	return s
+}
+
+func (s *DeleteCustomImagesResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDeleteCustomImagesResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *DeleteCustomImagesResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *DeleteCustomImagesResponse
+	GetStatusCode() *int32
+	SetBody(v *DeleteCustomImagesResponseBody) *DeleteCustomImagesResponse
+	GetBody() *DeleteCustomImagesResponseBody
 }
 
 type DeleteCustomImagesResponse struct {
@@ -2833,11 +4543,23 @@ type DeleteCustomImagesResponse struct {
 }
 
 func (s DeleteCustomImagesResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DeleteCustomImagesResponse) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteCustomImagesResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *DeleteCustomImagesResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *DeleteCustomImagesResponse) GetBody() *DeleteCustomImagesResponseBody {
+	return s.Body
 }
 
 func (s *DeleteCustomImagesResponse) SetHeaders(v map[string]*string) *DeleteCustomImagesResponse {
@@ -2853,6 +4575,24 @@ func (s *DeleteCustomImagesResponse) SetStatusCode(v int32) *DeleteCustomImagesR
 func (s *DeleteCustomImagesResponse) SetBody(v *DeleteCustomImagesResponseBody) *DeleteCustomImagesResponse {
 	s.Body = v
 	return s
+}
+
+func (s *DeleteCustomImagesResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDeleteFirewallRuleRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientToken(v string) *DeleteFirewallRuleRequest
+	GetClientToken() *string
+	SetInstanceId(v string) *DeleteFirewallRuleRequest
+	GetInstanceId() *string
+	SetRegionId(v string) *DeleteFirewallRuleRequest
+	GetRegionId() *string
+	SetRuleId(v string) *DeleteFirewallRuleRequest
+	GetRuleId() *string
 }
 
 type DeleteFirewallRuleRequest struct {
@@ -2889,11 +4629,27 @@ type DeleteFirewallRuleRequest struct {
 }
 
 func (s DeleteFirewallRuleRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DeleteFirewallRuleRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteFirewallRuleRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *DeleteFirewallRuleRequest) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *DeleteFirewallRuleRequest) GetRegionId() *string {
+	return s.RegionId
+}
+
+func (s *DeleteFirewallRuleRequest) GetRuleId() *string {
+	return s.RuleId
 }
 
 func (s *DeleteFirewallRuleRequest) SetClientToken(v string) *DeleteFirewallRuleRequest {
@@ -2916,6 +4672,18 @@ func (s *DeleteFirewallRuleRequest) SetRuleId(v string) *DeleteFirewallRuleReque
 	return s
 }
 
+func (s *DeleteFirewallRuleRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDeleteFirewallRuleResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetRequestId(v string) *DeleteFirewallRuleResponseBody
+	GetRequestId() *string
+}
+
 type DeleteFirewallRuleResponseBody struct {
 	// The request ID.
 	//
@@ -2926,16 +4694,36 @@ type DeleteFirewallRuleResponseBody struct {
 }
 
 func (s DeleteFirewallRuleResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DeleteFirewallRuleResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DeleteFirewallRuleResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
 func (s *DeleteFirewallRuleResponseBody) SetRequestId(v string) *DeleteFirewallRuleResponseBody {
 	s.RequestId = &v
 	return s
+}
+
+func (s *DeleteFirewallRuleResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDeleteFirewallRuleResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *DeleteFirewallRuleResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *DeleteFirewallRuleResponse
+	GetStatusCode() *int32
+	SetBody(v *DeleteFirewallRuleResponseBody) *DeleteFirewallRuleResponse
+	GetBody() *DeleteFirewallRuleResponseBody
 }
 
 type DeleteFirewallRuleResponse struct {
@@ -2945,11 +4733,23 @@ type DeleteFirewallRuleResponse struct {
 }
 
 func (s DeleteFirewallRuleResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DeleteFirewallRuleResponse) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteFirewallRuleResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *DeleteFirewallRuleResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *DeleteFirewallRuleResponse) GetBody() *DeleteFirewallRuleResponseBody {
+	return s.Body
 }
 
 func (s *DeleteFirewallRuleResponse) SetHeaders(v map[string]*string) *DeleteFirewallRuleResponse {
@@ -2965,6 +4765,24 @@ func (s *DeleteFirewallRuleResponse) SetStatusCode(v int32) *DeleteFirewallRuleR
 func (s *DeleteFirewallRuleResponse) SetBody(v *DeleteFirewallRuleResponseBody) *DeleteFirewallRuleResponse {
 	s.Body = v
 	return s
+}
+
+func (s *DeleteFirewallRuleResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDeleteFirewallRulesRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientToken(v string) *DeleteFirewallRulesRequest
+	GetClientToken() *string
+	SetInstanceId(v string) *DeleteFirewallRulesRequest
+	GetInstanceId() *string
+	SetRegionId(v string) *DeleteFirewallRulesRequest
+	GetRegionId() *string
+	SetRuleIds(v []*string) *DeleteFirewallRulesRequest
+	GetRuleIds() []*string
 }
 
 type DeleteFirewallRulesRequest struct {
@@ -2995,11 +4813,27 @@ type DeleteFirewallRulesRequest struct {
 }
 
 func (s DeleteFirewallRulesRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DeleteFirewallRulesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteFirewallRulesRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *DeleteFirewallRulesRequest) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *DeleteFirewallRulesRequest) GetRegionId() *string {
+	return s.RegionId
+}
+
+func (s *DeleteFirewallRulesRequest) GetRuleIds() []*string {
+	return s.RuleIds
 }
 
 func (s *DeleteFirewallRulesRequest) SetClientToken(v string) *DeleteFirewallRulesRequest {
@@ -3020,6 +4854,24 @@ func (s *DeleteFirewallRulesRequest) SetRegionId(v string) *DeleteFirewallRulesR
 func (s *DeleteFirewallRulesRequest) SetRuleIds(v []*string) *DeleteFirewallRulesRequest {
 	s.RuleIds = v
 	return s
+}
+
+func (s *DeleteFirewallRulesRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDeleteFirewallRulesShrinkRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientToken(v string) *DeleteFirewallRulesShrinkRequest
+	GetClientToken() *string
+	SetInstanceId(v string) *DeleteFirewallRulesShrinkRequest
+	GetInstanceId() *string
+	SetRegionId(v string) *DeleteFirewallRulesShrinkRequest
+	GetRegionId() *string
+	SetRuleIdsShrink(v string) *DeleteFirewallRulesShrinkRequest
+	GetRuleIdsShrink() *string
 }
 
 type DeleteFirewallRulesShrinkRequest struct {
@@ -3050,11 +4902,27 @@ type DeleteFirewallRulesShrinkRequest struct {
 }
 
 func (s DeleteFirewallRulesShrinkRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DeleteFirewallRulesShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteFirewallRulesShrinkRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *DeleteFirewallRulesShrinkRequest) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *DeleteFirewallRulesShrinkRequest) GetRegionId() *string {
+	return s.RegionId
+}
+
+func (s *DeleteFirewallRulesShrinkRequest) GetRuleIdsShrink() *string {
+	return s.RuleIdsShrink
 }
 
 func (s *DeleteFirewallRulesShrinkRequest) SetClientToken(v string) *DeleteFirewallRulesShrinkRequest {
@@ -3077,6 +4945,18 @@ func (s *DeleteFirewallRulesShrinkRequest) SetRuleIdsShrink(v string) *DeleteFir
 	return s
 }
 
+func (s *DeleteFirewallRulesShrinkRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDeleteFirewallRulesResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetRequestId(v string) *DeleteFirewallRulesResponseBody
+	GetRequestId() *string
+}
+
 type DeleteFirewallRulesResponseBody struct {
 	// The request ID.
 	//
@@ -3087,16 +4967,36 @@ type DeleteFirewallRulesResponseBody struct {
 }
 
 func (s DeleteFirewallRulesResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DeleteFirewallRulesResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DeleteFirewallRulesResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
 func (s *DeleteFirewallRulesResponseBody) SetRequestId(v string) *DeleteFirewallRulesResponseBody {
 	s.RequestId = &v
 	return s
+}
+
+func (s *DeleteFirewallRulesResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDeleteFirewallRulesResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *DeleteFirewallRulesResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *DeleteFirewallRulesResponse
+	GetStatusCode() *int32
+	SetBody(v *DeleteFirewallRulesResponseBody) *DeleteFirewallRulesResponse
+	GetBody() *DeleteFirewallRulesResponseBody
 }
 
 type DeleteFirewallRulesResponse struct {
@@ -3106,11 +5006,23 @@ type DeleteFirewallRulesResponse struct {
 }
 
 func (s DeleteFirewallRulesResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DeleteFirewallRulesResponse) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteFirewallRulesResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *DeleteFirewallRulesResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *DeleteFirewallRulesResponse) GetBody() *DeleteFirewallRulesResponseBody {
+	return s.Body
 }
 
 func (s *DeleteFirewallRulesResponse) SetHeaders(v map[string]*string) *DeleteFirewallRulesResponse {
@@ -3126,6 +5038,24 @@ func (s *DeleteFirewallRulesResponse) SetStatusCode(v int32) *DeleteFirewallRule
 func (s *DeleteFirewallRulesResponse) SetBody(v *DeleteFirewallRulesResponseBody) *DeleteFirewallRulesResponse {
 	s.Body = v
 	return s
+}
+
+func (s *DeleteFirewallRulesResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDeleteFirewallTemplateRulesRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientToken(v string) *DeleteFirewallTemplateRulesRequest
+	GetClientToken() *string
+	SetFirewallTemplateId(v string) *DeleteFirewallTemplateRulesRequest
+	GetFirewallTemplateId() *string
+	SetFirewallTemplateRuleId(v []*string) *DeleteFirewallTemplateRulesRequest
+	GetFirewallTemplateRuleId() []*string
+	SetRegionId(v string) *DeleteFirewallTemplateRulesRequest
+	GetRegionId() *string
 }
 
 type DeleteFirewallTemplateRulesRequest struct {
@@ -3158,11 +5088,27 @@ type DeleteFirewallTemplateRulesRequest struct {
 }
 
 func (s DeleteFirewallTemplateRulesRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DeleteFirewallTemplateRulesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteFirewallTemplateRulesRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *DeleteFirewallTemplateRulesRequest) GetFirewallTemplateId() *string {
+	return s.FirewallTemplateId
+}
+
+func (s *DeleteFirewallTemplateRulesRequest) GetFirewallTemplateRuleId() []*string {
+	return s.FirewallTemplateRuleId
+}
+
+func (s *DeleteFirewallTemplateRulesRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *DeleteFirewallTemplateRulesRequest) SetClientToken(v string) *DeleteFirewallTemplateRulesRequest {
@@ -3185,6 +5131,18 @@ func (s *DeleteFirewallTemplateRulesRequest) SetRegionId(v string) *DeleteFirewa
 	return s
 }
 
+func (s *DeleteFirewallTemplateRulesRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDeleteFirewallTemplateRulesResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetRequestId(v string) *DeleteFirewallTemplateRulesResponseBody
+	GetRequestId() *string
+}
+
 type DeleteFirewallTemplateRulesResponseBody struct {
 	// The request ID.
 	//
@@ -3195,16 +5153,36 @@ type DeleteFirewallTemplateRulesResponseBody struct {
 }
 
 func (s DeleteFirewallTemplateRulesResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DeleteFirewallTemplateRulesResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DeleteFirewallTemplateRulesResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
 func (s *DeleteFirewallTemplateRulesResponseBody) SetRequestId(v string) *DeleteFirewallTemplateRulesResponseBody {
 	s.RequestId = &v
 	return s
+}
+
+func (s *DeleteFirewallTemplateRulesResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDeleteFirewallTemplateRulesResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *DeleteFirewallTemplateRulesResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *DeleteFirewallTemplateRulesResponse
+	GetStatusCode() *int32
+	SetBody(v *DeleteFirewallTemplateRulesResponseBody) *DeleteFirewallTemplateRulesResponse
+	GetBody() *DeleteFirewallTemplateRulesResponseBody
 }
 
 type DeleteFirewallTemplateRulesResponse struct {
@@ -3214,11 +5192,23 @@ type DeleteFirewallTemplateRulesResponse struct {
 }
 
 func (s DeleteFirewallTemplateRulesResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DeleteFirewallTemplateRulesResponse) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteFirewallTemplateRulesResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *DeleteFirewallTemplateRulesResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *DeleteFirewallTemplateRulesResponse) GetBody() *DeleteFirewallTemplateRulesResponseBody {
+	return s.Body
 }
 
 func (s *DeleteFirewallTemplateRulesResponse) SetHeaders(v map[string]*string) *DeleteFirewallTemplateRulesResponse {
@@ -3234,6 +5224,22 @@ func (s *DeleteFirewallTemplateRulesResponse) SetStatusCode(v int32) *DeleteFire
 func (s *DeleteFirewallTemplateRulesResponse) SetBody(v *DeleteFirewallTemplateRulesResponseBody) *DeleteFirewallTemplateRulesResponse {
 	s.Body = v
 	return s
+}
+
+func (s *DeleteFirewallTemplateRulesResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDeleteFirewallTemplatesRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientToken(v string) *DeleteFirewallTemplatesRequest
+	GetClientToken() *string
+	SetFirewallTemplateId(v []*string) *DeleteFirewallTemplatesRequest
+	GetFirewallTemplateId() []*string
+	SetRegionId(v string) *DeleteFirewallTemplatesRequest
+	GetRegionId() *string
 }
 
 type DeleteFirewallTemplatesRequest struct {
@@ -3258,11 +5264,23 @@ type DeleteFirewallTemplatesRequest struct {
 }
 
 func (s DeleteFirewallTemplatesRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DeleteFirewallTemplatesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteFirewallTemplatesRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *DeleteFirewallTemplatesRequest) GetFirewallTemplateId() []*string {
+	return s.FirewallTemplateId
+}
+
+func (s *DeleteFirewallTemplatesRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *DeleteFirewallTemplatesRequest) SetClientToken(v string) *DeleteFirewallTemplatesRequest {
@@ -3280,6 +5298,18 @@ func (s *DeleteFirewallTemplatesRequest) SetRegionId(v string) *DeleteFirewallTe
 	return s
 }
 
+func (s *DeleteFirewallTemplatesRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDeleteFirewallTemplatesResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetRequestId(v string) *DeleteFirewallTemplatesResponseBody
+	GetRequestId() *string
+}
+
 type DeleteFirewallTemplatesResponseBody struct {
 	// The request ID.
 	//
@@ -3290,16 +5320,36 @@ type DeleteFirewallTemplatesResponseBody struct {
 }
 
 func (s DeleteFirewallTemplatesResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DeleteFirewallTemplatesResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DeleteFirewallTemplatesResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
 func (s *DeleteFirewallTemplatesResponseBody) SetRequestId(v string) *DeleteFirewallTemplatesResponseBody {
 	s.RequestId = &v
 	return s
+}
+
+func (s *DeleteFirewallTemplatesResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDeleteFirewallTemplatesResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *DeleteFirewallTemplatesResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *DeleteFirewallTemplatesResponse
+	GetStatusCode() *int32
+	SetBody(v *DeleteFirewallTemplatesResponseBody) *DeleteFirewallTemplatesResponse
+	GetBody() *DeleteFirewallTemplatesResponseBody
 }
 
 type DeleteFirewallTemplatesResponse struct {
@@ -3309,11 +5359,23 @@ type DeleteFirewallTemplatesResponse struct {
 }
 
 func (s DeleteFirewallTemplatesResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DeleteFirewallTemplatesResponse) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteFirewallTemplatesResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *DeleteFirewallTemplatesResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *DeleteFirewallTemplatesResponse) GetBody() *DeleteFirewallTemplatesResponseBody {
+	return s.Body
 }
 
 func (s *DeleteFirewallTemplatesResponse) SetHeaders(v map[string]*string) *DeleteFirewallTemplatesResponse {
@@ -3329,6 +5391,22 @@ func (s *DeleteFirewallTemplatesResponse) SetStatusCode(v int32) *DeleteFirewall
 func (s *DeleteFirewallTemplatesResponse) SetBody(v *DeleteFirewallTemplatesResponseBody) *DeleteFirewallTemplatesResponse {
 	s.Body = v
 	return s
+}
+
+func (s *DeleteFirewallTemplatesResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDeleteInstanceKeyPairRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientToken(v string) *DeleteInstanceKeyPairRequest
+	GetClientToken() *string
+	SetInstanceId(v string) *DeleteInstanceKeyPairRequest
+	GetInstanceId() *string
+	SetRegionId(v string) *DeleteInstanceKeyPairRequest
+	GetRegionId() *string
 }
 
 type DeleteInstanceKeyPairRequest struct {
@@ -3357,11 +5435,23 @@ type DeleteInstanceKeyPairRequest struct {
 }
 
 func (s DeleteInstanceKeyPairRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DeleteInstanceKeyPairRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteInstanceKeyPairRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *DeleteInstanceKeyPairRequest) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *DeleteInstanceKeyPairRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *DeleteInstanceKeyPairRequest) SetClientToken(v string) *DeleteInstanceKeyPairRequest {
@@ -3379,6 +5469,18 @@ func (s *DeleteInstanceKeyPairRequest) SetRegionId(v string) *DeleteInstanceKeyP
 	return s
 }
 
+func (s *DeleteInstanceKeyPairRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDeleteInstanceKeyPairResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetRequestId(v string) *DeleteInstanceKeyPairResponseBody
+	GetRequestId() *string
+}
+
 type DeleteInstanceKeyPairResponseBody struct {
 	// The request ID.
 	//
@@ -3389,16 +5491,36 @@ type DeleteInstanceKeyPairResponseBody struct {
 }
 
 func (s DeleteInstanceKeyPairResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DeleteInstanceKeyPairResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DeleteInstanceKeyPairResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
 func (s *DeleteInstanceKeyPairResponseBody) SetRequestId(v string) *DeleteInstanceKeyPairResponseBody {
 	s.RequestId = &v
 	return s
+}
+
+func (s *DeleteInstanceKeyPairResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDeleteInstanceKeyPairResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *DeleteInstanceKeyPairResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *DeleteInstanceKeyPairResponse
+	GetStatusCode() *int32
+	SetBody(v *DeleteInstanceKeyPairResponseBody) *DeleteInstanceKeyPairResponse
+	GetBody() *DeleteInstanceKeyPairResponseBody
 }
 
 type DeleteInstanceKeyPairResponse struct {
@@ -3408,11 +5530,23 @@ type DeleteInstanceKeyPairResponse struct {
 }
 
 func (s DeleteInstanceKeyPairResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DeleteInstanceKeyPairResponse) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteInstanceKeyPairResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *DeleteInstanceKeyPairResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *DeleteInstanceKeyPairResponse) GetBody() *DeleteInstanceKeyPairResponseBody {
+	return s.Body
 }
 
 func (s *DeleteInstanceKeyPairResponse) SetHeaders(v map[string]*string) *DeleteInstanceKeyPairResponse {
@@ -3428,6 +5562,22 @@ func (s *DeleteInstanceKeyPairResponse) SetStatusCode(v int32) *DeleteInstanceKe
 func (s *DeleteInstanceKeyPairResponse) SetBody(v *DeleteInstanceKeyPairResponseBody) *DeleteInstanceKeyPairResponse {
 	s.Body = v
 	return s
+}
+
+func (s *DeleteInstanceKeyPairResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDeleteKeyPairsRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientToken(v string) *DeleteKeyPairsRequest
+	GetClientToken() *string
+	SetKeyPairNames(v []*string) *DeleteKeyPairsRequest
+	GetKeyPairNames() []*string
+	SetRegionId(v string) *DeleteKeyPairsRequest
+	GetRegionId() *string
 }
 
 type DeleteKeyPairsRequest struct {
@@ -3452,11 +5602,23 @@ type DeleteKeyPairsRequest struct {
 }
 
 func (s DeleteKeyPairsRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DeleteKeyPairsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteKeyPairsRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *DeleteKeyPairsRequest) GetKeyPairNames() []*string {
+	return s.KeyPairNames
+}
+
+func (s *DeleteKeyPairsRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *DeleteKeyPairsRequest) SetClientToken(v string) *DeleteKeyPairsRequest {
@@ -3474,6 +5636,18 @@ func (s *DeleteKeyPairsRequest) SetRegionId(v string) *DeleteKeyPairsRequest {
 	return s
 }
 
+func (s *DeleteKeyPairsRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDeleteKeyPairsResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetRequestId(v string) *DeleteKeyPairsResponseBody
+	GetRequestId() *string
+}
+
 type DeleteKeyPairsResponseBody struct {
 	// The request ID.
 	//
@@ -3484,16 +5658,36 @@ type DeleteKeyPairsResponseBody struct {
 }
 
 func (s DeleteKeyPairsResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DeleteKeyPairsResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DeleteKeyPairsResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
 func (s *DeleteKeyPairsResponseBody) SetRequestId(v string) *DeleteKeyPairsResponseBody {
 	s.RequestId = &v
 	return s
+}
+
+func (s *DeleteKeyPairsResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDeleteKeyPairsResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *DeleteKeyPairsResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *DeleteKeyPairsResponse
+	GetStatusCode() *int32
+	SetBody(v *DeleteKeyPairsResponseBody) *DeleteKeyPairsResponse
+	GetBody() *DeleteKeyPairsResponseBody
 }
 
 type DeleteKeyPairsResponse struct {
@@ -3503,11 +5697,23 @@ type DeleteKeyPairsResponse struct {
 }
 
 func (s DeleteKeyPairsResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DeleteKeyPairsResponse) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteKeyPairsResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *DeleteKeyPairsResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *DeleteKeyPairsResponse) GetBody() *DeleteKeyPairsResponseBody {
+	return s.Body
 }
 
 func (s *DeleteKeyPairsResponse) SetHeaders(v map[string]*string) *DeleteKeyPairsResponse {
@@ -3523,6 +5729,22 @@ func (s *DeleteKeyPairsResponse) SetStatusCode(v int32) *DeleteKeyPairsResponse 
 func (s *DeleteKeyPairsResponse) SetBody(v *DeleteKeyPairsResponseBody) *DeleteKeyPairsResponse {
 	s.Body = v
 	return s
+}
+
+func (s *DeleteKeyPairsResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDeleteSnapshotRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientToken(v string) *DeleteSnapshotRequest
+	GetClientToken() *string
+	SetRegionId(v string) *DeleteSnapshotRequest
+	GetRegionId() *string
+	SetSnapshotId(v string) *DeleteSnapshotRequest
+	GetSnapshotId() *string
 }
 
 type DeleteSnapshotRequest struct {
@@ -3551,11 +5773,23 @@ type DeleteSnapshotRequest struct {
 }
 
 func (s DeleteSnapshotRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DeleteSnapshotRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteSnapshotRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *DeleteSnapshotRequest) GetRegionId() *string {
+	return s.RegionId
+}
+
+func (s *DeleteSnapshotRequest) GetSnapshotId() *string {
+	return s.SnapshotId
 }
 
 func (s *DeleteSnapshotRequest) SetClientToken(v string) *DeleteSnapshotRequest {
@@ -3573,6 +5807,18 @@ func (s *DeleteSnapshotRequest) SetSnapshotId(v string) *DeleteSnapshotRequest {
 	return s
 }
 
+func (s *DeleteSnapshotRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDeleteSnapshotResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetRequestId(v string) *DeleteSnapshotResponseBody
+	GetRequestId() *string
+}
+
 type DeleteSnapshotResponseBody struct {
 	// The request ID.
 	//
@@ -3583,16 +5829,36 @@ type DeleteSnapshotResponseBody struct {
 }
 
 func (s DeleteSnapshotResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DeleteSnapshotResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DeleteSnapshotResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
 func (s *DeleteSnapshotResponseBody) SetRequestId(v string) *DeleteSnapshotResponseBody {
 	s.RequestId = &v
 	return s
+}
+
+func (s *DeleteSnapshotResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDeleteSnapshotResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *DeleteSnapshotResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *DeleteSnapshotResponse
+	GetStatusCode() *int32
+	SetBody(v *DeleteSnapshotResponseBody) *DeleteSnapshotResponse
+	GetBody() *DeleteSnapshotResponseBody
 }
 
 type DeleteSnapshotResponse struct {
@@ -3602,11 +5868,23 @@ type DeleteSnapshotResponse struct {
 }
 
 func (s DeleteSnapshotResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DeleteSnapshotResponse) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteSnapshotResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *DeleteSnapshotResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *DeleteSnapshotResponse) GetBody() *DeleteSnapshotResponseBody {
+	return s.Body
 }
 
 func (s *DeleteSnapshotResponse) SetHeaders(v map[string]*string) *DeleteSnapshotResponse {
@@ -3622,6 +5900,22 @@ func (s *DeleteSnapshotResponse) SetStatusCode(v int32) *DeleteSnapshotResponse 
 func (s *DeleteSnapshotResponse) SetBody(v *DeleteSnapshotResponseBody) *DeleteSnapshotResponse {
 	s.Body = v
 	return s
+}
+
+func (s *DeleteSnapshotResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDeleteSnapshotsRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientToken(v string) *DeleteSnapshotsRequest
+	GetClientToken() *string
+	SetRegionId(v string) *DeleteSnapshotsRequest
+	GetRegionId() *string
+	SetSnapshotIds(v string) *DeleteSnapshotsRequest
+	GetSnapshotIds() *string
 }
 
 type DeleteSnapshotsRequest struct {
@@ -3650,11 +5944,23 @@ type DeleteSnapshotsRequest struct {
 }
 
 func (s DeleteSnapshotsRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DeleteSnapshotsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteSnapshotsRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *DeleteSnapshotsRequest) GetRegionId() *string {
+	return s.RegionId
+}
+
+func (s *DeleteSnapshotsRequest) GetSnapshotIds() *string {
+	return s.SnapshotIds
 }
 
 func (s *DeleteSnapshotsRequest) SetClientToken(v string) *DeleteSnapshotsRequest {
@@ -3672,6 +5978,18 @@ func (s *DeleteSnapshotsRequest) SetSnapshotIds(v string) *DeleteSnapshotsReques
 	return s
 }
 
+func (s *DeleteSnapshotsRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDeleteSnapshotsResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetRequestId(v string) *DeleteSnapshotsResponseBody
+	GetRequestId() *string
+}
+
 type DeleteSnapshotsResponseBody struct {
 	// The request ID.
 	//
@@ -3682,16 +6000,36 @@ type DeleteSnapshotsResponseBody struct {
 }
 
 func (s DeleteSnapshotsResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DeleteSnapshotsResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DeleteSnapshotsResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
 func (s *DeleteSnapshotsResponseBody) SetRequestId(v string) *DeleteSnapshotsResponseBody {
 	s.RequestId = &v
 	return s
+}
+
+func (s *DeleteSnapshotsResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDeleteSnapshotsResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *DeleteSnapshotsResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *DeleteSnapshotsResponse
+	GetStatusCode() *int32
+	SetBody(v *DeleteSnapshotsResponseBody) *DeleteSnapshotsResponse
+	GetBody() *DeleteSnapshotsResponseBody
 }
 
 type DeleteSnapshotsResponse struct {
@@ -3701,11 +6039,23 @@ type DeleteSnapshotsResponse struct {
 }
 
 func (s DeleteSnapshotsResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DeleteSnapshotsResponse) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteSnapshotsResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *DeleteSnapshotsResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *DeleteSnapshotsResponse) GetBody() *DeleteSnapshotsResponseBody {
+	return s.Body
 }
 
 func (s *DeleteSnapshotsResponse) SetHeaders(v map[string]*string) *DeleteSnapshotsResponse {
@@ -3721,6 +6071,24 @@ func (s *DeleteSnapshotsResponse) SetStatusCode(v int32) *DeleteSnapshotsRespons
 func (s *DeleteSnapshotsResponse) SetBody(v *DeleteSnapshotsResponseBody) *DeleteSnapshotsResponse {
 	s.Body = v
 	return s
+}
+
+func (s *DeleteSnapshotsResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDescribeCloudAssistantAttributesRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetInstanceIds(v []*string) *DescribeCloudAssistantAttributesRequest
+	GetInstanceIds() []*string
+	SetPageNumber(v int32) *DescribeCloudAssistantAttributesRequest
+	GetPageNumber() *int32
+	SetPageSize(v int32) *DescribeCloudAssistantAttributesRequest
+	GetPageSize() *int32
+	SetRegionId(v string) *DescribeCloudAssistantAttributesRequest
+	GetRegionId() *string
 }
 
 type DescribeCloudAssistantAttributesRequest struct {
@@ -3755,11 +6123,27 @@ type DescribeCloudAssistantAttributesRequest struct {
 }
 
 func (s DescribeCloudAssistantAttributesRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeCloudAssistantAttributesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeCloudAssistantAttributesRequest) GetInstanceIds() []*string {
+	return s.InstanceIds
+}
+
+func (s *DescribeCloudAssistantAttributesRequest) GetPageNumber() *int32 {
+	return s.PageNumber
+}
+
+func (s *DescribeCloudAssistantAttributesRequest) GetPageSize() *int32 {
+	return s.PageSize
+}
+
+func (s *DescribeCloudAssistantAttributesRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *DescribeCloudAssistantAttributesRequest) SetInstanceIds(v []*string) *DescribeCloudAssistantAttributesRequest {
@@ -3780,6 +6164,24 @@ func (s *DescribeCloudAssistantAttributesRequest) SetPageSize(v int32) *Describe
 func (s *DescribeCloudAssistantAttributesRequest) SetRegionId(v string) *DescribeCloudAssistantAttributesRequest {
 	s.RegionId = &v
 	return s
+}
+
+func (s *DescribeCloudAssistantAttributesRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDescribeCloudAssistantAttributesShrinkRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetInstanceIdsShrink(v string) *DescribeCloudAssistantAttributesShrinkRequest
+	GetInstanceIdsShrink() *string
+	SetPageNumber(v int32) *DescribeCloudAssistantAttributesShrinkRequest
+	GetPageNumber() *int32
+	SetPageSize(v int32) *DescribeCloudAssistantAttributesShrinkRequest
+	GetPageSize() *int32
+	SetRegionId(v string) *DescribeCloudAssistantAttributesShrinkRequest
+	GetRegionId() *string
 }
 
 type DescribeCloudAssistantAttributesShrinkRequest struct {
@@ -3814,11 +6216,27 @@ type DescribeCloudAssistantAttributesShrinkRequest struct {
 }
 
 func (s DescribeCloudAssistantAttributesShrinkRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeCloudAssistantAttributesShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeCloudAssistantAttributesShrinkRequest) GetInstanceIdsShrink() *string {
+	return s.InstanceIdsShrink
+}
+
+func (s *DescribeCloudAssistantAttributesShrinkRequest) GetPageNumber() *int32 {
+	return s.PageNumber
+}
+
+func (s *DescribeCloudAssistantAttributesShrinkRequest) GetPageSize() *int32 {
+	return s.PageSize
+}
+
+func (s *DescribeCloudAssistantAttributesShrinkRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *DescribeCloudAssistantAttributesShrinkRequest) SetInstanceIdsShrink(v string) *DescribeCloudAssistantAttributesShrinkRequest {
@@ -3839,6 +6257,26 @@ func (s *DescribeCloudAssistantAttributesShrinkRequest) SetPageSize(v int32) *De
 func (s *DescribeCloudAssistantAttributesShrinkRequest) SetRegionId(v string) *DescribeCloudAssistantAttributesShrinkRequest {
 	s.RegionId = &v
 	return s
+}
+
+func (s *DescribeCloudAssistantAttributesShrinkRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDescribeCloudAssistantAttributesResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetCloudAssistant(v []*DescribeCloudAssistantAttributesResponseBodyCloudAssistant) *DescribeCloudAssistantAttributesResponseBody
+	GetCloudAssistant() []*DescribeCloudAssistantAttributesResponseBodyCloudAssistant
+	SetPageNumber(v int32) *DescribeCloudAssistantAttributesResponseBody
+	GetPageNumber() *int32
+	SetPageSize(v int32) *DescribeCloudAssistantAttributesResponseBody
+	GetPageSize() *int32
+	SetRequestId(v string) *DescribeCloudAssistantAttributesResponseBody
+	GetRequestId() *string
+	SetTotalCount(v int32) *DescribeCloudAssistantAttributesResponseBody
+	GetTotalCount() *int32
 }
 
 type DescribeCloudAssistantAttributesResponseBody struct {
@@ -3871,11 +6309,31 @@ type DescribeCloudAssistantAttributesResponseBody struct {
 }
 
 func (s DescribeCloudAssistantAttributesResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeCloudAssistantAttributesResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeCloudAssistantAttributesResponseBody) GetCloudAssistant() []*DescribeCloudAssistantAttributesResponseBodyCloudAssistant {
+	return s.CloudAssistant
+}
+
+func (s *DescribeCloudAssistantAttributesResponseBody) GetPageNumber() *int32 {
+	return s.PageNumber
+}
+
+func (s *DescribeCloudAssistantAttributesResponseBody) GetPageSize() *int32 {
+	return s.PageSize
+}
+
+func (s *DescribeCloudAssistantAttributesResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
+func (s *DescribeCloudAssistantAttributesResponseBody) GetTotalCount() *int32 {
+	return s.TotalCount
 }
 
 func (s *DescribeCloudAssistantAttributesResponseBody) SetCloudAssistant(v []*DescribeCloudAssistantAttributesResponseBodyCloudAssistant) *DescribeCloudAssistantAttributesResponseBody {
@@ -3901,6 +6359,10 @@ func (s *DescribeCloudAssistantAttributesResponseBody) SetRequestId(v string) *D
 func (s *DescribeCloudAssistantAttributesResponseBody) SetTotalCount(v int32) *DescribeCloudAssistantAttributesResponseBody {
 	s.TotalCount = &v
 	return s
+}
+
+func (s *DescribeCloudAssistantAttributesResponseBody) Validate() error {
+	return dara.Validate(s)
 }
 
 type DescribeCloudAssistantAttributesResponseBodyCloudAssistant struct {
@@ -3975,11 +6437,47 @@ type DescribeCloudAssistantAttributesResponseBodyCloudAssistant struct {
 }
 
 func (s DescribeCloudAssistantAttributesResponseBodyCloudAssistant) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeCloudAssistantAttributesResponseBodyCloudAssistant) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeCloudAssistantAttributesResponseBodyCloudAssistant) GetActiveTaskCount() *int64 {
+	return s.ActiveTaskCount
+}
+
+func (s *DescribeCloudAssistantAttributesResponseBodyCloudAssistant) GetCloudAssistantStatus() *string {
+	return s.CloudAssistantStatus
+}
+
+func (s *DescribeCloudAssistantAttributesResponseBodyCloudAssistant) GetCloudAssistantVersion() *string {
+	return s.CloudAssistantVersion
+}
+
+func (s *DescribeCloudAssistantAttributesResponseBodyCloudAssistant) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *DescribeCloudAssistantAttributesResponseBodyCloudAssistant) GetInvocationCount() *int64 {
+	return s.InvocationCount
+}
+
+func (s *DescribeCloudAssistantAttributesResponseBodyCloudAssistant) GetLastHeartbeatTime() *string {
+	return s.LastHeartbeatTime
+}
+
+func (s *DescribeCloudAssistantAttributesResponseBodyCloudAssistant) GetLastInvokedTime() *string {
+	return s.LastInvokedTime
+}
+
+func (s *DescribeCloudAssistantAttributesResponseBodyCloudAssistant) GetOSType() *string {
+	return s.OSType
+}
+
+func (s *DescribeCloudAssistantAttributesResponseBodyCloudAssistant) GetSupportSessionManager() *bool {
+	return s.SupportSessionManager
 }
 
 func (s *DescribeCloudAssistantAttributesResponseBodyCloudAssistant) SetActiveTaskCount(v int64) *DescribeCloudAssistantAttributesResponseBodyCloudAssistant {
@@ -4027,6 +6525,22 @@ func (s *DescribeCloudAssistantAttributesResponseBodyCloudAssistant) SetSupportS
 	return s
 }
 
+func (s *DescribeCloudAssistantAttributesResponseBodyCloudAssistant) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDescribeCloudAssistantAttributesResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *DescribeCloudAssistantAttributesResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *DescribeCloudAssistantAttributesResponse
+	GetStatusCode() *int32
+	SetBody(v *DescribeCloudAssistantAttributesResponseBody) *DescribeCloudAssistantAttributesResponse
+	GetBody() *DescribeCloudAssistantAttributesResponseBody
+}
+
 type DescribeCloudAssistantAttributesResponse struct {
 	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -4034,11 +6548,23 @@ type DescribeCloudAssistantAttributesResponse struct {
 }
 
 func (s DescribeCloudAssistantAttributesResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeCloudAssistantAttributesResponse) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeCloudAssistantAttributesResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *DescribeCloudAssistantAttributesResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *DescribeCloudAssistantAttributesResponse) GetBody() *DescribeCloudAssistantAttributesResponseBody {
+	return s.Body
 }
 
 func (s *DescribeCloudAssistantAttributesResponse) SetHeaders(v map[string]*string) *DescribeCloudAssistantAttributesResponse {
@@ -4054,6 +6580,24 @@ func (s *DescribeCloudAssistantAttributesResponse) SetStatusCode(v int32) *Descr
 func (s *DescribeCloudAssistantAttributesResponse) SetBody(v *DescribeCloudAssistantAttributesResponseBody) *DescribeCloudAssistantAttributesResponse {
 	s.Body = v
 	return s
+}
+
+func (s *DescribeCloudAssistantAttributesResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDescribeCloudAssistantStatusRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetInstanceIds(v []*string) *DescribeCloudAssistantStatusRequest
+	GetInstanceIds() []*string
+	SetPageNumber(v int32) *DescribeCloudAssistantStatusRequest
+	GetPageNumber() *int32
+	SetPageSize(v int32) *DescribeCloudAssistantStatusRequest
+	GetPageSize() *int32
+	SetRegionId(v string) *DescribeCloudAssistantStatusRequest
+	GetRegionId() *string
 }
 
 type DescribeCloudAssistantStatusRequest struct {
@@ -4090,11 +6634,27 @@ type DescribeCloudAssistantStatusRequest struct {
 }
 
 func (s DescribeCloudAssistantStatusRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeCloudAssistantStatusRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeCloudAssistantStatusRequest) GetInstanceIds() []*string {
+	return s.InstanceIds
+}
+
+func (s *DescribeCloudAssistantStatusRequest) GetPageNumber() *int32 {
+	return s.PageNumber
+}
+
+func (s *DescribeCloudAssistantStatusRequest) GetPageSize() *int32 {
+	return s.PageSize
+}
+
+func (s *DescribeCloudAssistantStatusRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *DescribeCloudAssistantStatusRequest) SetInstanceIds(v []*string) *DescribeCloudAssistantStatusRequest {
@@ -4115,6 +6675,24 @@ func (s *DescribeCloudAssistantStatusRequest) SetPageSize(v int32) *DescribeClou
 func (s *DescribeCloudAssistantStatusRequest) SetRegionId(v string) *DescribeCloudAssistantStatusRequest {
 	s.RegionId = &v
 	return s
+}
+
+func (s *DescribeCloudAssistantStatusRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDescribeCloudAssistantStatusShrinkRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetInstanceIdsShrink(v string) *DescribeCloudAssistantStatusShrinkRequest
+	GetInstanceIdsShrink() *string
+	SetPageNumber(v int32) *DescribeCloudAssistantStatusShrinkRequest
+	GetPageNumber() *int32
+	SetPageSize(v int32) *DescribeCloudAssistantStatusShrinkRequest
+	GetPageSize() *int32
+	SetRegionId(v string) *DescribeCloudAssistantStatusShrinkRequest
+	GetRegionId() *string
 }
 
 type DescribeCloudAssistantStatusShrinkRequest struct {
@@ -4151,11 +6729,27 @@ type DescribeCloudAssistantStatusShrinkRequest struct {
 }
 
 func (s DescribeCloudAssistantStatusShrinkRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeCloudAssistantStatusShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeCloudAssistantStatusShrinkRequest) GetInstanceIdsShrink() *string {
+	return s.InstanceIdsShrink
+}
+
+func (s *DescribeCloudAssistantStatusShrinkRequest) GetPageNumber() *int32 {
+	return s.PageNumber
+}
+
+func (s *DescribeCloudAssistantStatusShrinkRequest) GetPageSize() *int32 {
+	return s.PageSize
+}
+
+func (s *DescribeCloudAssistantStatusShrinkRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *DescribeCloudAssistantStatusShrinkRequest) SetInstanceIdsShrink(v string) *DescribeCloudAssistantStatusShrinkRequest {
@@ -4176,6 +6770,26 @@ func (s *DescribeCloudAssistantStatusShrinkRequest) SetPageSize(v int32) *Descri
 func (s *DescribeCloudAssistantStatusShrinkRequest) SetRegionId(v string) *DescribeCloudAssistantStatusShrinkRequest {
 	s.RegionId = &v
 	return s
+}
+
+func (s *DescribeCloudAssistantStatusShrinkRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDescribeCloudAssistantStatusResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetCloudAssistantStatus(v []*DescribeCloudAssistantStatusResponseBodyCloudAssistantStatus) *DescribeCloudAssistantStatusResponseBody
+	GetCloudAssistantStatus() []*DescribeCloudAssistantStatusResponseBodyCloudAssistantStatus
+	SetPageNumber(v int32) *DescribeCloudAssistantStatusResponseBody
+	GetPageNumber() *int32
+	SetPageSize(v int32) *DescribeCloudAssistantStatusResponseBody
+	GetPageSize() *int32
+	SetRequestId(v string) *DescribeCloudAssistantStatusResponseBody
+	GetRequestId() *string
+	SetTotalCount(v int32) *DescribeCloudAssistantStatusResponseBody
+	GetTotalCount() *int32
 }
 
 type DescribeCloudAssistantStatusResponseBody struct {
@@ -4216,11 +6830,31 @@ type DescribeCloudAssistantStatusResponseBody struct {
 }
 
 func (s DescribeCloudAssistantStatusResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeCloudAssistantStatusResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeCloudAssistantStatusResponseBody) GetCloudAssistantStatus() []*DescribeCloudAssistantStatusResponseBodyCloudAssistantStatus {
+	return s.CloudAssistantStatus
+}
+
+func (s *DescribeCloudAssistantStatusResponseBody) GetPageNumber() *int32 {
+	return s.PageNumber
+}
+
+func (s *DescribeCloudAssistantStatusResponseBody) GetPageSize() *int32 {
+	return s.PageSize
+}
+
+func (s *DescribeCloudAssistantStatusResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
+func (s *DescribeCloudAssistantStatusResponseBody) GetTotalCount() *int32 {
+	return s.TotalCount
 }
 
 func (s *DescribeCloudAssistantStatusResponseBody) SetCloudAssistantStatus(v []*DescribeCloudAssistantStatusResponseBodyCloudAssistantStatus) *DescribeCloudAssistantStatusResponseBody {
@@ -4248,6 +6882,10 @@ func (s *DescribeCloudAssistantStatusResponseBody) SetTotalCount(v int32) *Descr
 	return s
 }
 
+func (s *DescribeCloudAssistantStatusResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
 type DescribeCloudAssistantStatusResponseBodyCloudAssistantStatus struct {
 	// The ID of the simple application server.
 	//
@@ -4264,11 +6902,19 @@ type DescribeCloudAssistantStatusResponseBodyCloudAssistantStatus struct {
 }
 
 func (s DescribeCloudAssistantStatusResponseBodyCloudAssistantStatus) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeCloudAssistantStatusResponseBodyCloudAssistantStatus) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeCloudAssistantStatusResponseBodyCloudAssistantStatus) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *DescribeCloudAssistantStatusResponseBodyCloudAssistantStatus) GetStatus() *bool {
+	return s.Status
 }
 
 func (s *DescribeCloudAssistantStatusResponseBodyCloudAssistantStatus) SetInstanceId(v string) *DescribeCloudAssistantStatusResponseBodyCloudAssistantStatus {
@@ -4281,6 +6927,22 @@ func (s *DescribeCloudAssistantStatusResponseBodyCloudAssistantStatus) SetStatus
 	return s
 }
 
+func (s *DescribeCloudAssistantStatusResponseBodyCloudAssistantStatus) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDescribeCloudAssistantStatusResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *DescribeCloudAssistantStatusResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *DescribeCloudAssistantStatusResponse
+	GetStatusCode() *int32
+	SetBody(v *DescribeCloudAssistantStatusResponseBody) *DescribeCloudAssistantStatusResponse
+	GetBody() *DescribeCloudAssistantStatusResponseBody
+}
+
 type DescribeCloudAssistantStatusResponse struct {
 	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -4288,11 +6950,23 @@ type DescribeCloudAssistantStatusResponse struct {
 }
 
 func (s DescribeCloudAssistantStatusResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeCloudAssistantStatusResponse) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeCloudAssistantStatusResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *DescribeCloudAssistantStatusResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *DescribeCloudAssistantStatusResponse) GetBody() *DescribeCloudAssistantStatusResponseBody {
+	return s.Body
 }
 
 func (s *DescribeCloudAssistantStatusResponse) SetHeaders(v map[string]*string) *DescribeCloudAssistantStatusResponse {
@@ -4308,6 +6982,22 @@ func (s *DescribeCloudAssistantStatusResponse) SetStatusCode(v int32) *DescribeC
 func (s *DescribeCloudAssistantStatusResponse) SetBody(v *DescribeCloudAssistantStatusResponseBody) *DescribeCloudAssistantStatusResponse {
 	s.Body = v
 	return s
+}
+
+func (s *DescribeCloudAssistantStatusResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDescribeCloudMonitorAgentStatusesRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientToken(v string) *DescribeCloudMonitorAgentStatusesRequest
+	GetClientToken() *string
+	SetInstanceIds(v string) *DescribeCloudMonitorAgentStatusesRequest
+	GetInstanceIds() *string
+	SetRegionId(v string) *DescribeCloudMonitorAgentStatusesRequest
+	GetRegionId() *string
 }
 
 type DescribeCloudMonitorAgentStatusesRequest struct {
@@ -4336,11 +7026,23 @@ type DescribeCloudMonitorAgentStatusesRequest struct {
 }
 
 func (s DescribeCloudMonitorAgentStatusesRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeCloudMonitorAgentStatusesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeCloudMonitorAgentStatusesRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *DescribeCloudMonitorAgentStatusesRequest) GetInstanceIds() *string {
+	return s.InstanceIds
+}
+
+func (s *DescribeCloudMonitorAgentStatusesRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *DescribeCloudMonitorAgentStatusesRequest) SetClientToken(v string) *DescribeCloudMonitorAgentStatusesRequest {
@@ -4358,6 +7060,20 @@ func (s *DescribeCloudMonitorAgentStatusesRequest) SetRegionId(v string) *Descri
 	return s
 }
 
+func (s *DescribeCloudMonitorAgentStatusesRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDescribeCloudMonitorAgentStatusesResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetInstanceStatusList(v []*DescribeCloudMonitorAgentStatusesResponseBodyInstanceStatusList) *DescribeCloudMonitorAgentStatusesResponseBody
+	GetInstanceStatusList() []*DescribeCloudMonitorAgentStatusesResponseBodyInstanceStatusList
+	SetRequestId(v string) *DescribeCloudMonitorAgentStatusesResponseBody
+	GetRequestId() *string
+}
+
 type DescribeCloudMonitorAgentStatusesResponseBody struct {
 	// Indicates whether the Cloud Monitor agent was automatically installed on the simple application server.
 	InstanceStatusList []*DescribeCloudMonitorAgentStatusesResponseBodyInstanceStatusList `json:"InstanceStatusList,omitempty" xml:"InstanceStatusList,omitempty" type:"Repeated"`
@@ -4370,11 +7086,19 @@ type DescribeCloudMonitorAgentStatusesResponseBody struct {
 }
 
 func (s DescribeCloudMonitorAgentStatusesResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeCloudMonitorAgentStatusesResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeCloudMonitorAgentStatusesResponseBody) GetInstanceStatusList() []*DescribeCloudMonitorAgentStatusesResponseBodyInstanceStatusList {
+	return s.InstanceStatusList
+}
+
+func (s *DescribeCloudMonitorAgentStatusesResponseBody) GetRequestId() *string {
+	return s.RequestId
 }
 
 func (s *DescribeCloudMonitorAgentStatusesResponseBody) SetInstanceStatusList(v []*DescribeCloudMonitorAgentStatusesResponseBodyInstanceStatusList) *DescribeCloudMonitorAgentStatusesResponseBody {
@@ -4385,6 +7109,10 @@ func (s *DescribeCloudMonitorAgentStatusesResponseBody) SetInstanceStatusList(v 
 func (s *DescribeCloudMonitorAgentStatusesResponseBody) SetRequestId(v string) *DescribeCloudMonitorAgentStatusesResponseBody {
 	s.RequestId = &v
 	return s
+}
+
+func (s *DescribeCloudMonitorAgentStatusesResponseBody) Validate() error {
+	return dara.Validate(s)
 }
 
 type DescribeCloudMonitorAgentStatusesResponseBodyInstanceStatusList struct {
@@ -4425,11 +7153,23 @@ type DescribeCloudMonitorAgentStatusesResponseBodyInstanceStatusList struct {
 }
 
 func (s DescribeCloudMonitorAgentStatusesResponseBodyInstanceStatusList) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeCloudMonitorAgentStatusesResponseBodyInstanceStatusList) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeCloudMonitorAgentStatusesResponseBodyInstanceStatusList) GetAutoInstall() *bool {
+	return s.AutoInstall
+}
+
+func (s *DescribeCloudMonitorAgentStatusesResponseBodyInstanceStatusList) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *DescribeCloudMonitorAgentStatusesResponseBodyInstanceStatusList) GetStatus() *string {
+	return s.Status
 }
 
 func (s *DescribeCloudMonitorAgentStatusesResponseBodyInstanceStatusList) SetAutoInstall(v bool) *DescribeCloudMonitorAgentStatusesResponseBodyInstanceStatusList {
@@ -4447,6 +7187,22 @@ func (s *DescribeCloudMonitorAgentStatusesResponseBodyInstanceStatusList) SetSta
 	return s
 }
 
+func (s *DescribeCloudMonitorAgentStatusesResponseBodyInstanceStatusList) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDescribeCloudMonitorAgentStatusesResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *DescribeCloudMonitorAgentStatusesResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *DescribeCloudMonitorAgentStatusesResponse
+	GetStatusCode() *int32
+	SetBody(v *DescribeCloudMonitorAgentStatusesResponseBody) *DescribeCloudMonitorAgentStatusesResponse
+	GetBody() *DescribeCloudMonitorAgentStatusesResponseBody
+}
+
 type DescribeCloudMonitorAgentStatusesResponse struct {
 	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -4454,11 +7210,23 @@ type DescribeCloudMonitorAgentStatusesResponse struct {
 }
 
 func (s DescribeCloudMonitorAgentStatusesResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeCloudMonitorAgentStatusesResponse) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeCloudMonitorAgentStatusesResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *DescribeCloudMonitorAgentStatusesResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *DescribeCloudMonitorAgentStatusesResponse) GetBody() *DescribeCloudMonitorAgentStatusesResponseBody {
+	return s.Body
 }
 
 func (s *DescribeCloudMonitorAgentStatusesResponse) SetHeaders(v map[string]*string) *DescribeCloudMonitorAgentStatusesResponse {
@@ -4474,6 +7242,34 @@ func (s *DescribeCloudMonitorAgentStatusesResponse) SetStatusCode(v int32) *Desc
 func (s *DescribeCloudMonitorAgentStatusesResponse) SetBody(v *DescribeCloudMonitorAgentStatusesResponseBody) *DescribeCloudMonitorAgentStatusesResponse {
 	s.Body = v
 	return s
+}
+
+func (s *DescribeCloudMonitorAgentStatusesResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDescribeCommandInvocationsRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetCommandId(v string) *DescribeCommandInvocationsRequest
+	GetCommandId() *string
+	SetCommandName(v string) *DescribeCommandInvocationsRequest
+	GetCommandName() *string
+	SetCommandType(v string) *DescribeCommandInvocationsRequest
+	GetCommandType() *string
+	SetInstanceId(v string) *DescribeCommandInvocationsRequest
+	GetInstanceId() *string
+	SetInvocationStatus(v string) *DescribeCommandInvocationsRequest
+	GetInvocationStatus() *string
+	SetInvokeId(v string) *DescribeCommandInvocationsRequest
+	GetInvokeId() *string
+	SetPageNumber(v string) *DescribeCommandInvocationsRequest
+	GetPageNumber() *string
+	SetPageSize(v string) *DescribeCommandInvocationsRequest
+	GetPageSize() *string
+	SetRegionId(v string) *DescribeCommandInvocationsRequest
+	GetRegionId() *string
 }
 
 type DescribeCommandInvocationsRequest struct {
@@ -4578,11 +7374,47 @@ type DescribeCommandInvocationsRequest struct {
 }
 
 func (s DescribeCommandInvocationsRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeCommandInvocationsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeCommandInvocationsRequest) GetCommandId() *string {
+	return s.CommandId
+}
+
+func (s *DescribeCommandInvocationsRequest) GetCommandName() *string {
+	return s.CommandName
+}
+
+func (s *DescribeCommandInvocationsRequest) GetCommandType() *string {
+	return s.CommandType
+}
+
+func (s *DescribeCommandInvocationsRequest) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *DescribeCommandInvocationsRequest) GetInvocationStatus() *string {
+	return s.InvocationStatus
+}
+
+func (s *DescribeCommandInvocationsRequest) GetInvokeId() *string {
+	return s.InvokeId
+}
+
+func (s *DescribeCommandInvocationsRequest) GetPageNumber() *string {
+	return s.PageNumber
+}
+
+func (s *DescribeCommandInvocationsRequest) GetPageSize() *string {
+	return s.PageSize
+}
+
+func (s *DescribeCommandInvocationsRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *DescribeCommandInvocationsRequest) SetCommandId(v string) *DescribeCommandInvocationsRequest {
@@ -4630,6 +7462,26 @@ func (s *DescribeCommandInvocationsRequest) SetRegionId(v string) *DescribeComma
 	return s
 }
 
+func (s *DescribeCommandInvocationsRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDescribeCommandInvocationsResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetCommandInvocations(v []*DescribeCommandInvocationsResponseBodyCommandInvocations) *DescribeCommandInvocationsResponseBody
+	GetCommandInvocations() []*DescribeCommandInvocationsResponseBodyCommandInvocations
+	SetPageNumber(v int32) *DescribeCommandInvocationsResponseBody
+	GetPageNumber() *int32
+	SetPageSize(v int32) *DescribeCommandInvocationsResponseBody
+	GetPageSize() *int32
+	SetRequestId(v string) *DescribeCommandInvocationsResponseBody
+	GetRequestId() *string
+	SetTotalCount(v int32) *DescribeCommandInvocationsResponseBody
+	GetTotalCount() *int32
+}
+
 type DescribeCommandInvocationsResponseBody struct {
 	// The command executions.
 	CommandInvocations []*DescribeCommandInvocationsResponseBodyCommandInvocations `json:"CommandInvocations,omitempty" xml:"CommandInvocations,omitempty" type:"Repeated"`
@@ -4660,11 +7512,31 @@ type DescribeCommandInvocationsResponseBody struct {
 }
 
 func (s DescribeCommandInvocationsResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeCommandInvocationsResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeCommandInvocationsResponseBody) GetCommandInvocations() []*DescribeCommandInvocationsResponseBodyCommandInvocations {
+	return s.CommandInvocations
+}
+
+func (s *DescribeCommandInvocationsResponseBody) GetPageNumber() *int32 {
+	return s.PageNumber
+}
+
+func (s *DescribeCommandInvocationsResponseBody) GetPageSize() *int32 {
+	return s.PageSize
+}
+
+func (s *DescribeCommandInvocationsResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
+func (s *DescribeCommandInvocationsResponseBody) GetTotalCount() *int32 {
+	return s.TotalCount
 }
 
 func (s *DescribeCommandInvocationsResponseBody) SetCommandInvocations(v []*DescribeCommandInvocationsResponseBodyCommandInvocations) *DescribeCommandInvocationsResponseBody {
@@ -4690,6 +7562,10 @@ func (s *DescribeCommandInvocationsResponseBody) SetRequestId(v string) *Describ
 func (s *DescribeCommandInvocationsResponseBody) SetTotalCount(v int32) *DescribeCommandInvocationsResponseBody {
 	s.TotalCount = &v
 	return s
+}
+
+func (s *DescribeCommandInvocationsResponseBody) Validate() error {
+	return dara.Validate(s)
 }
 
 type DescribeCommandInvocationsResponseBodyCommandInvocations struct {
@@ -4792,11 +7668,63 @@ type DescribeCommandInvocationsResponseBodyCommandInvocations struct {
 }
 
 func (s DescribeCommandInvocationsResponseBodyCommandInvocations) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeCommandInvocationsResponseBodyCommandInvocations) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeCommandInvocationsResponseBodyCommandInvocations) GetCommandContent() *string {
+	return s.CommandContent
+}
+
+func (s *DescribeCommandInvocationsResponseBodyCommandInvocations) GetCommandDescription() *string {
+	return s.CommandDescription
+}
+
+func (s *DescribeCommandInvocationsResponseBodyCommandInvocations) GetCommandId() *string {
+	return s.CommandId
+}
+
+func (s *DescribeCommandInvocationsResponseBodyCommandInvocations) GetCommandName() *string {
+	return s.CommandName
+}
+
+func (s *DescribeCommandInvocationsResponseBodyCommandInvocations) GetCommandType() *string {
+	return s.CommandType
+}
+
+func (s *DescribeCommandInvocationsResponseBodyCommandInvocations) GetCreationTime() *string {
+	return s.CreationTime
+}
+
+func (s *DescribeCommandInvocationsResponseBodyCommandInvocations) GetInvocationStatus() *string {
+	return s.InvocationStatus
+}
+
+func (s *DescribeCommandInvocationsResponseBodyCommandInvocations) GetInvokeId() *string {
+	return s.InvokeId
+}
+
+func (s *DescribeCommandInvocationsResponseBodyCommandInvocations) GetInvokeInstances() []*DescribeCommandInvocationsResponseBodyCommandInvocationsInvokeInstances {
+	return s.InvokeInstances
+}
+
+func (s *DescribeCommandInvocationsResponseBodyCommandInvocations) GetParameters() *string {
+	return s.Parameters
+}
+
+func (s *DescribeCommandInvocationsResponseBodyCommandInvocations) GetTimeout() *int64 {
+	return s.Timeout
+}
+
+func (s *DescribeCommandInvocationsResponseBodyCommandInvocations) GetUsername() *string {
+	return s.Username
+}
+
+func (s *DescribeCommandInvocationsResponseBodyCommandInvocations) GetWorkingDir() *string {
+	return s.WorkingDir
 }
 
 func (s *DescribeCommandInvocationsResponseBodyCommandInvocations) SetCommandContent(v string) *DescribeCommandInvocationsResponseBodyCommandInvocations {
@@ -4862,6 +7790,10 @@ func (s *DescribeCommandInvocationsResponseBodyCommandInvocations) SetUsername(v
 func (s *DescribeCommandInvocationsResponseBodyCommandInvocations) SetWorkingDir(v string) *DescribeCommandInvocationsResponseBodyCommandInvocations {
 	s.WorkingDir = &v
 	return s
+}
+
+func (s *DescribeCommandInvocationsResponseBodyCommandInvocations) Validate() error {
+	return dara.Validate(s)
 }
 
 type DescribeCommandInvocationsResponseBodyCommandInvocationsInvokeInstances struct {
@@ -5018,11 +7950,43 @@ type DescribeCommandInvocationsResponseBodyCommandInvocationsInvokeInstances str
 }
 
 func (s DescribeCommandInvocationsResponseBodyCommandInvocationsInvokeInstances) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeCommandInvocationsResponseBodyCommandInvocationsInvokeInstances) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeCommandInvocationsResponseBodyCommandInvocationsInvokeInstances) GetErrorCode() *string {
+	return s.ErrorCode
+}
+
+func (s *DescribeCommandInvocationsResponseBodyCommandInvocationsInvokeInstances) GetErrorInfo() *string {
+	return s.ErrorInfo
+}
+
+func (s *DescribeCommandInvocationsResponseBodyCommandInvocationsInvokeInstances) GetExitCode() *int64 {
+	return s.ExitCode
+}
+
+func (s *DescribeCommandInvocationsResponseBodyCommandInvocationsInvokeInstances) GetFinishTime() *string {
+	return s.FinishTime
+}
+
+func (s *DescribeCommandInvocationsResponseBodyCommandInvocationsInvokeInstances) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *DescribeCommandInvocationsResponseBodyCommandInvocationsInvokeInstances) GetInvocationStatus() *string {
+	return s.InvocationStatus
+}
+
+func (s *DescribeCommandInvocationsResponseBodyCommandInvocationsInvokeInstances) GetOutput() *string {
+	return s.Output
+}
+
+func (s *DescribeCommandInvocationsResponseBodyCommandInvocationsInvokeInstances) GetStartTime() *string {
+	return s.StartTime
 }
 
 func (s *DescribeCommandInvocationsResponseBodyCommandInvocationsInvokeInstances) SetErrorCode(v string) *DescribeCommandInvocationsResponseBodyCommandInvocationsInvokeInstances {
@@ -5065,6 +8029,22 @@ func (s *DescribeCommandInvocationsResponseBodyCommandInvocationsInvokeInstances
 	return s
 }
 
+func (s *DescribeCommandInvocationsResponseBodyCommandInvocationsInvokeInstances) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDescribeCommandInvocationsResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *DescribeCommandInvocationsResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *DescribeCommandInvocationsResponse
+	GetStatusCode() *int32
+	SetBody(v *DescribeCommandInvocationsResponseBody) *DescribeCommandInvocationsResponse
+	GetBody() *DescribeCommandInvocationsResponseBody
+}
+
 type DescribeCommandInvocationsResponse struct {
 	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -5072,11 +8052,23 @@ type DescribeCommandInvocationsResponse struct {
 }
 
 func (s DescribeCommandInvocationsResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeCommandInvocationsResponse) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeCommandInvocationsResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *DescribeCommandInvocationsResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *DescribeCommandInvocationsResponse) GetBody() *DescribeCommandInvocationsResponseBody {
+	return s.Body
 }
 
 func (s *DescribeCommandInvocationsResponse) SetHeaders(v map[string]*string) *DescribeCommandInvocationsResponse {
@@ -5092,6 +8084,34 @@ func (s *DescribeCommandInvocationsResponse) SetStatusCode(v int32) *DescribeCom
 func (s *DescribeCommandInvocationsResponse) SetBody(v *DescribeCommandInvocationsResponseBody) *DescribeCommandInvocationsResponse {
 	s.Body = v
 	return s
+}
+
+func (s *DescribeCommandInvocationsResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDescribeCommandsRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetCommandId(v string) *DescribeCommandsRequest
+	GetCommandId() *string
+	SetName(v string) *DescribeCommandsRequest
+	GetName() *string
+	SetPageNumber(v string) *DescribeCommandsRequest
+	GetPageNumber() *string
+	SetPageSize(v string) *DescribeCommandsRequest
+	GetPageSize() *string
+	SetProvider(v string) *DescribeCommandsRequest
+	GetProvider() *string
+	SetRegionId(v string) *DescribeCommandsRequest
+	GetRegionId() *string
+	SetResourceGroupId(v string) *DescribeCommandsRequest
+	GetResourceGroupId() *string
+	SetTag(v []*DescribeCommandsRequestTag) *DescribeCommandsRequest
+	GetTag() []*DescribeCommandsRequestTag
+	SetType(v string) *DescribeCommandsRequest
+	GetType() *string
 }
 
 type DescribeCommandsRequest struct {
@@ -5170,11 +8190,47 @@ type DescribeCommandsRequest struct {
 }
 
 func (s DescribeCommandsRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeCommandsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeCommandsRequest) GetCommandId() *string {
+	return s.CommandId
+}
+
+func (s *DescribeCommandsRequest) GetName() *string {
+	return s.Name
+}
+
+func (s *DescribeCommandsRequest) GetPageNumber() *string {
+	return s.PageNumber
+}
+
+func (s *DescribeCommandsRequest) GetPageSize() *string {
+	return s.PageSize
+}
+
+func (s *DescribeCommandsRequest) GetProvider() *string {
+	return s.Provider
+}
+
+func (s *DescribeCommandsRequest) GetRegionId() *string {
+	return s.RegionId
+}
+
+func (s *DescribeCommandsRequest) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
+func (s *DescribeCommandsRequest) GetTag() []*DescribeCommandsRequestTag {
+	return s.Tag
+}
+
+func (s *DescribeCommandsRequest) GetType() *string {
+	return s.Type
 }
 
 func (s *DescribeCommandsRequest) SetCommandId(v string) *DescribeCommandsRequest {
@@ -5222,6 +8278,10 @@ func (s *DescribeCommandsRequest) SetType(v string) *DescribeCommandsRequest {
 	return s
 }
 
+func (s *DescribeCommandsRequest) Validate() error {
+	return dara.Validate(s)
+}
+
 type DescribeCommandsRequestTag struct {
 	// The tag key of the command. A tag key can be 1 to 64 characters in length. Valid values of N: 1 to 20.
 	//
@@ -5238,11 +8298,19 @@ type DescribeCommandsRequestTag struct {
 }
 
 func (s DescribeCommandsRequestTag) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeCommandsRequestTag) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeCommandsRequestTag) GetKey() *string {
+	return s.Key
+}
+
+func (s *DescribeCommandsRequestTag) GetValue() *string {
+	return s.Value
 }
 
 func (s *DescribeCommandsRequestTag) SetKey(v string) *DescribeCommandsRequestTag {
@@ -5253,6 +8321,26 @@ func (s *DescribeCommandsRequestTag) SetKey(v string) *DescribeCommandsRequestTa
 func (s *DescribeCommandsRequestTag) SetValue(v string) *DescribeCommandsRequestTag {
 	s.Value = &v
 	return s
+}
+
+func (s *DescribeCommandsRequestTag) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDescribeCommandsResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetCommands(v []*DescribeCommandsResponseBodyCommands) *DescribeCommandsResponseBody
+	GetCommands() []*DescribeCommandsResponseBodyCommands
+	SetPageNumber(v int32) *DescribeCommandsResponseBody
+	GetPageNumber() *int32
+	SetPageSize(v int32) *DescribeCommandsResponseBody
+	GetPageSize() *int32
+	SetRequestId(v string) *DescribeCommandsResponseBody
+	GetRequestId() *string
+	SetTotalCount(v int32) *DescribeCommandsResponseBody
+	GetTotalCount() *int32
 }
 
 type DescribeCommandsResponseBody struct {
@@ -5285,11 +8373,31 @@ type DescribeCommandsResponseBody struct {
 }
 
 func (s DescribeCommandsResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeCommandsResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeCommandsResponseBody) GetCommands() []*DescribeCommandsResponseBodyCommands {
+	return s.Commands
+}
+
+func (s *DescribeCommandsResponseBody) GetPageNumber() *int32 {
+	return s.PageNumber
+}
+
+func (s *DescribeCommandsResponseBody) GetPageSize() *int32 {
+	return s.PageSize
+}
+
+func (s *DescribeCommandsResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
+func (s *DescribeCommandsResponseBody) GetTotalCount() *int32 {
+	return s.TotalCount
 }
 
 func (s *DescribeCommandsResponseBody) SetCommands(v []*DescribeCommandsResponseBodyCommands) *DescribeCommandsResponseBody {
@@ -5315,6 +8423,10 @@ func (s *DescribeCommandsResponseBody) SetRequestId(v string) *DescribeCommandsR
 func (s *DescribeCommandsResponseBody) SetTotalCount(v int32) *DescribeCommandsResponseBody {
 	s.TotalCount = &v
 	return s
+}
+
+func (s *DescribeCommandsResponseBody) Validate() error {
+	return dara.Validate(s)
 }
 
 type DescribeCommandsResponseBodyCommands struct {
@@ -5393,11 +8505,67 @@ type DescribeCommandsResponseBodyCommands struct {
 }
 
 func (s DescribeCommandsResponseBodyCommands) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeCommandsResponseBodyCommands) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeCommandsResponseBodyCommands) GetCommandContent() *string {
+	return s.CommandContent
+}
+
+func (s *DescribeCommandsResponseBodyCommands) GetCommandId() *string {
+	return s.CommandId
+}
+
+func (s *DescribeCommandsResponseBodyCommands) GetCreationTime() *string {
+	return s.CreationTime
+}
+
+func (s *DescribeCommandsResponseBodyCommands) GetDescription() *string {
+	return s.Description
+}
+
+func (s *DescribeCommandsResponseBodyCommands) GetEnableParameter() *bool {
+	return s.EnableParameter
+}
+
+func (s *DescribeCommandsResponseBodyCommands) GetName() *string {
+	return s.Name
+}
+
+func (s *DescribeCommandsResponseBodyCommands) GetParameterDefinitions() []*DescribeCommandsResponseBodyCommandsParameterDefinitions {
+	return s.ParameterDefinitions
+}
+
+func (s *DescribeCommandsResponseBodyCommands) GetParameterNames() []*string {
+	return s.ParameterNames
+}
+
+func (s *DescribeCommandsResponseBodyCommands) GetProvider() *string {
+	return s.Provider
+}
+
+func (s *DescribeCommandsResponseBodyCommands) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
+func (s *DescribeCommandsResponseBodyCommands) GetTags() []*DescribeCommandsResponseBodyCommandsTags {
+	return s.Tags
+}
+
+func (s *DescribeCommandsResponseBodyCommands) GetTimeout() *int64 {
+	return s.Timeout
+}
+
+func (s *DescribeCommandsResponseBodyCommands) GetType() *string {
+	return s.Type
+}
+
+func (s *DescribeCommandsResponseBodyCommands) GetWorkingDir() *string {
+	return s.WorkingDir
 }
 
 func (s *DescribeCommandsResponseBodyCommands) SetCommandContent(v string) *DescribeCommandsResponseBodyCommands {
@@ -5470,6 +8638,10 @@ func (s *DescribeCommandsResponseBodyCommands) SetWorkingDir(v string) *Describe
 	return s
 }
 
+func (s *DescribeCommandsResponseBodyCommands) Validate() error {
+	return dara.Validate(s)
+}
+
 type DescribeCommandsResponseBodyCommandsParameterDefinitions struct {
 	// The default value of the custom parameter.
 	//
@@ -5506,11 +8678,31 @@ type DescribeCommandsResponseBodyCommandsParameterDefinitions struct {
 }
 
 func (s DescribeCommandsResponseBodyCommandsParameterDefinitions) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeCommandsResponseBodyCommandsParameterDefinitions) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeCommandsResponseBodyCommandsParameterDefinitions) GetDefaultValue() *string {
+	return s.DefaultValue
+}
+
+func (s *DescribeCommandsResponseBodyCommandsParameterDefinitions) GetDescription() *string {
+	return s.Description
+}
+
+func (s *DescribeCommandsResponseBodyCommandsParameterDefinitions) GetParameterName() *string {
+	return s.ParameterName
+}
+
+func (s *DescribeCommandsResponseBodyCommandsParameterDefinitions) GetPossibleValues() []*string {
+	return s.PossibleValues
+}
+
+func (s *DescribeCommandsResponseBodyCommandsParameterDefinitions) GetRequired() *bool {
+	return s.Required
 }
 
 func (s *DescribeCommandsResponseBodyCommandsParameterDefinitions) SetDefaultValue(v string) *DescribeCommandsResponseBodyCommandsParameterDefinitions {
@@ -5538,6 +8730,10 @@ func (s *DescribeCommandsResponseBodyCommandsParameterDefinitions) SetRequired(v
 	return s
 }
 
+func (s *DescribeCommandsResponseBodyCommandsParameterDefinitions) Validate() error {
+	return dara.Validate(s)
+}
+
 type DescribeCommandsResponseBodyCommandsTags struct {
 	// The tag key of the command.
 	//
@@ -5554,11 +8750,19 @@ type DescribeCommandsResponseBodyCommandsTags struct {
 }
 
 func (s DescribeCommandsResponseBodyCommandsTags) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeCommandsResponseBodyCommandsTags) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeCommandsResponseBodyCommandsTags) GetKey() *string {
+	return s.Key
+}
+
+func (s *DescribeCommandsResponseBodyCommandsTags) GetValue() *string {
+	return s.Value
 }
 
 func (s *DescribeCommandsResponseBodyCommandsTags) SetKey(v string) *DescribeCommandsResponseBodyCommandsTags {
@@ -5571,6 +8775,22 @@ func (s *DescribeCommandsResponseBodyCommandsTags) SetValue(v string) *DescribeC
 	return s
 }
 
+func (s *DescribeCommandsResponseBodyCommandsTags) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDescribeCommandsResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *DescribeCommandsResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *DescribeCommandsResponse
+	GetStatusCode() *int32
+	SetBody(v *DescribeCommandsResponseBody) *DescribeCommandsResponse
+	GetBody() *DescribeCommandsResponseBody
+}
+
 type DescribeCommandsResponse struct {
 	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -5578,11 +8798,23 @@ type DescribeCommandsResponse struct {
 }
 
 func (s DescribeCommandsResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeCommandsResponse) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeCommandsResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *DescribeCommandsResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *DescribeCommandsResponse) GetBody() *DescribeCommandsResponseBody {
+	return s.Body
 }
 
 func (s *DescribeCommandsResponse) SetHeaders(v map[string]*string) *DescribeCommandsResponse {
@@ -5598,6 +8830,28 @@ func (s *DescribeCommandsResponse) SetStatusCode(v int32) *DescribeCommandsRespo
 func (s *DescribeCommandsResponse) SetBody(v *DescribeCommandsResponseBody) *DescribeCommandsResponse {
 	s.Body = v
 	return s
+}
+
+func (s *DescribeCommandsResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDescribeDatabaseErrorLogsRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetDatabaseInstanceId(v string) *DescribeDatabaseErrorLogsRequest
+	GetDatabaseInstanceId() *string
+	SetEndTime(v string) *DescribeDatabaseErrorLogsRequest
+	GetEndTime() *string
+	SetPageNumber(v int32) *DescribeDatabaseErrorLogsRequest
+	GetPageNumber() *int32
+	SetPageSize(v int32) *DescribeDatabaseErrorLogsRequest
+	GetPageSize() *int32
+	SetRegionId(v string) *DescribeDatabaseErrorLogsRequest
+	GetRegionId() *string
+	SetStartTime(v string) *DescribeDatabaseErrorLogsRequest
+	GetStartTime() *string
 }
 
 type DescribeDatabaseErrorLogsRequest struct {
@@ -5654,11 +8908,35 @@ type DescribeDatabaseErrorLogsRequest struct {
 }
 
 func (s DescribeDatabaseErrorLogsRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeDatabaseErrorLogsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDatabaseErrorLogsRequest) GetDatabaseInstanceId() *string {
+	return s.DatabaseInstanceId
+}
+
+func (s *DescribeDatabaseErrorLogsRequest) GetEndTime() *string {
+	return s.EndTime
+}
+
+func (s *DescribeDatabaseErrorLogsRequest) GetPageNumber() *int32 {
+	return s.PageNumber
+}
+
+func (s *DescribeDatabaseErrorLogsRequest) GetPageSize() *int32 {
+	return s.PageSize
+}
+
+func (s *DescribeDatabaseErrorLogsRequest) GetRegionId() *string {
+	return s.RegionId
+}
+
+func (s *DescribeDatabaseErrorLogsRequest) GetStartTime() *string {
+	return s.StartTime
 }
 
 func (s *DescribeDatabaseErrorLogsRequest) SetDatabaseInstanceId(v string) *DescribeDatabaseErrorLogsRequest {
@@ -5689,6 +8967,26 @@ func (s *DescribeDatabaseErrorLogsRequest) SetRegionId(v string) *DescribeDataba
 func (s *DescribeDatabaseErrorLogsRequest) SetStartTime(v string) *DescribeDatabaseErrorLogsRequest {
 	s.StartTime = &v
 	return s
+}
+
+func (s *DescribeDatabaseErrorLogsRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDescribeDatabaseErrorLogsResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetErrorLogs(v []*DescribeDatabaseErrorLogsResponseBodyErrorLogs) *DescribeDatabaseErrorLogsResponseBody
+	GetErrorLogs() []*DescribeDatabaseErrorLogsResponseBodyErrorLogs
+	SetPageNumber(v int32) *DescribeDatabaseErrorLogsResponseBody
+	GetPageNumber() *int32
+	SetPageSize(v int32) *DescribeDatabaseErrorLogsResponseBody
+	GetPageSize() *int32
+	SetRequestId(v string) *DescribeDatabaseErrorLogsResponseBody
+	GetRequestId() *string
+	SetTotalCount(v int32) *DescribeDatabaseErrorLogsResponseBody
+	GetTotalCount() *int32
 }
 
 type DescribeDatabaseErrorLogsResponseBody struct {
@@ -5723,11 +9021,31 @@ type DescribeDatabaseErrorLogsResponseBody struct {
 }
 
 func (s DescribeDatabaseErrorLogsResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeDatabaseErrorLogsResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDatabaseErrorLogsResponseBody) GetErrorLogs() []*DescribeDatabaseErrorLogsResponseBodyErrorLogs {
+	return s.ErrorLogs
+}
+
+func (s *DescribeDatabaseErrorLogsResponseBody) GetPageNumber() *int32 {
+	return s.PageNumber
+}
+
+func (s *DescribeDatabaseErrorLogsResponseBody) GetPageSize() *int32 {
+	return s.PageSize
+}
+
+func (s *DescribeDatabaseErrorLogsResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
+func (s *DescribeDatabaseErrorLogsResponseBody) GetTotalCount() *int32 {
+	return s.TotalCount
 }
 
 func (s *DescribeDatabaseErrorLogsResponseBody) SetErrorLogs(v []*DescribeDatabaseErrorLogsResponseBodyErrorLogs) *DescribeDatabaseErrorLogsResponseBody {
@@ -5755,6 +9073,10 @@ func (s *DescribeDatabaseErrorLogsResponseBody) SetTotalCount(v int32) *Describe
 	return s
 }
 
+func (s *DescribeDatabaseErrorLogsResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
 type DescribeDatabaseErrorLogsResponseBodyErrorLogs struct {
 	// The time when the resource was created. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
 	//
@@ -5771,11 +9093,19 @@ type DescribeDatabaseErrorLogsResponseBodyErrorLogs struct {
 }
 
 func (s DescribeDatabaseErrorLogsResponseBodyErrorLogs) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeDatabaseErrorLogsResponseBodyErrorLogs) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDatabaseErrorLogsResponseBodyErrorLogs) GetCreateTime() *string {
+	return s.CreateTime
+}
+
+func (s *DescribeDatabaseErrorLogsResponseBodyErrorLogs) GetErrorInfo() *string {
+	return s.ErrorInfo
 }
 
 func (s *DescribeDatabaseErrorLogsResponseBodyErrorLogs) SetCreateTime(v string) *DescribeDatabaseErrorLogsResponseBodyErrorLogs {
@@ -5788,6 +9118,22 @@ func (s *DescribeDatabaseErrorLogsResponseBodyErrorLogs) SetErrorInfo(v string) 
 	return s
 }
 
+func (s *DescribeDatabaseErrorLogsResponseBodyErrorLogs) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDescribeDatabaseErrorLogsResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *DescribeDatabaseErrorLogsResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *DescribeDatabaseErrorLogsResponse
+	GetStatusCode() *int32
+	SetBody(v *DescribeDatabaseErrorLogsResponseBody) *DescribeDatabaseErrorLogsResponse
+	GetBody() *DescribeDatabaseErrorLogsResponseBody
+}
+
 type DescribeDatabaseErrorLogsResponse struct {
 	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -5795,11 +9141,23 @@ type DescribeDatabaseErrorLogsResponse struct {
 }
 
 func (s DescribeDatabaseErrorLogsResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeDatabaseErrorLogsResponse) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDatabaseErrorLogsResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *DescribeDatabaseErrorLogsResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *DescribeDatabaseErrorLogsResponse) GetBody() *DescribeDatabaseErrorLogsResponseBody {
+	return s.Body
 }
 
 func (s *DescribeDatabaseErrorLogsResponse) SetHeaders(v map[string]*string) *DescribeDatabaseErrorLogsResponse {
@@ -5815,6 +9173,26 @@ func (s *DescribeDatabaseErrorLogsResponse) SetStatusCode(v int32) *DescribeData
 func (s *DescribeDatabaseErrorLogsResponse) SetBody(v *DescribeDatabaseErrorLogsResponseBody) *DescribeDatabaseErrorLogsResponse {
 	s.Body = v
 	return s
+}
+
+func (s *DescribeDatabaseErrorLogsResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDescribeDatabaseInstanceMetricDataRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetDatabaseInstanceId(v string) *DescribeDatabaseInstanceMetricDataRequest
+	GetDatabaseInstanceId() *string
+	SetEndTime(v string) *DescribeDatabaseInstanceMetricDataRequest
+	GetEndTime() *string
+	SetMetricName(v string) *DescribeDatabaseInstanceMetricDataRequest
+	GetMetricName() *string
+	SetRegionId(v string) *DescribeDatabaseInstanceMetricDataRequest
+	GetRegionId() *string
+	SetStartTime(v string) *DescribeDatabaseInstanceMetricDataRequest
+	GetStartTime() *string
 }
 
 type DescribeDatabaseInstanceMetricDataRequest struct {
@@ -5873,11 +9251,31 @@ type DescribeDatabaseInstanceMetricDataRequest struct {
 }
 
 func (s DescribeDatabaseInstanceMetricDataRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeDatabaseInstanceMetricDataRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDatabaseInstanceMetricDataRequest) GetDatabaseInstanceId() *string {
+	return s.DatabaseInstanceId
+}
+
+func (s *DescribeDatabaseInstanceMetricDataRequest) GetEndTime() *string {
+	return s.EndTime
+}
+
+func (s *DescribeDatabaseInstanceMetricDataRequest) GetMetricName() *string {
+	return s.MetricName
+}
+
+func (s *DescribeDatabaseInstanceMetricDataRequest) GetRegionId() *string {
+	return s.RegionId
+}
+
+func (s *DescribeDatabaseInstanceMetricDataRequest) GetStartTime() *string {
+	return s.StartTime
 }
 
 func (s *DescribeDatabaseInstanceMetricDataRequest) SetDatabaseInstanceId(v string) *DescribeDatabaseInstanceMetricDataRequest {
@@ -5903,6 +9301,26 @@ func (s *DescribeDatabaseInstanceMetricDataRequest) SetRegionId(v string) *Descr
 func (s *DescribeDatabaseInstanceMetricDataRequest) SetStartTime(v string) *DescribeDatabaseInstanceMetricDataRequest {
 	s.StartTime = &v
 	return s
+}
+
+func (s *DescribeDatabaseInstanceMetricDataRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDescribeDatabaseInstanceMetricDataResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetDataFormat(v string) *DescribeDatabaseInstanceMetricDataResponseBody
+	GetDataFormat() *string
+	SetMetricData(v string) *DescribeDatabaseInstanceMetricDataResponseBody
+	GetMetricData() *string
+	SetMetricName(v string) *DescribeDatabaseInstanceMetricDataResponseBody
+	GetMetricName() *string
+	SetRequestId(v string) *DescribeDatabaseInstanceMetricDataResponseBody
+	GetRequestId() *string
+	SetUnit(v string) *DescribeDatabaseInstanceMetricDataResponseBody
+	GetUnit() *string
 }
 
 type DescribeDatabaseInstanceMetricDataResponseBody struct {
@@ -5961,11 +9379,31 @@ type DescribeDatabaseInstanceMetricDataResponseBody struct {
 }
 
 func (s DescribeDatabaseInstanceMetricDataResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeDatabaseInstanceMetricDataResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDatabaseInstanceMetricDataResponseBody) GetDataFormat() *string {
+	return s.DataFormat
+}
+
+func (s *DescribeDatabaseInstanceMetricDataResponseBody) GetMetricData() *string {
+	return s.MetricData
+}
+
+func (s *DescribeDatabaseInstanceMetricDataResponseBody) GetMetricName() *string {
+	return s.MetricName
+}
+
+func (s *DescribeDatabaseInstanceMetricDataResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
+func (s *DescribeDatabaseInstanceMetricDataResponseBody) GetUnit() *string {
+	return s.Unit
 }
 
 func (s *DescribeDatabaseInstanceMetricDataResponseBody) SetDataFormat(v string) *DescribeDatabaseInstanceMetricDataResponseBody {
@@ -5993,6 +9431,22 @@ func (s *DescribeDatabaseInstanceMetricDataResponseBody) SetUnit(v string) *Desc
 	return s
 }
 
+func (s *DescribeDatabaseInstanceMetricDataResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDescribeDatabaseInstanceMetricDataResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *DescribeDatabaseInstanceMetricDataResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *DescribeDatabaseInstanceMetricDataResponse
+	GetStatusCode() *int32
+	SetBody(v *DescribeDatabaseInstanceMetricDataResponseBody) *DescribeDatabaseInstanceMetricDataResponse
+	GetBody() *DescribeDatabaseInstanceMetricDataResponseBody
+}
+
 type DescribeDatabaseInstanceMetricDataResponse struct {
 	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -6000,11 +9454,23 @@ type DescribeDatabaseInstanceMetricDataResponse struct {
 }
 
 func (s DescribeDatabaseInstanceMetricDataResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeDatabaseInstanceMetricDataResponse) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDatabaseInstanceMetricDataResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *DescribeDatabaseInstanceMetricDataResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *DescribeDatabaseInstanceMetricDataResponse) GetBody() *DescribeDatabaseInstanceMetricDataResponseBody {
+	return s.Body
 }
 
 func (s *DescribeDatabaseInstanceMetricDataResponse) SetHeaders(v map[string]*string) *DescribeDatabaseInstanceMetricDataResponse {
@@ -6020,6 +9486,20 @@ func (s *DescribeDatabaseInstanceMetricDataResponse) SetStatusCode(v int32) *Des
 func (s *DescribeDatabaseInstanceMetricDataResponse) SetBody(v *DescribeDatabaseInstanceMetricDataResponseBody) *DescribeDatabaseInstanceMetricDataResponse {
 	s.Body = v
 	return s
+}
+
+func (s *DescribeDatabaseInstanceMetricDataResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDescribeDatabaseInstanceParametersRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetDatabaseInstanceId(v string) *DescribeDatabaseInstanceParametersRequest
+	GetDatabaseInstanceId() *string
+	SetRegionId(v string) *DescribeDatabaseInstanceParametersRequest
+	GetRegionId() *string
 }
 
 type DescribeDatabaseInstanceParametersRequest struct {
@@ -6042,11 +9522,19 @@ type DescribeDatabaseInstanceParametersRequest struct {
 }
 
 func (s DescribeDatabaseInstanceParametersRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeDatabaseInstanceParametersRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDatabaseInstanceParametersRequest) GetDatabaseInstanceId() *string {
+	return s.DatabaseInstanceId
+}
+
+func (s *DescribeDatabaseInstanceParametersRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *DescribeDatabaseInstanceParametersRequest) SetDatabaseInstanceId(v string) *DescribeDatabaseInstanceParametersRequest {
@@ -6057,6 +9545,26 @@ func (s *DescribeDatabaseInstanceParametersRequest) SetDatabaseInstanceId(v stri
 func (s *DescribeDatabaseInstanceParametersRequest) SetRegionId(v string) *DescribeDatabaseInstanceParametersRequest {
 	s.RegionId = &v
 	return s
+}
+
+func (s *DescribeDatabaseInstanceParametersRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDescribeDatabaseInstanceParametersResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetConfigParameters(v []*DescribeDatabaseInstanceParametersResponseBodyConfigParameters) *DescribeDatabaseInstanceParametersResponseBody
+	GetConfigParameters() []*DescribeDatabaseInstanceParametersResponseBodyConfigParameters
+	SetEngine(v string) *DescribeDatabaseInstanceParametersResponseBody
+	GetEngine() *string
+	SetEngineVersion(v string) *DescribeDatabaseInstanceParametersResponseBody
+	GetEngineVersion() *string
+	SetRequestId(v string) *DescribeDatabaseInstanceParametersResponseBody
+	GetRequestId() *string
+	SetRunningParameters(v []*DescribeDatabaseInstanceParametersResponseBodyRunningParameters) *DescribeDatabaseInstanceParametersResponseBody
+	GetRunningParameters() []*DescribeDatabaseInstanceParametersResponseBodyRunningParameters
 }
 
 type DescribeDatabaseInstanceParametersResponseBody struct {
@@ -6093,11 +9601,31 @@ type DescribeDatabaseInstanceParametersResponseBody struct {
 }
 
 func (s DescribeDatabaseInstanceParametersResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeDatabaseInstanceParametersResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDatabaseInstanceParametersResponseBody) GetConfigParameters() []*DescribeDatabaseInstanceParametersResponseBodyConfigParameters {
+	return s.ConfigParameters
+}
+
+func (s *DescribeDatabaseInstanceParametersResponseBody) GetEngine() *string {
+	return s.Engine
+}
+
+func (s *DescribeDatabaseInstanceParametersResponseBody) GetEngineVersion() *string {
+	return s.EngineVersion
+}
+
+func (s *DescribeDatabaseInstanceParametersResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
+func (s *DescribeDatabaseInstanceParametersResponseBody) GetRunningParameters() []*DescribeDatabaseInstanceParametersResponseBodyRunningParameters {
+	return s.RunningParameters
 }
 
 func (s *DescribeDatabaseInstanceParametersResponseBody) SetConfigParameters(v []*DescribeDatabaseInstanceParametersResponseBodyConfigParameters) *DescribeDatabaseInstanceParametersResponseBody {
@@ -6123,6 +9651,10 @@ func (s *DescribeDatabaseInstanceParametersResponseBody) SetRequestId(v string) 
 func (s *DescribeDatabaseInstanceParametersResponseBody) SetRunningParameters(v []*DescribeDatabaseInstanceParametersResponseBodyRunningParameters) *DescribeDatabaseInstanceParametersResponseBody {
 	s.RunningParameters = v
 	return s
+}
+
+func (s *DescribeDatabaseInstanceParametersResponseBody) Validate() error {
+	return dara.Validate(s)
 }
 
 type DescribeDatabaseInstanceParametersResponseBodyConfigParameters struct {
@@ -6175,11 +9707,35 @@ type DescribeDatabaseInstanceParametersResponseBodyConfigParameters struct {
 }
 
 func (s DescribeDatabaseInstanceParametersResponseBodyConfigParameters) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeDatabaseInstanceParametersResponseBodyConfigParameters) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDatabaseInstanceParametersResponseBodyConfigParameters) GetCheckingCode() *string {
+	return s.CheckingCode
+}
+
+func (s *DescribeDatabaseInstanceParametersResponseBodyConfigParameters) GetForceModify() *string {
+	return s.ForceModify
+}
+
+func (s *DescribeDatabaseInstanceParametersResponseBodyConfigParameters) GetForceRestart() *string {
+	return s.ForceRestart
+}
+
+func (s *DescribeDatabaseInstanceParametersResponseBodyConfigParameters) GetParameterDescription() *string {
+	return s.ParameterDescription
+}
+
+func (s *DescribeDatabaseInstanceParametersResponseBodyConfigParameters) GetParameterName() *string {
+	return s.ParameterName
+}
+
+func (s *DescribeDatabaseInstanceParametersResponseBodyConfigParameters) GetParameterValue() *string {
+	return s.ParameterValue
 }
 
 func (s *DescribeDatabaseInstanceParametersResponseBodyConfigParameters) SetCheckingCode(v string) *DescribeDatabaseInstanceParametersResponseBodyConfigParameters {
@@ -6210,6 +9766,10 @@ func (s *DescribeDatabaseInstanceParametersResponseBodyConfigParameters) SetPara
 func (s *DescribeDatabaseInstanceParametersResponseBodyConfigParameters) SetParameterValue(v string) *DescribeDatabaseInstanceParametersResponseBodyConfigParameters {
 	s.ParameterValue = &v
 	return s
+}
+
+func (s *DescribeDatabaseInstanceParametersResponseBodyConfigParameters) Validate() error {
+	return dara.Validate(s)
 }
 
 type DescribeDatabaseInstanceParametersResponseBodyRunningParameters struct {
@@ -6262,11 +9822,35 @@ type DescribeDatabaseInstanceParametersResponseBodyRunningParameters struct {
 }
 
 func (s DescribeDatabaseInstanceParametersResponseBodyRunningParameters) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeDatabaseInstanceParametersResponseBodyRunningParameters) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDatabaseInstanceParametersResponseBodyRunningParameters) GetCheckingCode() *string {
+	return s.CheckingCode
+}
+
+func (s *DescribeDatabaseInstanceParametersResponseBodyRunningParameters) GetForceModify() *string {
+	return s.ForceModify
+}
+
+func (s *DescribeDatabaseInstanceParametersResponseBodyRunningParameters) GetForceRestart() *string {
+	return s.ForceRestart
+}
+
+func (s *DescribeDatabaseInstanceParametersResponseBodyRunningParameters) GetParameterDescription() *string {
+	return s.ParameterDescription
+}
+
+func (s *DescribeDatabaseInstanceParametersResponseBodyRunningParameters) GetParameterName() *string {
+	return s.ParameterName
+}
+
+func (s *DescribeDatabaseInstanceParametersResponseBodyRunningParameters) GetParameterValue() *string {
+	return s.ParameterValue
 }
 
 func (s *DescribeDatabaseInstanceParametersResponseBodyRunningParameters) SetCheckingCode(v string) *DescribeDatabaseInstanceParametersResponseBodyRunningParameters {
@@ -6299,6 +9883,22 @@ func (s *DescribeDatabaseInstanceParametersResponseBodyRunningParameters) SetPar
 	return s
 }
 
+func (s *DescribeDatabaseInstanceParametersResponseBodyRunningParameters) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDescribeDatabaseInstanceParametersResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *DescribeDatabaseInstanceParametersResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *DescribeDatabaseInstanceParametersResponse
+	GetStatusCode() *int32
+	SetBody(v *DescribeDatabaseInstanceParametersResponseBody) *DescribeDatabaseInstanceParametersResponse
+	GetBody() *DescribeDatabaseInstanceParametersResponseBody
+}
+
 type DescribeDatabaseInstanceParametersResponse struct {
 	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -6306,11 +9906,23 @@ type DescribeDatabaseInstanceParametersResponse struct {
 }
 
 func (s DescribeDatabaseInstanceParametersResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeDatabaseInstanceParametersResponse) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDatabaseInstanceParametersResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *DescribeDatabaseInstanceParametersResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *DescribeDatabaseInstanceParametersResponse) GetBody() *DescribeDatabaseInstanceParametersResponseBody {
+	return s.Body
 }
 
 func (s *DescribeDatabaseInstanceParametersResponse) SetHeaders(v map[string]*string) *DescribeDatabaseInstanceParametersResponse {
@@ -6326,6 +9938,24 @@ func (s *DescribeDatabaseInstanceParametersResponse) SetStatusCode(v int32) *Des
 func (s *DescribeDatabaseInstanceParametersResponse) SetBody(v *DescribeDatabaseInstanceParametersResponseBody) *DescribeDatabaseInstanceParametersResponse {
 	s.Body = v
 	return s
+}
+
+func (s *DescribeDatabaseInstanceParametersResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDescribeDatabaseInstancesRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetDatabaseInstanceIds(v string) *DescribeDatabaseInstancesRequest
+	GetDatabaseInstanceIds() *string
+	SetPageNumber(v int32) *DescribeDatabaseInstancesRequest
+	GetPageNumber() *int32
+	SetPageSize(v int32) *DescribeDatabaseInstancesRequest
+	GetPageSize() *int32
+	SetRegionId(v string) *DescribeDatabaseInstancesRequest
+	GetRegionId() *string
 }
 
 type DescribeDatabaseInstancesRequest struct {
@@ -6366,11 +9996,27 @@ type DescribeDatabaseInstancesRequest struct {
 }
 
 func (s DescribeDatabaseInstancesRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeDatabaseInstancesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDatabaseInstancesRequest) GetDatabaseInstanceIds() *string {
+	return s.DatabaseInstanceIds
+}
+
+func (s *DescribeDatabaseInstancesRequest) GetPageNumber() *int32 {
+	return s.PageNumber
+}
+
+func (s *DescribeDatabaseInstancesRequest) GetPageSize() *int32 {
+	return s.PageSize
+}
+
+func (s *DescribeDatabaseInstancesRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *DescribeDatabaseInstancesRequest) SetDatabaseInstanceIds(v string) *DescribeDatabaseInstancesRequest {
@@ -6391,6 +10037,26 @@ func (s *DescribeDatabaseInstancesRequest) SetPageSize(v int32) *DescribeDatabas
 func (s *DescribeDatabaseInstancesRequest) SetRegionId(v string) *DescribeDatabaseInstancesRequest {
 	s.RegionId = &v
 	return s
+}
+
+func (s *DescribeDatabaseInstancesRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDescribeDatabaseInstancesResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetDatabaseInstances(v []*DescribeDatabaseInstancesResponseBodyDatabaseInstances) *DescribeDatabaseInstancesResponseBody
+	GetDatabaseInstances() []*DescribeDatabaseInstancesResponseBodyDatabaseInstances
+	SetPageNumber(v int32) *DescribeDatabaseInstancesResponseBody
+	GetPageNumber() *int32
+	SetPageSize(v int32) *DescribeDatabaseInstancesResponseBody
+	GetPageSize() *int32
+	SetRequestId(v string) *DescribeDatabaseInstancesResponseBody
+	GetRequestId() *string
+	SetTotalCount(v int32) *DescribeDatabaseInstancesResponseBody
+	GetTotalCount() *int32
 }
 
 type DescribeDatabaseInstancesResponseBody struct {
@@ -6423,11 +10089,31 @@ type DescribeDatabaseInstancesResponseBody struct {
 }
 
 func (s DescribeDatabaseInstancesResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeDatabaseInstancesResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDatabaseInstancesResponseBody) GetDatabaseInstances() []*DescribeDatabaseInstancesResponseBodyDatabaseInstances {
+	return s.DatabaseInstances
+}
+
+func (s *DescribeDatabaseInstancesResponseBody) GetPageNumber() *int32 {
+	return s.PageNumber
+}
+
+func (s *DescribeDatabaseInstancesResponseBody) GetPageSize() *int32 {
+	return s.PageSize
+}
+
+func (s *DescribeDatabaseInstancesResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
+func (s *DescribeDatabaseInstancesResponseBody) GetTotalCount() *int32 {
+	return s.TotalCount
 }
 
 func (s *DescribeDatabaseInstancesResponseBody) SetDatabaseInstances(v []*DescribeDatabaseInstancesResponseBodyDatabaseInstances) *DescribeDatabaseInstancesResponseBody {
@@ -6453,6 +10139,10 @@ func (s *DescribeDatabaseInstancesResponseBody) SetRequestId(v string) *Describe
 func (s *DescribeDatabaseInstancesResponseBody) SetTotalCount(v int32) *DescribeDatabaseInstancesResponseBody {
 	s.TotalCount = &v
 	return s
+}
+
+func (s *DescribeDatabaseInstancesResponseBody) Validate() error {
+	return dara.Validate(s)
 }
 
 type DescribeDatabaseInstancesResponseBodyDatabaseInstances struct {
@@ -6589,11 +10279,75 @@ type DescribeDatabaseInstancesResponseBodyDatabaseInstances struct {
 }
 
 func (s DescribeDatabaseInstancesResponseBodyDatabaseInstances) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeDatabaseInstancesResponseBodyDatabaseInstances) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDatabaseInstancesResponseBodyDatabaseInstances) GetBusinessStatus() *string {
+	return s.BusinessStatus
+}
+
+func (s *DescribeDatabaseInstancesResponseBodyDatabaseInstances) GetChargeType() *string {
+	return s.ChargeType
+}
+
+func (s *DescribeDatabaseInstancesResponseBodyDatabaseInstances) GetCpu() *string {
+	return s.Cpu
+}
+
+func (s *DescribeDatabaseInstancesResponseBodyDatabaseInstances) GetCreationTime() *string {
+	return s.CreationTime
+}
+
+func (s *DescribeDatabaseInstancesResponseBodyDatabaseInstances) GetDatabaseInstanceEdition() *string {
+	return s.DatabaseInstanceEdition
+}
+
+func (s *DescribeDatabaseInstancesResponseBodyDatabaseInstances) GetDatabaseInstanceId() *string {
+	return s.DatabaseInstanceId
+}
+
+func (s *DescribeDatabaseInstancesResponseBodyDatabaseInstances) GetDatabaseInstanceName() *string {
+	return s.DatabaseInstanceName
+}
+
+func (s *DescribeDatabaseInstancesResponseBodyDatabaseInstances) GetDatabaseInstanceStatus() *string {
+	return s.DatabaseInstanceStatus
+}
+
+func (s *DescribeDatabaseInstancesResponseBodyDatabaseInstances) GetDatabaseVersion() *string {
+	return s.DatabaseVersion
+}
+
+func (s *DescribeDatabaseInstancesResponseBodyDatabaseInstances) GetExpiredTime() *string {
+	return s.ExpiredTime
+}
+
+func (s *DescribeDatabaseInstancesResponseBodyDatabaseInstances) GetMemory() *string {
+	return s.Memory
+}
+
+func (s *DescribeDatabaseInstancesResponseBodyDatabaseInstances) GetPrivateConnection() *string {
+	return s.PrivateConnection
+}
+
+func (s *DescribeDatabaseInstancesResponseBodyDatabaseInstances) GetPublicConnection() *string {
+	return s.PublicConnection
+}
+
+func (s *DescribeDatabaseInstancesResponseBodyDatabaseInstances) GetRegionId() *string {
+	return s.RegionId
+}
+
+func (s *DescribeDatabaseInstancesResponseBodyDatabaseInstances) GetStorage() *int32 {
+	return s.Storage
+}
+
+func (s *DescribeDatabaseInstancesResponseBodyDatabaseInstances) GetSuperAccountName() *string {
+	return s.SuperAccountName
 }
 
 func (s *DescribeDatabaseInstancesResponseBodyDatabaseInstances) SetBusinessStatus(v string) *DescribeDatabaseInstancesResponseBodyDatabaseInstances {
@@ -6676,6 +10430,22 @@ func (s *DescribeDatabaseInstancesResponseBodyDatabaseInstances) SetSuperAccount
 	return s
 }
 
+func (s *DescribeDatabaseInstancesResponseBodyDatabaseInstances) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDescribeDatabaseInstancesResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *DescribeDatabaseInstancesResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *DescribeDatabaseInstancesResponse
+	GetStatusCode() *int32
+	SetBody(v *DescribeDatabaseInstancesResponseBody) *DescribeDatabaseInstancesResponse
+	GetBody() *DescribeDatabaseInstancesResponseBody
+}
+
 type DescribeDatabaseInstancesResponse struct {
 	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -6683,11 +10453,23 @@ type DescribeDatabaseInstancesResponse struct {
 }
 
 func (s DescribeDatabaseInstancesResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeDatabaseInstancesResponse) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDatabaseInstancesResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *DescribeDatabaseInstancesResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *DescribeDatabaseInstancesResponse) GetBody() *DescribeDatabaseInstancesResponseBody {
+	return s.Body
 }
 
 func (s *DescribeDatabaseInstancesResponse) SetHeaders(v map[string]*string) *DescribeDatabaseInstancesResponse {
@@ -6703,6 +10485,28 @@ func (s *DescribeDatabaseInstancesResponse) SetStatusCode(v int32) *DescribeData
 func (s *DescribeDatabaseInstancesResponse) SetBody(v *DescribeDatabaseInstancesResponseBody) *DescribeDatabaseInstancesResponse {
 	s.Body = v
 	return s
+}
+
+func (s *DescribeDatabaseInstancesResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDescribeDatabaseSlowLogRecordsRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetDatabaseInstanceId(v string) *DescribeDatabaseSlowLogRecordsRequest
+	GetDatabaseInstanceId() *string
+	SetEndTime(v string) *DescribeDatabaseSlowLogRecordsRequest
+	GetEndTime() *string
+	SetPageNumber(v int32) *DescribeDatabaseSlowLogRecordsRequest
+	GetPageNumber() *int32
+	SetPageSize(v int32) *DescribeDatabaseSlowLogRecordsRequest
+	GetPageSize() *int32
+	SetRegionId(v string) *DescribeDatabaseSlowLogRecordsRequest
+	GetRegionId() *string
+	SetStartTime(v string) *DescribeDatabaseSlowLogRecordsRequest
+	GetStartTime() *string
 }
 
 type DescribeDatabaseSlowLogRecordsRequest struct {
@@ -6769,11 +10573,35 @@ type DescribeDatabaseSlowLogRecordsRequest struct {
 }
 
 func (s DescribeDatabaseSlowLogRecordsRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeDatabaseSlowLogRecordsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDatabaseSlowLogRecordsRequest) GetDatabaseInstanceId() *string {
+	return s.DatabaseInstanceId
+}
+
+func (s *DescribeDatabaseSlowLogRecordsRequest) GetEndTime() *string {
+	return s.EndTime
+}
+
+func (s *DescribeDatabaseSlowLogRecordsRequest) GetPageNumber() *int32 {
+	return s.PageNumber
+}
+
+func (s *DescribeDatabaseSlowLogRecordsRequest) GetPageSize() *int32 {
+	return s.PageSize
+}
+
+func (s *DescribeDatabaseSlowLogRecordsRequest) GetRegionId() *string {
+	return s.RegionId
+}
+
+func (s *DescribeDatabaseSlowLogRecordsRequest) GetStartTime() *string {
+	return s.StartTime
 }
 
 func (s *DescribeDatabaseSlowLogRecordsRequest) SetDatabaseInstanceId(v string) *DescribeDatabaseSlowLogRecordsRequest {
@@ -6804,6 +10632,30 @@ func (s *DescribeDatabaseSlowLogRecordsRequest) SetRegionId(v string) *DescribeD
 func (s *DescribeDatabaseSlowLogRecordsRequest) SetStartTime(v string) *DescribeDatabaseSlowLogRecordsRequest {
 	s.StartTime = &v
 	return s
+}
+
+func (s *DescribeDatabaseSlowLogRecordsRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDescribeDatabaseSlowLogRecordsResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetEngine(v string) *DescribeDatabaseSlowLogRecordsResponseBody
+	GetEngine() *string
+	SetPageNumber(v int32) *DescribeDatabaseSlowLogRecordsResponseBody
+	GetPageNumber() *int32
+	SetPageSize(v int32) *DescribeDatabaseSlowLogRecordsResponseBody
+	GetPageSize() *int32
+	SetPhysicalIORead(v int64) *DescribeDatabaseSlowLogRecordsResponseBody
+	GetPhysicalIORead() *int64
+	SetRequestId(v string) *DescribeDatabaseSlowLogRecordsResponseBody
+	GetRequestId() *string
+	SetSlowLogs(v []*DescribeDatabaseSlowLogRecordsResponseBodySlowLogs) *DescribeDatabaseSlowLogRecordsResponseBody
+	GetSlowLogs() []*DescribeDatabaseSlowLogRecordsResponseBodySlowLogs
+	SetTotalCount(v int32) *DescribeDatabaseSlowLogRecordsResponseBody
+	GetTotalCount() *int32
 }
 
 type DescribeDatabaseSlowLogRecordsResponseBody struct {
@@ -6854,11 +10706,39 @@ type DescribeDatabaseSlowLogRecordsResponseBody struct {
 }
 
 func (s DescribeDatabaseSlowLogRecordsResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeDatabaseSlowLogRecordsResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDatabaseSlowLogRecordsResponseBody) GetEngine() *string {
+	return s.Engine
+}
+
+func (s *DescribeDatabaseSlowLogRecordsResponseBody) GetPageNumber() *int32 {
+	return s.PageNumber
+}
+
+func (s *DescribeDatabaseSlowLogRecordsResponseBody) GetPageSize() *int32 {
+	return s.PageSize
+}
+
+func (s *DescribeDatabaseSlowLogRecordsResponseBody) GetPhysicalIORead() *int64 {
+	return s.PhysicalIORead
+}
+
+func (s *DescribeDatabaseSlowLogRecordsResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
+func (s *DescribeDatabaseSlowLogRecordsResponseBody) GetSlowLogs() []*DescribeDatabaseSlowLogRecordsResponseBodySlowLogs {
+	return s.SlowLogs
+}
+
+func (s *DescribeDatabaseSlowLogRecordsResponseBody) GetTotalCount() *int32 {
+	return s.TotalCount
 }
 
 func (s *DescribeDatabaseSlowLogRecordsResponseBody) SetEngine(v string) *DescribeDatabaseSlowLogRecordsResponseBody {
@@ -6894,6 +10774,10 @@ func (s *DescribeDatabaseSlowLogRecordsResponseBody) SetSlowLogs(v []*DescribeDa
 func (s *DescribeDatabaseSlowLogRecordsResponseBody) SetTotalCount(v int32) *DescribeDatabaseSlowLogRecordsResponseBody {
 	s.TotalCount = &v
 	return s
+}
+
+func (s *DescribeDatabaseSlowLogRecordsResponseBody) Validate() error {
+	return dara.Validate(s)
 }
 
 type DescribeDatabaseSlowLogRecordsResponseBodySlowLogs struct {
@@ -6956,11 +10840,47 @@ type DescribeDatabaseSlowLogRecordsResponseBodySlowLogs struct {
 }
 
 func (s DescribeDatabaseSlowLogRecordsResponseBodySlowLogs) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeDatabaseSlowLogRecordsResponseBodySlowLogs) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDatabaseSlowLogRecordsResponseBodySlowLogs) GetDBName() *string {
+	return s.DBName
+}
+
+func (s *DescribeDatabaseSlowLogRecordsResponseBodySlowLogs) GetExecutionStartTime() *string {
+	return s.ExecutionStartTime
+}
+
+func (s *DescribeDatabaseSlowLogRecordsResponseBodySlowLogs) GetHostAddress() *string {
+	return s.HostAddress
+}
+
+func (s *DescribeDatabaseSlowLogRecordsResponseBodySlowLogs) GetLockTimes() *int64 {
+	return s.LockTimes
+}
+
+func (s *DescribeDatabaseSlowLogRecordsResponseBodySlowLogs) GetParseRowCounts() *int64 {
+	return s.ParseRowCounts
+}
+
+func (s *DescribeDatabaseSlowLogRecordsResponseBodySlowLogs) GetQueryTimeMS() *int64 {
+	return s.QueryTimeMS
+}
+
+func (s *DescribeDatabaseSlowLogRecordsResponseBodySlowLogs) GetQueryTimes() *int64 {
+	return s.QueryTimes
+}
+
+func (s *DescribeDatabaseSlowLogRecordsResponseBodySlowLogs) GetReturnRowCounts() *int64 {
+	return s.ReturnRowCounts
+}
+
+func (s *DescribeDatabaseSlowLogRecordsResponseBodySlowLogs) GetSQLText() *string {
+	return s.SQLText
 }
 
 func (s *DescribeDatabaseSlowLogRecordsResponseBodySlowLogs) SetDBName(v string) *DescribeDatabaseSlowLogRecordsResponseBodySlowLogs {
@@ -7008,6 +10928,22 @@ func (s *DescribeDatabaseSlowLogRecordsResponseBodySlowLogs) SetSQLText(v string
 	return s
 }
 
+func (s *DescribeDatabaseSlowLogRecordsResponseBodySlowLogs) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDescribeDatabaseSlowLogRecordsResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *DescribeDatabaseSlowLogRecordsResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *DescribeDatabaseSlowLogRecordsResponse
+	GetStatusCode() *int32
+	SetBody(v *DescribeDatabaseSlowLogRecordsResponseBody) *DescribeDatabaseSlowLogRecordsResponse
+	GetBody() *DescribeDatabaseSlowLogRecordsResponseBody
+}
+
 type DescribeDatabaseSlowLogRecordsResponse struct {
 	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -7015,11 +10951,23 @@ type DescribeDatabaseSlowLogRecordsResponse struct {
 }
 
 func (s DescribeDatabaseSlowLogRecordsResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeDatabaseSlowLogRecordsResponse) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDatabaseSlowLogRecordsResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *DescribeDatabaseSlowLogRecordsResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *DescribeDatabaseSlowLogRecordsResponse) GetBody() *DescribeDatabaseSlowLogRecordsResponseBody {
+	return s.Body
 }
 
 func (s *DescribeDatabaseSlowLogRecordsResponse) SetHeaders(v map[string]*string) *DescribeDatabaseSlowLogRecordsResponse {
@@ -7035,6 +10983,28 @@ func (s *DescribeDatabaseSlowLogRecordsResponse) SetStatusCode(v int32) *Describ
 func (s *DescribeDatabaseSlowLogRecordsResponse) SetBody(v *DescribeDatabaseSlowLogRecordsResponseBody) *DescribeDatabaseSlowLogRecordsResponse {
 	s.Body = v
 	return s
+}
+
+func (s *DescribeDatabaseSlowLogRecordsResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDescribeFirewallTemplateApplyResultsRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientToken(v string) *DescribeFirewallTemplateApplyResultsRequest
+	GetClientToken() *string
+	SetFirewallTemplateId(v string) *DescribeFirewallTemplateApplyResultsRequest
+	GetFirewallTemplateId() *string
+	SetPageNumber(v int32) *DescribeFirewallTemplateApplyResultsRequest
+	GetPageNumber() *int32
+	SetPageSize(v int32) *DescribeFirewallTemplateApplyResultsRequest
+	GetPageSize() *int32
+	SetRegionId(v string) *DescribeFirewallTemplateApplyResultsRequest
+	GetRegionId() *string
+	SetTaskId(v []*string) *DescribeFirewallTemplateApplyResultsRequest
+	GetTaskId() []*string
 }
 
 type DescribeFirewallTemplateApplyResultsRequest struct {
@@ -7075,11 +11045,35 @@ type DescribeFirewallTemplateApplyResultsRequest struct {
 }
 
 func (s DescribeFirewallTemplateApplyResultsRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeFirewallTemplateApplyResultsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeFirewallTemplateApplyResultsRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *DescribeFirewallTemplateApplyResultsRequest) GetFirewallTemplateId() *string {
+	return s.FirewallTemplateId
+}
+
+func (s *DescribeFirewallTemplateApplyResultsRequest) GetPageNumber() *int32 {
+	return s.PageNumber
+}
+
+func (s *DescribeFirewallTemplateApplyResultsRequest) GetPageSize() *int32 {
+	return s.PageSize
+}
+
+func (s *DescribeFirewallTemplateApplyResultsRequest) GetRegionId() *string {
+	return s.RegionId
+}
+
+func (s *DescribeFirewallTemplateApplyResultsRequest) GetTaskId() []*string {
+	return s.TaskId
 }
 
 func (s *DescribeFirewallTemplateApplyResultsRequest) SetClientToken(v string) *DescribeFirewallTemplateApplyResultsRequest {
@@ -7112,6 +11106,26 @@ func (s *DescribeFirewallTemplateApplyResultsRequest) SetTaskId(v []*string) *De
 	return s
 }
 
+func (s *DescribeFirewallTemplateApplyResultsRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDescribeFirewallTemplateApplyResultsResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetPageNumber(v string) *DescribeFirewallTemplateApplyResultsResponseBody
+	GetPageNumber() *string
+	SetPageSize(v string) *DescribeFirewallTemplateApplyResultsResponseBody
+	GetPageSize() *string
+	SetRequestId(v string) *DescribeFirewallTemplateApplyResultsResponseBody
+	GetRequestId() *string
+	SetTotalCount(v string) *DescribeFirewallTemplateApplyResultsResponseBody
+	GetTotalCount() *string
+	SetData(v []*DescribeFirewallTemplateApplyResultsResponseBodyData) *DescribeFirewallTemplateApplyResultsResponseBody
+	GetData() []*DescribeFirewallTemplateApplyResultsResponseBodyData
+}
+
 type DescribeFirewallTemplateApplyResultsResponseBody struct {
 	// The page number.
 	//
@@ -7142,11 +11156,31 @@ type DescribeFirewallTemplateApplyResultsResponseBody struct {
 }
 
 func (s DescribeFirewallTemplateApplyResultsResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeFirewallTemplateApplyResultsResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeFirewallTemplateApplyResultsResponseBody) GetPageNumber() *string {
+	return s.PageNumber
+}
+
+func (s *DescribeFirewallTemplateApplyResultsResponseBody) GetPageSize() *string {
+	return s.PageSize
+}
+
+func (s *DescribeFirewallTemplateApplyResultsResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
+func (s *DescribeFirewallTemplateApplyResultsResponseBody) GetTotalCount() *string {
+	return s.TotalCount
+}
+
+func (s *DescribeFirewallTemplateApplyResultsResponseBody) GetData() []*DescribeFirewallTemplateApplyResultsResponseBodyData {
+	return s.Data
 }
 
 func (s *DescribeFirewallTemplateApplyResultsResponseBody) SetPageNumber(v string) *DescribeFirewallTemplateApplyResultsResponseBody {
@@ -7172,6 +11206,10 @@ func (s *DescribeFirewallTemplateApplyResultsResponseBody) SetTotalCount(v strin
 func (s *DescribeFirewallTemplateApplyResultsResponseBody) SetData(v []*DescribeFirewallTemplateApplyResultsResponseBodyData) *DescribeFirewallTemplateApplyResultsResponseBody {
 	s.Data = v
 	return s
+}
+
+func (s *DescribeFirewallTemplateApplyResultsResponseBody) Validate() error {
+	return dara.Validate(s)
 }
 
 type DescribeFirewallTemplateApplyResultsResponseBodyData struct {
@@ -7224,11 +11262,39 @@ type DescribeFirewallTemplateApplyResultsResponseBodyData struct {
 }
 
 func (s DescribeFirewallTemplateApplyResultsResponseBodyData) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeFirewallTemplateApplyResultsResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeFirewallTemplateApplyResultsResponseBodyData) GetCreateTime() *string {
+	return s.CreateTime
+}
+
+func (s *DescribeFirewallTemplateApplyResultsResponseBodyData) GetFailedCount() *string {
+	return s.FailedCount
+}
+
+func (s *DescribeFirewallTemplateApplyResultsResponseBodyData) GetFirewallTemplateId() *string {
+	return s.FirewallTemplateId
+}
+
+func (s *DescribeFirewallTemplateApplyResultsResponseBodyData) GetInstanceApplyResults() []*DescribeFirewallTemplateApplyResultsResponseBodyDataInstanceApplyResults {
+	return s.InstanceApplyResults
+}
+
+func (s *DescribeFirewallTemplateApplyResultsResponseBodyData) GetStatus() *string {
+	return s.Status
+}
+
+func (s *DescribeFirewallTemplateApplyResultsResponseBodyData) GetTaskId() *string {
+	return s.TaskId
+}
+
+func (s *DescribeFirewallTemplateApplyResultsResponseBodyData) GetTotalCount() *string {
+	return s.TotalCount
 }
 
 func (s *DescribeFirewallTemplateApplyResultsResponseBodyData) SetCreateTime(v string) *DescribeFirewallTemplateApplyResultsResponseBodyData {
@@ -7266,6 +11332,10 @@ func (s *DescribeFirewallTemplateApplyResultsResponseBodyData) SetTotalCount(v s
 	return s
 }
 
+func (s *DescribeFirewallTemplateApplyResultsResponseBodyData) Validate() error {
+	return dara.Validate(s)
+}
+
 type DescribeFirewallTemplateApplyResultsResponseBodyDataInstanceApplyResults struct {
 	// The ID of the simple application server.
 	//
@@ -7290,11 +11360,19 @@ type DescribeFirewallTemplateApplyResultsResponseBodyDataInstanceApplyResults st
 }
 
 func (s DescribeFirewallTemplateApplyResultsResponseBodyDataInstanceApplyResults) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeFirewallTemplateApplyResultsResponseBodyDataInstanceApplyResults) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeFirewallTemplateApplyResultsResponseBodyDataInstanceApplyResults) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *DescribeFirewallTemplateApplyResultsResponseBodyDataInstanceApplyResults) GetStatus() *string {
+	return s.Status
 }
 
 func (s *DescribeFirewallTemplateApplyResultsResponseBodyDataInstanceApplyResults) SetInstanceId(v string) *DescribeFirewallTemplateApplyResultsResponseBodyDataInstanceApplyResults {
@@ -7307,6 +11385,22 @@ func (s *DescribeFirewallTemplateApplyResultsResponseBodyDataInstanceApplyResult
 	return s
 }
 
+func (s *DescribeFirewallTemplateApplyResultsResponseBodyDataInstanceApplyResults) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDescribeFirewallTemplateApplyResultsResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *DescribeFirewallTemplateApplyResultsResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *DescribeFirewallTemplateApplyResultsResponse
+	GetStatusCode() *int32
+	SetBody(v *DescribeFirewallTemplateApplyResultsResponseBody) *DescribeFirewallTemplateApplyResultsResponse
+	GetBody() *DescribeFirewallTemplateApplyResultsResponseBody
+}
+
 type DescribeFirewallTemplateApplyResultsResponse struct {
 	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -7314,11 +11408,23 @@ type DescribeFirewallTemplateApplyResultsResponse struct {
 }
 
 func (s DescribeFirewallTemplateApplyResultsResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeFirewallTemplateApplyResultsResponse) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeFirewallTemplateApplyResultsResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *DescribeFirewallTemplateApplyResultsResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *DescribeFirewallTemplateApplyResultsResponse) GetBody() *DescribeFirewallTemplateApplyResultsResponseBody {
+	return s.Body
 }
 
 func (s *DescribeFirewallTemplateApplyResultsResponse) SetHeaders(v map[string]*string) *DescribeFirewallTemplateApplyResultsResponse {
@@ -7334,6 +11440,26 @@ func (s *DescribeFirewallTemplateApplyResultsResponse) SetStatusCode(v int32) *D
 func (s *DescribeFirewallTemplateApplyResultsResponse) SetBody(v *DescribeFirewallTemplateApplyResultsResponseBody) *DescribeFirewallTemplateApplyResultsResponse {
 	s.Body = v
 	return s
+}
+
+func (s *DescribeFirewallTemplateApplyResultsResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDescribeFirewallTemplateRulesApplyResultRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientToken(v string) *DescribeFirewallTemplateRulesApplyResultRequest
+	GetClientToken() *string
+	SetFirewallTemplateId(v string) *DescribeFirewallTemplateRulesApplyResultRequest
+	GetFirewallTemplateId() *string
+	SetInstanceId(v string) *DescribeFirewallTemplateRulesApplyResultRequest
+	GetInstanceId() *string
+	SetRegionId(v string) *DescribeFirewallTemplateRulesApplyResultRequest
+	GetRegionId() *string
+	SetTaskId(v string) *DescribeFirewallTemplateRulesApplyResultRequest
+	GetTaskId() *string
 }
 
 type DescribeFirewallTemplateRulesApplyResultRequest struct {
@@ -7378,11 +11504,31 @@ type DescribeFirewallTemplateRulesApplyResultRequest struct {
 }
 
 func (s DescribeFirewallTemplateRulesApplyResultRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeFirewallTemplateRulesApplyResultRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeFirewallTemplateRulesApplyResultRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *DescribeFirewallTemplateRulesApplyResultRequest) GetFirewallTemplateId() *string {
+	return s.FirewallTemplateId
+}
+
+func (s *DescribeFirewallTemplateRulesApplyResultRequest) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *DescribeFirewallTemplateRulesApplyResultRequest) GetRegionId() *string {
+	return s.RegionId
+}
+
+func (s *DescribeFirewallTemplateRulesApplyResultRequest) GetTaskId() *string {
+	return s.TaskId
 }
 
 func (s *DescribeFirewallTemplateRulesApplyResultRequest) SetClientToken(v string) *DescribeFirewallTemplateRulesApplyResultRequest {
@@ -7410,6 +11556,20 @@ func (s *DescribeFirewallTemplateRulesApplyResultRequest) SetTaskId(v string) *D
 	return s
 }
 
+func (s *DescribeFirewallTemplateRulesApplyResultRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDescribeFirewallTemplateRulesApplyResultResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetRequestId(v string) *DescribeFirewallTemplateRulesApplyResultResponseBody
+	GetRequestId() *string
+	SetData(v []*DescribeFirewallTemplateRulesApplyResultResponseBodyData) *DescribeFirewallTemplateRulesApplyResultResponseBody
+	GetData() []*DescribeFirewallTemplateRulesApplyResultResponseBodyData
+}
+
 type DescribeFirewallTemplateRulesApplyResultResponseBody struct {
 	// The request ID.
 	//
@@ -7422,11 +11582,19 @@ type DescribeFirewallTemplateRulesApplyResultResponseBody struct {
 }
 
 func (s DescribeFirewallTemplateRulesApplyResultResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeFirewallTemplateRulesApplyResultResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeFirewallTemplateRulesApplyResultResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
+func (s *DescribeFirewallTemplateRulesApplyResultResponseBody) GetData() []*DescribeFirewallTemplateRulesApplyResultResponseBodyData {
+	return s.Data
 }
 
 func (s *DescribeFirewallTemplateRulesApplyResultResponseBody) SetRequestId(v string) *DescribeFirewallTemplateRulesApplyResultResponseBody {
@@ -7437,6 +11605,10 @@ func (s *DescribeFirewallTemplateRulesApplyResultResponseBody) SetRequestId(v st
 func (s *DescribeFirewallTemplateRulesApplyResultResponseBody) SetData(v []*DescribeFirewallTemplateRulesApplyResultResponseBodyData) *DescribeFirewallTemplateRulesApplyResultResponseBody {
 	s.Data = v
 	return s
+}
+
+func (s *DescribeFirewallTemplateRulesApplyResultResponseBody) Validate() error {
+	return dara.Validate(s)
 }
 
 type DescribeFirewallTemplateRulesApplyResultResponseBodyData struct {
@@ -7503,11 +11675,39 @@ type DescribeFirewallTemplateRulesApplyResultResponseBodyData struct {
 }
 
 func (s DescribeFirewallTemplateRulesApplyResultResponseBodyData) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeFirewallTemplateRulesApplyResultResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeFirewallTemplateRulesApplyResultResponseBodyData) GetErrorCode() *string {
+	return s.ErrorCode
+}
+
+func (s *DescribeFirewallTemplateRulesApplyResultResponseBodyData) GetErrorInfo() *string {
+	return s.ErrorInfo
+}
+
+func (s *DescribeFirewallTemplateRulesApplyResultResponseBodyData) GetPort() *string {
+	return s.Port
+}
+
+func (s *DescribeFirewallTemplateRulesApplyResultResponseBodyData) GetRemark() *string {
+	return s.Remark
+}
+
+func (s *DescribeFirewallTemplateRulesApplyResultResponseBodyData) GetRuleProtocol() *string {
+	return s.RuleProtocol
+}
+
+func (s *DescribeFirewallTemplateRulesApplyResultResponseBodyData) GetSourceCidrIp() *string {
+	return s.SourceCidrIp
+}
+
+func (s *DescribeFirewallTemplateRulesApplyResultResponseBodyData) GetSuccess() *bool {
+	return s.Success
 }
 
 func (s *DescribeFirewallTemplateRulesApplyResultResponseBodyData) SetErrorCode(v string) *DescribeFirewallTemplateRulesApplyResultResponseBodyData {
@@ -7545,6 +11745,22 @@ func (s *DescribeFirewallTemplateRulesApplyResultResponseBodyData) SetSuccess(v 
 	return s
 }
 
+func (s *DescribeFirewallTemplateRulesApplyResultResponseBodyData) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDescribeFirewallTemplateRulesApplyResultResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *DescribeFirewallTemplateRulesApplyResultResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *DescribeFirewallTemplateRulesApplyResultResponse
+	GetStatusCode() *int32
+	SetBody(v *DescribeFirewallTemplateRulesApplyResultResponseBody) *DescribeFirewallTemplateRulesApplyResultResponse
+	GetBody() *DescribeFirewallTemplateRulesApplyResultResponseBody
+}
+
 type DescribeFirewallTemplateRulesApplyResultResponse struct {
 	Headers    map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -7552,11 +11768,23 @@ type DescribeFirewallTemplateRulesApplyResultResponse struct {
 }
 
 func (s DescribeFirewallTemplateRulesApplyResultResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeFirewallTemplateRulesApplyResultResponse) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeFirewallTemplateRulesApplyResultResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *DescribeFirewallTemplateRulesApplyResultResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *DescribeFirewallTemplateRulesApplyResultResponse) GetBody() *DescribeFirewallTemplateRulesApplyResultResponseBody {
+	return s.Body
 }
 
 func (s *DescribeFirewallTemplateRulesApplyResultResponse) SetHeaders(v map[string]*string) *DescribeFirewallTemplateRulesApplyResultResponse {
@@ -7572,6 +11800,26 @@ func (s *DescribeFirewallTemplateRulesApplyResultResponse) SetStatusCode(v int32
 func (s *DescribeFirewallTemplateRulesApplyResultResponse) SetBody(v *DescribeFirewallTemplateRulesApplyResultResponseBody) *DescribeFirewallTemplateRulesApplyResultResponse {
 	s.Body = v
 	return s
+}
+
+func (s *DescribeFirewallTemplateRulesApplyResultResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDescribeFirewallTemplatesRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetFirewallTemplateId(v []*string) *DescribeFirewallTemplatesRequest
+	GetFirewallTemplateId() []*string
+	SetName(v string) *DescribeFirewallTemplatesRequest
+	GetName() *string
+	SetPageNumber(v int32) *DescribeFirewallTemplatesRequest
+	GetPageNumber() *int32
+	SetPageSize(v int32) *DescribeFirewallTemplatesRequest
+	GetPageSize() *int32
+	SetRegionId(v string) *DescribeFirewallTemplatesRequest
+	GetRegionId() *string
 }
 
 type DescribeFirewallTemplatesRequest struct {
@@ -7610,11 +11858,31 @@ type DescribeFirewallTemplatesRequest struct {
 }
 
 func (s DescribeFirewallTemplatesRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeFirewallTemplatesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeFirewallTemplatesRequest) GetFirewallTemplateId() []*string {
+	return s.FirewallTemplateId
+}
+
+func (s *DescribeFirewallTemplatesRequest) GetName() *string {
+	return s.Name
+}
+
+func (s *DescribeFirewallTemplatesRequest) GetPageNumber() *int32 {
+	return s.PageNumber
+}
+
+func (s *DescribeFirewallTemplatesRequest) GetPageSize() *int32 {
+	return s.PageSize
+}
+
+func (s *DescribeFirewallTemplatesRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *DescribeFirewallTemplatesRequest) SetFirewallTemplateId(v []*string) *DescribeFirewallTemplatesRequest {
@@ -7640,6 +11908,26 @@ func (s *DescribeFirewallTemplatesRequest) SetPageSize(v int32) *DescribeFirewal
 func (s *DescribeFirewallTemplatesRequest) SetRegionId(v string) *DescribeFirewallTemplatesRequest {
 	s.RegionId = &v
 	return s
+}
+
+func (s *DescribeFirewallTemplatesRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDescribeFirewallTemplatesResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetFirewallTemplates(v []*DescribeFirewallTemplatesResponseBodyFirewallTemplates) *DescribeFirewallTemplatesResponseBody
+	GetFirewallTemplates() []*DescribeFirewallTemplatesResponseBodyFirewallTemplates
+	SetPageNumber(v int32) *DescribeFirewallTemplatesResponseBody
+	GetPageNumber() *int32
+	SetPageSize(v int32) *DescribeFirewallTemplatesResponseBody
+	GetPageSize() *int32
+	SetRequestId(v string) *DescribeFirewallTemplatesResponseBody
+	GetRequestId() *string
+	SetTotalCount(v int32) *DescribeFirewallTemplatesResponseBody
+	GetTotalCount() *int32
 }
 
 type DescribeFirewallTemplatesResponseBody struct {
@@ -7676,11 +11964,31 @@ type DescribeFirewallTemplatesResponseBody struct {
 }
 
 func (s DescribeFirewallTemplatesResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeFirewallTemplatesResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeFirewallTemplatesResponseBody) GetFirewallTemplates() []*DescribeFirewallTemplatesResponseBodyFirewallTemplates {
+	return s.FirewallTemplates
+}
+
+func (s *DescribeFirewallTemplatesResponseBody) GetPageNumber() *int32 {
+	return s.PageNumber
+}
+
+func (s *DescribeFirewallTemplatesResponseBody) GetPageSize() *int32 {
+	return s.PageSize
+}
+
+func (s *DescribeFirewallTemplatesResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
+func (s *DescribeFirewallTemplatesResponseBody) GetTotalCount() *int32 {
+	return s.TotalCount
 }
 
 func (s *DescribeFirewallTemplatesResponseBody) SetFirewallTemplates(v []*DescribeFirewallTemplatesResponseBodyFirewallTemplates) *DescribeFirewallTemplatesResponseBody {
@@ -7706,6 +12014,10 @@ func (s *DescribeFirewallTemplatesResponseBody) SetRequestId(v string) *Describe
 func (s *DescribeFirewallTemplatesResponseBody) SetTotalCount(v int32) *DescribeFirewallTemplatesResponseBody {
 	s.TotalCount = &v
 	return s
+}
+
+func (s *DescribeFirewallTemplatesResponseBody) Validate() error {
+	return dara.Validate(s)
 }
 
 type DescribeFirewallTemplatesResponseBodyFirewallTemplates struct {
@@ -7746,11 +12058,35 @@ type DescribeFirewallTemplatesResponseBodyFirewallTemplates struct {
 }
 
 func (s DescribeFirewallTemplatesResponseBodyFirewallTemplates) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeFirewallTemplatesResponseBodyFirewallTemplates) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeFirewallTemplatesResponseBodyFirewallTemplates) GetCreateTime() *string {
+	return s.CreateTime
+}
+
+func (s *DescribeFirewallTemplatesResponseBodyFirewallTemplates) GetCreationTime() *string {
+	return s.CreationTime
+}
+
+func (s *DescribeFirewallTemplatesResponseBodyFirewallTemplates) GetDescription() *string {
+	return s.Description
+}
+
+func (s *DescribeFirewallTemplatesResponseBodyFirewallTemplates) GetFirewallTemplateId() *string {
+	return s.FirewallTemplateId
+}
+
+func (s *DescribeFirewallTemplatesResponseBodyFirewallTemplates) GetFirewallTemplateRules() []*DescribeFirewallTemplatesResponseBodyFirewallTemplatesFirewallTemplateRules {
+	return s.FirewallTemplateRules
+}
+
+func (s *DescribeFirewallTemplatesResponseBodyFirewallTemplates) GetName() *string {
+	return s.Name
 }
 
 func (s *DescribeFirewallTemplatesResponseBodyFirewallTemplates) SetCreateTime(v string) *DescribeFirewallTemplatesResponseBodyFirewallTemplates {
@@ -7781,6 +12117,10 @@ func (s *DescribeFirewallTemplatesResponseBodyFirewallTemplates) SetFirewallTemp
 func (s *DescribeFirewallTemplatesResponseBodyFirewallTemplates) SetName(v string) *DescribeFirewallTemplatesResponseBodyFirewallTemplates {
 	s.Name = &v
 	return s
+}
+
+func (s *DescribeFirewallTemplatesResponseBodyFirewallTemplates) Validate() error {
+	return dara.Validate(s)
 }
 
 type DescribeFirewallTemplatesResponseBodyFirewallTemplatesFirewallTemplateRules struct {
@@ -7827,11 +12167,31 @@ type DescribeFirewallTemplatesResponseBodyFirewallTemplatesFirewallTemplateRules
 }
 
 func (s DescribeFirewallTemplatesResponseBodyFirewallTemplatesFirewallTemplateRules) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeFirewallTemplatesResponseBodyFirewallTemplatesFirewallTemplateRules) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeFirewallTemplatesResponseBodyFirewallTemplatesFirewallTemplateRules) GetFirewallTemplateRuleId() *string {
+	return s.FirewallTemplateRuleId
+}
+
+func (s *DescribeFirewallTemplatesResponseBodyFirewallTemplatesFirewallTemplateRules) GetPort() *string {
+	return s.Port
+}
+
+func (s *DescribeFirewallTemplatesResponseBodyFirewallTemplatesFirewallTemplateRules) GetRemark() *string {
+	return s.Remark
+}
+
+func (s *DescribeFirewallTemplatesResponseBodyFirewallTemplatesFirewallTemplateRules) GetRuleProtocol() *string {
+	return s.RuleProtocol
+}
+
+func (s *DescribeFirewallTemplatesResponseBodyFirewallTemplatesFirewallTemplateRules) GetSourceCidrIp() *string {
+	return s.SourceCidrIp
 }
 
 func (s *DescribeFirewallTemplatesResponseBodyFirewallTemplatesFirewallTemplateRules) SetFirewallTemplateRuleId(v string) *DescribeFirewallTemplatesResponseBodyFirewallTemplatesFirewallTemplateRules {
@@ -7859,6 +12219,22 @@ func (s *DescribeFirewallTemplatesResponseBodyFirewallTemplatesFirewallTemplateR
 	return s
 }
 
+func (s *DescribeFirewallTemplatesResponseBodyFirewallTemplatesFirewallTemplateRules) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDescribeFirewallTemplatesResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *DescribeFirewallTemplatesResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *DescribeFirewallTemplatesResponse
+	GetStatusCode() *int32
+	SetBody(v *DescribeFirewallTemplatesResponseBody) *DescribeFirewallTemplatesResponse
+	GetBody() *DescribeFirewallTemplatesResponseBody
+}
+
 type DescribeFirewallTemplatesResponse struct {
 	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -7866,11 +12242,23 @@ type DescribeFirewallTemplatesResponse struct {
 }
 
 func (s DescribeFirewallTemplatesResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeFirewallTemplatesResponse) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeFirewallTemplatesResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *DescribeFirewallTemplatesResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *DescribeFirewallTemplatesResponse) GetBody() *DescribeFirewallTemplatesResponseBody {
+	return s.Body
 }
 
 func (s *DescribeFirewallTemplatesResponse) SetHeaders(v map[string]*string) *DescribeFirewallTemplatesResponse {
@@ -7886,6 +12274,22 @@ func (s *DescribeFirewallTemplatesResponse) SetStatusCode(v int32) *DescribeFire
 func (s *DescribeFirewallTemplatesResponse) SetBody(v *DescribeFirewallTemplatesResponseBody) *DescribeFirewallTemplatesResponse {
 	s.Body = v
 	return s
+}
+
+func (s *DescribeFirewallTemplatesResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDescribeInstanceKeyPairRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientToken(v string) *DescribeInstanceKeyPairRequest
+	GetClientToken() *string
+	SetInstanceId(v string) *DescribeInstanceKeyPairRequest
+	GetInstanceId() *string
+	SetRegionId(v string) *DescribeInstanceKeyPairRequest
+	GetRegionId() *string
 }
 
 type DescribeInstanceKeyPairRequest struct {
@@ -7914,11 +12318,23 @@ type DescribeInstanceKeyPairRequest struct {
 }
 
 func (s DescribeInstanceKeyPairRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeInstanceKeyPairRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeInstanceKeyPairRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *DescribeInstanceKeyPairRequest) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *DescribeInstanceKeyPairRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *DescribeInstanceKeyPairRequest) SetClientToken(v string) *DescribeInstanceKeyPairRequest {
@@ -7934,6 +12350,22 @@ func (s *DescribeInstanceKeyPairRequest) SetInstanceId(v string) *DescribeInstan
 func (s *DescribeInstanceKeyPairRequest) SetRegionId(v string) *DescribeInstanceKeyPairRequest {
 	s.RegionId = &v
 	return s
+}
+
+func (s *DescribeInstanceKeyPairRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDescribeInstanceKeyPairResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetFingerprint(v string) *DescribeInstanceKeyPairResponseBody
+	GetFingerprint() *string
+	SetKeyPairName(v string) *DescribeInstanceKeyPairResponseBody
+	GetKeyPairName() *string
+	SetRequestId(v string) *DescribeInstanceKeyPairResponseBody
+	GetRequestId() *string
 }
 
 type DescribeInstanceKeyPairResponseBody struct {
@@ -7958,11 +12390,23 @@ type DescribeInstanceKeyPairResponseBody struct {
 }
 
 func (s DescribeInstanceKeyPairResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeInstanceKeyPairResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeInstanceKeyPairResponseBody) GetFingerprint() *string {
+	return s.Fingerprint
+}
+
+func (s *DescribeInstanceKeyPairResponseBody) GetKeyPairName() *string {
+	return s.KeyPairName
+}
+
+func (s *DescribeInstanceKeyPairResponseBody) GetRequestId() *string {
+	return s.RequestId
 }
 
 func (s *DescribeInstanceKeyPairResponseBody) SetFingerprint(v string) *DescribeInstanceKeyPairResponseBody {
@@ -7980,6 +12424,22 @@ func (s *DescribeInstanceKeyPairResponseBody) SetRequestId(v string) *DescribeIn
 	return s
 }
 
+func (s *DescribeInstanceKeyPairResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDescribeInstanceKeyPairResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *DescribeInstanceKeyPairResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *DescribeInstanceKeyPairResponse
+	GetStatusCode() *int32
+	SetBody(v *DescribeInstanceKeyPairResponseBody) *DescribeInstanceKeyPairResponse
+	GetBody() *DescribeInstanceKeyPairResponseBody
+}
+
 type DescribeInstanceKeyPairResponse struct {
 	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -7987,11 +12447,23 @@ type DescribeInstanceKeyPairResponse struct {
 }
 
 func (s DescribeInstanceKeyPairResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeInstanceKeyPairResponse) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeInstanceKeyPairResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *DescribeInstanceKeyPairResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *DescribeInstanceKeyPairResponse) GetBody() *DescribeInstanceKeyPairResponseBody {
+	return s.Body
 }
 
 func (s *DescribeInstanceKeyPairResponse) SetHeaders(v map[string]*string) *DescribeInstanceKeyPairResponse {
@@ -8007,6 +12479,22 @@ func (s *DescribeInstanceKeyPairResponse) SetStatusCode(v int32) *DescribeInstan
 func (s *DescribeInstanceKeyPairResponse) SetBody(v *DescribeInstanceKeyPairResponseBody) *DescribeInstanceKeyPairResponse {
 	s.Body = v
 	return s
+}
+
+func (s *DescribeInstanceKeyPairResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDescribeInstancePasswordsSettingRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientToken(v string) *DescribeInstancePasswordsSettingRequest
+	GetClientToken() *string
+	SetInstanceId(v string) *DescribeInstancePasswordsSettingRequest
+	GetInstanceId() *string
+	SetRegionId(v string) *DescribeInstancePasswordsSettingRequest
+	GetRegionId() *string
 }
 
 type DescribeInstancePasswordsSettingRequest struct {
@@ -8035,11 +12523,23 @@ type DescribeInstancePasswordsSettingRequest struct {
 }
 
 func (s DescribeInstancePasswordsSettingRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeInstancePasswordsSettingRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeInstancePasswordsSettingRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *DescribeInstancePasswordsSettingRequest) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *DescribeInstancePasswordsSettingRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *DescribeInstancePasswordsSettingRequest) SetClientToken(v string) *DescribeInstancePasswordsSettingRequest {
@@ -8055,6 +12555,22 @@ func (s *DescribeInstancePasswordsSettingRequest) SetInstanceId(v string) *Descr
 func (s *DescribeInstancePasswordsSettingRequest) SetRegionId(v string) *DescribeInstancePasswordsSettingRequest {
 	s.RegionId = &v
 	return s
+}
+
+func (s *DescribeInstancePasswordsSettingRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDescribeInstancePasswordsSettingResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetInstancePasswordSetting(v bool) *DescribeInstancePasswordsSettingResponseBody
+	GetInstancePasswordSetting() *bool
+	SetRequestId(v string) *DescribeInstancePasswordsSettingResponseBody
+	GetRequestId() *string
+	SetVncPasswordSetting(v bool) *DescribeInstancePasswordsSettingResponseBody
+	GetVncPasswordSetting() *bool
 }
 
 type DescribeInstancePasswordsSettingResponseBody struct {
@@ -8079,11 +12595,23 @@ type DescribeInstancePasswordsSettingResponseBody struct {
 }
 
 func (s DescribeInstancePasswordsSettingResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeInstancePasswordsSettingResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeInstancePasswordsSettingResponseBody) GetInstancePasswordSetting() *bool {
+	return s.InstancePasswordSetting
+}
+
+func (s *DescribeInstancePasswordsSettingResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
+func (s *DescribeInstancePasswordsSettingResponseBody) GetVncPasswordSetting() *bool {
+	return s.VncPasswordSetting
 }
 
 func (s *DescribeInstancePasswordsSettingResponseBody) SetInstancePasswordSetting(v bool) *DescribeInstancePasswordsSettingResponseBody {
@@ -8101,6 +12629,22 @@ func (s *DescribeInstancePasswordsSettingResponseBody) SetVncPasswordSetting(v b
 	return s
 }
 
+func (s *DescribeInstancePasswordsSettingResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDescribeInstancePasswordsSettingResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *DescribeInstancePasswordsSettingResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *DescribeInstancePasswordsSettingResponse
+	GetStatusCode() *int32
+	SetBody(v *DescribeInstancePasswordsSettingResponseBody) *DescribeInstancePasswordsSettingResponse
+	GetBody() *DescribeInstancePasswordsSettingResponseBody
+}
+
 type DescribeInstancePasswordsSettingResponse struct {
 	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -8108,11 +12652,23 @@ type DescribeInstancePasswordsSettingResponse struct {
 }
 
 func (s DescribeInstancePasswordsSettingResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeInstancePasswordsSettingResponse) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeInstancePasswordsSettingResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *DescribeInstancePasswordsSettingResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *DescribeInstancePasswordsSettingResponse) GetBody() *DescribeInstancePasswordsSettingResponseBody {
+	return s.Body
 }
 
 func (s *DescribeInstancePasswordsSettingResponse) SetHeaders(v map[string]*string) *DescribeInstancePasswordsSettingResponse {
@@ -8128,6 +12684,22 @@ func (s *DescribeInstancePasswordsSettingResponse) SetStatusCode(v int32) *Descr
 func (s *DescribeInstancePasswordsSettingResponse) SetBody(v *DescribeInstancePasswordsSettingResponseBody) *DescribeInstancePasswordsSettingResponse {
 	s.Body = v
 	return s
+}
+
+func (s *DescribeInstancePasswordsSettingResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDescribeInstanceVncUrlRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientToken(v string) *DescribeInstanceVncUrlRequest
+	GetClientToken() *string
+	SetInstanceId(v string) *DescribeInstanceVncUrlRequest
+	GetInstanceId() *string
+	SetRegionId(v string) *DescribeInstanceVncUrlRequest
+	GetRegionId() *string
 }
 
 type DescribeInstanceVncUrlRequest struct {
@@ -8156,11 +12728,23 @@ type DescribeInstanceVncUrlRequest struct {
 }
 
 func (s DescribeInstanceVncUrlRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeInstanceVncUrlRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeInstanceVncUrlRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *DescribeInstanceVncUrlRequest) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *DescribeInstanceVncUrlRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *DescribeInstanceVncUrlRequest) SetClientToken(v string) *DescribeInstanceVncUrlRequest {
@@ -8176,6 +12760,20 @@ func (s *DescribeInstanceVncUrlRequest) SetInstanceId(v string) *DescribeInstanc
 func (s *DescribeInstanceVncUrlRequest) SetRegionId(v string) *DescribeInstanceVncUrlRequest {
 	s.RegionId = &v
 	return s
+}
+
+func (s *DescribeInstanceVncUrlRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDescribeInstanceVncUrlResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetRequestId(v string) *DescribeInstanceVncUrlResponseBody
+	GetRequestId() *string
+	SetVncUrl(v string) *DescribeInstanceVncUrlResponseBody
+	GetVncUrl() *string
 }
 
 type DescribeInstanceVncUrlResponseBody struct {
@@ -8194,11 +12792,19 @@ type DescribeInstanceVncUrlResponseBody struct {
 }
 
 func (s DescribeInstanceVncUrlResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeInstanceVncUrlResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeInstanceVncUrlResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
+func (s *DescribeInstanceVncUrlResponseBody) GetVncUrl() *string {
+	return s.VncUrl
 }
 
 func (s *DescribeInstanceVncUrlResponseBody) SetRequestId(v string) *DescribeInstanceVncUrlResponseBody {
@@ -8211,6 +12817,22 @@ func (s *DescribeInstanceVncUrlResponseBody) SetVncUrl(v string) *DescribeInstan
 	return s
 }
 
+func (s *DescribeInstanceVncUrlResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDescribeInstanceVncUrlResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *DescribeInstanceVncUrlResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *DescribeInstanceVncUrlResponse
+	GetStatusCode() *int32
+	SetBody(v *DescribeInstanceVncUrlResponseBody) *DescribeInstanceVncUrlResponse
+	GetBody() *DescribeInstanceVncUrlResponseBody
+}
+
 type DescribeInstanceVncUrlResponse struct {
 	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -8218,11 +12840,23 @@ type DescribeInstanceVncUrlResponse struct {
 }
 
 func (s DescribeInstanceVncUrlResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeInstanceVncUrlResponse) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeInstanceVncUrlResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *DescribeInstanceVncUrlResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *DescribeInstanceVncUrlResponse) GetBody() *DescribeInstanceVncUrlResponseBody {
+	return s.Body
 }
 
 func (s *DescribeInstanceVncUrlResponse) SetHeaders(v map[string]*string) *DescribeInstanceVncUrlResponse {
@@ -8238,6 +12872,22 @@ func (s *DescribeInstanceVncUrlResponse) SetStatusCode(v int32) *DescribeInstanc
 func (s *DescribeInstanceVncUrlResponse) SetBody(v *DescribeInstanceVncUrlResponseBody) *DescribeInstanceVncUrlResponse {
 	s.Body = v
 	return s
+}
+
+func (s *DescribeInstanceVncUrlResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDescribeInvocationResultRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetInstanceId(v string) *DescribeInvocationResultRequest
+	GetInstanceId() *string
+	SetInvokeId(v string) *DescribeInvocationResultRequest
+	GetInvokeId() *string
+	SetRegionId(v string) *DescribeInvocationResultRequest
+	GetRegionId() *string
 }
 
 type DescribeInvocationResultRequest struct {
@@ -8268,11 +12918,23 @@ type DescribeInvocationResultRequest struct {
 }
 
 func (s DescribeInvocationResultRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeInvocationResultRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeInvocationResultRequest) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *DescribeInvocationResultRequest) GetInvokeId() *string {
+	return s.InvokeId
+}
+
+func (s *DescribeInvocationResultRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *DescribeInvocationResultRequest) SetInstanceId(v string) *DescribeInvocationResultRequest {
@@ -8290,6 +12952,20 @@ func (s *DescribeInvocationResultRequest) SetRegionId(v string) *DescribeInvocat
 	return s
 }
 
+func (s *DescribeInvocationResultRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDescribeInvocationResultResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetInvocationResult(v *DescribeInvocationResultResponseBodyInvocationResult) *DescribeInvocationResultResponseBody
+	GetInvocationResult() *DescribeInvocationResultResponseBodyInvocationResult
+	SetRequestId(v string) *DescribeInvocationResultResponseBody
+	GetRequestId() *string
+}
+
 type DescribeInvocationResultResponseBody struct {
 	// The execution results.
 	InvocationResult *DescribeInvocationResultResponseBodyInvocationResult `json:"InvocationResult,omitempty" xml:"InvocationResult,omitempty" type:"Struct"`
@@ -8302,11 +12978,19 @@ type DescribeInvocationResultResponseBody struct {
 }
 
 func (s DescribeInvocationResultResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeInvocationResultResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeInvocationResultResponseBody) GetInvocationResult() *DescribeInvocationResultResponseBodyInvocationResult {
+	return s.InvocationResult
+}
+
+func (s *DescribeInvocationResultResponseBody) GetRequestId() *string {
+	return s.RequestId
 }
 
 func (s *DescribeInvocationResultResponseBody) SetInvocationResult(v *DescribeInvocationResultResponseBodyInvocationResult) *DescribeInvocationResultResponseBody {
@@ -8317,6 +13001,10 @@ func (s *DescribeInvocationResultResponseBody) SetInvocationResult(v *DescribeIn
 func (s *DescribeInvocationResultResponseBody) SetRequestId(v string) *DescribeInvocationResultResponseBody {
 	s.RequestId = &v
 	return s
+}
+
+func (s *DescribeInvocationResultResponseBody) Validate() error {
+	return dara.Validate(s)
 }
 
 type DescribeInvocationResultResponseBodyInvocationResult struct {
@@ -8491,11 +13179,55 @@ type DescribeInvocationResultResponseBodyInvocationResult struct {
 }
 
 func (s DescribeInvocationResultResponseBodyInvocationResult) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeInvocationResultResponseBodyInvocationResult) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeInvocationResultResponseBodyInvocationResult) GetErrorCode() *string {
+	return s.ErrorCode
+}
+
+func (s *DescribeInvocationResultResponseBodyInvocationResult) GetErrorInfo() *string {
+	return s.ErrorInfo
+}
+
+func (s *DescribeInvocationResultResponseBodyInvocationResult) GetExitCode() *int64 {
+	return s.ExitCode
+}
+
+func (s *DescribeInvocationResultResponseBodyInvocationResult) GetFinishedTime() *string {
+	return s.FinishedTime
+}
+
+func (s *DescribeInvocationResultResponseBodyInvocationResult) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *DescribeInvocationResultResponseBodyInvocationResult) GetInvocationStatus() *string {
+	return s.InvocationStatus
+}
+
+func (s *DescribeInvocationResultResponseBodyInvocationResult) GetInvokeId() *string {
+	return s.InvokeId
+}
+
+func (s *DescribeInvocationResultResponseBodyInvocationResult) GetInvokeRecordStatus() *string {
+	return s.InvokeRecordStatus
+}
+
+func (s *DescribeInvocationResultResponseBodyInvocationResult) GetInvokeUser() *string {
+	return s.InvokeUser
+}
+
+func (s *DescribeInvocationResultResponseBodyInvocationResult) GetOutput() *string {
+	return s.Output
+}
+
+func (s *DescribeInvocationResultResponseBodyInvocationResult) GetStartTime() *string {
+	return s.StartTime
 }
 
 func (s *DescribeInvocationResultResponseBodyInvocationResult) SetErrorCode(v string) *DescribeInvocationResultResponseBodyInvocationResult {
@@ -8553,6 +13285,22 @@ func (s *DescribeInvocationResultResponseBodyInvocationResult) SetStartTime(v st
 	return s
 }
 
+func (s *DescribeInvocationResultResponseBodyInvocationResult) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDescribeInvocationResultResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *DescribeInvocationResultResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *DescribeInvocationResultResponse
+	GetStatusCode() *int32
+	SetBody(v *DescribeInvocationResultResponseBody) *DescribeInvocationResultResponse
+	GetBody() *DescribeInvocationResultResponseBody
+}
+
 type DescribeInvocationResultResponse struct {
 	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -8560,11 +13308,23 @@ type DescribeInvocationResultResponse struct {
 }
 
 func (s DescribeInvocationResultResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeInvocationResultResponse) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeInvocationResultResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *DescribeInvocationResultResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *DescribeInvocationResultResponse) GetBody() *DescribeInvocationResultResponseBody {
+	return s.Body
 }
 
 func (s *DescribeInvocationResultResponse) SetHeaders(v map[string]*string) *DescribeInvocationResultResponse {
@@ -8580,6 +13340,26 @@ func (s *DescribeInvocationResultResponse) SetStatusCode(v int32) *DescribeInvoc
 func (s *DescribeInvocationResultResponse) SetBody(v *DescribeInvocationResultResponseBody) *DescribeInvocationResultResponse {
 	s.Body = v
 	return s
+}
+
+func (s *DescribeInvocationResultResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDescribeInvocationsRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetInstanceId(v string) *DescribeInvocationsRequest
+	GetInstanceId() *string
+	SetInvokeStatus(v string) *DescribeInvocationsRequest
+	GetInvokeStatus() *string
+	SetPageNumber(v int32) *DescribeInvocationsRequest
+	GetPageNumber() *int32
+	SetPageSize(v int32) *DescribeInvocationsRequest
+	GetPageSize() *int32
+	SetRegionId(v string) *DescribeInvocationsRequest
+	GetRegionId() *string
 }
 
 type DescribeInvocationsRequest struct {
@@ -8634,11 +13414,31 @@ type DescribeInvocationsRequest struct {
 }
 
 func (s DescribeInvocationsRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeInvocationsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeInvocationsRequest) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *DescribeInvocationsRequest) GetInvokeStatus() *string {
+	return s.InvokeStatus
+}
+
+func (s *DescribeInvocationsRequest) GetPageNumber() *int32 {
+	return s.PageNumber
+}
+
+func (s *DescribeInvocationsRequest) GetPageSize() *int32 {
+	return s.PageSize
+}
+
+func (s *DescribeInvocationsRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *DescribeInvocationsRequest) SetInstanceId(v string) *DescribeInvocationsRequest {
@@ -8664,6 +13464,26 @@ func (s *DescribeInvocationsRequest) SetPageSize(v int32) *DescribeInvocationsRe
 func (s *DescribeInvocationsRequest) SetRegionId(v string) *DescribeInvocationsRequest {
 	s.RegionId = &v
 	return s
+}
+
+func (s *DescribeInvocationsRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDescribeInvocationsResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetInvocations(v []*DescribeInvocationsResponseBodyInvocations) *DescribeInvocationsResponseBody
+	GetInvocations() []*DescribeInvocationsResponseBodyInvocations
+	SetPageNumber(v int32) *DescribeInvocationsResponseBody
+	GetPageNumber() *int32
+	SetPageSize(v int32) *DescribeInvocationsResponseBody
+	GetPageSize() *int32
+	SetRequestId(v string) *DescribeInvocationsResponseBody
+	GetRequestId() *string
+	SetTotalCount(v int32) *DescribeInvocationsResponseBody
+	GetTotalCount() *int32
 }
 
 type DescribeInvocationsResponseBody struct {
@@ -8696,11 +13516,31 @@ type DescribeInvocationsResponseBody struct {
 }
 
 func (s DescribeInvocationsResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeInvocationsResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeInvocationsResponseBody) GetInvocations() []*DescribeInvocationsResponseBodyInvocations {
+	return s.Invocations
+}
+
+func (s *DescribeInvocationsResponseBody) GetPageNumber() *int32 {
+	return s.PageNumber
+}
+
+func (s *DescribeInvocationsResponseBody) GetPageSize() *int32 {
+	return s.PageSize
+}
+
+func (s *DescribeInvocationsResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
+func (s *DescribeInvocationsResponseBody) GetTotalCount() *int32 {
+	return s.TotalCount
 }
 
 func (s *DescribeInvocationsResponseBody) SetInvocations(v []*DescribeInvocationsResponseBodyInvocations) *DescribeInvocationsResponseBody {
@@ -8726,6 +13566,10 @@ func (s *DescribeInvocationsResponseBody) SetRequestId(v string) *DescribeInvoca
 func (s *DescribeInvocationsResponseBody) SetTotalCount(v int32) *DescribeInvocationsResponseBody {
 	s.TotalCount = &v
 	return s
+}
+
+func (s *DescribeInvocationsResponseBody) Validate() error {
+	return dara.Validate(s)
 }
 
 type DescribeInvocationsResponseBodyInvocations struct {
@@ -8816,11 +13660,43 @@ type DescribeInvocationsResponseBodyInvocations struct {
 }
 
 func (s DescribeInvocationsResponseBodyInvocations) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeInvocationsResponseBodyInvocations) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeInvocationsResponseBodyInvocations) GetCommandContent() *string {
+	return s.CommandContent
+}
+
+func (s *DescribeInvocationsResponseBodyInvocations) GetCommandName() *string {
+	return s.CommandName
+}
+
+func (s *DescribeInvocationsResponseBodyInvocations) GetCommandType() *string {
+	return s.CommandType
+}
+
+func (s *DescribeInvocationsResponseBodyInvocations) GetCreationTime() *string {
+	return s.CreationTime
+}
+
+func (s *DescribeInvocationsResponseBodyInvocations) GetInvocationStatus() *string {
+	return s.InvocationStatus
+}
+
+func (s *DescribeInvocationsResponseBodyInvocations) GetInvokeId() *string {
+	return s.InvokeId
+}
+
+func (s *DescribeInvocationsResponseBodyInvocations) GetInvokeStatus() *string {
+	return s.InvokeStatus
+}
+
+func (s *DescribeInvocationsResponseBodyInvocations) GetParameters() map[string]interface{} {
+	return s.Parameters
 }
 
 func (s *DescribeInvocationsResponseBodyInvocations) SetCommandContent(v string) *DescribeInvocationsResponseBodyInvocations {
@@ -8863,6 +13739,22 @@ func (s *DescribeInvocationsResponseBodyInvocations) SetParameters(v map[string]
 	return s
 }
 
+func (s *DescribeInvocationsResponseBodyInvocations) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDescribeInvocationsResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *DescribeInvocationsResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *DescribeInvocationsResponse
+	GetStatusCode() *int32
+	SetBody(v *DescribeInvocationsResponseBody) *DescribeInvocationsResponse
+	GetBody() *DescribeInvocationsResponseBody
+}
+
 type DescribeInvocationsResponse struct {
 	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -8870,11 +13762,23 @@ type DescribeInvocationsResponse struct {
 }
 
 func (s DescribeInvocationsResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeInvocationsResponse) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeInvocationsResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *DescribeInvocationsResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *DescribeInvocationsResponse) GetBody() *DescribeInvocationsResponseBody {
+	return s.Body
 }
 
 func (s *DescribeInvocationsResponse) SetHeaders(v map[string]*string) *DescribeInvocationsResponse {
@@ -8890,6 +13794,34 @@ func (s *DescribeInvocationsResponse) SetStatusCode(v int32) *DescribeInvocation
 func (s *DescribeInvocationsResponse) SetBody(v *DescribeInvocationsResponseBody) *DescribeInvocationsResponse {
 	s.Body = v
 	return s
+}
+
+func (s *DescribeInvocationsResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDescribeMonitorDataRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientToken(v string) *DescribeMonitorDataRequest
+	GetClientToken() *string
+	SetEndTime(v string) *DescribeMonitorDataRequest
+	GetEndTime() *string
+	SetInstanceId(v string) *DescribeMonitorDataRequest
+	GetInstanceId() *string
+	SetLength(v string) *DescribeMonitorDataRequest
+	GetLength() *string
+	SetMetricName(v string) *DescribeMonitorDataRequest
+	GetMetricName() *string
+	SetNextToken(v string) *DescribeMonitorDataRequest
+	GetNextToken() *string
+	SetPeriod(v string) *DescribeMonitorDataRequest
+	GetPeriod() *string
+	SetRegionId(v string) *DescribeMonitorDataRequest
+	GetRegionId() *string
+	SetStartTime(v string) *DescribeMonitorDataRequest
+	GetStartTime() *string
 }
 
 type DescribeMonitorDataRequest struct {
@@ -8996,11 +13928,47 @@ type DescribeMonitorDataRequest struct {
 }
 
 func (s DescribeMonitorDataRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeMonitorDataRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeMonitorDataRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *DescribeMonitorDataRequest) GetEndTime() *string {
+	return s.EndTime
+}
+
+func (s *DescribeMonitorDataRequest) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *DescribeMonitorDataRequest) GetLength() *string {
+	return s.Length
+}
+
+func (s *DescribeMonitorDataRequest) GetMetricName() *string {
+	return s.MetricName
+}
+
+func (s *DescribeMonitorDataRequest) GetNextToken() *string {
+	return s.NextToken
+}
+
+func (s *DescribeMonitorDataRequest) GetPeriod() *string {
+	return s.Period
+}
+
+func (s *DescribeMonitorDataRequest) GetRegionId() *string {
+	return s.RegionId
+}
+
+func (s *DescribeMonitorDataRequest) GetStartTime() *string {
+	return s.StartTime
 }
 
 func (s *DescribeMonitorDataRequest) SetClientToken(v string) *DescribeMonitorDataRequest {
@@ -9048,6 +14016,24 @@ func (s *DescribeMonitorDataRequest) SetStartTime(v string) *DescribeMonitorData
 	return s
 }
 
+func (s *DescribeMonitorDataRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDescribeMonitorDataResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetDatapoints(v string) *DescribeMonitorDataResponseBody
+	GetDatapoints() *string
+	SetNextToken(v string) *DescribeMonitorDataResponseBody
+	GetNextToken() *string
+	SetPeriod(v string) *DescribeMonitorDataResponseBody
+	GetPeriod() *string
+	SetRequestId(v string) *DescribeMonitorDataResponseBody
+	GetRequestId() *string
+}
+
 type DescribeMonitorDataResponseBody struct {
 	// The monitoring data.
 	//
@@ -9078,11 +14064,27 @@ type DescribeMonitorDataResponseBody struct {
 }
 
 func (s DescribeMonitorDataResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeMonitorDataResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeMonitorDataResponseBody) GetDatapoints() *string {
+	return s.Datapoints
+}
+
+func (s *DescribeMonitorDataResponseBody) GetNextToken() *string {
+	return s.NextToken
+}
+
+func (s *DescribeMonitorDataResponseBody) GetPeriod() *string {
+	return s.Period
+}
+
+func (s *DescribeMonitorDataResponseBody) GetRequestId() *string {
+	return s.RequestId
 }
 
 func (s *DescribeMonitorDataResponseBody) SetDatapoints(v string) *DescribeMonitorDataResponseBody {
@@ -9105,6 +14107,22 @@ func (s *DescribeMonitorDataResponseBody) SetRequestId(v string) *DescribeMonito
 	return s
 }
 
+func (s *DescribeMonitorDataResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDescribeMonitorDataResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *DescribeMonitorDataResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *DescribeMonitorDataResponse
+	GetStatusCode() *int32
+	SetBody(v *DescribeMonitorDataResponseBody) *DescribeMonitorDataResponse
+	GetBody() *DescribeMonitorDataResponseBody
+}
+
 type DescribeMonitorDataResponse struct {
 	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -9112,11 +14130,23 @@ type DescribeMonitorDataResponse struct {
 }
 
 func (s DescribeMonitorDataResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeMonitorDataResponse) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeMonitorDataResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *DescribeMonitorDataResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *DescribeMonitorDataResponse) GetBody() *DescribeMonitorDataResponseBody {
+	return s.Body
 }
 
 func (s *DescribeMonitorDataResponse) SetHeaders(v map[string]*string) *DescribeMonitorDataResponse {
@@ -9132,6 +14162,22 @@ func (s *DescribeMonitorDataResponse) SetStatusCode(v int32) *DescribeMonitorDat
 func (s *DescribeMonitorDataResponse) SetBody(v *DescribeMonitorDataResponseBody) *DescribeMonitorDataResponse {
 	s.Body = v
 	return s
+}
+
+func (s *DescribeMonitorDataResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDescribeSecurityAgentStatusRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientToken(v string) *DescribeSecurityAgentStatusRequest
+	GetClientToken() *string
+	SetInstanceId(v string) *DescribeSecurityAgentStatusRequest
+	GetInstanceId() *string
+	SetRegionId(v string) *DescribeSecurityAgentStatusRequest
+	GetRegionId() *string
 }
 
 type DescribeSecurityAgentStatusRequest struct {
@@ -9160,11 +14206,23 @@ type DescribeSecurityAgentStatusRequest struct {
 }
 
 func (s DescribeSecurityAgentStatusRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeSecurityAgentStatusRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeSecurityAgentStatusRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *DescribeSecurityAgentStatusRequest) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *DescribeSecurityAgentStatusRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *DescribeSecurityAgentStatusRequest) SetClientToken(v string) *DescribeSecurityAgentStatusRequest {
@@ -9180,6 +14238,20 @@ func (s *DescribeSecurityAgentStatusRequest) SetInstanceId(v string) *DescribeSe
 func (s *DescribeSecurityAgentStatusRequest) SetRegionId(v string) *DescribeSecurityAgentStatusRequest {
 	s.RegionId = &v
 	return s
+}
+
+func (s *DescribeSecurityAgentStatusRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDescribeSecurityAgentStatusResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientStatus(v string) *DescribeSecurityAgentStatusResponseBody
+	GetClientStatus() *string
+	SetRequestId(v string) *DescribeSecurityAgentStatusResponseBody
+	GetRequestId() *string
 }
 
 type DescribeSecurityAgentStatusResponseBody struct {
@@ -9204,11 +14276,19 @@ type DescribeSecurityAgentStatusResponseBody struct {
 }
 
 func (s DescribeSecurityAgentStatusResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeSecurityAgentStatusResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeSecurityAgentStatusResponseBody) GetClientStatus() *string {
+	return s.ClientStatus
+}
+
+func (s *DescribeSecurityAgentStatusResponseBody) GetRequestId() *string {
+	return s.RequestId
 }
 
 func (s *DescribeSecurityAgentStatusResponseBody) SetClientStatus(v string) *DescribeSecurityAgentStatusResponseBody {
@@ -9221,6 +14301,22 @@ func (s *DescribeSecurityAgentStatusResponseBody) SetRequestId(v string) *Descri
 	return s
 }
 
+func (s *DescribeSecurityAgentStatusResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDescribeSecurityAgentStatusResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *DescribeSecurityAgentStatusResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *DescribeSecurityAgentStatusResponse
+	GetStatusCode() *int32
+	SetBody(v *DescribeSecurityAgentStatusResponseBody) *DescribeSecurityAgentStatusResponse
+	GetBody() *DescribeSecurityAgentStatusResponseBody
+}
+
 type DescribeSecurityAgentStatusResponse struct {
 	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -9228,11 +14324,23 @@ type DescribeSecurityAgentStatusResponse struct {
 }
 
 func (s DescribeSecurityAgentStatusResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DescribeSecurityAgentStatusResponse) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeSecurityAgentStatusResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *DescribeSecurityAgentStatusResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *DescribeSecurityAgentStatusResponse) GetBody() *DescribeSecurityAgentStatusResponseBody {
+	return s.Body
 }
 
 func (s *DescribeSecurityAgentStatusResponse) SetHeaders(v map[string]*string) *DescribeSecurityAgentStatusResponse {
@@ -9248,6 +14356,24 @@ func (s *DescribeSecurityAgentStatusResponse) SetStatusCode(v int32) *DescribeSe
 func (s *DescribeSecurityAgentStatusResponse) SetBody(v *DescribeSecurityAgentStatusResponseBody) *DescribeSecurityAgentStatusResponse {
 	s.Body = v
 	return s
+}
+
+func (s *DescribeSecurityAgentStatusResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDetachKeyPairRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientToken(v string) *DetachKeyPairRequest
+	GetClientToken() *string
+	SetInstanceIds(v []*string) *DetachKeyPairRequest
+	GetInstanceIds() []*string
+	SetKeyPairName(v string) *DetachKeyPairRequest
+	GetKeyPairName() *string
+	SetRegionId(v string) *DetachKeyPairRequest
+	GetRegionId() *string
 }
 
 type DetachKeyPairRequest struct {
@@ -9280,11 +14406,27 @@ type DetachKeyPairRequest struct {
 }
 
 func (s DetachKeyPairRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DetachKeyPairRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DetachKeyPairRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *DetachKeyPairRequest) GetInstanceIds() []*string {
+	return s.InstanceIds
+}
+
+func (s *DetachKeyPairRequest) GetKeyPairName() *string {
+	return s.KeyPairName
+}
+
+func (s *DetachKeyPairRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *DetachKeyPairRequest) SetClientToken(v string) *DetachKeyPairRequest {
@@ -9305,6 +14447,24 @@ func (s *DetachKeyPairRequest) SetKeyPairName(v string) *DetachKeyPairRequest {
 func (s *DetachKeyPairRequest) SetRegionId(v string) *DetachKeyPairRequest {
 	s.RegionId = &v
 	return s
+}
+
+func (s *DetachKeyPairRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDetachKeyPairResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetFailCount(v int32) *DetachKeyPairResponseBody
+	GetFailCount() *int32
+	SetRequestId(v string) *DetachKeyPairResponseBody
+	GetRequestId() *string
+	SetResults(v []*DetachKeyPairResponseBodyResults) *DetachKeyPairResponseBody
+	GetResults() []*DetachKeyPairResponseBodyResults
+	SetTotalCount(v int32) *DetachKeyPairResponseBody
+	GetTotalCount() *int32
 }
 
 type DetachKeyPairResponseBody struct {
@@ -9331,11 +14491,27 @@ type DetachKeyPairResponseBody struct {
 }
 
 func (s DetachKeyPairResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DetachKeyPairResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DetachKeyPairResponseBody) GetFailCount() *int32 {
+	return s.FailCount
+}
+
+func (s *DetachKeyPairResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
+func (s *DetachKeyPairResponseBody) GetResults() []*DetachKeyPairResponseBodyResults {
+	return s.Results
+}
+
+func (s *DetachKeyPairResponseBody) GetTotalCount() *int32 {
+	return s.TotalCount
 }
 
 func (s *DetachKeyPairResponseBody) SetFailCount(v int32) *DetachKeyPairResponseBody {
@@ -9356,6 +14532,10 @@ func (s *DetachKeyPairResponseBody) SetResults(v []*DetachKeyPairResponseBodyRes
 func (s *DetachKeyPairResponseBody) SetTotalCount(v int32) *DetachKeyPairResponseBody {
 	s.TotalCount = &v
 	return s
+}
+
+func (s *DetachKeyPairResponseBody) Validate() error {
+	return dara.Validate(s)
 }
 
 type DetachKeyPairResponseBodyResults struct {
@@ -9390,11 +14570,27 @@ type DetachKeyPairResponseBodyResults struct {
 }
 
 func (s DetachKeyPairResponseBodyResults) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DetachKeyPairResponseBodyResults) GoString() string {
 	return s.String()
+}
+
+func (s *DetachKeyPairResponseBodyResults) GetCode() *string {
+	return s.Code
+}
+
+func (s *DetachKeyPairResponseBodyResults) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *DetachKeyPairResponseBodyResults) GetMessage() *string {
+	return s.Message
+}
+
+func (s *DetachKeyPairResponseBodyResults) GetSuccess() *string {
+	return s.Success
 }
 
 func (s *DetachKeyPairResponseBodyResults) SetCode(v string) *DetachKeyPairResponseBodyResults {
@@ -9417,6 +14613,22 @@ func (s *DetachKeyPairResponseBodyResults) SetSuccess(v string) *DetachKeyPairRe
 	return s
 }
 
+func (s *DetachKeyPairResponseBodyResults) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDetachKeyPairResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *DetachKeyPairResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *DetachKeyPairResponse
+	GetStatusCode() *int32
+	SetBody(v *DetachKeyPairResponseBody) *DetachKeyPairResponse
+	GetBody() *DetachKeyPairResponseBody
+}
+
 type DetachKeyPairResponse struct {
 	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -9424,11 +14636,23 @@ type DetachKeyPairResponse struct {
 }
 
 func (s DetachKeyPairResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DetachKeyPairResponse) GoString() string {
 	return s.String()
+}
+
+func (s *DetachKeyPairResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *DetachKeyPairResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *DetachKeyPairResponse) GetBody() *DetachKeyPairResponseBody {
+	return s.Body
 }
 
 func (s *DetachKeyPairResponse) SetHeaders(v map[string]*string) *DetachKeyPairResponse {
@@ -9444,6 +14668,26 @@ func (s *DetachKeyPairResponse) SetStatusCode(v int32) *DetachKeyPairResponse {
 func (s *DetachKeyPairResponse) SetBody(v *DetachKeyPairResponseBody) *DetachKeyPairResponse {
 	s.Body = v
 	return s
+}
+
+func (s *DetachKeyPairResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDisableFirewallRuleRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientToken(v string) *DisableFirewallRuleRequest
+	GetClientToken() *string
+	SetInstanceId(v string) *DisableFirewallRuleRequest
+	GetInstanceId() *string
+	SetRegionId(v string) *DisableFirewallRuleRequest
+	GetRegionId() *string
+	SetRemark(v string) *DisableFirewallRuleRequest
+	GetRemark() *string
+	SetRuleId(v string) *DisableFirewallRuleRequest
+	GetRuleId() *string
 }
 
 type DisableFirewallRuleRequest struct {
@@ -9486,11 +14730,31 @@ type DisableFirewallRuleRequest struct {
 }
 
 func (s DisableFirewallRuleRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DisableFirewallRuleRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DisableFirewallRuleRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *DisableFirewallRuleRequest) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *DisableFirewallRuleRequest) GetRegionId() *string {
+	return s.RegionId
+}
+
+func (s *DisableFirewallRuleRequest) GetRemark() *string {
+	return s.Remark
+}
+
+func (s *DisableFirewallRuleRequest) GetRuleId() *string {
+	return s.RuleId
 }
 
 func (s *DisableFirewallRuleRequest) SetClientToken(v string) *DisableFirewallRuleRequest {
@@ -9518,6 +14782,18 @@ func (s *DisableFirewallRuleRequest) SetRuleId(v string) *DisableFirewallRuleReq
 	return s
 }
 
+func (s *DisableFirewallRuleRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDisableFirewallRuleResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetRequestId(v string) *DisableFirewallRuleResponseBody
+	GetRequestId() *string
+}
+
 type DisableFirewallRuleResponseBody struct {
 	// The request ID.
 	//
@@ -9528,16 +14804,36 @@ type DisableFirewallRuleResponseBody struct {
 }
 
 func (s DisableFirewallRuleResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DisableFirewallRuleResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DisableFirewallRuleResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
 func (s *DisableFirewallRuleResponseBody) SetRequestId(v string) *DisableFirewallRuleResponseBody {
 	s.RequestId = &v
 	return s
+}
+
+func (s *DisableFirewallRuleResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iDisableFirewallRuleResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *DisableFirewallRuleResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *DisableFirewallRuleResponse
+	GetStatusCode() *int32
+	SetBody(v *DisableFirewallRuleResponseBody) *DisableFirewallRuleResponse
+	GetBody() *DisableFirewallRuleResponseBody
 }
 
 type DisableFirewallRuleResponse struct {
@@ -9547,11 +14843,23 @@ type DisableFirewallRuleResponse struct {
 }
 
 func (s DisableFirewallRuleResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s DisableFirewallRuleResponse) GoString() string {
 	return s.String()
+}
+
+func (s *DisableFirewallRuleResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *DisableFirewallRuleResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *DisableFirewallRuleResponse) GetBody() *DisableFirewallRuleResponseBody {
+	return s.Body
 }
 
 func (s *DisableFirewallRuleResponse) SetHeaders(v map[string]*string) *DisableFirewallRuleResponse {
@@ -9567,6 +14875,28 @@ func (s *DisableFirewallRuleResponse) SetStatusCode(v int32) *DisableFirewallRul
 func (s *DisableFirewallRuleResponse) SetBody(v *DisableFirewallRuleResponseBody) *DisableFirewallRuleResponse {
 	s.Body = v
 	return s
+}
+
+func (s *DisableFirewallRuleResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iEnableFirewallRuleRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientToken(v string) *EnableFirewallRuleRequest
+	GetClientToken() *string
+	SetInstanceId(v string) *EnableFirewallRuleRequest
+	GetInstanceId() *string
+	SetRegionId(v string) *EnableFirewallRuleRequest
+	GetRegionId() *string
+	SetRemark(v string) *EnableFirewallRuleRequest
+	GetRemark() *string
+	SetRuleId(v string) *EnableFirewallRuleRequest
+	GetRuleId() *string
+	SetSourceCidrIp(v string) *EnableFirewallRuleRequest
+	GetSourceCidrIp() *string
 }
 
 type EnableFirewallRuleRequest struct {
@@ -9615,11 +14945,35 @@ type EnableFirewallRuleRequest struct {
 }
 
 func (s EnableFirewallRuleRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s EnableFirewallRuleRequest) GoString() string {
 	return s.String()
+}
+
+func (s *EnableFirewallRuleRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *EnableFirewallRuleRequest) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *EnableFirewallRuleRequest) GetRegionId() *string {
+	return s.RegionId
+}
+
+func (s *EnableFirewallRuleRequest) GetRemark() *string {
+	return s.Remark
+}
+
+func (s *EnableFirewallRuleRequest) GetRuleId() *string {
+	return s.RuleId
+}
+
+func (s *EnableFirewallRuleRequest) GetSourceCidrIp() *string {
+	return s.SourceCidrIp
 }
 
 func (s *EnableFirewallRuleRequest) SetClientToken(v string) *EnableFirewallRuleRequest {
@@ -9652,6 +15006,18 @@ func (s *EnableFirewallRuleRequest) SetSourceCidrIp(v string) *EnableFirewallRul
 	return s
 }
 
+func (s *EnableFirewallRuleRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iEnableFirewallRuleResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetRequestId(v string) *EnableFirewallRuleResponseBody
+	GetRequestId() *string
+}
+
 type EnableFirewallRuleResponseBody struct {
 	// The request ID.
 	//
@@ -9662,16 +15028,36 @@ type EnableFirewallRuleResponseBody struct {
 }
 
 func (s EnableFirewallRuleResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s EnableFirewallRuleResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *EnableFirewallRuleResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
 func (s *EnableFirewallRuleResponseBody) SetRequestId(v string) *EnableFirewallRuleResponseBody {
 	s.RequestId = &v
 	return s
+}
+
+func (s *EnableFirewallRuleResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iEnableFirewallRuleResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *EnableFirewallRuleResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *EnableFirewallRuleResponse
+	GetStatusCode() *int32
+	SetBody(v *EnableFirewallRuleResponseBody) *EnableFirewallRuleResponse
+	GetBody() *EnableFirewallRuleResponseBody
 }
 
 type EnableFirewallRuleResponse struct {
@@ -9681,11 +15067,23 @@ type EnableFirewallRuleResponse struct {
 }
 
 func (s EnableFirewallRuleResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s EnableFirewallRuleResponse) GoString() string {
 	return s.String()
+}
+
+func (s *EnableFirewallRuleResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *EnableFirewallRuleResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *EnableFirewallRuleResponse) GetBody() *EnableFirewallRuleResponseBody {
+	return s.Body
 }
 
 func (s *EnableFirewallRuleResponse) SetHeaders(v map[string]*string) *EnableFirewallRuleResponse {
@@ -9701,6 +15099,24 @@ func (s *EnableFirewallRuleResponse) SetStatusCode(v int32) *EnableFirewallRuleR
 func (s *EnableFirewallRuleResponse) SetBody(v *EnableFirewallRuleResponseBody) *EnableFirewallRuleResponse {
 	s.Body = v
 	return s
+}
+
+func (s *EnableFirewallRuleResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iImportKeyPairRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientToken(v string) *ImportKeyPairRequest
+	GetClientToken() *string
+	SetKeyPairName(v string) *ImportKeyPairRequest
+	GetKeyPairName() *string
+	SetPublicKeyBody(v string) *ImportKeyPairRequest
+	GetPublicKeyBody() *string
+	SetRegionId(v string) *ImportKeyPairRequest
+	GetRegionId() *string
 }
 
 type ImportKeyPairRequest struct {
@@ -9737,11 +15153,27 @@ type ImportKeyPairRequest struct {
 }
 
 func (s ImportKeyPairRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ImportKeyPairRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ImportKeyPairRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *ImportKeyPairRequest) GetKeyPairName() *string {
+	return s.KeyPairName
+}
+
+func (s *ImportKeyPairRequest) GetPublicKeyBody() *string {
+	return s.PublicKeyBody
+}
+
+func (s *ImportKeyPairRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *ImportKeyPairRequest) SetClientToken(v string) *ImportKeyPairRequest {
@@ -9764,6 +15196,20 @@ func (s *ImportKeyPairRequest) SetRegionId(v string) *ImportKeyPairRequest {
 	return s
 }
 
+func (s *ImportKeyPairRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iImportKeyPairResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetKeyPairName(v string) *ImportKeyPairResponseBody
+	GetKeyPairName() *string
+	SetRequestId(v string) *ImportKeyPairResponseBody
+	GetRequestId() *string
+}
+
 type ImportKeyPairResponseBody struct {
 	// The name of the key pair. The name must be 2 to 64 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). The name must start with a letter and cannot start with http:// or https://.
 	//
@@ -9780,11 +15226,19 @@ type ImportKeyPairResponseBody struct {
 }
 
 func (s ImportKeyPairResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ImportKeyPairResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ImportKeyPairResponseBody) GetKeyPairName() *string {
+	return s.KeyPairName
+}
+
+func (s *ImportKeyPairResponseBody) GetRequestId() *string {
+	return s.RequestId
 }
 
 func (s *ImportKeyPairResponseBody) SetKeyPairName(v string) *ImportKeyPairResponseBody {
@@ -9797,6 +15251,22 @@ func (s *ImportKeyPairResponseBody) SetRequestId(v string) *ImportKeyPairRespons
 	return s
 }
 
+func (s *ImportKeyPairResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iImportKeyPairResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *ImportKeyPairResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *ImportKeyPairResponse
+	GetStatusCode() *int32
+	SetBody(v *ImportKeyPairResponseBody) *ImportKeyPairResponse
+	GetBody() *ImportKeyPairResponseBody
+}
+
 type ImportKeyPairResponse struct {
 	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -9804,11 +15274,23 @@ type ImportKeyPairResponse struct {
 }
 
 func (s ImportKeyPairResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ImportKeyPairResponse) GoString() string {
 	return s.String()
+}
+
+func (s *ImportKeyPairResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *ImportKeyPairResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *ImportKeyPairResponse) GetBody() *ImportKeyPairResponseBody {
+	return s.Body
 }
 
 func (s *ImportKeyPairResponse) SetHeaders(v map[string]*string) *ImportKeyPairResponse {
@@ -9824,6 +15306,20 @@ func (s *ImportKeyPairResponse) SetStatusCode(v int32) *ImportKeyPairResponse {
 func (s *ImportKeyPairResponse) SetBody(v *ImportKeyPairResponseBody) *ImportKeyPairResponse {
 	s.Body = v
 	return s
+}
+
+func (s *ImportKeyPairResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iInstallCloudAssistantRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetInstanceIds(v []*string) *InstallCloudAssistantRequest
+	GetInstanceIds() []*string
+	SetRegionId(v string) *InstallCloudAssistantRequest
+	GetRegionId() *string
 }
 
 type InstallCloudAssistantRequest struct {
@@ -9842,11 +15338,19 @@ type InstallCloudAssistantRequest struct {
 }
 
 func (s InstallCloudAssistantRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s InstallCloudAssistantRequest) GoString() string {
 	return s.String()
+}
+
+func (s *InstallCloudAssistantRequest) GetInstanceIds() []*string {
+	return s.InstanceIds
+}
+
+func (s *InstallCloudAssistantRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *InstallCloudAssistantRequest) SetInstanceIds(v []*string) *InstallCloudAssistantRequest {
@@ -9857,6 +15361,20 @@ func (s *InstallCloudAssistantRequest) SetInstanceIds(v []*string) *InstallCloud
 func (s *InstallCloudAssistantRequest) SetRegionId(v string) *InstallCloudAssistantRequest {
 	s.RegionId = &v
 	return s
+}
+
+func (s *InstallCloudAssistantRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iInstallCloudAssistantShrinkRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetInstanceIdsShrink(v string) *InstallCloudAssistantShrinkRequest
+	GetInstanceIdsShrink() *string
+	SetRegionId(v string) *InstallCloudAssistantShrinkRequest
+	GetRegionId() *string
 }
 
 type InstallCloudAssistantShrinkRequest struct {
@@ -9875,11 +15393,19 @@ type InstallCloudAssistantShrinkRequest struct {
 }
 
 func (s InstallCloudAssistantShrinkRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s InstallCloudAssistantShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *InstallCloudAssistantShrinkRequest) GetInstanceIdsShrink() *string {
+	return s.InstanceIdsShrink
+}
+
+func (s *InstallCloudAssistantShrinkRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *InstallCloudAssistantShrinkRequest) SetInstanceIdsShrink(v string) *InstallCloudAssistantShrinkRequest {
@@ -9892,6 +15418,18 @@ func (s *InstallCloudAssistantShrinkRequest) SetRegionId(v string) *InstallCloud
 	return s
 }
 
+func (s *InstallCloudAssistantShrinkRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iInstallCloudAssistantResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetRequestId(v string) *InstallCloudAssistantResponseBody
+	GetRequestId() *string
+}
+
 type InstallCloudAssistantResponseBody struct {
 	// The request ID.
 	//
@@ -9902,16 +15440,36 @@ type InstallCloudAssistantResponseBody struct {
 }
 
 func (s InstallCloudAssistantResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s InstallCloudAssistantResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *InstallCloudAssistantResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
 func (s *InstallCloudAssistantResponseBody) SetRequestId(v string) *InstallCloudAssistantResponseBody {
 	s.RequestId = &v
 	return s
+}
+
+func (s *InstallCloudAssistantResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iInstallCloudAssistantResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *InstallCloudAssistantResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *InstallCloudAssistantResponse
+	GetStatusCode() *int32
+	SetBody(v *InstallCloudAssistantResponseBody) *InstallCloudAssistantResponse
+	GetBody() *InstallCloudAssistantResponseBody
 }
 
 type InstallCloudAssistantResponse struct {
@@ -9921,11 +15479,23 @@ type InstallCloudAssistantResponse struct {
 }
 
 func (s InstallCloudAssistantResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s InstallCloudAssistantResponse) GoString() string {
 	return s.String()
+}
+
+func (s *InstallCloudAssistantResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *InstallCloudAssistantResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *InstallCloudAssistantResponse) GetBody() *InstallCloudAssistantResponseBody {
+	return s.Body
 }
 
 func (s *InstallCloudAssistantResponse) SetHeaders(v map[string]*string) *InstallCloudAssistantResponse {
@@ -9941,6 +15511,24 @@ func (s *InstallCloudAssistantResponse) SetStatusCode(v int32) *InstallCloudAssi
 func (s *InstallCloudAssistantResponse) SetBody(v *InstallCloudAssistantResponseBody) *InstallCloudAssistantResponse {
 	s.Body = v
 	return s
+}
+
+func (s *InstallCloudAssistantResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iInstallCloudMonitorAgentRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientToken(v string) *InstallCloudMonitorAgentRequest
+	GetClientToken() *string
+	SetForce(v bool) *InstallCloudMonitorAgentRequest
+	GetForce() *bool
+	SetInstanceId(v string) *InstallCloudMonitorAgentRequest
+	GetInstanceId() *string
+	SetRegionId(v string) *InstallCloudMonitorAgentRequest
+	GetRegionId() *string
 }
 
 type InstallCloudMonitorAgentRequest struct {
@@ -9979,11 +15567,27 @@ type InstallCloudMonitorAgentRequest struct {
 }
 
 func (s InstallCloudMonitorAgentRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s InstallCloudMonitorAgentRequest) GoString() string {
 	return s.String()
+}
+
+func (s *InstallCloudMonitorAgentRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *InstallCloudMonitorAgentRequest) GetForce() *bool {
+	return s.Force
+}
+
+func (s *InstallCloudMonitorAgentRequest) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *InstallCloudMonitorAgentRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *InstallCloudMonitorAgentRequest) SetClientToken(v string) *InstallCloudMonitorAgentRequest {
@@ -10006,6 +15610,18 @@ func (s *InstallCloudMonitorAgentRequest) SetRegionId(v string) *InstallCloudMon
 	return s
 }
 
+func (s *InstallCloudMonitorAgentRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iInstallCloudMonitorAgentResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetRequestId(v string) *InstallCloudMonitorAgentResponseBody
+	GetRequestId() *string
+}
+
 type InstallCloudMonitorAgentResponseBody struct {
 	// The request ID.
 	//
@@ -10016,16 +15632,36 @@ type InstallCloudMonitorAgentResponseBody struct {
 }
 
 func (s InstallCloudMonitorAgentResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s InstallCloudMonitorAgentResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *InstallCloudMonitorAgentResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
 func (s *InstallCloudMonitorAgentResponseBody) SetRequestId(v string) *InstallCloudMonitorAgentResponseBody {
 	s.RequestId = &v
 	return s
+}
+
+func (s *InstallCloudMonitorAgentResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iInstallCloudMonitorAgentResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *InstallCloudMonitorAgentResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *InstallCloudMonitorAgentResponse
+	GetStatusCode() *int32
+	SetBody(v *InstallCloudMonitorAgentResponseBody) *InstallCloudMonitorAgentResponse
+	GetBody() *InstallCloudMonitorAgentResponseBody
 }
 
 type InstallCloudMonitorAgentResponse struct {
@@ -10035,11 +15671,23 @@ type InstallCloudMonitorAgentResponse struct {
 }
 
 func (s InstallCloudMonitorAgentResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s InstallCloudMonitorAgentResponse) GoString() string {
 	return s.String()
+}
+
+func (s *InstallCloudMonitorAgentResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *InstallCloudMonitorAgentResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *InstallCloudMonitorAgentResponse) GetBody() *InstallCloudMonitorAgentResponseBody {
+	return s.Body
 }
 
 func (s *InstallCloudMonitorAgentResponse) SetHeaders(v map[string]*string) *InstallCloudMonitorAgentResponse {
@@ -10055,6 +15703,26 @@ func (s *InstallCloudMonitorAgentResponse) SetStatusCode(v int32) *InstallCloudM
 func (s *InstallCloudMonitorAgentResponse) SetBody(v *InstallCloudMonitorAgentResponseBody) *InstallCloudMonitorAgentResponse {
 	s.Body = v
 	return s
+}
+
+func (s *InstallCloudMonitorAgentResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iInvokeCommandRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetCommandId(v string) *InvokeCommandRequest
+	GetCommandId() *string
+	SetInstanceIds(v string) *InvokeCommandRequest
+	GetInstanceIds() *string
+	SetParameters(v map[string]interface{}) *InvokeCommandRequest
+	GetParameters() map[string]interface{}
+	SetRegionId(v string) *InvokeCommandRequest
+	GetRegionId() *string
+	SetUsername(v string) *InvokeCommandRequest
+	GetUsername() *string
 }
 
 type InvokeCommandRequest struct {
@@ -10111,11 +15779,31 @@ type InvokeCommandRequest struct {
 }
 
 func (s InvokeCommandRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s InvokeCommandRequest) GoString() string {
 	return s.String()
+}
+
+func (s *InvokeCommandRequest) GetCommandId() *string {
+	return s.CommandId
+}
+
+func (s *InvokeCommandRequest) GetInstanceIds() *string {
+	return s.InstanceIds
+}
+
+func (s *InvokeCommandRequest) GetParameters() map[string]interface{} {
+	return s.Parameters
+}
+
+func (s *InvokeCommandRequest) GetRegionId() *string {
+	return s.RegionId
+}
+
+func (s *InvokeCommandRequest) GetUsername() *string {
+	return s.Username
 }
 
 func (s *InvokeCommandRequest) SetCommandId(v string) *InvokeCommandRequest {
@@ -10141,6 +15829,26 @@ func (s *InvokeCommandRequest) SetRegionId(v string) *InvokeCommandRequest {
 func (s *InvokeCommandRequest) SetUsername(v string) *InvokeCommandRequest {
 	s.Username = &v
 	return s
+}
+
+func (s *InvokeCommandRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iInvokeCommandShrinkRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetCommandId(v string) *InvokeCommandShrinkRequest
+	GetCommandId() *string
+	SetInstanceIds(v string) *InvokeCommandShrinkRequest
+	GetInstanceIds() *string
+	SetParametersShrink(v string) *InvokeCommandShrinkRequest
+	GetParametersShrink() *string
+	SetRegionId(v string) *InvokeCommandShrinkRequest
+	GetRegionId() *string
+	SetUsername(v string) *InvokeCommandShrinkRequest
+	GetUsername() *string
 }
 
 type InvokeCommandShrinkRequest struct {
@@ -10197,11 +15905,31 @@ type InvokeCommandShrinkRequest struct {
 }
 
 func (s InvokeCommandShrinkRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s InvokeCommandShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *InvokeCommandShrinkRequest) GetCommandId() *string {
+	return s.CommandId
+}
+
+func (s *InvokeCommandShrinkRequest) GetInstanceIds() *string {
+	return s.InstanceIds
+}
+
+func (s *InvokeCommandShrinkRequest) GetParametersShrink() *string {
+	return s.ParametersShrink
+}
+
+func (s *InvokeCommandShrinkRequest) GetRegionId() *string {
+	return s.RegionId
+}
+
+func (s *InvokeCommandShrinkRequest) GetUsername() *string {
+	return s.Username
 }
 
 func (s *InvokeCommandShrinkRequest) SetCommandId(v string) *InvokeCommandShrinkRequest {
@@ -10229,6 +15957,20 @@ func (s *InvokeCommandShrinkRequest) SetUsername(v string) *InvokeCommandShrinkR
 	return s
 }
 
+func (s *InvokeCommandShrinkRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iInvokeCommandResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetInvokeId(v string) *InvokeCommandResponseBody
+	GetInvokeId() *string
+	SetRequestId(v string) *InvokeCommandResponseBody
+	GetRequestId() *string
+}
+
 type InvokeCommandResponseBody struct {
 	// The execution ID of the command.
 	//
@@ -10245,11 +15987,19 @@ type InvokeCommandResponseBody struct {
 }
 
 func (s InvokeCommandResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s InvokeCommandResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *InvokeCommandResponseBody) GetInvokeId() *string {
+	return s.InvokeId
+}
+
+func (s *InvokeCommandResponseBody) GetRequestId() *string {
+	return s.RequestId
 }
 
 func (s *InvokeCommandResponseBody) SetInvokeId(v string) *InvokeCommandResponseBody {
@@ -10262,6 +16012,22 @@ func (s *InvokeCommandResponseBody) SetRequestId(v string) *InvokeCommandRespons
 	return s
 }
 
+func (s *InvokeCommandResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iInvokeCommandResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *InvokeCommandResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *InvokeCommandResponse
+	GetStatusCode() *int32
+	SetBody(v *InvokeCommandResponseBody) *InvokeCommandResponse
+	GetBody() *InvokeCommandResponseBody
+}
+
 type InvokeCommandResponse struct {
 	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -10269,11 +16035,23 @@ type InvokeCommandResponse struct {
 }
 
 func (s InvokeCommandResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s InvokeCommandResponse) GoString() string {
 	return s.String()
+}
+
+func (s *InvokeCommandResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *InvokeCommandResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *InvokeCommandResponse) GetBody() *InvokeCommandResponseBody {
+	return s.Body
 }
 
 func (s *InvokeCommandResponse) SetHeaders(v map[string]*string) *InvokeCommandResponse {
@@ -10289,6 +16067,26 @@ func (s *InvokeCommandResponse) SetStatusCode(v int32) *InvokeCommandResponse {
 func (s *InvokeCommandResponse) SetBody(v *InvokeCommandResponseBody) *InvokeCommandResponse {
 	s.Body = v
 	return s
+}
+
+func (s *InvokeCommandResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iListCustomImageShareAccountsRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientToken(v string) *ListCustomImageShareAccountsRequest
+	GetClientToken() *string
+	SetImageId(v string) *ListCustomImageShareAccountsRequest
+	GetImageId() *string
+	SetPageNumber(v int32) *ListCustomImageShareAccountsRequest
+	GetPageNumber() *int32
+	SetPageSize(v int32) *ListCustomImageShareAccountsRequest
+	GetPageSize() *int32
+	SetRegionId(v string) *ListCustomImageShareAccountsRequest
+	GetRegionId() *string
 }
 
 type ListCustomImageShareAccountsRequest struct {
@@ -10333,11 +16131,31 @@ type ListCustomImageShareAccountsRequest struct {
 }
 
 func (s ListCustomImageShareAccountsRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListCustomImageShareAccountsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListCustomImageShareAccountsRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *ListCustomImageShareAccountsRequest) GetImageId() *string {
+	return s.ImageId
+}
+
+func (s *ListCustomImageShareAccountsRequest) GetPageNumber() *int32 {
+	return s.PageNumber
+}
+
+func (s *ListCustomImageShareAccountsRequest) GetPageSize() *int32 {
+	return s.PageSize
+}
+
+func (s *ListCustomImageShareAccountsRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *ListCustomImageShareAccountsRequest) SetClientToken(v string) *ListCustomImageShareAccountsRequest {
@@ -10363,6 +16181,26 @@ func (s *ListCustomImageShareAccountsRequest) SetPageSize(v int32) *ListCustomIm
 func (s *ListCustomImageShareAccountsRequest) SetRegionId(v string) *ListCustomImageShareAccountsRequest {
 	s.RegionId = &v
 	return s
+}
+
+func (s *ListCustomImageShareAccountsRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iListCustomImageShareAccountsResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetImageShareUsers(v []*ListCustomImageShareAccountsResponseBodyImageShareUsers) *ListCustomImageShareAccountsResponseBody
+	GetImageShareUsers() []*ListCustomImageShareAccountsResponseBodyImageShareUsers
+	SetPageNumber(v int32) *ListCustomImageShareAccountsResponseBody
+	GetPageNumber() *int32
+	SetPageSize(v int32) *ListCustomImageShareAccountsResponseBody
+	GetPageSize() *int32
+	SetRequestId(v string) *ListCustomImageShareAccountsResponseBody
+	GetRequestId() *string
+	SetTotalCount(v int32) *ListCustomImageShareAccountsResponseBody
+	GetTotalCount() *int32
 }
 
 type ListCustomImageShareAccountsResponseBody struct {
@@ -10395,11 +16233,31 @@ type ListCustomImageShareAccountsResponseBody struct {
 }
 
 func (s ListCustomImageShareAccountsResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListCustomImageShareAccountsResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListCustomImageShareAccountsResponseBody) GetImageShareUsers() []*ListCustomImageShareAccountsResponseBodyImageShareUsers {
+	return s.ImageShareUsers
+}
+
+func (s *ListCustomImageShareAccountsResponseBody) GetPageNumber() *int32 {
+	return s.PageNumber
+}
+
+func (s *ListCustomImageShareAccountsResponseBody) GetPageSize() *int32 {
+	return s.PageSize
+}
+
+func (s *ListCustomImageShareAccountsResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
+func (s *ListCustomImageShareAccountsResponseBody) GetTotalCount() *int32 {
+	return s.TotalCount
 }
 
 func (s *ListCustomImageShareAccountsResponseBody) SetImageShareUsers(v []*ListCustomImageShareAccountsResponseBodyImageShareUsers) *ListCustomImageShareAccountsResponseBody {
@@ -10427,6 +16285,10 @@ func (s *ListCustomImageShareAccountsResponseBody) SetTotalCount(v int32) *ListC
 	return s
 }
 
+func (s *ListCustomImageShareAccountsResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
 type ListCustomImageShareAccountsResponseBodyImageShareUsers struct {
 	// The time when the custom image is shared.
 	//
@@ -10443,11 +16305,19 @@ type ListCustomImageShareAccountsResponseBodyImageShareUsers struct {
 }
 
 func (s ListCustomImageShareAccountsResponseBodyImageShareUsers) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListCustomImageShareAccountsResponseBodyImageShareUsers) GoString() string {
 	return s.String()
+}
+
+func (s *ListCustomImageShareAccountsResponseBodyImageShareUsers) GetSharedTime() *string {
+	return s.SharedTime
+}
+
+func (s *ListCustomImageShareAccountsResponseBodyImageShareUsers) GetUserId() *int64 {
+	return s.UserId
 }
 
 func (s *ListCustomImageShareAccountsResponseBodyImageShareUsers) SetSharedTime(v string) *ListCustomImageShareAccountsResponseBodyImageShareUsers {
@@ -10460,6 +16330,22 @@ func (s *ListCustomImageShareAccountsResponseBodyImageShareUsers) SetUserId(v in
 	return s
 }
 
+func (s *ListCustomImageShareAccountsResponseBodyImageShareUsers) Validate() error {
+	return dara.Validate(s)
+}
+
+type iListCustomImageShareAccountsResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *ListCustomImageShareAccountsResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *ListCustomImageShareAccountsResponse
+	GetStatusCode() *int32
+	SetBody(v *ListCustomImageShareAccountsResponseBody) *ListCustomImageShareAccountsResponse
+	GetBody() *ListCustomImageShareAccountsResponseBody
+}
+
 type ListCustomImageShareAccountsResponse struct {
 	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -10467,11 +16353,23 @@ type ListCustomImageShareAccountsResponse struct {
 }
 
 func (s ListCustomImageShareAccountsResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListCustomImageShareAccountsResponse) GoString() string {
 	return s.String()
+}
+
+func (s *ListCustomImageShareAccountsResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *ListCustomImageShareAccountsResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *ListCustomImageShareAccountsResponse) GetBody() *ListCustomImageShareAccountsResponseBody {
+	return s.Body
 }
 
 func (s *ListCustomImageShareAccountsResponse) SetHeaders(v map[string]*string) *ListCustomImageShareAccountsResponse {
@@ -10487,6 +16385,40 @@ func (s *ListCustomImageShareAccountsResponse) SetStatusCode(v int32) *ListCusto
 func (s *ListCustomImageShareAccountsResponse) SetBody(v *ListCustomImageShareAccountsResponseBody) *ListCustomImageShareAccountsResponse {
 	s.Body = v
 	return s
+}
+
+func (s *ListCustomImageShareAccountsResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iListCustomImagesRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientToken(v string) *ListCustomImagesRequest
+	GetClientToken() *string
+	SetDataSnapshotId(v string) *ListCustomImagesRequest
+	GetDataSnapshotId() *string
+	SetImageIds(v string) *ListCustomImagesRequest
+	GetImageIds() *string
+	SetImageNames(v string) *ListCustomImagesRequest
+	GetImageNames() *string
+	SetInstanceId(v string) *ListCustomImagesRequest
+	GetInstanceId() *string
+	SetPageNumber(v int32) *ListCustomImagesRequest
+	GetPageNumber() *int32
+	SetPageSize(v int32) *ListCustomImagesRequest
+	GetPageSize() *int32
+	SetRegionId(v string) *ListCustomImagesRequest
+	GetRegionId() *string
+	SetResourceGroupId(v string) *ListCustomImagesRequest
+	GetResourceGroupId() *string
+	SetShare(v bool) *ListCustomImagesRequest
+	GetShare() *bool
+	SetSystemSnapshotId(v string) *ListCustomImagesRequest
+	GetSystemSnapshotId() *string
+	SetTag(v []*ListCustomImagesRequestTag) *ListCustomImagesRequest
+	GetTag() []*ListCustomImagesRequestTag
 }
 
 type ListCustomImagesRequest struct {
@@ -10573,11 +16505,59 @@ type ListCustomImagesRequest struct {
 }
 
 func (s ListCustomImagesRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListCustomImagesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListCustomImagesRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *ListCustomImagesRequest) GetDataSnapshotId() *string {
+	return s.DataSnapshotId
+}
+
+func (s *ListCustomImagesRequest) GetImageIds() *string {
+	return s.ImageIds
+}
+
+func (s *ListCustomImagesRequest) GetImageNames() *string {
+	return s.ImageNames
+}
+
+func (s *ListCustomImagesRequest) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *ListCustomImagesRequest) GetPageNumber() *int32 {
+	return s.PageNumber
+}
+
+func (s *ListCustomImagesRequest) GetPageSize() *int32 {
+	return s.PageSize
+}
+
+func (s *ListCustomImagesRequest) GetRegionId() *string {
+	return s.RegionId
+}
+
+func (s *ListCustomImagesRequest) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
+func (s *ListCustomImagesRequest) GetShare() *bool {
+	return s.Share
+}
+
+func (s *ListCustomImagesRequest) GetSystemSnapshotId() *string {
+	return s.SystemSnapshotId
+}
+
+func (s *ListCustomImagesRequest) GetTag() []*ListCustomImagesRequestTag {
+	return s.Tag
 }
 
 func (s *ListCustomImagesRequest) SetClientToken(v string) *ListCustomImagesRequest {
@@ -10640,6 +16620,10 @@ func (s *ListCustomImagesRequest) SetTag(v []*ListCustomImagesRequestTag) *ListC
 	return s
 }
 
+func (s *ListCustomImagesRequest) Validate() error {
+	return dara.Validate(s)
+}
+
 type ListCustomImagesRequestTag struct {
 	// The key of tag N. A tag key can be 1 to 64 characters in length. Valid values of N: 1 to 20.
 	//
@@ -10656,11 +16640,19 @@ type ListCustomImagesRequestTag struct {
 }
 
 func (s ListCustomImagesRequestTag) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListCustomImagesRequestTag) GoString() string {
 	return s.String()
+}
+
+func (s *ListCustomImagesRequestTag) GetKey() *string {
+	return s.Key
+}
+
+func (s *ListCustomImagesRequestTag) GetValue() *string {
+	return s.Value
 }
 
 func (s *ListCustomImagesRequestTag) SetKey(v string) *ListCustomImagesRequestTag {
@@ -10671,6 +16663,26 @@ func (s *ListCustomImagesRequestTag) SetKey(v string) *ListCustomImagesRequestTa
 func (s *ListCustomImagesRequestTag) SetValue(v string) *ListCustomImagesRequestTag {
 	s.Value = &v
 	return s
+}
+
+func (s *ListCustomImagesRequestTag) Validate() error {
+	return dara.Validate(s)
+}
+
+type iListCustomImagesResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetCustomImages(v []*ListCustomImagesResponseBodyCustomImages) *ListCustomImagesResponseBody
+	GetCustomImages() []*ListCustomImagesResponseBodyCustomImages
+	SetPageNumber(v string) *ListCustomImagesResponseBody
+	GetPageNumber() *string
+	SetPageSize(v string) *ListCustomImagesResponseBody
+	GetPageSize() *string
+	SetRequestId(v string) *ListCustomImagesResponseBody
+	GetRequestId() *string
+	SetTotalCount(v string) *ListCustomImagesResponseBody
+	GetTotalCount() *string
 }
 
 type ListCustomImagesResponseBody struct {
@@ -10703,11 +16715,31 @@ type ListCustomImagesResponseBody struct {
 }
 
 func (s ListCustomImagesResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListCustomImagesResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListCustomImagesResponseBody) GetCustomImages() []*ListCustomImagesResponseBodyCustomImages {
+	return s.CustomImages
+}
+
+func (s *ListCustomImagesResponseBody) GetPageNumber() *string {
+	return s.PageNumber
+}
+
+func (s *ListCustomImagesResponseBody) GetPageSize() *string {
+	return s.PageSize
+}
+
+func (s *ListCustomImagesResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
+func (s *ListCustomImagesResponseBody) GetTotalCount() *string {
+	return s.TotalCount
 }
 
 func (s *ListCustomImagesResponseBody) SetCustomImages(v []*ListCustomImagesResponseBodyCustomImages) *ListCustomImagesResponseBody {
@@ -10733,6 +16765,10 @@ func (s *ListCustomImagesResponseBody) SetRequestId(v string) *ListCustomImagesR
 func (s *ListCustomImagesResponseBody) SetTotalCount(v string) *ListCustomImagesResponseBody {
 	s.TotalCount = &v
 	return s
+}
+
+func (s *ListCustomImagesResponseBody) Validate() error {
+	return dara.Validate(s)
 }
 
 type ListCustomImagesResponseBodyCustomImages struct {
@@ -10879,11 +16915,103 @@ type ListCustomImagesResponseBodyCustomImages struct {
 }
 
 func (s ListCustomImagesResponseBodyCustomImages) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListCustomImagesResponseBodyCustomImages) GoString() string {
 	return s.String()
+}
+
+func (s *ListCustomImagesResponseBodyCustomImages) GetCreateInstances() []*string {
+	return s.CreateInstances
+}
+
+func (s *ListCustomImagesResponseBodyCustomImages) GetCreationTime() *string {
+	return s.CreationTime
+}
+
+func (s *ListCustomImagesResponseBodyCustomImages) GetDataSnapshotId() *string {
+	return s.DataSnapshotId
+}
+
+func (s *ListCustomImagesResponseBodyCustomImages) GetDataSnapshotName() *string {
+	return s.DataSnapshotName
+}
+
+func (s *ListCustomImagesResponseBodyCustomImages) GetDescription() *string {
+	return s.Description
+}
+
+func (s *ListCustomImagesResponseBodyCustomImages) GetImageId() *string {
+	return s.ImageId
+}
+
+func (s *ListCustomImagesResponseBodyCustomImages) GetInShare() *bool {
+	return s.InShare
+}
+
+func (s *ListCustomImagesResponseBodyCustomImages) GetInShareUser() *bool {
+	return s.InShareUser
+}
+
+func (s *ListCustomImagesResponseBodyCustomImages) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *ListCustomImagesResponseBodyCustomImages) GetInstanceName() *string {
+	return s.InstanceName
+}
+
+func (s *ListCustomImagesResponseBodyCustomImages) GetName() *string {
+	return s.Name
+}
+
+func (s *ListCustomImagesResponseBodyCustomImages) GetOsType() *string {
+	return s.OsType
+}
+
+func (s *ListCustomImagesResponseBodyCustomImages) GetRegionId() *string {
+	return s.RegionId
+}
+
+func (s *ListCustomImagesResponseBodyCustomImages) GetRequiredDataDiskSize() *int32 {
+	return s.RequiredDataDiskSize
+}
+
+func (s *ListCustomImagesResponseBodyCustomImages) GetRequiredSystemDiskSize() *int32 {
+	return s.RequiredSystemDiskSize
+}
+
+func (s *ListCustomImagesResponseBodyCustomImages) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
+func (s *ListCustomImagesResponseBodyCustomImages) GetSourceImageName() *string {
+	return s.SourceImageName
+}
+
+func (s *ListCustomImagesResponseBodyCustomImages) GetSourceImageVersion() *string {
+	return s.SourceImageVersion
+}
+
+func (s *ListCustomImagesResponseBodyCustomImages) GetStatus() *string {
+	return s.Status
+}
+
+func (s *ListCustomImagesResponseBodyCustomImages) GetSystemSnapshotId() *string {
+	return s.SystemSnapshotId
+}
+
+func (s *ListCustomImagesResponseBodyCustomImages) GetSystemSnapshotName() *string {
+	return s.SystemSnapshotName
+}
+
+func (s *ListCustomImagesResponseBodyCustomImages) GetTags() []*ListCustomImagesResponseBodyCustomImagesTags {
+	return s.Tags
+}
+
+func (s *ListCustomImagesResponseBodyCustomImages) GetUserId() *int64 {
+	return s.UserId
 }
 
 func (s *ListCustomImagesResponseBodyCustomImages) SetCreateInstances(v []*string) *ListCustomImagesResponseBodyCustomImages {
@@ -11001,6 +17129,10 @@ func (s *ListCustomImagesResponseBodyCustomImages) SetUserId(v int64) *ListCusto
 	return s
 }
 
+func (s *ListCustomImagesResponseBodyCustomImages) Validate() error {
+	return dara.Validate(s)
+}
+
 type ListCustomImagesResponseBodyCustomImagesTags struct {
 	// The tag key of the custom image.
 	//
@@ -11017,11 +17149,19 @@ type ListCustomImagesResponseBodyCustomImagesTags struct {
 }
 
 func (s ListCustomImagesResponseBodyCustomImagesTags) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListCustomImagesResponseBodyCustomImagesTags) GoString() string {
 	return s.String()
+}
+
+func (s *ListCustomImagesResponseBodyCustomImagesTags) GetKey() *string {
+	return s.Key
+}
+
+func (s *ListCustomImagesResponseBodyCustomImagesTags) GetValue() *string {
+	return s.Value
 }
 
 func (s *ListCustomImagesResponseBodyCustomImagesTags) SetKey(v string) *ListCustomImagesResponseBodyCustomImagesTags {
@@ -11034,6 +17174,22 @@ func (s *ListCustomImagesResponseBodyCustomImagesTags) SetValue(v string) *ListC
 	return s
 }
 
+func (s *ListCustomImagesResponseBodyCustomImagesTags) Validate() error {
+	return dara.Validate(s)
+}
+
+type iListCustomImagesResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *ListCustomImagesResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *ListCustomImagesResponse
+	GetStatusCode() *int32
+	SetBody(v *ListCustomImagesResponseBody) *ListCustomImagesResponse
+	GetBody() *ListCustomImagesResponseBody
+}
+
 type ListCustomImagesResponse struct {
 	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -11041,11 +17197,23 @@ type ListCustomImagesResponse struct {
 }
 
 func (s ListCustomImagesResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListCustomImagesResponse) GoString() string {
 	return s.String()
+}
+
+func (s *ListCustomImagesResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *ListCustomImagesResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *ListCustomImagesResponse) GetBody() *ListCustomImagesResponseBody {
+	return s.Body
 }
 
 func (s *ListCustomImagesResponse) SetHeaders(v map[string]*string) *ListCustomImagesResponse {
@@ -11061,6 +17229,32 @@ func (s *ListCustomImagesResponse) SetStatusCode(v int32) *ListCustomImagesRespo
 func (s *ListCustomImagesResponse) SetBody(v *ListCustomImagesResponseBody) *ListCustomImagesResponse {
 	s.Body = v
 	return s
+}
+
+func (s *ListCustomImagesResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iListDisksRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetDiskIds(v string) *ListDisksRequest
+	GetDiskIds() *string
+	SetDiskType(v string) *ListDisksRequest
+	GetDiskType() *string
+	SetInstanceId(v string) *ListDisksRequest
+	GetInstanceId() *string
+	SetPageNumber(v int32) *ListDisksRequest
+	GetPageNumber() *int32
+	SetPageSize(v int32) *ListDisksRequest
+	GetPageSize() *int32
+	SetRegionId(v string) *ListDisksRequest
+	GetRegionId() *string
+	SetResourceGroupId(v string) *ListDisksRequest
+	GetResourceGroupId() *string
+	SetTag(v []*ListDisksRequestTag) *ListDisksRequest
+	GetTag() []*ListDisksRequestTag
 }
 
 type ListDisksRequest struct {
@@ -11125,11 +17319,43 @@ type ListDisksRequest struct {
 }
 
 func (s ListDisksRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListDisksRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListDisksRequest) GetDiskIds() *string {
+	return s.DiskIds
+}
+
+func (s *ListDisksRequest) GetDiskType() *string {
+	return s.DiskType
+}
+
+func (s *ListDisksRequest) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *ListDisksRequest) GetPageNumber() *int32 {
+	return s.PageNumber
+}
+
+func (s *ListDisksRequest) GetPageSize() *int32 {
+	return s.PageSize
+}
+
+func (s *ListDisksRequest) GetRegionId() *string {
+	return s.RegionId
+}
+
+func (s *ListDisksRequest) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
+func (s *ListDisksRequest) GetTag() []*ListDisksRequestTag {
+	return s.Tag
 }
 
 func (s *ListDisksRequest) SetDiskIds(v string) *ListDisksRequest {
@@ -11172,6 +17398,10 @@ func (s *ListDisksRequest) SetTag(v []*ListDisksRequestTag) *ListDisksRequest {
 	return s
 }
 
+func (s *ListDisksRequest) Validate() error {
+	return dara.Validate(s)
+}
+
 type ListDisksRequestTag struct {
 	// The tag key. The tag key can be up to 64 characters in length. Valid values of N: 1 to 20.
 	//
@@ -11188,11 +17418,19 @@ type ListDisksRequestTag struct {
 }
 
 func (s ListDisksRequestTag) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListDisksRequestTag) GoString() string {
 	return s.String()
+}
+
+func (s *ListDisksRequestTag) GetKey() *string {
+	return s.Key
+}
+
+func (s *ListDisksRequestTag) GetValue() *string {
+	return s.Value
 }
 
 func (s *ListDisksRequestTag) SetKey(v string) *ListDisksRequestTag {
@@ -11203,6 +17441,26 @@ func (s *ListDisksRequestTag) SetKey(v string) *ListDisksRequestTag {
 func (s *ListDisksRequestTag) SetValue(v string) *ListDisksRequestTag {
 	s.Value = &v
 	return s
+}
+
+func (s *ListDisksRequestTag) Validate() error {
+	return dara.Validate(s)
+}
+
+type iListDisksResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetDisks(v []*ListDisksResponseBodyDisks) *ListDisksResponseBody
+	GetDisks() []*ListDisksResponseBodyDisks
+	SetPageNumber(v int32) *ListDisksResponseBody
+	GetPageNumber() *int32
+	SetPageSize(v int32) *ListDisksResponseBody
+	GetPageSize() *int32
+	SetRequestId(v string) *ListDisksResponseBody
+	GetRequestId() *string
+	SetTotalCount(v int32) *ListDisksResponseBody
+	GetTotalCount() *int32
 }
 
 type ListDisksResponseBody struct {
@@ -11235,11 +17493,31 @@ type ListDisksResponseBody struct {
 }
 
 func (s ListDisksResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListDisksResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListDisksResponseBody) GetDisks() []*ListDisksResponseBodyDisks {
+	return s.Disks
+}
+
+func (s *ListDisksResponseBody) GetPageNumber() *int32 {
+	return s.PageNumber
+}
+
+func (s *ListDisksResponseBody) GetPageSize() *int32 {
+	return s.PageSize
+}
+
+func (s *ListDisksResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
+func (s *ListDisksResponseBody) GetTotalCount() *int32 {
+	return s.TotalCount
 }
 
 func (s *ListDisksResponseBody) SetDisks(v []*ListDisksResponseBodyDisks) *ListDisksResponseBody {
@@ -11265,6 +17543,10 @@ func (s *ListDisksResponseBody) SetRequestId(v string) *ListDisksResponseBody {
 func (s *ListDisksResponseBody) SetTotalCount(v int32) *ListDisksResponseBody {
 	s.TotalCount = &v
 	return s
+}
+
+func (s *ListDisksResponseBody) Validate() error {
+	return dara.Validate(s)
 }
 
 type ListDisksResponseBodyDisks struct {
@@ -11379,11 +17661,71 @@ type ListDisksResponseBodyDisks struct {
 }
 
 func (s ListDisksResponseBodyDisks) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListDisksResponseBodyDisks) GoString() string {
 	return s.String()
+}
+
+func (s *ListDisksResponseBodyDisks) GetCategory() *string {
+	return s.Category
+}
+
+func (s *ListDisksResponseBodyDisks) GetCreationTime() *string {
+	return s.CreationTime
+}
+
+func (s *ListDisksResponseBodyDisks) GetDevice() *string {
+	return s.Device
+}
+
+func (s *ListDisksResponseBodyDisks) GetDiskChargeType() *string {
+	return s.DiskChargeType
+}
+
+func (s *ListDisksResponseBodyDisks) GetDiskId() *string {
+	return s.DiskId
+}
+
+func (s *ListDisksResponseBodyDisks) GetDiskName() *string {
+	return s.DiskName
+}
+
+func (s *ListDisksResponseBodyDisks) GetDiskType() *string {
+	return s.DiskType
+}
+
+func (s *ListDisksResponseBodyDisks) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *ListDisksResponseBodyDisks) GetInstanceName() *string {
+	return s.InstanceName
+}
+
+func (s *ListDisksResponseBodyDisks) GetRegionId() *string {
+	return s.RegionId
+}
+
+func (s *ListDisksResponseBodyDisks) GetRemark() *string {
+	return s.Remark
+}
+
+func (s *ListDisksResponseBodyDisks) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
+func (s *ListDisksResponseBodyDisks) GetSize() *int32 {
+	return s.Size
+}
+
+func (s *ListDisksResponseBodyDisks) GetStatus() *string {
+	return s.Status
+}
+
+func (s *ListDisksResponseBodyDisks) GetTags() []*ListDisksResponseBodyDisksTags {
+	return s.Tags
 }
 
 func (s *ListDisksResponseBodyDisks) SetCategory(v string) *ListDisksResponseBodyDisks {
@@ -11461,6 +17803,10 @@ func (s *ListDisksResponseBodyDisks) SetTags(v []*ListDisksResponseBodyDisksTags
 	return s
 }
 
+func (s *ListDisksResponseBodyDisks) Validate() error {
+	return dara.Validate(s)
+}
+
 type ListDisksResponseBodyDisksTags struct {
 	// The tag key.
 	//
@@ -11477,11 +17823,19 @@ type ListDisksResponseBodyDisksTags struct {
 }
 
 func (s ListDisksResponseBodyDisksTags) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListDisksResponseBodyDisksTags) GoString() string {
 	return s.String()
+}
+
+func (s *ListDisksResponseBodyDisksTags) GetKey() *string {
+	return s.Key
+}
+
+func (s *ListDisksResponseBodyDisksTags) GetValue() *string {
+	return s.Value
 }
 
 func (s *ListDisksResponseBodyDisksTags) SetKey(v string) *ListDisksResponseBodyDisksTags {
@@ -11494,6 +17848,22 @@ func (s *ListDisksResponseBodyDisksTags) SetValue(v string) *ListDisksResponseBo
 	return s
 }
 
+func (s *ListDisksResponseBodyDisksTags) Validate() error {
+	return dara.Validate(s)
+}
+
+type iListDisksResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *ListDisksResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *ListDisksResponse
+	GetStatusCode() *int32
+	SetBody(v *ListDisksResponseBody) *ListDisksResponse
+	GetBody() *ListDisksResponseBody
+}
+
 type ListDisksResponse struct {
 	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -11501,11 +17871,23 @@ type ListDisksResponse struct {
 }
 
 func (s ListDisksResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListDisksResponse) GoString() string {
 	return s.String()
+}
+
+func (s *ListDisksResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *ListDisksResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *ListDisksResponse) GetBody() *ListDisksResponseBody {
+	return s.Body
 }
 
 func (s *ListDisksResponse) SetHeaders(v map[string]*string) *ListDisksResponse {
@@ -11521,6 +17903,28 @@ func (s *ListDisksResponse) SetStatusCode(v int32) *ListDisksResponse {
 func (s *ListDisksResponse) SetBody(v *ListDisksResponseBody) *ListDisksResponse {
 	s.Body = v
 	return s
+}
+
+func (s *ListDisksResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iListFirewallRulesRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetFirewallRuleId(v string) *ListFirewallRulesRequest
+	GetFirewallRuleId() *string
+	SetInstanceId(v string) *ListFirewallRulesRequest
+	GetInstanceId() *string
+	SetPageNumber(v int32) *ListFirewallRulesRequest
+	GetPageNumber() *int32
+	SetPageSize(v int32) *ListFirewallRulesRequest
+	GetPageSize() *int32
+	SetRegionId(v string) *ListFirewallRulesRequest
+	GetRegionId() *string
+	SetTag(v []*ListFirewallRulesRequestTag) *ListFirewallRulesRequest
+	GetTag() []*ListFirewallRulesRequestTag
 }
 
 type ListFirewallRulesRequest struct {
@@ -11571,11 +17975,35 @@ type ListFirewallRulesRequest struct {
 }
 
 func (s ListFirewallRulesRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListFirewallRulesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListFirewallRulesRequest) GetFirewallRuleId() *string {
+	return s.FirewallRuleId
+}
+
+func (s *ListFirewallRulesRequest) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *ListFirewallRulesRequest) GetPageNumber() *int32 {
+	return s.PageNumber
+}
+
+func (s *ListFirewallRulesRequest) GetPageSize() *int32 {
+	return s.PageSize
+}
+
+func (s *ListFirewallRulesRequest) GetRegionId() *string {
+	return s.RegionId
+}
+
+func (s *ListFirewallRulesRequest) GetTag() []*ListFirewallRulesRequestTag {
+	return s.Tag
 }
 
 func (s *ListFirewallRulesRequest) SetFirewallRuleId(v string) *ListFirewallRulesRequest {
@@ -11608,6 +18036,10 @@ func (s *ListFirewallRulesRequest) SetTag(v []*ListFirewallRulesRequestTag) *Lis
 	return s
 }
 
+func (s *ListFirewallRulesRequest) Validate() error {
+	return dara.Validate(s)
+}
+
 type ListFirewallRulesRequestTag struct {
 	// The tag key. A tag key must be 1 to 64 characters in length. You can add up to 20 tags.
 	//
@@ -11624,11 +18056,19 @@ type ListFirewallRulesRequestTag struct {
 }
 
 func (s ListFirewallRulesRequestTag) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListFirewallRulesRequestTag) GoString() string {
 	return s.String()
+}
+
+func (s *ListFirewallRulesRequestTag) GetKey() *string {
+	return s.Key
+}
+
+func (s *ListFirewallRulesRequestTag) GetValue() *string {
+	return s.Value
 }
 
 func (s *ListFirewallRulesRequestTag) SetKey(v string) *ListFirewallRulesRequestTag {
@@ -11639,6 +18079,26 @@ func (s *ListFirewallRulesRequestTag) SetKey(v string) *ListFirewallRulesRequest
 func (s *ListFirewallRulesRequestTag) SetValue(v string) *ListFirewallRulesRequestTag {
 	s.Value = &v
 	return s
+}
+
+func (s *ListFirewallRulesRequestTag) Validate() error {
+	return dara.Validate(s)
+}
+
+type iListFirewallRulesResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetFirewallRules(v []*ListFirewallRulesResponseBodyFirewallRules) *ListFirewallRulesResponseBody
+	GetFirewallRules() []*ListFirewallRulesResponseBodyFirewallRules
+	SetPageNumber(v int32) *ListFirewallRulesResponseBody
+	GetPageNumber() *int32
+	SetPageSize(v int32) *ListFirewallRulesResponseBody
+	GetPageSize() *int32
+	SetRequestId(v string) *ListFirewallRulesResponseBody
+	GetRequestId() *string
+	SetTotalCount(v int32) *ListFirewallRulesResponseBody
+	GetTotalCount() *int32
 }
 
 type ListFirewallRulesResponseBody struct {
@@ -11671,11 +18131,31 @@ type ListFirewallRulesResponseBody struct {
 }
 
 func (s ListFirewallRulesResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListFirewallRulesResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListFirewallRulesResponseBody) GetFirewallRules() []*ListFirewallRulesResponseBodyFirewallRules {
+	return s.FirewallRules
+}
+
+func (s *ListFirewallRulesResponseBody) GetPageNumber() *int32 {
+	return s.PageNumber
+}
+
+func (s *ListFirewallRulesResponseBody) GetPageSize() *int32 {
+	return s.PageSize
+}
+
+func (s *ListFirewallRulesResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
+func (s *ListFirewallRulesResponseBody) GetTotalCount() *int32 {
+	return s.TotalCount
 }
 
 func (s *ListFirewallRulesResponseBody) SetFirewallRules(v []*ListFirewallRulesResponseBodyFirewallRules) *ListFirewallRulesResponseBody {
@@ -11701,6 +18181,10 @@ func (s *ListFirewallRulesResponseBody) SetRequestId(v string) *ListFirewallRule
 func (s *ListFirewallRulesResponseBody) SetTotalCount(v int32) *ListFirewallRulesResponseBody {
 	s.TotalCount = &v
 	return s
+}
+
+func (s *ListFirewallRulesResponseBody) Validate() error {
+	return dara.Validate(s)
 }
 
 type ListFirewallRulesResponseBodyFirewallRules struct {
@@ -11755,11 +18239,39 @@ type ListFirewallRulesResponseBodyFirewallRules struct {
 }
 
 func (s ListFirewallRulesResponseBodyFirewallRules) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListFirewallRulesResponseBodyFirewallRules) GoString() string {
 	return s.String()
+}
+
+func (s *ListFirewallRulesResponseBodyFirewallRules) GetPolicy() *string {
+	return s.Policy
+}
+
+func (s *ListFirewallRulesResponseBodyFirewallRules) GetPort() *string {
+	return s.Port
+}
+
+func (s *ListFirewallRulesResponseBodyFirewallRules) GetRemark() *string {
+	return s.Remark
+}
+
+func (s *ListFirewallRulesResponseBodyFirewallRules) GetRuleId() *string {
+	return s.RuleId
+}
+
+func (s *ListFirewallRulesResponseBodyFirewallRules) GetRuleProtocol() *string {
+	return s.RuleProtocol
+}
+
+func (s *ListFirewallRulesResponseBodyFirewallRules) GetSourceCidrIp() *string {
+	return s.SourceCidrIp
+}
+
+func (s *ListFirewallRulesResponseBodyFirewallRules) GetTags() []*ListFirewallRulesResponseBodyFirewallRulesTags {
+	return s.Tags
 }
 
 func (s *ListFirewallRulesResponseBodyFirewallRules) SetPolicy(v string) *ListFirewallRulesResponseBodyFirewallRules {
@@ -11797,6 +18309,10 @@ func (s *ListFirewallRulesResponseBodyFirewallRules) SetTags(v []*ListFirewallRu
 	return s
 }
 
+func (s *ListFirewallRulesResponseBodyFirewallRules) Validate() error {
+	return dara.Validate(s)
+}
+
 type ListFirewallRulesResponseBodyFirewallRulesTags struct {
 	// The tag key.
 	//
@@ -11813,11 +18329,19 @@ type ListFirewallRulesResponseBodyFirewallRulesTags struct {
 }
 
 func (s ListFirewallRulesResponseBodyFirewallRulesTags) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListFirewallRulesResponseBodyFirewallRulesTags) GoString() string {
 	return s.String()
+}
+
+func (s *ListFirewallRulesResponseBodyFirewallRulesTags) GetKey() *string {
+	return s.Key
+}
+
+func (s *ListFirewallRulesResponseBodyFirewallRulesTags) GetValue() *string {
+	return s.Value
 }
 
 func (s *ListFirewallRulesResponseBodyFirewallRulesTags) SetKey(v string) *ListFirewallRulesResponseBodyFirewallRulesTags {
@@ -11830,6 +18354,22 @@ func (s *ListFirewallRulesResponseBodyFirewallRulesTags) SetValue(v string) *Lis
 	return s
 }
 
+func (s *ListFirewallRulesResponseBodyFirewallRulesTags) Validate() error {
+	return dara.Validate(s)
+}
+
+type iListFirewallRulesResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *ListFirewallRulesResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *ListFirewallRulesResponse
+	GetStatusCode() *int32
+	SetBody(v *ListFirewallRulesResponseBody) *ListFirewallRulesResponse
+	GetBody() *ListFirewallRulesResponseBody
+}
+
 type ListFirewallRulesResponse struct {
 	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -11837,11 +18377,23 @@ type ListFirewallRulesResponse struct {
 }
 
 func (s ListFirewallRulesResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListFirewallRulesResponse) GoString() string {
 	return s.String()
+}
+
+func (s *ListFirewallRulesResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *ListFirewallRulesResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *ListFirewallRulesResponse) GetBody() *ListFirewallRulesResponseBody {
+	return s.Body
 }
 
 func (s *ListFirewallRulesResponse) SetHeaders(v map[string]*string) *ListFirewallRulesResponse {
@@ -11857,6 +18409,22 @@ func (s *ListFirewallRulesResponse) SetStatusCode(v int32) *ListFirewallRulesRes
 func (s *ListFirewallRulesResponse) SetBody(v *ListFirewallRulesResponseBody) *ListFirewallRulesResponse {
 	s.Body = v
 	return s
+}
+
+func (s *ListFirewallRulesResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iListImagesRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetImageIds(v string) *ListImagesRequest
+	GetImageIds() *string
+	SetImageType(v string) *ListImagesRequest
+	GetImageType() *string
+	SetRegionId(v string) *ListImagesRequest
+	GetRegionId() *string
 }
 
 type ListImagesRequest struct {
@@ -11889,11 +18457,23 @@ type ListImagesRequest struct {
 }
 
 func (s ListImagesRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListImagesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListImagesRequest) GetImageIds() *string {
+	return s.ImageIds
+}
+
+func (s *ListImagesRequest) GetImageType() *string {
+	return s.ImageType
+}
+
+func (s *ListImagesRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *ListImagesRequest) SetImageIds(v string) *ListImagesRequest {
@@ -11911,6 +18491,20 @@ func (s *ListImagesRequest) SetRegionId(v string) *ListImagesRequest {
 	return s
 }
 
+func (s *ListImagesRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iListImagesResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetImages(v []*ListImagesResponseBodyImages) *ListImagesResponseBody
+	GetImages() []*ListImagesResponseBodyImages
+	SetRequestId(v string) *ListImagesResponseBody
+	GetRequestId() *string
+}
+
 type ListImagesResponseBody struct {
 	// Details of the queried images.
 	Images []*ListImagesResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
@@ -11923,11 +18517,19 @@ type ListImagesResponseBody struct {
 }
 
 func (s ListImagesResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListImagesResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListImagesResponseBody) GetImages() []*ListImagesResponseBodyImages {
+	return s.Images
+}
+
+func (s *ListImagesResponseBody) GetRequestId() *string {
+	return s.RequestId
 }
 
 func (s *ListImagesResponseBody) SetImages(v []*ListImagesResponseBodyImages) *ListImagesResponseBody {
@@ -11938,6 +18540,10 @@ func (s *ListImagesResponseBody) SetImages(v []*ListImagesResponseBodyImages) *L
 func (s *ListImagesResponseBody) SetRequestId(v string) *ListImagesResponseBody {
 	s.RequestId = &v
 	return s
+}
+
+func (s *ListImagesResponseBody) Validate() error {
+	return dara.Validate(s)
 }
 
 type ListImagesResponseBodyImages struct {
@@ -11986,11 +18592,31 @@ type ListImagesResponseBodyImages struct {
 }
 
 func (s ListImagesResponseBodyImages) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListImagesResponseBodyImages) GoString() string {
 	return s.String()
+}
+
+func (s *ListImagesResponseBodyImages) GetDescription() *string {
+	return s.Description
+}
+
+func (s *ListImagesResponseBodyImages) GetImageId() *string {
+	return s.ImageId
+}
+
+func (s *ListImagesResponseBodyImages) GetImageName() *string {
+	return s.ImageName
+}
+
+func (s *ListImagesResponseBodyImages) GetImageType() *string {
+	return s.ImageType
+}
+
+func (s *ListImagesResponseBodyImages) GetPlatform() *string {
+	return s.Platform
 }
 
 func (s *ListImagesResponseBodyImages) SetDescription(v string) *ListImagesResponseBodyImages {
@@ -12018,6 +18644,22 @@ func (s *ListImagesResponseBodyImages) SetPlatform(v string) *ListImagesResponse
 	return s
 }
 
+func (s *ListImagesResponseBodyImages) Validate() error {
+	return dara.Validate(s)
+}
+
+type iListImagesResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *ListImagesResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *ListImagesResponse
+	GetStatusCode() *int32
+	SetBody(v *ListImagesResponseBody) *ListImagesResponse
+	GetBody() *ListImagesResponseBody
+}
+
 type ListImagesResponse struct {
 	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -12025,11 +18667,23 @@ type ListImagesResponse struct {
 }
 
 func (s ListImagesResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListImagesResponse) GoString() string {
 	return s.String()
+}
+
+func (s *ListImagesResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *ListImagesResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *ListImagesResponse) GetBody() *ListImagesResponseBody {
+	return s.Body
 }
 
 func (s *ListImagesResponse) SetHeaders(v map[string]*string) *ListImagesResponse {
@@ -12045,6 +18699,20 @@ func (s *ListImagesResponse) SetStatusCode(v int32) *ListImagesResponse {
 func (s *ListImagesResponse) SetBody(v *ListImagesResponseBody) *ListImagesResponse {
 	s.Body = v
 	return s
+}
+
+func (s *ListImagesResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iListInstancePlansModificationRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetInstanceId(v string) *ListInstancePlansModificationRequest
+	GetInstanceId() *string
+	SetRegionId(v string) *ListInstancePlansModificationRequest
+	GetRegionId() *string
 }
 
 type ListInstancePlansModificationRequest struct {
@@ -12067,11 +18735,19 @@ type ListInstancePlansModificationRequest struct {
 }
 
 func (s ListInstancePlansModificationRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListInstancePlansModificationRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListInstancePlansModificationRequest) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *ListInstancePlansModificationRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *ListInstancePlansModificationRequest) SetInstanceId(v string) *ListInstancePlansModificationRequest {
@@ -12082,6 +18758,20 @@ func (s *ListInstancePlansModificationRequest) SetInstanceId(v string) *ListInst
 func (s *ListInstancePlansModificationRequest) SetRegionId(v string) *ListInstancePlansModificationRequest {
 	s.RegionId = &v
 	return s
+}
+
+func (s *ListInstancePlansModificationRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iListInstancePlansModificationResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetPlans(v []*ListInstancePlansModificationResponseBodyPlans) *ListInstancePlansModificationResponseBody
+	GetPlans() []*ListInstancePlansModificationResponseBodyPlans
+	SetRequestId(v string) *ListInstancePlansModificationResponseBody
+	GetRequestId() *string
 }
 
 type ListInstancePlansModificationResponseBody struct {
@@ -12096,11 +18786,19 @@ type ListInstancePlansModificationResponseBody struct {
 }
 
 func (s ListInstancePlansModificationResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListInstancePlansModificationResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListInstancePlansModificationResponseBody) GetPlans() []*ListInstancePlansModificationResponseBodyPlans {
+	return s.Plans
+}
+
+func (s *ListInstancePlansModificationResponseBody) GetRequestId() *string {
+	return s.RequestId
 }
 
 func (s *ListInstancePlansModificationResponseBody) SetPlans(v []*ListInstancePlansModificationResponseBodyPlans) *ListInstancePlansModificationResponseBody {
@@ -12111,6 +18809,10 @@ func (s *ListInstancePlansModificationResponseBody) SetPlans(v []*ListInstancePl
 func (s *ListInstancePlansModificationResponseBody) SetRequestId(v string) *ListInstancePlansModificationResponseBody {
 	s.RequestId = &v
 	return s
+}
+
+func (s *ListInstancePlansModificationResponseBody) Validate() error {
+	return dara.Validate(s)
 }
 
 type ListInstancePlansModificationResponseBodyPlans struct {
@@ -12185,11 +18887,51 @@ type ListInstancePlansModificationResponseBodyPlans struct {
 }
 
 func (s ListInstancePlansModificationResponseBodyPlans) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListInstancePlansModificationResponseBodyPlans) GoString() string {
 	return s.String()
+}
+
+func (s *ListInstancePlansModificationResponseBodyPlans) GetBandwidth() *int32 {
+	return s.Bandwidth
+}
+
+func (s *ListInstancePlansModificationResponseBodyPlans) GetCore() *int32 {
+	return s.Core
+}
+
+func (s *ListInstancePlansModificationResponseBodyPlans) GetCurrency() *string {
+	return s.Currency
+}
+
+func (s *ListInstancePlansModificationResponseBodyPlans) GetDiskSize() *int32 {
+	return s.DiskSize
+}
+
+func (s *ListInstancePlansModificationResponseBodyPlans) GetDiskType() *string {
+	return s.DiskType
+}
+
+func (s *ListInstancePlansModificationResponseBodyPlans) GetFlow() *int32 {
+	return s.Flow
+}
+
+func (s *ListInstancePlansModificationResponseBodyPlans) GetMemory() *int32 {
+	return s.Memory
+}
+
+func (s *ListInstancePlansModificationResponseBodyPlans) GetOriginPrice() *float64 {
+	return s.OriginPrice
+}
+
+func (s *ListInstancePlansModificationResponseBodyPlans) GetPlanId() *string {
+	return s.PlanId
+}
+
+func (s *ListInstancePlansModificationResponseBodyPlans) GetSupportPlatform() *string {
+	return s.SupportPlatform
 }
 
 func (s *ListInstancePlansModificationResponseBodyPlans) SetBandwidth(v int32) *ListInstancePlansModificationResponseBodyPlans {
@@ -12242,6 +18984,22 @@ func (s *ListInstancePlansModificationResponseBodyPlans) SetSupportPlatform(v st
 	return s
 }
 
+func (s *ListInstancePlansModificationResponseBodyPlans) Validate() error {
+	return dara.Validate(s)
+}
+
+type iListInstancePlansModificationResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *ListInstancePlansModificationResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *ListInstancePlansModificationResponse
+	GetStatusCode() *int32
+	SetBody(v *ListInstancePlansModificationResponseBody) *ListInstancePlansModificationResponse
+	GetBody() *ListInstancePlansModificationResponseBody
+}
+
 type ListInstancePlansModificationResponse struct {
 	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -12249,11 +19007,23 @@ type ListInstancePlansModificationResponse struct {
 }
 
 func (s ListInstancePlansModificationResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListInstancePlansModificationResponse) GoString() string {
 	return s.String()
+}
+
+func (s *ListInstancePlansModificationResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *ListInstancePlansModificationResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *ListInstancePlansModificationResponse) GetBody() *ListInstancePlansModificationResponseBody {
+	return s.Body
 }
 
 func (s *ListInstancePlansModificationResponse) SetHeaders(v map[string]*string) *ListInstancePlansModificationResponse {
@@ -12269,6 +19039,24 @@ func (s *ListInstancePlansModificationResponse) SetStatusCode(v int32) *ListInst
 func (s *ListInstancePlansModificationResponse) SetBody(v *ListInstancePlansModificationResponseBody) *ListInstancePlansModificationResponse {
 	s.Body = v
 	return s
+}
+
+func (s *ListInstancePlansModificationResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iListInstanceStatusRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetInstanceIds(v string) *ListInstanceStatusRequest
+	GetInstanceIds() *string
+	SetPageNumber(v int32) *ListInstanceStatusRequest
+	GetPageNumber() *int32
+	SetPageSize(v int32) *ListInstanceStatusRequest
+	GetPageSize() *int32
+	SetRegionId(v string) *ListInstanceStatusRequest
+	GetRegionId() *string
 }
 
 type ListInstanceStatusRequest struct {
@@ -12301,11 +19089,27 @@ type ListInstanceStatusRequest struct {
 }
 
 func (s ListInstanceStatusRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListInstanceStatusRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListInstanceStatusRequest) GetInstanceIds() *string {
+	return s.InstanceIds
+}
+
+func (s *ListInstanceStatusRequest) GetPageNumber() *int32 {
+	return s.PageNumber
+}
+
+func (s *ListInstanceStatusRequest) GetPageSize() *int32 {
+	return s.PageSize
+}
+
+func (s *ListInstanceStatusRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *ListInstanceStatusRequest) SetInstanceIds(v string) *ListInstanceStatusRequest {
@@ -12326,6 +19130,26 @@ func (s *ListInstanceStatusRequest) SetPageSize(v int32) *ListInstanceStatusRequ
 func (s *ListInstanceStatusRequest) SetRegionId(v string) *ListInstanceStatusRequest {
 	s.RegionId = &v
 	return s
+}
+
+func (s *ListInstanceStatusRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iListInstanceStatusResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetInstanceStatuses(v []*ListInstanceStatusResponseBodyInstanceStatuses) *ListInstanceStatusResponseBody
+	GetInstanceStatuses() []*ListInstanceStatusResponseBodyInstanceStatuses
+	SetPageNumber(v int32) *ListInstanceStatusResponseBody
+	GetPageNumber() *int32
+	SetPageSize(v int32) *ListInstanceStatusResponseBody
+	GetPageSize() *int32
+	SetRequestId(v string) *ListInstanceStatusResponseBody
+	GetRequestId() *string
+	SetTotalCount(v int32) *ListInstanceStatusResponseBody
+	GetTotalCount() *int32
 }
 
 type ListInstanceStatusResponseBody struct {
@@ -12358,11 +19182,31 @@ type ListInstanceStatusResponseBody struct {
 }
 
 func (s ListInstanceStatusResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListInstanceStatusResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListInstanceStatusResponseBody) GetInstanceStatuses() []*ListInstanceStatusResponseBodyInstanceStatuses {
+	return s.InstanceStatuses
+}
+
+func (s *ListInstanceStatusResponseBody) GetPageNumber() *int32 {
+	return s.PageNumber
+}
+
+func (s *ListInstanceStatusResponseBody) GetPageSize() *int32 {
+	return s.PageSize
+}
+
+func (s *ListInstanceStatusResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
+func (s *ListInstanceStatusResponseBody) GetTotalCount() *int32 {
+	return s.TotalCount
 }
 
 func (s *ListInstanceStatusResponseBody) SetInstanceStatuses(v []*ListInstanceStatusResponseBodyInstanceStatuses) *ListInstanceStatusResponseBody {
@@ -12388,6 +19232,10 @@ func (s *ListInstanceStatusResponseBody) SetRequestId(v string) *ListInstanceSta
 func (s *ListInstanceStatusResponseBody) SetTotalCount(v int32) *ListInstanceStatusResponseBody {
 	s.TotalCount = &v
 	return s
+}
+
+func (s *ListInstanceStatusResponseBody) Validate() error {
+	return dara.Validate(s)
 }
 
 type ListInstanceStatusResponseBodyInstanceStatuses struct {
@@ -12422,11 +19270,19 @@ type ListInstanceStatusResponseBodyInstanceStatuses struct {
 }
 
 func (s ListInstanceStatusResponseBodyInstanceStatuses) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListInstanceStatusResponseBodyInstanceStatuses) GoString() string {
 	return s.String()
+}
+
+func (s *ListInstanceStatusResponseBodyInstanceStatuses) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *ListInstanceStatusResponseBodyInstanceStatuses) GetStatus() *string {
+	return s.Status
 }
 
 func (s *ListInstanceStatusResponseBodyInstanceStatuses) SetInstanceId(v string) *ListInstanceStatusResponseBodyInstanceStatuses {
@@ -12439,6 +19295,22 @@ func (s *ListInstanceStatusResponseBodyInstanceStatuses) SetStatus(v string) *Li
 	return s
 }
 
+func (s *ListInstanceStatusResponseBodyInstanceStatuses) Validate() error {
+	return dara.Validate(s)
+}
+
+type iListInstanceStatusResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *ListInstanceStatusResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *ListInstanceStatusResponse
+	GetStatusCode() *int32
+	SetBody(v *ListInstanceStatusResponseBody) *ListInstanceStatusResponse
+	GetBody() *ListInstanceStatusResponseBody
+}
+
 type ListInstanceStatusResponse struct {
 	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -12446,11 +19318,23 @@ type ListInstanceStatusResponse struct {
 }
 
 func (s ListInstanceStatusResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListInstanceStatusResponse) GoString() string {
 	return s.String()
+}
+
+func (s *ListInstanceStatusResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *ListInstanceStatusResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *ListInstanceStatusResponse) GetBody() *ListInstanceStatusResponseBody {
+	return s.Body
 }
 
 func (s *ListInstanceStatusResponse) SetHeaders(v map[string]*string) *ListInstanceStatusResponse {
@@ -12466,6 +19350,38 @@ func (s *ListInstanceStatusResponse) SetStatusCode(v int32) *ListInstanceStatusR
 func (s *ListInstanceStatusResponse) SetBody(v *ListInstanceStatusResponseBody) *ListInstanceStatusResponse {
 	s.Body = v
 	return s
+}
+
+func (s *ListInstanceStatusResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iListInstancesRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetChargeType(v string) *ListInstancesRequest
+	GetChargeType() *string
+	SetInstanceIds(v string) *ListInstancesRequest
+	GetInstanceIds() *string
+	SetInstanceName(v string) *ListInstancesRequest
+	GetInstanceName() *string
+	SetPageNumber(v int32) *ListInstancesRequest
+	GetPageNumber() *int32
+	SetPageSize(v int32) *ListInstancesRequest
+	GetPageSize() *int32
+	SetPlanType(v string) *ListInstancesRequest
+	GetPlanType() *string
+	SetPublicIpAddresses(v string) *ListInstancesRequest
+	GetPublicIpAddresses() *string
+	SetRegionId(v string) *ListInstancesRequest
+	GetRegionId() *string
+	SetResourceGroupId(v string) *ListInstancesRequest
+	GetResourceGroupId() *string
+	SetStatus(v string) *ListInstancesRequest
+	GetStatus() *string
+	SetTag(v []*ListInstancesRequestTag) *ListInstancesRequest
+	GetTag() []*ListInstancesRequestTag
 }
 
 type ListInstancesRequest struct {
@@ -12557,11 +19473,55 @@ type ListInstancesRequest struct {
 }
 
 func (s ListInstancesRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListInstancesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListInstancesRequest) GetChargeType() *string {
+	return s.ChargeType
+}
+
+func (s *ListInstancesRequest) GetInstanceIds() *string {
+	return s.InstanceIds
+}
+
+func (s *ListInstancesRequest) GetInstanceName() *string {
+	return s.InstanceName
+}
+
+func (s *ListInstancesRequest) GetPageNumber() *int32 {
+	return s.PageNumber
+}
+
+func (s *ListInstancesRequest) GetPageSize() *int32 {
+	return s.PageSize
+}
+
+func (s *ListInstancesRequest) GetPlanType() *string {
+	return s.PlanType
+}
+
+func (s *ListInstancesRequest) GetPublicIpAddresses() *string {
+	return s.PublicIpAddresses
+}
+
+func (s *ListInstancesRequest) GetRegionId() *string {
+	return s.RegionId
+}
+
+func (s *ListInstancesRequest) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
+func (s *ListInstancesRequest) GetStatus() *string {
+	return s.Status
+}
+
+func (s *ListInstancesRequest) GetTag() []*ListInstancesRequestTag {
+	return s.Tag
 }
 
 func (s *ListInstancesRequest) SetChargeType(v string) *ListInstancesRequest {
@@ -12619,6 +19579,10 @@ func (s *ListInstancesRequest) SetTag(v []*ListInstancesRequestTag) *ListInstanc
 	return s
 }
 
+func (s *ListInstancesRequest) Validate() error {
+	return dara.Validate(s)
+}
+
 type ListInstancesRequestTag struct {
 	// The tag key of the simple application servers. A tag key can be 1 to 64 characters in length. Valid values of N: 1 to 20.
 	//
@@ -12635,11 +19599,19 @@ type ListInstancesRequestTag struct {
 }
 
 func (s ListInstancesRequestTag) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListInstancesRequestTag) GoString() string {
 	return s.String()
+}
+
+func (s *ListInstancesRequestTag) GetKey() *string {
+	return s.Key
+}
+
+func (s *ListInstancesRequestTag) GetValue() *string {
+	return s.Value
 }
 
 func (s *ListInstancesRequestTag) SetKey(v string) *ListInstancesRequestTag {
@@ -12650,6 +19622,26 @@ func (s *ListInstancesRequestTag) SetKey(v string) *ListInstancesRequestTag {
 func (s *ListInstancesRequestTag) SetValue(v string) *ListInstancesRequestTag {
 	s.Value = &v
 	return s
+}
+
+func (s *ListInstancesRequestTag) Validate() error {
+	return dara.Validate(s)
+}
+
+type iListInstancesResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetInstances(v []*ListInstancesResponseBodyInstances) *ListInstancesResponseBody
+	GetInstances() []*ListInstancesResponseBodyInstances
+	SetPageNumber(v int32) *ListInstancesResponseBody
+	GetPageNumber() *int32
+	SetPageSize(v int32) *ListInstancesResponseBody
+	GetPageSize() *int32
+	SetRequestId(v string) *ListInstancesResponseBody
+	GetRequestId() *string
+	SetTotalCount(v int32) *ListInstancesResponseBody
+	GetTotalCount() *int32
 }
 
 type ListInstancesResponseBody struct {
@@ -12682,11 +19674,31 @@ type ListInstancesResponseBody struct {
 }
 
 func (s ListInstancesResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListInstancesResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListInstancesResponseBody) GetInstances() []*ListInstancesResponseBodyInstances {
+	return s.Instances
+}
+
+func (s *ListInstancesResponseBody) GetPageNumber() *int32 {
+	return s.PageNumber
+}
+
+func (s *ListInstancesResponseBody) GetPageSize() *int32 {
+	return s.PageSize
+}
+
+func (s *ListInstancesResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
+func (s *ListInstancesResponseBody) GetTotalCount() *int32 {
+	return s.TotalCount
 }
 
 func (s *ListInstancesResponseBody) SetInstances(v []*ListInstancesResponseBodyInstances) *ListInstancesResponseBody {
@@ -12712,6 +19724,10 @@ func (s *ListInstancesResponseBody) SetRequestId(v string) *ListInstancesRespons
 func (s *ListInstancesResponseBody) SetTotalCount(v int32) *ListInstancesResponseBody {
 	s.TotalCount = &v
 	return s
+}
+
+func (s *ListInstancesResponseBody) Validate() error {
+	return dara.Validate(s)
 }
 
 type ListInstancesResponseBodyInstances struct {
@@ -12870,11 +19886,107 @@ type ListInstancesResponseBodyInstances struct {
 }
 
 func (s ListInstancesResponseBodyInstances) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListInstancesResponseBodyInstances) GoString() string {
 	return s.String()
+}
+
+func (s *ListInstancesResponseBodyInstances) GetBusinessStatus() *string {
+	return s.BusinessStatus
+}
+
+func (s *ListInstancesResponseBodyInstances) GetChargeType() *string {
+	return s.ChargeType
+}
+
+func (s *ListInstancesResponseBodyInstances) GetCombination() *bool {
+	return s.Combination
+}
+
+func (s *ListInstancesResponseBodyInstances) GetCombinationInstanceId() *string {
+	return s.CombinationInstanceId
+}
+
+func (s *ListInstancesResponseBodyInstances) GetCreationTime() *string {
+	return s.CreationTime
+}
+
+func (s *ListInstancesResponseBodyInstances) GetDdosStatus() *string {
+	return s.DdosStatus
+}
+
+func (s *ListInstancesResponseBodyInstances) GetDisableReason() *string {
+	return s.DisableReason
+}
+
+func (s *ListInstancesResponseBodyInstances) GetDisks() []*ListInstancesResponseBodyInstancesDisks {
+	return s.Disks
+}
+
+func (s *ListInstancesResponseBodyInstances) GetExpiredTime() *string {
+	return s.ExpiredTime
+}
+
+func (s *ListInstancesResponseBodyInstances) GetImage() *ListInstancesResponseBodyInstancesImage {
+	return s.Image
+}
+
+func (s *ListInstancesResponseBodyInstances) GetImageId() *string {
+	return s.ImageId
+}
+
+func (s *ListInstancesResponseBodyInstances) GetInnerIpAddress() *string {
+	return s.InnerIpAddress
+}
+
+func (s *ListInstancesResponseBodyInstances) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *ListInstancesResponseBodyInstances) GetInstanceName() *string {
+	return s.InstanceName
+}
+
+func (s *ListInstancesResponseBodyInstances) GetNetworkAttributes() []*ListInstancesResponseBodyInstancesNetworkAttributes {
+	return s.NetworkAttributes
+}
+
+func (s *ListInstancesResponseBodyInstances) GetPlanId() *string {
+	return s.PlanId
+}
+
+func (s *ListInstancesResponseBodyInstances) GetPlanType() *string {
+	return s.PlanType
+}
+
+func (s *ListInstancesResponseBodyInstances) GetPublicIpAddress() *string {
+	return s.PublicIpAddress
+}
+
+func (s *ListInstancesResponseBodyInstances) GetRegionId() *string {
+	return s.RegionId
+}
+
+func (s *ListInstancesResponseBodyInstances) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
+func (s *ListInstancesResponseBodyInstances) GetResourceSpec() *ListInstancesResponseBodyInstancesResourceSpec {
+	return s.ResourceSpec
+}
+
+func (s *ListInstancesResponseBodyInstances) GetStatus() *string {
+	return s.Status
+}
+
+func (s *ListInstancesResponseBodyInstances) GetTags() []*ListInstancesResponseBodyInstancesTags {
+	return s.Tags
+}
+
+func (s *ListInstancesResponseBodyInstances) GetUuid() *string {
+	return s.Uuid
 }
 
 func (s *ListInstancesResponseBodyInstances) SetBusinessStatus(v string) *ListInstancesResponseBodyInstances {
@@ -12997,6 +20109,10 @@ func (s *ListInstancesResponseBodyInstances) SetUuid(v string) *ListInstancesRes
 	return s
 }
 
+func (s *ListInstancesResponseBodyInstances) Validate() error {
+	return dara.Validate(s)
+}
+
 type ListInstancesResponseBodyInstancesDisks struct {
 	// The category of the disk. Valid values:
 	//
@@ -13097,11 +20213,63 @@ type ListInstancesResponseBodyInstancesDisks struct {
 }
 
 func (s ListInstancesResponseBodyInstancesDisks) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListInstancesResponseBodyInstancesDisks) GoString() string {
 	return s.String()
+}
+
+func (s *ListInstancesResponseBodyInstancesDisks) GetCategory() *string {
+	return s.Category
+}
+
+func (s *ListInstancesResponseBodyInstancesDisks) GetCreationTime() *string {
+	return s.CreationTime
+}
+
+func (s *ListInstancesResponseBodyInstancesDisks) GetDevice() *string {
+	return s.Device
+}
+
+func (s *ListInstancesResponseBodyInstancesDisks) GetDiskChargeType() *string {
+	return s.DiskChargeType
+}
+
+func (s *ListInstancesResponseBodyInstancesDisks) GetDiskId() *string {
+	return s.DiskId
+}
+
+func (s *ListInstancesResponseBodyInstancesDisks) GetDiskName() *string {
+	return s.DiskName
+}
+
+func (s *ListInstancesResponseBodyInstancesDisks) GetDiskTags() []*ListInstancesResponseBodyInstancesDisksDiskTags {
+	return s.DiskTags
+}
+
+func (s *ListInstancesResponseBodyInstancesDisks) GetDiskType() *string {
+	return s.DiskType
+}
+
+func (s *ListInstancesResponseBodyInstancesDisks) GetRegionId() *string {
+	return s.RegionId
+}
+
+func (s *ListInstancesResponseBodyInstancesDisks) GetRemark() *string {
+	return s.Remark
+}
+
+func (s *ListInstancesResponseBodyInstancesDisks) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
+func (s *ListInstancesResponseBodyInstancesDisks) GetSize() *int32 {
+	return s.Size
+}
+
+func (s *ListInstancesResponseBodyInstancesDisks) GetStatus() *string {
+	return s.Status
 }
 
 func (s *ListInstancesResponseBodyInstancesDisks) SetCategory(v string) *ListInstancesResponseBodyInstancesDisks {
@@ -13169,6 +20337,10 @@ func (s *ListInstancesResponseBodyInstancesDisks) SetStatus(v string) *ListInsta
 	return s
 }
 
+func (s *ListInstancesResponseBodyInstancesDisks) Validate() error {
+	return dara.Validate(s)
+}
+
 type ListInstancesResponseBodyInstancesDisksDiskTags struct {
 	// The tag key.
 	//
@@ -13185,11 +20357,19 @@ type ListInstancesResponseBodyInstancesDisksDiskTags struct {
 }
 
 func (s ListInstancesResponseBodyInstancesDisksDiskTags) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListInstancesResponseBodyInstancesDisksDiskTags) GoString() string {
 	return s.String()
+}
+
+func (s *ListInstancesResponseBodyInstancesDisksDiskTags) GetKey() *string {
+	return s.Key
+}
+
+func (s *ListInstancesResponseBodyInstancesDisksDiskTags) GetValue() *string {
+	return s.Value
 }
 
 func (s *ListInstancesResponseBodyInstancesDisksDiskTags) SetKey(v string) *ListInstancesResponseBodyInstancesDisksDiskTags {
@@ -13200,6 +20380,10 @@ func (s *ListInstancesResponseBodyInstancesDisksDiskTags) SetKey(v string) *List
 func (s *ListInstancesResponseBodyInstancesDisksDiskTags) SetValue(v string) *ListInstancesResponseBodyInstancesDisksDiskTags {
 	s.Value = &v
 	return s
+}
+
+func (s *ListInstancesResponseBodyInstancesDisksDiskTags) Validate() error {
+	return dara.Validate(s)
 }
 
 type ListInstancesResponseBodyInstancesImage struct {
@@ -13248,11 +20432,35 @@ type ListInstancesResponseBodyInstancesImage struct {
 }
 
 func (s ListInstancesResponseBodyInstancesImage) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListInstancesResponseBodyInstancesImage) GoString() string {
 	return s.String()
+}
+
+func (s *ListInstancesResponseBodyInstancesImage) GetImageContact() *string {
+	return s.ImageContact
+}
+
+func (s *ListInstancesResponseBodyInstancesImage) GetImageIconUrl() *string {
+	return s.ImageIconUrl
+}
+
+func (s *ListInstancesResponseBodyInstancesImage) GetImageName() *string {
+	return s.ImageName
+}
+
+func (s *ListInstancesResponseBodyInstancesImage) GetImageType() *string {
+	return s.ImageType
+}
+
+func (s *ListInstancesResponseBodyInstancesImage) GetImageVersion() *string {
+	return s.ImageVersion
+}
+
+func (s *ListInstancesResponseBodyInstancesImage) GetOsType() *string {
+	return s.OsType
 }
 
 func (s *ListInstancesResponseBodyInstancesImage) SetImageContact(v string) *ListInstancesResponseBodyInstancesImage {
@@ -13285,6 +20493,10 @@ func (s *ListInstancesResponseBodyInstancesImage) SetOsType(v string) *ListInsta
 	return s
 }
 
+func (s *ListInstancesResponseBodyInstancesImage) Validate() error {
+	return dara.Validate(s)
+}
+
 type ListInstancesResponseBodyInstancesNetworkAttributes struct {
 	PeakBandwidth      *int32  `json:"PeakBandwidth,omitempty" xml:"PeakBandwidth,omitempty"`
 	PrivateIpAddress   *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
@@ -13293,11 +20505,27 @@ type ListInstancesResponseBodyInstancesNetworkAttributes struct {
 }
 
 func (s ListInstancesResponseBodyInstancesNetworkAttributes) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListInstancesResponseBodyInstancesNetworkAttributes) GoString() string {
 	return s.String()
+}
+
+func (s *ListInstancesResponseBodyInstancesNetworkAttributes) GetPeakBandwidth() *int32 {
+	return s.PeakBandwidth
+}
+
+func (s *ListInstancesResponseBodyInstancesNetworkAttributes) GetPrivateIpAddress() *string {
+	return s.PrivateIpAddress
+}
+
+func (s *ListInstancesResponseBodyInstancesNetworkAttributes) GetPublicIpAddress() *string {
+	return s.PublicIpAddress
+}
+
+func (s *ListInstancesResponseBodyInstancesNetworkAttributes) GetPublicIpDdosStatus() *string {
+	return s.PublicIpDdosStatus
 }
 
 func (s *ListInstancesResponseBodyInstancesNetworkAttributes) SetPeakBandwidth(v int32) *ListInstancesResponseBodyInstancesNetworkAttributes {
@@ -13318,6 +20546,10 @@ func (s *ListInstancesResponseBodyInstancesNetworkAttributes) SetPublicIpAddress
 func (s *ListInstancesResponseBodyInstancesNetworkAttributes) SetPublicIpDdosStatus(v string) *ListInstancesResponseBodyInstancesNetworkAttributes {
 	s.PublicIpDdosStatus = &v
 	return s
+}
+
+func (s *ListInstancesResponseBodyInstancesNetworkAttributes) Validate() error {
+	return dara.Validate(s)
 }
 
 type ListInstancesResponseBodyInstancesResourceSpec struct {
@@ -13370,11 +20602,35 @@ type ListInstancesResponseBodyInstancesResourceSpec struct {
 }
 
 func (s ListInstancesResponseBodyInstancesResourceSpec) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListInstancesResponseBodyInstancesResourceSpec) GoString() string {
 	return s.String()
+}
+
+func (s *ListInstancesResponseBodyInstancesResourceSpec) GetBandwidth() *int32 {
+	return s.Bandwidth
+}
+
+func (s *ListInstancesResponseBodyInstancesResourceSpec) GetCpu() *int32 {
+	return s.Cpu
+}
+
+func (s *ListInstancesResponseBodyInstancesResourceSpec) GetDiskCategory() *string {
+	return s.DiskCategory
+}
+
+func (s *ListInstancesResponseBodyInstancesResourceSpec) GetDiskSize() *int32 {
+	return s.DiskSize
+}
+
+func (s *ListInstancesResponseBodyInstancesResourceSpec) GetFlow() *float64 {
+	return s.Flow
+}
+
+func (s *ListInstancesResponseBodyInstancesResourceSpec) GetMemory() *float64 {
+	return s.Memory
 }
 
 func (s *ListInstancesResponseBodyInstancesResourceSpec) SetBandwidth(v int32) *ListInstancesResponseBodyInstancesResourceSpec {
@@ -13407,6 +20663,10 @@ func (s *ListInstancesResponseBodyInstancesResourceSpec) SetMemory(v float64) *L
 	return s
 }
 
+func (s *ListInstancesResponseBodyInstancesResourceSpec) Validate() error {
+	return dara.Validate(s)
+}
+
 type ListInstancesResponseBodyInstancesTags struct {
 	// The tag key of the simple application server.
 	//
@@ -13423,11 +20683,19 @@ type ListInstancesResponseBodyInstancesTags struct {
 }
 
 func (s ListInstancesResponseBodyInstancesTags) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListInstancesResponseBodyInstancesTags) GoString() string {
 	return s.String()
+}
+
+func (s *ListInstancesResponseBodyInstancesTags) GetKey() *string {
+	return s.Key
+}
+
+func (s *ListInstancesResponseBodyInstancesTags) GetValue() *string {
+	return s.Value
 }
 
 func (s *ListInstancesResponseBodyInstancesTags) SetKey(v string) *ListInstancesResponseBodyInstancesTags {
@@ -13440,6 +20708,22 @@ func (s *ListInstancesResponseBodyInstancesTags) SetValue(v string) *ListInstanc
 	return s
 }
 
+func (s *ListInstancesResponseBodyInstancesTags) Validate() error {
+	return dara.Validate(s)
+}
+
+type iListInstancesResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *ListInstancesResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *ListInstancesResponse
+	GetStatusCode() *int32
+	SetBody(v *ListInstancesResponseBody) *ListInstancesResponse
+	GetBody() *ListInstancesResponseBody
+}
+
 type ListInstancesResponse struct {
 	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -13447,11 +20731,23 @@ type ListInstancesResponse struct {
 }
 
 func (s ListInstancesResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListInstancesResponse) GoString() string {
 	return s.String()
+}
+
+func (s *ListInstancesResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *ListInstancesResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *ListInstancesResponse) GetBody() *ListInstancesResponseBody {
+	return s.Body
 }
 
 func (s *ListInstancesResponse) SetHeaders(v map[string]*string) *ListInstancesResponse {
@@ -13467,6 +20763,20 @@ func (s *ListInstancesResponse) SetStatusCode(v int32) *ListInstancesResponse {
 func (s *ListInstancesResponse) SetBody(v *ListInstancesResponseBody) *ListInstancesResponse {
 	s.Body = v
 	return s
+}
+
+func (s *ListInstancesResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iListInstancesTrafficPackagesRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetInstanceIds(v string) *ListInstancesTrafficPackagesRequest
+	GetInstanceIds() *string
+	SetRegionId(v string) *ListInstancesTrafficPackagesRequest
+	GetRegionId() *string
 }
 
 type ListInstancesTrafficPackagesRequest struct {
@@ -13489,11 +20799,19 @@ type ListInstancesTrafficPackagesRequest struct {
 }
 
 func (s ListInstancesTrafficPackagesRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListInstancesTrafficPackagesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListInstancesTrafficPackagesRequest) GetInstanceIds() *string {
+	return s.InstanceIds
+}
+
+func (s *ListInstancesTrafficPackagesRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *ListInstancesTrafficPackagesRequest) SetInstanceIds(v string) *ListInstancesTrafficPackagesRequest {
@@ -13504,6 +20822,20 @@ func (s *ListInstancesTrafficPackagesRequest) SetInstanceIds(v string) *ListInst
 func (s *ListInstancesTrafficPackagesRequest) SetRegionId(v string) *ListInstancesTrafficPackagesRequest {
 	s.RegionId = &v
 	return s
+}
+
+func (s *ListInstancesTrafficPackagesRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iListInstancesTrafficPackagesResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetInstanceTrafficPackageUsages(v []*ListInstancesTrafficPackagesResponseBodyInstanceTrafficPackageUsages) *ListInstancesTrafficPackagesResponseBody
+	GetInstanceTrafficPackageUsages() []*ListInstancesTrafficPackagesResponseBodyInstanceTrafficPackageUsages
+	SetRequestId(v string) *ListInstancesTrafficPackagesResponseBody
+	GetRequestId() *string
 }
 
 type ListInstancesTrafficPackagesResponseBody struct {
@@ -13518,11 +20850,19 @@ type ListInstancesTrafficPackagesResponseBody struct {
 }
 
 func (s ListInstancesTrafficPackagesResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListInstancesTrafficPackagesResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListInstancesTrafficPackagesResponseBody) GetInstanceTrafficPackageUsages() []*ListInstancesTrafficPackagesResponseBodyInstanceTrafficPackageUsages {
+	return s.InstanceTrafficPackageUsages
+}
+
+func (s *ListInstancesTrafficPackagesResponseBody) GetRequestId() *string {
+	return s.RequestId
 }
 
 func (s *ListInstancesTrafficPackagesResponseBody) SetInstanceTrafficPackageUsages(v []*ListInstancesTrafficPackagesResponseBodyInstanceTrafficPackageUsages) *ListInstancesTrafficPackagesResponseBody {
@@ -13533,6 +20873,10 @@ func (s *ListInstancesTrafficPackagesResponseBody) SetInstanceTrafficPackageUsag
 func (s *ListInstancesTrafficPackagesResponseBody) SetRequestId(v string) *ListInstancesTrafficPackagesResponseBody {
 	s.RequestId = &v
 	return s
+}
+
+func (s *ListInstancesTrafficPackagesResponseBody) Validate() error {
+	return dara.Validate(s)
 }
 
 type ListInstancesTrafficPackagesResponseBodyInstanceTrafficPackageUsages struct {
@@ -13571,11 +20915,31 @@ type ListInstancesTrafficPackagesResponseBodyInstanceTrafficPackageUsages struct
 }
 
 func (s ListInstancesTrafficPackagesResponseBodyInstanceTrafficPackageUsages) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListInstancesTrafficPackagesResponseBodyInstanceTrafficPackageUsages) GoString() string {
 	return s.String()
+}
+
+func (s *ListInstancesTrafficPackagesResponseBodyInstanceTrafficPackageUsages) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *ListInstancesTrafficPackagesResponseBodyInstanceTrafficPackageUsages) GetTrafficOverflow() *int64 {
+	return s.TrafficOverflow
+}
+
+func (s *ListInstancesTrafficPackagesResponseBodyInstanceTrafficPackageUsages) GetTrafficPackageRemaining() *int64 {
+	return s.TrafficPackageRemaining
+}
+
+func (s *ListInstancesTrafficPackagesResponseBodyInstanceTrafficPackageUsages) GetTrafficPackageTotal() *int64 {
+	return s.TrafficPackageTotal
+}
+
+func (s *ListInstancesTrafficPackagesResponseBodyInstanceTrafficPackageUsages) GetTrafficUsed() *int64 {
+	return s.TrafficUsed
 }
 
 func (s *ListInstancesTrafficPackagesResponseBodyInstanceTrafficPackageUsages) SetInstanceId(v string) *ListInstancesTrafficPackagesResponseBodyInstanceTrafficPackageUsages {
@@ -13603,6 +20967,22 @@ func (s *ListInstancesTrafficPackagesResponseBodyInstanceTrafficPackageUsages) S
 	return s
 }
 
+func (s *ListInstancesTrafficPackagesResponseBodyInstanceTrafficPackageUsages) Validate() error {
+	return dara.Validate(s)
+}
+
+type iListInstancesTrafficPackagesResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *ListInstancesTrafficPackagesResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *ListInstancesTrafficPackagesResponse
+	GetStatusCode() *int32
+	SetBody(v *ListInstancesTrafficPackagesResponseBody) *ListInstancesTrafficPackagesResponse
+	GetBody() *ListInstancesTrafficPackagesResponseBody
+}
+
 type ListInstancesTrafficPackagesResponse struct {
 	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -13610,11 +20990,23 @@ type ListInstancesTrafficPackagesResponse struct {
 }
 
 func (s ListInstancesTrafficPackagesResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListInstancesTrafficPackagesResponse) GoString() string {
 	return s.String()
+}
+
+func (s *ListInstancesTrafficPackagesResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *ListInstancesTrafficPackagesResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *ListInstancesTrafficPackagesResponse) GetBody() *ListInstancesTrafficPackagesResponseBody {
+	return s.Body
 }
 
 func (s *ListInstancesTrafficPackagesResponse) SetHeaders(v map[string]*string) *ListInstancesTrafficPackagesResponse {
@@ -13630,6 +21022,26 @@ func (s *ListInstancesTrafficPackagesResponse) SetStatusCode(v int32) *ListInsta
 func (s *ListInstancesTrafficPackagesResponse) SetBody(v *ListInstancesTrafficPackagesResponseBody) *ListInstancesTrafficPackagesResponse {
 	s.Body = v
 	return s
+}
+
+func (s *ListInstancesTrafficPackagesResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iListKeyPairsRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientToken(v string) *ListKeyPairsRequest
+	GetClientToken() *string
+	SetKeyPairName(v string) *ListKeyPairsRequest
+	GetKeyPairName() *string
+	SetPageNumber(v int32) *ListKeyPairsRequest
+	GetPageNumber() *int32
+	SetPageSize(v int32) *ListKeyPairsRequest
+	GetPageSize() *int32
+	SetRegionId(v string) *ListKeyPairsRequest
+	GetRegionId() *string
 }
 
 type ListKeyPairsRequest struct {
@@ -13668,11 +21080,31 @@ type ListKeyPairsRequest struct {
 }
 
 func (s ListKeyPairsRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListKeyPairsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListKeyPairsRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *ListKeyPairsRequest) GetKeyPairName() *string {
+	return s.KeyPairName
+}
+
+func (s *ListKeyPairsRequest) GetPageNumber() *int32 {
+	return s.PageNumber
+}
+
+func (s *ListKeyPairsRequest) GetPageSize() *int32 {
+	return s.PageSize
+}
+
+func (s *ListKeyPairsRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *ListKeyPairsRequest) SetClientToken(v string) *ListKeyPairsRequest {
@@ -13698,6 +21130,26 @@ func (s *ListKeyPairsRequest) SetPageSize(v int32) *ListKeyPairsRequest {
 func (s *ListKeyPairsRequest) SetRegionId(v string) *ListKeyPairsRequest {
 	s.RegionId = &v
 	return s
+}
+
+func (s *ListKeyPairsRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iListKeyPairsResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetKeyPairs(v []*ListKeyPairsResponseBodyKeyPairs) *ListKeyPairsResponseBody
+	GetKeyPairs() []*ListKeyPairsResponseBodyKeyPairs
+	SetPageNumber(v int32) *ListKeyPairsResponseBody
+	GetPageNumber() *int32
+	SetPageSize(v int32) *ListKeyPairsResponseBody
+	GetPageSize() *int32
+	SetRequestId(v string) *ListKeyPairsResponseBody
+	GetRequestId() *string
+	SetTotalCount(v int32) *ListKeyPairsResponseBody
+	GetTotalCount() *int32
 }
 
 type ListKeyPairsResponseBody struct {
@@ -13730,11 +21182,31 @@ type ListKeyPairsResponseBody struct {
 }
 
 func (s ListKeyPairsResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListKeyPairsResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListKeyPairsResponseBody) GetKeyPairs() []*ListKeyPairsResponseBodyKeyPairs {
+	return s.KeyPairs
+}
+
+func (s *ListKeyPairsResponseBody) GetPageNumber() *int32 {
+	return s.PageNumber
+}
+
+func (s *ListKeyPairsResponseBody) GetPageSize() *int32 {
+	return s.PageSize
+}
+
+func (s *ListKeyPairsResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
+func (s *ListKeyPairsResponseBody) GetTotalCount() *int32 {
+	return s.TotalCount
 }
 
 func (s *ListKeyPairsResponseBody) SetKeyPairs(v []*ListKeyPairsResponseBodyKeyPairs) *ListKeyPairsResponseBody {
@@ -13762,6 +21234,10 @@ func (s *ListKeyPairsResponseBody) SetTotalCount(v int32) *ListKeyPairsResponseB
 	return s
 }
 
+func (s *ListKeyPairsResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
 type ListKeyPairsResponseBodyKeyPairs struct {
 	// The time when the AccessKey pair was created.
 	//
@@ -13786,11 +21262,27 @@ type ListKeyPairsResponseBodyKeyPairs struct {
 }
 
 func (s ListKeyPairsResponseBodyKeyPairs) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListKeyPairsResponseBodyKeyPairs) GoString() string {
 	return s.String()
+}
+
+func (s *ListKeyPairsResponseBodyKeyPairs) GetCreationTime() *string {
+	return s.CreationTime
+}
+
+func (s *ListKeyPairsResponseBodyKeyPairs) GetInstanceIds() []*string {
+	return s.InstanceIds
+}
+
+func (s *ListKeyPairsResponseBodyKeyPairs) GetKeyPairName() *string {
+	return s.KeyPairName
+}
+
+func (s *ListKeyPairsResponseBodyKeyPairs) GetPublicKey() *string {
+	return s.PublicKey
 }
 
 func (s *ListKeyPairsResponseBodyKeyPairs) SetCreationTime(v string) *ListKeyPairsResponseBodyKeyPairs {
@@ -13813,6 +21305,22 @@ func (s *ListKeyPairsResponseBodyKeyPairs) SetPublicKey(v string) *ListKeyPairsR
 	return s
 }
 
+func (s *ListKeyPairsResponseBodyKeyPairs) Validate() error {
+	return dara.Validate(s)
+}
+
+type iListKeyPairsResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *ListKeyPairsResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *ListKeyPairsResponse
+	GetStatusCode() *int32
+	SetBody(v *ListKeyPairsResponseBody) *ListKeyPairsResponse
+	GetBody() *ListKeyPairsResponseBody
+}
+
 type ListKeyPairsResponse struct {
 	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -13820,11 +21328,23 @@ type ListKeyPairsResponse struct {
 }
 
 func (s ListKeyPairsResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListKeyPairsResponse) GoString() string {
 	return s.String()
+}
+
+func (s *ListKeyPairsResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *ListKeyPairsResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *ListKeyPairsResponse) GetBody() *ListKeyPairsResponseBody {
+	return s.Body
 }
 
 func (s *ListKeyPairsResponse) SetHeaders(v map[string]*string) *ListKeyPairsResponse {
@@ -13842,6 +21362,18 @@ func (s *ListKeyPairsResponse) SetBody(v *ListKeyPairsResponseBody) *ListKeyPair
 	return s
 }
 
+func (s *ListKeyPairsResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iListPlansRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetRegionId(v string) *ListPlansRequest
+	GetRegionId() *string
+}
+
 type ListPlansRequest struct {
 	// The region ID of the plans. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
 	//
@@ -13854,16 +21386,34 @@ type ListPlansRequest struct {
 }
 
 func (s ListPlansRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListPlansRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListPlansRequest) GetRegionId() *string {
+	return s.RegionId
+}
+
 func (s *ListPlansRequest) SetRegionId(v string) *ListPlansRequest {
 	s.RegionId = &v
 	return s
+}
+
+func (s *ListPlansRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iListPlansResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetPlans(v []*ListPlansResponseBodyPlans) *ListPlansResponseBody
+	GetPlans() []*ListPlansResponseBodyPlans
+	SetRequestId(v string) *ListPlansResponseBody
+	GetRequestId() *string
 }
 
 type ListPlansResponseBody struct {
@@ -13878,11 +21428,19 @@ type ListPlansResponseBody struct {
 }
 
 func (s ListPlansResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListPlansResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListPlansResponseBody) GetPlans() []*ListPlansResponseBodyPlans {
+	return s.Plans
+}
+
+func (s *ListPlansResponseBody) GetRequestId() *string {
+	return s.RequestId
 }
 
 func (s *ListPlansResponseBody) SetPlans(v []*ListPlansResponseBodyPlans) *ListPlansResponseBody {
@@ -13893,6 +21451,10 @@ func (s *ListPlansResponseBody) SetPlans(v []*ListPlansResponseBodyPlans) *ListP
 func (s *ListPlansResponseBody) SetRequestId(v string) *ListPlansResponseBody {
 	s.RequestId = &v
 	return s
+}
+
+func (s *ListPlansResponseBody) Validate() error {
+	return dara.Validate(s)
 }
 
 type ListPlansResponseBodyPlans struct {
@@ -13941,26 +21503,28 @@ type ListPlansResponseBodyPlans struct {
 	// example:
 	//
 	// 400
-	Flow *int32 `json:"Flow,omitempty" xml:"Flow,omitempty"`
+	Flow    *int32  `json:"Flow,omitempty" xml:"Flow,omitempty"`
+	IspType *string `json:"IspType,omitempty" xml:"IspType,omitempty"`
 	// The memory size. Unit: GB.
 	//
 	// example:
 	//
 	// 1
-	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	Memory *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
 	// The monthly price of the plan.
 	//
 	// example:
 	//
 	// 60
-	OriginPrice *float64 `json:"OriginPrice,omitempty" xml:"OriginPrice,omitempty"`
+	OriginPrice *string `json:"OriginPrice,omitempty" xml:"OriginPrice,omitempty"`
 	// The ID of the plan.
 	//
 	// example:
 	//
 	// swas.s2.c2m1s40b3t04
-	PlanId   *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
-	PlanType *string `json:"PlanType,omitempty" xml:"PlanType,omitempty"`
+	PlanId      *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	PlanType    *string `json:"PlanType,omitempty" xml:"PlanType,omitempty"`
+	PublicIpNum *string `json:"PublicIpNum,omitempty" xml:"PublicIpNum,omitempty"`
 	// The operating system types supported by the plan.
 	//
 	// example:
@@ -13971,11 +21535,67 @@ type ListPlansResponseBodyPlans struct {
 }
 
 func (s ListPlansResponseBodyPlans) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListPlansResponseBodyPlans) GoString() string {
 	return s.String()
+}
+
+func (s *ListPlansResponseBodyPlans) GetBandwidth() *int32 {
+	return s.Bandwidth
+}
+
+func (s *ListPlansResponseBodyPlans) GetCore() *int32 {
+	return s.Core
+}
+
+func (s *ListPlansResponseBodyPlans) GetCurrency() *string {
+	return s.Currency
+}
+
+func (s *ListPlansResponseBodyPlans) GetDiskSize() *int32 {
+	return s.DiskSize
+}
+
+func (s *ListPlansResponseBodyPlans) GetDiskType() *string {
+	return s.DiskType
+}
+
+func (s *ListPlansResponseBodyPlans) GetFlow() *int32 {
+	return s.Flow
+}
+
+func (s *ListPlansResponseBodyPlans) GetIspType() *string {
+	return s.IspType
+}
+
+func (s *ListPlansResponseBodyPlans) GetMemory() *float32 {
+	return s.Memory
+}
+
+func (s *ListPlansResponseBodyPlans) GetOriginPrice() *string {
+	return s.OriginPrice
+}
+
+func (s *ListPlansResponseBodyPlans) GetPlanId() *string {
+	return s.PlanId
+}
+
+func (s *ListPlansResponseBodyPlans) GetPlanType() *string {
+	return s.PlanType
+}
+
+func (s *ListPlansResponseBodyPlans) GetPublicIpNum() *string {
+	return s.PublicIpNum
+}
+
+func (s *ListPlansResponseBodyPlans) GetSupportPlatform() *string {
+	return s.SupportPlatform
+}
+
+func (s *ListPlansResponseBodyPlans) GetTags() []*ListPlansResponseBodyPlansTags {
+	return s.Tags
 }
 
 func (s *ListPlansResponseBodyPlans) SetBandwidth(v int32) *ListPlansResponseBodyPlans {
@@ -14008,12 +21628,17 @@ func (s *ListPlansResponseBodyPlans) SetFlow(v int32) *ListPlansResponseBodyPlan
 	return s
 }
 
-func (s *ListPlansResponseBodyPlans) SetMemory(v int32) *ListPlansResponseBodyPlans {
+func (s *ListPlansResponseBodyPlans) SetIspType(v string) *ListPlansResponseBodyPlans {
+	s.IspType = &v
+	return s
+}
+
+func (s *ListPlansResponseBodyPlans) SetMemory(v float32) *ListPlansResponseBodyPlans {
 	s.Memory = &v
 	return s
 }
 
-func (s *ListPlansResponseBodyPlans) SetOriginPrice(v float64) *ListPlansResponseBodyPlans {
+func (s *ListPlansResponseBodyPlans) SetOriginPrice(v string) *ListPlansResponseBodyPlans {
 	s.OriginPrice = &v
 	return s
 }
@@ -14028,6 +21653,11 @@ func (s *ListPlansResponseBodyPlans) SetPlanType(v string) *ListPlansResponseBod
 	return s
 }
 
+func (s *ListPlansResponseBodyPlans) SetPublicIpNum(v string) *ListPlansResponseBodyPlans {
+	s.PublicIpNum = &v
+	return s
+}
+
 func (s *ListPlansResponseBodyPlans) SetSupportPlatform(v string) *ListPlansResponseBodyPlans {
 	s.SupportPlatform = &v
 	return s
@@ -14038,6 +21668,10 @@ func (s *ListPlansResponseBodyPlans) SetTags(v []*ListPlansResponseBodyPlansTags
 	return s
 }
 
+func (s *ListPlansResponseBodyPlans) Validate() error {
+	return dara.Validate(s)
+}
+
 type ListPlansResponseBodyPlansTags struct {
 	CnTitle *string `json:"CnTitle,omitempty" xml:"CnTitle,omitempty"`
 	Color   *string `json:"Color,omitempty" xml:"Color,omitempty"`
@@ -14045,11 +21679,23 @@ type ListPlansResponseBodyPlansTags struct {
 }
 
 func (s ListPlansResponseBodyPlansTags) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListPlansResponseBodyPlansTags) GoString() string {
 	return s.String()
+}
+
+func (s *ListPlansResponseBodyPlansTags) GetCnTitle() *string {
+	return s.CnTitle
+}
+
+func (s *ListPlansResponseBodyPlansTags) GetColor() *string {
+	return s.Color
+}
+
+func (s *ListPlansResponseBodyPlansTags) GetEnTitle() *string {
+	return s.EnTitle
 }
 
 func (s *ListPlansResponseBodyPlansTags) SetCnTitle(v string) *ListPlansResponseBodyPlansTags {
@@ -14067,6 +21713,22 @@ func (s *ListPlansResponseBodyPlansTags) SetEnTitle(v string) *ListPlansResponse
 	return s
 }
 
+func (s *ListPlansResponseBodyPlansTags) Validate() error {
+	return dara.Validate(s)
+}
+
+type iListPlansResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *ListPlansResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *ListPlansResponse
+	GetStatusCode() *int32
+	SetBody(v *ListPlansResponseBody) *ListPlansResponse
+	GetBody() *ListPlansResponseBody
+}
+
 type ListPlansResponse struct {
 	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -14074,11 +21736,23 @@ type ListPlansResponse struct {
 }
 
 func (s ListPlansResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListPlansResponse) GoString() string {
 	return s.String()
+}
+
+func (s *ListPlansResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *ListPlansResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *ListPlansResponse) GetBody() *ListPlansResponseBody {
+	return s.Body
 }
 
 func (s *ListPlansResponse) SetHeaders(v map[string]*string) *ListPlansResponse {
@@ -14096,6 +21770,18 @@ func (s *ListPlansResponse) SetBody(v *ListPlansResponseBody) *ListPlansResponse
 	return s
 }
 
+func (s *ListPlansResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iListRegionsRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetAcceptLanguage(v string) *ListRegionsRequest
+	GetAcceptLanguage() *string
+}
+
 type ListRegionsRequest struct {
 	// The language of the response. Valid values:
 	//
@@ -14110,16 +21796,34 @@ type ListRegionsRequest struct {
 }
 
 func (s ListRegionsRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListRegionsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListRegionsRequest) GetAcceptLanguage() *string {
+	return s.AcceptLanguage
+}
+
 func (s *ListRegionsRequest) SetAcceptLanguage(v string) *ListRegionsRequest {
 	s.AcceptLanguage = &v
 	return s
+}
+
+func (s *ListRegionsRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iListRegionsResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetRegions(v []*ListRegionsResponseBodyRegions) *ListRegionsResponseBody
+	GetRegions() []*ListRegionsResponseBodyRegions
+	SetRequestId(v string) *ListRegionsResponseBody
+	GetRequestId() *string
 }
 
 type ListRegionsResponseBody struct {
@@ -14134,11 +21838,19 @@ type ListRegionsResponseBody struct {
 }
 
 func (s ListRegionsResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListRegionsResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListRegionsResponseBody) GetRegions() []*ListRegionsResponseBodyRegions {
+	return s.Regions
+}
+
+func (s *ListRegionsResponseBody) GetRequestId() *string {
+	return s.RequestId
 }
 
 func (s *ListRegionsResponseBody) SetRegions(v []*ListRegionsResponseBodyRegions) *ListRegionsResponseBody {
@@ -14149,6 +21861,10 @@ func (s *ListRegionsResponseBody) SetRegions(v []*ListRegionsResponseBodyRegions
 func (s *ListRegionsResponseBody) SetRequestId(v string) *ListRegionsResponseBody {
 	s.RequestId = &v
 	return s
+}
+
+func (s *ListRegionsResponseBody) Validate() error {
+	return dara.Validate(s)
 }
 
 type ListRegionsResponseBodyRegions struct {
@@ -14173,11 +21889,23 @@ type ListRegionsResponseBodyRegions struct {
 }
 
 func (s ListRegionsResponseBodyRegions) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListRegionsResponseBodyRegions) GoString() string {
 	return s.String()
+}
+
+func (s *ListRegionsResponseBodyRegions) GetLocalName() *string {
+	return s.LocalName
+}
+
+func (s *ListRegionsResponseBodyRegions) GetRegionEndpoint() *string {
+	return s.RegionEndpoint
+}
+
+func (s *ListRegionsResponseBodyRegions) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *ListRegionsResponseBodyRegions) SetLocalName(v string) *ListRegionsResponseBodyRegions {
@@ -14195,6 +21923,22 @@ func (s *ListRegionsResponseBodyRegions) SetRegionId(v string) *ListRegionsRespo
 	return s
 }
 
+func (s *ListRegionsResponseBodyRegions) Validate() error {
+	return dara.Validate(s)
+}
+
+type iListRegionsResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *ListRegionsResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *ListRegionsResponse
+	GetStatusCode() *int32
+	SetBody(v *ListRegionsResponseBody) *ListRegionsResponse
+	GetBody() *ListRegionsResponseBody
+}
+
 type ListRegionsResponse struct {
 	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -14202,11 +21946,23 @@ type ListRegionsResponse struct {
 }
 
 func (s ListRegionsResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListRegionsResponse) GoString() string {
 	return s.String()
+}
+
+func (s *ListRegionsResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *ListRegionsResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *ListRegionsResponse) GetBody() *ListRegionsResponseBody {
+	return s.Body
 }
 
 func (s *ListRegionsResponse) SetHeaders(v map[string]*string) *ListRegionsResponse {
@@ -14222,6 +21978,34 @@ func (s *ListRegionsResponse) SetStatusCode(v int32) *ListRegionsResponse {
 func (s *ListRegionsResponse) SetBody(v *ListRegionsResponseBody) *ListRegionsResponse {
 	s.Body = v
 	return s
+}
+
+func (s *ListRegionsResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iListSnapshotsRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetDiskId(v string) *ListSnapshotsRequest
+	GetDiskId() *string
+	SetInstanceId(v string) *ListSnapshotsRequest
+	GetInstanceId() *string
+	SetPageNumber(v int32) *ListSnapshotsRequest
+	GetPageNumber() *int32
+	SetPageSize(v int32) *ListSnapshotsRequest
+	GetPageSize() *int32
+	SetRegionId(v string) *ListSnapshotsRequest
+	GetRegionId() *string
+	SetResourceGroupId(v string) *ListSnapshotsRequest
+	GetResourceGroupId() *string
+	SetSnapshotIds(v string) *ListSnapshotsRequest
+	GetSnapshotIds() *string
+	SetSourceDiskType(v string) *ListSnapshotsRequest
+	GetSourceDiskType() *string
+	SetTag(v []*ListSnapshotsRequestTag) *ListSnapshotsRequest
+	GetTag() []*ListSnapshotsRequestTag
 }
 
 type ListSnapshotsRequest struct {
@@ -14288,11 +22072,47 @@ type ListSnapshotsRequest struct {
 }
 
 func (s ListSnapshotsRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListSnapshotsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListSnapshotsRequest) GetDiskId() *string {
+	return s.DiskId
+}
+
+func (s *ListSnapshotsRequest) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *ListSnapshotsRequest) GetPageNumber() *int32 {
+	return s.PageNumber
+}
+
+func (s *ListSnapshotsRequest) GetPageSize() *int32 {
+	return s.PageSize
+}
+
+func (s *ListSnapshotsRequest) GetRegionId() *string {
+	return s.RegionId
+}
+
+func (s *ListSnapshotsRequest) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
+func (s *ListSnapshotsRequest) GetSnapshotIds() *string {
+	return s.SnapshotIds
+}
+
+func (s *ListSnapshotsRequest) GetSourceDiskType() *string {
+	return s.SourceDiskType
+}
+
+func (s *ListSnapshotsRequest) GetTag() []*ListSnapshotsRequestTag {
+	return s.Tag
 }
 
 func (s *ListSnapshotsRequest) SetDiskId(v string) *ListSnapshotsRequest {
@@ -14340,6 +22160,10 @@ func (s *ListSnapshotsRequest) SetTag(v []*ListSnapshotsRequestTag) *ListSnapsho
 	return s
 }
 
+func (s *ListSnapshotsRequest) Validate() error {
+	return dara.Validate(s)
+}
+
 type ListSnapshotsRequestTag struct {
 	// The key of tag N that you want to add to the snapshot. A tag key can be 1 to 64 characters in length. Valid values of N: 1 to 20.
 	//
@@ -14356,11 +22180,19 @@ type ListSnapshotsRequestTag struct {
 }
 
 func (s ListSnapshotsRequestTag) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListSnapshotsRequestTag) GoString() string {
 	return s.String()
+}
+
+func (s *ListSnapshotsRequestTag) GetKey() *string {
+	return s.Key
+}
+
+func (s *ListSnapshotsRequestTag) GetValue() *string {
+	return s.Value
 }
 
 func (s *ListSnapshotsRequestTag) SetKey(v string) *ListSnapshotsRequestTag {
@@ -14371,6 +22203,26 @@ func (s *ListSnapshotsRequestTag) SetKey(v string) *ListSnapshotsRequestTag {
 func (s *ListSnapshotsRequestTag) SetValue(v string) *ListSnapshotsRequestTag {
 	s.Value = &v
 	return s
+}
+
+func (s *ListSnapshotsRequestTag) Validate() error {
+	return dara.Validate(s)
+}
+
+type iListSnapshotsResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetPageNumber(v int32) *ListSnapshotsResponseBody
+	GetPageNumber() *int32
+	SetPageSize(v int32) *ListSnapshotsResponseBody
+	GetPageSize() *int32
+	SetRequestId(v string) *ListSnapshotsResponseBody
+	GetRequestId() *string
+	SetSnapshots(v []*ListSnapshotsResponseBodySnapshots) *ListSnapshotsResponseBody
+	GetSnapshots() []*ListSnapshotsResponseBodySnapshots
+	SetTotalCount(v int32) *ListSnapshotsResponseBody
+	GetTotalCount() *int32
 }
 
 type ListSnapshotsResponseBody struct {
@@ -14403,11 +22255,31 @@ type ListSnapshotsResponseBody struct {
 }
 
 func (s ListSnapshotsResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListSnapshotsResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListSnapshotsResponseBody) GetPageNumber() *int32 {
+	return s.PageNumber
+}
+
+func (s *ListSnapshotsResponseBody) GetPageSize() *int32 {
+	return s.PageSize
+}
+
+func (s *ListSnapshotsResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
+func (s *ListSnapshotsResponseBody) GetSnapshots() []*ListSnapshotsResponseBodySnapshots {
+	return s.Snapshots
+}
+
+func (s *ListSnapshotsResponseBody) GetTotalCount() *int32 {
+	return s.TotalCount
 }
 
 func (s *ListSnapshotsResponseBody) SetPageNumber(v int32) *ListSnapshotsResponseBody {
@@ -14433,6 +22305,10 @@ func (s *ListSnapshotsResponseBody) SetSnapshots(v []*ListSnapshotsResponseBodyS
 func (s *ListSnapshotsResponseBody) SetTotalCount(v int32) *ListSnapshotsResponseBody {
 	s.TotalCount = &v
 	return s
+}
+
+func (s *ListSnapshotsResponseBody) Validate() error {
+	return dara.Validate(s)
 }
 
 type ListSnapshotsResponseBodySnapshots struct {
@@ -14525,11 +22401,63 @@ type ListSnapshotsResponseBodySnapshots struct {
 }
 
 func (s ListSnapshotsResponseBodySnapshots) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListSnapshotsResponseBodySnapshots) GoString() string {
 	return s.String()
+}
+
+func (s *ListSnapshotsResponseBodySnapshots) GetCreationTime() *string {
+	return s.CreationTime
+}
+
+func (s *ListSnapshotsResponseBodySnapshots) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *ListSnapshotsResponseBodySnapshots) GetProgress() *string {
+	return s.Progress
+}
+
+func (s *ListSnapshotsResponseBodySnapshots) GetRegionId() *string {
+	return s.RegionId
+}
+
+func (s *ListSnapshotsResponseBodySnapshots) GetRemark() *string {
+	return s.Remark
+}
+
+func (s *ListSnapshotsResponseBodySnapshots) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
+func (s *ListSnapshotsResponseBodySnapshots) GetRollbackTime() *string {
+	return s.RollbackTime
+}
+
+func (s *ListSnapshotsResponseBodySnapshots) GetSnapshotId() *string {
+	return s.SnapshotId
+}
+
+func (s *ListSnapshotsResponseBodySnapshots) GetSnapshotName() *string {
+	return s.SnapshotName
+}
+
+func (s *ListSnapshotsResponseBodySnapshots) GetSourceDiskId() *string {
+	return s.SourceDiskId
+}
+
+func (s *ListSnapshotsResponseBodySnapshots) GetSourceDiskType() *string {
+	return s.SourceDiskType
+}
+
+func (s *ListSnapshotsResponseBodySnapshots) GetStatus() *string {
+	return s.Status
+}
+
+func (s *ListSnapshotsResponseBodySnapshots) GetTags() []*ListSnapshotsResponseBodySnapshotsTags {
+	return s.Tags
 }
 
 func (s *ListSnapshotsResponseBodySnapshots) SetCreationTime(v string) *ListSnapshotsResponseBodySnapshots {
@@ -14597,6 +22525,10 @@ func (s *ListSnapshotsResponseBodySnapshots) SetTags(v []*ListSnapshotsResponseB
 	return s
 }
 
+func (s *ListSnapshotsResponseBodySnapshots) Validate() error {
+	return dara.Validate(s)
+}
+
 type ListSnapshotsResponseBodySnapshotsTags struct {
 	// The tag key of the snapshot.
 	//
@@ -14613,11 +22545,19 @@ type ListSnapshotsResponseBodySnapshotsTags struct {
 }
 
 func (s ListSnapshotsResponseBodySnapshotsTags) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListSnapshotsResponseBodySnapshotsTags) GoString() string {
 	return s.String()
+}
+
+func (s *ListSnapshotsResponseBodySnapshotsTags) GetKey() *string {
+	return s.Key
+}
+
+func (s *ListSnapshotsResponseBodySnapshotsTags) GetValue() *string {
+	return s.Value
 }
 
 func (s *ListSnapshotsResponseBodySnapshotsTags) SetKey(v string) *ListSnapshotsResponseBodySnapshotsTags {
@@ -14630,6 +22570,22 @@ func (s *ListSnapshotsResponseBodySnapshotsTags) SetValue(v string) *ListSnapsho
 	return s
 }
 
+func (s *ListSnapshotsResponseBodySnapshotsTags) Validate() error {
+	return dara.Validate(s)
+}
+
+type iListSnapshotsResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *ListSnapshotsResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *ListSnapshotsResponse
+	GetStatusCode() *int32
+	SetBody(v *ListSnapshotsResponseBody) *ListSnapshotsResponse
+	GetBody() *ListSnapshotsResponseBody
+}
+
 type ListSnapshotsResponse struct {
 	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -14637,11 +22593,23 @@ type ListSnapshotsResponse struct {
 }
 
 func (s ListSnapshotsResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListSnapshotsResponse) GoString() string {
 	return s.String()
+}
+
+func (s *ListSnapshotsResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *ListSnapshotsResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *ListSnapshotsResponse) GetBody() *ListSnapshotsResponseBody {
+	return s.Body
 }
 
 func (s *ListSnapshotsResponse) SetHeaders(v map[string]*string) *ListSnapshotsResponse {
@@ -14657,6 +22625,28 @@ func (s *ListSnapshotsResponse) SetStatusCode(v int32) *ListSnapshotsResponse {
 func (s *ListSnapshotsResponse) SetBody(v *ListSnapshotsResponseBody) *ListSnapshotsResponse {
 	s.Body = v
 	return s
+}
+
+func (s *ListSnapshotsResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iListTagResourcesRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientToken(v string) *ListTagResourcesRequest
+	GetClientToken() *string
+	SetNextToken(v string) *ListTagResourcesRequest
+	GetNextToken() *string
+	SetRegionId(v string) *ListTagResourcesRequest
+	GetRegionId() *string
+	SetResourceId(v []*string) *ListTagResourcesRequest
+	GetResourceId() []*string
+	SetResourceType(v string) *ListTagResourcesRequest
+	GetResourceType() *string
+	SetTag(v []*ListTagResourcesRequestTag) *ListTagResourcesRequest
+	GetTag() []*ListTagResourcesRequestTag
 }
 
 type ListTagResourcesRequest struct {
@@ -14707,11 +22697,35 @@ type ListTagResourcesRequest struct {
 }
 
 func (s ListTagResourcesRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListTagResourcesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListTagResourcesRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *ListTagResourcesRequest) GetNextToken() *string {
+	return s.NextToken
+}
+
+func (s *ListTagResourcesRequest) GetRegionId() *string {
+	return s.RegionId
+}
+
+func (s *ListTagResourcesRequest) GetResourceId() []*string {
+	return s.ResourceId
+}
+
+func (s *ListTagResourcesRequest) GetResourceType() *string {
+	return s.ResourceType
+}
+
+func (s *ListTagResourcesRequest) GetTag() []*ListTagResourcesRequestTag {
+	return s.Tag
 }
 
 func (s *ListTagResourcesRequest) SetClientToken(v string) *ListTagResourcesRequest {
@@ -14744,6 +22758,10 @@ func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListT
 	return s
 }
 
+func (s *ListTagResourcesRequest) Validate() error {
+	return dara.Validate(s)
+}
+
 type ListTagResourcesRequestTag struct {
 	// The key of the tag that you want to add to a resource. The tag key can be 1 to 64 characters in length.
 	//
@@ -14760,11 +22778,19 @@ type ListTagResourcesRequestTag struct {
 }
 
 func (s ListTagResourcesRequestTag) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListTagResourcesRequestTag) GoString() string {
 	return s.String()
+}
+
+func (s *ListTagResourcesRequestTag) GetKey() *string {
+	return s.Key
+}
+
+func (s *ListTagResourcesRequestTag) GetValue() *string {
+	return s.Value
 }
 
 func (s *ListTagResourcesRequestTag) SetKey(v string) *ListTagResourcesRequestTag {
@@ -14775,6 +22801,22 @@ func (s *ListTagResourcesRequestTag) SetKey(v string) *ListTagResourcesRequestTa
 func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequestTag {
 	s.Value = &v
 	return s
+}
+
+func (s *ListTagResourcesRequestTag) Validate() error {
+	return dara.Validate(s)
+}
+
+type iListTagResourcesResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetNextToken(v string) *ListTagResourcesResponseBody
+	GetNextToken() *string
+	SetRequestId(v string) *ListTagResourcesResponseBody
+	GetRequestId() *string
+	SetTagResources(v *ListTagResourcesResponseBodyTagResources) *ListTagResourcesResponseBody
+	GetTagResources() *ListTagResourcesResponseBodyTagResources
 }
 
 type ListTagResourcesResponseBody struct {
@@ -14795,11 +22837,23 @@ type ListTagResourcesResponseBody struct {
 }
 
 func (s ListTagResourcesResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListTagResourcesResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListTagResourcesResponseBody) GetNextToken() *string {
+	return s.NextToken
+}
+
+func (s *ListTagResourcesResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
+func (s *ListTagResourcesResponseBody) GetTagResources() *ListTagResourcesResponseBodyTagResources {
+	return s.TagResources
 }
 
 func (s *ListTagResourcesResponseBody) SetNextToken(v string) *ListTagResourcesResponseBody {
@@ -14817,21 +22871,33 @@ func (s *ListTagResourcesResponseBody) SetTagResources(v *ListTagResourcesRespon
 	return s
 }
 
+func (s *ListTagResourcesResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
 type ListTagResourcesResponseBodyTagResources struct {
 	TagResource []*ListTagResourcesResponseBodyTagResourcesTagResource `json:"TagResource,omitempty" xml:"TagResource,omitempty" type:"Repeated"`
 }
 
 func (s ListTagResourcesResponseBodyTagResources) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListTagResourcesResponseBodyTagResources) GoString() string {
 	return s.String()
 }
 
+func (s *ListTagResourcesResponseBodyTagResources) GetTagResource() []*ListTagResourcesResponseBodyTagResourcesTagResource {
+	return s.TagResource
+}
+
 func (s *ListTagResourcesResponseBodyTagResources) SetTagResource(v []*ListTagResourcesResponseBodyTagResourcesTagResource) *ListTagResourcesResponseBodyTagResources {
 	s.TagResource = v
 	return s
+}
+
+func (s *ListTagResourcesResponseBodyTagResources) Validate() error {
+	return dara.Validate(s)
 }
 
 type ListTagResourcesResponseBodyTagResourcesTagResource struct {
@@ -14874,11 +22940,27 @@ type ListTagResourcesResponseBodyTagResourcesTagResource struct {
 }
 
 func (s ListTagResourcesResponseBodyTagResourcesTagResource) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListTagResourcesResponseBodyTagResourcesTagResource) GoString() string {
 	return s.String()
+}
+
+func (s *ListTagResourcesResponseBodyTagResourcesTagResource) GetResourceId() *string {
+	return s.ResourceId
+}
+
+func (s *ListTagResourcesResponseBodyTagResourcesTagResource) GetResourceType() *string {
+	return s.ResourceType
+}
+
+func (s *ListTagResourcesResponseBodyTagResourcesTagResource) GetTagKey() *string {
+	return s.TagKey
+}
+
+func (s *ListTagResourcesResponseBodyTagResourcesTagResource) GetTagValue() *string {
+	return s.TagValue
 }
 
 func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetResourceId(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
@@ -14901,6 +22983,22 @@ func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetTagValue(v stri
 	return s
 }
 
+func (s *ListTagResourcesResponseBodyTagResourcesTagResource) Validate() error {
+	return dara.Validate(s)
+}
+
+type iListTagResourcesResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *ListTagResourcesResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *ListTagResourcesResponse
+	GetStatusCode() *int32
+	SetBody(v *ListTagResourcesResponseBody) *ListTagResourcesResponse
+	GetBody() *ListTagResourcesResponseBody
+}
+
 type ListTagResourcesResponse struct {
 	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -14908,11 +23006,23 @@ type ListTagResourcesResponse struct {
 }
 
 func (s ListTagResourcesResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ListTagResourcesResponse) GoString() string {
 	return s.String()
+}
+
+func (s *ListTagResourcesResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *ListTagResourcesResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *ListTagResourcesResponse) GetBody() *ListTagResourcesResponseBody {
+	return s.Body
 }
 
 func (s *ListTagResourcesResponse) SetHeaders(v map[string]*string) *ListTagResourcesResponse {
@@ -14928,6 +23038,26 @@ func (s *ListTagResourcesResponse) SetStatusCode(v int32) *ListTagResourcesRespo
 func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *ListTagResourcesResponse {
 	s.Body = v
 	return s
+}
+
+func (s *ListTagResourcesResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iLoginInstanceRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetInstanceId(v string) *LoginInstanceRequest
+	GetInstanceId() *string
+	SetPassword(v string) *LoginInstanceRequest
+	GetPassword() *string
+	SetPort(v int32) *LoginInstanceRequest
+	GetPort() *int32
+	SetRegionId(v string) *LoginInstanceRequest
+	GetRegionId() *string
+	SetUsername(v string) *LoginInstanceRequest
+	GetUsername() *string
 }
 
 type LoginInstanceRequest struct {
@@ -14982,11 +23112,31 @@ type LoginInstanceRequest struct {
 }
 
 func (s LoginInstanceRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s LoginInstanceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *LoginInstanceRequest) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *LoginInstanceRequest) GetPassword() *string {
+	return s.Password
+}
+
+func (s *LoginInstanceRequest) GetPort() *int32 {
+	return s.Port
+}
+
+func (s *LoginInstanceRequest) GetRegionId() *string {
+	return s.RegionId
+}
+
+func (s *LoginInstanceRequest) GetUsername() *string {
+	return s.Username
 }
 
 func (s *LoginInstanceRequest) SetInstanceId(v string) *LoginInstanceRequest {
@@ -15014,6 +23164,20 @@ func (s *LoginInstanceRequest) SetUsername(v string) *LoginInstanceRequest {
 	return s
 }
 
+func (s *LoginInstanceRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iLoginInstanceResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetRedirectUrl(v string) *LoginInstanceResponseBody
+	GetRedirectUrl() *string
+	SetRequestId(v string) *LoginInstanceResponseBody
+	GetRequestId() *string
+}
+
 type LoginInstanceResponseBody struct {
 	// The URL that you use to log on to the server.
 	//
@@ -15030,11 +23194,19 @@ type LoginInstanceResponseBody struct {
 }
 
 func (s LoginInstanceResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s LoginInstanceResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *LoginInstanceResponseBody) GetRedirectUrl() *string {
+	return s.RedirectUrl
+}
+
+func (s *LoginInstanceResponseBody) GetRequestId() *string {
+	return s.RequestId
 }
 
 func (s *LoginInstanceResponseBody) SetRedirectUrl(v string) *LoginInstanceResponseBody {
@@ -15047,6 +23219,22 @@ func (s *LoginInstanceResponseBody) SetRequestId(v string) *LoginInstanceRespons
 	return s
 }
 
+func (s *LoginInstanceResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iLoginInstanceResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *LoginInstanceResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *LoginInstanceResponse
+	GetStatusCode() *int32
+	SetBody(v *LoginInstanceResponseBody) *LoginInstanceResponse
+	GetBody() *LoginInstanceResponseBody
+}
+
 type LoginInstanceResponse struct {
 	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -15054,11 +23242,23 @@ type LoginInstanceResponse struct {
 }
 
 func (s LoginInstanceResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s LoginInstanceResponse) GoString() string {
 	return s.String()
+}
+
+func (s *LoginInstanceResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *LoginInstanceResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *LoginInstanceResponse) GetBody() *LoginInstanceResponseBody {
+	return s.Body
 }
 
 func (s *LoginInstanceResponse) SetHeaders(v map[string]*string) *LoginInstanceResponse {
@@ -15074,6 +23274,24 @@ func (s *LoginInstanceResponse) SetStatusCode(v int32) *LoginInstanceResponse {
 func (s *LoginInstanceResponse) SetBody(v *LoginInstanceResponseBody) *LoginInstanceResponse {
 	s.Body = v
 	return s
+}
+
+func (s *LoginInstanceResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iModifyDatabaseInstanceDescriptionRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientToken(v string) *ModifyDatabaseInstanceDescriptionRequest
+	GetClientToken() *string
+	SetDatabaseInstanceDescription(v string) *ModifyDatabaseInstanceDescriptionRequest
+	GetDatabaseInstanceDescription() *string
+	SetDatabaseInstanceId(v string) *ModifyDatabaseInstanceDescriptionRequest
+	GetDatabaseInstanceId() *string
+	SetRegionId(v string) *ModifyDatabaseInstanceDescriptionRequest
+	GetRegionId() *string
 }
 
 type ModifyDatabaseInstanceDescriptionRequest struct {
@@ -15106,11 +23324,27 @@ type ModifyDatabaseInstanceDescriptionRequest struct {
 }
 
 func (s ModifyDatabaseInstanceDescriptionRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ModifyDatabaseInstanceDescriptionRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyDatabaseInstanceDescriptionRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *ModifyDatabaseInstanceDescriptionRequest) GetDatabaseInstanceDescription() *string {
+	return s.DatabaseInstanceDescription
+}
+
+func (s *ModifyDatabaseInstanceDescriptionRequest) GetDatabaseInstanceId() *string {
+	return s.DatabaseInstanceId
+}
+
+func (s *ModifyDatabaseInstanceDescriptionRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *ModifyDatabaseInstanceDescriptionRequest) SetClientToken(v string) *ModifyDatabaseInstanceDescriptionRequest {
@@ -15133,6 +23367,18 @@ func (s *ModifyDatabaseInstanceDescriptionRequest) SetRegionId(v string) *Modify
 	return s
 }
 
+func (s *ModifyDatabaseInstanceDescriptionRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iModifyDatabaseInstanceDescriptionResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetRequestId(v string) *ModifyDatabaseInstanceDescriptionResponseBody
+	GetRequestId() *string
+}
+
 type ModifyDatabaseInstanceDescriptionResponseBody struct {
 	// The request ID.
 	//
@@ -15143,16 +23389,36 @@ type ModifyDatabaseInstanceDescriptionResponseBody struct {
 }
 
 func (s ModifyDatabaseInstanceDescriptionResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ModifyDatabaseInstanceDescriptionResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyDatabaseInstanceDescriptionResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
 func (s *ModifyDatabaseInstanceDescriptionResponseBody) SetRequestId(v string) *ModifyDatabaseInstanceDescriptionResponseBody {
 	s.RequestId = &v
 	return s
+}
+
+func (s *ModifyDatabaseInstanceDescriptionResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iModifyDatabaseInstanceDescriptionResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *ModifyDatabaseInstanceDescriptionResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *ModifyDatabaseInstanceDescriptionResponse
+	GetStatusCode() *int32
+	SetBody(v *ModifyDatabaseInstanceDescriptionResponseBody) *ModifyDatabaseInstanceDescriptionResponse
+	GetBody() *ModifyDatabaseInstanceDescriptionResponseBody
 }
 
 type ModifyDatabaseInstanceDescriptionResponse struct {
@@ -15162,11 +23428,23 @@ type ModifyDatabaseInstanceDescriptionResponse struct {
 }
 
 func (s ModifyDatabaseInstanceDescriptionResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ModifyDatabaseInstanceDescriptionResponse) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyDatabaseInstanceDescriptionResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *ModifyDatabaseInstanceDescriptionResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *ModifyDatabaseInstanceDescriptionResponse) GetBody() *ModifyDatabaseInstanceDescriptionResponseBody {
+	return s.Body
 }
 
 func (s *ModifyDatabaseInstanceDescriptionResponse) SetHeaders(v map[string]*string) *ModifyDatabaseInstanceDescriptionResponse {
@@ -15182,6 +23460,26 @@ func (s *ModifyDatabaseInstanceDescriptionResponse) SetStatusCode(v int32) *Modi
 func (s *ModifyDatabaseInstanceDescriptionResponse) SetBody(v *ModifyDatabaseInstanceDescriptionResponseBody) *ModifyDatabaseInstanceDescriptionResponse {
 	s.Body = v
 	return s
+}
+
+func (s *ModifyDatabaseInstanceDescriptionResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iModifyDatabaseInstanceParameterRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientToken(v string) *ModifyDatabaseInstanceParameterRequest
+	GetClientToken() *string
+	SetDatabaseInstanceId(v string) *ModifyDatabaseInstanceParameterRequest
+	GetDatabaseInstanceId() *string
+	SetForceRestart(v bool) *ModifyDatabaseInstanceParameterRequest
+	GetForceRestart() *bool
+	SetParameters(v string) *ModifyDatabaseInstanceParameterRequest
+	GetParameters() *string
+	SetRegionId(v string) *ModifyDatabaseInstanceParameterRequest
+	GetRegionId() *string
 }
 
 type ModifyDatabaseInstanceParameterRequest struct {
@@ -15230,11 +23528,31 @@ type ModifyDatabaseInstanceParameterRequest struct {
 }
 
 func (s ModifyDatabaseInstanceParameterRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ModifyDatabaseInstanceParameterRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyDatabaseInstanceParameterRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *ModifyDatabaseInstanceParameterRequest) GetDatabaseInstanceId() *string {
+	return s.DatabaseInstanceId
+}
+
+func (s *ModifyDatabaseInstanceParameterRequest) GetForceRestart() *bool {
+	return s.ForceRestart
+}
+
+func (s *ModifyDatabaseInstanceParameterRequest) GetParameters() *string {
+	return s.Parameters
+}
+
+func (s *ModifyDatabaseInstanceParameterRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *ModifyDatabaseInstanceParameterRequest) SetClientToken(v string) *ModifyDatabaseInstanceParameterRequest {
@@ -15262,6 +23580,18 @@ func (s *ModifyDatabaseInstanceParameterRequest) SetRegionId(v string) *ModifyDa
 	return s
 }
 
+func (s *ModifyDatabaseInstanceParameterRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iModifyDatabaseInstanceParameterResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetRequestId(v string) *ModifyDatabaseInstanceParameterResponseBody
+	GetRequestId() *string
+}
+
 type ModifyDatabaseInstanceParameterResponseBody struct {
 	// The request ID.
 	//
@@ -15272,16 +23602,36 @@ type ModifyDatabaseInstanceParameterResponseBody struct {
 }
 
 func (s ModifyDatabaseInstanceParameterResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ModifyDatabaseInstanceParameterResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyDatabaseInstanceParameterResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
 func (s *ModifyDatabaseInstanceParameterResponseBody) SetRequestId(v string) *ModifyDatabaseInstanceParameterResponseBody {
 	s.RequestId = &v
 	return s
+}
+
+func (s *ModifyDatabaseInstanceParameterResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iModifyDatabaseInstanceParameterResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *ModifyDatabaseInstanceParameterResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *ModifyDatabaseInstanceParameterResponse
+	GetStatusCode() *int32
+	SetBody(v *ModifyDatabaseInstanceParameterResponseBody) *ModifyDatabaseInstanceParameterResponse
+	GetBody() *ModifyDatabaseInstanceParameterResponseBody
 }
 
 type ModifyDatabaseInstanceParameterResponse struct {
@@ -15291,11 +23641,23 @@ type ModifyDatabaseInstanceParameterResponse struct {
 }
 
 func (s ModifyDatabaseInstanceParameterResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ModifyDatabaseInstanceParameterResponse) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyDatabaseInstanceParameterResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *ModifyDatabaseInstanceParameterResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *ModifyDatabaseInstanceParameterResponse) GetBody() *ModifyDatabaseInstanceParameterResponseBody {
+	return s.Body
 }
 
 func (s *ModifyDatabaseInstanceParameterResponse) SetHeaders(v map[string]*string) *ModifyDatabaseInstanceParameterResponse {
@@ -15311,6 +23673,32 @@ func (s *ModifyDatabaseInstanceParameterResponse) SetStatusCode(v int32) *Modify
 func (s *ModifyDatabaseInstanceParameterResponse) SetBody(v *ModifyDatabaseInstanceParameterResponseBody) *ModifyDatabaseInstanceParameterResponse {
 	s.Body = v
 	return s
+}
+
+func (s *ModifyDatabaseInstanceParameterResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iModifyFirewallRuleRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientToken(v string) *ModifyFirewallRuleRequest
+	GetClientToken() *string
+	SetInstanceId(v string) *ModifyFirewallRuleRequest
+	GetInstanceId() *string
+	SetPort(v string) *ModifyFirewallRuleRequest
+	GetPort() *string
+	SetRegionId(v string) *ModifyFirewallRuleRequest
+	GetRegionId() *string
+	SetRemark(v string) *ModifyFirewallRuleRequest
+	GetRemark() *string
+	SetRuleId(v string) *ModifyFirewallRuleRequest
+	GetRuleId() *string
+	SetRuleProtocol(v string) *ModifyFirewallRuleRequest
+	GetRuleProtocol() *string
+	SetSourceCidrIp(v string) *ModifyFirewallRuleRequest
+	GetSourceCidrIp() *string
 }
 
 type ModifyFirewallRuleRequest struct {
@@ -15381,11 +23769,43 @@ type ModifyFirewallRuleRequest struct {
 }
 
 func (s ModifyFirewallRuleRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ModifyFirewallRuleRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyFirewallRuleRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *ModifyFirewallRuleRequest) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *ModifyFirewallRuleRequest) GetPort() *string {
+	return s.Port
+}
+
+func (s *ModifyFirewallRuleRequest) GetRegionId() *string {
+	return s.RegionId
+}
+
+func (s *ModifyFirewallRuleRequest) GetRemark() *string {
+	return s.Remark
+}
+
+func (s *ModifyFirewallRuleRequest) GetRuleId() *string {
+	return s.RuleId
+}
+
+func (s *ModifyFirewallRuleRequest) GetRuleProtocol() *string {
+	return s.RuleProtocol
+}
+
+func (s *ModifyFirewallRuleRequest) GetSourceCidrIp() *string {
+	return s.SourceCidrIp
 }
 
 func (s *ModifyFirewallRuleRequest) SetClientToken(v string) *ModifyFirewallRuleRequest {
@@ -15428,6 +23848,18 @@ func (s *ModifyFirewallRuleRequest) SetSourceCidrIp(v string) *ModifyFirewallRul
 	return s
 }
 
+func (s *ModifyFirewallRuleRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iModifyFirewallRuleResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetRequestId(v string) *ModifyFirewallRuleResponseBody
+	GetRequestId() *string
+}
+
 type ModifyFirewallRuleResponseBody struct {
 	// The request ID.
 	//
@@ -15438,16 +23870,36 @@ type ModifyFirewallRuleResponseBody struct {
 }
 
 func (s ModifyFirewallRuleResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ModifyFirewallRuleResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyFirewallRuleResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
 func (s *ModifyFirewallRuleResponseBody) SetRequestId(v string) *ModifyFirewallRuleResponseBody {
 	s.RequestId = &v
 	return s
+}
+
+func (s *ModifyFirewallRuleResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iModifyFirewallRuleResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *ModifyFirewallRuleResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *ModifyFirewallRuleResponse
+	GetStatusCode() *int32
+	SetBody(v *ModifyFirewallRuleResponseBody) *ModifyFirewallRuleResponse
+	GetBody() *ModifyFirewallRuleResponseBody
 }
 
 type ModifyFirewallRuleResponse struct {
@@ -15457,11 +23909,23 @@ type ModifyFirewallRuleResponse struct {
 }
 
 func (s ModifyFirewallRuleResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ModifyFirewallRuleResponse) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyFirewallRuleResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *ModifyFirewallRuleResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *ModifyFirewallRuleResponse) GetBody() *ModifyFirewallRuleResponseBody {
+	return s.Body
 }
 
 func (s *ModifyFirewallRuleResponse) SetHeaders(v map[string]*string) *ModifyFirewallRuleResponse {
@@ -15477,6 +23941,28 @@ func (s *ModifyFirewallRuleResponse) SetStatusCode(v int32) *ModifyFirewallRuleR
 func (s *ModifyFirewallRuleResponse) SetBody(v *ModifyFirewallRuleResponseBody) *ModifyFirewallRuleResponse {
 	s.Body = v
 	return s
+}
+
+func (s *ModifyFirewallRuleResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iModifyFirewallTemplateRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientToken(v string) *ModifyFirewallTemplateRequest
+	GetClientToken() *string
+	SetDescription(v string) *ModifyFirewallTemplateRequest
+	GetDescription() *string
+	SetFirewallTemplateId(v string) *ModifyFirewallTemplateRequest
+	GetFirewallTemplateId() *string
+	SetFirewallTemplateRule(v []*ModifyFirewallTemplateRequestFirewallTemplateRule) *ModifyFirewallTemplateRequest
+	GetFirewallTemplateRule() []*ModifyFirewallTemplateRequestFirewallTemplateRule
+	SetName(v string) *ModifyFirewallTemplateRequest
+	GetName() *string
+	SetRegionId(v string) *ModifyFirewallTemplateRequest
+	GetRegionId() *string
 }
 
 type ModifyFirewallTemplateRequest struct {
@@ -15519,11 +24005,35 @@ type ModifyFirewallTemplateRequest struct {
 }
 
 func (s ModifyFirewallTemplateRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ModifyFirewallTemplateRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyFirewallTemplateRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *ModifyFirewallTemplateRequest) GetDescription() *string {
+	return s.Description
+}
+
+func (s *ModifyFirewallTemplateRequest) GetFirewallTemplateId() *string {
+	return s.FirewallTemplateId
+}
+
+func (s *ModifyFirewallTemplateRequest) GetFirewallTemplateRule() []*ModifyFirewallTemplateRequestFirewallTemplateRule {
+	return s.FirewallTemplateRule
+}
+
+func (s *ModifyFirewallTemplateRequest) GetName() *string {
+	return s.Name
+}
+
+func (s *ModifyFirewallTemplateRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *ModifyFirewallTemplateRequest) SetClientToken(v string) *ModifyFirewallTemplateRequest {
@@ -15554,6 +24064,10 @@ func (s *ModifyFirewallTemplateRequest) SetName(v string) *ModifyFirewallTemplat
 func (s *ModifyFirewallTemplateRequest) SetRegionId(v string) *ModifyFirewallTemplateRequest {
 	s.RegionId = &v
 	return s
+}
+
+func (s *ModifyFirewallTemplateRequest) Validate() error {
+	return dara.Validate(s)
 }
 
 type ModifyFirewallTemplateRequestFirewallTemplateRule struct {
@@ -15602,11 +24116,31 @@ type ModifyFirewallTemplateRequestFirewallTemplateRule struct {
 }
 
 func (s ModifyFirewallTemplateRequestFirewallTemplateRule) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ModifyFirewallTemplateRequestFirewallTemplateRule) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyFirewallTemplateRequestFirewallTemplateRule) GetFirewallTemplateRuleId() *string {
+	return s.FirewallTemplateRuleId
+}
+
+func (s *ModifyFirewallTemplateRequestFirewallTemplateRule) GetPort() *string {
+	return s.Port
+}
+
+func (s *ModifyFirewallTemplateRequestFirewallTemplateRule) GetRemark() *string {
+	return s.Remark
+}
+
+func (s *ModifyFirewallTemplateRequestFirewallTemplateRule) GetRuleProtocol() *string {
+	return s.RuleProtocol
+}
+
+func (s *ModifyFirewallTemplateRequestFirewallTemplateRule) GetSourceCidrIp() *string {
+	return s.SourceCidrIp
 }
 
 func (s *ModifyFirewallTemplateRequestFirewallTemplateRule) SetFirewallTemplateRuleId(v string) *ModifyFirewallTemplateRequestFirewallTemplateRule {
@@ -15634,6 +24168,18 @@ func (s *ModifyFirewallTemplateRequestFirewallTemplateRule) SetSourceCidrIp(v st
 	return s
 }
 
+func (s *ModifyFirewallTemplateRequestFirewallTemplateRule) Validate() error {
+	return dara.Validate(s)
+}
+
+type iModifyFirewallTemplateResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetRequestId(v string) *ModifyFirewallTemplateResponseBody
+	GetRequestId() *string
+}
+
 type ModifyFirewallTemplateResponseBody struct {
 	// The request ID.
 	//
@@ -15644,16 +24190,36 @@ type ModifyFirewallTemplateResponseBody struct {
 }
 
 func (s ModifyFirewallTemplateResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ModifyFirewallTemplateResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyFirewallTemplateResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
 func (s *ModifyFirewallTemplateResponseBody) SetRequestId(v string) *ModifyFirewallTemplateResponseBody {
 	s.RequestId = &v
 	return s
+}
+
+func (s *ModifyFirewallTemplateResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iModifyFirewallTemplateResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *ModifyFirewallTemplateResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *ModifyFirewallTemplateResponse
+	GetStatusCode() *int32
+	SetBody(v *ModifyFirewallTemplateResponseBody) *ModifyFirewallTemplateResponse
+	GetBody() *ModifyFirewallTemplateResponseBody
 }
 
 type ModifyFirewallTemplateResponse struct {
@@ -15663,11 +24229,23 @@ type ModifyFirewallTemplateResponse struct {
 }
 
 func (s ModifyFirewallTemplateResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ModifyFirewallTemplateResponse) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyFirewallTemplateResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *ModifyFirewallTemplateResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *ModifyFirewallTemplateResponse) GetBody() *ModifyFirewallTemplateResponseBody {
+	return s.Body
 }
 
 func (s *ModifyFirewallTemplateResponse) SetHeaders(v map[string]*string) *ModifyFirewallTemplateResponse {
@@ -15683,6 +24261,24 @@ func (s *ModifyFirewallTemplateResponse) SetStatusCode(v int32) *ModifyFirewallT
 func (s *ModifyFirewallTemplateResponse) SetBody(v *ModifyFirewallTemplateResponseBody) *ModifyFirewallTemplateResponse {
 	s.Body = v
 	return s
+}
+
+func (s *ModifyFirewallTemplateResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iModifyImageShareStatusRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientToken(v string) *ModifyImageShareStatusRequest
+	GetClientToken() *string
+	SetImageId(v string) *ModifyImageShareStatusRequest
+	GetImageId() *string
+	SetOperation(v string) *ModifyImageShareStatusRequest
+	GetOperation() *string
+	SetRegionId(v string) *ModifyImageShareStatusRequest
+	GetRegionId() *string
 }
 
 type ModifyImageShareStatusRequest struct {
@@ -15723,11 +24319,27 @@ type ModifyImageShareStatusRequest struct {
 }
 
 func (s ModifyImageShareStatusRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ModifyImageShareStatusRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyImageShareStatusRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *ModifyImageShareStatusRequest) GetImageId() *string {
+	return s.ImageId
+}
+
+func (s *ModifyImageShareStatusRequest) GetOperation() *string {
+	return s.Operation
+}
+
+func (s *ModifyImageShareStatusRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *ModifyImageShareStatusRequest) SetClientToken(v string) *ModifyImageShareStatusRequest {
@@ -15750,6 +24362,18 @@ func (s *ModifyImageShareStatusRequest) SetRegionId(v string) *ModifyImageShareS
 	return s
 }
 
+func (s *ModifyImageShareStatusRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iModifyImageShareStatusResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetRequestId(v string) *ModifyImageShareStatusResponseBody
+	GetRequestId() *string
+}
+
 type ModifyImageShareStatusResponseBody struct {
 	// The request ID.
 	//
@@ -15760,16 +24384,36 @@ type ModifyImageShareStatusResponseBody struct {
 }
 
 func (s ModifyImageShareStatusResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ModifyImageShareStatusResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyImageShareStatusResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
 func (s *ModifyImageShareStatusResponseBody) SetRequestId(v string) *ModifyImageShareStatusResponseBody {
 	s.RequestId = &v
 	return s
+}
+
+func (s *ModifyImageShareStatusResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iModifyImageShareStatusResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *ModifyImageShareStatusResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *ModifyImageShareStatusResponse
+	GetStatusCode() *int32
+	SetBody(v *ModifyImageShareStatusResponseBody) *ModifyImageShareStatusResponse
+	GetBody() *ModifyImageShareStatusResponseBody
 }
 
 type ModifyImageShareStatusResponse struct {
@@ -15779,11 +24423,23 @@ type ModifyImageShareStatusResponse struct {
 }
 
 func (s ModifyImageShareStatusResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ModifyImageShareStatusResponse) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyImageShareStatusResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *ModifyImageShareStatusResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *ModifyImageShareStatusResponse) GetBody() *ModifyImageShareStatusResponseBody {
+	return s.Body
 }
 
 func (s *ModifyImageShareStatusResponse) SetHeaders(v map[string]*string) *ModifyImageShareStatusResponse {
@@ -15799,6 +24455,24 @@ func (s *ModifyImageShareStatusResponse) SetStatusCode(v int32) *ModifyImageShar
 func (s *ModifyImageShareStatusResponse) SetBody(v *ModifyImageShareStatusResponseBody) *ModifyImageShareStatusResponse {
 	s.Body = v
 	return s
+}
+
+func (s *ModifyImageShareStatusResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iModifyInstanceVncPasswordRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientToken(v string) *ModifyInstanceVncPasswordRequest
+	GetClientToken() *string
+	SetInstanceId(v string) *ModifyInstanceVncPasswordRequest
+	GetInstanceId() *string
+	SetRegionId(v string) *ModifyInstanceVncPasswordRequest
+	GetRegionId() *string
+	SetVncPassword(v string) *ModifyInstanceVncPasswordRequest
+	GetVncPassword() *string
 }
 
 type ModifyInstanceVncPasswordRequest struct {
@@ -15833,11 +24507,27 @@ type ModifyInstanceVncPasswordRequest struct {
 }
 
 func (s ModifyInstanceVncPasswordRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ModifyInstanceVncPasswordRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyInstanceVncPasswordRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *ModifyInstanceVncPasswordRequest) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *ModifyInstanceVncPasswordRequest) GetRegionId() *string {
+	return s.RegionId
+}
+
+func (s *ModifyInstanceVncPasswordRequest) GetVncPassword() *string {
+	return s.VncPassword
 }
 
 func (s *ModifyInstanceVncPasswordRequest) SetClientToken(v string) *ModifyInstanceVncPasswordRequest {
@@ -15860,6 +24550,18 @@ func (s *ModifyInstanceVncPasswordRequest) SetVncPassword(v string) *ModifyInsta
 	return s
 }
 
+func (s *ModifyInstanceVncPasswordRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iModifyInstanceVncPasswordResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetRequestId(v string) *ModifyInstanceVncPasswordResponseBody
+	GetRequestId() *string
+}
+
 type ModifyInstanceVncPasswordResponseBody struct {
 	// The request ID.
 	//
@@ -15870,16 +24572,36 @@ type ModifyInstanceVncPasswordResponseBody struct {
 }
 
 func (s ModifyInstanceVncPasswordResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ModifyInstanceVncPasswordResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyInstanceVncPasswordResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
 func (s *ModifyInstanceVncPasswordResponseBody) SetRequestId(v string) *ModifyInstanceVncPasswordResponseBody {
 	s.RequestId = &v
 	return s
+}
+
+func (s *ModifyInstanceVncPasswordResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iModifyInstanceVncPasswordResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *ModifyInstanceVncPasswordResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *ModifyInstanceVncPasswordResponse
+	GetStatusCode() *int32
+	SetBody(v *ModifyInstanceVncPasswordResponseBody) *ModifyInstanceVncPasswordResponse
+	GetBody() *ModifyInstanceVncPasswordResponseBody
 }
 
 type ModifyInstanceVncPasswordResponse struct {
@@ -15889,11 +24611,23 @@ type ModifyInstanceVncPasswordResponse struct {
 }
 
 func (s ModifyInstanceVncPasswordResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ModifyInstanceVncPasswordResponse) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyInstanceVncPasswordResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *ModifyInstanceVncPasswordResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *ModifyInstanceVncPasswordResponse) GetBody() *ModifyInstanceVncPasswordResponseBody {
+	return s.Body
 }
 
 func (s *ModifyInstanceVncPasswordResponse) SetHeaders(v map[string]*string) *ModifyInstanceVncPasswordResponse {
@@ -15909,6 +24643,22 @@ func (s *ModifyInstanceVncPasswordResponse) SetStatusCode(v int32) *ModifyInstan
 func (s *ModifyInstanceVncPasswordResponse) SetBody(v *ModifyInstanceVncPasswordResponseBody) *ModifyInstanceVncPasswordResponse {
 	s.Body = v
 	return s
+}
+
+func (s *ModifyInstanceVncPasswordResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iRebootInstanceRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientToken(v string) *RebootInstanceRequest
+	GetClientToken() *string
+	SetInstanceId(v string) *RebootInstanceRequest
+	GetInstanceId() *string
+	SetRegionId(v string) *RebootInstanceRequest
+	GetRegionId() *string
 }
 
 type RebootInstanceRequest struct {
@@ -15937,11 +24687,23 @@ type RebootInstanceRequest struct {
 }
 
 func (s RebootInstanceRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s RebootInstanceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *RebootInstanceRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *RebootInstanceRequest) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *RebootInstanceRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *RebootInstanceRequest) SetClientToken(v string) *RebootInstanceRequest {
@@ -15959,6 +24721,18 @@ func (s *RebootInstanceRequest) SetRegionId(v string) *RebootInstanceRequest {
 	return s
 }
 
+func (s *RebootInstanceRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iRebootInstanceResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetRequestId(v string) *RebootInstanceResponseBody
+	GetRequestId() *string
+}
+
 type RebootInstanceResponseBody struct {
 	// The request ID.
 	//
@@ -15969,16 +24743,36 @@ type RebootInstanceResponseBody struct {
 }
 
 func (s RebootInstanceResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s RebootInstanceResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *RebootInstanceResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
 func (s *RebootInstanceResponseBody) SetRequestId(v string) *RebootInstanceResponseBody {
 	s.RequestId = &v
 	return s
+}
+
+func (s *RebootInstanceResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iRebootInstanceResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *RebootInstanceResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *RebootInstanceResponse
+	GetStatusCode() *int32
+	SetBody(v *RebootInstanceResponseBody) *RebootInstanceResponse
+	GetBody() *RebootInstanceResponseBody
 }
 
 type RebootInstanceResponse struct {
@@ -15988,11 +24782,23 @@ type RebootInstanceResponse struct {
 }
 
 func (s RebootInstanceResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s RebootInstanceResponse) GoString() string {
 	return s.String()
+}
+
+func (s *RebootInstanceResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *RebootInstanceResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *RebootInstanceResponse) GetBody() *RebootInstanceResponseBody {
+	return s.Body
 }
 
 func (s *RebootInstanceResponse) SetHeaders(v map[string]*string) *RebootInstanceResponse {
@@ -16008,6 +24814,24 @@ func (s *RebootInstanceResponse) SetStatusCode(v int32) *RebootInstanceResponse 
 func (s *RebootInstanceResponse) SetBody(v *RebootInstanceResponseBody) *RebootInstanceResponse {
 	s.Body = v
 	return s
+}
+
+func (s *RebootInstanceResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iRebootInstancesRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientToken(v string) *RebootInstancesRequest
+	GetClientToken() *string
+	SetForceReboot(v bool) *RebootInstancesRequest
+	GetForceReboot() *bool
+	SetInstanceIds(v string) *RebootInstancesRequest
+	GetInstanceIds() *string
+	SetRegionId(v string) *RebootInstancesRequest
+	GetRegionId() *string
 }
 
 type RebootInstancesRequest struct {
@@ -16048,11 +24872,27 @@ type RebootInstancesRequest struct {
 }
 
 func (s RebootInstancesRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s RebootInstancesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *RebootInstancesRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *RebootInstancesRequest) GetForceReboot() *bool {
+	return s.ForceReboot
+}
+
+func (s *RebootInstancesRequest) GetInstanceIds() *string {
+	return s.InstanceIds
+}
+
+func (s *RebootInstancesRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *RebootInstancesRequest) SetClientToken(v string) *RebootInstancesRequest {
@@ -16075,6 +24915,18 @@ func (s *RebootInstancesRequest) SetRegionId(v string) *RebootInstancesRequest {
 	return s
 }
 
+func (s *RebootInstancesRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iRebootInstancesResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetRequestId(v string) *RebootInstancesResponseBody
+	GetRequestId() *string
+}
+
 type RebootInstancesResponseBody struct {
 	// The request ID.
 	//
@@ -16085,16 +24937,36 @@ type RebootInstancesResponseBody struct {
 }
 
 func (s RebootInstancesResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s RebootInstancesResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *RebootInstancesResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
 func (s *RebootInstancesResponseBody) SetRequestId(v string) *RebootInstancesResponseBody {
 	s.RequestId = &v
 	return s
+}
+
+func (s *RebootInstancesResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iRebootInstancesResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *RebootInstancesResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *RebootInstancesResponse
+	GetStatusCode() *int32
+	SetBody(v *RebootInstancesResponseBody) *RebootInstancesResponse
+	GetBody() *RebootInstancesResponseBody
 }
 
 type RebootInstancesResponse struct {
@@ -16104,11 +24976,23 @@ type RebootInstancesResponse struct {
 }
 
 func (s RebootInstancesResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s RebootInstancesResponse) GoString() string {
 	return s.String()
+}
+
+func (s *RebootInstancesResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *RebootInstancesResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *RebootInstancesResponse) GetBody() *RebootInstancesResponseBody {
+	return s.Body
 }
 
 func (s *RebootInstancesResponse) SetHeaders(v map[string]*string) *RebootInstancesResponse {
@@ -16124,6 +25008,22 @@ func (s *RebootInstancesResponse) SetStatusCode(v int32) *RebootInstancesRespons
 func (s *RebootInstancesResponse) SetBody(v *RebootInstancesResponseBody) *RebootInstancesResponse {
 	s.Body = v
 	return s
+}
+
+func (s *RebootInstancesResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iReleasePublicConnectionRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientToken(v string) *ReleasePublicConnectionRequest
+	GetClientToken() *string
+	SetDatabaseInstanceId(v string) *ReleasePublicConnectionRequest
+	GetDatabaseInstanceId() *string
+	SetRegionId(v string) *ReleasePublicConnectionRequest
+	GetRegionId() *string
 }
 
 type ReleasePublicConnectionRequest struct {
@@ -16152,11 +25052,23 @@ type ReleasePublicConnectionRequest struct {
 }
 
 func (s ReleasePublicConnectionRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ReleasePublicConnectionRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ReleasePublicConnectionRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *ReleasePublicConnectionRequest) GetDatabaseInstanceId() *string {
+	return s.DatabaseInstanceId
+}
+
+func (s *ReleasePublicConnectionRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *ReleasePublicConnectionRequest) SetClientToken(v string) *ReleasePublicConnectionRequest {
@@ -16174,6 +25086,18 @@ func (s *ReleasePublicConnectionRequest) SetRegionId(v string) *ReleasePublicCon
 	return s
 }
 
+func (s *ReleasePublicConnectionRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iReleasePublicConnectionResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetRequestId(v string) *ReleasePublicConnectionResponseBody
+	GetRequestId() *string
+}
+
 type ReleasePublicConnectionResponseBody struct {
 	// The request ID.
 	//
@@ -16184,16 +25108,36 @@ type ReleasePublicConnectionResponseBody struct {
 }
 
 func (s ReleasePublicConnectionResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ReleasePublicConnectionResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *ReleasePublicConnectionResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
 func (s *ReleasePublicConnectionResponseBody) SetRequestId(v string) *ReleasePublicConnectionResponseBody {
 	s.RequestId = &v
 	return s
+}
+
+func (s *ReleasePublicConnectionResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iReleasePublicConnectionResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *ReleasePublicConnectionResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *ReleasePublicConnectionResponse
+	GetStatusCode() *int32
+	SetBody(v *ReleasePublicConnectionResponseBody) *ReleasePublicConnectionResponse
+	GetBody() *ReleasePublicConnectionResponseBody
 }
 
 type ReleasePublicConnectionResponse struct {
@@ -16203,11 +25147,23 @@ type ReleasePublicConnectionResponse struct {
 }
 
 func (s ReleasePublicConnectionResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ReleasePublicConnectionResponse) GoString() string {
 	return s.String()
+}
+
+func (s *ReleasePublicConnectionResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *ReleasePublicConnectionResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *ReleasePublicConnectionResponse) GetBody() *ReleasePublicConnectionResponseBody {
+	return s.Body
 }
 
 func (s *ReleasePublicConnectionResponse) SetHeaders(v map[string]*string) *ReleasePublicConnectionResponse {
@@ -16223,6 +25179,24 @@ func (s *ReleasePublicConnectionResponse) SetStatusCode(v int32) *ReleasePublicC
 func (s *ReleasePublicConnectionResponse) SetBody(v *ReleasePublicConnectionResponseBody) *ReleasePublicConnectionResponse {
 	s.Body = v
 	return s
+}
+
+func (s *ReleasePublicConnectionResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iRemoveCustomImageShareAccountRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetAccount(v []*int64) *RemoveCustomImageShareAccountRequest
+	GetAccount() []*int64
+	SetClientToken(v string) *RemoveCustomImageShareAccountRequest
+	GetClientToken() *string
+	SetImageId(v string) *RemoveCustomImageShareAccountRequest
+	GetImageId() *string
+	SetRegionId(v string) *RemoveCustomImageShareAccountRequest
+	GetRegionId() *string
 }
 
 type RemoveCustomImageShareAccountRequest struct {
@@ -16255,11 +25229,27 @@ type RemoveCustomImageShareAccountRequest struct {
 }
 
 func (s RemoveCustomImageShareAccountRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s RemoveCustomImageShareAccountRequest) GoString() string {
 	return s.String()
+}
+
+func (s *RemoveCustomImageShareAccountRequest) GetAccount() []*int64 {
+	return s.Account
+}
+
+func (s *RemoveCustomImageShareAccountRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *RemoveCustomImageShareAccountRequest) GetImageId() *string {
+	return s.ImageId
+}
+
+func (s *RemoveCustomImageShareAccountRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *RemoveCustomImageShareAccountRequest) SetAccount(v []*int64) *RemoveCustomImageShareAccountRequest {
@@ -16282,6 +25272,18 @@ func (s *RemoveCustomImageShareAccountRequest) SetRegionId(v string) *RemoveCust
 	return s
 }
 
+func (s *RemoveCustomImageShareAccountRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iRemoveCustomImageShareAccountResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetRequestId(v string) *RemoveCustomImageShareAccountResponseBody
+	GetRequestId() *string
+}
+
 type RemoveCustomImageShareAccountResponseBody struct {
 	// The request ID.
 	//
@@ -16292,16 +25294,36 @@ type RemoveCustomImageShareAccountResponseBody struct {
 }
 
 func (s RemoveCustomImageShareAccountResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s RemoveCustomImageShareAccountResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *RemoveCustomImageShareAccountResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
 func (s *RemoveCustomImageShareAccountResponseBody) SetRequestId(v string) *RemoveCustomImageShareAccountResponseBody {
 	s.RequestId = &v
 	return s
+}
+
+func (s *RemoveCustomImageShareAccountResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iRemoveCustomImageShareAccountResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *RemoveCustomImageShareAccountResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *RemoveCustomImageShareAccountResponse
+	GetStatusCode() *int32
+	SetBody(v *RemoveCustomImageShareAccountResponseBody) *RemoveCustomImageShareAccountResponse
+	GetBody() *RemoveCustomImageShareAccountResponseBody
 }
 
 type RemoveCustomImageShareAccountResponse struct {
@@ -16311,11 +25333,23 @@ type RemoveCustomImageShareAccountResponse struct {
 }
 
 func (s RemoveCustomImageShareAccountResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s RemoveCustomImageShareAccountResponse) GoString() string {
 	return s.String()
+}
+
+func (s *RemoveCustomImageShareAccountResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *RemoveCustomImageShareAccountResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *RemoveCustomImageShareAccountResponse) GetBody() *RemoveCustomImageShareAccountResponseBody {
+	return s.Body
 }
 
 func (s *RemoveCustomImageShareAccountResponse) SetHeaders(v map[string]*string) *RemoveCustomImageShareAccountResponse {
@@ -16331,6 +25365,24 @@ func (s *RemoveCustomImageShareAccountResponse) SetStatusCode(v int32) *RemoveCu
 func (s *RemoveCustomImageShareAccountResponse) SetBody(v *RemoveCustomImageShareAccountResponseBody) *RemoveCustomImageShareAccountResponse {
 	s.Body = v
 	return s
+}
+
+func (s *RemoveCustomImageShareAccountResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iRenewInstanceRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientToken(v string) *RenewInstanceRequest
+	GetClientToken() *string
+	SetInstanceId(v string) *RenewInstanceRequest
+	GetInstanceId() *string
+	SetPeriod(v int32) *RenewInstanceRequest
+	GetPeriod() *int32
+	SetRegionId(v string) *RenewInstanceRequest
+	GetRegionId() *string
 }
 
 type RenewInstanceRequest struct {
@@ -16367,11 +25419,27 @@ type RenewInstanceRequest struct {
 }
 
 func (s RenewInstanceRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s RenewInstanceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *RenewInstanceRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *RenewInstanceRequest) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *RenewInstanceRequest) GetPeriod() *int32 {
+	return s.Period
+}
+
+func (s *RenewInstanceRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *RenewInstanceRequest) SetClientToken(v string) *RenewInstanceRequest {
@@ -16394,6 +25462,18 @@ func (s *RenewInstanceRequest) SetRegionId(v string) *RenewInstanceRequest {
 	return s
 }
 
+func (s *RenewInstanceRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iRenewInstanceResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetRequestId(v string) *RenewInstanceResponseBody
+	GetRequestId() *string
+}
+
 type RenewInstanceResponseBody struct {
 	// The request ID.
 	//
@@ -16404,16 +25484,36 @@ type RenewInstanceResponseBody struct {
 }
 
 func (s RenewInstanceResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s RenewInstanceResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *RenewInstanceResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
 func (s *RenewInstanceResponseBody) SetRequestId(v string) *RenewInstanceResponseBody {
 	s.RequestId = &v
 	return s
+}
+
+func (s *RenewInstanceResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iRenewInstanceResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *RenewInstanceResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *RenewInstanceResponse
+	GetStatusCode() *int32
+	SetBody(v *RenewInstanceResponseBody) *RenewInstanceResponse
+	GetBody() *RenewInstanceResponseBody
 }
 
 type RenewInstanceResponse struct {
@@ -16423,11 +25523,23 @@ type RenewInstanceResponse struct {
 }
 
 func (s RenewInstanceResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s RenewInstanceResponse) GoString() string {
 	return s.String()
+}
+
+func (s *RenewInstanceResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *RenewInstanceResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *RenewInstanceResponse) GetBody() *RenewInstanceResponseBody {
+	return s.Body
 }
 
 func (s *RenewInstanceResponse) SetHeaders(v map[string]*string) *RenewInstanceResponse {
@@ -16443,6 +25555,24 @@ func (s *RenewInstanceResponse) SetStatusCode(v int32) *RenewInstanceResponse {
 func (s *RenewInstanceResponse) SetBody(v *RenewInstanceResponseBody) *RenewInstanceResponse {
 	s.Body = v
 	return s
+}
+
+func (s *RenewInstanceResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iResetDatabaseAccountPasswordRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetAccountPassword(v string) *ResetDatabaseAccountPasswordRequest
+	GetAccountPassword() *string
+	SetClientToken(v string) *ResetDatabaseAccountPasswordRequest
+	GetClientToken() *string
+	SetDatabaseInstanceId(v string) *ResetDatabaseAccountPasswordRequest
+	GetDatabaseInstanceId() *string
+	SetRegionId(v string) *ResetDatabaseAccountPasswordRequest
+	GetRegionId() *string
 }
 
 type ResetDatabaseAccountPasswordRequest struct {
@@ -16479,11 +25609,27 @@ type ResetDatabaseAccountPasswordRequest struct {
 }
 
 func (s ResetDatabaseAccountPasswordRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ResetDatabaseAccountPasswordRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ResetDatabaseAccountPasswordRequest) GetAccountPassword() *string {
+	return s.AccountPassword
+}
+
+func (s *ResetDatabaseAccountPasswordRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *ResetDatabaseAccountPasswordRequest) GetDatabaseInstanceId() *string {
+	return s.DatabaseInstanceId
+}
+
+func (s *ResetDatabaseAccountPasswordRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *ResetDatabaseAccountPasswordRequest) SetAccountPassword(v string) *ResetDatabaseAccountPasswordRequest {
@@ -16506,6 +25652,18 @@ func (s *ResetDatabaseAccountPasswordRequest) SetRegionId(v string) *ResetDataba
 	return s
 }
 
+func (s *ResetDatabaseAccountPasswordRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iResetDatabaseAccountPasswordResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetRequestId(v string) *ResetDatabaseAccountPasswordResponseBody
+	GetRequestId() *string
+}
+
 type ResetDatabaseAccountPasswordResponseBody struct {
 	// The request ID.
 	//
@@ -16516,16 +25674,36 @@ type ResetDatabaseAccountPasswordResponseBody struct {
 }
 
 func (s ResetDatabaseAccountPasswordResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ResetDatabaseAccountPasswordResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *ResetDatabaseAccountPasswordResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
 func (s *ResetDatabaseAccountPasswordResponseBody) SetRequestId(v string) *ResetDatabaseAccountPasswordResponseBody {
 	s.RequestId = &v
 	return s
+}
+
+func (s *ResetDatabaseAccountPasswordResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iResetDatabaseAccountPasswordResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *ResetDatabaseAccountPasswordResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *ResetDatabaseAccountPasswordResponse
+	GetStatusCode() *int32
+	SetBody(v *ResetDatabaseAccountPasswordResponseBody) *ResetDatabaseAccountPasswordResponse
+	GetBody() *ResetDatabaseAccountPasswordResponseBody
 }
 
 type ResetDatabaseAccountPasswordResponse struct {
@@ -16535,11 +25713,23 @@ type ResetDatabaseAccountPasswordResponse struct {
 }
 
 func (s ResetDatabaseAccountPasswordResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ResetDatabaseAccountPasswordResponse) GoString() string {
 	return s.String()
+}
+
+func (s *ResetDatabaseAccountPasswordResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *ResetDatabaseAccountPasswordResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *ResetDatabaseAccountPasswordResponse) GetBody() *ResetDatabaseAccountPasswordResponseBody {
+	return s.Body
 }
 
 func (s *ResetDatabaseAccountPasswordResponse) SetHeaders(v map[string]*string) *ResetDatabaseAccountPasswordResponse {
@@ -16555,6 +25745,24 @@ func (s *ResetDatabaseAccountPasswordResponse) SetStatusCode(v int32) *ResetData
 func (s *ResetDatabaseAccountPasswordResponse) SetBody(v *ResetDatabaseAccountPasswordResponseBody) *ResetDatabaseAccountPasswordResponse {
 	s.Body = v
 	return s
+}
+
+func (s *ResetDatabaseAccountPasswordResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iResetDiskRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientToken(v string) *ResetDiskRequest
+	GetClientToken() *string
+	SetDiskId(v string) *ResetDiskRequest
+	GetDiskId() *string
+	SetRegionId(v string) *ResetDiskRequest
+	GetRegionId() *string
+	SetSnapshotId(v string) *ResetDiskRequest
+	GetSnapshotId() *string
 }
 
 type ResetDiskRequest struct {
@@ -16591,11 +25799,27 @@ type ResetDiskRequest struct {
 }
 
 func (s ResetDiskRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ResetDiskRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ResetDiskRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *ResetDiskRequest) GetDiskId() *string {
+	return s.DiskId
+}
+
+func (s *ResetDiskRequest) GetRegionId() *string {
+	return s.RegionId
+}
+
+func (s *ResetDiskRequest) GetSnapshotId() *string {
+	return s.SnapshotId
 }
 
 func (s *ResetDiskRequest) SetClientToken(v string) *ResetDiskRequest {
@@ -16618,6 +25842,18 @@ func (s *ResetDiskRequest) SetSnapshotId(v string) *ResetDiskRequest {
 	return s
 }
 
+func (s *ResetDiskRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iResetDiskResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetRequestId(v string) *ResetDiskResponseBody
+	GetRequestId() *string
+}
+
 type ResetDiskResponseBody struct {
 	// The request ID.
 	//
@@ -16628,16 +25864,36 @@ type ResetDiskResponseBody struct {
 }
 
 func (s ResetDiskResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ResetDiskResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *ResetDiskResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
 func (s *ResetDiskResponseBody) SetRequestId(v string) *ResetDiskResponseBody {
 	s.RequestId = &v
 	return s
+}
+
+func (s *ResetDiskResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iResetDiskResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *ResetDiskResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *ResetDiskResponse
+	GetStatusCode() *int32
+	SetBody(v *ResetDiskResponseBody) *ResetDiskResponse
+	GetBody() *ResetDiskResponseBody
 }
 
 type ResetDiskResponse struct {
@@ -16647,11 +25903,23 @@ type ResetDiskResponse struct {
 }
 
 func (s ResetDiskResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ResetDiskResponse) GoString() string {
 	return s.String()
+}
+
+func (s *ResetDiskResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *ResetDiskResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *ResetDiskResponse) GetBody() *ResetDiskResponseBody {
+	return s.Body
 }
 
 func (s *ResetDiskResponse) SetHeaders(v map[string]*string) *ResetDiskResponse {
@@ -16667,6 +25935,26 @@ func (s *ResetDiskResponse) SetStatusCode(v int32) *ResetDiskResponse {
 func (s *ResetDiskResponse) SetBody(v *ResetDiskResponseBody) *ResetDiskResponse {
 	s.Body = v
 	return s
+}
+
+func (s *ResetDiskResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iResetSystemRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientToken(v string) *ResetSystemRequest
+	GetClientToken() *string
+	SetImageId(v string) *ResetSystemRequest
+	GetImageId() *string
+	SetInstanceId(v string) *ResetSystemRequest
+	GetInstanceId() *string
+	SetLoginCredentials(v *ResetSystemRequestLoginCredentials) *ResetSystemRequest
+	GetLoginCredentials() *ResetSystemRequestLoginCredentials
+	SetRegionId(v string) *ResetSystemRequest
+	GetRegionId() *string
 }
 
 type ResetSystemRequest struct {
@@ -16702,11 +25990,31 @@ type ResetSystemRequest struct {
 }
 
 func (s ResetSystemRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ResetSystemRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ResetSystemRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *ResetSystemRequest) GetImageId() *string {
+	return s.ImageId
+}
+
+func (s *ResetSystemRequest) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *ResetSystemRequest) GetLoginCredentials() *ResetSystemRequestLoginCredentials {
+	return s.LoginCredentials
+}
+
+func (s *ResetSystemRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *ResetSystemRequest) SetClientToken(v string) *ResetSystemRequest {
@@ -16734,17 +26042,29 @@ func (s *ResetSystemRequest) SetRegionId(v string) *ResetSystemRequest {
 	return s
 }
 
+func (s *ResetSystemRequest) Validate() error {
+	return dara.Validate(s)
+}
+
 type ResetSystemRequestLoginCredentials struct {
 	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
 	Password    *string `json:"Password,omitempty" xml:"Password,omitempty"`
 }
 
 func (s ResetSystemRequestLoginCredentials) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ResetSystemRequestLoginCredentials) GoString() string {
 	return s.String()
+}
+
+func (s *ResetSystemRequestLoginCredentials) GetKeyPairName() *string {
+	return s.KeyPairName
+}
+
+func (s *ResetSystemRequestLoginCredentials) GetPassword() *string {
+	return s.Password
 }
 
 func (s *ResetSystemRequestLoginCredentials) SetKeyPairName(v string) *ResetSystemRequestLoginCredentials {
@@ -16757,6 +26077,18 @@ func (s *ResetSystemRequestLoginCredentials) SetPassword(v string) *ResetSystemR
 	return s
 }
 
+func (s *ResetSystemRequestLoginCredentials) Validate() error {
+	return dara.Validate(s)
+}
+
+type iResetSystemResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetRequestId(v string) *ResetSystemResponseBody
+	GetRequestId() *string
+}
+
 type ResetSystemResponseBody struct {
 	// The request ID.
 	//
@@ -16767,16 +26099,36 @@ type ResetSystemResponseBody struct {
 }
 
 func (s ResetSystemResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ResetSystemResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *ResetSystemResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
 func (s *ResetSystemResponseBody) SetRequestId(v string) *ResetSystemResponseBody {
 	s.RequestId = &v
 	return s
+}
+
+func (s *ResetSystemResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iResetSystemResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *ResetSystemResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *ResetSystemResponse
+	GetStatusCode() *int32
+	SetBody(v *ResetSystemResponseBody) *ResetSystemResponse
+	GetBody() *ResetSystemResponseBody
 }
 
 type ResetSystemResponse struct {
@@ -16786,11 +26138,23 @@ type ResetSystemResponse struct {
 }
 
 func (s ResetSystemResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s ResetSystemResponse) GoString() string {
 	return s.String()
+}
+
+func (s *ResetSystemResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *ResetSystemResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *ResetSystemResponse) GetBody() *ResetSystemResponseBody {
+	return s.Body
 }
 
 func (s *ResetSystemResponse) SetHeaders(v map[string]*string) *ResetSystemResponse {
@@ -16806,6 +26170,22 @@ func (s *ResetSystemResponse) SetStatusCode(v int32) *ResetSystemResponse {
 func (s *ResetSystemResponse) SetBody(v *ResetSystemResponseBody) *ResetSystemResponse {
 	s.Body = v
 	return s
+}
+
+func (s *ResetSystemResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iRestartDatabaseInstanceRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientToken(v string) *RestartDatabaseInstanceRequest
+	GetClientToken() *string
+	SetDatabaseInstanceId(v string) *RestartDatabaseInstanceRequest
+	GetDatabaseInstanceId() *string
+	SetRegionId(v string) *RestartDatabaseInstanceRequest
+	GetRegionId() *string
 }
 
 type RestartDatabaseInstanceRequest struct {
@@ -16834,11 +26214,23 @@ type RestartDatabaseInstanceRequest struct {
 }
 
 func (s RestartDatabaseInstanceRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s RestartDatabaseInstanceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *RestartDatabaseInstanceRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *RestartDatabaseInstanceRequest) GetDatabaseInstanceId() *string {
+	return s.DatabaseInstanceId
+}
+
+func (s *RestartDatabaseInstanceRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *RestartDatabaseInstanceRequest) SetClientToken(v string) *RestartDatabaseInstanceRequest {
@@ -16856,6 +26248,18 @@ func (s *RestartDatabaseInstanceRequest) SetRegionId(v string) *RestartDatabaseI
 	return s
 }
 
+func (s *RestartDatabaseInstanceRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iRestartDatabaseInstanceResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetRequestId(v string) *RestartDatabaseInstanceResponseBody
+	GetRequestId() *string
+}
+
 type RestartDatabaseInstanceResponseBody struct {
 	// The request ID.
 	//
@@ -16866,16 +26270,36 @@ type RestartDatabaseInstanceResponseBody struct {
 }
 
 func (s RestartDatabaseInstanceResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s RestartDatabaseInstanceResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *RestartDatabaseInstanceResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
 func (s *RestartDatabaseInstanceResponseBody) SetRequestId(v string) *RestartDatabaseInstanceResponseBody {
 	s.RequestId = &v
 	return s
+}
+
+func (s *RestartDatabaseInstanceResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iRestartDatabaseInstanceResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *RestartDatabaseInstanceResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *RestartDatabaseInstanceResponse
+	GetStatusCode() *int32
+	SetBody(v *RestartDatabaseInstanceResponseBody) *RestartDatabaseInstanceResponse
+	GetBody() *RestartDatabaseInstanceResponseBody
 }
 
 type RestartDatabaseInstanceResponse struct {
@@ -16885,11 +26309,23 @@ type RestartDatabaseInstanceResponse struct {
 }
 
 func (s RestartDatabaseInstanceResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s RestartDatabaseInstanceResponse) GoString() string {
 	return s.String()
+}
+
+func (s *RestartDatabaseInstanceResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *RestartDatabaseInstanceResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *RestartDatabaseInstanceResponse) GetBody() *RestartDatabaseInstanceResponseBody {
+	return s.Body
 }
 
 func (s *RestartDatabaseInstanceResponse) SetHeaders(v map[string]*string) *RestartDatabaseInstanceResponse {
@@ -16905,6 +26341,38 @@ func (s *RestartDatabaseInstanceResponse) SetStatusCode(v int32) *RestartDatabas
 func (s *RestartDatabaseInstanceResponse) SetBody(v *RestartDatabaseInstanceResponseBody) *RestartDatabaseInstanceResponse {
 	s.Body = v
 	return s
+}
+
+func (s *RestartDatabaseInstanceResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iRunCommandRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetCommandContent(v string) *RunCommandRequest
+	GetCommandContent() *string
+	SetEnableParameter(v bool) *RunCommandRequest
+	GetEnableParameter() *bool
+	SetInstanceId(v string) *RunCommandRequest
+	GetInstanceId() *string
+	SetName(v string) *RunCommandRequest
+	GetName() *string
+	SetParameters(v map[string]interface{}) *RunCommandRequest
+	GetParameters() map[string]interface{}
+	SetRegionId(v string) *RunCommandRequest
+	GetRegionId() *string
+	SetTimeout(v int32) *RunCommandRequest
+	GetTimeout() *int32
+	SetType(v string) *RunCommandRequest
+	GetType() *string
+	SetWindowsPasswordName(v string) *RunCommandRequest
+	GetWindowsPasswordName() *string
+	SetWorkingDir(v string) *RunCommandRequest
+	GetWorkingDir() *string
+	SetWorkingUser(v string) *RunCommandRequest
+	GetWorkingUser() *string
 }
 
 type RunCommandRequest struct {
@@ -17031,11 +26499,55 @@ type RunCommandRequest struct {
 }
 
 func (s RunCommandRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s RunCommandRequest) GoString() string {
 	return s.String()
+}
+
+func (s *RunCommandRequest) GetCommandContent() *string {
+	return s.CommandContent
+}
+
+func (s *RunCommandRequest) GetEnableParameter() *bool {
+	return s.EnableParameter
+}
+
+func (s *RunCommandRequest) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *RunCommandRequest) GetName() *string {
+	return s.Name
+}
+
+func (s *RunCommandRequest) GetParameters() map[string]interface{} {
+	return s.Parameters
+}
+
+func (s *RunCommandRequest) GetRegionId() *string {
+	return s.RegionId
+}
+
+func (s *RunCommandRequest) GetTimeout() *int32 {
+	return s.Timeout
+}
+
+func (s *RunCommandRequest) GetType() *string {
+	return s.Type
+}
+
+func (s *RunCommandRequest) GetWindowsPasswordName() *string {
+	return s.WindowsPasswordName
+}
+
+func (s *RunCommandRequest) GetWorkingDir() *string {
+	return s.WorkingDir
+}
+
+func (s *RunCommandRequest) GetWorkingUser() *string {
+	return s.WorkingUser
 }
 
 func (s *RunCommandRequest) SetCommandContent(v string) *RunCommandRequest {
@@ -17091,6 +26603,38 @@ func (s *RunCommandRequest) SetWorkingDir(v string) *RunCommandRequest {
 func (s *RunCommandRequest) SetWorkingUser(v string) *RunCommandRequest {
 	s.WorkingUser = &v
 	return s
+}
+
+func (s *RunCommandRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iRunCommandShrinkRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetCommandContent(v string) *RunCommandShrinkRequest
+	GetCommandContent() *string
+	SetEnableParameter(v bool) *RunCommandShrinkRequest
+	GetEnableParameter() *bool
+	SetInstanceId(v string) *RunCommandShrinkRequest
+	GetInstanceId() *string
+	SetName(v string) *RunCommandShrinkRequest
+	GetName() *string
+	SetParametersShrink(v string) *RunCommandShrinkRequest
+	GetParametersShrink() *string
+	SetRegionId(v string) *RunCommandShrinkRequest
+	GetRegionId() *string
+	SetTimeout(v int32) *RunCommandShrinkRequest
+	GetTimeout() *int32
+	SetType(v string) *RunCommandShrinkRequest
+	GetType() *string
+	SetWindowsPasswordName(v string) *RunCommandShrinkRequest
+	GetWindowsPasswordName() *string
+	SetWorkingDir(v string) *RunCommandShrinkRequest
+	GetWorkingDir() *string
+	SetWorkingUser(v string) *RunCommandShrinkRequest
+	GetWorkingUser() *string
 }
 
 type RunCommandShrinkRequest struct {
@@ -17217,11 +26761,55 @@ type RunCommandShrinkRequest struct {
 }
 
 func (s RunCommandShrinkRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s RunCommandShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *RunCommandShrinkRequest) GetCommandContent() *string {
+	return s.CommandContent
+}
+
+func (s *RunCommandShrinkRequest) GetEnableParameter() *bool {
+	return s.EnableParameter
+}
+
+func (s *RunCommandShrinkRequest) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *RunCommandShrinkRequest) GetName() *string {
+	return s.Name
+}
+
+func (s *RunCommandShrinkRequest) GetParametersShrink() *string {
+	return s.ParametersShrink
+}
+
+func (s *RunCommandShrinkRequest) GetRegionId() *string {
+	return s.RegionId
+}
+
+func (s *RunCommandShrinkRequest) GetTimeout() *int32 {
+	return s.Timeout
+}
+
+func (s *RunCommandShrinkRequest) GetType() *string {
+	return s.Type
+}
+
+func (s *RunCommandShrinkRequest) GetWindowsPasswordName() *string {
+	return s.WindowsPasswordName
+}
+
+func (s *RunCommandShrinkRequest) GetWorkingDir() *string {
+	return s.WorkingDir
+}
+
+func (s *RunCommandShrinkRequest) GetWorkingUser() *string {
+	return s.WorkingUser
 }
 
 func (s *RunCommandShrinkRequest) SetCommandContent(v string) *RunCommandShrinkRequest {
@@ -17279,6 +26867,20 @@ func (s *RunCommandShrinkRequest) SetWorkingUser(v string) *RunCommandShrinkRequ
 	return s
 }
 
+func (s *RunCommandShrinkRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iRunCommandResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetInvokeId(v string) *RunCommandResponseBody
+	GetInvokeId() *string
+	SetRequestId(v string) *RunCommandResponseBody
+	GetRequestId() *string
+}
+
 type RunCommandResponseBody struct {
 	// The execution ID.
 	//
@@ -17295,11 +26897,19 @@ type RunCommandResponseBody struct {
 }
 
 func (s RunCommandResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s RunCommandResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *RunCommandResponseBody) GetInvokeId() *string {
+	return s.InvokeId
+}
+
+func (s *RunCommandResponseBody) GetRequestId() *string {
+	return s.RequestId
 }
 
 func (s *RunCommandResponseBody) SetInvokeId(v string) *RunCommandResponseBody {
@@ -17312,6 +26922,22 @@ func (s *RunCommandResponseBody) SetRequestId(v string) *RunCommandResponseBody 
 	return s
 }
 
+func (s *RunCommandResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iRunCommandResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *RunCommandResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *RunCommandResponse
+	GetStatusCode() *int32
+	SetBody(v *RunCommandResponseBody) *RunCommandResponse
+	GetBody() *RunCommandResponseBody
+}
+
 type RunCommandResponse struct {
 	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -17319,11 +26945,23 @@ type RunCommandResponse struct {
 }
 
 func (s RunCommandResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s RunCommandResponse) GoString() string {
 	return s.String()
+}
+
+func (s *RunCommandResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *RunCommandResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *RunCommandResponse) GetBody() *RunCommandResponseBody {
+	return s.Body
 }
 
 func (s *RunCommandResponse) SetHeaders(v map[string]*string) *RunCommandResponse {
@@ -17339,6 +26977,22 @@ func (s *RunCommandResponse) SetStatusCode(v int32) *RunCommandResponse {
 func (s *RunCommandResponse) SetBody(v *RunCommandResponseBody) *RunCommandResponse {
 	s.Body = v
 	return s
+}
+
+func (s *RunCommandResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iStartDatabaseInstanceRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientToken(v string) *StartDatabaseInstanceRequest
+	GetClientToken() *string
+	SetDatabaseInstanceId(v string) *StartDatabaseInstanceRequest
+	GetDatabaseInstanceId() *string
+	SetRegionId(v string) *StartDatabaseInstanceRequest
+	GetRegionId() *string
 }
 
 type StartDatabaseInstanceRequest struct {
@@ -17367,11 +27021,23 @@ type StartDatabaseInstanceRequest struct {
 }
 
 func (s StartDatabaseInstanceRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s StartDatabaseInstanceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *StartDatabaseInstanceRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *StartDatabaseInstanceRequest) GetDatabaseInstanceId() *string {
+	return s.DatabaseInstanceId
+}
+
+func (s *StartDatabaseInstanceRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *StartDatabaseInstanceRequest) SetClientToken(v string) *StartDatabaseInstanceRequest {
@@ -17389,6 +27055,18 @@ func (s *StartDatabaseInstanceRequest) SetRegionId(v string) *StartDatabaseInsta
 	return s
 }
 
+func (s *StartDatabaseInstanceRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iStartDatabaseInstanceResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetRequestId(v string) *StartDatabaseInstanceResponseBody
+	GetRequestId() *string
+}
+
 type StartDatabaseInstanceResponseBody struct {
 	// The request ID.
 	//
@@ -17399,16 +27077,36 @@ type StartDatabaseInstanceResponseBody struct {
 }
 
 func (s StartDatabaseInstanceResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s StartDatabaseInstanceResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *StartDatabaseInstanceResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
 func (s *StartDatabaseInstanceResponseBody) SetRequestId(v string) *StartDatabaseInstanceResponseBody {
 	s.RequestId = &v
 	return s
+}
+
+func (s *StartDatabaseInstanceResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iStartDatabaseInstanceResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *StartDatabaseInstanceResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *StartDatabaseInstanceResponse
+	GetStatusCode() *int32
+	SetBody(v *StartDatabaseInstanceResponseBody) *StartDatabaseInstanceResponse
+	GetBody() *StartDatabaseInstanceResponseBody
 }
 
 type StartDatabaseInstanceResponse struct {
@@ -17418,11 +27116,23 @@ type StartDatabaseInstanceResponse struct {
 }
 
 func (s StartDatabaseInstanceResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s StartDatabaseInstanceResponse) GoString() string {
 	return s.String()
+}
+
+func (s *StartDatabaseInstanceResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *StartDatabaseInstanceResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *StartDatabaseInstanceResponse) GetBody() *StartDatabaseInstanceResponseBody {
+	return s.Body
 }
 
 func (s *StartDatabaseInstanceResponse) SetHeaders(v map[string]*string) *StartDatabaseInstanceResponse {
@@ -17438,6 +27148,22 @@ func (s *StartDatabaseInstanceResponse) SetStatusCode(v int32) *StartDatabaseIns
 func (s *StartDatabaseInstanceResponse) SetBody(v *StartDatabaseInstanceResponseBody) *StartDatabaseInstanceResponse {
 	s.Body = v
 	return s
+}
+
+func (s *StartDatabaseInstanceResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iStartInstanceRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientToken(v string) *StartInstanceRequest
+	GetClientToken() *string
+	SetInstanceId(v string) *StartInstanceRequest
+	GetInstanceId() *string
+	SetRegionId(v string) *StartInstanceRequest
+	GetRegionId() *string
 }
 
 type StartInstanceRequest struct {
@@ -17466,11 +27192,23 @@ type StartInstanceRequest struct {
 }
 
 func (s StartInstanceRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s StartInstanceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *StartInstanceRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *StartInstanceRequest) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *StartInstanceRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *StartInstanceRequest) SetClientToken(v string) *StartInstanceRequest {
@@ -17488,6 +27226,18 @@ func (s *StartInstanceRequest) SetRegionId(v string) *StartInstanceRequest {
 	return s
 }
 
+func (s *StartInstanceRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iStartInstanceResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetRequestId(v string) *StartInstanceResponseBody
+	GetRequestId() *string
+}
+
 type StartInstanceResponseBody struct {
 	// The request ID.
 	//
@@ -17498,16 +27248,36 @@ type StartInstanceResponseBody struct {
 }
 
 func (s StartInstanceResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s StartInstanceResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *StartInstanceResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
 func (s *StartInstanceResponseBody) SetRequestId(v string) *StartInstanceResponseBody {
 	s.RequestId = &v
 	return s
+}
+
+func (s *StartInstanceResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iStartInstanceResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *StartInstanceResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *StartInstanceResponse
+	GetStatusCode() *int32
+	SetBody(v *StartInstanceResponseBody) *StartInstanceResponse
+	GetBody() *StartInstanceResponseBody
 }
 
 type StartInstanceResponse struct {
@@ -17517,11 +27287,23 @@ type StartInstanceResponse struct {
 }
 
 func (s StartInstanceResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s StartInstanceResponse) GoString() string {
 	return s.String()
+}
+
+func (s *StartInstanceResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *StartInstanceResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *StartInstanceResponse) GetBody() *StartInstanceResponseBody {
+	return s.Body
 }
 
 func (s *StartInstanceResponse) SetHeaders(v map[string]*string) *StartInstanceResponse {
@@ -17537,6 +27319,22 @@ func (s *StartInstanceResponse) SetStatusCode(v int32) *StartInstanceResponse {
 func (s *StartInstanceResponse) SetBody(v *StartInstanceResponseBody) *StartInstanceResponse {
 	s.Body = v
 	return s
+}
+
+func (s *StartInstanceResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iStartInstancesRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientToken(v string) *StartInstancesRequest
+	GetClientToken() *string
+	SetInstanceIds(v string) *StartInstancesRequest
+	GetInstanceIds() *string
+	SetRegionId(v string) *StartInstancesRequest
+	GetRegionId() *string
 }
 
 type StartInstancesRequest struct {
@@ -17565,11 +27363,23 @@ type StartInstancesRequest struct {
 }
 
 func (s StartInstancesRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s StartInstancesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *StartInstancesRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *StartInstancesRequest) GetInstanceIds() *string {
+	return s.InstanceIds
+}
+
+func (s *StartInstancesRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *StartInstancesRequest) SetClientToken(v string) *StartInstancesRequest {
@@ -17587,6 +27397,18 @@ func (s *StartInstancesRequest) SetRegionId(v string) *StartInstancesRequest {
 	return s
 }
 
+func (s *StartInstancesRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iStartInstancesResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetRequestId(v string) *StartInstancesResponseBody
+	GetRequestId() *string
+}
+
 type StartInstancesResponseBody struct {
 	// The request ID.
 	//
@@ -17597,16 +27419,36 @@ type StartInstancesResponseBody struct {
 }
 
 func (s StartInstancesResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s StartInstancesResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *StartInstancesResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
 func (s *StartInstancesResponseBody) SetRequestId(v string) *StartInstancesResponseBody {
 	s.RequestId = &v
 	return s
+}
+
+func (s *StartInstancesResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iStartInstancesResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *StartInstancesResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *StartInstancesResponse
+	GetStatusCode() *int32
+	SetBody(v *StartInstancesResponseBody) *StartInstancesResponse
+	GetBody() *StartInstancesResponseBody
 }
 
 type StartInstancesResponse struct {
@@ -17616,11 +27458,23 @@ type StartInstancesResponse struct {
 }
 
 func (s StartInstancesResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s StartInstancesResponse) GoString() string {
 	return s.String()
+}
+
+func (s *StartInstancesResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *StartInstancesResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *StartInstancesResponse) GetBody() *StartInstancesResponseBody {
+	return s.Body
 }
 
 func (s *StartInstancesResponse) SetHeaders(v map[string]*string) *StartInstancesResponse {
@@ -17636,6 +27490,20 @@ func (s *StartInstancesResponse) SetStatusCode(v int32) *StartInstancesResponse 
 func (s *StartInstancesResponse) SetBody(v *StartInstancesResponseBody) *StartInstancesResponse {
 	s.Body = v
 	return s
+}
+
+func (s *StartInstancesResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iStartTerminalSessionRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetInstanceId(v string) *StartTerminalSessionRequest
+	GetInstanceId() *string
+	SetRegionId(v string) *StartTerminalSessionRequest
+	GetRegionId() *string
 }
 
 type StartTerminalSessionRequest struct {
@@ -17658,11 +27526,19 @@ type StartTerminalSessionRequest struct {
 }
 
 func (s StartTerminalSessionRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s StartTerminalSessionRequest) GoString() string {
 	return s.String()
+}
+
+func (s *StartTerminalSessionRequest) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *StartTerminalSessionRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *StartTerminalSessionRequest) SetInstanceId(v string) *StartTerminalSessionRequest {
@@ -17673,6 +27549,24 @@ func (s *StartTerminalSessionRequest) SetInstanceId(v string) *StartTerminalSess
 func (s *StartTerminalSessionRequest) SetRegionId(v string) *StartTerminalSessionRequest {
 	s.RegionId = &v
 	return s
+}
+
+func (s *StartTerminalSessionRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iStartTerminalSessionResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetRequestId(v string) *StartTerminalSessionResponseBody
+	GetRequestId() *string
+	SetSecurityToken(v string) *StartTerminalSessionResponseBody
+	GetSecurityToken() *string
+	SetSessionId(v string) *StartTerminalSessionResponseBody
+	GetSessionId() *string
+	SetWebSocketUrl(v string) *StartTerminalSessionResponseBody
+	GetWebSocketUrl() *string
 }
 
 type StartTerminalSessionResponseBody struct {
@@ -17703,11 +27597,27 @@ type StartTerminalSessionResponseBody struct {
 }
 
 func (s StartTerminalSessionResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s StartTerminalSessionResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *StartTerminalSessionResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
+func (s *StartTerminalSessionResponseBody) GetSecurityToken() *string {
+	return s.SecurityToken
+}
+
+func (s *StartTerminalSessionResponseBody) GetSessionId() *string {
+	return s.SessionId
+}
+
+func (s *StartTerminalSessionResponseBody) GetWebSocketUrl() *string {
+	return s.WebSocketUrl
 }
 
 func (s *StartTerminalSessionResponseBody) SetRequestId(v string) *StartTerminalSessionResponseBody {
@@ -17730,6 +27640,22 @@ func (s *StartTerminalSessionResponseBody) SetWebSocketUrl(v string) *StartTermi
 	return s
 }
 
+func (s *StartTerminalSessionResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iStartTerminalSessionResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *StartTerminalSessionResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *StartTerminalSessionResponse
+	GetStatusCode() *int32
+	SetBody(v *StartTerminalSessionResponseBody) *StartTerminalSessionResponse
+	GetBody() *StartTerminalSessionResponseBody
+}
+
 type StartTerminalSessionResponse struct {
 	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -17737,11 +27663,23 @@ type StartTerminalSessionResponse struct {
 }
 
 func (s StartTerminalSessionResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s StartTerminalSessionResponse) GoString() string {
 	return s.String()
+}
+
+func (s *StartTerminalSessionResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *StartTerminalSessionResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *StartTerminalSessionResponse) GetBody() *StartTerminalSessionResponseBody {
+	return s.Body
 }
 
 func (s *StartTerminalSessionResponse) SetHeaders(v map[string]*string) *StartTerminalSessionResponse {
@@ -17757,6 +27695,22 @@ func (s *StartTerminalSessionResponse) SetStatusCode(v int32) *StartTerminalSess
 func (s *StartTerminalSessionResponse) SetBody(v *StartTerminalSessionResponseBody) *StartTerminalSessionResponse {
 	s.Body = v
 	return s
+}
+
+func (s *StartTerminalSessionResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iStopDatabaseInstanceRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientToken(v string) *StopDatabaseInstanceRequest
+	GetClientToken() *string
+	SetDatabaseInstanceId(v string) *StopDatabaseInstanceRequest
+	GetDatabaseInstanceId() *string
+	SetRegionId(v string) *StopDatabaseInstanceRequest
+	GetRegionId() *string
 }
 
 type StopDatabaseInstanceRequest struct {
@@ -17785,11 +27739,23 @@ type StopDatabaseInstanceRequest struct {
 }
 
 func (s StopDatabaseInstanceRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s StopDatabaseInstanceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *StopDatabaseInstanceRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *StopDatabaseInstanceRequest) GetDatabaseInstanceId() *string {
+	return s.DatabaseInstanceId
+}
+
+func (s *StopDatabaseInstanceRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *StopDatabaseInstanceRequest) SetClientToken(v string) *StopDatabaseInstanceRequest {
@@ -17807,6 +27773,18 @@ func (s *StopDatabaseInstanceRequest) SetRegionId(v string) *StopDatabaseInstanc
 	return s
 }
 
+func (s *StopDatabaseInstanceRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iStopDatabaseInstanceResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetRequestId(v string) *StopDatabaseInstanceResponseBody
+	GetRequestId() *string
+}
+
 type StopDatabaseInstanceResponseBody struct {
 	// The request ID.
 	//
@@ -17817,16 +27795,36 @@ type StopDatabaseInstanceResponseBody struct {
 }
 
 func (s StopDatabaseInstanceResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s StopDatabaseInstanceResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *StopDatabaseInstanceResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
 func (s *StopDatabaseInstanceResponseBody) SetRequestId(v string) *StopDatabaseInstanceResponseBody {
 	s.RequestId = &v
 	return s
+}
+
+func (s *StopDatabaseInstanceResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iStopDatabaseInstanceResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *StopDatabaseInstanceResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *StopDatabaseInstanceResponse
+	GetStatusCode() *int32
+	SetBody(v *StopDatabaseInstanceResponseBody) *StopDatabaseInstanceResponse
+	GetBody() *StopDatabaseInstanceResponseBody
 }
 
 type StopDatabaseInstanceResponse struct {
@@ -17836,11 +27834,23 @@ type StopDatabaseInstanceResponse struct {
 }
 
 func (s StopDatabaseInstanceResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s StopDatabaseInstanceResponse) GoString() string {
 	return s.String()
+}
+
+func (s *StopDatabaseInstanceResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *StopDatabaseInstanceResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *StopDatabaseInstanceResponse) GetBody() *StopDatabaseInstanceResponseBody {
+	return s.Body
 }
 
 func (s *StopDatabaseInstanceResponse) SetHeaders(v map[string]*string) *StopDatabaseInstanceResponse {
@@ -17856,6 +27866,22 @@ func (s *StopDatabaseInstanceResponse) SetStatusCode(v int32) *StopDatabaseInsta
 func (s *StopDatabaseInstanceResponse) SetBody(v *StopDatabaseInstanceResponseBody) *StopDatabaseInstanceResponse {
 	s.Body = v
 	return s
+}
+
+func (s *StopDatabaseInstanceResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iStopInstanceRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientToken(v string) *StopInstanceRequest
+	GetClientToken() *string
+	SetInstanceId(v string) *StopInstanceRequest
+	GetInstanceId() *string
+	SetRegionId(v string) *StopInstanceRequest
+	GetRegionId() *string
 }
 
 type StopInstanceRequest struct {
@@ -17884,11 +27910,23 @@ type StopInstanceRequest struct {
 }
 
 func (s StopInstanceRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s StopInstanceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *StopInstanceRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *StopInstanceRequest) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *StopInstanceRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *StopInstanceRequest) SetClientToken(v string) *StopInstanceRequest {
@@ -17906,6 +27944,18 @@ func (s *StopInstanceRequest) SetRegionId(v string) *StopInstanceRequest {
 	return s
 }
 
+func (s *StopInstanceRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iStopInstanceResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetRequestId(v string) *StopInstanceResponseBody
+	GetRequestId() *string
+}
+
 type StopInstanceResponseBody struct {
 	// The request ID.
 	//
@@ -17916,16 +27966,36 @@ type StopInstanceResponseBody struct {
 }
 
 func (s StopInstanceResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s StopInstanceResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *StopInstanceResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
 func (s *StopInstanceResponseBody) SetRequestId(v string) *StopInstanceResponseBody {
 	s.RequestId = &v
 	return s
+}
+
+func (s *StopInstanceResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iStopInstanceResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *StopInstanceResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *StopInstanceResponse
+	GetStatusCode() *int32
+	SetBody(v *StopInstanceResponseBody) *StopInstanceResponse
+	GetBody() *StopInstanceResponseBody
 }
 
 type StopInstanceResponse struct {
@@ -17935,11 +28005,23 @@ type StopInstanceResponse struct {
 }
 
 func (s StopInstanceResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s StopInstanceResponse) GoString() string {
 	return s.String()
+}
+
+func (s *StopInstanceResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *StopInstanceResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *StopInstanceResponse) GetBody() *StopInstanceResponseBody {
+	return s.Body
 }
 
 func (s *StopInstanceResponse) SetHeaders(v map[string]*string) *StopInstanceResponse {
@@ -17955,6 +28037,24 @@ func (s *StopInstanceResponse) SetStatusCode(v int32) *StopInstanceResponse {
 func (s *StopInstanceResponse) SetBody(v *StopInstanceResponseBody) *StopInstanceResponse {
 	s.Body = v
 	return s
+}
+
+func (s *StopInstanceResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iStopInstancesRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientToken(v string) *StopInstancesRequest
+	GetClientToken() *string
+	SetForceStop(v bool) *StopInstancesRequest
+	GetForceStop() *bool
+	SetInstanceIds(v string) *StopInstancesRequest
+	GetInstanceIds() *string
+	SetRegionId(v string) *StopInstancesRequest
+	GetRegionId() *string
 }
 
 type StopInstancesRequest struct {
@@ -17993,11 +28093,27 @@ type StopInstancesRequest struct {
 }
 
 func (s StopInstancesRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s StopInstancesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *StopInstancesRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *StopInstancesRequest) GetForceStop() *bool {
+	return s.ForceStop
+}
+
+func (s *StopInstancesRequest) GetInstanceIds() *string {
+	return s.InstanceIds
+}
+
+func (s *StopInstancesRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *StopInstancesRequest) SetClientToken(v string) *StopInstancesRequest {
@@ -18020,6 +28136,18 @@ func (s *StopInstancesRequest) SetRegionId(v string) *StopInstancesRequest {
 	return s
 }
 
+func (s *StopInstancesRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iStopInstancesResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetRequestId(v string) *StopInstancesResponseBody
+	GetRequestId() *string
+}
+
 type StopInstancesResponseBody struct {
 	// The request ID.
 	//
@@ -18030,16 +28158,36 @@ type StopInstancesResponseBody struct {
 }
 
 func (s StopInstancesResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s StopInstancesResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *StopInstancesResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
 func (s *StopInstancesResponseBody) SetRequestId(v string) *StopInstancesResponseBody {
 	s.RequestId = &v
 	return s
+}
+
+func (s *StopInstancesResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iStopInstancesResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *StopInstancesResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *StopInstancesResponse
+	GetStatusCode() *int32
+	SetBody(v *StopInstancesResponseBody) *StopInstancesResponse
+	GetBody() *StopInstancesResponseBody
 }
 
 type StopInstancesResponse struct {
@@ -18049,11 +28197,23 @@ type StopInstancesResponse struct {
 }
 
 func (s StopInstancesResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s StopInstancesResponse) GoString() string {
 	return s.String()
+}
+
+func (s *StopInstancesResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *StopInstancesResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *StopInstancesResponse) GetBody() *StopInstancesResponseBody {
+	return s.Body
 }
 
 func (s *StopInstancesResponse) SetHeaders(v map[string]*string) *StopInstancesResponse {
@@ -18069,6 +28229,26 @@ func (s *StopInstancesResponse) SetStatusCode(v int32) *StopInstancesResponse {
 func (s *StopInstancesResponse) SetBody(v *StopInstancesResponseBody) *StopInstancesResponse {
 	s.Body = v
 	return s
+}
+
+func (s *StopInstancesResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iTagResourcesRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientToken(v string) *TagResourcesRequest
+	GetClientToken() *string
+	SetRegionId(v string) *TagResourcesRequest
+	GetRegionId() *string
+	SetResourceId(v []*string) *TagResourcesRequest
+	GetResourceId() []*string
+	SetResourceType(v string) *TagResourcesRequest
+	GetResourceType() *string
+	SetTag(v []*TagResourcesRequestTag) *TagResourcesRequest
+	GetTag() []*TagResourcesRequestTag
 }
 
 type TagResourcesRequest struct {
@@ -18117,11 +28297,31 @@ type TagResourcesRequest struct {
 }
 
 func (s TagResourcesRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s TagResourcesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *TagResourcesRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *TagResourcesRequest) GetRegionId() *string {
+	return s.RegionId
+}
+
+func (s *TagResourcesRequest) GetResourceId() []*string {
+	return s.ResourceId
+}
+
+func (s *TagResourcesRequest) GetResourceType() *string {
+	return s.ResourceType
+}
+
+func (s *TagResourcesRequest) GetTag() []*TagResourcesRequestTag {
+	return s.Tag
 }
 
 func (s *TagResourcesRequest) SetClientToken(v string) *TagResourcesRequest {
@@ -18149,6 +28349,10 @@ func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesR
 	return s
 }
 
+func (s *TagResourcesRequest) Validate() error {
+	return dara.Validate(s)
+}
+
 type TagResourcesRequestTag struct {
 	// The key of tag N that you want to add to a resource.
 	//
@@ -18169,11 +28373,19 @@ type TagResourcesRequestTag struct {
 }
 
 func (s TagResourcesRequestTag) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s TagResourcesRequestTag) GoString() string {
 	return s.String()
+}
+
+func (s *TagResourcesRequestTag) GetKey() *string {
+	return s.Key
+}
+
+func (s *TagResourcesRequestTag) GetValue() *string {
+	return s.Value
 }
 
 func (s *TagResourcesRequestTag) SetKey(v string) *TagResourcesRequestTag {
@@ -18186,6 +28398,18 @@ func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
 	return s
 }
 
+func (s *TagResourcesRequestTag) Validate() error {
+	return dara.Validate(s)
+}
+
+type iTagResourcesResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetRequestId(v string) *TagResourcesResponseBody
+	GetRequestId() *string
+}
+
 type TagResourcesResponseBody struct {
 	// The request ID.
 	//
@@ -18196,16 +28420,36 @@ type TagResourcesResponseBody struct {
 }
 
 func (s TagResourcesResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s TagResourcesResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *TagResourcesResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
 func (s *TagResourcesResponseBody) SetRequestId(v string) *TagResourcesResponseBody {
 	s.RequestId = &v
 	return s
+}
+
+func (s *TagResourcesResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iTagResourcesResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *TagResourcesResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *TagResourcesResponse
+	GetStatusCode() *int32
+	SetBody(v *TagResourcesResponseBody) *TagResourcesResponse
+	GetBody() *TagResourcesResponseBody
 }
 
 type TagResourcesResponse struct {
@@ -18215,11 +28459,23 @@ type TagResourcesResponse struct {
 }
 
 func (s TagResourcesResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s TagResourcesResponse) GoString() string {
 	return s.String()
+}
+
+func (s *TagResourcesResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *TagResourcesResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *TagResourcesResponse) GetBody() *TagResourcesResponseBody {
+	return s.Body
 }
 
 func (s *TagResourcesResponse) SetHeaders(v map[string]*string) *TagResourcesResponse {
@@ -18235,6 +28491,28 @@ func (s *TagResourcesResponse) SetStatusCode(v int32) *TagResourcesResponse {
 func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResourcesResponse {
 	s.Body = v
 	return s
+}
+
+func (s *TagResourcesResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iUntagResourcesRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetAll(v bool) *UntagResourcesRequest
+	GetAll() *bool
+	SetClientToken(v string) *UntagResourcesRequest
+	GetClientToken() *string
+	SetRegionId(v string) *UntagResourcesRequest
+	GetRegionId() *string
+	SetResourceId(v []*string) *UntagResourcesRequest
+	GetResourceId() []*string
+	SetResourceType(v string) *UntagResourcesRequest
+	GetResourceType() *string
+	SetTagKey(v []*string) *UntagResourcesRequest
+	GetTagKey() []*string
 }
 
 type UntagResourcesRequest struct {
@@ -18293,11 +28571,35 @@ type UntagResourcesRequest struct {
 }
 
 func (s UntagResourcesRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s UntagResourcesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UntagResourcesRequest) GetAll() *bool {
+	return s.All
+}
+
+func (s *UntagResourcesRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *UntagResourcesRequest) GetRegionId() *string {
+	return s.RegionId
+}
+
+func (s *UntagResourcesRequest) GetResourceId() []*string {
+	return s.ResourceId
+}
+
+func (s *UntagResourcesRequest) GetResourceType() *string {
+	return s.ResourceType
+}
+
+func (s *UntagResourcesRequest) GetTagKey() []*string {
+	return s.TagKey
 }
 
 func (s *UntagResourcesRequest) SetAll(v bool) *UntagResourcesRequest {
@@ -18330,6 +28632,18 @@ func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
 	return s
 }
 
+func (s *UntagResourcesRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iUntagResourcesResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetRequestId(v string) *UntagResourcesResponseBody
+	GetRequestId() *string
+}
+
 type UntagResourcesResponseBody struct {
 	// The request ID.
 	//
@@ -18340,16 +28654,36 @@ type UntagResourcesResponseBody struct {
 }
 
 func (s UntagResourcesResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s UntagResourcesResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *UntagResourcesResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
 func (s *UntagResourcesResponseBody) SetRequestId(v string) *UntagResourcesResponseBody {
 	s.RequestId = &v
 	return s
+}
+
+func (s *UntagResourcesResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iUntagResourcesResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *UntagResourcesResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *UntagResourcesResponse
+	GetStatusCode() *int32
+	SetBody(v *UntagResourcesResponseBody) *UntagResourcesResponse
+	GetBody() *UntagResourcesResponseBody
 }
 
 type UntagResourcesResponse struct {
@@ -18359,11 +28693,23 @@ type UntagResourcesResponse struct {
 }
 
 func (s UntagResourcesResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s UntagResourcesResponse) GoString() string {
 	return s.String()
+}
+
+func (s *UntagResourcesResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *UntagResourcesResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *UntagResourcesResponse) GetBody() *UntagResourcesResponseBody {
+	return s.Body
 }
 
 func (s *UntagResourcesResponse) SetHeaders(v map[string]*string) *UntagResourcesResponse {
@@ -18379,6 +28725,28 @@ func (s *UntagResourcesResponse) SetStatusCode(v int32) *UntagResourcesResponse 
 func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagResourcesResponse {
 	s.Body = v
 	return s
+}
+
+func (s *UntagResourcesResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iUpdateCommandAttributeRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetCommandId(v string) *UpdateCommandAttributeRequest
+	GetCommandId() *string
+	SetDescription(v string) *UpdateCommandAttributeRequest
+	GetDescription() *string
+	SetName(v string) *UpdateCommandAttributeRequest
+	GetName() *string
+	SetRegionId(v string) *UpdateCommandAttributeRequest
+	GetRegionId() *string
+	SetTimeout(v int64) *UpdateCommandAttributeRequest
+	GetTimeout() *int64
+	SetWorkingDir(v string) *UpdateCommandAttributeRequest
+	GetWorkingDir() *string
 }
 
 type UpdateCommandAttributeRequest struct {
@@ -18425,11 +28793,35 @@ type UpdateCommandAttributeRequest struct {
 }
 
 func (s UpdateCommandAttributeRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s UpdateCommandAttributeRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateCommandAttributeRequest) GetCommandId() *string {
+	return s.CommandId
+}
+
+func (s *UpdateCommandAttributeRequest) GetDescription() *string {
+	return s.Description
+}
+
+func (s *UpdateCommandAttributeRequest) GetName() *string {
+	return s.Name
+}
+
+func (s *UpdateCommandAttributeRequest) GetRegionId() *string {
+	return s.RegionId
+}
+
+func (s *UpdateCommandAttributeRequest) GetTimeout() *int64 {
+	return s.Timeout
+}
+
+func (s *UpdateCommandAttributeRequest) GetWorkingDir() *string {
+	return s.WorkingDir
 }
 
 func (s *UpdateCommandAttributeRequest) SetCommandId(v string) *UpdateCommandAttributeRequest {
@@ -18462,6 +28854,18 @@ func (s *UpdateCommandAttributeRequest) SetWorkingDir(v string) *UpdateCommandAt
 	return s
 }
 
+func (s *UpdateCommandAttributeRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iUpdateCommandAttributeResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetRequestId(v string) *UpdateCommandAttributeResponseBody
+	GetRequestId() *string
+}
+
 type UpdateCommandAttributeResponseBody struct {
 	// The request ID.
 	//
@@ -18472,16 +28876,36 @@ type UpdateCommandAttributeResponseBody struct {
 }
 
 func (s UpdateCommandAttributeResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s UpdateCommandAttributeResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateCommandAttributeResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
 func (s *UpdateCommandAttributeResponseBody) SetRequestId(v string) *UpdateCommandAttributeResponseBody {
 	s.RequestId = &v
 	return s
+}
+
+func (s *UpdateCommandAttributeResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iUpdateCommandAttributeResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *UpdateCommandAttributeResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *UpdateCommandAttributeResponse
+	GetStatusCode() *int32
+	SetBody(v *UpdateCommandAttributeResponseBody) *UpdateCommandAttributeResponse
+	GetBody() *UpdateCommandAttributeResponseBody
 }
 
 type UpdateCommandAttributeResponse struct {
@@ -18491,11 +28915,23 @@ type UpdateCommandAttributeResponse struct {
 }
 
 func (s UpdateCommandAttributeResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s UpdateCommandAttributeResponse) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateCommandAttributeResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *UpdateCommandAttributeResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *UpdateCommandAttributeResponse) GetBody() *UpdateCommandAttributeResponseBody {
+	return s.Body
 }
 
 func (s *UpdateCommandAttributeResponse) SetHeaders(v map[string]*string) *UpdateCommandAttributeResponse {
@@ -18511,6 +28947,24 @@ func (s *UpdateCommandAttributeResponse) SetStatusCode(v int32) *UpdateCommandAt
 func (s *UpdateCommandAttributeResponse) SetBody(v *UpdateCommandAttributeResponseBody) *UpdateCommandAttributeResponse {
 	s.Body = v
 	return s
+}
+
+func (s *UpdateCommandAttributeResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iUpdateDiskAttributeRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientToken(v string) *UpdateDiskAttributeRequest
+	GetClientToken() *string
+	SetDiskId(v string) *UpdateDiskAttributeRequest
+	GetDiskId() *string
+	SetRegionId(v string) *UpdateDiskAttributeRequest
+	GetRegionId() *string
+	SetRemark(v string) *UpdateDiskAttributeRequest
+	GetRemark() *string
 }
 
 type UpdateDiskAttributeRequest struct {
@@ -18547,11 +29001,27 @@ type UpdateDiskAttributeRequest struct {
 }
 
 func (s UpdateDiskAttributeRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s UpdateDiskAttributeRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateDiskAttributeRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *UpdateDiskAttributeRequest) GetDiskId() *string {
+	return s.DiskId
+}
+
+func (s *UpdateDiskAttributeRequest) GetRegionId() *string {
+	return s.RegionId
+}
+
+func (s *UpdateDiskAttributeRequest) GetRemark() *string {
+	return s.Remark
 }
 
 func (s *UpdateDiskAttributeRequest) SetClientToken(v string) *UpdateDiskAttributeRequest {
@@ -18574,6 +29044,18 @@ func (s *UpdateDiskAttributeRequest) SetRemark(v string) *UpdateDiskAttributeReq
 	return s
 }
 
+func (s *UpdateDiskAttributeRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iUpdateDiskAttributeResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetRequestId(v string) *UpdateDiskAttributeResponseBody
+	GetRequestId() *string
+}
+
 type UpdateDiskAttributeResponseBody struct {
 	// The request ID.
 	//
@@ -18584,16 +29066,36 @@ type UpdateDiskAttributeResponseBody struct {
 }
 
 func (s UpdateDiskAttributeResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s UpdateDiskAttributeResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateDiskAttributeResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
 func (s *UpdateDiskAttributeResponseBody) SetRequestId(v string) *UpdateDiskAttributeResponseBody {
 	s.RequestId = &v
 	return s
+}
+
+func (s *UpdateDiskAttributeResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iUpdateDiskAttributeResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *UpdateDiskAttributeResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *UpdateDiskAttributeResponse
+	GetStatusCode() *int32
+	SetBody(v *UpdateDiskAttributeResponseBody) *UpdateDiskAttributeResponse
+	GetBody() *UpdateDiskAttributeResponseBody
 }
 
 type UpdateDiskAttributeResponse struct {
@@ -18603,11 +29105,23 @@ type UpdateDiskAttributeResponse struct {
 }
 
 func (s UpdateDiskAttributeResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s UpdateDiskAttributeResponse) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateDiskAttributeResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *UpdateDiskAttributeResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *UpdateDiskAttributeResponse) GetBody() *UpdateDiskAttributeResponseBody {
+	return s.Body
 }
 
 func (s *UpdateDiskAttributeResponse) SetHeaders(v map[string]*string) *UpdateDiskAttributeResponse {
@@ -18623,6 +29137,26 @@ func (s *UpdateDiskAttributeResponse) SetStatusCode(v int32) *UpdateDiskAttribut
 func (s *UpdateDiskAttributeResponse) SetBody(v *UpdateDiskAttributeResponseBody) *UpdateDiskAttributeResponse {
 	s.Body = v
 	return s
+}
+
+func (s *UpdateDiskAttributeResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iUpdateInstanceAttributeRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientToken(v string) *UpdateInstanceAttributeRequest
+	GetClientToken() *string
+	SetInstanceId(v string) *UpdateInstanceAttributeRequest
+	GetInstanceId() *string
+	SetInstanceName(v string) *UpdateInstanceAttributeRequest
+	GetInstanceName() *string
+	SetPassword(v string) *UpdateInstanceAttributeRequest
+	GetPassword() *string
+	SetRegionId(v string) *UpdateInstanceAttributeRequest
+	GetRegionId() *string
 }
 
 type UpdateInstanceAttributeRequest struct {
@@ -18669,11 +29203,31 @@ type UpdateInstanceAttributeRequest struct {
 }
 
 func (s UpdateInstanceAttributeRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s UpdateInstanceAttributeRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateInstanceAttributeRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *UpdateInstanceAttributeRequest) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *UpdateInstanceAttributeRequest) GetInstanceName() *string {
+	return s.InstanceName
+}
+
+func (s *UpdateInstanceAttributeRequest) GetPassword() *string {
+	return s.Password
+}
+
+func (s *UpdateInstanceAttributeRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *UpdateInstanceAttributeRequest) SetClientToken(v string) *UpdateInstanceAttributeRequest {
@@ -18701,6 +29255,18 @@ func (s *UpdateInstanceAttributeRequest) SetRegionId(v string) *UpdateInstanceAt
 	return s
 }
 
+func (s *UpdateInstanceAttributeRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iUpdateInstanceAttributeResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetRequestId(v string) *UpdateInstanceAttributeResponseBody
+	GetRequestId() *string
+}
+
 type UpdateInstanceAttributeResponseBody struct {
 	// The request ID.
 	//
@@ -18711,16 +29277,36 @@ type UpdateInstanceAttributeResponseBody struct {
 }
 
 func (s UpdateInstanceAttributeResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s UpdateInstanceAttributeResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateInstanceAttributeResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
 func (s *UpdateInstanceAttributeResponseBody) SetRequestId(v string) *UpdateInstanceAttributeResponseBody {
 	s.RequestId = &v
 	return s
+}
+
+func (s *UpdateInstanceAttributeResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iUpdateInstanceAttributeResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *UpdateInstanceAttributeResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *UpdateInstanceAttributeResponse
+	GetStatusCode() *int32
+	SetBody(v *UpdateInstanceAttributeResponseBody) *UpdateInstanceAttributeResponse
+	GetBody() *UpdateInstanceAttributeResponseBody
 }
 
 type UpdateInstanceAttributeResponse struct {
@@ -18730,11 +29316,23 @@ type UpdateInstanceAttributeResponse struct {
 }
 
 func (s UpdateInstanceAttributeResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s UpdateInstanceAttributeResponse) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateInstanceAttributeResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *UpdateInstanceAttributeResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *UpdateInstanceAttributeResponse) GetBody() *UpdateInstanceAttributeResponseBody {
+	return s.Body
 }
 
 func (s *UpdateInstanceAttributeResponse) SetHeaders(v map[string]*string) *UpdateInstanceAttributeResponse {
@@ -18750,6 +29348,24 @@ func (s *UpdateInstanceAttributeResponse) SetStatusCode(v int32) *UpdateInstance
 func (s *UpdateInstanceAttributeResponse) SetBody(v *UpdateInstanceAttributeResponseBody) *UpdateInstanceAttributeResponse {
 	s.Body = v
 	return s
+}
+
+func (s *UpdateInstanceAttributeResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iUpdateSnapshotAttributeRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientToken(v string) *UpdateSnapshotAttributeRequest
+	GetClientToken() *string
+	SetRegionId(v string) *UpdateSnapshotAttributeRequest
+	GetRegionId() *string
+	SetRemark(v string) *UpdateSnapshotAttributeRequest
+	GetRemark() *string
+	SetSnapshotId(v string) *UpdateSnapshotAttributeRequest
+	GetSnapshotId() *string
 }
 
 type UpdateSnapshotAttributeRequest struct {
@@ -18784,11 +29400,27 @@ type UpdateSnapshotAttributeRequest struct {
 }
 
 func (s UpdateSnapshotAttributeRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s UpdateSnapshotAttributeRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateSnapshotAttributeRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *UpdateSnapshotAttributeRequest) GetRegionId() *string {
+	return s.RegionId
+}
+
+func (s *UpdateSnapshotAttributeRequest) GetRemark() *string {
+	return s.Remark
+}
+
+func (s *UpdateSnapshotAttributeRequest) GetSnapshotId() *string {
+	return s.SnapshotId
 }
 
 func (s *UpdateSnapshotAttributeRequest) SetClientToken(v string) *UpdateSnapshotAttributeRequest {
@@ -18811,6 +29443,18 @@ func (s *UpdateSnapshotAttributeRequest) SetSnapshotId(v string) *UpdateSnapshot
 	return s
 }
 
+func (s *UpdateSnapshotAttributeRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iUpdateSnapshotAttributeResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetRequestId(v string) *UpdateSnapshotAttributeResponseBody
+	GetRequestId() *string
+}
+
 type UpdateSnapshotAttributeResponseBody struct {
 	// The request ID.
 	//
@@ -18821,16 +29465,36 @@ type UpdateSnapshotAttributeResponseBody struct {
 }
 
 func (s UpdateSnapshotAttributeResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s UpdateSnapshotAttributeResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateSnapshotAttributeResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
 func (s *UpdateSnapshotAttributeResponseBody) SetRequestId(v string) *UpdateSnapshotAttributeResponseBody {
 	s.RequestId = &v
 	return s
+}
+
+func (s *UpdateSnapshotAttributeResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iUpdateSnapshotAttributeResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *UpdateSnapshotAttributeResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *UpdateSnapshotAttributeResponse
+	GetStatusCode() *int32
+	SetBody(v *UpdateSnapshotAttributeResponseBody) *UpdateSnapshotAttributeResponse
+	GetBody() *UpdateSnapshotAttributeResponseBody
 }
 
 type UpdateSnapshotAttributeResponse struct {
@@ -18840,11 +29504,23 @@ type UpdateSnapshotAttributeResponse struct {
 }
 
 func (s UpdateSnapshotAttributeResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s UpdateSnapshotAttributeResponse) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateSnapshotAttributeResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *UpdateSnapshotAttributeResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *UpdateSnapshotAttributeResponse) GetBody() *UpdateSnapshotAttributeResponseBody {
+	return s.Body
 }
 
 func (s *UpdateSnapshotAttributeResponse) SetHeaders(v map[string]*string) *UpdateSnapshotAttributeResponse {
@@ -18860,6 +29536,24 @@ func (s *UpdateSnapshotAttributeResponse) SetStatusCode(v int32) *UpdateSnapshot
 func (s *UpdateSnapshotAttributeResponse) SetBody(v *UpdateSnapshotAttributeResponseBody) *UpdateSnapshotAttributeResponse {
 	s.Body = v
 	return s
+}
+
+func (s *UpdateSnapshotAttributeResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iUpgradeInstanceRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientToken(v string) *UpgradeInstanceRequest
+	GetClientToken() *string
+	SetInstanceId(v string) *UpgradeInstanceRequest
+	GetInstanceId() *string
+	SetPlanId(v string) *UpgradeInstanceRequest
+	GetPlanId() *string
+	SetRegionId(v string) *UpgradeInstanceRequest
+	GetRegionId() *string
 }
 
 type UpgradeInstanceRequest struct {
@@ -18896,11 +29590,27 @@ type UpgradeInstanceRequest struct {
 }
 
 func (s UpgradeInstanceRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s UpgradeInstanceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpgradeInstanceRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *UpgradeInstanceRequest) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *UpgradeInstanceRequest) GetPlanId() *string {
+	return s.PlanId
+}
+
+func (s *UpgradeInstanceRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *UpgradeInstanceRequest) SetClientToken(v string) *UpgradeInstanceRequest {
@@ -18923,6 +29633,18 @@ func (s *UpgradeInstanceRequest) SetRegionId(v string) *UpgradeInstanceRequest {
 	return s
 }
 
+func (s *UpgradeInstanceRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iUpgradeInstanceResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetRequestId(v string) *UpgradeInstanceResponseBody
+	GetRequestId() *string
+}
+
 type UpgradeInstanceResponseBody struct {
 	// The request ID.
 	//
@@ -18933,16 +29655,36 @@ type UpgradeInstanceResponseBody struct {
 }
 
 func (s UpgradeInstanceResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s UpgradeInstanceResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *UpgradeInstanceResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
 func (s *UpgradeInstanceResponseBody) SetRequestId(v string) *UpgradeInstanceResponseBody {
 	s.RequestId = &v
 	return s
+}
+
+func (s *UpgradeInstanceResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iUpgradeInstanceResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *UpgradeInstanceResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *UpgradeInstanceResponse
+	GetStatusCode() *int32
+	SetBody(v *UpgradeInstanceResponseBody) *UpgradeInstanceResponse
+	GetBody() *UpgradeInstanceResponseBody
 }
 
 type UpgradeInstanceResponse struct {
@@ -18952,11 +29694,23 @@ type UpgradeInstanceResponse struct {
 }
 
 func (s UpgradeInstanceResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s UpgradeInstanceResponse) GoString() string {
 	return s.String()
+}
+
+func (s *UpgradeInstanceResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *UpgradeInstanceResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *UpgradeInstanceResponse) GetBody() *UpgradeInstanceResponseBody {
+	return s.Body
 }
 
 func (s *UpgradeInstanceResponse) SetHeaders(v map[string]*string) *UpgradeInstanceResponse {
@@ -18972,6 +29726,26 @@ func (s *UpgradeInstanceResponse) SetStatusCode(v int32) *UpgradeInstanceRespons
 func (s *UpgradeInstanceResponse) SetBody(v *UpgradeInstanceResponseBody) *UpgradeInstanceResponse {
 	s.Body = v
 	return s
+}
+
+func (s *UpgradeInstanceResponse) Validate() error {
+	return dara.Validate(s)
+}
+
+type iUploadInstanceKeyPairRequest interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetClientToken(v string) *UploadInstanceKeyPairRequest
+	GetClientToken() *string
+	SetInstanceId(v string) *UploadInstanceKeyPairRequest
+	GetInstanceId() *string
+	SetKeyPairName(v string) *UploadInstanceKeyPairRequest
+	GetKeyPairName() *string
+	SetPublicKey(v string) *UploadInstanceKeyPairRequest
+	GetPublicKey() *string
+	SetRegionId(v string) *UploadInstanceKeyPairRequest
+	GetRegionId() *string
 }
 
 type UploadInstanceKeyPairRequest struct {
@@ -19012,11 +29786,31 @@ type UploadInstanceKeyPairRequest struct {
 }
 
 func (s UploadInstanceKeyPairRequest) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s UploadInstanceKeyPairRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UploadInstanceKeyPairRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *UploadInstanceKeyPairRequest) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *UploadInstanceKeyPairRequest) GetKeyPairName() *string {
+	return s.KeyPairName
+}
+
+func (s *UploadInstanceKeyPairRequest) GetPublicKey() *string {
+	return s.PublicKey
+}
+
+func (s *UploadInstanceKeyPairRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *UploadInstanceKeyPairRequest) SetClientToken(v string) *UploadInstanceKeyPairRequest {
@@ -19044,6 +29838,18 @@ func (s *UploadInstanceKeyPairRequest) SetRegionId(v string) *UploadInstanceKeyP
 	return s
 }
 
+func (s *UploadInstanceKeyPairRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type iUploadInstanceKeyPairResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetRequestId(v string) *UploadInstanceKeyPairResponseBody
+	GetRequestId() *string
+}
+
 type UploadInstanceKeyPairResponseBody struct {
 	// The request ID.
 	//
@@ -19054,16 +29860,36 @@ type UploadInstanceKeyPairResponseBody struct {
 }
 
 func (s UploadInstanceKeyPairResponseBody) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s UploadInstanceKeyPairResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *UploadInstanceKeyPairResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
 func (s *UploadInstanceKeyPairResponseBody) SetRequestId(v string) *UploadInstanceKeyPairResponseBody {
 	s.RequestId = &v
 	return s
+}
+
+func (s *UploadInstanceKeyPairResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type iUploadInstanceKeyPairResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *UploadInstanceKeyPairResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *UploadInstanceKeyPairResponse
+	GetStatusCode() *int32
+	SetBody(v *UploadInstanceKeyPairResponseBody) *UploadInstanceKeyPairResponse
+	GetBody() *UploadInstanceKeyPairResponseBody
 }
 
 type UploadInstanceKeyPairResponse struct {
@@ -19073,11 +29899,23 @@ type UploadInstanceKeyPairResponse struct {
 }
 
 func (s UploadInstanceKeyPairResponse) String() string {
-	return tea.Prettify(s)
+	return dara.Prettify(s)
 }
 
 func (s UploadInstanceKeyPairResponse) GoString() string {
 	return s.String()
+}
+
+func (s *UploadInstanceKeyPairResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *UploadInstanceKeyPairResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *UploadInstanceKeyPairResponse) GetBody() *UploadInstanceKeyPairResponseBody {
+	return s.Body
 }
 
 func (s *UploadInstanceKeyPairResponse) SetHeaders(v map[string]*string) *UploadInstanceKeyPairResponse {
@@ -19095,27 +29933,32 @@ func (s *UploadInstanceKeyPairResponse) SetBody(v *UploadInstanceKeyPairResponse
 	return s
 }
 
-type Client struct {
-	openapi.Client
+func (s *UploadInstanceKeyPairResponse) Validate() error {
+	return dara.Validate(s)
 }
 
-func NewClient(config *openapi.Config) (*Client, error) {
+type Client struct {
+	openapi.Client
+	DisableSDKError *bool
+}
+
+func NewClient(config *openapiutil.Config) (*Client, error) {
 	client := new(Client)
 	err := client.Init(config)
 	return client, err
 }
 
-func (client *Client) Init(config *openapi.Config) (_err error) {
+func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	_err = client.Client.Init(config)
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = tea.String("")
+	client.EndpointRule = dara.String("")
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
 	}
-	client.Endpoint, _err = client.GetEndpoint(tea.String("swas-open"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
+	client.Endpoint, _err = client.GetEndpoint(dara.String("swas-open"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
 	if _err != nil {
 		return _err
 	}
@@ -19124,17 +29967,17 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 }
 
 func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !tea.BoolValue(util.Empty(endpoint)) {
+	if !dara.IsNil(endpoint) {
 		_result = endpoint
 		return _result, _err
 	}
 
-	if !tea.BoolValue(util.IsUnset(endpointMap)) && !tea.BoolValue(util.Empty(endpointMap[tea.StringValue(regionId)])) {
-		_result = endpointMap[tea.StringValue(regionId)]
+	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
+		_result = endpointMap[dara.StringValue(regionId)]
 		return _result, _err
 	}
 
-	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19157,57 +30000,55 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddCustomImageShareAccountResponse
-func (client *Client) AddCustomImageShareAccountWithOptions(request *AddCustomImageShareAccountRequest, runtime *util.RuntimeOptions) (_result *AddCustomImageShareAccountResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) AddCustomImageShareAccountWithOptions(request *AddCustomImageShareAccountRequest, runtime *dara.RuntimeOptions) (_result *AddCustomImageShareAccountResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Account)) {
+	if !dara.IsNil(request.Account) {
 		query["Account"] = request.Account
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
+	if !dara.IsNil(request.ImageId) {
 		query["ImageId"] = request.ImageId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("AddCustomImageShareAccount"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("AddCustomImageShareAccount"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &AddCustomImageShareAccountResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &AddCustomImageShareAccountResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -19227,8 +30068,7 @@ func (client *Client) AddCustomImageShareAccountWithOptions(request *AddCustomIm
 //
 // @return AddCustomImageShareAccountResponse
 func (client *Client) AddCustomImageShareAccount(request *AddCustomImageShareAccountRequest) (_result *AddCustomImageShareAccountResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &AddCustomImageShareAccountResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.AddCustomImageShareAccountWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -19250,53 +30090,51 @@ func (client *Client) AddCustomImageShareAccount(request *AddCustomImageShareAcc
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AllocatePublicConnectionResponse
-func (client *Client) AllocatePublicConnectionWithOptions(request *AllocatePublicConnectionRequest, runtime *util.RuntimeOptions) (_result *AllocatePublicConnectionResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) AllocatePublicConnectionWithOptions(request *AllocatePublicConnectionRequest, runtime *dara.RuntimeOptions) (_result *AllocatePublicConnectionResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.DatabaseInstanceId)) {
+	if !dara.IsNil(request.DatabaseInstanceId) {
 		query["DatabaseInstanceId"] = request.DatabaseInstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("AllocatePublicConnection"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("AllocatePublicConnection"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &AllocatePublicConnectionResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &AllocatePublicConnectionResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -19314,8 +30152,7 @@ func (client *Client) AllocatePublicConnectionWithOptions(request *AllocatePubli
 //
 // @return AllocatePublicConnectionResponse
 func (client *Client) AllocatePublicConnection(request *AllocatePublicConnectionRequest) (_result *AllocatePublicConnectionResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &AllocatePublicConnectionResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.AllocatePublicConnectionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -19337,57 +30174,55 @@ func (client *Client) AllocatePublicConnection(request *AllocatePublicConnection
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ApplyFirewallTemplateResponse
-func (client *Client) ApplyFirewallTemplateWithOptions(request *ApplyFirewallTemplateRequest, runtime *util.RuntimeOptions) (_result *ApplyFirewallTemplateResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ApplyFirewallTemplateWithOptions(request *ApplyFirewallTemplateRequest, runtime *dara.RuntimeOptions) (_result *ApplyFirewallTemplateResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.FirewallTemplateId)) {
+	if !dara.IsNil(request.FirewallTemplateId) {
 		query["FirewallTemplateId"] = request.FirewallTemplateId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
+	if !dara.IsNil(request.InstanceIds) {
 		query["InstanceIds"] = request.InstanceIds
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("ApplyFirewallTemplate"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("ApplyFirewallTemplate"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ApplyFirewallTemplateResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &ApplyFirewallTemplateResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -19405,8 +30240,7 @@ func (client *Client) ApplyFirewallTemplateWithOptions(request *ApplyFirewallTem
 //
 // @return ApplyFirewallTemplateResponse
 func (client *Client) ApplyFirewallTemplate(request *ApplyFirewallTemplateRequest) (_result *ApplyFirewallTemplateResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ApplyFirewallTemplateResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.ApplyFirewallTemplateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -19428,57 +30262,55 @@ func (client *Client) ApplyFirewallTemplate(request *ApplyFirewallTemplateReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AttachKeyPairResponse
-func (client *Client) AttachKeyPairWithOptions(request *AttachKeyPairRequest, runtime *util.RuntimeOptions) (_result *AttachKeyPairResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) AttachKeyPairWithOptions(request *AttachKeyPairRequest, runtime *dara.RuntimeOptions) (_result *AttachKeyPairResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
+	if !dara.IsNil(request.InstanceIds) {
 		query["InstanceIds"] = request.InstanceIds
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.KeyPairName)) {
+	if !dara.IsNil(request.KeyPairName) {
 		query["KeyPairName"] = request.KeyPairName
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("AttachKeyPair"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("AttachKeyPair"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &AttachKeyPairResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &AttachKeyPairResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -19496,8 +30328,7 @@ func (client *Client) AttachKeyPairWithOptions(request *AttachKeyPairRequest, ru
 //
 // @return AttachKeyPairResponse
 func (client *Client) AttachKeyPair(request *AttachKeyPairRequest) (_result *AttachKeyPairResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &AttachKeyPairResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.AttachKeyPairWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -19515,81 +30346,79 @@ func (client *Client) AttachKeyPair(request *AttachKeyPairRequest) (_result *Att
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateCommandResponse
-func (client *Client) CreateCommandWithOptions(request *CreateCommandRequest, runtime *util.RuntimeOptions) (_result *CreateCommandResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) CreateCommandWithOptions(request *CreateCommandRequest, runtime *dara.RuntimeOptions) (_result *CreateCommandResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.CommandContent)) {
+	if !dara.IsNil(request.CommandContent) {
 		query["CommandContent"] = request.CommandContent
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Description)) {
+	if !dara.IsNil(request.Description) {
 		query["Description"] = request.Description
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.EnableParameter)) {
+	if !dara.IsNil(request.EnableParameter) {
 		query["EnableParameter"] = request.EnableParameter
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Name)) {
+	if !dara.IsNil(request.Name) {
 		query["Name"] = request.Name
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+	if !dara.IsNil(request.ResourceGroupId) {
 		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+	if !dara.IsNil(request.Tag) {
 		query["Tag"] = request.Tag
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Timeout)) {
+	if !dara.IsNil(request.Timeout) {
 		query["Timeout"] = request.Timeout
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Type)) {
+	if !dara.IsNil(request.Type) {
 		query["Type"] = request.Type
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.WorkingDir)) {
+	if !dara.IsNil(request.WorkingDir) {
 		query["WorkingDir"] = request.WorkingDir
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateCommand"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateCommand"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateCommandResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &CreateCommandResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -19603,8 +30432,7 @@ func (client *Client) CreateCommandWithOptions(request *CreateCommandRequest, ru
 //
 // @return CreateCommandResponse
 func (client *Client) CreateCommand(request *CreateCommandRequest) (_result *CreateCommandResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateCommandResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.CreateCommandWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -19642,77 +30470,75 @@ func (client *Client) CreateCommand(request *CreateCommandRequest) (_result *Cre
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateCustomImageResponse
-func (client *Client) CreateCustomImageWithOptions(request *CreateCustomImageRequest, runtime *util.RuntimeOptions) (_result *CreateCustomImageResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) CreateCustomImageWithOptions(request *CreateCustomImageRequest, runtime *dara.RuntimeOptions) (_result *CreateCustomImageResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.DataSnapshotId)) {
+	if !dara.IsNil(request.DataSnapshotId) {
 		query["DataSnapshotId"] = request.DataSnapshotId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Description)) {
+	if !dara.IsNil(request.Description) {
 		query["Description"] = request.Description
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ImageName)) {
+	if !dara.IsNil(request.ImageName) {
 		query["ImageName"] = request.ImageName
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+	if !dara.IsNil(request.ResourceGroupId) {
 		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.SystemSnapshotId)) {
+	if !dara.IsNil(request.SystemSnapshotId) {
 		query["SystemSnapshotId"] = request.SystemSnapshotId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+	if !dara.IsNil(request.Tag) {
 		query["Tag"] = request.Tag
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateCustomImage"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateCustomImage"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateCustomImageResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &CreateCustomImageResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -19746,8 +30572,7 @@ func (client *Client) CreateCustomImageWithOptions(request *CreateCustomImageReq
 //
 // @return CreateCustomImageResponse
 func (client *Client) CreateCustomImage(request *CreateCustomImageRequest) (_result *CreateCustomImageResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateCustomImageResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.CreateCustomImageWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -19769,65 +30594,63 @@ func (client *Client) CreateCustomImage(request *CreateCustomImageRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateFirewallRuleResponse
-func (client *Client) CreateFirewallRuleWithOptions(request *CreateFirewallRuleRequest, runtime *util.RuntimeOptions) (_result *CreateFirewallRuleResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) CreateFirewallRuleWithOptions(request *CreateFirewallRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateFirewallRuleResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Port)) {
+	if !dara.IsNil(request.Port) {
 		query["Port"] = request.Port
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+	if !dara.IsNil(request.Remark) {
 		query["Remark"] = request.Remark
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RuleProtocol)) {
+	if !dara.IsNil(request.RuleProtocol) {
 		query["RuleProtocol"] = request.RuleProtocol
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateFirewallRule"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateFirewallRule"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateFirewallRuleResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &CreateFirewallRuleResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -19845,8 +30668,7 @@ func (client *Client) CreateFirewallRuleWithOptions(request *CreateFirewallRuleR
 //
 // @return CreateFirewallRuleResponse
 func (client *Client) CreateFirewallRule(request *CreateFirewallRuleRequest) (_result *CreateFirewallRuleResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateFirewallRuleResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.CreateFirewallRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -19868,67 +30690,65 @@ func (client *Client) CreateFirewallRule(request *CreateFirewallRuleRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateFirewallRulesResponse
-func (client *Client) CreateFirewallRulesWithOptions(tmpReq *CreateFirewallRulesRequest, runtime *util.RuntimeOptions) (_result *CreateFirewallRulesResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
+func (client *Client) CreateFirewallRulesWithOptions(tmpReq *CreateFirewallRulesRequest, runtime *dara.RuntimeOptions) (_result *CreateFirewallRulesResponse, _err error) {
+	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	request := &CreateFirewallRulesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.FirewallRules)) {
-		request.FirewallRulesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FirewallRules, tea.String("FirewallRules"), tea.String("json"))
+	if !dara.IsNil(tmpReq.FirewallRules) {
+		request.FirewallRulesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FirewallRules, dara.String("FirewallRules"), dara.String("json"))
 	}
 
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.FirewallRulesShrink)) {
+	if !dara.IsNil(request.FirewallRulesShrink) {
 		query["FirewallRules"] = request.FirewallRulesShrink
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+	if !dara.IsNil(request.Tag) {
 		query["Tag"] = request.Tag
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateFirewallRules"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateFirewallRules"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateFirewallRulesResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &CreateFirewallRulesResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -19946,8 +30766,7 @@ func (client *Client) CreateFirewallRulesWithOptions(tmpReq *CreateFirewallRules
 //
 // @return CreateFirewallRulesResponse
 func (client *Client) CreateFirewallRules(request *CreateFirewallRulesRequest) (_result *CreateFirewallRulesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateFirewallRulesResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.CreateFirewallRulesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -19969,57 +30788,55 @@ func (client *Client) CreateFirewallRules(request *CreateFirewallRulesRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateFirewallTemplateResponse
-func (client *Client) CreateFirewallTemplateWithOptions(request *CreateFirewallTemplateRequest, runtime *util.RuntimeOptions) (_result *CreateFirewallTemplateResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) CreateFirewallTemplateWithOptions(request *CreateFirewallTemplateRequest, runtime *dara.RuntimeOptions) (_result *CreateFirewallTemplateResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Description)) {
+	if !dara.IsNil(request.Description) {
 		query["Description"] = request.Description
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.FirewallRule)) {
+	if !dara.IsNil(request.FirewallRule) {
 		query["FirewallRule"] = request.FirewallRule
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Name)) {
+	if !dara.IsNil(request.Name) {
 		query["Name"] = request.Name
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateFirewallTemplate"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateFirewallTemplate"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateFirewallTemplateResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &CreateFirewallTemplateResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -20037,8 +30854,7 @@ func (client *Client) CreateFirewallTemplateWithOptions(request *CreateFirewallT
 //
 // @return CreateFirewallTemplateResponse
 func (client *Client) CreateFirewallTemplate(request *CreateFirewallTemplateRequest) (_result *CreateFirewallTemplateResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateFirewallTemplateResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.CreateFirewallTemplateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -20060,53 +30876,51 @@ func (client *Client) CreateFirewallTemplate(request *CreateFirewallTemplateRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateFirewallTemplateRulesResponse
-func (client *Client) CreateFirewallTemplateRulesWithOptions(request *CreateFirewallTemplateRulesRequest, runtime *util.RuntimeOptions) (_result *CreateFirewallTemplateRulesResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) CreateFirewallTemplateRulesWithOptions(request *CreateFirewallTemplateRulesRequest, runtime *dara.RuntimeOptions) (_result *CreateFirewallTemplateRulesResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.FirewallRule)) {
+	if !dara.IsNil(request.FirewallRule) {
 		query["FirewallRule"] = request.FirewallRule
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.FirewallTemplateId)) {
+	if !dara.IsNil(request.FirewallTemplateId) {
 		query["FirewallTemplateId"] = request.FirewallTemplateId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateFirewallTemplateRules"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateFirewallTemplateRules"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateFirewallTemplateRulesResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &CreateFirewallTemplateRulesResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -20124,8 +30938,7 @@ func (client *Client) CreateFirewallTemplateRulesWithOptions(request *CreateFire
 //
 // @return CreateFirewallTemplateRulesResponse
 func (client *Client) CreateFirewallTemplateRules(request *CreateFirewallTemplateRulesRequest) (_result *CreateFirewallTemplateRulesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateFirewallTemplateRulesResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.CreateFirewallTemplateRulesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -20143,57 +30956,55 @@ func (client *Client) CreateFirewallTemplateRules(request *CreateFirewallTemplat
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateInstanceKeyPairResponse
-func (client *Client) CreateInstanceKeyPairWithOptions(request *CreateInstanceKeyPairRequest, runtime *util.RuntimeOptions) (_result *CreateInstanceKeyPairResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) CreateInstanceKeyPairWithOptions(request *CreateInstanceKeyPairRequest, runtime *dara.RuntimeOptions) (_result *CreateInstanceKeyPairResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.KeyPairName)) {
+	if !dara.IsNil(request.KeyPairName) {
 		query["KeyPairName"] = request.KeyPairName
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateInstanceKeyPair"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateInstanceKeyPair"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateInstanceKeyPairResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &CreateInstanceKeyPairResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -20207,8 +31018,7 @@ func (client *Client) CreateInstanceKeyPairWithOptions(request *CreateInstanceKe
 //
 // @return CreateInstanceKeyPairResponse
 func (client *Client) CreateInstanceKeyPair(request *CreateInstanceKeyPairRequest) (_result *CreateInstanceKeyPairResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateInstanceKeyPairResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.CreateInstanceKeyPairWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -20236,81 +31046,79 @@ func (client *Client) CreateInstanceKeyPair(request *CreateInstanceKeyPairReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateInstancesResponse
-func (client *Client) CreateInstancesWithOptions(request *CreateInstancesRequest, runtime *util.RuntimeOptions) (_result *CreateInstancesResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) CreateInstancesWithOptions(request *CreateInstancesRequest, runtime *dara.RuntimeOptions) (_result *CreateInstancesResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Amount)) {
+	if !dara.IsNil(request.Amount) {
 		query["Amount"] = request.Amount
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.AutoRenew)) {
+	if !dara.IsNil(request.AutoRenew) {
 		query["AutoRenew"] = request.AutoRenew
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.AutoRenewPeriod)) {
+	if !dara.IsNil(request.AutoRenewPeriod) {
 		query["AutoRenewPeriod"] = request.AutoRenewPeriod
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ChargeType)) {
+	if !dara.IsNil(request.ChargeType) {
 		query["ChargeType"] = request.ChargeType
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.DataDiskSize)) {
+	if !dara.IsNil(request.DataDiskSize) {
 		query["DataDiskSize"] = request.DataDiskSize
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
+	if !dara.IsNil(request.ImageId) {
 		query["ImageId"] = request.ImageId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Period)) {
+	if !dara.IsNil(request.Period) {
 		query["Period"] = request.Period
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.PlanId)) {
+	if !dara.IsNil(request.PlanId) {
 		query["PlanId"] = request.PlanId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateInstances"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateInstances"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateInstancesResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &CreateInstancesResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -20334,8 +31142,7 @@ func (client *Client) CreateInstancesWithOptions(request *CreateInstancesRequest
 //
 // @return CreateInstancesResponse
 func (client *Client) CreateInstances(request *CreateInstancesRequest) (_result *CreateInstancesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateInstancesResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.CreateInstancesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -20363,53 +31170,51 @@ func (client *Client) CreateInstances(request *CreateInstancesRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateKeyPairResponse
-func (client *Client) CreateKeyPairWithOptions(request *CreateKeyPairRequest, runtime *util.RuntimeOptions) (_result *CreateKeyPairResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) CreateKeyPairWithOptions(request *CreateKeyPairRequest, runtime *dara.RuntimeOptions) (_result *CreateKeyPairResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.KeyPairName)) {
+	if !dara.IsNil(request.KeyPairName) {
 		query["KeyPairName"] = request.KeyPairName
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateKeyPair"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateKeyPair"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateKeyPairResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &CreateKeyPairResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -20433,8 +31238,7 @@ func (client *Client) CreateKeyPairWithOptions(request *CreateKeyPairRequest, ru
 //
 // @return CreateKeyPairResponse
 func (client *Client) CreateKeyPair(request *CreateKeyPairRequest) (_result *CreateKeyPairResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateKeyPairResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.CreateKeyPairWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -20468,65 +31272,63 @@ func (client *Client) CreateKeyPair(request *CreateKeyPairRequest) (_result *Cre
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateSnapshotResponse
-func (client *Client) CreateSnapshotWithOptions(request *CreateSnapshotRequest, runtime *util.RuntimeOptions) (_result *CreateSnapshotResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) CreateSnapshotWithOptions(request *CreateSnapshotRequest, runtime *dara.RuntimeOptions) (_result *CreateSnapshotResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.DiskId)) {
+	if !dara.IsNil(request.DiskId) {
 		query["DiskId"] = request.DiskId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+	if !dara.IsNil(request.ResourceGroupId) {
 		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.SnapshotName)) {
+	if !dara.IsNil(request.SnapshotName) {
 		query["SnapshotName"] = request.SnapshotName
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+	if !dara.IsNil(request.Tag) {
 		query["Tag"] = request.Tag
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateSnapshot"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateSnapshot"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateSnapshotResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &CreateSnapshotResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -20556,8 +31358,7 @@ func (client *Client) CreateSnapshotWithOptions(request *CreateSnapshotRequest, 
 //
 // @return CreateSnapshotResponse
 func (client *Client) CreateSnapshot(request *CreateSnapshotRequest) (_result *CreateSnapshotResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateSnapshotResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.CreateSnapshotWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -20579,49 +31380,47 @@ func (client *Client) CreateSnapshot(request *CreateSnapshotRequest) (_result *C
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteCommandResponse
-func (client *Client) DeleteCommandWithOptions(request *DeleteCommandRequest, runtime *util.RuntimeOptions) (_result *DeleteCommandResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) DeleteCommandWithOptions(request *DeleteCommandRequest, runtime *dara.RuntimeOptions) (_result *DeleteCommandResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.CommandId)) {
+	if !dara.IsNil(request.CommandId) {
 		query["CommandId"] = request.CommandId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteCommand"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteCommand"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteCommandResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &DeleteCommandResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -20639,8 +31438,7 @@ func (client *Client) DeleteCommandWithOptions(request *DeleteCommandRequest, ru
 //
 // @return DeleteCommandResponse
 func (client *Client) DeleteCommand(request *DeleteCommandRequest) (_result *DeleteCommandResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteCommandResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.DeleteCommandWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -20664,53 +31462,51 @@ func (client *Client) DeleteCommand(request *DeleteCommandRequest) (_result *Del
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteCustomImageResponse
-func (client *Client) DeleteCustomImageWithOptions(request *DeleteCustomImageRequest, runtime *util.RuntimeOptions) (_result *DeleteCustomImageResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) DeleteCustomImageWithOptions(request *DeleteCustomImageRequest, runtime *dara.RuntimeOptions) (_result *DeleteCustomImageResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
+	if !dara.IsNil(request.ImageId) {
 		query["ImageId"] = request.ImageId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteCustomImage"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteCustomImage"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteCustomImageResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &DeleteCustomImageResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -20730,8 +31526,7 @@ func (client *Client) DeleteCustomImageWithOptions(request *DeleteCustomImageReq
 //
 // @return DeleteCustomImageResponse
 func (client *Client) DeleteCustomImage(request *DeleteCustomImageRequest) (_result *DeleteCustomImageResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteCustomImageResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.DeleteCustomImageWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -20753,53 +31548,51 @@ func (client *Client) DeleteCustomImage(request *DeleteCustomImageRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteCustomImagesResponse
-func (client *Client) DeleteCustomImagesWithOptions(request *DeleteCustomImagesRequest, runtime *util.RuntimeOptions) (_result *DeleteCustomImagesResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) DeleteCustomImagesWithOptions(request *DeleteCustomImagesRequest, runtime *dara.RuntimeOptions) (_result *DeleteCustomImagesResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ImageIds)) {
+	if !dara.IsNil(request.ImageIds) {
 		query["ImageIds"] = request.ImageIds
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteCustomImages"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteCustomImages"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteCustomImagesResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &DeleteCustomImagesResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -20817,8 +31610,7 @@ func (client *Client) DeleteCustomImagesWithOptions(request *DeleteCustomImagesR
 //
 // @return DeleteCustomImagesResponse
 func (client *Client) DeleteCustomImages(request *DeleteCustomImagesRequest) (_result *DeleteCustomImagesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteCustomImagesResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.DeleteCustomImagesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -20840,57 +31632,55 @@ func (client *Client) DeleteCustomImages(request *DeleteCustomImagesRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteFirewallRuleResponse
-func (client *Client) DeleteFirewallRuleWithOptions(request *DeleteFirewallRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteFirewallRuleResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) DeleteFirewallRuleWithOptions(request *DeleteFirewallRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteFirewallRuleResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+	if !dara.IsNil(request.RuleId) {
 		query["RuleId"] = request.RuleId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteFirewallRule"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteFirewallRule"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteFirewallRuleResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &DeleteFirewallRuleResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -20908,8 +31698,7 @@ func (client *Client) DeleteFirewallRuleWithOptions(request *DeleteFirewallRuleR
 //
 // @return DeleteFirewallRuleResponse
 func (client *Client) DeleteFirewallRule(request *DeleteFirewallRuleRequest) (_result *DeleteFirewallRuleResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteFirewallRuleResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.DeleteFirewallRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -20931,63 +31720,61 @@ func (client *Client) DeleteFirewallRule(request *DeleteFirewallRuleRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteFirewallRulesResponse
-func (client *Client) DeleteFirewallRulesWithOptions(tmpReq *DeleteFirewallRulesRequest, runtime *util.RuntimeOptions) (_result *DeleteFirewallRulesResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
+func (client *Client) DeleteFirewallRulesWithOptions(tmpReq *DeleteFirewallRulesRequest, runtime *dara.RuntimeOptions) (_result *DeleteFirewallRulesResponse, _err error) {
+	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	request := &DeleteFirewallRulesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.RuleIds)) {
-		request.RuleIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RuleIds, tea.String("RuleIds"), tea.String("simple"))
+	if !dara.IsNil(tmpReq.RuleIds) {
+		request.RuleIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RuleIds, dara.String("RuleIds"), dara.String("simple"))
 	}
 
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RuleIdsShrink)) {
+	if !dara.IsNil(request.RuleIdsShrink) {
 		query["RuleIds"] = request.RuleIdsShrink
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteFirewallRules"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteFirewallRules"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteFirewallRulesResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &DeleteFirewallRulesResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -21005,8 +31792,7 @@ func (client *Client) DeleteFirewallRulesWithOptions(tmpReq *DeleteFirewallRules
 //
 // @return DeleteFirewallRulesResponse
 func (client *Client) DeleteFirewallRules(request *DeleteFirewallRulesRequest) (_result *DeleteFirewallRulesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteFirewallRulesResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.DeleteFirewallRulesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -21028,57 +31814,55 @@ func (client *Client) DeleteFirewallRules(request *DeleteFirewallRulesRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteFirewallTemplateRulesResponse
-func (client *Client) DeleteFirewallTemplateRulesWithOptions(request *DeleteFirewallTemplateRulesRequest, runtime *util.RuntimeOptions) (_result *DeleteFirewallTemplateRulesResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) DeleteFirewallTemplateRulesWithOptions(request *DeleteFirewallTemplateRulesRequest, runtime *dara.RuntimeOptions) (_result *DeleteFirewallTemplateRulesResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.FirewallTemplateId)) {
+	if !dara.IsNil(request.FirewallTemplateId) {
 		query["FirewallTemplateId"] = request.FirewallTemplateId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.FirewallTemplateRuleId)) {
+	if !dara.IsNil(request.FirewallTemplateRuleId) {
 		query["FirewallTemplateRuleId"] = request.FirewallTemplateRuleId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteFirewallTemplateRules"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteFirewallTemplateRules"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteFirewallTemplateRulesResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &DeleteFirewallTemplateRulesResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -21096,8 +31880,7 @@ func (client *Client) DeleteFirewallTemplateRulesWithOptions(request *DeleteFire
 //
 // @return DeleteFirewallTemplateRulesResponse
 func (client *Client) DeleteFirewallTemplateRules(request *DeleteFirewallTemplateRulesRequest) (_result *DeleteFirewallTemplateRulesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteFirewallTemplateRulesResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.DeleteFirewallTemplateRulesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -21119,53 +31902,51 @@ func (client *Client) DeleteFirewallTemplateRules(request *DeleteFirewallTemplat
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteFirewallTemplatesResponse
-func (client *Client) DeleteFirewallTemplatesWithOptions(request *DeleteFirewallTemplatesRequest, runtime *util.RuntimeOptions) (_result *DeleteFirewallTemplatesResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) DeleteFirewallTemplatesWithOptions(request *DeleteFirewallTemplatesRequest, runtime *dara.RuntimeOptions) (_result *DeleteFirewallTemplatesResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.FirewallTemplateId)) {
+	if !dara.IsNil(request.FirewallTemplateId) {
 		query["FirewallTemplateId"] = request.FirewallTemplateId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteFirewallTemplates"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteFirewallTemplates"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteFirewallTemplatesResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &DeleteFirewallTemplatesResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -21183,8 +31964,7 @@ func (client *Client) DeleteFirewallTemplatesWithOptions(request *DeleteFirewall
 //
 // @return DeleteFirewallTemplatesResponse
 func (client *Client) DeleteFirewallTemplates(request *DeleteFirewallTemplatesRequest) (_result *DeleteFirewallTemplatesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteFirewallTemplatesResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.DeleteFirewallTemplatesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -21202,53 +31982,51 @@ func (client *Client) DeleteFirewallTemplates(request *DeleteFirewallTemplatesRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteInstanceKeyPairResponse
-func (client *Client) DeleteInstanceKeyPairWithOptions(request *DeleteInstanceKeyPairRequest, runtime *util.RuntimeOptions) (_result *DeleteInstanceKeyPairResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) DeleteInstanceKeyPairWithOptions(request *DeleteInstanceKeyPairRequest, runtime *dara.RuntimeOptions) (_result *DeleteInstanceKeyPairResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteInstanceKeyPair"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteInstanceKeyPair"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteInstanceKeyPairResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &DeleteInstanceKeyPairResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -21262,8 +32040,7 @@ func (client *Client) DeleteInstanceKeyPairWithOptions(request *DeleteInstanceKe
 //
 // @return DeleteInstanceKeyPairResponse
 func (client *Client) DeleteInstanceKeyPair(request *DeleteInstanceKeyPairRequest) (_result *DeleteInstanceKeyPairResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteInstanceKeyPairResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.DeleteInstanceKeyPairWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -21285,53 +32062,51 @@ func (client *Client) DeleteInstanceKeyPair(request *DeleteInstanceKeyPairReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteKeyPairsResponse
-func (client *Client) DeleteKeyPairsWithOptions(request *DeleteKeyPairsRequest, runtime *util.RuntimeOptions) (_result *DeleteKeyPairsResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) DeleteKeyPairsWithOptions(request *DeleteKeyPairsRequest, runtime *dara.RuntimeOptions) (_result *DeleteKeyPairsResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.KeyPairNames)) {
+	if !dara.IsNil(request.KeyPairNames) {
 		query["KeyPairNames"] = request.KeyPairNames
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteKeyPairs"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteKeyPairs"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteKeyPairsResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &DeleteKeyPairsResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -21349,8 +32124,7 @@ func (client *Client) DeleteKeyPairsWithOptions(request *DeleteKeyPairsRequest, 
 //
 // @return DeleteKeyPairsResponse
 func (client *Client) DeleteKeyPairs(request *DeleteKeyPairsRequest) (_result *DeleteKeyPairsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteKeyPairsResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.DeleteKeyPairsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -21374,53 +32148,51 @@ func (client *Client) DeleteKeyPairs(request *DeleteKeyPairsRequest) (_result *D
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteSnapshotResponse
-func (client *Client) DeleteSnapshotWithOptions(request *DeleteSnapshotRequest, runtime *util.RuntimeOptions) (_result *DeleteSnapshotResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) DeleteSnapshotWithOptions(request *DeleteSnapshotRequest, runtime *dara.RuntimeOptions) (_result *DeleteSnapshotResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.SnapshotId)) {
+	if !dara.IsNil(request.SnapshotId) {
 		query["SnapshotId"] = request.SnapshotId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteSnapshot"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteSnapshot"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteSnapshotResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &DeleteSnapshotResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -21440,8 +32212,7 @@ func (client *Client) DeleteSnapshotWithOptions(request *DeleteSnapshotRequest, 
 //
 // @return DeleteSnapshotResponse
 func (client *Client) DeleteSnapshot(request *DeleteSnapshotRequest) (_result *DeleteSnapshotResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteSnapshotResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.DeleteSnapshotWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -21459,53 +32230,51 @@ func (client *Client) DeleteSnapshot(request *DeleteSnapshotRequest) (_result *D
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteSnapshotsResponse
-func (client *Client) DeleteSnapshotsWithOptions(request *DeleteSnapshotsRequest, runtime *util.RuntimeOptions) (_result *DeleteSnapshotsResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) DeleteSnapshotsWithOptions(request *DeleteSnapshotsRequest, runtime *dara.RuntimeOptions) (_result *DeleteSnapshotsResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.SnapshotIds)) {
+	if !dara.IsNil(request.SnapshotIds) {
 		query["SnapshotIds"] = request.SnapshotIds
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteSnapshots"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteSnapshots"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteSnapshotsResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &DeleteSnapshotsResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -21519,8 +32288,7 @@ func (client *Client) DeleteSnapshotsWithOptions(request *DeleteSnapshotsRequest
 //
 // @return DeleteSnapshotsResponse
 func (client *Client) DeleteSnapshots(request *DeleteSnapshotsRequest) (_result *DeleteSnapshotsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteSnapshotsResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.DeleteSnapshotsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -21538,63 +32306,61 @@ func (client *Client) DeleteSnapshots(request *DeleteSnapshotsRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeCloudAssistantAttributesResponse
-func (client *Client) DescribeCloudAssistantAttributesWithOptions(tmpReq *DescribeCloudAssistantAttributesRequest, runtime *util.RuntimeOptions) (_result *DescribeCloudAssistantAttributesResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
+func (client *Client) DescribeCloudAssistantAttributesWithOptions(tmpReq *DescribeCloudAssistantAttributesRequest, runtime *dara.RuntimeOptions) (_result *DescribeCloudAssistantAttributesResponse, _err error) {
+	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	request := &DescribeCloudAssistantAttributesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.InstanceIds)) {
-		request.InstanceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InstanceIds, tea.String("InstanceIds"), tea.String("json"))
+	if !dara.IsNil(tmpReq.InstanceIds) {
+		request.InstanceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InstanceIds, dara.String("InstanceIds"), dara.String("json"))
 	}
 
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.InstanceIdsShrink)) {
+	if !dara.IsNil(request.InstanceIdsShrink) {
 		query["InstanceIds"] = request.InstanceIdsShrink
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+	if !dara.IsNil(request.PageNumber) {
 		query["PageNumber"] = request.PageNumber
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeCloudAssistantAttributes"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeCloudAssistantAttributes"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeCloudAssistantAttributesResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &DescribeCloudAssistantAttributesResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -21608,8 +32374,7 @@ func (client *Client) DescribeCloudAssistantAttributesWithOptions(tmpReq *Descri
 //
 // @return DescribeCloudAssistantAttributesResponse
 func (client *Client) DescribeCloudAssistantAttributes(request *DescribeCloudAssistantAttributesRequest) (_result *DescribeCloudAssistantAttributesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeCloudAssistantAttributesResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.DescribeCloudAssistantAttributesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -21631,63 +32396,61 @@ func (client *Client) DescribeCloudAssistantAttributes(request *DescribeCloudAss
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeCloudAssistantStatusResponse
-func (client *Client) DescribeCloudAssistantStatusWithOptions(tmpReq *DescribeCloudAssistantStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeCloudAssistantStatusResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
+func (client *Client) DescribeCloudAssistantStatusWithOptions(tmpReq *DescribeCloudAssistantStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeCloudAssistantStatusResponse, _err error) {
+	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	request := &DescribeCloudAssistantStatusShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.InstanceIds)) {
-		request.InstanceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InstanceIds, tea.String("InstanceIds"), tea.String("json"))
+	if !dara.IsNil(tmpReq.InstanceIds) {
+		request.InstanceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InstanceIds, dara.String("InstanceIds"), dara.String("json"))
 	}
 
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.InstanceIdsShrink)) {
+	if !dara.IsNil(request.InstanceIdsShrink) {
 		query["InstanceIds"] = request.InstanceIdsShrink
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+	if !dara.IsNil(request.PageNumber) {
 		query["PageNumber"] = request.PageNumber
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeCloudAssistantStatus"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeCloudAssistantStatus"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeCloudAssistantStatusResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &DescribeCloudAssistantStatusResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -21705,8 +32468,7 @@ func (client *Client) DescribeCloudAssistantStatusWithOptions(tmpReq *DescribeCl
 //
 // @return DescribeCloudAssistantStatusResponse
 func (client *Client) DescribeCloudAssistantStatus(request *DescribeCloudAssistantStatusRequest) (_result *DescribeCloudAssistantStatusResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeCloudAssistantStatusResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.DescribeCloudAssistantStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -21724,53 +32486,51 @@ func (client *Client) DescribeCloudAssistantStatus(request *DescribeCloudAssista
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeCloudMonitorAgentStatusesResponse
-func (client *Client) DescribeCloudMonitorAgentStatusesWithOptions(request *DescribeCloudMonitorAgentStatusesRequest, runtime *util.RuntimeOptions) (_result *DescribeCloudMonitorAgentStatusesResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) DescribeCloudMonitorAgentStatusesWithOptions(request *DescribeCloudMonitorAgentStatusesRequest, runtime *dara.RuntimeOptions) (_result *DescribeCloudMonitorAgentStatusesResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
+	if !dara.IsNil(request.InstanceIds) {
 		query["InstanceIds"] = request.InstanceIds
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeCloudMonitorAgentStatuses"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeCloudMonitorAgentStatuses"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeCloudMonitorAgentStatusesResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &DescribeCloudMonitorAgentStatusesResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -21784,8 +32544,7 @@ func (client *Client) DescribeCloudMonitorAgentStatusesWithOptions(request *Desc
 //
 // @return DescribeCloudMonitorAgentStatusesResponse
 func (client *Client) DescribeCloudMonitorAgentStatuses(request *DescribeCloudMonitorAgentStatusesRequest) (_result *DescribeCloudMonitorAgentStatusesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeCloudMonitorAgentStatusesResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.DescribeCloudMonitorAgentStatusesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -21803,77 +32562,75 @@ func (client *Client) DescribeCloudMonitorAgentStatuses(request *DescribeCloudMo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeCommandInvocationsResponse
-func (client *Client) DescribeCommandInvocationsWithOptions(request *DescribeCommandInvocationsRequest, runtime *util.RuntimeOptions) (_result *DescribeCommandInvocationsResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) DescribeCommandInvocationsWithOptions(request *DescribeCommandInvocationsRequest, runtime *dara.RuntimeOptions) (_result *DescribeCommandInvocationsResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.CommandId)) {
+	if !dara.IsNil(request.CommandId) {
 		query["CommandId"] = request.CommandId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.CommandName)) {
+	if !dara.IsNil(request.CommandName) {
 		query["CommandName"] = request.CommandName
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.CommandType)) {
+	if !dara.IsNil(request.CommandType) {
 		query["CommandType"] = request.CommandType
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.InvocationStatus)) {
+	if !dara.IsNil(request.InvocationStatus) {
 		query["InvocationStatus"] = request.InvocationStatus
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.InvokeId)) {
+	if !dara.IsNil(request.InvokeId) {
 		query["InvokeId"] = request.InvokeId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+	if !dara.IsNil(request.PageNumber) {
 		query["PageNumber"] = request.PageNumber
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeCommandInvocations"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeCommandInvocations"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeCommandInvocationsResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &DescribeCommandInvocationsResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -21887,8 +32644,7 @@ func (client *Client) DescribeCommandInvocationsWithOptions(request *DescribeCom
 //
 // @return DescribeCommandInvocationsResponse
 func (client *Client) DescribeCommandInvocations(request *DescribeCommandInvocationsRequest) (_result *DescribeCommandInvocationsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeCommandInvocationsResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.DescribeCommandInvocationsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -21906,77 +32662,75 @@ func (client *Client) DescribeCommandInvocations(request *DescribeCommandInvocat
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeCommandsResponse
-func (client *Client) DescribeCommandsWithOptions(request *DescribeCommandsRequest, runtime *util.RuntimeOptions) (_result *DescribeCommandsResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) DescribeCommandsWithOptions(request *DescribeCommandsRequest, runtime *dara.RuntimeOptions) (_result *DescribeCommandsResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.CommandId)) {
+	if !dara.IsNil(request.CommandId) {
 		query["CommandId"] = request.CommandId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Name)) {
+	if !dara.IsNil(request.Name) {
 		query["Name"] = request.Name
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+	if !dara.IsNil(request.PageNumber) {
 		query["PageNumber"] = request.PageNumber
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Provider)) {
+	if !dara.IsNil(request.Provider) {
 		query["Provider"] = request.Provider
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+	if !dara.IsNil(request.ResourceGroupId) {
 		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+	if !dara.IsNil(request.Tag) {
 		query["Tag"] = request.Tag
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Type)) {
+	if !dara.IsNil(request.Type) {
 		query["Type"] = request.Type
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeCommands"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeCommands"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeCommandsResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &DescribeCommandsResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -21990,8 +32744,7 @@ func (client *Client) DescribeCommandsWithOptions(request *DescribeCommandsReque
 //
 // @return DescribeCommandsResponse
 func (client *Client) DescribeCommands(request *DescribeCommandsRequest) (_result *DescribeCommandsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeCommandsResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.DescribeCommandsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -22013,65 +32766,63 @@ func (client *Client) DescribeCommands(request *DescribeCommandsRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDatabaseErrorLogsResponse
-func (client *Client) DescribeDatabaseErrorLogsWithOptions(request *DescribeDatabaseErrorLogsRequest, runtime *util.RuntimeOptions) (_result *DescribeDatabaseErrorLogsResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) DescribeDatabaseErrorLogsWithOptions(request *DescribeDatabaseErrorLogsRequest, runtime *dara.RuntimeOptions) (_result *DescribeDatabaseErrorLogsResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DatabaseInstanceId)) {
+	if !dara.IsNil(request.DatabaseInstanceId) {
 		query["DatabaseInstanceId"] = request.DatabaseInstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+	if !dara.IsNil(request.EndTime) {
 		query["EndTime"] = request.EndTime
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+	if !dara.IsNil(request.PageNumber) {
 		query["PageNumber"] = request.PageNumber
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+	if !dara.IsNil(request.StartTime) {
 		query["StartTime"] = request.StartTime
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeDatabaseErrorLogs"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeDatabaseErrorLogs"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDatabaseErrorLogsResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &DescribeDatabaseErrorLogsResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -22089,8 +32840,7 @@ func (client *Client) DescribeDatabaseErrorLogsWithOptions(request *DescribeData
 //
 // @return DescribeDatabaseErrorLogsResponse
 func (client *Client) DescribeDatabaseErrorLogs(request *DescribeDatabaseErrorLogsRequest) (_result *DescribeDatabaseErrorLogsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeDatabaseErrorLogsResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.DescribeDatabaseErrorLogsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -22112,61 +32862,59 @@ func (client *Client) DescribeDatabaseErrorLogs(request *DescribeDatabaseErrorLo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDatabaseInstanceMetricDataResponse
-func (client *Client) DescribeDatabaseInstanceMetricDataWithOptions(request *DescribeDatabaseInstanceMetricDataRequest, runtime *util.RuntimeOptions) (_result *DescribeDatabaseInstanceMetricDataResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) DescribeDatabaseInstanceMetricDataWithOptions(request *DescribeDatabaseInstanceMetricDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeDatabaseInstanceMetricDataResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DatabaseInstanceId)) {
+	if !dara.IsNil(request.DatabaseInstanceId) {
 		query["DatabaseInstanceId"] = request.DatabaseInstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+	if !dara.IsNil(request.EndTime) {
 		query["EndTime"] = request.EndTime
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MetricName)) {
+	if !dara.IsNil(request.MetricName) {
 		query["MetricName"] = request.MetricName
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+	if !dara.IsNil(request.StartTime) {
 		query["StartTime"] = request.StartTime
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeDatabaseInstanceMetricData"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeDatabaseInstanceMetricData"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDatabaseInstanceMetricDataResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &DescribeDatabaseInstanceMetricDataResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -22184,8 +32932,7 @@ func (client *Client) DescribeDatabaseInstanceMetricDataWithOptions(request *Des
 //
 // @return DescribeDatabaseInstanceMetricDataResponse
 func (client *Client) DescribeDatabaseInstanceMetricData(request *DescribeDatabaseInstanceMetricDataRequest) (_result *DescribeDatabaseInstanceMetricDataResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeDatabaseInstanceMetricDataResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.DescribeDatabaseInstanceMetricDataWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -22207,49 +32954,47 @@ func (client *Client) DescribeDatabaseInstanceMetricData(request *DescribeDataba
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDatabaseInstanceParametersResponse
-func (client *Client) DescribeDatabaseInstanceParametersWithOptions(request *DescribeDatabaseInstanceParametersRequest, runtime *util.RuntimeOptions) (_result *DescribeDatabaseInstanceParametersResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) DescribeDatabaseInstanceParametersWithOptions(request *DescribeDatabaseInstanceParametersRequest, runtime *dara.RuntimeOptions) (_result *DescribeDatabaseInstanceParametersResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DatabaseInstanceId)) {
+	if !dara.IsNil(request.DatabaseInstanceId) {
 		query["DatabaseInstanceId"] = request.DatabaseInstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeDatabaseInstanceParameters"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeDatabaseInstanceParameters"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDatabaseInstanceParametersResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &DescribeDatabaseInstanceParametersResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -22267,8 +33012,7 @@ func (client *Client) DescribeDatabaseInstanceParametersWithOptions(request *Des
 //
 // @return DescribeDatabaseInstanceParametersResponse
 func (client *Client) DescribeDatabaseInstanceParameters(request *DescribeDatabaseInstanceParametersRequest) (_result *DescribeDatabaseInstanceParametersResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeDatabaseInstanceParametersResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.DescribeDatabaseInstanceParametersWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -22290,57 +33034,55 @@ func (client *Client) DescribeDatabaseInstanceParameters(request *DescribeDataba
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDatabaseInstancesResponse
-func (client *Client) DescribeDatabaseInstancesWithOptions(request *DescribeDatabaseInstancesRequest, runtime *util.RuntimeOptions) (_result *DescribeDatabaseInstancesResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) DescribeDatabaseInstancesWithOptions(request *DescribeDatabaseInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeDatabaseInstancesResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DatabaseInstanceIds)) {
+	if !dara.IsNil(request.DatabaseInstanceIds) {
 		query["DatabaseInstanceIds"] = request.DatabaseInstanceIds
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+	if !dara.IsNil(request.PageNumber) {
 		query["PageNumber"] = request.PageNumber
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeDatabaseInstances"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeDatabaseInstances"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDatabaseInstancesResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &DescribeDatabaseInstancesResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -22358,8 +33100,7 @@ func (client *Client) DescribeDatabaseInstancesWithOptions(request *DescribeData
 //
 // @return DescribeDatabaseInstancesResponse
 func (client *Client) DescribeDatabaseInstances(request *DescribeDatabaseInstancesRequest) (_result *DescribeDatabaseInstancesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeDatabaseInstancesResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.DescribeDatabaseInstancesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -22383,65 +33124,63 @@ func (client *Client) DescribeDatabaseInstances(request *DescribeDatabaseInstanc
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDatabaseSlowLogRecordsResponse
-func (client *Client) DescribeDatabaseSlowLogRecordsWithOptions(request *DescribeDatabaseSlowLogRecordsRequest, runtime *util.RuntimeOptions) (_result *DescribeDatabaseSlowLogRecordsResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) DescribeDatabaseSlowLogRecordsWithOptions(request *DescribeDatabaseSlowLogRecordsRequest, runtime *dara.RuntimeOptions) (_result *DescribeDatabaseSlowLogRecordsResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DatabaseInstanceId)) {
+	if !dara.IsNil(request.DatabaseInstanceId) {
 		query["DatabaseInstanceId"] = request.DatabaseInstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+	if !dara.IsNil(request.EndTime) {
 		query["EndTime"] = request.EndTime
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+	if !dara.IsNil(request.PageNumber) {
 		query["PageNumber"] = request.PageNumber
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+	if !dara.IsNil(request.StartTime) {
 		query["StartTime"] = request.StartTime
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeDatabaseSlowLogRecords"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeDatabaseSlowLogRecords"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDatabaseSlowLogRecordsResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &DescribeDatabaseSlowLogRecordsResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -22461,8 +33200,7 @@ func (client *Client) DescribeDatabaseSlowLogRecordsWithOptions(request *Describ
 //
 // @return DescribeDatabaseSlowLogRecordsResponse
 func (client *Client) DescribeDatabaseSlowLogRecords(request *DescribeDatabaseSlowLogRecordsRequest) (_result *DescribeDatabaseSlowLogRecordsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeDatabaseSlowLogRecordsResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.DescribeDatabaseSlowLogRecordsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -22480,65 +33218,63 @@ func (client *Client) DescribeDatabaseSlowLogRecords(request *DescribeDatabaseSl
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeFirewallTemplateApplyResultsResponse
-func (client *Client) DescribeFirewallTemplateApplyResultsWithOptions(request *DescribeFirewallTemplateApplyResultsRequest, runtime *util.RuntimeOptions) (_result *DescribeFirewallTemplateApplyResultsResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) DescribeFirewallTemplateApplyResultsWithOptions(request *DescribeFirewallTemplateApplyResultsRequest, runtime *dara.RuntimeOptions) (_result *DescribeFirewallTemplateApplyResultsResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.FirewallTemplateId)) {
+	if !dara.IsNil(request.FirewallTemplateId) {
 		query["FirewallTemplateId"] = request.FirewallTemplateId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+	if !dara.IsNil(request.PageNumber) {
 		query["PageNumber"] = request.PageNumber
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+	if !dara.IsNil(request.TaskId) {
 		query["TaskId"] = request.TaskId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeFirewallTemplateApplyResults"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeFirewallTemplateApplyResults"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeFirewallTemplateApplyResultsResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &DescribeFirewallTemplateApplyResultsResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -22552,8 +33288,7 @@ func (client *Client) DescribeFirewallTemplateApplyResultsWithOptions(request *D
 //
 // @return DescribeFirewallTemplateApplyResultsResponse
 func (client *Client) DescribeFirewallTemplateApplyResults(request *DescribeFirewallTemplateApplyResultsRequest) (_result *DescribeFirewallTemplateApplyResultsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeFirewallTemplateApplyResultsResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.DescribeFirewallTemplateApplyResultsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -22571,61 +33306,59 @@ func (client *Client) DescribeFirewallTemplateApplyResults(request *DescribeFire
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeFirewallTemplateRulesApplyResultResponse
-func (client *Client) DescribeFirewallTemplateRulesApplyResultWithOptions(request *DescribeFirewallTemplateRulesApplyResultRequest, runtime *util.RuntimeOptions) (_result *DescribeFirewallTemplateRulesApplyResultResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) DescribeFirewallTemplateRulesApplyResultWithOptions(request *DescribeFirewallTemplateRulesApplyResultRequest, runtime *dara.RuntimeOptions) (_result *DescribeFirewallTemplateRulesApplyResultResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.FirewallTemplateId)) {
+	if !dara.IsNil(request.FirewallTemplateId) {
 		query["FirewallTemplateId"] = request.FirewallTemplateId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+	if !dara.IsNil(request.TaskId) {
 		query["TaskId"] = request.TaskId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeFirewallTemplateRulesApplyResult"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeFirewallTemplateRulesApplyResult"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeFirewallTemplateRulesApplyResultResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &DescribeFirewallTemplateRulesApplyResultResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -22639,8 +33372,7 @@ func (client *Client) DescribeFirewallTemplateRulesApplyResultWithOptions(reques
 //
 // @return DescribeFirewallTemplateRulesApplyResultResponse
 func (client *Client) DescribeFirewallTemplateRulesApplyResult(request *DescribeFirewallTemplateRulesApplyResultRequest) (_result *DescribeFirewallTemplateRulesApplyResultResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeFirewallTemplateRulesApplyResultResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.DescribeFirewallTemplateRulesApplyResultWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -22658,61 +33390,59 @@ func (client *Client) DescribeFirewallTemplateRulesApplyResult(request *Describe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeFirewallTemplatesResponse
-func (client *Client) DescribeFirewallTemplatesWithOptions(request *DescribeFirewallTemplatesRequest, runtime *util.RuntimeOptions) (_result *DescribeFirewallTemplatesResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) DescribeFirewallTemplatesWithOptions(request *DescribeFirewallTemplatesRequest, runtime *dara.RuntimeOptions) (_result *DescribeFirewallTemplatesResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.FirewallTemplateId)) {
+	if !dara.IsNil(request.FirewallTemplateId) {
 		query["FirewallTemplateId"] = request.FirewallTemplateId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Name)) {
+	if !dara.IsNil(request.Name) {
 		query["Name"] = request.Name
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+	if !dara.IsNil(request.PageNumber) {
 		query["PageNumber"] = request.PageNumber
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeFirewallTemplates"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeFirewallTemplates"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeFirewallTemplatesResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &DescribeFirewallTemplatesResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -22726,8 +33456,7 @@ func (client *Client) DescribeFirewallTemplatesWithOptions(request *DescribeFire
 //
 // @return DescribeFirewallTemplatesResponse
 func (client *Client) DescribeFirewallTemplates(request *DescribeFirewallTemplatesRequest) (_result *DescribeFirewallTemplatesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeFirewallTemplatesResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.DescribeFirewallTemplatesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -22745,53 +33474,51 @@ func (client *Client) DescribeFirewallTemplates(request *DescribeFirewallTemplat
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeInstanceKeyPairResponse
-func (client *Client) DescribeInstanceKeyPairWithOptions(request *DescribeInstanceKeyPairRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceKeyPairResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) DescribeInstanceKeyPairWithOptions(request *DescribeInstanceKeyPairRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceKeyPairResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeInstanceKeyPair"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeInstanceKeyPair"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeInstanceKeyPairResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &DescribeInstanceKeyPairResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -22805,8 +33532,7 @@ func (client *Client) DescribeInstanceKeyPairWithOptions(request *DescribeInstan
 //
 // @return DescribeInstanceKeyPairResponse
 func (client *Client) DescribeInstanceKeyPair(request *DescribeInstanceKeyPairRequest) (_result *DescribeInstanceKeyPairResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeInstanceKeyPairResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.DescribeInstanceKeyPairWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -22824,53 +33550,51 @@ func (client *Client) DescribeInstanceKeyPair(request *DescribeInstanceKeyPairRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeInstancePasswordsSettingResponse
-func (client *Client) DescribeInstancePasswordsSettingWithOptions(request *DescribeInstancePasswordsSettingRequest, runtime *util.RuntimeOptions) (_result *DescribeInstancePasswordsSettingResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) DescribeInstancePasswordsSettingWithOptions(request *DescribeInstancePasswordsSettingRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstancePasswordsSettingResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeInstancePasswordsSetting"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeInstancePasswordsSetting"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeInstancePasswordsSettingResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &DescribeInstancePasswordsSettingResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -22884,8 +33608,7 @@ func (client *Client) DescribeInstancePasswordsSettingWithOptions(request *Descr
 //
 // @return DescribeInstancePasswordsSettingResponse
 func (client *Client) DescribeInstancePasswordsSetting(request *DescribeInstancePasswordsSettingRequest) (_result *DescribeInstancePasswordsSettingResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeInstancePasswordsSettingResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.DescribeInstancePasswordsSettingWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -22903,53 +33626,51 @@ func (client *Client) DescribeInstancePasswordsSetting(request *DescribeInstance
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeInstanceVncUrlResponse
-func (client *Client) DescribeInstanceVncUrlWithOptions(request *DescribeInstanceVncUrlRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceVncUrlResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) DescribeInstanceVncUrlWithOptions(request *DescribeInstanceVncUrlRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceVncUrlResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeInstanceVncUrl"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeInstanceVncUrl"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeInstanceVncUrlResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &DescribeInstanceVncUrlResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -22963,8 +33684,7 @@ func (client *Client) DescribeInstanceVncUrlWithOptions(request *DescribeInstanc
 //
 // @return DescribeInstanceVncUrlResponse
 func (client *Client) DescribeInstanceVncUrl(request *DescribeInstanceVncUrlRequest) (_result *DescribeInstanceVncUrlResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeInstanceVncUrlResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.DescribeInstanceVncUrlWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -22988,53 +33708,51 @@ func (client *Client) DescribeInstanceVncUrl(request *DescribeInstanceVncUrlRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeInvocationResultResponse
-func (client *Client) DescribeInvocationResultWithOptions(request *DescribeInvocationResultRequest, runtime *util.RuntimeOptions) (_result *DescribeInvocationResultResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) DescribeInvocationResultWithOptions(request *DescribeInvocationResultRequest, runtime *dara.RuntimeOptions) (_result *DescribeInvocationResultResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.InvokeId)) {
+	if !dara.IsNil(request.InvokeId) {
 		query["InvokeId"] = request.InvokeId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeInvocationResult"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeInvocationResult"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeInvocationResultResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &DescribeInvocationResultResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -23054,8 +33772,7 @@ func (client *Client) DescribeInvocationResultWithOptions(request *DescribeInvoc
 //
 // @return DescribeInvocationResultResponse
 func (client *Client) DescribeInvocationResult(request *DescribeInvocationResultRequest) (_result *DescribeInvocationResultResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeInvocationResultResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.DescribeInvocationResultWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -23079,61 +33796,59 @@ func (client *Client) DescribeInvocationResult(request *DescribeInvocationResult
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeInvocationsResponse
-func (client *Client) DescribeInvocationsWithOptions(request *DescribeInvocationsRequest, runtime *util.RuntimeOptions) (_result *DescribeInvocationsResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) DescribeInvocationsWithOptions(request *DescribeInvocationsRequest, runtime *dara.RuntimeOptions) (_result *DescribeInvocationsResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.InvokeStatus)) {
+	if !dara.IsNil(request.InvokeStatus) {
 		query["InvokeStatus"] = request.InvokeStatus
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+	if !dara.IsNil(request.PageNumber) {
 		query["PageNumber"] = request.PageNumber
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeInvocations"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeInvocations"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeInvocationsResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &DescribeInvocationsResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -23153,8 +33868,7 @@ func (client *Client) DescribeInvocationsWithOptions(request *DescribeInvocation
 //
 // @return DescribeInvocationsResponse
 func (client *Client) DescribeInvocations(request *DescribeInvocationsRequest) (_result *DescribeInvocationsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeInvocationsResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.DescribeInvocationsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -23172,77 +33886,75 @@ func (client *Client) DescribeInvocations(request *DescribeInvocationsRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeMonitorDataResponse
-func (client *Client) DescribeMonitorDataWithOptions(request *DescribeMonitorDataRequest, runtime *util.RuntimeOptions) (_result *DescribeMonitorDataResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) DescribeMonitorDataWithOptions(request *DescribeMonitorDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeMonitorDataResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+	if !dara.IsNil(request.EndTime) {
 		query["EndTime"] = request.EndTime
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Length)) {
+	if !dara.IsNil(request.Length) {
 		query["Length"] = request.Length
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MetricName)) {
+	if !dara.IsNil(request.MetricName) {
 		query["MetricName"] = request.MetricName
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+	if !dara.IsNil(request.NextToken) {
 		query["NextToken"] = request.NextToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Period)) {
+	if !dara.IsNil(request.Period) {
 		query["Period"] = request.Period
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+	if !dara.IsNil(request.StartTime) {
 		query["StartTime"] = request.StartTime
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeMonitorData"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeMonitorData"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeMonitorDataResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &DescribeMonitorDataResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -23256,8 +33968,7 @@ func (client *Client) DescribeMonitorDataWithOptions(request *DescribeMonitorDat
 //
 // @return DescribeMonitorDataResponse
 func (client *Client) DescribeMonitorData(request *DescribeMonitorDataRequest) (_result *DescribeMonitorDataResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeMonitorDataResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.DescribeMonitorDataWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -23275,53 +33986,51 @@ func (client *Client) DescribeMonitorData(request *DescribeMonitorDataRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeSecurityAgentStatusResponse
-func (client *Client) DescribeSecurityAgentStatusWithOptions(request *DescribeSecurityAgentStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeSecurityAgentStatusResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) DescribeSecurityAgentStatusWithOptions(request *DescribeSecurityAgentStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeSecurityAgentStatusResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeSecurityAgentStatus"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeSecurityAgentStatus"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeSecurityAgentStatusResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &DescribeSecurityAgentStatusResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -23335,8 +34044,7 @@ func (client *Client) DescribeSecurityAgentStatusWithOptions(request *DescribeSe
 //
 // @return DescribeSecurityAgentStatusResponse
 func (client *Client) DescribeSecurityAgentStatus(request *DescribeSecurityAgentStatusRequest) (_result *DescribeSecurityAgentStatusResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeSecurityAgentStatusResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.DescribeSecurityAgentStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -23358,57 +34066,55 @@ func (client *Client) DescribeSecurityAgentStatus(request *DescribeSecurityAgent
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DetachKeyPairResponse
-func (client *Client) DetachKeyPairWithOptions(request *DetachKeyPairRequest, runtime *util.RuntimeOptions) (_result *DetachKeyPairResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) DetachKeyPairWithOptions(request *DetachKeyPairRequest, runtime *dara.RuntimeOptions) (_result *DetachKeyPairResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
+	if !dara.IsNil(request.InstanceIds) {
 		query["InstanceIds"] = request.InstanceIds
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.KeyPairName)) {
+	if !dara.IsNil(request.KeyPairName) {
 		query["KeyPairName"] = request.KeyPairName
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("DetachKeyPair"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("DetachKeyPair"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DetachKeyPairResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &DetachKeyPairResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -23426,8 +34132,7 @@ func (client *Client) DetachKeyPairWithOptions(request *DetachKeyPairRequest, ru
 //
 // @return DetachKeyPairResponse
 func (client *Client) DetachKeyPair(request *DetachKeyPairRequest) (_result *DetachKeyPairResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DetachKeyPairResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.DetachKeyPairWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -23445,61 +34150,59 @@ func (client *Client) DetachKeyPair(request *DetachKeyPairRequest) (_result *Det
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DisableFirewallRuleResponse
-func (client *Client) DisableFirewallRuleWithOptions(request *DisableFirewallRuleRequest, runtime *util.RuntimeOptions) (_result *DisableFirewallRuleResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) DisableFirewallRuleWithOptions(request *DisableFirewallRuleRequest, runtime *dara.RuntimeOptions) (_result *DisableFirewallRuleResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+	if !dara.IsNil(request.Remark) {
 		query["Remark"] = request.Remark
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+	if !dara.IsNil(request.RuleId) {
 		query["RuleId"] = request.RuleId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("DisableFirewallRule"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("DisableFirewallRule"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DisableFirewallRuleResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &DisableFirewallRuleResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -23513,8 +34216,7 @@ func (client *Client) DisableFirewallRuleWithOptions(request *DisableFirewallRul
 //
 // @return DisableFirewallRuleResponse
 func (client *Client) DisableFirewallRule(request *DisableFirewallRuleRequest) (_result *DisableFirewallRuleResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DisableFirewallRuleResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.DisableFirewallRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -23532,65 +34234,63 @@ func (client *Client) DisableFirewallRule(request *DisableFirewallRuleRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EnableFirewallRuleResponse
-func (client *Client) EnableFirewallRuleWithOptions(request *EnableFirewallRuleRequest, runtime *util.RuntimeOptions) (_result *EnableFirewallRuleResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) EnableFirewallRuleWithOptions(request *EnableFirewallRuleRequest, runtime *dara.RuntimeOptions) (_result *EnableFirewallRuleResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+	if !dara.IsNil(request.Remark) {
 		query["Remark"] = request.Remark
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+	if !dara.IsNil(request.RuleId) {
 		query["RuleId"] = request.RuleId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.SourceCidrIp)) {
+	if !dara.IsNil(request.SourceCidrIp) {
 		query["SourceCidrIp"] = request.SourceCidrIp
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("EnableFirewallRule"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("EnableFirewallRule"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &EnableFirewallRuleResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &EnableFirewallRuleResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -23604,8 +34304,7 @@ func (client *Client) EnableFirewallRuleWithOptions(request *EnableFirewallRuleR
 //
 // @return EnableFirewallRuleResponse
 func (client *Client) EnableFirewallRule(request *EnableFirewallRuleRequest) (_result *EnableFirewallRuleResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &EnableFirewallRuleResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.EnableFirewallRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -23627,57 +34326,55 @@ func (client *Client) EnableFirewallRule(request *EnableFirewallRuleRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ImportKeyPairResponse
-func (client *Client) ImportKeyPairWithOptions(request *ImportKeyPairRequest, runtime *util.RuntimeOptions) (_result *ImportKeyPairResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ImportKeyPairWithOptions(request *ImportKeyPairRequest, runtime *dara.RuntimeOptions) (_result *ImportKeyPairResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.KeyPairName)) {
+	if !dara.IsNil(request.KeyPairName) {
 		query["KeyPairName"] = request.KeyPairName
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.PublicKeyBody)) {
+	if !dara.IsNil(request.PublicKeyBody) {
 		query["PublicKeyBody"] = request.PublicKeyBody
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("ImportKeyPair"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("ImportKeyPair"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ImportKeyPairResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &ImportKeyPairResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -23695,8 +34392,7 @@ func (client *Client) ImportKeyPairWithOptions(request *ImportKeyPairRequest, ru
 //
 // @return ImportKeyPairResponse
 func (client *Client) ImportKeyPair(request *ImportKeyPairRequest) (_result *ImportKeyPairResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ImportKeyPairResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.ImportKeyPairWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -23718,55 +34414,53 @@ func (client *Client) ImportKeyPair(request *ImportKeyPairRequest) (_result *Imp
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return InstallCloudAssistantResponse
-func (client *Client) InstallCloudAssistantWithOptions(tmpReq *InstallCloudAssistantRequest, runtime *util.RuntimeOptions) (_result *InstallCloudAssistantResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
+func (client *Client) InstallCloudAssistantWithOptions(tmpReq *InstallCloudAssistantRequest, runtime *dara.RuntimeOptions) (_result *InstallCloudAssistantResponse, _err error) {
+	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	request := &InstallCloudAssistantShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.InstanceIds)) {
-		request.InstanceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InstanceIds, tea.String("InstanceIds"), tea.String("json"))
+	if !dara.IsNil(tmpReq.InstanceIds) {
+		request.InstanceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InstanceIds, dara.String("InstanceIds"), dara.String("json"))
 	}
 
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.InstanceIdsShrink)) {
+	if !dara.IsNil(request.InstanceIdsShrink) {
 		query["InstanceIds"] = request.InstanceIdsShrink
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("InstallCloudAssistant"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("InstallCloudAssistant"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &InstallCloudAssistantResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &InstallCloudAssistantResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -23784,8 +34478,7 @@ func (client *Client) InstallCloudAssistantWithOptions(tmpReq *InstallCloudAssis
 //
 // @return InstallCloudAssistantResponse
 func (client *Client) InstallCloudAssistant(request *InstallCloudAssistantRequest) (_result *InstallCloudAssistantResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &InstallCloudAssistantResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.InstallCloudAssistantWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -23803,57 +34496,55 @@ func (client *Client) InstallCloudAssistant(request *InstallCloudAssistantReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return InstallCloudMonitorAgentResponse
-func (client *Client) InstallCloudMonitorAgentWithOptions(request *InstallCloudMonitorAgentRequest, runtime *util.RuntimeOptions) (_result *InstallCloudMonitorAgentResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) InstallCloudMonitorAgentWithOptions(request *InstallCloudMonitorAgentRequest, runtime *dara.RuntimeOptions) (_result *InstallCloudMonitorAgentResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Force)) {
+	if !dara.IsNil(request.Force) {
 		query["Force"] = request.Force
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("InstallCloudMonitorAgent"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("InstallCloudMonitorAgent"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &InstallCloudMonitorAgentResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &InstallCloudMonitorAgentResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -23867,8 +34558,7 @@ func (client *Client) InstallCloudMonitorAgentWithOptions(request *InstallCloudM
 //
 // @return InstallCloudMonitorAgentResponse
 func (client *Client) InstallCloudMonitorAgent(request *InstallCloudMonitorAgentRequest) (_result *InstallCloudMonitorAgentResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &InstallCloudMonitorAgentResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.InstallCloudMonitorAgentWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -23902,67 +34592,65 @@ func (client *Client) InstallCloudMonitorAgent(request *InstallCloudMonitorAgent
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return InvokeCommandResponse
-func (client *Client) InvokeCommandWithOptions(tmpReq *InvokeCommandRequest, runtime *util.RuntimeOptions) (_result *InvokeCommandResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
+func (client *Client) InvokeCommandWithOptions(tmpReq *InvokeCommandRequest, runtime *dara.RuntimeOptions) (_result *InvokeCommandResponse, _err error) {
+	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	request := &InvokeCommandShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.Parameters)) {
-		request.ParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Parameters, tea.String("Parameters"), tea.String("json"))
+	if !dara.IsNil(tmpReq.Parameters) {
+		request.ParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Parameters, dara.String("Parameters"), dara.String("json"))
 	}
 
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.CommandId)) {
+	if !dara.IsNil(request.CommandId) {
 		query["CommandId"] = request.CommandId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
+	if !dara.IsNil(request.InstanceIds) {
 		query["InstanceIds"] = request.InstanceIds
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ParametersShrink)) {
+	if !dara.IsNil(request.ParametersShrink) {
 		query["Parameters"] = request.ParametersShrink
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Username)) {
+	if !dara.IsNil(request.Username) {
 		query["Username"] = request.Username
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("InvokeCommand"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("InvokeCommand"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &InvokeCommandResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &InvokeCommandResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -23992,8 +34680,7 @@ func (client *Client) InvokeCommandWithOptions(tmpReq *InvokeCommandRequest, run
 //
 // @return InvokeCommandResponse
 func (client *Client) InvokeCommand(request *InvokeCommandRequest) (_result *InvokeCommandResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &InvokeCommandResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.InvokeCommandWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -24011,61 +34698,59 @@ func (client *Client) InvokeCommand(request *InvokeCommandRequest) (_result *Inv
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListCustomImageShareAccountsResponse
-func (client *Client) ListCustomImageShareAccountsWithOptions(request *ListCustomImageShareAccountsRequest, runtime *util.RuntimeOptions) (_result *ListCustomImageShareAccountsResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ListCustomImageShareAccountsWithOptions(request *ListCustomImageShareAccountsRequest, runtime *dara.RuntimeOptions) (_result *ListCustomImageShareAccountsResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
+	if !dara.IsNil(request.ImageId) {
 		query["ImageId"] = request.ImageId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+	if !dara.IsNil(request.PageNumber) {
 		query["PageNumber"] = request.PageNumber
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("ListCustomImageShareAccounts"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("ListCustomImageShareAccounts"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListCustomImageShareAccountsResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &ListCustomImageShareAccountsResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -24079,8 +34764,7 @@ func (client *Client) ListCustomImageShareAccountsWithOptions(request *ListCusto
 //
 // @return ListCustomImageShareAccountsResponse
 func (client *Client) ListCustomImageShareAccounts(request *ListCustomImageShareAccountsRequest) (_result *ListCustomImageShareAccountsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListCustomImageShareAccountsResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.ListCustomImageShareAccountsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -24098,89 +34782,87 @@ func (client *Client) ListCustomImageShareAccounts(request *ListCustomImageShare
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListCustomImagesResponse
-func (client *Client) ListCustomImagesWithOptions(request *ListCustomImagesRequest, runtime *util.RuntimeOptions) (_result *ListCustomImagesResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ListCustomImagesWithOptions(request *ListCustomImagesRequest, runtime *dara.RuntimeOptions) (_result *ListCustomImagesResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.DataSnapshotId)) {
+	if !dara.IsNil(request.DataSnapshotId) {
 		query["DataSnapshotId"] = request.DataSnapshotId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ImageIds)) {
+	if !dara.IsNil(request.ImageIds) {
 		query["ImageIds"] = request.ImageIds
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ImageNames)) {
+	if !dara.IsNil(request.ImageNames) {
 		query["ImageNames"] = request.ImageNames
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+	if !dara.IsNil(request.PageNumber) {
 		query["PageNumber"] = request.PageNumber
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+	if !dara.IsNil(request.ResourceGroupId) {
 		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Share)) {
+	if !dara.IsNil(request.Share) {
 		query["Share"] = request.Share
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.SystemSnapshotId)) {
+	if !dara.IsNil(request.SystemSnapshotId) {
 		query["SystemSnapshotId"] = request.SystemSnapshotId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+	if !dara.IsNil(request.Tag) {
 		query["Tag"] = request.Tag
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("ListCustomImages"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("ListCustomImages"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListCustomImagesResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &ListCustomImagesResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -24194,8 +34876,7 @@ func (client *Client) ListCustomImagesWithOptions(request *ListCustomImagesReque
 //
 // @return ListCustomImagesResponse
 func (client *Client) ListCustomImages(request *ListCustomImagesRequest) (_result *ListCustomImagesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListCustomImagesResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.ListCustomImagesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -24217,73 +34898,71 @@ func (client *Client) ListCustomImages(request *ListCustomImagesRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListDisksResponse
-func (client *Client) ListDisksWithOptions(request *ListDisksRequest, runtime *util.RuntimeOptions) (_result *ListDisksResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ListDisksWithOptions(request *ListDisksRequest, runtime *dara.RuntimeOptions) (_result *ListDisksResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DiskIds)) {
+	if !dara.IsNil(request.DiskIds) {
 		query["DiskIds"] = request.DiskIds
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.DiskType)) {
+	if !dara.IsNil(request.DiskType) {
 		query["DiskType"] = request.DiskType
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+	if !dara.IsNil(request.PageNumber) {
 		query["PageNumber"] = request.PageNumber
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+	if !dara.IsNil(request.ResourceGroupId) {
 		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+	if !dara.IsNil(request.Tag) {
 		query["Tag"] = request.Tag
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("ListDisks"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("ListDisks"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListDisksResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &ListDisksResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -24301,8 +34980,7 @@ func (client *Client) ListDisksWithOptions(request *ListDisksRequest, runtime *u
 //
 // @return ListDisksResponse
 func (client *Client) ListDisks(request *ListDisksRequest) (_result *ListDisksResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListDisksResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.ListDisksWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -24324,65 +35002,63 @@ func (client *Client) ListDisks(request *ListDisksRequest) (_result *ListDisksRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListFirewallRulesResponse
-func (client *Client) ListFirewallRulesWithOptions(request *ListFirewallRulesRequest, runtime *util.RuntimeOptions) (_result *ListFirewallRulesResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ListFirewallRulesWithOptions(request *ListFirewallRulesRequest, runtime *dara.RuntimeOptions) (_result *ListFirewallRulesResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.FirewallRuleId)) {
+	if !dara.IsNil(request.FirewallRuleId) {
 		query["FirewallRuleId"] = request.FirewallRuleId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+	if !dara.IsNil(request.PageNumber) {
 		query["PageNumber"] = request.PageNumber
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+	if !dara.IsNil(request.Tag) {
 		query["Tag"] = request.Tag
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("ListFirewallRules"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("ListFirewallRules"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListFirewallRulesResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &ListFirewallRulesResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -24400,8 +35076,7 @@ func (client *Client) ListFirewallRulesWithOptions(request *ListFirewallRulesReq
 //
 // @return ListFirewallRulesResponse
 func (client *Client) ListFirewallRules(request *ListFirewallRulesRequest) (_result *ListFirewallRulesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListFirewallRulesResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.ListFirewallRulesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -24423,53 +35098,51 @@ func (client *Client) ListFirewallRules(request *ListFirewallRulesRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListImagesResponse
-func (client *Client) ListImagesWithOptions(request *ListImagesRequest, runtime *util.RuntimeOptions) (_result *ListImagesResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ListImagesWithOptions(request *ListImagesRequest, runtime *dara.RuntimeOptions) (_result *ListImagesResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ImageIds)) {
+	if !dara.IsNil(request.ImageIds) {
 		query["ImageIds"] = request.ImageIds
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ImageType)) {
+	if !dara.IsNil(request.ImageType) {
 		query["ImageType"] = request.ImageType
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("ListImages"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("ListImages"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListImagesResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &ListImagesResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -24487,8 +35160,7 @@ func (client *Client) ListImagesWithOptions(request *ListImagesRequest, runtime 
 //
 // @return ListImagesResponse
 func (client *Client) ListImages(request *ListImagesRequest) (_result *ListImagesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListImagesResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.ListImagesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -24514,49 +35186,47 @@ func (client *Client) ListImages(request *ListImagesRequest) (_result *ListImage
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListInstancePlansModificationResponse
-func (client *Client) ListInstancePlansModificationWithOptions(request *ListInstancePlansModificationRequest, runtime *util.RuntimeOptions) (_result *ListInstancePlansModificationResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ListInstancePlansModificationWithOptions(request *ListInstancePlansModificationRequest, runtime *dara.RuntimeOptions) (_result *ListInstancePlansModificationResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("ListInstancePlansModification"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("ListInstancePlansModification"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListInstancePlansModificationResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &ListInstancePlansModificationResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -24578,8 +35248,7 @@ func (client *Client) ListInstancePlansModificationWithOptions(request *ListInst
 //
 // @return ListInstancePlansModificationResponse
 func (client *Client) ListInstancePlansModification(request *ListInstancePlansModificationRequest) (_result *ListInstancePlansModificationResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListInstancePlansModificationResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.ListInstancePlansModificationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -24597,57 +35266,55 @@ func (client *Client) ListInstancePlansModification(request *ListInstancePlansMo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListInstanceStatusResponse
-func (client *Client) ListInstanceStatusWithOptions(request *ListInstanceStatusRequest, runtime *util.RuntimeOptions) (_result *ListInstanceStatusResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ListInstanceStatusWithOptions(request *ListInstanceStatusRequest, runtime *dara.RuntimeOptions) (_result *ListInstanceStatusResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
+	if !dara.IsNil(request.InstanceIds) {
 		query["InstanceIds"] = request.InstanceIds
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+	if !dara.IsNil(request.PageNumber) {
 		query["PageNumber"] = request.PageNumber
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("ListInstanceStatus"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("ListInstanceStatus"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListInstanceStatusResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &ListInstanceStatusResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -24661,8 +35328,7 @@ func (client *Client) ListInstanceStatusWithOptions(request *ListInstanceStatusR
 //
 // @return ListInstanceStatusResponse
 func (client *Client) ListInstanceStatus(request *ListInstanceStatusRequest) (_result *ListInstanceStatusResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListInstanceStatusResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.ListInstanceStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -24684,85 +35350,83 @@ func (client *Client) ListInstanceStatus(request *ListInstanceStatusRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListInstancesResponse
-func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, runtime *util.RuntimeOptions) (_result *ListInstancesResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, runtime *dara.RuntimeOptions) (_result *ListInstancesResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ChargeType)) {
+	if !dara.IsNil(request.ChargeType) {
 		query["ChargeType"] = request.ChargeType
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
+	if !dara.IsNil(request.InstanceIds) {
 		query["InstanceIds"] = request.InstanceIds
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+	if !dara.IsNil(request.InstanceName) {
 		query["InstanceName"] = request.InstanceName
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+	if !dara.IsNil(request.PageNumber) {
 		query["PageNumber"] = request.PageNumber
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.PlanType)) {
+	if !dara.IsNil(request.PlanType) {
 		query["PlanType"] = request.PlanType
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.PublicIpAddresses)) {
+	if !dara.IsNil(request.PublicIpAddresses) {
 		query["PublicIpAddresses"] = request.PublicIpAddresses
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+	if !dara.IsNil(request.ResourceGroupId) {
 		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Status)) {
+	if !dara.IsNil(request.Status) {
 		query["Status"] = request.Status
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+	if !dara.IsNil(request.Tag) {
 		query["Tag"] = request.Tag
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("ListInstances"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("ListInstances"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListInstancesResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &ListInstancesResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -24780,8 +35444,7 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, ru
 //
 // @return ListInstancesResponse
 func (client *Client) ListInstances(request *ListInstancesRequest) (_result *ListInstancesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListInstancesResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.ListInstancesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -24813,49 +35476,47 @@ func (client *Client) ListInstances(request *ListInstancesRequest) (_result *Lis
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListInstancesTrafficPackagesResponse
-func (client *Client) ListInstancesTrafficPackagesWithOptions(request *ListInstancesTrafficPackagesRequest, runtime *util.RuntimeOptions) (_result *ListInstancesTrafficPackagesResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ListInstancesTrafficPackagesWithOptions(request *ListInstancesTrafficPackagesRequest, runtime *dara.RuntimeOptions) (_result *ListInstancesTrafficPackagesResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
+	if !dara.IsNil(request.InstanceIds) {
 		query["InstanceIds"] = request.InstanceIds
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("ListInstancesTrafficPackages"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("ListInstancesTrafficPackages"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListInstancesTrafficPackagesResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &ListInstancesTrafficPackagesResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -24883,8 +35544,7 @@ func (client *Client) ListInstancesTrafficPackagesWithOptions(request *ListInsta
 //
 // @return ListInstancesTrafficPackagesResponse
 func (client *Client) ListInstancesTrafficPackages(request *ListInstancesTrafficPackagesRequest) (_result *ListInstancesTrafficPackagesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListInstancesTrafficPackagesResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.ListInstancesTrafficPackagesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -24902,41 +35562,39 @@ func (client *Client) ListInstancesTrafficPackages(request *ListInstancesTraffic
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListKeyPairsResponse
-func (client *Client) ListKeyPairsWithOptions(request *ListKeyPairsRequest, runtime *util.RuntimeOptions) (_result *ListKeyPairsResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ListKeyPairsWithOptions(request *ListKeyPairsRequest, runtime *dara.RuntimeOptions) (_result *ListKeyPairsResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
-	req := &openapi.OpenApiRequest{
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("ListKeyPairs"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("ListKeyPairs"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListKeyPairsResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &ListKeyPairsResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -24950,8 +35608,7 @@ func (client *Client) ListKeyPairsWithOptions(request *ListKeyPairsRequest, runt
 //
 // @return ListKeyPairsResponse
 func (client *Client) ListKeyPairs(request *ListKeyPairsRequest) (_result *ListKeyPairsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListKeyPairsResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.ListKeyPairsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -24973,45 +35630,43 @@ func (client *Client) ListKeyPairs(request *ListKeyPairsRequest) (_result *ListK
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListPlansResponse
-func (client *Client) ListPlansWithOptions(request *ListPlansRequest, runtime *util.RuntimeOptions) (_result *ListPlansResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ListPlansWithOptions(request *ListPlansRequest, runtime *dara.RuntimeOptions) (_result *ListPlansResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("ListPlans"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("ListPlans"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListPlansResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &ListPlansResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -25029,8 +35684,7 @@ func (client *Client) ListPlansWithOptions(request *ListPlansRequest, runtime *u
 //
 // @return ListPlansResponse
 func (client *Client) ListPlans(request *ListPlansRequest) (_result *ListPlansResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListPlansResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.ListPlansWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -25052,45 +35706,43 @@ func (client *Client) ListPlans(request *ListPlansRequest) (_result *ListPlansRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListRegionsResponse
-func (client *Client) ListRegionsWithOptions(request *ListRegionsRequest, runtime *util.RuntimeOptions) (_result *ListRegionsResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ListRegionsWithOptions(request *ListRegionsRequest, runtime *dara.RuntimeOptions) (_result *ListRegionsResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+	if !dara.IsNil(request.AcceptLanguage) {
 		query["AcceptLanguage"] = request.AcceptLanguage
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("ListRegions"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("ListRegions"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListRegionsResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &ListRegionsResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -25108,8 +35760,7 @@ func (client *Client) ListRegionsWithOptions(request *ListRegionsRequest, runtim
 //
 // @return ListRegionsResponse
 func (client *Client) ListRegions(request *ListRegionsRequest) (_result *ListRegionsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListRegionsResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.ListRegionsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -25131,77 +35782,75 @@ func (client *Client) ListRegions(request *ListRegionsRequest) (_result *ListReg
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListSnapshotsResponse
-func (client *Client) ListSnapshotsWithOptions(request *ListSnapshotsRequest, runtime *util.RuntimeOptions) (_result *ListSnapshotsResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ListSnapshotsWithOptions(request *ListSnapshotsRequest, runtime *dara.RuntimeOptions) (_result *ListSnapshotsResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DiskId)) {
+	if !dara.IsNil(request.DiskId) {
 		query["DiskId"] = request.DiskId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+	if !dara.IsNil(request.PageNumber) {
 		query["PageNumber"] = request.PageNumber
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+	if !dara.IsNil(request.ResourceGroupId) {
 		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.SnapshotIds)) {
+	if !dara.IsNil(request.SnapshotIds) {
 		query["SnapshotIds"] = request.SnapshotIds
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.SourceDiskType)) {
+	if !dara.IsNil(request.SourceDiskType) {
 		query["SourceDiskType"] = request.SourceDiskType
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+	if !dara.IsNil(request.Tag) {
 		query["Tag"] = request.Tag
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("ListSnapshots"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("ListSnapshots"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListSnapshotsResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &ListSnapshotsResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -25219,8 +35868,7 @@ func (client *Client) ListSnapshotsWithOptions(request *ListSnapshotsRequest, ru
 //
 // @return ListSnapshotsResponse
 func (client *Client) ListSnapshots(request *ListSnapshotsRequest) (_result *ListSnapshotsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListSnapshotsResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.ListSnapshotsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -25238,65 +35886,63 @@ func (client *Client) ListSnapshots(request *ListSnapshotsRequest) (_result *Lis
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListTagResourcesResponse
-func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+	if !dara.IsNil(request.NextToken) {
 		query["NextToken"] = request.NextToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+	if !dara.IsNil(request.ResourceId) {
 		query["ResourceId"] = request.ResourceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+	if !dara.IsNil(request.ResourceType) {
 		query["ResourceType"] = request.ResourceType
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+	if !dara.IsNil(request.Tag) {
 		query["Tag"] = request.Tag
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("ListTagResources"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("ListTagResources"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListTagResourcesResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &ListTagResourcesResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -25310,8 +35956,7 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 //
 // @return ListTagResourcesResponse
 func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListTagResourcesResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.ListTagResourcesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -25333,61 +35978,59 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return LoginInstanceResponse
-func (client *Client) LoginInstanceWithOptions(request *LoginInstanceRequest, runtime *util.RuntimeOptions) (_result *LoginInstanceResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) LoginInstanceWithOptions(request *LoginInstanceRequest, runtime *dara.RuntimeOptions) (_result *LoginInstanceResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Password)) {
+	if !dara.IsNil(request.Password) {
 		query["Password"] = request.Password
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Port)) {
+	if !dara.IsNil(request.Port) {
 		query["Port"] = request.Port
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Username)) {
+	if !dara.IsNil(request.Username) {
 		query["Username"] = request.Username
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("LoginInstance"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("LoginInstance"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &LoginInstanceResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &LoginInstanceResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -25405,8 +36048,7 @@ func (client *Client) LoginInstanceWithOptions(request *LoginInstanceRequest, ru
 //
 // @return LoginInstanceResponse
 func (client *Client) LoginInstance(request *LoginInstanceRequest) (_result *LoginInstanceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &LoginInstanceResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.LoginInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -25432,57 +36074,55 @@ func (client *Client) LoginInstance(request *LoginInstanceRequest) (_result *Log
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyDatabaseInstanceDescriptionResponse
-func (client *Client) ModifyDatabaseInstanceDescriptionWithOptions(request *ModifyDatabaseInstanceDescriptionRequest, runtime *util.RuntimeOptions) (_result *ModifyDatabaseInstanceDescriptionResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ModifyDatabaseInstanceDescriptionWithOptions(request *ModifyDatabaseInstanceDescriptionRequest, runtime *dara.RuntimeOptions) (_result *ModifyDatabaseInstanceDescriptionResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.DatabaseInstanceDescription)) {
+	if !dara.IsNil(request.DatabaseInstanceDescription) {
 		query["DatabaseInstanceDescription"] = request.DatabaseInstanceDescription
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.DatabaseInstanceId)) {
+	if !dara.IsNil(request.DatabaseInstanceId) {
 		query["DatabaseInstanceId"] = request.DatabaseInstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("ModifyDatabaseInstanceDescription"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyDatabaseInstanceDescription"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyDatabaseInstanceDescriptionResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &ModifyDatabaseInstanceDescriptionResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -25504,8 +36144,7 @@ func (client *Client) ModifyDatabaseInstanceDescriptionWithOptions(request *Modi
 //
 // @return ModifyDatabaseInstanceDescriptionResponse
 func (client *Client) ModifyDatabaseInstanceDescription(request *ModifyDatabaseInstanceDescriptionRequest) (_result *ModifyDatabaseInstanceDescriptionResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ModifyDatabaseInstanceDescriptionResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.ModifyDatabaseInstanceDescriptionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -25531,61 +36170,59 @@ func (client *Client) ModifyDatabaseInstanceDescription(request *ModifyDatabaseI
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyDatabaseInstanceParameterResponse
-func (client *Client) ModifyDatabaseInstanceParameterWithOptions(request *ModifyDatabaseInstanceParameterRequest, runtime *util.RuntimeOptions) (_result *ModifyDatabaseInstanceParameterResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ModifyDatabaseInstanceParameterWithOptions(request *ModifyDatabaseInstanceParameterRequest, runtime *dara.RuntimeOptions) (_result *ModifyDatabaseInstanceParameterResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.DatabaseInstanceId)) {
+	if !dara.IsNil(request.DatabaseInstanceId) {
 		query["DatabaseInstanceId"] = request.DatabaseInstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ForceRestart)) {
+	if !dara.IsNil(request.ForceRestart) {
 		query["ForceRestart"] = request.ForceRestart
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Parameters)) {
+	if !dara.IsNil(request.Parameters) {
 		query["Parameters"] = request.Parameters
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("ModifyDatabaseInstanceParameter"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyDatabaseInstanceParameter"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyDatabaseInstanceParameterResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &ModifyDatabaseInstanceParameterResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -25607,8 +36244,7 @@ func (client *Client) ModifyDatabaseInstanceParameterWithOptions(request *Modify
 //
 // @return ModifyDatabaseInstanceParameterResponse
 func (client *Client) ModifyDatabaseInstanceParameter(request *ModifyDatabaseInstanceParameterRequest) (_result *ModifyDatabaseInstanceParameterResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ModifyDatabaseInstanceParameterResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.ModifyDatabaseInstanceParameterWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -25626,73 +36262,71 @@ func (client *Client) ModifyDatabaseInstanceParameter(request *ModifyDatabaseIns
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyFirewallRuleResponse
-func (client *Client) ModifyFirewallRuleWithOptions(request *ModifyFirewallRuleRequest, runtime *util.RuntimeOptions) (_result *ModifyFirewallRuleResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ModifyFirewallRuleWithOptions(request *ModifyFirewallRuleRequest, runtime *dara.RuntimeOptions) (_result *ModifyFirewallRuleResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Port)) {
+	if !dara.IsNil(request.Port) {
 		query["Port"] = request.Port
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+	if !dara.IsNil(request.Remark) {
 		query["Remark"] = request.Remark
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+	if !dara.IsNil(request.RuleId) {
 		query["RuleId"] = request.RuleId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RuleProtocol)) {
+	if !dara.IsNil(request.RuleProtocol) {
 		query["RuleProtocol"] = request.RuleProtocol
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.SourceCidrIp)) {
+	if !dara.IsNil(request.SourceCidrIp) {
 		query["SourceCidrIp"] = request.SourceCidrIp
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("ModifyFirewallRule"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyFirewallRule"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyFirewallRuleResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &ModifyFirewallRuleResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -25706,8 +36340,7 @@ func (client *Client) ModifyFirewallRuleWithOptions(request *ModifyFirewallRuleR
 //
 // @return ModifyFirewallRuleResponse
 func (client *Client) ModifyFirewallRule(request *ModifyFirewallRuleRequest) (_result *ModifyFirewallRuleResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ModifyFirewallRuleResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.ModifyFirewallRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -25729,65 +36362,63 @@ func (client *Client) ModifyFirewallRule(request *ModifyFirewallRuleRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyFirewallTemplateResponse
-func (client *Client) ModifyFirewallTemplateWithOptions(request *ModifyFirewallTemplateRequest, runtime *util.RuntimeOptions) (_result *ModifyFirewallTemplateResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ModifyFirewallTemplateWithOptions(request *ModifyFirewallTemplateRequest, runtime *dara.RuntimeOptions) (_result *ModifyFirewallTemplateResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Description)) {
+	if !dara.IsNil(request.Description) {
 		query["Description"] = request.Description
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.FirewallTemplateId)) {
+	if !dara.IsNil(request.FirewallTemplateId) {
 		query["FirewallTemplateId"] = request.FirewallTemplateId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.FirewallTemplateRule)) {
+	if !dara.IsNil(request.FirewallTemplateRule) {
 		query["FirewallTemplateRule"] = request.FirewallTemplateRule
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Name)) {
+	if !dara.IsNil(request.Name) {
 		query["Name"] = request.Name
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("ModifyFirewallTemplate"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyFirewallTemplate"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyFirewallTemplateResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &ModifyFirewallTemplateResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -25805,8 +36436,7 @@ func (client *Client) ModifyFirewallTemplateWithOptions(request *ModifyFirewallT
 //
 // @return ModifyFirewallTemplateResponse
 func (client *Client) ModifyFirewallTemplate(request *ModifyFirewallTemplateRequest) (_result *ModifyFirewallTemplateResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ModifyFirewallTemplateResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.ModifyFirewallTemplateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -25836,57 +36466,55 @@ func (client *Client) ModifyFirewallTemplate(request *ModifyFirewallTemplateRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyImageShareStatusResponse
-func (client *Client) ModifyImageShareStatusWithOptions(request *ModifyImageShareStatusRequest, runtime *util.RuntimeOptions) (_result *ModifyImageShareStatusResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ModifyImageShareStatusWithOptions(request *ModifyImageShareStatusRequest, runtime *dara.RuntimeOptions) (_result *ModifyImageShareStatusResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
+	if !dara.IsNil(request.ImageId) {
 		query["ImageId"] = request.ImageId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Operation)) {
+	if !dara.IsNil(request.Operation) {
 		query["Operation"] = request.Operation
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("ModifyImageShareStatus"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyImageShareStatus"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyImageShareStatusResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &ModifyImageShareStatusResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -25912,8 +36540,7 @@ func (client *Client) ModifyImageShareStatusWithOptions(request *ModifyImageShar
 //
 // @return ModifyImageShareStatusResponse
 func (client *Client) ModifyImageShareStatus(request *ModifyImageShareStatusRequest) (_result *ModifyImageShareStatusResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ModifyImageShareStatusResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.ModifyImageShareStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -25931,57 +36558,55 @@ func (client *Client) ModifyImageShareStatus(request *ModifyImageShareStatusRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyInstanceVncPasswordResponse
-func (client *Client) ModifyInstanceVncPasswordWithOptions(request *ModifyInstanceVncPasswordRequest, runtime *util.RuntimeOptions) (_result *ModifyInstanceVncPasswordResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ModifyInstanceVncPasswordWithOptions(request *ModifyInstanceVncPasswordRequest, runtime *dara.RuntimeOptions) (_result *ModifyInstanceVncPasswordResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.VncPassword)) {
+	if !dara.IsNil(request.VncPassword) {
 		query["VncPassword"] = request.VncPassword
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("ModifyInstanceVncPassword"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyInstanceVncPassword"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyInstanceVncPasswordResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &ModifyInstanceVncPasswordResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -25995,8 +36620,7 @@ func (client *Client) ModifyInstanceVncPasswordWithOptions(request *ModifyInstan
 //
 // @return ModifyInstanceVncPasswordResponse
 func (client *Client) ModifyInstanceVncPassword(request *ModifyInstanceVncPasswordRequest) (_result *ModifyInstanceVncPasswordResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ModifyInstanceVncPasswordResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.ModifyInstanceVncPasswordWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -26020,53 +36644,51 @@ func (client *Client) ModifyInstanceVncPassword(request *ModifyInstanceVncPasswo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RebootInstanceResponse
-func (client *Client) RebootInstanceWithOptions(request *RebootInstanceRequest, runtime *util.RuntimeOptions) (_result *RebootInstanceResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) RebootInstanceWithOptions(request *RebootInstanceRequest, runtime *dara.RuntimeOptions) (_result *RebootInstanceResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("RebootInstance"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("RebootInstance"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RebootInstanceResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &RebootInstanceResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -26086,8 +36708,7 @@ func (client *Client) RebootInstanceWithOptions(request *RebootInstanceRequest, 
 //
 // @return RebootInstanceResponse
 func (client *Client) RebootInstance(request *RebootInstanceRequest) (_result *RebootInstanceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &RebootInstanceResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.RebootInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -26105,57 +36726,55 @@ func (client *Client) RebootInstance(request *RebootInstanceRequest) (_result *R
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RebootInstancesResponse
-func (client *Client) RebootInstancesWithOptions(request *RebootInstancesRequest, runtime *util.RuntimeOptions) (_result *RebootInstancesResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) RebootInstancesWithOptions(request *RebootInstancesRequest, runtime *dara.RuntimeOptions) (_result *RebootInstancesResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ForceReboot)) {
+	if !dara.IsNil(request.ForceReboot) {
 		query["ForceReboot"] = request.ForceReboot
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
+	if !dara.IsNil(request.InstanceIds) {
 		query["InstanceIds"] = request.InstanceIds
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("RebootInstances"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("RebootInstances"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RebootInstancesResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &RebootInstancesResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -26169,8 +36788,7 @@ func (client *Client) RebootInstancesWithOptions(request *RebootInstancesRequest
 //
 // @return RebootInstancesResponse
 func (client *Client) RebootInstances(request *RebootInstancesRequest) (_result *RebootInstancesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &RebootInstancesResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.RebootInstancesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -26196,53 +36814,51 @@ func (client *Client) RebootInstances(request *RebootInstancesRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ReleasePublicConnectionResponse
-func (client *Client) ReleasePublicConnectionWithOptions(request *ReleasePublicConnectionRequest, runtime *util.RuntimeOptions) (_result *ReleasePublicConnectionResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ReleasePublicConnectionWithOptions(request *ReleasePublicConnectionRequest, runtime *dara.RuntimeOptions) (_result *ReleasePublicConnectionResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.DatabaseInstanceId)) {
+	if !dara.IsNil(request.DatabaseInstanceId) {
 		query["DatabaseInstanceId"] = request.DatabaseInstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("ReleasePublicConnection"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("ReleasePublicConnection"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ReleasePublicConnectionResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &ReleasePublicConnectionResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -26264,8 +36880,7 @@ func (client *Client) ReleasePublicConnectionWithOptions(request *ReleasePublicC
 //
 // @return ReleasePublicConnectionResponse
 func (client *Client) ReleasePublicConnection(request *ReleasePublicConnectionRequest) (_result *ReleasePublicConnectionResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ReleasePublicConnectionResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.ReleasePublicConnectionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -26283,57 +36898,55 @@ func (client *Client) ReleasePublicConnection(request *ReleasePublicConnectionRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RemoveCustomImageShareAccountResponse
-func (client *Client) RemoveCustomImageShareAccountWithOptions(request *RemoveCustomImageShareAccountRequest, runtime *util.RuntimeOptions) (_result *RemoveCustomImageShareAccountResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) RemoveCustomImageShareAccountWithOptions(request *RemoveCustomImageShareAccountRequest, runtime *dara.RuntimeOptions) (_result *RemoveCustomImageShareAccountResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Account)) {
+	if !dara.IsNil(request.Account) {
 		query["Account"] = request.Account
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
+	if !dara.IsNil(request.ImageId) {
 		query["ImageId"] = request.ImageId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("RemoveCustomImageShareAccount"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("RemoveCustomImageShareAccount"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RemoveCustomImageShareAccountResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &RemoveCustomImageShareAccountResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -26347,8 +36960,7 @@ func (client *Client) RemoveCustomImageShareAccountWithOptions(request *RemoveCu
 //
 // @return RemoveCustomImageShareAccountResponse
 func (client *Client) RemoveCustomImageShareAccount(request *RemoveCustomImageShareAccountRequest) (_result *RemoveCustomImageShareAccountResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &RemoveCustomImageShareAccountResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.RemoveCustomImageShareAccountWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -26372,57 +36984,55 @@ func (client *Client) RemoveCustomImageShareAccount(request *RemoveCustomImageSh
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RenewInstanceResponse
-func (client *Client) RenewInstanceWithOptions(request *RenewInstanceRequest, runtime *util.RuntimeOptions) (_result *RenewInstanceResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) RenewInstanceWithOptions(request *RenewInstanceRequest, runtime *dara.RuntimeOptions) (_result *RenewInstanceResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Period)) {
+	if !dara.IsNil(request.Period) {
 		query["Period"] = request.Period
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("RenewInstance"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("RenewInstance"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RenewInstanceResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &RenewInstanceResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -26442,8 +37052,7 @@ func (client *Client) RenewInstanceWithOptions(request *RenewInstanceRequest, ru
 //
 // @return RenewInstanceResponse
 func (client *Client) RenewInstance(request *RenewInstanceRequest) (_result *RenewInstanceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &RenewInstanceResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.RenewInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -26469,57 +37078,55 @@ func (client *Client) RenewInstance(request *RenewInstanceRequest) (_result *Ren
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ResetDatabaseAccountPasswordResponse
-func (client *Client) ResetDatabaseAccountPasswordWithOptions(request *ResetDatabaseAccountPasswordRequest, runtime *util.RuntimeOptions) (_result *ResetDatabaseAccountPasswordResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ResetDatabaseAccountPasswordWithOptions(request *ResetDatabaseAccountPasswordRequest, runtime *dara.RuntimeOptions) (_result *ResetDatabaseAccountPasswordResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AccountPassword)) {
+	if !dara.IsNil(request.AccountPassword) {
 		query["AccountPassword"] = request.AccountPassword
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.DatabaseInstanceId)) {
+	if !dara.IsNil(request.DatabaseInstanceId) {
 		query["DatabaseInstanceId"] = request.DatabaseInstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("ResetDatabaseAccountPassword"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("ResetDatabaseAccountPassword"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ResetDatabaseAccountPasswordResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &ResetDatabaseAccountPasswordResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -26541,8 +37148,7 @@ func (client *Client) ResetDatabaseAccountPasswordWithOptions(request *ResetData
 //
 // @return ResetDatabaseAccountPasswordResponse
 func (client *Client) ResetDatabaseAccountPassword(request *ResetDatabaseAccountPasswordRequest) (_result *ResetDatabaseAccountPasswordResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ResetDatabaseAccountPasswordResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.ResetDatabaseAccountPasswordWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -26570,57 +37176,55 @@ func (client *Client) ResetDatabaseAccountPassword(request *ResetDatabaseAccount
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ResetDiskResponse
-func (client *Client) ResetDiskWithOptions(request *ResetDiskRequest, runtime *util.RuntimeOptions) (_result *ResetDiskResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ResetDiskWithOptions(request *ResetDiskRequest, runtime *dara.RuntimeOptions) (_result *ResetDiskResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.DiskId)) {
+	if !dara.IsNil(request.DiskId) {
 		query["DiskId"] = request.DiskId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.SnapshotId)) {
+	if !dara.IsNil(request.SnapshotId) {
 		query["SnapshotId"] = request.SnapshotId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("ResetDisk"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("ResetDisk"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ResetDiskResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &ResetDiskResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -26644,8 +37248,7 @@ func (client *Client) ResetDiskWithOptions(request *ResetDiskRequest, runtime *u
 //
 // @return ResetDiskResponse
 func (client *Client) ResetDisk(request *ResetDiskRequest) (_result *ResetDiskResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ResetDiskResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.ResetDiskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -26705,61 +37308,59 @@ func (client *Client) ResetDisk(request *ResetDiskRequest) (_result *ResetDiskRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ResetSystemResponse
-func (client *Client) ResetSystemWithOptions(request *ResetSystemRequest, runtime *util.RuntimeOptions) (_result *ResetSystemResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ResetSystemWithOptions(request *ResetSystemRequest, runtime *dara.RuntimeOptions) (_result *ResetSystemResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
+	if !dara.IsNil(request.ImageId) {
 		query["ImageId"] = request.ImageId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.LoginCredentials)) {
+	if !dara.IsNil(request.LoginCredentials) {
 		query["LoginCredentials"] = request.LoginCredentials
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("ResetSystem"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("ResetSystem"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ResetSystemResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &ResetSystemResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -26815,8 +37416,7 @@ func (client *Client) ResetSystemWithOptions(request *ResetSystemRequest, runtim
 //
 // @return ResetSystemResponse
 func (client *Client) ResetSystem(request *ResetSystemRequest) (_result *ResetSystemResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ResetSystemResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.ResetSystemWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -26842,53 +37442,51 @@ func (client *Client) ResetSystem(request *ResetSystemRequest) (_result *ResetSy
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RestartDatabaseInstanceResponse
-func (client *Client) RestartDatabaseInstanceWithOptions(request *RestartDatabaseInstanceRequest, runtime *util.RuntimeOptions) (_result *RestartDatabaseInstanceResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) RestartDatabaseInstanceWithOptions(request *RestartDatabaseInstanceRequest, runtime *dara.RuntimeOptions) (_result *RestartDatabaseInstanceResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.DatabaseInstanceId)) {
+	if !dara.IsNil(request.DatabaseInstanceId) {
 		query["DatabaseInstanceId"] = request.DatabaseInstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("RestartDatabaseInstance"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("RestartDatabaseInstance"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RestartDatabaseInstanceResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &RestartDatabaseInstanceResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -26910,8 +37508,7 @@ func (client *Client) RestartDatabaseInstanceWithOptions(request *RestartDatabas
 //
 // @return RestartDatabaseInstanceResponse
 func (client *Client) RestartDatabaseInstance(request *RestartDatabaseInstanceRequest) (_result *RestartDatabaseInstanceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &RestartDatabaseInstanceResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.RestartDatabaseInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -26939,91 +37536,89 @@ func (client *Client) RestartDatabaseInstance(request *RestartDatabaseInstanceRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RunCommandResponse
-func (client *Client) RunCommandWithOptions(tmpReq *RunCommandRequest, runtime *util.RuntimeOptions) (_result *RunCommandResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
+func (client *Client) RunCommandWithOptions(tmpReq *RunCommandRequest, runtime *dara.RuntimeOptions) (_result *RunCommandResponse, _err error) {
+	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	request := &RunCommandShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.Parameters)) {
-		request.ParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Parameters, tea.String("Parameters"), tea.String("json"))
+	if !dara.IsNil(tmpReq.Parameters) {
+		request.ParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Parameters, dara.String("Parameters"), dara.String("json"))
 	}
 
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.CommandContent)) {
+	if !dara.IsNil(request.CommandContent) {
 		query["CommandContent"] = request.CommandContent
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.EnableParameter)) {
+	if !dara.IsNil(request.EnableParameter) {
 		query["EnableParameter"] = request.EnableParameter
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Name)) {
+	if !dara.IsNil(request.Name) {
 		query["Name"] = request.Name
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ParametersShrink)) {
+	if !dara.IsNil(request.ParametersShrink) {
 		query["Parameters"] = request.ParametersShrink
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Timeout)) {
+	if !dara.IsNil(request.Timeout) {
 		query["Timeout"] = request.Timeout
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Type)) {
+	if !dara.IsNil(request.Type) {
 		query["Type"] = request.Type
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.WindowsPasswordName)) {
+	if !dara.IsNil(request.WindowsPasswordName) {
 		query["WindowsPasswordName"] = request.WindowsPasswordName
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.WorkingDir)) {
+	if !dara.IsNil(request.WorkingDir) {
 		query["WorkingDir"] = request.WorkingDir
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.WorkingUser)) {
+	if !dara.IsNil(request.WorkingUser) {
 		query["WorkingUser"] = request.WorkingUser
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("RunCommand"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("RunCommand"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RunCommandResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &RunCommandResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -27047,8 +37642,7 @@ func (client *Client) RunCommandWithOptions(tmpReq *RunCommandRequest, runtime *
 //
 // @return RunCommandResponse
 func (client *Client) RunCommand(request *RunCommandRequest) (_result *RunCommandResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &RunCommandResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.RunCommandWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -27070,53 +37664,51 @@ func (client *Client) RunCommand(request *RunCommandRequest) (_result *RunComman
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StartDatabaseInstanceResponse
-func (client *Client) StartDatabaseInstanceWithOptions(request *StartDatabaseInstanceRequest, runtime *util.RuntimeOptions) (_result *StartDatabaseInstanceResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) StartDatabaseInstanceWithOptions(request *StartDatabaseInstanceRequest, runtime *dara.RuntimeOptions) (_result *StartDatabaseInstanceResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.DatabaseInstanceId)) {
+	if !dara.IsNil(request.DatabaseInstanceId) {
 		query["DatabaseInstanceId"] = request.DatabaseInstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("StartDatabaseInstance"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("StartDatabaseInstance"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &StartDatabaseInstanceResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &StartDatabaseInstanceResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -27134,8 +37726,7 @@ func (client *Client) StartDatabaseInstanceWithOptions(request *StartDatabaseIns
 //
 // @return StartDatabaseInstanceResponse
 func (client *Client) StartDatabaseInstance(request *StartDatabaseInstanceRequest) (_result *StartDatabaseInstanceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &StartDatabaseInstanceResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.StartDatabaseInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -27157,53 +37748,51 @@ func (client *Client) StartDatabaseInstance(request *StartDatabaseInstanceReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StartInstanceResponse
-func (client *Client) StartInstanceWithOptions(request *StartInstanceRequest, runtime *util.RuntimeOptions) (_result *StartInstanceResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) StartInstanceWithOptions(request *StartInstanceRequest, runtime *dara.RuntimeOptions) (_result *StartInstanceResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("StartInstance"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("StartInstance"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &StartInstanceResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &StartInstanceResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -27221,8 +37810,7 @@ func (client *Client) StartInstanceWithOptions(request *StartInstanceRequest, ru
 //
 // @return StartInstanceResponse
 func (client *Client) StartInstance(request *StartInstanceRequest) (_result *StartInstanceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &StartInstanceResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.StartInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -27240,53 +37828,51 @@ func (client *Client) StartInstance(request *StartInstanceRequest) (_result *Sta
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StartInstancesResponse
-func (client *Client) StartInstancesWithOptions(request *StartInstancesRequest, runtime *util.RuntimeOptions) (_result *StartInstancesResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) StartInstancesWithOptions(request *StartInstancesRequest, runtime *dara.RuntimeOptions) (_result *StartInstancesResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
+	if !dara.IsNil(request.InstanceIds) {
 		query["InstanceIds"] = request.InstanceIds
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("StartInstances"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("StartInstances"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &StartInstancesResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &StartInstancesResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -27300,8 +37886,7 @@ func (client *Client) StartInstancesWithOptions(request *StartInstancesRequest, 
 //
 // @return StartInstancesResponse
 func (client *Client) StartInstances(request *StartInstancesRequest) (_result *StartInstancesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &StartInstancesResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.StartInstancesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -27319,49 +37904,47 @@ func (client *Client) StartInstances(request *StartInstancesRequest) (_result *S
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StartTerminalSessionResponse
-func (client *Client) StartTerminalSessionWithOptions(request *StartTerminalSessionRequest, runtime *util.RuntimeOptions) (_result *StartTerminalSessionResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) StartTerminalSessionWithOptions(request *StartTerminalSessionRequest, runtime *dara.RuntimeOptions) (_result *StartTerminalSessionResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("StartTerminalSession"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("StartTerminalSession"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &StartTerminalSessionResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &StartTerminalSessionResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -27375,8 +37958,7 @@ func (client *Client) StartTerminalSessionWithOptions(request *StartTerminalSess
 //
 // @return StartTerminalSessionResponse
 func (client *Client) StartTerminalSession(request *StartTerminalSessionRequest) (_result *StartTerminalSessionResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &StartTerminalSessionResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.StartTerminalSessionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -27398,53 +37980,51 @@ func (client *Client) StartTerminalSession(request *StartTerminalSessionRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StopDatabaseInstanceResponse
-func (client *Client) StopDatabaseInstanceWithOptions(request *StopDatabaseInstanceRequest, runtime *util.RuntimeOptions) (_result *StopDatabaseInstanceResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) StopDatabaseInstanceWithOptions(request *StopDatabaseInstanceRequest, runtime *dara.RuntimeOptions) (_result *StopDatabaseInstanceResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.DatabaseInstanceId)) {
+	if !dara.IsNil(request.DatabaseInstanceId) {
 		query["DatabaseInstanceId"] = request.DatabaseInstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("StopDatabaseInstance"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("StopDatabaseInstance"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &StopDatabaseInstanceResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &StopDatabaseInstanceResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -27462,8 +38042,7 @@ func (client *Client) StopDatabaseInstanceWithOptions(request *StopDatabaseInsta
 //
 // @return StopDatabaseInstanceResponse
 func (client *Client) StopDatabaseInstance(request *StopDatabaseInstanceRequest) (_result *StopDatabaseInstanceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &StopDatabaseInstanceResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.StopDatabaseInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -27487,53 +38066,51 @@ func (client *Client) StopDatabaseInstance(request *StopDatabaseInstanceRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StopInstanceResponse
-func (client *Client) StopInstanceWithOptions(request *StopInstanceRequest, runtime *util.RuntimeOptions) (_result *StopInstanceResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) StopInstanceWithOptions(request *StopInstanceRequest, runtime *dara.RuntimeOptions) (_result *StopInstanceResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("StopInstance"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("StopInstance"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &StopInstanceResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &StopInstanceResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -27553,8 +38130,7 @@ func (client *Client) StopInstanceWithOptions(request *StopInstanceRequest, runt
 //
 // @return StopInstanceResponse
 func (client *Client) StopInstance(request *StopInstanceRequest) (_result *StopInstanceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &StopInstanceResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.StopInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -27572,57 +38148,55 @@ func (client *Client) StopInstance(request *StopInstanceRequest) (_result *StopI
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StopInstancesResponse
-func (client *Client) StopInstancesWithOptions(request *StopInstancesRequest, runtime *util.RuntimeOptions) (_result *StopInstancesResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) StopInstancesWithOptions(request *StopInstancesRequest, runtime *dara.RuntimeOptions) (_result *StopInstancesResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ForceStop)) {
+	if !dara.IsNil(request.ForceStop) {
 		query["ForceStop"] = request.ForceStop
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
+	if !dara.IsNil(request.InstanceIds) {
 		query["InstanceIds"] = request.InstanceIds
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("StopInstances"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("StopInstances"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &StopInstancesResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &StopInstancesResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -27636,8 +38210,7 @@ func (client *Client) StopInstancesWithOptions(request *StopInstancesRequest, ru
 //
 // @return StopInstancesResponse
 func (client *Client) StopInstances(request *StopInstancesRequest) (_result *StopInstancesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &StopInstancesResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.StopInstancesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -27655,61 +38228,59 @@ func (client *Client) StopInstances(request *StopInstancesRequest) (_result *Sto
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return TagResourcesResponse
-func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *util.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+	if !dara.IsNil(request.ResourceId) {
 		query["ResourceId"] = request.ResourceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+	if !dara.IsNil(request.ResourceType) {
 		query["ResourceType"] = request.ResourceType
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+	if !dara.IsNil(request.Tag) {
 		query["Tag"] = request.Tag
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("TagResources"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("TagResources"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &TagResourcesResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &TagResourcesResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -27723,8 +38294,7 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 //
 // @return TagResourcesResponse
 func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &TagResourcesResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.TagResourcesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -27742,65 +38312,63 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UntagResourcesResponse
-func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *util.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.All)) {
+	if !dara.IsNil(request.All) {
 		query["All"] = request.All
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+	if !dara.IsNil(request.ResourceId) {
 		query["ResourceId"] = request.ResourceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+	if !dara.IsNil(request.ResourceType) {
 		query["ResourceType"] = request.ResourceType
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.TagKey)) {
+	if !dara.IsNil(request.TagKey) {
 		query["TagKey"] = request.TagKey
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("UntagResources"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("UntagResources"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UntagResourcesResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &UntagResourcesResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -27814,8 +38382,7 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 //
 // @return UntagResourcesResponse
 func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UntagResourcesResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.UntagResourcesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -27833,65 +38400,63 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateCommandAttributeResponse
-func (client *Client) UpdateCommandAttributeWithOptions(request *UpdateCommandAttributeRequest, runtime *util.RuntimeOptions) (_result *UpdateCommandAttributeResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) UpdateCommandAttributeWithOptions(request *UpdateCommandAttributeRequest, runtime *dara.RuntimeOptions) (_result *UpdateCommandAttributeResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.CommandId)) {
+	if !dara.IsNil(request.CommandId) {
 		query["CommandId"] = request.CommandId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Description)) {
+	if !dara.IsNil(request.Description) {
 		query["Description"] = request.Description
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Name)) {
+	if !dara.IsNil(request.Name) {
 		query["Name"] = request.Name
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Timeout)) {
+	if !dara.IsNil(request.Timeout) {
 		query["Timeout"] = request.Timeout
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.WorkingDir)) {
+	if !dara.IsNil(request.WorkingDir) {
 		query["WorkingDir"] = request.WorkingDir
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdateCommandAttribute"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateCommandAttribute"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateCommandAttributeResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &UpdateCommandAttributeResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -27905,8 +38470,7 @@ func (client *Client) UpdateCommandAttributeWithOptions(request *UpdateCommandAt
 //
 // @return UpdateCommandAttributeResponse
 func (client *Client) UpdateCommandAttribute(request *UpdateCommandAttributeRequest) (_result *UpdateCommandAttributeResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UpdateCommandAttributeResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.UpdateCommandAttributeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -27924,57 +38488,55 @@ func (client *Client) UpdateCommandAttribute(request *UpdateCommandAttributeRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateDiskAttributeResponse
-func (client *Client) UpdateDiskAttributeWithOptions(request *UpdateDiskAttributeRequest, runtime *util.RuntimeOptions) (_result *UpdateDiskAttributeResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) UpdateDiskAttributeWithOptions(request *UpdateDiskAttributeRequest, runtime *dara.RuntimeOptions) (_result *UpdateDiskAttributeResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.DiskId)) {
+	if !dara.IsNil(request.DiskId) {
 		query["DiskId"] = request.DiskId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+	if !dara.IsNil(request.Remark) {
 		query["Remark"] = request.Remark
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdateDiskAttribute"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateDiskAttribute"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateDiskAttributeResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &UpdateDiskAttributeResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -27988,8 +38550,7 @@ func (client *Client) UpdateDiskAttributeWithOptions(request *UpdateDiskAttribut
 //
 // @return UpdateDiskAttributeResponse
 func (client *Client) UpdateDiskAttribute(request *UpdateDiskAttributeRequest) (_result *UpdateDiskAttributeResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UpdateDiskAttributeResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.UpdateDiskAttributeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -28013,61 +38574,59 @@ func (client *Client) UpdateDiskAttribute(request *UpdateDiskAttributeRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateInstanceAttributeResponse
-func (client *Client) UpdateInstanceAttributeWithOptions(request *UpdateInstanceAttributeRequest, runtime *util.RuntimeOptions) (_result *UpdateInstanceAttributeResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) UpdateInstanceAttributeWithOptions(request *UpdateInstanceAttributeRequest, runtime *dara.RuntimeOptions) (_result *UpdateInstanceAttributeResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+	if !dara.IsNil(request.InstanceName) {
 		query["InstanceName"] = request.InstanceName
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Password)) {
+	if !dara.IsNil(request.Password) {
 		query["Password"] = request.Password
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdateInstanceAttribute"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateInstanceAttribute"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateInstanceAttributeResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &UpdateInstanceAttributeResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -28087,8 +38646,7 @@ func (client *Client) UpdateInstanceAttributeWithOptions(request *UpdateInstance
 //
 // @return UpdateInstanceAttributeResponse
 func (client *Client) UpdateInstanceAttribute(request *UpdateInstanceAttributeRequest) (_result *UpdateInstanceAttributeResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UpdateInstanceAttributeResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.UpdateInstanceAttributeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -28106,57 +38664,55 @@ func (client *Client) UpdateInstanceAttribute(request *UpdateInstanceAttributeRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateSnapshotAttributeResponse
-func (client *Client) UpdateSnapshotAttributeWithOptions(request *UpdateSnapshotAttributeRequest, runtime *util.RuntimeOptions) (_result *UpdateSnapshotAttributeResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) UpdateSnapshotAttributeWithOptions(request *UpdateSnapshotAttributeRequest, runtime *dara.RuntimeOptions) (_result *UpdateSnapshotAttributeResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+	if !dara.IsNil(request.Remark) {
 		query["Remark"] = request.Remark
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.SnapshotId)) {
+	if !dara.IsNil(request.SnapshotId) {
 		query["SnapshotId"] = request.SnapshotId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdateSnapshotAttribute"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateSnapshotAttribute"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateSnapshotAttributeResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &UpdateSnapshotAttributeResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -28170,8 +38726,7 @@ func (client *Client) UpdateSnapshotAttributeWithOptions(request *UpdateSnapshot
 //
 // @return UpdateSnapshotAttributeResponse
 func (client *Client) UpdateSnapshotAttribute(request *UpdateSnapshotAttributeRequest) (_result *UpdateSnapshotAttributeResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UpdateSnapshotAttributeResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.UpdateSnapshotAttributeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -28195,57 +38750,55 @@ func (client *Client) UpdateSnapshotAttribute(request *UpdateSnapshotAttributeRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpgradeInstanceResponse
-func (client *Client) UpgradeInstanceWithOptions(request *UpgradeInstanceRequest, runtime *util.RuntimeOptions) (_result *UpgradeInstanceResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) UpgradeInstanceWithOptions(request *UpgradeInstanceRequest, runtime *dara.RuntimeOptions) (_result *UpgradeInstanceResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.PlanId)) {
+	if !dara.IsNil(request.PlanId) {
 		query["PlanId"] = request.PlanId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("UpgradeInstance"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("UpgradeInstance"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpgradeInstanceResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &UpgradeInstanceResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -28265,8 +38818,7 @@ func (client *Client) UpgradeInstanceWithOptions(request *UpgradeInstanceRequest
 //
 // @return UpgradeInstanceResponse
 func (client *Client) UpgradeInstance(request *UpgradeInstanceRequest) (_result *UpgradeInstanceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UpgradeInstanceResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.UpgradeInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
@@ -28284,61 +38836,59 @@ func (client *Client) UpgradeInstance(request *UpgradeInstanceRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UploadInstanceKeyPairResponse
-func (client *Client) UploadInstanceKeyPairWithOptions(request *UploadInstanceKeyPairRequest, runtime *util.RuntimeOptions) (_result *UploadInstanceKeyPairResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) UploadInstanceKeyPairWithOptions(request *UploadInstanceKeyPairRequest, runtime *dara.RuntimeOptions) (_result *UploadInstanceKeyPairResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.KeyPairName)) {
+	if !dara.IsNil(request.KeyPairName) {
 		query["KeyPairName"] = request.KeyPairName
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.PublicKey)) {
+	if !dara.IsNil(request.PublicKey) {
 		query["PublicKey"] = request.PublicKey
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("UploadInstanceKeyPair"),
-		Version:     tea.String("2020-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("UploadInstanceKeyPair"),
+		Version:     dara.String("2020-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UploadInstanceKeyPairResponse{}
+	if dara.IsNil(client.SignatureVersion) || dara.StringValue(client.SignatureVersion) != "v4" {
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &UploadInstanceKeyPairResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
 		}
-		_err = tea.Convert(_body, &_result)
+		_err = dara.Convert(_body, &_result)
 		return _result, _err
 	}
 
@@ -28352,8 +38902,7 @@ func (client *Client) UploadInstanceKeyPairWithOptions(request *UploadInstanceKe
 //
 // @return UploadInstanceKeyPairResponse
 func (client *Client) UploadInstanceKeyPair(request *UploadInstanceKeyPairRequest) (_result *UploadInstanceKeyPairResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UploadInstanceKeyPairResponse{}
+	runtime := &dara.RuntimeOptions{}
 	_body, _err := client.UploadInstanceKeyPairWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
