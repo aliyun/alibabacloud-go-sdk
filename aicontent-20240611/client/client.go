@@ -9,6 +9,71 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type AliyunConsoleServiceInfoDTO struct {
+	// example:
+	//
+	// https://www.aliyun.com/product/ai-algorithm
+	BuyUrl *string `json:"buyUrl,omitempty" xml:"buyUrl,omitempty"`
+	// example:
+	//
+	// https://www.aliyun.com/product/ai-algorithm
+	DocumentUrl *string `json:"documentUrl,omitempty" xml:"documentUrl,omitempty"`
+	// example:
+	//
+	// 10
+	FreeConcurrencyCount *int32 `json:"freeConcurrencyCount,omitempty" xml:"freeConcurrencyCount,omitempty"`
+	// example:
+	//
+	// 100
+	FreeCount *int32 `json:"freeCount,omitempty" xml:"freeCount,omitempty"`
+	// example:
+	//
+	// online_ai_algorithm_personalized_text_to_image_call_count
+	ServiceCode *string `json:"serviceCode,omitempty" xml:"serviceCode,omitempty"`
+	// example:
+	//
+	// AI算法模型-个性化文生图-在线按量调用
+	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+}
+
+func (s AliyunConsoleServiceInfoDTO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AliyunConsoleServiceInfoDTO) GoString() string {
+	return s.String()
+}
+
+func (s *AliyunConsoleServiceInfoDTO) SetBuyUrl(v string) *AliyunConsoleServiceInfoDTO {
+	s.BuyUrl = &v
+	return s
+}
+
+func (s *AliyunConsoleServiceInfoDTO) SetDocumentUrl(v string) *AliyunConsoleServiceInfoDTO {
+	s.DocumentUrl = &v
+	return s
+}
+
+func (s *AliyunConsoleServiceInfoDTO) SetFreeConcurrencyCount(v int32) *AliyunConsoleServiceInfoDTO {
+	s.FreeConcurrencyCount = &v
+	return s
+}
+
+func (s *AliyunConsoleServiceInfoDTO) SetFreeCount(v int32) *AliyunConsoleServiceInfoDTO {
+	s.FreeCount = &v
+	return s
+}
+
+func (s *AliyunConsoleServiceInfoDTO) SetServiceCode(v string) *AliyunConsoleServiceInfoDTO {
+	s.ServiceCode = &v
+	return s
+}
+
+func (s *AliyunConsoleServiceInfoDTO) SetServiceName(v string) *AliyunConsoleServiceInfoDTO {
+	s.ServiceName = &v
+	return s
+}
+
 type OpenApiMultiResponse struct {
 	// example:
 	//
@@ -1155,7 +1220,7 @@ type AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponseBody struct {
 	// example:
 	//
 	// []
-	Data []*AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	Data []*AliyunConsoleServiceInfoDTO `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 	// example:
 	//
 	// UNKNOWN_ERROR
@@ -1186,7 +1251,7 @@ func (s AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponseBody) GoString(
 	return s.String()
 }
 
-func (s *AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponseBody) SetData(v []*AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponseBodyData) *AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponseBody {
+func (s *AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponseBody) SetData(v []*AliyunConsoleServiceInfoDTO) *AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponseBody {
 	s.Data = v
 	return s
 }
@@ -1216,53 +1281,6 @@ func (s *AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponseBody) SetSucce
 	return s
 }
 
-type AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponseBodyData struct {
-	// example:
-	//
-	// 10
-	FreeConcurrencyCount *int32 `json:"FreeConcurrencyCount,omitempty" xml:"FreeConcurrencyCount,omitempty"`
-	// example:
-	//
-	// 100
-	FreeCount *int32 `json:"FreeCount,omitempty" xml:"FreeCount,omitempty"`
-	// example:
-	//
-	// online_ai_algorithm_personalized_text_to_image_call_count
-	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	// example:
-	//
-	// AI算法模型-个性化文生图-在线按量调用
-	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-}
-
-func (s AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponseBodyData) SetFreeConcurrencyCount(v int32) *AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponseBodyData {
-	s.FreeConcurrencyCount = &v
-	return s
-}
-
-func (s *AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponseBodyData) SetFreeCount(v int32) *AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponseBodyData {
-	s.FreeCount = &v
-	return s
-}
-
-func (s *AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponseBodyData) SetServiceCode(v string) *AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponseBodyData {
-	s.ServiceCode = &v
-	return s
-}
-
-func (s *AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponseBodyData) SetServiceName(v string) *AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponseBodyData {
-	s.ServiceName = &v
-	return s
-}
-
 type AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponse struct {
 	Headers    map[string]*string                                             `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -1288,6 +1306,1063 @@ func (s *AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponse) SetStatusCod
 }
 
 func (s *AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponse) SetBody(v *AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponseBody) *AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponse {
+	s.Body = v
+	return s
+}
+
+type CreateAccessWarrantRequest struct {
+	// example:
+	//
+	// a123
+	AppId *string `json:"appId,omitempty" xml:"appId,omitempty"`
+	// example:
+	//
+	// e32fac43df0b0b0be32fac43df0b0b0b
+	RequestSign *string `json:"requestSign,omitempty" xml:"requestSign,omitempty"`
+	// example:
+	//
+	// 1701000000
+	Timestamp *string `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
+	// example:
+	//
+	// 110.25.23.12
+	UserClientIp *string `json:"userClientIp,omitempty" xml:"userClientIp,omitempty"`
+	// example:
+	//
+	// sn123
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	// example:
+	//
+	// 7200
+	WarrantAvailable *int32 `json:"warrantAvailable,omitempty" xml:"warrantAvailable,omitempty"`
+}
+
+func (s CreateAccessWarrantRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAccessWarrantRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAccessWarrantRequest) SetAppId(v string) *CreateAccessWarrantRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *CreateAccessWarrantRequest) SetRequestSign(v string) *CreateAccessWarrantRequest {
+	s.RequestSign = &v
+	return s
+}
+
+func (s *CreateAccessWarrantRequest) SetTimestamp(v string) *CreateAccessWarrantRequest {
+	s.Timestamp = &v
+	return s
+}
+
+func (s *CreateAccessWarrantRequest) SetUserClientIp(v string) *CreateAccessWarrantRequest {
+	s.UserClientIp = &v
+	return s
+}
+
+func (s *CreateAccessWarrantRequest) SetUserId(v string) *CreateAccessWarrantRequest {
+	s.UserId = &v
+	return s
+}
+
+func (s *CreateAccessWarrantRequest) SetWarrantAvailable(v int32) *CreateAccessWarrantRequest {
+	s.WarrantAvailable = &v
+	return s
+}
+
+type CreateAccessWarrantResponseBody struct {
+	// example:
+	//
+	// []
+	Data *CreateAccessWarrantResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// UNKNOWN_ERROR
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// example:
+	//
+	// 未知错误
+	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// xxxx-xxxx-xxxx-xxxxxxxx
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s CreateAccessWarrantResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAccessWarrantResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAccessWarrantResponseBody) SetData(v *CreateAccessWarrantResponseBodyData) *CreateAccessWarrantResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateAccessWarrantResponseBody) SetErrCode(v string) *CreateAccessWarrantResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *CreateAccessWarrantResponseBody) SetErrMessage(v string) *CreateAccessWarrantResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *CreateAccessWarrantResponseBody) SetHttpStatusCode(v int32) *CreateAccessWarrantResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CreateAccessWarrantResponseBody) SetRequestId(v string) *CreateAccessWarrantResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateAccessWarrantResponseBody) SetSuccess(v bool) *CreateAccessWarrantResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateAccessWarrantResponseBodyData struct {
+	// example:
+	//
+	// 1234567890
+	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	// example:
+	//
+	// ex2xxxxxxxx
+	AccessWarrantId *string `json:"AccessWarrantId,omitempty" xml:"AccessWarrantId,omitempty"`
+	// example:
+	//
+	// 1234567890
+	ApplicationAccessId *string `json:"ApplicationAccessId,omitempty" xml:"ApplicationAccessId,omitempty"`
+	// example:
+	//
+	// 1672531200
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1672531200
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// example:
+	//
+	// 1234567890
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s CreateAccessWarrantResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAccessWarrantResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAccessWarrantResponseBodyData) SetAccessToken(v string) *CreateAccessWarrantResponseBodyData {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *CreateAccessWarrantResponseBodyData) SetAccessWarrantId(v string) *CreateAccessWarrantResponseBodyData {
+	s.AccessWarrantId = &v
+	return s
+}
+
+func (s *CreateAccessWarrantResponseBodyData) SetApplicationAccessId(v string) *CreateAccessWarrantResponseBodyData {
+	s.ApplicationAccessId = &v
+	return s
+}
+
+func (s *CreateAccessWarrantResponseBodyData) SetCreateTime(v string) *CreateAccessWarrantResponseBodyData {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *CreateAccessWarrantResponseBodyData) SetExpireTime(v string) *CreateAccessWarrantResponseBodyData {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *CreateAccessWarrantResponseBodyData) SetUserId(v string) *CreateAccessWarrantResponseBodyData {
+	s.UserId = &v
+	return s
+}
+
+type CreateAccessWarrantResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAccessWarrantResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateAccessWarrantResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAccessWarrantResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAccessWarrantResponse) SetHeaders(v map[string]*string) *CreateAccessWarrantResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateAccessWarrantResponse) SetStatusCode(v int32) *CreateAccessWarrantResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateAccessWarrantResponse) SetBody(v *CreateAccessWarrantResponseBody) *CreateAccessWarrantResponse {
+	s.Body = v
+	return s
+}
+
+type CreateProjectRequest struct {
+	// example:
+	//
+	// MyProject
+	ProjectName *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
+	// example:
+	//
+	// online_oral_evaluation_post_paid_call_count
+	ProjectType *string `json:"projectType,omitempty" xml:"projectType,omitempty"`
+}
+
+func (s CreateProjectRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectRequest) SetProjectName(v string) *CreateProjectRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *CreateProjectRequest) SetProjectType(v string) *CreateProjectRequest {
+	s.ProjectType = &v
+	return s
+}
+
+type CreateProjectResponseBody struct {
+	// example:
+	//
+	// []
+	Data *CreateProjectResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// UNKNOWN_ERROR
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// example:
+	//
+	// 未知错误
+	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// xxxx-xxxx-xxxx-xxxxxxxx
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s CreateProjectResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectResponseBody) SetData(v *CreateProjectResponseBodyData) *CreateProjectResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateProjectResponseBody) SetErrCode(v string) *CreateProjectResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *CreateProjectResponseBody) SetErrMessage(v string) *CreateProjectResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *CreateProjectResponseBody) SetHttpStatusCode(v int32) *CreateProjectResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CreateProjectResponseBody) SetRequestId(v string) *CreateProjectResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateProjectResponseBody) SetSuccess(v bool) *CreateProjectResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateProjectResponseBodyData struct {
+	// example:
+	//
+	// 2023-02-15T09:17:39Z
+	CreateTime  *string                                     `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ProjectApps []*CreateProjectResponseBodyDataProjectApps `json:"ProjectApps,omitempty" xml:"ProjectApps,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 124187
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// MyProject
+	ProjectName *string                                    `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	ProjectSDK  []*CreateProjectResponseBodyDataProjectSDK `json:"ProjectSDK,omitempty" xml:"ProjectSDK,omitempty" type:"Repeated"`
+	// example:
+	//
+	// WebApplication
+	ProjectType *string `json:"ProjectType,omitempty" xml:"ProjectType,omitempty"`
+}
+
+func (s CreateProjectResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectResponseBodyData) SetCreateTime(v string) *CreateProjectResponseBodyData {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *CreateProjectResponseBodyData) SetProjectApps(v []*CreateProjectResponseBodyDataProjectApps) *CreateProjectResponseBodyData {
+	s.ProjectApps = v
+	return s
+}
+
+func (s *CreateProjectResponseBodyData) SetProjectId(v string) *CreateProjectResponseBodyData {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *CreateProjectResponseBodyData) SetProjectName(v string) *CreateProjectResponseBodyData {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *CreateProjectResponseBodyData) SetProjectSDK(v []*CreateProjectResponseBodyDataProjectSDK) *CreateProjectResponseBodyData {
+	s.ProjectSDK = v
+	return s
+}
+
+func (s *CreateProjectResponseBodyData) SetProjectType(v string) *CreateProjectResponseBodyData {
+	s.ProjectType = &v
+	return s
+}
+
+type CreateProjectResponseBodyDataProjectApps struct {
+	ApplicationAccessIds []*CreateProjectResponseBodyDataProjectAppsApplicationAccessIds `json:"ApplicationAccessIds,omitempty" xml:"ApplicationAccessIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 4867
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 4910
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+}
+
+func (s CreateProjectResponseBodyDataProjectApps) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectResponseBodyDataProjectApps) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectResponseBodyDataProjectApps) SetApplicationAccessIds(v []*CreateProjectResponseBodyDataProjectAppsApplicationAccessIds) *CreateProjectResponseBodyDataProjectApps {
+	s.ApplicationAccessIds = v
+	return s
+}
+
+func (s *CreateProjectResponseBodyDataProjectApps) SetId(v string) *CreateProjectResponseBodyDataProjectApps {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateProjectResponseBodyDataProjectApps) SetProjectId(v string) *CreateProjectResponseBodyDataProjectApps {
+	s.ProjectId = &v
+	return s
+}
+
+type CreateProjectResponseBodyDataProjectAppsApplicationAccessIds struct {
+	// example:
+	//
+	// 1234567890
+	ApplicationAccessId *string `json:"applicationAccessId,omitempty" xml:"applicationAccessId,omitempty"`
+	// example:
+	//
+	// MyAppSecret
+	ApplicationAccessSecret *string `json:"applicationAccessSecret,omitempty" xml:"applicationAccessSecret,omitempty"`
+}
+
+func (s CreateProjectResponseBodyDataProjectAppsApplicationAccessIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectResponseBodyDataProjectAppsApplicationAccessIds) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectResponseBodyDataProjectAppsApplicationAccessIds) SetApplicationAccessId(v string) *CreateProjectResponseBodyDataProjectAppsApplicationAccessIds {
+	s.ApplicationAccessId = &v
+	return s
+}
+
+func (s *CreateProjectResponseBodyDataProjectAppsApplicationAccessIds) SetApplicationAccessSecret(v string) *CreateProjectResponseBodyDataProjectAppsApplicationAccessIds {
+	s.ApplicationAccessSecret = &v
+	return s
+}
+
+type CreateProjectResponseBodyDataProjectSDK struct {
+	// example:
+	//
+	// 2023-02-15T09:17:39Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// http://demo.com/demo
+	DemoUrl    *string `json:"DemoUrl,omitempty" xml:"DemoUrl,omitempty"`
+	DeployMode *string `json:"DeployMode,omitempty" xml:"DeployMode,omitempty"`
+	// example:
+	//
+	// C++
+	DevelopLanguage *string `json:"DevelopLanguage,omitempty" xml:"DevelopLanguage,omitempty"`
+	// example:
+	//
+	// http://demo.com/doc
+	DocUrl *string `json:"DocUrl,omitempty" xml:"DocUrl,omitempty"`
+	// example:
+	//
+	// C SDK
+	SdkName *string `json:"SdkName,omitempty" xml:"SdkName,omitempty"`
+	// example:
+	//
+	// http://demo.com/sdk.zip
+	SdkUrl *string `json:"SdkUrl,omitempty" xml:"SdkUrl,omitempty"`
+	// example:
+	//
+	// 4.12.8
+	SdkVersion *string `json:"SdkVersion,omitempty" xml:"SdkVersion,omitempty"`
+}
+
+func (s CreateProjectResponseBodyDataProjectSDK) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectResponseBodyDataProjectSDK) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectResponseBodyDataProjectSDK) SetCreateTime(v string) *CreateProjectResponseBodyDataProjectSDK {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *CreateProjectResponseBodyDataProjectSDK) SetDemoUrl(v string) *CreateProjectResponseBodyDataProjectSDK {
+	s.DemoUrl = &v
+	return s
+}
+
+func (s *CreateProjectResponseBodyDataProjectSDK) SetDeployMode(v string) *CreateProjectResponseBodyDataProjectSDK {
+	s.DeployMode = &v
+	return s
+}
+
+func (s *CreateProjectResponseBodyDataProjectSDK) SetDevelopLanguage(v string) *CreateProjectResponseBodyDataProjectSDK {
+	s.DevelopLanguage = &v
+	return s
+}
+
+func (s *CreateProjectResponseBodyDataProjectSDK) SetDocUrl(v string) *CreateProjectResponseBodyDataProjectSDK {
+	s.DocUrl = &v
+	return s
+}
+
+func (s *CreateProjectResponseBodyDataProjectSDK) SetSdkName(v string) *CreateProjectResponseBodyDataProjectSDK {
+	s.SdkName = &v
+	return s
+}
+
+func (s *CreateProjectResponseBodyDataProjectSDK) SetSdkUrl(v string) *CreateProjectResponseBodyDataProjectSDK {
+	s.SdkUrl = &v
+	return s
+}
+
+func (s *CreateProjectResponseBodyDataProjectSDK) SetSdkVersion(v string) *CreateProjectResponseBodyDataProjectSDK {
+	s.SdkVersion = &v
+	return s
+}
+
+type CreateProjectResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateProjectResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateProjectResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectResponse) SetHeaders(v map[string]*string) *CreateProjectResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateProjectResponse) SetStatusCode(v int32) *CreateProjectResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateProjectResponse) SetBody(v *CreateProjectResponseBody) *CreateProjectResponse {
+	s.Body = v
+	return s
+}
+
+type ExecuteAITeacherChineseCompositionTutoringWorkflowRunHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// example:
+	//
+	// xxxxxxx
+	CallerParentId *int64 `json:"callerParentId,omitempty" xml:"callerParentId,omitempty"`
+	// example:
+	//
+	// sub
+	CallerType *string `json:"callerType,omitempty" xml:"callerType,omitempty"`
+	// example:
+	//
+	// xxxxxxx
+	CallerUid *int64 `json:"callerUid,omitempty" xml:"callerUid,omitempty"`
+	// example:
+	//
+	// xxxxxxx
+	StsTokenCallerUid *int64 `json:"stsTokenCallerUid,omitempty" xml:"stsTokenCallerUid,omitempty"`
+}
+
+func (s ExecuteAITeacherChineseCompositionTutoringWorkflowRunHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteAITeacherChineseCompositionTutoringWorkflowRunHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteAITeacherChineseCompositionTutoringWorkflowRunHeaders) SetCommonHeaders(v map[string]*string) *ExecuteAITeacherChineseCompositionTutoringWorkflowRunHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ExecuteAITeacherChineseCompositionTutoringWorkflowRunHeaders) SetCallerParentId(v int64) *ExecuteAITeacherChineseCompositionTutoringWorkflowRunHeaders {
+	s.CallerParentId = &v
+	return s
+}
+
+func (s *ExecuteAITeacherChineseCompositionTutoringWorkflowRunHeaders) SetCallerType(v string) *ExecuteAITeacherChineseCompositionTutoringWorkflowRunHeaders {
+	s.CallerType = &v
+	return s
+}
+
+func (s *ExecuteAITeacherChineseCompositionTutoringWorkflowRunHeaders) SetCallerUid(v int64) *ExecuteAITeacherChineseCompositionTutoringWorkflowRunHeaders {
+	s.CallerUid = &v
+	return s
+}
+
+func (s *ExecuteAITeacherChineseCompositionTutoringWorkflowRunHeaders) SetStsTokenCallerUid(v int64) *ExecuteAITeacherChineseCompositionTutoringWorkflowRunHeaders {
+	s.StsTokenCallerUid = &v
+	return s
+}
+
+type ExecuteAITeacherChineseCompositionTutoringWorkflowRunRequest struct {
+	EssayOutline      *string `json:"essayOutline,omitempty" xml:"essayOutline,omitempty"`
+	EssayRequirements *string `json:"essayRequirements,omitempty" xml:"essayRequirements,omitempty"`
+	EssayTopic        *string `json:"essayTopic,omitempty" xml:"essayTopic,omitempty"`
+	// example:
+	//
+	// essay
+	EssayType *string `json:"essayType,omitempty" xml:"essayType,omitempty"`
+	// example:
+	//
+	// 100
+	EssayWordCount *int64 `json:"essayWordCount,omitempty" xml:"essayWordCount,omitempty"`
+	// example:
+	//
+	// 3
+	Grade *int64 `json:"grade,omitempty" xml:"grade,omitempty"`
+	// example:
+	//
+	// streaming
+	ResponseMode *string `json:"responseMode,omitempty" xml:"responseMode,omitempty"`
+	// example:
+	//
+	// xxxxxxxxx
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+}
+
+func (s ExecuteAITeacherChineseCompositionTutoringWorkflowRunRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteAITeacherChineseCompositionTutoringWorkflowRunRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteAITeacherChineseCompositionTutoringWorkflowRunRequest) SetEssayOutline(v string) *ExecuteAITeacherChineseCompositionTutoringWorkflowRunRequest {
+	s.EssayOutline = &v
+	return s
+}
+
+func (s *ExecuteAITeacherChineseCompositionTutoringWorkflowRunRequest) SetEssayRequirements(v string) *ExecuteAITeacherChineseCompositionTutoringWorkflowRunRequest {
+	s.EssayRequirements = &v
+	return s
+}
+
+func (s *ExecuteAITeacherChineseCompositionTutoringWorkflowRunRequest) SetEssayTopic(v string) *ExecuteAITeacherChineseCompositionTutoringWorkflowRunRequest {
+	s.EssayTopic = &v
+	return s
+}
+
+func (s *ExecuteAITeacherChineseCompositionTutoringWorkflowRunRequest) SetEssayType(v string) *ExecuteAITeacherChineseCompositionTutoringWorkflowRunRequest {
+	s.EssayType = &v
+	return s
+}
+
+func (s *ExecuteAITeacherChineseCompositionTutoringWorkflowRunRequest) SetEssayWordCount(v int64) *ExecuteAITeacherChineseCompositionTutoringWorkflowRunRequest {
+	s.EssayWordCount = &v
+	return s
+}
+
+func (s *ExecuteAITeacherChineseCompositionTutoringWorkflowRunRequest) SetGrade(v int64) *ExecuteAITeacherChineseCompositionTutoringWorkflowRunRequest {
+	s.Grade = &v
+	return s
+}
+
+func (s *ExecuteAITeacherChineseCompositionTutoringWorkflowRunRequest) SetResponseMode(v string) *ExecuteAITeacherChineseCompositionTutoringWorkflowRunRequest {
+	s.ResponseMode = &v
+	return s
+}
+
+func (s *ExecuteAITeacherChineseCompositionTutoringWorkflowRunRequest) SetUserId(v string) *ExecuteAITeacherChineseCompositionTutoringWorkflowRunRequest {
+	s.UserId = &v
+	return s
+}
+
+type ExecuteAITeacherChineseCompositionTutoringWorkflowRunResponseBody struct {
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// example:
+	//
+	// message
+	Event *string `json:"event,omitempty" xml:"event,omitempty"`
+	// example:
+	//
+	// xxxx-xxxx-xxxx-xxxxxxxx
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s ExecuteAITeacherChineseCompositionTutoringWorkflowRunResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteAITeacherChineseCompositionTutoringWorkflowRunResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteAITeacherChineseCompositionTutoringWorkflowRunResponseBody) SetContent(v string) *ExecuteAITeacherChineseCompositionTutoringWorkflowRunResponseBody {
+	s.Content = &v
+	return s
+}
+
+func (s *ExecuteAITeacherChineseCompositionTutoringWorkflowRunResponseBody) SetEvent(v string) *ExecuteAITeacherChineseCompositionTutoringWorkflowRunResponseBody {
+	s.Event = &v
+	return s
+}
+
+func (s *ExecuteAITeacherChineseCompositionTutoringWorkflowRunResponseBody) SetRequestId(v string) *ExecuteAITeacherChineseCompositionTutoringWorkflowRunResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ExecuteAITeacherChineseCompositionTutoringWorkflowRunResponse struct {
+	Headers    map[string]*string                                                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExecuteAITeacherChineseCompositionTutoringWorkflowRunResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ExecuteAITeacherChineseCompositionTutoringWorkflowRunResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteAITeacherChineseCompositionTutoringWorkflowRunResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteAITeacherChineseCompositionTutoringWorkflowRunResponse) SetHeaders(v map[string]*string) *ExecuteAITeacherChineseCompositionTutoringWorkflowRunResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExecuteAITeacherChineseCompositionTutoringWorkflowRunResponse) SetStatusCode(v int32) *ExecuteAITeacherChineseCompositionTutoringWorkflowRunResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ExecuteAITeacherChineseCompositionTutoringWorkflowRunResponse) SetBody(v *ExecuteAITeacherChineseCompositionTutoringWorkflowRunResponseBody) *ExecuteAITeacherChineseCompositionTutoringWorkflowRunResponse {
+	s.Body = v
+	return s
+}
+
+type ExecuteAITeacherEnglishCompositionTutoringWorkflowRunRequest struct {
+	// example:
+	//
+	// Title: The Importance of Reading
+	//
+	// I. Introduction
+	//
+	// II. Body
+	//
+	// III. Conclusion
+	EssayOutline *string `json:"essayOutline,omitempty" xml:"essayOutline,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// No less than 100 words
+	EssayRequirements *string `json:"essayRequirements,omitempty" xml:"essayRequirements,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Discuss what to eat
+	EssayTopic *string `json:"essayTopic,omitempty" xml:"essayTopic,omitempty"`
+	// example:
+	//
+	// essay
+	EssayType *string `json:"essayType,omitempty" xml:"essayType,omitempty"`
+	// example:
+	//
+	// 100
+	EssayWordCount *int64 `json:"essayWordCount,omitempty" xml:"essayWordCount,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3
+	Grade *int64 `json:"grade,omitempty" xml:"grade,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// streaming
+	ResponseMode *string `json:"responseMode,omitempty" xml:"responseMode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxxxxx
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+}
+
+func (s ExecuteAITeacherEnglishCompositionTutoringWorkflowRunRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteAITeacherEnglishCompositionTutoringWorkflowRunRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteAITeacherEnglishCompositionTutoringWorkflowRunRequest) SetEssayOutline(v string) *ExecuteAITeacherEnglishCompositionTutoringWorkflowRunRequest {
+	s.EssayOutline = &v
+	return s
+}
+
+func (s *ExecuteAITeacherEnglishCompositionTutoringWorkflowRunRequest) SetEssayRequirements(v string) *ExecuteAITeacherEnglishCompositionTutoringWorkflowRunRequest {
+	s.EssayRequirements = &v
+	return s
+}
+
+func (s *ExecuteAITeacherEnglishCompositionTutoringWorkflowRunRequest) SetEssayTopic(v string) *ExecuteAITeacherEnglishCompositionTutoringWorkflowRunRequest {
+	s.EssayTopic = &v
+	return s
+}
+
+func (s *ExecuteAITeacherEnglishCompositionTutoringWorkflowRunRequest) SetEssayType(v string) *ExecuteAITeacherEnglishCompositionTutoringWorkflowRunRequest {
+	s.EssayType = &v
+	return s
+}
+
+func (s *ExecuteAITeacherEnglishCompositionTutoringWorkflowRunRequest) SetEssayWordCount(v int64) *ExecuteAITeacherEnglishCompositionTutoringWorkflowRunRequest {
+	s.EssayWordCount = &v
+	return s
+}
+
+func (s *ExecuteAITeacherEnglishCompositionTutoringWorkflowRunRequest) SetGrade(v int64) *ExecuteAITeacherEnglishCompositionTutoringWorkflowRunRequest {
+	s.Grade = &v
+	return s
+}
+
+func (s *ExecuteAITeacherEnglishCompositionTutoringWorkflowRunRequest) SetResponseMode(v string) *ExecuteAITeacherEnglishCompositionTutoringWorkflowRunRequest {
+	s.ResponseMode = &v
+	return s
+}
+
+func (s *ExecuteAITeacherEnglishCompositionTutoringWorkflowRunRequest) SetUserId(v string) *ExecuteAITeacherEnglishCompositionTutoringWorkflowRunRequest {
+	s.UserId = &v
+	return s
+}
+
+type ExecuteAITeacherEnglishCompositionTutoringWorkflowRunResponseBody struct {
+	// example:
+	//
+	// hi
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// example:
+	//
+	// message
+	Event *string `json:"event,omitempty" xml:"event,omitempty"`
+	// example:
+	//
+	// xxxx-xxxx-xxxx-xxxxxxxx
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s ExecuteAITeacherEnglishCompositionTutoringWorkflowRunResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteAITeacherEnglishCompositionTutoringWorkflowRunResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteAITeacherEnglishCompositionTutoringWorkflowRunResponseBody) SetContent(v string) *ExecuteAITeacherEnglishCompositionTutoringWorkflowRunResponseBody {
+	s.Content = &v
+	return s
+}
+
+func (s *ExecuteAITeacherEnglishCompositionTutoringWorkflowRunResponseBody) SetEvent(v string) *ExecuteAITeacherEnglishCompositionTutoringWorkflowRunResponseBody {
+	s.Event = &v
+	return s
+}
+
+func (s *ExecuteAITeacherEnglishCompositionTutoringWorkflowRunResponseBody) SetRequestId(v string) *ExecuteAITeacherEnglishCompositionTutoringWorkflowRunResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ExecuteAITeacherEnglishCompositionTutoringWorkflowRunResponse struct {
+	Headers    map[string]*string                                                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExecuteAITeacherEnglishCompositionTutoringWorkflowRunResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ExecuteAITeacherEnglishCompositionTutoringWorkflowRunResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteAITeacherEnglishCompositionTutoringWorkflowRunResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteAITeacherEnglishCompositionTutoringWorkflowRunResponse) SetHeaders(v map[string]*string) *ExecuteAITeacherEnglishCompositionTutoringWorkflowRunResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExecuteAITeacherEnglishCompositionTutoringWorkflowRunResponse) SetStatusCode(v int32) *ExecuteAITeacherEnglishCompositionTutoringWorkflowRunResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ExecuteAITeacherEnglishCompositionTutoringWorkflowRunResponse) SetBody(v *ExecuteAITeacherEnglishCompositionTutoringWorkflowRunResponseBody) *ExecuteAITeacherEnglishCompositionTutoringWorkflowRunResponse {
+	s.Body = v
+	return s
+}
+
+type ExecuteAITeacherEnglishParaphraseChatMessageRequest struct {
+	// example:
+	//
+	// 6788e0b475a4631ffc626722
+	ChatId *string `json:"chatId,omitempty" xml:"chatId,omitempty"`
+	// example:
+	//
+	// How much is this?
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// example:
+	//
+	// 3
+	Grade *int64 `json:"grade,omitempty" xml:"grade,omitempty"`
+	// example:
+	//
+	// xxxxxxxxx
+	QuestionId *string `json:"questionId,omitempty" xml:"questionId,omitempty"`
+	// example:
+	//
+	// How to inquire about the price
+	QuestionInfo *string `json:"questionInfo,omitempty" xml:"questionInfo,omitempty"`
+	// example:
+	//
+	// sreaming
+	ResponseMode *string `json:"responseMode,omitempty" xml:"responseMode,omitempty"`
+	// example:
+	//
+	// How much is this?
+	UserAnswer *string `json:"userAnswer,omitempty" xml:"userAnswer,omitempty"`
+	// example:
+	//
+	// xxxxxxx
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+}
+
+func (s ExecuteAITeacherEnglishParaphraseChatMessageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteAITeacherEnglishParaphraseChatMessageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteAITeacherEnglishParaphraseChatMessageRequest) SetChatId(v string) *ExecuteAITeacherEnglishParaphraseChatMessageRequest {
+	s.ChatId = &v
+	return s
+}
+
+func (s *ExecuteAITeacherEnglishParaphraseChatMessageRequest) SetContent(v string) *ExecuteAITeacherEnglishParaphraseChatMessageRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *ExecuteAITeacherEnglishParaphraseChatMessageRequest) SetGrade(v int64) *ExecuteAITeacherEnglishParaphraseChatMessageRequest {
+	s.Grade = &v
+	return s
+}
+
+func (s *ExecuteAITeacherEnglishParaphraseChatMessageRequest) SetQuestionId(v string) *ExecuteAITeacherEnglishParaphraseChatMessageRequest {
+	s.QuestionId = &v
+	return s
+}
+
+func (s *ExecuteAITeacherEnglishParaphraseChatMessageRequest) SetQuestionInfo(v string) *ExecuteAITeacherEnglishParaphraseChatMessageRequest {
+	s.QuestionInfo = &v
+	return s
+}
+
+func (s *ExecuteAITeacherEnglishParaphraseChatMessageRequest) SetResponseMode(v string) *ExecuteAITeacherEnglishParaphraseChatMessageRequest {
+	s.ResponseMode = &v
+	return s
+}
+
+func (s *ExecuteAITeacherEnglishParaphraseChatMessageRequest) SetUserAnswer(v string) *ExecuteAITeacherEnglishParaphraseChatMessageRequest {
+	s.UserAnswer = &v
+	return s
+}
+
+func (s *ExecuteAITeacherEnglishParaphraseChatMessageRequest) SetUserId(v string) *ExecuteAITeacherEnglishParaphraseChatMessageRequest {
+	s.UserId = &v
+	return s
+}
+
+type ExecuteAITeacherEnglishParaphraseChatMessageResponseBody struct {
+	// example:
+	//
+	// how
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// example:
+	//
+	// message
+	Event *string `json:"event,omitempty" xml:"event,omitempty"`
+	// example:
+	//
+	// xxxx-xxxx-xxxx-xxxxxxxx
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s ExecuteAITeacherEnglishParaphraseChatMessageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteAITeacherEnglishParaphraseChatMessageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteAITeacherEnglishParaphraseChatMessageResponseBody) SetContent(v string) *ExecuteAITeacherEnglishParaphraseChatMessageResponseBody {
+	s.Content = &v
+	return s
+}
+
+func (s *ExecuteAITeacherEnglishParaphraseChatMessageResponseBody) SetEvent(v string) *ExecuteAITeacherEnglishParaphraseChatMessageResponseBody {
+	s.Event = &v
+	return s
+}
+
+func (s *ExecuteAITeacherEnglishParaphraseChatMessageResponseBody) SetRequestId(v string) *ExecuteAITeacherEnglishParaphraseChatMessageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ExecuteAITeacherEnglishParaphraseChatMessageResponse struct {
+	Headers    map[string]*string                                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExecuteAITeacherEnglishParaphraseChatMessageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ExecuteAITeacherEnglishParaphraseChatMessageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteAITeacherEnglishParaphraseChatMessageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteAITeacherEnglishParaphraseChatMessageResponse) SetHeaders(v map[string]*string) *ExecuteAITeacherEnglishParaphraseChatMessageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExecuteAITeacherEnglishParaphraseChatMessageResponse) SetStatusCode(v int32) *ExecuteAITeacherEnglishParaphraseChatMessageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ExecuteAITeacherEnglishParaphraseChatMessageResponse) SetBody(v *ExecuteAITeacherEnglishParaphraseChatMessageResponseBody) *ExecuteAITeacherEnglishParaphraseChatMessageResponse {
 	s.Body = v
 	return s
 }
@@ -8087,6 +9162,1180 @@ func (s *Personalizedtxt2imgQueryModelTrainStatusResponse) SetBody(v *Personaliz
 	return s
 }
 
+type QueryApplicationAccessIdRequest struct {
+	// example:
+	//
+	// 1234567890
+	ApplicationAccessId *string `json:"applicationAccessId,omitempty" xml:"applicationAccessId,omitempty"`
+}
+
+func (s QueryApplicationAccessIdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryApplicationAccessIdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryApplicationAccessIdRequest) SetApplicationAccessId(v string) *QueryApplicationAccessIdRequest {
+	s.ApplicationAccessId = &v
+	return s
+}
+
+type QueryApplicationAccessIdResponseBody struct {
+	// example:
+	//
+	// []
+	Data *QueryApplicationAccessIdResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// UNKNOWN_ERROR
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// example:
+	//
+	// 未知错误
+	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// xxxx-xxxx-xxxx-xxxxxxxx
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s QueryApplicationAccessIdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryApplicationAccessIdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryApplicationAccessIdResponseBody) SetData(v *QueryApplicationAccessIdResponseBodyData) *QueryApplicationAccessIdResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryApplicationAccessIdResponseBody) SetErrCode(v string) *QueryApplicationAccessIdResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *QueryApplicationAccessIdResponseBody) SetErrMessage(v string) *QueryApplicationAccessIdResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *QueryApplicationAccessIdResponseBody) SetHttpStatusCode(v int32) *QueryApplicationAccessIdResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *QueryApplicationAccessIdResponseBody) SetRequestId(v string) *QueryApplicationAccessIdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryApplicationAccessIdResponseBody) SetSuccess(v bool) *QueryApplicationAccessIdResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryApplicationAccessIdResponseBodyData struct {
+	// example:
+	//
+	// 1234567890
+	ApplicationAccessId *string `json:"applicationAccessId,omitempty" xml:"applicationAccessId,omitempty"`
+	// example:
+	//
+	// MyAppSecret
+	ApplicationAccessSecret *string `json:"applicationAccessSecret,omitempty" xml:"applicationAccessSecret,omitempty"`
+}
+
+func (s QueryApplicationAccessIdResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryApplicationAccessIdResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryApplicationAccessIdResponseBodyData) SetApplicationAccessId(v string) *QueryApplicationAccessIdResponseBodyData {
+	s.ApplicationAccessId = &v
+	return s
+}
+
+func (s *QueryApplicationAccessIdResponseBodyData) SetApplicationAccessSecret(v string) *QueryApplicationAccessIdResponseBodyData {
+	s.ApplicationAccessSecret = &v
+	return s
+}
+
+type QueryApplicationAccessIdResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryApplicationAccessIdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryApplicationAccessIdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryApplicationAccessIdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryApplicationAccessIdResponse) SetHeaders(v map[string]*string) *QueryApplicationAccessIdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryApplicationAccessIdResponse) SetStatusCode(v int32) *QueryApplicationAccessIdResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryApplicationAccessIdResponse) SetBody(v *QueryApplicationAccessIdResponseBody) *QueryApplicationAccessIdResponse {
+	s.Body = v
+	return s
+}
+
+type QueryProjectRequest struct {
+	// example:
+	//
+	// 123
+	ProjectId *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
+}
+
+func (s QueryProjectRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryProjectRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryProjectRequest) SetProjectId(v string) *QueryProjectRequest {
+	s.ProjectId = &v
+	return s
+}
+
+type QueryProjectResponseBody struct {
+	// example:
+	//
+	// []
+	Data *QueryProjectResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// UNKNOWN_ERROR
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// example:
+	//
+	// 未知错误
+	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// xxxx-xxxx-xxxx-xxxxxxxx
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s QueryProjectResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryProjectResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryProjectResponseBody) SetData(v *QueryProjectResponseBodyData) *QueryProjectResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryProjectResponseBody) SetErrCode(v string) *QueryProjectResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *QueryProjectResponseBody) SetErrMessage(v string) *QueryProjectResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *QueryProjectResponseBody) SetHttpStatusCode(v int32) *QueryProjectResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *QueryProjectResponseBody) SetRequestId(v string) *QueryProjectResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryProjectResponseBody) SetSuccess(v bool) *QueryProjectResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryProjectResponseBodyData struct {
+	// example:
+	//
+	// 2024-11-01T13:40:53Z
+	CreateTime  *string                                    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ProjectApps []*QueryProjectResponseBodyDataProjectApps `json:"ProjectApps,omitempty" xml:"ProjectApps,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 67055
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// MyProject
+	ProjectName *string                                   `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	ProjectSDK  []*QueryProjectResponseBodyDataProjectSDK `json:"ProjectSDK,omitempty" xml:"ProjectSDK,omitempty" type:"Repeated"`
+	// example:
+	//
+	// WebApplication
+	ProjectType *string `json:"ProjectType,omitempty" xml:"ProjectType,omitempty"`
+}
+
+func (s QueryProjectResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryProjectResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryProjectResponseBodyData) SetCreateTime(v string) *QueryProjectResponseBodyData {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *QueryProjectResponseBodyData) SetProjectApps(v []*QueryProjectResponseBodyDataProjectApps) *QueryProjectResponseBodyData {
+	s.ProjectApps = v
+	return s
+}
+
+func (s *QueryProjectResponseBodyData) SetProjectId(v string) *QueryProjectResponseBodyData {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *QueryProjectResponseBodyData) SetProjectName(v string) *QueryProjectResponseBodyData {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *QueryProjectResponseBodyData) SetProjectSDK(v []*QueryProjectResponseBodyDataProjectSDK) *QueryProjectResponseBodyData {
+	s.ProjectSDK = v
+	return s
+}
+
+func (s *QueryProjectResponseBodyData) SetProjectType(v string) *QueryProjectResponseBodyData {
+	s.ProjectType = &v
+	return s
+}
+
+type QueryProjectResponseBodyDataProjectApps struct {
+	ApplicationAccessIds []*QueryProjectResponseBodyDataProjectAppsApplicationAccessIds `json:"ApplicationAccessIds,omitempty" xml:"ApplicationAccessIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2144
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 159
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+}
+
+func (s QueryProjectResponseBodyDataProjectApps) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryProjectResponseBodyDataProjectApps) GoString() string {
+	return s.String()
+}
+
+func (s *QueryProjectResponseBodyDataProjectApps) SetApplicationAccessIds(v []*QueryProjectResponseBodyDataProjectAppsApplicationAccessIds) *QueryProjectResponseBodyDataProjectApps {
+	s.ApplicationAccessIds = v
+	return s
+}
+
+func (s *QueryProjectResponseBodyDataProjectApps) SetId(v string) *QueryProjectResponseBodyDataProjectApps {
+	s.Id = &v
+	return s
+}
+
+func (s *QueryProjectResponseBodyDataProjectApps) SetProjectId(v string) *QueryProjectResponseBodyDataProjectApps {
+	s.ProjectId = &v
+	return s
+}
+
+type QueryProjectResponseBodyDataProjectAppsApplicationAccessIds struct {
+	// example:
+	//
+	// 1234567890
+	ApplicationAccessId *string `json:"applicationAccessId,omitempty" xml:"applicationAccessId,omitempty"`
+	// example:
+	//
+	// MyAppSecret
+	ApplicationAccessSecret *string `json:"applicationAccessSecret,omitempty" xml:"applicationAccessSecret,omitempty"`
+}
+
+func (s QueryProjectResponseBodyDataProjectAppsApplicationAccessIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryProjectResponseBodyDataProjectAppsApplicationAccessIds) GoString() string {
+	return s.String()
+}
+
+func (s *QueryProjectResponseBodyDataProjectAppsApplicationAccessIds) SetApplicationAccessId(v string) *QueryProjectResponseBodyDataProjectAppsApplicationAccessIds {
+	s.ApplicationAccessId = &v
+	return s
+}
+
+func (s *QueryProjectResponseBodyDataProjectAppsApplicationAccessIds) SetApplicationAccessSecret(v string) *QueryProjectResponseBodyDataProjectAppsApplicationAccessIds {
+	s.ApplicationAccessSecret = &v
+	return s
+}
+
+type QueryProjectResponseBodyDataProjectSDK struct {
+	// example:
+	//
+	// 2024-11-01T13:40:53Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// http://demo.com/demo
+	DemoUrl    *string `json:"DemoUrl,omitempty" xml:"DemoUrl,omitempty"`
+	DeployMode *string `json:"DeployMode,omitempty" xml:"DeployMode,omitempty"`
+	// example:
+	//
+	// JAVA
+	DevelopLanguage *string `json:"DevelopLanguage,omitempty" xml:"DevelopLanguage,omitempty"`
+	// example:
+	//
+	// http://demo.com/doc
+	DocUrl *string `json:"DocUrl,omitempty" xml:"DocUrl,omitempty"`
+	// example:
+	//
+	// JSSDK
+	SdkName *string `json:"SdkName,omitempty" xml:"SdkName,omitempty"`
+	// example:
+	//
+	// http://demo.com/sdk.zip
+	SdkUrl *string `json:"SdkUrl,omitempty" xml:"SdkUrl,omitempty"`
+	// example:
+	//
+	// 5.1.0
+	SdkVersion *string `json:"SdkVersion,omitempty" xml:"SdkVersion,omitempty"`
+}
+
+func (s QueryProjectResponseBodyDataProjectSDK) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryProjectResponseBodyDataProjectSDK) GoString() string {
+	return s.String()
+}
+
+func (s *QueryProjectResponseBodyDataProjectSDK) SetCreateTime(v string) *QueryProjectResponseBodyDataProjectSDK {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *QueryProjectResponseBodyDataProjectSDK) SetDemoUrl(v string) *QueryProjectResponseBodyDataProjectSDK {
+	s.DemoUrl = &v
+	return s
+}
+
+func (s *QueryProjectResponseBodyDataProjectSDK) SetDeployMode(v string) *QueryProjectResponseBodyDataProjectSDK {
+	s.DeployMode = &v
+	return s
+}
+
+func (s *QueryProjectResponseBodyDataProjectSDK) SetDevelopLanguage(v string) *QueryProjectResponseBodyDataProjectSDK {
+	s.DevelopLanguage = &v
+	return s
+}
+
+func (s *QueryProjectResponseBodyDataProjectSDK) SetDocUrl(v string) *QueryProjectResponseBodyDataProjectSDK {
+	s.DocUrl = &v
+	return s
+}
+
+func (s *QueryProjectResponseBodyDataProjectSDK) SetSdkName(v string) *QueryProjectResponseBodyDataProjectSDK {
+	s.SdkName = &v
+	return s
+}
+
+func (s *QueryProjectResponseBodyDataProjectSDK) SetSdkUrl(v string) *QueryProjectResponseBodyDataProjectSDK {
+	s.SdkUrl = &v
+	return s
+}
+
+func (s *QueryProjectResponseBodyDataProjectSDK) SetSdkVersion(v string) *QueryProjectResponseBodyDataProjectSDK {
+	s.SdkVersion = &v
+	return s
+}
+
+type QueryProjectResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryProjectResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryProjectResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryProjectResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryProjectResponse) SetHeaders(v map[string]*string) *QueryProjectResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryProjectResponse) SetStatusCode(v int32) *QueryProjectResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryProjectResponse) SetBody(v *QueryProjectResponseBody) *QueryProjectResponse {
+	s.Body = v
+	return s
+}
+
+type QueryProjectListResponseBody struct {
+	// example:
+	//
+	// []
+	Data []*QueryProjectListResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// UNKNOWN_ERROR
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// example:
+	//
+	// 未知错误
+	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// xxxx-xxxx-xxxx-xxxxxxxx
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s QueryProjectListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryProjectListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryProjectListResponseBody) SetData(v []*QueryProjectListResponseBodyData) *QueryProjectListResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryProjectListResponseBody) SetErrCode(v string) *QueryProjectListResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *QueryProjectListResponseBody) SetErrMessage(v string) *QueryProjectListResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *QueryProjectListResponseBody) SetHttpStatusCode(v int32) *QueryProjectListResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *QueryProjectListResponseBody) SetRequestId(v string) *QueryProjectListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryProjectListResponseBody) SetSuccess(v bool) *QueryProjectListResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryProjectListResponseBodyData struct {
+	// example:
+	//
+	// 2025-02-18 12:10:22
+	CreateTime  *string                                        `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ProjectApps []*QueryProjectListResponseBodyDataProjectApps `json:"ProjectApps,omitempty" xml:"ProjectApps,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 4910
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// MyProject
+	ProjectName *string                                       `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	ProjectSDK  []*QueryProjectListResponseBodyDataProjectSDK `json:"ProjectSDK,omitempty" xml:"ProjectSDK,omitempty" type:"Repeated"`
+	// example:
+	//
+	// WebApplication
+	ProjectType *string `json:"ProjectType,omitempty" xml:"ProjectType,omitempty"`
+}
+
+func (s QueryProjectListResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryProjectListResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryProjectListResponseBodyData) SetCreateTime(v string) *QueryProjectListResponseBodyData {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *QueryProjectListResponseBodyData) SetProjectApps(v []*QueryProjectListResponseBodyDataProjectApps) *QueryProjectListResponseBodyData {
+	s.ProjectApps = v
+	return s
+}
+
+func (s *QueryProjectListResponseBodyData) SetProjectId(v string) *QueryProjectListResponseBodyData {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *QueryProjectListResponseBodyData) SetProjectName(v string) *QueryProjectListResponseBodyData {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *QueryProjectListResponseBodyData) SetProjectSDK(v []*QueryProjectListResponseBodyDataProjectSDK) *QueryProjectListResponseBodyData {
+	s.ProjectSDK = v
+	return s
+}
+
+func (s *QueryProjectListResponseBodyData) SetProjectType(v string) *QueryProjectListResponseBodyData {
+	s.ProjectType = &v
+	return s
+}
+
+type QueryProjectListResponseBodyDataProjectApps struct {
+	ApplicationAccessIds []*QueryProjectListResponseBodyDataProjectAppsApplicationAccessIds `json:"ApplicationAccessIds,omitempty" xml:"ApplicationAccessIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 4700
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 4747
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+}
+
+func (s QueryProjectListResponseBodyDataProjectApps) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryProjectListResponseBodyDataProjectApps) GoString() string {
+	return s.String()
+}
+
+func (s *QueryProjectListResponseBodyDataProjectApps) SetApplicationAccessIds(v []*QueryProjectListResponseBodyDataProjectAppsApplicationAccessIds) *QueryProjectListResponseBodyDataProjectApps {
+	s.ApplicationAccessIds = v
+	return s
+}
+
+func (s *QueryProjectListResponseBodyDataProjectApps) SetId(v string) *QueryProjectListResponseBodyDataProjectApps {
+	s.Id = &v
+	return s
+}
+
+func (s *QueryProjectListResponseBodyDataProjectApps) SetProjectId(v string) *QueryProjectListResponseBodyDataProjectApps {
+	s.ProjectId = &v
+	return s
+}
+
+type QueryProjectListResponseBodyDataProjectAppsApplicationAccessIds struct {
+	// example:
+	//
+	// 1234567890
+	ApplicationAccessId *string `json:"applicationAccessId,omitempty" xml:"applicationAccessId,omitempty"`
+	// example:
+	//
+	// MyAppSecret
+	ApplicationAccessSecret *string `json:"applicationAccessSecret,omitempty" xml:"applicationAccessSecret,omitempty"`
+}
+
+func (s QueryProjectListResponseBodyDataProjectAppsApplicationAccessIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryProjectListResponseBodyDataProjectAppsApplicationAccessIds) GoString() string {
+	return s.String()
+}
+
+func (s *QueryProjectListResponseBodyDataProjectAppsApplicationAccessIds) SetApplicationAccessId(v string) *QueryProjectListResponseBodyDataProjectAppsApplicationAccessIds {
+	s.ApplicationAccessId = &v
+	return s
+}
+
+func (s *QueryProjectListResponseBodyDataProjectAppsApplicationAccessIds) SetApplicationAccessSecret(v string) *QueryProjectListResponseBodyDataProjectAppsApplicationAccessIds {
+	s.ApplicationAccessSecret = &v
+	return s
+}
+
+type QueryProjectListResponseBodyDataProjectSDK struct {
+	// example:
+	//
+	// 2024-07-16T08:23:19Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// http://demo.com/demo
+	DemoUrl    *string `json:"DemoUrl,omitempty" xml:"DemoUrl,omitempty"`
+	DeployMode *string `json:"DeployMode,omitempty" xml:"DeployMode,omitempty"`
+	// example:
+	//
+	// JAVA
+	DevelopLanguage *string `json:"DevelopLanguage,omitempty" xml:"DevelopLanguage,omitempty"`
+	// example:
+	//
+	// http://demo.com/doc
+	DocUrl *string `json:"DocUrl,omitempty" xml:"DocUrl,omitempty"`
+	// example:
+	//
+	// GO AUTH
+	SdkName *string `json:"SdkName,omitempty" xml:"SdkName,omitempty"`
+	// example:
+	//
+	// http://demo.com/sdk.zip
+	SdkUrl *string `json:"SdkUrl,omitempty" xml:"SdkUrl,omitempty"`
+	// example:
+	//
+	// .3.52
+	SdkVersion *string `json:"SdkVersion,omitempty" xml:"SdkVersion,omitempty"`
+}
+
+func (s QueryProjectListResponseBodyDataProjectSDK) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryProjectListResponseBodyDataProjectSDK) GoString() string {
+	return s.String()
+}
+
+func (s *QueryProjectListResponseBodyDataProjectSDK) SetCreateTime(v string) *QueryProjectListResponseBodyDataProjectSDK {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *QueryProjectListResponseBodyDataProjectSDK) SetDemoUrl(v string) *QueryProjectListResponseBodyDataProjectSDK {
+	s.DemoUrl = &v
+	return s
+}
+
+func (s *QueryProjectListResponseBodyDataProjectSDK) SetDeployMode(v string) *QueryProjectListResponseBodyDataProjectSDK {
+	s.DeployMode = &v
+	return s
+}
+
+func (s *QueryProjectListResponseBodyDataProjectSDK) SetDevelopLanguage(v string) *QueryProjectListResponseBodyDataProjectSDK {
+	s.DevelopLanguage = &v
+	return s
+}
+
+func (s *QueryProjectListResponseBodyDataProjectSDK) SetDocUrl(v string) *QueryProjectListResponseBodyDataProjectSDK {
+	s.DocUrl = &v
+	return s
+}
+
+func (s *QueryProjectListResponseBodyDataProjectSDK) SetSdkName(v string) *QueryProjectListResponseBodyDataProjectSDK {
+	s.SdkName = &v
+	return s
+}
+
+func (s *QueryProjectListResponseBodyDataProjectSDK) SetSdkUrl(v string) *QueryProjectListResponseBodyDataProjectSDK {
+	s.SdkUrl = &v
+	return s
+}
+
+func (s *QueryProjectListResponseBodyDataProjectSDK) SetSdkVersion(v string) *QueryProjectListResponseBodyDataProjectSDK {
+	s.SdkVersion = &v
+	return s
+}
+
+type QueryProjectListResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryProjectListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryProjectListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryProjectListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryProjectListResponse) SetHeaders(v map[string]*string) *QueryProjectListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryProjectListResponse) SetStatusCode(v int32) *QueryProjectListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryProjectListResponse) SetBody(v *QueryProjectListResponseBody) *QueryProjectListResponse {
+	s.Body = v
+	return s
+}
+
+type QueryPurchasedServiceResponseBody struct {
+	// example:
+	//
+	// []
+	Data []*AliyunConsoleServiceInfoDTO `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// UNKNOWN_ERROR
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// example:
+	//
+	// 未知错误
+	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// xxxx-xxxx-xxxx-xxxxxxxx
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s QueryPurchasedServiceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryPurchasedServiceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryPurchasedServiceResponseBody) SetData(v []*AliyunConsoleServiceInfoDTO) *QueryPurchasedServiceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryPurchasedServiceResponseBody) SetErrCode(v string) *QueryPurchasedServiceResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *QueryPurchasedServiceResponseBody) SetErrMessage(v string) *QueryPurchasedServiceResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *QueryPurchasedServiceResponseBody) SetHttpStatusCode(v int32) *QueryPurchasedServiceResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *QueryPurchasedServiceResponseBody) SetRequestId(v string) *QueryPurchasedServiceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryPurchasedServiceResponseBody) SetSuccess(v bool) *QueryPurchasedServiceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryPurchasedServiceResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryPurchasedServiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryPurchasedServiceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryPurchasedServiceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryPurchasedServiceResponse) SetHeaders(v map[string]*string) *QueryPurchasedServiceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryPurchasedServiceResponse) SetStatusCode(v int32) *QueryPurchasedServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryPurchasedServiceResponse) SetBody(v *QueryPurchasedServiceResponseBody) *QueryPurchasedServiceResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateProjectRequest struct {
+	// example:
+	//
+	// 123
+	ProjectId *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
+	// example:
+	//
+	// MyProject
+	ProjectName *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
+}
+
+func (s UpdateProjectRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProjectRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProjectRequest) SetProjectId(v string) *UpdateProjectRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *UpdateProjectRequest) SetProjectName(v string) *UpdateProjectRequest {
+	s.ProjectName = &v
+	return s
+}
+
+type UpdateProjectResponseBody struct {
+	// example:
+	//
+	// []
+	Data *UpdateProjectResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// UNKNOWN_ERROR
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// example:
+	//
+	// 未知错误
+	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// xxxx-xxxx-xxxx-xxxxxxxx
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s UpdateProjectResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProjectResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProjectResponseBody) SetData(v *UpdateProjectResponseBodyData) *UpdateProjectResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UpdateProjectResponseBody) SetErrCode(v string) *UpdateProjectResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *UpdateProjectResponseBody) SetErrMessage(v string) *UpdateProjectResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *UpdateProjectResponseBody) SetHttpStatusCode(v int32) *UpdateProjectResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *UpdateProjectResponseBody) SetRequestId(v string) *UpdateProjectResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateProjectResponseBody) SetSuccess(v bool) *UpdateProjectResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateProjectResponseBodyData struct {
+	// example:
+	//
+	// 2024-12-10T02:07:16Z
+	CreateTime  *string                                     `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ProjectApps []*UpdateProjectResponseBodyDataProjectApps `json:"ProjectApps,omitempty" xml:"ProjectApps,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 56160
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// MyProject
+	ProjectName *string                                    `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	ProjectSDK  []*UpdateProjectResponseBodyDataProjectSDK `json:"ProjectSDK,omitempty" xml:"ProjectSDK,omitempty" type:"Repeated"`
+	// example:
+	//
+	// WebApplication
+	ProjectType *string `json:"ProjectType,omitempty" xml:"ProjectType,omitempty"`
+}
+
+func (s UpdateProjectResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProjectResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProjectResponseBodyData) SetCreateTime(v string) *UpdateProjectResponseBodyData {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *UpdateProjectResponseBodyData) SetProjectApps(v []*UpdateProjectResponseBodyDataProjectApps) *UpdateProjectResponseBodyData {
+	s.ProjectApps = v
+	return s
+}
+
+func (s *UpdateProjectResponseBodyData) SetProjectId(v string) *UpdateProjectResponseBodyData {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *UpdateProjectResponseBodyData) SetProjectName(v string) *UpdateProjectResponseBodyData {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *UpdateProjectResponseBodyData) SetProjectSDK(v []*UpdateProjectResponseBodyDataProjectSDK) *UpdateProjectResponseBodyData {
+	s.ProjectSDK = v
+	return s
+}
+
+func (s *UpdateProjectResponseBodyData) SetProjectType(v string) *UpdateProjectResponseBodyData {
+	s.ProjectType = &v
+	return s
+}
+
+type UpdateProjectResponseBodyDataProjectApps struct {
+	ApplicationAccessIds []*UpdateProjectResponseBodyDataProjectAppsApplicationAccessIds `json:"ApplicationAccessIds,omitempty" xml:"ApplicationAccessIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 4498
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 1889
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+}
+
+func (s UpdateProjectResponseBodyDataProjectApps) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProjectResponseBodyDataProjectApps) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProjectResponseBodyDataProjectApps) SetApplicationAccessIds(v []*UpdateProjectResponseBodyDataProjectAppsApplicationAccessIds) *UpdateProjectResponseBodyDataProjectApps {
+	s.ApplicationAccessIds = v
+	return s
+}
+
+func (s *UpdateProjectResponseBodyDataProjectApps) SetId(v string) *UpdateProjectResponseBodyDataProjectApps {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateProjectResponseBodyDataProjectApps) SetProjectId(v string) *UpdateProjectResponseBodyDataProjectApps {
+	s.ProjectId = &v
+	return s
+}
+
+type UpdateProjectResponseBodyDataProjectAppsApplicationAccessIds struct {
+	// example:
+	//
+	// 1234567890
+	ApplicationAccessId *string `json:"applicationAccessId,omitempty" xml:"applicationAccessId,omitempty"`
+	// example:
+	//
+	// MyAppSecret
+	ApplicationAccessSecret *string `json:"applicationAccessSecret,omitempty" xml:"applicationAccessSecret,omitempty"`
+}
+
+func (s UpdateProjectResponseBodyDataProjectAppsApplicationAccessIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProjectResponseBodyDataProjectAppsApplicationAccessIds) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProjectResponseBodyDataProjectAppsApplicationAccessIds) SetApplicationAccessId(v string) *UpdateProjectResponseBodyDataProjectAppsApplicationAccessIds {
+	s.ApplicationAccessId = &v
+	return s
+}
+
+func (s *UpdateProjectResponseBodyDataProjectAppsApplicationAccessIds) SetApplicationAccessSecret(v string) *UpdateProjectResponseBodyDataProjectAppsApplicationAccessIds {
+	s.ApplicationAccessSecret = &v
+	return s
+}
+
+type UpdateProjectResponseBodyDataProjectSDK struct {
+	// example:
+	//
+	// 2024-11-01T13:40:53Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// http://demo.com/demo
+	DemoUrl    *string `json:"DemoUrl,omitempty" xml:"DemoUrl,omitempty"`
+	DeployMode *string `json:"DeployMode,omitempty" xml:"DeployMode,omitempty"`
+	// example:
+	//
+	// PHP
+	DevelopLanguage *string `json:"DevelopLanguage,omitempty" xml:"DevelopLanguage,omitempty"`
+	// example:
+	//
+	// http://demo.com/doc
+	DocUrl  *string `json:"DocUrl,omitempty" xml:"DocUrl,omitempty"`
+	SdkName *string `json:"SdkName,omitempty" xml:"SdkName,omitempty"`
+	// example:
+	//
+	// http://demo.com/sdk.zip
+	SdkUrl *string `json:"SdkUrl,omitempty" xml:"SdkUrl,omitempty"`
+	// example:
+	//
+	// 4.13.0
+	SdkVersion *string `json:"SdkVersion,omitempty" xml:"SdkVersion,omitempty"`
+}
+
+func (s UpdateProjectResponseBodyDataProjectSDK) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProjectResponseBodyDataProjectSDK) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProjectResponseBodyDataProjectSDK) SetCreateTime(v string) *UpdateProjectResponseBodyDataProjectSDK {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *UpdateProjectResponseBodyDataProjectSDK) SetDemoUrl(v string) *UpdateProjectResponseBodyDataProjectSDK {
+	s.DemoUrl = &v
+	return s
+}
+
+func (s *UpdateProjectResponseBodyDataProjectSDK) SetDeployMode(v string) *UpdateProjectResponseBodyDataProjectSDK {
+	s.DeployMode = &v
+	return s
+}
+
+func (s *UpdateProjectResponseBodyDataProjectSDK) SetDevelopLanguage(v string) *UpdateProjectResponseBodyDataProjectSDK {
+	s.DevelopLanguage = &v
+	return s
+}
+
+func (s *UpdateProjectResponseBodyDataProjectSDK) SetDocUrl(v string) *UpdateProjectResponseBodyDataProjectSDK {
+	s.DocUrl = &v
+	return s
+}
+
+func (s *UpdateProjectResponseBodyDataProjectSDK) SetSdkName(v string) *UpdateProjectResponseBodyDataProjectSDK {
+	s.SdkName = &v
+	return s
+}
+
+func (s *UpdateProjectResponseBodyDataProjectSDK) SetSdkUrl(v string) *UpdateProjectResponseBodyDataProjectSDK {
+	s.SdkUrl = &v
+	return s
+}
+
+func (s *UpdateProjectResponseBodyDataProjectSDK) SetSdkVersion(v string) *UpdateProjectResponseBodyDataProjectSDK {
+	s.SdkVersion = &v
+	return s
+}
+
+type UpdateProjectResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateProjectResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateProjectResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProjectResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProjectResponse) SetHeaders(v map[string]*string) *UpdateProjectResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateProjectResponse) SetStatusCode(v int32) *UpdateProjectResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateProjectResponse) SetBody(v *UpdateProjectResponseBody) *UpdateProjectResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -8198,13 +10447,24 @@ func (client *Client) AITeacherExpansionPracticeTaskGenerateWithOptions(request 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AITeacherExpansionPracticeTaskGenerateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AITeacherExpansionPracticeTaskGenerateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AITeacherExpansionPracticeTaskGenerateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -8290,13 +10550,24 @@ func (client *Client) AITeacherSyncPracticeTaskGenerateWithOptions(request *AITe
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AITeacherSyncPracticeTaskGenerateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AITeacherSyncPracticeTaskGenerateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AITeacherSyncPracticeTaskGenerateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -8342,13 +10613,24 @@ func (client *Client) AliyunConsoleOpenApiQueryAliyunConsoleServcieListWithOptio
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AliyunConsoleOpenApiQueryAliyunConsoleServcieListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AliyunConsoleOpenApiQueryAliyunConsoleServcieListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AliyunConsoleOpenApiQueryAliyunConsoleServcieListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -8385,20 +10667,31 @@ func (client *Client) AliyunConsoleOpenApiQueryAliyunConsoleServiceListWithOptio
 		Action:      tea.String("AliyunConsoleOpenApiQueryAliyunConsoleServiceList"),
 		Version:     tea.String("20240611"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/aliyunconsole/queryAliyunConsoleServiceList"),
+		Pathname:    tea.String("/api/v1/aliyunConsole/queryAliyunConsoleServiceList"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -8411,6 +10704,510 @@ func (client *Client) AliyunConsoleOpenApiQueryAliyunConsoleServiceList() (_resu
 	headers := make(map[string]*string)
 	_result = &AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponse{}
 	_body, _err := client.AliyunConsoleOpenApiQueryAliyunConsoleServiceListWithOptions(headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 阿里云控制台/授权凭证创建
+//
+// @param request - CreateAccessWarrantRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAccessWarrantResponse
+func (client *Client) CreateAccessWarrantWithOptions(request *CreateAccessWarrantRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateAccessWarrantResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		body["appId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestSign)) {
+		body["requestSign"] = request.RequestSign
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Timestamp)) {
+		body["timestamp"] = request.Timestamp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserClientIp)) {
+		body["userClientIp"] = request.UserClientIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		body["userId"] = request.UserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WarrantAvailable)) {
+		body["warrantAvailable"] = request.WarrantAvailable
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAccessWarrant"),
+		Version:     tea.String("20240611"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/aliyunConsole/createAccessWarrant"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateAccessWarrantResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateAccessWarrantResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 阿里云控制台/授权凭证创建
+//
+// @param request - CreateAccessWarrantRequest
+//
+// @return CreateAccessWarrantResponse
+func (client *Client) CreateAccessWarrant(request *CreateAccessWarrantRequest) (_result *CreateAccessWarrantResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateAccessWarrantResponse{}
+	_body, _err := client.CreateAccessWarrantWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 阿里云控制台/创建项目
+//
+// @param request - CreateProjectRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateProjectResponse
+func (client *Client) CreateProjectWithOptions(request *CreateProjectRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateProjectResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		body["projectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectType)) {
+		body["projectType"] = request.ProjectType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateProject"),
+		Version:     tea.String("20240611"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/aliyunConsole/createProject"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateProjectResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateProjectResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 阿里云控制台/创建项目
+//
+// @param request - CreateProjectRequest
+//
+// @return CreateProjectResponse
+func (client *Client) CreateProject(request *CreateProjectRequest) (_result *CreateProjectResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateProjectResponse{}
+	_body, _err := client.CreateProjectWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 中文作文辅导
+//
+// @param request - ExecuteAITeacherChineseCompositionTutoringWorkflowRunRequest
+//
+// @param headers - ExecuteAITeacherChineseCompositionTutoringWorkflowRunHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExecuteAITeacherChineseCompositionTutoringWorkflowRunResponse
+func (client *Client) ExecuteAITeacherChineseCompositionTutoringWorkflowRunWithOptions(request *ExecuteAITeacherChineseCompositionTutoringWorkflowRunRequest, headers *ExecuteAITeacherChineseCompositionTutoringWorkflowRunHeaders, runtime *util.RuntimeOptions) (_result *ExecuteAITeacherChineseCompositionTutoringWorkflowRunResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EssayOutline)) {
+		body["essayOutline"] = request.EssayOutline
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EssayRequirements)) {
+		body["essayRequirements"] = request.EssayRequirements
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EssayTopic)) {
+		body["essayTopic"] = request.EssayTopic
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EssayType)) {
+		body["essayType"] = request.EssayType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EssayWordCount)) {
+		body["essayWordCount"] = request.EssayWordCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Grade)) {
+		body["grade"] = request.Grade
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResponseMode)) {
+		body["responseMode"] = request.ResponseMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		body["userId"] = request.UserId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.CallerParentId)) {
+		realHeaders["callerParentId"] = util.ToJSONString(headers.CallerParentId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.CallerType)) {
+		realHeaders["callerType"] = util.ToJSONString(headers.CallerType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.CallerUid)) {
+		realHeaders["callerUid"] = util.ToJSONString(headers.CallerUid)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.StsTokenCallerUid)) {
+		realHeaders["stsTokenCallerUid"] = util.ToJSONString(headers.StsTokenCallerUid)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExecuteAITeacherChineseCompositionTutoringWorkflowRun"),
+		Version:     tea.String("20240611"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/api/v1/intelligentAgent/chineseCompositionTutoring/workflowRun"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ExecuteAITeacherChineseCompositionTutoringWorkflowRunResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ExecuteAITeacherChineseCompositionTutoringWorkflowRunResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 中文作文辅导
+//
+// @param request - ExecuteAITeacherChineseCompositionTutoringWorkflowRunRequest
+//
+// @return ExecuteAITeacherChineseCompositionTutoringWorkflowRunResponse
+func (client *Client) ExecuteAITeacherChineseCompositionTutoringWorkflowRun(request *ExecuteAITeacherChineseCompositionTutoringWorkflowRunRequest) (_result *ExecuteAITeacherChineseCompositionTutoringWorkflowRunResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ExecuteAITeacherChineseCompositionTutoringWorkflowRunHeaders{}
+	_result = &ExecuteAITeacherChineseCompositionTutoringWorkflowRunResponse{}
+	_body, _err := client.ExecuteAITeacherChineseCompositionTutoringWorkflowRunWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 英语作文辅导
+//
+// @param request - ExecuteAITeacherEnglishCompositionTutoringWorkflowRunRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExecuteAITeacherEnglishCompositionTutoringWorkflowRunResponse
+func (client *Client) ExecuteAITeacherEnglishCompositionTutoringWorkflowRunWithOptions(request *ExecuteAITeacherEnglishCompositionTutoringWorkflowRunRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ExecuteAITeacherEnglishCompositionTutoringWorkflowRunResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EssayOutline)) {
+		body["essayOutline"] = request.EssayOutline
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EssayRequirements)) {
+		body["essayRequirements"] = request.EssayRequirements
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EssayTopic)) {
+		body["essayTopic"] = request.EssayTopic
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EssayType)) {
+		body["essayType"] = request.EssayType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EssayWordCount)) {
+		body["essayWordCount"] = request.EssayWordCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Grade)) {
+		body["grade"] = request.Grade
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResponseMode)) {
+		body["responseMode"] = request.ResponseMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		body["userId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExecuteAITeacherEnglishCompositionTutoringWorkflowRun"),
+		Version:     tea.String("20240611"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/api/v1/intelligentAgent/englishCompositionTutoring/workflowRun"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ExecuteAITeacherEnglishCompositionTutoringWorkflowRunResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ExecuteAITeacherEnglishCompositionTutoringWorkflowRunResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 英语作文辅导
+//
+// @param request - ExecuteAITeacherEnglishCompositionTutoringWorkflowRunRequest
+//
+// @return ExecuteAITeacherEnglishCompositionTutoringWorkflowRunResponse
+func (client *Client) ExecuteAITeacherEnglishCompositionTutoringWorkflowRun(request *ExecuteAITeacherEnglishCompositionTutoringWorkflowRunRequest) (_result *ExecuteAITeacherEnglishCompositionTutoringWorkflowRunResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ExecuteAITeacherEnglishCompositionTutoringWorkflowRunResponse{}
+	_body, _err := client.ExecuteAITeacherEnglishCompositionTutoringWorkflowRunWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 英文释义
+//
+// @param request - ExecuteAITeacherEnglishParaphraseChatMessageRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExecuteAITeacherEnglishParaphraseChatMessageResponse
+func (client *Client) ExecuteAITeacherEnglishParaphraseChatMessageWithOptions(request *ExecuteAITeacherEnglishParaphraseChatMessageRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ExecuteAITeacherEnglishParaphraseChatMessageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ChatId)) {
+		body["chatId"] = request.ChatId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		body["content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Grade)) {
+		body["grade"] = request.Grade
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QuestionId)) {
+		body["questionId"] = request.QuestionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QuestionInfo)) {
+		body["questionInfo"] = request.QuestionInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResponseMode)) {
+		body["responseMode"] = request.ResponseMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserAnswer)) {
+		body["userAnswer"] = request.UserAnswer
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		body["userId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExecuteAITeacherEnglishParaphraseChatMessage"),
+		Version:     tea.String("20240611"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/api/v1/intelligentAgent/englishParaphrase/chatMessage"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ExecuteAITeacherEnglishParaphraseChatMessageResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ExecuteAITeacherEnglishParaphraseChatMessageResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 英文释义
+//
+// @param request - ExecuteAITeacherEnglishParaphraseChatMessageRequest
+//
+// @return ExecuteAITeacherEnglishParaphraseChatMessageResponse
+func (client *Client) ExecuteAITeacherEnglishParaphraseChatMessage(request *ExecuteAITeacherEnglishParaphraseChatMessageRequest) (_result *ExecuteAITeacherEnglishParaphraseChatMessageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ExecuteAITeacherEnglishParaphraseChatMessageResponse{}
+	_body, _err := client.ExecuteAITeacherEnglishParaphraseChatMessageWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8482,13 +11279,24 @@ func (client *Client) ExecuteAITeacherExpansionDialogueWithOptions(request *Exec
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ExecuteAITeacherExpansionDialogueResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ExecuteAITeacherExpansionDialogueResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ExecuteAITeacherExpansionDialogueResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -8574,13 +11382,24 @@ func (client *Client) ExecuteAITeacherExpansionDialogueRefineWithOptions(request
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ExecuteAITeacherExpansionDialogueRefineResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ExecuteAITeacherExpansionDialogueRefineResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ExecuteAITeacherExpansionDialogueRefineResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -8662,13 +11481,24 @@ func (client *Client) ExecuteAITeacherExpansionDialogueTranslateWithOptions(requ
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ExecuteAITeacherExpansionDialogueTranslateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ExecuteAITeacherExpansionDialogueTranslateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ExecuteAITeacherExpansionDialogueTranslateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -8730,13 +11560,24 @@ func (client *Client) ExecuteAITeacherGrammarCheckWithOptions(request *ExecuteAI
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ExecuteAITeacherGrammarCheckResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ExecuteAITeacherGrammarCheckResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ExecuteAITeacherGrammarCheckResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -8806,13 +11647,24 @@ func (client *Client) ExecuteAITeacherSyncDialogueWithOptions(request *ExecuteAI
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ExecuteAITeacherSyncDialogueResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ExecuteAITeacherSyncDialogueResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ExecuteAITeacherSyncDialogueResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -8878,13 +11730,24 @@ func (client *Client) ExecuteAITeacherSyncDialogueTranslateWithOptions(request *
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ExecuteAITeacherSyncDialogueTranslateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ExecuteAITeacherSyncDialogueTranslateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ExecuteAITeacherSyncDialogueTranslateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -8954,13 +11817,24 @@ func (client *Client) ExecuteTextbookAssistantDialogueWithOptions(request *Execu
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ExecuteTextbookAssistantDialogueResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ExecuteTextbookAssistantDialogueResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ExecuteTextbookAssistantDialogueResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9034,13 +11908,24 @@ func (client *Client) ExecuteTextbookAssistantDifficultyWithOptions(request *Exe
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ExecuteTextbookAssistantDifficultyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ExecuteTextbookAssistantDifficultyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ExecuteTextbookAssistantDifficultyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9110,13 +11995,24 @@ func (client *Client) ExecuteTextbookAssistantGrammarCheckWithOptions(request *E
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ExecuteTextbookAssistantGrammarCheckResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ExecuteTextbookAssistantGrammarCheckResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ExecuteTextbookAssistantGrammarCheckResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9186,13 +12082,24 @@ func (client *Client) ExecuteTextbookAssistantRefineByContextWithOptions(request
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ExecuteTextbookAssistantRefineByContextResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ExecuteTextbookAssistantRefineByContextResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ExecuteTextbookAssistantRefineByContextResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9262,13 +12169,24 @@ func (client *Client) ExecuteTextbookAssistantRetryConversationWithOptions(reque
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ExecuteTextbookAssistantRetryConversationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ExecuteTextbookAssistantRetryConversationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ExecuteTextbookAssistantRetryConversationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9334,13 +12252,24 @@ func (client *Client) ExecuteTextbookAssistantStartConversationWithOptions(reque
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ExecuteTextbookAssistantStartConversationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ExecuteTextbookAssistantStartConversationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ExecuteTextbookAssistantStartConversationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9410,13 +12339,24 @@ func (client *Client) ExecuteTextbookAssistantSuggestionWithOptions(request *Exe
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ExecuteTextbookAssistantSuggestionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ExecuteTextbookAssistantSuggestionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ExecuteTextbookAssistantSuggestionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9486,13 +12426,24 @@ func (client *Client) ExecuteTextbookAssistantTranslateWithOptions(request *Exec
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ExecuteTextbookAssistantTranslateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ExecuteTextbookAssistantTranslateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ExecuteTextbookAssistantTranslateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9578,13 +12529,24 @@ func (client *Client) GetAITeacherExpansionDialogueSuggestionWithOptions(request
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetAITeacherExpansionDialogueSuggestionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetAITeacherExpansionDialogueSuggestionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetAITeacherExpansionDialogueSuggestionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9654,13 +12616,24 @@ func (client *Client) GetAITeacherSyncDialogueSuggestionWithOptions(request *Get
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetAITeacherSyncDialogueSuggestionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetAITeacherSyncDialogueSuggestionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetAITeacherSyncDialogueSuggestionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9722,13 +12695,24 @@ func (client *Client) GetTextbookAssistantTokenWithOptions(request *GetTextbookA
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetTextbookAssistantTokenResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetTextbookAssistantTokenResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetTextbookAssistantTokenResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9790,13 +12774,24 @@ func (client *Client) ListTextbookAssistantArticlesWithOptions(request *ListText
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListTextbookAssistantArticlesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListTextbookAssistantArticlesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListTextbookAssistantArticlesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9862,13 +12857,24 @@ func (client *Client) ListTextbookAssistantBookDirectoriesWithOptions(request *L
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListTextbookAssistantBookDirectoriesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListTextbookAssistantBookDirectoriesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListTextbookAssistantBookDirectoriesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -9950,13 +12956,24 @@ func (client *Client) ListTextbookAssistantBooksWithOptions(request *ListTextboo
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListTextbookAssistantBooksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListTextbookAssistantBooksResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListTextbookAssistantBooksResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -10018,13 +13035,24 @@ func (client *Client) ListTextbookAssistantGradeVolumesWithOptions(request *List
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListTextbookAssistantGradeVolumesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListTextbookAssistantGradeVolumesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListTextbookAssistantGradeVolumesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -10102,13 +13130,24 @@ func (client *Client) PersonalizedTextToImageAddInferenceJobWithOptions(request 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &PersonalizedTextToImageAddInferenceJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &PersonalizedTextToImageAddInferenceJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &PersonalizedTextToImageAddInferenceJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -10170,13 +13209,24 @@ func (client *Client) PersonalizedTextToImageQueryImageAssetWithOptions(request 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("any"),
 	}
-	_result = &PersonalizedTextToImageQueryImageAssetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &PersonalizedTextToImageQueryImageAssetResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &PersonalizedTextToImageQueryImageAssetResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -10234,13 +13284,24 @@ func (client *Client) PersonalizedTextToImageQueryPreModelInferenceJobInfoWithOp
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &PersonalizedTextToImageQueryPreModelInferenceJobInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &PersonalizedTextToImageQueryPreModelInferenceJobInfoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &PersonalizedTextToImageQueryPreModelInferenceJobInfoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -10310,13 +13371,24 @@ func (client *Client) Personalizedtxt2imgAddInferenceJobWithOptions(request *Per
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &Personalizedtxt2imgAddInferenceJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &Personalizedtxt2imgAddInferenceJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &Personalizedtxt2imgAddInferenceJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -10386,13 +13458,24 @@ func (client *Client) Personalizedtxt2imgAddModelTrainJobWithOptions(request *Pe
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &Personalizedtxt2imgAddModelTrainJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &Personalizedtxt2imgAddModelTrainJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &Personalizedtxt2imgAddModelTrainJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -10462,13 +13545,24 @@ func (client *Client) Personalizedtxt2imgQueryImageAssetWithOptions(request *Per
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("any"),
 	}
-	_result = &Personalizedtxt2imgQueryImageAssetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &Personalizedtxt2imgQueryImageAssetResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &Personalizedtxt2imgQueryImageAssetResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -10526,13 +13620,24 @@ func (client *Client) Personalizedtxt2imgQueryInferenceJobInfoWithOptions(reques
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &Personalizedtxt2imgQueryInferenceJobInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &Personalizedtxt2imgQueryInferenceJobInfoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &Personalizedtxt2imgQueryInferenceJobInfoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -10578,13 +13683,24 @@ func (client *Client) Personalizedtxt2imgQueryModelTrainJobListWithOptions(heade
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &Personalizedtxt2imgQueryModelTrainJobListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &Personalizedtxt2imgQueryModelTrainJobListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &Personalizedtxt2imgQueryModelTrainJobListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -10640,13 +13756,24 @@ func (client *Client) Personalizedtxt2imgQueryModelTrainStatusWithOptions(reques
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &Personalizedtxt2imgQueryModelTrainStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &Personalizedtxt2imgQueryModelTrainStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &Personalizedtxt2imgQueryModelTrainStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -10661,6 +13788,357 @@ func (client *Client) Personalizedtxt2imgQueryModelTrainStatus(request *Personal
 	headers := make(map[string]*string)
 	_result = &Personalizedtxt2imgQueryModelTrainStatusResponse{}
 	_body, _err := client.Personalizedtxt2imgQueryModelTrainStatusWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 阿里云控制台/获取应用访问识别码(appkey)信息
+//
+// @param request - QueryApplicationAccessIdRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryApplicationAccessIdResponse
+func (client *Client) QueryApplicationAccessIdWithOptions(request *QueryApplicationAccessIdRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryApplicationAccessIdResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApplicationAccessId)) {
+		query["applicationAccessId"] = request.ApplicationAccessId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryApplicationAccessId"),
+		Version:     tea.String("20240611"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/aliyunConsole/queryApplicationAccessId"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &QueryApplicationAccessIdResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &QueryApplicationAccessIdResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 阿里云控制台/获取应用访问识别码(appkey)信息
+//
+// @param request - QueryApplicationAccessIdRequest
+//
+// @return QueryApplicationAccessIdResponse
+func (client *Client) QueryApplicationAccessId(request *QueryApplicationAccessIdRequest) (_result *QueryApplicationAccessIdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &QueryApplicationAccessIdResponse{}
+	_body, _err := client.QueryApplicationAccessIdWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 阿里云控制台/获取项目列表
+//
+// @param request - QueryProjectRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryProjectResponse
+func (client *Client) QueryProjectWithOptions(request *QueryProjectRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryProjectResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["projectId"] = request.ProjectId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryProject"),
+		Version:     tea.String("20240611"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/aliyunConsole/queryProject"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &QueryProjectResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &QueryProjectResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 阿里云控制台/获取项目列表
+//
+// @param request - QueryProjectRequest
+//
+// @return QueryProjectResponse
+func (client *Client) QueryProject(request *QueryProjectRequest) (_result *QueryProjectResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &QueryProjectResponse{}
+	_body, _err := client.QueryProjectWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 阿里云控制台/获取项目列表
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryProjectListResponse
+func (client *Client) QueryProjectListWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryProjectListResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryProjectList"),
+		Version:     tea.String("20240611"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/aliyunConsole/queryProjectList"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &QueryProjectListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &QueryProjectListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 阿里云控制台/获取项目列表
+//
+// @return QueryProjectListResponse
+func (client *Client) QueryProjectList() (_result *QueryProjectListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &QueryProjectListResponse{}
+	_body, _err := client.QueryProjectListWithOptions(headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 阿里云控制台/已经购买过的服务项目
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryPurchasedServiceResponse
+func (client *Client) QueryPurchasedServiceWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryPurchasedServiceResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryPurchasedService"),
+		Version:     tea.String("20240611"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/aliyunConsole/queryPurchasedService"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &QueryPurchasedServiceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &QueryPurchasedServiceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 阿里云控制台/已经购买过的服务项目
+//
+// @return QueryPurchasedServiceResponse
+func (client *Client) QueryPurchasedService() (_result *QueryPurchasedServiceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &QueryPurchasedServiceResponse{}
+	_body, _err := client.QueryPurchasedServiceWithOptions(headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 阿里云控制台/更新项目信息
+//
+// @param request - UpdateProjectRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateProjectResponse
+func (client *Client) UpdateProjectWithOptions(request *UpdateProjectRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateProjectResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["projectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		body["projectName"] = request.ProjectName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateProject"),
+		Version:     tea.String("20240611"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/aliyunConsole/updateProject"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateProjectResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateProjectResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 阿里云控制台/更新项目信息
+//
+// @param request - UpdateProjectRequest
+//
+// @return UpdateProjectResponse
+func (client *Client) UpdateProject(request *UpdateProjectRequest) (_result *UpdateProjectResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateProjectResponse{}
+	_body, _err := client.UpdateProjectWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
