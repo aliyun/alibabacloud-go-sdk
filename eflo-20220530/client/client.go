@@ -2372,6 +2372,11 @@ func (s *CreateVccGrantRuleRequest) SetRegionId(v string) *CreateVccGrantRuleReq
 }
 
 type CreateVccGrantRuleResponseBody struct {
+	// The details about the access denial. This parameter is returned only if Resource Access Management (RAM) permission verification failed.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -2839,6 +2844,11 @@ func (s *CreateVpdRequestTag) SetValue(v string) *CreateVpdRequestTag {
 }
 
 type CreateVpdResponseBody struct {
+	// The details about the failed permission verification.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -3343,6 +3353,11 @@ func (s *DeleteErRequest) SetRegionId(v string) *DeleteErRequest {
 }
 
 type DeleteErResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -3483,6 +3498,11 @@ func (s *DeleteErAttachmentRequest) SetRegionId(v string) *DeleteErAttachmentReq
 }
 
 type DeleteErAttachmentResponseBody struct {
+	// 访问被拒绝的详细原因。
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -3661,6 +3681,11 @@ func (s *DeleteErRouteMapRequest) SetRegionId(v string) *DeleteErRouteMapRequest
 }
 
 type DeleteErRouteMapResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -3814,6 +3839,11 @@ func (s *DeleteSubnetRequest) SetZoneId(v string) *DeleteSubnetRequest {
 }
 
 type DeleteSubnetResponseBody struct {
+	// The detailed reason why the access was denied.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -3971,6 +4001,13 @@ func (s *DeleteVccGrantRuleRequest) SetRegionId(v string) *DeleteVccGrantRuleReq
 }
 
 type DeleteVccGrantRuleResponseBody struct {
+	// The details about the access denial.
+	//
+	// >  This parameter is returned only if Resource Access Management (RAM) permission verification failed.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -4558,6 +4595,11 @@ func (s *DescribeSlrRequest) SetResourceGroupId(v string) *DescribeSlrRequest {
 }
 
 type DescribeSlrResponseBody struct {
+	// The information about the request denial.
+	//
+	// example:
+	//
+	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -4716,6 +4758,11 @@ func (s *DetachElasticNetworkInterfaceRequest) SetRegionId(v string) *DetachElas
 }
 
 type DetachElasticNetworkInterfaceResponseBody struct {
+	// The detailed reason why the access was denied.
+	//
+	// example:
+	//
+	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -4832,6 +4879,11 @@ func (s *GetDestinationCidrBlockRequest) SetRegionId(v string) *GetDestinationCi
 }
 
 type GetDestinationCidrBlockResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code
 	//
@@ -5562,6 +5614,11 @@ func (s *GetErRequest) SetRegionId(v string) *GetErRequest {
 }
 
 type GetErResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -6446,6 +6503,11 @@ func (s *GetErAttachmentRequest) SetRegionId(v string) *GetErAttachmentRequest {
 }
 
 type GetErAttachmentResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -6793,6 +6855,11 @@ func (s *GetErRouteEntryRequest) SetRegionId(v string) *GetErRouteEntryRequest {
 }
 
 type GetErRouteEntryResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -8119,7 +8186,12 @@ type GetLniPrivateIpAddressResponseBodyContent struct {
 	// example:
 	//
 	// Available
-	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The subnet instance ID.
+	//
+	// example:
+	//
+	// subnet-aj93mko8
 	SubnetId *string `json:"SubnetId,omitempty" xml:"SubnetId,omitempty"`
 }
 
@@ -9622,8 +9694,13 @@ type GetVccResponseBodyContent struct {
 	// example:
 	//
 	// true
-	AttachErStatus *bool  `json:"AttachErStatus,omitempty" xml:"AttachErStatus,omitempty"`
-	Bandwidth      *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	AttachErStatus *bool `json:"AttachErStatus,omitempty" xml:"AttachErStatus,omitempty"`
+	// bandwidth
+	//
+	// example:
+	//
+	// 20
+	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The bandwidth of the port.
 	//
 	// example:
@@ -10735,6 +10812,11 @@ func (s *GetVccGrantRuleRequest) SetRegionId(v string) *GetVccGrantRuleRequest {
 }
 
 type GetVccGrantRuleResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -11282,6 +11364,11 @@ func (s *GetVpdRequest) SetVpdId(v string) *GetVpdRequest {
 }
 
 type GetVpdResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -12383,6 +12470,11 @@ func (s *InitializeVccRequest) SetResourceGroupId(v string) *InitializeVccReques
 }
 
 type InitializeVccResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -13177,6 +13269,11 @@ func (s *ListErAttachmentsRequest) SetStatus(v string) *ListErAttachmentsRequest
 }
 
 type ListErAttachmentsResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -13661,6 +13758,11 @@ func (s *ListErRouteEntriesRequest) SetStatus(v string) *ListErRouteEntriesReque
 }
 
 type ListErRouteEntriesResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -14126,6 +14228,11 @@ func (s *ListErRouteMapsRequest) SetTransmissionInstanceType(v string) *ListErRo
 }
 
 type ListErRouteMapsResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -14638,6 +14745,11 @@ func (s *ListErsRequest) SetResourceGroupId(v string) *ListErsRequest {
 }
 
 type ListErsResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -14976,6 +15088,11 @@ func (s *ListInstancesByNcdRequest) SetRegionId(v string) *ListInstancesByNcdReq
 }
 
 type ListInstancesByNcdResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -15242,6 +15359,11 @@ func (s *ListLeniPrivateIpAddressesRequest) SetStatus(v string) *ListLeniPrivate
 }
 
 type ListLeniPrivateIpAddressesResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -15568,6 +15690,11 @@ func (s *ListLniPrivateIpAddressRequest) SetRegionId(v string) *ListLniPrivateIp
 }
 
 type ListLniPrivateIpAddressResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -15905,6 +16032,11 @@ func (s *ListNetworkInterfacesRequest) SetVpdId(v string) *ListNetworkInterfaces
 }
 
 type ListNetworkInterfacesResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -16472,6 +16604,11 @@ func (s *ListNodeInfosForPodRequest) SetZoneId(v string) *ListNodeInfosForPodReq
 }
 
 type ListNodeInfosForPodResponseBody struct {
+	// The information about the request denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -16879,6 +17016,11 @@ func (s *ListSubnetsRequestTag) SetValue(v string) *ListSubnetsRequestTag {
 }
 
 type ListSubnetsResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -17403,6 +17545,11 @@ func (s *ListVccFlowInfosRequest) SetVccId(v string) *ListVccFlowInfosRequest {
 }
 
 type ListVccFlowInfosResponseBody struct {
+	// 访问被拒绝的详细原因。
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -17733,6 +17880,11 @@ func (s *ListVccGrantRulesRequest) SetResourceGroupId(v string) *ListVccGrantRul
 }
 
 type ListVccGrantRulesResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -18146,6 +18298,11 @@ func (s *ListVccRouteEntriesRequest) SetVpdRouteEntryId(v string) *ListVccRouteE
 }
 
 type ListVccRouteEntriesResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -18629,6 +18786,11 @@ func (s *ListVccsRequestTag) SetValue(v string) *ListVccsRequestTag {
 }
 
 type ListVccsResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -19470,6 +19632,11 @@ func (s *ListVpdGrantRulesRequest) SetResourceGroupId(v string) *ListVpdGrantRul
 }
 
 type ListVpdGrantRulesResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The HTTP status code.
 	//
@@ -20365,6 +20532,11 @@ func (s *ListVpdsRequestTag) SetValue(v string) *ListVpdsRequestTag {
 }
 
 type ListVpdsResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -20934,6 +21106,11 @@ func (s *QueryInstanceNcdRequest) SetRegionId(v string) *QueryInstanceNcdRequest
 }
 
 type QueryInstanceNcdResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -21114,6 +21291,13 @@ func (s *RefundVccRequest) SetVccId(v string) *RefundVccRequest {
 }
 
 type RefundVccResponseBody struct {
+	// The details about the access denial.
+	//
+	// >  This parameter is returned only if Resource Access Management (RAM) permission verification failed.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code
 	//
@@ -21591,6 +21775,11 @@ func (s *UnAssociateVpdCidrBlockRequest) SetVpdId(v string) *UnAssociateVpdCidrB
 }
 
 type UnAssociateVpdCidrBlockResponseBody struct {
+	// 访问被拒绝详细信息。
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response status code.
 	//
@@ -23318,9 +23507,9 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // Apply for a secondary private IP address for the specified Lingjun Elastic Network Interface.
 //
-// 	- If the PrivateIp field is empty, a secondary private IP address is automatically assigned and the unique identifier of the IP address is returned.
+//   - If the PrivateIp field is empty, a secondary private IP address is automatically assigned and the unique identifier of the IP address is returned.
 //
-// 	- You can use the GetLeniPrivateIpAddress or ListLeniPrivateIpAddresses interface to check whether the secondary private IP address is assigned.
+//   - You can use the GetLeniPrivateIpAddress or ListLeniPrivateIpAddresses interface to check whether the secondary private IP address is assigned.
 //
 // @param request - AssignLeniPrivateIpAddressRequest
 //
@@ -23395,9 +23584,9 @@ func (client *Client) AssignLeniPrivateIpAddressWithOptions(request *AssignLeniP
 //
 // Apply for a secondary private IP address for the specified Lingjun Elastic Network Interface.
 //
-// 	- If the PrivateIp field is empty, a secondary private IP address is automatically assigned and the unique identifier of the IP address is returned.
+//   - If the PrivateIp field is empty, a secondary private IP address is automatically assigned and the unique identifier of the IP address is returned.
 //
-// 	- You can use the GetLeniPrivateIpAddress or ListLeniPrivateIpAddresses interface to check whether the secondary private IP address is assigned.
+//   - You can use the GetLeniPrivateIpAddress or ListLeniPrivateIpAddresses interface to check whether the secondary private IP address is assigned.
 //
 // @param request - AssignLeniPrivateIpAddressRequest
 //
@@ -23421,9 +23610,9 @@ func (client *Client) AssignLeniPrivateIpAddress(request *AssignLeniPrivateIpAdd
 //
 // >  Apply for secondary private IP addresses
 //
-// 	- By default, each network interface controller can apply for three secondary private IP addresses. If the quota is exceeded, contact the administrator.
+//   - By default, each network interface controller can apply for three secondary private IP addresses. If the quota is exceeded, contact the administrator.
 //
-// 	- The secondary private IP address is allocated from the Lingjun subnet to which the current network interface controller belongs. The first address and the last two addresses belong to reserved addresses and do not participate in the allocation.
+//   - The secondary private IP address is allocated from the Lingjun subnet to which the current network interface controller belongs. The first address and the last two addresses belong to reserved addresses and do not participate in the allocation.
 //
 // @param request - AssignPrivateIpAddressRequest
 //
@@ -23510,9 +23699,9 @@ func (client *Client) AssignPrivateIpAddressWithOptions(request *AssignPrivateIp
 //
 // >  Apply for secondary private IP addresses
 //
-// 	- By default, each network interface controller can apply for three secondary private IP addresses. If the quota is exceeded, contact the administrator.
+//   - By default, each network interface controller can apply for three secondary private IP addresses. If the quota is exceeded, contact the administrator.
 //
-// 	- The secondary private IP address is allocated from the Lingjun subnet to which the current network interface controller belongs. The first address and the last two addresses belong to reserved addresses and do not participate in the allocation.
+//   - The secondary private IP address is allocated from the Lingjun subnet to which the current network interface controller belongs. The first address and the last two addresses belong to reserved addresses and do not participate in the allocation.
 //
 // @param request - AssignPrivateIpAddressRequest
 //
@@ -23536,13 +23725,13 @@ func (client *Client) AssignPrivateIpAddress(request *AssignPrivateIpAddressRequ
 //
 // >  **Add a CIDR block**
 //
-// 	- The CIDR block cannot start with 0. The subnet mask must be 8 to 28 bits in length.
+//   - The CIDR block cannot start with 0. The subnet mask must be 8 to 28 bits in length.
 //
-// 	- The secondary IPv4 CIDR block must not overlap with the primary IPv4 CIDR block of the Lingjun CIDR block and the added secondary IPv4 CIDR block.
+//   - The secondary IPv4 CIDR block must not overlap with the primary IPv4 CIDR block of the Lingjun CIDR block and the added secondary IPv4 CIDR block.
 //
-// 	- You cannot use 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, or 169.254.0.0/16 as the CIDR block of Lingjun. Example: In the Lingjun CIDR block whose primary IPv4 CIDR block is 192.168.0.0/16, you cannot add the following CIDR blocks as additional IPv4 CIDR blocks. The CIDR block that is in the same range as 192.168.0.0/16. A CIDR block that is larger than 192.168.0.0/16. Example: 192.168.0.0/8. A CIDR block that is smaller than 192.168.0.0/16. Example: 192.168.0.0/24.
+//   - You cannot use 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, or 169.254.0.0/16 as the CIDR block of Lingjun. Example: In the Lingjun CIDR block whose primary IPv4 CIDR block is 192.168.0.0/16, you cannot add the following CIDR blocks as additional IPv4 CIDR blocks. The CIDR block that is in the same range as 192.168.0.0/16. A CIDR block that is larger than 192.168.0.0/16. Example: 192.168.0.0/8. A CIDR block that is smaller than 192.168.0.0/16. Example: 192.168.0.0/24.
 //
-// 	- By default, each tenant can create three additional CIDR blocks in each region.
+//   - By default, each tenant can create three additional CIDR blocks in each region.
 //
 // @param request - AssociateVpdCidrBlockRequest
 //
@@ -23609,13 +23798,13 @@ func (client *Client) AssociateVpdCidrBlockWithOptions(request *AssociateVpdCidr
 //
 // >  **Add a CIDR block**
 //
-// 	- The CIDR block cannot start with 0. The subnet mask must be 8 to 28 bits in length.
+//   - The CIDR block cannot start with 0. The subnet mask must be 8 to 28 bits in length.
 //
-// 	- The secondary IPv4 CIDR block must not overlap with the primary IPv4 CIDR block of the Lingjun CIDR block and the added secondary IPv4 CIDR block.
+//   - The secondary IPv4 CIDR block must not overlap with the primary IPv4 CIDR block of the Lingjun CIDR block and the added secondary IPv4 CIDR block.
 //
-// 	- You cannot use 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, or 169.254.0.0/16 as the CIDR block of Lingjun. Example: In the Lingjun CIDR block whose primary IPv4 CIDR block is 192.168.0.0/16, you cannot add the following CIDR blocks as additional IPv4 CIDR blocks. The CIDR block that is in the same range as 192.168.0.0/16. A CIDR block that is larger than 192.168.0.0/16. Example: 192.168.0.0/8. A CIDR block that is smaller than 192.168.0.0/16. Example: 192.168.0.0/24.
+//   - You cannot use 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, or 169.254.0.0/16 as the CIDR block of Lingjun. Example: In the Lingjun CIDR block whose primary IPv4 CIDR block is 192.168.0.0/16, you cannot add the following CIDR blocks as additional IPv4 CIDR blocks. The CIDR block that is in the same range as 192.168.0.0/16. A CIDR block that is larger than 192.168.0.0/16. Example: 192.168.0.0/8. A CIDR block that is smaller than 192.168.0.0/16. Example: 192.168.0.0/24.
 //
-// 	- By default, each tenant can create three additional CIDR blocks in each region.
+//   - By default, each tenant can create three additional CIDR blocks in each region.
 //
 // @param request - AssociateVpdCidrBlockRequest
 //
@@ -23829,13 +24018,13 @@ func (client *Client) CreateElasticNetworkInterface(request *CreateElasticNetwor
 //
 // When you call this operation to create a Lingjun HUB, note that:
 //
-// 	- Make sure that you have sufficient Lingjun HUB quota.
+//   - Make sure that you have sufficient Lingjun HUB quota.
 //
-// 	- This interface is an asynchronous interface. After this interface is called, the system will return the ID of a Lingjun HUB. At this time, the Lingjun HUB instance may not be created yet, and the system background creation task is still in progress. You can call the ListErs or GetEr operation to query the status of the Lingjun HUB.
+//   - This interface is an asynchronous interface. After this interface is called, the system will return the ID of a Lingjun HUB. At this time, the Lingjun HUB instance may not be created yet, and the system background creation task is still in progress. You can call the ListErs or GetEr operation to query the status of the Lingjun HUB.
 //
-//     	- If the status of the Lingjun HUB is Executing, it indicates that it is being created.
+//   - If the status of the Lingjun HUB is Executing, it indicates that it is being created.
 //
-//     	- If the status of the Lingjun HUB is Available, the creation is successful.
+//   - If the status of the Lingjun HUB is Available, the creation is successful.
 //
 // @param request - CreateErRequest
 //
@@ -23910,13 +24099,13 @@ func (client *Client) CreateErWithOptions(request *CreateErRequest, runtime *uti
 //
 // When you call this operation to create a Lingjun HUB, note that:
 //
-// 	- Make sure that you have sufficient Lingjun HUB quota.
+//   - Make sure that you have sufficient Lingjun HUB quota.
 //
-// 	- This interface is an asynchronous interface. After this interface is called, the system will return the ID of a Lingjun HUB. At this time, the Lingjun HUB instance may not be created yet, and the system background creation task is still in progress. You can call the ListErs or GetEr operation to query the status of the Lingjun HUB.
+//   - This interface is an asynchronous interface. After this interface is called, the system will return the ID of a Lingjun HUB. At this time, the Lingjun HUB instance may not be created yet, and the system background creation task is still in progress. You can call the ListErs or GetEr operation to query the status of the Lingjun HUB.
 //
-//     	- If the status of the Lingjun HUB is Executing, it indicates that it is being created.
+//   - If the status of the Lingjun HUB is Executing, it indicates that it is being created.
 //
-//     	- If the status of the Lingjun HUB is Available, the creation is successful.
+//   - If the status of the Lingjun HUB is Available, the creation is successful.
 //
 // @param request - CreateErRequest
 //
@@ -23940,15 +24129,15 @@ func (client *Client) CreateEr(request *CreateErRequest) (_result *CreateErRespo
 //
 // When you call this operation to create a network instance connection, note that:
 //
-// 	- Make sure that you have created a Lingjun HUB instance.
+//   - Make sure that you have created a Lingjun HUB instance.
 //
-// 	- Make sure that you have sufficient quota for network instance connections.
+//   - Make sure that you have sufficient quota for network instance connections.
 //
-// 	- This operation is an asynchronous operation. After you call this operation, the system returns the ID of the network instance connection. In this case, the network instance connection may not be created yet, and the system is still creating the network instance in the background. You can query the connection status of a network instance by ListErAttachments or GetErAttachment:
+//   - This operation is an asynchronous operation. After you call this operation, the system returns the ID of the network instance connection. In this case, the network instance connection may not be created yet, and the system is still creating the network instance in the background. You can query the connection status of a network instance by ListErAttachments or GetErAttachment:
 //
-//     	- If the connection status of the network instance is Executing, the network instance is being created.
+//   - If the connection status of the network instance is Executing, the network instance is being created.
 //
-//     	- If the connection status of the network instance is Available, the network instance is created.
+//   - If the connection status of the network instance is Available, the network instance is created.
 //
 // @param request - CreateErAttachmentRequest
 //
@@ -24031,15 +24220,15 @@ func (client *Client) CreateErAttachmentWithOptions(request *CreateErAttachmentR
 //
 // When you call this operation to create a network instance connection, note that:
 //
-// 	- Make sure that you have created a Lingjun HUB instance.
+//   - Make sure that you have created a Lingjun HUB instance.
 //
-// 	- Make sure that you have sufficient quota for network instance connections.
+//   - Make sure that you have sufficient quota for network instance connections.
 //
-// 	- This operation is an asynchronous operation. After you call this operation, the system returns the ID of the network instance connection. In this case, the network instance connection may not be created yet, and the system is still creating the network instance in the background. You can query the connection status of a network instance by ListErAttachments or GetErAttachment:
+//   - This operation is an asynchronous operation. After you call this operation, the system returns the ID of the network instance connection. In this case, the network instance connection may not be created yet, and the system is still creating the network instance in the background. You can query the connection status of a network instance by ListErAttachments or GetErAttachment:
 //
-//     	- If the connection status of the network instance is Executing, the network instance is being created.
+//   - If the connection status of the network instance is Executing, the network instance is being created.
 //
-//     	- If the connection status of the network instance is Available, the network instance is created.
+//   - If the connection status of the network instance is Available, the network instance is created.
 //
 // @param request - CreateErAttachmentRequest
 //
@@ -24063,15 +24252,15 @@ func (client *Client) CreateErAttachment(request *CreateErAttachmentRequest) (_r
 //
 // When you call this operation to create a routing policy, note that:
 //
-// 	- Make sure that you have created a Lingjun HUB instance.
+//   - Make sure that you have created a Lingjun HUB instance.
 //
-// 	- Make sure that you have created a network instance connection.
+//   - Make sure that you have created a network instance connection.
 //
-// 	- This operation is an asynchronous operation. After you call this operation, the system returns the ID of the routing policy. In this case, the routing policy instance may not be created yet, and the system background creation task is still in progress. You can use ListErRouteMaps or GetErRouteMap to query the status of a routing policy.
+//   - This operation is an asynchronous operation. After you call this operation, the system returns the ID of the routing policy. In this case, the routing policy instance may not be created yet, and the system background creation task is still in progress. You can use ListErRouteMaps or GetErRouteMap to query the status of a routing policy.
 //
-//     	- If the status of the routing policy is Execute, the system is creating the instance.
+//   - If the status of the routing policy is Execute, the system is creating the instance.
 //
-//     	- If the status of the routing policy is Available, the creation is successful.
+//   - If the status of the routing policy is Available, the creation is successful.
 //
 // @param request - CreateErRouteMapRequest
 //
@@ -24174,15 +24363,15 @@ func (client *Client) CreateErRouteMapWithOptions(request *CreateErRouteMapReque
 //
 // When you call this operation to create a routing policy, note that:
 //
-// 	- Make sure that you have created a Lingjun HUB instance.
+//   - Make sure that you have created a Lingjun HUB instance.
 //
-// 	- Make sure that you have created a network instance connection.
+//   - Make sure that you have created a network instance connection.
 //
-// 	- This operation is an asynchronous operation. After you call this operation, the system returns the ID of the routing policy. In this case, the routing policy instance may not be created yet, and the system background creation task is still in progress. You can use ListErRouteMaps or GetErRouteMap to query the status of a routing policy.
+//   - This operation is an asynchronous operation. After you call this operation, the system returns the ID of the routing policy. In this case, the routing policy instance may not be created yet, and the system background creation task is still in progress. You can use ListErRouteMaps or GetErRouteMap to query the status of a routing policy.
 //
-//     	- If the status of the routing policy is Execute, the system is creating the instance.
+//   - If the status of the routing policy is Execute, the system is creating the instance.
 //
-//     	- If the status of the routing policy is Available, the creation is successful.
+//   - If the status of the routing policy is Available, the creation is successful.
 //
 // @param request - CreateErRouteMapRequest
 //
@@ -24206,19 +24395,19 @@ func (client *Client) CreateErRouteMap(request *CreateErRouteMapRequest) (_resul
 //
 // When you call this operation to create a Lingjun subnet, note that:
 //
-// 	- You have created a Lingjun CIDR block.
+//   - You have created a Lingjun CIDR block.
 //
-// 	- Only one network segment can be specified for a Lingjun subnet.
+//   - Only one network segment can be specified for a Lingjun subnet.
 //
-// 	- The network segment cannot be modified after the Lingjun subnet is created.
+//   - The network segment cannot be modified after the Lingjun subnet is created.
 //
-// 	- Make sure that you have sufficient Lingjun subnet quota.
+//   - Make sure that you have sufficient Lingjun subnet quota.
 //
-// 	- This interface is an asynchronous interface. After calling this interface, the system will return the ID of a Lingjun subnet. At this time, the Lingjun network segment may not be created yet, and the system background creation task is still in progress. You can call the ListSubnets or GetSubnet operation to query the status of the CIDR block of Lingjun.
+//   - This interface is an asynchronous interface. After calling this interface, the system will return the ID of a Lingjun subnet. At this time, the Lingjun network segment may not be created yet, and the system background creation task is still in progress. You can call the ListSubnets or GetSubnet operation to query the status of the CIDR block of Lingjun.
 //
-//     	- If the status of the Lingjun subnet is Executed, it indicates that it is being created.
+//   - If the status of the Lingjun subnet is Executed, it indicates that it is being created.
 //
-//     	- If the status of the Lingjun subnet is Available, the creation is successful.
+//   - If the status of the Lingjun subnet is Available, the creation is successful.
 //
 // @param request - CreateSubnetRequest
 //
@@ -24301,19 +24490,19 @@ func (client *Client) CreateSubnetWithOptions(request *CreateSubnetRequest, runt
 //
 // When you call this operation to create a Lingjun subnet, note that:
 //
-// 	- You have created a Lingjun CIDR block.
+//   - You have created a Lingjun CIDR block.
 //
-// 	- Only one network segment can be specified for a Lingjun subnet.
+//   - Only one network segment can be specified for a Lingjun subnet.
 //
-// 	- The network segment cannot be modified after the Lingjun subnet is created.
+//   - The network segment cannot be modified after the Lingjun subnet is created.
 //
-// 	- Make sure that you have sufficient Lingjun subnet quota.
+//   - Make sure that you have sufficient Lingjun subnet quota.
 //
-// 	- This interface is an asynchronous interface. After calling this interface, the system will return the ID of a Lingjun subnet. At this time, the Lingjun network segment may not be created yet, and the system background creation task is still in progress. You can call the ListSubnets or GetSubnet operation to query the status of the CIDR block of Lingjun.
+//   - This interface is an asynchronous interface. After calling this interface, the system will return the ID of a Lingjun subnet. At this time, the Lingjun network segment may not be created yet, and the system background creation task is still in progress. You can call the ListSubnets or GetSubnet operation to query the status of the CIDR block of Lingjun.
 //
-//     	- If the status of the Lingjun subnet is Executed, it indicates that it is being created.
+//   - If the status of the Lingjun subnet is Executed, it indicates that it is being created.
 //
-//     	- If the status of the Lingjun subnet is Available, the creation is successful.
+//   - If the status of the Lingjun subnet is Available, the creation is successful.
 //
 // @param request - CreateSubnetRequest
 //
@@ -24337,15 +24526,15 @@ func (client *Client) CreateSubnet(request *CreateSubnetRequest) (_result *Creat
 //
 // When you call this operation to create a Lingjun connection, note that:
 //
-// 	- When you specify the vccId parameter, the system will configure the purchased Lingjun connection for you. When the default vccId parameter is set, the system will automatically place an order and configure the Lingjun connection for you.
+//   - When you specify the vccId parameter, the system will configure the purchased Lingjun connection for you. When the default vccId parameter is set, the system will automatically place an order and configure the Lingjun connection for you.
 //
-// 	- Make sure that you have called the InitializeVcc operation to grant permissions.
+//   - Make sure that you have called the InitializeVcc operation to grant permissions.
 //
-// 	- This interface is an asynchronous interface. After this interface is called, the system will return the Lingjun connection ID, but the Lingjun connection instance may not be created yet, and the system background creation task is still in progress. You can call the ListVccs or GetVcc operation to query the status of the Lingjun connection.
+//   - This interface is an asynchronous interface. After this interface is called, the system will return the Lingjun connection ID, but the Lingjun connection instance may not be created yet, and the system background creation task is still in progress. You can call the ListVccs or GetVcc operation to query the status of the Lingjun connection.
 //
-//     	- If the status of the Lingjun connection is Executed, the Lingjun connection is being created.
+//   - If the status of the Lingjun connection is Executed, the Lingjun connection is being created.
 //
-//     	- If the status of the Lingjun connection is Available, the Lingjun connection is created.
+//   - If the status of the Lingjun connection is Available, the Lingjun connection is created.
 //
 // @param request - CreateVccRequest
 //
@@ -24468,15 +24657,15 @@ func (client *Client) CreateVccWithOptions(request *CreateVccRequest, runtime *u
 //
 // When you call this operation to create a Lingjun connection, note that:
 //
-// 	- When you specify the vccId parameter, the system will configure the purchased Lingjun connection for you. When the default vccId parameter is set, the system will automatically place an order and configure the Lingjun connection for you.
+//   - When you specify the vccId parameter, the system will configure the purchased Lingjun connection for you. When the default vccId parameter is set, the system will automatically place an order and configure the Lingjun connection for you.
 //
-// 	- Make sure that you have called the InitializeVcc operation to grant permissions.
+//   - Make sure that you have called the InitializeVcc operation to grant permissions.
 //
-// 	- This interface is an asynchronous interface. After this interface is called, the system will return the Lingjun connection ID, but the Lingjun connection instance may not be created yet, and the system background creation task is still in progress. You can call the ListVccs or GetVcc operation to query the status of the Lingjun connection.
+//   - This interface is an asynchronous interface. After this interface is called, the system will return the Lingjun connection ID, but the Lingjun connection instance may not be created yet, and the system background creation task is still in progress. You can call the ListVccs or GetVcc operation to query the status of the Lingjun connection.
 //
-//     	- If the status of the Lingjun connection is Executed, the Lingjun connection is being created.
+//   - If the status of the Lingjun connection is Executed, the Lingjun connection is being created.
 //
-//     	- If the status of the Lingjun connection is Available, the Lingjun connection is created.
+//   - If the status of the Lingjun connection is Available, the Lingjun connection is created.
 //
 // @param request - CreateVccRequest
 //
@@ -24500,9 +24689,9 @@ func (client *Client) CreateVcc(request *CreateVccRequest) (_result *CreateVccRe
 //
 // When you call this operation to create cross-account authorization for Lingjun HUB, note that:
 //
-// 	- Make sure that the Alibaba Cloud ID and Lingjun HUB instance that you want to authorize are correct.
+//   - Make sure that the Alibaba Cloud ID and Lingjun HUB instance that you want to authorize are correct.
 //
-// 	- If you authorize the account of the other party, the account of the other party can load your local network instance to its Lingjun HUB, and the other party\\"s network will be connected to your network. Please proceed with caution.
+//   - If you authorize the account of the other party, the account of the other party can load your local network instance to its Lingjun HUB, and the other party\\"s network will be connected to your network. Please proceed with caution.
 //
 // @param request - CreateVccGrantRuleRequest
 //
@@ -24573,9 +24762,9 @@ func (client *Client) CreateVccGrantRuleWithOptions(request *CreateVccGrantRuleR
 //
 // When you call this operation to create cross-account authorization for Lingjun HUB, note that:
 //
-// 	- Make sure that the Alibaba Cloud ID and Lingjun HUB instance that you want to authorize are correct.
+//   - Make sure that the Alibaba Cloud ID and Lingjun HUB instance that you want to authorize are correct.
 //
-// 	- If you authorize the account of the other party, the account of the other party can load your local network instance to its Lingjun HUB, and the other party\\"s network will be connected to your network. Please proceed with caution.
+//   - If you authorize the account of the other party, the account of the other party can load your local network instance to its Lingjun HUB, and the other party\\"s network will be connected to your network. Please proceed with caution.
 //
 // @param request - CreateVccGrantRuleRequest
 //
@@ -24599,13 +24788,13 @@ func (client *Client) CreateVccGrantRule(request *CreateVccGrantRuleRequest) (_r
 //
 // When you call this operation to create a VBR route entry, take note of the following items:
 //
-// 	- After you call this operation, static route entries and BGP network announcements are created on the VBR to which the Lingjun connection belongs.
+//   - After you call this operation, static route entries and BGP network announcements are created on the VBR to which the Lingjun connection belongs.
 //
-// 	- This operation is an asynchronous operation. After you call this operation, the VBR static route entry may not be created yet, and the system still creates the static route entry in the background. You can query the status of VBR static route entries by ListVccRouteEntries or GetVccRouteEntry:
+//   - This operation is an asynchronous operation. After you call this operation, the VBR static route entry may not be created yet, and the system still creates the static route entry in the background. You can query the status of VBR static route entries by ListVccRouteEntries or GetVccRouteEntry:
 //
-//     	- If the VBR static route entry is in the Executing state, it indicates that it is being created.
+//   - If the VBR static route entry is in the Executing state, it indicates that it is being created.
 //
-//     	- If the status of the VBR static route entry is Available, the VBR is created.
+//   - If the status of the VBR static route entry is Available, the VBR is created.
 //
 // @param request - CreateVccRouteEntryRequest
 //
@@ -24672,13 +24861,13 @@ func (client *Client) CreateVccRouteEntryWithOptions(request *CreateVccRouteEntr
 //
 // When you call this operation to create a VBR route entry, take note of the following items:
 //
-// 	- After you call this operation, static route entries and BGP network announcements are created on the VBR to which the Lingjun connection belongs.
+//   - After you call this operation, static route entries and BGP network announcements are created on the VBR to which the Lingjun connection belongs.
 //
-// 	- This operation is an asynchronous operation. After you call this operation, the VBR static route entry may not be created yet, and the system still creates the static route entry in the background. You can query the status of VBR static route entries by ListVccRouteEntries or GetVccRouteEntry:
+//   - This operation is an asynchronous operation. After you call this operation, the VBR static route entry may not be created yet, and the system still creates the static route entry in the background. You can query the status of VBR static route entries by ListVccRouteEntries or GetVccRouteEntry:
 //
-//     	- If the VBR static route entry is in the Executing state, it indicates that it is being created.
+//   - If the VBR static route entry is in the Executing state, it indicates that it is being created.
 //
-//     	- If the status of the VBR static route entry is Available, the VBR is created.
+//   - If the status of the VBR static route entry is Available, the VBR is created.
 //
 // @param request - CreateVccRouteEntryRequest
 //
@@ -24702,17 +24891,17 @@ func (client *Client) CreateVccRouteEntry(request *CreateVccRouteEntryRequest) (
 //
 // When you call this operation to create a CIDR block for Lingjun, take note of the following:
 //
-// 	- A Lingjun network segment can specify an additional network segment in addition to a main network segment.
+//   - A Lingjun network segment can specify an additional network segment in addition to a main network segment.
 //
-// 	- After the Lingjun network segment is created, the network segment cannot be modified.
+//   - After the Lingjun network segment is created, the network segment cannot be modified.
 //
-// 	- Make sure that you have a sufficient quota of Lingjun CIDR blocks.
+//   - Make sure that you have a sufficient quota of Lingjun CIDR blocks.
 //
-// 	- This interface is an asynchronous interface. After calling this interface, the system will return the ID of a Lingjun network segment. At this time, the Lingjun network segment may not be created yet, and the system background creation task is still in progress. You can call the ListVpds or GetVpd operation to query the status of the CIDR block of Lingjun.
+//   - This interface is an asynchronous interface. After calling this interface, the system will return the ID of a Lingjun network segment. At this time, the Lingjun network segment may not be created yet, and the system background creation task is still in progress. You can call the ListVpds or GetVpd operation to query the status of the CIDR block of Lingjun.
 //
-//     	- If the status of the Lingjun CIDR block is Executed, the CIDR block is being created.
+//   - If the status of the Lingjun CIDR block is Executed, the CIDR block is being created.
 //
-//     	- If the status of the Lingjun CIDR block is Available, the creation is successful.
+//   - If the status of the Lingjun CIDR block is Available, the creation is successful.
 //
 // @param request - CreateVpdRequest
 //
@@ -24791,17 +24980,17 @@ func (client *Client) CreateVpdWithOptions(request *CreateVpdRequest, runtime *u
 //
 // When you call this operation to create a CIDR block for Lingjun, take note of the following:
 //
-// 	- A Lingjun network segment can specify an additional network segment in addition to a main network segment.
+//   - A Lingjun network segment can specify an additional network segment in addition to a main network segment.
 //
-// 	- After the Lingjun network segment is created, the network segment cannot be modified.
+//   - After the Lingjun network segment is created, the network segment cannot be modified.
 //
-// 	- Make sure that you have a sufficient quota of Lingjun CIDR blocks.
+//   - Make sure that you have a sufficient quota of Lingjun CIDR blocks.
 //
-// 	- This interface is an asynchronous interface. After calling this interface, the system will return the ID of a Lingjun network segment. At this time, the Lingjun network segment may not be created yet, and the system background creation task is still in progress. You can call the ListVpds or GetVpd operation to query the status of the CIDR block of Lingjun.
+//   - This interface is an asynchronous interface. After calling this interface, the system will return the ID of a Lingjun network segment. At this time, the Lingjun network segment may not be created yet, and the system background creation task is still in progress. You can call the ListVpds or GetVpd operation to query the status of the CIDR block of Lingjun.
 //
-//     	- If the status of the Lingjun CIDR block is Executed, the CIDR block is being created.
+//   - If the status of the Lingjun CIDR block is Executed, the CIDR block is being created.
 //
-//     	- If the status of the Lingjun CIDR block is Available, the creation is successful.
+//   - If the status of the Lingjun CIDR block is Available, the creation is successful.
 //
 // @param request - CreateVpdRequest
 //
@@ -24825,9 +25014,9 @@ func (client *Client) CreateVpd(request *CreateVpdRequest) (_result *CreateVpdRe
 //
 // When you call this operation to create cross-account authorization for Lingjun HUB, note that:
 //
-// 	- Make sure that the Alibaba Cloud ID and Lingjun HUB instance that you want to authorize are correct.
+//   - Make sure that the Alibaba Cloud ID and Lingjun HUB instance that you want to authorize are correct.
 //
-// 	- If you authorize the account of the other party, the account of the other party can load your local network instance to its Lingjun HUB, and the other party\\"s network will be connected to your network. Please proceed with caution.
+//   - If you authorize the account of the other party, the account of the other party can load your local network instance to its Lingjun HUB, and the other party\\"s network will be connected to your network. Please proceed with caution.
 //
 // @param request - CreateVpdGrantRuleRequest
 //
@@ -24898,9 +25087,9 @@ func (client *Client) CreateVpdGrantRuleWithOptions(request *CreateVpdGrantRuleR
 //
 // When you call this operation to create cross-account authorization for Lingjun HUB, note that:
 //
-// 	- Make sure that the Alibaba Cloud ID and Lingjun HUB instance that you want to authorize are correct.
+//   - Make sure that the Alibaba Cloud ID and Lingjun HUB instance that you want to authorize are correct.
 //
-// 	- If you authorize the account of the other party, the account of the other party can load your local network instance to its Lingjun HUB, and the other party\\"s network will be connected to your network. Please proceed with caution.
+//   - If you authorize the account of the other party, the account of the other party can load your local network instance to its Lingjun HUB, and the other party\\"s network will be connected to your network. Please proceed with caution.
 //
 // @param request - CreateVpdGrantRuleRequest
 //
@@ -25003,15 +25192,15 @@ func (client *Client) DeleteElasticNetworkInterface(request *DeleteElasticNetwor
 //
 // When you call this operation to delete the Lingjun HUB, note that:
 //
-// 	- Before you delete the instance, make sure that no network instance is connected to the Lingjun HUB instance.
+//   - Before you delete the instance, make sure that no network instance is connected to the Lingjun HUB instance.
 //
-// 	- After deletion, all related data is lost and cannot be recovered. Exercise caution when performing this operation.
+//   - After deletion, all related data is lost and cannot be recovered. Exercise caution when performing this operation.
 //
-// 	- This interface is an asynchronous interface. After this interface is called, the Lingjun HUB instance may not be deleted, and the system background deletion task is still in progress. You can call the ListErs or GetEr operation to query the deletion status of the Lingjun HUB.
+//   - This interface is an asynchronous interface. After this interface is called, the Lingjun HUB instance may not be deleted, and the system background deletion task is still in progress. You can call the ListErs or GetEr operation to query the deletion status of the Lingjun HUB.
 //
-//     	- If the status of the Lingjun HUB is Deleting, the Lingjun HUB instance is being deleted.
+//   - If the status of the Lingjun HUB is Deleting, the Lingjun HUB instance is being deleted.
 //
-//     	- If no Lingjun HUB instance is recorded, the Lingjun HUB instance has been deleted.
+//   - If no Lingjun HUB instance is recorded, the Lingjun HUB instance has been deleted.
 //
 // @param request - DeleteErRequest
 //
@@ -25074,15 +25263,15 @@ func (client *Client) DeleteErWithOptions(request *DeleteErRequest, runtime *uti
 //
 // When you call this operation to delete the Lingjun HUB, note that:
 //
-// 	- Before you delete the instance, make sure that no network instance is connected to the Lingjun HUB instance.
+//   - Before you delete the instance, make sure that no network instance is connected to the Lingjun HUB instance.
 //
-// 	- After deletion, all related data is lost and cannot be recovered. Exercise caution when performing this operation.
+//   - After deletion, all related data is lost and cannot be recovered. Exercise caution when performing this operation.
 //
-// 	- This interface is an asynchronous interface. After this interface is called, the Lingjun HUB instance may not be deleted, and the system background deletion task is still in progress. You can call the ListErs or GetEr operation to query the deletion status of the Lingjun HUB.
+//   - This interface is an asynchronous interface. After this interface is called, the Lingjun HUB instance may not be deleted, and the system background deletion task is still in progress. You can call the ListErs or GetEr operation to query the deletion status of the Lingjun HUB.
 //
-//     	- If the status of the Lingjun HUB is Deleting, the Lingjun HUB instance is being deleted.
+//   - If the status of the Lingjun HUB is Deleting, the Lingjun HUB instance is being deleted.
 //
-//     	- If no Lingjun HUB instance is recorded, the Lingjun HUB instance has been deleted.
+//   - If no Lingjun HUB instance is recorded, the Lingjun HUB instance has been deleted.
 //
 // @param request - DeleteErRequest
 //
@@ -25106,15 +25295,15 @@ func (client *Client) DeleteEr(request *DeleteErRequest) (_result *DeleteErRespo
 //
 // When you call this operation to delete a network instance connection, take note of the following:
 //
-// 	- Before you delete the instance, make sure that no routing policy exists under the network instance connection instance.
+//   - Before you delete the instance, make sure that no routing policy exists under the network instance connection instance.
 //
-// 	- After deletion, all related data is lost and cannot be recovered. Exercise caution when performing this operation.
+//   - After deletion, all related data is lost and cannot be recovered. Exercise caution when performing this operation.
 //
-// 	- This operation is an asynchronous operation. After you call this operation, the network instance that is connected to the instance may not be deleted. The system still deletes the instance in the background. You can call the ListErAttachments or GetErAttachment to query the deletion status of network instance connections:
+//   - This operation is an asynchronous operation. After you call this operation, the network instance that is connected to the instance may not be deleted. The system still deletes the instance in the background. You can call the ListErAttachments or GetErAttachment to query the deletion status of network instance connections:
 //
-//     	- If the status of the network instance connection is Deleting, the network instance connection is being deleted.
+//   - If the status of the network instance connection is Deleting, the network instance connection is being deleted.
 //
-//     	- If there is no connection record for the network instance, the connection to the network instance has been deleted.
+//   - If there is no connection record for the network instance, the connection to the network instance has been deleted.
 //
 // @param request - DeleteErAttachmentRequest
 //
@@ -25181,15 +25370,15 @@ func (client *Client) DeleteErAttachmentWithOptions(request *DeleteErAttachmentR
 //
 // When you call this operation to delete a network instance connection, take note of the following:
 //
-// 	- Before you delete the instance, make sure that no routing policy exists under the network instance connection instance.
+//   - Before you delete the instance, make sure that no routing policy exists under the network instance connection instance.
 //
-// 	- After deletion, all related data is lost and cannot be recovered. Exercise caution when performing this operation.
+//   - After deletion, all related data is lost and cannot be recovered. Exercise caution when performing this operation.
 //
-// 	- This operation is an asynchronous operation. After you call this operation, the network instance that is connected to the instance may not be deleted. The system still deletes the instance in the background. You can call the ListErAttachments or GetErAttachment to query the deletion status of network instance connections:
+//   - This operation is an asynchronous operation. After you call this operation, the network instance that is connected to the instance may not be deleted. The system still deletes the instance in the background. You can call the ListErAttachments or GetErAttachment to query the deletion status of network instance connections:
 //
-//     	- If the status of the network instance connection is Deleting, the network instance connection is being deleted.
+//   - If the status of the network instance connection is Deleting, the network instance connection is being deleted.
 //
-//     	- If there is no connection record for the network instance, the connection to the network instance has been deleted.
+//   - If there is no connection record for the network instance, the connection to the network instance has been deleted.
 //
 // @param request - DeleteErAttachmentRequest
 //
@@ -25213,13 +25402,13 @@ func (client *Client) DeleteErAttachment(request *DeleteErAttachmentRequest) (_r
 //
 // When you call this operation to delete a routing policy, note that:
 //
-// 	- After deletion, all related data is lost and cannot be recovered. Exercise caution when performing this operation.
+//   - After deletion, all related data is lost and cannot be recovered. Exercise caution when performing this operation.
 //
-// 	- This interface is an asynchronous interface. After this interface is called, the routing policy instance may not be deleted yet, and the system background deletion task is still in progress. You can call the ListErRouteMaps or GetErRouteMap operation to query the deletion status of a routing policy.
+//   - This interface is an asynchronous interface. After this interface is called, the routing policy instance may not be deleted yet, and the system background deletion task is still in progress. You can call the ListErRouteMaps or GetErRouteMap operation to query the deletion status of a routing policy.
 //
-//     	- If the routing policy is in the Deleting state, the routing policy instance is being deleted.
+//   - If the routing policy is in the Deleting state, the routing policy instance is being deleted.
 //
-//     	- If no routing policy instance is recorded, the routing policy instance has been deleted.
+//   - If no routing policy instance is recorded, the routing policy instance has been deleted.
 //
 // @param request - DeleteErRouteMapRequest
 //
@@ -25286,13 +25475,13 @@ func (client *Client) DeleteErRouteMapWithOptions(request *DeleteErRouteMapReque
 //
 // When you call this operation to delete a routing policy, note that:
 //
-// 	- After deletion, all related data is lost and cannot be recovered. Exercise caution when performing this operation.
+//   - After deletion, all related data is lost and cannot be recovered. Exercise caution when performing this operation.
 //
-// 	- This interface is an asynchronous interface. After this interface is called, the routing policy instance may not be deleted yet, and the system background deletion task is still in progress. You can call the ListErRouteMaps or GetErRouteMap operation to query the deletion status of a routing policy.
+//   - This interface is an asynchronous interface. After this interface is called, the routing policy instance may not be deleted yet, and the system background deletion task is still in progress. You can call the ListErRouteMaps or GetErRouteMap operation to query the deletion status of a routing policy.
 //
-//     	- If the routing policy is in the Deleting state, the routing policy instance is being deleted.
+//   - If the routing policy is in the Deleting state, the routing policy instance is being deleted.
 //
-//     	- If no routing policy instance is recorded, the routing policy instance has been deleted.
+//   - If no routing policy instance is recorded, the routing policy instance has been deleted.
 //
 // @param request - DeleteErRouteMapRequest
 //
@@ -25316,13 +25505,13 @@ func (client *Client) DeleteErRouteMap(request *DeleteErRouteMapRequest) (_resul
 //
 // When you call this operation to delete a Lingjun subnet, note that:
 //
-// 	- After deletion, all related data is lost and cannot be recovered. Exercise caution when performing this operation.
+//   - After deletion, all related data is lost and cannot be recovered. Exercise caution when performing this operation.
 //
-// 	- This interface is an asynchronous interface. After this interface is called, the Lingjun subnet instance may not be deleted, and the system background deletion task is still in progress. You can call the ListSubnets or GetSubnet operation to query the deletion status of the subnet.
+//   - This interface is an asynchronous interface. After this interface is called, the Lingjun subnet instance may not be deleted, and the system background deletion task is still in progress. You can call the ListSubnets or GetSubnet operation to query the deletion status of the subnet.
 //
-//     	- If the status of the Lingjun subnet is Deleting, the Lingjun subnet instance is being deleted.
+//   - If the status of the Lingjun subnet is Deleting, the Lingjun subnet instance is being deleted.
 //
-//     	- If there is no record of the Lingjun subnet instance, the Lingjun subnet instance has been deleted.
+//   - If there is no record of the Lingjun subnet instance, the Lingjun subnet instance has been deleted.
 //
 // @param request - DeleteSubnetRequest
 //
@@ -25393,13 +25582,13 @@ func (client *Client) DeleteSubnetWithOptions(request *DeleteSubnetRequest, runt
 //
 // When you call this operation to delete a Lingjun subnet, note that:
 //
-// 	- After deletion, all related data is lost and cannot be recovered. Exercise caution when performing this operation.
+//   - After deletion, all related data is lost and cannot be recovered. Exercise caution when performing this operation.
 //
-// 	- This interface is an asynchronous interface. After this interface is called, the Lingjun subnet instance may not be deleted, and the system background deletion task is still in progress. You can call the ListSubnets or GetSubnet operation to query the deletion status of the subnet.
+//   - This interface is an asynchronous interface. After this interface is called, the Lingjun subnet instance may not be deleted, and the system background deletion task is still in progress. You can call the ListSubnets or GetSubnet operation to query the deletion status of the subnet.
 //
-//     	- If the status of the Lingjun subnet is Deleting, the Lingjun subnet instance is being deleted.
+//   - If the status of the Lingjun subnet is Deleting, the Lingjun subnet instance is being deleted.
 //
-//     	- If there is no record of the Lingjun subnet instance, the Lingjun subnet instance has been deleted.
+//   - If there is no record of the Lingjun subnet instance, the Lingjun subnet instance has been deleted.
 //
 // @param request - DeleteSubnetRequest
 //
@@ -25506,13 +25695,13 @@ func (client *Client) DeleteVccGrantRule(request *DeleteVccGrantRuleRequest) (_r
 //
 // When you call this operation to delete a VBR static route entry, note that:
 //
-// 	- After deletion, all related data is lost and cannot be recovered. Exercise caution when performing this operation.
+//   - After deletion, all related data is lost and cannot be recovered. Exercise caution when performing this operation.
 //
-// 	- This operation is an asynchronous operation. After you call this operation, the VBR static route entries may not be deleted. The system still deletes the VBR static route entries in the background. You can call the ListVccRouteEntries or GetVccRouteEntry to query the deletion status of VBR static route entries:
+//   - This operation is an asynchronous operation. After you call this operation, the VBR static route entries may not be deleted. The system still deletes the VBR static route entries in the background. You can call the ListVccRouteEntries or GetVccRouteEntry to query the deletion status of VBR static route entries:
 //
-//     	- If the VBR static route entry is in the Deleting state, the VBR static route entry is being deleted.
+//   - If the VBR static route entry is in the Deleting state, the VBR static route entry is being deleted.
 //
-//     	- If no VBR static route entry instance is recorded, the VBR static route entry instance has been deleted.
+//   - If no VBR static route entry instance is recorded, the VBR static route entry instance has been deleted.
 //
 // @param request - DeleteVccRouteEntryRequest
 //
@@ -25583,13 +25772,13 @@ func (client *Client) DeleteVccRouteEntryWithOptions(request *DeleteVccRouteEntr
 //
 // When you call this operation to delete a VBR static route entry, note that:
 //
-// 	- After deletion, all related data is lost and cannot be recovered. Exercise caution when performing this operation.
+//   - After deletion, all related data is lost and cannot be recovered. Exercise caution when performing this operation.
 //
-// 	- This operation is an asynchronous operation. After you call this operation, the VBR static route entries may not be deleted. The system still deletes the VBR static route entries in the background. You can call the ListVccRouteEntries or GetVccRouteEntry to query the deletion status of VBR static route entries:
+//   - This operation is an asynchronous operation. After you call this operation, the VBR static route entries may not be deleted. The system still deletes the VBR static route entries in the background. You can call the ListVccRouteEntries or GetVccRouteEntry to query the deletion status of VBR static route entries:
 //
-//     	- If the VBR static route entry is in the Deleting state, the VBR static route entry is being deleted.
+//   - If the VBR static route entry is in the Deleting state, the VBR static route entry is being deleted.
 //
-//     	- If no VBR static route entry instance is recorded, the VBR static route entry instance has been deleted.
+//   - If no VBR static route entry instance is recorded, the VBR static route entry instance has been deleted.
 //
 // @param request - DeleteVccRouteEntryRequest
 //
@@ -25613,15 +25802,15 @@ func (client *Client) DeleteVccRouteEntry(request *DeleteVccRouteEntryRequest) (
 //
 // When you call this operation to delete a Lingjun CIDR block, take note of the following items:
 //
-// 	- After deletion, all related data is lost and cannot be recovered. Exercise caution when performing this operation.
+//   - After deletion, all related data is lost and cannot be recovered. Exercise caution when performing this operation.
 //
-// 	- Before deleting, make sure that all Lingjun subnet instances under the Lingjun CIDR block have been deleted.
+//   - Before deleting, make sure that all Lingjun subnet instances under the Lingjun CIDR block have been deleted.
 //
-// 	- This interface is an asynchronous interface. After this interface is called, the Lingjun network segment instance may not be deleted, and the system background deletion task is still in progress. You can call the ListVpds or GetVpd operation to query the deletion status of the CIDR block.
+//   - This interface is an asynchronous interface. After this interface is called, the Lingjun network segment instance may not be deleted, and the system background deletion task is still in progress. You can call the ListVpds or GetVpd operation to query the deletion status of the CIDR block.
 //
-//     	- If the status of the Lingjun CIDR block is Deleting, the Lingjun CIDR block is being deleted.
+//   - If the status of the Lingjun CIDR block is Deleting, the Lingjun CIDR block is being deleted.
 //
-//     	- If there is no record of the Lingjun CIDR block instance, the Lingjun CIDR block instance has been deleted.
+//   - If there is no record of the Lingjun CIDR block instance, the Lingjun CIDR block instance has been deleted.
 //
 // @param request - DeleteVpdRequest
 //
@@ -25684,15 +25873,15 @@ func (client *Client) DeleteVpdWithOptions(request *DeleteVpdRequest, runtime *u
 //
 // When you call this operation to delete a Lingjun CIDR block, take note of the following items:
 //
-// 	- After deletion, all related data is lost and cannot be recovered. Exercise caution when performing this operation.
+//   - After deletion, all related data is lost and cannot be recovered. Exercise caution when performing this operation.
 //
-// 	- Before deleting, make sure that all Lingjun subnet instances under the Lingjun CIDR block have been deleted.
+//   - Before deleting, make sure that all Lingjun subnet instances under the Lingjun CIDR block have been deleted.
 //
-// 	- This interface is an asynchronous interface. After this interface is called, the Lingjun network segment instance may not be deleted, and the system background deletion task is still in progress. You can call the ListVpds or GetVpd operation to query the deletion status of the CIDR block.
+//   - This interface is an asynchronous interface. After this interface is called, the Lingjun network segment instance may not be deleted, and the system background deletion task is still in progress. You can call the ListVpds or GetVpd operation to query the deletion status of the CIDR block.
 //
-//     	- If the status of the Lingjun CIDR block is Deleting, the Lingjun CIDR block is being deleted.
+//   - If the status of the Lingjun CIDR block is Deleting, the Lingjun CIDR block is being deleted.
 //
-//     	- If there is no record of the Lingjun CIDR block instance, the Lingjun CIDR block instance has been deleted.
+//   - If there is no record of the Lingjun CIDR block instance, the Lingjun CIDR block instance has been deleted.
 //
 // @param request - DeleteVpdRequest
 //
@@ -29525,7 +29714,7 @@ func (client *Client) QueryInstanceNcd(request *QueryInstanceNcdRequest) (_resul
 
 // Summary:
 //
-// Unsubscribe inactive Lingjun connection
+// # Unsubscribe inactive Lingjun connection
 //
 // Description:
 //
@@ -29586,7 +29775,7 @@ func (client *Client) RefundVccWithOptions(request *RefundVccRequest, runtime *u
 
 // Summary:
 //
-// Unsubscribe inactive Lingjun connection
+// # Unsubscribe inactive Lingjun connection
 //
 // Description:
 //

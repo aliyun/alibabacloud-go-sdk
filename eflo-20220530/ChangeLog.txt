@@ -1,3 +1,6 @@
+2025-03-26 Version: v2.0.4
+- Generated golang 2022-05-30 for eflo.
+
 2025-02-24 Version: v2.0.3
 - Update API AssignLeniPrivateIpAddress: update response param.
 - Update API AssignPrivateIpAddress: update response param.
