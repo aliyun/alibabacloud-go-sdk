@@ -2371,7 +2371,8 @@ func (s *RunDataAnalysisResponseBody) SetMessage(v string) *RunDataAnalysisRespo
 }
 
 type RunDataAnalysisResponseBodyData struct {
-	Attempts []interface{} `json:"attempts,omitempty" xml:"attempts,omitempty" type:"Repeated"`
+	Attempts []interface{}                        `json:"attempts,omitempty" xml:"attempts,omitempty" type:"Repeated"`
+	Chat     *RunDataAnalysisResponseBodyDataChat `json:"chat,omitempty" xml:"chat,omitempty" type:"Struct"`
 	// example:
 	//
 	// Access was denied, message: No such namespace namespaces/tech-scp-chain7.
@@ -2414,6 +2415,11 @@ func (s RunDataAnalysisResponseBodyData) GoString() string {
 
 func (s *RunDataAnalysisResponseBodyData) SetAttempts(v []interface{}) *RunDataAnalysisResponseBodyData {
 	s.Attempts = v
+	return s
+}
+
+func (s *RunDataAnalysisResponseBodyData) SetChat(v *RunDataAnalysisResponseBodyDataChat) *RunDataAnalysisResponseBodyData {
+	s.Chat = v
 	return s
 }
 
@@ -2474,6 +2480,23 @@ func (s *RunDataAnalysisResponseBodyData) SetSqlError(v string) *RunDataAnalysis
 
 func (s *RunDataAnalysisResponseBodyData) SetVisualization(v *RunDataAnalysisResponseBodyDataVisualization) *RunDataAnalysisResponseBodyData {
 	s.Visualization = v
+	return s
+}
+
+type RunDataAnalysisResponseBodyDataChat struct {
+	Text *string `json:"text,omitempty" xml:"text,omitempty"`
+}
+
+func (s RunDataAnalysisResponseBodyDataChat) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunDataAnalysisResponseBodyDataChat) GoString() string {
+	return s.String()
+}
+
+func (s *RunDataAnalysisResponseBodyDataChat) SetText(v string) *RunDataAnalysisResponseBodyDataChat {
+	s.Text = &v
 	return s
 }
 
@@ -2892,6 +2915,7 @@ func (s *RunSqlGenerationResponseBody) SetData(v *RunSqlGenerationResponseBodyDa
 }
 
 type RunSqlGenerationResponseBodyData struct {
+	Chat *RunSqlGenerationResponseBodyDataChat `json:"chat,omitempty" xml:"chat,omitempty" type:"Struct"`
 	// example:
 	//
 	// Access was denied, message: No such namespace namespaces/tech-scp-chain7.
@@ -2927,6 +2951,11 @@ func (s RunSqlGenerationResponseBodyData) String() string {
 
 func (s RunSqlGenerationResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *RunSqlGenerationResponseBodyData) SetChat(v *RunSqlGenerationResponseBodyDataChat) *RunSqlGenerationResponseBodyData {
+	s.Chat = v
+	return s
 }
 
 func (s *RunSqlGenerationResponseBodyData) SetErrorMessage(v string) *RunSqlGenerationResponseBodyData {
@@ -2971,6 +3000,23 @@ func (s *RunSqlGenerationResponseBodyData) SetSql(v string) *RunSqlGenerationRes
 
 func (s *RunSqlGenerationResponseBodyData) SetSqlError(v string) *RunSqlGenerationResponseBodyData {
 	s.SqlError = &v
+	return s
+}
+
+type RunSqlGenerationResponseBodyDataChat struct {
+	Text *string `json:"text,omitempty" xml:"text,omitempty"`
+}
+
+func (s RunSqlGenerationResponseBodyDataChat) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSqlGenerationResponseBodyDataChat) GoString() string {
+	return s.String()
+}
+
+func (s *RunSqlGenerationResponseBodyDataChat) SetText(v string) *RunSqlGenerationResponseBodyDataChat {
+	s.Text = &v
 	return s
 }
 
