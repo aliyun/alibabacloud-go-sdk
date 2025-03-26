@@ -1112,8 +1112,7 @@ type CreateVocabRequest struct {
 	//
 	// nls
 	AudioModelCode *string `json:"audioModelCode,omitempty" xml:"audioModelCode,omitempty"`
-	// This parameter is required.
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	Description    *string `json:"description,omitempty" xml:"description,omitempty"`
 	// This parameter is required.
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// This parameter is required.
@@ -3294,7 +3293,7 @@ func (client *Client) ListVocab(request *ListVocabRequest) (_result *ListVocabRe
 
 // Summary:
 //
-// CCAI服务面API
+// # CCAI服务面API
 //
 // @param request - RunCompletionRequest
 //
@@ -3370,7 +3369,7 @@ func (client *Client) RunCompletionWithOptions(workspaceId *string, appId *strin
 
 // Summary:
 //
-// CCAI服务面API
+// # CCAI服务面API
 //
 // @param request - RunCompletionRequest
 //
@@ -3389,7 +3388,7 @@ func (client *Client) RunCompletion(workspaceId *string, appId *string, request 
 
 // Summary:
 //
-// CCAI服务面API
+// # CCAI服务面API
 //
 // @param request - RunCompletionMessageRequest
 //
@@ -3453,7 +3452,7 @@ func (client *Client) RunCompletionMessageWithOptions(workspaceId *string, appId
 
 // Summary:
 //
-// CCAI服务面API
+// # CCAI服务面API
 //
 // @param request - RunCompletionMessageRequest
 //
