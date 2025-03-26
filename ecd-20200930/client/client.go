@@ -2889,6 +2889,130 @@ func (s *CancelCopyImageResponse) SetBody(v *CancelCopyImageResponseBody) *Cance
 	return s
 }
 
+type CloneCenterPolicyRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	BusinessType *int32 `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testPolicyGroupName
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pg-gx2x1dhsmthe9****
+	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// desktop
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s CloneCenterPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CloneCenterPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CloneCenterPolicyRequest) SetBusinessType(v int32) *CloneCenterPolicyRequest {
+	s.BusinessType = &v
+	return s
+}
+
+func (s *CloneCenterPolicyRequest) SetName(v string) *CloneCenterPolicyRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CloneCenterPolicyRequest) SetPolicyGroupId(v string) *CloneCenterPolicyRequest {
+	s.PolicyGroupId = &v
+	return s
+}
+
+func (s *CloneCenterPolicyRequest) SetRegionId(v string) *CloneCenterPolicyRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CloneCenterPolicyRequest) SetResourceType(v string) *CloneCenterPolicyRequest {
+	s.ResourceType = &v
+	return s
+}
+
+type CloneCenterPolicyResponseBody struct {
+	// example:
+	//
+	// pg-gx2x1dhsmthe9****
+	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CloneCenterPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CloneCenterPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CloneCenterPolicyResponseBody) SetPolicyGroupId(v string) *CloneCenterPolicyResponseBody {
+	s.PolicyGroupId = &v
+	return s
+}
+
+func (s *CloneCenterPolicyResponseBody) SetRequestId(v string) *CloneCenterPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CloneCenterPolicyResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CloneCenterPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CloneCenterPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CloneCenterPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CloneCenterPolicyResponse) SetHeaders(v map[string]*string) *CloneCenterPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CloneCenterPolicyResponse) SetStatusCode(v int32) *CloneCenterPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CloneCenterPolicyResponse) SetBody(v *CloneCenterPolicyResponseBody) *CloneCenterPolicyResponse {
+	s.Body = v
+	return s
+}
+
 type ClonePolicyGroupRequest struct {
 	// The name of the cloud computer policy that you want to create.
 	//
@@ -5907,6 +6031,1281 @@ func (s *CreateCdsFileShareLinkResponse) SetStatusCode(v int32) *CreateCdsFileSh
 }
 
 func (s *CreateCdsFileShareLinkResponse) SetBody(v *CreateCdsFileShareLinkResponseBody) *CreateCdsFileShareLinkResponse {
+	s.Body = v
+	return s
+}
+
+type CreateCenterPolicyRequest struct {
+	// example:
+	//
+	// deny
+	AdminAccess *string `json:"AdminAccess,omitempty" xml:"AdminAccess,omitempty"`
+	// example:
+	//
+	// off
+	AppContentProtection        *string                                                 `json:"AppContentProtection,omitempty" xml:"AppContentProtection,omitempty"`
+	AuthorizeAccessPolicyRule   []*CreateCenterPolicyRequestAuthorizeAccessPolicyRule   `json:"AuthorizeAccessPolicyRule,omitempty" xml:"AuthorizeAccessPolicyRule,omitempty" type:"Repeated"`
+	AuthorizeSecurityPolicyRule []*CreateCenterPolicyRequestAuthorizeSecurityPolicyRule `json:"AuthorizeSecurityPolicyRule,omitempty" xml:"AuthorizeSecurityPolicyRule,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	BusinessType *int32 `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	// example:
+	//
+	// off
+	CameraRedirect *string                                `json:"CameraRedirect,omitempty" xml:"CameraRedirect,omitempty"`
+	ClientType     []*CreateCenterPolicyRequestClientType `json:"ClientType,omitempty" xml:"ClientType,omitempty" type:"Repeated"`
+	// example:
+	//
+	// off
+	Clipboard *string `json:"Clipboard,omitempty" xml:"Clipboard,omitempty"`
+	// example:
+	//
+	// off
+	ColorEnhancement *string `json:"ColorEnhancement,omitempty" xml:"ColorEnhancement,omitempty"`
+	// example:
+	//
+	// 30
+	CpuDownGradeDuration *int32    `json:"CpuDownGradeDuration,omitempty" xml:"CpuDownGradeDuration,omitempty"`
+	CpuProcessors        []*string `json:"CpuProcessors,omitempty" xml:"CpuProcessors,omitempty" type:"Repeated"`
+	// example:
+	//
+	// off
+	CpuProtectedMode *string `json:"CpuProtectedMode,omitempty" xml:"CpuProtectedMode,omitempty"`
+	// example:
+	//
+	// 70
+	CpuRateLimit *int32 `json:"CpuRateLimit,omitempty" xml:"CpuRateLimit,omitempty"`
+	// example:
+	//
+	// 60
+	CpuSampleDuration *int32 `json:"CpuSampleDuration,omitempty" xml:"CpuSampleDuration,omitempty"`
+	// example:
+	//
+	// 70
+	CpuSingleRateLimit *int32 `json:"CpuSingleRateLimit,omitempty" xml:"CpuSingleRateLimit,omitempty"`
+	// example:
+	//
+	// off
+	DeviceConnectHint *string                                     `json:"DeviceConnectHint,omitempty" xml:"DeviceConnectHint,omitempty"`
+	DeviceRedirects   []*CreateCenterPolicyRequestDeviceRedirects `json:"DeviceRedirects,omitempty" xml:"DeviceRedirects,omitempty" type:"Repeated"`
+	DeviceRules       []*CreateCenterPolicyRequestDeviceRules     `json:"DeviceRules,omitempty" xml:"DeviceRules,omitempty" type:"Repeated"`
+	// example:
+	//
+	// customTime
+	DisconnectKeepSession *string `json:"DisconnectKeepSession,omitempty" xml:"DisconnectKeepSession,omitempty"`
+	// example:
+	//
+	// 30
+	DisconnectKeepSessionTime *int32 `json:"DisconnectKeepSessionTime,omitempty" xml:"DisconnectKeepSessionTime,omitempty"`
+	// example:
+	//
+	// clientCustom
+	DisplayMode       *string                                       `json:"DisplayMode,omitempty" xml:"DisplayMode,omitempty"`
+	DomainResolveRule []*CreateCenterPolicyRequestDomainResolveRule `json:"DomainResolveRule,omitempty" xml:"DomainResolveRule,omitempty" type:"Repeated"`
+	// example:
+	//
+	// off
+	DomainResolveRuleType *string `json:"DomainResolveRuleType,omitempty" xml:"DomainResolveRuleType,omitempty"`
+	// example:
+	//
+	// off
+	EnableSessionRateLimiting *string `json:"EnableSessionRateLimiting,omitempty" xml:"EnableSessionRateLimiting,omitempty"`
+	// example:
+	//
+	// off
+	EndUserApplyAdminCoordinate *string `json:"EndUserApplyAdminCoordinate,omitempty" xml:"EndUserApplyAdminCoordinate,omitempty"`
+	// example:
+	//
+	// off
+	EndUserGroupCoordinate *string `json:"EndUserGroupCoordinate,omitempty" xml:"EndUserGroupCoordinate,omitempty"`
+	// example:
+	//
+	// off
+	FileMigrate *string `json:"FileMigrate,omitempty" xml:"FileMigrate,omitempty"`
+	// example:
+	//
+	// off
+	GpuAcceleration *string `json:"GpuAcceleration,omitempty" xml:"GpuAcceleration,omitempty"`
+	// example:
+	//
+	// off
+	Html5FileTransfer *string `json:"Html5FileTransfer,omitempty" xml:"Html5FileTransfer,omitempty"`
+	// example:
+	//
+	// both
+	InternetCommunicationProtocol *string `json:"InternetCommunicationProtocol,omitempty" xml:"InternetCommunicationProtocol,omitempty"`
+	// example:
+	//
+	// off
+	LocalDrive *string `json:"LocalDrive,omitempty" xml:"LocalDrive,omitempty"`
+	// example:
+	//
+	// 120
+	MaxReconnectTime *int32 `json:"MaxReconnectTime,omitempty" xml:"MaxReconnectTime,omitempty"`
+	// example:
+	//
+	// 40
+	MemoryDownGradeDuration *int32    `json:"MemoryDownGradeDuration,omitempty" xml:"MemoryDownGradeDuration,omitempty"`
+	MemoryProcessors        []*string `json:"MemoryProcessors,omitempty" xml:"MemoryProcessors,omitempty" type:"Repeated"`
+	// example:
+	//
+	// off
+	MemoryProtectedMode *string `json:"MemoryProtectedMode,omitempty" xml:"MemoryProtectedMode,omitempty"`
+	// example:
+	//
+	// 70
+	MemoryRateLimit *int32 `json:"MemoryRateLimit,omitempty" xml:"MemoryRateLimit,omitempty"`
+	// example:
+	//
+	// 40
+	MemorySampleDuration *int32 `json:"MemorySampleDuration,omitempty" xml:"MemorySampleDuration,omitempty"`
+	// example:
+	//
+	// 40
+	MemorySingleRateLimit *int32 `json:"MemorySingleRateLimit,omitempty" xml:"MemorySingleRateLimit,omitempty"`
+	// example:
+	//
+	// off
+	MobileRestart *string `json:"MobileRestart,omitempty" xml:"MobileRestart,omitempty"`
+	// example:
+	//
+	// off
+	MobileShutdown *string `json:"MobileShutdown,omitempty" xml:"MobileShutdown,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testPolicyGroupName
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// off
+	NetRedirect     *string                                     `json:"NetRedirect,omitempty" xml:"NetRedirect,omitempty"`
+	NetRedirectRule []*CreateCenterPolicyRequestNetRedirectRule `json:"NetRedirectRule,omitempty" xml:"NetRedirectRule,omitempty" type:"Repeated"`
+	// example:
+	//
+	// off
+	NoOperationDisconnect *string `json:"NoOperationDisconnect,omitempty" xml:"NoOperationDisconnect,omitempty"`
+	// example:
+	//
+	// 120
+	NoOperationDisconnectTime *int32 `json:"NoOperationDisconnectTime,omitempty" xml:"NoOperationDisconnectTime,omitempty"`
+	// example:
+	//
+	// off
+	PrinterRedirect *string `json:"PrinterRedirect,omitempty" xml:"PrinterRedirect,omitempty"`
+	// example:
+	//
+	// off
+	QualityEnhancement *string `json:"QualityEnhancement,omitempty" xml:"QualityEnhancement,omitempty"`
+	// example:
+	//
+	// 10
+	RecordEventDuration  *int32    `json:"RecordEventDuration,omitempty" xml:"RecordEventDuration,omitempty"`
+	RecordEventFilePaths []*string `json:"RecordEventFilePaths,omitempty" xml:"RecordEventFilePaths,omitempty" type:"Repeated"`
+	RecordEventRegisters []*string `json:"RecordEventRegisters,omitempty" xml:"RecordEventRegisters,omitempty" type:"Repeated"`
+	RecordEvents         []*string `json:"RecordEvents,omitempty" xml:"RecordEvents,omitempty" type:"Repeated"`
+	// example:
+	//
+	// off
+	Recording *string `json:"Recording,omitempty" xml:"Recording,omitempty"`
+	// example:
+	//
+	// on
+	RecordingAudio *string `json:"RecordingAudio,omitempty" xml:"RecordingAudio,omitempty"`
+	// example:
+	//
+	// 10
+	RecordingDuration *int32 `json:"RecordingDuration,omitempty" xml:"RecordingDuration,omitempty"`
+	// example:
+	//
+	// 08:59:00
+	RecordingEndTime *string `json:"RecordingEndTime,omitempty" xml:"RecordingEndTime,omitempty"`
+	// example:
+	//
+	// 15
+	RecordingExpires *int32 `json:"RecordingExpires,omitempty" xml:"RecordingExpires,omitempty"`
+	// example:
+	//
+	// 2
+	RecordingFps *string `json:"RecordingFps,omitempty" xml:"RecordingFps,omitempty"`
+	// example:
+	//
+	// 08:00:00
+	RecordingStartTime *string `json:"RecordingStartTime,omitempty" xml:"RecordingStartTime,omitempty"`
+	// example:
+	//
+	// off
+	RecordingUserNotify        *string `json:"RecordingUserNotify,omitempty" xml:"RecordingUserNotify,omitempty"`
+	RecordingUserNotifyMessage *string `json:"RecordingUserNotifyMessage,omitempty" xml:"RecordingUserNotifyMessage,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// fullControl
+	RemoteCoordinate *string `json:"RemoteCoordinate,omitempty" xml:"RemoteCoordinate,omitempty"`
+	// example:
+	//
+	// off
+	ResetDesktop *string `json:"ResetDesktop,omitempty" xml:"ResetDesktop,omitempty"`
+	// example:
+	//
+	// 1280
+	ResolutionHeight *int32 `json:"ResolutionHeight,omitempty" xml:"ResolutionHeight,omitempty"`
+	// example:
+	//
+	// adaptive
+	ResolutionModel *string `json:"ResolutionModel,omitempty" xml:"ResolutionModel,omitempty"`
+	// example:
+	//
+	// 720
+	ResolutionWidth *int32 `json:"ResolutionWidth,omitempty" xml:"ResolutionWidth,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// desktop
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// example:
+	//
+	// GLOBAL
+	Scope      *string   `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	ScopeValue []*string `json:"ScopeValue,omitempty" xml:"ScopeValue,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2000
+	SessionMaxRateKbps *int32 `json:"SessionMaxRateKbps,omitempty" xml:"SessionMaxRateKbps,omitempty"`
+	// example:
+	//
+	// off
+	SmoothEnhancement *string `json:"SmoothEnhancement,omitempty" xml:"SmoothEnhancement,omitempty"`
+	// example:
+	//
+	// off
+	StatusMonitor *string `json:"StatusMonitor,omitempty" xml:"StatusMonitor,omitempty"`
+	// example:
+	//
+	// smooth
+	StreamingMode *string `json:"StreamingMode,omitempty" xml:"StreamingMode,omitempty"`
+	// example:
+	//
+	// 30
+	TargetFps *int32 `json:"TargetFps,omitempty" xml:"TargetFps,omitempty"`
+	// example:
+	//
+	// off
+	Taskbar *string `json:"Taskbar,omitempty" xml:"Taskbar,omitempty"`
+	// example:
+	//
+	// off
+	UsbRedirect           *string                                           `json:"UsbRedirect,omitempty" xml:"UsbRedirect,omitempty"`
+	UsbSupplyRedirectRule []*CreateCenterPolicyRequestUsbSupplyRedirectRule `json:"UsbSupplyRedirectRule,omitempty" xml:"UsbSupplyRedirectRule,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2000
+	VideoEncAvgKbps *int32 `json:"VideoEncAvgKbps,omitempty" xml:"VideoEncAvgKbps,omitempty"`
+	// example:
+	//
+	// 30
+	VideoEncMaxQP *int32 `json:"VideoEncMaxQP,omitempty" xml:"VideoEncMaxQP,omitempty"`
+	// example:
+	//
+	// 30
+	VideoEncMinQP *int32 `json:"VideoEncMinQP,omitempty" xml:"VideoEncMinQP,omitempty"`
+	// example:
+	//
+	// 2000
+	VideoEncPeakKbps *int32 `json:"VideoEncPeakKbps,omitempty" xml:"VideoEncPeakKbps,omitempty"`
+	// example:
+	//
+	// qualityFirst
+	VideoEncPolicy *string `json:"VideoEncPolicy,omitempty" xml:"VideoEncPolicy,omitempty"`
+	// example:
+	//
+	// on
+	VideoRedirect *string `json:"VideoRedirect,omitempty" xml:"VideoRedirect,omitempty"`
+	// example:
+	//
+	// low
+	VisualQuality *string `json:"VisualQuality,omitempty" xml:"VisualQuality,omitempty"`
+	// example:
+	//
+	// off
+	Watermark *string `json:"Watermark,omitempty" xml:"Watermark,omitempty"`
+	// example:
+	//
+	// off
+	WatermarkAntiCam *string `json:"WatermarkAntiCam,omitempty" xml:"WatermarkAntiCam,omitempty"`
+	// example:
+	//
+	// 0
+	WatermarkColor *int32 `json:"WatermarkColor,omitempty" xml:"WatermarkColor,omitempty"`
+	// example:
+	//
+	// 3
+	WatermarkColumnAmount *int32 `json:"WatermarkColumnAmount,omitempty" xml:"WatermarkColumnAmount,omitempty"`
+	// example:
+	//
+	// test
+	WatermarkCustomText *string `json:"WatermarkCustomText,omitempty" xml:"WatermarkCustomText,omitempty"`
+	// example:
+	//
+	// -10
+	WatermarkDegree *float64 `json:"WatermarkDegree,omitempty" xml:"WatermarkDegree,omitempty"`
+	// example:
+	//
+	// 10
+	WatermarkFontSize *int32 `json:"WatermarkFontSize,omitempty" xml:"WatermarkFontSize,omitempty"`
+	// example:
+	//
+	// plain
+	WatermarkFontStyle *string `json:"WatermarkFontStyle,omitempty" xml:"WatermarkFontStyle,omitempty"`
+	// example:
+	//
+	// medium
+	WatermarkPower *string `json:"WatermarkPower,omitempty" xml:"WatermarkPower,omitempty"`
+	// example:
+	//
+	// 3
+	WatermarkRowAmount *int32 `json:"WatermarkRowAmount,omitempty" xml:"WatermarkRowAmount,omitempty"`
+	// example:
+	//
+	// on
+	WatermarkSecurity *string `json:"WatermarkSecurity,omitempty" xml:"WatermarkSecurity,omitempty"`
+	// example:
+	//
+	// 10
+	WatermarkTransparencyValue *int32 `json:"WatermarkTransparencyValue,omitempty" xml:"WatermarkTransparencyValue,omitempty"`
+	// example:
+	//
+	// EndUserId,HostName,ClientTime
+	WatermarkType *string `json:"WatermarkType,omitempty" xml:"WatermarkType,omitempty"`
+	// example:
+	//
+	// off
+	WuyingKeeper *string `json:"WuyingKeeper,omitempty" xml:"WuyingKeeper,omitempty"`
+	// example:
+	//
+	// on
+	WyAssistant *string `json:"WyAssistant,omitempty" xml:"WyAssistant,omitempty"`
+}
+
+func (s CreateCenterPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCenterPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCenterPolicyRequest) SetAdminAccess(v string) *CreateCenterPolicyRequest {
+	s.AdminAccess = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetAppContentProtection(v string) *CreateCenterPolicyRequest {
+	s.AppContentProtection = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetAuthorizeAccessPolicyRule(v []*CreateCenterPolicyRequestAuthorizeAccessPolicyRule) *CreateCenterPolicyRequest {
+	s.AuthorizeAccessPolicyRule = v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetAuthorizeSecurityPolicyRule(v []*CreateCenterPolicyRequestAuthorizeSecurityPolicyRule) *CreateCenterPolicyRequest {
+	s.AuthorizeSecurityPolicyRule = v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetBusinessType(v int32) *CreateCenterPolicyRequest {
+	s.BusinessType = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetCameraRedirect(v string) *CreateCenterPolicyRequest {
+	s.CameraRedirect = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetClientType(v []*CreateCenterPolicyRequestClientType) *CreateCenterPolicyRequest {
+	s.ClientType = v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetClipboard(v string) *CreateCenterPolicyRequest {
+	s.Clipboard = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetColorEnhancement(v string) *CreateCenterPolicyRequest {
+	s.ColorEnhancement = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetCpuDownGradeDuration(v int32) *CreateCenterPolicyRequest {
+	s.CpuDownGradeDuration = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetCpuProcessors(v []*string) *CreateCenterPolicyRequest {
+	s.CpuProcessors = v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetCpuProtectedMode(v string) *CreateCenterPolicyRequest {
+	s.CpuProtectedMode = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetCpuRateLimit(v int32) *CreateCenterPolicyRequest {
+	s.CpuRateLimit = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetCpuSampleDuration(v int32) *CreateCenterPolicyRequest {
+	s.CpuSampleDuration = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetCpuSingleRateLimit(v int32) *CreateCenterPolicyRequest {
+	s.CpuSingleRateLimit = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetDeviceConnectHint(v string) *CreateCenterPolicyRequest {
+	s.DeviceConnectHint = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetDeviceRedirects(v []*CreateCenterPolicyRequestDeviceRedirects) *CreateCenterPolicyRequest {
+	s.DeviceRedirects = v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetDeviceRules(v []*CreateCenterPolicyRequestDeviceRules) *CreateCenterPolicyRequest {
+	s.DeviceRules = v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetDisconnectKeepSession(v string) *CreateCenterPolicyRequest {
+	s.DisconnectKeepSession = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetDisconnectKeepSessionTime(v int32) *CreateCenterPolicyRequest {
+	s.DisconnectKeepSessionTime = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetDisplayMode(v string) *CreateCenterPolicyRequest {
+	s.DisplayMode = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetDomainResolveRule(v []*CreateCenterPolicyRequestDomainResolveRule) *CreateCenterPolicyRequest {
+	s.DomainResolveRule = v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetDomainResolveRuleType(v string) *CreateCenterPolicyRequest {
+	s.DomainResolveRuleType = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetEnableSessionRateLimiting(v string) *CreateCenterPolicyRequest {
+	s.EnableSessionRateLimiting = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetEndUserApplyAdminCoordinate(v string) *CreateCenterPolicyRequest {
+	s.EndUserApplyAdminCoordinate = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetEndUserGroupCoordinate(v string) *CreateCenterPolicyRequest {
+	s.EndUserGroupCoordinate = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetFileMigrate(v string) *CreateCenterPolicyRequest {
+	s.FileMigrate = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetGpuAcceleration(v string) *CreateCenterPolicyRequest {
+	s.GpuAcceleration = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetHtml5FileTransfer(v string) *CreateCenterPolicyRequest {
+	s.Html5FileTransfer = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetInternetCommunicationProtocol(v string) *CreateCenterPolicyRequest {
+	s.InternetCommunicationProtocol = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetLocalDrive(v string) *CreateCenterPolicyRequest {
+	s.LocalDrive = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetMaxReconnectTime(v int32) *CreateCenterPolicyRequest {
+	s.MaxReconnectTime = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetMemoryDownGradeDuration(v int32) *CreateCenterPolicyRequest {
+	s.MemoryDownGradeDuration = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetMemoryProcessors(v []*string) *CreateCenterPolicyRequest {
+	s.MemoryProcessors = v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetMemoryProtectedMode(v string) *CreateCenterPolicyRequest {
+	s.MemoryProtectedMode = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetMemoryRateLimit(v int32) *CreateCenterPolicyRequest {
+	s.MemoryRateLimit = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetMemorySampleDuration(v int32) *CreateCenterPolicyRequest {
+	s.MemorySampleDuration = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetMemorySingleRateLimit(v int32) *CreateCenterPolicyRequest {
+	s.MemorySingleRateLimit = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetMobileRestart(v string) *CreateCenterPolicyRequest {
+	s.MobileRestart = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetMobileShutdown(v string) *CreateCenterPolicyRequest {
+	s.MobileShutdown = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetName(v string) *CreateCenterPolicyRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetNetRedirect(v string) *CreateCenterPolicyRequest {
+	s.NetRedirect = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetNetRedirectRule(v []*CreateCenterPolicyRequestNetRedirectRule) *CreateCenterPolicyRequest {
+	s.NetRedirectRule = v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetNoOperationDisconnect(v string) *CreateCenterPolicyRequest {
+	s.NoOperationDisconnect = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetNoOperationDisconnectTime(v int32) *CreateCenterPolicyRequest {
+	s.NoOperationDisconnectTime = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetPrinterRedirect(v string) *CreateCenterPolicyRequest {
+	s.PrinterRedirect = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetQualityEnhancement(v string) *CreateCenterPolicyRequest {
+	s.QualityEnhancement = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetRecordEventDuration(v int32) *CreateCenterPolicyRequest {
+	s.RecordEventDuration = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetRecordEventFilePaths(v []*string) *CreateCenterPolicyRequest {
+	s.RecordEventFilePaths = v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetRecordEventRegisters(v []*string) *CreateCenterPolicyRequest {
+	s.RecordEventRegisters = v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetRecordEvents(v []*string) *CreateCenterPolicyRequest {
+	s.RecordEvents = v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetRecording(v string) *CreateCenterPolicyRequest {
+	s.Recording = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetRecordingAudio(v string) *CreateCenterPolicyRequest {
+	s.RecordingAudio = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetRecordingDuration(v int32) *CreateCenterPolicyRequest {
+	s.RecordingDuration = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetRecordingEndTime(v string) *CreateCenterPolicyRequest {
+	s.RecordingEndTime = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetRecordingExpires(v int32) *CreateCenterPolicyRequest {
+	s.RecordingExpires = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetRecordingFps(v string) *CreateCenterPolicyRequest {
+	s.RecordingFps = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetRecordingStartTime(v string) *CreateCenterPolicyRequest {
+	s.RecordingStartTime = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetRecordingUserNotify(v string) *CreateCenterPolicyRequest {
+	s.RecordingUserNotify = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetRecordingUserNotifyMessage(v string) *CreateCenterPolicyRequest {
+	s.RecordingUserNotifyMessage = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetRegionId(v string) *CreateCenterPolicyRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetRemoteCoordinate(v string) *CreateCenterPolicyRequest {
+	s.RemoteCoordinate = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetResetDesktop(v string) *CreateCenterPolicyRequest {
+	s.ResetDesktop = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetResolutionHeight(v int32) *CreateCenterPolicyRequest {
+	s.ResolutionHeight = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetResolutionModel(v string) *CreateCenterPolicyRequest {
+	s.ResolutionModel = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetResolutionWidth(v int32) *CreateCenterPolicyRequest {
+	s.ResolutionWidth = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetResourceType(v string) *CreateCenterPolicyRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetScope(v string) *CreateCenterPolicyRequest {
+	s.Scope = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetScopeValue(v []*string) *CreateCenterPolicyRequest {
+	s.ScopeValue = v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetSessionMaxRateKbps(v int32) *CreateCenterPolicyRequest {
+	s.SessionMaxRateKbps = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetSmoothEnhancement(v string) *CreateCenterPolicyRequest {
+	s.SmoothEnhancement = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetStatusMonitor(v string) *CreateCenterPolicyRequest {
+	s.StatusMonitor = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetStreamingMode(v string) *CreateCenterPolicyRequest {
+	s.StreamingMode = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetTargetFps(v int32) *CreateCenterPolicyRequest {
+	s.TargetFps = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetTaskbar(v string) *CreateCenterPolicyRequest {
+	s.Taskbar = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetUsbRedirect(v string) *CreateCenterPolicyRequest {
+	s.UsbRedirect = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetUsbSupplyRedirectRule(v []*CreateCenterPolicyRequestUsbSupplyRedirectRule) *CreateCenterPolicyRequest {
+	s.UsbSupplyRedirectRule = v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetVideoEncAvgKbps(v int32) *CreateCenterPolicyRequest {
+	s.VideoEncAvgKbps = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetVideoEncMaxQP(v int32) *CreateCenterPolicyRequest {
+	s.VideoEncMaxQP = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetVideoEncMinQP(v int32) *CreateCenterPolicyRequest {
+	s.VideoEncMinQP = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetVideoEncPeakKbps(v int32) *CreateCenterPolicyRequest {
+	s.VideoEncPeakKbps = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetVideoEncPolicy(v string) *CreateCenterPolicyRequest {
+	s.VideoEncPolicy = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetVideoRedirect(v string) *CreateCenterPolicyRequest {
+	s.VideoRedirect = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetVisualQuality(v string) *CreateCenterPolicyRequest {
+	s.VisualQuality = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetWatermark(v string) *CreateCenterPolicyRequest {
+	s.Watermark = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetWatermarkAntiCam(v string) *CreateCenterPolicyRequest {
+	s.WatermarkAntiCam = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetWatermarkColor(v int32) *CreateCenterPolicyRequest {
+	s.WatermarkColor = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetWatermarkColumnAmount(v int32) *CreateCenterPolicyRequest {
+	s.WatermarkColumnAmount = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetWatermarkCustomText(v string) *CreateCenterPolicyRequest {
+	s.WatermarkCustomText = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetWatermarkDegree(v float64) *CreateCenterPolicyRequest {
+	s.WatermarkDegree = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetWatermarkFontSize(v int32) *CreateCenterPolicyRequest {
+	s.WatermarkFontSize = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetWatermarkFontStyle(v string) *CreateCenterPolicyRequest {
+	s.WatermarkFontStyle = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetWatermarkPower(v string) *CreateCenterPolicyRequest {
+	s.WatermarkPower = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetWatermarkRowAmount(v int32) *CreateCenterPolicyRequest {
+	s.WatermarkRowAmount = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetWatermarkSecurity(v string) *CreateCenterPolicyRequest {
+	s.WatermarkSecurity = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetWatermarkTransparencyValue(v int32) *CreateCenterPolicyRequest {
+	s.WatermarkTransparencyValue = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetWatermarkType(v string) *CreateCenterPolicyRequest {
+	s.WatermarkType = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetWuyingKeeper(v string) *CreateCenterPolicyRequest {
+	s.WuyingKeeper = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetWyAssistant(v string) *CreateCenterPolicyRequest {
+	s.WyAssistant = &v
+	return s
+}
+
+type CreateCenterPolicyRequestAuthorizeAccessPolicyRule struct {
+	// example:
+	//
+	// 47.100.XX.XX/16
+	CidrIp *string `json:"CidrIp,omitempty" xml:"CidrIp,omitempty"`
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+}
+
+func (s CreateCenterPolicyRequestAuthorizeAccessPolicyRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCenterPolicyRequestAuthorizeAccessPolicyRule) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCenterPolicyRequestAuthorizeAccessPolicyRule) SetCidrIp(v string) *CreateCenterPolicyRequestAuthorizeAccessPolicyRule {
+	s.CidrIp = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequestAuthorizeAccessPolicyRule) SetDescription(v string) *CreateCenterPolicyRequestAuthorizeAccessPolicyRule {
+	s.Description = &v
+	return s
+}
+
+type CreateCenterPolicyRequestAuthorizeSecurityPolicyRule struct {
+	// example:
+	//
+	// 10.0.XX.XX/8
+	CidrIp *string `json:"CidrIp,omitempty" xml:"CidrIp,omitempty"`
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// TCP
+	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
+	// example:
+	//
+	// accept
+	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// example:
+	//
+	// 22/22
+	PortRange *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
+	// example:
+	//
+	// 1
+	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// example:
+	//
+	// inflow
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateCenterPolicyRequestAuthorizeSecurityPolicyRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCenterPolicyRequestAuthorizeSecurityPolicyRule) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCenterPolicyRequestAuthorizeSecurityPolicyRule) SetCidrIp(v string) *CreateCenterPolicyRequestAuthorizeSecurityPolicyRule {
+	s.CidrIp = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequestAuthorizeSecurityPolicyRule) SetDescription(v string) *CreateCenterPolicyRequestAuthorizeSecurityPolicyRule {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequestAuthorizeSecurityPolicyRule) SetIpProtocol(v string) *CreateCenterPolicyRequestAuthorizeSecurityPolicyRule {
+	s.IpProtocol = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequestAuthorizeSecurityPolicyRule) SetPolicy(v string) *CreateCenterPolicyRequestAuthorizeSecurityPolicyRule {
+	s.Policy = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequestAuthorizeSecurityPolicyRule) SetPortRange(v string) *CreateCenterPolicyRequestAuthorizeSecurityPolicyRule {
+	s.PortRange = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequestAuthorizeSecurityPolicyRule) SetPriority(v string) *CreateCenterPolicyRequestAuthorizeSecurityPolicyRule {
+	s.Priority = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequestAuthorizeSecurityPolicyRule) SetType(v string) *CreateCenterPolicyRequestAuthorizeSecurityPolicyRule {
+	s.Type = &v
+	return s
+}
+
+type CreateCenterPolicyRequestClientType struct {
+	// example:
+	//
+	// windows
+	ClientType *string `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
+	// example:
+	//
+	// off
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s CreateCenterPolicyRequestClientType) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCenterPolicyRequestClientType) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCenterPolicyRequestClientType) SetClientType(v string) *CreateCenterPolicyRequestClientType {
+	s.ClientType = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequestClientType) SetStatus(v string) *CreateCenterPolicyRequestClientType {
+	s.Status = &v
+	return s
+}
+
+type CreateCenterPolicyRequestDeviceRedirects struct {
+	// example:
+	//
+	// camera
+	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	// example:
+	//
+	// usbRedirect
+	RedirectType *string `json:"RedirectType,omitempty" xml:"RedirectType,omitempty"`
+}
+
+func (s CreateCenterPolicyRequestDeviceRedirects) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCenterPolicyRequestDeviceRedirects) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCenterPolicyRequestDeviceRedirects) SetDeviceType(v string) *CreateCenterPolicyRequestDeviceRedirects {
+	s.DeviceType = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequestDeviceRedirects) SetRedirectType(v string) *CreateCenterPolicyRequestDeviceRedirects {
+	s.RedirectType = &v
+	return s
+}
+
+type CreateCenterPolicyRequestDeviceRules struct {
+	// example:
+	//
+	// sandisk
+	DeviceName *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	// example:
+	//
+	// 0x55b1
+	DevicePid *string `json:"DevicePid,omitempty" xml:"DevicePid,omitempty"`
+	// example:
+	//
+	// storage
+	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	// example:
+	//
+	// 0x0781
+	DeviceVid *string `json:"DeviceVid,omitempty" xml:"DeviceVid,omitempty"`
+	// example:
+	//
+	// 2:0
+	OptCommand *string `json:"OptCommand,omitempty" xml:"OptCommand,omitempty"`
+	// example:
+	//
+	// usbRedirect
+	RedirectType *string `json:"RedirectType,omitempty" xml:"RedirectType,omitempty"`
+}
+
+func (s CreateCenterPolicyRequestDeviceRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCenterPolicyRequestDeviceRules) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCenterPolicyRequestDeviceRules) SetDeviceName(v string) *CreateCenterPolicyRequestDeviceRules {
+	s.DeviceName = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequestDeviceRules) SetDevicePid(v string) *CreateCenterPolicyRequestDeviceRules {
+	s.DevicePid = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequestDeviceRules) SetDeviceType(v string) *CreateCenterPolicyRequestDeviceRules {
+	s.DeviceType = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequestDeviceRules) SetDeviceVid(v string) *CreateCenterPolicyRequestDeviceRules {
+	s.DeviceVid = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequestDeviceRules) SetOptCommand(v string) *CreateCenterPolicyRequestDeviceRules {
+	s.OptCommand = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequestDeviceRules) SetRedirectType(v string) *CreateCenterPolicyRequestDeviceRules {
+	s.RedirectType = &v
+	return s
+}
+
+type CreateCenterPolicyRequestDomainResolveRule struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// *.example.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// allow
+	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+}
+
+func (s CreateCenterPolicyRequestDomainResolveRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCenterPolicyRequestDomainResolveRule) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCenterPolicyRequestDomainResolveRule) SetDescription(v string) *CreateCenterPolicyRequestDomainResolveRule {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequestDomainResolveRule) SetDomain(v string) *CreateCenterPolicyRequestDomainResolveRule {
+	s.Domain = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequestDomainResolveRule) SetPolicy(v string) *CreateCenterPolicyRequestDomainResolveRule {
+	s.Policy = &v
+	return s
+}
+
+type CreateCenterPolicyRequestNetRedirectRule struct {
+	// example:
+	//
+	// *.taobao.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// allow
+	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// example:
+	//
+	// domain
+	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+}
+
+func (s CreateCenterPolicyRequestNetRedirectRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCenterPolicyRequestNetRedirectRule) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCenterPolicyRequestNetRedirectRule) SetDomain(v string) *CreateCenterPolicyRequestNetRedirectRule {
+	s.Domain = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequestNetRedirectRule) SetPolicy(v string) *CreateCenterPolicyRequestNetRedirectRule {
+	s.Policy = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequestNetRedirectRule) SetRuleType(v string) *CreateCenterPolicyRequestNetRedirectRule {
+	s.RuleType = &v
+	return s
+}
+
+type CreateCenterPolicyRequestUsbSupplyRedirectRule struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 08**
+	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// example:
+	//
+	// 1
+	UsbRedirectType *string `json:"UsbRedirectType,omitempty" xml:"UsbRedirectType,omitempty"`
+	// example:
+	//
+	// 2
+	UsbRuleType *string `json:"UsbRuleType,omitempty" xml:"UsbRuleType,omitempty"`
+	// example:
+	//
+	// 04**
+	VendorId *string `json:"VendorId,omitempty" xml:"VendorId,omitempty"`
+}
+
+func (s CreateCenterPolicyRequestUsbSupplyRedirectRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCenterPolicyRequestUsbSupplyRedirectRule) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCenterPolicyRequestUsbSupplyRedirectRule) SetDescription(v string) *CreateCenterPolicyRequestUsbSupplyRedirectRule {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequestUsbSupplyRedirectRule) SetProductId(v string) *CreateCenterPolicyRequestUsbSupplyRedirectRule {
+	s.ProductId = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequestUsbSupplyRedirectRule) SetUsbRedirectType(v string) *CreateCenterPolicyRequestUsbSupplyRedirectRule {
+	s.UsbRedirectType = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequestUsbSupplyRedirectRule) SetUsbRuleType(v string) *CreateCenterPolicyRequestUsbSupplyRedirectRule {
+	s.UsbRuleType = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequestUsbSupplyRedirectRule) SetVendorId(v string) *CreateCenterPolicyRequestUsbSupplyRedirectRule {
+	s.VendorId = &v
+	return s
+}
+
+type CreateCenterPolicyResponseBody struct {
+	// example:
+	//
+	// pg-gx2x1dhsmthe9****
+	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateCenterPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCenterPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCenterPolicyResponseBody) SetPolicyGroupId(v string) *CreateCenterPolicyResponseBody {
+	s.PolicyGroupId = &v
+	return s
+}
+
+func (s *CreateCenterPolicyResponseBody) SetRequestId(v string) *CreateCenterPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateCenterPolicyResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateCenterPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateCenterPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCenterPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCenterPolicyResponse) SetHeaders(v map[string]*string) *CreateCenterPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateCenterPolicyResponse) SetStatusCode(v int32) *CreateCenterPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateCenterPolicyResponse) SetBody(v *CreateCenterPolicyResponseBody) *CreateCenterPolicyResponse {
 	s.Body = v
 	return s
 }
@@ -13159,6 +14558,106 @@ func (s *DeleteCdsFileResponse) SetBody(v *DeleteCdsFileResponseBody) *DeleteCds
 	return s
 }
 
+type DeleteCenterPolicyRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	BusinessType *int32 `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	// This parameter is required.
+	PolicyGroupIds []*string `json:"PolicyGroupIds,omitempty" xml:"PolicyGroupIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// desktop
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s DeleteCenterPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCenterPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCenterPolicyRequest) SetBusinessType(v int32) *DeleteCenterPolicyRequest {
+	s.BusinessType = &v
+	return s
+}
+
+func (s *DeleteCenterPolicyRequest) SetPolicyGroupIds(v []*string) *DeleteCenterPolicyRequest {
+	s.PolicyGroupIds = v
+	return s
+}
+
+func (s *DeleteCenterPolicyRequest) SetRegionId(v string) *DeleteCenterPolicyRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteCenterPolicyRequest) SetResourceType(v string) *DeleteCenterPolicyRequest {
+	s.ResourceType = &v
+	return s
+}
+
+type DeleteCenterPolicyResponseBody struct {
+	// example:
+	//
+	// 72E47B1E-6B11-5A11-A27C-7A80F866****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteCenterPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCenterPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCenterPolicyResponseBody) SetRequestId(v string) *DeleteCenterPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteCenterPolicyResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteCenterPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteCenterPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCenterPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCenterPolicyResponse) SetHeaders(v map[string]*string) *DeleteCenterPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteCenterPolicyResponse) SetStatusCode(v int32) *DeleteCenterPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteCenterPolicyResponse) SetBody(v *DeleteCenterPolicyResponseBody) *DeleteCenterPolicyResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteCloudDriveGroupsRequest struct {
 	// The ID of the cloud disk in Cloud Drive Service.
 	//
@@ -16461,6 +17960,1339 @@ func (s *DescribeCensResponse) SetStatusCode(v int32) *DescribeCensResponse {
 }
 
 func (s *DescribeCensResponse) SetBody(v *DescribeCensResponseBody) *DescribeCensResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeCenterPolicyListRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	BusinessType *int32 `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize      *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PolicyGroupId []*string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// desktop
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// example:
+	//
+	// GLOBAL
+	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+}
+
+func (s DescribeCenterPolicyListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCenterPolicyListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCenterPolicyListRequest) SetBusinessType(v int32) *DescribeCenterPolicyListRequest {
+	s.BusinessType = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListRequest) SetPageNumber(v int32) *DescribeCenterPolicyListRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListRequest) SetPageSize(v int32) *DescribeCenterPolicyListRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListRequest) SetPolicyGroupId(v []*string) *DescribeCenterPolicyListRequest {
+	s.PolicyGroupId = v
+	return s
+}
+
+func (s *DescribeCenterPolicyListRequest) SetResourceType(v string) *DescribeCenterPolicyListRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListRequest) SetScope(v string) *DescribeCenterPolicyListRequest {
+	s.Scope = &v
+	return s
+}
+
+type DescribeCenterPolicyListResponseBody struct {
+	DescribePolicyGroups []*DescribeCenterPolicyListResponseBodyDescribePolicyGroups `json:"DescribePolicyGroups,omitempty" xml:"DescribePolicyGroups,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 20
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeCenterPolicyListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCenterPolicyListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCenterPolicyListResponseBody) SetDescribePolicyGroups(v []*DescribeCenterPolicyListResponseBodyDescribePolicyGroups) *DescribeCenterPolicyListResponseBody {
+	s.DescribePolicyGroups = v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBody) SetRequestId(v string) *DescribeCenterPolicyListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBody) SetTotalCount(v int32) *DescribeCenterPolicyListResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeCenterPolicyListResponseBodyDescribePolicyGroups struct {
+	// example:
+	//
+	// deny
+	AdminAccess *string `json:"AdminAccess,omitempty" xml:"AdminAccess,omitempty"`
+	// example:
+	//
+	// off
+	AppContentProtection         *string                                                                                 `json:"AppContentProtection,omitempty" xml:"AppContentProtection,omitempty"`
+	AuthorizeAccessPolicyRules   []*DescribeCenterPolicyListResponseBodyDescribePolicyGroupsAuthorizeAccessPolicyRules   `json:"AuthorizeAccessPolicyRules,omitempty" xml:"AuthorizeAccessPolicyRules,omitempty" type:"Repeated"`
+	AuthorizeSecurityPolicyRules []*DescribeCenterPolicyListResponseBodyDescribePolicyGroupsAuthorizeSecurityPolicyRules `json:"AuthorizeSecurityPolicyRules,omitempty" xml:"AuthorizeSecurityPolicyRules,omitempty" type:"Repeated"`
+	// example:
+	//
+	// on
+	CameraRedirect *string                                                                `json:"CameraRedirect,omitempty" xml:"CameraRedirect,omitempty"`
+	ClientTypes    []*DescribeCenterPolicyListResponseBodyDescribePolicyGroupsClientTypes `json:"ClientTypes,omitempty" xml:"ClientTypes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// off
+	Clipboard *string `json:"Clipboard,omitempty" xml:"Clipboard,omitempty"`
+	// example:
+	//
+	// off
+	ColorEnhancement *string `json:"ColorEnhancement,omitempty" xml:"ColorEnhancement,omitempty"`
+	// example:
+	//
+	// 30
+	CpuDownGradeDuration *int32    `json:"CpuDownGradeDuration,omitempty" xml:"CpuDownGradeDuration,omitempty"`
+	CpuProcessors        []*string `json:"CpuProcessors,omitempty" xml:"CpuProcessors,omitempty" type:"Repeated"`
+	// example:
+	//
+	// on
+	CpuProtectedMode *string `json:"CpuProtectedMode,omitempty" xml:"CpuProtectedMode,omitempty"`
+	// example:
+	//
+	// 70
+	CpuRateLimit *int32 `json:"CpuRateLimit,omitempty" xml:"CpuRateLimit,omitempty"`
+	// example:
+	//
+	// 10
+	CpuSampleDuration *int32 `json:"CpuSampleDuration,omitempty" xml:"CpuSampleDuration,omitempty"`
+	// example:
+	//
+	// 70
+	CpuSingleRateLimit *int32 `json:"CpuSingleRateLimit,omitempty" xml:"CpuSingleRateLimit,omitempty"`
+	// example:
+	//
+	// 1
+	DesktopCount *int32 `json:"DesktopCount,omitempty" xml:"DesktopCount,omitempty"`
+	// example:
+	//
+	// 1
+	DesktopGroupCount *int32                                                                     `json:"DesktopGroupCount,omitempty" xml:"DesktopGroupCount,omitempty"`
+	DeviceRedirects   []*DescribeCenterPolicyListResponseBodyDescribePolicyGroupsDeviceRedirects `json:"DeviceRedirects,omitempty" xml:"DeviceRedirects,omitempty" type:"Repeated"`
+	DeviceRules       []*DescribeCenterPolicyListResponseBodyDescribePolicyGroupsDeviceRules     `json:"DeviceRules,omitempty" xml:"DeviceRules,omitempty" type:"Repeated"`
+	// example:
+	//
+	// persistent
+	DisconnectKeepSession *string `json:"DisconnectKeepSession,omitempty" xml:"DisconnectKeepSession,omitempty"`
+	// example:
+	//
+	// 120
+	DisconnectKeepSessionTime *int32 `json:"DisconnectKeepSessionTime,omitempty" xml:"DisconnectKeepSessionTime,omitempty"`
+	// example:
+	//
+	// adminCustom
+	DisplayMode *string `json:"DisplayMode,omitempty" xml:"DisplayMode,omitempty"`
+	// example:
+	//
+	// xxxx
+	DomainRegisterValue *string                                                                      `json:"DomainRegisterValue,omitempty" xml:"DomainRegisterValue,omitempty"`
+	DomainResolveRule   []*DescribeCenterPolicyListResponseBodyDescribePolicyGroupsDomainResolveRule `json:"DomainResolveRule,omitempty" xml:"DomainResolveRule,omitempty" type:"Repeated"`
+	// example:
+	//
+	// on
+	DomainResolveRuleType *string `json:"DomainResolveRuleType,omitempty" xml:"DomainResolveRuleType,omitempty"`
+	// example:
+	//
+	// off
+	EndUserApplyAdminCoordinate *string `json:"EndUserApplyAdminCoordinate,omitempty" xml:"EndUserApplyAdminCoordinate,omitempty"`
+	// example:
+	//
+	// off
+	EndUserGroupCoordinate *string `json:"EndUserGroupCoordinate,omitempty" xml:"EndUserGroupCoordinate,omitempty"`
+	// example:
+	//
+	// off
+	GpuAcceleration *string `json:"GpuAcceleration,omitempty" xml:"GpuAcceleration,omitempty"`
+	// example:
+	//
+	// off
+	Html5Access *string `json:"Html5Access,omitempty" xml:"Html5Access,omitempty"`
+	// example:
+	//
+	// off
+	Html5FileTransfer *string `json:"Html5FileTransfer,omitempty" xml:"Html5FileTransfer,omitempty"`
+	// example:
+	//
+	// tcp
+	InternetCommunicationProtocol *string `json:"InternetCommunicationProtocol,omitempty" xml:"InternetCommunicationProtocol,omitempty"`
+	// example:
+	//
+	// readwrite
+	LocalDrive *string `json:"LocalDrive,omitempty" xml:"LocalDrive,omitempty"`
+	// example:
+	//
+	// 120
+	MaxReconnectTime *int32 `json:"MaxReconnectTime,omitempty" xml:"MaxReconnectTime,omitempty"`
+	// example:
+	//
+	// 30
+	MemoryDownGradeDuration *int32    `json:"MemoryDownGradeDuration,omitempty" xml:"MemoryDownGradeDuration,omitempty"`
+	MemoryProcessors        []*string `json:"MemoryProcessors,omitempty" xml:"MemoryProcessors,omitempty" type:"Repeated"`
+	// example:
+	//
+	// off
+	MemoryProtectedMode *string `json:"MemoryProtectedMode,omitempty" xml:"MemoryProtectedMode,omitempty"`
+	// example:
+	//
+	// 70
+	MemoryRateLimit *int32 `json:"MemoryRateLimit,omitempty" xml:"MemoryRateLimit,omitempty"`
+	// example:
+	//
+	// 30
+	MemorySampleDuration *int32 `json:"MemorySampleDuration,omitempty" xml:"MemorySampleDuration,omitempty"`
+	// example:
+	//
+	// 30
+	MemorySingleRateLimit *int32 `json:"MemorySingleRateLimit,omitempty" xml:"MemorySingleRateLimit,omitempty"`
+	// example:
+	//
+	// off
+	MobileRestart *string `json:"MobileRestart,omitempty" xml:"MobileRestart,omitempty"`
+	// example:
+	//
+	// off
+	MobileShutdown *string `json:"MobileShutdown,omitempty" xml:"MobileShutdown,omitempty"`
+	// example:
+	//
+	// testPolicyGroupName
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// off
+	NetRedirect     *string                                                                    `json:"NetRedirect,omitempty" xml:"NetRedirect,omitempty"`
+	NetRedirectRule []*DescribeCenterPolicyListResponseBodyDescribePolicyGroupsNetRedirectRule `json:"NetRedirectRule,omitempty" xml:"NetRedirectRule,omitempty" type:"Repeated"`
+	// example:
+	//
+	// off
+	NoOperationDisconnect *string `json:"NoOperationDisconnect,omitempty" xml:"NoOperationDisconnect,omitempty"`
+	// example:
+	//
+	// 120
+	NoOperationDisconnectTime *int32 `json:"NoOperationDisconnectTime,omitempty" xml:"NoOperationDisconnectTime,omitempty"`
+	// example:
+	//
+	// pg-gx2x1dhsmthe9****
+	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
+	// example:
+	//
+	// SYSTEM
+	PolicyGroupType *string `json:"PolicyGroupType,omitempty" xml:"PolicyGroupType,omitempty"`
+	// example:
+	//
+	// AVAILABLE
+	PolicyStatus *string `json:"PolicyStatus,omitempty" xml:"PolicyStatus,omitempty"`
+	// example:
+	//
+	// off
+	PrinterRedirection *string `json:"PrinterRedirection,omitempty" xml:"PrinterRedirection,omitempty"`
+	// example:
+	//
+	// off
+	QualityEnhancement *string `json:"QualityEnhancement,omitempty" xml:"QualityEnhancement,omitempty"`
+	// example:
+	//
+	// off
+	RecordContent *string `json:"RecordContent,omitempty" xml:"RecordContent,omitempty"`
+	// example:
+	//
+	// 30
+	RecordContentExpires *int64 `json:"RecordContentExpires,omitempty" xml:"RecordContentExpires,omitempty"`
+	// example:
+	//
+	// 10
+	RecordEventDuration  *int32    `json:"RecordEventDuration,omitempty" xml:"RecordEventDuration,omitempty"`
+	RecordEventFilePaths []*string `json:"RecordEventFilePaths,omitempty" xml:"RecordEventFilePaths,omitempty" type:"Repeated"`
+	RecordEventRegisters []*string `json:"RecordEventRegisters,omitempty" xml:"RecordEventRegisters,omitempty" type:"Repeated"`
+	// example:
+	//
+	// off
+	Recording *string `json:"Recording,omitempty" xml:"Recording,omitempty"`
+	// example:
+	//
+	// on
+	RecordingAudio *string `json:"RecordingAudio,omitempty" xml:"RecordingAudio,omitempty"`
+	// example:
+	//
+	// 10
+	RecordingDuration *int32 `json:"RecordingDuration,omitempty" xml:"RecordingDuration,omitempty"`
+	// example:
+	//
+	// 08:59:00
+	RecordingEndTime *string `json:"RecordingEndTime,omitempty" xml:"RecordingEndTime,omitempty"`
+	// example:
+	//
+	// 15
+	RecordingExpires *int64 `json:"RecordingExpires,omitempty" xml:"RecordingExpires,omitempty"`
+	// example:
+	//
+	// 5
+	RecordingFps *int64 `json:"RecordingFps,omitempty" xml:"RecordingFps,omitempty"`
+	// example:
+	//
+	// 08:00:00
+	RecordingStartTime *string `json:"RecordingStartTime,omitempty" xml:"RecordingStartTime,omitempty"`
+	// example:
+	//
+	// off
+	RecordingUserNotify        *string `json:"RecordingUserNotify,omitempty" xml:"RecordingUserNotify,omitempty"`
+	RecordingUserNotifyMessage *string `json:"RecordingUserNotifyMessage,omitempty" xml:"RecordingUserNotifyMessage,omitempty"`
+	// example:
+	//
+	// fullControl
+	RemoteCoordinate *string `json:"RemoteCoordinate,omitempty" xml:"RemoteCoordinate,omitempty"`
+	// example:
+	//
+	// 1280
+	ResolutionHeight *int32 `json:"ResolutionHeight,omitempty" xml:"ResolutionHeight,omitempty"`
+	// example:
+	//
+	// adaptive
+	ResolutionModel *string `json:"ResolutionModel,omitempty" xml:"ResolutionModel,omitempty"`
+	// example:
+	//
+	// 1920
+	ResolutionWidth *int32 `json:"ResolutionWidth,omitempty" xml:"ResolutionWidth,omitempty"`
+	// example:
+	//
+	// 1
+	ResourceGroupCount *int32 `json:"ResourceGroupCount,omitempty" xml:"ResourceGroupCount,omitempty"`
+	// example:
+	//
+	// GLOBAL
+	Scope      *string   `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	ScopeValue []*string `json:"ScopeValue,omitempty" xml:"ScopeValue,omitempty" type:"Repeated"`
+	// example:
+	//
+	// off
+	SmoothEnhancement *string `json:"SmoothEnhancement,omitempty" xml:"SmoothEnhancement,omitempty"`
+	// example:
+	//
+	// on
+	StatusMonitor *string `json:"StatusMonitor,omitempty" xml:"StatusMonitor,omitempty"`
+	// example:
+	//
+	// smooth
+	StreamingMode *string `json:"StreamingMode,omitempty" xml:"StreamingMode,omitempty"`
+	// example:
+	//
+	// 30
+	TargetFps *int32 `json:"TargetFps,omitempty" xml:"TargetFps,omitempty"`
+	// example:
+	//
+	// off
+	Taskbar *string `json:"Taskbar,omitempty" xml:"Taskbar,omitempty"`
+	// example:
+	//
+	// off
+	UsbRedirect           *string                                                                          `json:"UsbRedirect,omitempty" xml:"UsbRedirect,omitempty"`
+	UsbSupplyRedirectRule []*DescribeCenterPolicyListResponseBodyDescribePolicyGroupsUsbSupplyRedirectRule `json:"UsbSupplyRedirectRule,omitempty" xml:"UsbSupplyRedirectRule,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1000
+	VideoEncAvgKbps *int32 `json:"VideoEncAvgKbps,omitempty" xml:"VideoEncAvgKbps,omitempty"`
+	// example:
+	//
+	// 20
+	VideoEncMaxQP *int32 `json:"VideoEncMaxQP,omitempty" xml:"VideoEncMaxQP,omitempty"`
+	// example:
+	//
+	// 20
+	VideoEncMinQP *int32 `json:"VideoEncMinQP,omitempty" xml:"VideoEncMinQP,omitempty"`
+	// example:
+	//
+	// 2000
+	VideoEncPeakKbps *int32 `json:"VideoEncPeakKbps,omitempty" xml:"VideoEncPeakKbps,omitempty"`
+	// example:
+	//
+	// qualityFirst
+	VideoEncPolicy *string `json:"VideoEncPolicy,omitempty" xml:"VideoEncPolicy,omitempty"`
+	// example:
+	//
+	// off
+	VideoRedirect *string `json:"VideoRedirect,omitempty" xml:"VideoRedirect,omitempty"`
+	// example:
+	//
+	// medium
+	VisualQuality *string `json:"VisualQuality,omitempty" xml:"VisualQuality,omitempty"`
+	// example:
+	//
+	// on
+	Watermark *string `json:"Watermark,omitempty" xml:"Watermark,omitempty"`
+	// example:
+	//
+	// off
+	WatermarkAntiCam *string `json:"WatermarkAntiCam,omitempty" xml:"WatermarkAntiCam,omitempty"`
+	// example:
+	//
+	// 0
+	WatermarkColor *int32 `json:"WatermarkColor,omitempty" xml:"WatermarkColor,omitempty"`
+	// example:
+	//
+	// custom-watermark
+	WatermarkCustomText *string `json:"WatermarkCustomText,omitempty" xml:"WatermarkCustomText,omitempty"`
+	// example:
+	//
+	// -10
+	WatermarkDegree *float64 `json:"WatermarkDegree,omitempty" xml:"WatermarkDegree,omitempty"`
+	// example:
+	//
+	// 10
+	WatermarkFontSize *int32 `json:"WatermarkFontSize,omitempty" xml:"WatermarkFontSize,omitempty"`
+	// example:
+	//
+	// plain
+	WatermarkFontStyle *string `json:"WatermarkFontStyle,omitempty" xml:"WatermarkFontStyle,omitempty"`
+	// example:
+	//
+	// medium
+	WatermarkPower *string `json:"WatermarkPower,omitempty" xml:"WatermarkPower,omitempty"`
+	// example:
+	//
+	// 3
+	WatermarkRowAmount *int32 `json:"WatermarkRowAmount,omitempty" xml:"WatermarkRowAmount,omitempty"`
+	// example:
+	//
+	// on
+	WatermarkSecurity *string `json:"WatermarkSecurity,omitempty" xml:"WatermarkSecurity,omitempty"`
+	// example:
+	//
+	// 10
+	WatermarkTransparencyValue *int32 `json:"WatermarkTransparencyValue,omitempty" xml:"WatermarkTransparencyValue,omitempty"`
+	// example:
+	//
+	// EndUserId
+	WatermarkType *string `json:"WatermarkType,omitempty" xml:"WatermarkType,omitempty"`
+	// example:
+	//
+	// on
+	WyAssistant *string `json:"WyAssistant,omitempty" xml:"WyAssistant,omitempty"`
+}
+
+func (s DescribeCenterPolicyListResponseBodyDescribePolicyGroups) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCenterPolicyListResponseBodyDescribePolicyGroups) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetAdminAccess(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.AdminAccess = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetAppContentProtection(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.AppContentProtection = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetAuthorizeAccessPolicyRules(v []*DescribeCenterPolicyListResponseBodyDescribePolicyGroupsAuthorizeAccessPolicyRules) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.AuthorizeAccessPolicyRules = v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetAuthorizeSecurityPolicyRules(v []*DescribeCenterPolicyListResponseBodyDescribePolicyGroupsAuthorizeSecurityPolicyRules) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.AuthorizeSecurityPolicyRules = v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetCameraRedirect(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.CameraRedirect = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetClientTypes(v []*DescribeCenterPolicyListResponseBodyDescribePolicyGroupsClientTypes) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.ClientTypes = v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetClipboard(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.Clipboard = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetColorEnhancement(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.ColorEnhancement = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetCpuDownGradeDuration(v int32) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.CpuDownGradeDuration = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetCpuProcessors(v []*string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.CpuProcessors = v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetCpuProtectedMode(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.CpuProtectedMode = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetCpuRateLimit(v int32) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.CpuRateLimit = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetCpuSampleDuration(v int32) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.CpuSampleDuration = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetCpuSingleRateLimit(v int32) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.CpuSingleRateLimit = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetDesktopCount(v int32) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.DesktopCount = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetDesktopGroupCount(v int32) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.DesktopGroupCount = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetDeviceRedirects(v []*DescribeCenterPolicyListResponseBodyDescribePolicyGroupsDeviceRedirects) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.DeviceRedirects = v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetDeviceRules(v []*DescribeCenterPolicyListResponseBodyDescribePolicyGroupsDeviceRules) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.DeviceRules = v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetDisconnectKeepSession(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.DisconnectKeepSession = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetDisconnectKeepSessionTime(v int32) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.DisconnectKeepSessionTime = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetDisplayMode(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.DisplayMode = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetDomainRegisterValue(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.DomainRegisterValue = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetDomainResolveRule(v []*DescribeCenterPolicyListResponseBodyDescribePolicyGroupsDomainResolveRule) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.DomainResolveRule = v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetDomainResolveRuleType(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.DomainResolveRuleType = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetEndUserApplyAdminCoordinate(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.EndUserApplyAdminCoordinate = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetEndUserGroupCoordinate(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.EndUserGroupCoordinate = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetGpuAcceleration(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.GpuAcceleration = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetHtml5Access(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.Html5Access = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetHtml5FileTransfer(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.Html5FileTransfer = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetInternetCommunicationProtocol(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.InternetCommunicationProtocol = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetLocalDrive(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.LocalDrive = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetMaxReconnectTime(v int32) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.MaxReconnectTime = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetMemoryDownGradeDuration(v int32) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.MemoryDownGradeDuration = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetMemoryProcessors(v []*string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.MemoryProcessors = v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetMemoryProtectedMode(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.MemoryProtectedMode = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetMemoryRateLimit(v int32) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.MemoryRateLimit = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetMemorySampleDuration(v int32) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.MemorySampleDuration = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetMemorySingleRateLimit(v int32) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.MemorySingleRateLimit = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetMobileRestart(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.MobileRestart = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetMobileShutdown(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.MobileShutdown = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetName(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetNetRedirect(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.NetRedirect = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetNetRedirectRule(v []*DescribeCenterPolicyListResponseBodyDescribePolicyGroupsNetRedirectRule) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.NetRedirectRule = v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetNoOperationDisconnect(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.NoOperationDisconnect = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetNoOperationDisconnectTime(v int32) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.NoOperationDisconnectTime = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetPolicyGroupId(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.PolicyGroupId = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetPolicyGroupType(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.PolicyGroupType = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetPolicyStatus(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.PolicyStatus = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetPrinterRedirection(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.PrinterRedirection = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetQualityEnhancement(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.QualityEnhancement = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetRecordContent(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.RecordContent = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetRecordContentExpires(v int64) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.RecordContentExpires = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetRecordEventDuration(v int32) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.RecordEventDuration = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetRecordEventFilePaths(v []*string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.RecordEventFilePaths = v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetRecordEventRegisters(v []*string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.RecordEventRegisters = v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetRecording(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.Recording = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetRecordingAudio(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.RecordingAudio = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetRecordingDuration(v int32) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.RecordingDuration = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetRecordingEndTime(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.RecordingEndTime = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetRecordingExpires(v int64) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.RecordingExpires = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetRecordingFps(v int64) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.RecordingFps = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetRecordingStartTime(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.RecordingStartTime = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetRecordingUserNotify(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.RecordingUserNotify = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetRecordingUserNotifyMessage(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.RecordingUserNotifyMessage = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetRemoteCoordinate(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.RemoteCoordinate = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetResolutionHeight(v int32) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.ResolutionHeight = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetResolutionModel(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.ResolutionModel = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetResolutionWidth(v int32) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.ResolutionWidth = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetResourceGroupCount(v int32) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.ResourceGroupCount = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetScope(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.Scope = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetScopeValue(v []*string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.ScopeValue = v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetSmoothEnhancement(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.SmoothEnhancement = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetStatusMonitor(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.StatusMonitor = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetStreamingMode(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.StreamingMode = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetTargetFps(v int32) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.TargetFps = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetTaskbar(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.Taskbar = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetUsbRedirect(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.UsbRedirect = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetUsbSupplyRedirectRule(v []*DescribeCenterPolicyListResponseBodyDescribePolicyGroupsUsbSupplyRedirectRule) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.UsbSupplyRedirectRule = v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetVideoEncAvgKbps(v int32) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.VideoEncAvgKbps = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetVideoEncMaxQP(v int32) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.VideoEncMaxQP = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetVideoEncMinQP(v int32) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.VideoEncMinQP = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetVideoEncPeakKbps(v int32) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.VideoEncPeakKbps = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetVideoEncPolicy(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.VideoEncPolicy = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetVideoRedirect(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.VideoRedirect = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetVisualQuality(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.VisualQuality = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetWatermark(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.Watermark = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetWatermarkAntiCam(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.WatermarkAntiCam = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetWatermarkColor(v int32) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.WatermarkColor = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetWatermarkCustomText(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.WatermarkCustomText = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetWatermarkDegree(v float64) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.WatermarkDegree = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetWatermarkFontSize(v int32) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.WatermarkFontSize = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetWatermarkFontStyle(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.WatermarkFontStyle = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetWatermarkPower(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.WatermarkPower = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetWatermarkRowAmount(v int32) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.WatermarkRowAmount = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetWatermarkSecurity(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.WatermarkSecurity = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetWatermarkTransparencyValue(v int32) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.WatermarkTransparencyValue = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetWatermarkType(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.WatermarkType = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetWyAssistant(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.WyAssistant = &v
+	return s
+}
+
+type DescribeCenterPolicyListResponseBodyDescribePolicyGroupsAuthorizeAccessPolicyRules struct {
+	// example:
+	//
+	// 47.100.XX.XX/16
+	CidrIp *string `json:"CidrIp,omitempty" xml:"CidrIp,omitempty"`
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+}
+
+func (s DescribeCenterPolicyListResponseBodyDescribePolicyGroupsAuthorizeAccessPolicyRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCenterPolicyListResponseBodyDescribePolicyGroupsAuthorizeAccessPolicyRules) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsAuthorizeAccessPolicyRules) SetCidrIp(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsAuthorizeAccessPolicyRules {
+	s.CidrIp = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsAuthorizeAccessPolicyRules) SetDescription(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsAuthorizeAccessPolicyRules {
+	s.Description = &v
+	return s
+}
+
+type DescribeCenterPolicyListResponseBodyDescribePolicyGroupsAuthorizeSecurityPolicyRules struct {
+	// example:
+	//
+	// 47.100.XX.XX/16
+	CidrIp *string `json:"CidrIp,omitempty" xml:"CidrIp,omitempty"`
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// tcp
+	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
+	// example:
+	//
+	// accept
+	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// example:
+	//
+	// 22/22
+	PortRange *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
+	// example:
+	//
+	// 1
+	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// example:
+	//
+	// inflow
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeCenterPolicyListResponseBodyDescribePolicyGroupsAuthorizeSecurityPolicyRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCenterPolicyListResponseBodyDescribePolicyGroupsAuthorizeSecurityPolicyRules) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsAuthorizeSecurityPolicyRules) SetCidrIp(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsAuthorizeSecurityPolicyRules {
+	s.CidrIp = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsAuthorizeSecurityPolicyRules) SetDescription(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsAuthorizeSecurityPolicyRules {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsAuthorizeSecurityPolicyRules) SetIpProtocol(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsAuthorizeSecurityPolicyRules {
+	s.IpProtocol = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsAuthorizeSecurityPolicyRules) SetPolicy(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsAuthorizeSecurityPolicyRules {
+	s.Policy = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsAuthorizeSecurityPolicyRules) SetPortRange(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsAuthorizeSecurityPolicyRules {
+	s.PortRange = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsAuthorizeSecurityPolicyRules) SetPriority(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsAuthorizeSecurityPolicyRules {
+	s.Priority = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsAuthorizeSecurityPolicyRules) SetType(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsAuthorizeSecurityPolicyRules {
+	s.Type = &v
+	return s
+}
+
+type DescribeCenterPolicyListResponseBodyDescribePolicyGroupsClientTypes struct {
+	// example:
+	//
+	// windows
+	ClientType *string `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
+	// example:
+	//
+	// on
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeCenterPolicyListResponseBodyDescribePolicyGroupsClientTypes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCenterPolicyListResponseBodyDescribePolicyGroupsClientTypes) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsClientTypes) SetClientType(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsClientTypes {
+	s.ClientType = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsClientTypes) SetStatus(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsClientTypes {
+	s.Status = &v
+	return s
+}
+
+type DescribeCenterPolicyListResponseBodyDescribePolicyGroupsDeviceRedirects struct {
+	// example:
+	//
+	// camera
+	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	// example:
+	//
+	// usbRedirect
+	RedirectType *string `json:"RedirectType,omitempty" xml:"RedirectType,omitempty"`
+}
+
+func (s DescribeCenterPolicyListResponseBodyDescribePolicyGroupsDeviceRedirects) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCenterPolicyListResponseBodyDescribePolicyGroupsDeviceRedirects) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsDeviceRedirects) SetDeviceType(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsDeviceRedirects {
+	s.DeviceType = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsDeviceRedirects) SetRedirectType(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsDeviceRedirects {
+	s.RedirectType = &v
+	return s
+}
+
+type DescribeCenterPolicyListResponseBodyDescribePolicyGroupsDeviceRules struct {
+	// example:
+	//
+	// sandisk
+	DeviceName *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	// example:
+	//
+	// 0x55b1
+	DevicePid *string `json:"DevicePid,omitempty" xml:"DevicePid,omitempty"`
+	// example:
+	//
+	// storage
+	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	// example:
+	//
+	// 0x0781
+	DeviceVid *string `json:"DeviceVid,omitempty" xml:"DeviceVid,omitempty"`
+	// example:
+	//
+	// 2:0
+	OptCommand *string `json:"OptCommand,omitempty" xml:"OptCommand,omitempty"`
+	// example:
+	//
+	// usbRedirect
+	RedirectType *string `json:"RedirectType,omitempty" xml:"RedirectType,omitempty"`
+}
+
+func (s DescribeCenterPolicyListResponseBodyDescribePolicyGroupsDeviceRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCenterPolicyListResponseBodyDescribePolicyGroupsDeviceRules) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsDeviceRules) SetDeviceName(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsDeviceRules {
+	s.DeviceName = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsDeviceRules) SetDevicePid(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsDeviceRules {
+	s.DevicePid = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsDeviceRules) SetDeviceType(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsDeviceRules {
+	s.DeviceType = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsDeviceRules) SetDeviceVid(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsDeviceRules {
+	s.DeviceVid = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsDeviceRules) SetOptCommand(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsDeviceRules {
+	s.OptCommand = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsDeviceRules) SetRedirectType(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsDeviceRules {
+	s.RedirectType = &v
+	return s
+}
+
+type DescribeCenterPolicyListResponseBodyDescribePolicyGroupsDomainResolveRule struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// *.example.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// allow
+	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+}
+
+func (s DescribeCenterPolicyListResponseBodyDescribePolicyGroupsDomainResolveRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCenterPolicyListResponseBodyDescribePolicyGroupsDomainResolveRule) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsDomainResolveRule) SetDescription(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsDomainResolveRule {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsDomainResolveRule) SetDomain(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsDomainResolveRule {
+	s.Domain = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsDomainResolveRule) SetPolicy(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsDomainResolveRule {
+	s.Policy = &v
+	return s
+}
+
+type DescribeCenterPolicyListResponseBodyDescribePolicyGroupsNetRedirectRule struct {
+	// example:
+	//
+	// *.example.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// allow
+	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// example:
+	//
+	// domain
+	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+}
+
+func (s DescribeCenterPolicyListResponseBodyDescribePolicyGroupsNetRedirectRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCenterPolicyListResponseBodyDescribePolicyGroupsNetRedirectRule) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsNetRedirectRule) SetDomain(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsNetRedirectRule {
+	s.Domain = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsNetRedirectRule) SetPolicy(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsNetRedirectRule {
+	s.Policy = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsNetRedirectRule) SetRuleType(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsNetRedirectRule {
+	s.RuleType = &v
+	return s
+}
+
+type DescribeCenterPolicyListResponseBodyDescribePolicyGroupsUsbSupplyRedirectRule struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 08**
+	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// example:
+	//
+	// 1
+	UsbRedirectType *int64 `json:"UsbRedirectType,omitempty" xml:"UsbRedirectType,omitempty"`
+	// example:
+	//
+	// 1
+	UsbRuleType *int64 `json:"UsbRuleType,omitempty" xml:"UsbRuleType,omitempty"`
+	// example:
+	//
+	// 04**
+	VendorId *string `json:"VendorId,omitempty" xml:"VendorId,omitempty"`
+}
+
+func (s DescribeCenterPolicyListResponseBodyDescribePolicyGroupsUsbSupplyRedirectRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCenterPolicyListResponseBodyDescribePolicyGroupsUsbSupplyRedirectRule) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsUsbSupplyRedirectRule) SetDescription(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsUsbSupplyRedirectRule {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsUsbSupplyRedirectRule) SetProductId(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsUsbSupplyRedirectRule {
+	s.ProductId = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsUsbSupplyRedirectRule) SetUsbRedirectType(v int64) *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsUsbSupplyRedirectRule {
+	s.UsbRedirectType = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsUsbSupplyRedirectRule) SetUsbRuleType(v int64) *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsUsbSupplyRedirectRule {
+	s.UsbRuleType = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsUsbSupplyRedirectRule) SetVendorId(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsUsbSupplyRedirectRule {
+	s.VendorId = &v
+	return s
+}
+
+type DescribeCenterPolicyListResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCenterPolicyListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeCenterPolicyListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCenterPolicyListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCenterPolicyListResponse) SetHeaders(v map[string]*string) *DescribeCenterPolicyListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponse) SetStatusCode(v int32) *DescribeCenterPolicyListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponse) SetBody(v *DescribeCenterPolicyListResponseBody) *DescribeCenterPolicyListResponse {
 	s.Body = v
 	return s
 }
@@ -34939,6 +37771,333 @@ func (s *DescribeRenewalPriceResponse) SetBody(v *DescribeRenewalPriceResponseBo
 	return s
 }
 
+type DescribeResourceByCenterPolicyIdRequest struct {
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// AAAAAV3MpHK1AP0pfERHZN5pu6l69tQX7yFxx6/4dbooBAOc
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pg-53iyi2aar0nd6****
+	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
+	// example:
+	//
+	// desktop
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// example:
+	//
+	// ecd-ia2zw38bi6cm7****
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+}
+
+func (s DescribeResourceByCenterPolicyIdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeResourceByCenterPolicyIdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeResourceByCenterPolicyIdRequest) SetMaxResults(v int32) *DescribeResourceByCenterPolicyIdRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeResourceByCenterPolicyIdRequest) SetNextToken(v string) *DescribeResourceByCenterPolicyIdRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeResourceByCenterPolicyIdRequest) SetPolicyGroupId(v string) *DescribeResourceByCenterPolicyIdRequest {
+	s.PolicyGroupId = &v
+	return s
+}
+
+func (s *DescribeResourceByCenterPolicyIdRequest) SetProductType(v string) *DescribeResourceByCenterPolicyIdRequest {
+	s.ProductType = &v
+	return s
+}
+
+func (s *DescribeResourceByCenterPolicyIdRequest) SetResourceId(v string) *DescribeResourceByCenterPolicyIdRequest {
+	s.ResourceId = &v
+	return s
+}
+
+type DescribeResourceByCenterPolicyIdResponseBody struct {
+	// example:
+	//
+	// 2
+	Count *string `json:"Count,omitempty" xml:"Count,omitempty"`
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a4883
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 48174475-5EB2-5F99-A9E9-6F892D645****
+	RequestId         *string                                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceModelList []*DescribeResourceByCenterPolicyIdResponseBodyResourceModelList `json:"ResourceModelList,omitempty" xml:"ResourceModelList,omitempty" type:"Repeated"`
+}
+
+func (s DescribeResourceByCenterPolicyIdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeResourceByCenterPolicyIdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeResourceByCenterPolicyIdResponseBody) SetCount(v string) *DescribeResourceByCenterPolicyIdResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *DescribeResourceByCenterPolicyIdResponseBody) SetNextToken(v string) *DescribeResourceByCenterPolicyIdResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeResourceByCenterPolicyIdResponseBody) SetRequestId(v string) *DescribeResourceByCenterPolicyIdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeResourceByCenterPolicyIdResponseBody) SetResourceModelList(v []*DescribeResourceByCenterPolicyIdResponseBodyResourceModelList) *DescribeResourceByCenterPolicyIdResponseBody {
+	s.ResourceModelList = v
+	return s
+}
+
+type DescribeResourceByCenterPolicyIdResponseBodyResourceModelList struct {
+	AppModelList []*DescribeResourceByCenterPolicyIdResponseBodyResourceModelListAppModelList `json:"AppModelList,omitempty" xml:"AppModelList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 64
+	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// example:
+	//
+	// eds.enterprise_office.8c32g
+	DesktopType *string `json:"DesktopType,omitempty" xml:"DesktopType,omitempty"`
+	// example:
+	//
+	// 0.125
+	GpuCount *float64 `json:"GpuCount,omitempty" xml:"GpuCount,omitempty"`
+	// example:
+	//
+	// 2GiB
+	GpuSpec *string `json:"GpuSpec,omitempty" xml:"GpuSpec,omitempty"`
+	// example:
+	//
+	// 10240
+	Memory *int64 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// example:
+	//
+	// Linux
+	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	// example:
+	//
+	// postPaid
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// example:
+	//
+	// desktop
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// example:
+	//
+	// ASP
+	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
+	// example:
+	//
+	// rg-d7pasxsd3b9nhq**
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// test
+	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
+	// example:
+	//
+	// 10
+	ResourceGroupRelCount *int32 `json:"ResourceGroupRelCount,omitempty" xml:"ResourceGroupRelCount,omitempty"`
+	// example:
+	//
+	// ecd-7o96aa08fr****
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// example:
+	//
+	// cn-shenzhen
+	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
+	// example:
+	//
+	// desktop
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// example:
+	//
+	// Stopped
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeResourceByCenterPolicyIdResponseBodyResourceModelList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeResourceByCenterPolicyIdResponseBodyResourceModelList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeResourceByCenterPolicyIdResponseBodyResourceModelList) SetAppModelList(v []*DescribeResourceByCenterPolicyIdResponseBodyResourceModelListAppModelList) *DescribeResourceByCenterPolicyIdResponseBodyResourceModelList {
+	s.AppModelList = v
+	return s
+}
+
+func (s *DescribeResourceByCenterPolicyIdResponseBodyResourceModelList) SetCpu(v int32) *DescribeResourceByCenterPolicyIdResponseBodyResourceModelList {
+	s.Cpu = &v
+	return s
+}
+
+func (s *DescribeResourceByCenterPolicyIdResponseBodyResourceModelList) SetDesktopType(v string) *DescribeResourceByCenterPolicyIdResponseBodyResourceModelList {
+	s.DesktopType = &v
+	return s
+}
+
+func (s *DescribeResourceByCenterPolicyIdResponseBodyResourceModelList) SetGpuCount(v float64) *DescribeResourceByCenterPolicyIdResponseBodyResourceModelList {
+	s.GpuCount = &v
+	return s
+}
+
+func (s *DescribeResourceByCenterPolicyIdResponseBodyResourceModelList) SetGpuSpec(v string) *DescribeResourceByCenterPolicyIdResponseBodyResourceModelList {
+	s.GpuSpec = &v
+	return s
+}
+
+func (s *DescribeResourceByCenterPolicyIdResponseBodyResourceModelList) SetMemory(v int64) *DescribeResourceByCenterPolicyIdResponseBodyResourceModelList {
+	s.Memory = &v
+	return s
+}
+
+func (s *DescribeResourceByCenterPolicyIdResponseBodyResourceModelList) SetOsType(v string) *DescribeResourceByCenterPolicyIdResponseBodyResourceModelList {
+	s.OsType = &v
+	return s
+}
+
+func (s *DescribeResourceByCenterPolicyIdResponseBodyResourceModelList) SetPayType(v string) *DescribeResourceByCenterPolicyIdResponseBodyResourceModelList {
+	s.PayType = &v
+	return s
+}
+
+func (s *DescribeResourceByCenterPolicyIdResponseBodyResourceModelList) SetProductType(v string) *DescribeResourceByCenterPolicyIdResponseBodyResourceModelList {
+	s.ProductType = &v
+	return s
+}
+
+func (s *DescribeResourceByCenterPolicyIdResponseBodyResourceModelList) SetProtocolType(v string) *DescribeResourceByCenterPolicyIdResponseBodyResourceModelList {
+	s.ProtocolType = &v
+	return s
+}
+
+func (s *DescribeResourceByCenterPolicyIdResponseBodyResourceModelList) SetResourceGroupId(v string) *DescribeResourceByCenterPolicyIdResponseBodyResourceModelList {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeResourceByCenterPolicyIdResponseBodyResourceModelList) SetResourceGroupName(v string) *DescribeResourceByCenterPolicyIdResponseBodyResourceModelList {
+	s.ResourceGroupName = &v
+	return s
+}
+
+func (s *DescribeResourceByCenterPolicyIdResponseBodyResourceModelList) SetResourceGroupRelCount(v int32) *DescribeResourceByCenterPolicyIdResponseBodyResourceModelList {
+	s.ResourceGroupRelCount = &v
+	return s
+}
+
+func (s *DescribeResourceByCenterPolicyIdResponseBodyResourceModelList) SetResourceId(v string) *DescribeResourceByCenterPolicyIdResponseBodyResourceModelList {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *DescribeResourceByCenterPolicyIdResponseBodyResourceModelList) SetResourceName(v string) *DescribeResourceByCenterPolicyIdResponseBodyResourceModelList {
+	s.ResourceName = &v
+	return s
+}
+
+func (s *DescribeResourceByCenterPolicyIdResponseBodyResourceModelList) SetResourceRegionId(v string) *DescribeResourceByCenterPolicyIdResponseBodyResourceModelList {
+	s.ResourceRegionId = &v
+	return s
+}
+
+func (s *DescribeResourceByCenterPolicyIdResponseBodyResourceModelList) SetResourceType(v string) *DescribeResourceByCenterPolicyIdResponseBodyResourceModelList {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *DescribeResourceByCenterPolicyIdResponseBodyResourceModelList) SetStatus(v string) *DescribeResourceByCenterPolicyIdResponseBodyResourceModelList {
+	s.Status = &v
+	return s
+}
+
+type DescribeResourceByCenterPolicyIdResponseBodyResourceModelListAppModelList struct {
+	// example:
+	//
+	// 18
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// alipic-powergem
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+}
+
+func (s DescribeResourceByCenterPolicyIdResponseBodyResourceModelListAppModelList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeResourceByCenterPolicyIdResponseBodyResourceModelListAppModelList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeResourceByCenterPolicyIdResponseBodyResourceModelListAppModelList) SetAppId(v string) *DescribeResourceByCenterPolicyIdResponseBodyResourceModelListAppModelList {
+	s.AppId = &v
+	return s
+}
+
+func (s *DescribeResourceByCenterPolicyIdResponseBodyResourceModelListAppModelList) SetAppName(v string) *DescribeResourceByCenterPolicyIdResponseBodyResourceModelListAppModelList {
+	s.AppName = &v
+	return s
+}
+
+type DescribeResourceByCenterPolicyIdResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeResourceByCenterPolicyIdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeResourceByCenterPolicyIdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeResourceByCenterPolicyIdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeResourceByCenterPolicyIdResponse) SetHeaders(v map[string]*string) *DescribeResourceByCenterPolicyIdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeResourceByCenterPolicyIdResponse) SetStatusCode(v int32) *DescribeResourceByCenterPolicyIdResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeResourceByCenterPolicyIdResponse) SetBody(v *DescribeResourceByCenterPolicyIdResponseBody) *DescribeResourceByCenterPolicyIdResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeSessionStatisticRequest struct {
 	// The end of the time range to query.
 	//
@@ -45586,6 +48745,1396 @@ func (s *ModifyCdsFileShareLinkResponse) SetBody(v *ModifyCdsFileShareLinkRespon
 	return s
 }
 
+type ModifyCenterPolicyRequest struct {
+	// example:
+	//
+	// deny
+	AdminAccess *string `json:"AdminAccess,omitempty" xml:"AdminAccess,omitempty"`
+	// example:
+	//
+	// on
+	AppContentProtection        *string                                                 `json:"AppContentProtection,omitempty" xml:"AppContentProtection,omitempty"`
+	AuthorizeAccessPolicyRule   []*ModifyCenterPolicyRequestAuthorizeAccessPolicyRule   `json:"AuthorizeAccessPolicyRule,omitempty" xml:"AuthorizeAccessPolicyRule,omitempty" type:"Repeated"`
+	AuthorizeSecurityPolicyRule []*ModifyCenterPolicyRequestAuthorizeSecurityPolicyRule `json:"AuthorizeSecurityPolicyRule,omitempty" xml:"AuthorizeSecurityPolicyRule,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	BusinessType *int32 `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	// example:
+	//
+	// on
+	CameraRedirect *string                                `json:"CameraRedirect,omitempty" xml:"CameraRedirect,omitempty"`
+	ClientType     []*ModifyCenterPolicyRequestClientType `json:"ClientType,omitempty" xml:"ClientType,omitempty" type:"Repeated"`
+	// example:
+	//
+	// off
+	Clipboard *string `json:"Clipboard,omitempty" xml:"Clipboard,omitempty"`
+	// example:
+	//
+	// off
+	ColorEnhancement *string `json:"ColorEnhancement,omitempty" xml:"ColorEnhancement,omitempty"`
+	// example:
+	//
+	// 50
+	CpuDownGradeDuration *int32    `json:"CpuDownGradeDuration,omitempty" xml:"CpuDownGradeDuration,omitempty"`
+	CpuProcessors        []*string `json:"CpuProcessors,omitempty" xml:"CpuProcessors,omitempty" type:"Repeated"`
+	// example:
+	//
+	// off
+	CpuProtectedMode *string `json:"CpuProtectedMode,omitempty" xml:"CpuProtectedMode,omitempty"`
+	// example:
+	//
+	// 70
+	CpuRateLimit *int32 `json:"CpuRateLimit,omitempty" xml:"CpuRateLimit,omitempty"`
+	// example:
+	//
+	// 30
+	CpuSampleDuration *int32 `json:"CpuSampleDuration,omitempty" xml:"CpuSampleDuration,omitempty"`
+	// example:
+	//
+	// 80
+	CpuSingleRateLimit *int32 `json:"CpuSingleRateLimit,omitempty" xml:"CpuSingleRateLimit,omitempty"`
+	// example:
+	//
+	// off
+	DeviceConnectHint *string                                     `json:"DeviceConnectHint,omitempty" xml:"DeviceConnectHint,omitempty"`
+	DeviceRedirects   []*ModifyCenterPolicyRequestDeviceRedirects `json:"DeviceRedirects,omitempty" xml:"DeviceRedirects,omitempty" type:"Repeated"`
+	DeviceRules       []*ModifyCenterPolicyRequestDeviceRules     `json:"DeviceRules,omitempty" xml:"DeviceRules,omitempty" type:"Repeated"`
+	// example:
+	//
+	// customTime
+	DisconnectKeepSession *string `json:"DisconnectKeepSession,omitempty" xml:"DisconnectKeepSession,omitempty"`
+	// example:
+	//
+	// 120
+	DisconnectKeepSessionTime *int32 `json:"DisconnectKeepSessionTime,omitempty" xml:"DisconnectKeepSessionTime,omitempty"`
+	// example:
+	//
+	// clientCustom
+	DisplayMode       *string                                       `json:"DisplayMode,omitempty" xml:"DisplayMode,omitempty"`
+	DomainResolveRule []*ModifyCenterPolicyRequestDomainResolveRule `json:"DomainResolveRule,omitempty" xml:"DomainResolveRule,omitempty" type:"Repeated"`
+	// example:
+	//
+	// off
+	DomainResolveRuleType *string `json:"DomainResolveRuleType,omitempty" xml:"DomainResolveRuleType,omitempty"`
+	// example:
+	//
+	// off
+	EnableSessionRateLimiting *string `json:"EnableSessionRateLimiting,omitempty" xml:"EnableSessionRateLimiting,omitempty"`
+	// example:
+	//
+	// off
+	EndUserApplyAdminCoordinate *string `json:"EndUserApplyAdminCoordinate,omitempty" xml:"EndUserApplyAdminCoordinate,omitempty"`
+	// example:
+	//
+	// off
+	EndUserGroupCoordinate *string `json:"EndUserGroupCoordinate,omitempty" xml:"EndUserGroupCoordinate,omitempty"`
+	// example:
+	//
+	// off
+	FileMigrate *string `json:"FileMigrate,omitempty" xml:"FileMigrate,omitempty"`
+	// example:
+	//
+	// off
+	GpuAcceleration *string `json:"GpuAcceleration,omitempty" xml:"GpuAcceleration,omitempty"`
+	// example:
+	//
+	// off
+	Html5FileTransfer *string `json:"Html5FileTransfer,omitempty" xml:"Html5FileTransfer,omitempty"`
+	// example:
+	//
+	// both
+	InternetCommunicationProtocol *string `json:"InternetCommunicationProtocol,omitempty" xml:"InternetCommunicationProtocol,omitempty"`
+	// example:
+	//
+	// off
+	LocalDrive *string `json:"LocalDrive,omitempty" xml:"LocalDrive,omitempty"`
+	// example:
+	//
+	// 120
+	MaxReconnectTime *int32 `json:"MaxReconnectTime,omitempty" xml:"MaxReconnectTime,omitempty"`
+	// example:
+	//
+	// 40
+	MemoryDownGradeDuration *int32    `json:"MemoryDownGradeDuration,omitempty" xml:"MemoryDownGradeDuration,omitempty"`
+	MemoryProcessors        []*string `json:"MemoryProcessors,omitempty" xml:"MemoryProcessors,omitempty" type:"Repeated"`
+	// example:
+	//
+	// off
+	MemoryProtectedMode *string `json:"MemoryProtectedMode,omitempty" xml:"MemoryProtectedMode,omitempty"`
+	// example:
+	//
+	// 70
+	MemoryRateLimit *int32 `json:"MemoryRateLimit,omitempty" xml:"MemoryRateLimit,omitempty"`
+	// example:
+	//
+	// 40
+	MemorySampleDuration *int32 `json:"MemorySampleDuration,omitempty" xml:"MemorySampleDuration,omitempty"`
+	// example:
+	//
+	// 40
+	MemorySingleRateLimit *int32 `json:"MemorySingleRateLimit,omitempty" xml:"MemorySingleRateLimit,omitempty"`
+	// example:
+	//
+	// off
+	MobileRestart *string `json:"MobileRestart,omitempty" xml:"MobileRestart,omitempty"`
+	// example:
+	//
+	// off
+	MobileShutdown *string `json:"MobileShutdown,omitempty" xml:"MobileShutdown,omitempty"`
+	// example:
+	//
+	// testPolicyGroupName
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// on
+	NetRedirect     *string                                     `json:"NetRedirect,omitempty" xml:"NetRedirect,omitempty"`
+	NetRedirectRule []*ModifyCenterPolicyRequestNetRedirectRule `json:"NetRedirectRule,omitempty" xml:"NetRedirectRule,omitempty" type:"Repeated"`
+	// example:
+	//
+	// off
+	NoOperationDisconnect *string `json:"NoOperationDisconnect,omitempty" xml:"NoOperationDisconnect,omitempty"`
+	// example:
+	//
+	// 120
+	NoOperationDisconnectTime *int32 `json:"NoOperationDisconnectTime,omitempty" xml:"NoOperationDisconnectTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pg-53iyi2aar0nd6****
+	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
+	// example:
+	//
+	// off
+	PrinterRedirect *string `json:"PrinterRedirect,omitempty" xml:"PrinterRedirect,omitempty"`
+	// example:
+	//
+	// off
+	QualityEnhancement *string `json:"QualityEnhancement,omitempty" xml:"QualityEnhancement,omitempty"`
+	// example:
+	//
+	// 10
+	RecordEventDuration  *int32    `json:"RecordEventDuration,omitempty" xml:"RecordEventDuration,omitempty"`
+	RecordEventFilePaths []*string `json:"RecordEventFilePaths,omitempty" xml:"RecordEventFilePaths,omitempty" type:"Repeated"`
+	RecordEventRegisters []*string `json:"RecordEventRegisters,omitempty" xml:"RecordEventRegisters,omitempty" type:"Repeated"`
+	RecordEvents         []*string `json:"RecordEvents,omitempty" xml:"RecordEvents,omitempty" type:"Repeated"`
+	// example:
+	//
+	// off
+	Recording *string `json:"Recording,omitempty" xml:"Recording,omitempty"`
+	// example:
+	//
+	// on
+	RecordingAudio *string `json:"RecordingAudio,omitempty" xml:"RecordingAudio,omitempty"`
+	// example:
+	//
+	// 10
+	RecordingDuration *int32 `json:"RecordingDuration,omitempty" xml:"RecordingDuration,omitempty"`
+	// example:
+	//
+	// 08:59:00
+	RecordingEndTime *string `json:"RecordingEndTime,omitempty" xml:"RecordingEndTime,omitempty"`
+	// example:
+	//
+	// 15
+	RecordingExpires *int32 `json:"RecordingExpires,omitempty" xml:"RecordingExpires,omitempty"`
+	// example:
+	//
+	// 5
+	RecordingFps *string `json:"RecordingFps,omitempty" xml:"RecordingFps,omitempty"`
+	// example:
+	//
+	// 08:00:00
+	RecordingStartTime *string `json:"RecordingStartTime,omitempty" xml:"RecordingStartTime,omitempty"`
+	// example:
+	//
+	// off
+	RecordingUserNotify        *string `json:"RecordingUserNotify,omitempty" xml:"RecordingUserNotify,omitempty"`
+	RecordingUserNotifyMessage *string `json:"RecordingUserNotifyMessage,omitempty" xml:"RecordingUserNotifyMessage,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// fullControl
+	RemoteCoordinate *string `json:"RemoteCoordinate,omitempty" xml:"RemoteCoordinate,omitempty"`
+	// example:
+	//
+	// off
+	ResetDesktop *string `json:"ResetDesktop,omitempty" xml:"ResetDesktop,omitempty"`
+	// example:
+	//
+	// 1280
+	ResolutionHeight *int32 `json:"ResolutionHeight,omitempty" xml:"ResolutionHeight,omitempty"`
+	// example:
+	//
+	// adaptive
+	ResolutionModel *string `json:"ResolutionModel,omitempty" xml:"ResolutionModel,omitempty"`
+	// example:
+	//
+	// 720
+	ResolutionWidth *int32 `json:"ResolutionWidth,omitempty" xml:"ResolutionWidth,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// desktop
+	ResourceType             *string                                              `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	RevokeAccessPolicyRule   []*ModifyCenterPolicyRequestRevokeAccessPolicyRule   `json:"RevokeAccessPolicyRule,omitempty" xml:"RevokeAccessPolicyRule,omitempty" type:"Repeated"`
+	RevokeSecurityPolicyRule []*ModifyCenterPolicyRequestRevokeSecurityPolicyRule `json:"RevokeSecurityPolicyRule,omitempty" xml:"RevokeSecurityPolicyRule,omitempty" type:"Repeated"`
+	// example:
+	//
+	// GLOBAL
+	Scope      *string   `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	ScopeValue []*string `json:"ScopeValue,omitempty" xml:"ScopeValue,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2000
+	SessionMaxRateKbps *int32 `json:"SessionMaxRateKbps,omitempty" xml:"SessionMaxRateKbps,omitempty"`
+	// example:
+	//
+	// off
+	SmoothEnhancement *string `json:"SmoothEnhancement,omitempty" xml:"SmoothEnhancement,omitempty"`
+	// example:
+	//
+	// off
+	StatusMonitor *string `json:"StatusMonitor,omitempty" xml:"StatusMonitor,omitempty"`
+	// example:
+	//
+	// smooth
+	StreamingMode *string `json:"StreamingMode,omitempty" xml:"StreamingMode,omitempty"`
+	// example:
+	//
+	// 30
+	TargetFps *int32 `json:"TargetFps,omitempty" xml:"TargetFps,omitempty"`
+	// example:
+	//
+	// off
+	Taskbar *string `json:"Taskbar,omitempty" xml:"Taskbar,omitempty"`
+	// example:
+	//
+	// off
+	UsbRedirect           *string                                           `json:"UsbRedirect,omitempty" xml:"UsbRedirect,omitempty"`
+	UsbSupplyRedirectRule []*ModifyCenterPolicyRequestUsbSupplyRedirectRule `json:"UsbSupplyRedirectRule,omitempty" xml:"UsbSupplyRedirectRule,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2000
+	VideoEncAvgKbps *int32 `json:"VideoEncAvgKbps,omitempty" xml:"VideoEncAvgKbps,omitempty"`
+	// example:
+	//
+	// 30
+	VideoEncMaxQP *int32 `json:"VideoEncMaxQP,omitempty" xml:"VideoEncMaxQP,omitempty"`
+	// example:
+	//
+	// 30
+	VideoEncMinQP *int32 `json:"VideoEncMinQP,omitempty" xml:"VideoEncMinQP,omitempty"`
+	// example:
+	//
+	// 2000
+	VideoEncPeakKbps *int32 `json:"VideoEncPeakKbps,omitempty" xml:"VideoEncPeakKbps,omitempty"`
+	// example:
+	//
+	// qualityFirst
+	VideoEncPolicy *string `json:"VideoEncPolicy,omitempty" xml:"VideoEncPolicy,omitempty"`
+	// example:
+	//
+	// on
+	VideoRedirect *string `json:"VideoRedirect,omitempty" xml:"VideoRedirect,omitempty"`
+	// example:
+	//
+	// low
+	VisualQuality *string `json:"VisualQuality,omitempty" xml:"VisualQuality,omitempty"`
+	// example:
+	//
+	// off
+	Watermark *string `json:"Watermark,omitempty" xml:"Watermark,omitempty"`
+	// example:
+	//
+	// off
+	WatermarkAntiCam *string `json:"WatermarkAntiCam,omitempty" xml:"WatermarkAntiCam,omitempty"`
+	// example:
+	//
+	// 0
+	WatermarkColor *int32 `json:"WatermarkColor,omitempty" xml:"WatermarkColor,omitempty"`
+	// example:
+	//
+	// 3
+	WatermarkColumnAmount *int32 `json:"WatermarkColumnAmount,omitempty" xml:"WatermarkColumnAmount,omitempty"`
+	// example:
+	//
+	// test
+	WatermarkCustomText *string `json:"WatermarkCustomText,omitempty" xml:"WatermarkCustomText,omitempty"`
+	// example:
+	//
+	// -10
+	WatermarkDegree *float64 `json:"WatermarkDegree,omitempty" xml:"WatermarkDegree,omitempty"`
+	// example:
+	//
+	// 10
+	WatermarkFontSize *int32 `json:"WatermarkFontSize,omitempty" xml:"WatermarkFontSize,omitempty"`
+	// example:
+	//
+	// plain
+	WatermarkFontStyle *string `json:"WatermarkFontStyle,omitempty" xml:"WatermarkFontStyle,omitempty"`
+	// example:
+	//
+	// medium
+	WatermarkPower *string `json:"WatermarkPower,omitempty" xml:"WatermarkPower,omitempty"`
+	// example:
+	//
+	// 5
+	WatermarkRowAmount *int32 `json:"WatermarkRowAmount,omitempty" xml:"WatermarkRowAmount,omitempty"`
+	// example:
+	//
+	// off
+	WatermarkSecurity *string `json:"WatermarkSecurity,omitempty" xml:"WatermarkSecurity,omitempty"`
+	// example:
+	//
+	// 10
+	WatermarkTransparencyValue *int32 `json:"WatermarkTransparencyValue,omitempty" xml:"WatermarkTransparencyValue,omitempty"`
+	// example:
+	//
+	// EndUserId
+	WatermarkType *string `json:"WatermarkType,omitempty" xml:"WatermarkType,omitempty"`
+	// example:
+	//
+	// off
+	WuyingKeeper *string `json:"WuyingKeeper,omitempty" xml:"WuyingKeeper,omitempty"`
+	// example:
+	//
+	// on
+	WyAssistant *string `json:"WyAssistant,omitempty" xml:"WyAssistant,omitempty"`
+}
+
+func (s ModifyCenterPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCenterPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCenterPolicyRequest) SetAdminAccess(v string) *ModifyCenterPolicyRequest {
+	s.AdminAccess = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetAppContentProtection(v string) *ModifyCenterPolicyRequest {
+	s.AppContentProtection = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetAuthorizeAccessPolicyRule(v []*ModifyCenterPolicyRequestAuthorizeAccessPolicyRule) *ModifyCenterPolicyRequest {
+	s.AuthorizeAccessPolicyRule = v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetAuthorizeSecurityPolicyRule(v []*ModifyCenterPolicyRequestAuthorizeSecurityPolicyRule) *ModifyCenterPolicyRequest {
+	s.AuthorizeSecurityPolicyRule = v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetBusinessType(v int32) *ModifyCenterPolicyRequest {
+	s.BusinessType = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetCameraRedirect(v string) *ModifyCenterPolicyRequest {
+	s.CameraRedirect = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetClientType(v []*ModifyCenterPolicyRequestClientType) *ModifyCenterPolicyRequest {
+	s.ClientType = v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetClipboard(v string) *ModifyCenterPolicyRequest {
+	s.Clipboard = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetColorEnhancement(v string) *ModifyCenterPolicyRequest {
+	s.ColorEnhancement = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetCpuDownGradeDuration(v int32) *ModifyCenterPolicyRequest {
+	s.CpuDownGradeDuration = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetCpuProcessors(v []*string) *ModifyCenterPolicyRequest {
+	s.CpuProcessors = v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetCpuProtectedMode(v string) *ModifyCenterPolicyRequest {
+	s.CpuProtectedMode = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetCpuRateLimit(v int32) *ModifyCenterPolicyRequest {
+	s.CpuRateLimit = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetCpuSampleDuration(v int32) *ModifyCenterPolicyRequest {
+	s.CpuSampleDuration = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetCpuSingleRateLimit(v int32) *ModifyCenterPolicyRequest {
+	s.CpuSingleRateLimit = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetDeviceConnectHint(v string) *ModifyCenterPolicyRequest {
+	s.DeviceConnectHint = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetDeviceRedirects(v []*ModifyCenterPolicyRequestDeviceRedirects) *ModifyCenterPolicyRequest {
+	s.DeviceRedirects = v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetDeviceRules(v []*ModifyCenterPolicyRequestDeviceRules) *ModifyCenterPolicyRequest {
+	s.DeviceRules = v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetDisconnectKeepSession(v string) *ModifyCenterPolicyRequest {
+	s.DisconnectKeepSession = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetDisconnectKeepSessionTime(v int32) *ModifyCenterPolicyRequest {
+	s.DisconnectKeepSessionTime = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetDisplayMode(v string) *ModifyCenterPolicyRequest {
+	s.DisplayMode = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetDomainResolveRule(v []*ModifyCenterPolicyRequestDomainResolveRule) *ModifyCenterPolicyRequest {
+	s.DomainResolveRule = v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetDomainResolveRuleType(v string) *ModifyCenterPolicyRequest {
+	s.DomainResolveRuleType = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetEnableSessionRateLimiting(v string) *ModifyCenterPolicyRequest {
+	s.EnableSessionRateLimiting = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetEndUserApplyAdminCoordinate(v string) *ModifyCenterPolicyRequest {
+	s.EndUserApplyAdminCoordinate = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetEndUserGroupCoordinate(v string) *ModifyCenterPolicyRequest {
+	s.EndUserGroupCoordinate = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetFileMigrate(v string) *ModifyCenterPolicyRequest {
+	s.FileMigrate = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetGpuAcceleration(v string) *ModifyCenterPolicyRequest {
+	s.GpuAcceleration = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetHtml5FileTransfer(v string) *ModifyCenterPolicyRequest {
+	s.Html5FileTransfer = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetInternetCommunicationProtocol(v string) *ModifyCenterPolicyRequest {
+	s.InternetCommunicationProtocol = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetLocalDrive(v string) *ModifyCenterPolicyRequest {
+	s.LocalDrive = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetMaxReconnectTime(v int32) *ModifyCenterPolicyRequest {
+	s.MaxReconnectTime = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetMemoryDownGradeDuration(v int32) *ModifyCenterPolicyRequest {
+	s.MemoryDownGradeDuration = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetMemoryProcessors(v []*string) *ModifyCenterPolicyRequest {
+	s.MemoryProcessors = v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetMemoryProtectedMode(v string) *ModifyCenterPolicyRequest {
+	s.MemoryProtectedMode = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetMemoryRateLimit(v int32) *ModifyCenterPolicyRequest {
+	s.MemoryRateLimit = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetMemorySampleDuration(v int32) *ModifyCenterPolicyRequest {
+	s.MemorySampleDuration = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetMemorySingleRateLimit(v int32) *ModifyCenterPolicyRequest {
+	s.MemorySingleRateLimit = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetMobileRestart(v string) *ModifyCenterPolicyRequest {
+	s.MobileRestart = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetMobileShutdown(v string) *ModifyCenterPolicyRequest {
+	s.MobileShutdown = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetName(v string) *ModifyCenterPolicyRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetNetRedirect(v string) *ModifyCenterPolicyRequest {
+	s.NetRedirect = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetNetRedirectRule(v []*ModifyCenterPolicyRequestNetRedirectRule) *ModifyCenterPolicyRequest {
+	s.NetRedirectRule = v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetNoOperationDisconnect(v string) *ModifyCenterPolicyRequest {
+	s.NoOperationDisconnect = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetNoOperationDisconnectTime(v int32) *ModifyCenterPolicyRequest {
+	s.NoOperationDisconnectTime = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetPolicyGroupId(v string) *ModifyCenterPolicyRequest {
+	s.PolicyGroupId = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetPrinterRedirect(v string) *ModifyCenterPolicyRequest {
+	s.PrinterRedirect = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetQualityEnhancement(v string) *ModifyCenterPolicyRequest {
+	s.QualityEnhancement = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetRecordEventDuration(v int32) *ModifyCenterPolicyRequest {
+	s.RecordEventDuration = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetRecordEventFilePaths(v []*string) *ModifyCenterPolicyRequest {
+	s.RecordEventFilePaths = v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetRecordEventRegisters(v []*string) *ModifyCenterPolicyRequest {
+	s.RecordEventRegisters = v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetRecordEvents(v []*string) *ModifyCenterPolicyRequest {
+	s.RecordEvents = v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetRecording(v string) *ModifyCenterPolicyRequest {
+	s.Recording = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetRecordingAudio(v string) *ModifyCenterPolicyRequest {
+	s.RecordingAudio = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetRecordingDuration(v int32) *ModifyCenterPolicyRequest {
+	s.RecordingDuration = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetRecordingEndTime(v string) *ModifyCenterPolicyRequest {
+	s.RecordingEndTime = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetRecordingExpires(v int32) *ModifyCenterPolicyRequest {
+	s.RecordingExpires = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetRecordingFps(v string) *ModifyCenterPolicyRequest {
+	s.RecordingFps = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetRecordingStartTime(v string) *ModifyCenterPolicyRequest {
+	s.RecordingStartTime = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetRecordingUserNotify(v string) *ModifyCenterPolicyRequest {
+	s.RecordingUserNotify = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetRecordingUserNotifyMessage(v string) *ModifyCenterPolicyRequest {
+	s.RecordingUserNotifyMessage = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetRegionId(v string) *ModifyCenterPolicyRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetRemoteCoordinate(v string) *ModifyCenterPolicyRequest {
+	s.RemoteCoordinate = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetResetDesktop(v string) *ModifyCenterPolicyRequest {
+	s.ResetDesktop = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetResolutionHeight(v int32) *ModifyCenterPolicyRequest {
+	s.ResolutionHeight = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetResolutionModel(v string) *ModifyCenterPolicyRequest {
+	s.ResolutionModel = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetResolutionWidth(v int32) *ModifyCenterPolicyRequest {
+	s.ResolutionWidth = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetResourceType(v string) *ModifyCenterPolicyRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetRevokeAccessPolicyRule(v []*ModifyCenterPolicyRequestRevokeAccessPolicyRule) *ModifyCenterPolicyRequest {
+	s.RevokeAccessPolicyRule = v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetRevokeSecurityPolicyRule(v []*ModifyCenterPolicyRequestRevokeSecurityPolicyRule) *ModifyCenterPolicyRequest {
+	s.RevokeSecurityPolicyRule = v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetScope(v string) *ModifyCenterPolicyRequest {
+	s.Scope = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetScopeValue(v []*string) *ModifyCenterPolicyRequest {
+	s.ScopeValue = v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetSessionMaxRateKbps(v int32) *ModifyCenterPolicyRequest {
+	s.SessionMaxRateKbps = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetSmoothEnhancement(v string) *ModifyCenterPolicyRequest {
+	s.SmoothEnhancement = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetStatusMonitor(v string) *ModifyCenterPolicyRequest {
+	s.StatusMonitor = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetStreamingMode(v string) *ModifyCenterPolicyRequest {
+	s.StreamingMode = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetTargetFps(v int32) *ModifyCenterPolicyRequest {
+	s.TargetFps = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetTaskbar(v string) *ModifyCenterPolicyRequest {
+	s.Taskbar = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetUsbRedirect(v string) *ModifyCenterPolicyRequest {
+	s.UsbRedirect = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetUsbSupplyRedirectRule(v []*ModifyCenterPolicyRequestUsbSupplyRedirectRule) *ModifyCenterPolicyRequest {
+	s.UsbSupplyRedirectRule = v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetVideoEncAvgKbps(v int32) *ModifyCenterPolicyRequest {
+	s.VideoEncAvgKbps = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetVideoEncMaxQP(v int32) *ModifyCenterPolicyRequest {
+	s.VideoEncMaxQP = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetVideoEncMinQP(v int32) *ModifyCenterPolicyRequest {
+	s.VideoEncMinQP = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetVideoEncPeakKbps(v int32) *ModifyCenterPolicyRequest {
+	s.VideoEncPeakKbps = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetVideoEncPolicy(v string) *ModifyCenterPolicyRequest {
+	s.VideoEncPolicy = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetVideoRedirect(v string) *ModifyCenterPolicyRequest {
+	s.VideoRedirect = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetVisualQuality(v string) *ModifyCenterPolicyRequest {
+	s.VisualQuality = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetWatermark(v string) *ModifyCenterPolicyRequest {
+	s.Watermark = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetWatermarkAntiCam(v string) *ModifyCenterPolicyRequest {
+	s.WatermarkAntiCam = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetWatermarkColor(v int32) *ModifyCenterPolicyRequest {
+	s.WatermarkColor = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetWatermarkColumnAmount(v int32) *ModifyCenterPolicyRequest {
+	s.WatermarkColumnAmount = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetWatermarkCustomText(v string) *ModifyCenterPolicyRequest {
+	s.WatermarkCustomText = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetWatermarkDegree(v float64) *ModifyCenterPolicyRequest {
+	s.WatermarkDegree = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetWatermarkFontSize(v int32) *ModifyCenterPolicyRequest {
+	s.WatermarkFontSize = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetWatermarkFontStyle(v string) *ModifyCenterPolicyRequest {
+	s.WatermarkFontStyle = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetWatermarkPower(v string) *ModifyCenterPolicyRequest {
+	s.WatermarkPower = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetWatermarkRowAmount(v int32) *ModifyCenterPolicyRequest {
+	s.WatermarkRowAmount = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetWatermarkSecurity(v string) *ModifyCenterPolicyRequest {
+	s.WatermarkSecurity = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetWatermarkTransparencyValue(v int32) *ModifyCenterPolicyRequest {
+	s.WatermarkTransparencyValue = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetWatermarkType(v string) *ModifyCenterPolicyRequest {
+	s.WatermarkType = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetWuyingKeeper(v string) *ModifyCenterPolicyRequest {
+	s.WuyingKeeper = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetWyAssistant(v string) *ModifyCenterPolicyRequest {
+	s.WyAssistant = &v
+	return s
+}
+
+type ModifyCenterPolicyRequestAuthorizeAccessPolicyRule struct {
+	// example:
+	//
+	// 47.100.XX.XX/16
+	CidrIp *string `json:"CidrIp,omitempty" xml:"CidrIp,omitempty"`
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+}
+
+func (s ModifyCenterPolicyRequestAuthorizeAccessPolicyRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCenterPolicyRequestAuthorizeAccessPolicyRule) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCenterPolicyRequestAuthorizeAccessPolicyRule) SetCidrIp(v string) *ModifyCenterPolicyRequestAuthorizeAccessPolicyRule {
+	s.CidrIp = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequestAuthorizeAccessPolicyRule) SetDescription(v string) *ModifyCenterPolicyRequestAuthorizeAccessPolicyRule {
+	s.Description = &v
+	return s
+}
+
+type ModifyCenterPolicyRequestAuthorizeSecurityPolicyRule struct {
+	// example:
+	//
+	// 47.100.XX.XX/16
+	CidrIp *string `json:"CidrIp,omitempty" xml:"CidrIp,omitempty"`
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// TCP
+	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
+	// example:
+	//
+	// accept
+	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// example:
+	//
+	// 22/22
+	PortRange *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
+	// example:
+	//
+	// 1
+	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// example:
+	//
+	// inflow
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ModifyCenterPolicyRequestAuthorizeSecurityPolicyRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCenterPolicyRequestAuthorizeSecurityPolicyRule) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCenterPolicyRequestAuthorizeSecurityPolicyRule) SetCidrIp(v string) *ModifyCenterPolicyRequestAuthorizeSecurityPolicyRule {
+	s.CidrIp = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequestAuthorizeSecurityPolicyRule) SetDescription(v string) *ModifyCenterPolicyRequestAuthorizeSecurityPolicyRule {
+	s.Description = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequestAuthorizeSecurityPolicyRule) SetIpProtocol(v string) *ModifyCenterPolicyRequestAuthorizeSecurityPolicyRule {
+	s.IpProtocol = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequestAuthorizeSecurityPolicyRule) SetPolicy(v string) *ModifyCenterPolicyRequestAuthorizeSecurityPolicyRule {
+	s.Policy = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequestAuthorizeSecurityPolicyRule) SetPortRange(v string) *ModifyCenterPolicyRequestAuthorizeSecurityPolicyRule {
+	s.PortRange = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequestAuthorizeSecurityPolicyRule) SetPriority(v string) *ModifyCenterPolicyRequestAuthorizeSecurityPolicyRule {
+	s.Priority = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequestAuthorizeSecurityPolicyRule) SetType(v string) *ModifyCenterPolicyRequestAuthorizeSecurityPolicyRule {
+	s.Type = &v
+	return s
+}
+
+type ModifyCenterPolicyRequestClientType struct {
+	// example:
+	//
+	// android
+	ClientType *string `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
+	// example:
+	//
+	// off
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ModifyCenterPolicyRequestClientType) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCenterPolicyRequestClientType) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCenterPolicyRequestClientType) SetClientType(v string) *ModifyCenterPolicyRequestClientType {
+	s.ClientType = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequestClientType) SetStatus(v string) *ModifyCenterPolicyRequestClientType {
+	s.Status = &v
+	return s
+}
+
+type ModifyCenterPolicyRequestDeviceRedirects struct {
+	// example:
+	//
+	// camera
+	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	// example:
+	//
+	// deviceRedirect
+	RedirectType *string `json:"RedirectType,omitempty" xml:"RedirectType,omitempty"`
+}
+
+func (s ModifyCenterPolicyRequestDeviceRedirects) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCenterPolicyRequestDeviceRedirects) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCenterPolicyRequestDeviceRedirects) SetDeviceType(v string) *ModifyCenterPolicyRequestDeviceRedirects {
+	s.DeviceType = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequestDeviceRedirects) SetRedirectType(v string) *ModifyCenterPolicyRequestDeviceRedirects {
+	s.RedirectType = &v
+	return s
+}
+
+type ModifyCenterPolicyRequestDeviceRules struct {
+	// example:
+	//
+	// sandisk
+	DeviceName *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	// example:
+	//
+	// 0x55b1
+	DevicePid *string `json:"DevicePid,omitempty" xml:"DevicePid,omitempty"`
+	// example:
+	//
+	// storage
+	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	// example:
+	//
+	// 0x0781
+	DeviceVid *string `json:"DeviceVid,omitempty" xml:"DeviceVid,omitempty"`
+	// example:
+	//
+	// 2:0
+	OptCommand *string `json:"OptCommand,omitempty" xml:"OptCommand,omitempty"`
+	// example:
+	//
+	// usbRedirect
+	RedirectType *string `json:"RedirectType,omitempty" xml:"RedirectType,omitempty"`
+}
+
+func (s ModifyCenterPolicyRequestDeviceRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCenterPolicyRequestDeviceRules) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCenterPolicyRequestDeviceRules) SetDeviceName(v string) *ModifyCenterPolicyRequestDeviceRules {
+	s.DeviceName = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequestDeviceRules) SetDevicePid(v string) *ModifyCenterPolicyRequestDeviceRules {
+	s.DevicePid = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequestDeviceRules) SetDeviceType(v string) *ModifyCenterPolicyRequestDeviceRules {
+	s.DeviceType = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequestDeviceRules) SetDeviceVid(v string) *ModifyCenterPolicyRequestDeviceRules {
+	s.DeviceVid = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequestDeviceRules) SetOptCommand(v string) *ModifyCenterPolicyRequestDeviceRules {
+	s.OptCommand = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequestDeviceRules) SetRedirectType(v string) *ModifyCenterPolicyRequestDeviceRules {
+	s.RedirectType = &v
+	return s
+}
+
+type ModifyCenterPolicyRequestDomainResolveRule struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// *.example.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// allow
+	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+}
+
+func (s ModifyCenterPolicyRequestDomainResolveRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCenterPolicyRequestDomainResolveRule) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCenterPolicyRequestDomainResolveRule) SetDescription(v string) *ModifyCenterPolicyRequestDomainResolveRule {
+	s.Description = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequestDomainResolveRule) SetDomain(v string) *ModifyCenterPolicyRequestDomainResolveRule {
+	s.Domain = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequestDomainResolveRule) SetPolicy(v string) *ModifyCenterPolicyRequestDomainResolveRule {
+	s.Policy = &v
+	return s
+}
+
+type ModifyCenterPolicyRequestNetRedirectRule struct {
+	// example:
+	//
+	// *.taobao.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// Allow
+	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// example:
+	//
+	// domain
+	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+}
+
+func (s ModifyCenterPolicyRequestNetRedirectRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCenterPolicyRequestNetRedirectRule) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCenterPolicyRequestNetRedirectRule) SetDomain(v string) *ModifyCenterPolicyRequestNetRedirectRule {
+	s.Domain = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequestNetRedirectRule) SetPolicy(v string) *ModifyCenterPolicyRequestNetRedirectRule {
+	s.Policy = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequestNetRedirectRule) SetRuleType(v string) *ModifyCenterPolicyRequestNetRedirectRule {
+	s.RuleType = &v
+	return s
+}
+
+type ModifyCenterPolicyRequestRevokeAccessPolicyRule struct {
+	// example:
+	//
+	// 47.100.XX.XX/16
+	CidrIp *string `json:"CidrIp,omitempty" xml:"CidrIp,omitempty"`
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+}
+
+func (s ModifyCenterPolicyRequestRevokeAccessPolicyRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCenterPolicyRequestRevokeAccessPolicyRule) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCenterPolicyRequestRevokeAccessPolicyRule) SetCidrIp(v string) *ModifyCenterPolicyRequestRevokeAccessPolicyRule {
+	s.CidrIp = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequestRevokeAccessPolicyRule) SetDescription(v string) *ModifyCenterPolicyRequestRevokeAccessPolicyRule {
+	s.Description = &v
+	return s
+}
+
+type ModifyCenterPolicyRequestRevokeSecurityPolicyRule struct {
+	// example:
+	//
+	// 47.100.XX.XX/16
+	CidrIp *string `json:"CidrIp,omitempty" xml:"CidrIp,omitempty"`
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// TCP
+	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
+	// example:
+	//
+	// accept
+	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// example:
+	//
+	// 22/22
+	PortRange *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
+	// example:
+	//
+	// 1
+	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// example:
+	//
+	// outflow
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ModifyCenterPolicyRequestRevokeSecurityPolicyRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCenterPolicyRequestRevokeSecurityPolicyRule) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCenterPolicyRequestRevokeSecurityPolicyRule) SetCidrIp(v string) *ModifyCenterPolicyRequestRevokeSecurityPolicyRule {
+	s.CidrIp = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequestRevokeSecurityPolicyRule) SetDescription(v string) *ModifyCenterPolicyRequestRevokeSecurityPolicyRule {
+	s.Description = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequestRevokeSecurityPolicyRule) SetIpProtocol(v string) *ModifyCenterPolicyRequestRevokeSecurityPolicyRule {
+	s.IpProtocol = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequestRevokeSecurityPolicyRule) SetPolicy(v string) *ModifyCenterPolicyRequestRevokeSecurityPolicyRule {
+	s.Policy = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequestRevokeSecurityPolicyRule) SetPortRange(v string) *ModifyCenterPolicyRequestRevokeSecurityPolicyRule {
+	s.PortRange = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequestRevokeSecurityPolicyRule) SetPriority(v string) *ModifyCenterPolicyRequestRevokeSecurityPolicyRule {
+	s.Priority = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequestRevokeSecurityPolicyRule) SetType(v string) *ModifyCenterPolicyRequestRevokeSecurityPolicyRule {
+	s.Type = &v
+	return s
+}
+
+type ModifyCenterPolicyRequestUsbSupplyRedirectRule struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 08**
+	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// example:
+	//
+	// 1
+	UsbRedirectType *string `json:"UsbRedirectType,omitempty" xml:"UsbRedirectType,omitempty"`
+	// example:
+	//
+	// 1
+	UsbRuleType *string `json:"UsbRuleType,omitempty" xml:"UsbRuleType,omitempty"`
+	// example:
+	//
+	// 04**
+	VendorId *string `json:"VendorId,omitempty" xml:"VendorId,omitempty"`
+}
+
+func (s ModifyCenterPolicyRequestUsbSupplyRedirectRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCenterPolicyRequestUsbSupplyRedirectRule) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCenterPolicyRequestUsbSupplyRedirectRule) SetDescription(v string) *ModifyCenterPolicyRequestUsbSupplyRedirectRule {
+	s.Description = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequestUsbSupplyRedirectRule) SetProductId(v string) *ModifyCenterPolicyRequestUsbSupplyRedirectRule {
+	s.ProductId = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequestUsbSupplyRedirectRule) SetUsbRedirectType(v string) *ModifyCenterPolicyRequestUsbSupplyRedirectRule {
+	s.UsbRedirectType = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequestUsbSupplyRedirectRule) SetUsbRuleType(v string) *ModifyCenterPolicyRequestUsbSupplyRedirectRule {
+	s.UsbRuleType = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequestUsbSupplyRedirectRule) SetVendorId(v string) *ModifyCenterPolicyRequestUsbSupplyRedirectRule {
+	s.VendorId = &v
+	return s
+}
+
+type ModifyCenterPolicyResponseBody struct {
+	// example:
+	//
+	// 5CED7F18-43B1-5035-BBB6-2538B***
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyCenterPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCenterPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCenterPolicyResponseBody) SetRequestId(v string) *ModifyCenterPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyCenterPolicyResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyCenterPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyCenterPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCenterPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCenterPolicyResponse) SetHeaders(v map[string]*string) *ModifyCenterPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyCenterPolicyResponse) SetStatusCode(v int32) *ModifyCenterPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyResponse) SetBody(v *ModifyCenterPolicyResponseBody) *ModifyCenterPolicyResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyCloudDriveGroupsRequest struct {
 	// The ID of the cloud disk in Cloud Drive Service.
 	//
@@ -51314,6 +55863,159 @@ func (s *ModifyPolicyGroupResponse) SetStatusCode(v int32) *ModifyPolicyGroupRes
 }
 
 func (s *ModifyPolicyGroupResponse) SetBody(v *ModifyPolicyGroupResponseBody) *ModifyPolicyGroupResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyResourceCenterPolicyRequest struct {
+	// This parameter is required.
+	PolicyGroupIds []*string `json:"PolicyGroupIds,omitempty" xml:"PolicyGroupIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// general
+	PolicyGroupType *string `json:"PolicyGroupType,omitempty" xml:"PolicyGroupType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// desktop
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// This parameter is required.
+	ResourceIds []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// desktop
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s ModifyResourceCenterPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyResourceCenterPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyResourceCenterPolicyRequest) SetPolicyGroupIds(v []*string) *ModifyResourceCenterPolicyRequest {
+	s.PolicyGroupIds = v
+	return s
+}
+
+func (s *ModifyResourceCenterPolicyRequest) SetPolicyGroupType(v string) *ModifyResourceCenterPolicyRequest {
+	s.PolicyGroupType = &v
+	return s
+}
+
+func (s *ModifyResourceCenterPolicyRequest) SetProductType(v string) *ModifyResourceCenterPolicyRequest {
+	s.ProductType = &v
+	return s
+}
+
+func (s *ModifyResourceCenterPolicyRequest) SetResourceIds(v []*string) *ModifyResourceCenterPolicyRequest {
+	s.ResourceIds = v
+	return s
+}
+
+func (s *ModifyResourceCenterPolicyRequest) SetResourceRegionId(v string) *ModifyResourceCenterPolicyRequest {
+	s.ResourceRegionId = &v
+	return s
+}
+
+func (s *ModifyResourceCenterPolicyRequest) SetResourceType(v string) *ModifyResourceCenterPolicyRequest {
+	s.ResourceType = &v
+	return s
+}
+
+type ModifyResourceCenterPolicyResponseBody struct {
+	ModifyResults []*ModifyResourceCenterPolicyResponseBodyModifyResults `json:"ModifyResults,omitempty" xml:"ModifyResults,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 51592A88-0F2C-55E6-AD2C-2AD9C10D****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyResourceCenterPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyResourceCenterPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyResourceCenterPolicyResponseBody) SetModifyResults(v []*ModifyResourceCenterPolicyResponseBodyModifyResults) *ModifyResourceCenterPolicyResponseBody {
+	s.ModifyResults = v
+	return s
+}
+
+func (s *ModifyResourceCenterPolicyResponseBody) SetRequestId(v string) *ModifyResourceCenterPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyResourceCenterPolicyResponseBodyModifyResults struct {
+	// example:
+	//
+	// true
+	CheckResult *bool `json:"CheckResult,omitempty" xml:"CheckResult,omitempty"`
+	// example:
+	//
+	// ecd-e254cpyt9bb*****
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+}
+
+func (s ModifyResourceCenterPolicyResponseBodyModifyResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyResourceCenterPolicyResponseBodyModifyResults) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyResourceCenterPolicyResponseBodyModifyResults) SetCheckResult(v bool) *ModifyResourceCenterPolicyResponseBodyModifyResults {
+	s.CheckResult = &v
+	return s
+}
+
+func (s *ModifyResourceCenterPolicyResponseBodyModifyResults) SetResourceId(v string) *ModifyResourceCenterPolicyResponseBodyModifyResults {
+	s.ResourceId = &v
+	return s
+}
+
+type ModifyResourceCenterPolicyResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyResourceCenterPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyResourceCenterPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyResourceCenterPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyResourceCenterPolicyResponse) SetHeaders(v map[string]*string) *ModifyResourceCenterPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyResourceCenterPolicyResponse) SetStatusCode(v int32) *ModifyResourceCenterPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyResourceCenterPolicyResponse) SetBody(v *ModifyResourceCenterPolicyResponseBody) *ModifyResourceCenterPolicyResponse {
 	s.Body = v
 	return s
 }
@@ -58939,6 +63641,85 @@ func (client *Client) CancelCopyImage(request *CancelCopyImageRequest) (_result 
 	return _result, _err
 }
 
+// @param request - CloneCenterPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloneCenterPolicyResponse
+func (client *Client) CloneCenterPolicyWithOptions(request *CloneCenterPolicyRequest, runtime *util.RuntimeOptions) (_result *CloneCenterPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BusinessType)) {
+		query["BusinessType"] = request.BusinessType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyGroupId)) {
+		query["PolicyGroupId"] = request.PolicyGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CloneCenterPolicy"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CloneCenterPolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CloneCenterPolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// @param request - CloneCenterPolicyRequest
+//
+// @return CloneCenterPolicyResponse
+func (client *Client) CloneCenterPolicy(request *CloneCenterPolicyRequest) (_result *CloneCenterPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CloneCenterPolicyResponse{}
+	_body, _err := client.CloneCenterPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // Summary:
 //
 // Clones an existing policy to quickly create a policy.
@@ -60410,6 +65191,461 @@ func (client *Client) CreateCdsFileShareLink(request *CreateCdsFileShareLinkRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateCdsFileShareLinkResponse{}
 	_body, _err := client.CreateCdsFileShareLinkWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - CreateCenterPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCenterPolicyResponse
+func (client *Client) CreateCenterPolicyWithOptions(request *CreateCenterPolicyRequest, runtime *util.RuntimeOptions) (_result *CreateCenterPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AdminAccess)) {
+		query["AdminAccess"] = request.AdminAccess
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppContentProtection)) {
+		query["AppContentProtection"] = request.AppContentProtection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthorizeAccessPolicyRule)) {
+		query["AuthorizeAccessPolicyRule"] = request.AuthorizeAccessPolicyRule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthorizeSecurityPolicyRule)) {
+		query["AuthorizeSecurityPolicyRule"] = request.AuthorizeSecurityPolicyRule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BusinessType)) {
+		query["BusinessType"] = request.BusinessType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CameraRedirect)) {
+		query["CameraRedirect"] = request.CameraRedirect
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientType)) {
+		query["ClientType"] = request.ClientType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Clipboard)) {
+		query["Clipboard"] = request.Clipboard
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ColorEnhancement)) {
+		query["ColorEnhancement"] = request.ColorEnhancement
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CpuDownGradeDuration)) {
+		query["CpuDownGradeDuration"] = request.CpuDownGradeDuration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CpuProcessors)) {
+		query["CpuProcessors"] = request.CpuProcessors
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CpuProtectedMode)) {
+		query["CpuProtectedMode"] = request.CpuProtectedMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CpuRateLimit)) {
+		query["CpuRateLimit"] = request.CpuRateLimit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CpuSampleDuration)) {
+		query["CpuSampleDuration"] = request.CpuSampleDuration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CpuSingleRateLimit)) {
+		query["CpuSingleRateLimit"] = request.CpuSingleRateLimit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceConnectHint)) {
+		query["DeviceConnectHint"] = request.DeviceConnectHint
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceRedirects)) {
+		query["DeviceRedirects"] = request.DeviceRedirects
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceRules)) {
+		query["DeviceRules"] = request.DeviceRules
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisconnectKeepSession)) {
+		query["DisconnectKeepSession"] = request.DisconnectKeepSession
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisconnectKeepSessionTime)) {
+		query["DisconnectKeepSessionTime"] = request.DisconnectKeepSessionTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisplayMode)) {
+		query["DisplayMode"] = request.DisplayMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainResolveRule)) {
+		query["DomainResolveRule"] = request.DomainResolveRule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainResolveRuleType)) {
+		query["DomainResolveRuleType"] = request.DomainResolveRuleType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableSessionRateLimiting)) {
+		query["EnableSessionRateLimiting"] = request.EnableSessionRateLimiting
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndUserApplyAdminCoordinate)) {
+		query["EndUserApplyAdminCoordinate"] = request.EndUserApplyAdminCoordinate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndUserGroupCoordinate)) {
+		query["EndUserGroupCoordinate"] = request.EndUserGroupCoordinate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileMigrate)) {
+		query["FileMigrate"] = request.FileMigrate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GpuAcceleration)) {
+		query["GpuAcceleration"] = request.GpuAcceleration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Html5FileTransfer)) {
+		query["Html5FileTransfer"] = request.Html5FileTransfer
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InternetCommunicationProtocol)) {
+		query["InternetCommunicationProtocol"] = request.InternetCommunicationProtocol
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocalDrive)) {
+		query["LocalDrive"] = request.LocalDrive
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxReconnectTime)) {
+		query["MaxReconnectTime"] = request.MaxReconnectTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MemoryDownGradeDuration)) {
+		query["MemoryDownGradeDuration"] = request.MemoryDownGradeDuration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MemoryProcessors)) {
+		query["MemoryProcessors"] = request.MemoryProcessors
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MemoryProtectedMode)) {
+		query["MemoryProtectedMode"] = request.MemoryProtectedMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MemoryRateLimit)) {
+		query["MemoryRateLimit"] = request.MemoryRateLimit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MemorySampleDuration)) {
+		query["MemorySampleDuration"] = request.MemorySampleDuration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MemorySingleRateLimit)) {
+		query["MemorySingleRateLimit"] = request.MemorySingleRateLimit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MobileRestart)) {
+		query["MobileRestart"] = request.MobileRestart
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MobileShutdown)) {
+		query["MobileShutdown"] = request.MobileShutdown
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetRedirect)) {
+		query["NetRedirect"] = request.NetRedirect
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetRedirectRule)) {
+		query["NetRedirectRule"] = request.NetRedirectRule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NoOperationDisconnect)) {
+		query["NoOperationDisconnect"] = request.NoOperationDisconnect
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NoOperationDisconnectTime)) {
+		query["NoOperationDisconnectTime"] = request.NoOperationDisconnectTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrinterRedirect)) {
+		query["PrinterRedirect"] = request.PrinterRedirect
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QualityEnhancement)) {
+		query["QualityEnhancement"] = request.QualityEnhancement
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecordEventDuration)) {
+		query["RecordEventDuration"] = request.RecordEventDuration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecordEventFilePaths)) {
+		query["RecordEventFilePaths"] = request.RecordEventFilePaths
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecordEventRegisters)) {
+		query["RecordEventRegisters"] = request.RecordEventRegisters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecordEvents)) {
+		query["RecordEvents"] = request.RecordEvents
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Recording)) {
+		query["Recording"] = request.Recording
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecordingAudio)) {
+		query["RecordingAudio"] = request.RecordingAudio
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecordingDuration)) {
+		query["RecordingDuration"] = request.RecordingDuration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecordingEndTime)) {
+		query["RecordingEndTime"] = request.RecordingEndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecordingExpires)) {
+		query["RecordingExpires"] = request.RecordingExpires
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecordingFps)) {
+		query["RecordingFps"] = request.RecordingFps
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecordingStartTime)) {
+		query["RecordingStartTime"] = request.RecordingStartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecordingUserNotify)) {
+		query["RecordingUserNotify"] = request.RecordingUserNotify
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecordingUserNotifyMessage)) {
+		query["RecordingUserNotifyMessage"] = request.RecordingUserNotifyMessage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RemoteCoordinate)) {
+		query["RemoteCoordinate"] = request.RemoteCoordinate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResetDesktop)) {
+		query["ResetDesktop"] = request.ResetDesktop
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResolutionHeight)) {
+		query["ResolutionHeight"] = request.ResolutionHeight
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResolutionModel)) {
+		query["ResolutionModel"] = request.ResolutionModel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResolutionWidth)) {
+		query["ResolutionWidth"] = request.ResolutionWidth
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scope)) {
+		query["Scope"] = request.Scope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScopeValue)) {
+		query["ScopeValue"] = request.ScopeValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionMaxRateKbps)) {
+		query["SessionMaxRateKbps"] = request.SessionMaxRateKbps
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SmoothEnhancement)) {
+		query["SmoothEnhancement"] = request.SmoothEnhancement
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StatusMonitor)) {
+		query["StatusMonitor"] = request.StatusMonitor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StreamingMode)) {
+		query["StreamingMode"] = request.StreamingMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetFps)) {
+		query["TargetFps"] = request.TargetFps
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Taskbar)) {
+		query["Taskbar"] = request.Taskbar
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UsbRedirect)) {
+		query["UsbRedirect"] = request.UsbRedirect
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UsbSupplyRedirectRule)) {
+		query["UsbSupplyRedirectRule"] = request.UsbSupplyRedirectRule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoEncAvgKbps)) {
+		query["VideoEncAvgKbps"] = request.VideoEncAvgKbps
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoEncMaxQP)) {
+		query["VideoEncMaxQP"] = request.VideoEncMaxQP
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoEncMinQP)) {
+		query["VideoEncMinQP"] = request.VideoEncMinQP
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoEncPeakKbps)) {
+		query["VideoEncPeakKbps"] = request.VideoEncPeakKbps
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoEncPolicy)) {
+		query["VideoEncPolicy"] = request.VideoEncPolicy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoRedirect)) {
+		query["VideoRedirect"] = request.VideoRedirect
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VisualQuality)) {
+		query["VisualQuality"] = request.VisualQuality
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Watermark)) {
+		query["Watermark"] = request.Watermark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WatermarkAntiCam)) {
+		query["WatermarkAntiCam"] = request.WatermarkAntiCam
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WatermarkColor)) {
+		query["WatermarkColor"] = request.WatermarkColor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WatermarkColumnAmount)) {
+		query["WatermarkColumnAmount"] = request.WatermarkColumnAmount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WatermarkCustomText)) {
+		query["WatermarkCustomText"] = request.WatermarkCustomText
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WatermarkDegree)) {
+		query["WatermarkDegree"] = request.WatermarkDegree
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WatermarkFontSize)) {
+		query["WatermarkFontSize"] = request.WatermarkFontSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WatermarkFontStyle)) {
+		query["WatermarkFontStyle"] = request.WatermarkFontStyle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WatermarkPower)) {
+		query["WatermarkPower"] = request.WatermarkPower
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WatermarkRowAmount)) {
+		query["WatermarkRowAmount"] = request.WatermarkRowAmount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WatermarkSecurity)) {
+		query["WatermarkSecurity"] = request.WatermarkSecurity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WatermarkTransparencyValue)) {
+		query["WatermarkTransparencyValue"] = request.WatermarkTransparencyValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WatermarkType)) {
+		query["WatermarkType"] = request.WatermarkType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WuyingKeeper)) {
+		query["WuyingKeeper"] = request.WuyingKeeper
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WyAssistant)) {
+		query["WyAssistant"] = request.WyAssistant
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateCenterPolicy"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateCenterPolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateCenterPolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// @param request - CreateCenterPolicyRequest
+//
+// @return CreateCenterPolicyResponse
+func (client *Client) CreateCenterPolicy(request *CreateCenterPolicyRequest) (_result *CreateCenterPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateCenterPolicyResponse{}
+	_body, _err := client.CreateCenterPolicyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -62686,6 +67922,81 @@ func (client *Client) DeleteCdsFile(request *DeleteCdsFileRequest) (_result *Del
 	return _result, _err
 }
 
+// @param request - DeleteCenterPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCenterPolicyResponse
+func (client *Client) DeleteCenterPolicyWithOptions(request *DeleteCenterPolicyRequest, runtime *util.RuntimeOptions) (_result *DeleteCenterPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BusinessType)) {
+		query["BusinessType"] = request.BusinessType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyGroupIds)) {
+		query["PolicyGroupIds"] = request.PolicyGroupIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteCenterPolicy"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteCenterPolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteCenterPolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// @param request - DeleteCenterPolicyRequest
+//
+// @return DeleteCenterPolicyResponse
+func (client *Client) DeleteCenterPolicy(request *DeleteCenterPolicyRequest) (_result *DeleteCenterPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteCenterPolicyResponse{}
+	_body, _err := client.DeleteCenterPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // Summary:
 //
 // Deletes team spaces.
@@ -64431,6 +69742,97 @@ func (client *Client) DescribeCens(request *DescribeCensRequest) (_result *Descr
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCensResponse{}
 	_body, _err := client.DescribeCensWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询中心化策略
+//
+// @param request - DescribeCenterPolicyListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCenterPolicyListResponse
+func (client *Client) DescribeCenterPolicyListWithOptions(request *DescribeCenterPolicyListRequest, runtime *util.RuntimeOptions) (_result *DescribeCenterPolicyListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BusinessType)) {
+		query["BusinessType"] = request.BusinessType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyGroupId)) {
+		query["PolicyGroupId"] = request.PolicyGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scope)) {
+		query["Scope"] = request.Scope
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCenterPolicyList"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeCenterPolicyListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeCenterPolicyListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询中心化策略
+//
+// @param request - DescribeCenterPolicyListRequest
+//
+// @return DescribeCenterPolicyListResponse
+func (client *Client) DescribeCenterPolicyList(request *DescribeCenterPolicyListRequest) (_result *DescribeCenterPolicyListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeCenterPolicyListResponse{}
+	_body, _err := client.DescribeCenterPolicyListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -68518,6 +73920,85 @@ func (client *Client) DescribeRenewalPrice(request *DescribeRenewalPriceRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRenewalPriceResponse{}
 	_body, _err := client.DescribeRenewalPriceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - DescribeResourceByCenterPolicyIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeResourceByCenterPolicyIdResponse
+func (client *Client) DescribeResourceByCenterPolicyIdWithOptions(request *DescribeResourceByCenterPolicyIdRequest, runtime *util.RuntimeOptions) (_result *DescribeResourceByCenterPolicyIdResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyGroupId)) {
+		query["PolicyGroupId"] = request.PolicyGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		query["ProductType"] = request.ProductType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeResourceByCenterPolicyId"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeResourceByCenterPolicyIdResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeResourceByCenterPolicyIdResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// @param request - DescribeResourceByCenterPolicyIdRequest
+//
+// @return DescribeResourceByCenterPolicyIdResponse
+func (client *Client) DescribeResourceByCenterPolicyId(request *DescribeResourceByCenterPolicyIdRequest) (_result *DescribeResourceByCenterPolicyIdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeResourceByCenterPolicyIdResponse{}
+	_body, _err := client.DescribeResourceByCenterPolicyIdWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -72664,6 +78145,473 @@ func (client *Client) ModifyCdsFileShareLink(request *ModifyCdsFileShareLinkRequ
 	return _result, _err
 }
 
+// @param request - ModifyCenterPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyCenterPolicyResponse
+func (client *Client) ModifyCenterPolicyWithOptions(request *ModifyCenterPolicyRequest, runtime *util.RuntimeOptions) (_result *ModifyCenterPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AdminAccess)) {
+		query["AdminAccess"] = request.AdminAccess
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppContentProtection)) {
+		query["AppContentProtection"] = request.AppContentProtection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthorizeAccessPolicyRule)) {
+		query["AuthorizeAccessPolicyRule"] = request.AuthorizeAccessPolicyRule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthorizeSecurityPolicyRule)) {
+		query["AuthorizeSecurityPolicyRule"] = request.AuthorizeSecurityPolicyRule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BusinessType)) {
+		query["BusinessType"] = request.BusinessType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CameraRedirect)) {
+		query["CameraRedirect"] = request.CameraRedirect
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientType)) {
+		query["ClientType"] = request.ClientType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Clipboard)) {
+		query["Clipboard"] = request.Clipboard
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ColorEnhancement)) {
+		query["ColorEnhancement"] = request.ColorEnhancement
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CpuDownGradeDuration)) {
+		query["CpuDownGradeDuration"] = request.CpuDownGradeDuration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CpuProcessors)) {
+		query["CpuProcessors"] = request.CpuProcessors
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CpuProtectedMode)) {
+		query["CpuProtectedMode"] = request.CpuProtectedMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CpuRateLimit)) {
+		query["CpuRateLimit"] = request.CpuRateLimit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CpuSampleDuration)) {
+		query["CpuSampleDuration"] = request.CpuSampleDuration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CpuSingleRateLimit)) {
+		query["CpuSingleRateLimit"] = request.CpuSingleRateLimit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceConnectHint)) {
+		query["DeviceConnectHint"] = request.DeviceConnectHint
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceRedirects)) {
+		query["DeviceRedirects"] = request.DeviceRedirects
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceRules)) {
+		query["DeviceRules"] = request.DeviceRules
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisconnectKeepSession)) {
+		query["DisconnectKeepSession"] = request.DisconnectKeepSession
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisconnectKeepSessionTime)) {
+		query["DisconnectKeepSessionTime"] = request.DisconnectKeepSessionTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisplayMode)) {
+		query["DisplayMode"] = request.DisplayMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainResolveRule)) {
+		query["DomainResolveRule"] = request.DomainResolveRule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainResolveRuleType)) {
+		query["DomainResolveRuleType"] = request.DomainResolveRuleType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableSessionRateLimiting)) {
+		query["EnableSessionRateLimiting"] = request.EnableSessionRateLimiting
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndUserApplyAdminCoordinate)) {
+		query["EndUserApplyAdminCoordinate"] = request.EndUserApplyAdminCoordinate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndUserGroupCoordinate)) {
+		query["EndUserGroupCoordinate"] = request.EndUserGroupCoordinate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileMigrate)) {
+		query["FileMigrate"] = request.FileMigrate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GpuAcceleration)) {
+		query["GpuAcceleration"] = request.GpuAcceleration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Html5FileTransfer)) {
+		query["Html5FileTransfer"] = request.Html5FileTransfer
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InternetCommunicationProtocol)) {
+		query["InternetCommunicationProtocol"] = request.InternetCommunicationProtocol
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocalDrive)) {
+		query["LocalDrive"] = request.LocalDrive
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxReconnectTime)) {
+		query["MaxReconnectTime"] = request.MaxReconnectTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MemoryDownGradeDuration)) {
+		query["MemoryDownGradeDuration"] = request.MemoryDownGradeDuration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MemoryProcessors)) {
+		query["MemoryProcessors"] = request.MemoryProcessors
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MemoryProtectedMode)) {
+		query["MemoryProtectedMode"] = request.MemoryProtectedMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MemoryRateLimit)) {
+		query["MemoryRateLimit"] = request.MemoryRateLimit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MemorySampleDuration)) {
+		query["MemorySampleDuration"] = request.MemorySampleDuration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MemorySingleRateLimit)) {
+		query["MemorySingleRateLimit"] = request.MemorySingleRateLimit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MobileRestart)) {
+		query["MobileRestart"] = request.MobileRestart
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MobileShutdown)) {
+		query["MobileShutdown"] = request.MobileShutdown
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetRedirect)) {
+		query["NetRedirect"] = request.NetRedirect
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetRedirectRule)) {
+		query["NetRedirectRule"] = request.NetRedirectRule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NoOperationDisconnect)) {
+		query["NoOperationDisconnect"] = request.NoOperationDisconnect
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NoOperationDisconnectTime)) {
+		query["NoOperationDisconnectTime"] = request.NoOperationDisconnectTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyGroupId)) {
+		query["PolicyGroupId"] = request.PolicyGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrinterRedirect)) {
+		query["PrinterRedirect"] = request.PrinterRedirect
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QualityEnhancement)) {
+		query["QualityEnhancement"] = request.QualityEnhancement
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecordEventDuration)) {
+		query["RecordEventDuration"] = request.RecordEventDuration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecordEventFilePaths)) {
+		query["RecordEventFilePaths"] = request.RecordEventFilePaths
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecordEventRegisters)) {
+		query["RecordEventRegisters"] = request.RecordEventRegisters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecordEvents)) {
+		query["RecordEvents"] = request.RecordEvents
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Recording)) {
+		query["Recording"] = request.Recording
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecordingAudio)) {
+		query["RecordingAudio"] = request.RecordingAudio
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecordingDuration)) {
+		query["RecordingDuration"] = request.RecordingDuration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecordingEndTime)) {
+		query["RecordingEndTime"] = request.RecordingEndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecordingExpires)) {
+		query["RecordingExpires"] = request.RecordingExpires
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecordingFps)) {
+		query["RecordingFps"] = request.RecordingFps
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecordingStartTime)) {
+		query["RecordingStartTime"] = request.RecordingStartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecordingUserNotify)) {
+		query["RecordingUserNotify"] = request.RecordingUserNotify
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecordingUserNotifyMessage)) {
+		query["RecordingUserNotifyMessage"] = request.RecordingUserNotifyMessage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RemoteCoordinate)) {
+		query["RemoteCoordinate"] = request.RemoteCoordinate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResetDesktop)) {
+		query["ResetDesktop"] = request.ResetDesktop
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResolutionHeight)) {
+		query["ResolutionHeight"] = request.ResolutionHeight
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResolutionModel)) {
+		query["ResolutionModel"] = request.ResolutionModel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResolutionWidth)) {
+		query["ResolutionWidth"] = request.ResolutionWidth
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RevokeAccessPolicyRule)) {
+		query["RevokeAccessPolicyRule"] = request.RevokeAccessPolicyRule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RevokeSecurityPolicyRule)) {
+		query["RevokeSecurityPolicyRule"] = request.RevokeSecurityPolicyRule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scope)) {
+		query["Scope"] = request.Scope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScopeValue)) {
+		query["ScopeValue"] = request.ScopeValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionMaxRateKbps)) {
+		query["SessionMaxRateKbps"] = request.SessionMaxRateKbps
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SmoothEnhancement)) {
+		query["SmoothEnhancement"] = request.SmoothEnhancement
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StatusMonitor)) {
+		query["StatusMonitor"] = request.StatusMonitor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StreamingMode)) {
+		query["StreamingMode"] = request.StreamingMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetFps)) {
+		query["TargetFps"] = request.TargetFps
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Taskbar)) {
+		query["Taskbar"] = request.Taskbar
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UsbRedirect)) {
+		query["UsbRedirect"] = request.UsbRedirect
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UsbSupplyRedirectRule)) {
+		query["UsbSupplyRedirectRule"] = request.UsbSupplyRedirectRule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoEncAvgKbps)) {
+		query["VideoEncAvgKbps"] = request.VideoEncAvgKbps
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoEncMaxQP)) {
+		query["VideoEncMaxQP"] = request.VideoEncMaxQP
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoEncMinQP)) {
+		query["VideoEncMinQP"] = request.VideoEncMinQP
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoEncPeakKbps)) {
+		query["VideoEncPeakKbps"] = request.VideoEncPeakKbps
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoEncPolicy)) {
+		query["VideoEncPolicy"] = request.VideoEncPolicy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoRedirect)) {
+		query["VideoRedirect"] = request.VideoRedirect
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VisualQuality)) {
+		query["VisualQuality"] = request.VisualQuality
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Watermark)) {
+		query["Watermark"] = request.Watermark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WatermarkAntiCam)) {
+		query["WatermarkAntiCam"] = request.WatermarkAntiCam
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WatermarkColor)) {
+		query["WatermarkColor"] = request.WatermarkColor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WatermarkColumnAmount)) {
+		query["WatermarkColumnAmount"] = request.WatermarkColumnAmount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WatermarkCustomText)) {
+		query["WatermarkCustomText"] = request.WatermarkCustomText
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WatermarkDegree)) {
+		query["WatermarkDegree"] = request.WatermarkDegree
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WatermarkFontSize)) {
+		query["WatermarkFontSize"] = request.WatermarkFontSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WatermarkFontStyle)) {
+		query["WatermarkFontStyle"] = request.WatermarkFontStyle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WatermarkPower)) {
+		query["WatermarkPower"] = request.WatermarkPower
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WatermarkRowAmount)) {
+		query["WatermarkRowAmount"] = request.WatermarkRowAmount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WatermarkSecurity)) {
+		query["WatermarkSecurity"] = request.WatermarkSecurity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WatermarkTransparencyValue)) {
+		query["WatermarkTransparencyValue"] = request.WatermarkTransparencyValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WatermarkType)) {
+		query["WatermarkType"] = request.WatermarkType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WuyingKeeper)) {
+		query["WuyingKeeper"] = request.WuyingKeeper
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WyAssistant)) {
+		query["WyAssistant"] = request.WyAssistant
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyCenterPolicy"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyCenterPolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyCenterPolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// @param request - ModifyCenterPolicyRequest
+//
+// @return ModifyCenterPolicyResponse
+func (client *Client) ModifyCenterPolicy(request *ModifyCenterPolicyRequest) (_result *ModifyCenterPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyCenterPolicyResponse{}
+	_body, _err := client.ModifyCenterPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // Summary:
 //
 // Modifies team spaces.
@@ -75474,6 +81422,89 @@ func (client *Client) ModifyPolicyGroup(request *ModifyPolicyGroupRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyPolicyGroupResponse{}
 	_body, _err := client.ModifyPolicyGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - ModifyResourceCenterPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyResourceCenterPolicyResponse
+func (client *Client) ModifyResourceCenterPolicyWithOptions(request *ModifyResourceCenterPolicyRequest, runtime *util.RuntimeOptions) (_result *ModifyResourceCenterPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PolicyGroupIds)) {
+		query["PolicyGroupIds"] = request.PolicyGroupIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyGroupType)) {
+		query["PolicyGroupType"] = request.PolicyGroupType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		query["ProductType"] = request.ProductType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceIds)) {
+		query["ResourceIds"] = request.ResourceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceRegionId)) {
+		query["ResourceRegionId"] = request.ResourceRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyResourceCenterPolicy"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyResourceCenterPolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyResourceCenterPolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// @param request - ModifyResourceCenterPolicyRequest
+//
+// @return ModifyResourceCenterPolicyResponse
+func (client *Client) ModifyResourceCenterPolicy(request *ModifyResourceCenterPolicyRequest) (_result *ModifyResourceCenterPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyResourceCenterPolicyResponse{}
+	_body, _err := client.ModifyResourceCenterPolicyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
