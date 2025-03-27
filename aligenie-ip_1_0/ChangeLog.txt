@@ -1,3 +1,24 @@
+2025-03-27 Version: v1.3.0
+- Support API ExecuteScene.
+- Support API QueryRoomStatus.
+- Update API InvokeRobotPush: add request parameters RoomName.
+- Update API ListHotelOrder: add response parameters Body.Result.$.Amt.
+- Update API ListHotelOrder: add response parameters Body.Result.$.DeliveryMethod.
+- Update API ListHotelOrder: add response parameters Body.Result.$.DeliveryRoomName.
+- Update API ListHotelOrder: add response parameters Body.Result.$.DeliveryTime.
+- Update API ListHotelOrder: add response parameters Body.Result.$.Icon.
+- Update API ListHotelOrder: add response parameters Body.Result.$.ItemId.
+- Update API ListHotelOrder: add response parameters Body.Result.$.ItemType.
+- Update API ListHotelOrder: add response parameters Body.Result.$.Name.
+- Update API ListHotelOrder: add response parameters Body.Result.$.OrderStatus.
+- Update API ListHotelOrder: add response parameters Body.Result.$.PaymentMethod.
+- Update API ListHotelOrder: add response parameters Body.Result.$.StartTime.
+- Update API ListHotelOrder: add response parameters Body.Result.$.SumAmt.
+- Update API PushWelcome: add request parameters RoomName.
+- Update API PushWelcomeTextAndMusic: add request parameters RoomName.
+- Update API SubmitHotelOrder: add request parameters Payload.ItemList.$.Remark.
+
+
 2024-09-10 Version: v1.2.0
 - Support API AddCustomQAV2.
 - Support API PmsEventReport.
