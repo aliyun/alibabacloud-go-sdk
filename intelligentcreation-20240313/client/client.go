@@ -4577,10 +4577,12 @@ func (s *GetAICoachScriptResponseBodyPoints) SetWeight(v int32) *GetAICoachScrip
 }
 
 type GetAICoachScriptResponseBodyPointsAnswerList struct {
-	Name       *string                                                   `json:"name,omitempty" xml:"name,omitempty"`
-	NameList   []*string                                                 `json:"nameList,omitempty" xml:"nameList,omitempty" type:"Repeated"`
-	Operators  *string                                                   `json:"operators,omitempty" xml:"operators,omitempty"`
-	Parameters []*GetAICoachScriptResponseBodyPointsAnswerListParameters `json:"parameters,omitempty" xml:"parameters,omitempty" type:"Repeated"`
+	AnswerValues   []*GetAICoachScriptResponseBodyPointsAnswerListAnswerValues `json:"answerValues,omitempty" xml:"answerValues,omitempty" type:"Repeated"`
+	EnabledKeyword *bool                                                       `json:"enabledKeyword,omitempty" xml:"enabledKeyword,omitempty"`
+	Name           *string                                                     `json:"name,omitempty" xml:"name,omitempty"`
+	NameList       []*string                                                   `json:"nameList,omitempty" xml:"nameList,omitempty" type:"Repeated"`
+	Operators      *string                                                     `json:"operators,omitempty" xml:"operators,omitempty"`
+	Parameters     []*GetAICoachScriptResponseBodyPointsAnswerListParameters   `json:"parameters,omitempty" xml:"parameters,omitempty" type:"Repeated"`
 	// example:
 	//
 	// normalKnowledge
@@ -4597,6 +4599,16 @@ func (s GetAICoachScriptResponseBodyPointsAnswerList) String() string {
 
 func (s GetAICoachScriptResponseBodyPointsAnswerList) GoString() string {
 	return s.String()
+}
+
+func (s *GetAICoachScriptResponseBodyPointsAnswerList) SetAnswerValues(v []*GetAICoachScriptResponseBodyPointsAnswerListAnswerValues) *GetAICoachScriptResponseBodyPointsAnswerList {
+	s.AnswerValues = v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBodyPointsAnswerList) SetEnabledKeyword(v bool) *GetAICoachScriptResponseBodyPointsAnswerList {
+	s.EnabledKeyword = &v
+	return s
 }
 
 func (s *GetAICoachScriptResponseBodyPointsAnswerList) SetName(v string) *GetAICoachScriptResponseBodyPointsAnswerList {
@@ -4626,6 +4638,87 @@ func (s *GetAICoachScriptResponseBodyPointsAnswerList) SetType(v string) *GetAIC
 
 func (s *GetAICoachScriptResponseBodyPointsAnswerList) SetWeight(v int32) *GetAICoachScriptResponseBodyPointsAnswerList {
 	s.Weight = &v
+	return s
+}
+
+type GetAICoachScriptResponseBodyPointsAnswerListAnswerValues struct {
+	AnswerName    *string                                                                  `json:"answerName,omitempty" xml:"answerName,omitempty"`
+	AnswerWeight  *int32                                                                   `json:"answerWeight,omitempty" xml:"answerWeight,omitempty"`
+	KeywordValues []*GetAICoachScriptResponseBodyPointsAnswerListAnswerValuesKeywordValues `json:"keywordValues,omitempty" xml:"keywordValues,omitempty" type:"Repeated"`
+	KeywordWeight *int32                                                                   `json:"keywordWeight,omitempty" xml:"keywordWeight,omitempty"`
+	ScoringRules  []*GetAICoachScriptResponseBodyPointsAnswerListAnswerValuesScoringRules  `json:"scoringRules,omitempty" xml:"scoringRules,omitempty" type:"Repeated"`
+}
+
+func (s GetAICoachScriptResponseBodyPointsAnswerListAnswerValues) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAICoachScriptResponseBodyPointsAnswerListAnswerValues) GoString() string {
+	return s.String()
+}
+
+func (s *GetAICoachScriptResponseBodyPointsAnswerListAnswerValues) SetAnswerName(v string) *GetAICoachScriptResponseBodyPointsAnswerListAnswerValues {
+	s.AnswerName = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBodyPointsAnswerListAnswerValues) SetAnswerWeight(v int32) *GetAICoachScriptResponseBodyPointsAnswerListAnswerValues {
+	s.AnswerWeight = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBodyPointsAnswerListAnswerValues) SetKeywordValues(v []*GetAICoachScriptResponseBodyPointsAnswerListAnswerValuesKeywordValues) *GetAICoachScriptResponseBodyPointsAnswerListAnswerValues {
+	s.KeywordValues = v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBodyPointsAnswerListAnswerValues) SetKeywordWeight(v int32) *GetAICoachScriptResponseBodyPointsAnswerListAnswerValues {
+	s.KeywordWeight = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBodyPointsAnswerListAnswerValues) SetScoringRules(v []*GetAICoachScriptResponseBodyPointsAnswerListAnswerValuesScoringRules) *GetAICoachScriptResponseBodyPointsAnswerListAnswerValues {
+	s.ScoringRules = v
+	return s
+}
+
+type GetAICoachScriptResponseBodyPointsAnswerListAnswerValuesKeywordValues struct {
+	Name   *string `json:"name,omitempty" xml:"name,omitempty"`
+	Weight *int32  `json:"weight,omitempty" xml:"weight,omitempty"`
+}
+
+func (s GetAICoachScriptResponseBodyPointsAnswerListAnswerValuesKeywordValues) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAICoachScriptResponseBodyPointsAnswerListAnswerValuesKeywordValues) GoString() string {
+	return s.String()
+}
+
+func (s *GetAICoachScriptResponseBodyPointsAnswerListAnswerValuesKeywordValues) SetName(v string) *GetAICoachScriptResponseBodyPointsAnswerListAnswerValuesKeywordValues {
+	s.Name = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBodyPointsAnswerListAnswerValuesKeywordValues) SetWeight(v int32) *GetAICoachScriptResponseBodyPointsAnswerListAnswerValuesKeywordValues {
+	s.Weight = &v
+	return s
+}
+
+type GetAICoachScriptResponseBodyPointsAnswerListAnswerValuesScoringRules struct {
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s GetAICoachScriptResponseBodyPointsAnswerListAnswerValuesScoringRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAICoachScriptResponseBodyPointsAnswerListAnswerValuesScoringRules) GoString() string {
+	return s.String()
+}
+
+func (s *GetAICoachScriptResponseBodyPointsAnswerListAnswerValuesScoringRules) SetName(v string) *GetAICoachScriptResponseBodyPointsAnswerListAnswerValuesScoringRules {
+	s.Name = &v
 	return s
 }
 
