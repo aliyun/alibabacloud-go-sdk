@@ -6108,6 +6108,7 @@ func (s *RunTagMiningAnalysisResponse) SetBody(v *RunTagMiningAnalysisResponseBo
 }
 
 type RunVideoAnalysisRequest struct {
+	ExcludeGenerateOptions         []*string                                 `json:"excludeGenerateOptions,omitempty" xml:"excludeGenerateOptions,omitempty" type:"Repeated"`
 	FaceIdentitySimilarityMinScore *float32                                  `json:"faceIdentitySimilarityMinScore,omitempty" xml:"faceIdentitySimilarityMinScore,omitempty"`
 	FrameSampleMethod              *RunVideoAnalysisRequestFrameSampleMethod `json:"frameSampleMethod,omitempty" xml:"frameSampleMethod,omitempty" type:"Struct"`
 	GenerateOptions                []*string                                 `json:"generateOptions,omitempty" xml:"generateOptions,omitempty" type:"Repeated"`
@@ -6158,6 +6159,11 @@ func (s RunVideoAnalysisRequest) String() string {
 
 func (s RunVideoAnalysisRequest) GoString() string {
 	return s.String()
+}
+
+func (s *RunVideoAnalysisRequest) SetExcludeGenerateOptions(v []*string) *RunVideoAnalysisRequest {
+	s.ExcludeGenerateOptions = v
+	return s
 }
 
 func (s *RunVideoAnalysisRequest) SetFaceIdentitySimilarityMinScore(v float32) *RunVideoAnalysisRequest {
@@ -6338,6 +6344,7 @@ func (s *RunVideoAnalysisRequestVideoRoles) SetUrls(v []*string) *RunVideoAnalys
 }
 
 type RunVideoAnalysisShrinkRequest struct {
+	ExcludeGenerateOptionsShrink   *string  `json:"excludeGenerateOptions,omitempty" xml:"excludeGenerateOptions,omitempty"`
 	FaceIdentitySimilarityMinScore *float32 `json:"faceIdentitySimilarityMinScore,omitempty" xml:"faceIdentitySimilarityMinScore,omitempty"`
 	FrameSampleMethodShrink        *string  `json:"frameSampleMethod,omitempty" xml:"frameSampleMethod,omitempty"`
 	GenerateOptionsShrink          *string  `json:"generateOptions,omitempty" xml:"generateOptions,omitempty"`
@@ -6388,6 +6395,11 @@ func (s RunVideoAnalysisShrinkRequest) String() string {
 
 func (s RunVideoAnalysisShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *RunVideoAnalysisShrinkRequest) SetExcludeGenerateOptionsShrink(v string) *RunVideoAnalysisShrinkRequest {
+	s.ExcludeGenerateOptionsShrink = &v
+	return s
 }
 
 func (s *RunVideoAnalysisShrinkRequest) SetFaceIdentitySimilarityMinScore(v float32) *RunVideoAnalysisShrinkRequest {
@@ -7712,6 +7724,11 @@ func (s *SubmitTagMiningAnalysisTaskResponse) SetBody(v *SubmitTagMiningAnalysis
 }
 
 type SubmitVideoAnalysisTaskRequest struct {
+	// example:
+	//
+	// 1
+	DeduplicationId                *string                                          `json:"deduplicationId,omitempty" xml:"deduplicationId,omitempty"`
+	ExcludeGenerateOptions         []*string                                        `json:"excludeGenerateOptions,omitempty" xml:"excludeGenerateOptions,omitempty" type:"Repeated"`
 	FaceIdentitySimilarityMinScore *float32                                         `json:"faceIdentitySimilarityMinScore,omitempty" xml:"faceIdentitySimilarityMinScore,omitempty"`
 	FrameSampleMethod              *SubmitVideoAnalysisTaskRequestFrameSampleMethod `json:"frameSampleMethod,omitempty" xml:"frameSampleMethod,omitempty" type:"Struct"`
 	GenerateOptions                []*string                                        `json:"generateOptions,omitempty" xml:"generateOptions,omitempty" type:"Repeated"`
@@ -7759,6 +7776,16 @@ func (s SubmitVideoAnalysisTaskRequest) String() string {
 
 func (s SubmitVideoAnalysisTaskRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SubmitVideoAnalysisTaskRequest) SetDeduplicationId(v string) *SubmitVideoAnalysisTaskRequest {
+	s.DeduplicationId = &v
+	return s
+}
+
+func (s *SubmitVideoAnalysisTaskRequest) SetExcludeGenerateOptions(v []*string) *SubmitVideoAnalysisTaskRequest {
+	s.ExcludeGenerateOptions = v
+	return s
 }
 
 func (s *SubmitVideoAnalysisTaskRequest) SetFaceIdentitySimilarityMinScore(v float32) *SubmitVideoAnalysisTaskRequest {
@@ -7938,6 +7965,11 @@ func (s *SubmitVideoAnalysisTaskRequestVideoRoles) SetUrls(v []*string) *SubmitV
 }
 
 type SubmitVideoAnalysisTaskShrinkRequest struct {
+	// example:
+	//
+	// 1
+	DeduplicationId                *string  `json:"deduplicationId,omitempty" xml:"deduplicationId,omitempty"`
+	ExcludeGenerateOptionsShrink   *string  `json:"excludeGenerateOptions,omitempty" xml:"excludeGenerateOptions,omitempty"`
 	FaceIdentitySimilarityMinScore *float32 `json:"faceIdentitySimilarityMinScore,omitempty" xml:"faceIdentitySimilarityMinScore,omitempty"`
 	FrameSampleMethodShrink        *string  `json:"frameSampleMethod,omitempty" xml:"frameSampleMethod,omitempty"`
 	GenerateOptionsShrink          *string  `json:"generateOptions,omitempty" xml:"generateOptions,omitempty"`
@@ -7985,6 +8017,16 @@ func (s SubmitVideoAnalysisTaskShrinkRequest) String() string {
 
 func (s SubmitVideoAnalysisTaskShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SubmitVideoAnalysisTaskShrinkRequest) SetDeduplicationId(v string) *SubmitVideoAnalysisTaskShrinkRequest {
+	s.DeduplicationId = &v
+	return s
+}
+
+func (s *SubmitVideoAnalysisTaskShrinkRequest) SetExcludeGenerateOptionsShrink(v string) *SubmitVideoAnalysisTaskShrinkRequest {
+	s.ExcludeGenerateOptionsShrink = &v
+	return s
 }
 
 func (s *SubmitVideoAnalysisTaskShrinkRequest) SetFaceIdentitySimilarityMinScore(v float32) *SubmitVideoAnalysisTaskShrinkRequest {
@@ -9899,6 +9941,10 @@ func (client *Client) RunVideoAnalysisWithOptions(workspaceId *string, tmpReq *R
 	}
 	request := &RunVideoAnalysisShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ExcludeGenerateOptions)) {
+		request.ExcludeGenerateOptionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ExcludeGenerateOptions, tea.String("excludeGenerateOptions"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.FrameSampleMethod)) {
 		request.FrameSampleMethodShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FrameSampleMethod, tea.String("frameSampleMethod"), tea.String("json"))
 	}
@@ -9916,6 +9962,10 @@ func (client *Client) RunVideoAnalysisWithOptions(workspaceId *string, tmpReq *R
 	}
 
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ExcludeGenerateOptionsShrink)) {
+		body["excludeGenerateOptions"] = request.ExcludeGenerateOptionsShrink
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.FaceIdentitySimilarityMinScore)) {
 		body["faceIdentitySimilarityMinScore"] = request.FaceIdentitySimilarityMinScore
 	}
@@ -10173,6 +10223,10 @@ func (client *Client) SubmitVideoAnalysisTaskWithOptions(workspaceId *string, tm
 	}
 	request := &SubmitVideoAnalysisTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ExcludeGenerateOptions)) {
+		request.ExcludeGenerateOptionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ExcludeGenerateOptions, tea.String("excludeGenerateOptions"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.FrameSampleMethod)) {
 		request.FrameSampleMethodShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FrameSampleMethod, tea.String("frameSampleMethod"), tea.String("json"))
 	}
@@ -10190,6 +10244,14 @@ func (client *Client) SubmitVideoAnalysisTaskWithOptions(workspaceId *string, tm
 	}
 
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeduplicationId)) {
+		body["deduplicationId"] = request.DeduplicationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExcludeGenerateOptionsShrink)) {
+		body["excludeGenerateOptions"] = request.ExcludeGenerateOptionsShrink
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.FaceIdentitySimilarityMinScore)) {
 		body["faceIdentitySimilarityMinScore"] = request.FaceIdentitySimilarityMinScore
 	}
