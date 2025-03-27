@@ -22,7 +22,7 @@ type DescribeBgpPackByIpRequest struct {
 	DdosRegionId *string `json:"DdosRegionId,omitempty" xml:"DdosRegionId,omitempty"`
 	// The IP address of the asset to query.
 	//
-	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/354191.html) operation to query the IDs of ECS instances, SLB instances, and EIPs within the current Alibaba Cloud account.
+	// >  You can call the [DescribeInstanceIpAddress](https://help.aliyun.com/document_detail/472620.html) operation to query the IDs of Elastic Compute Service (ECS) instances, Server Load Balancer (SLB) instances, and elastic IP addresses (EIPs) within the current Alibaba Cloud account.
 	//
 	// This parameter is required.
 	//
@@ -233,13 +233,21 @@ type DescribeCapRequest struct {
 	//
 	// i-bp10bclrt56fblts****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The type of the asset that is under DDoS attacks. Valid values:
+	// The type of the asset that is under DDoS attacks. The asset is assigned a public IP address. Valid values:
 	//
-	// 	- **ecs**: ECS instance
+	// 	- **ecs**: an Elastic Compute Service (ECS) instance.
 	//
-	// 	- **slb**: SLB instance
+	// 	- **slb**: a Server Load Balancer (SLB) instance.
 	//
-	// 	- **eip**: EIP
+	// 	- **eip**: an elastic IP address (EIP).
+	//
+	// 	- **ipv6**: an IPv6 gateway.
+	//
+	// 	- **swas**: a simple application server.
+	//
+	// 	- **waf**: a Web Application Firewall (WAF) instance of the Exclusive edition.
+	//
+	// 	- **ga_basic**: a Global Accelerator (GA) instance.
 	//
 	// This parameter is required.
 	//
@@ -381,11 +389,19 @@ type DescribeDdosCountRequest struct {
 	DdosRegionId *string `json:"DdosRegionId,omitempty" xml:"DdosRegionId,omitempty"`
 	// The type of the asset to query. Valid values:
 	//
-	// 	- **ecs**: ECS instance
+	// 	- **ecs**: Elastic Compute Service (ECS) instances.
 	//
-	// 	- **slb**: SLB instance
+	// 	- **slb**: Server Load Balancer (SLB) instances.
 	//
-	// 	- **eip**: EIP
+	// 	- **eip**: elastic IP addresses (EIPs).
+	//
+	// 	- **ipv6**: IPv6 gateways.
+	//
+	// 	- **swas**: simple application servers.
+	//
+	// 	- **waf**: Web Application Firewall (WAF) instances of the Exclusive edition.
+	//
+	// 	- **ga_basic**: Global Accelerator (GA) instances.
 	//
 	// This parameter is required.
 	//
@@ -699,11 +715,19 @@ type DescribeDdosEventListRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The type of the asset to query. Valid values:
 	//
-	// 	- **ecs**: ECS instance
+	// 	- **ecs**: an Elastic Compute Service (ECS) instance.
 	//
-	// 	- **slb**: SLB instance
+	// 	- **slb**: a Server Load Balancer (SLB) instance.
 	//
-	// 	- **eip**: EIP
+	// 	- **eip**: an elastic IP address (EIP).
+	//
+	// 	- **ipv6**: an IPv6 gateway.
+	//
+	// 	- **swas**: a simple application server.
+	//
+	// 	- **waf**: a Web Application Firewall (WAF) instance of the Exclusive edition.
+	//
+	// 	- **ga_basic**: a Global Accelerator (GA) instance.
 	//
 	// This parameter is required.
 	//
@@ -764,7 +788,7 @@ func (s *DescribeDdosEventListRequest) SetPageSize(v int32) *DescribeDdosEventLi
 }
 
 type DescribeDdosEventListResponseBody struct {
-	// An array that consists of the details of a DDoS attack event.
+	// The details of the DDoS attack events.
 	DdosEventList *DescribeDdosEventListResponseBodyDdosEventList `json:"DdosEventList,omitempty" xml:"DdosEventList,omitempty" type:"Struct"`
 	// The ID of the request, which is used to locate and troubleshoot issues.
 	//
@@ -967,13 +991,21 @@ type DescribeDdosThresholdRequest struct {
 	//
 	// This parameter is required.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The type of the asset. Valid values:
+	// The type of the asset that is assigned a public IP address. Valid values:
 	//
-	// 	- **ecs**: ECS instance
+	// 	- **ecs**: ECS instances.
 	//
-	// 	- **slb**: SLB instance
+	// 	- **slb**: SLB instances.
 	//
-	// 	- **eip**: EIP
+	// 	- **eip**: EIPs.
+	//
+	// 	- **ipv6**: IPv6 gateways.
+	//
+	// 	- **swas**: simple application servers.
+	//
+	// 	- **waf**: Web Application Firewall (WAF) instances of the Exclusive edition.
+	//
+	// 	- **ga_basic**: Global Accelerator (GA) instances.
 	//
 	// This parameter is required.
 	//
@@ -1263,13 +1295,21 @@ type DescribeInstanceRequest struct {
 	//
 	// launch-advisor-2022****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The type of the asset. Valid values:
+	// The type of the asset to query. Valid values:
 	//
-	// 	- **ecs**: ECS instance
+	// 	- **ecs**: ECS instances.
 	//
-	// 	- **slb**: SLB instance
+	// 	- **slb**: SLB instances.
 	//
-	// 	- **eip**: EIP
+	// 	- **eip**: EIPs.
+	//
+	// 	- **ipv6**: IPv6 gateways.
+	//
+	// 	- **swas**: simple application servers.
+	//
+	// 	- **waf**: Web Application Firewall (WAF) instances of the Exclusive edition.
+	//
+	// 	- **ga_basic**: Global Accelerator (GA) instances.
 	//
 	// This parameter is required.
 	//
@@ -1334,7 +1374,7 @@ func (s *DescribeInstanceRequest) SetPageSize(v int32) *DescribeInstanceRequest 
 }
 
 type DescribeInstanceResponseBody struct {
-	// An array that consists of the details of the asset.
+	// The details of the assets.
 	InstanceList *DescribeInstanceResponseBodyInstanceList `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -1445,13 +1485,7 @@ type DescribeInstanceResponseBodyInstanceListInstance struct {
 	//
 	// normal
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	// The type of the asset. Valid values:
-	//
-	// 	- **ecs**: ECS instance
-	//
-	// 	- **slb**: SLB instance
-	//
-	// 	- **eip**: EIP
+	// The type of the asset.
 	//
 	// example:
 	//
@@ -1616,13 +1650,21 @@ type DescribeInstanceIpAddressRequest struct {
 	//
 	// launch-advisor-2021****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The type of the asset. Valid values:
+	// The type of the asset that is assigned a public IP address. Valid values:
 	//
-	// 	- **ecs**: ECS instance
+	// 	- **ecs**: ECS instances.
 	//
-	// 	- **slb**: SLB instance
+	// 	- **slb**: SLB instances.
 	//
-	// 	- **eip**: EIP
+	// 	- **eip**: EIPs.
+	//
+	// 	- **ipv6**: IPv6 gateways.
+	//
+	// 	- **swas**: simple application servers.
+	//
+	// 	- **waf**: Web Application Firewall (WAF) instances of the Exclusive edition.
+	//
+	// 	- **ga_basic**: Global Accelerator (GA) instances.
 	//
 	// This parameter is required.
 	//
@@ -1741,9 +1783,9 @@ type DescribeInstanceIpAddressResponseBodyInstanceList struct {
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// The DDoS mitigation status of the instance. Valid values:
 	//
-	// 	- **normal**: normal
+	// 	- **normal**: not under DDoS attacks.
 	//
-	// 	- **abnormal**: under DDoS attacks
+	// 	- **abnormal**: under DDoS attacks.
 	//
 	// example:
 	//
@@ -1751,11 +1793,11 @@ type DescribeInstanceIpAddressResponseBodyInstanceList struct {
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
 	// The type of the asset. Valid values:
 	//
-	// 	- **ecs**: ECS instance
+	// 	- **ecs**
 	//
-	// 	- **slb**: SLB instance
+	// 	- **slb**
 	//
-	// 	- **eip**: EIP
+	// 	- **eip**
 	//
 	// example:
 	//
@@ -1805,13 +1847,13 @@ type DescribeInstanceIpAddressResponseBodyInstanceListIpAddressConfig struct {
 	//
 	// 5200
 	BlackholeThreshold *int32 `json:"BlackholeThreshold,omitempty" xml:"BlackholeThreshold,omitempty"`
-	// The traffic scrubbing threshold for the asset. Unit: Mbit/s.
+	// The traffic scrubbing threshold for the asset measured in Mbit/s. Unit: Mbit/s.
 	//
 	// example:
 	//
 	// 300
 	DefenseBpsThreshold *int32 `json:"DefenseBpsThreshold,omitempty" xml:"DefenseBpsThreshold,omitempty"`
-	// The packet scrubbing threshold for the asset. Unit: packets per second (pps).
+	// The traffic scrubbing threshold for the asset measured in packets per second (PPS). Unit: PPS.
 	//
 	// example:
 	//
@@ -1831,9 +1873,9 @@ type DescribeInstanceIpAddressResponseBodyInstanceListIpAddressConfig struct {
 	InstanceIp *string `json:"InstanceIp,omitempty" xml:"InstanceIp,omitempty"`
 	// The DDoS mitigation status of the asset. Valid values:
 	//
-	// 	- **defense**: indicates that traffic scrubbing is performed on the asset.
+	// 	- **mitigating**: indicates that traffic scrubbing is in progress.
 	//
-	// 	- **blackhole**: indicates that blackhole filtering is triggered for the asset.
+	// 	- **blackholed**: indicates that blackhole filtering is triggered for the asset.
 	//
 	// 	- **normal**: indicates that no DDoS attacks are launched against the asset.
 	//
@@ -1841,11 +1883,11 @@ type DescribeInstanceIpAddressResponseBodyInstanceListIpAddressConfig struct {
 	//
 	// normal
 	IpStatus *string `json:"IpStatus,omitempty" xml:"IpStatus,omitempty"`
-	// The IP protocol that is supported by the asset. Valid values:
+	// The IP version of the IP address. Valid values:
 	//
-	// 	- **v4**: IPv4
+	// 	- **v4**: IPv4.
 	//
-	// 	- **v6**: IPv6
+	// 	- **v6**: IPv6.
 	//
 	// example:
 	//
@@ -1853,14 +1895,23 @@ type DescribeInstanceIpAddressResponseBodyInstanceListIpAddressConfig struct {
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
 	// Indicates whether the asset is added to the instance. Valid values:
 	//
-	// 	- **true**: yes
+	// 	- **true**
 	//
-	// 	- **false**: no
+	// 	- **false**
 	//
 	// example:
 	//
 	// true
-	IsBgppack        *bool  `json:"IsBgppack,omitempty" xml:"IsBgppack,omitempty"`
+	IsBgppack *bool `json:"IsBgppack,omitempty" xml:"IsBgppack,omitempty"`
+	// Indicates whether best-effort protection is enabled for the asset. Valid values:
+	//
+	// 	- **0**: no.
+	//
+	// 	- **1**: yes.
+	//
+	// example:
+	//
+	// 0
 	IsFullProtection *int32 `json:"IsFullProtection,omitempty" xml:"IsFullProtection,omitempty"`
 	// The region code of the asset.
 	//
@@ -1990,13 +2041,21 @@ type DescribeIpDdosThresholdRequest struct {
 	//
 	// i-bp1i88rqjza51s****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The type of the asset. Valid values:
+	// The type of the asset that is assigned a public IP address. Valid values:
 	//
-	// 	- **ecs**: ECS instance
+	// 	- **ecs**: ECS instances.
 	//
-	// 	- **slb**: SLB instance
+	// 	- **slb**: SLB instances.
 	//
-	// 	- **eip**: EIP
+	// 	- **eip**: EIPs.
+	//
+	// 	- **ipv6**: IPv6 gateways.
+	//
+	// 	- **swas**: simple application servers.
+	//
+	// 	- **waf**: Web Application Firewall (WAF) instances of the Exclusive edition.
+	//
+	// 	- **ga_basic**: Global Accelerator (GA) instances.
 	//
 	// This parameter is required.
 	//
@@ -2297,11 +2356,19 @@ type DescribeIpLocationServiceResponseBodyInstance struct {
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// The type of the asset. Valid values:
 	//
-	// 	- ecs: ECS instance
+	// 	- **ecs**: an ECS instance.
 	//
-	// 	- slb: SLB instance
+	// 	- **slb**: an SLB instance.
 	//
-	// 	- EIP: EIP
+	// 	- **eip**: an EIP.
+	//
+	// 	- **ipv6**: an IPv6 gateway.
+	//
+	// 	- **swas**: a simple application server.
+	//
+	// 	- **waf**: a Web Application Firewall (WAF) instance of the Exclusive edition.
+	//
+	// 	- **ga_basic**: a Global Accelerator (GA) instance.
 	//
 	// example:
 	//
@@ -2514,18 +2581,19 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 }
 
 type ModifyDefenseThresholdRequest struct {
-	// Specifies the traffic scrubbing threshold. Unit: Mbit/s. The traffic scrubbing threshold cannot exceed the peak inbound or outbound Internet traffic, whichever is larger, of the asset.
+	// The traffic scrubbing threshold. Unit: Mbit/s. The traffic scrubbing threshold cannot exceed the peak inbound or outbound Internet traffic, whichever is larger, of the asset. When you modify Bps, Pps is required. Otherwise, Bps does not take effect.
 	//
 	// You can use the monitoring tool that is provided by the asset to query the Internet traffic of the asset:
 	//
-	// 	- For more information about how to query the Internet traffic of an ECS instance, see [Query monitoring information of an instance](https://help.aliyun.com/document_detail/25482.html).
+	// 	- If the asset is an ECS instance, see [View instance monitoring information](https://help.aliyun.com/document_detail/25482.html).
 	//
-	// 	- For more information about how to query the number of packets of an SLB instance, see [View monitoring data in the console](https://help.aliyun.com/document_detail/85982.html).
+	// 	- If the asset is an SLB instance, see [View monitoring data](https://help.aliyun.com/document_detail/85982.html).
 	//
 	// example:
 	//
 	// 100
-	Bps *int32 `json:"Bps,omitempty" xml:"Bps,omitempty"`
+	Bps         *int32  `json:"Bps,omitempty" xml:"Bps,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The region ID of the asset for which you want to change the scrubbing thresholds.
 	//
 	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/353250.html) operation to query the most recent region list.
@@ -2548,11 +2616,19 @@ type ModifyDefenseThresholdRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The type of the asset. Valid values:
 	//
-	// 	- **ecs**: ECS instance
+	// 	- **ecs**: an Elastic Compute Service (ECS) instance.
 	//
-	// 	- **slb**: SLB instance
+	// 	- **slb**: a Server Load Balancer (SLB) instance.
 	//
-	// 	- **eip**: EIP
+	// 	- **eip**: an elastic IP address (EIP).
+	//
+	// 	- **ipv6**: an IPv6 gateway.
+	//
+	// 	- **swas**: a simple application server.
+	//
+	// 	- **waf**: a Web Application Firewall (WAF) instance of the Exclusive edition.
+	//
+	// 	- **ga_basic**: a Global Accelerator (GA) instance.
 	//
 	// This parameter is required.
 	//
@@ -2578,13 +2654,13 @@ type ModifyDefenseThresholdRequest struct {
 	//
 	// false
 	IsAuto *bool `json:"IsAuto,omitempty" xml:"IsAuto,omitempty"`
-	// Specifies the packet scrubbing threshold. Unit: packets per second (pps).
+	// The packet scrubbing threshold. Unit: packets per second (PPS). When you modify Pps, Bps is required. Otherwise, Pps does not take effect.
 	//
 	// The packet scrubbing threshold cannot exceed the peak number of inbound or outbound packets, whichever is larger, of the asset. You can use the monitoring tool that is provided by the asset to query the number of packets of the asset:
 	//
-	// 	- For more information about how to query the number of packets of an ECS instance, see [Query monitoring information of an instance](https://help.aliyun.com/document_detail/25482.html).
+	// 	- If the asset is an ECS instance, see [View instance monitoring information](https://help.aliyun.com/document_detail/25482.html).
 	//
-	// 	- For more information about how to query the number of packets of an SLB instance, see [View monitoring data in the console](https://help.aliyun.com/document_detail/85982.html).
+	// 	- If the asset is an SLB instance, see [View monitoring data](https://help.aliyun.com/document_detail/85982.html).
 	//
 	// example:
 	//
@@ -2602,6 +2678,11 @@ func (s ModifyDefenseThresholdRequest) GoString() string {
 
 func (s *ModifyDefenseThresholdRequest) SetBps(v int32) *ModifyDefenseThresholdRequest {
 	s.Bps = &v
+	return s
+}
+
+func (s *ModifyDefenseThresholdRequest) SetClientToken(v string) *ModifyDefenseThresholdRequest {
+	s.ClientToken = &v
 	return s
 }
 
@@ -2687,13 +2768,15 @@ func (s *ModifyDefenseThresholdResponse) SetBody(v *ModifyDefenseThresholdRespon
 }
 
 type ModifyIpDefenseThresholdRequest struct {
-	// Specifies the traffic scrubbing threshold. Unit: Mbit/s. The traffic scrubbing threshold cannot exceed the peak inbound or outbound Internet traffic, whichever is larger, of the asset.
+	// The traffic scrubbing threshold. Unit: Mbit/s. The traffic scrubbing threshold cannot exceed the peak inbound or outbound Internet traffic, whichever is larger, of the asset. When you modify Bps, Pps is required. Otherwise, Bps does not take effect.
 	//
 	// You can use the monitoring tool that is provided by the asset to query the Internet traffic of the asset:
 	//
-	// 	- For more information about how to query the Internet traffic of an ECS instance, see [Query monitoring information of an instance](https://help.aliyun.com/document_detail/25482.html).
+	// 	- If the asset is an ECS instance, see [View instance monitoring information](https://help.aliyun.com/document_detail/25482.html).
 	//
-	// 	- For more information about how to query the number of packets of an SLB instance, see [View monitoring data in the console](https://help.aliyun.com/document_detail/85982.html).
+	// 	- If the asset is an SLB instance, see [View monitoring data](https://help.aliyun.com/document_detail/85982.html).
+	//
+	// 	- If the asset is an EIP, see [View monitoring data](https://help.aliyun.com/document_detail/85354.html).
 	//
 	// example:
 	//
@@ -2721,11 +2804,19 @@ type ModifyIpDefenseThresholdRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The type of the asset. Valid values:
 	//
-	// 	- **ecs**: ECS instance
+	// 	- **ecs**: an Elastic Compute Service (ECS) instance.
 	//
-	// 	- **slb**: SLB instance
+	// 	- **slb**: a Server Load Balancer (SLB) instance.
 	//
-	// 	- **eip**: EIP
+	// 	- **eip**: an elastic IP address (EIP).
+	//
+	// 	- **ipv6**: an IPv6 gateway.
+	//
+	// 	- **swas**: a simple application server.
+	//
+	// 	- **waf**: a Web Application Firewall (WAF) instance of the Exclusive edition.
+	//
+	// 	- **ga_basic**: a Global Accelerator (GA) instance.
 	//
 	// This parameter is required.
 	//
@@ -2751,13 +2842,15 @@ type ModifyIpDefenseThresholdRequest struct {
 	//
 	// false
 	IsAuto *bool `json:"IsAuto,omitempty" xml:"IsAuto,omitempty"`
-	// Specifies the packet scrubbing threshold. Unit: packets per second (pps).
+	// The packet scrubbing threshold. Unit: packets per second (PPS). When you modify Pps, Bps is required. Otherwise, Pps does not take effect.
 	//
 	// The packet scrubbing threshold cannot exceed the peak number of inbound or outbound packets, whichever is larger, of the asset. You can use the monitoring tool that is provided by the asset to query the number of packets of the asset:
 	//
-	// 	- For more information about how to query the number of packets of an ECS instance, see [Query monitoring information of an instance](https://help.aliyun.com/document_detail/25482.html).
+	// 	- If the asset is an ECS instance, see [View instance monitoring information](https://help.aliyun.com/document_detail/25482.html).
 	//
-	// 	- For more information about how to query the number of packets of an SLB instance, see [View monitoring data in the console](https://help.aliyun.com/document_detail/85982.html).
+	// 	- If the asset is an SLB instance, see [View monitoring data](https://help.aliyun.com/document_detail/85982.html).
+	//
+	// 	- If the asset is an EIP, see [View monitoring data](https://help.aliyun.com/document_detail/85354.html).
 	//
 	// example:
 	//
@@ -2876,23 +2969,43 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	}
 	client.EndpointRule = tea.String("regional")
 	client.EndpointMap = map[string]*string{
+		"cn-qingdao":                  tea.String("antiddos.aliyuncs.com"),
+		"cn-beijing":                  tea.String("antiddos.aliyuncs.com"),
+		"cn-zhangjiakou":              tea.String("antiddos-openapi.cn-zhangjiakou.aliyuncs.com"),
+		"cn-huhehaote":                tea.String("antiddos-openapi.cn-huhehaote.aliyuncs.com"),
+		"cn-wulanchabu":               tea.String("antiddos-openapi.cn-wulanchabu.aliyuncs.com"),
+		"cn-hangzhou":                 tea.String("antiddos.aliyuncs.com"),
+		"cn-shanghai":                 tea.String("antiddos.aliyuncs.com"),
+		"cn-nanjing":                  tea.String("antiddos-openapi.cn-hangzhou-cloudstone.aliyuncs.com"),
+		"cn-shenzhen":                 tea.String("antiddos.aliyuncs.com"),
+		"cn-heyuan":                   tea.String("antiddos-openapi.cn-heyuan.aliyuncs.com"),
+		"cn-guangzhou":                tea.String("antiddos-openapi.cn-guangzhou.aliyuncs.com"),
+		"cn-chengdu":                  tea.String("antiddos-openapi.cn-chengdu.aliyuncs.com"),
+		"cn-hongkong":                 tea.String("antiddos.aliyuncs.com"),
 		"ap-northeast-1":              tea.String("antiddos-openapi.ap-northeast-1.aliyuncs.com"),
-		"ap-northeast-2-pop":          tea.String("antiddos.aliyuncs.com"),
-		"ap-south-1":                  tea.String("antiddos-openapi.ap-south-1.aliyuncs.com"),
+		"ap-northeast-2":              tea.String("antiddos-openapi.ap-northeast-2.aliyuncs.com"),
 		"ap-southeast-1":              tea.String("antiddos.aliyuncs.com"),
 		"ap-southeast-2":              tea.String("antiddos-openapi.ap-southeast-2.aliyuncs.com"),
 		"ap-southeast-3":              tea.String("antiddos-openapi.ap-southeast-3.aliyuncs.com"),
-		"ap-southeast-5":              tea.String("antiddos-openapi-vpc.ap-southeast-5.aliyuncs.com"),
-		"cn-beijing":                  tea.String("antiddos-openapi-vpc.cn-beijing.aliyuncs.com"),
+		"ap-southeast-5":              tea.String("antiddos-openapi.ap-southeast-5.aliyuncs.com"),
+		"ap-southeast-6":              tea.String("antiddos-openapi.ap-southeast-6.aliyuncs.com"),
+		"us-east-1":                   tea.String("antiddos.aliyuncs.com"),
+		"us-west-1":                   tea.String("antiddos.aliyuncs.com"),
+		"eu-west-1":                   tea.String("antiddos-openapi.eu-west-1.aliyuncs.com"),
+		"eu-central-1":                tea.String("antiddos-openapi.eu-central-1.aliyuncs.com"),
+		"ap-south-1":                  tea.String("antiddos-openapi.ap-south-1.aliyuncs.com"),
+		"me-east-1":                   tea.String("antiddos-openapi.me-east-1.aliyuncs.com"),
+		"cn-shanghai-finance-1":       tea.String("antiddos.aliyuncs.com"),
+		"cn-shenzhen-finance-1":       tea.String("antiddos.aliyuncs.com"),
+		"cn-north-2-gov-1":            tea.String("antiddos.aliyuncs.com"),
+		"ap-northeast-2-pop":          tea.String("antiddos.aliyuncs.com"),
 		"cn-beijing-finance-1":        tea.String("antiddos.aliyuncs.com"),
 		"cn-beijing-finance-pop":      tea.String("antiddos.aliyuncs.com"),
 		"cn-beijing-gov-1":            tea.String("antiddos.aliyuncs.com"),
 		"cn-beijing-nu16-b01":         tea.String("antiddos.aliyuncs.com"),
-		"cn-chengdu":                  tea.String("antiddos-openapi.cn-chengdu.aliyuncs.com"),
 		"cn-edge-1":                   tea.String("antiddos.aliyuncs.com"),
 		"cn-fujian":                   tea.String("antiddos.aliyuncs.com"),
 		"cn-haidian-cm12-c01":         tea.String("antiddos.aliyuncs.com"),
-		"cn-hangzhou":                 tea.String("antiddos-openapi-vpc.cn-hangzhou.aliyuncs.com"),
 		"cn-hangzhou-bj-b01":          tea.String("antiddos.aliyuncs.com"),
 		"cn-hangzhou-finance":         tea.String("antiddos.aliyuncs.com"),
 		"cn-hangzhou-internal-prod-1": tea.String("antiddos.aliyuncs.com"),
@@ -2900,39 +3013,24 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 		"cn-hangzhou-internal-test-2": tea.String("antiddos.aliyuncs.com"),
 		"cn-hangzhou-internal-test-3": tea.String("antiddos.aliyuncs.com"),
 		"cn-hangzhou-test-306":        tea.String("antiddos.aliyuncs.com"),
-		"cn-hongkong":                 tea.String("antiddos-openapi-vpc.cn-hongkong.aliyuncs.com"),
 		"cn-hongkong-finance-pop":     tea.String("antiddos.aliyuncs.com"),
-		"cn-huhehaote":                tea.String("antiddos-openapi.cn-huhehaote.aliyuncs.com"),
 		"cn-huhehaote-nebula-1":       tea.String("antiddos.aliyuncs.com"),
-		"cn-north-2-gov-1":            tea.String("antiddos.aliyuncs.com"),
-		"cn-qingdao":                  tea.String("antiddos-openapi-vpc.cn-qingdao.aliyuncs.com"),
 		"cn-qingdao-nebula":           tea.String("antiddos.aliyuncs.com"),
-		"cn-shanghai":                 tea.String("antiddos-openapi-vpc.cn-shanghai.aliyuncs.com"),
 		"cn-shanghai-et15-b01":        tea.String("antiddos.aliyuncs.com"),
 		"cn-shanghai-et2-b01":         tea.String("antiddos.aliyuncs.com"),
-		"cn-shanghai-finance-1":       tea.String("antiddos.aliyuncs.com"),
 		"cn-shanghai-inner":           tea.String("antiddos.aliyuncs.com"),
 		"cn-shanghai-internal-test-1": tea.String("antiddos.aliyuncs.com"),
-		"cn-shenzhen":                 tea.String("antiddos.aliyuncs.com"),
-		"cn-shenzhen-finance-1":       tea.String("antiddos.aliyuncs.com"),
 		"cn-shenzhen-inner":           tea.String("antiddos.aliyuncs.com"),
 		"cn-shenzhen-st4-d01":         tea.String("antiddos.aliyuncs.com"),
 		"cn-shenzhen-su18-b01":        tea.String("antiddos.aliyuncs.com"),
 		"cn-wuhan":                    tea.String("antiddos.aliyuncs.com"),
-		"cn-wulanchabu":               tea.String("antiddos-openapi.cn-wulanchabu.aliyuncs.com"),
 		"cn-yushanfang":               tea.String("antiddos.aliyuncs.com"),
 		"cn-zhangbei":                 tea.String("antiddos.aliyuncs.com"),
 		"cn-zhangbei-na61-b01":        tea.String("antiddos.aliyuncs.com"),
-		"cn-zhangjiakou":              tea.String("antiddos-openapi.cn-zhangjiakou.aliyuncs.com"),
-		"cn-zhangjiakou-na62-a01":     tea.String("antiddos.aliyuncs.com"),
+		"cn-zhangjiakou-na62-a01":     tea.String("antiddos-openapi.cn-zhangjiakou.aliyuncs.com"),
 		"cn-zhengzhou-nebula-1":       tea.String("antiddos.aliyuncs.com"),
-		"eu-central-1":                tea.String("antiddos-openapi.eu-central-1.aliyuncs.com"),
-		"eu-west-1":                   tea.String("antiddos-openapi.eu-west-1.aliyuncs.com"),
 		"eu-west-1-oxs":               tea.String("antiddos.aliyuncs.com"),
-		"me-east-1":                   tea.String("antiddos-openapi.me-east-1.aliyuncs.com"),
 		"rus-west-1-pop":              tea.String("antiddos.aliyuncs.com"),
-		"us-east-1":                   tea.String("antiddos.aliyuncs.com"),
-		"us-west-1":                   tea.String("antiddos.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -2967,13 +3065,13 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Queries the configurations of the Anti-DDoS Origin Basic instance that is associated with an asset. The asset can be an elastic IP address (EIP). The asset can also be an Elastic Compute Service (ECS) instance or Server Load Balancer (SLB) instance that is assigned a public IP address.
+// Queries the configurations of the Anti-DDoS Origin instance that is associated with an asset. The asset is assigned a public IP address.
 //
 // Description:
 //
 // You can call the DescribeBgpPackByIp operation to query the configurations of the Anti-DDoS Origin instance that is associated with an asset. The configurations include the basic protection threshold, burstable protection threshold, and expiration time.
 //
-// ## Limits
+// ## [](#qps-)Limits
 //
 // You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
 //
@@ -3010,24 +3108,35 @@ func (client *Client) DescribeBgpPackByIpWithOptions(request *DescribeBgpPackByI
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeBgpPackByIpResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeBgpPackByIpResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeBgpPackByIpResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Queries the configurations of the Anti-DDoS Origin Basic instance that is associated with an asset. The asset can be an elastic IP address (EIP). The asset can also be an Elastic Compute Service (ECS) instance or Server Load Balancer (SLB) instance that is assigned a public IP address.
+// Queries the configurations of the Anti-DDoS Origin instance that is associated with an asset. The asset is assigned a public IP address.
 //
 // Description:
 //
 // You can call the DescribeBgpPackByIp operation to query the configurations of the Anti-DDoS Origin instance that is associated with an asset. The configurations include the basic protection threshold, burstable protection threshold, and expiration time.
 //
-// ## Limits
+// ## [](#qps-)Limits
 //
 // You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
 //
@@ -3102,13 +3211,24 @@ func (client *Client) DescribeCapWithOptions(request *DescribeCapRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeCapResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeCapResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeCapResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -3139,13 +3259,11 @@ func (client *Client) DescribeCap(request *DescribeCapRequest) (_result *Describ
 
 // Summary:
 //
-// Queries the number of assets that are under DDoS attacks in a specific region. The assets can be elastic IP addresses (EIPs). The assets can also be Elastic Compute Service (ECS) instances or Server Load Balancer (SLB) instances that are assigned public IP addresses.
+// Queries the number of assets that are under DDoS attacks in a specific region. The assets are assigned public IP addresses.
 //
 // Description:
 //
-// You can call the DescribeDdosCount operation to query the number of assets that are under DDoS attacks in a specific region.
-//
-// ## Limits
+// ## [](#qps-)Limits
 //
 // You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
 //
@@ -3182,24 +3300,33 @@ func (client *Client) DescribeDdosCountWithOptions(request *DescribeDdosCountReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDdosCountResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDdosCountResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDdosCountResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Queries the number of assets that are under DDoS attacks in a specific region. The assets can be elastic IP addresses (EIPs). The assets can also be Elastic Compute Service (ECS) instances or Server Load Balancer (SLB) instances that are assigned public IP addresses.
+// Queries the number of assets that are under DDoS attacks in a specific region. The assets are assigned public IP addresses.
 //
 // Description:
 //
-// You can call the DescribeDdosCount operation to query the number of assets that are under DDoS attacks in a specific region.
-//
-// ## Limits
+// ## [](#qps-)Limits
 //
 // You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
 //
@@ -3258,13 +3385,24 @@ func (client *Client) DescribeDdosCreditWithOptions(request *DescribeDdosCreditR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDdosCreditResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDdosCreditResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDdosCreditResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -3295,13 +3433,13 @@ func (client *Client) DescribeDdosCredit(request *DescribeDdosCreditRequest) (_r
 
 // Summary:
 //
-// Queries the details of the DDoS attack events that occur on an asset. The asset can be an Elastic IP address (EIP). The asset can also be an Elastic Compute Service (ECS) instance or Server Load Balancer (SLB) instance that is assigned a public IP address.
+// Queries the details of the DDoS attack events that occur on an asset. The asset is assigned a public IP address.
 //
 // Description:
 //
 // You can call the DescribeDdosEventList operation to query the details of the DDoS attack events that occur on an asset by page. The details include the start time, end time, and status of each DDoS attack event.
 //
-// ## Limits
+// ## [](#qps-)Limits
 //
 // You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
 //
@@ -3354,24 +3492,35 @@ func (client *Client) DescribeDdosEventListWithOptions(request *DescribeDdosEven
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDdosEventListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDdosEventListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDdosEventListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Queries the details of the DDoS attack events that occur on an asset. The asset can be an Elastic IP address (EIP). The asset can also be an Elastic Compute Service (ECS) instance or Server Load Balancer (SLB) instance that is assigned a public IP address.
+// Queries the details of the DDoS attack events that occur on an asset. The asset is assigned a public IP address.
 //
 // Description:
 //
 // You can call the DescribeDdosEventList operation to query the details of the DDoS attack events that occur on an asset by page. The details include the start time, end time, and status of each DDoS attack event.
 //
-// ## Limits
+// ## [](#qps-)Limits
 //
 // You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
 //
@@ -3442,13 +3591,24 @@ func (client *Client) DescribeDdosThresholdWithOptions(request *DescribeDdosThre
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDdosThresholdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDdosThresholdResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDdosThresholdResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -3479,13 +3639,13 @@ func (client *Client) DescribeDdosThreshold(request *DescribeDdosThresholdReques
 
 // Summary:
 //
-// Queries the details of the assets within the current Alibaba Cloud account. The assets can be elastic IP addresses (EIPs). The assets can also be Elastic Compute Service (ECS) instances or Server Load Balancer (SLB) instances that are assigned public IP addresses.
+// Queries the details of the assets within the current Alibaba Cloud account. The assets can be elastic IP addresses (EIPs). The assets can also be Elastic Compute Service (ECS) instances or Server Load Balancer (SLB) instances that are assigned public IP addresses. This operation is phased out. We recommend that you use the DescribeInstanceIpAddress operation.
 //
 // Description:
 //
-// You can call the DescribeInstance operation to query the details of the assets that are within the current Alibaba Cloud account by page. The details include the IDs and IP addresses of the assets, the basic protection thresholds and traffic scrubbing thresholds that are configured for the assets in Anti-DDoS Origin Basic, and whether the assets are associated with Anti-DDoS Origin Basic instances.
+// You can call the DescribeInstance operation to query the details of the assets that are within the current Alibaba Cloud account by page. The details include the IDs and IP addresses of the assets, the basic protection thresholds and traffic scrubbing thresholds that are configured for the assets in Anti-DDoS Origin, and whether the assets are associated with Anti-DDoS Origin instances.
 //
-// ### Limits
+// ### [](#qps-)Limits
 //
 // You can call this operation up to 200 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
 //
@@ -3546,24 +3706,35 @@ func (client *Client) DescribeInstanceWithOptions(request *DescribeInstanceReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Queries the details of the assets within the current Alibaba Cloud account. The assets can be elastic IP addresses (EIPs). The assets can also be Elastic Compute Service (ECS) instances or Server Load Balancer (SLB) instances that are assigned public IP addresses.
+// Queries the details of the assets within the current Alibaba Cloud account. The assets can be elastic IP addresses (EIPs). The assets can also be Elastic Compute Service (ECS) instances or Server Load Balancer (SLB) instances that are assigned public IP addresses. This operation is phased out. We recommend that you use the DescribeInstanceIpAddress operation.
 //
 // Description:
 //
-// You can call the DescribeInstance operation to query the details of the assets that are within the current Alibaba Cloud account by page. The details include the IDs and IP addresses of the assets, the basic protection thresholds and traffic scrubbing thresholds that are configured for the assets in Anti-DDoS Origin Basic, and whether the assets are associated with Anti-DDoS Origin Basic instances.
+// You can call the DescribeInstance operation to query the details of the assets that are within the current Alibaba Cloud account by page. The details include the IDs and IP addresses of the assets, the basic protection thresholds and traffic scrubbing thresholds that are configured for the assets in Anti-DDoS Origin, and whether the assets are associated with Anti-DDoS Origin instances.
 //
-// ### Limits
+// ### [](#qps-)Limits
 //
 // You can call this operation up to 200 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
 //
@@ -3650,13 +3821,24 @@ func (client *Client) DescribeInstanceIpAddressWithOptions(request *DescribeInst
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeInstanceIpAddressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeInstanceIpAddressResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeInstanceIpAddressResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -3742,13 +3924,24 @@ func (client *Client) DescribeIpDdosThresholdWithOptions(request *DescribeIpDdos
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeIpDdosThresholdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeIpDdosThresholdResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeIpDdosThresholdResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -3779,13 +3972,13 @@ func (client *Client) DescribeIpDdosThreshold(request *DescribeIpDdosThresholdRe
 
 // Summary:
 //
-// Queries the region in which an asset within the current Alibaba Cloud account resides. The asset can be an elastic IP address (EIP). The asset can also be an Elastic Compute Service (ECS) instance or Server Load Balancer (SLB) instance that is assigned a public IP address.
+// Queries the region to which the public IP address of the asset within the current Alibaba Cloud account belongs. The asset can be an elastic IP address (EIP). The asset can also be an Elastic Compute Service (ECS) instance or Server Load Balancer (SLB) instance that is assigned a public IP address.
 //
 // Description:
 //
 // You can call the DescribeIpLocationService operation to query the region of the public IP address for a specified asset that is within the current Alibaba Cloud account. You can also query the details of the Anti-DDoS Origin instance to which the asset is added. The details include the ID and name.
 //
-// ## Limits
+// ## [](#qps-)Limits
 //
 // You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
 //
@@ -3818,24 +4011,35 @@ func (client *Client) DescribeIpLocationServiceWithOptions(request *DescribeIpLo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeIpLocationServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeIpLocationServiceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeIpLocationServiceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Queries the region in which an asset within the current Alibaba Cloud account resides. The asset can be an elastic IP address (EIP). The asset can also be an Elastic Compute Service (ECS) instance or Server Load Balancer (SLB) instance that is assigned a public IP address.
+// Queries the region to which the public IP address of the asset within the current Alibaba Cloud account belongs. The asset can be an elastic IP address (EIP). The asset can also be an Elastic Compute Service (ECS) instance or Server Load Balancer (SLB) instance that is assigned a public IP address.
 //
 // Description:
 //
 // You can call the DescribeIpLocationService operation to query the region of the public IP address for a specified asset that is within the current Alibaba Cloud account. You can also query the details of the Anti-DDoS Origin instance to which the asset is added. The details include the ID and name.
 //
-// ## Limits
+// ## [](#qps-)Limits
 //
 // You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
 //
@@ -3883,13 +4087,24 @@ func (client *Client) DescribeRegionsWithOptions(runtime *util.RuntimeOptions) (
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeRegionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeRegionsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeRegionsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -3918,13 +4133,11 @@ func (client *Client) DescribeRegions() (_result *DescribeRegionsResponse, _err 
 
 // Summary:
 //
-// Changes the scrubbing thresholds for an asset. The asset can be an elastic IP address (EIP). The asset can also be an Elastic Compute Service (ECS) instance or Server Load Balancer (SLB) instance that is assigned a public IP address.
+// Changes the scrubbing thresholds for an asset that is assigned a public IP address.
 //
 // Description:
 //
-// You can call the ModifyDefenseThreshold operation to change the scrubbing thresholds for an asset.
-//
-// ## Limits
+// ## [](#qps-)Limits
 //
 // You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
 //
@@ -3941,6 +4154,10 @@ func (client *Client) ModifyDefenseThresholdWithOptions(request *ModifyDefenseTh
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Bps)) {
 		query["Bps"] = request.Bps
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DdosRegionId)) {
@@ -3981,24 +4198,33 @@ func (client *Client) ModifyDefenseThresholdWithOptions(request *ModifyDefenseTh
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyDefenseThresholdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyDefenseThresholdResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyDefenseThresholdResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Changes the scrubbing thresholds for an asset. The asset can be an elastic IP address (EIP). The asset can also be an Elastic Compute Service (ECS) instance or Server Load Balancer (SLB) instance that is assigned a public IP address.
+// Changes the scrubbing thresholds for an asset that is assigned a public IP address.
 //
 // Description:
 //
-// You can call the ModifyDefenseThreshold operation to change the scrubbing thresholds for an asset.
-//
-// ## Limits
+// ## [](#qps-)Limits
 //
 // You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
 //
@@ -4018,7 +4244,7 @@ func (client *Client) ModifyDefenseThreshold(request *ModifyDefenseThresholdRequ
 
 // Summary:
 //
-// Changes the traffic scrubbing thresholds for an asset. The asset can be an elastic IP addresses (EIP). The asset can also be an Elastic Compute Service (ECS) instance or Server Load Balancer (SLB) instance that is assigned a public IP address.
+// Modifies the scrubbing thresholds for an asset that is assigned a public IP address. This operation is a synchronous operation that supports Terraform.
 //
 // Description:
 //
@@ -4079,18 +4305,29 @@ func (client *Client) ModifyIpDefenseThresholdWithOptions(request *ModifyIpDefen
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyIpDefenseThresholdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyIpDefenseThresholdResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyIpDefenseThresholdResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Changes the traffic scrubbing thresholds for an asset. The asset can be an elastic IP addresses (EIP). The asset can also be an Elastic Compute Service (ECS) instance or Server Load Balancer (SLB) instance that is assigned a public IP address.
+// Modifies the scrubbing thresholds for an asset that is assigned a public IP address. This operation is a synchronous operation that supports Terraform.
 //
 // Description:
 //
