@@ -7311,47 +7311,123 @@ func (s *CreateCenterPolicyResponse) SetBody(v *CreateCenterPolicyResponseBody) 
 }
 
 type CreateCloudDriveServiceRequest struct {
-	AutoPay   *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// Specifies whether to enable the auto-payment feature.
+	//
+	// Valid values:
+	//
+	// 	- true: enables the auto-payment feature. Ensure your Alibaba Cloud account has sufficient balance. Insufficient balance may result in abnormal orders.
+	//
+	// 	- false (default): disables the auto-payment feature. The order is generated, but payment must be made manually. You can log on to the Alibaba Cloud Management Console and complete the payment based on the order ID on the Orders page.
+	//
+	// example:
+	//
+	// false
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// Optional. Specifies whether to enable the auto-renewal feature. This parameter takes effect only if you set CdsChargeType to `Prepaid`.
+	//
+	// Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// false
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// The business type.
+	// >  This parameter is not publicly available.
 	//
 	// example:
 	//
 	// 3
-	BizType       *int32  `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	BizType *int32 `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// The billing method of the enterprise drive.
+	//
+	// Valid values:
+	//
+	// 	- PostPaid: pay-as-you-go.
+	//
+	// 	- PrePaid: subscription.
+	//
+	// example:
+	//
+	// PostPaid
 	CdsChargeType *string `json:"CdsChargeType,omitempty" xml:"CdsChargeType,omitempty"`
+	// The ID of the Cloud Enterprise Network (CEN) instance. This parameter takes effect only if you set `OfficeSiteType` to `AD_CONNECTOR`. If you have configured `OfficeSiteId`, you can leave this parameter empty.
+	//
 	// example:
 	//
 	// cen-g4ba1mkji8nj6****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	// The domain name of the enterprise AD office network. This parameter takes effect only if you set `OfficeSiteType` to `AD_CONNECTOR`. If you have configured `OfficeSiteId`, you can leave this parameter empty.
+	//
 	// example:
 	//
 	// test.local
-	DomainName *string   `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	EndUserId  []*string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty" type:"Repeated"`
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The user IDs.
+	EndUserId []*string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty" type:"Repeated"`
+	// The maximum storage capacity of the enterprise drive.
+	//
+	// 	- For a pay-as-you-go enterprise drive, the unit is bytes.
+	//
+	// 	- For a subscription enterprise drive, the unit is GiB. For example, to create a 500 GiB subscription drive, set the value to 500 GiB. To create a 2 TiB subscription drive, set the value to 2048 GiB.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 536870912000
 	MaxSize *int64 `json:"MaxSize,omitempty" xml:"MaxSize,omitempty"`
-	// The name of the cloud disk that you want to create in Cloud Drive Service.
+	// The name of the enterprise drive
 	//
 	// example:
 	//
 	// wuying-pds
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the office network. This parameter takes effect only if you set OfficeSiteType to `AD_CONNECTOR`.
+	//
 	// example:
 	//
 	// cn-hangzhou+dir-400695****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	// The type of the office network.
+	//
+	// Valid values:
+	//
+	// 	- SIMPLE: convenience office network.
+	//
+	// 	- AD_CONNECTOR: enterprise Active Directory (AD) office network.
+	//
 	// example:
 	//
 	// SIMPLE
 	OfficeSiteType *string `json:"OfficeSiteType,omitempty" xml:"OfficeSiteType,omitempty"`
-	Period         *int64  `json:"Period,omitempty" xml:"Period,omitempty"`
-	PeriodUnit     *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// The region ID.
+	// The subscription duration. The unit is specified by `PeriodUnit`. This parameter takes effect only if you set `CdsChargeType` to `PrePaid`.
+	//
+	// Valid values:
+	//
+	// 	- 1
+	//
+	// 	- 2
+	//
+	// 	- 3
+	//
+	// example:
+	//
+	// 1
+	Period *int64 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// Required. The unit of the subscription duration. This parameter takes effect only if you set `CdsChargeType` to `PrePaid`.
+	//
+	// Valid value:
+	//
+	// 	- Year
+	//
+	// example:
+	//
+	// Year
+	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the list of regions where Enterprise Drive Service is available.
 	//
 	// This parameter is required.
 	//
@@ -7359,13 +7435,28 @@ type CreateCloudDriveServiceRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The solution ID.
+	// >  This parameter is not publicly available.
 	//
 	// example:
 	//
 	// co-0esnf8kb8zpfbqmvt
 	SolutionId *string `json:"SolutionId,omitempty" xml:"SolutionId,omitempty"`
-	UserCount  *int64  `json:"UserCount,omitempty" xml:"UserCount,omitempty"`
+	// Required. The maximum number of users allowed on the enterprise drive. This parameter takes effect only if you set `CdsChargeType` to `PrePaid`.
+	//
+	// Valid values:
+	//
+	// 	- 5 when the value of MaxSize is 500 GiB.
+	//
+	// 	- 20 when the value of MaxSize is 2048 GiB.
+	//
+	// 	- 50 when the value of MaxSize is 5120 GiB.
+	//
+	// example:
+	//
+	// 5
+	UserCount *int64 `json:"UserCount,omitempty" xml:"UserCount,omitempty"`
+	// The maximum storage capacity of the user\\"s personal disk when allocated. Unit: bytes.
+	//
 	// example:
 	//
 	// 1024000
@@ -7466,7 +7557,7 @@ func (s *CreateCloudDriveServiceRequest) SetUserMaxSize(v int64) *CreateCloudDri
 }
 
 type CreateCloudDriveServiceResponseBody struct {
-	// The ID of the attached cloud disk.
+	// The ID of the enterprise drive.
 	//
 	// example:
 	//
@@ -7478,27 +7569,52 @@ type CreateCloudDriveServiceResponseBody struct {
 	//
 	// CDS_Windows_1126
 	CdsName *string `json:"CdsName,omitempty" xml:"CdsName,omitempty"`
+	// The ID of the CEN instance.
+	//
+	// >  To allow end users to connect to cloud computers via virtual private clouds (VPCs), attach your office network to a CEN instance. The CEN instance connects to your on-premises network through VPN Gateway or Express Connect.
+	//
 	// example:
 	//
 	// cen-638u3wxds9snyc****
-	CenId               *string                                                 `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	// The existing enterprise drive or its order that conflicts with the enterprise drive being created.
 	ConflictCdsAndOrder *CreateCloudDriveServiceResponseBodyConflictCdsAndOrder `json:"ConflictCdsAndOrder,omitempty" xml:"ConflictCdsAndOrder,omitempty" type:"Struct"`
+	// The domain name of the enterprise AD office network.
+	//
 	// example:
 	//
 	// test1.local
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	ErrorCode  *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The maximum capacity of each instance in Cloud Drive Service. Unit: GiB
+	// The error code.
+	//
+	// example:
+	//
+	// ExistConflictCds
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The maximum storage capacity of the enterprise drive. Unit: bytes.
 	//
 	// example:
 	//
 	// 213674622976
 	MaxSize *string `json:"MaxSize,omitempty" xml:"MaxSize,omitempty"`
+	// The type of the office network.
+	//
+	// Valid values:
+	//
+	// 	- SIMPLE: convenience office network.
+	//
+	// 	- AD_CONNECTOR: enterprise AD office network.
+	//
 	// example:
 	//
 	// AD_CONNECTOR
 	OfficeSiteType *string `json:"OfficeSiteType,omitempty" xml:"OfficeSiteType,omitempty"`
-	OrderId        *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the order. You can obtain an order ID on the Orders page in the Expenses and Costs console.
+	//
+	// example:
+	//
+	// 214552063030752
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	// The ID of the request.
 	//
 	// example:
@@ -7566,7 +7682,9 @@ func (s *CreateCloudDriveServiceResponseBody) SetRequestId(v string) *CreateClou
 }
 
 type CreateCloudDriveServiceResponseBodyConflictCdsAndOrder struct {
-	ConflictCds   []*CreateCloudDriveServiceResponseBodyConflictCdsAndOrderConflictCds   `json:"ConflictCds,omitempty" xml:"ConflictCds,omitempty" type:"Repeated"`
+	// The conflicting enterprise drive.
+	ConflictCds []*CreateCloudDriveServiceResponseBodyConflictCdsAndOrderConflictCds `json:"ConflictCds,omitempty" xml:"ConflictCds,omitempty" type:"Repeated"`
+	// The subscription orders of the conflicting enterprise drives that are unpaid.
 	ConflictOrder []*CreateCloudDriveServiceResponseBodyConflictCdsAndOrderConflictOrder `json:"ConflictOrder,omitempty" xml:"ConflictOrder,omitempty" type:"Repeated"`
 }
 
@@ -7589,7 +7707,17 @@ func (s *CreateCloudDriveServiceResponseBodyConflictCdsAndOrder) SetConflictOrde
 }
 
 type CreateCloudDriveServiceResponseBodyConflictCdsAndOrderConflictCds struct {
-	CdsId    *string `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
+	// The ID of the enterprise drive.
+	//
+	// example:
+	//
+	// cn-hangzhou+cds-778205****
+	CdsId *string `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
+	// The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -7612,8 +7740,23 @@ func (s *CreateCloudDriveServiceResponseBodyConflictCdsAndOrderConflictCds) SetR
 }
 
 type CreateCloudDriveServiceResponseBodyConflictCdsAndOrderConflictOrder struct {
-	CdsId    *string `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
-	OrderId  *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the enterprise drive. The enterprise drive cannot be used if the order is unpaid.
+	//
+	// example:
+	//
+	// cn-hangzhou+cds-778205****
+	CdsId *string `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
+	// The ID of the order. You can obtain an order ID on the **Orders*	- page in the Expenses and Costs console.
+	//
+	// example:
+	//
+	// 22442411898****
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -7892,7 +8035,8 @@ type CreateConfigGroupRequestConfigTimers struct {
 	// example:
 	//
 	// 10
-	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	Interval         *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	NotificationTime *int32 `json:"NotificationTime,omitempty" xml:"NotificationTime,omitempty"`
 	// The type of the scheduled operation. If you set TimerType to NoConnect, you can specify this parameter.
 	//
 	// Valid values:
@@ -7988,6 +8132,11 @@ func (s *CreateConfigGroupRequestConfigTimers) SetEnforce(v bool) *CreateConfigG
 
 func (s *CreateConfigGroupRequestConfigTimers) SetInterval(v int32) *CreateConfigGroupRequestConfigTimers {
 	s.Interval = &v
+	return s
+}
+
+func (s *CreateConfigGroupRequestConfigTimers) SetNotificationTime(v int32) *CreateConfigGroupRequestConfigTimers {
+	s.NotificationTime = &v
 	return s
 }
 
@@ -21537,7 +21686,7 @@ func (s *DescribeDesktopGroupSessionsResponse) SetBody(v *DescribeDesktopGroupSe
 type DescribeDesktopGroupsRequest struct {
 	// The IDs of the cloud computer templates.
 	BundleId []*string `json:"BundleId,omitempty" xml:"BundleId,omitempty" type:"Repeated"`
-	// The ID of the cloud computer pool.
+	// The ID of the cloud computer share.
 	//
 	// example:
 	//
@@ -21545,13 +21694,13 @@ type DescribeDesktopGroupsRequest struct {
 	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
 	// The IDs of the cloud computer pool.
 	DesktopGroupIds []*string `json:"DesktopGroupIds,omitempty" xml:"DesktopGroupIds,omitempty" type:"Repeated"`
-	// The name of the cloud computer pool to query. Fuzzy search is supported.
+	// The name of the cloud computer share that you want to query. Fuzzy search is supported.
 	//
 	// example:
 	//
 	// testName
 	DesktopGroupName *string `json:"DesktopGroupName,omitempty" xml:"DesktopGroupName,omitempty"`
-	// The authorized user IDs of cloud computer pools.
+	// The IDs of the users who can access the cloud computer share.
 	EndUserIds []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
 	// The authorized users that you want to exclude.
 	ExcludedEndUserIds []*string `json:"ExcludedEndUserIds,omitempty" xml:"ExcludedEndUserIds,omitempty" type:"Repeated"`
@@ -21584,29 +21733,29 @@ type DescribeDesktopGroupsRequest struct {
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the office network to which the cloud computer pool belongs.
+	// The ID of the office network in which the cloud computer share resides.
 	//
 	// example:
 	//
 	// cn-hangzhou+dir-467671****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The type of the cloud computer pool.
+	// The type of the cloud computer share.
 	//
 	// >  This parameter is not publicly available.
 	//
 	// Valid values:
 	//
-	// 	- 0: individual (single session)
+	// 	- 0: a single-session many-to-many share.
 	//
-	// 	- 1: shared (multiple sessions)
+	// 	- 1: a multi-session many-to-many share.
 	//
 	// example:
 	//
 	// 0
 	OwnType *int64 `json:"OwnType,omitempty" xml:"OwnType,omitempty"`
-	// The subscription duration of the cloud computer pool. The unit is specified by the `PeriodUnit` parameter.
+	// The subscription duration of the cloud computer share. The unit is specified by `PeriodUnit`.
 	//
-	// 	- Valid values if the `PeriodUnit` parameter is set to `Month`:
+	// 	- Valid values if you set `PeriodUnit` to `Month`:
 	//
 	//     	- 1
 	//
@@ -21616,7 +21765,7 @@ type DescribeDesktopGroupsRequest struct {
 	//
 	//     	- 6
 	//
-	// 	- Valid values if the `PeriodUnit` parameter is set to `Year`:
+	// 	- Valid values if you set `PeriodUnit` to `Year`:
 	//
 	//     	- 1
 	//
@@ -21638,7 +21787,7 @@ type DescribeDesktopGroupsRequest struct {
 	//
 	// Month
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// The ID of the policy that you want to associate with the cloud computer pool.
+	// The ID of the applied policy.
 	//
 	// example:
 	//
@@ -21676,21 +21825,21 @@ type DescribeDesktopGroupsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The payment status of the cloud computer pool.
+	// The status of the cloud computer share.
 	//
 	// Valid values:
 	//
-	// 	- 0: unpaid
+	// 	- 0: The cloud computer share is unpaid.
 	//
-	// 	- 1: paid
+	// 	- 1: The cloud computer share is normal.
 	//
-	// 	- 2: overdue or expired
+	// 	- 2: The cloud computer share expired, or your account has an overdue payment.
 	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags attached to the cloud computer pool. You can specify 1 to 20 tags.
+	// The tags that you want to add to the cloud computer share. You can specify 1 to 20 tags.
 	Tag []*DescribeDesktopGroupsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -21798,13 +21947,13 @@ func (s *DescribeDesktopGroupsRequest) SetTag(v []*DescribeDesktopGroupsRequestT
 }
 
 type DescribeDesktopGroupsRequestTag struct {
-	// The key of the tag. If you specify the `Tag` parameter, you must also specify the `Key` parameter. The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`. You cannot specify an empty string as a tag key.
+	// The tag key. You cannot specify an empty string as a tag key. A tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag. The tag value can be an empty string. The tag value can be up to 128 characters in length. It cannot start with `acs:` and cannot contain `http://` or `https://`.
+	// The tag value. You can specify an empty string as a tag key. A tag value can be up to 128 characters in length and cannot start with `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
@@ -21831,7 +21980,7 @@ func (s *DescribeDesktopGroupsRequestTag) SetValue(v string) *DescribeDesktopGro
 }
 
 type DescribeDesktopGroupsResponseBody struct {
-	// The cloud computer pools.
+	// The cloud computer shares.
 	DesktopGroups []*DescribeDesktopGroupsResponseBodyDesktopGroups `json:"DesktopGroups,omitempty" xml:"DesktopGroups,omitempty" type:"Repeated"`
 	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
 	//
@@ -21871,15 +22020,15 @@ func (s *DescribeDesktopGroupsResponseBody) SetRequestId(v string) *DescribeDesk
 }
 
 type DescribeDesktopGroupsResponseBodyDesktopGroups struct {
-	// The number of concurrent sessions that is allowed for each cloud computer pool in a multi-session cloud computer pool.
+	// The number of concurrent sessions per cloud computer within the multi-session many-to-many share.
 	//
 	// example:
 	//
 	// 1
 	BindAmount *int64 `json:"BindAmount,omitempty" xml:"BindAmount,omitempty"`
-	// 	- This parameter has different meanings based on the billing method of the cloud computer pool. For a subscription pool, this parameter specifies the number of cloud computers to purchase in the pool. Valid values: 0 to 200.
+	// 	- For subscription cloud computer shares, this parameter indicates the number of purchased cloud computers. Valid values: 0 to 200.
 	//
-	// 	- For a pay-as-you-go pool, this parameter specifies the minimum number of cloud computers to create in the pool. Valid values: 0 to `MaxDesktopsCount`. Default value: 1.
+	// 	- For pay-as-you-go cloud computer shares, this parameter indicates the minimum number of cloud computers created in the initial batch. Default value: 1. Valid values: 0 to `MaxDesktopsCount`.
 	//
 	// example:
 	//
@@ -21943,13 +22092,13 @@ type DescribeDesktopGroupsResponseBodyDesktopGroups struct {
 	//
 	// 2
 	DesktopCount *int32 `json:"DesktopCount,omitempty" xml:"DesktopCount,omitempty"`
-	// The ID of the cloud computer pool.
+	// The ID of the cloud computer share.
 	//
 	// example:
 	//
 	// dg-2i8qxpv6t1a03****
 	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
-	// The name of the cloud computer pool.
+	// The name of the cloud computer share.
 	//
 	// example:
 	//
@@ -21961,13 +22110,13 @@ type DescribeDesktopGroupsResponseBodyDesktopGroups struct {
 	//
 	// eds.enterprise_office.4c4g
 	DesktopType *string `json:"DesktopType,omitempty" xml:"DesktopType,omitempty"`
-	// The number of users that are granted permissions to use the cloud computer pool.
+	// The number of users who can access the cloud computer share.
 	//
 	// example:
 	//
 	// 1
 	EndUserCount *int32 `json:"EndUserCount,omitempty" xml:"EndUserCount,omitempty"`
-	// The time when the subscription cloud computer pool expires.
+	// The expiration date of the subscription cloud computer share.
 	//
 	// example:
 	//
@@ -22011,7 +22160,7 @@ type DescribeDesktopGroupsResponseBodyDesktopGroups struct {
 	//
 	// 1000
 	KeepDuration *int64 `json:"KeepDuration,omitempty" xml:"KeepDuration,omitempty"`
-	// The load balancing policy of the multi-session cloud computer pool.
+	// The load balancing policy for the multi-session many-to-many share.
 	//
 	// Valid values:
 	//
@@ -22023,7 +22172,7 @@ type DescribeDesktopGroupsResponseBodyDesktopGroups struct {
 	//
 	// 1
 	LoadPolicy *int64 `json:"LoadPolicy,omitempty" xml:"LoadPolicy,omitempty"`
-	// The maximum number of cloud computers that can be housed in the pay-as-you-go cloud computer pool.
+	// The maximum number of cloud computers allowed in the pay-as-you-go cloud computer share.
 	//
 	// example:
 	//
@@ -22035,19 +22184,19 @@ type DescribeDesktopGroupsResponseBodyDesktopGroups struct {
 	//
 	// 16384
 	Memory *int64 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// The maximum number of cloud computers that can be automatically created in the subscription cloud computer pool.
+	// The maximum number of cloud computers that can be automatically created in the subscription cloud computer share.
 	//
 	// example:
 	//
 	// 1
 	MinDesktopsCount *int32 `json:"MinDesktopsCount,omitempty" xml:"MinDesktopsCount,omitempty"`
-	// The name of the office network in which the cloud computer pool resides.
+	// The ID of the office network in which the cloud computer network resides.
 	//
 	// example:
 	//
 	// cn-hangzhou+dir-467671****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The ID of the office network to which the cloud computer pool belongs.
+	// The ID of the office network in which the cloud computer share resides.
 	//
 	// example:
 	//
@@ -22105,13 +22254,13 @@ type DescribeDesktopGroupsResponseBodyDesktopGroups struct {
 	//
 	// test
 	OwnBundleName *string `json:"OwnBundleName,omitempty" xml:"OwnBundleName,omitempty"`
-	// The type of the cloud computer pool.
+	// The type of the cloud computer share.
 	//
 	// Valid values:
 	//
-	// 	- 0: individual (single session)
+	// 	- 0: a single-session many-to-many share.
 	//
-	// 	- 1: shared (multiple sessions)
+	// 	- 1: a multi-session many-to-many share.
 	//
 	// example:
 	//
@@ -22129,13 +22278,13 @@ type DescribeDesktopGroupsResponseBodyDesktopGroups struct {
 	//
 	// PrePaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The ID of the policy that is associated with the cloud computer pool.
+	// The ID of the applied policy.
 	//
 	// example:
 	//
 	// pg-53iyi2aar0nd6c8qj
 	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
-	// The name of the policy that is associated with the cloud computer pool.
+	// The name of the applied policy.
 	//
 	// example:
 	//
@@ -22165,41 +22314,41 @@ type DescribeDesktopGroupsResponseBodyDesktopGroups struct {
 	//
 	// ASP
 	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
-	// The threshold for the ratio of connected sessions. This parameter indicates the condition that triggers auto scaling in a multi-session cloud computer pool. The ratio of connected sessions is calculated by using the following formula:
+	// The threshold for the ratio of connected sessions, which triggers automatic scaling of cloud computers within the multi-session many-to-many share. To calculate the ratio of connected sessions, use the following formula:
 	//
 	// `Ratio of connected sessions = Number of connected sessions/(Total number of cloud computers × Maximum number of sessions allowed for each cloud computer) × 100%`.
 	//
-	// When the specified threshold is reached, new cloud computers are automatically created. When the specified threshold is not reached, idle cloud computers are released.
+	// If the session ratio exceeds the threshold, new cloud computers are provisioned. If it falls below the threshold, additional cloud computers are removed.
 	//
 	// example:
 	//
 	// 0.85
 	RatioThreshold *float32 `json:"RatioThreshold,omitempty" xml:"RatioThreshold,omitempty"`
-	// The disk reset type of the cloud computer pool.
+	// The reset option for the cloud computer share.
 	//
 	// Valid values:
 	//
-	// 	- 0: does not reset disks
+	// 	- 0: does not reset any disk.
 	//
-	// 	- 1: resets only the system disks
+	// 	- 1: resets only the system disk.
 	//
-	// 	- 2: resets only the user disks
+	// 	- 2: resets only the data disk.
 	//
-	// 	- 3: resets the system disks and user disks
+	// 	- 3: resets the system disk and data disk.
 	//
 	// example:
 	//
 	// 0
 	ResetType *int64 `json:"ResetType,omitempty" xml:"ResetType,omitempty"`
-	// The payment status of the cloud computer pool.
+	// The status of the cloud computer share.
 	//
 	// Valid values:
 	//
-	// 	- 0: unpaid
+	// 	- 0: The cloud computer share is unpaid.
 	//
-	// 	- 1: paid
+	// 	- 1: The cloud computer share is normal.
 	//
-	// 	- 2: overdue or expired
+	// 	- 2: The cloud computer share expired, or your account has an overdue payment.
 	//
 	// example:
 	//
@@ -22237,10 +22386,15 @@ type DescribeDesktopGroupsResponseBodyDesktopGroups struct {
 	//
 	// 80
 	SystemDiskSize *int32 `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
-	// The tags attached to the cloud computer pool.
-	Tags       []*DescribeDesktopGroupsResponseBodyDesktopGroupsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	UserOuPath *string                                               `json:"UserOuPath,omitempty" xml:"UserOuPath,omitempty"`
-	// The version number of the cloud computer pool.
+	// The tags.
+	Tags []*DescribeDesktopGroupsResponseBodyDesktopGroupsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// 用户组织单元路径。
+	//
+	// example:
+	//
+	// example.com\\wuying\\users
+	UserOuPath *string `json:"UserOuPath,omitempty" xml:"UserOuPath,omitempty"`
+	// The version number of the cloud computer share.
 	//
 	// example:
 	//
@@ -22613,13 +22767,13 @@ func (s *DescribeDesktopGroupsResponseBodyDesktopGroupsCountPerStatus) SetStatus
 }
 
 type DescribeDesktopGroupsResponseBodyDesktopGroupsTags struct {
-	// The key of the tag.
+	// The tag key.
 	//
 	// example:
 	//
 	// desktop_group_name
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	//
 	// example:
 	//
@@ -31562,32 +31716,98 @@ func (s *DescribeKmsKeysResponse) SetBody(v *DescribeKmsKeysResponseBody) *Descr
 }
 
 type DescribeModificationPriceRequest struct {
+	// The maximum public bandwidth. Unit: Mbit/s.
+	//
+	// >  Valid values when PayByTraffic is set to PayByBandwidth: 10 to 1000.
+	//
 	// example:
 	//
 	// 20
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// The ID of either the monthly subscription cloud computer with unlimited hours or the premium bandwidth plan.
+	//
 	// example:
 	//
 	// ecd-0gfv2z3sf95zvt****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The specifications.
+	//
+	// 	- Valid values when you set `ResourceType` to `Desktop`:
+	//
+	//     	- ecd.basic.small
+	//
+	//     	- ecd.basic.large
+	//
+	//     	- ecd.advanced.large
+	//
+	//     	- ecd.advanced.xlarge
+	//
+	//     	- ecd.performance.2xlarge
+	//
+	//     	- ecd.graphics.xlarge
+	//
+	//     	- ecd.graphics.2xlarge
+	//
+	//     	- ecd.advanced.xlarge_s8d2
+	//
+	//     	- ecd.advanced.xlarge_s8d7
+	//
+	//     	- ecd.graphics.1g72c
+	//
+	//     	- eds.general.2c2g
+	//
+	//     	- eds.general.2c4g
+	//
+	//     	- eds.general.2c8g
+	//
+	//     	- eds.general.4c8g
+	//
+	//     	- eds.general.4c16g
+	//
+	//     	- eds.general.8c16g
+	//
+	//     	- eds.general.8c32g
+	//
+	//     	- eds.general.16c32g
+	//
+	// 	- You can skip this parameter if `ResourceType` is set to `NetworkPackage`.
+	//
 	// example:
 	//
 	// eds.enterprise_office.8c16g
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource type. The required parameters depend on the resource type.
+	//
+	// 	- When `ResourceType` is set to `Desktop`, the required parameters are `InstanceType`, `RootDiskSizeGib`, and `UserDiskSizeGib`.
+	//
+	// 	- When `ResourceType` is set to `NetworkPackage`, the required parameter is `Bandwidth`.
+	//
+	// Valid values:
+	//
+	// 	- Desktop (default): cloud computers.
+	//
+	// 	- NetworkPackage: premium bandwidth plans.
+	//
 	// example:
 	//
 	// Desktop
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The size of the system disk. Unit: GiB.
+	//
 	// example:
 	//
 	// 80
 	RootDiskSizeGib *int32 `json:"RootDiskSizeGib,omitempty" xml:"RootDiskSizeGib,omitempty"`
+	// The size of the data disk. Unit: GiB.
+	//
 	// example:
 	//
 	// 50
@@ -31638,7 +31858,10 @@ func (s *DescribeModificationPriceRequest) SetUserDiskSizeGib(v int32) *Describe
 }
 
 type DescribeModificationPriceResponseBody struct {
+	// The price details.
 	PriceInfo *DescribeModificationPriceResponseBodyPriceInfo `json:"PriceInfo,omitempty" xml:"PriceInfo,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 48174475-5EB2-5F99-A9E9-6F892D645****
@@ -31664,7 +31887,9 @@ func (s *DescribeModificationPriceResponseBody) SetRequestId(v string) *Describe
 }
 
 type DescribeModificationPriceResponseBodyPriceInfo struct {
-	Price *DescribeModificationPriceResponseBodyPriceInfoPrice   `json:"Price,omitempty" xml:"Price,omitempty" type:"Struct"`
+	// The price information.
+	Price *DescribeModificationPriceResponseBodyPriceInfoPrice `json:"Price,omitempty" xml:"Price,omitempty" type:"Struct"`
+	// The promotion rules.
 	Rules []*DescribeModificationPriceResponseBodyPriceInfoRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
@@ -31687,20 +31912,30 @@ func (s *DescribeModificationPriceResponseBodyPriceInfo) SetRules(v []*DescribeM
 }
 
 type DescribeModificationPriceResponseBodyPriceInfoPrice struct {
+	// The unit of currency (USD).
+	//
 	// example:
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// The discounted amount.
+	//
 	// example:
 	//
 	// 15.8
-	DiscountPrice *float32           `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
-	OrderLines    map[string]*string `json:"OrderLines,omitempty" xml:"OrderLines,omitempty"`
+	DiscountPrice *float32 `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
+	// The orders.
+	OrderLines map[string]*string `json:"OrderLines,omitempty" xml:"OrderLines,omitempty"`
+	// The original price.
+	//
 	// example:
 	//
 	// 79.0
-	OriginalPrice *float32                                                         `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
-	Promotions    []*DescribeModificationPriceResponseBodyPriceInfoPricePromotions `json:"Promotions,omitempty" xml:"Promotions,omitempty" type:"Repeated"`
+	OriginalPrice *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
+	// The promotion activities.
+	Promotions []*DescribeModificationPriceResponseBodyPriceInfoPricePromotions `json:"Promotions,omitempty" xml:"Promotions,omitempty" type:"Repeated"`
+	// The actual price. The actual price is the original price minus the discount.
+	//
 	// example:
 	//
 	// 63.2
@@ -31746,16 +31981,24 @@ func (s *DescribeModificationPriceResponseBodyPriceInfoPrice) SetTradePrice(v fl
 }
 
 type DescribeModificationPriceResponseBodyPriceInfoPricePromotions struct {
+	// The description of the promotion rule.
+	//
 	// example:
 	//
 	// test
-	OptionCode    *string `json:"OptionCode,omitempty" xml:"OptionCode,omitempty"`
+	OptionCode *string `json:"OptionCode,omitempty" xml:"OptionCode,omitempty"`
+	// The promotion description.
 	PromotionDesc *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
+	// The ID of the promotion activity.
+	//
 	// example:
 	//
 	// promo_option
-	PromotionId   *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	// The name of the promotion activity.
 	PromotionName *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
+	// Indicates whether an item is selected.
+	//
 	// example:
 	//
 	// false
@@ -31796,7 +32039,10 @@ func (s *DescribeModificationPriceResponseBodyPriceInfoPricePromotions) SetSelec
 }
 
 type DescribeModificationPriceResponseBodyPriceInfoRules struct {
+	// The rule description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The rule ID.
+	//
 	// example:
 	//
 	// 14806
@@ -37495,25 +37741,62 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 }
 
 type DescribeRenewalPriceRequest struct {
+	// The instance ID. The value you specify depends on the resource type (ResourceType) you\\"re querying the renewal price for.
+	//
+	// 	- When `ResourceType` is set to `Desktop`, you must provide the cloud computer ID as the value of `InstanceId`.
+	//
+	// 	- When `ResourceType` is set to `DesktopGroup`, you must provide the share ID as the value of `InstanceId`.
+	//
+	// 	- When `ResourceType` is set to `Bandwidth`, you must provide the ID of the premium bandwidth plan as the value of `InstanceId`.
+	//
 	// example:
 	//
 	// ecd-6ldllk9zxcpfhs****
-	InstanceId  *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The instance IDs. The value you specify depends on the resource type (ResourceType) you\\"re querying the renewal price for.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// The renewal duration. The valid values for this parameter depend on the value of `PeriodUnit`.
+	//
+	// 	- If you set `PeriodUnit` to `Month`, set the value of this parameter to 1, 2, 3, or 6.
+	//
+	// 	- If you set `PeriodUnit` to `Year`, set the value of this parameter to 1, 2, or 3.
+	//
+	// Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The unit of the renewal duration specified by `Period`.
+	//
+	// Valid values:
+	//
+	// 	- Month (default)
+	//
+	// 	- Year
+	//
 	// example:
 	//
 	// Month
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource type.
+	//
+	// Valid values:
+	//
+	// 	- Desktop (default): cloud computers.
+	//
+	// 	- Bandwidth: premium bandwidth plans.
+	//
+	// 	- DesktopGroup: cloud computer shares.
+	//
 	// example:
 	//
 	// Desktop
@@ -37559,7 +37842,10 @@ func (s *DescribeRenewalPriceRequest) SetResourceType(v string) *DescribeRenewal
 }
 
 type DescribeRenewalPriceResponseBody struct {
+	// The price details.
 	PriceInfo *DescribeRenewalPriceResponseBodyPriceInfo `json:"PriceInfo,omitempty" xml:"PriceInfo,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 72E47B1E-6B11-5A11-A27C-7A80F866****
@@ -37585,7 +37871,9 @@ func (s *DescribeRenewalPriceResponseBody) SetRequestId(v string) *DescribeRenew
 }
 
 type DescribeRenewalPriceResponseBodyPriceInfo struct {
-	Price *DescribeRenewalPriceResponseBodyPriceInfoPrice   `json:"Price,omitempty" xml:"Price,omitempty" type:"Struct"`
+	// The price.
+	Price *DescribeRenewalPriceResponseBodyPriceInfoPrice `json:"Price,omitempty" xml:"Price,omitempty" type:"Struct"`
+	// The promotion rules.
 	Rules []*DescribeRenewalPriceResponseBodyPriceInfoRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
@@ -37608,20 +37896,30 @@ func (s *DescribeRenewalPriceResponseBodyPriceInfo) SetRules(v []*DescribeRenewa
 }
 
 type DescribeRenewalPriceResponseBodyPriceInfoPrice struct {
+	// The unit of currency (USD).
+	//
 	// example:
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// The discounted amount.
+	//
 	// example:
 	//
 	// 15.8
-	DiscountPrice *float32           `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
-	OrderLines    map[string]*string `json:"OrderLines,omitempty" xml:"OrderLines,omitempty"`
+	DiscountPrice *float32 `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
+	// The orders.
+	OrderLines map[string]*string `json:"OrderLines,omitempty" xml:"OrderLines,omitempty"`
+	// The original price.
+	//
 	// example:
 	//
 	// 79.0
-	OriginalPrice *float32                                                    `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
-	Promotions    []*DescribeRenewalPriceResponseBodyPriceInfoPricePromotions `json:"Promotions,omitempty" xml:"Promotions,omitempty" type:"Repeated"`
+	OriginalPrice *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
+	// The promotions.
+	Promotions []*DescribeRenewalPriceResponseBodyPriceInfoPricePromotions `json:"Promotions,omitempty" xml:"Promotions,omitempty" type:"Repeated"`
+	// The actual price. The actual price is the original price minus the discount.
+	//
 	// example:
 	//
 	// 63.2
@@ -37667,16 +37965,24 @@ func (s *DescribeRenewalPriceResponseBodyPriceInfoPrice) SetTradePrice(v float32
 }
 
 type DescribeRenewalPriceResponseBodyPriceInfoPricePromotions struct {
+	// The description of the promotion rule.
+	//
 	// example:
 	//
 	// test
-	OptionCode    *string `json:"OptionCode,omitempty" xml:"OptionCode,omitempty"`
+	OptionCode *string `json:"OptionCode,omitempty" xml:"OptionCode,omitempty"`
+	// The promotion description.
 	PromotionDesc *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
+	// The promotion ID.
+	//
 	// example:
 	//
 	// promo_option
-	PromotionId   *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	// The promotion name.
 	PromotionName *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
+	// Indicates whether an item is selected.
+	//
 	// example:
 	//
 	// false
@@ -37717,7 +38023,10 @@ func (s *DescribeRenewalPriceResponseBodyPriceInfoPricePromotions) SetSelected(v
 }
 
 type DescribeRenewalPriceResponseBodyPriceInfoRules struct {
+	// The rule description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The rule ID.
+	//
 	// example:
 	//
 	// 29644
@@ -39076,7 +39385,8 @@ type DescribeTimerGroupResponseBodyDataConfigTimers struct {
 	// example:
 	//
 	// 10
-	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	Interval         *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	NotificationTime *int32 `json:"NotificationTime,omitempty" xml:"NotificationTime,omitempty"`
 	// The type of the scheduled disconnection task.
 	//
 	// Valid values:
@@ -39170,6 +39480,11 @@ func (s *DescribeTimerGroupResponseBodyDataConfigTimers) SetEnforce(v bool) *Des
 
 func (s *DescribeTimerGroupResponseBodyDataConfigTimers) SetInterval(v int32) *DescribeTimerGroupResponseBodyDataConfigTimers {
 	s.Interval = &v
+	return s
+}
+
+func (s *DescribeTimerGroupResponseBodyDataConfigTimers) SetNotificationTime(v int32) *DescribeTimerGroupResponseBodyDataConfigTimers {
+	s.NotificationTime = &v
 	return s
 }
 
@@ -43476,7 +43791,7 @@ func (s *GetCoordinateTicketResponse) SetBody(v *GetCoordinateTicketResponseBody
 }
 
 type GetDesktopGroupDetailRequest struct {
-	// The ID of the cloud computer pool.
+	// The ID of the cloud computer share.
 	//
 	// This parameter is required.
 	//
@@ -43513,7 +43828,7 @@ func (s *GetDesktopGroupDetailRequest) SetRegionId(v string) *GetDesktopGroupDet
 }
 
 type GetDesktopGroupDetailResponseBody struct {
-	// The information about the cloud computer pool.
+	// The cloud computers within the share.
 	Desktops *GetDesktopGroupDetailResponseBodyDesktops `json:"Desktops,omitempty" xml:"Desktops,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -43542,37 +43857,37 @@ func (s *GetDesktopGroupDetailResponseBody) SetRequestId(v string) *GetDesktopGr
 }
 
 type GetDesktopGroupDetailResponseBodyDesktops struct {
-	// Indicates whether cloud computers can be automatically created in the subscription cloud computer pool.
+	// Specifies whether to enable batch-based automatic creation of cloud computers in the subscription cloud computer share.
 	//
 	// Valid values:
 	//
-	// 	- 0: false
+	// 	- 0: enables batch-based automatic creation of cloud computers.
 	//
-	// 	- 1: true
+	// 	- 1: disables batch-based automatic creation of cloud computers.
 	//
 	// example:
 	//
 	// 1
 	AllowAutoSetup *int32 `json:"AllowAutoSetup,omitempty" xml:"AllowAutoSetup,omitempty"`
-	// The number of cloud computers that is allowed to be reserved in the pay-as-you-go cloud computer pool. Valid values:
+	// This parameter applies to pay-as-you-go cloud computer shares and specifies the number of standby cloud computers that can be reserved per cloud computer share. Valid values:
 	//
-	// 	- 0: does not allow the system to reserve cloud computers.
+	// 	- 0: does not reserve any cloud computers.
 	//
-	// 	- N: allows the system to reserve N cloud computers. (1≤ N ≤ 100)
+	// 	- N: reserves N cloud computers (1≤ N ≤ 100).
 	//
 	// example:
 	//
 	// 1
 	AllowBufferCount *int32 `json:"AllowBufferCount,omitempty" xml:"AllowBufferCount,omitempty"`
-	// The number of concurrent sessions that is allowed for each cloud computer in a multi-session cloud computer pool.
+	// The maximum number of concurrent sessions allowed per cloud computer within the multi-session many-to-many share.
 	//
 	// example:
 	//
 	// 1
 	BindAmount *int32 `json:"BindAmount,omitempty" xml:"BindAmount,omitempty"`
-	// 	- This parameter has different meanings based on the billing method of the cloud computer pool. For a subscription pool, this parameter indicates the number of cloud computers that you purchase in the pool. Valid values: 0 to 200.
+	// 	- The number of purchased cloud computers in the subscription share. Valid values: 0 to 200.
 	//
-	// 	- For a pay-as-you-go pool, this parameter indicates the minimum number of cloud computers that you can create in the pool. Default value: 1. Valid values: 0 to `MaxDesktopsCount`.
+	// 	- The minimum initial number of cloud computers created in the pay-as-you-go share. Default value: 1. Valid values: 0 to `MaxDesktopsCount`.
 	//
 	// example:
 	//
@@ -43620,13 +43935,13 @@ type GetDesktopGroupDetailResponseBodyDesktops struct {
 	//
 	// 80
 	DataDiskSize *string `json:"DataDiskSize,omitempty" xml:"DataDiskSize,omitempty"`
-	// The ID of the cloud computer pool.
+	// The ID of the cloud computer share.
 	//
 	// example:
 	//
 	// dg-3uiojcc0j4kh7****
 	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
-	// The name of the cloud computer pool that is queried.
+	// The name of the cloud computer share.
 	//
 	// example:
 	//
@@ -43644,7 +43959,7 @@ type GetDesktopGroupDetailResponseBodyDesktops struct {
 	//
 	// SIMPLE
 	DirectoryType *string `json:"DirectoryType,omitempty" xml:"DirectoryType,omitempty"`
-	// The time when the subscription cloud computer pool expires.
+	// The expiration date of the subscription cloud computer share.
 	//
 	// example:
 	//
@@ -43682,19 +43997,19 @@ type GetDesktopGroupDetailResponseBodyDesktops struct {
 	//
 	// 180000
 	KeepDuration *int64 `json:"KeepDuration,omitempty" xml:"KeepDuration,omitempty"`
-	// The load balancing policy of the multi-session cloud computer pool.
+	// The load balancing policy for the multi-session many-to-many share.
 	//
 	// Valid values:
 	//
-	// 	- 0: depth-first
+	// 	- 0: depth-first.
 	//
-	// 	- 1: breadth-first
+	// 	- 1: breadth-first.
 	//
 	// example:
 	//
 	// 0
 	LoadPolicy *int32 `json:"LoadPolicy,omitempty" xml:"LoadPolicy,omitempty"`
-	// The maximum number of cloud computers that can be housed in the pay-as-you-go cloud computer pool.
+	// The maximum number of cloud computers allowed in the pay-as-you-go cloud computer share.
 	//
 	// example:
 	//
@@ -43706,7 +44021,7 @@ type GetDesktopGroupDetailResponseBodyDesktops struct {
 	//
 	// 4096
 	Memory *int64 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// The maximum number of cloud computers that can be automatically created in the subscription cloud computer pool.
+	// The number of cloud computers created in the initial batch within the subscription cloud computer share.
 	//
 	// example:
 	//
@@ -43730,7 +44045,7 @@ type GetDesktopGroupDetailResponseBodyDesktops struct {
 	//
 	// cn-hangzhou+dir-990541****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The name of the office network in which the cloud computer pool resides.
+	// The name of the office network in which the cloud computer resides.
 	//
 	// example:
 	//
@@ -43764,13 +44079,13 @@ type GetDesktopGroupDetailResponseBodyDesktops struct {
 	//
 	// BundleDemo
 	OwnBundleName *string `json:"OwnBundleName,omitempty" xml:"OwnBundleName,omitempty"`
-	// The type of the cloud computer pool.
+	// The type of the cloud computer share.
 	//
 	// Valid values:
 	//
-	// 	- 0: individual (single session)
+	// 	- 0: a one-to-many share.
 	//
-	// 	- 1: shared (multiple sessions)
+	// 	- 1: a many-to-many share.
 	//
 	// example:
 	//
@@ -43788,21 +44103,21 @@ type GetDesktopGroupDetailResponseBodyDesktops struct {
 	//
 	// PrePaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The ID of the policy that is associated with the cloud computer pool.
+	// The ID of the applied policy.
 	//
 	// example:
 	//
 	// pg-9cktlowtxfl6****
 	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
-	// The IDs of policies that are associated with the cloud computer pool.
+	// The IDs of the applied policies.
 	PolicyGroupIds []*string `json:"PolicyGroupIds,omitempty" xml:"PolicyGroupIds,omitempty" type:"Repeated"`
-	// The name of the policy that is associated with the cloud computer pool.
+	// The name of the applied policy.
 	//
 	// example:
 	//
 	// test
 	PolicyGroupName *string `json:"PolicyGroupName,omitempty" xml:"PolicyGroupName,omitempty"`
-	// The names of policies that are associated with the cloud computer pool.
+	// The names of the applied policies.
 	PolicyGroupNames []*string `json:"PolicyGroupNames,omitempty" xml:"PolicyGroupNames,omitempty" type:"Repeated"`
 	// Indicates whether user data roaming is enabled.
 	//
@@ -43810,11 +44125,11 @@ type GetDesktopGroupDetailResponseBodyDesktops struct {
 	//
 	// true
 	ProfileFollowSwitch *bool `json:"ProfileFollowSwitch,omitempty" xml:"ProfileFollowSwitch,omitempty"`
-	// The threshold for the ratio of connected sessions. This parameter is the condition that triggers auto scaling in a multi-session cloud computer pool. To calculate the ratio of connected sessions, use the following formula:
+	// The threshold for the ratio of connected sessions, which triggers automatic scaling of cloud computers within the multi-session many-to-many share. To calculate the ratio of connected sessions, use the following formula:
 	//
-	// `Ratio of connected sessions = Number of connected sessions/(Total number of cloud computers × Maximum number of sessions allowed for each cloud computer) × 100%`
+	// `Ratio of connected sessions = Number of connected sessions/(Total number of cloud computers × Maximum number of sessions allowed for each cloud computer) × 100%`.
 	//
-	// If the ratio of connected sessions is greater than the specified value, new cloud computers are created. If the ratio of connected sessions is smaller than the specified value, idle cloud computers are deleted.
+	// If the session ratio exceeds the threshold, new cloud computers are provisioned. If it falls below the threshold, additional cloud computers are removed.
 	//
 	// example:
 	//
@@ -43846,17 +44161,17 @@ type GetDesktopGroupDetailResponseBodyDesktops struct {
 	//
 	// 0
 	ResetType *int32 `json:"ResetType,omitempty" xml:"ResetType,omitempty"`
-	// Details of the scheduled tasks.
+	// The scheduled tasks.
 	ScaleTimerInfos []*GetDesktopGroupDetailResponseBodyDesktopsScaleTimerInfos `json:"ScaleTimerInfos,omitempty" xml:"ScaleTimerInfos,omitempty" type:"Repeated"`
-	// The payment status of the cloud computer pool.
+	// The status of the cloud computer share.
 	//
 	// Valid values:
 	//
-	// 	- 0: unpaid
+	// 	- 0: The cloud computer share is unpaid.
 	//
-	// 	- 1: paid
+	// 	- 1: The cloud computer share is normal.
 	//
-	// 	- 2: overdue or expired
+	// 	- 2: The cloud computer share expired, or your account has an overdue payment.
 	//
 	// example:
 	//
@@ -43888,7 +44203,7 @@ type GetDesktopGroupDetailResponseBodyDesktops struct {
 	//
 	// abcd
 	TimingStrategyInfo *string `json:"TimingStrategyInfo,omitempty" xml:"TimingStrategyInfo,omitempty"`
-	// The version number of the cloud computer pool.
+	// The version number of the cloud computer share.
 	//
 	// example:
 	//
@@ -44175,13 +44490,13 @@ type GetDesktopGroupDetailResponseBodyDesktopsScaleTimerInfos struct {
 	//
 	// 600000
 	KeepDuration *int64 `json:"KeepDuration,omitempty" xml:"KeepDuration,omitempty"`
-	// The load balancing policy of the multi-session cloud computer pool.
+	// The load balancing policy for the multi-session many-to-many share.
 	//
 	// Valid values:
 	//
-	// 	- 0: depth-first
+	// 	- 0: depth-first.
 	//
-	// 	- 1: breadth-first
+	// 	- 1: breadth-first.
 	//
 	// example:
 	//
@@ -44199,11 +44514,11 @@ type GetDesktopGroupDetailResponseBodyDesktopsScaleTimerInfos struct {
 	//
 	// 1
 	MinResAmount *int32 `json:"MinResAmount,omitempty" xml:"MinResAmount,omitempty"`
-	// The threshold for the ratio of connected sessions. This parameter is the condition that triggers auto scaling in a multi-session cloud computer pool. To calculate the ratio of connected sessions, use the following formula:
+	// The threshold for the ratio of connected sessions, which triggers automatic scaling of cloud computers within the multi-session many-to-many share. To calculate the ratio of connected sessions, use the following formula:
 	//
-	// `Ratio of connected sessions = Number of connected sessions/(Total number of cloud computers × Maximum number of sessions allowed for each cloud computer) × 100%`
+	// `Ratio of connected sessions = Number of connected sessions/(Total number of cloud computers × Maximum number of sessions allowed for each cloud computer) × 100%`.
 	//
-	// If the ratio of connected sessions is greater than the specified value, new cloud computers are created. If the ratio of connected sessions is smaller than the specified value, idle cloud computers are deleted.
+	// If the session ratio exceeds the threshold, new cloud computers are provisioned. If it falls below the threshold, additional cloud computers are removed.
 	//
 	// example:
 	//
@@ -51125,67 +51440,55 @@ func (s *ModifyDesktopChargeTypeResponse) SetBody(v *ModifyDesktopChargeTypeResp
 }
 
 type ModifyDesktopGroupRequest struct {
-	// Specifies whether cloud computers can be automatically created in the subscription cloud computer pool. This parameter takes effect and is required only if you set `ChargeType` to `PrePaid`.
+	// Specifies whether to enable auto-creation of cloud computers for the subscription cloud computer share. You must specify this parameter when `ChargeType` is set to `PrePaid`.
 	//
 	// Valid values:
 	//
-	// 	- 0: false
+	// 	- 0: disable auto-creation of cloud computers.
 	//
-	// 	- 1: true
+	// 	- 1: enables auto-creation of cloud computers.
 	//
 	// example:
 	//
 	// 1
 	AllowAutoSetup *int32 `json:"AllowAutoSetup,omitempty" xml:"AllowAutoSetup,omitempty"`
-	// The number of cloud computers that can be reserved in the pay-as-you-go cloud computer pool. This parameter takes effect and is required only if you set `ChargeType` to `PostPaid`. Valid values:
+	// The maximum number of standby cloud computers that can be reserved within the pay-as-you-go cloud computer share. You must specify this property only when `ChargeType` is set to `PostPaid`. Valid values:
 	//
-	// 	- 0: does not allow the system to reserve cloud computers.
+	// 	- 0: does not reserve any cloud computer.
 	//
-	// 	- N: allows the system to reserve N cloud computers (1≤ N ≤ 100).
+	// 	- N: reserves N cloud computers (1≤ N ≤ 100).
 	//
-	// >  If you set this parameter to 0, the system must create and start cloud computers and then assign the cloud computers to end users when the end users request cloud computers. This process is time-consuming. To improve user experience, we recommend that you reserve a specific number of cloud computers.
+	// >  Setting this parameter to 0 means no cloud computers will be reserved within the cloud computer share. In this case, the system must create, start, and assign cloud computers to end users upon request, which can be time-consuming. To improve user experience, we recommend that you reserve a specific number of cloud computers.
 	//
 	// example:
 	//
 	// 1
 	AllowBufferCount *int32 `json:"AllowBufferCount,omitempty" xml:"AllowBufferCount,omitempty"`
-	// The number of concurrent sessions that is allowed for each cloud computer in a multi-session cloud computer pool.
+	// The number of concurrent sessions allowed for each cloud computer within the multi-session many-to-many share.
 	//
-	// >  This parameter is unavailable.
+	// >  This parameter is not publicly available.
 	//
 	// example:
 	//
 	// 1
 	BindAmount *int64 `json:"BindAmount,omitempty" xml:"BindAmount,omitempty"`
-	// 	- This parameter has different meanings based on the billing method of the cloud computer pool. For a subscription pool, this parameter specifies the number of cloud computers to purchase in the pool. Valid values: 0 to 200.
+	// 	- For subscription cloud computer shares, this parameter specifies the number of purchased cloud computers. Valid values: 0 to 200.
 	//
-	// 	- For a pay-as-you-go pool, this parameter specifies the minimum number of cloud computers to create in the pool. Default value: 1. Valid values: 0 to `MaxDesktopsCount`.
+	// 	- For pay-as-you-go cloud computer shares, this parameter specifies the minimum number of cloud computers created in the initial batch. Default value: 1. Valid values: 0 to `MaxDesktopsCount`.
 	//
 	// example:
 	//
 	// 5
 	BuyDesktopsCount *int32 `json:"BuyDesktopsCount,omitempty" xml:"BuyDesktopsCount,omitempty"`
-	// The role that uses the cloud computer pool.
+	// The type of the cloud computer share.
 	//
-	// >  This parameter is unavailable.
+	// >  This parameter is not publicly available.
 	//
 	// Valid values:
 	//
-	// 	- teacher
+	// 	- teacher: teacher-oriented.
 	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- student
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// 	- student: student-oriented.
 	//
 	// example:
 	//
@@ -51203,7 +51506,7 @@ type ModifyDesktopGroupRequest struct {
 	//
 	// 600000
 	ConnectDuration *int64 `json:"ConnectDuration,omitempty" xml:"ConnectDuration,omitempty"`
-	// The ID of the cloud computer pool.
+	// The ID of the cloud computer share.
 	//
 	// This parameter is required.
 	//
@@ -51211,7 +51514,7 @@ type ModifyDesktopGroupRequest struct {
 	//
 	// dg-2i8qxpv6t1a03****
 	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
-	// The name of the cloud computer pool.
+	// The name of the cloud computer share.
 	//
 	// example:
 	//
@@ -51255,27 +51558,27 @@ type ModifyDesktopGroupRequest struct {
 	//
 	// 1000
 	KeepDuration *int64 `json:"KeepDuration,omitempty" xml:"KeepDuration,omitempty"`
-	// The load balancing policy of the multi-session cloud computer pool.
+	// The load balancing policy for the multi-session many-to-many share.
 	//
-	// >  This parameter is unavailable.
+	// >  This parameter is not publicly available.
 	//
 	// Valid values:
 	//
-	// 	- 0: depth-first
+	// 	- 0: depth first.
 	//
-	// 	- 1: breadth-first
+	// 	- 1: breadth first.
 	//
 	// example:
 	//
 	// 0
 	LoadPolicy *int64 `json:"LoadPolicy,omitempty" xml:"LoadPolicy,omitempty"`
-	// The maximum number of cloud computers that can be housed in the pay-as-you-go cloud computer pool. Valid values: 0 to 500.
+	// The maximum number of cloud computers allowed in the pay-as-you-go cloud computer share. Valid values: 0 to 500.
 	//
 	// example:
 	//
 	// 10
 	MaxDesktopsCount *int32 `json:"MaxDesktopsCount,omitempty" xml:"MaxDesktopsCount,omitempty"`
-	// The maximum number of cloud computers that can be automatically created in the subscription cloud computer pool. This parameter takes effect and is required only if you set `ChargeType` to `PrePaid`. Default value: 1. Valid values: 0 to `MaxDesktopsCount`.
+	// The maximum number of auto-created cloud computers allowed in the subscription cloud computer share. You must specify this parameter when `ChargeType` is set to `PrePaid`. Default value: 1. Valid values: 0 to `MaxDesktopsCount`.
 	//
 	// example:
 	//
@@ -51303,13 +51606,13 @@ type ModifyDesktopGroupRequest struct {
 	//
 	// false
 	ProfileFollowSwitch *bool `json:"ProfileFollowSwitch,omitempty" xml:"ProfileFollowSwitch,omitempty"`
-	// The threshold for the ratio of connected sessions. This parameter indicates the condition that triggers auto scaling in a multi-session cloud computer pool. The ratio of connected sessions IS calculated by using the following formula:
+	// The threshold for the ratio of connected sessions, which triggers automatic scaling of cloud computers within the multi-session many-to-many share. To calculate the ratio of connected sessions, use the following formula:
 	//
 	// `Ratio of connected sessions = Number of connected sessions/(Total number of cloud computers × Maximum number of sessions allowed for each cloud computer) × 100%`
 	//
-	// If the ratio of connected sessions is greater than the specified value, new cloud computers are created. If the ratio of connected sessions is smaller than the specified value, idle cloud computers are deleted.
+	// If the session ratio exceeds the threshold, new cloud computers are provisioned. If it falls below the threshold, additional cloud computers are removed.
 	//
-	// >  This parameter is unavailable.
+	// >  This parameter is not publicly available.
 	//
 	// example:
 	//
@@ -56102,7 +56405,8 @@ type ModifyTimerGroupRequestConfigTimers struct {
 	// example:
 	//
 	// 10
-	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	Interval         *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	NotificationTime *int32 `json:"NotificationTime,omitempty" xml:"NotificationTime,omitempty"`
 	// The type of the scheduled operation. If you set TimerType to NoConnect, you can specify this parameter.
 	//
 	// Valid values:
@@ -56196,6 +56500,11 @@ func (s *ModifyTimerGroupRequestConfigTimers) SetEnforce(v bool) *ModifyTimerGro
 
 func (s *ModifyTimerGroupRequestConfigTimers) SetInterval(v int32) *ModifyTimerGroupRequestConfigTimers {
 	s.Interval = &v
+	return s
+}
+
+func (s *ModifyTimerGroupRequestConfigTimers) SetNotificationTime(v int32) *ModifyTimerGroupRequestConfigTimers {
+	s.NotificationTime = &v
 	return s
 }
 
@@ -65655,7 +65964,11 @@ func (client *Client) CreateCenterPolicy(request *CreateCenterPolicyRequest) (_r
 
 // Summary:
 //
-// Creates a cloud disk.
+// Creates an enterprise drive.
+//
+// Description:
+//
+// Before you call this operation, make sure that you understand the billing methods and pricing of Enterprise Drive Service (formerly Cloud Drive Service). For more information, see [Overview](https://help.aliyun.com/document_detail/386301.html).
 //
 // @param request - CreateCloudDriveServiceRequest
 //
@@ -65772,7 +66085,11 @@ func (client *Client) CreateCloudDriveServiceWithOptions(request *CreateCloudDri
 
 // Summary:
 //
-// Creates a cloud disk.
+// Creates an enterprise drive.
+//
+// Description:
+//
+// Before you call this operation, make sure that you understand the billing methods and pricing of Enterprise Drive Service (formerly Cloud Drive Service). For more information, see [Overview](https://help.aliyun.com/document_detail/386301.html).
 //
 // @param request - CreateCloudDriveServiceRequest
 //
@@ -70523,7 +70840,7 @@ func (client *Client) DescribeDesktopGroupSessions(request *DescribeDesktopGroup
 
 // Summary:
 //
-// Queries a list of desktop groups.
+// Queries cloud computer shares.
 //
 // @param request - DescribeDesktopGroupsRequest
 //
@@ -70648,7 +70965,7 @@ func (client *Client) DescribeDesktopGroupsWithOptions(request *DescribeDesktopG
 
 // Summary:
 //
-// Queries a list of desktop groups.
+// Queries cloud computer shares.
 //
 // @param request - DescribeDesktopGroupsRequest
 //
@@ -72716,6 +73033,10 @@ func (client *Client) DescribeKmsKeys(request *DescribeKmsKeysRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the price for changing the specifications of a monthly subscription cloud computer with unlimited hours or a premium bandwidth plan.
+//
 // @param request - DescribeModificationPriceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -72789,6 +73110,10 @@ func (client *Client) DescribeModificationPriceWithOptions(request *DescribeModi
 
 }
 
+// Summary:
+//
+// Queries the price for changing the specifications of a monthly subscription cloud computer with unlimited hours or a premium bandwidth plan.
+//
 // @param request - DescribeModificationPriceRequest
 //
 // @return DescribeModificationPriceResponse
@@ -73844,6 +74169,10 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the renewal price of an Alibaba Cloud Workspace service.
+//
 // @param request - DescribeRenewalPriceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -73913,6 +74242,10 @@ func (client *Client) DescribeRenewalPriceWithOptions(request *DescribeRenewalPr
 
 }
 
+// Summary:
+//
+// Queries the renewal price of an Alibaba Cloud Workspace service.
+//
 // @param request - DescribeRenewalPriceRequest
 //
 // @return DescribeRenewalPriceResponse
@@ -76130,7 +76463,7 @@ func (client *Client) GetCoordinateTicket(request *GetCoordinateTicketRequest) (
 
 // Summary:
 //
-// Queries the information about a cloud computer pool.
+// Queries the information about a cloud computer share.
 //
 // @param request - GetDesktopGroupDetailRequest
 //
@@ -76187,7 +76520,7 @@ func (client *Client) GetDesktopGroupDetailWithOptions(request *GetDesktopGroupD
 
 // Summary:
 //
-// Queries the information about a cloud computer pool.
+// Queries the information about a cloud computer share.
 //
 // @param request - GetDesktopGroupDetailRequest
 //
@@ -79152,11 +79485,11 @@ func (client *Client) ModifyDesktopChargeType(request *ModifyDesktopChargeTypeRe
 
 // Summary:
 //
-// Modifies the configurations of a cloud computer pool.
+// Modifies a cloud computer share.
 //
 // Description:
 //
-// After a cloud computer pool is created, the system creates a specific number of cloud computers in the pool based on the auto scaling policy and user connections. Cloud computers are created by using the same cloud computer template and security policy. You can modify the configurations of the pool, including the pool name, cloud computer template, and policy, in different business scenarios.
+// Once a cloud computer share is created, the system automatically provisions cloud computers according to the auto-scaling policy and user connections, all based on the same template and security policy. You can adjust the cloud computer share\\"s configurations, including the share name, template, and policy, for different business scenarios.
 //
 // @param request - ModifyDesktopGroupRequest
 //
@@ -79309,11 +79642,11 @@ func (client *Client) ModifyDesktopGroupWithOptions(request *ModifyDesktopGroupR
 
 // Summary:
 //
-// Modifies the configurations of a cloud computer pool.
+// Modifies a cloud computer share.
 //
 // Description:
 //
-// After a cloud computer pool is created, the system creates a specific number of cloud computers in the pool based on the auto scaling policy and user connections. Cloud computers are created by using the same cloud computer template and security policy. You can modify the configurations of the pool, including the pool name, cloud computer template, and policy, in different business scenarios.
+// Once a cloud computer share is created, the system automatically provisions cloud computers according to the auto-scaling policy and user connections, all based on the same template and security policy. You can adjust the cloud computer share\\"s configurations, including the share name, template, and policy, for different business scenarios.
 //
 // @param request - ModifyDesktopGroupRequest
 //
