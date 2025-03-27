@@ -2978,6 +2978,221 @@ func (s *BatchCreateRecordsResponse) SetBody(v *BatchCreateRecordsResponseBody) 
 	return s
 }
 
+type BatchCreateWafRulesRequest struct {
+	// A list of configurations for each rule, specifying detailed configurations for each rule.
+	Configs []*WafRuleConfig `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
+	// WAF rule type, with values:
+	//
+	// - **http_anti_scan**: Scan protection.
+	//
+	// - **http_bot**: Bots.
+	//
+	// example:
+	//
+	// http_anti_scan
+	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// Ruleset ID.
+	//
+	// example:
+	//
+	// 10000001
+	RulesetId *int64 `json:"RulesetId,omitempty" xml:"RulesetId,omitempty"`
+	// Shared configuration for multiple rules, specifying common attributes of multiple rules.
+	Shared *WafBatchRuleShared `json:"Shared,omitempty" xml:"Shared,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	//
+	// example:
+	//
+	// 1
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// Site version.
+	//
+	// example:
+	//
+	// 0
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+}
+
+func (s BatchCreateWafRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchCreateWafRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchCreateWafRulesRequest) SetConfigs(v []*WafRuleConfig) *BatchCreateWafRulesRequest {
+	s.Configs = v
+	return s
+}
+
+func (s *BatchCreateWafRulesRequest) SetPhase(v string) *BatchCreateWafRulesRequest {
+	s.Phase = &v
+	return s
+}
+
+func (s *BatchCreateWafRulesRequest) SetRulesetId(v int64) *BatchCreateWafRulesRequest {
+	s.RulesetId = &v
+	return s
+}
+
+func (s *BatchCreateWafRulesRequest) SetShared(v *WafBatchRuleShared) *BatchCreateWafRulesRequest {
+	s.Shared = v
+	return s
+}
+
+func (s *BatchCreateWafRulesRequest) SetSiteId(v int64) *BatchCreateWafRulesRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *BatchCreateWafRulesRequest) SetSiteVersion(v int32) *BatchCreateWafRulesRequest {
+	s.SiteVersion = &v
+	return s
+}
+
+type BatchCreateWafRulesShrinkRequest struct {
+	// A list of configurations for each rule, specifying detailed configurations for each rule.
+	ConfigsShrink *string `json:"Configs,omitempty" xml:"Configs,omitempty"`
+	// WAF rule type, with values:
+	//
+	// - **http_anti_scan**: Scan protection.
+	//
+	// - **http_bot**: Bots.
+	//
+	// example:
+	//
+	// http_anti_scan
+	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// Ruleset ID.
+	//
+	// example:
+	//
+	// 10000001
+	RulesetId *int64 `json:"RulesetId,omitempty" xml:"RulesetId,omitempty"`
+	// Shared configuration for multiple rules, specifying common attributes of multiple rules.
+	SharedShrink *string `json:"Shared,omitempty" xml:"Shared,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	//
+	// example:
+	//
+	// 1
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// Site version.
+	//
+	// example:
+	//
+	// 0
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+}
+
+func (s BatchCreateWafRulesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchCreateWafRulesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchCreateWafRulesShrinkRequest) SetConfigsShrink(v string) *BatchCreateWafRulesShrinkRequest {
+	s.ConfigsShrink = &v
+	return s
+}
+
+func (s *BatchCreateWafRulesShrinkRequest) SetPhase(v string) *BatchCreateWafRulesShrinkRequest {
+	s.Phase = &v
+	return s
+}
+
+func (s *BatchCreateWafRulesShrinkRequest) SetRulesetId(v int64) *BatchCreateWafRulesShrinkRequest {
+	s.RulesetId = &v
+	return s
+}
+
+func (s *BatchCreateWafRulesShrinkRequest) SetSharedShrink(v string) *BatchCreateWafRulesShrinkRequest {
+	s.SharedShrink = &v
+	return s
+}
+
+func (s *BatchCreateWafRulesShrinkRequest) SetSiteId(v int64) *BatchCreateWafRulesShrinkRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *BatchCreateWafRulesShrinkRequest) SetSiteVersion(v int32) *BatchCreateWafRulesShrinkRequest {
+	s.SiteVersion = &v
+	return s
+}
+
+type BatchCreateWafRulesResponseBody struct {
+	// ID of the WAF rule, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2850237.html) interface.
+	Ids []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
+	// Request ID.
+	//
+	// example:
+	//
+	// 36af3fcc-43d0-441c-86b1-428951dc8225
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2850233.html) interface.
+	//
+	// example:
+	//
+	// 10000001
+	RulesetId *int64 `json:"RulesetId,omitempty" xml:"RulesetId,omitempty"`
+}
+
+func (s BatchCreateWafRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchCreateWafRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BatchCreateWafRulesResponseBody) SetIds(v []*int64) *BatchCreateWafRulesResponseBody {
+	s.Ids = v
+	return s
+}
+
+func (s *BatchCreateWafRulesResponseBody) SetRequestId(v string) *BatchCreateWafRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *BatchCreateWafRulesResponseBody) SetRulesetId(v int64) *BatchCreateWafRulesResponseBody {
+	s.RulesetId = &v
+	return s
+}
+
+type BatchCreateWafRulesResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BatchCreateWafRulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s BatchCreateWafRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchCreateWafRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BatchCreateWafRulesResponse) SetHeaders(v map[string]*string) *BatchCreateWafRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BatchCreateWafRulesResponse) SetStatusCode(v int32) *BatchCreateWafRulesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BatchCreateWafRulesResponse) SetBody(v *BatchCreateWafRulesResponseBody) *BatchCreateWafRulesResponse {
+	s.Body = v
+	return s
+}
+
 type BatchDeleteKvRequest struct {
 	// The keys that you want to delete. You can delete a maximum of 10,000 key-value pairs at a time.
 	//
@@ -3249,19 +3464,19 @@ func (s *BatchDeleteKvWithHighCapacityResponse) SetBody(v *BatchDeleteKvWithHigh
 }
 
 type BatchGetExpressionFieldsRequest struct {
-	// The regular expressions.
+	// List of expressions.
 	//
 	// example:
 	//
 	// http_bot
 	Expressions []*BatchGetExpressionFieldsRequestExpressions `json:"Expressions,omitempty" xml:"Expressions,omitempty" type:"Repeated"`
-	// The WAF rule category.
+	// WAF Phase
 	//
 	// example:
 	//
 	// http_bot
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// The website ID.
+	// Site ID
 	//
 	// example:
 	//
@@ -3293,13 +3508,13 @@ func (s *BatchGetExpressionFieldsRequest) SetSiteId(v int64) *BatchGetExpression
 }
 
 type BatchGetExpressionFieldsRequestExpressions struct {
-	// The content of the regular expression.
+	// Content of the expression.
 	//
 	// example:
 	//
 	// ip.src eq 1.1.1.1
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
-	// The ID of the regular expression.
+	// The sequence number of the expression.
 	//
 	// example:
 	//
@@ -3326,19 +3541,19 @@ func (s *BatchGetExpressionFieldsRequestExpressions) SetId(v int64) *BatchGetExp
 }
 
 type BatchGetExpressionFieldsShrinkRequest struct {
-	// The regular expressions.
+	// List of expressions.
 	//
 	// example:
 	//
 	// http_bot
 	ExpressionsShrink *string `json:"Expressions,omitempty" xml:"Expressions,omitempty"`
-	// The WAF rule category.
+	// WAF Phase
 	//
 	// example:
 	//
 	// http_bot
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// The website ID.
+	// Site ID
 	//
 	// example:
 	//
@@ -3370,9 +3585,9 @@ func (s *BatchGetExpressionFieldsShrinkRequest) SetSiteId(v int64) *BatchGetExpr
 }
 
 type BatchGetExpressionFieldsResponseBody struct {
-	// The fields that match the regular expressions.
+	// List of match fields.
 	Fields []*BatchGetExpressionFieldsResponseBodyFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//
@@ -3399,9 +3614,9 @@ func (s *BatchGetExpressionFieldsResponseBody) SetRequestId(v string) *BatchGetE
 }
 
 type BatchGetExpressionFieldsResponseBodyFields struct {
-	// The fields that match the regular expression.
+	// List of match fields for a single expression.
 	Fields []*string `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
-	// The ID of the regular expression, which corresponds to the expression ID in the request parameter.
+	// ID of the expression, corresponding to the ID in the input parameters.
 	//
 	// example:
 	//
@@ -3781,6 +3996,195 @@ func (s *BatchPutKvWithHighCapacityResponse) SetStatusCode(v int32) *BatchPutKvW
 }
 
 func (s *BatchPutKvWithHighCapacityResponse) SetBody(v *BatchPutKvWithHighCapacityResponseBody) *BatchPutKvWithHighCapacityResponse {
+	s.Body = v
+	return s
+}
+
+type BatchUpdateWafRulesRequest struct {
+	// The configurations of rules.
+	Configs []*WafRuleConfig `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
+	// The WAF rule category.
+	//
+	// example:
+	//
+	// http_custom
+	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2850233.html) operation.
+	//
+	// example:
+	//
+	// 10000001
+	RulesetId *int64 `json:"RulesetId,omitempty" xml:"RulesetId,omitempty"`
+	// The configurations shared by multiple rules.
+	Shared *WafBatchRuleShared `json:"Shared,omitempty" xml:"Shared,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
+	// example:
+	//
+	// 1
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The version of the website.
+	//
+	// example:
+	//
+	// 0
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+}
+
+func (s BatchUpdateWafRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchUpdateWafRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchUpdateWafRulesRequest) SetConfigs(v []*WafRuleConfig) *BatchUpdateWafRulesRequest {
+	s.Configs = v
+	return s
+}
+
+func (s *BatchUpdateWafRulesRequest) SetPhase(v string) *BatchUpdateWafRulesRequest {
+	s.Phase = &v
+	return s
+}
+
+func (s *BatchUpdateWafRulesRequest) SetRulesetId(v int64) *BatchUpdateWafRulesRequest {
+	s.RulesetId = &v
+	return s
+}
+
+func (s *BatchUpdateWafRulesRequest) SetShared(v *WafBatchRuleShared) *BatchUpdateWafRulesRequest {
+	s.Shared = v
+	return s
+}
+
+func (s *BatchUpdateWafRulesRequest) SetSiteId(v int64) *BatchUpdateWafRulesRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *BatchUpdateWafRulesRequest) SetSiteVersion(v int32) *BatchUpdateWafRulesRequest {
+	s.SiteVersion = &v
+	return s
+}
+
+type BatchUpdateWafRulesShrinkRequest struct {
+	// The configurations of rules.
+	ConfigsShrink *string `json:"Configs,omitempty" xml:"Configs,omitempty"`
+	// The WAF rule category.
+	//
+	// example:
+	//
+	// http_custom
+	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2850233.html) operation.
+	//
+	// example:
+	//
+	// 10000001
+	RulesetId *int64 `json:"RulesetId,omitempty" xml:"RulesetId,omitempty"`
+	// The configurations shared by multiple rules.
+	SharedShrink *string `json:"Shared,omitempty" xml:"Shared,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
+	// example:
+	//
+	// 1
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The version of the website.
+	//
+	// example:
+	//
+	// 0
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+}
+
+func (s BatchUpdateWafRulesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchUpdateWafRulesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchUpdateWafRulesShrinkRequest) SetConfigsShrink(v string) *BatchUpdateWafRulesShrinkRequest {
+	s.ConfigsShrink = &v
+	return s
+}
+
+func (s *BatchUpdateWafRulesShrinkRequest) SetPhase(v string) *BatchUpdateWafRulesShrinkRequest {
+	s.Phase = &v
+	return s
+}
+
+func (s *BatchUpdateWafRulesShrinkRequest) SetRulesetId(v int64) *BatchUpdateWafRulesShrinkRequest {
+	s.RulesetId = &v
+	return s
+}
+
+func (s *BatchUpdateWafRulesShrinkRequest) SetSharedShrink(v string) *BatchUpdateWafRulesShrinkRequest {
+	s.SharedShrink = &v
+	return s
+}
+
+func (s *BatchUpdateWafRulesShrinkRequest) SetSiteId(v int64) *BatchUpdateWafRulesShrinkRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *BatchUpdateWafRulesShrinkRequest) SetSiteVersion(v int32) *BatchUpdateWafRulesShrinkRequest {
+	s.SiteVersion = &v
+	return s
+}
+
+type BatchUpdateWafRulesResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 36af3fcc-43d0-441c-86b1-428951dc8225
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s BatchUpdateWafRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchUpdateWafRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BatchUpdateWafRulesResponseBody) SetRequestId(v string) *BatchUpdateWafRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type BatchUpdateWafRulesResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BatchUpdateWafRulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s BatchUpdateWafRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchUpdateWafRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BatchUpdateWafRulesResponse) SetHeaders(v map[string]*string) *BatchUpdateWafRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BatchUpdateWafRulesResponse) SetStatusCode(v int32) *BatchUpdateWafRulesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BatchUpdateWafRulesResponse) SetBody(v *BatchUpdateWafRulesResponseBody) *BatchUpdateWafRulesResponse {
 	s.Body = v
 	return s
 }
@@ -4676,6 +5080,7 @@ type CreateCacheRuleRequest struct {
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
 	// Serve stale cache. When enabled, the node can still use the expired cached files to respond to user requests even if the origin server is unavailable. Value range:
 	//
 	// - on: Enable.
@@ -4837,6 +5242,11 @@ func (s *CreateCacheRuleRequest) SetRuleEnable(v string) *CreateCacheRuleRequest
 
 func (s *CreateCacheRuleRequest) SetRuleName(v string) *CreateCacheRuleRequest {
 	s.RuleName = &v
+	return s
+}
+
+func (s *CreateCacheRuleRequest) SetSequence(v int32) *CreateCacheRuleRequest {
+	s.Sequence = &v
 	return s
 }
 
@@ -5237,6 +5647,7 @@ type CreateCompressionRuleRequest struct {
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
 	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
 	//
 	// This parameter is required.
@@ -5293,6 +5704,11 @@ func (s *CreateCompressionRuleRequest) SetRuleEnable(v string) *CreateCompressio
 
 func (s *CreateCompressionRuleRequest) SetRuleName(v string) *CreateCompressionRuleRequest {
 	s.RuleName = &v
+	return s
+}
+
+func (s *CreateCompressionRuleRequest) SetSequence(v int32) *CreateCompressionRuleRequest {
+	s.Sequence = &v
 	return s
 }
 
@@ -6611,6 +7027,7 @@ type CreateHttpRequestHeaderModificationRuleRequest struct {
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
 	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
 	//
 	// This parameter is required.
@@ -6652,6 +7069,11 @@ func (s *CreateHttpRequestHeaderModificationRuleRequest) SetRuleEnable(v string)
 
 func (s *CreateHttpRequestHeaderModificationRuleRequest) SetRuleName(v string) *CreateHttpRequestHeaderModificationRuleRequest {
 	s.RuleName = &v
+	return s
+}
+
+func (s *CreateHttpRequestHeaderModificationRuleRequest) SetSequence(v int32) *CreateHttpRequestHeaderModificationRuleRequest {
+	s.Sequence = &v
 	return s
 }
 
@@ -6750,6 +7172,7 @@ type CreateHttpRequestHeaderModificationRuleShrinkRequest struct {
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
 	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
 	//
 	// This parameter is required.
@@ -6791,6 +7214,11 @@ func (s *CreateHttpRequestHeaderModificationRuleShrinkRequest) SetRuleEnable(v s
 
 func (s *CreateHttpRequestHeaderModificationRuleShrinkRequest) SetRuleName(v string) *CreateHttpRequestHeaderModificationRuleShrinkRequest {
 	s.RuleName = &v
+	return s
+}
+
+func (s *CreateHttpRequestHeaderModificationRuleShrinkRequest) SetSequence(v int32) *CreateHttpRequestHeaderModificationRuleShrinkRequest {
+	s.Sequence = &v
 	return s
 }
 
@@ -6897,6 +7325,7 @@ type CreateHttpResponseHeaderModificationRuleRequest struct {
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
 	// Site ID. You can obtain this by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
 	//
 	// This parameter is required.
@@ -6938,6 +7367,11 @@ func (s *CreateHttpResponseHeaderModificationRuleRequest) SetRuleEnable(v string
 
 func (s *CreateHttpResponseHeaderModificationRuleRequest) SetRuleName(v string) *CreateHttpResponseHeaderModificationRuleRequest {
 	s.RuleName = &v
+	return s
+}
+
+func (s *CreateHttpResponseHeaderModificationRuleRequest) SetSequence(v int32) *CreateHttpResponseHeaderModificationRuleRequest {
+	s.Sequence = &v
 	return s
 }
 
@@ -7036,6 +7470,7 @@ type CreateHttpResponseHeaderModificationRuleShrinkRequest struct {
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
 	// Site ID. You can obtain this by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
 	//
 	// This parameter is required.
@@ -7077,6 +7512,11 @@ func (s *CreateHttpResponseHeaderModificationRuleShrinkRequest) SetRuleEnable(v 
 
 func (s *CreateHttpResponseHeaderModificationRuleShrinkRequest) SetRuleName(v string) *CreateHttpResponseHeaderModificationRuleShrinkRequest {
 	s.RuleName = &v
+	return s
+}
+
+func (s *CreateHttpResponseHeaderModificationRuleShrinkRequest) SetSequence(v int32) *CreateHttpResponseHeaderModificationRuleShrinkRequest {
+	s.Sequence = &v
 	return s
 }
 
@@ -7275,6 +7715,7 @@ type CreateHttpsApplicationConfigurationRequest struct {
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
 	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
 	//
 	// This parameter is required.
@@ -7361,6 +7802,11 @@ func (s *CreateHttpsApplicationConfigurationRequest) SetRuleEnable(v string) *Cr
 
 func (s *CreateHttpsApplicationConfigurationRequest) SetRuleName(v string) *CreateHttpsApplicationConfigurationRequest {
 	s.RuleName = &v
+	return s
+}
+
+func (s *CreateHttpsApplicationConfigurationRequest) SetSequence(v int32) *CreateHttpsApplicationConfigurationRequest {
+	s.Sequence = &v
 	return s
 }
 
@@ -7521,6 +7967,7 @@ type CreateHttpsBasicConfigurationRequest struct {
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
 	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) API.
 	//
 	// This parameter is required.
@@ -7621,6 +8068,11 @@ func (s *CreateHttpsBasicConfigurationRequest) SetRuleEnable(v string) *CreateHt
 
 func (s *CreateHttpsBasicConfigurationRequest) SetRuleName(v string) *CreateHttpsBasicConfigurationRequest {
 	s.RuleName = &v
+	return s
+}
+
+func (s *CreateHttpsBasicConfigurationRequest) SetSequence(v int32) *CreateHttpsBasicConfigurationRequest {
+	s.Sequence = &v
 	return s
 }
 
@@ -7748,6 +8200,7 @@ type CreateImageTransformRequest struct {
 	//
 	// test
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
 	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
 	//
 	// This parameter is required.
@@ -7789,6 +8242,11 @@ func (s *CreateImageTransformRequest) SetRuleEnable(v string) *CreateImageTransf
 
 func (s *CreateImageTransformRequest) SetRuleName(v string) *CreateImageTransformRequest {
 	s.RuleName = &v
+	return s
+}
+
+func (s *CreateImageTransformRequest) SetSequence(v int32) *CreateImageTransformRequest {
+	s.Sequence = &v
 	return s
 }
 
@@ -9211,6 +9669,7 @@ type CreateNetworkOptimizationRequest struct {
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
 	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) API.
 	//
 	// This parameter is required.
@@ -9283,6 +9742,11 @@ func (s *CreateNetworkOptimizationRequest) SetRuleEnable(v string) *CreateNetwor
 
 func (s *CreateNetworkOptimizationRequest) SetRuleName(v string) *CreateNetworkOptimizationRequest {
 	s.RuleName = &v
+	return s
+}
+
+func (s *CreateNetworkOptimizationRequest) SetSequence(v int32) *CreateNetworkOptimizationRequest {
+	s.Sequence = &v
 	return s
 }
 
@@ -9539,7 +10003,7 @@ type CreateOriginPoolRequestOriginsAuthConf struct {
 	//
 	// example:
 	//
-	// LTAI5tGLgmPe1wFwpX86****
+	// yourAccessKeyID
 	AccessKey *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
 	// The type of authentication.
 	//
@@ -9565,7 +10029,7 @@ type CreateOriginPoolRequestOriginsAuthConf struct {
 	//
 	// example:
 	//
-	// bd8tjba5lXxxxxiRXFIBvoCIfJI****
+	// yourAccessKeySecret
 	SecretKey *string `json:"SecretKey,omitempty" xml:"SecretKey,omitempty"`
 	// The signature version required when the origin is AWS S3.
 	//
@@ -9906,6 +10370,7 @@ type CreateOriginRuleRequest struct {
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
 	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
 	//
 	// This parameter is required.
@@ -9992,6 +10457,11 @@ func (s *CreateOriginRuleRequest) SetRuleEnable(v string) *CreateOriginRuleReque
 
 func (s *CreateOriginRuleRequest) SetRuleName(v string) *CreateOriginRuleRequest {
 	s.RuleName = &v
+	return s
+}
+
+func (s *CreateOriginRuleRequest) SetSequence(v int32) *CreateOriginRuleRequest {
+	s.Sequence = &v
 	return s
 }
 
@@ -10892,6 +11362,7 @@ type CreateRedirectRuleRequest struct {
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
 	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
 	//
 	// This parameter is required.
@@ -10971,6 +11442,11 @@ func (s *CreateRedirectRuleRequest) SetRuleEnable(v string) *CreateRedirectRuleR
 
 func (s *CreateRedirectRuleRequest) SetRuleName(v string) *CreateRedirectRuleRequest {
 	s.RuleName = &v
+	return s
+}
+
+func (s *CreateRedirectRuleRequest) SetSequence(v int32) *CreateRedirectRuleRequest {
+	s.Sequence = &v
 	return s
 }
 
@@ -11120,6 +11596,7 @@ type CreateRewriteUrlRuleRequest struct {
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
 	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
 	//
 	// This parameter is required.
@@ -11177,6 +11654,11 @@ func (s *CreateRewriteUrlRuleRequest) SetRuleEnable(v string) *CreateRewriteUrlR
 
 func (s *CreateRewriteUrlRuleRequest) SetRuleName(v string) *CreateRewriteUrlRuleRequest {
 	s.RuleName = &v
+	return s
+}
+
+func (s *CreateRewriteUrlRuleRequest) SetSequence(v int32) *CreateRewriteUrlRuleRequest {
+	s.Sequence = &v
 	return s
 }
 
@@ -14492,6 +14974,332 @@ func (s *CreateUserDeliveryTaskResponse) SetBody(v *CreateUserDeliveryTaskRespon
 	return s
 }
 
+type CreateWafRuleRequest struct {
+	// Rule configuration, specifying the detailed configuration for creating a rule.
+	Config *WafRuleConfig `json:"Config,omitempty" xml:"Config,omitempty"`
+	// WAF operation phase.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http_custom
+	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// Ruleset ID.
+	//
+	// example:
+	//
+	// 10000001
+	RulesetId *int64 `json:"RulesetId,omitempty" xml:"RulesetId,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// Site version.
+	//
+	// example:
+	//
+	// 0
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+}
+
+func (s CreateWafRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWafRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWafRuleRequest) SetConfig(v *WafRuleConfig) *CreateWafRuleRequest {
+	s.Config = v
+	return s
+}
+
+func (s *CreateWafRuleRequest) SetPhase(v string) *CreateWafRuleRequest {
+	s.Phase = &v
+	return s
+}
+
+func (s *CreateWafRuleRequest) SetRulesetId(v int64) *CreateWafRuleRequest {
+	s.RulesetId = &v
+	return s
+}
+
+func (s *CreateWafRuleRequest) SetSiteId(v int64) *CreateWafRuleRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *CreateWafRuleRequest) SetSiteVersion(v int32) *CreateWafRuleRequest {
+	s.SiteVersion = &v
+	return s
+}
+
+type CreateWafRuleShrinkRequest struct {
+	// Rule configuration, specifying the detailed configuration for creating a rule.
+	ConfigShrink *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// WAF operation phase.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http_custom
+	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// Ruleset ID.
+	//
+	// example:
+	//
+	// 10000001
+	RulesetId *int64 `json:"RulesetId,omitempty" xml:"RulesetId,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// Site version.
+	//
+	// example:
+	//
+	// 0
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+}
+
+func (s CreateWafRuleShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWafRuleShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWafRuleShrinkRequest) SetConfigShrink(v string) *CreateWafRuleShrinkRequest {
+	s.ConfigShrink = &v
+	return s
+}
+
+func (s *CreateWafRuleShrinkRequest) SetPhase(v string) *CreateWafRuleShrinkRequest {
+	s.Phase = &v
+	return s
+}
+
+func (s *CreateWafRuleShrinkRequest) SetRulesetId(v int64) *CreateWafRuleShrinkRequest {
+	s.RulesetId = &v
+	return s
+}
+
+func (s *CreateWafRuleShrinkRequest) SetSiteId(v int64) *CreateWafRuleShrinkRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *CreateWafRuleShrinkRequest) SetSiteVersion(v int32) *CreateWafRuleShrinkRequest {
+	s.SiteVersion = &v
+	return s
+}
+
+type CreateWafRuleResponseBody struct {
+	// The ID of the WAF rule, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2850237.html) API.
+	//
+	// example:
+	//
+	// 20000001
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Request ID.
+	//
+	// example:
+	//
+	// 36af3fcc-43d0-441c-86b1-428951dc8225
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2850233.html) interface.
+	//
+	// example:
+	//
+	// 10000001
+	RulesetId *int64 `json:"RulesetId,omitempty" xml:"RulesetId,omitempty"`
+}
+
+func (s CreateWafRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWafRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWafRuleResponseBody) SetId(v int64) *CreateWafRuleResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateWafRuleResponseBody) SetRequestId(v string) *CreateWafRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateWafRuleResponseBody) SetRulesetId(v int64) *CreateWafRuleResponseBody {
+	s.RulesetId = &v
+	return s
+}
+
+type CreateWafRuleResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateWafRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateWafRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWafRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWafRuleResponse) SetHeaders(v map[string]*string) *CreateWafRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateWafRuleResponse) SetStatusCode(v int32) *CreateWafRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateWafRuleResponse) SetBody(v *CreateWafRuleResponseBody) *CreateWafRuleResponse {
+	s.Body = v
+	return s
+}
+
+type CreateWafRulesetRequest struct {
+	// Ruleset name.
+	//
+	// example:
+	//
+	// example
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// WAF operation phase.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http_custom
+	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// Site version.
+	//
+	// example:
+	//
+	// 0
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+}
+
+func (s CreateWafRulesetRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWafRulesetRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWafRulesetRequest) SetName(v string) *CreateWafRulesetRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateWafRulesetRequest) SetPhase(v string) *CreateWafRulesetRequest {
+	s.Phase = &v
+	return s
+}
+
+func (s *CreateWafRulesetRequest) SetSiteId(v int64) *CreateWafRulesetRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *CreateWafRulesetRequest) SetSiteVersion(v int32) *CreateWafRulesetRequest {
+	s.SiteVersion = &v
+	return s
+}
+
+type CreateWafRulesetResponseBody struct {
+	// Ruleset ID.
+	//
+	// example:
+	//
+	// 10000001
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Request ID.
+	//
+	// example:
+	//
+	// 36af3fcc-43d0-441c-86b1-428951dc8225
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateWafRulesetResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWafRulesetResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWafRulesetResponseBody) SetId(v int64) *CreateWafRulesetResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateWafRulesetResponseBody) SetRequestId(v string) *CreateWafRulesetResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateWafRulesetResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateWafRulesetResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateWafRulesetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWafRulesetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWafRulesetResponse) SetHeaders(v map[string]*string) *CreateWafRulesetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateWafRulesetResponse) SetStatusCode(v int32) *CreateWafRulesetResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateWafRulesetResponse) SetBody(v *CreateWafRulesetResponseBody) *CreateWafRulesetResponse {
+	s.Body = v
+	return s
+}
+
 type CreateWaitingRoomRequest struct {
 	// The name of the custom cookie.
 	//
@@ -17424,6 +18232,248 @@ func (s *DeleteNetworkOptimizationResponse) SetBody(v *DeleteNetworkOptimization
 	return s
 }
 
+type DeleteOriginCaCertificateRequest struct {
+	// The certificate ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// babaabcd****
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456789****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s DeleteOriginCaCertificateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteOriginCaCertificateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteOriginCaCertificateRequest) SetId(v string) *DeleteOriginCaCertificateRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *DeleteOriginCaCertificateRequest) SetSiteId(v int64) *DeleteOriginCaCertificateRequest {
+	s.SiteId = &v
+	return s
+}
+
+type DeleteOriginCaCertificateResponseBody struct {
+	// The certificate ID.
+	//
+	// example:
+	//
+	// babaabcd****
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// C370DAF1-C838-4288-A1A0-9A87633D248E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The website ID.
+	//
+	// example:
+	//
+	// 123456789****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The website name.
+	//
+	// example:
+	//
+	// example.com
+	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+}
+
+func (s DeleteOriginCaCertificateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteOriginCaCertificateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteOriginCaCertificateResponseBody) SetId(v string) *DeleteOriginCaCertificateResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *DeleteOriginCaCertificateResponseBody) SetRequestId(v string) *DeleteOriginCaCertificateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteOriginCaCertificateResponseBody) SetSiteId(v int64) *DeleteOriginCaCertificateResponseBody {
+	s.SiteId = &v
+	return s
+}
+
+func (s *DeleteOriginCaCertificateResponseBody) SetSiteName(v string) *DeleteOriginCaCertificateResponseBody {
+	s.SiteName = &v
+	return s
+}
+
+type DeleteOriginCaCertificateResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteOriginCaCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteOriginCaCertificateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteOriginCaCertificateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteOriginCaCertificateResponse) SetHeaders(v map[string]*string) *DeleteOriginCaCertificateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteOriginCaCertificateResponse) SetStatusCode(v int32) *DeleteOriginCaCertificateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteOriginCaCertificateResponse) SetBody(v *DeleteOriginCaCertificateResponseBody) *DeleteOriginCaCertificateResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteOriginClientCertificateRequest struct {
+	// The certificate ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// babaabcd****
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456789****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s DeleteOriginClientCertificateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteOriginClientCertificateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteOriginClientCertificateRequest) SetId(v string) *DeleteOriginClientCertificateRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *DeleteOriginClientCertificateRequest) SetSiteId(v int64) *DeleteOriginClientCertificateRequest {
+	s.SiteId = &v
+	return s
+}
+
+type DeleteOriginClientCertificateResponseBody struct {
+	// The certificate ID.
+	//
+	// example:
+	//
+	// babaabcd****
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 36af3fcc-43d0-441c-86b1-428951dc8225
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The website ID.
+	//
+	// example:
+	//
+	// 123456789****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The website name.
+	//
+	// example:
+	//
+	// example.com
+	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+}
+
+func (s DeleteOriginClientCertificateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteOriginClientCertificateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteOriginClientCertificateResponseBody) SetId(v string) *DeleteOriginClientCertificateResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *DeleteOriginClientCertificateResponseBody) SetRequestId(v string) *DeleteOriginClientCertificateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteOriginClientCertificateResponseBody) SetSiteId(v int64) *DeleteOriginClientCertificateResponseBody {
+	s.SiteId = &v
+	return s
+}
+
+func (s *DeleteOriginClientCertificateResponseBody) SetSiteName(v string) *DeleteOriginClientCertificateResponseBody {
+	s.SiteName = &v
+	return s
+}
+
+type DeleteOriginClientCertificateResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteOriginClientCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteOriginClientCertificateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteOriginClientCertificateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteOriginClientCertificateResponse) SetHeaders(v map[string]*string) *DeleteOriginClientCertificateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteOriginClientCertificateResponse) SetStatusCode(v int32) *DeleteOriginClientCertificateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteOriginClientCertificateResponse) SetBody(v *DeleteOriginClientCertificateResponseBody) *DeleteOriginClientCertificateResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteOriginPoolRequest struct {
 	// The ID of the origin address pool, which can be obtained by calling the [ListOriginPools](https://help.aliyun.com/document_detail/2863947.html) API.
 	//
@@ -18774,6 +19824,127 @@ func (s *DeleteSiteDeliveryTaskResponse) SetBody(v *DeleteSiteDeliveryTaskRespon
 	return s
 }
 
+type DeleteSiteOriginClientCertificateRequest struct {
+	// The certificate ID on ESA.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// babaabcd****
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456789****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s DeleteSiteOriginClientCertificateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSiteOriginClientCertificateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSiteOriginClientCertificateRequest) SetId(v string) *DeleteSiteOriginClientCertificateRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *DeleteSiteOriginClientCertificateRequest) SetSiteId(v int64) *DeleteSiteOriginClientCertificateRequest {
+	s.SiteId = &v
+	return s
+}
+
+type DeleteSiteOriginClientCertificateResponseBody struct {
+	// The certificate ID on ESA.
+	//
+	// example:
+	//
+	// babaabcd****
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
+	// example:
+	//
+	// 123456789****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The website name.
+	//
+	// example:
+	//
+	// example.com
+	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+}
+
+func (s DeleteSiteOriginClientCertificateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSiteOriginClientCertificateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSiteOriginClientCertificateResponseBody) SetId(v string) *DeleteSiteOriginClientCertificateResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *DeleteSiteOriginClientCertificateResponseBody) SetRequestId(v string) *DeleteSiteOriginClientCertificateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteSiteOriginClientCertificateResponseBody) SetSiteId(v int64) *DeleteSiteOriginClientCertificateResponseBody {
+	s.SiteId = &v
+	return s
+}
+
+func (s *DeleteSiteOriginClientCertificateResponseBody) SetSiteName(v string) *DeleteSiteOriginClientCertificateResponseBody {
+	s.SiteName = &v
+	return s
+}
+
+type DeleteSiteOriginClientCertificateResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteSiteOriginClientCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteSiteOriginClientCertificateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSiteOriginClientCertificateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSiteOriginClientCertificateResponse) SetHeaders(v map[string]*string) *DeleteSiteOriginClientCertificateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteSiteOriginClientCertificateResponse) SetStatusCode(v int32) *DeleteSiteOriginClientCertificateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteSiteOriginClientCertificateResponse) SetBody(v *DeleteSiteOriginClientCertificateResponseBody) *DeleteSiteOriginClientCertificateResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteUserDeliveryTaskRequest struct {
 	// The name of the delivery task.
 	//
@@ -18845,6 +20016,202 @@ func (s *DeleteUserDeliveryTaskResponse) SetStatusCode(v int32) *DeleteUserDeliv
 }
 
 func (s *DeleteUserDeliveryTaskResponse) SetBody(v *DeleteUserDeliveryTaskResponseBody) *DeleteUserDeliveryTaskResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteWafRuleRequest struct {
+	// ID of the WAF rule, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2850237.html) interface.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20000001
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// Site version.
+	//
+	// example:
+	//
+	// 0
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+}
+
+func (s DeleteWafRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteWafRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteWafRuleRequest) SetId(v int64) *DeleteWafRuleRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *DeleteWafRuleRequest) SetSiteId(v int64) *DeleteWafRuleRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *DeleteWafRuleRequest) SetSiteVersion(v int32) *DeleteWafRuleRequest {
+	s.SiteVersion = &v
+	return s
+}
+
+type DeleteWafRuleResponseBody struct {
+	// Request ID.
+	//
+	// example:
+	//
+	// 36af3fcc-43d0-441c-86b1-428951dc8225
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteWafRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteWafRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteWafRuleResponseBody) SetRequestId(v string) *DeleteWafRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteWafRuleResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteWafRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteWafRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteWafRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteWafRuleResponse) SetHeaders(v map[string]*string) *DeleteWafRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteWafRuleResponse) SetStatusCode(v int32) *DeleteWafRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteWafRuleResponse) SetBody(v *DeleteWafRuleResponseBody) *DeleteWafRuleResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteWafRulesetRequest struct {
+	// ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2850233.html) interface.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10000001
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	//
+	// example:
+	//
+	// 1
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// Site version.
+	//
+	// example:
+	//
+	// 0
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+}
+
+func (s DeleteWafRulesetRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteWafRulesetRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteWafRulesetRequest) SetId(v int64) *DeleteWafRulesetRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *DeleteWafRulesetRequest) SetSiteId(v int64) *DeleteWafRulesetRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *DeleteWafRulesetRequest) SetSiteVersion(v int32) *DeleteWafRulesetRequest {
+	s.SiteVersion = &v
+	return s
+}
+
+type DeleteWafRulesetResponseBody struct {
+	// Request ID.
+	//
+	// example:
+	//
+	// 36af3fcc-43d0-441c-86b1-428951dc8225
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteWafRulesetResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteWafRulesetResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteWafRulesetResponseBody) SetRequestId(v string) *DeleteWafRulesetResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteWafRulesetResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteWafRulesetResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteWafRulesetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteWafRulesetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteWafRulesetResponse) SetHeaders(v map[string]*string) *DeleteWafRulesetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteWafRulesetResponse) SetStatusCode(v int32) *DeleteWafRulesetResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteWafRulesetResponse) SetBody(v *DeleteWafRulesetResponseBody) *DeleteWafRulesetResponse {
 	s.Body = v
 	return s
 }
@@ -21540,15 +22907,15 @@ func (s *DisableCustomScenePolicyResponse) SetBody(v *DisableCustomScenePolicyRe
 }
 
 type EditSiteWafSettingsRequest struct {
-	// The WAF configuration of the website in the JSON format.
+	// WAF configuration information for the site, passed in JSON format.
 	Settings *WafSiteSettings `json:"Settings,omitempty" xml:"Settings,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
 	//
 	// example:
 	//
 	// 1
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The version of the website.
+	// Site version.
 	//
 	// example:
 	//
@@ -21580,15 +22947,15 @@ func (s *EditSiteWafSettingsRequest) SetSiteVersion(v int32) *EditSiteWafSetting
 }
 
 type EditSiteWafSettingsShrinkRequest struct {
-	// The WAF configuration of the website in the JSON format.
+	// WAF configuration information for the site, passed in JSON format.
 	SettingsShrink *string `json:"Settings,omitempty" xml:"Settings,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
 	//
 	// example:
 	//
 	// 1
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The version of the website.
+	// Site version.
 	//
 	// example:
 	//
@@ -21620,7 +22987,7 @@ func (s *EditSiteWafSettingsShrinkRequest) SetSiteVersion(v int32) *EditSiteWafS
 }
 
 type EditSiteWafSettingsResponseBody struct {
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//
@@ -27420,6 +28787,7 @@ type GetIPv6ResponseBody struct {
 	//
 	// on
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The request ID.
 	//
 	// example:
@@ -27438,6 +28806,11 @@ func (s GetIPv6ResponseBody) GoString() string {
 
 func (s *GetIPv6ResponseBody) SetEnable(v string) *GetIPv6ResponseBody {
 	s.Enable = &v
+	return s
+}
+
+func (s *GetIPv6ResponseBody) SetRegion(v string) *GetIPv6ResponseBody {
+	s.Region = &v
 	return s
 }
 
@@ -29437,6 +30810,771 @@ func (s *GetNetworkOptimizationResponse) SetBody(v *GetNetworkOptimizationRespon
 	return s
 }
 
+type GetOriginCaCertificateRequest struct {
+	// The certificate ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// babaabcd****
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456789****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s GetOriginCaCertificateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOriginCaCertificateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetOriginCaCertificateRequest) SetId(v string) *GetOriginCaCertificateRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *GetOriginCaCertificateRequest) SetSiteId(v int64) *GetOriginCaCertificateRequest {
+	s.SiteId = &v
+	return s
+}
+
+type GetOriginCaCertificateResponseBody struct {
+	// The certificate content.
+	//
+	// example:
+	//
+	// -----BEGIN CERTIFICATE-----
+	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 3558df77-8a7a-4060-a900-2d7949403836
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The certificate information.
+	Result *GetOriginCaCertificateResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// The website ID.
+	//
+	// example:
+	//
+	// 123456789****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The website name.
+	//
+	// example:
+	//
+	// example.com
+	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	// The status of the certificate.
+	//
+	// example:
+	//
+	// OK
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetOriginCaCertificateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOriginCaCertificateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetOriginCaCertificateResponseBody) SetCertificate(v string) *GetOriginCaCertificateResponseBody {
+	s.Certificate = &v
+	return s
+}
+
+func (s *GetOriginCaCertificateResponseBody) SetRequestId(v string) *GetOriginCaCertificateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetOriginCaCertificateResponseBody) SetResult(v *GetOriginCaCertificateResponseBodyResult) *GetOriginCaCertificateResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *GetOriginCaCertificateResponseBody) SetSiteId(v int64) *GetOriginCaCertificateResponseBody {
+	s.SiteId = &v
+	return s
+}
+
+func (s *GetOriginCaCertificateResponseBody) SetSiteName(v string) *GetOriginCaCertificateResponseBody {
+	s.SiteName = &v
+	return s
+}
+
+func (s *GetOriginCaCertificateResponseBody) SetStatus(v string) *GetOriginCaCertificateResponseBody {
+	s.Status = &v
+	return s
+}
+
+type GetOriginCaCertificateResponseBodyResult struct {
+	// The Common Name of the certificate.
+	//
+	// example:
+	//
+	// www.example.com
+	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	// The time when the certificate was created.
+	//
+	// example:
+	//
+	// 2024-03-05 18:24:04
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The SHA-256 fingerprint of the certificate.
+	//
+	// example:
+	//
+	// 1dc5fc9af4eead2570c70d94b416130baeb6d4429b51fd3557379588456a****
+	FingerprintSha256 *string `json:"FingerprintSha256,omitempty" xml:"FingerprintSha256,omitempty"`
+	// The certificate ID.
+	//
+	// example:
+	//
+	// babaabcd****
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The certificate authority (CA) that issued the certificate.
+	//
+	// example:
+	//
+	// GlobalSign nv-sa
+	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	// The certificate name.
+	//
+	// example:
+	//
+	// yourCertName
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The time when the certificate expires.
+	//
+	// example:
+	//
+	// 2024-03-31 02:08:00
+	NotAfter *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
+	// The time when the certificate takes effect.
+	//
+	// example:
+	//
+	// 2023-03-31 02:08:00
+	NotBefore *string `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
+	// The public-key algorithm of the certificate.
+	//
+	// example:
+	//
+	// RSA
+	PubkeyAlgorithm *string `json:"PubkeyAlgorithm,omitempty" xml:"PubkeyAlgorithm,omitempty"`
+	// The Subject Alternative Name (SAN) of the certificate.
+	//
+	// example:
+	//
+	// www.example.com,*.example.com
+	SAN *string `json:"SAN,omitempty" xml:"SAN,omitempty"`
+	// The serial number of the certificate.
+	//
+	// example:
+	//
+	// babaded901474b9693acf530e0fb1d**
+	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// The signature algorithm of the certificate.
+	//
+	// example:
+	//
+	// SHA256-RSA
+	SignatureAlgorithm *string `json:"SignatureAlgorithm,omitempty" xml:"SignatureAlgorithm,omitempty"`
+	// The status of the certificate.
+	//
+	// example:
+	//
+	// OK
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The certificate type.
+	//
+	// example:
+	//
+	// upload
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The time when the certificate was updated.
+	//
+	// example:
+	//
+	// 2024-03-05 18:24:04
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s GetOriginCaCertificateResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOriginCaCertificateResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetOriginCaCertificateResponseBodyResult) SetCommonName(v string) *GetOriginCaCertificateResponseBodyResult {
+	s.CommonName = &v
+	return s
+}
+
+func (s *GetOriginCaCertificateResponseBodyResult) SetCreateTime(v string) *GetOriginCaCertificateResponseBodyResult {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetOriginCaCertificateResponseBodyResult) SetFingerprintSha256(v string) *GetOriginCaCertificateResponseBodyResult {
+	s.FingerprintSha256 = &v
+	return s
+}
+
+func (s *GetOriginCaCertificateResponseBodyResult) SetId(v string) *GetOriginCaCertificateResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *GetOriginCaCertificateResponseBodyResult) SetIssuer(v string) *GetOriginCaCertificateResponseBodyResult {
+	s.Issuer = &v
+	return s
+}
+
+func (s *GetOriginCaCertificateResponseBodyResult) SetName(v string) *GetOriginCaCertificateResponseBodyResult {
+	s.Name = &v
+	return s
+}
+
+func (s *GetOriginCaCertificateResponseBodyResult) SetNotAfter(v string) *GetOriginCaCertificateResponseBodyResult {
+	s.NotAfter = &v
+	return s
+}
+
+func (s *GetOriginCaCertificateResponseBodyResult) SetNotBefore(v string) *GetOriginCaCertificateResponseBodyResult {
+	s.NotBefore = &v
+	return s
+}
+
+func (s *GetOriginCaCertificateResponseBodyResult) SetPubkeyAlgorithm(v string) *GetOriginCaCertificateResponseBodyResult {
+	s.PubkeyAlgorithm = &v
+	return s
+}
+
+func (s *GetOriginCaCertificateResponseBodyResult) SetSAN(v string) *GetOriginCaCertificateResponseBodyResult {
+	s.SAN = &v
+	return s
+}
+
+func (s *GetOriginCaCertificateResponseBodyResult) SetSerialNumber(v string) *GetOriginCaCertificateResponseBodyResult {
+	s.SerialNumber = &v
+	return s
+}
+
+func (s *GetOriginCaCertificateResponseBodyResult) SetSignatureAlgorithm(v string) *GetOriginCaCertificateResponseBodyResult {
+	s.SignatureAlgorithm = &v
+	return s
+}
+
+func (s *GetOriginCaCertificateResponseBodyResult) SetStatus(v string) *GetOriginCaCertificateResponseBodyResult {
+	s.Status = &v
+	return s
+}
+
+func (s *GetOriginCaCertificateResponseBodyResult) SetType(v string) *GetOriginCaCertificateResponseBodyResult {
+	s.Type = &v
+	return s
+}
+
+func (s *GetOriginCaCertificateResponseBodyResult) SetUpdateTime(v string) *GetOriginCaCertificateResponseBodyResult {
+	s.UpdateTime = &v
+	return s
+}
+
+type GetOriginCaCertificateResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetOriginCaCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetOriginCaCertificateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOriginCaCertificateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetOriginCaCertificateResponse) SetHeaders(v map[string]*string) *GetOriginCaCertificateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetOriginCaCertificateResponse) SetStatusCode(v int32) *GetOriginCaCertificateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetOriginCaCertificateResponse) SetBody(v *GetOriginCaCertificateResponseBody) *GetOriginCaCertificateResponse {
+	s.Body = v
+	return s
+}
+
+type GetOriginClientCertificateRequest struct {
+	// The certificate ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// babaabcd****
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456789****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s GetOriginClientCertificateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOriginClientCertificateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetOriginClientCertificateRequest) SetId(v string) *GetOriginClientCertificateRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *GetOriginClientCertificateRequest) SetSiteId(v int64) *GetOriginClientCertificateRequest {
+	s.SiteId = &v
+	return s
+}
+
+type GetOriginClientCertificateResponseBody struct {
+	// The certificate content.
+	//
+	// example:
+	//
+	// -----BEGIN CERTIFICATE-----
+	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The certificate information.
+	Result *GetOriginClientCertificateResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// The website ID.
+	//
+	// example:
+	//
+	// 123456789****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The website name.
+	//
+	// example:
+	//
+	// example.com
+	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	// The status of the certificate.
+	//
+	// example:
+	//
+	// OK
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetOriginClientCertificateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOriginClientCertificateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetOriginClientCertificateResponseBody) SetCertificate(v string) *GetOriginClientCertificateResponseBody {
+	s.Certificate = &v
+	return s
+}
+
+func (s *GetOriginClientCertificateResponseBody) SetRequestId(v string) *GetOriginClientCertificateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetOriginClientCertificateResponseBody) SetResult(v *GetOriginClientCertificateResponseBodyResult) *GetOriginClientCertificateResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *GetOriginClientCertificateResponseBody) SetSiteId(v int64) *GetOriginClientCertificateResponseBody {
+	s.SiteId = &v
+	return s
+}
+
+func (s *GetOriginClientCertificateResponseBody) SetSiteName(v string) *GetOriginClientCertificateResponseBody {
+	s.SiteName = &v
+	return s
+}
+
+func (s *GetOriginClientCertificateResponseBody) SetStatus(v string) *GetOriginClientCertificateResponseBody {
+	s.Status = &v
+	return s
+}
+
+type GetOriginClientCertificateResponseBodyResult struct {
+	// The Common Name of the certificate.
+	//
+	// example:
+	//
+	// www.example.com
+	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	// The time when the certificate was created.
+	//
+	// example:
+	//
+	// 2020-05-12 02:00:53
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The SHA-256 fingerprint of the certificate.
+	//
+	// example:
+	//
+	// 1dc5fc9af4eead2570c70d94b416130baeb6d4429b51fd3557379588456a****
+	FingerprintSha256 *string `json:"FingerprintSha256,omitempty" xml:"FingerprintSha256,omitempty"`
+	// The domain names to associate.
+	Hostnames []*string `json:"Hostnames,omitempty" xml:"Hostnames,omitempty" type:"Repeated"`
+	// The certificate ID.
+	//
+	// example:
+	//
+	// babaabcd****
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The certificate authority (CA) that issued the certificate.
+	//
+	// example:
+	//
+	// DigiCert
+	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	// The certificate name.
+	//
+	// example:
+	//
+	// yourCertName
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The time when the certificate expires.
+	//
+	// example:
+	//
+	// 2024-03-31 02:08:00
+	NotAfter *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
+	// The time when the certificate takes effect.
+	//
+	// example:
+	//
+	// 2023-03-31 02:08:00
+	NotBefore *string `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
+	// The public-key algorithm of the certificate.
+	//
+	// example:
+	//
+	// RSA
+	PubkeyAlgorithm *string `json:"PubkeyAlgorithm,omitempty" xml:"PubkeyAlgorithm,omitempty"`
+	// The Subject Alternative Name (SAN) of the certificate.
+	//
+	// example:
+	//
+	// www.example.com,*.example.com
+	SAN *string `json:"SAN,omitempty" xml:"SAN,omitempty"`
+	// The serial number of the certificate.
+	//
+	// example:
+	//
+	// babaded901474b9693acf530e0fb1d**
+	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// The signature algorithm of the certificate.
+	//
+	// example:
+	//
+	// SHA256-RSA
+	SignatureAlgorithm *string `json:"SignatureAlgorithm,omitempty" xml:"SignatureAlgorithm,omitempty"`
+	// The status of the certificate.
+	//
+	// example:
+	//
+	// OK
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The certificate type.
+	//
+	// example:
+	//
+	// upload
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The time when the certificate was updated.
+	//
+	// example:
+	//
+	// 2024-03-05 18:24:04
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s GetOriginClientCertificateResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOriginClientCertificateResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetOriginClientCertificateResponseBodyResult) SetCommonName(v string) *GetOriginClientCertificateResponseBodyResult {
+	s.CommonName = &v
+	return s
+}
+
+func (s *GetOriginClientCertificateResponseBodyResult) SetCreateTime(v string) *GetOriginClientCertificateResponseBodyResult {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetOriginClientCertificateResponseBodyResult) SetFingerprintSha256(v string) *GetOriginClientCertificateResponseBodyResult {
+	s.FingerprintSha256 = &v
+	return s
+}
+
+func (s *GetOriginClientCertificateResponseBodyResult) SetHostnames(v []*string) *GetOriginClientCertificateResponseBodyResult {
+	s.Hostnames = v
+	return s
+}
+
+func (s *GetOriginClientCertificateResponseBodyResult) SetId(v string) *GetOriginClientCertificateResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *GetOriginClientCertificateResponseBodyResult) SetIssuer(v string) *GetOriginClientCertificateResponseBodyResult {
+	s.Issuer = &v
+	return s
+}
+
+func (s *GetOriginClientCertificateResponseBodyResult) SetName(v string) *GetOriginClientCertificateResponseBodyResult {
+	s.Name = &v
+	return s
+}
+
+func (s *GetOriginClientCertificateResponseBodyResult) SetNotAfter(v string) *GetOriginClientCertificateResponseBodyResult {
+	s.NotAfter = &v
+	return s
+}
+
+func (s *GetOriginClientCertificateResponseBodyResult) SetNotBefore(v string) *GetOriginClientCertificateResponseBodyResult {
+	s.NotBefore = &v
+	return s
+}
+
+func (s *GetOriginClientCertificateResponseBodyResult) SetPubkeyAlgorithm(v string) *GetOriginClientCertificateResponseBodyResult {
+	s.PubkeyAlgorithm = &v
+	return s
+}
+
+func (s *GetOriginClientCertificateResponseBodyResult) SetSAN(v string) *GetOriginClientCertificateResponseBodyResult {
+	s.SAN = &v
+	return s
+}
+
+func (s *GetOriginClientCertificateResponseBodyResult) SetSerialNumber(v string) *GetOriginClientCertificateResponseBodyResult {
+	s.SerialNumber = &v
+	return s
+}
+
+func (s *GetOriginClientCertificateResponseBodyResult) SetSignatureAlgorithm(v string) *GetOriginClientCertificateResponseBodyResult {
+	s.SignatureAlgorithm = &v
+	return s
+}
+
+func (s *GetOriginClientCertificateResponseBodyResult) SetStatus(v string) *GetOriginClientCertificateResponseBodyResult {
+	s.Status = &v
+	return s
+}
+
+func (s *GetOriginClientCertificateResponseBodyResult) SetType(v string) *GetOriginClientCertificateResponseBodyResult {
+	s.Type = &v
+	return s
+}
+
+func (s *GetOriginClientCertificateResponseBodyResult) SetUpdateTime(v string) *GetOriginClientCertificateResponseBodyResult {
+	s.UpdateTime = &v
+	return s
+}
+
+type GetOriginClientCertificateResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetOriginClientCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetOriginClientCertificateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOriginClientCertificateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetOriginClientCertificateResponse) SetHeaders(v map[string]*string) *GetOriginClientCertificateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetOriginClientCertificateResponse) SetStatusCode(v int32) *GetOriginClientCertificateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetOriginClientCertificateResponse) SetBody(v *GetOriginClientCertificateResponseBody) *GetOriginClientCertificateResponse {
+	s.Body = v
+	return s
+}
+
+type GetOriginClientCertificateHostnamesRequest struct {
+	// The ID of the certificate.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// babaabcd****
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456789****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s GetOriginClientCertificateHostnamesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOriginClientCertificateHostnamesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetOriginClientCertificateHostnamesRequest) SetId(v string) *GetOriginClientCertificateHostnamesRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *GetOriginClientCertificateHostnamesRequest) SetSiteId(v int64) *GetOriginClientCertificateHostnamesRequest {
+	s.SiteId = &v
+	return s
+}
+
+type GetOriginClientCertificateHostnamesResponseBody struct {
+	// The domain names to associate.
+	Hostnames []*string `json:"Hostnames,omitempty" xml:"Hostnames,omitempty" type:"Repeated"`
+	// The ID of the client certificate.
+	//
+	// example:
+	//
+	// babaabcd****
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE73368
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The website ID.
+	//
+	// example:
+	//
+	// 123456789****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The website name.
+	//
+	// example:
+	//
+	// example.com
+	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+}
+
+func (s GetOriginClientCertificateHostnamesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOriginClientCertificateHostnamesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetOriginClientCertificateHostnamesResponseBody) SetHostnames(v []*string) *GetOriginClientCertificateHostnamesResponseBody {
+	s.Hostnames = v
+	return s
+}
+
+func (s *GetOriginClientCertificateHostnamesResponseBody) SetId(v string) *GetOriginClientCertificateHostnamesResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *GetOriginClientCertificateHostnamesResponseBody) SetRequestId(v string) *GetOriginClientCertificateHostnamesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetOriginClientCertificateHostnamesResponseBody) SetSiteId(v int64) *GetOriginClientCertificateHostnamesResponseBody {
+	s.SiteId = &v
+	return s
+}
+
+func (s *GetOriginClientCertificateHostnamesResponseBody) SetSiteName(v string) *GetOriginClientCertificateHostnamesResponseBody {
+	s.SiteName = &v
+	return s
+}
+
+type GetOriginClientCertificateHostnamesResponse struct {
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetOriginClientCertificateHostnamesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetOriginClientCertificateHostnamesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOriginClientCertificateHostnamesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetOriginClientCertificateHostnamesResponse) SetHeaders(v map[string]*string) *GetOriginClientCertificateHostnamesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetOriginClientCertificateHostnamesResponse) SetStatusCode(v int32) *GetOriginClientCertificateHostnamesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetOriginClientCertificateHostnamesResponse) SetBody(v *GetOriginClientCertificateHostnamesResponseBody) *GetOriginClientCertificateHostnamesResponse {
+	s.Body = v
+	return s
+}
+
 type GetOriginPoolRequest struct {
 	// The ID of the origin pool, which can be obtained by calling the [ListOriginPools](https://help.aliyun.com/document_detail/2863947.html) interface.
 	//
@@ -29698,7 +31836,7 @@ type GetOriginPoolResponseBodyOriginsAuthConf struct {
 	//
 	// example:
 	//
-	// LTAI5tSpj224hDfLmXEx****
+	// yourAccessKeyID
 	AccessKey *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
 	// The type of authentication:
 	//
@@ -29724,7 +31862,7 @@ type GetOriginPoolResponseBodyOriginsAuthConf struct {
 	//
 	// example:
 	//
-	// tzXL8ub4GtjkjZOJhS****
+	// yourAccessKeySecret
 	SecretKey *string `json:"SecretKey,omitempty" xml:"SecretKey,omitempty"`
 	// The signature version required when the origin is an AWS S3.
 	//
@@ -33700,6 +35838,321 @@ func (s *GetSiteNameExclusiveResponse) SetBody(v *GetSiteNameExclusiveResponseBo
 	return s
 }
 
+type GetSiteOriginClientCertificateRequest struct {
+	// The certificate ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// babaabcd****
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456789****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s GetSiteOriginClientCertificateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSiteOriginClientCertificateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSiteOriginClientCertificateRequest) SetId(v string) *GetSiteOriginClientCertificateRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *GetSiteOriginClientCertificateRequest) SetSiteId(v int64) *GetSiteOriginClientCertificateRequest {
+	s.SiteId = &v
+	return s
+}
+
+type GetSiteOriginClientCertificateResponseBody struct {
+	// The certificate content.
+	//
+	// example:
+	//
+	// -----BEGIN CERTIFICATE-----
+	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
+	// Request ID.
+	//
+	// example:
+	//
+	// 34DCBC8A-****-****-****-6DAA11D7DDBD
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The certificate information.
+	Result *GetSiteOriginClientCertificateResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
+	// example:
+	//
+	// 123456789****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The website name.
+	//
+	// example:
+	//
+	// example.com
+	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	// The status of the certificate.
+	//
+	// example:
+	//
+	// OK
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetSiteOriginClientCertificateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSiteOriginClientCertificateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSiteOriginClientCertificateResponseBody) SetCertificate(v string) *GetSiteOriginClientCertificateResponseBody {
+	s.Certificate = &v
+	return s
+}
+
+func (s *GetSiteOriginClientCertificateResponseBody) SetRequestId(v string) *GetSiteOriginClientCertificateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetSiteOriginClientCertificateResponseBody) SetResult(v *GetSiteOriginClientCertificateResponseBodyResult) *GetSiteOriginClientCertificateResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *GetSiteOriginClientCertificateResponseBody) SetSiteId(v int64) *GetSiteOriginClientCertificateResponseBody {
+	s.SiteId = &v
+	return s
+}
+
+func (s *GetSiteOriginClientCertificateResponseBody) SetSiteName(v string) *GetSiteOriginClientCertificateResponseBody {
+	s.SiteName = &v
+	return s
+}
+
+func (s *GetSiteOriginClientCertificateResponseBody) SetStatus(v string) *GetSiteOriginClientCertificateResponseBody {
+	s.Status = &v
+	return s
+}
+
+type GetSiteOriginClientCertificateResponseBodyResult struct {
+	// The Common Name of the certificate.
+	//
+	// example:
+	//
+	// www.example.com
+	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	// The time when the certificate was created.
+	//
+	// example:
+	//
+	// 2024-06-24 07:48:51
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The SHA-256 fingerprint of the certificate.
+	//
+	// example:
+	//
+	// 1dc5fc9af4eead2570c70d94b416130baeb6d4429b51fd3557379588456a****
+	FingerprintSha256 *string `json:"FingerprintSha256,omitempty" xml:"FingerprintSha256,omitempty"`
+	// The certificate ID.
+	//
+	// example:
+	//
+	// babaabcd****
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The certificate authority (CA) that issued the certificate.
+	//
+	// example:
+	//
+	// DigiCert
+	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	// The certificate name.
+	//
+	// example:
+	//
+	// yourCertName
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The time when the certificate expires.
+	//
+	// example:
+	//
+	// 2024-03-31 02:08:00
+	NotAfter *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
+	// The time when the certificate takes effect.
+	//
+	// example:
+	//
+	// 2023-03-31 02:08:00
+	NotBefore *string `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
+	// The public-key algorithm of the certificate.
+	//
+	// example:
+	//
+	// RSA
+	PubkeyAlgorithm *string `json:"PubkeyAlgorithm,omitempty" xml:"PubkeyAlgorithm,omitempty"`
+	// The Subject Alternative Name (SAN) of the certificate.
+	//
+	// example:
+	//
+	// www.example.com,*.example.com
+	SAN *string `json:"SAN,omitempty" xml:"SAN,omitempty"`
+	// The serial number of the certificate.
+	//
+	// example:
+	//
+	// babab022c5e9b27bf9c64d7f4b16****
+	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// The signature algorithm of the certificate.
+	//
+	// example:
+	//
+	// SHA256-RSA
+	SignatureAlgorithm *string `json:"SignatureAlgorithm,omitempty" xml:"SignatureAlgorithm,omitempty"`
+	// The status of the certificate.
+	//
+	// example:
+	//
+	// OK
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The certificate type.
+	//
+	// example:
+	//
+	// upload
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The time when the certificate was updated.
+	//
+	// example:
+	//
+	// 2024-07-20 06:18:42
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s GetSiteOriginClientCertificateResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSiteOriginClientCertificateResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetSiteOriginClientCertificateResponseBodyResult) SetCommonName(v string) *GetSiteOriginClientCertificateResponseBodyResult {
+	s.CommonName = &v
+	return s
+}
+
+func (s *GetSiteOriginClientCertificateResponseBodyResult) SetCreateTime(v string) *GetSiteOriginClientCertificateResponseBodyResult {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetSiteOriginClientCertificateResponseBodyResult) SetFingerprintSha256(v string) *GetSiteOriginClientCertificateResponseBodyResult {
+	s.FingerprintSha256 = &v
+	return s
+}
+
+func (s *GetSiteOriginClientCertificateResponseBodyResult) SetId(v string) *GetSiteOriginClientCertificateResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *GetSiteOriginClientCertificateResponseBodyResult) SetIssuer(v string) *GetSiteOriginClientCertificateResponseBodyResult {
+	s.Issuer = &v
+	return s
+}
+
+func (s *GetSiteOriginClientCertificateResponseBodyResult) SetName(v string) *GetSiteOriginClientCertificateResponseBodyResult {
+	s.Name = &v
+	return s
+}
+
+func (s *GetSiteOriginClientCertificateResponseBodyResult) SetNotAfter(v string) *GetSiteOriginClientCertificateResponseBodyResult {
+	s.NotAfter = &v
+	return s
+}
+
+func (s *GetSiteOriginClientCertificateResponseBodyResult) SetNotBefore(v string) *GetSiteOriginClientCertificateResponseBodyResult {
+	s.NotBefore = &v
+	return s
+}
+
+func (s *GetSiteOriginClientCertificateResponseBodyResult) SetPubkeyAlgorithm(v string) *GetSiteOriginClientCertificateResponseBodyResult {
+	s.PubkeyAlgorithm = &v
+	return s
+}
+
+func (s *GetSiteOriginClientCertificateResponseBodyResult) SetSAN(v string) *GetSiteOriginClientCertificateResponseBodyResult {
+	s.SAN = &v
+	return s
+}
+
+func (s *GetSiteOriginClientCertificateResponseBodyResult) SetSerialNumber(v string) *GetSiteOriginClientCertificateResponseBodyResult {
+	s.SerialNumber = &v
+	return s
+}
+
+func (s *GetSiteOriginClientCertificateResponseBodyResult) SetSignatureAlgorithm(v string) *GetSiteOriginClientCertificateResponseBodyResult {
+	s.SignatureAlgorithm = &v
+	return s
+}
+
+func (s *GetSiteOriginClientCertificateResponseBodyResult) SetStatus(v string) *GetSiteOriginClientCertificateResponseBodyResult {
+	s.Status = &v
+	return s
+}
+
+func (s *GetSiteOriginClientCertificateResponseBodyResult) SetType(v string) *GetSiteOriginClientCertificateResponseBodyResult {
+	s.Type = &v
+	return s
+}
+
+func (s *GetSiteOriginClientCertificateResponseBodyResult) SetUpdateTime(v string) *GetSiteOriginClientCertificateResponseBodyResult {
+	s.UpdateTime = &v
+	return s
+}
+
+type GetSiteOriginClientCertificateResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSiteOriginClientCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetSiteOriginClientCertificateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSiteOriginClientCertificateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSiteOriginClientCertificateResponse) SetHeaders(v map[string]*string) *GetSiteOriginClientCertificateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSiteOriginClientCertificateResponse) SetStatusCode(v int32) *GetSiteOriginClientCertificateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetSiteOriginClientCertificateResponse) SetBody(v *GetSiteOriginClientCertificateResponseBody) *GetSiteOriginClientCertificateResponse {
+	s.Body = v
+	return s
+}
+
 type GetSitePauseRequest struct {
 	// The website ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
 	//
@@ -33791,14 +36244,19 @@ func (s *GetSitePauseResponse) SetBody(v *GetSitePauseResponseBody) *GetSitePaus
 }
 
 type GetSiteWafSettingsRequest struct {
+	// Specifies the configuration path. If not provided, all configurations will be retrieved.
+	//
+	// example:
+	//
+	// bot_management
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
 	//
 	// example:
 	//
 	// 1
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The version of the website.
+	// Site version.
 	//
 	// example:
 	//
@@ -33830,13 +36288,13 @@ func (s *GetSiteWafSettingsRequest) SetSiteVersion(v int32) *GetSiteWafSettingsR
 }
 
 type GetSiteWafSettingsResponseBody struct {
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The WAF configurations of the website.
+	// Details of site WAF configuration.
 	Settings *WafSiteSettings `json:"Settings,omitempty" xml:"Settings,omitempty"`
 }
 
@@ -35202,6 +37660,339 @@ func (s *GetWafQuotaResponse) SetStatusCode(v int32) *GetWafQuotaResponse {
 }
 
 func (s *GetWafQuotaResponse) SetBody(v *GetWafQuotaResponseBody) *GetWafQuotaResponse {
+	s.Body = v
+	return s
+}
+
+type GetWafRuleRequest struct {
+	// The ID of the WAF rule, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2850237.html) interface.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20000001
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s GetWafRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWafRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetWafRuleRequest) SetId(v int64) *GetWafRuleRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *GetWafRuleRequest) SetSiteId(v int64) *GetWafRuleRequest {
+	s.SiteId = &v
+	return s
+}
+
+type GetWafRuleResponseBody struct {
+	// Rule configuration.
+	Config *WafRuleConfig `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The ID of the WAF rule, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2850237.html) interface.
+	//
+	// example:
+	//
+	// 2000001
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Rule name.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// WAF operation phase.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http_custom
+	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// The position of the rule in the rule set.
+	//
+	// example:
+	//
+	// 1
+	Position *int64 `json:"Position,omitempty" xml:"Position,omitempty"`
+	// Request ID.
+	//
+	// example:
+	//
+	// 36af3fcc-43d0-441c-86b1-428951dc8225
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Rule status.
+	//
+	// example:
+	//
+	// on
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The last modified time of the rule.
+	//
+	// example:
+	//
+	// 2024-01-01T00:00:00Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s GetWafRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWafRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetWafRuleResponseBody) SetConfig(v *WafRuleConfig) *GetWafRuleResponseBody {
+	s.Config = v
+	return s
+}
+
+func (s *GetWafRuleResponseBody) SetId(v int64) *GetWafRuleResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *GetWafRuleResponseBody) SetName(v string) *GetWafRuleResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *GetWafRuleResponseBody) SetPhase(v string) *GetWafRuleResponseBody {
+	s.Phase = &v
+	return s
+}
+
+func (s *GetWafRuleResponseBody) SetPosition(v int64) *GetWafRuleResponseBody {
+	s.Position = &v
+	return s
+}
+
+func (s *GetWafRuleResponseBody) SetRequestId(v string) *GetWafRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetWafRuleResponseBody) SetStatus(v string) *GetWafRuleResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *GetWafRuleResponseBody) SetUpdateTime(v string) *GetWafRuleResponseBody {
+	s.UpdateTime = &v
+	return s
+}
+
+type GetWafRuleResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetWafRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetWafRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWafRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetWafRuleResponse) SetHeaders(v map[string]*string) *GetWafRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetWafRuleResponse) SetStatusCode(v int32) *GetWafRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetWafRuleResponse) SetBody(v *GetWafRuleResponseBody) *GetWafRuleResponse {
+	s.Body = v
+	return s
+}
+
+type GetWafRulesetRequest struct {
+	// The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2850233.html) interface.
+	//
+	// example:
+	//
+	// 10000001
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The WAF operation phase, specifying the phase of the ruleset to query.
+	//
+	// example:
+	//
+	// http_bot
+	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	//
+	// example:
+	//
+	// 1
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s GetWafRulesetRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWafRulesetRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetWafRulesetRequest) SetId(v int64) *GetWafRulesetRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *GetWafRulesetRequest) SetPhase(v string) *GetWafRulesetRequest {
+	s.Phase = &v
+	return s
+}
+
+func (s *GetWafRulesetRequest) SetSiteId(v int64) *GetWafRulesetRequest {
+	s.SiteId = &v
+	return s
+}
+
+type GetWafRulesetResponseBody struct {
+	// Ruleset ID.
+	//
+	// example:
+	//
+	// 10000001
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Ruleset name.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The WAF operation phase applicable to the ruleset.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http_bot
+	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// Request ID.
+	//
+	// example:
+	//
+	// 36af3fcc-43d0-441c-86b1-428951dc8225
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// List of rule configurations in the ruleset.
+	Rules []*WafRuleConfig `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	// Shared configurations for the rules in the ruleset.
+	Shared *WafBatchRuleShared `json:"Shared,omitempty" xml:"Shared,omitempty"`
+	// Ruleset status.
+	//
+	// example:
+	//
+	// on
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The last modified time of the ruleset.
+	//
+	// example:
+	//
+	// 2024-01-01T00:00:00Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s GetWafRulesetResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWafRulesetResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetWafRulesetResponseBody) SetId(v int64) *GetWafRulesetResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *GetWafRulesetResponseBody) SetName(v string) *GetWafRulesetResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *GetWafRulesetResponseBody) SetPhase(v string) *GetWafRulesetResponseBody {
+	s.Phase = &v
+	return s
+}
+
+func (s *GetWafRulesetResponseBody) SetRequestId(v string) *GetWafRulesetResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetWafRulesetResponseBody) SetRules(v []*WafRuleConfig) *GetWafRulesetResponseBody {
+	s.Rules = v
+	return s
+}
+
+func (s *GetWafRulesetResponseBody) SetShared(v *WafBatchRuleShared) *GetWafRulesetResponseBody {
+	s.Shared = v
+	return s
+}
+
+func (s *GetWafRulesetResponseBody) SetStatus(v string) *GetWafRulesetResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *GetWafRulesetResponseBody) SetUpdateTime(v string) *GetWafRulesetResponseBody {
+	s.UpdateTime = &v
+	return s
+}
+
+type GetWafRulesetResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetWafRulesetResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetWafRulesetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWafRulesetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetWafRulesetResponse) SetHeaders(v map[string]*string) *GetWafRulesetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetWafRulesetResponse) SetStatusCode(v int32) *GetWafRulesetResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetWafRulesetResponse) SetBody(v *GetWafRulesetResponseBody) *GetWafRulesetResponse {
 	s.Body = v
 	return s
 }
@@ -44001,13 +46792,13 @@ func (s *ListLoadBalancersResponse) SetBody(v *ListLoadBalancersResponseBody) *L
 }
 
 type ListManagedRulesGroupsRequest struct {
-	// The page number.
+	// Page number, used to specify the page number for pagination queries.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// Page size, used to specify the number of items per page for pagination queries.
 	//
 	// example:
 	//
@@ -44034,27 +46825,27 @@ func (s *ListManagedRulesGroupsRequest) SetPageSize(v int32) *ListManagedRulesGr
 }
 
 type ListManagedRulesGroupsResponseBody struct {
-	// The information about the managed rule groups.
+	// List of managed rule group information.
 	ManagedRulesGroups []*ListManagedRulesGroupsResponseBodyManagedRulesGroups `json:"ManagedRulesGroups,omitempty" xml:"ManagedRulesGroups,omitempty" type:"Repeated"`
-	// The page number returned.
+	// Current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// Page size.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of managed rule groups returned.
+	// Total number of records after filtering.
 	//
 	// example:
 	//
@@ -44096,13 +46887,13 @@ func (s *ListManagedRulesGroupsResponseBody) SetTotalCount(v int32) *ListManaged
 }
 
 type ListManagedRulesGroupsResponseBodyManagedRulesGroups struct {
-	// The name of the managed rule group.
+	// Name of the managed rule group.
 	//
 	// example:
 	//
 	// example
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The number of rules in the managed rule group.
+	// Number of rules within the managed rule group.
 	//
 	// example:
 	//
@@ -44526,6 +47317,687 @@ func (s *ListNetworkOptimizationsResponse) SetBody(v *ListNetworkOptimizationsRe
 	return s
 }
 
+type ListOriginCaCertificatesRequest struct {
+	// The page number. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: **20**. Valid values: 1 to 500.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456789****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s ListOriginCaCertificatesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOriginCaCertificatesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListOriginCaCertificatesRequest) SetPageNumber(v int64) *ListOriginCaCertificatesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListOriginCaCertificatesRequest) SetPageSize(v int64) *ListOriginCaCertificatesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListOriginCaCertificatesRequest) SetSiteId(v int64) *ListOriginCaCertificatesRequest {
+	s.SiteId = &v
+	return s
+}
+
+type ListOriginCaCertificatesResponseBody struct {
+	// Page number, default is 1 if not provided.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 34DCBC8A-****-****-****-6DAA11D7DDBD
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Details of the certificates.
+	Result []*ListOriginCaCertificatesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// The website ID.
+	//
+	// example:
+	//
+	// 123456789****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The website name.
+	//
+	// example:
+	//
+	// example.com
+	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	// The total number of entries.
+	//
+	// example:
+	//
+	// 20
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListOriginCaCertificatesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOriginCaCertificatesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListOriginCaCertificatesResponseBody) SetPageNumber(v int64) *ListOriginCaCertificatesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListOriginCaCertificatesResponseBody) SetPageSize(v int64) *ListOriginCaCertificatesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListOriginCaCertificatesResponseBody) SetRequestId(v string) *ListOriginCaCertificatesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListOriginCaCertificatesResponseBody) SetResult(v []*ListOriginCaCertificatesResponseBodyResult) *ListOriginCaCertificatesResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ListOriginCaCertificatesResponseBody) SetSiteId(v int64) *ListOriginCaCertificatesResponseBody {
+	s.SiteId = &v
+	return s
+}
+
+func (s *ListOriginCaCertificatesResponseBody) SetSiteName(v string) *ListOriginCaCertificatesResponseBody {
+	s.SiteName = &v
+	return s
+}
+
+func (s *ListOriginCaCertificatesResponseBody) SetTotalCount(v int64) *ListOriginCaCertificatesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListOriginCaCertificatesResponseBodyResult struct {
+	// The Common Name of the certificate.
+	//
+	// example:
+	//
+	// www.example.com
+	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	// The time when the certificate was created.
+	//
+	// example:
+	//
+	// 2024-06-24 07:48:51
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The SHA-256 fingerprint of the certificate.
+	//
+	// example:
+	//
+	// 1dc5fc9af4eead2570c70d94b416130baeb6d4429b51fd3557379588456a****
+	FingerprintSha256 *string `json:"FingerprintSha256,omitempty" xml:"FingerprintSha256,omitempty"`
+	// The certificate ID.
+	//
+	// example:
+	//
+	// babaabcd****
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The certificate authority (CA) that issued the certificate.
+	//
+	// example:
+	//
+	// GlobalSign nv-sa
+	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	// The certificate name.
+	//
+	// example:
+	//
+	// yourCertName
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The time when the certificate expires.
+	//
+	// example:
+	//
+	// 2024-03-31 02:08:00
+	NotAfter *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
+	// The time when the certificate takes effect.
+	//
+	// example:
+	//
+	// 2023-11-26T16:00:00Z
+	NotBefore *string `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
+	// The public-key algorithm of the certificate.
+	//
+	// example:
+	//
+	// RSA
+	PubkeyAlgorithm *string `json:"PubkeyAlgorithm,omitempty" xml:"PubkeyAlgorithm,omitempty"`
+	// The Subject Alternative Name (SAN) of the certificate.
+	//
+	// example:
+	//
+	// www.example.com,*.example.com
+	SAN *string `json:"SAN,omitempty" xml:"SAN,omitempty"`
+	// The serial number of the certificate.
+	//
+	// example:
+	//
+	// babaded901474b9693acf530e0fb1d**
+	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// The signature algorithm of the certificate.
+	//
+	// example:
+	//
+	// SHA256-RSA
+	SignatureAlgorithm *string `json:"SignatureAlgorithm,omitempty" xml:"SignatureAlgorithm,omitempty"`
+	// The certificate status.
+	//
+	// example:
+	//
+	// OK
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The certificate type.
+	//
+	// 	- upload: custom certificate that you upload
+	//
+	// example:
+	//
+	// upload
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The time when the certificate was updated.
+	//
+	// example:
+	//
+	// 2024-07-20 06:18:42
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s ListOriginCaCertificatesResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOriginCaCertificatesResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListOriginCaCertificatesResponseBodyResult) SetCommonName(v string) *ListOriginCaCertificatesResponseBodyResult {
+	s.CommonName = &v
+	return s
+}
+
+func (s *ListOriginCaCertificatesResponseBodyResult) SetCreateTime(v string) *ListOriginCaCertificatesResponseBodyResult {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListOriginCaCertificatesResponseBodyResult) SetFingerprintSha256(v string) *ListOriginCaCertificatesResponseBodyResult {
+	s.FingerprintSha256 = &v
+	return s
+}
+
+func (s *ListOriginCaCertificatesResponseBodyResult) SetId(v string) *ListOriginCaCertificatesResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *ListOriginCaCertificatesResponseBodyResult) SetIssuer(v string) *ListOriginCaCertificatesResponseBodyResult {
+	s.Issuer = &v
+	return s
+}
+
+func (s *ListOriginCaCertificatesResponseBodyResult) SetName(v string) *ListOriginCaCertificatesResponseBodyResult {
+	s.Name = &v
+	return s
+}
+
+func (s *ListOriginCaCertificatesResponseBodyResult) SetNotAfter(v string) *ListOriginCaCertificatesResponseBodyResult {
+	s.NotAfter = &v
+	return s
+}
+
+func (s *ListOriginCaCertificatesResponseBodyResult) SetNotBefore(v string) *ListOriginCaCertificatesResponseBodyResult {
+	s.NotBefore = &v
+	return s
+}
+
+func (s *ListOriginCaCertificatesResponseBodyResult) SetPubkeyAlgorithm(v string) *ListOriginCaCertificatesResponseBodyResult {
+	s.PubkeyAlgorithm = &v
+	return s
+}
+
+func (s *ListOriginCaCertificatesResponseBodyResult) SetSAN(v string) *ListOriginCaCertificatesResponseBodyResult {
+	s.SAN = &v
+	return s
+}
+
+func (s *ListOriginCaCertificatesResponseBodyResult) SetSerialNumber(v string) *ListOriginCaCertificatesResponseBodyResult {
+	s.SerialNumber = &v
+	return s
+}
+
+func (s *ListOriginCaCertificatesResponseBodyResult) SetSignatureAlgorithm(v string) *ListOriginCaCertificatesResponseBodyResult {
+	s.SignatureAlgorithm = &v
+	return s
+}
+
+func (s *ListOriginCaCertificatesResponseBodyResult) SetStatus(v string) *ListOriginCaCertificatesResponseBodyResult {
+	s.Status = &v
+	return s
+}
+
+func (s *ListOriginCaCertificatesResponseBodyResult) SetType(v string) *ListOriginCaCertificatesResponseBodyResult {
+	s.Type = &v
+	return s
+}
+
+func (s *ListOriginCaCertificatesResponseBodyResult) SetUpdateTime(v string) *ListOriginCaCertificatesResponseBodyResult {
+	s.UpdateTime = &v
+	return s
+}
+
+type ListOriginCaCertificatesResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListOriginCaCertificatesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListOriginCaCertificatesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOriginCaCertificatesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListOriginCaCertificatesResponse) SetHeaders(v map[string]*string) *ListOriginCaCertificatesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListOriginCaCertificatesResponse) SetStatusCode(v int32) *ListOriginCaCertificatesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListOriginCaCertificatesResponse) SetBody(v *ListOriginCaCertificatesResponseBody) *ListOriginCaCertificatesResponse {
+	s.Body = v
+	return s
+}
+
+type ListOriginClientCertificatesRequest struct {
+	// The page number. Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456789****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s ListOriginClientCertificatesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOriginClientCertificatesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListOriginClientCertificatesRequest) SetPageNumber(v int64) *ListOriginClientCertificatesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListOriginClientCertificatesRequest) SetPageSize(v int64) *ListOriginClientCertificatesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListOriginClientCertificatesRequest) SetSiteId(v int64) *ListOriginClientCertificatesRequest {
+	s.SiteId = &v
+	return s
+}
+
+type ListOriginClientCertificatesResponseBody struct {
+	// The page number. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 3558df77-8a7a-4060-a900-2d7949403836
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The certificate information.
+	Result []*ListOriginClientCertificatesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// The website ID.
+	//
+	// example:
+	//
+	// 123456789****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The website name.
+	//
+	// example:
+	//
+	// example.com
+	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	// The total number of entries.
+	//
+	// example:
+	//
+	// 20
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListOriginClientCertificatesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOriginClientCertificatesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListOriginClientCertificatesResponseBody) SetPageNumber(v int64) *ListOriginClientCertificatesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListOriginClientCertificatesResponseBody) SetPageSize(v int64) *ListOriginClientCertificatesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListOriginClientCertificatesResponseBody) SetRequestId(v string) *ListOriginClientCertificatesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListOriginClientCertificatesResponseBody) SetResult(v []*ListOriginClientCertificatesResponseBodyResult) *ListOriginClientCertificatesResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ListOriginClientCertificatesResponseBody) SetSiteId(v int64) *ListOriginClientCertificatesResponseBody {
+	s.SiteId = &v
+	return s
+}
+
+func (s *ListOriginClientCertificatesResponseBody) SetSiteName(v string) *ListOriginClientCertificatesResponseBody {
+	s.SiteName = &v
+	return s
+}
+
+func (s *ListOriginClientCertificatesResponseBody) SetTotalCount(v int64) *ListOriginClientCertificatesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListOriginClientCertificatesResponseBodyResult struct {
+	// The Common Name of the certificate.
+	//
+	// example:
+	//
+	// www.example.com
+	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	// The time when the certificate was created.
+	//
+	// example:
+	//
+	// 2024-06-24 07:48:51
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The SHA-256 fingerprint of the certificate.
+	//
+	// example:
+	//
+	// 1dc5fc9af4eead2570c70d94b416130baeb6d4429b51fd3557379588456a****
+	FingerprintSha256 *string `json:"FingerprintSha256,omitempty" xml:"FingerprintSha256,omitempty"`
+	// The domain names to associate.
+	Hostnames []*string `json:"Hostnames,omitempty" xml:"Hostnames,omitempty" type:"Repeated"`
+	// The certificate ID.
+	//
+	// example:
+	//
+	// babaabcd****
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The certificate authority (CA) that issued the certificate.
+	//
+	// example:
+	//
+	// DigiCert
+	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	// The certificate name.
+	//
+	// example:
+	//
+	// yourCertName
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The time when the certificate expires.
+	//
+	// example:
+	//
+	// 2024-03-31 02:08:00
+	NotAfter *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
+	// The time when the certificate takes effect.
+	//
+	// example:
+	//
+	// 2023-03-31 02:08:00
+	NotBefore *string `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
+	// The public-key algorithm of the certificate.
+	//
+	// example:
+	//
+	// RSA
+	PubkeyAlgorithm *string `json:"PubkeyAlgorithm,omitempty" xml:"PubkeyAlgorithm,omitempty"`
+	// The Subject Alternative Name (SAN) of the certificate.
+	//
+	// example:
+	//
+	// www.example.com,*.example.com
+	SAN *string `json:"SAN,omitempty" xml:"SAN,omitempty"`
+	// The serial number of the certificate.
+	//
+	// example:
+	//
+	// babaded901474b9693acf530e0fb1d**
+	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// The signature algorithm of the certificate.
+	//
+	// example:
+	//
+	// SHA256-RSA
+	SignatureAlgorithm *string `json:"SignatureAlgorithm,omitempty" xml:"SignatureAlgorithm,omitempty"`
+	// The certificate status.
+	//
+	// example:
+	//
+	// OK
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The certificate type.
+	//
+	// 	- upload: custom certificate that you upload
+	//
+	// example:
+	//
+	// upload
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The time when the certificate was updated.
+	//
+	// example:
+	//
+	// 2024-07-20 06:18:42
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s ListOriginClientCertificatesResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOriginClientCertificatesResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListOriginClientCertificatesResponseBodyResult) SetCommonName(v string) *ListOriginClientCertificatesResponseBodyResult {
+	s.CommonName = &v
+	return s
+}
+
+func (s *ListOriginClientCertificatesResponseBodyResult) SetCreateTime(v string) *ListOriginClientCertificatesResponseBodyResult {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListOriginClientCertificatesResponseBodyResult) SetFingerprintSha256(v string) *ListOriginClientCertificatesResponseBodyResult {
+	s.FingerprintSha256 = &v
+	return s
+}
+
+func (s *ListOriginClientCertificatesResponseBodyResult) SetHostnames(v []*string) *ListOriginClientCertificatesResponseBodyResult {
+	s.Hostnames = v
+	return s
+}
+
+func (s *ListOriginClientCertificatesResponseBodyResult) SetId(v string) *ListOriginClientCertificatesResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *ListOriginClientCertificatesResponseBodyResult) SetIssuer(v string) *ListOriginClientCertificatesResponseBodyResult {
+	s.Issuer = &v
+	return s
+}
+
+func (s *ListOriginClientCertificatesResponseBodyResult) SetName(v string) *ListOriginClientCertificatesResponseBodyResult {
+	s.Name = &v
+	return s
+}
+
+func (s *ListOriginClientCertificatesResponseBodyResult) SetNotAfter(v string) *ListOriginClientCertificatesResponseBodyResult {
+	s.NotAfter = &v
+	return s
+}
+
+func (s *ListOriginClientCertificatesResponseBodyResult) SetNotBefore(v string) *ListOriginClientCertificatesResponseBodyResult {
+	s.NotBefore = &v
+	return s
+}
+
+func (s *ListOriginClientCertificatesResponseBodyResult) SetPubkeyAlgorithm(v string) *ListOriginClientCertificatesResponseBodyResult {
+	s.PubkeyAlgorithm = &v
+	return s
+}
+
+func (s *ListOriginClientCertificatesResponseBodyResult) SetSAN(v string) *ListOriginClientCertificatesResponseBodyResult {
+	s.SAN = &v
+	return s
+}
+
+func (s *ListOriginClientCertificatesResponseBodyResult) SetSerialNumber(v string) *ListOriginClientCertificatesResponseBodyResult {
+	s.SerialNumber = &v
+	return s
+}
+
+func (s *ListOriginClientCertificatesResponseBodyResult) SetSignatureAlgorithm(v string) *ListOriginClientCertificatesResponseBodyResult {
+	s.SignatureAlgorithm = &v
+	return s
+}
+
+func (s *ListOriginClientCertificatesResponseBodyResult) SetStatus(v string) *ListOriginClientCertificatesResponseBodyResult {
+	s.Status = &v
+	return s
+}
+
+func (s *ListOriginClientCertificatesResponseBodyResult) SetType(v string) *ListOriginClientCertificatesResponseBodyResult {
+	s.Type = &v
+	return s
+}
+
+func (s *ListOriginClientCertificatesResponseBodyResult) SetUpdateTime(v string) *ListOriginClientCertificatesResponseBodyResult {
+	s.UpdateTime = &v
+	return s
+}
+
+type ListOriginClientCertificatesResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListOriginClientCertificatesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListOriginClientCertificatesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOriginClientCertificatesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListOriginClientCertificatesResponse) SetHeaders(v map[string]*string) *ListOriginClientCertificatesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListOriginClientCertificatesResponse) SetStatusCode(v int32) *ListOriginClientCertificatesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListOriginClientCertificatesResponse) SetBody(v *ListOriginClientCertificatesResponseBody) *ListOriginClientCertificatesResponse {
+	s.Body = v
+	return s
+}
+
 type ListOriginPoolsRequest struct {
 	// Type of name match query, supporting the following two types, with exact match as the default.
 	//
@@ -44899,7 +48371,7 @@ type ListOriginPoolsResponseBodyOriginPoolsOriginsAuthConf struct {
 	//
 	// example:
 	//
-	// LTAI5tMfEib****ahybCpZqp
+	// yourAccessKeyID
 	AccessKey *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
 	// Authentication type.
 	//
@@ -44925,7 +48397,7 @@ type ListOriginPoolsResponseBodyOriginPoolsOriginsAuthConf struct {
 	//
 	// example:
 	//
-	// VIxuvJSA2****fgYoZ3nkp208dy5w7
+	// yourAccessKeySecret
 	SecretKey *string `json:"SecretKey,omitempty" xml:"SecretKey,omitempty"`
 	// The signature version required when the origin is AWS S3.
 	//
@@ -50044,27 +53516,27 @@ func (s *ListUserRatePlanInstancesResponse) SetBody(v *ListUserRatePlanInstances
 }
 
 type ListWafManagedRulesRequest struct {
-	// The attack type. Valid values:
+	// Attack type of the vulnerability protection event. Values:
 	//
-	// 	- SQL injection
+	// - SQL injection
 	//
-	// 	- Cross-site scripting
+	// - Cross-site scripting
 	//
-	// 	- Code execution
+	// - Code execution
 	//
-	// 	- CRLF
+	// - CRLF
 	//
-	// 	- Local file inclusion
+	// - Local file inclusion
 	//
-	// 	- Remote file inclusion
+	// - Remote file inclusion
 	//
-	// 	- webshell
+	// - Webshell
 	//
-	// 	- Cross-site request forgery
+	// - Cross-site request forgery
 	//
-	// 	- Others
+	// - Other
 	//
-	// 	- SEMA
+	// - SEMA
 	//
 	// This parameter is required.
 	//
@@ -50072,7 +53544,7 @@ type ListWafManagedRulesRequest struct {
 	//
 	// 11
 	AttackType *int32 `json:"AttackType,omitempty" xml:"AttackType,omitempty"`
-	// The ID of the WAF rule.
+	// ID of the WAF rule.
 	//
 	// This parameter is required.
 	//
@@ -50080,32 +53552,32 @@ type ListWafManagedRulesRequest struct {
 	//
 	// 10000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The language of the response. Valid values:
+	// Language type, which will be used to return the response. Value range:
 	//
-	// 	- **en**: English.
+	// - **en**: English.
 	//
-	// 	- **zh**: Chinese.
+	// - **zh**: Chinese.
 	//
 	// example:
 	//
 	// zh
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// The page number.
+	// Query page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// Query page size.
 	//
 	// example:
 	//
 	// 20
 	PageSize        *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ProtectionLevel *int32 `json:"ProtectionLevel,omitempty" xml:"ProtectionLevel,omitempty"`
-	// The query conditions.
+	// Query conditions.
 	QueryArgs *ListWafManagedRulesRequestQueryArgs `json:"QueryArgs,omitempty" xml:"QueryArgs,omitempty" type:"Struct"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
 	//
 	// This parameter is required.
 	//
@@ -50164,21 +53636,21 @@ func (s *ListWafManagedRulesRequest) SetSiteId(v int64) *ListWafManagedRulesRequ
 }
 
 type ListWafManagedRulesRequestQueryArgs struct {
-	// The action that you want WAF to perform on requests that match the rule.
+	// Action.
 	//
 	// example:
 	//
 	// deny
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	// The rule ID or name for fuzzy search.
+	// Fuzzy search for rule ID or rule name.
 	//
 	// example:
 	//
 	// example
 	IdNameLike *string `json:"IdNameLike,omitempty" xml:"IdNameLike,omitempty"`
-	// The protection levels of the rules.
+	// List of rule protection levels.
 	ProtectionLevels []*int32 `json:"ProtectionLevels,omitempty" xml:"ProtectionLevels,omitempty" type:"Repeated"`
-	// The status of the rule.
+	// Status.
 	//
 	// example:
 	//
@@ -50215,27 +53687,27 @@ func (s *ListWafManagedRulesRequestQueryArgs) SetStatus(v string) *ListWafManage
 }
 
 type ListWafManagedRulesShrinkRequest struct {
-	// The attack type. Valid values:
+	// Attack type of the vulnerability protection event. Values:
 	//
-	// 	- SQL injection
+	// - SQL injection
 	//
-	// 	- Cross-site scripting
+	// - Cross-site scripting
 	//
-	// 	- Code execution
+	// - Code execution
 	//
-	// 	- CRLF
+	// - CRLF
 	//
-	// 	- Local file inclusion
+	// - Local file inclusion
 	//
-	// 	- Remote file inclusion
+	// - Remote file inclusion
 	//
-	// 	- webshell
+	// - Webshell
 	//
-	// 	- Cross-site request forgery
+	// - Cross-site request forgery
 	//
-	// 	- Others
+	// - Other
 	//
-	// 	- SEMA
+	// - SEMA
 	//
 	// This parameter is required.
 	//
@@ -50243,7 +53715,7 @@ type ListWafManagedRulesShrinkRequest struct {
 	//
 	// 11
 	AttackType *int32 `json:"AttackType,omitempty" xml:"AttackType,omitempty"`
-	// The ID of the WAF rule.
+	// ID of the WAF rule.
 	//
 	// This parameter is required.
 	//
@@ -50251,32 +53723,32 @@ type ListWafManagedRulesShrinkRequest struct {
 	//
 	// 10000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The language of the response. Valid values:
+	// Language type, which will be used to return the response. Value range:
 	//
-	// 	- **en**: English.
+	// - **en**: English.
 	//
-	// 	- **zh**: Chinese.
+	// - **zh**: Chinese.
 	//
 	// example:
 	//
 	// zh
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// The page number.
+	// Query page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// Query page size.
 	//
 	// example:
 	//
 	// 20
 	PageSize        *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ProtectionLevel *int32 `json:"ProtectionLevel,omitempty" xml:"ProtectionLevel,omitempty"`
-	// The query conditions.
+	// Query conditions.
 	QueryArgsShrink *string `json:"QueryArgs,omitempty" xml:"QueryArgs,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
 	//
 	// This parameter is required.
 	//
@@ -50335,27 +53807,27 @@ func (s *ListWafManagedRulesShrinkRequest) SetSiteId(v int64) *ListWafManagedRul
 }
 
 type ListWafManagedRulesResponseBody struct {
-	// The page number.
+	// Page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// Page size.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The managed rules.
+	// List of managed rules.
 	Rules []*ListWafManagedRulesResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	// The total number of filtered rules.
+	// Total number of rules after filtering.
 	//
 	// example:
 	//
@@ -50397,27 +53869,31 @@ func (s *ListWafManagedRulesResponseBody) SetTotalCount(v int64) *ListWafManaged
 }
 
 type ListWafManagedRulesResponseBodyRules struct {
-	// The action that WAF performs on requests that match the managed rule.
+	// Protection action of the managed rule.
 	//
 	// example:
 	//
 	// deny
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	// The ID of the managed rule.
+	// ID of the managed rule.
 	//
 	// example:
 	//
 	// 100001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the managed rule.
+	// Name of the managed rule.
+	//
+	// example:
+	//
+	// SQL注入
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The protection level of the managed rule.
+	// Protection level of the managed rule.
 	//
 	// example:
 	//
 	// 1
 	ProtectionLevel *int32 `json:"ProtectionLevel,omitempty" xml:"ProtectionLevel,omitempty"`
-	// The status of the protection rule.
+	// Protection status of the managed rule.
 	//
 	// example:
 	//
@@ -50488,7 +53964,7 @@ func (s *ListWafManagedRulesResponse) SetBody(v *ListWafManagedRulesResponseBody
 }
 
 type ListWafPhasesRequest struct {
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
 	//
 	// This parameter is required.
 	//
@@ -50496,7 +53972,7 @@ type ListWafPhasesRequest struct {
 	//
 	// 1
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The version of the website.
+	// Site version.
 	//
 	// example:
 	//
@@ -50523,9 +53999,9 @@ func (s *ListWafPhasesRequest) SetSiteVersion(v int32) *ListWafPhasesRequest {
 }
 
 type ListWafPhasesResponseBody struct {
-	// The WAF rule categories.
+	// List of WAF operation phases.
 	Phases []*ListWafPhasesResponseBodyPhases `json:"Phases,omitempty" xml:"Phases,omitempty" type:"Repeated"`
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//
@@ -50552,13 +54028,13 @@ func (s *ListWafPhasesResponseBody) SetRequestId(v string) *ListWafPhasesRespons
 }
 
 type ListWafPhasesResponseBodyPhases struct {
-	// The name of the WAF rule category.
+	// Name of the WAF operation phase.
 	//
 	// example:
 	//
 	// http_custom
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// The WAF rulesets.
+	// List of WAF rulesets.
 	Rulesets []*ListWafPhasesResponseBodyPhasesRulesets `json:"Rulesets,omitempty" xml:"Rulesets,omitempty" type:"Repeated"`
 }
 
@@ -50581,21 +54057,21 @@ func (s *ListWafPhasesResponseBodyPhases) SetRulesets(v []*ListWafPhasesResponse
 }
 
 type ListWafPhasesResponseBodyPhasesRulesets struct {
-	// The ID of the WAF ruleset.[](~~2850233~~)
+	// ID of the WAF ruleset.
 	//
 	// example:
 	//
 	// 10000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the WAF ruleset.
+	// Name of the WAF ruleset.
 	//
 	// example:
 	//
 	// example
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The rule configurations in the WAF ruleset.
+	// List of rule configurations in the WAF ruleset.
 	Rules []*WafRuleConfig `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	// The configurations shared by the rules in the WAF ruleset.
+	// Shared configuration for rules in the WAF ruleset.
 	Shared *WafBatchRuleShared `json:"Shared,omitempty" xml:"Shared,omitempty"`
 }
 
@@ -50656,20 +54132,964 @@ func (s *ListWafPhasesResponse) SetBody(v *ListWafPhasesResponseBody) *ListWafPh
 	return s
 }
 
+type ListWafRulesRequest struct {
+	// Query page number, used for pagination.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Query page size, used for pagination.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// WAF rule type. Values:
+	//
+	// - http_anti_scan: Scan protection
+	//
+	// - http_bot: Bots
+	//
+	// example:
+	//
+	// http_custom
+	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// Query filter conditions.
+	//
+	// example:
+	//
+	// http_custom
+	QueryArgs *ListWafRulesRequestQueryArgs `json:"QueryArgs,omitempty" xml:"QueryArgs,omitempty" type:"Struct"`
+	RulesetId *int64                        `json:"RulesetId,omitempty" xml:"RulesetId,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// Site version.
+	//
+	// example:
+	//
+	// 0
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+}
+
+func (s ListWafRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWafRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListWafRulesRequest) SetPageNumber(v int32) *ListWafRulesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListWafRulesRequest) SetPageSize(v int32) *ListWafRulesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListWafRulesRequest) SetPhase(v string) *ListWafRulesRequest {
+	s.Phase = &v
+	return s
+}
+
+func (s *ListWafRulesRequest) SetQueryArgs(v *ListWafRulesRequestQueryArgs) *ListWafRulesRequest {
+	s.QueryArgs = v
+	return s
+}
+
+func (s *ListWafRulesRequest) SetRulesetId(v int64) *ListWafRulesRequest {
+	s.RulesetId = &v
+	return s
+}
+
+func (s *ListWafRulesRequest) SetSiteId(v int64) *ListWafRulesRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *ListWafRulesRequest) SetSiteVersion(v int32) *ListWafRulesRequest {
+	s.SiteVersion = &v
+	return s
+}
+
+type ListWafRulesRequestQueryArgs struct {
+	// Fuzzy search for values in IP access control.
+	//
+	// example:
+	//
+	// 10.0.0.1
+	ConfigValueLike *string `json:"ConfigValueLike,omitempty" xml:"ConfigValueLike,omitempty"`
+	// Whether to reverse the sorting result.
+	//
+	// example:
+	//
+	// true
+	Desc *bool `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	// Exact query for WAF rule ID.
+	//
+	// example:
+	//
+	// 20000001
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Fuzzy query for WAF rule ID or name.
+	//
+	// example:
+	//
+	// example
+	IdNameLike *string `json:"IdNameLike,omitempty" xml:"IdNameLike,omitempty"`
+	// Fuzzy query for WAF rule name.
+	//
+	// example:
+	//
+	// example
+	NameLike *string `json:"NameLike,omitempty" xml:"NameLike,omitempty"`
+	// Sort the returned list by the specified column.
+	//
+	// example:
+	//
+	// position
+	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// Exact query for WAF rule status.
+	//
+	// example:
+	//
+	// on
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListWafRulesRequestQueryArgs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWafRulesRequestQueryArgs) GoString() string {
+	return s.String()
+}
+
+func (s *ListWafRulesRequestQueryArgs) SetConfigValueLike(v string) *ListWafRulesRequestQueryArgs {
+	s.ConfigValueLike = &v
+	return s
+}
+
+func (s *ListWafRulesRequestQueryArgs) SetDesc(v bool) *ListWafRulesRequestQueryArgs {
+	s.Desc = &v
+	return s
+}
+
+func (s *ListWafRulesRequestQueryArgs) SetId(v int64) *ListWafRulesRequestQueryArgs {
+	s.Id = &v
+	return s
+}
+
+func (s *ListWafRulesRequestQueryArgs) SetIdNameLike(v string) *ListWafRulesRequestQueryArgs {
+	s.IdNameLike = &v
+	return s
+}
+
+func (s *ListWafRulesRequestQueryArgs) SetNameLike(v string) *ListWafRulesRequestQueryArgs {
+	s.NameLike = &v
+	return s
+}
+
+func (s *ListWafRulesRequestQueryArgs) SetOrderBy(v string) *ListWafRulesRequestQueryArgs {
+	s.OrderBy = &v
+	return s
+}
+
+func (s *ListWafRulesRequestQueryArgs) SetStatus(v string) *ListWafRulesRequestQueryArgs {
+	s.Status = &v
+	return s
+}
+
+type ListWafRulesShrinkRequest struct {
+	// Query page number, used for pagination.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Query page size, used for pagination.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// WAF rule type. Values:
+	//
+	// - http_anti_scan: Scan protection
+	//
+	// - http_bot: Bots
+	//
+	// example:
+	//
+	// http_custom
+	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// Query filter conditions.
+	//
+	// example:
+	//
+	// http_custom
+	QueryArgsShrink *string `json:"QueryArgs,omitempty" xml:"QueryArgs,omitempty"`
+	RulesetId       *int64  `json:"RulesetId,omitempty" xml:"RulesetId,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// Site version.
+	//
+	// example:
+	//
+	// 0
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+}
+
+func (s ListWafRulesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWafRulesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListWafRulesShrinkRequest) SetPageNumber(v int32) *ListWafRulesShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListWafRulesShrinkRequest) SetPageSize(v int32) *ListWafRulesShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListWafRulesShrinkRequest) SetPhase(v string) *ListWafRulesShrinkRequest {
+	s.Phase = &v
+	return s
+}
+
+func (s *ListWafRulesShrinkRequest) SetQueryArgsShrink(v string) *ListWafRulesShrinkRequest {
+	s.QueryArgsShrink = &v
+	return s
+}
+
+func (s *ListWafRulesShrinkRequest) SetRulesetId(v int64) *ListWafRulesShrinkRequest {
+	s.RulesetId = &v
+	return s
+}
+
+func (s *ListWafRulesShrinkRequest) SetSiteId(v int64) *ListWafRulesShrinkRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *ListWafRulesShrinkRequest) SetSiteVersion(v int32) *ListWafRulesShrinkRequest {
+	s.SiteVersion = &v
+	return s
+}
+
+type ListWafRulesResponseBody struct {
+	// Number of rules used in this WAF phase for the corresponding instance of the site.
+	//
+	// example:
+	//
+	// 10
+	InstanceUsage *int64 `json:"InstanceUsage,omitempty" xml:"InstanceUsage,omitempty"`
+	// Page number.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Request ID.
+	//
+	// example:
+	//
+	// 36af3fcc-43d0-441c-86b1-428951dc8225
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Returned list of rules.
+	Rules []*ListWafRulesResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	// Site usage.
+	//
+	// example:
+	//
+	// 5
+	SiteUsage *int64 `json:"SiteUsage,omitempty" xml:"SiteUsage,omitempty"`
+	// Total number of rules after filtering.
+	//
+	// example:
+	//
+	// 20
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListWafRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWafRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListWafRulesResponseBody) SetInstanceUsage(v int64) *ListWafRulesResponseBody {
+	s.InstanceUsage = &v
+	return s
+}
+
+func (s *ListWafRulesResponseBody) SetPageNumber(v int32) *ListWafRulesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListWafRulesResponseBody) SetPageSize(v int32) *ListWafRulesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListWafRulesResponseBody) SetRequestId(v string) *ListWafRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListWafRulesResponseBody) SetRules(v []*ListWafRulesResponseBodyRules) *ListWafRulesResponseBody {
+	s.Rules = v
+	return s
+}
+
+func (s *ListWafRulesResponseBody) SetSiteUsage(v int64) *ListWafRulesResponseBody {
+	s.SiteUsage = &v
+	return s
+}
+
+func (s *ListWafRulesResponseBody) SetTotalCount(v int64) *ListWafRulesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListWafRulesResponseBodyRules struct {
+	// The action corresponding to the rule.
+	//
+	// example:
+	//
+	// deny
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// List of statistical objects for frequency control rules.
+	CharacteristicsFields []*string `json:"CharacteristicsFields,omitempty" xml:"CharacteristicsFields,omitempty" type:"Repeated"`
+	// Rule configuration.
+	Config *WafRuleConfig `json:"Config,omitempty" xml:"Config,omitempty"`
+	// List of fields for rule matching
+	Fields []*string `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
+	// Rule ID.
+	//
+	// example:
+	//
+	// 20000001
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Rule name.
+	//
+	// example:
+	//
+	// example
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// WAF phase.
+	//
+	// example:
+	//
+	// http_custom
+	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// Position order of the rule in the corresponding ruleset.
+	//
+	// example:
+	//
+	// 1
+	Position *int64 `json:"Position,omitempty" xml:"Position,omitempty"`
+	// Ruleset ID.
+	//
+	// example:
+	//
+	// 10000001
+	RulesetId *int64 `json:"RulesetId,omitempty" xml:"RulesetId,omitempty"`
+	// Skip attribute for whitelist rules.
+	//
+	// example:
+	//
+	// part
+	Skip *string `json:"Skip,omitempty" xml:"Skip,omitempty"`
+	// Rule status.
+	//
+	// example:
+	//
+	// on
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// List of WAF phases to be skipped by whitelist rules.
+	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// Configuration for the effective time of the rule.
+	Timer *WafTimer `json:"Timer,omitempty" xml:"Timer,omitempty"`
+	// Rule type.
+	//
+	// example:
+	//
+	// http_custom
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Modification time.
+	//
+	// example:
+	//
+	// 2024-01-01T00:00:00Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s ListWafRulesResponseBodyRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWafRulesResponseBodyRules) GoString() string {
+	return s.String()
+}
+
+func (s *ListWafRulesResponseBodyRules) SetAction(v string) *ListWafRulesResponseBodyRules {
+	s.Action = &v
+	return s
+}
+
+func (s *ListWafRulesResponseBodyRules) SetCharacteristicsFields(v []*string) *ListWafRulesResponseBodyRules {
+	s.CharacteristicsFields = v
+	return s
+}
+
+func (s *ListWafRulesResponseBodyRules) SetConfig(v *WafRuleConfig) *ListWafRulesResponseBodyRules {
+	s.Config = v
+	return s
+}
+
+func (s *ListWafRulesResponseBodyRules) SetFields(v []*string) *ListWafRulesResponseBodyRules {
+	s.Fields = v
+	return s
+}
+
+func (s *ListWafRulesResponseBodyRules) SetId(v int64) *ListWafRulesResponseBodyRules {
+	s.Id = &v
+	return s
+}
+
+func (s *ListWafRulesResponseBodyRules) SetName(v string) *ListWafRulesResponseBodyRules {
+	s.Name = &v
+	return s
+}
+
+func (s *ListWafRulesResponseBodyRules) SetPhase(v string) *ListWafRulesResponseBodyRules {
+	s.Phase = &v
+	return s
+}
+
+func (s *ListWafRulesResponseBodyRules) SetPosition(v int64) *ListWafRulesResponseBodyRules {
+	s.Position = &v
+	return s
+}
+
+func (s *ListWafRulesResponseBodyRules) SetRulesetId(v int64) *ListWafRulesResponseBodyRules {
+	s.RulesetId = &v
+	return s
+}
+
+func (s *ListWafRulesResponseBodyRules) SetSkip(v string) *ListWafRulesResponseBodyRules {
+	s.Skip = &v
+	return s
+}
+
+func (s *ListWafRulesResponseBodyRules) SetStatus(v string) *ListWafRulesResponseBodyRules {
+	s.Status = &v
+	return s
+}
+
+func (s *ListWafRulesResponseBodyRules) SetTags(v []*string) *ListWafRulesResponseBodyRules {
+	s.Tags = v
+	return s
+}
+
+func (s *ListWafRulesResponseBodyRules) SetTimer(v *WafTimer) *ListWafRulesResponseBodyRules {
+	s.Timer = v
+	return s
+}
+
+func (s *ListWafRulesResponseBodyRules) SetType(v string) *ListWafRulesResponseBodyRules {
+	s.Type = &v
+	return s
+}
+
+func (s *ListWafRulesResponseBodyRules) SetUpdateTime(v string) *ListWafRulesResponseBodyRules {
+	s.UpdateTime = &v
+	return s
+}
+
+type ListWafRulesResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListWafRulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListWafRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWafRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListWafRulesResponse) SetHeaders(v map[string]*string) *ListWafRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListWafRulesResponse) SetStatusCode(v int32) *ListWafRulesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListWafRulesResponse) SetBody(v *ListWafRulesResponseBody) *ListWafRulesResponse {
+	s.Body = v
+	return s
+}
+
+type ListWafRulesetsRequest struct {
+	// Page number, specifying the current page number for paginated queries.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size, specifying the number of records per page for paginated queries.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// WAF operation phase, specifying the rule set phase to query.
+	//
+	// example:
+	//
+	// http_bot
+	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// Query parameters, passed in JSON format, containing various filtering conditions.
+	//
+	// example:
+	//
+	// http_bot
+	QueryArgs *ListWafRulesetsRequestQueryArgs `json:"QueryArgs,omitempty" xml:"QueryArgs,omitempty" type:"Struct"`
+	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	//
+	// example:
+	//
+	// 1
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// Site version.
+	//
+	// example:
+	//
+	// 0
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+}
+
+func (s ListWafRulesetsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWafRulesetsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListWafRulesetsRequest) SetPageNumber(v int32) *ListWafRulesetsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListWafRulesetsRequest) SetPageSize(v int32) *ListWafRulesetsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListWafRulesetsRequest) SetPhase(v string) *ListWafRulesetsRequest {
+	s.Phase = &v
+	return s
+}
+
+func (s *ListWafRulesetsRequest) SetQueryArgs(v *ListWafRulesetsRequestQueryArgs) *ListWafRulesetsRequest {
+	s.QueryArgs = v
+	return s
+}
+
+func (s *ListWafRulesetsRequest) SetSiteId(v int64) *ListWafRulesetsRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *ListWafRulesetsRequest) SetSiteVersion(v int32) *ListWafRulesetsRequest {
+	s.SiteVersion = &v
+	return s
+}
+
+type ListWafRulesetsRequestQueryArgs struct {
+	// Fuzzy search for rule set ID, rule set name, rule ID, and rule name.
+	//
+	// example:
+	//
+	// example
+	AnyLike *string `json:"AnyLike,omitempty" xml:"AnyLike,omitempty"`
+	// Whether to sort in descending order.
+	Desc *bool `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	// Fuzzy search for rule set name.
+	//
+	// example:
+	//
+	// example
+	NameLike *string `json:"NameLike,omitempty" xml:"NameLike,omitempty"`
+	// Specify the column to sort by.
+	//
+	// example:
+	//
+	// id
+	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+}
+
+func (s ListWafRulesetsRequestQueryArgs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWafRulesetsRequestQueryArgs) GoString() string {
+	return s.String()
+}
+
+func (s *ListWafRulesetsRequestQueryArgs) SetAnyLike(v string) *ListWafRulesetsRequestQueryArgs {
+	s.AnyLike = &v
+	return s
+}
+
+func (s *ListWafRulesetsRequestQueryArgs) SetDesc(v bool) *ListWafRulesetsRequestQueryArgs {
+	s.Desc = &v
+	return s
+}
+
+func (s *ListWafRulesetsRequestQueryArgs) SetNameLike(v string) *ListWafRulesetsRequestQueryArgs {
+	s.NameLike = &v
+	return s
+}
+
+func (s *ListWafRulesetsRequestQueryArgs) SetOrderBy(v string) *ListWafRulesetsRequestQueryArgs {
+	s.OrderBy = &v
+	return s
+}
+
+type ListWafRulesetsShrinkRequest struct {
+	// Page number, specifying the current page number for paginated queries.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size, specifying the number of records per page for paginated queries.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// WAF operation phase, specifying the rule set phase to query.
+	//
+	// example:
+	//
+	// http_bot
+	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// Query parameters, passed in JSON format, containing various filtering conditions.
+	//
+	// example:
+	//
+	// http_bot
+	QueryArgsShrink *string `json:"QueryArgs,omitempty" xml:"QueryArgs,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	//
+	// example:
+	//
+	// 1
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// Site version.
+	//
+	// example:
+	//
+	// 0
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+}
+
+func (s ListWafRulesetsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWafRulesetsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListWafRulesetsShrinkRequest) SetPageNumber(v int32) *ListWafRulesetsShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListWafRulesetsShrinkRequest) SetPageSize(v int32) *ListWafRulesetsShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListWafRulesetsShrinkRequest) SetPhase(v string) *ListWafRulesetsShrinkRequest {
+	s.Phase = &v
+	return s
+}
+
+func (s *ListWafRulesetsShrinkRequest) SetQueryArgsShrink(v string) *ListWafRulesetsShrinkRequest {
+	s.QueryArgsShrink = &v
+	return s
+}
+
+func (s *ListWafRulesetsShrinkRequest) SetSiteId(v int64) *ListWafRulesetsShrinkRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *ListWafRulesetsShrinkRequest) SetSiteVersion(v int32) *ListWafRulesetsShrinkRequest {
+	s.SiteVersion = &v
+	return s
+}
+
+type ListWafRulesetsResponseBody struct {
+	// Number of WAF rule sets used by the instance in this WAF operation phase.
+	//
+	// example:
+	//
+	// 10
+	InstanceUsage *int64 `json:"InstanceUsage,omitempty" xml:"InstanceUsage,omitempty"`
+	// Current page number.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Request ID.
+	//
+	// example:
+	//
+	// 36af3fcc-43d0-441c-86b1-428951dc8225
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// List of rule set information, containing detailed information about the rule sets.
+	Rulesets []*ListWafRulesetsResponseBodyRulesets `json:"Rulesets,omitempty" xml:"Rulesets,omitempty" type:"Repeated"`
+	// Number of WAF rule sets used by the site in this WAF operation phase.
+	//
+	// example:
+	//
+	// 5
+	SiteUsage *int64 `json:"SiteUsage,omitempty" xml:"SiteUsage,omitempty"`
+	// Total number of filtered records.
+	//
+	// example:
+	//
+	// 5
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListWafRulesetsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWafRulesetsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListWafRulesetsResponseBody) SetInstanceUsage(v int64) *ListWafRulesetsResponseBody {
+	s.InstanceUsage = &v
+	return s
+}
+
+func (s *ListWafRulesetsResponseBody) SetPageNumber(v int32) *ListWafRulesetsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListWafRulesetsResponseBody) SetPageSize(v int32) *ListWafRulesetsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListWafRulesetsResponseBody) SetRequestId(v string) *ListWafRulesetsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListWafRulesetsResponseBody) SetRulesets(v []*ListWafRulesetsResponseBodyRulesets) *ListWafRulesetsResponseBody {
+	s.Rulesets = v
+	return s
+}
+
+func (s *ListWafRulesetsResponseBody) SetSiteUsage(v int64) *ListWafRulesetsResponseBody {
+	s.SiteUsage = &v
+	return s
+}
+
+func (s *ListWafRulesetsResponseBody) SetTotalCount(v int64) *ListWafRulesetsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListWafRulesetsResponseBodyRulesets struct {
+	// List of match objects.
+	Fields []*string `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
+	// ID of the WAF rule set.
+	//
+	// example:
+	//
+	// 10000001
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Name of the rule set.
+	//
+	// example:
+	//
+	// example
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// WAF operation phase.
+	//
+	// example:
+	//
+	// http_bot
+	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// Status of the rule set.
+	//
+	// example:
+	//
+	// on
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Protection target type in http_bot.
+	//
+	// example:
+	//
+	// web
+	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	// List of rule types.
+	Types []*string `json:"Types,omitempty" xml:"Types,omitempty" type:"Repeated"`
+	// Last modification time of the rule set.
+	//
+	// example:
+	//
+	// 2024-01-01T00:00:00Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s ListWafRulesetsResponseBodyRulesets) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWafRulesetsResponseBodyRulesets) GoString() string {
+	return s.String()
+}
+
+func (s *ListWafRulesetsResponseBodyRulesets) SetFields(v []*string) *ListWafRulesetsResponseBodyRulesets {
+	s.Fields = v
+	return s
+}
+
+func (s *ListWafRulesetsResponseBodyRulesets) SetId(v int64) *ListWafRulesetsResponseBodyRulesets {
+	s.Id = &v
+	return s
+}
+
+func (s *ListWafRulesetsResponseBodyRulesets) SetName(v string) *ListWafRulesetsResponseBodyRulesets {
+	s.Name = &v
+	return s
+}
+
+func (s *ListWafRulesetsResponseBodyRulesets) SetPhase(v string) *ListWafRulesetsResponseBodyRulesets {
+	s.Phase = &v
+	return s
+}
+
+func (s *ListWafRulesetsResponseBodyRulesets) SetStatus(v string) *ListWafRulesetsResponseBodyRulesets {
+	s.Status = &v
+	return s
+}
+
+func (s *ListWafRulesetsResponseBodyRulesets) SetTarget(v string) *ListWafRulesetsResponseBodyRulesets {
+	s.Target = &v
+	return s
+}
+
+func (s *ListWafRulesetsResponseBodyRulesets) SetTypes(v []*string) *ListWafRulesetsResponseBodyRulesets {
+	s.Types = v
+	return s
+}
+
+func (s *ListWafRulesetsResponseBodyRulesets) SetUpdateTime(v string) *ListWafRulesetsResponseBodyRulesets {
+	s.UpdateTime = &v
+	return s
+}
+
+type ListWafRulesetsResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListWafRulesetsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListWafRulesetsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWafRulesetsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListWafRulesetsResponse) SetHeaders(v map[string]*string) *ListWafRulesetsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListWafRulesetsResponse) SetStatusCode(v int32) *ListWafRulesetsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListWafRulesetsResponse) SetBody(v *ListWafRulesetsResponseBody) *ListWafRulesetsResponse {
+	s.Body = v
+	return s
+}
+
 type ListWafTemplateRulesRequest struct {
-	// The WAF rule category, which is used to filter template rules of a specific category.
+	// WAF operation phase, used to filter template rules for a specific phase.
 	//
 	// example:
 	//
 	// http_anti_scan
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// The query parameter, which is used to filter template rules based on criteria such as the rule type.
+	// Query parameters, used to filter template rules based on conditions such as rule type.
 	//
 	// example:
 	//
 	// http_anti_scan
 	QueryArgs *ListWafTemplateRulesRequestQueryArgs `json:"QueryArgs,omitempty" xml:"QueryArgs,omitempty" type:"Struct"`
-	// 站点ID，可通过调用[ListSites](https://help.aliyun.com/document_detail/2850189.html)接口获取。
+	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
 	//
 	// example:
 	//
@@ -50701,7 +55121,7 @@ func (s *ListWafTemplateRulesRequest) SetSiteId(v int64) *ListWafTemplateRulesRe
 }
 
 type ListWafTemplateRulesRequestQueryArgs struct {
-	// The rule type.
+	// Rule type.
 	//
 	// example:
 	//
@@ -50723,19 +55143,19 @@ func (s *ListWafTemplateRulesRequestQueryArgs) SetType(v string) *ListWafTemplat
 }
 
 type ListWafTemplateRulesShrinkRequest struct {
-	// The WAF rule category, which is used to filter template rules of a specific category.
+	// WAF operation phase, used to filter template rules for a specific phase.
 	//
 	// example:
 	//
 	// http_anti_scan
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// The query parameter, which is used to filter template rules based on criteria such as the rule type.
+	// Query parameters, used to filter template rules based on conditions such as rule type.
 	//
 	// example:
 	//
 	// http_anti_scan
 	QueryArgsShrink *string `json:"QueryArgs,omitempty" xml:"QueryArgs,omitempty"`
-	// 站点ID，可通过调用[ListSites](https://help.aliyun.com/document_detail/2850189.html)接口获取。
+	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
 	//
 	// example:
 	//
@@ -50767,13 +55187,13 @@ func (s *ListWafTemplateRulesShrinkRequest) SetSiteId(v int64) *ListWafTemplateR
 }
 
 type ListWafTemplateRulesResponseBody struct {
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned template rules.
+	// The list of returned template rules.
 	Rules []*ListWafTemplateRulesResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
@@ -50796,27 +55216,27 @@ func (s *ListWafTemplateRulesResponseBody) SetRules(v []*ListWafTemplateRulesRes
 }
 
 type ListWafTemplateRulesResponseBodyRules struct {
-	// The configuration of the rule.
+	// Rule configuration.
 	Config *WafRuleConfig `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The rule name.
+	// Rule name.
 	//
 	// example:
 	//
 	// HTTP Directory Traversal Rule [Template]
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The WAF rule category.
+	// WAF operation phase.
 	//
 	// example:
 	//
 	// http_anti_scan
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// Indicates whether the rule is enabled.
+	// Rule status.
 	//
 	// example:
 	//
 	// on
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The rule type.
+	// Rule type.
 	//
 	// example:
 	//
@@ -50887,17 +55307,17 @@ func (s *ListWafTemplateRulesResponse) SetBody(v *ListWafTemplateRulesResponseBo
 }
 
 type ListWafUsageOfRulesRequest struct {
-	// The WAF rule category.
+	// Name of the WAF operation phase.
 	//
 	// example:
 	//
-	// http_anti_scan
+	// http_custom
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
 	//
 	// example:
 	//
-	// ListWafUsageOfRules
+	// 1
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 
@@ -50920,13 +55340,13 @@ func (s *ListWafUsageOfRulesRequest) SetSiteId(v int64) *ListWafUsageOfRulesRequ
 }
 
 type ListWafUsageOfRulesResponseBody struct {
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The usage details of WAF rules of the website.
+	// List of site usage.
 	Sites []*ListWafUsageOfRulesResponseBodySites `json:"Sites,omitempty" xml:"Sites,omitempty" type:"Repeated"`
 }
 
@@ -50949,19 +55369,19 @@ func (s *ListWafUsageOfRulesResponseBody) SetSites(v []*ListWafUsageOfRulesRespo
 }
 
 type ListWafUsageOfRulesResponseBodySites struct {
-	// The website ID.
+	// Site ID.
 	//
 	// example:
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The website name.
+	// Site name.
 	//
 	// example:
 	//
 	// example.com
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The usage of WAF rules or WAF rulesets.
+	// Usage of WAF rules/WAF rule sets.
 	//
 	// example:
 	//
@@ -54768,6 +59188,189 @@ func (s *SetHttpDDoSAttackProtectionResponse) SetBody(v *SetHttpDDoSAttackProtec
 	return s
 }
 
+type SetOriginClientCertificateHostnamesRequest struct {
+	// The domain names to associate.
+	//
+	// This parameter is required.
+	Hostnames []*string `json:"Hostnames,omitempty" xml:"Hostnames,omitempty" type:"Repeated"`
+	// The certificate ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// babaabcd****
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456789****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s SetOriginClientCertificateHostnamesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetOriginClientCertificateHostnamesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetOriginClientCertificateHostnamesRequest) SetHostnames(v []*string) *SetOriginClientCertificateHostnamesRequest {
+	s.Hostnames = v
+	return s
+}
+
+func (s *SetOriginClientCertificateHostnamesRequest) SetId(v string) *SetOriginClientCertificateHostnamesRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *SetOriginClientCertificateHostnamesRequest) SetSiteId(v int64) *SetOriginClientCertificateHostnamesRequest {
+	s.SiteId = &v
+	return s
+}
+
+type SetOriginClientCertificateHostnamesShrinkRequest struct {
+	// The domain names to associate.
+	//
+	// This parameter is required.
+	HostnamesShrink *string `json:"Hostnames,omitempty" xml:"Hostnames,omitempty"`
+	// The certificate ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// babaabcd****
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456789****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s SetOriginClientCertificateHostnamesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetOriginClientCertificateHostnamesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetOriginClientCertificateHostnamesShrinkRequest) SetHostnamesShrink(v string) *SetOriginClientCertificateHostnamesShrinkRequest {
+	s.HostnamesShrink = &v
+	return s
+}
+
+func (s *SetOriginClientCertificateHostnamesShrinkRequest) SetId(v string) *SetOriginClientCertificateHostnamesShrinkRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *SetOriginClientCertificateHostnamesShrinkRequest) SetSiteId(v int64) *SetOriginClientCertificateHostnamesShrinkRequest {
+	s.SiteId = &v
+	return s
+}
+
+type SetOriginClientCertificateHostnamesResponseBody struct {
+	// The domain name.
+	Hostnames []*string `json:"Hostnames,omitempty" xml:"Hostnames,omitempty" type:"Repeated"`
+	// The ID of the client certificate.
+	//
+	// example:
+	//
+	// babaabcd****
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 15C66C7B-671A-4297-9187-2C4477247A74
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The website ID.
+	//
+	// example:
+	//
+	// 123456789****
+	SiteId *string `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The website name.
+	//
+	// example:
+	//
+	// example.com
+	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+}
+
+func (s SetOriginClientCertificateHostnamesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetOriginClientCertificateHostnamesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetOriginClientCertificateHostnamesResponseBody) SetHostnames(v []*string) *SetOriginClientCertificateHostnamesResponseBody {
+	s.Hostnames = v
+	return s
+}
+
+func (s *SetOriginClientCertificateHostnamesResponseBody) SetId(v string) *SetOriginClientCertificateHostnamesResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *SetOriginClientCertificateHostnamesResponseBody) SetRequestId(v string) *SetOriginClientCertificateHostnamesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SetOriginClientCertificateHostnamesResponseBody) SetSiteId(v string) *SetOriginClientCertificateHostnamesResponseBody {
+	s.SiteId = &v
+	return s
+}
+
+func (s *SetOriginClientCertificateHostnamesResponseBody) SetSiteName(v string) *SetOriginClientCertificateHostnamesResponseBody {
+	s.SiteName = &v
+	return s
+}
+
+type SetOriginClientCertificateHostnamesResponse struct {
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetOriginClientCertificateHostnamesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SetOriginClientCertificateHostnamesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetOriginClientCertificateHostnamesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetOriginClientCertificateHostnamesResponse) SetHeaders(v map[string]*string) *SetOriginClientCertificateHostnamesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetOriginClientCertificateHostnamesResponse) SetStatusCode(v int32) *SetOriginClientCertificateHostnamesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SetOriginClientCertificateHostnamesResponse) SetBody(v *SetOriginClientCertificateHostnamesResponseBody) *SetOriginClientCertificateHostnamesResponse {
+	s.Body = v
+	return s
+}
+
 type StartScheduledPreloadExecutionRequest struct {
 	// The ID of the prefetch plan.
 	//
@@ -55522,6 +60125,7 @@ type UpdateCacheRuleRequest struct {
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
 	// Serve stale cache. When enabled, the node can still use the expired cached files to respond to user requests even if the origin server is unavailable. Value range:
 	//
 	// - on: Enable.
@@ -55682,6 +60286,11 @@ func (s *UpdateCacheRuleRequest) SetRuleEnable(v string) *UpdateCacheRuleRequest
 
 func (s *UpdateCacheRuleRequest) SetRuleName(v string) *UpdateCacheRuleRequest {
 	s.RuleName = &v
+	return s
+}
+
+func (s *UpdateCacheRuleRequest) SetSequence(v int32) *UpdateCacheRuleRequest {
+	s.Sequence = &v
 	return s
 }
 
@@ -56025,6 +60634,7 @@ type UpdateCompressionRuleRequest struct {
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
 	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
 	//
 	// This parameter is required.
@@ -56080,6 +60690,11 @@ func (s *UpdateCompressionRuleRequest) SetRuleEnable(v string) *UpdateCompressio
 
 func (s *UpdateCompressionRuleRequest) SetRuleName(v string) *UpdateCompressionRuleRequest {
 	s.RuleName = &v
+	return s
+}
+
+func (s *UpdateCompressionRuleRequest) SetSequence(v int32) *UpdateCompressionRuleRequest {
+	s.Sequence = &v
 	return s
 }
 
@@ -56868,6 +61483,7 @@ type UpdateHttpRequestHeaderModificationRuleRequest struct {
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
 	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
 	//
 	// This parameter is required.
@@ -56908,6 +61524,11 @@ func (s *UpdateHttpRequestHeaderModificationRuleRequest) SetRuleEnable(v string)
 
 func (s *UpdateHttpRequestHeaderModificationRuleRequest) SetRuleName(v string) *UpdateHttpRequestHeaderModificationRuleRequest {
 	s.RuleName = &v
+	return s
+}
+
+func (s *UpdateHttpRequestHeaderModificationRuleRequest) SetSequence(v int32) *UpdateHttpRequestHeaderModificationRuleRequest {
+	s.Sequence = &v
 	return s
 }
 
@@ -57007,6 +61628,7 @@ type UpdateHttpRequestHeaderModificationRuleShrinkRequest struct {
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
 	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
 	//
 	// This parameter is required.
@@ -57047,6 +61669,11 @@ func (s *UpdateHttpRequestHeaderModificationRuleShrinkRequest) SetRuleEnable(v s
 
 func (s *UpdateHttpRequestHeaderModificationRuleShrinkRequest) SetRuleName(v string) *UpdateHttpRequestHeaderModificationRuleShrinkRequest {
 	s.RuleName = &v
+	return s
+}
+
+func (s *UpdateHttpRequestHeaderModificationRuleShrinkRequest) SetSequence(v int32) *UpdateHttpRequestHeaderModificationRuleShrinkRequest {
+	s.Sequence = &v
 	return s
 }
 
@@ -57143,6 +61770,7 @@ type UpdateHttpResponseHeaderModificationRuleRequest struct {
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
 	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
 	//
 	// This parameter is required.
@@ -57183,6 +61811,11 @@ func (s *UpdateHttpResponseHeaderModificationRuleRequest) SetRuleEnable(v string
 
 func (s *UpdateHttpResponseHeaderModificationRuleRequest) SetRuleName(v string) *UpdateHttpResponseHeaderModificationRuleRequest {
 	s.RuleName = &v
+	return s
+}
+
+func (s *UpdateHttpResponseHeaderModificationRuleRequest) SetSequence(v int32) *UpdateHttpResponseHeaderModificationRuleRequest {
+	s.Sequence = &v
 	return s
 }
 
@@ -57282,6 +61915,7 @@ type UpdateHttpResponseHeaderModificationRuleShrinkRequest struct {
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
 	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
 	//
 	// This parameter is required.
@@ -57322,6 +61956,11 @@ func (s *UpdateHttpResponseHeaderModificationRuleShrinkRequest) SetRuleEnable(v 
 
 func (s *UpdateHttpResponseHeaderModificationRuleShrinkRequest) SetRuleName(v string) *UpdateHttpResponseHeaderModificationRuleShrinkRequest {
 	s.RuleName = &v
+	return s
+}
+
+func (s *UpdateHttpResponseHeaderModificationRuleShrinkRequest) SetSequence(v int32) *UpdateHttpResponseHeaderModificationRuleShrinkRequest {
+	s.Sequence = &v
 	return s
 }
 
@@ -57512,6 +62151,7 @@ type UpdateHttpsApplicationConfigurationRequest struct {
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
 	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
 	//
 	// This parameter is required.
@@ -57597,6 +62237,11 @@ func (s *UpdateHttpsApplicationConfigurationRequest) SetRuleEnable(v string) *Up
 
 func (s *UpdateHttpsApplicationConfigurationRequest) SetRuleName(v string) *UpdateHttpsApplicationConfigurationRequest {
 	s.RuleName = &v
+	return s
+}
+
+func (s *UpdateHttpsApplicationConfigurationRequest) SetSequence(v int32) *UpdateHttpsApplicationConfigurationRequest {
+	s.Sequence = &v
 	return s
 }
 
@@ -57749,6 +62394,7 @@ type UpdateHttpsBasicConfigurationRequest struct {
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
 	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
 	//
 	// This parameter is required.
@@ -57857,6 +62503,11 @@ func (s *UpdateHttpsBasicConfigurationRequest) SetRuleName(v string) *UpdateHttp
 	return s
 }
 
+func (s *UpdateHttpsBasicConfigurationRequest) SetSequence(v int32) *UpdateHttpsBasicConfigurationRequest {
+	s.Sequence = &v
+	return s
+}
+
 func (s *UpdateHttpsBasicConfigurationRequest) SetSiteId(v int64) *UpdateHttpsBasicConfigurationRequest {
 	s.SiteId = &v
 	return s
@@ -57946,6 +62597,7 @@ type UpdateIPv6Request struct {
 	//
 	// on
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
 	// This parameter is required.
@@ -57966,6 +62618,11 @@ func (s UpdateIPv6Request) GoString() string {
 
 func (s *UpdateIPv6Request) SetEnable(v string) *UpdateIPv6Request {
 	s.Enable = &v
+	return s
+}
+
+func (s *UpdateIPv6Request) SetRegion(v string) *UpdateIPv6Request {
+	s.Region = &v
 	return s
 }
 
@@ -58070,6 +62727,7 @@ type UpdateImageTransformRequest struct {
 	//
 	// test
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
 	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
 	//
 	// This parameter is required.
@@ -58110,6 +62768,11 @@ func (s *UpdateImageTransformRequest) SetRuleEnable(v string) *UpdateImageTransf
 
 func (s *UpdateImageTransformRequest) SetRuleName(v string) *UpdateImageTransformRequest {
 	s.RuleName = &v
+	return s
+}
+
+func (s *UpdateImageTransformRequest) SetSequence(v int32) *UpdateImageTransformRequest {
+	s.Sequence = &v
 	return s
 }
 
@@ -59380,6 +64043,7 @@ type UpdateNetworkOptimizationRequest struct {
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
 	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) API.
 	//
 	// This parameter is required.
@@ -59451,6 +64115,11 @@ func (s *UpdateNetworkOptimizationRequest) SetRuleEnable(v string) *UpdateNetwor
 
 func (s *UpdateNetworkOptimizationRequest) SetRuleName(v string) *UpdateNetworkOptimizationRequest {
 	s.RuleName = &v
+	return s
+}
+
+func (s *UpdateNetworkOptimizationRequest) SetSequence(v int32) *UpdateNetworkOptimizationRequest {
+	s.Sequence = &v
 	return s
 }
 
@@ -59691,7 +64360,7 @@ type UpdateOriginPoolRequestOriginsAuthConf struct {
 	//
 	// example:
 	//
-	// LTAI5t7fKVT****atQpfNes
+	// yourAccessKeyID
 	AccessKey *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
 	// The type of authentication.
 	//
@@ -59717,7 +64386,7 @@ type UpdateOriginPoolRequestOriginsAuthConf struct {
 	//
 	// example:
 	//
-	// VIxuvJSA2S0****YoZ3nkp208dy5w7
+	// yourAccessKeySecret
 	SecretKey *string `json:"SecretKey,omitempty" xml:"SecretKey,omitempty"`
 	// The signature version required when the origin is AWS S3.
 	//
@@ -60158,6 +64827,7 @@ type UpdateOriginRuleRequest struct {
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
 	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
 	//
 	// This parameter is required.
@@ -60243,6 +64913,11 @@ func (s *UpdateOriginRuleRequest) SetRuleEnable(v string) *UpdateOriginRuleReque
 
 func (s *UpdateOriginRuleRequest) SetRuleName(v string) *UpdateOriginRuleRequest {
 	s.RuleName = &v
+	return s
+}
+
+func (s *UpdateOriginRuleRequest) SetSequence(v int32) *UpdateOriginRuleRequest {
+	s.Sequence = &v
 	return s
 }
 
@@ -61210,6 +65885,7 @@ type UpdateRedirectRuleRequest struct {
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
 	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
 	//
 	// This parameter is required.
@@ -61282,6 +65958,11 @@ func (s *UpdateRedirectRuleRequest) SetRuleEnable(v string) *UpdateRedirectRuleR
 
 func (s *UpdateRedirectRuleRequest) SetRuleName(v string) *UpdateRedirectRuleRequest {
 	s.RuleName = &v
+	return s
+}
+
+func (s *UpdateRedirectRuleRequest) SetSequence(v int32) *UpdateRedirectRuleRequest {
+	s.Sequence = &v
 	return s
 }
 
@@ -61420,6 +66101,7 @@ type UpdateRewriteUrlRuleRequest struct {
 	//
 	// example=123
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
 	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
 	//
 	// This parameter is required.
@@ -61476,6 +66158,11 @@ func (s *UpdateRewriteUrlRuleRequest) SetRuleEnable(v string) *UpdateRewriteUrlR
 
 func (s *UpdateRewriteUrlRuleRequest) SetRuleName(v string) *UpdateRewriteUrlRuleRequest {
 	s.RuleName = &v
+	return s
+}
+
+func (s *UpdateRewriteUrlRuleRequest) SetSequence(v int32) *UpdateRewriteUrlRuleRequest {
+	s.Sequence = &v
 	return s
 }
 
@@ -63016,6 +67703,330 @@ func (s *UpdateUserDeliveryTaskStatusResponse) SetBody(v *UpdateUserDeliveryTask
 	return s
 }
 
+type UpdateWafRuleRequest struct {
+	// Rule configuration.
+	Config *WafRuleConfig `json:"Config,omitempty" xml:"Config,omitempty"`
+	// WAF rule ID, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2850237.html) interface.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20000001
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The position of the rule in the rule set.
+	//
+	// example:
+	//
+	// 1
+	Position *int64 `json:"Position,omitempty" xml:"Position,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// Site version.
+	//
+	// example:
+	//
+	// 0
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	// Rule status.
+	//
+	// example:
+	//
+	// on
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s UpdateWafRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWafRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWafRuleRequest) SetConfig(v *WafRuleConfig) *UpdateWafRuleRequest {
+	s.Config = v
+	return s
+}
+
+func (s *UpdateWafRuleRequest) SetId(v int64) *UpdateWafRuleRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateWafRuleRequest) SetPosition(v int64) *UpdateWafRuleRequest {
+	s.Position = &v
+	return s
+}
+
+func (s *UpdateWafRuleRequest) SetSiteId(v int64) *UpdateWafRuleRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *UpdateWafRuleRequest) SetSiteVersion(v int32) *UpdateWafRuleRequest {
+	s.SiteVersion = &v
+	return s
+}
+
+func (s *UpdateWafRuleRequest) SetStatus(v string) *UpdateWafRuleRequest {
+	s.Status = &v
+	return s
+}
+
+type UpdateWafRuleShrinkRequest struct {
+	// Rule configuration.
+	ConfigShrink *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// WAF rule ID, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2850237.html) interface.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20000001
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The position of the rule in the rule set.
+	//
+	// example:
+	//
+	// 1
+	Position *int64 `json:"Position,omitempty" xml:"Position,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// Site version.
+	//
+	// example:
+	//
+	// 0
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	// Rule status.
+	//
+	// example:
+	//
+	// on
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s UpdateWafRuleShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWafRuleShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWafRuleShrinkRequest) SetConfigShrink(v string) *UpdateWafRuleShrinkRequest {
+	s.ConfigShrink = &v
+	return s
+}
+
+func (s *UpdateWafRuleShrinkRequest) SetId(v int64) *UpdateWafRuleShrinkRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateWafRuleShrinkRequest) SetPosition(v int64) *UpdateWafRuleShrinkRequest {
+	s.Position = &v
+	return s
+}
+
+func (s *UpdateWafRuleShrinkRequest) SetSiteId(v int64) *UpdateWafRuleShrinkRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *UpdateWafRuleShrinkRequest) SetSiteVersion(v int32) *UpdateWafRuleShrinkRequest {
+	s.SiteVersion = &v
+	return s
+}
+
+func (s *UpdateWafRuleShrinkRequest) SetStatus(v string) *UpdateWafRuleShrinkRequest {
+	s.Status = &v
+	return s
+}
+
+type UpdateWafRuleResponseBody struct {
+	// WAF rule ID, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2850237.html) interface.
+	//
+	// example:
+	//
+	// 20000001
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Request ID.
+	//
+	// example:
+	//
+	// 36af3fcc-43d0-441c-86b1-428951dc8225
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateWafRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWafRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWafRuleResponseBody) SetId(v int64) *UpdateWafRuleResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateWafRuleResponseBody) SetRequestId(v string) *UpdateWafRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateWafRuleResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateWafRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateWafRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWafRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWafRuleResponse) SetHeaders(v map[string]*string) *UpdateWafRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateWafRuleResponse) SetStatusCode(v int32) *UpdateWafRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateWafRuleResponse) SetBody(v *UpdateWafRuleResponseBody) *UpdateWafRuleResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateWafRulesetRequest struct {
+	// ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2850233.html) interface.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10000001
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	//
+	// example:
+	//
+	// 1
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// Site version.
+	//
+	// example:
+	//
+	// 0
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	// The target status to change for the ruleset.
+	//
+	// example:
+	//
+	// on
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s UpdateWafRulesetRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWafRulesetRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWafRulesetRequest) SetId(v int64) *UpdateWafRulesetRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateWafRulesetRequest) SetSiteId(v int64) *UpdateWafRulesetRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *UpdateWafRulesetRequest) SetSiteVersion(v int32) *UpdateWafRulesetRequest {
+	s.SiteVersion = &v
+	return s
+}
+
+func (s *UpdateWafRulesetRequest) SetStatus(v string) *UpdateWafRulesetRequest {
+	s.Status = &v
+	return s
+}
+
+type UpdateWafRulesetResponseBody struct {
+	// Request ID.
+	//
+	// example:
+	//
+	// 36af3fcc-43d0-441c-86b1-428951dc8225
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateWafRulesetResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWafRulesetResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWafRulesetResponseBody) SetRequestId(v string) *UpdateWafRulesetResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateWafRulesetResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateWafRulesetResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateWafRulesetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWafRulesetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWafRulesetResponse) SetHeaders(v map[string]*string) *UpdateWafRulesetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateWafRulesetResponse) SetStatusCode(v int32) *UpdateWafRulesetResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateWafRulesetResponse) SetBody(v *UpdateWafRulesetResponseBody) *UpdateWafRulesetResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateWaitingRoomRequest struct {
 	// The name of the custom cookie.
 	//
@@ -64467,6 +69478,663 @@ func (s *UploadFileResponse) SetBody(v *UploadFileResponseBody) *UploadFileRespo
 	return s
 }
 
+type UploadOriginCaCertificateRequest struct {
+	// The certificate content.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// -----BEGIN CERTIFICATE-----
+	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
+	// The certificate name.
+	//
+	// example:
+	//
+	// example
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234567890***
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s UploadOriginCaCertificateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadOriginCaCertificateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UploadOriginCaCertificateRequest) SetCertificate(v string) *UploadOriginCaCertificateRequest {
+	s.Certificate = &v
+	return s
+}
+
+func (s *UploadOriginCaCertificateRequest) SetName(v string) *UploadOriginCaCertificateRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UploadOriginCaCertificateRequest) SetSiteId(v int64) *UploadOriginCaCertificateRequest {
+	s.SiteId = &v
+	return s
+}
+
+type UploadOriginCaCertificateResponseBody struct {
+	// The Common Name of the certificate.
+	//
+	// example:
+	//
+	// www.example.com
+	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	// The SHA-256 fingerprint of the certificate.
+	//
+	// example:
+	//
+	// 1dc5fc9af4eead2570c70d94b416130baeb6d4429b51fd3557379588456aca66
+	FingerprintSha256 *string `json:"FingerprintSha256,omitempty" xml:"FingerprintSha256,omitempty"`
+	// The certificate ID.
+	//
+	// example:
+	//
+	// babaabcd****
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The CA that issued the certificate.
+	//
+	// example:
+	//
+	// GlobalSign nv-sa
+	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	// The time when the certificate expires.
+	//
+	// example:
+	//
+	// 2024-12-01T02:13:07Z
+	NotAfter *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
+	// The time when the certificate takes effect.
+	//
+	// example:
+	//
+	// 2023-12-01T02:13:07Z
+	NotBefore *string `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The serial number of the certificate.
+	//
+	// example:
+	//
+	// babaded901474b9693acf530e0fb1daa
+	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// The signature algorithm of the certificate.
+	//
+	// example:
+	//
+	// SHA256-RSA
+	SignatureAlgorithm *string `json:"SignatureAlgorithm,omitempty" xml:"SignatureAlgorithm,omitempty"`
+	// Indicates whether the operation is successful.
+	//
+	// 	- OK
+	//
+	// 	- Fail
+	//
+	// example:
+	//
+	// OK
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The validity period of the certificate. Unit: day.
+	//
+	// example:
+	//
+	// 365
+	ValidityDays *string `json:"ValidityDays,omitempty" xml:"ValidityDays,omitempty"`
+}
+
+func (s UploadOriginCaCertificateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadOriginCaCertificateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UploadOriginCaCertificateResponseBody) SetCommonName(v string) *UploadOriginCaCertificateResponseBody {
+	s.CommonName = &v
+	return s
+}
+
+func (s *UploadOriginCaCertificateResponseBody) SetFingerprintSha256(v string) *UploadOriginCaCertificateResponseBody {
+	s.FingerprintSha256 = &v
+	return s
+}
+
+func (s *UploadOriginCaCertificateResponseBody) SetId(v string) *UploadOriginCaCertificateResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *UploadOriginCaCertificateResponseBody) SetIssuer(v string) *UploadOriginCaCertificateResponseBody {
+	s.Issuer = &v
+	return s
+}
+
+func (s *UploadOriginCaCertificateResponseBody) SetNotAfter(v string) *UploadOriginCaCertificateResponseBody {
+	s.NotAfter = &v
+	return s
+}
+
+func (s *UploadOriginCaCertificateResponseBody) SetNotBefore(v string) *UploadOriginCaCertificateResponseBody {
+	s.NotBefore = &v
+	return s
+}
+
+func (s *UploadOriginCaCertificateResponseBody) SetRequestId(v string) *UploadOriginCaCertificateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UploadOriginCaCertificateResponseBody) SetSerialNumber(v string) *UploadOriginCaCertificateResponseBody {
+	s.SerialNumber = &v
+	return s
+}
+
+func (s *UploadOriginCaCertificateResponseBody) SetSignatureAlgorithm(v string) *UploadOriginCaCertificateResponseBody {
+	s.SignatureAlgorithm = &v
+	return s
+}
+
+func (s *UploadOriginCaCertificateResponseBody) SetStatus(v string) *UploadOriginCaCertificateResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *UploadOriginCaCertificateResponseBody) SetValidityDays(v string) *UploadOriginCaCertificateResponseBody {
+	s.ValidityDays = &v
+	return s
+}
+
+type UploadOriginCaCertificateResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UploadOriginCaCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UploadOriginCaCertificateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadOriginCaCertificateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UploadOriginCaCertificateResponse) SetHeaders(v map[string]*string) *UploadOriginCaCertificateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UploadOriginCaCertificateResponse) SetStatusCode(v int32) *UploadOriginCaCertificateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UploadOriginCaCertificateResponse) SetBody(v *UploadOriginCaCertificateResponseBody) *UploadOriginCaCertificateResponse {
+	s.Body = v
+	return s
+}
+
+type UploadOriginClientCertificateRequest struct {
+	// The certificate content.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// -----BEGIN CERTIFICATE-----
+	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
+	// The certificate name.
+	//
+	// example:
+	//
+	// test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The private key of the certificate.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// -----BEGIN PRIVATE KEY-----
+	PrivateKey *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456789****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s UploadOriginClientCertificateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadOriginClientCertificateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UploadOriginClientCertificateRequest) SetCertificate(v string) *UploadOriginClientCertificateRequest {
+	s.Certificate = &v
+	return s
+}
+
+func (s *UploadOriginClientCertificateRequest) SetName(v string) *UploadOriginClientCertificateRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UploadOriginClientCertificateRequest) SetPrivateKey(v string) *UploadOriginClientCertificateRequest {
+	s.PrivateKey = &v
+	return s
+}
+
+func (s *UploadOriginClientCertificateRequest) SetSiteId(v int64) *UploadOriginClientCertificateRequest {
+	s.SiteId = &v
+	return s
+}
+
+type UploadOriginClientCertificateResponseBody struct {
+	// The Common Name of the certificate.
+	//
+	// example:
+	//
+	// www.example.com
+	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	// The SHA-256 fingerprint of the certificate.
+	//
+	// example:
+	//
+	// 1dc5fc9af4eead2570c70d94b416130baeb6d4429b51fd3557379588456aca66
+	FingerprintSha256 *string `json:"FingerprintSha256,omitempty" xml:"FingerprintSha256,omitempty"`
+	// The certificate ID.
+	//
+	// example:
+	//
+	// babaabcd****
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The CA that issued the certificate.
+	//
+	// example:
+	//
+	// GlobalSign nv-sa
+	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	// The time when the certificate expires.
+	//
+	// example:
+	//
+	// 2024-12-01T02:13:07Z
+	NotAfter *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
+	// The time when the certificate takes effect.
+	//
+	// example:
+	//
+	// 2023-12-01T02:13:07Z
+	NotBefore *string `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 36af3fcc-43d0-441c-86b1-428951dc8225
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The serial number of the certificate.
+	//
+	// example:
+	//
+	// babaded901474b9693acf530e0fb1daa
+	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// The signature algorithm of the certificate.
+	//
+	// example:
+	//
+	// SHA256-RSA
+	SignatureAlgorithm *string `json:"SignatureAlgorithm,omitempty" xml:"SignatureAlgorithm,omitempty"`
+	// The status of the certificate.
+	//
+	// example:
+	//
+	// OK
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The validity period of the certificate. Unit: day.
+	//
+	// example:
+	//
+	// 365
+	ValidityDays *string `json:"ValidityDays,omitempty" xml:"ValidityDays,omitempty"`
+}
+
+func (s UploadOriginClientCertificateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadOriginClientCertificateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UploadOriginClientCertificateResponseBody) SetCommonName(v string) *UploadOriginClientCertificateResponseBody {
+	s.CommonName = &v
+	return s
+}
+
+func (s *UploadOriginClientCertificateResponseBody) SetFingerprintSha256(v string) *UploadOriginClientCertificateResponseBody {
+	s.FingerprintSha256 = &v
+	return s
+}
+
+func (s *UploadOriginClientCertificateResponseBody) SetId(v string) *UploadOriginClientCertificateResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *UploadOriginClientCertificateResponseBody) SetIssuer(v string) *UploadOriginClientCertificateResponseBody {
+	s.Issuer = &v
+	return s
+}
+
+func (s *UploadOriginClientCertificateResponseBody) SetNotAfter(v string) *UploadOriginClientCertificateResponseBody {
+	s.NotAfter = &v
+	return s
+}
+
+func (s *UploadOriginClientCertificateResponseBody) SetNotBefore(v string) *UploadOriginClientCertificateResponseBody {
+	s.NotBefore = &v
+	return s
+}
+
+func (s *UploadOriginClientCertificateResponseBody) SetRequestId(v string) *UploadOriginClientCertificateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UploadOriginClientCertificateResponseBody) SetSerialNumber(v string) *UploadOriginClientCertificateResponseBody {
+	s.SerialNumber = &v
+	return s
+}
+
+func (s *UploadOriginClientCertificateResponseBody) SetSignatureAlgorithm(v string) *UploadOriginClientCertificateResponseBody {
+	s.SignatureAlgorithm = &v
+	return s
+}
+
+func (s *UploadOriginClientCertificateResponseBody) SetStatus(v string) *UploadOriginClientCertificateResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *UploadOriginClientCertificateResponseBody) SetValidityDays(v string) *UploadOriginClientCertificateResponseBody {
+	s.ValidityDays = &v
+	return s
+}
+
+type UploadOriginClientCertificateResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UploadOriginClientCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UploadOriginClientCertificateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadOriginClientCertificateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UploadOriginClientCertificateResponse) SetHeaders(v map[string]*string) *UploadOriginClientCertificateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UploadOriginClientCertificateResponse) SetStatusCode(v int32) *UploadOriginClientCertificateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UploadOriginClientCertificateResponse) SetBody(v *UploadOriginClientCertificateResponseBody) *UploadOriginClientCertificateResponse {
+	s.Body = v
+	return s
+}
+
+type UploadSiteOriginClientCertificateRequest struct {
+	// The certificate content.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// -----BEGIN CERTIFICATE-----
+	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
+	// The certificate name.
+	//
+	// example:
+	//
+	// example
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The private key of the certificate.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// -----BEGIN PRIVATE KEY-----
+	PrivateKey *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
+	// Site ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456789****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s UploadSiteOriginClientCertificateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadSiteOriginClientCertificateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UploadSiteOriginClientCertificateRequest) SetCertificate(v string) *UploadSiteOriginClientCertificateRequest {
+	s.Certificate = &v
+	return s
+}
+
+func (s *UploadSiteOriginClientCertificateRequest) SetName(v string) *UploadSiteOriginClientCertificateRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UploadSiteOriginClientCertificateRequest) SetPrivateKey(v string) *UploadSiteOriginClientCertificateRequest {
+	s.PrivateKey = &v
+	return s
+}
+
+func (s *UploadSiteOriginClientCertificateRequest) SetSiteId(v int64) *UploadSiteOriginClientCertificateRequest {
+	s.SiteId = &v
+	return s
+}
+
+type UploadSiteOriginClientCertificateResponseBody struct {
+	// The Common Name of the certificate.
+	//
+	// example:
+	//
+	// www.example.com
+	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	// The SHA-256 fingerprint of the certificate.
+	//
+	// example:
+	//
+	// 1dc5fc9af4eead2570c70d94b416130baeb6d4429b51fd3557379588456aca**
+	FingerprintSha256 *string `json:"FingerprintSha256,omitempty" xml:"FingerprintSha256,omitempty"`
+	// The certificate ID on ESA.
+	//
+	// example:
+	//
+	// babaabcd****
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The CA that issued the certificate.
+	//
+	// example:
+	//
+	// GlobalSign nv-sa
+	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	// The time when the certificate expires.
+	//
+	// example:
+	//
+	// 2024-12-01T02:12:49Z
+	NotAfter *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
+	// The time when the certificate takes effect.
+	//
+	// example:
+	//
+	// 2023-12-01T02:13:07Z
+	NotBefore *string `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
+	// Request ID.
+	//
+	// example:
+	//
+	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The serial number of the certificate.
+	//
+	// example:
+	//
+	// babaded901474b9693acf530e0fb1d**
+	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// The signature algorithm of the certificate.
+	//
+	// example:
+	//
+	// SHA256-RSA
+	SignatureAlgorithm *string `json:"SignatureAlgorithm,omitempty" xml:"SignatureAlgorithm,omitempty"`
+	// The status of the certificate.
+	//
+	// example:
+	//
+	// OK
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The validity period of the certificate. Unit: day.
+	//
+	// example:
+	//
+	// 365
+	ValidityDays *string `json:"ValidityDays,omitempty" xml:"ValidityDays,omitempty"`
+}
+
+func (s UploadSiteOriginClientCertificateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadSiteOriginClientCertificateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UploadSiteOriginClientCertificateResponseBody) SetCommonName(v string) *UploadSiteOriginClientCertificateResponseBody {
+	s.CommonName = &v
+	return s
+}
+
+func (s *UploadSiteOriginClientCertificateResponseBody) SetFingerprintSha256(v string) *UploadSiteOriginClientCertificateResponseBody {
+	s.FingerprintSha256 = &v
+	return s
+}
+
+func (s *UploadSiteOriginClientCertificateResponseBody) SetId(v string) *UploadSiteOriginClientCertificateResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *UploadSiteOriginClientCertificateResponseBody) SetIssuer(v string) *UploadSiteOriginClientCertificateResponseBody {
+	s.Issuer = &v
+	return s
+}
+
+func (s *UploadSiteOriginClientCertificateResponseBody) SetNotAfter(v string) *UploadSiteOriginClientCertificateResponseBody {
+	s.NotAfter = &v
+	return s
+}
+
+func (s *UploadSiteOriginClientCertificateResponseBody) SetNotBefore(v string) *UploadSiteOriginClientCertificateResponseBody {
+	s.NotBefore = &v
+	return s
+}
+
+func (s *UploadSiteOriginClientCertificateResponseBody) SetRequestId(v string) *UploadSiteOriginClientCertificateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UploadSiteOriginClientCertificateResponseBody) SetSerialNumber(v string) *UploadSiteOriginClientCertificateResponseBody {
+	s.SerialNumber = &v
+	return s
+}
+
+func (s *UploadSiteOriginClientCertificateResponseBody) SetSignatureAlgorithm(v string) *UploadSiteOriginClientCertificateResponseBody {
+	s.SignatureAlgorithm = &v
+	return s
+}
+
+func (s *UploadSiteOriginClientCertificateResponseBody) SetStatus(v string) *UploadSiteOriginClientCertificateResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *UploadSiteOriginClientCertificateResponseBody) SetValidityDays(v string) *UploadSiteOriginClientCertificateResponseBody {
+	s.ValidityDays = &v
+	return s
+}
+
+type UploadSiteOriginClientCertificateResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UploadSiteOriginClientCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UploadSiteOriginClientCertificateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadSiteOriginClientCertificateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UploadSiteOriginClientCertificateResponse) SetHeaders(v map[string]*string) *UploadSiteOriginClientCertificateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UploadSiteOriginClientCertificateResponse) SetStatusCode(v int32) *UploadSiteOriginClientCertificateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UploadSiteOriginClientCertificateResponse) SetBody(v *UploadSiteOriginClientCertificateResponseBody) *UploadSiteOriginClientCertificateResponse {
+	s.Body = v
+	return s
+}
+
 type VerifySiteRequest struct {
 	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
@@ -64904,6 +70572,109 @@ func (client *Client) BatchCreateRecords(request *BatchCreateRecordsRequest) (_r
 
 // Summary:
 //
+// # Batch Create WAF Rules
+//
+// @param tmpReq - BatchCreateWafRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchCreateWafRulesResponse
+func (client *Client) BatchCreateWafRulesWithOptions(tmpReq *BatchCreateWafRulesRequest, runtime *util.RuntimeOptions) (_result *BatchCreateWafRulesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &BatchCreateWafRulesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Configs)) {
+		request.ConfigsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Configs, tea.String("Configs"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Shared)) {
+		request.SharedShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Shared, tea.String("Shared"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteVersion)) {
+		query["SiteVersion"] = request.SiteVersion
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigsShrink)) {
+		body["Configs"] = request.ConfigsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Phase)) {
+		body["Phase"] = request.Phase
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RulesetId)) {
+		body["RulesetId"] = request.RulesetId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SharedShrink)) {
+		body["Shared"] = request.SharedShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BatchCreateWafRules"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &BatchCreateWafRulesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &BatchCreateWafRulesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// # Batch Create WAF Rules
+//
+// @param request - BatchCreateWafRulesRequest
+//
+// @return BatchCreateWafRulesResponse
+func (client *Client) BatchCreateWafRules(request *BatchCreateWafRulesRequest) (_result *BatchCreateWafRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BatchCreateWafRulesResponse{}
+	_body, _err := client.BatchCreateWafRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes key-value pairs from a namespace at a time based on keys.
 //
 // @param tmpReq - BatchDeleteKvRequest
@@ -65317,7 +71088,7 @@ func (client *Client) BatchDeleteKvWithHighCapacityAdvance(request *BatchDeleteK
 
 // Summary:
 //
-// Batch queries the objects that match specific expressions.
+// # Batch Get Expression Matches
 //
 // @param tmpReq - BatchGetExpressionFieldsRequest
 //
@@ -65386,7 +71157,7 @@ func (client *Client) BatchGetExpressionFieldsWithOptions(tmpReq *BatchGetExpres
 
 // Summary:
 //
-// Batch queries the objects that match specific expressions.
+// # Batch Get Expression Matches
 //
 // @param request - BatchGetExpressionFieldsRequest
 //
@@ -65844,6 +71615,109 @@ func (client *Client) BatchPutKvWithHighCapacityAdvance(request *BatchPutKvWithH
 	}
 
 	_result = batchPutKvWithHighCapacityResp
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies multiple rules in a specific Web Application Firewall (WAF) ruleset at a time.
+//
+// @param tmpReq - BatchUpdateWafRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchUpdateWafRulesResponse
+func (client *Client) BatchUpdateWafRulesWithOptions(tmpReq *BatchUpdateWafRulesRequest, runtime *util.RuntimeOptions) (_result *BatchUpdateWafRulesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &BatchUpdateWafRulesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Configs)) {
+		request.ConfigsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Configs, tea.String("Configs"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Shared)) {
+		request.SharedShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Shared, tea.String("Shared"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteVersion)) {
+		query["SiteVersion"] = request.SiteVersion
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigsShrink)) {
+		body["Configs"] = request.ConfigsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Phase)) {
+		body["Phase"] = request.Phase
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RulesetId)) {
+		body["RulesetId"] = request.RulesetId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SharedShrink)) {
+		body["Shared"] = request.SharedShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BatchUpdateWafRules"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &BatchUpdateWafRulesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &BatchUpdateWafRulesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Modifies multiple rules in a specific Web Application Firewall (WAF) ruleset at a time.
+//
+// @param request - BatchUpdateWafRulesRequest
+//
+// @return BatchUpdateWafRulesResponse
+func (client *Client) BatchUpdateWafRules(request *BatchUpdateWafRulesRequest) (_result *BatchUpdateWafRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BatchUpdateWafRulesResponse{}
+	_body, _err := client.BatchUpdateWafRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
 
@@ -66365,6 +72239,10 @@ func (client *Client) CreateCacheRuleWithOptions(request *CreateCacheRuleRequest
 		query["RuleName"] = request.RuleName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Sequence)) {
+		query["Sequence"] = request.Sequence
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ServeStale)) {
 		query["ServeStale"] = request.ServeStale
 	}
@@ -66563,6 +72441,10 @@ func (client *Client) CreateCompressionRuleWithOptions(request *CreateCompressio
 
 	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
 		query["RuleName"] = request.RuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sequence)) {
+		query["Sequence"] = request.Sequence
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
@@ -67044,6 +72926,10 @@ func (client *Client) CreateHttpRequestHeaderModificationRuleWithOptions(tmpReq 
 		query["RuleName"] = request.RuleName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Sequence)) {
+		query["Sequence"] = request.Sequence
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
 		query["SiteId"] = request.SiteId
 	}
@@ -67139,6 +73025,10 @@ func (client *Client) CreateHttpResponseHeaderModificationRuleWithOptions(tmpReq
 
 	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
 		query["RuleName"] = request.RuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sequence)) {
+		query["Sequence"] = request.Sequence
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
@@ -67268,6 +73158,10 @@ func (client *Client) CreateHttpsApplicationConfigurationWithOptions(request *Cr
 		query["RuleName"] = request.RuleName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Sequence)) {
+		query["Sequence"] = request.Sequence
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
 		query["SiteId"] = request.SiteId
 	}
@@ -67379,6 +73273,10 @@ func (client *Client) CreateHttpsBasicConfigurationWithOptions(request *CreateHt
 		query["RuleName"] = request.RuleName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Sequence)) {
+		query["Sequence"] = request.Sequence
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
 		query["SiteId"] = request.SiteId
 	}
@@ -67480,6 +73378,10 @@ func (client *Client) CreateImageTransformWithOptions(request *CreateImageTransf
 
 	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
 		query["RuleName"] = request.RuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sequence)) {
+		query["Sequence"] = request.Sequence
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
@@ -67898,6 +73800,10 @@ func (client *Client) CreateNetworkOptimizationWithOptions(request *CreateNetwor
 		query["RuleName"] = request.RuleName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Sequence)) {
+		query["Sequence"] = request.Sequence
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
 		query["SiteId"] = request.SiteId
 	}
@@ -68205,6 +74111,10 @@ func (client *Client) CreateOriginRuleWithOptions(request *CreateOriginRuleReque
 		query["RuleName"] = request.RuleName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Sequence)) {
+		query["Sequence"] = request.Sequence
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
 		query["SiteId"] = request.SiteId
 	}
@@ -68500,6 +74410,10 @@ func (client *Client) CreateRedirectRuleWithOptions(request *CreateRedirectRuleR
 		query["RuleName"] = request.RuleName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Sequence)) {
+		query["Sequence"] = request.Sequence
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
 		query["SiteId"] = request.SiteId
 	}
@@ -68609,6 +74523,10 @@ func (client *Client) CreateRewriteUrlRuleWithOptions(request *CreateRewriteUrlR
 
 	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
 		query["RuleName"] = request.RuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sequence)) {
+		query["Sequence"] = request.Sequence
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
@@ -69663,6 +75581,186 @@ func (client *Client) CreateUserDeliveryTask(request *CreateUserDeliveryTaskRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateUserDeliveryTaskResponse{}
 	_body, _err := client.CreateUserDeliveryTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # Create WAF Rule
+//
+// @param tmpReq - CreateWafRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateWafRuleResponse
+func (client *Client) CreateWafRuleWithOptions(tmpReq *CreateWafRuleRequest, runtime *util.RuntimeOptions) (_result *CreateWafRuleResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateWafRuleShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Config)) {
+		request.ConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Config, tea.String("Config"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteVersion)) {
+		query["SiteVersion"] = request.SiteVersion
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigShrink)) {
+		body["Config"] = request.ConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Phase)) {
+		body["Phase"] = request.Phase
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RulesetId)) {
+		body["RulesetId"] = request.RulesetId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateWafRule"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateWafRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateWafRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// # Create WAF Rule
+//
+// @param request - CreateWafRuleRequest
+//
+// @return CreateWafRuleResponse
+func (client *Client) CreateWafRule(request *CreateWafRuleRequest) (_result *CreateWafRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateWafRuleResponse{}
+	_body, _err := client.CreateWafRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # Create WAF Ruleset
+//
+// @param request - CreateWafRulesetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateWafRulesetResponse
+func (client *Client) CreateWafRulesetWithOptions(request *CreateWafRulesetRequest, runtime *util.RuntimeOptions) (_result *CreateWafRulesetResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteVersion)) {
+		query["SiteVersion"] = request.SiteVersion
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Phase)) {
+		body["Phase"] = request.Phase
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateWafRuleset"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateWafRulesetResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateWafRulesetResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// # Create WAF Ruleset
+//
+// @param request - CreateWafRulesetRequest
+//
+// @return CreateWafRulesetResponse
+func (client *Client) CreateWafRuleset(request *CreateWafRulesetRequest) (_result *CreateWafRulesetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateWafRulesetResponse{}
+	_body, _err := client.CreateWafRulesetWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -71515,6 +77613,140 @@ func (client *Client) DeleteNetworkOptimization(request *DeleteNetworkOptimizati
 
 // Summary:
 //
+// 删除源服务器CA证书
+//
+// @param request - DeleteOriginCaCertificateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteOriginCaCertificateResponse
+func (client *Client) DeleteOriginCaCertificateWithOptions(request *DeleteOriginCaCertificateRequest, runtime *util.RuntimeOptions) (_result *DeleteOriginCaCertificateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteOriginCaCertificate"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteOriginCaCertificateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteOriginCaCertificateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 删除源服务器CA证书
+//
+// @param request - DeleteOriginCaCertificateRequest
+//
+// @return DeleteOriginCaCertificateResponse
+func (client *Client) DeleteOriginCaCertificate(request *DeleteOriginCaCertificateRequest) (_result *DeleteOriginCaCertificateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteOriginCaCertificateResponse{}
+	_body, _err := client.DeleteOriginCaCertificateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除域名回源客户端证书
+//
+// @param request - DeleteOriginClientCertificateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteOriginClientCertificateResponse
+func (client *Client) DeleteOriginClientCertificateWithOptions(request *DeleteOriginClientCertificateRequest, runtime *util.RuntimeOptions) (_result *DeleteOriginClientCertificateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteOriginClientCertificate"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteOriginClientCertificateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteOriginClientCertificateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 删除域名回源客户端证书
+//
+// @param request - DeleteOriginClientCertificateRequest
+//
+// @return DeleteOriginClientCertificateResponse
+func (client *Client) DeleteOriginClientCertificate(request *DeleteOriginClientCertificateRequest) (_result *DeleteOriginClientCertificateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteOriginClientCertificateResponse{}
+	_body, _err := client.DeleteOriginClientCertificateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Delete Origin Address Pool
 //
 // @param request - DeleteOriginPoolRequest
@@ -72638,6 +78870,73 @@ func (client *Client) DeleteSiteDeliveryTask(request *DeleteSiteDeliveryTaskRequ
 
 // Summary:
 //
+// 删除站点回源客户端证书
+//
+// @param request - DeleteSiteOriginClientCertificateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSiteOriginClientCertificateResponse
+func (client *Client) DeleteSiteOriginClientCertificateWithOptions(request *DeleteSiteOriginClientCertificateRequest, runtime *util.RuntimeOptions) (_result *DeleteSiteOriginClientCertificateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteSiteOriginClientCertificate"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteSiteOriginClientCertificateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteSiteOriginClientCertificateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 删除站点回源客户端证书
+//
+// @param request - DeleteSiteOriginClientCertificateRequest
+//
+// @return DeleteSiteOriginClientCertificateResponse
+func (client *Client) DeleteSiteOriginClientCertificate(request *DeleteSiteOriginClientCertificateRequest) (_result *DeleteSiteOriginClientCertificateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteSiteOriginClientCertificateResponse{}
+	_body, _err := client.DeleteSiteOriginClientCertificateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a log delivery task from your Alibaba Cloud account.
 //
 // Description:
@@ -72720,6 +79019,168 @@ func (client *Client) DeleteUserDeliveryTask(request *DeleteUserDeliveryTaskRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteUserDeliveryTaskResponse{}
 	_body, _err := client.DeleteUserDeliveryTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # Delete WAF Rule
+//
+// @param request - DeleteWafRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteWafRuleResponse
+func (client *Client) DeleteWafRuleWithOptions(request *DeleteWafRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteWafRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteVersion)) {
+		query["SiteVersion"] = request.SiteVersion
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteWafRule"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteWafRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteWafRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// # Delete WAF Rule
+//
+// @param request - DeleteWafRuleRequest
+//
+// @return DeleteWafRuleResponse
+func (client *Client) DeleteWafRule(request *DeleteWafRuleRequest) (_result *DeleteWafRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteWafRuleResponse{}
+	_body, _err := client.DeleteWafRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # Delete WAF Ruleset
+//
+// @param request - DeleteWafRulesetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteWafRulesetResponse
+func (client *Client) DeleteWafRulesetWithOptions(request *DeleteWafRulesetRequest, runtime *util.RuntimeOptions) (_result *DeleteWafRulesetResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteVersion)) {
+		query["SiteVersion"] = request.SiteVersion
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteWafRuleset"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteWafRulesetResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteWafRulesetResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// # Delete WAF Ruleset
+//
+// @param request - DeleteWafRulesetRequest
+//
+// @return DeleteWafRulesetResponse
+func (client *Client) DeleteWafRuleset(request *DeleteWafRulesetRequest) (_result *DeleteWafRulesetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteWafRulesetResponse{}
+	_body, _err := client.DeleteWafRulesetWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -73829,7 +80290,7 @@ func (client *Client) DisableCustomScenePolicy(request *DisableCustomScenePolicy
 
 // Summary:
 //
-// Modifies the Web Application Firewall (WAF) configuration of a website, such as the client IP address that is identified by WAF.
+// # Edit WAF Configuration for a Site
 //
 // @param tmpReq - EditSiteWafSettingsRequest
 //
@@ -73898,7 +80359,7 @@ func (client *Client) EditSiteWafSettingsWithOptions(tmpReq *EditSiteWafSettings
 
 // Summary:
 //
-// Modifies the Web Application Firewall (WAF) configuration of a website, such as the client IP address that is identified by WAF.
+// # Edit WAF Configuration for a Site
 //
 // @param request - EditSiteWafSettingsRequest
 //
@@ -76279,6 +82740,207 @@ func (client *Client) GetNetworkOptimization(request *GetNetworkOptimizationRequ
 
 // Summary:
 //
+// 获取源服务器CA证书信息
+//
+// @param request - GetOriginCaCertificateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetOriginCaCertificateResponse
+func (client *Client) GetOriginCaCertificateWithOptions(request *GetOriginCaCertificateRequest, runtime *util.RuntimeOptions) (_result *GetOriginCaCertificateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetOriginCaCertificate"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetOriginCaCertificateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetOriginCaCertificateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取源服务器CA证书信息
+//
+// @param request - GetOriginCaCertificateRequest
+//
+// @return GetOriginCaCertificateResponse
+func (client *Client) GetOriginCaCertificate(request *GetOriginCaCertificateRequest) (_result *GetOriginCaCertificateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetOriginCaCertificateResponse{}
+	_body, _err := client.GetOriginCaCertificateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取域名回源客户端证书信息
+//
+// @param request - GetOriginClientCertificateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetOriginClientCertificateResponse
+func (client *Client) GetOriginClientCertificateWithOptions(request *GetOriginClientCertificateRequest, runtime *util.RuntimeOptions) (_result *GetOriginClientCertificateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetOriginClientCertificate"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetOriginClientCertificateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetOriginClientCertificateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取域名回源客户端证书信息
+//
+// @param request - GetOriginClientCertificateRequest
+//
+// @return GetOriginClientCertificateResponse
+func (client *Client) GetOriginClientCertificate(request *GetOriginClientCertificateRequest) (_result *GetOriginClientCertificateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetOriginClientCertificateResponse{}
+	_body, _err := client.GetOriginClientCertificateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取域名回源客户端证书绑定的域名列表
+//
+// @param request - GetOriginClientCertificateHostnamesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetOriginClientCertificateHostnamesResponse
+func (client *Client) GetOriginClientCertificateHostnamesWithOptions(request *GetOriginClientCertificateHostnamesRequest, runtime *util.RuntimeOptions) (_result *GetOriginClientCertificateHostnamesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetOriginClientCertificateHostnames"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetOriginClientCertificateHostnamesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetOriginClientCertificateHostnamesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取域名回源客户端证书绑定的域名列表
+//
+// @param request - GetOriginClientCertificateHostnamesRequest
+//
+// @return GetOriginClientCertificateHostnamesResponse
+func (client *Client) GetOriginClientCertificateHostnames(request *GetOriginClientCertificateHostnamesRequest) (_result *GetOriginClientCertificateHostnamesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetOriginClientCertificateHostnamesResponse{}
+	_body, _err := client.GetOriginClientCertificateHostnamesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Query a specific origin pool
 //
 // @param request - GetOriginPoolRequest
@@ -77744,6 +84406,73 @@ func (client *Client) GetSiteNameExclusive(request *GetSiteNameExclusiveRequest)
 
 // Summary:
 //
+// 获取站点回源客户端证书信息
+//
+// @param request - GetSiteOriginClientCertificateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSiteOriginClientCertificateResponse
+func (client *Client) GetSiteOriginClientCertificateWithOptions(request *GetSiteOriginClientCertificateRequest, runtime *util.RuntimeOptions) (_result *GetSiteOriginClientCertificateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSiteOriginClientCertificate"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetSiteOriginClientCertificateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetSiteOriginClientCertificateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取站点回源客户端证书信息
+//
+// @param request - GetSiteOriginClientCertificateRequest
+//
+// @return GetSiteOriginClientCertificateResponse
+func (client *Client) GetSiteOriginClientCertificate(request *GetSiteOriginClientCertificateRequest) (_result *GetSiteOriginClientCertificateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetSiteOriginClientCertificateResponse{}
+	_body, _err := client.GetSiteOriginClientCertificateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the ESA proxy configuration of a website.
 //
 // @param request - GetSitePauseRequest
@@ -77811,7 +84540,7 @@ func (client *Client) GetSitePause(request *GetSitePauseRequest) (_result *GetSi
 
 // Summary:
 //
-// Queries the Web Application Firewall (WAF) configurations of a website.
+// # Get WAF Configuration for a Site
 //
 // @param request - GetSiteWafSettingsRequest
 //
@@ -77872,7 +84601,7 @@ func (client *Client) GetSiteWafSettingsWithOptions(request *GetSiteWafSettingsR
 
 // Summary:
 //
-// Queries the Web Application Firewall (WAF) configurations of a website.
+// # Get WAF Configuration for a Site
 //
 // @param request - GetSiteWafSettingsRequest
 //
@@ -78385,6 +85114,160 @@ func (client *Client) GetWafQuota(request *GetWafQuotaRequest) (_result *GetWafQ
 	runtime := &util.RuntimeOptions{}
 	_result = &GetWafQuotaResponse{}
 	_body, _err := client.GetWafQuotaWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # Get Details of a Single WAF Rule
+//
+// @param request - GetWafRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetWafRuleResponse
+func (client *Client) GetWafRuleWithOptions(request *GetWafRuleRequest, runtime *util.RuntimeOptions) (_result *GetWafRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetWafRule"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetWafRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetWafRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// # Get Details of a Single WAF Rule
+//
+// @param request - GetWafRuleRequest
+//
+// @return GetWafRuleResponse
+func (client *Client) GetWafRule(request *GetWafRuleRequest) (_result *GetWafRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetWafRuleResponse{}
+	_body, _err := client.GetWafRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # Get WAF Ruleset Details
+//
+// @param request - GetWafRulesetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetWafRulesetResponse
+func (client *Client) GetWafRulesetWithOptions(request *GetWafRulesetRequest, runtime *util.RuntimeOptions) (_result *GetWafRulesetResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Phase)) {
+		query["Phase"] = request.Phase
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetWafRuleset"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetWafRulesetResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetWafRulesetResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// # Get WAF Ruleset Details
+//
+// @param request - GetWafRulesetRequest
+//
+// @return GetWafRulesetResponse
+func (client *Client) GetWafRuleset(request *GetWafRulesetRequest) (_result *GetWafRulesetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetWafRulesetResponse{}
+	_body, _err := client.GetWafRulesetWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -80142,7 +87025,7 @@ func (client *Client) ListLoadBalancers(request *ListLoadBalancersRequest) (_res
 
 // Summary:
 //
-// Queries all WAF managed rule groups in your Alibaba Cloud account.
+// # List Custom Managed Rule Groups
 //
 // @param request - ListManagedRulesGroupsRequest
 //
@@ -80199,7 +87082,7 @@ func (client *Client) ListManagedRulesGroupsWithOptions(request *ListManagedRule
 
 // Summary:
 //
-// Queries all WAF managed rule groups in your Alibaba Cloud account.
+// # List Custom Managed Rule Groups
 //
 // @param request - ListManagedRulesGroupsRequest
 //
@@ -80275,6 +87158,140 @@ func (client *Client) ListNetworkOptimizations(request *ListNetworkOptimizations
 	runtime := &util.RuntimeOptions{}
 	_result = &ListNetworkOptimizationsResponse{}
 	_body, _err := client.ListNetworkOptimizationsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询源服务器CA证书列表
+//
+// @param request - ListOriginCaCertificatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListOriginCaCertificatesResponse
+func (client *Client) ListOriginCaCertificatesWithOptions(request *ListOriginCaCertificatesRequest, runtime *util.RuntimeOptions) (_result *ListOriginCaCertificatesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListOriginCaCertificates"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListOriginCaCertificatesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListOriginCaCertificatesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询源服务器CA证书列表
+//
+// @param request - ListOriginCaCertificatesRequest
+//
+// @return ListOriginCaCertificatesResponse
+func (client *Client) ListOriginCaCertificates(request *ListOriginCaCertificatesRequest) (_result *ListOriginCaCertificatesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListOriginCaCertificatesResponse{}
+	_body, _err := client.ListOriginCaCertificatesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询域名回源客户端证书列表
+//
+// @param request - ListOriginClientCertificatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListOriginClientCertificatesResponse
+func (client *Client) ListOriginClientCertificatesWithOptions(request *ListOriginClientCertificatesRequest, runtime *util.RuntimeOptions) (_result *ListOriginClientCertificatesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListOriginClientCertificates"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListOriginClientCertificatesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListOriginClientCertificatesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询域名回源客户端证书列表
+//
+// @param request - ListOriginClientCertificatesRequest
+//
+// @return ListOriginClientCertificatesResponse
+func (client *Client) ListOriginClientCertificates(request *ListOriginClientCertificatesRequest) (_result *ListOriginClientCertificatesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListOriginClientCertificatesResponse{}
+	_body, _err := client.ListOriginClientCertificatesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -81410,7 +88427,7 @@ func (client *Client) ListUserRatePlanInstances(request *ListUserRatePlanInstanc
 
 // Summary:
 //
-// Lists all Web Application Firewall (WAF) managed rules or some of them based on specific conditions. You can call this operation to query the details of WAF rules by page.
+// # List WAF Managed Rules
 //
 // @param tmpReq - ListWafManagedRulesRequest
 //
@@ -81497,7 +88514,7 @@ func (client *Client) ListWafManagedRulesWithOptions(tmpReq *ListWafManagedRules
 
 // Summary:
 //
-// Lists all Web Application Firewall (WAF) managed rules or some of them based on specific conditions. You can call this operation to query the details of WAF rules by page.
+// # List WAF Managed Rules
 //
 // @param request - ListWafManagedRulesRequest
 //
@@ -81515,7 +88532,7 @@ func (client *Client) ListWafManagedRules(request *ListWafManagedRulesRequest) (
 
 // Summary:
 //
-// Queries the WAF rule categories that are applied to a website and related rulesets.
+// # List WAF Phases
 //
 // @param request - ListWafPhasesRequest
 //
@@ -81572,7 +88589,7 @@ func (client *Client) ListWafPhasesWithOptions(request *ListWafPhasesRequest, ru
 
 // Summary:
 //
-// Queries the WAF rule categories that are applied to a website and related rulesets.
+// # List WAF Phases
 //
 // @param request - ListWafPhasesRequest
 //
@@ -81590,7 +88607,205 @@ func (client *Client) ListWafPhases(request *ListWafPhasesRequest) (_result *Lis
 
 // Summary:
 //
-// Queries template rules in Web Application Firewall (WAF). In most cases, these rules are pre-defined rulesets that are used to quickly enable protection against common types of attacks.
+// # List WAF Rules
+//
+// @param tmpReq - ListWafRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListWafRulesResponse
+func (client *Client) ListWafRulesWithOptions(tmpReq *ListWafRulesRequest, runtime *util.RuntimeOptions) (_result *ListWafRulesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListWafRulesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.QueryArgs)) {
+		request.QueryArgsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.QueryArgs, tea.String("QueryArgs"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Phase)) {
+		query["Phase"] = request.Phase
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryArgsShrink)) {
+		query["QueryArgs"] = request.QueryArgsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RulesetId)) {
+		query["RulesetId"] = request.RulesetId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteVersion)) {
+		query["SiteVersion"] = request.SiteVersion
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListWafRules"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListWafRulesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListWafRulesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// # List WAF Rules
+//
+// @param request - ListWafRulesRequest
+//
+// @return ListWafRulesResponse
+func (client *Client) ListWafRules(request *ListWafRulesRequest) (_result *ListWafRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListWafRulesResponse{}
+	_body, _err := client.ListWafRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # List WAF Rule Sets
+//
+// @param tmpReq - ListWafRulesetsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListWafRulesetsResponse
+func (client *Client) ListWafRulesetsWithOptions(tmpReq *ListWafRulesetsRequest, runtime *util.RuntimeOptions) (_result *ListWafRulesetsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListWafRulesetsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.QueryArgs)) {
+		request.QueryArgsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.QueryArgs, tea.String("QueryArgs"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Phase)) {
+		query["Phase"] = request.Phase
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryArgsShrink)) {
+		query["QueryArgs"] = request.QueryArgsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteVersion)) {
+		query["SiteVersion"] = request.SiteVersion
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListWafRulesets"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListWafRulesetsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListWafRulesetsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// # List WAF Rule Sets
+//
+// @param request - ListWafRulesetsRequest
+//
+// @return ListWafRulesetsResponse
+func (client *Client) ListWafRulesets(request *ListWafRulesetsRequest) (_result *ListWafRulesetsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListWafRulesetsResponse{}
+	_body, _err := client.ListWafRulesetsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # List WAF Template Rules
 //
 // @param tmpReq - ListWafTemplateRulesRequest
 //
@@ -81657,7 +88872,7 @@ func (client *Client) ListWafTemplateRulesWithOptions(tmpReq *ListWafTemplateRul
 
 // Summary:
 //
-// Queries template rules in Web Application Firewall (WAF). In most cases, these rules are pre-defined rulesets that are used to quickly enable protection against common types of attacks.
+// # List WAF Template Rules
 //
 // @param request - ListWafTemplateRulesRequest
 //
@@ -81675,7 +88890,7 @@ func (client *Client) ListWafTemplateRules(request *ListWafTemplateRulesRequest)
 
 // Summary:
 //
-// Queries the usage details of WAF rules.
+// # List WAF Rule Usage
 //
 // @param request - ListWafUsageOfRulesRequest
 //
@@ -81732,7 +88947,7 @@ func (client *Client) ListWafUsageOfRulesWithOptions(request *ListWafUsageOfRule
 
 // Summary:
 //
-// Queries the usage details of WAF rules.
+// # List WAF Rule Usage
 //
 // @param request - ListWafUsageOfRulesRequest
 //
@@ -83642,6 +90857,91 @@ func (client *Client) SetHttpDDoSAttackProtection(request *SetHttpDDoSAttackProt
 
 // Summary:
 //
+// 为域名回源客户端证书绑定域名
+//
+// @param tmpReq - SetOriginClientCertificateHostnamesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetOriginClientCertificateHostnamesResponse
+func (client *Client) SetOriginClientCertificateHostnamesWithOptions(tmpReq *SetOriginClientCertificateHostnamesRequest, runtime *util.RuntimeOptions) (_result *SetOriginClientCertificateHostnamesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SetOriginClientCertificateHostnamesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Hostnames)) {
+		request.HostnamesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Hostnames, tea.String("Hostnames"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HostnamesShrink)) {
+		body["Hostnames"] = request.HostnamesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		body["SiteId"] = request.SiteId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetOriginClientCertificateHostnames"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetOriginClientCertificateHostnamesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetOriginClientCertificateHostnamesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 为域名回源客户端证书绑定域名
+//
+// @param request - SetOriginClientCertificateHostnamesRequest
+//
+// @return SetOriginClientCertificateHostnamesResponse
+func (client *Client) SetOriginClientCertificateHostnames(request *SetOriginClientCertificateHostnamesRequest) (_result *SetOriginClientCertificateHostnamesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetOriginClientCertificateHostnamesResponse{}
+	_body, _err := client.SetOriginClientCertificateHostnamesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Starts a scheduled prefetch plan based on the plan ID.
 //
 // @param request - StartScheduledPreloadExecutionRequest
@@ -84051,6 +91351,10 @@ func (client *Client) UpdateCacheRuleWithOptions(request *UpdateCacheRuleRequest
 		query["RuleName"] = request.RuleName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Sequence)) {
+		query["Sequence"] = request.Sequence
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ServeStale)) {
 		query["ServeStale"] = request.ServeStale
 	}
@@ -84322,6 +91626,10 @@ func (client *Client) UpdateCompressionRuleWithOptions(request *UpdateCompressio
 
 	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
 		query["RuleName"] = request.RuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sequence)) {
+		query["Sequence"] = request.Sequence
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
@@ -84763,6 +92071,10 @@ func (client *Client) UpdateHttpRequestHeaderModificationRuleWithOptions(tmpReq 
 		query["RuleName"] = request.RuleName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Sequence)) {
+		query["Sequence"] = request.Sequence
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
 		query["SiteId"] = request.SiteId
 	}
@@ -84858,6 +92170,10 @@ func (client *Client) UpdateHttpResponseHeaderModificationRuleWithOptions(tmpReq
 
 	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
 		query["RuleName"] = request.RuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sequence)) {
+		query["Sequence"] = request.Sequence
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
@@ -84987,6 +92303,10 @@ func (client *Client) UpdateHttpsApplicationConfigurationWithOptions(request *Up
 		query["RuleName"] = request.RuleName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Sequence)) {
+		query["Sequence"] = request.Sequence
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
 		query["SiteId"] = request.SiteId
 	}
@@ -85098,6 +92418,10 @@ func (client *Client) UpdateHttpsBasicConfigurationWithOptions(request *UpdateHt
 		query["RuleName"] = request.RuleName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Sequence)) {
+		query["Sequence"] = request.Sequence
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
 		query["SiteId"] = request.SiteId
 	}
@@ -85189,6 +92513,10 @@ func (client *Client) UpdateIPv6WithOptions(request *UpdateIPv6Request, runtime 
 		query["Enable"] = request.Enable
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
 		query["SiteId"] = request.SiteId
 	}
@@ -85278,6 +92606,10 @@ func (client *Client) UpdateImageTransformWithOptions(request *UpdateImageTransf
 
 	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
 		query["RuleName"] = request.RuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sequence)) {
+		query["Sequence"] = request.Sequence
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
@@ -85704,6 +93036,10 @@ func (client *Client) UpdateNetworkOptimizationWithOptions(request *UpdateNetwor
 		query["RuleName"] = request.RuleName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Sequence)) {
+		query["Sequence"] = request.Sequence
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
 		query["SiteId"] = request.SiteId
 	}
@@ -86076,6 +93412,10 @@ func (client *Client) UpdateOriginRuleWithOptions(request *UpdateOriginRuleReque
 
 	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
 		query["RuleName"] = request.RuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sequence)) {
+		query["Sequence"] = request.Sequence
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
@@ -86492,6 +93832,10 @@ func (client *Client) UpdateRedirectRuleWithOptions(request *UpdateRedirectRuleR
 		query["RuleName"] = request.RuleName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Sequence)) {
+		query["Sequence"] = request.Sequence
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
 		query["SiteId"] = request.SiteId
 	}
@@ -86601,6 +93945,10 @@ func (client *Client) UpdateRewriteUrlRuleWithOptions(request *UpdateRewriteUrlR
 
 	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
 		query["RuleName"] = request.RuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sequence)) {
+		query["Sequence"] = request.Sequence
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
@@ -87712,6 +95060,190 @@ func (client *Client) UpdateUserDeliveryTaskStatus(request *UpdateUserDeliveryTa
 
 // Summary:
 //
+// # Update WAF Rule Page
+//
+// @param tmpReq - UpdateWafRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateWafRuleResponse
+func (client *Client) UpdateWafRuleWithOptions(tmpReq *UpdateWafRuleRequest, runtime *util.RuntimeOptions) (_result *UpdateWafRuleResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateWafRuleShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Config)) {
+		request.ConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Config, tea.String("Config"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteVersion)) {
+		query["SiteVersion"] = request.SiteVersion
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigShrink)) {
+		body["Config"] = request.ConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Position)) {
+		body["Position"] = request.Position
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		body["Status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateWafRule"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateWafRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateWafRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// # Update WAF Rule Page
+//
+// @param request - UpdateWafRuleRequest
+//
+// @return UpdateWafRuleResponse
+func (client *Client) UpdateWafRule(request *UpdateWafRuleRequest) (_result *UpdateWafRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateWafRuleResponse{}
+	_body, _err := client.UpdateWafRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # Update WAF Ruleset
+//
+// @param request - UpdateWafRulesetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateWafRulesetResponse
+func (client *Client) UpdateWafRulesetWithOptions(request *UpdateWafRulesetRequest, runtime *util.RuntimeOptions) (_result *UpdateWafRulesetResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteVersion)) {
+		query["SiteVersion"] = request.SiteVersion
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		body["Status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateWafRuleset"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateWafRulesetResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateWafRulesetResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// # Update WAF Ruleset
+//
+// @param request - UpdateWafRulesetRequest
+//
+// @return UpdateWafRulesetResponse
+func (client *Client) UpdateWafRuleset(request *UpdateWafRulesetRequest) (_result *UpdateWafRulesetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateWafRulesetResponse{}
+	_body, _err := client.UpdateWafRulesetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies the configurations of a waiting room.
 //
 // @param tmpReq - UpdateWaitingRoomRequest
@@ -88381,6 +95913,255 @@ func (client *Client) UploadFileAdvance(request *UploadFileAdvanceRequest, runti
 	}
 
 	_result = uploadFileResp
+	return _result, _err
+}
+
+// Summary:
+//
+// 上传源服务器CA证书
+//
+// @param request - UploadOriginCaCertificateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UploadOriginCaCertificateResponse
+func (client *Client) UploadOriginCaCertificateWithOptions(request *UploadOriginCaCertificateRequest, runtime *util.RuntimeOptions) (_result *UploadOriginCaCertificateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Certificate)) {
+		body["Certificate"] = request.Certificate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		body["SiteId"] = request.SiteId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UploadOriginCaCertificate"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UploadOriginCaCertificateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UploadOriginCaCertificateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 上传源服务器CA证书
+//
+// @param request - UploadOriginCaCertificateRequest
+//
+// @return UploadOriginCaCertificateResponse
+func (client *Client) UploadOriginCaCertificate(request *UploadOriginCaCertificateRequest) (_result *UploadOriginCaCertificateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UploadOriginCaCertificateResponse{}
+	_body, _err := client.UploadOriginCaCertificateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 上传域名回源客户端证书
+//
+// @param request - UploadOriginClientCertificateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UploadOriginClientCertificateResponse
+func (client *Client) UploadOriginClientCertificateWithOptions(request *UploadOriginClientCertificateRequest, runtime *util.RuntimeOptions) (_result *UploadOriginClientCertificateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Certificate)) {
+		body["Certificate"] = request.Certificate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrivateKey)) {
+		body["PrivateKey"] = request.PrivateKey
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UploadOriginClientCertificate"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UploadOriginClientCertificateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UploadOriginClientCertificateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 上传域名回源客户端证书
+//
+// @param request - UploadOriginClientCertificateRequest
+//
+// @return UploadOriginClientCertificateResponse
+func (client *Client) UploadOriginClientCertificate(request *UploadOriginClientCertificateRequest) (_result *UploadOriginClientCertificateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UploadOriginClientCertificateResponse{}
+	_body, _err := client.UploadOriginClientCertificateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # Upload site origin client certificate
+//
+// @param request - UploadSiteOriginClientCertificateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UploadSiteOriginClientCertificateResponse
+func (client *Client) UploadSiteOriginClientCertificateWithOptions(request *UploadSiteOriginClientCertificateRequest, runtime *util.RuntimeOptions) (_result *UploadSiteOriginClientCertificateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Certificate)) {
+		body["Certificate"] = request.Certificate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrivateKey)) {
+		body["PrivateKey"] = request.PrivateKey
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UploadSiteOriginClientCertificate"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UploadSiteOriginClientCertificateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UploadSiteOriginClientCertificateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// # Upload site origin client certificate
+//
+// @param request - UploadSiteOriginClientCertificateRequest
+//
+// @return UploadSiteOriginClientCertificateResponse
+func (client *Client) UploadSiteOriginClientCertificate(request *UploadSiteOriginClientCertificateRequest) (_result *UploadSiteOriginClientCertificateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UploadSiteOriginClientCertificateResponse{}
+	_body, _err := client.UploadSiteOriginClientCertificateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
 
