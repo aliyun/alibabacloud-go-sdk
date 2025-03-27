@@ -988,161 +988,6 @@ func (s *AddBackendServersResponse) SetBody(v *AddBackendServersResponseBody) *A
 	return s
 }
 
-type AddDeviceInternetPortRequest struct {
-	// The Internet service provider (ISP). If you leave this parameter empty, the system automatically allows a random ISP. Valid values:
-	//
-	// 	- telecom: China Telecom
-	//
-	// 	- cmcc: China Mobile
-	//
-	// 	- unicom: China Unicom
-	//
-	// 	- cbn: China Broadcasting Network (CBN)
-	//
-	// example:
-	//
-	// telecom
-	ISP *string `json:"ISP,omitempty" xml:"ISP,omitempty"`
-	// The ID of the instance. You can specify the ID of the server or container.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// i-5saiou41t6ude2ia56ri902ke
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The private IP address of the simple application server.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 10.0.0.50
-	InternalIp *string `json:"InternalIp,omitempty" xml:"InternalIp,omitempty"`
-	// The internal port number. Specify this parameter in the following format: first port/last port. Separate multiple port number groups with commas (,). Example: 1026/2001,2005/2005. This parameter is required if you set NatType to DNAT. If you set NatType to SNAT, the value of this parameter is invalid.
-	//
-	// example:
-	//
-	// 12022/12022
-	InternalPort *string `json:"InternalPort,omitempty" xml:"InternalPort,omitempty"`
-	// The type of the NAT gateway. The value of this parameter is of the enumerated data type. Valid values:
-	//
-	// 	- SNAT
-	//
-	// 	- DNAT
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// DNAT
-	NatType *string `json:"NatType,omitempty" xml:"NatType,omitempty"`
-	// The ID of the Edge Node Service (ENS) node.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// cn-wuxi-5
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s AddDeviceInternetPortRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddDeviceInternetPortRequest) GoString() string {
-	return s.String()
-}
-
-func (s *AddDeviceInternetPortRequest) SetISP(v string) *AddDeviceInternetPortRequest {
-	s.ISP = &v
-	return s
-}
-
-func (s *AddDeviceInternetPortRequest) SetInstanceId(v string) *AddDeviceInternetPortRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *AddDeviceInternetPortRequest) SetInternalIp(v string) *AddDeviceInternetPortRequest {
-	s.InternalIp = &v
-	return s
-}
-
-func (s *AddDeviceInternetPortRequest) SetInternalPort(v string) *AddDeviceInternetPortRequest {
-	s.InternalPort = &v
-	return s
-}
-
-func (s *AddDeviceInternetPortRequest) SetNatType(v string) *AddDeviceInternetPortRequest {
-	s.NatType = &v
-	return s
-}
-
-func (s *AddDeviceInternetPortRequest) SetRegionId(v string) *AddDeviceInternetPortRequest {
-	s.RegionId = &v
-	return s
-}
-
-type AddDeviceInternetPortResponseBody struct {
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 0F9185F6-B6FA-514C-9E05-FFD5F0D7D156
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of rules.
-	RuleIds []*string `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Repeated"`
-}
-
-func (s AddDeviceInternetPortResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddDeviceInternetPortResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *AddDeviceInternetPortResponseBody) SetRequestId(v string) *AddDeviceInternetPortResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *AddDeviceInternetPortResponseBody) SetRuleIds(v []*string) *AddDeviceInternetPortResponseBody {
-	s.RuleIds = v
-	return s
-}
-
-type AddDeviceInternetPortResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *AddDeviceInternetPortResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s AddDeviceInternetPortResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddDeviceInternetPortResponse) GoString() string {
-	return s.String()
-}
-
-func (s *AddDeviceInternetPortResponse) SetHeaders(v map[string]*string) *AddDeviceInternetPortResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *AddDeviceInternetPortResponse) SetStatusCode(v int32) *AddDeviceInternetPortResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *AddDeviceInternetPortResponse) SetBody(v *AddDeviceInternetPortResponseBody) *AddDeviceInternetPortResponse {
-	s.Body = v
-	return s
-}
-
 type AddNetworkInterfaceToInstanceRequest struct {
 	// Specifies whether to specify the instance.
 	//
@@ -5529,6 +5374,7 @@ type CreateImageRequest struct {
 	//
 	// cn-beijing
 	TargetOSSRegionId *string `json:"TargetOSSRegionId,omitempty" xml:"TargetOSSRegionId,omitempty"`
+	WithDataDisks     *bool   `json:"WithDataDisks,omitempty" xml:"WithDataDisks,omitempty"`
 }
 
 func (s CreateImageRequest) String() string {
@@ -5561,6 +5407,11 @@ func (s *CreateImageRequest) SetSnapshotId(v string) *CreateImageRequest {
 
 func (s *CreateImageRequest) SetTargetOSSRegionId(v string) *CreateImageRequest {
 	s.TargetOSSRegionId = &v
+	return s
+}
+
+func (s *CreateImageRequest) SetWithDataDisks(v bool) *CreateImageRequest {
+	s.WithDataDisks = &v
 	return s
 }
 
@@ -10384,118 +10235,6 @@ func (s *DeleteBucketLifecycleResponse) SetStatusCode(v int32) *DeleteBucketLife
 }
 
 func (s *DeleteBucketLifecycleResponse) SetBody(v *DeleteBucketLifecycleResponseBody) *DeleteBucketLifecycleResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteDeviceInternetPortRequest struct {
-	// The ID of the instance. You can specify the ID of the server or container.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// i-5scdmgpdegymqyugf85q66l1a
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The type of the NAT gateway. The value must be of the enumerated data type. Valid values:
-	//
-	// 	- SNAT
-	//
-	// 	- DNAT
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// DNAT
-	NatType *string `json:"NatType,omitempty" xml:"NatType,omitempty"`
-	// The ID of the rule.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// snat-5rfzxah5gzfo869fl6epvon3y
-	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-}
-
-func (s DeleteDeviceInternetPortRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteDeviceInternetPortRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteDeviceInternetPortRequest) SetInstanceId(v string) *DeleteDeviceInternetPortRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *DeleteDeviceInternetPortRequest) SetNatType(v string) *DeleteDeviceInternetPortRequest {
-	s.NatType = &v
-	return s
-}
-
-func (s *DeleteDeviceInternetPortRequest) SetRuleId(v string) *DeleteDeviceInternetPortRequest {
-	s.RuleId = &v
-	return s
-}
-
-type DeleteDeviceInternetPortResponseBody struct {
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 51F57D60-7946-5EE1-A973-A3CCCCF2EF5B
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of rules.
-	RuleIds []*string `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Repeated"`
-}
-
-func (s DeleteDeviceInternetPortResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteDeviceInternetPortResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteDeviceInternetPortResponseBody) SetRequestId(v string) *DeleteDeviceInternetPortResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteDeviceInternetPortResponseBody) SetRuleIds(v []*string) *DeleteDeviceInternetPortResponseBody {
-	s.RuleIds = v
-	return s
-}
-
-type DeleteDeviceInternetPortResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *DeleteDeviceInternetPortResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s DeleteDeviceInternetPortResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteDeviceInternetPortResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteDeviceInternetPortResponse) SetHeaders(v map[string]*string) *DeleteDeviceInternetPortResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteDeviceInternetPortResponse) SetStatusCode(v int32) *DeleteDeviceInternetPortResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DeleteDeviceInternetPortResponse) SetBody(v *DeleteDeviceInternetPortResponseBody) *DeleteDeviceInternetPortResponse {
 	s.Body = v
 	return s
 }
@@ -16082,13 +15821,13 @@ type DescribeCloudDiskAvailableResourceInfoResponseBodySupportResourcesSupportRe
 	CanBuyCount *int64 `json:"CanBuyCount,omitempty" xml:"CanBuyCount,omitempty"`
 	// The type of the disk.
 	//
-	// 	- cloud_efficiency: ultra disk.
+	// 	- cloud_efficiency:ultra disk.
 	//
-	// 	- cloud_ssd: all-flash disk.
+	// 	- cloud_ssd:all-flash disk.
 	//
-	// 	- local_hdd: local HDD.
+	// 	- local_hdd:local HDD.
 	//
-	// 	- local_ssd: local SSD.
+	// 	- local_ssd:local SSD.
 	//
 	// example:
 	//
@@ -19824,7 +19563,8 @@ type DescribeEnsEipAddressesRequest struct {
 	// example:
 	//
 	// cn-chengdu-telecom
-	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	EnsRegionId  *string   `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	EnsRegionIds []*string `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty" type:"Repeated"`
 	// The page number. Default value: 1.
 	//
 	// example:
@@ -19884,6 +19624,11 @@ func (s *DescribeEnsEipAddressesRequest) SetEipName(v string) *DescribeEnsEipAdd
 
 func (s *DescribeEnsEipAddressesRequest) SetEnsRegionId(v string) *DescribeEnsEipAddressesRequest {
 	s.EnsRegionId = &v
+	return s
+}
+
+func (s *DescribeEnsEipAddressesRequest) SetEnsRegionIds(v []*string) *DescribeEnsEipAddressesRequest {
+	s.EnsRegionIds = v
 	return s
 }
 
@@ -25666,7 +25411,8 @@ type DescribeHaVipsRequest struct {
 	// example:
 	//
 	// cn-beijing-cmcc
-	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	EnsRegionId  *string   `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	EnsRegionIds []*string `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty" type:"Repeated"`
 	// The IP address of the HAVIP.
 	//
 	// example:
@@ -25735,6 +25481,11 @@ func (s DescribeHaVipsRequest) GoString() string {
 
 func (s *DescribeHaVipsRequest) SetEnsRegionId(v string) *DescribeHaVipsRequest {
 	s.EnsRegionId = &v
+	return s
+}
+
+func (s *DescribeHaVipsRequest) SetEnsRegionIds(v []*string) *DescribeHaVipsRequest {
+	s.EnsRegionIds = v
 	return s
 }
 
@@ -27472,6 +27223,160 @@ func (s *DescribeInstanceBandwidthDetailResponse) SetStatusCode(v int32) *Descri
 }
 
 func (s *DescribeInstanceBandwidthDetailResponse) SetBody(v *DescribeInstanceBandwidthDetailResponseBody) *DescribeInstanceBandwidthDetailResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeInstanceBootConfigurationRequest struct {
+	// example:
+	//
+	// legacy
+	BootSet *string `json:"BootSet,omitempty" xml:"BootSet,omitempty"`
+	// example:
+	//
+	// pxe
+	BootType *string `json:"BootType,omitempty" xml:"BootType,omitempty"`
+	// example:
+	//
+	// on
+	DiskSet *string `json:"DiskSet,omitempty" xml:"DiskSet,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// i-****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s DescribeInstanceBootConfigurationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceBootConfigurationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceBootConfigurationRequest) SetBootSet(v string) *DescribeInstanceBootConfigurationRequest {
+	s.BootSet = &v
+	return s
+}
+
+func (s *DescribeInstanceBootConfigurationRequest) SetBootType(v string) *DescribeInstanceBootConfigurationRequest {
+	s.BootType = &v
+	return s
+}
+
+func (s *DescribeInstanceBootConfigurationRequest) SetDiskSet(v string) *DescribeInstanceBootConfigurationRequest {
+	s.DiskSet = &v
+	return s
+}
+
+func (s *DescribeInstanceBootConfigurationRequest) SetInstanceId(v string) *DescribeInstanceBootConfigurationRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type DescribeInstanceBootConfigurationResponseBody struct {
+	// Schema of Response
+	Instances *DescribeInstanceBootConfigurationResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
+	// Id of the request
+	//
+	// example:
+	//
+	// F3B261DD-3858-4D3C-877D-303ADF374600
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeInstanceBootConfigurationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceBootConfigurationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceBootConfigurationResponseBody) SetInstances(v *DescribeInstanceBootConfigurationResponseBodyInstances) *DescribeInstanceBootConfigurationResponseBody {
+	s.Instances = v
+	return s
+}
+
+func (s *DescribeInstanceBootConfigurationResponseBody) SetRequestId(v string) *DescribeInstanceBootConfigurationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeInstanceBootConfigurationResponseBodyInstances struct {
+	// example:
+	//
+	// legacy
+	BootSet *string `json:"BootSet,omitempty" xml:"BootSet,omitempty"`
+	// example:
+	//
+	// disk
+	BootType *string `json:"BootType,omitempty" xml:"BootType,omitempty"`
+	// example:
+	//
+	// off
+	DiskSet *string `json:"DiskSet,omitempty" xml:"DiskSet,omitempty"`
+	// example:
+	//
+	// i-****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s DescribeInstanceBootConfigurationResponseBodyInstances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceBootConfigurationResponseBodyInstances) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceBootConfigurationResponseBodyInstances) SetBootSet(v string) *DescribeInstanceBootConfigurationResponseBodyInstances {
+	s.BootSet = &v
+	return s
+}
+
+func (s *DescribeInstanceBootConfigurationResponseBodyInstances) SetBootType(v string) *DescribeInstanceBootConfigurationResponseBodyInstances {
+	s.BootType = &v
+	return s
+}
+
+func (s *DescribeInstanceBootConfigurationResponseBodyInstances) SetDiskSet(v string) *DescribeInstanceBootConfigurationResponseBodyInstances {
+	s.DiskSet = &v
+	return s
+}
+
+func (s *DescribeInstanceBootConfigurationResponseBodyInstances) SetInstanceId(v string) *DescribeInstanceBootConfigurationResponseBodyInstances {
+	s.InstanceId = &v
+	return s
+}
+
+type DescribeInstanceBootConfigurationResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeInstanceBootConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeInstanceBootConfigurationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceBootConfigurationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceBootConfigurationResponse) SetHeaders(v map[string]*string) *DescribeInstanceBootConfigurationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeInstanceBootConfigurationResponse) SetStatusCode(v int32) *DescribeInstanceBootConfigurationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeInstanceBootConfigurationResponse) SetBody(v *DescribeInstanceBootConfigurationResponseBody) *DescribeInstanceBootConfigurationResponse {
 	s.Body = v
 	return s
 }
@@ -41011,7 +40916,8 @@ type DescribeSecondaryPublicIpAddressesRequest struct {
 	// example:
 	//
 	// cn-hangzhou-44
-	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	EnsRegionId  *string   `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	EnsRegionIds []*string `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty" type:"Repeated"`
 	// The Internet service provider. Valid values:
 	//
 	// 	- cmcc: China Mobile.
@@ -41060,6 +40966,11 @@ func (s DescribeSecondaryPublicIpAddressesRequest) GoString() string {
 
 func (s *DescribeSecondaryPublicIpAddressesRequest) SetEnsRegionId(v string) *DescribeSecondaryPublicIpAddressesRequest {
 	s.EnsRegionId = &v
+	return s
+}
+
+func (s *DescribeSecondaryPublicIpAddressesRequest) SetEnsRegionIds(v []*string) *DescribeSecondaryPublicIpAddressesRequest {
+	s.EnsRegionIds = v
 	return s
 }
 
@@ -47028,204 +46939,6 @@ func (s *GetBucketLifecycleResponse) SetBody(v *GetBucketLifecycleResponseBody) 
 	return s
 }
 
-type GetDeviceInternetPortRequest struct {
-	// The ID of the instance. You can specify the ID of the server or container. You can specify only one ID.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// i-5s6xbnx9srb3vm6tp9hg9o64e
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The type of the NAT gateway. The value must be of the enumerated data type. Valid values:
-	//
-	// 	- SNAT
-	//
-	// 	- DNAT
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// DNAT
-	NatType *string `json:"NatType,omitempty" xml:"NatType,omitempty"`
-	// The ID of the rule. If you leave this parameter empty, all rules are queried.
-	//
-	// example:
-	//
-	// snat-5ref5fc1l1xgqnpjzrtw1hw5a
-	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-}
-
-func (s GetDeviceInternetPortRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDeviceInternetPortRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetDeviceInternetPortRequest) SetInstanceId(v string) *GetDeviceInternetPortRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *GetDeviceInternetPortRequest) SetNatType(v string) *GetDeviceInternetPortRequest {
-	s.NatType = &v
-	return s
-}
-
-func (s *GetDeviceInternetPortRequest) SetRuleId(v string) *GetDeviceInternetPortRequest {
-	s.RuleId = &v
-	return s
-}
-
-type GetDeviceInternetPortResponseBody struct {
-	// The ID of the instance. The value is the ID of the server or container.
-	//
-	// example:
-	//
-	// i-5sadvk2xnylvra9kyejcnevi6
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The network mapping information about the instance.
-	NetworkInfo []*GetDeviceInternetPortResponseBodyNetworkInfo `json:"NetworkInfo,omitempty" xml:"NetworkInfo,omitempty" type:"Repeated"`
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 36311833-83FC-57C3-A7DD-768F61F65555
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s GetDeviceInternetPortResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDeviceInternetPortResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetDeviceInternetPortResponseBody) SetInstanceId(v string) *GetDeviceInternetPortResponseBody {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *GetDeviceInternetPortResponseBody) SetNetworkInfo(v []*GetDeviceInternetPortResponseBodyNetworkInfo) *GetDeviceInternetPortResponseBody {
-	s.NetworkInfo = v
-	return s
-}
-
-func (s *GetDeviceInternetPortResponseBody) SetRequestId(v string) *GetDeviceInternetPortResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type GetDeviceInternetPortResponseBodyNetworkInfo struct {
-	// The public IP address.
-	//
-	// example:
-	//
-	// 39.105.62.120
-	ExternalIp *string `json:"ExternalIp,omitempty" xml:"ExternalIp,omitempty"`
-	// The external port number.
-	//
-	// example:
-	//
-	// 20
-	ExternalPort *string `json:"ExternalPort,omitempty" xml:"ExternalPort,omitempty"`
-	// The Internet service provider (ISP).
-	//
-	// example:
-	//
-	// cmcc
-	ISP *string `json:"ISP,omitempty" xml:"ISP,omitempty"`
-	// The internal IP address.
-	//
-	// example:
-	//
-	// 10.0.0.49
-	InternalIp *string `json:"InternalIp,omitempty" xml:"InternalIp,omitempty"`
-	// The internal port number.
-	//
-	// example:
-	//
-	// 2020/2025
-	InternalPort *string `json:"InternalPort,omitempty" xml:"InternalPort,omitempty"`
-	// The status of the external port.
-	//
-	// example:
-	//
-	// Running
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s GetDeviceInternetPortResponseBodyNetworkInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDeviceInternetPortResponseBodyNetworkInfo) GoString() string {
-	return s.String()
-}
-
-func (s *GetDeviceInternetPortResponseBodyNetworkInfo) SetExternalIp(v string) *GetDeviceInternetPortResponseBodyNetworkInfo {
-	s.ExternalIp = &v
-	return s
-}
-
-func (s *GetDeviceInternetPortResponseBodyNetworkInfo) SetExternalPort(v string) *GetDeviceInternetPortResponseBodyNetworkInfo {
-	s.ExternalPort = &v
-	return s
-}
-
-func (s *GetDeviceInternetPortResponseBodyNetworkInfo) SetISP(v string) *GetDeviceInternetPortResponseBodyNetworkInfo {
-	s.ISP = &v
-	return s
-}
-
-func (s *GetDeviceInternetPortResponseBodyNetworkInfo) SetInternalIp(v string) *GetDeviceInternetPortResponseBodyNetworkInfo {
-	s.InternalIp = &v
-	return s
-}
-
-func (s *GetDeviceInternetPortResponseBodyNetworkInfo) SetInternalPort(v string) *GetDeviceInternetPortResponseBodyNetworkInfo {
-	s.InternalPort = &v
-	return s
-}
-
-func (s *GetDeviceInternetPortResponseBodyNetworkInfo) SetStatus(v string) *GetDeviceInternetPortResponseBodyNetworkInfo {
-	s.Status = &v
-	return s
-}
-
-type GetDeviceInternetPortResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *GetDeviceInternetPortResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s GetDeviceInternetPortResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDeviceInternetPortResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetDeviceInternetPortResponse) SetHeaders(v map[string]*string) *GetDeviceInternetPortResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetDeviceInternetPortResponse) SetStatusCode(v int32) *GetDeviceInternetPortResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetDeviceInternetPortResponse) SetBody(v *GetDeviceInternetPortResponseBody) *GetDeviceInternetPortResponse {
-	s.Body = v
-	return s
-}
-
 type GetOssStorageAndAccByBucketsRequest struct {
 	// The information about the bucket.
 	//
@@ -47553,6 +47266,356 @@ func (s *GetOssUsageDataResponse) SetStatusCode(v int32) *GetOssUsageDataRespons
 }
 
 func (s *GetOssUsageDataResponse) SetBody(v *GetOssUsageDataResponseBody) *GetOssUsageDataResponse {
+	s.Body = v
+	return s
+}
+
+type ImportImageRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// x86_64
+	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ens_vm
+	ComputeType       *string                                `json:"ComputeType,omitempty" xml:"ComputeType,omitempty"`
+	DiskDeviceMapping []*ImportImageRequestDiskDeviceMapping `json:"DiskDeviceMapping,omitempty" xml:"DiskDeviceMapping,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// qcow2
+	ImageFormat *string `json:"ImageFormat,omitempty" xml:"ImageFormat,omitempty"`
+	// This parameter is required.
+	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	// example:
+	//
+	// tmp-hybrid
+	OSSBucket *string `json:"OSSBucket,omitempty" xml:"OSSBucket,omitempty"`
+	// example:
+	//
+	// image-test
+	OSSObject *string `json:"OSSObject,omitempty" xml:"OSSObject,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	OSSRegion *string `json:"OSSRegion,omitempty" xml:"OSSRegion,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// linux
+	OSType *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 6.8
+	OSVersion *string `json:"OSVersion,omitempty" xml:"OSVersion,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// centos
+	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	TargetOSSRegionId *string `json:"TargetOSSRegionId,omitempty" xml:"TargetOSSRegionId,omitempty"`
+}
+
+func (s ImportImageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportImageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ImportImageRequest) SetArchitecture(v string) *ImportImageRequest {
+	s.Architecture = &v
+	return s
+}
+
+func (s *ImportImageRequest) SetComputeType(v string) *ImportImageRequest {
+	s.ComputeType = &v
+	return s
+}
+
+func (s *ImportImageRequest) SetDiskDeviceMapping(v []*ImportImageRequestDiskDeviceMapping) *ImportImageRequest {
+	s.DiskDeviceMapping = v
+	return s
+}
+
+func (s *ImportImageRequest) SetImageFormat(v string) *ImportImageRequest {
+	s.ImageFormat = &v
+	return s
+}
+
+func (s *ImportImageRequest) SetImageName(v string) *ImportImageRequest {
+	s.ImageName = &v
+	return s
+}
+
+func (s *ImportImageRequest) SetOSSBucket(v string) *ImportImageRequest {
+	s.OSSBucket = &v
+	return s
+}
+
+func (s *ImportImageRequest) SetOSSObject(v string) *ImportImageRequest {
+	s.OSSObject = &v
+	return s
+}
+
+func (s *ImportImageRequest) SetOSSRegion(v string) *ImportImageRequest {
+	s.OSSRegion = &v
+	return s
+}
+
+func (s *ImportImageRequest) SetOSType(v string) *ImportImageRequest {
+	s.OSType = &v
+	return s
+}
+
+func (s *ImportImageRequest) SetOSVersion(v string) *ImportImageRequest {
+	s.OSVersion = &v
+	return s
+}
+
+func (s *ImportImageRequest) SetPlatform(v string) *ImportImageRequest {
+	s.Platform = &v
+	return s
+}
+
+func (s *ImportImageRequest) SetTargetOSSRegionId(v string) *ImportImageRequest {
+	s.TargetOSSRegionId = &v
+	return s
+}
+
+type ImportImageRequestDiskDeviceMapping struct {
+	// example:
+	//
+	// www-cn
+	OSSBucket *string `json:"OSSBucket,omitempty" xml:"OSSBucket,omitempty"`
+	// example:
+	//
+	// image-bucket
+	OSSObject *string `json:"OSSObject,omitempty" xml:"OSSObject,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	OSSRegion *string `json:"OSSRegion,omitempty" xml:"OSSRegion,omitempty"`
+}
+
+func (s ImportImageRequestDiskDeviceMapping) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportImageRequestDiskDeviceMapping) GoString() string {
+	return s.String()
+}
+
+func (s *ImportImageRequestDiskDeviceMapping) SetOSSBucket(v string) *ImportImageRequestDiskDeviceMapping {
+	s.OSSBucket = &v
+	return s
+}
+
+func (s *ImportImageRequestDiskDeviceMapping) SetOSSObject(v string) *ImportImageRequestDiskDeviceMapping {
+	s.OSSObject = &v
+	return s
+}
+
+func (s *ImportImageRequestDiskDeviceMapping) SetOSSRegion(v string) *ImportImageRequestDiskDeviceMapping {
+	s.OSSRegion = &v
+	return s
+}
+
+type ImportImageShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// x86_64
+	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ens_vm
+	ComputeType             *string `json:"ComputeType,omitempty" xml:"ComputeType,omitempty"`
+	DiskDeviceMappingShrink *string `json:"DiskDeviceMapping,omitempty" xml:"DiskDeviceMapping,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// qcow2
+	ImageFormat *string `json:"ImageFormat,omitempty" xml:"ImageFormat,omitempty"`
+	// This parameter is required.
+	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	// example:
+	//
+	// tmp-hybrid
+	OSSBucket *string `json:"OSSBucket,omitempty" xml:"OSSBucket,omitempty"`
+	// example:
+	//
+	// image-test
+	OSSObject *string `json:"OSSObject,omitempty" xml:"OSSObject,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	OSSRegion *string `json:"OSSRegion,omitempty" xml:"OSSRegion,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// linux
+	OSType *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 6.8
+	OSVersion *string `json:"OSVersion,omitempty" xml:"OSVersion,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// centos
+	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	TargetOSSRegionId *string `json:"TargetOSSRegionId,omitempty" xml:"TargetOSSRegionId,omitempty"`
+}
+
+func (s ImportImageShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportImageShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ImportImageShrinkRequest) SetArchitecture(v string) *ImportImageShrinkRequest {
+	s.Architecture = &v
+	return s
+}
+
+func (s *ImportImageShrinkRequest) SetComputeType(v string) *ImportImageShrinkRequest {
+	s.ComputeType = &v
+	return s
+}
+
+func (s *ImportImageShrinkRequest) SetDiskDeviceMappingShrink(v string) *ImportImageShrinkRequest {
+	s.DiskDeviceMappingShrink = &v
+	return s
+}
+
+func (s *ImportImageShrinkRequest) SetImageFormat(v string) *ImportImageShrinkRequest {
+	s.ImageFormat = &v
+	return s
+}
+
+func (s *ImportImageShrinkRequest) SetImageName(v string) *ImportImageShrinkRequest {
+	s.ImageName = &v
+	return s
+}
+
+func (s *ImportImageShrinkRequest) SetOSSBucket(v string) *ImportImageShrinkRequest {
+	s.OSSBucket = &v
+	return s
+}
+
+func (s *ImportImageShrinkRequest) SetOSSObject(v string) *ImportImageShrinkRequest {
+	s.OSSObject = &v
+	return s
+}
+
+func (s *ImportImageShrinkRequest) SetOSSRegion(v string) *ImportImageShrinkRequest {
+	s.OSSRegion = &v
+	return s
+}
+
+func (s *ImportImageShrinkRequest) SetOSType(v string) *ImportImageShrinkRequest {
+	s.OSType = &v
+	return s
+}
+
+func (s *ImportImageShrinkRequest) SetOSVersion(v string) *ImportImageShrinkRequest {
+	s.OSVersion = &v
+	return s
+}
+
+func (s *ImportImageShrinkRequest) SetPlatform(v string) *ImportImageShrinkRequest {
+	s.Platform = &v
+	return s
+}
+
+func (s *ImportImageShrinkRequest) SetTargetOSSRegionId(v string) *ImportImageShrinkRequest {
+	s.TargetOSSRegionId = &v
+	return s
+}
+
+type ImportImageResponseBody struct {
+	// example:
+	//
+	// m-5wn1dh*******b48f440ntvad
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// CEF72CEB-54B6-4AE8-B225-F876FF7BA984
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ImportImageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportImageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ImportImageResponseBody) SetImageId(v string) *ImportImageResponseBody {
+	s.ImageId = &v
+	return s
+}
+
+func (s *ImportImageResponseBody) SetRequestId(v string) *ImportImageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ImportImageResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ImportImageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ImportImageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportImageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ImportImageResponse) SetHeaders(v map[string]*string) *ImportImageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ImportImageResponse) SetStatusCode(v int32) *ImportImageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ImportImageResponse) SetBody(v *ImportImageResponseBody) *ImportImageResponse {
 	s.Body = v
 	return s
 }
@@ -55479,107 +55542,6 @@ func (s *ResetAICInstanceResponse) SetBody(v *ResetAICInstanceResponseBody) *Res
 	return s
 }
 
-type ResetDeviceInstanceRequest struct {
-	// The ID of the application. To obtain the application ID, call the ListApplications operation. For more information, see the API documentation of ListApplications.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// d0639abf-789a-4527-b420-031d2cd9ad9b
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The ID of the image.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// m-5si16wo6simkt267p8b7hcmy3
-	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The ID of the instance.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// i-5sfdblzjqf3zvjnr7oh0bhhj2
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-}
-
-func (s ResetDeviceInstanceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ResetDeviceInstanceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ResetDeviceInstanceRequest) SetAppId(v string) *ResetDeviceInstanceRequest {
-	s.AppId = &v
-	return s
-}
-
-func (s *ResetDeviceInstanceRequest) SetImageId(v string) *ResetDeviceInstanceRequest {
-	s.ImageId = &v
-	return s
-}
-
-func (s *ResetDeviceInstanceRequest) SetInstanceId(v string) *ResetDeviceInstanceRequest {
-	s.InstanceId = &v
-	return s
-}
-
-type ResetDeviceInstanceResponseBody struct {
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 60C0D889-9C80-5D68-8645-6A55C58E72CF
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ResetDeviceInstanceResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ResetDeviceInstanceResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ResetDeviceInstanceResponseBody) SetRequestId(v string) *ResetDeviceInstanceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ResetDeviceInstanceResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *ResetDeviceInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s ResetDeviceInstanceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ResetDeviceInstanceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ResetDeviceInstanceResponse) SetHeaders(v map[string]*string) *ResetDeviceInstanceResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ResetDeviceInstanceResponse) SetStatusCode(v int32) *ResetDeviceInstanceResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ResetDeviceInstanceResponse) SetBody(v *ResetDeviceInstanceResponseBody) *ResetDeviceInstanceResponse {
-	s.Body = v
-	return s
-}
-
 type ResetDiskRequest struct {
 	// The ID of the disk that you want to roll back.
 	//
@@ -55763,94 +55725,6 @@ func (s *ResizeDiskResponse) SetStatusCode(v int32) *ResizeDiskResponse {
 }
 
 func (s *ResizeDiskResponse) SetBody(v *ResizeDiskResponseBody) *ResizeDiskResponse {
-	s.Body = v
-	return s
-}
-
-type RestartDeviceInstanceRequest struct {
-	// The ID of the application. To obtain the application ID, call the ListApplications operation. For more information, see the API documentation of ListApplications.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// f829265e-2f6f-4088-a4be-c1fb95ab45f9
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The ID of the instance.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// i-5slvdwcxf6ch81nl4r7p04j5q
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-}
-
-func (s RestartDeviceInstanceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RestartDeviceInstanceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *RestartDeviceInstanceRequest) SetAppId(v string) *RestartDeviceInstanceRequest {
-	s.AppId = &v
-	return s
-}
-
-func (s *RestartDeviceInstanceRequest) SetInstanceId(v string) *RestartDeviceInstanceRequest {
-	s.InstanceId = &v
-	return s
-}
-
-type RestartDeviceInstanceResponseBody struct {
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 388AA3AE-CE49-5FF4-8CF5-A03D2BBA1C9A
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s RestartDeviceInstanceResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RestartDeviceInstanceResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *RestartDeviceInstanceResponseBody) SetRequestId(v string) *RestartDeviceInstanceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type RestartDeviceInstanceResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *RestartDeviceInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s RestartDeviceInstanceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RestartDeviceInstanceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *RestartDeviceInstanceResponse) SetHeaders(v map[string]*string) *RestartDeviceInstanceResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *RestartDeviceInstanceResponse) SetStatusCode(v int32) *RestartDeviceInstanceResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *RestartDeviceInstanceResponse) SetBody(v *RestartDeviceInstanceResponseBody) *RestartDeviceInstanceResponse {
 	s.Body = v
 	return s
 }
@@ -62141,9 +62015,9 @@ func (client *Client) AccosicateNetworkAcl(request *AccosicateNetworkAclRequest)
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second.
+//	  You can call this operation up to 100 times per second.
 //
-// 	- You can call this operation up to 10 times per second per account.
+//		- You can call this operation up to 10 times per second per account.
 //
 // @param tmpReq - AddBackendServersRequest
 //
@@ -62210,9 +62084,9 @@ func (client *Client) AddBackendServersWithOptions(tmpReq *AddBackendServersRequ
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second.
+//	  You can call this operation up to 100 times per second.
 //
-// 	- You can call this operation up to 10 times per second per account.
+//		- You can call this operation up to 10 times per second per account.
 //
 // @param request - AddBackendServersRequest
 //
@@ -62230,84 +62104,17 @@ func (client *Client) AddBackendServers(request *AddBackendServersRequest) (_res
 
 // Summary:
 //
-// Configures Network Address Translation (NAT) rules for an instance. This operation is an asynchronous API operation. For more information about the configurations, see the API documentation of GetDeviceInternetPort.
-//
-// @param request - AddDeviceInternetPortRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return AddDeviceInternetPortResponse
-func (client *Client) AddDeviceInternetPortWithOptions(request *AddDeviceInternetPortRequest, runtime *util.RuntimeOptions) (_result *AddDeviceInternetPortResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := openapiutil.Query(util.ToMap(request))
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("AddDeviceInternetPort"),
-		Version:     tea.String("2017-11-10"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &AddDeviceInternetPortResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &AddDeviceInternetPortResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	}
-
-}
-
-// Summary:
-//
-// Configures Network Address Translation (NAT) rules for an instance. This operation is an asynchronous API operation. For more information about the configurations, see the API documentation of GetDeviceInternetPort.
-//
-// @param request - AddDeviceInternetPortRequest
-//
-// @return AddDeviceInternetPortResponse
-func (client *Client) AddDeviceInternetPort(request *AddDeviceInternetPortRequest) (_result *AddDeviceInternetPortResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &AddDeviceInternetPortResponse{}
-	_body, _err := client.AddDeviceInternetPortWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
 // Adds an IPv6 network interface controller (NIC). A public IP address is automatically assigned at the same time.
 //
 // Description:
 //
 // # [](#)Usage notes
 //
-// 	- You can call this operation up to 100 times per second.
+//   - You can call this operation up to 100 times per second.
 //
-// 	- You can call this operation up to 5 times per second per user.
+//   - You can call this operation up to 5 times per second per user.
 //
-// 	- Internal networks and IPv4 addresses are not supported.
+//   - Internal networks and IPv4 addresses are not supported.
 //
 // @param request - AddNetworkInterfaceToInstanceRequest
 //
@@ -62374,11 +62181,11 @@ func (client *Client) AddNetworkInterfaceToInstanceWithOptions(request *AddNetwo
 //
 // # [](#)Usage notes
 //
-// 	- You can call this operation up to 100 times per second.
+//   - You can call this operation up to 100 times per second.
 //
-// 	- You can call this operation up to 5 times per second per user.
+//   - You can call this operation up to 5 times per second per user.
 //
-// 	- Internal networks and IPv4 addresses are not supported.
+//   - Internal networks and IPv4 addresses are not supported.
 //
 // @param request - AddNetworkInterfaceToInstanceRequest
 //
@@ -62635,21 +62442,21 @@ func (client *Client) AssociateEnsEipAddress(request *AssociateEnsEipAddressRequ
 //
 // When you call this operation to associate an HAVIP, take note of the following items:
 //
-// 	- An HAVIP immediately takes effect after it is associated. You do not need to restart the ENS instance. However, you need to associate the HAVIP with the ENI of the ENS instance.
+//   - An HAVIP immediately takes effect after it is associated. You do not need to restart the ENS instance. However, you need to associate the HAVIP with the ENI of the ENS instance.
 //
-// 	- The HAVIP and ENS instance must belong to the same vSwitch.
+//   - The HAVIP and ENS instance must belong to the same vSwitch.
 //
-// 	- The ENS instance must be in the Running or Stopped state.
+//   - The ENS instance must be in the Running or Stopped state.
 //
-// 	- The HAVIP must be in the Available or InUse state.
+//   - The HAVIP must be in the Available or InUse state.
 //
-// 	- AssociateHaVip is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the DescribeHaVips operation to query the status of an HAVIP:
+//   - AssociateHaVip is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the DescribeHaVips operation to query the status of an HAVIP:
 //
-//     	- If the HAVIP is in the Associating state, the HAVIP is being associated.
+//   - If the HAVIP is in the Associating state, the HAVIP is being associated.
 //
 //     <!---->
 //
-//     	- If the HAVIP is in the InUse state, the HAVIP is associated.
+//   - If the HAVIP is in the InUse state, the HAVIP is associated.
 //
 // @param request - AssociateHaVipRequest
 //
@@ -62716,21 +62523,21 @@ func (client *Client) AssociateHaVipWithOptions(request *AssociateHaVipRequest, 
 //
 // When you call this operation to associate an HAVIP, take note of the following items:
 //
-// 	- An HAVIP immediately takes effect after it is associated. You do not need to restart the ENS instance. However, you need to associate the HAVIP with the ENI of the ENS instance.
+//   - An HAVIP immediately takes effect after it is associated. You do not need to restart the ENS instance. However, you need to associate the HAVIP with the ENI of the ENS instance.
 //
-// 	- The HAVIP and ENS instance must belong to the same vSwitch.
+//   - The HAVIP and ENS instance must belong to the same vSwitch.
 //
-// 	- The ENS instance must be in the Running or Stopped state.
+//   - The ENS instance must be in the Running or Stopped state.
 //
-// 	- The HAVIP must be in the Available or InUse state.
+//   - The HAVIP must be in the Available or InUse state.
 //
-// 	- AssociateHaVip is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the DescribeHaVips operation to query the status of an HAVIP:
+//   - AssociateHaVip is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the DescribeHaVips operation to query the status of an HAVIP:
 //
-//     	- If the HAVIP is in the Associating state, the HAVIP is being associated.
+//   - If the HAVIP is in the Associating state, the HAVIP is being associated.
 //
 //     <!---->
 //
-//     	- If the HAVIP is in the InUse state, the HAVIP is associated.
+//   - If the HAVIP is in the InUse state, the HAVIP is associated.
 //
 // @param request - AssociateHaVipRequest
 //
@@ -62833,11 +62640,11 @@ func (client *Client) AttachDisk(request *AttachDiskRequest) (_result *AttachDis
 //
 // # [](#)Usage notes
 //
-// 	- You can call this operation up to 10 times per second per account.
+//   - You can call this operation up to 10 times per second per account.
 //
-// 	- After you execute the command, the instance restarts loading.
+//   - After you execute the command, the instance restarts loading.
 //
-// 	- Limits: The instance has at least two vCPUs and 4 GB memory. An image of CentOS 7.4 or later is required.
+//   - Limits: The instance has at least two vCPUs and 4 GB memory. An image of CentOS 7.4 or later is required.
 //
 // @param request - AttachEnsInstancesRequest
 //
@@ -62900,11 +62707,11 @@ func (client *Client) AttachEnsInstancesWithOptions(request *AttachEnsInstancesR
 //
 // # [](#)Usage notes
 //
-// 	- You can call this operation up to 10 times per second per account.
+//   - You can call this operation up to 10 times per second per account.
 //
-// 	- After you execute the command, the instance restarts loading.
+//   - After you execute the command, the instance restarts loading.
 //
-// 	- Limits: The instance has at least two vCPUs and 4 GB memory. An image of CentOS 7.4 or later is required.
+//   - Limits: The instance has at least two vCPUs and 4 GB memory. An image of CentOS 7.4 or later is required.
 //
 // @param request - AttachEnsInstancesRequest
 //
@@ -63009,15 +62816,15 @@ func (client *Client) AttachInstanceSDG(request *AttachInstanceSDGRequest) (_res
 //
 // When you call this operation, take note of the following limits:
 //
-// 	- The ENI must be in the Available state.
+//   - The ENI must be in the Available state.
 //
-// 	- An ENI can be attached to only one instance that is the same zone and the same Virtual Private Cloud (VPC).
+//   - An ENI can be attached to only one instance that is the same zone and the same Virtual Private Cloud (VPC).
 //
-// 	- The instance must be in the Stopped state.
+//   - The instance must be in the Stopped state.
 //
-// 	- A maximum of 10 ENIs can be attached to an instance.
+//   - A maximum of 10 ENIs can be attached to an instance.
 //
-// 	- This operation is an asynchronous operation. After you call this operation to attach an ENI, you can view the status of the ENI to check whether the ENI is attached.
+//   - This operation is an asynchronous operation. After you call this operation to attach an ENI, you can view the status of the ENI to check whether the ENI is attached.
 //
 // @param request - AttachNetworkInterfaceRequest
 //
@@ -63080,15 +62887,15 @@ func (client *Client) AttachNetworkInterfaceWithOptions(request *AttachNetworkIn
 //
 // When you call this operation, take note of the following limits:
 //
-// 	- The ENI must be in the Available state.
+//   - The ENI must be in the Available state.
 //
-// 	- An ENI can be attached to only one instance that is the same zone and the same Virtual Private Cloud (VPC).
+//   - An ENI can be attached to only one instance that is the same zone and the same Virtual Private Cloud (VPC).
 //
-// 	- The instance must be in the Stopped state.
+//   - The instance must be in the Stopped state.
 //
-// 	- A maximum of 10 ENIs can be attached to an instance.
+//   - A maximum of 10 ENIs can be attached to an instance.
 //
-// 	- This operation is an asynchronous operation. After you call this operation to attach an ENI, you can view the status of the ENI to check whether the ENI is attached.
+//   - This operation is an asynchronous operation. After you call this operation to attach an ENI, you can view the status of the ENI to check whether the ENI is attached.
 //
 // @param request - AttachNetworkInterfaceRequest
 //
@@ -63755,7 +63562,7 @@ func (client *Client) CreateApplication(request *CreateApplicationRequest) (_res
 
 // Summary:
 //
-// Creates a classic network
+// # Creates a classic network
 //
 // @param request - CreateClassicNetworkRequest
 //
@@ -63820,7 +63627,7 @@ func (client *Client) CreateClassicNetworkWithOptions(request *CreateClassicNetw
 
 // Summary:
 //
-// Creates a classic network
+// # Creates a classic network
 //
 // @param request - CreateClassicNetworkRequest
 //
@@ -63842,9 +63649,9 @@ func (client *Client) CreateClassicNetwork(request *CreateClassicNetworkRequest)
 //
 // Description:
 //
-//   You can call this operation up to 10 times per second per account.
+//	  You can call this operation up to 10 times per second per account.
 //
-// 	- Creating a cluster is an asynchronous operation. After this operation returns the response, it takes 10 to 20 minutes to initialize the cluster. You can call the DescribeCluster operation to query the cluster status. After you create a cluster, you can call the DescribeClusterKubeConfig operation to obtain the cluster certificate.
+//		- Creating a cluster is an asynchronous operation. After this operation returns the response, it takes 10 to 20 minutes to initialize the cluster. You can call the DescribeCluster operation to query the cluster status. After you create a cluster, you can call the DescribeClusterKubeConfig operation to obtain the cluster certificate.
 //
 // @param request - CreateClusterRequest
 //
@@ -63905,9 +63712,9 @@ func (client *Client) CreateClusterWithOptions(request *CreateClusterRequest, ru
 //
 // Description:
 //
-//   You can call this operation up to 10 times per second per account.
+//	  You can call this operation up to 10 times per second per account.
 //
-// 	- Creating a cluster is an asynchronous operation. After this operation returns the response, it takes 10 to 20 minutes to initialize the cluster. You can call the DescribeCluster operation to query the cluster status. After you create a cluster, you can call the DescribeClusterKubeConfig operation to obtain the cluster certificate.
+//		- Creating a cluster is an asynchronous operation. After this operation returns the response, it takes 10 to 20 minutes to initialize the cluster. You can call the DescribeCluster operation to query the cluster status. After you create a cluster, you can call the DescribeClusterKubeConfig operation to obtain the cluster certificate.
 //
 // @param request - CreateClusterRequest
 //
@@ -64032,9 +63839,9 @@ func (client *Client) CreateDisk(request *CreateDiskRequest) (_result *CreateDis
 //
 // Description:
 //
-//   You can call this operation up to 5,000 times per second per account.
+//	  You can call this operation up to 5,000 times per second per account.
 //
-// 	- You can call this operation up to 50 times per second per user.
+//		- You can call this operation up to 50 times per second per user.
 //
 // @param request - CreateEipInstanceRequest
 //
@@ -64123,9 +63930,9 @@ func (client *Client) CreateEipInstanceWithOptions(request *CreateEipInstanceReq
 //
 // Description:
 //
-//   You can call this operation up to 5,000 times per second per account.
+//	  You can call this operation up to 5,000 times per second per account.
 //
-// 	- You can call this operation up to 50 times per second per user.
+//		- You can call this operation up to 50 times per second per user.
 //
 // @param request - CreateEipInstanceRequest
 //
@@ -64785,6 +64592,10 @@ func (client *Client) CreateImageWithOptions(request *CreateImageRequest, runtim
 		query["TargetOSSRegionId"] = request.TargetOSSRegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.WithDataDisks)) {
+		query["WithDataDisks"] = request.WithDataDisks
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -64843,11 +64654,11 @@ func (client *Client) CreateImage(request *CreateImageRequest) (_result *CreateI
 //
 // Description:
 //
-//   You can call this operation up to 10 times per second per account.
+//	  You can call this operation up to 10 times per second per account.
 //
-// 	- We recommend that you increase the request time because instance creation is an asynchronous operation. If the return code of the API operation is 0, it indicates that the request is successful, but does not indicate that the instance is created. If the request is successful, an instance ID is returned. You can check whether the instance is created based on the instance ID.
+//		- We recommend that you increase the request time because instance creation is an asynchronous operation. If the return code of the API operation is 0, it indicates that the request is successful, but does not indicate that the instance is created. If the request is successful, an instance ID is returned. You can check whether the instance is created based on the instance ID.
 //
-// 	- InvalidUserData.NotInWhiteList operation restriction: You can create an instance only if you are in the whitelist in which members have the purchase permissions. Otherwise, an error is returned.
+//		- InvalidUserData.NotInWhiteList operation restriction: You can create an instance only if you are in the whitelist in which members have the purchase permissions. Otherwise, an error is returned.
 //
 // @param request - CreateInstanceRequest
 //
@@ -64992,11 +64803,11 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 //
 // Description:
 //
-//   You can call this operation up to 10 times per second per account.
+//	  You can call this operation up to 10 times per second per account.
 //
-// 	- We recommend that you increase the request time because instance creation is an asynchronous operation. If the return code of the API operation is 0, it indicates that the request is successful, but does not indicate that the instance is created. If the request is successful, an instance ID is returned. You can check whether the instance is created based on the instance ID.
+//		- We recommend that you increase the request time because instance creation is an asynchronous operation. If the return code of the API operation is 0, it indicates that the request is successful, but does not indicate that the instance is created. If the request is successful, an instance ID is returned. You can check whether the instance is created based on the instance ID.
 //
-// 	- InvalidUserData.NotInWhiteList operation restriction: You can create an instance only if you are in the whitelist in which members have the purchase permissions. Otherwise, an error is returned.
+//		- InvalidUserData.NotInWhiteList operation restriction: You can create an instance only if you are in the whitelist in which members have the purchase permissions. Otherwise, an error is returned.
 //
 // @param request - CreateInstanceRequest
 //
@@ -65174,9 +64985,9 @@ func (client *Client) CreateKeyPair(request *CreateKeyPairRequest) (_result *Cre
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second per account.
+//	  You can call this operation up to 100 times per second per account.
 //
-// 	- You can call this operation up to 5 times per second per user.
+//		- You can call this operation up to 5 times per second per user.
 //
 // @param request - CreateLoadBalancerRequest
 //
@@ -65257,9 +65068,9 @@ func (client *Client) CreateLoadBalancerWithOptions(request *CreateLoadBalancerR
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second per account.
+//	  You can call this operation up to 100 times per second per account.
 //
-// 	- You can call this operation up to 5 times per second per user.
+//		- You can call this operation up to 5 times per second per user.
 //
 // @param request - CreateLoadBalancerRequest
 //
@@ -65281,9 +65092,9 @@ func (client *Client) CreateLoadBalancer(request *CreateLoadBalancerRequest) (_r
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second per account.
+//	  You can call this operation up to 100 times per second per account.
 //
-// 	- You can call this operation up to 10 times per second per user.
+//		- You can call this operation up to 10 times per second per user.
 //
 // @param request - CreateLoadBalancerHTTPListenerRequest
 //
@@ -65416,9 +65227,9 @@ func (client *Client) CreateLoadBalancerHTTPListenerWithOptions(request *CreateL
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second per account.
+//	  You can call this operation up to 100 times per second per account.
 //
-// 	- You can call this operation up to 10 times per second per user.
+//		- You can call this operation up to 10 times per second per user.
 //
 // @param request - CreateLoadBalancerHTTPListenerRequest
 //
@@ -65440,9 +65251,9 @@ func (client *Client) CreateLoadBalancerHTTPListener(request *CreateLoadBalancer
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second per account.
+//	  You can call this operation up to 100 times per second per account.
 //
-// 	- You can call this operation up to 10 times per second per user.
+//		- You can call this operation up to 10 times per second per user.
 //
 // @param request - CreateLoadBalancerHTTPSListenerRequest
 //
@@ -65587,9 +65398,9 @@ func (client *Client) CreateLoadBalancerHTTPSListenerWithOptions(request *Create
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second per account.
+//	  You can call this operation up to 100 times per second per account.
 //
-// 	- You can call this operation up to 10 times per second per user.
+//		- You can call this operation up to 10 times per second per user.
 //
 // @param request - CreateLoadBalancerHTTPSListenerRequest
 //
@@ -65611,9 +65422,9 @@ func (client *Client) CreateLoadBalancerHTTPSListener(request *CreateLoadBalance
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second per account.
+//	  You can call this operation up to 100 times per second per account.
 //
-// 	- You can call this operation up to 10 times per second per user.
+//		- You can call this operation up to 10 times per second per user.
 //
 // @param request - CreateLoadBalancerTCPListenerRequest
 //
@@ -65734,9 +65545,9 @@ func (client *Client) CreateLoadBalancerTCPListenerWithOptions(request *CreateLo
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second per account.
+//	  You can call this operation up to 100 times per second per account.
 //
-// 	- You can call this operation up to 10 times per second per user.
+//		- You can call this operation up to 10 times per second per user.
 //
 // @param request - CreateLoadBalancerTCPListenerRequest
 //
@@ -65758,9 +65569,9 @@ func (client *Client) CreateLoadBalancerTCPListener(request *CreateLoadBalancerT
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second per account.
+//	  You can call this operation up to 100 times per second per account.
 //
-// 	- You can call this operation up to 10 times per second per user.
+//		- You can call this operation up to 10 times per second per user.
 //
 // @param request - CreateLoadBalancerUDPListenerRequest
 //
@@ -65869,9 +65680,9 @@ func (client *Client) CreateLoadBalancerUDPListenerWithOptions(request *CreateLo
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second per account.
+//	  You can call this operation up to 100 times per second per account.
 //
-// 	- You can call this operation up to 10 times per second per user.
+//		- You can call this operation up to 10 times per second per user.
 //
 // @param request - CreateLoadBalancerUDPListenerRequest
 //
@@ -66079,9 +65890,9 @@ func (client *Client) CreateNatGateway(request *CreateNatGatewayRequest) (_resul
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second.
+//	  You can call this operation up to 100 times per second.
 //
-// 	- You can call this operation up to 5 times per second per user.
+//		- You can call this operation up to 5 times per second per user.
 //
 // @param request - CreateNetworkRequest
 //
@@ -66154,9 +65965,9 @@ func (client *Client) CreateNetworkWithOptions(request *CreateNetworkRequest, ru
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second.
+//	  You can call this operation up to 100 times per second.
 //
-// 	- You can call this operation up to 5 times per second per user.
+//		- You can call this operation up to 5 times per second per user.
 //
 // @param request - CreateNetworkRequest
 //
@@ -66447,13 +66258,13 @@ func (client *Client) CreateNetworkInterface(request *CreateNetworkInterfaceRequ
 //
 // A SDG can be regarded as a data partition image of a virtual device. You can save a data partition of a virtual device as an SDG. A created SDG can be deployed in data partitions of other virtual devices to achieve rapid data distribution and application. The procedure for calling SDG-related API operations:
 //
-// 	- Call the [CreateSDG](~~CreateSDG~~) operation to create an SDG, which is bound to AIC Instance A (InstanceId). After you create the SDG, a blank cloud disk (also known as an original cloud disk) is attached to Device A (InstanceId).
+//   - Call the [CreateSDG](~~CreateSDG~~) operation to create an SDG, which is bound to AIC Instance A (InstanceId). After you create the SDG, a blank cloud disk (also known as an original cloud disk) is attached to Device A (InstanceId).
 //
-// 	- Install applications on and deliver files to AIC Instance A (InstanceId).
+//   - Install applications on and deliver files to AIC Instance A (InstanceId).
 //
-// 	- Call the [SaveSDG](~~SaveSDG~~) operation to save the data disk of AIC instance A as SDG A.
+//   - Call the [SaveSDG](~~SaveSDG~~) operation to save the data disk of AIC instance A as SDG A.
 //
-// 	- Call the [DeploySDG](~~DeploySDG~~) operation to deploy SDG A to AIC Instance B. This operattion is executed asynchronously. You can call the [DescribeARMServerInstances](~~DescribeARMServerInstances~~) operation to query the status of AIC Instance B. If the status of AIC Instance B changes to success, AIC insance B is available, and AIC Instances A and B have the same applications running.
+//   - Call the [DeploySDG](~~DeploySDG~~) operation to deploy SDG A to AIC Instance B. This operattion is executed asynchronously. You can call the [DescribeARMServerInstances](~~DescribeARMServerInstances~~) operation to query the status of AIC Instance B. If the status of AIC Instance B changes to success, AIC insance B is available, and AIC Instances A and B have the same applications running.
 //
 // @param request - CreateSDGRequest
 //
@@ -66508,13 +66319,13 @@ func (client *Client) CreateSDGWithOptions(request *CreateSDGRequest, runtime *u
 //
 // A SDG can be regarded as a data partition image of a virtual device. You can save a data partition of a virtual device as an SDG. A created SDG can be deployed in data partitions of other virtual devices to achieve rapid data distribution and application. The procedure for calling SDG-related API operations:
 //
-// 	- Call the [CreateSDG](~~CreateSDG~~) operation to create an SDG, which is bound to AIC Instance A (InstanceId). After you create the SDG, a blank cloud disk (also known as an original cloud disk) is attached to Device A (InstanceId).
+//   - Call the [CreateSDG](~~CreateSDG~~) operation to create an SDG, which is bound to AIC Instance A (InstanceId). After you create the SDG, a blank cloud disk (also known as an original cloud disk) is attached to Device A (InstanceId).
 //
-// 	- Install applications on and deliver files to AIC Instance A (InstanceId).
+//   - Install applications on and deliver files to AIC Instance A (InstanceId).
 //
-// 	- Call the [SaveSDG](~~SaveSDG~~) operation to save the data disk of AIC instance A as SDG A.
+//   - Call the [SaveSDG](~~SaveSDG~~) operation to save the data disk of AIC instance A as SDG A.
 //
-// 	- Call the [DeploySDG](~~DeploySDG~~) operation to deploy SDG A to AIC Instance B. This operattion is executed asynchronously. You can call the [DescribeARMServerInstances](~~DescribeARMServerInstances~~) operation to query the status of AIC Instance B. If the status of AIC Instance B changes to success, AIC insance B is available, and AIC Instances A and B have the same applications running.
+//   - Call the [DeploySDG](~~DeploySDG~~) operation to deploy SDG A to AIC Instance B. This operattion is executed asynchronously. You can call the [DescribeARMServerInstances](~~DescribeARMServerInstances~~) operation to query the status of AIC Instance B. If the status of AIC Instance B changes to success, AIC insance B is available, and AIC Instances A and B have the same applications running.
 //
 // @param request - CreateSDGRequest
 //
@@ -67161,9 +66972,9 @@ func (client *Client) DeleteApplication(request *DeleteApplicationRequest) (_res
 //
 // Description:
 //
-//   Only the Alibaba Cloud Account ID owner of a bucket can delete the bucket from the account.
+//	  Only the Alibaba Cloud Account ID owner of a bucket can delete the bucket from the account.
 //
-// 	- You cannot delete buckets that store objects. You can only delete empty buckets.
+//		- You cannot delete buckets that store objects. You can only delete empty buckets.
 //
 // @param request - DeleteBucketRequest
 //
@@ -67220,9 +67031,9 @@ func (client *Client) DeleteBucketWithOptions(request *DeleteBucketRequest, runt
 //
 // Description:
 //
-//   Only the Alibaba Cloud Account ID owner of a bucket can delete the bucket from the account.
+//	  Only the Alibaba Cloud Account ID owner of a bucket can delete the bucket from the account.
 //
-// 	- You cannot delete buckets that store objects. You can only delete empty buckets.
+//		- You cannot delete buckets that store objects. You can only delete empty buckets.
 //
 // @param request - DeleteBucketRequest
 //
@@ -67306,73 +67117,6 @@ func (client *Client) DeleteBucketLifecycle(request *DeleteBucketLifecycleReques
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteBucketLifecycleResponse{}
 	_body, _err := client.DeleteBucketLifecycleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes Network Address Translation (NAT) rules for a server or container based on the ID.
-//
-// @param request - DeleteDeviceInternetPortRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DeleteDeviceInternetPortResponse
-func (client *Client) DeleteDeviceInternetPortWithOptions(request *DeleteDeviceInternetPortRequest, runtime *util.RuntimeOptions) (_result *DeleteDeviceInternetPortResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := openapiutil.Query(util.ToMap(request))
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteDeviceInternetPort"),
-		Version:     tea.String("2017-11-10"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteDeviceInternetPortResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteDeviceInternetPortResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	}
-
-}
-
-// Summary:
-//
-// Deletes Network Address Translation (NAT) rules for a server or container based on the ID.
-//
-// @param request - DeleteDeviceInternetPortRequest
-//
-// @return DeleteDeviceInternetPortResponse
-func (client *Client) DeleteDeviceInternetPort(request *DeleteDeviceInternetPortRequest) (_result *DeleteDeviceInternetPortResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteDeviceInternetPortResponse{}
-	_body, _err := client.DeleteDeviceInternetPortWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -68150,9 +67894,9 @@ func (client *Client) DeleteImage(request *DeleteImageRequest) (_result *DeleteI
 //
 // Description:
 //
-//   After you delete an SSH key pair, you can no longer query the key pair by calling the DescribeKeyPairs operation.
+//	  After you delete an SSH key pair, you can no longer query the key pair by calling the DescribeKeyPairs operation.
 //
-// 	- If you delete an SSH key pair that is bound to an Edge Node Service (ENS) instance, ENS no longer stores the SSH key pair. However, you can still use the key pair to access the instance. When you call the DescribeInstance operation to query instance information, no other information but the name of the key pair (**KeyPairName**) is returned.
+//		- If you delete an SSH key pair that is bound to an Edge Node Service (ENS) instance, ENS no longer stores the SSH key pair. However, you can still use the key pair to access the instance. When you call the DescribeInstance operation to query instance information, no other information but the name of the key pair (**KeyPairName**) is returned.
 //
 // @param request - DeleteKeyPairsRequest
 //
@@ -68213,9 +67957,9 @@ func (client *Client) DeleteKeyPairsWithOptions(request *DeleteKeyPairsRequest, 
 //
 // Description:
 //
-//   After you delete an SSH key pair, you can no longer query the key pair by calling the DescribeKeyPairs operation.
+//	  After you delete an SSH key pair, you can no longer query the key pair by calling the DescribeKeyPairs operation.
 //
-// 	- If you delete an SSH key pair that is bound to an Edge Node Service (ENS) instance, ENS no longer stores the SSH key pair. However, you can still use the key pair to access the instance. When you call the DescribeInstance operation to query instance information, no other information but the name of the key pair (**KeyPairName**) is returned.
+//		- If you delete an SSH key pair that is bound to an Edge Node Service (ENS) instance, ENS no longer stores the SSH key pair. However, you can still use the key pair to access the instance. When you call the DescribeInstance operation to query instance information, no other information but the name of the key pair (**KeyPairName**) is returned.
 //
 // @param request - DeleteKeyPairsRequest
 //
@@ -68237,9 +67981,9 @@ func (client *Client) DeleteKeyPairs(request *DeleteKeyPairsRequest) (_result *D
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second per account.
+//	  You can call this operation up to 100 times per second per account.
 //
-// 	- You can call this operation up to 10 times per second per user.
+//		- You can call this operation up to 10 times per second per user.
 //
 // @param request - DeleteLoadBalancerListenerRequest
 //
@@ -68304,9 +68048,9 @@ func (client *Client) DeleteLoadBalancerListenerWithOptions(request *DeleteLoadB
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second per account.
+//	  You can call this operation up to 100 times per second per account.
 //
-// 	- You can call this operation up to 10 times per second per user.
+//		- You can call this operation up to 10 times per second per user.
 //
 // @param request - DeleteLoadBalancerListenerRequest
 //
@@ -70282,7 +70026,7 @@ func (client *Client) DescribeCloudDiskTypes(request *DescribeCloudDiskTypesRequ
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second per account.
+//	You can call this operation up to 100 times per second per account.
 //
 // @param request - DescribeClusterRequest
 //
@@ -70339,7 +70083,7 @@ func (client *Client) DescribeClusterWithOptions(request *DescribeClusterRequest
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second per account.
+//	You can call this operation up to 100 times per second per account.
 //
 // @param request - DescribeClusterRequest
 //
@@ -70361,7 +70105,7 @@ func (client *Client) DescribeCluster(request *DescribeClusterRequest) (_result 
 //
 // Description:
 //
-//   The maximum number of times that each user can call this operation per second is 100.
+//	The maximum number of times that each user can call this operation per second is 100.
 //
 // @param request - DescribeClusterKubeConfigRequest
 //
@@ -70418,7 +70162,7 @@ func (client *Client) DescribeClusterKubeConfigWithOptions(request *DescribeClus
 //
 // Description:
 //
-//   The maximum number of times that each user can call this operation per second is 100.
+//	The maximum number of times that each user can call this operation per second is 100.
 //
 // @param request - DescribeClusterKubeConfigRequest
 //
@@ -71282,6 +71026,10 @@ func (client *Client) DescribeEnsEipAddressesWithOptions(request *DescribeEnsEip
 
 	if !tea.BoolValue(util.IsUnset(request.EnsRegionId)) {
 		query["EnsRegionId"] = request.EnsRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnsRegionIds)) {
+		query["EnsRegionIds"] = request.EnsRegionIds
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
@@ -72752,11 +72500,11 @@ func (client *Client) DescribeEpnMeasurementData(request *DescribeEpnMeasurement
 //
 // Description:
 //
-//   You can call this operation to query information about all custom images in your account. The information include the image properties, image export status, and the Object Storage Service (OSS) download links.
+//	  You can call this operation to query information about all custom images in your account. The information include the image properties, image export status, and the Object Storage Service (OSS) download links.
 //
-// 	- Empty strings are returned for images that are not exported.
+//		- Empty strings are returned for images that are not exported.
 //
-// 	- The download links may become invalid if you delete objects in OSS.
+//		- The download links may become invalid if you delete objects in OSS.
 //
 // @param request - DescribeExportImageInfoRequest
 //
@@ -72825,11 +72573,11 @@ func (client *Client) DescribeExportImageInfoWithOptions(request *DescribeExport
 //
 // Description:
 //
-//   You can call this operation to query information about all custom images in your account. The information include the image properties, image export status, and the Object Storage Service (OSS) download links.
+//	  You can call this operation to query information about all custom images in your account. The information include the image properties, image export status, and the Object Storage Service (OSS) download links.
 //
-// 	- Empty strings are returned for images that are not exported.
+//		- Empty strings are returned for images that are not exported.
 //
-// 	- The download links may become invalid if you delete objects in OSS.
+//		- The download links may become invalid if you delete objects in OSS.
 //
 // @param request - DescribeExportImageInfoRequest
 //
@@ -73542,6 +73290,89 @@ func (client *Client) DescribeInstanceBandwidthDetail(request *DescribeInstanceB
 
 // Summary:
 //
+// 修改启动配置，只支持异构实例(PCFarm裸金属)。
+//
+// @param request - DescribeInstanceBootConfigurationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstanceBootConfigurationResponse
+func (client *Client) DescribeInstanceBootConfigurationWithOptions(request *DescribeInstanceBootConfigurationRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceBootConfigurationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BootSet)) {
+		query["BootSet"] = request.BootSet
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BootType)) {
+		query["BootType"] = request.BootType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DiskSet)) {
+		query["DiskSet"] = request.DiskSet
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeInstanceBootConfiguration"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeInstanceBootConfigurationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeInstanceBootConfigurationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 修改启动配置，只支持异构实例(PCFarm裸金属)。
+//
+// @param request - DescribeInstanceBootConfigurationRequest
+//
+// @return DescribeInstanceBootConfigurationResponse
+func (client *Client) DescribeInstanceBootConfiguration(request *DescribeInstanceBootConfigurationRequest) (_result *DescribeInstanceBootConfigurationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeInstanceBootConfigurationResponse{}
+	_body, _err := client.DescribeInstanceBootConfigurationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the vCPU and memory usage of an instance.
 //
 // @param request - DescribeInstanceMonitorDataRequest
@@ -73889,11 +73720,11 @@ func (client *Client) DescribeInstanceVncUrl(request *DescribeInstanceVncUrlRequ
 //
 // Description:
 //
-//   You can call this operation up to 800 times per second per account.
+//	  You can call this operation up to 800 times per second per account.
 //
-// 	- You can call this operation up to 100 times per second per user.
+//		- You can call this operation up to 100 times per second per user.
 //
-// 	- You can specify multiple request parameters to be queried. Specified parameters are evaluated by using the AND operator. Only the specified parameters are included in the filter conditions. However, if InstanceIds is set to an empty JSON array, it is regarded as a valid filter condition and an empty result is returned.
+//		- You can specify multiple request parameters to be queried. Specified parameters are evaluated by using the AND operator. Only the specified parameters are included in the filter conditions. However, if InstanceIds is set to an empty JSON array, it is regarded as a valid filter condition and an empty result is returned.
 //
 // @param tmpReq - DescribeInstancesRequest
 //
@@ -74036,11 +73867,11 @@ func (client *Client) DescribeInstancesWithOptions(tmpReq *DescribeInstancesRequ
 //
 // Description:
 //
-//   You can call this operation up to 800 times per second per account.
+//	  You can call this operation up to 800 times per second per account.
 //
-// 	- You can call this operation up to 100 times per second per user.
+//		- You can call this operation up to 100 times per second per user.
 //
-// 	- You can specify multiple request parameters to be queried. Specified parameters are evaluated by using the AND operator. Only the specified parameters are included in the filter conditions. However, if InstanceIds is set to an empty JSON array, it is regarded as a valid filter condition and an empty result is returned.
+//		- You can specify multiple request parameters to be queried. Specified parameters are evaluated by using the AND operator. Only the specified parameters are included in the filter conditions. However, if InstanceIds is set to an empty JSON array, it is regarded as a valid filter condition and an empty result is returned.
 //
 // @param request - DescribeInstancesRequest
 //
@@ -74145,9 +73976,9 @@ func (client *Client) DescribeKeyPairs(request *DescribeKeyPairsRequest) (_resul
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second.
+//	  You can call this operation up to 100 times per second.
 //
-// 	- You can call this operation up to 10 times per second per account.
+//		- You can call this operation up to 10 times per second per account.
 //
 // @param request - DescribeLoadBalancerAttributeRequest
 //
@@ -74204,9 +74035,9 @@ func (client *Client) DescribeLoadBalancerAttributeWithOptions(request *Describe
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second.
+//	  You can call this operation up to 100 times per second.
 //
-// 	- You can call this operation up to 10 times per second per account.
+//		- You can call this operation up to 10 times per second per account.
 //
 // @param request - DescribeLoadBalancerAttributeRequest
 //
@@ -74228,9 +74059,9 @@ func (client *Client) DescribeLoadBalancerAttribute(request *DescribeLoadBalance
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second per account.
+//	  You can call this operation up to 100 times per second per account.
 //
-// 	- You can call this operation up to 10 times per second per user.
+//		- You can call this operation up to 10 times per second per user.
 //
 // @param request - DescribeLoadBalancerHTTPListenerAttributeRequest
 //
@@ -74291,9 +74122,9 @@ func (client *Client) DescribeLoadBalancerHTTPListenerAttributeWithOptions(reque
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second per account.
+//	  You can call this operation up to 100 times per second per account.
 //
-// 	- You can call this operation up to 10 times per second per user.
+//		- You can call this operation up to 10 times per second per user.
 //
 // @param request - DescribeLoadBalancerHTTPListenerAttributeRequest
 //
@@ -74315,9 +74146,9 @@ func (client *Client) DescribeLoadBalancerHTTPListenerAttribute(request *Describ
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second per account.
+//	  You can call this operation up to 100 times per second per account.
 //
-// 	- You can call this operation up to 10 times per second per user.
+//		- You can call this operation up to 10 times per second per user.
 //
 // @param request - DescribeLoadBalancerHTTPSListenerAttributeRequest
 //
@@ -74378,9 +74209,9 @@ func (client *Client) DescribeLoadBalancerHTTPSListenerAttributeWithOptions(requ
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second per account.
+//	  You can call this operation up to 100 times per second per account.
 //
-// 	- You can call this operation up to 10 times per second per user.
+//		- You can call this operation up to 10 times per second per user.
 //
 // @param request - DescribeLoadBalancerHTTPSListenerAttributeRequest
 //
@@ -74402,9 +74233,9 @@ func (client *Client) DescribeLoadBalancerHTTPSListenerAttribute(request *Descri
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second per account.
+//	  You can call this operation up to 100 times per second per account.
 //
-// 	- You can call this operation up to 10 times per second per user.
+//		- You can call this operation up to 10 times per second per user.
 //
 // @param request - DescribeLoadBalancerListenMonitorRequest
 //
@@ -74457,9 +74288,9 @@ func (client *Client) DescribeLoadBalancerListenMonitorWithOptions(request *Desc
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second per account.
+//	  You can call this operation up to 100 times per second per account.
 //
-// 	- You can call this operation up to 10 times per second per user.
+//		- You can call this operation up to 10 times per second per user.
 //
 // @param request - DescribeLoadBalancerListenMonitorRequest
 //
@@ -74635,9 +74466,9 @@ func (client *Client) DescribeLoadBalancerSpec(request *DescribeLoadBalancerSpec
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second per account.
+//	  You can call this operation up to 100 times per second per account.
 //
-// 	- You can call this operation up to 10 times per second per user.
+//		- You can call this operation up to 10 times per second per user.
 //
 // @param request - DescribeLoadBalancerTCPListenerAttributeRequest
 //
@@ -74698,9 +74529,9 @@ func (client *Client) DescribeLoadBalancerTCPListenerAttributeWithOptions(reques
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second per account.
+//	  You can call this operation up to 100 times per second per account.
 //
-// 	- You can call this operation up to 10 times per second per user.
+//		- You can call this operation up to 10 times per second per user.
 //
 // @param request - DescribeLoadBalancerTCPListenerAttributeRequest
 //
@@ -74722,9 +74553,9 @@ func (client *Client) DescribeLoadBalancerTCPListenerAttribute(request *Describe
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second per account.
+//	  You can call this operation up to 100 times per second per account.
 //
-// 	- You can call this operation up to 10 times per second per user.
+//		- You can call this operation up to 10 times per second per user.
 //
 // @param request - DescribeLoadBalancerUDPListenerAttributeRequest
 //
@@ -74785,9 +74616,9 @@ func (client *Client) DescribeLoadBalancerUDPListenerAttributeWithOptions(reques
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second per account.
+//	  You can call this operation up to 100 times per second per account.
 //
-// 	- You can call this operation up to 10 times per second per user.
+//		- You can call this operation up to 10 times per second per user.
 //
 // @param request - DescribeLoadBalancerUDPListenerAttributeRequest
 //
@@ -74809,9 +74640,9 @@ func (client *Client) DescribeLoadBalancerUDPListenerAttribute(request *Describe
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second per account.
+//	  You can call this operation up to 100 times per second per account.
 //
-// 	- You can call this operation up to 10 times per second per user.
+//		- You can call this operation up to 10 times per second per user.
 //
 // @param request - DescribeLoadBalancersRequest
 //
@@ -74864,9 +74695,9 @@ func (client *Client) DescribeLoadBalancersWithOptions(request *DescribeLoadBala
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second per account.
+//	  You can call this operation up to 100 times per second per account.
 //
-// 	- You can call this operation up to 10 times per second per user.
+//		- You can call this operation up to 10 times per second per user.
 //
 // @param request - DescribeLoadBalancersRequest
 //
@@ -75251,9 +75082,9 @@ func (client *Client) DescribeNetworkAcls(request *DescribeNetworkAclsRequest) (
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second.
+//	  You can call this operation up to 100 times per second.
 //
-// 	- You can call this operation up to 10 times per second per account.
+//		- You can call this operation up to 10 times per second per account.
 //
 // @param request - DescribeNetworkAttributeRequest
 //
@@ -75310,9 +75141,9 @@ func (client *Client) DescribeNetworkAttributeWithOptions(request *DescribeNetwo
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second.
+//	  You can call this operation up to 100 times per second.
 //
-// 	- You can call this operation up to 10 times per second per account.
+//		- You can call this operation up to 10 times per second per account.
 //
 // @param request - DescribeNetworkAttributeRequest
 //
@@ -75461,9 +75292,9 @@ func (client *Client) DescribeNetworkInterfaces(request *DescribeNetworkInterfac
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second.
+//	  You can call this operation up to 100 times per second.
 //
-// 	- You can call this operation up to 10 times per second per account.
+//		- You can call this operation up to 10 times per second per account.
 //
 // @param request - DescribeNetworksRequest
 //
@@ -75544,9 +75375,9 @@ func (client *Client) DescribeNetworksWithOptions(request *DescribeNetworksReque
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second.
+//	  You can call this operation up to 100 times per second.
 //
-// 	- You can call this operation up to 10 times per second per account.
+//		- You can call this operation up to 10 times per second per account.
 //
 // @param request - DescribeNetworksRequest
 //
@@ -76307,6 +76138,10 @@ func (client *Client) DescribeSecondaryPublicIpAddressesWithOptions(request *Des
 		query["EnsRegionId"] = request.EnsRegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.EnsRegionIds)) {
+		query["EnsRegionIds"] = request.EnsRegionIds
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Isp)) {
 		query["Isp"] = request.Isp
 	}
@@ -76705,9 +76540,9 @@ func (client *Client) DescribeServcieSchedule(request *DescribeServcieScheduleRe
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second per account.
+//	  You can call this operation up to 100 times per second per account.
 //
-// 	- You can call this operation up to 10 times per second per user.
+//		- You can call this operation up to 10 times per second per user.
 //
 // @param request - DescribeServerLoadBalancerListenMonitorRequest
 //
@@ -76760,9 +76595,9 @@ func (client *Client) DescribeServerLoadBalancerListenMonitorWithOptions(request
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second per account.
+//	  You can call this operation up to 100 times per second per account.
 //
-// 	- You can call this operation up to 10 times per second per user.
+//		- You can call this operation up to 10 times per second per user.
 //
 // @param request - DescribeServerLoadBalancerListenMonitorRequest
 //
@@ -76784,9 +76619,9 @@ func (client *Client) DescribeServerLoadBalancerListenMonitor(request *DescribeS
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second per account.
+//	  You can call this operation up to 100 times per second per account.
 //
-// 	- You can call this operation up to 10 times per second per user.
+//		- You can call this operation up to 10 times per second per user.
 //
 // @param request - DescribeServerLoadBalancerMonitorRequest
 //
@@ -76839,9 +76674,9 @@ func (client *Client) DescribeServerLoadBalancerMonitorWithOptions(request *Desc
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second per account.
+//	  You can call this operation up to 100 times per second per account.
 //
-// 	- You can call this operation up to 10 times per second per user.
+//		- You can call this operation up to 10 times per second per user.
 //
 // @param request - DescribeServerLoadBalancerMonitorRequest
 //
@@ -77705,13 +77540,13 @@ func (client *Client) DetachInstanceSDG(request *DetachInstanceSDGRequest) (_res
 //
 // Before you call this operation, take note of the following items:
 //
-// 	- You cannot detach a primary ENI from an instance.
+//   - You cannot detach a primary ENI from an instance.
 //
-// 	- The ENI must be in the InUse state.
+//   - The ENI must be in the InUse state.
 //
-// 	- The instances are in the Stopped state.
+//   - The instances are in the Stopped state.
 //
-// 	- This operation is an asynchronous operation. After this operation is called to detach an ENI, you can check the state of the ENI to determine whether the ENI is detached.
+//   - This operation is an asynchronous operation. After this operation is called to detach an ENI, you can check the state of the ENI to determine whether the ENI is detached.
 //
 // @param request - DetachNetworkInterfaceRequest
 //
@@ -77770,13 +77605,13 @@ func (client *Client) DetachNetworkInterfaceWithOptions(request *DetachNetworkIn
 //
 // Before you call this operation, take note of the following items:
 //
-// 	- You cannot detach a primary ENI from an instance.
+//   - You cannot detach a primary ENI from an instance.
 //
-// 	- The ENI must be in the InUse state.
+//   - The ENI must be in the InUse state.
 //
-// 	- The instances are in the Stopped state.
+//   - The instances are in the Stopped state.
 //
-// 	- This operation is an asynchronous operation. After this operation is called to detach an ENI, you can check the state of the ENI to determine whether the ENI is detached.
+//   - This operation is an asynchronous operation. After this operation is called to detach an ENI, you can check the state of the ENI to determine whether the ENI is detached.
 //
 // @param request - DetachNetworkInterfaceRequest
 //
@@ -78327,73 +78162,6 @@ func (client *Client) GetBucketLifecycle(request *GetBucketLifecycleRequest) (_r
 
 // Summary:
 //
-// Queries the network address translation (NAT) rule details of a device such as a server or container by its ID.
-//
-// @param request - GetDeviceInternetPortRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return GetDeviceInternetPortResponse
-func (client *Client) GetDeviceInternetPortWithOptions(request *GetDeviceInternetPortRequest, runtime *util.RuntimeOptions) (_result *GetDeviceInternetPortResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := openapiutil.Query(util.ToMap(request))
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetDeviceInternetPort"),
-		Version:     tea.String("2017-11-10"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetDeviceInternetPortResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetDeviceInternetPortResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	}
-
-}
-
-// Summary:
-//
-// Queries the network address translation (NAT) rule details of a device such as a server or container by its ID.
-//
-// @param request - GetDeviceInternetPortRequest
-//
-// @return GetDeviceInternetPortResponse
-func (client *Client) GetDeviceInternetPort(request *GetDeviceInternetPortRequest) (_result *GetDeviceInternetPortResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetDeviceInternetPortResponse{}
-	_body, _err := client.GetDeviceInternetPortWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
 // Queries the storage usage in the previous billing cycle and the cumulative number of calls in this month.
 //
 // @param request - GetOssStorageAndAccByBucketsRequest
@@ -78536,13 +78304,134 @@ func (client *Client) GetOssUsageData(request *GetOssUsageDataRequest) (_result 
 
 // Summary:
 //
+// 调用ImportImage导入一份您的镜像文件到云服务器。
+//
+// @param tmpReq - ImportImageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ImportImageResponse
+func (client *Client) ImportImageWithOptions(tmpReq *ImportImageRequest, runtime *util.RuntimeOptions) (_result *ImportImageResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ImportImageShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DiskDeviceMapping)) {
+		request.DiskDeviceMappingShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DiskDeviceMapping, tea.String("DiskDeviceMapping"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Architecture)) {
+		query["Architecture"] = request.Architecture
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ComputeType)) {
+		query["ComputeType"] = request.ComputeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DiskDeviceMappingShrink)) {
+		query["DiskDeviceMapping"] = request.DiskDeviceMappingShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageFormat)) {
+		query["ImageFormat"] = request.ImageFormat
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageName)) {
+		query["ImageName"] = request.ImageName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OSSBucket)) {
+		query["OSSBucket"] = request.OSSBucket
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OSSObject)) {
+		query["OSSObject"] = request.OSSObject
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OSSRegion)) {
+		query["OSSRegion"] = request.OSSRegion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OSType)) {
+		query["OSType"] = request.OSType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OSVersion)) {
+		query["OSVersion"] = request.OSVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Platform)) {
+		query["Platform"] = request.Platform
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetOSSRegionId)) {
+		query["TargetOSSRegionId"] = request.TargetOSSRegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ImportImage"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ImportImageResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ImportImageResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 调用ImportImage导入一份您的镜像文件到云服务器。
+//
+// @param request - ImportImageRequest
+//
+// @return ImportImageResponse
+func (client *Client) ImportImage(request *ImportImageRequest) (_result *ImportImageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ImportImageResponse{}
+	_body, _err := client.ImportImageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Imports the public key of a Rivest–Shamir–Adleman (RSA)-encrypted key pair that is generated by a third-party tool.
 //
 // Description:
 //
-//   After the key pair is imported, ENS stores the public key. You must securely store the private key.
+//	  After the key pair is imported, ENS stores the public key. You must securely store the private key.
 //
-// 	- The key pair can be only in the ssh-rsa format.
+//		- The key pair can be only in the ssh-rsa format.
 //
 // @param request - ImportKeyPairRequest
 //
@@ -78603,9 +78492,9 @@ func (client *Client) ImportKeyPairWithOptions(request *ImportKeyPairRequest, ru
 //
 // Description:
 //
-//   After the key pair is imported, ENS stores the public key. You must securely store the private key.
+//	  After the key pair is imported, ENS stores the public key. You must securely store the private key.
 //
-// 	- The key pair can be only in the ssh-rsa format.
+//		- The key pair can be only in the ssh-rsa format.
 //
 // @param request - ImportKeyPairRequest
 //
@@ -80017,11 +79906,11 @@ func (client *Client) ModifyImageSharePermission(request *ModifyImageSharePermis
 //
 // Description:
 //
-//   If an instance is in the Starting state, you cannot reset the password of the instance.
+//	  If an instance is in the Starting state, you cannot reset the password of the instance.
 //
-// 	- When the instance is in the Running state, you cannot change the password of the instance.
+//		- When the instance is in the Running state, you cannot change the password of the instance.
 //
-// 	- After resetting the password, you must Restart the instance in the ECS console or call the RebootInstance operation to validate the modifications. The restart operation within the instance does not validate the modifications.
+//		- After resetting the password, you must Restart the instance in the ECS console or call the RebootInstance operation to validate the modifications. The restart operation within the instance does not validate the modifications.
 //
 // @param request - ModifyInstanceAttributeRequest
 //
@@ -80094,11 +79983,11 @@ func (client *Client) ModifyInstanceAttributeWithOptions(request *ModifyInstance
 //
 // Description:
 //
-//   If an instance is in the Starting state, you cannot reset the password of the instance.
+//	  If an instance is in the Starting state, you cannot reset the password of the instance.
 //
-// 	- When the instance is in the Running state, you cannot change the password of the instance.
+//		- When the instance is in the Running state, you cannot change the password of the instance.
 //
-// 	- After resetting the password, you must Restart the instance in the ECS console or call the RebootInstance operation to validate the modifications. The restart operation within the instance does not validate the modifications.
+//		- After resetting the password, you must Restart the instance in the ECS console or call the RebootInstance operation to validate the modifications. The restart operation within the instance does not validate the modifications.
 //
 // @param request - ModifyInstanceAttributeRequest
 //
@@ -80387,9 +80276,9 @@ func (client *Client) ModifyInstanceChargeType(request *ModifyInstanceChargeType
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second per account.
+//	  You can call this operation up to 100 times per second per account.
 //
-// 	- You can call this operation up to 10 times per second per user.
+//		- You can call this operation up to 10 times per second per user.
 //
 // @param request - ModifyLoadBalancerAttributeRequest
 //
@@ -80450,9 +80339,9 @@ func (client *Client) ModifyLoadBalancerAttributeWithOptions(request *ModifyLoad
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second per account.
+//	  You can call this operation up to 100 times per second per account.
 //
-// 	- You can call this operation up to 10 times per second per user.
+//		- You can call this operation up to 10 times per second per user.
 //
 // @param request - ModifyLoadBalancerAttributeRequest
 //
@@ -80474,9 +80363,9 @@ func (client *Client) ModifyLoadBalancerAttribute(request *ModifyLoadBalancerAtt
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second.
+//	  You can call this operation up to 100 times per second.
 //
-// 	- You can call this operation up to 5 times per second per user.
+//		- You can call this operation up to 5 times per second per user.
 //
 // @param request - ModifyNetworkAttributeRequest
 //
@@ -80541,9 +80430,9 @@ func (client *Client) ModifyNetworkAttributeWithOptions(request *ModifyNetworkAt
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second.
+//	  You can call this operation up to 100 times per second.
 //
-// 	- You can call this operation up to 5 times per second per user.
+//		- You can call this operation up to 5 times per second per user.
 //
 // @param request - ModifyNetworkAttributeRequest
 //
@@ -80719,9 +80608,9 @@ func (client *Client) ModifyPrepayInstanceSpec(request *ModifyPrepayInstanceSpec
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second.
+//	  You can call this operation up to 100 times per second.
 //
-// 	- You can call this operation up to 5 times per second per user.
+//		- You can call this operation up to 5 times per second per user.
 //
 // @param request - ModifySecurityGroupAttributeRequest
 //
@@ -80786,9 +80675,9 @@ func (client *Client) ModifySecurityGroupAttributeWithOptions(request *ModifySec
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second.
+//	  You can call this operation up to 100 times per second.
 //
-// 	- You can call this operation up to 5 times per second per user.
+//		- You can call this operation up to 5 times per second per user.
 //
 // @param request - ModifySecurityGroupAttributeRequest
 //
@@ -80976,9 +80865,9 @@ func (client *Client) ModifySnatEntry(request *ModifySnatEntryRequest) (_result 
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second.
+//	  You can call this operation up to 100 times per second.
 //
-// 	- You can call this operation up to 5 times per second per user.
+//		- You can call this operation up to 5 times per second per user.
 //
 // @param request - ModifyVSwitchAttributeRequest
 //
@@ -81043,9 +80932,9 @@ func (client *Client) ModifyVSwitchAttributeWithOptions(request *ModifyVSwitchAt
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second.
+//	  You can call this operation up to 100 times per second.
 //
-// 	- You can call this operation up to 5 times per second per user.
+//		- You can call this operation up to 5 times per second per user.
 //
 // @param request - ModifyVSwitchAttributeRequest
 //
@@ -81565,9 +81454,9 @@ func (client *Client) PutBucketAcl(request *PutBucketAclRequest) (_result *PutBu
 //
 // Description:
 //
-//   You can configure up to 1,000 rules.
+//	  You can configure up to 1,000 rules.
 //
-// 	- If an object meets multiple rules, the rule that has the earliest expiration time prevails.
+//		- If an object meets multiple rules, the rule that has the earliest expiration time prevails.
 //
 // @param request - PutBucketLifecycleRequest
 //
@@ -81648,9 +81537,9 @@ func (client *Client) PutBucketLifecycleWithOptions(request *PutBucketLifecycleR
 //
 // Description:
 //
-//   You can configure up to 1,000 rules.
+//	  You can configure up to 1,000 rules.
 //
-// 	- If an object meets multiple rules, the rule that has the earliest expiration time prevails.
+//		- If an object meets multiple rules, the rule that has the earliest expiration time prevails.
 //
 // @param request - PutBucketLifecycleRequest
 //
@@ -81887,9 +81776,9 @@ func (client *Client) RebootARMServerInstance(request *RebootARMServerInstanceRe
 //
 // Description:
 //
-//   Only instances that are in the Running state can be restarted.
+//	  Only instances that are in the Running state can be restarted.
 //
-// 	- If the operation is successful, the status of the instance becomes Starting.
+//		- If the operation is successful, the status of the instance becomes Starting.
 //
 // @param request - RebootInstanceRequest
 //
@@ -81950,9 +81839,9 @@ func (client *Client) RebootInstanceWithOptions(request *RebootInstanceRequest, 
 //
 // Description:
 //
-//   Only instances that are in the Running state can be restarted.
+//	  Only instances that are in the Running state can be restarted.
 //
-// 	- If the operation is successful, the status of the instance becomes Starting.
+//		- If the operation is successful, the status of the instance becomes Starting.
 //
 // @param request - RebootInstanceRequest
 //
@@ -82424,9 +82313,9 @@ func (client *Client) ReleaseARMServerInstance(request *ReleaseARMServerInstance
 //
 // Description:
 //
-//   You can call this operation up to 10,000 times per second per account.
+//	  You can call this operation up to 10,000 times per second per account.
 //
-// 	- The maximum number of times that each user can call this operation per second is 50.
+//		- The maximum number of times that each user can call this operation per second is 50.
 //
 // @param request - ReleaseInstanceRequest
 //
@@ -82483,9 +82372,9 @@ func (client *Client) ReleaseInstanceWithOptions(request *ReleaseInstanceRequest
 //
 // Description:
 //
-//   You can call this operation up to 10,000 times per second per account.
+//	  You can call this operation up to 10,000 times per second per account.
 //
-// 	- The maximum number of times that each user can call this operation per second is 50.
+//		- The maximum number of times that each user can call this operation per second is 50.
 //
 // @param request - ReleaseInstanceRequest
 //
@@ -82649,9 +82538,9 @@ func (client *Client) ReleasePrePaidInstance(request *ReleasePrePaidInstanceRequ
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second.
+//	  You can call this operation up to 100 times per second.
 //
-// 	- You can call this operation up to 10 times per second per account.
+//		- You can call this operation up to 10 times per second per account.
 //
 // @param tmpReq - RemoveBackendServersRequest
 //
@@ -82718,9 +82607,9 @@ func (client *Client) RemoveBackendServersWithOptions(tmpReq *RemoveBackendServe
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second.
+//	  You can call this operation up to 100 times per second.
 //
-// 	- You can call this operation up to 10 times per second per account.
+//		- You can call this operation up to 10 times per second per account.
 //
 // @param request - RemoveBackendServersRequest
 //
@@ -83455,86 +83344,19 @@ func (client *Client) ResetAICInstance(request *ResetAICInstanceRequest) (_resul
 
 // Summary:
 //
-// Resets an instance including its image.
-//
-// @param request - ResetDeviceInstanceRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return ResetDeviceInstanceResponse
-func (client *Client) ResetDeviceInstanceWithOptions(request *ResetDeviceInstanceRequest, runtime *util.RuntimeOptions) (_result *ResetDeviceInstanceResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := openapiutil.Query(util.ToMap(request))
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ResetDeviceInstance"),
-		Version:     tea.String("2017-11-10"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ResetDeviceInstanceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ResetDeviceInstanceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	}
-
-}
-
-// Summary:
-//
-// Resets an instance including its image.
-//
-// @param request - ResetDeviceInstanceRequest
-//
-// @return ResetDeviceInstanceResponse
-func (client *Client) ResetDeviceInstance(request *ResetDeviceInstanceRequest) (_result *ResetDeviceInstanceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ResetDeviceInstanceResponse{}
-	_body, _err := client.ResetDeviceInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
 // Rolls back a disk by using a snapshot.
 //
 // Description:
 //
 // When you call this operation, take note of the following items:
 //
-// 	- The disk must be in the In Use (In_Use) or Unattached (Available) state.
+//   - The disk must be in the In Use (In_Use) or Unattached (Available) state.
 //
-// 	- The instance to which the disk is attached must be in the Stopped (Stopped) state. You can call the [StopInstance](~~StopInstance~~) operation to stop an instance.
+//   - The instance to which the disk is attached must be in the Stopped (Stopped) state. You can call the [StopInstance](~~StopInstance~~) operation to stop an instance.
 //
-// 	- The specified snapshot must be created from the disk specified by the DiskId parameter.
+//   - The specified snapshot must be created from the disk specified by the DiskId parameter.
 //
-// 	- If the response contains `{"OperationLocks": {"LockReason" : "security"}}` when you query information about an ENS instance by calling the [DescribeInstances](~~DescribeInstances~~) operation, the instance is locked for security reasons and no operations are allowed on the instance.
+//   - If the response contains `{"OperationLocks": {"LockReason" : "security"}}` when you query information about an ENS instance by calling the [DescribeInstances](~~DescribeInstances~~) operation, the instance is locked for security reasons and no operations are allowed on the instance.
 //
 // @param request - ResetDiskRequest
 //
@@ -83597,13 +83419,13 @@ func (client *Client) ResetDiskWithOptions(request *ResetDiskRequest, runtime *u
 //
 // When you call this operation, take note of the following items:
 //
-// 	- The disk must be in the In Use (In_Use) or Unattached (Available) state.
+//   - The disk must be in the In Use (In_Use) or Unattached (Available) state.
 //
-// 	- The instance to which the disk is attached must be in the Stopped (Stopped) state. You can call the [StopInstance](~~StopInstance~~) operation to stop an instance.
+//   - The instance to which the disk is attached must be in the Stopped (Stopped) state. You can call the [StopInstance](~~StopInstance~~) operation to stop an instance.
 //
-// 	- The specified snapshot must be created from the disk specified by the DiskId parameter.
+//   - The specified snapshot must be created from the disk specified by the DiskId parameter.
 //
-// 	- If the response contains `{"OperationLocks": {"LockReason" : "security"}}` when you query information about an ENS instance by calling the [DescribeInstances](~~DescribeInstances~~) operation, the instance is locked for security reasons and no operations are allowed on the instance.
+//   - If the response contains `{"OperationLocks": {"LockReason" : "security"}}` when you query information about an ENS instance by calling the [DescribeInstances](~~DescribeInstances~~) operation, the instance is locked for security reasons and no operations are allowed on the instance.
 //
 // @param request - ResetDiskRequest
 //
@@ -83696,82 +83518,15 @@ func (client *Client) ResizeDisk(request *ResizeDiskRequest) (_result *ResizeDis
 
 // Summary:
 //
-// Restarts applications deployed on an instance and returns the restart results in a synchronous manner.
-//
-// @param request - RestartDeviceInstanceRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return RestartDeviceInstanceResponse
-func (client *Client) RestartDeviceInstanceWithOptions(request *RestartDeviceInstanceRequest, runtime *util.RuntimeOptions) (_result *RestartDeviceInstanceResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := openapiutil.Query(util.ToMap(request))
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("RestartDeviceInstance"),
-		Version:     tea.String("2017-11-10"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RestartDeviceInstanceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &RestartDeviceInstanceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	}
-
-}
-
-// Summary:
-//
-// Restarts applications deployed on an instance and returns the restart results in a synchronous manner.
-//
-// @param request - RestartDeviceInstanceRequest
-//
-// @return RestartDeviceInstanceResponse
-func (client *Client) RestartDeviceInstance(request *RestartDeviceInstanceRequest) (_result *RestartDeviceInstanceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &RestartDeviceInstanceResponse{}
-	_body, _err := client.RestartDeviceInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
 // Deletes an inbound security group rule. After the rule is deleted, the access control implemented by the rule is removed.
 //
 // Description:
 //
-//   In the security group-related API documents, inbound traffic refers to the traffic sent by the source and received by the destination.
+//	  In the security group-related API documents, inbound traffic refers to the traffic sent by the source and received by the destination.
 //
-// 	- You can determine an inbound security group rule by specifying one of the following groups of parameters. You cannot determine a security group rule by specifying only one parameter.
+//		- You can determine an inbound security group rule by specifying one of the following groups of parameters. You cannot determine a security group rule by specifying only one parameter.
 //
-// 	- You can specify one or more of the following parameters to remove access control for a CIDR block: IpProtocol, PortRange, Policy, and SourceCidrIp.
+//		- You can specify one or more of the following parameters to remove access control for a CIDR block: IpProtocol, PortRange, Policy, and SourceCidrIp.
 //
 // @param request - RevokeSecurityGroupRequest
 //
@@ -83852,11 +83607,11 @@ func (client *Client) RevokeSecurityGroupWithOptions(request *RevokeSecurityGrou
 //
 // Description:
 //
-//   In the security group-related API documents, inbound traffic refers to the traffic sent by the source and received by the destination.
+//	  In the security group-related API documents, inbound traffic refers to the traffic sent by the source and received by the destination.
 //
-// 	- You can determine an inbound security group rule by specifying one of the following groups of parameters. You cannot determine a security group rule by specifying only one parameter.
+//		- You can determine an inbound security group rule by specifying one of the following groups of parameters. You cannot determine a security group rule by specifying only one parameter.
 //
-// 	- You can specify one or more of the following parameters to remove access control for a CIDR block: IpProtocol, PortRange, Policy, and SourceCidrIp.
+//		- You can specify one or more of the following parameters to remove access control for a CIDR block: IpProtocol, PortRange, Policy, and SourceCidrIp.
 //
 // @param request - RevokeSecurityGroupRequest
 //
@@ -84459,9 +84214,9 @@ func (client *Client) SaveSDG(request *SaveSDGRequest) (_result *SaveSDGResponse
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second.
+//	  You can call this operation up to 100 times per second.
 //
-// 	- You can call this operation up to 10 times per second per account.
+//		- You can call this operation up to 10 times per second per account.
 //
 // @param tmpReq - SetBackendServersRequest
 //
@@ -84528,9 +84283,9 @@ func (client *Client) SetBackendServersWithOptions(tmpReq *SetBackendServersRequ
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second.
+//	  You can call this operation up to 100 times per second.
 //
-// 	- You can call this operation up to 10 times per second per account.
+//		- You can call this operation up to 10 times per second per account.
 //
 // @param request - SetBackendServersRequest
 //
@@ -84552,9 +84307,9 @@ func (client *Client) SetBackendServers(request *SetBackendServersRequest) (_res
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second per account.
+//	  You can call this operation up to 100 times per second per account.
 //
-// 	- You can call this operation up to 10 times per second per user.
+//		- You can call this operation up to 10 times per second per user.
 //
 // @param request - SetLoadBalancerHTTPListenerAttributeRequest
 //
@@ -84675,9 +84430,9 @@ func (client *Client) SetLoadBalancerHTTPListenerAttributeWithOptions(request *S
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second per account.
+//	  You can call this operation up to 100 times per second per account.
 //
-// 	- You can call this operation up to 10 times per second per user.
+//		- You can call this operation up to 10 times per second per user.
 //
 // @param request - SetLoadBalancerHTTPListenerAttributeRequest
 //
@@ -84699,9 +84454,9 @@ func (client *Client) SetLoadBalancerHTTPListenerAttribute(request *SetLoadBalan
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second per account.
+//	  You can call this operation up to 100 times per second per account.
 //
-// 	- You can call this operation up to 10 times per second per user.
+//		- You can call this operation up to 10 times per second per user.
 //
 // @param request - SetLoadBalancerHTTPSListenerAttributeRequest
 //
@@ -84822,9 +84577,9 @@ func (client *Client) SetLoadBalancerHTTPSListenerAttributeWithOptions(request *
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second per account.
+//	  You can call this operation up to 100 times per second per account.
 //
-// 	- You can call this operation up to 10 times per second per user.
+//		- You can call this operation up to 10 times per second per user.
 //
 // @param request - SetLoadBalancerHTTPSListenerAttributeRequest
 //
@@ -84846,9 +84601,9 @@ func (client *Client) SetLoadBalancerHTTPSListenerAttribute(request *SetLoadBala
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second per account.
+//	  You can call this operation up to 100 times per second per account.
 //
-// 	- You can call this operation up to 10 times per second per user.
+//		- You can call this operation up to 10 times per second per user.
 //
 // @param request - SetLoadBalancerStatusRequest
 //
@@ -84909,9 +84664,9 @@ func (client *Client) SetLoadBalancerStatusWithOptions(request *SetLoadBalancerS
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second per account.
+//	  You can call this operation up to 100 times per second per account.
 //
-// 	- You can call this operation up to 10 times per second per user.
+//		- You can call this operation up to 10 times per second per user.
 //
 // @param request - SetLoadBalancerStatusRequest
 //
@@ -84933,9 +84688,9 @@ func (client *Client) SetLoadBalancerStatus(request *SetLoadBalancerStatusReques
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second per account.
+//	  You can call this operation up to 100 times per second per account.
 //
-// 	- You can call this operation up to 10 times per second per user.
+//		- You can call this operation up to 10 times per second per user.
 //
 // @param request - SetLoadBalancerTCPListenerAttributeRequest
 //
@@ -85052,9 +84807,9 @@ func (client *Client) SetLoadBalancerTCPListenerAttributeWithOptions(request *Se
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second per account.
+//	  You can call this operation up to 100 times per second per account.
 //
-// 	- You can call this operation up to 10 times per second per user.
+//		- You can call this operation up to 10 times per second per user.
 //
 // @param request - SetLoadBalancerTCPListenerAttributeRequest
 //
@@ -85076,9 +84831,9 @@ func (client *Client) SetLoadBalancerTCPListenerAttribute(request *SetLoadBalanc
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second.
+//	  You can call this operation up to 100 times per second.
 //
-// 	- You can call this operation up to 10 times per second per account.
+//		- You can call this operation up to 10 times per second per account.
 //
 // @param request - SetLoadBalancerUDPListenerAttributeRequest
 //
@@ -85183,9 +84938,9 @@ func (client *Client) SetLoadBalancerUDPListenerAttributeWithOptions(request *Se
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second.
+//	  You can call this operation up to 100 times per second.
 //
-// 	- You can call this operation up to 10 times per second per account.
+//		- You can call this operation up to 10 times per second per account.
 //
 // @param request - SetLoadBalancerUDPListenerAttributeRequest
 //
@@ -85278,9 +85033,9 @@ func (client *Client) StartEpnInstance(request *StartEpnInstanceRequest) (_resul
 //
 // Description:
 //
-//   You can call the operation only when the instance is in the Stopped state.
+//	  You can call the operation only when the instance is in the Stopped state.
 //
-// 	- If the operation is successful, the status of the instance becomes Starting.
+//		- If the operation is successful, the status of the instance becomes Starting.
 //
 // @param request - StartInstanceRequest
 //
@@ -85337,9 +85092,9 @@ func (client *Client) StartInstanceWithOptions(request *StartInstanceRequest, ru
 //
 // Description:
 //
-//   You can call the operation only when the instance is in the Stopped state.
+//	  You can call the operation only when the instance is in the Stopped state.
 //
-// 	- If the operation is successful, the status of the instance becomes Starting.
+//		- If the operation is successful, the status of the instance becomes Starting.
 //
 // @param request - StartInstanceRequest
 //
@@ -85438,9 +85193,9 @@ func (client *Client) StartInstances(request *StartInstancesRequest) (_result *S
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second per account.
+//	  You can call this operation up to 100 times per second per account.
 //
-// 	- You can call this operation up to 10 times per second per user.
+//		- You can call this operation up to 10 times per second per user.
 //
 // @param request - StartLoadBalancerListenerRequest
 //
@@ -85505,9 +85260,9 @@ func (client *Client) StartLoadBalancerListenerWithOptions(request *StartLoadBal
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second per account.
+//	  You can call this operation up to 100 times per second per account.
 //
-// 	- You can call this operation up to 10 times per second per user.
+//		- You can call this operation up to 10 times per second per user.
 //
 // @param request - StartLoadBalancerListenerRequest
 //
@@ -85675,13 +85430,13 @@ func (client *Client) StopEpnInstance(request *StopEpnInstanceRequest) (_result 
 //
 // Description:
 //
-//   You can call this operation to stop instances that are only in the Running state.
+//	  You can call this operation to stop instances that are only in the Running state.
 //
-// 	- If the call is successful, the state of the instance becomes Stopping.
+//		- If the call is successful, the state of the instance becomes Stopping.
 //
-// 	- Once the instance is stopped, the state of the instance becomes Stopped.
+//		- Once the instance is stopped, the state of the instance becomes Stopped.
 //
-// 	- Force stop is supported, which is equivalent to power-off. Data that is not written to disks on the instance may be lost.
+//		- Force stop is supported, which is equivalent to power-off. Data that is not written to disks on the instance may be lost.
 //
 // @param request - StopInstanceRequest
 //
@@ -85742,13 +85497,13 @@ func (client *Client) StopInstanceWithOptions(request *StopInstanceRequest, runt
 //
 // Description:
 //
-//   You can call this operation to stop instances that are only in the Running state.
+//	  You can call this operation to stop instances that are only in the Running state.
 //
-// 	- If the call is successful, the state of the instance becomes Stopping.
+//		- If the call is successful, the state of the instance becomes Stopping.
 //
-// 	- Once the instance is stopped, the state of the instance becomes Stopped.
+//		- Once the instance is stopped, the state of the instance becomes Stopped.
 //
-// 	- Force stop is supported, which is equivalent to power-off. Data that is not written to disks on the instance may be lost.
+//		- Force stop is supported, which is equivalent to power-off. Data that is not written to disks on the instance may be lost.
 //
 // @param request - StopInstanceRequest
 //
@@ -85847,9 +85602,9 @@ func (client *Client) StopInstances(request *StopInstancesRequest) (_result *Sto
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second per account.
+//	  You can call this operation up to 100 times per second per account.
 //
-// 	- You can call this operation up to 10 times per second per user.
+//		- You can call this operation up to 10 times per second per user.
 //
 // @param request - StopLoadBalancerListenerRequest
 //
@@ -85914,9 +85669,9 @@ func (client *Client) StopLoadBalancerListenerWithOptions(request *StopLoadBalan
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second per account.
+//	  You can call this operation up to 100 times per second per account.
 //
-// 	- You can call this operation up to 10 times per second per user.
+//		- You can call this operation up to 10 times per second per user.
 //
 // @param request - StopLoadBalancerListenerRequest
 //
