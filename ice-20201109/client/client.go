@@ -1535,6 +1535,147 @@ func (s *LicenseInstanceAppDTOLicenseConfigs) SetSubscriptionPkg(v string) *Lice
 	return s
 }
 
+type LiveManifestConfig struct {
+	AdMarkers               *string `json:"AdMarkers,omitempty" xml:"AdMarkers,omitempty"`
+	DateTimeInterval        *int32  `json:"DateTimeInterval,omitempty" xml:"DateTimeInterval,omitempty"`
+	ManifestName            *string `json:"ManifestName,omitempty" xml:"ManifestName,omitempty"`
+	MaxVideoBitrate         *int32  `json:"MaxVideoBitrate,omitempty" xml:"MaxVideoBitrate,omitempty"`
+	MinBufferTime           *int32  `json:"MinBufferTime,omitempty" xml:"MinBufferTime,omitempty"`
+	MinVideoBitrate         *int32  `json:"MinVideoBitrate,omitempty" xml:"MinVideoBitrate,omitempty"`
+	Protocol                *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	SegmentNum              *int32  `json:"SegmentNum,omitempty" xml:"SegmentNum,omitempty"`
+	StreamOrder             *string `json:"StreamOrder,omitempty" xml:"StreamOrder,omitempty"`
+	UseAudioRenditionGroups *bool   `json:"UseAudioRenditionGroups,omitempty" xml:"UseAudioRenditionGroups,omitempty"`
+}
+
+func (s LiveManifestConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LiveManifestConfig) GoString() string {
+	return s.String()
+}
+
+func (s *LiveManifestConfig) SetAdMarkers(v string) *LiveManifestConfig {
+	s.AdMarkers = &v
+	return s
+}
+
+func (s *LiveManifestConfig) SetDateTimeInterval(v int32) *LiveManifestConfig {
+	s.DateTimeInterval = &v
+	return s
+}
+
+func (s *LiveManifestConfig) SetManifestName(v string) *LiveManifestConfig {
+	s.ManifestName = &v
+	return s
+}
+
+func (s *LiveManifestConfig) SetMaxVideoBitrate(v int32) *LiveManifestConfig {
+	s.MaxVideoBitrate = &v
+	return s
+}
+
+func (s *LiveManifestConfig) SetMinBufferTime(v int32) *LiveManifestConfig {
+	s.MinBufferTime = &v
+	return s
+}
+
+func (s *LiveManifestConfig) SetMinVideoBitrate(v int32) *LiveManifestConfig {
+	s.MinVideoBitrate = &v
+	return s
+}
+
+func (s *LiveManifestConfig) SetProtocol(v string) *LiveManifestConfig {
+	s.Protocol = &v
+	return s
+}
+
+func (s *LiveManifestConfig) SetSegmentNum(v int32) *LiveManifestConfig {
+	s.SegmentNum = &v
+	return s
+}
+
+func (s *LiveManifestConfig) SetStreamOrder(v string) *LiveManifestConfig {
+	s.StreamOrder = &v
+	return s
+}
+
+func (s *LiveManifestConfig) SetUseAudioRenditionGroups(v bool) *LiveManifestConfig {
+	s.UseAudioRenditionGroups = &v
+	return s
+}
+
+type LivePackagingConfig struct {
+	DrmConfig               *LivePackagingConfigDrmConfig `json:"DrmConfig,omitempty" xml:"DrmConfig,omitempty" type:"Struct"`
+	LiveManifestConfigs     []*LiveManifestConfig         `json:"LiveManifestConfigs,omitempty" xml:"LiveManifestConfigs,omitempty" type:"Repeated"`
+	SegmentDuration         *int32                        `json:"SegmentDuration,omitempty" xml:"SegmentDuration,omitempty"`
+	UseAudioRenditionGroups *bool                         `json:"UseAudioRenditionGroups,omitempty" xml:"UseAudioRenditionGroups,omitempty"`
+}
+
+func (s LivePackagingConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LivePackagingConfig) GoString() string {
+	return s.String()
+}
+
+func (s *LivePackagingConfig) SetDrmConfig(v *LivePackagingConfigDrmConfig) *LivePackagingConfig {
+	s.DrmConfig = v
+	return s
+}
+
+func (s *LivePackagingConfig) SetLiveManifestConfigs(v []*LiveManifestConfig) *LivePackagingConfig {
+	s.LiveManifestConfigs = v
+	return s
+}
+
+func (s *LivePackagingConfig) SetSegmentDuration(v int32) *LivePackagingConfig {
+	s.SegmentDuration = &v
+	return s
+}
+
+func (s *LivePackagingConfig) SetUseAudioRenditionGroups(v bool) *LivePackagingConfig {
+	s.UseAudioRenditionGroups = &v
+	return s
+}
+
+type LivePackagingConfigDrmConfig struct {
+	EncryptionMethod *string   `json:"EncryptionMethod,omitempty" xml:"EncryptionMethod,omitempty"`
+	IV               *string   `json:"IV,omitempty" xml:"IV,omitempty"`
+	SystemIds        []*string `json:"SystemIds,omitempty" xml:"SystemIds,omitempty" type:"Repeated"`
+	Url              *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s LivePackagingConfigDrmConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LivePackagingConfigDrmConfig) GoString() string {
+	return s.String()
+}
+
+func (s *LivePackagingConfigDrmConfig) SetEncryptionMethod(v string) *LivePackagingConfigDrmConfig {
+	s.EncryptionMethod = &v
+	return s
+}
+
+func (s *LivePackagingConfigDrmConfig) SetIV(v string) *LivePackagingConfigDrmConfig {
+	s.IV = &v
+	return s
+}
+
+func (s *LivePackagingConfigDrmConfig) SetSystemIds(v []*string) *LivePackagingConfigDrmConfig {
+	s.SystemIds = v
+	return s
+}
+
+func (s *LivePackagingConfigDrmConfig) SetUrl(v string) *LivePackagingConfigDrmConfig {
+	s.Url = &v
+	return s
+}
+
 type MediaConvertAudio struct {
 	Bitrate    *int64  `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
 	Channels   *int64  `json:"Channels,omitempty" xml:"Channels,omitempty"`
@@ -71494,7 +71635,8 @@ type SubmitBatchMediaProducingJobRequest struct {
 	//   "Video": {"Crf": 27}
 	//
 	// }
-	OutputConfig *string `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty"`
+	OutputConfig   *string `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty"`
+	TemplateConfig *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
 	// The user-defined data, including the business and callback configurations. For more information, see [UserData](https://help.aliyun.com/document_detail/357745.html).
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
@@ -71524,6 +71666,11 @@ func (s *SubmitBatchMediaProducingJobRequest) SetInputConfig(v string) *SubmitBa
 
 func (s *SubmitBatchMediaProducingJobRequest) SetOutputConfig(v string) *SubmitBatchMediaProducingJobRequest {
 	s.OutputConfig = &v
+	return s
+}
+
+func (s *SubmitBatchMediaProducingJobRequest) SetTemplateConfig(v string) *SubmitBatchMediaProducingJobRequest {
+	s.TemplateConfig = &v
 	return s
 }
 
@@ -116275,6 +116422,10 @@ func (client *Client) SubmitBatchMediaProducingJobWithOptions(request *SubmitBat
 
 	if !tea.BoolValue(util.IsUnset(request.OutputConfig)) {
 		query["OutputConfig"] = request.OutputConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateConfig)) {
+		query["TemplateConfig"] = request.TemplateConfig
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UserData)) {
