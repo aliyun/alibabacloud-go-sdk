@@ -14586,6 +14586,7 @@ func (s *DescribeDefenseRulesResponseBody) SetTotalCount(v int64) *DescribeDefen
 }
 
 type DescribeDefenseRulesResponseBodyRules struct {
+	ActionExternal *string `json:"ActionExternal,omitempty" xml:"ActionExternal,omitempty"`
 	// The details of the protection rule. The value is a string that contains multiple parameters in the JSON format. For more information, see the "**Rule parameters**" section in the [CreateDefenseRule](~~CreateDefenseRule~~) topic.
 	//
 	// example:
@@ -14633,7 +14634,11 @@ type DescribeDefenseRulesResponseBodyRules struct {
 	// example:
 	//
 	// waf_group
-	DefenseScene *string `json:"DefenseScene,omitempty" xml:"DefenseScene,omitempty"`
+	DefenseScene  *string `json:"DefenseScene,omitempty" xml:"DefenseScene,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DetailRuleIds *string `json:"DetailRuleIds,omitempty" xml:"DetailRuleIds,omitempty"`
+	ExternalInfo  *string `json:"ExternalInfo,omitempty" xml:"ExternalInfo,omitempty"`
+	GmtCreate     *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// The most recent time when the protection rule was modified.
 	//
 	// example:
@@ -14652,6 +14657,7 @@ type DescribeDefenseRulesResponseBodyRules struct {
 	//
 	// rules_41
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
 	// The status of the protection rule. Valid values:
 	//
 	// 	- **0:*	- disabled.
@@ -14678,6 +14684,11 @@ func (s DescribeDefenseRulesResponseBodyRules) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeDefenseRulesResponseBodyRules) SetActionExternal(v string) *DescribeDefenseRulesResponseBodyRules {
+	s.ActionExternal = &v
+	return s
+}
+
 func (s *DescribeDefenseRulesResponseBodyRules) SetConfig(v string) *DescribeDefenseRulesResponseBodyRules {
 	s.Config = &v
 	return s
@@ -14693,6 +14704,26 @@ func (s *DescribeDefenseRulesResponseBodyRules) SetDefenseScene(v string) *Descr
 	return s
 }
 
+func (s *DescribeDefenseRulesResponseBodyRules) SetDescription(v string) *DescribeDefenseRulesResponseBodyRules {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeDefenseRulesResponseBodyRules) SetDetailRuleIds(v string) *DescribeDefenseRulesResponseBodyRules {
+	s.DetailRuleIds = &v
+	return s
+}
+
+func (s *DescribeDefenseRulesResponseBodyRules) SetExternalInfo(v string) *DescribeDefenseRulesResponseBodyRules {
+	s.ExternalInfo = &v
+	return s
+}
+
+func (s *DescribeDefenseRulesResponseBodyRules) SetGmtCreate(v int64) *DescribeDefenseRulesResponseBodyRules {
+	s.GmtCreate = &v
+	return s
+}
+
 func (s *DescribeDefenseRulesResponseBodyRules) SetGmtModified(v int64) *DescribeDefenseRulesResponseBodyRules {
 	s.GmtModified = &v
 	return s
@@ -14705,6 +14736,11 @@ func (s *DescribeDefenseRulesResponseBodyRules) SetRuleId(v int64) *DescribeDefe
 
 func (s *DescribeDefenseRulesResponseBodyRules) SetRuleName(v string) *DescribeDefenseRulesResponseBodyRules {
 	s.RuleName = &v
+	return s
+}
+
+func (s *DescribeDefenseRulesResponseBodyRules) SetRuleType(v string) *DescribeDefenseRulesResponseBodyRules {
+	s.RuleType = &v
 	return s
 }
 
