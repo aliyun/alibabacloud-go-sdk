@@ -610,6 +610,8 @@ func (s *CreateClientCertificateWithCsrRequest) SetYears(v int32) *CreateClientC
 }
 
 type CreateClientCertificateWithCsrResponseBody struct {
+	CertKmcRep1    *string `json:"CertKmcRep1,omitempty" xml:"CertKmcRep1,omitempty"`
+	CertSignBufKmc *string `json:"CertSignBufKmc,omitempty" xml:"CertSignBufKmc,omitempty"`
 	// The certificate chain of the client certificate.
 	//
 	// example:
@@ -648,6 +650,16 @@ func (s CreateClientCertificateWithCsrResponseBody) String() string {
 
 func (s CreateClientCertificateWithCsrResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateClientCertificateWithCsrResponseBody) SetCertKmcRep1(v string) *CreateClientCertificateWithCsrResponseBody {
+	s.CertKmcRep1 = &v
+	return s
+}
+
+func (s *CreateClientCertificateWithCsrResponseBody) SetCertSignBufKmc(v string) *CreateClientCertificateWithCsrResponseBody {
+	s.CertSignBufKmc = &v
+	return s
 }
 
 func (s *CreateClientCertificateWithCsrResponseBody) SetCertificateChain(v string) *CreateClientCertificateWithCsrResponseBody {
@@ -5822,25 +5834,25 @@ func (client *Client) CreateClientCertificateWithCsr(request *CreateClientCertif
 //
 // You must specify the key usage and extended key usage based on the certificate type. The following list describes common certificate types:
 //
-// 	- Server certificate
+//   - Server certificate
 //
 // Key usage: digitalSignature or keyEncipherment
 //
 // Extended key usage: serverAuth
 //
-// 	- Client certificate
+//   - Client certificate
 //
 // Key usage: digitalSignature or keyEncipherment
 //
 // Extended key usage: clientAuth
 //
-// 	- Mutual Transport Layer Security (TLS) authentication certificate
+//   - Mutual Transport Layer Security (TLS) authentication certificate
 //
 // Key usage: digitalSignature or keyEncipherment
 //
 // Extended key usage: serverAuth or clientAuth
 //
-// 	- Email certificate
+//   - Email certificate
 //
 // Key usage: digitalSignature or contentCommitment
 //
@@ -5927,25 +5939,25 @@ func (client *Client) CreateCustomCertificateWithOptions(request *CreateCustomCe
 //
 // You must specify the key usage and extended key usage based on the certificate type. The following list describes common certificate types:
 //
-// 	- Server certificate
+//   - Server certificate
 //
 // Key usage: digitalSignature or keyEncipherment
 //
 // Extended key usage: serverAuth
 //
-// 	- Client certificate
+//   - Client certificate
 //
 // Key usage: digitalSignature or keyEncipherment
 //
 // Extended key usage: clientAuth
 //
-// 	- Mutual Transport Layer Security (TLS) authentication certificate
+//   - Mutual Transport Layer Security (TLS) authentication certificate
 //
 // Key usage: digitalSignature or keyEncipherment
 //
 // Extended key usage: serverAuth or clientAuth
 //
-// 	- Email certificate
+//   - Email certificate
 //
 // Key usage: digitalSignature or contentCommitment
 //
@@ -6967,17 +6979,17 @@ func (client *Client) DescribeCACertificateList(request *DescribeCACertificateLi
 //
 // You can call the DescribeCertificatePrivateKey operation to obtain the encrypted private key of a client certificate or a server certificate. The certificate is issued based on a system-generated certificate signing request (CSR). Before you call this operation, make sure that you have issued a client certificate or a server certificate by calling the following operation:
 //
-// 	- [CreateClientCertificate](https://help.aliyun.com/document_detail/330873.html)
+//   - [CreateClientCertificate](https://help.aliyun.com/document_detail/330873.html)
 //
-// 	- [CreateServerCertificate](https://help.aliyun.com/document_detail/330877.html)
+//   - [CreateServerCertificate](https://help.aliyun.com/document_detail/330877.html)
 //
 // To ensure the security of private key transmission, the DescribeCertificatePrivateKey operation encrypts the private key by using the private key password that you specify and returns the encrypted private key. The private key password is a string that is used to encrypt the private key. After you obtain the encrypted private key of the certificate, you can use the following methods to decrypt the private key:
 //
-// 	- If the encryption algorithm of the certificate is RSA, you must run the `openssl rsa -in <Encrypted private key file> -passin pass:<Private key password> -out <Decrypted private key file>` command in the computer on which [OpenSSL](https://www.openssl.org/source/) or [BabaSSL](https://github.com/BabaSSL/BabaSSL) is installed.
+//   - If the encryption algorithm of the certificate is RSA, you must run the `openssl rsa -in <Encrypted private key file> -passin pass:<Private key password> -out <Decrypted private key file>` command in the computer on which [OpenSSL](https://www.openssl.org/source/) or [BabaSSL](https://github.com/BabaSSL/BabaSSL) is installed.
 //
-// 	- If the encryption algorithm of the certificate is ECC, you must run the `openssl ec -in <Encrypted private key file> -passin pass:<Private key password> -out <Decrypted private key file>` command in the computer on which [OpenSSL](https://www.openssl.org/source/) or [BabaSSL](https://github.com/BabaSSL/BabaSSL) is installed.
+//   - If the encryption algorithm of the certificate is ECC, you must run the `openssl ec -in <Encrypted private key file> -passin pass:<Private key password> -out <Decrypted private key file>` command in the computer on which [OpenSSL](https://www.openssl.org/source/) or [BabaSSL](https://github.com/BabaSSL/BabaSSL) is installed.
 //
-// 	- If the encryption algorithm of the certificate is SM2, you must run the `openssl ec -in <Encrypted private key file> -passin pass:<Private key password> -out <Decrypted private key file>` command in the computer on which [BabaSSL](https://github.com/BabaSSL/BabaSSL) is installed.
+//   - If the encryption algorithm of the certificate is SM2, you must run the `openssl ec -in <Encrypted private key file> -passin pass:<Private key password> -out <Decrypted private key file>` command in the computer on which [BabaSSL](https://github.com/BabaSSL/BabaSSL) is installed.
 //
 // >  You can call the [DescribeClientCertificate] operation to query the encryption algorithm type of a client certificate or a server certificate.
 //
@@ -7048,17 +7060,17 @@ func (client *Client) DescribeCertificatePrivateKeyWithOptions(request *Describe
 //
 // You can call the DescribeCertificatePrivateKey operation to obtain the encrypted private key of a client certificate or a server certificate. The certificate is issued based on a system-generated certificate signing request (CSR). Before you call this operation, make sure that you have issued a client certificate or a server certificate by calling the following operation:
 //
-// 	- [CreateClientCertificate](https://help.aliyun.com/document_detail/330873.html)
+//   - [CreateClientCertificate](https://help.aliyun.com/document_detail/330873.html)
 //
-// 	- [CreateServerCertificate](https://help.aliyun.com/document_detail/330877.html)
+//   - [CreateServerCertificate](https://help.aliyun.com/document_detail/330877.html)
 //
 // To ensure the security of private key transmission, the DescribeCertificatePrivateKey operation encrypts the private key by using the private key password that you specify and returns the encrypted private key. The private key password is a string that is used to encrypt the private key. After you obtain the encrypted private key of the certificate, you can use the following methods to decrypt the private key:
 //
-// 	- If the encryption algorithm of the certificate is RSA, you must run the `openssl rsa -in <Encrypted private key file> -passin pass:<Private key password> -out <Decrypted private key file>` command in the computer on which [OpenSSL](https://www.openssl.org/source/) or [BabaSSL](https://github.com/BabaSSL/BabaSSL) is installed.
+//   - If the encryption algorithm of the certificate is RSA, you must run the `openssl rsa -in <Encrypted private key file> -passin pass:<Private key password> -out <Decrypted private key file>` command in the computer on which [OpenSSL](https://www.openssl.org/source/) or [BabaSSL](https://github.com/BabaSSL/BabaSSL) is installed.
 //
-// 	- If the encryption algorithm of the certificate is ECC, you must run the `openssl ec -in <Encrypted private key file> -passin pass:<Private key password> -out <Decrypted private key file>` command in the computer on which [OpenSSL](https://www.openssl.org/source/) or [BabaSSL](https://github.com/BabaSSL/BabaSSL) is installed.
+//   - If the encryption algorithm of the certificate is ECC, you must run the `openssl ec -in <Encrypted private key file> -passin pass:<Private key password> -out <Decrypted private key file>` command in the computer on which [OpenSSL](https://www.openssl.org/source/) or [BabaSSL](https://github.com/BabaSSL/BabaSSL) is installed.
 //
-// 	- If the encryption algorithm of the certificate is SM2, you must run the `openssl ec -in <Encrypted private key file> -passin pass:<Private key password> -out <Decrypted private key file>` command in the computer on which [BabaSSL](https://github.com/BabaSSL/BabaSSL) is installed.
+//   - If the encryption algorithm of the certificate is SM2, you must run the `openssl ec -in <Encrypted private key file> -passin pass:<Private key password> -out <Decrypted private key file>` command in the computer on which [BabaSSL](https://github.com/BabaSSL/BabaSSL) is installed.
 //
 // >  You can call the [DescribeClientCertificate] operation to query the encryption algorithm type of a client certificate or a server certificate.
 //
@@ -7092,15 +7104,15 @@ func (client *Client) DescribeCertificatePrivateKey(request *DescribeCertificate
 //
 // For more information about how to call an operation to create a client certificate, see the following topics:
 //
-// 	- [CreateClientCertificate](https://help.aliyun.com/document_detail/330873.html)
+//   - [CreateClientCertificate](https://help.aliyun.com/document_detail/330873.html)
 //
-// 	- [CreateClientCertificateWithCsr](https://help.aliyun.com/document_detail/330875.html)
+//   - [CreateClientCertificateWithCsr](https://help.aliyun.com/document_detail/330875.html)
 //
 // For more information about how to call an operation to create a server certificate, see the following topics:
 //
-// 	- [CreateServerCertificate](https://help.aliyun.com/document_detail/330877.html)
+//   - [CreateServerCertificate](https://help.aliyun.com/document_detail/330877.html)
 //
-// 	- [CreateServerCertificateWithCsr](https://help.aliyun.com/document_detail/330878.html)
+//   - [CreateServerCertificateWithCsr](https://help.aliyun.com/document_detail/330878.html)
 //
 // ## Limits
 //
@@ -7167,15 +7179,15 @@ func (client *Client) DescribeClientCertificateWithOptions(request *DescribeClie
 //
 // For more information about how to call an operation to create a client certificate, see the following topics:
 //
-// 	- [CreateClientCertificate](https://help.aliyun.com/document_detail/330873.html)
+//   - [CreateClientCertificate](https://help.aliyun.com/document_detail/330873.html)
 //
-// 	- [CreateClientCertificateWithCsr](https://help.aliyun.com/document_detail/330875.html)
+//   - [CreateClientCertificateWithCsr](https://help.aliyun.com/document_detail/330875.html)
 //
 // For more information about how to call an operation to create a server certificate, see the following topics:
 //
-// 	- [CreateServerCertificate](https://help.aliyun.com/document_detail/330877.html)
+//   - [CreateServerCertificate](https://help.aliyun.com/document_detail/330877.html)
 //
-// 	- [CreateServerCertificateWithCsr](https://help.aliyun.com/document_detail/330878.html)
+//   - [CreateServerCertificateWithCsr](https://help.aliyun.com/document_detail/330878.html)
 //
 // ## Limits
 //
