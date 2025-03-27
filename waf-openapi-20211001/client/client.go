@@ -28,7 +28,7 @@ type ChangeResourceGroupRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the protected object in Web Application Firewall (WAF) that you want to manage.
+	// The ID of the protected object that you want to manage.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type ChangeResourceGroupRequest struct {
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The resource type. The value is fixed as defenseresource.
+	// The resource type. Set the value to defenseresource.
 	//
 	// This parameter is required.
 	//
@@ -589,7 +589,7 @@ type CreateCloudResourceRequest struct {
 	//
 	// waf_v3prepaid_public_cn-***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The configurations of the listeners.
+	// The listener configurations.
 	//
 	// This parameter is required.
 	Listen *CreateCloudResourceRequestListen `json:"Listen,omitempty" xml:"Listen,omitempty" type:"Struct"`
@@ -599,7 +599,7 @@ type CreateCloudResourceRequest struct {
 	//
 	// 123
 	OwnerUserId *string `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
-	// The configurations of the forwarding rule.
+	// The forwarding configurations.
 	Redirect *CreateCloudResourceRequestRedirect `json:"Redirect,omitempty" xml:"Redirect,omitempty" type:"Struct"`
 	// The region in which the WAF instance is deployed. Valid values:
 	//
@@ -619,7 +619,7 @@ type CreateCloudResourceRequest struct {
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The tags to add to the resource.
+	// The tags. You can specify up to 20 tags.
 	Tag []*CreateCloudResourceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -667,13 +667,13 @@ func (s *CreateCloudResourceRequest) SetTag(v []*CreateCloudResourceRequestTag) 
 }
 
 type CreateCloudResourceRequestListen struct {
-	// An array of certificates.
+	// The certificates.
 	Certificates []*CreateCloudResourceRequestListenCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
 	// The type of the cipher suites that you want to add. This parameter is available only if you specify **HttpsPorts**. Valid values:
 	//
 	// 	- **1**: all cipher suites.
 	//
-	// 	- **2**: strong cipher suites. You can set the parameter to this value only if you set **TLSVersion*	- to **tlsv1.2**.
+	// 	- **2**: strong cipher suites. This value is available only if you set **TLSVersion*	- to **tlsv1.2**.
 	//
 	// 	- **99**: custom cipher suites.
 	//
@@ -706,7 +706,7 @@ type CreateCloudResourceRequestListen struct {
 	//
 	// true
 	Http2Enabled *bool `json:"Http2Enabled,omitempty" xml:"Http2Enabled,omitempty"`
-	// The port of the resource that you want to add to WAF.
+	// The port of the cloud service.
 	//
 	// This parameter is required.
 	//
@@ -714,7 +714,7 @@ type CreateCloudResourceRequestListen struct {
 	//
 	// 80
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The type of the protocol. Valid values:
+	// The protocol type. Valid values:
 	//
 	// 	- **http**
 	//
@@ -726,7 +726,7 @@ type CreateCloudResourceRequestListen struct {
 	//
 	// http
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The ID of the resource.
+	// The instance ID of the cloud service.
 	//
 	// This parameter is required.
 	//
@@ -734,7 +734,7 @@ type CreateCloudResourceRequestListen struct {
 	//
 	// lb-bp1*****
 	ResourceInstanceId *string `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
-	// The cloud service. Valid values:
+	// The type of the cloud service that you want to add. Valid values:
 	//
 	// 	- **clb4**: Layer 4 CLB.
 	//
@@ -742,13 +742,15 @@ type CreateCloudResourceRequestListen struct {
 	//
 	// 	- **ecs**: ECS.
 	//
+	// 	- **nlb**: Network Load Balancer (NLB).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// clb4
 	ResourceProduct *string `json:"ResourceProduct,omitempty" xml:"ResourceProduct,omitempty"`
-	// The Transport Layer Security (TLS) version. This parameter is available only if you specify **HttpsPorts**. Valid values:
+	// The Transport Layer Security (TLS) version that you want to add. This parameter is available only if you specify **HttpsPorts**. Valid values:
 	//
 	// 	- **tlsv1**
 	//
@@ -821,7 +823,7 @@ func (s *CreateCloudResourceRequestListen) SetTLSVersion(v string) *CreateCloudR
 }
 
 type CreateCloudResourceRequestListenCertificates struct {
-	// The type of the HTTPS certificate. Valid values:
+	// The type of the certificate. Valid values:
 	//
 	// 	- **default**: default certificate.
 	//
@@ -864,45 +866,45 @@ type CreateCloudResourceRequestRedirect struct {
 	//
 	// 	- **true*	- (default)
 	//
-	// 	- **false:**
+	// 	- **false**
 	//
 	// example:
 	//
 	// true
 	Keepalive *bool `json:"Keepalive,omitempty" xml:"Keepalive,omitempty"`
-	// The number of requests that reuse persistent connections. Valid values: 60 to 1000.
+	// The number of reused persistent connections. Valid values: 60 to 1000.
 	//
-	// >  This parameter specifies the number of requests that can reuse persistent connections after you enable the persistent connection feature.
+	// >  This parameter specifies the number of persistent connections that can be reused after you enable the persistent connection feature.
 	//
 	// example:
 	//
 	// 1000
 	KeepaliveRequests *int32 `json:"KeepaliveRequests,omitempty" xml:"KeepaliveRequests,omitempty"`
-	// The timeout period for idle persistent connections. Valid values: 10 to 3600. Default value: 3600. Unit: seconds.
+	// The timeout period of idle persistent connections. Valid values: 10 to 3600. Default value: 3600. Unit: seconds.
 	//
-	// >  If no new requests are initiated over the idle persistent connection within the specified timeout period, the connection is closed
+	// >  This parameter specifies the period of time after which an idle persistent connection is closed.
 	//
 	// example:
 	//
 	// 15
 	KeepaliveTimeout *int32 `json:"KeepaliveTimeout,omitempty" xml:"KeepaliveTimeout,omitempty"`
-	// The timeout period for read connections. Unit: seconds. Valid values: 1 to 3600.
+	// The timeout period of read connections. Unit: seconds. Valid values: 1 to 3600.
 	//
 	// example:
 	//
 	// 1
 	ReadTimeout *int32 `json:"ReadTimeout,omitempty" xml:"ReadTimeout,omitempty"`
-	// The custom header fields. Specify the value in the [**{"k":"*key*","v":"*value*"}**] format. ***key**	- specifies the key of the custom header field. ***value**	- specifies the value of the custom header field.
+	// The custom header fields. Specify the value in the [**{"k":"*key*","v":"*value*"}**] format. ***key**	- specifies the key of a custom header field. ***value**	- specifies the value of a custom header field.
 	//
-	// >  If the request contains the custom header field, WAF overwrites the original value of the field with the specified value.
+	// >  If a request contains a custom header field, WAF overwrites the original value of the field with the specified value.
 	RequestHeaders []*CreateCloudResourceRequestRedirectRequestHeaders `json:"RequestHeaders,omitempty" xml:"RequestHeaders,omitempty" type:"Repeated"`
-	// The timeout period for write connections. Unit: seconds. Valid values: 1 to 3600.
+	// The timeout period of write connections. Unit: seconds. Valid values: 1 to 3600.
 	//
 	// example:
 	//
 	// 1
 	WriteTimeout *int32 `json:"WriteTimeout,omitempty" xml:"WriteTimeout,omitempty"`
-	// The method that WAF uses to obtain the originating IP address of a client. Valid values:
+	// The method that is used to obtain the originating IP address of a client. Valid values:
 	//
 	// 	- **0**: No Layer 7 proxies are deployed in front of WAF.
 	//
@@ -918,7 +920,7 @@ type CreateCloudResourceRequestRedirect struct {
 	//
 	// >  This parameter is required only if you set **XffHeaderMode*	- to 2.
 	XffHeaders []*string `json:"XffHeaders,omitempty" xml:"XffHeaders,omitempty" type:"Repeated"`
-	// Specifies whether to use the X-Forward-For-Proto header to identify the protocol used by WAF to forward requests to the origin server. Valid values:
+	// Specifies whether to use the X-Forward-For-Proto header field to pass the protocol used by WAF to forward requests to the origin server. Valid values:
 	//
 	// 	- **true*	- (default)
 	//
@@ -1017,13 +1019,13 @@ func (s *CreateCloudResourceRequestRedirectRequestHeaders) SetValue(v string) *C
 }
 
 type CreateCloudResourceRequestTag struct {
-	// The key of tag N to add to the resource. Valid values of N: 1 to 20.
+	// The key of the tag.
 	//
 	// example:
 	//
 	// TagKey1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N to add to the resource. Valid values of N: 1 to 20.
+	// The value of the tag.
 	//
 	// example:
 	//
@@ -1060,7 +1062,7 @@ type CreateCloudResourceShrinkRequest struct {
 	//
 	// waf_v3prepaid_public_cn-***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The configurations of the listeners.
+	// The listener configurations.
 	//
 	// This parameter is required.
 	ListenShrink *string `json:"Listen,omitempty" xml:"Listen,omitempty"`
@@ -1070,7 +1072,7 @@ type CreateCloudResourceShrinkRequest struct {
 	//
 	// 123
 	OwnerUserId *string `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
-	// The configurations of the forwarding rule.
+	// The forwarding configurations.
 	RedirectShrink *string `json:"Redirect,omitempty" xml:"Redirect,omitempty"`
 	// The region in which the WAF instance is deployed. Valid values:
 	//
@@ -1090,7 +1092,7 @@ type CreateCloudResourceShrinkRequest struct {
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The tags to add to the resource.
+	// The tags. You can specify up to 20 tags.
 	Tag []*CreateCloudResourceShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -1138,13 +1140,13 @@ func (s *CreateCloudResourceShrinkRequest) SetTag(v []*CreateCloudResourceShrink
 }
 
 type CreateCloudResourceShrinkRequestTag struct {
-	// The key of tag N to add to the resource. Valid values of N: 1 to 20.
+	// The key of the tag.
 	//
 	// example:
 	//
 	// TagKey1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N to add to the resource. Valid values of N: 1 to 20.
+	// The value of the tag.
 	//
 	// example:
 	//
@@ -1263,11 +1265,11 @@ type CreateDefenseResourceGroupRequest struct {
 	//
 	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region where the WAF instance resides. Valid values:
+	// The region of the WAF instance. Valid values:
 	//
-	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland.
 	//
-	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	// 	- **ap-southeast-1**: Outside the Chinese mainland.
 	//
 	// example:
 	//
@@ -2855,9 +2857,9 @@ type CreateMajorProtectionBlackIpRequest struct {
 	//
 	// Protection for major events
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time after which the IP address blacklist becomes invalid. Unit: seconds.
+	// The timestamp after which the IP address blacklist becomes invalid. Unit: seconds.
 	//
-	// >  If you set the value to **0**, the blacklist is permanently valid.
+	// >  If you set the parameter to **0**, the IP address blacklist is always valid.
 	//
 	// This parameter is required.
 	//
@@ -2865,7 +2867,7 @@ type CreateMajorProtectionBlackIpRequest struct {
 	//
 	// 1716528465
 	ExpiredTime *int64 `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// The ID of the Web Application Firewall (WAF) instance.
+	// The ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -2881,11 +2883,11 @@ type CreateMajorProtectionBlackIpRequest struct {
 	//
 	// 192.0.XX.XX,192.0.XX.XX/24
 	IpList *string `json:"IpList,omitempty" xml:"IpList,omitempty"`
-	// The region where the WAF instance resides. Valid values:
+	// The region ID of the WAF instance. Valid values:
 	//
-	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland
 	//
-	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
@@ -2964,7 +2966,7 @@ func (s *CreateMajorProtectionBlackIpRequest) SetTemplateId(v int64) *CreateMajo
 }
 
 type CreateMajorProtectionBlackIpResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -3138,9 +3140,9 @@ func (s *CreateMemberAccountsResponse) SetBody(v *CreateMemberAccountsResponseBo
 }
 
 type CreatePostpaidInstanceRequest struct {
-	// The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
+	// The region ID of the WAF instance. Valid values:
 	//
-	// 	- **cn-hangzhou**: Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland
 	//
 	// 	- **ap-southeast-1**: outside the Chinese mainland.
 	//
@@ -5315,9 +5317,11 @@ type DescribeApisecAbnormalsRequest struct {
 	MatchedHost *string `json:"MatchedHost,omitempty" xml:"MatchedHost,omitempty"`
 	// The name of the sorting field. Valid values:
 	//
-	// 	- **firstTime (default)**: first detection time
+	// 	- **discoverTime*	- (default): indicates the time when a risk was first detected.
 	//
-	// 	- **abnormalLevel**: risk level
+	// 	- **abnormalLevel**: indicates the level of a risk.
+	//
+	// 	- **latestDiscoverTime**: indicates the time when a risk was last detected.
 	//
 	// example:
 	//
@@ -5355,7 +5359,7 @@ type DescribeApisecAbnormalsRequest struct {
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the WAF instance. Valid value:
+	// The region ID of the WAF instance. Valid values:
 	//
 	// 	- **cn-hangzhou**: Chinese mainland.
 	//
@@ -5611,7 +5615,7 @@ type DescribeApisecAbnormalsResponseBodyData struct {
 	//
 	// SendMail
 	ApiTag *string `json:"ApiTag,omitempty" xml:"ApiTag,omitempty"`
-	// The time at which the risk was detected. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	// The time at which the risk was first detected. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
 	//
 	// example:
 	//
@@ -5619,7 +5623,7 @@ type DescribeApisecAbnormalsResponseBodyData struct {
 	DiscoverTime *int64 `json:"DiscoverTime,omitempty" xml:"DiscoverTime,omitempty"`
 	// The risk-related samples.
 	Examples []*string `json:"Examples,omitempty" xml:"Examples,omitempty" type:"Repeated"`
-	// The time at which the risk was first detected. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	// The time at which the API was first detected. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
 	//
 	// example:
 	//
@@ -5641,12 +5645,14 @@ type DescribeApisecAbnormalsResponseBodyData struct {
 	//
 	// 1684252800
 	IgnoreTime *int64 `json:"IgnoreTime,omitempty" xml:"IgnoreTime,omitempty"`
-	// The time at which the risk was last active. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	// The time at which the API was last accessed. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
 	//
 	// example:
 	//
 	// 1684252800
 	LastestTime *int64 `json:"LastestTime,omitempty" xml:"LastestTime,omitempty"`
+	// The time at which the risk was last detected. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	//
 	// example:
 	//
 	// 1684252800
@@ -5877,7 +5883,7 @@ type DescribeApisecApiResourcesRequest struct {
 	ApiStatus *string `json:"ApiStatus,omitempty" xml:"ApiStatus,omitempty"`
 	// The business purpose of the API.
 	//
-	// >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the business purpose of the API.
+	// >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the business purposes of APIs.
 	//
 	// example:
 	//
@@ -5907,7 +5913,7 @@ type DescribeApisecApiResourcesRequest struct {
 	AuthFlag *string `json:"AuthFlag,omitempty" xml:"AuthFlag,omitempty"`
 	// The ID of the hybrid cloud cluster.
 	//
-	// >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
+	// >  This parameter is available only in hybrid cloud scenarios. You can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query hybrid cloud clusters.
 	//
 	// example:
 	//
@@ -5993,11 +5999,11 @@ type DescribeApisecApiResourcesRequest struct {
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
+	// The region ID of the WAF instance. Value:
 	//
-	// 	- **cn-hangzhou**: Chinese mainland
+	// 	- **cn-hangzhou**: Chinese mainland.
 	//
-	// 	- **ap-southeast-1**: outside the Chinese mainland
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
@@ -6325,7 +6331,7 @@ type DescribeApisecApiResourcesResponseBodyData struct {
 	ApiStatus *string `json:"ApiStatus,omitempty" xml:"ApiStatus,omitempty"`
 	// The business purpose of the API.
 	//
-	// >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the business purpose of the API.
+	// >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the business purposes of APIs.
 	//
 	// example:
 	//
@@ -6389,7 +6395,7 @@ type DescribeApisecApiResourcesResponseBodyData struct {
 	//
 	// 1
 	Follow *int32 `json:"Follow,omitempty" xml:"Follow,omitempty"`
-	// The most recent access time of the API. This value is a UNIX timestamp in UTC. Unit: seconds.
+	// The time at which the API was last accessed. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
 	//
 	// example:
 	//
@@ -7035,7 +7041,7 @@ type DescribeApisecEventsRequest struct {
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	// The business purpose of the API.
 	//
-	// >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the business purpose of the API.
+	// >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the business purposes of APIs.
 	//
 	// example:
 	//
@@ -7049,7 +7055,7 @@ type DescribeApisecEventsRequest struct {
 	AttackIp *string `json:"AttackIp,omitempty" xml:"AttackIp,omitempty"`
 	// The ID of the hybrid cloud cluster.
 	//
-	// >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
+	// >  This parameter is available only in hybrid cloud scenarios. You can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query hybrid cloud clusters.
 	//
 	// example:
 	//
@@ -7147,7 +7153,7 @@ type DescribeApisecEventsRequest struct {
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region in which the WAF instance is deployed. Valid values:
+	// The region ID of the WAF instance. Value:
 	//
 	// 	- **cn-hangzhou**: Chinese mainland.
 	//
@@ -7354,7 +7360,7 @@ type DescribeApisecEventsResponseBodyData struct {
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	// The business purpose of the API.
 	//
-	// >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the business purpose of the API.
+	// >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the business purposes of APIs.
 	//
 	// example:
 	//
@@ -8081,7 +8087,7 @@ type DescribeApisecProtectionGroupsRequest struct {
 	//
 	// 1
 	ApisecStatus *int32 `json:"ApisecStatus,omitempty" xml:"ApisecStatus,omitempty"`
-	// The ID of the WAF instance.
+	// The ID of the Web Application Firewall (WAF) instance.
 	//
 	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
 	//
@@ -9406,7 +9412,7 @@ func (s *DescribeApisecSlsProjectsResponse) SetBody(v *DescribeApisecSlsProjects
 type DescribeApisecStatisticsRequest struct {
 	// The ID of the hybrid cloud cluster.
 	//
-	// >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
+	// >  This parameter is available only in hybrid cloud scenarios. You can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query hybrid cloud clusters.
 	//
 	// example:
 	//
@@ -9424,7 +9430,7 @@ type DescribeApisecStatisticsRequest struct {
 	//
 	// waf_v2_public_cn-uax***b09
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
+	// The region ID of the WAF instance. Valid values:
 	//
 	// 	- **cn-hangzhou**: Chinese mainland.
 	//
@@ -9440,11 +9446,11 @@ type DescribeApisecStatisticsRequest struct {
 	//
 	// rg-aek2***uwbs5q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The type of statistics to be detected. Valid values:
+	// The type of the statistics. Valid values:
 	//
-	// 	- **risk**: risk impact statistics
+	// 	- **risk**: risk-related statistics.
 	//
-	// 	- **event**: attack impact statistics
+	// 	- **event**: event-related statistics.
 	//
 	// example:
 	//
@@ -9486,7 +9492,7 @@ func (s *DescribeApisecStatisticsRequest) SetType(v string) *DescribeApisecStati
 }
 
 type DescribeApisecStatisticsResponseBody struct {
-	// The check results.
+	// The returned results.
 	Data *DescribeApisecStatisticsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -12346,11 +12352,11 @@ type DescribeDefenseResourceRequest struct {
 	//
 	// waf_v3prepaid_public_cn-4xl****i60i
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region in which the WAF instance is deployed. Valid values:
+	// The region ID of the WAF instance. Valid values:
 	//
-	// 	- **cn-hangzhou**: Chinese mainland.
+	// 	- **cn-hangzhou**: The Chinese mainland.
 	//
-	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **ap-southeast-1**: Outside the Chinese mainland.
 	//
 	// example:
 	//
@@ -12407,7 +12413,7 @@ type DescribeDefenseResourceResponseBody struct {
 	//
 	// 439AADF2-368C-5E98-B14E-3086****0573
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the protected object.
+	// The protected object.
 	Resource *DescribeDefenseResourceResponseBodyResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Struct"`
 }
 
@@ -12539,7 +12545,8 @@ type DescribeDefenseResourceResponseBodyResource struct {
 	// example:
 	//
 	// custom
-	ResourceOrigin  *string                                                       `json:"ResourceOrigin,omitempty" xml:"ResourceOrigin,omitempty"`
+	ResourceOrigin *string `json:"ResourceOrigin,omitempty" xml:"ResourceOrigin,omitempty"`
+	// The response header.
 	ResponseHeaders []*DescribeDefenseResourceResponseBodyResourceResponseHeaders `json:"ResponseHeaders,omitempty" xml:"ResponseHeaders,omitempty" type:"Repeated"`
 	// Indicates whether a Layer 7 proxy is deployed in front of WAF, such as Anti-DDoS Proxy and Alibaba Cloud CDN. Valid values:
 	//
@@ -12647,7 +12654,17 @@ func (s *DescribeDefenseResourceResponseBodyResource) SetXffStatus(v int32) *Des
 }
 
 type DescribeDefenseResourceResponseBodyResourceResponseHeaders struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Specifies the key for a custom response header.
+	//
+	// example:
+	//
+	// Header-Key
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Specifies the value for a custom response header.
+	//
+	// example:
+	//
+	// Header-Value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -13767,13 +13784,13 @@ type DescribeDefenseResourcesRequest struct {
 	//
 	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The page number of the paginated results Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: **10**.
+	// The number of results per page. Default value: **10**.
 	//
 	// example:
 	//
@@ -13787,11 +13804,11 @@ type DescribeDefenseResourcesRequest struct {
 	//
 	// {\\"product\\":\\"waf\\"}
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	// The region where the WAF instance resides. Valid values:
+	// The region ID of the WAF instance. Valid values:
 	//
-	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	// 	- **cn-hangzhou**: The Chinese mainland.
 	//
-	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	// 	- **ap-southeast-1**: Outside the Chinese mainland.
 	//
 	// example:
 	//
@@ -14017,7 +14034,8 @@ type DescribeDefenseResourcesResponseBodyResources struct {
 	// example:
 	//
 	// custom
-	ResourceOrigin  *string                                                         `json:"ResourceOrigin,omitempty" xml:"ResourceOrigin,omitempty"`
+	ResourceOrigin *string `json:"ResourceOrigin,omitempty" xml:"ResourceOrigin,omitempty"`
+	// The response header.
 	ResponseHeaders []*DescribeDefenseResourcesResponseBodyResourcesResponseHeaders `json:"ResponseHeaders,omitempty" xml:"ResponseHeaders,omitempty" type:"Repeated"`
 	// Indicates whether the X-Forwarded-For (XFF) header is used.
 	//
@@ -14121,7 +14139,17 @@ func (s *DescribeDefenseResourcesResponseBodyResources) SetXffStatus(v int32) *D
 }
 
 type DescribeDefenseResourcesResponseBodyResourcesResponseHeaders struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Specifies the key for a custom response header.
+	//
+	// example:
+	//
+	// Header-Key
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Specifies the value for a custom response header.
+	//
+	// example:
+	//
+	// Header-Value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -14183,11 +14211,11 @@ type DescribeDefenseRuleRequest struct {
 	//
 	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region where the WAF instance resides. Valid values:
+	// The region of the WAF instance. Valid values:
 	//
-	// 	- **cn-hangzhou:*	- the Chinese mainland
+	// 	- **cn-hangzhou**: Chinese mainland.
 	//
-	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	// 	- **ap-southeast-1**: Outside the Chinese mainland.
 	//
 	// example:
 	//
@@ -14524,7 +14552,7 @@ type DescribeDefenseRulesResponseBody struct {
 	//
 	// 80736FA5-FA87-55F6-AA69-C5477C6FE6D0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// An array of protection rules.
+	// The protection rules.
 	Rules []*DescribeDefenseRulesResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 	// The total number of returned entries.
 	//
@@ -14574,7 +14602,33 @@ type DescribeDefenseRulesResponseBodyRules struct {
 	//
 	// custom
 	DefenseOrigin *string `json:"DefenseOrigin,omitempty" xml:"DefenseOrigin,omitempty"`
-	// The scenario in which the protection rule is used. For more information, see the description of the **DefenseScene*	- parameter in the [CreateDefenseRule](~~CreateDefenseRule~~) topic.
+	// The protection module for which the protection rule is created. Valid values:
+	//
+	// 	- **waf_group**: the basic protection rule module.
+	//
+	// 	- **waf_base_compliance**: the protocol compliance feature of the basic protection rule module.
+	//
+	// 	- **waf_base_sema**: the semantic analysis feature of the basic protection rule module.
+	//
+	// 	- **cc**: the HTTP flood protection module.
+	//
+	// 	- **antiscan_dirscan**: the directory traversal blocking feature of the scan protection module.
+	//
+	// 	- **antiscan_highfreq**: the high-frequency scanning blocking feature of the scan protection module.
+	//
+	// 	- **antiscan_scantools**: the scanner blocking feature of the scan protection module.
+	//
+	// 	- **ip_blacklist**: the IP address blacklist module.
+	//
+	// 	- **custom_acl**: the custom rule module.
+	//
+	// 	- **region_block**: the region blacklist module.
+	//
+	// 	- **tamperproof**: the website tamper-proofing module.
+	//
+	// 	- **dlp**: the data leakage prevention module.
+	//
+	// 	- **custom_response_block**: the custom response module.
 	//
 	// example:
 	//
@@ -14704,11 +14758,11 @@ type DescribeDefenseTemplateRequest struct {
 	//
 	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region where the WAF instance resides. Valid values:
+	// The region of the WAF instance. Valid values:
 	//
-	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland.
 	//
-	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	// 	- **ap-southeast-1**: Outside the Chinese mainland.
 	//
 	// example:
 	//
@@ -20495,11 +20549,11 @@ func (s *DescribeHybridCloudUserResponse) SetBody(v *DescribeHybridCloudUserResp
 }
 
 type DescribeInstanceRequest struct {
-	// The region where the WAF instance resides. Valid values:
+	// The region ID of the WAF instance. Valid values:
 	//
-	// 	- **cn-hangzhou:*	- the Chinese mainland
+	// 	- **cn-hangzhou**: Chinese mainland
 	//
-	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
@@ -21815,6 +21869,949 @@ func (s *DescribeMemberAccountsResponse) SetBody(v *DescribeMemberAccountsRespon
 	return s
 }
 
+type DescribeNetworkFlowTimeSeriesMetricRequest struct {
+	// Specifies filtering conditions. Multiple filter parameters use AND logic.
+	//
+	// This parameter is required.
+	Filter *DescribeNetworkFlowTimeSeriesMetricRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Struct"`
+	// The Web Application Firewall (WAF) instance ID.
+	//
+	// >  Call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to get the WAF instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_cdnsdf3****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Specifies the type of data returned by each metric. Valid values:
+	//
+	// 	- qps: Queries per second (QPS) of requests processed by WAF.
+	//
+	// 	- total_requests: Total number of requests processed by WAF.
+	//
+	// 	- top5_status: The top 5 HTTP status codes returned by WAF, along with their counts.
+	//
+	// 	- top 5_upstream_status: The top 5 HTTP status codes returned by the origin server, along with their counts.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// total_requests
+	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
+	// The region ID of the WAF instance. Valid values:
+	//
+	// 	- **cn-hangzhou**: The Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: Outside the Chinese mainland.
+	//
+	// example:
+	//
+	// ap-southeast-1
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+}
+
+func (s DescribeNetworkFlowTimeSeriesMetricRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNetworkFlowTimeSeriesMetricRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetworkFlowTimeSeriesMetricRequest) SetFilter(v *DescribeNetworkFlowTimeSeriesMetricRequestFilter) *DescribeNetworkFlowTimeSeriesMetricRequest {
+	s.Filter = v
+	return s
+}
+
+func (s *DescribeNetworkFlowTimeSeriesMetricRequest) SetInstanceId(v string) *DescribeNetworkFlowTimeSeriesMetricRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeNetworkFlowTimeSeriesMetricRequest) SetMetric(v string) *DescribeNetworkFlowTimeSeriesMetricRequest {
+	s.Metric = &v
+	return s
+}
+
+func (s *DescribeNetworkFlowTimeSeriesMetricRequest) SetRegionId(v string) *DescribeNetworkFlowTimeSeriesMetricRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeNetworkFlowTimeSeriesMetricRequest) SetResourceManagerResourceGroupId(v string) *DescribeNetworkFlowTimeSeriesMetricRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+type DescribeNetworkFlowTimeSeriesMetricRequestFilter struct {
+	// An array of filter conditions. Multiple filter parameters use AND logic.
+	Conditions []*DescribeNetworkFlowTimeSeriesMetricRequestFilterConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
+	// Specifies the date range for the query.
+	//
+	// This parameter is required.
+	DateRange *DescribeNetworkFlowTimeSeriesMetricRequestFilterDateRange `json:"DateRange,omitempty" xml:"DateRange,omitempty" type:"Struct"`
+}
+
+func (s DescribeNetworkFlowTimeSeriesMetricRequestFilter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNetworkFlowTimeSeriesMetricRequestFilter) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetworkFlowTimeSeriesMetricRequestFilter) SetConditions(v []*DescribeNetworkFlowTimeSeriesMetricRequestFilterConditions) *DescribeNetworkFlowTimeSeriesMetricRequestFilter {
+	s.Conditions = v
+	return s
+}
+
+func (s *DescribeNetworkFlowTimeSeriesMetricRequestFilter) SetDateRange(v *DescribeNetworkFlowTimeSeriesMetricRequestFilterDateRange) *DescribeNetworkFlowTimeSeriesMetricRequestFilter {
+	s.DateRange = v
+	return s
+}
+
+type DescribeNetworkFlowTimeSeriesMetricRequestFilterConditions struct {
+	// The filter field. Valid values:
+	//
+	// 	- matched_host: The protected object.
+	//
+	// 	- cluster: The protected cluster.
+	//
+	// example:
+	//
+	// matched_host
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The filter operator.
+	//
+	// example:
+	//
+	// eq
+	OpValue *string `json:"OpValue,omitempty" xml:"OpValue,omitempty"`
+	// Specifies the values to filter by.
+	//
+	// example:
+	//
+	// test.waf-top
+	Values interface{} `json:"Values,omitempty" xml:"Values,omitempty"`
+}
+
+func (s DescribeNetworkFlowTimeSeriesMetricRequestFilterConditions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNetworkFlowTimeSeriesMetricRequestFilterConditions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetworkFlowTimeSeriesMetricRequestFilterConditions) SetKey(v string) *DescribeNetworkFlowTimeSeriesMetricRequestFilterConditions {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeNetworkFlowTimeSeriesMetricRequestFilterConditions) SetOpValue(v string) *DescribeNetworkFlowTimeSeriesMetricRequestFilterConditions {
+	s.OpValue = &v
+	return s
+}
+
+func (s *DescribeNetworkFlowTimeSeriesMetricRequestFilterConditions) SetValues(v interface{}) *DescribeNetworkFlowTimeSeriesMetricRequestFilterConditions {
+	s.Values = v
+	return s
+}
+
+type DescribeNetworkFlowTimeSeriesMetricRequestFilterDateRange struct {
+	// End time of the query range (UNIX timestamp, seconds).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1713888600
+	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// Start time of the query range (UNIX timestamp, seconds).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1713888000
+	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+}
+
+func (s DescribeNetworkFlowTimeSeriesMetricRequestFilterDateRange) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNetworkFlowTimeSeriesMetricRequestFilterDateRange) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetworkFlowTimeSeriesMetricRequestFilterDateRange) SetEndDate(v int64) *DescribeNetworkFlowTimeSeriesMetricRequestFilterDateRange {
+	s.EndDate = &v
+	return s
+}
+
+func (s *DescribeNetworkFlowTimeSeriesMetricRequestFilterDateRange) SetStartDate(v int64) *DescribeNetworkFlowTimeSeriesMetricRequestFilterDateRange {
+	s.StartDate = &v
+	return s
+}
+
+type DescribeNetworkFlowTimeSeriesMetricShrinkRequest struct {
+	// Specifies filtering conditions. Multiple filter parameters use AND logic.
+	//
+	// This parameter is required.
+	FilterShrink *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// The Web Application Firewall (WAF) instance ID.
+	//
+	// >  Call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to get the WAF instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_cdnsdf3****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Specifies the type of data returned by each metric. Valid values:
+	//
+	// 	- qps: Queries per second (QPS) of requests processed by WAF.
+	//
+	// 	- total_requests: Total number of requests processed by WAF.
+	//
+	// 	- top5_status: The top 5 HTTP status codes returned by WAF, along with their counts.
+	//
+	// 	- top 5_upstream_status: The top 5 HTTP status codes returned by the origin server, along with their counts.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// total_requests
+	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
+	// The region ID of the WAF instance. Valid values:
+	//
+	// 	- **cn-hangzhou**: The Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: Outside the Chinese mainland.
+	//
+	// example:
+	//
+	// ap-southeast-1
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+}
+
+func (s DescribeNetworkFlowTimeSeriesMetricShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNetworkFlowTimeSeriesMetricShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetworkFlowTimeSeriesMetricShrinkRequest) SetFilterShrink(v string) *DescribeNetworkFlowTimeSeriesMetricShrinkRequest {
+	s.FilterShrink = &v
+	return s
+}
+
+func (s *DescribeNetworkFlowTimeSeriesMetricShrinkRequest) SetInstanceId(v string) *DescribeNetworkFlowTimeSeriesMetricShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeNetworkFlowTimeSeriesMetricShrinkRequest) SetMetric(v string) *DescribeNetworkFlowTimeSeriesMetricShrinkRequest {
+	s.Metric = &v
+	return s
+}
+
+func (s *DescribeNetworkFlowTimeSeriesMetricShrinkRequest) SetRegionId(v string) *DescribeNetworkFlowTimeSeriesMetricShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeNetworkFlowTimeSeriesMetricShrinkRequest) SetResourceManagerResourceGroupId(v string) *DescribeNetworkFlowTimeSeriesMetricShrinkRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+type DescribeNetworkFlowTimeSeriesMetricResponseBody struct {
+	// The array of time-series data. Supports returning data with multiple values.
+	NetworkFlowTimeSeries []*DescribeNetworkFlowTimeSeriesMetricResponseBodyNetworkFlowTimeSeries `json:"NetworkFlowTimeSeries,omitempty" xml:"NetworkFlowTimeSeries,omitempty" type:"Repeated"`
+	// The request ID.
+	//
+	// example:
+	//
+	// D827FCFE-90A7-4330-9326-D33C8B4C7726
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The time series metadata.
+	TimeSeriesMetaData *DescribeNetworkFlowTimeSeriesMetricResponseBodyTimeSeriesMetaData `json:"TimeSeriesMetaData,omitempty" xml:"TimeSeriesMetaData,omitempty" type:"Struct"`
+}
+
+func (s DescribeNetworkFlowTimeSeriesMetricResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNetworkFlowTimeSeriesMetricResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetworkFlowTimeSeriesMetricResponseBody) SetNetworkFlowTimeSeries(v []*DescribeNetworkFlowTimeSeriesMetricResponseBodyNetworkFlowTimeSeries) *DescribeNetworkFlowTimeSeriesMetricResponseBody {
+	s.NetworkFlowTimeSeries = v
+	return s
+}
+
+func (s *DescribeNetworkFlowTimeSeriesMetricResponseBody) SetRequestId(v string) *DescribeNetworkFlowTimeSeriesMetricResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeNetworkFlowTimeSeriesMetricResponseBody) SetTimeSeriesMetaData(v *DescribeNetworkFlowTimeSeriesMetricResponseBodyTimeSeriesMetaData) *DescribeNetworkFlowTimeSeriesMetricResponseBody {
+	s.TimeSeriesMetaData = v
+	return s
+}
+
+type DescribeNetworkFlowTimeSeriesMetricResponseBodyNetworkFlowTimeSeries struct {
+	// The metric name, consistent with the Metric request parameter.
+	//
+	// example:
+	//
+	// total_requests
+	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
+	// The array of timestamps (seconds) marking the start of each time interval.
+	Timestamps []*string `json:"Timestamps,omitempty" xml:"Timestamps,omitempty" type:"Repeated"`
+	// The array of counts, each representing the count for the corresponding time interval.
+	Values []*int64 `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s DescribeNetworkFlowTimeSeriesMetricResponseBodyNetworkFlowTimeSeries) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNetworkFlowTimeSeriesMetricResponseBodyNetworkFlowTimeSeries) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetworkFlowTimeSeriesMetricResponseBodyNetworkFlowTimeSeries) SetMetric(v string) *DescribeNetworkFlowTimeSeriesMetricResponseBodyNetworkFlowTimeSeries {
+	s.Metric = &v
+	return s
+}
+
+func (s *DescribeNetworkFlowTimeSeriesMetricResponseBodyNetworkFlowTimeSeries) SetTimestamps(v []*string) *DescribeNetworkFlowTimeSeriesMetricResponseBodyNetworkFlowTimeSeries {
+	s.Timestamps = v
+	return s
+}
+
+func (s *DescribeNetworkFlowTimeSeriesMetricResponseBodyNetworkFlowTimeSeries) SetValues(v []*int64) *DescribeNetworkFlowTimeSeriesMetricResponseBodyNetworkFlowTimeSeries {
+	s.Values = v
+	return s
+}
+
+type DescribeNetworkFlowTimeSeriesMetricResponseBodyTimeSeriesMetaData struct {
+	// The time granularity. For example, "15m" indicates that each data point is counted every 15 minutes. For details, see **Time granularity of time series data points**.
+	//
+	// example:
+	//
+	// "1m"
+	AggregateInterval *string `json:"AggregateInterval,omitempty" xml:"AggregateInterval,omitempty"`
+	// The query time range.
+	DateRange *DescribeNetworkFlowTimeSeriesMetricResponseBodyTimeSeriesMetaDataDateRange `json:"DateRange,omitempty" xml:"DateRange,omitempty" type:"Struct"`
+	// The unit of the returned data. Defaults to the value: request.
+	//
+	// example:
+	//
+	// request
+	Units *string `json:"Units,omitempty" xml:"Units,omitempty"`
+}
+
+func (s DescribeNetworkFlowTimeSeriesMetricResponseBodyTimeSeriesMetaData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNetworkFlowTimeSeriesMetricResponseBodyTimeSeriesMetaData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetworkFlowTimeSeriesMetricResponseBodyTimeSeriesMetaData) SetAggregateInterval(v string) *DescribeNetworkFlowTimeSeriesMetricResponseBodyTimeSeriesMetaData {
+	s.AggregateInterval = &v
+	return s
+}
+
+func (s *DescribeNetworkFlowTimeSeriesMetricResponseBodyTimeSeriesMetaData) SetDateRange(v *DescribeNetworkFlowTimeSeriesMetricResponseBodyTimeSeriesMetaDataDateRange) *DescribeNetworkFlowTimeSeriesMetricResponseBodyTimeSeriesMetaData {
+	s.DateRange = v
+	return s
+}
+
+func (s *DescribeNetworkFlowTimeSeriesMetricResponseBodyTimeSeriesMetaData) SetUnits(v string) *DescribeNetworkFlowTimeSeriesMetricResponseBodyTimeSeriesMetaData {
+	s.Units = &v
+	return s
+}
+
+type DescribeNetworkFlowTimeSeriesMetricResponseBodyTimeSeriesMetaDataDateRange struct {
+	// The end time of the query range (in UNIX timestamp, seconds). Same as the EndDate request parameter.
+	//
+	// example:
+	//
+	// 1713888600
+	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The start time of the query range (in UNIX timestamp, seconds). It is the same as the StartDate request parameter.
+	//
+	// example:
+	//
+	// 1713888000
+	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+}
+
+func (s DescribeNetworkFlowTimeSeriesMetricResponseBodyTimeSeriesMetaDataDateRange) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNetworkFlowTimeSeriesMetricResponseBodyTimeSeriesMetaDataDateRange) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetworkFlowTimeSeriesMetricResponseBodyTimeSeriesMetaDataDateRange) SetEndDate(v int64) *DescribeNetworkFlowTimeSeriesMetricResponseBodyTimeSeriesMetaDataDateRange {
+	s.EndDate = &v
+	return s
+}
+
+func (s *DescribeNetworkFlowTimeSeriesMetricResponseBodyTimeSeriesMetaDataDateRange) SetStartDate(v int64) *DescribeNetworkFlowTimeSeriesMetricResponseBodyTimeSeriesMetaDataDateRange {
+	s.StartDate = &v
+	return s
+}
+
+type DescribeNetworkFlowTimeSeriesMetricResponse struct {
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeNetworkFlowTimeSeriesMetricResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeNetworkFlowTimeSeriesMetricResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNetworkFlowTimeSeriesMetricResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetworkFlowTimeSeriesMetricResponse) SetHeaders(v map[string]*string) *DescribeNetworkFlowTimeSeriesMetricResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeNetworkFlowTimeSeriesMetricResponse) SetStatusCode(v int32) *DescribeNetworkFlowTimeSeriesMetricResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeNetworkFlowTimeSeriesMetricResponse) SetBody(v *DescribeNetworkFlowTimeSeriesMetricResponseBody) *DescribeNetworkFlowTimeSeriesMetricResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeNetworkFlowTopNMetricRequest struct {
+	// Specifies filtering conditions. Multiple filter parameters use AND logic.
+	//
+	// This parameter is required.
+	Filter *DescribeNetworkFlowTopNMetricRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Struct"`
+	// The Web Application Firewall (WAF) instance ID.
+	//
+	// >  Call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to retrieve the WAF instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_cdnsdf3****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Returns up to 10 data entries, sorted in descending order.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	Limit *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// Specifies the type of data returned by each metric. Valid values:
+	//
+	// 	- real_client_ip: The top N requests, sorted in descending order by source IP address, aggregated from all the user\\"s WAF requests.
+	//
+	// 	- request_path: The top N requests, sorted in descending order by user-agent, aggregated from all the current user\\"s WAF requests.
+	//
+	// 	- request_path: The top N URLs, sorted in descending order by frequency, aggregated from all the current user\\"s WAF requests.
+	//
+	// 	- matched_host_by_total_requests: The top N protected objects with their request counts for the current user.
+	//
+	// 	- matched_host_by_qps: The top N protected objects and their queries per second (QPS) values.
+	//
+	// 	- matched_host_by_status: When using it, you must specify status in the Conditions field of the Filter parameter. If the HTTP response code returned by WAF matches the status specified in Conditions, then the top N data is returned, sorted by protected objects. The format for specifying the status is as follows:\\
+	//
+	//     {"Key":"status","OpValue":"eq","Values":"200"}
+	//
+	// 	- matched_host_by_upstream_status: When using it, you must specify a upstream_status in the Conditions field of the Filter parameter. If the HTTP response code returned by the origin server matches the upstream_status specified by Conditions, the top N data is returned, sorted by protected objects. The format for specifying the upstream_status is as follows:\\
+	//
+	//     {"Key":"upstream_status","OpValue":"eq","Values":"200"}
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// matched_host_by_upstream_status
+	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
+	// The region ID of the WAF instance. Valid values:
+	//
+	// 	- **cn-hangzhou**: The Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: Outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+}
+
+func (s DescribeNetworkFlowTopNMetricRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNetworkFlowTopNMetricRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetworkFlowTopNMetricRequest) SetFilter(v *DescribeNetworkFlowTopNMetricRequestFilter) *DescribeNetworkFlowTopNMetricRequest {
+	s.Filter = v
+	return s
+}
+
+func (s *DescribeNetworkFlowTopNMetricRequest) SetInstanceId(v string) *DescribeNetworkFlowTopNMetricRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeNetworkFlowTopNMetricRequest) SetLimit(v int64) *DescribeNetworkFlowTopNMetricRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *DescribeNetworkFlowTopNMetricRequest) SetMetric(v string) *DescribeNetworkFlowTopNMetricRequest {
+	s.Metric = &v
+	return s
+}
+
+func (s *DescribeNetworkFlowTopNMetricRequest) SetRegionId(v string) *DescribeNetworkFlowTopNMetricRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeNetworkFlowTopNMetricRequest) SetResourceManagerResourceGroupId(v string) *DescribeNetworkFlowTopNMetricRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+type DescribeNetworkFlowTopNMetricRequestFilter struct {
+	// An array of filter conditions. Multiple filter parameters use AND logic.
+	Conditions []*DescribeNetworkFlowTopNMetricRequestFilterConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
+	// Specifies the date range for the query.
+	//
+	// This parameter is required.
+	DateRange *DescribeNetworkFlowTopNMetricRequestFilterDateRange `json:"DateRange,omitempty" xml:"DateRange,omitempty" type:"Struct"`
+}
+
+func (s DescribeNetworkFlowTopNMetricRequestFilter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNetworkFlowTopNMetricRequestFilter) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetworkFlowTopNMetricRequestFilter) SetConditions(v []*DescribeNetworkFlowTopNMetricRequestFilterConditions) *DescribeNetworkFlowTopNMetricRequestFilter {
+	s.Conditions = v
+	return s
+}
+
+func (s *DescribeNetworkFlowTopNMetricRequestFilter) SetDateRange(v *DescribeNetworkFlowTopNMetricRequestFilterDateRange) *DescribeNetworkFlowTopNMetricRequestFilter {
+	s.DateRange = v
+	return s
+}
+
+type DescribeNetworkFlowTopNMetricRequestFilterConditions struct {
+	// The filter fields. Valid values:
+	//
+	// 	- matched_host: The protected object.
+	//
+	// 	- cluster: The protected cluster.
+	//
+	// example:
+	//
+	// matched_host
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The filter operator.
+	//
+	// example:
+	//
+	// eq
+	OpValue *string `json:"OpValue,omitempty" xml:"OpValue,omitempty"`
+	// The filter content.
+	//
+	// example:
+	//
+	// test.waf-top
+	Values interface{} `json:"Values,omitempty" xml:"Values,omitempty"`
+}
+
+func (s DescribeNetworkFlowTopNMetricRequestFilterConditions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNetworkFlowTopNMetricRequestFilterConditions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetworkFlowTopNMetricRequestFilterConditions) SetKey(v string) *DescribeNetworkFlowTopNMetricRequestFilterConditions {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeNetworkFlowTopNMetricRequestFilterConditions) SetOpValue(v string) *DescribeNetworkFlowTopNMetricRequestFilterConditions {
+	s.OpValue = &v
+	return s
+}
+
+func (s *DescribeNetworkFlowTopNMetricRequestFilterConditions) SetValues(v interface{}) *DescribeNetworkFlowTopNMetricRequestFilterConditions {
+	s.Values = v
+	return s
+}
+
+type DescribeNetworkFlowTopNMetricRequestFilterDateRange struct {
+	// End time of the query range (UNIX timestamp, seconds).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1713888600
+	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// Start time of the query range (UNIX timestamp, seconds).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1713888000
+	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+}
+
+func (s DescribeNetworkFlowTopNMetricRequestFilterDateRange) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNetworkFlowTopNMetricRequestFilterDateRange) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetworkFlowTopNMetricRequestFilterDateRange) SetEndDate(v int64) *DescribeNetworkFlowTopNMetricRequestFilterDateRange {
+	s.EndDate = &v
+	return s
+}
+
+func (s *DescribeNetworkFlowTopNMetricRequestFilterDateRange) SetStartDate(v int64) *DescribeNetworkFlowTopNMetricRequestFilterDateRange {
+	s.StartDate = &v
+	return s
+}
+
+type DescribeNetworkFlowTopNMetricShrinkRequest struct {
+	// Specifies filtering conditions. Multiple filter parameters use AND logic.
+	//
+	// This parameter is required.
+	FilterShrink *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// The Web Application Firewall (WAF) instance ID.
+	//
+	// >  Call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to retrieve the WAF instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_cdnsdf3****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Returns up to 10 data entries, sorted in descending order.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	Limit *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// Specifies the type of data returned by each metric. Valid values:
+	//
+	// 	- real_client_ip: The top N requests, sorted in descending order by source IP address, aggregated from all the user\\"s WAF requests.
+	//
+	// 	- request_path: The top N requests, sorted in descending order by user-agent, aggregated from all the current user\\"s WAF requests.
+	//
+	// 	- request_path: The top N URLs, sorted in descending order by frequency, aggregated from all the current user\\"s WAF requests.
+	//
+	// 	- matched_host_by_total_requests: The top N protected objects with their request counts for the current user.
+	//
+	// 	- matched_host_by_qps: The top N protected objects and their queries per second (QPS) values.
+	//
+	// 	- matched_host_by_status: When using it, you must specify status in the Conditions field of the Filter parameter. If the HTTP response code returned by WAF matches the status specified in Conditions, then the top N data is returned, sorted by protected objects. The format for specifying the status is as follows:\\
+	//
+	//     {"Key":"status","OpValue":"eq","Values":"200"}
+	//
+	// 	- matched_host_by_upstream_status: When using it, you must specify a upstream_status in the Conditions field of the Filter parameter. If the HTTP response code returned by the origin server matches the upstream_status specified by Conditions, the top N data is returned, sorted by protected objects. The format for specifying the upstream_status is as follows:\\
+	//
+	//     {"Key":"upstream_status","OpValue":"eq","Values":"200"}
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// matched_host_by_upstream_status
+	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
+	// The region ID of the WAF instance. Valid values:
+	//
+	// 	- **cn-hangzhou**: The Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: Outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+}
+
+func (s DescribeNetworkFlowTopNMetricShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNetworkFlowTopNMetricShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetworkFlowTopNMetricShrinkRequest) SetFilterShrink(v string) *DescribeNetworkFlowTopNMetricShrinkRequest {
+	s.FilterShrink = &v
+	return s
+}
+
+func (s *DescribeNetworkFlowTopNMetricShrinkRequest) SetInstanceId(v string) *DescribeNetworkFlowTopNMetricShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeNetworkFlowTopNMetricShrinkRequest) SetLimit(v int64) *DescribeNetworkFlowTopNMetricShrinkRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *DescribeNetworkFlowTopNMetricShrinkRequest) SetMetric(v string) *DescribeNetworkFlowTopNMetricShrinkRequest {
+	s.Metric = &v
+	return s
+}
+
+func (s *DescribeNetworkFlowTopNMetricShrinkRequest) SetRegionId(v string) *DescribeNetworkFlowTopNMetricShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeNetworkFlowTopNMetricShrinkRequest) SetResourceManagerResourceGroupId(v string) *DescribeNetworkFlowTopNMetricShrinkRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+type DescribeNetworkFlowTopNMetricResponseBody struct {
+	// The top statistical data array returned.
+	NetworkFlowTopNValues []*DescribeNetworkFlowTopNMetricResponseBodyNetworkFlowTopNValues `json:"NetworkFlowTopNValues,omitempty" xml:"NetworkFlowTopNValues,omitempty" type:"Repeated"`
+	// The request ID.
+	//
+	// example:
+	//
+	// D827FCFE-90A7-4330-9326-D33C8B4C7726
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The metadata of the returned data.
+	TopNMetaData *DescribeNetworkFlowTopNMetricResponseBodyTopNMetaData `json:"TopNMetaData,omitempty" xml:"TopNMetaData,omitempty" type:"Struct"`
+}
+
+func (s DescribeNetworkFlowTopNMetricResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNetworkFlowTopNMetricResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetworkFlowTopNMetricResponseBody) SetNetworkFlowTopNValues(v []*DescribeNetworkFlowTopNMetricResponseBodyNetworkFlowTopNValues) *DescribeNetworkFlowTopNMetricResponseBody {
+	s.NetworkFlowTopNValues = v
+	return s
+}
+
+func (s *DescribeNetworkFlowTopNMetricResponseBody) SetRequestId(v string) *DescribeNetworkFlowTopNMetricResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeNetworkFlowTopNMetricResponseBody) SetTopNMetaData(v *DescribeNetworkFlowTopNMetricResponseBodyTopNMetaData) *DescribeNetworkFlowTopNMetricResponseBody {
+	s.TopNMetaData = v
+	return s
+}
+
+type DescribeNetworkFlowTopNMetricResponseBodyNetworkFlowTopNValues struct {
+	// Returns additional information, such as the country, province, and city to which an IP address belongs. It\\"s currently empty.
+	//
+	// example:
+	//
+	// “”
+	Attribute *string `json:"Attribute,omitempty" xml:"Attribute,omitempty"`
+	// The value of this field varies depending on the queried Metric.
+	//
+	// example:
+	//
+	// i-8v****a-443-ecs (Protected object)
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Counts for top ranking.
+	//
+	// example:
+	//
+	// 1123
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeNetworkFlowTopNMetricResponseBodyNetworkFlowTopNValues) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNetworkFlowTopNMetricResponseBodyNetworkFlowTopNValues) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetworkFlowTopNMetricResponseBodyNetworkFlowTopNValues) SetAttribute(v string) *DescribeNetworkFlowTopNMetricResponseBodyNetworkFlowTopNValues {
+	s.Attribute = &v
+	return s
+}
+
+func (s *DescribeNetworkFlowTopNMetricResponseBodyNetworkFlowTopNValues) SetName(v string) *DescribeNetworkFlowTopNMetricResponseBodyNetworkFlowTopNValues {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeNetworkFlowTopNMetricResponseBodyNetworkFlowTopNValues) SetValue(v int64) *DescribeNetworkFlowTopNMetricResponseBodyNetworkFlowTopNValues {
+	s.Value = &v
+	return s
+}
+
+type DescribeNetworkFlowTopNMetricResponseBodyTopNMetaData struct {
+	// The query time range.
+	DateRange *DescribeNetworkFlowTopNMetricResponseBodyTopNMetaDataDateRange `json:"DateRange,omitempty" xml:"DateRange,omitempty" type:"Struct"`
+	// The unit of the returned data. Defaults to the value: request.
+	//
+	// example:
+	//
+	// request
+	Units *string `json:"Units,omitempty" xml:"Units,omitempty"`
+}
+
+func (s DescribeNetworkFlowTopNMetricResponseBodyTopNMetaData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNetworkFlowTopNMetricResponseBodyTopNMetaData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetworkFlowTopNMetricResponseBodyTopNMetaData) SetDateRange(v *DescribeNetworkFlowTopNMetricResponseBodyTopNMetaDataDateRange) *DescribeNetworkFlowTopNMetricResponseBodyTopNMetaData {
+	s.DateRange = v
+	return s
+}
+
+func (s *DescribeNetworkFlowTopNMetricResponseBodyTopNMetaData) SetUnits(v string) *DescribeNetworkFlowTopNMetricResponseBodyTopNMetaData {
+	s.Units = &v
+	return s
+}
+
+type DescribeNetworkFlowTopNMetricResponseBodyTopNMetaDataDateRange struct {
+	// The end time of the query range (in UNIX timestamp, seconds). Same as the EndDate request parameter.
+	//
+	// example:
+	//
+	// 1713888600
+	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The start time of the query range (in UNIX timestamp, seconds). Same as the StartDate request parameter.
+	//
+	// example:
+	//
+	// 1713888000
+	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+}
+
+func (s DescribeNetworkFlowTopNMetricResponseBodyTopNMetaDataDateRange) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNetworkFlowTopNMetricResponseBodyTopNMetaDataDateRange) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetworkFlowTopNMetricResponseBodyTopNMetaDataDateRange) SetEndDate(v int64) *DescribeNetworkFlowTopNMetricResponseBodyTopNMetaDataDateRange {
+	s.EndDate = &v
+	return s
+}
+
+func (s *DescribeNetworkFlowTopNMetricResponseBodyTopNMetaDataDateRange) SetStartDate(v int64) *DescribeNetworkFlowTopNMetricResponseBodyTopNMetaDataDateRange {
+	s.StartDate = &v
+	return s
+}
+
+type DescribeNetworkFlowTopNMetricResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeNetworkFlowTopNMetricResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeNetworkFlowTopNMetricResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNetworkFlowTopNMetricResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetworkFlowTopNMetricResponse) SetHeaders(v map[string]*string) *DescribeNetworkFlowTopNMetricResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeNetworkFlowTopNMetricResponse) SetStatusCode(v int32) *DescribeNetworkFlowTopNMetricResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeNetworkFlowTopNMetricResponse) SetBody(v *DescribeNetworkFlowTopNMetricResponseBody) *DescribeNetworkFlowTopNMetricResponse {
+	s.Body = v
+	return s
+}
+
 type DescribePauseProtectionStatusRequest struct {
 	// The ID of the WAF instance.
 	//
@@ -22655,6 +23652,12 @@ type DescribePunishedDomainsRequest struct {
 	//
 	// waf_v3prepaid_public_cn-uqm****qa07
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The type of punishment. Valid values:
+	//
+	// 	- **beian*	- (default): the filing center.
+	//
+	// 	- **punishCenter**: the punishment center.
+	//
 	// example:
 	//
 	// beian
@@ -23304,9 +24307,9 @@ type DescribeResourceRegionIdRequest struct {
 	//
 	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region in which the WAF instance is deployed. Valid values:
+	// The region ID of the WAF instance. Valid values:
 	//
-	// 	- **cn-hangzhou**: Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland
 	//
 	// 	- **ap-southeast-1**: outside the Chinese mainland.
 	//
@@ -23352,7 +24355,7 @@ type DescribeResourceRegionIdResponseBody struct {
 	//
 	// F5905D3F-F674-5177-9E48-466DD3B8****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The region IDs.
+	// The region IDs of the resources that are added to Web Application Firewall (WAF) by using the SDK integration mode.
 	ResourceRegionIds []*string `json:"ResourceRegionIds,omitempty" xml:"ResourceRegionIds,omitempty" type:"Repeated"`
 }
 
@@ -25227,6 +26230,1389 @@ func (s *DescribeRuleHitsTopUrlResponse) SetBody(v *DescribeRuleHitsTopUrlRespon
 	return s
 }
 
+type DescribeSecurityEventLogsRequest struct {
+	// The filter parameters for the query. Multiple parameters are evaluated by using a logical AND.
+	//
+	// This parameter is required.
+	Filter *DescribeSecurityEventLogsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Struct"`
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_cdnsdf3****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The page number. Default value: **1**.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Maximum value: **100**.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID of the WAF instance. Valid values:
+	//
+	// 	- **cn-hangzhou**: The Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: Outside the Chinese mainland.
+	//
+	// example:
+	//
+	// ap-southeast-1
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+}
+
+func (s DescribeSecurityEventLogsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSecurityEventLogsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSecurityEventLogsRequest) SetFilter(v *DescribeSecurityEventLogsRequestFilter) *DescribeSecurityEventLogsRequest {
+	s.Filter = v
+	return s
+}
+
+func (s *DescribeSecurityEventLogsRequest) SetInstanceId(v string) *DescribeSecurityEventLogsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeSecurityEventLogsRequest) SetPageNumber(v int64) *DescribeSecurityEventLogsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeSecurityEventLogsRequest) SetPageSize(v int64) *DescribeSecurityEventLogsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeSecurityEventLogsRequest) SetRegionId(v string) *DescribeSecurityEventLogsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeSecurityEventLogsRequest) SetResourceManagerResourceGroupId(v string) *DescribeSecurityEventLogsRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+type DescribeSecurityEventLogsRequestFilter struct {
+	// The filter conditions. Multiple conditions are evaluated by using a logical AND.
+	Conditions []*DescribeSecurityEventLogsRequestFilterConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
+	// The time range for the query.
+	//
+	// This parameter is required.
+	DateRange *DescribeSecurityEventLogsRequestFilterDateRange `json:"DateRange,omitempty" xml:"DateRange,omitempty" type:"Struct"`
+}
+
+func (s DescribeSecurityEventLogsRequestFilter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSecurityEventLogsRequestFilter) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSecurityEventLogsRequestFilter) SetConditions(v []*DescribeSecurityEventLogsRequestFilterConditions) *DescribeSecurityEventLogsRequestFilter {
+	s.Conditions = v
+	return s
+}
+
+func (s *DescribeSecurityEventLogsRequestFilter) SetDateRange(v *DescribeSecurityEventLogsRequestFilterDateRange) *DescribeSecurityEventLogsRequestFilter {
+	s.DateRange = v
+	return s
+}
+
+type DescribeSecurityEventLogsRequestFilterConditions struct {
+	// The field name. This operation supports all fields.
+	//
+	// example:
+	//
+	// matched_host
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The operator.
+	//
+	// example:
+	//
+	// eq
+	OpValue *string `json:"OpValue,omitempty" xml:"OpValue,omitempty"`
+	// The field content.
+	//
+	// example:
+	//
+	// test.waf-top
+	Values interface{} `json:"Values,omitempty" xml:"Values,omitempty"`
+}
+
+func (s DescribeSecurityEventLogsRequestFilterConditions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSecurityEventLogsRequestFilterConditions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSecurityEventLogsRequestFilterConditions) SetKey(v string) *DescribeSecurityEventLogsRequestFilterConditions {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeSecurityEventLogsRequestFilterConditions) SetOpValue(v string) *DescribeSecurityEventLogsRequestFilterConditions {
+	s.OpValue = &v
+	return s
+}
+
+func (s *DescribeSecurityEventLogsRequestFilterConditions) SetValues(v interface{}) *DescribeSecurityEventLogsRequestFilterConditions {
+	s.Values = v
+	return s
+}
+
+type DescribeSecurityEventLogsRequestFilterDateRange struct {
+	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1713888600
+	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1713888000
+	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+}
+
+func (s DescribeSecurityEventLogsRequestFilterDateRange) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSecurityEventLogsRequestFilterDateRange) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSecurityEventLogsRequestFilterDateRange) SetEndDate(v int64) *DescribeSecurityEventLogsRequestFilterDateRange {
+	s.EndDate = &v
+	return s
+}
+
+func (s *DescribeSecurityEventLogsRequestFilterDateRange) SetStartDate(v int64) *DescribeSecurityEventLogsRequestFilterDateRange {
+	s.StartDate = &v
+	return s
+}
+
+type DescribeSecurityEventLogsShrinkRequest struct {
+	// The filter parameters for the query. Multiple parameters are evaluated by using a logical AND.
+	//
+	// This parameter is required.
+	FilterShrink *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_cdnsdf3****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The page number. Default value: **1**.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Maximum value: **100**.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID of the WAF instance. Valid values:
+	//
+	// 	- **cn-hangzhou**: The Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: Outside the Chinese mainland.
+	//
+	// example:
+	//
+	// ap-southeast-1
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+}
+
+func (s DescribeSecurityEventLogsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSecurityEventLogsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSecurityEventLogsShrinkRequest) SetFilterShrink(v string) *DescribeSecurityEventLogsShrinkRequest {
+	s.FilterShrink = &v
+	return s
+}
+
+func (s *DescribeSecurityEventLogsShrinkRequest) SetInstanceId(v string) *DescribeSecurityEventLogsShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeSecurityEventLogsShrinkRequest) SetPageNumber(v int64) *DescribeSecurityEventLogsShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeSecurityEventLogsShrinkRequest) SetPageSize(v int64) *DescribeSecurityEventLogsShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeSecurityEventLogsShrinkRequest) SetRegionId(v string) *DescribeSecurityEventLogsShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeSecurityEventLogsShrinkRequest) SetResourceManagerResourceGroupId(v string) *DescribeSecurityEventLogsShrinkRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+type DescribeSecurityEventLogsResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// D827FCFE-90A7-4330-9326-D33C8B4C7726
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The attack logs returned.
+	SecurityEventLogs []interface{} `json:"SecurityEventLogs,omitempty" xml:"SecurityEventLogs,omitempty" type:"Repeated"`
+	// The total number of logs returned.
+	//
+	// example:
+	//
+	// 1000
+	SecurityEventLogsTotalCount *int64 `json:"SecurityEventLogsTotalCount,omitempty" xml:"SecurityEventLogsTotalCount,omitempty"`
+	// The metadata of logs returned.
+	SecurityEventMetaData *DescribeSecurityEventLogsResponseBodySecurityEventMetaData `json:"SecurityEventMetaData,omitempty" xml:"SecurityEventMetaData,omitempty" type:"Struct"`
+}
+
+func (s DescribeSecurityEventLogsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSecurityEventLogsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSecurityEventLogsResponseBody) SetRequestId(v string) *DescribeSecurityEventLogsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSecurityEventLogsResponseBody) SetSecurityEventLogs(v []interface{}) *DescribeSecurityEventLogsResponseBody {
+	s.SecurityEventLogs = v
+	return s
+}
+
+func (s *DescribeSecurityEventLogsResponseBody) SetSecurityEventLogsTotalCount(v int64) *DescribeSecurityEventLogsResponseBody {
+	s.SecurityEventLogsTotalCount = &v
+	return s
+}
+
+func (s *DescribeSecurityEventLogsResponseBody) SetSecurityEventMetaData(v *DescribeSecurityEventLogsResponseBodySecurityEventMetaData) *DescribeSecurityEventLogsResponseBody {
+	s.SecurityEventMetaData = v
+	return s
+}
+
+type DescribeSecurityEventLogsResponseBodySecurityEventMetaData struct {
+	// The time range that is used for the query.
+	DateRange *DescribeSecurityEventLogsResponseBodySecurityEventMetaDataDateRange `json:"DateRange,omitempty" xml:"DateRange,omitempty" type:"Struct"`
+	// The unit of the returned data. Defaults to the value: requests.
+	//
+	// example:
+	//
+	// requests
+	Units *string `json:"Units,omitempty" xml:"Units,omitempty"`
+}
+
+func (s DescribeSecurityEventLogsResponseBodySecurityEventMetaData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSecurityEventLogsResponseBodySecurityEventMetaData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSecurityEventLogsResponseBodySecurityEventMetaData) SetDateRange(v *DescribeSecurityEventLogsResponseBodySecurityEventMetaDataDateRange) *DescribeSecurityEventLogsResponseBodySecurityEventMetaData {
+	s.DateRange = v
+	return s
+}
+
+func (s *DescribeSecurityEventLogsResponseBodySecurityEventMetaData) SetUnits(v string) *DescribeSecurityEventLogsResponseBodySecurityEventMetaData {
+	s.Units = &v
+	return s
+}
+
+type DescribeSecurityEventLogsResponseBodySecurityEventMetaDataDateRange struct {
+	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds. This value is the same as the value of EndDate in the request parameters.
+	//
+	// example:
+	//
+	// 1713888600
+	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds. This value is the same as the value of StartDate in the request parameters.
+	//
+	// example:
+	//
+	// 1713888000
+	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+}
+
+func (s DescribeSecurityEventLogsResponseBodySecurityEventMetaDataDateRange) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSecurityEventLogsResponseBodySecurityEventMetaDataDateRange) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSecurityEventLogsResponseBodySecurityEventMetaDataDateRange) SetEndDate(v int64) *DescribeSecurityEventLogsResponseBodySecurityEventMetaDataDateRange {
+	s.EndDate = &v
+	return s
+}
+
+func (s *DescribeSecurityEventLogsResponseBodySecurityEventMetaDataDateRange) SetStartDate(v int64) *DescribeSecurityEventLogsResponseBodySecurityEventMetaDataDateRange {
+	s.StartDate = &v
+	return s
+}
+
+type DescribeSecurityEventLogsResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeSecurityEventLogsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeSecurityEventLogsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSecurityEventLogsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSecurityEventLogsResponse) SetHeaders(v map[string]*string) *DescribeSecurityEventLogsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSecurityEventLogsResponse) SetStatusCode(v int32) *DescribeSecurityEventLogsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeSecurityEventLogsResponse) SetBody(v *DescribeSecurityEventLogsResponseBody) *DescribeSecurityEventLogsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeSecurityEventTimeSeriesMetricRequest struct {
+	// The filter parameters for the query. Multiple parameters are evaluated by using a logical AND.
+	//
+	// This parameter is required.
+	Filter *DescribeSecurityEventTimeSeriesMetricRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Struct"`
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf-cn-tl32ast****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The metric whose time series data you want to return. The following metrics are supported:
+	//
+	// 	- mitigated_requests: The system returns the time series data of requests that are blocked.
+	//
+	// 	- monitored_requests: The system returns the time series data of requests that match Monitor protection rules.
+	//
+	// 	- mitigated_requests_group_by_defense_scene: The system returns the number of requests that match each protection module. The returned results are grouped by protection module and can be used to generate time series charts. A request can match multiple protection modules. Therefore, the total number of matched requests is inconsistent with the total number of requests.
+	//
+	// 	- mitigated_requests_group_by_block_defense_scene: The system returns the number of requests that are blocked by each protection module. The returned results are grouped by protection module and can be used to generate time series charts. A request can be blocked by only one protection module. Therefore, the total number of blocked requests is consistent with the total number of requests.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// mitigated_requests
+	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
+	// The region ID of the WAF instance. Valid values:
+	//
+	// 	- **cn-hangzhou**: The Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: Outside the Chinese mainland.
+	//
+	// example:
+	//
+	// ap-southeast-1
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+}
+
+func (s DescribeSecurityEventTimeSeriesMetricRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSecurityEventTimeSeriesMetricRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSecurityEventTimeSeriesMetricRequest) SetFilter(v *DescribeSecurityEventTimeSeriesMetricRequestFilter) *DescribeSecurityEventTimeSeriesMetricRequest {
+	s.Filter = v
+	return s
+}
+
+func (s *DescribeSecurityEventTimeSeriesMetricRequest) SetInstanceId(v string) *DescribeSecurityEventTimeSeriesMetricRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeSecurityEventTimeSeriesMetricRequest) SetMetric(v string) *DescribeSecurityEventTimeSeriesMetricRequest {
+	s.Metric = &v
+	return s
+}
+
+func (s *DescribeSecurityEventTimeSeriesMetricRequest) SetRegionId(v string) *DescribeSecurityEventTimeSeriesMetricRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeSecurityEventTimeSeriesMetricRequest) SetResourceManagerResourceGroupId(v string) *DescribeSecurityEventTimeSeriesMetricRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+type DescribeSecurityEventTimeSeriesMetricRequestFilter struct {
+	// The filter conditions. Multiple conditions are evaluated by using a logical AND.
+	Conditions []*DescribeSecurityEventTimeSeriesMetricRequestFilterConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
+	// The time range for the query.
+	//
+	// This parameter is required.
+	DateRange *DescribeSecurityEventTimeSeriesMetricRequestFilterDateRange `json:"DateRange,omitempty" xml:"DateRange,omitempty" type:"Struct"`
+}
+
+func (s DescribeSecurityEventTimeSeriesMetricRequestFilter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSecurityEventTimeSeriesMetricRequestFilter) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSecurityEventTimeSeriesMetricRequestFilter) SetConditions(v []*DescribeSecurityEventTimeSeriesMetricRequestFilterConditions) *DescribeSecurityEventTimeSeriesMetricRequestFilter {
+	s.Conditions = v
+	return s
+}
+
+func (s *DescribeSecurityEventTimeSeriesMetricRequestFilter) SetDateRange(v *DescribeSecurityEventTimeSeriesMetricRequestFilterDateRange) *DescribeSecurityEventTimeSeriesMetricRequestFilter {
+	s.DateRange = v
+	return s
+}
+
+type DescribeSecurityEventTimeSeriesMetricRequestFilterConditions struct {
+	// The field name. This operation supports all fields.
+	//
+	// example:
+	//
+	// matched_host
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The operator.
+	//
+	// example:
+	//
+	// eq
+	OpValue *string `json:"OpValue,omitempty" xml:"OpValue,omitempty"`
+	// The field content.
+	//
+	// example:
+	//
+	// test.waf-top
+	Values interface{} `json:"Values,omitempty" xml:"Values,omitempty"`
+}
+
+func (s DescribeSecurityEventTimeSeriesMetricRequestFilterConditions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSecurityEventTimeSeriesMetricRequestFilterConditions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSecurityEventTimeSeriesMetricRequestFilterConditions) SetKey(v string) *DescribeSecurityEventTimeSeriesMetricRequestFilterConditions {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeSecurityEventTimeSeriesMetricRequestFilterConditions) SetOpValue(v string) *DescribeSecurityEventTimeSeriesMetricRequestFilterConditions {
+	s.OpValue = &v
+	return s
+}
+
+func (s *DescribeSecurityEventTimeSeriesMetricRequestFilterConditions) SetValues(v interface{}) *DescribeSecurityEventTimeSeriesMetricRequestFilterConditions {
+	s.Values = v
+	return s
+}
+
+type DescribeSecurityEventTimeSeriesMetricRequestFilterDateRange struct {
+	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1713888600
+	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1713888000
+	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+}
+
+func (s DescribeSecurityEventTimeSeriesMetricRequestFilterDateRange) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSecurityEventTimeSeriesMetricRequestFilterDateRange) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSecurityEventTimeSeriesMetricRequestFilterDateRange) SetEndDate(v int64) *DescribeSecurityEventTimeSeriesMetricRequestFilterDateRange {
+	s.EndDate = &v
+	return s
+}
+
+func (s *DescribeSecurityEventTimeSeriesMetricRequestFilterDateRange) SetStartDate(v int64) *DescribeSecurityEventTimeSeriesMetricRequestFilterDateRange {
+	s.StartDate = &v
+	return s
+}
+
+type DescribeSecurityEventTimeSeriesMetricShrinkRequest struct {
+	// The filter parameters for the query. Multiple parameters are evaluated by using a logical AND.
+	//
+	// This parameter is required.
+	FilterShrink *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf-cn-tl32ast****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The metric whose time series data you want to return. The following metrics are supported:
+	//
+	// 	- mitigated_requests: The system returns the time series data of requests that are blocked.
+	//
+	// 	- monitored_requests: The system returns the time series data of requests that match Monitor protection rules.
+	//
+	// 	- mitigated_requests_group_by_defense_scene: The system returns the number of requests that match each protection module. The returned results are grouped by protection module and can be used to generate time series charts. A request can match multiple protection modules. Therefore, the total number of matched requests is inconsistent with the total number of requests.
+	//
+	// 	- mitigated_requests_group_by_block_defense_scene: The system returns the number of requests that are blocked by each protection module. The returned results are grouped by protection module and can be used to generate time series charts. A request can be blocked by only one protection module. Therefore, the total number of blocked requests is consistent with the total number of requests.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// mitigated_requests
+	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
+	// The region ID of the WAF instance. Valid values:
+	//
+	// 	- **cn-hangzhou**: The Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: Outside the Chinese mainland.
+	//
+	// example:
+	//
+	// ap-southeast-1
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+}
+
+func (s DescribeSecurityEventTimeSeriesMetricShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSecurityEventTimeSeriesMetricShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSecurityEventTimeSeriesMetricShrinkRequest) SetFilterShrink(v string) *DescribeSecurityEventTimeSeriesMetricShrinkRequest {
+	s.FilterShrink = &v
+	return s
+}
+
+func (s *DescribeSecurityEventTimeSeriesMetricShrinkRequest) SetInstanceId(v string) *DescribeSecurityEventTimeSeriesMetricShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeSecurityEventTimeSeriesMetricShrinkRequest) SetMetric(v string) *DescribeSecurityEventTimeSeriesMetricShrinkRequest {
+	s.Metric = &v
+	return s
+}
+
+func (s *DescribeSecurityEventTimeSeriesMetricShrinkRequest) SetRegionId(v string) *DescribeSecurityEventTimeSeriesMetricShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeSecurityEventTimeSeriesMetricShrinkRequest) SetResourceManagerResourceGroupId(v string) *DescribeSecurityEventTimeSeriesMetricShrinkRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+type DescribeSecurityEventTimeSeriesMetricResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// D827FCFE-90A7-4330-9326-D33C8B4C7726
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The time series data returned. This operation can return time series for multiple metrics.
+	SecurityEventTimeSeries []*DescribeSecurityEventTimeSeriesMetricResponseBodySecurityEventTimeSeries `json:"SecurityEventTimeSeries,omitempty" xml:"SecurityEventTimeSeries,omitempty" type:"Repeated"`
+	// The metadata of the time series data returned.
+	TimeSeriesMetaData *DescribeSecurityEventTimeSeriesMetricResponseBodyTimeSeriesMetaData `json:"TimeSeriesMetaData,omitempty" xml:"TimeSeriesMetaData,omitempty" type:"Struct"`
+}
+
+func (s DescribeSecurityEventTimeSeriesMetricResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSecurityEventTimeSeriesMetricResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSecurityEventTimeSeriesMetricResponseBody) SetRequestId(v string) *DescribeSecurityEventTimeSeriesMetricResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSecurityEventTimeSeriesMetricResponseBody) SetSecurityEventTimeSeries(v []*DescribeSecurityEventTimeSeriesMetricResponseBodySecurityEventTimeSeries) *DescribeSecurityEventTimeSeriesMetricResponseBody {
+	s.SecurityEventTimeSeries = v
+	return s
+}
+
+func (s *DescribeSecurityEventTimeSeriesMetricResponseBody) SetTimeSeriesMetaData(v *DescribeSecurityEventTimeSeriesMetricResponseBodyTimeSeriesMetaData) *DescribeSecurityEventTimeSeriesMetricResponseBody {
+	s.TimeSeriesMetaData = v
+	return s
+}
+
+type DescribeSecurityEventTimeSeriesMetricResponseBodySecurityEventTimeSeries struct {
+	// The metric. This value is the same as the value of Metric in the request parameters.
+	//
+	// example:
+	//
+	// monitored_requests
+	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
+	// The time points. Each point represents a time range.
+	Timestamps []*string `json:"Timestamps,omitempty" xml:"Timestamps,omitempty" type:"Repeated"`
+	// The data points. Each point represents a count for a time range.
+	Values []*int64 `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s DescribeSecurityEventTimeSeriesMetricResponseBodySecurityEventTimeSeries) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSecurityEventTimeSeriesMetricResponseBodySecurityEventTimeSeries) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSecurityEventTimeSeriesMetricResponseBodySecurityEventTimeSeries) SetMetric(v string) *DescribeSecurityEventTimeSeriesMetricResponseBodySecurityEventTimeSeries {
+	s.Metric = &v
+	return s
+}
+
+func (s *DescribeSecurityEventTimeSeriesMetricResponseBodySecurityEventTimeSeries) SetTimestamps(v []*string) *DescribeSecurityEventTimeSeriesMetricResponseBodySecurityEventTimeSeries {
+	s.Timestamps = v
+	return s
+}
+
+func (s *DescribeSecurityEventTimeSeriesMetricResponseBodySecurityEventTimeSeries) SetValues(v []*int64) *DescribeSecurityEventTimeSeriesMetricResponseBodySecurityEventTimeSeries {
+	s.Values = v
+	return s
+}
+
+type DescribeSecurityEventTimeSeriesMetricResponseBodyTimeSeriesMetaData struct {
+	// The time granularity of data points in the time series data returned. For example, a value of 15m indicates that data points are collected at 15-minute intervals. For more information about the supported time granularities, see the "**Time granularities for data points in time series records**" section of the **DescribeNetworkFlowTimeSeriesMetric*	- topic.
+	//
+	// example:
+	//
+	// 1m
+	AggregateInterval *string `json:"AggregateInterval,omitempty" xml:"AggregateInterval,omitempty"`
+	// The time range that is used for the query.
+	DateRange *DescribeSecurityEventTimeSeriesMetricResponseBodyTimeSeriesMetaDataDateRange `json:"DateRange,omitempty" xml:"DateRange,omitempty" type:"Struct"`
+	// The unit of the returned data. Defaults to the value: request.
+	//
+	// example:
+	//
+	// requests
+	Units *string `json:"Units,omitempty" xml:"Units,omitempty"`
+}
+
+func (s DescribeSecurityEventTimeSeriesMetricResponseBodyTimeSeriesMetaData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSecurityEventTimeSeriesMetricResponseBodyTimeSeriesMetaData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSecurityEventTimeSeriesMetricResponseBodyTimeSeriesMetaData) SetAggregateInterval(v string) *DescribeSecurityEventTimeSeriesMetricResponseBodyTimeSeriesMetaData {
+	s.AggregateInterval = &v
+	return s
+}
+
+func (s *DescribeSecurityEventTimeSeriesMetricResponseBodyTimeSeriesMetaData) SetDateRange(v *DescribeSecurityEventTimeSeriesMetricResponseBodyTimeSeriesMetaDataDateRange) *DescribeSecurityEventTimeSeriesMetricResponseBodyTimeSeriesMetaData {
+	s.DateRange = v
+	return s
+}
+
+func (s *DescribeSecurityEventTimeSeriesMetricResponseBodyTimeSeriesMetaData) SetUnits(v string) *DescribeSecurityEventTimeSeriesMetricResponseBodyTimeSeriesMetaData {
+	s.Units = &v
+	return s
+}
+
+type DescribeSecurityEventTimeSeriesMetricResponseBodyTimeSeriesMetaDataDateRange struct {
+	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds. This value is the same as the value of EndDate in the request parameters.
+	//
+	// example:
+	//
+	// 1713888600
+	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds. This value is the same as the value of StartDate in the request parameters.
+	//
+	// example:
+	//
+	// 1713888000
+	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+}
+
+func (s DescribeSecurityEventTimeSeriesMetricResponseBodyTimeSeriesMetaDataDateRange) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSecurityEventTimeSeriesMetricResponseBodyTimeSeriesMetaDataDateRange) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSecurityEventTimeSeriesMetricResponseBodyTimeSeriesMetaDataDateRange) SetEndDate(v int64) *DescribeSecurityEventTimeSeriesMetricResponseBodyTimeSeriesMetaDataDateRange {
+	s.EndDate = &v
+	return s
+}
+
+func (s *DescribeSecurityEventTimeSeriesMetricResponseBodyTimeSeriesMetaDataDateRange) SetStartDate(v int64) *DescribeSecurityEventTimeSeriesMetricResponseBodyTimeSeriesMetaDataDateRange {
+	s.StartDate = &v
+	return s
+}
+
+type DescribeSecurityEventTimeSeriesMetricResponse struct {
+	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeSecurityEventTimeSeriesMetricResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeSecurityEventTimeSeriesMetricResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSecurityEventTimeSeriesMetricResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSecurityEventTimeSeriesMetricResponse) SetHeaders(v map[string]*string) *DescribeSecurityEventTimeSeriesMetricResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSecurityEventTimeSeriesMetricResponse) SetStatusCode(v int32) *DescribeSecurityEventTimeSeriesMetricResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeSecurityEventTimeSeriesMetricResponse) SetBody(v *DescribeSecurityEventTimeSeriesMetricResponseBody) *DescribeSecurityEventTimeSeriesMetricResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeSecurityEventTopNMetricRequest struct {
+	// The filter parameters for the query. Multiple parameters are evaluated by using a logical AND.
+	//
+	// This parameter is required.
+	Filter *DescribeSecurityEventTopNMetricRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Struct"`
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_cdnsdf3****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The number of data entries that can be returned. Data entries are sorted in descending order before they are returned. Maximum value: 10.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	Limit *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// The metric whose top N data entries you want to return. The following metrics are supported:
+	//
+	// >  For more information about attack requests, see the "Usage notes" section of this topic.
+	//
+	// 	- real_client_ip: The system aggregates the source IP addresses of attack requests to collect statistics, sorts the statistical results in descending order, and returns top N data entries.
+	//
+	// 	- http_user_agent: The system aggregates the User-Agent header field of attack requests to collect statistics, sorts the statistical results in descending order, and returns top N data entries.
+	//
+	// 	- matched_host: The system aggregates the protected objects that are matched by attack requests to collect statistics, sorts the statistical results in descending order, and returns top N data entries.
+	//
+	// 	- remote_region_id: The system aggregates the countries to which the source IP addresses of attack requests belong to collect statistics, sorts the statistical results in descending order, and returns top N data entries.
+	//
+	// 	- request_path: The system aggregates the URLs of attack requests to collect statistics, sorts the statistical results in descending order, and returns top N data entries. The URLs exclude query strings.
+	//
+	// 	- block_defense_scene: The system aggregates the protection modules that block attack requests to collect statistics, sorts the statistical results in descending order, and returns top N data entries. The requests match protection rules whose actions are not set to Monitor.
+	//
+	// 	- defense_scene: The system aggregates the protection modules that are matched by attack requests to collect statistics, sorts the statistical results in descending order, and returns top N data entries.
+	//
+	// 	- defense_scene_rule_id: The system returns the IDs of top N protection rules that are matched by attack requests and also the related protection modules. Only protection rules whose actions are not set to Monitor are counted. The system returns the value in the following format:\\
+	//
+	//     `{ "Attribute": "waf_base", "Value": 140, "Name": "111034" }`
+	//
+	// 	- defense_scene_with_rule_id: The system returns the IDs of top N protection rules that are matched by attack requests and also the related protection modules. The IDs and protection modules are connected by using hyphens (-). Protection rules whose actions are set to Monitor and Block are counted. The system returns the value in the following format:\\
+	//
+	//     `{ "Attribute": "", "Value": 1, "Name": "120075-waf_base" }`
+	//
+	// 	- defense_scene_top_rule_id: The system returns top N matched protection rules of a specific protection module. You can specify Conditions in Filter to configure filter conditions. For example, you can use the following condition to query top N matched protection rules of the custom rule module:\\
+	//
+	//     `{ "Key": "defense_scene_map", "OpValue": "contain", "Values": "custom_acl" }`
+	//
+	// 	- defense_scene_rule_type: The system returns top N matched protection rules of the core web protection module. This metric is supported only by the core web protection module because only this module supports subtypes of protection rules. You must specify Conditions in Filter to configure filter conditions. Example:\\
+	//
+	//     `{ "Key": "defense_scene", "OpValue": "eq", "Values": "waf_base" }`
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// real_client_ip
+	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
+	// The region ID of the WAF instance. Valid values:
+	//
+	// 	- **cn-hangzhou**: The Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: Outside the Chinese mainland.
+	//
+	// example:
+	//
+	// ap-southeast-1
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+}
+
+func (s DescribeSecurityEventTopNMetricRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSecurityEventTopNMetricRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSecurityEventTopNMetricRequest) SetFilter(v *DescribeSecurityEventTopNMetricRequestFilter) *DescribeSecurityEventTopNMetricRequest {
+	s.Filter = v
+	return s
+}
+
+func (s *DescribeSecurityEventTopNMetricRequest) SetInstanceId(v string) *DescribeSecurityEventTopNMetricRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeSecurityEventTopNMetricRequest) SetLimit(v int64) *DescribeSecurityEventTopNMetricRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *DescribeSecurityEventTopNMetricRequest) SetMetric(v string) *DescribeSecurityEventTopNMetricRequest {
+	s.Metric = &v
+	return s
+}
+
+func (s *DescribeSecurityEventTopNMetricRequest) SetRegionId(v string) *DescribeSecurityEventTopNMetricRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeSecurityEventTopNMetricRequest) SetResourceManagerResourceGroupId(v string) *DescribeSecurityEventTopNMetricRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+type DescribeSecurityEventTopNMetricRequestFilter struct {
+	// The filter conditions. Multiple conditions are evaluated by using a logical AND.
+	Conditions []*DescribeSecurityEventTopNMetricRequestFilterConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
+	// The time range for the query.
+	//
+	// This parameter is required.
+	DateRange *DescribeSecurityEventTopNMetricRequestFilterDateRange `json:"DateRange,omitempty" xml:"DateRange,omitempty" type:"Struct"`
+}
+
+func (s DescribeSecurityEventTopNMetricRequestFilter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSecurityEventTopNMetricRequestFilter) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSecurityEventTopNMetricRequestFilter) SetConditions(v []*DescribeSecurityEventTopNMetricRequestFilterConditions) *DescribeSecurityEventTopNMetricRequestFilter {
+	s.Conditions = v
+	return s
+}
+
+func (s *DescribeSecurityEventTopNMetricRequestFilter) SetDateRange(v *DescribeSecurityEventTopNMetricRequestFilterDateRange) *DescribeSecurityEventTopNMetricRequestFilter {
+	s.DateRange = v
+	return s
+}
+
+type DescribeSecurityEventTopNMetricRequestFilterConditions struct {
+	// The field name. This operation supports all fields.
+	//
+	// example:
+	//
+	// matched_host
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The filter operator.
+	//
+	// example:
+	//
+	// eq
+	OpValue *string `json:"OpValue,omitempty" xml:"OpValue,omitempty"`
+	// The field content.
+	//
+	// example:
+	//
+	// test.waf-top
+	Values interface{} `json:"Values,omitempty" xml:"Values,omitempty"`
+}
+
+func (s DescribeSecurityEventTopNMetricRequestFilterConditions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSecurityEventTopNMetricRequestFilterConditions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSecurityEventTopNMetricRequestFilterConditions) SetKey(v string) *DescribeSecurityEventTopNMetricRequestFilterConditions {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeSecurityEventTopNMetricRequestFilterConditions) SetOpValue(v string) *DescribeSecurityEventTopNMetricRequestFilterConditions {
+	s.OpValue = &v
+	return s
+}
+
+func (s *DescribeSecurityEventTopNMetricRequestFilterConditions) SetValues(v interface{}) *DescribeSecurityEventTopNMetricRequestFilterConditions {
+	s.Values = v
+	return s
+}
+
+type DescribeSecurityEventTopNMetricRequestFilterDateRange struct {
+	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1713888600
+	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1713888000
+	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+}
+
+func (s DescribeSecurityEventTopNMetricRequestFilterDateRange) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSecurityEventTopNMetricRequestFilterDateRange) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSecurityEventTopNMetricRequestFilterDateRange) SetEndDate(v int64) *DescribeSecurityEventTopNMetricRequestFilterDateRange {
+	s.EndDate = &v
+	return s
+}
+
+func (s *DescribeSecurityEventTopNMetricRequestFilterDateRange) SetStartDate(v int64) *DescribeSecurityEventTopNMetricRequestFilterDateRange {
+	s.StartDate = &v
+	return s
+}
+
+type DescribeSecurityEventTopNMetricShrinkRequest struct {
+	// The filter parameters for the query. Multiple parameters are evaluated by using a logical AND.
+	//
+	// This parameter is required.
+	FilterShrink *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_cdnsdf3****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The number of data entries that can be returned. Data entries are sorted in descending order before they are returned. Maximum value: 10.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	Limit *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// The metric whose top N data entries you want to return. The following metrics are supported:
+	//
+	// >  For more information about attack requests, see the "Usage notes" section of this topic.
+	//
+	// 	- real_client_ip: The system aggregates the source IP addresses of attack requests to collect statistics, sorts the statistical results in descending order, and returns top N data entries.
+	//
+	// 	- http_user_agent: The system aggregates the User-Agent header field of attack requests to collect statistics, sorts the statistical results in descending order, and returns top N data entries.
+	//
+	// 	- matched_host: The system aggregates the protected objects that are matched by attack requests to collect statistics, sorts the statistical results in descending order, and returns top N data entries.
+	//
+	// 	- remote_region_id: The system aggregates the countries to which the source IP addresses of attack requests belong to collect statistics, sorts the statistical results in descending order, and returns top N data entries.
+	//
+	// 	- request_path: The system aggregates the URLs of attack requests to collect statistics, sorts the statistical results in descending order, and returns top N data entries. The URLs exclude query strings.
+	//
+	// 	- block_defense_scene: The system aggregates the protection modules that block attack requests to collect statistics, sorts the statistical results in descending order, and returns top N data entries. The requests match protection rules whose actions are not set to Monitor.
+	//
+	// 	- defense_scene: The system aggregates the protection modules that are matched by attack requests to collect statistics, sorts the statistical results in descending order, and returns top N data entries.
+	//
+	// 	- defense_scene_rule_id: The system returns the IDs of top N protection rules that are matched by attack requests and also the related protection modules. Only protection rules whose actions are not set to Monitor are counted. The system returns the value in the following format:\\
+	//
+	//     `{ "Attribute": "waf_base", "Value": 140, "Name": "111034" }`
+	//
+	// 	- defense_scene_with_rule_id: The system returns the IDs of top N protection rules that are matched by attack requests and also the related protection modules. The IDs and protection modules are connected by using hyphens (-). Protection rules whose actions are set to Monitor and Block are counted. The system returns the value in the following format:\\
+	//
+	//     `{ "Attribute": "", "Value": 1, "Name": "120075-waf_base" }`
+	//
+	// 	- defense_scene_top_rule_id: The system returns top N matched protection rules of a specific protection module. You can specify Conditions in Filter to configure filter conditions. For example, you can use the following condition to query top N matched protection rules of the custom rule module:\\
+	//
+	//     `{ "Key": "defense_scene_map", "OpValue": "contain", "Values": "custom_acl" }`
+	//
+	// 	- defense_scene_rule_type: The system returns top N matched protection rules of the core web protection module. This metric is supported only by the core web protection module because only this module supports subtypes of protection rules. You must specify Conditions in Filter to configure filter conditions. Example:\\
+	//
+	//     `{ "Key": "defense_scene", "OpValue": "eq", "Values": "waf_base" }`
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// real_client_ip
+	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
+	// The region ID of the WAF instance. Valid values:
+	//
+	// 	- **cn-hangzhou**: The Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: Outside the Chinese mainland.
+	//
+	// example:
+	//
+	// ap-southeast-1
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+}
+
+func (s DescribeSecurityEventTopNMetricShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSecurityEventTopNMetricShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSecurityEventTopNMetricShrinkRequest) SetFilterShrink(v string) *DescribeSecurityEventTopNMetricShrinkRequest {
+	s.FilterShrink = &v
+	return s
+}
+
+func (s *DescribeSecurityEventTopNMetricShrinkRequest) SetInstanceId(v string) *DescribeSecurityEventTopNMetricShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeSecurityEventTopNMetricShrinkRequest) SetLimit(v int64) *DescribeSecurityEventTopNMetricShrinkRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *DescribeSecurityEventTopNMetricShrinkRequest) SetMetric(v string) *DescribeSecurityEventTopNMetricShrinkRequest {
+	s.Metric = &v
+	return s
+}
+
+func (s *DescribeSecurityEventTopNMetricShrinkRequest) SetRegionId(v string) *DescribeSecurityEventTopNMetricShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeSecurityEventTopNMetricShrinkRequest) SetResourceManagerResourceGroupId(v string) *DescribeSecurityEventTopNMetricShrinkRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+type DescribeSecurityEventTopNMetricResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// D827FCFE-90A7-4330-9326-D33C8B4C7726
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The top N data entries returned.
+	SecurityEventTopNValues []*DescribeSecurityEventTopNMetricResponseBodySecurityEventTopNValues `json:"SecurityEventTopNValues,omitempty" xml:"SecurityEventTopNValues,omitempty" type:"Repeated"`
+	// The metadata of the data entries returned.
+	TopNMetaData *DescribeSecurityEventTopNMetricResponseBodyTopNMetaData `json:"TopNMetaData,omitempty" xml:"TopNMetaData,omitempty" type:"Struct"`
+}
+
+func (s DescribeSecurityEventTopNMetricResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSecurityEventTopNMetricResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSecurityEventTopNMetricResponseBody) SetRequestId(v string) *DescribeSecurityEventTopNMetricResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSecurityEventTopNMetricResponseBody) SetSecurityEventTopNValues(v []*DescribeSecurityEventTopNMetricResponseBodySecurityEventTopNValues) *DescribeSecurityEventTopNMetricResponseBody {
+	s.SecurityEventTopNValues = v
+	return s
+}
+
+func (s *DescribeSecurityEventTopNMetricResponseBody) SetTopNMetaData(v *DescribeSecurityEventTopNMetricResponseBodyTopNMetaData) *DescribeSecurityEventTopNMetricResponseBody {
+	s.TopNMetaData = v
+	return s
+}
+
+type DescribeSecurityEventTopNMetricResponseBodySecurityEventTopNValues struct {
+	// The additional information, such as the protection module for a protection rule whose ID is returned.
+	//
+	// example:
+	//
+	// “”
+	Attribute *string `json:"Attribute,omitempty" xml:"Attribute,omitempty"`
+	// The field value, which varies based on the metric.
+	//
+	// example:
+	//
+	// i-8v****a-443-ecs
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The count for the data entry.
+	//
+	// example:
+	//
+	// 1111
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeSecurityEventTopNMetricResponseBodySecurityEventTopNValues) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSecurityEventTopNMetricResponseBodySecurityEventTopNValues) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSecurityEventTopNMetricResponseBodySecurityEventTopNValues) SetAttribute(v string) *DescribeSecurityEventTopNMetricResponseBodySecurityEventTopNValues {
+	s.Attribute = &v
+	return s
+}
+
+func (s *DescribeSecurityEventTopNMetricResponseBodySecurityEventTopNValues) SetName(v string) *DescribeSecurityEventTopNMetricResponseBodySecurityEventTopNValues {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeSecurityEventTopNMetricResponseBodySecurityEventTopNValues) SetValue(v int64) *DescribeSecurityEventTopNMetricResponseBodySecurityEventTopNValues {
+	s.Value = &v
+	return s
+}
+
+type DescribeSecurityEventTopNMetricResponseBodyTopNMetaData struct {
+	// The time range that is used for the query.
+	DateRange *DescribeSecurityEventTopNMetricResponseBodyTopNMetaDataDateRange `json:"DateRange,omitempty" xml:"DateRange,omitempty" type:"Struct"`
+	// The unit of the returned data. Defaults to the value: request.
+	//
+	// example:
+	//
+	// request
+	Units *string `json:"Units,omitempty" xml:"Units,omitempty"`
+}
+
+func (s DescribeSecurityEventTopNMetricResponseBodyTopNMetaData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSecurityEventTopNMetricResponseBodyTopNMetaData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSecurityEventTopNMetricResponseBodyTopNMetaData) SetDateRange(v *DescribeSecurityEventTopNMetricResponseBodyTopNMetaDataDateRange) *DescribeSecurityEventTopNMetricResponseBodyTopNMetaData {
+	s.DateRange = v
+	return s
+}
+
+func (s *DescribeSecurityEventTopNMetricResponseBodyTopNMetaData) SetUnits(v string) *DescribeSecurityEventTopNMetricResponseBodyTopNMetaData {
+	s.Units = &v
+	return s
+}
+
+type DescribeSecurityEventTopNMetricResponseBodyTopNMetaDataDateRange struct {
+	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds. This value is the same as the value of EndDate in the request parameters.
+	//
+	// example:
+	//
+	// 1713888600
+	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds. This value is the same as the value of StartDate in the request parameters.
+	//
+	// example:
+	//
+	// 1713888000
+	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+}
+
+func (s DescribeSecurityEventTopNMetricResponseBodyTopNMetaDataDateRange) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSecurityEventTopNMetricResponseBodyTopNMetaDataDateRange) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSecurityEventTopNMetricResponseBodyTopNMetaDataDateRange) SetEndDate(v int64) *DescribeSecurityEventTopNMetricResponseBodyTopNMetaDataDateRange {
+	s.EndDate = &v
+	return s
+}
+
+func (s *DescribeSecurityEventTopNMetricResponseBodyTopNMetaDataDateRange) SetStartDate(v int64) *DescribeSecurityEventTopNMetricResponseBodyTopNMetaDataDateRange {
+	s.StartDate = &v
+	return s
+}
+
+type DescribeSecurityEventTopNMetricResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeSecurityEventTopNMetricResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeSecurityEventTopNMetricResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSecurityEventTopNMetricResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSecurityEventTopNMetricResponse) SetHeaders(v map[string]*string) *DescribeSecurityEventTopNMetricResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSecurityEventTopNMetricResponse) SetStatusCode(v int32) *DescribeSecurityEventTopNMetricResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeSecurityEventTopNMetricResponse) SetBody(v *DescribeSecurityEventTopNMetricResponseBody) *DescribeSecurityEventTopNMetricResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeSensitiveApiStatisticRequest struct {
 	// The ID of the hybrid cloud cluster.
 	//
@@ -26652,7 +29038,7 @@ type DescribeSensitiveRequestLogRequest struct {
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the WAF instance. Valid value:
+	// The region ID of the WAF instance. Valid values:
 	//
 	// 	- **cn-hangzhou**: Chinese mainland.
 	//
@@ -26846,9 +29232,9 @@ type DescribeSensitiveRequestLogResponseBodyData struct {
 	//
 	// 1723392000
 	RequestTime *int64 `json:"RequestTime,omitempty" xml:"RequestTime,omitempty"`
-	// The sensitive data. The value of this parameter is a JSON string that contains multiple parameters. The Key of JSON is the sensitive information type identifier (including default and custom types), and the Value is the sensitive information data list.
+	// The details of sensitive data. The value is a string that consists of a JSON struct. The JSON struct contains key-value pairs. In a key-value pair, a key indicates the identifier of a sensitive data type, including built-in and custom types, and a value indicates specific sensitive data.
 	//
-	// >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported types of sensitive data.
+	// >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported sensitive data types.
 	//
 	// example:
 	//
@@ -30869,7 +33255,7 @@ type ModifyApisecAbnormalsRequest struct {
 	AbnormalIds []*string `json:"AbnormalIds,omitempty" xml:"AbnormalIds,omitempty" type:"Repeated"`
 	// The ID of the hybrid cloud cluster.
 	//
-	// >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
+	// >  This parameter is available only in hybrid cloud scenarios. You can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query hybrid cloud clusters.
 	//
 	// example:
 	//
@@ -30901,8 +33287,6 @@ type ModifyApisecAbnormalsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 阿里云资源组ID。
-	//
 	// example:
 	//
 	// rg-acfm***q
@@ -31945,11 +34329,11 @@ type ModifyCloudResourceRequest struct {
 	//
 	// waf_v3prepaid_public_cn-***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The configurations of the listeners.
+	// The listener configurations.
 	//
 	// This parameter is required.
 	Listen *ModifyCloudResourceRequestListen `json:"Listen,omitempty" xml:"Listen,omitempty" type:"Struct"`
-	// The configurations of the forwarding rule.
+	// The forwarding configurations.
 	Redirect *ModifyCloudResourceRequestRedirect `json:"Redirect,omitempty" xml:"Redirect,omitempty" type:"Struct"`
 	// The region in which the WAF instance is deployed. Valid values:
 	//
@@ -32005,13 +34389,13 @@ func (s *ModifyCloudResourceRequest) SetResourceManagerResourceGroupId(v string)
 }
 
 type ModifyCloudResourceRequestListen struct {
-	// An array of certificates.
+	// The certificates.
 	Certificates []*ModifyCloudResourceRequestListenCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
 	// The type of the cipher suites that you want to add. This parameter is available only if you specify **HttpsPorts**. Valid values:
 	//
 	// 	- **1**: all cipher suites.
 	//
-	// 	- **2**: strong cipher suites. You can set the parameter to this value only if you set **TLSVersion*	- to **tlsv1.2**.
+	// 	- **2**: strong cipher suites. This value is available only if you set **TLSVersion*	- to **tlsv1.2**.
 	//
 	// 	- **99**: custom cipher suites.
 	//
@@ -32019,7 +34403,7 @@ type ModifyCloudResourceRequestListen struct {
 	//
 	// 1
 	CipherSuite *int32 `json:"CipherSuite,omitempty" xml:"CipherSuite,omitempty"`
-	// An array of custom cipher suites.
+	// The custom cipher suites that you want to add.
 	CustomCiphers []*string `json:"CustomCiphers,omitempty" xml:"CustomCiphers,omitempty" type:"Repeated"`
 	// Specifies whether to support TLS 1.3. This parameter is available only if you specify **HttpsPorts**. Valid values:
 	//
@@ -32044,7 +34428,7 @@ type ModifyCloudResourceRequestListen struct {
 	//
 	// true
 	Http2Enabled *bool `json:"Http2Enabled,omitempty" xml:"Http2Enabled,omitempty"`
-	// The port of the resource that you want to add to WAF.
+	// The port of the cloud service instance that is added to WAF.
 	//
 	// This parameter is required.
 	//
@@ -32052,7 +34436,7 @@ type ModifyCloudResourceRequestListen struct {
 	//
 	// 80
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The type of the protocol. Valid values:
+	// The protocol type. Valid values:
 	//
 	// 	- **http**
 	//
@@ -32064,7 +34448,7 @@ type ModifyCloudResourceRequestListen struct {
 	//
 	// http
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The ID of the resource.
+	// The ID of the cloud service instance that is added to WAF.
 	//
 	// This parameter is required.
 	//
@@ -32072,7 +34456,7 @@ type ModifyCloudResourceRequestListen struct {
 	//
 	// lb-***
 	ResourceInstanceId *string `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
-	// The cloud service. Valid values:
+	// The type of the cloud service. Valid values:
 	//
 	// 	- **clb4**: Layer 4 Classic Load Balancer (CLB).
 	//
@@ -32080,13 +34464,15 @@ type ModifyCloudResourceRequestListen struct {
 	//
 	// 	- **ecs**: Elastic Compute Service (ECS).
 	//
+	// 	- **nlb**: Network Load Balancer (NLB).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// clb7
 	ResourceProduct *string `json:"ResourceProduct,omitempty" xml:"ResourceProduct,omitempty"`
-	// The Transport Layer Security (TLS) version. This parameter is available only if you specify **HttpsPorts**. Valid values:
+	// The Transport Layer Security (TLS) version that you want to add. This parameter is available only if you specify **HttpsPorts**. Valid values:
 	//
 	// 	- **tlsv1**
 	//
@@ -32159,7 +34545,7 @@ func (s *ModifyCloudResourceRequestListen) SetTLSVersion(v string) *ModifyCloudR
 }
 
 type ModifyCloudResourceRequestListenCertificates struct {
-	// The type of the HTTPS certificate. Valid values:
+	// The type of the certificate. Valid values:
 	//
 	// 	- **default**: default certificate.
 	//
@@ -32200,43 +34586,43 @@ type ModifyCloudResourceRequestRedirect struct {
 	//
 	// 	- **true*	- (default)
 	//
-	// 	- **false:**
+	// 	- **false**
 	//
 	// example:
 	//
 	// true
 	Keepalive *bool `json:"Keepalive,omitempty" xml:"Keepalive,omitempty"`
-	// The number of requests that reuse persistent connections. Valid values: 60 to 1000.
+	// The number of reused persistent connections. Valid values: 60 to 1000.
 	//
-	// >  This parameter specifies the number of requests that can reuse persistent connections after you enable the persistent connection feature.
+	// >  This parameter specifies the number of persistent connections that can be reused after you enable the persistent connection feature.
 	//
 	// example:
 	//
 	// 1000
 	KeepaliveRequests *int32 `json:"KeepaliveRequests,omitempty" xml:"KeepaliveRequests,omitempty"`
-	// The timeout period for idle persistent connections. Valid values: 10 to 3600. Default value: 3600. Unit: seconds.
+	// The timeout period of idle persistent connections. Valid values: 10 to 3600. Default value: 3600. Unit: seconds.
 	//
-	// >  If no new requests are initiated over the idle persistent connection within the specified timeout period, the connection is closed.
+	// >  This parameter specifies the period of time after which an idle persistent connection is closed.
 	//
 	// example:
 	//
 	// 15
 	KeepaliveTimeout *int32 `json:"KeepaliveTimeout,omitempty" xml:"KeepaliveTimeout,omitempty"`
-	// The timeout period for read connections. Unit: seconds. Valid values: 1 to 3600.
+	// The timeout period of read connections. Unit: seconds. Valid values: 1 to 3600.
 	//
 	// example:
 	//
 	// 1
 	ReadTimeout *int32 `json:"ReadTimeout,omitempty" xml:"ReadTimeout,omitempty"`
-	// The custom header field that you want to use to label requests that are processed by WAF.
+	// The custom header fields, which are key-value pairs. The fields are used to mark requests that pass through WAF.
 	RequestHeaders []*ModifyCloudResourceRequestRedirectRequestHeaders `json:"RequestHeaders,omitempty" xml:"RequestHeaders,omitempty" type:"Repeated"`
-	// The timeout period for write connections. Unit: seconds. Valid values: 1 to 3600.
+	// The timeout period of write connections. Unit: seconds. Valid values: 1 to 3600.
 	//
 	// example:
 	//
 	// 1
 	WriteTimeout *int32 `json:"WriteTimeout,omitempty" xml:"WriteTimeout,omitempty"`
-	// The method that WAF uses to obtain the originating IP address of a client. Valid values:
+	// The method that is used to obtain the originating IP address of a client. Valid values:
 	//
 	// 	- **0**: No Layer 7 proxies are deployed in front of WAF.
 	//
@@ -32248,11 +34634,11 @@ type ModifyCloudResourceRequestRedirect struct {
 	//
 	// 0
 	XffHeaderMode *int32 `json:"XffHeaderMode,omitempty" xml:"XffHeaderMode,omitempty"`
-	// The custom header field that is used to obtain the originating IP address of a client. Specify the value in the ["header1","header2",...] format.
+	// The custom header fields that are used to obtain the originating IP address of a client. Specify the value in the ["header1","header2",...] format.
 	//
 	// >  This parameter is required only if you set **XffHeaderMode*	- to 2.
 	XffHeaders []*string `json:"XffHeaders,omitempty" xml:"XffHeaders,omitempty" type:"Repeated"`
-	// Specifies whether to use the X-Forward-For-Proto header to identify the protocol used by WAF to forward requests to the origin server. Valid values:
+	// Specifies whether to use the X-Forward-For-Proto header field to pass the protocol used by WAF to forward requests to the origin server. Valid values:
 	//
 	// 	- **true*	- (default)
 	//
@@ -32361,11 +34747,11 @@ type ModifyCloudResourceShrinkRequest struct {
 	//
 	// waf_v3prepaid_public_cn-***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The configurations of the listeners.
+	// The listener configurations.
 	//
 	// This parameter is required.
 	ListenShrink *string `json:"Listen,omitempty" xml:"Listen,omitempty"`
-	// The configurations of the forwarding rule.
+	// The forwarding configurations.
 	RedirectShrink *string `json:"Redirect,omitempty" xml:"Redirect,omitempty"`
 	// The region in which the WAF instance is deployed. Valid values:
 	//
@@ -32873,8 +35259,9 @@ type ModifyDefenseResourceXffRequest struct {
 	// example:
 	//
 	// rg-acfm2kie2****wq
-	ResourceManagerResourceGroupId *string                                           `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	ResponseHeaders                []*ModifyDefenseResourceXffRequestResponseHeaders `json:"ResponseHeaders,omitempty" xml:"ResponseHeaders,omitempty" type:"Repeated"`
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The response header.
+	ResponseHeaders []*ModifyDefenseResourceXffRequestResponseHeaders `json:"ResponseHeaders,omitempty" xml:"ResponseHeaders,omitempty" type:"Repeated"`
 	// Specifies whether a Layer 7 proxy is deployed in front of WAF. Layer 7 proxies include Anti-DDoS Proxy and Alibaba Cloud CDN. Valid values:
 	//
 	// 	- **0**: No Layer 7 proxies are deployed. This is the default value.
@@ -32948,7 +35335,17 @@ func (s *ModifyDefenseResourceXffRequest) SetXffStatus(v int32) *ModifyDefenseRe
 }
 
 type ModifyDefenseResourceXffRequestResponseHeaders struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Specifies the key for a custom response header.
+	//
+	// example:
+	//
+	// Header-Key
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Specifies the value for a custom response header.
+	//
+	// example:
+	//
+	// Header-Value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -34515,11 +36912,11 @@ type ModifyDomainPunishStatusRequest struct {
 	//
 	// waf_v2_public_cn-zxu****0g02
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region in which the WAF instance is deployed. Valid values:
+	// The region of the WAF instance. Valid values:
 	//
 	// 	- **cn-hangzhou**: Chinese mainland.
 	//
-	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **ap-southeast-1**: Outside the Chinese mainland.
 	//
 	// example:
 	//
@@ -34766,11 +37163,11 @@ type ModifyHybridCloudClusterRuleRequest struct {
 	//
 	// waf-cn-n6w***x52m
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region in which the WAF instance is deployed. Valid values:
+	// The region of the WAF instance. Valid value:
 	//
 	// 	- **cn-hangzhou**: Chinese mainland.
 	//
-	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **ap-southeast-1**: Outside the Chinese mainland.
 	//
 	// example:
 	//
@@ -35094,9 +37491,9 @@ type ModifyHybridCloudGroupExpansionServerRequest struct {
 	//
 	// 612929b133e7ff**0d0
 	Mids *string `json:"Mids,omitempty" xml:"Mids,omitempty"`
-	// The region in which the WAF instance is deployed. Valid value:
+	// The region ID of the WAF instance. Valid values:
 	//
-	// 	- **cn-hangzhou**: Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland
 	//
 	// 	- **ap-southeast-1**: outside the Chinese mainland.
 	//
@@ -35236,11 +37633,11 @@ type ModifyHybridCloudGroupShrinkServerRequest struct {
 	//
 	// b1bf3f544f30c1de0b72d91290***bbbb
 	Mids *string `json:"Mids,omitempty" xml:"Mids,omitempty"`
-	// The region in which the WAF instance is deployed. Valid value:
+	// The region of the WAF instance. Valid values:
 	//
 	// 	- **cn-hangzhou**: Chinese mainland.
 	//
-	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **ap-southeast-1**: Outside the Chinese mainland.
 	//
 	// example:
 	//
@@ -35501,11 +37898,11 @@ type ModifyHybridCloudServerRequest struct {
 	//
 	// beijing
 	RegionCode *string `json:"RegionCode,omitempty" xml:"RegionCode,omitempty"`
-	// The region in which the WAF instance is deployed. Valid value:
+	// The region of the WAF instance. Valid values:
 	//
 	// 	- **cn-hangzhou**: Chinese mainland.
 	//
-	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **ap-southeast-1**: Outside the Chinese mainland.
 	//
 	// example:
 	//
@@ -36195,9 +38592,9 @@ func (s *ModifyResourceLogStatusResponse) SetBody(v *ModifyResourceLogStatusResp
 }
 
 type ModifyTemplateResourcesRequest struct {
-	// The protected object groups that you want to associate with the protection rule template. Specify the value of this parameter in the ["group1","group2",...] format.
+	// The protected object groups that you want to associate with the template. Specify the value in the [**"group1","group2",...**] format.
 	BindResourceGroups []*string `json:"BindResourceGroups,omitempty" xml:"BindResourceGroups,omitempty" type:"Repeated"`
-	// The protected objects that you want to associate with the protection rule template. Specify the value of this parameter in the ["XX1","XX2",...] format.
+	// The protected objects that you want to associate with the template. Specify the value in the [**"XX1","XX2",...**] format.
 	BindResources []*string `json:"BindResources,omitempty" xml:"BindResources,omitempty" type:"Repeated"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
@@ -36209,11 +38606,11 @@ type ModifyTemplateResourcesRequest struct {
 	//
 	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region where the WAF instance resides. Valid values:
+	// The region ID of the WAF instance. Valid values:
 	//
-	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland
 	//
-	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
@@ -36233,9 +38630,9 @@ type ModifyTemplateResourcesRequest struct {
 	//
 	// 2291
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The protected object groups that you want to disassociate from the protection rule template. Specify the value of this parameter in the ["group1","group2",...] format.
+	// The protected object groups that you want to disassociate from the template. Specify the value in the [**"group1","group2",...**] format.
 	UnbindResourceGroups []*string `json:"UnbindResourceGroups,omitempty" xml:"UnbindResourceGroups,omitempty" type:"Repeated"`
-	// The protected objects that you want to disassociate from the protection rule template. Specify the value of this parameter in the ["XX1","XX2",...] format.
+	// The protected objects that you want to disassociate from the template. Specify the value in the [**"XX1","XX2",...**] format.
 	UnbindResources []*string `json:"UnbindResources,omitempty" xml:"UnbindResources,omitempty" type:"Repeated"`
 }
 
@@ -36288,7 +38685,7 @@ func (s *ModifyTemplateResourcesRequest) SetUnbindResources(v []*string) *Modify
 }
 
 type ModifyTemplateResourcesResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -36339,9 +38736,9 @@ func (s *ModifyTemplateResourcesResponse) SetBody(v *ModifyTemplateResourcesResp
 }
 
 type ReleaseInstanceRequest struct {
-	// The ID of the Web Application Firewall (WAF) instance.
+	// The ID of the WAF instance.
 	//
-	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	// >  Obtain the ID of the WAF instance by calling the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -36454,18 +38851,16 @@ type SyncProductInstanceRequest struct {
 	//
 	// waf_v3prepaid_public_cn-zsk****fb09
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region in which the WAF instance is deployed. Valid values:
+	// The region of the WAF instance. Valid values:
 	//
 	// 	- **cn-hangzhou**: Chinese mainland.
 	//
-	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **ap-southeast-1**: Outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 阿里云资源组ID。
-	//
 	// example:
 	//
 	// rg-acfm4co****f5qa
@@ -44511,6 +46906,196 @@ func (client *Client) DescribeMemberAccounts(request *DescribeMemberAccountsRequ
 
 // Summary:
 //
+// Retrieves time-series data for all network traffic, including both malicious and legitimate requests.
+//
+// @param tmpReq - DescribeNetworkFlowTimeSeriesMetricRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeNetworkFlowTimeSeriesMetricResponse
+func (client *Client) DescribeNetworkFlowTimeSeriesMetricWithOptions(tmpReq *DescribeNetworkFlowTimeSeriesMetricRequest, runtime *util.RuntimeOptions) (_result *DescribeNetworkFlowTimeSeriesMetricResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DescribeNetworkFlowTimeSeriesMetricShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Filter)) {
+		request.FilterShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Filter, tea.String("Filter"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FilterShrink)) {
+		query["Filter"] = request.FilterShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Metric)) {
+		query["Metric"] = request.Metric
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeNetworkFlowTimeSeriesMetric"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeNetworkFlowTimeSeriesMetricResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeNetworkFlowTimeSeriesMetricResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Retrieves time-series data for all network traffic, including both malicious and legitimate requests.
+//
+// @param request - DescribeNetworkFlowTimeSeriesMetricRequest
+//
+// @return DescribeNetworkFlowTimeSeriesMetricResponse
+func (client *Client) DescribeNetworkFlowTimeSeriesMetric(request *DescribeNetworkFlowTimeSeriesMetricRequest) (_result *DescribeNetworkFlowTimeSeriesMetricResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeNetworkFlowTimeSeriesMetricResponse{}
+	_body, _err := client.DescribeNetworkFlowTimeSeriesMetricWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves top aggregated traffic statistics, sorted by various dimensions, including malicious and legitimate requests.
+//
+// @param tmpReq - DescribeNetworkFlowTopNMetricRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeNetworkFlowTopNMetricResponse
+func (client *Client) DescribeNetworkFlowTopNMetricWithOptions(tmpReq *DescribeNetworkFlowTopNMetricRequest, runtime *util.RuntimeOptions) (_result *DescribeNetworkFlowTopNMetricResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DescribeNetworkFlowTopNMetricShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Filter)) {
+		request.FilterShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Filter, tea.String("Filter"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FilterShrink)) {
+		query["Filter"] = request.FilterShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		query["Limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Metric)) {
+		query["Metric"] = request.Metric
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeNetworkFlowTopNMetric"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeNetworkFlowTopNMetricResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeNetworkFlowTopNMetricResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Retrieves top aggregated traffic statistics, sorted by various dimensions, including malicious and legitimate requests.
+//
+// @param request - DescribeNetworkFlowTopNMetricRequest
+//
+// @return DescribeNetworkFlowTopNMetricResponse
+func (client *Client) DescribeNetworkFlowTopNMetric(request *DescribeNetworkFlowTopNMetricRequest) (_result *DescribeNetworkFlowTopNMetricResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeNetworkFlowTopNMetricResponse{}
+	_body, _err := client.DescribeNetworkFlowTopNMetricWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the protection status of Web Application Firewall (WAF).
 //
 // @param request - DescribePauseProtectionStatusRequest
@@ -45148,7 +47733,7 @@ func (client *Client) DescribeResourcePort(request *DescribeResourcePortRequest)
 
 // Summary:
 //
-// Queries the region IDs of the resources that are added to Web Application Firewall (WAF) in cloud native mode. The resources include Application Load Balancer (ALB) instances, Microservices Engine (MSE) instances, and custom domain names bound to web applications in Function Compute.
+// Queries the region IDs of the resources that are added to Web Application Firewall (WAF) by using the SDK integration mode. The resources refer to Application Load Balancer (ALB) and Microservices Engine (MSE) instances.
 //
 // @param request - DescribeResourceRegionIdRequest
 //
@@ -45209,7 +47794,7 @@ func (client *Client) DescribeResourceRegionIdWithOptions(request *DescribeResou
 
 // Summary:
 //
-// Queries the region IDs of the resources that are added to Web Application Firewall (WAF) in cloud native mode. The resources include Application Load Balancer (ALB) instances, Microservices Engine (MSE) instances, and custom domain names bound to web applications in Function Compute.
+// Queries the region IDs of the resources that are added to Web Application Firewall (WAF) by using the SDK integration mode. The resources refer to Application Load Balancer (ALB) and Microservices Engine (MSE) instances.
 //
 // @param request - DescribeResourceRegionIdRequest
 //
@@ -46057,6 +48642,353 @@ func (client *Client) DescribeRuleHitsTopUrl(request *DescribeRuleHitsTopUrlRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRuleHitsTopUrlResponse{}
 	_body, _err := client.DescribeRuleHitsTopUrlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the logs of attack traffic. Each log records the details of a request that matches protection rules.
+//
+// Description:
+//
+// Attack traffic refers to the traffic of requests that match protection rules and are identified as risky. The following types of requests are excluded:
+//
+//   - Requests that match the protection rules of the whitelist module.
+//
+//   - Requests that match the protection rules of the bot management module. The actions of the protection rules are set to Add Tag.
+//
+//   - Requests that match protection rules with actions set to Dynamic Token-based Authentication, Slider CAPTCHA, Strict Slider CAPTCHA Verification, and JavaScript Validation, pass the verifications specified by the actions, and are allowed.
+//
+// @param tmpReq - DescribeSecurityEventLogsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSecurityEventLogsResponse
+func (client *Client) DescribeSecurityEventLogsWithOptions(tmpReq *DescribeSecurityEventLogsRequest, runtime *util.RuntimeOptions) (_result *DescribeSecurityEventLogsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DescribeSecurityEventLogsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Filter)) {
+		request.FilterShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Filter, tea.String("Filter"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FilterShrink)) {
+		query["Filter"] = request.FilterShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSecurityEventLogs"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeSecurityEventLogsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeSecurityEventLogsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Queries the logs of attack traffic. Each log records the details of a request that matches protection rules.
+//
+// Description:
+//
+// Attack traffic refers to the traffic of requests that match protection rules and are identified as risky. The following types of requests are excluded:
+//
+//   - Requests that match the protection rules of the whitelist module.
+//
+//   - Requests that match the protection rules of the bot management module. The actions of the protection rules are set to Add Tag.
+//
+//   - Requests that match protection rules with actions set to Dynamic Token-based Authentication, Slider CAPTCHA, Strict Slider CAPTCHA Verification, and JavaScript Validation, pass the verifications specified by the actions, and are allowed.
+//
+// @param request - DescribeSecurityEventLogsRequest
+//
+// @return DescribeSecurityEventLogsResponse
+func (client *Client) DescribeSecurityEventLogs(request *DescribeSecurityEventLogsRequest) (_result *DescribeSecurityEventLogsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSecurityEventLogsResponse{}
+	_body, _err := client.DescribeSecurityEventLogsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the time series data of attack traffic. Attack requests refer to requests that match protection rules and are identified as risky.
+//
+// Description:
+//
+// Attack traffic refers to the traffic of requests that match protection rules and are identified as risky. The following types of requests are excluded:
+//
+//   - Requests that match the protection rules of the whitelist module.
+//
+//   - Requests that match the protection rules of the bot management module. The actions of the protection rules are set to Add Tag.
+//
+//   - Requests that match protection rules with actions set to Dynamic Token-based Authentication, Slider CAPTCHA, Strict Slider CAPTCHA Verification, and JavaScript Validation, pass the verifications specified by the actions, and are allowed.
+//
+// @param tmpReq - DescribeSecurityEventTimeSeriesMetricRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSecurityEventTimeSeriesMetricResponse
+func (client *Client) DescribeSecurityEventTimeSeriesMetricWithOptions(tmpReq *DescribeSecurityEventTimeSeriesMetricRequest, runtime *util.RuntimeOptions) (_result *DescribeSecurityEventTimeSeriesMetricResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DescribeSecurityEventTimeSeriesMetricShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Filter)) {
+		request.FilterShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Filter, tea.String("Filter"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FilterShrink)) {
+		query["Filter"] = request.FilterShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Metric)) {
+		query["Metric"] = request.Metric
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSecurityEventTimeSeriesMetric"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeSecurityEventTimeSeriesMetricResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeSecurityEventTimeSeriesMetricResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Queries the time series data of attack traffic. Attack requests refer to requests that match protection rules and are identified as risky.
+//
+// Description:
+//
+// Attack traffic refers to the traffic of requests that match protection rules and are identified as risky. The following types of requests are excluded:
+//
+//   - Requests that match the protection rules of the whitelist module.
+//
+//   - Requests that match the protection rules of the bot management module. The actions of the protection rules are set to Add Tag.
+//
+//   - Requests that match protection rules with actions set to Dynamic Token-based Authentication, Slider CAPTCHA, Strict Slider CAPTCHA Verification, and JavaScript Validation, pass the verifications specified by the actions, and are allowed.
+//
+// @param request - DescribeSecurityEventTimeSeriesMetricRequest
+//
+// @return DescribeSecurityEventTimeSeriesMetricResponse
+func (client *Client) DescribeSecurityEventTimeSeriesMetric(request *DescribeSecurityEventTimeSeriesMetricRequest) (_result *DescribeSecurityEventTimeSeriesMetricResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSecurityEventTimeSeriesMetricResponse{}
+	_body, _err := client.DescribeSecurityEventTimeSeriesMetricWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries top N data entries of attack traffic. The system performs statistical aggregation on attack traffic from specific dimensions and returns top N data entries.
+//
+// Description:
+//
+// Attack traffic refers to the traffic of requests that match protection rules and are identified as risky. The following types of requests are excluded:
+//
+//   - Requests that match the protection rules of the whitelist module.
+//
+//   - Requests that match the protection rules of the bot management module. The actions of the protection rules are set to Add Tag.
+//
+//   - Requests that match protection rules with actions set to Dynamic Token-based Authentication, Slider CAPTCHA, Strict Slider CAPTCHA Verification, and JavaScript Validation, pass the verifications specified by the actions, and are allowed.
+//
+// @param tmpReq - DescribeSecurityEventTopNMetricRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSecurityEventTopNMetricResponse
+func (client *Client) DescribeSecurityEventTopNMetricWithOptions(tmpReq *DescribeSecurityEventTopNMetricRequest, runtime *util.RuntimeOptions) (_result *DescribeSecurityEventTopNMetricResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DescribeSecurityEventTopNMetricShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Filter)) {
+		request.FilterShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Filter, tea.String("Filter"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FilterShrink)) {
+		query["Filter"] = request.FilterShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		query["Limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Metric)) {
+		query["Metric"] = request.Metric
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSecurityEventTopNMetric"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeSecurityEventTopNMetricResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeSecurityEventTopNMetricResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Queries top N data entries of attack traffic. The system performs statistical aggregation on attack traffic from specific dimensions and returns top N data entries.
+//
+// Description:
+//
+// Attack traffic refers to the traffic of requests that match protection rules and are identified as risky. The following types of requests are excluded:
+//
+//   - Requests that match the protection rules of the whitelist module.
+//
+//   - Requests that match the protection rules of the bot management module. The actions of the protection rules are set to Add Tag.
+//
+//   - Requests that match protection rules with actions set to Dynamic Token-based Authentication, Slider CAPTCHA, Strict Slider CAPTCHA Verification, and JavaScript Validation, pass the verifications specified by the actions, and are allowed.
+//
+// @param request - DescribeSecurityEventTopNMetricRequest
+//
+// @return DescribeSecurityEventTopNMetricResponse
+func (client *Client) DescribeSecurityEventTopNMetric(request *DescribeSecurityEventTopNMetricRequest) (_result *DescribeSecurityEventTopNMetricResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSecurityEventTopNMetricResponse{}
+	_body, _err := client.DescribeSecurityEventTopNMetricWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
