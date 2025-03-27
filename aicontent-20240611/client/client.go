@@ -5156,6 +5156,198 @@ func (s *ExecuteTextbookAssistantRetryConversationResponse) SetBody(v *ExecuteTe
 	return s
 }
 
+type ExecuteTextbookAssistantSseDialogueRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// tc_e6dc70c890866f4028ca685b6fa29874
+	AuthToken *string `json:"authToken,omitempty" xml:"authToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 67e374acb54c526c95c4fbd4
+	ChatId *string `json:"chatId,omitempty" xml:"chatId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// EXPAND
+	Scenario *string `json:"scenario,omitempty" xml:"scenario,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hello
+	UserMessage *string `json:"userMessage,omitempty" xml:"userMessage,omitempty"`
+}
+
+func (s ExecuteTextbookAssistantSseDialogueRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteTextbookAssistantSseDialogueRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteTextbookAssistantSseDialogueRequest) SetAuthToken(v string) *ExecuteTextbookAssistantSseDialogueRequest {
+	s.AuthToken = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantSseDialogueRequest) SetChatId(v string) *ExecuteTextbookAssistantSseDialogueRequest {
+	s.ChatId = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantSseDialogueRequest) SetScenario(v string) *ExecuteTextbookAssistantSseDialogueRequest {
+	s.Scenario = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantSseDialogueRequest) SetUserMessage(v string) *ExecuteTextbookAssistantSseDialogueRequest {
+	s.UserMessage = &v
+	return s
+}
+
+type ExecuteTextbookAssistantSseDialogueResponseBody struct {
+	// example:
+	//
+	// 67e4c9d95bdfc83cd742ae7c
+	Assistant *string `json:"assistant,omitempty" xml:"assistant,omitempty"`
+	// example:
+	//
+	// 67e374acb54c526c95c4fbd4
+	ChatId *string                                              `json:"chatId,omitempty" xml:"chatId,omitempty"`
+	Data   *ExecuteTextbookAssistantSseDialogueResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// BIZ_ERROR
+	ErrCode    *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// xxxx-xxxx-xxxx-xxxxxxxx
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 67e4c9d6b54c526c95c53925
+	User *string `json:"user,omitempty" xml:"user,omitempty"`
+}
+
+func (s ExecuteTextbookAssistantSseDialogueResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteTextbookAssistantSseDialogueResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteTextbookAssistantSseDialogueResponseBody) SetAssistant(v string) *ExecuteTextbookAssistantSseDialogueResponseBody {
+	s.Assistant = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantSseDialogueResponseBody) SetChatId(v string) *ExecuteTextbookAssistantSseDialogueResponseBody {
+	s.ChatId = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantSseDialogueResponseBody) SetData(v *ExecuteTextbookAssistantSseDialogueResponseBodyData) *ExecuteTextbookAssistantSseDialogueResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantSseDialogueResponseBody) SetErrCode(v string) *ExecuteTextbookAssistantSseDialogueResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantSseDialogueResponseBody) SetErrMessage(v string) *ExecuteTextbookAssistantSseDialogueResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantSseDialogueResponseBody) SetRequestId(v string) *ExecuteTextbookAssistantSseDialogueResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantSseDialogueResponseBody) SetSuccess(v bool) *ExecuteTextbookAssistantSseDialogueResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantSseDialogueResponseBody) SetUser(v string) *ExecuteTextbookAssistantSseDialogueResponseBody {
+	s.User = &v
+	return s
+}
+
+type ExecuteTextbookAssistantSseDialogueResponseBodyData struct {
+	// example:
+	//
+	// Thanks, Lily. Do you like meat, Lily?
+	EnglishResult *string `json:"englishResult,omitempty" xml:"englishResult,omitempty"`
+	// example:
+	//
+	// true
+	IsFinish *bool `json:"isFinish,omitempty" xml:"isFinish,omitempty"`
+}
+
+func (s ExecuteTextbookAssistantSseDialogueResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteTextbookAssistantSseDialogueResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteTextbookAssistantSseDialogueResponseBodyData) SetEnglishResult(v string) *ExecuteTextbookAssistantSseDialogueResponseBodyData {
+	s.EnglishResult = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantSseDialogueResponseBodyData) SetIsFinish(v bool) *ExecuteTextbookAssistantSseDialogueResponseBodyData {
+	s.IsFinish = &v
+	return s
+}
+
+type ExecuteTextbookAssistantSseDialogueResponse struct {
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExecuteTextbookAssistantSseDialogueResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ExecuteTextbookAssistantSseDialogueResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteTextbookAssistantSseDialogueResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteTextbookAssistantSseDialogueResponse) SetHeaders(v map[string]*string) *ExecuteTextbookAssistantSseDialogueResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantSseDialogueResponse) SetStatusCode(v int32) *ExecuteTextbookAssistantSseDialogueResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ExecuteTextbookAssistantSseDialogueResponse) SetBody(v *ExecuteTextbookAssistantSseDialogueResponseBody) *ExecuteTextbookAssistantSseDialogueResponse {
+	s.Body = v
+	return s
+}
+
 type ExecuteTextbookAssistantStartConversationRequest struct {
 	// This parameter is required.
 	//
@@ -6525,6 +6717,396 @@ func (s *GetTextbookAssistantTokenResponse) SetBody(v *GetTextbookAssistantToken
 	return s
 }
 
+type ListTextbookAssistantArticleDetailsRequest struct {
+	ArticleIdList []*string `json:"articleIdList,omitempty" xml:"articleIdList,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// tc_e6dc70c890866f4028ca685b6fa29874
+	AuthToken *string `json:"authToken,omitempty" xml:"authToken,omitempty"`
+}
+
+func (s ListTextbookAssistantArticleDetailsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTextbookAssistantArticleDetailsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTextbookAssistantArticleDetailsRequest) SetArticleIdList(v []*string) *ListTextbookAssistantArticleDetailsRequest {
+	s.ArticleIdList = v
+	return s
+}
+
+func (s *ListTextbookAssistantArticleDetailsRequest) SetAuthToken(v string) *ListTextbookAssistantArticleDetailsRequest {
+	s.AuthToken = &v
+	return s
+}
+
+type ListTextbookAssistantArticleDetailsResponseBody struct {
+	Data []*ListTextbookAssistantArticleDetailsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// UNKNOWN_ERROR
+	ErrCode    *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// xxxx-xxxx-xxxx-xxxxxxxx
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ListTextbookAssistantArticleDetailsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTextbookAssistantArticleDetailsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTextbookAssistantArticleDetailsResponseBody) SetData(v []*ListTextbookAssistantArticleDetailsResponseBodyData) *ListTextbookAssistantArticleDetailsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListTextbookAssistantArticleDetailsResponseBody) SetErrCode(v string) *ListTextbookAssistantArticleDetailsResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *ListTextbookAssistantArticleDetailsResponseBody) SetErrMessage(v string) *ListTextbookAssistantArticleDetailsResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *ListTextbookAssistantArticleDetailsResponseBody) SetHttpStatusCode(v int32) *ListTextbookAssistantArticleDetailsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListTextbookAssistantArticleDetailsResponseBody) SetRequestId(v string) *ListTextbookAssistantArticleDetailsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTextbookAssistantArticleDetailsResponseBody) SetSuccess(v bool) *ListTextbookAssistantArticleDetailsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListTextbookAssistantArticleDetailsResponseBodyData struct {
+	// example:
+	//
+	// 0c05700d4d9411efbe6e0c42a106bb02
+	ArticleId    *string                                                            `json:"articleId,omitempty" xml:"articleId,omitempty"`
+	QuestionList []*ListTextbookAssistantArticleDetailsResponseBodyDataQuestionList `json:"questionList,omitempty" xml:"questionList,omitempty" type:"Repeated"`
+	SceneList    []*ListTextbookAssistantArticleDetailsResponseBodyDataSceneList    `json:"sceneList,omitempty" xml:"sceneList,omitempty" type:"Repeated"`
+	SentenceList []*ListTextbookAssistantArticleDetailsResponseBodyDataSentenceList `json:"sentenceList,omitempty" xml:"sentenceList,omitempty" type:"Repeated"`
+	Target       *string                                                            `json:"target,omitempty" xml:"target,omitempty"`
+	Theme        *ListTextbookAssistantArticleDetailsResponseBodyDataTheme          `json:"theme,omitempty" xml:"theme,omitempty" type:"Struct"`
+	Topic        *ListTextbookAssistantArticleDetailsResponseBodyDataTopic          `json:"topic,omitempty" xml:"topic,omitempty" type:"Struct"`
+	WordList     []*ListTextbookAssistantArticleDetailsResponseBodyDataWordList     `json:"wordList,omitempty" xml:"wordList,omitempty" type:"Repeated"`
+}
+
+func (s ListTextbookAssistantArticleDetailsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTextbookAssistantArticleDetailsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListTextbookAssistantArticleDetailsResponseBodyData) SetArticleId(v string) *ListTextbookAssistantArticleDetailsResponseBodyData {
+	s.ArticleId = &v
+	return s
+}
+
+func (s *ListTextbookAssistantArticleDetailsResponseBodyData) SetQuestionList(v []*ListTextbookAssistantArticleDetailsResponseBodyDataQuestionList) *ListTextbookAssistantArticleDetailsResponseBodyData {
+	s.QuestionList = v
+	return s
+}
+
+func (s *ListTextbookAssistantArticleDetailsResponseBodyData) SetSceneList(v []*ListTextbookAssistantArticleDetailsResponseBodyDataSceneList) *ListTextbookAssistantArticleDetailsResponseBodyData {
+	s.SceneList = v
+	return s
+}
+
+func (s *ListTextbookAssistantArticleDetailsResponseBodyData) SetSentenceList(v []*ListTextbookAssistantArticleDetailsResponseBodyDataSentenceList) *ListTextbookAssistantArticleDetailsResponseBodyData {
+	s.SentenceList = v
+	return s
+}
+
+func (s *ListTextbookAssistantArticleDetailsResponseBodyData) SetTarget(v string) *ListTextbookAssistantArticleDetailsResponseBodyData {
+	s.Target = &v
+	return s
+}
+
+func (s *ListTextbookAssistantArticleDetailsResponseBodyData) SetTheme(v *ListTextbookAssistantArticleDetailsResponseBodyDataTheme) *ListTextbookAssistantArticleDetailsResponseBodyData {
+	s.Theme = v
+	return s
+}
+
+func (s *ListTextbookAssistantArticleDetailsResponseBodyData) SetTopic(v *ListTextbookAssistantArticleDetailsResponseBodyDataTopic) *ListTextbookAssistantArticleDetailsResponseBodyData {
+	s.Topic = v
+	return s
+}
+
+func (s *ListTextbookAssistantArticleDetailsResponseBodyData) SetWordList(v []*ListTextbookAssistantArticleDetailsResponseBodyDataWordList) *ListTextbookAssistantArticleDetailsResponseBodyData {
+	s.WordList = v
+	return s
+}
+
+type ListTextbookAssistantArticleDetailsResponseBodyDataQuestionList struct {
+	// example:
+	//
+	// I\\"m Mike Black
+	Answer *string `json:"answer,omitempty" xml:"answer,omitempty"`
+	// example:
+	//
+	// From the book, how does Mike Black introduce himself?
+	Question          *string `json:"question,omitempty" xml:"question,omitempty"`
+	QuestionTranslate *string `json:"questionTranslate,omitempty" xml:"questionTranslate,omitempty"`
+}
+
+func (s ListTextbookAssistantArticleDetailsResponseBodyDataQuestionList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTextbookAssistantArticleDetailsResponseBodyDataQuestionList) GoString() string {
+	return s.String()
+}
+
+func (s *ListTextbookAssistantArticleDetailsResponseBodyDataQuestionList) SetAnswer(v string) *ListTextbookAssistantArticleDetailsResponseBodyDataQuestionList {
+	s.Answer = &v
+	return s
+}
+
+func (s *ListTextbookAssistantArticleDetailsResponseBodyDataQuestionList) SetQuestion(v string) *ListTextbookAssistantArticleDetailsResponseBodyDataQuestionList {
+	s.Question = &v
+	return s
+}
+
+func (s *ListTextbookAssistantArticleDetailsResponseBodyDataQuestionList) SetQuestionTranslate(v string) *ListTextbookAssistantArticleDetailsResponseBodyDataQuestionList {
+	s.QuestionTranslate = &v
+	return s
+}
+
+type ListTextbookAssistantArticleDetailsResponseBodyDataSceneList struct {
+	// example:
+	//
+	// In the park, you introduce yourself to John and ask his name.
+	Scene *string `json:"scene,omitempty" xml:"scene,omitempty"`
+	// example:
+	//
+	// 38cddd70509911efbe6e0c42a106bb02
+	SceneId        *string   `json:"sceneId,omitempty" xml:"sceneId,omitempty"`
+	SceneImageList []*string `json:"sceneImageList,omitempty" xml:"sceneImageList,omitempty" type:"Repeated"`
+	SceneTransLate *string   `json:"sceneTransLate,omitempty" xml:"sceneTransLate,omitempty"`
+}
+
+func (s ListTextbookAssistantArticleDetailsResponseBodyDataSceneList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTextbookAssistantArticleDetailsResponseBodyDataSceneList) GoString() string {
+	return s.String()
+}
+
+func (s *ListTextbookAssistantArticleDetailsResponseBodyDataSceneList) SetScene(v string) *ListTextbookAssistantArticleDetailsResponseBodyDataSceneList {
+	s.Scene = &v
+	return s
+}
+
+func (s *ListTextbookAssistantArticleDetailsResponseBodyDataSceneList) SetSceneId(v string) *ListTextbookAssistantArticleDetailsResponseBodyDataSceneList {
+	s.SceneId = &v
+	return s
+}
+
+func (s *ListTextbookAssistantArticleDetailsResponseBodyDataSceneList) SetSceneImageList(v []*string) *ListTextbookAssistantArticleDetailsResponseBodyDataSceneList {
+	s.SceneImageList = v
+	return s
+}
+
+func (s *ListTextbookAssistantArticleDetailsResponseBodyDataSceneList) SetSceneTransLate(v string) *ListTextbookAssistantArticleDetailsResponseBodyDataSceneList {
+	s.SceneTransLate = &v
+	return s
+}
+
+type ListTextbookAssistantArticleDetailsResponseBodyDataSentenceList struct {
+	SentenceAnalysis *string `json:"sentenceAnalysis,omitempty" xml:"sentenceAnalysis,omitempty"`
+	// example:
+	//
+	// 4de677d2509811efbe6e0c42a106bb02
+	SentenceId *string `json:"sentenceId,omitempty" xml:"sentenceId,omitempty"`
+	// example:
+	//
+	// I\\"m Mike Black
+	SentenceText *string `json:"sentenceText,omitempty" xml:"sentenceText,omitempty"`
+}
+
+func (s ListTextbookAssistantArticleDetailsResponseBodyDataSentenceList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTextbookAssistantArticleDetailsResponseBodyDataSentenceList) GoString() string {
+	return s.String()
+}
+
+func (s *ListTextbookAssistantArticleDetailsResponseBodyDataSentenceList) SetSentenceAnalysis(v string) *ListTextbookAssistantArticleDetailsResponseBodyDataSentenceList {
+	s.SentenceAnalysis = &v
+	return s
+}
+
+func (s *ListTextbookAssistantArticleDetailsResponseBodyDataSentenceList) SetSentenceId(v string) *ListTextbookAssistantArticleDetailsResponseBodyDataSentenceList {
+	s.SentenceId = &v
+	return s
+}
+
+func (s *ListTextbookAssistantArticleDetailsResponseBodyDataSentenceList) SetSentenceText(v string) *ListTextbookAssistantArticleDetailsResponseBodyDataSentenceList {
+	s.SentenceText = &v
+	return s
+}
+
+type ListTextbookAssistantArticleDetailsResponseBodyDataTheme struct {
+	ThemeImageList []*string `json:"themeImageList,omitempty" xml:"themeImageList,omitempty" type:"Repeated"`
+	ThemeName      *string   `json:"themeName,omitempty" xml:"themeName,omitempty"`
+	// example:
+	//
+	// Self-awareness, self-management, self-improvement
+	ThemeTranslate *string `json:"themeTranslate,omitempty" xml:"themeTranslate,omitempty"`
+}
+
+func (s ListTextbookAssistantArticleDetailsResponseBodyDataTheme) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTextbookAssistantArticleDetailsResponseBodyDataTheme) GoString() string {
+	return s.String()
+}
+
+func (s *ListTextbookAssistantArticleDetailsResponseBodyDataTheme) SetThemeImageList(v []*string) *ListTextbookAssistantArticleDetailsResponseBodyDataTheme {
+	s.ThemeImageList = v
+	return s
+}
+
+func (s *ListTextbookAssistantArticleDetailsResponseBodyDataTheme) SetThemeName(v string) *ListTextbookAssistantArticleDetailsResponseBodyDataTheme {
+	s.ThemeName = &v
+	return s
+}
+
+func (s *ListTextbookAssistantArticleDetailsResponseBodyDataTheme) SetThemeTranslate(v string) *ListTextbookAssistantArticleDetailsResponseBodyDataTheme {
+	s.ThemeTranslate = &v
+	return s
+}
+
+type ListTextbookAssistantArticleDetailsResponseBodyDataTopic struct {
+	TopicImageList []*string `json:"topicImageList,omitempty" xml:"topicImageList,omitempty" type:"Repeated"`
+	TopicName      *string   `json:"topicName,omitempty" xml:"topicName,omitempty"`
+	// example:
+	//
+	// Greetings and self-introduction
+	TopicTranslate *string `json:"topicTranslate,omitempty" xml:"topicTranslate,omitempty"`
+}
+
+func (s ListTextbookAssistantArticleDetailsResponseBodyDataTopic) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTextbookAssistantArticleDetailsResponseBodyDataTopic) GoString() string {
+	return s.String()
+}
+
+func (s *ListTextbookAssistantArticleDetailsResponseBodyDataTopic) SetTopicImageList(v []*string) *ListTextbookAssistantArticleDetailsResponseBodyDataTopic {
+	s.TopicImageList = v
+	return s
+}
+
+func (s *ListTextbookAssistantArticleDetailsResponseBodyDataTopic) SetTopicName(v string) *ListTextbookAssistantArticleDetailsResponseBodyDataTopic {
+	s.TopicName = &v
+	return s
+}
+
+func (s *ListTextbookAssistantArticleDetailsResponseBodyDataTopic) SetTopicTranslate(v string) *ListTextbookAssistantArticleDetailsResponseBodyDataTopic {
+	s.TopicTranslate = &v
+	return s
+}
+
+type ListTextbookAssistantArticleDetailsResponseBodyDataWordList struct {
+	WordAnalysis *string `json:"wordAnalysis,omitempty" xml:"wordAnalysis,omitempty"`
+	// example:
+	//
+	// a94df134ed8c11eebe6e0c42a106bb02
+	WordId *string `json:"wordId,omitempty" xml:"wordId,omitempty"`
+	// example:
+	//
+	// nice
+	WordText *string `json:"wordText,omitempty" xml:"wordText,omitempty"`
+}
+
+func (s ListTextbookAssistantArticleDetailsResponseBodyDataWordList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTextbookAssistantArticleDetailsResponseBodyDataWordList) GoString() string {
+	return s.String()
+}
+
+func (s *ListTextbookAssistantArticleDetailsResponseBodyDataWordList) SetWordAnalysis(v string) *ListTextbookAssistantArticleDetailsResponseBodyDataWordList {
+	s.WordAnalysis = &v
+	return s
+}
+
+func (s *ListTextbookAssistantArticleDetailsResponseBodyDataWordList) SetWordId(v string) *ListTextbookAssistantArticleDetailsResponseBodyDataWordList {
+	s.WordId = &v
+	return s
+}
+
+func (s *ListTextbookAssistantArticleDetailsResponseBodyDataWordList) SetWordText(v string) *ListTextbookAssistantArticleDetailsResponseBodyDataWordList {
+	s.WordText = &v
+	return s
+}
+
+type ListTextbookAssistantArticleDetailsResponse struct {
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTextbookAssistantArticleDetailsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListTextbookAssistantArticleDetailsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTextbookAssistantArticleDetailsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTextbookAssistantArticleDetailsResponse) SetHeaders(v map[string]*string) *ListTextbookAssistantArticleDetailsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTextbookAssistantArticleDetailsResponse) SetStatusCode(v int32) *ListTextbookAssistantArticleDetailsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTextbookAssistantArticleDetailsResponse) SetBody(v *ListTextbookAssistantArticleDetailsResponseBody) *ListTextbookAssistantArticleDetailsResponse {
+	s.Body = v
+	return s
+}
+
 type ListTextbookAssistantArticlesRequest struct {
 	// This parameter is required.
 	//
@@ -7481,6 +8063,430 @@ func (s *ListTextbookAssistantGradeVolumesResponse) SetStatusCode(v int32) *List
 }
 
 func (s *ListTextbookAssistantGradeVolumesResponse) SetBody(v *ListTextbookAssistantGradeVolumesResponseBody) *ListTextbookAssistantGradeVolumesResponse {
+	s.Body = v
+	return s
+}
+
+type ListTextbookAssistantSceneDetailsRequest struct {
+	// example:
+	//
+	// tc_e6dc70c890866f4028ca685b6fa29874
+	AuthToken   *string   `json:"authToken,omitempty" xml:"authToken,omitempty"`
+	SceneIdList []*string `json:"sceneIdList,omitempty" xml:"sceneIdList,omitempty" type:"Repeated"`
+}
+
+func (s ListTextbookAssistantSceneDetailsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTextbookAssistantSceneDetailsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTextbookAssistantSceneDetailsRequest) SetAuthToken(v string) *ListTextbookAssistantSceneDetailsRequest {
+	s.AuthToken = &v
+	return s
+}
+
+func (s *ListTextbookAssistantSceneDetailsRequest) SetSceneIdList(v []*string) *ListTextbookAssistantSceneDetailsRequest {
+	s.SceneIdList = v
+	return s
+}
+
+type ListTextbookAssistantSceneDetailsResponseBody struct {
+	Data []*ListTextbookAssistantSceneDetailsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// UNKNOWN_ERROR
+	ErrCode    *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// xxxx-xxxx-xxxx-xxxxxxxx
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ListTextbookAssistantSceneDetailsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTextbookAssistantSceneDetailsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTextbookAssistantSceneDetailsResponseBody) SetData(v []*ListTextbookAssistantSceneDetailsResponseBodyData) *ListTextbookAssistantSceneDetailsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListTextbookAssistantSceneDetailsResponseBody) SetErrCode(v string) *ListTextbookAssistantSceneDetailsResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *ListTextbookAssistantSceneDetailsResponseBody) SetErrMessage(v string) *ListTextbookAssistantSceneDetailsResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *ListTextbookAssistantSceneDetailsResponseBody) SetHttpStatusCode(v int32) *ListTextbookAssistantSceneDetailsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListTextbookAssistantSceneDetailsResponseBody) SetRequestId(v string) *ListTextbookAssistantSceneDetailsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTextbookAssistantSceneDetailsResponseBody) SetSuccess(v bool) *ListTextbookAssistantSceneDetailsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListTextbookAssistantSceneDetailsResponseBodyData struct {
+	RoleList []*ListTextbookAssistantSceneDetailsResponseBodyDataRoleList `json:"roleList,omitempty" xml:"roleList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// At school, Carl sees a photo and asks you about your family.
+	Scene *string `json:"scene,omitempty" xml:"scene,omitempty"`
+	// example:
+	//
+	// 38c41b7b509911efbe6e0c42a106bb02
+	SceneId        *string                                                           `json:"sceneId,omitempty" xml:"sceneId,omitempty"`
+	SceneImageList []*string                                                         `json:"sceneImageList,omitempty" xml:"sceneImageList,omitempty" type:"Repeated"`
+	SceneTaskList  []*ListTextbookAssistantSceneDetailsResponseBodyDataSceneTaskList `json:"sceneTaskList,omitempty" xml:"sceneTaskList,omitempty" type:"Repeated"`
+	SentenceList   []*ListTextbookAssistantSceneDetailsResponseBodyDataSentenceList  `json:"sentenceList,omitempty" xml:"sentenceList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ""
+	Target   *string                                                      `json:"target,omitempty" xml:"target,omitempty"`
+	Theme    *ListTextbookAssistantSceneDetailsResponseBodyDataTheme      `json:"theme,omitempty" xml:"theme,omitempty" type:"Struct"`
+	Topic    *ListTextbookAssistantSceneDetailsResponseBodyDataTopic      `json:"topic,omitempty" xml:"topic,omitempty" type:"Struct"`
+	WordList []*ListTextbookAssistantSceneDetailsResponseBodyDataWordList `json:"wordList,omitempty" xml:"wordList,omitempty" type:"Repeated"`
+}
+
+func (s ListTextbookAssistantSceneDetailsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTextbookAssistantSceneDetailsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListTextbookAssistantSceneDetailsResponseBodyData) SetRoleList(v []*ListTextbookAssistantSceneDetailsResponseBodyDataRoleList) *ListTextbookAssistantSceneDetailsResponseBodyData {
+	s.RoleList = v
+	return s
+}
+
+func (s *ListTextbookAssistantSceneDetailsResponseBodyData) SetScene(v string) *ListTextbookAssistantSceneDetailsResponseBodyData {
+	s.Scene = &v
+	return s
+}
+
+func (s *ListTextbookAssistantSceneDetailsResponseBodyData) SetSceneId(v string) *ListTextbookAssistantSceneDetailsResponseBodyData {
+	s.SceneId = &v
+	return s
+}
+
+func (s *ListTextbookAssistantSceneDetailsResponseBodyData) SetSceneImageList(v []*string) *ListTextbookAssistantSceneDetailsResponseBodyData {
+	s.SceneImageList = v
+	return s
+}
+
+func (s *ListTextbookAssistantSceneDetailsResponseBodyData) SetSceneTaskList(v []*ListTextbookAssistantSceneDetailsResponseBodyDataSceneTaskList) *ListTextbookAssistantSceneDetailsResponseBodyData {
+	s.SceneTaskList = v
+	return s
+}
+
+func (s *ListTextbookAssistantSceneDetailsResponseBodyData) SetSentenceList(v []*ListTextbookAssistantSceneDetailsResponseBodyDataSentenceList) *ListTextbookAssistantSceneDetailsResponseBodyData {
+	s.SentenceList = v
+	return s
+}
+
+func (s *ListTextbookAssistantSceneDetailsResponseBodyData) SetTarget(v string) *ListTextbookAssistantSceneDetailsResponseBodyData {
+	s.Target = &v
+	return s
+}
+
+func (s *ListTextbookAssistantSceneDetailsResponseBodyData) SetTheme(v *ListTextbookAssistantSceneDetailsResponseBodyDataTheme) *ListTextbookAssistantSceneDetailsResponseBodyData {
+	s.Theme = v
+	return s
+}
+
+func (s *ListTextbookAssistantSceneDetailsResponseBodyData) SetTopic(v *ListTextbookAssistantSceneDetailsResponseBodyDataTopic) *ListTextbookAssistantSceneDetailsResponseBodyData {
+	s.Topic = v
+	return s
+}
+
+func (s *ListTextbookAssistantSceneDetailsResponseBodyData) SetWordList(v []*ListTextbookAssistantSceneDetailsResponseBodyDataWordList) *ListTextbookAssistantSceneDetailsResponseBodyData {
+	s.WordList = v
+	return s
+}
+
+type ListTextbookAssistantSceneDetailsResponseBodyDataRoleList struct {
+	// example:
+	//
+	// Carl, a curious boy
+	Introduction          *string `json:"introduction,omitempty" xml:"introduction,omitempty"`
+	IntroductionTranslate *string `json:"introductionTranslate,omitempty" xml:"introductionTranslate,omitempty"`
+	// example:
+	//
+	// Hi Noah, who is that in the photo?
+	Promoting          *string `json:"promoting,omitempty" xml:"promoting,omitempty"`
+	PromotingTranslate *string `json:"promotingTranslate,omitempty" xml:"promotingTranslate,omitempty"`
+	// example:
+	//
+	// Carl
+	RoleName *string `json:"roleName,omitempty" xml:"roleName,omitempty"`
+	// example:
+	//
+	// Carl
+	RoleNameTranslate *string `json:"roleNameTranslate,omitempty" xml:"roleNameTranslate,omitempty"`
+	// example:
+	//
+	// 0
+	RoleType *string `json:"roleType,omitempty" xml:"roleType,omitempty"`
+}
+
+func (s ListTextbookAssistantSceneDetailsResponseBodyDataRoleList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTextbookAssistantSceneDetailsResponseBodyDataRoleList) GoString() string {
+	return s.String()
+}
+
+func (s *ListTextbookAssistantSceneDetailsResponseBodyDataRoleList) SetIntroduction(v string) *ListTextbookAssistantSceneDetailsResponseBodyDataRoleList {
+	s.Introduction = &v
+	return s
+}
+
+func (s *ListTextbookAssistantSceneDetailsResponseBodyDataRoleList) SetIntroductionTranslate(v string) *ListTextbookAssistantSceneDetailsResponseBodyDataRoleList {
+	s.IntroductionTranslate = &v
+	return s
+}
+
+func (s *ListTextbookAssistantSceneDetailsResponseBodyDataRoleList) SetPromoting(v string) *ListTextbookAssistantSceneDetailsResponseBodyDataRoleList {
+	s.Promoting = &v
+	return s
+}
+
+func (s *ListTextbookAssistantSceneDetailsResponseBodyDataRoleList) SetPromotingTranslate(v string) *ListTextbookAssistantSceneDetailsResponseBodyDataRoleList {
+	s.PromotingTranslate = &v
+	return s
+}
+
+func (s *ListTextbookAssistantSceneDetailsResponseBodyDataRoleList) SetRoleName(v string) *ListTextbookAssistantSceneDetailsResponseBodyDataRoleList {
+	s.RoleName = &v
+	return s
+}
+
+func (s *ListTextbookAssistantSceneDetailsResponseBodyDataRoleList) SetRoleNameTranslate(v string) *ListTextbookAssistantSceneDetailsResponseBodyDataRoleList {
+	s.RoleNameTranslate = &v
+	return s
+}
+
+func (s *ListTextbookAssistantSceneDetailsResponseBodyDataRoleList) SetRoleType(v string) *ListTextbookAssistantSceneDetailsResponseBodyDataRoleList {
+	s.RoleType = &v
+	return s
+}
+
+type ListTextbookAssistantSceneDetailsResponseBodyDataSceneTaskList struct {
+	// example:
+	//
+	// Say that this is your dad\\"s brother.
+	SceneTask          *string `json:"sceneTask,omitempty" xml:"sceneTask,omitempty"`
+	SceneTaskTranslate *string `json:"sceneTaskTranslate,omitempty" xml:"sceneTaskTranslate,omitempty"`
+}
+
+func (s ListTextbookAssistantSceneDetailsResponseBodyDataSceneTaskList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTextbookAssistantSceneDetailsResponseBodyDataSceneTaskList) GoString() string {
+	return s.String()
+}
+
+func (s *ListTextbookAssistantSceneDetailsResponseBodyDataSceneTaskList) SetSceneTask(v string) *ListTextbookAssistantSceneDetailsResponseBodyDataSceneTaskList {
+	s.SceneTask = &v
+	return s
+}
+
+func (s *ListTextbookAssistantSceneDetailsResponseBodyDataSceneTaskList) SetSceneTaskTranslate(v string) *ListTextbookAssistantSceneDetailsResponseBodyDataSceneTaskList {
+	s.SceneTaskTranslate = &v
+	return s
+}
+
+type ListTextbookAssistantSceneDetailsResponseBodyDataSentenceList struct {
+	SentenceAnalysis *string `json:"sentenceAnalysis,omitempty" xml:"sentenceAnalysis,omitempty"`
+	// example:
+	//
+	// a774c6d09c4511eebe6e0c42a106bb02
+	SentenceId *string `json:"sentenceId,omitempty" xml:"sentenceId,omitempty"`
+	// example:
+	//
+	// Is this your sister?
+	SentenceText *string `json:"sentenceText,omitempty" xml:"sentenceText,omitempty"`
+}
+
+func (s ListTextbookAssistantSceneDetailsResponseBodyDataSentenceList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTextbookAssistantSceneDetailsResponseBodyDataSentenceList) GoString() string {
+	return s.String()
+}
+
+func (s *ListTextbookAssistantSceneDetailsResponseBodyDataSentenceList) SetSentenceAnalysis(v string) *ListTextbookAssistantSceneDetailsResponseBodyDataSentenceList {
+	s.SentenceAnalysis = &v
+	return s
+}
+
+func (s *ListTextbookAssistantSceneDetailsResponseBodyDataSentenceList) SetSentenceId(v string) *ListTextbookAssistantSceneDetailsResponseBodyDataSentenceList {
+	s.SentenceId = &v
+	return s
+}
+
+func (s *ListTextbookAssistantSceneDetailsResponseBodyDataSentenceList) SetSentenceText(v string) *ListTextbookAssistantSceneDetailsResponseBodyDataSentenceList {
+	s.SentenceText = &v
+	return s
+}
+
+type ListTextbookAssistantSceneDetailsResponseBodyDataTheme struct {
+	ThemeImageList []*string `json:"themeImageList,omitempty" xml:"themeImageList,omitempty" type:"Repeated"`
+	ThemeName      *string   `json:"themeName,omitempty" xml:"themeName,omitempty"`
+	// example:
+	//
+	// Family and family life
+	ThemeTranslate *string `json:"themeTranslate,omitempty" xml:"themeTranslate,omitempty"`
+}
+
+func (s ListTextbookAssistantSceneDetailsResponseBodyDataTheme) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTextbookAssistantSceneDetailsResponseBodyDataTheme) GoString() string {
+	return s.String()
+}
+
+func (s *ListTextbookAssistantSceneDetailsResponseBodyDataTheme) SetThemeImageList(v []*string) *ListTextbookAssistantSceneDetailsResponseBodyDataTheme {
+	s.ThemeImageList = v
+	return s
+}
+
+func (s *ListTextbookAssistantSceneDetailsResponseBodyDataTheme) SetThemeName(v string) *ListTextbookAssistantSceneDetailsResponseBodyDataTheme {
+	s.ThemeName = &v
+	return s
+}
+
+func (s *ListTextbookAssistantSceneDetailsResponseBodyDataTheme) SetThemeTranslate(v string) *ListTextbookAssistantSceneDetailsResponseBodyDataTheme {
+	s.ThemeTranslate = &v
+	return s
+}
+
+type ListTextbookAssistantSceneDetailsResponseBodyDataTopic struct {
+	TopicImageList []*string `json:"topicImageList,omitempty" xml:"topicImageList,omitempty" type:"Repeated"`
+	TopicName      *string   `json:"topicName,omitempty" xml:"topicName,omitempty"`
+	// example:
+	//
+	// Introducing family members
+	TopicTranslate *string `json:"topicTranslate,omitempty" xml:"topicTranslate,omitempty"`
+}
+
+func (s ListTextbookAssistantSceneDetailsResponseBodyDataTopic) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTextbookAssistantSceneDetailsResponseBodyDataTopic) GoString() string {
+	return s.String()
+}
+
+func (s *ListTextbookAssistantSceneDetailsResponseBodyDataTopic) SetTopicImageList(v []*string) *ListTextbookAssistantSceneDetailsResponseBodyDataTopic {
+	s.TopicImageList = v
+	return s
+}
+
+func (s *ListTextbookAssistantSceneDetailsResponseBodyDataTopic) SetTopicName(v string) *ListTextbookAssistantSceneDetailsResponseBodyDataTopic {
+	s.TopicName = &v
+	return s
+}
+
+func (s *ListTextbookAssistantSceneDetailsResponseBodyDataTopic) SetTopicTranslate(v string) *ListTextbookAssistantSceneDetailsResponseBodyDataTopic {
+	s.TopicTranslate = &v
+	return s
+}
+
+type ListTextbookAssistantSceneDetailsResponseBodyDataWordList struct {
+	WordAnalysis *string `json:"wordAnalysis,omitempty" xml:"wordAnalysis,omitempty"`
+	// example:
+	//
+	// a94c3337ed8c11eebe6e0c42a106bb02
+	WordId *string `json:"wordId,omitempty" xml:"wordId,omitempty"`
+	// example:
+	//
+	// family
+	WordText *string `json:"wordText,omitempty" xml:"wordText,omitempty"`
+}
+
+func (s ListTextbookAssistantSceneDetailsResponseBodyDataWordList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTextbookAssistantSceneDetailsResponseBodyDataWordList) GoString() string {
+	return s.String()
+}
+
+func (s *ListTextbookAssistantSceneDetailsResponseBodyDataWordList) SetWordAnalysis(v string) *ListTextbookAssistantSceneDetailsResponseBodyDataWordList {
+	s.WordAnalysis = &v
+	return s
+}
+
+func (s *ListTextbookAssistantSceneDetailsResponseBodyDataWordList) SetWordId(v string) *ListTextbookAssistantSceneDetailsResponseBodyDataWordList {
+	s.WordId = &v
+	return s
+}
+
+func (s *ListTextbookAssistantSceneDetailsResponseBodyDataWordList) SetWordText(v string) *ListTextbookAssistantSceneDetailsResponseBodyDataWordList {
+	s.WordText = &v
+	return s
+}
+
+type ListTextbookAssistantSceneDetailsResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTextbookAssistantSceneDetailsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListTextbookAssistantSceneDetailsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTextbookAssistantSceneDetailsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTextbookAssistantSceneDetailsResponse) SetHeaders(v map[string]*string) *ListTextbookAssistantSceneDetailsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTextbookAssistantSceneDetailsResponse) SetStatusCode(v int32) *ListTextbookAssistantSceneDetailsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTextbookAssistantSceneDetailsResponse) SetBody(v *ListTextbookAssistantSceneDetailsResponseBody) *ListTextbookAssistantSceneDetailsResponse {
 	s.Body = v
 	return s
 }
@@ -12210,6 +13216,93 @@ func (client *Client) ExecuteTextbookAssistantRetryConversation(request *Execute
 
 // Summary:
 //
+// 进行对话-流式输出
+//
+// @param request - ExecuteTextbookAssistantSseDialogueRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExecuteTextbookAssistantSseDialogueResponse
+func (client *Client) ExecuteTextbookAssistantSseDialogueWithOptions(request *ExecuteTextbookAssistantSseDialogueRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ExecuteTextbookAssistantSseDialogueResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthToken)) {
+		body["authToken"] = request.AuthToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChatId)) {
+		body["chatId"] = request.ChatId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scenario)) {
+		body["scenario"] = request.Scenario
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserMessage)) {
+		body["userMessage"] = request.UserMessage
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExecuteTextbookAssistantSseDialogue"),
+		Version:     tea.String("20240611"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/textbookAssistant/dialogue/ExecuteSseDialogue"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ExecuteTextbookAssistantSseDialogueResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ExecuteTextbookAssistantSseDialogueResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 进行对话-流式输出
+//
+// @param request - ExecuteTextbookAssistantSseDialogueRequest
+//
+// @return ExecuteTextbookAssistantSseDialogueResponse
+func (client *Client) ExecuteTextbookAssistantSseDialogue(request *ExecuteTextbookAssistantSseDialogueRequest) (_result *ExecuteTextbookAssistantSseDialogueResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ExecuteTextbookAssistantSseDialogueResponse{}
+	_body, _err := client.ExecuteTextbookAssistantSseDialogueWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 开启自由对话
 //
 // @param request - ExecuteTextbookAssistantStartConversationRequest
@@ -12736,6 +13829,85 @@ func (client *Client) GetTextbookAssistantToken(request *GetTextbookAssistantTok
 
 // Summary:
 //
+// 批量获取文章详情
+//
+// @param request - ListTextbookAssistantArticleDetailsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTextbookAssistantArticleDetailsResponse
+func (client *Client) ListTextbookAssistantArticleDetailsWithOptions(request *ListTextbookAssistantArticleDetailsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListTextbookAssistantArticleDetailsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ArticleIdList)) {
+		body["articleIdList"] = request.ArticleIdList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthToken)) {
+		body["authToken"] = request.AuthToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTextbookAssistantArticleDetails"),
+		Version:     tea.String("20240611"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/textbookAssistant/teachingResource/ListArticleDetails"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListTextbookAssistantArticleDetailsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListTextbookAssistantArticleDetailsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 批量获取文章详情
+//
+// @param request - ListTextbookAssistantArticleDetailsRequest
+//
+// @return ListTextbookAssistantArticleDetailsResponse
+func (client *Client) ListTextbookAssistantArticleDetails(request *ListTextbookAssistantArticleDetailsRequest) (_result *ListTextbookAssistantArticleDetailsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListTextbookAssistantArticleDetailsResponse{}
+	_body, _err := client.ListTextbookAssistantArticleDetailsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取文章列表
 //
 // @param request - ListTextbookAssistantArticlesRequest
@@ -13067,6 +14239,85 @@ func (client *Client) ListTextbookAssistantGradeVolumes(request *ListTextbookAss
 	headers := make(map[string]*string)
 	_result = &ListTextbookAssistantGradeVolumesResponse{}
 	_body, _err := client.ListTextbookAssistantGradeVolumesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取文章内容详情
+//
+// @param request - ListTextbookAssistantSceneDetailsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTextbookAssistantSceneDetailsResponse
+func (client *Client) ListTextbookAssistantSceneDetailsWithOptions(request *ListTextbookAssistantSceneDetailsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListTextbookAssistantSceneDetailsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthToken)) {
+		body["authToken"] = request.AuthToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SceneIdList)) {
+		body["sceneIdList"] = request.SceneIdList
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTextbookAssistantSceneDetails"),
+		Version:     tea.String("20240611"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/textbookAssistant/teachingResource/ListSceneDetails"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListTextbookAssistantSceneDetailsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListTextbookAssistantSceneDetailsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取文章内容详情
+//
+// @param request - ListTextbookAssistantSceneDetailsRequest
+//
+// @return ListTextbookAssistantSceneDetailsResponse
+func (client *Client) ListTextbookAssistantSceneDetails(request *ListTextbookAssistantSceneDetailsRequest) (_result *ListTextbookAssistantSceneDetailsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListTextbookAssistantSceneDetailsResponse{}
+	_body, _err := client.ListTextbookAssistantSceneDetailsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
