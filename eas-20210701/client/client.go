@@ -728,6 +728,7 @@ type Service struct {
 	CreateTime                *string          `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	CurrentVersion            *int32           `json:"CurrentVersion,omitempty" xml:"CurrentVersion,omitempty"`
 	ExtraData                 *string          `json:"ExtraData,omitempty" xml:"ExtraData,omitempty"`
+	Gateway                   *string          `json:"Gateway,omitempty" xml:"Gateway,omitempty"`
 	Gpu                       *int32           `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
 	Image                     *string          `json:"Image,omitempty" xml:"Image,omitempty"`
 	InternetEndpoint          *string          `json:"InternetEndpoint,omitempty" xml:"InternetEndpoint,omitempty"`
@@ -739,6 +740,7 @@ type Service struct {
 	Namespace                 *string          `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	ParentUid                 *string          `json:"ParentUid,omitempty" xml:"ParentUid,omitempty"`
 	PendingInstance           *int32           `json:"PendingInstance,omitempty" xml:"PendingInstance,omitempty"`
+	QuotaId                   *string          `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
 	Reason                    *string          `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	Region                    *string          `json:"Region,omitempty" xml:"Region,omitempty"`
 	RequestId                 *string          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -822,6 +824,11 @@ func (s *Service) SetExtraData(v string) *Service {
 	return s
 }
 
+func (s *Service) SetGateway(v string) *Service {
+	s.Gateway = &v
+	return s
+}
+
 func (s *Service) SetGpu(v int32) *Service {
 	s.Gpu = &v
 	return s
@@ -874,6 +881,11 @@ func (s *Service) SetParentUid(v string) *Service {
 
 func (s *Service) SetPendingInstance(v int32) *Service {
 	s.PendingInstance = &v
+	return s
+}
+
+func (s *Service) SetQuotaId(v string) *Service {
+	s.QuotaId = &v
 	return s
 }
 
@@ -2174,6 +2186,7 @@ func (s *CreateGatewayResponse) SetBody(v *CreateGatewayResponseBody) *CreateGat
 }
 
 type CreateGatewayIntranetLinkedVpcRequest struct {
+	EnableAuthoritativeDns *bool `json:"EnableAuthoritativeDns,omitempty" xml:"EnableAuthoritativeDns,omitempty"`
 	// The vSwitch ID.
 	//
 	// example:
@@ -2194,6 +2207,11 @@ func (s CreateGatewayIntranetLinkedVpcRequest) String() string {
 
 func (s CreateGatewayIntranetLinkedVpcRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateGatewayIntranetLinkedVpcRequest) SetEnableAuthoritativeDns(v bool) *CreateGatewayIntranetLinkedVpcRequest {
+	s.EnableAuthoritativeDns = &v
+	return s
 }
 
 func (s *CreateGatewayIntranetLinkedVpcRequest) SetVSwitchId(v string) *CreateGatewayIntranetLinkedVpcRequest {
@@ -6690,6 +6708,8 @@ func (s *DescribeGroupEndpointsResponse) SetBody(v *DescribeGroupEndpointsRespon
 
 type DescribeMachineSpecRequest struct {
 	// Deprecated
+	//
+	// This parameter is deprecated.
 	InstanceTypes []*string `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
 }
 
@@ -6708,6 +6728,8 @@ func (s *DescribeMachineSpecRequest) SetInstanceTypes(v []*string) *DescribeMach
 
 type DescribeMachineSpecShrinkRequest struct {
 	// Deprecated
+	//
+	// This parameter is deprecated.
 	InstanceTypesShrink *string `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty"`
 }
 
@@ -6725,12 +6747,16 @@ func (s *DescribeMachineSpecShrinkRequest) SetInstanceTypesShrink(v string) *Des
 }
 
 type DescribeMachineSpecResponseBody struct {
+	// The instance types when the resources are specified.
 	InstanceMetas []*DescribeMachineSpecResponseBodyInstanceMetas `json:"InstanceMetas,omitempty" xml:"InstanceMetas,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 40325405-579C-4D82***
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Types     []*DescribeMachineSpecResponseBodyTypes `json:"Types,omitempty" xml:"Types,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The values that can be supported when the number of CPUs and memory size are specified for deployment.
+	Types []*DescribeMachineSpecResponseBodyTypes `json:"Types,omitempty" xml:"Types,omitempty" type:"Repeated"`
 }
 
 func (s DescribeMachineSpecResponseBody) String() string {
@@ -6757,46 +6783,84 @@ func (s *DescribeMachineSpecResponseBody) SetTypes(v []*DescribeMachineSpecRespo
 }
 
 type DescribeMachineSpecResponseBodyInstanceMetas struct {
+	// The number of CPU cores in the instance type.
+	//
 	// example:
 	//
 	// 32
 	CPU *int32 `json:"CPU,omitempty" xml:"CPU,omitempty"`
+	// The GPU type in the instance type. If the instance type is not a GPU-based instance type, this parameter does not exist.
+	//
 	// example:
 	//
 	// GU30
 	GPU *string `json:"GPU,omitempty" xml:"GPU,omitempty"`
+	// The number of GPUs in the instance type.
+	//
 	// example:
 	//
 	// 1
 	GPUAmount *int32 `json:"GPUAmount,omitempty" xml:"GPUAmount,omitempty"`
+	// The GPU memory in the instance type. Unit: GB.
+	//
 	// example:
 	//
 	// 24
 	GPUMemory *float32 `json:"GPUMemory,omitempty" xml:"GPUMemory,omitempty"`
+	// The name of the instance type.
+	//
 	// example:
 	//
 	// ml.gu7i.c32m188.1-gu30
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// Indicates whether the instance type is available.
+	//
 	// example:
 	//
 	// true
 	IsAvailable *bool `json:"IsAvailable,omitempty" xml:"IsAvailable,omitempty"`
+	// The memory size in the instance type. Unit: GB.
+	//
 	// example:
 	//
 	// 188
 	Memory *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The minimum discount that can be accepted when the preemptible instance type does not include a usage duration. 0.1 indicates one fold. If this parameter is not returned, the bidding feature is not supported.
+	//
 	// example:
 	//
 	// 0.1
 	NonProtectSpotDiscount *float32 `json:"NonProtectSpotDiscount,omitempty" xml:"NonProtectSpotDiscount,omitempty"`
+	// The minimum discount that can be accepted when the preemptible instance type has the 1-hour protection duration. 0.1 indicates one fold. If this parameter is not returned, the bidding feature is not supported.
+	//
 	// example:
 	//
 	// 0.12
 	SpotDiscount *float32 `json:"SpotDiscount,omitempty" xml:"SpotDiscount,omitempty"`
+	// The inventory status of the instance type.
+	//
+	// Valid values:
+	//
+	// 	- WithStock
+	//
+	// 	- ClosedWithStock
+	//
+	// 	- NoStock
+	//
 	// example:
 	//
 	// WithStock
 	StockStatus *string `json:"StockStatus,omitempty" xml:"StockStatus,omitempty"`
+	// The source of the instance type.
+	//
+	// Valid values:
+	//
+	// 	- ECS
+	//
+	// 	- BareMetal
+	//
+	// 	- Lingjun
+	//
 	// example:
 	//
 	// ECS
@@ -6867,10 +6931,13 @@ func (s *DescribeMachineSpecResponseBodyInstanceMetas) SetVendor(v string) *Desc
 }
 
 type DescribeMachineSpecResponseBodyTypes struct {
+	// Valid values:
+	//
 	// example:
 	//
 	// 1
-	CPU    *int32   `json:"CPU,omitempty" xml:"CPU,omitempty"`
+	CPU *int32 `json:"CPU,omitempty" xml:"CPU,omitempty"`
+	// The optional values for memory when CPU is set to a specific value as above.
 	Memory []*int32 `json:"Memory,omitempty" xml:"Memory,omitempty" type:"Repeated"`
 }
 
@@ -6917,6 +6984,87 @@ func (s *DescribeMachineSpecResponse) SetStatusCode(v int32) *DescribeMachineSpe
 }
 
 func (s *DescribeMachineSpecResponse) SetBody(v *DescribeMachineSpecResponseBody) *DescribeMachineSpecResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeRegionsResponseBody struct {
+	Regions []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 40325405-579C-4D82****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeRegionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRegionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRegionsResponseBody) SetRegions(v []*DescribeRegionsResponseBodyRegions) *DescribeRegionsResponseBody {
+	s.Regions = v
+	return s
+}
+
+func (s *DescribeRegionsResponseBody) SetRequestId(v string) *DescribeRegionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeRegionsResponseBodyRegions struct {
+	// example:
+	//
+	// cn-shanghai
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
+}
+
+func (s DescribeRegionsResponseBodyRegions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRegionsResponseBodyRegions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRegionsResponseBodyRegions) SetRegionId(v string) *DescribeRegionsResponseBodyRegions {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeRegionsResponseBodyRegions) SetRegionName(v string) *DescribeRegionsResponseBodyRegions {
+	s.RegionName = &v
+	return s
+}
+
+type DescribeRegionsResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeRegionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRegionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRegionsResponse) SetHeaders(v map[string]*string) *DescribeRegionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeRegionsResponse) SetStatusCode(v int32) *DescribeRegionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *DescribeRegionsResponse {
 	s.Body = v
 	return s
 }
@@ -10424,6 +10572,7 @@ func (s *ListGatewayIntranetLinkedVpcResponseBody) SetRequestId(v string) *ListG
 }
 
 type ListGatewayIntranetLinkedVpcResponseBodyIntranetLinkedVpcList struct {
+	AuthoritativeDnsEnabled *bool `json:"AuthoritativeDnsEnabled,omitempty" xml:"AuthoritativeDnsEnabled,omitempty"`
 	// The IP address.
 	//
 	// example:
@@ -10488,6 +10637,11 @@ func (s ListGatewayIntranetLinkedVpcResponseBodyIntranetLinkedVpcList) String() 
 
 func (s ListGatewayIntranetLinkedVpcResponseBodyIntranetLinkedVpcList) GoString() string {
 	return s.String()
+}
+
+func (s *ListGatewayIntranetLinkedVpcResponseBodyIntranetLinkedVpcList) SetAuthoritativeDnsEnabled(v bool) *ListGatewayIntranetLinkedVpcResponseBodyIntranetLinkedVpcList {
+	s.AuthoritativeDnsEnabled = &v
+	return s
 }
 
 func (s *ListGatewayIntranetLinkedVpcResponseBodyIntranetLinkedVpcList) SetIp(v string) *ListGatewayIntranetLinkedVpcResponseBodyIntranetLinkedVpcList {
@@ -12803,6 +12957,7 @@ type ListServicesRequest struct {
 	//
 	// eas-r-hd0qwy8cxxxx
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The server role.
 	//
 	// Valid values:
@@ -13113,6 +13268,11 @@ func (s *ListServicesRequest) SetResourceName(v string) *ListServicesRequest {
 	return s
 }
 
+func (s *ListServicesRequest) SetResourceType(v string) *ListServicesRequest {
+	s.ResourceType = &v
+	return s
+}
+
 func (s *ListServicesRequest) SetRole(v string) *ListServicesRequest {
 	s.Role = &v
 	return s
@@ -13209,6 +13369,7 @@ type ListServicesShrinkRequest struct {
 	//
 	// eas-r-hd0qwy8cxxxx
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The server role.
 	//
 	// Valid values:
@@ -13516,6 +13677,11 @@ func (s *ListServicesShrinkRequest) SetQuotaId(v string) *ListServicesShrinkRequ
 
 func (s *ListServicesShrinkRequest) SetResourceName(v string) *ListServicesShrinkRequest {
 	s.ResourceName = &v
+	return s
+}
+
+func (s *ListServicesShrinkRequest) SetResourceType(v string) *ListServicesShrinkRequest {
+	s.ResourceType = &v
 	return s
 }
 
@@ -14534,7 +14700,7 @@ type UpdateAppServiceResponseBody struct {
 	//
 	// example:
 	//
-	// Succee
+	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -17228,6 +17394,10 @@ func (client *Client) CreateGatewayIntranetLinkedVpcWithOptions(ClusterId *strin
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EnableAuthoritativeDns)) {
+		query["EnableAuthoritativeDns"] = request.EnableAuthoritativeDns
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
 		query["VSwitchId"] = request.VSwitchId
 	}
@@ -19614,7 +19784,7 @@ func (client *Client) DescribeGroupEndpoints(ClusterId *string, GroupName *strin
 
 // Summary:
 //
-// 查询可用机器规格
+// Queries a list of instance types for an available instance in a shared resource group.
 //
 // @param tmpReq - DescribeMachineSpecRequest
 //
@@ -19676,7 +19846,7 @@ func (client *Client) DescribeMachineSpecWithOptions(tmpReq *DescribeMachineSpec
 
 // Summary:
 //
-// 查询可用机器规格
+// Queries a list of instance types for an available instance in a shared resource group.
 //
 // @param request - DescribeMachineSpecRequest
 //
@@ -19686,6 +19856,67 @@ func (client *Client) DescribeMachineSpec(request *DescribeMachineSpecRequest) (
 	headers := make(map[string]*string)
 	_result = &DescribeMachineSpecResponse{}
 	_body, _err := client.DescribeMachineSpecWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询可用的地域信息
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRegionsResponse
+func (client *Client) DescribeRegionsWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRegions"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/regions"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeRegionsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeRegionsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询可用的地域信息
+//
+// @return DescribeRegionsResponse
+func (client *Client) DescribeRegions() (_result *DescribeRegionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DescribeRegionsResponse{}
+	_body, _err := client.DescribeRegionsWithOptions(headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22198,6 +22429,10 @@ func (client *Client) ListServicesWithOptions(tmpReq *ListServicesRequest, heade
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceName)) {
 		query["ResourceName"] = request.ResourceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Role)) {
