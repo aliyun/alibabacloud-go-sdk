@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/ice-20201109/v5
+module github.com/alibabacloud-go/ice-20201109/v6
 
 go 1.14
 

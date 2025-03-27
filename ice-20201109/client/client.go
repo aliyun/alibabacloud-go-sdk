@@ -54981,6 +54981,23 @@ func (s *ListSmartSysAvatarModelsResponse) SetBody(v *ListSmartSysAvatarModelsRe
 	return s
 }
 
+type ListSmartVoiceGroupsRequest struct {
+	VoiceType *string `json:"VoiceType,omitempty" xml:"VoiceType,omitempty"`
+}
+
+func (s ListSmartVoiceGroupsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSmartVoiceGroupsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSmartVoiceGroupsRequest) SetVoiceType(v string) *ListSmartVoiceGroupsRequest {
+	s.VoiceType = &v
+	return s
+}
+
 type ListSmartVoiceGroupsResponseBody struct {
 	// The request ID.
 	//
@@ -94401,21 +94418,21 @@ func (client *Client) AddFavoritePublicMedia(request *AddFavoritePublicMediaRequ
 //
 // Description:
 //
-//   When the specified flow ID is not available, an error code is returned.
+//	  When the specified flow ID is not available, an error code is returned.
 //
-// 	- A flow can have only one source.
+//		- A flow can have only one source.
 //
 // ### [](#)Source type
 //
-// 	- RTMP-PUSH: An input that you can push to the returned URL over the RTMP protocol.
+//   - RTMP-PUSH: An input that you can push to the returned URL over the RTMP protocol.
 //
-// 	- RTMP-PULL: An input that the MediaConnect flow pulls from the specified server over the RTMP protocol.
+//   - RTMP-PULL: An input that the MediaConnect flow pulls from the specified server over the RTMP protocol.
 //
-// 	- SRT-Listener: An input that you can push to the returned URL over the SRT protocol.
+//   - SRT-Listener: An input that you can push to the returned URL over the SRT protocol.
 //
-// 	- SRT-Caller: An input that the MediaConnect flow pulls from the specified server over the SRT protocol.
+//   - SRT-Caller: An input that the MediaConnect flow pulls from the specified server over the SRT protocol.
 //
-// 	- Flow: An input that uses the output of another upstream flow. You must specify an upstream flow and its output. The output type of the upstream flow must be SRT-Listener or RTMP-PULL. By default, a dedicated line is used when flows are cascaded. This allows for cross-region distribution among multiple flows.
+//   - Flow: An input that uses the output of another upstream flow. You must specify an upstream flow and its output. The output type of the upstream flow must be SRT-Listener or RTMP-PULL. By default, a dedicated line is used when flows are cascaded. This allows for cross-region distribution among multiple flows.
 //
 // @param request - AddMediaConnectFlowInputRequest
 //
@@ -94512,21 +94529,21 @@ func (client *Client) AddMediaConnectFlowInputWithOptions(request *AddMediaConne
 //
 // Description:
 //
-//   When the specified flow ID is not available, an error code is returned.
+//	  When the specified flow ID is not available, an error code is returned.
 //
-// 	- A flow can have only one source.
+//		- A flow can have only one source.
 //
 // ### [](#)Source type
 //
-// 	- RTMP-PUSH: An input that you can push to the returned URL over the RTMP protocol.
+//   - RTMP-PUSH: An input that you can push to the returned URL over the RTMP protocol.
 //
-// 	- RTMP-PULL: An input that the MediaConnect flow pulls from the specified server over the RTMP protocol.
+//   - RTMP-PULL: An input that the MediaConnect flow pulls from the specified server over the RTMP protocol.
 //
-// 	- SRT-Listener: An input that you can push to the returned URL over the SRT protocol.
+//   - SRT-Listener: An input that you can push to the returned URL over the SRT protocol.
 //
-// 	- SRT-Caller: An input that the MediaConnect flow pulls from the specified server over the SRT protocol.
+//   - SRT-Caller: An input that the MediaConnect flow pulls from the specified server over the SRT protocol.
 //
-// 	- Flow: An input that uses the output of another upstream flow. You must specify an upstream flow and its output. The output type of the upstream flow must be SRT-Listener or RTMP-PULL. By default, a dedicated line is used when flows are cascaded. This allows for cross-region distribution among multiple flows.
+//   - Flow: An input that uses the output of another upstream flow. You must specify an upstream flow and its output. The output type of the upstream flow must be SRT-Listener or RTMP-PULL. By default, a dedicated line is used when flows are cascaded. This allows for cross-region distribution among multiple flows.
 //
 // @param request - AddMediaConnectFlowInputRequest
 //
@@ -94548,25 +94565,25 @@ func (client *Client) AddMediaConnectFlowInput(request *AddMediaConnectFlowInput
 //
 // Description:
 //
-//   When the specified flow ID is not available, an error code is returned.
+//	  When the specified flow ID is not available, an error code is returned.
 //
-// 	- A flow can have a maximum of four outputs.
+//		- A flow can have a maximum of four outputs.
 //
-// 	- The output names in the same flow cannot be duplicated.
+//		- The output names in the same flow cannot be duplicated.
 //
-// 	- You can set an upper limit on the number of concurrent viewers for each output. If this limit is exceeded, any new playback requests will fail. Each output supports up to five streams.
+//		- You can set an upper limit on the number of concurrent viewers for each output. If this limit is exceeded, any new playback requests will fail. Each output supports up to five streams.
 //
 // ### [](#)Output types
 //
-// 	- RTMP-PUSH: An output that the MediaConnect flow pushes to the server you specified over the RTMP protocol.
+//   - RTMP-PUSH: An output that the MediaConnect flow pushes to the server you specified over the RTMP protocol.
 //
-// 	- RTMP-PULL: An output that you can pull using the returned streaming URL over the RTMP protocol.
+//   - RTMP-PULL: An output that you can pull using the returned streaming URL over the RTMP protocol.
 //
-// 	- SRT-Caller: An output that the MediaConnect flow pushes to the server you specified over the SRT protocol.
+//   - SRT-Caller: An output that the MediaConnect flow pushes to the server you specified over the SRT protocol.
 //
-// 	- SRT-Listener: An output that you can pull using the returned streaming URL over the SRT protocol.
+//   - SRT-Listener: An output that you can pull using the returned streaming URL over the SRT protocol.
 //
-// 	- Flow: An output that is pushed to the source URL of another MediaConnect flow. The source type of the destination flow must be SRT-Listener or RTMP-PUSH. By default, a dedicated line is used when flows are cascaded. This allows for cross-region distribution among multiple flows.
+//   - Flow: An output that is pushed to the source URL of another MediaConnect flow. The source type of the destination flow must be SRT-Listener or RTMP-PUSH. By default, a dedicated line is used when flows are cascaded. This allows for cross-region distribution among multiple flows.
 //
 // @param request - AddMediaConnectFlowOutputRequest
 //
@@ -94663,25 +94680,25 @@ func (client *Client) AddMediaConnectFlowOutputWithOptions(request *AddMediaConn
 //
 // Description:
 //
-//   When the specified flow ID is not available, an error code is returned.
+//	  When the specified flow ID is not available, an error code is returned.
 //
-// 	- A flow can have a maximum of four outputs.
+//		- A flow can have a maximum of four outputs.
 //
-// 	- The output names in the same flow cannot be duplicated.
+//		- The output names in the same flow cannot be duplicated.
 //
-// 	- You can set an upper limit on the number of concurrent viewers for each output. If this limit is exceeded, any new playback requests will fail. Each output supports up to five streams.
+//		- You can set an upper limit on the number of concurrent viewers for each output. If this limit is exceeded, any new playback requests will fail. Each output supports up to five streams.
 //
 // ### [](#)Output types
 //
-// 	- RTMP-PUSH: An output that the MediaConnect flow pushes to the server you specified over the RTMP protocol.
+//   - RTMP-PUSH: An output that the MediaConnect flow pushes to the server you specified over the RTMP protocol.
 //
-// 	- RTMP-PULL: An output that you can pull using the returned streaming URL over the RTMP protocol.
+//   - RTMP-PULL: An output that you can pull using the returned streaming URL over the RTMP protocol.
 //
-// 	- SRT-Caller: An output that the MediaConnect flow pushes to the server you specified over the SRT protocol.
+//   - SRT-Caller: An output that the MediaConnect flow pushes to the server you specified over the SRT protocol.
 //
-// 	- SRT-Listener: An output that you can pull using the returned streaming URL over the SRT protocol.
+//   - SRT-Listener: An output that you can pull using the returned streaming URL over the SRT protocol.
 //
-// 	- Flow: An output that is pushed to the source URL of another MediaConnect flow. The source type of the destination flow must be SRT-Listener or RTMP-PUSH. By default, a dedicated line is used when flows are cascaded. This allows for cross-region distribution among multiple flows.
+//   - Flow: An output that is pushed to the source URL of another MediaConnect flow. The source type of the destination flow must be SRT-Listener or RTMP-PUSH. By default, a dedicated line is used when flows are cascaded. This allows for cross-region distribution among multiple flows.
 //
 // @param request - AddMediaConnectFlowOutputRequest
 //
@@ -94778,11 +94795,11 @@ func (client *Client) AddMediaMarks(request *AddMediaMarksRequest) (_result *Add
 //
 // Description:
 //
-//   For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/445399.html).
+//	  For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/445399.html).
 //
-// 	- For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/445389.html).
+//		- For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/445389.html).
 //
-// 	- After an advanced template is created, it enters the Processing state. In this case, the template is unavailable. The template can be used only when it is in the Available state. The time required for template processing varies based on the size of the template file. Generally, it ranges from 10 seconds to 5 minutes.
+//		- After an advanced template is created, it enters the Processing state. In this case, the template is unavailable. The template can be used only when it is in the Available state. The time required for template processing varies based on the size of the template file. Generally, it ranges from 10 seconds to 5 minutes.
 //
 // @param request - AddTemplateRequest
 //
@@ -94869,11 +94886,11 @@ func (client *Client) AddTemplateWithOptions(request *AddTemplateRequest, runtim
 //
 // Description:
 //
-//   For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/445399.html).
+//	  For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/445399.html).
 //
-// 	- For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/445389.html).
+//		- For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/445389.html).
 //
-// 	- After an advanced template is created, it enters the Processing state. In this case, the template is unavailable. The template can be used only when it is in the Available state. The time required for template processing varies based on the size of the template file. Generally, it ranges from 10 seconds to 5 minutes.
+//		- After an advanced template is created, it enters the Processing state. In this case, the template is unavailable. The template can be used only when it is in the Available state. The time required for template processing varies based on the size of the template file. Generally, it ranges from 10 seconds to 5 minutes.
 //
 // @param request - AddTemplateRequest
 //
@@ -95134,9 +95151,9 @@ func (client *Client) BatchGetMediaInfos(request *BatchGetMediaInfosRequest) (_r
 //
 // Description:
 //
-//   You can cancel a media fingerprint analysis job only if the job is in the Queuing state.
+//	  You can cancel a media fingerprint analysis job only if the job is in the Queuing state.
 //
-// 	- We recommend that you call the **UpdatePipeline*	- operation to set the status of the ApsaraVideo Media Processing (MPS) queue to Paused before you cancel a job. This suspends job scheduling in the MPS queue. After the job is canceled, you must set the status of the MPS queue back to Active so that the other jobs in the MPS queue can be scheduled.
+//		- We recommend that you call the **UpdatePipeline*	- operation to set the status of the ApsaraVideo Media Processing (MPS) queue to Paused before you cancel a job. This suspends job scheduling in the MPS queue. After the job is canceled, you must set the status of the MPS queue back to Active so that the other jobs in the MPS queue can be scheduled.
 //
 // @param request - CancelDNAJobRequest
 //
@@ -95209,9 +95226,9 @@ func (client *Client) CancelDNAJobWithOptions(request *CancelDNAJobRequest, runt
 //
 // Description:
 //
-//   You can cancel a media fingerprint analysis job only if the job is in the Queuing state.
+//	  You can cancel a media fingerprint analysis job only if the job is in the Queuing state.
 //
-// 	- We recommend that you call the **UpdatePipeline*	- operation to set the status of the ApsaraVideo Media Processing (MPS) queue to Paused before you cancel a job. This suspends job scheduling in the MPS queue. After the job is canceled, you must set the status of the MPS queue back to Active so that the other jobs in the MPS queue can be scheduled.
+//		- We recommend that you call the **UpdatePipeline*	- operation to set the status of the ApsaraVideo Media Processing (MPS) queue to Paused before you cancel a job. This suspends job scheduling in the MPS queue. After the job is canceled, you must set the status of the MPS queue back to Active so that the other jobs in the MPS queue can be scheduled.
 //
 // @param request - CancelDNAJobRequest
 //
@@ -95739,7 +95756,7 @@ func (client *Client) CreateCustomizedVoiceJob(request *CreateCustomizedVoiceJob
 //
 // Description:
 //
-//   You can create up to five media fingerprint libraries within an account. To increase the quota, submit a ticket. You can call the DeleteDNADB operation to delete the fingerprint libraries that you no longer need.
+//	You can create up to five media fingerprint libraries within an account. To increase the quota, submit a ticket. You can call the DeleteDNADB operation to delete the fingerprint libraries that you no longer need.
 //
 // @param request - CreateDNADBRequest
 //
@@ -95820,7 +95837,7 @@ func (client *Client) CreateDNADBWithOptions(request *CreateDNADBRequest, runtim
 //
 // Description:
 //
-//   You can create up to five media fingerprint libraries within an account. To increase the quota, submit a ticket. You can call the DeleteDNADB operation to delete the fingerprint libraries that you no longer need.
+//	You can create up to five media fingerprint libraries within an account. To increase the quota, submit a ticket. You can call the DeleteDNADB operation to delete the fingerprint libraries that you no longer need.
 //
 // @param request - CreateDNADBRequest
 //
@@ -95957,13 +95974,13 @@ func (client *Client) CreateEditingProject(request *CreateEditingProjectRequest)
 //
 // ### [](#)Precautions
 //
-// 	- Channel group names and channel names can contain only letters, digits, underscores (_), and hyphens (-).
+//   - Channel group names and channel names can contain only letters, digits, underscores (_), and hyphens (-).
 //
-// 	- Only `HLS` is supported.
+//   - Only `HLS` is supported.
 //
-// 	- The segment duration must be from 1 to 30 seconds.
+//   - The segment duration must be from 1 to 30 seconds.
 //
-// 	- The number of M3U8 segments must be from 2 to 100.
+//   - The number of M3U8 segments must be from 2 to 100.
 //
 // If the request succeeds, the system will return the details of the newly created channel, including the channel name, creation time, modification time, and ingest endpoint details.
 //
@@ -96054,13 +96071,13 @@ func (client *Client) CreateLivePackageChannelWithOptions(request *CreateLivePac
 //
 // ### [](#)Precautions
 //
-// 	- Channel group names and channel names can contain only letters, digits, underscores (_), and hyphens (-).
+//   - Channel group names and channel names can contain only letters, digits, underscores (_), and hyphens (-).
 //
-// 	- Only `HLS` is supported.
+//   - Only `HLS` is supported.
 //
-// 	- The segment duration must be from 1 to 30 seconds.
+//   - The segment duration must be from 1 to 30 seconds.
 //
-// 	- The number of M3U8 segments must be from 2 to 100.
+//   - The number of M3U8 segments must be from 2 to 100.
 //
 // If the request succeeds, the system will return the details of the newly created channel, including the channel name, creation time, modification time, and ingest endpoint details.
 //
@@ -96555,9 +96572,9 @@ func (client *Client) CreateLiveTranscodeTemplate(request *CreateLiveTranscodeTe
 //
 // Description:
 //
-//   The flow names cannot be duplicated in the same region.
+//	  The flow names cannot be duplicated in the same region.
 //
-// 	- Take note of the returned flow ID. You may reference it in other API operations.
+//		- Take note of the returned flow ID. You may reference it in other API operations.
 //
 // @param request - CreateMediaConnectFlowRequest
 //
@@ -96618,9 +96635,9 @@ func (client *Client) CreateMediaConnectFlowWithOptions(request *CreateMediaConn
 //
 // Description:
 //
-//   The flow names cannot be duplicated in the same region.
+//	  The flow names cannot be duplicated in the same region.
 //
-// 	- Take note of the returned flow ID. You may reference it in other API operations.
+//		- Take note of the returned flow ID. You may reference it in other API operations.
 //
 // @param request - CreateMediaConnectFlowRequest
 //
@@ -96642,9 +96659,7 @@ func (client *Client) CreateMediaConnectFlow(request *CreateMediaConnectFlowRequ
 //
 // Description:
 //
-//
-//
-//  	- ## [](#qps-)QPS limit
+// ## QPS limit
 //
 // This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
 //
@@ -96737,9 +96752,7 @@ func (client *Client) CreateMediaLiveChannelWithOptions(tmpReq *CreateMediaLiveC
 //
 // Description:
 //
-//
-//
-//  	- ## [](#qps-)QPS limit
+// ## QPS limit
 //
 // This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
 //
@@ -96763,9 +96776,7 @@ func (client *Client) CreateMediaLiveChannel(request *CreateMediaLiveChannelRequ
 //
 // Description:
 //
-//
-//
-//  	- ## [](#qps-)QPS limit
+// ## QPS limit
 //
 // This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
 //
@@ -96846,9 +96857,7 @@ func (client *Client) CreateMediaLiveInputWithOptions(tmpReq *CreateMediaLiveInp
 //
 // Description:
 //
-//
-//
-//  	- ## [](#qps-)QPS limit
+// ## QPS limit
 //
 // This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
 //
@@ -96872,9 +96881,7 @@ func (client *Client) CreateMediaLiveInput(request *CreateMediaLiveInputRequest)
 //
 // Description:
 //
-//
-//
-//  	- ## [](#qps-)QPS limit
+// ## QPS limit
 //
 // This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
 //
@@ -96943,9 +96950,7 @@ func (client *Client) CreateMediaLiveInputSecurityGroupWithOptions(tmpReq *Creat
 //
 // Description:
 //
-//
-//
-//  	- ## [](#qps-)QPS limit
+// ## QPS limit
 //
 // This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
 //
@@ -97475,19 +97480,19 @@ func (client *Client) CreateSourceLocation(request *CreateSourceLocationRequest)
 //
 // Description:
 //
-//   You can call this operation to obtain the upload URLs and credentials of audio and video files. You can also call this operation to obtain the upload URLs and credentials of images and auxiliary media assets.
+//	  You can call this operation to obtain the upload URLs and credentials of audio and video files. You can also call this operation to obtain the upload URLs and credentials of images and auxiliary media assets.
 //
-// 	- Obtaining an upload URL and credential is essential for Intelligent Media Services (IMS) and is required in each upload operation.
+//		- Obtaining an upload URL and credential is essential for Intelligent Media Services (IMS) and is required in each upload operation.
 //
-// 	- If the video upload credential expires, you can call the RefreshUploadMedia operation to obtain a new upload credential. The default validity period of a video upload credential is 3,000 seconds.
+//		- If the video upload credential expires, you can call the RefreshUploadMedia operation to obtain a new upload credential. The default validity period of a video upload credential is 3,000 seconds.
 //
-// 	- After you upload a media asset, you can configure a callback to receive upload event notifications or call the GetMediaInfo operation to determine whether the media asset is uploaded based on the returned status.
+//		- After you upload a media asset, you can configure a callback to receive upload event notifications or call the GetMediaInfo operation to determine whether the media asset is uploaded based on the returned status.
 //
-// 	- The MediaId parameter returned by this operation can be used for media asset lifecycle management or media processing.
+//		- The MediaId parameter returned by this operation can be used for media asset lifecycle management or media processing.
 //
-// 	- You can call this operation to upload media assets only to ApsaraVideo VOD, but not to your own Object Storage Service (OSS) buckets. To upload a media asset to your own OSS bucket, you can upload the file to your OSS bucket by using [OSS SDK](https://help.aliyun.com/document_detail/32006.html), and then call the [RegisterMediaInfo](https://help.aliyun.com/document_detail/441152.html) operation to register the file in the OSS bucket with the media asset library.
+//		- You can call this operation to upload media assets only to ApsaraVideo VOD, but not to your own Object Storage Service (OSS) buckets. To upload a media asset to your own OSS bucket, you can upload the file to your OSS bucket by using [OSS SDK](https://help.aliyun.com/document_detail/32006.html), and then call the [RegisterMediaInfo](https://help.aliyun.com/document_detail/441152.html) operation to register the file in the OSS bucket with the media asset library.
 //
-// 	- This operation is available only in the China (Shanghai), China (Beijing), and China (Shenzhen) regions.
+//		- This operation is available only in the China (Shanghai), China (Beijing), and China (Shenzhen) regions.
 //
 // @param request - CreateUploadMediaRequest
 //
@@ -97568,19 +97573,19 @@ func (client *Client) CreateUploadMediaWithOptions(request *CreateUploadMediaReq
 //
 // Description:
 //
-//   You can call this operation to obtain the upload URLs and credentials of audio and video files. You can also call this operation to obtain the upload URLs and credentials of images and auxiliary media assets.
+//	  You can call this operation to obtain the upload URLs and credentials of audio and video files. You can also call this operation to obtain the upload URLs and credentials of images and auxiliary media assets.
 //
-// 	- Obtaining an upload URL and credential is essential for Intelligent Media Services (IMS) and is required in each upload operation.
+//		- Obtaining an upload URL and credential is essential for Intelligent Media Services (IMS) and is required in each upload operation.
 //
-// 	- If the video upload credential expires, you can call the RefreshUploadMedia operation to obtain a new upload credential. The default validity period of a video upload credential is 3,000 seconds.
+//		- If the video upload credential expires, you can call the RefreshUploadMedia operation to obtain a new upload credential. The default validity period of a video upload credential is 3,000 seconds.
 //
-// 	- After you upload a media asset, you can configure a callback to receive upload event notifications or call the GetMediaInfo operation to determine whether the media asset is uploaded based on the returned status.
+//		- After you upload a media asset, you can configure a callback to receive upload event notifications or call the GetMediaInfo operation to determine whether the media asset is uploaded based on the returned status.
 //
-// 	- The MediaId parameter returned by this operation can be used for media asset lifecycle management or media processing.
+//		- The MediaId parameter returned by this operation can be used for media asset lifecycle management or media processing.
 //
-// 	- You can call this operation to upload media assets only to ApsaraVideo VOD, but not to your own Object Storage Service (OSS) buckets. To upload a media asset to your own OSS bucket, you can upload the file to your OSS bucket by using [OSS SDK](https://help.aliyun.com/document_detail/32006.html), and then call the [RegisterMediaInfo](https://help.aliyun.com/document_detail/441152.html) operation to register the file in the OSS bucket with the media asset library.
+//		- You can call this operation to upload media assets only to ApsaraVideo VOD, but not to your own Object Storage Service (OSS) buckets. To upload a media asset to your own OSS bucket, you can upload the file to your OSS bucket by using [OSS SDK](https://help.aliyun.com/document_detail/32006.html), and then call the [RegisterMediaInfo](https://help.aliyun.com/document_detail/441152.html) operation to register the file in the OSS bucket with the media asset library.
 //
-// 	- This operation is available only in the China (Shanghai), China (Beijing), and China (Shenzhen) regions.
+//		- This operation is available only in the China (Shanghai), China (Beijing), and China (Shenzhen) regions.
 //
 // @param request - CreateUploadMediaRequest
 //
@@ -97602,11 +97607,11 @@ func (client *Client) CreateUploadMedia(request *CreateUploadMediaRequest) (_res
 //
 // Description:
 //
-//   You can call this operation to upload only a local media stream. After the media stream is uploaded, it is associated with the specified media asset ID.
+//	  You can call this operation to upload only a local media stream. After the media stream is uploaded, it is associated with the specified media asset ID.
 //
-// 	- You can call this operation to upload media streams only to ApsaraVideo VOD, but not to your own Object Storage Service (OSS) buckets. To upload a media stream to your own OSS bucket, you can upload the file to your OSS bucket by using [OSS SDK](https://help.aliyun.com/document_detail/32006.html), and then call the [RegisterMediaStream](https://help.aliyun.com/document_detail/440765.html) operation to associate the media stream with the specified media asset ID.
+//		- You can call this operation to upload media streams only to ApsaraVideo VOD, but not to your own Object Storage Service (OSS) buckets. To upload a media stream to your own OSS bucket, you can upload the file to your OSS bucket by using [OSS SDK](https://help.aliyun.com/document_detail/32006.html), and then call the [RegisterMediaStream](https://help.aliyun.com/document_detail/440765.html) operation to associate the media stream with the specified media asset ID.
 //
-// 	- This operation is available only in the China (Shanghai), China (Beijing), and China (Shenzhen) regions.
+//		- This operation is available only in the China (Shanghai), China (Beijing), and China (Shenzhen) regions.
 //
 // @param request - CreateUploadStreamRequest
 //
@@ -97679,11 +97684,11 @@ func (client *Client) CreateUploadStreamWithOptions(request *CreateUploadStreamR
 //
 // Description:
 //
-//   You can call this operation to upload only a local media stream. After the media stream is uploaded, it is associated with the specified media asset ID.
+//	  You can call this operation to upload only a local media stream. After the media stream is uploaded, it is associated with the specified media asset ID.
 //
-// 	- You can call this operation to upload media streams only to ApsaraVideo VOD, but not to your own Object Storage Service (OSS) buckets. To upload a media stream to your own OSS bucket, you can upload the file to your OSS bucket by using [OSS SDK](https://help.aliyun.com/document_detail/32006.html), and then call the [RegisterMediaStream](https://help.aliyun.com/document_detail/440765.html) operation to associate the media stream with the specified media asset ID.
+//		- You can call this operation to upload media streams only to ApsaraVideo VOD, but not to your own Object Storage Service (OSS) buckets. To upload a media stream to your own OSS bucket, you can upload the file to your OSS bucket by using [OSS SDK](https://help.aliyun.com/document_detail/32006.html), and then call the [RegisterMediaStream](https://help.aliyun.com/document_detail/440765.html) operation to associate the media stream with the specified media asset ID.
 //
-// 	- This operation is available only in the China (Shanghai), China (Beijing), and China (Shenzhen) regions.
+//		- This operation is available only in the China (Shanghai), China (Beijing), and China (Shenzhen) regions.
 //
 // @param request - CreateUploadStreamRequest
 //
@@ -99579,11 +99584,11 @@ func (client *Client) DeleteLiveTranscodeTemplate(request *DeleteLiveTranscodeTe
 //
 // Description:
 //
-//   When the specified flow ID is not available, an error code is returned.
+//	  When the specified flow ID is not available, an error code is returned.
 //
-// 	- When a flow is deleted, its source and outputs are also deleted.
+//		- When a flow is deleted, its source and outputs are also deleted.
 //
-// 	- When a flow is in the online state, it cannot be deleted.
+//		- When a flow is in the online state, it cannot be deleted.
 //
 // @param request - DeleteMediaConnectFlowRequest
 //
@@ -99640,11 +99645,11 @@ func (client *Client) DeleteMediaConnectFlowWithOptions(request *DeleteMediaConn
 //
 // Description:
 //
-//   When the specified flow ID is not available, an error code is returned.
+//	  When the specified flow ID is not available, an error code is returned.
 //
-// 	- When a flow is deleted, its source and outputs are also deleted.
+//		- When a flow is deleted, its source and outputs are also deleted.
 //
-// 	- When a flow is in the online state, it cannot be deleted.
+//		- When a flow is in the online state, it cannot be deleted.
 //
 // @param request - DeleteMediaConnectFlowRequest
 //
@@ -99666,11 +99671,11 @@ func (client *Client) DeleteMediaConnectFlow(request *DeleteMediaConnectFlowRequ
 //
 // Description:
 //
-//   When the specified flow ID is not available, an error code is returned.
+//	  When the specified flow ID is not available, an error code is returned.
 //
-// 	- When a flow is in the online state, its source cannot be deleted.
+//		- When a flow is in the online state, its source cannot be deleted.
 //
-// 	- You can delete the source only after all outputs of the flow have been deleted.
+//		- You can delete the source only after all outputs of the flow have been deleted.
 //
 // @param request - DeleteMediaConnectFlowInputRequest
 //
@@ -99727,11 +99732,11 @@ func (client *Client) DeleteMediaConnectFlowInputWithOptions(request *DeleteMedi
 //
 // Description:
 //
-//   When the specified flow ID is not available, an error code is returned.
+//	  When the specified flow ID is not available, an error code is returned.
 //
-// 	- When a flow is in the online state, its source cannot be deleted.
+//		- When a flow is in the online state, its source cannot be deleted.
 //
-// 	- You can delete the source only after all outputs of the flow have been deleted.
+//		- You can delete the source only after all outputs of the flow have been deleted.
 //
 // @param request - DeleteMediaConnectFlowInputRequest
 //
@@ -99753,9 +99758,9 @@ func (client *Client) DeleteMediaConnectFlowInput(request *DeleteMediaConnectFlo
 //
 // Description:
 //
-//   When the specified flow ID is not available, an error code is returned.
+//	  When the specified flow ID is not available, an error code is returned.
 //
-// 	- When a flow is in the online state, its outputs cannot be deleted.
+//		- When a flow is in the online state, its outputs cannot be deleted.
 //
 // @param request - DeleteMediaConnectFlowOutputRequest
 //
@@ -99816,9 +99821,9 @@ func (client *Client) DeleteMediaConnectFlowOutputWithOptions(request *DeleteMed
 //
 // Description:
 //
-//   When the specified flow ID is not available, an error code is returned.
+//	  When the specified flow ID is not available, an error code is returned.
 //
-// 	- When a flow is in the online state, its outputs cannot be deleted.
+//		- When a flow is in the online state, its outputs cannot be deleted.
 //
 // @param request - DeleteMediaConnectFlowOutputRequest
 //
@@ -99998,11 +100003,9 @@ func (client *Client) DeleteMediaInfos(request *DeleteMediaInfosRequest) (_resul
 //
 // Description:
 //
+//	You can only delete a channel that is not running.
 //
-//
-//  	- 	- You can only delete a channel that is not running.
-//
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
 // This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
 //
@@ -100061,11 +100064,9 @@ func (client *Client) DeleteMediaLiveChannelWithOptions(request *DeleteMediaLive
 //
 // Description:
 //
+//	You can only delete a channel that is not running.
 //
-//
-//  	- 	- You can only delete a channel that is not running.
-//
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
 // This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
 //
@@ -100089,11 +100090,9 @@ func (client *Client) DeleteMediaLiveChannel(request *DeleteMediaLiveChannelRequ
 //
 // Description:
 //
+//	You can delete an input only when it is not associated with a MediaLive channel.
 //
-//
-//  	- 	- You can delete an input only when it is not associated with a MediaLive channel.
-//
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
 // This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
 //
@@ -100152,11 +100151,9 @@ func (client *Client) DeleteMediaLiveInputWithOptions(request *DeleteMediaLiveIn
 //
 // Description:
 //
+//	You can delete an input only when it is not associated with a MediaLive channel.
 //
-//
-//  	- 	- You can delete an input only when it is not associated with a MediaLive channel.
-//
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
 // This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
 //
@@ -100180,11 +100177,9 @@ func (client *Client) DeleteMediaLiveInput(request *DeleteMediaLiveInputRequest)
 //
 // Description:
 //
+//	You can only delete a security group not associated with an input.
 //
-//
-//  	- 	- You can only delete a security group not associated with an input.
-//
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
 // This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
 //
@@ -100243,11 +100238,9 @@ func (client *Client) DeleteMediaLiveInputSecurityGroupWithOptions(request *Dele
 //
 // Description:
 //
+//	You can only delete a security group not associated with an input.
 //
-//
-//  	- 	- You can only delete a security group not associated with an input.
-//
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
 // This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
 //
@@ -100810,9 +100803,9 @@ func (client *Client) DeleteSourceLocation(request *DeleteSourceLocationRequest)
 //
 // A template is an encapsulation of the timeline of a media editing and production job. You can define a common timeline as a template. When you have the same requirements, you need to only specify key parameters and materials to produce videos.
 //
-// 	- For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/445399.html).
+//   - For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/445399.html).
 //
-// 	- For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/445389.html).
+//   - For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/445389.html).
 //
 // @param request - DeleteTemplateRequest
 //
@@ -100867,9 +100860,9 @@ func (client *Client) DeleteTemplateWithOptions(request *DeleteTemplateRequest, 
 //
 // A template is an encapsulation of the timeline of a media editing and production job. You can define a common timeline as a template. When you have the same requirements, you need to only specify key parameters and materials to produce videos.
 //
-// 	- For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/445399.html).
+//   - For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/445399.html).
 //
-// 	- For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/445389.html).
+//   - For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/445389.html).
 //
 // @param request - DeleteTemplateRequest
 //
@@ -101106,9 +101099,9 @@ func (client *Client) DeleteVodPackagingGroup(request *DeleteVodPackagingGroupRe
 //
 // ## [](#)Request description
 //
-// 	- **Feature**: You can call this operation to query the information about an AI agent.
+//   - **Feature**: You can call this operation to query the information about an AI agent.
 //
-// 	- **Scenario**: If you need to monitor or analyze the performance of an AI agent in a call or debug the agent configurations, you can call this operation to obtain required data.
+//   - **Scenario**: If you need to monitor or analyze the performance of an AI agent in a call or debug the agent configurations, you can call this operation to obtain required data.
 //
 // @param request - DescribeAIAgentInstanceRequest
 //
@@ -101167,9 +101160,9 @@ func (client *Client) DescribeAIAgentInstanceWithOptions(request *DescribeAIAgen
 //
 // ## [](#)Request description
 //
-// 	- **Feature**: You can call this operation to query the information about an AI agent.
+//   - **Feature**: You can call this operation to query the information about an AI agent.
 //
-// 	- **Scenario**: If you need to monitor or analyze the performance of an AI agent in a call or debug the agent configurations, you can call this operation to obtain required data.
+//   - **Scenario**: If you need to monitor or analyze the performance of an AI agent in a call or debug the agent configurations, you can call this operation to obtain required data.
 //
 // @param request - DescribeAIAgentInstanceRequest
 //
@@ -104404,9 +104397,9 @@ func (client *Client) GetLiveTranscodeTemplate(request *GetLiveTranscodeTemplate
 //
 // Description:
 //
-//   When the specified flow ID is not available, an error code is returned.
+//	  When the specified flow ID is not available, an error code is returned.
 //
-// 	- The returned StartTime is valid only when the flow is in the online state.
+//		- The returned StartTime is valid only when the flow is in the online state.
 //
 // @param request - GetMediaConnectFlowRequest
 //
@@ -104463,9 +104456,9 @@ func (client *Client) GetMediaConnectFlowWithOptions(request *GetMediaConnectFlo
 //
 // Description:
 //
-//   When the specified flow ID is not available, an error code is returned.
+//	  When the specified flow ID is not available, an error code is returned.
 //
-// 	- The returned StartTime is valid only when the flow is in the online state.
+//		- The returned StartTime is valid only when the flow is in the online state.
 //
 // @param request - GetMediaConnectFlowRequest
 //
@@ -104487,7 +104480,7 @@ func (client *Client) GetMediaConnectFlow(request *GetMediaConnectFlowRequest) (
 //
 // Description:
 //
-//   When the specified flow ID is not available, an error code is returned.
+//	When the specified flow ID is not available, an error code is returned.
 //
 // @param request - GetMediaConnectFlowInputRequest
 //
@@ -104544,7 +104537,7 @@ func (client *Client) GetMediaConnectFlowInputWithOptions(request *GetMediaConne
 //
 // Description:
 //
-//   When the specified flow ID is not available, an error code is returned.
+//	When the specified flow ID is not available, an error code is returned.
 //
 // @param request - GetMediaConnectFlowInputRequest
 //
@@ -104566,7 +104559,7 @@ func (client *Client) GetMediaConnectFlowInput(request *GetMediaConnectFlowInput
 //
 // Description:
 //
-//   When the specified flow ID is not available, an error code is returned.
+//	When the specified flow ID is not available, an error code is returned.
 //
 // @param request - GetMediaConnectFlowOutputRequest
 //
@@ -104627,7 +104620,7 @@ func (client *Client) GetMediaConnectFlowOutputWithOptions(request *GetMediaConn
 //
 // Description:
 //
-//   When the specified flow ID is not available, an error code is returned.
+//	When the specified flow ID is not available, an error code is returned.
 //
 // @param request - GetMediaConnectFlowOutputRequest
 //
@@ -104882,9 +104875,7 @@ func (client *Client) GetMediaInfoJob(request *GetMediaInfoJobRequest) (_result 
 //
 // Description:
 //
-//
-//
-//  	- ## [](#qps-)QPS limit
+// ## QPS limit
 //
 // This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
 //
@@ -104943,9 +104934,7 @@ func (client *Client) GetMediaLiveChannelWithOptions(request *GetMediaLiveChanne
 //
 // Description:
 //
-//
-//
-//  	- ## [](#qps-)QPS limit
+// ## QPS limit
 //
 // This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
 //
@@ -104969,9 +104958,7 @@ func (client *Client) GetMediaLiveChannel(request *GetMediaLiveChannelRequest) (
 //
 // Description:
 //
-//
-//
-//  	- ## [](#qps-)QPS limit
+// ## QPS limit
 //
 // This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
 //
@@ -105030,9 +105017,7 @@ func (client *Client) GetMediaLiveInputWithOptions(request *GetMediaLiveInputReq
 //
 // Description:
 //
-//
-//
-//  	- ## [](#qps-)QPS limit
+// ## QPS limit
 //
 // This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
 //
@@ -105056,9 +105041,7 @@ func (client *Client) GetMediaLiveInput(request *GetMediaLiveInputRequest) (_res
 //
 // Description:
 //
-//
-//
-//  	- ## [](#qps-)QPS limit
+// ## QPS limit
 //
 // This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
 //
@@ -105117,9 +105100,7 @@ func (client *Client) GetMediaLiveInputSecurityGroupWithOptions(request *GetMedi
 //
 // Description:
 //
-//
-//
-//  	- ## [](#qps-)QPS limit
+// ## QPS limit
 //
 // This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
 //
@@ -106258,9 +106239,9 @@ func (client *Client) GetSystemTemplate(request *GetSystemTemplateRequest) (_res
 //
 // A template is an encapsulation of the timeline of a media editing and production job. You can define a common timeline as a template. When you have the same requirements, you need to only specify key parameters and materials to produce videos.
 //
-// 	- For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/445399.html).
+//   - For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/445399.html).
 //
-// 	- For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/445389.html).
+//   - For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/445389.html).
 //
 // @param request - GetTemplateRequest
 //
@@ -106323,9 +106304,9 @@ func (client *Client) GetTemplateWithOptions(request *GetTemplateRequest, runtim
 //
 // A template is an encapsulation of the timeline of a media editing and production job. You can define a common timeline as a template. When you have the same requirements, you need to only specify key parameters and materials to produce videos.
 //
-// 	- For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/445399.html).
+//   - For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/445399.html).
 //
-// 	- For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/445389.html).
+//   - For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/445389.html).
 //
 // @param request - GetTemplateRequest
 //
@@ -107218,7 +107199,7 @@ func (client *Client) ListAIAgentDialogues(request *ListAIAgentDialoguesRequest)
 //
 // **Note**:
 //
-// 	- The default value of `PageSize` is 10, and the default value of `PageNumber` is 1.
+//   - The default value of `PageSize` is 10, and the default value of `PageNumber` is 1.
 //
 // @param request - ListAIAgentInstanceRequest
 //
@@ -107297,7 +107278,7 @@ func (client *Client) ListAIAgentInstanceWithOptions(request *ListAIAgentInstanc
 //
 // **Note**:
 //
-// 	- The default value of `PageSize` is 10, and the default value of `PageNumber` is 1.
+//   - The default value of `PageSize` is 10, and the default value of `PageNumber` is 1.
 //
 // @param request - ListAIAgentInstanceRequest
 //
@@ -108775,13 +108756,13 @@ func (client *Client) ListLivePackageChannelGroups(request *ListLivePackageChann
 //
 // This API operation allows you to query live package channels by **GroupName*	- and **Keyword**. Keyword is optional. You can sort the channels by creation time in ascending or descending order and paginate the results. This facilitates the management of channels and retrieval of channel information.
 //
-// 	- **GroupName*	- is required to specify the channel group to which the channel belongs.
+//   - **GroupName*	- is required to specify the channel group to which the channel belongs.
 //
-// 	- **Keyword*	- supports fuzzy match of channel names or descriptions, which helps quickly filter desired channels.
+//   - **Keyword*	- supports fuzzy match of channel names or descriptions, which helps quickly filter desired channels.
 //
-// 	- **PageNo*	- and **PageSize*	- can help control the paging of returned results to facilitate batch processing of data.
+//   - **PageNo*	- and **PageSize*	- can help control the paging of returned results to facilitate batch processing of data.
 //
-// 	- **SortBy*	- allows you to customize how the results are sorted. By default, the results are sorted in descending order.
+//   - **SortBy*	- allows you to customize how the results are sorted. By default, the results are sorted in descending order.
 //
 // **RequestId*	- in the response is used for subsequent troubleshooting. **TotalCount*	- indicates the total number of channels that meet the conditions.
 //
@@ -108860,13 +108841,13 @@ func (client *Client) ListLivePackageChannelsWithOptions(request *ListLivePackag
 //
 // This API operation allows you to query live package channels by **GroupName*	- and **Keyword**. Keyword is optional. You can sort the channels by creation time in ascending or descending order and paginate the results. This facilitates the management of channels and retrieval of channel information.
 //
-// 	- **GroupName*	- is required to specify the channel group to which the channel belongs.
+//   - **GroupName*	- is required to specify the channel group to which the channel belongs.
 //
-// 	- **Keyword*	- supports fuzzy match of channel names or descriptions, which helps quickly filter desired channels.
+//   - **Keyword*	- supports fuzzy match of channel names or descriptions, which helps quickly filter desired channels.
 //
-// 	- **PageNo*	- and **PageSize*	- can help control the paging of returned results to facilitate batch processing of data.
+//   - **PageNo*	- and **PageSize*	- can help control the paging of returned results to facilitate batch processing of data.
 //
-// 	- **SortBy*	- allows you to customize how the results are sorted. By default, the results are sorted in descending order.
+//   - **SortBy*	- allows you to customize how the results are sorted. By default, the results are sorted in descending order.
 //
 // **RequestId*	- in the response is used for subsequent troubleshooting. **TotalCount*	- indicates the total number of channels that meet the conditions.
 //
@@ -109799,9 +109780,7 @@ func (client *Client) ListMediaInfoJobs(request *ListMediaInfoJobsRequest) (_res
 //
 // Description:
 //
-//
-//
-//  	- ## [](#qps-)QPS limit
+// ## QPS limit
 //
 // This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
 //
@@ -109880,9 +109859,7 @@ func (client *Client) ListMediaLiveChannelsWithOptions(request *ListMediaLiveCha
 //
 // Description:
 //
-//
-//
-//  	- ## [](#qps-)QPS limit
+// ## QPS limit
 //
 // This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
 //
@@ -109906,9 +109883,7 @@ func (client *Client) ListMediaLiveChannels(request *ListMediaLiveChannelsReques
 //
 // Description:
 //
-//
-//
-//  	- ## [](#qps-)QPS limit
+// ## QPS limit
 //
 // This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
 //
@@ -109983,9 +109958,7 @@ func (client *Client) ListMediaLiveInputSecurityGroupsWithOptions(request *ListM
 //
 // Description:
 //
-//
-//
-//  	- ## [](#qps-)QPS limit
+// ## QPS limit
 //
 // This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
 //
@@ -110009,9 +109982,7 @@ func (client *Client) ListMediaLiveInputSecurityGroups(request *ListMediaLiveInp
 //
 // Description:
 //
-//
-//
-//  	- ## [](#qps-)QPS limit
+// ## QPS limit
 //
 // This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
 //
@@ -110090,9 +110061,7 @@ func (client *Client) ListMediaLiveInputsWithOptions(request *ListMediaLiveInput
 //
 // Description:
 //
-//
-//
-//  	- ## [](#qps-)QPS limit
+// ## QPS limit
 //
 // This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
 //
@@ -110953,8 +110922,15 @@ func (client *Client) ListSmartSysAvatarModels(request *ListSmartSysAvatarModels
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListSmartVoiceGroupsResponse
-func (client *Client) ListSmartVoiceGroupsWithOptions(runtime *util.RuntimeOptions) (_result *ListSmartVoiceGroupsResponse, _err error) {
-	req := &openapi.OpenApiRequest{}
+func (client *Client) ListSmartVoiceGroupsWithOptions(request *ListSmartVoiceGroupsRequest, runtime *util.RuntimeOptions) (_result *ListSmartVoiceGroupsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
 	params := &openapi.Params{
 		Action:      tea.String("ListSmartVoiceGroups"),
 		Version:     tea.String("2020-11-09"),
@@ -110990,11 +110966,13 @@ func (client *Client) ListSmartVoiceGroupsWithOptions(runtime *util.RuntimeOptio
 //
 // Queries a list of speaker groups, including the name, gender, and sample audio of each speaker. The list is grouped by scenario.
 //
+// @param request - ListSmartVoiceGroupsRequest
+//
 // @return ListSmartVoiceGroupsResponse
-func (client *Client) ListSmartVoiceGroups() (_result *ListSmartVoiceGroupsResponse, _err error) {
+func (client *Client) ListSmartVoiceGroups(request *ListSmartVoiceGroupsRequest) (_result *ListSmartVoiceGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListSmartVoiceGroupsResponse{}
-	_body, _err := client.ListSmartVoiceGroupsWithOptions(runtime)
+	_body, _err := client.ListSmartVoiceGroupsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -111502,9 +111480,9 @@ func (client *Client) ListSystemTemplates(request *ListSystemTemplatesRequest) (
 //
 // A template is an encapsulation of the timeline of a media editing and production job. You can define a common timeline as a template. When you have the same requirements, you need to only specify key parameters and materials to produce videos.
 //
-// 	- For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/445399.html).
+//   - For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/445399.html).
 //
-// 	- For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/445389.html).
+//   - For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/445389.html).
 //
 // @param request - ListTemplatesRequest
 //
@@ -111587,9 +111565,9 @@ func (client *Client) ListTemplatesWithOptions(request *ListTemplatesRequest, ru
 //
 // A template is an encapsulation of the timeline of a media editing and production job. You can define a common timeline as a template. When you have the same requirements, you need to only specify key parameters and materials to produce videos.
 //
-// 	- For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/445399.html).
+//   - For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/445399.html).
 //
-// 	- For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/445389.html).
+//   - For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/445389.html).
 //
 // @param request - ListTemplatesRequest
 //
@@ -114321,11 +114299,11 @@ func (client *Client) SendAIAgentDataChannelMessage(request *SendAIAgentDataChan
 //
 // **Note**
 //
-// 	- Make sure that the `InstanceId` is valid and corresponds to an existing AI agent.
+//   - Make sure that the `InstanceId` is valid and corresponds to an existing AI agent.
 //
-// 	- The content of `Text` must comply with the specifications and does not contain sensitive or inappropriate information.
+//   - The content of `Text` must comply with the specifications and does not contain sensitive or inappropriate information.
 //
-// 	- If you do not want the new broadcast to interrupt the ongoing speech, you must set `EnableInterrupt` to `false`.
+//   - If you do not want the new broadcast to interrupt the ongoing speech, you must set `EnableInterrupt` to `false`.
 //
 // @param request - SendAIAgentSpeechRequest
 //
@@ -114394,11 +114372,11 @@ func (client *Client) SendAIAgentSpeechWithOptions(request *SendAIAgentSpeechReq
 //
 // **Note**
 //
-// 	- Make sure that the `InstanceId` is valid and corresponds to an existing AI agent.
+//   - Make sure that the `InstanceId` is valid and corresponds to an existing AI agent.
 //
-// 	- The content of `Text` must comply with the specifications and does not contain sensitive or inappropriate information.
+//   - The content of `Text` must comply with the specifications and does not contain sensitive or inappropriate information.
 //
-// 	- If you do not want the new broadcast to interrupt the ongoing speech, you must set `EnableInterrupt` to `false`.
+//   - If you do not want the new broadcast to interrupt the ongoing speech, you must set `EnableInterrupt` to `false`.
 //
 // @param request - SendAIAgentSpeechRequest
 //
@@ -115159,7 +115137,7 @@ func (client *Client) SetNotifyConfig(request *SetNotifyConfigRequest) (_result 
 //
 // Description:
 //
-// You can call this operation to start an AI agent instance for a conversation. ````````When the AI agent is started, the system returns a unique `InstanceId` for subsequent tracking and operations.
+// You can call this operation to start an AI agent instance for a conversation. ``````“When the AI agent is started, the system returns a unique `InstanceId` for subsequent tracking and operations.
 //
 // @param tmpReq - StartAIAgentInstanceRequest
 //
@@ -115250,7 +115228,7 @@ func (client *Client) StartAIAgentInstanceWithOptions(tmpReq *StartAIAgentInstan
 //
 // Description:
 //
-// You can call this operation to start an AI agent instance for a conversation. ````````When the AI agent is started, the system returns a unique `InstanceId` for subsequent tracking and operations.
+// You can call this operation to start an AI agent instance for a conversation. ``````“When the AI agent is started, the system returns a unique `InstanceId` for subsequent tracking and operations.
 //
 // @param request - StartAIAgentInstanceRequest
 //
@@ -115343,11 +115321,9 @@ func (client *Client) StartChannel(request *StartChannelRequest) (_result *Start
 //
 // Description:
 //
+//	You can call this operation only when the channel is idle. You cannot start a channel repeatedly.
 //
-//
-//  	- 	- You can call this operation only when the channel is idle. You cannot start a channel repeatedly.
-//
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
 // This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
 //
@@ -115406,11 +115382,9 @@ func (client *Client) StartMediaLiveChannelWithOptions(request *StartMediaLiveCh
 //
 // Description:
 //
+//	You can call this operation only when the channel is idle. You cannot start a channel repeatedly.
 //
-//
-//  	- 	- You can call this operation only when the channel is idle. You cannot start a channel repeatedly.
-//
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
 // This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
 //
@@ -115531,9 +115505,9 @@ func (client *Client) StartRtcRobotInstance(request *StartRtcRobotInstanceReques
 //
 // Description:
 //
-//   Only media assets from Intelligent Media Services (IMS) or ApsaraVideo VOD can be used as the input of a workflow.
+//	  Only media assets from Intelligent Media Services (IMS) or ApsaraVideo VOD can be used as the input of a workflow.
 //
-// 	- When you submit a workflow task, you must specify a workflow template. You can create a workflow template in the [IMS console](https://ims.console.aliyun.com/settings/workflow/list) or use a preset workflow template.
+//		- When you submit a workflow task, you must specify a workflow template. You can create a workflow template in the [IMS console](https://ims.console.aliyun.com/settings/workflow/list) or use a preset workflow template.
 //
 // @param request - StartWorkflowRequest
 //
@@ -115598,9 +115572,9 @@ func (client *Client) StartWorkflowWithOptions(request *StartWorkflowRequest, ru
 //
 // Description:
 //
-//   Only media assets from Intelligent Media Services (IMS) or ApsaraVideo VOD can be used as the input of a workflow.
+//	  Only media assets from Intelligent Media Services (IMS) or ApsaraVideo VOD can be used as the input of a workflow.
 //
-// 	- When you submit a workflow task, you must specify a workflow template. You can create a workflow template in the [IMS console](https://ims.console.aliyun.com/settings/workflow/list) or use a preset workflow template.
+//		- When you submit a workflow task, you must specify a workflow template. You can create a workflow template in the [IMS console](https://ims.console.aliyun.com/settings/workflow/list) or use a preset workflow template.
 //
 // @param request - StartWorkflowRequest
 //
@@ -115622,11 +115596,11 @@ func (client *Client) StartWorkflow(request *StartWorkflowRequest) (_result *Sta
 //
 // Description:
 //
-//   When you no longer need an AI agent to participate in a conversation or task, you can call this operation to stop the running agent and release relevant resources.****
+//	  When you no longer need an AI agent to participate in a conversation or task, you can call this operation to stop the running agent and release relevant resources.****
 //
-// 	- You must specify the unique ID of the AI agent that you want to stop by using InstanceId.****
+//		- You must specify the unique ID of the AI agent that you want to stop by using InstanceId.****
 //
-// 	- ****
+//		- ****
 //
 // @param request - StopAIAgentInstanceRequest
 //
@@ -115683,11 +115657,11 @@ func (client *Client) StopAIAgentInstanceWithOptions(request *StopAIAgentInstanc
 //
 // Description:
 //
-//   When you no longer need an AI agent to participate in a conversation or task, you can call this operation to stop the running agent and release relevant resources.****
+//	  When you no longer need an AI agent to participate in a conversation or task, you can call this operation to stop the running agent and release relevant resources.****
 //
-// 	- You must specify the unique ID of the AI agent that you want to stop by using InstanceId.****
+//		- You must specify the unique ID of the AI agent that you want to stop by using InstanceId.****
 //
-// 	- ****
+//		- ****
 //
 // @param request - StopAIAgentInstanceRequest
 //
@@ -115780,11 +115754,7 @@ func (client *Client) StopChannel(request *StopChannelRequest) (_result *StopCha
 //
 // Description:
 //
-//
-//
-//  	- *
-//
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
 // This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
 //
@@ -115843,11 +115813,7 @@ func (client *Client) StopMediaLiveChannelWithOptions(request *StopMediaLiveChan
 //
 // Description:
 //
-//
-//
-//  	- *
-//
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
 // This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
 //
@@ -116656,11 +116622,11 @@ func (client *Client) SubmitCustomizedVoiceJob(request *SubmitCustomizedVoiceJob
 //
 // Description:
 //
-//   SubmitDNAJob is an asynchronous operation. After a request is sent, the system returns a request ID and a job ID and runs the task in the background.
+//	  SubmitDNAJob is an asynchronous operation. After a request is sent, the system returns a request ID and a job ID and runs the task in the background.
 //
-// 	- You can call this operation only in the China (Beijing), China (Hangzhou), and China (Shanghai) regions.
+//		- You can call this operation only in the China (Beijing), China (Hangzhou), and China (Shanghai) regions.
 //
-// 	- You can submit a text fingerprint analysis job only in the China (Shanghai) region.
+//		- You can submit a text fingerprint analysis job only in the China (Shanghai) region.
 //
 // @param tmpReq - SubmitDNAJobRequest
 //
@@ -116763,11 +116729,11 @@ func (client *Client) SubmitDNAJobWithOptions(tmpReq *SubmitDNAJobRequest, runti
 //
 // Description:
 //
-//   SubmitDNAJob is an asynchronous operation. After a request is sent, the system returns a request ID and a job ID and runs the task in the background.
+//	  SubmitDNAJob is an asynchronous operation. After a request is sent, the system returns a request ID and a job ID and runs the task in the background.
 //
-// 	- You can call this operation only in the China (Beijing), China (Hangzhou), and China (Shanghai) regions.
+//		- You can call this operation only in the China (Beijing), China (Hangzhou), and China (Shanghai) regions.
 //
-// 	- You can submit a text fingerprint analysis job only in the China (Shanghai) region.
+//		- You can submit a text fingerprint analysis job only in the China (Shanghai) region.
 //
 // @param request - SubmitDNAJobRequest
 //
@@ -116791,31 +116757,31 @@ func (client *Client) SubmitDNAJob(request *SubmitDNAJobRequest) (_result *Submi
 //
 // This feature is available only in the China (Shanghai) region.
 //
-// 	- You can add a title, subtitle, data source, and unit to a chart and specify the font and font size. For supported fonts, see [Fonts](https://help.aliyun.com/document_detail/449567.html).
+//   - You can add a title, subtitle, data source, and unit to a chart and specify the font and font size. For supported fonts, see [Fonts](https://help.aliyun.com/document_detail/449567.html).
 //
-// 	- This feature provides five styles of animated charts: normal, mystery, lively, business, and green.
+//   - This feature provides five styles of animated charts: normal, mystery, lively, business, and green.
 //
-// 	- You can set the background color or image.
+//   - You can set the background color or image.
 //
-// 	- You can set the animation duration, size, and bitrate.
+//   - You can set the animation duration, size, and bitrate.
 //
 // Examples
 //
-// 	- Line chart: [Sample datasheet](https://ice-public-media.oss-cn-shanghai.aliyuncs.com/smart/dynamicChart/line.xlsx), [Effect](https://ice-public-media.oss-cn-shanghai.aliyuncs.com/smart/dynamicChart/line.mp4)
+//   - Line chart: [Sample datasheet](https://ice-public-media.oss-cn-shanghai.aliyuncs.com/smart/dynamicChart/line.xlsx), [Effect](https://ice-public-media.oss-cn-shanghai.aliyuncs.com/smart/dynamicChart/line.mp4)
 //
-// 	- Bar chart: [Sample datasheet](https://ice-public-media.oss-cn-shanghai.aliyuncs.com/smart/dynamicChart/histgram.xlsx), [Effect](https://ice-public-media.oss-cn-shanghai.aliyuncs.com/smart/dynamicChart/histgram.mp4)
+//   - Bar chart: [Sample datasheet](https://ice-public-media.oss-cn-shanghai.aliyuncs.com/smart/dynamicChart/histgram.xlsx), [Effect](https://ice-public-media.oss-cn-shanghai.aliyuncs.com/smart/dynamicChart/histgram.mp4)
 //
-// 	- Pie chart: [Sample datasheet](https://ice-public-media.oss-cn-shanghai.aliyuncs.com/smart/dynamicChart/pie.xlsx), [Effect](https://ice-public-media.oss-cn-shanghai.aliyuncs.com/smart/dynamicChart/pie.mp4)
+//   - Pie chart: [Sample datasheet](https://ice-public-media.oss-cn-shanghai.aliyuncs.com/smart/dynamicChart/pie.xlsx), [Effect](https://ice-public-media.oss-cn-shanghai.aliyuncs.com/smart/dynamicChart/pie.mp4)
 //
-// 	- Normal: [Effect](https://ice-public-media.oss-cn-shanghai.aliyuncs.com/smart/dynamicChart/Normal.mp4)
+//   - Normal: [Effect](https://ice-public-media.oss-cn-shanghai.aliyuncs.com/smart/dynamicChart/Normal.mp4)
 //
-// 	- Mystery: [Effect](https://ice-public-media.oss-cn-shanghai.aliyuncs.com/smart/dynamicChart/Mystery.mp4)
+//   - Mystery: [Effect](https://ice-public-media.oss-cn-shanghai.aliyuncs.com/smart/dynamicChart/Mystery.mp4)
 //
-// 	- Lively: [Effect](https://ice-public-media.oss-cn-shanghai.aliyuncs.com/smart/dynamicChart/Lively.mp4)
+//   - Lively: [Effect](https://ice-public-media.oss-cn-shanghai.aliyuncs.com/smart/dynamicChart/Lively.mp4)
 //
-// 	- Business: [Effect](https://ice-public-media.oss-cn-shanghai.aliyuncs.com/smart/dynamicChart/Business.mp4)
+//   - Business: [Effect](https://ice-public-media.oss-cn-shanghai.aliyuncs.com/smart/dynamicChart/Business.mp4)
 //
-// 	- Green: [Effect](https://ice-public-media.oss-cn-shanghai.aliyuncs.com/smart/dynamicChart/Green.mp4)
+//   - Green: [Effect](https://ice-public-media.oss-cn-shanghai.aliyuncs.com/smart/dynamicChart/Green.mp4)
 //
 // @param request - SubmitDynamicChartJobRequest
 //
@@ -116922,31 +116888,31 @@ func (client *Client) SubmitDynamicChartJobWithOptions(request *SubmitDynamicCha
 //
 // This feature is available only in the China (Shanghai) region.
 //
-// 	- You can add a title, subtitle, data source, and unit to a chart and specify the font and font size. For supported fonts, see [Fonts](https://help.aliyun.com/document_detail/449567.html).
+//   - You can add a title, subtitle, data source, and unit to a chart and specify the font and font size. For supported fonts, see [Fonts](https://help.aliyun.com/document_detail/449567.html).
 //
-// 	- This feature provides five styles of animated charts: normal, mystery, lively, business, and green.
+//   - This feature provides five styles of animated charts: normal, mystery, lively, business, and green.
 //
-// 	- You can set the background color or image.
+//   - You can set the background color or image.
 //
-// 	- You can set the animation duration, size, and bitrate.
+//   - You can set the animation duration, size, and bitrate.
 //
 // Examples
 //
-// 	- Line chart: [Sample datasheet](https://ice-public-media.oss-cn-shanghai.aliyuncs.com/smart/dynamicChart/line.xlsx), [Effect](https://ice-public-media.oss-cn-shanghai.aliyuncs.com/smart/dynamicChart/line.mp4)
+//   - Line chart: [Sample datasheet](https://ice-public-media.oss-cn-shanghai.aliyuncs.com/smart/dynamicChart/line.xlsx), [Effect](https://ice-public-media.oss-cn-shanghai.aliyuncs.com/smart/dynamicChart/line.mp4)
 //
-// 	- Bar chart: [Sample datasheet](https://ice-public-media.oss-cn-shanghai.aliyuncs.com/smart/dynamicChart/histgram.xlsx), [Effect](https://ice-public-media.oss-cn-shanghai.aliyuncs.com/smart/dynamicChart/histgram.mp4)
+//   - Bar chart: [Sample datasheet](https://ice-public-media.oss-cn-shanghai.aliyuncs.com/smart/dynamicChart/histgram.xlsx), [Effect](https://ice-public-media.oss-cn-shanghai.aliyuncs.com/smart/dynamicChart/histgram.mp4)
 //
-// 	- Pie chart: [Sample datasheet](https://ice-public-media.oss-cn-shanghai.aliyuncs.com/smart/dynamicChart/pie.xlsx), [Effect](https://ice-public-media.oss-cn-shanghai.aliyuncs.com/smart/dynamicChart/pie.mp4)
+//   - Pie chart: [Sample datasheet](https://ice-public-media.oss-cn-shanghai.aliyuncs.com/smart/dynamicChart/pie.xlsx), [Effect](https://ice-public-media.oss-cn-shanghai.aliyuncs.com/smart/dynamicChart/pie.mp4)
 //
-// 	- Normal: [Effect](https://ice-public-media.oss-cn-shanghai.aliyuncs.com/smart/dynamicChart/Normal.mp4)
+//   - Normal: [Effect](https://ice-public-media.oss-cn-shanghai.aliyuncs.com/smart/dynamicChart/Normal.mp4)
 //
-// 	- Mystery: [Effect](https://ice-public-media.oss-cn-shanghai.aliyuncs.com/smart/dynamicChart/Mystery.mp4)
+//   - Mystery: [Effect](https://ice-public-media.oss-cn-shanghai.aliyuncs.com/smart/dynamicChart/Mystery.mp4)
 //
-// 	- Lively: [Effect](https://ice-public-media.oss-cn-shanghai.aliyuncs.com/smart/dynamicChart/Lively.mp4)
+//   - Lively: [Effect](https://ice-public-media.oss-cn-shanghai.aliyuncs.com/smart/dynamicChart/Lively.mp4)
 //
-// 	- Business: [Effect](https://ice-public-media.oss-cn-shanghai.aliyuncs.com/smart/dynamicChart/Business.mp4)
+//   - Business: [Effect](https://ice-public-media.oss-cn-shanghai.aliyuncs.com/smart/dynamicChart/Business.mp4)
 //
-// 	- Green: [Effect](https://ice-public-media.oss-cn-shanghai.aliyuncs.com/smart/dynamicChart/Green.mp4)
+//   - Green: [Effect](https://ice-public-media.oss-cn-shanghai.aliyuncs.com/smart/dynamicChart/Green.mp4)
 //
 // @param request - SubmitDynamicChartJobRequest
 //
@@ -117592,9 +117558,9 @@ func (client *Client) SubmitLiveSnapshotJob(request *SubmitLiveSnapshotJobReques
 //
 // Description:
 //
-//   When you submit a transcoding job that immediately takes effect, make sure that the input stream can be streamed.
+//	  When you submit a transcoding job that immediately takes effect, make sure that the input stream can be streamed.
 //
-// 	- When you submit a timed transcoding job, make sure that the input stream can be streamed before the specified time.
+//		- When you submit a timed transcoding job, make sure that the input stream can be streamed before the specified time.
 //
 // @param tmpReq - SubmitLiveTranscodeJobRequest
 //
@@ -117685,9 +117651,9 @@ func (client *Client) SubmitLiveTranscodeJobWithOptions(tmpReq *SubmitLiveTransc
 //
 // Description:
 //
-//   When you submit a transcoding job that immediately takes effect, make sure that the input stream can be streamed.
+//	  When you submit a transcoding job that immediately takes effect, make sure that the input stream can be streamed.
 //
-// 	- When you submit a timed transcoding job, make sure that the input stream can be streamed before the specified time.
+//		- When you submit a timed transcoding job, make sure that the input stream can be streamed before the specified time.
 //
 // @param request - SubmitLiveTranscodeJobRequest
 //
@@ -118097,33 +118063,33 @@ func (client *Client) SubmitMediaInfoJob(request *SubmitMediaInfoJobRequest) (_r
 //
 // Description:
 //
-//   This operation returns only the submission result of a media editing and production job. When the submission result is returned, the job may still be in progress. After a media editing and production job is submitted, the job is queued in the background for asynchronous processing.
+//	  This operation returns only the submission result of a media editing and production job. When the submission result is returned, the job may still be in progress. After a media editing and production job is submitted, the job is queued in the background for asynchronous processing.
 //
-// 	- The materials referenced in the timeline of an online editing project can be media assets in the media asset library or Object Storage Service (OSS) objects. External URLs or Alibaba Cloud Content Delivery Network (CDN) URLs are not supported. To use an OSS object as a material, you must set MediaUrl to an OSS URL, such as https://your-bucket.oss-region-name.aliyuncs.com/your-object.ext.
+//		- The materials referenced in the timeline of an online editing project can be media assets in the media asset library or Object Storage Service (OSS) objects. External URLs or Alibaba Cloud Content Delivery Network (CDN) URLs are not supported. To use an OSS object as a material, you must set MediaUrl to an OSS URL, such as https://your-bucket.oss-region-name.aliyuncs.com/your-object.ext.
 //
-// 	- After the production is complete, the output file is automatically registered as a media asset. The media asset first needs to be analyzed. After the media asset is analyzed, you can query the duration and resolution information based on the media asset ID.
+//		- After the production is complete, the output file is automatically registered as a media asset. The media asset first needs to be analyzed. After the media asset is analyzed, you can query the duration and resolution information based on the media asset ID.
 //
 // ## [](#)Limits
 //
-// 	- The throttling threshold of this operation is 30 queries per second (QPS).
+//   - The throttling threshold of this operation is 30 queries per second (QPS).
 //
 //     **
 //
 //     **Note*	- If the threshold is exceeded, a "Throttling.User" error is returned when you submit an editing job. For more information about how to resolve this issue, see the [FAQ](https://help.aliyun.com/document_detail/453484.html).
 //
-// 	- You can create up to 100 video tracks, 100 image tracks, and 100 subtitle tracks in a project.
+//   - You can create up to 100 video tracks, 100 image tracks, and 100 subtitle tracks in a project.
 //
-// 	- The total size of material files cannot exceed 1 TB.
+//   - The total size of material files cannot exceed 1 TB.
 //
-// 	- The OSS buckets in which the materials reside and where the output media assets are stored must be in the same region as the region in which Intelligent Media Services (IMS) is activated.
+//   - The OSS buckets in which the materials reside and where the output media assets are stored must be in the same region as the region in which Intelligent Media Services (IMS) is activated.
 //
-// 	- An output video must meet the following requirements:
+//   - An output video must meet the following requirements:
 //
-//     	- Both the width and height must be at least 128 pixels.
+//   - Both the width and height must be at least 128 pixels.
 //
-//     	- Both the width and height cannot exceed 4,096 pixels.
+//   - Both the width and height cannot exceed 4,096 pixels.
 //
-//     	- The shorter side of the video cannot exceed 2,160 pixels.
+//   - The shorter side of the video cannot exceed 2,160 pixels.
 //
 // @param request - SubmitMediaProducingJobRequest
 //
@@ -118226,33 +118192,33 @@ func (client *Client) SubmitMediaProducingJobWithOptions(request *SubmitMediaPro
 //
 // Description:
 //
-//   This operation returns only the submission result of a media editing and production job. When the submission result is returned, the job may still be in progress. After a media editing and production job is submitted, the job is queued in the background for asynchronous processing.
+//	  This operation returns only the submission result of a media editing and production job. When the submission result is returned, the job may still be in progress. After a media editing and production job is submitted, the job is queued in the background for asynchronous processing.
 //
-// 	- The materials referenced in the timeline of an online editing project can be media assets in the media asset library or Object Storage Service (OSS) objects. External URLs or Alibaba Cloud Content Delivery Network (CDN) URLs are not supported. To use an OSS object as a material, you must set MediaUrl to an OSS URL, such as https://your-bucket.oss-region-name.aliyuncs.com/your-object.ext.
+//		- The materials referenced in the timeline of an online editing project can be media assets in the media asset library or Object Storage Service (OSS) objects. External URLs or Alibaba Cloud Content Delivery Network (CDN) URLs are not supported. To use an OSS object as a material, you must set MediaUrl to an OSS URL, such as https://your-bucket.oss-region-name.aliyuncs.com/your-object.ext.
 //
-// 	- After the production is complete, the output file is automatically registered as a media asset. The media asset first needs to be analyzed. After the media asset is analyzed, you can query the duration and resolution information based on the media asset ID.
+//		- After the production is complete, the output file is automatically registered as a media asset. The media asset first needs to be analyzed. After the media asset is analyzed, you can query the duration and resolution information based on the media asset ID.
 //
 // ## [](#)Limits
 //
-// 	- The throttling threshold of this operation is 30 queries per second (QPS).
+//   - The throttling threshold of this operation is 30 queries per second (QPS).
 //
 //     **
 //
 //     **Note*	- If the threshold is exceeded, a "Throttling.User" error is returned when you submit an editing job. For more information about how to resolve this issue, see the [FAQ](https://help.aliyun.com/document_detail/453484.html).
 //
-// 	- You can create up to 100 video tracks, 100 image tracks, and 100 subtitle tracks in a project.
+//   - You can create up to 100 video tracks, 100 image tracks, and 100 subtitle tracks in a project.
 //
-// 	- The total size of material files cannot exceed 1 TB.
+//   - The total size of material files cannot exceed 1 TB.
 //
-// 	- The OSS buckets in which the materials reside and where the output media assets are stored must be in the same region as the region in which Intelligent Media Services (IMS) is activated.
+//   - The OSS buckets in which the materials reside and where the output media assets are stored must be in the same region as the region in which Intelligent Media Services (IMS) is activated.
 //
-// 	- An output video must meet the following requirements:
+//   - An output video must meet the following requirements:
 //
-//     	- Both the width and height must be at least 128 pixels.
+//   - Both the width and height must be at least 128 pixels.
 //
-//     	- Both the width and height cannot exceed 4,096 pixels.
+//   - Both the width and height cannot exceed 4,096 pixels.
 //
-//     	- The shorter side of the video cannot exceed 2,160 pixels.
+//   - The shorter side of the video cannot exceed 2,160 pixels.
 //
 // @param request - SubmitMediaProducingJobRequest
 //
@@ -121126,9 +121092,9 @@ func (client *Client) UpdateLiveSnapshotTemplate(request *UpdateLiveSnapshotTemp
 //
 // Description:
 //
-//   For a non-timed transcoding job, you can modify the Name parameter of the job, regardless of the job state.
+//	  For a non-timed transcoding job, you can modify the Name parameter of the job, regardless of the job state.
 //
-// 	- For a timed job, you can modify the Name, StreamInput, TranscodeOutput, and TimedConfig parameters. However, the StreamInput, TranscodeOutput, and TimedConfig parameters can be modified only when the job is not started.
+//		- For a timed job, you can modify the Name, StreamInput, TranscodeOutput, and TimedConfig parameters. However, the StreamInput, TranscodeOutput, and TimedConfig parameters can be modified only when the job is not started.
 //
 // @param tmpReq - UpdateLiveTranscodeJobRequest
 //
@@ -121215,9 +121181,9 @@ func (client *Client) UpdateLiveTranscodeJobWithOptions(tmpReq *UpdateLiveTransc
 //
 // Description:
 //
-//   For a non-timed transcoding job, you can modify the Name parameter of the job, regardless of the job state.
+//	  For a non-timed transcoding job, you can modify the Name parameter of the job, regardless of the job state.
 //
-// 	- For a timed job, you can modify the Name, StreamInput, TranscodeOutput, and TimedConfig parameters. However, the StreamInput, TranscodeOutput, and TimedConfig parameters can be modified only when the job is not started.
+//		- For a timed job, you can modify the Name, StreamInput, TranscodeOutput, and TimedConfig parameters. However, the StreamInput, TranscodeOutput, and TimedConfig parameters can be modified only when the job is not started.
 //
 // @param request - UpdateLiveTranscodeJobRequest
 //
@@ -121324,9 +121290,9 @@ func (client *Client) UpdateLiveTranscodeTemplate(request *UpdateLiveTranscodeTe
 //
 // Description:
 //
-//   You can modify the source only when the flow is in the offline state.
+//	  You can modify the source only when the flow is in the offline state.
 //
-// 	- The source type cannot be modified.
+//		- The source type cannot be modified.
 //
 // @param request - UpdateMediaConnectFlowInputRequest
 //
@@ -121407,9 +121373,9 @@ func (client *Client) UpdateMediaConnectFlowInputWithOptions(request *UpdateMedi
 //
 // Description:
 //
-//   You can modify the source only when the flow is in the offline state.
+//	  You can modify the source only when the flow is in the offline state.
 //
-// 	- The source type cannot be modified.
+//		- The source type cannot be modified.
 //
 // @param request - UpdateMediaConnectFlowInputRequest
 //
@@ -121431,9 +121397,9 @@ func (client *Client) UpdateMediaConnectFlowInput(request *UpdateMediaConnectFlo
 //
 // Description:
 //
-//   You can modify an output only when the flow is in the offline state.
+//	  You can modify an output only when the flow is in the offline state.
 //
-// 	- The output type cannot be modified.
+//		- The output type cannot be modified.
 //
 // @param request - UpdateMediaConnectFlowOutputRequest
 //
@@ -121518,9 +121484,9 @@ func (client *Client) UpdateMediaConnectFlowOutputWithOptions(request *UpdateMed
 //
 // Description:
 //
-//   You can modify an output only when the flow is in the offline state.
+//	  You can modify an output only when the flow is in the offline state.
 //
-// 	- The output type cannot be modified.
+//		- The output type cannot be modified.
 //
 // @param request - UpdateMediaConnectFlowOutputRequest
 //
@@ -121740,11 +121706,9 @@ func (client *Client) UpdateMediaInfo(request *UpdateMediaInfoRequest) (_result 
 //
 // Description:
 //
+//	You can modify a MediaLive channel only when it is not running.
 //
-//
-//  	- 	- You can modify a MediaLive channel only when it is not running.
-//
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
 // This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
 //
@@ -121841,11 +121805,9 @@ func (client *Client) UpdateMediaLiveChannelWithOptions(tmpReq *UpdateMediaLiveC
 //
 // Description:
 //
+//	You can modify a MediaLive channel only when it is not running.
 //
-//
-//  	- 	- You can modify a MediaLive channel only when it is not running.
-//
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
 // This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
 //
@@ -121869,11 +121831,9 @@ func (client *Client) UpdateMediaLiveChannel(request *UpdateMediaLiveChannelRequ
 //
 // Description:
 //
+//	You can modify an input only when it is not associated with a MediaLive channel.
 //
-//
-//  	- 	- You can modify an input only when it is not associated with a MediaLive channel.
-//
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
 // This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
 //
@@ -121956,11 +121916,9 @@ func (client *Client) UpdateMediaLiveInputWithOptions(tmpReq *UpdateMediaLiveInp
 //
 // Description:
 //
+//	You can modify an input only when it is not associated with a MediaLive channel.
 //
-//
-//  	- 	- You can modify an input only when it is not associated with a MediaLive channel.
-//
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
 // This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
 //
@@ -121984,11 +121942,9 @@ func (client *Client) UpdateMediaLiveInput(request *UpdateMediaLiveInputRequest)
 //
 // Description:
 //
+//	You can modify a security group only when it is not associated with a MediaLive input.
 //
-//
-//  	- 	- You can modify a security group only when it is not associated with a MediaLive input.
-//
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
 // This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
 //
@@ -122061,11 +122017,9 @@ func (client *Client) UpdateMediaLiveInputSecurityGroupWithOptions(tmpReq *Updat
 //
 // Description:
 //
+//	You can modify a security group only when it is not associated with a MediaLive input.
 //
-//
-//  	- 	- You can modify a security group only when it is not associated with a MediaLive input.
-//
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
 // This operation can be called up to 50 times per second for each Alibaba Cloud account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
 //
@@ -122672,9 +122626,9 @@ func (client *Client) UpdateSourceLocation(request *UpdateSourceLocationRequest)
 //
 // Description:
 //
-//   For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/445399.html).
+//	  For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/445399.html).
 //
-// 	- For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/445389.html).
+//		- For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/445389.html).
 //
 // @param request - UpdateTemplateRequest
 //
@@ -122761,9 +122715,9 @@ func (client *Client) UpdateTemplateWithOptions(request *UpdateTemplateRequest, 
 //
 // Description:
 //
-//   For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/445399.html).
+//	  For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/445399.html).
 //
-// 	- For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/445389.html).
+//		- For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/445389.html).
 //
 // @param request - UpdateTemplateRequest
 //
@@ -122785,17 +122739,17 @@ func (client *Client) UpdateTemplate(request *UpdateTemplateRequest) (_result *U
 //
 // Description:
 //
-//   If a callback is configured, you will receive an UploadByURLComplete event notification after the file is uploaded. You can query the upload status by calling the GetURLUploadInfos operation.
+//	  If a callback is configured, you will receive an UploadByURLComplete event notification after the file is uploaded. You can query the upload status by calling the GetURLUploadInfos operation.
 //
-// 	- After a request is submitted, the upload job is queued as an asynchronous job in the cloud. You can query the status of the upload job based on information such as the URL and media asset ID that are returned in the event notification.
+//		- After a request is submitted, the upload job is queued as an asynchronous job in the cloud. You can query the status of the upload job based on information such as the URL and media asset ID that are returned in the event notification.
 //
-// 	- You can call this operation to upload media files that are not stored on a local server or device and must be uploaded by using URLs that are accessible over the Internet.
+//		- You can call this operation to upload media files that are not stored on a local server or device and must be uploaded by using URLs that are accessible over the Internet.
 //
-// 	- You can call this operation to upload media files only to ApsaraVideo VOD, but not to your own Object Storage Service (OSS) buckets. To upload a media file to an OSS bucket, pull the file to a local directory, use [OSS SDK](https://help.aliyun.com/document_detail/32006.html) to upload the file to an OSS bucket, and then call the [RegisterMediaInfo](https://help.aliyun.com/document_detail/441152.html) operation to register the file in the OSS bucket with the media asset library.
+//		- You can call this operation to upload media files only to ApsaraVideo VOD, but not to your own Object Storage Service (OSS) buckets. To upload a media file to an OSS bucket, pull the file to a local directory, use [OSS SDK](https://help.aliyun.com/document_detail/32006.html) to upload the file to an OSS bucket, and then call the [RegisterMediaInfo](https://help.aliyun.com/document_detail/441152.html) operation to register the file in the OSS bucket with the media asset library.
 //
-// 	- This operation is available only in the China (Shanghai), China (Beijing), and China (Shenzhen) regions.
+//		- This operation is available only in the China (Shanghai), China (Beijing), and China (Shenzhen) regions.
 //
-// 	- You can call this operation to upload only audio and video files.
+//		- You can call this operation to upload only audio and video files.
 //
 // @param request - UploadMediaByURLRequest
 //
@@ -122876,17 +122830,17 @@ func (client *Client) UploadMediaByURLWithOptions(request *UploadMediaByURLReque
 //
 // Description:
 //
-//   If a callback is configured, you will receive an UploadByURLComplete event notification after the file is uploaded. You can query the upload status by calling the GetURLUploadInfos operation.
+//	  If a callback is configured, you will receive an UploadByURLComplete event notification after the file is uploaded. You can query the upload status by calling the GetURLUploadInfos operation.
 //
-// 	- After a request is submitted, the upload job is queued as an asynchronous job in the cloud. You can query the status of the upload job based on information such as the URL and media asset ID that are returned in the event notification.
+//		- After a request is submitted, the upload job is queued as an asynchronous job in the cloud. You can query the status of the upload job based on information such as the URL and media asset ID that are returned in the event notification.
 //
-// 	- You can call this operation to upload media files that are not stored on a local server or device and must be uploaded by using URLs that are accessible over the Internet.
+//		- You can call this operation to upload media files that are not stored on a local server or device and must be uploaded by using URLs that are accessible over the Internet.
 //
-// 	- You can call this operation to upload media files only to ApsaraVideo VOD, but not to your own Object Storage Service (OSS) buckets. To upload a media file to an OSS bucket, pull the file to a local directory, use [OSS SDK](https://help.aliyun.com/document_detail/32006.html) to upload the file to an OSS bucket, and then call the [RegisterMediaInfo](https://help.aliyun.com/document_detail/441152.html) operation to register the file in the OSS bucket with the media asset library.
+//		- You can call this operation to upload media files only to ApsaraVideo VOD, but not to your own Object Storage Service (OSS) buckets. To upload a media file to an OSS bucket, pull the file to a local directory, use [OSS SDK](https://help.aliyun.com/document_detail/32006.html) to upload the file to an OSS bucket, and then call the [RegisterMediaInfo](https://help.aliyun.com/document_detail/441152.html) operation to register the file in the OSS bucket with the media asset library.
 //
-// 	- This operation is available only in the China (Shanghai), China (Beijing), and China (Shenzhen) regions.
+//		- This operation is available only in the China (Shanghai), China (Beijing), and China (Shenzhen) regions.
 //
-// 	- You can call this operation to upload only audio and video files.
+//		- You can call this operation to upload only audio and video files.
 //
 // @param request - UploadMediaByURLRequest
 //
@@ -122908,11 +122862,11 @@ func (client *Client) UploadMediaByURL(request *UploadMediaByURLRequest) (_resul
 //
 // Description:
 //
-//   You can call this operation to pull a media stream file based on a URL and upload the file. After the media stream file is uploaded, the media stream is associated with the specified media asset ID.
+//	  You can call this operation to pull a media stream file based on a URL and upload the file. After the media stream file is uploaded, the media stream is associated with the specified media asset ID.
 //
-// 	- You can call this operation to upload media stream files only to ApsaraVideo VOD, but not to your own Object Storage Service (OSS) buckets. To upload a media stream file to an OSS bucket, pull the file to a local directory, use [OSS SDK](https://help.aliyun.com/document_detail/32006.html) to upload the file to an OSS bucket, and then call the [RegisterMediaStream](https://help.aliyun.com/document_detail/440765.html) operation to associate the media stream with the specified media asset ID.
+//		- You can call this operation to upload media stream files only to ApsaraVideo VOD, but not to your own Object Storage Service (OSS) buckets. To upload a media stream file to an OSS bucket, pull the file to a local directory, use [OSS SDK](https://help.aliyun.com/document_detail/32006.html) to upload the file to an OSS bucket, and then call the [RegisterMediaStream](https://help.aliyun.com/document_detail/440765.html) operation to associate the media stream with the specified media asset ID.
 //
-// 	- This operation is available only in the China (Shanghai), China (Beijing), and China (Shenzhen) regions.
+//		- This operation is available only in the China (Shanghai), China (Beijing), and China (Shenzhen) regions.
 //
 // @param request - UploadStreamByURLRequest
 //
@@ -122989,11 +122943,11 @@ func (client *Client) UploadStreamByURLWithOptions(request *UploadStreamByURLReq
 //
 // Description:
 //
-//   You can call this operation to pull a media stream file based on a URL and upload the file. After the media stream file is uploaded, the media stream is associated with the specified media asset ID.
+//	  You can call this operation to pull a media stream file based on a URL and upload the file. After the media stream file is uploaded, the media stream is associated with the specified media asset ID.
 //
-// 	- You can call this operation to upload media stream files only to ApsaraVideo VOD, but not to your own Object Storage Service (OSS) buckets. To upload a media stream file to an OSS bucket, pull the file to a local directory, use [OSS SDK](https://help.aliyun.com/document_detail/32006.html) to upload the file to an OSS bucket, and then call the [RegisterMediaStream](https://help.aliyun.com/document_detail/440765.html) operation to associate the media stream with the specified media asset ID.
+//		- You can call this operation to upload media stream files only to ApsaraVideo VOD, but not to your own Object Storage Service (OSS) buckets. To upload a media stream file to an OSS bucket, pull the file to a local directory, use [OSS SDK](https://help.aliyun.com/document_detail/32006.html) to upload the file to an OSS bucket, and then call the [RegisterMediaStream](https://help.aliyun.com/document_detail/440765.html) operation to associate the media stream with the specified media asset ID.
 //
-// 	- This operation is available only in the China (Shanghai), China (Beijing), and China (Shenzhen) regions.
+//		- This operation is available only in the China (Shanghai), China (Beijing), and China (Shenzhen) regions.
 //
 // @param request - UploadStreamByURLRequest
 //
