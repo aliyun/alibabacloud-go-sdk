@@ -3419,13 +3419,13 @@ func (s *CreateDIAlarmRuleRequest) SetTriggerConditions(v []*CreateDIAlarmRuleRe
 type CreateDIAlarmRuleRequestNotificationSettings struct {
 	// Deprecated
 	//
-	// The duration of the alert suppression interval. Default value: 5. Unit: minutes.
+	// This parameter is deprecated and replaced by the MuteInterval parameter.
 	//
 	// example:
 	//
 	// 5
 	InhibitionInterval *int32 `json:"InhibitionInterval,omitempty" xml:"InhibitionInterval,omitempty"`
-	// 告警抑制间隔时长，单位分钟，默认5分钟。
+	// The duration of the alert suppression interval. Default value: 5. Unit: minutes.
 	//
 	// example:
 	//
@@ -3466,7 +3466,7 @@ func (s *CreateDIAlarmRuleRequestNotificationSettings) SetNotificationReceivers(
 }
 
 type CreateDIAlarmRuleRequestNotificationSettingsNotificationChannels struct {
-	// The alert notification methods. Valid values:
+	// The alert notification method. Valid values:
 	//
 	// 	- Mail
 	//
@@ -3542,9 +3542,9 @@ func (s *CreateDIAlarmRuleRequestNotificationSettingsNotificationReceivers) SetR
 type CreateDIAlarmRuleRequestTriggerConditions struct {
 	// Deprecated
 	//
-	// The types of DDL operations for which the alert rule takes effect.
+	// This parameter is deprecated and replaced by the DdlTypes parameter.
 	DdlReportTags []*string `json:"DdlReportTags,omitempty" xml:"DdlReportTags,omitempty" type:"Repeated"`
-	// 在DDL通知的时候才生效，需要生效的DDL列表。
+	// The types of DDL operations for which the alert rule takes effect.
 	DdlTypes []*string `json:"DdlTypes,omitempty" xml:"DdlTypes,omitempty" type:"Repeated"`
 	// The time interval for alert calculation. Unit: minutes.
 	//
@@ -3824,6 +3824,7 @@ type CreateDIJobRequest struct {
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
 	// The settings for the dimension of the synchronization task. The settings include processing policies for DDL messages, policies for data type mappings between source fields and destination fields, and runtime parameters of the synchronization task.
 	JobSettings *CreateDIJobRequestJobSettings `json:"JobSettings,omitempty" xml:"JobSettings,omitempty" type:"Struct"`
+	JobType     *string                        `json:"JobType,omitempty" xml:"JobType,omitempty"`
 	// The synchronization type. Valid values:
 	//
 	// 	- FullAndRealtimeIncremental: one-time full synchronization and real-time incremental synchronization
@@ -3917,6 +3918,11 @@ func (s *CreateDIJobRequest) SetJobSettings(v *CreateDIJobRequestJobSettings) *C
 	return s
 }
 
+func (s *CreateDIJobRequest) SetJobType(v string) *CreateDIJobRequest {
+	s.JobType = &v
+	return s
+}
+
 func (s *CreateDIJobRequest) SetMigrationType(v string) *CreateDIJobRequest {
 	s.MigrationType = &v
 	return s
@@ -3982,7 +3988,7 @@ func (s *CreateDIJobRequestDestinationDataSourceSettings) SetDataSourceName(v st
 type CreateDIJobRequestJobSettings struct {
 	// The channel control settings for the synchronization task. You can configure special channel control settings for the following synchronization links: data synchronization between Hologres data sources and data synchronization from Hologres to Kafka.
 	//
-	// 1.  Data synchronization from Hologres to Kafka
+	// 1.  Holo2Kafka
 	//
 	// 	- Example: {"destinationChannelSettings":{"kafkaClientProperties":[{"key":"linger.ms","value":"100"}],"keyColumns":["col3"],"writeMode":"canal"}}
 	//
@@ -3990,9 +3996,9 @@ type CreateDIJobRequestJobSettings struct {
 	//
 	// 	- keyColumns: the names of Kafka columns to which you want to write data.
 	//
-	// 	- writeMode: the writing format. Valid values: json and canal.
+	// 	- writeMode: the writing format of the Kafka data source. Valid values: json and canal.
 	//
-	// 2.  Data synchronization between Hologres data sources
+	// 2.  Holo2Holo
 	//
 	// 	- Example: {"destinationChannelSettings":{"conflictMode":"replace","dynamicColumnAction":"replay","writeMode":"replay"}}
 	//
@@ -4000,7 +4006,7 @@ type CreateDIJobRequestJobSettings struct {
 	//
 	// 	- writeMode: the mode in which you want to write data to Hologres. Valid values: replay and insert.
 	//
-	// 	- dynamicColumnAction: the method used to write data to dynamic columns in a Hologres table. Valid values: replay, insert, and ignore.
+	// 	- dynamicColumnAction: the mode in which you want to write data to dynamic columns in a Hologres table. Valid values: replay, insert, and ignore.
 	//
 	// example:
 	//
@@ -4191,9 +4197,9 @@ type CreateDIJobRequestJobSettingsRuntimeSettings struct {
 	//
 	// 	- runtime.realtime.concurrent: specifies the maximum number of parallel threads that are allowed for a real-time synchronization task.
 	//
-	// 	- runtime.realtime.failover.minute.dataxcdc: The maximum waiting duration before a synchronization task retries the next restart if the previous restart fails after failover occurs. Unit: minutes.
+	// 	- runtime.realtime.failover.minute.dataxcdc: specifies the maximum waiting duration before a synchronization task retries the next restart if the previous restart fails after failover occurs. Unit: minutes.
 	//
-	// 	- runtime.realtime.failover.times.dataxcdc: The maximum number of failures that are allowed for restarting a synchronization task after failovers occur.
+	// 	- runtime.realtime.failover.times.dataxcdc: specifies the maximum number of failures that are allowed for restarting a synchronization task after failovers occur.
 	//
 	// example:
 	//
@@ -4732,6 +4738,7 @@ type CreateDIJobShrinkRequest struct {
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
 	// The settings for the dimension of the synchronization task. The settings include processing policies for DDL messages, policies for data type mappings between source fields and destination fields, and runtime parameters of the synchronization task.
 	JobSettingsShrink *string `json:"JobSettings,omitempty" xml:"JobSettings,omitempty"`
+	JobType           *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
 	// The synchronization type. Valid values:
 	//
 	// 	- FullAndRealtimeIncremental: one-time full synchronization and real-time incremental synchronization
@@ -4822,6 +4829,11 @@ func (s *CreateDIJobShrinkRequest) SetJobName(v string) *CreateDIJobShrinkReques
 
 func (s *CreateDIJobShrinkRequest) SetJobSettingsShrink(v string) *CreateDIJobShrinkRequest {
 	s.JobSettingsShrink = &v
+	return s
+}
+
+func (s *CreateDIJobShrinkRequest) SetJobType(v string) *CreateDIJobShrinkRequest {
+	s.JobType = &v
 	return s
 }
 
@@ -5143,6 +5155,8 @@ type CreateDataQualityEvaluationTaskRequest struct {
 	DataQualityRules []*CreateDataQualityEvaluationTaskRequestDataQualityRules `json:"DataQualityRules,omitempty" xml:"DataQualityRules,omitempty" type:"Repeated"`
 	// The data source ID. You can call the [ListDataSources](https://help.aliyun.com/document_detail/211431.html) operation to query the ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
@@ -5169,6 +5183,8 @@ type CreateDataQualityEvaluationTaskRequest struct {
 	//
 	// You can use this parameter to specify the DataWorks workspace on which you want to perform the API operation.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 10000
@@ -5188,6 +5204,8 @@ type CreateDataQualityEvaluationTaskRequest struct {
 	// { "queue": "default", "sqlEngine": "SPARK_SQL" }
 	RuntimeConf *string `json:"RuntimeConf,omitempty" xml:"RuntimeConf,omitempty"`
 	// The monitored object of the monitor.
+	//
+	// This parameter is required.
 	Target *CreateDataQualityEvaluationTaskRequestTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
 	// The trigger configuration of the monitor.
 	Trigger *CreateDataQualityEvaluationTaskRequestTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
@@ -5935,6 +5953,8 @@ type CreateDataQualityEvaluationTaskRequestTarget struct {
 	//
 	// 	- analyticdb_for_postgresql
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// maxcompute
@@ -5946,6 +5966,8 @@ type CreateDataQualityEvaluationTaskRequestTarget struct {
 	// pt=$[yyyymmdd-1]
 	PartitionSpec *string `json:"PartitionSpec,omitempty" xml:"PartitionSpec,omitempty"`
 	// The ID of the table in Data Map.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -6014,6 +6036,8 @@ type CreateDataQualityEvaluationTaskShrinkRequest struct {
 	DataQualityRulesShrink *string `json:"DataQualityRules,omitempty" xml:"DataQualityRules,omitempty"`
 	// The data source ID. You can call the [ListDataSources](https://help.aliyun.com/document_detail/211431.html) operation to query the ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
@@ -6040,6 +6064,8 @@ type CreateDataQualityEvaluationTaskShrinkRequest struct {
 	//
 	// You can use this parameter to specify the DataWorks workspace on which you want to perform the API operation.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 10000
@@ -6059,6 +6085,8 @@ type CreateDataQualityEvaluationTaskShrinkRequest struct {
 	// { "queue": "default", "sqlEngine": "SPARK_SQL" }
 	RuntimeConf *string `json:"RuntimeConf,omitempty" xml:"RuntimeConf,omitempty"`
 	// The monitored object of the monitor.
+	//
+	// This parameter is required.
 	TargetShrink *string `json:"Target,omitempty" xml:"Target,omitempty"`
 	// The trigger configuration of the monitor.
 	TriggerShrink *string `json:"Trigger,omitempty" xml:"Trigger,omitempty"`
@@ -9962,13 +9990,13 @@ type CreateWorkflowInstancesRequest struct {
 	//
 	// create for test
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// Runtime configuration.
+	// The runtime configuration.
 	DefaultRunProperties *CreateWorkflowInstancesRequestDefaultRunProperties `json:"DefaultRunProperties,omitempty" xml:"DefaultRunProperties,omitempty" type:"Struct"`
-	// The project environment.
+	// The environment of the workspace. Valid values:
 	//
-	// - Prod (production)
+	// 	- Prod: production environment
 	//
-	// - Dev
+	// 	- Dev: development environment
 	//
 	// example:
 	//
@@ -10004,11 +10032,11 @@ type CreateWorkflowInstancesRequest struct {
 	//
 	// }
 	TaskParameters *string `json:"TaskParameters,omitempty" xml:"TaskParameters,omitempty"`
-	// The type of the workflow instance.
+	// The type of the workflow instance. Valid values:
 	//
-	// - SupplementData: Retroactive data
+	// 	- SupplementData
 	//
-	// - ManualWorkflow: manual workflow
+	// 	- ManualWorkflow
 	//
 	// This parameter is required.
 	//
@@ -10102,53 +10130,53 @@ func (s *CreateWorkflowInstancesRequest) SetWorkflowParameters(v string) *Create
 }
 
 type CreateWorkflowInstancesRequestDefaultRunProperties struct {
-	// Alarm configuration.
+	// The alert settings.
 	Alert *CreateWorkflowInstancesRequestDefaultRunPropertiesAlert `json:"Alert,omitempty" xml:"Alert,omitempty" type:"Struct"`
-	// Analyze the configuration.
+	// The analysis of the configurations.
 	Analysis *CreateWorkflowInstancesRequestDefaultRunPropertiesAnalysis `json:"Analysis,omitempty" xml:"Analysis,omitempty" type:"Struct"`
-	// The list of project IDs that do not need to be run.
+	// The IDs of the projects that do not need to be run.
 	ExcludeProjectIds []*int64 `json:"ExcludeProjectIds,omitempty" xml:"ExcludeProjectIds,omitempty" type:"Repeated"`
-	// The list of task IDs that you do not want to run.
+	// The IDs of the tasks that do not need to be run.
 	ExcludeTaskIds []*int64 `json:"ExcludeTaskIds,omitempty" xml:"ExcludeTaskIds,omitempty" type:"Repeated"`
-	// The list of project IDs to be run.
+	// The IDs of the projects that need to be run.
 	IncludeProjectIds []*int64 `json:"IncludeProjectIds,omitempty" xml:"IncludeProjectIds,omitempty" type:"Repeated"`
-	// The list of task IDs to be run.
+	// The IDs of the tasks that need to be run.
 	IncludeTaskIds []*int64 `json:"IncludeTaskIds,omitempty" xml:"IncludeTaskIds,omitempty" type:"Repeated"`
-	// The data replenishment mode. The default value is ManualSelection.
+	// The data backfill mode. Default value: ManualSelection. Valid values:
 	//
-	// - General: In normal mode, only one \\"roottaskkids\\" can be filled in, and \\"IncludeTaskIds\\" is optional. If not, the content in \\"roottaskkids\\" will be included by default.
+	// 	- General: You can specify only one root task ID. The `IncludeTaskIds` parameter is optional. If you do not specify the IncludeTaskIds parameter, the tasks that are specified by the `RootTaskIds` parameter are included by default.``
 	//
-	// - ManualSelection: manually select, \\"roottaskkids\\" can be filled in multiple, \\"IncludeTaskIds\\" optional, if not, the content in \\"roottaskkids\\" will be included by default.
+	// 	- ManualSelection: You can specify multiple root tasks IDs. The `IncludeTaskIds` parameter is optional. If you do not specify the IncludeTaskIds parameter, the tasks that are specified by the `RootTaskIds` parameter are included by default.``
 	//
-	// - Chain: the link, \\"roottaskkids\\" is empty, and \\"IncludeTaskIds\\" is filled with two IDs, which are the start and end tasks respectively.
+	// 	- Chain: The value of the `RootTaskIds` parameter is left empty. You must set the `IncludeTaskIds` parameter to the start task ID and the end task ID.
 	//
-	// - AllDownstream: all downstream, \\"roottaskkids\\" can only be filled in one
+	// 	- AllDownstream: You can specify only one root task ID.``
 	//
 	// example:
 	//
 	// ManualSelection
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The running sequence. Default value: Asc.
+	// The running order. Default value: Asc. Valid values:
 	//
-	// - Asc: ascending order by business date.
+	// 	- Asc: The tasks are sorted by data timestamp in ascending order.
 	//
-	// - Desc: descending order by business date.
+	// 	- Desc: The tasks are sorted by data timestamp in descending order.
 	//
 	// example:
 	//
 	// Asc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The number of rows that the task has. Values from 2 to 10 are parallelism and 1 is serial.
+	// The number of tasks that can be run in parallel. If you specify the value to 2 to 10, the value indicates the number of tasks that can be run in parallel. If you specify the value to 1, the tasks are run one by one.
 	//
 	// example:
 	//
 	// 2
 	Parallelism *int32 `json:"Parallelism,omitempty" xml:"Parallelism,omitempty"`
-	// The ID list of the root task.
+	// The root task IDs.
 	RootTaskIds []*int64 `json:"RootTaskIds,omitempty" xml:"RootTaskIds,omitempty" type:"Repeated"`
-	// Run the policy. If this field is empty, the task configuration is followed.
+	// The data backfill policy. If you leave this parameter empty, the runtime configuration is used.
 	RunPolicy *CreateWorkflowInstancesRequestDefaultRunPropertiesRunPolicy `json:"RunPolicy,omitempty" xml:"RunPolicy,omitempty" type:"Struct"`
-	// The identifier of the custom scheduling Resource Group. If this field is empty, the task configuration is followed.
+	// The identifier of the custom resource group for scheduling. If you leave this parameter empty, the runtime configuration is used.
 	//
 	// example:
 	//
@@ -10225,25 +10253,25 @@ func (s *CreateWorkflowInstancesRequestDefaultRunProperties) SetRuntimeResource(
 }
 
 type CreateWorkflowInstancesRequestDefaultRunPropertiesAlert struct {
-	// The notification method.
+	// The alert notification method. Valid values:
 	//
-	// - Sms: Sms only
+	// 	- Sms
 	//
-	// - Mail: Mail only
+	// 	- Mail
 	//
-	// - SmsMail: SMS and email.
+	// 	- SmsMail
 	//
 	// example:
 	//
 	// Sms
 	NoticeType *string `json:"NoticeType,omitempty" xml:"NoticeType,omitempty"`
-	// The alert policy.
+	// The alerting policy. Valid values:
 	//
-	// - Success: successful alert
+	// 	- SUCCESS: An alert is reported when data backfill succeeds.
 	//
-	// - Failure: failed alarm
+	// 	- FAILURE: An alert is reported when data backfill fails.
 	//
-	// - SuccessFailure: alerts for both success and failure
+	// 	- SuccessFailure: An alert is reported regardless of whether data backfill succeeds or fails.
 	//
 	// example:
 	//
@@ -10270,13 +10298,13 @@ func (s *CreateWorkflowInstancesRequestDefaultRunPropertiesAlert) SetType(v stri
 }
 
 type CreateWorkflowInstancesRequestDefaultRunPropertiesAnalysis struct {
-	// Whether to block the operation if the analysis fails.
+	// Specifies whether to block the running of the instance if the analysis fails.
 	//
 	// example:
 	//
 	// true
 	Blocked *bool `json:"Blocked,omitempty" xml:"Blocked,omitempty"`
-	// Whether to enable analysis.
+	// Specifies whether to enable the analysis feature.
 	//
 	// example:
 	//
@@ -10303,29 +10331,29 @@ func (s *CreateWorkflowInstancesRequestDefaultRunPropertiesAnalysis) SetEnabled(
 }
 
 type CreateWorkflowInstancesRequestDefaultRunPropertiesRunPolicy struct {
-	// The end runtime. This field is required if the policy is set.
+	// The time when the instance finishes running. This parameter is required if you specify the RunPolicy parameter.
 	//
 	// example:
 	//
 	// 23:59:59
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The default value is false.
+	// Specifies whether the instance can be run immediately during the time period in the future. Default value: false.
 	//
 	// example:
 	//
 	// false
 	Immediately *bool `json:"Immediately,omitempty" xml:"Immediately,omitempty"`
-	// The start time. This field is required if the policy is set.
+	// The time when the instance starts to run. This parameter is required if you specify the RunPolicy parameter.
 	//
 	// example:
 	//
 	// 00:00:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The type of the time period. This field is required if the policy is set.
+	// The type of the time period during which the data is backfilled. This parameter is required if you specify the RunPolicy parameter. Valid values:
 	//
-	// - Daily: every day
+	// 	- Daily
 	//
-	// - Weekend: Weekends only
+	// 	- Weekend
 	//
 	// example:
 	//
@@ -10457,13 +10485,13 @@ type CreateWorkflowInstancesShrinkRequest struct {
 	//
 	// create for test
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// Runtime configuration.
+	// The runtime configuration.
 	DefaultRunPropertiesShrink *string `json:"DefaultRunProperties,omitempty" xml:"DefaultRunProperties,omitempty"`
-	// The project environment.
+	// The environment of the workspace. Valid values:
 	//
-	// - Prod (production)
+	// 	- Prod: production environment
 	//
-	// - Dev
+	// 	- Dev: development environment
 	//
 	// example:
 	//
@@ -10499,11 +10527,11 @@ type CreateWorkflowInstancesShrinkRequest struct {
 	//
 	// }
 	TaskParameters *string `json:"TaskParameters,omitempty" xml:"TaskParameters,omitempty"`
-	// The type of the workflow instance.
+	// The type of the workflow instance. Valid values:
 	//
-	// - SupplementData: Retroactive data
+	// 	- SupplementData
 	//
-	// - ManualWorkflow: manual workflow
+	// 	- ManualWorkflow
 	//
 	// This parameter is required.
 	//
@@ -10743,12 +10771,16 @@ func (s *DeleteAlertRuleResponse) SetBody(v *DeleteAlertRuleResponseBody) *Delet
 }
 
 type DeleteCertificateRequest struct {
+	// The ID of the certificate file.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 676303114031776
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the workspace to which the certificate file belongs.
+	//
 	// example:
 	//
 	// 106560
@@ -10774,10 +10806,14 @@ func (s *DeleteCertificateRequest) SetProjectId(v int64) *DeleteCertificateReque
 }
 
 type DeleteCertificateResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// D9A61DC0-B922-421B-B706
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -12030,7 +12066,7 @@ type DeleteProjectMemberRequest struct {
 	//
 	// 534752
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The ID of the account used by the member in the workspace. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/product/ms_menu), choose More > Management Center in the left-side navigation pane, select the desired workspace on the Management Center page, and then click Go to Management Center. In the left-side navigation pane of the SettingCenter page, click Tenant Members and Roles. On the Tenant Members and Roles page, view the ID of the account used by the member in the workspace.
+	// The ID of the account used by the member in the workspace. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/product/ms_menu), choose More > Management Center in the left-side navigation pane, select the desired workspace on the Management Center page, and then click Go to Management Center. In the left-side navigation pane of the SettingCenter page, click Tenant Members and Roles. On the **Tenant Members and Roles*	- page, view the ID of the account used by the member in the workspace.
 	//
 	// This parameter is required.
 	//
@@ -14744,7 +14780,7 @@ type GetDIJobResponseBodyPagingInfo struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The properties of the destination.
 	DestinationDataSourceSettings []*GetDIJobResponseBodyPagingInfoDestinationDataSourceSettings `json:"DestinationDataSourceSettings,omitempty" xml:"DestinationDataSourceSettings,omitempty" type:"Repeated"`
-	// The destination type. Valid values: Hologres, OSS-HDFS, OSS, MaxCompute, Loghub, STARROCKS, Datahub, ANALYTICDB_FOR_MYSQL, Kafka, and Hive.
+	// The destination type. Valid values: Hologres, OSS-HDFS, OSS, MaxCompute, LogHub, StarRocks, DataHub, AnalyticDB_For_MySQL, Kafka, Hive.
 	//
 	// example:
 	//
@@ -14770,6 +14806,7 @@ type GetDIJobResponseBodyPagingInfo struct {
 	//
 	// Running
 	JobStatus *string `json:"JobStatus,omitempty" xml:"JobStatus,omitempty"`
+	JobType   *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
 	// The synchronization type. Valid values:
 	//
 	// 	- FullAndRealtimeIncremental: one-time full synchronization and real-time incremental synchronization
@@ -14798,7 +14835,7 @@ type GetDIJobResponseBodyPagingInfo struct {
 	ResourceSettings *GetDIJobResponseBodyPagingInfoResourceSettings `json:"ResourceSettings,omitempty" xml:"ResourceSettings,omitempty" type:"Struct"`
 	// The settings of the source. Only a single source is supported.
 	SourceDataSourceSettings []*GetDIJobResponseBodyPagingInfoSourceDataSourceSettings `json:"SourceDataSourceSettings,omitempty" xml:"SourceDataSourceSettings,omitempty" type:"Repeated"`
-	// The source type. Valid values: PolarDB, MySQL, Kafka, Loghub, Hologres, Oracle, OceanBase, MongoDB, RedShift, Hive, SqlServer, Doris, and ClickHouse.
+	// The source type. Valid values: PolarDB, MySQL, Kafka, LogHub, Hologres, Oracle, OceanBase, MongoDB, RedShift, Hive, SQLServer, Doris, ClickHouse.
 	//
 	// example:
 	//
@@ -14859,6 +14896,11 @@ func (s *GetDIJobResponseBodyPagingInfo) SetJobSettings(v *GetDIJobResponseBodyP
 
 func (s *GetDIJobResponseBodyPagingInfo) SetJobStatus(v string) *GetDIJobResponseBodyPagingInfo {
 	s.JobStatus = &v
+	return s
+}
+
+func (s *GetDIJobResponseBodyPagingInfo) SetJobType(v string) *GetDIJobResponseBodyPagingInfo {
+	s.JobType = &v
 	return s
 }
 
@@ -15697,11 +15739,11 @@ type GetDIJobLogRequest struct {
 	//
 	// 6153616438
 	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Node type. Currently, it is only applicable in the view resource group 2.0 task:
+	// The type of the node. This parameter is applicable only to the tasks that are run on serverless resource groups. Valid values:
 	//
-	// - MASTER: obtains logs of JobManager.
+	// 	- **MASTER**: the master node, which is used to query the logs of JobManagers.
 	//
-	// - WORKER: obtains logs of TaskManager.
+	// 	- **WORKER**: the worker node, which is used to query the logs of TaskManagers.
 	//
 	// example:
 	//
@@ -16456,7 +16498,7 @@ type GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskIn
 	//
 	// OpenAPI quality monitoring test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Callback settings.
+	// The hook.
 	Hooks []*GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskHooks `json:"Hooks,omitempty" xml:"Hooks,omitempty" type:"Repeated"`
 	// The ID of the data quality monitor.
 	//
@@ -16492,9 +16534,9 @@ type GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskIn
 	//
 	// { "queue": "default" }
 	RuntimeConf *string `json:"RuntimeConf,omitempty" xml:"RuntimeConf,omitempty"`
-	// For more information, see DataQualityTarget monitoring objects for the sample data quality verification task. For more information, see DataQualityTarget.
+	// The monitored object of the monitor.
 	Target *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
-	// The trigger configuration of the data quality verification task.
+	// The trigger configuration of the monitor.
 	Trigger *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
 }
 
@@ -16552,11 +16594,11 @@ func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTa
 }
 
 type GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskHooks struct {
-	// Hook trigger condition. When this condition is met, hook action is triggered. Currently, only two conditional expressions are supported:
+	// The hook trigger condition. When this condition is met, the hook action is triggered. Only two conditional expressions are supported:
 	//
-	// - Specify only one set of rule severity types AND rule verification status, such as `${severity} = = "High" AND ${status} = = "Critical"`, which indicates that in the executed rule, if the rule verification result of severity High is Critical, the condition is met.
+	// 	- Specify only one group of rule strength type and rule check status, such as `${severity} == "High" AND ${status} == "Critical"`. In this expression, the hook trigger condition is met if severity is High and status is Critical.
 	//
-	// - Specify multiple sets of rule severity types AND rule verification status, such as `(${severity} = = "High" AND ${status} = "Critical") OR (${severity} = "Normal" AND ${status} = "Critical") OR (${severity} = "Normal" AND ${status} = "Error")`, if the rule verification result of severity High is Critical, the rule verification result of severity Normal is Critical, or the rule verification result of severity Normal is Error, the enumeration that satisfies the condition expression severity is consistent with the enumeration DataQualityRule in severity, and the enumeration of status is consistent with the status in DataQualityResult.
+	// 	- Specify multiple groups of rule strength types and rule check status, such as `(${severity} == "High"AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Error")`. In this expression, the hook trigger condition is met if severity is High and status is Critical, severity is Normal and status is Critical, or severity is Normal and status is Error. The enumeration of severity in a conditional expression is the same as the enumeration of severity in DataQualityRule. The enumeration of status in a conditional expression is the same as the enumeration of status in DataQualityResult.
 	//
 	// example:
 	//
@@ -16591,11 +16633,11 @@ func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTa
 }
 
 type GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskNotifications struct {
-	// The notification trigger condition. When this condition is met, a message notification is triggered. Currently, only two conditional expressions are supported:
+	// The notification trigger condition. When this condition is met, the alert notification is triggered. Only two conditional expressions are supported:
 	//
-	// - Specify only one set of rule severity types AND rule verification status, such as `${severity} = = "High" AND ${status} = = "Critical"`, which indicates that in the executed rule, if the rule verification result of severity High is Critical, the condition is met.
+	// 	- Specify only one group of rule strength type and rule check status, such as `${severity} == "High" AND ${status} == "Critical"`. In this expression, the hook trigger condition is met if severity is High and status is Critical.
 	//
-	// - Specify multiple sets of rule severity types AND rule verification status, such as `(${severity} = = "High" AND ${status} = "Critical") OR (${severity} = "Normal" AND ${status} = "Critical") OR (${severity} = "Normal" AND ${status} = "Error")`, if the rule verification result of severity High is Critical, the rule verification result of severity Normal is Critical, or the rule verification result of severity Normal is Error, the enumeration that satisfies the condition expression severity is consistent with the enumeration DataQualityRule in severity, and the enumeration of status is consistent with the status in DataQualityResult.
+	// 	- Specify multiple groups of rule strength types and rule check status, such as `(${severity} == "High"AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Error")`. In this expression, the hook trigger condition is met if severity is High and status is Critical, severity is Normal and status is Critical, or severity is Normal and status is Error. The enumeration of severity in a conditional expression is the same as the enumeration of severity in DataQualityRule. The enumeration of status in a conditional expression is the same as the enumeration of status in DataQualityResult.
 	//
 	// example:
 	//
@@ -16768,11 +16810,11 @@ func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTa
 type GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskTrigger struct {
 	// The Id list of the scheduled task, which is valid when the Type is ByScheduledTaskInstance.
 	TaskIds []*int64 `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
-	// Quality Monitoring trigger type:
+	// The trigger type of the monitor. Valid values:
 	//
-	// - ByManual: manually triggered. Default value
+	// 	- ByManual (default): The monitor is manually triggered.
 	//
-	// - ByScheduledTaskInstance: triggered by associated scheduling tasks
+	// 	- ByScheduledTaskInstance: The monitor is triggered by the associated scheduling tasks.
 	//
 	// example:
 	//
@@ -19605,7 +19647,7 @@ type GetProjectMemberRequest struct {
 	//
 	// 88757
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The ID of the account used by the member. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/product/ms_menu), choose More > Management Center in the left-side navigation pane, select the desired workspace on the Management Center page, and then click Go to Management Center. In the left-side navigation pane of the SettingCenter page, click Tenant Members and Roles. On the Tenant Members and Roles page, view the IDs of the accounts used by the members in the workspace.
+	// The ID of the account used by the member in the workspace. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/product/ms_menu), choose More > Management Center in the left-side navigation pane, select the desired workspace on the Management Center page, and then click Go to Management Center. In the left-side navigation pane of the SettingCenter page, click Tenant Members and Roles. On the Tenant Members and Roles page, view the ID of the account used by the member in the workspace.
 	//
 	// This parameter is required.
 	//
@@ -24198,9 +24240,9 @@ type GetWorkflowInstanceResponseBodyWorkflowInstance struct {
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
 	// The environment of the workspace. Valid values:
 	//
-	// 	- Prod: production environment
+	// 	- Prod
 	//
-	// 	- Dev: development environment
+	// 	- Dev
 	//
 	// example:
 	//
@@ -27830,7 +27872,7 @@ type ListDIJobsResponseBodyPagingInfoDIJobs struct {
 	//
 	// 32599
 	DIJobId *int64 `json:"DIJobId,omitempty" xml:"DIJobId,omitempty"`
-	// The destination type. Valid values: Hologres, OSS-HDFS, OSS, MaxCompute, Loghub, STARROCKS, Datahub, ANALYTICDB_FOR_MYSQL, Kafka, and Hive. If you do not configure this parameter, the API operation returns synchronization tasks that use all type of destinations.
+	// The destination type. Valid values: Hologres, OSS-HDFS, OSS, MaxCompute, Loghub, STARROCKS, DataHub, ANALYTICDB_FOR_MYSQL, Kafka, and Hive.
 	//
 	// example:
 	//
@@ -32366,7 +32408,7 @@ type ListDataSourcesRequest struct {
 	//
 	// 	- Asc: ascending order
 	//
-	// Default value: Asc
+	// Default value: Desc
 	//
 	// example:
 	//
@@ -32402,7 +32444,7 @@ type ListDataSourcesRequest struct {
 	//
 	// 	- Name
 	//
-	// Default value: Id
+	// Default value: CreateTime
 	//
 	// example:
 	//
@@ -32412,7 +32454,7 @@ type ListDataSourcesRequest struct {
 	//
 	// 	- You can specify multiple tags, which are in the logical AND relation. For example, you can query the data sources that contain the following tags: `["tag1", "tag2", "tag3"]`.
 	//
-	// 	- If you do not configure this parameter, tag-based filtering is not performed.
+	// 	- If you do not configure this parameter, tag-based filtering is not performed. You can specify up to 10 tags.
 	//
 	// example:
 	//
@@ -32498,7 +32540,7 @@ type ListDataSourcesShrinkRequest struct {
 	//
 	// 	- Asc: ascending order
 	//
-	// Default value: Asc
+	// Default value: Desc
 	//
 	// example:
 	//
@@ -32534,7 +32576,7 @@ type ListDataSourcesShrinkRequest struct {
 	//
 	// 	- Name
 	//
-	// Default value: Id
+	// Default value: CreateTime
 	//
 	// example:
 	//
@@ -32544,7 +32586,7 @@ type ListDataSourcesShrinkRequest struct {
 	//
 	// 	- You can specify multiple tags, which are in the logical AND relation. For example, you can query the data sources that contain the following tags: `["tag1", "tag2", "tag3"]`.
 	//
-	// 	- If you do not configure this parameter, tag-based filtering is not performed.
+	// 	- If you do not configure this parameter, tag-based filtering is not performed. You can specify up to 10 tags.
 	//
 	// example:
 	//
@@ -32756,7 +32798,11 @@ type ListDataSourcesResponseBodyPagingInfoDataSourcesDataSource struct {
 	//
 	// }
 	ConnectionProperties interface{} `json:"ConnectionProperties,omitempty" xml:"ConnectionProperties,omitempty"`
-	// The mode in which the data source is added. The mode varies based on the data source type. Valid values: InstanceMode, UrlMode, and CdhMode. The value InstanceMode indicates the instance mode. The value UrlMode indicates the connection string mode. The value CdhMode indicates the CDH cluster mode.
+	// The mode in which the data source is added. The mode varies based on the data source type. Valid values:
+	//
+	// 	- InstanceMode: instance mode
+	//
+	// 	- UrlMode: connection string mode
 	//
 	// example:
 	//
@@ -34059,10 +34105,6 @@ type ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	// Deprecated
 	//
 	// The environment of the workspace. This parameter is deprecated and replaced by the EnvType parameter. Valid values:
-	//
-	// 	- Prod: production environment
-	//
-	// 	- Dev: development environment
 	//
 	// example:
 	//
@@ -38918,9 +38960,9 @@ type ListProjectMembersResponseBodyPagingInfoProjectMembersRoles struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The type of the role. Valid values:
 	//
-	// 	- UserCustom: custom role
+	// 	- UserCustom: user-defined role
 	//
-	// 	- System: built-in role
+	// 	- System: system role
 	//
 	// example:
 	//
@@ -39375,26 +39417,6 @@ type ListProjectsRequest struct {
 	//
 	// 	- UpdateFailed
 	//
-	// <!---->
-	//
-	// *
-	//
-	// *
-	//
-	// *
-	//
-	// *
-	//
-	// *
-	//
-	// *
-	//
-	// *
-	//
-	// *
-	//
-	// *
-	//
 	// example:
 	//
 	// Available
@@ -39568,26 +39590,6 @@ type ListProjectsShrinkRequest struct {
 	// 	- Updating
 	//
 	// 	- UpdateFailed
-	//
-	// <!---->
-	//
-	// *
-	//
-	// *
-	//
-	// *
-	//
-	// *
-	//
-	// *
-	//
-	// *
-	//
-	// *
-	//
-	// *
-	//
-	// *
 	//
 	// example:
 	//
@@ -43021,7 +43023,47 @@ type ListTasksRequest struct {
 	//
 	// Id Desc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The type of the task.
+	// The type of the task. Valid values:
+	//
+	// 	- ODPS_SQL
+	//
+	// 	- SPARK
+	//
+	// 	- PY_ODPS
+	//
+	// 	- PY_ODPS3
+	//
+	// 	- ODPS_SCRIPT
+	//
+	// 	- ODPS_MR
+	//
+	// 	- COMPONENT_SQL
+	//
+	// 	- EMR_HIVE
+	//
+	// 	- EMR_MR
+	//
+	// 	- EMR_SPARK_SQL
+	//
+	// 	- EMR_SPARK
+	//
+	// 	- EMR_SHELL
+	//
+	// 	- EMR_PRESTO
+	//
+	// 	- EMR_IMPALA
+	//
+	// 	- SPARK_STREAMING
+	//
+	// 	- EMR_KYUUBI
+	//
+	// 	- EMR_TRINO
+	//
+	// 	- HOLOGRES_SQL
+	//
+	// 	- HOLOGRES_SYNC_DDL
+	//
+	// 	- HOLOGRES_SYNC_DATA
 	//
 	// example:
 	//
@@ -43201,7 +43243,47 @@ type ListTasksShrinkRequest struct {
 	//
 	// Id Desc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The type of the task.
+	// The type of the task. Valid values:
+	//
+	// 	- ODPS_SQL
+	//
+	// 	- SPARK
+	//
+	// 	- PY_ODPS
+	//
+	// 	- PY_ODPS3
+	//
+	// 	- ODPS_SCRIPT
+	//
+	// 	- ODPS_MR
+	//
+	// 	- COMPONENT_SQL
+	//
+	// 	- EMR_HIVE
+	//
+	// 	- EMR_MR
+	//
+	// 	- EMR_SPARK_SQL
+	//
+	// 	- EMR_SPARK
+	//
+	// 	- EMR_SHELL
+	//
+	// 	- EMR_PRESTO
+	//
+	// 	- EMR_IMPALA
+	//
+	// 	- SPARK_STREAMING
+	//
+	// 	- EMR_KYUUBI
+	//
+	// 	- EMR_TRINO
+	//
+	// 	- HOLOGRES_SQL
+	//
+	// 	- HOLOGRES_SYNC_DDL
+	//
+	// 	- HOLOGRES_SYNC_DATA
 	//
 	// example:
 	//
@@ -44007,9 +44089,9 @@ type ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The environment of the workspace. Valid values:
 	//
-	// 	- Prod: production environment
+	// 	- Prod
 	//
-	// 	- Dev: development environment
+	// 	- Dev
 	//
 	// example:
 	//
@@ -45091,9 +45173,7 @@ type ListUpstreamTasksRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The environment of the workspace.
-	//
-	// Valid values:
+	// The environment of the workspace. Valid values:
 	//
 	// 	- Prod: production environment
 	//
@@ -45265,9 +45345,9 @@ type ListUpstreamTasksResponseBodyPagingInfoTasks struct {
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The instance generation mode. Valid values:
 	//
-	// T+1
+	// 	- T+1
 	//
-	// Immediately
+	// 	- Immediately
 	//
 	// example:
 	//
@@ -45353,9 +45433,9 @@ type ListUpstreamTasksResponseBodyPagingInfoTasks struct {
 	RuntimeResource *ListUpstreamTasksResponseBodyPagingInfoTasksRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
 	// The scheduling dependency type. Valid values:
 	//
-	// Normal: same-cycle scheduling dependency
+	// 	- Normal: same-cycle scheduling dependency
 	//
-	// CrossCycle: cross-cycle scheduling dependency
+	// 	- CrossCycle: cross-cycle scheduling dependency
 	//
 	// example:
 	//
@@ -50353,18 +50433,24 @@ func (s *TagDataAssetsResponse) SetBody(v *TagDataAssetsResponseBody) *TagDataAs
 }
 
 type TestDataSourceConnectivityRequest struct {
+	// The ID of the data source for which you want to test the network connectivity.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 144544
 	DataSourceId *int64 `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// The DataWorks workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10001
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The resource group ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -50397,7 +50483,10 @@ func (s *TestDataSourceConnectivityRequest) SetResourceGroupId(v string) *TestDa
 }
 
 type TestDataSourceConnectivityResponseBody struct {
+	// The details of the connectivity test.
 	Connectivity *TestDataSourceConnectivityResponseBodyConnectivity `json:"Connectivity,omitempty" xml:"Connectivity,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 4CDF7B72-020B-542A-8465-21CFFA81****
@@ -50423,12 +50512,16 @@ func (s *TestDataSourceConnectivityResponseBody) SetRequestId(v string) *TestDat
 }
 
 type TestDataSourceConnectivityResponseBodyConnectivity struct {
+	// The error message returned if the connectivity test fails. No such a message is returned if the connectivity test is successful.
 	ConnectMessage *string `json:"ConnectMessage,omitempty" xml:"ConnectMessage,omitempty"`
+	// The result of the connectivity test. Valid values: Connectable: The network can be connected. ConfigError: The network can be connected, but the configurations are incorrect. Unreachable: The network cannot be connected. Unsupport: An error is reported due to other causes. For example, the desired resource group is being initialized.
+	//
 	// example:
 	//
 	// Connectable
-	ConnectState *string                                                         `json:"ConnectState,omitempty" xml:"ConnectState,omitempty"`
-	DetailLogs   []*TestDataSourceConnectivityResponseBodyConnectivityDetailLogs `json:"DetailLogs,omitempty" xml:"DetailLogs,omitempty" type:"Repeated"`
+	ConnectState *string `json:"ConnectState,omitempty" xml:"ConnectState,omitempty"`
+	// The detailed logs of each step in the connectivity test.
+	DetailLogs []*TestDataSourceConnectivityResponseBodyConnectivityDetailLogs `json:"DetailLogs,omitempty" xml:"DetailLogs,omitempty" type:"Repeated"`
 }
 
 func (s TestDataSourceConnectivityResponseBodyConnectivity) String() string {
@@ -50455,15 +50548,22 @@ func (s *TestDataSourceConnectivityResponseBodyConnectivity) SetDetailLogs(v []*
 }
 
 type TestDataSourceConnectivityResponseBodyConnectivityDetailLogs struct {
+	// The code of the test item.
+	//
 	// example:
 	//
 	// validate_input_parameters
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The end time of a step.
+	//
 	// example:
 	//
 	// 1730217604002
-	EndTime *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The name of the step.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The start time of a step.
+	//
 	// example:
 	//
 	// 1730217600001
@@ -51701,7 +51801,7 @@ func (s *UpdateDIAlarmRuleRequest) SetTriggerConditions(v []*UpdateDIAlarmRuleRe
 type UpdateDIAlarmRuleRequestNotificationSettings struct {
 	// Deprecated
 	//
-	// The duration of the alert suppression interval. Default value: 5. Unit: minutes.
+	// This parameter is deprecated and replaced by the MuteInterval parameter.
 	//
 	// example:
 	//
@@ -51824,7 +51924,7 @@ func (s *UpdateDIAlarmRuleRequestNotificationSettingsNotificationReceivers) SetR
 type UpdateDIAlarmRuleRequestTriggerConditions struct {
 	// Deprecated
 	//
-	// The types of DDL operations for which the alert rule takes effect.
+	// This parameter is deprecated and replaced by the DdlTypes parameter.
 	DdlReportTags []*string `json:"DdlReportTags,omitempty" xml:"DdlReportTags,omitempty" type:"Repeated"`
 	// The types of DDL operations for which the alert rule takes effect.
 	DdlTypes []*string `json:"DdlTypes,omitempty" xml:"DdlTypes,omitempty" type:"Repeated"`
@@ -52105,8 +52205,12 @@ type UpdateDIJobRequest struct {
 	// The resource settings.
 	ResourceSettings *UpdateDIJobRequestResourceSettings `json:"ResourceSettings,omitempty" xml:"ResourceSettings,omitempty" type:"Struct"`
 	// The list of mappings between rules used to select synchronization objects in the source and transformation rules applied to the selected synchronization objects. Each entry in the list displays a mapping between a rule used to select synchronization objects and a transformation rule applied to the selected synchronization objects.
+	//
+	// >  [ { "SourceObjectSelectionRules":[ { "ObjectType":"Database", "Action":"Include", "ExpressionType":"Exact", "Expression":"biz_db" }, { "ObjectType":"Schema", "Action":"Include", "ExpressionType":"Exact", "Expression":"s1" }, { "ObjectType":"Table", "Action":"Include", "ExpressionType":"Exact", "Expression":"table1" } ], "TransformationRuleNames":[ { "RuleName":"my_database_rename_rule", "RuleActionType":"Rename", "RuleTargetType":"Schema" } ] } ]
 	TableMappings []*UpdateDIJobRequestTableMappings `json:"TableMappings,omitempty" xml:"TableMappings,omitempty" type:"Repeated"`
-	// The list of transformation rules for objects involved in the synchronization task. Each entry in the list defines a transformation rule.
+	// The list of transformation rules for objects involved in the synchronization task.
+	//
+	// >  [ { "RuleName":"my_database_rename_rule", "RuleActionType":"Rename", "RuleTargetType":"Schema", "RuleExpression":"{"expression":"${srcDatasoureName}_${srcDatabaseName}"}" } ]
 	TransformationRules []*UpdateDIJobRequestTransformationRules `json:"TransformationRules,omitempty" xml:"TransformationRules,omitempty" type:"Repeated"`
 }
 
@@ -52159,17 +52263,41 @@ func (s *UpdateDIJobRequest) SetTransformationRules(v []*UpdateDIJobRequestTrans
 }
 
 type UpdateDIJobRequestJobSettings struct {
-	// The channel control settings for the synchronization task. The value of this parameter must be a JSON string.
+	// The channel control settings for the synchronization task. You can configure special channel control settings for the following synchronization links: data synchronization between Hologres data sources and data synchronization from Hologres to Kafka.
+	//
+	// 1.  Holo2Kafka
+	//
+	// 	- Example: {"destinationChannelSettings":{"kafkaClientProperties":[{"key":"linger.ms","value":"100"}],"keyColumns":["col3"],"writeMode":"canal"}}
+	//
+	// 	- kafkaClientProperties: the parameters related to a Kafka producer, which are used when you read data from a Kafka data source.
+	//
+	// 	- keyColumns: the names of Kafka columns to which you want to write data.
+	//
+	// 	- writeMode: the writing format. Valid values: json and canal.
+	//
+	// 2.  Holo2Holo
+	//
+	// 	- Example: {"destinationChannelSettings":{"conflictMode":"replace","dynamicColumnAction":"replay","writeMode":"replay"}}
+	//
+	// 	- conflictMode: the policy used to handle a conflict that occurs during data writing to Hologres. Valid values: replace and ignore.
+	//
+	// 	- writeMode: the mode in which you want to write data to Hologres. Valid values: replay and insert.
+	//
+	// 	- dynamicColumnAction: the mode in which you want to write data to dynamic columns in a Hologres table. Valid values: replay, insert, and ignore.
 	//
 	// example:
 	//
 	// {"structInfo":"MANAGED","storageType":"TEXTFILE","writeMode":"APPEND","partitionColumns":[{"columnName":"pt","columnType":"STRING","comment":""}],"fieldDelimiter":""}
 	ChannelSettings *string `json:"ChannelSettings,omitempty" xml:"ChannelSettings,omitempty"`
 	// The data type mappings between source fields and destination fields.
+	//
+	// >  "ColumnDataTypeSettings":[ { "SourceDataType":"Bigint", "DestinationDataType":"Text" } ]
 	ColumnDataTypeSettings []*UpdateDIJobRequestJobSettingsColumnDataTypeSettings `json:"ColumnDataTypeSettings,omitempty" xml:"ColumnDataTypeSettings,omitempty" type:"Repeated"`
 	// The settings for periodic scheduling.
 	CycleScheduleSettings *UpdateDIJobRequestJobSettingsCycleScheduleSettings `json:"CycleScheduleSettings,omitempty" xml:"CycleScheduleSettings,omitempty" type:"Struct"`
 	// The processing settings for DDL messages.
+	//
+	// >  "DDLHandlingSettings":[ { "Type":"Insert", "Action":"Normal" } ]
 	DdlHandlingSettings []*UpdateDIJobRequestJobSettingsDdlHandlingSettings `json:"DdlHandlingSettings,omitempty" xml:"DdlHandlingSettings,omitempty" type:"Repeated"`
 	// The runtime settings.
 	RuntimeSettings []*UpdateDIJobRequestJobSettingsRuntimeSettings `json:"RuntimeSettings,omitempty" xml:"RuntimeSettings,omitempty" type:"Repeated"`
@@ -52209,13 +52337,13 @@ func (s *UpdateDIJobRequestJobSettings) SetRuntimeSettings(v []*UpdateDIJobReque
 }
 
 type UpdateDIJobRequestJobSettingsColumnDataTypeSettings struct {
-	// The data type of the destination field.
+	// The data type of the destination field. Valid values: bigint, boolean, string, text, datetime, timestamp, decimal, and binary. Different types of data sources support different data types.
 	//
 	// example:
 	//
 	// text
 	DestinationDataType *string `json:"DestinationDataType,omitempty" xml:"DestinationDataType,omitempty"`
-	// The data type of the source field.
+	// The data type of the source field. Valid values: Valid values: bigint, boolean, string, text, datetime, timestamp, decimal, and binary. Different types of data sources support different data types.
 	//
 	// example:
 	//
@@ -52319,21 +52447,21 @@ func (s *UpdateDIJobRequestJobSettingsDdlHandlingSettings) SetType(v string) *Up
 type UpdateDIJobRequestJobSettingsRuntimeSettings struct {
 	// The name of the configuration item. Valid values:
 	//
-	// 	- runtime.offline.speed.limit.mb: indicates the maximum transmission rate that is allowed for a batch synchronization task. This configuration item takes effect only when runtime.offline.speed.limit.enable is set to true.
+	// 	- src.offline.datasource.max.connection: specifies the maximum number of connections that are allowed for reading data from the source of a batch synchronization task.
 	//
-	// 	- runtime.offline.speed.limit.enable: indicates whether throttling is enabled for a batch synchronization task.
+	// 	- dst.offline.truncate: specifies whether to clear the destination table before data writing.
 	//
-	// 	- dst.offline.connection.max: indicates the maximum number of connections that are allowed for writing data to the destination of a batch synchronization task.
+	// 	- runtime.offline.speed.limit.enable: specifies whether throttling is enabled for a batch synchronization task.
 	//
-	// 	- runtime.offline.concurrent: indicates the maximum number of parallel threads that are allowed for a batch synchronization task.
+	// 	- runtime.offline.concurrent: specifies the maximum number of parallel threads that are allowed for a batch synchronization task.
 	//
-	// 	- dst.realtime.connection.max: indicates the maximum number of connections that are allowed for writing data to the destination of a real-time synchronization task.
+	// 	- runtime.enable.auto.create.schema: specifies whether schemas are automatically created in the destination of a synchronization task.
 	//
-	// 	- runtime.enable.auto.create.schema: indicates whether schemas are automatically created in the destination of a synchronization task.
+	// 	- runtime.realtime.concurrent: specifies the maximum number of parallel threads that are allowed for a real-time synchronization task.
 	//
-	// 	- src.offline.datasource.max.connection: indicates the maximum number of connections that are allowed for reading data from the source of a batch synchronization task.
+	// 	- runtime.realtime.failover.minute.dataxcdc: specifies the maximum waiting duration before a synchronization task retries the next restart if the previous restart fails after failover occurs. Unit: minutes.
 	//
-	// 	- runtime.realtime.concurrent: indicates the maximum number of parallel threads that are allowed for a real-time synchronization task.
+	// 	- runtime.realtime.failover.times.dataxcdc: specifies the maximum number of failures that are allowed for restarting a synchronization task after failovers occur.
 	//
 	// example:
 	//
@@ -52497,9 +52625,9 @@ func (s *UpdateDIJobRequestResourceSettingsScheduleResourceSettings) SetResource
 }
 
 type UpdateDIJobRequestTableMappings struct {
-	// The list of rules used to select synchronization objects in the source. The objects can be databases or tables.
+	// The list of rules that you want to use to select synchronization objects in the source.
 	SourceObjectSelectionRules []*UpdateDIJobRequestTableMappingsSourceObjectSelectionRules `json:"SourceObjectSelectionRules,omitempty" xml:"SourceObjectSelectionRules,omitempty" type:"Repeated"`
-	// The list of transformation rules that you want to apply to the synchronization objects selected from the source. Each entry in the list defines a transformation rule.
+	// The transformation rules that you want to apply to the synchronization objects selected from the source.
 	TransformationRules []*UpdateDIJobRequestTableMappingsTransformationRules `json:"TransformationRules,omitempty" xml:"TransformationRules,omitempty" type:"Repeated"`
 }
 
@@ -52543,6 +52671,8 @@ type UpdateDIJobRequestTableMappingsSourceObjectSelectionRules struct {
 	// The object type. Valid values:
 	//
 	// 	- Table
+	//
+	// 	- Schema
 	//
 	// 	- Database
 	//
@@ -52607,6 +52737,8 @@ type UpdateDIJobRequestTableMappingsTransformationRules struct {
 	//
 	// 	- Schema
 	//
+	// 	- Database
+	//
 	// example:
 	//
 	// Table
@@ -52647,21 +52779,75 @@ type UpdateDIJobRequestTransformationRules struct {
 	//
 	// 	- HandleDml
 	//
+	// 	- DefineIncrementalCondition
+	//
+	// 	- DefineCycleScheduleSettings
+	//
+	// 	- DefinePartitionKey
+	//
 	// example:
 	//
 	// Rename
 	RuleActionType *string `json:"RuleActionType,omitempty" xml:"RuleActionType,omitempty"`
 	// The expression of the rule. The expression must be a JSON string.
 	//
-	// Example of a renaming rule: {"expression":"${srcDatasourceName}_${srcDatabaseName}_0922","variables":[{"variableName":"srcDatabaseName","variableRules":[{"from":"fromdb","to":"todb"}]}]}.
+	// 1.  Example of a renaming rule
 	//
-	// expression: the expression of the renaming rule. The expression may contain the following variables: ${srcDatasourceName}, ${srcDatabaseName}, and ${srcTableName}. ${srcDatasourceName} indicates the name of the source. ${srcDatabaseName} indicates the name of a source database. ${srcTableName} indicates the name of a source table. variables: the generation rule for a variable used in the expression of the renaming rule. The default value of the specified variable is the original value of the object indicated by the variable. You can define a group of string replacement rules to change the original values based on your business requirements. variableName: the name of the variable. The variable name cannot be enclosed in ${}. variableRules: the string replacement rules for variables. The system runs the string replacement rules in sequence. from specifies the original string. to specifies the new string. Example of a rule used to add a specific field to the destination and assign a value to the field: {"columns":[{"columnName":"my_add_column","columnValueType":"Constant","columnValue":"123"}]}.
+	// 	- Example: {"expression":"${srcDatasourceName}_${srcDatabaseName}_0922" }
 	//
-	// If you do not configure such a rule, no fields are added to the destination and no values are assigned by default. columnName: the name of the field that you want to add. columnValueType: the value type of the field. Valid values: Constant and Variable. columnValue: the value of the field. If you set the valueType parameter to Constant, set the columnValue parameter to a custom constant of the STRING type. If you set the valueType parameter to Variable, set the columnValue to a built-in variable. The following built-in variables are supported: EXECUTE_TIME (LONG data type), DB_NAME_SRC (STRING data type), DATASOURCE_NAME_SRC (STRING data type), TABLE_NAME_SRC (STRING data type), DB_NAME_DEST (STRING data type), DATASOURCE_NAME_DEST (STRING data type), TABLE_NAME_DEST (STRING data type), and DB_NAME_SRC_TRANSED (STRING data type). EXECUTE_TIME specifies the execution time. DB_NAME_SRC indicates the name of a source database. DATASOURCE_NAME_SRC specifies the name of the source. TABLE_NAME_SRC specifies the name of a source table. DB_NAME_DEST specifies the name of a destination database. DATASOURCE_NAME_DEST specifies the name of the destination. TABLE_NAME_DEST specifies the name of a destination table. DB_NAME_SRC_TRANSED specifies the database name obtained after a transformation. Example of a rule used to specify primary key fields for a destination table: {"columns":["ukcolumn1","ukcolumn2"]}.
+	// 	- expression: the expression of the renaming rule. You can use the following variables in an expression: ${srcDatasourceName}, ${srcDatabaseName}, and ${srcTableName}. ${srcDatasourceName} specifies the name of the source. ${srcDatabaseName} specifies the name of a source database. ${srcTableName} specifies the name of a source table.
 	//
-	// If you do not configure such a rule, the primary key fields in the mapped source table are used for the destination table by default. If the destination table is an existing table, Data Integration does not modify the schema of the destination table. If the specified primary key fields do not exist in the destination table, an error is reported when the synchronization task starts to run. If the destination table is automatically created by the system, Data Integration automatically creates the schema of the destination table. The schema contains the primary key fields that you specify. If the specified primary key fields do not exist in the destination table, an error is reported when the synchronization task starts to run. Example of a rule used to process DML messages: {"dmlPolicies":[{"dmlType":"Delete","dmlAction":"Filter","filterCondition":"id > 1"}]}.
+	// 2.  Example of a column addition rule
 	//
-	// If you do not configure such a rule, the default processing policy for messages generated for insert, update, and delete operations is Normal. dmlType: the DML operation. Valid values: Insert, Update, and Delete. dmlAction: the processing policy for DML messages. Valid values: Normal, Ignore, Filter, and LogicalDelete. Filter indicates conditional processing. You can set the dmlAction parameter to Filter only when the dmlType parameter is set to Update or Delete. filterCondition: the condition used to filter DML messages. This parameter is required only when the dmlAction parameter is set to Filter.
+	// 	- Example: {"columns":[{"columnName":"my_add_column","columnValueType":"Constant","columnValue":"123"}]}
+	//
+	// 	- If you do not configure such a rule, no fields are added to the destination and no values are assigned by default.
+	//
+	// 	- columnName: the name of the field that is added.
+	//
+	// 	- columnValueType: the value type of the field. Valid values: Constant and Variable.
+	//
+	// 	- columnValue: the value of the field. If the columnValueType parameter is set to Constant, set the columnValue parameter to a constant of the STRING data type. If the columnValueType parameter is set to Variable, set the columnValue parameter to a built-in variable. The following built-in variables are supported: EXECUTE_TIME (LONG data type), DB_NAME_SRC (STRING data type), DATASOURCE_NAME_SRC (STRING data type), TABLE_NAME_SRC (STRING data type), DB_NAME_DEST (STRING data type), DATASOURCE_NAME_DEST (STRING data type), TABLE_NAME_DEST (STRING data type), and DB_NAME_SRC_TRANSED (STRING data type). EXECUTE_TIME specifies the execution time. DB_NAME_SRC specifies the name of a source database. DATASOURCE_NAME_SRC specifies the name of the source. TABLE_NAME_SRC specifies the name of a source table. DB_NAME_DEST specifies the name of a destination database. DATASOURCE_NAME_DEST specifies the name of the destination. TABLE_NAME_DEST specifies the name of a destination table. DB_NAME_SRC_TRANSED specifies the database name obtained after a transformation.
+	//
+	// 3.  Example of a rule used to specify primary key fields for a destination table
+	//
+	// 	- Example: {"columns":["ukcolumn1","ukcolumn2"]}
+	//
+	// 	- If you do not configure such a rule, the primary key fields in the mapped source table are used for the destination table by default.
+	//
+	// 	- If the destination table is an existing table, Data Integration does not modify the schema of the destination table. If the specified primary key fields do not exist in the destination table, an error is reported when the synchronization task starts to run.
+	//
+	// 	- If the destination table is automatically created by the system, Data Integration automatically creates the schema of the destination table. The schema contains the primary key fields that you specify. If the specified primary key fields do not exist in the destination table, an error is reported when the synchronization task starts to run.
+	//
+	// 4.  Example of a rule used to process DML messages
+	//
+	// 	- Example: {"dmlPolicies":[{"dmlType":"Delete","dmlAction":"Filter","filterCondition":"id > 1"}]}
+	//
+	// 	- If you do not configure such a rule, the default processing policy for messages generated for insert, update, and delete operations is Normal.
+	//
+	// 	- dmlType: the DML operation. Valid values: Insert, Update, and Delete.
+	//
+	// 	- dmlAction: the processing policy for DML messages. Valid values: Normal, Ignore, Filter, and LogicalDelete. Filter indicates conditional processing. You can set the dmlAction parameter to Filter only when the dmlType parameter is set to Update or Delete.
+	//
+	// 	- filterCondition: the condition used to filter DML messages. This parameter is required only when the dmlAction parameter is set to Filter.
+	//
+	// 5.  Example of a rule used to perform incremental synchronization
+	//
+	// 	- Example: {"where":"id > 0"}
+	//
+	// 	- You can configure such a rule to perform incremental synchronization.
+	//
+	// 6.  Example of a rule used to configure scheduling parameters for an auto triggered task
+	//
+	// 	- Example: {"cronExpress":" \\	- \\	- \\	- \\	- \\	- \\*", "cycleType":"1"}
+	//
+	// 	- You can configure such a rule to configure scheduling parameters for an auto triggered task.
+	//
+	// 7.  Example of a rule used to specify a partition key
+	//
+	// 	- Example: {"columns":["id"]}
+	//
+	// 	- You can configure such a rule to specify a partition key.
 	//
 	// example:
 	//
@@ -52678,6 +52864,8 @@ type UpdateDIJobRequestTransformationRules struct {
 	// 	- Table
 	//
 	// 	- Schema
+	//
+	// 	- Database
 	//
 	// example:
 	//
@@ -52747,8 +52935,12 @@ type UpdateDIJobShrinkRequest struct {
 	// The resource settings.
 	ResourceSettingsShrink *string `json:"ResourceSettings,omitempty" xml:"ResourceSettings,omitempty"`
 	// The list of mappings between rules used to select synchronization objects in the source and transformation rules applied to the selected synchronization objects. Each entry in the list displays a mapping between a rule used to select synchronization objects and a transformation rule applied to the selected synchronization objects.
+	//
+	// >  [ { "SourceObjectSelectionRules":[ { "ObjectType":"Database", "Action":"Include", "ExpressionType":"Exact", "Expression":"biz_db" }, { "ObjectType":"Schema", "Action":"Include", "ExpressionType":"Exact", "Expression":"s1" }, { "ObjectType":"Table", "Action":"Include", "ExpressionType":"Exact", "Expression":"table1" } ], "TransformationRuleNames":[ { "RuleName":"my_database_rename_rule", "RuleActionType":"Rename", "RuleTargetType":"Schema" } ] } ]
 	TableMappingsShrink *string `json:"TableMappings,omitempty" xml:"TableMappings,omitempty"`
-	// The list of transformation rules for objects involved in the synchronization task. Each entry in the list defines a transformation rule.
+	// The list of transformation rules for objects involved in the synchronization task.
+	//
+	// >  [ { "RuleName":"my_database_rename_rule", "RuleActionType":"Rename", "RuleTargetType":"Schema", "RuleExpression":"{"expression":"${srcDatasoureName}_${srcDatabaseName}"}" } ]
 	TransformationRulesShrink *string `json:"TransformationRules,omitempty" xml:"TransformationRules,omitempty"`
 }
 
@@ -54133,7 +54325,7 @@ type UpdateDataQualityRuleRequest struct {
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The sampling settings.
 	SamplingConfig *UpdateDataQualityRuleRequestSamplingConfig `json:"SamplingConfig,omitempty" xml:"SamplingConfig,omitempty" type:"Struct"`
-	// The strength of the rule.
+	// The strength of the rule. Valid values:
 	//
 	// 	- Normal
 	//
@@ -54648,7 +54840,7 @@ type UpdateDataQualityRuleShrinkRequest struct {
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The sampling settings.
 	SamplingConfigShrink *string `json:"SamplingConfig,omitempty" xml:"SamplingConfig,omitempty"`
-	// The strength of the rule.
+	// The strength of the rule. Valid values:
 	//
 	// 	- Normal
 	//
@@ -58209,9 +58401,9 @@ type UpdateWorkflowRequestTasksTrigger struct {
 	Recurrence *string `json:"Recurrence,omitempty" xml:"Recurrence,omitempty"`
 	// The trigger type. Valid values:
 	//
-	// 	- Scheduler: periodic scheduling
+	// 	- Scheduler: scheduling cycle-based trigger
 	//
-	// 	- Manual: manual scheduling
+	// 	- Manual: manual trigger
 	//
 	// example:
 	//
@@ -59734,7 +59926,7 @@ func (client *Client) CreateDataQualityEvaluationTask(request *CreateDataQuality
 
 // Summary:
 //
-// # Creates a monitor instance
+// Creates a monitor instance.
 //
 // @param tmpReq - CreateDataQualityEvaluationTaskInstanceRequest
 //
@@ -59805,7 +59997,7 @@ func (client *Client) CreateDataQualityEvaluationTaskInstanceWithOptions(tmpReq 
 
 // Summary:
 //
-// # Creates a monitor instance
+// Creates a monitor instance.
 //
 // @param request - CreateDataQualityEvaluationTaskInstanceRequest
 //
@@ -61314,7 +61506,7 @@ func (client *Client) CreateWorkflowInstances(request *CreateWorkflowInstancesRe
 
 // Summary:
 //
-// Deletes a custom alert monitoring rule.
+// Deletes a custom monitoring alert rule.
 //
 // @param request - DeleteAlertRuleRequest
 //
@@ -61367,7 +61559,7 @@ func (client *Client) DeleteAlertRuleWithOptions(request *DeleteAlertRuleRequest
 
 // Summary:
 //
-// Deletes a custom alert monitoring rule.
+// Deletes a custom monitoring alert rule.
 //
 // @param request - DeleteAlertRuleRequest
 //
@@ -61385,7 +61577,13 @@ func (client *Client) DeleteAlertRule(request *DeleteAlertRuleRequest) (_result 
 
 // Summary:
 //
-// 删除认证文件
+// Deletes a certificate file.
+//
+// Description:
+//
+// 1.  This API operation is available for all DataWorks editions.
+//
+// 2.  You can call this operation only if you are assigned one of the following roles in DataWorks: Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M.
 //
 // @param request - DeleteCertificateRequest
 //
@@ -61442,7 +61640,13 @@ func (client *Client) DeleteCertificateWithOptions(request *DeleteCertificateReq
 
 // Summary:
 //
-// 删除认证文件
+// Deletes a certificate file.
+//
+// Description:
+//
+// 1.  This API operation is available for all DataWorks editions.
+//
+// 2.  You can call this operation only if you are assigned one of the following roles in DataWorks: Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M.
 //
 // @param request - DeleteCertificateRequest
 //
@@ -65421,7 +65625,7 @@ func (client *Client) GrantMemberProjectRoles(request *GrantMemberProjectRolesRe
 
 // Summary:
 //
-// 验证用
+// Imports a certificate file.
 //
 // @param request - ImportCertificateRequest
 //
@@ -65486,7 +65690,7 @@ func (client *Client) ImportCertificateWithOptions(request *ImportCertificateReq
 
 // Summary:
 //
-// 验证用
+// Imports a certificate file.
 //
 // @param request - ImportCertificateRequest
 //
@@ -70584,7 +70788,13 @@ func (client *Client) TagDataAssets(request *TagDataAssetsRequest) (_result *Tag
 
 // Summary:
 //
-// 测试数据源在资源组上的连通性
+// Tests the network connectivity between a resource group and a data source.
+//
+// Description:
+//
+// 1.  This API operation is available for all DataWorks editions.
+//
+// 2.  Your account must be assigned one of the following roles of the desired workspace: Tenant Owner, Workspace Administrator, Deploy, Develop, Workspace Owner, and O\\&M
 //
 // @param request - TestDataSourceConnectivityRequest
 //
@@ -70645,7 +70855,13 @@ func (client *Client) TestDataSourceConnectivityWithOptions(request *TestDataSou
 
 // Summary:
 //
-// 测试数据源在资源组上的连通性
+// Tests the network connectivity between a resource group and a data source.
+//
+// Description:
+//
+// 1.  This API operation is available for all DataWorks editions.
+//
+// 2.  Your account must be assigned one of the following roles of the desired workspace: Tenant Owner, Workspace Administrator, Deploy, Develop, Workspace Owner, and O\\&M
 //
 // @param request - TestDataSourceConnectivityRequest
 //
