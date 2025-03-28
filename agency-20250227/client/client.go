@@ -1359,8 +1359,7 @@ func (s *GetSubPartnerListRequest) SetSubPartnerPid(v string) *GetSubPartnerList
 }
 
 type GetSubPartnerListResponseBody struct {
-	Data    *GetSubPartnerListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// example:
 	//
 	// 1
@@ -1374,7 +1373,8 @@ type GetSubPartnerListResponseBody struct {
 	// example:
 	//
 	// 9C14ADFE-DF0A-54D4-8BD5-45D0839246B4
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId      *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SubPartnerList []*GetSubPartnerListResponseBodySubPartnerList `json:"SubPartnerList,omitempty" xml:"SubPartnerList,omitempty" type:"Repeated"`
 	// example:
 	//
 	// true
@@ -1391,11 +1391,6 @@ func (s GetSubPartnerListResponseBody) String() string {
 
 func (s GetSubPartnerListResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *GetSubPartnerListResponseBody) SetData(v *GetSubPartnerListResponseBodyData) *GetSubPartnerListResponseBody {
-	s.Data = v
-	return s
 }
 
 func (s *GetSubPartnerListResponseBody) SetMessage(v string) *GetSubPartnerListResponseBody {
@@ -1418,6 +1413,11 @@ func (s *GetSubPartnerListResponseBody) SetRequestId(v string) *GetSubPartnerLis
 	return s
 }
 
+func (s *GetSubPartnerListResponseBody) SetSubPartnerList(v []*GetSubPartnerListResponseBodySubPartnerList) *GetSubPartnerListResponseBody {
+	s.SubPartnerList = v
+	return s
+}
+
 func (s *GetSubPartnerListResponseBody) SetSuccess(v bool) *GetSubPartnerListResponseBody {
 	s.Success = &v
 	return s
@@ -1428,97 +1428,85 @@ func (s *GetSubPartnerListResponseBody) SetTotal(v int32) *GetSubPartnerListResp
 	return s
 }
 
-type GetSubPartnerListResponseBodyData struct {
-	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// example:
-	//
-	// ACTIVE_PERIOD
+type GetSubPartnerListResponseBodySubPartnerList struct {
+	Address             *string `json:"Address,omitempty" xml:"Address,omitempty"`
 	AgreementStatus     *string `json:"AgreementStatus,omitempty" xml:"AgreementStatus,omitempty"`
 	AgreementStatusDesc *string `json:"AgreementStatusDesc,omitempty" xml:"AgreementStatusDesc,omitempty"`
 	City                *string `json:"City,omitempty" xml:"City,omitempty"`
 	CompanyName         *string `json:"CompanyName,omitempty" xml:"CompanyName,omitempty"`
 	Contact             *string `json:"Contact,omitempty" xml:"Contact,omitempty"`
 	District            *string `json:"District,omitempty" xml:"District,omitempty"`
-	// example:
-	//
-	// 2025-02-28 01:00:00
-	JoinTime      *string `json:"JoinTime,omitempty" xml:"JoinTime,omitempty"`
-	MasterAccount *string `json:"MasterAccount,omitempty" xml:"MasterAccount,omitempty"`
-	// example:
-	//
-	// 1708588696796450
-	MasterUid *string `json:"MasterUid,omitempty" xml:"MasterUid,omitempty"`
-	// example:
-	//
-	// P1233453
-	Pid      *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
-	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
+	JoinTime            *string `json:"JoinTime,omitempty" xml:"JoinTime,omitempty"`
+	MasterAccount       *string `json:"MasterAccount,omitempty" xml:"MasterAccount,omitempty"`
+	MasterUid           *string `json:"MasterUid,omitempty" xml:"MasterUid,omitempty"`
+	Pid                 *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	Province            *string `json:"Province,omitempty" xml:"Province,omitempty"`
 }
 
-func (s GetSubPartnerListResponseBodyData) String() string {
+func (s GetSubPartnerListResponseBodySubPartnerList) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetSubPartnerListResponseBodyData) GoString() string {
+func (s GetSubPartnerListResponseBodySubPartnerList) GoString() string {
 	return s.String()
 }
 
-func (s *GetSubPartnerListResponseBodyData) SetAddress(v string) *GetSubPartnerListResponseBodyData {
+func (s *GetSubPartnerListResponseBodySubPartnerList) SetAddress(v string) *GetSubPartnerListResponseBodySubPartnerList {
 	s.Address = &v
 	return s
 }
 
-func (s *GetSubPartnerListResponseBodyData) SetAgreementStatus(v string) *GetSubPartnerListResponseBodyData {
+func (s *GetSubPartnerListResponseBodySubPartnerList) SetAgreementStatus(v string) *GetSubPartnerListResponseBodySubPartnerList {
 	s.AgreementStatus = &v
 	return s
 }
 
-func (s *GetSubPartnerListResponseBodyData) SetAgreementStatusDesc(v string) *GetSubPartnerListResponseBodyData {
+func (s *GetSubPartnerListResponseBodySubPartnerList) SetAgreementStatusDesc(v string) *GetSubPartnerListResponseBodySubPartnerList {
 	s.AgreementStatusDesc = &v
 	return s
 }
 
-func (s *GetSubPartnerListResponseBodyData) SetCity(v string) *GetSubPartnerListResponseBodyData {
+func (s *GetSubPartnerListResponseBodySubPartnerList) SetCity(v string) *GetSubPartnerListResponseBodySubPartnerList {
 	s.City = &v
 	return s
 }
 
-func (s *GetSubPartnerListResponseBodyData) SetCompanyName(v string) *GetSubPartnerListResponseBodyData {
+func (s *GetSubPartnerListResponseBodySubPartnerList) SetCompanyName(v string) *GetSubPartnerListResponseBodySubPartnerList {
 	s.CompanyName = &v
 	return s
 }
 
-func (s *GetSubPartnerListResponseBodyData) SetContact(v string) *GetSubPartnerListResponseBodyData {
+func (s *GetSubPartnerListResponseBodySubPartnerList) SetContact(v string) *GetSubPartnerListResponseBodySubPartnerList {
 	s.Contact = &v
 	return s
 }
 
-func (s *GetSubPartnerListResponseBodyData) SetDistrict(v string) *GetSubPartnerListResponseBodyData {
+func (s *GetSubPartnerListResponseBodySubPartnerList) SetDistrict(v string) *GetSubPartnerListResponseBodySubPartnerList {
 	s.District = &v
 	return s
 }
 
-func (s *GetSubPartnerListResponseBodyData) SetJoinTime(v string) *GetSubPartnerListResponseBodyData {
+func (s *GetSubPartnerListResponseBodySubPartnerList) SetJoinTime(v string) *GetSubPartnerListResponseBodySubPartnerList {
 	s.JoinTime = &v
 	return s
 }
 
-func (s *GetSubPartnerListResponseBodyData) SetMasterAccount(v string) *GetSubPartnerListResponseBodyData {
+func (s *GetSubPartnerListResponseBodySubPartnerList) SetMasterAccount(v string) *GetSubPartnerListResponseBodySubPartnerList {
 	s.MasterAccount = &v
 	return s
 }
 
-func (s *GetSubPartnerListResponseBodyData) SetMasterUid(v string) *GetSubPartnerListResponseBodyData {
+func (s *GetSubPartnerListResponseBodySubPartnerList) SetMasterUid(v string) *GetSubPartnerListResponseBodySubPartnerList {
 	s.MasterUid = &v
 	return s
 }
 
-func (s *GetSubPartnerListResponseBodyData) SetPid(v string) *GetSubPartnerListResponseBodyData {
+func (s *GetSubPartnerListResponseBodySubPartnerList) SetPid(v string) *GetSubPartnerListResponseBodySubPartnerList {
 	s.Pid = &v
 	return s
 }
 
-func (s *GetSubPartnerListResponseBodyData) SetProvince(v string) *GetSubPartnerListResponseBodyData {
+func (s *GetSubPartnerListResponseBodySubPartnerList) SetProvince(v string) *GetSubPartnerListResponseBodySubPartnerList {
 	s.Province = &v
 	return s
 }
