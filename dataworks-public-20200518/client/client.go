@@ -5910,9 +5910,9 @@ type CreateDataSourceRequest struct {
 	//
 	//         {
 	//
-	//           "accessId": "xssssss",
+	//           "accessId": "*****",
 	//
-	//           "accessKey": "xsaxsaxsa",
+	//           "accessKey": "*****",
 	//
 	//           "authType": 2,
 	//
@@ -5968,9 +5968,9 @@ type CreateDataSourceRequest struct {
 	//
 	//         {
 	//
-	//           "accessId": "sssssxx",
+	//           "accessId": "*****",
 	//
-	//           "accessKey": "xsaxaxsaxs",
+	//           "accessKey": "*****",
 	//
 	//           "bucket": "xsa-xs-xs",
 	//
@@ -6060,7 +6060,7 @@ type CreateDataSourceRequest struct {
 	//
 	//         {
 	//
-	//           "accessId": "xsaxsa",
+	//           "accessId": "*****",
 	//
 	//           "emrClusterId": "C-dsads",
 	//
@@ -6068,7 +6068,7 @@ type CreateDataSourceRequest struct {
 	//
 	//           "emrEndpoint": "emr.aliyuncs.com",
 	//
-	//           "accessKey": "dsadsad",
+	//           "accessKey": "*****",
 	//
 	//           "emrUserId": "224833315798889783",
 	//
@@ -6138,9 +6138,9 @@ type CreateDataSourceRequest struct {
 	//
 	//         {
 	//
-	//           "accessId": "xsaxsaxs",
+	//           "accessId": "*****",
 	//
-	//           "accessKey": "xsaxsaxsa",
+	//           "accessKey": "*****",
 	//
 	//           "database": "xsaxsaxsa",
 	//
@@ -6732,8 +6732,13 @@ type CreateFileRequest struct {
 	// example:
 	//
 	// false
-	IgnoreParentSkipRunningProperty *bool   `json:"IgnoreParentSkipRunningProperty,omitempty" xml:"IgnoreParentSkipRunningProperty,omitempty"`
-	ImageId                         *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	IgnoreParentSkipRunningProperty *bool `json:"IgnoreParentSkipRunningProperty,omitempty" xml:"IgnoreParentSkipRunningProperty,omitempty"`
+	// Custom image ID
+	//
+	// example:
+	//
+	// m-bp1h4b5a8ogkbll2f3tr
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	// The output name of the parent file on which the current file depends. If you specify multiple output names, separate them with commas (,).
 	//
 	// This parameter corresponds to the Output Name parameter under Parent Nodes in the Dependencies section of the Properties tab in the [DataWorks console](https://workbench.data.aliyun.com/console).
@@ -8317,6 +8322,7 @@ type CreatePermissionApplyOrderRequest struct {
 	//
 	// I need to use this table
 	ApplyReason *string `json:"ApplyReason,omitempty" xml:"ApplyReason,omitempty"`
+	ApplyType   *string `json:"ApplyType,omitempty" xml:"ApplyType,omitempty"`
 	// The ID of the Alibaba Cloud account for which you want to request permissions. If you want to request permissions for multiple Alibaba Cloud accounts, separate the IDs of the accounts with commas (,).
 	//
 	// This parameter is required.
@@ -8325,6 +8331,7 @@ type CreatePermissionApplyOrderRequest struct {
 	//
 	// 267842600408993176,267842600408993177
 	ApplyUserIds *string `json:"ApplyUserIds,omitempty" xml:"ApplyUserIds,omitempty"`
+	CatalogName  *string `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
 	// The expiration time of the permissions that you request. This value is a UNIX timestamp. The default value is January 1, 2065. If LabelSecurity is disabled for the MaxCompute project in which you want to request permissions on the fields of a table, or the security level of the fields is 0 or is lower than or equal to the security level of the Alibaba Cloud account for which you want to request permissions, you can request only permanent permissions. You can go to the Workspace Management page in the DataWorks console, click MaxCompute Management in the left-side navigation pane, and then check whether column-level access control is enabled. You can go to your DataWorks workspace, view the security level of the fields in Data Map, and then view the security level of the Alibaba Cloud account on the User Management page.
 	//
 	// example:
@@ -8339,8 +8346,6 @@ type CreatePermissionApplyOrderRequest struct {
 	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
 	// The name of the MaxCompute project in which you request permissions on the fields of a table.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// aMaxcomputeProjectName
@@ -8352,8 +8357,6 @@ type CreatePermissionApplyOrderRequest struct {
 	// 1
 	OrderType *int32 `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 	// The ID of the DataWorks workspace that is associated with the MaxCompute project in which you want to request permissions on the fields of a table. You can go to the SettingCenter page in the DataWorks console to view the workspace ID.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -8379,8 +8382,18 @@ func (s *CreatePermissionApplyOrderRequest) SetApplyReason(v string) *CreatePerm
 	return s
 }
 
+func (s *CreatePermissionApplyOrderRequest) SetApplyType(v string) *CreatePermissionApplyOrderRequest {
+	s.ApplyType = &v
+	return s
+}
+
 func (s *CreatePermissionApplyOrderRequest) SetApplyUserIds(v string) *CreatePermissionApplyOrderRequest {
 	s.ApplyUserIds = &v
+	return s
+}
+
+func (s *CreatePermissionApplyOrderRequest) SetCatalogName(v string) *CreatePermissionApplyOrderRequest {
+	s.CatalogName = &v
 	return s
 }
 
@@ -8412,15 +8425,11 @@ func (s *CreatePermissionApplyOrderRequest) SetWorkspaceId(v int32) *CreatePermi
 type CreatePermissionApplyOrderRequestApplyObject struct {
 	// The permission that you want to request. If you want to request multiple permissions at the same time, separate them with commas (,). You can request only the following permissions: Select, Describe, Drop, Alter, Update, and Download.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// Select,Describe
 	Actions *string `json:"Actions,omitempty" xml:"Actions,omitempty"`
 	// The fields on which you want to request permissions.
-	//
-	// This parameter is required.
 	ColumnMetaList []*CreatePermissionApplyOrderRequestApplyObjectColumnMetaList `json:"ColumnMetaList,omitempty" xml:"ColumnMetaList,omitempty" type:"Repeated"`
 	// The name of the object on which you want to request permissions. You can request permissions only on MaxCompute tables. Set this parameter to the name of the table on which you want to request permissions.
 	//
@@ -8456,6 +8465,7 @@ func (s *CreatePermissionApplyOrderRequestApplyObject) SetName(v string) *Create
 }
 
 type CreatePermissionApplyOrderRequestApplyObjectColumnMetaList struct {
+	Actions *string `json:"Actions,omitempty" xml:"Actions,omitempty"`
 	// The field on which you want to request permissions. If you want to request permissions on an entire table, enter all fields in the table. You can request permissions on specific fields of a table in a MaxCompute project only after LabelSecurity is enabled for this project. If LabelSecurity is disabled, you can request permissions only on an entire table.
 	//
 	// This parameter is required.
@@ -8472,6 +8482,11 @@ func (s CreatePermissionApplyOrderRequestApplyObjectColumnMetaList) String() str
 
 func (s CreatePermissionApplyOrderRequestApplyObjectColumnMetaList) GoString() string {
 	return s.String()
+}
+
+func (s *CreatePermissionApplyOrderRequestApplyObjectColumnMetaList) SetActions(v string) *CreatePermissionApplyOrderRequestApplyObjectColumnMetaList {
+	s.Actions = &v
+	return s
 }
 
 func (s *CreatePermissionApplyOrderRequestApplyObjectColumnMetaList) SetName(v string) *CreatePermissionApplyOrderRequestApplyObjectColumnMetaList {
@@ -26815,7 +26830,7 @@ func (s *GetDISyncTaskResponseBody) SetSuccess(v bool) *GetDISyncTaskResponseBod
 }
 
 type GetDISyncTaskResponseBodyData struct {
-	// Array of alarm rules associated with real-time tasks.
+	// The alert rules that are associated with the real-time synchronization task. The value of this parameter is an array.
 	AlarmList []*GetDISyncTaskResponseBodyDataAlarmList `json:"AlarmList,omitempty" xml:"AlarmList,omitempty" type:"Repeated"`
 	// 	- If the TaskType parameter is set to DI_REALTIME, the details of the real-time synchronization task are returned.
 	//
@@ -26881,47 +26896,47 @@ func (s *GetDISyncTaskResponseBodyData) SetStatus(v string) *GetDISyncTaskRespon
 }
 
 type GetDISyncTaskResponseBodyDataAlarmList struct {
-	// Alarm Notification configuration array.
+	// The alert notification settings. The value of this parameter is an array.
 	AlarmRuleList []*GetDISyncTaskResponseBodyDataAlarmListAlarmRuleList `json:"AlarmRuleList,omitempty" xml:"AlarmRuleList,omitempty" type:"Repeated"`
-	// Alarm rule description.
+	// The description of the alert rule.
 	//
 	// example:
 	//
 	// Description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Whether alarm rules are enabled.
+	// Indicates whether the alert rule is enabled.
 	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// Alarm rule id.
+	// The ID of the alert rule.
 	//
 	// example:
 	//
 	// 45242
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Alarm Type:
+	// The alert type. Valid values:
 	//
-	// - taskStatus: task status
+	// 	- taskStatus
 	//
-	// - bizDelay: business latency
+	// 	- bizDelay
 	//
-	// - taskFailoverCount: monitoring Failover
+	// 	- taskFailoverCount
 	//
-	// - ddlUnsupport: DDL is not supported
+	// 	- ddlUnsupport
 	//
-	// - ddlReport: DDL notifications
+	// 	- ddlReport
 	//
-	// - totalDirtyRecordWriteInLines: dirty data
+	// 	- totalDirtyRecordWriteInLines
 	//
 	// example:
 	//
 	// taskStatus
 	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
-	// Alert notification rule array.
+	// The settings for alert notification rules. The value of this parameter is an array.
 	NotifyRule *GetDISyncTaskResponseBodyDataAlarmListNotifyRule `json:"NotifyRule,omitempty" xml:"NotifyRule,omitempty" type:"Struct"`
-	// Alarm rule name.
+	// The name of the alert rule.
 	//
 	// example:
 	//
@@ -26973,43 +26988,43 @@ func (s *GetDISyncTaskResponseBodyDataAlarmList) SetRuleName(v string) *GetDISyn
 }
 
 type GetDISyncTaskResponseBodyDataAlarmListAlarmRuleList struct {
-	// The calculation method of indicators,
+	// The calculation method of a metric. Valid values:
 	//
-	// - avg interval average
+	// 	- avg
 	//
-	// - max interval takes the maximum value
+	// 	- max
 	//
 	// example:
 	//
 	// avg
 	Aggregator *string `json:"Aggregator,omitempty" xml:"Aggregator,omitempty"`
-	// Comparison method of comparison symbols, indicators and alarm rules
+	// The comparison operator, which indicates the method used to compare a metric with the alert rule.
 	//
-	// - \\"=\\"
+	// 	- \\"=\\"
 	//
-	// - \\"<\\"
+	// 	- \\"<\\"
 	//
-	// - \\">\\"
+	// 	- \\">\\"
 	//
 	// example:
 	//
 	// =
 	Comparator *string `json:"Comparator,omitempty" xml:"Comparator,omitempty"`
-	// Duration: How long does this condition last before an alarm is triggered, in minutes.
+	// The duration that a condition is met before an alert is triggered. Unit: minutes.
 	//
 	// example:
 	//
 	// 3
 	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// - WARNING WARNING: alert
+	// 	- WARNING
 	//
-	// - CRITICAL CRITICAL: alarm
+	// 	- CRITICAL
 	//
 	// example:
 	//
 	// WARNING
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// Comparison threshold between metrics and alarm rules.
+	// The threshold for the comparison between a metric and the alert rule.
 	//
 	// example:
 	//
@@ -27051,15 +27066,15 @@ func (s *GetDISyncTaskResponseBodyDataAlarmListAlarmRuleList) SetThreshold(v int
 }
 
 type GetDISyncTaskResponseBodyDataAlarmListNotifyRule struct {
-	// Critical-level alert notification list.
+	// The settings for Critical-level alert notifications.
 	Critical []*string `json:"Critical,omitempty" xml:"Critical,omitempty" type:"Repeated"`
-	// Alarm interval, in minutes.
+	// The alert interval. Unit: minutes.
 	//
 	// example:
 	//
 	// 5
 	Interval *int64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// Warning-level alert notification list.
+	// The settings for Warning-level alert notifications.
 	Warning []*string `json:"Warning,omitempty" xml:"Warning,omitempty" type:"Repeated"`
 }
 
@@ -32429,7 +32444,12 @@ type GetFileResponseBodyDataNodeConfiguration struct {
 	//
 	// true
 	IgnoreParentSkipRunningProperty *string `json:"IgnoreParentSkipRunningProperty,omitempty" xml:"IgnoreParentSkipRunningProperty,omitempty"`
-	ImageId                         *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The ID of the custom image.
+	//
+	// example:
+	//
+	// m-bp1h4b5a8ogkbll2f3tr
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	// The output names of the parent files on which the current file depends.
 	InputList []*GetFileResponseBodyDataNodeConfigurationInputList `json:"InputList,omitempty" xml:"InputList,omitempty" type:"Repeated"`
 	// Input parameters of the node.
@@ -41794,7 +41814,7 @@ func (s *GetMigrationProcessResponse) SetBody(v *GetMigrationProcessResponseBody
 type GetMigrationSummaryRequest struct {
 	// The migration task ID.
 	//
-	// You can call the [CreateImportMigration](https://help.aliyun.com/document_detail/2809123.html) operation to obtain the ID of the import task and call the [CreateExportMigration](https://help.aliyun.com/document_detail/3241603.html) operation to obtain the ID of the export task.
+	// You can call the [CreateImportMigration](https://help.aliyun.com/document_detail/2780280.html) operation to obtain the ID of the import task and call the [CreateExportMigration](https://help.aliyun.com/document_detail/2780281.html) operation to obtain the ID of the export task.
 	//
 	// This parameter is required.
 	//
@@ -44341,6 +44361,7 @@ func (s *GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContent
 }
 
 type GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContentProjectMetaObjectMetaList struct {
+	Actions []*string `json:"Actions,omitempty" xml:"Actions,omitempty" type:"Repeated"`
 	// The information about the column fields in the object on which you request permissions.
 	ColumnMetaList []*GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContentProjectMetaObjectMetaListColumnMetaList `json:"ColumnMetaList,omitempty" xml:"ColumnMetaList,omitempty" type:"Repeated"`
 	// The name of the table on which you request permissions.
@@ -44359,6 +44380,11 @@ func (s GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContentP
 	return s.String()
 }
 
+func (s *GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContentProjectMetaObjectMetaList) SetActions(v []*string) *GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContentProjectMetaObjectMetaList {
+	s.Actions = v
+	return s
+}
+
 func (s *GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContentProjectMetaObjectMetaList) SetColumnMetaList(v []*GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContentProjectMetaObjectMetaListColumnMetaList) *GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContentProjectMetaObjectMetaList {
 	s.ColumnMetaList = v
 	return s
@@ -44370,6 +44396,7 @@ func (s *GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContent
 }
 
 type GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContentProjectMetaObjectMetaListColumnMetaList struct {
+	ColumnActions []*string `json:"ColumnActions,omitempty" xml:"ColumnActions,omitempty" type:"Repeated"`
 	// The description of the column on which you request permissions.
 	//
 	// example:
@@ -44396,6 +44423,11 @@ func (s GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContentP
 
 func (s GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContentProjectMetaObjectMetaListColumnMetaList) GoString() string {
 	return s.String()
+}
+
+func (s *GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContentProjectMetaObjectMetaListColumnMetaList) SetColumnActions(v []*string) *GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContentProjectMetaObjectMetaListColumnMetaList {
+	s.ColumnActions = v
+	return s
 }
 
 func (s *GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContentProjectMetaObjectMetaListColumnMetaList) SetColumnComment(v string) *GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContentProjectMetaObjectMetaListColumnMetaList {
@@ -46254,6 +46286,10 @@ type GetQualityRuleResponseBodyData struct {
 	// compared with a fixed value
 	CheckerName *string `json:"CheckerName,omitempty" xml:"CheckerName,omitempty"`
 	// The description of the monitoring rule.
+	//
+	// example:
+	//
+	// Verify that the primary key is unique
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The threshold for a critical alert. The threshold indicates the deviation of the check result from the expected value. You can specify a value for the threshold based on your business requirements. If a monitoring rule is a strong rule and the critical threshold is exceeded, a critical alert is reported and tasks that are associated with the rule are blocked from running.
 	//
@@ -46338,13 +46374,22 @@ type GetQualityRuleResponseBodyData struct {
 	// id
 	Property *string `json:"Property,omitempty" xml:"Property,omitempty"`
 	// The name of the monitoring rule.
+	//
+	// example:
+	//
+	// View table fluctuations
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// The type of the monitoring rule.
 	//
 	// example:
 	//
 	// 0
-	RuleType    *int32  `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	RuleType *int32 `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	// The variable settings inserted before the custom rule. Format: x=a,y=b.
+	//
+	// example:
+	//
+	// x=a,y=b
 	TaskSetting *string `json:"TaskSetting,omitempty" xml:"TaskSetting,omitempty"`
 	// The ID of the monitoring template.
 	//
@@ -47858,7 +47903,7 @@ func (s *GetTopicInfluenceRequest) SetTopicId(v int64) *GetTopicInfluenceRequest
 }
 
 type GetTopicInfluenceResponseBody struct {
-	// The list of baseline instances affected by the event.
+	// The data returned.
 	Data *GetTopicInfluenceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code returned.
 	//
@@ -47931,7 +47976,7 @@ func (s *GetTopicInfluenceResponseBody) SetSuccess(v bool) *GetTopicInfluenceRes
 }
 
 type GetTopicInfluenceResponseBodyData struct {
-	// The list of affected baseline instances.
+	// The affected baseline instances.
 	Influences []*GetTopicInfluenceResponseBodyDataInfluences `json:"Influences,omitempty" xml:"Influences,omitempty" type:"Repeated"`
 	// The ID of the event.
 	//
@@ -49637,6 +49682,12 @@ type ListBaselineStatusesResponseBodyDataBaselineStatuses struct {
 	//
 	// Baseline name
 	BaselineName *string `json:"BaselineName,omitempty" xml:"BaselineName,omitempty"`
+	// The type of the baseline, including DAILY and HOURLY. Separate multiple types with commas (,).
+	//
+	// example:
+	//
+	// DAILY,HOURLY
+	BaselineType *string `json:"BaselineType,omitempty" xml:"BaselineType,omitempty"`
 	// The data timestamp.
 	//
 	// example:
@@ -49726,6 +49777,11 @@ func (s *ListBaselineStatusesResponseBodyDataBaselineStatuses) SetBaselineId(v i
 
 func (s *ListBaselineStatusesResponseBodyDataBaselineStatuses) SetBaselineName(v string) *ListBaselineStatusesResponseBodyDataBaselineStatuses {
 	s.BaselineName = &v
+	return s
+}
+
+func (s *ListBaselineStatusesResponseBodyDataBaselineStatuses) SetBaselineType(v string) *ListBaselineStatusesResponseBodyDataBaselineStatuses {
+	s.BaselineType = &v
 	return s
 }
 
@@ -58729,7 +58785,7 @@ type ListDataSourcesResponseBodyDataDataSources struct {
 	//
 	//         }
 	//
-	// 	- MySQL
+	// 	- mysql
 	//
 	//         {
 	//
@@ -58749,7 +58805,7 @@ type ListDataSourcesResponseBodyDataDataSources struct {
 	//
 	//         }
 	//
-	// 	- ApsaraDB RDS for SQL Server
+	// 	- sqlserver
 	//
 	//         {
 	//
@@ -58765,13 +58821,13 @@ type ListDataSourcesResponseBodyDataDataSources struct {
 	//
 	//         }
 	//
-	// 	- Object Storage Service (OSS)
+	// 	- oss
 	//
 	//         {
 	//
-	//           "accessId": "LTAINbR9Uxxxx",
+	//           "accessId": "***********",
 	//
-	//           "accessKey": "***",
+	//           "accessKey": "***********",
 	//
 	//           "bucket": "bigxxx1223",
 	//
@@ -58783,7 +58839,7 @@ type ListDataSourcesResponseBodyDataDataSources struct {
 	//
 	//         }
 	//
-	// 	- ApsaraDB RDS for PostgreSQL
+	// 	- postgresql
 	//
 	//         {
 	//
@@ -58803,7 +58859,7 @@ type ListDataSourcesResponseBodyDataDataSources struct {
 	//
 	//         }
 	//
-	// 	- AnalyticDB for MySQL
+	// 	- ads
 	//
 	//         {
 	//
@@ -60559,7 +60615,7 @@ func (s *ListFileVersionsRequest) SetProjectIdentifier(v string) *ListFileVersio
 }
 
 type ListFileVersionsResponseBody struct {
-	// The file versions returned.
+	// The file versions.
 	Data *ListFileVersionsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code returned.
 	//
@@ -60632,7 +60688,7 @@ func (s *ListFileVersionsResponseBody) SetSuccess(v bool) *ListFileVersionsRespo
 }
 
 type ListFileVersionsResponseBodyData struct {
-	// The details of the file version.
+	// The details of file versions.
 	FileVersions []*ListFileVersionsResponseBodyDataFileVersions `json:"FileVersions,omitempty" xml:"FileVersions,omitempty" type:"Repeated"`
 	// The page number of the returned page.
 	//
@@ -60872,7 +60928,7 @@ type ListFilesRequest struct {
 	//
 	// ods_create.sql
 	ExactFileName *string `json:"ExactFileName,omitempty" xml:"ExactFileName,omitempty"`
-	// The path of the files.
+	// The path of the folder to which files belong.
 	//
 	// example:
 	//
@@ -60897,7 +60953,8 @@ type ListFilesRequest struct {
 	// example:
 	//
 	// ods
-	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	Keyword      *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	LastEditUser *string `json:"LastEditUser,omitempty" xml:"LastEditUser,omitempty"`
 	// Whether the query result contains the path of the folder where the file is located.
 	//
 	// example:
@@ -61000,6 +61057,11 @@ func (s *ListFilesRequest) SetFileTypes(v string) *ListFilesRequest {
 
 func (s *ListFilesRequest) SetKeyword(v string) *ListFilesRequest {
 	s.Keyword = &v
+	return s
+}
+
+func (s *ListFilesRequest) SetLastEditUser(v string) *ListFilesRequest {
+	s.LastEditUser = &v
 	return s
 }
 
@@ -61177,7 +61239,7 @@ func (s *ListFilesResponseBodyData) SetTotalCount(v int32) *ListFilesResponseBod
 }
 
 type ListFilesResponseBodyDataFiles struct {
-	// The path of the folder where the file is located.
+	// The path of the folder to which the file belongs.
 	//
 	// example:
 	//
@@ -63395,11 +63457,11 @@ func (s *ListInstancesResponse) SetBody(v *ListInstancesResponseBody) *ListInsta
 }
 
 type ListLineageRequest struct {
-	// The lineage type. Valid values:\\
+	// The lineage type. Valid values:
 	//
-	// up: ancestor lineage\\
+	// 	- up: ancestor lineage
 	//
-	// down: descendant lineage
+	// 	- down: descendant lineage
 	//
 	// This parameter is required.
 	//
@@ -63497,9 +63559,9 @@ type ListLineageResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// true
+	// 	- true
 	//
-	// false
+	// 	- false
 	//
 	// example:
 	//
@@ -63613,13 +63675,15 @@ func (s *ListLineageResponseBodyDataDataEntityList) SetRelationList(v []*ListLin
 type ListLineageResponseBodyDataDataEntityListRelationList struct {
 	// The data channel. Valid values:
 	//
-	//     FIRST_PARTY: DataWorks platformTHIRD_PARTY: user registration
+	// 	- **FIRST_PARTY: DataWorks platform**
+	//
+	// 	- **THIRD_PARTY: user registration**
 	//
 	// example:
 	//
 	// THIRD_PARTY
 	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
-	// The name of the data source.
+	// The data source.
 	//
 	// example:
 	//
@@ -66941,6 +67005,8 @@ func (s *ListNodesByOutputResponse) SetBody(v *ListNodesByOutputResponseBody) *L
 }
 
 type ListPermissionApplyOrdersRequest struct {
+	ApplyType   *string `json:"ApplyType,omitempty" xml:"ApplyType,omitempty"`
+	CatalogName *string `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
 	// The end of the time range to query. You can query all the permissions request orders that have been submitted before the time. The parameter value is a UNIX timestamp. If you do not specify the parameter, all permission request orders that are submitted before the current time are queried.
 	//
 	// example:
@@ -66948,8 +67014,6 @@ type ListPermissionApplyOrdersRequest struct {
 	// 1617200471885
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The type of the compute engine with which the permission request order is associated. The parameter value is odps and cannot be changed. This value indicates that you can request permissions only on fields of tables in the MaxCompute compute engine.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -66990,8 +67054,6 @@ type ListPermissionApplyOrdersRequest struct {
 	// aMaxComputeProject
 	MaxComputeProjectName *string `json:"MaxComputeProjectName,omitempty" xml:"MaxComputeProjectName,omitempty"`
 	// The type of the permission request order. The parameter value is 1 and cannot be changed. This value indicates ACL-based authorization.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -67047,6 +67109,16 @@ func (s ListPermissionApplyOrdersRequest) String() string {
 
 func (s ListPermissionApplyOrdersRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListPermissionApplyOrdersRequest) SetApplyType(v string) *ListPermissionApplyOrdersRequest {
+	s.ApplyType = &v
+	return s
+}
+
+func (s *ListPermissionApplyOrdersRequest) SetCatalogName(v string) *ListPermissionApplyOrdersRequest {
+	s.CatalogName = &v
+	return s
 }
 
 func (s *ListPermissionApplyOrdersRequest) SetEndTime(v int64) *ListPermissionApplyOrdersRequest {
@@ -70374,7 +70446,7 @@ type ListQualityRulesResponseBodyData struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The details of the monitoring rule.
+	// The details of the monitoring rules.
 	Rules []*ListQualityRulesResponseBodyDataRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 	// The total number of entries returned.
 	//
@@ -70429,7 +70501,7 @@ type ListQualityRulesResponseBodyDataRules struct {
 	//
 	// 7
 	CheckerId *int32 `json:"CheckerId,omitempty" xml:"CheckerId,omitempty"`
-	// The description of the system defense rule.
+	// The description of the monitoring rule.
 	//
 	// example:
 	//
@@ -72032,7 +72104,7 @@ func (s *ListShiftPersonnelsRequest) SetUserType(v string) *ListShiftPersonnelsR
 }
 
 type ListShiftPersonnelsResponseBody struct {
-	// The pagination data.
+	// The pagination information.
 	Paging *ListShiftPersonnelsResponseBodyPaging `json:"Paging,omitempty" xml:"Paging,omitempty" type:"Struct"`
 	// The request ID. You can use the ID to troubleshoot issues.
 	//
@@ -72073,7 +72145,7 @@ type ListShiftPersonnelsResponseBodyPaging struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// A list of on-duty engineers in a shift schedule.
+	// The on-duty engineers in the shift schedule.
 	ShiftPersons []*ListShiftPersonnelsResponseBodyPagingShiftPersons `json:"ShiftPersons,omitempty" xml:"ShiftPersons,omitempty" type:"Repeated"`
 	// The total number of entries returned.
 	//
@@ -72251,7 +72323,7 @@ func (s *ListShiftSchedulesRequest) SetShiftScheduleName(v string) *ListShiftSch
 }
 
 type ListShiftSchedulesResponseBody struct {
-	// The pagination data.
+	// The pagination information.
 	Paging *ListShiftSchedulesResponseBodyPaging `json:"Paging,omitempty" xml:"Paging,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -73223,7 +73295,7 @@ type ListTablesResponseBodyData struct {
 	//
 	// AAAAAVY3rYiv9VoUJQSiCitgjgSwg+byk0FIjirFkm4zfM4G0xYwM/FQvOhgrTHsCPIZ5yqXYu2NG6qRCRC52HvwbOA=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Entity array.
+	// An array of entities.
 	TableEntityList []*ListTablesResponseBodyDataTableEntityList `json:"TableEntityList,omitempty" xml:"TableEntityList,omitempty" type:"Repeated"`
 	// The total number.
 	//
@@ -73257,7 +73329,7 @@ func (s *ListTablesResponseBodyData) SetTotal(v int64) *ListTablesResponseBodyDa
 }
 
 type ListTablesResponseBodyDataTableEntityList struct {
-	// Table entity information.
+	// The information about the table.
 	EntityContent *ListTablesResponseBodyDataTableEntityListEntityContent `json:"EntityContent,omitempty" xml:"EntityContent,omitempty" type:"Struct"`
 	// The unique identifier of the table entity.
 	//
@@ -73801,168 +73873,6 @@ func (s *ListTopicsResponse) SetStatusCode(v int32) *ListTopicsResponse {
 }
 
 func (s *ListTopicsResponse) SetBody(v *ListTopicsResponseBody) *ListTopicsResponse {
-	s.Body = v
-	return s
-}
-
-type MountDirectoryRequest struct {
-	// The ID of the directory that you want to add to the left-side navigation pane of DataAnalysis. This parameter is used together with the TargetType parameter. For example, if you set the TargetType parameter to META_ALBUM, you must set the TargetId parameter to the ID of the related data album. You can call the [ListMetaCollections](https://help.aliyun.com/document_detail/469938.html) operation to obtain the ID of the data album. The ID is indicated by the QualifiedName parameter.
-	//
-	// example:
-	//
-	// album.339
-	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	// The type of the directory that you want to add to the left-side navigation pane of DataAnalysis. Example: META_ALBUM, which indicates the data album.
-	//
-	// example:
-	//
-	// META_ALBUM
-	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	// The ID of the user in the tenant.
-	//
-	// 	- If you do not configure TargetUserId, the specified directory belongs to you.
-	//
-	// 	- If you configure TargetUserId, the specified directory belongs to the user specified by using TargetUserId.
-	//
-	// example:
-	//
-	// 1234567890
-	TargetUserId *string `json:"TargetUserId,omitempty" xml:"TargetUserId,omitempty"`
-}
-
-func (s MountDirectoryRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s MountDirectoryRequest) GoString() string {
-	return s.String()
-}
-
-func (s *MountDirectoryRequest) SetTargetId(v string) *MountDirectoryRequest {
-	s.TargetId = &v
-	return s
-}
-
-func (s *MountDirectoryRequest) SetTargetType(v string) *MountDirectoryRequest {
-	s.TargetType = &v
-	return s
-}
-
-func (s *MountDirectoryRequest) SetTargetUserId(v string) *MountDirectoryRequest {
-	s.TargetUserId = &v
-	return s
-}
-
-type MountDirectoryResponseBody struct {
-	// The number of directories that are added. Valid values:
-	//
-	// 	- 0: No directories are added. The left-side navigation pane may contain the specified directory.
-	//
-	// 	- 1: One directory is added.
-	//
-	// example:
-	//
-	// 1
-	Data *int32 `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error code. The value 200 indicates that the task is successful.
-	//
-	// example:
-	//
-	// 200
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message.
-	//
-	// example:
-	//
-	// You have no permission.
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The HTTP status code.
-	//
-	// example:
-	//
-	// 200
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request ID. You can use the ID to troubleshoot issues.
-	//
-	// example:
-	//
-	// C27D4FB9-C59B-5E17-BD6C-1099B9D6A381
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
-	//
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s MountDirectoryResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s MountDirectoryResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *MountDirectoryResponseBody) SetData(v int32) *MountDirectoryResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *MountDirectoryResponseBody) SetErrorCode(v string) *MountDirectoryResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *MountDirectoryResponseBody) SetErrorMessage(v string) *MountDirectoryResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *MountDirectoryResponseBody) SetHttpStatusCode(v int32) *MountDirectoryResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *MountDirectoryResponseBody) SetRequestId(v string) *MountDirectoryResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *MountDirectoryResponseBody) SetSuccess(v bool) *MountDirectoryResponseBody {
-	s.Success = &v
-	return s
-}
-
-type MountDirectoryResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *MountDirectoryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s MountDirectoryResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s MountDirectoryResponse) GoString() string {
-	return s.String()
-}
-
-func (s *MountDirectoryResponse) SetHeaders(v map[string]*string) *MountDirectoryResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *MountDirectoryResponse) SetStatusCode(v int32) *MountDirectoryResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *MountDirectoryResponse) SetBody(v *MountDirectoryResponseBody) *MountDirectoryResponse {
 	s.Body = v
 	return s
 }
@@ -76333,159 +76243,6 @@ func (s *ResumeInstanceResponse) SetStatusCode(v int32) *ResumeInstanceResponse 
 }
 
 func (s *ResumeInstanceResponse) SetBody(v *ResumeInstanceResponseBody) *ResumeInstanceResponse {
-	s.Body = v
-	return s
-}
-
-type RevokeColumnPermissionRequest struct {
-	// The fields for which you want to revoke permissions from a user. Separate multiple fields with commas (,). You can revoke the permissions on the fields only in MaxCompute tables.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// id,name
-	Columns *string `json:"Columns,omitempty" xml:"Columns,omitempty"`
-	// The name of the MaxCompute project to which the fields belong. You can log on to the DataWorks console and go to the SettingCenter page to obtain the name of the MaxCompute project that you associate with the workspace.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// aMaxcomputeProjectName
-	MaxComputeProjectName *string `json:"MaxComputeProjectName,omitempty" xml:"MaxComputeProjectName,omitempty"`
-	// The ID of the Alibaba Cloud account of the user from which you want to revoke permissions. You can log on to the DataWorks console and go to the Security Settings page to obtain the ID. You must specify either this parameter or the RevokeUserName parameter. If you specify both this parameter and the RevokeUserName parameter and the parameter values are different, the value of this parameter prevails.
-	//
-	// example:
-	//
-	// 267842600408993176
-	RevokeUserId *string `json:"RevokeUserId,omitempty" xml:"RevokeUserId,omitempty"`
-	// The Alibaba Cloud account from which you want to revoke permissions. Specify this parameter in the format that is the same as the format of the account used to access the MaxCompute project.
-	//
-	// 	- If the account is an Alibaba Cloud account, the value is in the ALIYUN$+Account name format.
-	//
-	// 	- If the account is a RAM user, the value is in the RAM$+Account name format.
-	//
-	// You must specify either this parameter or the RevokeUserId parameter. If you specify both this parameter and the RevokeUserId parameter and the parameter values are different, the value of the RevokeUserId parameter prevails.
-	//
-	// example:
-	//
-	// RAM$dataworks_3h1_1:stsramuser
-	RevokeUserName *string `json:"RevokeUserName,omitempty" xml:"RevokeUserName,omitempty"`
-	// The name of the MaxCompute table to which the fields belong. You can call the [SearchMetaTables](https://help.aliyun.com/document_detail/173919.html) operation to query the name of the MaxCompute table.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// aTableName
-	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	// The ID of the DataWorks workspace with which the MaxCompute project is associated. You can log on to the DataWorks console and go to the Workspace page to obtain the ID.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 12345
-	WorkspaceId *int64 `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-}
-
-func (s RevokeColumnPermissionRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RevokeColumnPermissionRequest) GoString() string {
-	return s.String()
-}
-
-func (s *RevokeColumnPermissionRequest) SetColumns(v string) *RevokeColumnPermissionRequest {
-	s.Columns = &v
-	return s
-}
-
-func (s *RevokeColumnPermissionRequest) SetMaxComputeProjectName(v string) *RevokeColumnPermissionRequest {
-	s.MaxComputeProjectName = &v
-	return s
-}
-
-func (s *RevokeColumnPermissionRequest) SetRevokeUserId(v string) *RevokeColumnPermissionRequest {
-	s.RevokeUserId = &v
-	return s
-}
-
-func (s *RevokeColumnPermissionRequest) SetRevokeUserName(v string) *RevokeColumnPermissionRequest {
-	s.RevokeUserName = &v
-	return s
-}
-
-func (s *RevokeColumnPermissionRequest) SetTableName(v string) *RevokeColumnPermissionRequest {
-	s.TableName = &v
-	return s
-}
-
-func (s *RevokeColumnPermissionRequest) SetWorkspaceId(v int64) *RevokeColumnPermissionRequest {
-	s.WorkspaceId = &v
-	return s
-}
-
-type RevokeColumnPermissionResponseBody struct {
-	// The request ID.
-	//
-	// example:
-	//
-	// 0bc1ec92159376****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the permissions are revoked.
-	//
-	// example:
-	//
-	// true
-	RevokeSuccess *bool `json:"RevokeSuccess,omitempty" xml:"RevokeSuccess,omitempty"`
-}
-
-func (s RevokeColumnPermissionResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RevokeColumnPermissionResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *RevokeColumnPermissionResponseBody) SetRequestId(v string) *RevokeColumnPermissionResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *RevokeColumnPermissionResponseBody) SetRevokeSuccess(v bool) *RevokeColumnPermissionResponseBody {
-	s.RevokeSuccess = &v
-	return s
-}
-
-type RevokeColumnPermissionResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *RevokeColumnPermissionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s RevokeColumnPermissionResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RevokeColumnPermissionResponse) GoString() string {
-	return s.String()
-}
-
-func (s *RevokeColumnPermissionResponse) SetHeaders(v map[string]*string) *RevokeColumnPermissionResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *RevokeColumnPermissionResponse) SetStatusCode(v int32) *RevokeColumnPermissionResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *RevokeColumnPermissionResponse) SetBody(v *RevokeColumnPermissionResponseBody) *RevokeColumnPermissionResponse {
 	s.Body = v
 	return s
 }
@@ -81123,168 +80880,6 @@ func (s *TopTenErrorTimesInstanceResponse) SetBody(v *TopTenErrorTimesInstanceRe
 	return s
 }
 
-type UmountDirectoryRequest struct {
-	// The ID of the directory that you want to remove from the left-side navigation pane of DataAnalysis. This parameter is used together with the TargetType parameter. For example, if you set the TargetType parameter to META_ALBUM, you must set the TargetId parameter to the ID of the metadata data album. You can call the [ListMetaCollections](https://help.aliyun.com/document_detail/469938.html) operation to obtain the ID of the data album. The ID is indicated by the QualifiedName parameter.
-	//
-	// example:
-	//
-	// album.339
-	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	// The type of the directory that you want to remove from the left-side navigation pane of DataAnalysis. Example: META_ALBUM, which indicates the metadata data album.
-	//
-	// example:
-	//
-	// META_ALBUM
-	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	// The ID of the user in the tenant.
-	//
-	// 	- If you do not configure TargetUserId, the directory belongs to you.
-	//
-	// 	- If you configure TargetUserId, the directory belongs to the user specified by using TargetUserId.
-	//
-	// example:
-	//
-	// 1234567890
-	TargetUserId *string `json:"TargetUserId,omitempty" xml:"TargetUserId,omitempty"`
-}
-
-func (s UmountDirectoryRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UmountDirectoryRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UmountDirectoryRequest) SetTargetId(v string) *UmountDirectoryRequest {
-	s.TargetId = &v
-	return s
-}
-
-func (s *UmountDirectoryRequest) SetTargetType(v string) *UmountDirectoryRequest {
-	s.TargetType = &v
-	return s
-}
-
-func (s *UmountDirectoryRequest) SetTargetUserId(v string) *UmountDirectoryRequest {
-	s.TargetUserId = &v
-	return s
-}
-
-type UmountDirectoryResponseBody struct {
-	// The number of directories that are removed. Valid values:
-	//
-	// 	- 0: No directories are removed. The left-side navigation pane may not contain the specified directory.
-	//
-	// 	- 1: One directory is removed.
-	//
-	// example:
-	//
-	// 1
-	Data *int32 `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error code. The value 200 indicates that the task is successful.
-	//
-	// example:
-	//
-	// 200
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message.
-	//
-	// example:
-	//
-	// You have no permission.
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The HTTP status code. The value 200 indicates that the request was successful.
-	//
-	// example:
-	//
-	// 200
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request ID. You can use the ID to troubleshoot issues.
-	//
-	// example:
-	//
-	// 0bc5aa2716455247597991794e65bd
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
-	//
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s UmountDirectoryResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UmountDirectoryResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UmountDirectoryResponseBody) SetData(v int32) *UmountDirectoryResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *UmountDirectoryResponseBody) SetErrorCode(v string) *UmountDirectoryResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *UmountDirectoryResponseBody) SetErrorMessage(v string) *UmountDirectoryResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *UmountDirectoryResponseBody) SetHttpStatusCode(v int32) *UmountDirectoryResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *UmountDirectoryResponseBody) SetRequestId(v string) *UmountDirectoryResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *UmountDirectoryResponseBody) SetSuccess(v bool) *UmountDirectoryResponseBody {
-	s.Success = &v
-	return s
-}
-
-type UmountDirectoryResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *UmountDirectoryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s UmountDirectoryResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UmountDirectoryResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UmountDirectoryResponse) SetHeaders(v map[string]*string) *UmountDirectoryResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UmountDirectoryResponse) SetStatusCode(v int32) *UmountDirectoryResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *UmountDirectoryResponse) SetBody(v *UmountDirectoryResponseBody) *UmountDirectoryResponse {
-	s.Body = v
-	return s
-}
-
 type UpdateBaselineRequest struct {
 	// Specifies whether to enable the alerting feature. Valid values: true and false.
 	//
@@ -81596,7 +81191,7 @@ func (s *UpdateBaselineRequestAlertSettingsDingRobots) SetWebUrl(v string) *Upda
 }
 
 type UpdateBaselineRequestOvertimeSettings struct {
-	// The cycle that corresponds to the committed completion time. For a day-level baseline, set this parameter to 1. For an hour-level baseline, set this parameter to a value that does not exceed 24.
+	// The cycle that corresponds to the committed completion time. For a day-level baseline, set this parameter to 1. For an hour-level baseline, set this parameter to a value that is no more than 24.
 	//
 	// example:
 	//
@@ -84844,7 +84439,7 @@ type UpdateFileRequest struct {
 	//
 	// {"queue":"default","SPARK_CONF":"--conf spark.driver.memory=2g"}
 	AdvancedSettings *string `json:"AdvancedSettings,omitempty" xml:"AdvancedSettings,omitempty"`
-	// Whether the scheduling configuration takes effect immediately after the release.
+	// Specifies whether scheduling configurations immediately take effect after the node is deployed.
 	//
 	// example:
 	//
@@ -84984,13 +84579,18 @@ type UpdateFileRequest struct {
 	//
 	// ods_user_info_d
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// Scheduling configuration-> previous cycle-> whether to skip the upstream empty run attribute.
+	// Specifies whether to skip the dry-run property of the ancestor nodes of the node. This parameter corresponds to the Skip the dry-run property of the ancestor node parameter that is displayed after you configure the Depend On parameter in the Dependencies section of the Properties tab in the DataWorks console.
 	//
 	// example:
 	//
 	// true
-	IgnoreParentSkipRunningProperty *bool   `json:"IgnoreParentSkipRunningProperty,omitempty" xml:"IgnoreParentSkipRunningProperty,omitempty"`
-	ImageId                         *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	IgnoreParentSkipRunningProperty *bool `json:"IgnoreParentSkipRunningProperty,omitempty" xml:"IgnoreParentSkipRunningProperty,omitempty"`
+	// The ID of the custom image.
+	//
+	// example:
+	//
+	// m-uf6d7npxk1hhek8ng0cb
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	// The output name of the parent file on which the current file depends. If you specify multiple output names, separate them with commas (,).
 	//
 	// This parameter corresponds to the Parent Nodes parameter that is displayed after you select Same Cycle in the Dependencies section of the Properties tab in the [DataWorks console](https://workbench.data.aliyun.com/console).
@@ -89256,9 +88856,9 @@ func (client *Client) AddMetaCollectionEntity(request *AddMetaCollectionEntityRe
 //
 // Description:
 //
-//   For information about how to add an account to a DataWorks workspace as a member, see [Add workspace members and assign roles to them](https://help.aliyun.com/document_detail/136941.html).
+//	  For information about how to add an account to a DataWorks workspace as a member, see [Add workspace members and assign roles to them](https://help.aliyun.com/document_detail/136941.html).
 //
-// 	- If you assign a built-in workspace-level role to a member of a DataWorks workspace, the member is automatically granted the permissions of the mapped role of the MaxCompute compute engine in the development environment. For more information, see [Appendix: Mappings between the built-in workspace-level roles of DataWorks and the roles of MaxCompute](https://help.aliyun.com/document_detail/449397.html).
+//		- If you assign a built-in workspace-level role to a member of a DataWorks workspace, the member is automatically granted the permissions of the mapped role of the MaxCompute compute engine in the development environment. For more information, see [Appendix: Mappings between the built-in workspace-level roles of DataWorks and the roles of MaxCompute](https://help.aliyun.com/document_detail/449397.html).
 //
 // @param request - AddProjectMemberToRoleRequest
 //
@@ -89327,9 +88927,9 @@ func (client *Client) AddProjectMemberToRoleWithOptions(request *AddProjectMembe
 //
 // Description:
 //
-//   For information about how to add an account to a DataWorks workspace as a member, see [Add workspace members and assign roles to them](https://help.aliyun.com/document_detail/136941.html).
+//	  For information about how to add an account to a DataWorks workspace as a member, see [Add workspace members and assign roles to them](https://help.aliyun.com/document_detail/136941.html).
 //
-// 	- If you assign a built-in workspace-level role to a member of a DataWorks workspace, the member is automatically granted the permissions of the mapped role of the MaxCompute compute engine in the development environment. For more information, see [Appendix: Mappings between the built-in workspace-level roles of DataWorks and the roles of MaxCompute](https://help.aliyun.com/document_detail/449397.html).
+//		- If you assign a built-in workspace-level role to a member of a DataWorks workspace, the member is automatically granted the permissions of the mapped role of the MaxCompute compute engine in the development environment. For more information, see [Appendix: Mappings between the built-in workspace-level roles of DataWorks and the roles of MaxCompute](https://help.aliyun.com/document_detail/449397.html).
 //
 // @param request - AddProjectMemberToRoleRequest
 //
@@ -90608,6 +90208,10 @@ func (client *Client) CreateDIJob(request *CreateDIJobRequest) (_result *CreateD
 //
 // Creates a data synchronization task.
 //
+// Description:
+//
+// You cannot configure scheduling properties for a task by calling this operation. If you want to configure scheduling properties for a task, you can call the UpdateFile operation.[](~~2780137~~)
+//
 // @param request - CreateDISyncTaskRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -90682,6 +90286,10 @@ func (client *Client) CreateDISyncTaskWithOptions(request *CreateDISyncTaskReque
 // Summary:
 //
 // Creates a data synchronization task.
+//
+// Description:
+//
+// You cannot configure scheduling properties for a task by calling this operation. If you want to configure scheduling properties for a task, you can call the UpdateFile operation.[](~~2780137~~)
 //
 // @param request - CreateDISyncTaskRequest
 //
@@ -91771,35 +91379,35 @@ func (client *Client) CreateFolder(request *CreateFolderRequest) (_result *Creat
 //
 // The import package must be uploaded. Example of the upload method:
 //
-//         Config config = new Config();
+//	Config config = new Config();
 //
-//         config.setAccessKeyId(accessId);
+//	config.setAccessKeyId(accessId);
 //
-//         config.setAccessKeySecret(accessKey);
+//	config.setAccessKeySecret(accessKey);
 //
-//         config.setEndpoint(popEndpoint);
+//	config.setEndpoint(popEndpoint);
 //
-//         config.setRegionId(regionId);
+//	config.setRegionId(regionId);
 //
 //
 //
-//         Client client = new Client(config);
+//	Client client = new Client(config);
 //
-//         CreateImportMigrationAdvanceRequest request = new CreateImportMigrationAdvanceRequest();
+//	CreateImportMigrationAdvanceRequest request = new CreateImportMigrationAdvanceRequest();
 //
-//         request.setName("test_migration_api_" + System.currentTimeMillis());
+//	request.setName("test_migration_api_" + System.currentTimeMillis());
 //
-//         request.setProjectId(123456L);
+//	request.setProjectId(123456L);
 //
-//         request.setPackageType("DATAWORKS_MODEL");
+//	request.setPackageType("DATAWORKS_MODEL");
 //
-//         request.setPackageFileObject(new FileInputStream("/home/admin/Downloads/test.zip"));
+//	request.setPackageFileObject(new FileInputStream("/home/admin/Downloads/test.zip"));
 //
-//         RuntimeOptions runtime = new RuntimeOptions();
+//	RuntimeOptions runtime = new RuntimeOptions();
 //
-//         CreateImportMigrationResponse response = client.createImportMigrationAdvance(request, runtime);
+//	CreateImportMigrationResponse response = client.createImportMigrationAdvance(request, runtime);
 //
-//         ...
+//	...
 //
 // @param request - CreateImportMigrationRequest
 //
@@ -91890,35 +91498,35 @@ func (client *Client) CreateImportMigrationWithOptions(request *CreateImportMigr
 //
 // The import package must be uploaded. Example of the upload method:
 //
-//         Config config = new Config();
+//	Config config = new Config();
 //
-//         config.setAccessKeyId(accessId);
+//	config.setAccessKeyId(accessId);
 //
-//         config.setAccessKeySecret(accessKey);
+//	config.setAccessKeySecret(accessKey);
 //
-//         config.setEndpoint(popEndpoint);
+//	config.setEndpoint(popEndpoint);
 //
-//         config.setRegionId(regionId);
+//	config.setRegionId(regionId);
 //
 //
 //
-//         Client client = new Client(config);
+//	Client client = new Client(config);
 //
-//         CreateImportMigrationAdvanceRequest request = new CreateImportMigrationAdvanceRequest();
+//	CreateImportMigrationAdvanceRequest request = new CreateImportMigrationAdvanceRequest();
 //
-//         request.setName("test_migration_api_" + System.currentTimeMillis());
+//	request.setName("test_migration_api_" + System.currentTimeMillis());
 //
-//         request.setProjectId(123456L);
+//	request.setProjectId(123456L);
 //
-//         request.setPackageType("DATAWORKS_MODEL");
+//	request.setPackageType("DATAWORKS_MODEL");
 //
-//         request.setPackageFileObject(new FileInputStream("/home/admin/Downloads/test.zip"));
+//	request.setPackageFileObject(new FileInputStream("/home/admin/Downloads/test.zip"));
 //
-//         RuntimeOptions runtime = new RuntimeOptions();
+//	RuntimeOptions runtime = new RuntimeOptions();
 //
-//         CreateImportMigrationResponse response = client.createImportMigrationAdvance(request, runtime);
+//	CreateImportMigrationResponse response = client.createImportMigrationAdvance(request, runtime);
 //
-//         ...
+//	...
 //
 // @param request - CreateImportMigrationRequest
 //
@@ -92343,8 +91951,16 @@ func (client *Client) CreatePermissionApplyOrderWithOptions(request *CreatePermi
 		query["ApplyReason"] = request.ApplyReason
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ApplyType)) {
+		query["ApplyType"] = request.ApplyType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ApplyUserIds)) {
 		query["ApplyUserIds"] = request.ApplyUserIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CatalogName)) {
+		query["CatalogName"] = request.CatalogName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Deadline)) {
@@ -94746,7 +94362,7 @@ func (client *Client) DeleteFromMetaCategory(request *DeleteFromMetaCategoryRequ
 
 // Summary:
 //
-// Delete lineage, supports deleting user-defined lineage relationships
+// # Delete lineage, supports deleting user-defined lineage relationships
 //
 // Description:
 //
@@ -94815,7 +94431,7 @@ func (client *Client) DeleteLineageRelationWithOptions(request *DeleteLineageRel
 
 // Summary:
 //
-// Delete lineage, supports deleting user-defined lineage relationships
+// # Delete lineage, supports deleting user-defined lineage relationships
 //
 // Description:
 //
@@ -96523,11 +96139,11 @@ func (client *Client) DsgQueryDefaultTemplates(request *DsgQueryDefaultTemplates
 //
 // The query capability of the API operation is similar to the query feature in Data Security Guard in the DataWorks console. The API operation can be used to query the identification results of sensitive data of a tenant based on the association with the tenant ID.
 //
-// 	- You can search for a specific identification result based on filter conditions such as data source type and workspace.
+//   - You can search for a specific identification result based on filter conditions such as data source type and workspace.
 //
-// 	- You can sort the identification results of sensitive data of a tenant based on the values of a field in ascending or descending order.
+//   - You can sort the identification results of sensitive data of a tenant based on the values of a field in ascending or descending order.
 //
-// 	- This operation supports paged query.
+//   - This operation supports paged query.
 //
 // @param request - DsgQuerySensResultRequest
 //
@@ -96642,11 +96258,11 @@ func (client *Client) DsgQuerySensResultWithOptions(request *DsgQuerySensResultR
 //
 // The query capability of the API operation is similar to the query feature in Data Security Guard in the DataWorks console. The API operation can be used to query the identification results of sensitive data of a tenant based on the association with the tenant ID.
 //
-// 	- You can search for a specific identification result based on filter conditions such as data source type and workspace.
+//   - You can search for a specific identification result based on filter conditions such as data source type and workspace.
 //
-// 	- You can sort the identification results of sensitive data of a tenant based on the values of a field in ascending or descending order.
+//   - You can sort the identification results of sensitive data of a tenant based on the values of a field in ascending or descending order.
 //
-// 	- This operation supports paged query.
+//   - This operation supports paged query.
 //
 // @param request - DsgQuerySensResultRequest
 //
@@ -98922,23 +98538,23 @@ func (client *Client) GetDISyncTask(request *GetDISyncTaskRequest) (_result *Get
 //
 // Supported DAG types:
 //
-// 	- MANUAL: DAG for a manually triggered workflow
+//   - MANUAL: DAG for a manually triggered workflow
 //
-// 	- SMOKE_TEST: DAG for a smoke testing workflow
+//   - SMOKE_TEST: DAG for a smoke testing workflow
 //
-// 	- SUPPLY_DATA: DAG for a data backfill instance
+//   - SUPPLY_DATA: DAG for a data backfill instance
 //
-// 	- BUSINESS_PROCESS_DAG: DAG for a one-time workflow
+//   - BUSINESS_PROCESS_DAG: DAG for a one-time workflow
 //
 // Supported DAG states:
 //
-// 	- CREATED
+//   - CREATED
 //
-// 	- RUNNING
+//   - RUNNING
 //
-// 	- FAILURE
+//   - FAILURE
 //
-// 	- SUCCESS
+//   - SUCCESS
 //
 // @param request - GetDagRequest
 //
@@ -99001,23 +98617,23 @@ func (client *Client) GetDagWithOptions(request *GetDagRequest, runtime *util.Ru
 //
 // Supported DAG types:
 //
-// 	- MANUAL: DAG for a manually triggered workflow
+//   - MANUAL: DAG for a manually triggered workflow
 //
-// 	- SMOKE_TEST: DAG for a smoke testing workflow
+//   - SMOKE_TEST: DAG for a smoke testing workflow
 //
-// 	- SUPPLY_DATA: DAG for a data backfill instance
+//   - SUPPLY_DATA: DAG for a data backfill instance
 //
-// 	- BUSINESS_PROCESS_DAG: DAG for a one-time workflow
+//   - BUSINESS_PROCESS_DAG: DAG for a one-time workflow
 //
 // Supported DAG states:
 //
-// 	- CREATED
+//   - CREATED
 //
-// 	- RUNNING
+//   - RUNNING
 //
-// 	- FAILURE
+//   - FAILURE
 //
-// 	- SUCCESS
+//   - SUCCESS
 //
 // @param request - GetDagRequest
 //
@@ -103825,9 +103441,9 @@ func (client *Client) GetTopicInfluence(request *GetTopicInfluenceRequest) (_res
 //
 // You can import self-managed data sources or data sources that are exported from other DataWorks workspaces to a specific DataWorks workspace.
 //
-// 	- To import a self-managed data source to a DataWorks workspace, the data source type must be supported by DataWorks. For more information about the types of data sources supported by DataWorks, see [Supported data stores](https://help.aliyun.com/document_detail/181656.html).
+//   - To import a self-managed data source to a DataWorks workspace, the data source type must be supported by DataWorks. For more information about the types of data sources supported by DataWorks, see [Supported data stores](https://help.aliyun.com/document_detail/181656.html).
 //
-// 	- For more information about how to export data sources from DataWorks workspaces to your on-premises machine, see [ExportDataSources](https://help.aliyun.com/document_detail/279570.html).
+//   - For more information about how to export data sources from DataWorks workspaces to your on-premises machine, see [ExportDataSources](https://help.aliyun.com/document_detail/279570.html).
 //
 // @param request - ImportDataSourcesRequest
 //
@@ -103890,9 +103506,9 @@ func (client *Client) ImportDataSourcesWithOptions(request *ImportDataSourcesReq
 //
 // You can import self-managed data sources or data sources that are exported from other DataWorks workspaces to a specific DataWorks workspace.
 //
-// 	- To import a self-managed data source to a DataWorks workspace, the data source type must be supported by DataWorks. For more information about the types of data sources supported by DataWorks, see [Supported data stores](https://help.aliyun.com/document_detail/181656.html).
+//   - To import a self-managed data source to a DataWorks workspace, the data source type must be supported by DataWorks. For more information about the types of data sources supported by DataWorks, see [Supported data stores](https://help.aliyun.com/document_detail/181656.html).
 //
-// 	- For more information about how to export data sources from DataWorks workspaces to your on-premises machine, see [ExportDataSources](https://help.aliyun.com/document_detail/279570.html).
+//   - For more information about how to export data sources from DataWorks workspaces to your on-premises machine, see [ExportDataSources](https://help.aliyun.com/document_detail/279570.html).
 //
 // @param request - ImportDataSourcesRequest
 //
@@ -105077,23 +104693,23 @@ func (client *Client) ListDIProjectConfig(request *ListDIProjectConfigRequest) (
 //
 // Supported DAG types:
 //
-// 	- MANUAL: DAG for a manually triggered workflow
+//   - MANUAL: DAG for a manually triggered workflow
 //
-// 	- SMOKE_TEST: DAG for a smoke testing workflow
+//   - SMOKE_TEST: DAG for a smoke testing workflow
 //
-// 	- SUPPLY_DATA: DAG for a data backfill instance
+//   - SUPPLY_DATA: DAG for a data backfill instance
 //
-// 	- BUSINESS_PROCESS_DAG: DAG for a one-time workflow
+//   - BUSINESS_PROCESS_DAG: DAG for a one-time workflow
 //
 // Supported DAG states:
 //
-// 	- CREATED: The DAG is created.
+//   - CREATED: The DAG is created.
 //
-// 	- RUNNING: The DAG is running.
+//   - RUNNING: The DAG is running.
 //
-// 	- FAILURE: The DAG fails to run.
+//   - FAILURE: The DAG fails to run.
 //
-// 	- SUCCESS: The DAG is successfully run.
+//   - SUCCESS: The DAG is successfully run.
 //
 // @param request - ListDagsRequest
 //
@@ -105156,23 +104772,23 @@ func (client *Client) ListDagsWithOptions(request *ListDagsRequest, runtime *uti
 //
 // Supported DAG types:
 //
-// 	- MANUAL: DAG for a manually triggered workflow
+//   - MANUAL: DAG for a manually triggered workflow
 //
-// 	- SMOKE_TEST: DAG for a smoke testing workflow
+//   - SMOKE_TEST: DAG for a smoke testing workflow
 //
-// 	- SUPPLY_DATA: DAG for a data backfill instance
+//   - SUPPLY_DATA: DAG for a data backfill instance
 //
-// 	- BUSINESS_PROCESS_DAG: DAG for a one-time workflow
+//   - BUSINESS_PROCESS_DAG: DAG for a one-time workflow
 //
 // Supported DAG states:
 //
-// 	- CREATED: The DAG is created.
+//   - CREATED: The DAG is created.
 //
-// 	- RUNNING: The DAG is running.
+//   - RUNNING: The DAG is running.
 //
-// 	- FAILURE: The DAG fails to run.
+//   - FAILURE: The DAG fails to run.
 //
-// 	- SUCCESS: The DAG is successfully run.
+//   - SUCCESS: The DAG is successfully run.
 //
 // @param request - ListDagsRequest
 //
@@ -106571,6 +106187,10 @@ func (client *Client) ListFilesWithOptions(request *ListFilesRequest, runtime *u
 
 	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
 		body["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LastEditUser)) {
+		body["LastEditUser"] = request.LastEditUser
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NeedAbsoluteFolderPath)) {
@@ -108153,6 +107773,14 @@ func (client *Client) ListPermissionApplyOrdersWithOptions(request *ListPermissi
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApplyType)) {
+		query["ApplyType"] = request.ApplyType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CatalogName)) {
+		query["CatalogName"] = request.CatalogName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		query["EndTime"] = request.EndTime
 	}
@@ -109783,85 +109411,6 @@ func (client *Client) ListTopics(request *ListTopicsRequest) (_result *ListTopic
 
 // Summary:
 //
-// Adds a directory to the left-side navigation pane of DataAnalysis.
-//
-// @param request - MountDirectoryRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return MountDirectoryResponse
-func (client *Client) MountDirectoryWithOptions(request *MountDirectoryRequest, runtime *util.RuntimeOptions) (_result *MountDirectoryResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.TargetId)) {
-		body["TargetId"] = request.TargetId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TargetType)) {
-		body["TargetType"] = request.TargetType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TargetUserId)) {
-		body["TargetUserId"] = request.TargetUserId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("MountDirectory"),
-		Version:     tea.String("2020-05-18"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &MountDirectoryResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &MountDirectoryResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	}
-
-}
-
-// Summary:
-//
-// Adds a directory to the left-side navigation pane of DataAnalysis.
-//
-// @param request - MountDirectoryRequest
-//
-// @return MountDirectoryResponse
-func (client *Client) MountDirectory(request *MountDirectoryRequest) (_result *MountDirectoryResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &MountDirectoryResponse{}
-	_body, _err := client.MountDirectoryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
 // Undeploys a node.
 //
 // @param request - OfflineNodeRequest
@@ -110178,11 +109727,11 @@ func (client *Client) QueryDefaultTemplate(request *QueryDefaultTemplateRequest)
 //
 // Description:
 //
-//   Each time you call this API operation, you must use FML statements to query information about objects that are created in Data Modeling.
+//	  Each time you call this API operation, you must use FML statements to query information about objects that are created in Data Modeling.
 //
-// 	- The information about the objects can be queried by page, except for data layers, business processes, and data domains. You can add an offset to the end of an FML statement. The num LIMIT num statement specifies the offset when the information about the objects is queried, and the number of pages to return each time. The offset value must be a multiple of the number of pages.
+//		- The information about the objects can be queried by page, except for data layers, business processes, and data domains. You can add an offset to the end of an FML statement. The num LIMIT num statement specifies the offset when the information about the objects is queried, and the number of pages to return each time. The offset value must be a multiple of the number of pages.
 //
-// 	- A maximum of 1,000 entries can be returned each time you call this API operation.
+//		- A maximum of 1,000 entries can be returned each time you call this API operation.
 //
 // @param request - QueryPublicModelEngineRequest
 //
@@ -110243,11 +109792,11 @@ func (client *Client) QueryPublicModelEngineWithOptions(request *QueryPublicMode
 //
 // Description:
 //
-//   Each time you call this API operation, you must use FML statements to query information about objects that are created in Data Modeling.
+//	  Each time you call this API operation, you must use FML statements to query information about objects that are created in Data Modeling.
 //
-// 	- The information about the objects can be queried by page, except for data layers, business processes, and data domains. You can add an offset to the end of an FML statement. The num LIMIT num statement specifies the offset when the information about the objects is queried, and the number of pages to return each time. The offset value must be a multiple of the number of pages.
+//		- The information about the objects can be queried by page, except for data layers, business processes, and data domains. You can add an offset to the end of an FML statement. The num LIMIT num statement specifies the offset when the information about the objects is queried, and the number of pages to return each time. The offset value must be a multiple of the number of pages.
 //
-// 	- A maximum of 1,000 entries can be returned each time you call this API operation.
+//		- A maximum of 1,000 entries can be returned each time you call this API operation.
 //
 // @param request - QueryPublicModelEngineRequest
 //
@@ -111106,97 +110655,6 @@ func (client *Client) ResumeInstance(request *ResumeInstanceRequest) (_result *R
 	runtime := &util.RuntimeOptions{}
 	_result = &ResumeInstanceResponse{}
 	_body, _err := client.ResumeInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Revokes permissions on table fields from a user.
-//
-// @param request - RevokeColumnPermissionRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return RevokeColumnPermissionResponse
-func (client *Client) RevokeColumnPermissionWithOptions(request *RevokeColumnPermissionRequest, runtime *util.RuntimeOptions) (_result *RevokeColumnPermissionResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Columns)) {
-		query["Columns"] = request.Columns
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MaxComputeProjectName)) {
-		query["MaxComputeProjectName"] = request.MaxComputeProjectName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RevokeUserId)) {
-		query["RevokeUserId"] = request.RevokeUserId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RevokeUserName)) {
-		query["RevokeUserName"] = request.RevokeUserName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TableName)) {
-		query["TableName"] = request.TableName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
-		query["WorkspaceId"] = request.WorkspaceId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("RevokeColumnPermission"),
-		Version:     tea.String("2020-05-18"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RevokeColumnPermissionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &RevokeColumnPermissionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	}
-
-}
-
-// Summary:
-//
-// Revokes permissions on table fields from a user.
-//
-// @param request - RevokeColumnPermissionRequest
-//
-// @return RevokeColumnPermissionResponse
-func (client *Client) RevokeColumnPermission(request *RevokeColumnPermissionRequest) (_result *RevokeColumnPermissionResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &RevokeColumnPermissionResponse{}
-	_body, _err := client.RevokeColumnPermissionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -113403,85 +112861,6 @@ func (client *Client) TopTenErrorTimesInstance(request *TopTenErrorTimesInstance
 	runtime := &util.RuntimeOptions{}
 	_result = &TopTenErrorTimesInstanceResponse{}
 	_body, _err := client.TopTenErrorTimesInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Removes a directory from the left-side navigation pane of DataAnalysis.
-//
-// @param request - UmountDirectoryRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return UmountDirectoryResponse
-func (client *Client) UmountDirectoryWithOptions(request *UmountDirectoryRequest, runtime *util.RuntimeOptions) (_result *UmountDirectoryResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.TargetId)) {
-		body["TargetId"] = request.TargetId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TargetType)) {
-		body["TargetType"] = request.TargetType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TargetUserId)) {
-		body["TargetUserId"] = request.TargetUserId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("UmountDirectory"),
-		Version:     tea.String("2020-05-18"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UmountDirectoryResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UmountDirectoryResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	}
-
-}
-
-// Summary:
-//
-// Removes a directory from the left-side navigation pane of DataAnalysis.
-//
-// @param request - UmountDirectoryRequest
-//
-// @return UmountDirectoryResponse
-func (client *Client) UmountDirectory(request *UmountDirectoryRequest) (_result *UmountDirectoryResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UmountDirectoryResponse{}
-	_body, _err := client.UmountDirectoryWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
