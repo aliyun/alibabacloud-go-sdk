@@ -863,6 +863,7 @@ type CreateChangeSetRequest struct {
 	//
 	// Disabled
 	ReplacementOption *string `json:"ReplacementOption,omitempty" xml:"ReplacementOption,omitempty"`
+	ResourceGroupId   *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The resources that you want to import to the stack.
 	ResourcesToImport []*CreateChangeSetRequestResourcesToImport `json:"ResourcesToImport,omitempty" xml:"ResourcesToImport,omitempty" type:"Repeated"`
 	// The ID of the stack for which you want to create the change set. ROS compares the stack information with the information that you submit, such as an updated template or parameter value, to generate the change set.\\
@@ -962,8 +963,9 @@ type CreateChangeSetRequest struct {
 	// example:
 	//
 	// oss://ros/stack-policy/demo
-	StackPolicyURL *string `json:"StackPolicyURL,omitempty" xml:"StackPolicyURL,omitempty"`
-	TemplateBody   *string `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
+	StackPolicyURL *string                       `json:"StackPolicyURL,omitempty" xml:"StackPolicyURL,omitempty"`
+	Tags           []*CreateChangeSetRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TemplateBody   *string                       `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
 	// The template ID. This parameter applies to shared templates and private templates.
 	//
 	// You can call the [ListTemplates](https://help.aliyun.com/document_detail/610842.html) operation to query the template ID.
@@ -1097,6 +1099,11 @@ func (s *CreateChangeSetRequest) SetReplacementOption(v string) *CreateChangeSet
 	return s
 }
 
+func (s *CreateChangeSetRequest) SetResourceGroupId(v string) *CreateChangeSetRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *CreateChangeSetRequest) SetResourcesToImport(v []*CreateChangeSetRequestResourcesToImport) *CreateChangeSetRequest {
 	s.ResourcesToImport = v
 	return s
@@ -1129,6 +1136,11 @@ func (s *CreateChangeSetRequest) SetStackPolicyDuringUpdateURL(v string) *Create
 
 func (s *CreateChangeSetRequest) SetStackPolicyURL(v string) *CreateChangeSetRequest {
 	s.StackPolicyURL = &v
+	return s
+}
+
+func (s *CreateChangeSetRequest) SetTags(v []*CreateChangeSetRequestTags) *CreateChangeSetRequest {
+	s.Tags = v
 	return s
 }
 
@@ -1259,6 +1271,29 @@ func (s *CreateChangeSetRequestResourcesToImport) SetResourceIdentifier(v string
 
 func (s *CreateChangeSetRequestResourcesToImport) SetResourceType(v string) *CreateChangeSetRequestResourcesToImport {
 	s.ResourceType = &v
+	return s
+}
+
+type CreateChangeSetRequestTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateChangeSetRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateChangeSetRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *CreateChangeSetRequestTags) SetKey(v string) *CreateChangeSetRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateChangeSetRequestTags) SetValue(v string) *CreateChangeSetRequestTags {
+	s.Value = &v
 	return s
 }
 
@@ -4337,7 +4372,20 @@ func (s *DeleteDiagnosticResponse) SetBody(v *DeleteDiagnosticResponseBody) *Del
 type DeleteStackRequest struct {
 	// The options for deleting the stack.
 	DeleteOptions []*string `json:"DeleteOptions,omitempty" xml:"DeleteOptions,omitempty" type:"Repeated"`
-	Parallelism   *int64    `json:"Parallelism,omitempty" xml:"Parallelism,omitempty"`
+	// The maximum number of concurrent operations that can be performed on resources.
+	//
+	// By default, this parameter is empty. You can set this parameter to an integer that is greater than or equal to 0.
+	//
+	//
+	//
+	// > -  If you set this parameter to an integer that is greater than 0, the integer is used. If you set this parameter to 0 or leave this parameter empty, no limit is imposed on ROS stacks. However, the default value in Terraform is used for Terraform stacks. In most cases, the default value in Terraform is 10.
+	//
+	// > -  If you set this parameter to a specific value, ROS associates the value with the stack. The value affects subsequent operations on the stack, such as an update operation.
+	//
+	// example:
+	//
+	// 1
+	Parallelism *int64 `json:"Parallelism,omitempty" xml:"Parallelism,omitempty"`
 	// The name of the RAM role. Resource Orchestration Service (ROS) assumes the RAM role to create the stack and uses the credentials of the role to call the APIs of Alibaba Cloud services.\\
 	//
 	// ROS assumes the role to perform operations on the stack. If you have permissions to perform operations on the stack but do not have permissions to use the RAM role, ROS still assumes the RAM role. You must make sure that the least privileges are granted to the RAM role.\\
@@ -6863,7 +6911,8 @@ type GetChangeSetResponseBody struct {
 	// example:
 	//
 	// 3766EE04-76DD-50F9-9C23-3AF136CD5708
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the stack with which the change set is associated.
 	//
 	// example:
@@ -6887,7 +6936,8 @@ type GetChangeSetResponseBody struct {
 	// example:
 	//
 	// too many changes.
-	StatusReason *string `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
+	StatusReason *string                         `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
+	Tags         []*GetChangeSetResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The template body of the change set.
 	//
 	// > This parameter takes effect only if you set ShowTemplate to true.
@@ -6972,6 +7022,11 @@ func (s *GetChangeSetResponseBody) SetRequestId(v string) *GetChangeSetResponseB
 	return s
 }
 
+func (s *GetChangeSetResponseBody) SetResourceGroupId(v string) *GetChangeSetResponseBody {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *GetChangeSetResponseBody) SetStackId(v string) *GetChangeSetResponseBody {
 	s.StackId = &v
 	return s
@@ -6989,6 +7044,11 @@ func (s *GetChangeSetResponseBody) SetStatus(v string) *GetChangeSetResponseBody
 
 func (s *GetChangeSetResponseBody) SetStatusReason(v string) *GetChangeSetResponseBody {
 	s.StatusReason = &v
+	return s
+}
+
+func (s *GetChangeSetResponseBody) SetTags(v []*GetChangeSetResponseBodyTags) *GetChangeSetResponseBody {
+	s.Tags = v
 	return s
 }
 
@@ -7110,6 +7170,29 @@ func (s *GetChangeSetResponseBodyParameters) SetParameterKey(v string) *GetChang
 
 func (s *GetChangeSetResponseBodyParameters) SetParameterValue(v string) *GetChangeSetResponseBodyParameters {
 	s.ParameterValue = &v
+	return s
+}
+
+type GetChangeSetResponseBodyTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetChangeSetResponseBodyTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetChangeSetResponseBodyTags) GoString() string {
+	return s.String()
+}
+
+func (s *GetChangeSetResponseBodyTags) SetKey(v string) *GetChangeSetResponseBodyTags {
+	s.Key = &v
+	return s
+}
+
+func (s *GetChangeSetResponseBodyTags) SetValue(v string) *GetChangeSetResponseBodyTags {
+	s.Value = &v
 	return s
 }
 
@@ -8542,7 +8625,7 @@ type GetServiceProvisionsRequestServices struct {
 	//
 	// 	- KMS: Key Management Service (KMS)
 	//
-	// 	- NAS: Apsara File Storage NAS (NAS)
+	// 	- NAS: File Storage NAS (NAS)
 	//
 	// 	- NLP: Natural Language Processing (NLP)
 	//
@@ -12150,6 +12233,11 @@ func (s *GetTemplateRequest) SetTemplateVersion(v string) *GetTemplateRequest {
 }
 
 type GetTemplateResponseBody struct {
+	// Supplementary information for the public template.
+	//
+	// example:
+	//
+	// {"DeploymentDuration":null,"Title":"Self-Built_ElasticSearch_Snapshot_Saved_To_OSS","Labels":{"ResourceTypes":["ALIYUN::ECS::Instance","ALIYUN::ECS::SecurityGroup","ALIYUN::ECS::VPC","ALIYUN::ECS::VSwitch","ALIYUN::OSS::Bucket","ALIYUN::ROS::WaitCondition","ALIYUN::ROS::WaitConditionHandle"],"DeployTypes":["ROS"],"ApplicationScenes":["其他"]},"Provider":"ROS","Categories":["Solution"]}
 	AdditionalInfo map[string]interface{} `json:"AdditionalInfo,omitempty" xml:"AdditionalInfo,omitempty"`
 	// The ID of the change set. This parameter is returned only if you specify ChangeSetId.
 	//
@@ -12832,7 +12920,16 @@ type GetTemplateParameterConstraintsRequest struct {
 	// example:
 	//
 	// c754d2a4-28f1-46df-b557-9586173a****
-	StackId      *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
+	StackId *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
+	// The structure that contains the template body.
+	//
+	// The template body must be 1 to 524,288 bytes in length. If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
+	//
+	// >  You must specify only one of the following parameters: TemplateBody, TemplateURL, and TemplateId.
+	//
+	// example:
+	//
+	// {"Parameters":{"ZoneInfo":{"Type": "String"},"InstanceType": {"Type": "String"}},"ROSTemplateFormatVersion": "2015-09-01","Resources":{"ECS":{"Properties":{"ZoneId":{"Ref": "ZoneInfo"},"InstanceType": {"Ref": "InstanceType"}},"Type": "ALIYUN::ECS::Instance"}}}
 	TemplateBody *string `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
 	// The ID of the template. This parameter applies to shared and private templates.
 	//
@@ -12993,7 +13090,16 @@ type GetTemplateParameterConstraintsShrinkRequest struct {
 	// example:
 	//
 	// c754d2a4-28f1-46df-b557-9586173a****
-	StackId      *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
+	StackId *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
+	// The structure that contains the template body.
+	//
+	// The template body must be 1 to 524,288 bytes in length. If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
+	//
+	// >  You must specify only one of the following parameters: TemplateBody, TemplateURL, and TemplateId.
+	//
+	// example:
+	//
+	// {"Parameters":{"ZoneInfo":{"Type": "String"},"InstanceType": {"Type": "String"}},"ROSTemplateFormatVersion": "2015-09-01","Resources":{"ECS":{"Properties":{"ZoneId":{"Ref": "ZoneInfo"},"InstanceType": {"Ref": "InstanceType"}},"Type": "ALIYUN::ECS::Instance"}}}
 	TemplateBody *string `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
 	// The ID of the template. This parameter applies to shared and private templates.
 	//
@@ -13193,7 +13299,8 @@ type GetTemplateParameterConstraintsResponseBodyParameterConstraints struct {
 	// ZoneInfo
 	ParameterKey *string `json:"ParameterKey,omitempty" xml:"ParameterKey,omitempty"`
 	// The error that is returned when the request fails.
-	QueryErrors         []*GetTemplateParameterConstraintsResponseBodyParameterConstraintsQueryErrors         `json:"QueryErrors,omitempty" xml:"QueryErrors,omitempty" type:"Repeated"`
+	QueryErrors []*GetTemplateParameterConstraintsResponseBodyParameterConstraintsQueryErrors `json:"QueryErrors,omitempty" xml:"QueryErrors,omitempty" type:"Repeated"`
+	// Query the details of timeout.
 	QueryTimeoutDetails []*GetTemplateParameterConstraintsResponseBodyParameterConstraintsQueryTimeoutDetails `json:"QueryTimeoutDetails,omitempty" xml:"QueryTimeoutDetails,omitempty" type:"Repeated"`
 	// The data type of the parameter.
 	//
@@ -13306,9 +13413,19 @@ func (s *GetTemplateParameterConstraintsResponseBodyParameterConstraintsNotSuppo
 
 type GetTemplateParameterConstraintsResponseBodyParameterConstraintsOriginalConstraints struct {
 	// The values of the parameter.
-	AllowedValues  []interface{} `json:"AllowedValues,omitempty" xml:"AllowedValues,omitempty" type:"Repeated"`
-	Behavior       *string       `json:"Behavior,omitempty" xml:"Behavior,omitempty"`
-	BehaviorReason *string       `json:"BehaviorReason,omitempty" xml:"BehaviorReason,omitempty"`
+	AllowedValues []interface{} `json:"AllowedValues,omitempty" xml:"AllowedValues,omitempty" type:"Repeated"`
+	// Behavior of the parameter
+	//
+	// example:
+	//
+	// QueryError
+	Behavior *string `json:"Behavior,omitempty" xml:"Behavior,omitempty"`
+	// The reason for the parameter behavior
+	//
+	// example:
+	//
+	// No resource property refer to the parameter
+	BehaviorReason *string `json:"BehaviorReason,omitempty" xml:"BehaviorReason,omitempty"`
 	// The name of the resource property.
 	//
 	// example:
@@ -13412,8 +13529,23 @@ func (s *GetTemplateParameterConstraintsResponseBodyParameterConstraintsQueryErr
 }
 
 type GetTemplateParameterConstraintsResponseBodyParameterConstraintsQueryTimeoutDetails struct {
+	// Error message.
+	//
+	// example:
+	//
+	// query property SlaveZoneIds.	- in resource rds error, error message: query 8 seconds timeout
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// Resource name.
+	//
+	// example:
+	//
+	// rds
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// Resource type.
+	//
+	// example:
+	//
+	// ALIYUN::RDS::DBInstance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -15501,7 +15633,8 @@ type ListChangeSetsResponseBodyChangeSets struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the stack with which the change set is associated.
 	//
 	// example:
@@ -15525,7 +15658,8 @@ type ListChangeSetsResponseBodyChangeSets struct {
 	// example:
 	//
 	// too many changes
-	StatusReason *string `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
+	StatusReason *string                                     `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
+	Tags         []*ListChangeSetsResponseBodyChangeSetsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListChangeSetsResponseBodyChangeSets) String() string {
@@ -15571,6 +15705,11 @@ func (s *ListChangeSetsResponseBodyChangeSets) SetRegionId(v string) *ListChange
 	return s
 }
 
+func (s *ListChangeSetsResponseBodyChangeSets) SetResourceGroupId(v string) *ListChangeSetsResponseBodyChangeSets {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *ListChangeSetsResponseBodyChangeSets) SetStackId(v string) *ListChangeSetsResponseBodyChangeSets {
 	s.StackId = &v
 	return s
@@ -15588,6 +15727,34 @@ func (s *ListChangeSetsResponseBodyChangeSets) SetStatus(v string) *ListChangeSe
 
 func (s *ListChangeSetsResponseBodyChangeSets) SetStatusReason(v string) *ListChangeSetsResponseBodyChangeSets {
 	s.StatusReason = &v
+	return s
+}
+
+func (s *ListChangeSetsResponseBodyChangeSets) SetTags(v []*ListChangeSetsResponseBodyChangeSetsTags) *ListChangeSetsResponseBodyChangeSets {
+	s.Tags = v
+	return s
+}
+
+type ListChangeSetsResponseBodyChangeSetsTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListChangeSetsResponseBodyChangeSetsTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListChangeSetsResponseBodyChangeSetsTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListChangeSetsResponseBodyChangeSetsTags) SetKey(v string) *ListChangeSetsResponseBodyChangeSetsTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListChangeSetsResponseBodyChangeSetsTags) SetValue(v string) *ListChangeSetsResponseBodyChangeSetsTags {
+	s.Value = &v
 	return s
 }
 
@@ -21107,20 +21274,21 @@ func (s *ListTemplateVersionsResponse) SetBody(v *ListTemplateVersionsResponseBo
 }
 
 type ListTemplatesRequest struct {
+	// Filter.
 	Filters []*ListTemplatesRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
-	// Specifies whether to query the tag information. Valid values:
+	// Whether to query tag information. Values:
 	//
-	// 	- Enabled
+	// - Enabled: Query.
 	//
-	// 	- Disabled (default)
+	// - Disabled (default): Do not query.
 	//
 	// example:
 	//
 	// Enabled
 	IncludeTags *string `json:"IncludeTags,omitempty" xml:"IncludeTags,omitempty"`
-	// The page number.\\
+	// The page number of the template list.
 	//
-	// Pages start from page 1.\\
+	// Start value: 1.
 	//
 	// Default value: 1.
 	//
@@ -21128,9 +21296,9 @@ type ListTemplatesRequest struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.\\
+	// The number of entries per page in a paginated query.
 	//
-	// Valid values: 1 to 50.\\
+	// Value range: 1~50.
 	//
 	// Default value: 10.
 	//
@@ -21138,9 +21306,9 @@ type ListTemplatesRequest struct {
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the resource group.\\
+	// The ID of the resource group.
 	//
-	// For more information about resource groups, see the "Resource Group" section of [What is Resource Management?](https://help.aliyun.com/document_detail/94475.html)
+	// For more information about resource groups, see [What is a Resource Group](https://help.aliyun.com/document_detail/94475.html).
 	//
 	// example:
 	//
@@ -21148,21 +21316,23 @@ type ListTemplatesRequest struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The sharing type of the template.
 	//
-	// Valid values:
+	// Values:
 	//
-	// 	- Private (default): The template belongs to the template owner.
+	// - Private (default): The template is owned by the user.
 	//
-	// 	- Shared: The template is shared with other users.
+	// - Shared: The template is shared by other users.
 	//
-	// 	- Official: The template is the shared template of the official version.
+	// - Official: The template is officially shared.
 	//
 	// example:
 	//
 	// Private
 	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
-	// The tags. You can specify up to 20 tags.
+	// Tags. A maximum of 20 tags are supported.
 	Tag []*ListTemplatesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The template name. This parameter takes effect only when ShareType is set to Private. The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (_). The name must start with a digit or letter.
+	// The name of the template. This parameter is effective only when ShareType is Private.
+	//
+	// The length must not exceed 255 characters and must start with a digit or a letter. It can contain digits, letters, hyphens (-), and underscores (_).
 	//
 	// example:
 	//
@@ -21219,7 +21389,25 @@ func (s *ListTemplatesRequest) SetTemplateName(v string) *ListTemplatesRequest {
 }
 
 type ListTemplatesRequestFilters struct {
-	Name   *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the filter. You can choose one or more names for the query. Value range:
+	//
+	// - Categories: Template categories
+	//
+	// - DeployTypes: Deployment types
+	//
+	// - ApplicationScenes: Application scenarios
+	//
+	// - BasicServices: Basic services
+	//
+	// - ResourceTypes: Resource types
+	//
+	// - TemplateNames: Template names
+	//
+	// example:
+	//
+	// Categories
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The list of filter values.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -21242,17 +21430,17 @@ func (s *ListTemplatesRequestFilters) SetValues(v []*string) *ListTemplatesReque
 }
 
 type ListTemplatesRequestTag struct {
-	// The key of the tag. This parameter takes effect only when ShareType is set to Private.
+	// The key of the tag. This parameter is effective only when ShareType is Private.
 	//
-	// You can specify up to 20 tag keys.
+	// A maximum of 20 tag keys are supported.
 	//
 	// example:
 	//
 	// usage
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag. This parameter takes effect only when ShareType is set to Private.
+	// The value of the tag. This parameter is effective only when ShareType is Private.
 	//
-	// You can specify up to 20 tag values.
+	// A maximum of 20 tag values are supported.
 	//
 	// example:
 	//
@@ -21279,15 +21467,15 @@ func (s *ListTemplatesRequestTag) SetValue(v string) *ListTemplatesRequestTag {
 }
 
 type ListTemplatesResponseBody struct {
-	// The page number.\\
+	// The page number of the template list.
 	//
-	// Pages start from page 1.
+	// Start value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page in a paginated query.
 	//
 	// example:
 	//
@@ -21299,7 +21487,7 @@ type ListTemplatesResponseBody struct {
 	//
 	// C3A8413B-1F16-4DED-AC3E-61A00718DE8A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The templates.
+	// The list of templates.
 	Templates []*ListTemplatesResponseBodyTemplates `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Repeated"`
 	// The total number of templates.
 	//
@@ -21343,26 +21531,31 @@ func (s *ListTemplatesResponseBody) SetTotalCount(v int32) *ListTemplatesRespons
 }
 
 type ListTemplatesResponseBodyTemplates struct {
+	// Supplementary information for public templates.
+	//
+	// example:
+	//
+	// {"DeploymentDuration":null,"Title":"Self-Built_ElasticSearch_Snapshot_Saved_To_OSS","Labels":{"ResourceTypes":["ALIYUN::ECS::Instance","ALIYUN::ECS::SecurityGroup","ALIYUN::ECS::VPC","ALIYUN::ECS::VSwitch","ALIYUN::OSS::Bucket","ALIYUN::ROS::WaitCondition","ALIYUN::ROS::WaitConditionHandle"],"DeployTypes":["ROS"],"ApplicationScenes":["其他"]},"Provider":"ROS","Categories":["Solution"]}
 	AdditionalInfo map[string]interface{} `json:"AdditionalInfo,omitempty" xml:"AdditionalInfo,omitempty"`
-	// The time when the template was created.
+	// Creation time.
 	//
 	// example:
 	//
 	// 2019-10-15T08:17:14.000000
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The description of the template.
+	// Template description.
 	//
 	// example:
 	//
 	// test-description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the Alibaba Cloud account to which the template belongs.
+	// ID of the Alibaba Cloud account to which the template belongs.
 	//
 	// example:
 	//
 	// 151266687691****
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the resource group.
+	// Resource group ID.
 	//
 	// example:
 	//
@@ -21370,44 +21563,49 @@ type ListTemplatesResponseBodyTemplates struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The sharing type of the template.
 	//
-	// Valid values:
+	// Values:
 	//
-	// 	- Private: The template belongs to the template owner.
+	// - Private: The template is owned by the user themselves.
 	//
-	// 	- Shared: The template is shared with other users.
+	// - Shared: The template is shared by other users.
 	//
 	// example:
 	//
 	// Private
 	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
-	// The tags of the template.
+	// Tags of the template.
 	Tags []*ListTemplatesResponseBodyTemplatesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The Alibaba Cloud Resource Name (ARN) of the template.
+	// The ARN of the template.
 	//
 	// example:
 	//
 	// acs:ros:*:151266687691****:template/a52f81be-496f-4e1c-a286-8852ab54****
 	TemplateARN *string `json:"TemplateARN,omitempty" xml:"TemplateARN,omitempty"`
-	// The template ID.
+	// Template ID.
 	//
 	// example:
 	//
 	// 4d4f5aa2-3260-4e47-863b-763fbb12****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The template name.
+	// Template name.
 	//
 	// example:
 	//
 	// demo
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	TemplateUrl  *string `json:"TemplateUrl,omitempty" xml:"TemplateUrl,omitempty"`
-	// The latest version of the template.
+	// Link to the template
+	//
+	// example:
+	//
+	// https://ros-public-templates.oss-cn-hangzhou.aliyuncs.com/demo.yml
+	TemplateUrl *string `json:"TemplateUrl,omitempty" xml:"TemplateUrl,omitempty"`
+	// Latest template version name.
 	//
 	// example:
 	//
 	// v1
 	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
-	// The time when the template was last updated.
+	// The last update time of the template.
 	//
 	// example:
 	//
@@ -21489,13 +21687,13 @@ func (s *ListTemplatesResponseBodyTemplates) SetUpdateTime(v string) *ListTempla
 }
 
 type ListTemplatesResponseBodyTemplatesTags struct {
-	// The key of the tag.
+	// Tag key of the template.
 	//
 	// example:
 	//
 	// usage
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	// Tag value of the template.
 	//
 	// example:
 	//
@@ -25605,16 +25803,49 @@ func (s *UpdateStackTemplateByResourcesResponse) SetBody(v *UpdateStackTemplateB
 }
 
 type UpdateTemplateRequest struct {
-	// The description of the template. It can be up to 256 characters in length.
+	// The description of the template. The maximum length is 256 characters.
 	//
 	// example:
 	//
 	// It is a demo.
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	IsDraft        *bool   `json:"IsDraft,omitempty" xml:"IsDraft,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Whether to update the Draft (draft) version. Values:
+	//
+	// - false (default): If template content is provided, a new version is created, and the Draft version is cleared. Otherwise, the current latest version is modified.
+	//
+	// - true: Modifies the Draft version. The Draft version can only be retrieved via the GetTemplate interface. The ListTemplateVersions interface will not return it. The TemplateVersion parameter in other interfaces cannot specify Draft.
+	//
+	// example:
+	//
+	// false
+	IsDraft *bool `json:"IsDraft,omitempty" xml:"IsDraft,omitempty"`
+	// Template version rotation strategy. Values:
+	//
+	// - None (default): No rotation. An error occurs when the version limit is reached.
+	//
+	// - DeleteOldestNonSharedVersionWhenLimitExceeded: Rotates and deletes non-shared template versions.
+	//
+	// >
+	//
+	// > - If all versions of the template are shared, they cannot be rotated and deleted.
+	//
+	// > - The current latest version will not be rotated and deleted.
+	//
+	// > - Regardless of whether rotation deletion is used, the template version number cannot exceed v65000.
+	//
+	// example:
+	//
+	// None
 	RotateStrategy *string `json:"RotateStrategy,omitempty" xml:"RotateStrategy,omitempty"`
-	TemplateBody   *string `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
-	// The ID of the template. This parameter applies to shared and private templates.
+	// The structure of the template body. The length should be between 1 and 524,288 bytes. If the content is long, it is recommended to use HTTP POST + Body Param to pass the parameter in the request body to avoid request failure due to an overly long URL.
+	//
+	// > You must and can only specify one of `TemplateBody`, `TemplateURL`, `TemplateId`, or `TemplateScratchId`.
+	//
+	// example:
+	//
+	// {"ROSTemplateFormatVersion":"2015-09-01"}
+	TemplateBody *string `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
+	// The template ID. Supports both shared and private templates.
 	//
 	// This parameter is required.
 	//
@@ -25624,22 +25855,29 @@ type UpdateTemplateRequest struct {
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// The name of the template.
 	//
-	// The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
+	// The length should not exceed 255 characters (utf-8 encoding), and it must start with a number, letter, or Chinese character. It can include numbers, letters, Chinese characters, hyphens (-), and underscores (_).
 	//
 	// example:
 	//
 	// MyTemplate
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The URL of the file that contains the template body. The URL must point to a template located in an HTTP or HTTPS web server or an Alibaba Cloud OSS bucket. Examples: oss://ros/template/demo and oss://ros/template/demo?RegionId=cn-hangzhou. The template can be up to 524,288 bytes in length, and the URL can be up to 1,024 bytes in length.
+	// The location of the file containing the template body. The URL must point to a template located on a web server (HTTP or HTTPS) or in an Alibaba Cloud OSS bucket (e.g., oss://ros/template/demo, oss://ros/template/demo?RegionId=cn-hangzhou), with a maximum size of 524,288 bytes.
 	//
-	// >  If the region of the OSS bucket is not specified, the RegionId value is used.
+	// > If the OSS region is not specified, it defaults to the same as the `RegionId` parameter in the request.
 	//
-	// You can specify only one of the TemplateBody and TemplateURL parameters.
+	//
+	//
+	// You can only specify one of `TemplateBody` or `TemplateURL`.
+	//
+	// The maximum length of the URL is 1,024 bytes.
 	//
 	// example:
 	//
 	// oss://ros/template/demo
-	TemplateURL       *string   `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
+	TemplateURL *string `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
+	// Validation options.
+	//
+	// By default, no options are enabled, and strict validation is performed.
 	ValidationOptions []*string `json:"ValidationOptions,omitempty" xml:"ValidationOptions,omitempty" type:"Repeated"`
 }
 
@@ -25692,18 +25930,23 @@ func (s *UpdateTemplateRequest) SetValidationOptions(v []*string) *UpdateTemplat
 }
 
 type UpdateTemplateResponseBody struct {
-	// The ID of the request.
+	// Request ID.
 	//
 	// example:
 	//
 	// 8C5D90E1-66B6-496C-9371-3807F8DA80A8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the template.
+	// Template ID.
 	//
 	// example:
 	//
 	// 5ecd1e10-b0e9-4389-a565-e4c15efc****
-	TemplateId      *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The template version affected by this operation.
+	//
+	// example:
+	//
+	// v2
 	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 }
 
@@ -26794,13 +27037,24 @@ func (client *Client) CancelStackOperationWithOptions(request *CancelStackOperat
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CancelStackOperationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CancelStackOperationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CancelStackOperationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -26862,13 +27116,24 @@ func (client *Client) CancelUpdateStackWithOptions(request *CancelUpdateStackReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CancelUpdateStackResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CancelUpdateStackResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CancelUpdateStackResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -26974,13 +27239,24 @@ func (client *Client) ContinueCreateStackWithOptions(request *ContinueCreateStac
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ContinueCreateStackResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ContinueCreateStackResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ContinueCreateStackResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -27052,13 +27328,24 @@ func (client *Client) CreateAITaskWithOptions(request *CreateAITaskRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateAITaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateAITaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateAITaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -27105,13 +27392,13 @@ func (client *Client) CreateAITask(request *CreateAITaskRequest) (_result *Creat
 //
 // ### [](#)Limits
 //
-// 	- You can use change sets to update only stacks that are in specific states. For more information, see [Use a change set to update a stack](https://help.aliyun.com/document_detail/155873.html).
+//   - You can use change sets to update only stacks that are in specific states. For more information, see [Use a change set to update a stack](https://help.aliyun.com/document_detail/155873.html).
 //
-// 	- A stack can have up to 20 change sets.
+//   - A stack can have up to 20 change sets.
 //
-// 	- Change sets reflect only the changes to stacks. Change sets do not reflect whether stacks can be successfully updated.
+//   - Change sets reflect only the changes to stacks. Change sets do not reflect whether stacks can be successfully updated.
 //
-// 	- A change set does not check if you exceed an account limit, if you update resources that cannot be updated, or if you have insufficient permissions to modify resources, all of which can cause a stack update to fail. If a stack update fails, Resource Orchestration Service (ROS) attempts to roll back your resources to their original status.
+//   - A change set does not check if you exceed an account limit, if you update resources that cannot be updated, or if you have insufficient permissions to modify resources, all of which can cause a stack update to fail. If a stack update fails, Resource Orchestration Service (ROS) attempts to roll back your resources to their original status.
 //
 // This topic provides an example on how to use a change set to update a stack. In this example, a change set named `MyChangeSet` is created in the `China (Hangzhou)` region. The template of a stack whose ID is `4a6c9851-3b0f-4f5f-b4ca-a14bf691****` is updated to `{"ROSTemplateFormatVersion":"2015-09-01"}`.
 //
@@ -27170,6 +27457,10 @@ func (client *Client) CreateChangeSetWithOptions(request *CreateChangeSetRequest
 		query["ReplacementOption"] = request.ReplacementOption
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourcesToImport)) {
 		query["ResourcesToImport"] = request.ResourcesToImport
 	}
@@ -27196,6 +27487,10 @@ func (client *Client) CreateChangeSetWithOptions(request *CreateChangeSetRequest
 
 	if !tea.BoolValue(util.IsUnset(request.StackPolicyURL)) {
 		query["StackPolicyURL"] = request.StackPolicyURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
@@ -27242,13 +27537,24 @@ func (client *Client) CreateChangeSetWithOptions(request *CreateChangeSetRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateChangeSetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateChangeSetResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateChangeSetResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -27277,13 +27583,13 @@ func (client *Client) CreateChangeSetWithOptions(request *CreateChangeSetRequest
 //
 // ### [](#)Limits
 //
-// 	- You can use change sets to update only stacks that are in specific states. For more information, see [Use a change set to update a stack](https://help.aliyun.com/document_detail/155873.html).
+//   - You can use change sets to update only stacks that are in specific states. For more information, see [Use a change set to update a stack](https://help.aliyun.com/document_detail/155873.html).
 //
-// 	- A stack can have up to 20 change sets.
+//   - A stack can have up to 20 change sets.
 //
-// 	- Change sets reflect only the changes to stacks. Change sets do not reflect whether stacks can be successfully updated.
+//   - Change sets reflect only the changes to stacks. Change sets do not reflect whether stacks can be successfully updated.
 //
-// 	- A change set does not check if you exceed an account limit, if you update resources that cannot be updated, or if you have insufficient permissions to modify resources, all of which can cause a stack update to fail. If a stack update fails, Resource Orchestration Service (ROS) attempts to roll back your resources to their original status.
+//   - A change set does not check if you exceed an account limit, if you update resources that cannot be updated, or if you have insufficient permissions to modify resources, all of which can cause a stack update to fail. If a stack update fails, Resource Orchestration Service (ROS) attempts to roll back your resources to their original status.
 //
 // This topic provides an example on how to use a change set to update a stack. In this example, a change set named `MyChangeSet` is created in the `China (Hangzhou)` region. The template of a stack whose ID is `4a6c9851-3b0f-4f5f-b4ca-a14bf691****` is updated to `{"ROSTemplateFormatVersion":"2015-09-01"}`.
 //
@@ -27346,13 +27652,24 @@ func (client *Client) CreateDiagnosticWithOptions(request *CreateDiagnosticReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateDiagnosticResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateDiagnosticResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateDiagnosticResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -27383,9 +27700,9 @@ func (client *Client) CreateDiagnostic(request *CreateDiagnosticRequest) (_resul
 //
 // When you call the operation, take note of the following limits:
 //
-// 	- You can create up to 200 stacks within an Alibaba Cloud account.
+//   - You can create up to 200 stacks within an Alibaba Cloud account.
 //
-// 	- You can create up to 200 resources in a stack.
+//   - You can create up to 200 resources in a stack.
 //
 // This topic provides an example on how to create a stack named `MyStack` in the China (Hangzhou) region by using a template. In this example, `TemplateBody` is set to `{"ROSTemplateFormatVersion":"2015-09-01"}`.
 //
@@ -27504,13 +27821,24 @@ func (client *Client) CreateStackWithOptions(request *CreateStackRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateStackResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateStackResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateStackResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -27523,9 +27851,9 @@ func (client *Client) CreateStackWithOptions(request *CreateStackRequest, runtim
 //
 // When you call the operation, take note of the following limits:
 //
-// 	- You can create up to 200 stacks within an Alibaba Cloud account.
+//   - You can create up to 200 stacks within an Alibaba Cloud account.
 //
-// 	- You can create up to 200 resources in a stack.
+//   - You can create up to 200 resources in a stack.
 //
 // This topic provides an example on how to create a stack named `MyStack` in the China (Hangzhou) region by using a template. In this example, `TemplateBody` is set to `{"ROSTemplateFormatVersion":"2015-09-01"}`.
 //
@@ -27553,9 +27881,9 @@ func (client *Client) CreateStack(request *CreateStackRequest) (_result *CreateS
 //
 // You can create a stack group that is granted self-managed or service-managed permissions:
 //
-// 	- If you use an Alibaba Cloud account to create a self-managed stack group, the administrator account and the execution account are Alibaba Cloud accounts.
+//   - If you use an Alibaba Cloud account to create a self-managed stack group, the administrator account and the execution account are Alibaba Cloud accounts.
 //
-// 	- If you enable a resource directory and use the management account or a delegated administrator account of the resource directory to create a service-managed stack group, the administrator account is the management account or delegated administrator account, and the execution account is a member account of the resource directory.
+//   - If you enable a resource directory and use the management account or a delegated administrator account of the resource directory to create a service-managed stack group, the administrator account is the management account or delegated administrator account, and the execution account is a member account of the resource directory.
 //
 // For more information about stack groups, see [Overview](https://help.aliyun.com/document_detail/154578.html).
 //
@@ -27662,13 +27990,24 @@ func (client *Client) CreateStackGroupWithOptions(tmpReq *CreateStackGroupReques
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateStackGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateStackGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateStackGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -27681,9 +28020,9 @@ func (client *Client) CreateStackGroupWithOptions(tmpReq *CreateStackGroupReques
 //
 // You can create a stack group that is granted self-managed or service-managed permissions:
 //
-// 	- If you use an Alibaba Cloud account to create a self-managed stack group, the administrator account and the execution account are Alibaba Cloud accounts.
+//   - If you use an Alibaba Cloud account to create a self-managed stack group, the administrator account and the execution account are Alibaba Cloud accounts.
 //
-// 	- If you enable a resource directory and use the management account or a delegated administrator account of the resource directory to create a service-managed stack group, the administrator account is the management account or delegated administrator account, and the execution account is a member account of the resource directory.
+//   - If you enable a resource directory and use the management account or a delegated administrator account of the resource directory to create a service-managed stack group, the administrator account is the management account or delegated administrator account, and the execution account is a member account of the resource directory.
 //
 // For more information about stack groups, see [Overview](https://help.aliyun.com/document_detail/154578.html).
 //
@@ -27804,13 +28143,24 @@ func (client *Client) CreateStackInstancesWithOptions(tmpReq *CreateStackInstanc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateStackInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateStackInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateStackInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -27900,13 +28250,24 @@ func (client *Client) CreateTemplateWithOptions(request *CreateTemplateRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateTemplateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateTemplateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -28054,13 +28415,24 @@ func (client *Client) CreateTemplateScratchWithOptions(tmpReq *CreateTemplateScr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateTemplateScratchResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateTemplateScratchResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateTemplateScratchResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -28115,17 +28487,17 @@ func (client *Client) CreateTemplateScratch(request *CreateTemplateScratchReques
 //
 // Description:
 //
-//   Before you call this operation, make sure that the following requirements are met:
+//	  Before you call this operation, make sure that the following requirements are met:
 //
-//     	- The status of the change set is CREATE_COMPLETE, CREATE_FAILED, or DELETE_FAILED.
+//	    	- The status of the change set is CREATE_COMPLETE, CREATE_FAILED, or DELETE_FAILED.
 //
-//     	- The execution status is UNAVAILABLE or AVAILABLE.
+//	    	- The execution status is UNAVAILABLE or AVAILABLE.
 //
-// 	- After a change set is executed, other change sets associated with the same stack as this change set are also deleted.
+//		- After a change set is executed, other change sets associated with the same stack as this change set are also deleted.
 //
-// 	- After a stack is deleted, change sets associated with the stack are deleted.
+//		- After a stack is deleted, change sets associated with the stack are deleted.
 //
-// 	- If a change set of the CREATE type is deleted, you must delete stacks associated with the change set.
+//		- If a change set of the CREATE type is deleted, you must delete stacks associated with the change set.
 //
 // In this example, a change set whose ID is `1f6521a4-05af-4975-afe9-bc4b45ad****` is deleted. The change set is created in the China (Hangzhou) region.
 //
@@ -28162,13 +28534,24 @@ func (client *Client) DeleteChangeSetWithOptions(request *DeleteChangeSetRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteChangeSetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteChangeSetResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteChangeSetResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -28177,17 +28560,17 @@ func (client *Client) DeleteChangeSetWithOptions(request *DeleteChangeSetRequest
 //
 // Description:
 //
-//   Before you call this operation, make sure that the following requirements are met:
+//	  Before you call this operation, make sure that the following requirements are met:
 //
-//     	- The status of the change set is CREATE_COMPLETE, CREATE_FAILED, or DELETE_FAILED.
+//	    	- The status of the change set is CREATE_COMPLETE, CREATE_FAILED, or DELETE_FAILED.
 //
-//     	- The execution status is UNAVAILABLE or AVAILABLE.
+//	    	- The execution status is UNAVAILABLE or AVAILABLE.
 //
-// 	- After a change set is executed, other change sets associated with the same stack as this change set are also deleted.
+//		- After a change set is executed, other change sets associated with the same stack as this change set are also deleted.
 //
-// 	- After a stack is deleted, change sets associated with the stack are deleted.
+//		- After a stack is deleted, change sets associated with the stack are deleted.
 //
-// 	- If a change set of the CREATE type is deleted, you must delete stacks associated with the change set.
+//		- If a change set of the CREATE type is deleted, you must delete stacks associated with the change set.
 //
 // In this example, a change set whose ID is `1f6521a4-05af-4975-afe9-bc4b45ad****` is deleted. The change set is created in the China (Hangzhou) region.
 //
@@ -28238,13 +28621,24 @@ func (client *Client) DeleteDiagnosticWithOptions(request *DeleteDiagnosticReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteDiagnosticResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteDiagnosticResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteDiagnosticResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -28322,13 +28716,24 @@ func (client *Client) DeleteStackWithOptions(request *DeleteStackRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteStackResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteStackResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteStackResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -28392,13 +28797,24 @@ func (client *Client) DeleteStackGroupWithOptions(request *DeleteStackGroupReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteStackGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteStackGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteStackGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -28512,13 +28928,24 @@ func (client *Client) DeleteStackInstancesWithOptions(tmpReq *DeleteStackInstanc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteStackInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteStackInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteStackInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -28580,13 +29007,24 @@ func (client *Client) DeleteTemplateWithOptions(request *DeleteTemplateRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteTemplateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteTemplateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -28652,13 +29090,24 @@ func (client *Client) DeleteTemplateScratchWithOptions(request *DeleteTemplateSc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteTemplateScratchResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteTemplateScratchResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteTemplateScratchResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -28689,15 +29138,15 @@ func (client *Client) DeleteTemplateScratch(request *DeleteTemplateScratchReques
 //
 // Description:
 //
-//   If you delete a resource type, you can no longer use the resource type in Resource Orchestration Service (ROS).
+//	  If you delete a resource type, you can no longer use the resource type in Resource Orchestration Service (ROS).
 //
-// 	- If you delete a version of a resource type, you can no longer use the version in ROS.
+//		- If you delete a version of a resource type, you can no longer use the version in ROS.
 //
-// 	- If a resource type has only one version, you can delete the version by calling the operation. If a resource type has more than one version, you must manually delete the remaining versions.
+//		- If a resource type has only one version, you can delete the version by calling the operation. If a resource type has more than one version, you must manually delete the remaining versions.
 //
-// 	- When a resource type has more than one version, you cannot delete the default version by calling the operation.
+//		- When a resource type has more than one version, you cannot delete the default version by calling the operation.
 //
-// 	- When a resource type has only one version, you can delete the resource type and the version by calling the operation.
+//		- When a resource type has only one version, you can delete the resource type and the version by calling the operation.
 //
 // @param request - DeregisterResourceTypeRequest
 //
@@ -28732,13 +29181,24 @@ func (client *Client) DeregisterResourceTypeWithOptions(request *DeregisterResou
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeregisterResourceTypeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeregisterResourceTypeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeregisterResourceTypeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -28747,15 +29207,15 @@ func (client *Client) DeregisterResourceTypeWithOptions(request *DeregisterResou
 //
 // Description:
 //
-//   If you delete a resource type, you can no longer use the resource type in Resource Orchestration Service (ROS).
+//	  If you delete a resource type, you can no longer use the resource type in Resource Orchestration Service (ROS).
 //
-// 	- If you delete a version of a resource type, you can no longer use the version in ROS.
+//		- If you delete a version of a resource type, you can no longer use the version in ROS.
 //
-// 	- If a resource type has only one version, you can delete the version by calling the operation. If a resource type has more than one version, you must manually delete the remaining versions.
+//		- If a resource type has only one version, you can delete the version by calling the operation. If a resource type has more than one version, you must manually delete the remaining versions.
 //
-// 	- When a resource type has more than one version, you cannot delete the default version by calling the operation.
+//		- When a resource type has more than one version, you cannot delete the default version by calling the operation.
 //
-// 	- When a resource type has only one version, you can delete the resource type and the version by calling the operation.
+//		- When a resource type has only one version, you can delete the resource type and the version by calling the operation.
 //
 // @param request - DeregisterResourceTypeRequest
 //
@@ -28804,13 +29264,24 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeRegionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeRegionsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeRegionsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -28876,13 +29347,24 @@ func (client *Client) DetectStackDriftWithOptions(request *DetectStackDriftReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DetectStackDriftResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DetectStackDriftResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DetectStackDriftResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -28950,13 +29432,24 @@ func (client *Client) DetectStackGroupDriftWithOptions(tmpReq *DetectStackGroupD
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DetectStackGroupDriftResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DetectStackGroupDriftResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DetectStackGroupDriftResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - DetectStackGroupDriftRequest
@@ -29018,13 +29511,24 @@ func (client *Client) DetectStackResourceDriftWithOptions(request *DetectStackRe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DetectStackResourceDriftResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DetectStackResourceDriftResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DetectStackResourceDriftResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -29090,13 +29594,24 @@ func (client *Client) ExecuteChangeSetWithOptions(request *ExecuteChangeSetReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ExecuteChangeSetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ExecuteChangeSetResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ExecuteChangeSetResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -29172,13 +29687,24 @@ func (client *Client) GenerateTemplateByScratchWithOptions(request *GenerateTemp
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GenerateTemplateByScratchResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GenerateTemplateByScratchResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GenerateTemplateByScratchResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -29260,13 +29786,24 @@ func (client *Client) GenerateTemplatePolicyWithOptions(request *GenerateTemplat
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GenerateTemplatePolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GenerateTemplatePolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GenerateTemplatePolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -29330,13 +29867,24 @@ func (client *Client) GetAITaskWithOptions(request *GetAITaskRequest, runtime *u
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetAITaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetAITaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetAITaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -29402,13 +29950,24 @@ func (client *Client) GetChangeSetWithOptions(request *GetChangeSetRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetChangeSetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetChangeSetResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetChangeSetResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -29466,13 +30025,24 @@ func (client *Client) GetDiagnosticWithOptions(request *GetDiagnosticRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetDiagnosticResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetDiagnosticResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetDiagnosticResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -29538,13 +30108,24 @@ func (client *Client) GetFeatureDetailsWithOptions(request *GetFeatureDetailsReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetFeatureDetailsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetFeatureDetailsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetFeatureDetailsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -29614,13 +30195,24 @@ func (client *Client) GetResourceTypeWithOptions(request *GetResourceTypeRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetResourceTypeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetResourceTypeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetResourceTypeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -29682,13 +30274,24 @@ func (client *Client) GetResourceTypeTemplateWithOptions(request *GetResourceTyp
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetResourceTypeTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetResourceTypeTemplateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetResourceTypeTemplateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -29776,13 +30379,24 @@ func (client *Client) GetServiceProvisionsWithOptions(request *GetServiceProvisi
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetServiceProvisionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetServiceProvisionsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetServiceProvisionsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -29868,13 +30482,24 @@ func (client *Client) GetStackWithOptions(request *GetStackRequest, runtime *uti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetStackResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetStackResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetStackResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -29940,13 +30565,24 @@ func (client *Client) GetStackDriftDetectionStatusWithOptions(request *GetStackD
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetStackDriftDetectionStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetStackDriftDetectionStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetStackDriftDetectionStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -30016,13 +30652,24 @@ func (client *Client) GetStackGroupWithOptions(request *GetStackGroupRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetStackGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetStackGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetStackGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -30088,13 +30735,24 @@ func (client *Client) GetStackGroupOperationWithOptions(request *GetStackGroupOp
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetStackGroupOperationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetStackGroupOperationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetStackGroupOperationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -30172,13 +30830,24 @@ func (client *Client) GetStackInstanceWithOptions(request *GetStackInstanceReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetStackInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetStackInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetStackInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -30244,13 +30913,24 @@ func (client *Client) GetStackPolicyWithOptions(request *GetStackPolicyRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetStackPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetStackPolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetStackPolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -30338,13 +31018,24 @@ func (client *Client) GetStackResourceWithOptions(request *GetStackResourceReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetStackResourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetStackResourceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetStackResourceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -30444,13 +31135,24 @@ func (client *Client) GetTemplateWithOptions(request *GetTemplateRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetTemplateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetTemplateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -30483,103 +31185,103 @@ func (client *Client) GetTemplate(request *GetTemplateRequest) (_result *GetTemp
 //
 // ###
 //
-// 	- For more information about the resources that support price inquiry in Resource Orchestration Service (ROS) templates, see the "**Resource types that support price inquiry**" section of the [Estimate resource prices](https://help.aliyun.com/document_detail/203165.html) topic.
+//   - For more information about the resources that support price inquiry in Resource Orchestration Service (ROS) templates, see the "**Resource types that support price inquiry**" section of the [Estimate resource prices](https://help.aliyun.com/document_detail/203165.html) topic.
 //
-// 	- For more information about the resources that support price inquiry in Terraform templates, see the "**ROS resources supported by Terraform**" section of the [ROS features and resources supported by Terraform](https://help.aliyun.com/document_detail/184389.html) topic.
+//   - For more information about the resources that support price inquiry in Terraform templates, see the "**ROS resources supported by Terraform**" section of the [ROS features and resources supported by Terraform](https://help.aliyun.com/document_detail/184389.html) topic.
 //
 // The following sample code provides an example on how to query the estimated price of an elastic IP address (EIP) that you want to create based on a template. In this example, the following template is used:
 //
-//     {
+//	{
 //
-//       "ROSTemplateFormatVersion": "2015-09-01",
+//	  "ROSTemplateFormatVersion": "2015-09-01",
 //
-//       "Parameters": {
+//	  "Parameters": {
 //
-//         "Isp": {
+//	    "Isp": {
 //
-//           "Type": "String",
+//	      "Type": "String",
 //
-//           "Default": "BGP"
+//	      "Default": "BGP"
 //
-//         },
+//	    },
 //
-//         "Name": {
+//	    "Name": {
 //
-//           "Type": "String",
+//	      "Type": "String",
 //
-//           "Default": "test"
+//	      "Default": "test"
 //
-//         },
+//	    },
 //
-//         "Netmode": {
+//	    "Netmode": {
 //
-//           "Type": "String",
+//	      "Type": "String",
 //
-//           "Default": "public"
+//	      "Default": "public"
 //
-//         },
+//	    },
 //
-//         "Bandwidth": {
+//	    "Bandwidth": {
 //
-//           "Type": "Number",
+//	      "Type": "Number",
 //
-//           "Default": 5
+//	      "Default": 5
 //
-//         }
+//	    }
 //
-//       },
+//	  },
 //
-//       "Resources": {
+//	  "Resources": {
 //
-//         "NewEip": {
+//	    "NewEip": {
 //
-//           "Type": "ALIYUN::VPC::EIP",
+//	      "Type": "ALIYUN::VPC::EIP",
 //
-//           "Properties": {
+//	      "Properties": {
 //
-//             "InstanceChargeType": "Prepaid",
+//	        "InstanceChargeType": "Prepaid",
 //
-//             "PricingCycle": "Month",
+//	        "PricingCycle": "Month",
 //
-//             "Isp": {
+//	        "Isp": {
 //
-//               "Ref": "Isp"
+//	          "Ref": "Isp"
 //
-//             },
+//	        },
 //
-//             "Period": 1,
+//	        "Period": 1,
 //
-//             "DeletionProtection": false,
+//	        "DeletionProtection": false,
 //
-//             "AutoPay": false,
+//	        "AutoPay": false,
 //
-//             "Name": {
+//	        "Name": {
 //
-//               "Ref": "Name"
+//	          "Ref": "Name"
 //
-//             },
+//	        },
 //
-//             "InternetChargeType": "PayByTraffic",
+//	        "InternetChargeType": "PayByTraffic",
 //
-//             "Netmode": {
+//	        "Netmode": {
 //
-//               "Ref": "Netmode"
+//	          "Ref": "Netmode"
 //
-//             },
+//	        },
 //
-//             "Bandwidth": {
+//	        "Bandwidth": {
 //
-//               "Ref": "Bandwidth"
+//	          "Ref": "Bandwidth"
 //
-//             }
+//	        }
 //
-//           }
+//	      }
 //
-//         }
+//	    }
 //
-//       }
+//	  }
 //
-//     }
+//	}
 //
 // @param request - GetTemplateEstimateCostRequest
 //
@@ -30648,13 +31350,24 @@ func (client *Client) GetTemplateEstimateCostWithOptions(request *GetTemplateEst
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetTemplateEstimateCostResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetTemplateEstimateCostResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetTemplateEstimateCostResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -30665,103 +31378,103 @@ func (client *Client) GetTemplateEstimateCostWithOptions(request *GetTemplateEst
 //
 // ###
 //
-// 	- For more information about the resources that support price inquiry in Resource Orchestration Service (ROS) templates, see the "**Resource types that support price inquiry**" section of the [Estimate resource prices](https://help.aliyun.com/document_detail/203165.html) topic.
+//   - For more information about the resources that support price inquiry in Resource Orchestration Service (ROS) templates, see the "**Resource types that support price inquiry**" section of the [Estimate resource prices](https://help.aliyun.com/document_detail/203165.html) topic.
 //
-// 	- For more information about the resources that support price inquiry in Terraform templates, see the "**ROS resources supported by Terraform**" section of the [ROS features and resources supported by Terraform](https://help.aliyun.com/document_detail/184389.html) topic.
+//   - For more information about the resources that support price inquiry in Terraform templates, see the "**ROS resources supported by Terraform**" section of the [ROS features and resources supported by Terraform](https://help.aliyun.com/document_detail/184389.html) topic.
 //
 // The following sample code provides an example on how to query the estimated price of an elastic IP address (EIP) that you want to create based on a template. In this example, the following template is used:
 //
-//     {
+//	{
 //
-//       "ROSTemplateFormatVersion": "2015-09-01",
+//	  "ROSTemplateFormatVersion": "2015-09-01",
 //
-//       "Parameters": {
+//	  "Parameters": {
 //
-//         "Isp": {
+//	    "Isp": {
 //
-//           "Type": "String",
+//	      "Type": "String",
 //
-//           "Default": "BGP"
+//	      "Default": "BGP"
 //
-//         },
+//	    },
 //
-//         "Name": {
+//	    "Name": {
 //
-//           "Type": "String",
+//	      "Type": "String",
 //
-//           "Default": "test"
+//	      "Default": "test"
 //
-//         },
+//	    },
 //
-//         "Netmode": {
+//	    "Netmode": {
 //
-//           "Type": "String",
+//	      "Type": "String",
 //
-//           "Default": "public"
+//	      "Default": "public"
 //
-//         },
+//	    },
 //
-//         "Bandwidth": {
+//	    "Bandwidth": {
 //
-//           "Type": "Number",
+//	      "Type": "Number",
 //
-//           "Default": 5
+//	      "Default": 5
 //
-//         }
+//	    }
 //
-//       },
+//	  },
 //
-//       "Resources": {
+//	  "Resources": {
 //
-//         "NewEip": {
+//	    "NewEip": {
 //
-//           "Type": "ALIYUN::VPC::EIP",
+//	      "Type": "ALIYUN::VPC::EIP",
 //
-//           "Properties": {
+//	      "Properties": {
 //
-//             "InstanceChargeType": "Prepaid",
+//	        "InstanceChargeType": "Prepaid",
 //
-//             "PricingCycle": "Month",
+//	        "PricingCycle": "Month",
 //
-//             "Isp": {
+//	        "Isp": {
 //
-//               "Ref": "Isp"
+//	          "Ref": "Isp"
 //
-//             },
+//	        },
 //
-//             "Period": 1,
+//	        "Period": 1,
 //
-//             "DeletionProtection": false,
+//	        "DeletionProtection": false,
 //
-//             "AutoPay": false,
+//	        "AutoPay": false,
 //
-//             "Name": {
+//	        "Name": {
 //
-//               "Ref": "Name"
+//	          "Ref": "Name"
 //
-//             },
+//	        },
 //
-//             "InternetChargeType": "PayByTraffic",
+//	        "InternetChargeType": "PayByTraffic",
 //
-//             "Netmode": {
+//	        "Netmode": {
 //
-//               "Ref": "Netmode"
+//	          "Ref": "Netmode"
 //
-//             },
+//	        },
 //
-//             "Bandwidth": {
+//	        "Bandwidth": {
 //
-//               "Ref": "Bandwidth"
+//	          "Ref": "Bandwidth"
 //
-//             }
+//	        }
 //
-//           }
+//	      }
 //
-//         }
+//	    }
 //
-//       }
+//	  }
 //
-//     }
+//	}
 //
 // @param request - GetTemplateEstimateCostRequest
 //
@@ -30864,13 +31577,24 @@ func (client *Client) GetTemplateParameterConstraintsWithOptions(tmpReq *GetTemp
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetTemplateParameterConstraintsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetTemplateParameterConstraintsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetTemplateParameterConstraintsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -30954,13 +31678,24 @@ func (client *Client) GetTemplateRecommendParametersWithOptions(request *GetTemp
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetTemplateRecommendParametersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetTemplateRecommendParametersResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetTemplateRecommendParametersResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -31026,13 +31761,24 @@ func (client *Client) GetTemplateScratchWithOptions(request *GetTemplateScratchR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetTemplateScratchResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetTemplateScratchResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetTemplateScratchResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -31126,13 +31872,24 @@ func (client *Client) GetTemplateSummaryWithOptions(request *GetTemplateSummaryR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetTemplateSummaryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetTemplateSummaryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetTemplateSummaryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -31224,13 +31981,24 @@ func (client *Client) ImportStacksToStackGroupWithOptions(tmpReq *ImportStacksTo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ImportStacksToStackGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ImportStacksToStackGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ImportStacksToStackGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -31292,13 +32060,24 @@ func (client *Client) ListAITaskEventsWithOptions(request *ListAITaskEventsReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListAITaskEventsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListAITaskEventsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListAITaskEventsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -31364,13 +32143,24 @@ func (client *Client) ListAITasksWithOptions(request *ListAITasksRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListAITasksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListAITasksResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListAITasksResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -31452,13 +32242,24 @@ func (client *Client) ListChangeSetsWithOptions(request *ListChangeSetsRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListChangeSetsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListChangeSetsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListChangeSetsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -31528,13 +32329,24 @@ func (client *Client) ListDiagnosticsWithOptions(request *ListDiagnosticsRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListDiagnosticsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListDiagnosticsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListDiagnosticsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -31608,13 +32420,24 @@ func (client *Client) ListResourceTypeRegistrationsWithOptions(request *ListReso
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListResourceTypeRegistrationsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListResourceTypeRegistrationsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListResourceTypeRegistrationsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -31668,13 +32491,24 @@ func (client *Client) ListResourceTypeVersionsWithOptions(request *ListResourceT
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListResourceTypeVersionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListResourceTypeVersionsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListResourceTypeVersionsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -31740,13 +32574,24 @@ func (client *Client) ListResourceTypesWithOptions(request *ListResourceTypesReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListResourceTypesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListResourceTypesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListResourceTypesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -31828,13 +32673,24 @@ func (client *Client) ListStackEventsWithOptions(request *ListStackEventsRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListStackEventsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListStackEventsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListStackEventsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -31904,13 +32760,24 @@ func (client *Client) ListStackGroupOperationResultsWithOptions(request *ListSta
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListStackGroupOperationResultsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListStackGroupOperationResultsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListStackGroupOperationResultsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -31980,13 +32847,24 @@ func (client *Client) ListStackGroupOperationsWithOptions(request *ListStackGrou
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListStackGroupOperationsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListStackGroupOperationsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListStackGroupOperationsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -32064,13 +32942,24 @@ func (client *Client) ListStackGroupsWithOptions(request *ListStackGroupsRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListStackGroupsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListStackGroupsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListStackGroupsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -32152,13 +33041,24 @@ func (client *Client) ListStackInstancesWithOptions(request *ListStackInstancesR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListStackInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListStackInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListStackInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -32191,9 +33091,9 @@ func (client *Client) ListStackInstances(request *ListStackInstancesRequest) (_r
 //
 // The ListStackOperationRisks operation is suitable for the following scenarios:
 //
-// 	- You want to detect high risks that may arise in resources when you delete a stack that contains the resources, and query the cause of each risk in a resource.
+//   - You want to detect high risks that may arise in resources when you delete a stack that contains the resources, and query the cause of each risk in a resource.
 //
-// 	- When you create a stack, the creation may fail. In this case, you can call this operation to check which types of permissions that are required to create stacks are missing.
+//   - When you create a stack, the creation may fail. In this case, you can call this operation to check which types of permissions that are required to create stacks are missing.
 //
 // @param request - ListStackOperationRisksRequest
 //
@@ -32266,13 +33166,24 @@ func (client *Client) ListStackOperationRisksWithOptions(request *ListStackOpera
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListStackOperationRisksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListStackOperationRisksResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListStackOperationRisksResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -32283,9 +33194,9 @@ func (client *Client) ListStackOperationRisksWithOptions(request *ListStackOpera
 //
 // The ListStackOperationRisks operation is suitable for the following scenarios:
 //
-// 	- You want to detect high risks that may arise in resources when you delete a stack that contains the resources, and query the cause of each risk in a resource.
+//   - You want to detect high risks that may arise in resources when you delete a stack that contains the resources, and query the cause of each risk in a resource.
 //
-// 	- When you create a stack, the creation may fail. In this case, you can call this operation to check which types of permissions that are required to create stacks are missing.
+//   - When you create a stack, the creation may fail. In this case, you can call this operation to check which types of permissions that are required to create stacks are missing.
 //
 // @param request - ListStackOperationRisksRequest
 //
@@ -32350,13 +33261,24 @@ func (client *Client) ListStackResourceDriftsWithOptions(request *ListStackResou
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListStackResourceDriftsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListStackResourceDriftsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListStackResourceDriftsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -32418,13 +33340,24 @@ func (client *Client) ListStackResourcesWithOptions(request *ListStackResourcesR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListStackResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListStackResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListStackResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -32536,13 +33469,24 @@ func (client *Client) ListStacksWithOptions(request *ListStacksRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListStacksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListStacksResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListStacksResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -32614,13 +33558,24 @@ func (client *Client) ListTagKeysWithOptions(request *ListTagKeysRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListTagKeysResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListTagKeysResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListTagKeysResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -32653,9 +33608,9 @@ func (client *Client) ListTagKeys(request *ListTagKeysRequest) (_result *ListTag
 //
 // ###
 //
-// 	- To specify the query object, specify ResourceId or Tag in the request. Tag consists of Key and Value.
+//   - To specify the query object, specify ResourceId or Tag in the request. Tag consists of Key and Value.
 //
-// 	- If you specify Tag and ResourceId, ROS resources that match both the parameters are returned.
+//   - If you specify Tag and ResourceId, ROS resources that match both the parameters are returned.
 //
 // This topic provides an example on how to query the tags that are added to a stack. In this example, the stack ID is `6bc589b5-9c02-4944-8fc3-f3624234****`. The stack is deployed in the China (Hangzhou) region.
 //
@@ -32704,13 +33659,24 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListTagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListTagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListTagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -32721,9 +33687,9 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 //
 // ###
 //
-// 	- To specify the query object, specify ResourceId or Tag in the request. Tag consists of Key and Value.
+//   - To specify the query object, specify ResourceId or Tag in the request. Tag consists of Key and Value.
 //
-// 	- If you specify Tag and ResourceId, ROS resources that match both the parameters are returned.
+//   - If you specify Tag and ResourceId, ROS resources that match both the parameters are returned.
 //
 // This topic provides an example on how to query the tags that are added to a stack. In this example, the stack ID is `6bc589b5-9c02-4944-8fc3-f3624234****`. The stack is deployed in the China (Hangzhou) region.
 //
@@ -32790,13 +33756,24 @@ func (client *Client) ListTagValuesWithOptions(request *ListTagValuesRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListTagValuesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListTagValuesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListTagValuesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -32886,13 +33863,24 @@ func (client *Client) ListTemplateScratchesWithOptions(request *ListTemplateScra
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListTemplateScratchesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListTemplateScratchesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListTemplateScratchesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -32958,13 +33946,24 @@ func (client *Client) ListTemplateVersionsWithOptions(request *ListTemplateVersi
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListTemplateVersionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListTemplateVersionsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListTemplateVersionsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -32987,7 +33986,7 @@ func (client *Client) ListTemplateVersions(request *ListTemplateVersionsRequest)
 
 // Summary:
 //
-// Queries a list of private or shared templates.
+// # List Templates
 //
 // @param request - ListTemplatesRequest
 //
@@ -33046,18 +34045,29 @@ func (client *Client) ListTemplatesWithOptions(request *ListTemplatesRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListTemplatesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListTemplatesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListTemplatesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Queries a list of private or shared templates.
+// # List Templates
 //
 // @param request - ListTemplatesRequest
 //
@@ -33122,13 +34132,24 @@ func (client *Client) MoveResourceGroupWithOptions(request *MoveResourceGroupReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &MoveResourceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &MoveResourceGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &MoveResourceGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -33256,13 +34277,24 @@ func (client *Client) PreviewStackWithOptions(request *PreviewStackRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &PreviewStackResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &PreviewStackResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &PreviewStackResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -33293,9 +34325,9 @@ func (client *Client) PreviewStack(request *PreviewStackRequest) (_result *Previ
 //
 // Description:
 //
-//   Versions increase from v1.
+//	  Versions increase from v1.
 //
-// 	- If you create a new resource type, v1 is used as the default version of the resource type. You can call the SetResourceType operation to change the default version of a resource type.
+//		- If you create a new resource type, v1 is used as the default version of the resource type. You can call the SetResourceType operation to change the default version of a resource type.
 //
 // @param request - RegisterResourceTypeRequest
 //
@@ -33348,13 +34380,24 @@ func (client *Client) RegisterResourceTypeWithOptions(request *RegisterResourceT
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RegisterResourceTypeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RegisterResourceTypeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RegisterResourceTypeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -33363,9 +34406,9 @@ func (client *Client) RegisterResourceTypeWithOptions(request *RegisterResourceT
 //
 // Description:
 //
-//   Versions increase from v1.
+//	  Versions increase from v1.
 //
-// 	- If you create a new resource type, v1 is used as the default version of the resource type. You can call the SetResourceType operation to change the default version of a resource type.
+//		- If you create a new resource type, v1 is used as the default version of the resource type. You can call the SetResourceType operation to change the default version of a resource type.
 //
 // @param request - RegisterResourceTypeRequest
 //
@@ -33418,13 +34461,24 @@ func (client *Client) SetDeletionProtectionWithOptions(request *SetDeletionProte
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SetDeletionProtectionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetDeletionProtectionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetDeletionProtectionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - SetDeletionProtectionRequest
@@ -33486,13 +34540,24 @@ func (client *Client) SetResourceTypeWithOptions(request *SetResourceTypeRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SetResourceTypeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetResourceTypeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetResourceTypeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -33562,13 +34627,24 @@ func (client *Client) SetStackPolicyWithOptions(request *SetStackPolicyRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SetStackPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetStackPolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetStackPolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -33648,13 +34724,24 @@ func (client *Client) SetTemplatePermissionWithOptions(request *SetTemplatePermi
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SetTemplatePermissionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetTemplatePermissionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetTemplatePermissionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -33734,13 +34821,24 @@ func (client *Client) SignalResourceWithOptions(request *SignalResourceRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SignalResourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SignalResourceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SignalResourceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -33802,13 +34900,24 @@ func (client *Client) StopStackGroupOperationWithOptions(request *StopStackGroup
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StopStackGroupOperationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StopStackGroupOperationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StopStackGroupOperationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -33882,13 +34991,24 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &TagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &TagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &TagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -33966,13 +35086,24 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UntagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UntagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UntagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -34005,9 +35136,9 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 //
 // The values of parameters in the Parameters section vary based on the value that you specify for the UsePreviousParameters parameter in the request. If you do not add the parameters that are defined in the template to the Parameters section, take note of the following items:
 //
-// 	- UsePreviousParameters is set to false: If the template parameters have default values, the default values are used. Otherwise, you must specify values for the template parameters in the Parameters section.
+//   - UsePreviousParameters is set to false: If the template parameters have default values, the default values are used. Otherwise, you must specify values for the template parameters in the Parameters section.
 //
-// 	- UsePreviousParameters is set to true: If you specify values for the template parameters when you create a stack, the values are used. If you leave the template parameters empty when you create a stack but the template parameters have default values, the default values are used.
+//   - UsePreviousParameters is set to true: If you specify values for the template parameters when you create a stack, the values are used. If you leave the template parameters empty when you create a stack but the template parameters have default values, the default values are used.
 //
 // This topic describes how to update a stack. In this example, the template body of a stack whose ID is `4a6c9851-3b0f-4f5f-b4ca-a14bf691****` in the China (Beijing) region is updated to `{"ROSTemplateFormatVersion": "2015-09-01"}`.
 //
@@ -34126,13 +35257,24 @@ func (client *Client) UpdateStackWithOptions(request *UpdateStackRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateStackResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateStackResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateStackResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -34143,9 +35285,9 @@ func (client *Client) UpdateStackWithOptions(request *UpdateStackRequest, runtim
 //
 // The values of parameters in the Parameters section vary based on the value that you specify for the UsePreviousParameters parameter in the request. If you do not add the parameters that are defined in the template to the Parameters section, take note of the following items:
 //
-// 	- UsePreviousParameters is set to false: If the template parameters have default values, the default values are used. Otherwise, you must specify values for the template parameters in the Parameters section.
+//   - UsePreviousParameters is set to false: If the template parameters have default values, the default values are used. Otherwise, you must specify values for the template parameters in the Parameters section.
 //
-// 	- UsePreviousParameters is set to true: If you specify values for the template parameters when you create a stack, the values are used. If you leave the template parameters empty when you create a stack but the template parameters have default values, the default values are used.
+//   - UsePreviousParameters is set to true: If you specify values for the template parameters when you create a stack, the values are used. If you leave the template parameters empty when you create a stack but the template parameters have default values, the default values are used.
 //
 // This topic describes how to update a stack. In this example, the template body of a stack whose ID is `4a6c9851-3b0f-4f5f-b4ca-a14bf691****` in the China (Beijing) region is updated to `{"ROSTemplateFormatVersion": "2015-09-01"}`.
 //
@@ -34302,13 +35444,24 @@ func (client *Client) UpdateStackGroupWithOptions(tmpReq *UpdateStackGroupReques
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateStackGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateStackGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateStackGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -34426,13 +35579,24 @@ func (client *Client) UpdateStackInstancesWithOptions(tmpReq *UpdateStackInstanc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateStackInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateStackInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateStackInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -34516,13 +35680,24 @@ func (client *Client) UpdateStackTemplateByResourcesWithOptions(request *UpdateS
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateStackTemplateByResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateStackTemplateByResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateStackTemplateByResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -34551,17 +35726,17 @@ func (client *Client) UpdateStackTemplateByResources(request *UpdateStackTemplat
 
 // Summary:
 //
-// Updates a template by specifying the template URL or template details.
+// # Update Template
 //
 // Description:
 //
-// When you update a template, take note of the following items:
+// When updating a template, please note:
 //
-// 	- If you specify TemplateBody or TemplateURL, the existing version number is automatically incremented by 1 after the template is updated. For example, the version is changed from v1 to v2.
+// - If you specify `TemplateBody` or `TemplateURL`, the template version will be incremented by 1 after a successful update. For example, the version changes from v1 to v2.
 //
-// 	- If you do not specify TemplateBody or TemplateURL, the version number remains unchanged.
+// - If neither `TemplateBody` nor `TemplateURL` is specified, the template version remains unchanged.
 //
-// 	- A template can have up to 100 versions. If the number of templates reaches the upper limit, the template fails to be updated. You must create another template.
+// - A template can have up to 100 versions. If the version limit is reached, the template update will fail, and you need to recreate the template.
 //
 // @param request - UpdateTemplateRequest
 //
@@ -34622,28 +35797,39 @@ func (client *Client) UpdateTemplateWithOptions(request *UpdateTemplateRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateTemplateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateTemplateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Updates a template by specifying the template URL or template details.
+// # Update Template
 //
 // Description:
 //
-// When you update a template, take note of the following items:
+// When updating a template, please note:
 //
-// 	- If you specify TemplateBody or TemplateURL, the existing version number is automatically incremented by 1 after the template is updated. For example, the version is changed from v1 to v2.
+// - If you specify `TemplateBody` or `TemplateURL`, the template version will be incremented by 1 after a successful update. For example, the version changes from v1 to v2.
 //
-// 	- If you do not specify TemplateBody or TemplateURL, the version number remains unchanged.
+// - If neither `TemplateBody` nor `TemplateURL` is specified, the template version remains unchanged.
 //
-// 	- A template can have up to 100 versions. If the number of templates reaches the upper limit, the template fails to be updated. You must create another template.
+// - A template can have up to 100 versions. If the version limit is reached, the template update will fail, and you need to recreate the template.
 //
 // @param request - UpdateTemplateRequest
 //
@@ -34671,13 +35857,13 @@ func (client *Client) UpdateTemplate(request *UpdateTemplateRequest) (_result *U
 //
 // ### [](#)Resource migration scenario
 //
-// 	- If you want to update a resource migration scenario in which the migrated source resources are retained, you can delete the source resources to manage the updated resource migration scenario. You can also call the [GenerateTemplateByScratch](https://help.aliyun.com/document_detail/610829.html) operation to generate a template for the resource scenario.
+//   - If you want to update a resource migration scenario in which the migrated source resources are retained, you can delete the source resources to manage the updated resource migration scenario. You can also call the [GenerateTemplateByScratch](https://help.aliyun.com/document_detail/610829.html) operation to generate a template for the resource scenario.
 //
 //     **
 //
 //     **Note*	- Make sure that the source resources that you want to delete from a resource migration scenario are associated only with the resource scenario. Otherwise, the source resources fail to be deleted.
 //
-// 	- If you want to update a resource migration scenario in which the migrated source resources are deleted, you can only call the [GenerateTemplateByScratch](https://help.aliyun.com/document_detail/610829.html) operation to generate a template for the resource scenario.
+//   - If you want to update a resource migration scenario in which the migrated source resources are deleted, you can only call the [GenerateTemplateByScratch](https://help.aliyun.com/document_detail/610829.html) operation to generate a template for the resource scenario.
 //
 // ### [](#)Resource management scenario
 //
@@ -34776,13 +35962,24 @@ func (client *Client) UpdateTemplateScratchWithOptions(tmpReq *UpdateTemplateScr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateTemplateScratchResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateTemplateScratchResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateTemplateScratchResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -34797,13 +35994,13 @@ func (client *Client) UpdateTemplateScratchWithOptions(tmpReq *UpdateTemplateScr
 //
 // ### [](#)Resource migration scenario
 //
-// 	- If you want to update a resource migration scenario in which the migrated source resources are retained, you can delete the source resources to manage the updated resource migration scenario. You can also call the [GenerateTemplateByScratch](https://help.aliyun.com/document_detail/610829.html) operation to generate a template for the resource scenario.
+//   - If you want to update a resource migration scenario in which the migrated source resources are retained, you can delete the source resources to manage the updated resource migration scenario. You can also call the [GenerateTemplateByScratch](https://help.aliyun.com/document_detail/610829.html) operation to generate a template for the resource scenario.
 //
 //     **
 //
 //     **Note*	- Make sure that the source resources that you want to delete from a resource migration scenario are associated only with the resource scenario. Otherwise, the source resources fail to be deleted.
 //
-// 	- If you want to update a resource migration scenario in which the migrated source resources are deleted, you can only call the [GenerateTemplateByScratch](https://help.aliyun.com/document_detail/610829.html) operation to generate a template for the resource scenario.
+//   - If you want to update a resource migration scenario in which the migrated source resources are deleted, you can only call the [GenerateTemplateByScratch](https://help.aliyun.com/document_detail/610829.html) operation to generate a template for the resource scenario.
 //
 // ### [](#)Resource management scenario
 //
@@ -34888,13 +36085,24 @@ func (client *Client) ValidateTemplateWithOptions(request *ValidateTemplateReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ValidateTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ValidateTemplateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ValidateTemplateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
