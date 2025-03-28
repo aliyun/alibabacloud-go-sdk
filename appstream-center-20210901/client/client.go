@@ -7726,6 +7726,227 @@ func (s *ListOtaTaskResponse) SetBody(v *ListOtaTaskResponseBody) *ListOtaTaskRe
 	return s
 }
 
+type ListPersistentAppInstancesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// aig-0bxls9m9arax6****
+	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	// if can be null:
+	// false
+	AppInstancePersistentIds []*string `json:"AppInstancePersistentIds,omitempty" xml:"AppInstancePersistentIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CloudApp
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+}
+
+func (s ListPersistentAppInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPersistentAppInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListPersistentAppInstancesRequest) SetAppInstanceGroupId(v string) *ListPersistentAppInstancesRequest {
+	s.AppInstanceGroupId = &v
+	return s
+}
+
+func (s *ListPersistentAppInstancesRequest) SetAppInstancePersistentIds(v []*string) *ListPersistentAppInstancesRequest {
+	s.AppInstancePersistentIds = v
+	return s
+}
+
+func (s *ListPersistentAppInstancesRequest) SetPageNumber(v int32) *ListPersistentAppInstancesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListPersistentAppInstancesRequest) SetPageSize(v int32) *ListPersistentAppInstancesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListPersistentAppInstancesRequest) SetProductType(v string) *ListPersistentAppInstancesRequest {
+	s.ProductType = &v
+	return s
+}
+
+type ListPersistentAppInstancesResponseBody struct {
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize                    *int32                                                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PersistentAppInstanceModels []*ListPersistentAppInstancesResponseBodyPersistentAppInstanceModels `json:"PersistentAppInstanceModels,omitempty" xml:"PersistentAppInstanceModels,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 15
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListPersistentAppInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPersistentAppInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListPersistentAppInstancesResponseBody) SetPageNumber(v int32) *ListPersistentAppInstancesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListPersistentAppInstancesResponseBody) SetPageSize(v int32) *ListPersistentAppInstancesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListPersistentAppInstancesResponseBody) SetPersistentAppInstanceModels(v []*ListPersistentAppInstancesResponseBodyPersistentAppInstanceModels) *ListPersistentAppInstancesResponseBody {
+	s.PersistentAppInstanceModels = v
+	return s
+}
+
+func (s *ListPersistentAppInstancesResponseBody) SetRequestId(v string) *ListPersistentAppInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListPersistentAppInstancesResponseBody) SetTotalCount(v int32) *ListPersistentAppInstancesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListPersistentAppInstancesResponseBodyPersistentAppInstanceModels struct {
+	// example:
+	//
+	// aig-0bxls9m9arax6****
+	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	// example:
+	//
+	// ai-azn3kmwruh1vl****
+	AppInstanceId *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
+	// example:
+	//
+	// p-0cc7s3mw2fg4j****
+	AppInstancePersistentId *string `json:"AppInstancePersistentId,omitempty" xml:"AppInstancePersistentId,omitempty"`
+	// example:
+	//
+	// test-persistent-name
+	AppInstancePersistentName *string `json:"AppInstancePersistentName,omitempty" xml:"AppInstancePersistentName,omitempty"`
+	// example:
+	//
+	// RUNNING
+	AppInstancePersistentStatus *string `json:"AppInstancePersistentStatus,omitempty" xml:"AppInstancePersistentStatus,omitempty"`
+	// example:
+	//
+	// RUNNING
+	AppInstanceStatus *string   `json:"AppInstanceStatus,omitempty" xml:"AppInstanceStatus,omitempty"`
+	AuthorizedUsers   []*string `json:"AuthorizedUsers,omitempty" xml:"AuthorizedUsers,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2025-03-13T03:22:18.000+00:00
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+}
+
+func (s ListPersistentAppInstancesResponseBodyPersistentAppInstanceModels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPersistentAppInstancesResponseBodyPersistentAppInstanceModels) GoString() string {
+	return s.String()
+}
+
+func (s *ListPersistentAppInstancesResponseBodyPersistentAppInstanceModels) SetAppInstanceGroupId(v string) *ListPersistentAppInstancesResponseBodyPersistentAppInstanceModels {
+	s.AppInstanceGroupId = &v
+	return s
+}
+
+func (s *ListPersistentAppInstancesResponseBodyPersistentAppInstanceModels) SetAppInstanceId(v string) *ListPersistentAppInstancesResponseBodyPersistentAppInstanceModels {
+	s.AppInstanceId = &v
+	return s
+}
+
+func (s *ListPersistentAppInstancesResponseBodyPersistentAppInstanceModels) SetAppInstancePersistentId(v string) *ListPersistentAppInstancesResponseBodyPersistentAppInstanceModels {
+	s.AppInstancePersistentId = &v
+	return s
+}
+
+func (s *ListPersistentAppInstancesResponseBodyPersistentAppInstanceModels) SetAppInstancePersistentName(v string) *ListPersistentAppInstancesResponseBodyPersistentAppInstanceModels {
+	s.AppInstancePersistentName = &v
+	return s
+}
+
+func (s *ListPersistentAppInstancesResponseBodyPersistentAppInstanceModels) SetAppInstancePersistentStatus(v string) *ListPersistentAppInstancesResponseBodyPersistentAppInstanceModels {
+	s.AppInstancePersistentStatus = &v
+	return s
+}
+
+func (s *ListPersistentAppInstancesResponseBodyPersistentAppInstanceModels) SetAppInstanceStatus(v string) *ListPersistentAppInstancesResponseBodyPersistentAppInstanceModels {
+	s.AppInstanceStatus = &v
+	return s
+}
+
+func (s *ListPersistentAppInstancesResponseBodyPersistentAppInstanceModels) SetAuthorizedUsers(v []*string) *ListPersistentAppInstancesResponseBodyPersistentAppInstanceModels {
+	s.AuthorizedUsers = v
+	return s
+}
+
+func (s *ListPersistentAppInstancesResponseBodyPersistentAppInstanceModels) SetGmtCreate(v string) *ListPersistentAppInstancesResponseBodyPersistentAppInstanceModels {
+	s.GmtCreate = &v
+	return s
+}
+
+type ListPersistentAppInstancesResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListPersistentAppInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListPersistentAppInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPersistentAppInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListPersistentAppInstancesResponse) SetHeaders(v map[string]*string) *ListPersistentAppInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListPersistentAppInstancesResponse) SetStatusCode(v int32) *ListPersistentAppInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListPersistentAppInstancesResponse) SetBody(v *ListPersistentAppInstancesResponseBody) *ListPersistentAppInstancesResponse {
+	s.Body = v
+	return s
+}
+
 type ListRegionsRequest struct {
 	// >  This parameter is not publicly available.
 	//
@@ -13645,6 +13866,93 @@ func (client *Client) ListOtaTask(request *ListOtaTaskRequest) (_result *ListOta
 	runtime := &util.RuntimeOptions{}
 	_result = &ListOtaTaskResponse{}
 	_body, _err := client.ListOtaTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询交付组内持久会话列表
+//
+// @param request - ListPersistentAppInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPersistentAppInstancesResponse
+func (client *Client) ListPersistentAppInstancesWithOptions(request *ListPersistentAppInstancesRequest, runtime *util.RuntimeOptions) (_result *ListPersistentAppInstancesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppInstanceGroupId)) {
+		query["AppInstanceGroupId"] = request.AppInstanceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppInstancePersistentIds)) {
+		query["AppInstancePersistentIds"] = request.AppInstancePersistentIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		query["ProductType"] = request.ProductType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListPersistentAppInstances"),
+		Version:     tea.String("2021-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListPersistentAppInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListPersistentAppInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询交付组内持久会话列表
+//
+// @param request - ListPersistentAppInstancesRequest
+//
+// @return ListPersistentAppInstancesResponse
+func (client *Client) ListPersistentAppInstances(request *ListPersistentAppInstancesRequest) (_result *ListPersistentAppInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListPersistentAppInstancesResponse{}
+	_body, _err := client.ListPersistentAppInstancesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
