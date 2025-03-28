@@ -8269,6 +8269,10 @@ type RealTimeDialogRequest struct {
 	MetaData          map[string]interface{} `json:"metaData,omitempty" xml:"metaData,omitempty"`
 	// example:
 	//
+	// common
+	OpType *string `json:"opType,omitempty" xml:"opType,omitempty"`
+	// example:
+	//
 	// false
 	Recommend           *bool   `json:"recommend,omitempty" xml:"recommend,omitempty"`
 	ScriptContentPlayed *string `json:"scriptContentPlayed,omitempty" xml:"scriptContentPlayed,omitempty"`
@@ -8315,6 +8319,11 @@ func (s *RealTimeDialogRequest) SetDialogMemoryTurns(v int32) *RealTimeDialogReq
 
 func (s *RealTimeDialogRequest) SetMetaData(v map[string]interface{}) *RealTimeDialogRequest {
 	s.MetaData = v
+	return s
+}
+
+func (s *RealTimeDialogRequest) SetOpType(v string) *RealTimeDialogRequest {
+	s.OpType = &v
 	return s
 }
 
@@ -15685,6 +15694,10 @@ func (client *Client) RealTimeDialogWithOptions(workspaceId *string, request *Re
 
 	if !tea.BoolValue(util.IsUnset(request.MetaData)) {
 		body["metaData"] = request.MetaData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OpType)) {
+		body["opType"] = request.OpType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Recommend)) {
