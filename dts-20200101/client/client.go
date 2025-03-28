@@ -5562,6 +5562,204 @@ func (s *ConfigureSynchronizationJobReplicatorCompareResponse) SetBody(v *Config
 	return s
 }
 
+type ConvertInstanceResourceGroupRequest struct {
+	// This historical parameter does not take effect and is not required.
+	//
+	// example:
+	//
+	// m4312mab158****
+	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	// The ID of new resource group. You can obtain the ID on the Resource Group page in the Resource Management console. For more information, see [View basic information about a resource group](https://help.aliyun.com/document_detail/151181.html).
+	//
+	// example:
+	//
+	// rg-aek2r4fkrqw****
+	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
+	// The ID of the region in which the Data Transmission Service (DTS) instance resides.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is only for special services and not required.
+	//
+	// example:
+	//
+	// rg-3m1213ye7l****
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The ID of the DTS instance. You can view the ID in the **ID/Name*	- column on the task page in the console.
+	//
+	// >  This parameter is required.
+	//
+	// example:
+	//
+	// dtszhc12zp727o****
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// This parameter is only for special services and not required.
+	//
+	// example:
+	//
+	// true
+	ZeroEtlJob *bool `json:"ZeroEtlJob,omitempty" xml:"ZeroEtlJob,omitempty"`
+}
+
+func (s ConvertInstanceResourceGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConvertInstanceResourceGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ConvertInstanceResourceGroupRequest) SetDtsJobId(v string) *ConvertInstanceResourceGroupRequest {
+	s.DtsJobId = &v
+	return s
+}
+
+func (s *ConvertInstanceResourceGroupRequest) SetNewResourceGroupId(v string) *ConvertInstanceResourceGroupRequest {
+	s.NewResourceGroupId = &v
+	return s
+}
+
+func (s *ConvertInstanceResourceGroupRequest) SetRegionId(v string) *ConvertInstanceResourceGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ConvertInstanceResourceGroupRequest) SetResourceGroupId(v string) *ConvertInstanceResourceGroupRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ConvertInstanceResourceGroupRequest) SetResourceId(v string) *ConvertInstanceResourceGroupRequest {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ConvertInstanceResourceGroupRequest) SetZeroEtlJob(v bool) *ConvertInstanceResourceGroupRequest {
+	s.ZeroEtlJob = &v
+	return s
+}
+
+type ConvertInstanceResourceGroupResponseBody struct {
+	// The error code returned by the backend service. The number is incremented.
+	//
+	// example:
+	//
+	// 500
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The dynamic part in the error message. This parameter is used to replace the \\*\\*%s\\*\\	- variable in the **ErrMessage*	- parameter.
+	//
+	// >  If **The Value of Input Parameter %s is not valid*	- is returned and DtsJobId is returned for DynamicMessage, it indicates that the request parameter DtsJobId is invalid.
+	//
+	// example:
+	//
+	// DtsJobId
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// The error code returned when the request failed.
+	//
+	// example:
+	//
+	// InternalError
+	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	// The error message returned when the request failed.
+	//
+	// example:
+	//
+	// The Value of Input Parameter %s is not valid.
+	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The ID of a request.
+	//
+	// example:
+	//
+	// AD823BD3-1BA6-4117-A536-165CB280****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ConvertInstanceResourceGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConvertInstanceResourceGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ConvertInstanceResourceGroupResponseBody) SetCode(v string) *ConvertInstanceResourceGroupResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ConvertInstanceResourceGroupResponseBody) SetDynamicMessage(v string) *ConvertInstanceResourceGroupResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *ConvertInstanceResourceGroupResponseBody) SetErrCode(v string) *ConvertInstanceResourceGroupResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *ConvertInstanceResourceGroupResponseBody) SetErrMessage(v string) *ConvertInstanceResourceGroupResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *ConvertInstanceResourceGroupResponseBody) SetHttpStatusCode(v int32) *ConvertInstanceResourceGroupResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ConvertInstanceResourceGroupResponseBody) SetRequestId(v string) *ConvertInstanceResourceGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ConvertInstanceResourceGroupResponseBody) SetSuccess(v bool) *ConvertInstanceResourceGroupResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ConvertInstanceResourceGroupResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ConvertInstanceResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ConvertInstanceResourceGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConvertInstanceResourceGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ConvertInstanceResourceGroupResponse) SetHeaders(v map[string]*string) *ConvertInstanceResourceGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ConvertInstanceResourceGroupResponse) SetStatusCode(v int32) *ConvertInstanceResourceGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ConvertInstanceResourceGroupResponse) SetBody(v *ConvertInstanceResourceGroupResponseBody) *ConvertInstanceResourceGroupResponse {
+	s.Body = v
+	return s
+}
+
 type CountJobByConditionRequest struct {
 	// The type of the destination database.
 	//
@@ -5608,7 +5806,12 @@ type CountJobByConditionRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Resource group ID, global parameter that does not need to be passed in by the current API.
+	//
+	// example:
+	//
+	// Resource group ID, global parameter that does not need to be passed in by the current API.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The type of the source database.
 	//
@@ -6398,7 +6601,12 @@ type CreateDedicatedClusterMonitorRuleRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID. This parameter is a global parameter and not required.
+	//
+	// example:
+	//
+	// The resource group ID. This parameter is a global parameter and not required.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -10150,7 +10358,7 @@ type DescribeClusterOperateLogsRequest struct {
 	// 1650866995000
 	EndTime *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	OwnerID *string `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
-	// The number of the page to return. The value must be an integer that is greater than 0. Default value: **1**.
+	// The number of the page to return. Specify the parameter to a positive integer that does not exceed the maximum value of the INTEGER data type. Default value: **1**.
 	//
 	// example:
 	//
@@ -12125,7 +12333,12 @@ type DescribeDataCheckReportUrlRequest struct {
 	// example:
 	//
 	// f4612nr2182****
-	DtsJobId        *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	// Resource group ID.
+	//
+	// example:
+	//
+	// rg-acfmzawhxxc****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The name of the table verified in the source database.
 	//
@@ -12293,7 +12506,7 @@ type DescribeDataCheckTableDetailsRequest struct {
 	//
 	// xd4e4xb419q****
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The number of the page to return. The value must be an integer that is greater than **0**. Default value: **1**.
+	// The number of the page to return. The value must be an integer that is greater than **0*	- and does not exceed the maximum value of the Integer data type. Default value:**1**.
 	//
 	// example:
 	//
@@ -12415,8 +12628,13 @@ type DescribeDataCheckTableDetailsResponseBody struct {
 	// example:
 	//
 	// The Value of Input Parameter %s is not valid.
-	ErrMessage       *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	FailedTableCount *int64  `json:"FailedTableCount,omitempty" xml:"FailedTableCount,omitempty"`
+	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// The total number of data rows that were failed.
+	//
+	// example:
+	//
+	// 1
+	FailedTableCount *int64 `json:"FailedTableCount,omitempty" xml:"FailedTableCount,omitempty"`
 	// The total number of data rows that were verified.
 	//
 	// example:
@@ -13413,15 +13631,24 @@ func (s *DescribeDedicatedClusterResponse) SetBody(v *DescribeDedicatedClusterRe
 }
 
 type DescribeDedicatedClusterMonitorRuleRequest struct {
+	// The ID of the cluster.
+	//
 	// example:
 	//
 	// dtsClustervcwn1oeyu5fx4yf
 	DedicatedClusterId *string `json:"DedicatedClusterId,omitempty" xml:"DedicatedClusterId,omitempty"`
 	OwnerId            *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region in which the instance resides.
+	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Resource group ID.
+	//
+	// example:
+	//
+	// rg-acfmzawhxxc****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -13454,50 +13681,78 @@ func (s *DescribeDedicatedClusterMonitorRuleRequest) SetResourceGroupId(v string
 }
 
 type DescribeDedicatedClusterMonitorRuleResponseBody struct {
+	// The alert threshold for CPU utilization. Unit: percentage.
+	//
 	// example:
 	//
 	// 80
 	CpuAlarmThreshold *string `json:"CpuAlarmThreshold,omitempty" xml:"CpuAlarmThreshold,omitempty"`
+	// The ID of the cluster.
+	//
 	// example:
 	//
 	// dtsClustervcwn1oeyu5fx4yf
 	DedicatedClusterId *string `json:"DedicatedClusterId,omitempty" xml:"DedicatedClusterId,omitempty"`
+	// The alert threshold for disk usage. Unit: percentage.
+	//
 	// example:
 	//
 	// 80
 	DiskAlarmThreshold *string `json:"DiskAlarmThreshold,omitempty" xml:"DiskAlarmThreshold,omitempty"`
+	// The alert threshold for DTS Unit (DU) usage. Unit: percentage.
+	//
 	// example:
 	//
 	// 46
 	DuAlarmThreshold *string `json:"DuAlarmThreshold,omitempty" xml:"DuAlarmThreshold,omitempty"`
+	// The error code returned if the request failed.
+	//
 	// example:
 	//
 	// InternalError
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	// The error message returned if the request failed.
+	//
 	// example:
 	//
 	// The Value of Input Parameter %s is not valid.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The alert threshold for memory usage. Unit: percentage.
+	//
 	// example:
 	//
 	// 80
 	MemAlarmThreshold *string `json:"MemAlarmThreshold,omitempty" xml:"MemAlarmThreshold,omitempty"`
+	// Indicates whether the alert feature is enabled. Valid values:
+	//
+	// 	- **1**: The alert feature is enabled.
+	//
+	// 	- **0**: The alert feature is disabled.
+	//
 	// example:
 	//
 	// 1
 	NoticeSwitch *string `json:"NoticeSwitch,omitempty" xml:"NoticeSwitch,omitempty"`
+	// The mobile phone number to which alerts are sent. Separate multiple mobile phone numbers with commas (,).
+	//
 	// example:
 	//
 	// 186****7653
 	Phones *string `json:"Phones,omitempty" xml:"Phones,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 621BB4F8-3016-4FAA-8D5A-5D3163CC****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -29316,6 +29571,699 @@ func (s *DescribeEtlJobLogsResponse) SetBody(v *DescribeEtlJobLogsResponseBody) 
 	return s
 }
 
+type DescribeFullProcessListRequest struct {
+	// The ID of the data migration, data synchronization, or change tracking task.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// i03e3zty16i****
+	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	// The ID of the region where the data migration instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-acfmzawhxxc****
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// Specifies whether to query only zero-extract, transform, load (ETL) integration tasks. Valid values:
+	//
+	// 	- **true**: yes.
+	//
+	// 	- **false**: no.
+	//
+	// example:
+	//
+	// true
+	ZeroEtlJob *bool `json:"ZeroEtlJob,omitempty" xml:"ZeroEtlJob,omitempty"`
+}
+
+func (s DescribeFullProcessListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFullProcessListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFullProcessListRequest) SetDtsJobId(v string) *DescribeFullProcessListRequest {
+	s.DtsJobId = &v
+	return s
+}
+
+func (s *DescribeFullProcessListRequest) SetRegionId(v string) *DescribeFullProcessListRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeFullProcessListRequest) SetResourceGroupId(v string) *DescribeFullProcessListRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeFullProcessListRequest) SetZeroEtlJob(v bool) *DescribeFullProcessListRequest {
+	s.ZeroEtlJob = &v
+	return s
+}
+
+type DescribeFullProcessListResponseBody struct {
+	// The error code.
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The throttling configuration. Valid values:
+	//
+	// 	- **dts.datamove.blaster.qps.max**: The rate at which queries are made to the source database per second.
+	//
+	// 	- **dts.datamove.source.rps.max**: the number of rows that are fully synchronized or migrated per second.
+	//
+	// 	- **dts.datamove.source.bps.max**: the amount of data processed per second for full synchronization or migration. Unit: Byte/s.
+	//
+	// >
+	//
+	// 	- When you set the **JobCode*	- parameter to **03**, you need to specify the **EnableLimit*	- parameter as **true**. Otherwise, the configuration cannot take effect.
+	//
+	// 	- When you set the **JobCode*	- parameter to **04*	- or **07**, you only need to specify the **dts.datamove.source.rps.max*	- and **dts.datamove.source.bps.max*	- parameters.
+	//
+	// 	- A value of \\*\\*-1\\*\\	- indicates no rate limit.
+	//
+	// example:
+	//
+	// {
+	//
+	//       "dts.datamove.source.rps.max": 5000,
+	//
+	//       "dts.datamove.source.bps.max": 10485760
+	//
+	// }
+	ConfigList map[string]interface{} `json:"ConfigList,omitempty" xml:"ConfigList,omitempty"`
+	// The ID of the data migration, data synchronization, or change tracking task.
+	//
+	// example:
+	//
+	// i03e3zty16i****
+	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	// The dynamic part in the error message. This parameter is used to replace the \\*\\*%s\\*\\	- variable in the **ErrMessage*	- parameter.
+	//
+	// >  The request parameter **DtsJobId*	- is invalid if **The Value of Input Parameter %s is not valid*	- is returned for **ErrMessage*	- and **DtsJobId*	- is returned for **DynamicMessage**.
+	//
+	// example:
+	//
+	// DtsJobId
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// The error code returned when the request failed.
+	//
+	// example:
+	//
+	// InternalError
+	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	// The error message returned when the request failed.
+	//
+	// example:
+	//
+	// The request processing has failed due to some unknown error.
+	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// The details of the GA instances.
+	FullProcessList []*DescribeFullProcessListResponseBodyFullProcessList `json:"FullProcessList,omitempty" xml:"FullProcessList,omitempty" type:"Repeated"`
+	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// C166D79D-436B-45F0-B5A5-25E1959F****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DescribeFullProcessListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFullProcessListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFullProcessListResponseBody) SetCode(v string) *DescribeFullProcessListResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeFullProcessListResponseBody) SetConfigList(v map[string]interface{}) *DescribeFullProcessListResponseBody {
+	s.ConfigList = v
+	return s
+}
+
+func (s *DescribeFullProcessListResponseBody) SetDtsJobId(v string) *DescribeFullProcessListResponseBody {
+	s.DtsJobId = &v
+	return s
+}
+
+func (s *DescribeFullProcessListResponseBody) SetDynamicMessage(v string) *DescribeFullProcessListResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *DescribeFullProcessListResponseBody) SetErrCode(v string) *DescribeFullProcessListResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *DescribeFullProcessListResponseBody) SetErrMessage(v string) *DescribeFullProcessListResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *DescribeFullProcessListResponseBody) SetFullProcessList(v []*DescribeFullProcessListResponseBodyFullProcessList) *DescribeFullProcessListResponseBody {
+	s.FullProcessList = v
+	return s
+}
+
+func (s *DescribeFullProcessListResponseBody) SetHttpStatusCode(v int32) *DescribeFullProcessListResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DescribeFullProcessListResponseBody) SetRequestId(v string) *DescribeFullProcessListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeFullProcessListResponseBody) SetSuccess(v bool) *DescribeFullProcessListResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DescribeFullProcessListResponseBodyFullProcessList struct {
+	// Details
+	//
+	// example:
+	//
+	// {}
+	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// The abnormal status of the task. Valid values:**notstarted**. -**checking**. -**failed**. -**finished**.
+	//
+	// example:
+	//
+	// notstarted
+	Exception *string `json:"Exception,omitempty" xml:"Exception,omitempty"`
+	// The name of the process.
+	//
+	// example:
+	//
+	// universer
+	ProcessName *string `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
+	// The type of the process. Valid values:
+	//
+	// 	- **1**: trusted
+	//
+	// 	- **2**: suspicious
+	//
+	// 	- **3**: malicious
+	//
+	// example:
+	//
+	// 1
+	ProcessType *string `json:"ProcessType,omitempty" xml:"ProcessType,omitempty"`
+	// SQL that is running
+	//
+	// example:
+	//
+	// test
+	RunningSQL *string `json:"RunningSQL,omitempty" xml:"RunningSQL,omitempty"`
+	// The log status.
+	//
+	// example:
+	//
+	// running
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The ID of the task.
+	//
+	// example:
+	//
+	// TaskD4E5F6
+	TaskID *string `json:"TaskID,omitempty" xml:"TaskID,omitempty"`
+	// The time when the logs were collected. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 1729650129452
+	Time *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
+}
+
+func (s DescribeFullProcessListResponseBodyFullProcessList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFullProcessListResponseBodyFullProcessList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFullProcessListResponseBodyFullProcessList) SetDetail(v string) *DescribeFullProcessListResponseBodyFullProcessList {
+	s.Detail = &v
+	return s
+}
+
+func (s *DescribeFullProcessListResponseBodyFullProcessList) SetException(v string) *DescribeFullProcessListResponseBodyFullProcessList {
+	s.Exception = &v
+	return s
+}
+
+func (s *DescribeFullProcessListResponseBodyFullProcessList) SetProcessName(v string) *DescribeFullProcessListResponseBodyFullProcessList {
+	s.ProcessName = &v
+	return s
+}
+
+func (s *DescribeFullProcessListResponseBodyFullProcessList) SetProcessType(v string) *DescribeFullProcessListResponseBodyFullProcessList {
+	s.ProcessType = &v
+	return s
+}
+
+func (s *DescribeFullProcessListResponseBodyFullProcessList) SetRunningSQL(v string) *DescribeFullProcessListResponseBodyFullProcessList {
+	s.RunningSQL = &v
+	return s
+}
+
+func (s *DescribeFullProcessListResponseBodyFullProcessList) SetState(v string) *DescribeFullProcessListResponseBodyFullProcessList {
+	s.State = &v
+	return s
+}
+
+func (s *DescribeFullProcessListResponseBodyFullProcessList) SetTaskID(v string) *DescribeFullProcessListResponseBodyFullProcessList {
+	s.TaskID = &v
+	return s
+}
+
+func (s *DescribeFullProcessListResponseBodyFullProcessList) SetTime(v int64) *DescribeFullProcessListResponseBodyFullProcessList {
+	s.Time = &v
+	return s
+}
+
+type DescribeFullProcessListResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeFullProcessListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeFullProcessListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFullProcessListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFullProcessListResponse) SetHeaders(v map[string]*string) *DescribeFullProcessListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeFullProcessListResponse) SetStatusCode(v int32) *DescribeFullProcessListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeFullProcessListResponse) SetBody(v *DescribeFullProcessListResponseBody) *DescribeFullProcessListResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeGadInstancesRequest struct {
+	// example:
+	//
+	// test
+	InstanceName       *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	MasterDbInstanceId *string `json:"MasterDbInstanceId,omitempty" xml:"MasterDbInstanceId,omitempty"`
+	OwnerId            *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-acfmzawhxxc****
+	ResourceGroupId   *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SlaveDbInstanceId *string `json:"SlaveDbInstanceId,omitempty" xml:"SlaveDbInstanceId,omitempty"`
+}
+
+func (s DescribeGadInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGadInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGadInstancesRequest) SetInstanceName(v string) *DescribeGadInstancesRequest {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *DescribeGadInstancesRequest) SetMasterDbInstanceId(v string) *DescribeGadInstancesRequest {
+	s.MasterDbInstanceId = &v
+	return s
+}
+
+func (s *DescribeGadInstancesRequest) SetOwnerId(v string) *DescribeGadInstancesRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeGadInstancesRequest) SetPageNumber(v int32) *DescribeGadInstancesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeGadInstancesRequest) SetPageSize(v int32) *DescribeGadInstancesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeGadInstancesRequest) SetRegionId(v string) *DescribeGadInstancesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeGadInstancesRequest) SetResourceGroupId(v string) *DescribeGadInstancesRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeGadInstancesRequest) SetSlaveDbInstanceId(v string) *DescribeGadInstancesRequest {
+	s.SlaveDbInstanceId = &v
+	return s
+}
+
+type DescribeGadInstancesResponseBody struct {
+	// example:
+	//
+	// 403
+	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// example:
+	//
+	// present environment is not support,so skip.
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// example:
+	//
+	// InternalError
+	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	// example:
+	//
+	// The request processing has failed due to some unknown error.
+	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *string                                    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Instances      *DescribeGadInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 30
+	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	// example:
+	//
+	// C166D79D-436B-45F0-B5A5-25E1959F****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 22
+	TotalRecordCount *int32 `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
+}
+
+func (s DescribeGadInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGadInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGadInstancesResponseBody) SetDynamicCode(v string) *DescribeGadInstancesResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *DescribeGadInstancesResponseBody) SetDynamicMessage(v string) *DescribeGadInstancesResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *DescribeGadInstancesResponseBody) SetErrCode(v string) *DescribeGadInstancesResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *DescribeGadInstancesResponseBody) SetErrMessage(v string) *DescribeGadInstancesResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *DescribeGadInstancesResponseBody) SetHttpStatusCode(v string) *DescribeGadInstancesResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DescribeGadInstancesResponseBody) SetInstances(v *DescribeGadInstancesResponseBodyInstances) *DescribeGadInstancesResponseBody {
+	s.Instances = v
+	return s
+}
+
+func (s *DescribeGadInstancesResponseBody) SetPageNumber(v int32) *DescribeGadInstancesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeGadInstancesResponseBody) SetPageRecordCount(v int32) *DescribeGadInstancesResponseBody {
+	s.PageRecordCount = &v
+	return s
+}
+
+func (s *DescribeGadInstancesResponseBody) SetRequestId(v string) *DescribeGadInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeGadInstancesResponseBody) SetSuccess(v string) *DescribeGadInstancesResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DescribeGadInstancesResponseBody) SetTotalRecordCount(v int32) *DescribeGadInstancesResponseBody {
+	s.TotalRecordCount = &v
+	return s
+}
+
+type DescribeGadInstancesResponseBodyInstances struct {
+	Instances []*DescribeGadInstancesResponseBodyInstancesInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
+}
+
+func (s DescribeGadInstancesResponseBodyInstances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGadInstancesResponseBodyInstances) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGadInstancesResponseBodyInstances) SetInstances(v []*DescribeGadInstancesResponseBodyInstancesInstances) *DescribeGadInstancesResponseBodyInstances {
+	s.Instances = v
+	return s
+}
+
+type DescribeGadInstancesResponseBodyInstancesInstances struct {
+	// example:
+	//
+	// 2024-05-29 23:55:58
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// MySQL
+	DbEngineType *string `json:"DbEngineType,omitempty" xml:"DbEngineType,omitempty"`
+	// example:
+	//
+	// 2
+	DbInstanceCount *int32 `json:"DbInstanceCount,omitempty" xml:"DbInstanceCount,omitempty"`
+	// example:
+	//
+	// rg-a76s8afa****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// test
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	InstanceRegion *string `json:"InstanceRegion,omitempty" xml:"InstanceRegion,omitempty"`
+	// example:
+	//
+	// DR
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// example:
+	//
+	// rm-sadfasfa****
+	MasterDbInstanceId *string `json:"MasterDbInstanceId,omitempty" xml:"MasterDbInstanceId,omitempty"`
+	// example:
+	//
+	// test
+	MasterDbInstanceName *string `json:"MasterDbInstanceName,omitempty" xml:"MasterDbInstanceName,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	MasterDbInstanceRegion *string `json:"MasterDbInstanceRegion,omitempty" xml:"MasterDbInstanceRegion,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	MasterDbInstanceZoneId *string `json:"MasterDbInstanceZoneId,omitempty" xml:"MasterDbInstanceZoneId,omitempty"`
+	// example:
+	//
+	// rg-aekzq276dmnaxqa
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeGadInstancesResponseBodyInstancesInstances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGadInstancesResponseBodyInstancesInstances) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGadInstancesResponseBodyInstancesInstances) SetCreateTime(v int64) *DescribeGadInstancesResponseBodyInstancesInstances {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeGadInstancesResponseBodyInstancesInstances) SetDbEngineType(v string) *DescribeGadInstancesResponseBodyInstancesInstances {
+	s.DbEngineType = &v
+	return s
+}
+
+func (s *DescribeGadInstancesResponseBodyInstancesInstances) SetDbInstanceCount(v int32) *DescribeGadInstancesResponseBodyInstancesInstances {
+	s.DbInstanceCount = &v
+	return s
+}
+
+func (s *DescribeGadInstancesResponseBodyInstancesInstances) SetInstanceId(v string) *DescribeGadInstancesResponseBodyInstancesInstances {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeGadInstancesResponseBodyInstancesInstances) SetInstanceName(v string) *DescribeGadInstancesResponseBodyInstancesInstances {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *DescribeGadInstancesResponseBodyInstancesInstances) SetInstanceRegion(v string) *DescribeGadInstancesResponseBodyInstancesInstances {
+	s.InstanceRegion = &v
+	return s
+}
+
+func (s *DescribeGadInstancesResponseBodyInstancesInstances) SetInstanceType(v string) *DescribeGadInstancesResponseBodyInstancesInstances {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeGadInstancesResponseBodyInstancesInstances) SetMasterDbInstanceId(v string) *DescribeGadInstancesResponseBodyInstancesInstances {
+	s.MasterDbInstanceId = &v
+	return s
+}
+
+func (s *DescribeGadInstancesResponseBodyInstancesInstances) SetMasterDbInstanceName(v string) *DescribeGadInstancesResponseBodyInstancesInstances {
+	s.MasterDbInstanceName = &v
+	return s
+}
+
+func (s *DescribeGadInstancesResponseBodyInstancesInstances) SetMasterDbInstanceRegion(v string) *DescribeGadInstancesResponseBodyInstancesInstances {
+	s.MasterDbInstanceRegion = &v
+	return s
+}
+
+func (s *DescribeGadInstancesResponseBodyInstancesInstances) SetMasterDbInstanceZoneId(v string) *DescribeGadInstancesResponseBodyInstancesInstances {
+	s.MasterDbInstanceZoneId = &v
+	return s
+}
+
+func (s *DescribeGadInstancesResponseBodyInstancesInstances) SetResourceGroupId(v string) *DescribeGadInstancesResponseBodyInstancesInstances {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeGadInstancesResponseBodyInstancesInstances) SetStatus(v string) *DescribeGadInstancesResponseBodyInstancesInstances {
+	s.Status = &v
+	return s
+}
+
+type DescribeGadInstancesResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeGadInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeGadInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGadInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGadInstancesResponse) SetHeaders(v map[string]*string) *DescribeGadInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeGadInstancesResponse) SetStatusCode(v int32) *DescribeGadInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeGadInstancesResponse) SetBody(v *DescribeGadInstancesResponseBody) *DescribeGadInstancesResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeInitializationStatusRequest struct {
 	// The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
 	//
@@ -30265,11 +31213,11 @@ type DescribeMetricListRequest struct {
 	//
 	// cpu_total
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// Specifies whether to query the metrics of the cluster or a node. Valid values:
+	// Indicates whether the metrics of the cluster or a node are queried. Valid values:
 	//
-	// 	- **CLUSTER**: query the metrics of the cluster.
+	// 	- **CLUSTER**: The metrics of the cluster are queried.
 	//
-	// 	- **NODE**: query the metrics of a node.
+	// 	- **NODE**: The metrics of a node are queried.
 	//
 	// example:
 	//
@@ -30284,7 +31232,7 @@ type DescribeMetricListRequest struct {
 	//
 	// nodeid
 	Param *string `json:"Param,omitempty" xml:"Param,omitempty"`
-	// The monitoring interval. Unit: seconds. Minimum value: 15.
+	// The monitoring interval. Unit: seconds. The minimum value is 15.
 	//
 	// example:
 	//
@@ -33533,6 +34481,259 @@ func (s *DescribeMigrationJobsResponse) SetStatusCode(v int32) *DescribeMigratio
 }
 
 func (s *DescribeMigrationJobsResponse) SetBody(v *DescribeMigrationJobsResponseBody) *DescribeMigrationJobsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribePreCheckCreateGadOrderResultRequest struct {
+	// example:
+	//
+	// gad-bp162d4tp0500****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerId    *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-acfmzawhxxc****
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// k71r16fj13g****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s DescribePreCheckCreateGadOrderResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePreCheckCreateGadOrderResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePreCheckCreateGadOrderResultRequest) SetInstanceId(v string) *DescribePreCheckCreateGadOrderResultRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribePreCheckCreateGadOrderResultRequest) SetOwnerId(v string) *DescribePreCheckCreateGadOrderResultRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribePreCheckCreateGadOrderResultRequest) SetRegionId(v string) *DescribePreCheckCreateGadOrderResultRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribePreCheckCreateGadOrderResultRequest) SetResourceGroupId(v string) *DescribePreCheckCreateGadOrderResultRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribePreCheckCreateGadOrderResultRequest) SetTaskId(v string) *DescribePreCheckCreateGadOrderResultRequest {
+	s.TaskId = &v
+	return s
+}
+
+type DescribePreCheckCreateGadOrderResultResponseBody struct {
+	// example:
+	//
+	// 403
+	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// example:
+	//
+	// present environment is not support,so skip.
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// example:
+	//
+	// InternalError
+	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	// example:
+	//
+	// The request processing has failed due to some unknown error.
+	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// gad-bp1i99e8l7913****
+	InstanceId    *string                                                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PreCheckItems *DescribePreCheckCreateGadOrderResultResponseBodyPreCheckItems `json:"PreCheckItems,omitempty" xml:"PreCheckItems,omitempty" type:"Struct"`
+	// example:
+	//
+	// True
+	PreCheckResult *bool `json:"PreCheckResult,omitempty" xml:"PreCheckResult,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 92E1E99D-5224-4AD3-8C94-23A3516B****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 11****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s DescribePreCheckCreateGadOrderResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePreCheckCreateGadOrderResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePreCheckCreateGadOrderResultResponseBody) SetDynamicCode(v string) *DescribePreCheckCreateGadOrderResultResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *DescribePreCheckCreateGadOrderResultResponseBody) SetDynamicMessage(v string) *DescribePreCheckCreateGadOrderResultResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *DescribePreCheckCreateGadOrderResultResponseBody) SetErrCode(v string) *DescribePreCheckCreateGadOrderResultResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *DescribePreCheckCreateGadOrderResultResponseBody) SetErrMessage(v string) *DescribePreCheckCreateGadOrderResultResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *DescribePreCheckCreateGadOrderResultResponseBody) SetHttpStatusCode(v string) *DescribePreCheckCreateGadOrderResultResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DescribePreCheckCreateGadOrderResultResponseBody) SetInstanceId(v string) *DescribePreCheckCreateGadOrderResultResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribePreCheckCreateGadOrderResultResponseBody) SetPreCheckItems(v *DescribePreCheckCreateGadOrderResultResponseBodyPreCheckItems) *DescribePreCheckCreateGadOrderResultResponseBody {
+	s.PreCheckItems = v
+	return s
+}
+
+func (s *DescribePreCheckCreateGadOrderResultResponseBody) SetPreCheckResult(v bool) *DescribePreCheckCreateGadOrderResultResponseBody {
+	s.PreCheckResult = &v
+	return s
+}
+
+func (s *DescribePreCheckCreateGadOrderResultResponseBody) SetRegionId(v string) *DescribePreCheckCreateGadOrderResultResponseBody {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribePreCheckCreateGadOrderResultResponseBody) SetRequestId(v string) *DescribePreCheckCreateGadOrderResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribePreCheckCreateGadOrderResultResponseBody) SetSuccess(v string) *DescribePreCheckCreateGadOrderResultResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DescribePreCheckCreateGadOrderResultResponseBody) SetTaskId(v string) *DescribePreCheckCreateGadOrderResultResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type DescribePreCheckCreateGadOrderResultResponseBodyPreCheckItems struct {
+	PreCheckItems []*DescribePreCheckCreateGadOrderResultResponseBodyPreCheckItemsPreCheckItems `json:"PreCheckItems,omitempty" xml:"PreCheckItems,omitempty" type:"Repeated"`
+}
+
+func (s DescribePreCheckCreateGadOrderResultResponseBodyPreCheckItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePreCheckCreateGadOrderResultResponseBodyPreCheckItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePreCheckCreateGadOrderResultResponseBodyPreCheckItems) SetPreCheckItems(v []*DescribePreCheckCreateGadOrderResultResponseBodyPreCheckItemsPreCheckItems) *DescribePreCheckCreateGadOrderResultResponseBodyPreCheckItems {
+	s.PreCheckItems = v
+	return s
+}
+
+type DescribePreCheckCreateGadOrderResultResponseBodyPreCheckItemsPreCheckItems struct {
+	// example:
+	//
+	// CHECK_MASTER_DB_STATUS
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// test
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// Running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribePreCheckCreateGadOrderResultResponseBodyPreCheckItemsPreCheckItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePreCheckCreateGadOrderResultResponseBodyPreCheckItemsPreCheckItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePreCheckCreateGadOrderResultResponseBodyPreCheckItemsPreCheckItems) SetCode(v string) *DescribePreCheckCreateGadOrderResultResponseBodyPreCheckItemsPreCheckItems {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribePreCheckCreateGadOrderResultResponseBodyPreCheckItemsPreCheckItems) SetMessage(v string) *DescribePreCheckCreateGadOrderResultResponseBodyPreCheckItemsPreCheckItems {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribePreCheckCreateGadOrderResultResponseBodyPreCheckItemsPreCheckItems) SetStatus(v string) *DescribePreCheckCreateGadOrderResultResponseBodyPreCheckItemsPreCheckItems {
+	s.Status = &v
+	return s
+}
+
+type DescribePreCheckCreateGadOrderResultResponse struct {
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribePreCheckCreateGadOrderResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribePreCheckCreateGadOrderResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePreCheckCreateGadOrderResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePreCheckCreateGadOrderResultResponse) SetHeaders(v map[string]*string) *DescribePreCheckCreateGadOrderResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribePreCheckCreateGadOrderResultResponse) SetStatusCode(v int32) *DescribePreCheckCreateGadOrderResultResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribePreCheckCreateGadOrderResultResponse) SetBody(v *DescribePreCheckCreateGadOrderResultResponseBody) *DescribePreCheckCreateGadOrderResultResponse {
 	s.Body = v
 	return s
 }
@@ -37179,7 +38380,12 @@ type DescribeSubscriptionMetaRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Resource group ID.
+	//
+	// example:
+	//
+	// rg-acfmzawhxxc****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the consumer group.
 	//
@@ -37257,7 +38463,12 @@ type DescribeSubscriptionMetaShrinkRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Resource group ID.
+	//
+	// example:
+	//
+	// rg-acfmzawhxxc****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the consumer group.
 	//
@@ -41507,6 +42718,216 @@ func (s *DescribeTagValuesResponse) SetBody(v *DescribeTagValuesResponseBody) *D
 	return s
 }
 
+type DetachGadInstanceDbMemberRequest struct {
+	// example:
+	//
+	// gad-bp162d4tp0500****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerId    *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-acfmzawhxxc****
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// rm-sdfghjk****
+	SlaveDbInstanceId *string `json:"SlaveDbInstanceId,omitempty" xml:"SlaveDbInstanceId,omitempty"`
+}
+
+func (s DetachGadInstanceDbMemberRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachGadInstanceDbMemberRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetachGadInstanceDbMemberRequest) SetInstanceId(v string) *DetachGadInstanceDbMemberRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DetachGadInstanceDbMemberRequest) SetOwnerId(v string) *DetachGadInstanceDbMemberRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DetachGadInstanceDbMemberRequest) SetRegionId(v string) *DetachGadInstanceDbMemberRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DetachGadInstanceDbMemberRequest) SetResourceGroupId(v string) *DetachGadInstanceDbMemberRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DetachGadInstanceDbMemberRequest) SetSlaveDbInstanceId(v string) *DetachGadInstanceDbMemberRequest {
+	s.SlaveDbInstanceId = &v
+	return s
+}
+
+type DetachGadInstanceDbMemberResponseBody struct {
+	// example:
+	//
+	// 2021-06-28 17:34:53.0
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 403
+	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// example:
+	//
+	// ****
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// example:
+	//
+	// InternalError
+	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	// example:
+	//
+	// The request processing has failed due to some unknown error.
+	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// gad-bp1i99e8l7913****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// test
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 6063641E-BAD1-4BA7-B70B-26FFFD18****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// rg-acfmzawhxxc****
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// rm-bp1i99e8l7913****
+	SlaveDbInstanceId *string `json:"SlaveDbInstanceId,omitempty" xml:"SlaveDbInstanceId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DetachGadInstanceDbMemberResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachGadInstanceDbMemberResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DetachGadInstanceDbMemberResponseBody) SetCreateTime(v int64) *DetachGadInstanceDbMemberResponseBody {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DetachGadInstanceDbMemberResponseBody) SetDynamicCode(v string) *DetachGadInstanceDbMemberResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *DetachGadInstanceDbMemberResponseBody) SetDynamicMessage(v string) *DetachGadInstanceDbMemberResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *DetachGadInstanceDbMemberResponseBody) SetErrCode(v string) *DetachGadInstanceDbMemberResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *DetachGadInstanceDbMemberResponseBody) SetErrMessage(v string) *DetachGadInstanceDbMemberResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *DetachGadInstanceDbMemberResponseBody) SetHttpStatusCode(v string) *DetachGadInstanceDbMemberResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DetachGadInstanceDbMemberResponseBody) SetInstanceId(v string) *DetachGadInstanceDbMemberResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DetachGadInstanceDbMemberResponseBody) SetInstanceName(v string) *DetachGadInstanceDbMemberResponseBody {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *DetachGadInstanceDbMemberResponseBody) SetRegionId(v string) *DetachGadInstanceDbMemberResponseBody {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DetachGadInstanceDbMemberResponseBody) SetRequestId(v string) *DetachGadInstanceDbMemberResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DetachGadInstanceDbMemberResponseBody) SetResourceGroupId(v string) *DetachGadInstanceDbMemberResponseBody {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DetachGadInstanceDbMemberResponseBody) SetSlaveDbInstanceId(v string) *DetachGadInstanceDbMemberResponseBody {
+	s.SlaveDbInstanceId = &v
+	return s
+}
+
+func (s *DetachGadInstanceDbMemberResponseBody) SetSuccess(v string) *DetachGadInstanceDbMemberResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DetachGadInstanceDbMemberResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DetachGadInstanceDbMemberResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DetachGadInstanceDbMemberResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachGadInstanceDbMemberResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DetachGadInstanceDbMemberResponse) SetHeaders(v map[string]*string) *DetachGadInstanceDbMemberResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DetachGadInstanceDbMemberResponse) SetStatusCode(v int32) *DetachGadInstanceDbMemberResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DetachGadInstanceDbMemberResponse) SetBody(v *DetachGadInstanceDbMemberResponseBody) *DetachGadInstanceDbMemberResponse {
+	s.Body = v
+	return s
+}
+
 type InitDtsRdsInstanceRequest struct {
 	// The ID of the data synchronization task.
 	//
@@ -41557,7 +42978,12 @@ type InitDtsRdsInstanceRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Resource group ID.
+	//
+	// example:
+	//
+	// rg-acfmzawhxxc****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -43187,7 +44613,12 @@ type ModifyDedicatedClusterRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-acfmzawhxxc****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -45863,6 +47294,207 @@ func (s *ModifyDynamicConfigResponse) SetBody(v *ModifyDynamicConfigResponseBody
 	return s
 }
 
+type ModifyGadInstanceNameRequest struct {
+	// example:
+	//
+	// rm-bp1i99e8l7913****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// rm-uf6b0m001ir8mr9i9
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	OwnerId      *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-aek26mat2ldb4oy
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+}
+
+func (s ModifyGadInstanceNameRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyGadInstanceNameRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyGadInstanceNameRequest) SetInstanceId(v string) *ModifyGadInstanceNameRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyGadInstanceNameRequest) SetInstanceName(v string) *ModifyGadInstanceNameRequest {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *ModifyGadInstanceNameRequest) SetOwnerId(v string) *ModifyGadInstanceNameRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyGadInstanceNameRequest) SetRegionId(v string) *ModifyGadInstanceNameRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyGadInstanceNameRequest) SetResourceGroupId(v string) *ModifyGadInstanceNameRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+type ModifyGadInstanceNameResponseBody struct {
+	// example:
+	//
+	// 2021-06-28 17:34:53.0
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 403
+	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// example:
+	//
+	// present environment is not support,so skip.
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// example:
+	//
+	// InternalError
+	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	// example:
+	//
+	// The request processing has failed due to some unknown error.
+	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// rm-bp162d4tp0500****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// rm-2zehh163694qs5c3v
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 4D0ADAD5-DD97-41B6-B78F-D1961AB1****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// rg-acfmzawhxxc****
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ModifyGadInstanceNameResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyGadInstanceNameResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyGadInstanceNameResponseBody) SetCreateTime(v int64) *ModifyGadInstanceNameResponseBody {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ModifyGadInstanceNameResponseBody) SetDynamicCode(v string) *ModifyGadInstanceNameResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *ModifyGadInstanceNameResponseBody) SetDynamicMessage(v string) *ModifyGadInstanceNameResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *ModifyGadInstanceNameResponseBody) SetErrCode(v string) *ModifyGadInstanceNameResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *ModifyGadInstanceNameResponseBody) SetErrMessage(v string) *ModifyGadInstanceNameResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *ModifyGadInstanceNameResponseBody) SetHttpStatusCode(v string) *ModifyGadInstanceNameResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ModifyGadInstanceNameResponseBody) SetInstanceId(v string) *ModifyGadInstanceNameResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyGadInstanceNameResponseBody) SetInstanceName(v string) *ModifyGadInstanceNameResponseBody {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *ModifyGadInstanceNameResponseBody) SetRegionId(v string) *ModifyGadInstanceNameResponseBody {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyGadInstanceNameResponseBody) SetRequestId(v string) *ModifyGadInstanceNameResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyGadInstanceNameResponseBody) SetResourceGroupId(v string) *ModifyGadInstanceNameResponseBody {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ModifyGadInstanceNameResponseBody) SetSuccess(v string) *ModifyGadInstanceNameResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ModifyGadInstanceNameResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyGadInstanceNameResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyGadInstanceNameResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyGadInstanceNameResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyGadInstanceNameResponse) SetHeaders(v map[string]*string) *ModifyGadInstanceNameResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyGadInstanceNameResponse) SetStatusCode(v int32) *ModifyGadInstanceNameResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyGadInstanceNameResponse) SetBody(v *ModifyGadInstanceNameResponseBody) *ModifyGadInstanceNameResponse {
+	s.Body = v
+	return s
+}
+
 type ModifySubscriptionRequest struct {
 	// The objects of the change tracking task. The value is a JSON string. For more information, see [Objects of DTS tasks](https://help.aliyun.com/document_detail/209545.html).
 	//
@@ -46394,6 +48026,195 @@ func (s *ModifySynchronizationObjectResponse) SetStatusCode(v int32) *ModifySync
 }
 
 func (s *ModifySynchronizationObjectResponse) SetBody(v *ModifySynchronizationObjectResponseBody) *ModifySynchronizationObjectResponse {
+	s.Body = v
+	return s
+}
+
+type PreCheckCreateGadOrderRequest struct {
+	// example:
+	//
+	// gad-bp1i99e8l7913****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerId    *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-acfntftbiobqyky
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// rm-bp17562h64****
+	SlaveDbInstanceId *string `json:"SlaveDbInstanceId,omitempty" xml:"SlaveDbInstanceId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	SlaveDbInstanceRegion *string `json:"SlaveDbInstanceRegion,omitempty" xml:"SlaveDbInstanceRegion,omitempty"`
+}
+
+func (s PreCheckCreateGadOrderRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PreCheckCreateGadOrderRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PreCheckCreateGadOrderRequest) SetInstanceId(v string) *PreCheckCreateGadOrderRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *PreCheckCreateGadOrderRequest) SetOwnerId(v string) *PreCheckCreateGadOrderRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *PreCheckCreateGadOrderRequest) SetRegionId(v string) *PreCheckCreateGadOrderRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *PreCheckCreateGadOrderRequest) SetResourceGroupId(v string) *PreCheckCreateGadOrderRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *PreCheckCreateGadOrderRequest) SetSlaveDbInstanceId(v string) *PreCheckCreateGadOrderRequest {
+	s.SlaveDbInstanceId = &v
+	return s
+}
+
+func (s *PreCheckCreateGadOrderRequest) SetSlaveDbInstanceRegion(v string) *PreCheckCreateGadOrderRequest {
+	s.SlaveDbInstanceRegion = &v
+	return s
+}
+
+type PreCheckCreateGadOrderResponseBody struct {
+	// example:
+	//
+	// 403
+	DynamicCode    *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// example:
+	//
+	// InternalError
+	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	// example:
+	//
+	// The request processing has failed due to some unknown error.
+	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// rm-bp162d4tp0500****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// C166D79D-436B-45F0-B5A5-25E1959F****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// z2v12jfo309****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s PreCheckCreateGadOrderResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PreCheckCreateGadOrderResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PreCheckCreateGadOrderResponseBody) SetDynamicCode(v string) *PreCheckCreateGadOrderResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *PreCheckCreateGadOrderResponseBody) SetDynamicMessage(v string) *PreCheckCreateGadOrderResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *PreCheckCreateGadOrderResponseBody) SetErrCode(v string) *PreCheckCreateGadOrderResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *PreCheckCreateGadOrderResponseBody) SetErrMessage(v string) *PreCheckCreateGadOrderResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *PreCheckCreateGadOrderResponseBody) SetHttpStatusCode(v string) *PreCheckCreateGadOrderResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *PreCheckCreateGadOrderResponseBody) SetInstanceId(v string) *PreCheckCreateGadOrderResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *PreCheckCreateGadOrderResponseBody) SetRegionId(v string) *PreCheckCreateGadOrderResponseBody {
+	s.RegionId = &v
+	return s
+}
+
+func (s *PreCheckCreateGadOrderResponseBody) SetRequestId(v string) *PreCheckCreateGadOrderResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *PreCheckCreateGadOrderResponseBody) SetSuccess(v string) *PreCheckCreateGadOrderResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *PreCheckCreateGadOrderResponseBody) SetTaskId(v string) *PreCheckCreateGadOrderResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type PreCheckCreateGadOrderResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PreCheckCreateGadOrderResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s PreCheckCreateGadOrderResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PreCheckCreateGadOrderResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PreCheckCreateGadOrderResponse) SetHeaders(v map[string]*string) *PreCheckCreateGadOrderResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PreCheckCreateGadOrderResponse) SetStatusCode(v int32) *PreCheckCreateGadOrderResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PreCheckCreateGadOrderResponse) SetBody(v *PreCheckCreateGadOrderResponseBody) *PreCheckCreateGadOrderResponse {
 	s.Body = v
 	return s
 }
@@ -47329,6 +49150,160 @@ func (s *ShieldPrecheckResponse) SetBody(v *ShieldPrecheckResponseBody) *ShieldP
 	return s
 }
 
+type SkipFullJobTableRequest struct {
+	// The ID of the DTS task. The DTS task can be a data migration, data synchronization, or change tracking task.
+	//
+	// example:
+	//
+	// l3m1213ye7l****
+	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	// The ID of the primary key.
+	//
+	// example:
+	//
+	// 123
+	JobProgressId *string `json:"JobProgressId,omitempty" xml:"JobProgressId,omitempty"`
+	// The region ID of the DTS instance. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-aek2ilvoxlrdcby
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// Specifies whether to query only zero-extract, transform, load (ETL) integration tasks. Valid values:
+	//
+	// 	- **true**: yes.
+	//
+	// 	- **false**: no.
+	//
+	// example:
+	//
+	// true
+	ZeroEtlJob *bool `json:"ZeroEtlJob,omitempty" xml:"ZeroEtlJob,omitempty"`
+}
+
+func (s SkipFullJobTableRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SkipFullJobTableRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SkipFullJobTableRequest) SetDtsJobId(v string) *SkipFullJobTableRequest {
+	s.DtsJobId = &v
+	return s
+}
+
+func (s *SkipFullJobTableRequest) SetJobProgressId(v string) *SkipFullJobTableRequest {
+	s.JobProgressId = &v
+	return s
+}
+
+func (s *SkipFullJobTableRequest) SetRegionId(v string) *SkipFullJobTableRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *SkipFullJobTableRequest) SetResourceGroupId(v string) *SkipFullJobTableRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *SkipFullJobTableRequest) SetZeroEtlJob(v bool) *SkipFullJobTableRequest {
+	s.ZeroEtlJob = &v
+	return s
+}
+
+type SkipFullJobTableResponseBody struct {
+	// The error code.
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 4D0ADAD5-DD97-41B6-B78F-D1961AB1****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SkipFullJobTableResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SkipFullJobTableResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SkipFullJobTableResponseBody) SetCode(v string) *SkipFullJobTableResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SkipFullJobTableResponseBody) SetHttpStatusCode(v int32) *SkipFullJobTableResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *SkipFullJobTableResponseBody) SetRequestId(v string) *SkipFullJobTableResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SkipFullJobTableResponseBody) SetSuccess(v bool) *SkipFullJobTableResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SkipFullJobTableResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SkipFullJobTableResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SkipFullJobTableResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SkipFullJobTableResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SkipFullJobTableResponse) SetHeaders(v map[string]*string) *SkipFullJobTableResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SkipFullJobTableResponse) SetStatusCode(v int32) *SkipFullJobTableResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SkipFullJobTableResponse) SetBody(v *SkipFullJobTableResponseBody) *SkipFullJobTableResponse {
+	s.Body = v
+	return s
+}
+
 type SkipPreCheckRequest struct {
 	// The ID of the data migration, data synchronization, or change tracking task.
 	//
@@ -48164,7 +50139,12 @@ type StartReverseWriterRequest struct {
 	// example:
 	//
 	// n99m9jx822k****
-	DtsJobId        *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	// Resource group ID.
+	//
+	// example:
+	//
+	// rg-acfmzawhxxc****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -48629,7 +50609,12 @@ type StopDedicatedClusterRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID. This parameter is a global parameter and not required.
+	//
+	// example:
+	//
+	// The resource group ID. This parameter is a global parameter and not required.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -51309,7 +53294,18 @@ type TransferPayTypeRequest struct {
 	// example:
 	//
 	// o4nh3g7jg56****
-	DtsJobId      *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	// The new instance class of the DTS instance. You can call the [DescribeDtsJobDetail](https://help.aliyun.com/document_detail/208925.html) operation to query the original instance class of the DTS instance.
+	//
+	// 	- DTS supports the following instance classes for a data migration instance: **xxlarge**, **xlarge**, **large**, **medium**, and **small**.
+	//
+	// 	- DTS supports the following instance classes for a data synchronization instance: **large**, **medium**, **small**, and **micro**.
+	//
+	// > For more information about the test performance of each instance class, see [Specifications of data migration instances](https://help.aliyun.com/document_detail/26606.html) and [Specifications of data synchronization channels](https://help.aliyun.com/document_detail/26605.html).
+	//
+	// example:
+	//
+	// small
 	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
 	// The maximum number of DUs in a serverless instance. Valid values: 2, 4, 8, and 16.
 	//
@@ -53535,9 +55531,9 @@ func (client *Client) ConfigureSubscriptionInstanceAlert(request *ConfigureSubsc
 //
 // >
 //
-// 	- After you call this operation to configure a data synchronization task, the task will be automatically started and prechecked. You do not need to call the [StartSynchronizationJob](https://help.aliyun.com/document_detail/49448.html) operation to start the task.
+//   - After you call this operation to configure a data synchronization task, the task will be automatically started and prechecked. You do not need to call the [StartSynchronizationJob](https://help.aliyun.com/document_detail/49448.html) operation to start the task.
 //
-// 	- A data synchronization task may fail to be started due to precheck failures. You can call the [DescribeSynchronizationJobStatus](https://help.aliyun.com/document_detail/49453.html) operation to query the status of the task. Then, you can change parameter settings based on the error messages about the precheck failures. After you fix the issue, you must call the [StartSynchronizationJob](https://help.aliyun.com/document_detail/49448.html) operation to restart the data synchronization task.
+//   - A data synchronization task may fail to be started due to precheck failures. You can call the [DescribeSynchronizationJobStatus](https://help.aliyun.com/document_detail/49453.html) operation to query the status of the task. Then, you can change parameter settings based on the error messages about the precheck failures. After you fix the issue, you must call the [StartSynchronizationJob](https://help.aliyun.com/document_detail/49448.html) operation to restart the data synchronization task.
 //
 // @param request - ConfigureSynchronizationJobRequest
 //
@@ -53656,9 +55652,9 @@ func (client *Client) ConfigureSynchronizationJobWithOptions(request *ConfigureS
 //
 // >
 //
-// 	- After you call this operation to configure a data synchronization task, the task will be automatically started and prechecked. You do not need to call the [StartSynchronizationJob](https://help.aliyun.com/document_detail/49448.html) operation to start the task.
+//   - After you call this operation to configure a data synchronization task, the task will be automatically started and prechecked. You do not need to call the [StartSynchronizationJob](https://help.aliyun.com/document_detail/49448.html) operation to start the task.
 //
-// 	- A data synchronization task may fail to be started due to precheck failures. You can call the [DescribeSynchronizationJobStatus](https://help.aliyun.com/document_detail/49453.html) operation to query the status of the task. Then, you can change parameter settings based on the error messages about the precheck failures. After you fix the issue, you must call the [StartSynchronizationJob](https://help.aliyun.com/document_detail/49448.html) operation to restart the data synchronization task.
+//   - A data synchronization task may fail to be started due to precheck failures. You can call the [DescribeSynchronizationJobStatus](https://help.aliyun.com/document_detail/49453.html) operation to query the status of the task. Then, you can change parameter settings based on the error messages about the precheck failures. After you fix the issue, you must call the [StartSynchronizationJob](https://help.aliyun.com/document_detail/49448.html) operation to restart the data synchronization task.
 //
 // @param request - ConfigureSynchronizationJobRequest
 //
@@ -53886,7 +55882,98 @@ func (client *Client) ConfigureSynchronizationJobReplicatorCompare(request *Conf
 
 // Summary:
 //
-// 查询符合条件的任务数
+// Transfers resource groups of instance resources.
+//
+// @param request - ConvertInstanceResourceGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConvertInstanceResourceGroupResponse
+func (client *Client) ConvertInstanceResourceGroupWithOptions(request *ConvertInstanceResourceGroupRequest, runtime *util.RuntimeOptions) (_result *ConvertInstanceResourceGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DtsJobId)) {
+		query["DtsJobId"] = request.DtsJobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewResourceGroupId)) {
+		query["NewResourceGroupId"] = request.NewResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZeroEtlJob)) {
+		query["ZeroEtlJob"] = request.ZeroEtlJob
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ConvertInstanceResourceGroup"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ConvertInstanceResourceGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ConvertInstanceResourceGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Transfers resource groups of instance resources.
+//
+// @param request - ConvertInstanceResourceGroupRequest
+//
+// @return ConvertInstanceResourceGroupResponse
+func (client *Client) ConvertInstanceResourceGroup(request *ConvertInstanceResourceGroupRequest) (_result *ConvertInstanceResourceGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ConvertInstanceResourceGroupResponse{}
+	_body, _err := client.ConvertInstanceResourceGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Counts tasks by condition.
 //
 // @param request - CountJobByConditionRequest
 //
@@ -53975,7 +56062,7 @@ func (client *Client) CountJobByConditionWithOptions(request *CountJobByConditio
 
 // Summary:
 //
-// 查询符合条件的任务数
+// Counts tasks by condition.
 //
 // @param request - CountJobByConditionRequest
 //
@@ -54302,9 +56389,9 @@ func (client *Client) CreateDedicatedClusterMonitorRule(request *CreateDedicated
 //
 // Description:
 //
-//   Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of DTS.
+//	  Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of DTS.
 //
-// 	- If you want to run a DTS task on a DTS dedicated cluster, you must configure the task before you purchase a DTS instance. You can call the [ConfigureDtsJob](https://help.aliyun.com/document_detail/208399.html) operation to configure a DTS task.
+//		- If you want to run a DTS task on a DTS dedicated cluster, you must configure the task before you purchase a DTS instance. You can call the [ConfigureDtsJob](https://help.aliyun.com/document_detail/208399.html) operation to configure a DTS task.
 //
 // @param request - CreateDtsInstanceRequest
 //
@@ -54449,9 +56536,9 @@ func (client *Client) CreateDtsInstanceWithOptions(request *CreateDtsInstanceReq
 //
 // Description:
 //
-//   Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of DTS.
+//	  Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing) of DTS.
 //
-// 	- If you want to run a DTS task on a DTS dedicated cluster, you must configure the task before you purchase a DTS instance. You can call the [ConfigureDtsJob](https://help.aliyun.com/document_detail/208399.html) operation to configure a DTS task.
+//		- If you want to run a DTS task on a DTS dedicated cluster, you must configure the task before you purchase a DTS instance. You can call the [ConfigureDtsJob](https://help.aliyun.com/document_detail/208399.html) operation to configure a DTS task.
 //
 // @param request - CreateDtsInstanceRequest
 //
@@ -54475,11 +56562,11 @@ func (client *Client) CreateDtsInstance(request *CreateDtsInstanceRequest) (_res
 //
 // DTS provides the following metrics for DTS tasks:************
 //
-// 	- **Latency**: DTS monitors the latency of a DTS task. If the latency of the task exceeds the specified threshold, an alert is triggered. The threshold is specified in units of seconds.
+//   - **Latency**: DTS monitors the latency of a DTS task. If the latency of the task exceeds the specified threshold, an alert is triggered. The threshold is specified in units of seconds.
 //
-// 	- **Status**: DTS monitors the status of a DTS task. If the state of the task changes to **Error*	- or **Restore**, an alert is triggered.
+//   - **Status**: DTS monitors the status of a DTS task. If the state of the task changes to **Error*	- or **Restore**, an alert is triggered.
 //
-// 	- **Full Timeout**: DTS monitors the duration of a DTS task. If the duration of the task exceeds the specified threshold, an alert is triggered. The threshold is specified in units of hours.
+//   - **Full Timeout**: DTS monitors the duration of a DTS task. If the duration of the task exceeds the specified threshold, an alert is triggered. The threshold is specified in units of hours.
 //
 // @param request - CreateJobMonitorRuleRequest
 //
@@ -54574,11 +56661,11 @@ func (client *Client) CreateJobMonitorRuleWithOptions(request *CreateJobMonitorR
 //
 // DTS provides the following metrics for DTS tasks:************
 //
-// 	- **Latency**: DTS monitors the latency of a DTS task. If the latency of the task exceeds the specified threshold, an alert is triggered. The threshold is specified in units of seconds.
+//   - **Latency**: DTS monitors the latency of a DTS task. If the latency of the task exceeds the specified threshold, an alert is triggered. The threshold is specified in units of seconds.
 //
-// 	- **Status**: DTS monitors the status of a DTS task. If the state of the task changes to **Error*	- or **Restore**, an alert is triggered.
+//   - **Status**: DTS monitors the status of a DTS task. If the state of the task changes to **Error*	- or **Restore**, an alert is triggered.
 //
-// 	- **Full Timeout**: DTS monitors the duration of a DTS task. If the duration of the task exceeds the specified threshold, an alert is triggered. The threshold is specified in units of hours.
+//   - **Full Timeout**: DTS monitors the duration of a DTS task. If the duration of the task exceeds the specified threshold, an alert is triggered. The threshold is specified in units of hours.
 //
 // @param request - CreateJobMonitorRuleRequest
 //
@@ -56849,7 +58936,7 @@ func (client *Client) DescribeDedicatedCluster(request *DescribeDedicatedCluster
 
 // Summary:
 //
-// The mobile phone number to which alerts are sent. Separate multiple mobile phone numbers with commas (,).
+// Queries the information about an alert rule.
 //
 // @param request - DescribeDedicatedClusterMonitorRuleRequest
 //
@@ -56914,7 +59001,7 @@ func (client *Client) DescribeDedicatedClusterMonitorRuleWithOptions(request *De
 
 // Summary:
 //
-// The mobile phone number to which alerts are sent. Separate multiple mobile phone numbers with commas (,).
+// Queries the information about an alert rule.
 //
 // @param request - DescribeDedicatedClusterMonitorRuleRequest
 //
@@ -57669,6 +59756,188 @@ func (client *Client) DescribeEtlJobLogs(request *DescribeEtlJobLogsRequest) (_r
 
 // Summary:
 //
+// Queries full data migration tasks.
+//
+// @param request - DescribeFullProcessListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeFullProcessListResponse
+func (client *Client) DescribeFullProcessListWithOptions(request *DescribeFullProcessListRequest, runtime *util.RuntimeOptions) (_result *DescribeFullProcessListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DtsJobId)) {
+		query["DtsJobId"] = request.DtsJobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZeroEtlJob)) {
+		query["ZeroEtlJob"] = request.ZeroEtlJob
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeFullProcessList"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeFullProcessListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeFullProcessListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Queries full data migration tasks.
+//
+// @param request - DescribeFullProcessListRequest
+//
+// @return DescribeFullProcessListResponse
+func (client *Client) DescribeFullProcessList(request *DescribeFullProcessListRequest) (_result *DescribeFullProcessListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeFullProcessListResponse{}
+	_body, _err := client.DescribeFullProcessListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询GAD实例列表
+//
+// @param request - DescribeGadInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeGadInstancesResponse
+func (client *Client) DescribeGadInstancesWithOptions(request *DescribeGadInstancesRequest, runtime *util.RuntimeOptions) (_result *DescribeGadInstancesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MasterDbInstanceId)) {
+		query["MasterDbInstanceId"] = request.MasterDbInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SlaveDbInstanceId)) {
+		query["SlaveDbInstanceId"] = request.SlaveDbInstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeGadInstances"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeGadInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeGadInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询GAD实例列表
+//
+// @param request - DescribeGadInstancesRequest
+//
+// @return DescribeGadInstancesResponse
+func (client *Client) DescribeGadInstances(request *DescribeGadInstancesRequest) (_result *DescribeGadInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeGadInstancesResponse{}
+	_body, _err := client.DescribeGadInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the details of initial data synchronization, including the information about the schemas and historical data of the object to be synchronized.
 //
 // @param request - DescribeInitializationStatusRequest
@@ -58344,6 +60613,93 @@ func (client *Client) DescribeMigrationJobs(request *DescribeMigrationJobsReques
 
 // Summary:
 //
+// 查询预检查创建GAD订单任务结果
+//
+// @param request - DescribePreCheckCreateGadOrderResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePreCheckCreateGadOrderResultResponse
+func (client *Client) DescribePreCheckCreateGadOrderResultWithOptions(request *DescribePreCheckCreateGadOrderResultRequest, runtime *util.RuntimeOptions) (_result *DescribePreCheckCreateGadOrderResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribePreCheckCreateGadOrderResult"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribePreCheckCreateGadOrderResultResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribePreCheckCreateGadOrderResultResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询预检查创建GAD订单任务结果
+//
+// @param request - DescribePreCheckCreateGadOrderResultRequest
+//
+// @return DescribePreCheckCreateGadOrderResultResponse
+func (client *Client) DescribePreCheckCreateGadOrderResult(request *DescribePreCheckCreateGadOrderResultRequest) (_result *DescribePreCheckCreateGadOrderResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribePreCheckCreateGadOrderResultResponse{}
+	_body, _err := client.DescribePreCheckCreateGadOrderResultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the status of a Data Transmission Service (DTS) subtask that performs precheck, schema migration, initial schema synchronization, full data migration, initial full data synchronization, incremental data migration, or incremental data synchronization.
 //
 // @param request - DescribePreCheckStatusRequest
@@ -58730,11 +61086,15 @@ func (client *Client) DescribeSubscriptionInstances(request *DescribeSubscriptio
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of the subtasks in a distributed change tracking task for a PolarDB-X 1.0 instance.
+//
 // Description:
 //
-//   When Data Transmission Service (DTS) tracks data changes from a PolarDB-X 1.0 instance, data is distributed across the attached ApsaraDB RDS for MySQL instances. DTS runs a subtask for each ApsaraDB RDS for MySQL instance. You can call this operation to query the details of the subtasks in a distributed change tracking task.
+//	  When Data Transmission Service (DTS) tracks data changes from a PolarDB-X 1.0 instance, data is distributed across the attached ApsaraDB RDS for MySQL instances. DTS runs a subtask for each ApsaraDB RDS for MySQL instance. You can call this operation to query the details of the subtasks in a distributed change tracking task.
 //
-// 	- You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the ID of the change tracking instance and the ID of the consumer group.
+//		- You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the ID of the change tracking instance and the ID of the consumer group.
 //
 // @param tmpReq - DescribeSubscriptionMetaRequest
 //
@@ -58815,11 +61175,15 @@ func (client *Client) DescribeSubscriptionMetaWithOptions(tmpReq *DescribeSubscr
 
 }
 
+// Summary:
+//
+// Queries the details of the subtasks in a distributed change tracking task for a PolarDB-X 1.0 instance.
+//
 // Description:
 //
-//   When Data Transmission Service (DTS) tracks data changes from a PolarDB-X 1.0 instance, data is distributed across the attached ApsaraDB RDS for MySQL instances. DTS runs a subtask for each ApsaraDB RDS for MySQL instance. You can call this operation to query the details of the subtasks in a distributed change tracking task.
+//	  When Data Transmission Service (DTS) tracks data changes from a PolarDB-X 1.0 instance, data is distributed across the attached ApsaraDB RDS for MySQL instances. DTS runs a subtask for each ApsaraDB RDS for MySQL instance. You can call this operation to query the details of the subtasks in a distributed change tracking task.
 //
-// 	- You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the ID of the change tracking instance and the ID of the consumer group.
+//		- You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the ID of the change tracking instance and the ID of the consumer group.
 //
 // @param request - DescribeSubscriptionMetaRequest
 //
@@ -59688,13 +62052,100 @@ func (client *Client) DescribeTagValues(request *DescribeTagValuesRequest) (_res
 
 // Summary:
 //
+// 移除从角色
+//
+// @param request - DetachGadInstanceDbMemberRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DetachGadInstanceDbMemberResponse
+func (client *Client) DetachGadInstanceDbMemberWithOptions(request *DetachGadInstanceDbMemberRequest, runtime *util.RuntimeOptions) (_result *DetachGadInstanceDbMemberResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SlaveDbInstanceId)) {
+		query["SlaveDbInstanceId"] = request.SlaveDbInstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DetachGadInstanceDbMember"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DetachGadInstanceDbMemberResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DetachGadInstanceDbMemberResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 移除从角色
+//
+// @param request - DetachGadInstanceDbMemberRequest
+//
+// @return DetachGadInstanceDbMemberResponse
+func (client *Client) DetachGadInstanceDbMember(request *DetachGadInstanceDbMemberRequest) (_result *DetachGadInstanceDbMemberResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DetachGadInstanceDbMemberResponse{}
+	_body, _err := client.DetachGadInstanceDbMemberWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Initializes a built-in account on a node of an active geo-redundancy database cluster. Data Transmission Service (DTS) uses the built-in account to connect to the node and perform data synchronization tasks.
 //
 // Description:
 //
-//   The node must be an ApsaraDB RDS for MySQL instance or a self-managed MySQL database that is connected over Cloud Enterprise Network (CEN).
+//	  The node must be an ApsaraDB RDS for MySQL instance or a self-managed MySQL database that is connected over Cloud Enterprise Network (CEN).
 //
-// 	- This operation is used to initialize the built-in account named rdsdt_dtsacct on a node of an active geo-redundancy database cluster. DTS uses this account to connect to the node and perform data synchronization tasks.
+//		- This operation is used to initialize the built-in account named rdsdt_dtsacct on a node of an active geo-redundancy database cluster. DTS uses this account to connect to the node and perform data synchronization tasks.
 //
 // @param request - InitDtsRdsInstanceRequest
 //
@@ -59775,9 +62226,9 @@ func (client *Client) InitDtsRdsInstanceWithOptions(request *InitDtsRdsInstanceR
 //
 // Description:
 //
-//   The node must be an ApsaraDB RDS for MySQL instance or a self-managed MySQL database that is connected over Cloud Enterprise Network (CEN).
+//	  The node must be an ApsaraDB RDS for MySQL instance or a self-managed MySQL database that is connected over Cloud Enterprise Network (CEN).
 //
-// 	- This operation is used to initialize the built-in account named rdsdt_dtsacct on a node of an active geo-redundancy database cluster. DTS uses this account to connect to the node and perform data synchronization tasks.
+//		- This operation is used to initialize the built-in account named rdsdt_dtsacct on a node of an active geo-redundancy database cluster. DTS uses this account to connect to the node and perform data synchronization tasks.
 //
 // @param request - InitDtsRdsInstanceRequest
 //
@@ -60100,7 +62551,7 @@ func (client *Client) ModifyConsumerChannel(request *ModifyConsumerChannelReques
 
 // Summary:
 //
-// Modifies the password of a consumer group
+// # Modifies the password of a consumer group
 //
 // @param request - ModifyConsumerGroupPasswordRequest
 //
@@ -60189,7 +62640,7 @@ func (client *Client) ModifyConsumerGroupPasswordWithOptions(request *ModifyCons
 
 // Summary:
 //
-// Modifies the password of a consumer group
+// # Modifies the password of a consumer group
 //
 // @param request - ModifyConsumerGroupPasswordRequest
 //
@@ -60845,9 +63296,9 @@ func (client *Client) ModifyDtsJobDedicatedCluster(request *ModifyDtsJobDedicate
 //
 // Description:
 //
-//   DTS allows you to upgrade or downgrade the configurations of DTS instances in a dedicated cluster. You can adjust the resources that are occupied for task execution to dynamically adjust the number of tasks that can be scheduled in the cluster. This way, you can reduce the total number of DUs required for the cluster or release DUs.
+//	  DTS allows you to upgrade or downgrade the configurations of DTS instances in a dedicated cluster. You can adjust the resources that are occupied for task execution to dynamically adjust the number of tasks that can be scheduled in the cluster. This way, you can reduce the total number of DUs required for the cluster or release DUs.
 //
-// 	- Before you modify the upper limit of DUs for a DTS task, make sure that sufficient DUs are available.
+//		- Before you modify the upper limit of DUs for a DTS task, make sure that sufficient DUs are available.
 //
 // @param request - ModifyDtsJobDuLimitRequest
 //
@@ -60920,9 +63371,9 @@ func (client *Client) ModifyDtsJobDuLimitWithOptions(request *ModifyDtsJobDuLimi
 //
 // Description:
 //
-//   DTS allows you to upgrade or downgrade the configurations of DTS instances in a dedicated cluster. You can adjust the resources that are occupied for task execution to dynamically adjust the number of tasks that can be scheduled in the cluster. This way, you can reduce the total number of DUs required for the cluster or release DUs.
+//	  DTS allows you to upgrade or downgrade the configurations of DTS instances in a dedicated cluster. You can adjust the resources that are occupied for task execution to dynamically adjust the number of tasks that can be scheduled in the cluster. This way, you can reduce the total number of DUs required for the cluster or release DUs.
 //
-// 	- Before you modify the upper limit of DUs for a DTS task, make sure that sufficient DUs are available.
+//		- Before you modify the upper limit of DUs for a DTS task, make sure that sufficient DUs are available.
 //
 // @param request - ModifyDtsJobDuLimitRequest
 //
@@ -61376,6 +63827,93 @@ func (client *Client) ModifyDynamicConfig(request *ModifyDynamicConfigRequest) (
 
 // Summary:
 //
+// 修改GAD实例名称
+//
+// @param request - ModifyGadInstanceNameRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyGadInstanceNameResponse
+func (client *Client) ModifyGadInstanceNameWithOptions(request *ModifyGadInstanceNameRequest, runtime *util.RuntimeOptions) (_result *ModifyGadInstanceNameResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyGadInstanceName"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyGadInstanceNameResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyGadInstanceNameResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 修改GAD实例名称
+//
+// @param request - ModifyGadInstanceNameRequest
+//
+// @return ModifyGadInstanceNameResponse
+func (client *Client) ModifyGadInstanceName(request *ModifyGadInstanceNameRequest) (_result *ModifyGadInstanceNameResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyGadInstanceNameResponse{}
+	_body, _err := client.ModifyGadInstanceNameWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies the information about a change tracking task.
 //
 // Description:
@@ -61658,6 +64196,97 @@ func (client *Client) ModifySynchronizationObject(request *ModifySynchronization
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifySynchronizationObjectResponse{}
 	_body, _err := client.ModifySynchronizationObjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 预检查创建GAD订单
+//
+// @param request - PreCheckCreateGadOrderRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PreCheckCreateGadOrderResponse
+func (client *Client) PreCheckCreateGadOrderWithOptions(request *PreCheckCreateGadOrderRequest, runtime *util.RuntimeOptions) (_result *PreCheckCreateGadOrderResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SlaveDbInstanceId)) {
+		query["SlaveDbInstanceId"] = request.SlaveDbInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SlaveDbInstanceRegion)) {
+		query["SlaveDbInstanceRegion"] = request.SlaveDbInstanceRegion
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PreCheckCreateGadOrder"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &PreCheckCreateGadOrderResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &PreCheckCreateGadOrderResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 预检查创建GAD订单
+//
+// @param request - PreCheckCreateGadOrderRequest
+//
+// @return PreCheckCreateGadOrderResponse
+func (client *Client) PreCheckCreateGadOrder(request *PreCheckCreateGadOrderRequest) (_result *PreCheckCreateGadOrderResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &PreCheckCreateGadOrderResponse{}
+	_body, _err := client.PreCheckCreateGadOrderWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -62109,6 +64738,93 @@ func (client *Client) ShieldPrecheck(request *ShieldPrecheckRequest) (_result *S
 	runtime := &util.RuntimeOptions{}
 	_result = &ShieldPrecheckResponse{}
 	_body, _err := client.ShieldPrecheckWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// The tables that do not need to be synchronized in a full data synchronization are skipped.
+//
+// @param request - SkipFullJobTableRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SkipFullJobTableResponse
+func (client *Client) SkipFullJobTableWithOptions(request *SkipFullJobTableRequest, runtime *util.RuntimeOptions) (_result *SkipFullJobTableResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DtsJobId)) {
+		query["DtsJobId"] = request.DtsJobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobProgressId)) {
+		query["JobProgressId"] = request.JobProgressId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZeroEtlJob)) {
+		query["ZeroEtlJob"] = request.ZeroEtlJob
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SkipFullJobTable"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SkipFullJobTableResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SkipFullJobTableResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// The tables that do not need to be synchronized in a full data synchronization are skipped.
+//
+// @param request - SkipFullJobTableRequest
+//
+// @return SkipFullJobTableResponse
+func (client *Client) SkipFullJobTable(request *SkipFullJobTableRequest) (_result *SkipFullJobTableResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SkipFullJobTableResponse{}
+	_body, _err := client.SkipFullJobTableWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -63473,11 +66189,11 @@ func (client *Client) SuspendMigrationJob(request *SuspendMigrationJobRequest) (
 //
 // >
 //
-// 	- When you call this operation, the data synchronization task must be in the Synchronizing state.
+//   - When you call this operation, the data synchronization task must be in the Synchronizing state.
 //
-// 	- We recommend that you do not pause a data synchronization task for more than 6 hours. Otherwise, the task cannot be started again.
+//   - We recommend that you do not pause a data synchronization task for more than 6 hours. Otherwise, the task cannot be started again.
 //
-// 	- If the billing method is pay-as-you-go, DTS charges a fee even when the task is paused. This is because DTS only stops writing data to the destination database. DTS continues to pull the logs of the source database so that the task can resume quickly after it is restarted. Therefore, data synchronization consumes resources such as the bandwidth of the source database.
+//   - If the billing method is pay-as-you-go, DTS charges a fee even when the task is paused. This is because DTS only stops writing data to the destination database. DTS continues to pull the logs of the source database so that the task can resume quickly after it is restarted. Therefore, data synchronization consumes resources such as the bandwidth of the source database.
 //
 // @param request - SuspendSynchronizationJobRequest
 //
@@ -63556,11 +66272,11 @@ func (client *Client) SuspendSynchronizationJobWithOptions(request *SuspendSynch
 //
 // >
 //
-// 	- When you call this operation, the data synchronization task must be in the Synchronizing state.
+//   - When you call this operation, the data synchronization task must be in the Synchronizing state.
 //
-// 	- We recommend that you do not pause a data synchronization task for more than 6 hours. Otherwise, the task cannot be started again.
+//   - We recommend that you do not pause a data synchronization task for more than 6 hours. Otherwise, the task cannot be started again.
 //
-// 	- If the billing method is pay-as-you-go, DTS charges a fee even when the task is paused. This is because DTS only stops writing data to the destination database. DTS continues to pull the logs of the source database so that the task can resume quickly after it is restarted. Therefore, data synchronization consumes resources such as the bandwidth of the source database.
+//   - If the billing method is pay-as-you-go, DTS charges a fee even when the task is paused. This is because DTS only stops writing data to the destination database. DTS continues to pull the logs of the source database so that the task can resume quickly after it is restarted. Therefore, data synchronization consumes resources such as the bandwidth of the source database.
 //
 // @param request - SuspendSynchronizationJobRequest
 //
@@ -63770,15 +66486,15 @@ func (client *Client) SwitchSynchronizationEndpoint(request *SwitchSynchronizati
 //
 // If you have a large number of instances, you can create multiple tags and add these tags to the instances. Then, you can query instances by tag.
 //
-// 	- A tag consists of a key and a value. Each key must be unique in a region within an Alibaba Cloud account. Different keys can be mapped to the same value.
+//   - A tag consists of a key and a value. Each key must be unique in a region within an Alibaba Cloud account. Different keys can be mapped to the same value.
 //
-// 	- If the tag that you specify does not exist, this tag is automatically created and added to the specified instance.
+//   - If the tag that you specify does not exist, this tag is automatically created and added to the specified instance.
 //
-// 	- If the key of the specified tag is the same as that of an existing tag, the specified tag overwrites the existing tag.
+//   - If the key of the specified tag is the same as that of an existing tag, the specified tag overwrites the existing tag.
 //
-// 	- You can add up to 20 tags to an instance.
+//   - You can add up to 20 tags to an instance.
 //
-// 	- You can add tags to up to 50 instances in each request.
+//   - You can add tags to up to 50 instances in each request.
 //
 // @param request - TagResourcesRequest
 //
@@ -63853,15 +66569,15 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 //
 // If you have a large number of instances, you can create multiple tags and add these tags to the instances. Then, you can query instances by tag.
 //
-// 	- A tag consists of a key and a value. Each key must be unique in a region within an Alibaba Cloud account. Different keys can be mapped to the same value.
+//   - A tag consists of a key and a value. Each key must be unique in a region within an Alibaba Cloud account. Different keys can be mapped to the same value.
 //
-// 	- If the tag that you specify does not exist, this tag is automatically created and added to the specified instance.
+//   - If the tag that you specify does not exist, this tag is automatically created and added to the specified instance.
 //
-// 	- If the key of the specified tag is the same as that of an existing tag, the specified tag overwrites the existing tag.
+//   - If the key of the specified tag is the same as that of an existing tag, the specified tag overwrites the existing tag.
 //
-// 	- You can add up to 20 tags to an instance.
+//   - You can add up to 20 tags to an instance.
 //
-// 	- You can add tags to up to 50 instances in each request.
+//   - You can add tags to up to 50 instances in each request.
 //
 // @param request - TagResourcesRequest
 //
@@ -63972,9 +66688,9 @@ func (client *Client) TransferInstanceClass(request *TransferInstanceClassReques
 //
 // Before you call this operation, make sure that you fully understand the [billing](https://www.alibabacloud.com/zh/product/data-transmission-service/pricing) of DTS.
 //
-// 	- To prevent resource waste, make sure that the billing method of your DTS instances has to be changed.
+//   - To prevent resource waste, make sure that the billing method of your DTS instances has to be changed.
 //
-// 	- Data migration instances only support the pay-as-you-go billing method.
+//   - Data migration instances only support the pay-as-you-go billing method.
 //
 // @param request - TransferPayTypeRequest
 //
@@ -64069,9 +66785,9 @@ func (client *Client) TransferPayTypeWithOptions(request *TransferPayTypeRequest
 //
 // Before you call this operation, make sure that you fully understand the [billing](https://www.alibabacloud.com/zh/product/data-transmission-service/pricing) of DTS.
 //
-// 	- To prevent resource waste, make sure that the billing method of your DTS instances has to be changed.
+//   - To prevent resource waste, make sure that the billing method of your DTS instances has to be changed.
 //
-// 	- Data migration instances only support the pay-as-you-go billing method.
+//   - Data migration instances only support the pay-as-you-go billing method.
 //
 // @param request - TransferPayTypeRequest
 //
@@ -64196,13 +66912,13 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 //
 // When you call this operation, take note of the following information:
 //
-// 	- The source and destination databases of the data synchronization task are both **MySQL*	- databases.
+//   - The source and destination databases of the data synchronization task are both **MySQL*	- databases.
 //
-// 	- The synchronization topology of the data synchronization task is **one-way synchronization**.
+//   - The synchronization topology of the data synchronization task is **one-way synchronization**.
 //
-// 	- The data synchronization task is in the **Synchronizing*	- state.
+//   - The data synchronization task is in the **Synchronizing*	- state.
 //
-// 	- The upgrade operation causes data synchronization latency of about 5 seconds. We recommend that you perform this operation during off-peak hours.
+//   - The upgrade operation causes data synchronization latency of about 5 seconds. We recommend that you perform this operation during off-peak hours.
 //
 // @param request - UpgradeTwoWayRequest
 //
@@ -64275,13 +66991,13 @@ func (client *Client) UpgradeTwoWayWithOptions(request *UpgradeTwoWayRequest, ru
 //
 // When you call this operation, take note of the following information:
 //
-// 	- The source and destination databases of the data synchronization task are both **MySQL*	- databases.
+//   - The source and destination databases of the data synchronization task are both **MySQL*	- databases.
 //
-// 	- The synchronization topology of the data synchronization task is **one-way synchronization**.
+//   - The synchronization topology of the data synchronization task is **one-way synchronization**.
 //
-// 	- The data synchronization task is in the **Synchronizing*	- state.
+//   - The data synchronization task is in the **Synchronizing*	- state.
 //
-// 	- The upgrade operation causes data synchronization latency of about 5 seconds. We recommend that you perform this operation during off-peak hours.
+//   - The upgrade operation causes data synchronization latency of about 5 seconds. We recommend that you perform this operation during off-peak hours.
 //
 // @param request - UpgradeTwoWayRequest
 //

@@ -1,3 +1,14 @@
+2025-03-28 Version: v2.7.0
+- Support API ConvertInstanceResourceGroup.
+- Support API DescribeFullProcessList.
+- Support API DescribeGadInstances.
+- Support API DescribePreCheckCreateGadOrderResult.
+- Support API DetachGadInstanceDbMember.
+- Support API ModifyGadInstanceName.
+- Support API PreCheckCreateGadOrder.
+- Support API SkipFullJobTable.
+
+
 2025-02-21 Version: v2.6.4
 - Update API ConfigureDtsJob: add param DestPrimaryVswId.
 - Update API ConfigureDtsJob: add param DestSecondaryVswId.
