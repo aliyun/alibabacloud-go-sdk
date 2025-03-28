@@ -9444,8 +9444,6 @@ type ListTagResourcesRequest struct {
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// List of resource IDs
-	//
-	// This parameter is required.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// Resource type
 	//
