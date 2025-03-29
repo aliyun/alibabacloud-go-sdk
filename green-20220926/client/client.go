@@ -2501,6 +2501,178 @@ func (s *DeleteCallbackResponse) SetBody(v *DeleteCallbackResponseBody) *DeleteC
 	return s
 }
 
+type DeleteFeatureConfigRequest struct {
+	// Label value, customer-defined
+	//
+	// example:
+	//
+	// __config__
+	Field *string `json:"Field,omitempty" xml:"Field,omitempty"`
+	// Region
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Resource type.
+	//
+	// example:
+	//
+	// text
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// Service code.
+	//
+	// example:
+	//
+	// llm_query_moderation
+	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+	// Type
+	//
+	// example:
+	//
+	// custom_llm_template
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DeleteFeatureConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFeatureConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFeatureConfigRequest) SetField(v string) *DeleteFeatureConfigRequest {
+	s.Field = &v
+	return s
+}
+
+func (s *DeleteFeatureConfigRequest) SetRegionId(v string) *DeleteFeatureConfigRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteFeatureConfigRequest) SetResourceType(v string) *DeleteFeatureConfigRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *DeleteFeatureConfigRequest) SetServiceCode(v string) *DeleteFeatureConfigRequest {
+	s.ServiceCode = &v
+	return s
+}
+
+func (s *DeleteFeatureConfigRequest) SetType(v string) *DeleteFeatureConfigRequest {
+	s.Type = &v
+	return s
+}
+
+type DeleteFeatureConfigResponseBody struct {
+	// Status code.
+	//
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Return result.
+	//
+	// example:
+	//
+	// True
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// HTTP status code.
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message of this request.
+	//
+	// example:
+	//
+	// success
+	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// ID assigned by the backend, used to uniquely identify a request. Can be used for troubleshooting.
+	//
+	// example:
+	//
+	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Success indicator.
+	//
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteFeatureConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFeatureConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFeatureConfigResponseBody) SetCode(v int32) *DeleteFeatureConfigResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteFeatureConfigResponseBody) SetData(v bool) *DeleteFeatureConfigResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteFeatureConfigResponseBody) SetHttpStatusCode(v int32) *DeleteFeatureConfigResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DeleteFeatureConfigResponseBody) SetMsg(v string) *DeleteFeatureConfigResponseBody {
+	s.Msg = &v
+	return s
+}
+
+func (s *DeleteFeatureConfigResponseBody) SetRequestId(v string) *DeleteFeatureConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteFeatureConfigResponseBody) SetSuccess(v bool) *DeleteFeatureConfigResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteFeatureConfigResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteFeatureConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteFeatureConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFeatureConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFeatureConfigResponse) SetHeaders(v map[string]*string) *DeleteFeatureConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteFeatureConfigResponse) SetStatusCode(v int32) *DeleteFeatureConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteFeatureConfigResponse) SetBody(v *DeleteFeatureConfigResponseBody) *DeleteFeatureConfigResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteImagesFromLibRequest struct {
 	// example:
 	//
@@ -5217,6 +5389,225 @@ func (s *GetExecuteTimeResponse) SetBody(v *GetExecuteTimeResponseBody) *GetExec
 	return s
 }
 
+type GetFeatureConfigRequest struct {
+	// Region ID
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Resource type.
+	//
+	// example:
+	//
+	// text
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// Service code.
+	//
+	// example:
+	//
+	// llm_query_moderation
+	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+	// Type
+	//
+	// example:
+	//
+	// custom_llm_template
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetFeatureConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFeatureConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetFeatureConfigRequest) SetRegionId(v string) *GetFeatureConfigRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetFeatureConfigRequest) SetResourceType(v string) *GetFeatureConfigRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *GetFeatureConfigRequest) SetServiceCode(v string) *GetFeatureConfigRequest {
+	s.ServiceCode = &v
+	return s
+}
+
+func (s *GetFeatureConfigRequest) SetType(v string) *GetFeatureConfigRequest {
+	s.Type = &v
+	return s
+}
+
+type GetFeatureConfigResponseBody struct {
+	// Status code
+	//
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Returned data.
+	Data *GetFeatureConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message for this request.
+	//
+	// example:
+	//
+	// success
+	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// ID assigned by the backend, used to uniquely identify a request. Can be used for troubleshooting.
+	//
+	// example:
+	//
+	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Success indicator
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetFeatureConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFeatureConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetFeatureConfigResponseBody) SetCode(v int32) *GetFeatureConfigResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetFeatureConfigResponseBody) SetData(v *GetFeatureConfigResponseBodyData) *GetFeatureConfigResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetFeatureConfigResponseBody) SetHttpStatusCode(v int32) *GetFeatureConfigResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetFeatureConfigResponseBody) SetMsg(v string) *GetFeatureConfigResponseBody {
+	s.Msg = &v
+	return s
+}
+
+func (s *GetFeatureConfigResponseBody) SetRequestId(v string) *GetFeatureConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetFeatureConfigResponseBody) SetSuccess(v bool) *GetFeatureConfigResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetFeatureConfigResponseBodyData struct {
+	// List of feature configurations
+	FeatureConf []map[string]interface{} `json:"FeatureConf,omitempty" xml:"FeatureConf,omitempty" type:"Repeated"`
+	// Resource type.
+	//
+	// example:
+	//
+	// text
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// Service code.
+	//
+	// example:
+	//
+	// llm_query_moderation
+	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+	// Type
+	//
+	// example:
+	//
+	// custom_llm_template
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// UID.
+	//
+	// example:
+	//
+	// 1643953****74290
+	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
+}
+
+func (s GetFeatureConfigResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFeatureConfigResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetFeatureConfigResponseBodyData) SetFeatureConf(v []map[string]interface{}) *GetFeatureConfigResponseBodyData {
+	s.FeatureConf = v
+	return s
+}
+
+func (s *GetFeatureConfigResponseBodyData) SetResourceType(v string) *GetFeatureConfigResponseBodyData {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *GetFeatureConfigResponseBodyData) SetServiceCode(v string) *GetFeatureConfigResponseBodyData {
+	s.ServiceCode = &v
+	return s
+}
+
+func (s *GetFeatureConfigResponseBodyData) SetType(v string) *GetFeatureConfigResponseBodyData {
+	s.Type = &v
+	return s
+}
+
+func (s *GetFeatureConfigResponseBodyData) SetUid(v string) *GetFeatureConfigResponseBodyData {
+	s.Uid = &v
+	return s
+}
+
+type GetFeatureConfigResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetFeatureConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetFeatureConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFeatureConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetFeatureConfigResponse) SetHeaders(v map[string]*string) *GetFeatureConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetFeatureConfigResponse) SetStatusCode(v int32) *GetFeatureConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetFeatureConfigResponse) SetBody(v *GetFeatureConfigResponseBody) *GetFeatureConfigResponse {
+	s.Body = v
+	return s
+}
+
 type GetImageSceneLabelConfRequest struct {
 	// example:
 	//
@@ -6618,6 +7009,7 @@ func (s *GetScanResultResponseBodyData) SetTotalCount(v int64) *GetScanResultRes
 }
 
 type GetScanResultResponseBodyDataItems struct {
+	AttackLevel *string `json:"AttackLevel,omitempty" xml:"AttackLevel,omitempty"`
 	// example:
 	//
 	// xxx
@@ -6671,7 +7063,8 @@ type GetScanResultResponseBodyDataItems struct {
 	// example:
 	//
 	// 1
-	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageNum     *int64  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	RequestFrom *string `json:"RequestFrom,omitempty" xml:"RequestFrom,omitempty"`
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
@@ -6691,7 +7084,8 @@ type GetScanResultResponseBodyDataItems struct {
 	// example:
 	//
 	// 25
-	Score *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
+	Score          *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
+	SensitiveLevel *string  `json:"SensitiveLevel,omitempty" xml:"SensitiveLevel,omitempty"`
 	// example:
 	//
 	// baselineCheck
@@ -6738,6 +7132,11 @@ func (s GetScanResultResponseBodyDataItems) String() string {
 
 func (s GetScanResultResponseBodyDataItems) GoString() string {
 	return s.String()
+}
+
+func (s *GetScanResultResponseBodyDataItems) SetAttackLevel(v string) *GetScanResultResponseBodyDataItems {
+	s.AttackLevel = &v
+	return s
 }
 
 func (s *GetScanResultResponseBodyDataItems) SetContent(v string) *GetScanResultResponseBodyDataItems {
@@ -6810,6 +7209,11 @@ func (s *GetScanResultResponseBodyDataItems) SetPageNum(v int64) *GetScanResultR
 	return s
 }
 
+func (s *GetScanResultResponseBodyDataItems) SetRequestFrom(v string) *GetScanResultResponseBodyDataItems {
+	s.RequestFrom = &v
+	return s
+}
+
 func (s *GetScanResultResponseBodyDataItems) SetRequestId(v string) *GetScanResultResponseBodyDataItems {
 	s.RequestId = &v
 	return s
@@ -6847,6 +7251,11 @@ func (s *GetScanResultResponseBodyDataItems) SetScanResult(v string) *GetScanRes
 
 func (s *GetScanResultResponseBodyDataItems) SetScore(v float32) *GetScanResultResponseBodyDataItems {
 	s.Score = &v
+	return s
+}
+
+func (s *GetScanResultResponseBodyDataItems) SetSensitiveLevel(v string) *GetScanResultResponseBodyDataItems {
+	s.SensitiveLevel = &v
 	return s
 }
 
@@ -11124,6 +11533,200 @@ func (s *ModifyCallbackResponse) SetBody(v *ModifyCallbackResponseBody) *ModifyC
 	return s
 }
 
+type ModifyFeatureConfigRequest struct {
+	// Configuration, in JSON format
+	//
+	// example:
+	//
+	// {}
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// Label meaning
+	//
+	// example:
+	//
+	// 标签2
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Label value, customer-defined
+	//
+	// example:
+	//
+	// __config__
+	Field *string `json:"Field,omitempty" xml:"Field,omitempty"`
+	// Region
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Resource type.
+	//
+	// example:
+	//
+	// text
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// Service code.
+	//
+	// example:
+	//
+	// llm_query_moderation
+	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+	// Type
+	//
+	// example:
+	//
+	// custom_llm_template
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ModifyFeatureConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyFeatureConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyFeatureConfigRequest) SetConfig(v string) *ModifyFeatureConfigRequest {
+	s.Config = &v
+	return s
+}
+
+func (s *ModifyFeatureConfigRequest) SetDescription(v string) *ModifyFeatureConfigRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *ModifyFeatureConfigRequest) SetField(v string) *ModifyFeatureConfigRequest {
+	s.Field = &v
+	return s
+}
+
+func (s *ModifyFeatureConfigRequest) SetRegionId(v string) *ModifyFeatureConfigRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyFeatureConfigRequest) SetResourceType(v string) *ModifyFeatureConfigRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ModifyFeatureConfigRequest) SetServiceCode(v string) *ModifyFeatureConfigRequest {
+	s.ServiceCode = &v
+	return s
+}
+
+func (s *ModifyFeatureConfigRequest) SetType(v string) *ModifyFeatureConfigRequest {
+	s.Type = &v
+	return s
+}
+
+type ModifyFeatureConfigResponseBody struct {
+	// Status code.
+	//
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Returned data
+	//
+	// example:
+	//
+	// True
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// HTTP status code.
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message of this request.
+	//
+	// example:
+	//
+	// success
+	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// ID assigned by the backend to uniquely identify a request. Can be used for troubleshooting.
+	//
+	// example:
+	//
+	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Success indicator.
+	//
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ModifyFeatureConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyFeatureConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyFeatureConfigResponseBody) SetCode(v int32) *ModifyFeatureConfigResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ModifyFeatureConfigResponseBody) SetData(v bool) *ModifyFeatureConfigResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *ModifyFeatureConfigResponseBody) SetHttpStatusCode(v int32) *ModifyFeatureConfigResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ModifyFeatureConfigResponseBody) SetMsg(v string) *ModifyFeatureConfigResponseBody {
+	s.Msg = &v
+	return s
+}
+
+func (s *ModifyFeatureConfigResponseBody) SetRequestId(v string) *ModifyFeatureConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyFeatureConfigResponseBody) SetSuccess(v bool) *ModifyFeatureConfigResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ModifyFeatureConfigResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyFeatureConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyFeatureConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyFeatureConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyFeatureConfigResponse) SetHeaders(v map[string]*string) *ModifyFeatureConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyFeatureConfigResponse) SetStatusCode(v int32) *ModifyFeatureConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyFeatureConfigResponse) SetBody(v *ModifyFeatureConfigResponseBody) *ModifyFeatureConfigResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyServiceInfoRequest struct {
 	// example:
 	//
@@ -14126,6 +14729,95 @@ func (client *Client) DeleteCallback(request *DeleteCallbackRequest) (_result *D
 
 // Summary:
 //
+// # Delete feature configuration
+//
+// @param request - DeleteFeatureConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteFeatureConfigResponse
+func (client *Client) DeleteFeatureConfigWithOptions(request *DeleteFeatureConfigRequest, runtime *util.RuntimeOptions) (_result *DeleteFeatureConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Field)) {
+		body["Field"] = request.Field
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		body["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceCode)) {
+		body["ServiceCode"] = request.ServiceCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteFeatureConfig"),
+		Version:     tea.String("2022-09-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteFeatureConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteFeatureConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// # Delete feature configuration
+//
+// @param request - DeleteFeatureConfigRequest
+//
+// @return DeleteFeatureConfigResponse
+func (client *Client) DeleteFeatureConfig(request *DeleteFeatureConfigRequest) (_result *DeleteFeatureConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteFeatureConfigResponse{}
+	_body, _err := client.DeleteFeatureConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 批量删除
 //
 // @param request - DeleteImagesFromLibRequest
@@ -15560,6 +16252,91 @@ func (client *Client) GetExecuteTime(request *GetExecuteTimeRequest) (_result *G
 	runtime := &util.RuntimeOptions{}
 	_result = &GetExecuteTimeResponse{}
 	_body, _err := client.GetExecuteTimeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # Get Feature Configuration
+//
+// @param request - GetFeatureConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetFeatureConfigResponse
+func (client *Client) GetFeatureConfigWithOptions(request *GetFeatureConfigRequest, runtime *util.RuntimeOptions) (_result *GetFeatureConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		body["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceCode)) {
+		body["ServiceCode"] = request.ServiceCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetFeatureConfig"),
+		Version:     tea.String("2022-09-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetFeatureConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetFeatureConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// # Get Feature Configuration
+//
+// @param request - GetFeatureConfigRequest
+//
+// @return GetFeatureConfigResponse
+func (client *Client) GetFeatureConfig(request *GetFeatureConfigRequest) (_result *GetFeatureConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetFeatureConfigResponse{}
+	_body, _err := client.GetFeatureConfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17786,6 +18563,103 @@ func (client *Client) ModifyCallback(request *ModifyCallbackRequest) (_result *M
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyCallbackResponse{}
 	_body, _err := client.ModifyCallbackWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # Save Feature Configuration
+//
+// @param request - ModifyFeatureConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyFeatureConfigResponse
+func (client *Client) ModifyFeatureConfigWithOptions(request *ModifyFeatureConfigRequest, runtime *util.RuntimeOptions) (_result *ModifyFeatureConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Config)) {
+		body["Config"] = request.Config
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Field)) {
+		body["Field"] = request.Field
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		body["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceCode)) {
+		body["ServiceCode"] = request.ServiceCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyFeatureConfig"),
+		Version:     tea.String("2022-09-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyFeatureConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyFeatureConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// # Save Feature Configuration
+//
+// @param request - ModifyFeatureConfigRequest
+//
+// @return ModifyFeatureConfigResponse
+func (client *Client) ModifyFeatureConfig(request *ModifyFeatureConfigRequest) (_result *ModifyFeatureConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyFeatureConfigResponse{}
+	_body, _err := client.ModifyFeatureConfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
