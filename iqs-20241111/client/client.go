@@ -336,6 +336,7 @@ type ScorePageItem struct {
 	//
 	// 100km/h-0制动能力上，仅有33.3m，不黑不吹，单看这个，小米SU7确实表现不错。而续航方面，101kWh电池容量，实现CLTC续航800km，还有现5分钟补能220km，15分钟补能510km的800V高压平台。而在...
 	Snippet *string `json:"snippet,omitempty" xml:"snippet,omitempty"`
+	Summary *string `json:"summary,omitempty" xml:"summary,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -429,6 +430,11 @@ func (s *ScorePageItem) SetSiteLabel(v string) *ScorePageItem {
 
 func (s *ScorePageItem) SetSnippet(v string) *ScorePageItem {
 	s.Snippet = &v
+	return s
+}
+
+func (s *ScorePageItem) SetSummary(v string) *ScorePageItem {
+	s.Summary = &v
 	return s
 }
 
@@ -856,14 +862,18 @@ func (s *GenericAdvancedSearchResponse) SetBody(v *GenericSearchResult) *Generic
 }
 
 type GenericSearchRequest struct {
-	Industry *string `json:"industry,omitempty" xml:"industry,omitempty"`
+	EnableRerank *bool   `json:"enableRerank,omitempty" xml:"enableRerank,omitempty"`
+	Industry     *string `json:"industry,omitempty" xml:"industry,omitempty"`
 	// example:
 	//
 	// 1
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
 	// This parameter is required.
-	Query     *string `json:"query,omitempty" xml:"query,omitempty"`
-	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	Query              *string `json:"query,omitempty" xml:"query,omitempty"`
+	ReturnMainText     *bool   `json:"returnMainText,omitempty" xml:"returnMainText,omitempty"`
+	ReturnMarkdownText *bool   `json:"returnMarkdownText,omitempty" xml:"returnMarkdownText,omitempty"`
+	ReturnSummary      *bool   `json:"returnSummary,omitempty" xml:"returnSummary,omitempty"`
+	SessionId          *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
 	// example:
 	//
 	// OneWeek
@@ -878,6 +888,11 @@ func (s GenericSearchRequest) GoString() string {
 	return s.String()
 }
 
+func (s *GenericSearchRequest) SetEnableRerank(v bool) *GenericSearchRequest {
+	s.EnableRerank = &v
+	return s
+}
+
 func (s *GenericSearchRequest) SetIndustry(v string) *GenericSearchRequest {
 	s.Industry = &v
 	return s
@@ -890,6 +905,21 @@ func (s *GenericSearchRequest) SetPage(v int32) *GenericSearchRequest {
 
 func (s *GenericSearchRequest) SetQuery(v string) *GenericSearchRequest {
 	s.Query = &v
+	return s
+}
+
+func (s *GenericSearchRequest) SetReturnMainText(v bool) *GenericSearchRequest {
+	s.ReturnMainText = &v
+	return s
+}
+
+func (s *GenericSearchRequest) SetReturnMarkdownText(v bool) *GenericSearchRequest {
+	s.ReturnMarkdownText = &v
+	return s
+}
+
+func (s *GenericSearchRequest) SetReturnSummary(v bool) *GenericSearchRequest {
+	s.ReturnSummary = &v
 	return s
 }
 
@@ -981,7 +1011,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// AI搜索流式接口
+// # AI搜索流式接口
 //
 // @param request - AiSearchRequest
 //
@@ -1053,7 +1083,7 @@ func (client *Client) AiSearchWithOptions(request *AiSearchRequest, headers map[
 
 // Summary:
 //
-// AI搜索流式接口
+// # AI搜索流式接口
 //
 // @param request - AiSearchRequest
 //
@@ -1174,6 +1204,10 @@ func (client *Client) GenericSearchWithOptions(request *GenericSearchRequest, he
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EnableRerank)) {
+		query["enableRerank"] = request.EnableRerank
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Industry)) {
 		query["industry"] = request.Industry
 	}
@@ -1184,6 +1218,18 @@ func (client *Client) GenericSearchWithOptions(request *GenericSearchRequest, he
 
 	if !tea.BoolValue(util.IsUnset(request.Query)) {
 		query["query"] = request.Query
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReturnMainText)) {
+		query["returnMainText"] = request.ReturnMainText
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReturnMarkdownText)) {
+		query["returnMarkdownText"] = request.ReturnMarkdownText
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReturnSummary)) {
+		query["returnSummary"] = request.ReturnSummary
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
