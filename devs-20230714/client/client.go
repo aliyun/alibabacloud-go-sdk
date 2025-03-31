@@ -9387,6 +9387,52 @@ func (s *DeleteProjectResponse) SetStatusCode(v int32) *DeleteProjectResponse {
 	return s
 }
 
+type DeployEnvironmentRequest struct {
+	Body *DeployEnvironmentOptions `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeployEnvironmentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeployEnvironmentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeployEnvironmentRequest) SetBody(v *DeployEnvironmentOptions) *DeployEnvironmentRequest {
+	s.Body = v
+	return s
+}
+
+type DeployEnvironmentResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EnvironmentDeployment `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeployEnvironmentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeployEnvironmentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeployEnvironmentResponse) SetHeaders(v map[string]*string) *DeployEnvironmentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeployEnvironmentResponse) SetStatusCode(v int32) *DeployEnvironmentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeployEnvironmentResponse) SetBody(v *EnvironmentDeployment) *DeployEnvironmentResponse {
+	s.Body = v
+	return s
+}
+
 type GetEnvironmentResponse struct {
 	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -9412,6 +9458,35 @@ func (s *GetEnvironmentResponse) SetStatusCode(v int32) *GetEnvironmentResponse 
 }
 
 func (s *GetEnvironmentResponse) SetBody(v *Environment) *GetEnvironmentResponse {
+	s.Body = v
+	return s
+}
+
+type GetEnvironmentDeploymentResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EnvironmentDeployment `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetEnvironmentDeploymentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEnvironmentDeploymentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetEnvironmentDeploymentResponse) SetHeaders(v map[string]*string) *GetEnvironmentDeploymentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetEnvironmentDeploymentResponse) SetStatusCode(v int32) *GetEnvironmentDeploymentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetEnvironmentDeploymentResponse) SetBody(v *EnvironmentDeployment) *GetEnvironmentDeploymentResponse {
 	s.Body = v
 	return s
 }
@@ -10885,6 +10960,76 @@ func (client *Client) DeleteProject(name *string, request *DeleteProjectRequest)
 
 // Summary:
 //
+// 手动触发环境部署
+//
+// @param request - DeployEnvironmentRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeployEnvironmentResponse
+func (client *Client) DeployEnvironmentWithOptions(projectName *string, name *string, request *DeployEnvironmentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeployEnvironmentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeployEnvironment"),
+		Version:     tea.String("2023-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2023-07-14/projects/" + tea.StringValue(openapiutil.GetEncodeParam(projectName)) + "/environments/" + tea.StringValue(openapiutil.GetEncodeParam(name)) + "/deploy"),
+		Method:      tea.String("PATCH"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeployEnvironmentResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeployEnvironmentResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 手动触发环境部署
+//
+// @param request - DeployEnvironmentRequest
+//
+// @return DeployEnvironmentResponse
+func (client *Client) DeployEnvironment(projectName *string, name *string, request *DeployEnvironmentRequest) (_result *DeployEnvironmentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeployEnvironmentResponse{}
+	_body, _err := client.DeployEnvironmentWithOptions(projectName, name, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取环境信息
 //
 // @param headers - map
@@ -10937,6 +11082,67 @@ func (client *Client) GetEnvironment(projectName *string, name *string) (_result
 	headers := make(map[string]*string)
 	_result = &GetEnvironmentResponse{}
 	_body, _err := client.GetEnvironmentWithOptions(projectName, name, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询环境部署信息
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetEnvironmentDeploymentResponse
+func (client *Client) GetEnvironmentDeploymentWithOptions(name *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetEnvironmentDeploymentResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetEnvironmentDeployment"),
+		Version:     tea.String("2023-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2023-07-14/environmentdeployments/" + tea.StringValue(openapiutil.GetEncodeParam(name))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetEnvironmentDeploymentResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetEnvironmentDeploymentResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询环境部署信息
+//
+// @return GetEnvironmentDeploymentResponse
+func (client *Client) GetEnvironmentDeployment(name *string) (_result *GetEnvironmentDeploymentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetEnvironmentDeploymentResponse{}
+	_body, _err := client.GetEnvironmentDeploymentWithOptions(name, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
