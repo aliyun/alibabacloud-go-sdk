@@ -1678,6 +1678,299 @@ func (s *CreateAppResponse) SetBody(v *CreateAppResponseBody) *CreateAppResponse
 	return s
 }
 
+type CreateCloudPhoneNodeRequest struct {
+	// example:
+	//
+	// true
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// example:
+	//
+	// true
+	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	// example:
+	//
+	// PrePaid
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// example:
+	//
+	// 1
+	Count *string `json:"Count,omitempty" xml:"Count,omitempty"`
+	// example:
+	//
+	// imgc-075cllfeuazh0****
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// example:
+	//
+	// ac.max
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// example:
+	//
+	// cn-hangzhou+dir-5mwr9azebliva****
+	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	// example:
+	//
+	// node_name
+	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// example:
+	//
+	// 1
+	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// example:
+	//
+	// Month
+	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// example:
+	//
+	// 25
+	PhoneCount *int32 `json:"PhoneCount,omitempty" xml:"PhoneCount,omitempty"`
+	// example:
+	//
+	// 1280
+	ResolutionHeight *int32 `json:"ResolutionHeight,omitempty" xml:"ResolutionHeight,omitempty"`
+	// example:
+	//
+	// 720
+	ResolutionWidth *int32 `json:"ResolutionWidth,omitempty" xml:"ResolutionWidth,omitempty"`
+	// example:
+	//
+	// 200
+	ServerShareDataVolume *int32 `json:"ServerShareDataVolume,omitempty" xml:"ServerShareDataVolume,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cpm.gn6.gx1
+	ServerType *string                           `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
+	Tag        []*CreateCloudPhoneNodeRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// example:
+	//
+	// vsw-2zeekryyc1q3sm72l****
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+}
+
+func (s CreateCloudPhoneNodeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCloudPhoneNodeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCloudPhoneNodeRequest) SetAutoPay(v bool) *CreateCloudPhoneNodeRequest {
+	s.AutoPay = &v
+	return s
+}
+
+func (s *CreateCloudPhoneNodeRequest) SetAutoRenew(v bool) *CreateCloudPhoneNodeRequest {
+	s.AutoRenew = &v
+	return s
+}
+
+func (s *CreateCloudPhoneNodeRequest) SetBizRegionId(v string) *CreateCloudPhoneNodeRequest {
+	s.BizRegionId = &v
+	return s
+}
+
+func (s *CreateCloudPhoneNodeRequest) SetChargeType(v string) *CreateCloudPhoneNodeRequest {
+	s.ChargeType = &v
+	return s
+}
+
+func (s *CreateCloudPhoneNodeRequest) SetCount(v string) *CreateCloudPhoneNodeRequest {
+	s.Count = &v
+	return s
+}
+
+func (s *CreateCloudPhoneNodeRequest) SetImageId(v string) *CreateCloudPhoneNodeRequest {
+	s.ImageId = &v
+	return s
+}
+
+func (s *CreateCloudPhoneNodeRequest) SetInstanceType(v string) *CreateCloudPhoneNodeRequest {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *CreateCloudPhoneNodeRequest) SetNetworkId(v string) *CreateCloudPhoneNodeRequest {
+	s.NetworkId = &v
+	return s
+}
+
+func (s *CreateCloudPhoneNodeRequest) SetNodeName(v string) *CreateCloudPhoneNodeRequest {
+	s.NodeName = &v
+	return s
+}
+
+func (s *CreateCloudPhoneNodeRequest) SetPeriod(v int32) *CreateCloudPhoneNodeRequest {
+	s.Period = &v
+	return s
+}
+
+func (s *CreateCloudPhoneNodeRequest) SetPeriodUnit(v string) *CreateCloudPhoneNodeRequest {
+	s.PeriodUnit = &v
+	return s
+}
+
+func (s *CreateCloudPhoneNodeRequest) SetPhoneCount(v int32) *CreateCloudPhoneNodeRequest {
+	s.PhoneCount = &v
+	return s
+}
+
+func (s *CreateCloudPhoneNodeRequest) SetResolutionHeight(v int32) *CreateCloudPhoneNodeRequest {
+	s.ResolutionHeight = &v
+	return s
+}
+
+func (s *CreateCloudPhoneNodeRequest) SetResolutionWidth(v int32) *CreateCloudPhoneNodeRequest {
+	s.ResolutionWidth = &v
+	return s
+}
+
+func (s *CreateCloudPhoneNodeRequest) SetServerShareDataVolume(v int32) *CreateCloudPhoneNodeRequest {
+	s.ServerShareDataVolume = &v
+	return s
+}
+
+func (s *CreateCloudPhoneNodeRequest) SetServerType(v string) *CreateCloudPhoneNodeRequest {
+	s.ServerType = &v
+	return s
+}
+
+func (s *CreateCloudPhoneNodeRequest) SetTag(v []*CreateCloudPhoneNodeRequestTag) *CreateCloudPhoneNodeRequest {
+	s.Tag = v
+	return s
+}
+
+func (s *CreateCloudPhoneNodeRequest) SetVSwitchId(v string) *CreateCloudPhoneNodeRequest {
+	s.VSwitchId = &v
+	return s
+}
+
+type CreateCloudPhoneNodeRequestTag struct {
+	// example:
+	//
+	// keyname
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// valuename
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateCloudPhoneNodeRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCloudPhoneNodeRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCloudPhoneNodeRequestTag) SetKey(v string) *CreateCloudPhoneNodeRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateCloudPhoneNodeRequestTag) SetValue(v string) *CreateCloudPhoneNodeRequestTag {
+	s.Value = &v
+	return s
+}
+
+type CreateCloudPhoneNodeResponseBody struct {
+	NodeInfos []*CreateCloudPhoneNodeResponseBodyNodeInfos `json:"NodeInfos,omitempty" xml:"NodeInfos,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 223684716098****
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 69BCBBE4-FCF2-59B8-AD9D-531EB422****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateCloudPhoneNodeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCloudPhoneNodeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCloudPhoneNodeResponseBody) SetNodeInfos(v []*CreateCloudPhoneNodeResponseBodyNodeInfos) *CreateCloudPhoneNodeResponseBody {
+	s.NodeInfos = v
+	return s
+}
+
+func (s *CreateCloudPhoneNodeResponseBody) SetOrderId(v string) *CreateCloudPhoneNodeResponseBody {
+	s.OrderId = &v
+	return s
+}
+
+func (s *CreateCloudPhoneNodeResponseBody) SetRequestId(v string) *CreateCloudPhoneNodeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateCloudPhoneNodeResponseBodyNodeInfos struct {
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// cpn-e5kxgjyt8s1mb****
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+}
+
+func (s CreateCloudPhoneNodeResponseBodyNodeInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCloudPhoneNodeResponseBodyNodeInfos) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCloudPhoneNodeResponseBodyNodeInfos) SetInstanceIds(v []*string) *CreateCloudPhoneNodeResponseBodyNodeInfos {
+	s.InstanceIds = v
+	return s
+}
+
+func (s *CreateCloudPhoneNodeResponseBodyNodeInfos) SetNodeId(v string) *CreateCloudPhoneNodeResponseBodyNodeInfos {
+	s.NodeId = &v
+	return s
+}
+
+type CreateCloudPhoneNodeResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateCloudPhoneNodeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateCloudPhoneNodeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCloudPhoneNodeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCloudPhoneNodeResponse) SetHeaders(v map[string]*string) *CreateCloudPhoneNodeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateCloudPhoneNodeResponse) SetStatusCode(v int32) *CreateCloudPhoneNodeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateCloudPhoneNodeResponse) SetBody(v *CreateCloudPhoneNodeResponseBody) *CreateCloudPhoneNodeResponse {
+	s.Body = v
+	return s
+}
+
 type CreateCustomImageRequest struct {
 	// Idempotent parameter. Default is empty, with a maximum length of 100 characters.
 	//
@@ -2703,6 +2996,72 @@ func (s *DeleteAppsResponse) SetStatusCode(v int32) *DeleteAppsResponse {
 }
 
 func (s *DeleteAppsResponse) SetBody(v *DeleteAppsResponseBody) *DeleteAppsResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteCloudPhoneNodesRequest struct {
+	NodeIds []*string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty" type:"Repeated"`
+}
+
+func (s DeleteCloudPhoneNodesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCloudPhoneNodesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCloudPhoneNodesRequest) SetNodeIds(v []*string) *DeleteCloudPhoneNodesRequest {
+	s.NodeIds = v
+	return s
+}
+
+type DeleteCloudPhoneNodesResponseBody struct {
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteCloudPhoneNodesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCloudPhoneNodesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCloudPhoneNodesResponseBody) SetRequestId(v string) *DeleteCloudPhoneNodesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteCloudPhoneNodesResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteCloudPhoneNodesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteCloudPhoneNodesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCloudPhoneNodesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCloudPhoneNodesResponse) SetHeaders(v map[string]*string) *DeleteCloudPhoneNodesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteCloudPhoneNodesResponse) SetStatusCode(v int32) *DeleteCloudPhoneNodesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteCloudPhoneNodesResponse) SetBody(v *DeleteCloudPhoneNodesResponseBody) *DeleteCloudPhoneNodesResponse {
 	s.Body = v
 	return s
 }
@@ -5134,6 +5493,329 @@ func (s *DescribeBackupFilesResponse) SetStatusCode(v int32) *DescribeBackupFile
 }
 
 func (s *DescribeBackupFilesResponse) SetBody(v *DescribeBackupFilesResponseBody) *DescribeBackupFilesResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeCloudPhoneNodesRequest struct {
+	// example:
+	//
+	// cn-hangzhou
+	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	// example:
+	//
+	// PrePaid
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// example:
+	//
+	// 20
+	MaxResults *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// AAAAAV3MpHK1AP0pfERHZN5pu6l5V9uONHqPtDLM2U8s****
+	NextToken *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	NodeIds   []*string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// node_name
+	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// example:
+	//
+	// cpm.gn6.gx1
+	ServerType *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
+	// example:
+	//
+	// CREATING
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeCloudPhoneNodesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudPhoneNodesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudPhoneNodesRequest) SetBizRegionId(v string) *DescribeCloudPhoneNodesRequest {
+	s.BizRegionId = &v
+	return s
+}
+
+func (s *DescribeCloudPhoneNodesRequest) SetChargeType(v string) *DescribeCloudPhoneNodesRequest {
+	s.ChargeType = &v
+	return s
+}
+
+func (s *DescribeCloudPhoneNodesRequest) SetMaxResults(v string) *DescribeCloudPhoneNodesRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeCloudPhoneNodesRequest) SetNextToken(v string) *DescribeCloudPhoneNodesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeCloudPhoneNodesRequest) SetNodeIds(v []*string) *DescribeCloudPhoneNodesRequest {
+	s.NodeIds = v
+	return s
+}
+
+func (s *DescribeCloudPhoneNodesRequest) SetNodeName(v string) *DescribeCloudPhoneNodesRequest {
+	s.NodeName = &v
+	return s
+}
+
+func (s *DescribeCloudPhoneNodesRequest) SetServerType(v string) *DescribeCloudPhoneNodesRequest {
+	s.ServerType = &v
+	return s
+}
+
+func (s *DescribeCloudPhoneNodesRequest) SetStatus(v string) *DescribeCloudPhoneNodesRequest {
+	s.Status = &v
+	return s
+}
+
+type DescribeCloudPhoneNodesResponseBody struct {
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// AAAAAV3MpHK1AP0pfERHZN5pu6kU+SQXzm0H9mu/FiSc****
+	NextToken *string                                         `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	NodeModel []*DescribeCloudPhoneNodesResponseBodyNodeModel `json:"NodeModel,omitempty" xml:"NodeModel,omitempty" type:"Repeated"`
+	// example:
+	//
+	// F07A1DA1-E1EB-5CCA-8EED-12F85D32****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 31
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeCloudPhoneNodesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudPhoneNodesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudPhoneNodesResponseBody) SetMaxResults(v int32) *DescribeCloudPhoneNodesResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeCloudPhoneNodesResponseBody) SetNextToken(v string) *DescribeCloudPhoneNodesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeCloudPhoneNodesResponseBody) SetNodeModel(v []*DescribeCloudPhoneNodesResponseBodyNodeModel) *DescribeCloudPhoneNodesResponseBody {
+	s.NodeModel = v
+	return s
+}
+
+func (s *DescribeCloudPhoneNodesResponseBody) SetRequestId(v string) *DescribeCloudPhoneNodesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeCloudPhoneNodesResponseBody) SetTotalCount(v int32) *DescribeCloudPhoneNodesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeCloudPhoneNodesResponseBodyNodeModel struct {
+	// example:
+	//
+	// PrePaid
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// example:
+	//
+	// 2
+	Cpu *string `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// example:
+	//
+	// 2024-11-13 02:03:14
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 2025-03-09 02:00:34
+	GmtExpired *string `json:"GmtExpired,omitempty" xml:"GmtExpired,omitempty"`
+	// example:
+	//
+	// 2025-02-13 02:03:14
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// example:
+	//
+	// 32
+	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// example:
+	//
+	// cn-hangzhou+dir-5mwr9azebliva****
+	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	// example:
+	//
+	// cpn-ehs0yoedq8ntm****
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// example:
+	//
+	// node_name
+	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// example:
+	//
+	// 25
+	PhoneCount *int32 `json:"PhoneCount,omitempty" xml:"PhoneCount,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 1280
+	ResolutionHeight *int32 `json:"ResolutionHeight,omitempty" xml:"ResolutionHeight,omitempty"`
+	// example:
+	//
+	// 720
+	ResolutionWidth *int32 `json:"ResolutionWidth,omitempty" xml:"ResolutionWidth,omitempty"`
+	// example:
+	//
+	// cpm.gn6.gx1
+	ServerType *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
+	// example:
+	//
+	// 100
+	ShareDataVolume *int32 `json:"ShareDataVolume,omitempty" xml:"ShareDataVolume,omitempty"`
+	// example:
+	//
+	// RUNNING
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// vsw-2zeekryyc1q3sm72l****
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+}
+
+func (s DescribeCloudPhoneNodesResponseBodyNodeModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudPhoneNodesResponseBodyNodeModel) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) SetChargeType(v string) *DescribeCloudPhoneNodesResponseBodyNodeModel {
+	s.ChargeType = &v
+	return s
+}
+
+func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) SetCpu(v string) *DescribeCloudPhoneNodesResponseBodyNodeModel {
+	s.Cpu = &v
+	return s
+}
+
+func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) SetGmtCreate(v string) *DescribeCloudPhoneNodesResponseBodyNodeModel {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) SetGmtExpired(v string) *DescribeCloudPhoneNodesResponseBodyNodeModel {
+	s.GmtExpired = &v
+	return s
+}
+
+func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) SetGmtModified(v string) *DescribeCloudPhoneNodesResponseBodyNodeModel {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) SetMemory(v int32) *DescribeCloudPhoneNodesResponseBodyNodeModel {
+	s.Memory = &v
+	return s
+}
+
+func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) SetNetworkId(v string) *DescribeCloudPhoneNodesResponseBodyNodeModel {
+	s.NetworkId = &v
+	return s
+}
+
+func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) SetNodeId(v string) *DescribeCloudPhoneNodesResponseBodyNodeModel {
+	s.NodeId = &v
+	return s
+}
+
+func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) SetNodeName(v string) *DescribeCloudPhoneNodesResponseBodyNodeModel {
+	s.NodeName = &v
+	return s
+}
+
+func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) SetPhoneCount(v int32) *DescribeCloudPhoneNodesResponseBodyNodeModel {
+	s.PhoneCount = &v
+	return s
+}
+
+func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) SetRegionId(v string) *DescribeCloudPhoneNodesResponseBodyNodeModel {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) SetResolutionHeight(v int32) *DescribeCloudPhoneNodesResponseBodyNodeModel {
+	s.ResolutionHeight = &v
+	return s
+}
+
+func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) SetResolutionWidth(v int32) *DescribeCloudPhoneNodesResponseBodyNodeModel {
+	s.ResolutionWidth = &v
+	return s
+}
+
+func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) SetServerType(v string) *DescribeCloudPhoneNodesResponseBodyNodeModel {
+	s.ServerType = &v
+	return s
+}
+
+func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) SetShareDataVolume(v int32) *DescribeCloudPhoneNodesResponseBodyNodeModel {
+	s.ShareDataVolume = &v
+	return s
+}
+
+func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) SetStatus(v string) *DescribeCloudPhoneNodesResponseBodyNodeModel {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) SetVSwitchId(v string) *DescribeCloudPhoneNodesResponseBodyNodeModel {
+	s.VSwitchId = &v
+	return s
+}
+
+type DescribeCloudPhoneNodesResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCloudPhoneNodesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeCloudPhoneNodesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudPhoneNodesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudPhoneNodesResponse) SetHeaders(v map[string]*string) *DescribeCloudPhoneNodesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeCloudPhoneNodesResponse) SetStatusCode(v int32) *DescribeCloudPhoneNodesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeCloudPhoneNodesResponse) SetBody(v *DescribeCloudPhoneNodesResponseBody) *DescribeCloudPhoneNodesResponse {
 	s.Body = v
 	return s
 }
@@ -8525,6 +9207,84 @@ func (s *ModifyAppResponse) SetBody(v *ModifyAppResponseBody) *ModifyAppResponse
 	return s
 }
 
+type ModifyCloudPhoneNodeRequest struct {
+	// example:
+	//
+	// node_name_new
+	NewNodeName *string `json:"NewNodeName,omitempty" xml:"NewNodeName,omitempty"`
+	// example:
+	//
+	// cpn-0ugbptfu473fy****
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+}
+
+func (s ModifyCloudPhoneNodeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCloudPhoneNodeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCloudPhoneNodeRequest) SetNewNodeName(v string) *ModifyCloudPhoneNodeRequest {
+	s.NewNodeName = &v
+	return s
+}
+
+func (s *ModifyCloudPhoneNodeRequest) SetNodeId(v string) *ModifyCloudPhoneNodeRequest {
+	s.NodeId = &v
+	return s
+}
+
+type ModifyCloudPhoneNodeResponseBody struct {
+	// example:
+	//
+	// 7B9EFA4F-4305-5968-BAEE-BD8B8DE5****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyCloudPhoneNodeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCloudPhoneNodeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCloudPhoneNodeResponseBody) SetRequestId(v string) *ModifyCloudPhoneNodeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyCloudPhoneNodeResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyCloudPhoneNodeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyCloudPhoneNodeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCloudPhoneNodeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCloudPhoneNodeResponse) SetHeaders(v map[string]*string) *ModifyCloudPhoneNodeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyCloudPhoneNodeResponse) SetStatusCode(v int32) *ModifyCloudPhoneNodeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyCloudPhoneNodeResponse) SetBody(v *ModifyCloudPhoneNodeResponseBody) *ModifyCloudPhoneNodeResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyInstanceChargeTypeRequest struct {
 	// Specifies whether to enable the auto-payment feature. Default value: false.
 	//
@@ -9747,6 +10507,108 @@ func (s *RenewAndroidInstanceGroupsResponse) SetBody(v *RenewAndroidInstanceGrou
 	return s
 }
 
+type RenewCloudPhoneNodesRequest struct {
+	// example:
+	//
+	// true
+	AutoRenew *bool     `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	NodeIds   []*string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// example:
+	//
+	// Month
+	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+}
+
+func (s RenewCloudPhoneNodesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenewCloudPhoneNodesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RenewCloudPhoneNodesRequest) SetAutoRenew(v bool) *RenewCloudPhoneNodesRequest {
+	s.AutoRenew = &v
+	return s
+}
+
+func (s *RenewCloudPhoneNodesRequest) SetNodeIds(v []*string) *RenewCloudPhoneNodesRequest {
+	s.NodeIds = v
+	return s
+}
+
+func (s *RenewCloudPhoneNodesRequest) SetPeriod(v int32) *RenewCloudPhoneNodesRequest {
+	s.Period = &v
+	return s
+}
+
+func (s *RenewCloudPhoneNodesRequest) SetPeriodUnit(v string) *RenewCloudPhoneNodesRequest {
+	s.PeriodUnit = &v
+	return s
+}
+
+type RenewCloudPhoneNodesResponseBody struct {
+	// example:
+	//
+	// 22365781890****
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RenewCloudPhoneNodesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenewCloudPhoneNodesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RenewCloudPhoneNodesResponseBody) SetOrderId(v string) *RenewCloudPhoneNodesResponseBody {
+	s.OrderId = &v
+	return s
+}
+
+func (s *RenewCloudPhoneNodesResponseBody) SetRequestId(v string) *RenewCloudPhoneNodesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RenewCloudPhoneNodesResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RenewCloudPhoneNodesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RenewCloudPhoneNodesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenewCloudPhoneNodesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RenewCloudPhoneNodesResponse) SetHeaders(v map[string]*string) *RenewCloudPhoneNodesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RenewCloudPhoneNodesResponse) SetStatusCode(v int32) *RenewCloudPhoneNodesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RenewCloudPhoneNodesResponse) SetBody(v *RenewCloudPhoneNodesResponseBody) *RenewCloudPhoneNodesResponse {
+	s.Body = v
+	return s
+}
+
 type ResetAndroidInstancesInGroupRequest struct {
 	// The IDs of the cloud phone instances.
 	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitempty" xml:"AndroidInstanceIds,omitempty" type:"Repeated"`
@@ -10834,9 +11696,9 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // Description:
 //
-//   You can attach to an ADB key pair only to cloud phone instances in the Running state.
+//	  You can attach to an ADB key pair only to cloud phone instances in the Running state.
 //
-// 	- After you attach an ADB key pair, make sure the private key of the ADB key pair is copied to the ~/.android directory (macOS or Linux operating systems) or the C:\\Users\\Username.android directory (Windows operating systems). In addition, you must run the adb kill-server command to restart the ADB process to ensure correct ADB connection. Otherwise, ADB connection may fail due to authentication exceptions.
+//		- After you attach an ADB key pair, make sure the private key of the ADB key pair is copied to the ~/.android directory (macOS or Linux operating systems) or the C:\\Users\\Username.android directory (Windows operating systems). In addition, you must run the adb kill-server command to restart the ADB process to ensure correct ADB connection. Otherwise, ADB connection may fail due to authentication exceptions.
 //
 // @param request - AttachKeyPairRequest
 //
@@ -10897,9 +11759,9 @@ func (client *Client) AttachKeyPairWithOptions(request *AttachKeyPairRequest, ru
 //
 // Description:
 //
-//   You can attach to an ADB key pair only to cloud phone instances in the Running state.
+//	  You can attach to an ADB key pair only to cloud phone instances in the Running state.
 //
-// 	- After you attach an ADB key pair, make sure the private key of the ADB key pair is copied to the ~/.android directory (macOS or Linux operating systems) or the C:\\Users\\Username.android directory (Windows operating systems). In addition, you must run the adb kill-server command to restart the ADB process to ensure correct ADB connection. Otherwise, ADB connection may fail due to authentication exceptions.
+//		- After you attach an ADB key pair, make sure the private key of the ADB key pair is copied to the ~/.android directory (macOS or Linux operating systems) or the C:\\Users\\Username.android directory (Windows operating systems). In addition, you must run the adb kill-server command to restart the ADB process to ensure correct ADB connection. Otherwise, ADB connection may fail due to authentication exceptions.
 //
 // @param request - AttachKeyPairRequest
 //
@@ -11295,9 +12157,9 @@ func (client *Client) CheckResourceStock(request *CheckResourceStockRequest) (_r
 //
 // Before creating an instance group, ensure you understand the [billing methods](https://help.aliyun.com/document_detail/2807121.html) supported by Cloud Phone.
 //
-// 	- If the billing method of an instance group is PrePaid, AutoPay is set to false by default. In this case, you need to go to [Expenses and Costs](https://usercenter2-intl.aliyun.com/order/list) to manually complete the payment.
+//   - If the billing method of an instance group is PrePaid, AutoPay is set to false by default. In this case, you need to go to [Expenses and Costs](https://usercenter2-intl.aliyun.com/order/list) to manually complete the payment.
 //
-// 	- You can also set AutoPay to true based on your business requirements.
+//   - You can also set AutoPay to true based on your business requirements.
 //
 // @param request - CreateAndroidInstanceGroupRequest
 //
@@ -11432,9 +12294,9 @@ func (client *Client) CreateAndroidInstanceGroupWithOptions(request *CreateAndro
 //
 // Before creating an instance group, ensure you understand the [billing methods](https://help.aliyun.com/document_detail/2807121.html) supported by Cloud Phone.
 //
-// 	- If the billing method of an instance group is PrePaid, AutoPay is set to false by default. In this case, you need to go to [Expenses and Costs](https://usercenter2-intl.aliyun.com/order/list) to manually complete the payment.
+//   - If the billing method of an instance group is PrePaid, AutoPay is set to false by default. In this case, you need to go to [Expenses and Costs](https://usercenter2-intl.aliyun.com/order/list) to manually complete the payment.
 //
-// 	- You can also set AutoPay to true based on your business requirements.
+//   - You can also set AutoPay to true based on your business requirements.
 //
 // @param request - CreateAndroidInstanceGroupRequest
 //
@@ -11573,7 +12435,146 @@ func (client *Client) CreateApp(request *CreateAppRequest) (_result *CreateAppRe
 
 // Summary:
 //
-// Create Custom Image
+// 创建云机节点
+//
+// @param request - CreateCloudPhoneNodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCloudPhoneNodeResponse
+func (client *Client) CreateCloudPhoneNodeWithOptions(request *CreateCloudPhoneNodeRequest, runtime *util.RuntimeOptions) (_result *CreateCloudPhoneNodeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoPay)) {
+		query["AutoPay"] = request.AutoPay
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoRenew)) {
+		query["AutoRenew"] = request.AutoRenew
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BizRegionId)) {
+		query["BizRegionId"] = request.BizRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChargeType)) {
+		query["ChargeType"] = request.ChargeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Count)) {
+		query["Count"] = request.Count
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
+		query["ImageId"] = request.ImageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		query["InstanceType"] = request.InstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkId)) {
+		query["NetworkId"] = request.NetworkId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeName)) {
+		query["NodeName"] = request.NodeName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Period)) {
+		query["Period"] = request.Period
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeriodUnit)) {
+		query["PeriodUnit"] = request.PeriodUnit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneCount)) {
+		query["PhoneCount"] = request.PhoneCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResolutionHeight)) {
+		query["ResolutionHeight"] = request.ResolutionHeight
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResolutionWidth)) {
+		query["ResolutionWidth"] = request.ResolutionWidth
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServerShareDataVolume)) {
+		query["ServerShareDataVolume"] = request.ServerShareDataVolume
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServerType)) {
+		query["ServerType"] = request.ServerType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateCloudPhoneNode"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateCloudPhoneNodeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateCloudPhoneNodeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 创建云机节点
+//
+// @param request - CreateCloudPhoneNodeRequest
+//
+// @return CreateCloudPhoneNodeResponse
+func (client *Client) CreateCloudPhoneNode(request *CreateCloudPhoneNodeRequest) (_result *CreateCloudPhoneNodeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateCloudPhoneNodeResponse{}
+	_body, _err := client.CreateCloudPhoneNodeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # Create Custom Image
 //
 // @param request - CreateCustomImageRequest
 //
@@ -11638,7 +12639,7 @@ func (client *Client) CreateCustomImageWithOptions(request *CreateCustomImageReq
 
 // Summary:
 //
-// Create Custom Image
+// # Create Custom Image
 //
 // @param request - CreateCustomImageRequest
 //
@@ -12089,6 +13090,77 @@ func (client *Client) DeleteApps(request *DeleteAppsRequest) (_result *DeleteApp
 
 // Summary:
 //
+// 释放服务器
+//
+// @param request - DeleteCloudPhoneNodesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCloudPhoneNodesResponse
+func (client *Client) DeleteCloudPhoneNodesWithOptions(request *DeleteCloudPhoneNodesRequest, runtime *util.RuntimeOptions) (_result *DeleteCloudPhoneNodesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NodeIds)) {
+		body["NodeIds"] = request.NodeIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteCloudPhoneNodes"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteCloudPhoneNodesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteCloudPhoneNodesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 释放服务器
+//
+// @param request - DeleteCloudPhoneNodesRequest
+//
+// @return DeleteCloudPhoneNodesResponse
+func (client *Client) DeleteCloudPhoneNodes(request *DeleteCloudPhoneNodesRequest) (_result *DeleteCloudPhoneNodesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteCloudPhoneNodesResponse{}
+	_body, _err := client.DeleteCloudPhoneNodesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a custom image.
 //
 // Description:
@@ -12178,9 +13250,9 @@ func (client *Client) DeleteImages(request *DeleteImagesRequest) (_result *Delet
 //
 // Description:
 //
-//   If a cloud phone instance is currently associated with the ADB key pair you intend to delete, the ADB key pair cannot be deleted.
+//	  If a cloud phone instance is currently associated with the ADB key pair you intend to delete, the ADB key pair cannot be deleted.
 //
-// 	- Once an ADB key pair is deleted, it cannot be retrieved or queried by using the DescribeKeyPairs operation.
+//		- Once an ADB key pair is deleted, it cannot be retrieved or queried by using the DescribeKeyPairs operation.
 //
 // @param request - DeleteKeyPairsRequest
 //
@@ -12237,9 +13309,9 @@ func (client *Client) DeleteKeyPairsWithOptions(request *DeleteKeyPairsRequest, 
 //
 // Description:
 //
-//   If a cloud phone instance is currently associated with the ADB key pair you intend to delete, the ADB key pair cannot be deleted.
+//	  If a cloud phone instance is currently associated with the ADB key pair you intend to delete, the ADB key pair cannot be deleted.
 //
-// 	- Once an ADB key pair is deleted, it cannot be retrieved or queried by using the DescribeKeyPairs operation.
+//		- Once an ADB key pair is deleted, it cannot be retrieved or queried by using the DescribeKeyPairs operation.
 //
 // @param request - DeleteKeyPairsRequest
 //
@@ -12788,6 +13860,105 @@ func (client *Client) DescribeBackupFiles(request *DescribeBackupFilesRequest) (
 
 // Summary:
 //
+// 查询云手机节点
+//
+// @param request - DescribeCloudPhoneNodesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCloudPhoneNodesResponse
+func (client *Client) DescribeCloudPhoneNodesWithOptions(request *DescribeCloudPhoneNodesRequest, runtime *util.RuntimeOptions) (_result *DescribeCloudPhoneNodesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizRegionId)) {
+		query["BizRegionId"] = request.BizRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChargeType)) {
+		query["ChargeType"] = request.ChargeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeIds)) {
+		query["NodeIds"] = request.NodeIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeName)) {
+		query["NodeName"] = request.NodeName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServerType)) {
+		query["ServerType"] = request.ServerType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCloudPhoneNodes"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeCloudPhoneNodesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeCloudPhoneNodesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询云手机节点
+//
+// @param request - DescribeCloudPhoneNodesRequest
+//
+// @return DescribeCloudPhoneNodesResponse
+func (client *Client) DescribeCloudPhoneNodes(request *DescribeCloudPhoneNodesRequest) (_result *DescribeCloudPhoneNodesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeCloudPhoneNodesResponse{}
+	_body, _err := client.DescribeCloudPhoneNodesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries images.
 //
 // @param request - DescribeImageListRequest
@@ -13221,11 +14392,11 @@ func (client *Client) DescribeSpec(request *DescribeSpecRequest) (_result *Descr
 //
 // Description:
 //
-//   You can call the DescribeTasks operation to query the tasks created for one or more cloud phone instances.
+//	  You can call the DescribeTasks operation to query the tasks created for one or more cloud phone instances.
 //
-// 	- The system currently supports various tasks, including starting, stopping, restarting, and resetting cloud phone instances; backing up and restoring data; installing apps; and executing remote commands.
+//		- The system currently supports various tasks, including starting, stopping, restarting, and resetting cloud phone instances; backing up and restoring data; installing apps; and executing remote commands.
 //
-// 	- You can use the Level field to specify the type of task. If Level is set to 1, it represents a batch task. If Level is set to 2, it represents an instance-level task.
+//		- You can use the Level field to specify the type of task. If Level is set to 1, it represents a batch task. If Level is set to 2, it represents an instance-level task.
 //
 // **Example**
 //
@@ -13338,11 +14509,11 @@ func (client *Client) DescribeTasksWithOptions(request *DescribeTasksRequest, ru
 //
 // Description:
 //
-//   You can call the DescribeTasks operation to query the tasks created for one or more cloud phone instances.
+//	  You can call the DescribeTasks operation to query the tasks created for one or more cloud phone instances.
 //
-// 	- The system currently supports various tasks, including starting, stopping, restarting, and resetting cloud phone instances; backing up and restoring data; installing apps; and executing remote commands.
+//		- The system currently supports various tasks, including starting, stopping, restarting, and resetting cloud phone instances; backing up and restoring data; installing apps; and executing remote commands.
 //
-// 	- You can use the Level field to specify the type of task. If Level is set to 1, it represents a batch task. If Level is set to 2, it represents an instance-level task.
+//		- You can use the Level field to specify the type of task. If Level is set to 1, it represents a batch task. If Level is set to 2, it represents an instance-level task.
 //
 // **Example**
 //
@@ -13368,7 +14539,7 @@ func (client *Client) DescribeTasks(request *DescribeTasksRequest) (_result *Des
 //
 // Description:
 //
-//   After you detach an ADB key pair from a cloud phone instance, the ADB connection will fail. This occurs because the system can no longer authenticate using a valid ADB public key, leading to authentication errors.
+//	After you detach an ADB key pair from a cloud phone instance, the ADB connection will fail. This occurs because the system can no longer authenticate using a valid ADB public key, leading to authentication errors.
 //
 // @param request - DetachKeyPairRequest
 //
@@ -13429,7 +14600,7 @@ func (client *Client) DetachKeyPairWithOptions(request *DetachKeyPairRequest, ru
 //
 // Description:
 //
-//   After you detach an ADB key pair from a cloud phone instance, the ADB connection will fail. This occurs because the system can no longer authenticate using a valid ADB public key, leading to authentication errors.
+//	After you detach an ADB key pair from a cloud phone instance, the ADB connection will fail. This occurs because the system can no longer authenticate using a valid ADB public key, leading to authentication errors.
 //
 // @param request - DetachKeyPairRequest
 //
@@ -14427,6 +15598,73 @@ func (client *Client) ModifyApp(request *ModifyAppRequest) (_result *ModifyAppRe
 
 // Summary:
 //
+// 修改云机节点信息
+//
+// @param request - ModifyCloudPhoneNodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyCloudPhoneNodeResponse
+func (client *Client) ModifyCloudPhoneNodeWithOptions(request *ModifyCloudPhoneNodeRequest, runtime *util.RuntimeOptions) (_result *ModifyCloudPhoneNodeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyCloudPhoneNode"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyCloudPhoneNodeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyCloudPhoneNodeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 修改云机节点信息
+//
+// @param request - ModifyCloudPhoneNodeRequest
+//
+// @return ModifyCloudPhoneNodeResponse
+func (client *Client) ModifyCloudPhoneNode(request *ModifyCloudPhoneNodeRequest) (_result *ModifyCloudPhoneNodeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyCloudPhoneNodeResponse{}
+	_body, _err := client.ModifyCloudPhoneNodeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies the billing method. Currently, this operation only allows you to change the billing method from pay-as-you-go to subscription.
 //
 // @param request - ModifyInstanceChargeTypeRequest
@@ -15041,6 +16279,89 @@ func (client *Client) RenewAndroidInstanceGroups(request *RenewAndroidInstanceGr
 	runtime := &util.RuntimeOptions{}
 	_result = &RenewAndroidInstanceGroupsResponse{}
 	_body, _err := client.RenewAndroidInstanceGroupsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 续费服务器
+//
+// @param request - RenewCloudPhoneNodesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RenewCloudPhoneNodesResponse
+func (client *Client) RenewCloudPhoneNodesWithOptions(request *RenewCloudPhoneNodesRequest, runtime *util.RuntimeOptions) (_result *RenewCloudPhoneNodesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoRenew)) {
+		body["AutoRenew"] = request.AutoRenew
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeIds)) {
+		body["NodeIds"] = request.NodeIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Period)) {
+		body["Period"] = request.Period
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeriodUnit)) {
+		body["PeriodUnit"] = request.PeriodUnit
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RenewCloudPhoneNodes"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RenewCloudPhoneNodesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RenewCloudPhoneNodesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 续费服务器
+//
+// @param request - RenewCloudPhoneNodesRequest
+//
+// @return RenewCloudPhoneNodesResponse
+func (client *Client) RenewCloudPhoneNodes(request *RenewCloudPhoneNodesRequest) (_result *RenewCloudPhoneNodesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RenewCloudPhoneNodesResponse{}
+	_body, _err := client.RenewCloudPhoneNodesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
