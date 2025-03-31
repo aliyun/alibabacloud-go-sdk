@@ -1106,6 +1106,7 @@ type CreateGroupIdRequest struct {
 	//
 	// mqtt-cn-0pp1ldu****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Tags       *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s CreateGroupIdRequest) String() string {
@@ -1123,6 +1124,11 @@ func (s *CreateGroupIdRequest) SetGroupId(v string) *CreateGroupIdRequest {
 
 func (s *CreateGroupIdRequest) SetInstanceId(v string) *CreateGroupIdRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateGroupIdRequest) SetTags(v string) *CreateGroupIdRequest {
+	s.Tags = &v
 	return s
 }
 
@@ -1904,12 +1910,16 @@ func (s *DeleteGroupIdResponse) SetBody(v *DeleteGroupIdResponseBody) *DeleteGro
 }
 
 type DisasterDowngradeRequest struct {
+	// The ID of the ApsaraMQ for MQTT instance for which you want to downgrade the VIP access.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// mqtt-cn-xxxx
 	DowngradeInstanceId *string `json:"DowngradeInstanceId,omitempty" xml:"DowngradeInstanceId,omitempty"`
+	// The ID of the ApsaraMQ for MQTT instance.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1937,24 +1947,32 @@ func (s *DisasterDowngradeRequest) SetInstanceId(v string) *DisasterDowngradeReq
 }
 
 type DisasterDowngradeResponseBody struct {
+	// The details about the access denial. This parameter is returned only if Resource Access Management (RAM) permission verification failed.
+	//
 	// example:
 	//
 	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For information about error codes, see Error codes.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// operation success.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 82B9E503-F4A1-4F30-976F-C6999FF9****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values: true and false.
+	//
 	// example:
 	//
 	// True
@@ -4014,6 +4032,7 @@ type ListGroupIdRequest struct {
 	//
 	// mqtt-cn-0pp1ldu****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Tags       *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s ListGroupIdRequest) String() string {
@@ -4026,6 +4045,11 @@ func (s ListGroupIdRequest) GoString() string {
 
 func (s *ListGroupIdRequest) SetInstanceId(v string) *ListGroupIdRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *ListGroupIdRequest) SetTags(v string) *ListGroupIdRequest {
+	s.Tags = &v
 	return s
 }
 
@@ -4086,7 +4110,8 @@ type ListGroupIdResponseBodyData struct {
 	// example:
 	//
 	// post-cn-45910tj****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string                            `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Tags       []*ListGroupIdResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The time when the group was last updated.
 	//
 	// example:
@@ -4123,8 +4148,36 @@ func (s *ListGroupIdResponseBodyData) SetInstanceId(v string) *ListGroupIdRespon
 	return s
 }
 
+func (s *ListGroupIdResponseBodyData) SetTags(v []*ListGroupIdResponseBodyDataTags) *ListGroupIdResponseBodyData {
+	s.Tags = v
+	return s
+}
+
 func (s *ListGroupIdResponseBodyData) SetUpdateTime(v int64) *ListGroupIdResponseBodyData {
 	s.UpdateTime = &v
+	return s
+}
+
+type ListGroupIdResponseBodyDataTags struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s ListGroupIdResponseBodyDataTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGroupIdResponseBodyDataTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListGroupIdResponseBodyDataTags) SetTagKey(v string) *ListGroupIdResponseBodyDataTags {
+	s.TagKey = &v
+	return s
+}
+
+func (s *ListGroupIdResponseBodyDataTags) SetTagValue(v string) *ListGroupIdResponseBodyDataTags {
+	s.TagValue = &v
 	return s
 }
 
@@ -8340,15 +8393,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Activate CA Certificate
+// # Activate CA Certificate
 //
 // Description:
 //
-//   Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+//	  Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
 //
-// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
+//		- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
 //
-// 	- You can call this operation to reactivate only CA certificates that are registered with ApsaraMQ for MQTT brokers. You can call the [ListCaCertificate](https://help.aliyun.com/document_detail/2604958.html) operation to query CA certificates that are registered with an ApsaraMQ for MQTT instance.
+//		- You can call this operation to reactivate only CA certificates that are registered with ApsaraMQ for MQTT brokers. You can call the [ListCaCertificate](https://help.aliyun.com/document_detail/2604958.html) operation to query CA certificates that are registered with an ApsaraMQ for MQTT instance.
 //
 // @param request - ActiveCaCertificateRequest
 //
@@ -8405,15 +8458,15 @@ func (client *Client) ActiveCaCertificateWithOptions(request *ActiveCaCertificat
 
 // Summary:
 //
-// Activate CA Certificate
+// # Activate CA Certificate
 //
 // Description:
 //
-//   Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+//	  Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
 //
-// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
+//		- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
 //
-// 	- You can call this operation to reactivate only CA certificates that are registered with ApsaraMQ for MQTT brokers. You can call the [ListCaCertificate](https://help.aliyun.com/document_detail/2604958.html) operation to query CA certificates that are registered with an ApsaraMQ for MQTT instance.
+//		- You can call this operation to reactivate only CA certificates that are registered with ApsaraMQ for MQTT brokers. You can call the [ListCaCertificate](https://help.aliyun.com/document_detail/2604958.html) operation to query CA certificates that are registered with an ApsaraMQ for MQTT instance.
 //
 // @param request - ActiveCaCertificateRequest
 //
@@ -8435,9 +8488,9 @@ func (client *Client) ActiveCaCertificate(request *ActiveCaCertificateRequest) (
 //
 // Description:
 //
-//   Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+//	  Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
 //
-// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
+//		- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
 //
 // @param request - ActiveDeviceCertificateRequest
 //
@@ -8502,9 +8555,9 @@ func (client *Client) ActiveDeviceCertificateWithOptions(request *ActiveDeviceCe
 //
 // Description:
 //
-//   Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+//	  Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
 //
-// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
+//		- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
 //
 // @param request - ActiveDeviceCertificateRequest
 //
@@ -8783,9 +8836,9 @@ func (client *Client) AddCustomAuthPermission(request *AddCustomAuthPermissionRe
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second per account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
+//	  You can call this operation up to 100 times per second per account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
 //
-// 	- Each successful call to the **ApplyToken*	- operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
+//		- Each successful call to the **ApplyToken*	- operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
 //
 // @param request - ApplyTokenRequest
 //
@@ -8854,9 +8907,9 @@ func (client *Client) ApplyTokenWithOptions(request *ApplyTokenRequest, runtime 
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second per account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
+//	  You can call this operation up to 100 times per second per account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
 //
-// 	- Each successful call to the **ApplyToken*	- operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
+//		- Each successful call to the **ApplyToken*	- operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
 //
 // @param request - ApplyTokenRequest
 //
@@ -8878,11 +8931,11 @@ func (client *Client) ApplyToken(request *ApplyTokenRequest) (_result *ApplyToke
 //
 // Description:
 //
-//   You can call the **BatchQuerySessionByClientIds*	- operation up to 100 times per second. For more information, see [Limits on QPS](https://help.aliyun.com/document_detail/163047.html).
+//	  You can call the **BatchQuerySessionByClientIds*	- operation up to 100 times per second. For more information, see [Limits on QPS](https://help.aliyun.com/document_detail/163047.html).
 //
-// 	- You can call the **BatchQuerySessionByClientIds*	- operation to query the status of up to 10 ApsaraMQ for MQTT clients in a single query.
+//		- You can call the **BatchQuerySessionByClientIds*	- operation to query the status of up to 10 ApsaraMQ for MQTT clients in a single query.
 //
-// 	- Each successful call to the **BatchQuerySessionByClientIds*	- operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
+//		- Each successful call to the **BatchQuerySessionByClientIds*	- operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
 //
 // @param request - BatchQuerySessionByClientIdsRequest
 //
@@ -8943,11 +8996,11 @@ func (client *Client) BatchQuerySessionByClientIdsWithOptions(request *BatchQuer
 //
 // Description:
 //
-//   You can call the **BatchQuerySessionByClientIds*	- operation up to 100 times per second. For more information, see [Limits on QPS](https://help.aliyun.com/document_detail/163047.html).
+//	  You can call the **BatchQuerySessionByClientIds*	- operation up to 100 times per second. For more information, see [Limits on QPS](https://help.aliyun.com/document_detail/163047.html).
 //
-// 	- You can call the **BatchQuerySessionByClientIds*	- operation to query the status of up to 10 ApsaraMQ for MQTT clients in a single query.
+//		- You can call the **BatchQuerySessionByClientIds*	- operation to query the status of up to 10 ApsaraMQ for MQTT clients in a single query.
 //
-// 	- Each successful call to the **BatchQuerySessionByClientIds*	- operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
+//		- Each successful call to the **BatchQuerySessionByClientIds*	- operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
 //
 // @param request - BatchQuerySessionByClientIdsRequest
 //
@@ -9073,6 +9126,10 @@ func (client *Client) CreateGroupIdWithOptions(request *CreateGroupIdRequest, ru
 		query["InstanceId"] = request.InstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -9135,13 +9192,13 @@ func (client *Client) CreateGroupId(request *CreateGroupIdRequest) (_result *Cre
 //
 // Description:
 //
-//   Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+//	  Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
 //
-// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
+//		- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
 //
-// 	- You can call this operation to delete only CA certificates that are registered with ApsaraMQ for MQTT brokers. You can call the [ListCaCertificate](https://help.aliyun.com/document_detail/2604958.html) operation to query CA certificates that are registered with an ApsaraMQ for MQTT instance.
+//		- You can call this operation to delete only CA certificates that are registered with ApsaraMQ for MQTT brokers. You can call the [ListCaCertificate](https://help.aliyun.com/document_detail/2604958.html) operation to query CA certificates that are registered with an ApsaraMQ for MQTT instance.
 //
-// 	- If you delete a specific CA certificate from an ApsaraMQ for MQTT broker, all device certificates that are issued by the CA certificate and are registered with the ApsaraMQ for MQTT broker are automatically deleted.
+//		- If you delete a specific CA certificate from an ApsaraMQ for MQTT broker, all device certificates that are issued by the CA certificate and are registered with the ApsaraMQ for MQTT broker are automatically deleted.
 //
 // @param request - DeleteCaCertificateRequest
 //
@@ -9202,13 +9259,13 @@ func (client *Client) DeleteCaCertificateWithOptions(request *DeleteCaCertificat
 //
 // Description:
 //
-//   Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+//	  Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
 //
-// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
+//		- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
 //
-// 	- You can call this operation to delete only CA certificates that are registered with ApsaraMQ for MQTT brokers. You can call the [ListCaCertificate](https://help.aliyun.com/document_detail/2604958.html) operation to query CA certificates that are registered with an ApsaraMQ for MQTT instance.
+//		- You can call this operation to delete only CA certificates that are registered with ApsaraMQ for MQTT brokers. You can call the [ListCaCertificate](https://help.aliyun.com/document_detail/2604958.html) operation to query CA certificates that are registered with an ApsaraMQ for MQTT instance.
 //
-// 	- If you delete a specific CA certificate from an ApsaraMQ for MQTT broker, all device certificates that are issued by the CA certificate and are registered with the ApsaraMQ for MQTT broker are automatically deleted.
+//		- If you delete a specific CA certificate from an ApsaraMQ for MQTT broker, all device certificates that are issued by the CA certificate and are registered with the ApsaraMQ for MQTT broker are automatically deleted.
 //
 // @param request - DeleteCaCertificateRequest
 //
@@ -9471,9 +9528,9 @@ func (client *Client) DeleteCustomAuthPermission(request *DeleteCustomAuthPermis
 //
 // Description:
 //
-//   Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+//	  Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
 //
-// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
+//		- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
 //
 // @param request - DeleteDeviceCertificateRequest
 //
@@ -9538,9 +9595,9 @@ func (client *Client) DeleteDeviceCertificateWithOptions(request *DeleteDeviceCe
 //
 // Description:
 //
-//   Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+//	  Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
 //
-// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
+//		- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
 //
 // @param request - DeleteDeviceCertificateRequest
 //
@@ -9641,7 +9698,7 @@ func (client *Client) DeleteGroupId(request *DeleteGroupIdRequest) (_result *Del
 
 // Summary:
 //
-// DisasterDowngrade
+// Downgrades the virtual IP address (VIP) access of a specific instance during the disaster recovery of multiple instances. Only Enterprise Platinum Edition instances support this operation. To call the operation, you must submit a ticket.
 //
 // @param request - DisasterDowngradeRequest
 //
@@ -9698,7 +9755,7 @@ func (client *Client) DisasterDowngradeWithOptions(request *DisasterDowngradeReq
 
 // Summary:
 //
-// DisasterDowngrade
+// Downgrades the virtual IP address (VIP) access of a specific instance during the disaster recovery of multiple instances. Only Enterprise Platinum Edition instances support this operation. To call the operation, you must submit a ticket.
 //
 // @param request - DisasterDowngradeRequest
 //
@@ -9716,7 +9773,7 @@ func (client *Client) DisasterDowngrade(request *DisasterDowngradeRequest) (_res
 
 // Summary:
 //
-// DisasterRecovery
+// Recovers the public virtual IP address (VIP) access of a specific instance during the disaster recovery of multiple instances. Only Enterprise Platinum Edition instances support this operation. To call this operation, you must submit a ticket.
 //
 // @param request - DisasterRecoveryRequest
 //
@@ -9773,7 +9830,7 @@ func (client *Client) DisasterRecoveryWithOptions(request *DisasterRecoveryReque
 
 // Summary:
 //
-// DisasterRecovery
+// Recovers the public virtual IP address (VIP) access of a specific instance during the disaster recovery of multiple instances. Only Enterprise Platinum Edition instances support this operation. To call this operation, you must submit a ticket.
 //
 // @param request - DisasterRecoveryRequest
 //
@@ -9795,9 +9852,9 @@ func (client *Client) DisasterRecovery(request *DisasterRecoveryRequest) (_resul
 //
 // Description:
 //
-//   Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+//	  Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
 //
-// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
+//		- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
 //
 // @param request - GetCaCertificateRequest
 //
@@ -9850,9 +9907,9 @@ func (client *Client) GetCaCertificateWithOptions(request *GetCaCertificateReque
 //
 // Description:
 //
-//   Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+//	  Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
 //
-// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
+//		- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
 //
 // @param request - GetCaCertificateRequest
 //
@@ -9874,9 +9931,9 @@ func (client *Client) GetCaCertificate(request *GetCaCertificateRequest) (_resul
 //
 // Description:
 //
-//   Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+//	  Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
 //
-// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
+//		- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
 //
 // @param request - GetDeviceCertificateRequest
 //
@@ -9929,9 +9986,9 @@ func (client *Client) GetDeviceCertificateWithOptions(request *GetDeviceCertific
 //
 // Description:
 //
-//   Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+//	  Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
 //
-// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
+//		- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
 //
 // @param request - GetDeviceCertificateRequest
 //
@@ -9953,9 +10010,9 @@ func (client *Client) GetDeviceCertificate(request *GetDeviceCertificateRequest)
 //
 // Description:
 //
-//   You can call this operation up to 500 times per second per account. If the limit is exceeded, throttling is triggered. We recommend that you take note of this limit when you call this operation. For more information, see [Limits on QPS](https://help.aliyun.com/document_detail/163047.html).
+//	  You can call this operation up to 500 times per second per account. If the limit is exceeded, throttling is triggered. We recommend that you take note of this limit when you call this operation. For more information, see [Limits on QPS](https://help.aliyun.com/document_detail/163047.html).
 //
-// 	- Each successful call to the **GetDeviceCredential*	- operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
+//		- Each successful call to the **GetDeviceCredential*	- operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
 //
 // @param request - GetDeviceCredentialRequest
 //
@@ -10016,9 +10073,9 @@ func (client *Client) GetDeviceCredentialWithOptions(request *GetDeviceCredentia
 //
 // Description:
 //
-//   You can call this operation up to 500 times per second per account. If the limit is exceeded, throttling is triggered. We recommend that you take note of this limit when you call this operation. For more information, see [Limits on QPS](https://help.aliyun.com/document_detail/163047.html).
+//	  You can call this operation up to 500 times per second per account. If the limit is exceeded, throttling is triggered. We recommend that you take note of this limit when you call this operation. For more information, see [Limits on QPS](https://help.aliyun.com/document_detail/163047.html).
 //
-// 	- Each successful call to the **GetDeviceCredential*	- operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
+//		- Each successful call to the **GetDeviceCredential*	- operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
 //
 // @param request - GetDeviceCredentialRequest
 //
@@ -10040,9 +10097,9 @@ func (client *Client) GetDeviceCredential(request *GetDeviceCredentialRequest) (
 //
 // Description:
 //
-//   Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+//	  Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
 //
-// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
+//		- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
 //
 // @param request - GetRegisterCodeRequest
 //
@@ -10095,9 +10152,9 @@ func (client *Client) GetRegisterCodeWithOptions(request *GetRegisterCodeRequest
 //
 // Description:
 //
-//   Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+//	  Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
 //
-// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
+//		- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
 //
 // @param request - GetRegisterCodeRequest
 //
@@ -10119,11 +10176,11 @@ func (client *Client) GetRegisterCode(request *GetRegisterCodeRequest) (_result 
 //
 // Description:
 //
-//   Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+//	  Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
 //
-// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
+//		- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
 //
-// 	- You can call this operation to deregister only CA certificates that are registered with ApsaraMQ for MQTT brokers. You can call the [ListCaCertificate](https://help.aliyun.com/document_detail/2604958.html) operation to query CA certificates that are registered with an ApsaraMQ for MQTT instance.
+//		- You can call this operation to deregister only CA certificates that are registered with ApsaraMQ for MQTT brokers. You can call the [ListCaCertificate](https://help.aliyun.com/document_detail/2604958.html) operation to query CA certificates that are registered with an ApsaraMQ for MQTT instance.
 //
 // @param request - InactivateCaCertificateRequest
 //
@@ -10184,11 +10241,11 @@ func (client *Client) InactivateCaCertificateWithOptions(request *InactivateCaCe
 //
 // Description:
 //
-//   Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+//	  Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
 //
-// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
+//		- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
 //
-// 	- You can call this operation to deregister only CA certificates that are registered with ApsaraMQ for MQTT brokers. You can call the [ListCaCertificate](https://help.aliyun.com/document_detail/2604958.html) operation to query CA certificates that are registered with an ApsaraMQ for MQTT instance.
+//		- You can call this operation to deregister only CA certificates that are registered with ApsaraMQ for MQTT brokers. You can call the [ListCaCertificate](https://help.aliyun.com/document_detail/2604958.html) operation to query CA certificates that are registered with an ApsaraMQ for MQTT instance.
 //
 // @param request - InactivateCaCertificateRequest
 //
@@ -10210,9 +10267,9 @@ func (client *Client) InactivateCaCertificate(request *InactivateCaCertificateRe
 //
 // Description:
 //
-//   Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+//	  Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
 //
-// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
+//		- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
 //
 // @param request - InactivateDeviceCertificateRequest
 //
@@ -10277,9 +10334,9 @@ func (client *Client) InactivateDeviceCertificateWithOptions(request *Inactivate
 //
 // Description:
 //
-//   Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+//	  Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
 //
-// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
+//		- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
 //
 // @param request - InactivateDeviceCertificateRequest
 //
@@ -10301,9 +10358,9 @@ func (client *Client) InactivateDeviceCertificate(request *InactivateDeviceCerti
 //
 // Description:
 //
-//   Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+//	  Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
 //
-// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
+//		- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
 //
 // @param request - ListCaCertificateRequest
 //
@@ -10356,9 +10413,9 @@ func (client *Client) ListCaCertificateWithOptions(request *ListCaCertificateReq
 //
 // Description:
 //
-//   Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+//	  Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
 //
-// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
+//		- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
 //
 // @param request - ListCaCertificateRequest
 //
@@ -10380,9 +10437,9 @@ func (client *Client) ListCaCertificate(request *ListCaCertificateRequest) (_res
 //
 // Description:
 //
-//   Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+//	  Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
 //
-// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
+//		- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
 //
 // @param request - ListDeviceCertificateRequest
 //
@@ -10435,9 +10492,9 @@ func (client *Client) ListDeviceCertificateWithOptions(request *ListDeviceCertif
 //
 // Description:
 //
-//   Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+//	  Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
 //
-// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
+//		- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
 //
 // @param request - ListDeviceCertificateRequest
 //
@@ -10459,9 +10516,9 @@ func (client *Client) ListDeviceCertificate(request *ListDeviceCertificateReques
 //
 // Description:
 //
-//   Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+//	  Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
 //
-// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
+//		- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
 //
 // @param request - ListDeviceCertificateByCaSnRequest
 //
@@ -10514,9 +10571,9 @@ func (client *Client) ListDeviceCertificateByCaSnWithOptions(request *ListDevice
 //
 // Description:
 //
-//   Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+//	  Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
 //
-// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
+//		- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
 //
 // @param request - ListDeviceCertificateByCaSnRequest
 //
@@ -10640,6 +10697,10 @@ func (client *Client) ListGroupIdWithOptions(request *ListGroupIdRequest, runtim
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -11059,9 +11120,9 @@ func (client *Client) QueryCustomAuthPermission(request *QueryCustomAuthPermissi
 //
 // Description:
 //
-//   Each successful call to the **QueryMqttTraceDevice*	- operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
+//	  Each successful call to the **QueryMqttTraceDevice*	- operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
 //
-// 	- You can call this operation up to 500 times per second per account. If the limit is exceeded, throttling is triggered. This may affect your business. We recommend that you take note of this limit when you call this operation. For more information, see [Limits on QPS](https://help.aliyun.com/document_detail/163047.html).
+//		- You can call this operation up to 500 times per second per account. If the limit is exceeded, throttling is triggered. This may affect your business. We recommend that you take note of this limit when you call this operation. For more information, see [Limits on QPS](https://help.aliyun.com/document_detail/163047.html).
 //
 // @param request - QueryMqttTraceDeviceRequest
 //
@@ -11146,9 +11207,9 @@ func (client *Client) QueryMqttTraceDeviceWithOptions(request *QueryMqttTraceDev
 //
 // Description:
 //
-//   Each successful call to the **QueryMqttTraceDevice*	- operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
+//	  Each successful call to the **QueryMqttTraceDevice*	- operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
 //
-// 	- You can call this operation up to 500 times per second per account. If the limit is exceeded, throttling is triggered. This may affect your business. We recommend that you take note of this limit when you call this operation. For more information, see [Limits on QPS](https://help.aliyun.com/document_detail/163047.html).
+//		- You can call this operation up to 500 times per second per account. If the limit is exceeded, throttling is triggered. This may affect your business. We recommend that you take note of this limit when you call this operation. For more information, see [Limits on QPS](https://help.aliyun.com/document_detail/163047.html).
 //
 // @param request - QueryMqttTraceDeviceRequest
 //
@@ -11170,9 +11231,9 @@ func (client *Client) QueryMqttTraceDevice(request *QueryMqttTraceDeviceRequest)
 //
 // Description:
 //
-//   Each successful call to the **QueryMqttTraceMessageOfClient*	- operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
+//	  Each successful call to the **QueryMqttTraceMessageOfClient*	- operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
 //
-// 	- You can call this operation up to 500 times per second per account. If the limit is exceeded, throttling is triggered. This may affect your business. We recommend that you take note of this limit when you call this operation. For more information, see [Limits on QPS](https://help.aliyun.com/document_detail/163047.html).
+//		- You can call this operation up to 500 times per second per account. If the limit is exceeded, throttling is triggered. This may affect your business. We recommend that you take note of this limit when you call this operation. For more information, see [Limits on QPS](https://help.aliyun.com/document_detail/163047.html).
 //
 // @param request - QueryMqttTraceMessageOfClientRequest
 //
@@ -11257,9 +11318,9 @@ func (client *Client) QueryMqttTraceMessageOfClientWithOptions(request *QueryMqt
 //
 // Description:
 //
-//   Each successful call to the **QueryMqttTraceMessageOfClient*	- operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
+//	  Each successful call to the **QueryMqttTraceMessageOfClient*	- operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
 //
-// 	- You can call this operation up to 500 times per second per account. If the limit is exceeded, throttling is triggered. This may affect your business. We recommend that you take note of this limit when you call this operation. For more information, see [Limits on QPS](https://help.aliyun.com/document_detail/163047.html).
+//		- You can call this operation up to 500 times per second per account. If the limit is exceeded, throttling is triggered. This may affect your business. We recommend that you take note of this limit when you call this operation. For more information, see [Limits on QPS](https://help.aliyun.com/document_detail/163047.html).
 //
 // @param request - QueryMqttTraceMessageOfClientRequest
 //
@@ -11281,9 +11342,9 @@ func (client *Client) QueryMqttTraceMessageOfClient(request *QueryMqttTraceMessa
 //
 // Description:
 //
-//   Each successful call to the **QueryMqttTraceMessagePublish*	- operation increases the messaging transactions per second (TPS). This affects the billing of your instance. For more information, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
+//	  Each successful call to the **QueryMqttTraceMessagePublish*	- operation increases the messaging transactions per second (TPS). This affects the billing of your instance. For more information, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
 //
-// 	- You can call this operation up to 500 times per second per account. If the limit is exceeded, throttling is triggered. This may affect your business. We recommend that you take note of this limit when you call this operation. For more information, see [Limits on QPS](https://help.aliyun.com/document_detail/163047.html).
+//		- You can call this operation up to 500 times per second per account. If the limit is exceeded, throttling is triggered. This may affect your business. We recommend that you take note of this limit when you call this operation. For more information, see [Limits on QPS](https://help.aliyun.com/document_detail/163047.html).
 //
 // @param request - QueryMqttTraceMessagePublishRequest
 //
@@ -11356,9 +11417,9 @@ func (client *Client) QueryMqttTraceMessagePublishWithOptions(request *QueryMqtt
 //
 // Description:
 //
-//   Each successful call to the **QueryMqttTraceMessagePublish*	- operation increases the messaging transactions per second (TPS). This affects the billing of your instance. For more information, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
+//	  Each successful call to the **QueryMqttTraceMessagePublish*	- operation increases the messaging transactions per second (TPS). This affects the billing of your instance. For more information, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
 //
-// 	- You can call this operation up to 500 times per second per account. If the limit is exceeded, throttling is triggered. This may affect your business. We recommend that you take note of this limit when you call this operation. For more information, see [Limits on QPS](https://help.aliyun.com/document_detail/163047.html).
+//		- You can call this operation up to 500 times per second per account. If the limit is exceeded, throttling is triggered. This may affect your business. We recommend that you take note of this limit when you call this operation. For more information, see [Limits on QPS](https://help.aliyun.com/document_detail/163047.html).
 //
 // @param request - QueryMqttTraceMessagePublishRequest
 //
@@ -11380,9 +11441,9 @@ func (client *Client) QueryMqttTraceMessagePublish(request *QueryMqttTraceMessag
 //
 // Description:
 //
-//   Each successful call to the **QueryMqttTraceMessageSubscribe*	- operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
+//	  Each successful call to the **QueryMqttTraceMessageSubscribe*	- operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
 //
-// 	- You can call this operation up to 500 times per second per account. If the limit is exceeded, throttling is triggered. This may affect your business. We recommend that you take note of this limit when you call this operation. For more information, see [Limits on QPS](https://help.aliyun.com/document_detail/163047.html).
+//		- You can call this operation up to 500 times per second per account. If the limit is exceeded, throttling is triggered. This may affect your business. We recommend that you take note of this limit when you call this operation. For more information, see [Limits on QPS](https://help.aliyun.com/document_detail/163047.html).
 //
 // @param request - QueryMqttTraceMessageSubscribeRequest
 //
@@ -11471,9 +11532,9 @@ func (client *Client) QueryMqttTraceMessageSubscribeWithOptions(request *QueryMq
 //
 // Description:
 //
-//   Each successful call to the **QueryMqttTraceMessageSubscribe*	- operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
+//	  Each successful call to the **QueryMqttTraceMessageSubscribe*	- operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
 //
-// 	- You can call this operation up to 500 times per second per account. If the limit is exceeded, throttling is triggered. This may affect your business. We recommend that you take note of this limit when you call this operation. For more information, see [Limits on QPS](https://help.aliyun.com/document_detail/163047.html).
+//		- You can call this operation up to 500 times per second per account. If the limit is exceeded, throttling is triggered. This may affect your business. We recommend that you take note of this limit when you call this operation. For more information, see [Limits on QPS](https://help.aliyun.com/document_detail/163047.html).
 //
 // @param request - QueryMqttTraceMessageSubscribeRequest
 //
@@ -11495,9 +11556,9 @@ func (client *Client) QueryMqttTraceMessageSubscribe(request *QueryMqttTraceMess
 //
 // Description:
 //
-//   You can call this operation up to 500 times per second.***	- For more information, see [Limits on QPS](https://help.aliyun.com/document_detail/163047.html).
+//	  You can call this operation up to 500 times per second.***	- For more information, see [Limits on QPS](https://help.aliyun.com/document_detail/163047.html).
 //
-// 	- Each successful call to the **QuerySessionByClientId*	- operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
+//		- Each successful call to the **QuerySessionByClientId*	- operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
 //
 // @param request - QuerySessionByClientIdRequest
 //
@@ -11558,9 +11619,9 @@ func (client *Client) QuerySessionByClientIdWithOptions(request *QuerySessionByC
 //
 // Description:
 //
-//   You can call this operation up to 500 times per second.***	- For more information, see [Limits on QPS](https://help.aliyun.com/document_detail/163047.html).
+//	  You can call this operation up to 500 times per second.***	- For more information, see [Limits on QPS](https://help.aliyun.com/document_detail/163047.html).
 //
-// 	- Each successful call to the **QuerySessionByClientId*	- operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
+//		- Each successful call to the **QuerySessionByClientId*	- operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
 //
 // @param request - QuerySessionByClientIdRequest
 //
@@ -11582,9 +11643,9 @@ func (client *Client) QuerySessionByClientId(request *QuerySessionByClientIdRequ
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second per account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
+//	  You can call this operation up to 100 times per second per account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
 //
-// 	- Each successful call to the **QueryToken*	- operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
+//		- Each successful call to the **QueryToken*	- operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
 //
 // @param request - QueryTokenRequest
 //
@@ -11645,9 +11706,9 @@ func (client *Client) QueryTokenWithOptions(request *QueryTokenRequest, runtime 
 //
 // Description:
 //
-//   You can call this operation up to 100 times per second per account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
+//	  You can call this operation up to 100 times per second per account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
 //
-// 	- Each successful call to the **QueryToken*	- operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
+//		- Each successful call to the **QueryToken*	- operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
 //
 // @param request - QueryTokenRequest
 //
@@ -11756,13 +11817,13 @@ func (client *Client) RefreshDeviceCredential(request *RefreshDeviceCredentialRe
 
 // Summary:
 //
-// RegisterCaCertificate
+// # RegisterCaCertificate
 //
 // Description:
 //
-//   Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+//	  Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
 //
-// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
+//		- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
 //
 // @param request - RegisterCaCertificateRequest
 //
@@ -11827,13 +11888,13 @@ func (client *Client) RegisterCaCertificateWithOptions(request *RegisterCaCertif
 
 // Summary:
 //
-// RegisterCaCertificate
+// # RegisterCaCertificate
 //
 // Description:
 //
-//   Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
+//	  Only ApsaraMQ for MQTT Enterprise Platinum Edition instances support this operation.
 //
-// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
+//		- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group (ID: 35228338) to contact ApsaraMQ for MQTT technical support.
 //
 // @param request - RegisterCaCertificateRequest
 //
@@ -11855,9 +11916,9 @@ func (client *Client) RegisterCaCertificate(request *RegisterCaCertificateReques
 //
 // Description:
 //
-//   You can call this operation up to 500 times per second per account. If the limit is exceeded, throttling is triggered. This may affect your business. We recommend that you take note of this limit when you call this operation. For more information, see [Limits on QPS](https://help.aliyun.com/document_detail/163047.html).
+//	  You can call this operation up to 500 times per second per account. If the limit is exceeded, throttling is triggered. This may affect your business. We recommend that you take note of this limit when you call this operation. For more information, see [Limits on QPS](https://help.aliyun.com/document_detail/163047.html).
 //
-// 	- Each successful call to the **RegisterDeviceCredential*	- operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
+//		- Each successful call to the **RegisterDeviceCredential*	- operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
 //
 // @param request - RegisterDeviceCredentialRequest
 //
@@ -11918,9 +11979,9 @@ func (client *Client) RegisterDeviceCredentialWithOptions(request *RegisterDevic
 //
 // Description:
 //
-//   You can call this operation up to 500 times per second per account. If the limit is exceeded, throttling is triggered. This may affect your business. We recommend that you take note of this limit when you call this operation. For more information, see [Limits on QPS](https://help.aliyun.com/document_detail/163047.html).
+//	  You can call this operation up to 500 times per second per account. If the limit is exceeded, throttling is triggered. This may affect your business. We recommend that you take note of this limit when you call this operation. For more information, see [Limits on QPS](https://help.aliyun.com/document_detail/163047.html).
 //
-// 	- Each successful call to the **RegisterDeviceCredential*	- operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
+//		- Each successful call to the **RegisterDeviceCredential*	- operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
 //
 // @param request - RegisterDeviceCredentialRequest
 //
@@ -11942,9 +12003,9 @@ func (client *Client) RegisterDeviceCredential(request *RegisterDeviceCredential
 //
 // Description:
 //
-//   You can call this operation up to 5 times per second per account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
+//	  You can call this operation up to 5 times per second per account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
 //
-// 	- Each successful call to the **RevokeToken*	- operation increases the messaging transactions per second (TPS). This affects the billing of your instance. For more information, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
+//		- Each successful call to the **RevokeToken*	- operation increases the messaging transactions per second (TPS). This affects the billing of your instance. For more information, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
 //
 // @param request - RevokeTokenRequest
 //
@@ -12005,9 +12066,9 @@ func (client *Client) RevokeTokenWithOptions(request *RevokeTokenRequest, runtim
 //
 // Description:
 //
-//   You can call this operation up to 5 times per second per account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
+//	  You can call this operation up to 5 times per second per account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
 //
-// 	- Each successful call to the **RevokeToken*	- operation increases the messaging transactions per second (TPS). This affects the billing of your instance. For more information, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
+//		- Each successful call to the **RevokeToken*	- operation increases the messaging transactions per second (TPS). This affects the billing of your instance. For more information, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
 //
 // @param request - RevokeTokenRequest
 //
@@ -12029,11 +12090,11 @@ func (client *Client) RevokeToken(request *RevokeTokenRequest) (_result *RevokeT
 //
 // Description:
 //
-//   The **SendMessage*	- operation is called by an application on a cloud server. This operation is complementary to the operation that is called to send a message from an ApsaraMQ for MQTT client. For information about the differences between the scenarios of sending messages from applications on cloud servers and the scenarios of sending messages from ApsaraMQ for MQTT clients, see [Developer guide](https://help.aliyun.com/document_detail/179160.html).
+//	  The **SendMessage*	- operation is called by an application on a cloud server. This operation is complementary to the operation that is called to send a message from an ApsaraMQ for MQTT client. For information about the differences between the scenarios of sending messages from applications on cloud servers and the scenarios of sending messages from ApsaraMQ for MQTT clients, see [Developer guide](https://help.aliyun.com/document_detail/179160.html).
 //
-// 	- Messages that are sent by calling the **SendMessage*	- operation cannot be forwarded to ApsaraMQ for RocketMQ. If you want to use an ApsaraMQ for MQTT broker to forward messages to ApsaraMQ for RocketMQ, use [an SDK to send the messages](https://help.aliyun.com/document_detail/174527.html). The **SendMessage*	- operation supports up to 1,000 queries per second (QPS). For more information, see [QPS limits](https://help.aliyun.com/document_detail/163047.html).
+//		- Messages that are sent by calling the **SendMessage*	- operation cannot be forwarded to ApsaraMQ for RocketMQ. If you want to use an ApsaraMQ for MQTT broker to forward messages to ApsaraMQ for RocketMQ, use [an SDK to send the messages](https://help.aliyun.com/document_detail/174527.html). The **SendMessage*	- operation supports up to 1,000 queries per second (QPS). For more information, see [QPS limits](https://help.aliyun.com/document_detail/163047.html).
 //
-// 	- Each successful call to the **SendMessage*	- operation is calculated as a message transaction per second (TPS). This affects the billing of your instance. For more information, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
+//		- Each successful call to the **SendMessage*	- operation is calculated as a message transaction per second (TPS). This affects the billing of your instance. For more information, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
 //
 // @param request - SendMessageRequest
 //
@@ -12098,11 +12159,11 @@ func (client *Client) SendMessageWithOptions(request *SendMessageRequest, runtim
 //
 // Description:
 //
-//   The **SendMessage*	- operation is called by an application on a cloud server. This operation is complementary to the operation that is called to send a message from an ApsaraMQ for MQTT client. For information about the differences between the scenarios of sending messages from applications on cloud servers and the scenarios of sending messages from ApsaraMQ for MQTT clients, see [Developer guide](https://help.aliyun.com/document_detail/179160.html).
+//	  The **SendMessage*	- operation is called by an application on a cloud server. This operation is complementary to the operation that is called to send a message from an ApsaraMQ for MQTT client. For information about the differences between the scenarios of sending messages from applications on cloud servers and the scenarios of sending messages from ApsaraMQ for MQTT clients, see [Developer guide](https://help.aliyun.com/document_detail/179160.html).
 //
-// 	- Messages that are sent by calling the **SendMessage*	- operation cannot be forwarded to ApsaraMQ for RocketMQ. If you want to use an ApsaraMQ for MQTT broker to forward messages to ApsaraMQ for RocketMQ, use [an SDK to send the messages](https://help.aliyun.com/document_detail/174527.html). The **SendMessage*	- operation supports up to 1,000 queries per second (QPS). For more information, see [QPS limits](https://help.aliyun.com/document_detail/163047.html).
+//		- Messages that are sent by calling the **SendMessage*	- operation cannot be forwarded to ApsaraMQ for RocketMQ. If you want to use an ApsaraMQ for MQTT broker to forward messages to ApsaraMQ for RocketMQ, use [an SDK to send the messages](https://help.aliyun.com/document_detail/174527.html). The **SendMessage*	- operation supports up to 1,000 queries per second (QPS). For more information, see [QPS limits](https://help.aliyun.com/document_detail/163047.html).
 //
-// 	- Each successful call to the **SendMessage*	- operation is calculated as a message transaction per second (TPS). This affects the billing of your instance. For more information, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
+//		- Each successful call to the **SendMessage*	- operation is calculated as a message transaction per second (TPS). This affects the billing of your instance. For more information, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
 //
 // @param request - SendMessageRequest
 //
@@ -12282,9 +12343,9 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 //
 // Description:
 //
-//   You can call this operation up to 500 times per second per account. If the limit is exceeded, throttling is triggered. This may affect your business. We recommend that you take note of this limit when you call this operation. For more information, see [Limits on QPS](https://help.aliyun.com/document_detail/163047.html).
+//	  You can call this operation up to 500 times per second per account. If the limit is exceeded, throttling is triggered. This may affect your business. We recommend that you take note of this limit when you call this operation. For more information, see [Limits on QPS](https://help.aliyun.com/document_detail/163047.html).
 //
-// 	- Each successful call to the **UnRegisterDeviceCredential*	- operation increases the number of transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
+//		- Each successful call to the **UnRegisterDeviceCredential*	- operation increases the number of transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
 //
 // @param request - UnRegisterDeviceCredentialRequest
 //
@@ -12345,9 +12406,9 @@ func (client *Client) UnRegisterDeviceCredentialWithOptions(request *UnRegisterD
 //
 // Description:
 //
-//   You can call this operation up to 500 times per second per account. If the limit is exceeded, throttling is triggered. This may affect your business. We recommend that you take note of this limit when you call this operation. For more information, see [Limits on QPS](https://help.aliyun.com/document_detail/163047.html).
+//	  You can call this operation up to 500 times per second per account. If the limit is exceeded, throttling is triggered. This may affect your business. We recommend that you take note of this limit when you call this operation. For more information, see [Limits on QPS](https://help.aliyun.com/document_detail/163047.html).
 //
-// 	- Each successful call to the **UnRegisterDeviceCredential*	- operation increases the number of transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
+//		- Each successful call to the **UnRegisterDeviceCredential*	- operation increases the number of transactions per second (TPS) by one. This affects the billing of your instance. For more information, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
 //
 // @param request - UnRegisterDeviceCredentialRequest
 //
