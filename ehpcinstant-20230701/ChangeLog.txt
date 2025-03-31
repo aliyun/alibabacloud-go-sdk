@@ -1,3 +1,6 @@
+2025-03-31 Version: v2.0.2
+- Generated golang 2023-07-01 for EhpcInstant.
+
 2025-03-13 Version: v2.0.1
 - Update API CreateJob: add param SecurityPolicy.
 - Update API CreateJob: update param DeploymentPolicy.
