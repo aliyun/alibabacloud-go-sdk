@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -14,8 +11,20 @@ import (
 
 type CancelArtifactBuildTaskRequest struct {
 	// The ID of the artifact building task.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// i2ei-12****
 	BuildTaskId *string `json:"BuildTaskId,omitempty" xml:"BuildTaskId,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-shac42yvqzvq****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -39,13 +48,26 @@ func (s *CancelArtifactBuildTaskRequest) SetInstanceId(v string) *CancelArtifact
 
 type CancelArtifactBuildTaskResponseBody struct {
 	// The return value.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   `true`: The request is successful.
-	// *   `false`: The request fails.
+	// 	- `true`: The request is successful.
+	//
+	// 	- `false`: The request fails.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// C4C7DD0C-C9D6-437A-A7EE-121EFD70D002
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -103,10 +125,28 @@ func (s *CancelArtifactBuildTaskResponse) SetBody(v *CancelArtifactBuildTaskResp
 
 type CancelRepoBuildRecordRequest struct {
 	// The ID of the image building record.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 74FDBA62-30C0-4F22-BE7B-F1D36FD1****
 	BuildRecordId *string `json:"BuildRecordId,omitempty" xml:"BuildRecordId,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-kmsiwlxxdcva****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the image repository.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// crr-tquyps22md8p****
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 }
 
@@ -135,10 +175,22 @@ func (s *CancelRepoBuildRecordRequest) SetRepoId(v string) *CancelRepoBuildRecor
 
 type CancelRepoBuildRecordResponseBody struct {
 	// The return value.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 4CE1F661-75DD-4EBD-A4AD-057B26834ABB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -194,12 +246,144 @@ func (s *CancelRepoBuildRecordResponse) SetBody(v *CancelRepoBuildRecordResponse
 	return s
 }
 
+type CancelRepoSyncTaskRequest struct {
+	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-xkx6vujuhay0****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the replication task.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rst-biu4u4pm4it5****
+	SyncTaskId *string `json:"SyncTaskId,omitempty" xml:"SyncTaskId,omitempty"`
+}
+
+func (s CancelRepoSyncTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelRepoSyncTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CancelRepoSyncTaskRequest) SetInstanceId(v string) *CancelRepoSyncTaskRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CancelRepoSyncTaskRequest) SetSyncTaskId(v string) *CancelRepoSyncTaskRequest {
+	s.SyncTaskId = &v
+	return s
+}
+
+type CancelRepoSyncTaskResponseBody struct {
+	// The response code.
+	//
+	// example:
+	//
+	// success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the CancelRepoSyncTask request is successful. Valid values:
+	//
+	// 	- `true`: successful
+	//
+	// 	- `false`: failed
+	//
+	// example:
+	//
+	// true
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// EB9C5722-51E2-4497-A573-575B0CA5CE0C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CancelRepoSyncTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelRepoSyncTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CancelRepoSyncTaskResponseBody) SetCode(v string) *CancelRepoSyncTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CancelRepoSyncTaskResponseBody) SetIsSuccess(v bool) *CancelRepoSyncTaskResponseBody {
+	s.IsSuccess = &v
+	return s
+}
+
+func (s *CancelRepoSyncTaskResponseBody) SetRequestId(v string) *CancelRepoSyncTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CancelRepoSyncTaskResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CancelRepoSyncTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CancelRepoSyncTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelRepoSyncTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CancelRepoSyncTaskResponse) SetHeaders(v map[string]*string) *CancelRepoSyncTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CancelRepoSyncTaskResponse) SetStatusCode(v int32) *CancelRepoSyncTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CancelRepoSyncTaskResponse) SetBody(v *CancelRepoSyncTaskResponseBody) *CancelRepoSyncTaskResponse {
+	s.Body = v
+	return s
+}
+
 type ChangeResourceGroupRequest struct {
-	// The ID of the resource group.
+	// The ID of the resource group to which you want to move the resource.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rg-aekz5nlvlaksnvi
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Id of the request
+	// The ID of the resource.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-8qong6ve5p3mhlgt
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The region ID of the resource group.
+	// The ID of the region.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shenzhen-finance-1
 	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
 }
 
@@ -228,6 +412,10 @@ func (s *ChangeResourceGroupRequest) SetResourceRegionId(v string) *ChangeResour
 
 type ChangeResourceGroupResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 314CB661-35A5-5F01-A623-3EC6F87FF52F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -276,19 +464,47 @@ func (s *ChangeResourceGroupResponse) SetBody(v *ChangeResourceGroupResponseBody
 type CreateArtifactBuildRuleRequest struct {
 	// The type of the artifact.
 	//
-	// *   `ACCELERATED_IMAGE`: accelerated images.
+	// 	- `ACCELERATED_IMAGE`: accelerated images.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ACCELERATED_IMAGE
 	ArtifactType *string `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-cxreylqvcyje****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// Additional parameters.
+	//
+	// example:
+	//
+	// {}
 	Parameters map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	// The ID of the effective range of the rule.
 	//
-	// *   Set the value to the ID of the image repository.
+	// 	- Set the value to the ID of the image repository.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// crr-pmajihou6cg0****
 	ScopeId *string `json:"ScopeId,omitempty" xml:"ScopeId,omitempty"`
 	// The effective range of the rule. Valid values:
 	//
-	// *   `REPOSITORY`
+	// 	- `REPOSITORY`
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// REPOSITORY
 	ScopeType *string `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
 }
 
@@ -328,19 +544,47 @@ func (s *CreateArtifactBuildRuleRequest) SetScopeType(v string) *CreateArtifactB
 type CreateArtifactBuildRuleShrinkRequest struct {
 	// The type of the artifact.
 	//
-	// *   `ACCELERATED_IMAGE`: accelerated images.
+	// 	- `ACCELERATED_IMAGE`: accelerated images.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ACCELERATED_IMAGE
 	ArtifactType *string `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-cxreylqvcyje****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// Additional parameters.
+	//
+	// example:
+	//
+	// {}
 	ParametersShrink *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	// The ID of the effective range of the rule.
 	//
-	// *   Set the value to the ID of the image repository.
+	// 	- Set the value to the ID of the image repository.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// crr-pmajihou6cg0****
 	ScopeId *string `json:"ScopeId,omitempty" xml:"ScopeId,omitempty"`
 	// The effective range of the rule. Valid values:
 	//
-	// *   `REPOSITORY`
+	// 	- `REPOSITORY`
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// REPOSITORY
 	ScopeType *string `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
 }
 
@@ -379,12 +623,28 @@ func (s *CreateArtifactBuildRuleShrinkRequest) SetScopeType(v string) *CreateArt
 
 type CreateArtifactBuildRuleResponseBody struct {
 	// The ID of the accelerated image building rule.
+	//
+	// example:
+	//
+	// crabr-7dfa5qye5****
 	BuildRuleId *string `json:"BuildRuleId,omitempty" xml:"BuildRuleId,omitempty"`
 	// The return value.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// C8E90AB5-0A96-5D12-9E59-11EE46360642
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -446,15 +706,62 @@ func (s *CreateArtifactBuildRuleResponse) SetBody(v *CreateArtifactBuildRuleResp
 }
 
 type CreateArtifactLifecycleRuleRequest struct {
-	Auto              *bool   `json:"Auto,omitempty" xml:"Auto,omitempty"`
-	EnableDeleteTag   *bool   `json:"EnableDeleteTag,omitempty" xml:"EnableDeleteTag,omitempty"`
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	NamespaceName     *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
-	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	RetentionTagCount *int64  `json:"RetentionTagCount,omitempty" xml:"RetentionTagCount,omitempty"`
-	ScheduleTime      *string `json:"ScheduleTime,omitempty" xml:"ScheduleTime,omitempty"`
-	Scope             *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	TagRegexp         *string `json:"TagRegexp,omitempty" xml:"TagRegexp,omitempty"`
+	// Specify whether to automatically execute the lifecycle management rule.
+	//
+	// example:
+	//
+	// false
+	Auto *bool `json:"Auto,omitempty" xml:"Auto,omitempty"`
+	// Specify whether to enable lifecycle management for the artifact.
+	//
+	// example:
+	//
+	// true
+	EnableDeleteTag *bool `json:"EnableDeleteTag,omitempty" xml:"EnableDeleteTag,omitempty"`
+	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-gbwfk7qbgrxe****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the namespace.
+	//
+	// example:
+	//
+	// dev-backend
+	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	// The name of the image repository.
+	//
+	// example:
+	//
+	// test_1
+	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The number of images that you want to retain.
+	//
+	// example:
+	//
+	// 30
+	RetentionTagCount *int64 `json:"RetentionTagCount,omitempty" xml:"RetentionTagCount,omitempty"`
+	// The execution cycle of the lifecycle management rule.
+	//
+	// example:
+	//
+	// WEEK
+	ScheduleTime *string `json:"ScheduleTime,omitempty" xml:"ScheduleTime,omitempty"`
+	// The deletion scope.
+	//
+	// example:
+	//
+	// INSTANCE
+	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// The regular expression that is used to indicate which image tags are retained.
+	//
+	// example:
+	//
+	// release-.*
+	TagRegexp *string `json:"TagRegexp,omitempty" xml:"TagRegexp,omitempty"`
 }
 
 func (s CreateArtifactLifecycleRuleRequest) String() string {
@@ -511,10 +818,34 @@ func (s *CreateArtifactLifecycleRuleRequest) SetTagRegexp(v string) *CreateArtif
 }
 
 type CreateArtifactLifecycleRuleResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The return value.
+	//
+	// example:
+	//
+	// success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// 	- `true`: The request is successful.
+	//
+	// 	- `false`: The request fails.
+	//
+	// example:
+	//
+	// True
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 0AA66379-B880-5123-9F6A-96BB25D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RuleId    *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The rule ID.
+	//
+	// example:
+	//
+	// cralr-b6thg027zmk1****
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
 func (s CreateArtifactLifecycleRuleResponseBody) String() string {
@@ -574,10 +905,390 @@ func (s *CreateArtifactLifecycleRuleResponse) SetBody(v *CreateArtifactLifecycle
 	return s
 }
 
+type CreateArtifactSubscriptionRuleRequest struct {
+	// Indicates whether an acceleration link is enabled for image subscription. The subscription acceleration feature is in public preview. The feature is optimized based on scheduling policies and network links to accelerate image subscription.
+	//
+	// example:
+	//
+	// true
+	Accelerate *bool `json:"Accelerate,omitempty" xml:"Accelerate,omitempty"`
+	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-c0o11woew0k****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the Container Registry namespace.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-ns
+	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	// Indicates whether the original image is overwritten.
+	//
+	// example:
+	//
+	// true
+	Override *bool `json:"Override,omitempty" xml:"Override,omitempty"`
+	// The operating system and architecture. If the source repository contains a multi-arch image, only the specified operating system and architecture are subscribed to the destination repository of the Enterprise Edition instance. Subscribe to the destination repository of an Enterprise Edition instance
+	//
+	// This parameter is required.
+	Platform []*string `json:"Platform,omitempty" xml:"Platform,omitempty" type:"Repeated"`
+	// The name of the Container Registry repository.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-repo
+	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The source namespace.
+	//
+	// example:
+	//
+	// library
+	SourceNamespaceName *string `json:"SourceNamespaceName,omitempty" xml:"SourceNamespaceName,omitempty"`
+	// The source of the artifact.
+	//
+	// Valid values:
+	//
+	// 	- DOCKER_HUB: Docker Hub
+	//
+	// 	- GCR: GCR
+	//
+	// 	- QUAY: Quay.io
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// DOCKER_HUB
+	SourceProvider *string `json:"SourceProvider,omitempty" xml:"SourceProvider,omitempty"`
+	// The source repository.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// nginx
+	SourceRepoName *string `json:"SourceRepoName,omitempty" xml:"SourceRepoName,omitempty"`
+	// The number of subscribed images.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	TagCount *int64 `json:"TagCount,omitempty" xml:"TagCount,omitempty"`
+	// The image tag in the subscription source repository. Regular expressions are supported.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// release-v.*
+	TagRegexp *string `json:"TagRegexp,omitempty" xml:"TagRegexp,omitempty"`
+}
+
+func (s CreateArtifactSubscriptionRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateArtifactSubscriptionRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateArtifactSubscriptionRuleRequest) SetAccelerate(v bool) *CreateArtifactSubscriptionRuleRequest {
+	s.Accelerate = &v
+	return s
+}
+
+func (s *CreateArtifactSubscriptionRuleRequest) SetInstanceId(v string) *CreateArtifactSubscriptionRuleRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateArtifactSubscriptionRuleRequest) SetNamespaceName(v string) *CreateArtifactSubscriptionRuleRequest {
+	s.NamespaceName = &v
+	return s
+}
+
+func (s *CreateArtifactSubscriptionRuleRequest) SetOverride(v bool) *CreateArtifactSubscriptionRuleRequest {
+	s.Override = &v
+	return s
+}
+
+func (s *CreateArtifactSubscriptionRuleRequest) SetPlatform(v []*string) *CreateArtifactSubscriptionRuleRequest {
+	s.Platform = v
+	return s
+}
+
+func (s *CreateArtifactSubscriptionRuleRequest) SetRepoName(v string) *CreateArtifactSubscriptionRuleRequest {
+	s.RepoName = &v
+	return s
+}
+
+func (s *CreateArtifactSubscriptionRuleRequest) SetSourceNamespaceName(v string) *CreateArtifactSubscriptionRuleRequest {
+	s.SourceNamespaceName = &v
+	return s
+}
+
+func (s *CreateArtifactSubscriptionRuleRequest) SetSourceProvider(v string) *CreateArtifactSubscriptionRuleRequest {
+	s.SourceProvider = &v
+	return s
+}
+
+func (s *CreateArtifactSubscriptionRuleRequest) SetSourceRepoName(v string) *CreateArtifactSubscriptionRuleRequest {
+	s.SourceRepoName = &v
+	return s
+}
+
+func (s *CreateArtifactSubscriptionRuleRequest) SetTagCount(v int64) *CreateArtifactSubscriptionRuleRequest {
+	s.TagCount = &v
+	return s
+}
+
+func (s *CreateArtifactSubscriptionRuleRequest) SetTagRegexp(v string) *CreateArtifactSubscriptionRuleRequest {
+	s.TagRegexp = &v
+	return s
+}
+
+type CreateArtifactSubscriptionRuleResponseBody struct {
+	// The return value.
+	//
+	// example:
+	//
+	// success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicate whether the API request is successful. Valid values:
+	//
+	// 	- `true`: The request is successful.
+	//
+	// 	- `false`: The request fails.
+	//
+	// example:
+	//
+	// true
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 02B27D80-FD32-5155-931A-93700779BB9E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the artifact subscription rule.
+	//
+	// example:
+	//
+	// crasr-lxdfele7dg4****
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+}
+
+func (s CreateArtifactSubscriptionRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateArtifactSubscriptionRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateArtifactSubscriptionRuleResponseBody) SetCode(v string) *CreateArtifactSubscriptionRuleResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateArtifactSubscriptionRuleResponseBody) SetIsSuccess(v bool) *CreateArtifactSubscriptionRuleResponseBody {
+	s.IsSuccess = &v
+	return s
+}
+
+func (s *CreateArtifactSubscriptionRuleResponseBody) SetRequestId(v string) *CreateArtifactSubscriptionRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateArtifactSubscriptionRuleResponseBody) SetRuleId(v string) *CreateArtifactSubscriptionRuleResponseBody {
+	s.RuleId = &v
+	return s
+}
+
+type CreateArtifactSubscriptionRuleResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateArtifactSubscriptionRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateArtifactSubscriptionRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateArtifactSubscriptionRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateArtifactSubscriptionRuleResponse) SetHeaders(v map[string]*string) *CreateArtifactSubscriptionRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateArtifactSubscriptionRuleResponse) SetStatusCode(v int32) *CreateArtifactSubscriptionRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateArtifactSubscriptionRuleResponse) SetBody(v *CreateArtifactSubscriptionRuleResponseBody) *CreateArtifactSubscriptionRuleResponse {
+	s.Body = v
+	return s
+}
+
+type CreateArtifactSubscriptionTaskRequest struct {
+	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-4ec5xvj4j0l****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The rule ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// crasr-88s7vmelc3m****
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+}
+
+func (s CreateArtifactSubscriptionTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateArtifactSubscriptionTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateArtifactSubscriptionTaskRequest) SetInstanceId(v string) *CreateArtifactSubscriptionTaskRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateArtifactSubscriptionTaskRequest) SetRuleId(v string) *CreateArtifactSubscriptionTaskRequest {
+	s.RuleId = &v
+	return s
+}
+
+type CreateArtifactSubscriptionTaskResponseBody struct {
+	// The return value.
+	//
+	// example:
+	//
+	// success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the API request is successful. Valid values:
+	//
+	// 	- `true`: The request is successful.
+	//
+	// 	- `false`: The request fails.
+	//
+	// example:
+	//
+	// true
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 132D314B-BDD4-564C-89FE-3E2BAE115239
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task ID.
+	//
+	// example:
+	//
+	// crast-40le4es9yh0p****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s CreateArtifactSubscriptionTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateArtifactSubscriptionTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateArtifactSubscriptionTaskResponseBody) SetCode(v string) *CreateArtifactSubscriptionTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateArtifactSubscriptionTaskResponseBody) SetIsSuccess(v bool) *CreateArtifactSubscriptionTaskResponseBody {
+	s.IsSuccess = &v
+	return s
+}
+
+func (s *CreateArtifactSubscriptionTaskResponseBody) SetRequestId(v string) *CreateArtifactSubscriptionTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateArtifactSubscriptionTaskResponseBody) SetTaskId(v string) *CreateArtifactSubscriptionTaskResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type CreateArtifactSubscriptionTaskResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateArtifactSubscriptionTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateArtifactSubscriptionTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateArtifactSubscriptionTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateArtifactSubscriptionTaskResponse) SetHeaders(v map[string]*string) *CreateArtifactSubscriptionTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateArtifactSubscriptionTaskResponse) SetStatusCode(v int32) *CreateArtifactSubscriptionTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateArtifactSubscriptionTaskResponse) SetBody(v *CreateArtifactSubscriptionTaskResponseBody) *CreateArtifactSubscriptionTaskResponse {
+	s.Body = v
+	return s
+}
+
 type CreateBuildRecordByRecordRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0A311FC5-B8C6-4332-80E4-539EB73****
 	BuildRecordId *string `json:"BuildRecordId,omitempty" xml:"BuildRecordId,omitempty"`
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RepoId        *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-hpdfkc6utbaq****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// crr-hnoq7j93or3k****
+	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 }
 
 func (s CreateBuildRecordByRecordRequest) String() string {
@@ -604,10 +1315,22 @@ func (s *CreateBuildRecordByRecordRequest) SetRepoId(v string) *CreateBuildRecor
 }
 
 type CreateBuildRecordByRecordResponseBody struct {
+	// example:
+	//
+	// crbr-ly77w5i3t31f****
 	BuildRecordId *string `json:"BuildRecordId,omitempty" xml:"BuildRecordId,omitempty"`
-	Code          *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess     *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// true
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// example:
+	//
+	// 4CE1F661-75DD-4EBD-A4AD-057B26834ABB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateBuildRecordByRecordResponseBody) String() string {
@@ -669,10 +1392,28 @@ func (s *CreateBuildRecordByRecordResponse) SetBody(v *CreateBuildRecordByRecord
 
 type CreateBuildRecordByRuleRequest struct {
 	// The ID of the image building rule.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// crbr-1j95g4bu2s1i****
 	BuildRuleId *string `json:"BuildRuleId,omitempty" xml:"BuildRuleId,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-asd6vujuhay0****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the image repository.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// crr-8dz3aedjqlmk****
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 }
 
@@ -701,12 +1442,28 @@ func (s *CreateBuildRecordByRuleRequest) SetRepoId(v string) *CreateBuildRecordB
 
 type CreateBuildRecordByRuleResponseBody struct {
 	// The ID of the image building record.
+	//
+	// example:
+	//
+	// 0A311FC5-B8C6-4332-80E4-539EB73****
 	BuildRecordId *string `json:"BuildRecordId,omitempty" xml:"BuildRecordId,omitempty"`
 	// The return value.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// The ID of the request.
+	// The request ID.
+	//
+	// example:
+	//
+	// B01B8857-A16E-40E9-A37E-764F15776FAA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -769,16 +1526,44 @@ func (s *CreateBuildRecordByRuleResponse) SetBody(v *CreateBuildRecordByRuleResp
 
 type CreateChainRequest struct {
 	// The configuration of the delivery chain in the JSON format.
+	//
+	// example:
+	//
+	// chainconfig
 	ChainConfig *string `json:"ChainConfig,omitempty" xml:"ChainConfig,omitempty"`
 	// The description of the delivery chain.
+	//
+	// example:
+	//
+	// description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-4cdrlqmhn4gm****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The name of the delivery chain.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The name of the repository.
+	//
+	// example:
+	//
+	// repo1
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	// The name of the namespace.
+	//
+	// example:
+	//
+	// ns1
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 	// Repositories in which the delivery chain does not take effect.
 	ScopeExclude []*string `json:"ScopeExclude,omitempty" xml:"ScopeExclude,omitempty" type:"Repeated"`
@@ -829,12 +1614,28 @@ func (s *CreateChainRequest) SetScopeExclude(v []*string) *CreateChainRequest {
 
 type CreateChainResponseBody struct {
 	// The ID of the delivery chain.
+	//
+	// example:
+	//
+	// chi-02ymhtwl3cq8****
 	ChainId *string `json:"ChainId,omitempty" xml:"ChainId,omitempty"`
 	// The return value.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 4BC03B36-E515-5806-99AC-268AE3C0****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -898,18 +1699,39 @@ func (s *CreateChainResponse) SetBody(v *CreateChainResponseBody) *CreateChainRe
 type CreateChartNamespaceRequest struct {
 	// Specifies whether to automatically create repositories in the namespace. Valid values:
 	//
-	// \-`  true `: automatically creates repositories in the namespace.
+	// \\-`  true `: automatically creates repositories in the namespace.
 	//
-	// \-`  false `: does not automatically create repositories in the namespace.
+	// \\-`  false `: does not automatically create repositories in the namespace.
+	//
+	// example:
+	//
+	// true
 	AutoCreateRepo *bool `json:"AutoCreateRepo,omitempty" xml:"AutoCreateRepo,omitempty"`
 	// The default repository type. Valid values:
 	//
-	// *   `PUBLIC`: a public repository
-	// *   `PRIVATE`: a private repository
+	// 	- `PUBLIC`: a public repository
+	//
+	// 	- `PRIVATE`: a private repository
+	//
+	// example:
+	//
+	// PUBLIC
 	DefaultRepoType *string `json:"DefaultRepoType,omitempty" xml:"DefaultRepoType,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-xkx6vujuhay0****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The name of the namespace.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// namespace01
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
 }
 
@@ -943,13 +1765,26 @@ func (s *CreateChartNamespaceRequest) SetNamespaceName(v string) *CreateChartNam
 
 type CreateChartNamespaceResponseBody struct {
 	// The return value.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   `true`: The request is successful.
-	// *   `false`: The request fails.
+	// 	- `true`: The request is successful.
+	//
+	// 	- `false`: The request fails.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 724402D0-75CD-4794-BC20-7D3720823AE0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1007,19 +1842,46 @@ func (s *CreateChartNamespaceResponse) SetBody(v *CreateChartNamespaceResponseBo
 
 type CreateChartRepositoryRequest struct {
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-xkx6vujuhay0****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The name of the repository.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// repo01
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	// The name of the namespace to which the repository belongs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// namespace01
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 	// The default repository type. Valid values:
 	//
-	// *   `PUBLIC`: a public repository.
-	// *   `PRIVATE`: a private repository.
+	// 	- `PUBLIC`: a public repository.
+	//
+	// 	- `PRIVATE`: a private repository.
 	//
 	// You can specify the RepoType or Summary parameter. The RepoType parameter is optional.
+	//
+	// example:
+	//
+	// PUBLIC
 	RepoType *string `json:"RepoType,omitempty" xml:"RepoType,omitempty"`
 	// The summary of the repository.
+	//
+	// example:
+	//
+	// summary
 	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
 }
 
@@ -1058,15 +1920,32 @@ func (s *CreateChartRepositoryRequest) SetSummary(v string) *CreateChartReposito
 
 type CreateChartRepositoryResponseBody struct {
 	// The return value.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   `true`: The request is successful.
-	// *   `false`: The request fails.
+	// 	- `true`: The request is successful.
+	//
+	// 	- `false`: The request fails.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The ID of the repository.
+	//
+	// example:
+	//
+	// crcr-2micxey5ewj4****
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 60390244-A483-491A-B41D-F866C95380A1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1129,17 +2008,44 @@ func (s *CreateChartRepositoryResponse) SetBody(v *CreateChartRepositoryResponse
 
 type CreateInstanceEndpointAclPolicyRequest struct {
 	// The description.
+	//
+	// example:
+	//
+	// test
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The type of the endpoint. Set the value to Internet.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// internet
 	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
 	// The CIDR block that is accessible.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 192.168.1.1/32
 	Entry *string `json:"Entry,omitempty" xml:"Entry,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-xkx6vujuhay0****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The name of the module that you want to access. Valid values:
 	//
-	// *   `Registry`: the image repository.
-	// *   `Chart`: a Helm chart.
+	// 	- `Registry`: the image repository.
+	//
+	// 	- `Chart`: a Helm chart.
+	//
+	// example:
+	//
+	// Registry
 	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
 }
 
@@ -1178,13 +2084,26 @@ func (s *CreateInstanceEndpointAclPolicyRequest) SetModuleName(v string) *Create
 
 type CreateInstanceEndpointAclPolicyResponseBody struct {
 	// The return value.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   `true`: The request is successful.
-	// *   `false`: The request fails.
+	// 	- `true`: The request is successful.
+	//
+	// 	- `false`: The request fails.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// D735C5EC-4206-4F48-A090-307BF56BEB99
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1245,19 +2164,47 @@ type CreateInstanceVpcEndpointLinkedVpcRequest struct {
 	//
 	// >  If you enable automatic creation of PrivateZone records, a PrivateZone record is automatically created when you associate a VPC with the instance.
 	//
-	// *   `true`
-	// *   `false`
+	// 	- `true`
+	//
+	// 	- `false`
+	//
+	// example:
+	//
+	// false
 	EnableCreateDNSRecordInPvzt *bool `json:"EnableCreateDNSRecordInPvzt,omitempty" xml:"EnableCreateDNSRecordInPvzt,omitempty"`
 	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-xkx6vujuhay0****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The name of the module that you want to access. Valid values:
 	//
-	// *   `Registry`: image repositories.
-	// *   `Chart`: Helm charts.
+	// 	- `Registry`: image repositories.
+	//
+	// 	- `Chart`: Helm charts.
+	//
+	// example:
+	//
+	// Registry
 	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
 	// The VPC ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vpc-uf6pa68zxnnlc48dd****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// The ID of the vSwitch that is associated with the specified VPC.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vsw-uf6u0kn8x2gbzxfn2****
 	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
 }
 
@@ -1296,13 +2243,26 @@ func (s *CreateInstanceVpcEndpointLinkedVpcRequest) SetVswitchId(v string) *Crea
 
 type CreateInstanceVpcEndpointLinkedVpcResponseBody struct {
 	// The return value.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the request is successful.
 	//
-	// *   `true`: The request is successful.
-	// *   `false`: The request fails.
+	// 	- `true`: The request is successful.
+	//
+	// 	- `false`: The request fails.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// D4978DCC-ECBD-40B0-A714-EE6959B22C77
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1360,15 +2320,36 @@ func (s *CreateInstanceVpcEndpointLinkedVpcResponse) SetBody(v *CreateInstanceVp
 
 type CreateNamespaceRequest struct {
 	// Specifies whether to automatically create an image repository in the namespace.
+	//
+	// example:
+	//
+	// true
 	AutoCreateRepo *bool `json:"AutoCreateRepo,omitempty" xml:"AutoCreateRepo,omitempty"`
 	// The default type of the repository that is automatically created. Valid values:
 	//
-	// *   `PUBLIC`: a public repository
-	// *   `PRIVATE`: a private repository
+	// 	- `PUBLIC`: a public repository
+	//
+	// 	- `PRIVATE`: a private repository
+	//
+	// example:
+	//
+	// PUBLIC
 	DefaultRepoType *string `json:"DefaultRepoType,omitempty" xml:"DefaultRepoType,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-xkx6vujuhay0****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the namespace. The name must be 2 to 120 characters in length, and can contain lowercase letters, digits, and the following delimiters: underscores (\_), hyphens (-), and periods (.). The name cannot start or end with a delimiter.
+	// The name of the namespace. The name must be 2 to 120 characters in length, and can contain lowercase letters, digits, and the following delimiters: underscores (_), hyphens (-), and periods (.). The name cannot start or end with a delimiter.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// namespace1
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
 }
 
@@ -1402,10 +2383,22 @@ func (s *CreateNamespaceRequest) SetNamespaceName(v string) *CreateNamespaceRequ
 
 type CreateNamespaceResponseBody struct {
 	// The return value.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// BC648259-91A7-4502-BED3-EDF64361FA83
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1465,31 +2458,74 @@ type CreateRepoBuildRuleRequest struct {
 	// Building arguments.
 	BuildArgs []*string `json:"BuildArgs,omitempty" xml:"BuildArgs,omitempty" type:"Repeated"`
 	// The path of the Dockerfile.
+	//
+	// example:
+	//
+	// /
 	DockerfileLocation *string `json:"DockerfileLocation,omitempty" xml:"DockerfileLocation,omitempty"`
 	// The name of the Dockerfile.
+	//
+	// example:
+	//
+	// Dockerfile
 	DockerfileName *string `json:"DockerfileName,omitempty" xml:"DockerfileName,omitempty"`
 	// The tag of the image.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// v0.9.5
 	ImageTag *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-xkx6vujuhay0****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// Architecture for image building. Valid values:
 	//
-	// *   `linux/amd64`
-	// *   `linux/arm64`
-	// *   `linux/386`
-	// *   `linux/arm/v7`
-	// *   `inux/arm/v6`
+	// 	- `linux/amd64`
+	//
+	// 	- `linux/arm64`
+	//
+	// 	- `linux/386`
+	//
+	// 	- `linux/arm/v7`
+	//
+	// 	- `inux/arm/v6`
 	//
 	// Default value: `linux/amd64`
 	Platforms []*string `json:"Platforms,omitempty" xml:"Platforms,omitempty" type:"Repeated"`
 	// The name of the push that triggers the building rule.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// master
 	PushName *string `json:"PushName,omitempty" xml:"PushName,omitempty"`
 	// The type of the push that triggers the building rule. Valid values:
 	//
-	// *   `GIT_TAG`: tag push
-	// *   `GIT_BRANCH`: branch push
+	// 	- `GIT_TAG`: tag push
+	//
+	// 	- `GIT_BRANCH`: branch push
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// GIT_BRANCH
 	PushType *string `json:"PushType,omitempty" xml:"PushType,omitempty"`
 	// The ID of the image repository.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// crr-8dz3aedjqlmk****
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 }
 
@@ -1548,15 +2584,32 @@ func (s *CreateRepoBuildRuleRequest) SetRepoId(v string) *CreateRepoBuildRuleReq
 
 type CreateRepoBuildRuleResponseBody struct {
 	// The ID of the building rule.
+	//
+	// example:
+	//
+	// crbr-ly77w5i3t31f****
 	BuildRuleId *string `json:"BuildRuleId,omitempty" xml:"BuildRuleId,omitempty"`
 	// The return value.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   `true`: The request is successful.
-	// *   `false`: The request fails.
+	// 	- `true`: The request is successful.
+	//
+	// 	- `false`: The request fails.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 4CE1F661-75DD-4EBD-A4AD-057B26834ABB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1620,28 +2673,73 @@ func (s *CreateRepoBuildRuleResponse) SetBody(v *CreateRepoBuildRuleResponseBody
 type CreateRepoSourceCodeRepoRequest struct {
 	// Specifies whether to trigger image building when source code is committed. Valid values:
 	//
-	// *   `true`: triggers image building when source code is committed.
-	// *   `false`: does not trigger image building when source code is committed.
+	// 	- `true`: triggers image building when source code is committed.
+	//
+	// 	- `false`: does not trigger image building when source code is committed.
+	//
+	// example:
+	//
+	// true
 	AutoBuild *bool `json:"AutoBuild,omitempty" xml:"AutoBuild,omitempty"`
 	// The name of the source code repository.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// repo
 	CodeRepoName *string `json:"CodeRepoName,omitempty" xml:"CodeRepoName,omitempty"`
 	// The namespace to which the source code repository belongs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// namespace
 	CodeRepoNamespaceName *string `json:"CodeRepoNamespaceName,omitempty" xml:"CodeRepoNamespaceName,omitempty"`
 	// The type of the source code hosting platform. Valid values: `GITHUB`, `GITLAB`, `GITEE`, `CODE`, and `CODEUP`.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// GITHUB
 	CodeRepoType *string `json:"CodeRepoType,omitempty" xml:"CodeRepoType,omitempty"`
 	// Specifies whether to disable building caches. Valid values:
 	//
-	// *   `true`: disables building caches.
-	// *   `false`: enables building caches.
+	// 	- `true`: disables building caches.
+	//
+	// 	- `false`: enables building caches.
+	//
+	// example:
+	//
+	// false
 	DisableCacheBuild *bool `json:"DisableCacheBuild,omitempty" xml:"DisableCacheBuild,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-shac42yvqzvq****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// Specifies whether to enable Build With Servers Deployed Outside Chinese Mainland. Valid values:
 	//
-	// *   `true`: enables Build With Servers Deployed Outside Chinese Mainland.
-	// *   `false`: does not enable Build With Servers Deployed Outside Chinese Mainland.
+	// 	- `true`: enables Build With Servers Deployed Outside Chinese Mainland.
+	//
+	// 	- `false`: does not enable Build With Servers Deployed Outside Chinese Mainland.
+	//
+	// example:
+	//
+	// false
 	OverseaBuild *bool `json:"OverseaBuild,omitempty" xml:"OverseaBuild,omitempty"`
 	// The ID of the image repository.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// crr-gzsrlevmvoaq****
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 }
 
@@ -1695,10 +2793,22 @@ func (s *CreateRepoSourceCodeRepoRequest) SetRepoId(v string) *CreateRepoSourceC
 
 type CreateRepoSourceCodeRepoResponseBody struct {
 	// The return value.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 4CE1F661-75DD-4EBD-A4AD-057B26834ABB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1755,18 +2865,78 @@ func (s *CreateRepoSourceCodeRepoResponse) SetBody(v *CreateRepoSourceCodeRepoRe
 }
 
 type CreateRepoSyncRuleRequest struct {
-	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	NamespaceName       *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
-	RepoName            *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	SyncRuleName        *string `json:"SyncRuleName,omitempty" xml:"SyncRuleName,omitempty"`
-	SyncScope           *string `json:"SyncScope,omitempty" xml:"SyncScope,omitempty"`
-	SyncTrigger         *string `json:"SyncTrigger,omitempty" xml:"SyncTrigger,omitempty"`
-	TagFilter           *string `json:"TagFilter,omitempty" xml:"TagFilter,omitempty"`
-	TargetInstanceId    *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-hpdfkc6utbaq****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ns1
+	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	// example:
+	//
+	// repo1
+	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The rule that is used to filter repositories.
+	//
+	// >  This parameter is valid only when SyncScope is set to `NAMESPACE`.
+	//
+	// example:
+	//
+	// .*
+	RepoNameFilter *string `json:"RepoNameFilter,omitempty" xml:"RepoNameFilter,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rule
+	SyncRuleName *string `json:"SyncRuleName,omitempty" xml:"SyncRuleName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// REPO
+	SyncScope *string `json:"SyncScope,omitempty" xml:"SyncScope,omitempty"`
+	// example:
+	//
+	// PASSIVE
+	SyncTrigger *string `json:"SyncTrigger,omitempty" xml:"SyncTrigger,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// .*
+	TagFilter *string `json:"TagFilter,omitempty" xml:"TagFilter,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-ibxs3piklys3****
+	TargetInstanceId *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ns1
 	TargetNamespaceName *string `json:"TargetNamespaceName,omitempty" xml:"TargetNamespaceName,omitempty"`
-	TargetRegionId      *string `json:"TargetRegionId,omitempty" xml:"TargetRegionId,omitempty"`
-	TargetRepoName      *string `json:"TargetRepoName,omitempty" xml:"TargetRepoName,omitempty"`
-	TargetUserId        *string `json:"TargetUserId,omitempty" xml:"TargetUserId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shanghai
+	TargetRegionId *string `json:"TargetRegionId,omitempty" xml:"TargetRegionId,omitempty"`
+	// example:
+	//
+	// repo1
+	TargetRepoName *string `json:"TargetRepoName,omitempty" xml:"TargetRepoName,omitempty"`
+	// example:
+	//
+	// 12645940***
+	TargetUserId *string `json:"TargetUserId,omitempty" xml:"TargetUserId,omitempty"`
 }
 
 func (s CreateRepoSyncRuleRequest) String() string {
@@ -1789,6 +2959,11 @@ func (s *CreateRepoSyncRuleRequest) SetNamespaceName(v string) *CreateRepoSyncRu
 
 func (s *CreateRepoSyncRuleRequest) SetRepoName(v string) *CreateRepoSyncRuleRequest {
 	s.RepoName = &v
+	return s
+}
+
+func (s *CreateRepoSyncRuleRequest) SetRepoNameFilter(v string) *CreateRepoSyncRuleRequest {
+	s.RepoNameFilter = &v
 	return s
 }
 
@@ -1838,9 +3013,21 @@ func (s *CreateRepoSyncRuleRequest) SetTargetUserId(v string) *CreateRepoSyncRul
 }
 
 type CreateRepoSyncRuleResponseBody struct {
-	Code       *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess  *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// true
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// example:
+	//
+	// 8F8A0BA6-7F06-4BAE-B147-10BD6A25****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// crsr-gk5p2ns1kzns****
 	SyncRuleId *string `json:"SyncRuleId,omitempty" xml:"SyncRuleId,omitempty"`
 }
 
@@ -1902,16 +3089,62 @@ func (s *CreateRepoSyncRuleResponse) SetBody(v *CreateRepoSyncRuleResponseBody) 
 }
 
 type CreateRepoSyncTaskRequest struct {
-	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Override         *bool   `json:"Override,omitempty" xml:"Override,omitempty"`
-	RepoId           *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	Tag              *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-hpdfkc6utbaq****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// true
+	Override *bool `json:"Override,omitempty" xml:"Override,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// crr-iql7jalx4g0****
+	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// tag1
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-ibxs3piklys3****
 	TargetInstanceId *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
-	TargetNamespace  *string `json:"TargetNamespace,omitempty" xml:"TargetNamespace,omitempty"`
-	TargetRegionId   *string `json:"TargetRegionId,omitempty" xml:"TargetRegionId,omitempty"`
-	TargetRepoName   *string `json:"TargetRepoName,omitempty" xml:"TargetRepoName,omitempty"`
-	TargetTag        *string `json:"TargetTag,omitempty" xml:"TargetTag,omitempty"`
-	TargetUserId     *string `json:"TargetUserId,omitempty" xml:"TargetUserId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ns1
+	TargetNamespace *string `json:"TargetNamespace,omitempty" xml:"TargetNamespace,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	TargetRegionId *string `json:"TargetRegionId,omitempty" xml:"TargetRegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// repo1
+	TargetRepoName *string `json:"TargetRepoName,omitempty" xml:"TargetRepoName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// tag1
+	TargetTag *string `json:"TargetTag,omitempty" xml:"TargetTag,omitempty"`
+	// example:
+	//
+	// 12345***
+	TargetUserId *string `json:"TargetUserId,omitempty" xml:"TargetUserId,omitempty"`
 }
 
 func (s CreateRepoSyncTaskRequest) String() string {
@@ -1973,9 +3206,21 @@ func (s *CreateRepoSyncTaskRequest) SetTargetUserId(v string) *CreateRepoSyncTas
 }
 
 type CreateRepoSyncTaskResponseBody struct {
-	Code       *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess  *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// true
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// example:
+	//
+	// 8F8A0BA6-7F06-4BAE-B147-10BD6A25****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// rst-gbch330f0c****
 	SyncTaskId *string `json:"SyncTaskId,omitempty" xml:"SyncTaskId,omitempty"`
 }
 
@@ -2038,12 +3283,36 @@ func (s *CreateRepoSyncTaskResponse) SetBody(v *CreateRepoSyncTaskResponseBody) 
 
 type CreateRepoSyncTaskByRuleRequest struct {
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-hpdfkc6utbaq****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the image repository.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// crr-hnoq7j93or3k****
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	// The ID of the synchronization rule.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// crsr-o8n4dijbumgq****
 	SyncRuleId *string `json:"SyncRuleId,omitempty" xml:"SyncRuleId,omitempty"`
 	// The version of the image to be synchronized.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1.24
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
@@ -2077,15 +3346,32 @@ func (s *CreateRepoSyncTaskByRuleRequest) SetTag(v string) *CreateRepoSyncTaskBy
 
 type CreateRepoSyncTaskByRuleResponseBody struct {
 	// The return value.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   `true`: The request is successful.
-	// *   `false`: The request fails.
+	// 	- `true`: The request is successful.
+	//
+	// 	- `false`: The request fails.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 17A4C658-AE8F-4A08-821F-EDCB5FC74EE8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The ID of the synchronization task.
+	//
+	// example:
+	//
+	// rst-biu4u4pm4it5****
 	SyncTaskId *string `json:"SyncTaskId,omitempty" xml:"SyncTaskId,omitempty"`
 }
 
@@ -2148,14 +3434,44 @@ func (s *CreateRepoSyncTaskByRuleResponse) SetBody(v *CreateRepoSyncTaskByRuleRe
 
 type CreateRepoTagRequest struct {
 	// The source image tag.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// v1
 	FromTag *string `json:"FromTag,omitempty" xml:"FromTag,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-shac42yvqzv****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The name of the namespace.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ns
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
 	// The name of the image repository.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// repo1
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	// The image tag that you want to create.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// v2
 	ToTag *string `json:"ToTag,omitempty" xml:"ToTag,omitempty"`
 }
 
@@ -2194,10 +3510,22 @@ func (s *CreateRepoTagRequest) SetToTag(v string) *CreateRepoTagRequest {
 
 type CreateRepoTagResponseBody struct {
 	// The return value.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// C4C7DD0C-C9D6-437A-A7EE-8BY*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2255,17 +3583,44 @@ func (s *CreateRepoTagResponse) SetBody(v *CreateRepoTagResponseBody) *CreateRep
 
 type CreateRepoTagScanTaskRequest struct {
 	// The digest of the image.
+	//
+	// example:
+	//
+	// sha256:815386ebbe9a3490f38785ab11bda34ec8dacf4634af77b8912832d4f85dca04
 	Digest *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-xkx6vujuhay0****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the image repository.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// crr-xwvi3osiy4ff****
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	// The type of the scanning engine.
 	//
-	// *   `SAS_SCAN_SERVICE`: Security Center scan engine (paid service)
-	// *   `ACR_SCAN_SERVICE`: Container Registry scan engine
+	// 	- `SAS_SCAN_SERVICE`: Security Center scan engine (paid service)
+	//
+	// 	- `ACR_SCAN_SERVICE`: Container Registry scan engine
+	//
+	// example:
+	//
+	// ACR_SCAN_SERVICE
 	ScanService *string `json:"ScanService,omitempty" xml:"ScanService,omitempty"`
 	// The version of the image.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1.24
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
@@ -2304,13 +3659,26 @@ func (s *CreateRepoTagScanTaskRequest) SetTag(v string) *CreateRepoTagScanTaskRe
 
 type CreateRepoTagScanTaskResponseBody struct {
 	// The return value.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   `true`: The request is successful.
-	// *   `false`: The request fails.
+	// 	- `true`: The request is successful.
+	//
+	// 	- `false`: The request fails.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// BC648259-91A7-4502-BED3-EDF64361FA83
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2368,27 +3736,64 @@ func (s *CreateRepoTagScanTaskResponse) SetBody(v *CreateRepoTagScanTaskResponse
 
 type CreateRepoTriggerRequest struct {
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-xkx6vujuhay0****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the image repository.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// crr-xwvi3osiy4ff****
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	// The name of the trigger.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// trigger1
 	TriggerName *string `json:"TriggerName,omitempty" xml:"TriggerName,omitempty"`
 	// The image tag based on which the trigger is set.
 	//
 	// >
 	//
-	// *   If `TriggerType` is set to `ALL`, `TriggerTag` can be set to a string or an array, for example, `*`.
+	// 	- If `TriggerType` is set to `ALL`, `TriggerTag` can be set to a string or an array, for example, `*`.
 	//
-	// *   If `TriggerType` is set to `TAG_LIST`, `TriggerTag` must be set to an array, for example, `[1]`.
-	// *   If `TriggerType` is set to `TAG_REG_EXP`, `TriggerTag` must be set to a string, for example, `*`.
+	// 	- If `TriggerType` is set to `TAG_LIST`, `TriggerTag` must be set to an array, for example, `[1]`.
+	//
+	// 	- If `TriggerType` is set to `TAG_REG_EXP`, `TriggerTag` must be set to a string, for example, `*`.
+	//
+	// example:
+	//
+	// [1]
 	TriggerTag *string `json:"TriggerTag,omitempty" xml:"TriggerTag,omitempty"`
 	// The type of the trigger. Valid values:
 	//
-	// *   `ALL`: a trigger that supports both tags and regular expressions.
-	// *   `TAG_LIST`: a tag-based trigger.
-	// *   `TAG_REG_EXP`: a regular expression-based trigger.
+	// 	- `ALL`: a trigger that supports both tags and regular expressions.
+	//
+	// 	- `TAG_LIST`: a tag-based trigger.
+	//
+	// 	- `TAG_REG_EXP`: a regular expression-based trigger.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ALL
 	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
 	// The URL of the trigger.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://www.mysite.com
 	TriggerUrl *string `json:"TriggerUrl,omitempty" xml:"TriggerUrl,omitempty"`
 }
 
@@ -2432,12 +3837,28 @@ func (s *CreateRepoTriggerRequest) SetTriggerUrl(v string) *CreateRepoTriggerReq
 
 type CreateRepoTriggerResponseBody struct {
 	// The return value.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// B79F5E0E-8770-407D-BCB6-ECF4BA9C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The ID of the trigger.
+	//
+	// example:
+	//
+	// crw-0z4pf81pgz35****
 	TriggerId *string `json:"TriggerId,omitempty" xml:"TriggerId,omitempty"`
 }
 
@@ -2500,24 +3921,64 @@ func (s *CreateRepoTriggerResponse) SetBody(v *CreateRepoTriggerResponseBody) *C
 
 type CreateRepositoryRequest struct {
 	// The description of the repository.
+	//
+	// example:
+	//
+	// repo1
 	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-xkx6vujuhay0****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The name of the image repository.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// repo1
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	// The name of the namespace to which the image repository belongs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// namespace01
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 	// The type of the repository. Valid values:
 	//
-	// *   `PUBLIC`: The repository is a public repository.
-	// *   `PRIVATE`: The repository is a private repository.
+	// 	- `PUBLIC`: The repository is a public repository.
+	//
+	// 	- `PRIVATE`: The repository is a private repository.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PRIVATE
 	RepoType *string `json:"RepoType,omitempty" xml:"RepoType,omitempty"`
 	// The summary about the repository.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// repo1
 	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
 	// Specifies whether to enable the feature of image tag immutability. Valid values:
 	//
-	// *   `true`: enables the feature of image tag immutability.
-	// *   `false`: disables the feature of image tag immutability.
+	// 	- `true`: enables the feature of image tag immutability.
+	//
+	// 	- `false`: disables the feature of image tag immutability.
+	//
+	// example:
+	//
+	// true
 	TagImmutability *bool `json:"TagImmutability,omitempty" xml:"TagImmutability,omitempty"`
 }
 
@@ -2566,12 +4027,28 @@ func (s *CreateRepositoryRequest) SetTagImmutability(v bool) *CreateRepositoryRe
 
 type CreateRepositoryResponseBody struct {
 	// The return value.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The ID of the image repository.
+	//
+	// example:
+	//
+	// crr-xwvi3osiy4ff****
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 886FB272-15C3-44FC-AA54-F4ABD5B93A28
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2633,8 +4110,22 @@ func (s *CreateRepositoryResponse) SetBody(v *CreateRepositoryResponseBody) *Cre
 }
 
 type DeleteArtifactLifecycleRuleRequest struct {
+	// The ID of the Container Registry instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-brlg4cbj2ylkrqqq
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RuleId     *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The rule ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cralr-3v8pao9k7chb8q62
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
 func (s DeleteArtifactLifecycleRuleRequest) String() string {
@@ -2656,8 +4147,27 @@ func (s *DeleteArtifactLifecycleRuleRequest) SetRuleId(v string) *DeleteArtifact
 }
 
 type DeleteArtifactLifecycleRuleResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The return value.
+	//
+	// example:
+	//
+	// success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// 	- `true`: The request is successful.
+	//
+	// 	- `false`: The request fails.
+	//
+	// example:
+	//
+	// True
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 001AB638-C99B-5A27-8AC9-B2DBABFFEBB5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2713,10 +4223,136 @@ func (s *DeleteArtifactLifecycleRuleResponse) SetBody(v *DeleteArtifactLifecycle
 	return s
 }
 
+type DeleteArtifactSubscriptionRuleRequest struct {
+	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-c0o11woew0k****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The rule ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// crasr-mdbpung4i1rm****
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+}
+
+func (s DeleteArtifactSubscriptionRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteArtifactSubscriptionRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteArtifactSubscriptionRuleRequest) SetInstanceId(v string) *DeleteArtifactSubscriptionRuleRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DeleteArtifactSubscriptionRuleRequest) SetRuleId(v string) *DeleteArtifactSubscriptionRuleRequest {
+	s.RuleId = &v
+	return s
+}
+
+type DeleteArtifactSubscriptionRuleResponseBody struct {
+	// The return value.
+	//
+	// example:
+	//
+	// success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the API request is successful. Valid values:
+	//
+	// 	- `true`: The request is successful.
+	//
+	// 	- `false`: The request fails.
+	//
+	// example:
+	//
+	// true
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 02B27D80-FD32-5155-931A-93700779BB9E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteArtifactSubscriptionRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteArtifactSubscriptionRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteArtifactSubscriptionRuleResponseBody) SetCode(v string) *DeleteArtifactSubscriptionRuleResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteArtifactSubscriptionRuleResponseBody) SetIsSuccess(v bool) *DeleteArtifactSubscriptionRuleResponseBody {
+	s.IsSuccess = &v
+	return s
+}
+
+func (s *DeleteArtifactSubscriptionRuleResponseBody) SetRequestId(v string) *DeleteArtifactSubscriptionRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteArtifactSubscriptionRuleResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteArtifactSubscriptionRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteArtifactSubscriptionRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteArtifactSubscriptionRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteArtifactSubscriptionRuleResponse) SetHeaders(v map[string]*string) *DeleteArtifactSubscriptionRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteArtifactSubscriptionRuleResponse) SetStatusCode(v int32) *DeleteArtifactSubscriptionRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteArtifactSubscriptionRuleResponse) SetBody(v *DeleteArtifactSubscriptionRuleResponseBody) *DeleteArtifactSubscriptionRuleResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteChainRequest struct {
 	// The ID of the delivery pipeline.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// chi-02ymhtwl3cq8****
 	ChainId *string `json:"ChainId,omitempty" xml:"ChainId,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-4cdrlqmhn4gm****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -2740,10 +4376,22 @@ func (s *DeleteChainRequest) SetInstanceId(v string) *DeleteChainRequest {
 
 type DeleteChainResponseBody struct {
 	// The return value.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// DB1809A8-E1C8-5707-BAF8-D4FC1C11****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2801,8 +4449,20 @@ func (s *DeleteChainResponse) SetBody(v *DeleteChainResponseBody) *DeleteChainRe
 
 type DeleteChartNamespaceRequest struct {
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-xkx6vujuhay0****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The name of the chart namespace that you want to delete.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ns2
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
 }
 
@@ -2826,13 +4486,26 @@ func (s *DeleteChartNamespaceRequest) SetNamespaceName(v string) *DeleteChartNam
 
 type DeleteChartNamespaceResponseBody struct {
 	// The return value.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   `true`: The request is successful.
-	// *   `false`: The request fails.
+	// 	- `true`: The request is successful.
+	//
+	// 	- `false`: The request fails.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// FEC62DF1-1394-467F-A69F-4BC1BA29F383
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2890,14 +4563,44 @@ func (s *DeleteChartNamespaceResponse) SetBody(v *DeleteChartNamespaceResponseBo
 
 type DeleteChartReleaseRequest struct {
 	// The name of the chart.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// chart3
 	Chart *string `json:"Chart,omitempty" xml:"Chart,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-xkx6vujuhay0****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The version of the chart that you want to delete.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.1.0
 	Release *string `json:"Release,omitempty" xml:"Release,omitempty"`
 	// The name of the repository.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// repo1
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	// The name of the namespace.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ns1
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 }
 
@@ -2936,10 +4639,22 @@ func (s *DeleteChartReleaseRequest) SetRepoNamespaceName(v string) *DeleteChartR
 
 type DeleteChartReleaseResponseBody struct {
 	// The return value.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// C2D6CE47-6DEF-45F4-A1AC-90F3AFBA751F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2997,10 +4712,28 @@ func (s *DeleteChartReleaseResponse) SetBody(v *DeleteChartReleaseResponseBody) 
 
 type DeleteChartRepositoryRequest struct {
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-xkx6vujuhay****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The name of the repository.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// repo01
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	// The name of the namespace to which the repository belongs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// namespace01
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 }
 
@@ -3029,13 +4762,26 @@ func (s *DeleteChartRepositoryRequest) SetRepoNamespaceName(v string) *DeleteCha
 
 type DeleteChartRepositoryResponseBody struct {
 	// The return value.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   `true`: The request is successful.
-	// *   `false`: The request fails.
+	// 	- `true`: The request is successful.
+	//
+	// 	- `false`: The request fails.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 12589EF7-96E2-4554-AAD7-F7209E88CAD3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3093,8 +4839,16 @@ func (s *DeleteChartRepositoryResponse) SetBody(v *DeleteChartRepositoryResponse
 
 type DeleteEventCenterRuleRequest struct {
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// cri-xkx6vujuhay0****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the event notification rule.
+	//
+	// example:
+	//
+	// crecr-n6pbhgjx*****
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
@@ -3118,8 +4872,16 @@ func (s *DeleteEventCenterRuleRequest) SetRuleId(v string) *DeleteEventCenterRul
 
 type DeleteEventCenterRuleResponseBody struct {
 	// The return value.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 031572FA-7D8F-4C05-B790-1071E0E05DE6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3172,15 +4934,38 @@ func (s *DeleteEventCenterRuleResponse) SetBody(v *DeleteEventCenterRuleResponse
 
 type DeleteInstanceEndpointAclPolicyRequest struct {
 	// The type of the endpoint. Set the value to Internet.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// internet
 	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
 	// The CIDR block.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 127.0.0.1/32
 	Entry *string `json:"Entry,omitempty" xml:"Entry,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-xkx6vujuhay0****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The name of the module that you want to access. Valid values:
 	//
-	// *   `Registry`: the image repository.
-	// *   `Chart`: a Helm chart.
+	// 	- `Registry`: the image repository.
+	//
+	// 	- `Chart`: a Helm chart.
+	//
+	// example:
+	//
+	// Chart
 	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
 }
 
@@ -3214,13 +4999,26 @@ func (s *DeleteInstanceEndpointAclPolicyRequest) SetModuleName(v string) *Delete
 
 type DeleteInstanceEndpointAclPolicyResponseBody struct {
 	// The return value.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   `true`: The request is successful.
-	// *   `false`: The request fails.
+	// 	- `true`: The request is successful.
+	//
+	// 	- `false`: The request fails.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// BDB1F145-F0FF-44E9-AADF-A678642A7C7D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3278,15 +5076,38 @@ func (s *DeleteInstanceEndpointAclPolicyResponse) SetBody(v *DeleteInstanceEndpo
 
 type DeleteInstanceVpcEndpointLinkedVpcRequest struct {
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-xkx6vujuhay0****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The name of the module that you want to access. Valid values:
 	//
-	// *   `Registry`: the image repository.
-	// *   `Chart`: a Helm chart.
+	// 	- `Registry`: the image repository.
+	//
+	// 	- `Chart`: a Helm chart.
+	//
+	// example:
+	//
+	// Chart
 	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
 	// The ID of the VPC.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vpc-uf6pa68zxnnlc48dd****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// The ID of the vSwitch.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vpc-uf6pa68zxnnlc48dd****
 	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
 }
 
@@ -3320,13 +5141,26 @@ func (s *DeleteInstanceVpcEndpointLinkedVpcRequest) SetVswitchId(v string) *Dele
 
 type DeleteInstanceVpcEndpointLinkedVpcResponseBody struct {
 	// The return value.
+	//
+	// example:
+	//
+	// true
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   `true`: The request is successful.
-	// *   `false`: The request fails.
+	// 	- `true`: The request is successful.
+	//
+	// 	- `false`: The request fails.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 20FE7A66-0044-4E23-BBEC-C434EADBD7AF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3384,8 +5218,20 @@ func (s *DeleteInstanceVpcEndpointLinkedVpcResponse) SetBody(v *DeleteInstanceVp
 
 type DeleteNamespaceRequest struct {
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-xkx6vujuhay0****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The name of the namespace.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ns3
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
 }
 
@@ -3409,10 +5255,22 @@ func (s *DeleteNamespaceRequest) SetNamespaceName(v string) *DeleteNamespaceRequ
 
 type DeleteNamespaceResponseBody struct {
 	// The return value.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// BA08C185-8F76-48D7-ACB3-BA11BF2778F9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3470,10 +5328,28 @@ func (s *DeleteNamespaceResponse) SetBody(v *DeleteNamespaceResponseBody) *Delet
 
 type DeleteRepoBuildRuleRequest struct {
 	// The ID of the image building rule.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// crbr-36tffn0kouvi****
 	BuildRuleId *string `json:"BuildRuleId,omitempty" xml:"BuildRuleId,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-xkx6vujuhay0****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the image repository.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// crr-xwvi3osiy4ff****
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 }
 
@@ -3502,10 +5378,22 @@ func (s *DeleteRepoBuildRuleRequest) SetRepoId(v string) *DeleteRepoBuildRuleReq
 
 type DeleteRepoBuildRuleResponseBody struct {
 	// The return value.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 2E3F55BF-FA7B-454E-B2C6-85265E243ADC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3563,8 +5451,20 @@ func (s *DeleteRepoBuildRuleResponse) SetBody(v *DeleteRepoBuildRuleResponseBody
 
 type DeleteRepoSyncRuleRequest struct {
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-hpdfkc6utbaq****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the synchronization rule.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// crsr-gk5p2ns1kzns****
 	SyncRuleId *string `json:"SyncRuleId,omitempty" xml:"SyncRuleId,omitempty"`
 }
 
@@ -3588,10 +5488,22 @@ func (s *DeleteRepoSyncRuleRequest) SetSyncRuleId(v string) *DeleteRepoSyncRuleR
 
 type DeleteRepoSyncRuleResponseBody struct {
 	// The return value.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 72DD4198-1BB9-47A3-BC01-EAD1A6D5E173
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3649,10 +5561,28 @@ func (s *DeleteRepoSyncRuleResponse) SetBody(v *DeleteRepoSyncRuleResponseBody) 
 
 type DeleteRepoTagRequest struct {
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-xkx6vujuhay****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the image repository.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// crr-xwvi3osiy4ff****
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	// The tag of the image.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1.24
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
@@ -3681,10 +5611,22 @@ func (s *DeleteRepoTagRequest) SetTag(v string) *DeleteRepoTagRequest {
 
 type DeleteRepoTagResponseBody struct {
 	// The return value.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 96E66B3A-C81A-48BE-ACD6-C0AB1F9313C0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3742,10 +5684,28 @@ func (s *DeleteRepoTagResponse) SetBody(v *DeleteRepoTagResponseBody) *DeleteRep
 
 type DeleteRepoTriggerRequest struct {
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-xkx6vujuhay0****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the image repository.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// crr-xwvi3osiy4ff****
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	// The ID of the trigger.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// crw-0z4pf81pgz35****
 	TriggerId *string `json:"TriggerId,omitempty" xml:"TriggerId,omitempty"`
 }
 
@@ -3774,13 +5734,26 @@ func (s *DeleteRepoTriggerRequest) SetTriggerId(v string) *DeleteRepoTriggerRequ
 
 type DeleteRepoTriggerResponseBody struct {
 	// The return value.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   `true`: The request is successful.
-	// *   `false`: The request fails.
+	// 	- `true`: The request is successful.
+	//
+	// 	- `false`: The request fails.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 85180AE4-9A57-48F8-9EF9-68ECCE54B552
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3838,12 +5811,30 @@ func (s *DeleteRepoTriggerResponse) SetBody(v *DeleteRepoTriggerResponseBody) *D
 
 type DeleteRepositoryRequest struct {
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-xkx6vujuhay0****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the image repository.
+	//
+	// example:
+	//
+	// crr-l4933wbcmun2****
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	// The name of the repository.
+	//
+	// example:
+	//
+	// test-repo
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	// The name of the namespace to which the repository belongs.
+	//
+	// example:
+	//
+	// test-namespace
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 }
 
@@ -3877,13 +5868,26 @@ func (s *DeleteRepositoryRequest) SetRepoNamespaceName(v string) *DeleteReposito
 
 type DeleteRepositoryResponseBody struct {
 	// Return values
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   `true`: The request is successful.
-	// *   `false`: The request fails.
+	// 	- `true`: The request is successful.
+	//
+	// 	- `false`: The request fails.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 47DD9D56-09A0-4C52-B520-C3805DBAB96B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3940,11 +5944,28 @@ func (s *DeleteRepositoryResponse) SetBody(v *DeleteRepositoryResponseBody) *Del
 }
 
 type GetArtifactBuildRuleRequest struct {
+	// example:
+	//
+	// ACCELERATED_IMAGE
 	ArtifactType *string `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
-	BuildRuleId  *string `json:"BuildRuleId,omitempty" xml:"BuildRuleId,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ScopeId      *string `json:"ScopeId,omitempty" xml:"ScopeId,omitempty"`
-	ScopeType    *string `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
+	// example:
+	//
+	// crabr-o2670wqz2n70****
+	BuildRuleId *string `json:"BuildRuleId,omitempty" xml:"BuildRuleId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-xkx6vujuhay0****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// crr-8dz3aedjqlmk****
+	ScopeId *string `json:"ScopeId,omitempty" xml:"ScopeId,omitempty"`
+	// example:
+	//
+	// REPOSITORY
+	ScopeType *string `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
 }
 
 func (s GetArtifactBuildRuleRequest) String() string {
@@ -3981,14 +6002,35 @@ func (s *GetArtifactBuildRuleRequest) SetScopeType(v string) *GetArtifactBuildRu
 }
 
 type GetArtifactBuildRuleResponseBody struct {
-	ArtifactType *string                                     `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
-	BuildRuleId  *string                                     `json:"BuildRuleId,omitempty" xml:"BuildRuleId,omitempty"`
-	Code         *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess    *bool                                       `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	Parameters   *GetArtifactBuildRuleResponseBodyParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Struct"`
-	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ScopeId      *string                                     `json:"ScopeId,omitempty" xml:"ScopeId,omitempty"`
-	ScopeType    *string                                     `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
+	// example:
+	//
+	// ACCELERATED_IMAGE
+	ArtifactType *string `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
+	// example:
+	//
+	// crabr-o2670wqz2n70****
+	BuildRuleId *string `json:"BuildRuleId,omitempty" xml:"BuildRuleId,omitempty"`
+	// example:
+	//
+	// success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// true
+	IsSuccess  *bool                                       `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	Parameters *GetArtifactBuildRuleResponseBodyParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Struct"`
+	// example:
+	//
+	// 7A3E98F6-296C-54AC-A612-B75E7777D4C1
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// crr-8dz3aedjqlmk****
+	ScopeId *string `json:"ScopeId,omitempty" xml:"ScopeId,omitempty"`
+	// example:
+	//
+	// REPOSITORY
+	ScopeType *string `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
 }
 
 func (s GetArtifactBuildRuleResponseBody) String() string {
@@ -4040,7 +6082,8 @@ func (s *GetArtifactBuildRuleResponseBody) SetScopeType(v string) *GetArtifactBu
 }
 
 type GetArtifactBuildRuleResponseBodyParameters struct {
-	ImageIndexOnly *bool `json:"ImageIndexOnly,omitempty" xml:"ImageIndexOnly,omitempty"`
+	ImageIndexOnly *bool   `json:"ImageIndexOnly,omitempty" xml:"ImageIndexOnly,omitempty"`
+	PriorityFile   *string `json:"PriorityFile,omitempty" xml:"PriorityFile,omitempty"`
 }
 
 func (s GetArtifactBuildRuleResponseBodyParameters) String() string {
@@ -4053,6 +6096,11 @@ func (s GetArtifactBuildRuleResponseBodyParameters) GoString() string {
 
 func (s *GetArtifactBuildRuleResponseBodyParameters) SetImageIndexOnly(v bool) *GetArtifactBuildRuleResponseBodyParameters {
 	s.ImageIndexOnly = &v
+	return s
+}
+
+func (s *GetArtifactBuildRuleResponseBodyParameters) SetPriorityFile(v string) *GetArtifactBuildRuleResponseBodyParameters {
+	s.PriorityFile = &v
 	return s
 }
 
@@ -4087,8 +6135,20 @@ func (s *GetArtifactBuildRuleResponse) SetBody(v *GetArtifactBuildRuleResponseBo
 
 type GetArtifactBuildTaskRequest struct {
 	// The ID of the artifact building task.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// i2a-1yu****
 	BuildTaskId *string `json:"BuildTaskId,omitempty" xml:"BuildTaskId,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-shac42yvqzvq****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -4113,32 +6173,68 @@ func (s *GetArtifactBuildTaskRequest) SetInstanceId(v string) *GetArtifactBuildT
 type GetArtifactBuildTaskResponseBody struct {
 	// The type of the artifact building task. Valid values:
 	//
-	// *   `IMAGE_TO_ACCELERATED_IMAGE`: builds accelerated images for Container Service for Kubernetes (ACK) clusters.
-	// *   `IMAGE_TO_ECI_ACCELERATED_IMAGE`: builds accelerated images for elastic container instances.
+	// 	- `IMAGE_TO_ACCELERATED_IMAGE`: builds accelerated images for Container Service for Kubernetes (ACK) clusters.
+	//
+	// 	- `IMAGE_TO_ECI_ACCELERATED_IMAGE`: builds accelerated images for elastic container instances.
+	//
+	// example:
+	//
+	// IMAGE_TO_ACCELERATED_IMAGE
 	ArtifactBuildType *string `json:"ArtifactBuildType,omitempty" xml:"ArtifactBuildType,omitempty"`
 	// The ID of the artifact building task.
+	//
+	// example:
+	//
+	// i2a-1yu****
 	BuildTaskId *string `json:"BuildTaskId,omitempty" xml:"BuildTaskId,omitempty"`
 	// The return value.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The time when the artifact building task ends.
+	//
+	// example:
+	//
+	// 156871880
 	EndTime      *int32    `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	Instructions []*string `json:"Instructions,omitempty" xml:"Instructions,omitempty" type:"Repeated"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// C4C7DD0C-C9D6-437A-A7EE-121EFD70D002
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The information about the source artifact.
 	SourceArtifact *GetArtifactBuildTaskResponseBodySourceArtifact `json:"SourceArtifact,omitempty" xml:"SourceArtifact,omitempty" type:"Struct"`
 	// The time when the artifact building task starts.
+	//
+	// example:
+	//
+	// 156871881
 	StartTime *int32 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The artifact that is built in the task.
 	TargetArtifact *GetArtifactBuildTaskResponseBodyTargetArtifact `json:"TargetArtifact,omitempty" xml:"TargetArtifact,omitempty" type:"Struct"`
 	// The status of the artifact that is built in the task. Valid values:
 	//
-	// *   `PENDING`: The artifact is being scheduled.
-	// *   `BUILDING`: The artifact is being built.
-	// *   `SUCCESS`: The artifact is built.
-	// *   `FAILED`: The artifact fails to be built.
+	// 	- `PENDING`: The artifact is being scheduled.
+	//
+	// 	- `BUILDING`: The artifact is being built.
+	//
+	// 	- `SUCCESS`: The artifact is built.
+	//
+	// 	- `FAILED`: The artifact fails to be built.
+	//
+	// example:
+	//
+	// BUILDING
 	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
 }
 
@@ -4207,10 +6303,22 @@ func (s *GetArtifactBuildTaskResponseBody) SetTaskStatus(v string) *GetArtifactB
 
 type GetArtifactBuildTaskResponseBodySourceArtifact struct {
 	// The type of the artifact that is built in the task. The value can only be IMAGE.
+	//
+	// example:
+	//
+	// IMAGE
 	ArtifactType *string `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
 	// The ID of the repository to which the source artifact belongs. The repository can only be an image repository.
+	//
+	// example:
+	//
+	// cri-shac42yvqzvq****
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	// The version of the artifact. The artifact can only be an image.
+	//
+	// example:
+	//
+	// latest
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
@@ -4239,10 +6347,22 @@ func (s *GetArtifactBuildTaskResponseBodySourceArtifact) SetVersion(v string) *G
 
 type GetArtifactBuildTaskResponseBodyTargetArtifact struct {
 	// The type of the artifact that is built in the task. The value can only be IMAGE.
+	//
+	// example:
+	//
+	// IMAGE
 	ArtifactType *string `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
 	// The ID of the repository to which the artifact that is built in the task belongs. The repository can only be an image repository. The value is the same as the ID of the repository to which the source artifact belongs.
+	//
+	// example:
+	//
+	// crr-1234567
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	// The version of the artifact that is built in the task. The artifact can only be an image.
+	//
+	// example:
+	//
+	// latest_accelerated
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
@@ -4299,8 +6419,22 @@ func (s *GetArtifactBuildTaskResponse) SetBody(v *GetArtifactBuildTaskResponseBo
 }
 
 type GetArtifactLifecycleRuleRequest struct {
+	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-hpdfkc6utbaq****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RuleId     *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The rule ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cralr-a18bkiajy81****
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
 func (s GetArtifactLifecycleRuleRequest) String() string {
@@ -4322,22 +6456,106 @@ func (s *GetArtifactLifecycleRuleRequest) SetRuleId(v string) *GetArtifactLifecy
 }
 
 type GetArtifactLifecycleRuleResponseBody struct {
-	Auto              *bool   `json:"Auto,omitempty" xml:"Auto,omitempty"`
-	Code              *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	CreateTime        *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	EnableDeleteTag   *bool   `json:"EnableDeleteTag,omitempty" xml:"EnableDeleteTag,omitempty"`
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IsSuccess         *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	ModifiedTime      *int64  `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	NamespaceName     *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
-	NextTime          *int64  `json:"NextTime,omitempty" xml:"NextTime,omitempty"`
-	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RetentionTagCount *int64  `json:"RetentionTagCount,omitempty" xml:"RetentionTagCount,omitempty"`
-	RuleId            *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	ScheduleTime      *string `json:"ScheduleTime,omitempty" xml:"ScheduleTime,omitempty"`
-	Scope             *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	TagRegexp         *string `json:"TagRegexp,omitempty" xml:"TagRegexp,omitempty"`
+	// Indicates whether the lifecycle management rule is automatically executed.
+	//
+	// example:
+	//
+	// true
+	Auto *bool `json:"Auto,omitempty" xml:"Auto,omitempty"`
+	// The return value.
+	//
+	// example:
+	//
+	// success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The time when the lifecycle management rule was created.
+	//
+	// example:
+	//
+	// 1571926439000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Indicates whether lifecycle management is enabled for the artifact.
+	//
+	// example:
+	//
+	// true
+	EnableDeleteTag *bool `json:"EnableDeleteTag,omitempty" xml:"EnableDeleteTag,omitempty"`
+	// The instance ID.
+	//
+	// example:
+	//
+	// cri-xkx6vujuhay0****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Indicates whether the API request is successful. Valid values:
+	//
+	// 	- `true`: The request is successful.
+	//
+	// 	- `false`: The request fails.
+	//
+	// example:
+	//
+	// true
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The time when the lifecycle management rule was last modified.
+	//
+	// example:
+	//
+	// 1638259914000
+	ModifiedTime *int64 `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The name of the namespace.
+	//
+	// example:
+	//
+	// test-namespace
+	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	// The time when the lifecycle management rule is next executed.
+	//
+	// example:
+	//
+	// 1701878400000
+	NextTime *int64 `json:"NextTime,omitempty" xml:"NextTime,omitempty"`
+	// The name of the image repository.
+	//
+	// example:
+	//
+	// test-repo
+	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 724402D0-75CD-4794-BC20-7D37208****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of retained images.
+	//
+	// example:
+	//
+	// 30
+	RetentionTagCount *int64 `json:"RetentionTagCount,omitempty" xml:"RetentionTagCount,omitempty"`
+	// The rule ID.
+	//
+	// example:
+	//
+	// cralr-a18bkiajy8****
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The execution cycle of the lifecycle management rule.
+	//
+	// example:
+	//
+	// WEEK
+	ScheduleTime *string `json:"ScheduleTime,omitempty" xml:"ScheduleTime,omitempty"`
+	// The deletion scope of artifacts.
+	//
+	// example:
+	//
+	// INSTANCE
+	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// The regular expression that indicates which image tags are retained.
+	//
+	// example:
+	//
+	// .*-alpine
+	TagRegexp *string `json:"TagRegexp,omitempty" xml:"TagRegexp,omitempty"`
 }
 
 func (s GetArtifactLifecycleRuleResponseBody) String() string {
@@ -4457,8 +6675,873 @@ func (s *GetArtifactLifecycleRuleResponse) SetBody(v *GetArtifactLifecycleRuleRe
 	return s
 }
 
+type GetArtifactSubscriptionRuleRequest struct {
+	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-c0o11woew0k****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The rule ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// crasr-mdbpung4i1rm****
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+}
+
+func (s GetArtifactSubscriptionRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetArtifactSubscriptionRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetArtifactSubscriptionRuleRequest) SetInstanceId(v string) *GetArtifactSubscriptionRuleRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetArtifactSubscriptionRuleRequest) SetRuleId(v string) *GetArtifactSubscriptionRuleRequest {
+	s.RuleId = &v
+	return s
+}
+
+type GetArtifactSubscriptionRuleResponseBody struct {
+	// Indicates whether an acceleration link is enabled for image subscription. The subscription acceleration feature is in public preview. The feature is optimized based on scheduling policies and network links to accelerate image subscription.
+	//
+	// example:
+	//
+	// true
+	Accelerate *bool `json:"Accelerate,omitempty" xml:"Accelerate,omitempty"`
+	// The return value.
+	//
+	// example:
+	//
+	// success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The time when the subscription rule was created.
+	//
+	// example:
+	//
+	// 1570759546000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The instance ID.
+	//
+	// example:
+	//
+	// cri-hpdfkc6utbaq****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Indicates whether the API request is successful. Valid values:
+	//
+	// 	- `true`: The request is successful.
+	//
+	// 	- `false`: The request fails.
+	//
+	// example:
+	//
+	// true
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The time when the subscription rule was modified.
+	//
+	// example:
+	//
+	// 1638259914000
+	ModifiedTime *int64 `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The name of the Container Registry namespace.
+	//
+	// example:
+	//
+	// test-ns
+	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	// Indicates whether the original image is overwritten.
+	//
+	// example:
+	//
+	// true
+	Override *bool `json:"Override,omitempty" xml:"Override,omitempty"`
+	// The operating system and architecture. If the source repository contains multi-arch images, only the images with the specified operating system and architecture are subscribed to the destination repository of the Enterprise Edition instance.
+	Platform []*string `json:"Platform,omitempty" xml:"Platform,omitempty" type:"Repeated"`
+	// The name of the Container Registry repository.
+	//
+	// example:
+	//
+	// test-repo
+	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// D4978DCC-ECBD-40B0-A714-EE6959B22C77
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The rule ID.
+	//
+	// example:
+	//
+	// crasr-mdbpung4i1rm****
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The name of the source namespace.
+	//
+	// example:
+	//
+	// library
+	SourceNamespaceName *string `json:"SourceNamespaceName,omitempty" xml:"SourceNamespaceName,omitempty"`
+	// The source of the artifact.
+	//
+	// Valid values:
+	//
+	// 	- DOCKER_HUB: Docker Hub
+	//
+	// 	- GCR: GCR
+	//
+	// 	- QUAY: Quay.io
+	//
+	// example:
+	//
+	// DOCKER_HUB
+	SourceProvider *string `json:"SourceProvider,omitempty" xml:"SourceProvider,omitempty"`
+	// The source repository.
+	//
+	// example:
+	//
+	// nginx
+	SourceRepoName *string `json:"SourceRepoName,omitempty" xml:"SourceRepoName,omitempty"`
+	// The number of subscribed images.
+	//
+	// example:
+	//
+	// 1
+	TagCount *int64 `json:"TagCount,omitempty" xml:"TagCount,omitempty"`
+	// The image tag in the subscription source repository. Regular expressions are supported.
+	//
+	// example:
+	//
+	// release-v.*
+	TagRegexp *string `json:"TagRegexp,omitempty" xml:"TagRegexp,omitempty"`
+}
+
+func (s GetArtifactSubscriptionRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetArtifactSubscriptionRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetArtifactSubscriptionRuleResponseBody) SetAccelerate(v bool) *GetArtifactSubscriptionRuleResponseBody {
+	s.Accelerate = &v
+	return s
+}
+
+func (s *GetArtifactSubscriptionRuleResponseBody) SetCode(v string) *GetArtifactSubscriptionRuleResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetArtifactSubscriptionRuleResponseBody) SetCreateTime(v int64) *GetArtifactSubscriptionRuleResponseBody {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetArtifactSubscriptionRuleResponseBody) SetInstanceId(v string) *GetArtifactSubscriptionRuleResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetArtifactSubscriptionRuleResponseBody) SetIsSuccess(v bool) *GetArtifactSubscriptionRuleResponseBody {
+	s.IsSuccess = &v
+	return s
+}
+
+func (s *GetArtifactSubscriptionRuleResponseBody) SetModifiedTime(v int64) *GetArtifactSubscriptionRuleResponseBody {
+	s.ModifiedTime = &v
+	return s
+}
+
+func (s *GetArtifactSubscriptionRuleResponseBody) SetNamespaceName(v string) *GetArtifactSubscriptionRuleResponseBody {
+	s.NamespaceName = &v
+	return s
+}
+
+func (s *GetArtifactSubscriptionRuleResponseBody) SetOverride(v bool) *GetArtifactSubscriptionRuleResponseBody {
+	s.Override = &v
+	return s
+}
+
+func (s *GetArtifactSubscriptionRuleResponseBody) SetPlatform(v []*string) *GetArtifactSubscriptionRuleResponseBody {
+	s.Platform = v
+	return s
+}
+
+func (s *GetArtifactSubscriptionRuleResponseBody) SetRepoName(v string) *GetArtifactSubscriptionRuleResponseBody {
+	s.RepoName = &v
+	return s
+}
+
+func (s *GetArtifactSubscriptionRuleResponseBody) SetRequestId(v string) *GetArtifactSubscriptionRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetArtifactSubscriptionRuleResponseBody) SetRuleId(v string) *GetArtifactSubscriptionRuleResponseBody {
+	s.RuleId = &v
+	return s
+}
+
+func (s *GetArtifactSubscriptionRuleResponseBody) SetSourceNamespaceName(v string) *GetArtifactSubscriptionRuleResponseBody {
+	s.SourceNamespaceName = &v
+	return s
+}
+
+func (s *GetArtifactSubscriptionRuleResponseBody) SetSourceProvider(v string) *GetArtifactSubscriptionRuleResponseBody {
+	s.SourceProvider = &v
+	return s
+}
+
+func (s *GetArtifactSubscriptionRuleResponseBody) SetSourceRepoName(v string) *GetArtifactSubscriptionRuleResponseBody {
+	s.SourceRepoName = &v
+	return s
+}
+
+func (s *GetArtifactSubscriptionRuleResponseBody) SetTagCount(v int64) *GetArtifactSubscriptionRuleResponseBody {
+	s.TagCount = &v
+	return s
+}
+
+func (s *GetArtifactSubscriptionRuleResponseBody) SetTagRegexp(v string) *GetArtifactSubscriptionRuleResponseBody {
+	s.TagRegexp = &v
+	return s
+}
+
+type GetArtifactSubscriptionRuleResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetArtifactSubscriptionRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetArtifactSubscriptionRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetArtifactSubscriptionRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetArtifactSubscriptionRuleResponse) SetHeaders(v map[string]*string) *GetArtifactSubscriptionRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetArtifactSubscriptionRuleResponse) SetStatusCode(v int32) *GetArtifactSubscriptionRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetArtifactSubscriptionRuleResponse) SetBody(v *GetArtifactSubscriptionRuleResponseBody) *GetArtifactSubscriptionRuleResponse {
+	s.Body = v
+	return s
+}
+
+type GetArtifactSubscriptionTaskRequest struct {
+	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-xkx6vujuhay0****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The task ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// crast-40le4es9yh0p****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s GetArtifactSubscriptionTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetArtifactSubscriptionTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetArtifactSubscriptionTaskRequest) SetInstanceId(v string) *GetArtifactSubscriptionTaskRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetArtifactSubscriptionTaskRequest) SetTaskId(v string) *GetArtifactSubscriptionTaskRequest {
+	s.TaskId = &v
+	return s
+}
+
+type GetArtifactSubscriptionTaskResponseBody struct {
+	// The artifact type.
+	//
+	// example:
+	//
+	// IMAGE
+	ArtifactType *string `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
+	// The return value.
+	//
+	// example:
+	//
+	// success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The end time of the artifact subscription task.
+	//
+	// example:
+	//
+	// 1691979202000
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The instance ID.
+	//
+	// example:
+	//
+	// cri-xkx6vujuhay0****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Indicates whether the API request is successful. Valid values:
+	//
+	// 	- `true`: The request is successful.
+	//
+	// 	- `false`: The request fails.
+	//
+	// example:
+	//
+	// true
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The return message.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The name of the Container Registry namespace.
+	//
+	// example:
+	//
+	// test
+	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	// The name of the Container Registry repository.
+	//
+	// example:
+	//
+	// test-repo
+	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 12589EF7-96E2-4554-AAD7-F7209E88CAD3
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The name of the source namespace.
+	//
+	// example:
+	//
+	// library
+	SourceNamespaceName *string `json:"SourceNamespaceName,omitempty" xml:"SourceNamespaceName,omitempty"`
+	// The artifact source.
+	//
+	// example:
+	//
+	// DOCKER_HUB
+	SourceProvider *string `json:"SourceProvider,omitempty" xml:"SourceProvider,omitempty"`
+	// The name of the source repository.
+	//
+	// example:
+	//
+	// nginx
+	SourceRepoName *string `json:"SourceRepoName,omitempty" xml:"SourceRepoName,omitempty"`
+	// The type of the source repository.
+	//
+	// example:
+	//
+	// PUBLIC
+	SourceRepoType *string `json:"SourceRepoType,omitempty" xml:"SourceRepoType,omitempty"`
+	// The start time of the artifact subscription task.
+	//
+	// example:
+	//
+	// 1568718468000
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The total subscribed tags.
+	//
+	// example:
+	//
+	// 1
+	TagSubscriptionCount *int64 `json:"TagSubscriptionCount,omitempty" xml:"TagSubscriptionCount,omitempty"`
+	// The total number of tags.
+	//
+	// example:
+	//
+	// 6
+	TagTotalCount *int64 `json:"TagTotalCount,omitempty" xml:"TagTotalCount,omitempty"`
+	// The task ID.
+	//
+	// example:
+	//
+	// crast-40le4es9yh0p****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The task results.
+	//
+	// example:
+	//
+	// SUCCESS
+	TaskResult *string `json:"TaskResult,omitempty" xml:"TaskResult,omitempty"`
+	// The status of the task.
+	//
+	// example:
+	//
+	// RUNNING
+	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// The type of the task. Valid values:
+	//
+	// example:
+	//
+	// AUTO
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+}
+
+func (s GetArtifactSubscriptionTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetArtifactSubscriptionTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetArtifactSubscriptionTaskResponseBody) SetArtifactType(v string) *GetArtifactSubscriptionTaskResponseBody {
+	s.ArtifactType = &v
+	return s
+}
+
+func (s *GetArtifactSubscriptionTaskResponseBody) SetCode(v string) *GetArtifactSubscriptionTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetArtifactSubscriptionTaskResponseBody) SetEndTime(v int64) *GetArtifactSubscriptionTaskResponseBody {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetArtifactSubscriptionTaskResponseBody) SetInstanceId(v string) *GetArtifactSubscriptionTaskResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetArtifactSubscriptionTaskResponseBody) SetIsSuccess(v bool) *GetArtifactSubscriptionTaskResponseBody {
+	s.IsSuccess = &v
+	return s
+}
+
+func (s *GetArtifactSubscriptionTaskResponseBody) SetMessage(v string) *GetArtifactSubscriptionTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetArtifactSubscriptionTaskResponseBody) SetNamespaceName(v string) *GetArtifactSubscriptionTaskResponseBody {
+	s.NamespaceName = &v
+	return s
+}
+
+func (s *GetArtifactSubscriptionTaskResponseBody) SetRepoName(v string) *GetArtifactSubscriptionTaskResponseBody {
+	s.RepoName = &v
+	return s
+}
+
+func (s *GetArtifactSubscriptionTaskResponseBody) SetRequestId(v string) *GetArtifactSubscriptionTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetArtifactSubscriptionTaskResponseBody) SetSourceNamespaceName(v string) *GetArtifactSubscriptionTaskResponseBody {
+	s.SourceNamespaceName = &v
+	return s
+}
+
+func (s *GetArtifactSubscriptionTaskResponseBody) SetSourceProvider(v string) *GetArtifactSubscriptionTaskResponseBody {
+	s.SourceProvider = &v
+	return s
+}
+
+func (s *GetArtifactSubscriptionTaskResponseBody) SetSourceRepoName(v string) *GetArtifactSubscriptionTaskResponseBody {
+	s.SourceRepoName = &v
+	return s
+}
+
+func (s *GetArtifactSubscriptionTaskResponseBody) SetSourceRepoType(v string) *GetArtifactSubscriptionTaskResponseBody {
+	s.SourceRepoType = &v
+	return s
+}
+
+func (s *GetArtifactSubscriptionTaskResponseBody) SetStartTime(v int64) *GetArtifactSubscriptionTaskResponseBody {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetArtifactSubscriptionTaskResponseBody) SetTagSubscriptionCount(v int64) *GetArtifactSubscriptionTaskResponseBody {
+	s.TagSubscriptionCount = &v
+	return s
+}
+
+func (s *GetArtifactSubscriptionTaskResponseBody) SetTagTotalCount(v int64) *GetArtifactSubscriptionTaskResponseBody {
+	s.TagTotalCount = &v
+	return s
+}
+
+func (s *GetArtifactSubscriptionTaskResponseBody) SetTaskId(v string) *GetArtifactSubscriptionTaskResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+func (s *GetArtifactSubscriptionTaskResponseBody) SetTaskResult(v string) *GetArtifactSubscriptionTaskResponseBody {
+	s.TaskResult = &v
+	return s
+}
+
+func (s *GetArtifactSubscriptionTaskResponseBody) SetTaskStatus(v string) *GetArtifactSubscriptionTaskResponseBody {
+	s.TaskStatus = &v
+	return s
+}
+
+func (s *GetArtifactSubscriptionTaskResponseBody) SetTaskType(v string) *GetArtifactSubscriptionTaskResponseBody {
+	s.TaskType = &v
+	return s
+}
+
+type GetArtifactSubscriptionTaskResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetArtifactSubscriptionTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetArtifactSubscriptionTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetArtifactSubscriptionTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetArtifactSubscriptionTaskResponse) SetHeaders(v map[string]*string) *GetArtifactSubscriptionTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetArtifactSubscriptionTaskResponse) SetStatusCode(v int32) *GetArtifactSubscriptionTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetArtifactSubscriptionTaskResponse) SetBody(v *GetArtifactSubscriptionTaskResponseBody) *GetArtifactSubscriptionTaskResponse {
+	s.Body = v
+	return s
+}
+
+type GetArtifactSubscriptionTaskResultRequest struct {
+	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-90fxryf9pwf****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The page number.
+	//
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The task ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// crast-y64sq01bgad****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s GetArtifactSubscriptionTaskResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetArtifactSubscriptionTaskResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetArtifactSubscriptionTaskResultRequest) SetInstanceId(v string) *GetArtifactSubscriptionTaskResultRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetArtifactSubscriptionTaskResultRequest) SetPageNo(v int32) *GetArtifactSubscriptionTaskResultRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *GetArtifactSubscriptionTaskResultRequest) SetPageSize(v int32) *GetArtifactSubscriptionTaskResultRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetArtifactSubscriptionTaskResultRequest) SetTaskId(v string) *GetArtifactSubscriptionTaskResultRequest {
+	s.TaskId = &v
+	return s
+}
+
+type GetArtifactSubscriptionTaskResultResponseBody struct {
+	// The return value.
+	//
+	// example:
+	//
+	// success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// 	- `true`: The request is successful.
+	//
+	// 	- `false`: The request fails.
+	//
+	// example:
+	//
+	// true
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The page number.
+	//
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 0A8768F6-9B47-5127-A075-9CFB9F79181F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The result of the artifact subscription task.
+	TaskResults []*GetArtifactSubscriptionTaskResultResponseBodyTaskResults `json:"TaskResults,omitempty" xml:"TaskResults,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s GetArtifactSubscriptionTaskResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetArtifactSubscriptionTaskResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetArtifactSubscriptionTaskResultResponseBody) SetCode(v string) *GetArtifactSubscriptionTaskResultResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetArtifactSubscriptionTaskResultResponseBody) SetIsSuccess(v bool) *GetArtifactSubscriptionTaskResultResponseBody {
+	s.IsSuccess = &v
+	return s
+}
+
+func (s *GetArtifactSubscriptionTaskResultResponseBody) SetPageNo(v int32) *GetArtifactSubscriptionTaskResultResponseBody {
+	s.PageNo = &v
+	return s
+}
+
+func (s *GetArtifactSubscriptionTaskResultResponseBody) SetPageSize(v int32) *GetArtifactSubscriptionTaskResultResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetArtifactSubscriptionTaskResultResponseBody) SetRequestId(v string) *GetArtifactSubscriptionTaskResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetArtifactSubscriptionTaskResultResponseBody) SetTaskResults(v []*GetArtifactSubscriptionTaskResultResponseBodyTaskResults) *GetArtifactSubscriptionTaskResultResponseBody {
+	s.TaskResults = v
+	return s
+}
+
+func (s *GetArtifactSubscriptionTaskResultResponseBody) SetTotalCount(v int32) *GetArtifactSubscriptionTaskResultResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type GetArtifactSubscriptionTaskResultResponseBodyTaskResults struct {
+	// The end time of the subscription task.
+	//
+	// example:
+	//
+	// 1692756630000
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The instance ID.
+	//
+	// example:
+	//
+	// cri-isj2wgaw4z9****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the namespace.
+	//
+	// example:
+	//
+	// test-ns
+	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	// The name of the repository.
+	//
+	// example:
+	//
+	// test-reop
+	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The result of the task.
+	//
+	// example:
+	//
+	// SUCCESS
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// The start time of the subscription task.
+	//
+	// example:
+	//
+	// 1691719501000
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of the task.
+	//
+	// example:
+	//
+	// COMPLETED
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The image tag.
+	//
+	// example:
+	//
+	// v2.0
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The task ID.
+	//
+	// example:
+	//
+	// crast-wkpfwqozjiq****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s GetArtifactSubscriptionTaskResultResponseBodyTaskResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetArtifactSubscriptionTaskResultResponseBodyTaskResults) GoString() string {
+	return s.String()
+}
+
+func (s *GetArtifactSubscriptionTaskResultResponseBodyTaskResults) SetEndTime(v int64) *GetArtifactSubscriptionTaskResultResponseBodyTaskResults {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetArtifactSubscriptionTaskResultResponseBodyTaskResults) SetInstanceId(v string) *GetArtifactSubscriptionTaskResultResponseBodyTaskResults {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetArtifactSubscriptionTaskResultResponseBodyTaskResults) SetNamespaceName(v string) *GetArtifactSubscriptionTaskResultResponseBodyTaskResults {
+	s.NamespaceName = &v
+	return s
+}
+
+func (s *GetArtifactSubscriptionTaskResultResponseBodyTaskResults) SetRepoName(v string) *GetArtifactSubscriptionTaskResultResponseBodyTaskResults {
+	s.RepoName = &v
+	return s
+}
+
+func (s *GetArtifactSubscriptionTaskResultResponseBodyTaskResults) SetResult(v string) *GetArtifactSubscriptionTaskResultResponseBodyTaskResults {
+	s.Result = &v
+	return s
+}
+
+func (s *GetArtifactSubscriptionTaskResultResponseBodyTaskResults) SetStartTime(v int64) *GetArtifactSubscriptionTaskResultResponseBodyTaskResults {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetArtifactSubscriptionTaskResultResponseBodyTaskResults) SetStatus(v string) *GetArtifactSubscriptionTaskResultResponseBodyTaskResults {
+	s.Status = &v
+	return s
+}
+
+func (s *GetArtifactSubscriptionTaskResultResponseBodyTaskResults) SetTag(v string) *GetArtifactSubscriptionTaskResultResponseBodyTaskResults {
+	s.Tag = &v
+	return s
+}
+
+func (s *GetArtifactSubscriptionTaskResultResponseBodyTaskResults) SetTaskId(v string) *GetArtifactSubscriptionTaskResultResponseBodyTaskResults {
+	s.TaskId = &v
+	return s
+}
+
+type GetArtifactSubscriptionTaskResultResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetArtifactSubscriptionTaskResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetArtifactSubscriptionTaskResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetArtifactSubscriptionTaskResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetArtifactSubscriptionTaskResultResponse) SetHeaders(v map[string]*string) *GetArtifactSubscriptionTaskResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetArtifactSubscriptionTaskResultResponse) SetStatusCode(v int32) *GetArtifactSubscriptionTaskResultResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetArtifactSubscriptionTaskResultResponse) SetBody(v *GetArtifactSubscriptionTaskResultResponseBody) *GetArtifactSubscriptionTaskResultResponse {
+	s.Body = v
+	return s
+}
+
 type GetAuthorizationTokenRequest struct {
 	// The ID of the request.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-kmsiwlxxdcvaduwb
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -4478,22 +7561,49 @@ func (s *GetAuthorizationTokenRequest) SetInstanceId(v string) *GetAuthorization
 type GetAuthorizationTokenResponseBody struct {
 	// The temporary password returned after you call this API operation is a Security Token Service (STS) token whose validity period is 1 hour. Take note of the following items when you log on to Container Registry instances by using an STS token:
 	//
-	// *   If the STS token belongs to an Alibaba Cloud account, you can use the STS token to log on to all Container Registry instances that belong to the Alibaba Cloud account.
-	// *   If the STS token belongs to a Resource Access Management (RAM) user, you can use the STS token to log on to all Container Registry instances that belong to the RAM user.
-	// *   You can use an STS token to access only Container Registry instances to which the STS token is scoped.
+	// 	- If the STS token belongs to an Alibaba Cloud account, you can use the STS token to log on to all Container Registry instances that belong to the Alibaba Cloud account.
+	//
+	// 	- If the STS token belongs to a Resource Access Management (RAM) user, you can use the STS token to log on to all Container Registry instances that belong to the RAM user.
+	//
+	// 	- You can use an STS token to access only Container Registry instances to which the STS token is scoped.
+	//
+	// example:
+	//
+	// shaunadadakks:uuczxnjcyeyhdjadkkajsjdjadhyucb
 	AuthorizationToken *string `json:"AuthorizationToken,omitempty" xml:"AuthorizationToken,omitempty"`
 	// Indicates whether the API call is successful.
 	//
-	// *   `true`: successful
-	// *   `false`: failed
+	// 	- `true`: successful
+	//
+	// 	- `false`: failed
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The return value.
+	//
+	// example:
+	//
+	// 1571242083000
 	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// The username that is used to log on to the Container Registry instance.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The timestamp when the temporary password expires. Unit: milliseconds.
+	//
+	// example:
+	//
+	// E069EB86-E6AD-4A98-ADDE-0E993390239A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The password that is used to log on to the Container Registry instance.
+	//
+	// example:
+	//
+	// temp_user_cr
 	TempUsername *string `json:"TempUsername,omitempty" xml:"TempUsername,omitempty"`
 }
 
@@ -4565,7 +7675,17 @@ func (s *GetAuthorizationTokenResponse) SetBody(v *GetAuthorizationTokenResponse
 }
 
 type GetChainRequest struct {
-	ChainId    *string `json:"ChainId,omitempty" xml:"ChainId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// chi-0ops0gsmw5x2****
+	ChainId *string `json:"ChainId,omitempty" xml:"ChainId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-4cdrlqmhn4gm****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -4588,19 +7708,52 @@ func (s *GetChainRequest) SetInstanceId(v string) *GetChainRequest {
 }
 
 type GetChainResponseBody struct {
-	ChainConfig  *GetChainResponseBodyChainConfig `json:"ChainConfig,omitempty" xml:"ChainConfig,omitempty" type:"Struct"`
-	ChainId      *string                          `json:"ChainId,omitempty" xml:"ChainId,omitempty"`
-	Code         *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	CreateTime   *int64                           `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description  *string                          `json:"Description,omitempty" xml:"Description,omitempty"`
-	InstanceId   *string                          `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IsSuccess    *bool                            `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	ModifiedTime *int64                           `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	Name         *string                          `json:"Name,omitempty" xml:"Name,omitempty"`
-	RequestId    *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ScopeExclude []*string                        `json:"ScopeExclude,omitempty" xml:"ScopeExclude,omitempty" type:"Repeated"`
-	ScopeId      *string                          `json:"ScopeId,omitempty" xml:"ScopeId,omitempty"`
-	ScopeType    *string                          `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
+	ChainConfig *GetChainResponseBodyChainConfig `json:"ChainConfig,omitempty" xml:"ChainConfig,omitempty" type:"Struct"`
+	// example:
+	//
+	// chi-0ops0gsmw5x2****
+	ChainId *string `json:"ChainId,omitempty" xml:"ChainId,omitempty"`
+	// example:
+	//
+	// success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 1638255427000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// description
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// cri-4cdrlqmhn4gm****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// true
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// example:
+	//
+	// 1638259914000
+	ModifiedTime *int64 `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// example:
+	//
+	// test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// C87993B5-7D61-5CAC-8D64-1AC732DD69FF
+	RequestId    *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ScopeExclude []*string `json:"ScopeExclude,omitempty" xml:"ScopeExclude,omitempty" type:"Repeated"`
+	// example:
+	//
+	// crr-nyrh2oko32xb****
+	ScopeId *string `json:"ScopeId,omitempty" xml:"ScopeId,omitempty"`
+	// example:
+	//
+	// REPOSITORY
+	ScopeType *string `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
 }
 
 func (s GetChainResponseBody) String() string {
@@ -4677,11 +7830,20 @@ func (s *GetChainResponseBody) SetScopeType(v string) *GetChainResponseBody {
 }
 
 type GetChainResponseBodyChainConfig struct {
-	ChainConfigId *string                                   `json:"ChainConfigId,omitempty" xml:"ChainConfigId,omitempty"`
-	IsActive      *bool                                     `json:"IsActive,omitempty" xml:"IsActive,omitempty"`
-	Nodes         []*GetChainResponseBodyChainConfigNodes   `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
-	Routers       []*GetChainResponseBodyChainConfigRouters `json:"Routers,omitempty" xml:"Routers,omitempty" type:"Repeated"`
-	Version       *string                                   `json:"Version,omitempty" xml:"Version,omitempty"`
+	// example:
+	//
+	// cci-lz3ycgo69ukt****
+	ChainConfigId *string `json:"ChainConfigId,omitempty" xml:"ChainConfigId,omitempty"`
+	// example:
+	//
+	// true
+	IsActive *bool                                     `json:"IsActive,omitempty" xml:"IsActive,omitempty"`
+	Nodes    []*GetChainResponseBodyChainConfigNodes   `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	Routers  []*GetChainResponseBodyChainConfigRouters `json:"Routers,omitempty" xml:"Routers,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s GetChainResponseBodyChainConfig) String() string {
@@ -4718,9 +7880,15 @@ func (s *GetChainResponseBodyChainConfig) SetVersion(v string) *GetChainResponse
 }
 
 type GetChainResponseBodyChainConfigNodes struct {
+	// example:
+	//
+	// true
 	Enable     *bool                                           `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	NodeConfig *GetChainResponseBodyChainConfigNodesNodeConfig `json:"NodeConfig,omitempty" xml:"NodeConfig,omitempty" type:"Struct"`
-	NodeName   *string                                         `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// example:
+	//
+	// VULNERABILITY_SCANNING
+	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
 }
 
 func (s GetChainResponseBodyChainConfigNodes) String() string {
@@ -4748,9 +7916,15 @@ func (s *GetChainResponseBodyChainConfigNodes) SetNodeName(v string) *GetChainRe
 
 type GetChainResponseBodyChainConfigNodesNodeConfig struct {
 	DenyPolicy *GetChainResponseBodyChainConfigNodesNodeConfigDenyPolicy `json:"DenyPolicy,omitempty" xml:"DenyPolicy,omitempty" type:"Struct"`
-	Retry      *int32                                                    `json:"Retry,omitempty" xml:"Retry,omitempty"`
-	ScanEngine *string                                                   `json:"ScanEngine,omitempty" xml:"ScanEngine,omitempty"`
-	Timeout    *int64                                                    `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// example:
+	//
+	// 3
+	Retry *int32 `json:"Retry,omitempty" xml:"Retry,omitempty"`
+	// example:
+	//
+	// ACR_SCAN_SERVICE
+	ScanEngine *string `json:"ScanEngine,omitempty" xml:"ScanEngine,omitempty"`
+	Timeout    *int64  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
 func (s GetChainResponseBodyChainConfigNodesNodeConfig) String() string {
@@ -4782,12 +7956,33 @@ func (s *GetChainResponseBodyChainConfigNodesNodeConfig) SetTimeout(v int64) *Ge
 }
 
 type GetChainResponseBodyChainConfigNodesNodeConfigDenyPolicy struct {
-	Action        *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	BaselineList  *string `json:"BaselineList,omitempty" xml:"BaselineList,omitempty"`
-	IssueCount    *string `json:"IssueCount,omitempty" xml:"IssueCount,omitempty"`
-	IssueLevel    *string `json:"IssueLevel,omitempty" xml:"IssueLevel,omitempty"`
-	IssueList     *string `json:"IssueList,omitempty" xml:"IssueList,omitempty"`
-	Logic         *string `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	// example:
+	//
+	// BLOCK
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// example:
+	//
+	// identification,hc_image_exploit
+	BaselineList *string `json:"BaselineList,omitempty" xml:"BaselineList,omitempty"`
+	// example:
+	//
+	// 10
+	IssueCount *string `json:"IssueCount,omitempty" xml:"IssueCount,omitempty"`
+	// example:
+	//
+	// HIGH
+	IssueLevel *string `json:"IssueLevel,omitempty" xml:"IssueLevel,omitempty"`
+	// example:
+	//
+	// CVE-2020-8286,CVE-2020-8285
+	IssueList *string `json:"IssueList,omitempty" xml:"IssueList,omitempty"`
+	// example:
+	//
+	// AND
+	Logic *string `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	// example:
+	//
+	// mutate_cockhorse,abnormal_program
 	MaliciousList *string `json:"MaliciousList,omitempty" xml:"MaliciousList,omitempty"`
 }
 
@@ -4858,6 +8053,9 @@ func (s *GetChainResponseBodyChainConfigRouters) SetTo(v *GetChainResponseBodyCh
 }
 
 type GetChainResponseBodyChainConfigRoutersFrom struct {
+	// example:
+	//
+	// DOCKER_IMAGE_BUILD
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
 }
 
@@ -4875,6 +8073,9 @@ func (s *GetChainResponseBodyChainConfigRoutersFrom) SetNodeName(v string) *GetC
 }
 
 type GetChainResponseBodyChainConfigRoutersTo struct {
+	// example:
+	//
+	// DOCKER_IMAGE_PUSH
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
 }
 
@@ -4922,8 +8123,20 @@ func (s *GetChainResponse) SetBody(v *GetChainResponseBody) *GetChainResponse {
 
 type GetChartNamespaceRequest struct {
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-xkx6vujuhay0****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The name of the namespace.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ns1
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
 }
 
@@ -4948,34 +8161,79 @@ func (s *GetChartNamespaceRequest) SetNamespaceName(v string) *GetChartNamespace
 type GetChartNamespaceResponseBody struct {
 	// Indicates whether a repository was automatically created in the namespace. Valid values:
 	//
-	// *   `true`: A repository was automatically created in the namespace.
-	// *   `false`: No repository was automatically created in the namespace.
+	// 	- `true`: A repository was automatically created in the namespace.
+	//
+	// 	- `false`: No repository was automatically created in the namespace.
+	//
+	// example:
+	//
+	// true
 	AutoCreateRepo *bool `json:"AutoCreateRepo,omitempty" xml:"AutoCreateRepo,omitempty"`
 	// The return value.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The default repository type. Valid values:
 	//
-	// *   `PUBLIC`: a public repository.
-	// *   `PRIVATE`: a private repository.
+	// 	- `PUBLIC`: a public repository.
+	//
+	// 	- `PRIVATE`: a private repository.
+	//
+	// example:
+	//
+	// PRIVATE
 	DefaultRepoType *string `json:"DefaultRepoType,omitempty" xml:"DefaultRepoType,omitempty"`
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// cri-xkx6vujuhay0****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   `true`: The request is successful.
-	// *   `false`: The request fails.
+	// 	- `true`: The request is successful.
+	//
+	// 	- `false`: The request fails.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The ID of the namespace.
+	//
+	// example:
+	//
+	// crcn-43dhbjbyt2xl****
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	// The name of the namespace.
+	//
+	// example:
+	//
+	// ns1
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
 	// The status of the namespace. Valid values:
 	//
-	// *   `NORMAL`: The namespace is normal.
-	// *   `DELETING`: The namespace is being deleted.
+	// 	- `NORMAL`: The namespace is normal.
+	//
+	// 	- `DELETING`: The namespace is being deleted.
+	//
+	// example:
+	//
+	// NORMAL
 	NamespaceStatus *string `json:"NamespaceStatus,omitempty" xml:"NamespaceStatus,omitempty"`
 	// The ID of the request.
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	//
+	// example:
+	//
+	// CD71CF13-93AA-4805-848B-69B2DD543A9A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the resource group to which the instance belongs.
+	//
+	// example:
+	//
+	// rg-acfmv36i4is****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -5067,11 +8325,29 @@ func (s *GetChartNamespaceResponse) SetBody(v *GetChartNamespaceResponseBody) *G
 }
 
 type GetChartRepositoryRequest struct {
-	// The ID of the instance.
+	// The ID of the Container Registry instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-kmsiwlxxdcva****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The name of the repository.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	// The name of the namespace.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 }
 
@@ -5100,38 +8376,94 @@ func (s *GetChartRepositoryRequest) SetRepoNamespaceName(v string) *GetChartRepo
 
 type GetChartRepositoryResponseBody struct {
 	// The return value.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The time when the chart repository was created.
+	//
+	// example:
+	//
+	// 1563767620000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// cri-kmsiwlxxdcva****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   `true`: The request is successful.
-	// *   `false`: The request fails.
+	// 	- `true`: The request is successful.
+	//
+	// 	- `false`: The request fails.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The time when the chart repository was last modified.
+	//
+	// example:
+	//
+	// 1563767700000
 	ModifiedTime *int64 `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
 	// The ID of the chart repository.
+	//
+	// example:
+	//
+	// crcr-c7letfwev5oq****
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	// The name of the chart repository.
+	//
+	// example:
+	//
+	// test
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	// The name of the namespace to which the chart repository belongs.
+	//
+	// example:
+	//
+	// test
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 	// The status of the chart repository. Valid values:
 	//
-	// *   `NORMAL`: The repository is normal.
-	// *   `DELETING`: The repository is being deleted.
+	// 	- `NORMAL`: The repository is normal.
+	//
+	// 	- `DELETING`: The repository is being deleted.
+	//
+	// example:
+	//
+	// NORMAL
 	RepoStatus *string `json:"RepoStatus,omitempty" xml:"RepoStatus,omitempty"`
 	// The type of the chart repository. Valid values:
 	//
-	// *   `PUBLIC`: a public repository
-	// *   `PRIVATE`: a private repository
+	// 	- `PUBLIC`: a public repository
+	//
+	// 	- `PRIVATE`: a private repository
+	//
+	// example:
+	//
+	// PUBLIC
 	RepoType *string `json:"RepoType,omitempty" xml:"RepoType,omitempty"`
-	// The ID of the request.
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// A3F6AB56-DEF4-4FF5-8DE4-680362C0E21F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmv36i4is****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The summary about the chart repository.
+	//
+	// example:
+	//
+	// test
 	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
 }
 
@@ -5238,6 +8570,11 @@ func (s *GetChartRepositoryResponse) SetBody(v *GetChartRepositoryResponseBody) 
 }
 
 type GetInstanceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-xkx6vujuhay0****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -5255,18 +8592,56 @@ func (s *GetInstanceRequest) SetInstanceId(v string) *GetInstanceRequest {
 }
 
 type GetInstanceResponseBody struct {
-	Code                  *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
-	CreateTime            *int64                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	InstanceId            *string                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceIssue         *string                        `json:"InstanceIssue,omitempty" xml:"InstanceIssue,omitempty"`
-	InstanceName          *string                        `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	InstanceSpecification *string                        `json:"InstanceSpecification,omitempty" xml:"InstanceSpecification,omitempty"`
-	InstanceStatus        *string                        `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	IsSuccess             *bool                          `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	ModifiedTime          *int64                         `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	RequestId             *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResourceGroupId       *string                        `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Tags                  []*GetInstanceResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// example:
+	//
+	// success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 1571926439000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// cri-xkx6vujuhay0****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The issue occurs on the instance.
+	//
+	// example:
+	//
+	// The issue occurs on the instance. Valid values: OSS_TOO_MANY_BUCKETS: The number of Object Storage Service (OSS) buckets exceeds the upper limit. OSS_BUCKET_ALREADY_EXISTS: An OSS bucket that has the duplicate name already exists. OSS_SERVICE_ROLE_UNAUTHORIZED: The OSS service-linked role is not granted permissions. USER_NOT_REGISTERED_BY_REAL_NAME: The Alibaba Cloud account has not passed a real name verification.
+	InstanceIssue *string `json:"InstanceIssue,omitempty" xml:"InstanceIssue,omitempty"`
+	// example:
+	//
+	// shanghai-instance1
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The edition of the instance. Valid values: Enterprise_Basic: Basic Edition instances Enterprise_Standard: Standard Edition instances Enterprise_Advanced: Advanced Edition instances
+	//
+	// example:
+	//
+	// Enterprise_Basic
+	InstanceSpecification *string `json:"InstanceSpecification,omitempty" xml:"InstanceSpecification,omitempty"`
+	// example:
+	//
+	// RUNNING
+	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	// example:
+	//
+	// true
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// example:
+	//
+	// 1571926560000
+	ModifiedTime *int64 `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// example:
+	//
+	// 6EF34B18-4228-470C-860C-D28597CF010E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// rg-acfmv36i4isx****
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The tags of the instance.
+	Tags []*GetInstanceResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s GetInstanceResponseBody) String() string {
@@ -5338,7 +8713,17 @@ func (s *GetInstanceResponseBody) SetTags(v []*GetInstanceResponseBodyTags) *Get
 }
 
 type GetInstanceResponseBodyTags struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// test_key
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// test_value
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -5390,9 +8775,33 @@ func (s *GetInstanceResponse) SetBody(v *GetInstanceResponseBody) *GetInstanceRe
 }
 
 type GetInstanceCountResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Count     *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
-	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// Return value
+	//
+	// example:
+	//
+	// success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Number of instances
+	//
+	// example:
+	//
+	// 5
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// Indicates whether the API call was successful. Values:
+	//
+	// - `true`: The API call was successful.
+	//
+	// - `false`: The API call failed.
+	//
+	// example:
+	//
+	// true
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// Request ID
+	//
+	// example:
+	//
+	// BC648259-91A7-4502-BED3-EDF64361FA83
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5455,13 +8864,30 @@ func (s *GetInstanceCountResponse) SetBody(v *GetInstanceCountResponseBody) *Get
 
 type GetInstanceEndpointRequest struct {
 	// The type of the endpoint. Set the value to Internet.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// internet
 	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-xkx6vujuhay0****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The name of the module that you want to access. Valid values:
 	//
-	// *   `Registry`: the image repository.
-	// *   `Chart`: a Helm chart.
+	// 	- `Registry`: the image repository.
+	//
+	// 	- `Chart`: a Helm chart.
+	//
+	// example:
+	//
+	// Registry
 	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
 }
 
@@ -5490,20 +8916,44 @@ func (s *GetInstanceEndpointRequest) SetModuleName(v string) *GetInstanceEndpoin
 
 type GetInstanceEndpointResponseBody struct {
 	// Indicates whether the access control list (ACL) feature is enabled.
+	//
+	// example:
+	//
+	// true
 	AclEnable *bool `json:"AclEnable,omitempty" xml:"AclEnable,omitempty"`
 	// The ACLs.
 	AclEntries []*GetInstanceEndpointResponseBodyAclEntries `json:"AclEntries,omitempty" xml:"AclEntries,omitempty" type:"Repeated"`
 	// The return value.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Domain names.
 	Domains []*GetInstanceEndpointResponseBodyDomains `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
 	// Indicates whether the ACL feature is enabled.
+	//
+	// example:
+	//
+	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 8F3D5EC5-39D1-4C53-A198-48C54C658FA3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The status of the instance.
+	//
+	// example:
+	//
+	// RUNNING
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -5557,8 +9007,16 @@ func (s *GetInstanceEndpointResponseBody) SetStatus(v string) *GetInstanceEndpoi
 
 type GetInstanceEndpointResponseBodyAclEntries struct {
 	// Remarks for public IP address whitelists.
+	//
+	// example:
+	//
+	// 1
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The public IP address whitelist.
+	//
+	// example:
+	//
+	// 192.168.1.0/24
 	Entry *string `json:"Entry,omitempty" xml:"Entry,omitempty"`
 }
 
@@ -5582,11 +9040,20 @@ func (s *GetInstanceEndpointResponseBodyAclEntries) SetEntry(v string) *GetInsta
 
 type GetInstanceEndpointResponseBodyDomains struct {
 	// The domain name that is used to access the Container Registry Enterprise Edition instance.
+	//
+	// example:
+	//
+	// shanghai-instance1-registry.cn-shanghai.cr.aliyuncs.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The type of the domain name. Valid values:
 	//
-	// *   `SYSTEM`: a system domain name.
-	// *   `USER`: a user domain name.
+	// 	- `SYSTEM`: a system domain name.
+	//
+	// 	- `USER`: a user domain name.
+	//
+	// example:
+	//
+	// SYSTEM
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -5639,6 +9106,12 @@ func (s *GetInstanceEndpointResponse) SetBody(v *GetInstanceEndpointResponseBody
 
 type GetInstanceUsageRequest struct {
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-xkx6vujuhay0****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -5657,30 +9130,87 @@ func (s *GetInstanceUsageRequest) SetInstanceId(v string) *GetInstanceUsageReque
 
 type GetInstanceUsageResponseBody struct {
 	// The quota of chart namespaces.
+	//
+	// example:
+	//
+	// 50
 	ChartNamespaceQuota *string `json:"ChartNamespaceQuota,omitempty" xml:"ChartNamespaceQuota,omitempty"`
 	// The number of chart namespaces that are created in the instance.
+	//
+	// example:
+	//
+	// 2
 	ChartNamespaceUsage *string `json:"ChartNamespaceUsage,omitempty" xml:"ChartNamespaceUsage,omitempty"`
 	// The quota of chart repositories for the instance.
+	//
+	// example:
+	//
+	// 5000
 	ChartRepoQuota *string `json:"ChartRepoQuota,omitempty" xml:"ChartRepoQuota,omitempty"`
 	// The number of chart repositories that are created.
+	//
+	// example:
+	//
+	// 5
 	ChartRepoUsage *string `json:"ChartRepoUsage,omitempty" xml:"ChartRepoUsage,omitempty"`
 	// The return value.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   `true`: The request is successful.
-	// *   `false`: The request fails.
+	// 	- `true`: The request is successful.
+	//
+	// 	- `false`: The request fails.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The quota of image namespaces for the instance.
+	//
+	// example:
+	//
+	// 100
 	NamespaceQuota *string `json:"NamespaceQuota,omitempty" xml:"NamespaceQuota,omitempty"`
 	// The number of image namespaces that are created in the instance.
+	//
+	// example:
+	//
+	// 4
 	NamespaceUsage *string `json:"NamespaceUsage,omitempty" xml:"NamespaceUsage,omitempty"`
 	// The quota of image repositories for the instance.
+	//
+	// example:
+	//
+	// 1000
 	RepoQuota *string `json:"RepoQuota,omitempty" xml:"RepoQuota,omitempty"`
 	// The number of image repositories that are created in the instance.
+	//
+	// example:
+	//
+	// 2
 	RepoUsage *string `json:"RepoUsage,omitempty" xml:"RepoUsage,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// A726E801-7FCF-43F9-AF1C-51B3E65D3E7A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// VPC quota
+	//
+	// example:
+	//
+	// 5
+	VpcQuota *string `json:"VpcQuota,omitempty" xml:"VpcQuota,omitempty"`
+	// Number of bound VPCs
+	//
+	// example:
+	//
+	// 2
+	VpcUsage *string `json:"VpcUsage,omitempty" xml:"VpcUsage,omitempty"`
 }
 
 func (s GetInstanceUsageResponseBody) String() string {
@@ -5746,6 +9276,16 @@ func (s *GetInstanceUsageResponseBody) SetRequestId(v string) *GetInstanceUsageR
 	return s
 }
 
+func (s *GetInstanceUsageResponseBody) SetVpcQuota(v string) *GetInstanceUsageResponseBody {
+	s.VpcQuota = &v
+	return s
+}
+
+func (s *GetInstanceUsageResponseBody) SetVpcUsage(v string) *GetInstanceUsageResponseBody {
+	s.VpcUsage = &v
+	return s
+}
+
 type GetInstanceUsageResponse struct {
 	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -5777,11 +9317,22 @@ func (s *GetInstanceUsageResponse) SetBody(v *GetInstanceUsageResponseBody) *Get
 
 type GetInstanceVpcEndpointRequest struct {
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-kmsiwlxxdcva****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The name of the module that you want to access. Valid values:
 	//
-	// *   `Registry`: the image repository.
-	// *   `Chart`: a Helm chart.
+	// 	- `Registry`: the image repository.
+	//
+	// 	- `Chart`: a Helm chart.
+	//
+	// example:
+	//
+	// Chart
 	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
 }
 
@@ -5805,22 +9356,50 @@ func (s *GetInstanceVpcEndpointRequest) SetModuleName(v string) *GetInstanceVpcE
 
 type GetInstanceVpcEndpointResponseBody struct {
 	// The return value.
-	Code    *string   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Domains []*string `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
-	// Indicates whether the access control list (ACL) feature is enabled. Valid values:
 	//
-	// *   `true`: The ACL feature is enabled.
-	// *   `false`: The ACL feature is disabled.
+	// example:
+	//
+	// success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Domain names.
+	Domains []*string `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
+	// Indicates whether the VPC endpoint is enabled. Valid values:
+	//
+	// 	- `true`
+	//
+	// 	- `false`
+	//
+	// example:
+	//
+	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   `true`: The request is successful.
-	// *   `false`: The request fails.
+	// 	- `true`: The request is successful.
+	//
+	// 	- `false`: The request fails.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// The VPCs in which the instance is deployed.
+	// The VPCs that are added to the access control list.
 	LinkedVpcs []*GetInstanceVpcEndpointResponseBodyLinkedVpcs `json:"LinkedVpcs,omitempty" xml:"LinkedVpcs,omitempty" type:"Repeated"`
-	ModuleName *string                                         `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
+	// The name of the modules that can be accessed. Valid values:
+	//
+	// 	- `Registry`: image repositories.
+	//
+	// 	- `Chart`: Helm charts.
+	//
+	// example:
+	//
+	// Registry
+	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// BAE9349D-A587-4F9A-B574-9DA0EF2638D1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5868,18 +9447,39 @@ func (s *GetInstanceVpcEndpointResponseBody) SetRequestId(v string) *GetInstance
 }
 
 type GetInstanceVpcEndpointResponseBodyLinkedVpcs struct {
-	// Indicates whether the default ACL is used.
+	// Indicates whether the VPC is the default VPC over which the Container Registry instance is accessed.
+	//
+	// example:
+	//
+	// false
 	DefaultAccess *bool `json:"DefaultAccess,omitempty" xml:"DefaultAccess,omitempty"`
 	// IP address.
+	//
+	// example:
+	//
+	// 192.168.10.11
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	// The status of the VPC. Valid values:
 	//
-	// *   `CREATING`: The VPC is being created.
-	// *   `RUNNING`: The VPC is running.
+	// 	- `CREATING`
+	//
+	// 	- `RUNNING`
+	//
+	// example:
+	//
+	// CREATING
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// VPC ID
+	//
+	// example:
+	//
+	// vpc-uf6aamu2nomfr1thd****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// The ID of the vSwitch.
+	//
+	// example:
+	//
+	// vsw-uf62m5vmxl2e72dk7****
 	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
 }
 
@@ -5947,10 +9547,24 @@ func (s *GetInstanceVpcEndpointResponse) SetBody(v *GetInstanceVpcEndpointRespon
 
 type GetNamespaceRequest struct {
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-kmsiwlxxdcva****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the namespace.
+	//
+	// example:
+	//
+	// crn-tiw8t3f8i5lta****
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	// The name of the namespace.
+	//
+	// example:
+	//
+	// test
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
 }
 
@@ -5979,26 +9593,72 @@ func (s *GetNamespaceRequest) SetNamespaceName(v string) *GetNamespaceRequest {
 
 type GetNamespaceResponseBody struct {
 	// Indicates whether a repository is automatically created when an image is pushed to the namespace.
+	//
+	// example:
+	//
+	// true
 	AutoCreateRepo *bool `json:"AutoCreateRepo,omitempty" xml:"AutoCreateRepo,omitempty"`
 	// The return value.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The default type of the repository. Valid values:
 	//
-	// *   PUBLIC: The repository is a public repository.
-	// *   PRIVATE: The repository is a private repository.
+	// example:
+	//
+	// success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The default type of repositories. Valid values:
+	//
+	// 	- PUBLIC: The repositories are public repositories.
+	//
+	// 	- PRIVATE: The repositories are private repositories.
+	//
+	// example:
+	//
+	// PUBLIC
 	DefaultRepoType *string `json:"DefaultRepoType,omitempty" xml:"DefaultRepoType,omitempty"`
-	// The ID of the instance.
+	// The ID of the Container Registry instance.
+	//
+	// example:
+	//
+	// cri-kmsiwlxxdcva****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The ID of the namespace.
+	//
+	// example:
+	//
+	// crn-tiw8t3f8i5lt****
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	// The name of the namespace.
+	//
+	// example:
+	//
+	// test
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
 	// The status of the namespace.
+	//
+	// 	- NORMAL
+	//
+	// 	- DELETING
+	//
+	// example:
+	//
+	// NORMAL
 	NamespaceStatus *string `json:"NamespaceStatus,omitempty" xml:"NamespaceStatus,omitempty"`
-	// The ID of the request.
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// E4BC9E21-8AA5-4582-83C1-C1209AB8196F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the resource group to which the namespace belongs.
+	//
+	// example:
+	//
+	// rg-acfmv36i4is****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -6091,8 +9751,20 @@ func (s *GetNamespaceResponse) SetBody(v *GetNamespaceResponseBody) *GetNamespac
 
 type GetRepoBuildRecordRequest struct {
 	// The ID of the image building record.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a78ec6fb-16ea-4649-93b7-f52afba7d****
 	BuildRecordId *string `json:"BuildRecordId,omitempty" xml:"BuildRecordId,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-kmsiwlxxdcva****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -6116,20 +9788,48 @@ func (s *GetRepoBuildRecordRequest) SetInstanceId(v string) *GetRepoBuildRecordR
 
 type GetRepoBuildRecordResponseBody struct {
 	// The ID of the image building record.
+	//
+	// example:
+	//
+	// 79174CBA-8556-443A-8976-22C922D7****
 	BuildRecordId *string `json:"BuildRecordId,omitempty" xml:"BuildRecordId,omitempty"`
 	// The return value.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The time when the image building was completed.
+	//
+	// example:
+	//
+	// 1568718698000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The information about the image.
 	Image *GetRepoBuildRecordResponseBodyImage `json:"Image,omitempty" xml:"Image,omitempty" type:"Struct"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// a78ec6fb-16ea-4649-93b7-f52afba7d9de1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The time when the image building started.
+	//
+	// example:
+	//
+	// 1568718468000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The status of the instance.
+	//
+	// example:
+	//
+	// true
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -6183,10 +9883,22 @@ func (s *GetRepoBuildRecordResponseBody) SetStatus(v string) *GetRepoBuildRecord
 
 type GetRepoBuildRecordResponseBodyImage struct {
 	// The tag of the image.
+	//
+	// example:
+	//
+	// master
 	ImageTag *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
 	// The name of the image repository.
+	//
+	// example:
+	//
+	// test
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	// The name of the namespace to which the image repository belongs.
+	//
+	// example:
+	//
+	// test
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 }
 
@@ -6244,10 +9956,28 @@ func (s *GetRepoBuildRecordResponse) SetBody(v *GetRepoBuildRecordResponseBody) 
 
 type GetRepoBuildRecordStatusRequest struct {
 	// The ID of the image building record.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a78ec6fb-16ea-4649-93b7-f52afba7d****
 	BuildRecordId *string `json:"BuildRecordId,omitempty" xml:"BuildRecordId,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-kmsiwlxxdcva****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the image repository.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// crr-jnzm47ihjmgc****
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 }
 
@@ -6276,12 +10006,28 @@ func (s *GetRepoBuildRecordStatusRequest) SetRepoId(v string) *GetRepoBuildRecor
 
 type GetRepoBuildRecordStatusResponseBody struct {
 	// The status of the image building.
+	//
+	// example:
+	//
+	// success
 	BuildStatus *string `json:"BuildStatus,omitempty" xml:"BuildStatus,omitempty"`
 	// The return value.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 79174CBA-8556-443A-8976-22C922D7BE37
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6344,8 +10090,20 @@ func (s *GetRepoBuildRecordStatusResponse) SetBody(v *GetRepoBuildRecordStatusRe
 
 type GetRepoSourceCodeRepoRequest struct {
 	// The ID of the Container Registry instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-shac42yvqzvq****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the repository.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// crr-gzsrlevmvoaq****
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 }
 
@@ -6370,37 +10128,85 @@ func (s *GetRepoSourceCodeRepoRequest) SetRepoId(v string) *GetRepoSourceCodeRep
 type GetRepoSourceCodeRepoResponseBody struct {
 	// Indicates whether image building is automatically triggered when source code is committed. Valid values:
 	//
-	// *   `true`: Image building is automatically triggered when source code is committed.
-	// *   `false`: Image building is not triggered when source code is committed.
+	// 	- `true`: Image building is automatically triggered when source code is committed.
+	//
+	// 	- `false`: Image building is not triggered when source code is committed.
+	//
+	// example:
+	//
+	// true
 	AutoBuild *string `json:"AutoBuild,omitempty" xml:"AutoBuild,omitempty"`
 	// The response code.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The address of the source code repository.
+	//
+	// example:
+	//
+	// https://github.com
 	CodeRepoDomain *string `json:"CodeRepoDomain,omitempty" xml:"CodeRepoDomain,omitempty"`
 	// The name of the source code repository.
+	//
+	// example:
+	//
+	// repo
 	CodeRepoName *string `json:"CodeRepoName,omitempty" xml:"CodeRepoName,omitempty"`
 	// The namespace to which the source code repository belongs.
+	//
+	// example:
+	//
+	// namespace
 	CodeRepoNamespaceName *string `json:"CodeRepoNamespaceName,omitempty" xml:"CodeRepoNamespaceName,omitempty"`
 	// The type of the code hosting platform. Valid values: `GITHUB`, `GITLAB`, `GITEE`, `CODE`, and `CODEUP`.
+	//
+	// example:
+	//
+	// GITHUB
 	CodeRepoType *string `json:"CodeRepoType,omitempty" xml:"CodeRepoType,omitempty"`
 	// Indicates whether build cache is disabled. Valid values:
 	//
-	// *   `true`: Build cache is disabled.
-	// *   `false`: Build cache is enabled.
+	// 	- `true`: Build cache is disabled.
+	//
+	// 	- `false`: Build cache is enabled.
+	//
+	// example:
+	//
+	// false
 	DisableCacheBuild *string `json:"DisableCacheBuild,omitempty" xml:"DisableCacheBuild,omitempty"`
 	// Indicates whether the API call is successful. Valid values:
 	//
-	// *   `true`: successful
-	// *   `false`: failed
+	// 	- `true`: successful
+	//
+	// 	- `false`: failed
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// Indicates whether image building is accelerated for servers outside the Chinese mainland. Valid values:
 	//
-	// *   `true`: Image building is accelerated for servers outside the Chinese mainland.
-	// *   `false`: Image building is not accelerated for servers outside the Chinese mainland.
+	// 	- `true`: Image building is accelerated for servers outside the Chinese mainland.
+	//
+	// 	- `false`: Image building is not accelerated for servers outside the Chinese mainland.
+	//
+	// example:
+	//
+	// false
 	OverseaBuild *string `json:"OverseaBuild,omitempty" xml:"OverseaBuild,omitempty"`
 	// The ID of the repository.
+	//
+	// example:
+	//
+	// crr-gzsrlevmvoaq****
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 4CE1F661-75DD-4EBD-A4AD-057B26834ABB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6498,8 +10304,20 @@ func (s *GetRepoSourceCodeRepoResponse) SetBody(v *GetRepoSourceCodeRepoResponse
 
 type GetRepoSyncTaskRequest struct {
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-sgedpenzw80e****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the synchronization task.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rst-zxjkiv5oil6f****
 	SyncTaskId *string `json:"SyncTaskId,omitempty" xml:"SyncTaskId,omitempty"`
 }
 
@@ -6523,37 +10341,87 @@ func (s *GetRepoSyncTaskRequest) SetSyncTaskId(v string) *GetRepoSyncTaskRequest
 
 type GetRepoSyncTaskResponseBody struct {
 	// The return value.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the synchronization task is performed across Alibaba Cloud accounts.
+	//
+	// example:
+	//
+	// true
 	CrossUser *bool `json:"CrossUser,omitempty" xml:"CrossUser,omitempty"`
 	// The source address of the image.
 	ImageFrom *GetRepoSyncTaskResponseBodyImageFrom `json:"ImageFrom,omitempty" xml:"ImageFrom,omitempty" type:"Struct"`
 	// The destination address of the image.
 	ImageTo *GetRepoSyncTaskResponseBodyImageTo `json:"ImageTo,omitempty" xml:"ImageTo,omitempty" type:"Struct"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The synchronization tasks for the image layer.
 	LayerTasks []*GetRepoSyncTaskResponseBodyLayerTasks `json:"LayerTasks,omitempty" xml:"LayerTasks,omitempty" type:"Repeated"`
 	// The synchronization progress. Valid values:
 	//
-	// *   `0`: The synchronization starts or failed.
-	// *   `1`: The synchronization is successful.
+	// 	- `0`: The synchronization starts or failed.
+	//
+	// 	- `1`: The synchronization is successful.
+	//
+	// example:
+	//
+	// 1
 	Progress *int64 `json:"Progress,omitempty" xml:"Progress,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// A6DEF8B0-5D45-46D6-867D-8C7FF0966B07
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The ID of the synchronization task in which multiple images are synchronized at a time.
+	//
+	// example:
+	//
+	// a9434731-95ef-4087-9cf4-369c8e90****
 	SyncBatchTaskId *string `json:"SyncBatchTaskId,omitempty" xml:"SyncBatchTaskId,omitempty"`
 	// The ID of the synchronization rule.
+	//
+	// example:
+	//
+	// crsr-cllro6ho3wne****
 	SyncRuleId *string `json:"SyncRuleId,omitempty" xml:"SyncRuleId,omitempty"`
 	// The ID of the synchronization task.
+	//
+	// example:
+	//
+	// rst-zxjkiv5oil6f****
 	SyncTaskId *string `json:"SyncTaskId,omitempty" xml:"SyncTaskId,omitempty"`
 	// Indicates whether transfer acceleration is enabled in the synchronization process.
+	//
+	// example:
+	//
+	// true
 	SyncTransAccelerate *bool `json:"SyncTransAccelerate,omitempty" xml:"SyncTransAccelerate,omitempty"`
 	// The size of the image layer that is synchronized. Unit: bytes.
-	SyncedSize *int64 `json:"SyncedSize,omitempty" xml:"SyncedSize,omitempty"`
+	//
+	// example:
+	//
+	// 23655489
+	SyncedSize *int64  `json:"SyncedSize,omitempty" xml:"SyncedSize,omitempty"`
+	TaskIssue  *string `json:"TaskIssue,omitempty" xml:"TaskIssue,omitempty"`
 	// The status of the task. Valid values:
+	//
+	// example:
+	//
+	// SUCCESS
 	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
 	// The policy that is used to trigger the synchronization task.
+	//
+	// example:
+	//
+	// null
 	TaskTrigger *string `json:"TaskTrigger,omitempty" xml:"TaskTrigger,omitempty"`
 }
 
@@ -6630,6 +10498,11 @@ func (s *GetRepoSyncTaskResponseBody) SetSyncedSize(v int64) *GetRepoSyncTaskRes
 	return s
 }
 
+func (s *GetRepoSyncTaskResponseBody) SetTaskIssue(v string) *GetRepoSyncTaskResponseBody {
+	s.TaskIssue = &v
+	return s
+}
+
 func (s *GetRepoSyncTaskResponseBody) SetTaskStatus(v string) *GetRepoSyncTaskResponseBody {
 	s.TaskStatus = &v
 	return s
@@ -6642,14 +10515,34 @@ func (s *GetRepoSyncTaskResponseBody) SetTaskTrigger(v string) *GetRepoSyncTaskR
 
 type GetRepoSyncTaskResponseBodyImageFrom struct {
 	// The tag of the image.
+	//
+	// example:
+	//
+	// master
 	ImageTag *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// cri-sgedpenzw80e****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The name of the image repository.
+	//
+	// example:
+	//
+	// test
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	// The name of the namespace.
+	//
+	// example:
+	//
+	// test
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 }
 
@@ -6688,14 +10581,34 @@ func (s *GetRepoSyncTaskResponseBodyImageFrom) SetRepoNamespaceName(v string) *G
 
 type GetRepoSyncTaskResponseBodyImageTo struct {
 	// The tag of the image.
+	//
+	// example:
+	//
+	// master
 	ImageTag *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// cri-leqzomz5vijc****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region ID.
+	//
+	// example:
+	//
+	// eu-west-1
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The name of the image repository.
+	//
+	// example:
+	//
+	// test
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	// The name of the namespace.
+	//
+	// example:
+	//
+	// test
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 }
 
@@ -6734,16 +10647,40 @@ func (s *GetRepoSyncTaskResponseBodyImageTo) SetRepoNamespaceName(v string) *Get
 
 type GetRepoSyncTaskResponseBodyLayerTasks struct {
 	// The digest of the artifact.
+	//
+	// example:
+	//
+	// sha256:36fb85fcb5e919cb60e782397a6be04201868fe7b38ef7669fc01caec1c8fc4e
 	ArtifactDigest *string `json:"ArtifactDigest,omitempty" xml:"ArtifactDigest,omitempty"`
 	// The digest of the image layer.
+	//
+	// example:
+	//
+	// sha256:36fb85fcb5e919cb60e782397a6be04201868fe7b38ef7669fc01caec1c8fc4e
 	Digest *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
 	// The size of synchronized image layers.
+	//
+	// example:
+	//
+	// 23655489
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
 	// The ID of the synchronization task for the image layer.
+	//
+	// example:
+	//
+	// rslt-074x4q20fx2d****
 	SyncLayerTaskId *string `json:"SyncLayerTaskId,omitempty" xml:"SyncLayerTaskId,omitempty"`
 	// The size of the image layer that is synchronized.
+	//
+	// example:
+	//
+	// 23655489
 	SyncedSize *int64 `json:"SyncedSize,omitempty" xml:"SyncedSize,omitempty"`
 	// The status of the synchronization task. Valid values:
+	//
+	// example:
+	//
+	// SUCCESS
 	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
 }
 
@@ -6816,10 +10753,28 @@ func (s *GetRepoSyncTaskResponse) SetBody(v *GetRepoSyncTaskResponseBody) *GetRe
 
 type GetRepoTagRequest struct {
 	// The return value of status code.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-kmsiwlxxdcva****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The operation that you want to perform. Set the value to **GetRepoTag**.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// crr-tquyps22md8p****
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	// The number of milliseconds that have elapsed since the image was created.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1.0
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
@@ -6848,26 +10803,66 @@ func (s *GetRepoTagRequest) SetTag(v string) *GetRepoTagRequest {
 
 type GetRepoTagResponseBody struct {
 	// The ID of the image.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The size of the image. Unit: Bytes.
+	//
+	// example:
+	//
+	// 67bfbcc12b67936ec7f867927817cbb071832b873dbcaed312a1930ba5f1****
 	Digest *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
 	// crr-tquyps22md8p****
-	ImageCreate *int64  `json:"ImageCreate,omitempty" xml:"ImageCreate,omitempty"`
-	ImageId     *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	//
+	// example:
+	//
+	// 1572839125000
+	ImageCreate *int64 `json:"ImageCreate,omitempty" xml:"ImageCreate,omitempty"`
+	// example:
+	//
+	// 45023655bf39c382e26a8607d057c27871dee163c1ecf48cc1ebf2a1****
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	// The number of milliseconds that have elapsed since the image was last updated.
+	//
+	// example:
+	//
+	// 27107966
 	ImageSize *int64 `json:"ImageSize,omitempty" xml:"ImageSize,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 1572875608000
 	ImageUpdate *int64 `json:"ImageUpdate,omitempty" xml:"ImageUpdate,omitempty"`
 	// The status of the image. Valid values:
 	//
-	// *   `NORMAL`: The image is normal.
-	// *   `DELETING`: The image is being deleted.
+	// 	- `NORMAL`: The image is normal.
+	//
+	// 	- `DELETING`: The image is being deleted.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// 1.0
+	//
+	// example:
+	//
+	// 031572FA-7D8F-4C05-B790-1071E0E05DE6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// NORMAL
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The version of the repository.
+	//
+	// example:
+	//
+	// 1.0
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
@@ -6958,488 +10953,29 @@ func (s *GetRepoTagResponse) SetBody(v *GetRepoTagResponseBody) *GetRepoTagRespo
 	return s
 }
 
-type GetRepoTagLayersRequest struct {
-	// The digest of the image.
-	Digest *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
-	// The ID of the instance.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the image repository.
-	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	// The tag of the image.
-	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-}
-
-func (s GetRepoTagLayersRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetRepoTagLayersRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetRepoTagLayersRequest) SetDigest(v string) *GetRepoTagLayersRequest {
-	s.Digest = &v
-	return s
-}
-
-func (s *GetRepoTagLayersRequest) SetInstanceId(v string) *GetRepoTagLayersRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *GetRepoTagLayersRequest) SetRepoId(v string) *GetRepoTagLayersRequest {
-	s.RepoId = &v
-	return s
-}
-
-func (s *GetRepoTagLayersRequest) SetTag(v string) *GetRepoTagLayersRequest {
-	s.Tag = &v
-	return s
-}
-
-type GetRepoTagLayersResponseBody struct {
-	// The return value.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether the request is successful. Valid values:
-	//
-	// *   `true`: The request is successful.
-	// *   `false`: The request fails.
-	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// The queried image layers.
-	Layers []*GetRepoTagLayersResponseBodyLayers `json:"Layers,omitempty" xml:"Layers,omitempty" type:"Repeated"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s GetRepoTagLayersResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetRepoTagLayersResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetRepoTagLayersResponseBody) SetCode(v string) *GetRepoTagLayersResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetRepoTagLayersResponseBody) SetIsSuccess(v bool) *GetRepoTagLayersResponseBody {
-	s.IsSuccess = &v
-	return s
-}
-
-func (s *GetRepoTagLayersResponseBody) SetLayers(v []*GetRepoTagLayersResponseBodyLayers) *GetRepoTagLayersResponseBody {
-	s.Layers = v
-	return s
-}
-
-func (s *GetRepoTagLayersResponseBody) SetRequestId(v string) *GetRepoTagLayersResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type GetRepoTagLayersResponseBodyLayers struct {
-	// The digest of a single image layer.
-	BlobDigest *string `json:"BlobDigest,omitempty" xml:"BlobDigest,omitempty"`
-	// The size of the image layer.
-	BlobSize *int64 `json:"BlobSize,omitempty" xml:"BlobSize,omitempty"`
-	// Operation on the image layer.
-	LayerCMD *string `json:"LayerCMD,omitempty" xml:"LayerCMD,omitempty"`
-	// The sequence number of the layer stack.
-	LayerIndex *int32 `json:"LayerIndex,omitempty" xml:"LayerIndex,omitempty"`
-	// The command for the image layer.
-	LayerInstruction *string `json:"LayerInstruction,omitempty" xml:"LayerInstruction,omitempty"`
-}
-
-func (s GetRepoTagLayersResponseBodyLayers) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetRepoTagLayersResponseBodyLayers) GoString() string {
-	return s.String()
-}
-
-func (s *GetRepoTagLayersResponseBodyLayers) SetBlobDigest(v string) *GetRepoTagLayersResponseBodyLayers {
-	s.BlobDigest = &v
-	return s
-}
-
-func (s *GetRepoTagLayersResponseBodyLayers) SetBlobSize(v int64) *GetRepoTagLayersResponseBodyLayers {
-	s.BlobSize = &v
-	return s
-}
-
-func (s *GetRepoTagLayersResponseBodyLayers) SetLayerCMD(v string) *GetRepoTagLayersResponseBodyLayers {
-	s.LayerCMD = &v
-	return s
-}
-
-func (s *GetRepoTagLayersResponseBodyLayers) SetLayerIndex(v int32) *GetRepoTagLayersResponseBodyLayers {
-	s.LayerIndex = &v
-	return s
-}
-
-func (s *GetRepoTagLayersResponseBodyLayers) SetLayerInstruction(v string) *GetRepoTagLayersResponseBodyLayers {
-	s.LayerInstruction = &v
-	return s
-}
-
-type GetRepoTagLayersResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *GetRepoTagLayersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s GetRepoTagLayersResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetRepoTagLayersResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetRepoTagLayersResponse) SetHeaders(v map[string]*string) *GetRepoTagLayersResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetRepoTagLayersResponse) SetStatusCode(v int32) *GetRepoTagLayersResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetRepoTagLayersResponse) SetBody(v *GetRepoTagLayersResponseBody) *GetRepoTagLayersResponse {
-	s.Body = v
-	return s
-}
-
-type GetRepoTagManifestRequest struct {
-	// The ID of the instance.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the repository.
-	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	// The schema version of the manifest. Valid values: 1 and 2.
-	SchemaVersion *int32 `json:"SchemaVersion,omitempty" xml:"SchemaVersion,omitempty"`
-	// The tag of the image.
-	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-}
-
-func (s GetRepoTagManifestRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetRepoTagManifestRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetRepoTagManifestRequest) SetInstanceId(v string) *GetRepoTagManifestRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *GetRepoTagManifestRequest) SetRepoId(v string) *GetRepoTagManifestRequest {
-	s.RepoId = &v
-	return s
-}
-
-func (s *GetRepoTagManifestRequest) SetSchemaVersion(v int32) *GetRepoTagManifestRequest {
-	s.SchemaVersion = &v
-	return s
-}
-
-func (s *GetRepoTagManifestRequest) SetTag(v string) *GetRepoTagManifestRequest {
-	s.Tag = &v
-	return s
-}
-
-type GetRepoTagManifestResponseBody struct {
-	// The return value.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether the request is successful.
-	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// The information about the image manifest.
-	Manifest *GetRepoTagManifestResponseBodyManifest `json:"Manifest,omitempty" xml:"Manifest,omitempty" type:"Struct"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s GetRepoTagManifestResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetRepoTagManifestResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetRepoTagManifestResponseBody) SetCode(v string) *GetRepoTagManifestResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetRepoTagManifestResponseBody) SetIsSuccess(v bool) *GetRepoTagManifestResponseBody {
-	s.IsSuccess = &v
-	return s
-}
-
-func (s *GetRepoTagManifestResponseBody) SetManifest(v *GetRepoTagManifestResponseBodyManifest) *GetRepoTagManifestResponseBody {
-	s.Manifest = v
-	return s
-}
-
-func (s *GetRepoTagManifestResponseBody) SetRequestId(v string) *GetRepoTagManifestResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type GetRepoTagManifestResponseBodyManifest struct {
-	// Architecture.
-	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
-	// The configuration information.
-	Config *GetRepoTagManifestResponseBodyManifestConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
-	// The digest of the referenced filesystem image layer.
-	FsLayers []*GetRepoTagManifestResponseBodyManifestFsLayers `json:"FsLayers,omitempty" xml:"FsLayers,omitempty" type:"Repeated"`
-	// A list of unstructured historical data for V1 compatibility.
-	History []*GetRepoTagManifestResponseBodyManifestHistory `json:"History,omitempty" xml:"History,omitempty" type:"Repeated"`
-	// The information about image layers.
-	Layers []*GetRepoTagManifestResponseBodyManifestLayers `json:"Layers,omitempty" xml:"Layers,omitempty" type:"Repeated"`
-	// The type.
-	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
-	// The name.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The schema version of the manifest.
-	SchemaVersion *int32 `json:"SchemaVersion,omitempty" xml:"SchemaVersion,omitempty"`
-	// The information about signatures.
-	Signatures []*GetRepoTagManifestResponseBodyManifestSignatures `json:"Signatures,omitempty" xml:"Signatures,omitempty" type:"Repeated"`
-	// The tag of the image.
-	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-}
-
-func (s GetRepoTagManifestResponseBodyManifest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetRepoTagManifestResponseBodyManifest) GoString() string {
-	return s.String()
-}
-
-func (s *GetRepoTagManifestResponseBodyManifest) SetArchitecture(v string) *GetRepoTagManifestResponseBodyManifest {
-	s.Architecture = &v
-	return s
-}
-
-func (s *GetRepoTagManifestResponseBodyManifest) SetConfig(v *GetRepoTagManifestResponseBodyManifestConfig) *GetRepoTagManifestResponseBodyManifest {
-	s.Config = v
-	return s
-}
-
-func (s *GetRepoTagManifestResponseBodyManifest) SetFsLayers(v []*GetRepoTagManifestResponseBodyManifestFsLayers) *GetRepoTagManifestResponseBodyManifest {
-	s.FsLayers = v
-	return s
-}
-
-func (s *GetRepoTagManifestResponseBodyManifest) SetHistory(v []*GetRepoTagManifestResponseBodyManifestHistory) *GetRepoTagManifestResponseBodyManifest {
-	s.History = v
-	return s
-}
-
-func (s *GetRepoTagManifestResponseBodyManifest) SetLayers(v []*GetRepoTagManifestResponseBodyManifestLayers) *GetRepoTagManifestResponseBodyManifest {
-	s.Layers = v
-	return s
-}
-
-func (s *GetRepoTagManifestResponseBodyManifest) SetMediaType(v string) *GetRepoTagManifestResponseBodyManifest {
-	s.MediaType = &v
-	return s
-}
-
-func (s *GetRepoTagManifestResponseBodyManifest) SetName(v string) *GetRepoTagManifestResponseBodyManifest {
-	s.Name = &v
-	return s
-}
-
-func (s *GetRepoTagManifestResponseBodyManifest) SetSchemaVersion(v int32) *GetRepoTagManifestResponseBodyManifest {
-	s.SchemaVersion = &v
-	return s
-}
-
-func (s *GetRepoTagManifestResponseBodyManifest) SetSignatures(v []*GetRepoTagManifestResponseBodyManifestSignatures) *GetRepoTagManifestResponseBodyManifest {
-	s.Signatures = v
-	return s
-}
-
-func (s *GetRepoTagManifestResponseBodyManifest) SetTag(v string) *GetRepoTagManifestResponseBodyManifest {
-	s.Tag = &v
-	return s
-}
-
-type GetRepoTagManifestResponseBodyManifestConfig struct {
-	// The digest of the image.
-	Digest *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
-	// The MIME type of the configuration file.
-	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
-	// Size
-	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-}
-
-func (s GetRepoTagManifestResponseBodyManifestConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetRepoTagManifestResponseBodyManifestConfig) GoString() string {
-	return s.String()
-}
-
-func (s *GetRepoTagManifestResponseBodyManifestConfig) SetDigest(v string) *GetRepoTagManifestResponseBodyManifestConfig {
-	s.Digest = &v
-	return s
-}
-
-func (s *GetRepoTagManifestResponseBodyManifestConfig) SetMediaType(v string) *GetRepoTagManifestResponseBodyManifestConfig {
-	s.MediaType = &v
-	return s
-}
-
-func (s *GetRepoTagManifestResponseBodyManifestConfig) SetSize(v int64) *GetRepoTagManifestResponseBodyManifestConfig {
-	s.Size = &v
-	return s
-}
-
-type GetRepoTagManifestResponseBodyManifestFsLayers struct {
-	// A list of filesystem layer blob sums contained in this image.
-	BlobSum *string `json:"BlobSum,omitempty" xml:"BlobSum,omitempty"`
-}
-
-func (s GetRepoTagManifestResponseBodyManifestFsLayers) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetRepoTagManifestResponseBodyManifestFsLayers) GoString() string {
-	return s.String()
-}
-
-func (s *GetRepoTagManifestResponseBodyManifestFsLayers) SetBlobSum(v string) *GetRepoTagManifestResponseBodyManifestFsLayers {
-	s.BlobSum = &v
-	return s
-}
-
-type GetRepoTagManifestResponseBodyManifestHistory struct {
-	// The raw V1 compatibility information.
-	V1Compatibility map[string]interface{} `json:"V1Compatibility,omitempty" xml:"V1Compatibility,omitempty"`
-}
-
-func (s GetRepoTagManifestResponseBodyManifestHistory) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetRepoTagManifestResponseBodyManifestHistory) GoString() string {
-	return s.String()
-}
-
-func (s *GetRepoTagManifestResponseBodyManifestHistory) SetV1Compatibility(v map[string]interface{}) *GetRepoTagManifestResponseBodyManifestHistory {
-	s.V1Compatibility = v
-	return s
-}
-
-type GetRepoTagManifestResponseBodyManifestLayers struct {
-	// The digest of the image.
-	Digest *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
-	// The MIME type of the configuration file.
-	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
-	// Size.
-	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-}
-
-func (s GetRepoTagManifestResponseBodyManifestLayers) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetRepoTagManifestResponseBodyManifestLayers) GoString() string {
-	return s.String()
-}
-
-func (s *GetRepoTagManifestResponseBodyManifestLayers) SetDigest(v string) *GetRepoTagManifestResponseBodyManifestLayers {
-	s.Digest = &v
-	return s
-}
-
-func (s *GetRepoTagManifestResponseBodyManifestLayers) SetMediaType(v string) *GetRepoTagManifestResponseBodyManifestLayers {
-	s.MediaType = &v
-	return s
-}
-
-func (s *GetRepoTagManifestResponseBodyManifestLayers) SetSize(v int64) *GetRepoTagManifestResponseBodyManifestLayers {
-	s.Size = &v
-	return s
-}
-
-type GetRepoTagManifestResponseBodyManifestSignatures struct {
-	// The header information of the signature.
-	Header map[string]interface{} `json:"Header,omitempty" xml:"Header,omitempty"`
-	// The signed protected header.
-	Protected *string `json:"Protected,omitempty" xml:"Protected,omitempty"`
-	// The signature for the image manifest.
-	Signature *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
-}
-
-func (s GetRepoTagManifestResponseBodyManifestSignatures) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetRepoTagManifestResponseBodyManifestSignatures) GoString() string {
-	return s.String()
-}
-
-func (s *GetRepoTagManifestResponseBodyManifestSignatures) SetHeader(v map[string]interface{}) *GetRepoTagManifestResponseBodyManifestSignatures {
-	s.Header = v
-	return s
-}
-
-func (s *GetRepoTagManifestResponseBodyManifestSignatures) SetProtected(v string) *GetRepoTagManifestResponseBodyManifestSignatures {
-	s.Protected = &v
-	return s
-}
-
-func (s *GetRepoTagManifestResponseBodyManifestSignatures) SetSignature(v string) *GetRepoTagManifestResponseBodyManifestSignatures {
-	s.Signature = &v
-	return s
-}
-
-type GetRepoTagManifestResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *GetRepoTagManifestResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s GetRepoTagManifestResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetRepoTagManifestResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetRepoTagManifestResponse) SetHeaders(v map[string]*string) *GetRepoTagManifestResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetRepoTagManifestResponse) SetStatusCode(v int32) *GetRepoTagManifestResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetRepoTagManifestResponse) SetBody(v *GetRepoTagManifestResponseBody) *GetRepoTagManifestResponse {
-	s.Body = v
-	return s
-}
-
 type GetRepoTagScanStatusRequest struct {
-	Digest     *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
+	// example:
+	//
+	// 67bfbcc12b67936ec7f867927817cbb071832b873dbcaed312a1930ba5f1d529
+	Digest *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-2j88dtld8yel****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RepoId     *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// example:
+	//
+	// crr-uf082u9dg8do****
+	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// example:
+	//
+	// 838152F9-F725-5A52-A344-8972D65AC045
 	ScanTaskId *string `json:"ScanTaskId,omitempty" xml:"ScanTaskId,omitempty"`
-	Tag        *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// example:
+	//
+	// 1
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
 func (s GetRepoTagScanStatusRequest) String() string {
@@ -7476,11 +11012,26 @@ func (s *GetRepoTagScanStatusRequest) SetTag(v string) *GetRepoTagScanStatusRequ
 }
 
 type GetRepoTagScanStatusResponseBody struct {
-	Code        *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess   *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// true
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// example:
+	//
+	// BC648259-91A7-4502-BED3-EDF64361FA83
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// ACR_SCAN_SERVICE
 	ScanService *string `json:"ScanService,omitempty" xml:"ScanService,omitempty"`
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// COMPLETE
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetRepoTagScanStatusResponseBody) String() string {
@@ -7547,14 +11098,36 @@ func (s *GetRepoTagScanStatusResponse) SetBody(v *GetRepoTagScanStatusResponseBo
 
 type GetRepoTagScanSummaryRequest struct {
 	// The number of unknown-severity vulnerabilities.
+	//
+	// example:
+	//
+	// sha256:c9f370a4eb1c00d0b0d7212a0a9fa4a7697756c90f0f680afaf9737a25725f4c
 	Digest *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
 	// The ID of the image repository.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-2j88dtld8yel****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The name of the image tag.
+	//
+	// example:
+	//
+	// crr-c2i5yk6h6pu9d5o8
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	// The digest of the image.
+	//
+	// example:
+	//
+	// 47A3E5A3-6AD4-5F02-93B8-59F778AE25D4
 	ScanTaskId *string `json:"ScanTaskId,omitempty" xml:"ScanTaskId,omitempty"`
 	// The ID of the security scan task.
+	//
+	// example:
+	//
+	// 1
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
@@ -7593,22 +11166,54 @@ func (s *GetRepoTagScanSummaryRequest) SetTag(v string) *GetRepoTagScanSummaryRe
 
 type GetRepoTagScanSummaryResponseBody struct {
 	// The number of medium-severity vulnerabilities.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The number of low-severity vulnerabilities.
+	//
+	// example:
+	//
+	// 22
 	HighSeverity *int32 `json:"HighSeverity,omitempty" xml:"HighSeverity,omitempty"`
 	// The number of high-severity vulnerabilities.
-	IsSuccess   *bool  `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	//
+	// example:
+	//
+	// true
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// example:
+	//
+	// 89
 	LowSeverity *int32 `json:"LowSeverity,omitempty" xml:"LowSeverity,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   `true`: The request is successful.
-	// *   `false`: The request fails.
+	// 	- `true`: The request is successful.
+	//
+	// 	- `false`: The request fails.
+	//
+	// example:
+	//
+	// 81
 	MediumSeverity *int32 `json:"MediumSeverity,omitempty" xml:"MediumSeverity,omitempty"`
 	// The total number of vulnerabilities detected on images.
+	//
+	// example:
+	//
+	// BC648259-91A7-4502-BED3-EDF64361FA83
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The return value.
+	//
+	// example:
+	//
+	// 196
 	TotalSeverity *int32 `json:"TotalSeverity,omitempty" xml:"TotalSeverity,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 4
 	UnknownSeverity *int32 `json:"UnknownSeverity,omitempty" xml:"UnknownSeverity,omitempty"`
 }
 
@@ -7691,12 +11296,30 @@ func (s *GetRepoTagScanSummaryResponse) SetBody(v *GetRepoTagScanSummaryResponse
 
 type GetRepositoryRequest struct {
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-kmsiwlxxdcva****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the repository.
+	//
+	// example:
+	//
+	// crr-03cuozrsqhkw****
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	// The name of the repository.
+	//
+	// example:
+	//
+	// test
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	// The name of the namespace to which the repository belongs.
+	//
+	// example:
+	//
+	// test
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 }
 
@@ -7730,44 +11353,112 @@ func (s *GetRepositoryRequest) SetRepoNamespaceName(v string) *GetRepositoryRequ
 
 type GetRepositoryResponseBody struct {
 	// The return value.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The time when the repository was created.
+	//
+	// example:
+	//
+	// 1570759546000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The details of the repository.
+	//
+	// example:
+	//
+	// test
 	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// cri-kmsiwlxxdcva****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The time when the repository was last modified.
+	//
+	// example:
+	//
+	// 1570759546100
 	ModifiedTime *int64 `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
 	// Indicates how the repository was created. Valid values:
 	//
-	// *   `MANUAL`: The repository was manually created.
-	// *   `AUTO`: The repository was automatically created.
+	// 	- `MANUAL`: The repository was manually created.
+	//
+	// 	- `AUTO`: The repository was automatically created.
+	//
+	// example:
+	//
+	// MANUAL
 	RepoBuildType *string `json:"RepoBuildType,omitempty" xml:"RepoBuildType,omitempty"`
 	// The ID of the repository.
+	//
+	// example:
+	//
+	// crr-l5eoubonp0l****
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	// The name of the repository.
+	//
+	// example:
+	//
+	// test
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	// The name of the namespace.
+	//
+	// example:
+	//
+	// test
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 	// The status of the repository.
+	//
+	// example:
+	//
+	// NORMAL
 	RepoStatus *string `json:"RepoStatus,omitempty" xml:"RepoStatus,omitempty"`
 	// The type of the repository. Valid values:
 	//
-	// *   `PUBLIC`: public repository.
-	// *   `PRIVATE`: private repository.
+	// 	- `PUBLIC`: public repository.
+	//
+	// 	- `PRIVATE`: private repository.
+	//
+	// example:
+	//
+	// PRIVATE
 	RepoType *string `json:"RepoType,omitempty" xml:"RepoType,omitempty"`
 	// The ID of the request.
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	//
+	// example:
+	//
+	// 915E6734-3E50-4640-8DBA-126D2D94DE29
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmv36i4is****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The summary of the repository.
+	//
+	// example:
+	//
+	// Automatically created repository
 	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
 	// Indicates whether the feature of image tag immutability is enabled. Valid values:
 	//
-	// *   `true`: The feature of image tag immutability is enabled.
-	// *   `false`: The feature of image tag immutability is disabled.
+	// 	- `true`: The feature of image tag immutability is enabled.
+	//
+	// 	- `false`: The feature of image tag immutability is disabled.
+	//
+	// example:
+	//
+	// true
 	TagImmutability *bool `json:"TagImmutability,omitempty" xml:"TagImmutability,omitempty"`
 }
 
@@ -7890,12 +11581,36 @@ func (s *GetRepositoryResponse) SetBody(v *GetRepositoryResponseBody) *GetReposi
 
 type ListArtifactBuildTaskLogRequest struct {
 	// The ID of the artifact build task.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// i2a-1yu****
 	BuildTaskId *string `json:"BuildTaskId,omitempty" xml:"BuildTaskId,omitempty"`
 	// The ID of the Container Registry instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-shac42yvqzvq****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The number of the page to return.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page. Maximum value: 100. If you specify a value greater than 100 for this parameter, the system reports a parameter error or uses 100 as the maximum value.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
@@ -7931,15 +11646,32 @@ type ListArtifactBuildTaskLogResponseBody struct {
 	// The log entries of the artifact build task.
 	BuildTaskLogs []*ListArtifactBuildTaskLogResponseBodyBuildTaskLogs `json:"BuildTaskLogs,omitempty" xml:"BuildTaskLogs,omitempty" type:"Repeated"`
 	// The response code.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether the API call is successful.
 	//
-	// *   `true`: successful
-	// *   `false`: failed
+	// example:
+	//
+	// success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the API request is successful. Valid values:
+	//
+	// 	- `true`: successful
+	//
+	// 	- `false`: failed
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// The ID of the request.
+	// The request ID.
+	//
+	// example:
+	//
+	// C4C7DD0C-C9D6-437A-A7EE-121EFD70D002
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of log entries.
+	//
+	// example:
+	//
+	// 200
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -7978,8 +11710,16 @@ func (s *ListArtifactBuildTaskLogResponseBody) SetTotalCount(v int32) *ListArtif
 
 type ListArtifactBuildTaskLogResponseBodyBuildTaskLogs struct {
 	// The row number of the log entry.
+	//
+	// example:
+	//
+	// 1
 	LineNumber *int32 `json:"LineNumber,omitempty" xml:"LineNumber,omitempty"`
-	// The content of the log entry.
+	// The log data.
+	//
+	// example:
+	//
+	// Start Build
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
@@ -8031,10 +11771,32 @@ func (s *ListArtifactBuildTaskLogResponse) SetBody(v *ListArtifactBuildTaskLogRe
 }
 
 type ListArtifactLifecycleRuleRequest struct {
-	EnableDeleteTag *bool   `json:"EnableDeleteTag,omitempty" xml:"EnableDeleteTag,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageNo          *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Specifies whether to enable lifecycle management for the artifact.
+	//
+	// example:
+	//
+	// true
+	EnableDeleteTag *bool `json:"EnableDeleteTag,omitempty" xml:"EnableDeleteTag,omitempty"`
+	// The ID of the Container Registry Enterprise Edition instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-eztul9ucz76q****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The page number.
+	//
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListArtifactLifecycleRuleRequest) String() string {
@@ -8066,13 +11828,48 @@ func (s *ListArtifactLifecycleRuleRequest) SetPageSize(v int32) *ListArtifactLif
 }
 
 type ListArtifactLifecycleRuleResponseBody struct {
-	Code       *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess  *bool                                         `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	PageNo     *int32                                        `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize   *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Rules      []*ListArtifactLifecycleRuleResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	TotalCount *int32                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The return value.
+	//
+	// example:
+	//
+	// success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// 	- `true`: The request is successful.
+	//
+	// 	- `false`: The request fails.
+	//
+	// example:
+	//
+	// true
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The page number.
+	//
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// F92D82F9-A4C4-5A4A-97B9-E495BF1B****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// _
+	Rules []*ListArtifactLifecycleRuleResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 39
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListArtifactLifecycleRuleResponseBody) String() string {
@@ -8119,19 +11916,84 @@ func (s *ListArtifactLifecycleRuleResponseBody) SetTotalCount(v int32) *ListArti
 }
 
 type ListArtifactLifecycleRuleResponseBodyRules struct {
-	Auto              *bool   `json:"Auto,omitempty" xml:"Auto,omitempty"`
-	CreateTime        *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	EnableDeleteTag   *bool   `json:"EnableDeleteTag,omitempty" xml:"EnableDeleteTag,omitempty"`
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ModifiedTime      *int64  `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	NamespaceName     *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
-	NextTime          *int64  `json:"NextTime,omitempty" xml:"NextTime,omitempty"`
-	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	RetentionTagCount *int64  `json:"RetentionTagCount,omitempty" xml:"RetentionTagCount,omitempty"`
-	RuleId            *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	ScheduleTime      *string `json:"ScheduleTime,omitempty" xml:"ScheduleTime,omitempty"`
-	Scope             *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	TagRegexp         *string `json:"TagRegexp,omitempty" xml:"TagRegexp,omitempty"`
+	// Indicates whether the lifecycle management rule is automatically executed.
+	//
+	// example:
+	//
+	// false
+	Auto *bool `json:"Auto,omitempty" xml:"Auto,omitempty"`
+	// The time when the lifecycle management rule was created.
+	//
+	// example:
+	//
+	// 1638187989000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Indicates whether lifecycle management is enabled for the artifact.
+	//
+	// example:
+	//
+	// true
+	EnableDeleteTag *bool `json:"EnableDeleteTag,omitempty" xml:"EnableDeleteTag,omitempty"`
+	// The instance ID.
+	//
+	// example:
+	//
+	// cri-brlg4cbj2yl****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The time when the lifecycle management rule was last modified.
+	//
+	// example:
+	//
+	// 1678341923385
+	ModifiedTime *int64 `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The name of the namespace.
+	//
+	// example:
+	//
+	// test-ns
+	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	// The time when the lifecycle management rule is next executed.
+	//
+	// example:
+	//
+	// 1638187989000
+	NextTime *int64 `json:"NextTime,omitempty" xml:"NextTime,omitempty"`
+	// The name of the image repository.
+	//
+	// example:
+	//
+	// test_1
+	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The number of retained images.
+	//
+	// example:
+	//
+	// 30
+	RetentionTagCount *int64 `json:"RetentionTagCount,omitempty" xml:"RetentionTagCount,omitempty"`
+	// The rule ID.
+	//
+	// example:
+	//
+	// cralr-yqx1q5sir6d****
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The execution cycle of the lifecycle management rule.
+	//
+	// example:
+	//
+	// WEEK
+	ScheduleTime *string `json:"ScheduleTime,omitempty" xml:"ScheduleTime,omitempty"`
+	// The deletion scope of artifacts.
+	//
+	// example:
+	//
+	// INSTANCE
+	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// The regular expression that indicates which image tags are retained.
+	//
+	// example:
+	//
+	// .*-alpine
+	TagRegexp *string `json:"TagRegexp,omitempty" xml:"TagRegexp,omitempty"`
 }
 
 func (s ListArtifactLifecycleRuleResponseBodyRules) String() string {
@@ -8236,16 +12098,731 @@ func (s *ListArtifactLifecycleRuleResponse) SetBody(v *ListArtifactLifecycleRule
 	return s
 }
 
+type ListArtifactSubscriptionRuleRequest struct {
+	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-c0o11woew0k****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The page number.
+	//
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Maximum value: 100. If you specify a value greater than 100 for this parameter, the system reports a parameter error or uses 100 as the maximum value.
+	//
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListArtifactSubscriptionRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListArtifactSubscriptionRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListArtifactSubscriptionRuleRequest) SetInstanceId(v string) *ListArtifactSubscriptionRuleRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListArtifactSubscriptionRuleRequest) SetPageNo(v int32) *ListArtifactSubscriptionRuleRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListArtifactSubscriptionRuleRequest) SetPageSize(v int32) *ListArtifactSubscriptionRuleRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListArtifactSubscriptionRuleResponseBody struct {
+	// The return value.
+	//
+	// example:
+	//
+	// success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// 	- `true`
+	//
+	// 	- `false`
+	//
+	// example:
+	//
+	// true
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The page number.
+	//
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 07FC5654-C82A-59FA-A9D1-78B4EE443F86
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The queried artifact subscription rules.
+	Rules []*ListArtifactSubscriptionRuleResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 13
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListArtifactSubscriptionRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListArtifactSubscriptionRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListArtifactSubscriptionRuleResponseBody) SetCode(v string) *ListArtifactSubscriptionRuleResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListArtifactSubscriptionRuleResponseBody) SetIsSuccess(v bool) *ListArtifactSubscriptionRuleResponseBody {
+	s.IsSuccess = &v
+	return s
+}
+
+func (s *ListArtifactSubscriptionRuleResponseBody) SetPageNo(v int32) *ListArtifactSubscriptionRuleResponseBody {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListArtifactSubscriptionRuleResponseBody) SetPageSize(v int32) *ListArtifactSubscriptionRuleResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListArtifactSubscriptionRuleResponseBody) SetRequestId(v string) *ListArtifactSubscriptionRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListArtifactSubscriptionRuleResponseBody) SetRules(v []*ListArtifactSubscriptionRuleResponseBodyRules) *ListArtifactSubscriptionRuleResponseBody {
+	s.Rules = v
+	return s
+}
+
+func (s *ListArtifactSubscriptionRuleResponseBody) SetTotalCount(v int32) *ListArtifactSubscriptionRuleResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListArtifactSubscriptionRuleResponseBodyRules struct {
+	// Indicates whether an acceleration link is enabled for image subscription. The subscription acceleration feature is in public preview. The feature is optimized based on scheduling policies and network links to accelerate image subscription.
+	//
+	// example:
+	//
+	// true
+	Accelerate *bool `json:"Accelerate,omitempty" xml:"Accelerate,omitempty"`
+	// The time when the subscription rule was created.
+	//
+	// example:
+	//
+	// 1638187989000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The instance ID.
+	//
+	// example:
+	//
+	// cri-brlg4cbj2yl****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The time when the subscription rule was modified.
+	//
+	// example:
+	//
+	// 1678341923385
+	ModifiedTime *int64 `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The name of the source namespace.
+	//
+	// example:
+	//
+	// test-ns
+	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	// Indicates whether the original image is overwritten.
+	//
+	// example:
+	//
+	// true
+	Override *bool `json:"Override,omitempty" xml:"Override,omitempty"`
+	// The operating system and architecture. If the source repository contains a multi-arch image, only the images with the specified operating system and architecture are subscribed to the destination repository of the Enterprise Edition instance.
+	Platform []*string `json:"Platform,omitempty" xml:"Platform,omitempty" type:"Repeated"`
+	// The name of the source repository.
+	//
+	// example:
+	//
+	// test-repo
+	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The rule ID.
+	//
+	// example:
+	//
+	// crasr-mdbpung4i1rm****
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The source namespace.
+	//
+	// example:
+	//
+	// library
+	SourceNamespaceName *string `json:"SourceNamespaceName,omitempty" xml:"SourceNamespaceName,omitempty"`
+	// The source of the artifact.
+	//
+	// Valid values:
+	//
+	// 	- DOCKER_HUB: Docker Hub
+	//
+	// 	- GCR: GCR
+	//
+	// 	- QUAY: Quay.io
+	//
+	// example:
+	//
+	// DOCKER_HUB
+	SourceProvider *string `json:"SourceProvider,omitempty" xml:"SourceProvider,omitempty"`
+	// The source repository.
+	//
+	// example:
+	//
+	// nginx
+	SourceRepoName *string `json:"SourceRepoName,omitempty" xml:"SourceRepoName,omitempty"`
+	// The number of subscribed images.
+	//
+	// example:
+	//
+	// 1
+	TagCount *int64 `json:"TagCount,omitempty" xml:"TagCount,omitempty"`
+	// The image tag in the subscription source repository. Regular expressions are supported.
+	//
+	// example:
+	//
+	// release.*
+	TagRegexp *string `json:"TagRegexp,omitempty" xml:"TagRegexp,omitempty"`
+}
+
+func (s ListArtifactSubscriptionRuleResponseBodyRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListArtifactSubscriptionRuleResponseBodyRules) GoString() string {
+	return s.String()
+}
+
+func (s *ListArtifactSubscriptionRuleResponseBodyRules) SetAccelerate(v bool) *ListArtifactSubscriptionRuleResponseBodyRules {
+	s.Accelerate = &v
+	return s
+}
+
+func (s *ListArtifactSubscriptionRuleResponseBodyRules) SetCreateTime(v int64) *ListArtifactSubscriptionRuleResponseBodyRules {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListArtifactSubscriptionRuleResponseBodyRules) SetInstanceId(v string) *ListArtifactSubscriptionRuleResponseBodyRules {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListArtifactSubscriptionRuleResponseBodyRules) SetModifiedTime(v int64) *ListArtifactSubscriptionRuleResponseBodyRules {
+	s.ModifiedTime = &v
+	return s
+}
+
+func (s *ListArtifactSubscriptionRuleResponseBodyRules) SetNamespaceName(v string) *ListArtifactSubscriptionRuleResponseBodyRules {
+	s.NamespaceName = &v
+	return s
+}
+
+func (s *ListArtifactSubscriptionRuleResponseBodyRules) SetOverride(v bool) *ListArtifactSubscriptionRuleResponseBodyRules {
+	s.Override = &v
+	return s
+}
+
+func (s *ListArtifactSubscriptionRuleResponseBodyRules) SetPlatform(v []*string) *ListArtifactSubscriptionRuleResponseBodyRules {
+	s.Platform = v
+	return s
+}
+
+func (s *ListArtifactSubscriptionRuleResponseBodyRules) SetRepoName(v string) *ListArtifactSubscriptionRuleResponseBodyRules {
+	s.RepoName = &v
+	return s
+}
+
+func (s *ListArtifactSubscriptionRuleResponseBodyRules) SetRuleId(v string) *ListArtifactSubscriptionRuleResponseBodyRules {
+	s.RuleId = &v
+	return s
+}
+
+func (s *ListArtifactSubscriptionRuleResponseBodyRules) SetSourceNamespaceName(v string) *ListArtifactSubscriptionRuleResponseBodyRules {
+	s.SourceNamespaceName = &v
+	return s
+}
+
+func (s *ListArtifactSubscriptionRuleResponseBodyRules) SetSourceProvider(v string) *ListArtifactSubscriptionRuleResponseBodyRules {
+	s.SourceProvider = &v
+	return s
+}
+
+func (s *ListArtifactSubscriptionRuleResponseBodyRules) SetSourceRepoName(v string) *ListArtifactSubscriptionRuleResponseBodyRules {
+	s.SourceRepoName = &v
+	return s
+}
+
+func (s *ListArtifactSubscriptionRuleResponseBodyRules) SetTagCount(v int64) *ListArtifactSubscriptionRuleResponseBodyRules {
+	s.TagCount = &v
+	return s
+}
+
+func (s *ListArtifactSubscriptionRuleResponseBodyRules) SetTagRegexp(v string) *ListArtifactSubscriptionRuleResponseBodyRules {
+	s.TagRegexp = &v
+	return s
+}
+
+type ListArtifactSubscriptionRuleResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListArtifactSubscriptionRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListArtifactSubscriptionRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListArtifactSubscriptionRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListArtifactSubscriptionRuleResponse) SetHeaders(v map[string]*string) *ListArtifactSubscriptionRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListArtifactSubscriptionRuleResponse) SetStatusCode(v int32) *ListArtifactSubscriptionRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListArtifactSubscriptionRuleResponse) SetBody(v *ListArtifactSubscriptionRuleResponseBody) *ListArtifactSubscriptionRuleResponse {
+	s.Body = v
+	return s
+}
+
+type ListArtifactSubscriptionTaskRequest struct {
+	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-m9ob8792vm****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The page number.
+	//
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListArtifactSubscriptionTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListArtifactSubscriptionTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListArtifactSubscriptionTaskRequest) SetInstanceId(v string) *ListArtifactSubscriptionTaskRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListArtifactSubscriptionTaskRequest) SetPageNo(v int32) *ListArtifactSubscriptionTaskRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListArtifactSubscriptionTaskRequest) SetPageSize(v int32) *ListArtifactSubscriptionTaskRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListArtifactSubscriptionTaskResponseBody struct {
+	// The return value.
+	//
+	// example:
+	//
+	// success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the API request is successful. Valid values:
+	//
+	// 	- `true`: The request is successful.
+	//
+	// 	- `false`: The request fails.
+	//
+	// example:
+	//
+	// true
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The page number.
+	//
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 81E7A039-A4EF-57D9-A100-88E5DCEF9D56
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The queried artifact subscription tasks.
+	Tasks []*ListArtifactSubscriptionTaskResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 5
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListArtifactSubscriptionTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListArtifactSubscriptionTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListArtifactSubscriptionTaskResponseBody) SetCode(v string) *ListArtifactSubscriptionTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListArtifactSubscriptionTaskResponseBody) SetIsSuccess(v bool) *ListArtifactSubscriptionTaskResponseBody {
+	s.IsSuccess = &v
+	return s
+}
+
+func (s *ListArtifactSubscriptionTaskResponseBody) SetPageNo(v int32) *ListArtifactSubscriptionTaskResponseBody {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListArtifactSubscriptionTaskResponseBody) SetPageSize(v int32) *ListArtifactSubscriptionTaskResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListArtifactSubscriptionTaskResponseBody) SetRequestId(v string) *ListArtifactSubscriptionTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListArtifactSubscriptionTaskResponseBody) SetTasks(v []*ListArtifactSubscriptionTaskResponseBodyTasks) *ListArtifactSubscriptionTaskResponseBody {
+	s.Tasks = v
+	return s
+}
+
+func (s *ListArtifactSubscriptionTaskResponseBody) SetTotalCount(v int32) *ListArtifactSubscriptionTaskResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListArtifactSubscriptionTaskResponseBodyTasks struct {
+	// The type of the artifact.
+	//
+	// example:
+	//
+	// IMAGE
+	ArtifactType *string `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
+	// The end time of the artifact subscription task.
+	//
+	// example:
+	//
+	// 1692756630000
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The instance ID.
+	//
+	// example:
+	//
+	// cri-7pd01myak****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The name of the namespace.
+	//
+	// example:
+	//
+	// test-ns
+	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	// The name of the repository.
+	//
+	// example:
+	//
+	// test-repo
+	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The name of the source namespace.
+	//
+	// example:
+	//
+	// library
+	SourceNamespaceName *string `json:"SourceNamespaceName,omitempty" xml:"SourceNamespaceName,omitempty"`
+	// The artifact source.
+	//
+	// example:
+	//
+	// DOCKER_HUB
+	SourceProvider *string `json:"SourceProvider,omitempty" xml:"SourceProvider,omitempty"`
+	// The name of the source repository.
+	//
+	// example:
+	//
+	// nginx
+	SourceRepoName *string `json:"SourceRepoName,omitempty" xml:"SourceRepoName,omitempty"`
+	// The type of the source artifact.
+	//
+	// example:
+	//
+	// PUBLIC
+	SourceRepoType *string `json:"SourceRepoType,omitempty" xml:"SourceRepoType,omitempty"`
+	// The start time of the artifact subscription task.
+	//
+	// example:
+	//
+	// 1695348301000
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The total number of subscribed tags.
+	//
+	// example:
+	//
+	// 3
+	TagSubscriptionCount *int64 `json:"TagSubscriptionCount,omitempty" xml:"TagSubscriptionCount,omitempty"`
+	// The total number of tags.
+	//
+	// example:
+	//
+	// 311
+	TagTotalCount *int64 `json:"TagTotalCount,omitempty" xml:"TagTotalCount,omitempty"`
+	// The task ID.
+	//
+	// example:
+	//
+	// crast-40le4es9yh0p****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The task result.
+	//
+	// example:
+	//
+	// SUCCESS
+	TaskResult *string `json:"TaskResult,omitempty" xml:"TaskResult,omitempty"`
+	// The status of the task.
+	//
+	// example:
+	//
+	// RUNNING
+	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// The type of the task.
+	//
+	// example:
+	//
+	// AUTO
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+}
+
+func (s ListArtifactSubscriptionTaskResponseBodyTasks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListArtifactSubscriptionTaskResponseBodyTasks) GoString() string {
+	return s.String()
+}
+
+func (s *ListArtifactSubscriptionTaskResponseBodyTasks) SetArtifactType(v string) *ListArtifactSubscriptionTaskResponseBodyTasks {
+	s.ArtifactType = &v
+	return s
+}
+
+func (s *ListArtifactSubscriptionTaskResponseBodyTasks) SetEndTime(v string) *ListArtifactSubscriptionTaskResponseBodyTasks {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListArtifactSubscriptionTaskResponseBodyTasks) SetInstanceId(v string) *ListArtifactSubscriptionTaskResponseBodyTasks {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListArtifactSubscriptionTaskResponseBodyTasks) SetMessage(v string) *ListArtifactSubscriptionTaskResponseBodyTasks {
+	s.Message = &v
+	return s
+}
+
+func (s *ListArtifactSubscriptionTaskResponseBodyTasks) SetNamespaceName(v string) *ListArtifactSubscriptionTaskResponseBodyTasks {
+	s.NamespaceName = &v
+	return s
+}
+
+func (s *ListArtifactSubscriptionTaskResponseBodyTasks) SetRepoName(v string) *ListArtifactSubscriptionTaskResponseBodyTasks {
+	s.RepoName = &v
+	return s
+}
+
+func (s *ListArtifactSubscriptionTaskResponseBodyTasks) SetSourceNamespaceName(v string) *ListArtifactSubscriptionTaskResponseBodyTasks {
+	s.SourceNamespaceName = &v
+	return s
+}
+
+func (s *ListArtifactSubscriptionTaskResponseBodyTasks) SetSourceProvider(v string) *ListArtifactSubscriptionTaskResponseBodyTasks {
+	s.SourceProvider = &v
+	return s
+}
+
+func (s *ListArtifactSubscriptionTaskResponseBodyTasks) SetSourceRepoName(v string) *ListArtifactSubscriptionTaskResponseBodyTasks {
+	s.SourceRepoName = &v
+	return s
+}
+
+func (s *ListArtifactSubscriptionTaskResponseBodyTasks) SetSourceRepoType(v string) *ListArtifactSubscriptionTaskResponseBodyTasks {
+	s.SourceRepoType = &v
+	return s
+}
+
+func (s *ListArtifactSubscriptionTaskResponseBodyTasks) SetStartTime(v string) *ListArtifactSubscriptionTaskResponseBodyTasks {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListArtifactSubscriptionTaskResponseBodyTasks) SetTagSubscriptionCount(v int64) *ListArtifactSubscriptionTaskResponseBodyTasks {
+	s.TagSubscriptionCount = &v
+	return s
+}
+
+func (s *ListArtifactSubscriptionTaskResponseBodyTasks) SetTagTotalCount(v int64) *ListArtifactSubscriptionTaskResponseBodyTasks {
+	s.TagTotalCount = &v
+	return s
+}
+
+func (s *ListArtifactSubscriptionTaskResponseBodyTasks) SetTaskId(v string) *ListArtifactSubscriptionTaskResponseBodyTasks {
+	s.TaskId = &v
+	return s
+}
+
+func (s *ListArtifactSubscriptionTaskResponseBodyTasks) SetTaskResult(v string) *ListArtifactSubscriptionTaskResponseBodyTasks {
+	s.TaskResult = &v
+	return s
+}
+
+func (s *ListArtifactSubscriptionTaskResponseBodyTasks) SetTaskStatus(v string) *ListArtifactSubscriptionTaskResponseBodyTasks {
+	s.TaskStatus = &v
+	return s
+}
+
+func (s *ListArtifactSubscriptionTaskResponseBodyTasks) SetTaskType(v string) *ListArtifactSubscriptionTaskResponseBodyTasks {
+	s.TaskType = &v
+	return s
+}
+
+type ListArtifactSubscriptionTaskResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListArtifactSubscriptionTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListArtifactSubscriptionTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListArtifactSubscriptionTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListArtifactSubscriptionTaskResponse) SetHeaders(v map[string]*string) *ListArtifactSubscriptionTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListArtifactSubscriptionTaskResponse) SetStatusCode(v int32) *ListArtifactSubscriptionTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListArtifactSubscriptionTaskResponse) SetBody(v *ListArtifactSubscriptionTaskResponseBody) *ListArtifactSubscriptionTaskResponse {
+	s.Body = v
+	return s
+}
+
 type ListChainRequest struct {
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-4cdrlqmhn4gm****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The number of the page to return.
+	//
+	// example:
+	//
+	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The name of the image repository.
+	//
+	// example:
+	//
+	// repo1
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	// The name of the namespace.
+	//
+	// example:
+	//
+	// ns1
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 }
 
@@ -8286,16 +12863,40 @@ type ListChainResponseBody struct {
 	// The list of delivery chains.
 	Chains []*ListChainResponseBodyChains `json:"Chains,omitempty" xml:"Chains,omitempty" type:"Repeated"`
 	// The return value.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The page number of the returned page.
+	//
+	// example:
+	//
+	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// 1
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 85A99B10-3926-5201-958E-C06FA47F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of delivery chains.
+	//
+	// example:
+	//
+	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -8344,22 +12945,54 @@ func (s *ListChainResponseBody) SetTotalCount(v int32) *ListChainResponseBody {
 
 type ListChainResponseBodyChains struct {
 	// The ID of the delivery chain.
+	//
+	// example:
+	//
+	// chi-0ops0gsmw5x2****
 	ChainId *string `json:"ChainId,omitempty" xml:"ChainId,omitempty"`
 	// The time when the delivery chain was created.
+	//
+	// example:
+	//
+	// 1638255427000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The description of the delivery chain.
+	//
+	// example:
+	//
+	// description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// cri-4cdrlqmhn4gm****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The time when the delivery chain was last modified.
+	//
+	// example:
+	//
+	// 1638259914000
 	ModifiedTime *int64 `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
 	// The name of the delivery chain.
+	//
+	// example:
+	//
+	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// Repositories to which the delivery chain does not apply.
 	ScopeExclude []*string `json:"ScopeExclude,omitempty" xml:"ScopeExclude,omitempty" type:"Repeated"`
 	// The ID of the delivery chain scope.
+	//
+	// example:
+	//
+	// crr-nyrh2oko32xb****
 	ScopeId *string `json:"ScopeId,omitempty" xml:"ScopeId,omitempty"`
 	// The type of the delivery chain scope.
+	//
+	// example:
+	//
+	// REPOSITORY
 	ScopeType *string `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
 }
 
@@ -8447,14 +13080,36 @@ func (s *ListChainResponse) SetBody(v *ListChainResponseBody) *ListChainResponse
 
 type ListChainInstanceRequest struct {
 	// The operation that you want to perform. Set this parameter to **ListChainInstance**.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-kmsiwlxxdcva****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The time when the delivery chain started.
+	//
+	// example:
+	//
+	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The name of the image repository.
+	//
+	// example:
+	//
+	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The time when the delivery chain is completed.
+	//
+	// example:
+	//
+	// test-repo
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	// The name of the delivery chain.
+	//
+	// example:
+	//
+	// test-namespace
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 }
 
@@ -8495,18 +13150,46 @@ type ListChainInstanceResponseBody struct {
 	// The number of entries to return on each page.
 	ChainInstances []*ListChainInstanceResponseBodyChainInstances `json:"ChainInstances,omitempty" xml:"ChainInstances,omitempty" type:"Repeated"`
 	// The version of the delivery chain.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The page number of the page to return.
+	//
+	// example:
+	//
+	// cri-kmsiwlxxdcva****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The execution record of the delivery chain.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// 30
+	//
+	// example:
+	//
+	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// Indicates whether the operation is successful.
+	//
+	// example:
+	//
+	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the Container Registry instance.
+	//
+	// example:
+	//
+	// 838D1602-6D8F-47FB-B60A-656645D2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The name of the repository.
+	//
+	// example:
+	//
+	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -8562,28 +13245,62 @@ type ListChainInstanceResponseBodyChainInstances struct {
 	// The name of the namespace.
 	Chain *ListChainInstanceResponseBodyChainInstancesChain `json:"Chain,omitempty" xml:"Chain,omitempty" type:"Struct"`
 	// 1
+	//
+	// example:
+	//
+	// F4CF4DDB-BEF2-5575-****-*******
 	ChainInstanceId *string `json:"ChainInstanceId,omitempty" xml:"ChainInstanceId,omitempty"`
 	// The ID of the Container Registry instance.
+	//
+	// example:
+	//
+	// 1636685856000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the delivery chain.
+	//
+	// example:
+	//
+	// test-repo
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	// The execution result of the delivery chain. Valid values:
 	//
-	// *   `SUCCESS`
-	// *   `FAILED`
-	// *   `CANCELED`
-	// *   `DENIED`
+	// 	- `SUCCESS`
+	//
+	// 	- `FAILED`
+	//
+	// 	- `CANCELED`
+	//
+	// 	- `DENIED`
+	//
+	// example:
+	//
+	// test-ns
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 	// The list of the execution records of delivery chains.
+	//
+	// example:
+	//
+	// SUCCESS
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
 	// test-repo
+	//
+	// example:
+	//
+	// 1636685776000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The status of the delivery chain. Valid values:
 	//
-	// *   `RUNNING`
-	// *   `COMPLETE`
-	// *   `CANCELING`
-	// *   `CANCELED`
+	// 	- `RUNNING`
+	//
+	// 	- `COMPLETE`
+	//
+	// 	- `CANCELING`
+	//
+	// 	- `CANCELED`
+	//
+	// example:
+	//
+	// COMPLETE
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -8637,10 +13354,22 @@ func (s *ListChainInstanceResponseBodyChainInstances) SetStatus(v string) *ListC
 
 type ListChainInstanceResponseBodyChainInstancesChain struct {
 	// The name of the namespace.
+	//
+	// example:
+	//
+	// chi-m42gbku0****
 	ChainId *string `json:"ChainId,omitempty" xml:"ChainId,omitempty"`
 	// The number of entries returned on each page.
+	//
+	// example:
+	//
+	// test-chain
 	ChainName *string `json:"ChainName,omitempty" xml:"ChainName,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 1
 	Version *int64 `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
@@ -8698,17 +13427,40 @@ func (s *ListChainInstanceResponse) SetBody(v *ListChainInstanceResponseBody) *L
 
 type ListChartNamespaceRequest struct {
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-kmsiwlxxdcva****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The name of the namespace.
+	//
+	// example:
+	//
+	// test
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
 	// The status of the namespace. Valid values:
 	//
-	// *   `NORMAL`: The namespace is normal.
-	// *   `DELETING`: The namespace is being deleted.
+	// 	- `NORMAL`: The namespace is normal.
+	//
+	// 	- `DELETING`: The namespace is being deleted.
+	//
+	// example:
+	//
+	// NORMAL
 	NamespaceStatus *string `json:"NamespaceStatus,omitempty" xml:"NamespaceStatus,omitempty"`
 	// The number of the page to return.
+	//
+	// example:
+	//
+	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// example:
+	//
+	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
@@ -8747,18 +13499,42 @@ func (s *ListChartNamespaceRequest) SetPageSize(v int32) *ListChartNamespaceRequ
 
 type ListChartNamespaceResponseBody struct {
 	// The return value.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The namespaces.
 	Namespaces []*ListChartNamespaceResponseBodyNamespaces `json:"Namespaces,omitempty" xml:"Namespaces,omitempty" type:"Repeated"`
 	// The page number of the returned page.
+	//
+	// example:
+	//
+	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// F56D589D-AF7F-4900-BA46-62C780AC2C10
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of returned entries.
+	//
+	// example:
+	//
+	// 1
 	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -8807,23 +13583,54 @@ func (s *ListChartNamespaceResponseBody) SetTotalCount(v string) *ListChartNames
 
 type ListChartNamespaceResponseBodyNamespaces struct {
 	// Indicates whether a repository was automatically created when a chart is pushed to the namespace.
+	//
+	// example:
+	//
+	// true
 	AutoCreateRepo *bool `json:"AutoCreateRepo,omitempty" xml:"AutoCreateRepo,omitempty"`
 	// The default repository type. Valid values:
 	//
-	// *   `PUBLIC`: a public repository
-	// *   `PRIVATE`: a private repository
+	// 	- `PUBLIC`: a public repository
+	//
+	// 	- `PRIVATE`: a private repository
+	//
+	// example:
+	//
+	// PUBLIC
 	DefaultRepoType *string `json:"DefaultRepoType,omitempty" xml:"DefaultRepoType,omitempty"`
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// cri-kmsiwlxxdcva****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the namespace.
+	//
+	// example:
+	//
+	// null
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	// The name of the namespace.
+	//
+	// example:
+	//
+	// test
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
 	// The status of the namespace. Valid values:
 	//
-	// *   `NORMAL`: The namespace is normal.
-	// *   `DELETING`: The namespace is being deleted.
+	// 	- `NORMAL`: The namespace is normal.
+	//
+	// 	- `DELETING`: The namespace is being deleted.
+	//
+	// example:
+	//
+	// NORMAL
 	NamespaceStatus *string `json:"NamespaceStatus,omitempty" xml:"NamespaceStatus,omitempty"`
+	// The ID of the resource group to which the instance belongs.
+	//
+	// example:
+	//
+	// rg-acfm4n5kzyf****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -8901,16 +13708,46 @@ func (s *ListChartNamespaceResponse) SetBody(v *ListChartNamespaceResponseBody) 
 
 type ListChartReleaseRequest struct {
 	// The chart whose versions you want to query.
+	//
+	// example:
+	//
+	// null
 	Chart *string `json:"Chart,omitempty" xml:"Chart,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-xkx6vujuhay0****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The number of the page to return.
+	//
+	// example:
+	//
+	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The name of the repository.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// repo1
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	// The name of the namespace.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ns1
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 }
 
@@ -8956,16 +13793,40 @@ type ListChartReleaseResponseBody struct {
 	// The list of chart versions.
 	ChartReleases []*ListChartReleaseResponseBodyChartReleases `json:"ChartReleases,omitempty" xml:"ChartReleases,omitempty" type:"Repeated"`
 	// The return value.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The page number of the returned page.
+	//
+	// example:
+	//
+	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// F68823F6-F1B5-4A4E-8421-A83CAB8F2963
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of returned entries.
+	//
+	// example:
+	//
+	// 1
 	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -9014,18 +13875,46 @@ func (s *ListChartReleaseResponseBody) SetTotalCount(v string) *ListChartRelease
 
 type ListChartReleaseResponseBodyChartReleases struct {
 	// The name of the chart version.
+	//
+	// example:
+	//
+	// chart1
 	Chart *string `json:"Chart,omitempty" xml:"Chart,omitempty"`
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// cri-xkx6vujuhay0****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The time when the chart was last modified.
+	//
+	// example:
+	//
+	// 1571930323000
 	ModifiedTime *int64 `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
 	// The version number of the chart.
+	//
+	// example:
+	//
+	// 0.1.0
 	Release *string `json:"Release,omitempty" xml:"Release,omitempty"`
 	// The ID of the chart repository.
+	//
+	// example:
+	//
+	// crcr-gpsu7b8chmxk****
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	// The size of the chart of the version. Unit: bytes.
+	//
+	// example:
+	//
+	// 2826
 	Size *string `json:"Size,omitempty" xml:"Size,omitempty"`
 	// The status of the chart.
+	//
+	// example:
+	//
+	// ENABLED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -9103,20 +13992,48 @@ func (s *ListChartReleaseResponse) SetBody(v *ListChartReleaseResponseBody) *Lis
 
 type ListChartRepositoryRequest struct {
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-xkx6vujuhay0****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The number of the page to return.
+	//
+	// example:
+	//
+	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// example:
+	//
+	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The name of the repository.
+	//
+	// example:
+	//
+	// ns1
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	// The name of the namespace to which the repository belongs.
+	//
+	// example:
+	//
+	// repo1
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 	// The status of the chart repositories that you want to query. Valid values:
 	//
-	// *   `ALL`: query repositories of all status.
-	// *   `NORMAL`: query normal repositories.
-	// *   `DELETING`: query repositories that are being deleted.
+	// 	- `ALL`: query repositories of all status.
+	//
+	// 	- `NORMAL`: query normal repositories.
+	//
+	// 	- `DELETING`: query repositories that are being deleted.
+	//
+	// example:
+	//
+	// ALL
 	RepoStatus *string `json:"RepoStatus,omitempty" xml:"RepoStatus,omitempty"`
 }
 
@@ -9160,18 +14077,42 @@ func (s *ListChartRepositoryRequest) SetRepoStatus(v string) *ListChartRepositor
 
 type ListChartRepositoryResponseBody struct {
 	// The return value.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The page number of the returned page.
+	//
+	// example:
+	//
+	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The queried repositories.
 	Repositories []*ListChartRepositoryResponseBodyRepositories `json:"Repositories,omitempty" xml:"Repositories,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0AB62FB8-6873-4032-8515-4578D27523B7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of returned entries.
+	//
+	// example:
+	//
+	// 1
 	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -9220,30 +14161,72 @@ func (s *ListChartRepositoryResponseBody) SetTotalCount(v string) *ListChartRepo
 
 type ListChartRepositoryResponseBodyRepositories struct {
 	// The time when the repository was created.
+	//
+	// example:
+	//
+	// 1571926644000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// cri-xkx6vujuhay0****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The time when the repository was last modified.
+	//
+	// example:
+	//
+	// 1571930329000
 	ModifiedTime *int64 `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
 	// The ID of the repository.
+	//
+	// example:
+	//
+	// crcr-gpsu7b8chmxk****
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	// The name of the repository.
+	//
+	// example:
+	//
+	// repo1
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	// The name of the namespace to which the repository belongs.
+	//
+	// example:
+	//
+	// ns1
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 	// The status of the repository. Valid values:
 	//
-	// *   `NORMAL`: The repository is normal.
-	// *   `DELETING`: The repository is being deleted.
+	// 	- `NORMAL`: The repository is normal.
+	//
+	// 	- `DELETING`: The repository is being deleted.
+	//
+	// example:
+	//
+	// NORMAL
 	RepoStatus *string `json:"RepoStatus,omitempty" xml:"RepoStatus,omitempty"`
 	// The type of the repository. Valid values:
 	//
-	// *   `PRIVATE`: a private repository
-	// *   `PUBLIC`: a public repository
+	// 	- `PRIVATE`: a private repository
+	//
+	// 	- `PUBLIC`: a public repository
+	//
+	// example:
+	//
+	// PUBLIC
 	RepoType *string `json:"RepoType,omitempty" xml:"RepoType,omitempty"`
 	// The ID of the resource group to which the repository belongs.
+	//
+	// example:
+	//
+	// rg-aek2ikd5rxxxxxx
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The summary about the repository.
+	//
+	// example:
+	//
+	// test
 	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
 }
 
@@ -9337,21 +14320,57 @@ func (s *ListChartRepositoryResponse) SetBody(v *ListChartRepositoryResponseBody
 type ListEventCenterRecordRequest struct {
 	// The type of the event. Valid values:
 	//
-	// *   `cr:Artifact:DeliveryChainCompleted`: The delivery chain is processed.
-	// *   `cr:Artifact:SynchronizationCompleted`: The image is replicated.
-	// *   `cr:Artifact:BuildCompleted`: The image is built.
-	// *   `cr:Artifact:ScanCompleted`: The image is scanned.
-	// *   `cr:Artifact:SigningCompleted`: The image is signed.
+	// 	- `cr:Artifact:DeliveryChainCompleted`: The delivery chain is processed.
+	//
+	// 	- `cr:Artifact:SynchronizationCompleted`: The image is replicated.
+	//
+	// 	- `cr:Artifact:BuildCompleted`: The image is built.
+	//
+	// 	- `cr:Artifact:ScanCompleted`: The image is scanned.
+	//
+	// 	- `cr:Artifact:SigningCompleted`: The image is signed.
+	//
+	// example:
+	//
+	// cr:Artifact:DeliveryChainCompleted
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-kmsiwlxxdcva****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The number of the page to return.
+	//
+	// example:
+	//
+	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries to return on each page.
-	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	//
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The name of the repository.
+	//
+	// example:
+	//
+	// test
+	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The name of the namespace to which the repository belongs.
+	//
+	// example:
+	//
+	// test
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 	// The ID of the event notification rule.
+	//
+	// example:
+	//
+	// crecr-n6pbhgjxtla***
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
@@ -9400,18 +14419,46 @@ func (s *ListEventCenterRecordRequest) SetRuleId(v string) *ListEventCenterRecor
 
 type ListEventCenterRecordResponseBody struct {
 	// The return value.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The page number of the returned page.
+	//
+	// example:
+	//
+	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The list of historical events.
+	//
+	// example:
+	//
+	// []
 	Records []*ListEventCenterRecordResponseBodyRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 665C7A5E-BAEC-5BCD-AF9F-5F9260D672BF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total entries of historical events.
+	//
+	// example:
+	//
+	// 50
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -9460,34 +14507,88 @@ func (s *ListEventCenterRecordResponseBody) SetTotalCount(v int32) *ListEventCen
 
 type ListEventCenterRecordResponseBodyRecords struct {
 	// The time when the event was created.
+	//
+	// example:
+	//
+	// 1638188622000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The event notification channel.
+	//
+	// example:
+	//
+	// EVENT_BRIDGE
 	EventChannel *string `json:"EventChannel,omitempty" xml:"EventChannel,omitempty"`
 	// The ID of the event notification.
+	//
+	// example:
+	//
+	// 7d478419-61df-49e5-b92b-30ce730c2127
 	EventNotifyId *string `json:"EventNotifyId,omitempty" xml:"EventNotifyId,omitempty"`
 	// The notification method. Valid values:
 	//
-	// *   `http`: The notification is sent over HTTP.
-	// *   `https`: The notification is sent over HTTPS.
-	// *   `dingding`: The notification is sent by using DingTalk.
+	// 	- `http`: The notification is sent over HTTP.
+	//
+	// 	- `https`: The notification is sent over HTTPS.
+	//
+	// 	- `dingding`: The notification is sent by using DingTalk.
+	//
+	// example:
+	//
+	// http
 	EventNotifyMethod *string `json:"EventNotifyMethod,omitempty" xml:"EventNotifyMethod,omitempty"`
 	// The type of the event.
+	//
+	// example:
+	//
+	// cr:Artifact:DeliveryChainCompleted
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// cri-gl34plsa****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The namespace.
+	//
+	// example:
+	//
+	// mychain
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The ID of the event record.
+	//
+	// example:
+	//
+	// crecrr-ctdbzwtkpr*****
 	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
 	// The name of the image repository.
+	//
+	// example:
+	//
+	// ruby-2.4.0
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	// The ID of the event notification rule.
+	//
+	// example:
+	//
+	// crecr-n6pbhgjxtla*****
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	// The name of the event notification rule.
+	//
+	// example:
+	//
+	// chain-demo
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// The tags.
+	//
+	// example:
+	//
+	// ruby-2.4.0
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 	// The time when the event was last updated.
+	//
+	// example:
+	//
+	// 1638188622000
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
@@ -9595,6 +14696,12 @@ func (s *ListEventCenterRecordResponse) SetBody(v *ListEventCenterRecordResponse
 
 type ListEventCenterRuleNameRequest struct {
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-kmsiwlxxdcva****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -9613,12 +14720,28 @@ func (s *ListEventCenterRuleNameRequest) SetInstanceId(v string) *ListEventCente
 
 type ListEventCenterRuleNameResponseBody struct {
 	// The return value.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 031572FA-7D8F-4C05-B790-1071E0E05DE6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The list of names of event notification rules.
+	//
+	// example:
+	//
+	// [{\\"RuleName\\": \\"mlf\\", \\"RuleId\\": \\"crecr-73q93pgljm1pc2fp\\"}]
 	RuleNames []*ListEventCenterRuleNameResponseBodyRuleNames `json:"RuleNames,omitempty" xml:"RuleNames,omitempty" type:"Repeated"`
 }
 
@@ -9652,8 +14775,16 @@ func (s *ListEventCenterRuleNameResponseBody) SetRuleNames(v []*ListEventCenterR
 
 type ListEventCenterRuleNameResponseBodyRuleNames struct {
 	// The ID of the event notification rule.
+	//
+	// example:
+	//
+	// crecr-n6pbhgjxtl*****
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	// The name of the event notification rule.
+	//
+	// example:
+	//
+	// test-chain
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 }
 
@@ -9705,24 +14836,53 @@ func (s *ListEventCenterRuleNameResponse) SetBody(v *ListEventCenterRuleNameResp
 }
 
 type ListInstanceRequest struct {
+	// Deprecated
+	//
 	// The instance name.
+	//
+	// example:
+	//
+	// test
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// The status of the instance. Valid values:
 	//
-	// *   `PENDING`: The instance is being initialized.
-	// *   `INIT_ERROR`: The initialization of the instance fails.
-	// *   `STARTING`: The instance is being started.
-	// *   `RUNNING`: The instance is running.
-	// *   `STOPPING`: The instance is being stopped.
-	// *   `STOPPED`: The instance is stopped.
-	// *   `DELETING`: The instance is being deleted.
-	// *   `DELETED`: The instance is deleted.
+	// 	- `PENDING`: The instance is being initialized.
+	//
+	// 	- `INIT_ERROR`: The initialization of the instance fails.
+	//
+	// 	- `STARTING`: The instance is being started.
+	//
+	// 	- `RUNNING`: The instance is running.
+	//
+	// 	- `STOPPING`: The instance is being stopped.
+	//
+	// 	- `STOPPED`: The instance is stopped.
+	//
+	// 	- `DELETING`: The instance is being deleted.
+	//
+	// 	- `DELETED`: The instance is deleted.
+	//
+	// example:
+	//
+	// RUNNING
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
 	// The page number.
+	//
+	// example:
+	//
+	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the resource group to which the instance belongs.
+	//
+	// example:
+	//
+	// rg-acfmv36i4is****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -9761,18 +14921,42 @@ func (s *ListInstanceRequest) SetResourceGroupId(v string) *ListInstanceRequest 
 
 type ListInstanceResponseBody struct {
 	// The return value.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The queried instances.
 	Instances []*ListInstanceResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The page number. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries per page. Default value: 30.
+	//
+	// example:
+	//
+	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// A2A9BA68-B264-4953-9154-CE61B1C03BA6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 12121
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -9821,24 +15005,61 @@ func (s *ListInstanceResponseBody) SetTotalCount(v int32) *ListInstanceResponseB
 
 type ListInstanceResponseBodyInstances struct {
 	// The time when the instance was created.
+	//
+	// example:
+	//
+	// 1562849679000
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The instance ID.
+	//
+	// example:
+	//
+	// cri-sgedpenzw80e****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The issue occurs on the instance.
+	//
+	// example:
+	//
+	// oss bucket already exists
 	InstanceIssue *string `json:"InstanceIssue,omitempty" xml:"InstanceIssue,omitempty"`
 	// The name of the instance.
+	//
+	// example:
+	//
+	// test
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// The edition of the Container Registry Enterprise Edition instance.
+	//
+	// example:
+	//
+	// Enterprise_Basic
 	InstanceSpecification *string `json:"InstanceSpecification,omitempty" xml:"InstanceSpecification,omitempty"`
 	// The status of the instance.
+	//
+	// example:
+	//
+	// RUNNING
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
 	// The time when the instance was last modified.
+	//
+	// example:
+	//
+	// 1562849760000
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
 	// The region ID of the instance.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the instance belongs.
-	ResourceGroupId *string                                  `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Tags            []*ListInstanceResponseBodyInstancesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	//
+	// example:
+	//
+	// rg-aek2h3aexpy****
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The tags of the instance.
+	Tags []*ListInstanceResponseBodyInstancesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListInstanceResponseBodyInstances) String() string {
@@ -9900,7 +15121,17 @@ func (s *ListInstanceResponseBodyInstances) SetTags(v []*ListInstanceResponseBod
 }
 
 type ListInstanceResponseBodyInstancesTags struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// test_key
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// test_value
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -9953,13 +15184,29 @@ func (s *ListInstanceResponse) SetBody(v *ListInstanceResponseBody) *ListInstanc
 
 type ListInstanceEndpointRequest struct {
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-kmsiwlxxdcva****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The name of the module that you want to access. Valid values:
 	//
-	// *   `Registry`: the image repository.
-	// *   `Chart`: a Helm chart.
+	// 	- `Registry`: image repositories.
+	//
+	// 	- `Chart`: Helm charts.
+	//
+	// example:
+	//
+	// Chart
 	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
-	Summary    *bool   `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// Specify whether to return endpoints in simple mode. If yes, no access control information about the endpoint is returned.
+	//
+	// example:
+	//
+	// false
+	Summary *bool `json:"Summary,omitempty" xml:"Summary,omitempty"`
 }
 
 func (s ListInstanceEndpointRequest) String() string {
@@ -9987,12 +15234,24 @@ func (s *ListInstanceEndpointRequest) SetSummary(v bool) *ListInstanceEndpointRe
 
 type ListInstanceEndpointResponseBody struct {
 	// The return value.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The endpoints of the instance.
 	Endpoints []*ListInstanceEndpointResponseBodyEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// The ID of the request.
+	// The request ID.
+	//
+	// example:
+	//
+	// 1B21A877-66A2-4095-90EB-20A7781A4A67
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10025,19 +15284,35 @@ func (s *ListInstanceEndpointResponseBody) SetRequestId(v string) *ListInstanceE
 }
 
 type ListInstanceEndpointResponseBodyEndpoints struct {
-	// Indicates whether the access control list (ACL) feature is enabled.
+	// Indicates whether the endpoint is added to an access control list (ACL).
+	//
+	// example:
+	//
+	// true
 	AclEnable *bool `json:"AclEnable,omitempty" xml:"AclEnable,omitempty"`
-	// The ACL configured for the instance.
+	// The ACLs that are configured for the instance.
 	AclEntries []*ListInstanceEndpointResponseBodyEndpointsAclEntries `json:"AclEntries,omitempty" xml:"AclEntries,omitempty" type:"Repeated"`
-	// Domain names.
+	// The list of domain names of the Container Registry instance.
 	Domains []*ListInstanceEndpointResponseBodyEndpointsDomains `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
-	// Indicates whether the ACL feature is enabled.
+	// Indicates whether the endpoint is added to an ACL.
+	//
+	// example:
+	//
+	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	// The type of the endpoint.
+	//
+	// example:
+	//
+	// internet
 	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
-	// The virtual private clouds (VPCs) that are associated with the instance.
+	// The VPCs associated with the instance.
 	LinkedVpcs []*ListInstanceEndpointResponseBodyEndpointsLinkedVpcs `json:"LinkedVpcs,omitempty" xml:"LinkedVpcs,omitempty" type:"Repeated"`
-	// The status of the instance.
+	// The status of the endpoint.
+	//
+	// example:
+	//
+	// RUNNING
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -10085,7 +15360,11 @@ func (s *ListInstanceEndpointResponseBodyEndpoints) SetStatus(v string) *ListIns
 }
 
 type ListInstanceEndpointResponseBodyEndpointsAclEntries struct {
-	// Details about the ACL.
+	// The information about the ACL.
+	//
+	// example:
+	//
+	// null
 	Entry *string `json:"Entry,omitempty" xml:"Entry,omitempty"`
 }
 
@@ -10103,9 +15382,21 @@ func (s *ListInstanceEndpointResponseBodyEndpointsAclEntries) SetEntry(v string)
 }
 
 type ListInstanceEndpointResponseBodyEndpointsDomains struct {
-	// The domain name.
+	// The domain name of the Container Registry instance.
+	//
+	// example:
+	//
+	// t****-registry.cn-shanghai.cr.aliyuncs.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// Type
+	// The type of the domain name. Valid values:
+	//
+	// 	- SYSTEM: system domain name.
+	//
+	// 	- USER: user domain name.
+	//
+	// example:
+	//
+	// SYSTEM
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -10129,6 +15420,10 @@ func (s *ListInstanceEndpointResponseBodyEndpointsDomains) SetType(v string) *Li
 
 type ListInstanceEndpointResponseBodyEndpointsLinkedVpcs struct {
 	// VPC ID
+	//
+	// example:
+	//
+	// null
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -10176,6 +15471,10 @@ func (s *ListInstanceEndpointResponse) SetBody(v *ListInstanceEndpointResponseBo
 
 type ListInstanceRegionRequest struct {
 	// The language used for response parameters. Set this parameter to `zh-CN`.
+	//
+	// example:
+	//
+	// zh-CN
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
@@ -10194,15 +15493,28 @@ func (s *ListInstanceRegionRequest) SetLang(v string) *ListInstanceRegionRequest
 
 type ListInstanceRegionResponseBody struct {
 	// The return value.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   `true`: The request is successful.
-	// *   `false`: The request fails.
+	// 	- `true`: The request is successful.
+	//
+	// 	- `false`: The request fails.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The list of regions.
 	Regions []*ListInstanceRegionResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 11F182E1-0F84-4F5B-8D3B-61E991482727
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10236,8 +15548,16 @@ func (s *ListInstanceRegionResponseBody) SetRequestId(v string) *ListInstanceReg
 
 type ListInstanceRegionResponseBodyRegions struct {
 	// The name of the region.
+	//
+	// example:
+	//
+	// China (Shenzhen)
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-shenzhen
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -10290,14 +15610,36 @@ func (s *ListInstanceRegionResponse) SetBody(v *ListInstanceRegionResponseBody) 
 
 type ListNamespaceRequest struct {
 	// The number of the page to return.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-94klsruryslx****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// test-namespace
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
 	// The ID of the namespace.
+	//
+	// example:
+	//
+	// NORMAL
 	NamespaceStatus *string `json:"NamespaceStatus,omitempty" xml:"NamespaceStatus,omitempty"`
 	// The list of namespaces.
+	//
+	// example:
+	//
+	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
@@ -10335,13 +15677,33 @@ func (s *ListNamespaceRequest) SetPageSize(v int32) *ListNamespaceRequest {
 }
 
 type ListNamespaceResponseBody struct {
-	Code       *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// true
 	IsSuccess  *bool                                  `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	Namespaces []*ListNamespaceResponseBodyNamespaces `json:"Namespaces,omitempty" xml:"Namespaces,omitempty" type:"Repeated"`
-	PageNo     *int32                                 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize   *int32                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *string                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// B7E5FCA5-55ED-451C-9649-0BB2B93387D0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListNamespaceResponseBody) String() string {
@@ -10388,12 +15750,33 @@ func (s *ListNamespaceResponseBody) SetTotalCount(v string) *ListNamespaceRespon
 }
 
 type ListNamespaceResponseBodyNamespaces struct {
-	AutoCreateRepo  *bool   `json:"AutoCreateRepo,omitempty" xml:"AutoCreateRepo,omitempty"`
+	// example:
+	//
+	// true
+	AutoCreateRepo *bool `json:"AutoCreateRepo,omitempty" xml:"AutoCreateRepo,omitempty"`
+	// example:
+	//
+	// PUBLIC
 	DefaultRepoType *string `json:"DefaultRepoType,omitempty" xml:"DefaultRepoType,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	NamespaceId     *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	NamespaceName   *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	// example:
+	//
+	// cri-94klsruryslx****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// crn-tiw8t3f8i5lt****
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// example:
+	//
+	// test
+	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	// example:
+	//
+	// NORMAL
 	NamespaceStatus *string `json:"NamespaceStatus,omitempty" xml:"NamespaceStatus,omitempty"`
+	// example:
+	//
+	// rg-acfm4n5kzyf2fbi
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -10471,12 +15854,32 @@ func (s *ListNamespaceResponse) SetBody(v *ListNamespaceResponseBody) *ListNames
 
 type ListRepoBuildRecordRequest struct {
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-kmsiwlxxdcva****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The number of the page to return.
+	//
+	// example:
+	//
+	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// example:
+	//
+	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the repository.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// crr-tquyps22md8****
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 }
 
@@ -10512,19 +15915,44 @@ type ListRepoBuildRecordResponseBody struct {
 	// The list of image building records.
 	BuildRecords []*ListRepoBuildRecordResponseBodyBuildRecords `json:"BuildRecords,omitempty" xml:"BuildRecords,omitempty" type:"Repeated"`
 	// The return value.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   `true`: The request is successful.
-	// *   `false`: The request fails.
+	// 	- `true`: The request is successful.
+	//
+	// 	- `false`: The request fails.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The page number of the returned page.
+	//
+	// example:
+	//
+	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 9D23DEDF-E91D-434B-B7D5-9D12C648D166
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of returned entries.
+	//
+	// example:
+	//
+	// 1
 	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -10573,14 +16001,30 @@ func (s *ListRepoBuildRecordResponseBody) SetTotalCount(v string) *ListRepoBuild
 
 type ListRepoBuildRecordResponseBodyBuildRecords struct {
 	// The ID of the image building record.
+	//
+	// example:
+	//
+	// 537e08ab-735e-415f-b7c2-160eb87f8****
 	BuildRecordId *string `json:"BuildRecordId,omitempty" xml:"BuildRecordId,omitempty"`
 	// The status of the image building.
+	//
+	// example:
+	//
+	// SUCCESS
 	BuildStatus *string `json:"BuildStatus,omitempty" xml:"BuildStatus,omitempty"`
 	// The time when the image building ended.
+	//
+	// example:
+	//
+	// 1572875610000
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The information about the image.
 	Image *ListRepoBuildRecordResponseBodyBuildRecordsImage `json:"Image,omitempty" xml:"Image,omitempty" type:"Struct"`
 	// The time when the image building started.
+	//
+	// example:
+	//
+	// 1572872207000
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -10619,12 +16063,28 @@ func (s *ListRepoBuildRecordResponseBodyBuildRecords) SetStartTime(v string) *Li
 
 type ListRepoBuildRecordResponseBodyBuildRecordsImage struct {
 	// The tag of the image.
+	//
+	// example:
+	//
+	// v0.1
 	ImageTag *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
 	// The ID of the repository.
+	//
+	// example:
+	//
+	// crr-gzsrlevmvoaq****
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	// The name of the repository.
+	//
+	// example:
+	//
+	// test
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	// The name of the namespace to which the repository belongs.
+	//
+	// example:
+	//
+	// test
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 }
 
@@ -10687,12 +16147,32 @@ func (s *ListRepoBuildRecordResponse) SetBody(v *ListRepoBuildRecordResponseBody
 
 type ListRepoBuildRecordLogRequest struct {
 	// The ID of the image building record.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// C5B4D5D7-A1C6-4E9B-ABD2-401361C4****
 	BuildRecordId *string `json:"BuildRecordId,omitempty" xml:"BuildRecordId,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-nmbv37dlv5d3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The offset of log lines.
+	//
+	// example:
+	//
+	// 0
 	Offset *int32 `json:"Offset,omitempty" xml:"Offset,omitempty"`
 	// The ID of the image repository.
+	//
+	// example:
+	//
+	// crr-z4dvahhku9wv4****
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 }
 
@@ -10728,16 +16208,40 @@ type ListRepoBuildRecordLogResponseBody struct {
 	// The log content of the image building record.
 	BuildRecordLogs []*ListRepoBuildRecordLogResponseBodyBuildRecordLogs `json:"BuildRecordLogs,omitempty" xml:"BuildRecordLogs,omitempty" type:"Repeated"`
 	// The return value.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The page number of the returned page.
+	//
+	// example:
+	//
+	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 4CE1F661-75DD-4EBD-A4AD-057B26834ABB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of returned entries.
+	//
+	// example:
+	//
+	// 1000
 	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -10786,10 +16290,22 @@ func (s *ListRepoBuildRecordLogResponseBody) SetTotalCount(v string) *ListRepoBu
 
 type ListRepoBuildRecordLogResponseBodyBuildRecordLogs struct {
 	// The stage of the building that is recorded in the log entry.
+	//
+	// example:
+	//
+	// GIT_CLONE
 	BuildStage *string `json:"BuildStage,omitempty" xml:"BuildStage,omitempty"`
 	// The line number of the log entry.
+	//
+	// example:
+	//
+	// 2
 	LineNumber *int32 `json:"LineNumber,omitempty" xml:"LineNumber,omitempty"`
 	// The content of the log.
+	//
+	// example:
+	//
+	// fetch stage begin
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
@@ -10847,12 +16363,32 @@ func (s *ListRepoBuildRecordLogResponse) SetBody(v *ListRepoBuildRecordLogRespon
 
 type ListRepoBuildRuleRequest struct {
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-kmsiwlxxdcva****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The number of the page to return.
+	//
+	// example:
+	//
+	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// example:
+	//
+	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the image repository.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// crr-tquyps22md8****
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 }
 
@@ -10888,19 +16424,44 @@ type ListRepoBuildRuleResponseBody struct {
 	// The list of image building rules.
 	BuildRules []*ListRepoBuildRuleResponseBodyBuildRules `json:"BuildRules,omitempty" xml:"BuildRules,omitempty" type:"Repeated"`
 	// The return value.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   `true`: The request is successful.
-	// *   `false`: The request fails.
+	// 	- `true`: The request is successful.
+	//
+	// 	- `false`: The request fails.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The page number of the returned page.
+	//
+	// example:
+	//
+	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 42D782C8-E8F6-4A32-BEA0-6A6AC854C22A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of returned entries.
+	//
+	// example:
+	//
+	// 1
 	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -10950,20 +16511,45 @@ func (s *ListRepoBuildRuleResponseBody) SetTotalCount(v string) *ListRepoBuildRu
 type ListRepoBuildRuleResponseBodyBuildRules struct {
 	BuildArgs []*string `json:"BuildArgs,omitempty" xml:"BuildArgs,omitempty" type:"Repeated"`
 	// The ID of the image building rule.
+	//
+	// example:
+	//
+	// crbr-khys0nd3asbe****
 	BuildRuleId *string `json:"BuildRuleId,omitempty" xml:"BuildRuleId,omitempty"`
 	// The directory of the Dockerfile.
+	//
+	// example:
+	//
+	// /
 	DockerfileLocation *string `json:"DockerfileLocation,omitempty" xml:"DockerfileLocation,omitempty"`
 	// The name of the Dockerfile.
+	//
+	// example:
+	//
+	// Dockerfile
 	DockerfileName *string `json:"DockerfileName,omitempty" xml:"DockerfileName,omitempty"`
 	// The tag of the image.
+	//
+	// example:
+	//
+	// v0.1
 	ImageTag  *string   `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
 	Platforms []*string `json:"Platforms,omitempty" xml:"Platforms,omitempty" type:"Repeated"`
 	// The name of the push that triggers the building rule.
+	//
+	// example:
+	//
+	// v0.1
 	PushName *string `json:"PushName,omitempty" xml:"PushName,omitempty"`
 	// The type of the push that triggers the image building rule. Valid values:
 	//
-	// *   GIT_BRANCH: branch push
-	// *   GIT_TAG: tag push
+	// 	- GIT_BRANCH: branch push
+	//
+	// 	- GIT_TAG: tag push
+	//
+	// example:
+	//
+	// GIT_BRANCH
 	PushType *string `json:"PushType,omitempty" xml:"PushType,omitempty"`
 }
 
@@ -11046,18 +16632,48 @@ func (s *ListRepoBuildRuleResponse) SetBody(v *ListRepoBuildRuleResponseBody) *L
 
 type ListRepoSyncRuleRequest struct {
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-kmsiwlxxdcva****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The name of the namespace.
+	//
+	// example:
+	//
+	// test-namespace
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
 	// The number of the page to return.
+	//
+	// example:
+	//
+	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// example:
+	//
+	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The name of the image repository.
+	//
+	// example:
+	//
+	// test-repo
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	// The ID of the destination instance.
+	//
+	// example:
+	//
+	// cri-k77rd2eo9ztt****
 	TargetInstanceId *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
 	// The region ID of the destination instance.
+	//
+	// example:
+	//
+	// cn-shenzhen
 	TargetRegionId *string `json:"TargetRegionId,omitempty" xml:"TargetRegionId,omitempty"`
 }
 
@@ -11106,18 +16722,42 @@ func (s *ListRepoSyncRuleRequest) SetTargetRegionId(v string) *ListRepoSyncRuleR
 
 type ListRepoSyncRuleResponseBody struct {
 	// The return value.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// The page number of the returned page.
+	// The page number.
+	//
+	// example:
+	//
+	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
+	//
+	// example:
+	//
+	// 838D1602-6D8F-47FB-B60A-656645D2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The synchronization rules.
+	// The queried synchronization rules.
 	SyncRules []*ListRepoSyncRuleResponseBodySyncRules `json:"SyncRules,omitempty" xml:"SyncRules,omitempty" type:"Repeated"`
-	// The total number of returned entries.
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -11166,52 +16806,132 @@ func (s *ListRepoSyncRuleResponseBody) SetTotalCount(v int32) *ListRepoSyncRuleR
 
 type ListRepoSyncRuleResponseBodySyncRules struct {
 	// The time when the synchronization rule was created.
+	//
+	// example:
+	//
+	// 1572604642000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Indicates whether images are synchronized across Alibaba Cloud accounts. Valid values:
+	// Indicates whether the synchronization is performed across Alibaba Cloud accounts. Valid values:
 	//
-	// *   `true`: Images are synchronized across Alibaba Cloud accounts.
-	// *   `false`: Images are synchronized within the same Alibaba Cloud account.
+	// 	- `true`: Images are synchronized across Alibaba Cloud accounts.
 	//
-	// Default value: `false`
+	// 	- `false`: Images are synchronized within the same Alibaba Cloud account.
+	//
+	// Default value: `false`.
+	//
+	// example:
+	//
+	// true
 	CrossUser *bool `json:"CrossUser,omitempty" xml:"CrossUser,omitempty"`
 	// The ID of the source instance.
+	//
+	// example:
+	//
+	// cri-kmsiwlxxdcva****
 	LocalInstanceId *string `json:"LocalInstanceId,omitempty" xml:"LocalInstanceId,omitempty"`
-	// The namespace name of the source instance.
+	// The name of the namespace in the source instance.
+	//
+	// example:
+	//
+	// test
 	LocalNamespaceName *string `json:"LocalNamespaceName,omitempty" xml:"LocalNamespaceName,omitempty"`
 	// The region ID of the source instance.
+	//
+	// example:
+	//
+	// cn-shanghai
 	LocalRegionId *string `json:"LocalRegionId,omitempty" xml:"LocalRegionId,omitempty"`
-	// The image repository name of the source instance.
+	// The name of the repository in the source instance.
+	//
+	// example:
+	//
+	// test-repo-local
 	LocalRepoName *string `json:"LocalRepoName,omitempty" xml:"LocalRepoName,omitempty"`
 	// The time when the synchronization rule was last modified.
+	//
+	// example:
+	//
+	// 1572604642000
 	ModifiedTime *int64 `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The regular expression that is used to filter repositories.
+	//
+	// >  This parameter is valid only when SyncScope is set to `NAMESPACE`.
+	//
+	// example:
+	//
+	// .*
+	RepoNameFilter *string `json:"RepoNameFilter,omitempty" xml:"RepoNameFilter,omitempty"`
 	// The synchronization direction. Valid values:
 	//
-	// *   `FROM`: Images are synchronized from the source instance to the destination instance.
-	// *   `TO`: Images are synchronized from the destination instance to the source instance.
+	// 	- `FROM`: Images are synchronized from the source instance to the destination instance.
+	//
+	// 	- `TO`: Images are synchronized from the destination instance to the source instance.
+	//
+	// example:
+	//
+	// FROM
 	SyncDirection *string `json:"SyncDirection,omitempty" xml:"SyncDirection,omitempty"`
 	// The ID of the synchronization rule.
+	//
+	// example:
+	//
+	// crsr-7lph66uloi6h****
 	SyncRuleId *string `json:"SyncRuleId,omitempty" xml:"SyncRuleId,omitempty"`
 	// The name of the synchronization rule.
+	//
+	// example:
+	//
+	// sync-rule-1
 	SyncRuleName *string `json:"SyncRuleName,omitempty" xml:"SyncRuleName,omitempty"`
 	// The synchronization scope. Valid values:
 	//
-	// *   `NAMESPACE`: synchronizes the image tags in a namespace that meet the synchronization rule.
-	// *   `REPO`: synchronizes the image tags in an image repository that meet the synchronization rule.
+	// 	- `NAMESPACE`: synchronizes the image tags in a namespace that meet the synchronization rule.
+	//
+	// 	- `REPO`: synchronizes the image tags in an image repository that meet the synchronization rule.
+	//
+	// example:
+	//
+	// NAMESPACE
 	SyncScope *string `json:"SyncScope,omitempty" xml:"SyncScope,omitempty"`
 	// The policy that is applied to trigger the synchronization rule. Valid values:
 	//
-	// *   `INITIATIVE`: The synchronization rule is positively triggered.
-	// *   `PASSIVE`: The synchronization rule is passively triggered.
+	// 	- `INITIATIVE`: The synchronization rule is positively triggered.
+	//
+	// 	- `PASSIVE`: The synchronization rule is passively triggered.
+	//
+	// example:
+	//
+	// PASSIVE
 	SyncTrigger *string `json:"SyncTrigger,omitempty" xml:"SyncTrigger,omitempty"`
 	// The regular expression that is used to filter image tags.
+	//
+	// example:
+	//
+	// .*
 	TagFilter *string `json:"TagFilter,omitempty" xml:"TagFilter,omitempty"`
 	// The ID of the destination instance.
+	//
+	// example:
+	//
+	// cri-k77rd2eo9ztt****
 	TargetInstanceId *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
-	// The namespace name of the destination instance.
+	// The name of the namespace in the destination instance.
+	//
+	// example:
+	//
+	// test
 	TargetNamespaceName *string `json:"TargetNamespaceName,omitempty" xml:"TargetNamespaceName,omitempty"`
 	// The region ID of the destination instance.
+	//
+	// example:
+	//
+	// cn-shenzhen
 	TargetRegionId *string `json:"TargetRegionId,omitempty" xml:"TargetRegionId,omitempty"`
-	// The image repository name of the destination instance.
+	// The name of the repository in the destination instance.
+	//
+	// example:
+	//
+	// test-repo-target
 	TargetRepoName *string `json:"TargetRepoName,omitempty" xml:"TargetRepoName,omitempty"`
 }
 
@@ -11255,6 +16975,11 @@ func (s *ListRepoSyncRuleResponseBodySyncRules) SetLocalRepoName(v string) *List
 
 func (s *ListRepoSyncRuleResponseBodySyncRules) SetModifiedTime(v int64) *ListRepoSyncRuleResponseBodySyncRules {
 	s.ModifiedTime = &v
+	return s
+}
+
+func (s *ListRepoSyncRuleResponseBodySyncRules) SetRepoNameFilter(v string) *ListRepoSyncRuleResponseBodySyncRules {
+	s.RepoNameFilter = &v
 	return s
 }
 
@@ -11338,13 +17063,40 @@ func (s *ListRepoSyncRuleResponse) SetBody(v *ListRepoSyncRuleResponseBody) *Lis
 }
 
 type ListRepoSyncTaskRequest struct {
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageNo            *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-kmsiwlxxdcva****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// test
+	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// example:
+	//
+	// ns
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
-	SyncRecordId      *string `json:"SyncRecordId,omitempty" xml:"SyncRecordId,omitempty"`
-	Tag               *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The ID of the synchronization task record, which is the same as SyncBatchTaskId in the response.
+	//
+	// >  If an image meets multiple synchronization rules and multiple synchronization tasks are generated for the image, these synchronization tasks use the same SyncBatchTaskId.
+	//
+	// example:
+	//
+	// crsr-7lph66uloi6h****
+	SyncRecordId *string `json:"SyncRecordId,omitempty" xml:"SyncRecordId,omitempty"`
+	// example:
+	//
+	// nginx
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
 func (s ListRepoSyncTaskRequest) String() string {
@@ -11391,13 +17143,32 @@ func (s *ListRepoSyncTaskRequest) SetTag(v string) *ListRepoSyncTaskRequest {
 }
 
 type ListRepoSyncTaskResponseBody struct {
-	Code       *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess  *bool                                    `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	PageNo     *int32                                   `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize   *int32                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SyncTasks  []*ListRepoSyncTaskResponseBodySyncTasks `json:"SyncTasks,omitempty" xml:"SyncTasks,omitempty" type:"Repeated"`
-	TotalCount *string                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// true
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 7640819A-FB5B-4E25-A227-97717F62****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Details about synchronization tasks.
+	SyncTasks []*ListRepoSyncTaskResponseBodySyncTasks `json:"SyncTasks,omitempty" xml:"SyncTasks,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListRepoSyncTaskResponseBody) String() string {
@@ -11444,18 +17215,72 @@ func (s *ListRepoSyncTaskResponseBody) SetTotalCount(v string) *ListRepoSyncTask
 }
 
 type ListRepoSyncTaskResponseBodySyncTasks struct {
-	CreateTime          *int64                                          `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CrossUser           *bool                                           `json:"CrossUser,omitempty" xml:"CrossUser,omitempty"`
-	CustomLink          *bool                                           `json:"CustomLink,omitempty" xml:"CustomLink,omitempty"`
-	ImageFrom           *ListRepoSyncTaskResponseBodySyncTasksImageFrom `json:"ImageFrom,omitempty" xml:"ImageFrom,omitempty" type:"Struct"`
-	ImageTo             *ListRepoSyncTaskResponseBodySyncTasksImageTo   `json:"ImageTo,omitempty" xml:"ImageTo,omitempty" type:"Struct"`
-	ModifedTime         *int64                                          `json:"ModifedTime,omitempty" xml:"ModifedTime,omitempty"`
-	SyncBatchTaskId     *string                                         `json:"SyncBatchTaskId,omitempty" xml:"SyncBatchTaskId,omitempty"`
-	SyncRuleId          *string                                         `json:"SyncRuleId,omitempty" xml:"SyncRuleId,omitempty"`
-	SyncTaskId          *string                                         `json:"SyncTaskId,omitempty" xml:"SyncTaskId,omitempty"`
-	SyncTransAccelerate *bool                                           `json:"SyncTransAccelerate,omitempty" xml:"SyncTransAccelerate,omitempty"`
-	TaskStatus          *string                                         `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	TaskTrigger         *string                                         `json:"TaskTrigger,omitempty" xml:"TaskTrigger,omitempty"`
+	// example:
+	//
+	// 1572839126000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// true
+	CrossUser *bool `json:"CrossUser,omitempty" xml:"CrossUser,omitempty"`
+	// example:
+	//
+	// true
+	CustomLink *bool                                           `json:"CustomLink,omitempty" xml:"CustomLink,omitempty"`
+	ImageFrom  *ListRepoSyncTaskResponseBodySyncTasksImageFrom `json:"ImageFrom,omitempty" xml:"ImageFrom,omitempty" type:"Struct"`
+	ImageTo    *ListRepoSyncTaskResponseBodySyncTasksImageTo   `json:"ImageTo,omitempty" xml:"ImageTo,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1572839133000
+	ModifedTime *int64 `json:"ModifedTime,omitempty" xml:"ModifedTime,omitempty"`
+	// example:
+	//
+	// 15DEEB56-9271-4FDD-AC4D-C3A5CC2C****
+	SyncBatchTaskId *string `json:"SyncBatchTaskId,omitempty" xml:"SyncBatchTaskId,omitempty"`
+	// example:
+	//
+	// crsr-7lph66uloi6h****
+	SyncRuleId *string `json:"SyncRuleId,omitempty" xml:"SyncRuleId,omitempty"`
+	// example:
+	//
+	// rst-4kfd7fk6pohk****
+	SyncTaskId *string `json:"SyncTaskId,omitempty" xml:"SyncTaskId,omitempty"`
+	// example:
+	//
+	// true
+	SyncTransAccelerate *bool `json:"SyncTransAccelerate,omitempty" xml:"SyncTransAccelerate,omitempty"`
+	// The error message that is returned if the synchronization task fails.
+	//
+	// >  The system uses this parameter to return an error message if the synchronization task fails.
+	//
+	// Valid values:
+	//
+	// 	- OSS_POLICY_UNAUTHORIZED: Container Registry is not granted permissions to use Object Storage Service (OSS).
+	//
+	// 	- TAG_CONFLICT: The destination repository contains an image that has the same tag as the source image, and image tag immutability is enabled for the destination repository.
+	//
+	// 	- UNSUPPORTED_FORMAT: The manifest and config formats of the image to be synchronized are not supported.
+	//
+	// 	- INTERNAL_ERROR: The synchronization task failed due to internal issues on the server.
+	//
+	// 	- NETWORK_ERROR: The synchronization task failed due to unstable network connection.
+	//
+	// 	- DATA_LENGTH_EXCEEDED: The manifest or config of the image is oversized.
+	//
+	// example:
+	//
+	// NETWORK_ERROR
+	TaskIssue *string `json:"TaskIssue,omitempty" xml:"TaskIssue,omitempty"`
+	// The status of the synchronization task.
+	//
+	// example:
+	//
+	// SUCCESS
+	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// example:
+	//
+	// PASSIVE
+	TaskTrigger *string `json:"TaskTrigger,omitempty" xml:"TaskTrigger,omitempty"`
 }
 
 func (s ListRepoSyncTaskResponseBodySyncTasks) String() string {
@@ -11516,6 +17341,11 @@ func (s *ListRepoSyncTaskResponseBodySyncTasks) SetSyncTransAccelerate(v bool) *
 	return s
 }
 
+func (s *ListRepoSyncTaskResponseBodySyncTasks) SetTaskIssue(v string) *ListRepoSyncTaskResponseBodySyncTasks {
+	s.TaskIssue = &v
+	return s
+}
+
 func (s *ListRepoSyncTaskResponseBodySyncTasks) SetTaskStatus(v string) *ListRepoSyncTaskResponseBodySyncTasks {
 	s.TaskStatus = &v
 	return s
@@ -11527,10 +17357,25 @@ func (s *ListRepoSyncTaskResponseBodySyncTasks) SetTaskTrigger(v string) *ListRe
 }
 
 type ListRepoSyncTaskResponseBodySyncTasksImageFrom struct {
-	ImageTag          *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// example:
+	//
+	// v0.1
+	ImageTag *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
+	// example:
+	//
+	// cri-kmsiwlxxdcva****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// test
+	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// example:
+	//
+	// test
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 }
 
@@ -11568,10 +17413,25 @@ func (s *ListRepoSyncTaskResponseBodySyncTasksImageFrom) SetRepoNamespaceName(v 
 }
 
 type ListRepoSyncTaskResponseBodySyncTasksImageTo struct {
-	ImageTag          *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// example:
+	//
+	// v0.1
+	ImageTag *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
+	// example:
+	//
+	// cri-k77rd2eo9zttneqo
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// cn-shenzhen
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// test
+	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// example:
+	//
+	// test
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 }
 
@@ -11639,12 +17499,32 @@ func (s *ListRepoSyncTaskResponse) SetBody(v *ListRepoSyncTaskResponseBody) *Lis
 
 type ListRepoTagRequest struct {
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-kmsiwlxxdcva****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The number of the page to return.
+	//
+	// example:
+	//
+	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// example:
+	//
+	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the repository.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// crr-tquyps22md8p****
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 }
 
@@ -11678,18 +17558,42 @@ func (s *ListRepoTagRequest) SetRepoId(v string) *ListRepoTagRequest {
 
 type ListRepoTagResponseBody struct {
 	// The return value.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The images.
 	Images []*ListRepoTagResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The page number of the returned page.
+	//
+	// example:
+	//
+	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 031572FA-7D8F-4C05-B790-1071E0E05DE6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of returned entries.
+	//
+	// example:
+	//
+	// 1
 	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -11738,18 +17642,46 @@ func (s *ListRepoTagResponseBody) SetTotalCount(v string) *ListRepoTagResponseBo
 
 type ListRepoTagResponseBodyImages struct {
 	// The digest of the image.
+	//
+	// example:
+	//
+	// 67bfbcc12b67936ec7f867927817cbb071832b873dbcaed312a1930ba5f1****
 	Digest *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
 	// The time when the image was created.
+	//
+	// example:
+	//
+	// 1572839125000
 	ImageCreate *string `json:"ImageCreate,omitempty" xml:"ImageCreate,omitempty"`
 	// The ID of the image.
+	//
+	// example:
+	//
+	// 45023655bf39c382e26a8607d057c27871dee163c1ecf48cc1ebf2a1****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	// The size of the image.
+	//
+	// example:
+	//
+	// 27107966
 	ImageSize *int64 `json:"ImageSize,omitempty" xml:"ImageSize,omitempty"`
 	// The time when the image was last updated.
+	//
+	// example:
+	//
+	// 1572875608000
 	ImageUpdate *string `json:"ImageUpdate,omitempty" xml:"ImageUpdate,omitempty"`
 	// The status of the image.
+	//
+	// example:
+	//
+	// NORMAL
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The tag of the image.
+	//
+	// example:
+	//
+	// v0.1
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
@@ -11827,34 +17759,84 @@ func (s *ListRepoTagResponse) SetBody(v *ListRepoTagResponseBody) *ListRepoTagRe
 
 type ListRepoTagScanResultRequest struct {
 	// The digest of the image.
+	//
+	// example:
+	//
+	// sha256:6b0b094f8a904f8fb6602427aed0d1fa
 	Digest *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
 	// The parameter whose value that you want to query. Fox example, if the value is `FixCmd`, only the `FixCmd` parameter is returned.
+	//
+	// example:
+	//
+	// FixCmd
 	FilterValue *string `json:"FilterValue,omitempty" xml:"FilterValue,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-2j88dtld8yel****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The number of the page to return.
+	//
+	// example:
+	//
+	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// example:
+	//
+	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the image repository.
+	//
+	// example:
+	//
+	// crr-uf082u9dg8do****
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	// The ID of the security scan task.
+	//
+	// example:
+	//
+	// 6b0b094f-8a90-4f8f-b660-2427aed0****
 	ScanTaskId *string `json:"ScanTaskId,omitempty" xml:"ScanTaskId,omitempty"`
 	// The type of the vulnerability. Valid values:
 	//
-	// *   `cve`: image system vulnerability
-	// *   `sca`: image application vulnerability
+	// 	- `cve`: image system vulnerability
+	//
+	// 	- `sca`: image application vulnerability
+	//
+	// example:
+	//
+	// sca
 	ScanType *string `json:"ScanType,omitempty" xml:"ScanType,omitempty"`
 	// The severity of the vulnerability. Valid values:
 	//
-	// *   `High`
-	// *   `Medium`
-	// *   `Low`
-	// *   `Unknown`
+	// 	- `High`
+	//
+	// 	- `Medium`
+	//
+	// 	- `Low`
+	//
+	// 	- `Unknown`
+	//
+	// example:
+	//
+	// High
 	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
 	// The name of the image tag.
+	//
+	// example:
+	//
+	// 1
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 	// The keyword for fuzzy search used in scanning. The value can be a CVE name.
+	//
+	// example:
+	//
+	// CVE-2021
 	VulQueryKey *string `json:"VulQueryKey,omitempty" xml:"VulQueryKey,omitempty"`
 }
 
@@ -11923,19 +17905,44 @@ func (s *ListRepoTagScanResultRequest) SetVulQueryKey(v string) *ListRepoTagScan
 
 type ListRepoTagScanResultResponseBody struct {
 	// The return value.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   `true`: The request is successful.
-	// *   `false`: The request failed.
+	// 	- `true`: The request is successful.
+	//
+	// 	- `false`: The request failed.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The number of the returned page.
+	//
+	// example:
+	//
+	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 56B5C92F-F5D9-46E0-823F-EC71D1892DAA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of vulnerabilities detected on images.
+	//
+	// example:
+	//
+	// 196
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	// The details about the detected vulnerabilities.
 	Vulnerabilities []*ListRepoTagScanResultResponseBodyVulnerabilities `json:"Vulnerabilities,omitempty" xml:"Vulnerabilities,omitempty" type:"Repeated"`
@@ -11986,33 +17993,86 @@ func (s *ListRepoTagScanResultResponseBody) SetVulnerabilities(v []*ListRepoTagS
 
 type ListRepoTagScanResultResponseBodyVulnerabilities struct {
 	// The ID of the image layer where the vulnerability was detected.
+	//
+	// example:
+	//
+	// sha256:123456717b8e40b6480979b739010d8d549989602bcdd07922119aec6f9dbe57
 	AddedBy *string `json:"AddedBy,omitempty" xml:"AddedBy,omitempty"`
 	// The name of the vulnerability.
+	//
+	// example:
+	//
+	// Vulnerability
 	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
 	// The URL of the vulnerability.
+	//
+	// example:
+	//
+	// https://security-tracker.debian.org/tracker/CVE-2009-5155
 	CveLink *string `json:"CveLink,omitempty" xml:"CveLink,omitempty"`
 	// The directory of the vulnerability.
+	//
+	// example:
+	//
+	// /test.txt
 	CveLocation *string `json:"CveLocation,omitempty" xml:"CveLocation,omitempty"`
 	// The name of the vulnerability.
+	//
+	// example:
+	//
+	// CVE-2009-5155
 	CveName *string `json:"CveName,omitempty" xml:"CveName,omitempty"`
 	// The description of the vulnerability.
+	//
+	// example:
+	//
+	// description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The cause of the vulnerability.
+	//
+	// example:
+	//
+	// eglibc
 	Feature *string `json:"Feature,omitempty" xml:"Feature,omitempty"`
 	// The command used to fix the vulnerability.
+	//
+	// example:
+	//
+	// yum install -y xxx
 	FixCmd *string `json:"FixCmd,omitempty" xml:"FixCmd,omitempty"`
 	// The type of the vulnerability. Valid values:
 	//
-	// *   `cve`: image system vulnerability
-	// *   `sca`: image application vulnerability
+	// 	- `cve`: image system vulnerability
+	//
+	// 	- `sca`: image application vulnerability
+	//
+	// example:
+	//
+	// cve
 	ScanType *string `json:"ScanType,omitempty" xml:"ScanType,omitempty"`
 	// The severity of the vulnerability.
+	//
+	// example:
+	//
+	// Medium
 	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
 	// The version of the vulnerability.
+	//
+	// example:
+	//
+	// 2.19-6.9
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 	// The version where the vulnerability was fixed.
+	//
+	// example:
+	//
+	// 2.19-18+deb8u5
 	VersionFixed *string `json:"VersionFixed,omitempty" xml:"VersionFixed,omitempty"`
 	// The format of the vulnerability.
+	//
+	// example:
+	//
+	// dpkg
 	VersionFormat *string `json:"VersionFormat,omitempty" xml:"VersionFormat,omitempty"`
 }
 
@@ -12120,8 +18180,20 @@ func (s *ListRepoTagScanResultResponse) SetBody(v *ListRepoTagScanResultResponse
 
 type ListRepoTriggerRequest struct {
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-kmsiwlxxdcva****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the repository.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// crr-tquyps22md8p****
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 }
 
@@ -12145,13 +18217,26 @@ func (s *ListRepoTriggerRequest) SetRepoId(v string) *ListRepoTriggerRequest {
 
 type ListRepoTriggerResponseBody struct {
 	// The return value.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   `true`: The request is successful.
-	// *   `false`: The request fails.
+	// 	- `true`: The request is successful.
+	//
+	// 	- `false`: The request fails.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 2CA76D52-A8F0-4D0B-854E-FBD9F6C99049
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The triggers of the repository.
 	Triggers []*ListRepoTriggerResponseBodyTriggers `json:"Triggers,omitempty" xml:"Triggers,omitempty" type:"Repeated"`
@@ -12188,22 +18273,49 @@ func (s *ListRepoTriggerResponseBody) SetTriggers(v []*ListRepoTriggerResponseBo
 type ListRepoTriggerResponseBodyTriggers struct {
 	// The type of the event that activates the trigger. Valid values:
 	//
-	// *   `BUILD_SUCCESS`: The trigger is activated when an image building task is successful.
-	// *   `BUILD_Fail`: The trigger is activated when an image building task fails.
+	// 	- `BUILD_SUCCESS`: The trigger is activated when an image building task is successful.
+	//
+	// 	- `BUILD_Fail`: The trigger is activated when an image building task fails.
+	//
+	// example:
+	//
+	// BUILD_SUCCESS
 	RepoEvent *string `json:"RepoEvent,omitempty" xml:"RepoEvent,omitempty"`
 	// The ID of the trigger.
+	//
+	// example:
+	//
+	// crw-vriyql9eq7ep****
 	TriggerId *string `json:"TriggerId,omitempty" xml:"TriggerId,omitempty"`
 	// The name of the trigger.
+	//
+	// example:
+	//
+	// test
 	TriggerName *string `json:"TriggerName,omitempty" xml:"TriggerName,omitempty"`
 	// The image tag based on which the trigger is set.
+	//
+	// example:
+	//
+	// *
 	TriggerTag *string `json:"TriggerTag,omitempty" xml:"TriggerTag,omitempty"`
 	// The type of the trigger. Valid values:
 	//
-	// *   `ALL`: a trigger that supports both tags and regular expressions.
-	// *   `TAG_LISTTAG`: a tag-based trigger.
-	// *   `TAG_REG_EXP`: a regular expression-based trigger.
+	// 	- `ALL`: a trigger that supports both tags and regular expressions.
+	//
+	// 	- `TAG_LISTTAG`: a tag-based trigger.
+	//
+	// 	- `TAG_REG_EXP`: a regular expression-based trigger.
+	//
+	// example:
+	//
+	// ALL
 	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
 	// The URL of the trigger.
+	//
+	// example:
+	//
+	// https://www.test.com
 	TriggerUrl *string `json:"TriggerUrl,omitempty" xml:"TriggerUrl,omitempty"`
 }
 
@@ -12275,12 +18387,34 @@ func (s *ListRepoTriggerResponse) SetBody(v *ListRepoTriggerResponseBody) *ListR
 }
 
 type ListRepositoryRequest struct {
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageNo            *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-kmsiwlxxdcva****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Maximum value: 100. If you specify a value larger than 100 for this parameter, the system reports a parameter error or uses 100 as the maximum value.
+	//
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// repo-test
+	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// example:
+	//
+	// repo-namespace-test
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
-	RepoStatus        *string `json:"RepoStatus,omitempty" xml:"RepoStatus,omitempty"`
+	// example:
+	//
+	// ALL
+	RepoStatus *string `json:"RepoStatus,omitempty" xml:"RepoStatus,omitempty"`
 }
 
 func (s ListRepositoryRequest) String() string {
@@ -12322,13 +18456,31 @@ func (s *ListRepositoryRequest) SetRepoStatus(v string) *ListRepositoryRequest {
 }
 
 type ListRepositoryResponseBody struct {
-	Code         *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess    *bool                                     `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	PageNo       *int32                                    `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// true
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 30
 	PageSize     *int32                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Repositories []*ListRepositoryResponseBodyRepositories `json:"Repositories,omitempty" xml:"Repositories,omitempty" type:"Repeated"`
-	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount   *string                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 5241C090-DA69-4B0F-8E3F-2F24FDE1110E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListRepositoryResponseBody) String() string {
@@ -12375,18 +18527,54 @@ func (s *ListRepositoryResponseBody) SetTotalCount(v string) *ListRepositoryResp
 }
 
 type ListRepositoryResponseBodyRepositories struct {
-	CreateTime        *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ModifiedTime      *int64  `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	RepoBuildType     *string `json:"RepoBuildType,omitempty" xml:"RepoBuildType,omitempty"`
-	RepoId            *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// example:
+	//
+	// 1564153576000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// cri-kmsiwlxxdcv****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 1564153576000
+	ModifiedTime *int64 `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// example:
+	//
+	// MANUAL
+	RepoBuildType *string `json:"RepoBuildType,omitempty" xml:"RepoBuildType,omitempty"`
+	// example:
+	//
+	// crr-03cuozrsqhkw****
+	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// example:
+	//
+	// test
+	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// example:
+	//
+	// test
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
-	RepoStatus        *string `json:"RepoStatus,omitempty" xml:"RepoStatus,omitempty"`
-	RepoType          *string `json:"RepoType,omitempty" xml:"RepoType,omitempty"`
-	ResourceGroupId   *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Summary           *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
-	TagImmutability   *bool   `json:"TagImmutability,omitempty" xml:"TagImmutability,omitempty"`
+	// example:
+	//
+	// NORMAL
+	RepoStatus *string `json:"RepoStatus,omitempty" xml:"RepoStatus,omitempty"`
+	// example:
+	//
+	// PRIVATE
+	RepoType *string `json:"RepoType,omitempty" xml:"RepoType,omitempty"`
+	// example:
+	//
+	// rg-acfm4n5kzyfxxxx
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// test OK
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// example:
+	//
+	// true
+	TagImmutability *bool `json:"TagImmutability,omitempty" xml:"TagImmutability,omitempty"`
 }
 
 func (s ListRepositoryResponseBodyRepositories) String() string {
@@ -12487,14 +18675,54 @@ func (s *ListRepositoryResponse) SetBody(v *ListRepositoryResponseBody) *ListRep
 }
 
 type ListScanBaselineByTaskRequest struct {
-	Digest     *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
+	// The image digest.
+	//
+	// example:
+	//
+	// sha256:1c89806cfaf66d2990e2cf1131ebd56ff24b133745a33abf1228*************
+	Digest *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
+	// The instance ID.
+	//
+	// example:
+	//
+	// cri-***********
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Level      *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	PageNo     *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RepoId     *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// The severity of the risk.
+	//
+	// example:
+	//
+	// High
+	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The page number.
+	//
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The repository ID.
+	//
+	// example:
+	//
+	// crr-**************
+	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// The ID of the image scan task.
+	//
+	// example:
+	//
+	// 3e526d7e-4b45-4703-b046-***********
 	ScanTaskId *string `json:"ScanTaskId,omitempty" xml:"ScanTaskId,omitempty"`
-	Tag        *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The image tag.
+	//
+	// example:
+	//
+	// 1.1.36
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
 func (s ListScanBaselineByTaskRequest) String() string {
@@ -12546,14 +18774,48 @@ func (s *ListScanBaselineByTaskRequest) SetTag(v string) *ListScanBaselineByTask
 }
 
 type ListScanBaselineByTaskResponseBody struct {
-	Code      *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess *bool  `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	PageNo    *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize  *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The return value.
+	//
+	// example:
+	//
+	// success
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the API request is successful. Valid values:
+	//
+	// 	- `true`: successful
+	//
+	// 	- `false`: failed
+	//
+	// example:
+	//
+	// true
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The page number.
+	//
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// Id of the request
-	RequestId     *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	//
+	// example:
+	//
+	// 5259118F-79E2-57E9-9AEA-551586F4FAED
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The queried baseline risks.
 	ScanBaselines []*ListScanBaselineByTaskResponseBodyScanBaselines `json:"ScanBaselines,omitempty" xml:"ScanBaselines,omitempty" type:"Repeated"`
-	TotalCount    *int32                                             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 2
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListScanBaselineByTaskResponseBody) String() string {
@@ -12600,21 +18862,80 @@ func (s *ListScanBaselineByTaskResponseBody) SetTotalCount(v int32) *ListScanBas
 }
 
 type ListScanBaselineByTaskResponseBodyScanBaselines struct {
-	BaselineClassAlias        *string `json:"BaselineClassAlias,omitempty" xml:"BaselineClassAlias,omitempty"`
-	BaselineDetailAdvice      *string `json:"BaselineDetailAdvice,omitempty" xml:"BaselineDetailAdvice,omitempty"`
+	// The category of the baseline risk.
+	BaselineClassAlias *string `json:"BaselineClassAlias,omitempty" xml:"BaselineClassAlias,omitempty"`
+	// The suggestion on handling the baseline risk.
+	BaselineDetailAdvice *string `json:"BaselineDetailAdvice,omitempty" xml:"BaselineDetailAdvice,omitempty"`
+	// The description of the baseline risk.
 	BaselineDetailDescription *string `json:"BaselineDetailDescription,omitempty" xml:"BaselineDetailDescription,omitempty"`
-	BaselineDetailPrompt      *string `json:"BaselineDetailPrompt,omitempty" xml:"BaselineDetailPrompt,omitempty"`
-	BaselineItemCount         *int32  `json:"BaselineItemCount,omitempty" xml:"BaselineItemCount,omitempty"`
-	BaselineNameAlias         *string `json:"BaselineNameAlias,omitempty" xml:"BaselineNameAlias,omitempty"`
-	BaselineNameKey           *string `json:"BaselineNameKey,omitempty" xml:"BaselineNameKey,omitempty"`
-	BaselineNameLevel         *string `json:"BaselineNameLevel,omitempty" xml:"BaselineNameLevel,omitempty"`
-	CreateTime                *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	FirstScanTime             *int64  `json:"FirstScanTime,omitempty" xml:"FirstScanTime,omitempty"`
-	HighRiskItemCount         *int32  `json:"HighRiskItemCount,omitempty" xml:"HighRiskItemCount,omitempty"`
-	LowRiskItemCount          *int32  `json:"LowRiskItemCount,omitempty" xml:"LowRiskItemCount,omitempty"`
-	MiddleRiskItemCount       *int32  `json:"MiddleRiskItemCount,omitempty" xml:"MiddleRiskItemCount,omitempty"`
-	ScanTaskId                *string `json:"ScanTaskId,omitempty" xml:"ScanTaskId,omitempty"`
-	UpdateTime                *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The path and content of the baseline risk.
+	//
+	// example:
+	//
+	// usr/local/www/project/environments/dev/common/config/paramsxxx
+	BaselineDetailPrompt *string `json:"BaselineDetailPrompt,omitempty" xml:"BaselineDetailPrompt,omitempty"`
+	// The number of baseline risks.
+	//
+	// example:
+	//
+	// 1
+	BaselineItemCount *int32 `json:"BaselineItemCount,omitempty" xml:"BaselineItemCount,omitempty"`
+	// The name of the baseline risk.
+	BaselineNameAlias *string `json:"BaselineNameAlias,omitempty" xml:"BaselineNameAlias,omitempty"`
+	// The name of the baseline risk.
+	//
+	// example:
+	//
+	// ak_leak
+	BaselineNameKey *string `json:"BaselineNameKey,omitempty" xml:"BaselineNameKey,omitempty"`
+	// The severity of the baseline risk.
+	//
+	// example:
+	//
+	// high
+	BaselineNameLevel *string `json:"BaselineNameLevel,omitempty" xml:"BaselineNameLevel,omitempty"`
+	// The time when the image was created.
+	//
+	// example:
+	//
+	// 1695090008000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the image was first scanned.
+	//
+	// example:
+	//
+	// 2024-04-10 15:33:26
+	FirstScanTime *int64 `json:"FirstScanTime,omitempty" xml:"FirstScanTime,omitempty"`
+	// The quantity of baseline risks whose severity is high.
+	//
+	// example:
+	//
+	// 1
+	HighRiskItemCount *int32 `json:"HighRiskItemCount,omitempty" xml:"HighRiskItemCount,omitempty"`
+	// The quantity of baseline risks whose severity is low.
+	//
+	// example:
+	//
+	// 1
+	LowRiskItemCount *int32 `json:"LowRiskItemCount,omitempty" xml:"LowRiskItemCount,omitempty"`
+	// The quantity of baseline risks whose severity is medium.
+	//
+	// example:
+	//
+	// 1
+	MiddleRiskItemCount *int32 `json:"MiddleRiskItemCount,omitempty" xml:"MiddleRiskItemCount,omitempty"`
+	// The ID of the image scan task.
+	//
+	// example:
+	//
+	// 2328fcaa-f28a-405d-a357-asdvfrew23
+	ScanTaskId *string `json:"ScanTaskId,omitempty" xml:"ScanTaskId,omitempty"`
+	// The time when the image was updated.
+	//
+	// example:
+	//
+	// 1684220824226
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListScanBaselineByTaskResponseBodyScanBaselines) String() string {
@@ -12730,14 +19051,54 @@ func (s *ListScanBaselineByTaskResponse) SetBody(v *ListScanBaselineByTaskRespon
 }
 
 type ListScanMaliciousFileByTaskRequest struct {
-	Digest     *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
+	// The image digest.
+	//
+	// example:
+	//
+	// sha256:aa4bffff6406785e930dab1f94c9a1297ba22xxxx71d71504a015764*********
+	Digest *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
+	// The instance ID.
+	//
+	// example:
+	//
+	// cri-gu94qynvpwk*****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Level      *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	PageNo     *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RepoId     *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// The severity of the malicious file.
+	//
+	// example:
+	//
+	// High
+	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The page number.
+	//
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Maximum value: 100. If you specify a value greater than 100 for this parameter, the system reports a parameter error or uses 100 as the maximum value.
+	//
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The image repository ID.
+	//
+	// example:
+	//
+	// crr-h1y4l279wb8*****
+	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// The ID of the image scan task.
+	//
+	// example:
+	//
+	// 79ee6bc2-3288-4c56-b967-**********
 	ScanTaskId *string `json:"ScanTaskId,omitempty" xml:"ScanTaskId,omitempty"`
-	Tag        *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The image tag.
+	//
+	// example:
+	//
+	// V6.11
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
 func (s ListScanMaliciousFileByTaskRequest) String() string {
@@ -12789,13 +19150,48 @@ func (s *ListScanMaliciousFileByTaskRequest) SetTag(v string) *ListScanMalicious
 }
 
 type ListScanMaliciousFileByTaskResponseBody struct {
-	Code               *int32                                                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess          *bool                                                        `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	PageNo             *int32                                                       `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize           *int32                                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId          *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The return value.
+	//
+	// example:
+	//
+	// success
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the API request is successful. Valid values:
+	//
+	// 	- `true`: successful
+	//
+	// 	- `false`: failed
+	//
+	// example:
+	//
+	// true
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The page number. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 52AE49C8-B91A-5C1A-821F-C34324B42F7C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The queried malicious files.
 	ScanMaliciousFiles []*ListScanMaliciousFileByTaskResponseBodyScanMaliciousFiles `json:"ScanMaliciousFiles,omitempty" xml:"ScanMaliciousFiles,omitempty" type:"Repeated"`
-	TotalCount         *int32                                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 13
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListScanMaliciousFileByTaskResponseBody) String() string {
@@ -12842,14 +19238,54 @@ func (s *ListScanMaliciousFileByTaskResponseBody) SetTotalCount(v int32) *ListSc
 }
 
 type ListScanMaliciousFileByTaskResponseBodyScanMaliciousFiles struct {
-	CreateTime    *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	FilePath      *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
-	FirstScanTime *int64  `json:"FirstScanTime,omitempty" xml:"FirstScanTime,omitempty"`
-	Level         *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	MaliciousMd5  *string `json:"MaliciousMd5,omitempty" xml:"MaliciousMd5,omitempty"`
+	// The time when the image was created.
+	//
+	// example:
+	//
+	// 2023-04-10 11:42:06
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The path of the file.
+	//
+	// example:
+	//
+	// tenant/0000000000000000/
+	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	// The time when the image was first scanned.
+	//
+	// example:
+	//
+	// 2023-04-10 11:42:06
+	FirstScanTime *int64 `json:"FirstScanTime,omitempty" xml:"FirstScanTime,omitempty"`
+	// The severity of the malicious file.
+	//
+	// example:
+	//
+	// remind
+	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The MD5 hash value of the malicious file.
+	//
+	// example:
+	//
+	// e76c9759783cbbc9be0ff91ca3xxxxxx
+	MaliciousMd5 *string `json:"MaliciousMd5,omitempty" xml:"MaliciousMd5,omitempty"`
+	// The type of the malicious file.
+	//
+	// example:
+	//
+	// Suspected to contain Webshell code
 	MaliciousName *string `json:"MaliciousName,omitempty" xml:"MaliciousName,omitempty"`
-	ScanTaskId    *string `json:"ScanTaskId,omitempty" xml:"ScanTaskId,omitempty"`
-	UpdateTime    *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The ID of the image scan task.
+	//
+	// example:
+	//
+	// fe2d8980-de45-4f55-b57d-e438e6d2e972
+	ScanTaskId *string `json:"ScanTaskId,omitempty" xml:"ScanTaskId,omitempty"`
+	// The time when the image was updated.
+	//
+	// example:
+	//
+	// 2023-04-10 11:42:06
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListScanMaliciousFileByTaskResponseBodyScanMaliciousFiles) String() string {
@@ -12930,11 +19366,32 @@ func (s *ListScanMaliciousFileByTaskResponse) SetBody(v *ListScanMaliciousFileBy
 }
 
 type ListTagResourcesRequest struct {
-	NextToken    *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RegionId     *string                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceId   []*string                     `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourceType *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag          []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request or if no next query exists. You must specify the token that is obtained from the previous query as the value of NextToken.
+	//
+	// example:
+	//
+	// AAAAAfj+3fkqd8igM6VLaQjlaYc=
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the region in which the resources are deployed.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource IDs. You can specify a maximum of 20 resource IDs.
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The type of the resources. Instance resources are supported.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Instance
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tag list.
+	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListTagResourcesRequest) String() string {
@@ -12971,7 +19428,21 @@ func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListT
 }
 
 type ListTagResourcesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+	//
+	// A tag key can be up to 128 characters in length. It cannot start with acs: or aliyun, and cannot contain http:// or https://.
+	//
+	// example:
+	//
+	// test-key
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
+	//
+	// It can be up to 128 characters in length. It cannot start with acs: or aliyun and cannot contain http:// or https://.
+	//
+	// example:
+	//
+	// test-val
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -12994,8 +19465,19 @@ func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequest
 }
 
 type ListTagResourcesResponseBody struct {
-	NextToken    *string                                   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	//
+	// example:
+	//
+	// AAAAAfj+3fkqd8igM6VLaQjlaYc=
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 7FF809ED-B42F-5AC3-9A17-CFE14BE32A8E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The tags that are added to the resource.
 	TagResources *ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Struct"`
 }
 
@@ -13040,10 +19522,30 @@ func (s *ListTagResourcesResponseBodyTagResources) SetTagResource(v []*ListTagRe
 }
 
 type ListTagResourcesResponseBodyTagResourcesTagResource struct {
-	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The resource ID.
+	//
+	// example:
+	//
+	// cri-w19e7qr2wibl****
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The resource type.
+	//
+	// example:
+	//
+	// Instance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// test-key
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// test-val
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s ListTagResourcesResponseBodyTagResourcesTagResource) String() string {
@@ -13105,8 +19607,20 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 
 type ResetLoginPasswordRequest struct {
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-kmsiwlxxdcva****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The new password that you specify to log on to the instance. The password must be 8 to 32 bits in length, and must contain at least two of the following character types: letters, special characters, and digits.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
 }
 
@@ -13130,13 +19644,26 @@ func (s *ResetLoginPasswordRequest) SetPassword(v string) *ResetLoginPasswordReq
 
 type ResetLoginPasswordResponseBody struct {
 	// The return value.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   `true`: The request is successful.
-	// *   `false`: The request fails.
+	// 	- `true`: The request is successful.
+	//
+	// 	- `false`: The request fails.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// EB9C5722-51E2-4497-A573-575B0CA5CE0C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13193,10 +19720,30 @@ func (s *ResetLoginPasswordResponse) SetBody(v *ResetLoginPasswordResponseBody) 
 }
 
 type TagResourcesRequest struct {
-	RegionId     *string                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceId   []*string                 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourceType *string                   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag          []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The region ID of the resources.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource IDs. You can specify a maximum of 20 resource IDs.
+	//
+	// This parameter is required.
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The type of the resource. Instance resources are supported.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Instance
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tag list.
+	//
+	// This parameter is required.
+	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s TagResourcesRequest) String() string {
@@ -13228,7 +19775,21 @@ func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesR
 }
 
 type TagResourcesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+	//
+	// A tag key can be up to 128 characters in length. It cannot start with acs: or aliyun, and cannot contain http:// or https://.
+	//
+	// example:
+	//
+	// test-key
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
+	//
+	// A tag value can be up to 128 characters in length. It cannot start with acs: or aliyun, and cannot contain http:// or https://.
+	//
+	// example:
+	//
+	// test-val
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -13251,6 +19812,11 @@ func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
 }
 
 type TagResourcesResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// E9A586D0-3977-5C28-A44D-55D3A9CD53CC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13297,11 +19863,38 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 }
 
 type UntagResourcesRequest struct {
-	All          *bool     `json:"All,omitempty" xml:"All,omitempty"`
-	RegionId     *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceId   []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey       []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
+	// Specifies whether to remove all tags from the resource. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// >If you specify both this parameter and the TagKey parameter, this parameter does not take effect.
+	//
+	// example:
+	//
+	// true
+	All *bool `json:"All,omitempty" xml:"All,omitempty"`
+	// The ID of the region in which the resources are deployed.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource IDs. You can specify a maximum of 20 resource IDs.
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The type of the resources. Instance resources are supported.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Instance
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The key of tag N added to the resource. Valid values of N: 1 to 20.
+	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 
 func (s UntagResourcesRequest) String() string {
@@ -13338,6 +19931,11 @@ func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
 }
 
 type UntagResourcesResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 724402D0-75CD-4794-BC20-7D3720823AE0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13384,16 +19982,70 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 }
 
 type UpdateArtifactLifecycleRuleRequest struct {
-	Auto              *bool   `json:"Auto,omitempty" xml:"Auto,omitempty"`
-	EnableDeleteTag   *bool   `json:"EnableDeleteTag,omitempty" xml:"EnableDeleteTag,omitempty"`
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	NamespaceName     *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
-	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	RetentionTagCount *int64  `json:"RetentionTagCount,omitempty" xml:"RetentionTagCount,omitempty"`
-	RuleId            *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	ScheduleTime      *string `json:"ScheduleTime,omitempty" xml:"ScheduleTime,omitempty"`
-	Scope             *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	TagRegexp         *string `json:"TagRegexp,omitempty" xml:"TagRegexp,omitempty"`
+	// Specifies whether to automatically execute the lifecycle management rule.
+	//
+	// example:
+	//
+	// false
+	Auto *bool `json:"Auto,omitempty" xml:"Auto,omitempty"`
+	// Specifies whether to enable lifecycle management for the artifact.
+	//
+	// example:
+	//
+	// true
+	EnableDeleteTag *bool `json:"EnableDeleteTag,omitempty" xml:"EnableDeleteTag,omitempty"`
+	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-r6ym0lerldp****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the namespace.
+	//
+	// example:
+	//
+	// test-ns
+	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	// The name of the image repository.
+	//
+	// example:
+	//
+	// test_1
+	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The number of images that you want to retain.
+	//
+	// example:
+	//
+	// 30
+	RetentionTagCount *int64 `json:"RetentionTagCount,omitempty" xml:"RetentionTagCount,omitempty"`
+	// The rule ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cralr-luq6qiegzvx****
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The execution cycle of the lifecycle management rule.
+	//
+	// example:
+	//
+	// WEEK
+	ScheduleTime *string `json:"ScheduleTime,omitempty" xml:"ScheduleTime,omitempty"`
+	// The deletion scope of artifacts.
+	//
+	// example:
+	//
+	// REPO
+	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// The regular expression that indicates which image tags you want to retain.
+	//
+	// example:
+	//
+	// .*production_.*
+	TagRegexp *string `json:"TagRegexp,omitempty" xml:"TagRegexp,omitempty"`
 }
 
 func (s UpdateArtifactLifecycleRuleRequest) String() string {
@@ -13455,8 +20107,27 @@ func (s *UpdateArtifactLifecycleRuleRequest) SetTagRegexp(v string) *UpdateArtif
 }
 
 type UpdateArtifactLifecycleRuleResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The return value.
+	//
+	// example:
+	//
+	// success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the API request is successful. Valid values:
+	//
+	// 	- `true`: The request is successful.
+	//
+	// 	- `false`: The request fails.
+	//
+	// example:
+	//
+	// true
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// BF92FC2E-455F-5600-A276-D2150A59****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13512,16 +20183,275 @@ func (s *UpdateArtifactLifecycleRuleResponse) SetBody(v *UpdateArtifactLifecycle
 	return s
 }
 
+type UpdateArtifactSubscriptionRuleRequest struct {
+	// Specifies whether to enable an acceleration link for image subscription. The subscription acceleration feature is in public preview. The feature is optimized based on scheduling policies and network links to accelerate image subscription.
+	//
+	// example:
+	//
+	// true
+	Accelerate *string `json:"Accelerate,omitempty" xml:"Accelerate,omitempty"`
+	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-c0o11woew0k****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the Container Registry namespace.
+	//
+	// example:
+	//
+	// test-ns
+	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	// Specifies whether to overwrite the original image.
+	//
+	// example:
+	//
+	// true
+	Override *string `json:"Override,omitempty" xml:"Override,omitempty"`
+	// The operating system and architecture. If the source repository contains multi-arch images, only the images with the specified operating system and architecture are subscribed to the destination repository of the Enterprise Edition instance.
+	Platform []*string `json:"Platform,omitempty" xml:"Platform,omitempty" type:"Repeated"`
+	// The name of the Container Registry repository.
+	//
+	// example:
+	//
+	// test-repo
+	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The rule ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// crasr-mdbpung4i1rm****
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The name of the source namespace.
+	//
+	// example:
+	//
+	// library
+	SourceNamespaceName *string `json:"SourceNamespaceName,omitempty" xml:"SourceNamespaceName,omitempty"`
+	// The source of the artifacts.
+	//
+	// Valid values:
+	//
+	// 	- DOCKER_HUB: Docker Hub
+	//
+	// 	- GCR: GCR
+	//
+	// 	- QUAY: Quay.io
+	//
+	// example:
+	//
+	// DOCKER_HUB
+	SourceProvider *string `json:"SourceProvider,omitempty" xml:"SourceProvider,omitempty"`
+	// The source repository.
+	//
+	// example:
+	//
+	// nginx
+	SourceRepoName *string `json:"SourceRepoName,omitempty" xml:"SourceRepoName,omitempty"`
+	// The number of subscribed images.
+	//
+	// if can be null:
+	// false
+	//
+	// example:
+	//
+	// 1
+	TagCount *int64 `json:"TagCount,omitempty" xml:"TagCount,omitempty"`
+	// The image tags in the subscription source repository. Regular expressions are supported.
+	//
+	// example:
+	//
+	// release-v.*
+	TagRegexp *string `json:"TagRegexp,omitempty" xml:"TagRegexp,omitempty"`
+}
+
+func (s UpdateArtifactSubscriptionRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateArtifactSubscriptionRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateArtifactSubscriptionRuleRequest) SetAccelerate(v string) *UpdateArtifactSubscriptionRuleRequest {
+	s.Accelerate = &v
+	return s
+}
+
+func (s *UpdateArtifactSubscriptionRuleRequest) SetInstanceId(v string) *UpdateArtifactSubscriptionRuleRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateArtifactSubscriptionRuleRequest) SetNamespaceName(v string) *UpdateArtifactSubscriptionRuleRequest {
+	s.NamespaceName = &v
+	return s
+}
+
+func (s *UpdateArtifactSubscriptionRuleRequest) SetOverride(v string) *UpdateArtifactSubscriptionRuleRequest {
+	s.Override = &v
+	return s
+}
+
+func (s *UpdateArtifactSubscriptionRuleRequest) SetPlatform(v []*string) *UpdateArtifactSubscriptionRuleRequest {
+	s.Platform = v
+	return s
+}
+
+func (s *UpdateArtifactSubscriptionRuleRequest) SetRepoName(v string) *UpdateArtifactSubscriptionRuleRequest {
+	s.RepoName = &v
+	return s
+}
+
+func (s *UpdateArtifactSubscriptionRuleRequest) SetRuleId(v string) *UpdateArtifactSubscriptionRuleRequest {
+	s.RuleId = &v
+	return s
+}
+
+func (s *UpdateArtifactSubscriptionRuleRequest) SetSourceNamespaceName(v string) *UpdateArtifactSubscriptionRuleRequest {
+	s.SourceNamespaceName = &v
+	return s
+}
+
+func (s *UpdateArtifactSubscriptionRuleRequest) SetSourceProvider(v string) *UpdateArtifactSubscriptionRuleRequest {
+	s.SourceProvider = &v
+	return s
+}
+
+func (s *UpdateArtifactSubscriptionRuleRequest) SetSourceRepoName(v string) *UpdateArtifactSubscriptionRuleRequest {
+	s.SourceRepoName = &v
+	return s
+}
+
+func (s *UpdateArtifactSubscriptionRuleRequest) SetTagCount(v int64) *UpdateArtifactSubscriptionRuleRequest {
+	s.TagCount = &v
+	return s
+}
+
+func (s *UpdateArtifactSubscriptionRuleRequest) SetTagRegexp(v string) *UpdateArtifactSubscriptionRuleRequest {
+	s.TagRegexp = &v
+	return s
+}
+
+type UpdateArtifactSubscriptionRuleResponseBody struct {
+	// The return value.
+	//
+	// example:
+	//
+	// success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the API request is successful. Valid values:
+	//
+	// 	- `true`: The request is successful.
+	//
+	// 	- `false`: The request fails.
+	//
+	// example:
+	//
+	// true
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 02B27D80-FD32-5155-931A-93700779BB9E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateArtifactSubscriptionRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateArtifactSubscriptionRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateArtifactSubscriptionRuleResponseBody) SetCode(v string) *UpdateArtifactSubscriptionRuleResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateArtifactSubscriptionRuleResponseBody) SetIsSuccess(v bool) *UpdateArtifactSubscriptionRuleResponseBody {
+	s.IsSuccess = &v
+	return s
+}
+
+func (s *UpdateArtifactSubscriptionRuleResponseBody) SetRequestId(v string) *UpdateArtifactSubscriptionRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateArtifactSubscriptionRuleResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateArtifactSubscriptionRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateArtifactSubscriptionRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateArtifactSubscriptionRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateArtifactSubscriptionRuleResponse) SetHeaders(v map[string]*string) *UpdateArtifactSubscriptionRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateArtifactSubscriptionRuleResponse) SetStatusCode(v int32) *UpdateArtifactSubscriptionRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateArtifactSubscriptionRuleResponse) SetBody(v *UpdateArtifactSubscriptionRuleResponseBody) *UpdateArtifactSubscriptionRuleResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateChainRequest struct {
 	// The configuration of the delivery chain in the JSON format.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// chainconfig
 	ChainConfig *string `json:"ChainConfig,omitempty" xml:"ChainConfig,omitempty"`
 	// The ID of the delivery chain.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// chi-02ymhtwl3cq8****
 	ChainId *string `json:"ChainId,omitempty" xml:"ChainId,omitempty"`
 	// The description of the delivery chain.
+	//
+	// example:
+	//
+	// description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-4cdrlqmhn4gm****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The name of the delivery chain.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// Repositories in which the delivery chain does not take effect.
 	ScopeExclude []*string `json:"ScopeExclude,omitempty" xml:"ScopeExclude,omitempty" type:"Repeated"`
@@ -13567,10 +20497,22 @@ func (s *UpdateChainRequest) SetScopeExclude(v []*string) *UpdateChainRequest {
 
 type UpdateChainResponseBody struct {
 	// The return value.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 85A99B10-3926-5201-958E-C06FA47F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13629,17 +20571,39 @@ func (s *UpdateChainResponse) SetBody(v *UpdateChainResponseBody) *UpdateChainRe
 type UpdateChartNamespaceRequest struct {
 	// Specifies whether to automatically create repositories in the namespace. Valid values:
 	//
-	// *   `true`: automatically creates repositories in the namespace.
-	// *   `false`: does not automatically create repositories in the namespace.
+	// 	- `true`: automatically creates repositories in the namespace.
+	//
+	// 	- `false`: does not automatically create repositories in the namespace.
+	//
+	// example:
+	//
+	// true
 	AutoCreateRepo *bool `json:"AutoCreateRepo,omitempty" xml:"AutoCreateRepo,omitempty"`
 	// The default type of the repository. Valid values:
 	//
-	// *   `PUBLIC`: a public repository
-	// *   `PRIVATE`: a private repository
+	// 	- `PUBLIC`: a public repository
+	//
+	// 	- `PRIVATE`: a private repository
+	//
+	// example:
+	//
+	// PUBLIC
 	DefaultRepoType *string `json:"DefaultRepoType,omitempty" xml:"DefaultRepoType,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-kmsiwlxxdcva****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The name of the namespace to which the repository belongs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
 }
 
@@ -13673,13 +20637,26 @@ func (s *UpdateChartNamespaceRequest) SetNamespaceName(v string) *UpdateChartNam
 
 type UpdateChartNamespaceResponseBody struct {
 	// The return value.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether the request is successful. Valid values:
 	//
-	// *   `true`: The request is successful.
-	// *   `false`: The request fails.
+	// example:
+	//
+	// success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the API request is successful. Valid values:
+	//
+	// 	- `true`: successful
+	//
+	// 	- `false`: failed
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// The ID of the request.
+	// The request ID.
+	//
+	// example:
+	//
+	// 6877B80A-2895-44C4-BC9E-703B157DEE66
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13737,17 +20714,44 @@ func (s *UpdateChartNamespaceResponse) SetBody(v *UpdateChartNamespaceResponseBo
 
 type UpdateChartRepositoryRequest struct {
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-kmsiwlxxdcva****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The name of the repository.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	// The name of the namespace to which the repository belongs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 	// The type of the repository. Valid values:
 	//
-	// *   `PUBLIC`: a public repository.
-	// *   `PRIVATE`: a private repository.
+	// 	- `PUBLIC`: a public repository.
+	//
+	// 	- `PRIVATE`: a private repository.
+	//
+	// example:
+	//
+	// PUBLIC
 	RepoType *string `json:"RepoType,omitempty" xml:"RepoType,omitempty"`
 	// The summary of the repository.
+	//
+	// example:
+	//
+	// test
 	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
 }
 
@@ -13786,13 +20790,26 @@ func (s *UpdateChartRepositoryRequest) SetSummary(v string) *UpdateChartReposito
 
 type UpdateChartRepositoryResponseBody struct {
 	// The return value.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   `true`: The request is successful.
-	// *   `false`: The request fails.
+	// 	- `true`: The request is successful.
+	//
+	// 	- `false`: The request fails.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// EB9C5722-51E2-4497-A573-575B0CA5CE0C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13850,36 +20867,100 @@ func (s *UpdateChartRepositoryResponse) SetBody(v *UpdateChartRepositoryResponse
 
 type UpdateEventCenterRuleRequest struct {
 	// The event notification channel.
+	//
+	// example:
+	//
+	// EVENT_BRIDGE
 	EventChannel *string `json:"EventChannel,omitempty" xml:"EventChannel,omitempty"`
 	// The event configuration.
+	//
+	// example:
+	//
+	// {
+	//
+	//         "notifyMethod":"http",
+	//
+	//         "notifyConfig":{
+	//
+	//             "Url":"http://www.aliyundoc.com",
+	//
+	//             "id":"MaAV3HgTkO5Fh8l1V********",
+	//
+	//         },
+	//
+	//         "notifyFilter":{}
+	//
+	//     }
 	EventConfig *string `json:"EventConfig,omitempty" xml:"EventConfig,omitempty"`
 	// The event scope. Valid values:
 	//
-	// *   `INSTANCE`
-	// *   `NAMESPACE`
-	// *   `REPO`
+	// 	- `INSTANCE`
+	//
+	// 	- `NAMESPACE`
+	//
+	// 	- `REPO`
 	//
 	// Default value: `INSTANCE`
+	//
+	// example:
+	//
+	// INSTANCE
 	EventScope *string `json:"EventScope,omitempty" xml:"EventScope,omitempty"`
 	// The type of the event. Valid values:
 	//
-	// *   `cr:Artifact:DeliveryChainCompleted`: The delivery chain is processed.
-	// *   `cr:Artifact:SynchronizationCompleted`: The image is replicated.
-	// *   `cr:Artifact:BuildCompleted`: The image is built.
-	// *   `cr:Artifact:ScanCompleted`: The image is scanned.
-	// *   `cr:Artifact:SigningCompleted`: The image is signed.
+	// 	- `cr:Artifact:DeliveryChainCompleted`: The delivery chain is processed.
+	//
+	// 	- `cr:Artifact:SynchronizationCompleted`: The image is replicated.
+	//
+	// 	- `cr:Artifact:BuildCompleted`: The image is built.
+	//
+	// 	- `cr:Artifact:ScanCompleted`: The image is scanned.
+	//
+	// 	- `cr:Artifact:SigningCompleted`: The image is signed.
+	//
+	// example:
+	//
+	// cr:Artifact:DeliveryChainCompleted
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-kmsiwlxxdcva****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The namespaces to which the event notification rule applies.
+	//
+	// example:
+	//
+	// ns
 	Namespaces []*string `json:"Namespaces,omitempty" xml:"Namespaces,omitempty" type:"Repeated"`
 	// The names of the repositories to which the event notification rule applies.
+	//
+	// example:
+	//
+	// reponame
 	RepoNames []*string `json:"RepoNames,omitempty" xml:"RepoNames,omitempty" type:"Repeated"`
 	// The regular expression for image tags.
+	//
+	// example:
+	//
+	// .*
 	RepoTagFilterPattern *string `json:"RepoTagFilterPattern,omitempty" xml:"RepoTagFilterPattern,omitempty"`
 	// The ID of the event notification rule.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// crecr-n6pbhgjxt*****
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	// The name of the event notification rule.
+	//
+	// example:
+	//
+	// chain-demo
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 }
 
@@ -13943,36 +21024,100 @@ func (s *UpdateEventCenterRuleRequest) SetRuleName(v string) *UpdateEventCenterR
 
 type UpdateEventCenterRuleShrinkRequest struct {
 	// The event notification channel.
+	//
+	// example:
+	//
+	// EVENT_BRIDGE
 	EventChannel *string `json:"EventChannel,omitempty" xml:"EventChannel,omitempty"`
 	// The event configuration.
+	//
+	// example:
+	//
+	// {
+	//
+	//         "notifyMethod":"http",
+	//
+	//         "notifyConfig":{
+	//
+	//             "Url":"http://www.aliyundoc.com",
+	//
+	//             "id":"MaAV3HgTkO5Fh8l1V********",
+	//
+	//         },
+	//
+	//         "notifyFilter":{}
+	//
+	//     }
 	EventConfig *string `json:"EventConfig,omitempty" xml:"EventConfig,omitempty"`
 	// The event scope. Valid values:
 	//
-	// *   `INSTANCE`
-	// *   `NAMESPACE`
-	// *   `REPO`
+	// 	- `INSTANCE`
+	//
+	// 	- `NAMESPACE`
+	//
+	// 	- `REPO`
 	//
 	// Default value: `INSTANCE`
+	//
+	// example:
+	//
+	// INSTANCE
 	EventScope *string `json:"EventScope,omitempty" xml:"EventScope,omitempty"`
 	// The type of the event. Valid values:
 	//
-	// *   `cr:Artifact:DeliveryChainCompleted`: The delivery chain is processed.
-	// *   `cr:Artifact:SynchronizationCompleted`: The image is replicated.
-	// *   `cr:Artifact:BuildCompleted`: The image is built.
-	// *   `cr:Artifact:ScanCompleted`: The image is scanned.
-	// *   `cr:Artifact:SigningCompleted`: The image is signed.
+	// 	- `cr:Artifact:DeliveryChainCompleted`: The delivery chain is processed.
+	//
+	// 	- `cr:Artifact:SynchronizationCompleted`: The image is replicated.
+	//
+	// 	- `cr:Artifact:BuildCompleted`: The image is built.
+	//
+	// 	- `cr:Artifact:ScanCompleted`: The image is scanned.
+	//
+	// 	- `cr:Artifact:SigningCompleted`: The image is signed.
+	//
+	// example:
+	//
+	// cr:Artifact:DeliveryChainCompleted
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-kmsiwlxxdcva****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The namespaces to which the event notification rule applies.
+	//
+	// example:
+	//
+	// ns
 	NamespacesShrink *string `json:"Namespaces,omitempty" xml:"Namespaces,omitempty"`
 	// The names of the repositories to which the event notification rule applies.
+	//
+	// example:
+	//
+	// reponame
 	RepoNamesShrink *string `json:"RepoNames,omitempty" xml:"RepoNames,omitempty"`
 	// The regular expression for image tags.
+	//
+	// example:
+	//
+	// .*
 	RepoTagFilterPattern *string `json:"RepoTagFilterPattern,omitempty" xml:"RepoTagFilterPattern,omitempty"`
 	// The ID of the event notification rule.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// crecr-n6pbhgjxt*****
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	// The name of the event notification rule.
+	//
+	// example:
+	//
+	// chain-demo
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 }
 
@@ -14036,10 +21181,22 @@ func (s *UpdateEventCenterRuleShrinkRequest) SetRuleName(v string) *UpdateEventC
 
 type UpdateEventCenterRuleResponseBody struct {
 	// The status code.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 031572FA-7D8F-4C05-B790-1071E0E05DE6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The ID of the event notification rule.
+	//
+	// example:
+	//
+	// crecr-n6pbhgjxt*****
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
@@ -14098,17 +21255,41 @@ func (s *UpdateEventCenterRuleResponse) SetBody(v *UpdateEventCenterRuleResponse
 type UpdateInstanceEndpointStatusRequest struct {
 	// Specifies whether to enable the instance endpoint. Valid values:
 	//
-	// *   `true`: enables the instance endpoint.
-	// *   `false`: disables the instance endpoint
+	// 	- `true`: enables the instance endpoint.
+	//
+	// 	- `false`: disables the instance endpoint
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// false
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	// The type of the endpoint. Set the value to Internet.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// internet
 	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-kmsiwlxxdcva****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The name of the module that you want to access. Valid values:
 	//
-	// *   `Registry`: the image repository.
-	// *   `Chart`: a Helm chart.
+	// 	- `Registry`: the image repository.
+	//
+	// 	- `Chart`: a Helm chart.
+	//
+	// example:
+	//
+	// Chart
 	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
 }
 
@@ -14142,13 +21323,26 @@ func (s *UpdateInstanceEndpointStatusRequest) SetModuleName(v string) *UpdateIns
 
 type UpdateInstanceEndpointStatusResponseBody struct {
 	// The return value.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   `true`: The request is successful.
-	// *   `false`: The request fails.
+	// 	- `true`: The request is successful.
+	//
+	// 	- `false`: The request fails.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 2FC14396-A16A-42BA-AAE4-BB94D956DF09
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -14206,15 +21400,36 @@ func (s *UpdateInstanceEndpointStatusResponse) SetBody(v *UpdateInstanceEndpoint
 
 type UpdateNamespaceRequest struct {
 	// Specifies whether to automatically create a repository when an image is pushed to the namespace.
+	//
+	// example:
+	//
+	// true
 	AutoCreateRepo *bool `json:"AutoCreateRepo,omitempty" xml:"AutoCreateRepo,omitempty"`
 	// The default type of the repository. Valid values:
 	//
-	// *   `PUBLIC`: The repository is a public repository.
-	// *   `PRIVATE`: The repository is a private repository.
+	// 	- `PUBLIC`: The repository is a public repository.
+	//
+	// 	- `PRIVATE`: The repository is a private repository.
+	//
+	// example:
+	//
+	// PRIVATE
 	DefaultRepoType *string `json:"DefaultRepoType,omitempty" xml:"DefaultRepoType,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-kmsiwlxxdcva****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The name of the namespace.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
 }
 
@@ -14248,10 +21463,22 @@ func (s *UpdateNamespaceRequest) SetNamespaceName(v string) *UpdateNamespaceRequ
 
 type UpdateNamespaceResponseBody struct {
 	// The return value.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 90B8475C-C066-4B92-946E-4D0DECB514E8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -14311,33 +21538,80 @@ type UpdateRepoBuildRuleRequest struct {
 	// Building arguments.
 	BuildArgs []*string `json:"BuildArgs,omitempty" xml:"BuildArgs,omitempty" type:"Repeated"`
 	// The ID of the building rule.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// crbr-ly77w5i3t31f****
 	BuildRuleId *string `json:"BuildRuleId,omitempty" xml:"BuildRuleId,omitempty"`
 	// The path of the Dockerfile.
+	//
+	// example:
+	//
+	// /
 	DockerfileLocation *string `json:"DockerfileLocation,omitempty" xml:"DockerfileLocation,omitempty"`
 	// The name of the Dockerfile.
+	//
+	// example:
+	//
+	// Dockerfile
 	DockerfileName *string `json:"DockerfileName,omitempty" xml:"DockerfileName,omitempty"`
 	// The tag of the image.
+	//
+	// example:
+	//
+	// v0.9.5
 	ImageTag *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-kmsiwlxxdcva****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// Architecture for image building. Valid values:
 	//
-	// *   `linux/amd64`
-	// *   `linux/arm64`
-	// *   `linux/386`
-	// *   `linux/arm/v7`
-	// *   `linux/arm/v6`
+	// 	- `linux/amd64`
+	//
+	// 	- `linux/arm64`
+	//
+	// 	- `linux/386`
+	//
+	// 	- `linux/arm/v7`
+	//
+	// 	- `linux/arm/v6`
 	//
 	// Default value: `linux/amd64`
+	//
+	// example:
+	//
+	// linux/amd64
 	Platforms []*string `json:"Platforms,omitempty" xml:"Platforms,omitempty" type:"Repeated"`
 	// The name of the push that triggers the building rule.
+	//
+	// example:
+	//
+	// master
 	PushName *string `json:"PushName,omitempty" xml:"PushName,omitempty"`
 	// The type of the push that triggers the building rule. Valid values:
 	//
-	// *   `GIT_TAG`: tag push
-	// *   `GIT_BRANCH`: branch push
+	// 	- `GIT_TAG`: tag push
+	//
+	// 	- `GIT_BRANCH`: branch push
+	//
+	// example:
+	//
+	// GIT_BRANCH
 	PushType *string `json:"PushType,omitempty" xml:"PushType,omitempty"`
 	// The ID of the image repository.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// crr-tquyps22md8p****
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 }
 
@@ -14401,15 +21675,32 @@ func (s *UpdateRepoBuildRuleRequest) SetRepoId(v string) *UpdateRepoBuildRuleReq
 
 type UpdateRepoBuildRuleResponseBody struct {
 	// The ID of the building rule.
+	//
+	// example:
+	//
+	// crbr-ly77w5i3t31f****
 	BuildRuleId *string `json:"BuildRuleId,omitempty" xml:"BuildRuleId,omitempty"`
 	// The return value.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// *   `true`: The request is successful.
-	// *   `false`: The request fails.
+	// 	- `true`: The request is successful.
+	//
+	// 	- `false`: The request fails.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// BC648259-91A7-4502-BED3-EDF64361FA83
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -14473,30 +21764,79 @@ func (s *UpdateRepoBuildRuleResponse) SetBody(v *UpdateRepoBuildRuleResponseBody
 type UpdateRepoSourceCodeRepoRequest struct {
 	// Specifies whether to enable automatic image building when code is committed. Valid values:
 	//
-	// *   `true`: enables automatic image building when code is committed.
-	// *   `false`: disables automatic image building when code is committed.
+	// 	- `true`: enables automatic image building when code is committed.
+	//
+	// 	- `false`: disables automatic image building when code is committed.
+	//
+	// example:
+	//
+	// true
 	AutoBuild *string `json:"AutoBuild,omitempty" xml:"AutoBuild,omitempty"`
 	// The ID of the source code repository.
+	//
+	// example:
+	//
+	// crr-cp7d6sget5r****
 	CodeRepoId *string `json:"CodeRepoId,omitempty" xml:"CodeRepoId,omitempty"`
 	// The name of the source code repository.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// repo
 	CodeRepoName *string `json:"CodeRepoName,omitempty" xml:"CodeRepoName,omitempty"`
 	// The namespace to which the source code repository belongs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// namespace
 	CodeRepoNamespaceName *string `json:"CodeRepoNamespaceName,omitempty" xml:"CodeRepoNamespaceName,omitempty"`
 	// The type of the source code hosting platform. Valid values: GITHUB, GITLAB, GITEE, CODE, and CODEUP.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// GITHUB
 	CodeRepoType *string `json:"CodeRepoType,omitempty" xml:"CodeRepoType,omitempty"`
 	// Specifies whether to disable building caches. Valid values:
 	//
-	// *   `true`: disables building caches.
-	// *   `false`: enables building caches.
+	// 	- `true`: disables building caches.
+	//
+	// 	- `false`: enables building caches.
+	//
+	// example:
+	//
+	// false
 	DisableCacheBuild *string `json:"DisableCacheBuild,omitempty" xml:"DisableCacheBuild,omitempty"`
 	// The ID of the Container Registry Enterprise Edition instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-shac42yvqzvq****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// Specifies whether to enable Build With Servers Deployed Outside Chinese Mainland. Valid values:
 	//
-	// *   `true`: enables Build With Servers Deployed Outside Chinese Mainland.
-	// *   `false`: disables Build With Servers Deployed Outside Chinese Mainland.
+	// 	- `true`: enables Build With Servers Deployed Outside Chinese Mainland.
+	//
+	// 	- `false`: disables Build With Servers Deployed Outside Chinese Mainland.
+	//
+	// example:
+	//
+	// false
 	OverseaBuild *string `json:"OverseaBuild,omitempty" xml:"OverseaBuild,omitempty"`
 	// The ID of the image repository.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// crr-gzsrlevmvoa****
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 }
 
@@ -14555,10 +21895,22 @@ func (s *UpdateRepoSourceCodeRepoRequest) SetRepoId(v string) *UpdateRepoSourceC
 
 type UpdateRepoSourceCodeRepoResponseBody struct {
 	// The return value.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// F56D589D-AF7F-4900-BA46-62C780AC2C10
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -14616,24 +21968,60 @@ func (s *UpdateRepoSourceCodeRepoResponse) SetBody(v *UpdateRepoSourceCodeRepoRe
 
 type UpdateRepoTriggerRequest struct {
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-kmsiwlxxdcva****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the image repository.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// crr-tquyps22md8p****
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	// The ID of the trigger.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// crw-k7bdx4kt52ty****
 	TriggerId *string `json:"TriggerId,omitempty" xml:"TriggerId,omitempty"`
 	// The name of the trigger.
 	//
 	// You can specify the TriggerName or TriggerUrl parameter. The TriggerName parameter is optional.
+	//
+	// example:
+	//
+	// test_trigger
 	TriggerName *string `json:"TriggerName,omitempty" xml:"TriggerName,omitempty"`
 	// The image tag based on which the trigger is set.
+	//
+	// example:
+	//
+	// master
 	TriggerTag *string `json:"TriggerTag,omitempty" xml:"TriggerTag,omitempty"`
 	// The type of the trigger. Valid values:
 	//
-	// *   `ALL`: a trigger that supports both tags and regular expressions.
-	// *   `TAG_LISTTAG`: a tag-based trigger.
-	// *   `TAG_REG_EXP`: a regular expression-based trigger.
+	// 	- `ALL`: a trigger that supports both tags and regular expressions.
+	//
+	// 	- `TAG_LISTTAG`: a tag-based trigger.
+	//
+	// 	- `TAG_REG_EXP`: a regular expression-based trigger.
+	//
+	// example:
+	//
+	// TAG_LIST
 	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
 	// The URL of the trigger.
+	//
+	// example:
+	//
+	// https://www.test.com
 	TriggerUrl *string `json:"TriggerUrl,omitempty" xml:"TriggerUrl,omitempty"`
 }
 
@@ -14682,10 +22070,22 @@ func (s *UpdateRepoTriggerRequest) SetTriggerUrl(v string) *UpdateRepoTriggerReq
 
 type UpdateRepoTriggerResponseBody struct {
 	// The return value.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 32535049-ED91-4589-98C0-7C88766EDF1F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -14742,14 +22142,44 @@ func (s *UpdateRepoTriggerResponse) SetBody(v *UpdateRepoTriggerResponseBody) *U
 }
 
 type UpdateRepositoryRequest struct {
-	Detail            *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RepoId            *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// example:
+	//
+	// repo-for-test
+	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cri-kmsiwlxxdcva****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// crr-tquyps22md8p****
+	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// example:
+	//
+	// dsp/domain-microapp
+	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// example:
+	//
+	// ejiayou-other
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
-	RepoType          *string `json:"RepoType,omitempty" xml:"RepoType,omitempty"`
-	Summary           *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
-	TagImmutability   *bool   `json:"TagImmutability,omitempty" xml:"TagImmutability,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PUBLIC
+	RepoType *string `json:"RepoType,omitempty" xml:"RepoType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test repo
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// example:
+	//
+	// true
+	TagImmutability *bool `json:"TagImmutability,omitempty" xml:"TagImmutability,omitempty"`
 }
 
 func (s UpdateRepositoryRequest) String() string {
@@ -14801,8 +22231,17 @@ func (s *UpdateRepositoryRequest) SetTagImmutability(v bool) *UpdateRepositoryRe
 }
 
 type UpdateRepositoryResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// example:
+	//
+	// success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// true
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// example:
+	//
+	// CC43EC6B-0DD4-40AE-8811-B0519617051A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -14905,6 +22344,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// Cancels an artifact building task.
+//
+// @param request - CancelArtifactBuildTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelArtifactBuildTaskResponse
 func (client *Client) CancelArtifactBuildTaskWithOptions(request *CancelArtifactBuildTaskRequest, runtime *util.RuntimeOptions) (_result *CancelArtifactBuildTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14933,15 +22381,33 @@ func (client *Client) CancelArtifactBuildTaskWithOptions(request *CancelArtifact
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CancelArtifactBuildTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CancelArtifactBuildTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CancelArtifactBuildTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Cancels an artifact building task.
+//
+// @param request - CancelArtifactBuildTaskRequest
+//
+// @return CancelArtifactBuildTaskResponse
 func (client *Client) CancelArtifactBuildTask(request *CancelArtifactBuildTaskRequest) (_result *CancelArtifactBuildTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CancelArtifactBuildTaskResponse{}
@@ -14953,6 +22419,15 @@ func (client *Client) CancelArtifactBuildTask(request *CancelArtifactBuildTaskRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Cancels an image building task of a repository.
+//
+// @param request - CancelRepoBuildRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelRepoBuildRecordResponse
 func (client *Client) CancelRepoBuildRecordWithOptions(request *CancelRepoBuildRecordRequest, runtime *util.RuntimeOptions) (_result *CancelRepoBuildRecordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14985,15 +22460,33 @@ func (client *Client) CancelRepoBuildRecordWithOptions(request *CancelRepoBuildR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CancelRepoBuildRecordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CancelRepoBuildRecordResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CancelRepoBuildRecordResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Cancels an image building task of a repository.
+//
+// @param request - CancelRepoBuildRecordRequest
+//
+// @return CancelRepoBuildRecordResponse
 func (client *Client) CancelRepoBuildRecord(request *CancelRepoBuildRecordRequest) (_result *CancelRepoBuildRecordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CancelRepoBuildRecordResponse{}
@@ -15005,6 +22498,90 @@ func (client *Client) CancelRepoBuildRecord(request *CancelRepoBuildRecordReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Cancels a single replication task.
+//
+// @param request - CancelRepoSyncTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelRepoSyncTaskResponse
+func (client *Client) CancelRepoSyncTaskWithOptions(request *CancelRepoSyncTaskRequest, runtime *util.RuntimeOptions) (_result *CancelRepoSyncTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SyncTaskId)) {
+		query["SyncTaskId"] = request.SyncTaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelRepoSyncTask"),
+		Version:     tea.String("2018-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CancelRepoSyncTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CancelRepoSyncTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Cancels a single replication task.
+//
+// @param request - CancelRepoSyncTaskRequest
+//
+// @return CancelRepoSyncTaskResponse
+func (client *Client) CancelRepoSyncTask(request *CancelRepoSyncTaskRequest) (_result *CancelRepoSyncTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CancelRepoSyncTaskResponse{}
+	_body, _err := client.CancelRepoSyncTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Changes the resource group to which a resource belongs.
+//
+// @param request - ChangeResourceGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ChangeResourceGroupResponse
 func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGroupRequest, runtime *util.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15037,15 +22614,33 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ChangeResourceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ChangeResourceGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ChangeResourceGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Changes the resource group to which a resource belongs.
+//
+// @param request - ChangeResourceGroupRequest
+//
+// @return ChangeResourceGroupResponse
 func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (_result *ChangeResourceGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ChangeResourceGroupResponse{}
@@ -15057,14 +22652,21 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 	return _result, _err
 }
 
-/**
- * You can create building rules of accelerated images only for image repositories of Container Registry Advanced Edition instances. You cannot create building rules of accelerated images for image repositories of Container Registry Basic Edition instances. For more information, see [Specifications of different editions](https://www.alibabacloud.com/help/zh/container-registry/latest/what-is-container-registry#section-go7-lhg-qbc).
- * Accelerated images can be built in the following regions: China (Hangzhou), China (Shanghai), China (Beijing), China (Shenzhen), China (Guangzhou), China (Zhangjiakou), China (Hong Kong), US (Virginia), US (Silicon Valley), Singapore, Japan (Tokyo), and Malaysia (Kuala Lumpur).
- *
- * @param tmpReq CreateArtifactBuildRuleRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateArtifactBuildRuleResponse
- */
+// Summary:
+//
+// Create image repository acceleration rules for image building.
+//
+// Description:
+//
+// You can create building rules of accelerated images only for image repositories of Container Registry Advanced Edition instances. You cannot create building rules of accelerated images for image repositories of Container Registry Basic Edition instances. For more information, see [Specifications of different editions](https://www.alibabacloud.com/help/en/acr/product-overview/what-is-container-registry?spm=openapi-amp.newDocPublishment.0.0.bf82281fRj7rmV#section-n3q-ps7-x6k).
+//
+// Accelerated images are not supported in Alibaba Finance Cloud regions or Alibaba Gov Cloud regions.
+//
+// @param tmpReq - CreateArtifactBuildRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateArtifactBuildRuleResponse
 func (client *Client) CreateArtifactBuildRuleWithOptions(tmpReq *CreateArtifactBuildRuleRequest, runtime *util.RuntimeOptions) (_result *CreateArtifactBuildRuleResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -15111,22 +22713,39 @@ func (client *Client) CreateArtifactBuildRuleWithOptions(tmpReq *CreateArtifactB
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateArtifactBuildRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateArtifactBuildRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateArtifactBuildRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
-/**
- * You can create building rules of accelerated images only for image repositories of Container Registry Advanced Edition instances. You cannot create building rules of accelerated images for image repositories of Container Registry Basic Edition instances. For more information, see [Specifications of different editions](https://www.alibabacloud.com/help/zh/container-registry/latest/what-is-container-registry#section-go7-lhg-qbc).
- * Accelerated images can be built in the following regions: China (Hangzhou), China (Shanghai), China (Beijing), China (Shenzhen), China (Guangzhou), China (Zhangjiakou), China (Hong Kong), US (Virginia), US (Silicon Valley), Singapore, Japan (Tokyo), and Malaysia (Kuala Lumpur).
- *
- * @param request CreateArtifactBuildRuleRequest
- * @return CreateArtifactBuildRuleResponse
- */
+// Summary:
+//
+// Create image repository acceleration rules for image building.
+//
+// Description:
+//
+// You can create building rules of accelerated images only for image repositories of Container Registry Advanced Edition instances. You cannot create building rules of accelerated images for image repositories of Container Registry Basic Edition instances. For more information, see [Specifications of different editions](https://www.alibabacloud.com/help/en/acr/product-overview/what-is-container-registry?spm=openapi-amp.newDocPublishment.0.0.bf82281fRj7rmV#section-n3q-ps7-x6k).
+//
+// Accelerated images are not supported in Alibaba Finance Cloud regions or Alibaba Gov Cloud regions.
+//
+// @param request - CreateArtifactBuildRuleRequest
+//
+// @return CreateArtifactBuildRuleResponse
 func (client *Client) CreateArtifactBuildRule(request *CreateArtifactBuildRuleRequest) (_result *CreateArtifactBuildRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateArtifactBuildRuleResponse{}
@@ -15138,6 +22757,15 @@ func (client *Client) CreateArtifactBuildRule(request *CreateArtifactBuildRuleRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a lifecycle management rule for an artifact.
+//
+// @param request - CreateArtifactLifecycleRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateArtifactLifecycleRuleResponse
 func (client *Client) CreateArtifactLifecycleRuleWithOptions(request *CreateArtifactLifecycleRuleRequest, runtime *util.RuntimeOptions) (_result *CreateArtifactLifecycleRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15194,15 +22822,33 @@ func (client *Client) CreateArtifactLifecycleRuleWithOptions(request *CreateArti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateArtifactLifecycleRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateArtifactLifecycleRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateArtifactLifecycleRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Creates a lifecycle management rule for an artifact.
+//
+// @param request - CreateArtifactLifecycleRuleRequest
+//
+// @return CreateArtifactLifecycleRuleResponse
 func (client *Client) CreateArtifactLifecycleRule(request *CreateArtifactLifecycleRuleRequest) (_result *CreateArtifactLifecycleRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateArtifactLifecycleRuleResponse{}
@@ -15214,6 +22860,201 @@ func (client *Client) CreateArtifactLifecycleRule(request *CreateArtifactLifecyc
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an artifact subscription rule.
+//
+// @param request - CreateArtifactSubscriptionRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateArtifactSubscriptionRuleResponse
+func (client *Client) CreateArtifactSubscriptionRuleWithOptions(request *CreateArtifactSubscriptionRuleRequest, runtime *util.RuntimeOptions) (_result *CreateArtifactSubscriptionRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Accelerate)) {
+		query["Accelerate"] = request.Accelerate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespaceName)) {
+		query["NamespaceName"] = request.NamespaceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Override)) {
+		query["Override"] = request.Override
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Platform)) {
+		query["Platform"] = request.Platform
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoName)) {
+		query["RepoName"] = request.RepoName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceNamespaceName)) {
+		query["SourceNamespaceName"] = request.SourceNamespaceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceProvider)) {
+		query["SourceProvider"] = request.SourceProvider
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceRepoName)) {
+		query["SourceRepoName"] = request.SourceRepoName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagCount)) {
+		query["TagCount"] = request.TagCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagRegexp)) {
+		query["TagRegexp"] = request.TagRegexp
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateArtifactSubscriptionRule"),
+		Version:     tea.String("2018-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateArtifactSubscriptionRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateArtifactSubscriptionRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Creates an artifact subscription rule.
+//
+// @param request - CreateArtifactSubscriptionRuleRequest
+//
+// @return CreateArtifactSubscriptionRuleResponse
+func (client *Client) CreateArtifactSubscriptionRule(request *CreateArtifactSubscriptionRuleRequest) (_result *CreateArtifactSubscriptionRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateArtifactSubscriptionRuleResponse{}
+	_body, _err := client.CreateArtifactSubscriptionRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an artifact subscription task.
+//
+// @param request - CreateArtifactSubscriptionTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateArtifactSubscriptionTaskResponse
+func (client *Client) CreateArtifactSubscriptionTaskWithOptions(request *CreateArtifactSubscriptionTaskRequest, runtime *util.RuntimeOptions) (_result *CreateArtifactSubscriptionTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateArtifactSubscriptionTask"),
+		Version:     tea.String("2018-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateArtifactSubscriptionTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateArtifactSubscriptionTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Creates an artifact subscription task.
+//
+// @param request - CreateArtifactSubscriptionTaskRequest
+//
+// @return CreateArtifactSubscriptionTaskResponse
+func (client *Client) CreateArtifactSubscriptionTask(request *CreateArtifactSubscriptionTaskRequest) (_result *CreateArtifactSubscriptionTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateArtifactSubscriptionTaskResponse{}
+	_body, _err := client.CreateArtifactSubscriptionTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an image building record based on an existing record.
+//
+// @param request - CreateBuildRecordByRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateBuildRecordByRecordResponse
 func (client *Client) CreateBuildRecordByRecordWithOptions(request *CreateBuildRecordByRecordRequest, runtime *util.RuntimeOptions) (_result *CreateBuildRecordByRecordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15246,15 +23087,33 @@ func (client *Client) CreateBuildRecordByRecordWithOptions(request *CreateBuildR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateBuildRecordByRecordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateBuildRecordByRecordResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateBuildRecordByRecordResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Creates an image building record based on an existing record.
+//
+// @param request - CreateBuildRecordByRecordRequest
+//
+// @return CreateBuildRecordByRecordResponse
 func (client *Client) CreateBuildRecordByRecord(request *CreateBuildRecordByRecordRequest) (_result *CreateBuildRecordByRecordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateBuildRecordByRecordResponse{}
@@ -15266,6 +23125,15 @@ func (client *Client) CreateBuildRecordByRecord(request *CreateBuildRecordByReco
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an image building record based on a rule.
+//
+// @param request - CreateBuildRecordByRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateBuildRecordByRuleResponse
 func (client *Client) CreateBuildRecordByRuleWithOptions(request *CreateBuildRecordByRuleRequest, runtime *util.RuntimeOptions) (_result *CreateBuildRecordByRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15298,15 +23166,33 @@ func (client *Client) CreateBuildRecordByRuleWithOptions(request *CreateBuildRec
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateBuildRecordByRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateBuildRecordByRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateBuildRecordByRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Creates an image building record based on a rule.
+//
+// @param request - CreateBuildRecordByRuleRequest
+//
+// @return CreateBuildRecordByRuleResponse
 func (client *Client) CreateBuildRecordByRule(request *CreateBuildRecordByRuleRequest) (_result *CreateBuildRecordByRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateBuildRecordByRuleResponse{}
@@ -15318,6 +23204,15 @@ func (client *Client) CreateBuildRecordByRule(request *CreateBuildRecordByRuleRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a delivery chain.
+//
+// @param request - CreateChainRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateChainResponse
 func (client *Client) CreateChainWithOptions(request *CreateChainRequest, runtime *util.RuntimeOptions) (_result *CreateChainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15366,15 +23261,33 @@ func (client *Client) CreateChainWithOptions(request *CreateChainRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateChainResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateChainResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateChainResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Creates a delivery chain.
+//
+// @param request - CreateChainRequest
+//
+// @return CreateChainResponse
 func (client *Client) CreateChain(request *CreateChainRequest) (_result *CreateChainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateChainResponse{}
@@ -15386,6 +23299,15 @@ func (client *Client) CreateChain(request *CreateChainRequest) (_result *CreateC
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a chart namespace in an instance.
+//
+// @param request - CreateChartNamespaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateChartNamespaceResponse
 func (client *Client) CreateChartNamespaceWithOptions(request *CreateChartNamespaceRequest, runtime *util.RuntimeOptions) (_result *CreateChartNamespaceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15422,15 +23344,33 @@ func (client *Client) CreateChartNamespaceWithOptions(request *CreateChartNamesp
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateChartNamespaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateChartNamespaceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateChartNamespaceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Creates a chart namespace in an instance.
+//
+// @param request - CreateChartNamespaceRequest
+//
+// @return CreateChartNamespaceResponse
 func (client *Client) CreateChartNamespace(request *CreateChartNamespaceRequest) (_result *CreateChartNamespaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateChartNamespaceResponse{}
@@ -15442,6 +23382,15 @@ func (client *Client) CreateChartNamespace(request *CreateChartNamespaceRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a chart repository.
+//
+// @param request - CreateChartRepositoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateChartRepositoryResponse
 func (client *Client) CreateChartRepositoryWithOptions(request *CreateChartRepositoryRequest, runtime *util.RuntimeOptions) (_result *CreateChartRepositoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15482,15 +23431,33 @@ func (client *Client) CreateChartRepositoryWithOptions(request *CreateChartRepos
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateChartRepositoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateChartRepositoryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateChartRepositoryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Creates a chart repository.
+//
+// @param request - CreateChartRepositoryRequest
+//
+// @return CreateChartRepositoryResponse
 func (client *Client) CreateChartRepository(request *CreateChartRepositoryRequest) (_result *CreateChartRepositoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateChartRepositoryResponse{}
@@ -15502,6 +23469,15 @@ func (client *Client) CreateChartRepository(request *CreateChartRepositoryReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a whitelist policy for the public endpoint of the instance.
+//
+// @param request - CreateInstanceEndpointAclPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateInstanceEndpointAclPolicyResponse
 func (client *Client) CreateInstanceEndpointAclPolicyWithOptions(request *CreateInstanceEndpointAclPolicyRequest, runtime *util.RuntimeOptions) (_result *CreateInstanceEndpointAclPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15542,15 +23518,33 @@ func (client *Client) CreateInstanceEndpointAclPolicyWithOptions(request *Create
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateInstanceEndpointAclPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateInstanceEndpointAclPolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateInstanceEndpointAclPolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Creates a whitelist policy for the public endpoint of the instance.
+//
+// @param request - CreateInstanceEndpointAclPolicyRequest
+//
+// @return CreateInstanceEndpointAclPolicyResponse
 func (client *Client) CreateInstanceEndpointAclPolicy(request *CreateInstanceEndpointAclPolicyRequest) (_result *CreateInstanceEndpointAclPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateInstanceEndpointAclPolicyResponse{}
@@ -15562,13 +23556,19 @@ func (client *Client) CreateInstanceEndpointAclPolicy(request *CreateInstanceEnd
 	return _result, _err
 }
 
-/**
- * A maximum of three VPCs can be associated with a Container Registry instance. If you want to associate more VPCs, contact Alibaba Cloud technical support.
- *
- * @param request CreateInstanceVpcEndpointLinkedVpcRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateInstanceVpcEndpointLinkedVpcResponse
- */
+// Summary:
+//
+// Associates a virtual private cloud (VPC) with a Container Registry instance.
+//
+// Description:
+//
+// The VPC quota must be purchased separately.
+//
+// @param request - CreateInstanceVpcEndpointLinkedVpcRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateInstanceVpcEndpointLinkedVpcResponse
 func (client *Client) CreateInstanceVpcEndpointLinkedVpcWithOptions(request *CreateInstanceVpcEndpointLinkedVpcRequest, runtime *util.RuntimeOptions) (_result *CreateInstanceVpcEndpointLinkedVpcResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15609,21 +23609,37 @@ func (client *Client) CreateInstanceVpcEndpointLinkedVpcWithOptions(request *Cre
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateInstanceVpcEndpointLinkedVpcResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateInstanceVpcEndpointLinkedVpcResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateInstanceVpcEndpointLinkedVpcResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
-/**
- * A maximum of three VPCs can be associated with a Container Registry instance. If you want to associate more VPCs, contact Alibaba Cloud technical support.
- *
- * @param request CreateInstanceVpcEndpointLinkedVpcRequest
- * @return CreateInstanceVpcEndpointLinkedVpcResponse
- */
+// Summary:
+//
+// Associates a virtual private cloud (VPC) with a Container Registry instance.
+//
+// Description:
+//
+// The VPC quota must be purchased separately.
+//
+// @param request - CreateInstanceVpcEndpointLinkedVpcRequest
+//
+// @return CreateInstanceVpcEndpointLinkedVpcResponse
 func (client *Client) CreateInstanceVpcEndpointLinkedVpc(request *CreateInstanceVpcEndpointLinkedVpcRequest) (_result *CreateInstanceVpcEndpointLinkedVpcResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateInstanceVpcEndpointLinkedVpcResponse{}
@@ -15635,6 +23651,15 @@ func (client *Client) CreateInstanceVpcEndpointLinkedVpc(request *CreateInstance
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a namespace of image repositories.
+//
+// @param request - CreateNamespaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateNamespaceResponse
 func (client *Client) CreateNamespaceWithOptions(request *CreateNamespaceRequest, runtime *util.RuntimeOptions) (_result *CreateNamespaceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15671,15 +23696,33 @@ func (client *Client) CreateNamespaceWithOptions(request *CreateNamespaceRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateNamespaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateNamespaceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateNamespaceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Creates a namespace of image repositories.
+//
+// @param request - CreateNamespaceRequest
+//
+// @return CreateNamespaceResponse
 func (client *Client) CreateNamespace(request *CreateNamespaceRequest) (_result *CreateNamespaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateNamespaceResponse{}
@@ -15691,6 +23734,15 @@ func (client *Client) CreateNamespace(request *CreateNamespaceRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an image building rule for a repository.
+//
+// @param request - CreateRepoBuildRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRepoBuildRuleResponse
 func (client *Client) CreateRepoBuildRuleWithOptions(request *CreateRepoBuildRuleRequest, runtime *util.RuntimeOptions) (_result *CreateRepoBuildRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15747,15 +23799,33 @@ func (client *Client) CreateRepoBuildRuleWithOptions(request *CreateRepoBuildRul
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateRepoBuildRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateRepoBuildRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateRepoBuildRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Creates an image building rule for a repository.
+//
+// @param request - CreateRepoBuildRuleRequest
+//
+// @return CreateRepoBuildRuleResponse
 func (client *Client) CreateRepoBuildRule(request *CreateRepoBuildRuleRequest) (_result *CreateRepoBuildRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateRepoBuildRuleResponse{}
@@ -15767,6 +23837,15 @@ func (client *Client) CreateRepoBuildRule(request *CreateRepoBuildRuleRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Binds a source code repository to an image repository.
+//
+// @param request - CreateRepoSourceCodeRepoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRepoSourceCodeRepoResponse
 func (client *Client) CreateRepoSourceCodeRepoWithOptions(request *CreateRepoSourceCodeRepoRequest, runtime *util.RuntimeOptions) (_result *CreateRepoSourceCodeRepoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15819,15 +23898,33 @@ func (client *Client) CreateRepoSourceCodeRepoWithOptions(request *CreateRepoSou
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateRepoSourceCodeRepoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateRepoSourceCodeRepoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateRepoSourceCodeRepoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Binds a source code repository to an image repository.
+//
+// @param request - CreateRepoSourceCodeRepoRequest
+//
+// @return CreateRepoSourceCodeRepoResponse
 func (client *Client) CreateRepoSourceCodeRepo(request *CreateRepoSourceCodeRepoRequest) (_result *CreateRepoSourceCodeRepoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateRepoSourceCodeRepoResponse{}
@@ -15839,6 +23936,15 @@ func (client *Client) CreateRepoSourceCodeRepo(request *CreateRepoSourceCodeRepo
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an image synchronization rule for an image repository.
+//
+// @param request - CreateRepoSyncRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRepoSyncRuleResponse
 func (client *Client) CreateRepoSyncRuleWithOptions(request *CreateRepoSyncRuleRequest, runtime *util.RuntimeOptions) (_result *CreateRepoSyncRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15855,6 +23961,10 @@ func (client *Client) CreateRepoSyncRuleWithOptions(request *CreateRepoSyncRuleR
 
 	if !tea.BoolValue(util.IsUnset(request.RepoName)) {
 		query["RepoName"] = request.RepoName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoNameFilter)) {
+		query["RepoNameFilter"] = request.RepoNameFilter
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SyncRuleName)) {
@@ -15907,15 +24017,33 @@ func (client *Client) CreateRepoSyncRuleWithOptions(request *CreateRepoSyncRuleR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateRepoSyncRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateRepoSyncRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateRepoSyncRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Creates an image synchronization rule for an image repository.
+//
+// @param request - CreateRepoSyncRuleRequest
+//
+// @return CreateRepoSyncRuleResponse
 func (client *Client) CreateRepoSyncRule(request *CreateRepoSyncRuleRequest) (_result *CreateRepoSyncRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateRepoSyncRuleResponse{}
@@ -15927,6 +24055,11 @@ func (client *Client) CreateRepoSyncRule(request *CreateRepoSyncRuleRequest) (_r
 	return _result, _err
 }
 
+// @param request - CreateRepoSyncTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRepoSyncTaskResponse
 func (client *Client) CreateRepoSyncTaskWithOptions(request *CreateRepoSyncTaskRequest, runtime *util.RuntimeOptions) (_result *CreateRepoSyncTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15987,15 +24120,29 @@ func (client *Client) CreateRepoSyncTaskWithOptions(request *CreateRepoSyncTaskR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateRepoSyncTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateRepoSyncTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateRepoSyncTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - CreateRepoSyncTaskRequest
+//
+// @return CreateRepoSyncTaskResponse
 func (client *Client) CreateRepoSyncTask(request *CreateRepoSyncTaskRequest) (_result *CreateRepoSyncTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateRepoSyncTaskResponse{}
@@ -16007,6 +24154,15 @@ func (client *Client) CreateRepoSyncTask(request *CreateRepoSyncTaskRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an image replication task based on a manual replication rule.
+//
+// @param request - CreateRepoSyncTaskByRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRepoSyncTaskByRuleResponse
 func (client *Client) CreateRepoSyncTaskByRuleWithOptions(request *CreateRepoSyncTaskByRuleRequest, runtime *util.RuntimeOptions) (_result *CreateRepoSyncTaskByRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16043,15 +24199,33 @@ func (client *Client) CreateRepoSyncTaskByRuleWithOptions(request *CreateRepoSyn
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateRepoSyncTaskByRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateRepoSyncTaskByRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateRepoSyncTaskByRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Creates an image replication task based on a manual replication rule.
+//
+// @param request - CreateRepoSyncTaskByRuleRequest
+//
+// @return CreateRepoSyncTaskByRuleResponse
 func (client *Client) CreateRepoSyncTaskByRule(request *CreateRepoSyncTaskByRuleRequest) (_result *CreateRepoSyncTaskByRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateRepoSyncTaskByRuleResponse{}
@@ -16063,6 +24237,15 @@ func (client *Client) CreateRepoSyncTaskByRule(request *CreateRepoSyncTaskByRule
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an image tag based on an existing image tag in an image repository.
+//
+// @param request - CreateRepoTagRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRepoTagResponse
 func (client *Client) CreateRepoTagWithOptions(request *CreateRepoTagRequest, runtime *util.RuntimeOptions) (_result *CreateRepoTagResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16103,15 +24286,33 @@ func (client *Client) CreateRepoTagWithOptions(request *CreateRepoTagRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateRepoTagResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateRepoTagResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateRepoTagResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Creates an image tag based on an existing image tag in an image repository.
+//
+// @param request - CreateRepoTagRequest
+//
+// @return CreateRepoTagResponse
 func (client *Client) CreateRepoTag(request *CreateRepoTagRequest) (_result *CreateRepoTagResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateRepoTagResponse{}
@@ -16123,6 +24324,11 @@ func (client *Client) CreateRepoTag(request *CreateRepoTagRequest) (_result *Cre
 	return _result, _err
 }
 
+// @param request - CreateRepoTagScanTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRepoTagScanTaskResponse
 func (client *Client) CreateRepoTagScanTaskWithOptions(request *CreateRepoTagScanTaskRequest, runtime *util.RuntimeOptions) (_result *CreateRepoTagScanTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16163,15 +24369,29 @@ func (client *Client) CreateRepoTagScanTaskWithOptions(request *CreateRepoTagSca
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateRepoTagScanTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateRepoTagScanTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateRepoTagScanTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - CreateRepoTagScanTaskRequest
+//
+// @return CreateRepoTagScanTaskResponse
 func (client *Client) CreateRepoTagScanTask(request *CreateRepoTagScanTaskRequest) (_result *CreateRepoTagScanTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateRepoTagScanTaskResponse{}
@@ -16183,6 +24403,15 @@ func (client *Client) CreateRepoTagScanTask(request *CreateRepoTagScanTaskReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a trigger for a repository.
+//
+// @param request - CreateRepoTriggerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRepoTriggerResponse
 func (client *Client) CreateRepoTriggerWithOptions(request *CreateRepoTriggerRequest, runtime *util.RuntimeOptions) (_result *CreateRepoTriggerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16227,15 +24456,33 @@ func (client *Client) CreateRepoTriggerWithOptions(request *CreateRepoTriggerReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateRepoTriggerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateRepoTriggerResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateRepoTriggerResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Creates a trigger for a repository.
+//
+// @param request - CreateRepoTriggerRequest
+//
+// @return CreateRepoTriggerResponse
 func (client *Client) CreateRepoTrigger(request *CreateRepoTriggerRequest) (_result *CreateRepoTriggerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateRepoTriggerResponse{}
@@ -16247,6 +24494,15 @@ func (client *Client) CreateRepoTrigger(request *CreateRepoTriggerRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an image repository.
+//
+// @param request - CreateRepositoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRepositoryResponse
 func (client *Client) CreateRepositoryWithOptions(request *CreateRepositoryRequest, runtime *util.RuntimeOptions) (_result *CreateRepositoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16295,15 +24551,33 @@ func (client *Client) CreateRepositoryWithOptions(request *CreateRepositoryReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateRepositoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateRepositoryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateRepositoryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Creates an image repository.
+//
+// @param request - CreateRepositoryRequest
+//
+// @return CreateRepositoryResponse
 func (client *Client) CreateRepository(request *CreateRepositoryRequest) (_result *CreateRepositoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateRepositoryResponse{}
@@ -16315,6 +24589,15 @@ func (client *Client) CreateRepository(request *CreateRepositoryRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an artifact lifecycle management rule.
+//
+// @param request - DeleteArtifactLifecycleRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteArtifactLifecycleRuleResponse
 func (client *Client) DeleteArtifactLifecycleRuleWithOptions(request *DeleteArtifactLifecycleRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteArtifactLifecycleRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16343,15 +24626,33 @@ func (client *Client) DeleteArtifactLifecycleRuleWithOptions(request *DeleteArti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteArtifactLifecycleRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteArtifactLifecycleRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteArtifactLifecycleRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Deletes an artifact lifecycle management rule.
+//
+// @param request - DeleteArtifactLifecycleRuleRequest
+//
+// @return DeleteArtifactLifecycleRuleResponse
 func (client *Client) DeleteArtifactLifecycleRule(request *DeleteArtifactLifecycleRuleRequest) (_result *DeleteArtifactLifecycleRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteArtifactLifecycleRuleResponse{}
@@ -16363,6 +24664,90 @@ func (client *Client) DeleteArtifactLifecycleRule(request *DeleteArtifactLifecyc
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an artifact subscription rule.
+//
+// @param request - DeleteArtifactSubscriptionRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteArtifactSubscriptionRuleResponse
+func (client *Client) DeleteArtifactSubscriptionRuleWithOptions(request *DeleteArtifactSubscriptionRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteArtifactSubscriptionRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteArtifactSubscriptionRule"),
+		Version:     tea.String("2018-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteArtifactSubscriptionRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteArtifactSubscriptionRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Deletes an artifact subscription rule.
+//
+// @param request - DeleteArtifactSubscriptionRuleRequest
+//
+// @return DeleteArtifactSubscriptionRuleResponse
+func (client *Client) DeleteArtifactSubscriptionRule(request *DeleteArtifactSubscriptionRuleRequest) (_result *DeleteArtifactSubscriptionRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteArtifactSubscriptionRuleResponse{}
+	_body, _err := client.DeleteArtifactSubscriptionRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a delivery pipeline.
+//
+// @param request - DeleteChainRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteChainResponse
 func (client *Client) DeleteChainWithOptions(request *DeleteChainRequest, runtime *util.RuntimeOptions) (_result *DeleteChainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16391,15 +24776,33 @@ func (client *Client) DeleteChainWithOptions(request *DeleteChainRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteChainResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteChainResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteChainResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Deletes a delivery pipeline.
+//
+// @param request - DeleteChainRequest
+//
+// @return DeleteChainResponse
 func (client *Client) DeleteChain(request *DeleteChainRequest) (_result *DeleteChainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteChainResponse{}
@@ -16411,13 +24814,19 @@ func (client *Client) DeleteChain(request *DeleteChainRequest) (_result *DeleteC
 	return _result, _err
 }
 
-/**
- * >  If you delete a chart namespace, all repositories in the namespace and the charts in all repositories are deleted.
- *
- * @param request DeleteChartNamespaceRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteChartNamespaceResponse
- */
+// Summary:
+//
+// Deletes a chart namespace from an instance.
+//
+// Description:
+//
+// >  If you delete a chart namespace, all repositories in the namespace and the charts in all repositories are deleted.
+//
+// @param request - DeleteChartNamespaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteChartNamespaceResponse
 func (client *Client) DeleteChartNamespaceWithOptions(request *DeleteChartNamespaceRequest, runtime *util.RuntimeOptions) (_result *DeleteChartNamespaceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16446,21 +24855,37 @@ func (client *Client) DeleteChartNamespaceWithOptions(request *DeleteChartNamesp
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteChartNamespaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteChartNamespaceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteChartNamespaceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
-/**
- * >  If you delete a chart namespace, all repositories in the namespace and the charts in all repositories are deleted.
- *
- * @param request DeleteChartNamespaceRequest
- * @return DeleteChartNamespaceResponse
- */
+// Summary:
+//
+// Deletes a chart namespace from an instance.
+//
+// Description:
+//
+// >  If you delete a chart namespace, all repositories in the namespace and the charts in all repositories are deleted.
+//
+// @param request - DeleteChartNamespaceRequest
+//
+// @return DeleteChartNamespaceResponse
 func (client *Client) DeleteChartNamespace(request *DeleteChartNamespaceRequest) (_result *DeleteChartNamespaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteChartNamespaceResponse{}
@@ -16472,6 +24897,15 @@ func (client *Client) DeleteChartNamespace(request *DeleteChartNamespaceRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a chart version from a chart repository.
+//
+// @param request - DeleteChartReleaseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteChartReleaseResponse
 func (client *Client) DeleteChartReleaseWithOptions(request *DeleteChartReleaseRequest, runtime *util.RuntimeOptions) (_result *DeleteChartReleaseResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16512,15 +24946,33 @@ func (client *Client) DeleteChartReleaseWithOptions(request *DeleteChartReleaseR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteChartReleaseResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteChartReleaseResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteChartReleaseResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Deletes a chart version from a chart repository.
+//
+// @param request - DeleteChartReleaseRequest
+//
+// @return DeleteChartReleaseResponse
 func (client *Client) DeleteChartRelease(request *DeleteChartReleaseRequest) (_result *DeleteChartReleaseResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteChartReleaseResponse{}
@@ -16532,6 +24984,15 @@ func (client *Client) DeleteChartRelease(request *DeleteChartReleaseRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a chart repository from an instance.
+//
+// @param request - DeleteChartRepositoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteChartRepositoryResponse
 func (client *Client) DeleteChartRepositoryWithOptions(request *DeleteChartRepositoryRequest, runtime *util.RuntimeOptions) (_result *DeleteChartRepositoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16564,15 +25025,33 @@ func (client *Client) DeleteChartRepositoryWithOptions(request *DeleteChartRepos
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteChartRepositoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteChartRepositoryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteChartRepositoryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Deletes a chart repository from an instance.
+//
+// @param request - DeleteChartRepositoryRequest
+//
+// @return DeleteChartRepositoryResponse
 func (client *Client) DeleteChartRepository(request *DeleteChartRepositoryRequest) (_result *DeleteChartRepositoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteChartRepositoryResponse{}
@@ -16584,6 +25063,15 @@ func (client *Client) DeleteChartRepository(request *DeleteChartRepositoryReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an event notification rule.
+//
+// @param request - DeleteEventCenterRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteEventCenterRuleResponse
 func (client *Client) DeleteEventCenterRuleWithOptions(request *DeleteEventCenterRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteEventCenterRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16612,15 +25100,33 @@ func (client *Client) DeleteEventCenterRuleWithOptions(request *DeleteEventCente
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteEventCenterRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteEventCenterRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteEventCenterRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Deletes an event notification rule.
+//
+// @param request - DeleteEventCenterRuleRequest
+//
+// @return DeleteEventCenterRuleResponse
 func (client *Client) DeleteEventCenterRule(request *DeleteEventCenterRuleRequest) (_result *DeleteEventCenterRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteEventCenterRuleResponse{}
@@ -16632,6 +25138,15 @@ func (client *Client) DeleteEventCenterRule(request *DeleteEventCenterRuleReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a whitelist policy for the public endpoint of an instance.
+//
+// @param request - DeleteInstanceEndpointAclPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteInstanceEndpointAclPolicyResponse
 func (client *Client) DeleteInstanceEndpointAclPolicyWithOptions(request *DeleteInstanceEndpointAclPolicyRequest, runtime *util.RuntimeOptions) (_result *DeleteInstanceEndpointAclPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16668,15 +25183,33 @@ func (client *Client) DeleteInstanceEndpointAclPolicyWithOptions(request *Delete
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteInstanceEndpointAclPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteInstanceEndpointAclPolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteInstanceEndpointAclPolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Deletes a whitelist policy for the public endpoint of an instance.
+//
+// @param request - DeleteInstanceEndpointAclPolicyRequest
+//
+// @return DeleteInstanceEndpointAclPolicyResponse
 func (client *Client) DeleteInstanceEndpointAclPolicy(request *DeleteInstanceEndpointAclPolicyRequest) (_result *DeleteInstanceEndpointAclPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteInstanceEndpointAclPolicyResponse{}
@@ -16688,6 +25221,15 @@ func (client *Client) DeleteInstanceEndpointAclPolicy(request *DeleteInstanceEnd
 	return _result, _err
 }
 
+// Summary:
+//
+// Disassociates a virtual private cloud (VPC) from an instance.
+//
+// @param request - DeleteInstanceVpcEndpointLinkedVpcRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteInstanceVpcEndpointLinkedVpcResponse
 func (client *Client) DeleteInstanceVpcEndpointLinkedVpcWithOptions(request *DeleteInstanceVpcEndpointLinkedVpcRequest, runtime *util.RuntimeOptions) (_result *DeleteInstanceVpcEndpointLinkedVpcResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16724,15 +25266,33 @@ func (client *Client) DeleteInstanceVpcEndpointLinkedVpcWithOptions(request *Del
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteInstanceVpcEndpointLinkedVpcResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteInstanceVpcEndpointLinkedVpcResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteInstanceVpcEndpointLinkedVpcResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Disassociates a virtual private cloud (VPC) from an instance.
+//
+// @param request - DeleteInstanceVpcEndpointLinkedVpcRequest
+//
+// @return DeleteInstanceVpcEndpointLinkedVpcResponse
 func (client *Client) DeleteInstanceVpcEndpointLinkedVpc(request *DeleteInstanceVpcEndpointLinkedVpcRequest) (_result *DeleteInstanceVpcEndpointLinkedVpcResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteInstanceVpcEndpointLinkedVpcResponse{}
@@ -16744,13 +25304,19 @@ func (client *Client) DeleteInstanceVpcEndpointLinkedVpc(request *DeleteInstance
 	return _result, _err
 }
 
-/**
- * > After you delete a namespace, all repositories in the namespace and all images in these repositories are deleted as well.
- *
- * @param request DeleteNamespaceRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteNamespaceResponse
- */
+// Summary:
+//
+// Deletes a namespace.
+//
+// Description:
+//
+// > After you delete a namespace, all repositories in the namespace and all images in these repositories are deleted as well.
+//
+// @param request - DeleteNamespaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteNamespaceResponse
 func (client *Client) DeleteNamespaceWithOptions(request *DeleteNamespaceRequest, runtime *util.RuntimeOptions) (_result *DeleteNamespaceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16779,21 +25345,37 @@ func (client *Client) DeleteNamespaceWithOptions(request *DeleteNamespaceRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteNamespaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteNamespaceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteNamespaceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
-/**
- * > After you delete a namespace, all repositories in the namespace and all images in these repositories are deleted as well.
- *
- * @param request DeleteNamespaceRequest
- * @return DeleteNamespaceResponse
- */
+// Summary:
+//
+// Deletes a namespace.
+//
+// Description:
+//
+// > After you delete a namespace, all repositories in the namespace and all images in these repositories are deleted as well.
+//
+// @param request - DeleteNamespaceRequest
+//
+// @return DeleteNamespaceResponse
 func (client *Client) DeleteNamespace(request *DeleteNamespaceRequest) (_result *DeleteNamespaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteNamespaceResponse{}
@@ -16805,6 +25387,15 @@ func (client *Client) DeleteNamespace(request *DeleteNamespaceRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an image building rule of a repository.
+//
+// @param request - DeleteRepoBuildRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteRepoBuildRuleResponse
 func (client *Client) DeleteRepoBuildRuleWithOptions(request *DeleteRepoBuildRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteRepoBuildRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16837,15 +25428,33 @@ func (client *Client) DeleteRepoBuildRuleWithOptions(request *DeleteRepoBuildRul
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteRepoBuildRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteRepoBuildRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteRepoBuildRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Deletes an image building rule of a repository.
+//
+// @param request - DeleteRepoBuildRuleRequest
+//
+// @return DeleteRepoBuildRuleResponse
 func (client *Client) DeleteRepoBuildRule(request *DeleteRepoBuildRuleRequest) (_result *DeleteRepoBuildRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteRepoBuildRuleResponse{}
@@ -16857,6 +25466,15 @@ func (client *Client) DeleteRepoBuildRule(request *DeleteRepoBuildRuleRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an image replication rule of an image repository.
+//
+// @param request - DeleteRepoSyncRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteRepoSyncRuleResponse
 func (client *Client) DeleteRepoSyncRuleWithOptions(request *DeleteRepoSyncRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteRepoSyncRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16885,15 +25503,33 @@ func (client *Client) DeleteRepoSyncRuleWithOptions(request *DeleteRepoSyncRuleR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteRepoSyncRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteRepoSyncRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteRepoSyncRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Deletes an image replication rule of an image repository.
+//
+// @param request - DeleteRepoSyncRuleRequest
+//
+// @return DeleteRepoSyncRuleResponse
 func (client *Client) DeleteRepoSyncRule(request *DeleteRepoSyncRuleRequest) (_result *DeleteRepoSyncRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteRepoSyncRuleResponse{}
@@ -16905,6 +25541,15 @@ func (client *Client) DeleteRepoSyncRule(request *DeleteRepoSyncRuleRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an image tag.
+//
+// @param request - DeleteRepoTagRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteRepoTagResponse
 func (client *Client) DeleteRepoTagWithOptions(request *DeleteRepoTagRequest, runtime *util.RuntimeOptions) (_result *DeleteRepoTagResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16937,15 +25582,33 @@ func (client *Client) DeleteRepoTagWithOptions(request *DeleteRepoTagRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteRepoTagResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteRepoTagResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteRepoTagResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Deletes an image tag.
+//
+// @param request - DeleteRepoTagRequest
+//
+// @return DeleteRepoTagResponse
 func (client *Client) DeleteRepoTag(request *DeleteRepoTagRequest) (_result *DeleteRepoTagResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteRepoTagResponse{}
@@ -16957,6 +25620,15 @@ func (client *Client) DeleteRepoTag(request *DeleteRepoTagRequest) (_result *Del
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a trigger of an image repository.
+//
+// @param request - DeleteRepoTriggerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteRepoTriggerResponse
 func (client *Client) DeleteRepoTriggerWithOptions(request *DeleteRepoTriggerRequest, runtime *util.RuntimeOptions) (_result *DeleteRepoTriggerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16989,15 +25661,33 @@ func (client *Client) DeleteRepoTriggerWithOptions(request *DeleteRepoTriggerReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteRepoTriggerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteRepoTriggerResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteRepoTriggerResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Deletes a trigger of an image repository.
+//
+// @param request - DeleteRepoTriggerRequest
+//
+// @return DeleteRepoTriggerResponse
 func (client *Client) DeleteRepoTrigger(request *DeleteRepoTriggerRequest) (_result *DeleteRepoTriggerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteRepoTriggerResponse{}
@@ -17009,13 +25699,19 @@ func (client *Client) DeleteRepoTrigger(request *DeleteRepoTriggerRequest) (_res
 	return _result, _err
 }
 
-/**
- * If you delete a repository, all images in the repository are also deleted.
- *
- * @param request DeleteRepositoryRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteRepositoryResponse
- */
+// Summary:
+//
+// Deletes an image repository.
+//
+// Description:
+//
+// If you delete a repository, all images in the repository are also deleted.
+//
+// @param request - DeleteRepositoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteRepositoryResponse
 func (client *Client) DeleteRepositoryWithOptions(request *DeleteRepositoryRequest, runtime *util.RuntimeOptions) (_result *DeleteRepositoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17052,21 +25748,37 @@ func (client *Client) DeleteRepositoryWithOptions(request *DeleteRepositoryReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteRepositoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteRepositoryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteRepositoryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
-/**
- * If you delete a repository, all images in the repository are also deleted.
- *
- * @param request DeleteRepositoryRequest
- * @return DeleteRepositoryResponse
- */
+// Summary:
+//
+// Deletes an image repository.
+//
+// Description:
+//
+// If you delete a repository, all images in the repository are also deleted.
+//
+// @param request - DeleteRepositoryRequest
+//
+// @return DeleteRepositoryResponse
 func (client *Client) DeleteRepository(request *DeleteRepositoryRequest) (_result *DeleteRepositoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteRepositoryResponse{}
@@ -17078,6 +25790,11 @@ func (client *Client) DeleteRepository(request *DeleteRepositoryRequest) (_resul
 	return _result, _err
 }
 
+// @param request - GetArtifactBuildRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetArtifactBuildRuleResponse
 func (client *Client) GetArtifactBuildRuleWithOptions(request *GetArtifactBuildRuleRequest, runtime *util.RuntimeOptions) (_result *GetArtifactBuildRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17098,15 +25815,29 @@ func (client *Client) GetArtifactBuildRuleWithOptions(request *GetArtifactBuildR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetArtifactBuildRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetArtifactBuildRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetArtifactBuildRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - GetArtifactBuildRuleRequest
+//
+// @return GetArtifactBuildRuleResponse
 func (client *Client) GetArtifactBuildRule(request *GetArtifactBuildRuleRequest) (_result *GetArtifactBuildRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetArtifactBuildRuleResponse{}
@@ -17118,6 +25849,15 @@ func (client *Client) GetArtifactBuildRule(request *GetArtifactBuildRuleRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of an artifact building task.
+//
+// @param request - GetArtifactBuildTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetArtifactBuildTaskResponse
 func (client *Client) GetArtifactBuildTaskWithOptions(request *GetArtifactBuildTaskRequest, runtime *util.RuntimeOptions) (_result *GetArtifactBuildTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17138,15 +25878,33 @@ func (client *Client) GetArtifactBuildTaskWithOptions(request *GetArtifactBuildT
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetArtifactBuildTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetArtifactBuildTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetArtifactBuildTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the details of an artifact building task.
+//
+// @param request - GetArtifactBuildTaskRequest
+//
+// @return GetArtifactBuildTaskResponse
 func (client *Client) GetArtifactBuildTask(request *GetArtifactBuildTaskRequest) (_result *GetArtifactBuildTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetArtifactBuildTaskResponse{}
@@ -17158,6 +25916,15 @@ func (client *Client) GetArtifactBuildTask(request *GetArtifactBuildTaskRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the lifecycle management rules of an artifact.
+//
+// @param request - GetArtifactLifecycleRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetArtifactLifecycleRuleResponse
 func (client *Client) GetArtifactLifecycleRuleWithOptions(request *GetArtifactLifecycleRuleRequest, runtime *util.RuntimeOptions) (_result *GetArtifactLifecycleRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17178,15 +25945,33 @@ func (client *Client) GetArtifactLifecycleRuleWithOptions(request *GetArtifactLi
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetArtifactLifecycleRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetArtifactLifecycleRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetArtifactLifecycleRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the lifecycle management rules of an artifact.
+//
+// @param request - GetArtifactLifecycleRuleRequest
+//
+// @return GetArtifactLifecycleRuleResponse
 func (client *Client) GetArtifactLifecycleRule(request *GetArtifactLifecycleRuleRequest) (_result *GetArtifactLifecycleRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetArtifactLifecycleRuleResponse{}
@@ -17198,13 +25983,220 @@ func (client *Client) GetArtifactLifecycleRule(request *GetArtifactLifecycleRule
 	return _result, _err
 }
 
-/**
- * The ID of the Container Registry instance.
- *
- * @param request GetAuthorizationTokenRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetAuthorizationTokenResponse
- */
+// Summary:
+//
+// Queries the information about an artifact subscription rule.
+//
+// @param request - GetArtifactSubscriptionRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetArtifactSubscriptionRuleResponse
+func (client *Client) GetArtifactSubscriptionRuleWithOptions(request *GetArtifactSubscriptionRuleRequest, runtime *util.RuntimeOptions) (_result *GetArtifactSubscriptionRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetArtifactSubscriptionRule"),
+		Version:     tea.String("2018-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetArtifactSubscriptionRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetArtifactSubscriptionRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Queries the information about an artifact subscription rule.
+//
+// @param request - GetArtifactSubscriptionRuleRequest
+//
+// @return GetArtifactSubscriptionRuleResponse
+func (client *Client) GetArtifactSubscriptionRule(request *GetArtifactSubscriptionRuleRequest) (_result *GetArtifactSubscriptionRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetArtifactSubscriptionRuleResponse{}
+	_body, _err := client.GetArtifactSubscriptionRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries an artifact subscription task.
+//
+// @param request - GetArtifactSubscriptionTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetArtifactSubscriptionTaskResponse
+func (client *Client) GetArtifactSubscriptionTaskWithOptions(request *GetArtifactSubscriptionTaskRequest, runtime *util.RuntimeOptions) (_result *GetArtifactSubscriptionTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetArtifactSubscriptionTask"),
+		Version:     tea.String("2018-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetArtifactSubscriptionTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetArtifactSubscriptionTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Queries an artifact subscription task.
+//
+// @param request - GetArtifactSubscriptionTaskRequest
+//
+// @return GetArtifactSubscriptionTaskResponse
+func (client *Client) GetArtifactSubscriptionTask(request *GetArtifactSubscriptionTaskRequest) (_result *GetArtifactSubscriptionTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetArtifactSubscriptionTaskResponse{}
+	_body, _err := client.GetArtifactSubscriptionTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of an artifact subscription task.
+//
+// @param request - GetArtifactSubscriptionTaskResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetArtifactSubscriptionTaskResultResponse
+func (client *Client) GetArtifactSubscriptionTaskResultWithOptions(request *GetArtifactSubscriptionTaskResultRequest, runtime *util.RuntimeOptions) (_result *GetArtifactSubscriptionTaskResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetArtifactSubscriptionTaskResult"),
+		Version:     tea.String("2018-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetArtifactSubscriptionTaskResultResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetArtifactSubscriptionTaskResultResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Queries the details of an artifact subscription task.
+//
+// @param request - GetArtifactSubscriptionTaskResultRequest
+//
+// @return GetArtifactSubscriptionTaskResultResponse
+func (client *Client) GetArtifactSubscriptionTaskResult(request *GetArtifactSubscriptionTaskResultRequest) (_result *GetArtifactSubscriptionTaskResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetArtifactSubscriptionTaskResultResponse{}
+	_body, _err := client.GetArtifactSubscriptionTaskResultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a temporary username and a token that you can use to log on to a Container Registry instance.
+//
+// Description:
+//
+// The ID of the Container Registry instance.
+//
+// @param request - GetAuthorizationTokenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAuthorizationTokenResponse
 func (client *Client) GetAuthorizationTokenWithOptions(request *GetAuthorizationTokenRequest, runtime *util.RuntimeOptions) (_result *GetAuthorizationTokenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17229,21 +26221,37 @@ func (client *Client) GetAuthorizationTokenWithOptions(request *GetAuthorization
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetAuthorizationTokenResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetAuthorizationTokenResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetAuthorizationTokenResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
-/**
- * The ID of the Container Registry instance.
- *
- * @param request GetAuthorizationTokenRequest
- * @return GetAuthorizationTokenResponse
- */
+// Summary:
+//
+// Queries a temporary username and a token that you can use to log on to a Container Registry instance.
+//
+// Description:
+//
+// The ID of the Container Registry instance.
+//
+// @param request - GetAuthorizationTokenRequest
+//
+// @return GetAuthorizationTokenResponse
 func (client *Client) GetAuthorizationToken(request *GetAuthorizationTokenRequest) (_result *GetAuthorizationTokenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAuthorizationTokenResponse{}
@@ -17255,6 +26263,11 @@ func (client *Client) GetAuthorizationToken(request *GetAuthorizationTokenReques
 	return _result, _err
 }
 
+// @param request - GetChainRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetChainResponse
 func (client *Client) GetChainWithOptions(request *GetChainRequest, runtime *util.RuntimeOptions) (_result *GetChainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17283,15 +26296,29 @@ func (client *Client) GetChainWithOptions(request *GetChainRequest, runtime *uti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetChainResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetChainResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetChainResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - GetChainRequest
+//
+// @return GetChainResponse
 func (client *Client) GetChain(request *GetChainRequest) (_result *GetChainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetChainResponse{}
@@ -17303,6 +26330,15 @@ func (client *Client) GetChain(request *GetChainRequest) (_result *GetChainRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a chart namespace in an instance.
+//
+// @param request - GetChartNamespaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetChartNamespaceResponse
 func (client *Client) GetChartNamespaceWithOptions(request *GetChartNamespaceRequest, runtime *util.RuntimeOptions) (_result *GetChartNamespaceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17331,15 +26367,33 @@ func (client *Client) GetChartNamespaceWithOptions(request *GetChartNamespaceReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetChartNamespaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetChartNamespaceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetChartNamespaceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries a chart namespace in an instance.
+//
+// @param request - GetChartNamespaceRequest
+//
+// @return GetChartNamespaceResponse
 func (client *Client) GetChartNamespace(request *GetChartNamespaceRequest) (_result *GetChartNamespaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetChartNamespaceResponse{}
@@ -17351,6 +26405,15 @@ func (client *Client) GetChartNamespace(request *GetChartNamespaceRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a chart repository.
+//
+// @param request - GetChartRepositoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetChartRepositoryResponse
 func (client *Client) GetChartRepositoryWithOptions(request *GetChartRepositoryRequest, runtime *util.RuntimeOptions) (_result *GetChartRepositoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17383,15 +26446,33 @@ func (client *Client) GetChartRepositoryWithOptions(request *GetChartRepositoryR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetChartRepositoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetChartRepositoryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetChartRepositoryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the information about a chart repository.
+//
+// @param request - GetChartRepositoryRequest
+//
+// @return GetChartRepositoryResponse
 func (client *Client) GetChartRepository(request *GetChartRepositoryRequest) (_result *GetChartRepositoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetChartRepositoryResponse{}
@@ -17403,6 +26484,15 @@ func (client *Client) GetChartRepository(request *GetChartRepositoryRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// The ID of the resource group to which the instance belongs.
+//
+// @param request - GetInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetInstanceResponse
 func (client *Client) GetInstanceWithOptions(request *GetInstanceRequest, runtime *util.RuntimeOptions) (_result *GetInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17427,15 +26517,33 @@ func (client *Client) GetInstanceWithOptions(request *GetInstanceRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// The ID of the resource group to which the instance belongs.
+//
+// @param request - GetInstanceRequest
+//
+// @return GetInstanceResponse
 func (client *Client) GetInstance(request *GetInstanceRequest) (_result *GetInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetInstanceResponse{}
@@ -17447,6 +26555,15 @@ func (client *Client) GetInstance(request *GetInstanceRequest) (_result *GetInst
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the number of instances.
+//
+// @param request - GetInstanceCountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetInstanceCountResponse
 func (client *Client) GetInstanceCountWithOptions(runtime *util.RuntimeOptions) (_result *GetInstanceCountResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -17460,15 +26577,31 @@ func (client *Client) GetInstanceCountWithOptions(runtime *util.RuntimeOptions) 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetInstanceCountResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetInstanceCountResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetInstanceCountResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the number of instances.
+//
+// @return GetInstanceCountResponse
 func (client *Client) GetInstanceCount() (_result *GetInstanceCountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetInstanceCountResponse{}
@@ -17480,6 +26613,15 @@ func (client *Client) GetInstanceCount() (_result *GetInstanceCountResponse, _er
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the endpoint of an instance.
+//
+// @param request - GetInstanceEndpointRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetInstanceEndpointResponse
 func (client *Client) GetInstanceEndpointWithOptions(request *GetInstanceEndpointRequest, runtime *util.RuntimeOptions) (_result *GetInstanceEndpointResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17512,15 +26654,33 @@ func (client *Client) GetInstanceEndpointWithOptions(request *GetInstanceEndpoin
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetInstanceEndpointResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetInstanceEndpointResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetInstanceEndpointResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the endpoint of an instance.
+//
+// @param request - GetInstanceEndpointRequest
+//
+// @return GetInstanceEndpointResponse
 func (client *Client) GetInstanceEndpoint(request *GetInstanceEndpointRequest) (_result *GetInstanceEndpointResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetInstanceEndpointResponse{}
@@ -17532,6 +26692,15 @@ func (client *Client) GetInstanceEndpoint(request *GetInstanceEndpointRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the quota usage of an instance.
+//
+// @param request - GetInstanceUsageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetInstanceUsageResponse
 func (client *Client) GetInstanceUsageWithOptions(request *GetInstanceUsageRequest, runtime *util.RuntimeOptions) (_result *GetInstanceUsageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17556,15 +26725,33 @@ func (client *Client) GetInstanceUsageWithOptions(request *GetInstanceUsageReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetInstanceUsageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetInstanceUsageResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetInstanceUsageResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the quota usage of an instance.
+//
+// @param request - GetInstanceUsageRequest
+//
+// @return GetInstanceUsageResponse
 func (client *Client) GetInstanceUsage(request *GetInstanceUsageRequest) (_result *GetInstanceUsageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetInstanceUsageResponse{}
@@ -17576,6 +26763,15 @@ func (client *Client) GetInstanceUsage(request *GetInstanceUsageRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the endpoints of the virtual private clouds (VPCs) in which a Container Registry instance is deployed.
+//
+// @param request - GetInstanceVpcEndpointRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetInstanceVpcEndpointResponse
 func (client *Client) GetInstanceVpcEndpointWithOptions(request *GetInstanceVpcEndpointRequest, runtime *util.RuntimeOptions) (_result *GetInstanceVpcEndpointResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17604,15 +26800,33 @@ func (client *Client) GetInstanceVpcEndpointWithOptions(request *GetInstanceVpcE
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetInstanceVpcEndpointResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetInstanceVpcEndpointResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetInstanceVpcEndpointResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the endpoints of the virtual private clouds (VPCs) in which a Container Registry instance is deployed.
+//
+// @param request - GetInstanceVpcEndpointRequest
+//
+// @return GetInstanceVpcEndpointResponse
 func (client *Client) GetInstanceVpcEndpoint(request *GetInstanceVpcEndpointRequest) (_result *GetInstanceVpcEndpointResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetInstanceVpcEndpointResponse{}
@@ -17624,6 +26838,15 @@ func (client *Client) GetInstanceVpcEndpoint(request *GetInstanceVpcEndpointRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a namespace.
+//
+// @param request - GetNamespaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetNamespaceResponse
 func (client *Client) GetNamespaceWithOptions(request *GetNamespaceRequest, runtime *util.RuntimeOptions) (_result *GetNamespaceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17656,15 +26879,33 @@ func (client *Client) GetNamespaceWithOptions(request *GetNamespaceRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetNamespaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetNamespaceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetNamespaceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the information about a namespace.
+//
+// @param request - GetNamespaceRequest
+//
+// @return GetNamespaceResponse
 func (client *Client) GetNamespace(request *GetNamespaceRequest) (_result *GetNamespaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetNamespaceResponse{}
@@ -17676,13 +26917,19 @@ func (client *Client) GetNamespace(request *GetNamespaceRequest) (_result *GetNa
 	return _result, _err
 }
 
-/**
- * ****
- *
- * @param request GetRepoBuildRecordRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetRepoBuildRecordResponse
- */
+// Summary:
+//
+// Queries the information about image building records of a repository.
+//
+// Description:
+//
+// ***
+//
+// @param request - GetRepoBuildRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRepoBuildRecordResponse
 func (client *Client) GetRepoBuildRecordWithOptions(request *GetRepoBuildRecordRequest, runtime *util.RuntimeOptions) (_result *GetRepoBuildRecordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17711,21 +26958,37 @@ func (client *Client) GetRepoBuildRecordWithOptions(request *GetRepoBuildRecordR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetRepoBuildRecordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetRepoBuildRecordResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetRepoBuildRecordResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
-/**
- * ****
- *
- * @param request GetRepoBuildRecordRequest
- * @return GetRepoBuildRecordResponse
- */
+// Summary:
+//
+// Queries the information about image building records of a repository.
+//
+// Description:
+//
+// ***
+//
+// @param request - GetRepoBuildRecordRequest
+//
+// @return GetRepoBuildRecordResponse
 func (client *Client) GetRepoBuildRecord(request *GetRepoBuildRecordRequest) (_result *GetRepoBuildRecordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetRepoBuildRecordResponse{}
@@ -17737,6 +27000,15 @@ func (client *Client) GetRepoBuildRecord(request *GetRepoBuildRecordRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the status of an image building task.
+//
+// @param request - GetRepoBuildRecordStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRepoBuildRecordStatusResponse
 func (client *Client) GetRepoBuildRecordStatusWithOptions(request *GetRepoBuildRecordStatusRequest, runtime *util.RuntimeOptions) (_result *GetRepoBuildRecordStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17769,15 +27041,33 @@ func (client *Client) GetRepoBuildRecordStatusWithOptions(request *GetRepoBuildR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetRepoBuildRecordStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetRepoBuildRecordStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetRepoBuildRecordStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the status of an image building task.
+//
+// @param request - GetRepoBuildRecordStatusRequest
+//
+// @return GetRepoBuildRecordStatusResponse
 func (client *Client) GetRepoBuildRecordStatus(request *GetRepoBuildRecordStatusRequest) (_result *GetRepoBuildRecordStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetRepoBuildRecordStatusResponse{}
@@ -17789,6 +27079,15 @@ func (client *Client) GetRepoBuildRecordStatus(request *GetRepoBuildRecordStatus
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about the source code repository that is bound to an image repository.
+//
+// @param request - GetRepoSourceCodeRepoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRepoSourceCodeRepoResponse
 func (client *Client) GetRepoSourceCodeRepoWithOptions(request *GetRepoSourceCodeRepoRequest, runtime *util.RuntimeOptions) (_result *GetRepoSourceCodeRepoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17817,15 +27116,33 @@ func (client *Client) GetRepoSourceCodeRepoWithOptions(request *GetRepoSourceCod
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetRepoSourceCodeRepoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetRepoSourceCodeRepoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetRepoSourceCodeRepoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the information about the source code repository that is bound to an image repository.
+//
+// @param request - GetRepoSourceCodeRepoRequest
+//
+// @return GetRepoSourceCodeRepoResponse
 func (client *Client) GetRepoSourceCodeRepo(request *GetRepoSourceCodeRepoRequest) (_result *GetRepoSourceCodeRepoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetRepoSourceCodeRepoResponse{}
@@ -17837,6 +27154,15 @@ func (client *Client) GetRepoSourceCodeRepo(request *GetRepoSourceCodeRepoReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries an image synchronization task in an instance.
+//
+// @param request - GetRepoSyncTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRepoSyncTaskResponse
 func (client *Client) GetRepoSyncTaskWithOptions(request *GetRepoSyncTaskRequest, runtime *util.RuntimeOptions) (_result *GetRepoSyncTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17865,15 +27191,33 @@ func (client *Client) GetRepoSyncTaskWithOptions(request *GetRepoSyncTaskRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetRepoSyncTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetRepoSyncTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetRepoSyncTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries an image synchronization task in an instance.
+//
+// @param request - GetRepoSyncTaskRequest
+//
+// @return GetRepoSyncTaskResponse
 func (client *Client) GetRepoSyncTask(request *GetRepoSyncTaskRequest) (_result *GetRepoSyncTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetRepoSyncTaskResponse{}
@@ -17885,6 +27229,15 @@ func (client *Client) GetRepoSyncTask(request *GetRepoSyncTaskRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// The version of the repository.
+//
+// @param request - GetRepoTagRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRepoTagResponse
 func (client *Client) GetRepoTagWithOptions(request *GetRepoTagRequest, runtime *util.RuntimeOptions) (_result *GetRepoTagResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17905,15 +27258,33 @@ func (client *Client) GetRepoTagWithOptions(request *GetRepoTagRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetRepoTagResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetRepoTagResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetRepoTagResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// The version of the repository.
+//
+// @param request - GetRepoTagRequest
+//
+// @return GetRepoTagResponse
 func (client *Client) GetRepoTag(request *GetRepoTagRequest) (_result *GetRepoTagResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetRepoTagResponse{}
@@ -17925,118 +27296,11 @@ func (client *Client) GetRepoTag(request *GetRepoTagRequest) (_result *GetRepoTa
 	return _result, _err
 }
 
-func (client *Client) GetRepoTagLayersWithOptions(request *GetRepoTagLayersRequest, runtime *util.RuntimeOptions) (_result *GetRepoTagLayersResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Digest)) {
-		query["Digest"] = request.Digest
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
-		query["InstanceId"] = request.InstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RepoId)) {
-		query["RepoId"] = request.RepoId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Tag)) {
-		query["Tag"] = request.Tag
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetRepoTagLayers"),
-		Version:     tea.String("2018-12-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetRepoTagLayersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetRepoTagLayers(request *GetRepoTagLayersRequest) (_result *GetRepoTagLayersResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetRepoTagLayersResponse{}
-	_body, _err := client.GetRepoTagLayersWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetRepoTagManifestWithOptions(request *GetRepoTagManifestRequest, runtime *util.RuntimeOptions) (_result *GetRepoTagManifestResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
-		query["InstanceId"] = request.InstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RepoId)) {
-		query["RepoId"] = request.RepoId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SchemaVersion)) {
-		query["SchemaVersion"] = request.SchemaVersion
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Tag)) {
-		query["Tag"] = request.Tag
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetRepoTagManifest"),
-		Version:     tea.String("2018-12-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetRepoTagManifestResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetRepoTagManifest(request *GetRepoTagManifestRequest) (_result *GetRepoTagManifestResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetRepoTagManifestResponse{}
-	_body, _err := client.GetRepoTagManifestWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
+// @param request - GetRepoTagScanStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRepoTagScanStatusResponse
 func (client *Client) GetRepoTagScanStatusWithOptions(request *GetRepoTagScanStatusRequest, runtime *util.RuntimeOptions) (_result *GetRepoTagScanStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18077,15 +27341,29 @@ func (client *Client) GetRepoTagScanStatusWithOptions(request *GetRepoTagScanSta
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetRepoTagScanStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetRepoTagScanStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetRepoTagScanStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - GetRepoTagScanStatusRequest
+//
+// @return GetRepoTagScanStatusResponse
 func (client *Client) GetRepoTagScanStatus(request *GetRepoTagScanStatusRequest) (_result *GetRepoTagScanStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetRepoTagScanStatusResponse{}
@@ -18097,6 +27375,11 @@ func (client *Client) GetRepoTagScanStatus(request *GetRepoTagScanStatusRequest)
 	return _result, _err
 }
 
+// @param request - GetRepoTagScanSummaryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRepoTagScanSummaryResponse
 func (client *Client) GetRepoTagScanSummaryWithOptions(request *GetRepoTagScanSummaryRequest, runtime *util.RuntimeOptions) (_result *GetRepoTagScanSummaryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18137,15 +27420,29 @@ func (client *Client) GetRepoTagScanSummaryWithOptions(request *GetRepoTagScanSu
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetRepoTagScanSummaryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetRepoTagScanSummaryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetRepoTagScanSummaryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - GetRepoTagScanSummaryRequest
+//
+// @return GetRepoTagScanSummaryResponse
 func (client *Client) GetRepoTagScanSummary(request *GetRepoTagScanSummaryRequest) (_result *GetRepoTagScanSummaryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetRepoTagScanSummaryResponse{}
@@ -18157,6 +27454,15 @@ func (client *Client) GetRepoTagScanSummary(request *GetRepoTagScanSummaryReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries details about an image repository.
+//
+// @param request - GetRepositoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRepositoryResponse
 func (client *Client) GetRepositoryWithOptions(request *GetRepositoryRequest, runtime *util.RuntimeOptions) (_result *GetRepositoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18193,15 +27499,33 @@ func (client *Client) GetRepositoryWithOptions(request *GetRepositoryRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetRepositoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetRepositoryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetRepositoryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries details about an image repository.
+//
+// @param request - GetRepositoryRequest
+//
+// @return GetRepositoryResponse
 func (client *Client) GetRepository(request *GetRepositoryRequest) (_result *GetRepositoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetRepositoryResponse{}
@@ -18213,6 +27537,15 @@ func (client *Client) GetRepository(request *GetRepositoryRequest) (_result *Get
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the log entries of an artifact building task.
+//
+// @param request - ListArtifactBuildTaskLogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListArtifactBuildTaskLogResponse
 func (client *Client) ListArtifactBuildTaskLogWithOptions(request *ListArtifactBuildTaskLogRequest, runtime *util.RuntimeOptions) (_result *ListArtifactBuildTaskLogResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18233,15 +27566,33 @@ func (client *Client) ListArtifactBuildTaskLogWithOptions(request *ListArtifactB
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListArtifactBuildTaskLogResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListArtifactBuildTaskLogResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListArtifactBuildTaskLogResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the log entries of an artifact building task.
+//
+// @param request - ListArtifactBuildTaskLogRequest
+//
+// @return ListArtifactBuildTaskLogResponse
 func (client *Client) ListArtifactBuildTaskLog(request *ListArtifactBuildTaskLogRequest) (_result *ListArtifactBuildTaskLogResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListArtifactBuildTaskLogResponse{}
@@ -18253,6 +27604,15 @@ func (client *Client) ListArtifactBuildTaskLog(request *ListArtifactBuildTaskLog
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the lifecycle management rules of an artifact.
+//
+// @param request - ListArtifactLifecycleRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListArtifactLifecycleRuleResponse
 func (client *Client) ListArtifactLifecycleRuleWithOptions(request *ListArtifactLifecycleRuleRequest, runtime *util.RuntimeOptions) (_result *ListArtifactLifecycleRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18273,15 +27633,33 @@ func (client *Client) ListArtifactLifecycleRuleWithOptions(request *ListArtifact
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListArtifactLifecycleRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListArtifactLifecycleRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListArtifactLifecycleRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the lifecycle management rules of an artifact.
+//
+// @param request - ListArtifactLifecycleRuleRequest
+//
+// @return ListArtifactLifecycleRuleResponse
 func (client *Client) ListArtifactLifecycleRule(request *ListArtifactLifecycleRuleRequest) (_result *ListArtifactLifecycleRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListArtifactLifecycleRuleResponse{}
@@ -18293,6 +27671,149 @@ func (client *Client) ListArtifactLifecycleRule(request *ListArtifactLifecycleRu
 	return _result, _err
 }
 
+// Summary:
+//
+// Lists the subscription rules of artifacts.
+//
+// @param request - ListArtifactSubscriptionRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListArtifactSubscriptionRuleResponse
+func (client *Client) ListArtifactSubscriptionRuleWithOptions(request *ListArtifactSubscriptionRuleRequest, runtime *util.RuntimeOptions) (_result *ListArtifactSubscriptionRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListArtifactSubscriptionRule"),
+		Version:     tea.String("2018-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListArtifactSubscriptionRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListArtifactSubscriptionRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Lists the subscription rules of artifacts.
+//
+// @param request - ListArtifactSubscriptionRuleRequest
+//
+// @return ListArtifactSubscriptionRuleResponse
+func (client *Client) ListArtifactSubscriptionRule(request *ListArtifactSubscriptionRuleRequest) (_result *ListArtifactSubscriptionRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListArtifactSubscriptionRuleResponse{}
+	_body, _err := client.ListArtifactSubscriptionRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists artifact subscription tasks.
+//
+// @param request - ListArtifactSubscriptionTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListArtifactSubscriptionTaskResponse
+func (client *Client) ListArtifactSubscriptionTaskWithOptions(request *ListArtifactSubscriptionTaskRequest, runtime *util.RuntimeOptions) (_result *ListArtifactSubscriptionTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListArtifactSubscriptionTask"),
+		Version:     tea.String("2018-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListArtifactSubscriptionTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListArtifactSubscriptionTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Lists artifact subscription tasks.
+//
+// @param request - ListArtifactSubscriptionTaskRequest
+//
+// @return ListArtifactSubscriptionTaskResponse
+func (client *Client) ListArtifactSubscriptionTask(request *ListArtifactSubscriptionTaskRequest) (_result *ListArtifactSubscriptionTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListArtifactSubscriptionTaskResponse{}
+	_body, _err := client.ListArtifactSubscriptionTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries delivery chains.
+//
+// @param request - ListChainRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListChainResponse
 func (client *Client) ListChainWithOptions(request *ListChainRequest, runtime *util.RuntimeOptions) (_result *ListChainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18333,15 +27854,33 @@ func (client *Client) ListChainWithOptions(request *ListChainRequest, runtime *u
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListChainResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListChainResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListChainResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries delivery chains.
+//
+// @param request - ListChainRequest
+//
+// @return ListChainResponse
 func (client *Client) ListChain(request *ListChainRequest) (_result *ListChainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListChainResponse{}
@@ -18353,6 +27892,15 @@ func (client *Client) ListChain(request *ListChainRequest) (_result *ListChainRe
 	return _result, _err
 }
 
+// Summary:
+//
+// The response code.
+//
+// @param request - ListChainInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListChainInstanceResponse
 func (client *Client) ListChainInstanceWithOptions(request *ListChainInstanceRequest, runtime *util.RuntimeOptions) (_result *ListChainInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18393,15 +27941,33 @@ func (client *Client) ListChainInstanceWithOptions(request *ListChainInstanceReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListChainInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListChainInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListChainInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// The response code.
+//
+// @param request - ListChainInstanceRequest
+//
+// @return ListChainInstanceResponse
 func (client *Client) ListChainInstance(request *ListChainInstanceRequest) (_result *ListChainInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListChainInstanceResponse{}
@@ -18413,6 +27979,15 @@ func (client *Client) ListChainInstance(request *ListChainInstanceRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the chart namespaces of a Container Registry instance.
+//
+// @param request - ListChartNamespaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListChartNamespaceResponse
 func (client *Client) ListChartNamespaceWithOptions(request *ListChartNamespaceRequest, runtime *util.RuntimeOptions) (_result *ListChartNamespaceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18453,15 +28028,33 @@ func (client *Client) ListChartNamespaceWithOptions(request *ListChartNamespaceR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListChartNamespaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListChartNamespaceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListChartNamespaceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the chart namespaces of a Container Registry instance.
+//
+// @param request - ListChartNamespaceRequest
+//
+// @return ListChartNamespaceResponse
 func (client *Client) ListChartNamespace(request *ListChartNamespaceRequest) (_result *ListChartNamespaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListChartNamespaceResponse{}
@@ -18473,6 +28066,15 @@ func (client *Client) ListChartNamespace(request *ListChartNamespaceRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the versions of a chart in a chart repository.
+//
+// @param request - ListChartReleaseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListChartReleaseResponse
 func (client *Client) ListChartReleaseWithOptions(request *ListChartReleaseRequest, runtime *util.RuntimeOptions) (_result *ListChartReleaseResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18517,15 +28119,33 @@ func (client *Client) ListChartReleaseWithOptions(request *ListChartReleaseReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListChartReleaseResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListChartReleaseResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListChartReleaseResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the versions of a chart in a chart repository.
+//
+// @param request - ListChartReleaseRequest
+//
+// @return ListChartReleaseResponse
 func (client *Client) ListChartRelease(request *ListChartReleaseRequest) (_result *ListChartReleaseResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListChartReleaseResponse{}
@@ -18537,6 +28157,15 @@ func (client *Client) ListChartRelease(request *ListChartReleaseRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the chart repositories of a Container Registry instance.
+//
+// @param request - ListChartRepositoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListChartRepositoryResponse
 func (client *Client) ListChartRepositoryWithOptions(request *ListChartRepositoryRequest, runtime *util.RuntimeOptions) (_result *ListChartRepositoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18581,15 +28210,33 @@ func (client *Client) ListChartRepositoryWithOptions(request *ListChartRepositor
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListChartRepositoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListChartRepositoryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListChartRepositoryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the chart repositories of a Container Registry instance.
+//
+// @param request - ListChartRepositoryRequest
+//
+// @return ListChartRepositoryResponse
 func (client *Client) ListChartRepository(request *ListChartRepositoryRequest) (_result *ListChartRepositoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListChartRepositoryResponse{}
@@ -18601,6 +28248,15 @@ func (client *Client) ListChartRepository(request *ListChartRepositoryRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the historical events of an event rule.
+//
+// @param request - ListEventCenterRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListEventCenterRecordResponse
 func (client *Client) ListEventCenterRecordWithOptions(request *ListEventCenterRecordRequest, runtime *util.RuntimeOptions) (_result *ListEventCenterRecordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18621,15 +28277,33 @@ func (client *Client) ListEventCenterRecordWithOptions(request *ListEventCenterR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListEventCenterRecordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListEventCenterRecordResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListEventCenterRecordResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the historical events of an event rule.
+//
+// @param request - ListEventCenterRecordRequest
+//
+// @return ListEventCenterRecordResponse
 func (client *Client) ListEventCenterRecord(request *ListEventCenterRecordRequest) (_result *ListEventCenterRecordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListEventCenterRecordResponse{}
@@ -18641,6 +28315,15 @@ func (client *Client) ListEventCenterRecord(request *ListEventCenterRecordReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the names of event notification rules.
+//
+// @param request - ListEventCenterRuleNameRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListEventCenterRuleNameResponse
 func (client *Client) ListEventCenterRuleNameWithOptions(request *ListEventCenterRuleNameRequest, runtime *util.RuntimeOptions) (_result *ListEventCenterRuleNameResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18661,15 +28344,33 @@ func (client *Client) ListEventCenterRuleNameWithOptions(request *ListEventCente
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListEventCenterRuleNameResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListEventCenterRuleNameResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListEventCenterRuleNameResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the names of event notification rules.
+//
+// @param request - ListEventCenterRuleNameRequest
+//
+// @return ListEventCenterRuleNameResponse
 func (client *Client) ListEventCenterRuleName(request *ListEventCenterRuleNameRequest) (_result *ListEventCenterRuleNameResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListEventCenterRuleNameResponse{}
@@ -18681,6 +28382,15 @@ func (client *Client) ListEventCenterRuleName(request *ListEventCenterRuleNameRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries Container Registry instances.
+//
+// @param request - ListInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInstanceResponse
 func (client *Client) ListInstanceWithOptions(request *ListInstanceRequest, runtime *util.RuntimeOptions) (_result *ListInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18721,15 +28431,33 @@ func (client *Client) ListInstanceWithOptions(request *ListInstanceRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries Container Registry instances.
+//
+// @param request - ListInstanceRequest
+//
+// @return ListInstanceResponse
 func (client *Client) ListInstance(request *ListInstanceRequest) (_result *ListInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListInstanceResponse{}
@@ -18741,6 +28469,15 @@ func (client *Client) ListInstance(request *ListInstanceRequest) (_result *ListI
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the endpoints of a Container Registry instance.
+//
+// @param request - ListInstanceEndpointRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInstanceEndpointResponse
 func (client *Client) ListInstanceEndpointWithOptions(request *ListInstanceEndpointRequest, runtime *util.RuntimeOptions) (_result *ListInstanceEndpointResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18773,15 +28510,33 @@ func (client *Client) ListInstanceEndpointWithOptions(request *ListInstanceEndpo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListInstanceEndpointResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListInstanceEndpointResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListInstanceEndpointResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the endpoints of a Container Registry instance.
+//
+// @param request - ListInstanceEndpointRequest
+//
+// @return ListInstanceEndpointResponse
 func (client *Client) ListInstanceEndpoint(request *ListInstanceEndpointRequest) (_result *ListInstanceEndpointResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListInstanceEndpointResponse{}
@@ -18793,6 +28548,15 @@ func (client *Client) ListInstanceEndpoint(request *ListInstanceEndpointRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries regions in which you can create Container Registry instances.
+//
+// @param request - ListInstanceRegionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInstanceRegionResponse
 func (client *Client) ListInstanceRegionWithOptions(request *ListInstanceRegionRequest, runtime *util.RuntimeOptions) (_result *ListInstanceRegionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18817,15 +28581,33 @@ func (client *Client) ListInstanceRegionWithOptions(request *ListInstanceRegionR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListInstanceRegionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListInstanceRegionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListInstanceRegionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries regions in which you can create Container Registry instances.
+//
+// @param request - ListInstanceRegionRequest
+//
+// @return ListInstanceRegionResponse
 func (client *Client) ListInstanceRegion(request *ListInstanceRegionRequest) (_result *ListInstanceRegionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListInstanceRegionResponse{}
@@ -18837,6 +28619,15 @@ func (client *Client) ListInstanceRegion(request *ListInstanceRegionRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// cri-94klsruryslx****
+//
+// @param request - ListNamespaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListNamespaceResponse
 func (client *Client) ListNamespaceWithOptions(request *ListNamespaceRequest, runtime *util.RuntimeOptions) (_result *ListNamespaceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18877,15 +28668,33 @@ func (client *Client) ListNamespaceWithOptions(request *ListNamespaceRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListNamespaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListNamespaceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListNamespaceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// cri-94klsruryslx****
+//
+// @param request - ListNamespaceRequest
+//
+// @return ListNamespaceResponse
 func (client *Client) ListNamespace(request *ListNamespaceRequest) (_result *ListNamespaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListNamespaceResponse{}
@@ -18897,6 +28706,15 @@ func (client *Client) ListNamespace(request *ListNamespaceRequest) (_result *Lis
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries image building records of an image repository.
+//
+// @param request - ListRepoBuildRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRepoBuildRecordResponse
 func (client *Client) ListRepoBuildRecordWithOptions(request *ListRepoBuildRecordRequest, runtime *util.RuntimeOptions) (_result *ListRepoBuildRecordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18933,15 +28751,33 @@ func (client *Client) ListRepoBuildRecordWithOptions(request *ListRepoBuildRecor
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListRepoBuildRecordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListRepoBuildRecordResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListRepoBuildRecordResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries image building records of an image repository.
+//
+// @param request - ListRepoBuildRecordRequest
+//
+// @return ListRepoBuildRecordResponse
 func (client *Client) ListRepoBuildRecord(request *ListRepoBuildRecordRequest) (_result *ListRepoBuildRecordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListRepoBuildRecordResponse{}
@@ -18953,6 +28789,15 @@ func (client *Client) ListRepoBuildRecord(request *ListRepoBuildRecordRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the log of an image building record.
+//
+// @param request - ListRepoBuildRecordLogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRepoBuildRecordLogResponse
 func (client *Client) ListRepoBuildRecordLogWithOptions(request *ListRepoBuildRecordLogRequest, runtime *util.RuntimeOptions) (_result *ListRepoBuildRecordLogResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18989,15 +28834,33 @@ func (client *Client) ListRepoBuildRecordLogWithOptions(request *ListRepoBuildRe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListRepoBuildRecordLogResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListRepoBuildRecordLogResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListRepoBuildRecordLogResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the log of an image building record.
+//
+// @param request - ListRepoBuildRecordLogRequest
+//
+// @return ListRepoBuildRecordLogResponse
 func (client *Client) ListRepoBuildRecordLog(request *ListRepoBuildRecordLogRequest) (_result *ListRepoBuildRecordLogResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListRepoBuildRecordLogResponse{}
@@ -19009,6 +28872,15 @@ func (client *Client) ListRepoBuildRecordLog(request *ListRepoBuildRecordLogRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries image building rules of a repository.
+//
+// @param request - ListRepoBuildRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRepoBuildRuleResponse
 func (client *Client) ListRepoBuildRuleWithOptions(request *ListRepoBuildRuleRequest, runtime *util.RuntimeOptions) (_result *ListRepoBuildRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19045,15 +28917,33 @@ func (client *Client) ListRepoBuildRuleWithOptions(request *ListRepoBuildRuleReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListRepoBuildRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListRepoBuildRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListRepoBuildRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries image building rules of a repository.
+//
+// @param request - ListRepoBuildRuleRequest
+//
+// @return ListRepoBuildRuleResponse
 func (client *Client) ListRepoBuildRule(request *ListRepoBuildRuleRequest) (_result *ListRepoBuildRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListRepoBuildRuleResponse{}
@@ -19065,6 +28955,15 @@ func (client *Client) ListRepoBuildRule(request *ListRepoBuildRuleRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries image synchronization rules of a repository.
+//
+// @param request - ListRepoSyncRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRepoSyncRuleResponse
 func (client *Client) ListRepoSyncRuleWithOptions(request *ListRepoSyncRuleRequest, runtime *util.RuntimeOptions) (_result *ListRepoSyncRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19113,15 +29012,33 @@ func (client *Client) ListRepoSyncRuleWithOptions(request *ListRepoSyncRuleReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListRepoSyncRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListRepoSyncRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListRepoSyncRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries image synchronization rules of a repository.
+//
+// @param request - ListRepoSyncRuleRequest
+//
+// @return ListRepoSyncRuleResponse
 func (client *Client) ListRepoSyncRule(request *ListRepoSyncRuleRequest) (_result *ListRepoSyncRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListRepoSyncRuleResponse{}
@@ -19133,6 +29050,15 @@ func (client *Client) ListRepoSyncRule(request *ListRepoSyncRuleRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Indicates whether automatic link is used.
+//
+// @param request - ListRepoSyncTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRepoSyncTaskResponse
 func (client *Client) ListRepoSyncTaskWithOptions(request *ListRepoSyncTaskRequest, runtime *util.RuntimeOptions) (_result *ListRepoSyncTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19181,15 +29107,33 @@ func (client *Client) ListRepoSyncTaskWithOptions(request *ListRepoSyncTaskReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListRepoSyncTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListRepoSyncTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListRepoSyncTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Indicates whether automatic link is used.
+//
+// @param request - ListRepoSyncTaskRequest
+//
+// @return ListRepoSyncTaskResponse
 func (client *Client) ListRepoSyncTask(request *ListRepoSyncTaskRequest) (_result *ListRepoSyncTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListRepoSyncTaskResponse{}
@@ -19201,6 +29145,15 @@ func (client *Client) ListRepoSyncTask(request *ListRepoSyncTaskRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries image tags in a repository.
+//
+// @param request - ListRepoTagRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRepoTagResponse
 func (client *Client) ListRepoTagWithOptions(request *ListRepoTagRequest, runtime *util.RuntimeOptions) (_result *ListRepoTagResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19237,15 +29190,33 @@ func (client *Client) ListRepoTagWithOptions(request *ListRepoTagRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListRepoTagResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListRepoTagResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListRepoTagResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries image tags in a repository.
+//
+// @param request - ListRepoTagRequest
+//
+// @return ListRepoTagResponse
 func (client *Client) ListRepoTag(request *ListRepoTagRequest) (_result *ListRepoTagResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListRepoTagResponse{}
@@ -19257,6 +29228,15 @@ func (client *Client) ListRepoTag(request *ListRepoTagRequest) (_result *ListRep
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the results of a security scan that is created for an image tag.
+//
+// @param request - ListRepoTagScanResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRepoTagScanResultResponse
 func (client *Client) ListRepoTagScanResultWithOptions(request *ListRepoTagScanResultRequest, runtime *util.RuntimeOptions) (_result *ListRepoTagScanResultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19321,15 +29301,33 @@ func (client *Client) ListRepoTagScanResultWithOptions(request *ListRepoTagScanR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListRepoTagScanResultResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListRepoTagScanResultResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListRepoTagScanResultResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the results of a security scan that is created for an image tag.
+//
+// @param request - ListRepoTagScanResultRequest
+//
+// @return ListRepoTagScanResultResponse
 func (client *Client) ListRepoTagScanResult(request *ListRepoTagScanResultRequest) (_result *ListRepoTagScanResultResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListRepoTagScanResultResponse{}
@@ -19341,6 +29339,15 @@ func (client *Client) ListRepoTagScanResult(request *ListRepoTagScanResultReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the triggers of a repository.
+//
+// @param request - ListRepoTriggerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRepoTriggerResponse
 func (client *Client) ListRepoTriggerWithOptions(request *ListRepoTriggerRequest, runtime *util.RuntimeOptions) (_result *ListRepoTriggerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19369,15 +29376,33 @@ func (client *Client) ListRepoTriggerWithOptions(request *ListRepoTriggerRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListRepoTriggerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListRepoTriggerResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListRepoTriggerResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the triggers of a repository.
+//
+// @param request - ListRepoTriggerRequest
+//
+// @return ListRepoTriggerResponse
 func (client *Client) ListRepoTrigger(request *ListRepoTriggerRequest) (_result *ListRepoTriggerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListRepoTriggerResponse{}
@@ -19389,6 +29414,15 @@ func (client *Client) ListRepoTrigger(request *ListRepoTriggerRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries image repositories.
+//
+// @param request - ListRepositoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRepositoryResponse
 func (client *Client) ListRepositoryWithOptions(request *ListRepositoryRequest, runtime *util.RuntimeOptions) (_result *ListRepositoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19433,15 +29467,33 @@ func (client *Client) ListRepositoryWithOptions(request *ListRepositoryRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListRepositoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListRepositoryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListRepositoryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries image repositories.
+//
+// @param request - ListRepositoryRequest
+//
+// @return ListRepositoryResponse
 func (client *Client) ListRepository(request *ListRepositoryRequest) (_result *ListRepositoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListRepositoryResponse{}
@@ -19453,6 +29505,19 @@ func (client *Client) ListRepository(request *ListRepositoryRequest) (_result *L
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the baseline risks of a scan task by page.
+//
+// Description:
+//
+// Before you call this operation, use a Security Center scan engine to scan the image.
+//
+// @param request - ListScanBaselineByTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListScanBaselineByTaskResponse
 func (client *Client) ListScanBaselineByTaskWithOptions(request *ListScanBaselineByTaskRequest, runtime *util.RuntimeOptions) (_result *ListScanBaselineByTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19473,15 +29538,37 @@ func (client *Client) ListScanBaselineByTaskWithOptions(request *ListScanBaselin
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListScanBaselineByTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListScanBaselineByTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListScanBaselineByTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the baseline risks of a scan task by page.
+//
+// Description:
+//
+// Before you call this operation, use a Security Center scan engine to scan the image.
+//
+// @param request - ListScanBaselineByTaskRequest
+//
+// @return ListScanBaselineByTaskResponse
 func (client *Client) ListScanBaselineByTask(request *ListScanBaselineByTaskRequest) (_result *ListScanBaselineByTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListScanBaselineByTaskResponse{}
@@ -19493,6 +29580,19 @@ func (client *Client) ListScanBaselineByTask(request *ListScanBaselineByTaskRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the malicious files of a scan task by page.
+//
+// Description:
+//
+// Before you call this operation, use a Security Center scan engine to scan the image.
+//
+// @param request - ListScanMaliciousFileByTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListScanMaliciousFileByTaskResponse
 func (client *Client) ListScanMaliciousFileByTaskWithOptions(request *ListScanMaliciousFileByTaskRequest, runtime *util.RuntimeOptions) (_result *ListScanMaliciousFileByTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19513,15 +29613,37 @@ func (client *Client) ListScanMaliciousFileByTaskWithOptions(request *ListScanMa
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListScanMaliciousFileByTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListScanMaliciousFileByTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListScanMaliciousFileByTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the malicious files of a scan task by page.
+//
+// Description:
+//
+// Before you call this operation, use a Security Center scan engine to scan the image.
+//
+// @param request - ListScanMaliciousFileByTaskRequest
+//
+// @return ListScanMaliciousFileByTaskResponse
 func (client *Client) ListScanMaliciousFileByTask(request *ListScanMaliciousFileByTaskRequest) (_result *ListScanMaliciousFileByTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListScanMaliciousFileByTaskResponse{}
@@ -19533,6 +29655,15 @@ func (client *Client) ListScanMaliciousFileByTask(request *ListScanMaliciousFile
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the tags that are added to cloud resources. Instance resources are supported.
+//
+// @param request - ListTagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagResourcesResponse
 func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19573,15 +29704,33 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListTagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListTagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListTagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the tags that are added to cloud resources. Instance resources are supported.
+//
+// @param request - ListTagResourcesRequest
+//
+// @return ListTagResourcesResponse
 func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTagResourcesResponse{}
@@ -19593,6 +29742,15 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Resets the logon password of a Container Registry instance.
+//
+// @param request - ResetLoginPasswordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResetLoginPasswordResponse
 func (client *Client) ResetLoginPasswordWithOptions(request *ResetLoginPasswordRequest, runtime *util.RuntimeOptions) (_result *ResetLoginPasswordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19621,15 +29779,33 @@ func (client *Client) ResetLoginPasswordWithOptions(request *ResetLoginPasswordR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ResetLoginPasswordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ResetLoginPasswordResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ResetLoginPasswordResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Resets the logon password of a Container Registry instance.
+//
+// @param request - ResetLoginPasswordRequest
+//
+// @return ResetLoginPasswordResponse
 func (client *Client) ResetLoginPassword(request *ResetLoginPasswordRequest) (_result *ResetLoginPasswordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ResetLoginPasswordResponse{}
@@ -19641,6 +29817,15 @@ func (client *Client) ResetLoginPassword(request *ResetLoginPasswordRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds tags to resources. Instance resources are supported.
+//
+// @param request - TagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TagResourcesResponse
 func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *util.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19677,15 +29862,33 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &TagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &TagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &TagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Adds tags to resources. Instance resources are supported.
+//
+// @param request - TagResourcesRequest
+//
+// @return TagResourcesResponse
 func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TagResourcesResponse{}
@@ -19697,6 +29900,15 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes tags from resources. Instance resources are supported.
+//
+// @param request - UntagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UntagResourcesResponse
 func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *util.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19737,15 +29949,33 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UntagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UntagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UntagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Removes tags from resources. Instance resources are supported.
+//
+// @param request - UntagResourcesRequest
+//
+// @return UntagResourcesResponse
 func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UntagResourcesResponse{}
@@ -19757,6 +29987,15 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates a lifecycle management rule of an artifact.
+//
+// @param request - UpdateArtifactLifecycleRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateArtifactLifecycleRuleResponse
 func (client *Client) UpdateArtifactLifecycleRuleWithOptions(request *UpdateArtifactLifecycleRuleRequest, runtime *util.RuntimeOptions) (_result *UpdateArtifactLifecycleRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19817,15 +30056,33 @@ func (client *Client) UpdateArtifactLifecycleRuleWithOptions(request *UpdateArti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateArtifactLifecycleRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateArtifactLifecycleRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateArtifactLifecycleRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Updates a lifecycle management rule of an artifact.
+//
+// @param request - UpdateArtifactLifecycleRuleRequest
+//
+// @return UpdateArtifactLifecycleRuleResponse
 func (client *Client) UpdateArtifactLifecycleRule(request *UpdateArtifactLifecycleRuleRequest) (_result *UpdateArtifactLifecycleRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateArtifactLifecycleRuleResponse{}
@@ -19837,6 +30094,130 @@ func (client *Client) UpdateArtifactLifecycleRule(request *UpdateArtifactLifecyc
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates an artifact subscription rule.
+//
+// @param request - UpdateArtifactSubscriptionRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateArtifactSubscriptionRuleResponse
+func (client *Client) UpdateArtifactSubscriptionRuleWithOptions(request *UpdateArtifactSubscriptionRuleRequest, runtime *util.RuntimeOptions) (_result *UpdateArtifactSubscriptionRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Accelerate)) {
+		query["Accelerate"] = request.Accelerate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespaceName)) {
+		query["NamespaceName"] = request.NamespaceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Override)) {
+		query["Override"] = request.Override
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Platform)) {
+		query["Platform"] = request.Platform
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoName)) {
+		query["RepoName"] = request.RepoName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceNamespaceName)) {
+		query["SourceNamespaceName"] = request.SourceNamespaceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceProvider)) {
+		query["SourceProvider"] = request.SourceProvider
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceRepoName)) {
+		query["SourceRepoName"] = request.SourceRepoName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagCount)) {
+		query["TagCount"] = request.TagCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagRegexp)) {
+		query["TagRegexp"] = request.TagRegexp
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateArtifactSubscriptionRule"),
+		Version:     tea.String("2018-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateArtifactSubscriptionRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateArtifactSubscriptionRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Updates an artifact subscription rule.
+//
+// @param request - UpdateArtifactSubscriptionRuleRequest
+//
+// @return UpdateArtifactSubscriptionRuleResponse
+func (client *Client) UpdateArtifactSubscriptionRule(request *UpdateArtifactSubscriptionRuleRequest) (_result *UpdateArtifactSubscriptionRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateArtifactSubscriptionRuleResponse{}
+	_body, _err := client.UpdateArtifactSubscriptionRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the information about a delivery chain, such as the node execution sequence of the delivery chain.
+//
+// @param request - UpdateChainRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateChainResponse
 func (client *Client) UpdateChainWithOptions(request *UpdateChainRequest, runtime *util.RuntimeOptions) (_result *UpdateChainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19881,15 +30262,33 @@ func (client *Client) UpdateChainWithOptions(request *UpdateChainRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateChainResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateChainResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateChainResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Updates the information about a delivery chain, such as the node execution sequence of the delivery chain.
+//
+// @param request - UpdateChainRequest
+//
+// @return UpdateChainResponse
 func (client *Client) UpdateChain(request *UpdateChainRequest) (_result *UpdateChainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateChainResponse{}
@@ -19901,6 +30300,15 @@ func (client *Client) UpdateChain(request *UpdateChainRequest) (_result *UpdateC
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates a chart namespace.
+//
+// @param request - UpdateChartNamespaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateChartNamespaceResponse
 func (client *Client) UpdateChartNamespaceWithOptions(request *UpdateChartNamespaceRequest, runtime *util.RuntimeOptions) (_result *UpdateChartNamespaceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19937,15 +30345,33 @@ func (client *Client) UpdateChartNamespaceWithOptions(request *UpdateChartNamesp
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateChartNamespaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateChartNamespaceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateChartNamespaceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Updates a chart namespace.
+//
+// @param request - UpdateChartNamespaceRequest
+//
+// @return UpdateChartNamespaceResponse
 func (client *Client) UpdateChartNamespace(request *UpdateChartNamespaceRequest) (_result *UpdateChartNamespaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateChartNamespaceResponse{}
@@ -19957,6 +30383,15 @@ func (client *Client) UpdateChartNamespace(request *UpdateChartNamespaceRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates a chart repository of a Container Registry instance.
+//
+// @param request - UpdateChartRepositoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateChartRepositoryResponse
 func (client *Client) UpdateChartRepositoryWithOptions(request *UpdateChartRepositoryRequest, runtime *util.RuntimeOptions) (_result *UpdateChartRepositoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19997,15 +30432,33 @@ func (client *Client) UpdateChartRepositoryWithOptions(request *UpdateChartRepos
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateChartRepositoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateChartRepositoryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateChartRepositoryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Updates a chart repository of a Container Registry instance.
+//
+// @param request - UpdateChartRepositoryRequest
+//
+// @return UpdateChartRepositoryResponse
 func (client *Client) UpdateChartRepository(request *UpdateChartRepositoryRequest) (_result *UpdateChartRepositoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateChartRepositoryResponse{}
@@ -20017,6 +30470,15 @@ func (client *Client) UpdateChartRepository(request *UpdateChartRepositoryReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates an event notification rule.
+//
+// @param tmpReq - UpdateEventCenterRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateEventCenterRuleResponse
 func (client *Client) UpdateEventCenterRuleWithOptions(tmpReq *UpdateEventCenterRuleRequest, runtime *util.RuntimeOptions) (_result *UpdateEventCenterRuleResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -20087,15 +30549,33 @@ func (client *Client) UpdateEventCenterRuleWithOptions(tmpReq *UpdateEventCenter
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateEventCenterRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateEventCenterRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateEventCenterRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Updates an event notification rule.
+//
+// @param request - UpdateEventCenterRuleRequest
+//
+// @return UpdateEventCenterRuleResponse
 func (client *Client) UpdateEventCenterRule(request *UpdateEventCenterRuleRequest) (_result *UpdateEventCenterRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateEventCenterRuleResponse{}
@@ -20107,6 +30587,15 @@ func (client *Client) UpdateEventCenterRule(request *UpdateEventCenterRuleReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the status of an instance endpoint.
+//
+// @param request - UpdateInstanceEndpointStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateInstanceEndpointStatusResponse
 func (client *Client) UpdateInstanceEndpointStatusWithOptions(request *UpdateInstanceEndpointStatusRequest, runtime *util.RuntimeOptions) (_result *UpdateInstanceEndpointStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20143,15 +30632,33 @@ func (client *Client) UpdateInstanceEndpointStatusWithOptions(request *UpdateIns
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateInstanceEndpointStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateInstanceEndpointStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateInstanceEndpointStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Updates the status of an instance endpoint.
+//
+// @param request - UpdateInstanceEndpointStatusRequest
+//
+// @return UpdateInstanceEndpointStatusResponse
 func (client *Client) UpdateInstanceEndpointStatus(request *UpdateInstanceEndpointStatusRequest) (_result *UpdateInstanceEndpointStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateInstanceEndpointStatusResponse{}
@@ -20163,6 +30670,15 @@ func (client *Client) UpdateInstanceEndpointStatus(request *UpdateInstanceEndpoi
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates a namespace.
+//
+// @param request - UpdateNamespaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateNamespaceResponse
 func (client *Client) UpdateNamespaceWithOptions(request *UpdateNamespaceRequest, runtime *util.RuntimeOptions) (_result *UpdateNamespaceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20199,15 +30715,33 @@ func (client *Client) UpdateNamespaceWithOptions(request *UpdateNamespaceRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateNamespaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateNamespaceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateNamespaceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Updates a namespace.
+//
+// @param request - UpdateNamespaceRequest
+//
+// @return UpdateNamespaceResponse
 func (client *Client) UpdateNamespace(request *UpdateNamespaceRequest) (_result *UpdateNamespaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateNamespaceResponse{}
@@ -20219,6 +30753,15 @@ func (client *Client) UpdateNamespace(request *UpdateNamespaceRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates an image building rule for a repository.
+//
+// @param request - UpdateRepoBuildRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateRepoBuildRuleResponse
 func (client *Client) UpdateRepoBuildRuleWithOptions(request *UpdateRepoBuildRuleRequest, runtime *util.RuntimeOptions) (_result *UpdateRepoBuildRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20279,15 +30822,33 @@ func (client *Client) UpdateRepoBuildRuleWithOptions(request *UpdateRepoBuildRul
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateRepoBuildRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateRepoBuildRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateRepoBuildRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Updates an image building rule for a repository.
+//
+// @param request - UpdateRepoBuildRuleRequest
+//
+// @return UpdateRepoBuildRuleResponse
 func (client *Client) UpdateRepoBuildRule(request *UpdateRepoBuildRuleRequest) (_result *UpdateRepoBuildRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateRepoBuildRuleResponse{}
@@ -20299,6 +30860,15 @@ func (client *Client) UpdateRepoBuildRule(request *UpdateRepoBuildRuleRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the URL of the source code repository that is bound to an image repository.
+//
+// @param request - UpdateRepoSourceCodeRepoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateRepoSourceCodeRepoResponse
 func (client *Client) UpdateRepoSourceCodeRepoWithOptions(request *UpdateRepoSourceCodeRepoRequest, runtime *util.RuntimeOptions) (_result *UpdateRepoSourceCodeRepoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20355,15 +30925,33 @@ func (client *Client) UpdateRepoSourceCodeRepoWithOptions(request *UpdateRepoSou
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateRepoSourceCodeRepoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateRepoSourceCodeRepoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateRepoSourceCodeRepoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Updates the URL of the source code repository that is bound to an image repository.
+//
+// @param request - UpdateRepoSourceCodeRepoRequest
+//
+// @return UpdateRepoSourceCodeRepoResponse
 func (client *Client) UpdateRepoSourceCodeRepo(request *UpdateRepoSourceCodeRepoRequest) (_result *UpdateRepoSourceCodeRepoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateRepoSourceCodeRepoResponse{}
@@ -20375,6 +30963,15 @@ func (client *Client) UpdateRepoSourceCodeRepo(request *UpdateRepoSourceCodeRepo
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates a trigger of an image repository.
+//
+// @param request - UpdateRepoTriggerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateRepoTriggerResponse
 func (client *Client) UpdateRepoTriggerWithOptions(request *UpdateRepoTriggerRequest, runtime *util.RuntimeOptions) (_result *UpdateRepoTriggerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20423,15 +31020,33 @@ func (client *Client) UpdateRepoTriggerWithOptions(request *UpdateRepoTriggerReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateRepoTriggerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateRepoTriggerResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateRepoTriggerResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Updates a trigger of an image repository.
+//
+// @param request - UpdateRepoTriggerRequest
+//
+// @return UpdateRepoTriggerResponse
 func (client *Client) UpdateRepoTrigger(request *UpdateRepoTriggerRequest) (_result *UpdateRepoTriggerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateRepoTriggerResponse{}
@@ -20443,6 +31058,15 @@ func (client *Client) UpdateRepoTrigger(request *UpdateRepoTriggerRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// The ID of the request.
+//
+// @param request - UpdateRepositoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateRepositoryResponse
 func (client *Client) UpdateRepositoryWithOptions(request *UpdateRepositoryRequest, runtime *util.RuntimeOptions) (_result *UpdateRepositoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20495,15 +31119,33 @@ func (client *Client) UpdateRepositoryWithOptions(request *UpdateRepositoryReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateRepositoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateRepositoryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateRepositoryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// The ID of the request.
+//
+// @param request - UpdateRepositoryRequest
+//
+// @return UpdateRepositoryResponse
 func (client *Client) UpdateRepository(request *UpdateRepositoryRequest) (_result *UpdateRepositoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateRepositoryResponse{}
