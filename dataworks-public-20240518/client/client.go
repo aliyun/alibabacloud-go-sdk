@@ -16412,7 +16412,8 @@ type GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskIn
 	// example:
 	//
 	// 98330
-	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64                                                                                      `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	Results   []*GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
 	// The status of the data quality monitoring instance.
 	//
 	// - Running: Verifying
@@ -16476,6 +16477,11 @@ func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTa
 	return s
 }
 
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstance) SetResults(v []*GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResults) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstance {
+	s.Results = v
+	return s
+}
+
 func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstance) SetStatus(v string) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstance {
 	s.Status = &v
 	return s
@@ -16488,6 +16494,397 @@ func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTa
 
 func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstance) SetTriggerContext(v string) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstance {
 	s.TriggerContext = &v
+	return s
+}
+
+type GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResults struct {
+	CreateTime     *int64                                                                                             `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Details        []*GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
+	Id             *int64                                                                                             `json:"Id,omitempty" xml:"Id,omitempty"`
+	Rule           *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRule      `json:"Rule,omitempty" xml:"Rule,omitempty" type:"Struct"`
+	Sample         *string                                                                                            `json:"Sample,omitempty" xml:"Sample,omitempty"`
+	Status         *string                                                                                            `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskInstanceId *int64                                                                                             `json:"TaskInstanceId,omitempty" xml:"TaskInstanceId,omitempty"`
+}
+
+func (s GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResults) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResults) SetCreateTime(v int64) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResults {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResults) SetDetails(v []*GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsDetails) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResults {
+	s.Details = v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResults) SetId(v int64) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResults {
+	s.Id = &v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResults) SetRule(v *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRule) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResults {
+	s.Rule = v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResults) SetSample(v string) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResults {
+	s.Sample = &v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResults) SetStatus(v string) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResults {
+	s.Status = &v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResults) SetTaskInstanceId(v int64) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResults {
+	s.TaskInstanceId = &v
+	return s
+}
+
+type GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsDetails struct {
+	CheckedValue    *string `json:"CheckedValue,omitempty" xml:"CheckedValue,omitempty"`
+	ReferencedValue *string `json:"ReferencedValue,omitempty" xml:"ReferencedValue,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsDetails) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsDetails) SetCheckedValue(v string) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsDetails {
+	s.CheckedValue = &v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsDetails) SetReferencedValue(v string) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsDetails {
+	s.ReferencedValue = &v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsDetails) SetStatus(v string) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsDetails {
+	s.Status = &v
+	return s
+}
+
+type GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRule struct {
+	CheckingConfig *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfig  `json:"CheckingConfig,omitempty" xml:"CheckingConfig,omitempty" type:"Struct"`
+	Description    *string                                                                                                      `json:"Description,omitempty" xml:"Description,omitempty"`
+	Enabled        *bool                                                                                                        `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	ErrorHandlers  []*GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleErrorHandlers `json:"ErrorHandlers,omitempty" xml:"ErrorHandlers,omitempty" type:"Repeated"`
+	Id             *int64                                                                                                       `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name           *string                                                                                                      `json:"Name,omitempty" xml:"Name,omitempty"`
+	ProjectId      *int64                                                                                                       `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	SamplingConfig *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleSamplingConfig  `json:"SamplingConfig,omitempty" xml:"SamplingConfig,omitempty" type:"Struct"`
+	Severity       *string                                                                                                      `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	Target         *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleTarget          `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
+	TemplateCode   *string                                                                                                      `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+}
+
+func (s GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRule) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRule) SetCheckingConfig(v *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfig) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRule {
+	s.CheckingConfig = v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRule) SetDescription(v string) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRule {
+	s.Description = &v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRule) SetEnabled(v bool) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRule {
+	s.Enabled = &v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRule) SetErrorHandlers(v []*GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleErrorHandlers) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRule {
+	s.ErrorHandlers = v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRule) SetId(v int64) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRule {
+	s.Id = &v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRule) SetName(v string) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRule {
+	s.Name = &v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRule) SetProjectId(v int64) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRule {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRule) SetSamplingConfig(v *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleSamplingConfig) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRule {
+	s.SamplingConfig = v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRule) SetSeverity(v string) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRule {
+	s.Severity = &v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRule) SetTarget(v *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleTarget) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRule {
+	s.Target = v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRule) SetTemplateCode(v string) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRule {
+	s.TemplateCode = &v
+	return s
+}
+
+type GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfig struct {
+	ReferencedSamplesFilter *string                                                                                                               `json:"ReferencedSamplesFilter,omitempty" xml:"ReferencedSamplesFilter,omitempty"`
+	Thresholds              *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholds `json:"Thresholds,omitempty" xml:"Thresholds,omitempty" type:"Struct"`
+	Type                    *string                                                                                                               `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfig) SetReferencedSamplesFilter(v string) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfig {
+	s.ReferencedSamplesFilter = &v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfig) SetThresholds(v *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholds) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfig {
+	s.Thresholds = v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfig) SetType(v string) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfig {
+	s.Type = &v
+	return s
+}
+
+type GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholds struct {
+	Critical *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholdsCritical `json:"Critical,omitempty" xml:"Critical,omitempty" type:"Struct"`
+	Expected *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholdsExpected `json:"Expected,omitempty" xml:"Expected,omitempty" type:"Struct"`
+	Warned   *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholdsWarned   `json:"Warned,omitempty" xml:"Warned,omitempty" type:"Struct"`
+}
+
+func (s GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholds) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholds) SetCritical(v *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholdsCritical) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholds {
+	s.Critical = v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholds) SetExpected(v *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholdsExpected) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholds {
+	s.Expected = v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholds) SetWarned(v *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholdsWarned) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholds {
+	s.Warned = v
+	return s
+}
+
+type GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholdsCritical struct {
+	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	Operator   *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	Value      *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholdsCritical) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholdsCritical) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholdsCritical) SetExpression(v string) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholdsCritical {
+	s.Expression = &v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholdsCritical) SetOperator(v string) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholdsCritical {
+	s.Operator = &v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholdsCritical) SetValue(v string) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholdsCritical {
+	s.Value = &v
+	return s
+}
+
+type GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholdsExpected struct {
+	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	Operator   *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	Value      *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholdsExpected) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholdsExpected) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholdsExpected) SetExpression(v string) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholdsExpected {
+	s.Expression = &v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholdsExpected) SetOperator(v string) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholdsExpected {
+	s.Operator = &v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholdsExpected) SetValue(v string) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholdsExpected {
+	s.Value = &v
+	return s
+}
+
+type GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholdsWarned struct {
+	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	Operator   *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	Value      *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholdsWarned) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholdsWarned) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholdsWarned) SetExpression(v string) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholdsWarned {
+	s.Expression = &v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholdsWarned) SetOperator(v string) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholdsWarned {
+	s.Operator = &v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholdsWarned) SetValue(v string) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleCheckingConfigThresholdsWarned {
+	s.Value = &v
+	return s
+}
+
+type GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleErrorHandlers struct {
+	ErrorDataFilter *string `json:"ErrorDataFilter,omitempty" xml:"ErrorDataFilter,omitempty"`
+	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleErrorHandlers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleErrorHandlers) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleErrorHandlers) SetErrorDataFilter(v string) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleErrorHandlers {
+	s.ErrorDataFilter = &v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleErrorHandlers) SetType(v string) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleErrorHandlers {
+	s.Type = &v
+	return s
+}
+
+type GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleSamplingConfig struct {
+	Metric           *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
+	MetricParameters *string `json:"MetricParameters,omitempty" xml:"MetricParameters,omitempty"`
+	SamplingFilter   *string `json:"SamplingFilter,omitempty" xml:"SamplingFilter,omitempty"`
+	SettingConfig    *string `json:"SettingConfig,omitempty" xml:"SettingConfig,omitempty"`
+}
+
+func (s GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleSamplingConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleSamplingConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleSamplingConfig) SetMetric(v string) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleSamplingConfig {
+	s.Metric = &v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleSamplingConfig) SetMetricParameters(v string) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleSamplingConfig {
+	s.MetricParameters = &v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleSamplingConfig) SetSamplingFilter(v string) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleSamplingConfig {
+	s.SamplingFilter = &v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleSamplingConfig) SetSettingConfig(v string) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleSamplingConfig {
+	s.SettingConfig = &v
+	return s
+}
+
+type GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleTarget struct {
+	DatabaseType *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
+	TableGuid    *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleTarget) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleTarget) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleTarget) SetDatabaseType(v string) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleTarget {
+	s.DatabaseType = &v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleTarget) SetTableGuid(v string) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleTarget {
+	s.TableGuid = &v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleTarget) SetType(v string) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceResultsRuleTarget {
+	s.Type = &v
 	return s
 }
 
@@ -29660,6 +30057,7 @@ func (s *ListDataQualityEvaluationTasksResponseBodyPagingInfo) SetTotalCount(v s
 }
 
 type ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasks struct {
+	DataSourceId *int64 `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
 	// The description of the data quality monitoring task. The description can be up to 65,535 characters in length.
 	//
 	// example:
@@ -29706,6 +30104,11 @@ func (s ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluatio
 
 func (s ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasks) GoString() string {
 	return s.String()
+}
+
+func (s *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasks) SetDataSourceId(v int64) *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasks {
+	s.DataSourceId = &v
+	return s
 }
 
 func (s *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasks) SetDescription(v string) *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasks {
@@ -57832,8 +58235,6 @@ type UpdateWorkflowRequestTasks struct {
 	// Prod
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
 	// The task ID. If you configure this parameter, full update is performed on the task. If you do not configure this parameter, another task is created.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
