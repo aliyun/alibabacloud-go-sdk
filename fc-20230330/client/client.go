@@ -7014,12 +7014,14 @@ func (s *ListFunctionVersionsResponse) SetBody(v *ListVersionsOutput) *ListFunct
 }
 
 type ListFunctionsRequest struct {
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The version of Function Compute to which the functions belong. Valid values: v3 and v2. v3: only lists functions of Function Compute 3.0. v2: only lists functions of Function Compute 2.0. By default, this parameter is left empty and functions in both Function Compute 3.0 and Function Compute 2.0 are listed.
 	//
 	// example:
 	//
 	// v3
 	FcVersion *string `json:"fcVersion,omitempty" xml:"fcVersion,omitempty"`
+	GpuType   *string `json:"gpuType,omitempty" xml:"gpuType,omitempty"`
 	// The number of functions to return. The minimum value is 1 and the maximum value is 100.
 	//
 	// example:
@@ -7037,8 +7039,9 @@ type ListFunctionsRequest struct {
 	// example:
 	//
 	// my-func
-	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
-	Tags   []*Tag  `json:"tags" xml:"tags" type:"Repeated"`
+	Prefix  *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
+	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
+	Tags    []*Tag  `json:"tags" xml:"tags" type:"Repeated"`
 }
 
 func (s ListFunctionsRequest) String() string {
@@ -7049,8 +7052,18 @@ func (s ListFunctionsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListFunctionsRequest) SetDescription(v string) *ListFunctionsRequest {
+	s.Description = &v
+	return s
+}
+
 func (s *ListFunctionsRequest) SetFcVersion(v string) *ListFunctionsRequest {
 	s.FcVersion = &v
+	return s
+}
+
+func (s *ListFunctionsRequest) SetGpuType(v string) *ListFunctionsRequest {
+	s.GpuType = &v
 	return s
 }
 
@@ -7069,18 +7082,25 @@ func (s *ListFunctionsRequest) SetPrefix(v string) *ListFunctionsRequest {
 	return s
 }
 
+func (s *ListFunctionsRequest) SetRuntime(v string) *ListFunctionsRequest {
+	s.Runtime = &v
+	return s
+}
+
 func (s *ListFunctionsRequest) SetTags(v []*Tag) *ListFunctionsRequest {
 	s.Tags = v
 	return s
 }
 
 type ListFunctionsShrinkRequest struct {
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The version of Function Compute to which the functions belong. Valid values: v3 and v2. v3: only lists functions of Function Compute 3.0. v2: only lists functions of Function Compute 2.0. By default, this parameter is left empty and functions in both Function Compute 3.0 and Function Compute 2.0 are listed.
 	//
 	// example:
 	//
 	// v3
 	FcVersion *string `json:"fcVersion,omitempty" xml:"fcVersion,omitempty"`
+	GpuType   *string `json:"gpuType,omitempty" xml:"gpuType,omitempty"`
 	// The number of functions to return. The minimum value is 1 and the maximum value is 100.
 	//
 	// example:
@@ -7099,6 +7119,7 @@ type ListFunctionsShrinkRequest struct {
 	//
 	// my-func
 	Prefix     *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
+	Runtime    *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
 	TagsShrink *string `json:"tags,omitempty" xml:"tags,omitempty"`
 }
 
@@ -7110,8 +7131,18 @@ func (s ListFunctionsShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListFunctionsShrinkRequest) SetDescription(v string) *ListFunctionsShrinkRequest {
+	s.Description = &v
+	return s
+}
+
 func (s *ListFunctionsShrinkRequest) SetFcVersion(v string) *ListFunctionsShrinkRequest {
 	s.FcVersion = &v
+	return s
+}
+
+func (s *ListFunctionsShrinkRequest) SetGpuType(v string) *ListFunctionsShrinkRequest {
+	s.GpuType = &v
 	return s
 }
 
@@ -7127,6 +7158,11 @@ func (s *ListFunctionsShrinkRequest) SetNextToken(v string) *ListFunctionsShrink
 
 func (s *ListFunctionsShrinkRequest) SetPrefix(v string) *ListFunctionsShrinkRequest {
 	s.Prefix = &v
+	return s
+}
+
+func (s *ListFunctionsShrinkRequest) SetRuntime(v string) *ListFunctionsShrinkRequest {
+	s.Runtime = &v
 	return s
 }
 
@@ -11061,8 +11097,16 @@ func (client *Client) ListFunctionsWithOptions(tmpReq *ListFunctionsRequest, hea
 	}
 
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["description"] = request.Description
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.FcVersion)) {
 		query["fcVersion"] = request.FcVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GpuType)) {
+		query["gpuType"] = request.GpuType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Limit)) {
@@ -11075,6 +11119,10 @@ func (client *Client) ListFunctionsWithOptions(tmpReq *ListFunctionsRequest, hea
 
 	if !tea.BoolValue(util.IsUnset(request.Prefix)) {
 		query["prefix"] = request.Prefix
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Runtime)) {
+		query["runtime"] = request.Runtime
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
