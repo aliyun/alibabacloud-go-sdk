@@ -1,3 +1,6 @@
+2025-03-31 Version: v1.12.2
+- Generated golang 2024-06-28 for DianJin.
+
 2025-03-28 Version: v1.12.1
 - Update API RealTimeDialog: add request parameters body.opType.
 
