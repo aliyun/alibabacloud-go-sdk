@@ -13599,7 +13599,7 @@ type CreateSiteDeliveryTaskRequestS3Delivery struct {
 	//
 	// example:
 	//
-	// LTAIKh***
+	// yourAccessKeyID
 	AccessKey *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
 	// The directory in the bucket.
 	//
@@ -20120,7 +20120,7 @@ func (s *DeleteWafRuleResponse) SetBody(v *DeleteWafRuleResponseBody) *DeleteWaf
 }
 
 type DeleteWafRulesetRequest struct {
-	// ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2850233.html) interface.
+	// ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) interface.
 	//
 	// This parameter is required.
 	//
@@ -25527,6 +25527,86 @@ func (s *GetCompressionRuleResponse) SetStatusCode(v int32) *GetCompressionRuleR
 }
 
 func (s *GetCompressionRuleResponse) SetBody(v *GetCompressionRuleResponseBody) *GetCompressionRuleResponse {
+	s.Body = v
+	return s
+}
+
+type GetCrossBorderOptimizationRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 340035003106221
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s GetCrossBorderOptimizationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCrossBorderOptimizationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetCrossBorderOptimizationRequest) SetSiteId(v int64) *GetCrossBorderOptimizationRequest {
+	s.SiteId = &v
+	return s
+}
+
+type GetCrossBorderOptimizationResponseBody struct {
+	// example:
+	//
+	// on
+	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// example:
+	//
+	// CF521A24-633F-5350-A6A5-42AD503D0D20
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetCrossBorderOptimizationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCrossBorderOptimizationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetCrossBorderOptimizationResponseBody) SetEnable(v string) *GetCrossBorderOptimizationResponseBody {
+	s.Enable = &v
+	return s
+}
+
+func (s *GetCrossBorderOptimizationResponseBody) SetRequestId(v string) *GetCrossBorderOptimizationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetCrossBorderOptimizationResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetCrossBorderOptimizationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetCrossBorderOptimizationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCrossBorderOptimizationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetCrossBorderOptimizationResponse) SetHeaders(v map[string]*string) *GetCrossBorderOptimizationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetCrossBorderOptimizationResponse) SetStatusCode(v int32) *GetCrossBorderOptimizationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetCrossBorderOptimizationResponse) SetBody(v *GetCrossBorderOptimizationResponseBody) *GetCrossBorderOptimizationResponse {
 	s.Body = v
 	return s
 }
@@ -51635,103 +51715,103 @@ func (s *ListSiteDeliveryTasksResponse) SetBody(v *ListSiteDeliveryTasksResponse
 }
 
 type ListSitesRequest struct {
-	// Access type. Values:
+	// The DNS setup. Valid values:
 	//
-	// - **NS**: Access through NS hosting.
+	// 	- **NS**
 	//
-	// - **CNAME**: Access through CNAME.
+	// 	- **CNAME**
 	//
 	// example:
 	//
 	// NS
 	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
-	// Acceleration region. Values:
+	// The service location. Valid values:
 	//
-	// - **domestic**: China mainland only.
+	// 	- **domestic**: the Chinese mainland
 	//
-	// - **global**: Global.
+	// 	- **global**: global
 	//
-	// - **overseas**: Global (excluding China mainland).
+	// 	- **overseas**: outside the Chinese mainland
 	//
 	// example:
 	//
 	// global
 	Coverage *string `json:"Coverage,omitempty" xml:"Coverage,omitempty"`
-	// Enterprise edition only. When set to **true**, it indicates that only enterprise edition sites are queried.
+	// Specifies whether to query only websites on Enterprise plans. Valid values: **true and false**.
 	//
 	// example:
 	//
 	// false
 	OnlyEnterprise *bool `json:"OnlyEnterprise,omitempty" xml:"OnlyEnterprise,omitempty"`
-	// Sorting field, default sorted by creation time, supports:
+	// Sorting field. By default, it sorts by creation time, supporting the following options:
 	//
-	// - gmtCreate: Site creation time
+	// - gmtCreate: website creation time
 	//
-	// - visitTime: Site access time
+	// - visitTime：website visit time
 	//
 	// example:
 	//
 	// visitTime
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// Page number. Default value: **1**.
+	// The page number. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Page size. Default value: **500**.
+	// The number of entries per page. Default value: **500**.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Plan subscription type. Values:
+	// The plan type. Valid values:
 	//
-	// - **basicplan**: Basic plan.
+	// 	- **basicplan**: Entrance
 	//
-	// - **standardplan**: Standard plan.
+	// 	- **standardplan**: Pro
 	//
-	// - **advancedplan**: Advanced plan.
+	// 	- **advancedplan**: Premium
 	//
-	// - **enterpriseplan**: Enterprise plan.
+	// 	- **enterpriseplan**: Enterprise
 	//
 	// example:
 	//
 	// basicplan
 	PlanSubscribeType *string `json:"PlanSubscribeType,omitempty" xml:"PlanSubscribeType,omitempty"`
-	// Resource group ID. Used as a filter condition for the query.
+	// The ID of the resource group. This parameter specifies a filter condition for the query.
 	//
 	// example:
 	//
 	// rg-aekzd3styujvyei
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Site name. Used as a filter condition for the query.
+	// The website name. This parameter specifies a filter condition for the query.
 	//
 	// example:
 	//
 	// example.com
 	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
-	// Search match pattern for the site name. The default is exact match, with values:
+	// The match mode to search for the website name. Default value: exact. Valid values:
 	//
-	// - **prefix**: Prefix match.
+	// 	- **prefix**: match by prefix.
 	//
-	// - **suffix**: Suffix match.
+	// 	- **suffix**: match by suffix.
 	//
-	// - **exact**: Exact match.
+	// 	- **exact**: exact match.
 	//
-	// - **fuzzy**: Fuzzy match.
+	// 	- **fuzzy**: fuzzy match.
 	//
 	// example:
 	//
 	// fuzzy
 	SiteSearchType *string `json:"SiteSearchType,omitempty" xml:"SiteSearchType,omitempty"`
-	// Site status. Used as a filter condition for the query.
+	// The website status. This parameter specifies a filter condition for the query.
 	//
 	// example:
 	//
 	// pending
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Tag filtering rules.
+	// The tag filtering rule.
 	TagFilter []*ListSitesRequestTagFilter `json:"TagFilter,omitempty" xml:"TagFilter,omitempty" type:"Repeated"`
 }
 
@@ -51804,13 +51884,13 @@ func (s *ListSitesRequest) SetTagFilter(v []*ListSitesRequestTagFilter) *ListSit
 }
 
 type ListSitesRequestTagFilter struct {
-	// Tag key, used as a filter condition for the query.
+	// The tag key. This parameter specifies a filter condition for the query.
 	//
 	// example:
 	//
 	// tag1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// Tag value, used as a filter condition for the query.
+	// The tag value. This parameter specifies a filter condition for the query.
 	//
 	// example:
 	//
@@ -51837,103 +51917,103 @@ func (s *ListSitesRequestTagFilter) SetValue(v string) *ListSitesRequestTagFilte
 }
 
 type ListSitesShrinkRequest struct {
-	// Access type. Values:
+	// The DNS setup. Valid values:
 	//
-	// - **NS**: Access through NS hosting.
+	// 	- **NS**
 	//
-	// - **CNAME**: Access through CNAME.
+	// 	- **CNAME**
 	//
 	// example:
 	//
 	// NS
 	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
-	// Acceleration region. Values:
+	// The service location. Valid values:
 	//
-	// - **domestic**: China mainland only.
+	// 	- **domestic**: the Chinese mainland
 	//
-	// - **global**: Global.
+	// 	- **global**: global
 	//
-	// - **overseas**: Global (excluding China mainland).
+	// 	- **overseas**: outside the Chinese mainland
 	//
 	// example:
 	//
 	// global
 	Coverage *string `json:"Coverage,omitempty" xml:"Coverage,omitempty"`
-	// Enterprise edition only. When set to **true**, it indicates that only enterprise edition sites are queried.
+	// Specifies whether to query only websites on Enterprise plans. Valid values: **true and false**.
 	//
 	// example:
 	//
 	// false
 	OnlyEnterprise *bool `json:"OnlyEnterprise,omitempty" xml:"OnlyEnterprise,omitempty"`
-	// Sorting field, default sorted by creation time, supports:
+	// Sorting field. By default, it sorts by creation time, supporting the following options:
 	//
-	// - gmtCreate: Site creation time
+	// - gmtCreate: website creation time
 	//
-	// - visitTime: Site access time
+	// - visitTime：website visit time
 	//
 	// example:
 	//
 	// visitTime
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// Page number. Default value: **1**.
+	// The page number. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Page size. Default value: **500**.
+	// The number of entries per page. Default value: **500**.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Plan subscription type. Values:
+	// The plan type. Valid values:
 	//
-	// - **basicplan**: Basic plan.
+	// 	- **basicplan**: Entrance
 	//
-	// - **standardplan**: Standard plan.
+	// 	- **standardplan**: Pro
 	//
-	// - **advancedplan**: Advanced plan.
+	// 	- **advancedplan**: Premium
 	//
-	// - **enterpriseplan**: Enterprise plan.
+	// 	- **enterpriseplan**: Enterprise
 	//
 	// example:
 	//
 	// basicplan
 	PlanSubscribeType *string `json:"PlanSubscribeType,omitempty" xml:"PlanSubscribeType,omitempty"`
-	// Resource group ID. Used as a filter condition for the query.
+	// The ID of the resource group. This parameter specifies a filter condition for the query.
 	//
 	// example:
 	//
 	// rg-aekzd3styujvyei
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Site name. Used as a filter condition for the query.
+	// The website name. This parameter specifies a filter condition for the query.
 	//
 	// example:
 	//
 	// example.com
 	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
-	// Search match pattern for the site name. The default is exact match, with values:
+	// The match mode to search for the website name. Default value: exact. Valid values:
 	//
-	// - **prefix**: Prefix match.
+	// 	- **prefix**: match by prefix.
 	//
-	// - **suffix**: Suffix match.
+	// 	- **suffix**: match by suffix.
 	//
-	// - **exact**: Exact match.
+	// 	- **exact**: exact match.
 	//
-	// - **fuzzy**: Fuzzy match.
+	// 	- **fuzzy**: fuzzy match.
 	//
 	// example:
 	//
 	// fuzzy
 	SiteSearchType *string `json:"SiteSearchType,omitempty" xml:"SiteSearchType,omitempty"`
-	// Site status. Used as a filter condition for the query.
+	// The website status. This parameter specifies a filter condition for the query.
 	//
 	// example:
 	//
 	// pending
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Tag filtering rules.
+	// The tag filtering rule.
 	TagFilterShrink *string `json:"TagFilter,omitempty" xml:"TagFilter,omitempty"`
 }
 
@@ -52006,27 +52086,27 @@ func (s *ListSitesShrinkRequest) SetTagFilterShrink(v string) *ListSitesShrinkRe
 }
 
 type ListSitesResponseBody struct {
-	// Page number of the returned data.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Number of sites per page.
+	// The number of websites per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// List of queried site information.
+	// The queried websites.
 	Sites []*ListSitesResponseBodySites `json:"Sites,omitempty" xml:"Sites,omitempty" type:"Repeated"`
-	// Total number of sites.
+	// The total number of websites.
 	//
 	// example:
 	//
@@ -52068,116 +52148,116 @@ func (s *ListSitesResponseBody) SetTotalCount(v int32) *ListSitesResponseBody {
 }
 
 type ListSitesResponseBodySites struct {
-	// Site access type. Values:
+	// The DNS setup for the website. Valid values:
 	//
-	// - **NS**: Access through NS.
+	// 	- **NS**
 	//
-	// - **CNAME**: Access through CNAME.
+	// 	- **CNAME**
 	//
 	// example:
 	//
 	// NS
 	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
-	// CNAME suffix of the site. For sites accessed via CNAME, this is the CNAME suffix that needs to be configured.
+	// The CNAME of the website domain. If you use CNAME setup when you add your website to ESA, the value is the CNAME that you configured then.
 	//
 	// example:
 	//
 	// example.cname.com
 	CnameZone *string `json:"CnameZone,omitempty" xml:"CnameZone,omitempty"`
-	// Site acceleration region. Values:
+	// The service location for the website. Valid values:
 	//
-	// - **domestic**: China mainland only.
+	// 	- **domestic**: the Chinese mainland
 	//
-	// - **global**: Global.
+	// 	- **global**: global
 	//
-	// - **overseas**: Global (excluding China mainland).
+	// 	- **overseas**: outside the Chinese mainland
 	//
 	// example:
 	//
 	// domestic
 	Coverage *string `json:"Coverage,omitempty" xml:"Coverage,omitempty"`
-	// Site creation time, in ISO8601 format and using UTC time, formatted as yyyy-MM-ddTHH:mm:ssZ.
+	// The time when the website was added. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2023-12-24T02:01:11Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the plan instance bound to the site.
+	// The ID of the plan associated with the website.
 	//
 	// example:
 	//
 	// onBvtlmIyeXLbiDw81F9
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The list of NS (Name Servers) assigned to the site. Separated by commas (,).
+	// The nameservers assigned to the website domain, which are separated by commas (,).
 	//
 	// example:
 	//
 	// male1-1.ialicdn.com,female1-1.ialicdn.com
 	NameServerList *string `json:"NameServerList,omitempty" xml:"NameServerList,omitempty"`
 	OfflineReason  *string `json:"OfflineReason,omitempty" xml:"OfflineReason,omitempty"`
-	// The name of the plan.
+	// The plan name.
 	//
 	// example:
 	//
 	// plan-168656498****
 	PlanName *string `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
-	// The specification name of the site\\"s plan.
+	// The plan associated with the website.
 	//
 	// example:
 	//
 	// normal
 	PlanSpecName *string `json:"PlanSpecName,omitempty" xml:"PlanSpecName,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-aek26g6i6se6pna
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The site ID.
+	// The website ID.
 	//
 	// example:
 	//
 	// 123456789****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The name of the site.
+	// The website name.
 	//
 	// example:
 	//
 	// example.com
 	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
-	// The status of the site. Possible values:
+	// The website status. Valid values:
 	//
-	// - **pending**: The site is pending configuration.
+	// 	- **pending**: The website is to be configured.
 	//
-	// - **active**: The site is active.
+	// 	- **active**: The website is active.
 	//
-	// - **offline**: The site is offline.
+	// 	- **offline**: The website is suspended.
 	//
-	// - **moved**: The site has been replaced.
+	// 	- **moved**: The website has been added and verified by another Alibaba Cloud account.
 	//
 	// example:
 	//
 	// pending
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags of the site.
+	// The tags of the website.
 	//
 	// example:
 	//
 	// {"tag1":"value1"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The update time of the site, represented in ISO8601 format and using UTC, formatted as yyyy-MM-ddTHH:mm:ssZ.
+	// The time when the website was updated. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2023-12-24T02:01:11Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The verification code for site ownership. When the site is accessed via CNAME, this TXT verification code needs to be configured.
+	// The code that is used to verify the website domain ownership. As part of the verification TXT record, this parameter is returned for websites that use CNAME setup.
 	//
 	// example:
 	//
 	// verify_d516cb3740f81f0cef77d162edd1****
 	VerifyCode *string `json:"VerifyCode,omitempty" xml:"VerifyCode,omitempty"`
-	// The visit time of the site, formatted according to ISO8601 and using UTC, in the format yyyy-MM-ddTHH:mm:ssZ.
+	// The website visit time is represented in the ISO 8601 date format using UTC time, formatted as yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// example:
 	//
@@ -59300,7 +59380,7 @@ type SetOriginClientCertificateHostnamesResponseBody struct {
 	// example:
 	//
 	// 123456789****
-	SiteId *string `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 	// The website name.
 	//
 	// example:
@@ -59332,7 +59412,7 @@ func (s *SetOriginClientCertificateHostnamesResponseBody) SetRequestId(v string)
 	return s
 }
 
-func (s *SetOriginClientCertificateHostnamesResponseBody) SetSiteId(v string) *SetOriginClientCertificateHostnamesResponseBody {
+func (s *SetOriginClientCertificateHostnamesResponseBody) SetSiteId(v int64) *SetOriginClientCertificateHostnamesResponseBody {
 	s.SiteId = &v
 	return s
 }
@@ -60755,6 +60835,88 @@ func (s *UpdateCompressionRuleResponse) SetStatusCode(v int32) *UpdateCompressio
 }
 
 func (s *UpdateCompressionRuleResponse) SetBody(v *UpdateCompressionRuleResponseBody) *UpdateCompressionRuleResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateCrossBorderOptimizationRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// on
+	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234567890123
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s UpdateCrossBorderOptimizationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCrossBorderOptimizationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCrossBorderOptimizationRequest) SetEnable(v string) *UpdateCrossBorderOptimizationRequest {
+	s.Enable = &v
+	return s
+}
+
+func (s *UpdateCrossBorderOptimizationRequest) SetSiteId(v int64) *UpdateCrossBorderOptimizationRequest {
+	s.SiteId = &v
+	return s
+}
+
+type UpdateCrossBorderOptimizationResponseBody struct {
+	// example:
+	//
+	// CB1A380B-09F0-41BB-A198-72F8FD6DA2FE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateCrossBorderOptimizationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCrossBorderOptimizationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCrossBorderOptimizationResponseBody) SetRequestId(v string) *UpdateCrossBorderOptimizationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateCrossBorderOptimizationResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateCrossBorderOptimizationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateCrossBorderOptimizationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCrossBorderOptimizationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCrossBorderOptimizationResponse) SetHeaders(v map[string]*string) *UpdateCrossBorderOptimizationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateCrossBorderOptimizationResponse) SetStatusCode(v int32) *UpdateCrossBorderOptimizationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateCrossBorderOptimizationResponse) SetBody(v *UpdateCrossBorderOptimizationResponseBody) *UpdateCrossBorderOptimizationResponse {
 	s.Body = v
 	return s
 }
@@ -81176,6 +81338,73 @@ func (client *Client) GetCompressionRule(request *GetCompressionRuleRequest) (_r
 
 // Summary:
 //
+// 查询站点中国大陆网络接入优化配置
+//
+// @param request - GetCrossBorderOptimizationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCrossBorderOptimizationResponse
+func (client *Client) GetCrossBorderOptimizationWithOptions(request *GetCrossBorderOptimizationRequest, runtime *util.RuntimeOptions) (_result *GetCrossBorderOptimizationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetCrossBorderOptimization"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetCrossBorderOptimizationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetCrossBorderOptimizationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询站点中国大陆网络接入优化配置
+//
+// @param request - GetCrossBorderOptimizationRequest
+//
+// @return GetCrossBorderOptimizationResponse
+func (client *Client) GetCrossBorderOptimization(request *GetCrossBorderOptimizationRequest) (_result *GetCrossBorderOptimizationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetCrossBorderOptimizationResponse{}
+	_body, _err := client.GetCrossBorderOptimizationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Query Site Developer Mode Configuration
 //
 // @param request - GetDevelopmentModeRequest
@@ -88054,7 +88283,7 @@ func (client *Client) ListSiteDeliveryTasks(request *ListSiteDeliveryTasksReques
 
 // Summary:
 //
-// # Query Site List
+// Queries the information about websites in your account, such as the name, status, and configuration of each website.
 //
 // @param tmpReq - ListSitesRequest
 //
@@ -88109,7 +88338,7 @@ func (client *Client) ListSitesWithOptions(tmpReq *ListSitesRequest, runtime *ut
 
 // Summary:
 //
-// # Query Site List
+// Queries the information about websites in your account, such as the name, status, and configuration of each website.
 //
 // @param request - ListSitesRequest
 //
@@ -91685,6 +91914,81 @@ func (client *Client) UpdateCompressionRule(request *UpdateCompressionRuleReques
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateCompressionRuleResponse{}
 	_body, _err := client.UpdateCompressionRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改站点中国大陆网络接入优化配置
+//
+// @param request - UpdateCrossBorderOptimizationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateCrossBorderOptimizationResponse
+func (client *Client) UpdateCrossBorderOptimizationWithOptions(request *UpdateCrossBorderOptimizationRequest, runtime *util.RuntimeOptions) (_result *UpdateCrossBorderOptimizationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Enable)) {
+		query["Enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateCrossBorderOptimization"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateCrossBorderOptimizationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateCrossBorderOptimizationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 修改站点中国大陆网络接入优化配置
+//
+// @param request - UpdateCrossBorderOptimizationRequest
+//
+// @return UpdateCrossBorderOptimizationResponse
+func (client *Client) UpdateCrossBorderOptimization(request *UpdateCrossBorderOptimizationRequest) (_result *UpdateCrossBorderOptimizationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateCrossBorderOptimizationResponse{}
+	_body, _err := client.UpdateCrossBorderOptimizationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
