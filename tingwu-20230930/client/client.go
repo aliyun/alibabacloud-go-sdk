@@ -159,13 +159,15 @@ type CreateTaskRequestParameters struct {
 	// example:
 	//
 	// true
-	AutoChaptersEnabled      *bool                                         `json:"AutoChaptersEnabled,omitempty" xml:"AutoChaptersEnabled,omitempty"`
-	ContentExtraction        *CreateTaskRequestParametersContentExtraction `json:"ContentExtraction,omitempty" xml:"ContentExtraction,omitempty" type:"Struct"`
-	ContentExtractionEnabled *bool                                         `json:"ContentExtractionEnabled,omitempty" xml:"ContentExtractionEnabled,omitempty"`
-	CustomPrompt             *CreateTaskRequestParametersCustomPrompt      `json:"CustomPrompt,omitempty" xml:"CustomPrompt,omitempty" type:"Struct"`
-	CustomPromptEnabled      *bool                                         `json:"CustomPromptEnabled,omitempty" xml:"CustomPromptEnabled,omitempty"`
-	ExtraParams              *CreateTaskRequestParametersExtraParams       `json:"ExtraParams,omitempty" xml:"ExtraParams,omitempty" type:"Struct"`
-	MeetingAssistance        *CreateTaskRequestParametersMeetingAssistance `json:"MeetingAssistance,omitempty" xml:"MeetingAssistance,omitempty" type:"Struct"`
+	AutoChaptersEnabled        *bool                                           `json:"AutoChaptersEnabled,omitempty" xml:"AutoChaptersEnabled,omitempty"`
+	ContentExtraction          *CreateTaskRequestParametersContentExtraction   `json:"ContentExtraction,omitempty" xml:"ContentExtraction,omitempty" type:"Struct"`
+	ContentExtractionEnabled   *bool                                           `json:"ContentExtractionEnabled,omitempty" xml:"ContentExtractionEnabled,omitempty"`
+	CustomPrompt               *CreateTaskRequestParametersCustomPrompt        `json:"CustomPrompt,omitempty" xml:"CustomPrompt,omitempty" type:"Struct"`
+	CustomPromptEnabled        *bool                                           `json:"CustomPromptEnabled,omitempty" xml:"CustomPromptEnabled,omitempty"`
+	ExtraParams                *CreateTaskRequestParametersExtraParams         `json:"ExtraParams,omitempty" xml:"ExtraParams,omitempty" type:"Struct"`
+	IdentityRecognition        *CreateTaskRequestParametersIdentityRecognition `json:"IdentityRecognition,omitempty" xml:"IdentityRecognition,omitempty" type:"Struct"`
+	IdentityRecognitionEnabled *bool                                           `json:"IdentityRecognitionEnabled,omitempty" xml:"IdentityRecognitionEnabled,omitempty"`
+	MeetingAssistance          *CreateTaskRequestParametersMeetingAssistance   `json:"MeetingAssistance,omitempty" xml:"MeetingAssistance,omitempty" type:"Struct"`
 	// example:
 	//
 	// false
@@ -223,6 +225,16 @@ func (s *CreateTaskRequestParameters) SetCustomPromptEnabled(v bool) *CreateTask
 
 func (s *CreateTaskRequestParameters) SetExtraParams(v *CreateTaskRequestParametersExtraParams) *CreateTaskRequestParameters {
 	s.ExtraParams = v
+	return s
+}
+
+func (s *CreateTaskRequestParameters) SetIdentityRecognition(v *CreateTaskRequestParametersIdentityRecognition) *CreateTaskRequestParameters {
+	s.IdentityRecognition = v
+	return s
+}
+
+func (s *CreateTaskRequestParameters) SetIdentityRecognitionEnabled(v bool) *CreateTaskRequestParameters {
+	s.IdentityRecognitionEnabled = &v
 	return s
 }
 
@@ -316,8 +328,9 @@ func (s *CreateTaskRequestParametersContentExtraction) SetSpeakerMap(v map[strin
 }
 
 type CreateTaskRequestParametersContentExtractionExtractionContents struct {
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	Title   *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	Content  *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Identity *string `json:"Identity,omitempty" xml:"Identity,omitempty"`
+	Title    *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s CreateTaskRequestParametersContentExtractionExtractionContents) String() string {
@@ -330,6 +343,11 @@ func (s CreateTaskRequestParametersContentExtractionExtractionContents) GoString
 
 func (s *CreateTaskRequestParametersContentExtractionExtractionContents) SetContent(v string) *CreateTaskRequestParametersContentExtractionExtractionContents {
 	s.Content = &v
+	return s
+}
+
+func (s *CreateTaskRequestParametersContentExtractionExtractionContents) SetIdentity(v string) *CreateTaskRequestParametersContentExtractionExtractionContents {
+	s.Identity = &v
 	return s
 }
 
@@ -430,6 +448,52 @@ func (s *CreateTaskRequestParametersExtraParams) SetOcrAuxiliaryEnabled(v bool) 
 
 func (s *CreateTaskRequestParametersExtraParams) SetTranslateLlmSceneEnabled(v bool) *CreateTaskRequestParametersExtraParams {
 	s.TranslateLlmSceneEnabled = &v
+	return s
+}
+
+type CreateTaskRequestParametersIdentityRecognition struct {
+	IdentityContents  []*CreateTaskRequestParametersIdentityRecognitionIdentityContents `json:"IdentityContents,omitempty" xml:"IdentityContents,omitempty" type:"Repeated"`
+	SceneIntroduction *string                                                           `json:"SceneIntroduction,omitempty" xml:"SceneIntroduction,omitempty"`
+}
+
+func (s CreateTaskRequestParametersIdentityRecognition) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTaskRequestParametersIdentityRecognition) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTaskRequestParametersIdentityRecognition) SetIdentityContents(v []*CreateTaskRequestParametersIdentityRecognitionIdentityContents) *CreateTaskRequestParametersIdentityRecognition {
+	s.IdentityContents = v
+	return s
+}
+
+func (s *CreateTaskRequestParametersIdentityRecognition) SetSceneIntroduction(v string) *CreateTaskRequestParametersIdentityRecognition {
+	s.SceneIntroduction = &v
+	return s
+}
+
+type CreateTaskRequestParametersIdentityRecognitionIdentityContents struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s CreateTaskRequestParametersIdentityRecognitionIdentityContents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTaskRequestParametersIdentityRecognitionIdentityContents) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTaskRequestParametersIdentityRecognitionIdentityContents) SetDescription(v string) *CreateTaskRequestParametersIdentityRecognitionIdentityContents {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateTaskRequestParametersIdentityRecognitionIdentityContents) SetName(v string) *CreateTaskRequestParametersIdentityRecognitionIdentityContents {
+	s.Name = &v
 	return s
 }
 
