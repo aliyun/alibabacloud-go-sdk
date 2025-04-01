@@ -1,3 +1,7 @@
+2025-04-01 Version: v1.13.0
+- Support API UpdateDocumentChunk.
+
+
 2025-03-31 Version: v1.12.2
 - Generated golang 2024-06-28 for DianJin.
 

@@ -12065,6 +12065,176 @@ func (s *UpdateDocumentResponse) SetBody(v *UpdateDocumentResponseBody) *UpdateD
 	return s
 }
 
+type UpdateDocumentChunkRequest struct {
+	// This parameter is required.
+	Chunks []*UpdateDocumentChunkRequestChunks `json:"chunks,omitempty" xml:"chunks,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sjdgdsfg
+	LibraryId *string `json:"libraryId,omitempty" xml:"libraryId,omitempty"`
+}
+
+func (s UpdateDocumentChunkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDocumentChunkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDocumentChunkRequest) SetChunks(v []*UpdateDocumentChunkRequestChunks) *UpdateDocumentChunkRequest {
+	s.Chunks = v
+	return s
+}
+
+func (s *UpdateDocumentChunkRequest) SetLibraryId(v string) *UpdateDocumentChunkRequest {
+	s.LibraryId = &v
+	return s
+}
+
+type UpdateDocumentChunkRequestChunks struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1987834755763847
+	ChunkId *string `json:"chunkId,omitempty" xml:"chunkId,omitempty"`
+	// This parameter is required.
+	ChunkText *string `json:"chunkText,omitempty" xml:"chunkText,omitempty"`
+}
+
+func (s UpdateDocumentChunkRequestChunks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDocumentChunkRequestChunks) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDocumentChunkRequestChunks) SetChunkId(v string) *UpdateDocumentChunkRequestChunks {
+	s.ChunkId = &v
+	return s
+}
+
+func (s *UpdateDocumentChunkRequestChunks) SetChunkText(v string) *UpdateDocumentChunkRequestChunks {
+	s.ChunkText = &v
+	return s
+}
+
+type UpdateDocumentChunkResponseBody struct {
+	// example:
+	//
+	// null
+	Cost *int64 `json:"cost,omitempty" xml:"cost,omitempty"`
+	// example:
+	//
+	// SUCCESS
+	Data *string `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// null
+	DataType *string `json:"dataType,omitempty" xml:"dataType,omitempty"`
+	// example:
+	//
+	// 0
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// example:
+	//
+	// ok
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// 003D019A-1BB3-53EC-A0D2-CE76DA5D73B1
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 2024-01-01 00:00:00
+	Time *string `json:"time,omitempty" xml:"time,omitempty"`
+}
+
+func (s UpdateDocumentChunkResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDocumentChunkResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDocumentChunkResponseBody) SetCost(v int64) *UpdateDocumentChunkResponseBody {
+	s.Cost = &v
+	return s
+}
+
+func (s *UpdateDocumentChunkResponseBody) SetData(v string) *UpdateDocumentChunkResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *UpdateDocumentChunkResponseBody) SetDataType(v string) *UpdateDocumentChunkResponseBody {
+	s.DataType = &v
+	return s
+}
+
+func (s *UpdateDocumentChunkResponseBody) SetErrCode(v string) *UpdateDocumentChunkResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *UpdateDocumentChunkResponseBody) SetMessage(v string) *UpdateDocumentChunkResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateDocumentChunkResponseBody) SetRequestId(v string) *UpdateDocumentChunkResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateDocumentChunkResponseBody) SetSuccess(v bool) *UpdateDocumentChunkResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *UpdateDocumentChunkResponseBody) SetTime(v string) *UpdateDocumentChunkResponseBody {
+	s.Time = &v
+	return s
+}
+
+type UpdateDocumentChunkResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateDocumentChunkResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateDocumentChunkResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDocumentChunkResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDocumentChunkResponse) SetHeaders(v map[string]*string) *UpdateDocumentChunkResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateDocumentChunkResponse) SetStatusCode(v int32) *UpdateDocumentChunkResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateDocumentChunkResponse) SetBody(v *UpdateDocumentChunkResponseBody) *UpdateDocumentChunkResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateLibraryRequest struct {
 	Description  *string                           `json:"description,omitempty" xml:"description,omitempty"`
 	IndexSetting *UpdateLibraryRequestIndexSetting `json:"indexSetting,omitempty" xml:"indexSetting,omitempty" type:"Struct"`
@@ -16555,6 +16725,85 @@ func (client *Client) UpdateDocument(workspaceId *string, request *UpdateDocumen
 	headers := make(map[string]*string)
 	_result = &UpdateDocumentResponse{}
 	_body, _err := client.UpdateDocumentWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新文档的chunk
+//
+// @param request - UpdateDocumentChunkRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDocumentChunkResponse
+func (client *Client) UpdateDocumentChunkWithOptions(workspaceId *string, request *UpdateDocumentChunkRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateDocumentChunkResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Chunks)) {
+		body["chunks"] = request.Chunks
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LibraryId)) {
+		body["libraryId"] = request.LibraryId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateDocumentChunk"),
+		Version:     tea.String("2024-06-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/api/library/updateDocumentChunk"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateDocumentChunkResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateDocumentChunkResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 更新文档的chunk
+//
+// @param request - UpdateDocumentChunkRequest
+//
+// @return UpdateDocumentChunkResponse
+func (client *Client) UpdateDocumentChunk(workspaceId *string, request *UpdateDocumentChunkRequest) (_result *UpdateDocumentChunkResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateDocumentChunkResponse{}
+	_body, _err := client.UpdateDocumentChunkWithOptions(workspaceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
