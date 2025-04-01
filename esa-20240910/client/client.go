@@ -3125,7 +3125,7 @@ func (s *BatchCreateWafRulesShrinkRequest) SetSiteVersion(v int32) *BatchCreateW
 }
 
 type BatchCreateWafRulesResponseBody struct {
-	// ID of the WAF rule, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2850237.html) interface.
+	// ID of the WAF rule, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2878257.html) interface.
 	Ids []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
 	// Request ID.
 	//
@@ -3133,7 +3133,7 @@ type BatchCreateWafRulesResponseBody struct {
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2850233.html) interface.
+	// ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) interface.
 	//
 	// example:
 	//
@@ -10302,7 +10302,8 @@ type CreateOriginRuleRequest struct {
 	// example:
 	//
 	// on
-	OriginMtls *string `json:"OriginMtls,omitempty" xml:"OriginMtls,omitempty"`
+	OriginMtls        *string `json:"OriginMtls,omitempty" xml:"OriginMtls,omitempty"`
+	OriginReadTimeout *string `json:"OriginReadTimeout,omitempty" xml:"OriginReadTimeout,omitempty"`
 	// Protocol used for the origin request. Possible values:
 	//
 	// - http: Use HTTP protocol for origin requests.
@@ -10417,6 +10418,11 @@ func (s *CreateOriginRuleRequest) SetOriginHttpsPort(v string) *CreateOriginRule
 
 func (s *CreateOriginRuleRequest) SetOriginMtls(v string) *CreateOriginRuleRequest {
 	s.OriginMtls = &v
+	return s
+}
+
+func (s *CreateOriginRuleRequest) SetOriginReadTimeout(v string) *CreateOriginRuleRequest {
+	s.OriginReadTimeout = &v
 	return s
 }
 
@@ -20021,7 +20027,7 @@ func (s *DeleteUserDeliveryTaskResponse) SetBody(v *DeleteUserDeliveryTaskRespon
 }
 
 type DeleteWafRuleRequest struct {
-	// ID of the WAF rule, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2850237.html) interface.
+	// ID of the WAF rule, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2878257.html) interface.
 	//
 	// This parameter is required.
 	//
@@ -26299,6 +26305,130 @@ func (s *GetEdgeContainerAppResourceReserveResponse) SetBody(v *GetEdgeContainer
 	return s
 }
 
+type GetEdgeContainerAppResourceStatusRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// app-96253477062511****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+}
+
+func (s GetEdgeContainerAppResourceStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEdgeContainerAppResourceStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetEdgeContainerAppResourceStatusRequest) SetAppId(v string) *GetEdgeContainerAppResourceStatusRequest {
+	s.AppId = &v
+	return s
+}
+
+type GetEdgeContainerAppResourceStatusResponseBody struct {
+	Regions []*GetEdgeContainerAppResourceStatusResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 15C66C7B-671A-4297-9187-2C4477247A74
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetEdgeContainerAppResourceStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEdgeContainerAppResourceStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetEdgeContainerAppResourceStatusResponseBody) SetRegions(v []*GetEdgeContainerAppResourceStatusResponseBodyRegions) *GetEdgeContainerAppResourceStatusResponseBody {
+	s.Regions = v
+	return s
+}
+
+func (s *GetEdgeContainerAppResourceStatusResponseBody) SetRequestId(v string) *GetEdgeContainerAppResourceStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetEdgeContainerAppResourceStatusResponseBodyRegions struct {
+	// example:
+	//
+	// unicom
+	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	// example:
+	//
+	// 1
+	Ready *int32 `json:"Ready,omitempty" xml:"Ready,omitempty"`
+	// example:
+	//
+	// huadong
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// example:
+	//
+	// 1
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s GetEdgeContainerAppResourceStatusResponseBodyRegions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEdgeContainerAppResourceStatusResponseBodyRegions) GoString() string {
+	return s.String()
+}
+
+func (s *GetEdgeContainerAppResourceStatusResponseBodyRegions) SetIsp(v string) *GetEdgeContainerAppResourceStatusResponseBodyRegions {
+	s.Isp = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppResourceStatusResponseBodyRegions) SetReady(v int32) *GetEdgeContainerAppResourceStatusResponseBodyRegions {
+	s.Ready = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppResourceStatusResponseBodyRegions) SetRegion(v string) *GetEdgeContainerAppResourceStatusResponseBodyRegions {
+	s.Region = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppResourceStatusResponseBodyRegions) SetTotal(v int32) *GetEdgeContainerAppResourceStatusResponseBodyRegions {
+	s.Total = &v
+	return s
+}
+
+type GetEdgeContainerAppResourceStatusResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetEdgeContainerAppResourceStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetEdgeContainerAppResourceStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEdgeContainerAppResourceStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetEdgeContainerAppResourceStatusResponse) SetHeaders(v map[string]*string) *GetEdgeContainerAppResourceStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetEdgeContainerAppResourceStatusResponse) SetStatusCode(v int32) *GetEdgeContainerAppResourceStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetEdgeContainerAppResourceStatusResponse) SetBody(v *GetEdgeContainerAppResourceStatusResponseBody) *GetEdgeContainerAppResourceStatusResponse {
+	s.Body = v
+	return s
+}
+
 type GetEdgeContainerAppStatusRequest struct {
 	// The application ID, which can be obtained by calling the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation.
 	//
@@ -32541,7 +32671,8 @@ type GetOriginRuleResponseBody struct {
 	// example:
 	//
 	// on
-	OriginMtls *string `json:"OriginMtls,omitempty" xml:"OriginMtls,omitempty"`
+	OriginMtls        *string `json:"OriginMtls,omitempty" xml:"OriginMtls,omitempty"`
+	OriginReadTimeout *string `json:"OriginReadTimeout,omitempty" xml:"OriginReadTimeout,omitempty"`
 	// Protocol used for the origin request. Value range:
 	//
 	// - http: Use HTTP protocol for origin.
@@ -32669,6 +32800,11 @@ func (s *GetOriginRuleResponseBody) SetOriginHttpsPort(v string) *GetOriginRuleR
 
 func (s *GetOriginRuleResponseBody) SetOriginMtls(v string) *GetOriginRuleResponseBody {
 	s.OriginMtls = &v
+	return s
+}
+
+func (s *GetOriginRuleResponseBody) SetOriginReadTimeout(v string) *GetOriginRuleResponseBody {
+	s.OriginReadTimeout = &v
 	return s
 }
 
@@ -48899,7 +49035,8 @@ type ListOriginRulesResponseBodyConfigs struct {
 	// example:
 	//
 	// on
-	OriginMtls *string `json:"OriginMtls,omitempty" xml:"OriginMtls,omitempty"`
+	OriginMtls        *string `json:"OriginMtls,omitempty" xml:"OriginMtls,omitempty"`
+	OriginReadTimeout *string `json:"OriginReadTimeout,omitempty" xml:"OriginReadTimeout,omitempty"`
 	// Protocol used for the origin request. Value range:
 	//
 	// - http: Use HTTP protocol for origin.
@@ -49021,6 +49158,11 @@ func (s *ListOriginRulesResponseBodyConfigs) SetOriginHttpsPort(v string) *ListO
 
 func (s *ListOriginRulesResponseBodyConfigs) SetOriginMtls(v string) *ListOriginRulesResponseBodyConfigs {
 	s.OriginMtls = &v
+	return s
+}
+
+func (s *ListOriginRulesResponseBodyConfigs) SetOriginReadTimeout(v string) *ListOriginRulesResponseBodyConfigs {
+	s.OriginReadTimeout = &v
 	return s
 }
 
@@ -51747,7 +51889,7 @@ type ListSitesRequest struct {
 	//
 	// - gmtCreate: website creation time
 	//
-	// - visitTime：website visit time
+	// - visitTime: website visit time
 	//
 	// example:
 	//
@@ -51949,7 +52091,7 @@ type ListSitesShrinkRequest struct {
 	//
 	// - gmtCreate: website creation time
 	//
-	// - visitTime：website visit time
+	// - visitTime: website visit time
 	//
 	// example:
 	//
@@ -64921,7 +65063,8 @@ type UpdateOriginRuleRequest struct {
 	// example:
 	//
 	// on
-	OriginMtls *string `json:"OriginMtls,omitempty" xml:"OriginMtls,omitempty"`
+	OriginMtls        *string `json:"OriginMtls,omitempty" xml:"OriginMtls,omitempty"`
+	OriginReadTimeout *string `json:"OriginReadTimeout,omitempty" xml:"OriginReadTimeout,omitempty"`
 	// Protocol used for the origin request. Valid values:
 	//
 	// - http: Use HTTP protocol for origin pull.
@@ -65035,6 +65178,11 @@ func (s *UpdateOriginRuleRequest) SetOriginHttpsPort(v string) *UpdateOriginRule
 
 func (s *UpdateOriginRuleRequest) SetOriginMtls(v string) *UpdateOriginRuleRequest {
 	s.OriginMtls = &v
+	return s
+}
+
+func (s *UpdateOriginRuleRequest) SetOriginReadTimeout(v string) *UpdateOriginRuleRequest {
+	s.OriginReadTimeout = &v
 	return s
 }
 
@@ -74241,6 +74389,10 @@ func (client *Client) CreateOriginRuleWithOptions(request *CreateOriginRuleReque
 		query["OriginMtls"] = request.OriginMtls
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.OriginReadTimeout)) {
+		query["OriginReadTimeout"] = request.OriginReadTimeout
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OriginScheme)) {
 		query["OriginScheme"] = request.OriginScheme
 	}
@@ -81672,6 +81824,77 @@ func (client *Client) GetEdgeContainerAppResourceReserve(request *GetEdgeContain
 	runtime := &util.RuntimeOptions{}
 	_result = &GetEdgeContainerAppResourceReserveResponse{}
 	_body, _err := client.GetEdgeContainerAppResourceReserveWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取边缘容器应用资源分布
+//
+// @param request - GetEdgeContainerAppResourceStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetEdgeContainerAppResourceStatusResponse
+func (client *Client) GetEdgeContainerAppResourceStatusWithOptions(request *GetEdgeContainerAppResourceStatusRequest, runtime *util.RuntimeOptions) (_result *GetEdgeContainerAppResourceStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetEdgeContainerAppResourceStatus"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetEdgeContainerAppResourceStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetEdgeContainerAppResourceStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取边缘容器应用资源分布
+//
+// @param request - GetEdgeContainerAppResourceStatusRequest
+//
+// @return GetEdgeContainerAppResourceStatusResponse
+func (client *Client) GetEdgeContainerAppResourceStatus(request *GetEdgeContainerAppResourceStatusRequest) (_result *GetEdgeContainerAppResourceStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetEdgeContainerAppResourceStatusResponse{}
+	_body, _err := client.GetEdgeContainerAppResourceStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -93684,6 +93907,10 @@ func (client *Client) UpdateOriginRuleWithOptions(request *UpdateOriginRuleReque
 
 	if !tea.BoolValue(util.IsUnset(request.OriginMtls)) {
 		query["OriginMtls"] = request.OriginMtls
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OriginReadTimeout)) {
+		query["OriginReadTimeout"] = request.OriginReadTimeout
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OriginScheme)) {
