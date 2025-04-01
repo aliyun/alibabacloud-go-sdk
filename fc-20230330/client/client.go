@@ -1709,7 +1709,8 @@ type Function struct {
 	// example:
 	//
 	// true
-	InternetAccess *bool `json:"internetAccess,omitempty" xml:"internetAccess,omitempty"`
+	InternetAccess        *bool                          `json:"internetAccess,omitempty" xml:"internetAccess,omitempty"`
+	InvocationRestriction *OpenStructFunctionRestriction `json:"invocationRestriction,omitempty" xml:"invocationRestriction,omitempty"`
 	// example:
 	//
 	// 2023-05-01T08:15:27Z
@@ -1863,6 +1864,11 @@ func (s *Function) SetInstanceLifecycleConfig(v *InstanceLifecycleConfig) *Funct
 
 func (s *Function) SetInternetAccess(v bool) *Function {
 	s.InternetAccess = &v
+	return s
+}
+
+func (s *Function) SetInvocationRestriction(v *OpenStructFunctionRestriction) *Function {
+	s.InvocationRestriction = v
 	return s
 }
 
@@ -5374,6 +5380,35 @@ func (s *OpenStructDescribeRegionsOutputRegionsRegion) SetRegionId(v string) *Op
 	return s
 }
 
+type OpenStructFunctionRestriction struct {
+	Disable          *bool   `json:"disable,omitempty" xml:"disable,omitempty"`
+	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	Reason           *string `json:"reason,omitempty" xml:"reason,omitempty"`
+}
+
+func (s OpenStructFunctionRestriction) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OpenStructFunctionRestriction) GoString() string {
+	return s.String()
+}
+
+func (s *OpenStructFunctionRestriction) SetDisable(v bool) *OpenStructFunctionRestriction {
+	s.Disable = &v
+	return s
+}
+
+func (s *OpenStructFunctionRestriction) SetLastModifiedTime(v string) *OpenStructFunctionRestriction {
+	s.LastModifiedTime = &v
+	return s
+}
+
+func (s *OpenStructFunctionRestriction) SetReason(v string) *OpenStructFunctionRestriction {
+	s.Reason = &v
+	return s
+}
+
 type CreateAliasRequest struct {
 	// The request parameters for creating an alias.
 	//
@@ -5933,6 +5968,130 @@ func (s *DeleteVpcBindingResponse) SetHeaders(v map[string]*string) *DeleteVpcBi
 
 func (s *DeleteVpcBindingResponse) SetStatusCode(v int32) *DeleteVpcBindingResponse {
 	s.StatusCode = &v
+	return s
+}
+
+type DisableFunctionInvocationRequest struct {
+	// example:
+	//
+	// false
+	AbortOngoingRequest *bool   `json:"abortOngoingRequest,omitempty" xml:"abortOngoingRequest,omitempty"`
+	Reason              *string `json:"reason,omitempty" xml:"reason,omitempty"`
+}
+
+func (s DisableFunctionInvocationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableFunctionInvocationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DisableFunctionInvocationRequest) SetAbortOngoingRequest(v bool) *DisableFunctionInvocationRequest {
+	s.AbortOngoingRequest = &v
+	return s
+}
+
+func (s *DisableFunctionInvocationRequest) SetReason(v string) *DisableFunctionInvocationRequest {
+	s.Reason = &v
+	return s
+}
+
+type DisableFunctionInvocationResponseBody struct {
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s DisableFunctionInvocationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableFunctionInvocationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DisableFunctionInvocationResponseBody) SetSuccess(v bool) *DisableFunctionInvocationResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DisableFunctionInvocationResponse struct {
+	Headers    map[string]*string                     `json:"headers" xml:"headers"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DisableFunctionInvocationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DisableFunctionInvocationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableFunctionInvocationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DisableFunctionInvocationResponse) SetHeaders(v map[string]*string) *DisableFunctionInvocationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DisableFunctionInvocationResponse) SetStatusCode(v int32) *DisableFunctionInvocationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DisableFunctionInvocationResponse) SetBody(v *DisableFunctionInvocationResponseBody) *DisableFunctionInvocationResponse {
+	s.Body = v
+	return s
+}
+
+type EnableFunctionInvocationResponseBody struct {
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s EnableFunctionInvocationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableFunctionInvocationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *EnableFunctionInvocationResponseBody) SetSuccess(v bool) *EnableFunctionInvocationResponseBody {
+	s.Success = &v
+	return s
+}
+
+type EnableFunctionInvocationResponse struct {
+	Headers    map[string]*string                    `json:"headers" xml:"headers"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EnableFunctionInvocationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s EnableFunctionInvocationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableFunctionInvocationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EnableFunctionInvocationResponse) SetHeaders(v map[string]*string) *EnableFunctionInvocationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EnableFunctionInvocationResponse) SetStatusCode(v int32) *EnableFunctionInvocationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *EnableFunctionInvocationResponse) SetBody(v *EnableFunctionInvocationResponseBody) *EnableFunctionInvocationResponse {
+	s.Body = v
 	return s
 }
 
@@ -9688,6 +9847,146 @@ func (client *Client) DeleteVpcBinding(functionName *string, vpcId *string) (_re
 	headers := make(map[string]*string)
 	_result = &DeleteVpcBindingResponse{}
 	_body, _err := client.DeleteVpcBindingWithOptions(functionName, vpcId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 禁止函数调用
+//
+// @param request - DisableFunctionInvocationRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableFunctionInvocationResponse
+func (client *Client) DisableFunctionInvocationWithOptions(functionName *string, request *DisableFunctionInvocationRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DisableFunctionInvocationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AbortOngoingRequest)) {
+		body["abortOngoingRequest"] = request.AbortOngoingRequest
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Reason)) {
+		body["reason"] = request.Reason
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DisableFunctionInvocation"),
+		Version:     tea.String("2023-03-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2023-03-30/functions/" + tea.StringValue(openapiutil.GetEncodeParam(functionName)) + "/invoke/disable"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DisableFunctionInvocationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DisableFunctionInvocationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 禁止函数调用
+//
+// @param request - DisableFunctionInvocationRequest
+//
+// @return DisableFunctionInvocationResponse
+func (client *Client) DisableFunctionInvocation(functionName *string, request *DisableFunctionInvocationRequest) (_result *DisableFunctionInvocationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DisableFunctionInvocationResponse{}
+	_body, _err := client.DisableFunctionInvocationWithOptions(functionName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 允许函数调用
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableFunctionInvocationResponse
+func (client *Client) EnableFunctionInvocationWithOptions(functionName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *EnableFunctionInvocationResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EnableFunctionInvocation"),
+		Version:     tea.String("2023-03-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2023-03-30/functions/" + tea.StringValue(openapiutil.GetEncodeParam(functionName)) + "/invoke/enable"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &EnableFunctionInvocationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &EnableFunctionInvocationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 允许函数调用
+//
+// @return EnableFunctionInvocationResponse
+func (client *Client) EnableFunctionInvocation(functionName *string) (_result *EnableFunctionInvocationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &EnableFunctionInvocationResponse{}
+	_body, _err := client.EnableFunctionInvocationWithOptions(functionName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
