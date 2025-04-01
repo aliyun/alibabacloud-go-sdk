@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/polardbx-20200202/v3
+module github.com/alibabacloud-go/polardbx-20200202/v4
 
 go 1.14
 

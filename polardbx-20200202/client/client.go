@@ -1126,8 +1126,8 @@ type CreateDBInstanceRequest struct {
 	// example:
 	//
 	// true
-	AutoRenew   *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	CNNodeCount *string `json:"CNNodeCount,omitempty" xml:"CNNodeCount,omitempty"`
+	AutoRenew   *bool  `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	CNNodeCount *int32 `json:"CNNodeCount,omitempty" xml:"CNNodeCount,omitempty"`
 	// example:
 	//
 	// xxxxxx-xxx
@@ -1141,7 +1141,7 @@ type CreateDBInstanceRequest struct {
 	//
 	// 2
 	DBNodeCount    *int32  `json:"DBNodeCount,omitempty" xml:"DBNodeCount,omitempty"`
-	DNNodeCount    *string `json:"DNNodeCount,omitempty" xml:"DNNodeCount,omitempty"`
+	DNNodeCount    *int32  `json:"DNNodeCount,omitempty" xml:"DNNodeCount,omitempty"`
 	DnClass        *string `json:"DnClass,omitempty" xml:"DnClass,omitempty"`
 	DnStorageSpace *string `json:"DnStorageSpace,omitempty" xml:"DnStorageSpace,omitempty"`
 	// This parameter is required.
@@ -1236,7 +1236,7 @@ func (s *CreateDBInstanceRequest) SetAutoRenew(v bool) *CreateDBInstanceRequest 
 	return s
 }
 
-func (s *CreateDBInstanceRequest) SetCNNodeCount(v string) *CreateDBInstanceRequest {
+func (s *CreateDBInstanceRequest) SetCNNodeCount(v int32) *CreateDBInstanceRequest {
 	s.CNNodeCount = &v
 	return s
 }
@@ -1261,7 +1261,7 @@ func (s *CreateDBInstanceRequest) SetDBNodeCount(v int32) *CreateDBInstanceReque
 	return s
 }
 
-func (s *CreateDBInstanceRequest) SetDNNodeCount(v string) *CreateDBInstanceRequest {
+func (s *CreateDBInstanceRequest) SetDNNodeCount(v int32) *CreateDBInstanceRequest {
 	s.DNNodeCount = &v
 	return s
 }
@@ -1375,8 +1375,8 @@ type CreateDBInstanceShrinkRequest struct {
 	// example:
 	//
 	// true
-	AutoRenew   *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	CNNodeCount *string `json:"CNNodeCount,omitempty" xml:"CNNodeCount,omitempty"`
+	AutoRenew   *bool  `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	CNNodeCount *int32 `json:"CNNodeCount,omitempty" xml:"CNNodeCount,omitempty"`
 	// example:
 	//
 	// xxxxxx-xxx
@@ -1390,7 +1390,7 @@ type CreateDBInstanceShrinkRequest struct {
 	//
 	// 2
 	DBNodeCount    *int32  `json:"DBNodeCount,omitempty" xml:"DBNodeCount,omitempty"`
-	DNNodeCount    *string `json:"DNNodeCount,omitempty" xml:"DNNodeCount,omitempty"`
+	DNNodeCount    *int32  `json:"DNNodeCount,omitempty" xml:"DNNodeCount,omitempty"`
 	DnClass        *string `json:"DnClass,omitempty" xml:"DnClass,omitempty"`
 	DnStorageSpace *string `json:"DnStorageSpace,omitempty" xml:"DnStorageSpace,omitempty"`
 	// This parameter is required.
@@ -1485,7 +1485,7 @@ func (s *CreateDBInstanceShrinkRequest) SetAutoRenew(v bool) *CreateDBInstanceSh
 	return s
 }
 
-func (s *CreateDBInstanceShrinkRequest) SetCNNodeCount(v string) *CreateDBInstanceShrinkRequest {
+func (s *CreateDBInstanceShrinkRequest) SetCNNodeCount(v int32) *CreateDBInstanceShrinkRequest {
 	s.CNNodeCount = &v
 	return s
 }
@@ -1510,7 +1510,7 @@ func (s *CreateDBInstanceShrinkRequest) SetDBNodeCount(v int32) *CreateDBInstanc
 	return s
 }
 
-func (s *CreateDBInstanceShrinkRequest) SetDNNodeCount(v string) *CreateDBInstanceShrinkRequest {
+func (s *CreateDBInstanceShrinkRequest) SetDNNodeCount(v int32) *CreateDBInstanceShrinkRequest {
 	s.DNNodeCount = &v
 	return s
 }
@@ -4242,6 +4242,351 @@ func (s *DescribeBinaryLogListResponse) SetStatusCode(v int32) *DescribeBinaryLo
 }
 
 func (s *DescribeBinaryLogListResponse) SetBody(v *DescribeBinaryLogListResponseBody) *DescribeBinaryLogListResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeCdcInfoRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pxc-********
+	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeCdcInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCdcInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCdcInfoRequest) SetDBInstanceName(v string) *DescribeCdcInfoRequest {
+	s.DBInstanceName = &v
+	return s
+}
+
+func (s *DescribeCdcInfoRequest) SetRegionId(v string) *DescribeCdcInfoRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeCdcInfoResponseBody struct {
+	Data *DescribeCdcInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 9B2F3840-5C98-475C-B269-2D5C3A31797C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DescribeCdcInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCdcInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCdcInfoResponseBody) SetData(v *DescribeCdcInfoResponseBodyData) *DescribeCdcInfoResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeCdcInfoResponseBody) SetHttpStatusCode(v int32) *DescribeCdcInfoResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DescribeCdcInfoResponseBody) SetRequestId(v string) *DescribeCdcInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeCdcInfoResponseBody) SetSuccess(v bool) *DescribeCdcInfoResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DescribeCdcInfoResponseBodyData struct {
+	// example:
+	//
+	// 15
+	BinlogPersistTime *int32 `json:"BinlogPersistTime,omitempty" xml:"BinlogPersistTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 524288000
+	BinlogSize *int32 `json:"BinlogSize,omitempty" xml:"BinlogSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// polarx-cdc-kernel-***
+	CdcNewVersion *string `json:"CdcNewVersion,omitempty" xml:"CdcNewVersion,omitempty"`
+	// example:
+	//
+	// ON
+	CheckSumSwitch *string `json:"CheckSumSwitch,omitempty" xml:"CheckSumSwitch,omitempty"`
+	// example:
+	//
+	// true
+	EnableCyclicReplication *bool                                                  `json:"EnableCyclicReplication,omitempty" xml:"EnableCyclicReplication,omitempty"`
+	InstanceTopologyList    []*DescribeCdcInfoResponseBodyDataInstanceTopologyList `json:"InstanceTopologyList,omitempty" xml:"InstanceTopologyList,omitempty" type:"Repeated"`
+	// server id
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3014767486
+	ServerId *int32 `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	// example:
+	//
+	// true
+	VersionSupportMultiCdc *bool `json:"VersionSupportMultiCdc,omitempty" xml:"VersionSupportMultiCdc,omitempty"`
+}
+
+func (s DescribeCdcInfoResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCdcInfoResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCdcInfoResponseBodyData) SetBinlogPersistTime(v int32) *DescribeCdcInfoResponseBodyData {
+	s.BinlogPersistTime = &v
+	return s
+}
+
+func (s *DescribeCdcInfoResponseBodyData) SetBinlogSize(v int32) *DescribeCdcInfoResponseBodyData {
+	s.BinlogSize = &v
+	return s
+}
+
+func (s *DescribeCdcInfoResponseBodyData) SetCdcNewVersion(v string) *DescribeCdcInfoResponseBodyData {
+	s.CdcNewVersion = &v
+	return s
+}
+
+func (s *DescribeCdcInfoResponseBodyData) SetCheckSumSwitch(v string) *DescribeCdcInfoResponseBodyData {
+	s.CheckSumSwitch = &v
+	return s
+}
+
+func (s *DescribeCdcInfoResponseBodyData) SetEnableCyclicReplication(v bool) *DescribeCdcInfoResponseBodyData {
+	s.EnableCyclicReplication = &v
+	return s
+}
+
+func (s *DescribeCdcInfoResponseBodyData) SetInstanceTopologyList(v []*DescribeCdcInfoResponseBodyDataInstanceTopologyList) *DescribeCdcInfoResponseBodyData {
+	s.InstanceTopologyList = v
+	return s
+}
+
+func (s *DescribeCdcInfoResponseBodyData) SetServerId(v int32) *DescribeCdcInfoResponseBodyData {
+	s.ServerId = &v
+	return s
+}
+
+func (s *DescribeCdcInfoResponseBodyData) SetVersionSupportMultiCdc(v bool) *DescribeCdcInfoResponseBodyData {
+	s.VersionSupportMultiCdc = &v
+	return s
+}
+
+type DescribeCdcInfoResponseBodyDataInstanceTopologyList struct {
+	// example:
+	//
+	// BINLOG_X
+	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	// example:
+	//
+	// ***
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// example:
+	//
+	// test
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// example:
+	//
+	// RECORD
+	HashLevel *string `json:"HashLevel,omitempty" xml:"HashLevel,omitempty"`
+	// example:
+	//
+	// pxc-***
+	InstanceName  *string                                                             `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	PhysicalNodes []*DescribeCdcInfoResponseBodyDataInstanceTopologyListPhysicalNodes `json:"PhysicalNodes,omitempty" xml:"PhysicalNodes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2
+	StreamNum *int32 `json:"StreamNum,omitempty" xml:"StreamNum,omitempty"`
+}
+
+func (s DescribeCdcInfoResponseBodyDataInstanceTopologyList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCdcInfoResponseBodyDataInstanceTopologyList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCdcInfoResponseBodyDataInstanceTopologyList) SetClusterType(v string) *DescribeCdcInfoResponseBodyDataInstanceTopologyList {
+	s.ClusterType = &v
+	return s
+}
+
+func (s *DescribeCdcInfoResponseBodyDataInstanceTopologyList) SetComment(v string) *DescribeCdcInfoResponseBodyDataInstanceTopologyList {
+	s.Comment = &v
+	return s
+}
+
+func (s *DescribeCdcInfoResponseBodyDataInstanceTopologyList) SetGroupName(v string) *DescribeCdcInfoResponseBodyDataInstanceTopologyList {
+	s.GroupName = &v
+	return s
+}
+
+func (s *DescribeCdcInfoResponseBodyDataInstanceTopologyList) SetHashLevel(v string) *DescribeCdcInfoResponseBodyDataInstanceTopologyList {
+	s.HashLevel = &v
+	return s
+}
+
+func (s *DescribeCdcInfoResponseBodyDataInstanceTopologyList) SetInstanceName(v string) *DescribeCdcInfoResponseBodyDataInstanceTopologyList {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *DescribeCdcInfoResponseBodyDataInstanceTopologyList) SetPhysicalNodes(v []*DescribeCdcInfoResponseBodyDataInstanceTopologyListPhysicalNodes) *DescribeCdcInfoResponseBodyDataInstanceTopologyList {
+	s.PhysicalNodes = v
+	return s
+}
+
+func (s *DescribeCdcInfoResponseBodyDataInstanceTopologyList) SetStreamNum(v int32) *DescribeCdcInfoResponseBodyDataInstanceTopologyList {
+	s.StreamNum = &v
+	return s
+}
+
+type DescribeCdcInfoResponseBodyDataInstanceTopologyListPhysicalNodes struct {
+	// example:
+	//
+	// cn-hangzhou-h
+	AZone *string `json:"AZone,omitempty" xml:"AZone,omitempty"`
+	// example:
+	//
+	// 204800
+	Disk *int32 `json:"Disk,omitempty" xml:"Disk,omitempty"`
+	// example:
+	//
+	// polarx.x4.large.2e.cdc
+	NodeClass *string `json:"NodeClass,omitempty" xml:"NodeClass,omitempty"`
+	// example:
+	//
+	// ***
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// example:
+	//
+	// pxc-c-***
+	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// example:
+	//
+	// ACTIVATION
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// polarx-cdc-kernel-***
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s DescribeCdcInfoResponseBodyDataInstanceTopologyListPhysicalNodes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCdcInfoResponseBodyDataInstanceTopologyListPhysicalNodes) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCdcInfoResponseBodyDataInstanceTopologyListPhysicalNodes) SetAZone(v string) *DescribeCdcInfoResponseBodyDataInstanceTopologyListPhysicalNodes {
+	s.AZone = &v
+	return s
+}
+
+func (s *DescribeCdcInfoResponseBodyDataInstanceTopologyListPhysicalNodes) SetDisk(v int32) *DescribeCdcInfoResponseBodyDataInstanceTopologyListPhysicalNodes {
+	s.Disk = &v
+	return s
+}
+
+func (s *DescribeCdcInfoResponseBodyDataInstanceTopologyListPhysicalNodes) SetNodeClass(v string) *DescribeCdcInfoResponseBodyDataInstanceTopologyListPhysicalNodes {
+	s.NodeClass = &v
+	return s
+}
+
+func (s *DescribeCdcInfoResponseBodyDataInstanceTopologyListPhysicalNodes) SetNodeId(v string) *DescribeCdcInfoResponseBodyDataInstanceTopologyListPhysicalNodes {
+	s.NodeId = &v
+	return s
+}
+
+func (s *DescribeCdcInfoResponseBodyDataInstanceTopologyListPhysicalNodes) SetNodeName(v string) *DescribeCdcInfoResponseBodyDataInstanceTopologyListPhysicalNodes {
+	s.NodeName = &v
+	return s
+}
+
+func (s *DescribeCdcInfoResponseBodyDataInstanceTopologyListPhysicalNodes) SetStatus(v string) *DescribeCdcInfoResponseBodyDataInstanceTopologyListPhysicalNodes {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeCdcInfoResponseBodyDataInstanceTopologyListPhysicalNodes) SetVersion(v string) *DescribeCdcInfoResponseBodyDataInstanceTopologyListPhysicalNodes {
+	s.Version = &v
+	return s
+}
+
+type DescribeCdcInfoResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCdcInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeCdcInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCdcInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCdcInfoResponse) SetHeaders(v map[string]*string) *DescribeCdcInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeCdcInfoResponse) SetStatusCode(v int32) *DescribeCdcInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeCdcInfoResponse) SetBody(v *DescribeCdcInfoResponseBody) *DescribeCdcInfoResponse {
 	s.Body = v
 	return s
 }
@@ -10219,7 +10564,8 @@ type DescribeSlowLogRecordsResponseBodyItems struct {
 	// example:
 	//
 	// select
-	SqlType *string `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
+	SqlType    *string `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// example:
 	//
 	// 0
@@ -10347,6 +10693,11 @@ func (s *DescribeSlowLogRecordsResponseBodyItems) SetSQLText(v string) *Describe
 
 func (s *DescribeSlowLogRecordsResponseBodyItems) SetSqlType(v string) *DescribeSlowLogRecordsResponseBodyItems {
 	s.SqlType = &v
+	return s
+}
+
+func (s *DescribeSlowLogRecordsResponseBodyItems) SetTemplateId(v string) *DescribeSlowLogRecordsResponseBodyItems {
+	s.TemplateId = &v
 	return s
 }
 
@@ -14325,7 +14676,7 @@ type UpdatePolarDBXInstanceNodeRequest struct {
 	// example:
 	//
 	// 2
-	CNNodeCount *string `json:"CNNodeCount,omitempty" xml:"CNNodeCount,omitempty"`
+	CNNodeCount *int32 `json:"CNNodeCount,omitempty" xml:"CNNodeCount,omitempty"`
 	// example:
 	//
 	// FEA5DC20-6D8A-5979-97AA-FC57546ADC20
@@ -14339,11 +14690,11 @@ type UpdatePolarDBXInstanceNodeRequest struct {
 	// example:
 	//
 	// 2
-	DNNodeCount *string `json:"DNNodeCount,omitempty" xml:"DNNodeCount,omitempty"`
+	DNNodeCount *int32 `json:"DNNodeCount,omitempty" xml:"DNNodeCount,omitempty"`
 	// example:
 	//
 	// 3
-	DbInstanceNodeCount *string `json:"DbInstanceNodeCount,omitempty" xml:"DbInstanceNodeCount,omitempty"`
+	DbInstanceNodeCount *int32  `json:"DbInstanceNodeCount,omitempty" xml:"DbInstanceNodeCount,omitempty"`
 	DeleteDNIds         *string `json:"DeleteDNIds,omitempty" xml:"DeleteDNIds,omitempty"`
 	// This parameter is required.
 	//
@@ -14367,7 +14718,7 @@ func (s *UpdatePolarDBXInstanceNodeRequest) SetAddDNSpec(v string) *UpdatePolarD
 	return s
 }
 
-func (s *UpdatePolarDBXInstanceNodeRequest) SetCNNodeCount(v string) *UpdatePolarDBXInstanceNodeRequest {
+func (s *UpdatePolarDBXInstanceNodeRequest) SetCNNodeCount(v int32) *UpdatePolarDBXInstanceNodeRequest {
 	s.CNNodeCount = &v
 	return s
 }
@@ -14382,12 +14733,12 @@ func (s *UpdatePolarDBXInstanceNodeRequest) SetDBInstanceName(v string) *UpdateP
 	return s
 }
 
-func (s *UpdatePolarDBXInstanceNodeRequest) SetDNNodeCount(v string) *UpdatePolarDBXInstanceNodeRequest {
+func (s *UpdatePolarDBXInstanceNodeRequest) SetDNNodeCount(v int32) *UpdatePolarDBXInstanceNodeRequest {
 	s.DNNodeCount = &v
 	return s
 }
 
-func (s *UpdatePolarDBXInstanceNodeRequest) SetDbInstanceNodeCount(v string) *UpdatePolarDBXInstanceNodeRequest {
+func (s *UpdatePolarDBXInstanceNodeRequest) SetDbInstanceNodeCount(v int32) *UpdatePolarDBXInstanceNodeRequest {
 	s.DbInstanceNodeCount = &v
 	return s
 }
@@ -15421,6 +15772,10 @@ func (client *Client) CreateDB(request *CreateDBRequest) (_result *CreateDBRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建实例
+//
 // @param tmpReq - CreateDBInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -15584,6 +15939,10 @@ func (client *Client) CreateDBInstanceWithOptions(tmpReq *CreateDBInstanceReques
 
 }
 
+// Summary:
+//
+// 创建实例
+//
 // @param request - CreateDBInstanceRequest
 //
 // @return CreateDBInstanceResponse
@@ -16565,6 +16924,81 @@ func (client *Client) DescribeBinaryLogList(request *DescribeBinaryLogListReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询CDC信息
+//
+// @param request - DescribeCdcInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCdcInfoResponse
+func (client *Client) DescribeCdcInfoWithOptions(request *DescribeCdcInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeCdcInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceName)) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCdcInfo"),
+		Version:     tea.String("2020-02-02"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeCdcInfoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeCdcInfoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询CDC信息
+//
+// @param request - DescribeCdcInfoRequest
+//
+// @return DescribeCdcInfoResponse
+func (client *Client) DescribeCdcInfo(request *DescribeCdcInfoRequest) (_result *DescribeCdcInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeCdcInfoResponse{}
+	_body, _err := client.DescribeCdcInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // @param request - DescribeCharacterSetRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -17291,6 +17725,10 @@ func (client *Client) DescribeDBInstances(request *DescribeDBInstancesRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 性能监控数据接口
+//
 // @param request - DescribeDBNodePerformanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -17368,6 +17806,10 @@ func (client *Client) DescribeDBNodePerformanceWithOptions(request *DescribeDBNo
 
 }
 
+// Summary:
+//
+// 性能监控数据接口
+//
 // @param request - DescribeDBNodePerformanceRequest
 //
 // @return DescribeDBNodePerformanceResponse
@@ -19990,7 +20432,7 @@ func (client *Client) SwitchDBInstanceHA(request *SwitchDBInstanceHARequest) (_r
 
 // Summary:
 //
-// GDN主备切换
+// # GDN主备切换
 //
 // @param request - SwitchGdnMemberRoleRequest
 //
@@ -20055,7 +20497,7 @@ func (client *Client) SwitchGdnMemberRoleWithOptions(request *SwitchGdnMemberRol
 
 // Summary:
 //
-// GDN主备切换
+// # GDN主备切换
 //
 // @param request - SwitchGdnMemberRoleRequest
 //
@@ -20534,6 +20976,10 @@ func (client *Client) UpdateDBInstanceTDE(request *UpdateDBInstanceTDERequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 扩缩容实例节点数
+//
 // @param request - UpdatePolarDBXInstanceNodeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -20615,6 +21061,10 @@ func (client *Client) UpdatePolarDBXInstanceNodeWithOptions(request *UpdatePolar
 
 }
 
+// Summary:
+//
+// 扩缩容实例节点数
+//
 // @param request - UpdatePolarDBXInstanceNodeRequest
 //
 // @return UpdatePolarDBXInstanceNodeResponse
