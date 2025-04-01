@@ -6545,7 +6545,7 @@ type DescribeGroupEndpointsResponseBody struct {
 	// Nzc5N2FhNTM4OTQ0YzBmYTIy****ZTUxN2NkYjg4MTJmMWQxZmY1****
 	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
 	// The endpoints of service groups.
-	Endpoints *DescribeGroupEndpointsResponseBodyEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Struct"`
+	Endpoints []*DescribeGroupEndpointsResponseBodyEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
 	// The response message.
 	//
 	// example:
@@ -6573,7 +6573,7 @@ func (s *DescribeGroupEndpointsResponseBody) SetAccessToken(v string) *DescribeG
 	return s
 }
 
-func (s *DescribeGroupEndpointsResponseBody) SetEndpoints(v *DescribeGroupEndpointsResponseBodyEndpoints) *DescribeGroupEndpointsResponseBody {
+func (s *DescribeGroupEndpointsResponseBody) SetEndpoints(v []*DescribeGroupEndpointsResponseBodyEndpoints) *DescribeGroupEndpointsResponseBody {
 	s.Endpoints = v
 	return s
 }
@@ -6589,54 +6589,12 @@ func (s *DescribeGroupEndpointsResponseBody) SetRequestId(v string) *DescribeGro
 }
 
 type DescribeGroupEndpointsResponseBodyEndpoints struct {
-	// The backend access ID, which varies based on the value of the EndpointType parameter.
-	//
-	// 	- If you set EndpointType to DefaultGateway, the value of this parameter is default.
-	//
-	// 	- If you set EndpointType to PrivateGateway, the value of this parameter is the ID of the dedicated gateway.
-	//
-	// 	- If you set EndpointType to Nlb, the value of this parameter is the ID of the NLB instance.
-	//
-	// 	- If you set EndpointType to Nacos, the value of this parameter is the ID of the Nacos instance.
-	//
-	// example:
-	//
-	// gw-26340kjxjx8l3r****
-	BackendId *string `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
-	// The service endpoint type. Valid values:
-	//
-	// 	- DefaultGateway: the shared gateway.
-	//
-	// 	- PrivateGateway: the dedicated gateway.
-	//
-	// 	- Nlb: Associate the service with the Network Load Balancer (NLB) instance.
-	//
-	// 	- Nacos: Associate the service with the Nacos instance.
-	//
-	// example:
-	//
-	// PrivateGateway
-	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
-	// The public endpoints.
+	BackendId         *string   `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
+	EndpointType      *string   `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
 	InternetEndpoints []*string `json:"InternetEndpoints,omitempty" xml:"InternetEndpoints,omitempty" type:"Repeated"`
-	// The internal endpoints.
 	IntranetEndpoints []*string `json:"IntranetEndpoints,omitempty" xml:"IntranetEndpoints,omitempty" type:"Repeated"`
-	// The path type. Valid values:
-	//
-	// 	- Group: the path of the service group.
-	//
-	// 	- Service: the path of the service.
-	//
-	// example:
-	//
-	// Group
-	PathType *string `json:"PathType,omitempty" xml:"PathType,omitempty"`
-	// The port number. This parameter takes effect only when you associate the service with an NLB or Nacos instance.
-	//
-	// example:
-	//
-	// 9090
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	PathType          *string   `json:"PathType,omitempty" xml:"PathType,omitempty"`
+	Port              *int32    `json:"Port,omitempty" xml:"Port,omitempty"`
 }
 
 func (s DescribeGroupEndpointsResponseBodyEndpoints) String() string {
@@ -8046,7 +8004,7 @@ type DescribeServiceEndpointsResponseBody struct {
 	// Nzc5N2FhN****TQ0YzBmYTIyN2MxZTUxN2NkYjg4MTJmMWQxZmY1****
 	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
 	// The service endpoints.
-	Endpoints *DescribeServiceEndpointsResponseBodyEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Struct"`
+	Endpoints []*DescribeServiceEndpointsResponseBodyEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
 	// The returned message.
 	//
 	// example:
@@ -8074,7 +8032,7 @@ func (s *DescribeServiceEndpointsResponseBody) SetAccessToken(v string) *Describ
 	return s
 }
 
-func (s *DescribeServiceEndpointsResponseBody) SetEndpoints(v *DescribeServiceEndpointsResponseBodyEndpoints) *DescribeServiceEndpointsResponseBody {
+func (s *DescribeServiceEndpointsResponseBody) SetEndpoints(v []*DescribeServiceEndpointsResponseBodyEndpoints) *DescribeServiceEndpointsResponseBody {
 	s.Endpoints = v
 	return s
 }
@@ -8090,54 +8048,12 @@ func (s *DescribeServiceEndpointsResponseBody) SetRequestId(v string) *DescribeS
 }
 
 type DescribeServiceEndpointsResponseBodyEndpoints struct {
-	// The backend access ID, which varies based on the value of the EndpointType parameter.
-	//
-	// 	- If you set EndpointType to DefaultGateway, the value of this parameter is default.
-	//
-	// 	- If you set EndpointType to PrivateGateway, the value of this parameter is the ID of the dedicated gateway.
-	//
-	// 	- If you set EndpointType to Nlb, the value of this parameter is the ID of the NLB instance.
-	//
-	// 	- If you set EndpointType to Nacos, the value of this parameter is the ID of the Nacos instance.
-	//
-	// example:
-	//
-	// nlb-5q4sp7u6oorkha****
-	BackendId *string `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
-	// The service endpoint type. Valid values:
-	//
-	// 	- DefaultGateway: the shared gateway.
-	//
-	// 	- PrivateGateway: the dedicated gateway.
-	//
-	// 	- Nlb: Associate the service with the Network Load Balancer (NLB) instance.
-	//
-	// 	- Nacos: Associate the service with the Nacos instance.
-	//
-	// example:
-	//
-	// Nlb
-	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
-	// The public endpoints.
+	BackendId         *string   `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
+	EndpointType      *string   `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
 	InternetEndpoints []*string `json:"InternetEndpoints,omitempty" xml:"InternetEndpoints,omitempty" type:"Repeated"`
-	// The internal endpoints.
 	IntranetEndpoints []*string `json:"IntranetEndpoints,omitempty" xml:"IntranetEndpoints,omitempty" type:"Repeated"`
-	// The path type. Valid values:
-	//
-	// 	- Group: the path of the service group.
-	//
-	// 	- Service: the path of the service.
-	//
-	// example:
-	//
-	// Service
-	PathType *string `json:"PathType,omitempty" xml:"PathType,omitempty"`
-	// The port number. This parameter takes effect only when you associate the service with an NLB or Nacos instance.
-	//
-	// example:
-	//
-	// 9090
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	PathType          *string   `json:"PathType,omitempty" xml:"PathType,omitempty"`
+	Port              *int32    `json:"Port,omitempty" xml:"Port,omitempty"`
 }
 
 func (s DescribeServiceEndpointsResponseBodyEndpoints) String() string {

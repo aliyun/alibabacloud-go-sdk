@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/eas-20210701/v6
+module github.com/alibabacloud-go/eas-20210701/v7
 
 go 1.14
 
