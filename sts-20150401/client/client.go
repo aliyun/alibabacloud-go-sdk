@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -17,39 +14,65 @@ type AssumeRoleRequest struct {
 	//
 	// Minimum value: 900. Maximum value: the value of the `MaxSessionDuration` parameter. Default value: 3600.
 	//
-	// You can call the CreateRole or UpdateRole operation to configure the `MaxSessionDuration` parameter. For more information, see [CreateRole](~~28710~~) or [UpdateRole](~~28712~~).
+	// You can call the CreateRole or UpdateRole operation to configure the `MaxSessionDuration` parameter. For more information, see [CreateRole](https://help.aliyun.com/document_detail/28710.html) or [UpdateRole](https://help.aliyun.com/document_detail/28712.html).
+	//
+	// example:
+	//
+	// 3600
 	DurationSeconds *int64 `json:"DurationSeconds,omitempty" xml:"DurationSeconds,omitempty"`
 	// The external ID of the RAM role.
 	//
-	// This parameter is provided by an external party and is used to prevent the confused deputy problem.
+	// This parameter is provided by an external party and is used to prevent the confused deputy problem. For more information, see [Use ExternalId to prevent the confused deputy problem](https://help.aliyun.com/document_detail/2361741.html).
 	//
-	// The value must be 2 to 1,224 characters in length and can contain letters, digits, and the following special characters: `= , . @ : / - _`. The regular expression for this parameter is `[\w+=,.@:\/-]*`.
+	// The value must be 2 to 1,224 characters in length and can contain letters, digits, and the following special characters: `= , . @ : / - _`. The regular expression for this parameter is `[\\w+=,.@:\\/-]*`.
+	//
+	// example:
+	//
+	// abcd1234
 	ExternalId *string `json:"ExternalId,omitempty" xml:"ExternalId,omitempty"`
 	// The policy that specifies the permissions of the returned STS token. You can use this parameter to grant the STS token fewer permissions than the permissions granted to the RAM role.
 	//
-	// *   If you specify this parameter, the permissions of the returned STS token are the permissions that are included in the value of this parameter and owned by the RAM role.
-	// *   If you do not specify this parameter, the returned STS token has all the permissions of the RAM role.
+	// 	- If you specify this parameter, the permissions of the returned STS token are the permissions that are included in the value of this parameter and owned by the RAM role.
+	//
+	// 	- If you do not specify this parameter, the returned STS token has all the permissions of the RAM role.
 	//
 	// The value must be 1 to 2,048 characters in length.
 	//
-	// For more information about policy elements and sample policies, see [Policy elements](~~93738~~) and [Overview of sample policies](~~210969~~).
+	// For more information about policy elements and sample policies, see [Policy elements](https://help.aliyun.com/document_detail/93738.html) and [Overview of sample policies](https://help.aliyun.com/document_detail/210969.html).
+	//
+	// example:
+	//
+	// {"Statement": [{"Action": ["*"],"Effect": "Allow","Resource": ["*"]}],"Version":"1"}
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
 	// The Alibaba Cloud Resource Name (ARN) of the RAM role.
 	//
-	// The trusted entity of the RAM role is an Alibaba Cloud account. For more information, see [Create a RAM role for a trusted Alibaba Cloud account](~~93691~~) or [CreateRole](~~28710~~).
+	// The trusted entity of the RAM role is an Alibaba Cloud account. For more information, see [Create a RAM role for a trusted Alibaba Cloud account](https://help.aliyun.com/document_detail/93691.html) or [CreateRole](https://help.aliyun.com/document_detail/28710.html).
 	//
 	// Format: `acs:ram::<account_id>:role/<role_name>`.
 	//
 	// You can view the ARN in the RAM console or by calling operations. The following items describe the validity periods of storage addresses:
 	//
-	// *   For more information about how to view the ARN in the RAM console, see [How do I find the ARN of the RAM role?](~~39744~~)
-	// *   For more information about how to view the ARN by calling operations, see [ListRoles](~~28713~~) or [GetRole](~~28711~~).
+	// 	- For more information about how to view the ARN in the RAM console, see [How do I find the ARN of the RAM role?](https://help.aliyun.com/document_detail/39744.html)
+	//
+	// 	- For more information about how to view the ARN by calling operations, see [ListRoles](https://help.aliyun.com/document_detail/28713.html) or [GetRole](https://help.aliyun.com/document_detail/28711.html).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// acs:ram::123456789012****:role/adminrole
 	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
 	// The custom name of the role session.
 	//
 	// Set this parameter based on your business requirements. In most cases, you can set this parameter to the identity of the API caller. For example, you can specify a username. You can specify `RoleSessionName` to identify API callers that assume the same RAM role in ActionTrail logs. This allows you to track the users that perform the operations.
 	//
 	// The value must be 2 to 64 characters in length and can contain letters, digits, and the following special characters: `. @ - _`.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// alice
 	RoleSessionName *string `json:"RoleSessionName,omitempty" xml:"RoleSessionName,omitempty"`
 }
 
@@ -92,6 +115,10 @@ type AssumeRoleResponseBody struct {
 	// The STS credentials.
 	Credentials *AssumeRoleResponseBodyCredentials `json:"Credentials,omitempty" xml:"Credentials,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 6894B13B-6D71-4EF5-88FA-F32781734A7F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -120,8 +147,16 @@ func (s *AssumeRoleResponseBody) SetRequestId(v string) *AssumeRoleResponseBody 
 
 type AssumeRoleResponseBodyAssumedRoleUser struct {
 	// The ARN of the temporary identity that you use to assume the RAM role.
+	//
+	// example:
+	//
+	// acs:ram::123456789012****:role/adminrole/alice
 	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
 	// The ID of the temporary identity that you use to assume the RAM role.
+	//
+	// example:
+	//
+	// 34458433936495****:alice
 	AssumedRoleId *string `json:"AssumedRoleId,omitempty" xml:"AssumedRoleId,omitempty"`
 }
 
@@ -145,14 +180,30 @@ func (s *AssumeRoleResponseBodyAssumedRoleUser) SetAssumedRoleId(v string) *Assu
 
 type AssumeRoleResponseBodyCredentials struct {
 	// The AccessKey ID.
+	//
+	// example:
+	//
+	// STS.L4aBSCSJVMuKg5U1****
 	AccessKeyId *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
 	// The AccessKey secret.
+	//
+	// example:
+	//
+	// wyLTSmsyPGP1ohvvw8xYgB29dlGI8KMiH2pK****
 	AccessKeySecret *string `json:"AccessKeySecret,omitempty" xml:"AccessKeySecret,omitempty"`
 	// The time when the STS token expires. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2015-04-09T11:52:19Z
 	Expiration *string `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
 	// The STS token.
 	//
 	// > Alibaba Cloud STS does not impose limits on the length of STS tokens. We strongly recommend that you do not specify a maximum length for STS tokens.
+	//
+	// example:
+	//
+	// ********
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
@@ -185,9 +236,9 @@ func (s *AssumeRoleResponseBodyCredentials) SetSecurityToken(v string) *AssumeRo
 }
 
 type AssumeRoleResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AssumeRoleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AssumeRoleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AssumeRoleResponse) String() string {
@@ -218,42 +269,69 @@ type AssumeRoleWithOIDCRequest struct {
 	//
 	// Default value: 3600. Minimum value: 900. Maximum value: the value of the `MaxSessionDuration` parameter.
 	//
-	// For more information about how to specify `MaxSessionDuration`, see [CreateRole](~~28710~~) or [UpdateRole](~~28712~~).
+	// For more information about how to specify `MaxSessionDuration`, see [CreateRole](https://help.aliyun.com/document_detail/28710.html) or [UpdateRole](https://help.aliyun.com/document_detail/28712.html).
+	//
+	// example:
+	//
+	// 3600
 	DurationSeconds *int64 `json:"DurationSeconds,omitempty" xml:"DurationSeconds,omitempty"`
 	// The Alibaba Cloud Resource Name (ARN) of the OIDC IdP.
 	//
 	// You can view the ARN in the RAM console or by calling operations.
 	//
-	// *   For more information about how to view the ARN in the RAM console, see [View the information about an OIDC IdP](~~327123~~).
-	// *   For more information about how to view the ARN by calling operations, see [GetOIDCProvider](~~327126~~) or [ListOIDCProviders](~~327127~~).
+	// 	- For more information about how to view the ARN in the RAM console, see [View the information about an OIDC IdP](https://help.aliyun.com/document_detail/327123.html).
+	//
+	// 	- For more information about how to view the ARN by calling operations, see [GetOIDCProvider](https://help.aliyun.com/document_detail/327126.html) or [ListOIDCProviders](https://help.aliyun.com/document_detail/327127.html).
+	//
+	// example:
+	//
+	// acs:ram::113511544585****:oidc-provider/TestOidcIdp
 	OIDCProviderArn *string `json:"OIDCProviderArn,omitempty" xml:"OIDCProviderArn,omitempty"`
 	// The OIDC token that is issued by the external IdP.
 	//
 	// The OIDC token must be 4 to 20,000 characters in length.
 	//
 	// > You must enter the original OIDC token. You do not need to enter the Base64-encoded OIDC token.
+	//
+	// example:
+	//
+	// eyJraWQiOiJKQzl3eHpyaHFKMGd0****
 	OIDCToken *string `json:"OIDCToken,omitempty" xml:"OIDCToken,omitempty"`
 	// The policy that specifies the permissions of the returned STS token. You can use this parameter to grant the STS token fewer permissions than the permissions granted to the RAM role.
 	//
-	// *   If you specify this parameter, the permissions of the returned STS token are the permissions that are included in the value of this parameter and owned by the RAM role.
-	// *   If you do not specify this parameter, the returned STS token has all the permissions of the RAM role.
+	// 	- If you specify this parameter, the permissions of the returned STS token are the permissions that are included in the value of this parameter and owned by the RAM role.
+	//
+	// 	- If you do not specify this parameter, the returned STS token has all the permissions of the RAM role.
 	//
 	// The value must be 1 to 2,048 characters in length.
+	//
+	// example:
+	//
+	// {"Statement": [{"Action": ["*"],"Effect": "Allow","Resource": ["*"]}],"Version":"1"}
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
 	// The ARN of the RAM role.
 	//
 	// You can view the ARN in the RAM console or by calling operations.
 	//
-	// *   For more information about how to view the ARN in the RAM console, see [How do I view the ARN of the RAM role?](~~39744~~)
-	// *   For more information about how to view the ARN by calling operations, see [ListRoles](~~28713~~) or [GetRole](~~28711~~).
+	// 	- For more information about how to view the ARN in the RAM console, see [How do I view the ARN of the RAM role?](https://help.aliyun.com/document_detail/39744.html)
+	//
+	// 	- For more information about how to view the ARN by calling operations, see [ListRoles](https://help.aliyun.com/document_detail/28713.html) or [GetRole](https://help.aliyun.com/document_detail/28711.html).
+	//
+	// example:
+	//
+	// acs:ram::113511544585****:role/testoidc
 	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
 	// The custom name of the role session.
 	//
 	// Set this parameter based on your business requirements. In most cases, this parameter is set to the identity of the user who calls the operation, for example, the username. In ActionTrail logs, you can distinguish the users who assume the same RAM role to perform operations based on the value of the RoleSessionName parameter. This way, you can perform user-specific auditing.
 	//
-	// The value can contain letters, digits, periods (.), at signs (@), hyphens (-), and underscores (\_).
+	// The value can contain letters, digits, periods (.), at signs (@), hyphens (-), and underscores (_).
 	//
 	// The value must be 2 to 64 characters in length.
+	//
+	// example:
+	//
+	// TestOidcAssumedRoleSession
 	RoleSessionName *string `json:"RoleSessionName,omitempty" xml:"RoleSessionName,omitempty"`
 }
 
@@ -303,6 +381,10 @@ type AssumeRoleWithOIDCResponseBody struct {
 	// The information about the OIDC token.
 	OIDCTokenInfo *AssumeRoleWithOIDCResponseBodyOIDCTokenInfo `json:"OIDCTokenInfo,omitempty" xml:"OIDCTokenInfo,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 3D57EAD2-8723-1F26-B69C-F8707D8B565D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -336,8 +418,16 @@ func (s *AssumeRoleWithOIDCResponseBody) SetRequestId(v string) *AssumeRoleWithO
 
 type AssumeRoleWithOIDCResponseBodyAssumedRoleUser struct {
 	// The ARN of the temporary identity that you use to assume the RAM role.
+	//
+	// example:
+	//
+	// acs:ram::113511544585****:role/testoidc/TestOidcAssumedRoleSession
 	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
 	// The ID of the temporary identity that you use to assume the RAM role.
+	//
+	// example:
+	//
+	// 33157794895460****
 	AssumedRoleId *string `json:"AssumedRoleId,omitempty" xml:"AssumedRoleId,omitempty"`
 }
 
@@ -361,14 +451,30 @@ func (s *AssumeRoleWithOIDCResponseBodyAssumedRoleUser) SetAssumedRoleId(v strin
 
 type AssumeRoleWithOIDCResponseBodyCredentials struct {
 	// The AccessKey ID.
+	//
+	// example:
+	//
+	// STS.NUgYrLnoC37mZZCNnAbez****
 	AccessKeyId *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
 	// The AccessKey secret.
+	//
+	// example:
+	//
+	// CVwjCkNzTMupZ8NbTCxCBRq3K16jtcWFTJAyBEv2****
 	AccessKeySecret *string `json:"AccessKeySecret,omitempty" xml:"AccessKeySecret,omitempty"`
 	// The time when the STS token expires. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2021-10-20T04:27:09Z
 	Expiration *string `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
 	// The STS token.
 	//
 	// > Alibaba Cloud STS does not impose limits on the length of STS tokens. We strongly recommend that you do not specify a maximum length for STS tokens.
+	//
+	// example:
+	//
+	// CAIShwJ1q6Ft5B2yfSjIr5bSEsj4g7BihPWGWHz****
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
@@ -404,17 +510,44 @@ type AssumeRoleWithOIDCResponseBodyOIDCTokenInfo struct {
 	// The audience. If multiple audiences are returned, the audiences are separated by commas (,).
 	//
 	// The audience is represented by the `aud` field in the OIDC Token.
-	ClientIds      *string `json:"ClientIds,omitempty" xml:"ClientIds,omitempty"`
+	//
+	// example:
+	//
+	// 496271242565057****
+	ClientIds *string `json:"ClientIds,omitempty" xml:"ClientIds,omitempty"`
+	// The time when the OIDC token expires.
+	//
+	// example:
+	//
+	// 2021-10-20T04:27:09Z
 	ExpirationTime *string `json:"ExpirationTime,omitempty" xml:"ExpirationTime,omitempty"`
-	IssuanceTime   *string `json:"IssuanceTime,omitempty" xml:"IssuanceTime,omitempty"`
+	// The time when the OIDC token was issued.
+	//
+	// example:
+	//
+	// 2021-10-20T03:27:09Z
+	IssuanceTime *string `json:"IssuanceTime,omitempty" xml:"IssuanceTime,omitempty"`
 	// The URL of the issuer,
 	//
 	// which is represented by the `iss` field in the OIDC Token.
+	//
+	// example:
+	//
+	// https://dev-xxxxxx.okta.com
 	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
 	// The subject,
 	//
 	// which is represented by the `sub` field in the OIDC Token.
-	Subject          *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
+	//
+	// example:
+	//
+	// KryrkIdjylZb7agUgCEf****
+	Subject *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
+	// The verification information about the OIDC token. For more information, see [Manage an OIDC IdP](https://help.aliyun.com/document_detail/327123.html).
+	//
+	// example:
+	//
+	// Success
 	VerificationInfo *string `json:"VerificationInfo,omitempty" xml:"VerificationInfo,omitempty"`
 }
 
@@ -457,9 +590,9 @@ func (s *AssumeRoleWithOIDCResponseBodyOIDCTokenInfo) SetVerificationInfo(v stri
 }
 
 type AssumeRoleWithOIDCResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AssumeRoleWithOIDCResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AssumeRoleWithOIDCResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AssumeRoleWithOIDCResponse) String() string {
@@ -490,31 +623,49 @@ type AssumeRoleWithSAMLRequest struct {
 	//
 	// Minimum value: 900. Maximum value: the value of the `MaxSessionDuration` parameter. Default value: 3600.
 	//
-	// You can call the CreateRole or UpdateRole operation to configure the `MaxSessionDuration` parameter. For more information, see [CreateRole](~~28710~~) or [UpdateRole](~~28712~~).
+	// You can call the CreateRole or UpdateRole operation to configure the `MaxSessionDuration` parameter. For more information, see [CreateRole](https://help.aliyun.com/document_detail/28710.html) or [UpdateRole](https://help.aliyun.com/document_detail/28712.html).
+	//
+	// example:
+	//
+	// 3600
 	DurationSeconds *int64 `json:"DurationSeconds,omitempty" xml:"DurationSeconds,omitempty"`
 	// The policy that specifies the permissions of the returned STS token. You can use this parameter to grant the STS token fewer permissions than the permissions granted to the RAM role.
 	//
-	// *   If you specify this parameter, the permissions of the returned STS token are the permissions that are included in the value of this parameter and owned by the RAM role.
-	// *   If you do not specify this parameter, the returned STS token has all the permissions of the RAM role.
+	// 	- If you specify this parameter, the permissions of the returned STS token are the permissions that are included in the value of this parameter and owned by the RAM role.
+	//
+	// 	- If you do not specify this parameter, the returned STS token has all the permissions of the RAM role.
 	//
 	// The value must be 1 to 2,048 characters in length.
+	//
+	// example:
+	//
+	// url_encoded_policy
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
 	// The ARN of the RAM role.
 	//
-	// The trust entity of the RAM role is a SAML IdP. For more information, see [Create a RAM role for a trusted IdP](~~116805~~) or [CreateRole](~~28710~~).
+	// The trust entity of the RAM role is a SAML IdP. For more information, see [Create a RAM role for a trusted IdP](https://help.aliyun.com/document_detail/116805.html) or [CreateRole](https://help.aliyun.com/document_detail/28710.html).
 	//
 	// Format: `acs:ram::<account_id>:role/<role_name>`.
 	//
 	// You can view the ARN in the RAM console or by calling operations.
 	//
-	// *   For more information about how to view the ARN in the RAM console, see [How do I view the ARN of the RAM role?](~~39744~~).
-	// *   For more information about how to view the ARN by calling operations, see [ListRoles](~~28713~~) or [GetRole](~~28711~~).
+	// 	- For more information about how to view the ARN in the RAM console, see [How do I view the ARN of the RAM role?](https://help.aliyun.com/document_detail/39744.html).
+	//
+	// 	- For more information about how to view the ARN by calling operations, see [ListRoles](https://help.aliyun.com/document_detail/28713.html) or [GetRole](https://help.aliyun.com/document_detail/28711.html).
+	//
+	// example:
+	//
+	// acs:ram::123456789012****:role/adminrole
 	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
 	// The Base64-encoded SAML assertion.
 	//
 	// The value must be 4 to 100,000 characters in length.
 	//
 	// > A complete SAML response rather than a single SAMLAssertion field must be retrieved from the external IdP.
+	//
+	// example:
+	//
+	// base64_encoded_saml_assertion
 	SAMLAssertion *string `json:"SAMLAssertion,omitempty" xml:"SAMLAssertion,omitempty"`
 	// The Alibaba Cloud Resource Name (ARN) of the SAML IdP that is created in the RAM console.
 	//
@@ -522,8 +673,13 @@ type AssumeRoleWithSAMLRequest struct {
 	//
 	// You can view the ARN in the RAM console or by calling operations.
 	//
-	// *   For more information about how to view the ARN in the RAM console, see [How do I view the ARN of a RAM role?](~~116795~~)
-	// *   For more information about how to view the ARN by calling operations, see [GetSAMLProvider](~~186833~~) or [ListSAMLProviders](~~186851~~).
+	// 	- For more information about how to view the ARN in the RAM console, see [How do I view the ARN of a RAM role?](https://help.aliyun.com/document_detail/116795.html)
+	//
+	// 	- For more information about how to view the ARN by calling operations, see [GetSAMLProvider](https://help.aliyun.com/document_detail/186833.html) or [ListSAMLProviders](https://help.aliyun.com/document_detail/186851.html).
+	//
+	// example:
+	//
+	// acs:ram::123456789012****:saml-provider/company1
 	SAMLProviderArn *string `json:"SAMLProviderArn,omitempty" xml:"SAMLProviderArn,omitempty"`
 }
 
@@ -566,6 +722,10 @@ type AssumeRoleWithSAMLResponseBody struct {
 	// The STS credentials.
 	Credentials *AssumeRoleWithSAMLResponseBodyCredentials `json:"Credentials,omitempty" xml:"Credentials,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 6894B13B-6D71-4EF5-88FA-F32781734A7F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The information in the SAML assertion.
 	SAMLAssertionInfo *AssumeRoleWithSAMLResponseBodySAMLAssertionInfo `json:"SAMLAssertionInfo,omitempty" xml:"SAMLAssertionInfo,omitempty" type:"Struct"`
@@ -601,8 +761,16 @@ func (s *AssumeRoleWithSAMLResponseBody) SetSAMLAssertionInfo(v *AssumeRoleWithS
 
 type AssumeRoleWithSAMLResponseBodyAssumedRoleUser struct {
 	// The ARN of the temporary identity that you use to assume the RAM role.
+	//
+	// example:
+	//
+	// acs:sts::123456789012****:assumed-role/AdminRole/alice
 	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
 	// The ID of the temporary identity that you use to assume the RAM role.
+	//
+	// example:
+	//
+	// 34458433936495****:alice
 	AssumedRoleId *string `json:"AssumedRoleId,omitempty" xml:"AssumedRoleId,omitempty"`
 }
 
@@ -626,14 +794,30 @@ func (s *AssumeRoleWithSAMLResponseBodyAssumedRoleUser) SetAssumedRoleId(v strin
 
 type AssumeRoleWithSAMLResponseBodyCredentials struct {
 	// The AccessKey ID.
+	//
+	// example:
+	//
+	// STS.L4aBSCSJVMuKg5U1****
 	AccessKeyId *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
 	// The AccessKey secret.
+	//
+	// example:
+	//
+	// wyLTSmsyPGP1ohvvw8xYgB29dlGI8KMiH2pK****
 	AccessKeySecret *string `json:"AccessKeySecret,omitempty" xml:"AccessKeySecret,omitempty"`
 	// The time when the STS token expires. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2015-04-09T11:52:19Z
 	Expiration *string `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
 	// The STS token.
 	//
 	// > Alibaba Cloud STS does not impose limits on the length of STS tokens. We strongly recommend that you do not specify a maximum length for STS tokens.
+	//
+	// example:
+	//
+	// ********
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
@@ -667,12 +851,28 @@ func (s *AssumeRoleWithSAMLResponseBodyCredentials) SetSecurityToken(v string) *
 
 type AssumeRoleWithSAMLResponseBodySAMLAssertionInfo struct {
 	// The value in the `Issuer` element in the SAML assertion.
+	//
+	// example:
+	//
+	// http://example.com/adfs/services/trust
 	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
 	// The `Recipient` attribute of the SubjectConfirmationData sub-element. SubjectConfirmationData is a sub-element of the `Subject` element in the SAML assertion.
+	//
+	// example:
+	//
+	// https://signin.aliyun.com/saml-role/SSO
 	Recipient *string `json:"Recipient,omitempty" xml:"Recipient,omitempty"`
 	// The value in the NameID sub-element of the `Subject` element in the SAML assertion.
+	//
+	// example:
+	//
+	// alice@example.com
 	Subject *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
 	// The Format attribute of the `NameID` element in the SAML assertion. If the Format attribute is prefixed with `urn:oasis:names:tc:SAML:2.0:nameid-format:`, the prefix is not included in the value of this parameter. For example, if the value of the Format attribute is urn:oasis:names:tc:SAML:2.0:nameid-format:persistent/transient, the value of this parameter is `persistent/transient`.
+	//
+	// example:
+	//
+	// persistent
 	SubjectType *string `json:"SubjectType,omitempty" xml:"SubjectType,omitempty"`
 }
 
@@ -705,9 +905,9 @@ func (s *AssumeRoleWithSAMLResponseBodySAMLAssertionInfo) SetSubjectType(v strin
 }
 
 type AssumeRoleWithSAMLResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AssumeRoleWithSAMLResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AssumeRoleWithSAMLResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AssumeRoleWithSAMLResponse) String() string {
@@ -734,13 +934,34 @@ func (s *AssumeRoleWithSAMLResponse) SetBody(v *AssumeRoleWithSAMLResponseBody) 
 }
 
 type GetCallerIdentityResponseBody struct {
-	AccountId    *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	Arn          *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	// example:
+	//
+	// 196813200012****
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// example:
+	//
+	// acs:ram::196813200012****:user/admin
+	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	// example:
+	//
+	// RAMUser
 	IdentityType *string `json:"IdentityType,omitempty" xml:"IdentityType,omitempty"`
-	PrincipalId  *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RoleId       *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
-	UserId       *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// 28877424437521****
+	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
+	// example:
+	//
+	// 3C87BF47-3724-5443-ADC1-5AEAD9A03EB1
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 33537620082992****
+	RoleId *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	// example:
+	//
+	// 216959339000****
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s GetCallerIdentityResponseBody) String() string {
@@ -787,9 +1008,9 @@ func (s *GetCallerIdentityResponseBody) SetUserId(v string) *GetCallerIdentityRe
 }
 
 type GetCallerIdentityResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetCallerIdentityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetCallerIdentityResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetCallerIdentityResponse) String() string {
@@ -900,22 +1121,37 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-/**
- * ### Prerequisites
- * You cannot use an Alibaba Cloud account to call this operation. The requester of this operation can only be a RAM user or RAM role. Make sure that the AliyunSTSAssumeRoleAccess policy is attached to the requester. After this policy is attached to the requester, the requester has the management permissions on STS.
- * If you do not attach the AliyunSTSAssumeRoleAccess policy to the requester, the following error message is returned:
- * `You are not authorized to do this action. You should be authorized by RAM.`
- * You can refer to the following information to troubleshoot the error:
- * *   Cause of the error: The policy that is required to assume a RAM role is not attached to the requester. To resolve this issue, attach the AliyunSTSAssumeRoleAccess policy or a custom policy to the requester. For more information, see [Can I specify the RAM role that a RAM user can assume?](~~39744~~) and [Grant permissions to a RAM user](~~116146~~).
- * *   Cause of the error: The requester is not authorized to assume the RAM role. To resolve this issue, add the requester to the Principal element in the trust policy of the RAM role For more information, see [Edit the trust policy of a RAM role](~~116819~~).
- * ### Best practices
- * An STS token is valid for a period of time after it is issued, and the number of STS tokens that can be issued within an interval is also limited. Therefore, we recommend that you configure a proper validity period for an STS token and repeatedly use the token within this period. This prevents frequent issuing of STS tokens from adversely affecting your services if a large number of requests are sent. For more information about the limit, see [Is the number of STS API requests limited?](~~39744~~) You can configure the `DurationSeconds` parameter to specify a validity period for an STS token.
- * When you upload or download Object Storage Service (OSS) objects on mobile devices, a large number of STS API requests are sent. In this case, repeated use of an STS token may not meet your business requirements. To avoid the limit on STS API requests from affecting access to OSS, you can **add a signature to the URL of an OSS object**. For more information, see [Add signatures to URLs](~~31952~~) and [Obtain signature information from the server and upload data to OSS](~~31926~~).
- *
- * @param request AssumeRoleRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return AssumeRoleResponse
- */
+// Summary:
+//
+// Obtains a Security Token Service (STS) token to assume a Resource Access Management (RAM) role.
+//
+// Description:
+//
+// ### Prerequisites
+//
+// You cannot use an Alibaba Cloud account to call this operation. The requester of this operation can only be a RAM user or RAM role. Make sure that the AliyunSTSAssumeRoleAccess policy is attached to the requester. After this policy is attached to the requester, the requester has the management permissions on STS.
+//
+// If you do not attach the AliyunSTSAssumeRoleAccess policy to the requester, the following error message is returned:
+//
+// `You are not authorized to do this action. You should be authorized by RAM.`
+//
+// You can refer to the following information to troubleshoot the error:
+//
+//   - Cause of the error: The policy that is required to assume a RAM role is not attached to the requester. To resolve this issue, attach the AliyunSTSAssumeRoleAccess policy or a custom policy to the requester. For more information, see [Can I specify the RAM role that a RAM user can assume?](https://help.aliyun.com/document_detail/39744.html) and [Grant permissions to a RAM user](https://help.aliyun.com/document_detail/116146.html).
+//
+//   - Cause of the error: The requester is not authorized to assume the RAM role. To resolve this issue, add the requester to the Principal element in the trust policy of the RAM role For more information, see [Edit the trust policy of a RAM role](https://help.aliyun.com/document_detail/116819.html).
+//
+// ### Best practices
+//
+// An STS token is valid for a period of time after it is issued, and the number of STS tokens that can be issued within an interval is also limited. Therefore, we recommend that you configure a proper validity period for an STS token and repeatedly use the token within this period. This prevents frequent issuing of STS tokens from adversely affecting your services if a large number of requests are sent. For more information about the limit, see [Is the number of STS API requests limited?](https://help.aliyun.com/document_detail/39744.html) You can configure the `DurationSeconds` parameter to specify a validity period for an STS token.
+//
+// When you upload or download Object Storage Service (OSS) objects on mobile devices, a large number of STS API requests are sent. In this case, repeated use of an STS token may not meet your business requirements. To avoid the limit on STS API requests from affecting access to OSS, you can **add a signature to the URL of an OSS object**. For more information, see [Add signatures to URLs](https://help.aliyun.com/document_detail/31952.html) and [Obtain signature information from the server and upload data to OSS](https://help.aliyun.com/document_detail/31926.html).
+//
+// @param request - AssumeRoleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AssumeRoleResponse
 func (client *Client) AssumeRoleWithOptions(request *AssumeRoleRequest, runtime *util.RuntimeOptions) (_result *AssumeRoleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -956,30 +1192,55 @@ func (client *Client) AssumeRoleWithOptions(request *AssumeRoleRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AssumeRoleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AssumeRoleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AssumeRoleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
-/**
- * ### Prerequisites
- * You cannot use an Alibaba Cloud account to call this operation. The requester of this operation can only be a RAM user or RAM role. Make sure that the AliyunSTSAssumeRoleAccess policy is attached to the requester. After this policy is attached to the requester, the requester has the management permissions on STS.
- * If you do not attach the AliyunSTSAssumeRoleAccess policy to the requester, the following error message is returned:
- * `You are not authorized to do this action. You should be authorized by RAM.`
- * You can refer to the following information to troubleshoot the error:
- * *   Cause of the error: The policy that is required to assume a RAM role is not attached to the requester. To resolve this issue, attach the AliyunSTSAssumeRoleAccess policy or a custom policy to the requester. For more information, see [Can I specify the RAM role that a RAM user can assume?](~~39744~~) and [Grant permissions to a RAM user](~~116146~~).
- * *   Cause of the error: The requester is not authorized to assume the RAM role. To resolve this issue, add the requester to the Principal element in the trust policy of the RAM role For more information, see [Edit the trust policy of a RAM role](~~116819~~).
- * ### Best practices
- * An STS token is valid for a period of time after it is issued, and the number of STS tokens that can be issued within an interval is also limited. Therefore, we recommend that you configure a proper validity period for an STS token and repeatedly use the token within this period. This prevents frequent issuing of STS tokens from adversely affecting your services if a large number of requests are sent. For more information about the limit, see [Is the number of STS API requests limited?](~~39744~~) You can configure the `DurationSeconds` parameter to specify a validity period for an STS token.
- * When you upload or download Object Storage Service (OSS) objects on mobile devices, a large number of STS API requests are sent. In this case, repeated use of an STS token may not meet your business requirements. To avoid the limit on STS API requests from affecting access to OSS, you can **add a signature to the URL of an OSS object**. For more information, see [Add signatures to URLs](~~31952~~) and [Obtain signature information from the server and upload data to OSS](~~31926~~).
- *
- * @param request AssumeRoleRequest
- * @return AssumeRoleResponse
- */
+// Summary:
+//
+// Obtains a Security Token Service (STS) token to assume a Resource Access Management (RAM) role.
+//
+// Description:
+//
+// ### Prerequisites
+//
+// You cannot use an Alibaba Cloud account to call this operation. The requester of this operation can only be a RAM user or RAM role. Make sure that the AliyunSTSAssumeRoleAccess policy is attached to the requester. After this policy is attached to the requester, the requester has the management permissions on STS.
+//
+// If you do not attach the AliyunSTSAssumeRoleAccess policy to the requester, the following error message is returned:
+//
+// `You are not authorized to do this action. You should be authorized by RAM.`
+//
+// You can refer to the following information to troubleshoot the error:
+//
+//   - Cause of the error: The policy that is required to assume a RAM role is not attached to the requester. To resolve this issue, attach the AliyunSTSAssumeRoleAccess policy or a custom policy to the requester. For more information, see [Can I specify the RAM role that a RAM user can assume?](https://help.aliyun.com/document_detail/39744.html) and [Grant permissions to a RAM user](https://help.aliyun.com/document_detail/116146.html).
+//
+//   - Cause of the error: The requester is not authorized to assume the RAM role. To resolve this issue, add the requester to the Principal element in the trust policy of the RAM role For more information, see [Edit the trust policy of a RAM role](https://help.aliyun.com/document_detail/116819.html).
+//
+// ### Best practices
+//
+// An STS token is valid for a period of time after it is issued, and the number of STS tokens that can be issued within an interval is also limited. Therefore, we recommend that you configure a proper validity period for an STS token and repeatedly use the token within this period. This prevents frequent issuing of STS tokens from adversely affecting your services if a large number of requests are sent. For more information about the limit, see [Is the number of STS API requests limited?](https://help.aliyun.com/document_detail/39744.html) You can configure the `DurationSeconds` parameter to specify a validity period for an STS token.
+//
+// When you upload or download Object Storage Service (OSS) objects on mobile devices, a large number of STS API requests are sent. In this case, repeated use of an STS token may not meet your business requirements. To avoid the limit on STS API requests from affecting access to OSS, you can **add a signature to the URL of an OSS object**. For more information, see [Add signatures to URLs](https://help.aliyun.com/document_detail/31952.html) and [Obtain signature information from the server and upload data to OSS](https://help.aliyun.com/document_detail/31926.html).
+//
+// @param request - AssumeRoleRequest
+//
+// @return AssumeRoleResponse
 func (client *Client) AssumeRole(request *AssumeRoleRequest) (_result *AssumeRoleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AssumeRoleResponse{}
@@ -991,16 +1252,25 @@ func (client *Client) AssumeRole(request *AssumeRoleRequest) (_result *AssumeRol
 	return _result, _err
 }
 
-/**
- * ### Prerequisites
- * *   An OIDC token is obtained from an external identity provider (IdP).
- * *   An OIDC IdP is created in the RAM console. For more information, see [Create an OIDC IdP](~~327123~~) or [CreateOIDCProvider](~~327135~~).
- * *   A RAM role whose trusted entity is an OIDC IdP is created in the RAM console. For more information, see [Create a RAM role for a trusted IdP](~~116805~~) or [CreateRole](~~28710~~).
- *
- * @param request AssumeRoleWithOIDCRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return AssumeRoleWithOIDCResponse
- */
+// Summary:
+//
+// Queries a Security Token Service (STS) token to assume a Resource Access Management (RAM) role during role-based single sign-on (SSO) by using OpenID Connect (OIDC).
+//
+// Description:
+//
+// ### Prerequisites
+//
+//   - An OIDC token is obtained from an external identity provider (IdP).
+//
+//   - An OIDC IdP is created in the RAM console. For more information, see [Create an OIDC IdP](https://help.aliyun.com/document_detail/327123.html) or [CreateOIDCProvider](https://help.aliyun.com/document_detail/327135.html).
+//
+//   - A RAM role whose trusted entity is an OIDC IdP is created in the RAM console. For more information, see [Create a RAM role for a trusted IdP](https://help.aliyun.com/document_detail/116805.html) or [CreateRole](https://help.aliyun.com/document_detail/28710.html).
+//
+// @param request - AssumeRoleWithOIDCRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AssumeRoleWithOIDCResponse
 func (client *Client) AssumeRoleWithOIDCWithOptions(request *AssumeRoleWithOIDCRequest, runtime *util.RuntimeOptions) (_result *AssumeRoleWithOIDCResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1045,24 +1315,43 @@ func (client *Client) AssumeRoleWithOIDCWithOptions(request *AssumeRoleWithOIDCR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AssumeRoleWithOIDCResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AssumeRoleWithOIDCResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AssumeRoleWithOIDCResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
-/**
- * ### Prerequisites
- * *   An OIDC token is obtained from an external identity provider (IdP).
- * *   An OIDC IdP is created in the RAM console. For more information, see [Create an OIDC IdP](~~327123~~) or [CreateOIDCProvider](~~327135~~).
- * *   A RAM role whose trusted entity is an OIDC IdP is created in the RAM console. For more information, see [Create a RAM role for a trusted IdP](~~116805~~) or [CreateRole](~~28710~~).
- *
- * @param request AssumeRoleWithOIDCRequest
- * @return AssumeRoleWithOIDCResponse
- */
+// Summary:
+//
+// Queries a Security Token Service (STS) token to assume a Resource Access Management (RAM) role during role-based single sign-on (SSO) by using OpenID Connect (OIDC).
+//
+// Description:
+//
+// ### Prerequisites
+//
+//   - An OIDC token is obtained from an external identity provider (IdP).
+//
+//   - An OIDC IdP is created in the RAM console. For more information, see [Create an OIDC IdP](https://help.aliyun.com/document_detail/327123.html) or [CreateOIDCProvider](https://help.aliyun.com/document_detail/327135.html).
+//
+//   - A RAM role whose trusted entity is an OIDC IdP is created in the RAM console. For more information, see [Create a RAM role for a trusted IdP](https://help.aliyun.com/document_detail/116805.html) or [CreateRole](https://help.aliyun.com/document_detail/28710.html).
+//
+// @param request - AssumeRoleWithOIDCRequest
+//
+// @return AssumeRoleWithOIDCResponse
 func (client *Client) AssumeRoleWithOIDC(request *AssumeRoleWithOIDCRequest) (_result *AssumeRoleWithOIDCResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AssumeRoleWithOIDCResponse{}
@@ -1074,16 +1363,25 @@ func (client *Client) AssumeRoleWithOIDC(request *AssumeRoleWithOIDCRequest) (_r
 	return _result, _err
 }
 
-/**
- * ###
- * *   A SAML response is obtained from an external identity provider (IdP).
- * *   A SAML IdP is created in the RAM console. For more information, see [Create a SAML IdP](~~116083~~) or [CreateSAMLProvider](~~186846~~).
- * *   A RAM role whose trusted entity is a SAML IdP is created in the RAM console. For more information, see [Create a RAM role for a trusted IdP](~~116805~~) or [CreateRole](~~28710~~).
- *
- * @param request AssumeRoleWithSAMLRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return AssumeRoleWithSAMLResponse
- */
+// Summary:
+//
+// Obtains a Security Token Service (STS) token to assume a Resource Access Management (RAM) role during role-based single sign-on (SSO) by using Security Assertion Markup Language (SAML).
+//
+// Description:
+//
+// ###
+//
+//   - A SAML response is obtained from an external identity provider (IdP).
+//
+//   - A SAML IdP is created in the RAM console. For more information, see [Create a SAML IdP](https://help.aliyun.com/document_detail/116083.html) or [CreateSAMLProvider](https://help.aliyun.com/document_detail/186846.html).
+//
+//   - A RAM role whose trusted entity is a SAML IdP is created in the RAM console. For more information, see [Create a RAM role for a trusted IdP](https://help.aliyun.com/document_detail/116805.html) or [CreateRole](https://help.aliyun.com/document_detail/28710.html).
+//
+// @param request - AssumeRoleWithSAMLRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AssumeRoleWithSAMLResponse
 func (client *Client) AssumeRoleWithSAMLWithOptions(request *AssumeRoleWithSAMLRequest, runtime *util.RuntimeOptions) (_result *AssumeRoleWithSAMLResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1124,24 +1422,43 @@ func (client *Client) AssumeRoleWithSAMLWithOptions(request *AssumeRoleWithSAMLR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AssumeRoleWithSAMLResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AssumeRoleWithSAMLResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AssumeRoleWithSAMLResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
-/**
- * ###
- * *   A SAML response is obtained from an external identity provider (IdP).
- * *   A SAML IdP is created in the RAM console. For more information, see [Create a SAML IdP](~~116083~~) or [CreateSAMLProvider](~~186846~~).
- * *   A RAM role whose trusted entity is a SAML IdP is created in the RAM console. For more information, see [Create a RAM role for a trusted IdP](~~116805~~) or [CreateRole](~~28710~~).
- *
- * @param request AssumeRoleWithSAMLRequest
- * @return AssumeRoleWithSAMLResponse
- */
+// Summary:
+//
+// Obtains a Security Token Service (STS) token to assume a Resource Access Management (RAM) role during role-based single sign-on (SSO) by using Security Assertion Markup Language (SAML).
+//
+// Description:
+//
+// ###
+//
+//   - A SAML response is obtained from an external identity provider (IdP).
+//
+//   - A SAML IdP is created in the RAM console. For more information, see [Create a SAML IdP](https://help.aliyun.com/document_detail/116083.html) or [CreateSAMLProvider](https://help.aliyun.com/document_detail/186846.html).
+//
+//   - A RAM role whose trusted entity is a SAML IdP is created in the RAM console. For more information, see [Create a RAM role for a trusted IdP](https://help.aliyun.com/document_detail/116805.html) or [CreateRole](https://help.aliyun.com/document_detail/28710.html).
+//
+// @param request - AssumeRoleWithSAMLRequest
+//
+// @return AssumeRoleWithSAMLResponse
 func (client *Client) AssumeRoleWithSAML(request *AssumeRoleWithSAMLRequest) (_result *AssumeRoleWithSAMLResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AssumeRoleWithSAMLResponse{}
@@ -1153,6 +1470,15 @@ func (client *Client) AssumeRoleWithSAML(request *AssumeRoleWithSAMLRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// The ID of the Alibaba Cloud account to which the current requester belongs.
+//
+// @param request - GetCallerIdentityRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCallerIdentityResponse
 func (client *Client) GetCallerIdentityWithOptions(runtime *util.RuntimeOptions) (_result *GetCallerIdentityResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -1166,15 +1492,31 @@ func (client *Client) GetCallerIdentityWithOptions(runtime *util.RuntimeOptions)
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetCallerIdentityResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetCallerIdentityResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetCallerIdentityResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// The ID of the Alibaba Cloud account to which the current requester belongs.
+//
+// @return GetCallerIdentityResponse
 func (client *Client) GetCallerIdentity() (_result *GetCallerIdentityResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetCallerIdentityResponse{}
