@@ -2177,8 +2177,10 @@ type AddImageRequest struct {
 	// example:
 	//
 	// nlp-compression
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Size *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Size       *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
+	SourceId   *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	// example:
 	//
 	// 15******45
@@ -2225,6 +2227,16 @@ func (s *AddImageRequest) SetName(v string) *AddImageRequest {
 
 func (s *AddImageRequest) SetSize(v int32) *AddImageRequest {
 	s.Size = &v
+	return s
+}
+
+func (s *AddImageRequest) SetSourceId(v string) *AddImageRequest {
+	s.SourceId = &v
+	return s
+}
+
+func (s *AddImageRequest) SetSourceType(v string) *AddImageRequest {
+	s.SourceType = &v
 	return s
 }
 
@@ -7605,8 +7617,10 @@ type GetImageResponseBody struct {
 	// example:
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Size      *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Size       *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
+	SourceId   *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	// example:
 	//
 	// 15577******8921
@@ -7672,6 +7686,16 @@ func (s *GetImageResponseBody) SetRequestId(v string) *GetImageResponseBody {
 
 func (s *GetImageResponseBody) SetSize(v int32) *GetImageResponseBody {
 	s.Size = &v
+	return s
+}
+
+func (s *GetImageResponseBody) SetSourceId(v string) *GetImageResponseBody {
+	s.SourceId = &v
+	return s
+}
+
+func (s *GetImageResponseBody) SetSourceType(v string) *GetImageResponseBody {
+	s.SourceType = &v
 	return s
 }
 
@@ -10342,6 +10366,8 @@ type ListImagesResponseBodyImages struct {
 	// 15577******82932
 	ParentUserId *string `json:"ParentUserId,omitempty" xml:"ParentUserId,omitempty"`
 	Size         *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
+	SourceId     *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	SourceType   *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	// example:
 	//
 	// 15577******82932
@@ -10407,6 +10433,16 @@ func (s *ListImagesResponseBodyImages) SetParentUserId(v string) *ListImagesResp
 
 func (s *ListImagesResponseBodyImages) SetSize(v int32) *ListImagesResponseBodyImages {
 	s.Size = &v
+	return s
+}
+
+func (s *ListImagesResponseBodyImages) SetSourceId(v string) *ListImagesResponseBodyImages {
+	s.SourceId = &v
+	return s
+}
+
+func (s *ListImagesResponseBodyImages) SetSourceType(v string) *ListImagesResponseBodyImages {
+	s.SourceType = &v
 	return s
 }
 
@@ -14768,6 +14804,14 @@ func (client *Client) AddImageWithOptions(request *AddImageRequest, headers map[
 
 	if !tea.BoolValue(util.IsUnset(request.Size)) {
 		body["Size"] = request.Size
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceId)) {
+		body["SourceId"] = request.SourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
+		body["SourceType"] = request.SourceType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
