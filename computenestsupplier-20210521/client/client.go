@@ -10624,7 +10624,12 @@ type ListAcrImageRepositoriesResponseBodyRepositories struct {
 	//
 	// 2021-05-20T00:00:00Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	Namespace    *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The namespace of the repository
+	//
+	// example:
+	//
+	// computenest
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The image repo ID.
 	//
 	// example:
@@ -27220,23 +27225,7 @@ func (client *Client) ListServiceUsagesWithOptions(request *ListServiceUsagesReq
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Filter)) {
-		query["Filter"] = request.Filter
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
-		query["MaxResults"] = request.MaxResults
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
-		query["NextToken"] = request.NextToken
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SupplierRole)) {
-		query["SupplierRole"] = request.SupplierRole
-	}
-
+	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27245,7 +27234,7 @@ func (client *Client) ListServiceUsagesWithOptions(request *ListServiceUsagesReq
 		Version:     tea.String("2021-05-21"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
+		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
 		ReqBodyType: tea.String("formData"),
