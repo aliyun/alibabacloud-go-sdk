@@ -5021,14 +5021,14 @@ func (s *CreateProjectResponse) SetBody(v *CreateProjectResponseBody) *CreatePro
 }
 
 type CreateProjectModifyRecordsRequest struct {
-	// This parameter is required.
 	Databases []*CreateProjectModifyRecordsRequestDatabases `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Repeated"`
 	// This parameter is required.
 	//
 	// example:
 	//
 	// np_fe****
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id              *string                                           `json:"Id,omitempty" xml:"Id,omitempty"`
+	TransferMapping *CreateProjectModifyRecordsRequestTransferMapping `json:"TransferMapping,omitempty" xml:"TransferMapping,omitempty" type:"Struct"`
 }
 
 func (s CreateProjectModifyRecordsRequest) String() string {
@@ -5046,6 +5046,11 @@ func (s *CreateProjectModifyRecordsRequest) SetDatabases(v []*CreateProjectModif
 
 func (s *CreateProjectModifyRecordsRequest) SetId(v string) *CreateProjectModifyRecordsRequest {
 	s.Id = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequest) SetTransferMapping(v *CreateProjectModifyRecordsRequestTransferMapping) *CreateProjectModifyRecordsRequest {
+	s.TransferMapping = v
 	return s
 }
 
@@ -5570,15 +5575,1686 @@ func (s *CreateProjectModifyRecordsRequestDatabasesViewsAdbTableSchema) SetPrima
 	return s
 }
 
+type CreateProjectModifyRecordsRequestTransferMapping struct {
+	BlackTableRules []*CreateProjectModifyRecordsRequestTransferMappingBlackTableRules `json:"BlackTableRules,omitempty" xml:"BlackTableRules,omitempty" type:"Repeated"`
+	BlackViewRules  []*CreateProjectModifyRecordsRequestTransferMappingBlackViewRules  `json:"BlackViewRules,omitempty" xml:"BlackViewRules,omitempty" type:"Repeated"`
+	Databases       []*CreateProjectModifyRecordsRequestTransferMappingDatabases       `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Repeated"`
+	DatabasesBlack  []*CreateProjectModifyRecordsRequestTransferMappingDatabasesBlack  `json:"DatabasesBlack,omitempty" xml:"DatabasesBlack,omitempty" type:"Repeated"`
+	// example:
+	//
+	// SPCEIFIC
+	Mode                  *string                                                            `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	Schemas               []*CreateProjectModifyRecordsRequestTransferMappingSchemas         `json:"Schemas,omitempty" xml:"Schemas,omitempty" type:"Repeated"`
+	TableAndViewBlackList []*string                                                          `json:"TableAndViewBlackList,omitempty" xml:"TableAndViewBlackList,omitempty" type:"Repeated"`
+	TableAndViewWhiteList []*string                                                          `json:"TableAndViewWhiteList,omitempty" xml:"TableAndViewWhiteList,omitempty" type:"Repeated"`
+	WhiteTableRules       []*CreateProjectModifyRecordsRequestTransferMappingWhiteTableRules `json:"WhiteTableRules,omitempty" xml:"WhiteTableRules,omitempty" type:"Repeated"`
+	WhiteViewRules        []*CreateProjectModifyRecordsRequestTransferMappingWhiteViewRules  `json:"WhiteViewRules,omitempty" xml:"WhiteViewRules,omitempty" type:"Repeated"`
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMapping) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMapping) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMapping) SetBlackTableRules(v []*CreateProjectModifyRecordsRequestTransferMappingBlackTableRules) *CreateProjectModifyRecordsRequestTransferMapping {
+	s.BlackTableRules = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMapping) SetBlackViewRules(v []*CreateProjectModifyRecordsRequestTransferMappingBlackViewRules) *CreateProjectModifyRecordsRequestTransferMapping {
+	s.BlackViewRules = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMapping) SetDatabases(v []*CreateProjectModifyRecordsRequestTransferMappingDatabases) *CreateProjectModifyRecordsRequestTransferMapping {
+	s.Databases = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMapping) SetDatabasesBlack(v []*CreateProjectModifyRecordsRequestTransferMappingDatabasesBlack) *CreateProjectModifyRecordsRequestTransferMapping {
+	s.DatabasesBlack = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMapping) SetMode(v string) *CreateProjectModifyRecordsRequestTransferMapping {
+	s.Mode = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMapping) SetSchemas(v []*CreateProjectModifyRecordsRequestTransferMappingSchemas) *CreateProjectModifyRecordsRequestTransferMapping {
+	s.Schemas = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMapping) SetTableAndViewBlackList(v []*string) *CreateProjectModifyRecordsRequestTransferMapping {
+	s.TableAndViewBlackList = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMapping) SetTableAndViewWhiteList(v []*string) *CreateProjectModifyRecordsRequestTransferMapping {
+	s.TableAndViewWhiteList = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMapping) SetWhiteTableRules(v []*CreateProjectModifyRecordsRequestTransferMappingWhiteTableRules) *CreateProjectModifyRecordsRequestTransferMapping {
+	s.WhiteTableRules = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMapping) SetWhiteViewRules(v []*CreateProjectModifyRecordsRequestTransferMappingWhiteViewRules) *CreateProjectModifyRecordsRequestTransferMapping {
+	s.WhiteViewRules = v
+	return s
+}
+
+type CreateProjectModifyRecordsRequestTransferMappingBlackTableRules struct {
+	ObjectMapping *CreateProjectModifyRecordsRequestTransferMappingBlackTableRulesObjectMapping `json:"ObjectMapping,omitempty" xml:"ObjectMapping,omitempty" type:"Struct"`
+	SchemaMapping *CreateProjectModifyRecordsRequestTransferMappingBlackTableRulesSchemaMapping `json:"SchemaMapping,omitempty" xml:"SchemaMapping,omitempty" type:"Struct"`
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingBlackTableRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingBlackTableRules) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingBlackTableRules) SetObjectMapping(v *CreateProjectModifyRecordsRequestTransferMappingBlackTableRulesObjectMapping) *CreateProjectModifyRecordsRequestTransferMappingBlackTableRules {
+	s.ObjectMapping = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingBlackTableRules) SetSchemaMapping(v *CreateProjectModifyRecordsRequestTransferMappingBlackTableRulesSchemaMapping) *CreateProjectModifyRecordsRequestTransferMappingBlackTableRules {
+	s.SchemaMapping = v
+	return s
+}
+
+type CreateProjectModifyRecordsRequestTransferMappingBlackTableRulesObjectMapping struct {
+	MappedName *string `json:"MappedName,omitempty" xml:"MappedName,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingBlackTableRulesObjectMapping) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingBlackTableRulesObjectMapping) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingBlackTableRulesObjectMapping) SetMappedName(v string) *CreateProjectModifyRecordsRequestTransferMappingBlackTableRulesObjectMapping {
+	s.MappedName = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingBlackTableRulesObjectMapping) SetName(v string) *CreateProjectModifyRecordsRequestTransferMappingBlackTableRulesObjectMapping {
+	s.Name = &v
+	return s
+}
+
+type CreateProjectModifyRecordsRequestTransferMappingBlackTableRulesSchemaMapping struct {
+	MappedName *string `json:"MappedName,omitempty" xml:"MappedName,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingBlackTableRulesSchemaMapping) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingBlackTableRulesSchemaMapping) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingBlackTableRulesSchemaMapping) SetMappedName(v string) *CreateProjectModifyRecordsRequestTransferMappingBlackTableRulesSchemaMapping {
+	s.MappedName = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingBlackTableRulesSchemaMapping) SetName(v string) *CreateProjectModifyRecordsRequestTransferMappingBlackTableRulesSchemaMapping {
+	s.Name = &v
+	return s
+}
+
+type CreateProjectModifyRecordsRequestTransferMappingBlackViewRules struct {
+	ObjectMapping *CreateProjectModifyRecordsRequestTransferMappingBlackViewRulesObjectMapping `json:"ObjectMapping,omitempty" xml:"ObjectMapping,omitempty" type:"Struct"`
+	SchemaMapping *CreateProjectModifyRecordsRequestTransferMappingBlackViewRulesSchemaMapping `json:"SchemaMapping,omitempty" xml:"SchemaMapping,omitempty" type:"Struct"`
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingBlackViewRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingBlackViewRules) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingBlackViewRules) SetObjectMapping(v *CreateProjectModifyRecordsRequestTransferMappingBlackViewRulesObjectMapping) *CreateProjectModifyRecordsRequestTransferMappingBlackViewRules {
+	s.ObjectMapping = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingBlackViewRules) SetSchemaMapping(v *CreateProjectModifyRecordsRequestTransferMappingBlackViewRulesSchemaMapping) *CreateProjectModifyRecordsRequestTransferMappingBlackViewRules {
+	s.SchemaMapping = v
+	return s
+}
+
+type CreateProjectModifyRecordsRequestTransferMappingBlackViewRulesObjectMapping struct {
+	MappedName *string `json:"MappedName,omitempty" xml:"MappedName,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingBlackViewRulesObjectMapping) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingBlackViewRulesObjectMapping) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingBlackViewRulesObjectMapping) SetMappedName(v string) *CreateProjectModifyRecordsRequestTransferMappingBlackViewRulesObjectMapping {
+	s.MappedName = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingBlackViewRulesObjectMapping) SetName(v string) *CreateProjectModifyRecordsRequestTransferMappingBlackViewRulesObjectMapping {
+	s.Name = &v
+	return s
+}
+
+type CreateProjectModifyRecordsRequestTransferMappingBlackViewRulesSchemaMapping struct {
+	MappedName *string `json:"MappedName,omitempty" xml:"MappedName,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingBlackViewRulesSchemaMapping) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingBlackViewRulesSchemaMapping) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingBlackViewRulesSchemaMapping) SetMappedName(v string) *CreateProjectModifyRecordsRequestTransferMappingBlackViewRulesSchemaMapping {
+	s.MappedName = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingBlackViewRulesSchemaMapping) SetName(v string) *CreateProjectModifyRecordsRequestTransferMappingBlackViewRulesSchemaMapping {
+	s.Name = &v
+	return s
+}
+
+type CreateProjectModifyRecordsRequestTransferMappingDatabases struct {
+	ClusterName    *string                                                                    `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	Id             *string                                                                    `json:"Id,omitempty" xml:"Id,omitempty"`
+	MappedName     *string                                                                    `json:"MappedName,omitempty" xml:"MappedName,omitempty"`
+	Name           *string                                                                    `json:"Name,omitempty" xml:"Name,omitempty"`
+	SpecificTables []*CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificTables `json:"SpecificTables,omitempty" xml:"SpecificTables,omitempty" type:"Repeated"`
+	SpecificViews  []*CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificViews  `json:"SpecificViews,omitempty" xml:"SpecificViews,omitempty" type:"Repeated"`
+	Tables         []*CreateProjectModifyRecordsRequestTransferMappingDatabasesTables         `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
+	TenantName     *string                                                                    `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
+	Views          []*CreateProjectModifyRecordsRequestTransferMappingDatabasesViews          `json:"Views,omitempty" xml:"Views,omitempty" type:"Repeated"`
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingDatabases) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingDatabases) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabases) SetClusterName(v string) *CreateProjectModifyRecordsRequestTransferMappingDatabases {
+	s.ClusterName = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabases) SetId(v string) *CreateProjectModifyRecordsRequestTransferMappingDatabases {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabases) SetMappedName(v string) *CreateProjectModifyRecordsRequestTransferMappingDatabases {
+	s.MappedName = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabases) SetName(v string) *CreateProjectModifyRecordsRequestTransferMappingDatabases {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabases) SetSpecificTables(v []*CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificTables) *CreateProjectModifyRecordsRequestTransferMappingDatabases {
+	s.SpecificTables = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabases) SetSpecificViews(v []*CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificViews) *CreateProjectModifyRecordsRequestTransferMappingDatabases {
+	s.SpecificViews = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabases) SetTables(v []*CreateProjectModifyRecordsRequestTransferMappingDatabasesTables) *CreateProjectModifyRecordsRequestTransferMappingDatabases {
+	s.Tables = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabases) SetTenantName(v string) *CreateProjectModifyRecordsRequestTransferMappingDatabases {
+	s.TenantName = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabases) SetViews(v []*CreateProjectModifyRecordsRequestTransferMappingDatabasesViews) *CreateProjectModifyRecordsRequestTransferMappingDatabases {
+	s.Views = v
+	return s
+}
+
+type CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificTables struct {
+	AdbTableSchema *CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificTablesAdbTableSchema `json:"AdbTableSchema,omitempty" xml:"AdbTableSchema,omitempty" type:"Struct"`
+	FilterColumns  []*string                                                                              `json:"FilterColumns,omitempty" xml:"FilterColumns,omitempty" type:"Repeated"`
+	Id             *string                                                                                `json:"Id,omitempty" xml:"Id,omitempty"`
+	MappedName     *string                                                                                `json:"MappedName,omitempty" xml:"MappedName,omitempty"`
+	Name           *string                                                                                `json:"Name,omitempty" xml:"Name,omitempty"`
+	ShardColumns   []*string                                                                              `json:"ShardColumns,omitempty" xml:"ShardColumns,omitempty" type:"Repeated"`
+	WhereClause    *string                                                                                `json:"WhereClause,omitempty" xml:"WhereClause,omitempty"`
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificTables) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificTables) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificTables) SetAdbTableSchema(v *CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificTablesAdbTableSchema) *CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificTables {
+	s.AdbTableSchema = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificTables) SetFilterColumns(v []*string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificTables {
+	s.FilterColumns = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificTables) SetId(v string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificTables {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificTables) SetMappedName(v string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificTables {
+	s.MappedName = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificTables) SetName(v string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificTables {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificTables) SetShardColumns(v []*string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificTables {
+	s.ShardColumns = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificTables) SetWhereClause(v string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificTables {
+	s.WhereClause = &v
+	return s
+}
+
+type CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificTablesAdbTableSchema struct {
+	DistributedKeys    []*string `json:"DistributedKeys,omitempty" xml:"DistributedKeys,omitempty" type:"Repeated"`
+	PartitionLifeCycle *string   `json:"PartitionLifeCycle,omitempty" xml:"PartitionLifeCycle,omitempty"`
+	PartitionStatement *string   `json:"PartitionStatement,omitempty" xml:"PartitionStatement,omitempty"`
+	PrimaryKeys        []*string `json:"PrimaryKeys,omitempty" xml:"PrimaryKeys,omitempty" type:"Repeated"`
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificTablesAdbTableSchema) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificTablesAdbTableSchema) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificTablesAdbTableSchema) SetDistributedKeys(v []*string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificTablesAdbTableSchema {
+	s.DistributedKeys = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificTablesAdbTableSchema) SetPartitionLifeCycle(v string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificTablesAdbTableSchema {
+	s.PartitionLifeCycle = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificTablesAdbTableSchema) SetPartitionStatement(v string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificTablesAdbTableSchema {
+	s.PartitionStatement = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificTablesAdbTableSchema) SetPrimaryKeys(v []*string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificTablesAdbTableSchema {
+	s.PrimaryKeys = v
+	return s
+}
+
+type CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificViews struct {
+	AdbTableSchema *CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificViewsAdbTableSchema `json:"AdbTableSchema,omitempty" xml:"AdbTableSchema,omitempty" type:"Struct"`
+	FilterColumns  []*string                                                                             `json:"FilterColumns,omitempty" xml:"FilterColumns,omitempty" type:"Repeated"`
+	Id             *string                                                                               `json:"Id,omitempty" xml:"Id,omitempty"`
+	MappedName     *string                                                                               `json:"MappedName,omitempty" xml:"MappedName,omitempty"`
+	Name           *string                                                                               `json:"Name,omitempty" xml:"Name,omitempty"`
+	ShardColumns   []*string                                                                             `json:"ShardColumns,omitempty" xml:"ShardColumns,omitempty" type:"Repeated"`
+	WhereClause    *string                                                                               `json:"WhereClause,omitempty" xml:"WhereClause,omitempty"`
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificViews) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificViews) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificViews) SetAdbTableSchema(v *CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificViewsAdbTableSchema) *CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificViews {
+	s.AdbTableSchema = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificViews) SetFilterColumns(v []*string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificViews {
+	s.FilterColumns = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificViews) SetId(v string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificViews {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificViews) SetMappedName(v string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificViews {
+	s.MappedName = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificViews) SetName(v string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificViews {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificViews) SetShardColumns(v []*string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificViews {
+	s.ShardColumns = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificViews) SetWhereClause(v string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificViews {
+	s.WhereClause = &v
+	return s
+}
+
+type CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificViewsAdbTableSchema struct {
+	DistributedKeys    []*string `json:"DistributedKeys,omitempty" xml:"DistributedKeys,omitempty" type:"Repeated"`
+	PartitionLifeCycle *string   `json:"PartitionLifeCycle,omitempty" xml:"PartitionLifeCycle,omitempty"`
+	PartitionStatement *string   `json:"PartitionStatement,omitempty" xml:"PartitionStatement,omitempty"`
+	PrimaryKeys        []*string `json:"PrimaryKeys,omitempty" xml:"PrimaryKeys,omitempty" type:"Repeated"`
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificViewsAdbTableSchema) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificViewsAdbTableSchema) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificViewsAdbTableSchema) SetDistributedKeys(v []*string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificViewsAdbTableSchema {
+	s.DistributedKeys = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificViewsAdbTableSchema) SetPartitionLifeCycle(v string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificViewsAdbTableSchema {
+	s.PartitionLifeCycle = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificViewsAdbTableSchema) SetPartitionStatement(v string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificViewsAdbTableSchema {
+	s.PartitionStatement = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificViewsAdbTableSchema) SetPrimaryKeys(v []*string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesSpecificViewsAdbTableSchema {
+	s.PrimaryKeys = v
+	return s
+}
+
+type CreateProjectModifyRecordsRequestTransferMappingDatabasesTables struct {
+	AdbTableSchema      *CreateProjectModifyRecordsRequestTransferMappingDatabasesTablesAdbTableSchema      `json:"AdbTableSchema,omitempty" xml:"AdbTableSchema,omitempty" type:"Struct"`
+	FilterColumns       []*string                                                                           `json:"FilterColumns,omitempty" xml:"FilterColumns,omitempty" type:"Repeated"`
+	Id                  *string                                                                             `json:"Id,omitempty" xml:"Id,omitempty"`
+	MappedName          *string                                                                             `json:"MappedName,omitempty" xml:"MappedName,omitempty"`
+	Name                *string                                                                             `json:"Name,omitempty" xml:"Name,omitempty"`
+	ObkvPartitionConfig *CreateProjectModifyRecordsRequestTransferMappingDatabasesTablesObkvPartitionConfig `json:"ObkvPartitionConfig,omitempty" xml:"ObkvPartitionConfig,omitempty" type:"Struct"`
+	ShardColumns        []*string                                                                           `json:"ShardColumns,omitempty" xml:"ShardColumns,omitempty" type:"Repeated"`
+	WhereClause         *string                                                                             `json:"WhereClause,omitempty" xml:"WhereClause,omitempty"`
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingDatabasesTables) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingDatabasesTables) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesTables) SetAdbTableSchema(v *CreateProjectModifyRecordsRequestTransferMappingDatabasesTablesAdbTableSchema) *CreateProjectModifyRecordsRequestTransferMappingDatabasesTables {
+	s.AdbTableSchema = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesTables) SetFilterColumns(v []*string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesTables {
+	s.FilterColumns = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesTables) SetId(v string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesTables {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesTables) SetMappedName(v string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesTables {
+	s.MappedName = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesTables) SetName(v string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesTables {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesTables) SetObkvPartitionConfig(v *CreateProjectModifyRecordsRequestTransferMappingDatabasesTablesObkvPartitionConfig) *CreateProjectModifyRecordsRequestTransferMappingDatabasesTables {
+	s.ObkvPartitionConfig = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesTables) SetShardColumns(v []*string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesTables {
+	s.ShardColumns = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesTables) SetWhereClause(v string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesTables {
+	s.WhereClause = &v
+	return s
+}
+
+type CreateProjectModifyRecordsRequestTransferMappingDatabasesTablesAdbTableSchema struct {
+	DistributedKeys    []*string `json:"DistributedKeys,omitempty" xml:"DistributedKeys,omitempty" type:"Repeated"`
+	PartitionLifeCycle *string   `json:"PartitionLifeCycle,omitempty" xml:"PartitionLifeCycle,omitempty"`
+	PartitionStatement *string   `json:"PartitionStatement,omitempty" xml:"PartitionStatement,omitempty"`
+	PrimaryKeys        []*string `json:"PrimaryKeys,omitempty" xml:"PrimaryKeys,omitempty" type:"Repeated"`
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingDatabasesTablesAdbTableSchema) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingDatabasesTablesAdbTableSchema) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesTablesAdbTableSchema) SetDistributedKeys(v []*string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesTablesAdbTableSchema {
+	s.DistributedKeys = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesTablesAdbTableSchema) SetPartitionLifeCycle(v string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesTablesAdbTableSchema {
+	s.PartitionLifeCycle = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesTablesAdbTableSchema) SetPartitionStatement(v string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesTablesAdbTableSchema {
+	s.PartitionStatement = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesTablesAdbTableSchema) SetPrimaryKeys(v []*string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesTablesAdbTableSchema {
+	s.PrimaryKeys = v
+	return s
+}
+
+type CreateProjectModifyRecordsRequestTransferMappingDatabasesTablesObkvPartitionConfig struct {
+	PartitionSize *int32  `json:"PartitionSize,omitempty" xml:"PartitionSize,omitempty"`
+	PartitionType *string `json:"PartitionType,omitempty" xml:"PartitionType,omitempty"`
+	VirtualColumn *string `json:"VirtualColumn,omitempty" xml:"VirtualColumn,omitempty"`
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingDatabasesTablesObkvPartitionConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingDatabasesTablesObkvPartitionConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesTablesObkvPartitionConfig) SetPartitionSize(v int32) *CreateProjectModifyRecordsRequestTransferMappingDatabasesTablesObkvPartitionConfig {
+	s.PartitionSize = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesTablesObkvPartitionConfig) SetPartitionType(v string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesTablesObkvPartitionConfig {
+	s.PartitionType = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesTablesObkvPartitionConfig) SetVirtualColumn(v string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesTablesObkvPartitionConfig {
+	s.VirtualColumn = &v
+	return s
+}
+
+type CreateProjectModifyRecordsRequestTransferMappingDatabasesViews struct {
+	AdbTableSchema *CreateProjectModifyRecordsRequestTransferMappingDatabasesViewsAdbTableSchema `json:"AdbTableSchema,omitempty" xml:"AdbTableSchema,omitempty" type:"Struct"`
+	FilterColumns  []*string                                                                     `json:"FilterColumns,omitempty" xml:"FilterColumns,omitempty" type:"Repeated"`
+	Id             *string                                                                       `json:"Id,omitempty" xml:"Id,omitempty"`
+	MappedName     *string                                                                       `json:"MappedName,omitempty" xml:"MappedName,omitempty"`
+	Name           *string                                                                       `json:"Name,omitempty" xml:"Name,omitempty"`
+	ShardColumns   []*string                                                                     `json:"ShardColumns,omitempty" xml:"ShardColumns,omitempty" type:"Repeated"`
+	WhereClause    *string                                                                       `json:"WhereClause,omitempty" xml:"WhereClause,omitempty"`
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingDatabasesViews) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingDatabasesViews) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesViews) SetAdbTableSchema(v *CreateProjectModifyRecordsRequestTransferMappingDatabasesViewsAdbTableSchema) *CreateProjectModifyRecordsRequestTransferMappingDatabasesViews {
+	s.AdbTableSchema = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesViews) SetFilterColumns(v []*string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesViews {
+	s.FilterColumns = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesViews) SetId(v string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesViews {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesViews) SetMappedName(v string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesViews {
+	s.MappedName = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesViews) SetName(v string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesViews {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesViews) SetShardColumns(v []*string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesViews {
+	s.ShardColumns = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesViews) SetWhereClause(v string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesViews {
+	s.WhereClause = &v
+	return s
+}
+
+type CreateProjectModifyRecordsRequestTransferMappingDatabasesViewsAdbTableSchema struct {
+	DistributedKeys    []*string `json:"DistributedKeys,omitempty" xml:"DistributedKeys,omitempty" type:"Repeated"`
+	PartitionLifeCycle *string   `json:"PartitionLifeCycle,omitempty" xml:"PartitionLifeCycle,omitempty"`
+	PartitionStatement *string   `json:"PartitionStatement,omitempty" xml:"PartitionStatement,omitempty"`
+	PrimaryKeys        []*string `json:"PrimaryKeys,omitempty" xml:"PrimaryKeys,omitempty" type:"Repeated"`
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingDatabasesViewsAdbTableSchema) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingDatabasesViewsAdbTableSchema) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesViewsAdbTableSchema) SetDistributedKeys(v []*string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesViewsAdbTableSchema {
+	s.DistributedKeys = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesViewsAdbTableSchema) SetPartitionLifeCycle(v string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesViewsAdbTableSchema {
+	s.PartitionLifeCycle = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesViewsAdbTableSchema) SetPartitionStatement(v string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesViewsAdbTableSchema {
+	s.PartitionStatement = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesViewsAdbTableSchema) SetPrimaryKeys(v []*string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesViewsAdbTableSchema {
+	s.PrimaryKeys = v
+	return s
+}
+
+type CreateProjectModifyRecordsRequestTransferMappingDatabasesBlack struct {
+	ClusterName    *string                                                                         `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	Id             *string                                                                         `json:"Id,omitempty" xml:"Id,omitempty"`
+	MappedName     *string                                                                         `json:"MappedName,omitempty" xml:"MappedName,omitempty"`
+	Name           *string                                                                         `json:"Name,omitempty" xml:"Name,omitempty"`
+	SpecificTables []*CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificTables `json:"SpecificTables,omitempty" xml:"SpecificTables,omitempty" type:"Repeated"`
+	SpecificViews  []*CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificViews  `json:"SpecificViews,omitempty" xml:"SpecificViews,omitempty" type:"Repeated"`
+	Tables         []*CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackTables         `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
+	TenantName     *string                                                                         `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
+	Views          []*CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackViews          `json:"Views,omitempty" xml:"Views,omitempty" type:"Repeated"`
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingDatabasesBlack) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingDatabasesBlack) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlack) SetClusterName(v string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlack {
+	s.ClusterName = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlack) SetId(v string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlack {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlack) SetMappedName(v string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlack {
+	s.MappedName = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlack) SetName(v string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlack {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlack) SetSpecificTables(v []*CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificTables) *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlack {
+	s.SpecificTables = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlack) SetSpecificViews(v []*CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificViews) *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlack {
+	s.SpecificViews = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlack) SetTables(v []*CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackTables) *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlack {
+	s.Tables = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlack) SetTenantName(v string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlack {
+	s.TenantName = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlack) SetViews(v []*CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackViews) *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlack {
+	s.Views = v
+	return s
+}
+
+type CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificTables struct {
+	AdbTableSchema *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificTablesAdbTableSchema `json:"AdbTableSchema,omitempty" xml:"AdbTableSchema,omitempty" type:"Struct"`
+	FilterColumns  []*string                                                                                   `json:"FilterColumns,omitempty" xml:"FilterColumns,omitempty" type:"Repeated"`
+	Id             *string                                                                                     `json:"Id,omitempty" xml:"Id,omitempty"`
+	MappedName     *string                                                                                     `json:"MappedName,omitempty" xml:"MappedName,omitempty"`
+	Name           *string                                                                                     `json:"Name,omitempty" xml:"Name,omitempty"`
+	ShardColumns   []*string                                                                                   `json:"ShardColumns,omitempty" xml:"ShardColumns,omitempty" type:"Repeated"`
+	WhereClause    *string                                                                                     `json:"WhereClause,omitempty" xml:"WhereClause,omitempty"`
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificTables) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificTables) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificTables) SetAdbTableSchema(v *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificTablesAdbTableSchema) *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificTables {
+	s.AdbTableSchema = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificTables) SetFilterColumns(v []*string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificTables {
+	s.FilterColumns = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificTables) SetId(v string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificTables {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificTables) SetMappedName(v string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificTables {
+	s.MappedName = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificTables) SetName(v string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificTables {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificTables) SetShardColumns(v []*string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificTables {
+	s.ShardColumns = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificTables) SetWhereClause(v string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificTables {
+	s.WhereClause = &v
+	return s
+}
+
+type CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificTablesAdbTableSchema struct {
+	DistributedKeys    []*string `json:"DistributedKeys,omitempty" xml:"DistributedKeys,omitempty" type:"Repeated"`
+	PartitionLifeCycle *string   `json:"PartitionLifeCycle,omitempty" xml:"PartitionLifeCycle,omitempty"`
+	PartitionStatement *string   `json:"PartitionStatement,omitempty" xml:"PartitionStatement,omitempty"`
+	PrimaryKeys        []*string `json:"PrimaryKeys,omitempty" xml:"PrimaryKeys,omitempty" type:"Repeated"`
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificTablesAdbTableSchema) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificTablesAdbTableSchema) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificTablesAdbTableSchema) SetDistributedKeys(v []*string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificTablesAdbTableSchema {
+	s.DistributedKeys = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificTablesAdbTableSchema) SetPartitionLifeCycle(v string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificTablesAdbTableSchema {
+	s.PartitionLifeCycle = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificTablesAdbTableSchema) SetPartitionStatement(v string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificTablesAdbTableSchema {
+	s.PartitionStatement = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificTablesAdbTableSchema) SetPrimaryKeys(v []*string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificTablesAdbTableSchema {
+	s.PrimaryKeys = v
+	return s
+}
+
+type CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificViews struct {
+	AdbTableSchema *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificViewsAdbTableSchema `json:"AdbTableSchema,omitempty" xml:"AdbTableSchema,omitempty" type:"Struct"`
+	FilterColumns  []*string                                                                                  `json:"FilterColumns,omitempty" xml:"FilterColumns,omitempty" type:"Repeated"`
+	Id             *string                                                                                    `json:"Id,omitempty" xml:"Id,omitempty"`
+	MappedName     *string                                                                                    `json:"MappedName,omitempty" xml:"MappedName,omitempty"`
+	Name           *string                                                                                    `json:"Name,omitempty" xml:"Name,omitempty"`
+	ShardColumns   []*string                                                                                  `json:"ShardColumns,omitempty" xml:"ShardColumns,omitempty" type:"Repeated"`
+	WhereClause    *string                                                                                    `json:"WhereClause,omitempty" xml:"WhereClause,omitempty"`
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificViews) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificViews) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificViews) SetAdbTableSchema(v *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificViewsAdbTableSchema) *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificViews {
+	s.AdbTableSchema = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificViews) SetFilterColumns(v []*string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificViews {
+	s.FilterColumns = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificViews) SetId(v string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificViews {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificViews) SetMappedName(v string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificViews {
+	s.MappedName = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificViews) SetName(v string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificViews {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificViews) SetShardColumns(v []*string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificViews {
+	s.ShardColumns = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificViews) SetWhereClause(v string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificViews {
+	s.WhereClause = &v
+	return s
+}
+
+type CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificViewsAdbTableSchema struct {
+	DistributedKeys    []*string `json:"DistributedKeys,omitempty" xml:"DistributedKeys,omitempty" type:"Repeated"`
+	PartitionLifeCycle *string   `json:"PartitionLifeCycle,omitempty" xml:"PartitionLifeCycle,omitempty"`
+	PartitionStatement *string   `json:"PartitionStatement,omitempty" xml:"PartitionStatement,omitempty"`
+	PrimaryKeys        []*string `json:"PrimaryKeys,omitempty" xml:"PrimaryKeys,omitempty" type:"Repeated"`
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificViewsAdbTableSchema) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificViewsAdbTableSchema) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificViewsAdbTableSchema) SetDistributedKeys(v []*string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificViewsAdbTableSchema {
+	s.DistributedKeys = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificViewsAdbTableSchema) SetPartitionLifeCycle(v string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificViewsAdbTableSchema {
+	s.PartitionLifeCycle = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificViewsAdbTableSchema) SetPartitionStatement(v string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificViewsAdbTableSchema {
+	s.PartitionStatement = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificViewsAdbTableSchema) SetPrimaryKeys(v []*string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackSpecificViewsAdbTableSchema {
+	s.PrimaryKeys = v
+	return s
+}
+
+type CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackTables struct {
+	AdbTableSchema *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackTablesAdbTableSchema `json:"AdbTableSchema,omitempty" xml:"AdbTableSchema,omitempty" type:"Struct"`
+	FilterColumns  []*string                                                                           `json:"FilterColumns,omitempty" xml:"FilterColumns,omitempty" type:"Repeated"`
+	Id             *string                                                                             `json:"Id,omitempty" xml:"Id,omitempty"`
+	MappedName     *string                                                                             `json:"MappedName,omitempty" xml:"MappedName,omitempty"`
+	Name           *string                                                                             `json:"Name,omitempty" xml:"Name,omitempty"`
+	ShardColumns   []*string                                                                           `json:"ShardColumns,omitempty" xml:"ShardColumns,omitempty" type:"Repeated"`
+	WhereClause    *string                                                                             `json:"WhereClause,omitempty" xml:"WhereClause,omitempty"`
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackTables) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackTables) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackTables) SetAdbTableSchema(v *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackTablesAdbTableSchema) *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackTables {
+	s.AdbTableSchema = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackTables) SetFilterColumns(v []*string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackTables {
+	s.FilterColumns = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackTables) SetId(v string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackTables {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackTables) SetMappedName(v string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackTables {
+	s.MappedName = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackTables) SetName(v string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackTables {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackTables) SetShardColumns(v []*string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackTables {
+	s.ShardColumns = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackTables) SetWhereClause(v string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackTables {
+	s.WhereClause = &v
+	return s
+}
+
+type CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackTablesAdbTableSchema struct {
+	DistributedKeys    []*string `json:"DistributedKeys,omitempty" xml:"DistributedKeys,omitempty" type:"Repeated"`
+	PartitionLifeCycle *string   `json:"PartitionLifeCycle,omitempty" xml:"PartitionLifeCycle,omitempty"`
+	PartitionStatement *string   `json:"PartitionStatement,omitempty" xml:"PartitionStatement,omitempty"`
+	PrimaryKeys        []*string `json:"PrimaryKeys,omitempty" xml:"PrimaryKeys,omitempty" type:"Repeated"`
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackTablesAdbTableSchema) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackTablesAdbTableSchema) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackTablesAdbTableSchema) SetDistributedKeys(v []*string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackTablesAdbTableSchema {
+	s.DistributedKeys = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackTablesAdbTableSchema) SetPartitionLifeCycle(v string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackTablesAdbTableSchema {
+	s.PartitionLifeCycle = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackTablesAdbTableSchema) SetPartitionStatement(v string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackTablesAdbTableSchema {
+	s.PartitionStatement = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackTablesAdbTableSchema) SetPrimaryKeys(v []*string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackTablesAdbTableSchema {
+	s.PrimaryKeys = v
+	return s
+}
+
+type CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackViews struct {
+	AdbTableSchema *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackViewsAdbTableSchema `json:"AdbTableSchema,omitempty" xml:"AdbTableSchema,omitempty" type:"Struct"`
+	FilterColumns  []*string                                                                          `json:"FilterColumns,omitempty" xml:"FilterColumns,omitempty" type:"Repeated"`
+	Id             *string                                                                            `json:"Id,omitempty" xml:"Id,omitempty"`
+	MappedName     *string                                                                            `json:"MappedName,omitempty" xml:"MappedName,omitempty"`
+	Name           *string                                                                            `json:"Name,omitempty" xml:"Name,omitempty"`
+	ShardColumns   []*string                                                                          `json:"ShardColumns,omitempty" xml:"ShardColumns,omitempty" type:"Repeated"`
+	WhereClause    *string                                                                            `json:"WhereClause,omitempty" xml:"WhereClause,omitempty"`
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackViews) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackViews) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackViews) SetAdbTableSchema(v *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackViewsAdbTableSchema) *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackViews {
+	s.AdbTableSchema = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackViews) SetFilterColumns(v []*string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackViews {
+	s.FilterColumns = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackViews) SetId(v string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackViews {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackViews) SetMappedName(v string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackViews {
+	s.MappedName = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackViews) SetName(v string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackViews {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackViews) SetShardColumns(v []*string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackViews {
+	s.ShardColumns = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackViews) SetWhereClause(v string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackViews {
+	s.WhereClause = &v
+	return s
+}
+
+type CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackViewsAdbTableSchema struct {
+	DistributedKeys    []*string `json:"DistributedKeys,omitempty" xml:"DistributedKeys,omitempty" type:"Repeated"`
+	PartitionLifeCycle *string   `json:"PartitionLifeCycle,omitempty" xml:"PartitionLifeCycle,omitempty"`
+	PartitionStatement *string   `json:"PartitionStatement,omitempty" xml:"PartitionStatement,omitempty"`
+	PrimaryKeys        []*string `json:"PrimaryKeys,omitempty" xml:"PrimaryKeys,omitempty" type:"Repeated"`
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackViewsAdbTableSchema) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackViewsAdbTableSchema) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackViewsAdbTableSchema) SetDistributedKeys(v []*string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackViewsAdbTableSchema {
+	s.DistributedKeys = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackViewsAdbTableSchema) SetPartitionLifeCycle(v string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackViewsAdbTableSchema {
+	s.PartitionLifeCycle = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackViewsAdbTableSchema) SetPartitionStatement(v string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackViewsAdbTableSchema {
+	s.PartitionStatement = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackViewsAdbTableSchema) SetPrimaryKeys(v []*string) *CreateProjectModifyRecordsRequestTransferMappingDatabasesBlackViewsAdbTableSchema {
+	s.PrimaryKeys = v
+	return s
+}
+
+type CreateProjectModifyRecordsRequestTransferMappingSchemas struct {
+	ClusterName    *string                                                                  `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	Id             *string                                                                  `json:"Id,omitempty" xml:"Id,omitempty"`
+	MappedName     *string                                                                  `json:"MappedName,omitempty" xml:"MappedName,omitempty"`
+	Name           *string                                                                  `json:"Name,omitempty" xml:"Name,omitempty"`
+	SpecificTables []*CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificTables `json:"SpecificTables,omitempty" xml:"SpecificTables,omitempty" type:"Repeated"`
+	SpecificViews  []*CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificViews  `json:"SpecificViews,omitempty" xml:"SpecificViews,omitempty" type:"Repeated"`
+	Tables         []*CreateProjectModifyRecordsRequestTransferMappingSchemasTables         `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
+	TenantName     *string                                                                  `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
+	Views          []*CreateProjectModifyRecordsRequestTransferMappingSchemasViews          `json:"Views,omitempty" xml:"Views,omitempty" type:"Repeated"`
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingSchemas) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingSchemas) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingSchemas) SetClusterName(v string) *CreateProjectModifyRecordsRequestTransferMappingSchemas {
+	s.ClusterName = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingSchemas) SetId(v string) *CreateProjectModifyRecordsRequestTransferMappingSchemas {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingSchemas) SetMappedName(v string) *CreateProjectModifyRecordsRequestTransferMappingSchemas {
+	s.MappedName = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingSchemas) SetName(v string) *CreateProjectModifyRecordsRequestTransferMappingSchemas {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingSchemas) SetSpecificTables(v []*CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificTables) *CreateProjectModifyRecordsRequestTransferMappingSchemas {
+	s.SpecificTables = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingSchemas) SetSpecificViews(v []*CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificViews) *CreateProjectModifyRecordsRequestTransferMappingSchemas {
+	s.SpecificViews = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingSchemas) SetTables(v []*CreateProjectModifyRecordsRequestTransferMappingSchemasTables) *CreateProjectModifyRecordsRequestTransferMappingSchemas {
+	s.Tables = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingSchemas) SetTenantName(v string) *CreateProjectModifyRecordsRequestTransferMappingSchemas {
+	s.TenantName = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingSchemas) SetViews(v []*CreateProjectModifyRecordsRequestTransferMappingSchemasViews) *CreateProjectModifyRecordsRequestTransferMappingSchemas {
+	s.Views = v
+	return s
+}
+
+type CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificTables struct {
+	AdbTableSchema *CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificTablesAdbTableSchema `json:"AdbTableSchema,omitempty" xml:"AdbTableSchema,omitempty" type:"Struct"`
+	FilterColumns  []*string                                                                            `json:"FilterColumns,omitempty" xml:"FilterColumns,omitempty" type:"Repeated"`
+	Id             *string                                                                              `json:"Id,omitempty" xml:"Id,omitempty"`
+	MappedName     *string                                                                              `json:"MappedName,omitempty" xml:"MappedName,omitempty"`
+	Name           *string                                                                              `json:"Name,omitempty" xml:"Name,omitempty"`
+	ShardColumns   []*string                                                                            `json:"ShardColumns,omitempty" xml:"ShardColumns,omitempty" type:"Repeated"`
+	WhereClause    *string                                                                              `json:"WhereClause,omitempty" xml:"WhereClause,omitempty"`
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificTables) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificTables) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificTables) SetAdbTableSchema(v *CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificTablesAdbTableSchema) *CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificTables {
+	s.AdbTableSchema = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificTables) SetFilterColumns(v []*string) *CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificTables {
+	s.FilterColumns = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificTables) SetId(v string) *CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificTables {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificTables) SetMappedName(v string) *CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificTables {
+	s.MappedName = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificTables) SetName(v string) *CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificTables {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificTables) SetShardColumns(v []*string) *CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificTables {
+	s.ShardColumns = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificTables) SetWhereClause(v string) *CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificTables {
+	s.WhereClause = &v
+	return s
+}
+
+type CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificTablesAdbTableSchema struct {
+	DistributedKeys    []*string `json:"DistributedKeys,omitempty" xml:"DistributedKeys,omitempty" type:"Repeated"`
+	PartitionLifeCycle *string   `json:"PartitionLifeCycle,omitempty" xml:"PartitionLifeCycle,omitempty"`
+	PartitionStatement *string   `json:"PartitionStatement,omitempty" xml:"PartitionStatement,omitempty"`
+	PrimaryKeys        []*string `json:"PrimaryKeys,omitempty" xml:"PrimaryKeys,omitempty" type:"Repeated"`
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificTablesAdbTableSchema) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificTablesAdbTableSchema) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificTablesAdbTableSchema) SetDistributedKeys(v []*string) *CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificTablesAdbTableSchema {
+	s.DistributedKeys = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificTablesAdbTableSchema) SetPartitionLifeCycle(v string) *CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificTablesAdbTableSchema {
+	s.PartitionLifeCycle = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificTablesAdbTableSchema) SetPartitionStatement(v string) *CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificTablesAdbTableSchema {
+	s.PartitionStatement = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificTablesAdbTableSchema) SetPrimaryKeys(v []*string) *CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificTablesAdbTableSchema {
+	s.PrimaryKeys = v
+	return s
+}
+
+type CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificViews struct {
+	AdbTableSchema *CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificViewsAdbTableSchema `json:"AdbTableSchema,omitempty" xml:"AdbTableSchema,omitempty" type:"Struct"`
+	FilterColumns  []*string                                                                           `json:"FilterColumns,omitempty" xml:"FilterColumns,omitempty" type:"Repeated"`
+	Id             *string                                                                             `json:"Id,omitempty" xml:"Id,omitempty"`
+	MappedName     *string                                                                             `json:"MappedName,omitempty" xml:"MappedName,omitempty"`
+	Name           *string                                                                             `json:"Name,omitempty" xml:"Name,omitempty"`
+	ShardColumns   []*string                                                                           `json:"ShardColumns,omitempty" xml:"ShardColumns,omitempty" type:"Repeated"`
+	WhereClause    *string                                                                             `json:"WhereClause,omitempty" xml:"WhereClause,omitempty"`
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificViews) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificViews) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificViews) SetAdbTableSchema(v *CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificViewsAdbTableSchema) *CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificViews {
+	s.AdbTableSchema = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificViews) SetFilterColumns(v []*string) *CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificViews {
+	s.FilterColumns = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificViews) SetId(v string) *CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificViews {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificViews) SetMappedName(v string) *CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificViews {
+	s.MappedName = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificViews) SetName(v string) *CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificViews {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificViews) SetShardColumns(v []*string) *CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificViews {
+	s.ShardColumns = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificViews) SetWhereClause(v string) *CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificViews {
+	s.WhereClause = &v
+	return s
+}
+
+type CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificViewsAdbTableSchema struct {
+	DistributedKeys    []*string `json:"DistributedKeys,omitempty" xml:"DistributedKeys,omitempty" type:"Repeated"`
+	PartitionLifeCycle *string   `json:"PartitionLifeCycle,omitempty" xml:"PartitionLifeCycle,omitempty"`
+	PartitionStatement *string   `json:"PartitionStatement,omitempty" xml:"PartitionStatement,omitempty"`
+	PrimaryKeys        []*string `json:"PrimaryKeys,omitempty" xml:"PrimaryKeys,omitempty" type:"Repeated"`
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificViewsAdbTableSchema) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificViewsAdbTableSchema) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificViewsAdbTableSchema) SetDistributedKeys(v []*string) *CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificViewsAdbTableSchema {
+	s.DistributedKeys = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificViewsAdbTableSchema) SetPartitionLifeCycle(v string) *CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificViewsAdbTableSchema {
+	s.PartitionLifeCycle = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificViewsAdbTableSchema) SetPartitionStatement(v string) *CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificViewsAdbTableSchema {
+	s.PartitionStatement = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificViewsAdbTableSchema) SetPrimaryKeys(v []*string) *CreateProjectModifyRecordsRequestTransferMappingSchemasSpecificViewsAdbTableSchema {
+	s.PrimaryKeys = v
+	return s
+}
+
+type CreateProjectModifyRecordsRequestTransferMappingSchemasTables struct {
+	AdbTableSchema      *CreateProjectModifyRecordsRequestTransferMappingSchemasTablesAdbTableSchema      `json:"AdbTableSchema,omitempty" xml:"AdbTableSchema,omitempty" type:"Struct"`
+	FilterColumns       []*string                                                                         `json:"FilterColumns,omitempty" xml:"FilterColumns,omitempty" type:"Repeated"`
+	Id                  *string                                                                           `json:"Id,omitempty" xml:"Id,omitempty"`
+	MappedName          *string                                                                           `json:"MappedName,omitempty" xml:"MappedName,omitempty"`
+	Name                *string                                                                           `json:"Name,omitempty" xml:"Name,omitempty"`
+	ObkvPartitionConfig *CreateProjectModifyRecordsRequestTransferMappingSchemasTablesObkvPartitionConfig `json:"ObkvPartitionConfig,omitempty" xml:"ObkvPartitionConfig,omitempty" type:"Struct"`
+	ShardColumns        []*string                                                                         `json:"ShardColumns,omitempty" xml:"ShardColumns,omitempty" type:"Repeated"`
+	WhereClause         *string                                                                           `json:"WhereClause,omitempty" xml:"WhereClause,omitempty"`
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingSchemasTables) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingSchemasTables) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingSchemasTables) SetAdbTableSchema(v *CreateProjectModifyRecordsRequestTransferMappingSchemasTablesAdbTableSchema) *CreateProjectModifyRecordsRequestTransferMappingSchemasTables {
+	s.AdbTableSchema = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingSchemasTables) SetFilterColumns(v []*string) *CreateProjectModifyRecordsRequestTransferMappingSchemasTables {
+	s.FilterColumns = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingSchemasTables) SetId(v string) *CreateProjectModifyRecordsRequestTransferMappingSchemasTables {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingSchemasTables) SetMappedName(v string) *CreateProjectModifyRecordsRequestTransferMappingSchemasTables {
+	s.MappedName = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingSchemasTables) SetName(v string) *CreateProjectModifyRecordsRequestTransferMappingSchemasTables {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingSchemasTables) SetObkvPartitionConfig(v *CreateProjectModifyRecordsRequestTransferMappingSchemasTablesObkvPartitionConfig) *CreateProjectModifyRecordsRequestTransferMappingSchemasTables {
+	s.ObkvPartitionConfig = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingSchemasTables) SetShardColumns(v []*string) *CreateProjectModifyRecordsRequestTransferMappingSchemasTables {
+	s.ShardColumns = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingSchemasTables) SetWhereClause(v string) *CreateProjectModifyRecordsRequestTransferMappingSchemasTables {
+	s.WhereClause = &v
+	return s
+}
+
+type CreateProjectModifyRecordsRequestTransferMappingSchemasTablesAdbTableSchema struct {
+	DistributedKeys    []*string `json:"DistributedKeys,omitempty" xml:"DistributedKeys,omitempty" type:"Repeated"`
+	PartitionLifeCycle *string   `json:"PartitionLifeCycle,omitempty" xml:"PartitionLifeCycle,omitempty"`
+	PartitionStatement *string   `json:"PartitionStatement,omitempty" xml:"PartitionStatement,omitempty"`
+	PrimaryKeys        []*string `json:"PrimaryKeys,omitempty" xml:"PrimaryKeys,omitempty" type:"Repeated"`
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingSchemasTablesAdbTableSchema) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingSchemasTablesAdbTableSchema) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingSchemasTablesAdbTableSchema) SetDistributedKeys(v []*string) *CreateProjectModifyRecordsRequestTransferMappingSchemasTablesAdbTableSchema {
+	s.DistributedKeys = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingSchemasTablesAdbTableSchema) SetPartitionLifeCycle(v string) *CreateProjectModifyRecordsRequestTransferMappingSchemasTablesAdbTableSchema {
+	s.PartitionLifeCycle = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingSchemasTablesAdbTableSchema) SetPartitionStatement(v string) *CreateProjectModifyRecordsRequestTransferMappingSchemasTablesAdbTableSchema {
+	s.PartitionStatement = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingSchemasTablesAdbTableSchema) SetPrimaryKeys(v []*string) *CreateProjectModifyRecordsRequestTransferMappingSchemasTablesAdbTableSchema {
+	s.PrimaryKeys = v
+	return s
+}
+
+type CreateProjectModifyRecordsRequestTransferMappingSchemasTablesObkvPartitionConfig struct {
+	PartitionSize *int32  `json:"PartitionSize,omitempty" xml:"PartitionSize,omitempty"`
+	PartitionType *string `json:"PartitionType,omitempty" xml:"PartitionType,omitempty"`
+	VirtualColumn *string `json:"VirtualColumn,omitempty" xml:"VirtualColumn,omitempty"`
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingSchemasTablesObkvPartitionConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingSchemasTablesObkvPartitionConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingSchemasTablesObkvPartitionConfig) SetPartitionSize(v int32) *CreateProjectModifyRecordsRequestTransferMappingSchemasTablesObkvPartitionConfig {
+	s.PartitionSize = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingSchemasTablesObkvPartitionConfig) SetPartitionType(v string) *CreateProjectModifyRecordsRequestTransferMappingSchemasTablesObkvPartitionConfig {
+	s.PartitionType = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingSchemasTablesObkvPartitionConfig) SetVirtualColumn(v string) *CreateProjectModifyRecordsRequestTransferMappingSchemasTablesObkvPartitionConfig {
+	s.VirtualColumn = &v
+	return s
+}
+
+type CreateProjectModifyRecordsRequestTransferMappingSchemasViews struct {
+	AdbTableSchema *CreateProjectModifyRecordsRequestTransferMappingSchemasViewsAdbTableSchema `json:"AdbTableSchema,omitempty" xml:"AdbTableSchema,omitempty" type:"Struct"`
+	FilterColumns  []*string                                                                   `json:"FilterColumns,omitempty" xml:"FilterColumns,omitempty" type:"Repeated"`
+	Id             *string                                                                     `json:"Id,omitempty" xml:"Id,omitempty"`
+	MappedName     *string                                                                     `json:"MappedName,omitempty" xml:"MappedName,omitempty"`
+	Name           *string                                                                     `json:"Name,omitempty" xml:"Name,omitempty"`
+	ShardColumns   []*string                                                                   `json:"ShardColumns,omitempty" xml:"ShardColumns,omitempty" type:"Repeated"`
+	WhereClause    *string                                                                     `json:"WhereClause,omitempty" xml:"WhereClause,omitempty"`
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingSchemasViews) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingSchemasViews) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingSchemasViews) SetAdbTableSchema(v *CreateProjectModifyRecordsRequestTransferMappingSchemasViewsAdbTableSchema) *CreateProjectModifyRecordsRequestTransferMappingSchemasViews {
+	s.AdbTableSchema = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingSchemasViews) SetFilterColumns(v []*string) *CreateProjectModifyRecordsRequestTransferMappingSchemasViews {
+	s.FilterColumns = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingSchemasViews) SetId(v string) *CreateProjectModifyRecordsRequestTransferMappingSchemasViews {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingSchemasViews) SetMappedName(v string) *CreateProjectModifyRecordsRequestTransferMappingSchemasViews {
+	s.MappedName = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingSchemasViews) SetName(v string) *CreateProjectModifyRecordsRequestTransferMappingSchemasViews {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingSchemasViews) SetShardColumns(v []*string) *CreateProjectModifyRecordsRequestTransferMappingSchemasViews {
+	s.ShardColumns = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingSchemasViews) SetWhereClause(v string) *CreateProjectModifyRecordsRequestTransferMappingSchemasViews {
+	s.WhereClause = &v
+	return s
+}
+
+type CreateProjectModifyRecordsRequestTransferMappingSchemasViewsAdbTableSchema struct {
+	DistributedKeys    []*string `json:"DistributedKeys,omitempty" xml:"DistributedKeys,omitempty" type:"Repeated"`
+	PartitionLifeCycle *string   `json:"PartitionLifeCycle,omitempty" xml:"PartitionLifeCycle,omitempty"`
+	PartitionStatement *string   `json:"PartitionStatement,omitempty" xml:"PartitionStatement,omitempty"`
+	PrimaryKeys        []*string `json:"PrimaryKeys,omitempty" xml:"PrimaryKeys,omitempty" type:"Repeated"`
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingSchemasViewsAdbTableSchema) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingSchemasViewsAdbTableSchema) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingSchemasViewsAdbTableSchema) SetDistributedKeys(v []*string) *CreateProjectModifyRecordsRequestTransferMappingSchemasViewsAdbTableSchema {
+	s.DistributedKeys = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingSchemasViewsAdbTableSchema) SetPartitionLifeCycle(v string) *CreateProjectModifyRecordsRequestTransferMappingSchemasViewsAdbTableSchema {
+	s.PartitionLifeCycle = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingSchemasViewsAdbTableSchema) SetPartitionStatement(v string) *CreateProjectModifyRecordsRequestTransferMappingSchemasViewsAdbTableSchema {
+	s.PartitionStatement = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingSchemasViewsAdbTableSchema) SetPrimaryKeys(v []*string) *CreateProjectModifyRecordsRequestTransferMappingSchemasViewsAdbTableSchema {
+	s.PrimaryKeys = v
+	return s
+}
+
+type CreateProjectModifyRecordsRequestTransferMappingWhiteTableRules struct {
+	ObjectMapping *CreateProjectModifyRecordsRequestTransferMappingWhiteTableRulesObjectMapping `json:"ObjectMapping,omitempty" xml:"ObjectMapping,omitempty" type:"Struct"`
+	SchemaMapping *CreateProjectModifyRecordsRequestTransferMappingWhiteTableRulesSchemaMapping `json:"SchemaMapping,omitempty" xml:"SchemaMapping,omitempty" type:"Struct"`
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingWhiteTableRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingWhiteTableRules) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingWhiteTableRules) SetObjectMapping(v *CreateProjectModifyRecordsRequestTransferMappingWhiteTableRulesObjectMapping) *CreateProjectModifyRecordsRequestTransferMappingWhiteTableRules {
+	s.ObjectMapping = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingWhiteTableRules) SetSchemaMapping(v *CreateProjectModifyRecordsRequestTransferMappingWhiteTableRulesSchemaMapping) *CreateProjectModifyRecordsRequestTransferMappingWhiteTableRules {
+	s.SchemaMapping = v
+	return s
+}
+
+type CreateProjectModifyRecordsRequestTransferMappingWhiteTableRulesObjectMapping struct {
+	MappedName *string `json:"MappedName,omitempty" xml:"MappedName,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingWhiteTableRulesObjectMapping) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingWhiteTableRulesObjectMapping) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingWhiteTableRulesObjectMapping) SetMappedName(v string) *CreateProjectModifyRecordsRequestTransferMappingWhiteTableRulesObjectMapping {
+	s.MappedName = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingWhiteTableRulesObjectMapping) SetName(v string) *CreateProjectModifyRecordsRequestTransferMappingWhiteTableRulesObjectMapping {
+	s.Name = &v
+	return s
+}
+
+type CreateProjectModifyRecordsRequestTransferMappingWhiteTableRulesSchemaMapping struct {
+	MappedName *string `json:"MappedName,omitempty" xml:"MappedName,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingWhiteTableRulesSchemaMapping) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingWhiteTableRulesSchemaMapping) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingWhiteTableRulesSchemaMapping) SetMappedName(v string) *CreateProjectModifyRecordsRequestTransferMappingWhiteTableRulesSchemaMapping {
+	s.MappedName = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingWhiteTableRulesSchemaMapping) SetName(v string) *CreateProjectModifyRecordsRequestTransferMappingWhiteTableRulesSchemaMapping {
+	s.Name = &v
+	return s
+}
+
+type CreateProjectModifyRecordsRequestTransferMappingWhiteViewRules struct {
+	ObjectMapping *CreateProjectModifyRecordsRequestTransferMappingWhiteViewRulesObjectMapping `json:"ObjectMapping,omitempty" xml:"ObjectMapping,omitempty" type:"Struct"`
+	SchemaMapping *CreateProjectModifyRecordsRequestTransferMappingWhiteViewRulesSchemaMapping `json:"SchemaMapping,omitempty" xml:"SchemaMapping,omitempty" type:"Struct"`
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingWhiteViewRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingWhiteViewRules) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingWhiteViewRules) SetObjectMapping(v *CreateProjectModifyRecordsRequestTransferMappingWhiteViewRulesObjectMapping) *CreateProjectModifyRecordsRequestTransferMappingWhiteViewRules {
+	s.ObjectMapping = v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingWhiteViewRules) SetSchemaMapping(v *CreateProjectModifyRecordsRequestTransferMappingWhiteViewRulesSchemaMapping) *CreateProjectModifyRecordsRequestTransferMappingWhiteViewRules {
+	s.SchemaMapping = v
+	return s
+}
+
+type CreateProjectModifyRecordsRequestTransferMappingWhiteViewRulesObjectMapping struct {
+	MappedName *string `json:"MappedName,omitempty" xml:"MappedName,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingWhiteViewRulesObjectMapping) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingWhiteViewRulesObjectMapping) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingWhiteViewRulesObjectMapping) SetMappedName(v string) *CreateProjectModifyRecordsRequestTransferMappingWhiteViewRulesObjectMapping {
+	s.MappedName = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingWhiteViewRulesObjectMapping) SetName(v string) *CreateProjectModifyRecordsRequestTransferMappingWhiteViewRulesObjectMapping {
+	s.Name = &v
+	return s
+}
+
+type CreateProjectModifyRecordsRequestTransferMappingWhiteViewRulesSchemaMapping struct {
+	MappedName *string `json:"MappedName,omitempty" xml:"MappedName,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingWhiteViewRulesSchemaMapping) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectModifyRecordsRequestTransferMappingWhiteViewRulesSchemaMapping) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingWhiteViewRulesSchemaMapping) SetMappedName(v string) *CreateProjectModifyRecordsRequestTransferMappingWhiteViewRulesSchemaMapping {
+	s.MappedName = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsRequestTransferMappingWhiteViewRulesSchemaMapping) SetName(v string) *CreateProjectModifyRecordsRequestTransferMappingWhiteViewRulesSchemaMapping {
+	s.Name = &v
+	return s
+}
+
 type CreateProjectModifyRecordsShrinkRequest struct {
-	// This parameter is required.
 	DatabasesShrink *string `json:"Databases,omitempty" xml:"Databases,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
 	// np_fe****
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id                    *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	TransferMappingShrink *string `json:"TransferMapping,omitempty" xml:"TransferMapping,omitempty"`
 }
 
 func (s CreateProjectModifyRecordsShrinkRequest) String() string {
@@ -5596,6 +7272,11 @@ func (s *CreateProjectModifyRecordsShrinkRequest) SetDatabasesShrink(v string) *
 
 func (s *CreateProjectModifyRecordsShrinkRequest) SetId(v string) *CreateProjectModifyRecordsShrinkRequest {
 	s.Id = &v
+	return s
+}
+
+func (s *CreateProjectModifyRecordsShrinkRequest) SetTransferMappingShrink(v string) *CreateProjectModifyRecordsShrinkRequest {
+	s.TransferMappingShrink = &v
 	return s
 }
 
@@ -35782,6 +37463,294 @@ func (s *DescribeSlowSQLListResponse) SetBody(v *DescribeSlowSQLListResponseBody
 	return s
 }
 
+type DescribeSqlAuditStatRequest struct {
+	// example:
+	//
+	// 2025-01-14T03:34:49Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// ob317v4uif****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 1
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 2025-01-14T02:34:49Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// t33h8y08k****
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s DescribeSqlAuditStatRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSqlAuditStatRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSqlAuditStatRequest) SetEndTime(v string) *DescribeSqlAuditStatRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeSqlAuditStatRequest) SetInstanceId(v string) *DescribeSqlAuditStatRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeSqlAuditStatRequest) SetPageNumber(v int32) *DescribeSqlAuditStatRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeSqlAuditStatRequest) SetPageSize(v int32) *DescribeSqlAuditStatRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeSqlAuditStatRequest) SetStartTime(v string) *DescribeSqlAuditStatRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeSqlAuditStatRequest) SetTenantId(v string) *DescribeSqlAuditStatRequest {
+	s.TenantId = &v
+	return s
+}
+
+type DescribeSqlAuditStatResponseBody struct {
+	Data []*DescribeSqlAuditStatResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Id of the request
+	//
+	// example:
+	//
+	// EE205C00-30E4-XXXX-XXXX-87E3A8A2AA0C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeSqlAuditStatResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSqlAuditStatResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSqlAuditStatResponseBody) SetData(v []*DescribeSqlAuditStatResponseBodyData) *DescribeSqlAuditStatResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeSqlAuditStatResponseBody) SetRequestId(v string) *DescribeSqlAuditStatResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeSqlAuditStatResponseBodyData struct {
+	// example:
+	//
+	// 1
+	AffectRows *float64 `json:"AffectRows,omitempty" xml:"AffectRows,omitempty"`
+	// example:
+	//
+	// test_database_1
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// example:
+	//
+	// 142
+	ExecuteTime *float64 `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
+	// example:
+	//
+	// ob317v4uif****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// UPDATE
+	OperatorType *string `json:"OperatorType,omitempty" xml:"OperatorType,omitempty"`
+	// example:
+	//
+	// 1
+	ReturnRows *float64 `json:"ReturnRows,omitempty" xml:"ReturnRows,omitempty"`
+	// example:
+	//
+	// 1
+	ScanRows *float64 `json:"ScanRows,omitempty" xml:"ScanRows,omitempty"`
+	// Sql ID
+	//
+	// example:
+	//
+	// 8D6E84****0B8FB1823D199E2CA1****
+	SqlId *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
+	// example:
+	//
+	// UPDATE `oceanbase_test_table` SET `name` = ? WHERE `key` = ?
+	SqlStatement *string `json:"SqlStatement,omitempty" xml:"SqlStatement,omitempty"`
+	// example:
+	//
+	// t33h8y08k****
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// example:
+	//
+	// 1
+	TotalAffectRows *int64 `json:"TotalAffectRows,omitempty" xml:"TotalAffectRows,omitempty"`
+	// example:
+	//
+	// 0
+	TotalFailed *int64 `json:"TotalFailed,omitempty" xml:"TotalFailed,omitempty"`
+	// example:
+	//
+	// 1
+	TotalReturnRows *int64 `json:"TotalReturnRows,omitempty" xml:"TotalReturnRows,omitempty"`
+	// example:
+	//
+	// 10
+	TotalScanRows *int64 `json:"TotalScanRows,omitempty" xml:"TotalScanRows,omitempty"`
+	// example:
+	//
+	// 1
+	TotalSucceed *int64 `json:"TotalSucceed,omitempty" xml:"TotalSucceed,omitempty"`
+	// example:
+	//
+	// xx.xx.xx.xx
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// example:
+	//
+	// test_mysql
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+}
+
+func (s DescribeSqlAuditStatResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSqlAuditStatResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSqlAuditStatResponseBodyData) SetAffectRows(v float64) *DescribeSqlAuditStatResponseBodyData {
+	s.AffectRows = &v
+	return s
+}
+
+func (s *DescribeSqlAuditStatResponseBodyData) SetDatabaseName(v string) *DescribeSqlAuditStatResponseBodyData {
+	s.DatabaseName = &v
+	return s
+}
+
+func (s *DescribeSqlAuditStatResponseBodyData) SetExecuteTime(v float64) *DescribeSqlAuditStatResponseBodyData {
+	s.ExecuteTime = &v
+	return s
+}
+
+func (s *DescribeSqlAuditStatResponseBodyData) SetInstanceId(v string) *DescribeSqlAuditStatResponseBodyData {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeSqlAuditStatResponseBodyData) SetOperatorType(v string) *DescribeSqlAuditStatResponseBodyData {
+	s.OperatorType = &v
+	return s
+}
+
+func (s *DescribeSqlAuditStatResponseBodyData) SetReturnRows(v float64) *DescribeSqlAuditStatResponseBodyData {
+	s.ReturnRows = &v
+	return s
+}
+
+func (s *DescribeSqlAuditStatResponseBodyData) SetScanRows(v float64) *DescribeSqlAuditStatResponseBodyData {
+	s.ScanRows = &v
+	return s
+}
+
+func (s *DescribeSqlAuditStatResponseBodyData) SetSqlId(v string) *DescribeSqlAuditStatResponseBodyData {
+	s.SqlId = &v
+	return s
+}
+
+func (s *DescribeSqlAuditStatResponseBodyData) SetSqlStatement(v string) *DescribeSqlAuditStatResponseBodyData {
+	s.SqlStatement = &v
+	return s
+}
+
+func (s *DescribeSqlAuditStatResponseBodyData) SetTenantId(v string) *DescribeSqlAuditStatResponseBodyData {
+	s.TenantId = &v
+	return s
+}
+
+func (s *DescribeSqlAuditStatResponseBodyData) SetTotalAffectRows(v int64) *DescribeSqlAuditStatResponseBodyData {
+	s.TotalAffectRows = &v
+	return s
+}
+
+func (s *DescribeSqlAuditStatResponseBodyData) SetTotalFailed(v int64) *DescribeSqlAuditStatResponseBodyData {
+	s.TotalFailed = &v
+	return s
+}
+
+func (s *DescribeSqlAuditStatResponseBodyData) SetTotalReturnRows(v int64) *DescribeSqlAuditStatResponseBodyData {
+	s.TotalReturnRows = &v
+	return s
+}
+
+func (s *DescribeSqlAuditStatResponseBodyData) SetTotalScanRows(v int64) *DescribeSqlAuditStatResponseBodyData {
+	s.TotalScanRows = &v
+	return s
+}
+
+func (s *DescribeSqlAuditStatResponseBodyData) SetTotalSucceed(v int64) *DescribeSqlAuditStatResponseBodyData {
+	s.TotalSucceed = &v
+	return s
+}
+
+func (s *DescribeSqlAuditStatResponseBodyData) SetUserClientIp(v string) *DescribeSqlAuditStatResponseBodyData {
+	s.UserClientIp = &v
+	return s
+}
+
+func (s *DescribeSqlAuditStatResponseBodyData) SetUserName(v string) *DescribeSqlAuditStatResponseBodyData {
+	s.UserName = &v
+	return s
+}
+
+type DescribeSqlAuditStatResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeSqlAuditStatResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeSqlAuditStatResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSqlAuditStatResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSqlAuditStatResponse) SetHeaders(v map[string]*string) *DescribeSqlAuditStatResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSqlAuditStatResponse) SetStatusCode(v int32) *DescribeSqlAuditStatResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeSqlAuditStatResponse) SetBody(v *DescribeSqlAuditStatResponseBody) *DescribeSqlAuditStatResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeStandbyCreateModeRequest struct {
 	// This parameter is required.
 	//
@@ -54964,6 +56933,10 @@ func (client *Client) CreateProjectModifyRecordsWithOptions(tmpReq *CreateProjec
 		request.DatabasesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Databases, tea.String("Databases"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.TransferMapping)) {
+		request.TransferMappingShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TransferMapping, tea.String("TransferMapping"), tea.String("json"))
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DatabasesShrink)) {
 		body["Databases"] = request.DatabasesShrink
@@ -54971,6 +56944,10 @@ func (client *Client) CreateProjectModifyRecordsWithOptions(tmpReq *CreateProjec
 
 	if !tea.BoolValue(util.IsUnset(request.Id)) {
 		body["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransferMappingShrink)) {
+		body["TransferMapping"] = request.TransferMappingShrink
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -55658,7 +57635,7 @@ func (client *Client) CreateTenantSecurityIpGroup(request *CreateTenantSecurityI
 
 // Summary:
 //
-// CreateTenantUser
+// # CreateTenantUser
 //
 // @param request - CreateTenantUserRequest
 //
@@ -55743,7 +57720,7 @@ func (client *Client) CreateTenantUserWithOptions(request *CreateTenantUserReque
 
 // Summary:
 //
-// CreateTenantUser
+// # CreateTenantUser
 //
 // @param request - CreateTenantUserRequest
 //
@@ -57004,7 +58981,7 @@ func (client *Client) DescribeAvailableZone(request *DescribeAvailableZoneReques
 
 // Summary:
 //
-// DescribeBackupEncryptedString
+// # DescribeBackupEncryptedString
 //
 // @param request - DescribeBackupEncryptedStringRequest
 //
@@ -57061,7 +59038,7 @@ func (client *Client) DescribeBackupEncryptedStringWithOptions(request *Describe
 
 // Summary:
 //
-// DescribeBackupEncryptedString
+// # DescribeBackupEncryptedString
 //
 // @param request - DescribeBackupEncryptedStringRequest
 //
@@ -59840,9 +61817,9 @@ func (client *Client) DescribeProxyService(request *DescribeProxyServiceRequest)
 //
 // The tenant mode.   Valid values:
 //
-// Oracle
+// # Oracle
 //
-// MySQL
+// # MySQL
 //
 // @param request - DescribeRecommendIndexRequest
 //
@@ -59905,9 +61882,9 @@ func (client *Client) DescribeRecommendIndexWithOptions(request *DescribeRecomme
 //
 // The tenant mode.   Valid values:
 //
-// Oracle
+// # Oracle
 //
-// MySQL
+// # MySQL
 //
 // @param request - DescribeRecommendIndexRequest
 //
@@ -60791,7 +62768,7 @@ func (client *Client) DescribeSlowSQLHistoryList(request *DescribeSlowSQLHistory
 
 // Summary:
 //
-// You can call this operation to query the list of slow SQL statements
+// # You can call this operation to query the list of slow SQL statements
 //
 // @param tmpReq - DescribeSlowSQLListRequest
 //
@@ -60906,7 +62883,7 @@ func (client *Client) DescribeSlowSQLListWithOptions(tmpReq *DescribeSlowSQLList
 
 // Summary:
 //
-// You can call this operation to query the list of slow SQL statements
+// # You can call this operation to query the list of slow SQL statements
 //
 // @param request - DescribeSlowSQLListRequest
 //
@@ -60924,7 +62901,98 @@ func (client *Client) DescribeSlowSQLList(request *DescribeSlowSQLListRequest) (
 
 // Summary:
 //
-// DescribeStandbyCreateMode
+// 按照客户端IP、用户、SQLID的维度统计SQL数据执行情况
+//
+// @param request - DescribeSqlAuditStatRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSqlAuditStatResponse
+func (client *Client) DescribeSqlAuditStatWithOptions(request *DescribeSqlAuditStatRequest, runtime *util.RuntimeOptions) (_result *DescribeSqlAuditStatResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		body["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSqlAuditStat"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeSqlAuditStatResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeSqlAuditStatResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 按照客户端IP、用户、SQLID的维度统计SQL数据执行情况
+//
+// @param request - DescribeSqlAuditStatRequest
+//
+// @return DescribeSqlAuditStatResponse
+func (client *Client) DescribeSqlAuditStat(request *DescribeSqlAuditStatRequest) (_result *DescribeSqlAuditStatResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSqlAuditStatResponse{}
+	_body, _err := client.DescribeSqlAuditStatWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # DescribeStandbyCreateMode
 //
 // @param request - DescribeStandbyCreateModeRequest
 //
@@ -60981,7 +63049,7 @@ func (client *Client) DescribeStandbyCreateModeWithOptions(request *DescribeStan
 
 // Summary:
 //
-// DescribeStandbyCreateMode
+// # DescribeStandbyCreateMode
 //
 // @param request - DescribeStandbyCreateModeRequest
 //
