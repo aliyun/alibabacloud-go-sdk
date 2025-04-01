@@ -9137,6 +9137,52 @@ func (s *CancelTaskResponse) SetBody(v *Task) *CancelTaskResponse {
 	return s
 }
 
+type CreateArtifactRequest struct {
+	Body *Artifact `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateArtifactRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateArtifactRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateArtifactRequest) SetBody(v *Artifact) *CreateArtifactRequest {
+	s.Body = v
+	return s
+}
+
+type CreateArtifactResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *Artifact          `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateArtifactResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateArtifactResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateArtifactResponse) SetHeaders(v map[string]*string) *CreateArtifactResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateArtifactResponse) SetStatusCode(v int32) *CreateArtifactResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateArtifactResponse) SetBody(v *Artifact) *CreateArtifactResponse {
+	s.Body = v
+	return s
+}
+
 type CreateEnvironmentRequest struct {
 	Body *Environment `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -9321,6 +9367,29 @@ func (s *CreateTaskResponse) SetBody(v *Task) *CreateTaskResponse {
 	return s
 }
 
+type DeleteArtifactResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s DeleteArtifactResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteArtifactResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteArtifactResponse) SetHeaders(v map[string]*string) *DeleteArtifactResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteArtifactResponse) SetStatusCode(v int32) *DeleteArtifactResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type DeleteEnvironmentResponse struct {
 	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -9429,6 +9498,93 @@ func (s *DeployEnvironmentResponse) SetStatusCode(v int32) *DeployEnvironmentRes
 }
 
 func (s *DeployEnvironmentResponse) SetBody(v *EnvironmentDeployment) *DeployEnvironmentResponse {
+	s.Body = v
+	return s
+}
+
+type FetchArtifactDownloadUrlResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ArtifactCode      `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s FetchArtifactDownloadUrlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FetchArtifactDownloadUrlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *FetchArtifactDownloadUrlResponse) SetHeaders(v map[string]*string) *FetchArtifactDownloadUrlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *FetchArtifactDownloadUrlResponse) SetStatusCode(v int32) *FetchArtifactDownloadUrlResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *FetchArtifactDownloadUrlResponse) SetBody(v *ArtifactCode) *FetchArtifactDownloadUrlResponse {
+	s.Body = v
+	return s
+}
+
+type FetchArtifactTempBucketTokenResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ArtifactTempBucketToken `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s FetchArtifactTempBucketTokenResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FetchArtifactTempBucketTokenResponse) GoString() string {
+	return s.String()
+}
+
+func (s *FetchArtifactTempBucketTokenResponse) SetHeaders(v map[string]*string) *FetchArtifactTempBucketTokenResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *FetchArtifactTempBucketTokenResponse) SetStatusCode(v int32) *FetchArtifactTempBucketTokenResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *FetchArtifactTempBucketTokenResponse) SetBody(v *ArtifactTempBucketToken) *FetchArtifactTempBucketTokenResponse {
+	s.Body = v
+	return s
+}
+
+type GetArtifactResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *Artifact          `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetArtifactResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetArtifactResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetArtifactResponse) SetHeaders(v map[string]*string) *GetArtifactResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetArtifactResponse) SetStatusCode(v int32) *GetArtifactResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetArtifactResponse) SetBody(v *Artifact) *GetArtifactResponse {
 	s.Body = v
 	return s
 }
@@ -9574,6 +9730,35 @@ func (s *GetRepositoryResponse) SetStatusCode(v int32) *GetRepositoryResponse {
 }
 
 func (s *GetRepositoryResponse) SetBody(v *Repository) *GetRepositoryResponse {
+	s.Body = v
+	return s
+}
+
+type GetServiceDeploymentResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ServiceDeployment `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetServiceDeploymentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceDeploymentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceDeploymentResponse) SetHeaders(v map[string]*string) *GetServiceDeploymentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetServiceDeploymentResponse) SetStatusCode(v int32) *GetServiceDeploymentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetServiceDeploymentResponse) SetBody(v *ServiceDeployment) *GetServiceDeploymentResponse {
 	s.Body = v
 	return s
 }
@@ -9992,6 +10177,167 @@ func (s *ListProjectsResponse) SetBody(v *ListProjectsResponseBody) *ListProject
 	return s
 }
 
+type ListServiceDeploymentsRequest struct {
+	// example:
+	//
+	// demo
+	Keyword       *string   `json:"keyword,omitempty" xml:"keyword,omitempty"`
+	LabelSelector []*string `json:"labelSelector,omitempty" xml:"labelSelector,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+}
+
+func (s ListServiceDeploymentsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceDeploymentsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceDeploymentsRequest) SetKeyword(v string) *ListServiceDeploymentsRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *ListServiceDeploymentsRequest) SetLabelSelector(v []*string) *ListServiceDeploymentsRequest {
+	s.LabelSelector = v
+	return s
+}
+
+func (s *ListServiceDeploymentsRequest) SetPageNumber(v int64) *ListServiceDeploymentsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListServiceDeploymentsRequest) SetPageSize(v int64) *ListServiceDeploymentsRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListServiceDeploymentsShrinkRequest struct {
+	// example:
+	//
+	// demo
+	Keyword             *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
+	LabelSelectorShrink *string `json:"labelSelector,omitempty" xml:"labelSelector,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+}
+
+func (s ListServiceDeploymentsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceDeploymentsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceDeploymentsShrinkRequest) SetKeyword(v string) *ListServiceDeploymentsShrinkRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *ListServiceDeploymentsShrinkRequest) SetLabelSelectorShrink(v string) *ListServiceDeploymentsShrinkRequest {
+	s.LabelSelectorShrink = &v
+	return s
+}
+
+func (s *ListServiceDeploymentsShrinkRequest) SetPageNumber(v int64) *ListServiceDeploymentsShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListServiceDeploymentsShrinkRequest) SetPageSize(v int64) *ListServiceDeploymentsShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListServiceDeploymentsResponseBody struct {
+	Data []*ServiceDeployment `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// 50
+	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+}
+
+func (s ListServiceDeploymentsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceDeploymentsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceDeploymentsResponseBody) SetData(v []*ServiceDeployment) *ListServiceDeploymentsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListServiceDeploymentsResponseBody) SetPageNumber(v int64) *ListServiceDeploymentsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListServiceDeploymentsResponseBody) SetPageSize(v int64) *ListServiceDeploymentsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListServiceDeploymentsResponseBody) SetTotalCount(v int64) *ListServiceDeploymentsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListServiceDeploymentsResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListServiceDeploymentsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListServiceDeploymentsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceDeploymentsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceDeploymentsResponse) SetHeaders(v map[string]*string) *ListServiceDeploymentsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListServiceDeploymentsResponse) SetStatusCode(v int32) *ListServiceDeploymentsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListServiceDeploymentsResponse) SetBody(v *ListServiceDeploymentsResponseBody) *ListServiceDeploymentsResponse {
+	s.Body = v
+	return s
+}
+
 type ListTasksRequest struct {
 	LabelSelector []*string `json:"labelSelector,omitempty" xml:"labelSelector,omitempty" type:"Repeated"`
 }
@@ -10051,6 +10397,90 @@ func (s *ListTasksResponse) SetStatusCode(v int32) *ListTasksResponse {
 }
 
 func (s *ListTasksResponse) SetBody(v []*Task) *ListTasksResponse {
+	s.Body = v
+	return s
+}
+
+type PreviewEnvironmentResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EnvironmentDeploymentSpec `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s PreviewEnvironmentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PreviewEnvironmentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PreviewEnvironmentResponse) SetHeaders(v map[string]*string) *PreviewEnvironmentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PreviewEnvironmentResponse) SetStatusCode(v int32) *PreviewEnvironmentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PreviewEnvironmentResponse) SetBody(v *EnvironmentDeploymentSpec) *PreviewEnvironmentResponse {
+	s.Body = v
+	return s
+}
+
+type PutArtifactRequest struct {
+	Body *Artifact `json:"body,omitempty" xml:"body,omitempty"`
+	// example:
+	//
+	// false
+	Force *bool `json:"force,omitempty" xml:"force,omitempty"`
+}
+
+func (s PutArtifactRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutArtifactRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PutArtifactRequest) SetBody(v *Artifact) *PutArtifactRequest {
+	s.Body = v
+	return s
+}
+
+func (s *PutArtifactRequest) SetForce(v bool) *PutArtifactRequest {
+	s.Force = &v
+	return s
+}
+
+type PutArtifactResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *Artifact          `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s PutArtifactResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutArtifactResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PutArtifactResponse) SetHeaders(v map[string]*string) *PutArtifactResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PutArtifactResponse) SetStatusCode(v int32) *PutArtifactResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PutArtifactResponse) SetBody(v *Artifact) *PutArtifactResponse {
 	s.Body = v
 	return s
 }
@@ -10161,6 +10591,119 @@ func (s *PutTaskStatusResponse) SetStatusCode(v int32) *PutTaskStatusResponse {
 }
 
 func (s *PutTaskStatusResponse) SetBody(v *Task) *PutTaskStatusResponse {
+	s.Body = v
+	return s
+}
+
+type RenderServicesByTemplateRequest struct {
+	// example:
+	//
+	// {"region":"cn-hangzhou"}
+	Parameters map[string]interface{} `json:"parameters,omitempty" xml:"parameters,omitempty"`
+	// example:
+	//
+	// my-project
+	ProjectName *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
+	// example:
+	//
+	// {"svc1":"svc2"}
+	ServiceNameChanges map[string]*string `json:"serviceNameChanges,omitempty" xml:"serviceNameChanges,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// start-springboot
+	TemplateName   *string                   `json:"templateName,omitempty" xml:"templateName,omitempty"`
+	VariableValues *TemplateVariableValueMap `json:"variableValues,omitempty" xml:"variableValues,omitempty"`
+}
+
+func (s RenderServicesByTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenderServicesByTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RenderServicesByTemplateRequest) SetParameters(v map[string]interface{}) *RenderServicesByTemplateRequest {
+	s.Parameters = v
+	return s
+}
+
+func (s *RenderServicesByTemplateRequest) SetProjectName(v string) *RenderServicesByTemplateRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *RenderServicesByTemplateRequest) SetServiceNameChanges(v map[string]*string) *RenderServicesByTemplateRequest {
+	s.ServiceNameChanges = v
+	return s
+}
+
+func (s *RenderServicesByTemplateRequest) SetTemplateName(v string) *RenderServicesByTemplateRequest {
+	s.TemplateName = &v
+	return s
+}
+
+func (s *RenderServicesByTemplateRequest) SetVariableValues(v *TemplateVariableValueMap) *RenderServicesByTemplateRequest {
+	s.VariableValues = v
+	return s
+}
+
+type RenderServicesByTemplateResponseBody struct {
+	ChangedServiceNames map[string]*string        `json:"changedServiceNames,omitempty" xml:"changedServiceNames,omitempty"`
+	Services            map[string]*ServiceConfig `json:"services,omitempty" xml:"services,omitempty"`
+	Variables           map[string]*Variable      `json:"variables,omitempty" xml:"variables,omitempty"`
+}
+
+func (s RenderServicesByTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenderServicesByTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RenderServicesByTemplateResponseBody) SetChangedServiceNames(v map[string]*string) *RenderServicesByTemplateResponseBody {
+	s.ChangedServiceNames = v
+	return s
+}
+
+func (s *RenderServicesByTemplateResponseBody) SetServices(v map[string]*ServiceConfig) *RenderServicesByTemplateResponseBody {
+	s.Services = v
+	return s
+}
+
+func (s *RenderServicesByTemplateResponseBody) SetVariables(v map[string]*Variable) *RenderServicesByTemplateResponseBody {
+	s.Variables = v
+	return s
+}
+
+type RenderServicesByTemplateResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RenderServicesByTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RenderServicesByTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenderServicesByTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RenderServicesByTemplateResponse) SetHeaders(v map[string]*string) *RenderServicesByTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RenderServicesByTemplateResponse) SetStatusCode(v int32) *RenderServicesByTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RenderServicesByTemplateResponse) SetBody(v *RenderServicesByTemplateResponseBody) *RenderServicesByTemplateResponse {
 	s.Body = v
 	return s
 }
@@ -10544,6 +11087,76 @@ func (client *Client) CancelTask(name *string) (_result *CancelTaskResponse, _er
 
 // Summary:
 //
+// 创建交付物存储
+//
+// @param request - CreateArtifactRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateArtifactResponse
+func (client *Client) CreateArtifactWithOptions(request *CreateArtifactRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateArtifactResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateArtifact"),
+		Version:     tea.String("2023-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2023-07-14/artifacts"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateArtifactResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateArtifactResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 创建交付物存储
+//
+// @param request - CreateArtifactRequest
+//
+// @return CreateArtifactResponse
+func (client *Client) CreateArtifact(request *CreateArtifactRequest) (_result *CreateArtifactResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateArtifactResponse{}
+	_body, _err := client.CreateArtifactWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建环境
 //
 // @param request - CreateEnvironmentRequest
@@ -10824,6 +11437,67 @@ func (client *Client) CreateTask(request *CreateTaskRequest) (_result *CreateTas
 
 // Summary:
 //
+// 删除交付物
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteArtifactResponse
+func (client *Client) DeleteArtifactWithOptions(name *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteArtifactResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteArtifact"),
+		Version:     tea.String("2023-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2023-07-14/artifacts/" + tea.StringValue(openapiutil.GetEncodeParam(name))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteArtifactResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteArtifactResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 删除交付物
+//
+// @return DeleteArtifactResponse
+func (client *Client) DeleteArtifact(name *string) (_result *DeleteArtifactResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteArtifactResponse{}
+	_body, _err := client.DeleteArtifactWithOptions(name, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 删除环境
 //
 // @param headers - map
@@ -11021,6 +11695,189 @@ func (client *Client) DeployEnvironment(projectName *string, name *string, reque
 	headers := make(map[string]*string)
 	_result = &DeployEnvironmentResponse{}
 	_body, _err := client.DeployEnvironmentWithOptions(projectName, name, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取交付物的zip包临时下载地址url
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FetchArtifactDownloadUrlResponse
+func (client *Client) FetchArtifactDownloadUrlWithOptions(name *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *FetchArtifactDownloadUrlResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("FetchArtifactDownloadUrl"),
+		Version:     tea.String("2023-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2023-07-14/artifacts/" + tea.StringValue(openapiutil.GetEncodeParam(name)) + "/fetchCode"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &FetchArtifactDownloadUrlResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &FetchArtifactDownloadUrlResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取交付物的zip包临时下载地址url
+//
+// @return FetchArtifactDownloadUrlResponse
+func (client *Client) FetchArtifactDownloadUrl(name *string) (_result *FetchArtifactDownloadUrlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &FetchArtifactDownloadUrlResponse{}
+	_body, _err := client.FetchArtifactDownloadUrlWithOptions(name, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取交付物临时上传的bucket、object和临时sts
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FetchArtifactTempBucketTokenResponse
+func (client *Client) FetchArtifactTempBucketTokenWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *FetchArtifactTempBucketTokenResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("FetchArtifactTempBucketToken"),
+		Version:     tea.String("2023-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2023-07-14/artifacts/action/fetchTempBucketToken"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &FetchArtifactTempBucketTokenResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &FetchArtifactTempBucketTokenResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取交付物临时上传的bucket、object和临时sts
+//
+// @return FetchArtifactTempBucketTokenResponse
+func (client *Client) FetchArtifactTempBucketToken() (_result *FetchArtifactTempBucketTokenResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &FetchArtifactTempBucketTokenResponse{}
+	_body, _err := client.FetchArtifactTempBucketTokenWithOptions(headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询交付物
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetArtifactResponse
+func (client *Client) GetArtifactWithOptions(name *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetArtifactResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetArtifact"),
+		Version:     tea.String("2023-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2023-07-14/artifacts/" + tea.StringValue(openapiutil.GetEncodeParam(name))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetArtifactResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetArtifactResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询交付物
+//
+// @return GetArtifactResponse
+func (client *Client) GetArtifact(name *string) (_result *GetArtifactResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetArtifactResponse{}
+	_body, _err := client.GetArtifactWithOptions(name, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11326,6 +12183,67 @@ func (client *Client) GetRepository(name *string) (_result *GetRepositoryRespons
 	headers := make(map[string]*string)
 	_result = &GetRepositoryResponse{}
 	_body, _err := client.GetRepositoryWithOptions(name, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询服务部署信息
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetServiceDeploymentResponse
+func (client *Client) GetServiceDeploymentWithOptions(name *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetServiceDeploymentResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetServiceDeployment"),
+		Version:     tea.String("2023-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2023-07-14/servicedeployments/" + tea.StringValue(openapiutil.GetEncodeParam(name))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetServiceDeploymentResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetServiceDeploymentResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询服务部署信息
+//
+// @return GetServiceDeploymentResponse
+func (client *Client) GetServiceDeployment(name *string) (_result *GetServiceDeploymentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetServiceDeploymentResponse{}
+	_body, _err := client.GetServiceDeploymentWithOptions(name, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11663,6 +12581,99 @@ func (client *Client) ListProjects(request *ListProjectsRequest) (_result *ListP
 
 // Summary:
 //
+// 批量查询服务部署信息
+//
+// @param tmpReq - ListServiceDeploymentsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListServiceDeploymentsResponse
+func (client *Client) ListServiceDeploymentsWithOptions(tmpReq *ListServiceDeploymentsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListServiceDeploymentsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListServiceDeploymentsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.LabelSelector)) {
+		request.LabelSelectorShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LabelSelector, tea.String("labelSelector"), tea.String("simple"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		query["keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LabelSelectorShrink)) {
+		query["labelSelector"] = request.LabelSelectorShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListServiceDeployments"),
+		Version:     tea.String("2023-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2023-07-14/servicedeployments"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListServiceDeploymentsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListServiceDeploymentsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 批量查询服务部署信息
+//
+// @param request - ListServiceDeploymentsRequest
+//
+// @return ListServiceDeploymentsResponse
+func (client *Client) ListServiceDeployments(request *ListServiceDeploymentsRequest) (_result *ListServiceDeploymentsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListServiceDeploymentsResponse{}
+	_body, _err := client.ListServiceDeploymentsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 批量查询任务
 //
 // @param tmpReq - ListTasksRequest
@@ -11735,6 +12746,143 @@ func (client *Client) ListTasks(request *ListTasksRequest) (_result *ListTasksRe
 	headers := make(map[string]*string)
 	_result = &ListTasksResponse{}
 	_body, _err := client.ListTasksWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 预览环境变更信息
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PreviewEnvironmentResponse
+func (client *Client) PreviewEnvironmentWithOptions(projectName *string, name *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PreviewEnvironmentResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PreviewEnvironment"),
+		Version:     tea.String("2023-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2023-07-14/projects/" + tea.StringValue(openapiutil.GetEncodeParam(projectName)) + "/environments/" + tea.StringValue(openapiutil.GetEncodeParam(name)) + "/preview"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &PreviewEnvironmentResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &PreviewEnvironmentResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 预览环境变更信息
+//
+// @return PreviewEnvironmentResponse
+func (client *Client) PreviewEnvironment(projectName *string, name *string) (_result *PreviewEnvironmentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &PreviewEnvironmentResponse{}
+	_body, _err := client.PreviewEnvironmentWithOptions(projectName, name, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新交付物
+//
+// @param request - PutArtifactRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PutArtifactResponse
+func (client *Client) PutArtifactWithOptions(name *string, request *PutArtifactRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PutArtifactResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Force)) {
+		query["force"] = request.Force
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PutArtifact"),
+		Version:     tea.String("2023-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2023-07-14/artifacts/" + tea.StringValue(openapiutil.GetEncodeParam(name))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &PutArtifactResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &PutArtifactResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 更新交付物
+//
+// @param request - PutArtifactRequest
+//
+// @return PutArtifactResponse
+func (client *Client) PutArtifact(name *string, request *PutArtifactRequest) (_result *PutArtifactResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &PutArtifactResponse{}
+	_body, _err := client.PutArtifactWithOptions(name, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11887,6 +13035,97 @@ func (client *Client) PutTaskStatus(name *string, request *PutTaskStatusRequest)
 	headers := make(map[string]*string)
 	_result = &PutTaskStatusResponse{}
 	_body, _err := client.PutTaskStatusWithOptions(name, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 解析模板中的服务、变量配置
+//
+// @param request - RenderServicesByTemplateRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RenderServicesByTemplateResponse
+func (client *Client) RenderServicesByTemplateWithOptions(request *RenderServicesByTemplateRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RenderServicesByTemplateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Parameters)) {
+		body["parameters"] = request.Parameters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		body["projectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceNameChanges)) {
+		body["serviceNameChanges"] = request.ServiceNameChanges
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateName)) {
+		body["templateName"] = request.TemplateName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VariableValues)) {
+		body["variableValues"] = request.VariableValues
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RenderServicesByTemplate"),
+		Version:     tea.String("2023-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2023-07-14/templates/action/renderServices"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RenderServicesByTemplateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RenderServicesByTemplateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 解析模板中的服务、变量配置
+//
+// @param request - RenderServicesByTemplateRequest
+//
+// @return RenderServicesByTemplateResponse
+func (client *Client) RenderServicesByTemplate(request *RenderServicesByTemplateRequest) (_result *RenderServicesByTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &RenderServicesByTemplateResponse{}
+	_body, _err := client.RenderServicesByTemplateWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
