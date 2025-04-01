@@ -6449,6 +6449,35 @@ func (s *OperationModelFileAction) SetTarget(v string) *OperationModelFileAction
 	return s
 }
 
+type OssSourceConfig struct {
+	// example:
+	//
+	// demo-bucket
+	Bucket *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
+	// example:
+	//
+	// demo-object
+	Object *string `json:"object,omitempty" xml:"object,omitempty"`
+}
+
+func (s OssSourceConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OssSourceConfig) GoString() string {
+	return s.String()
+}
+
+func (s *OssSourceConfig) SetBucket(v string) *OssSourceConfig {
+	s.Bucket = &v
+	return s
+}
+
+func (s *OssSourceConfig) SetObject(v string) *OssSourceConfig {
+	s.Object = &v
+	return s
+}
+
 type Pipeline struct {
 	// example:
 	//
@@ -7533,9 +7562,9 @@ func (s *ServicePluginStep) SetPlugin(v string) *ServicePluginStep {
 }
 
 type SourceConfig struct {
-	Oss        *OpenStructOssSourceConfig `json:"oss,omitempty" xml:"oss,omitempty"`
-	Repository *RepositorySourceConfig    `json:"repository,omitempty" xml:"repository,omitempty"`
-	Template   *TemplateSourceConfig      `json:"template,omitempty" xml:"template,omitempty"`
+	Oss        *OssSourceConfig        `json:"oss,omitempty" xml:"oss,omitempty"`
+	Repository *RepositorySourceConfig `json:"repository,omitempty" xml:"repository,omitempty"`
+	Template   *TemplateSourceConfig   `json:"template,omitempty" xml:"template,omitempty"`
 }
 
 func (s SourceConfig) String() string {
@@ -7546,7 +7575,7 @@ func (s SourceConfig) GoString() string {
 	return s.String()
 }
 
-func (s *SourceConfig) SetOss(v *OpenStructOssSourceConfig) *SourceConfig {
+func (s *SourceConfig) SetOss(v *OssSourceConfig) *SourceConfig {
 	s.Oss = v
 	return s
 }
