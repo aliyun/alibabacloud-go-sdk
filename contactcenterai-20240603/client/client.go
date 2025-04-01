@@ -628,10 +628,11 @@ func (s *AnalyzeImageResponse) SetBody(v *AnalyzeImageResponseBody) *AnalyzeImag
 }
 
 type CreateTaskRequest struct {
-	CustomPrompt *string                    `json:"customPrompt,omitempty" xml:"customPrompt,omitempty"`
-	Dialogue     *CreateTaskRequestDialogue `json:"dialogue,omitempty" xml:"dialogue,omitempty" type:"Struct"`
-	Examples     *CreateTaskRequestExamples `json:"examples,omitempty" xml:"examples,omitempty" type:"Struct"`
-	Fields       []*CreateTaskRequestFields `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
+	CategoryTags []*CreateTaskRequestCategoryTags `json:"categoryTags,omitempty" xml:"categoryTags,omitempty" type:"Repeated"`
+	CustomPrompt *string                          `json:"customPrompt,omitempty" xml:"customPrompt,omitempty"`
+	Dialogue     *CreateTaskRequestDialogue       `json:"dialogue,omitempty" xml:"dialogue,omitempty" type:"Struct"`
+	Examples     *CreateTaskRequestExamples       `json:"examples,omitempty" xml:"examples,omitempty" type:"Struct"`
+	Fields       []*CreateTaskRequestFields       `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
 	// This parameter is required.
 	//
 	// example:
@@ -648,6 +649,7 @@ type CreateTaskRequest struct {
 	TaskType      *string                         `json:"taskType,omitempty" xml:"taskType,omitempty"`
 	TemplateIds   []*string                       `json:"templateIds,omitempty" xml:"templateIds,omitempty" type:"Repeated"`
 	Transcription *CreateTaskRequestTranscription `json:"transcription,omitempty" xml:"transcription,omitempty" type:"Struct"`
+	Variables     []*CreateTaskRequestVariables   `json:"variables,omitempty" xml:"variables,omitempty" type:"Repeated"`
 }
 
 func (s CreateTaskRequest) String() string {
@@ -656,6 +658,11 @@ func (s CreateTaskRequest) String() string {
 
 func (s CreateTaskRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateTaskRequest) SetCategoryTags(v []*CreateTaskRequestCategoryTags) *CreateTaskRequest {
+	s.CategoryTags = v
+	return s
 }
 
 func (s *CreateTaskRequest) SetCustomPrompt(v string) *CreateTaskRequest {
@@ -705,6 +712,34 @@ func (s *CreateTaskRequest) SetTemplateIds(v []*string) *CreateTaskRequest {
 
 func (s *CreateTaskRequest) SetTranscription(v *CreateTaskRequestTranscription) *CreateTaskRequest {
 	s.Transcription = v
+	return s
+}
+
+func (s *CreateTaskRequest) SetVariables(v []*CreateTaskRequestVariables) *CreateTaskRequest {
+	s.Variables = v
+	return s
+}
+
+type CreateTaskRequestCategoryTags struct {
+	TagDesc *string `json:"tagDesc,omitempty" xml:"tagDesc,omitempty"`
+	TagName *string `json:"tagName,omitempty" xml:"tagName,omitempty"`
+}
+
+func (s CreateTaskRequestCategoryTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTaskRequestCategoryTags) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTaskRequestCategoryTags) SetTagDesc(v string) *CreateTaskRequestCategoryTags {
+	s.TagDesc = &v
+	return s
+}
+
+func (s *CreateTaskRequestCategoryTags) SetTagName(v string) *CreateTaskRequestCategoryTags {
+	s.TagName = &v
 	return s
 }
 
@@ -1020,6 +1055,29 @@ func (s *CreateTaskRequestTranscription) SetVocabularyId(v string) *CreateTaskRe
 
 func (s *CreateTaskRequestTranscription) SetVoiceFileUrl(v string) *CreateTaskRequestTranscription {
 	s.VoiceFileUrl = &v
+	return s
+}
+
+type CreateTaskRequestVariables struct {
+	VariableCode  *string `json:"variableCode,omitempty" xml:"variableCode,omitempty"`
+	VariableValue *string `json:"variableValue,omitempty" xml:"variableValue,omitempty"`
+}
+
+func (s CreateTaskRequestVariables) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTaskRequestVariables) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTaskRequestVariables) SetVariableCode(v string) *CreateTaskRequestVariables {
+	s.VariableCode = &v
+	return s
+}
+
+func (s *CreateTaskRequestVariables) SetVariableValue(v string) *CreateTaskRequestVariables {
+	s.VariableValue = &v
 	return s
 }
 
@@ -1930,7 +1988,8 @@ type RunCompletionRequest struct {
 	// false
 	Stream *bool `json:"Stream,omitempty" xml:"Stream,omitempty"`
 	// This parameter is required.
-	TemplateIds []*int64 `json:"TemplateIds,omitempty" xml:"TemplateIds,omitempty" type:"Repeated"`
+	TemplateIds []*int64                         `json:"TemplateIds,omitempty" xml:"TemplateIds,omitempty" type:"Repeated"`
+	Variables   []*RunCompletionRequestVariables `json:"variables,omitempty" xml:"variables,omitempty" type:"Repeated"`
 }
 
 func (s RunCompletionRequest) String() string {
@@ -1968,6 +2027,11 @@ func (s *RunCompletionRequest) SetStream(v bool) *RunCompletionRequest {
 
 func (s *RunCompletionRequest) SetTemplateIds(v []*int64) *RunCompletionRequest {
 	s.TemplateIds = v
+	return s
+}
+
+func (s *RunCompletionRequest) SetVariables(v []*RunCompletionRequestVariables) *RunCompletionRequest {
+	s.Variables = v
 	return s
 }
 
@@ -2145,6 +2209,29 @@ func (s *RunCompletionRequestServiceInspectionInspectionContents) SetContent(v s
 
 func (s *RunCompletionRequestServiceInspectionInspectionContents) SetTitle(v string) *RunCompletionRequestServiceInspectionInspectionContents {
 	s.Title = &v
+	return s
+}
+
+type RunCompletionRequestVariables struct {
+	VariableCode  *string `json:"variableCode,omitempty" xml:"variableCode,omitempty"`
+	VariableValue *string `json:"variableValue,omitempty" xml:"variableValue,omitempty"`
+}
+
+func (s RunCompletionRequestVariables) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunCompletionRequestVariables) GoString() string {
+	return s.String()
+}
+
+func (s *RunCompletionRequestVariables) SetVariableCode(v string) *RunCompletionRequestVariables {
+	s.VariableCode = &v
+	return s
+}
+
+func (s *RunCompletionRequestVariables) SetVariableValue(v string) *RunCompletionRequestVariables {
+	s.VariableValue = &v
 	return s
 }
 
@@ -2788,6 +2875,10 @@ func (client *Client) CreateTaskWithOptions(workspaceId *string, appId *string, 
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CategoryTags)) {
+		body["categoryTags"] = request.CategoryTags
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CustomPrompt)) {
 		body["customPrompt"] = request.CustomPrompt
 	}
@@ -2826,6 +2917,10 @@ func (client *Client) CreateTaskWithOptions(workspaceId *string, appId *string, 
 
 	if !tea.BoolValue(util.IsUnset(request.Transcription)) {
 		body["transcription"] = request.Transcription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Variables)) {
+		body["variables"] = request.Variables
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -3330,6 +3425,10 @@ func (client *Client) RunCompletionWithOptions(workspaceId *string, appId *strin
 
 	if !tea.BoolValue(util.IsUnset(request.TemplateIds)) {
 		body["TemplateIds"] = request.TemplateIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Variables)) {
+		body["variables"] = request.Variables
 	}
 
 	req := &openapi.OpenApiRequest{
